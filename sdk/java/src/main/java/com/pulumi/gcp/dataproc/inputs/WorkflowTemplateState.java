@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataproc.inputs.WorkflowTemplateEncryptionConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplateJobArgs;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplateParameterArgs;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementArgs;
@@ -68,6 +69,21 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
 
     public Optional<Output<Map<String,String>>> effectiveLabels() {
         return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
+     * Optional. The encryption configuration for the workflow template.
+     * 
+     */
+    @Import(name="encryptionConfig")
+    private @Nullable Output<WorkflowTemplateEncryptionConfigArgs> encryptionConfig;
+
+    /**
+     * @return Optional. The encryption configuration for the workflow template.
+     * 
+     */
+    public Optional<Output<WorkflowTemplateEncryptionConfigArgs>> encryptionConfig() {
+        return Optional.ofNullable(this.encryptionConfig);
     }
 
     /**
@@ -246,6 +262,7 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         this.createTime = $.createTime;
         this.dagTimeout = $.dagTimeout;
         this.effectiveLabels = $.effectiveLabels;
+        this.encryptionConfig = $.encryptionConfig;
         this.jobs = $.jobs;
         this.labels = $.labels;
         this.location = $.location;
@@ -337,6 +354,27 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
 
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
+         * @param encryptionConfig Optional. The encryption configuration for the workflow template.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionConfig(@Nullable Output<WorkflowTemplateEncryptionConfigArgs> encryptionConfig) {
+            $.encryptionConfig = encryptionConfig;
+            return this;
+        }
+
+        /**
+         * @param encryptionConfig Optional. The encryption configuration for the workflow template.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionConfig(WorkflowTemplateEncryptionConfigArgs encryptionConfig) {
+            return encryptionConfig(Output.of(encryptionConfig));
         }
 
         /**

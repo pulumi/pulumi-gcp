@@ -65,6 +65,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Password for this database user.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     @Import(name="password")
@@ -72,6 +73,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Password for this database user.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Optional<Output<String>> password() {
@@ -220,6 +222,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param password Password for this database user.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
@@ -231,6 +234,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param password Password for this database user.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 

@@ -29,6 +29,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AppGateway{}
 	case "gcp:beyondcorp/securityGateway:SecurityGateway":
 		r = &SecurityGateway{}
+	case "gcp:beyondcorp/securityGatewayIamBinding:SecurityGatewayIamBinding":
+		r = &SecurityGatewayIamBinding{}
+	case "gcp:beyondcorp/securityGatewayIamMember:SecurityGatewayIamMember":
+		r = &SecurityGatewayIamMember{}
+	case "gcp:beyondcorp/securityGatewayIamPolicy:SecurityGatewayIamPolicy":
+		r = &SecurityGatewayIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -60,6 +66,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"beyondcorp/securityGateway",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"beyondcorp/securityGatewayIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"beyondcorp/securityGatewayIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"beyondcorp/securityGatewayIamPolicy",
 		&module{version},
 	)
 }

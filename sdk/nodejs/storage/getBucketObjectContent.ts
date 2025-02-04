@@ -47,7 +47,7 @@ export interface GetBucketObjectContentArgs {
      */
     bucket: string;
     /**
-     * (Computed) [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object content.
+     * (Computed) The content of the object.
      */
     content?: string;
     /**
@@ -63,9 +63,9 @@ export interface GetBucketObjectContentResult {
     readonly bucket: string;
     readonly cacheControl: string;
     /**
-     * (Computed) [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object content.
+     * (Computed) The content of the object.
      */
-    readonly content?: string;
+    readonly content: string;
     readonly contentDisposition: string;
     readonly contentEncoding: string;
     readonly contentLanguage: string;
@@ -132,7 +132,7 @@ export interface GetBucketObjectContentOutputArgs {
      */
     bucket: pulumi.Input<string>;
     /**
-     * (Computed) [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object content.
+     * (Computed) The content of the object.
      */
     content?: pulumi.Input<string>;
     /**

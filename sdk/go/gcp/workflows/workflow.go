@@ -95,6 +95,101 @@ import (
 //	}
 //
 // ```
+// ### Workflow Tags
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/tags"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/workflows"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
+// }, nil);
+// if err != nil {
+// return err
+// }
+// tagKey, err := tags.NewTagKey(ctx, "tag_key", &tags.TagKeyArgs{
+// Parent: pulumi.Sprintf("projects/%v", project.Number),
+// ShortName: pulumi.String("tag_key"),
+// })
+// if err != nil {
+// return err
+// }
+// tagValue, err := tags.NewTagValue(ctx, "tag_value", &tags.TagValueArgs{
+// Parent: tagKey.Name.ApplyT(func(name string) (string, error) {
+// return fmt.Sprintf("tagKeys/%v", name), nil
+// }).(pulumi.StringOutput),
+// ShortName: pulumi.String("tag_value"),
+// })
+// if err != nil {
+// return err
+// }
+// testAccount, err := serviceaccount.NewAccount(ctx, "test_account", &serviceaccount.AccountArgs{
+// AccountId: pulumi.String("my-account"),
+// DisplayName: pulumi.String("Test Service Account"),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = workflows.NewWorkflow(ctx, "example", &workflows.WorkflowArgs{
+// Name: pulumi.String("workflow"),
+// Region: pulumi.String("us-central1"),
+// Description: pulumi.String("Magic"),
+// ServiceAccount: testAccount.ID(),
+// DeletionProtection: pulumi.Bool(false),
+// Tags: pulumi.All(tagKey.ShortName,tagValue.ShortName).ApplyT(func(_args []interface{}) (map[string]string, error) {
+// tagKeyShortName := _args[0].(string)
+// tagValueShortName := _args[1].(string)
+// return map[string]string{
+// fmt.Sprintf("%v/%v", project.ProjectId, tagKeyShortName): tagValueShortName,
+// }, nil
+// }).(pulumi.Map[string]stringOutput),
+// SourceContents: pulumi.String(`# This is a sample workflow. You can replace it with your source code.
+// #
+// # This workflow does the following:
+// # - reads current time and date information from an external API and stores
+// #   the response in currentTime variable
+// # - retrieves a list of Wikipedia articles related to the day of the week
+// #   from currentTime
+// # - returns the list of articles as an output of the workflow
+// #
+// # Note: In Terraform you need to escape the $$ or it will cause errors.
+//
+//   - getCurrentTime:
+//     call: http.get
+//     args:
+//     url: ${sys.get_env("url")}
+//     result: currentTime
+//   - readWikipedia:
+//     call: http.get
+//     args:
+//     url: https://en.wikipedia.org/w/api.php
+//     query:
+//     action: opensearch
+//     search: ${currentTime.body.dayOfWeek}
+//     result: wikiResult
+//   - returnOutput:
+//     return: ${wikiResult.body[1]}
+//
+// `),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
 //
 // ## Import
 //
@@ -149,6 +244,10 @@ type Workflow struct {
 	SourceContents pulumi.StringPtrOutput `pulumi:"sourceContents"`
 	// State of the workflow deployment.
 	State pulumi.StringOutput `pulumi:"state"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition
+	// as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
+	// the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
@@ -237,6 +336,10 @@ type workflowState struct {
 	SourceContents *string `pulumi:"sourceContents"`
 	// State of the workflow deployment.
 	State *string `pulumi:"state"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition
+	// as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
+	// the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+	Tags map[string]string `pulumi:"tags"`
 	// The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime *string `pulumi:"updateTime"`
 	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
@@ -291,6 +394,10 @@ type WorkflowState struct {
 	SourceContents pulumi.StringPtrInput
 	// State of the workflow deployment.
 	State pulumi.StringPtrInput
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition
+	// as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
+	// the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+	Tags pulumi.StringMapInput
 	// The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringPtrInput
 	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
@@ -338,6 +445,10 @@ type workflowArgs struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Workflow code to be executed. The size limit is 128KB.
 	SourceContents *string `pulumi:"sourceContents"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition
+	// as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
+	// the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+	Tags map[string]string `pulumi:"tags"`
 	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
 	UserEnvVars map[string]string `pulumi:"userEnvVars"`
 }
@@ -380,6 +491,10 @@ type WorkflowArgs struct {
 	ServiceAccount pulumi.StringPtrInput
 	// Workflow code to be executed. The size limit is 128KB.
 	SourceContents pulumi.StringPtrInput
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition
+	// as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
+	// the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+	Tags pulumi.StringMapInput
 	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
 	UserEnvVars pulumi.StringMapInput
 }
@@ -564,6 +679,13 @@ func (o WorkflowOutput) SourceContents() pulumi.StringPtrOutput {
 // State of the workflow deployment.
 func (o WorkflowOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// A map of resource manager tags. Resource manager tag keys and values have the same definition
+// as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
+// the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+func (o WorkflowOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.

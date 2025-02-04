@@ -3669,12 +3669,18 @@ type TopicIngestionDataSourceSettings struct {
 	// Settings for ingestion from Amazon Kinesis Data Streams.
 	// Structure is documented below.
 	AwsKinesis *TopicIngestionDataSourceSettingsAwsKinesis `pulumi:"awsKinesis"`
+	// Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
+	// Structure is documented below.
+	AwsMsk *TopicIngestionDataSourceSettingsAwsMsk `pulumi:"awsMsk"`
 	// Settings for ingestion from Azure Event Hubs.
 	// Structure is documented below.
 	AzureEventHubs *TopicIngestionDataSourceSettingsAzureEventHubs `pulumi:"azureEventHubs"`
 	// Settings for ingestion from Cloud Storage.
 	// Structure is documented below.
 	CloudStorage *TopicIngestionDataSourceSettingsCloudStorage `pulumi:"cloudStorage"`
+	// Settings for ingestion from Confluent Cloud.
+	// Structure is documented below.
+	ConfluentCloud *TopicIngestionDataSourceSettingsConfluentCloud `pulumi:"confluentCloud"`
 	// Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
 	// no Platform Logs will be generated.'
 	// Structure is documented below.
@@ -3696,12 +3702,18 @@ type TopicIngestionDataSourceSettingsArgs struct {
 	// Settings for ingestion from Amazon Kinesis Data Streams.
 	// Structure is documented below.
 	AwsKinesis TopicIngestionDataSourceSettingsAwsKinesisPtrInput `pulumi:"awsKinesis"`
+	// Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
+	// Structure is documented below.
+	AwsMsk TopicIngestionDataSourceSettingsAwsMskPtrInput `pulumi:"awsMsk"`
 	// Settings for ingestion from Azure Event Hubs.
 	// Structure is documented below.
 	AzureEventHubs TopicIngestionDataSourceSettingsAzureEventHubsPtrInput `pulumi:"azureEventHubs"`
 	// Settings for ingestion from Cloud Storage.
 	// Structure is documented below.
 	CloudStorage TopicIngestionDataSourceSettingsCloudStoragePtrInput `pulumi:"cloudStorage"`
+	// Settings for ingestion from Confluent Cloud.
+	// Structure is documented below.
+	ConfluentCloud TopicIngestionDataSourceSettingsConfluentCloudPtrInput `pulumi:"confluentCloud"`
 	// Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
 	// no Platform Logs will be generated.'
 	// Structure is documented below.
@@ -3793,6 +3805,12 @@ func (o TopicIngestionDataSourceSettingsOutput) AwsKinesis() TopicIngestionDataS
 	}).(TopicIngestionDataSourceSettingsAwsKinesisPtrOutput)
 }
 
+// Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
+// Structure is documented below.
+func (o TopicIngestionDataSourceSettingsOutput) AwsMsk() TopicIngestionDataSourceSettingsAwsMskPtrOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettings) *TopicIngestionDataSourceSettingsAwsMsk { return v.AwsMsk }).(TopicIngestionDataSourceSettingsAwsMskPtrOutput)
+}
+
 // Settings for ingestion from Azure Event Hubs.
 // Structure is documented below.
 func (o TopicIngestionDataSourceSettingsOutput) AzureEventHubs() TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput {
@@ -3807,6 +3825,14 @@ func (o TopicIngestionDataSourceSettingsOutput) CloudStorage() TopicIngestionDat
 	return o.ApplyT(func(v TopicIngestionDataSourceSettings) *TopicIngestionDataSourceSettingsCloudStorage {
 		return v.CloudStorage
 	}).(TopicIngestionDataSourceSettingsCloudStoragePtrOutput)
+}
+
+// Settings for ingestion from Confluent Cloud.
+// Structure is documented below.
+func (o TopicIngestionDataSourceSettingsOutput) ConfluentCloud() TopicIngestionDataSourceSettingsConfluentCloudPtrOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettings) *TopicIngestionDataSourceSettingsConfluentCloud {
+		return v.ConfluentCloud
+	}).(TopicIngestionDataSourceSettingsConfluentCloudPtrOutput)
 }
 
 // Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
@@ -3853,6 +3879,17 @@ func (o TopicIngestionDataSourceSettingsPtrOutput) AwsKinesis() TopicIngestionDa
 	}).(TopicIngestionDataSourceSettingsAwsKinesisPtrOutput)
 }
 
+// Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
+// Structure is documented below.
+func (o TopicIngestionDataSourceSettingsPtrOutput) AwsMsk() TopicIngestionDataSourceSettingsAwsMskPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettings) *TopicIngestionDataSourceSettingsAwsMsk {
+		if v == nil {
+			return nil
+		}
+		return v.AwsMsk
+	}).(TopicIngestionDataSourceSettingsAwsMskPtrOutput)
+}
+
 // Settings for ingestion from Azure Event Hubs.
 // Structure is documented below.
 func (o TopicIngestionDataSourceSettingsPtrOutput) AzureEventHubs() TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput {
@@ -3873,6 +3910,17 @@ func (o TopicIngestionDataSourceSettingsPtrOutput) CloudStorage() TopicIngestion
 		}
 		return v.CloudStorage
 	}).(TopicIngestionDataSourceSettingsCloudStoragePtrOutput)
+}
+
+// Settings for ingestion from Confluent Cloud.
+// Structure is documented below.
+func (o TopicIngestionDataSourceSettingsPtrOutput) ConfluentCloud() TopicIngestionDataSourceSettingsConfluentCloudPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettings) *TopicIngestionDataSourceSettingsConfluentCloud {
+		if v == nil {
+			return nil
+		}
+		return v.ConfluentCloud
+	}).(TopicIngestionDataSourceSettingsConfluentCloudPtrOutput)
 }
 
 // Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
@@ -4106,6 +4154,220 @@ func (o TopicIngestionDataSourceSettingsAwsKinesisPtrOutput) StreamArn() pulumi.
 			return nil
 		}
 		return &v.StreamArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type TopicIngestionDataSourceSettingsAwsMsk struct {
+	// AWS role ARN to be used for Federated Identity authentication with
+	// MSK. Check the Pub/Sub docs for how to set up this role and the
+	// required permissions that need to be attached to it.
+	AwsRoleArn string `pulumi:"awsRoleArn"`
+	// ARN that uniquely identifies the MSK cluster.
+	ClusterArn string `pulumi:"clusterArn"`
+	// The GCP service account to be used for Federated Identity authentication
+	// with MSK (via a `AssumeRoleWithWebIdentity` call for the provided
+	// role). The `awsRoleArn` must be set up with `accounts.google.com:sub`
+	// equals to this service account number.
+	GcpServiceAccount string `pulumi:"gcpServiceAccount"`
+	// The name of the MSK topic that Pub/Sub will import from.
+	Topic string `pulumi:"topic"`
+}
+
+// TopicIngestionDataSourceSettingsAwsMskInput is an input type that accepts TopicIngestionDataSourceSettingsAwsMskArgs and TopicIngestionDataSourceSettingsAwsMskOutput values.
+// You can construct a concrete instance of `TopicIngestionDataSourceSettingsAwsMskInput` via:
+//
+//	TopicIngestionDataSourceSettingsAwsMskArgs{...}
+type TopicIngestionDataSourceSettingsAwsMskInput interface {
+	pulumi.Input
+
+	ToTopicIngestionDataSourceSettingsAwsMskOutput() TopicIngestionDataSourceSettingsAwsMskOutput
+	ToTopicIngestionDataSourceSettingsAwsMskOutputWithContext(context.Context) TopicIngestionDataSourceSettingsAwsMskOutput
+}
+
+type TopicIngestionDataSourceSettingsAwsMskArgs struct {
+	// AWS role ARN to be used for Federated Identity authentication with
+	// MSK. Check the Pub/Sub docs for how to set up this role and the
+	// required permissions that need to be attached to it.
+	AwsRoleArn pulumi.StringInput `pulumi:"awsRoleArn"`
+	// ARN that uniquely identifies the MSK cluster.
+	ClusterArn pulumi.StringInput `pulumi:"clusterArn"`
+	// The GCP service account to be used for Federated Identity authentication
+	// with MSK (via a `AssumeRoleWithWebIdentity` call for the provided
+	// role). The `awsRoleArn` must be set up with `accounts.google.com:sub`
+	// equals to this service account number.
+	GcpServiceAccount pulumi.StringInput `pulumi:"gcpServiceAccount"`
+	// The name of the MSK topic that Pub/Sub will import from.
+	Topic pulumi.StringInput `pulumi:"topic"`
+}
+
+func (TopicIngestionDataSourceSettingsAwsMskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicIngestionDataSourceSettingsAwsMsk)(nil)).Elem()
+}
+
+func (i TopicIngestionDataSourceSettingsAwsMskArgs) ToTopicIngestionDataSourceSettingsAwsMskOutput() TopicIngestionDataSourceSettingsAwsMskOutput {
+	return i.ToTopicIngestionDataSourceSettingsAwsMskOutputWithContext(context.Background())
+}
+
+func (i TopicIngestionDataSourceSettingsAwsMskArgs) ToTopicIngestionDataSourceSettingsAwsMskOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsAwsMskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsAwsMskOutput)
+}
+
+func (i TopicIngestionDataSourceSettingsAwsMskArgs) ToTopicIngestionDataSourceSettingsAwsMskPtrOutput() TopicIngestionDataSourceSettingsAwsMskPtrOutput {
+	return i.ToTopicIngestionDataSourceSettingsAwsMskPtrOutputWithContext(context.Background())
+}
+
+func (i TopicIngestionDataSourceSettingsAwsMskArgs) ToTopicIngestionDataSourceSettingsAwsMskPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsAwsMskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsAwsMskOutput).ToTopicIngestionDataSourceSettingsAwsMskPtrOutputWithContext(ctx)
+}
+
+// TopicIngestionDataSourceSettingsAwsMskPtrInput is an input type that accepts TopicIngestionDataSourceSettingsAwsMskArgs, TopicIngestionDataSourceSettingsAwsMskPtr and TopicIngestionDataSourceSettingsAwsMskPtrOutput values.
+// You can construct a concrete instance of `TopicIngestionDataSourceSettingsAwsMskPtrInput` via:
+//
+//	        TopicIngestionDataSourceSettingsAwsMskArgs{...}
+//
+//	or:
+//
+//	        nil
+type TopicIngestionDataSourceSettingsAwsMskPtrInput interface {
+	pulumi.Input
+
+	ToTopicIngestionDataSourceSettingsAwsMskPtrOutput() TopicIngestionDataSourceSettingsAwsMskPtrOutput
+	ToTopicIngestionDataSourceSettingsAwsMskPtrOutputWithContext(context.Context) TopicIngestionDataSourceSettingsAwsMskPtrOutput
+}
+
+type topicIngestionDataSourceSettingsAwsMskPtrType TopicIngestionDataSourceSettingsAwsMskArgs
+
+func TopicIngestionDataSourceSettingsAwsMskPtr(v *TopicIngestionDataSourceSettingsAwsMskArgs) TopicIngestionDataSourceSettingsAwsMskPtrInput {
+	return (*topicIngestionDataSourceSettingsAwsMskPtrType)(v)
+}
+
+func (*topicIngestionDataSourceSettingsAwsMskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIngestionDataSourceSettingsAwsMsk)(nil)).Elem()
+}
+
+func (i *topicIngestionDataSourceSettingsAwsMskPtrType) ToTopicIngestionDataSourceSettingsAwsMskPtrOutput() TopicIngestionDataSourceSettingsAwsMskPtrOutput {
+	return i.ToTopicIngestionDataSourceSettingsAwsMskPtrOutputWithContext(context.Background())
+}
+
+func (i *topicIngestionDataSourceSettingsAwsMskPtrType) ToTopicIngestionDataSourceSettingsAwsMskPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsAwsMskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsAwsMskPtrOutput)
+}
+
+type TopicIngestionDataSourceSettingsAwsMskOutput struct{ *pulumi.OutputState }
+
+func (TopicIngestionDataSourceSettingsAwsMskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicIngestionDataSourceSettingsAwsMsk)(nil)).Elem()
+}
+
+func (o TopicIngestionDataSourceSettingsAwsMskOutput) ToTopicIngestionDataSourceSettingsAwsMskOutput() TopicIngestionDataSourceSettingsAwsMskOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsAwsMskOutput) ToTopicIngestionDataSourceSettingsAwsMskOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsAwsMskOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsAwsMskOutput) ToTopicIngestionDataSourceSettingsAwsMskPtrOutput() TopicIngestionDataSourceSettingsAwsMskPtrOutput {
+	return o.ToTopicIngestionDataSourceSettingsAwsMskPtrOutputWithContext(context.Background())
+}
+
+func (o TopicIngestionDataSourceSettingsAwsMskOutput) ToTopicIngestionDataSourceSettingsAwsMskPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsAwsMskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicIngestionDataSourceSettingsAwsMsk) *TopicIngestionDataSourceSettingsAwsMsk {
+		return &v
+	}).(TopicIngestionDataSourceSettingsAwsMskPtrOutput)
+}
+
+// AWS role ARN to be used for Federated Identity authentication with
+// MSK. Check the Pub/Sub docs for how to set up this role and the
+// required permissions that need to be attached to it.
+func (o TopicIngestionDataSourceSettingsAwsMskOutput) AwsRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsAwsMsk) string { return v.AwsRoleArn }).(pulumi.StringOutput)
+}
+
+// ARN that uniquely identifies the MSK cluster.
+func (o TopicIngestionDataSourceSettingsAwsMskOutput) ClusterArn() pulumi.StringOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsAwsMsk) string { return v.ClusterArn }).(pulumi.StringOutput)
+}
+
+// The GCP service account to be used for Federated Identity authentication
+// with MSK (via a `AssumeRoleWithWebIdentity` call for the provided
+// role). The `awsRoleArn` must be set up with `accounts.google.com:sub`
+// equals to this service account number.
+func (o TopicIngestionDataSourceSettingsAwsMskOutput) GcpServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsAwsMsk) string { return v.GcpServiceAccount }).(pulumi.StringOutput)
+}
+
+// The name of the MSK topic that Pub/Sub will import from.
+func (o TopicIngestionDataSourceSettingsAwsMskOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsAwsMsk) string { return v.Topic }).(pulumi.StringOutput)
+}
+
+type TopicIngestionDataSourceSettingsAwsMskPtrOutput struct{ *pulumi.OutputState }
+
+func (TopicIngestionDataSourceSettingsAwsMskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIngestionDataSourceSettingsAwsMsk)(nil)).Elem()
+}
+
+func (o TopicIngestionDataSourceSettingsAwsMskPtrOutput) ToTopicIngestionDataSourceSettingsAwsMskPtrOutput() TopicIngestionDataSourceSettingsAwsMskPtrOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsAwsMskPtrOutput) ToTopicIngestionDataSourceSettingsAwsMskPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsAwsMskPtrOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsAwsMskPtrOutput) Elem() TopicIngestionDataSourceSettingsAwsMskOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsAwsMsk) TopicIngestionDataSourceSettingsAwsMsk {
+		if v != nil {
+			return *v
+		}
+		var ret TopicIngestionDataSourceSettingsAwsMsk
+		return ret
+	}).(TopicIngestionDataSourceSettingsAwsMskOutput)
+}
+
+// AWS role ARN to be used for Federated Identity authentication with
+// MSK. Check the Pub/Sub docs for how to set up this role and the
+// required permissions that need to be attached to it.
+func (o TopicIngestionDataSourceSettingsAwsMskPtrOutput) AwsRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsAwsMsk) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AwsRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// ARN that uniquely identifies the MSK cluster.
+func (o TopicIngestionDataSourceSettingsAwsMskPtrOutput) ClusterArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsAwsMsk) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The GCP service account to be used for Federated Identity authentication
+// with MSK (via a `AssumeRoleWithWebIdentity` call for the provided
+// role). The `awsRoleArn` must be set up with `accounts.google.com:sub`
+// equals to this service account number.
+func (o TopicIngestionDataSourceSettingsAwsMskPtrOutput) GcpServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsAwsMsk) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GcpServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the MSK topic that Pub/Sub will import from.
+func (o TopicIngestionDataSourceSettingsAwsMskPtrOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsAwsMsk) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Topic
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5036,6 +5298,223 @@ func (o TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput) Delimit
 			return nil
 		}
 		return v.Delimiter
+	}).(pulumi.StringPtrOutput)
+}
+
+type TopicIngestionDataSourceSettingsConfluentCloud struct {
+	// The Confluent Cloud bootstrap server. The format is url:port.
+	BootstrapServer string `pulumi:"bootstrapServer"`
+	// The Confluent Cloud cluster ID.
+	ClusterId *string `pulumi:"clusterId"`
+	// The GCP service account to be used for Federated Identity authentication
+	// with Confluent Cloud.
+	GcpServiceAccount string `pulumi:"gcpServiceAccount"`
+	// Identity pool ID to be used for Federated Identity authentication with Confluent Cloud.
+	IdentityPoolId string `pulumi:"identityPoolId"`
+	// Name of the Confluent Cloud topic that Pub/Sub will import from.
+	Topic string `pulumi:"topic"`
+}
+
+// TopicIngestionDataSourceSettingsConfluentCloudInput is an input type that accepts TopicIngestionDataSourceSettingsConfluentCloudArgs and TopicIngestionDataSourceSettingsConfluentCloudOutput values.
+// You can construct a concrete instance of `TopicIngestionDataSourceSettingsConfluentCloudInput` via:
+//
+//	TopicIngestionDataSourceSettingsConfluentCloudArgs{...}
+type TopicIngestionDataSourceSettingsConfluentCloudInput interface {
+	pulumi.Input
+
+	ToTopicIngestionDataSourceSettingsConfluentCloudOutput() TopicIngestionDataSourceSettingsConfluentCloudOutput
+	ToTopicIngestionDataSourceSettingsConfluentCloudOutputWithContext(context.Context) TopicIngestionDataSourceSettingsConfluentCloudOutput
+}
+
+type TopicIngestionDataSourceSettingsConfluentCloudArgs struct {
+	// The Confluent Cloud bootstrap server. The format is url:port.
+	BootstrapServer pulumi.StringInput `pulumi:"bootstrapServer"`
+	// The Confluent Cloud cluster ID.
+	ClusterId pulumi.StringPtrInput `pulumi:"clusterId"`
+	// The GCP service account to be used for Federated Identity authentication
+	// with Confluent Cloud.
+	GcpServiceAccount pulumi.StringInput `pulumi:"gcpServiceAccount"`
+	// Identity pool ID to be used for Federated Identity authentication with Confluent Cloud.
+	IdentityPoolId pulumi.StringInput `pulumi:"identityPoolId"`
+	// Name of the Confluent Cloud topic that Pub/Sub will import from.
+	Topic pulumi.StringInput `pulumi:"topic"`
+}
+
+func (TopicIngestionDataSourceSettingsConfluentCloudArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicIngestionDataSourceSettingsConfluentCloud)(nil)).Elem()
+}
+
+func (i TopicIngestionDataSourceSettingsConfluentCloudArgs) ToTopicIngestionDataSourceSettingsConfluentCloudOutput() TopicIngestionDataSourceSettingsConfluentCloudOutput {
+	return i.ToTopicIngestionDataSourceSettingsConfluentCloudOutputWithContext(context.Background())
+}
+
+func (i TopicIngestionDataSourceSettingsConfluentCloudArgs) ToTopicIngestionDataSourceSettingsConfluentCloudOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsConfluentCloudOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsConfluentCloudOutput)
+}
+
+func (i TopicIngestionDataSourceSettingsConfluentCloudArgs) ToTopicIngestionDataSourceSettingsConfluentCloudPtrOutput() TopicIngestionDataSourceSettingsConfluentCloudPtrOutput {
+	return i.ToTopicIngestionDataSourceSettingsConfluentCloudPtrOutputWithContext(context.Background())
+}
+
+func (i TopicIngestionDataSourceSettingsConfluentCloudArgs) ToTopicIngestionDataSourceSettingsConfluentCloudPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsConfluentCloudPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsConfluentCloudOutput).ToTopicIngestionDataSourceSettingsConfluentCloudPtrOutputWithContext(ctx)
+}
+
+// TopicIngestionDataSourceSettingsConfluentCloudPtrInput is an input type that accepts TopicIngestionDataSourceSettingsConfluentCloudArgs, TopicIngestionDataSourceSettingsConfluentCloudPtr and TopicIngestionDataSourceSettingsConfluentCloudPtrOutput values.
+// You can construct a concrete instance of `TopicIngestionDataSourceSettingsConfluentCloudPtrInput` via:
+//
+//	        TopicIngestionDataSourceSettingsConfluentCloudArgs{...}
+//
+//	or:
+//
+//	        nil
+type TopicIngestionDataSourceSettingsConfluentCloudPtrInput interface {
+	pulumi.Input
+
+	ToTopicIngestionDataSourceSettingsConfluentCloudPtrOutput() TopicIngestionDataSourceSettingsConfluentCloudPtrOutput
+	ToTopicIngestionDataSourceSettingsConfluentCloudPtrOutputWithContext(context.Context) TopicIngestionDataSourceSettingsConfluentCloudPtrOutput
+}
+
+type topicIngestionDataSourceSettingsConfluentCloudPtrType TopicIngestionDataSourceSettingsConfluentCloudArgs
+
+func TopicIngestionDataSourceSettingsConfluentCloudPtr(v *TopicIngestionDataSourceSettingsConfluentCloudArgs) TopicIngestionDataSourceSettingsConfluentCloudPtrInput {
+	return (*topicIngestionDataSourceSettingsConfluentCloudPtrType)(v)
+}
+
+func (*topicIngestionDataSourceSettingsConfluentCloudPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIngestionDataSourceSettingsConfluentCloud)(nil)).Elem()
+}
+
+func (i *topicIngestionDataSourceSettingsConfluentCloudPtrType) ToTopicIngestionDataSourceSettingsConfluentCloudPtrOutput() TopicIngestionDataSourceSettingsConfluentCloudPtrOutput {
+	return i.ToTopicIngestionDataSourceSettingsConfluentCloudPtrOutputWithContext(context.Background())
+}
+
+func (i *topicIngestionDataSourceSettingsConfluentCloudPtrType) ToTopicIngestionDataSourceSettingsConfluentCloudPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsConfluentCloudPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsConfluentCloudPtrOutput)
+}
+
+type TopicIngestionDataSourceSettingsConfluentCloudOutput struct{ *pulumi.OutputState }
+
+func (TopicIngestionDataSourceSettingsConfluentCloudOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicIngestionDataSourceSettingsConfluentCloud)(nil)).Elem()
+}
+
+func (o TopicIngestionDataSourceSettingsConfluentCloudOutput) ToTopicIngestionDataSourceSettingsConfluentCloudOutput() TopicIngestionDataSourceSettingsConfluentCloudOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsConfluentCloudOutput) ToTopicIngestionDataSourceSettingsConfluentCloudOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsConfluentCloudOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsConfluentCloudOutput) ToTopicIngestionDataSourceSettingsConfluentCloudPtrOutput() TopicIngestionDataSourceSettingsConfluentCloudPtrOutput {
+	return o.ToTopicIngestionDataSourceSettingsConfluentCloudPtrOutputWithContext(context.Background())
+}
+
+func (o TopicIngestionDataSourceSettingsConfluentCloudOutput) ToTopicIngestionDataSourceSettingsConfluentCloudPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsConfluentCloudPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicIngestionDataSourceSettingsConfluentCloud) *TopicIngestionDataSourceSettingsConfluentCloud {
+		return &v
+	}).(TopicIngestionDataSourceSettingsConfluentCloudPtrOutput)
+}
+
+// The Confluent Cloud bootstrap server. The format is url:port.
+func (o TopicIngestionDataSourceSettingsConfluentCloudOutput) BootstrapServer() pulumi.StringOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsConfluentCloud) string { return v.BootstrapServer }).(pulumi.StringOutput)
+}
+
+// The Confluent Cloud cluster ID.
+func (o TopicIngestionDataSourceSettingsConfluentCloudOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsConfluentCloud) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The GCP service account to be used for Federated Identity authentication
+// with Confluent Cloud.
+func (o TopicIngestionDataSourceSettingsConfluentCloudOutput) GcpServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsConfluentCloud) string { return v.GcpServiceAccount }).(pulumi.StringOutput)
+}
+
+// Identity pool ID to be used for Federated Identity authentication with Confluent Cloud.
+func (o TopicIngestionDataSourceSettingsConfluentCloudOutput) IdentityPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsConfluentCloud) string { return v.IdentityPoolId }).(pulumi.StringOutput)
+}
+
+// Name of the Confluent Cloud topic that Pub/Sub will import from.
+func (o TopicIngestionDataSourceSettingsConfluentCloudOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsConfluentCloud) string { return v.Topic }).(pulumi.StringOutput)
+}
+
+type TopicIngestionDataSourceSettingsConfluentCloudPtrOutput struct{ *pulumi.OutputState }
+
+func (TopicIngestionDataSourceSettingsConfluentCloudPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIngestionDataSourceSettingsConfluentCloud)(nil)).Elem()
+}
+
+func (o TopicIngestionDataSourceSettingsConfluentCloudPtrOutput) ToTopicIngestionDataSourceSettingsConfluentCloudPtrOutput() TopicIngestionDataSourceSettingsConfluentCloudPtrOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsConfluentCloudPtrOutput) ToTopicIngestionDataSourceSettingsConfluentCloudPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsConfluentCloudPtrOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsConfluentCloudPtrOutput) Elem() TopicIngestionDataSourceSettingsConfluentCloudOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsConfluentCloud) TopicIngestionDataSourceSettingsConfluentCloud {
+		if v != nil {
+			return *v
+		}
+		var ret TopicIngestionDataSourceSettingsConfluentCloud
+		return ret
+	}).(TopicIngestionDataSourceSettingsConfluentCloudOutput)
+}
+
+// The Confluent Cloud bootstrap server. The format is url:port.
+func (o TopicIngestionDataSourceSettingsConfluentCloudPtrOutput) BootstrapServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsConfluentCloud) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BootstrapServer
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Confluent Cloud cluster ID.
+func (o TopicIngestionDataSourceSettingsConfluentCloudPtrOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsConfluentCloud) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The GCP service account to be used for Federated Identity authentication
+// with Confluent Cloud.
+func (o TopicIngestionDataSourceSettingsConfluentCloudPtrOutput) GcpServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsConfluentCloud) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GcpServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identity pool ID to be used for Federated Identity authentication with Confluent Cloud.
+func (o TopicIngestionDataSourceSettingsConfluentCloudPtrOutput) IdentityPoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsConfluentCloud) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdentityPoolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the Confluent Cloud topic that Pub/Sub will import from.
+func (o TopicIngestionDataSourceSettingsConfluentCloudPtrOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsConfluentCloud) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Topic
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6844,10 +7323,14 @@ func (o GetSubscriptionRetryPolicyArrayOutput) Index(i pulumi.IntInput) GetSubsc
 type GetTopicIngestionDataSourceSetting struct {
 	// Settings for ingestion from Amazon Kinesis Data Streams.
 	AwsKineses []GetTopicIngestionDataSourceSettingAwsKinese `pulumi:"awsKineses"`
+	// Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
+	AwsMsks []GetTopicIngestionDataSourceSettingAwsMsk `pulumi:"awsMsks"`
 	// Settings for ingestion from Azure Event Hubs.
 	AzureEventHubs []GetTopicIngestionDataSourceSettingAzureEventHub `pulumi:"azureEventHubs"`
 	// Settings for ingestion from Cloud Storage.
 	CloudStorages []GetTopicIngestionDataSourceSettingCloudStorage `pulumi:"cloudStorages"`
+	// Settings for ingestion from Confluent Cloud.
+	ConfluentClouds []GetTopicIngestionDataSourceSettingConfluentCloud `pulumi:"confluentClouds"`
 	// Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
 	// no Platform Logs will be generated.'
 	PlatformLogsSettings []GetTopicIngestionDataSourceSettingPlatformLogsSetting `pulumi:"platformLogsSettings"`
@@ -6867,10 +7350,14 @@ type GetTopicIngestionDataSourceSettingInput interface {
 type GetTopicIngestionDataSourceSettingArgs struct {
 	// Settings for ingestion from Amazon Kinesis Data Streams.
 	AwsKineses GetTopicIngestionDataSourceSettingAwsKineseArrayInput `pulumi:"awsKineses"`
+	// Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
+	AwsMsks GetTopicIngestionDataSourceSettingAwsMskArrayInput `pulumi:"awsMsks"`
 	// Settings for ingestion from Azure Event Hubs.
 	AzureEventHubs GetTopicIngestionDataSourceSettingAzureEventHubArrayInput `pulumi:"azureEventHubs"`
 	// Settings for ingestion from Cloud Storage.
 	CloudStorages GetTopicIngestionDataSourceSettingCloudStorageArrayInput `pulumi:"cloudStorages"`
+	// Settings for ingestion from Confluent Cloud.
+	ConfluentClouds GetTopicIngestionDataSourceSettingConfluentCloudArrayInput `pulumi:"confluentClouds"`
 	// Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
 	// no Platform Logs will be generated.'
 	PlatformLogsSettings GetTopicIngestionDataSourceSettingPlatformLogsSettingArrayInput `pulumi:"platformLogsSettings"`
@@ -6934,6 +7421,13 @@ func (o GetTopicIngestionDataSourceSettingOutput) AwsKineses() GetTopicIngestion
 	}).(GetTopicIngestionDataSourceSettingAwsKineseArrayOutput)
 }
 
+// Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
+func (o GetTopicIngestionDataSourceSettingOutput) AwsMsks() GetTopicIngestionDataSourceSettingAwsMskArrayOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSetting) []GetTopicIngestionDataSourceSettingAwsMsk {
+		return v.AwsMsks
+	}).(GetTopicIngestionDataSourceSettingAwsMskArrayOutput)
+}
+
 // Settings for ingestion from Azure Event Hubs.
 func (o GetTopicIngestionDataSourceSettingOutput) AzureEventHubs() GetTopicIngestionDataSourceSettingAzureEventHubArrayOutput {
 	return o.ApplyT(func(v GetTopicIngestionDataSourceSetting) []GetTopicIngestionDataSourceSettingAzureEventHub {
@@ -6946,6 +7440,13 @@ func (o GetTopicIngestionDataSourceSettingOutput) CloudStorages() GetTopicIngest
 	return o.ApplyT(func(v GetTopicIngestionDataSourceSetting) []GetTopicIngestionDataSourceSettingCloudStorage {
 		return v.CloudStorages
 	}).(GetTopicIngestionDataSourceSettingCloudStorageArrayOutput)
+}
+
+// Settings for ingestion from Confluent Cloud.
+func (o GetTopicIngestionDataSourceSettingOutput) ConfluentClouds() GetTopicIngestionDataSourceSettingConfluentCloudArrayOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSetting) []GetTopicIngestionDataSourceSettingConfluentCloud {
+		return v.ConfluentClouds
+	}).(GetTopicIngestionDataSourceSettingConfluentCloudArrayOutput)
 }
 
 // Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
@@ -7119,6 +7620,145 @@ func (o GetTopicIngestionDataSourceSettingAwsKineseArrayOutput) Index(i pulumi.I
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTopicIngestionDataSourceSettingAwsKinese {
 		return vs[0].([]GetTopicIngestionDataSourceSettingAwsKinese)[vs[1].(int)]
 	}).(GetTopicIngestionDataSourceSettingAwsKineseOutput)
+}
+
+type GetTopicIngestionDataSourceSettingAwsMsk struct {
+	// AWS role ARN to be used for Federated Identity authentication with
+	// MSK. Check the Pub/Sub docs for how to set up this role and the
+	// required permissions that need to be attached to it.
+	AwsRoleArn string `pulumi:"awsRoleArn"`
+	// ARN that uniquely identifies the MSK cluster.
+	ClusterArn string `pulumi:"clusterArn"`
+	// The GCP service account to be used for Federated Identity authentication
+	// with MSK (via a 'AssumeRoleWithWebIdentity' call for the provided
+	// role). The 'awsRoleArn' must be set up with 'accounts.google.com:sub'
+	// equals to this service account number.
+	GcpServiceAccount string `pulumi:"gcpServiceAccount"`
+	// The name of the MSK topic that Pub/Sub will import from.
+	Topic string `pulumi:"topic"`
+}
+
+// GetTopicIngestionDataSourceSettingAwsMskInput is an input type that accepts GetTopicIngestionDataSourceSettingAwsMskArgs and GetTopicIngestionDataSourceSettingAwsMskOutput values.
+// You can construct a concrete instance of `GetTopicIngestionDataSourceSettingAwsMskInput` via:
+//
+//	GetTopicIngestionDataSourceSettingAwsMskArgs{...}
+type GetTopicIngestionDataSourceSettingAwsMskInput interface {
+	pulumi.Input
+
+	ToGetTopicIngestionDataSourceSettingAwsMskOutput() GetTopicIngestionDataSourceSettingAwsMskOutput
+	ToGetTopicIngestionDataSourceSettingAwsMskOutputWithContext(context.Context) GetTopicIngestionDataSourceSettingAwsMskOutput
+}
+
+type GetTopicIngestionDataSourceSettingAwsMskArgs struct {
+	// AWS role ARN to be used for Federated Identity authentication with
+	// MSK. Check the Pub/Sub docs for how to set up this role and the
+	// required permissions that need to be attached to it.
+	AwsRoleArn pulumi.StringInput `pulumi:"awsRoleArn"`
+	// ARN that uniquely identifies the MSK cluster.
+	ClusterArn pulumi.StringInput `pulumi:"clusterArn"`
+	// The GCP service account to be used for Federated Identity authentication
+	// with MSK (via a 'AssumeRoleWithWebIdentity' call for the provided
+	// role). The 'awsRoleArn' must be set up with 'accounts.google.com:sub'
+	// equals to this service account number.
+	GcpServiceAccount pulumi.StringInput `pulumi:"gcpServiceAccount"`
+	// The name of the MSK topic that Pub/Sub will import from.
+	Topic pulumi.StringInput `pulumi:"topic"`
+}
+
+func (GetTopicIngestionDataSourceSettingAwsMskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicIngestionDataSourceSettingAwsMsk)(nil)).Elem()
+}
+
+func (i GetTopicIngestionDataSourceSettingAwsMskArgs) ToGetTopicIngestionDataSourceSettingAwsMskOutput() GetTopicIngestionDataSourceSettingAwsMskOutput {
+	return i.ToGetTopicIngestionDataSourceSettingAwsMskOutputWithContext(context.Background())
+}
+
+func (i GetTopicIngestionDataSourceSettingAwsMskArgs) ToGetTopicIngestionDataSourceSettingAwsMskOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingAwsMskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicIngestionDataSourceSettingAwsMskOutput)
+}
+
+// GetTopicIngestionDataSourceSettingAwsMskArrayInput is an input type that accepts GetTopicIngestionDataSourceSettingAwsMskArray and GetTopicIngestionDataSourceSettingAwsMskArrayOutput values.
+// You can construct a concrete instance of `GetTopicIngestionDataSourceSettingAwsMskArrayInput` via:
+//
+//	GetTopicIngestionDataSourceSettingAwsMskArray{ GetTopicIngestionDataSourceSettingAwsMskArgs{...} }
+type GetTopicIngestionDataSourceSettingAwsMskArrayInput interface {
+	pulumi.Input
+
+	ToGetTopicIngestionDataSourceSettingAwsMskArrayOutput() GetTopicIngestionDataSourceSettingAwsMskArrayOutput
+	ToGetTopicIngestionDataSourceSettingAwsMskArrayOutputWithContext(context.Context) GetTopicIngestionDataSourceSettingAwsMskArrayOutput
+}
+
+type GetTopicIngestionDataSourceSettingAwsMskArray []GetTopicIngestionDataSourceSettingAwsMskInput
+
+func (GetTopicIngestionDataSourceSettingAwsMskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicIngestionDataSourceSettingAwsMsk)(nil)).Elem()
+}
+
+func (i GetTopicIngestionDataSourceSettingAwsMskArray) ToGetTopicIngestionDataSourceSettingAwsMskArrayOutput() GetTopicIngestionDataSourceSettingAwsMskArrayOutput {
+	return i.ToGetTopicIngestionDataSourceSettingAwsMskArrayOutputWithContext(context.Background())
+}
+
+func (i GetTopicIngestionDataSourceSettingAwsMskArray) ToGetTopicIngestionDataSourceSettingAwsMskArrayOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingAwsMskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicIngestionDataSourceSettingAwsMskArrayOutput)
+}
+
+type GetTopicIngestionDataSourceSettingAwsMskOutput struct{ *pulumi.OutputState }
+
+func (GetTopicIngestionDataSourceSettingAwsMskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicIngestionDataSourceSettingAwsMsk)(nil)).Elem()
+}
+
+func (o GetTopicIngestionDataSourceSettingAwsMskOutput) ToGetTopicIngestionDataSourceSettingAwsMskOutput() GetTopicIngestionDataSourceSettingAwsMskOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingAwsMskOutput) ToGetTopicIngestionDataSourceSettingAwsMskOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingAwsMskOutput {
+	return o
+}
+
+// AWS role ARN to be used for Federated Identity authentication with
+// MSK. Check the Pub/Sub docs for how to set up this role and the
+// required permissions that need to be attached to it.
+func (o GetTopicIngestionDataSourceSettingAwsMskOutput) AwsRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingAwsMsk) string { return v.AwsRoleArn }).(pulumi.StringOutput)
+}
+
+// ARN that uniquely identifies the MSK cluster.
+func (o GetTopicIngestionDataSourceSettingAwsMskOutput) ClusterArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingAwsMsk) string { return v.ClusterArn }).(pulumi.StringOutput)
+}
+
+// The GCP service account to be used for Federated Identity authentication
+// with MSK (via a 'AssumeRoleWithWebIdentity' call for the provided
+// role). The 'awsRoleArn' must be set up with 'accounts.google.com:sub'
+// equals to this service account number.
+func (o GetTopicIngestionDataSourceSettingAwsMskOutput) GcpServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingAwsMsk) string { return v.GcpServiceAccount }).(pulumi.StringOutput)
+}
+
+// The name of the MSK topic that Pub/Sub will import from.
+func (o GetTopicIngestionDataSourceSettingAwsMskOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingAwsMsk) string { return v.Topic }).(pulumi.StringOutput)
+}
+
+type GetTopicIngestionDataSourceSettingAwsMskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTopicIngestionDataSourceSettingAwsMskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicIngestionDataSourceSettingAwsMsk)(nil)).Elem()
+}
+
+func (o GetTopicIngestionDataSourceSettingAwsMskArrayOutput) ToGetTopicIngestionDataSourceSettingAwsMskArrayOutput() GetTopicIngestionDataSourceSettingAwsMskArrayOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingAwsMskArrayOutput) ToGetTopicIngestionDataSourceSettingAwsMskArrayOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingAwsMskArrayOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingAwsMskArrayOutput) Index(i pulumi.IntInput) GetTopicIngestionDataSourceSettingAwsMskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTopicIngestionDataSourceSettingAwsMsk {
+		return vs[0].([]GetTopicIngestionDataSourceSettingAwsMsk)[vs[1].(int)]
+	}).(GetTopicIngestionDataSourceSettingAwsMskOutput)
 }
 
 type GetTopicIngestionDataSourceSettingAzureEventHub struct {
@@ -7741,6 +8381,142 @@ func (o GetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayOutput) Ind
 	}).(GetTopicIngestionDataSourceSettingCloudStorageTextFormatOutput)
 }
 
+type GetTopicIngestionDataSourceSettingConfluentCloud struct {
+	// The Confluent Cloud bootstrap server. The format is url:port.
+	BootstrapServer string `pulumi:"bootstrapServer"`
+	// The Confluent Cloud cluster ID.
+	ClusterId string `pulumi:"clusterId"`
+	// The GCP service account to be used for Federated Identity authentication
+	// with Confluent Cloud.
+	GcpServiceAccount string `pulumi:"gcpServiceAccount"`
+	// Identity pool ID to be used for Federated Identity authentication with Confluent Cloud.
+	IdentityPoolId string `pulumi:"identityPoolId"`
+	// Name of the Confluent Cloud topic that Pub/Sub will import from.
+	Topic string `pulumi:"topic"`
+}
+
+// GetTopicIngestionDataSourceSettingConfluentCloudInput is an input type that accepts GetTopicIngestionDataSourceSettingConfluentCloudArgs and GetTopicIngestionDataSourceSettingConfluentCloudOutput values.
+// You can construct a concrete instance of `GetTopicIngestionDataSourceSettingConfluentCloudInput` via:
+//
+//	GetTopicIngestionDataSourceSettingConfluentCloudArgs{...}
+type GetTopicIngestionDataSourceSettingConfluentCloudInput interface {
+	pulumi.Input
+
+	ToGetTopicIngestionDataSourceSettingConfluentCloudOutput() GetTopicIngestionDataSourceSettingConfluentCloudOutput
+	ToGetTopicIngestionDataSourceSettingConfluentCloudOutputWithContext(context.Context) GetTopicIngestionDataSourceSettingConfluentCloudOutput
+}
+
+type GetTopicIngestionDataSourceSettingConfluentCloudArgs struct {
+	// The Confluent Cloud bootstrap server. The format is url:port.
+	BootstrapServer pulumi.StringInput `pulumi:"bootstrapServer"`
+	// The Confluent Cloud cluster ID.
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The GCP service account to be used for Federated Identity authentication
+	// with Confluent Cloud.
+	GcpServiceAccount pulumi.StringInput `pulumi:"gcpServiceAccount"`
+	// Identity pool ID to be used for Federated Identity authentication with Confluent Cloud.
+	IdentityPoolId pulumi.StringInput `pulumi:"identityPoolId"`
+	// Name of the Confluent Cloud topic that Pub/Sub will import from.
+	Topic pulumi.StringInput `pulumi:"topic"`
+}
+
+func (GetTopicIngestionDataSourceSettingConfluentCloudArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicIngestionDataSourceSettingConfluentCloud)(nil)).Elem()
+}
+
+func (i GetTopicIngestionDataSourceSettingConfluentCloudArgs) ToGetTopicIngestionDataSourceSettingConfluentCloudOutput() GetTopicIngestionDataSourceSettingConfluentCloudOutput {
+	return i.ToGetTopicIngestionDataSourceSettingConfluentCloudOutputWithContext(context.Background())
+}
+
+func (i GetTopicIngestionDataSourceSettingConfluentCloudArgs) ToGetTopicIngestionDataSourceSettingConfluentCloudOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingConfluentCloudOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicIngestionDataSourceSettingConfluentCloudOutput)
+}
+
+// GetTopicIngestionDataSourceSettingConfluentCloudArrayInput is an input type that accepts GetTopicIngestionDataSourceSettingConfluentCloudArray and GetTopicIngestionDataSourceSettingConfluentCloudArrayOutput values.
+// You can construct a concrete instance of `GetTopicIngestionDataSourceSettingConfluentCloudArrayInput` via:
+//
+//	GetTopicIngestionDataSourceSettingConfluentCloudArray{ GetTopicIngestionDataSourceSettingConfluentCloudArgs{...} }
+type GetTopicIngestionDataSourceSettingConfluentCloudArrayInput interface {
+	pulumi.Input
+
+	ToGetTopicIngestionDataSourceSettingConfluentCloudArrayOutput() GetTopicIngestionDataSourceSettingConfluentCloudArrayOutput
+	ToGetTopicIngestionDataSourceSettingConfluentCloudArrayOutputWithContext(context.Context) GetTopicIngestionDataSourceSettingConfluentCloudArrayOutput
+}
+
+type GetTopicIngestionDataSourceSettingConfluentCloudArray []GetTopicIngestionDataSourceSettingConfluentCloudInput
+
+func (GetTopicIngestionDataSourceSettingConfluentCloudArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicIngestionDataSourceSettingConfluentCloud)(nil)).Elem()
+}
+
+func (i GetTopicIngestionDataSourceSettingConfluentCloudArray) ToGetTopicIngestionDataSourceSettingConfluentCloudArrayOutput() GetTopicIngestionDataSourceSettingConfluentCloudArrayOutput {
+	return i.ToGetTopicIngestionDataSourceSettingConfluentCloudArrayOutputWithContext(context.Background())
+}
+
+func (i GetTopicIngestionDataSourceSettingConfluentCloudArray) ToGetTopicIngestionDataSourceSettingConfluentCloudArrayOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingConfluentCloudArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicIngestionDataSourceSettingConfluentCloudArrayOutput)
+}
+
+type GetTopicIngestionDataSourceSettingConfluentCloudOutput struct{ *pulumi.OutputState }
+
+func (GetTopicIngestionDataSourceSettingConfluentCloudOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicIngestionDataSourceSettingConfluentCloud)(nil)).Elem()
+}
+
+func (o GetTopicIngestionDataSourceSettingConfluentCloudOutput) ToGetTopicIngestionDataSourceSettingConfluentCloudOutput() GetTopicIngestionDataSourceSettingConfluentCloudOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingConfluentCloudOutput) ToGetTopicIngestionDataSourceSettingConfluentCloudOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingConfluentCloudOutput {
+	return o
+}
+
+// The Confluent Cloud bootstrap server. The format is url:port.
+func (o GetTopicIngestionDataSourceSettingConfluentCloudOutput) BootstrapServer() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingConfluentCloud) string { return v.BootstrapServer }).(pulumi.StringOutput)
+}
+
+// The Confluent Cloud cluster ID.
+func (o GetTopicIngestionDataSourceSettingConfluentCloudOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingConfluentCloud) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The GCP service account to be used for Federated Identity authentication
+// with Confluent Cloud.
+func (o GetTopicIngestionDataSourceSettingConfluentCloudOutput) GcpServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingConfluentCloud) string { return v.GcpServiceAccount }).(pulumi.StringOutput)
+}
+
+// Identity pool ID to be used for Federated Identity authentication with Confluent Cloud.
+func (o GetTopicIngestionDataSourceSettingConfluentCloudOutput) IdentityPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingConfluentCloud) string { return v.IdentityPoolId }).(pulumi.StringOutput)
+}
+
+// Name of the Confluent Cloud topic that Pub/Sub will import from.
+func (o GetTopicIngestionDataSourceSettingConfluentCloudOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingConfluentCloud) string { return v.Topic }).(pulumi.StringOutput)
+}
+
+type GetTopicIngestionDataSourceSettingConfluentCloudArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTopicIngestionDataSourceSettingConfluentCloudArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicIngestionDataSourceSettingConfluentCloud)(nil)).Elem()
+}
+
+func (o GetTopicIngestionDataSourceSettingConfluentCloudArrayOutput) ToGetTopicIngestionDataSourceSettingConfluentCloudArrayOutput() GetTopicIngestionDataSourceSettingConfluentCloudArrayOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingConfluentCloudArrayOutput) ToGetTopicIngestionDataSourceSettingConfluentCloudArrayOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingConfluentCloudArrayOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingConfluentCloudArrayOutput) Index(i pulumi.IntInput) GetTopicIngestionDataSourceSettingConfluentCloudOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTopicIngestionDataSourceSettingConfluentCloud {
+		return vs[0].([]GetTopicIngestionDataSourceSettingConfluentCloud)[vs[1].(int)]
+	}).(GetTopicIngestionDataSourceSettingConfluentCloudOutput)
+}
+
 type GetTopicIngestionDataSourceSettingPlatformLogsSetting struct {
 	// The minimum severity level of Platform Logs that will be written. If unspecified,
 	// no Platform Logs will be written. Default value: "SEVERITY_UNSPECIFIED" Possible values: ["SEVERITY_UNSPECIFIED", "DISABLED", "DEBUG", "INFO", "WARNING", "ERROR"]
@@ -8131,6 +8907,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsPtrInput)(nil)).Elem(), TopicIngestionDataSourceSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsAwsKinesisInput)(nil)).Elem(), TopicIngestionDataSourceSettingsAwsKinesisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsAwsKinesisPtrInput)(nil)).Elem(), TopicIngestionDataSourceSettingsAwsKinesisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsAwsMskInput)(nil)).Elem(), TopicIngestionDataSourceSettingsAwsMskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsAwsMskPtrInput)(nil)).Elem(), TopicIngestionDataSourceSettingsAwsMskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsAzureEventHubsInput)(nil)).Elem(), TopicIngestionDataSourceSettingsAzureEventHubsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsAzureEventHubsPtrInput)(nil)).Elem(), TopicIngestionDataSourceSettingsAzureEventHubsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsCloudStorageInput)(nil)).Elem(), TopicIngestionDataSourceSettingsCloudStorageArgs{})
@@ -8141,6 +8919,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrInput)(nil)).Elem(), TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsCloudStorageTextFormatInput)(nil)).Elem(), TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrInput)(nil)).Elem(), TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsConfluentCloudInput)(nil)).Elem(), TopicIngestionDataSourceSettingsConfluentCloudArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsConfluentCloudPtrInput)(nil)).Elem(), TopicIngestionDataSourceSettingsConfluentCloudArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsPlatformLogsSettingsInput)(nil)).Elem(), TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrInput)(nil)).Elem(), TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicMessageStoragePolicyInput)(nil)).Elem(), TopicMessageStoragePolicyArgs{})
@@ -8169,6 +8949,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingArrayInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingAwsKineseInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingAwsKineseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingAwsKineseArrayInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingAwsKineseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingAwsMskInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingAwsMskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingAwsMskArrayInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingAwsMskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingAzureEventHubInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingAzureEventHubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingAzureEventHubArrayInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingAzureEventHubArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingCloudStorageInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingCloudStorageArgs{})
@@ -8179,6 +8961,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingCloudStorageTextFormatInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingCloudStorageTextFormatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingCloudStorageTextFormatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingConfluentCloudInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingConfluentCloudArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingConfluentCloudArrayInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingConfluentCloudArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingPlatformLogsSettingInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingPlatformLogsSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingPlatformLogsSettingArrayInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingPlatformLogsSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicMessageStoragePolicyInput)(nil)).Elem(), GetTopicMessageStoragePolicyArgs{})
@@ -8229,6 +9013,8 @@ func init() {
 	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsPtrOutput{})
 	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsAwsKinesisOutput{})
 	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsAwsKinesisPtrOutput{})
+	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsAwsMskOutput{})
+	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsAwsMskPtrOutput{})
 	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsAzureEventHubsOutput{})
 	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput{})
 	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsCloudStorageOutput{})
@@ -8239,6 +9025,8 @@ func init() {
 	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput{})
 	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsCloudStorageTextFormatOutput{})
 	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput{})
+	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsConfluentCloudOutput{})
+	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsConfluentCloudPtrOutput{})
 	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsPlatformLogsSettingsOutput{})
 	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput{})
 	pulumi.RegisterOutputType(TopicMessageStoragePolicyOutput{})
@@ -8267,6 +9055,8 @@ func init() {
 	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingArrayOutput{})
 	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingAwsKineseOutput{})
 	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingAwsKineseArrayOutput{})
+	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingAwsMskOutput{})
+	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingAwsMskArrayOutput{})
 	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingAzureEventHubOutput{})
 	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingAzureEventHubArrayOutput{})
 	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingCloudStorageOutput{})
@@ -8277,6 +9067,8 @@ func init() {
 	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayOutput{})
 	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingCloudStorageTextFormatOutput{})
 	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayOutput{})
+	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingConfluentCloudOutput{})
+	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingConfluentCloudArrayOutput{})
 	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingPlatformLogsSettingOutput{})
 	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingPlatformLogsSettingArrayOutput{})
 	pulumi.RegisterOutputType(GetTopicMessageStoragePolicyOutput{})

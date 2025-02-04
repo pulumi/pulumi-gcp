@@ -669,15 +669,15 @@ class Spoke(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         network = gcp.compute.Network("network",
-            name="tf-test-network_37559",
+            name="tf-test-network_91980",
             auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
-            name="tf-test-subnet_91980",
+            name="tf-test-subnet_37118",
             ip_cidr_range="10.0.0.0/28",
             region="us-central1",
             network=network.self_link)
         instance = gcp.compute.Instance("instance",
-            name="tf-test-instance_37118",
+            name="tf-test-instance_80332",
             machine_type="e2-medium",
             can_ip_forward=True,
             zone="us-central1-a",
@@ -694,13 +694,13 @@ class Spoke(pulumi.CustomResource):
                 }],
             }])
         basic_hub = gcp.networkconnectivity.Hub("basic_hub",
-            name="tf-test-hub_80332",
+            name="tf-test-hub_13293",
             description="A sample hub",
             labels={
                 "label-two": "value-one",
             })
         primary = gcp.networkconnectivity.Spoke("primary",
-            name="tf-test-name_13293",
+            name="tf-test-name_40289",
             location="us-central1",
             description="A sample spoke with a linked routher appliance instance",
             labels={
@@ -932,8 +932,8 @@ class Spoke(pulumi.CustomResource):
             hub=star_hub.id,
             auto_accept={
                 "auto_accept_projects": [
-                    "foo_40289",
-                    "bar_33395",
+                    "foo_33395",
+                    "bar_76044",
                 ],
             })
         primary = gcp.networkconnectivity.Spoke("primary",
@@ -946,6 +946,37 @@ class Spoke(pulumi.CustomResource):
             hub=star_hub.id,
             group=center_group.id,
             linked_vpc_network={
+                "uri": network.self_link,
+            })
+        ```
+        ### Network Connectivity Spoke Linked Vpc Network Ipv6 Support
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network",
+            name="net",
+            auto_create_subnetworks=False)
+        basic_hub = gcp.networkconnectivity.Hub("basic_hub",
+            name="hub1",
+            description="A sample hub",
+            labels={
+                "label-two": "value-one",
+            })
+        primary = gcp.networkconnectivity.Spoke("primary",
+            name="spoke1-ipv6",
+            location="global",
+            description="A sample spoke with a linked VPC that include export ranges of all IPv6",
+            labels={
+                "label-one": "value-one",
+            },
+            hub=basic_hub.id,
+            linked_vpc_network={
+                "include_export_ranges": [
+                    "ALL_IPV6_RANGES",
+                    "ALL_PRIVATE_IPV4_RANGES",
+                ],
                 "uri": network.self_link,
             })
         ```
@@ -1099,15 +1130,15 @@ class Spoke(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         network = gcp.compute.Network("network",
-            name="tf-test-network_37559",
+            name="tf-test-network_91980",
             auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
-            name="tf-test-subnet_91980",
+            name="tf-test-subnet_37118",
             ip_cidr_range="10.0.0.0/28",
             region="us-central1",
             network=network.self_link)
         instance = gcp.compute.Instance("instance",
-            name="tf-test-instance_37118",
+            name="tf-test-instance_80332",
             machine_type="e2-medium",
             can_ip_forward=True,
             zone="us-central1-a",
@@ -1124,13 +1155,13 @@ class Spoke(pulumi.CustomResource):
                 }],
             }])
         basic_hub = gcp.networkconnectivity.Hub("basic_hub",
-            name="tf-test-hub_80332",
+            name="tf-test-hub_13293",
             description="A sample hub",
             labels={
                 "label-two": "value-one",
             })
         primary = gcp.networkconnectivity.Spoke("primary",
-            name="tf-test-name_13293",
+            name="tf-test-name_40289",
             location="us-central1",
             description="A sample spoke with a linked routher appliance instance",
             labels={
@@ -1362,8 +1393,8 @@ class Spoke(pulumi.CustomResource):
             hub=star_hub.id,
             auto_accept={
                 "auto_accept_projects": [
-                    "foo_40289",
-                    "bar_33395",
+                    "foo_33395",
+                    "bar_76044",
                 ],
             })
         primary = gcp.networkconnectivity.Spoke("primary",
@@ -1376,6 +1407,37 @@ class Spoke(pulumi.CustomResource):
             hub=star_hub.id,
             group=center_group.id,
             linked_vpc_network={
+                "uri": network.self_link,
+            })
+        ```
+        ### Network Connectivity Spoke Linked Vpc Network Ipv6 Support
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network",
+            name="net",
+            auto_create_subnetworks=False)
+        basic_hub = gcp.networkconnectivity.Hub("basic_hub",
+            name="hub1",
+            description="A sample hub",
+            labels={
+                "label-two": "value-one",
+            })
+        primary = gcp.networkconnectivity.Spoke("primary",
+            name="spoke1-ipv6",
+            location="global",
+            description="A sample spoke with a linked VPC that include export ranges of all IPv6",
+            labels={
+                "label-one": "value-one",
+            },
+            hub=basic_hub.id,
+            linked_vpc_network={
+                "include_export_ranges": [
+                    "ALL_IPV6_RANGES",
+                    "ALL_PRIVATE_IPV4_RANGES",
+                ],
                 "uri": network.self_link,
             })
         ```

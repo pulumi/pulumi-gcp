@@ -193,7 +193,7 @@ export class StoragePool extends pulumi.CustomResource {
      * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
      * If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
      */
-    public readonly zone!: pulumi.Output<string | undefined>;
+    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a StoragePool resource with the given unique name, arguments, and options.

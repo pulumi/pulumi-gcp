@@ -131,6 +131,8 @@ type WorkflowTemplate struct {
 	// the cluster is deleted.
 	DagTimeout      pulumi.StringPtrOutput `pulumi:"dagTimeout"`
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// Optional. The encryption configuration for the workflow template.
+	EncryptionConfig WorkflowTemplateEncryptionConfigPtrOutput `pulumi:"encryptionConfig"`
 	// Required. The Directed Acyclic Graph of Jobs to submit.
 	Jobs WorkflowTemplateJobArrayOutput `pulumi:"jobs"`
 	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
@@ -216,6 +218,8 @@ type workflowTemplateState struct {
 	// the cluster is deleted.
 	DagTimeout      *string           `pulumi:"dagTimeout"`
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// Optional. The encryption configuration for the workflow template.
+	EncryptionConfig *WorkflowTemplateEncryptionConfig `pulumi:"encryptionConfig"`
 	// Required. The Directed Acyclic Graph of Jobs to submit.
 	Jobs []WorkflowTemplateJob `pulumi:"jobs"`
 	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
@@ -258,6 +262,8 @@ type WorkflowTemplateState struct {
 	// the cluster is deleted.
 	DagTimeout      pulumi.StringPtrInput
 	EffectiveLabels pulumi.StringMapInput
+	// Optional. The encryption configuration for the workflow template.
+	EncryptionConfig WorkflowTemplateEncryptionConfigPtrInput
 	// Required. The Directed Acyclic Graph of Jobs to submit.
 	Jobs WorkflowTemplateJobArrayInput
 	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
@@ -301,6 +307,8 @@ type workflowTemplateArgs struct {
 	// cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
 	// the cluster is deleted.
 	DagTimeout *string `pulumi:"dagTimeout"`
+	// Optional. The encryption configuration for the workflow template.
+	EncryptionConfig *WorkflowTemplateEncryptionConfig `pulumi:"encryptionConfig"`
 	// Required. The Directed Acyclic Graph of Jobs to submit.
 	Jobs []WorkflowTemplateJob `pulumi:"jobs"`
 	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
@@ -337,6 +345,8 @@ type WorkflowTemplateArgs struct {
 	// cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
 	// the cluster is deleted.
 	DagTimeout pulumi.StringPtrInput
+	// Optional. The encryption configuration for the workflow template.
+	EncryptionConfig WorkflowTemplateEncryptionConfigPtrInput
 	// Required. The Directed Acyclic Graph of Jobs to submit.
 	Jobs WorkflowTemplateJobArrayInput
 	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
@@ -468,6 +478,11 @@ func (o WorkflowTemplateOutput) DagTimeout() pulumi.StringPtrOutput {
 
 func (o WorkflowTemplateOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkflowTemplate) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// Optional. The encryption configuration for the workflow template.
+func (o WorkflowTemplateOutput) EncryptionConfig() WorkflowTemplateEncryptionConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplate) WorkflowTemplateEncryptionConfigPtrOutput { return v.EncryptionConfig }).(WorkflowTemplateEncryptionConfigPtrOutput)
 }
 
 // Required. The Directed Acyclic Graph of Jobs to submit.

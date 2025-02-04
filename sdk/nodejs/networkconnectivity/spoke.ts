@@ -106,17 +106,17 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const network = new gcp.compute.Network("network", {
- *     name: "tf-test-network_37559",
+ *     name: "tf-test-network_91980",
  *     autoCreateSubnetworks: false,
  * });
  * const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
- *     name: "tf-test-subnet_91980",
+ *     name: "tf-test-subnet_37118",
  *     ipCidrRange: "10.0.0.0/28",
  *     region: "us-central1",
  *     network: network.selfLink,
  * });
  * const instance = new gcp.compute.Instance("instance", {
- *     name: "tf-test-instance_37118",
+ *     name: "tf-test-instance_80332",
  *     machineType: "e2-medium",
  *     canIpForward: true,
  *     zone: "us-central1-a",
@@ -134,14 +134,14 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const basicHub = new gcp.networkconnectivity.Hub("basic_hub", {
- *     name: "tf-test-hub_80332",
+ *     name: "tf-test-hub_13293",
  *     description: "A sample hub",
  *     labels: {
  *         "label-two": "value-one",
  *     },
  * });
  * const primary = new gcp.networkconnectivity.Spoke("primary", {
- *     name: "tf-test-name_13293",
+ *     name: "tf-test-name_40289",
  *     location: "us-central1",
  *     description: "A sample spoke with a linked routher appliance instance",
  *     labels: {
@@ -401,8 +401,8 @@ import * as utilities from "../utilities";
  *     hub: starHub.id,
  *     autoAccept: {
  *         autoAcceptProjects: [
- *             "foo_40289",
- *             "bar_33395",
+ *             "foo_33395",
+ *             "bar_76044",
  *         ],
  *     },
  * });
@@ -416,6 +416,40 @@ import * as utilities from "../utilities";
  *     hub: starHub.id,
  *     group: centerGroup.id,
  *     linkedVpcNetwork: {
+ *         uri: network.selfLink,
+ *     },
+ * });
+ * ```
+ * ### Network Connectivity Spoke Linked Vpc Network Ipv6 Support
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const network = new gcp.compute.Network("network", {
+ *     name: "net",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const basicHub = new gcp.networkconnectivity.Hub("basic_hub", {
+ *     name: "hub1",
+ *     description: "A sample hub",
+ *     labels: {
+ *         "label-two": "value-one",
+ *     },
+ * });
+ * const primary = new gcp.networkconnectivity.Spoke("primary", {
+ *     name: "spoke1-ipv6",
+ *     location: "global",
+ *     description: "A sample spoke with a linked VPC that include export ranges of all IPv6",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ *     hub: basicHub.id,
+ *     linkedVpcNetwork: {
+ *         includeExportRanges: [
+ *             "ALL_IPV6_RANGES",
+ *             "ALL_PRIVATE_IPV4_RANGES",
+ *         ],
  *         uri: network.selfLink,
  *     },
  * });

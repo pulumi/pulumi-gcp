@@ -168,7 +168,7 @@ type StoragePool struct {
 	// Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
 	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
 	// If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
-	Zone pulumi.StringPtrOutput `pulumi:"zone"`
+	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
 // NewStoragePool registers a new resource with the given unique name, arguments, and options.
@@ -617,8 +617,8 @@ func (o StoragePoolOutput) VolumeCount() pulumi.IntOutput {
 // Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
 // [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
 // If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
-func (o StoragePoolOutput) Zone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StoragePool) pulumi.StringPtrOutput { return v.Zone }).(pulumi.StringPtrOutput)
+func (o StoragePoolOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }
 
 type StoragePoolArrayOutput struct{ *pulumi.OutputState }

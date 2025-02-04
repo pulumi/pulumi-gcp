@@ -6068,6 +6068,30 @@ export namespace beyondcorp {
         assignedIps: string[];
     }
 
+    export interface SecurityGatewayIamBindingCondition {
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: string;
+    }
+
+    export interface SecurityGatewayIamMemberCondition {
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: string;
+    }
+
 }
 
 export namespace biglake {
@@ -7960,6 +7984,13 @@ export namespace bigquery {
          * Start of the range partitioning, inclusive.
          */
         start: number;
+    }
+
+    export interface TableSchemaForeignTypeInfo {
+        /**
+         * Specifies the system which defines the foreign data type.
+         */
+        typeSystem: string;
     }
 
     export interface TableTableConstraints {
@@ -30352,7 +30383,7 @@ export namespace compute {
          */
         networkIp: string;
         /**
-         * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF. In the beta provider the additional values of MRDMA and IRDMA are supported.
+         * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF, MRDMA, IRDMA.
          */
         nicType?: string;
         /**
@@ -30959,7 +30990,7 @@ export namespace compute {
          */
         networkIp?: string;
         /**
-         * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET. In the beta provider the additional values of MRDMA and IRDMA are supported.
+         * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA.
          */
         nicType?: string;
         /**
@@ -34130,7 +34161,7 @@ export namespace compute {
          */
         networkIp?: string;
         /**
-         * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET. In the beta provider the additional values of MRDMA and IRDMA are supported.
+         * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA.
          */
         nicType?: string;
         /**
@@ -42707,7 +42738,7 @@ export namespace container {
         /**
          * Maximum amount of the resource in the cluster.
          */
-        maximum?: number;
+        maximum: number;
         /**
          * Minimum amount of the resource in the cluster.
          */
@@ -43280,6 +43311,10 @@ export namespace container {
          * [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
          */
         machineType: string;
+        /**
+         * The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+         */
+        maxRunDuration?: string;
         /**
          * The metadata key/value pairs assigned to instances in
          * the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
@@ -44168,6 +44203,10 @@ export namespace container {
          * [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
          */
         machineType: string;
+        /**
+         * The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+         */
+        maxRunDuration?: string;
         /**
          * The metadata key/value pairs assigned to instances in
          * the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
@@ -45686,6 +45725,10 @@ export namespace container {
          */
         machineType: string;
         /**
+         * The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+         */
+        maxRunDuration: string;
+        /**
          * The metadata key/value pairs assigned to instances in the cluster.
          */
         metadata: {[key: string]: string};
@@ -46431,6 +46474,10 @@ export namespace container {
          * The name of a Google Compute Engine machine type.
          */
         machineType: string;
+        /**
+         * The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+         */
+        maxRunDuration: string;
         /**
          * The metadata key/value pairs assigned to instances in the cluster.
          */
@@ -47312,6 +47359,10 @@ export namespace container {
          * The name of a Google Compute Engine machine type.
          */
         machineType: string;
+        /**
+         * The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+         */
+        maxRunDuration?: string;
         /**
          * The metadata key/value pairs assigned to instances in the cluster.
          */
@@ -58235,6 +58286,13 @@ export namespace dataproc {
         logFormat?: string;
     }
 
+    export interface WorkflowTemplateEncryptionConfig {
+        /**
+         * Optional. The Cloud KMS key name to use for encryption.
+         */
+        kmsKey?: string;
+    }
+
     export interface WorkflowTemplateJob {
         /**
          * Job is a Hadoop job.
@@ -66631,6 +66689,10 @@ export namespace gkehub {
          */
         git?: outputs.gkehub.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit;
         /**
+         * The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+         */
+        metricsGcpServiceAccountEmail?: string;
+        /**
          * OCI repo configuration for the cluster
          * Structure is documented below.
          */
@@ -67532,6 +67594,10 @@ export namespace gkehub {
          * Git repo configuration for the cluster
          */
         gits: outputs.gkehub.GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit[];
+        /**
+         * The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount 'default' in the namespace 'config-management-monitoring' should be bound to the GSA.
+         */
+        metricsGcpServiceAccountEmail: string;
         /**
          * OCI repo configuration for the cluster
          */
@@ -85663,6 +85729,63 @@ export namespace parametermanager {
         iamPolicyUidPrincipal: string;
     }
 
+    export interface GetParametersParameter {
+        /**
+         * The time at which the parameter was created.
+         */
+        createTime: string;
+        effectiveLabels: {[key: string]: string};
+        /**
+         * The format type of the parameter.
+         */
+        format: string;
+        /**
+         * The labels assigned to the parameter.
+         */
+        labels: {[key: string]: string};
+        /**
+         * The resource name of the parameter. Format: `projects/{{project}}/locations/global/parameters/{{parameter_id}}`
+         */
+        name: string;
+        /**
+         * The unique name of the resource.
+         */
+        parameterId: string;
+        /**
+         * An object containing a unique resource identity tied to the parameter. Structure is documented below.
+         */
+        policyMembers: outputs.parametermanager.GetParametersParameterPolicyMember[];
+        /**
+         * The ID of the project.
+         */
+        project: string;
+        /**
+         * The combination of labels configured directly on the resource
+         *  and default labels configured on the provider.
+         */
+        pulumiLabels: {[key: string]: string};
+        /**
+         * The time at which the parameter was updated.
+         */
+        updateTime: string;
+    }
+
+    export interface GetParametersParameterPolicyMember {
+        /**
+         * AM policy binding member referring to a Google Cloud resource by user-assigned name. If a resource is deleted and recreated with the same name, the binding will be applicable to the
+         * new resource. Format:
+         * `principal://parametermanager.googleapis.com/projects/{{project}}/name/locations/global/parameters/{{parameter_id}}`
+         */
+        iamPolicyNamePrincipal: string;
+        /**
+         * IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+         * If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+         * new resource. Format:
+         * `principal://parametermanager.googleapis.com/projects/{{project}}/uid/locations/global/parameters/{{uid}}`
+         */
+        iamPolicyUidPrincipal: string;
+    }
+
     export interface GetRegionalParameterPolicyMember {
         /**
          * IAM policy binding member referring to a Google Cloud resource by user-assigned name. If a resource is
@@ -86550,6 +86673,10 @@ export namespace pubsub {
          */
         awsKineses: outputs.pubsub.GetTopicIngestionDataSourceSettingAwsKinese[];
         /**
+         * Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
+         */
+        awsMsks: outputs.pubsub.GetTopicIngestionDataSourceSettingAwsMsk[];
+        /**
          * Settings for ingestion from Azure Event Hubs.
          */
         azureEventHubs: outputs.pubsub.GetTopicIngestionDataSourceSettingAzureEventHub[];
@@ -86557,6 +86684,10 @@ export namespace pubsub {
          * Settings for ingestion from Cloud Storage.
          */
         cloudStorages: outputs.pubsub.GetTopicIngestionDataSourceSettingCloudStorage[];
+        /**
+         * Settings for ingestion from Confluent Cloud.
+         */
+        confluentClouds: outputs.pubsub.GetTopicIngestionDataSourceSettingConfluentCloud[];
         /**
          * Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
          * no Platform Logs will be generated.'
@@ -86588,6 +86719,30 @@ export namespace pubsub {
          * The Kinesis stream ARN to ingest data from.
          */
         streamArn: string;
+    }
+
+    export interface GetTopicIngestionDataSourceSettingAwsMsk {
+        /**
+         * AWS role ARN to be used for Federated Identity authentication with
+         * MSK. Check the Pub/Sub docs for how to set up this role and the
+         * required permissions that need to be attached to it.
+         */
+        awsRoleArn: string;
+        /**
+         * ARN that uniquely identifies the MSK cluster.
+         */
+        clusterArn: string;
+        /**
+         * The GCP service account to be used for Federated Identity authentication
+         * with MSK (via a 'AssumeRoleWithWebIdentity' call for the provided
+         * role). The 'awsRoleArn' must be set up with 'accounts.google.com:sub'
+         * equals to this service account number.
+         */
+        gcpServiceAccount: string;
+        /**
+         * The name of the MSK topic that Pub/Sub will import from.
+         */
+        topic: string;
     }
 
     export interface GetTopicIngestionDataSourceSettingAzureEventHub {
@@ -86675,6 +86830,30 @@ export namespace pubsub {
          * message. When unset, '\n' is used.
          */
         delimiter: string;
+    }
+
+    export interface GetTopicIngestionDataSourceSettingConfluentCloud {
+        /**
+         * The Confluent Cloud bootstrap server. The format is url:port.
+         */
+        bootstrapServer: string;
+        /**
+         * The Confluent Cloud cluster ID.
+         */
+        clusterId: string;
+        /**
+         * The GCP service account to be used for Federated Identity authentication
+         * with Confluent Cloud.
+         */
+        gcpServiceAccount: string;
+        /**
+         * Identity pool ID to be used for Federated Identity authentication with Confluent Cloud.
+         */
+        identityPoolId: string;
+        /**
+         * Name of the Confluent Cloud topic that Pub/Sub will import from.
+         */
+        topic: string;
     }
 
     export interface GetTopicIngestionDataSourceSettingPlatformLogsSetting {
@@ -87030,6 +87209,11 @@ export namespace pubsub {
          */
         awsKinesis?: outputs.pubsub.TopicIngestionDataSourceSettingsAwsKinesis;
         /**
+         * Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
+         * Structure is documented below.
+         */
+        awsMsk?: outputs.pubsub.TopicIngestionDataSourceSettingsAwsMsk;
+        /**
          * Settings for ingestion from Azure Event Hubs.
          * Structure is documented below.
          */
@@ -87039,6 +87223,11 @@ export namespace pubsub {
          * Structure is documented below.
          */
         cloudStorage?: outputs.pubsub.TopicIngestionDataSourceSettingsCloudStorage;
+        /**
+         * Settings for ingestion from Confluent Cloud.
+         * Structure is documented below.
+         */
+        confluentCloud?: outputs.pubsub.TopicIngestionDataSourceSettingsConfluentCloud;
         /**
          * Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
          * no Platform Logs will be generated.'
@@ -87071,6 +87260,30 @@ export namespace pubsub {
          * The Kinesis stream ARN to ingest data from.
          */
         streamArn: string;
+    }
+
+    export interface TopicIngestionDataSourceSettingsAwsMsk {
+        /**
+         * AWS role ARN to be used for Federated Identity authentication with
+         * MSK. Check the Pub/Sub docs for how to set up this role and the
+         * required permissions that need to be attached to it.
+         */
+        awsRoleArn: string;
+        /**
+         * ARN that uniquely identifies the MSK cluster.
+         */
+        clusterArn: string;
+        /**
+         * The GCP service account to be used for Federated Identity authentication
+         * with MSK (via a `AssumeRoleWithWebIdentity` call for the provided
+         * role). The `awsRoleArn` must be set up with `accounts.google.com:sub`
+         * equals to this service account number.
+         */
+        gcpServiceAccount: string;
+        /**
+         * The name of the MSK topic that Pub/Sub will import from.
+         */
+        topic: string;
     }
 
     export interface TopicIngestionDataSourceSettingsAzureEventHubs {
@@ -87159,6 +87372,30 @@ export namespace pubsub {
          * message. When unset, '\n' is used.
          */
         delimiter?: string;
+    }
+
+    export interface TopicIngestionDataSourceSettingsConfluentCloud {
+        /**
+         * The Confluent Cloud bootstrap server. The format is url:port.
+         */
+        bootstrapServer: string;
+        /**
+         * The Confluent Cloud cluster ID.
+         */
+        clusterId?: string;
+        /**
+         * The GCP service account to be used for Federated Identity authentication
+         * with Confluent Cloud.
+         */
+        gcpServiceAccount: string;
+        /**
+         * Identity pool ID to be used for Federated Identity authentication with Confluent Cloud.
+         */
+        identityPoolId: string;
+        /**
+         * Name of the Confluent Cloud topic that Pub/Sub will import from.
+         */
+        topic: string;
     }
 
     export interface TopicIngestionDataSourceSettingsPlatformLogsSettings {
@@ -90126,6 +90363,22 @@ export namespace sourcerepo {
 }
 
 export namespace spanner {
+    export interface BackupScheduleEncryptionConfig {
+        /**
+         * The encryption type of backups created by the backup schedule.
+         * Possible values are USE_DATABASE_ENCRYPTION, GOOGLE_DEFAULT_ENCRYPTION, or CUSTOMER_MANAGED_ENCRYPTION.
+         * If you use CUSTOMER_MANAGED_ENCRYPTION, you must specify a kmsKeyName.
+         * If your backup type is incremental-backup, the encryption type must be GOOGLE_DEFAULT_ENCRYPTION.
+         * Possible values are: `USE_DATABASE_ENCRYPTION`, `GOOGLE_DEFAULT_ENCRYPTION`, `CUSTOMER_MANAGED_ENCRYPTION`.
+         */
+        encryptionType: string;
+        /**
+         * The resource name of the Cloud KMS key to use for encryption.
+         * Format: 'projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}'
+         */
+        kmsKeyName?: string;
+    }
+
     export interface BackupScheduleFullBackupSpec {
     }
 

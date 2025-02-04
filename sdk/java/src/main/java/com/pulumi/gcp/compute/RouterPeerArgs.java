@@ -520,6 +520,23 @@ public final class RouterPeerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
+     * This value has to be set true to force the advertised_route_priority to be 0.
+     * 
+     */
+    @Import(name="zeroAdvertisedRoutePriority")
+    private @Nullable Output<Boolean> zeroAdvertisedRoutePriority;
+
+    /**
+     * @return The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
+     * This value has to be set true to force the advertised_route_priority to be 0.
+     * 
+     */
+    public Optional<Output<Boolean>> zeroAdvertisedRoutePriority() {
+        return Optional.ofNullable(this.zeroAdvertisedRoutePriority);
+    }
+
+    /**
      * The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
      * This value has to be set true to force the custom_learned_route_priority to be 0.
      * 
@@ -565,6 +582,7 @@ public final class RouterPeerArgs extends com.pulumi.resources.ResourceArgs {
         this.region = $.region;
         this.router = $.router;
         this.routerApplianceInstance = $.routerApplianceInstance;
+        this.zeroAdvertisedRoutePriority = $.zeroAdvertisedRoutePriority;
         this.zeroCustomLearnedRoutePriority = $.zeroCustomLearnedRoutePriority;
     }
 
@@ -1305,6 +1323,29 @@ public final class RouterPeerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder routerApplianceInstance(String routerApplianceInstance) {
             return routerApplianceInstance(Output.of(routerApplianceInstance));
+        }
+
+        /**
+         * @param zeroAdvertisedRoutePriority The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
+         * This value has to be set true to force the advertised_route_priority to be 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zeroAdvertisedRoutePriority(@Nullable Output<Boolean> zeroAdvertisedRoutePriority) {
+            $.zeroAdvertisedRoutePriority = zeroAdvertisedRoutePriority;
+            return this;
+        }
+
+        /**
+         * @param zeroAdvertisedRoutePriority The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
+         * This value has to be set true to force the advertised_route_priority to be 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zeroAdvertisedRoutePriority(Boolean zeroAdvertisedRoutePriority) {
+            return zeroAdvertisedRoutePriority(Output.of(zeroAdvertisedRoutePriority));
         }
 
         /**

@@ -206,6 +206,65 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Firestore Field Wildcard
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
+ * import com.pulumi.gcp.firestore.Field;
+ * import com.pulumi.gcp.firestore.FieldArgs;
+ * import com.pulumi.gcp.firestore.inputs.FieldIndexConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var database = new Database("database", DatabaseArgs.builder()
+ *             .project("my-project-name")
+ *             .name("database-id")
+ *             .locationId("nam5")
+ *             .type("FIRESTORE_NATIVE")
+ *             .deleteProtectionState("DELETE_PROTECTION_ENABLED")
+ *             .deletionPolicy("DELETE")
+ *             .build());
+ * 
+ *         var wildcard = new Field("wildcard", FieldArgs.builder()
+ *             .project("my-project-name")
+ *             .database(database.name())
+ *             .collection("chatrooms__75223")
+ *             .field("*")
+ *             .indexConfig(FieldIndexConfigArgs.builder()
+ *                 .indexes(                
+ *                     FieldIndexConfigIndexArgs.builder()
+ *                         .order("ASCENDING")
+ *                         .queryScope("COLLECTION_GROUP")
+ *                         .build(),
+ *                     FieldIndexConfigIndexArgs.builder()
+ *                         .arrayConfig("CONTAINS")
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

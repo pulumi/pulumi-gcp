@@ -24,6 +24,7 @@ class BackupScheduleArgs:
                  database: pulumi.Input[str],
                  instance: pulumi.Input[str],
                  retention_duration: pulumi.Input[str],
+                 encryption_config: Optional[pulumi.Input['BackupScheduleEncryptionConfigArgs']] = None,
                  full_backup_spec: Optional[pulumi.Input['BackupScheduleFullBackupSpecArgs']] = None,
                  incremental_backup_spec: Optional[pulumi.Input['BackupScheduleIncrementalBackupSpecArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -39,6 +40,8 @@ class BackupScheduleArgs:
         :param pulumi.Input[str] retention_duration: At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.
                You can set this to a value up to 366 days.
+        :param pulumi.Input['BackupScheduleEncryptionConfigArgs'] encryption_config: Configuration for the encryption of the backup schedule.
+               Structure is documented below.
         :param pulumi.Input['BackupScheduleFullBackupSpecArgs'] full_backup_spec: The schedule creates only full backups..
         :param pulumi.Input['BackupScheduleIncrementalBackupSpecArgs'] incremental_backup_spec: The schedule creates incremental backup chains.
         :param pulumi.Input[str] name: A unique identifier for the backup schedule, which cannot be changed after
@@ -51,6 +54,8 @@ class BackupScheduleArgs:
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "retention_duration", retention_duration)
+        if encryption_config is not None:
+            pulumi.set(__self__, "encryption_config", encryption_config)
         if full_backup_spec is not None:
             pulumi.set(__self__, "full_backup_spec", full_backup_spec)
         if incremental_backup_spec is not None:
@@ -102,6 +107,19 @@ class BackupScheduleArgs:
     @retention_duration.setter
     def retention_duration(self, value: pulumi.Input[str]):
         pulumi.set(self, "retention_duration", value)
+
+    @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> Optional[pulumi.Input['BackupScheduleEncryptionConfigArgs']]:
+        """
+        Configuration for the encryption of the backup schedule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_config")
+
+    @encryption_config.setter
+    def encryption_config(self, value: Optional[pulumi.Input['BackupScheduleEncryptionConfigArgs']]):
+        pulumi.set(self, "encryption_config", value)
 
     @property
     @pulumi.getter(name="fullBackupSpec")
@@ -171,6 +189,7 @@ class BackupScheduleArgs:
 class _BackupScheduleState:
     def __init__(__self__, *,
                  database: Optional[pulumi.Input[str]] = None,
+                 encryption_config: Optional[pulumi.Input['BackupScheduleEncryptionConfigArgs']] = None,
                  full_backup_spec: Optional[pulumi.Input['BackupScheduleFullBackupSpecArgs']] = None,
                  incremental_backup_spec: Optional[pulumi.Input['BackupScheduleIncrementalBackupSpecArgs']] = None,
                  instance: Optional[pulumi.Input[str]] = None,
@@ -184,6 +203,8 @@ class _BackupScheduleState:
                
                
                - - -
+        :param pulumi.Input['BackupScheduleEncryptionConfigArgs'] encryption_config: Configuration for the encryption of the backup schedule.
+               Structure is documented below.
         :param pulumi.Input['BackupScheduleFullBackupSpecArgs'] full_backup_spec: The schedule creates only full backups..
         :param pulumi.Input['BackupScheduleIncrementalBackupSpecArgs'] incremental_backup_spec: The schedule creates incremental backup chains.
         :param pulumi.Input[str] instance: The instance to create the database on.
@@ -199,6 +220,8 @@ class _BackupScheduleState:
         """
         if database is not None:
             pulumi.set(__self__, "database", database)
+        if encryption_config is not None:
+            pulumi.set(__self__, "encryption_config", encryption_config)
         if full_backup_spec is not None:
             pulumi.set(__self__, "full_backup_spec", full_backup_spec)
         if incremental_backup_spec is not None:
@@ -228,6 +251,19 @@ class _BackupScheduleState:
     @database.setter
     def database(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "database", value)
+
+    @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> Optional[pulumi.Input['BackupScheduleEncryptionConfigArgs']]:
+        """
+        Configuration for the encryption of the backup schedule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_config")
+
+    @encryption_config.setter
+    def encryption_config(self, value: Optional[pulumi.Input['BackupScheduleEncryptionConfigArgs']]):
+        pulumi.set(self, "encryption_config", value)
 
     @property
     @pulumi.getter(name="fullBackupSpec")
@@ -325,6 +361,7 @@ class BackupSchedule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database: Optional[pulumi.Input[str]] = None,
+                 encryption_config: Optional[pulumi.Input[Union['BackupScheduleEncryptionConfigArgs', 'BackupScheduleEncryptionConfigArgsDict']]] = None,
                  full_backup_spec: Optional[pulumi.Input[Union['BackupScheduleFullBackupSpecArgs', 'BackupScheduleFullBackupSpecArgsDict']]] = None,
                  incremental_backup_spec: Optional[pulumi.Input[Union['BackupScheduleIncrementalBackupSpecArgs', 'BackupScheduleIncrementalBackupSpecArgsDict']]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
@@ -381,7 +418,10 @@ class BackupSchedule(pulumi.CustomResource):
                     "text": "0 12 * * *",
                 },
             },
-            full_backup_spec={})
+            full_backup_spec={},
+            encryption_config={
+                "encryption_type": "USE_DATABASE_ENCRYPTION",
+            })
         ```
         ### Spanner Backup Schedule Daily Incremental
 
@@ -414,7 +454,10 @@ class BackupSchedule(pulumi.CustomResource):
                     "text": "0 12 * * *",
                 },
             },
-            incremental_backup_spec={})
+            incremental_backup_spec={},
+            encryption_config={
+                "encryption_type": "GOOGLE_DEFAULT_ENCRYPTION",
+            })
         ```
 
         ## Import
@@ -447,6 +490,8 @@ class BackupSchedule(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[Union['BackupScheduleEncryptionConfigArgs', 'BackupScheduleEncryptionConfigArgsDict']] encryption_config: Configuration for the encryption of the backup schedule.
+               Structure is documented below.
         :param pulumi.Input[Union['BackupScheduleFullBackupSpecArgs', 'BackupScheduleFullBackupSpecArgsDict']] full_backup_spec: The schedule creates only full backups..
         :param pulumi.Input[Union['BackupScheduleIncrementalBackupSpecArgs', 'BackupScheduleIncrementalBackupSpecArgsDict']] incremental_backup_spec: The schedule creates incremental backup chains.
         :param pulumi.Input[str] instance: The instance to create the database on.
@@ -514,7 +559,10 @@ class BackupSchedule(pulumi.CustomResource):
                     "text": "0 12 * * *",
                 },
             },
-            full_backup_spec={})
+            full_backup_spec={},
+            encryption_config={
+                "encryption_type": "USE_DATABASE_ENCRYPTION",
+            })
         ```
         ### Spanner Backup Schedule Daily Incremental
 
@@ -547,7 +595,10 @@ class BackupSchedule(pulumi.CustomResource):
                     "text": "0 12 * * *",
                 },
             },
-            incremental_backup_spec={})
+            incremental_backup_spec={},
+            encryption_config={
+                "encryption_type": "GOOGLE_DEFAULT_ENCRYPTION",
+            })
         ```
 
         ## Import
@@ -590,6 +641,7 @@ class BackupSchedule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database: Optional[pulumi.Input[str]] = None,
+                 encryption_config: Optional[pulumi.Input[Union['BackupScheduleEncryptionConfigArgs', 'BackupScheduleEncryptionConfigArgsDict']]] = None,
                  full_backup_spec: Optional[pulumi.Input[Union['BackupScheduleFullBackupSpecArgs', 'BackupScheduleFullBackupSpecArgsDict']]] = None,
                  incremental_backup_spec: Optional[pulumi.Input[Union['BackupScheduleIncrementalBackupSpecArgs', 'BackupScheduleIncrementalBackupSpecArgsDict']]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
@@ -609,6 +661,7 @@ class BackupSchedule(pulumi.CustomResource):
             if database is None and not opts.urn:
                 raise TypeError("Missing required property 'database'")
             __props__.__dict__["database"] = database
+            __props__.__dict__["encryption_config"] = encryption_config
             __props__.__dict__["full_backup_spec"] = full_backup_spec
             __props__.__dict__["incremental_backup_spec"] = incremental_backup_spec
             if instance is None and not opts.urn:
@@ -631,6 +684,7 @@ class BackupSchedule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             database: Optional[pulumi.Input[str]] = None,
+            encryption_config: Optional[pulumi.Input[Union['BackupScheduleEncryptionConfigArgs', 'BackupScheduleEncryptionConfigArgsDict']]] = None,
             full_backup_spec: Optional[pulumi.Input[Union['BackupScheduleFullBackupSpecArgs', 'BackupScheduleFullBackupSpecArgsDict']]] = None,
             incremental_backup_spec: Optional[pulumi.Input[Union['BackupScheduleIncrementalBackupSpecArgs', 'BackupScheduleIncrementalBackupSpecArgsDict']]] = None,
             instance: Optional[pulumi.Input[str]] = None,
@@ -649,6 +703,8 @@ class BackupSchedule(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[Union['BackupScheduleEncryptionConfigArgs', 'BackupScheduleEncryptionConfigArgsDict']] encryption_config: Configuration for the encryption of the backup schedule.
+               Structure is documented below.
         :param pulumi.Input[Union['BackupScheduleFullBackupSpecArgs', 'BackupScheduleFullBackupSpecArgsDict']] full_backup_spec: The schedule creates only full backups..
         :param pulumi.Input[Union['BackupScheduleIncrementalBackupSpecArgs', 'BackupScheduleIncrementalBackupSpecArgsDict']] incremental_backup_spec: The schedule creates incremental backup chains.
         :param pulumi.Input[str] instance: The instance to create the database on.
@@ -667,6 +723,7 @@ class BackupSchedule(pulumi.CustomResource):
         __props__ = _BackupScheduleState.__new__(_BackupScheduleState)
 
         __props__.__dict__["database"] = database
+        __props__.__dict__["encryption_config"] = encryption_config
         __props__.__dict__["full_backup_spec"] = full_backup_spec
         __props__.__dict__["incremental_backup_spec"] = incremental_backup_spec
         __props__.__dict__["instance"] = instance
@@ -686,6 +743,15 @@ class BackupSchedule(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> pulumi.Output['outputs.BackupScheduleEncryptionConfig']:
+        """
+        Configuration for the encryption of the backup schedule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_config")
 
     @property
     @pulumi.getter(name="fullBackupSpec")

@@ -113,9 +113,9 @@ class GetBucketObjectContentResult:
 
     @property
     @pulumi.getter
-    def content(self) -> Optional[str]:
+    def content(self) -> str:
         """
-        (Computed) [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object content.
+        (Computed) The content of the object.
         """
         return pulumi.get(self, "content")
 
@@ -287,7 +287,7 @@ def get_bucket_object_content(bucket: Optional[str] = None,
 
 
     :param str bucket: The name of the containing bucket.
-    :param str content: (Computed) [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object content.
+    :param str content: (Computed) The content of the object.
     :param str name: The name of the object.
     """
     __args__ = dict()
@@ -349,7 +349,7 @@ def get_bucket_object_content_output(bucket: Optional[pulumi.Input[str]] = None,
 
 
     :param str bucket: The name of the containing bucket.
-    :param str content: (Computed) [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object content.
+    :param str content: (Computed) The content of the object.
     :param str name: The name of the object.
     """
     __args__ = dict()

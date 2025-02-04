@@ -15,6 +15,8 @@ namespace Pulumi.Gcp.SecretManager
     /// To get more information about RegionalSecret, see:
     /// 
     /// * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.locations.secrets)
+    /// * How-to Guides
+    ///     * [Create and deploy a Regional Secret](https://cloud.google.com/secret-manager/regional-secrets/create-regional-secret)
     /// 
     /// ## Example Usage
     /// 

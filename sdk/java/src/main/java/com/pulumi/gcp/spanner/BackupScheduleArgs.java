@@ -6,6 +6,7 @@ package com.pulumi.gcp.spanner;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.spanner.inputs.BackupScheduleEncryptionConfigArgs;
 import com.pulumi.gcp.spanner.inputs.BackupScheduleFullBackupSpecArgs;
 import com.pulumi.gcp.spanner.inputs.BackupScheduleIncrementalBackupSpecArgs;
 import com.pulumi.gcp.spanner.inputs.BackupScheduleSpecArgs;
@@ -36,6 +37,23 @@ public final class BackupScheduleArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Output<String> database() {
         return this.database;
+    }
+
+    /**
+     * Configuration for the encryption of the backup schedule.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="encryptionConfig")
+    private @Nullable Output<BackupScheduleEncryptionConfigArgs> encryptionConfig;
+
+    /**
+     * @return Configuration for the encryption of the backup schedule.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<BackupScheduleEncryptionConfigArgs>> encryptionConfig() {
+        return Optional.ofNullable(this.encryptionConfig);
     }
 
     /**
@@ -157,6 +175,7 @@ public final class BackupScheduleArgs extends com.pulumi.resources.ResourceArgs 
 
     private BackupScheduleArgs(BackupScheduleArgs $) {
         this.database = $.database;
+        this.encryptionConfig = $.encryptionConfig;
         this.fullBackupSpec = $.fullBackupSpec;
         this.incrementalBackupSpec = $.incrementalBackupSpec;
         this.instance = $.instance;
@@ -207,6 +226,29 @@ public final class BackupScheduleArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder database(String database) {
             return database(Output.of(database));
+        }
+
+        /**
+         * @param encryptionConfig Configuration for the encryption of the backup schedule.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionConfig(@Nullable Output<BackupScheduleEncryptionConfigArgs> encryptionConfig) {
+            $.encryptionConfig = encryptionConfig;
+            return this;
+        }
+
+        /**
+         * @param encryptionConfig Configuration for the encryption of the backup schedule.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionConfig(BackupScheduleEncryptionConfigArgs encryptionConfig) {
+            return encryptionConfig(Output.of(encryptionConfig));
         }
 
         /**

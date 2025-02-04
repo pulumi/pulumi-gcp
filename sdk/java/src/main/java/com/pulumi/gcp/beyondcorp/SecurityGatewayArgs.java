@@ -55,18 +55,32 @@ public final class SecurityGatewayArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     * (Optional, Deprecated)
+     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+     * 
+     * &gt; **Warning:** `location` is deprecated and will be removed in a future major release.
+     * 
+     * @deprecated
+     * `location` is deprecated and will be removed in a future major release.
      * 
      */
-    @Import(name="location", required=true)
-    private Output<String> location;
+    @Deprecated /* `location` is deprecated and will be removed in a future major release. */
+    @Import(name="location")
+    private @Nullable Output<String> location;
 
     /**
-     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     * @return (Optional, Deprecated)
+     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+     * 
+     * &gt; **Warning:** `location` is deprecated and will be removed in a future major release.
+     * 
+     * @deprecated
+     * `location` is deprecated and will be removed in a future major release.
      * 
      */
-    public Output<String> location() {
-        return this.location;
+    @Deprecated /* `location` is deprecated and will be removed in a future major release. */
+    public Optional<Output<String>> location() {
+        return Optional.ofNullable(this.location);
     }
 
     /**
@@ -200,22 +214,36 @@ public final class SecurityGatewayArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+         * @param location (Optional, Deprecated)
+         * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+         * 
+         * &gt; **Warning:** `location` is deprecated and will be removed in a future major release.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `location` is deprecated and will be removed in a future major release.
+         * 
          */
-        public Builder location(Output<String> location) {
+        @Deprecated /* `location` is deprecated and will be removed in a future major release. */
+        public Builder location(@Nullable Output<String> location) {
             $.location = location;
             return this;
         }
 
         /**
-         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+         * @param location (Optional, Deprecated)
+         * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+         * 
+         * &gt; **Warning:** `location` is deprecated and will be removed in a future major release.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `location` is deprecated and will be removed in a future major release.
+         * 
          */
+        @Deprecated /* `location` is deprecated and will be removed in a future major release. */
         public Builder location(String location) {
             return location(Output.of(location));
         }
@@ -275,9 +303,6 @@ public final class SecurityGatewayArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public SecurityGatewayArgs build() {
-            if ($.location == null) {
-                throw new MissingRequiredPropertyException("SecurityGatewayArgs", "location");
-            }
             if ($.securityGatewayId == null) {
                 throw new MissingRequiredPropertyException("SecurityGatewayArgs", "securityGatewayId");
             }

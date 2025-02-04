@@ -152,6 +152,51 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// ### Firestore Field Wildcard
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "database-id",
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_ENABLED",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
+    ///     var wildcard = new Gcp.Firestore.Field("wildcard", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Database = database.Name,
+    ///         Collection = "chatrooms__75223",
+    ///         FieldId = "*",
+    ///         IndexConfig = new Gcp.Firestore.Inputs.FieldIndexConfigArgs
+    ///         {
+    ///             Indexes = new[]
+    ///             {
+    ///                 new Gcp.Firestore.Inputs.FieldIndexConfigIndexArgs
+    ///                 {
+    ///                     Order = "ASCENDING",
+    ///                     QueryScope = "COLLECTION_GROUP",
+    ///                 },
+    ///                 new Gcp.Firestore.Inputs.FieldIndexConfigIndexArgs
+    ///                 {
+    ///                     ArrayConfig = "CONTAINS",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

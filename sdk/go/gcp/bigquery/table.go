@@ -218,10 +218,13 @@ type Table struct {
 	// globally unique. Tag key is expected to be in the namespaced format, for
 	// example "123456789012/environment" where 123456789012 is the ID of the
 	// parent organization or project resource for this tag key. Tag value is
-	// expected to be the short name, for example "Production".
+	// expected to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
+	// for more details.
 	ResourceTags pulumi.StringMapOutput `pulumi:"resourceTags"`
 	// A JSON schema for the table.
 	Schema pulumi.StringOutput `pulumi:"schema"`
+	// Specifies metadata of the foreign data type definition in field schema.
+	SchemaForeignTypeInfo TableSchemaForeignTypeInfoPtrOutput `pulumi:"schemaForeignTypeInfo"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Defines the primary key and foreign keys.
@@ -378,10 +381,13 @@ type tableState struct {
 	// globally unique. Tag key is expected to be in the namespaced format, for
 	// example "123456789012/environment" where 123456789012 is the ID of the
 	// parent organization or project resource for this tag key. Tag value is
-	// expected to be the short name, for example "Production".
+	// expected to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
+	// for more details.
 	ResourceTags map[string]string `pulumi:"resourceTags"`
 	// A JSON schema for the table.
 	Schema *string `pulumi:"schema"`
+	// Specifies metadata of the foreign data type definition in field schema.
+	SchemaForeignTypeInfo *TableSchemaForeignTypeInfo `pulumi:"schemaForeignTypeInfo"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// Defines the primary key and foreign keys.
@@ -498,10 +504,13 @@ type TableState struct {
 	// globally unique. Tag key is expected to be in the namespaced format, for
 	// example "123456789012/environment" where 123456789012 is the ID of the
 	// parent organization or project resource for this tag key. Tag value is
-	// expected to be the short name, for example "Production".
+	// expected to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
+	// for more details.
 	ResourceTags pulumi.StringMapInput
 	// A JSON schema for the table.
 	Schema pulumi.StringPtrInput
+	// Specifies metadata of the foreign data type definition in field schema.
+	SchemaForeignTypeInfo TableSchemaForeignTypeInfoPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// Defines the primary key and foreign keys.
@@ -589,10 +598,13 @@ type tableArgs struct {
 	// globally unique. Tag key is expected to be in the namespaced format, for
 	// example "123456789012/environment" where 123456789012 is the ID of the
 	// parent organization or project resource for this tag key. Tag value is
-	// expected to be the short name, for example "Production".
+	// expected to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
+	// for more details.
 	ResourceTags map[string]string `pulumi:"resourceTags"`
 	// A JSON schema for the table.
 	Schema *string `pulumi:"schema"`
+	// Specifies metadata of the foreign data type definition in field schema.
+	SchemaForeignTypeInfo *TableSchemaForeignTypeInfo `pulumi:"schemaForeignTypeInfo"`
 	// Defines the primary key and foreign keys.
 	// Structure is documented below.
 	TableConstraints *TableTableConstraints `pulumi:"tableConstraints"`
@@ -673,10 +685,13 @@ type TableArgs struct {
 	// globally unique. Tag key is expected to be in the namespaced format, for
 	// example "123456789012/environment" where 123456789012 is the ID of the
 	// parent organization or project resource for this tag key. Tag value is
-	// expected to be the short name, for example "Production".
+	// expected to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
+	// for more details.
 	ResourceTags pulumi.StringMapInput
 	// A JSON schema for the table.
 	Schema pulumi.StringPtrInput
+	// Specifies metadata of the foreign data type definition in field schema.
+	SchemaForeignTypeInfo TableSchemaForeignTypeInfoPtrInput
 	// Defines the primary key and foreign keys.
 	// Structure is documented below.
 	TableConstraints TableTableConstraintsPtrInput
@@ -950,7 +965,8 @@ func (o TableOutput) RequirePartitionFilter() pulumi.BoolPtrOutput {
 // globally unique. Tag key is expected to be in the namespaced format, for
 // example "123456789012/environment" where 123456789012 is the ID of the
 // parent organization or project resource for this tag key. Tag value is
-// expected to be the short name, for example "Production".
+// expected to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
+// for more details.
 func (o TableOutput) ResourceTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringMapOutput { return v.ResourceTags }).(pulumi.StringMapOutput)
 }
@@ -958,6 +974,11 @@ func (o TableOutput) ResourceTags() pulumi.StringMapOutput {
 // A JSON schema for the table.
 func (o TableOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.Schema }).(pulumi.StringOutput)
+}
+
+// Specifies metadata of the foreign data type definition in field schema.
+func (o TableOutput) SchemaForeignTypeInfo() TableSchemaForeignTypeInfoPtrOutput {
+	return o.ApplyT(func(v *Table) TableSchemaForeignTypeInfoPtrOutput { return v.SchemaForeignTypeInfo }).(TableSchemaForeignTypeInfoPtrOutput)
 }
 
 // The URI of the created resource.

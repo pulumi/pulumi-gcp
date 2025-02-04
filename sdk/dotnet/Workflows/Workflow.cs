@@ -83,6 +83,84 @@ namespace Pulumi.Gcp.Workflows
     /// 
     /// });
     /// ```
+    /// ### Workflow Tags
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var tagKey = new Gcp.Tags.TagKey("tag_key", new()
+    ///     {
+    ///         Parent = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}",
+    ///         ShortName = "tag_key",
+    ///     });
+    /// 
+    ///     var tagValue = new Gcp.Tags.TagValue("tag_value", new()
+    ///     {
+    ///         Parent = tagKey.Name.Apply(name =&gt; $"tagKeys/{name}"),
+    ///         ShortName = "tag_value",
+    ///     });
+    /// 
+    ///     var testAccount = new Gcp.ServiceAccount.Account("test_account", new()
+    ///     {
+    ///         AccountId = "my-account",
+    ///         DisplayName = "Test Service Account",
+    ///     });
+    /// 
+    ///     var example = new Gcp.Workflows.Workflow("example", new()
+    ///     {
+    ///         Name = "workflow",
+    ///         Region = "us-central1",
+    ///         Description = "Magic",
+    ///         ServiceAccount = testAccount.Id,
+    ///         DeletionProtection = false,
+    ///         Tags = Output.Tuple(project, tagKey.ShortName, tagValue.ShortName).Apply(values =&gt;
+    ///         {
+    ///             var project = values.Item1;
+    ///             var tagKeyShortName = values.Item2;
+    ///             var tagValueShortName = values.Item3;
+    ///             return 
+    ///             {
+    ///                 { $"{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/{tagKeyShortName}", tagValueShortName },
+    ///             };
+    ///         }),
+    ///         SourceContents = @"# This is a sample workflow. You can replace it with your source code.
+    /// #
+    /// # This workflow does the following:
+    /// # - reads current time and date information from an external API and stores
+    /// #   the response in currentTime variable
+    /// # - retrieves a list of Wikipedia articles related to the day of the week
+    /// #   from currentTime
+    /// # - returns the list of articles as an output of the workflow
+    /// #
+    /// # Note: In Terraform you need to escape the $$ or it will cause errors.
+    /// 
+    /// - getCurrentTime:
+    ///     call: http.get
+    ///     args:
+    ///         url: ${sys.get_env(""url"")}
+    ///     result: currentTime
+    /// - readWikipedia:
+    ///     call: http.get
+    ///     args:
+    ///         url: https://en.wikipedia.org/w/api.php
+    ///         query:
+    ///             action: opensearch
+    ///             search: ${currentTime.body.dayOfWeek}
+    ///     result: wikiResult
+    /// - returnOutput:
+    ///     return: ${wikiResult.body[1]}
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -199,6 +277,14 @@ namespace Pulumi.Gcp.Workflows
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// A map of resource manager tags. Resource manager tag keys and values have the same definition
+        /// as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
+        /// the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -346,6 +432,20 @@ namespace Pulumi.Gcp.Workflows
         /// </summary>
         [Input("sourceContents")]
         public Input<string>? SourceContents { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of resource manager tags. Resource manager tag keys and values have the same definition
+        /// as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
+        /// the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         [Input("userEnvVars")]
         private InputMap<string>? _userEnvVars;
@@ -501,6 +601,20 @@ namespace Pulumi.Gcp.Workflows
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of resource manager tags. Resource manager tag keys and values have the same definition
+        /// as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
+        /// the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.

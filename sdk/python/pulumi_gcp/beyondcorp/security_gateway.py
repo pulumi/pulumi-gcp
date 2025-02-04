@@ -21,14 +21,13 @@ __all__ = ['SecurityGatewayArgs', 'SecurityGateway']
 @pulumi.input_type
 class SecurityGatewayArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  security_gateway_id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  hubs: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGatewayHubArgs']]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SecurityGateway resource.
-        :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[str] security_gateway_id: Optional. User-settable SecurityGateway resource ID.
                * Must start with a letter.
                * Must contain between 4-63 characters from `/a-z-/`.
@@ -41,29 +40,25 @@ class SecurityGatewayArgs:
         :param pulumi.Input[Sequence[pulumi.Input['SecurityGatewayHubArgs']]] hubs: Optional. Map of Hubs that represents regional data path deployment with GCP region
                as a key.
                Structure is documented below.
+        :param pulumi.Input[str] location: (Optional, Deprecated)
+               Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+               
+               > **Warning:** `location` is deprecated and will be removed in a future major release.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "security_gateway_id", security_gateway_id)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if hubs is not None:
             pulumi.set(__self__, "hubs", hubs)
+        if location is not None:
+            warnings.warn("""`location` is deprecated and will be removed in a future major release.""", DeprecationWarning)
+            pulumi.log.warn("""location is deprecated: `location` is deprecated and will be removed in a future major release.""")
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        """
-        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        """
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="securityGatewayId")
@@ -112,6 +107,22 @@ class SecurityGatewayArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""`location` is deprecated and will be removed in a future major release.""")
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Optional, Deprecated)
+        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+
+        > **Warning:** `location` is deprecated and will be removed in a future major release.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the project in which the resource belongs.
@@ -147,7 +158,10 @@ class _SecurityGatewayState:
         :param pulumi.Input[Sequence[pulumi.Input['SecurityGatewayHubArgs']]] hubs: Optional. Map of Hubs that represents regional data path deployment with GCP region
                as a key.
                Structure is documented below.
-        :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[str] location: (Optional, Deprecated)
+               Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+               
+               > **Warning:** `location` is deprecated and will be removed in a future major release.
         :param pulumi.Input[str] name: Identifier. Name of the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -177,6 +191,9 @@ class _SecurityGatewayState:
             pulumi.set(__self__, "external_ips", external_ips)
         if hubs is not None:
             pulumi.set(__self__, "hubs", hubs)
+        if location is not None:
+            warnings.warn("""`location` is deprecated and will be removed in a future major release.""", DeprecationWarning)
+            pulumi.log.warn("""location is deprecated: `location` is deprecated and will be removed in a future major release.""")
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -244,9 +261,13 @@ class _SecurityGatewayState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""`location` is deprecated and will be removed in a future major release.""")
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        (Optional, Deprecated)
+        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+
+        > **Warning:** `location` is deprecated and will be removed in a future major release.
         """
         return pulumi.get(self, "location")
 
@@ -354,7 +375,6 @@ class SecurityGateway(pulumi.CustomResource):
 
         example = gcp.beyondcorp.SecurityGateway("example",
             security_gateway_id="default",
-            location="global",
             display_name="My Security Gateway resource",
             hubs=[{
                 "region": "us-central1",
@@ -392,7 +412,10 @@ class SecurityGateway(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict']]]] hubs: Optional. Map of Hubs that represents regional data path deployment with GCP region
                as a key.
                Structure is documented below.
-        :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[str] location: (Optional, Deprecated)
+               Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+               
+               > **Warning:** `location` is deprecated and will be removed in a future major release.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] security_gateway_id: Optional. User-settable SecurityGateway resource ID.
@@ -422,7 +445,6 @@ class SecurityGateway(pulumi.CustomResource):
 
         example = gcp.beyondcorp.SecurityGateway("example",
             security_gateway_id="default",
-            location="global",
             display_name="My Security Gateway resource",
             hubs=[{
                 "region": "us-central1",
@@ -484,8 +506,6 @@ class SecurityGateway(pulumi.CustomResource):
 
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["hubs"] = hubs
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             if security_gateway_id is None and not opts.urn:
@@ -531,7 +551,10 @@ class SecurityGateway(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict']]]] hubs: Optional. Map of Hubs that represents regional data path deployment with GCP region
                as a key.
                Structure is documented below.
-        :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[str] location: (Optional, Deprecated)
+               Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+               
+               > **Warning:** `location` is deprecated and will be removed in a future major release.
         :param pulumi.Input[str] name: Identifier. Name of the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -607,9 +630,13 @@ class SecurityGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> pulumi.Output[str]:
+    @_utilities.deprecated("""`location` is deprecated and will be removed in a future major release.""")
+    def location(self) -> pulumi.Output[Optional[str]]:
         """
-        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        (Optional, Deprecated)
+        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+
+        > **Warning:** `location` is deprecated and will be removed in a future major release.
         """
         return pulumi.get(self, "location")
 

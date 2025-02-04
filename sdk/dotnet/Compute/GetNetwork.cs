@@ -97,7 +97,7 @@ namespace Pulumi.Gcp.Compute
         public string Name { get; set; } = null!;
 
         /// <summary>
-        /// Beta A full or partial URL of the network profile to apply to this network.
+        /// A full or partial URL of the network profile to apply to this network.
         /// </summary>
         [Input("networkProfile")]
         public string? NetworkProfile { get; set; }
@@ -127,7 +127,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Beta A full or partial URL of the network profile to apply to this network.
+        /// A full or partial URL of the network profile to apply to this network.
         /// </summary>
         [Input("networkProfile")]
         public Input<string>? NetworkProfile { get; set; }
@@ -171,7 +171,7 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly int NetworkId;
         /// <summary>
-        /// Beta A full or partial URL of the network profile to apply to this network.
+        /// A full or partial URL of the network profile to apply to this network.
         /// </summary>
         public readonly string? NetworkProfile;
         /// <summary>

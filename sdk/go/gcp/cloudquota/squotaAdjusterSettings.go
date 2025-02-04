@@ -55,16 +55,16 @@ import (
 type SQuotaAdjusterSettings struct {
 	pulumi.CustomResourceState
 
-	// Fields to capture the hierarchy enablement.
-	// The container (org/folder/project) that determines if the quota adjuster is set for this project/folder/org. We use the nearest-ancestor to determine the effective container.
-	// The nearest ancestor (including this container) with `enabled` set (either true or false) will be returned.
+	// The resource container that determines if the quota adjuster is set for this project.
+	// Expect this field to be empty currently.
 	EffectiveContainer pulumi.StringOutput `pulumi:"effectiveContainer"`
-	// Based on the effective container`s setting above, determines Whether this container has the quota adjuster enabled.
+	// Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+	// Expect this field to be empty currently.
 	EffectiveEnablement pulumi.StringOutput `pulumi:"effectiveEnablement"`
 	// Required. The configured value of the enablement at the given resource.
 	// Possible values are: `ENABLED`, `DISABLED`.
 	Enablement pulumi.StringOutput `pulumi:"enablement"`
-	// The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
+	// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
 	//
 	// ***
 	Parent pulumi.StringOutput `pulumi:"parent"`
@@ -103,32 +103,32 @@ func GetSQuotaAdjusterSettings(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SQuotaAdjusterSettings resources.
 type squotaAdjusterSettingsState struct {
-	// Fields to capture the hierarchy enablement.
-	// The container (org/folder/project) that determines if the quota adjuster is set for this project/folder/org. We use the nearest-ancestor to determine the effective container.
-	// The nearest ancestor (including this container) with `enabled` set (either true or false) will be returned.
+	// The resource container that determines if the quota adjuster is set for this project.
+	// Expect this field to be empty currently.
 	EffectiveContainer *string `pulumi:"effectiveContainer"`
-	// Based on the effective container`s setting above, determines Whether this container has the quota adjuster enabled.
+	// Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+	// Expect this field to be empty currently.
 	EffectiveEnablement *string `pulumi:"effectiveEnablement"`
 	// Required. The configured value of the enablement at the given resource.
 	// Possible values are: `ENABLED`, `DISABLED`.
 	Enablement *string `pulumi:"enablement"`
-	// The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
+	// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
 	//
 	// ***
 	Parent *string `pulumi:"parent"`
 }
 
 type SQuotaAdjusterSettingsState struct {
-	// Fields to capture the hierarchy enablement.
-	// The container (org/folder/project) that determines if the quota adjuster is set for this project/folder/org. We use the nearest-ancestor to determine the effective container.
-	// The nearest ancestor (including this container) with `enabled` set (either true or false) will be returned.
+	// The resource container that determines if the quota adjuster is set for this project.
+	// Expect this field to be empty currently.
 	EffectiveContainer pulumi.StringPtrInput
-	// Based on the effective container`s setting above, determines Whether this container has the quota adjuster enabled.
+	// Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+	// Expect this field to be empty currently.
 	EffectiveEnablement pulumi.StringPtrInput
 	// Required. The configured value of the enablement at the given resource.
 	// Possible values are: `ENABLED`, `DISABLED`.
 	Enablement pulumi.StringPtrInput
-	// The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
+	// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
 	//
 	// ***
 	Parent pulumi.StringPtrInput
@@ -142,7 +142,7 @@ type squotaAdjusterSettingsArgs struct {
 	// Required. The configured value of the enablement at the given resource.
 	// Possible values are: `ENABLED`, `DISABLED`.
 	Enablement string `pulumi:"enablement"`
-	// The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
+	// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
 	//
 	// ***
 	Parent *string `pulumi:"parent"`
@@ -153,7 +153,7 @@ type SQuotaAdjusterSettingsArgs struct {
 	// Required. The configured value of the enablement at the given resource.
 	// Possible values are: `ENABLED`, `DISABLED`.
 	Enablement pulumi.StringInput
-	// The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
+	// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
 	//
 	// ***
 	Parent pulumi.StringPtrInput
@@ -246,14 +246,14 @@ func (o SQuotaAdjusterSettingsOutput) ToSQuotaAdjusterSettingsOutputWithContext(
 	return o
 }
 
-// Fields to capture the hierarchy enablement.
-// The container (org/folder/project) that determines if the quota adjuster is set for this project/folder/org. We use the nearest-ancestor to determine the effective container.
-// The nearest ancestor (including this container) with `enabled` set (either true or false) will be returned.
+// The resource container that determines if the quota adjuster is set for this project.
+// Expect this field to be empty currently.
 func (o SQuotaAdjusterSettingsOutput) EffectiveContainer() pulumi.StringOutput {
 	return o.ApplyT(func(v *SQuotaAdjusterSettings) pulumi.StringOutput { return v.EffectiveContainer }).(pulumi.StringOutput)
 }
 
-// Based on the effective container`s setting above, determines Whether this container has the quota adjuster enabled.
+// Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+// Expect this field to be empty currently.
 func (o SQuotaAdjusterSettingsOutput) EffectiveEnablement() pulumi.StringOutput {
 	return o.ApplyT(func(v *SQuotaAdjusterSettings) pulumi.StringOutput { return v.EffectiveEnablement }).(pulumi.StringOutput)
 }
@@ -264,7 +264,7 @@ func (o SQuotaAdjusterSettingsOutput) Enablement() pulumi.StringOutput {
 	return o.ApplyT(func(v *SQuotaAdjusterSettings) pulumi.StringOutput { return v.Enablement }).(pulumi.StringOutput)
 }
 
-// The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
+// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
 //
 // ***
 func (o SQuotaAdjusterSettingsOutput) Parent() pulumi.StringOutput {

@@ -35,10 +35,30 @@ export const getAppGateway: typeof import("./getAppGateway").getAppGateway = nul
 export const getAppGatewayOutput: typeof import("./getAppGateway").getAppGatewayOutput = null as any;
 utilities.lazyLoad(exports, ["getAppGateway","getAppGatewayOutput"], () => require("./getAppGateway"));
 
+export { GetSecurityGatewayIamPolicyArgs, GetSecurityGatewayIamPolicyResult, GetSecurityGatewayIamPolicyOutputArgs } from "./getSecurityGatewayIamPolicy";
+export const getSecurityGatewayIamPolicy: typeof import("./getSecurityGatewayIamPolicy").getSecurityGatewayIamPolicy = null as any;
+export const getSecurityGatewayIamPolicyOutput: typeof import("./getSecurityGatewayIamPolicy").getSecurityGatewayIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getSecurityGatewayIamPolicy","getSecurityGatewayIamPolicyOutput"], () => require("./getSecurityGatewayIamPolicy"));
+
 export { SecurityGatewayArgs, SecurityGatewayState } from "./securityGateway";
 export type SecurityGateway = import("./securityGateway").SecurityGateway;
 export const SecurityGateway: typeof import("./securityGateway").SecurityGateway = null as any;
 utilities.lazyLoad(exports, ["SecurityGateway"], () => require("./securityGateway"));
+
+export { SecurityGatewayIamBindingArgs, SecurityGatewayIamBindingState } from "./securityGatewayIamBinding";
+export type SecurityGatewayIamBinding = import("./securityGatewayIamBinding").SecurityGatewayIamBinding;
+export const SecurityGatewayIamBinding: typeof import("./securityGatewayIamBinding").SecurityGatewayIamBinding = null as any;
+utilities.lazyLoad(exports, ["SecurityGatewayIamBinding"], () => require("./securityGatewayIamBinding"));
+
+export { SecurityGatewayIamMemberArgs, SecurityGatewayIamMemberState } from "./securityGatewayIamMember";
+export type SecurityGatewayIamMember = import("./securityGatewayIamMember").SecurityGatewayIamMember;
+export const SecurityGatewayIamMember: typeof import("./securityGatewayIamMember").SecurityGatewayIamMember = null as any;
+utilities.lazyLoad(exports, ["SecurityGatewayIamMember"], () => require("./securityGatewayIamMember"));
+
+export { SecurityGatewayIamPolicyArgs, SecurityGatewayIamPolicyState } from "./securityGatewayIamPolicy";
+export type SecurityGatewayIamPolicy = import("./securityGatewayIamPolicy").SecurityGatewayIamPolicy;
+export const SecurityGatewayIamPolicy: typeof import("./securityGatewayIamPolicy").SecurityGatewayIamPolicy = null as any;
+utilities.lazyLoad(exports, ["SecurityGatewayIamPolicy"], () => require("./securityGatewayIamPolicy"));
 
 
 const _module = {
@@ -53,6 +73,12 @@ const _module = {
                 return new AppGateway(name, <any>undefined, { urn })
             case "gcp:beyondcorp/securityGateway:SecurityGateway":
                 return new SecurityGateway(name, <any>undefined, { urn })
+            case "gcp:beyondcorp/securityGatewayIamBinding:SecurityGatewayIamBinding":
+                return new SecurityGatewayIamBinding(name, <any>undefined, { urn })
+            case "gcp:beyondcorp/securityGatewayIamMember:SecurityGatewayIamMember":
+                return new SecurityGatewayIamMember(name, <any>undefined, { urn })
+            case "gcp:beyondcorp/securityGatewayIamPolicy:SecurityGatewayIamPolicy":
+                return new SecurityGatewayIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -62,3 +88,6 @@ pulumi.runtime.registerResourceModule("gcp", "beyondcorp/appConnection", _module
 pulumi.runtime.registerResourceModule("gcp", "beyondcorp/appConnector", _module)
 pulumi.runtime.registerResourceModule("gcp", "beyondcorp/appGateway", _module)
 pulumi.runtime.registerResourceModule("gcp", "beyondcorp/securityGateway", _module)
+pulumi.runtime.registerResourceModule("gcp", "beyondcorp/securityGatewayIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "beyondcorp/securityGatewayIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "beyondcorp/securityGatewayIamPolicy", _module)

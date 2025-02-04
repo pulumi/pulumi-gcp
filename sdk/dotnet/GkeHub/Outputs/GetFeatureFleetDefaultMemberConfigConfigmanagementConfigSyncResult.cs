@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitResult> Gits;
         /// <summary>
+        /// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount 'default' in the namespace 'config-management-monitoring' should be bound to the GSA.
+        /// </summary>
+        public readonly string MetricsGcpServiceAccountEmail;
+        /// <summary>
         /// OCI repo configuration for the cluster
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciResult> Ocis;
@@ -40,6 +44,8 @@ namespace Pulumi.Gcp.GkeHub.Outputs
 
             ImmutableArray<Outputs.GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitResult> gits,
 
+            string metricsGcpServiceAccountEmail,
+
             ImmutableArray<Outputs.GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciResult> ocis,
 
             bool preventDrift,
@@ -48,6 +54,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         {
             Enabled = enabled;
             Gits = gits;
+            MetricsGcpServiceAccountEmail = metricsGcpServiceAccountEmail;
             Ocis = ocis;
             PreventDrift = preventDrift;
             SourceFormat = sourceFormat;

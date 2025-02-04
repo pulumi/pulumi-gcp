@@ -25,6 +25,7 @@ class WorkflowTemplateArgs:
                  location: pulumi.Input[str],
                  placement: pulumi.Input['WorkflowTemplatePlacementArgs'],
                  dag_timeout: Optional[pulumi.Input[str]] = None,
+                 encryption_config: Optional[pulumi.Input['WorkflowTemplateEncryptionConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]]] = None,
@@ -42,6 +43,7 @@ class WorkflowTemplateArgs:
                on a [managed
                cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
                the cluster is deleted.
+        :param pulumi.Input['WorkflowTemplateEncryptionConfigArgs'] encryption_config: Optional. The encryption configuration for the workflow template.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
                by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC
                1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63
@@ -59,6 +61,8 @@ class WorkflowTemplateArgs:
         pulumi.set(__self__, "placement", placement)
         if dag_timeout is not None:
             pulumi.set(__self__, "dag_timeout", dag_timeout)
+        if encryption_config is not None:
+            pulumi.set(__self__, "encryption_config", encryption_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -126,6 +130,18 @@ class WorkflowTemplateArgs:
     @dag_timeout.setter
     def dag_timeout(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dag_timeout", value)
+
+    @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> Optional[pulumi.Input['WorkflowTemplateEncryptionConfigArgs']]:
+        """
+        Optional. The encryption configuration for the workflow template.
+        """
+        return pulumi.get(self, "encryption_config")
+
+    @encryption_config.setter
+    def encryption_config(self, value: Optional[pulumi.Input['WorkflowTemplateEncryptionConfigArgs']]):
+        pulumi.set(self, "encryption_config", value)
 
     @property
     @pulumi.getter
@@ -201,6 +217,7 @@ class _WorkflowTemplateState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  dag_timeout: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 encryption_config: Optional[pulumi.Input['WorkflowTemplateEncryptionConfigArgs']] = None,
                  jobs: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -221,6 +238,7 @@ class _WorkflowTemplateState:
                on a [managed
                cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
                the cluster is deleted.
+        :param pulumi.Input['WorkflowTemplateEncryptionConfigArgs'] encryption_config: Optional. The encryption configuration for the workflow template.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
                by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC
@@ -244,6 +262,8 @@ class _WorkflowTemplateState:
             pulumi.set(__self__, "dag_timeout", dag_timeout)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if encryption_config is not None:
+            pulumi.set(__self__, "encryption_config", encryption_config)
         if jobs is not None:
             pulumi.set(__self__, "jobs", jobs)
         if labels is not None:
@@ -306,6 +326,18 @@ class _WorkflowTemplateState:
     @effective_labels.setter
     def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> Optional[pulumi.Input['WorkflowTemplateEncryptionConfigArgs']]:
+        """
+        Optional. The encryption configuration for the workflow template.
+        """
+        return pulumi.get(self, "encryption_config")
+
+    @encryption_config.setter
+    def encryption_config(self, value: Optional[pulumi.Input['WorkflowTemplateEncryptionConfigArgs']]):
+        pulumi.set(self, "encryption_config", value)
 
     @property
     @pulumi.getter
@@ -441,6 +473,7 @@ class WorkflowTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dag_timeout: Optional[pulumi.Input[str]] = None,
+                 encryption_config: Optional[pulumi.Input[Union['WorkflowTemplateEncryptionConfigArgs', 'WorkflowTemplateEncryptionConfigArgsDict']]] = None,
                  jobs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -548,6 +581,7 @@ class WorkflowTemplate(pulumi.CustomResource):
                on a [managed
                cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
                the cluster is deleted.
+        :param pulumi.Input[Union['WorkflowTemplateEncryptionConfigArgs', 'WorkflowTemplateEncryptionConfigArgsDict']] encryption_config: Optional. The encryption configuration for the workflow template.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict']]]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
                by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC
@@ -674,6 +708,7 @@ class WorkflowTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dag_timeout: Optional[pulumi.Input[str]] = None,
+                 encryption_config: Optional[pulumi.Input[Union['WorkflowTemplateEncryptionConfigArgs', 'WorkflowTemplateEncryptionConfigArgsDict']]] = None,
                  jobs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -692,6 +727,7 @@ class WorkflowTemplate(pulumi.CustomResource):
             __props__ = WorkflowTemplateArgs.__new__(WorkflowTemplateArgs)
 
             __props__.__dict__["dag_timeout"] = dag_timeout
+            __props__.__dict__["encryption_config"] = encryption_config
             if jobs is None and not opts.urn:
                 raise TypeError("Missing required property 'jobs'")
             __props__.__dict__["jobs"] = jobs
@@ -725,6 +761,7 @@ class WorkflowTemplate(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             dag_timeout: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            encryption_config: Optional[pulumi.Input[Union['WorkflowTemplateEncryptionConfigArgs', 'WorkflowTemplateEncryptionConfigArgsDict']]] = None,
             jobs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -750,6 +787,7 @@ class WorkflowTemplate(pulumi.CustomResource):
                on a [managed
                cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
                the cluster is deleted.
+        :param pulumi.Input[Union['WorkflowTemplateEncryptionConfigArgs', 'WorkflowTemplateEncryptionConfigArgsDict']] encryption_config: Optional. The encryption configuration for the workflow template.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict']]]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
                by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC
@@ -774,6 +812,7 @@ class WorkflowTemplate(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["dag_timeout"] = dag_timeout
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["encryption_config"] = encryption_config
         __props__.__dict__["jobs"] = jobs
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
@@ -812,6 +851,14 @@ class WorkflowTemplate(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         return pulumi.get(self, "effective_labels")
+
+    @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> pulumi.Output[Optional['outputs.WorkflowTemplateEncryptionConfig']]:
+        """
+        Optional. The encryption configuration for the workflow template.
+        """
+        return pulumi.get(self, "encryption_config")
 
     @property
     @pulumi.getter

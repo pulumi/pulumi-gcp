@@ -51,6 +51,21 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs
     }
 
     /**
+     * The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+     * 
+     */
+    @Import(name="metricsGcpServiceAccountEmail")
+    private @Nullable Output<String> metricsGcpServiceAccountEmail;
+
+    /**
+     * @return The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+     * 
+     */
+    public Optional<Output<String>> metricsGcpServiceAccountEmail() {
+        return Optional.ofNullable(this.metricsGcpServiceAccountEmail);
+    }
+
+    /**
      * OCI repo configuration for the cluster
      * Structure is documented below.
      * 
@@ -102,6 +117,7 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs
     private FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs $) {
         this.enabled = $.enabled;
         this.git = $.git;
+        this.metricsGcpServiceAccountEmail = $.metricsGcpServiceAccountEmail;
         this.oci = $.oci;
         this.preventDrift = $.preventDrift;
         this.sourceFormat = $.sourceFormat;
@@ -167,6 +183,27 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs
          */
         public Builder git(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs git) {
             return git(Output.of(git));
+        }
+
+        /**
+         * @param metricsGcpServiceAccountEmail The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metricsGcpServiceAccountEmail(@Nullable Output<String> metricsGcpServiceAccountEmail) {
+            $.metricsGcpServiceAccountEmail = metricsGcpServiceAccountEmail;
+            return this;
+        }
+
+        /**
+         * @param metricsGcpServiceAccountEmail The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metricsGcpServiceAccountEmail(String metricsGcpServiceAccountEmail) {
+            return metricsGcpServiceAccountEmail(Output.of(metricsGcpServiceAccountEmail));
         }
 
         /**

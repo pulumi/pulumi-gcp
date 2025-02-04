@@ -27,16 +27,22 @@ class GetSResult:
     """
     A collection of values returned by getS.
     """
-    def __init__(__self__, accounts=None, id=None, project=None):
+    def __init__(__self__, accounts=None, id=None, prefix=None, project=None, regex=None):
         if accounts and not isinstance(accounts, list):
             raise TypeError("Expected argument 'accounts' to be a list")
         pulumi.set(__self__, "accounts", accounts)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if prefix and not isinstance(prefix, str):
+            raise TypeError("Expected argument 'prefix' to be a str")
+        pulumi.set(__self__, "prefix", prefix)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if regex and not isinstance(regex, str):
+            raise TypeError("Expected argument 'regex' to be a str")
+        pulumi.set(__self__, "regex", regex)
 
     @property
     @pulumi.getter
@@ -56,8 +62,18 @@ class GetSResult:
 
     @property
     @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def regex(self) -> Optional[str]:
+        return pulumi.get(self, "regex")
 
 
 class AwaitableGetSResult(GetSResult):
@@ -68,10 +84,14 @@ class AwaitableGetSResult(GetSResult):
         return GetSResult(
             accounts=self.accounts,
             id=self.id,
-            project=self.project)
+            prefix=self.prefix,
+            project=self.project,
+            regex=self.regex)
 
 
-def get_s(project: Optional[str] = None,
+def get_s(prefix: Optional[str] = None,
+          project: Optional[str] = None,
+          regex: Optional[str] = None,
           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSResult:
     """
     Gets a list of all service accounts from a project.
@@ -80,7 +100,7 @@ def get_s(project: Optional[str] = None,
 
     ## Example Usage
 
-    Example service accounts.
+    Get all service accounts from a project
 
     ```python
     import pulumi
@@ -89,19 +109,55 @@ def get_s(project: Optional[str] = None,
     example = gcp.serviceaccount.get_s(project="example-project")
     ```
 
+    Get all service accounts that are prefixed with `"foo"`
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.serviceaccount.get_s(prefix="foo")
+    ```
+
+    Get all service accounts that contain `"bar"`
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    bar = gcp.serviceaccount.get_s(regex=".*bar.*")
+    ```
+
+    Get all service accounts that are prefixed with `"foo"` and contain `"bar"`
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo_bar = gcp.serviceaccount.get_s(prefix="foo",
+        regex=".*bar.*")
+    ```
+
+
+    :param str prefix: A prefix for filtering. It's applied with the `account_id`.
     :param str project: The ID of the project. If it is not provided, the provider project is used.
+    :param str regex: A regular expression for filtering. It's applied with the `email`. Further information about the syntax can be found [here](https://github.com/google/re2/wiki/Syntax).
     """
     __args__ = dict()
+    __args__['prefix'] = prefix
     __args__['project'] = project
+    __args__['regex'] = regex
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('gcp:serviceaccount/getS:getS', __args__, opts=opts, typ=GetSResult).value
 
     return AwaitableGetSResult(
         accounts=pulumi.get(__ret__, 'accounts'),
         id=pulumi.get(__ret__, 'id'),
-        project=pulumi.get(__ret__, 'project'))
-def get_s_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+        prefix=pulumi.get(__ret__, 'prefix'),
+        project=pulumi.get(__ret__, 'project'),
+        regex=pulumi.get(__ret__, 'regex'))
+def get_s_output(prefix: Optional[pulumi.Input[Optional[str]]] = None,
+                 project: Optional[pulumi.Input[Optional[str]]] = None,
+                 regex: Optional[pulumi.Input[Optional[str]]] = None,
                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSResult]:
     """
     Gets a list of all service accounts from a project.
@@ -110,7 +166,7 @@ def get_s_output(project: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    Example service accounts.
+    Get all service accounts from a project
 
     ```python
     import pulumi
@@ -119,14 +175,48 @@ def get_s_output(project: Optional[pulumi.Input[Optional[str]]] = None,
     example = gcp.serviceaccount.get_s(project="example-project")
     ```
 
+    Get all service accounts that are prefixed with `"foo"`
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.serviceaccount.get_s(prefix="foo")
+    ```
+
+    Get all service accounts that contain `"bar"`
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    bar = gcp.serviceaccount.get_s(regex=".*bar.*")
+    ```
+
+    Get all service accounts that are prefixed with `"foo"` and contain `"bar"`
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo_bar = gcp.serviceaccount.get_s(prefix="foo",
+        regex=".*bar.*")
+    ```
+
+
+    :param str prefix: A prefix for filtering. It's applied with the `account_id`.
     :param str project: The ID of the project. If it is not provided, the provider project is used.
+    :param str regex: A regular expression for filtering. It's applied with the `email`. Further information about the syntax can be found [here](https://github.com/google/re2/wiki/Syntax).
     """
     __args__ = dict()
+    __args__['prefix'] = prefix
     __args__['project'] = project
+    __args__['regex'] = regex
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:serviceaccount/getS:getS', __args__, opts=opts, typ=GetSResult)
     return __ret__.apply(lambda __response__: GetSResult(
         accounts=pulumi.get(__response__, 'accounts'),
         id=pulumi.get(__response__, 'id'),
-        project=pulumi.get(__response__, 'project')))
+        prefix=pulumi.get(__response__, 'prefix'),
+        project=pulumi.get(__response__, 'project'),
+        regex=pulumi.get(__response__, 'regex')))

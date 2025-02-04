@@ -26,6 +26,11 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
      */
     private @Nullable FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit git;
     /**
+     * @return The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+     * 
+     */
+    private @Nullable String metricsGcpServiceAccountEmail;
+    /**
      * @return OCI repo configuration for the cluster
      * Structure is documented below.
      * 
@@ -57,6 +62,13 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
      */
     public Optional<FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit> git() {
         return Optional.ofNullable(this.git);
+    }
+    /**
+     * @return The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+     * 
+     */
+    public Optional<String> metricsGcpServiceAccountEmail() {
+        return Optional.ofNullable(this.metricsGcpServiceAccountEmail);
     }
     /**
      * @return OCI repo configuration for the cluster
@@ -92,6 +104,7 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
     public static final class Builder {
         private @Nullable Boolean enabled;
         private @Nullable FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit git;
+        private @Nullable String metricsGcpServiceAccountEmail;
         private @Nullable FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci oci;
         private @Nullable Boolean preventDrift;
         private @Nullable String sourceFormat;
@@ -100,6 +113,7 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.git = defaults.git;
+    	      this.metricsGcpServiceAccountEmail = defaults.metricsGcpServiceAccountEmail;
     	      this.oci = defaults.oci;
     	      this.preventDrift = defaults.preventDrift;
     	      this.sourceFormat = defaults.sourceFormat;
@@ -115,6 +129,12 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
         public Builder git(@Nullable FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit git) {
 
             this.git = git;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder metricsGcpServiceAccountEmail(@Nullable String metricsGcpServiceAccountEmail) {
+
+            this.metricsGcpServiceAccountEmail = metricsGcpServiceAccountEmail;
             return this;
         }
         @CustomType.Setter
@@ -139,6 +159,7 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
             final var _resultValue = new FeatureFleetDefaultMemberConfigConfigmanagementConfigSync();
             _resultValue.enabled = enabled;
             _resultValue.git = git;
+            _resultValue.metricsGcpServiceAccountEmail = metricsGcpServiceAccountEmail;
             _resultValue.oci = oci;
             _resultValue.preventDrift = preventDrift;
             _resultValue.sourceFormat = sourceFormat;

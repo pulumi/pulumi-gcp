@@ -171,6 +171,8 @@ __all__ = [
     'TableRangePartitioningArgsDict',
     'TableRangePartitioningRangeArgs',
     'TableRangePartitioningRangeArgsDict',
+    'TableSchemaForeignTypeInfoArgs',
+    'TableSchemaForeignTypeInfoArgsDict',
     'TableTableConstraintsArgs',
     'TableTableConstraintsArgsDict',
     'TableTableConstraintsForeignKeyArgs',
@@ -7596,6 +7598,37 @@ class TableRangePartitioningRangeArgs:
     @start.setter
     def start(self, value: pulumi.Input[int]):
         pulumi.set(self, "start", value)
+
+
+if not MYPY:
+    class TableSchemaForeignTypeInfoArgsDict(TypedDict):
+        type_system: pulumi.Input[str]
+        """
+        Specifies the system which defines the foreign data type.
+        """
+elif False:
+    TableSchemaForeignTypeInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TableSchemaForeignTypeInfoArgs:
+    def __init__(__self__, *,
+                 type_system: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] type_system: Specifies the system which defines the foreign data type.
+        """
+        pulumi.set(__self__, "type_system", type_system)
+
+    @property
+    @pulumi.getter(name="typeSystem")
+    def type_system(self) -> pulumi.Input[str]:
+        """
+        Specifies the system which defines the foreign data type.
+        """
+        return pulumi.get(self, "type_system")
+
+    @type_system.setter
+    def type_system(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type_system", value)
 
 
 if not MYPY:

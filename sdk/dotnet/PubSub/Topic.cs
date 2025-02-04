@@ -240,6 +240,61 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// ### Pubsub Topic Ingestion Aws Msk
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.PubSub.Topic("example", new()
+    ///     {
+    ///         Name = "example-topic",
+    ///         IngestionDataSourceSettings = new Gcp.PubSub.Inputs.TopicIngestionDataSourceSettingsArgs
+    ///         {
+    ///             AwsMsk = new Gcp.PubSub.Inputs.TopicIngestionDataSourceSettingsAwsMskArgs
+    ///             {
+    ///                 ClusterArn = "arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name",
+    ///                 Topic = "test-topic",
+    ///                 AwsRoleArn = "arn:aws:iam::111111111111:role/fake-role-name",
+    ///                 GcpServiceAccount = "fake-service-account@fake-gcp-project.iam.gserviceaccount.com",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Pubsub Topic Ingestion Confluent Cloud
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.PubSub.Topic("example", new()
+    ///     {
+    ///         Name = "example-topic",
+    ///         IngestionDataSourceSettings = new Gcp.PubSub.Inputs.TopicIngestionDataSourceSettingsArgs
+    ///         {
+    ///             ConfluentCloud = new Gcp.PubSub.Inputs.TopicIngestionDataSourceSettingsConfluentCloudArgs
+    ///             {
+    ///                 BootstrapServer = "test.us-west2.gcp.confluent.cloud:1111",
+    ///                 ClusterId = "1234",
+    ///                 Topic = "test-topic",
+    ///                 IdentityPoolId = "test-identity-pool-id",
+    ///                 GcpServiceAccount = "fake-service-account@fake-gcp-project.iam.gserviceaccount.com",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

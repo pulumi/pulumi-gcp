@@ -40,6 +40,7 @@ class TableArgs:
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
                  resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
+                 schema_foreign_type_info: Optional[pulumi.Input['TableSchemaForeignTypeInfoArgs']] = None,
                  table_constraints: Optional[pulumi.Input['TableTableConstraintsArgs']] = None,
                  table_replication_info: Optional[pulumi.Input['TableTableReplicationInfoArgs']] = None,
                  time_partitioning: Optional[pulumi.Input['TableTimePartitioningArgs']] = None,
@@ -91,8 +92,10 @@ class TableArgs:
                globally unique. Tag key is expected to be in the namespaced format, for
                example "123456789012/environment" where 123456789012 is the ID of the
                parent organization or project resource for this tag key. Tag value is
-               expected to be the short name, for example "Production".
+               expected to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
+               for more details.
         :param pulumi.Input[str] schema: A JSON schema for the table.
+        :param pulumi.Input['TableSchemaForeignTypeInfoArgs'] schema_foreign_type_info: Specifies metadata of the foreign data type definition in field schema.
         :param pulumi.Input['TableTableConstraintsArgs'] table_constraints: Defines the primary key and foreign keys. 
                Structure is documented below.
         :param pulumi.Input['TableTableReplicationInfoArgs'] table_replication_info: Replication info of a table created
@@ -140,6 +143,8 @@ class TableArgs:
             pulumi.set(__self__, "resource_tags", resource_tags)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
+        if schema_foreign_type_info is not None:
+            pulumi.set(__self__, "schema_foreign_type_info", schema_foreign_type_info)
         if table_constraints is not None:
             pulumi.set(__self__, "table_constraints", table_constraints)
         if table_replication_info is not None:
@@ -385,7 +390,8 @@ class TableArgs:
         globally unique. Tag key is expected to be in the namespaced format, for
         example "123456789012/environment" where 123456789012 is the ID of the
         parent organization or project resource for this tag key. Tag value is
-        expected to be the short name, for example "Production".
+        expected to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
+        for more details.
         """
         return pulumi.get(self, "resource_tags")
 
@@ -404,6 +410,18 @@ class TableArgs:
     @schema.setter
     def schema(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter(name="schemaForeignTypeInfo")
+    def schema_foreign_type_info(self) -> Optional[pulumi.Input['TableSchemaForeignTypeInfoArgs']]:
+        """
+        Specifies metadata of the foreign data type definition in field schema.
+        """
+        return pulumi.get(self, "schema_foreign_type_info")
+
+    @schema_foreign_type_info.setter
+    def schema_foreign_type_info(self, value: Optional[pulumi.Input['TableSchemaForeignTypeInfoArgs']]):
+        pulumi.set(self, "schema_foreign_type_info", value)
 
     @property
     @pulumi.getter(name="tableConstraints")
@@ -490,6 +508,7 @@ class _TableState:
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
                  resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
+                 schema_foreign_type_info: Optional[pulumi.Input['TableSchemaForeignTypeInfoArgs']] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  table_constraints: Optional[pulumi.Input['TableTableConstraintsArgs']] = None,
                  table_id: Optional[pulumi.Input[str]] = None,
@@ -566,8 +585,10 @@ class _TableState:
                globally unique. Tag key is expected to be in the namespaced format, for
                example "123456789012/environment" where 123456789012 is the ID of the
                parent organization or project resource for this tag key. Tag value is
-               expected to be the short name, for example "Production".
+               expected to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
+               for more details.
         :param pulumi.Input[str] schema: A JSON schema for the table.
+        :param pulumi.Input['TableSchemaForeignTypeInfoArgs'] schema_foreign_type_info: Specifies metadata of the foreign data type definition in field schema.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input['TableTableConstraintsArgs'] table_constraints: Defines the primary key and foreign keys. 
                Structure is documented below.
@@ -637,6 +658,8 @@ class _TableState:
             pulumi.set(__self__, "resource_tags", resource_tags)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
+        if schema_foreign_type_info is not None:
+            pulumi.set(__self__, "schema_foreign_type_info", schema_foreign_type_info)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if table_constraints is not None:
@@ -998,7 +1021,8 @@ class _TableState:
         globally unique. Tag key is expected to be in the namespaced format, for
         example "123456789012/environment" where 123456789012 is the ID of the
         parent organization or project resource for this tag key. Tag value is
-        expected to be the short name, for example "Production".
+        expected to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
+        for more details.
         """
         return pulumi.get(self, "resource_tags")
 
@@ -1017,6 +1041,18 @@ class _TableState:
     @schema.setter
     def schema(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter(name="schemaForeignTypeInfo")
+    def schema_foreign_type_info(self) -> Optional[pulumi.Input['TableSchemaForeignTypeInfoArgs']]:
+        """
+        Specifies metadata of the foreign data type definition in field schema.
+        """
+        return pulumi.get(self, "schema_foreign_type_info")
+
+    @schema_foreign_type_info.setter
+    def schema_foreign_type_info(self, value: Optional[pulumi.Input['TableSchemaForeignTypeInfoArgs']]):
+        pulumi.set(self, "schema_foreign_type_info", value)
 
     @property
     @pulumi.getter(name="selfLink")
@@ -1133,6 +1169,7 @@ class Table(pulumi.CustomResource):
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
                  resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
+                 schema_foreign_type_info: Optional[pulumi.Input[Union['TableSchemaForeignTypeInfoArgs', 'TableSchemaForeignTypeInfoArgsDict']]] = None,
                  table_constraints: Optional[pulumi.Input[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']]] = None,
                  table_id: Optional[pulumi.Input[str]] = None,
                  table_replication_info: Optional[pulumi.Input[Union['TableTableReplicationInfoArgs', 'TableTableReplicationInfoArgsDict']]] = None,
@@ -1269,8 +1306,10 @@ class Table(pulumi.CustomResource):
                globally unique. Tag key is expected to be in the namespaced format, for
                example "123456789012/environment" where 123456789012 is the ID of the
                parent organization or project resource for this tag key. Tag value is
-               expected to be the short name, for example "Production".
+               expected to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
+               for more details.
         :param pulumi.Input[str] schema: A JSON schema for the table.
+        :param pulumi.Input[Union['TableSchemaForeignTypeInfoArgs', 'TableSchemaForeignTypeInfoArgsDict']] schema_foreign_type_info: Specifies metadata of the foreign data type definition in field schema.
         :param pulumi.Input[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']] table_constraints: Defines the primary key and foreign keys. 
                Structure is documented below.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
@@ -1408,6 +1447,7 @@ class Table(pulumi.CustomResource):
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
                  resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
+                 schema_foreign_type_info: Optional[pulumi.Input[Union['TableSchemaForeignTypeInfoArgs', 'TableSchemaForeignTypeInfoArgsDict']]] = None,
                  table_constraints: Optional[pulumi.Input[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']]] = None,
                  table_id: Optional[pulumi.Input[str]] = None,
                  table_replication_info: Optional[pulumi.Input[Union['TableTableReplicationInfoArgs', 'TableTableReplicationInfoArgsDict']]] = None,
@@ -1442,6 +1482,7 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["require_partition_filter"] = require_partition_filter
             __props__.__dict__["resource_tags"] = resource_tags
             __props__.__dict__["schema"] = schema
+            __props__.__dict__["schema_foreign_type_info"] = schema_foreign_type_info
             __props__.__dict__["table_constraints"] = table_constraints
             if table_id is None and not opts.urn:
                 raise TypeError("Missing required property 'table_id'")
@@ -1499,6 +1540,7 @@ class Table(pulumi.CustomResource):
             require_partition_filter: Optional[pulumi.Input[bool]] = None,
             resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             schema: Optional[pulumi.Input[str]] = None,
+            schema_foreign_type_info: Optional[pulumi.Input[Union['TableSchemaForeignTypeInfoArgs', 'TableSchemaForeignTypeInfoArgsDict']]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             table_constraints: Optional[pulumi.Input[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']]] = None,
             table_id: Optional[pulumi.Input[str]] = None,
@@ -1580,8 +1622,10 @@ class Table(pulumi.CustomResource):
                globally unique. Tag key is expected to be in the namespaced format, for
                example "123456789012/environment" where 123456789012 is the ID of the
                parent organization or project resource for this tag key. Tag value is
-               expected to be the short name, for example "Production".
+               expected to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
+               for more details.
         :param pulumi.Input[str] schema: A JSON schema for the table.
+        :param pulumi.Input[Union['TableSchemaForeignTypeInfoArgs', 'TableSchemaForeignTypeInfoArgsDict']] schema_foreign_type_info: Specifies metadata of the foreign data type definition in field schema.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']] table_constraints: Defines the primary key and foreign keys. 
                Structure is documented below.
@@ -1628,6 +1672,7 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["require_partition_filter"] = require_partition_filter
         __props__.__dict__["resource_tags"] = resource_tags
         __props__.__dict__["schema"] = schema
+        __props__.__dict__["schema_foreign_type_info"] = schema_foreign_type_info
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["table_constraints"] = table_constraints
         __props__.__dict__["table_id"] = table_id
@@ -1883,7 +1928,8 @@ class Table(pulumi.CustomResource):
         globally unique. Tag key is expected to be in the namespaced format, for
         example "123456789012/environment" where 123456789012 is the ID of the
         parent organization or project resource for this tag key. Tag value is
-        expected to be the short name, for example "Production".
+        expected to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
+        for more details.
         """
         return pulumi.get(self, "resource_tags")
 
@@ -1894,6 +1940,14 @@ class Table(pulumi.CustomResource):
         A JSON schema for the table.
         """
         return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter(name="schemaForeignTypeInfo")
+    def schema_foreign_type_info(self) -> pulumi.Output[Optional['outputs.TableSchemaForeignTypeInfo']]:
+        """
+        Specifies metadata of the foreign data type definition in field schema.
+        """
+        return pulumi.get(self, "schema_foreign_type_info")
 
     @property
     @pulumi.getter(name="selfLink")

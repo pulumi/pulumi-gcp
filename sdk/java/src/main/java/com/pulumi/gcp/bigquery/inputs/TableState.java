@@ -11,6 +11,7 @@ import com.pulumi.gcp.bigquery.inputs.TableExternalCatalogTableOptionsArgs;
 import com.pulumi.gcp.bigquery.inputs.TableExternalDataConfigurationArgs;
 import com.pulumi.gcp.bigquery.inputs.TableMaterializedViewArgs;
 import com.pulumi.gcp.bigquery.inputs.TableRangePartitioningArgs;
+import com.pulumi.gcp.bigquery.inputs.TableSchemaForeignTypeInfoArgs;
 import com.pulumi.gcp.bigquery.inputs.TableTableConstraintsArgs;
 import com.pulumi.gcp.bigquery.inputs.TableTableReplicationInfoArgs;
 import com.pulumi.gcp.bigquery.inputs.TableTimePartitioningArgs;
@@ -485,7 +486,8 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
      * globally unique. Tag key is expected to be in the namespaced format, for
      * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the
      * parent organization or project resource for this tag key. Tag value is
-     * expected to be the short name, for example &#34;Production&#34;.
+     * expected to be the short name, for example &#34;Production&#34;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
+     * for more details.
      * 
      */
     @Import(name="resourceTags")
@@ -496,7 +498,8 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
      * globally unique. Tag key is expected to be in the namespaced format, for
      * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the
      * parent organization or project resource for this tag key. Tag value is
-     * expected to be the short name, for example &#34;Production&#34;.
+     * expected to be the short name, for example &#34;Production&#34;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
+     * for more details.
      * 
      */
     public Optional<Output<Map<String,String>>> resourceTags() {
@@ -516,6 +519,21 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> schema() {
         return Optional.ofNullable(this.schema);
+    }
+
+    /**
+     * Specifies metadata of the foreign data type definition in field schema.
+     * 
+     */
+    @Import(name="schemaForeignTypeInfo")
+    private @Nullable Output<TableSchemaForeignTypeInfoArgs> schemaForeignTypeInfo;
+
+    /**
+     * @return Specifies metadata of the foreign data type definition in field schema.
+     * 
+     */
+    public Optional<Output<TableSchemaForeignTypeInfoArgs>> schemaForeignTypeInfo() {
+        return Optional.ofNullable(this.schemaForeignTypeInfo);
     }
 
     /**
@@ -667,6 +685,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         this.requirePartitionFilter = $.requirePartitionFilter;
         this.resourceTags = $.resourceTags;
         this.schema = $.schema;
+        this.schemaForeignTypeInfo = $.schemaForeignTypeInfo;
         this.selfLink = $.selfLink;
         this.tableConstraints = $.tableConstraints;
         this.tableId = $.tableId;
@@ -1312,7 +1331,8 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
          * globally unique. Tag key is expected to be in the namespaced format, for
          * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the
          * parent organization or project resource for this tag key. Tag value is
-         * expected to be the short name, for example &#34;Production&#34;.
+         * expected to be the short name, for example &#34;Production&#34;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
+         * for more details.
          * 
          * @return builder
          * 
@@ -1327,7 +1347,8 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
          * globally unique. Tag key is expected to be in the namespaced format, for
          * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the
          * parent organization or project resource for this tag key. Tag value is
-         * expected to be the short name, for example &#34;Production&#34;.
+         * expected to be the short name, for example &#34;Production&#34;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
+         * for more details.
          * 
          * @return builder
          * 
@@ -1355,6 +1376,27 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder schema(String schema) {
             return schema(Output.of(schema));
+        }
+
+        /**
+         * @param schemaForeignTypeInfo Specifies metadata of the foreign data type definition in field schema.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schemaForeignTypeInfo(@Nullable Output<TableSchemaForeignTypeInfoArgs> schemaForeignTypeInfo) {
+            $.schemaForeignTypeInfo = schemaForeignTypeInfo;
+            return this;
+        }
+
+        /**
+         * @param schemaForeignTypeInfo Specifies metadata of the foreign data type definition in field schema.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schemaForeignTypeInfo(TableSchemaForeignTypeInfoArgs schemaForeignTypeInfo) {
+            return schemaForeignTypeInfo(Output.of(schemaForeignTypeInfo));
         }
 
         /**

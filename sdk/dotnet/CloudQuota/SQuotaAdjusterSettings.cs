@@ -47,15 +47,15 @@ namespace Pulumi.Gcp.CloudQuota
     public partial class SQuotaAdjusterSettings : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Fields to capture the hierarchy enablement.
-        /// The container (org/folder/project) that determines if the quota adjuster is set for this project/folder/org. We use the nearest-ancestor to determine the effective container.
-        /// The nearest ancestor (including this container) with `enabled` set (either true or false) will be returned.
+        /// The resource container that determines if the quota adjuster is set for this project.
+        /// Expect this field to be empty currently.
         /// </summary>
         [Output("effectiveContainer")]
         public Output<string> EffectiveContainer { get; private set; } = null!;
 
         /// <summary>
-        /// Based on the effective container`s setting above, determines Whether this container has the quota adjuster enabled.
+        /// Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+        /// Expect this field to be empty currently.
         /// </summary>
         [Output("effectiveEnablement")]
         public Output<string> EffectiveEnablement { get; private set; } = null!;
@@ -68,7 +68,7 @@ namespace Pulumi.Gcp.CloudQuota
         public Output<string> Enablement { get; private set; } = null!;
 
         /// <summary>
-        /// The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
+        /// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
         /// 
         /// 
         /// - - -
@@ -130,7 +130,7 @@ namespace Pulumi.Gcp.CloudQuota
         public Input<string> Enablement { get; set; } = null!;
 
         /// <summary>
-        /// The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
+        /// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
         /// 
         /// 
         /// - - -
@@ -147,15 +147,15 @@ namespace Pulumi.Gcp.CloudQuota
     public sealed class SQuotaAdjusterSettingsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Fields to capture the hierarchy enablement.
-        /// The container (org/folder/project) that determines if the quota adjuster is set for this project/folder/org. We use the nearest-ancestor to determine the effective container.
-        /// The nearest ancestor (including this container) with `enabled` set (either true or false) will be returned.
+        /// The resource container that determines if the quota adjuster is set for this project.
+        /// Expect this field to be empty currently.
         /// </summary>
         [Input("effectiveContainer")]
         public Input<string>? EffectiveContainer { get; set; }
 
         /// <summary>
-        /// Based on the effective container`s setting above, determines Whether this container has the quota adjuster enabled.
+        /// Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+        /// Expect this field to be empty currently.
         /// </summary>
         [Input("effectiveEnablement")]
         public Input<string>? EffectiveEnablement { get; set; }
@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.CloudQuota
         public Input<string>? Enablement { get; set; }
 
         /// <summary>
-        /// The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
+        /// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
         /// 
         /// 
         /// - - -

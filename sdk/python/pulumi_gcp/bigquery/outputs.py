@@ -94,6 +94,7 @@ __all__ = [
     'TableMaterializedView',
     'TableRangePartitioning',
     'TableRangePartitioningRange',
+    'TableSchemaForeignTypeInfo',
     'TableTableConstraints',
     'TableTableConstraintsForeignKey',
     'TableTableConstraintsForeignKeyColumnReferences',
@@ -5929,6 +5930,41 @@ class TableRangePartitioningRange(dict):
         Start of the range partitioning, inclusive.
         """
         return pulumi.get(self, "start")
+
+
+@pulumi.output_type
+class TableSchemaForeignTypeInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "typeSystem":
+            suggest = "type_system"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TableSchemaForeignTypeInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TableSchemaForeignTypeInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TableSchemaForeignTypeInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type_system: str):
+        """
+        :param str type_system: Specifies the system which defines the foreign data type.
+        """
+        pulumi.set(__self__, "type_system", type_system)
+
+    @property
+    @pulumi.getter(name="typeSystem")
+    def type_system(self) -> str:
+        """
+        Specifies the system which defines the foreign data type.
+        """
+        return pulumi.get(self, "type_system")
 
 
 @pulumi.output_type

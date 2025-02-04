@@ -76,6 +76,9 @@ import (
 //					},
 //				},
 //				FullBackupSpec: &spanner.BackupScheduleFullBackupSpecArgs{},
+//				EncryptionConfig: &spanner.BackupScheduleEncryptionConfigArgs{
+//					EncryptionType: pulumi.String("USE_DATABASE_ENCRYPTION"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -133,6 +136,9 @@ import (
 //					},
 //				},
 //				IncrementalBackupSpec: &spanner.BackupScheduleIncrementalBackupSpecArgs{},
+//				EncryptionConfig: &spanner.BackupScheduleEncryptionConfigArgs{
+//					EncryptionType: pulumi.String("GOOGLE_DEFAULT_ENCRYPTION"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -173,6 +179,9 @@ type BackupSchedule struct {
 	//
 	// ***
 	Database pulumi.StringOutput `pulumi:"database"`
+	// Configuration for the encryption of the backup schedule.
+	// Structure is documented below.
+	EncryptionConfig BackupScheduleEncryptionConfigOutput `pulumi:"encryptionConfig"`
 	// The schedule creates only full backups..
 	FullBackupSpec BackupScheduleFullBackupSpecPtrOutput `pulumi:"fullBackupSpec"`
 	// The schedule creates incremental backup chains.
@@ -237,6 +246,9 @@ type backupScheduleState struct {
 	//
 	// ***
 	Database *string `pulumi:"database"`
+	// Configuration for the encryption of the backup schedule.
+	// Structure is documented below.
+	EncryptionConfig *BackupScheduleEncryptionConfig `pulumi:"encryptionConfig"`
 	// The schedule creates only full backups..
 	FullBackupSpec *BackupScheduleFullBackupSpec `pulumi:"fullBackupSpec"`
 	// The schedule creates incremental backup chains.
@@ -263,6 +275,9 @@ type BackupScheduleState struct {
 	//
 	// ***
 	Database pulumi.StringPtrInput
+	// Configuration for the encryption of the backup schedule.
+	// Structure is documented below.
+	EncryptionConfig BackupScheduleEncryptionConfigPtrInput
 	// The schedule creates only full backups..
 	FullBackupSpec BackupScheduleFullBackupSpecPtrInput
 	// The schedule creates incremental backup chains.
@@ -293,6 +308,9 @@ type backupScheduleArgs struct {
 	//
 	// ***
 	Database string `pulumi:"database"`
+	// Configuration for the encryption of the backup schedule.
+	// Structure is documented below.
+	EncryptionConfig *BackupScheduleEncryptionConfig `pulumi:"encryptionConfig"`
 	// The schedule creates only full backups..
 	FullBackupSpec *BackupScheduleFullBackupSpec `pulumi:"fullBackupSpec"`
 	// The schedule creates incremental backup chains.
@@ -320,6 +338,9 @@ type BackupScheduleArgs struct {
 	//
 	// ***
 	Database pulumi.StringInput
+	// Configuration for the encryption of the backup schedule.
+	// Structure is documented below.
+	EncryptionConfig BackupScheduleEncryptionConfigPtrInput
 	// The schedule creates only full backups..
 	FullBackupSpec BackupScheduleFullBackupSpecPtrInput
 	// The schedule creates incremental backup chains.
@@ -433,6 +454,12 @@ func (o BackupScheduleOutput) ToBackupScheduleOutputWithContext(ctx context.Cont
 // ***
 func (o BackupScheduleOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupSchedule) pulumi.StringOutput { return v.Database }).(pulumi.StringOutput)
+}
+
+// Configuration for the encryption of the backup schedule.
+// Structure is documented below.
+func (o BackupScheduleOutput) EncryptionConfig() BackupScheduleEncryptionConfigOutput {
+	return o.ApplyT(func(v *BackupSchedule) BackupScheduleEncryptionConfigOutput { return v.EncryptionConfig }).(BackupScheduleEncryptionConfigOutput)
 }
 
 // The schedule creates only full backups..

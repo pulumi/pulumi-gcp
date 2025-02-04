@@ -12,6 +12,12 @@ namespace Pulumi.Gcp.SecretManager
     /// <summary>
     /// A secret version resource.
     /// 
+    /// To get more information about SecretVersion, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions)
+    /// * How-to Guides
+    ///     * [Create and deploy a Secret Version](https://cloud.google.com/secret-manager/docs/add-secret-version)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Secret Version Basic

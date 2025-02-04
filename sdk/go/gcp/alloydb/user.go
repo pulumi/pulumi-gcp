@@ -234,6 +234,7 @@ type User struct {
 	// Name of the resource in the form of projects/{project}/locations/{location}/clusters/{cluster}/users/{user}.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Password for this database user.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// The database role name of the user.
 	UserId pulumi.StringOutput `pulumi:"userId"`
@@ -260,6 +261,13 @@ func NewUser(ctx *pulumi.Context,
 	if args.UserType == nil {
 		return nil, errors.New("invalid value for required argument 'UserType'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource User
 	err := ctx.RegisterResource("gcp:alloydb/user:User", name, args, &resource, opts...)
@@ -291,6 +299,7 @@ type userState struct {
 	// Name of the resource in the form of projects/{project}/locations/{location}/clusters/{cluster}/users/{user}.
 	Name *string `pulumi:"name"`
 	// Password for this database user.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password *string `pulumi:"password"`
 	// The database role name of the user.
 	UserId *string `pulumi:"userId"`
@@ -310,6 +319,7 @@ type UserState struct {
 	// Name of the resource in the form of projects/{project}/locations/{location}/clusters/{cluster}/users/{user}.
 	Name pulumi.StringPtrInput
 	// Password for this database user.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password pulumi.StringPtrInput
 	// The database role name of the user.
 	UserId pulumi.StringPtrInput
@@ -331,6 +341,7 @@ type userArgs struct {
 	// List of database roles this database user has.
 	DatabaseRoles []string `pulumi:"databaseRoles"`
 	// Password for this database user.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password *string `pulumi:"password"`
 	// The database role name of the user.
 	UserId string `pulumi:"userId"`
@@ -349,6 +360,7 @@ type UserArgs struct {
 	// List of database roles this database user has.
 	DatabaseRoles pulumi.StringArrayInput
 	// Password for this database user.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password pulumi.StringPtrInput
 	// The database role name of the user.
 	UserId pulumi.StringInput
@@ -463,6 +475,7 @@ func (o UserOutput) Name() pulumi.StringOutput {
 }
 
 // Password for this database user.
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o UserOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }

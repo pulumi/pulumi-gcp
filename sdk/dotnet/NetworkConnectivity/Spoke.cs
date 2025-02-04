@@ -148,13 +148,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// {
     ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
-    ///         Name = "tf-test-network_37559",
+    ///         Name = "tf-test-network_91980",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
     ///     {
-    ///         Name = "tf-test-subnet_91980",
+    ///         Name = "tf-test-subnet_37118",
     ///         IpCidrRange = "10.0.0.0/28",
     ///         Region = "us-central1",
     ///         Network = network.SelfLink,
@@ -162,7 +162,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var instance = new Gcp.Compute.Instance("instance", new()
     ///     {
-    ///         Name = "tf-test-instance_37118",
+    ///         Name = "tf-test-instance_80332",
     ///         MachineType = "e2-medium",
     ///         CanIpForward = true,
     ///         Zone = "us-central1-a",
@@ -192,7 +192,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var basicHub = new Gcp.NetworkConnectivity.Hub("basic_hub", new()
     ///     {
-    ///         Name = "tf-test-hub_80332",
+    ///         Name = "tf-test-hub_13293",
     ///         Description = "A sample hub",
     ///         Labels = 
     ///         {
@@ -202,7 +202,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var primary = new Gcp.NetworkConnectivity.Spoke("primary", new()
     ///     {
-    ///         Name = "tf-test-name_13293",
+    ///         Name = "tf-test-name_40289",
     ///         Location = "us-central1",
     ///         Description = "A sample spoke with a linked routher appliance instance",
     ///         Labels = 
@@ -594,8 +594,8 @@ namespace Pulumi.Gcp.NetworkConnectivity
     ///         {
     ///             AutoAcceptProjects = new[]
     ///             {
-    ///                 "foo_40289",
-    ///                 "bar_33395",
+    ///                 "foo_33395",
+    ///                 "bar_76044",
     ///             },
     ///         },
     ///     });
@@ -613,6 +613,55 @@ namespace Pulumi.Gcp.NetworkConnectivity
     ///         Group = centerGroup.Id,
     ///         LinkedVpcNetwork = new Gcp.NetworkConnectivity.Inputs.SpokeLinkedVpcNetworkArgs
     ///         {
+    ///             Uri = network.SelfLink,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Network Connectivity Spoke Linked Vpc Network Ipv6 Support
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         Name = "net",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var basicHub = new Gcp.NetworkConnectivity.Hub("basic_hub", new()
+    ///     {
+    ///         Name = "hub1",
+    ///         Description = "A sample hub",
+    ///         Labels = 
+    ///         {
+    ///             { "label-two", "value-one" },
+    ///         },
+    ///     });
+    /// 
+    ///     var primary = new Gcp.NetworkConnectivity.Spoke("primary", new()
+    ///     {
+    ///         Name = "spoke1-ipv6",
+    ///         Location = "global",
+    ///         Description = "A sample spoke with a linked VPC that include export ranges of all IPv6",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Hub = basicHub.Id,
+    ///         LinkedVpcNetwork = new Gcp.NetworkConnectivity.Inputs.SpokeLinkedVpcNetworkArgs
+    ///         {
+    ///             IncludeExportRanges = new[]
+    ///             {
+    ///                 "ALL_IPV6_RANGES",
+    ///                 "ALL_PRIVATE_IPV4_RANGES",
+    ///             },
     ///             Uri = network.SelfLink,
     ///         },
     ///     });

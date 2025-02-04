@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.dataproc.WorkflowTemplateArgs;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplateState;
+import com.pulumi.gcp.dataproc.outputs.WorkflowTemplateEncryptionConfig;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplateJob;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplateParameter;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacement;
@@ -193,6 +194,20 @@ public class WorkflowTemplate extends com.pulumi.resources.CustomResource {
 
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    /**
+     * Optional. The encryption configuration for the workflow template.
+     * 
+     */
+    @Export(name="encryptionConfig", refs={WorkflowTemplateEncryptionConfig.class}, tree="[0]")
+    private Output</* @Nullable */ WorkflowTemplateEncryptionConfig> encryptionConfig;
+
+    /**
+     * @return Optional. The encryption configuration for the workflow template.
+     * 
+     */
+    public Output<Optional<WorkflowTemplateEncryptionConfig>> encryptionConfig() {
+        return Codegen.optional(this.encryptionConfig);
     }
     /**
      * Required. The Directed Acyclic Graph of Jobs to submit.

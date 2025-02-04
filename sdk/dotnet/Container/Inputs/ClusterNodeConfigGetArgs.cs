@@ -208,6 +208,12 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }
 
+        /// <summary>
+        /// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+        /// </summary>
+        [Input("maxRunDuration")]
+        public Input<string>? MaxRunDuration { get; set; }
+
         [Input("metadata")]
         private InputMap<string>? _metadata;
 

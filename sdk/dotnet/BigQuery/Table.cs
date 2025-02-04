@@ -312,7 +312,8 @@ namespace Pulumi.Gcp.BigQuery
         /// globally unique. Tag key is expected to be in the namespaced format, for
         /// example "123456789012/environment" where 123456789012 is the ID of the
         /// parent organization or project resource for this tag key. Tag value is
-        /// expected to be the short name, for example "Production".
+        /// expected to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
+        /// for more details.
         /// </summary>
         [Output("resourceTags")]
         public Output<ImmutableDictionary<string, string>?> ResourceTags { get; private set; } = null!;
@@ -322,6 +323,12 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Output("schema")]
         public Output<string> Schema { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies metadata of the foreign data type definition in field schema.
+        /// </summary>
+        [Output("schemaForeignTypeInfo")]
+        public Output<Outputs.TableSchemaForeignTypeInfo?> SchemaForeignTypeInfo { get; private set; } = null!;
 
         /// <summary>
         /// The URI of the created resource.
@@ -562,7 +569,8 @@ namespace Pulumi.Gcp.BigQuery
         /// globally unique. Tag key is expected to be in the namespaced format, for
         /// example "123456789012/environment" where 123456789012 is the ID of the
         /// parent organization or project resource for this tag key. Tag value is
-        /// expected to be the short name, for example "Production".
+        /// expected to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
+        /// for more details.
         /// </summary>
         public InputMap<string> ResourceTags
         {
@@ -575,6 +583,12 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
+
+        /// <summary>
+        /// Specifies metadata of the foreign data type definition in field schema.
+        /// </summary>
+        [Input("schemaForeignTypeInfo")]
+        public Input<Inputs.TableSchemaForeignTypeInfoArgs>? SchemaForeignTypeInfo { get; set; }
 
         /// <summary>
         /// Defines the primary key and foreign keys. 
@@ -849,7 +863,8 @@ namespace Pulumi.Gcp.BigQuery
         /// globally unique. Tag key is expected to be in the namespaced format, for
         /// example "123456789012/environment" where 123456789012 is the ID of the
         /// parent organization or project resource for this tag key. Tag value is
-        /// expected to be the short name, for example "Production".
+        /// expected to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
+        /// for more details.
         /// </summary>
         public InputMap<string> ResourceTags
         {
@@ -862,6 +877,12 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
+
+        /// <summary>
+        /// Specifies metadata of the foreign data type definition in field schema.
+        /// </summary>
+        [Input("schemaForeignTypeInfo")]
+        public Input<Inputs.TableSchemaForeignTypeInfoGetArgs>? SchemaForeignTypeInfo { get; set; }
 
         /// <summary>
         /// The URI of the created resource.

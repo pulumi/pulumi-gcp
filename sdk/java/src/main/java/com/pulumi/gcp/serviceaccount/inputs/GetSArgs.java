@@ -16,6 +16,21 @@ public final class GetSArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetSArgs Empty = new GetSArgs();
 
     /**
+     * A prefix for filtering. It&#39;s applied with the `account_id`.
+     * 
+     */
+    @Import(name="prefix")
+    private @Nullable Output<String> prefix;
+
+    /**
+     * @return A prefix for filtering. It&#39;s applied with the `account_id`.
+     * 
+     */
+    public Optional<Output<String>> prefix() {
+        return Optional.ofNullable(this.prefix);
+    }
+
+    /**
      * The ID of the project. If it is not provided, the provider project is used.
      * 
      */
@@ -30,10 +45,27 @@ public final class GetSArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * A regular expression for filtering. It&#39;s applied with the `email`. Further information about the syntax can be found [here](https://github.com/google/re2/wiki/Syntax).
+     * 
+     */
+    @Import(name="regex")
+    private @Nullable Output<String> regex;
+
+    /**
+     * @return A regular expression for filtering. It&#39;s applied with the `email`. Further information about the syntax can be found [here](https://github.com/google/re2/wiki/Syntax).
+     * 
+     */
+    public Optional<Output<String>> regex() {
+        return Optional.ofNullable(this.regex);
+    }
+
     private GetSArgs() {}
 
     private GetSArgs(GetSArgs $) {
+        this.prefix = $.prefix;
         this.project = $.project;
+        this.regex = $.regex;
     }
 
     public static Builder builder() {
@@ -55,6 +87,27 @@ public final class GetSArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param prefix A prefix for filtering. It&#39;s applied with the `account_id`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder prefix(@Nullable Output<String> prefix) {
+            $.prefix = prefix;
+            return this;
+        }
+
+        /**
+         * @param prefix A prefix for filtering. It&#39;s applied with the `account_id`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder prefix(String prefix) {
+            return prefix(Output.of(prefix));
+        }
+
+        /**
          * @param project The ID of the project. If it is not provided, the provider project is used.
          * 
          * @return builder
@@ -73,6 +126,27 @@ public final class GetSArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param regex A regular expression for filtering. It&#39;s applied with the `email`. Further information about the syntax can be found [here](https://github.com/google/re2/wiki/Syntax).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regex(@Nullable Output<String> regex) {
+            $.regex = regex;
+            return this;
+        }
+
+        /**
+         * @param regex A regular expression for filtering. It&#39;s applied with the `email`. Further information about the syntax can be found [here](https://github.com/google/re2/wiki/Syntax).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regex(String regex) {
+            return regex(Output.of(regex));
         }
 
         public GetSArgs build() {

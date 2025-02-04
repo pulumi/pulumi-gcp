@@ -19,6 +19,11 @@ namespace Pulumi.Gcp.PubSub.Outputs
         /// </summary>
         public readonly Outputs.TopicIngestionDataSourceSettingsAwsKinesis? AwsKinesis;
         /// <summary>
+        /// Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.TopicIngestionDataSourceSettingsAwsMsk? AwsMsk;
+        /// <summary>
         /// Settings for ingestion from Azure Event Hubs.
         /// Structure is documented below.
         /// </summary>
@@ -28,6 +33,11 @@ namespace Pulumi.Gcp.PubSub.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.TopicIngestionDataSourceSettingsCloudStorage? CloudStorage;
+        /// <summary>
+        /// Settings for ingestion from Confluent Cloud.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.TopicIngestionDataSourceSettingsConfluentCloud? ConfluentCloud;
         /// <summary>
         /// Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
         /// no Platform Logs will be generated.'
@@ -39,15 +49,21 @@ namespace Pulumi.Gcp.PubSub.Outputs
         private TopicIngestionDataSourceSettings(
             Outputs.TopicIngestionDataSourceSettingsAwsKinesis? awsKinesis,
 
+            Outputs.TopicIngestionDataSourceSettingsAwsMsk? awsMsk,
+
             Outputs.TopicIngestionDataSourceSettingsAzureEventHubs? azureEventHubs,
 
             Outputs.TopicIngestionDataSourceSettingsCloudStorage? cloudStorage,
 
+            Outputs.TopicIngestionDataSourceSettingsConfluentCloud? confluentCloud,
+
             Outputs.TopicIngestionDataSourceSettingsPlatformLogsSettings? platformLogsSettings)
         {
             AwsKinesis = awsKinesis;
+            AwsMsk = awsMsk;
             AzureEventHubs = azureEventHubs;
             CloudStorage = cloudStorage;
+            ConfluentCloud = confluentCloud;
             PlatformLogsSettings = platformLogsSettings;
         }
     }

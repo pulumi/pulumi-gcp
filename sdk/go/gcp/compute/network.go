@@ -272,7 +272,7 @@ type Network struct {
 	// A full or partial URL of the network profile to apply to this network.
 	// This field can be set only at resource creation time. For example, the
 	// following are valid URLs:
-	// * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+	// * https://www.googleapis.com/compute/v1/projects/{projectId}/global/networkProfiles/{network_profile_name}
 	// * projects/{projectId}/global/networkProfiles/{network_profile_name}
 	NetworkProfile pulumi.StringPtrOutput `pulumi:"networkProfile"`
 	// (Deprecated)
@@ -382,7 +382,7 @@ type networkState struct {
 	// A full or partial URL of the network profile to apply to this network.
 	// This field can be set only at resource creation time. For example, the
 	// following are valid URLs:
-	// * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+	// * https://www.googleapis.com/compute/v1/projects/{projectId}/global/networkProfiles/{network_profile_name}
 	// * projects/{projectId}/global/networkProfiles/{network_profile_name}
 	NetworkProfile *string `pulumi:"networkProfile"`
 	// (Deprecated)
@@ -463,7 +463,7 @@ type NetworkState struct {
 	// A full or partial URL of the network profile to apply to this network.
 	// This field can be set only at resource creation time. For example, the
 	// following are valid URLs:
-	// * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+	// * https://www.googleapis.com/compute/v1/projects/{projectId}/global/networkProfiles/{network_profile_name}
 	// * projects/{projectId}/global/networkProfiles/{network_profile_name}
 	NetworkProfile pulumi.StringPtrInput
 	// (Deprecated)
@@ -543,7 +543,7 @@ type networkArgs struct {
 	// A full or partial URL of the network profile to apply to this network.
 	// This field can be set only at resource creation time. For example, the
 	// following are valid URLs:
-	// * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+	// * https://www.googleapis.com/compute/v1/projects/{projectId}/global/networkProfiles/{network_profile_name}
 	// * projects/{projectId}/global/networkProfiles/{network_profile_name}
 	NetworkProfile *string `pulumi:"networkProfile"`
 	// The ID of the project in which the resource belongs.
@@ -613,7 +613,7 @@ type NetworkArgs struct {
 	// A full or partial URL of the network profile to apply to this network.
 	// This field can be set only at resource creation time. For example, the
 	// following are valid URLs:
-	// * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+	// * https://www.googleapis.com/compute/v1/projects/{projectId}/global/networkProfiles/{network_profile_name}
 	// * projects/{projectId}/global/networkProfiles/{network_profile_name}
 	NetworkProfile pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -812,7 +812,7 @@ func (o NetworkOutput) NetworkId() pulumi.StringOutput {
 // A full or partial URL of the network profile to apply to this network.
 // This field can be set only at resource creation time. For example, the
 // following are valid URLs:
-// * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+// * https://www.googleapis.com/compute/v1/projects/{projectId}/global/networkProfiles/{network_profile_name}
 // * projects/{projectId}/global/networkProfiles/{network_profile_name}
 func (o NetworkOutput) NetworkProfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.NetworkProfile }).(pulumi.StringPtrOutput)

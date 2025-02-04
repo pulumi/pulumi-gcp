@@ -27,7 +27,6 @@ namespace Pulumi.Gcp.Beyondcorp
     ///     var example = new Gcp.Beyondcorp.SecurityGateway("example", new()
     ///     {
     ///         SecurityGatewayId = "default",
-    ///         Location = "global",
     ///         DisplayName = "My Security Gateway resource",
     ///         Hubs = new[]
     ///         {
@@ -97,10 +96,13 @@ namespace Pulumi.Gcp.Beyondcorp
         public Output<ImmutableArray<Outputs.SecurityGatewayHub>> Hubs { get; private set; } = null!;
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// (Optional, Deprecated)
+        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+        /// 
+        /// &gt; **Warning:** `location` is deprecated and will be removed in a future major release.
         /// </summary>
         [Output("location")]
-        public Output<string> Location { get; private set; } = null!;
+        public Output<string?> Location { get; private set; } = null!;
 
         /// <summary>
         /// Identifier. Name of the resource.
@@ -215,10 +217,13 @@ namespace Pulumi.Gcp.Beyondcorp
         }
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// (Optional, Deprecated)
+        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+        /// 
+        /// &gt; **Warning:** `location` is deprecated and will be removed in a future major release.
         /// </summary>
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -288,7 +293,10 @@ namespace Pulumi.Gcp.Beyondcorp
         }
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// (Optional, Deprecated)
+        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+        /// 
+        /// &gt; **Warning:** `location` is deprecated and will be removed in a future major release.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

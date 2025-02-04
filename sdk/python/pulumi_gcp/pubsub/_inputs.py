@@ -59,6 +59,8 @@ __all__ = [
     'TopicIngestionDataSourceSettingsArgsDict',
     'TopicIngestionDataSourceSettingsAwsKinesisArgs',
     'TopicIngestionDataSourceSettingsAwsKinesisArgsDict',
+    'TopicIngestionDataSourceSettingsAwsMskArgs',
+    'TopicIngestionDataSourceSettingsAwsMskArgsDict',
     'TopicIngestionDataSourceSettingsAzureEventHubsArgs',
     'TopicIngestionDataSourceSettingsAzureEventHubsArgsDict',
     'TopicIngestionDataSourceSettingsCloudStorageArgs',
@@ -69,6 +71,8 @@ __all__ = [
     'TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgsDict',
     'TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs',
     'TopicIngestionDataSourceSettingsCloudStorageTextFormatArgsDict',
+    'TopicIngestionDataSourceSettingsConfluentCloudArgs',
+    'TopicIngestionDataSourceSettingsConfluentCloudArgsDict',
     'TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs',
     'TopicIngestionDataSourceSettingsPlatformLogsSettingsArgsDict',
     'TopicMessageStoragePolicyArgs',
@@ -1510,6 +1514,11 @@ if not MYPY:
         Settings for ingestion from Amazon Kinesis Data Streams.
         Structure is documented below.
         """
+        aws_msk: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsAwsMskArgsDict']]
+        """
+        Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
+        Structure is documented below.
+        """
         azure_event_hubs: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsAzureEventHubsArgsDict']]
         """
         Settings for ingestion from Azure Event Hubs.
@@ -1518,6 +1527,11 @@ if not MYPY:
         cloud_storage: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageArgsDict']]
         """
         Settings for ingestion from Cloud Storage.
+        Structure is documented below.
+        """
+        confluent_cloud: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsConfluentCloudArgsDict']]
+        """
+        Settings for ingestion from Confluent Cloud.
         Structure is documented below.
         """
         platform_logs_settings: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsPlatformLogsSettingsArgsDict']]
@@ -1533,15 +1547,21 @@ elif False:
 class TopicIngestionDataSourceSettingsArgs:
     def __init__(__self__, *,
                  aws_kinesis: Optional[pulumi.Input['TopicIngestionDataSourceSettingsAwsKinesisArgs']] = None,
+                 aws_msk: Optional[pulumi.Input['TopicIngestionDataSourceSettingsAwsMskArgs']] = None,
                  azure_event_hubs: Optional[pulumi.Input['TopicIngestionDataSourceSettingsAzureEventHubsArgs']] = None,
                  cloud_storage: Optional[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageArgs']] = None,
+                 confluent_cloud: Optional[pulumi.Input['TopicIngestionDataSourceSettingsConfluentCloudArgs']] = None,
                  platform_logs_settings: Optional[pulumi.Input['TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs']] = None):
         """
         :param pulumi.Input['TopicIngestionDataSourceSettingsAwsKinesisArgs'] aws_kinesis: Settings for ingestion from Amazon Kinesis Data Streams.
                Structure is documented below.
+        :param pulumi.Input['TopicIngestionDataSourceSettingsAwsMskArgs'] aws_msk: Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
+               Structure is documented below.
         :param pulumi.Input['TopicIngestionDataSourceSettingsAzureEventHubsArgs'] azure_event_hubs: Settings for ingestion from Azure Event Hubs.
                Structure is documented below.
         :param pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageArgs'] cloud_storage: Settings for ingestion from Cloud Storage.
+               Structure is documented below.
+        :param pulumi.Input['TopicIngestionDataSourceSettingsConfluentCloudArgs'] confluent_cloud: Settings for ingestion from Confluent Cloud.
                Structure is documented below.
         :param pulumi.Input['TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs'] platform_logs_settings: Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
                no Platform Logs will be generated.'
@@ -1549,10 +1569,14 @@ class TopicIngestionDataSourceSettingsArgs:
         """
         if aws_kinesis is not None:
             pulumi.set(__self__, "aws_kinesis", aws_kinesis)
+        if aws_msk is not None:
+            pulumi.set(__self__, "aws_msk", aws_msk)
         if azure_event_hubs is not None:
             pulumi.set(__self__, "azure_event_hubs", azure_event_hubs)
         if cloud_storage is not None:
             pulumi.set(__self__, "cloud_storage", cloud_storage)
+        if confluent_cloud is not None:
+            pulumi.set(__self__, "confluent_cloud", confluent_cloud)
         if platform_logs_settings is not None:
             pulumi.set(__self__, "platform_logs_settings", platform_logs_settings)
 
@@ -1568,6 +1592,19 @@ class TopicIngestionDataSourceSettingsArgs:
     @aws_kinesis.setter
     def aws_kinesis(self, value: Optional[pulumi.Input['TopicIngestionDataSourceSettingsAwsKinesisArgs']]):
         pulumi.set(self, "aws_kinesis", value)
+
+    @property
+    @pulumi.getter(name="awsMsk")
+    def aws_msk(self) -> Optional[pulumi.Input['TopicIngestionDataSourceSettingsAwsMskArgs']]:
+        """
+        Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "aws_msk")
+
+    @aws_msk.setter
+    def aws_msk(self, value: Optional[pulumi.Input['TopicIngestionDataSourceSettingsAwsMskArgs']]):
+        pulumi.set(self, "aws_msk", value)
 
     @property
     @pulumi.getter(name="azureEventHubs")
@@ -1594,6 +1631,19 @@ class TopicIngestionDataSourceSettingsArgs:
     @cloud_storage.setter
     def cloud_storage(self, value: Optional[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageArgs']]):
         pulumi.set(self, "cloud_storage", value)
+
+    @property
+    @pulumi.getter(name="confluentCloud")
+    def confluent_cloud(self) -> Optional[pulumi.Input['TopicIngestionDataSourceSettingsConfluentCloudArgs']]:
+        """
+        Settings for ingestion from Confluent Cloud.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "confluent_cloud")
+
+    @confluent_cloud.setter
+    def confluent_cloud(self, value: Optional[pulumi.Input['TopicIngestionDataSourceSettingsConfluentCloudArgs']]):
+        pulumi.set(self, "confluent_cloud", value)
 
     @property
     @pulumi.getter(name="platformLogsSettings")
@@ -1717,6 +1767,109 @@ class TopicIngestionDataSourceSettingsAwsKinesisArgs:
     @stream_arn.setter
     def stream_arn(self, value: pulumi.Input[str]):
         pulumi.set(self, "stream_arn", value)
+
+
+if not MYPY:
+    class TopicIngestionDataSourceSettingsAwsMskArgsDict(TypedDict):
+        aws_role_arn: pulumi.Input[str]
+        """
+        AWS role ARN to be used for Federated Identity authentication with
+        MSK. Check the Pub/Sub docs for how to set up this role and the
+        required permissions that need to be attached to it.
+        """
+        cluster_arn: pulumi.Input[str]
+        """
+        ARN that uniquely identifies the MSK cluster.
+        """
+        gcp_service_account: pulumi.Input[str]
+        """
+        The GCP service account to be used for Federated Identity authentication
+        with MSK (via a `AssumeRoleWithWebIdentity` call for the provided
+        role). The `awsRoleArn` must be set up with `accounts.google.com:sub`
+        equals to this service account number.
+        """
+        topic: pulumi.Input[str]
+        """
+        The name of the MSK topic that Pub/Sub will import from.
+        """
+elif False:
+    TopicIngestionDataSourceSettingsAwsMskArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TopicIngestionDataSourceSettingsAwsMskArgs:
+    def __init__(__self__, *,
+                 aws_role_arn: pulumi.Input[str],
+                 cluster_arn: pulumi.Input[str],
+                 gcp_service_account: pulumi.Input[str],
+                 topic: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] aws_role_arn: AWS role ARN to be used for Federated Identity authentication with
+               MSK. Check the Pub/Sub docs for how to set up this role and the
+               required permissions that need to be attached to it.
+        :param pulumi.Input[str] cluster_arn: ARN that uniquely identifies the MSK cluster.
+        :param pulumi.Input[str] gcp_service_account: The GCP service account to be used for Federated Identity authentication
+               with MSK (via a `AssumeRoleWithWebIdentity` call for the provided
+               role). The `awsRoleArn` must be set up with `accounts.google.com:sub`
+               equals to this service account number.
+        :param pulumi.Input[str] topic: The name of the MSK topic that Pub/Sub will import from.
+        """
+        pulumi.set(__self__, "aws_role_arn", aws_role_arn)
+        pulumi.set(__self__, "cluster_arn", cluster_arn)
+        pulumi.set(__self__, "gcp_service_account", gcp_service_account)
+        pulumi.set(__self__, "topic", topic)
+
+    @property
+    @pulumi.getter(name="awsRoleArn")
+    def aws_role_arn(self) -> pulumi.Input[str]:
+        """
+        AWS role ARN to be used for Federated Identity authentication with
+        MSK. Check the Pub/Sub docs for how to set up this role and the
+        required permissions that need to be attached to it.
+        """
+        return pulumi.get(self, "aws_role_arn")
+
+    @aws_role_arn.setter
+    def aws_role_arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "aws_role_arn", value)
+
+    @property
+    @pulumi.getter(name="clusterArn")
+    def cluster_arn(self) -> pulumi.Input[str]:
+        """
+        ARN that uniquely identifies the MSK cluster.
+        """
+        return pulumi.get(self, "cluster_arn")
+
+    @cluster_arn.setter
+    def cluster_arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster_arn", value)
+
+    @property
+    @pulumi.getter(name="gcpServiceAccount")
+    def gcp_service_account(self) -> pulumi.Input[str]:
+        """
+        The GCP service account to be used for Federated Identity authentication
+        with MSK (via a `AssumeRoleWithWebIdentity` call for the provided
+        role). The `awsRoleArn` must be set up with `accounts.google.com:sub`
+        equals to this service account number.
+        """
+        return pulumi.get(self, "gcp_service_account")
+
+    @gcp_service_account.setter
+    def gcp_service_account(self, value: pulumi.Input[str]):
+        pulumi.set(self, "gcp_service_account", value)
+
+    @property
+    @pulumi.getter
+    def topic(self) -> pulumi.Input[str]:
+        """
+        The name of the MSK topic that Pub/Sub will import from.
+        """
+        return pulumi.get(self, "topic")
+
+    @topic.setter
+    def topic(self, value: pulumi.Input[str]):
+        pulumi.set(self, "topic", value)
 
 
 if not MYPY:
@@ -2107,6 +2260,117 @@ class TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs:
     @delimiter.setter
     def delimiter(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "delimiter", value)
+
+
+if not MYPY:
+    class TopicIngestionDataSourceSettingsConfluentCloudArgsDict(TypedDict):
+        bootstrap_server: pulumi.Input[str]
+        """
+        The Confluent Cloud bootstrap server. The format is url:port.
+        """
+        gcp_service_account: pulumi.Input[str]
+        """
+        The GCP service account to be used for Federated Identity authentication
+        with Confluent Cloud.
+        """
+        identity_pool_id: pulumi.Input[str]
+        """
+        Identity pool ID to be used for Federated Identity authentication with Confluent Cloud.
+        """
+        topic: pulumi.Input[str]
+        """
+        Name of the Confluent Cloud topic that Pub/Sub will import from.
+        """
+        cluster_id: NotRequired[pulumi.Input[str]]
+        """
+        The Confluent Cloud cluster ID.
+        """
+elif False:
+    TopicIngestionDataSourceSettingsConfluentCloudArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TopicIngestionDataSourceSettingsConfluentCloudArgs:
+    def __init__(__self__, *,
+                 bootstrap_server: pulumi.Input[str],
+                 gcp_service_account: pulumi.Input[str],
+                 identity_pool_id: pulumi.Input[str],
+                 topic: pulumi.Input[str],
+                 cluster_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] bootstrap_server: The Confluent Cloud bootstrap server. The format is url:port.
+        :param pulumi.Input[str] gcp_service_account: The GCP service account to be used for Federated Identity authentication
+               with Confluent Cloud.
+        :param pulumi.Input[str] identity_pool_id: Identity pool ID to be used for Federated Identity authentication with Confluent Cloud.
+        :param pulumi.Input[str] topic: Name of the Confluent Cloud topic that Pub/Sub will import from.
+        :param pulumi.Input[str] cluster_id: The Confluent Cloud cluster ID.
+        """
+        pulumi.set(__self__, "bootstrap_server", bootstrap_server)
+        pulumi.set(__self__, "gcp_service_account", gcp_service_account)
+        pulumi.set(__self__, "identity_pool_id", identity_pool_id)
+        pulumi.set(__self__, "topic", topic)
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+
+    @property
+    @pulumi.getter(name="bootstrapServer")
+    def bootstrap_server(self) -> pulumi.Input[str]:
+        """
+        The Confluent Cloud bootstrap server. The format is url:port.
+        """
+        return pulumi.get(self, "bootstrap_server")
+
+    @bootstrap_server.setter
+    def bootstrap_server(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bootstrap_server", value)
+
+    @property
+    @pulumi.getter(name="gcpServiceAccount")
+    def gcp_service_account(self) -> pulumi.Input[str]:
+        """
+        The GCP service account to be used for Federated Identity authentication
+        with Confluent Cloud.
+        """
+        return pulumi.get(self, "gcp_service_account")
+
+    @gcp_service_account.setter
+    def gcp_service_account(self, value: pulumi.Input[str]):
+        pulumi.set(self, "gcp_service_account", value)
+
+    @property
+    @pulumi.getter(name="identityPoolId")
+    def identity_pool_id(self) -> pulumi.Input[str]:
+        """
+        Identity pool ID to be used for Federated Identity authentication with Confluent Cloud.
+        """
+        return pulumi.get(self, "identity_pool_id")
+
+    @identity_pool_id.setter
+    def identity_pool_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_pool_id", value)
+
+    @property
+    @pulumi.getter
+    def topic(self) -> pulumi.Input[str]:
+        """
+        Name of the Confluent Cloud topic that Pub/Sub will import from.
+        """
+        return pulumi.get(self, "topic")
+
+    @topic.setter
+    def topic(self, value: pulumi.Input[str]):
+        pulumi.set(self, "topic", value)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Confluent Cloud cluster ID.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_id", value)
 
 
 if not MYPY:

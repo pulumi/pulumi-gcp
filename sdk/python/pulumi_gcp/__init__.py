@@ -1164,6 +1164,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "beyondcorp/securityGatewayIamBinding",
+  "fqn": "pulumi_gcp.beyondcorp",
+  "classes": {
+   "gcp:beyondcorp/securityGatewayIamBinding:SecurityGatewayIamBinding": "SecurityGatewayIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "beyondcorp/securityGatewayIamMember",
+  "fqn": "pulumi_gcp.beyondcorp",
+  "classes": {
+   "gcp:beyondcorp/securityGatewayIamMember:SecurityGatewayIamMember": "SecurityGatewayIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "beyondcorp/securityGatewayIamPolicy",
+  "fqn": "pulumi_gcp.beyondcorp",
+  "classes": {
+   "gcp:beyondcorp/securityGatewayIamPolicy:SecurityGatewayIamPolicy": "SecurityGatewayIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "biglake/catalog",
   "fqn": "pulumi_gcp.biglake",
   "classes": {

@@ -68,11 +68,13 @@ class ServicePerimeterDryRunResourceArgs:
 class _ServicePerimeterDryRunResourceState:
     def __init__(__self__, *,
                  access_policy_id: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  perimeter_name: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServicePerimeterDryRunResource resources.
         :param pulumi.Input[str] access_policy_id: The name of the Access Policy this resource belongs to.
+        :param pulumi.Input[str] etag: The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
         :param pulumi.Input[str] perimeter_name: The name of the Service Perimeter to add this resource to.
                
                
@@ -83,6 +85,8 @@ class _ServicePerimeterDryRunResourceState:
         """
         if access_policy_id is not None:
             pulumi.set(__self__, "access_policy_id", access_policy_id)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
         if perimeter_name is not None:
             pulumi.set(__self__, "perimeter_name", perimeter_name)
         if resource is not None:
@@ -99,6 +103,18 @@ class _ServicePerimeterDryRunResourceState:
     @access_policy_id.setter
     def access_policy_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "access_policy_id", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
 
     @property
     @pulumi.getter(name="perimeterName")
@@ -305,6 +321,7 @@ class ServicePerimeterDryRunResource(pulumi.CustomResource):
                 raise TypeError("Missing required property 'resource'")
             __props__.__dict__["resource"] = resource
             __props__.__dict__["access_policy_id"] = None
+            __props__.__dict__["etag"] = None
         super(ServicePerimeterDryRunResource, __self__).__init__(
             'gcp:accesscontextmanager/servicePerimeterDryRunResource:ServicePerimeterDryRunResource',
             resource_name,
@@ -316,6 +333,7 @@ class ServicePerimeterDryRunResource(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_policy_id: Optional[pulumi.Input[str]] = None,
+            etag: Optional[pulumi.Input[str]] = None,
             perimeter_name: Optional[pulumi.Input[str]] = None,
             resource: Optional[pulumi.Input[str]] = None) -> 'ServicePerimeterDryRunResource':
         """
@@ -326,6 +344,7 @@ class ServicePerimeterDryRunResource(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_policy_id: The name of the Access Policy this resource belongs to.
+        :param pulumi.Input[str] etag: The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
         :param pulumi.Input[str] perimeter_name: The name of the Service Perimeter to add this resource to.
                
                
@@ -339,6 +358,7 @@ class ServicePerimeterDryRunResource(pulumi.CustomResource):
         __props__ = _ServicePerimeterDryRunResourceState.__new__(_ServicePerimeterDryRunResourceState)
 
         __props__.__dict__["access_policy_id"] = access_policy_id
+        __props__.__dict__["etag"] = etag
         __props__.__dict__["perimeter_name"] = perimeter_name
         __props__.__dict__["resource"] = resource
         return ServicePerimeterDryRunResource(resource_name, opts=opts, __props__=__props__)
@@ -350,6 +370,14 @@ class ServicePerimeterDryRunResource(pulumi.CustomResource):
         The name of the Access Policy this resource belongs to.
         """
         return pulumi.get(self, "access_policy_id")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
+        """
+        return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter(name="perimeterName")

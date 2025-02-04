@@ -57,6 +57,9 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     fullBackupSpec: {},
+ *     encryptionConfig: {
+ *         encryptionType: "USE_DATABASE_ENCRYPTION",
+ *     },
  * });
  * ```
  * ### Spanner Backup Schedule Daily Incremental
@@ -93,6 +96,9 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     incrementalBackupSpec: {},
+ *     encryptionConfig: {
+ *         encryptionType: "GOOGLE_DEFAULT_ENCRYPTION",
+ *     },
  * });
  * ```
  *
@@ -156,6 +162,11 @@ export class BackupSchedule extends pulumi.CustomResource {
      */
     public readonly database!: pulumi.Output<string>;
     /**
+     * Configuration for the encryption of the backup schedule.
+     * Structure is documented below.
+     */
+    public readonly encryptionConfig!: pulumi.Output<outputs.spanner.BackupScheduleEncryptionConfig>;
+    /**
      * The schedule creates only full backups..
      */
     public readonly fullBackupSpec!: pulumi.Output<outputs.spanner.BackupScheduleFullBackupSpec | undefined>;
@@ -203,6 +214,7 @@ export class BackupSchedule extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as BackupScheduleState | undefined;
             resourceInputs["database"] = state ? state.database : undefined;
+            resourceInputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
             resourceInputs["fullBackupSpec"] = state ? state.fullBackupSpec : undefined;
             resourceInputs["incrementalBackupSpec"] = state ? state.incrementalBackupSpec : undefined;
             resourceInputs["instance"] = state ? state.instance : undefined;
@@ -222,6 +234,7 @@ export class BackupSchedule extends pulumi.CustomResource {
                 throw new Error("Missing required property 'retentionDuration'");
             }
             resourceInputs["database"] = args ? args.database : undefined;
+            resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
             resourceInputs["fullBackupSpec"] = args ? args.fullBackupSpec : undefined;
             resourceInputs["incrementalBackupSpec"] = args ? args.incrementalBackupSpec : undefined;
             resourceInputs["instance"] = args ? args.instance : undefined;
@@ -246,6 +259,11 @@ export interface BackupScheduleState {
      * - - -
      */
     database?: pulumi.Input<string>;
+    /**
+     * Configuration for the encryption of the backup schedule.
+     * Structure is documented below.
+     */
+    encryptionConfig?: pulumi.Input<inputs.spanner.BackupScheduleEncryptionConfig>;
     /**
      * The schedule creates only full backups..
      */
@@ -292,6 +310,11 @@ export interface BackupScheduleArgs {
      * - - -
      */
     database: pulumi.Input<string>;
+    /**
+     * Configuration for the encryption of the backup schedule.
+     * Structure is documented below.
+     */
+    encryptionConfig?: pulumi.Input<inputs.spanner.BackupScheduleEncryptionConfig>;
     /**
      * The schedule creates only full backups..
      */

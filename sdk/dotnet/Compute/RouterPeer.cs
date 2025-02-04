@@ -122,6 +122,29 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Router Zero Advertised Route Priority
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var peer = new Gcp.Compute.RouterPeer("peer", new()
+    ///     {
+    ///         Name = "my-router-peer",
+    ///         Router = "my-router",
+    ///         Region = "us-central1",
+    ///         Interface = "interface-1",
+    ///         PeerAsn = 65513,
+    ///         AdvertisedRoutePriority = 0,
+    ///         ZeroAdvertisedRoutePriority = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Router Peer Router Appliance
     /// 
     /// ```csharp
@@ -641,6 +664,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Ipv6NexthopAddress { get; private set; } = null!;
 
         /// <summary>
+        /// An internal boolean field for provider use for zero_advertised_route_priority.
+        /// </summary>
+        [Output("isAdvertisedRoutePrioritySet")]
+        public Output<bool> IsAdvertisedRoutePrioritySet { get; private set; } = null!;
+
+        /// <summary>
         /// An internal boolean field for provider use.
         /// </summary>
         [Output("isCustomLearnedPrioritySet")]
@@ -738,6 +767,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("routerApplianceInstance")]
         public Output<string?> RouterApplianceInstance { get; private set; } = null!;
+
+        /// <summary>
+        /// The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
+        /// This value has to be set true to force the advertised_route_priority to be 0.
+        /// </summary>
+        [Output("zeroAdvertisedRoutePriority")]
+        public Output<bool?> ZeroAdvertisedRoutePriority { get; private set; } = null!;
 
         /// <summary>
         /// The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
@@ -1033,6 +1069,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? RouterApplianceInstance { get; set; }
 
         /// <summary>
+        /// The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
+        /// This value has to be set true to force the advertised_route_priority to be 0.
+        /// </summary>
+        [Input("zeroAdvertisedRoutePriority")]
+        public Input<bool>? ZeroAdvertisedRoutePriority { get; set; }
+
+        /// <summary>
         /// The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
         /// This value has to be set true to force the custom_learned_route_priority to be 0.
         /// </summary>
@@ -1209,6 +1252,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Ipv6NexthopAddress { get; set; }
 
         /// <summary>
+        /// An internal boolean field for provider use for zero_advertised_route_priority.
+        /// </summary>
+        [Input("isAdvertisedRoutePrioritySet")]
+        public Input<bool>? IsAdvertisedRoutePrioritySet { get; set; }
+
+        /// <summary>
         /// An internal boolean field for provider use.
         /// </summary>
         [Input("isCustomLearnedPrioritySet")]
@@ -1306,6 +1355,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("routerApplianceInstance")]
         public Input<string>? RouterApplianceInstance { get; set; }
+
+        /// <summary>
+        /// The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
+        /// This value has to be set true to force the advertised_route_priority to be 0.
+        /// </summary>
+        [Input("zeroAdvertisedRoutePriority")]
+        public Input<bool>? ZeroAdvertisedRoutePriority { get; set; }
 
         /// <summary>
         /// The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.

@@ -106,6 +106,8 @@ type ServicePerimeterDryRunResource struct {
 
 	// The name of the Access Policy this resource belongs to.
 	AccessPolicyId pulumi.StringOutput `pulumi:"accessPolicyId"`
+	// The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the Service Perimeter to add this resource to.
 	//
 	// ***
@@ -154,6 +156,8 @@ func GetServicePerimeterDryRunResource(ctx *pulumi.Context,
 type servicePerimeterDryRunResourceState struct {
 	// The name of the Access Policy this resource belongs to.
 	AccessPolicyId *string `pulumi:"accessPolicyId"`
+	// The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
+	Etag *string `pulumi:"etag"`
 	// The name of the Service Perimeter to add this resource to.
 	//
 	// ***
@@ -167,6 +171,8 @@ type servicePerimeterDryRunResourceState struct {
 type ServicePerimeterDryRunResourceState struct {
 	// The name of the Access Policy this resource belongs to.
 	AccessPolicyId pulumi.StringPtrInput
+	// The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
+	Etag pulumi.StringPtrInput
 	// The name of the Service Perimeter to add this resource to.
 	//
 	// ***
@@ -294,6 +300,11 @@ func (o ServicePerimeterDryRunResourceOutput) ToServicePerimeterDryRunResourceOu
 // The name of the Access Policy this resource belongs to.
 func (o ServicePerimeterDryRunResourceOutput) AccessPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePerimeterDryRunResource) pulumi.StringOutput { return v.AccessPolicyId }).(pulumi.StringOutput)
+}
+
+// The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
+func (o ServicePerimeterDryRunResourceOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePerimeterDryRunResource) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The name of the Service Perimeter to add this resource to.

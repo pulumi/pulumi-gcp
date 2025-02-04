@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// <summary>
         /// Maximum amount of the resource in the cluster.
         /// </summary>
-        public readonly int? Maximum;
+        public readonly int Maximum;
         /// <summary>
         /// Minimum amount of the resource in the cluster.
         /// </summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private ClusterClusterAutoscalingResourceLimit(
-            int? maximum,
+            int maximum,
 
             int? minimum,
 

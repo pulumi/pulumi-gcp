@@ -65,7 +65,7 @@ public final class RegionInstanceTemplateNetworkInterface {
      */
     private @Nullable String networkIp;
     /**
-     * @return The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET. In the beta provider the additional values of MRDMA and IRDMA are supported.
+     * @return The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA.
      * 
      */
     private @Nullable String nicType;
@@ -161,7 +161,7 @@ public final class RegionInstanceTemplateNetworkInterface {
         return Optional.ofNullable(this.networkIp);
     }
     /**
-     * @return The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET. In the beta provider the additional values of MRDMA and IRDMA are supported.
+     * @return The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA.
      * 
      */
     public Optional<String> nicType() {

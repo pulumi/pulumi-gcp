@@ -17,7 +17,7 @@ public final class ClusterClusterAutoscalingResourceLimit {
      * @return Maximum amount of the resource in the cluster.
      * 
      */
-    private @Nullable Integer maximum;
+    private Integer maximum;
     /**
      * @return Minimum amount of the resource in the cluster.
      * 
@@ -36,8 +36,8 @@ public final class ClusterClusterAutoscalingResourceLimit {
      * @return Maximum amount of the resource in the cluster.
      * 
      */
-    public Optional<Integer> maximum() {
-        return Optional.ofNullable(this.maximum);
+    public Integer maximum() {
+        return this.maximum;
     }
     /**
      * @return Minimum amount of the resource in the cluster.
@@ -65,7 +65,7 @@ public final class ClusterClusterAutoscalingResourceLimit {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Integer maximum;
+        private Integer maximum;
         private @Nullable Integer minimum;
         private String resourceType;
         public Builder() {}
@@ -77,8 +77,10 @@ public final class ClusterClusterAutoscalingResourceLimit {
         }
 
         @CustomType.Setter
-        public Builder maximum(@Nullable Integer maximum) {
-
+        public Builder maximum(Integer maximum) {
+            if (maximum == null) {
+              throw new MissingRequiredPropertyException("ClusterClusterAutoscalingResourceLimit", "maximum");
+            }
             this.maximum = maximum;
             return this;
         }

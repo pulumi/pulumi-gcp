@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * const example = new gcp.beyondcorp.SecurityGateway("example", {
  *     securityGatewayId: "default",
- *     location: "global",
  *     displayName: "My Security Gateway resource",
  *     hubs: [{
  *         region: "us-central1",
@@ -100,9 +99,14 @@ export class SecurityGateway extends pulumi.CustomResource {
      */
     public readonly hubs!: pulumi.Output<outputs.beyondcorp.SecurityGatewayHub[] | undefined>;
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     * (Optional, Deprecated)
+     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+     *
+     * > **Warning:** `location` is deprecated and will be removed in a future major release.
+     *
+     * @deprecated `location` is deprecated and will be removed in a future major release.
      */
-    public readonly location!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string | undefined>;
     /**
      * Identifier. Name of the resource.
      */
@@ -164,9 +168,6 @@ export class SecurityGateway extends pulumi.CustomResource {
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as SecurityGatewayArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.securityGatewayId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'securityGatewayId'");
             }
@@ -211,7 +212,12 @@ export interface SecurityGatewayState {
      */
     hubs?: pulumi.Input<pulumi.Input<inputs.beyondcorp.SecurityGatewayHub>[]>;
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     * (Optional, Deprecated)
+     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+     *
+     * > **Warning:** `location` is deprecated and will be removed in a future major release.
+     *
+     * @deprecated `location` is deprecated and will be removed in a future major release.
      */
     location?: pulumi.Input<string>;
     /**
@@ -267,9 +273,14 @@ export interface SecurityGatewayArgs {
      */
     hubs?: pulumi.Input<pulumi.Input<inputs.beyondcorp.SecurityGatewayHub>[]>;
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     * (Optional, Deprecated)
+     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+     *
+     * > **Warning:** `location` is deprecated and will be removed in a future major release.
+     *
+     * @deprecated `location` is deprecated and will be removed in a future major release.
      */
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

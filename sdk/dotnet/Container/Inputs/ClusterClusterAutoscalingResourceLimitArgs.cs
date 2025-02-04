@@ -15,8 +15,8 @@ namespace Pulumi.Gcp.Container.Inputs
         /// <summary>
         /// Maximum amount of the resource in the cluster.
         /// </summary>
-        [Input("maximum")]
-        public Input<int>? Maximum { get; set; }
+        [Input("maximum", required: true)]
+        public Input<int> Maximum { get; set; } = null!;
 
         /// <summary>
         /// Minimum amount of the resource in the cluster.

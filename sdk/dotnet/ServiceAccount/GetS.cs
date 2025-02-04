@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// ## Example Usage
         /// 
-        /// Example service accounts.
+        /// Get all service accounts from a project
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -31,6 +31,61 @@ namespace Pulumi.Gcp.ServiceAccount
         ///     var example = Gcp.ServiceAccount.GetS.Invoke(new()
         ///     {
         ///         Project = "example-project",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Get all service accounts that are prefixed with `"foo"`
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.ServiceAccount.GetS.Invoke(new()
+        ///     {
+        ///         Prefix = "foo",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Get all service accounts that contain `"bar"`
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var bar = Gcp.ServiceAccount.GetS.Invoke(new()
+        ///     {
+        ///         Regex = ".*bar.*",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Get all service accounts that are prefixed with `"foo"` and contain `"bar"`
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var fooBar = Gcp.ServiceAccount.GetS.Invoke(new()
+        ///     {
+        ///         Prefix = "foo",
+        ///         Regex = ".*bar.*",
         ///     });
         /// 
         /// });
@@ -46,7 +101,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// ## Example Usage
         /// 
-        /// Example service accounts.
+        /// Get all service accounts from a project
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -59,6 +114,61 @@ namespace Pulumi.Gcp.ServiceAccount
         ///     var example = Gcp.ServiceAccount.GetS.Invoke(new()
         ///     {
         ///         Project = "example-project",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Get all service accounts that are prefixed with `"foo"`
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.ServiceAccount.GetS.Invoke(new()
+        ///     {
+        ///         Prefix = "foo",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Get all service accounts that contain `"bar"`
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var bar = Gcp.ServiceAccount.GetS.Invoke(new()
+        ///     {
+        ///         Regex = ".*bar.*",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Get all service accounts that are prefixed with `"foo"` and contain `"bar"`
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var fooBar = Gcp.ServiceAccount.GetS.Invoke(new()
+        ///     {
+        ///         Prefix = "foo",
+        ///         Regex = ".*bar.*",
         ///     });
         /// 
         /// });
@@ -74,7 +184,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// ## Example Usage
         /// 
-        /// Example service accounts.
+        /// Get all service accounts from a project
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -91,6 +201,61 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// });
         /// ```
+        /// 
+        /// Get all service accounts that are prefixed with `"foo"`
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.ServiceAccount.GetS.Invoke(new()
+        ///     {
+        ///         Prefix = "foo",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Get all service accounts that contain `"bar"`
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var bar = Gcp.ServiceAccount.GetS.Invoke(new()
+        ///     {
+        ///         Regex = ".*bar.*",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Get all service accounts that are prefixed with `"foo"` and contain `"bar"`
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var fooBar = Gcp.ServiceAccount.GetS.Invoke(new()
+        ///     {
+        ///         Prefix = "foo",
+        ///         Regex = ".*bar.*",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetSResult> Invoke(GetSInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetSResult>("gcp:serviceaccount/getS:getS", args ?? new GetSInvokeArgs(), options.WithDefaults());
@@ -100,10 +265,22 @@ namespace Pulumi.Gcp.ServiceAccount
     public sealed class GetSArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// A prefix for filtering. It's applied with the `account_id`.
+        /// </summary>
+        [Input("prefix")]
+        public string? Prefix { get; set; }
+
+        /// <summary>
         /// The ID of the project. If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public string? Project { get; set; }
+
+        /// <summary>
+        /// A regular expression for filtering. It's applied with the `email`. Further information about the syntax can be found [here](https://github.com/google/re2/wiki/Syntax).
+        /// </summary>
+        [Input("regex")]
+        public string? Regex { get; set; }
 
         public GetSArgs()
         {
@@ -114,10 +291,22 @@ namespace Pulumi.Gcp.ServiceAccount
     public sealed class GetSInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// A prefix for filtering. It's applied with the `account_id`.
+        /// </summary>
+        [Input("prefix")]
+        public Input<string>? Prefix { get; set; }
+
+        /// <summary>
         /// The ID of the project. If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// A regular expression for filtering. It's applied with the `email`. Further information about the syntax can be found [here](https://github.com/google/re2/wiki/Syntax).
+        /// </summary>
+        [Input("regex")]
+        public Input<string>? Regex { get; set; }
 
         public GetSInvokeArgs()
         {
@@ -137,7 +326,9 @@ namespace Pulumi.Gcp.ServiceAccount
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string? Prefix;
         public readonly string? Project;
+        public readonly string? Regex;
 
         [OutputConstructor]
         private GetSResult(
@@ -145,11 +336,17 @@ namespace Pulumi.Gcp.ServiceAccount
 
             string id,
 
-            string? project)
+            string? prefix,
+
+            string? project,
+
+            string? regex)
         {
             Accounts = accounts;
             Id = id;
+            Prefix = prefix;
             Project = project;
+            Regex = regex;
         }
     }
 }

@@ -25,6 +25,11 @@ public final class GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync 
      */
     private List<GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit> gits;
     /**
+     * @return The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount &#39;default&#39; in the namespace &#39;config-management-monitoring&#39; should be bound to the GSA.
+     * 
+     */
+    private String metricsGcpServiceAccountEmail;
+    /**
      * @return OCI repo configuration for the cluster
      * 
      */
@@ -54,6 +59,13 @@ public final class GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync 
      */
     public List<GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit> gits() {
         return this.gits;
+    }
+    /**
+     * @return The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount &#39;default&#39; in the namespace &#39;config-management-monitoring&#39; should be bound to the GSA.
+     * 
+     */
+    public String metricsGcpServiceAccountEmail() {
+        return this.metricsGcpServiceAccountEmail;
     }
     /**
      * @return OCI repo configuration for the cluster
@@ -88,6 +100,7 @@ public final class GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync 
     public static final class Builder {
         private Boolean enabled;
         private List<GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit> gits;
+        private String metricsGcpServiceAccountEmail;
         private List<GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci> ocis;
         private Boolean preventDrift;
         private String sourceFormat;
@@ -96,6 +109,7 @@ public final class GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync 
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.gits = defaults.gits;
+    	      this.metricsGcpServiceAccountEmail = defaults.metricsGcpServiceAccountEmail;
     	      this.ocis = defaults.ocis;
     	      this.preventDrift = defaults.preventDrift;
     	      this.sourceFormat = defaults.sourceFormat;
@@ -119,6 +133,14 @@ public final class GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync 
         }
         public Builder gits(GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit... gits) {
             return gits(List.of(gits));
+        }
+        @CustomType.Setter
+        public Builder metricsGcpServiceAccountEmail(String metricsGcpServiceAccountEmail) {
+            if (metricsGcpServiceAccountEmail == null) {
+              throw new MissingRequiredPropertyException("GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync", "metricsGcpServiceAccountEmail");
+            }
+            this.metricsGcpServiceAccountEmail = metricsGcpServiceAccountEmail;
+            return this;
         }
         @CustomType.Setter
         public Builder ocis(List<GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci> ocis) {
@@ -151,6 +173,7 @@ public final class GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync 
             final var _resultValue = new GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync();
             _resultValue.enabled = enabled;
             _resultValue.gits = gits;
+            _resultValue.metricsGcpServiceAccountEmail = metricsGcpServiceAccountEmail;
             _resultValue.ocis = ocis;
             _resultValue.preventDrift = preventDrift;
             _resultValue.sourceFormat = sourceFormat;

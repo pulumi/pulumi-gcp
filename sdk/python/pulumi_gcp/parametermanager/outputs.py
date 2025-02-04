@@ -19,6 +19,8 @@ __all__ = [
     'ParameterPolicyMember',
     'RegionalParameterPolicyMember',
     'GetParameterPolicyMemberResult',
+    'GetParametersParameterResult',
+    'GetParametersParameterPolicyMemberResult',
     'GetRegionalParameterPolicyMemberResult',
     'GetRegionalParametersParameterResult',
     'GetRegionalParametersParameterPolicyMemberResult',
@@ -191,6 +193,160 @@ class GetParameterPolicyMemberResult(dict):
         If a resource is deleted and recreated with the same name, the binding will not be applicable to the
         new resource. Format:
         'principal://parametermanager.googleapis.com/projects/{{project}}/uid/locations/global/parameters/{{uid}}'
+        """
+        return pulumi.get(self, "iam_policy_uid_principal")
+
+
+@pulumi.output_type
+class GetParametersParameterResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 effective_labels: Mapping[str, str],
+                 format: str,
+                 labels: Mapping[str, str],
+                 name: str,
+                 parameter_id: str,
+                 policy_members: Sequence['outputs.GetParametersParameterPolicyMemberResult'],
+                 project: str,
+                 pulumi_labels: Mapping[str, str],
+                 update_time: str):
+        """
+        :param str create_time: The time at which the parameter was created.
+        :param str format: The format type of the parameter.
+        :param Mapping[str, str] labels: The labels assigned to the parameter.
+        :param str name: The resource name of the parameter. Format: `projects/{{project}}/locations/global/parameters/{{parameter_id}}`
+        :param str parameter_id: The unique name of the resource.
+        :param Sequence['GetParametersParameterPolicyMemberArgs'] policy_members: An object containing a unique resource identity tied to the parameter. Structure is documented below.
+        :param str project: The ID of the project.
+        :param Mapping[str, str] pulumi_labels: The combination of labels configured directly on the resource
+                and default labels configured on the provider.
+        :param str update_time: The time at which the parameter was updated.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "effective_labels", effective_labels)
+        pulumi.set(__self__, "format", format)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "parameter_id", parameter_id)
+        pulumi.set(__self__, "policy_members", policy_members)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time at which the parameter was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
+
+    @property
+    @pulumi.getter
+    def format(self) -> str:
+        """
+        The format type of the parameter.
+        """
+        return pulumi.get(self, "format")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        The labels assigned to the parameter.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The resource name of the parameter. Format: `projects/{{project}}/locations/global/parameters/{{parameter_id}}`
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="parameterId")
+    def parameter_id(self) -> str:
+        """
+        The unique name of the resource.
+        """
+        return pulumi.get(self, "parameter_id")
+
+    @property
+    @pulumi.getter(name="policyMembers")
+    def policy_members(self) -> Sequence['outputs.GetParametersParameterPolicyMemberResult']:
+        """
+        An object containing a unique resource identity tied to the parameter. Structure is documented below.
+        """
+        return pulumi.get(self, "policy_members")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        """
+        The combination of labels configured directly on the resource
+         and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The time at which the parameter was updated.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class GetParametersParameterPolicyMemberResult(dict):
+    def __init__(__self__, *,
+                 iam_policy_name_principal: str,
+                 iam_policy_uid_principal: str):
+        """
+        :param str iam_policy_name_principal: AM policy binding member referring to a Google Cloud resource by user-assigned name. If a resource is deleted and recreated with the same name, the binding will be applicable to the
+               new resource. Format:
+               `principal://parametermanager.googleapis.com/projects/{{project}}/name/locations/global/parameters/{{parameter_id}}`
+        :param str iam_policy_uid_principal: IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+               If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+               new resource. Format:
+               `principal://parametermanager.googleapis.com/projects/{{project}}/uid/locations/global/parameters/{{uid}}`
+        """
+        pulumi.set(__self__, "iam_policy_name_principal", iam_policy_name_principal)
+        pulumi.set(__self__, "iam_policy_uid_principal", iam_policy_uid_principal)
+
+    @property
+    @pulumi.getter(name="iamPolicyNamePrincipal")
+    def iam_policy_name_principal(self) -> str:
+        """
+        AM policy binding member referring to a Google Cloud resource by user-assigned name. If a resource is deleted and recreated with the same name, the binding will be applicable to the
+        new resource. Format:
+        `principal://parametermanager.googleapis.com/projects/{{project}}/name/locations/global/parameters/{{parameter_id}}`
+        """
+        return pulumi.get(self, "iam_policy_name_principal")
+
+    @property
+    @pulumi.getter(name="iamPolicyUidPrincipal")
+    def iam_policy_uid_principal(self) -> str:
+        """
+        IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+        If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+        new resource. Format:
+        `principal://parametermanager.googleapis.com/projects/{{project}}/uid/locations/global/parameters/{{uid}}`
         """
         return pulumi.get(self, "iam_policy_uid_principal")
 

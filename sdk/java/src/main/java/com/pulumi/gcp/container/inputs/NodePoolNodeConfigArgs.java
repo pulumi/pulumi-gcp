@@ -401,6 +401,21 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The runtime of each node in the node pool in seconds, terminated by &#39;s&#39;. Example: &#34;3600s&#34;.
+     * 
+     */
+    @Import(name="maxRunDuration")
+    private @Nullable Output<String> maxRunDuration;
+
+    /**
+     * @return The runtime of each node in the node pool in seconds, terminated by &#39;s&#39;. Example: &#34;3600s&#34;.
+     * 
+     */
+    public Optional<Output<String>> maxRunDuration() {
+        return Optional.ofNullable(this.maxRunDuration);
+    }
+
+    /**
      * The metadata key/value pairs assigned to instances in the cluster.
      * 
      */
@@ -703,6 +718,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         this.localSsdEncryptionMode = $.localSsdEncryptionMode;
         this.loggingVariant = $.loggingVariant;
         this.machineType = $.machineType;
+        this.maxRunDuration = $.maxRunDuration;
         this.metadata = $.metadata;
         this.minCpuPlatform = $.minCpuPlatform;
         this.nodeGroup = $.nodeGroup;
@@ -1263,6 +1279,27 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
          */
         public Builder machineType(String machineType) {
             return machineType(Output.of(machineType));
+        }
+
+        /**
+         * @param maxRunDuration The runtime of each node in the node pool in seconds, terminated by &#39;s&#39;. Example: &#34;3600s&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxRunDuration(@Nullable Output<String> maxRunDuration) {
+            $.maxRunDuration = maxRunDuration;
+            return this;
+        }
+
+        /**
+         * @param maxRunDuration The runtime of each node in the node pool in seconds, terminated by &#39;s&#39;. Example: &#34;3600s&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxRunDuration(String maxRunDuration) {
+            return maxRunDuration(Output.of(maxRunDuration));
         }
 
         /**

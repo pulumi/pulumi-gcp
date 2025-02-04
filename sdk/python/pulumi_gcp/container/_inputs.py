@@ -6398,15 +6398,15 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenS
 
 if not MYPY:
     class ClusterClusterAutoscalingResourceLimitArgsDict(TypedDict):
+        maximum: pulumi.Input[int]
+        """
+        Maximum amount of the resource in the cluster.
+        """
         resource_type: pulumi.Input[str]
         """
         The type of the resource. For example, `cpu` and
         `memory`.  See the [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
         for a list of types.
-        """
-        maximum: NotRequired[pulumi.Input[int]]
-        """
-        Maximum amount of the resource in the cluster.
         """
         minimum: NotRequired[pulumi.Input[int]]
         """
@@ -6418,21 +6418,32 @@ elif False:
 @pulumi.input_type
 class ClusterClusterAutoscalingResourceLimitArgs:
     def __init__(__self__, *,
+                 maximum: pulumi.Input[int],
                  resource_type: pulumi.Input[str],
-                 maximum: Optional[pulumi.Input[int]] = None,
                  minimum: Optional[pulumi.Input[int]] = None):
         """
+        :param pulumi.Input[int] maximum: Maximum amount of the resource in the cluster.
         :param pulumi.Input[str] resource_type: The type of the resource. For example, `cpu` and
                `memory`.  See the [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
                for a list of types.
-        :param pulumi.Input[int] maximum: Maximum amount of the resource in the cluster.
         :param pulumi.Input[int] minimum: Minimum amount of the resource in the cluster.
         """
+        pulumi.set(__self__, "maximum", maximum)
         pulumi.set(__self__, "resource_type", resource_type)
-        if maximum is not None:
-            pulumi.set(__self__, "maximum", maximum)
         if minimum is not None:
             pulumi.set(__self__, "minimum", minimum)
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> pulumi.Input[int]:
+        """
+        Maximum amount of the resource in the cluster.
+        """
+        return pulumi.get(self, "maximum")
+
+    @maximum.setter
+    def maximum(self, value: pulumi.Input[int]):
+        pulumi.set(self, "maximum", value)
 
     @property
     @pulumi.getter(name="resourceType")
@@ -6447,18 +6458,6 @@ class ClusterClusterAutoscalingResourceLimitArgs:
     @resource_type.setter
     def resource_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "resource_type", value)
-
-    @property
-    @pulumi.getter
-    def maximum(self) -> Optional[pulumi.Input[int]]:
-        """
-        Maximum amount of the resource in the cluster.
-        """
-        return pulumi.get(self, "maximum")
-
-    @maximum.setter
-    def maximum(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "maximum", value)
 
     @property
     @pulumi.getter
@@ -8491,6 +8490,10 @@ if not MYPY:
         Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
         [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
         """
+        max_run_duration: NotRequired[pulumi.Input[str]]
+        """
+        The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+        """
         metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         The metadata key/value pairs assigned to instances in
@@ -8620,6 +8623,7 @@ class ClusterNodeConfigArgs:
                  local_ssd_encryption_mode: Optional[pulumi.Input[str]] = None,
                  logging_variant: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
+                 max_run_duration: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  node_group: Optional[pulumi.Input[str]] = None,
@@ -8697,6 +8701,7 @@ class ClusterNodeConfigArgs:
         :param pulumi.Input[str] machine_type: The name of a Google Compute Engine machine type.
                Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
                [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
+        :param pulumi.Input[str] max_run_duration: The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key/value pairs assigned to instances in
                the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
                `true` by the API; if `metadata` is set but that default value is not
@@ -8791,6 +8796,8 @@ class ClusterNodeConfigArgs:
             pulumi.set(__self__, "logging_variant", logging_variant)
         if machine_type is not None:
             pulumi.set(__self__, "machine_type", machine_type)
+        if max_run_duration is not None:
+            pulumi.set(__self__, "max_run_duration", max_run_duration)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
         if min_cpu_platform is not None:
@@ -9149,6 +9156,18 @@ class ClusterNodeConfigArgs:
     @machine_type.setter
     def machine_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "machine_type", value)
+
+    @property
+    @pulumi.getter(name="maxRunDuration")
+    def max_run_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+        """
+        return pulumi.get(self, "max_run_duration")
+
+    @max_run_duration.setter
+    def max_run_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_run_duration", value)
 
     @property
     @pulumi.getter
@@ -12481,6 +12500,10 @@ if not MYPY:
         Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
         [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
         """
+        max_run_duration: NotRequired[pulumi.Input[str]]
+        """
+        The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+        """
         metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         The metadata key/value pairs assigned to instances in
@@ -12610,6 +12633,7 @@ class ClusterNodePoolNodeConfigArgs:
                  local_ssd_encryption_mode: Optional[pulumi.Input[str]] = None,
                  logging_variant: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
+                 max_run_duration: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  node_group: Optional[pulumi.Input[str]] = None,
@@ -12687,6 +12711,7 @@ class ClusterNodePoolNodeConfigArgs:
         :param pulumi.Input[str] machine_type: The name of a Google Compute Engine machine type.
                Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
                [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
+        :param pulumi.Input[str] max_run_duration: The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key/value pairs assigned to instances in
                the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
                `true` by the API; if `metadata` is set but that default value is not
@@ -12781,6 +12806,8 @@ class ClusterNodePoolNodeConfigArgs:
             pulumi.set(__self__, "logging_variant", logging_variant)
         if machine_type is not None:
             pulumi.set(__self__, "machine_type", machine_type)
+        if max_run_duration is not None:
+            pulumi.set(__self__, "max_run_duration", max_run_duration)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
         if min_cpu_platform is not None:
@@ -13139,6 +13166,18 @@ class ClusterNodePoolNodeConfigArgs:
     @machine_type.setter
     def machine_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "machine_type", value)
+
+    @property
+    @pulumi.getter(name="maxRunDuration")
+    def max_run_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+        """
+        return pulumi.get(self, "max_run_duration")
+
+    @max_run_duration.setter
+    def max_run_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_run_duration", value)
 
     @property
     @pulumi.getter
@@ -16986,6 +17025,10 @@ if not MYPY:
         """
         The name of a Google Compute Engine machine type.
         """
+        max_run_duration: NotRequired[pulumi.Input[str]]
+        """
+        The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+        """
         metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         The metadata key/value pairs assigned to instances in the cluster.
@@ -17091,6 +17134,7 @@ class NodePoolNodeConfigArgs:
                  local_ssd_encryption_mode: Optional[pulumi.Input[str]] = None,
                  logging_variant: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
+                 max_run_duration: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  node_group: Optional[pulumi.Input[str]] = None,
@@ -17134,6 +17178,7 @@ class NodePoolNodeConfigArgs:
         :param pulumi.Input[str] local_ssd_encryption_mode: LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
         :param pulumi.Input[str] logging_variant: Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
         :param pulumi.Input[str] machine_type: The name of a Google Compute Engine machine type.
+        :param pulumi.Input[str] max_run_duration: The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key/value pairs assigned to instances in the cluster.
         :param pulumi.Input[str] min_cpu_platform: Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
         :param pulumi.Input[str] node_group: Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
@@ -17204,6 +17249,8 @@ class NodePoolNodeConfigArgs:
             pulumi.set(__self__, "logging_variant", logging_variant)
         if machine_type is not None:
             pulumi.set(__self__, "machine_type", machine_type)
+        if max_run_duration is not None:
+            pulumi.set(__self__, "max_run_duration", max_run_duration)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
         if min_cpu_platform is not None:
@@ -17528,6 +17575,18 @@ class NodePoolNodeConfigArgs:
     @machine_type.setter
     def machine_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "machine_type", value)
+
+    @property
+    @pulumi.getter(name="maxRunDuration")
+    def max_run_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+        """
+        return pulumi.get(self, "max_run_duration")
+
+    @max_run_duration.setter
+    def max_run_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_run_duration", value)
 
     @property
     @pulumi.getter

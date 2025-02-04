@@ -67,8 +67,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var targetProject = new Project("targetProject", ProjectArgs.builder()
- *             .projectId("tf-test_79169")
- *             .name("tf-test_56529")
+ *             .projectId("tf-test_56529")
+ *             .name("tf-test_75413")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .deletionPolicy("DELETE")
@@ -101,8 +101,8 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         var zone = new ManagedZone("zone", ManagedZoneArgs.builder()
- *             .name("tf-test-dns_75413")
- *             .dnsName("private_55138.example.com.")
+ *             .name("tf-test-dns_55138")
+ *             .dnsName("private_37559.example.com.")
  *             .visibility("private")
  *             .privateVisibilityConfig(ManagedZonePrivateVisibilityConfigArgs.builder()
  *                 .networks(ManagedZonePrivateVisibilityConfigNetworkArgs.builder()

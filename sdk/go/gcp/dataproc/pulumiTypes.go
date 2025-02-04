@@ -21116,6 +21116,143 @@ func (o MetastoreServiceTelemetryConfigPtrOutput) LogFormat() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+type WorkflowTemplateEncryptionConfig struct {
+	// Optional. The Cloud KMS key name to use for encryption.
+	KmsKey *string `pulumi:"kmsKey"`
+}
+
+// WorkflowTemplateEncryptionConfigInput is an input type that accepts WorkflowTemplateEncryptionConfigArgs and WorkflowTemplateEncryptionConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplateEncryptionConfigInput` via:
+//
+//	WorkflowTemplateEncryptionConfigArgs{...}
+type WorkflowTemplateEncryptionConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateEncryptionConfigOutput() WorkflowTemplateEncryptionConfigOutput
+	ToWorkflowTemplateEncryptionConfigOutputWithContext(context.Context) WorkflowTemplateEncryptionConfigOutput
+}
+
+type WorkflowTemplateEncryptionConfigArgs struct {
+	// Optional. The Cloud KMS key name to use for encryption.
+	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
+}
+
+func (WorkflowTemplateEncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateEncryptionConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplateEncryptionConfigArgs) ToWorkflowTemplateEncryptionConfigOutput() WorkflowTemplateEncryptionConfigOutput {
+	return i.ToWorkflowTemplateEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateEncryptionConfigArgs) ToWorkflowTemplateEncryptionConfigOutputWithContext(ctx context.Context) WorkflowTemplateEncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateEncryptionConfigOutput)
+}
+
+func (i WorkflowTemplateEncryptionConfigArgs) ToWorkflowTemplateEncryptionConfigPtrOutput() WorkflowTemplateEncryptionConfigPtrOutput {
+	return i.ToWorkflowTemplateEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateEncryptionConfigArgs) ToWorkflowTemplateEncryptionConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateEncryptionConfigOutput).ToWorkflowTemplateEncryptionConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplateEncryptionConfigPtrInput is an input type that accepts WorkflowTemplateEncryptionConfigArgs, WorkflowTemplateEncryptionConfigPtr and WorkflowTemplateEncryptionConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplateEncryptionConfigPtrInput` via:
+//
+//	        WorkflowTemplateEncryptionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTemplateEncryptionConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateEncryptionConfigPtrOutput() WorkflowTemplateEncryptionConfigPtrOutput
+	ToWorkflowTemplateEncryptionConfigPtrOutputWithContext(context.Context) WorkflowTemplateEncryptionConfigPtrOutput
+}
+
+type workflowTemplateEncryptionConfigPtrType WorkflowTemplateEncryptionConfigArgs
+
+func WorkflowTemplateEncryptionConfigPtr(v *WorkflowTemplateEncryptionConfigArgs) WorkflowTemplateEncryptionConfigPtrInput {
+	return (*workflowTemplateEncryptionConfigPtrType)(v)
+}
+
+func (*workflowTemplateEncryptionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateEncryptionConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplateEncryptionConfigPtrType) ToWorkflowTemplateEncryptionConfigPtrOutput() WorkflowTemplateEncryptionConfigPtrOutput {
+	return i.ToWorkflowTemplateEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplateEncryptionConfigPtrType) ToWorkflowTemplateEncryptionConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateEncryptionConfigPtrOutput)
+}
+
+type WorkflowTemplateEncryptionConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateEncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateEncryptionConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplateEncryptionConfigOutput) ToWorkflowTemplateEncryptionConfigOutput() WorkflowTemplateEncryptionConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplateEncryptionConfigOutput) ToWorkflowTemplateEncryptionConfigOutputWithContext(ctx context.Context) WorkflowTemplateEncryptionConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplateEncryptionConfigOutput) ToWorkflowTemplateEncryptionConfigPtrOutput() WorkflowTemplateEncryptionConfigPtrOutput {
+	return o.ToWorkflowTemplateEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplateEncryptionConfigOutput) ToWorkflowTemplateEncryptionConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateEncryptionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateEncryptionConfig) *WorkflowTemplateEncryptionConfig {
+		return &v
+	}).(WorkflowTemplateEncryptionConfigPtrOutput)
+}
+
+// Optional. The Cloud KMS key name to use for encryption.
+func (o WorkflowTemplateEncryptionConfigOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateEncryptionConfig) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplateEncryptionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateEncryptionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateEncryptionConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplateEncryptionConfigPtrOutput) ToWorkflowTemplateEncryptionConfigPtrOutput() WorkflowTemplateEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateEncryptionConfigPtrOutput) ToWorkflowTemplateEncryptionConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateEncryptionConfigPtrOutput) Elem() WorkflowTemplateEncryptionConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplateEncryptionConfig) WorkflowTemplateEncryptionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplateEncryptionConfig
+		return ret
+	}).(WorkflowTemplateEncryptionConfigOutput)
+}
+
+// Optional. The Cloud KMS key name to use for encryption.
+func (o WorkflowTemplateEncryptionConfigPtrOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateEncryptionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKey
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkflowTemplateJob struct {
 	// Job is a Hadoop job.
 	HadoopJob *WorkflowTemplateJobHadoopJob `pulumi:"hadoopJob"`
@@ -33373,6 +33510,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceScheduledBackupPtrInput)(nil)).Elem(), MetastoreServiceScheduledBackupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceTelemetryConfigInput)(nil)).Elem(), MetastoreServiceTelemetryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceTelemetryConfigPtrInput)(nil)).Elem(), MetastoreServiceTelemetryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateEncryptionConfigInput)(nil)).Elem(), WorkflowTemplateEncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateEncryptionConfigPtrInput)(nil)).Elem(), WorkflowTemplateEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateJobInput)(nil)).Elem(), WorkflowTemplateJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateJobArrayInput)(nil)).Elem(), WorkflowTemplateJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateJobHadoopJobInput)(nil)).Elem(), WorkflowTemplateJobHadoopJobArgs{})
@@ -33743,6 +33882,8 @@ func init() {
 	pulumi.RegisterOutputType(MetastoreServiceScheduledBackupPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceTelemetryConfigOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceTelemetryConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateEncryptionConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateEncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplateJobOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplateJobArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplateJobHadoopJobOutput{})
