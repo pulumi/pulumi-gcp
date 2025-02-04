@@ -117,7 +117,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
+//			_default, err := certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
 //				Name:     pulumi.String("my-certificate"),
 //				Location: pulumi.String("us-central1"),
 //				SelfManaged: &certificatemanager.CertificateSelfManagedArgs{
@@ -236,7 +236,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
+//			_default, err := certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
 //				Name:     pulumi.String("my-certificate"),
 //				Location: pulumi.String("us-south1"),
 //				SelfManaged: &certificatemanager.CertificateSelfManagedArgs{

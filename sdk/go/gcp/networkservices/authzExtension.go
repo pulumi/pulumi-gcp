@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+//			_default, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
 //				Name:                pulumi.String("authz-service"),
 //				Project:             pulumi.String("my-project-name"),
 //				Region:              pulumi.String("us-west1"),

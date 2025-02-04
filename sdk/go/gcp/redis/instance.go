@@ -170,7 +170,7 @@ import (
 //			// If this network hasn't been created and you are using this example in your
 //			// config, add an additional network resource or change
 //			// this from "data"to "resource"
-//			_, err := compute.NewNetwork(ctx, "redis-network", &compute.NetworkArgs{
+//			redis_network, err := compute.NewNetwork(ctx, "redis-network", &compute.NetworkArgs{
 //				Name: pulumi.String("redis-test-network"),
 //			})
 //			if err != nil {
