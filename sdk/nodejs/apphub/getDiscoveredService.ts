@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-service = gcp.apphub.getDiscoveredService({
+ * const my_service = gcp.apphub.getDiscoveredService({
  *     location: "my-location",
  *     serviceUri: "my-service-uri",
  * });
@@ -84,7 +84,7 @@ export interface GetDiscoveredServiceResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-service = gcp.apphub.getDiscoveredService({
+ * const my_service = gcp.apphub.getDiscoveredService({
  *     location: "my-location",
  *     serviceUri: "my-service-uri",
  * });

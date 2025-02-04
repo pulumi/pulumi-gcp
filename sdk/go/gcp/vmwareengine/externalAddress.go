@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vmwareengine.NewNetwork(ctx, "external-address-nw", &vmwareengine.NetworkArgs{
+//			external_address_nw, err := vmwareengine.NewNetwork(ctx, "external-address-nw", &vmwareengine.NetworkArgs{
 //				Name:        pulumi.String("pc-nw"),
 //				Location:    pulumi.String("global"),
 //				Type:        pulumi.String("STANDARD"),
@@ -43,7 +43,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vmwareengine.NewPrivateCloud(ctx, "external-address-pc", &vmwareengine.PrivateCloudArgs{
+//			external_address_pc, err := vmwareengine.NewPrivateCloud(ctx, "external-address-pc", &vmwareengine.PrivateCloudArgs{
 //				Location:    pulumi.String("-a"),
 //				Name:        pulumi.String("sample-pc"),
 //				Description: pulumi.String("Sample test PC."),
@@ -64,7 +64,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vmwareengine.NewNetworkPolicy(ctx, "external-address-np", &vmwareengine.NetworkPolicyArgs{
+//			external_address_np, err := vmwareengine.NewNetworkPolicy(ctx, "external-address-np", &vmwareengine.NetworkPolicyArgs{
 //				Location:            pulumi.String(""),
 //				Name:                pulumi.String("sample-np"),
 //				EdgeServicesCidr:    pulumi.String("192.168.30.0/26"),

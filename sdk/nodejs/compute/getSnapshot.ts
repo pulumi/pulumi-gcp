@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     name: "my-snapshot",
  * });
  * // using a filter
- * const latest-snapshot = gcp.compute.getSnapshot({
+ * const latest_snapshot = gcp.compute.getSnapshot({
  *     filter: "name != my-snapshot",
  *     mostRecent: true,
  * });
@@ -117,7 +117,7 @@ export interface GetSnapshotResult {
  *     name: "my-snapshot",
  * });
  * // using a filter
- * const latest-snapshot = gcp.compute.getSnapshot({
+ * const latest_snapshot = gcp.compute.getSnapshot({
  *     filter: "name != my-snapshot",
  *     mostRecent: true,
  * });

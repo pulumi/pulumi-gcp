@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gkeonprem.NewVMwareCluster(ctx, "default-basic", &gkeonprem.VMwareClusterArgs{
+//			default_basic, err := gkeonprem.NewVMwareCluster(ctx, "default-basic", &gkeonprem.VMwareClusterArgs{
 //				Name:                   pulumi.String("my-cluster"),
 //				Location:               pulumi.String("us-west1"),
 //				AdminClusterMembership: pulumi.String("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"),
@@ -112,7 +112,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gkeonprem.NewVMwareCluster(ctx, "default-full", &gkeonprem.VMwareClusterArgs{
+//			default_full, err := gkeonprem.NewVMwareCluster(ctx, "default-full", &gkeonprem.VMwareClusterArgs{
 //				Name:                   pulumi.String("my-cluster"),
 //				Location:               pulumi.String("us-west1"),
 //				AdminClusterMembership: pulumi.String("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"),

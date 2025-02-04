@@ -36,7 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudrun.NewService(ctx, "default", &cloudrun.ServiceArgs{
+//			_default, err := cloudrun.NewService(ctx, "default", &cloudrun.ServiceArgs{
 //				Name:     pulumi.String("cloudrun-srv"),
 //				Location: pulumi.String("us-central1"),
 //				Metadata: &cloudrun.ServiceMetadataArgs{

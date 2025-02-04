@@ -105,7 +105,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// VPC network
-//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
 //				Name:                  pulumi.String("tf-test-workstation-cluster_56730"),
 //				AutoCreateSubnetworks: pulumi.Bool(true),
 //			})
@@ -202,7 +202,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// VPC network
-//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
 //				Name:                  pulumi.String("tf-test-workstation-cluster_34962"),
 //				AutoCreateSubnetworks: pulumi.Bool(true),
 //			})
