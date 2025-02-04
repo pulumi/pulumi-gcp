@@ -2298,6 +2298,31 @@
                     }
                 }
             },
+            "google_beyondcorp_security_gateway_iam_binding": {
+                "current": "gcp:beyondcorp/securityGatewayIamBinding:SecurityGatewayIamBinding",
+                "majorVersion": 8,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_beyondcorp_security_gateway_iam_member": {
+                "current": "gcp:beyondcorp/securityGatewayIamMember:SecurityGatewayIamMember",
+                "majorVersion": 8,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_beyondcorp_security_gateway_iam_policy": {
+                "current": "gcp:beyondcorp/securityGatewayIamPolicy:SecurityGatewayIamPolicy",
+                "majorVersion": 8
+            },
             "google_biglake_catalog": {
                 "current": "gcp:biglake/catalog:Catalog",
                 "majorVersion": 8
@@ -2897,6 +2922,9 @@
                                 }
                             }
                         }
+                    },
+                    "schema_foreign_type_info": {
+                        "maxItemsOne": true
                     },
                     "table_constraints": {
                         "maxItemsOne": true,
@@ -15928,6 +15956,9 @@
                 "current": "gcp:dataproc/workflowTemplate:WorkflowTemplate",
                 "majorVersion": 8,
                 "fields": {
+                    "encryption_config": {
+                        "maxItemsOne": true
+                    },
                     "jobs": {
                         "maxItemsOne": false,
                         "elem": {
@@ -26543,6 +26574,9 @@
                                 "aws_kinesis": {
                                     "maxItemsOne": true
                                 },
+                                "aws_msk": {
+                                    "maxItemsOne": true
+                                },
                                 "azure_event_hubs": {
                                     "maxItemsOne": true
                                 },
@@ -26561,6 +26595,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "confluent_cloud": {
+                                    "maxItemsOne": true
                                 },
                                 "platform_logs_settings": {
                                     "maxItemsOne": true
@@ -27871,6 +27908,9 @@
                 "current": "gcp:spanner/backupSchedule:BackupSchedule",
                 "majorVersion": 8,
                 "fields": {
+                    "encryption_config": {
+                        "maxItemsOne": true
+                    },
                     "full_backup_spec": {
                         "maxItemsOne": true
                     },
@@ -30343,6 +30383,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "google_beyondcorp_security_gateway_iam_policy": {
+                "current": "gcp:beyondcorp/getSecurityGatewayIamPolicy:getSecurityGatewayIamPolicy",
+                "majorVersion": 8
             },
             "google_bigquery_analytics_hub_data_exchange_iam_policy": {
                 "current": "gcp:bigqueryanalyticshub/getDataExchangeIamPolicy:getDataExchangeIamPolicy",
@@ -35387,6 +35431,26 @@
                     }
                 }
             },
+            "google_parameter_manager_parameter_version": {
+                "current": "gcp:parametermanager/getParameterVersion:getParameterVersion",
+                "majorVersion": 8
+            },
+            "google_parameter_manager_parameters": {
+                "current": "gcp:parametermanager/getParameters:getParameters",
+                "majorVersion": 8,
+                "fields": {
+                    "parameters": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "policy_member": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_parameter_manager_regional_parameter": {
                 "current": "gcp:parametermanager/getRegionalParameter:getRegionalParameter",
                 "majorVersion": 8,
@@ -35395,6 +35459,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "google_parameter_manager_regional_parameter_version": {
+                "current": "gcp:parametermanager/getRegionalParameterVersion:getRegionalParameterVersion",
+                "majorVersion": 8
             },
             "google_parameter_manager_regional_parameters": {
                 "current": "gcp:parametermanager/getRegionalParameters:getRegionalParameters",
@@ -35805,6 +35873,9 @@
                                 "aws_kinesis": {
                                     "maxItemsOne": false
                                 },
+                                "aws_msk": {
+                                    "maxItemsOne": false
+                                },
                                 "azure_event_hubs": {
                                     "maxItemsOne": false
                                 },
@@ -35823,6 +35894,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "confluent_cloud": {
+                                    "maxItemsOne": false
                                 },
                                 "platform_logs_settings": {
                                     "maxItemsOne": false
@@ -37992,6 +38066,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_parameter_manager_parameters": [
+                "parameters.$.effective_labels",
+                "parameters.$.terraform_labels"
+            ],
             "google_parameter_manager_regional_parameter": [
                 "effective_labels",
                 "terraform_labels"
@@ -38162,6 +38240,9 @@
             "gcp:beyondcorp/appConnector:AppConnector": 0,
             "gcp:beyondcorp/appGateway:AppGateway": 0,
             "gcp:beyondcorp/securityGateway:SecurityGateway": 0,
+            "gcp:beyondcorp/securityGatewayIamBinding:SecurityGatewayIamBinding": 0,
+            "gcp:beyondcorp/securityGatewayIamMember:SecurityGatewayIamMember": 0,
+            "gcp:beyondcorp/securityGatewayIamPolicy:SecurityGatewayIamPolicy": 0,
             "gcp:biglake/catalog:Catalog": 0,
             "gcp:biglake/database:Database": 0,
             "gcp:biglake/table:Table": 0,
@@ -39164,6 +39245,7 @@
             "gcp:beyondcorp/getAppConnection:getAppConnection": 0,
             "gcp:beyondcorp/getAppConnector:getAppConnector": 0,
             "gcp:beyondcorp/getAppGateway:getAppGateway": 0,
+            "gcp:beyondcorp/getSecurityGatewayIamPolicy:getSecurityGatewayIamPolicy": 0,
             "gcp:bigquery/getConnectionIamPolicy:getConnectionIamPolicy": 0,
             "gcp:bigquery/getDataset:getDataset": 0,
             "gcp:bigquery/getDatasetIamPolicy:getDatasetIamPolicy": 0,
@@ -39397,7 +39479,10 @@
             "gcp:organizations/getProject:getProject": 0,
             "gcp:organizations/getS:getS": 0,
             "gcp:parametermanager/getParameter:getParameter": 0,
+            "gcp:parametermanager/getParameterVersion:getParameterVersion": 0,
+            "gcp:parametermanager/getParameters:getParameters": 0,
             "gcp:parametermanager/getRegionalParameter:getRegionalParameter": 0,
+            "gcp:parametermanager/getRegionalParameterVersion:getRegionalParameterVersion": 0,
             "gcp:parametermanager/getRegionalParameters:getRegionalParameters": 0,
             "gcp:privilegedaccessmanager/getEntitlement:getEntitlement": 0,
             "gcp:projects/getIamPolicy:getIamPolicy": 0,
