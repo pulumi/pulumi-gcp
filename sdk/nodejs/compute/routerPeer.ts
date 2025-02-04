@@ -90,6 +90,22 @@ import * as utilities from "../utilities";
  *     zeroCustomLearnedRoutePriority: true,
  * });
  * ```
+ * ### Router Zero Advertised Route Priority
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const peer = new gcp.compute.RouterPeer("peer", {
+ *     name: "my-router-peer",
+ *     router: "my-router",
+ *     region: "us-central1",
+ *     "interface": "interface-1",
+ *     peerAsn: 65513,
+ *     advertisedRoutePriority: 0,
+ *     zeroAdvertisedRoutePriority: true,
+ * });
+ * ```
  * ### Router Peer Router Appliance
  *
  * ```typescript
@@ -486,6 +502,10 @@ export class RouterPeer extends pulumi.CustomResource {
      */
     public readonly ipv6NexthopAddress!: pulumi.Output<string>;
     /**
+     * An internal boolean field for provider use for zero_advertised_route_priority.
+     */
+    public /*out*/ readonly isAdvertisedRoutePrioritySet!: pulumi.Output<boolean>;
+    /**
      * An internal boolean field for provider use.
      */
     public /*out*/ readonly isCustomLearnedPrioritySet!: pulumi.Output<boolean>;
@@ -561,6 +581,11 @@ export class RouterPeer extends pulumi.CustomResource {
      */
     public readonly routerApplianceInstance!: pulumi.Output<string | undefined>;
     /**
+     * The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
+     * This value has to be set true to force the advertisedRoutePriority to be 0.
+     */
+    public readonly zeroAdvertisedRoutePriority!: pulumi.Output<boolean | undefined>;
+    /**
      * The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
      * This value has to be set true to force the customLearnedRoutePriority to be 0.
      */
@@ -595,6 +620,7 @@ export class RouterPeer extends pulumi.CustomResource {
             resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
             resourceInputs["ipv4NexthopAddress"] = state ? state.ipv4NexthopAddress : undefined;
             resourceInputs["ipv6NexthopAddress"] = state ? state.ipv6NexthopAddress : undefined;
+            resourceInputs["isAdvertisedRoutePrioritySet"] = state ? state.isAdvertisedRoutePrioritySet : undefined;
             resourceInputs["isCustomLearnedPrioritySet"] = state ? state.isCustomLearnedPrioritySet : undefined;
             resourceInputs["managementType"] = state ? state.managementType : undefined;
             resourceInputs["md5AuthenticationKey"] = state ? state.md5AuthenticationKey : undefined;
@@ -607,6 +633,7 @@ export class RouterPeer extends pulumi.CustomResource {
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["router"] = state ? state.router : undefined;
             resourceInputs["routerApplianceInstance"] = state ? state.routerApplianceInstance : undefined;
+            resourceInputs["zeroAdvertisedRoutePriority"] = state ? state.zeroAdvertisedRoutePriority : undefined;
             resourceInputs["zeroCustomLearnedRoutePriority"] = state ? state.zeroCustomLearnedRoutePriority : undefined;
         } else {
             const args = argsOrState as RouterPeerArgs | undefined;
@@ -645,7 +672,9 @@ export class RouterPeer extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["router"] = args ? args.router : undefined;
             resourceInputs["routerApplianceInstance"] = args ? args.routerApplianceInstance : undefined;
+            resourceInputs["zeroAdvertisedRoutePriority"] = args ? args.zeroAdvertisedRoutePriority : undefined;
             resourceInputs["zeroCustomLearnedRoutePriority"] = args ? args.zeroCustomLearnedRoutePriority : undefined;
+            resourceInputs["isAdvertisedRoutePrioritySet"] = undefined /*out*/;
             resourceInputs["isCustomLearnedPrioritySet"] = undefined /*out*/;
             resourceInputs["managementType"] = undefined /*out*/;
         }
@@ -758,6 +787,10 @@ export interface RouterPeerState {
      */
     ipv6NexthopAddress?: pulumi.Input<string>;
     /**
+     * An internal boolean field for provider use for zero_advertised_route_priority.
+     */
+    isAdvertisedRoutePrioritySet?: pulumi.Input<boolean>;
+    /**
      * An internal boolean field for provider use.
      */
     isCustomLearnedPrioritySet?: pulumi.Input<boolean>;
@@ -832,6 +865,11 @@ export interface RouterPeerState {
      * this Cloud Router. The VM instance is the peer side of the BGP session.
      */
     routerApplianceInstance?: pulumi.Input<string>;
+    /**
+     * The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
+     * This value has to be set true to force the advertisedRoutePriority to be 0.
+     */
+    zeroAdvertisedRoutePriority?: pulumi.Input<boolean>;
     /**
      * The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
      * This value has to be set true to force the customLearnedRoutePriority to be 0.
@@ -1001,6 +1039,11 @@ export interface RouterPeerArgs {
      * this Cloud Router. The VM instance is the peer side of the BGP session.
      */
     routerApplianceInstance?: pulumi.Input<string>;
+    /**
+     * The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
+     * This value has to be set true to force the advertisedRoutePriority to be 0.
+     */
+    zeroAdvertisedRoutePriority?: pulumi.Input<boolean>;
     /**
      * The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
      * This value has to be set true to force the customLearnedRoutePriority to be 0.

@@ -5,8 +5,10 @@ package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.pubsub.outputs.TopicIngestionDataSourceSettingsAwsKinesis;
+import com.pulumi.gcp.pubsub.outputs.TopicIngestionDataSourceSettingsAwsMsk;
 import com.pulumi.gcp.pubsub.outputs.TopicIngestionDataSourceSettingsAzureEventHubs;
 import com.pulumi.gcp.pubsub.outputs.TopicIngestionDataSourceSettingsCloudStorage;
+import com.pulumi.gcp.pubsub.outputs.TopicIngestionDataSourceSettingsConfluentCloud;
 import com.pulumi.gcp.pubsub.outputs.TopicIngestionDataSourceSettingsPlatformLogsSettings;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,6 +23,12 @@ public final class TopicIngestionDataSourceSettings {
      */
     private @Nullable TopicIngestionDataSourceSettingsAwsKinesis awsKinesis;
     /**
+     * @return Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable TopicIngestionDataSourceSettingsAwsMsk awsMsk;
+    /**
      * @return Settings for ingestion from Azure Event Hubs.
      * Structure is documented below.
      * 
@@ -32,6 +40,12 @@ public final class TopicIngestionDataSourceSettings {
      * 
      */
     private @Nullable TopicIngestionDataSourceSettingsCloudStorage cloudStorage;
+    /**
+     * @return Settings for ingestion from Confluent Cloud.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable TopicIngestionDataSourceSettingsConfluentCloud confluentCloud;
     /**
      * @return Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
      * no Platform Logs will be generated.&#39;
@@ -50,6 +64,14 @@ public final class TopicIngestionDataSourceSettings {
         return Optional.ofNullable(this.awsKinesis);
     }
     /**
+     * @return Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<TopicIngestionDataSourceSettingsAwsMsk> awsMsk() {
+        return Optional.ofNullable(this.awsMsk);
+    }
+    /**
      * @return Settings for ingestion from Azure Event Hubs.
      * Structure is documented below.
      * 
@@ -64,6 +86,14 @@ public final class TopicIngestionDataSourceSettings {
      */
     public Optional<TopicIngestionDataSourceSettingsCloudStorage> cloudStorage() {
         return Optional.ofNullable(this.cloudStorage);
+    }
+    /**
+     * @return Settings for ingestion from Confluent Cloud.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<TopicIngestionDataSourceSettingsConfluentCloud> confluentCloud() {
+        return Optional.ofNullable(this.confluentCloud);
     }
     /**
      * @return Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
@@ -85,15 +115,19 @@ public final class TopicIngestionDataSourceSettings {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable TopicIngestionDataSourceSettingsAwsKinesis awsKinesis;
+        private @Nullable TopicIngestionDataSourceSettingsAwsMsk awsMsk;
         private @Nullable TopicIngestionDataSourceSettingsAzureEventHubs azureEventHubs;
         private @Nullable TopicIngestionDataSourceSettingsCloudStorage cloudStorage;
+        private @Nullable TopicIngestionDataSourceSettingsConfluentCloud confluentCloud;
         private @Nullable TopicIngestionDataSourceSettingsPlatformLogsSettings platformLogsSettings;
         public Builder() {}
         public Builder(TopicIngestionDataSourceSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.awsKinesis = defaults.awsKinesis;
+    	      this.awsMsk = defaults.awsMsk;
     	      this.azureEventHubs = defaults.azureEventHubs;
     	      this.cloudStorage = defaults.cloudStorage;
+    	      this.confluentCloud = defaults.confluentCloud;
     	      this.platformLogsSettings = defaults.platformLogsSettings;
         }
 
@@ -101,6 +135,12 @@ public final class TopicIngestionDataSourceSettings {
         public Builder awsKinesis(@Nullable TopicIngestionDataSourceSettingsAwsKinesis awsKinesis) {
 
             this.awsKinesis = awsKinesis;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder awsMsk(@Nullable TopicIngestionDataSourceSettingsAwsMsk awsMsk) {
+
+            this.awsMsk = awsMsk;
             return this;
         }
         @CustomType.Setter
@@ -116,6 +156,12 @@ public final class TopicIngestionDataSourceSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder confluentCloud(@Nullable TopicIngestionDataSourceSettingsConfluentCloud confluentCloud) {
+
+            this.confluentCloud = confluentCloud;
+            return this;
+        }
+        @CustomType.Setter
         public Builder platformLogsSettings(@Nullable TopicIngestionDataSourceSettingsPlatformLogsSettings platformLogsSettings) {
 
             this.platformLogsSettings = platformLogsSettings;
@@ -124,8 +170,10 @@ public final class TopicIngestionDataSourceSettings {
         public TopicIngestionDataSourceSettings build() {
             final var _resultValue = new TopicIngestionDataSourceSettings();
             _resultValue.awsKinesis = awsKinesis;
+            _resultValue.awsMsk = awsMsk;
             _resultValue.azureEventHubs = azureEventHubs;
             _resultValue.cloudStorage = cloudStorage;
+            _resultValue.confluentCloud = confluentCloud;
             _resultValue.platformLogsSettings = platformLogsSettings;
             return _resultValue;
         }

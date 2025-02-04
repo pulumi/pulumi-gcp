@@ -17,7 +17,7 @@ import (
 //
 // ## Example Usage
 //
-// Example service accounts.
+// # Get all service accounts from a project
 //
 // ```go
 // package main
@@ -42,6 +42,85 @@ import (
 //	}
 //
 // ```
+//
+// Get all service accounts that are prefixed with `"foo"`
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := serviceaccount.GetS(ctx, &serviceaccount.GetSArgs{
+//				Prefix: pulumi.StringRef("foo"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Get all service accounts that contain `"bar"`
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := serviceaccount.GetS(ctx, &serviceaccount.GetSArgs{
+//				Regex: pulumi.StringRef(".*bar.*"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Get all service accounts that are prefixed with `"foo"` and contain `"bar"`
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := serviceaccount.GetS(ctx, &serviceaccount.GetSArgs{
+//				Prefix: pulumi.StringRef("foo"),
+//				Regex:  pulumi.StringRef(".*bar.*"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetS(ctx *pulumi.Context, args *GetSArgs, opts ...pulumi.InvokeOption) (*GetSResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSResult
@@ -54,8 +133,12 @@ func GetS(ctx *pulumi.Context, args *GetSArgs, opts ...pulumi.InvokeOption) (*Ge
 
 // A collection of arguments for invoking getS.
 type GetSArgs struct {
+	// A prefix for filtering. It's applied with the `accountId`.
+	Prefix *string `pulumi:"prefix"`
 	// The ID of the project. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// A regular expression for filtering. It's applied with the `email`. Further information about the syntax can be found [here](https://github.com/google/re2/wiki/Syntax).
+	Regex *string `pulumi:"regex"`
 }
 
 // A collection of values returned by getS.
@@ -64,7 +147,9 @@ type GetSResult struct {
 	Accounts []GetSAccount `pulumi:"accounts"`
 	// The provider-assigned unique ID for this managed resource.
 	Id      string  `pulumi:"id"`
+	Prefix  *string `pulumi:"prefix"`
 	Project *string `pulumi:"project"`
+	Regex   *string `pulumi:"regex"`
 }
 
 func GetSOutput(ctx *pulumi.Context, args GetSOutputArgs, opts ...pulumi.InvokeOption) GetSResultOutput {
@@ -78,8 +163,12 @@ func GetSOutput(ctx *pulumi.Context, args GetSOutputArgs, opts ...pulumi.InvokeO
 
 // A collection of arguments for invoking getS.
 type GetSOutputArgs struct {
+	// A prefix for filtering. It's applied with the `accountId`.
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
 	// The ID of the project. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
+	// A regular expression for filtering. It's applied with the `email`. Further information about the syntax can be found [here](https://github.com/google/re2/wiki/Syntax).
+	Regex pulumi.StringPtrInput `pulumi:"regex"`
 }
 
 func (GetSOutputArgs) ElementType() reflect.Type {
@@ -111,8 +200,16 @@ func (o GetSResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+func (o GetSResultOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSResult) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
 func (o GetSResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSResultOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSResult) *string { return v.Regex }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -205,19 +205,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network = new Network("network", NetworkArgs.builder()
- *             .name("tf-test-network_37559")
+ *             .name("tf-test-network_91980")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()
- *             .name("tf-test-subnet_91980")
+ *             .name("tf-test-subnet_37118")
  *             .ipCidrRange("10.0.0.0/28")
  *             .region("us-central1")
  *             .network(network.selfLink())
  *             .build());
  * 
  *         var instance = new Instance("instance", InstanceArgs.builder()
- *             .name("tf-test-instance_37118")
+ *             .name("tf-test-instance_80332")
  *             .machineType("e2-medium")
  *             .canIpForward(true)
  *             .zone("us-central1-a")
@@ -236,13 +236,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var basicHub = new Hub("basicHub", HubArgs.builder()
- *             .name("tf-test-hub_80332")
+ *             .name("tf-test-hub_13293")
  *             .description("A sample hub")
  *             .labels(Map.of("label-two", "value-one"))
  *             .build());
  * 
  *         var primary = new Spoke("primary", SpokeArgs.builder()
- *             .name("tf-test-name_13293")
+ *             .name("tf-test-name_40289")
  *             .location("us-central1")
  *             .description("A sample spoke with a linked routher appliance instance")
  *             .labels(Map.of("label-one", "value-one"))
@@ -659,8 +659,8 @@ import javax.annotation.Nullable;
  *             .hub(starHub.id())
  *             .autoAccept(GroupAutoAcceptArgs.builder()
  *                 .autoAcceptProjects(                
- *                     "foo_40289",
- *                     "bar_33395")
+ *                     "foo_33395",
+ *                     "bar_76044")
  *                 .build())
  *             .build());
  * 
@@ -672,6 +672,66 @@ import javax.annotation.Nullable;
  *             .hub(starHub.id())
  *             .group(centerGroup.id())
  *             .linkedVpcNetwork(SpokeLinkedVpcNetworkArgs.builder()
+ *                 .uri(network.selfLink())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Network Connectivity Spoke Linked Vpc Network Ipv6 Support
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.networkconnectivity.Hub;
+ * import com.pulumi.gcp.networkconnectivity.HubArgs;
+ * import com.pulumi.gcp.networkconnectivity.Spoke;
+ * import com.pulumi.gcp.networkconnectivity.SpokeArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedVpcNetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var network = new Network("network", NetworkArgs.builder()
+ *             .name("net")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var basicHub = new Hub("basicHub", HubArgs.builder()
+ *             .name("hub1")
+ *             .description("A sample hub")
+ *             .labels(Map.of("label-two", "value-one"))
+ *             .build());
+ * 
+ *         var primary = new Spoke("primary", SpokeArgs.builder()
+ *             .name("spoke1-ipv6")
+ *             .location("global")
+ *             .description("A sample spoke with a linked VPC that include export ranges of all IPv6")
+ *             .labels(Map.of("label-one", "value-one"))
+ *             .hub(basicHub.id())
+ *             .linkedVpcNetwork(SpokeLinkedVpcNetworkArgs.builder()
+ *                 .includeExportRanges(                
+ *                     "ALL_IPV6_RANGES",
+ *                     "ALL_PRIVATE_IPV4_RANGES")
  *                 .uri(network.selfLink())
  *                 .build())
  *             .build());

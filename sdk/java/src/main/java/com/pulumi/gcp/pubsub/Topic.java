@@ -364,6 +364,95 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Pubsub Topic Ingestion Aws Msk
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsArgs;
+ * import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsAwsMskArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var example = new Topic("example", TopicArgs.builder()
+ *             .name("example-topic")
+ *             .ingestionDataSourceSettings(TopicIngestionDataSourceSettingsArgs.builder()
+ *                 .awsMsk(TopicIngestionDataSourceSettingsAwsMskArgs.builder()
+ *                     .clusterArn("arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name")
+ *                     .topic("test-topic")
+ *                     .awsRoleArn("arn:aws:iam::111111111111:role/fake-role-name")
+ *                     .gcpServiceAccount("fake-service-account}{@literal @}{@code fake-gcp-project.iam.gserviceaccount.com")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Pubsub Topic Ingestion Confluent Cloud
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsArgs;
+ * import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsConfluentCloudArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var example = new Topic("example", TopicArgs.builder()
+ *             .name("example-topic")
+ *             .ingestionDataSourceSettings(TopicIngestionDataSourceSettingsArgs.builder()
+ *                 .confluentCloud(TopicIngestionDataSourceSettingsConfluentCloudArgs.builder()
+ *                     .bootstrapServer("test.us-west2.gcp.confluent.cloud:1111")
+ *                     .clusterId("1234")
+ *                     .topic("test-topic")
+ *                     .identityPoolId("test-identity-pool-id")
+ *                     .gcpServiceAccount("fake-service-account}{@literal @}{@code fake-gcp-project.iam.gserviceaccount.com")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

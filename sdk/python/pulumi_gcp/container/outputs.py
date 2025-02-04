@@ -5287,21 +5287,28 @@ class ClusterClusterAutoscalingResourceLimit(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 maximum: int,
                  resource_type: str,
-                 maximum: Optional[int] = None,
                  minimum: Optional[int] = None):
         """
+        :param int maximum: Maximum amount of the resource in the cluster.
         :param str resource_type: The type of the resource. For example, `cpu` and
                `memory`.  See the [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
                for a list of types.
-        :param int maximum: Maximum amount of the resource in the cluster.
         :param int minimum: Minimum amount of the resource in the cluster.
         """
+        pulumi.set(__self__, "maximum", maximum)
         pulumi.set(__self__, "resource_type", resource_type)
-        if maximum is not None:
-            pulumi.set(__self__, "maximum", maximum)
         if minimum is not None:
             pulumi.set(__self__, "minimum", minimum)
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> int:
+        """
+        Maximum amount of the resource in the cluster.
+        """
+        return pulumi.get(self, "maximum")
 
     @property
     @pulumi.getter(name="resourceType")
@@ -5312,14 +5319,6 @@ class ClusterClusterAutoscalingResourceLimit(dict):
         for a list of types.
         """
         return pulumi.get(self, "resource_type")
-
-    @property
-    @pulumi.getter
-    def maximum(self) -> Optional[int]:
-        """
-        Maximum amount of the resource in the cluster.
-        """
-        return pulumi.get(self, "maximum")
 
     @property
     @pulumi.getter
@@ -6925,6 +6924,8 @@ class ClusterNodeConfig(dict):
             suggest = "logging_variant"
         elif key == "machineType":
             suggest = "machine_type"
+        elif key == "maxRunDuration":
+            suggest = "max_run_duration"
         elif key == "minCpuPlatform":
             suggest = "min_cpu_platform"
         elif key == "nodeGroup":
@@ -6988,6 +6989,7 @@ class ClusterNodeConfig(dict):
                  local_ssd_encryption_mode: Optional[str] = None,
                  logging_variant: Optional[str] = None,
                  machine_type: Optional[str] = None,
+                 max_run_duration: Optional[str] = None,
                  metadata: Optional[Mapping[str, str]] = None,
                  min_cpu_platform: Optional[str] = None,
                  node_group: Optional[str] = None,
@@ -7065,6 +7067,7 @@ class ClusterNodeConfig(dict):
         :param str machine_type: The name of a Google Compute Engine machine type.
                Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
                [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
+        :param str max_run_duration: The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
         :param Mapping[str, str] metadata: The metadata key/value pairs assigned to instances in
                the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
                `true` by the API; if `metadata` is set but that default value is not
@@ -7159,6 +7162,8 @@ class ClusterNodeConfig(dict):
             pulumi.set(__self__, "logging_variant", logging_variant)
         if machine_type is not None:
             pulumi.set(__self__, "machine_type", machine_type)
+        if max_run_duration is not None:
+            pulumi.set(__self__, "max_run_duration", max_run_duration)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
         if min_cpu_platform is not None:
@@ -7421,6 +7426,14 @@ class ClusterNodeConfig(dict):
         [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
         """
         return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter(name="maxRunDuration")
+    def max_run_duration(self) -> Optional[str]:
+        """
+        The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+        """
+        return pulumi.get(self, "max_run_duration")
 
     @property
     @pulumi.getter
@@ -10085,6 +10098,8 @@ class ClusterNodePoolNodeConfig(dict):
             suggest = "logging_variant"
         elif key == "machineType":
             suggest = "machine_type"
+        elif key == "maxRunDuration":
+            suggest = "max_run_duration"
         elif key == "minCpuPlatform":
             suggest = "min_cpu_platform"
         elif key == "nodeGroup":
@@ -10148,6 +10163,7 @@ class ClusterNodePoolNodeConfig(dict):
                  local_ssd_encryption_mode: Optional[str] = None,
                  logging_variant: Optional[str] = None,
                  machine_type: Optional[str] = None,
+                 max_run_duration: Optional[str] = None,
                  metadata: Optional[Mapping[str, str]] = None,
                  min_cpu_platform: Optional[str] = None,
                  node_group: Optional[str] = None,
@@ -10225,6 +10241,7 @@ class ClusterNodePoolNodeConfig(dict):
         :param str machine_type: The name of a Google Compute Engine machine type.
                Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
                [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
+        :param str max_run_duration: The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
         :param Mapping[str, str] metadata: The metadata key/value pairs assigned to instances in
                the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
                `true` by the API; if `metadata` is set but that default value is not
@@ -10319,6 +10336,8 @@ class ClusterNodePoolNodeConfig(dict):
             pulumi.set(__self__, "logging_variant", logging_variant)
         if machine_type is not None:
             pulumi.set(__self__, "machine_type", machine_type)
+        if max_run_duration is not None:
+            pulumi.set(__self__, "max_run_duration", max_run_duration)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
         if min_cpu_platform is not None:
@@ -10581,6 +10600,14 @@ class ClusterNodePoolNodeConfig(dict):
         [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
         """
         return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter(name="maxRunDuration")
+    def max_run_duration(self) -> Optional[str]:
+        """
+        The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+        """
+        return pulumi.get(self, "max_run_duration")
 
     @property
     @pulumi.getter
@@ -13668,6 +13695,8 @@ class NodePoolNodeConfig(dict):
             suggest = "logging_variant"
         elif key == "machineType":
             suggest = "machine_type"
+        elif key == "maxRunDuration":
+            suggest = "max_run_duration"
         elif key == "minCpuPlatform":
             suggest = "min_cpu_platform"
         elif key == "nodeGroup":
@@ -13731,6 +13760,7 @@ class NodePoolNodeConfig(dict):
                  local_ssd_encryption_mode: Optional[str] = None,
                  logging_variant: Optional[str] = None,
                  machine_type: Optional[str] = None,
+                 max_run_duration: Optional[str] = None,
                  metadata: Optional[Mapping[str, str]] = None,
                  min_cpu_platform: Optional[str] = None,
                  node_group: Optional[str] = None,
@@ -13774,6 +13804,7 @@ class NodePoolNodeConfig(dict):
         :param str local_ssd_encryption_mode: LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
         :param str logging_variant: Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
         :param str machine_type: The name of a Google Compute Engine machine type.
+        :param str max_run_duration: The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
         :param Mapping[str, str] metadata: The metadata key/value pairs assigned to instances in the cluster.
         :param str min_cpu_platform: Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
         :param str node_group: Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
@@ -13844,6 +13875,8 @@ class NodePoolNodeConfig(dict):
             pulumi.set(__self__, "logging_variant", logging_variant)
         if machine_type is not None:
             pulumi.set(__self__, "machine_type", machine_type)
+        if max_run_duration is not None:
+            pulumi.set(__self__, "max_run_duration", max_run_duration)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
         if min_cpu_platform is not None:
@@ -14072,6 +14105,14 @@ class NodePoolNodeConfig(dict):
         The name of a Google Compute Engine machine type.
         """
         return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter(name="maxRunDuration")
+    def max_run_duration(self) -> Optional[str]:
+        """
+        The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+        """
+        return pulumi.get(self, "max_run_duration")
 
     @property
     @pulumi.getter
@@ -17525,6 +17566,7 @@ class GetClusterNodeConfigResult(dict):
                  local_ssd_encryption_mode: str,
                  logging_variant: str,
                  machine_type: str,
+                 max_run_duration: str,
                  metadata: Mapping[str, str],
                  min_cpu_platform: str,
                  node_group: str,
@@ -17568,6 +17610,7 @@ class GetClusterNodeConfigResult(dict):
         :param str local_ssd_encryption_mode: LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
         :param str logging_variant: Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
         :param str machine_type: The name of a Google Compute Engine machine type.
+        :param str max_run_duration: The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
         :param Mapping[str, str] metadata: The metadata key/value pairs assigned to instances in the cluster.
         :param str min_cpu_platform: Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
         :param str node_group: Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
@@ -17611,6 +17654,7 @@ class GetClusterNodeConfigResult(dict):
         pulumi.set(__self__, "local_ssd_encryption_mode", local_ssd_encryption_mode)
         pulumi.set(__self__, "logging_variant", logging_variant)
         pulumi.set(__self__, "machine_type", machine_type)
+        pulumi.set(__self__, "max_run_duration", max_run_duration)
         pulumi.set(__self__, "metadata", metadata)
         pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         pulumi.set(__self__, "node_group", node_group)
@@ -17821,6 +17865,14 @@ class GetClusterNodeConfigResult(dict):
         The name of a Google Compute Engine machine type.
         """
         return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter(name="maxRunDuration")
+    def max_run_duration(self) -> str:
+        """
+        The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+        """
+        return pulumi.get(self, "max_run_duration")
 
     @property
     @pulumi.getter
@@ -19523,6 +19575,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
                  local_ssd_encryption_mode: str,
                  logging_variant: str,
                  machine_type: str,
+                 max_run_duration: str,
                  metadata: Mapping[str, str],
                  min_cpu_platform: str,
                  node_group: str,
@@ -19566,6 +19619,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         :param str local_ssd_encryption_mode: LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
         :param str logging_variant: Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
         :param str machine_type: The name of a Google Compute Engine machine type.
+        :param str max_run_duration: The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
         :param Mapping[str, str] metadata: The metadata key/value pairs assigned to instances in the cluster.
         :param str min_cpu_platform: Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
         :param str node_group: Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
@@ -19609,6 +19663,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         pulumi.set(__self__, "local_ssd_encryption_mode", local_ssd_encryption_mode)
         pulumi.set(__self__, "logging_variant", logging_variant)
         pulumi.set(__self__, "machine_type", machine_type)
+        pulumi.set(__self__, "max_run_duration", max_run_duration)
         pulumi.set(__self__, "metadata", metadata)
         pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         pulumi.set(__self__, "node_group", node_group)
@@ -19819,6 +19874,14 @@ class GetClusterNodePoolNodeConfigResult(dict):
         The name of a Google Compute Engine machine type.
         """
         return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter(name="maxRunDuration")
+    def max_run_duration(self) -> str:
+        """
+        The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+        """
+        return pulumi.get(self, "max_run_duration")
 
     @property
     @pulumi.getter

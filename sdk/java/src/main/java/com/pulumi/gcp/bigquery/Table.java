@@ -16,6 +16,7 @@ import com.pulumi.gcp.bigquery.outputs.TableExternalCatalogTableOptions;
 import com.pulumi.gcp.bigquery.outputs.TableExternalDataConfiguration;
 import com.pulumi.gcp.bigquery.outputs.TableMaterializedView;
 import com.pulumi.gcp.bigquery.outputs.TableRangePartitioning;
+import com.pulumi.gcp.bigquery.outputs.TableSchemaForeignTypeInfo;
 import com.pulumi.gcp.bigquery.outputs.TableTableConstraints;
 import com.pulumi.gcp.bigquery.outputs.TableTableReplicationInfo;
 import com.pulumi.gcp.bigquery.outputs.TableTimePartitioning;
@@ -578,7 +579,8 @@ public class Table extends com.pulumi.resources.CustomResource {
      * globally unique. Tag key is expected to be in the namespaced format, for
      * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the
      * parent organization or project resource for this tag key. Tag value is
-     * expected to be the short name, for example &#34;Production&#34;.
+     * expected to be the short name, for example &#34;Production&#34;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
+     * for more details.
      * 
      */
     @Export(name="resourceTags", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -589,7 +591,8 @@ public class Table extends com.pulumi.resources.CustomResource {
      * globally unique. Tag key is expected to be in the namespaced format, for
      * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the
      * parent organization or project resource for this tag key. Tag value is
-     * expected to be the short name, for example &#34;Production&#34;.
+     * expected to be the short name, for example &#34;Production&#34;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
+     * for more details.
      * 
      */
     public Output<Optional<Map<String,String>>> resourceTags() {
@@ -608,6 +611,20 @@ public class Table extends com.pulumi.resources.CustomResource {
      */
     public Output<String> schema() {
         return this.schema;
+    }
+    /**
+     * Specifies metadata of the foreign data type definition in field schema.
+     * 
+     */
+    @Export(name="schemaForeignTypeInfo", refs={TableSchemaForeignTypeInfo.class}, tree="[0]")
+    private Output</* @Nullable */ TableSchemaForeignTypeInfo> schemaForeignTypeInfo;
+
+    /**
+     * @return Specifies metadata of the foreign data type definition in field schema.
+     * 
+     */
+    public Output<Optional<TableSchemaForeignTypeInfo>> schemaForeignTypeInfo() {
+        return Codegen.optional(this.schemaForeignTypeInfo);
     }
     /**
      * The URI of the created resource.

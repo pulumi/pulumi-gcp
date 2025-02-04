@@ -104,6 +104,102 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Workflow Tags
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.tags.TagKey;
+ * import com.pulumi.gcp.tags.TagKeyArgs;
+ * import com.pulumi.gcp.tags.TagValue;
+ * import com.pulumi.gcp.tags.TagValueArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.workflows.Workflow;
+ * import com.pulumi.gcp.workflows.WorkflowArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var tagKey = new TagKey("tagKey", TagKeyArgs.builder()
+ *             .parent(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .shortName("tag_key")
+ *             .build());
+ * 
+ *         var tagValue = new TagValue("tagValue", TagValueArgs.builder()
+ *             .parent(tagKey.name().applyValue(name -> String.format("tagKeys/%s", name)))
+ *             .shortName("tag_value")
+ *             .build());
+ * 
+ *         var testAccount = new Account("testAccount", AccountArgs.builder()
+ *             .accountId("my-account")
+ *             .displayName("Test Service Account")
+ *             .build());
+ * 
+ *         var example = new Workflow("example", WorkflowArgs.builder()
+ *             .name("workflow")
+ *             .region("us-central1")
+ *             .description("Magic")
+ *             .serviceAccount(testAccount.id())
+ *             .deletionProtection(false)
+ *             .tags(Output.tuple(tagKey.shortName(), tagValue.shortName()).applyValue(values -> {
+ *                 var tagKeyShortName = values.t1;
+ *                 var tagValueShortName = values.t2;
+ *                 return Map.of(String.format("%s/%s", project.applyValue(getProjectResult -> getProjectResult.projectId()),tagKeyShortName), tagValueShortName);
+ *             }))
+ *             .sourceContents("""
+ * # This is a sample workflow. You can replace it with your source code.
+ * #
+ * # This workflow does the following:
+ * # - reads current time and date information from an external API and stores
+ * #   the response in currentTime variable
+ * # - retrieves a list of Wikipedia articles related to the day of the week
+ * #   from currentTime
+ * # - returns the list of articles as an output of the workflow
+ * #
+ * # Note: In Terraform you need to escape the $$ or it will cause errors.
+ * 
+ * - getCurrentTime:
+ *     call: http.get
+ *     args:
+ *         url: ${sys.get_env("url")}
+ *     result: currentTime
+ * - readWikipedia:
+ *     call: http.get
+ *     args:
+ *         url: https://en.wikipedia.org/w/api.php
+ *         query:
+ *             action: opensearch
+ *             search: ${currentTime.body.dayOfWeek}
+ *     result: wikiResult
+ * - returnOutput:
+ *     return: ${wikiResult.body[1]}
+ *             """)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -359,6 +455,24 @@ public class Workflow extends com.pulumi.resources.CustomResource {
      */
     public Output<String> state() {
         return this.state;
+    }
+    /**
+     * A map of resource manager tags. Resource manager tag keys and values have the same definition
+     * as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
+     * the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return A map of resource manager tags. Resource manager tag keys and values have the same definition
+     * as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
+     * the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The timestamp of when the workflow was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.

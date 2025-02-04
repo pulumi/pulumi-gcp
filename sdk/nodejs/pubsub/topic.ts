@@ -164,6 +164,43 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Pubsub Topic Ingestion Aws Msk
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.pubsub.Topic("example", {
+ *     name: "example-topic",
+ *     ingestionDataSourceSettings: {
+ *         awsMsk: {
+ *             clusterArn: "arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name",
+ *             topic: "test-topic",
+ *             awsRoleArn: "arn:aws:iam::111111111111:role/fake-role-name",
+ *             gcpServiceAccount: "fake-service-account@fake-gcp-project.iam.gserviceaccount.com",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Pubsub Topic Ingestion Confluent Cloud
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.pubsub.Topic("example", {
+ *     name: "example-topic",
+ *     ingestionDataSourceSettings: {
+ *         confluentCloud: {
+ *             bootstrapServer: "test.us-west2.gcp.confluent.cloud:1111",
+ *             clusterId: "1234",
+ *             topic: "test-topic",
+ *             identityPoolId: "test-identity-pool-id",
+ *             gcpServiceAccount: "fake-service-account@fake-gcp-project.iam.gserviceaccount.com",
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

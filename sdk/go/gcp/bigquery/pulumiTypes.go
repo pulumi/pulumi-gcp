@@ -15161,6 +15161,143 @@ func (o TableRangePartitioningRangePtrOutput) Start() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type TableSchemaForeignTypeInfo struct {
+	// Specifies the system which defines the foreign data type.
+	TypeSystem string `pulumi:"typeSystem"`
+}
+
+// TableSchemaForeignTypeInfoInput is an input type that accepts TableSchemaForeignTypeInfoArgs and TableSchemaForeignTypeInfoOutput values.
+// You can construct a concrete instance of `TableSchemaForeignTypeInfoInput` via:
+//
+//	TableSchemaForeignTypeInfoArgs{...}
+type TableSchemaForeignTypeInfoInput interface {
+	pulumi.Input
+
+	ToTableSchemaForeignTypeInfoOutput() TableSchemaForeignTypeInfoOutput
+	ToTableSchemaForeignTypeInfoOutputWithContext(context.Context) TableSchemaForeignTypeInfoOutput
+}
+
+type TableSchemaForeignTypeInfoArgs struct {
+	// Specifies the system which defines the foreign data type.
+	TypeSystem pulumi.StringInput `pulumi:"typeSystem"`
+}
+
+func (TableSchemaForeignTypeInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableSchemaForeignTypeInfo)(nil)).Elem()
+}
+
+func (i TableSchemaForeignTypeInfoArgs) ToTableSchemaForeignTypeInfoOutput() TableSchemaForeignTypeInfoOutput {
+	return i.ToTableSchemaForeignTypeInfoOutputWithContext(context.Background())
+}
+
+func (i TableSchemaForeignTypeInfoArgs) ToTableSchemaForeignTypeInfoOutputWithContext(ctx context.Context) TableSchemaForeignTypeInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableSchemaForeignTypeInfoOutput)
+}
+
+func (i TableSchemaForeignTypeInfoArgs) ToTableSchemaForeignTypeInfoPtrOutput() TableSchemaForeignTypeInfoPtrOutput {
+	return i.ToTableSchemaForeignTypeInfoPtrOutputWithContext(context.Background())
+}
+
+func (i TableSchemaForeignTypeInfoArgs) ToTableSchemaForeignTypeInfoPtrOutputWithContext(ctx context.Context) TableSchemaForeignTypeInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableSchemaForeignTypeInfoOutput).ToTableSchemaForeignTypeInfoPtrOutputWithContext(ctx)
+}
+
+// TableSchemaForeignTypeInfoPtrInput is an input type that accepts TableSchemaForeignTypeInfoArgs, TableSchemaForeignTypeInfoPtr and TableSchemaForeignTypeInfoPtrOutput values.
+// You can construct a concrete instance of `TableSchemaForeignTypeInfoPtrInput` via:
+//
+//	        TableSchemaForeignTypeInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type TableSchemaForeignTypeInfoPtrInput interface {
+	pulumi.Input
+
+	ToTableSchemaForeignTypeInfoPtrOutput() TableSchemaForeignTypeInfoPtrOutput
+	ToTableSchemaForeignTypeInfoPtrOutputWithContext(context.Context) TableSchemaForeignTypeInfoPtrOutput
+}
+
+type tableSchemaForeignTypeInfoPtrType TableSchemaForeignTypeInfoArgs
+
+func TableSchemaForeignTypeInfoPtr(v *TableSchemaForeignTypeInfoArgs) TableSchemaForeignTypeInfoPtrInput {
+	return (*tableSchemaForeignTypeInfoPtrType)(v)
+}
+
+func (*tableSchemaForeignTypeInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableSchemaForeignTypeInfo)(nil)).Elem()
+}
+
+func (i *tableSchemaForeignTypeInfoPtrType) ToTableSchemaForeignTypeInfoPtrOutput() TableSchemaForeignTypeInfoPtrOutput {
+	return i.ToTableSchemaForeignTypeInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *tableSchemaForeignTypeInfoPtrType) ToTableSchemaForeignTypeInfoPtrOutputWithContext(ctx context.Context) TableSchemaForeignTypeInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableSchemaForeignTypeInfoPtrOutput)
+}
+
+type TableSchemaForeignTypeInfoOutput struct{ *pulumi.OutputState }
+
+func (TableSchemaForeignTypeInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableSchemaForeignTypeInfo)(nil)).Elem()
+}
+
+func (o TableSchemaForeignTypeInfoOutput) ToTableSchemaForeignTypeInfoOutput() TableSchemaForeignTypeInfoOutput {
+	return o
+}
+
+func (o TableSchemaForeignTypeInfoOutput) ToTableSchemaForeignTypeInfoOutputWithContext(ctx context.Context) TableSchemaForeignTypeInfoOutput {
+	return o
+}
+
+func (o TableSchemaForeignTypeInfoOutput) ToTableSchemaForeignTypeInfoPtrOutput() TableSchemaForeignTypeInfoPtrOutput {
+	return o.ToTableSchemaForeignTypeInfoPtrOutputWithContext(context.Background())
+}
+
+func (o TableSchemaForeignTypeInfoOutput) ToTableSchemaForeignTypeInfoPtrOutputWithContext(ctx context.Context) TableSchemaForeignTypeInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableSchemaForeignTypeInfo) *TableSchemaForeignTypeInfo {
+		return &v
+	}).(TableSchemaForeignTypeInfoPtrOutput)
+}
+
+// Specifies the system which defines the foreign data type.
+func (o TableSchemaForeignTypeInfoOutput) TypeSystem() pulumi.StringOutput {
+	return o.ApplyT(func(v TableSchemaForeignTypeInfo) string { return v.TypeSystem }).(pulumi.StringOutput)
+}
+
+type TableSchemaForeignTypeInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (TableSchemaForeignTypeInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableSchemaForeignTypeInfo)(nil)).Elem()
+}
+
+func (o TableSchemaForeignTypeInfoPtrOutput) ToTableSchemaForeignTypeInfoPtrOutput() TableSchemaForeignTypeInfoPtrOutput {
+	return o
+}
+
+func (o TableSchemaForeignTypeInfoPtrOutput) ToTableSchemaForeignTypeInfoPtrOutputWithContext(ctx context.Context) TableSchemaForeignTypeInfoPtrOutput {
+	return o
+}
+
+func (o TableSchemaForeignTypeInfoPtrOutput) Elem() TableSchemaForeignTypeInfoOutput {
+	return o.ApplyT(func(v *TableSchemaForeignTypeInfo) TableSchemaForeignTypeInfo {
+		if v != nil {
+			return *v
+		}
+		var ret TableSchemaForeignTypeInfo
+		return ret
+	}).(TableSchemaForeignTypeInfoOutput)
+}
+
+// Specifies the system which defines the foreign data type.
+func (o TableSchemaForeignTypeInfoPtrOutput) TypeSystem() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableSchemaForeignTypeInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TypeSystem
+	}).(pulumi.StringPtrOutput)
+}
+
 type TableTableConstraints struct {
 	// Present only if the table has a foreign key.
 	// The foreign key is not enforced.
@@ -17751,6 +17888,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TableRangePartitioningPtrInput)(nil)).Elem(), TableRangePartitioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableRangePartitioningRangeInput)(nil)).Elem(), TableRangePartitioningRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableRangePartitioningRangePtrInput)(nil)).Elem(), TableRangePartitioningRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableSchemaForeignTypeInfoInput)(nil)).Elem(), TableSchemaForeignTypeInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableSchemaForeignTypeInfoPtrInput)(nil)).Elem(), TableSchemaForeignTypeInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableTableConstraintsInput)(nil)).Elem(), TableTableConstraintsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableTableConstraintsPtrInput)(nil)).Elem(), TableTableConstraintsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableTableConstraintsForeignKeyInput)(nil)).Elem(), TableTableConstraintsForeignKeyArgs{})
@@ -17941,6 +18080,8 @@ func init() {
 	pulumi.RegisterOutputType(TableRangePartitioningPtrOutput{})
 	pulumi.RegisterOutputType(TableRangePartitioningRangeOutput{})
 	pulumi.RegisterOutputType(TableRangePartitioningRangePtrOutput{})
+	pulumi.RegisterOutputType(TableSchemaForeignTypeInfoOutput{})
+	pulumi.RegisterOutputType(TableSchemaForeignTypeInfoPtrOutput{})
 	pulumi.RegisterOutputType(TableTableConstraintsOutput{})
 	pulumi.RegisterOutputType(TableTableConstraintsPtrOutput{})
 	pulumi.RegisterOutputType(TableTableConstraintsForeignKeyOutput{})

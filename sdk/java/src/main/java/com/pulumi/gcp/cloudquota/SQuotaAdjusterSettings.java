@@ -68,32 +68,32 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:cloudquota/sQuotaAdjusterSettings:SQuotaAdjusterSettings")
 public class SQuotaAdjusterSettings extends com.pulumi.resources.CustomResource {
     /**
-     * Fields to capture the hierarchy enablement.
-     * The container (org/folder/project) that determines if the quota adjuster is set for this project/folder/org. We use the nearest-ancestor to determine the effective container.
-     * The nearest ancestor (including this container) with `enabled` set (either true or false) will be returned.
+     * The resource container that determines if the quota adjuster is set for this project.
+     * Expect this field to be empty currently.
      * 
      */
     @Export(name="effectiveContainer", refs={String.class}, tree="[0]")
     private Output<String> effectiveContainer;
 
     /**
-     * @return Fields to capture the hierarchy enablement.
-     * The container (org/folder/project) that determines if the quota adjuster is set for this project/folder/org. We use the nearest-ancestor to determine the effective container.
-     * The nearest ancestor (including this container) with `enabled` set (either true or false) will be returned.
+     * @return The resource container that determines if the quota adjuster is set for this project.
+     * Expect this field to be empty currently.
      * 
      */
     public Output<String> effectiveContainer() {
         return this.effectiveContainer;
     }
     /**
-     * Based on the effective container`s setting above, determines Whether this container has the quota adjuster enabled.
+     * Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+     * Expect this field to be empty currently.
      * 
      */
     @Export(name="effectiveEnablement", refs={String.class}, tree="[0]")
     private Output<String> effectiveEnablement;
 
     /**
-     * @return Based on the effective container`s setting above, determines Whether this container has the quota adjuster enabled.
+     * @return Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+     * Expect this field to be empty currently.
      * 
      */
     public Output<String> effectiveEnablement() {
@@ -116,7 +116,7 @@ public class SQuotaAdjusterSettings extends com.pulumi.resources.CustomResource 
         return this.enablement;
     }
     /**
-     * The parent of the quota preference. Allowed parents are &#34;projects/[project-id / number]&#34; or &#34;folders/[folder-id / number]&#34; or &#34;organizations/[org-id / number]&#34;.
+     * The parent of the quota preference. Allowed parent format is &#34;projects/[project-id / number]&#34;.
      * 
      * ***
      * 
@@ -125,7 +125,7 @@ public class SQuotaAdjusterSettings extends com.pulumi.resources.CustomResource 
     private Output<String> parent;
 
     /**
-     * @return The parent of the quota preference. Allowed parents are &#34;projects/[project-id / number]&#34; or &#34;folders/[folder-id / number]&#34; or &#34;organizations/[org-id / number]&#34;.
+     * @return The parent of the quota preference. Allowed parent format is &#34;projects/[project-id / number]&#34;.
      * 
      * ***
      * 

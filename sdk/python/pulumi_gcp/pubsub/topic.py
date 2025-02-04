@@ -577,6 +577,41 @@ class Topic(pulumi.CustomResource):
                 },
             })
         ```
+        ### Pubsub Topic Ingestion Aws Msk
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example",
+            name="example-topic",
+            ingestion_data_source_settings={
+                "aws_msk": {
+                    "cluster_arn": "arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name",
+                    "topic": "test-topic",
+                    "aws_role_arn": "arn:aws:iam::111111111111:role/fake-role-name",
+                    "gcp_service_account": "fake-service-account@fake-gcp-project.iam.gserviceaccount.com",
+                },
+            })
+        ```
+        ### Pubsub Topic Ingestion Confluent Cloud
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example",
+            name="example-topic",
+            ingestion_data_source_settings={
+                "confluent_cloud": {
+                    "bootstrap_server": "test.us-west2.gcp.confluent.cloud:1111",
+                    "cluster_id": "1234",
+                    "topic": "test-topic",
+                    "identity_pool_id": "test-identity-pool-id",
+                    "gcp_service_account": "fake-service-account@fake-gcp-project.iam.gserviceaccount.com",
+                },
+            })
+        ```
 
         ## Import
 
@@ -785,6 +820,41 @@ class Topic(pulumi.CustomResource):
                     "client_id": "aZZZZZZZ-YYYY-HHHH-GGGG-abcdef569123",
                     "tenant_id": "0XXXXXXX-YYYY-HHHH-GGGG-123456789123",
                     "subscription_id": "bXXXXXXX-YYYY-HHHH-GGGG-123456789123",
+                    "gcp_service_account": "fake-service-account@fake-gcp-project.iam.gserviceaccount.com",
+                },
+            })
+        ```
+        ### Pubsub Topic Ingestion Aws Msk
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example",
+            name="example-topic",
+            ingestion_data_source_settings={
+                "aws_msk": {
+                    "cluster_arn": "arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name",
+                    "topic": "test-topic",
+                    "aws_role_arn": "arn:aws:iam::111111111111:role/fake-role-name",
+                    "gcp_service_account": "fake-service-account@fake-gcp-project.iam.gserviceaccount.com",
+                },
+            })
+        ```
+        ### Pubsub Topic Ingestion Confluent Cloud
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example",
+            name="example-topic",
+            ingestion_data_source_settings={
+                "confluent_cloud": {
+                    "bootstrap_server": "test.us-west2.gcp.confluent.cloud:1111",
+                    "cluster_id": "1234",
+                    "topic": "test-topic",
+                    "identity_pool_id": "test-identity-pool-id",
                     "gcp_service_account": "fake-service-account@fake-gcp-project.iam.gserviceaccount.com",
                 },
             })

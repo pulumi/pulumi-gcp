@@ -333,6 +333,10 @@ if not MYPY:
         Git repo configuration for the cluster
         Structure is documented below.
         """
+        metrics_gcp_service_account_email: NotRequired[pulumi.Input[str]]
+        """
+        The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+        """
         oci: NotRequired[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgsDict']]
         """
         OCI repo configuration for the cluster
@@ -354,6 +358,7 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  git: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs']] = None,
+                 metrics_gcp_service_account_email: Optional[pulumi.Input[str]] = None,
                  oci: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs']] = None,
                  prevent_drift: Optional[pulumi.Input[bool]] = None,
                  source_format: Optional[pulumi.Input[str]] = None):
@@ -361,6 +366,7 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs:
         :param pulumi.Input[bool] enabled: Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
         :param pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs'] git: Git repo configuration for the cluster
                Structure is documented below.
+        :param pulumi.Input[str] metrics_gcp_service_account_email: The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
         :param pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs'] oci: OCI repo configuration for the cluster
                Structure is documented below.
         :param pulumi.Input[bool] prevent_drift: Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
@@ -370,6 +376,8 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs:
             pulumi.set(__self__, "enabled", enabled)
         if git is not None:
             pulumi.set(__self__, "git", git)
+        if metrics_gcp_service_account_email is not None:
+            pulumi.set(__self__, "metrics_gcp_service_account_email", metrics_gcp_service_account_email)
         if oci is not None:
             pulumi.set(__self__, "oci", oci)
         if prevent_drift is not None:
@@ -401,6 +409,18 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs:
     @git.setter
     def git(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs']]):
         pulumi.set(self, "git", value)
+
+    @property
+    @pulumi.getter(name="metricsGcpServiceAccountEmail")
+    def metrics_gcp_service_account_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+        """
+        return pulumi.get(self, "metrics_gcp_service_account_email")
+
+    @metrics_gcp_service_account_email.setter
+    def metrics_gcp_service_account_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metrics_gcp_service_account_email", value)
 
     @property
     @pulumi.getter

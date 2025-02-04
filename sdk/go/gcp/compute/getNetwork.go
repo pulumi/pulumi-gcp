@@ -54,7 +54,7 @@ type LookupNetworkArgs struct {
 	//
 	// ***
 	Name string `pulumi:"name"`
-	// Beta A full or partial URL of the network profile to apply to this network.
+	// A full or partial URL of the network profile to apply to this network.
 	NetworkProfile *string `pulumi:"networkProfile"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -74,7 +74,7 @@ type LookupNetworkResult struct {
 	Name              string `pulumi:"name"`
 	// The numeric unique identifier for the resource.
 	NetworkId int `pulumi:"networkId"`
-	// Beta A full or partial URL of the network profile to apply to this network.
+	// A full or partial URL of the network profile to apply to this network.
 	NetworkProfile *string `pulumi:"networkProfile"`
 	// (Deprecated) The numeric unique identifier for the resource. `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
 	//
@@ -102,7 +102,7 @@ type LookupNetworkOutputArgs struct {
 	//
 	// ***
 	Name pulumi.StringInput `pulumi:"name"`
-	// Beta A full or partial URL of the network profile to apply to this network.
+	// A full or partial URL of the network profile to apply to this network.
 	NetworkProfile pulumi.StringPtrInput `pulumi:"networkProfile"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -157,7 +157,7 @@ func (o LookupNetworkResultOutput) NetworkId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupNetworkResult) int { return v.NetworkId }).(pulumi.IntOutput)
 }
 
-// Beta A full or partial URL of the network profile to apply to this network.
+// A full or partial URL of the network profile to apply to this network.
 func (o LookupNetworkResultOutput) NetworkProfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNetworkResult) *string { return v.NetworkProfile }).(pulumi.StringPtrOutput)
 }

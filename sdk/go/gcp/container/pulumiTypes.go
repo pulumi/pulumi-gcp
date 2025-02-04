@@ -15608,7 +15608,7 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGree
 
 type ClusterClusterAutoscalingResourceLimit struct {
 	// Maximum amount of the resource in the cluster.
-	Maximum *int `pulumi:"maximum"`
+	Maximum int `pulumi:"maximum"`
 	// Minimum amount of the resource in the cluster.
 	Minimum *int `pulumi:"minimum"`
 	// The type of the resource. For example, `cpu` and
@@ -15630,7 +15630,7 @@ type ClusterClusterAutoscalingResourceLimitInput interface {
 
 type ClusterClusterAutoscalingResourceLimitArgs struct {
 	// Maximum amount of the resource in the cluster.
-	Maximum pulumi.IntPtrInput `pulumi:"maximum"`
+	Maximum pulumi.IntInput `pulumi:"maximum"`
 	// Minimum amount of the resource in the cluster.
 	Minimum pulumi.IntPtrInput `pulumi:"minimum"`
 	// The type of the resource. For example, `cpu` and
@@ -15691,8 +15691,8 @@ func (o ClusterClusterAutoscalingResourceLimitOutput) ToClusterClusterAutoscalin
 }
 
 // Maximum amount of the resource in the cluster.
-func (o ClusterClusterAutoscalingResourceLimitOutput) Maximum() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ClusterClusterAutoscalingResourceLimit) *int { return v.Maximum }).(pulumi.IntPtrOutput)
+func (o ClusterClusterAutoscalingResourceLimitOutput) Maximum() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterClusterAutoscalingResourceLimit) int { return v.Maximum }).(pulumi.IntOutput)
 }
 
 // Minimum amount of the resource in the cluster.
@@ -20772,6 +20772,8 @@ type ClusterNodeConfig struct {
 	// Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
 	// [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
 	MachineType *string `pulumi:"machineType"`
+	// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+	MaxRunDuration *string `pulumi:"maxRunDuration"`
 	// The metadata key/value pairs assigned to instances in
 	// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
 	// `true` by the API; if `metadata` is set but that default value is not
@@ -20922,6 +20924,8 @@ type ClusterNodeConfigArgs struct {
 	// Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
 	// [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+	MaxRunDuration pulumi.StringPtrInput `pulumi:"maxRunDuration"`
 	// The metadata key/value pairs assigned to instances in
 	// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
 	// `true` by the API; if `metadata` is set but that default value is not
@@ -21209,6 +21213,11 @@ func (o ClusterNodeConfigOutput) LoggingVariant() pulumi.StringPtrOutput {
 // [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
 func (o ClusterNodeConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+func (o ClusterNodeConfigOutput) MaxRunDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.MaxRunDuration }).(pulumi.StringPtrOutput)
 }
 
 // The metadata key/value pairs assigned to instances in
@@ -21614,6 +21623,16 @@ func (o ClusterNodeConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+func (o ClusterNodeConfigPtrOutput) MaxRunDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRunDuration
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -28984,6 +29003,8 @@ type ClusterNodePoolNodeConfig struct {
 	// Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
 	// [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
 	MachineType *string `pulumi:"machineType"`
+	// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+	MaxRunDuration *string `pulumi:"maxRunDuration"`
 	// The metadata key/value pairs assigned to instances in
 	// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
 	// `true` by the API; if `metadata` is set but that default value is not
@@ -29134,6 +29155,8 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
 	// [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+	MaxRunDuration pulumi.StringPtrInput `pulumi:"maxRunDuration"`
 	// The metadata key/value pairs assigned to instances in
 	// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
 	// `true` by the API; if `metadata` is set but that default value is not
@@ -29435,6 +29458,11 @@ func (o ClusterNodePoolNodeConfigOutput) LoggingVariant() pulumi.StringPtrOutput
 // [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
 func (o ClusterNodePoolNodeConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+func (o ClusterNodePoolNodeConfigOutput) MaxRunDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.MaxRunDuration }).(pulumi.StringPtrOutput)
 }
 
 // The metadata key/value pairs assigned to instances in
@@ -29850,6 +29878,16 @@ func (o ClusterNodePoolNodeConfigPtrOutput) MachineType() pulumi.StringPtrOutput
 			return nil
 		}
 		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+func (o ClusterNodePoolNodeConfigPtrOutput) MaxRunDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRunDuration
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -39361,6 +39399,8 @@ type NodePoolNodeConfig struct {
 	LoggingVariant *string `pulumi:"loggingVariant"`
 	// The name of a Google Compute Engine machine type.
 	MachineType *string `pulumi:"machineType"`
+	// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+	MaxRunDuration *string `pulumi:"maxRunDuration"`
 	// The metadata key/value pairs assigned to instances in the cluster.
 	Metadata map[string]string `pulumi:"metadata"`
 	// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
@@ -39462,6 +39502,8 @@ type NodePoolNodeConfigArgs struct {
 	LoggingVariant pulumi.StringPtrInput `pulumi:"loggingVariant"`
 	// The name of a Google Compute Engine machine type.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+	MaxRunDuration pulumi.StringPtrInput `pulumi:"maxRunDuration"`
 	// The metadata key/value pairs assigned to instances in the cluster.
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 	// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
@@ -39704,6 +39746,11 @@ func (o NodePoolNodeConfigOutput) LoggingVariant() pulumi.StringPtrOutput {
 // The name of a Google Compute Engine machine type.
 func (o NodePoolNodeConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+func (o NodePoolNodeConfigOutput) MaxRunDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) *string { return v.MaxRunDuration }).(pulumi.StringPtrOutput)
 }
 
 // The metadata key/value pairs assigned to instances in the cluster.
@@ -40060,6 +40107,16 @@ func (o NodePoolNodeConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+func (o NodePoolNodeConfigPtrOutput) MaxRunDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRunDuration
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -51629,6 +51686,8 @@ type GetClusterNodeConfig struct {
 	LoggingVariant string `pulumi:"loggingVariant"`
 	// The name of a Google Compute Engine machine type.
 	MachineType string `pulumi:"machineType"`
+	// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+	MaxRunDuration string `pulumi:"maxRunDuration"`
 	// The metadata key/value pairs assigned to instances in the cluster.
 	Metadata map[string]string `pulumi:"metadata"`
 	// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
@@ -51727,6 +51786,8 @@ type GetClusterNodeConfigArgs struct {
 	LoggingVariant pulumi.StringInput `pulumi:"loggingVariant"`
 	// The name of a Google Compute Engine machine type.
 	MachineType pulumi.StringInput `pulumi:"machineType"`
+	// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+	MaxRunDuration pulumi.StringInput `pulumi:"maxRunDuration"`
 	// The metadata key/value pairs assigned to instances in the cluster.
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 	// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
@@ -51944,6 +52005,11 @@ func (o GetClusterNodeConfigOutput) LoggingVariant() pulumi.StringOutput {
 // The name of a Google Compute Engine machine type.
 func (o GetClusterNodeConfigOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodeConfig) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+func (o GetClusterNodeConfigOutput) MaxRunDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfig) string { return v.MaxRunDuration }).(pulumi.StringOutput)
 }
 
 // The metadata key/value pairs assigned to instances in the cluster.
@@ -57283,6 +57349,8 @@ type GetClusterNodePoolNodeConfig struct {
 	LoggingVariant string `pulumi:"loggingVariant"`
 	// The name of a Google Compute Engine machine type.
 	MachineType string `pulumi:"machineType"`
+	// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+	MaxRunDuration string `pulumi:"maxRunDuration"`
 	// The metadata key/value pairs assigned to instances in the cluster.
 	Metadata map[string]string `pulumi:"metadata"`
 	// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
@@ -57381,6 +57449,8 @@ type GetClusterNodePoolNodeConfigArgs struct {
 	LoggingVariant pulumi.StringInput `pulumi:"loggingVariant"`
 	// The name of a Google Compute Engine machine type.
 	MachineType pulumi.StringInput `pulumi:"machineType"`
+	// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+	MaxRunDuration pulumi.StringInput `pulumi:"maxRunDuration"`
 	// The metadata key/value pairs assigned to instances in the cluster.
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 	// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
@@ -57610,6 +57680,11 @@ func (o GetClusterNodePoolNodeConfigOutput) LoggingVariant() pulumi.StringOutput
 // The name of a Google Compute Engine machine type.
 func (o GetClusterNodePoolNodeConfigOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+func (o GetClusterNodePoolNodeConfigOutput) MaxRunDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.MaxRunDuration }).(pulumi.StringOutput)
 }
 
 // The metadata key/value pairs assigned to instances in the cluster.

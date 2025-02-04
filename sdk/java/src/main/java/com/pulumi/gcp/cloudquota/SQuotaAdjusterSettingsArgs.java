@@ -34,7 +34,7 @@ public final class SQuotaAdjusterSettingsArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The parent of the quota preference. Allowed parents are &#34;projects/[project-id / number]&#34; or &#34;folders/[folder-id / number]&#34; or &#34;organizations/[org-id / number]&#34;.
+     * The parent of the quota preference. Allowed parent format is &#34;projects/[project-id / number]&#34;.
      * 
      * ***
      * 
@@ -43,7 +43,7 @@ public final class SQuotaAdjusterSettingsArgs extends com.pulumi.resources.Resou
     private @Nullable Output<String> parent;
 
     /**
-     * @return The parent of the quota preference. Allowed parents are &#34;projects/[project-id / number]&#34; or &#34;folders/[folder-id / number]&#34; or &#34;organizations/[org-id / number]&#34;.
+     * @return The parent of the quota preference. Allowed parent format is &#34;projects/[project-id / number]&#34;.
      * 
      * ***
      * 
@@ -101,7 +101,7 @@ public final class SQuotaAdjusterSettingsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param parent The parent of the quota preference. Allowed parents are &#34;projects/[project-id / number]&#34; or &#34;folders/[folder-id / number]&#34; or &#34;organizations/[org-id / number]&#34;.
+         * @param parent The parent of the quota preference. Allowed parent format is &#34;projects/[project-id / number]&#34;.
          * 
          * ***
          * 
@@ -114,7 +114,7 @@ public final class SQuotaAdjusterSettingsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param parent The parent of the quota preference. Allowed parents are &#34;projects/[project-id / number]&#34; or &#34;folders/[folder-id / number]&#34; or &#34;organizations/[org-id / number]&#34;.
+         * @param parent The parent of the quota preference. Allowed parent format is &#34;projects/[project-id / number]&#34;.
          * 
          * ***
          * 

@@ -6,8 +6,10 @@ package com.pulumi.gcp.pubsub.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsAwsKinesisArgs;
+import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsAwsMskArgs;
 import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsAzureEventHubsArgs;
 import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsCloudStorageArgs;
+import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsConfluentCloudArgs;
 import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -33,6 +35,23 @@ public final class TopicIngestionDataSourceSettingsArgs extends com.pulumi.resou
      */
     public Optional<Output<TopicIngestionDataSourceSettingsAwsKinesisArgs>> awsKinesis() {
         return Optional.ofNullable(this.awsKinesis);
+    }
+
+    /**
+     * Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="awsMsk")
+    private @Nullable Output<TopicIngestionDataSourceSettingsAwsMskArgs> awsMsk;
+
+    /**
+     * @return Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<TopicIngestionDataSourceSettingsAwsMskArgs>> awsMsk() {
+        return Optional.ofNullable(this.awsMsk);
     }
 
     /**
@@ -70,6 +89,23 @@ public final class TopicIngestionDataSourceSettingsArgs extends com.pulumi.resou
     }
 
     /**
+     * Settings for ingestion from Confluent Cloud.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="confluentCloud")
+    private @Nullable Output<TopicIngestionDataSourceSettingsConfluentCloudArgs> confluentCloud;
+
+    /**
+     * @return Settings for ingestion from Confluent Cloud.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<TopicIngestionDataSourceSettingsConfluentCloudArgs>> confluentCloud() {
+        return Optional.ofNullable(this.confluentCloud);
+    }
+
+    /**
      * Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
      * no Platform Logs will be generated.&#39;
      * Structure is documented below.
@@ -92,8 +128,10 @@ public final class TopicIngestionDataSourceSettingsArgs extends com.pulumi.resou
 
     private TopicIngestionDataSourceSettingsArgs(TopicIngestionDataSourceSettingsArgs $) {
         this.awsKinesis = $.awsKinesis;
+        this.awsMsk = $.awsMsk;
         this.azureEventHubs = $.azureEventHubs;
         this.cloudStorage = $.cloudStorage;
+        this.confluentCloud = $.confluentCloud;
         this.platformLogsSettings = $.platformLogsSettings;
     }
 
@@ -136,6 +174,29 @@ public final class TopicIngestionDataSourceSettingsArgs extends com.pulumi.resou
          */
         public Builder awsKinesis(TopicIngestionDataSourceSettingsAwsKinesisArgs awsKinesis) {
             return awsKinesis(Output.of(awsKinesis));
+        }
+
+        /**
+         * @param awsMsk Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder awsMsk(@Nullable Output<TopicIngestionDataSourceSettingsAwsMskArgs> awsMsk) {
+            $.awsMsk = awsMsk;
+            return this;
+        }
+
+        /**
+         * @param awsMsk Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder awsMsk(TopicIngestionDataSourceSettingsAwsMskArgs awsMsk) {
+            return awsMsk(Output.of(awsMsk));
         }
 
         /**
@@ -182,6 +243,29 @@ public final class TopicIngestionDataSourceSettingsArgs extends com.pulumi.resou
          */
         public Builder cloudStorage(TopicIngestionDataSourceSettingsCloudStorageArgs cloudStorage) {
             return cloudStorage(Output.of(cloudStorage));
+        }
+
+        /**
+         * @param confluentCloud Settings for ingestion from Confluent Cloud.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder confluentCloud(@Nullable Output<TopicIngestionDataSourceSettingsConfluentCloudArgs> confluentCloud) {
+            $.confluentCloud = confluentCloud;
+            return this;
+        }
+
+        /**
+         * @param confluentCloud Settings for ingestion from Confluent Cloud.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder confluentCloud(TopicIngestionDataSourceSettingsConfluentCloudArgs confluentCloud) {
+            return confluentCloud(Output.of(confluentCloud));
         }
 
         /**

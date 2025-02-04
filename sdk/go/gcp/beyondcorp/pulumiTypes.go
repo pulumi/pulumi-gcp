@@ -1029,6 +1029,348 @@ func (o SecurityGatewayHubInternetGatewayPtrOutput) AssignedIps() pulumi.StringA
 	}).(pulumi.StringArrayOutput)
 }
 
+type SecurityGatewayIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// SecurityGatewayIamBindingConditionInput is an input type that accepts SecurityGatewayIamBindingConditionArgs and SecurityGatewayIamBindingConditionOutput values.
+// You can construct a concrete instance of `SecurityGatewayIamBindingConditionInput` via:
+//
+//	SecurityGatewayIamBindingConditionArgs{...}
+type SecurityGatewayIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayIamBindingConditionOutput() SecurityGatewayIamBindingConditionOutput
+	ToSecurityGatewayIamBindingConditionOutputWithContext(context.Context) SecurityGatewayIamBindingConditionOutput
+}
+
+type SecurityGatewayIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (SecurityGatewayIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayIamBindingCondition)(nil)).Elem()
+}
+
+func (i SecurityGatewayIamBindingConditionArgs) ToSecurityGatewayIamBindingConditionOutput() SecurityGatewayIamBindingConditionOutput {
+	return i.ToSecurityGatewayIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayIamBindingConditionArgs) ToSecurityGatewayIamBindingConditionOutputWithContext(ctx context.Context) SecurityGatewayIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayIamBindingConditionOutput)
+}
+
+func (i SecurityGatewayIamBindingConditionArgs) ToSecurityGatewayIamBindingConditionPtrOutput() SecurityGatewayIamBindingConditionPtrOutput {
+	return i.ToSecurityGatewayIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayIamBindingConditionArgs) ToSecurityGatewayIamBindingConditionPtrOutputWithContext(ctx context.Context) SecurityGatewayIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayIamBindingConditionOutput).ToSecurityGatewayIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// SecurityGatewayIamBindingConditionPtrInput is an input type that accepts SecurityGatewayIamBindingConditionArgs, SecurityGatewayIamBindingConditionPtr and SecurityGatewayIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `SecurityGatewayIamBindingConditionPtrInput` via:
+//
+//	        SecurityGatewayIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGatewayIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayIamBindingConditionPtrOutput() SecurityGatewayIamBindingConditionPtrOutput
+	ToSecurityGatewayIamBindingConditionPtrOutputWithContext(context.Context) SecurityGatewayIamBindingConditionPtrOutput
+}
+
+type securityGatewayIamBindingConditionPtrType SecurityGatewayIamBindingConditionArgs
+
+func SecurityGatewayIamBindingConditionPtr(v *SecurityGatewayIamBindingConditionArgs) SecurityGatewayIamBindingConditionPtrInput {
+	return (*securityGatewayIamBindingConditionPtrType)(v)
+}
+
+func (*securityGatewayIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayIamBindingCondition)(nil)).Elem()
+}
+
+func (i *securityGatewayIamBindingConditionPtrType) ToSecurityGatewayIamBindingConditionPtrOutput() SecurityGatewayIamBindingConditionPtrOutput {
+	return i.ToSecurityGatewayIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGatewayIamBindingConditionPtrType) ToSecurityGatewayIamBindingConditionPtrOutputWithContext(ctx context.Context) SecurityGatewayIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayIamBindingConditionPtrOutput)
+}
+
+type SecurityGatewayIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayIamBindingCondition)(nil)).Elem()
+}
+
+func (o SecurityGatewayIamBindingConditionOutput) ToSecurityGatewayIamBindingConditionOutput() SecurityGatewayIamBindingConditionOutput {
+	return o
+}
+
+func (o SecurityGatewayIamBindingConditionOutput) ToSecurityGatewayIamBindingConditionOutputWithContext(ctx context.Context) SecurityGatewayIamBindingConditionOutput {
+	return o
+}
+
+func (o SecurityGatewayIamBindingConditionOutput) ToSecurityGatewayIamBindingConditionPtrOutput() SecurityGatewayIamBindingConditionPtrOutput {
+	return o.ToSecurityGatewayIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGatewayIamBindingConditionOutput) ToSecurityGatewayIamBindingConditionPtrOutputWithContext(ctx context.Context) SecurityGatewayIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGatewayIamBindingCondition) *SecurityGatewayIamBindingCondition {
+		return &v
+	}).(SecurityGatewayIamBindingConditionPtrOutput)
+}
+
+func (o SecurityGatewayIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o SecurityGatewayIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGatewayIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o SecurityGatewayIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGatewayIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type SecurityGatewayIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayIamBindingCondition)(nil)).Elem()
+}
+
+func (o SecurityGatewayIamBindingConditionPtrOutput) ToSecurityGatewayIamBindingConditionPtrOutput() SecurityGatewayIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayIamBindingConditionPtrOutput) ToSecurityGatewayIamBindingConditionPtrOutputWithContext(ctx context.Context) SecurityGatewayIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayIamBindingConditionPtrOutput) Elem() SecurityGatewayIamBindingConditionOutput {
+	return o.ApplyT(func(v *SecurityGatewayIamBindingCondition) SecurityGatewayIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGatewayIamBindingCondition
+		return ret
+	}).(SecurityGatewayIamBindingConditionOutput)
+}
+
+func (o SecurityGatewayIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o SecurityGatewayIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o SecurityGatewayIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityGatewayIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// SecurityGatewayIamMemberConditionInput is an input type that accepts SecurityGatewayIamMemberConditionArgs and SecurityGatewayIamMemberConditionOutput values.
+// You can construct a concrete instance of `SecurityGatewayIamMemberConditionInput` via:
+//
+//	SecurityGatewayIamMemberConditionArgs{...}
+type SecurityGatewayIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayIamMemberConditionOutput() SecurityGatewayIamMemberConditionOutput
+	ToSecurityGatewayIamMemberConditionOutputWithContext(context.Context) SecurityGatewayIamMemberConditionOutput
+}
+
+type SecurityGatewayIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (SecurityGatewayIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayIamMemberCondition)(nil)).Elem()
+}
+
+func (i SecurityGatewayIamMemberConditionArgs) ToSecurityGatewayIamMemberConditionOutput() SecurityGatewayIamMemberConditionOutput {
+	return i.ToSecurityGatewayIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayIamMemberConditionArgs) ToSecurityGatewayIamMemberConditionOutputWithContext(ctx context.Context) SecurityGatewayIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayIamMemberConditionOutput)
+}
+
+func (i SecurityGatewayIamMemberConditionArgs) ToSecurityGatewayIamMemberConditionPtrOutput() SecurityGatewayIamMemberConditionPtrOutput {
+	return i.ToSecurityGatewayIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayIamMemberConditionArgs) ToSecurityGatewayIamMemberConditionPtrOutputWithContext(ctx context.Context) SecurityGatewayIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayIamMemberConditionOutput).ToSecurityGatewayIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// SecurityGatewayIamMemberConditionPtrInput is an input type that accepts SecurityGatewayIamMemberConditionArgs, SecurityGatewayIamMemberConditionPtr and SecurityGatewayIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `SecurityGatewayIamMemberConditionPtrInput` via:
+//
+//	        SecurityGatewayIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGatewayIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayIamMemberConditionPtrOutput() SecurityGatewayIamMemberConditionPtrOutput
+	ToSecurityGatewayIamMemberConditionPtrOutputWithContext(context.Context) SecurityGatewayIamMemberConditionPtrOutput
+}
+
+type securityGatewayIamMemberConditionPtrType SecurityGatewayIamMemberConditionArgs
+
+func SecurityGatewayIamMemberConditionPtr(v *SecurityGatewayIamMemberConditionArgs) SecurityGatewayIamMemberConditionPtrInput {
+	return (*securityGatewayIamMemberConditionPtrType)(v)
+}
+
+func (*securityGatewayIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayIamMemberCondition)(nil)).Elem()
+}
+
+func (i *securityGatewayIamMemberConditionPtrType) ToSecurityGatewayIamMemberConditionPtrOutput() SecurityGatewayIamMemberConditionPtrOutput {
+	return i.ToSecurityGatewayIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGatewayIamMemberConditionPtrType) ToSecurityGatewayIamMemberConditionPtrOutputWithContext(ctx context.Context) SecurityGatewayIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayIamMemberConditionPtrOutput)
+}
+
+type SecurityGatewayIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayIamMemberCondition)(nil)).Elem()
+}
+
+func (o SecurityGatewayIamMemberConditionOutput) ToSecurityGatewayIamMemberConditionOutput() SecurityGatewayIamMemberConditionOutput {
+	return o
+}
+
+func (o SecurityGatewayIamMemberConditionOutput) ToSecurityGatewayIamMemberConditionOutputWithContext(ctx context.Context) SecurityGatewayIamMemberConditionOutput {
+	return o
+}
+
+func (o SecurityGatewayIamMemberConditionOutput) ToSecurityGatewayIamMemberConditionPtrOutput() SecurityGatewayIamMemberConditionPtrOutput {
+	return o.ToSecurityGatewayIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGatewayIamMemberConditionOutput) ToSecurityGatewayIamMemberConditionPtrOutputWithContext(ctx context.Context) SecurityGatewayIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGatewayIamMemberCondition) *SecurityGatewayIamMemberCondition {
+		return &v
+	}).(SecurityGatewayIamMemberConditionPtrOutput)
+}
+
+func (o SecurityGatewayIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o SecurityGatewayIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGatewayIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o SecurityGatewayIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGatewayIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type SecurityGatewayIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayIamMemberCondition)(nil)).Elem()
+}
+
+func (o SecurityGatewayIamMemberConditionPtrOutput) ToSecurityGatewayIamMemberConditionPtrOutput() SecurityGatewayIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayIamMemberConditionPtrOutput) ToSecurityGatewayIamMemberConditionPtrOutputWithContext(ctx context.Context) SecurityGatewayIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayIamMemberConditionPtrOutput) Elem() SecurityGatewayIamMemberConditionOutput {
+	return o.ApplyT(func(v *SecurityGatewayIamMemberCondition) SecurityGatewayIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGatewayIamMemberCondition
+		return ret
+	}).(SecurityGatewayIamMemberConditionOutput)
+}
+
+func (o SecurityGatewayIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o SecurityGatewayIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o SecurityGatewayIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetAppConnectionApplicationEndpoint struct {
 	// Hostname or IP address of the remote application endpoint.
 	Host string `pulumi:"host"`
@@ -1582,6 +1924,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayHubArrayInput)(nil)).Elem(), SecurityGatewayHubArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayHubInternetGatewayInput)(nil)).Elem(), SecurityGatewayHubInternetGatewayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayHubInternetGatewayPtrInput)(nil)).Elem(), SecurityGatewayHubInternetGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayIamBindingConditionInput)(nil)).Elem(), SecurityGatewayIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayIamBindingConditionPtrInput)(nil)).Elem(), SecurityGatewayIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayIamMemberConditionInput)(nil)).Elem(), SecurityGatewayIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayIamMemberConditionPtrInput)(nil)).Elem(), SecurityGatewayIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppConnectionApplicationEndpointInput)(nil)).Elem(), GetAppConnectionApplicationEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppConnectionApplicationEndpointArrayInput)(nil)).Elem(), GetAppConnectionApplicationEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppConnectionGatewayInput)(nil)).Elem(), GetAppConnectionGatewayArgs{})
@@ -1606,6 +1952,10 @@ func init() {
 	pulumi.RegisterOutputType(SecurityGatewayHubArrayOutput{})
 	pulumi.RegisterOutputType(SecurityGatewayHubInternetGatewayOutput{})
 	pulumi.RegisterOutputType(SecurityGatewayHubInternetGatewayPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(GetAppConnectionApplicationEndpointOutput{})
 	pulumi.RegisterOutputType(GetAppConnectionApplicationEndpointArrayOutput{})
 	pulumi.RegisterOutputType(GetAppConnectionGatewayOutput{})

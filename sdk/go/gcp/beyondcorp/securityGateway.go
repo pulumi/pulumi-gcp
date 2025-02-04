@@ -32,7 +32,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := beyondcorp.NewSecurityGateway(ctx, "example", &beyondcorp.SecurityGatewayArgs{
 //				SecurityGatewayId: pulumi.String("default"),
-//				Location:          pulumi.String("global"),
 //				DisplayName:       pulumi.String("My Security Gateway resource"),
 //				Hubs: beyondcorp.SecurityGatewayHubArray{
 //					&beyondcorp.SecurityGatewayHubArgs{
@@ -87,8 +86,13 @@ type SecurityGateway struct {
 	// as a key.
 	// Structure is documented below.
 	Hubs SecurityGatewayHubArrayOutput `pulumi:"hubs"`
-	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-	Location pulumi.StringOutput `pulumi:"location"`
+	// (Optional, Deprecated)
+	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+	//
+	// > **Warning:** `location` is deprecated and will be removed in a future major release.
+	//
+	// Deprecated: `location` is deprecated and will be removed in a future major release.
+	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Identifier. Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -122,9 +126,6 @@ func NewSecurityGateway(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.SecurityGatewayId == nil {
 		return nil, errors.New("invalid value for required argument 'SecurityGatewayId'")
 	}
@@ -163,7 +164,12 @@ type securityGatewayState struct {
 	// as a key.
 	// Structure is documented below.
 	Hubs []SecurityGatewayHub `pulumi:"hubs"`
-	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+	// (Optional, Deprecated)
+	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+	//
+	// > **Warning:** `location` is deprecated and will be removed in a future major release.
+	//
+	// Deprecated: `location` is deprecated and will be removed in a future major release.
 	Location *string `pulumi:"location"`
 	// Identifier. Name of the resource.
 	Name *string `pulumi:"name"`
@@ -204,7 +210,12 @@ type SecurityGatewayState struct {
 	// as a key.
 	// Structure is documented below.
 	Hubs SecurityGatewayHubArrayInput
-	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+	// (Optional, Deprecated)
+	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+	//
+	// > **Warning:** `location` is deprecated and will be removed in a future major release.
+	//
+	// Deprecated: `location` is deprecated and will be removed in a future major release.
 	Location pulumi.StringPtrInput
 	// Identifier. Name of the resource.
 	Name pulumi.StringPtrInput
@@ -244,8 +255,13 @@ type securityGatewayArgs struct {
 	// as a key.
 	// Structure is documented below.
 	Hubs []SecurityGatewayHub `pulumi:"hubs"`
-	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-	Location string `pulumi:"location"`
+	// (Optional, Deprecated)
+	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+	//
+	// > **Warning:** `location` is deprecated and will be removed in a future major release.
+	//
+	// Deprecated: `location` is deprecated and will be removed in a future major release.
+	Location *string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -267,8 +283,13 @@ type SecurityGatewayArgs struct {
 	// as a key.
 	// Structure is documented below.
 	Hubs SecurityGatewayHubArrayInput
-	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-	Location pulumi.StringInput
+	// (Optional, Deprecated)
+	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+	//
+	// > **Warning:** `location` is deprecated and will be removed in a future major release.
+	//
+	// Deprecated: `location` is deprecated and will be removed in a future major release.
+	Location pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -392,9 +413,14 @@ func (o SecurityGatewayOutput) Hubs() SecurityGatewayHubArrayOutput {
 	return o.ApplyT(func(v *SecurityGateway) SecurityGatewayHubArrayOutput { return v.Hubs }).(SecurityGatewayHubArrayOutput)
 }
 
-// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-func (o SecurityGatewayOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v *SecurityGateway) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+// (Optional, Deprecated)
+// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+//
+// > **Warning:** `location` is deprecated and will be removed in a future major release.
+//
+// Deprecated: `location` is deprecated and will be removed in a future major release.
+func (o SecurityGatewayOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGateway) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // Identifier. Name of the resource.

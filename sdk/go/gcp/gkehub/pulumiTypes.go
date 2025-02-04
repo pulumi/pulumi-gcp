@@ -395,6 +395,8 @@ type FeatureFleetDefaultMemberConfigConfigmanagementConfigSync struct {
 	// Git repo configuration for the cluster
 	// Structure is documented below.
 	Git *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit `pulumi:"git"`
+	// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+	MetricsGcpServiceAccountEmail *string `pulumi:"metricsGcpServiceAccountEmail"`
 	// OCI repo configuration for the cluster
 	// Structure is documented below.
 	Oci *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci `pulumi:"oci"`
@@ -421,6 +423,8 @@ type FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs struct {
 	// Git repo configuration for the cluster
 	// Structure is documented below.
 	Git FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrInput `pulumi:"git"`
+	// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+	MetricsGcpServiceAccountEmail pulumi.StringPtrInput `pulumi:"metricsGcpServiceAccountEmail"`
 	// OCI repo configuration for the cluster
 	// Structure is documented below.
 	Oci FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrInput `pulumi:"oci"`
@@ -520,6 +524,13 @@ func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) Git() F
 	}).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput)
 }
 
+// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) MetricsGcpServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagementConfigSync) *string {
+		return v.MetricsGcpServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
 // OCI repo configuration for the cluster
 // Structure is documented below.
 func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) Oci() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput {
@@ -581,6 +592,16 @@ func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput) Git(
 		}
 		return v.Git
 	}).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput)
+}
+
+// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput) MetricsGcpServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSync) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetricsGcpServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
 }
 
 // OCI repo configuration for the cluster
@@ -11744,6 +11765,8 @@ type GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync struct {
 	Enabled bool `pulumi:"enabled"`
 	// Git repo configuration for the cluster
 	Gits []GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit `pulumi:"gits"`
+	// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount 'default' in the namespace 'config-management-monitoring' should be bound to the GSA.
+	MetricsGcpServiceAccountEmail string `pulumi:"metricsGcpServiceAccountEmail"`
 	// OCI repo configuration for the cluster
 	Ocis []GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci `pulumi:"ocis"`
 	// Set to true to enable the Config Sync admission webhook to prevent drifts. If set to 'false', disables the Config Sync admission webhook and does not prevent drifts.
@@ -11768,6 +11791,8 @@ type GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs struct {
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// Git repo configuration for the cluster
 	Gits GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayInput `pulumi:"gits"`
+	// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount 'default' in the namespace 'config-management-monitoring' should be bound to the GSA.
+	MetricsGcpServiceAccountEmail pulumi.StringInput `pulumi:"metricsGcpServiceAccountEmail"`
 	// OCI repo configuration for the cluster
 	Ocis GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayInput `pulumi:"ocis"`
 	// Set to true to enable the Config Sync admission webhook to prevent drifts. If set to 'false', disables the Config Sync admission webhook and does not prevent drifts.
@@ -11837,6 +11862,13 @@ func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) Gits
 	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync) []GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit {
 		return v.Gits
 	}).(GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayOutput)
+}
+
+// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount 'default' in the namespace 'config-management-monitoring' should be bound to the GSA.
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) MetricsGcpServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync) string {
+		return v.MetricsGcpServiceAccountEmail
+	}).(pulumi.StringOutput)
 }
 
 // OCI repo configuration for the cluster

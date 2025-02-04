@@ -16831,7 +16831,7 @@ if not MYPY:
         """
         nic_type: NotRequired[pulumi.Input[str]]
         """
-        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF. In the beta provider the additional values of MRDMA and IRDMA are supported.
+        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF, MRDMA, IRDMA.
         """
         queue_count: NotRequired[pulumi.Input[int]]
         """
@@ -16904,7 +16904,7 @@ class InstanceNetworkInterfaceArgs:
         :param pulumi.Input[str] network_attachment: The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
         :param pulumi.Input[str] network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
-        :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF. In the beta provider the additional values of MRDMA and IRDMA are supported.
+        :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF, MRDMA, IRDMA.
         :param pulumi.Input[int] queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         :param pulumi.Input[str] security_policy: A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         :param pulumi.Input[str] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
@@ -17086,7 +17086,7 @@ class InstanceNetworkInterfaceArgs:
     @pulumi.getter(name="nicType")
     def nic_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF. In the beta provider the additional values of MRDMA and IRDMA are supported.
+        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF, MRDMA, IRDMA.
         """
         return pulumi.get(self, "nic_type")
 
@@ -19544,7 +19544,7 @@ if not MYPY:
         """
         nic_type: NotRequired[pulumi.Input[str]]
         """
-        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET. In the beta provider the additional values of MRDMA and IRDMA are supported.
+        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA.
         """
         queue_count: NotRequired[pulumi.Input[int]]
         """
@@ -19610,7 +19610,7 @@ class InstanceTemplateNetworkInterfaceArgs:
         :param pulumi.Input[str] network_attachment: The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
         :param pulumi.Input[str] network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
-        :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET. In the beta provider the additional values of MRDMA and IRDMA are supported.
+        :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA.
         :param pulumi.Input[int] queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         :param pulumi.Input[str] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
         :param pulumi.Input[str] subnetwork: the name of the subnetwork to attach this interface
@@ -19787,7 +19787,7 @@ class InstanceTemplateNetworkInterfaceArgs:
     @pulumi.getter(name="nicType")
     def nic_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET. In the beta provider the additional values of MRDMA and IRDMA are supported.
+        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA.
         """
         return pulumi.get(self, "nic_type")
 
@@ -33288,7 +33288,7 @@ if not MYPY:
         """
         nic_type: NotRequired[pulumi.Input[str]]
         """
-        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET. In the beta provider the additional values of MRDMA and IRDMA are supported.
+        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA.
         """
         queue_count: NotRequired[pulumi.Input[int]]
         """
@@ -33345,7 +33345,7 @@ class RegionInstanceTemplateNetworkInterfaceArgs:
                `subnetwork` for custom subnetted networks.
         :param pulumi.Input[str] network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
-        :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET. In the beta provider the additional values of MRDMA and IRDMA are supported.
+        :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA.
         :param pulumi.Input[int] queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         :param pulumi.Input[str] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
         :param pulumi.Input[str] subnetwork: the name of the subnetwork to attach this interface
@@ -33499,7 +33499,7 @@ class RegionInstanceTemplateNetworkInterfaceArgs:
     @pulumi.getter(name="nicType")
     def nic_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET. In the beta provider the additional values of MRDMA and IRDMA are supported.
+        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA.
         """
         return pulumi.get(self, "nic_type")
 

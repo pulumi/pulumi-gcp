@@ -41,7 +41,7 @@ public final class GetNetworkResult {
      */
     private Integer networkId;
     /**
-     * @return Beta A full or partial URL of the network profile to apply to this network.
+     * @return A full or partial URL of the network profile to apply to this network.
      * 
      */
     private @Nullable String networkProfile;
@@ -106,7 +106,7 @@ public final class GetNetworkResult {
         return this.networkId;
     }
     /**
-     * @return Beta A full or partial URL of the network profile to apply to this network.
+     * @return A full or partial URL of the network profile to apply to this network.
      * 
      */
     public Optional<String> networkProfile() {

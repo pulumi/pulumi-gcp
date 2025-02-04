@@ -2485,7 +2485,7 @@ public final class ServiceaccountFunctions {
      * 
      * ## Example Usage
      * 
-     * Example service accounts.
+     * Get all service accounts from a project
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -2512,6 +2512,112 @@ public final class ServiceaccountFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = ServiceaccountFunctions.getS(GetSArgs.builder()
      *             .project("example-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get all service accounts that are prefixed with `&#34;foo&#34;`
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = ServiceaccountFunctions.getS(GetSArgs.builder()
+     *             .prefix("foo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get all service accounts that contain `&#34;bar&#34;`
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var bar = ServiceaccountFunctions.getS(GetSArgs.builder()
+     *             .regex(".*bar.*")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get all service accounts that are prefixed with `&#34;foo&#34;` and contain `&#34;bar&#34;`
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fooBar = ServiceaccountFunctions.getS(GetSArgs.builder()
+     *             .prefix("foo")
+     *             .regex(".*bar.*")
      *             .build());
      * 
      *     }
@@ -2531,7 +2637,7 @@ public final class ServiceaccountFunctions {
      * 
      * ## Example Usage
      * 
-     * Example service accounts.
+     * Get all service accounts from a project
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -2558,6 +2664,112 @@ public final class ServiceaccountFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = ServiceaccountFunctions.getS(GetSArgs.builder()
      *             .project("example-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get all service accounts that are prefixed with `&#34;foo&#34;`
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = ServiceaccountFunctions.getS(GetSArgs.builder()
+     *             .prefix("foo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get all service accounts that contain `&#34;bar&#34;`
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var bar = ServiceaccountFunctions.getS(GetSArgs.builder()
+     *             .regex(".*bar.*")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get all service accounts that are prefixed with `&#34;foo&#34;` and contain `&#34;bar&#34;`
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fooBar = ServiceaccountFunctions.getS(GetSArgs.builder()
+     *             .prefix("foo")
+     *             .regex(".*bar.*")
      *             .build());
      * 
      *     }
@@ -2577,7 +2789,7 @@ public final class ServiceaccountFunctions {
      * 
      * ## Example Usage
      * 
-     * Example service accounts.
+     * Get all service accounts from a project
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -2604,6 +2816,112 @@ public final class ServiceaccountFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = ServiceaccountFunctions.getS(GetSArgs.builder()
      *             .project("example-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get all service accounts that are prefixed with `&#34;foo&#34;`
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = ServiceaccountFunctions.getS(GetSArgs.builder()
+     *             .prefix("foo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get all service accounts that contain `&#34;bar&#34;`
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var bar = ServiceaccountFunctions.getS(GetSArgs.builder()
+     *             .regex(".*bar.*")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get all service accounts that are prefixed with `&#34;foo&#34;` and contain `&#34;bar&#34;`
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fooBar = ServiceaccountFunctions.getS(GetSArgs.builder()
+     *             .prefix("foo")
+     *             .regex(".*bar.*")
      *             .build());
      * 
      *     }
@@ -2623,7 +2941,7 @@ public final class ServiceaccountFunctions {
      * 
      * ## Example Usage
      * 
-     * Example service accounts.
+     * Get all service accounts from a project
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -2650,6 +2968,112 @@ public final class ServiceaccountFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = ServiceaccountFunctions.getS(GetSArgs.builder()
      *             .project("example-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get all service accounts that are prefixed with `&#34;foo&#34;`
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = ServiceaccountFunctions.getS(GetSArgs.builder()
+     *             .prefix("foo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get all service accounts that contain `&#34;bar&#34;`
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var bar = ServiceaccountFunctions.getS(GetSArgs.builder()
+     *             .regex(".*bar.*")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get all service accounts that are prefixed with `&#34;foo&#34;` and contain `&#34;bar&#34;`
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fooBar = ServiceaccountFunctions.getS(GetSArgs.builder()
+     *             .prefix("foo")
+     *             .regex(".*bar.*")
      *             .build());
      * 
      *     }
@@ -2669,7 +3093,7 @@ public final class ServiceaccountFunctions {
      * 
      * ## Example Usage
      * 
-     * Example service accounts.
+     * Get all service accounts from a project
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -2696,6 +3120,112 @@ public final class ServiceaccountFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = ServiceaccountFunctions.getS(GetSArgs.builder()
      *             .project("example-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get all service accounts that are prefixed with `&#34;foo&#34;`
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = ServiceaccountFunctions.getS(GetSArgs.builder()
+     *             .prefix("foo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get all service accounts that contain `&#34;bar&#34;`
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var bar = ServiceaccountFunctions.getS(GetSArgs.builder()
+     *             .regex(".*bar.*")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get all service accounts that are prefixed with `&#34;foo&#34;` and contain `&#34;bar&#34;`
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fooBar = ServiceaccountFunctions.getS(GetSArgs.builder()
+     *             .prefix("foo")
+     *             .regex(".*bar.*")
      *             .build());
      * 
      *     }
@@ -2715,7 +3245,7 @@ public final class ServiceaccountFunctions {
      * 
      * ## Example Usage
      * 
-     * Example service accounts.
+     * Get all service accounts from a project
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -2750,6 +3280,112 @@ public final class ServiceaccountFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
+     * Get all service accounts that are prefixed with `&#34;foo&#34;`
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = ServiceaccountFunctions.getS(GetSArgs.builder()
+     *             .prefix("foo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get all service accounts that contain `&#34;bar&#34;`
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var bar = ServiceaccountFunctions.getS(GetSArgs.builder()
+     *             .regex(".*bar.*")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get all service accounts that are prefixed with `&#34;foo&#34;` and contain `&#34;bar&#34;`
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fooBar = ServiceaccountFunctions.getS(GetSArgs.builder()
+     *             .prefix("foo")
+     *             .regex(".*bar.*")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetSResult> getS(GetSArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:serviceaccount/getS:getS", TypeShape.of(GetSResult.class), args, Utilities.withVersion(options));
@@ -2761,7 +3397,7 @@ public final class ServiceaccountFunctions {
      * 
      * ## Example Usage
      * 
-     * Example service accounts.
+     * Get all service accounts from a project
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -2788,6 +3424,112 @@ public final class ServiceaccountFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = ServiceaccountFunctions.getS(GetSArgs.builder()
      *             .project("example-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get all service accounts that are prefixed with `&#34;foo&#34;`
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = ServiceaccountFunctions.getS(GetSArgs.builder()
+     *             .prefix("foo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get all service accounts that contain `&#34;bar&#34;`
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var bar = ServiceaccountFunctions.getS(GetSArgs.builder()
+     *             .regex(".*bar.*")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get all service accounts that are prefixed with `&#34;foo&#34;` and contain `&#34;bar&#34;`
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fooBar = ServiceaccountFunctions.getS(GetSArgs.builder()
+     *             .prefix("foo")
+     *             .regex(".*bar.*")
      *             .build());
      * 
      *     }

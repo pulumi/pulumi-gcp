@@ -202,6 +202,46 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Router Zero Advertised Route Priority
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RouterPeer;
+ * import com.pulumi.gcp.compute.RouterPeerArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var peer = new RouterPeer("peer", RouterPeerArgs.builder()
+ *             .name("my-router-peer")
+ *             .router("my-router")
+ *             .region("us-central1")
+ *             .interface_("interface-1")
+ *             .peerAsn(65513)
+ *             .advertisedRoutePriority(0)
+ *             .zeroAdvertisedRoutePriority(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Router Peer Router Appliance
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -907,6 +947,20 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
         return this.ipv6NexthopAddress;
     }
     /**
+     * An internal boolean field for provider use for zero_advertised_route_priority.
+     * 
+     */
+    @Export(name="isAdvertisedRoutePrioritySet", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> isAdvertisedRoutePrioritySet;
+
+    /**
+     * @return An internal boolean field for provider use for zero_advertised_route_priority.
+     * 
+     */
+    public Output<Boolean> isAdvertisedRoutePrioritySet() {
+        return this.isAdvertisedRoutePrioritySet;
+    }
+    /**
      * An internal boolean field for provider use.
      * 
      */
@@ -1125,6 +1179,22 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> routerApplianceInstance() {
         return Codegen.optional(this.routerApplianceInstance);
+    }
+    /**
+     * The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
+     * This value has to be set true to force the advertised_route_priority to be 0.
+     * 
+     */
+    @Export(name="zeroAdvertisedRoutePriority", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> zeroAdvertisedRoutePriority;
+
+    /**
+     * @return The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
+     * This value has to be set true to force the advertised_route_priority to be 0.
+     * 
+     */
+    public Output<Optional<Boolean>> zeroAdvertisedRoutePriority() {
+        return Codegen.optional(this.zeroAdvertisedRoutePriority);
     }
     /**
      * The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.

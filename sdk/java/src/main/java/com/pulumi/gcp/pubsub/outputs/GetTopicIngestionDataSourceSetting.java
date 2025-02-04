@@ -6,8 +6,10 @@ package com.pulumi.gcp.pubsub.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.pubsub.outputs.GetTopicIngestionDataSourceSettingAwsKinese;
+import com.pulumi.gcp.pubsub.outputs.GetTopicIngestionDataSourceSettingAwsMsk;
 import com.pulumi.gcp.pubsub.outputs.GetTopicIngestionDataSourceSettingAzureEventHub;
 import com.pulumi.gcp.pubsub.outputs.GetTopicIngestionDataSourceSettingCloudStorage;
+import com.pulumi.gcp.pubsub.outputs.GetTopicIngestionDataSourceSettingConfluentCloud;
 import com.pulumi.gcp.pubsub.outputs.GetTopicIngestionDataSourceSettingPlatformLogsSetting;
 import java.util.List;
 import java.util.Objects;
@@ -20,6 +22,11 @@ public final class GetTopicIngestionDataSourceSetting {
      */
     private List<GetTopicIngestionDataSourceSettingAwsKinese> awsKineses;
     /**
+     * @return Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
+     * 
+     */
+    private List<GetTopicIngestionDataSourceSettingAwsMsk> awsMsks;
+    /**
      * @return Settings for ingestion from Azure Event Hubs.
      * 
      */
@@ -29,6 +36,11 @@ public final class GetTopicIngestionDataSourceSetting {
      * 
      */
     private List<GetTopicIngestionDataSourceSettingCloudStorage> cloudStorages;
+    /**
+     * @return Settings for ingestion from Confluent Cloud.
+     * 
+     */
+    private List<GetTopicIngestionDataSourceSettingConfluentCloud> confluentClouds;
     /**
      * @return Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
      * no Platform Logs will be generated.&#39;
@@ -45,6 +57,13 @@ public final class GetTopicIngestionDataSourceSetting {
         return this.awsKineses;
     }
     /**
+     * @return Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
+     * 
+     */
+    public List<GetTopicIngestionDataSourceSettingAwsMsk> awsMsks() {
+        return this.awsMsks;
+    }
+    /**
      * @return Settings for ingestion from Azure Event Hubs.
      * 
      */
@@ -57,6 +76,13 @@ public final class GetTopicIngestionDataSourceSetting {
      */
     public List<GetTopicIngestionDataSourceSettingCloudStorage> cloudStorages() {
         return this.cloudStorages;
+    }
+    /**
+     * @return Settings for ingestion from Confluent Cloud.
+     * 
+     */
+    public List<GetTopicIngestionDataSourceSettingConfluentCloud> confluentClouds() {
+        return this.confluentClouds;
     }
     /**
      * @return Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
@@ -77,15 +103,19 @@ public final class GetTopicIngestionDataSourceSetting {
     @CustomType.Builder
     public static final class Builder {
         private List<GetTopicIngestionDataSourceSettingAwsKinese> awsKineses;
+        private List<GetTopicIngestionDataSourceSettingAwsMsk> awsMsks;
         private List<GetTopicIngestionDataSourceSettingAzureEventHub> azureEventHubs;
         private List<GetTopicIngestionDataSourceSettingCloudStorage> cloudStorages;
+        private List<GetTopicIngestionDataSourceSettingConfluentCloud> confluentClouds;
         private List<GetTopicIngestionDataSourceSettingPlatformLogsSetting> platformLogsSettings;
         public Builder() {}
         public Builder(GetTopicIngestionDataSourceSetting defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.awsKineses = defaults.awsKineses;
+    	      this.awsMsks = defaults.awsMsks;
     	      this.azureEventHubs = defaults.azureEventHubs;
     	      this.cloudStorages = defaults.cloudStorages;
+    	      this.confluentClouds = defaults.confluentClouds;
     	      this.platformLogsSettings = defaults.platformLogsSettings;
         }
 
@@ -99,6 +129,17 @@ public final class GetTopicIngestionDataSourceSetting {
         }
         public Builder awsKineses(GetTopicIngestionDataSourceSettingAwsKinese... awsKineses) {
             return awsKineses(List.of(awsKineses));
+        }
+        @CustomType.Setter
+        public Builder awsMsks(List<GetTopicIngestionDataSourceSettingAwsMsk> awsMsks) {
+            if (awsMsks == null) {
+              throw new MissingRequiredPropertyException("GetTopicIngestionDataSourceSetting", "awsMsks");
+            }
+            this.awsMsks = awsMsks;
+            return this;
+        }
+        public Builder awsMsks(GetTopicIngestionDataSourceSettingAwsMsk... awsMsks) {
+            return awsMsks(List.of(awsMsks));
         }
         @CustomType.Setter
         public Builder azureEventHubs(List<GetTopicIngestionDataSourceSettingAzureEventHub> azureEventHubs) {
@@ -123,6 +164,17 @@ public final class GetTopicIngestionDataSourceSetting {
             return cloudStorages(List.of(cloudStorages));
         }
         @CustomType.Setter
+        public Builder confluentClouds(List<GetTopicIngestionDataSourceSettingConfluentCloud> confluentClouds) {
+            if (confluentClouds == null) {
+              throw new MissingRequiredPropertyException("GetTopicIngestionDataSourceSetting", "confluentClouds");
+            }
+            this.confluentClouds = confluentClouds;
+            return this;
+        }
+        public Builder confluentClouds(GetTopicIngestionDataSourceSettingConfluentCloud... confluentClouds) {
+            return confluentClouds(List.of(confluentClouds));
+        }
+        @CustomType.Setter
         public Builder platformLogsSettings(List<GetTopicIngestionDataSourceSettingPlatformLogsSetting> platformLogsSettings) {
             if (platformLogsSettings == null) {
               throw new MissingRequiredPropertyException("GetTopicIngestionDataSourceSetting", "platformLogsSettings");
@@ -136,8 +188,10 @@ public final class GetTopicIngestionDataSourceSetting {
         public GetTopicIngestionDataSourceSetting build() {
             final var _resultValue = new GetTopicIngestionDataSourceSetting();
             _resultValue.awsKineses = awsKineses;
+            _resultValue.awsMsks = awsMsks;
             _resultValue.azureEventHubs = azureEventHubs;
             _resultValue.cloudStorages = cloudStorages;
+            _resultValue.confluentClouds = confluentClouds;
             _resultValue.platformLogsSettings = platformLogsSettings;
             return _resultValue;
         }

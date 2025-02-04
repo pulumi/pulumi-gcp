@@ -5211,6 +5211,30 @@ export namespace beyondcorp {
          */
         assignedIps?: pulumi.Input<pulumi.Input<string>[]>;
     }
+
+    export interface SecurityGatewayIamBindingCondition {
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
+    }
+
+    export interface SecurityGatewayIamMemberCondition {
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
+    }
 }
 
 export namespace biglake {
@@ -6915,6 +6939,13 @@ export namespace bigquery {
          * Start of the range partitioning, inclusive.
          */
         start: pulumi.Input<number>;
+    }
+
+    export interface TableSchemaForeignTypeInfo {
+        /**
+         * Specifies the system which defines the foreign data type.
+         */
+        typeSystem: pulumi.Input<string>;
     }
 
     export interface TableTableConstraints {
@@ -19862,7 +19893,7 @@ export namespace compute {
          */
         networkIp?: pulumi.Input<string>;
         /**
-         * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF. In the beta provider the additional values of MRDMA and IRDMA are supported.
+         * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF, MRDMA, IRDMA.
          */
         nicType?: pulumi.Input<string>;
         /**
@@ -20469,7 +20500,7 @@ export namespace compute {
          */
         networkIp?: pulumi.Input<string>;
         /**
-         * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET. In the beta provider the additional values of MRDMA and IRDMA are supported.
+         * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA.
          */
         nicType?: pulumi.Input<string>;
         /**
@@ -23640,7 +23671,7 @@ export namespace compute {
          */
         networkIp?: pulumi.Input<string>;
         /**
-         * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET. In the beta provider the additional values of MRDMA and IRDMA are supported.
+         * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA.
          */
         nicType?: pulumi.Input<string>;
         /**
@@ -31995,7 +32026,7 @@ export namespace container {
         /**
          * Maximum amount of the resource in the cluster.
          */
-        maximum?: pulumi.Input<number>;
+        maximum: pulumi.Input<number>;
         /**
          * Minimum amount of the resource in the cluster.
          */
@@ -32568,6 +32599,10 @@ export namespace container {
          * [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
          */
         machineType?: pulumi.Input<string>;
+        /**
+         * The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+         */
+        maxRunDuration?: pulumi.Input<string>;
         /**
          * The metadata key/value pairs assigned to instances in
          * the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
@@ -33456,6 +33491,10 @@ export namespace container {
          * [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
          */
         machineType?: pulumi.Input<string>;
+        /**
+         * The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+         */
+        maxRunDuration?: pulumi.Input<string>;
         /**
          * The metadata key/value pairs assigned to instances in
          * the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
@@ -34435,6 +34474,10 @@ export namespace container {
          * The name of a Google Compute Engine machine type.
          */
         machineType?: pulumi.Input<string>;
+        /**
+         * The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+         */
+        maxRunDuration?: pulumi.Input<string>;
         /**
          * The metadata key/value pairs assigned to instances in the cluster.
          */
@@ -45163,6 +45206,13 @@ export namespace dataproc {
         logFormat?: pulumi.Input<string>;
     }
 
+    export interface WorkflowTemplateEncryptionConfig {
+        /**
+         * Optional. The Cloud KMS key name to use for encryption.
+         */
+        kmsKey?: pulumi.Input<string>;
+    }
+
     export interface WorkflowTemplateJob {
         /**
          * Job is a Hadoop job.
@@ -53251,6 +53301,10 @@ export namespace gkehub {
          * Structure is documented below.
          */
         git?: pulumi.Input<inputs.gkehub.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit>;
+        /**
+         * The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+         */
+        metricsGcpServiceAccountEmail?: pulumi.Input<string>;
         /**
          * OCI repo configuration for the cluster
          * Structure is documented below.
@@ -69735,6 +69789,11 @@ export namespace pubsub {
          */
         awsKinesis?: pulumi.Input<inputs.pubsub.TopicIngestionDataSourceSettingsAwsKinesis>;
         /**
+         * Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
+         * Structure is documented below.
+         */
+        awsMsk?: pulumi.Input<inputs.pubsub.TopicIngestionDataSourceSettingsAwsMsk>;
+        /**
          * Settings for ingestion from Azure Event Hubs.
          * Structure is documented below.
          */
@@ -69744,6 +69803,11 @@ export namespace pubsub {
          * Structure is documented below.
          */
         cloudStorage?: pulumi.Input<inputs.pubsub.TopicIngestionDataSourceSettingsCloudStorage>;
+        /**
+         * Settings for ingestion from Confluent Cloud.
+         * Structure is documented below.
+         */
+        confluentCloud?: pulumi.Input<inputs.pubsub.TopicIngestionDataSourceSettingsConfluentCloud>;
         /**
          * Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
          * no Platform Logs will be generated.'
@@ -69776,6 +69840,30 @@ export namespace pubsub {
          * The Kinesis stream ARN to ingest data from.
          */
         streamArn: pulumi.Input<string>;
+    }
+
+    export interface TopicIngestionDataSourceSettingsAwsMsk {
+        /**
+         * AWS role ARN to be used for Federated Identity authentication with
+         * MSK. Check the Pub/Sub docs for how to set up this role and the
+         * required permissions that need to be attached to it.
+         */
+        awsRoleArn: pulumi.Input<string>;
+        /**
+         * ARN that uniquely identifies the MSK cluster.
+         */
+        clusterArn: pulumi.Input<string>;
+        /**
+         * The GCP service account to be used for Federated Identity authentication
+         * with MSK (via a `AssumeRoleWithWebIdentity` call for the provided
+         * role). The `awsRoleArn` must be set up with `accounts.google.com:sub`
+         * equals to this service account number.
+         */
+        gcpServiceAccount: pulumi.Input<string>;
+        /**
+         * The name of the MSK topic that Pub/Sub will import from.
+         */
+        topic: pulumi.Input<string>;
     }
 
     export interface TopicIngestionDataSourceSettingsAzureEventHubs {
@@ -69864,6 +69952,30 @@ export namespace pubsub {
          * message. When unset, '\n' is used.
          */
         delimiter?: pulumi.Input<string>;
+    }
+
+    export interface TopicIngestionDataSourceSettingsConfluentCloud {
+        /**
+         * The Confluent Cloud bootstrap server. The format is url:port.
+         */
+        bootstrapServer: pulumi.Input<string>;
+        /**
+         * The Confluent Cloud cluster ID.
+         */
+        clusterId?: pulumi.Input<string>;
+        /**
+         * The GCP service account to be used for Federated Identity authentication
+         * with Confluent Cloud.
+         */
+        gcpServiceAccount: pulumi.Input<string>;
+        /**
+         * Identity pool ID to be used for Federated Identity authentication with Confluent Cloud.
+         */
+        identityPoolId: pulumi.Input<string>;
+        /**
+         * Name of the Confluent Cloud topic that Pub/Sub will import from.
+         */
+        topic: pulumi.Input<string>;
     }
 
     export interface TopicIngestionDataSourceSettingsPlatformLogsSettings {
@@ -72256,6 +72368,22 @@ export namespace sourcerepo {
 }
 
 export namespace spanner {
+    export interface BackupScheduleEncryptionConfig {
+        /**
+         * The encryption type of backups created by the backup schedule.
+         * Possible values are USE_DATABASE_ENCRYPTION, GOOGLE_DEFAULT_ENCRYPTION, or CUSTOMER_MANAGED_ENCRYPTION.
+         * If you use CUSTOMER_MANAGED_ENCRYPTION, you must specify a kmsKeyName.
+         * If your backup type is incremental-backup, the encryption type must be GOOGLE_DEFAULT_ENCRYPTION.
+         * Possible values are: `USE_DATABASE_ENCRYPTION`, `GOOGLE_DEFAULT_ENCRYPTION`, `CUSTOMER_MANAGED_ENCRYPTION`.
+         */
+        encryptionType: pulumi.Input<string>;
+        /**
+         * The resource name of the Cloud KMS key to use for encryption.
+         * Format: 'projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}'
+         */
+        kmsKeyName?: pulumi.Input<string>;
+    }
+
     export interface BackupScheduleFullBackupSpec {
     }
 

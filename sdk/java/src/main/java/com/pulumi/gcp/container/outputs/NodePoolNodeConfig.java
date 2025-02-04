@@ -157,6 +157,11 @@ public final class NodePoolNodeConfig {
      */
     private @Nullable String machineType;
     /**
+     * @return The runtime of each node in the node pool in seconds, terminated by &#39;s&#39;. Example: &#34;3600s&#34;.
+     * 
+     */
+    private @Nullable String maxRunDuration;
+    /**
      * @return The metadata key/value pairs assigned to instances in the cluster.
      * 
      */
@@ -420,6 +425,13 @@ public final class NodePoolNodeConfig {
         return Optional.ofNullable(this.machineType);
     }
     /**
+     * @return The runtime of each node in the node pool in seconds, terminated by &#39;s&#39;. Example: &#34;3600s&#34;.
+     * 
+     */
+    public Optional<String> maxRunDuration() {
+        return Optional.ofNullable(this.maxRunDuration);
+    }
+    /**
      * @return The metadata key/value pairs assigned to instances in the cluster.
      * 
      */
@@ -582,6 +594,7 @@ public final class NodePoolNodeConfig {
         private @Nullable String localSsdEncryptionMode;
         private @Nullable String loggingVariant;
         private @Nullable String machineType;
+        private @Nullable String maxRunDuration;
         private @Nullable Map<String,String> metadata;
         private @Nullable String minCpuPlatform;
         private @Nullable String nodeGroup;
@@ -627,6 +640,7 @@ public final class NodePoolNodeConfig {
     	      this.localSsdEncryptionMode = defaults.localSsdEncryptionMode;
     	      this.loggingVariant = defaults.loggingVariant;
     	      this.machineType = defaults.machineType;
+    	      this.maxRunDuration = defaults.maxRunDuration;
     	      this.metadata = defaults.metadata;
     	      this.minCpuPlatform = defaults.minCpuPlatform;
     	      this.nodeGroup = defaults.nodeGroup;
@@ -798,6 +812,12 @@ public final class NodePoolNodeConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder maxRunDuration(@Nullable String maxRunDuration) {
+
+            this.maxRunDuration = maxRunDuration;
+            return this;
+        }
+        @CustomType.Setter
         public Builder metadata(@Nullable Map<String,String> metadata) {
 
             this.metadata = metadata;
@@ -946,6 +966,7 @@ public final class NodePoolNodeConfig {
             _resultValue.localSsdEncryptionMode = localSsdEncryptionMode;
             _resultValue.loggingVariant = loggingVariant;
             _resultValue.machineType = machineType;
+            _resultValue.maxRunDuration = maxRunDuration;
             _resultValue.metadata = metadata;
             _resultValue.minCpuPlatform = minCpuPlatform;
             _resultValue.nodeGroup = nodeGroup;

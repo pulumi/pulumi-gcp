@@ -39,7 +39,7 @@ export interface GetNetworkArgs {
      */
     name: string;
     /**
-     * Beta A full or partial URL of the network profile to apply to this network.
+     * A full or partial URL of the network profile to apply to this network.
      */
     networkProfile?: string;
     /**
@@ -75,7 +75,7 @@ export interface GetNetworkResult {
      */
     readonly networkId: number;
     /**
-     * Beta A full or partial URL of the network profile to apply to this network.
+     * A full or partial URL of the network profile to apply to this network.
      */
     readonly networkProfile?: string;
     /**
@@ -129,7 +129,7 @@ export interface GetNetworkOutputArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * Beta A full or partial URL of the network profile to apply to this network.
+     * A full or partial URL of the network profile to apply to this network.
      */
     networkProfile?: pulumi.Input<string>;
     /**

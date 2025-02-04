@@ -16,6 +16,8 @@ namespace Pulumi.Gcp.SecurityPosture
     /// Every update to a deployed posture creates a new posture revision with an updated revision_id.
     /// 
     /// To get more information about Posture, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/security-command-center/docs/reference/securityposture/rest/v1/Posture)
     /// * How-to Guides
     ///     * [Create and deploy a posture](https://cloud.google.com/security-command-center/docs/how-to-use-security-posture)
     /// 

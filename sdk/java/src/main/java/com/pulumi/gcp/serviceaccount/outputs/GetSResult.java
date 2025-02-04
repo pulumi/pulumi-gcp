@@ -24,7 +24,9 @@ public final class GetSResult {
      * 
      */
     private String id;
+    private @Nullable String prefix;
     private @Nullable String project;
+    private @Nullable String regex;
 
     private GetSResult() {}
     /**
@@ -41,8 +43,14 @@ public final class GetSResult {
     public String id() {
         return this.id;
     }
+    public Optional<String> prefix() {
+        return Optional.ofNullable(this.prefix);
+    }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
+    }
+    public Optional<String> regex() {
+        return Optional.ofNullable(this.regex);
     }
 
     public static Builder builder() {
@@ -56,13 +64,17 @@ public final class GetSResult {
     public static final class Builder {
         private List<GetSAccount> accounts;
         private String id;
+        private @Nullable String prefix;
         private @Nullable String project;
+        private @Nullable String regex;
         public Builder() {}
         public Builder(GetSResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accounts = defaults.accounts;
     	      this.id = defaults.id;
+    	      this.prefix = defaults.prefix;
     	      this.project = defaults.project;
+    	      this.regex = defaults.regex;
         }
 
         @CustomType.Setter
@@ -85,16 +97,30 @@ public final class GetSResult {
             return this;
         }
         @CustomType.Setter
+        public Builder prefix(@Nullable String prefix) {
+
+            this.prefix = prefix;
+            return this;
+        }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
 
             this.project = project;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder regex(@Nullable String regex) {
+
+            this.regex = regex;
             return this;
         }
         public GetSResult build() {
             final var _resultValue = new GetSResult();
             _resultValue.accounts = accounts;
             _resultValue.id = id;
+            _resultValue.prefix = prefix;
             _resultValue.project = project;
+            _resultValue.regex = regex;
             return _resultValue;
         }
     }

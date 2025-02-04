@@ -174,6 +174,56 @@ import (
 //	}
 //
 // ```
+// ### Firestore Field Wildcard
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/firestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			database, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
+//				Project:               pulumi.String("my-project-name"),
+//				Name:                  pulumi.String("database-id"),
+//				LocationId:            pulumi.String("nam5"),
+//				Type:                  pulumi.String("FIRESTORE_NATIVE"),
+//				DeleteProtectionState: pulumi.String("DELETE_PROTECTION_ENABLED"),
+//				DeletionPolicy:        pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firestore.NewField(ctx, "wildcard", &firestore.FieldArgs{
+//				Project:    pulumi.String("my-project-name"),
+//				Database:   database.Name,
+//				Collection: pulumi.String("chatrooms__75223"),
+//				Field:      pulumi.String("*"),
+//				IndexConfig: &firestore.FieldIndexConfigArgs{
+//					Indexes: firestore.FieldIndexConfigIndexArray{
+//						&firestore.FieldIndexConfigIndexArgs{
+//							Order:      pulumi.String("ASCENDING"),
+//							QueryScope: pulumi.String("COLLECTION_GROUP"),
+//						},
+//						&firestore.FieldIndexConfigIndexArgs{
+//							ArrayConfig: pulumi.String("CONTAINS"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

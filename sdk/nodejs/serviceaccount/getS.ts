@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * Example service accounts.
+ * Get all service accounts from a project
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,12 +23,48 @@ import * as utilities from "../utilities";
  *     project: "example-project",
  * });
  * ```
+ *
+ * Get all service accounts that are prefixed with `"foo"`
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const foo = gcp.serviceaccount.getS({
+ *     prefix: "foo",
+ * });
+ * ```
+ *
+ * Get all service accounts that contain `"bar"`
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bar = gcp.serviceaccount.getS({
+ *     regex: ".*bar.*",
+ * });
+ * ```
+ *
+ * Get all service accounts that are prefixed with `"foo"` and contain `"bar"`
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const fooBar = gcp.serviceaccount.getS({
+ *     prefix: "foo",
+ *     regex: ".*bar.*",
+ * });
+ * ```
  */
 export function getS(args?: GetSArgs, opts?: pulumi.InvokeOptions): Promise<GetSResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:serviceaccount/getS:getS", {
+        "prefix": args.prefix,
         "project": args.project,
+        "regex": args.regex,
     }, opts);
 }
 
@@ -37,9 +73,17 @@ export function getS(args?: GetSArgs, opts?: pulumi.InvokeOptions): Promise<GetS
  */
 export interface GetSArgs {
     /**
+     * A prefix for filtering. It's applied with the `accountId`.
+     */
+    prefix?: string;
+    /**
      * The ID of the project. If it is not provided, the provider project is used.
      */
     project?: string;
+    /**
+     * A regular expression for filtering. It's applied with the `email`. Further information about the syntax can be found [here](https://github.com/google/re2/wiki/Syntax).
+     */
+    regex?: string;
 }
 
 /**
@@ -54,7 +98,9 @@ export interface GetSResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly prefix?: string;
     readonly project?: string;
+    readonly regex?: string;
 }
 /**
  * Gets a list of all service accounts from a project.
@@ -63,7 +109,7 @@ export interface GetSResult {
  *
  * ## Example Usage
  *
- * Example service accounts.
+ * Get all service accounts from a project
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -73,12 +119,48 @@ export interface GetSResult {
  *     project: "example-project",
  * });
  * ```
+ *
+ * Get all service accounts that are prefixed with `"foo"`
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const foo = gcp.serviceaccount.getS({
+ *     prefix: "foo",
+ * });
+ * ```
+ *
+ * Get all service accounts that contain `"bar"`
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bar = gcp.serviceaccount.getS({
+ *     regex: ".*bar.*",
+ * });
+ * ```
+ *
+ * Get all service accounts that are prefixed with `"foo"` and contain `"bar"`
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const fooBar = gcp.serviceaccount.getS({
+ *     prefix: "foo",
+ *     regex: ".*bar.*",
+ * });
+ * ```
  */
 export function getSOutput(args?: GetSOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:serviceaccount/getS:getS", {
+        "prefix": args.prefix,
         "project": args.project,
+        "regex": args.regex,
     }, opts);
 }
 
@@ -87,7 +169,15 @@ export function getSOutput(args?: GetSOutputArgs, opts?: pulumi.InvokeOutputOpti
  */
 export interface GetSOutputArgs {
     /**
+     * A prefix for filtering. It's applied with the `accountId`.
+     */
+    prefix?: pulumi.Input<string>;
+    /**
      * The ID of the project. If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * A regular expression for filtering. It's applied with the `email`. Further information about the syntax can be found [here](https://github.com/google/re2/wiki/Syntax).
+     */
+    regex?: pulumi.Input<string>;
 }

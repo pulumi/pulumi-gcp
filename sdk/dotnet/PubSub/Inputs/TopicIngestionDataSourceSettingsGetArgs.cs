@@ -20,6 +20,13 @@ namespace Pulumi.Gcp.PubSub.Inputs
         public Input<Inputs.TopicIngestionDataSourceSettingsAwsKinesisGetArgs>? AwsKinesis { get; set; }
 
         /// <summary>
+        /// Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("awsMsk")]
+        public Input<Inputs.TopicIngestionDataSourceSettingsAwsMskGetArgs>? AwsMsk { get; set; }
+
+        /// <summary>
         /// Settings for ingestion from Azure Event Hubs.
         /// Structure is documented below.
         /// </summary>
@@ -32,6 +39,13 @@ namespace Pulumi.Gcp.PubSub.Inputs
         /// </summary>
         [Input("cloudStorage")]
         public Input<Inputs.TopicIngestionDataSourceSettingsCloudStorageGetArgs>? CloudStorage { get; set; }
+
+        /// <summary>
+        /// Settings for ingestion from Confluent Cloud.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("confluentCloud")]
+        public Input<Inputs.TopicIngestionDataSourceSettingsConfluentCloudGetArgs>? ConfluentCloud { get; set; }
 
         /// <summary>
         /// Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,

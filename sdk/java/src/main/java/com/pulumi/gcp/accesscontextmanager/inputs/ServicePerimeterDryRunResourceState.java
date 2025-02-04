@@ -31,6 +31,21 @@ public final class ServicePerimeterDryRunResourceState extends com.pulumi.resour
     }
 
     /**
+     * The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that&#39;s used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
+     * 
+     */
+    @Import(name="etag")
+    private @Nullable Output<String> etag;
+
+    /**
+     * @return The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that&#39;s used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
+     * 
+     */
+    public Optional<Output<String>> etag() {
+        return Optional.ofNullable(this.etag);
+    }
+
+    /**
      * The name of the Service Perimeter to add this resource to.
      * 
      * ***
@@ -72,6 +87,7 @@ public final class ServicePerimeterDryRunResourceState extends com.pulumi.resour
 
     private ServicePerimeterDryRunResourceState(ServicePerimeterDryRunResourceState $) {
         this.accessPolicyId = $.accessPolicyId;
+        this.etag = $.etag;
         this.perimeterName = $.perimeterName;
         this.resource = $.resource;
     }
@@ -113,6 +129,27 @@ public final class ServicePerimeterDryRunResourceState extends com.pulumi.resour
          */
         public Builder accessPolicyId(String accessPolicyId) {
             return accessPolicyId(Output.of(accessPolicyId));
+        }
+
+        /**
+         * @param etag The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that&#39;s used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder etag(@Nullable Output<String> etag) {
+            $.etag = etag;
+            return this;
+        }
+
+        /**
+         * @param etag The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that&#39;s used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder etag(String etag) {
+            return etag(Output.of(etag));
         }
 
         /**

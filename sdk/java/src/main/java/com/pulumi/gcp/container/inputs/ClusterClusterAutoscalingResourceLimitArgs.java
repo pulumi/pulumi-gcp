@@ -21,15 +21,15 @@ public final class ClusterClusterAutoscalingResourceLimitArgs extends com.pulumi
      * Maximum amount of the resource in the cluster.
      * 
      */
-    @Import(name="maximum")
-    private @Nullable Output<Integer> maximum;
+    @Import(name="maximum", required=true)
+    private Output<Integer> maximum;
 
     /**
      * @return Maximum amount of the resource in the cluster.
      * 
      */
-    public Optional<Output<Integer>> maximum() {
-        return Optional.ofNullable(this.maximum);
+    public Output<Integer> maximum() {
+        return this.maximum;
     }
 
     /**
@@ -98,7 +98,7 @@ public final class ClusterClusterAutoscalingResourceLimitArgs extends com.pulumi
          * @return builder
          * 
          */
-        public Builder maximum(@Nullable Output<Integer> maximum) {
+        public Builder maximum(Output<Integer> maximum) {
             $.maximum = maximum;
             return this;
         }
@@ -160,6 +160,9 @@ public final class ClusterClusterAutoscalingResourceLimitArgs extends com.pulumi
         }
 
         public ClusterClusterAutoscalingResourceLimitArgs build() {
+            if ($.maximum == null) {
+                throw new MissingRequiredPropertyException("ClusterClusterAutoscalingResourceLimitArgs", "maximum");
+            }
             if ($.resourceType == null) {
                 throw new MissingRequiredPropertyException("ClusterClusterAutoscalingResourceLimitArgs", "resourceType");
             }

@@ -72,6 +72,10 @@ namespace Pulumi.Gcp.Spanner
     ///             },
     ///         },
     ///         FullBackupSpec = null,
+    ///         EncryptionConfig = new Gcp.Spanner.Inputs.BackupScheduleEncryptionConfigArgs
+    ///         {
+    ///             EncryptionType = "USE_DATABASE_ENCRYPTION",
+    ///         },
     ///     });
     /// 
     /// });
@@ -122,6 +126,10 @@ namespace Pulumi.Gcp.Spanner
     ///             },
     ///         },
     ///         IncrementalBackupSpec = null,
+    ///         EncryptionConfig = new Gcp.Spanner.Inputs.BackupScheduleEncryptionConfigArgs
+    ///         {
+    ///             EncryptionType = "GOOGLE_DEFAULT_ENCRYPTION",
+    ///         },
     ///     });
     /// 
     /// });
@@ -162,6 +170,13 @@ namespace Pulumi.Gcp.Spanner
         /// </summary>
         [Output("database")]
         public Output<string> Database { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for the encryption of the backup schedule.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("encryptionConfig")]
+        public Output<Outputs.BackupScheduleEncryptionConfig> EncryptionConfig { get; private set; } = null!;
 
         /// <summary>
         /// The schedule creates only full backups..
@@ -266,6 +281,13 @@ namespace Pulumi.Gcp.Spanner
         public Input<string> Database { get; set; } = null!;
 
         /// <summary>
+        /// Configuration for the encryption of the backup schedule.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionConfig")]
+        public Input<Inputs.BackupScheduleEncryptionConfigArgs>? EncryptionConfig { get; set; }
+
+        /// <summary>
         /// The schedule creates only full backups..
         /// </summary>
         [Input("fullBackupSpec")]
@@ -328,6 +350,13 @@ namespace Pulumi.Gcp.Spanner
         /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }
+
+        /// <summary>
+        /// Configuration for the encryption of the backup schedule.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionConfig")]
+        public Input<Inputs.BackupScheduleEncryptionConfigGetArgs>? EncryptionConfig { get; set; }
 
         /// <summary>
         /// The schedule creates only full backups..

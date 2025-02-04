@@ -414,7 +414,7 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="zone", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> zone;
+    private Output<String> zone;
 
     /**
      * @return Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
@@ -422,8 +422,8 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
      * If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
      * 
      */
-    public Output<Optional<String>> zone() {
-        return Codegen.optional(this.zone);
+    public Output<String> zone() {
+        return this.zone;
     }
 
     /**

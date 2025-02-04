@@ -61,7 +61,7 @@ func GetBucketObjectContent(ctx *pulumi.Context, args *GetBucketObjectContentArg
 type GetBucketObjectContentArgs struct {
 	// The name of the containing bucket.
 	Bucket string `pulumi:"bucket"`
-	// (Computed) [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object content.
+	// (Computed) The content of the object.
 	Content *string `pulumi:"content"`
 	// The name of the object.
 	Name string `pulumi:"name"`
@@ -71,8 +71,8 @@ type GetBucketObjectContentArgs struct {
 type GetBucketObjectContentResult struct {
 	Bucket       string `pulumi:"bucket"`
 	CacheControl string `pulumi:"cacheControl"`
-	// (Computed) [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object content.
-	Content             *string                                    `pulumi:"content"`
+	// (Computed) The content of the object.
+	Content             string                                     `pulumi:"content"`
 	ContentDisposition  string                                     `pulumi:"contentDisposition"`
 	ContentEncoding     string                                     `pulumi:"contentEncoding"`
 	ContentLanguage     string                                     `pulumi:"contentLanguage"`
@@ -110,7 +110,7 @@ func GetBucketObjectContentOutput(ctx *pulumi.Context, args GetBucketObjectConte
 type GetBucketObjectContentOutputArgs struct {
 	// The name of the containing bucket.
 	Bucket pulumi.StringInput `pulumi:"bucket"`
-	// (Computed) [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object content.
+	// (Computed) The content of the object.
 	Content pulumi.StringPtrInput `pulumi:"content"`
 	// The name of the object.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -143,9 +143,9 @@ func (o GetBucketObjectContentResultOutput) CacheControl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketObjectContentResult) string { return v.CacheControl }).(pulumi.StringOutput)
 }
 
-// (Computed) [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object content.
-func (o GetBucketObjectContentResultOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetBucketObjectContentResult) *string { return v.Content }).(pulumi.StringPtrOutput)
+// (Computed) The content of the object.
+func (o GetBucketObjectContentResultOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectContentResult) string { return v.Content }).(pulumi.StringOutput)
 }
 
 func (o GetBucketObjectContentResultOutput) ContentDisposition() pulumi.StringOutput {

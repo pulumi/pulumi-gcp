@@ -15,6 +15,8 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'BackupScheduleEncryptionConfigArgs',
+    'BackupScheduleEncryptionConfigArgsDict',
     'BackupScheduleFullBackupSpecArgs',
     'BackupScheduleFullBackupSpecArgsDict',
     'BackupScheduleIncrementalBackupSpecArgs',
@@ -52,6 +54,72 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class BackupScheduleEncryptionConfigArgsDict(TypedDict):
+        encryption_type: pulumi.Input[str]
+        """
+        The encryption type of backups created by the backup schedule.
+        Possible values are USE_DATABASE_ENCRYPTION, GOOGLE_DEFAULT_ENCRYPTION, or CUSTOMER_MANAGED_ENCRYPTION.
+        If you use CUSTOMER_MANAGED_ENCRYPTION, you must specify a kmsKeyName.
+        If your backup type is incremental-backup, the encryption type must be GOOGLE_DEFAULT_ENCRYPTION.
+        Possible values are: `USE_DATABASE_ENCRYPTION`, `GOOGLE_DEFAULT_ENCRYPTION`, `CUSTOMER_MANAGED_ENCRYPTION`.
+        """
+        kms_key_name: NotRequired[pulumi.Input[str]]
+        """
+        The resource name of the Cloud KMS key to use for encryption.
+        Format: 'projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}'
+        """
+elif False:
+    BackupScheduleEncryptionConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BackupScheduleEncryptionConfigArgs:
+    def __init__(__self__, *,
+                 encryption_type: pulumi.Input[str],
+                 kms_key_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] encryption_type: The encryption type of backups created by the backup schedule.
+               Possible values are USE_DATABASE_ENCRYPTION, GOOGLE_DEFAULT_ENCRYPTION, or CUSTOMER_MANAGED_ENCRYPTION.
+               If you use CUSTOMER_MANAGED_ENCRYPTION, you must specify a kmsKeyName.
+               If your backup type is incremental-backup, the encryption type must be GOOGLE_DEFAULT_ENCRYPTION.
+               Possible values are: `USE_DATABASE_ENCRYPTION`, `GOOGLE_DEFAULT_ENCRYPTION`, `CUSTOMER_MANAGED_ENCRYPTION`.
+        :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS key to use for encryption.
+               Format: 'projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}'
+        """
+        pulumi.set(__self__, "encryption_type", encryption_type)
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="encryptionType")
+    def encryption_type(self) -> pulumi.Input[str]:
+        """
+        The encryption type of backups created by the backup schedule.
+        Possible values are USE_DATABASE_ENCRYPTION, GOOGLE_DEFAULT_ENCRYPTION, or CUSTOMER_MANAGED_ENCRYPTION.
+        If you use CUSTOMER_MANAGED_ENCRYPTION, you must specify a kmsKeyName.
+        If your backup type is incremental-backup, the encryption type must be GOOGLE_DEFAULT_ENCRYPTION.
+        Possible values are: `USE_DATABASE_ENCRYPTION`, `GOOGLE_DEFAULT_ENCRYPTION`, `CUSTOMER_MANAGED_ENCRYPTION`.
+        """
+        return pulumi.get(self, "encryption_type")
+
+    @encryption_type.setter
+    def encryption_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "encryption_type", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the Cloud KMS key to use for encryption.
+        Format: 'projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}'
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_name", value)
+
 
 if not MYPY:
     class BackupScheduleFullBackupSpecArgsDict(TypedDict):

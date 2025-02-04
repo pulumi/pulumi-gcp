@@ -130,6 +130,7 @@ __all__ = [
     'MetastoreServiceScalingConfigAutoscalingConfigLimitConfig',
     'MetastoreServiceScheduledBackup',
     'MetastoreServiceTelemetryConfig',
+    'WorkflowTemplateEncryptionConfig',
     'WorkflowTemplateJob',
     'WorkflowTemplateJobHadoopJob',
     'WorkflowTemplateJobHadoopJobLoggingConfig',
@@ -8158,6 +8159,42 @@ class MetastoreServiceTelemetryConfig(dict):
         Possible values are: `LEGACY`, `JSON`.
         """
         return pulumi.get(self, "log_format")
+
+
+@pulumi.output_type
+class WorkflowTemplateEncryptionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKey":
+            suggest = "kms_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkflowTemplateEncryptionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkflowTemplateEncryptionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkflowTemplateEncryptionConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key: Optional[str] = None):
+        """
+        :param str kms_key: Optional. The Cloud KMS key name to use for encryption.
+        """
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[str]:
+        """
+        Optional. The Cloud KMS key name to use for encryption.
+        """
+        return pulumi.get(self, "kms_key")
 
 
 @pulumi.output_type

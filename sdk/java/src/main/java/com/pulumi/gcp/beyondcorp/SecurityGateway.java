@@ -49,7 +49,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new SecurityGateway("example", SecurityGatewayArgs.builder()
  *             .securityGatewayId("default")
- *             .location("global")
  *             .displayName("My Security Gateway resource")
  *             .hubs(SecurityGatewayHubArgs.builder()
  *                 .region("us-central1")
@@ -154,18 +153,28 @@ public class SecurityGateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.hubs);
     }
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     * (Optional, Deprecated)
+     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+     * 
+     * &gt; **Warning:** `location` is deprecated and will be removed in a future major release.
+     * 
+     * @deprecated
+     * `location` is deprecated and will be removed in a future major release.
      * 
      */
+    @Deprecated /* `location` is deprecated and will be removed in a future major release. */
     @Export(name="location", refs={String.class}, tree="[0]")
-    private Output<String> location;
+    private Output</* @Nullable */ String> location;
 
     /**
-     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     * @return (Optional, Deprecated)
+     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+     * 
+     * &gt; **Warning:** `location` is deprecated and will be removed in a future major release.
      * 
      */
-    public Output<String> location() {
-        return this.location;
+    public Output<Optional<String>> location() {
+        return Codegen.optional(this.location);
     }
     /**
      * Identifier. Name of the resource.

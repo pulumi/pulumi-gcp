@@ -110,7 +110,7 @@ class GetNetworkResult:
     @pulumi.getter(name="networkProfile")
     def network_profile(self) -> Optional[str]:
         """
-        Beta A full or partial URL of the network profile to apply to this network.
+        A full or partial URL of the network profile to apply to this network.
         """
         return pulumi.get(self, "network_profile")
 
@@ -185,7 +185,7 @@ def get_network(name: Optional[str] = None,
            
            
            - - -
-    :param str network_profile: Beta A full or partial URL of the network profile to apply to this network.
+    :param str network_profile: A full or partial URL of the network profile to apply to this network.
     :param str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
@@ -229,7 +229,7 @@ def get_network_output(name: Optional[pulumi.Input[str]] = None,
            
            
            - - -
-    :param str network_profile: Beta A full or partial URL of the network profile to apply to this network.
+    :param str network_profile: A full or partial URL of the network profile to apply to this network.
     :param str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     """

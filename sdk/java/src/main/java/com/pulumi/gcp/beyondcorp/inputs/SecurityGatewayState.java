@@ -86,16 +86,30 @@ public final class SecurityGatewayState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     * (Optional, Deprecated)
+     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+     * 
+     * &gt; **Warning:** `location` is deprecated and will be removed in a future major release.
+     * 
+     * @deprecated
+     * `location` is deprecated and will be removed in a future major release.
      * 
      */
+    @Deprecated /* `location` is deprecated and will be removed in a future major release. */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     * @return (Optional, Deprecated)
+     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+     * 
+     * &gt; **Warning:** `location` is deprecated and will be removed in a future major release.
+     * 
+     * @deprecated
+     * `location` is deprecated and will be removed in a future major release.
      * 
      */
+    @Deprecated /* `location` is deprecated and will be removed in a future major release. */
     public Optional<Output<String>> location() {
         return Optional.ofNullable(this.location);
     }
@@ -352,22 +366,36 @@ public final class SecurityGatewayState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+         * @param location (Optional, Deprecated)
+         * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+         * 
+         * &gt; **Warning:** `location` is deprecated and will be removed in a future major release.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `location` is deprecated and will be removed in a future major release.
+         * 
          */
+        @Deprecated /* `location` is deprecated and will be removed in a future major release. */
         public Builder location(@Nullable Output<String> location) {
             $.location = location;
             return this;
         }
 
         /**
-         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+         * @param location (Optional, Deprecated)
+         * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+         * 
+         * &gt; **Warning:** `location` is deprecated and will be removed in a future major release.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `location` is deprecated and will be removed in a future major release.
+         * 
          */
+        @Deprecated /* `location` is deprecated and will be removed in a future major release. */
         public Builder location(String location) {
             return location(Output.of(location));
         }

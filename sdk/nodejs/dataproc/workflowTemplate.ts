@@ -140,6 +140,10 @@ export class WorkflowTemplate extends pulumi.CustomResource {
     public readonly dagTimeout!: pulumi.Output<string | undefined>;
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Optional. The encryption configuration for the workflow template.
+     */
+    public readonly encryptionConfig!: pulumi.Output<outputs.dataproc.WorkflowTemplateEncryptionConfig | undefined>;
+    /**
      * Required. The Directed Acyclic Graph of Jobs to submit.
      */
     public readonly jobs!: pulumi.Output<outputs.dataproc.WorkflowTemplateJob[]>;
@@ -204,6 +208,7 @@ export class WorkflowTemplate extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["dagTimeout"] = state ? state.dagTimeout : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
+            resourceInputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
             resourceInputs["jobs"] = state ? state.jobs : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -226,6 +231,7 @@ export class WorkflowTemplate extends pulumi.CustomResource {
                 throw new Error("Missing required property 'placement'");
             }
             resourceInputs["dagTimeout"] = args ? args.dagTimeout : undefined;
+            resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
             resourceInputs["jobs"] = args ? args.jobs : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -265,6 +271,10 @@ export interface WorkflowTemplateState {
      */
     dagTimeout?: pulumi.Input<string>;
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Optional. The encryption configuration for the workflow template.
+     */
+    encryptionConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplateEncryptionConfig>;
     /**
      * Required. The Directed Acyclic Graph of Jobs to submit.
      */
@@ -329,6 +339,10 @@ export interface WorkflowTemplateArgs {
      * the cluster is deleted.
      */
     dagTimeout?: pulumi.Input<string>;
+    /**
+     * Optional. The encryption configuration for the workflow template.
+     */
+    encryptionConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplateEncryptionConfig>;
     /**
      * Required. The Directed Acyclic Graph of Jobs to submit.
      */

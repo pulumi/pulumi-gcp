@@ -130,7 +130,7 @@ namespace Pulumi.Gcp.Storage
         public string Bucket { get; set; } = null!;
 
         /// <summary>
-        /// (Computed) [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object content.
+        /// (Computed) The content of the object.
         /// </summary>
         [Input("content")]
         public string? Content { get; set; }
@@ -156,7 +156,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string> Bucket { get; set; } = null!;
 
         /// <summary>
-        /// (Computed) [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object content.
+        /// (Computed) The content of the object.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
@@ -180,9 +180,9 @@ namespace Pulumi.Gcp.Storage
         public readonly string Bucket;
         public readonly string CacheControl;
         /// <summary>
-        /// (Computed) [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object content.
+        /// (Computed) The content of the object.
         /// </summary>
-        public readonly string? Content;
+        public readonly string Content;
         public readonly string ContentDisposition;
         public readonly string ContentEncoding;
         public readonly string ContentLanguage;
@@ -214,7 +214,7 @@ namespace Pulumi.Gcp.Storage
 
             string cacheControl,
 
-            string? content,
+            string content,
 
             string contentDisposition,
 

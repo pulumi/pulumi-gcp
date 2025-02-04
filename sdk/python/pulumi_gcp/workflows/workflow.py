@@ -30,6 +30,7 @@ class WorkflowArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  source_contents: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Workflow resource.
@@ -58,6 +59,9 @@ class WorkflowArgs:
                If not provided, workflow will use the project's default service account.
                Modifying this field for an existing workflow results in a new workflow revision.
         :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 128KB.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition
+               as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
+               the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
         """
         if call_log_level is not None:
@@ -82,6 +86,8 @@ class WorkflowArgs:
             pulumi.set(__self__, "service_account", service_account)
         if source_contents is not None:
             pulumi.set(__self__, "source_contents", source_contents)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if user_env_vars is not None:
             pulumi.set(__self__, "user_env_vars", user_env_vars)
 
@@ -230,6 +236,20 @@ class WorkflowArgs:
         pulumi.set(self, "source_contents", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of resource manager tags. Resource manager tag keys and values have the same definition
+        as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
+        the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="userEnvVars")
     def user_env_vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -261,6 +281,7 @@ class _WorkflowState:
                  service_account: Optional[pulumi.Input[str]] = None,
                  source_contents: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  user_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -296,6 +317,9 @@ class _WorkflowState:
                Modifying this field for an existing workflow results in a new workflow revision.
         :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 128KB.
         :param pulumi.Input[str] state: State of the workflow deployment.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition
+               as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
+               the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param pulumi.Input[str] update_time: The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
         """
@@ -331,6 +355,8 @@ class _WorkflowState:
             pulumi.set(__self__, "source_contents", source_contents)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
         if user_env_vars is not None:
@@ -542,6 +568,20 @@ class _WorkflowState:
         pulumi.set(self, "state", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of resource manager tags. Resource manager tag keys and values have the same definition
+        as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
+        the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -582,6 +622,7 @@ class Workflow(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  source_contents: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -645,6 +686,63 @@ class Workflow(pulumi.CustomResource):
             return: ${wikiResult.body[1]}
         \"\"\")
         ```
+        ### Workflow Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        tag_key = gcp.tags.TagKey("tag_key",
+            parent=f"projects/{project.number}",
+            short_name="tag_key")
+        tag_value = gcp.tags.TagValue("tag_value",
+            parent=tag_key.name.apply(lambda name: f"tagKeys/{name}"),
+            short_name="tag_value")
+        test_account = gcp.serviceaccount.Account("test_account",
+            account_id="my-account",
+            display_name="Test Service Account")
+        example = gcp.workflows.Workflow("example",
+            name="workflow",
+            region="us-central1",
+            description="Magic",
+            service_account=test_account.id,
+            deletion_protection=False,
+            tags=pulumi.Output.all(
+                tagKeyShort_name=tag_key.short_name,
+                tagValueShort_name=tag_value.short_name
+        ).apply(lambda resolved_outputs: {
+                f"{project.project_id}/{resolved_outputs['tagKeyShort_name']}": resolved_outputs['tagValueShort_name'],
+            })
+        ,
+            source_contents=\"\"\"# This is a sample workflow. You can replace it with your source code.
+        #
+        # This workflow does the following:
+        # - reads current time and date information from an external API and stores
+        #   the response in currentTime variable
+        # - retrieves a list of Wikipedia articles related to the day of the week
+        #   from currentTime
+        # - returns the list of articles as an output of the workflow
+        #
+        # Note: In Terraform you need to escape the $$ or it will cause errors.
+
+        - getCurrentTime:
+            call: http.get
+            args:
+                url: ${sys.get_env("url")}
+            result: currentTime
+        - readWikipedia:
+            call: http.get
+            args:
+                url: https://en.wikipedia.org/w/api.php
+                query:
+                    action: opensearch
+                    search: ${currentTime.body.dayOfWeek}
+            result: wikiResult
+        - returnOutput:
+            return: ${wikiResult.body[1]}
+        \"\"\")
+        ```
 
         ## Import
 
@@ -677,6 +775,9 @@ class Workflow(pulumi.CustomResource):
                If not provided, workflow will use the project's default service account.
                Modifying this field for an existing workflow results in a new workflow revision.
         :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 128KB.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition
+               as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
+               the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
         """
         ...
@@ -746,6 +847,63 @@ class Workflow(pulumi.CustomResource):
             return: ${wikiResult.body[1]}
         \"\"\")
         ```
+        ### Workflow Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        tag_key = gcp.tags.TagKey("tag_key",
+            parent=f"projects/{project.number}",
+            short_name="tag_key")
+        tag_value = gcp.tags.TagValue("tag_value",
+            parent=tag_key.name.apply(lambda name: f"tagKeys/{name}"),
+            short_name="tag_value")
+        test_account = gcp.serviceaccount.Account("test_account",
+            account_id="my-account",
+            display_name="Test Service Account")
+        example = gcp.workflows.Workflow("example",
+            name="workflow",
+            region="us-central1",
+            description="Magic",
+            service_account=test_account.id,
+            deletion_protection=False,
+            tags=pulumi.Output.all(
+                tagKeyShort_name=tag_key.short_name,
+                tagValueShort_name=tag_value.short_name
+        ).apply(lambda resolved_outputs: {
+                f"{project.project_id}/{resolved_outputs['tagKeyShort_name']}": resolved_outputs['tagValueShort_name'],
+            })
+        ,
+            source_contents=\"\"\"# This is a sample workflow. You can replace it with your source code.
+        #
+        # This workflow does the following:
+        # - reads current time and date information from an external API and stores
+        #   the response in currentTime variable
+        # - retrieves a list of Wikipedia articles related to the day of the week
+        #   from currentTime
+        # - returns the list of articles as an output of the workflow
+        #
+        # Note: In Terraform you need to escape the $$ or it will cause errors.
+
+        - getCurrentTime:
+            call: http.get
+            args:
+                url: ${sys.get_env("url")}
+            result: currentTime
+        - readWikipedia:
+            call: http.get
+            args:
+                url: https://en.wikipedia.org/w/api.php
+                query:
+                    action: opensearch
+                    search: ${currentTime.body.dayOfWeek}
+            result: wikiResult
+        - returnOutput:
+            return: ${wikiResult.body[1]}
+        \"\"\")
+        ```
 
         ## Import
 
@@ -777,6 +935,7 @@ class Workflow(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  source_contents: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -798,6 +957,7 @@ class Workflow(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["source_contents"] = source_contents
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["user_env_vars"] = user_env_vars
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
@@ -833,6 +993,7 @@ class Workflow(pulumi.CustomResource):
             service_account: Optional[pulumi.Input[str]] = None,
             source_contents: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
             user_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Workflow':
         """
@@ -873,6 +1034,9 @@ class Workflow(pulumi.CustomResource):
                Modifying this field for an existing workflow results in a new workflow revision.
         :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 128KB.
         :param pulumi.Input[str] state: State of the workflow deployment.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition
+               as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
+               the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param pulumi.Input[str] update_time: The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
         """
@@ -896,6 +1060,7 @@ class Workflow(pulumi.CustomResource):
         __props__.__dict__["service_account"] = service_account
         __props__.__dict__["source_contents"] = source_contents
         __props__.__dict__["state"] = state
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["user_env_vars"] = user_env_vars
         return Workflow(resource_name, opts=opts, __props__=__props__)
@@ -1040,6 +1205,16 @@ class Workflow(pulumi.CustomResource):
         State of the workflow deployment.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        A map of resource manager tags. Resource manager tag keys and values have the same definition
+        as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
+        the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="updateTime")

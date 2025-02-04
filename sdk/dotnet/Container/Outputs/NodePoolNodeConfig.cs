@@ -110,6 +110,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? MachineType;
         /// <summary>
+        /// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+        /// </summary>
+        public readonly string? MaxRunDuration;
+        /// <summary>
         /// The metadata key/value pairs assigned to instances in the cluster.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Metadata;
@@ -235,6 +239,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? machineType,
 
+            string? maxRunDuration,
+
             ImmutableDictionary<string, string>? metadata,
 
             string? minCpuPlatform,
@@ -295,6 +301,7 @@ namespace Pulumi.Gcp.Container.Outputs
             LocalSsdEncryptionMode = localSsdEncryptionMode;
             LoggingVariant = loggingVariant;
             MachineType = machineType;
+            MaxRunDuration = maxRunDuration;
             Metadata = metadata;
             MinCpuPlatform = minCpuPlatform;
             NodeGroup = nodeGroup;

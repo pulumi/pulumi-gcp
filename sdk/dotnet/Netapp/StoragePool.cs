@@ -230,7 +230,7 @@ namespace Pulumi.Gcp.Netapp
         /// If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
         /// </summary>
         [Output("zone")]
-        public Output<string?> Zone { get; private set; } = null!;
+        public Output<string> Zone { get; private set; } = null!;
 
 
         /// <summary>

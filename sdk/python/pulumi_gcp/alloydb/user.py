@@ -36,6 +36,7 @@ class UserArgs:
                - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] database_roles: List of database roles this database user has.
         :param pulumi.Input[str] password: Password for this database user.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         """
         pulumi.set(__self__, "cluster", cluster)
         pulumi.set(__self__, "user_id", user_id)
@@ -103,6 +104,7 @@ class UserArgs:
     def password(self) -> Optional[pulumi.Input[str]]:
         """
         Password for this database user.
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "password")
 
@@ -127,6 +129,7 @@ class _UserState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] database_roles: List of database roles this database user has.
         :param pulumi.Input[str] name: Name of the resource in the form of projects/{project}/locations/{location}/clusters/{cluster}/users/{user}.
         :param pulumi.Input[str] password: Password for this database user.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] user_id: The database role name of the user.
         :param pulumi.Input[str] user_type: The type of this user.
                Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
@@ -189,6 +192,7 @@ class _UserState:
     def password(self) -> Optional[pulumi.Input[str]]:
         """
         Password for this database user.
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "password")
 
@@ -357,6 +361,7 @@ class User(pulumi.CustomResource):
                'projects/{project}/locations/{location}/clusters/{cluster_id}'
         :param pulumi.Input[Sequence[pulumi.Input[str]]] database_roles: List of database roles this database user has.
         :param pulumi.Input[str] password: Password for this database user.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] user_id: The database role name of the user.
         :param pulumi.Input[str] user_type: The type of this user.
                Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
@@ -518,7 +523,7 @@ class User(pulumi.CustomResource):
                 raise TypeError("Missing required property 'cluster'")
             __props__.__dict__["cluster"] = cluster
             __props__.__dict__["database_roles"] = database_roles
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             if user_id is None and not opts.urn:
                 raise TypeError("Missing required property 'user_id'")
             __props__.__dict__["user_id"] = user_id
@@ -526,6 +531,8 @@ class User(pulumi.CustomResource):
                 raise TypeError("Missing required property 'user_type'")
             __props__.__dict__["user_type"] = user_type
             __props__.__dict__["name"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(User, __self__).__init__(
             'gcp:alloydb/user:User',
             resource_name,
@@ -554,6 +561,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] database_roles: List of database roles this database user has.
         :param pulumi.Input[str] name: Name of the resource in the form of projects/{project}/locations/{location}/clusters/{cluster}/users/{user}.
         :param pulumi.Input[str] password: Password for this database user.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] user_id: The database role name of the user.
         :param pulumi.Input[str] user_type: The type of this user.
                Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
@@ -603,6 +611,7 @@ class User(pulumi.CustomResource):
     def password(self) -> pulumi.Output[Optional[str]]:
         """
         Password for this database user.
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "password")
 

@@ -176,6 +176,7 @@ export class User extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Password for this database user.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
@@ -223,12 +224,14 @@ export class User extends pulumi.CustomResource {
             }
             resourceInputs["cluster"] = args ? args.cluster : undefined;
             resourceInputs["databaseRoles"] = args ? args.databaseRoles : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["userId"] = args ? args.userId : undefined;
             resourceInputs["userType"] = args ? args.userType : undefined;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(User.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -252,6 +255,7 @@ export interface UserState {
     name?: pulumi.Input<string>;
     /**
      * Password for this database user.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     password?: pulumi.Input<string>;
     /**
@@ -283,6 +287,7 @@ export interface UserArgs {
     databaseRoles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Password for this database user.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     password?: pulumi.Input<string>;
     /**

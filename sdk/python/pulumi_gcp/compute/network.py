@@ -78,7 +78,7 @@ class NetworkArgs:
         :param pulumi.Input[str] network_profile: A full or partial URL of the network profile to apply to this network.
                This field can be set only at resource creation time. For example, the
                following are valid URLs:
-               * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+               * https://www.googleapis.com/compute/v1/projects/{projectId}/global/networkProfiles/{network_profile_name}
                * projects/{projectId}/global/networkProfiles/{network_profile_name}
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -286,7 +286,7 @@ class NetworkArgs:
         A full or partial URL of the network profile to apply to this network.
         This field can be set only at resource creation time. For example, the
         following are valid URLs:
-        * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+        * https://www.googleapis.com/compute/v1/projects/{projectId}/global/networkProfiles/{network_profile_name}
         * projects/{projectId}/global/networkProfiles/{network_profile_name}
         """
         return pulumi.get(self, "network_profile")
@@ -395,7 +395,7 @@ class _NetworkState:
         :param pulumi.Input[str] network_profile: A full or partial URL of the network profile to apply to this network.
                This field can be set only at resource creation time. For example, the
                following are valid URLs:
-               * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+               * https://www.googleapis.com/compute/v1/projects/{projectId}/global/networkProfiles/{network_profile_name}
                * projects/{projectId}/global/networkProfiles/{network_profile_name}
         :param pulumi.Input[str] numeric_id: (Deprecated)
                The unique identifier for the resource. This identifier is defined by the server.
@@ -642,7 +642,7 @@ class _NetworkState:
         A full or partial URL of the network profile to apply to this network.
         This field can be set only at resource creation time. For example, the
         following are valid URLs:
-        * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+        * https://www.googleapis.com/compute/v1/projects/{projectId}/global/networkProfiles/{network_profile_name}
         * projects/{projectId}/global/networkProfiles/{network_profile_name}
         """
         return pulumi.get(self, "network_profile")
@@ -878,7 +878,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] network_profile: A full or partial URL of the network profile to apply to this network.
                This field can be set only at resource creation time. For example, the
                following are valid URLs:
-               * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+               * https://www.googleapis.com/compute/v1/projects/{projectId}/global/networkProfiles/{network_profile_name}
                * projects/{projectId}/global/networkProfiles/{network_profile_name}
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1137,7 +1137,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] network_profile: A full or partial URL of the network profile to apply to this network.
                This field can be set only at resource creation time. For example, the
                following are valid URLs:
-               * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+               * https://www.googleapis.com/compute/v1/projects/{projectId}/global/networkProfiles/{network_profile_name}
                * projects/{projectId}/global/networkProfiles/{network_profile_name}
         :param pulumi.Input[str] numeric_id: (Deprecated)
                The unique identifier for the resource. This identifier is defined by the server.
@@ -1316,7 +1316,7 @@ class Network(pulumi.CustomResource):
         A full or partial URL of the network profile to apply to this network.
         This field can be set only at resource creation time. For example, the
         following are valid URLs:
-        * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+        * https://www.googleapis.com/compute/v1/projects/{projectId}/global/networkProfiles/{network_profile_name}
         * projects/{projectId}/global/networkProfiles/{network_profile_name}
         """
         return pulumi.get(self, "network_profile")

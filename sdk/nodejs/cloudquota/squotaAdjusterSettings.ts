@@ -60,13 +60,13 @@ export class SQuotaAdjusterSettings extends pulumi.CustomResource {
     }
 
     /**
-     * Fields to capture the hierarchy enablement.
-     * The container (org/folder/project) that determines if the quota adjuster is set for this project/folder/org. We use the nearest-ancestor to determine the effective container.
-     * The nearest ancestor (including this container) with `enabled` set (either true or false) will be returned.
+     * The resource container that determines if the quota adjuster is set for this project.
+     * Expect this field to be empty currently.
      */
     public /*out*/ readonly effectiveContainer!: pulumi.Output<string>;
     /**
-     * Based on the effective container`s setting above, determines Whether this container has the quota adjuster enabled.
+     * Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+     * Expect this field to be empty currently.
      */
     public /*out*/ readonly effectiveEnablement!: pulumi.Output<string>;
     /**
@@ -75,7 +75,7 @@ export class SQuotaAdjusterSettings extends pulumi.CustomResource {
      */
     public readonly enablement!: pulumi.Output<string>;
     /**
-     * The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
+     * The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
      *
      *
      * - - -
@@ -119,13 +119,13 @@ export class SQuotaAdjusterSettings extends pulumi.CustomResource {
  */
 export interface SQuotaAdjusterSettingsState {
     /**
-     * Fields to capture the hierarchy enablement.
-     * The container (org/folder/project) that determines if the quota adjuster is set for this project/folder/org. We use the nearest-ancestor to determine the effective container.
-     * The nearest ancestor (including this container) with `enabled` set (either true or false) will be returned.
+     * The resource container that determines if the quota adjuster is set for this project.
+     * Expect this field to be empty currently.
      */
     effectiveContainer?: pulumi.Input<string>;
     /**
-     * Based on the effective container`s setting above, determines Whether this container has the quota adjuster enabled.
+     * Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+     * Expect this field to be empty currently.
      */
     effectiveEnablement?: pulumi.Input<string>;
     /**
@@ -134,7 +134,7 @@ export interface SQuotaAdjusterSettingsState {
      */
     enablement?: pulumi.Input<string>;
     /**
-     * The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
+     * The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
      *
      *
      * - - -
@@ -152,7 +152,7 @@ export interface SQuotaAdjusterSettingsArgs {
      */
     enablement: pulumi.Input<string>;
     /**
-     * The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
+     * The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
      *
      *
      * - - -

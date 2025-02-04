@@ -67,6 +67,63 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ * ### Workflow Tags
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const tagKey = new gcp.tags.TagKey("tag_key", {
+ *     parent: project.then(project => `projects/${project.number}`),
+ *     shortName: "tag_key",
+ * });
+ * const tagValue = new gcp.tags.TagValue("tag_value", {
+ *     parent: pulumi.interpolate`tagKeys/${tagKey.name}`,
+ *     shortName: "tag_value",
+ * });
+ * const testAccount = new gcp.serviceaccount.Account("test_account", {
+ *     accountId: "my-account",
+ *     displayName: "Test Service Account",
+ * });
+ * const example = new gcp.workflows.Workflow("example", {
+ *     name: "workflow",
+ *     region: "us-central1",
+ *     description: "Magic",
+ *     serviceAccount: testAccount.id,
+ *     deletionProtection: false,
+ *     tags: pulumi.all([project, tagKey.shortName, tagValue.shortName]).apply(([project, tagKeyShortName, tagValueShortName]) => {
+ *         [`${project.projectId}/${tagKeyShortName}`]: tagValueShortName,
+ *     }),
+ *     sourceContents: `# This is a sample workflow. You can replace it with your source code.
+ * #
+ * # This workflow does the following:
+ * # - reads current time and date information from an external API and stores
+ * #   the response in currentTime variable
+ * # - retrieves a list of Wikipedia articles related to the day of the week
+ * #   from currentTime
+ * # - returns the list of articles as an output of the workflow
+ * #
+ * # Note: In Terraform you need to escape the  or it will cause errors.
+ *
+ * - getCurrentTime:
+ *     call: http.get
+ *     args:
+ *         url: \${sys.get_env("url")}
+ *     result: currentTime
+ * - readWikipedia:
+ *     call: http.get
+ *     args:
+ *         url: https://en.wikipedia.org/w/api.php
+ *         query:
+ *             action: opensearch
+ *             search: \${currentTime.body.dayOfWeek}
+ *     result: wikiResult
+ * - returnOutput:
+ *     return: \${wikiResult.body[1]}
+ * `,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -178,6 +235,12 @@ export class Workflow extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
+     * A map of resource manager tags. Resource manager tag keys and values have the same definition
+     * as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
+     * the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -215,6 +278,7 @@ export class Workflow extends pulumi.CustomResource {
             resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
             resourceInputs["sourceContents"] = state ? state.sourceContents : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
             resourceInputs["userEnvVars"] = state ? state.userEnvVars : undefined;
         } else {
@@ -230,6 +294,7 @@ export class Workflow extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             resourceInputs["sourceContents"] = args ? args.sourceContents : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["userEnvVars"] = args ? args.userEnvVars : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -327,6 +392,12 @@ export interface WorkflowState {
      */
     state?: pulumi.Input<string>;
     /**
+     * A map of resource manager tags. Resource manager tag keys and values have the same definition
+     * as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
+     * the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     updateTime?: pulumi.Input<string>;
@@ -396,6 +467,12 @@ export interface WorkflowArgs {
      * Workflow code to be executed. The size limit is 128KB.
      */
     sourceContents?: pulumi.Input<string>;
+    /**
+     * A map of resource manager tags. Resource manager tag keys and values have the same definition
+     * as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
+     * the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
      */

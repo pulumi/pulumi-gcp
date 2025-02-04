@@ -286,8 +286,8 @@ import (
 //				return err
 //			}
 //			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("tf-test_11380"),
-//				Name:           pulumi.String("tf-test_35305"),
+//				ProjectId:      pulumi.String("tf-test_35305"),
+//				Name:           pulumi.String("tf-test_62793"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 //				DeletionPolicy: pulumi.String("DELETE"),

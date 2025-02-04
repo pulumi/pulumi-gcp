@@ -287,6 +287,7 @@ public class User extends com.pulumi.resources.CustomResource {
     }
     /**
      * Password for this database user.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
@@ -294,6 +295,7 @@ public class User extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Password for this database user.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Output<Optional<String>> password() {
@@ -373,6 +375,9 @@ public class User extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "password"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -240,7 +240,9 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "preventDrift":
+        if key == "metricsGcpServiceAccountEmail":
+            suggest = "metrics_gcp_service_account_email"
+        elif key == "preventDrift":
             suggest = "prevent_drift"
         elif key == "sourceFormat":
             suggest = "source_format"
@@ -259,6 +261,7 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
                  git: Optional['outputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit'] = None,
+                 metrics_gcp_service_account_email: Optional[str] = None,
                  oci: Optional['outputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci'] = None,
                  prevent_drift: Optional[bool] = None,
                  source_format: Optional[str] = None):
@@ -266,6 +269,7 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync(dict):
         :param bool enabled: Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
         :param 'FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs' git: Git repo configuration for the cluster
                Structure is documented below.
+        :param str metrics_gcp_service_account_email: The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
         :param 'FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs' oci: OCI repo configuration for the cluster
                Structure is documented below.
         :param bool prevent_drift: Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
@@ -275,6 +279,8 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync(dict):
             pulumi.set(__self__, "enabled", enabled)
         if git is not None:
             pulumi.set(__self__, "git", git)
+        if metrics_gcp_service_account_email is not None:
+            pulumi.set(__self__, "metrics_gcp_service_account_email", metrics_gcp_service_account_email)
         if oci is not None:
             pulumi.set(__self__, "oci", oci)
         if prevent_drift is not None:
@@ -298,6 +304,14 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "git")
+
+    @property
+    @pulumi.getter(name="metricsGcpServiceAccountEmail")
+    def metrics_gcp_service_account_email(self) -> Optional[str]:
+        """
+        The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+        """
+        return pulumi.get(self, "metrics_gcp_service_account_email")
 
     @property
     @pulumi.getter
@@ -3773,18 +3787,21 @@ class GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncResult(dict):
     def __init__(__self__, *,
                  enabled: bool,
                  gits: Sequence['outputs.GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitResult'],
+                 metrics_gcp_service_account_email: str,
                  ocis: Sequence['outputs.GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciResult'],
                  prevent_drift: bool,
                  source_format: str):
         """
         :param bool enabled: Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
         :param Sequence['GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs'] gits: Git repo configuration for the cluster
+        :param str metrics_gcp_service_account_email: The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount 'default' in the namespace 'config-management-monitoring' should be bound to the GSA.
         :param Sequence['GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs'] ocis: OCI repo configuration for the cluster
         :param bool prevent_drift: Set to true to enable the Config Sync admission webhook to prevent drifts. If set to 'false', disables the Config Sync admission webhook and does not prevent drifts.
         :param str source_format: Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "gits", gits)
+        pulumi.set(__self__, "metrics_gcp_service_account_email", metrics_gcp_service_account_email)
         pulumi.set(__self__, "ocis", ocis)
         pulumi.set(__self__, "prevent_drift", prevent_drift)
         pulumi.set(__self__, "source_format", source_format)
@@ -3804,6 +3821,14 @@ class GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncResult(dict):
         Git repo configuration for the cluster
         """
         return pulumi.get(self, "gits")
+
+    @property
+    @pulumi.getter(name="metricsGcpServiceAccountEmail")
+    def metrics_gcp_service_account_email(self) -> str:
+        """
+        The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount 'default' in the namespace 'config-management-monitoring' should be bound to the GSA.
+        """
+        return pulumi.get(self, "metrics_gcp_service_account_email")
 
     @property
     @pulumi.getter

@@ -13,18 +13,16 @@ import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBucketObjectContentResult {
     private String bucket;
     private String cacheControl;
     /**
-     * @return (Computed) [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object content.
+     * @return (Computed) The content of the object.
      * 
      */
-    private @Nullable String content;
+    private String content;
     private String contentDisposition;
     private String contentEncoding;
     private String contentLanguage;
@@ -59,11 +57,11 @@ public final class GetBucketObjectContentResult {
         return this.cacheControl;
     }
     /**
-     * @return (Computed) [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object content.
+     * @return (Computed) The content of the object.
      * 
      */
-    public Optional<String> content() {
-        return Optional.ofNullable(this.content);
+    public String content() {
+        return this.content;
     }
     public String contentDisposition() {
         return this.contentDisposition;
@@ -144,7 +142,7 @@ public final class GetBucketObjectContentResult {
     public static final class Builder {
         private String bucket;
         private String cacheControl;
-        private @Nullable String content;
+        private String content;
         private String contentDisposition;
         private String contentEncoding;
         private String contentLanguage;
@@ -212,8 +210,10 @@ public final class GetBucketObjectContentResult {
             return this;
         }
         @CustomType.Setter
-        public Builder content(@Nullable String content) {
-
+        public Builder content(String content) {
+            if (content == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectContentResult", "content");
+            }
             this.content = content;
             return this;
         }

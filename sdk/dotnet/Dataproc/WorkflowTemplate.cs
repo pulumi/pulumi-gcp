@@ -150,6 +150,12 @@ namespace Pulumi.Gcp.Dataproc
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The encryption configuration for the workflow template.
+        /// </summary>
+        [Output("encryptionConfig")]
+        public Output<Outputs.WorkflowTemplateEncryptionConfig?> EncryptionConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Required. The Directed Acyclic Graph of Jobs to submit.
         /// </summary>
         [Output("jobs")]
@@ -278,6 +284,12 @@ namespace Pulumi.Gcp.Dataproc
         [Input("dagTimeout")]
         public Input<string>? DagTimeout { get; set; }
 
+        /// <summary>
+        /// Optional. The encryption configuration for the workflow template.
+        /// </summary>
+        [Input("encryptionConfig")]
+        public Input<Inputs.WorkflowTemplateEncryptionConfigArgs>? EncryptionConfig { get; set; }
+
         [Input("jobs", required: true)]
         private InputList<Inputs.WorkflowTemplateJobArgs>? _jobs;
 
@@ -387,6 +399,12 @@ namespace Pulumi.Gcp.Dataproc
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// Optional. The encryption configuration for the workflow template.
+        /// </summary>
+        [Input("encryptionConfig")]
+        public Input<Inputs.WorkflowTemplateEncryptionConfigGetArgs>? EncryptionConfig { get; set; }
 
         [Input("jobs")]
         private InputList<Inputs.WorkflowTemplateJobGetArgs>? _jobs;

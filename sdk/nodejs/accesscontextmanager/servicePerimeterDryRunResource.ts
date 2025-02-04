@@ -99,6 +99,10 @@ export class ServicePerimeterDryRunResource extends pulumi.CustomResource {
      */
     public /*out*/ readonly accessPolicyId!: pulumi.Output<string>;
     /**
+     * The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
+     */
+    public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
      * The name of the Service Perimeter to add this resource to.
      *
      *
@@ -126,6 +130,7 @@ export class ServicePerimeterDryRunResource extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ServicePerimeterDryRunResourceState | undefined;
             resourceInputs["accessPolicyId"] = state ? state.accessPolicyId : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["perimeterName"] = state ? state.perimeterName : undefined;
             resourceInputs["resource"] = state ? state.resource : undefined;
         } else {
@@ -139,6 +144,7 @@ export class ServicePerimeterDryRunResource extends pulumi.CustomResource {
             resourceInputs["perimeterName"] = args ? args.perimeterName : undefined;
             resourceInputs["resource"] = args ? args.resource : undefined;
             resourceInputs["accessPolicyId"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServicePerimeterDryRunResource.__pulumiType, name, resourceInputs, opts);
@@ -153,6 +159,10 @@ export interface ServicePerimeterDryRunResourceState {
      * The name of the Access Policy this resource belongs to.
      */
     accessPolicyId?: pulumi.Input<string>;
+    /**
+     * The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
+     */
+    etag?: pulumi.Input<string>;
     /**
      * The name of the Service Perimeter to add this resource to.
      *

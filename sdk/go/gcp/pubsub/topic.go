@@ -287,6 +287,73 @@ import (
 //	}
 //
 // ```
+// ### Pubsub Topic Ingestion Aws Msk
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+//				Name: pulumi.String("example-topic"),
+//				IngestionDataSourceSettings: &pubsub.TopicIngestionDataSourceSettingsArgs{
+//					AwsMsk: &pubsub.TopicIngestionDataSourceSettingsAwsMskArgs{
+//						ClusterArn:        pulumi.String("arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name"),
+//						Topic:             pulumi.String("test-topic"),
+//						AwsRoleArn:        pulumi.String("arn:aws:iam::111111111111:role/fake-role-name"),
+//						GcpServiceAccount: pulumi.String("fake-service-account@fake-gcp-project.iam.gserviceaccount.com"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Pubsub Topic Ingestion Confluent Cloud
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+//				Name: pulumi.String("example-topic"),
+//				IngestionDataSourceSettings: &pubsub.TopicIngestionDataSourceSettingsArgs{
+//					ConfluentCloud: &pubsub.TopicIngestionDataSourceSettingsConfluentCloudArgs{
+//						BootstrapServer:   pulumi.String("test.us-west2.gcp.confluent.cloud:1111"),
+//						ClusterId:         pulumi.String("1234"),
+//						Topic:             pulumi.String("test-topic"),
+//						IdentityPoolId:    pulumi.String("test-identity-pool-id"),
+//						GcpServiceAccount: pulumi.String("fake-service-account@fake-gcp-project.iam.gserviceaccount.com"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

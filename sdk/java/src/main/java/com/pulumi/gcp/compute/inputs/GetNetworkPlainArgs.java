@@ -35,14 +35,14 @@ public final class GetNetworkPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Beta A full or partial URL of the network profile to apply to this network.
+     * A full or partial URL of the network profile to apply to this network.
      * 
      */
     @Import(name="networkProfile")
     private @Nullable String networkProfile;
 
     /**
-     * @return Beta A full or partial URL of the network profile to apply to this network.
+     * @return A full or partial URL of the network profile to apply to this network.
      * 
      */
     public Optional<String> networkProfile() {
@@ -106,7 +106,7 @@ public final class GetNetworkPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param networkProfile Beta A full or partial URL of the network profile to apply to this network.
+         * @param networkProfile A full or partial URL of the network profile to apply to this network.
          * 
          * @return builder
          * 

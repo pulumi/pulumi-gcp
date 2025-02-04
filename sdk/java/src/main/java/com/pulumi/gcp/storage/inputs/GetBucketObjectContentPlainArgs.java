@@ -31,14 +31,14 @@ public final class GetBucketObjectContentPlainArgs extends com.pulumi.resources.
     }
 
     /**
-     * (Computed) [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object content.
+     * (Computed) The content of the object.
      * 
      */
     @Import(name="content")
     private @Nullable String content;
 
     /**
-     * @return (Computed) [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object content.
+     * @return (Computed) The content of the object.
      * 
      */
     public Optional<String> content() {
@@ -98,7 +98,7 @@ public final class GetBucketObjectContentPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param content (Computed) [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object content.
+         * @param content (Computed) The content of the object.
          * 
          * @return builder
          * 

@@ -156,6 +156,11 @@ public final class GetClusterNodeConfig {
      */
     private String machineType;
     /**
+     * @return The runtime of each node in the node pool in seconds, terminated by &#39;s&#39;. Example: &#34;3600s&#34;.
+     * 
+     */
+    private String maxRunDuration;
+    /**
      * @return The metadata key/value pairs assigned to instances in the cluster.
      * 
      */
@@ -416,6 +421,13 @@ public final class GetClusterNodeConfig {
         return this.machineType;
     }
     /**
+     * @return The runtime of each node in the node pool in seconds, terminated by &#39;s&#39;. Example: &#34;3600s&#34;.
+     * 
+     */
+    public String maxRunDuration() {
+        return this.maxRunDuration;
+    }
+    /**
      * @return The metadata key/value pairs assigned to instances in the cluster.
      * 
      */
@@ -575,6 +587,7 @@ public final class GetClusterNodeConfig {
         private String localSsdEncryptionMode;
         private String loggingVariant;
         private String machineType;
+        private String maxRunDuration;
         private Map<String,String> metadata;
         private String minCpuPlatform;
         private String nodeGroup;
@@ -620,6 +633,7 @@ public final class GetClusterNodeConfig {
     	      this.localSsdEncryptionMode = defaults.localSsdEncryptionMode;
     	      this.loggingVariant = defaults.loggingVariant;
     	      this.machineType = defaults.machineType;
+    	      this.maxRunDuration = defaults.maxRunDuration;
     	      this.metadata = defaults.metadata;
     	      this.minCpuPlatform = defaults.minCpuPlatform;
     	      this.nodeGroup = defaults.nodeGroup;
@@ -875,6 +889,14 @@ public final class GetClusterNodeConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder maxRunDuration(String maxRunDuration) {
+            if (maxRunDuration == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfig", "maxRunDuration");
+            }
+            this.maxRunDuration = maxRunDuration;
+            return this;
+        }
+        @CustomType.Setter
         public Builder metadata(Map<String,String> metadata) {
             if (metadata == null) {
               throw new MissingRequiredPropertyException("GetClusterNodeConfig", "metadata");
@@ -1074,6 +1096,7 @@ public final class GetClusterNodeConfig {
             _resultValue.localSsdEncryptionMode = localSsdEncryptionMode;
             _resultValue.loggingVariant = loggingVariant;
             _resultValue.machineType = machineType;
+            _resultValue.maxRunDuration = maxRunDuration;
             _resultValue.metadata = metadata;
             _resultValue.minCpuPlatform = minCpuPlatform;
             _resultValue.nodeGroup = nodeGroup;

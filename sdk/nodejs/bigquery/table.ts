@@ -265,13 +265,18 @@ export class Table extends pulumi.CustomResource {
      * globally unique. Tag key is expected to be in the namespaced format, for
      * example "123456789012/environment" where 123456789012 is the ID of the
      * parent organization or project resource for this tag key. Tag value is
-     * expected to be the short name, for example "Production".
+     * expected to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
+     * for more details.
      */
     public readonly resourceTags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A JSON schema for the table.
      */
     public readonly schema!: pulumi.Output<string>;
+    /**
+     * Specifies metadata of the foreign data type definition in field schema.
+     */
+    public readonly schemaForeignTypeInfo!: pulumi.Output<outputs.bigquery.TableSchemaForeignTypeInfo | undefined>;
     /**
      * The URI of the created resource.
      */
@@ -348,6 +353,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["requirePartitionFilter"] = state ? state.requirePartitionFilter : undefined;
             resourceInputs["resourceTags"] = state ? state.resourceTags : undefined;
             resourceInputs["schema"] = state ? state.schema : undefined;
+            resourceInputs["schemaForeignTypeInfo"] = state ? state.schemaForeignTypeInfo : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["tableConstraints"] = state ? state.tableConstraints : undefined;
             resourceInputs["tableId"] = state ? state.tableId : undefined;
@@ -381,6 +387,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["requirePartitionFilter"] = args ? args.requirePartitionFilter : undefined;
             resourceInputs["resourceTags"] = args ? args.resourceTags : undefined;
             resourceInputs["schema"] = args ? args.schema : undefined;
+            resourceInputs["schemaForeignTypeInfo"] = args ? args.schemaForeignTypeInfo : undefined;
             resourceInputs["tableConstraints"] = args ? args.tableConstraints : undefined;
             resourceInputs["tableId"] = args ? args.tableId : undefined;
             resourceInputs["tableReplicationInfo"] = args ? args.tableReplicationInfo : undefined;
@@ -552,13 +559,18 @@ export interface TableState {
      * globally unique. Tag key is expected to be in the namespaced format, for
      * example "123456789012/environment" where 123456789012 is the ID of the
      * parent organization or project resource for this tag key. Tag value is
-     * expected to be the short name, for example "Production".
+     * expected to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
+     * for more details.
      */
     resourceTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A JSON schema for the table.
      */
     schema?: pulumi.Input<string>;
+    /**
+     * Specifies metadata of the foreign data type definition in field schema.
+     */
+    schemaForeignTypeInfo?: pulumi.Input<inputs.bigquery.TableSchemaForeignTypeInfo>;
     /**
      * The URI of the created resource.
      */
@@ -692,13 +704,18 @@ export interface TableArgs {
      * globally unique. Tag key is expected to be in the namespaced format, for
      * example "123456789012/environment" where 123456789012 is the ID of the
      * parent organization or project resource for this tag key. Tag value is
-     * expected to be the short name, for example "Production".
+     * expected to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
+     * for more details.
      */
     resourceTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A JSON schema for the table.
      */
     schema?: pulumi.Input<string>;
+    /**
+     * Specifies metadata of the foreign data type definition in field schema.
+     */
+    schemaForeignTypeInfo?: pulumi.Input<inputs.bigquery.TableSchemaForeignTypeInfo>;
     /**
      * Defines the primary key and foreign keys. 
      * Structure is documented below.

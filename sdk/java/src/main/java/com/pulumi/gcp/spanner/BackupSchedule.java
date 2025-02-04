@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.spanner.BackupScheduleArgs;
 import com.pulumi.gcp.spanner.inputs.BackupScheduleState;
+import com.pulumi.gcp.spanner.outputs.BackupScheduleEncryptionConfig;
 import com.pulumi.gcp.spanner.outputs.BackupScheduleFullBackupSpec;
 import com.pulumi.gcp.spanner.outputs.BackupScheduleIncrementalBackupSpec;
 import com.pulumi.gcp.spanner.outputs.BackupScheduleSpec;
@@ -54,6 +55,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.spanner.inputs.BackupScheduleSpecArgs;
  * import com.pulumi.gcp.spanner.inputs.BackupScheduleSpecCronSpecArgs;
  * import com.pulumi.gcp.spanner.inputs.BackupScheduleFullBackupSpecArgs;
+ * import com.pulumi.gcp.spanner.inputs.BackupScheduleEncryptionConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -95,6 +97,9 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .fullBackupSpec()
+ *             .encryptionConfig(BackupScheduleEncryptionConfigArgs.builder()
+ *                 .encryptionType("USE_DATABASE_ENCRYPTION")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -121,6 +126,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.spanner.inputs.BackupScheduleSpecArgs;
  * import com.pulumi.gcp.spanner.inputs.BackupScheduleSpecCronSpecArgs;
  * import com.pulumi.gcp.spanner.inputs.BackupScheduleIncrementalBackupSpecArgs;
+ * import com.pulumi.gcp.spanner.inputs.BackupScheduleEncryptionConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -163,6 +169,9 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .incrementalBackupSpec()
+ *             .encryptionConfig(BackupScheduleEncryptionConfigArgs.builder()
+ *                 .encryptionType("GOOGLE_DEFAULT_ENCRYPTION")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -215,6 +224,22 @@ public class BackupSchedule extends com.pulumi.resources.CustomResource {
      */
     public Output<String> database() {
         return this.database;
+    }
+    /**
+     * Configuration for the encryption of the backup schedule.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="encryptionConfig", refs={BackupScheduleEncryptionConfig.class}, tree="[0]")
+    private Output<BackupScheduleEncryptionConfig> encryptionConfig;
+
+    /**
+     * @return Configuration for the encryption of the backup schedule.
+     * Structure is documented below.
+     * 
+     */
+    public Output<BackupScheduleEncryptionConfig> encryptionConfig() {
+        return this.encryptionConfig;
     }
     /**
      * The schedule creates only full backups..

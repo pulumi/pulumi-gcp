@@ -6,7 +6,10 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .get_parameter import *
+from .get_parameter_version import *
+from .get_parameters import *
 from .get_regional_parameter import *
+from .get_regional_parameter_version import *
 from .get_regional_parameters import *
 from .parameter import *
 from .parameter_version import *

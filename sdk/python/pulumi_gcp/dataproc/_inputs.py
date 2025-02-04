@@ -243,6 +243,8 @@ __all__ = [
     'MetastoreServiceScheduledBackupArgsDict',
     'MetastoreServiceTelemetryConfigArgs',
     'MetastoreServiceTelemetryConfigArgsDict',
+    'WorkflowTemplateEncryptionConfigArgs',
+    'WorkflowTemplateEncryptionConfigArgsDict',
     'WorkflowTemplateJobArgs',
     'WorkflowTemplateJobArgsDict',
     'WorkflowTemplateJobHadoopJobArgs',
@@ -10185,6 +10187,38 @@ class MetastoreServiceTelemetryConfigArgs:
     @log_format.setter
     def log_format(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "log_format", value)
+
+
+if not MYPY:
+    class WorkflowTemplateEncryptionConfigArgsDict(TypedDict):
+        kms_key: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The Cloud KMS key name to use for encryption.
+        """
+elif False:
+    WorkflowTemplateEncryptionConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowTemplateEncryptionConfigArgs:
+    def __init__(__self__, *,
+                 kms_key: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] kms_key: Optional. The Cloud KMS key name to use for encryption.
+        """
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The Cloud KMS key name to use for encryption.
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key", value)
 
 
 if not MYPY:

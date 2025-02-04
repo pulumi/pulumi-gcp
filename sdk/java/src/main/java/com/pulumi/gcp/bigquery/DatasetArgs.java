@@ -382,7 +382,7 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
      * The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
      * in the namespaced format, for example &#34;123456789012/environment&#34; where 123456789012 is the
      * ID of the parent organization or project resource for this tag key. Tag value is expected
-     * to be the short name, for example &#34;Production&#34;. See [Tag definitions](https://www.terraform.io/iam/docs/tags-access-control#definitions)
+     * to be the short name, for example &#34;Production&#34;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
      * for more details.
      * 
      */
@@ -393,7 +393,7 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
      * @return The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
      * in the namespaced format, for example &#34;123456789012/environment&#34; where 123456789012 is the
      * ID of the parent organization or project resource for this tag key. Tag value is expected
-     * to be the short name, for example &#34;Production&#34;. See [Tag definitions](https://www.terraform.io/iam/docs/tags-access-control#definitions)
+     * to be the short name, for example &#34;Production&#34;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
      * for more details.
      * 
      */
@@ -928,7 +928,7 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
          * @param resourceTags The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
          * in the namespaced format, for example &#34;123456789012/environment&#34; where 123456789012 is the
          * ID of the parent organization or project resource for this tag key. Tag value is expected
-         * to be the short name, for example &#34;Production&#34;. See [Tag definitions](https://www.terraform.io/iam/docs/tags-access-control#definitions)
+         * to be the short name, for example &#34;Production&#34;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
          * for more details.
          * 
          * @return builder
@@ -943,7 +943,7 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
          * @param resourceTags The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
          * in the namespaced format, for example &#34;123456789012/environment&#34; where 123456789012 is the
          * ID of the parent organization or project resource for this tag key. Tag value is expected
-         * to be the short name, for example &#34;Production&#34;. See [Tag definitions](https://www.terraform.io/iam/docs/tags-access-control#definitions)
+         * to be the short name, for example &#34;Production&#34;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
          * for more details.
          * 
          * @return builder

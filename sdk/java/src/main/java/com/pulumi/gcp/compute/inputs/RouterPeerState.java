@@ -333,6 +333,21 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * An internal boolean field for provider use for zero_advertised_route_priority.
+     * 
+     */
+    @Import(name="isAdvertisedRoutePrioritySet")
+    private @Nullable Output<Boolean> isAdvertisedRoutePrioritySet;
+
+    /**
+     * @return An internal boolean field for provider use for zero_advertised_route_priority.
+     * 
+     */
+    public Optional<Output<Boolean>> isAdvertisedRoutePrioritySet() {
+        return Optional.ofNullable(this.isAdvertisedRoutePrioritySet);
+    }
+
+    /**
      * An internal boolean field for provider use.
      * 
      */
@@ -565,6 +580,23 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
+     * This value has to be set true to force the advertised_route_priority to be 0.
+     * 
+     */
+    @Import(name="zeroAdvertisedRoutePriority")
+    private @Nullable Output<Boolean> zeroAdvertisedRoutePriority;
+
+    /**
+     * @return The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
+     * This value has to be set true to force the advertised_route_priority to be 0.
+     * 
+     */
+    public Optional<Output<Boolean>> zeroAdvertisedRoutePriority() {
+        return Optional.ofNullable(this.zeroAdvertisedRoutePriority);
+    }
+
+    /**
      * The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
      * This value has to be set true to force the custom_learned_route_priority to be 0.
      * 
@@ -600,6 +632,7 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         this.ipAddress = $.ipAddress;
         this.ipv4NexthopAddress = $.ipv4NexthopAddress;
         this.ipv6NexthopAddress = $.ipv6NexthopAddress;
+        this.isAdvertisedRoutePrioritySet = $.isAdvertisedRoutePrioritySet;
         this.isCustomLearnedPrioritySet = $.isCustomLearnedPrioritySet;
         this.managementType = $.managementType;
         this.md5AuthenticationKey = $.md5AuthenticationKey;
@@ -612,6 +645,7 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         this.region = $.region;
         this.router = $.router;
         this.routerApplianceInstance = $.routerApplianceInstance;
+        this.zeroAdvertisedRoutePriority = $.zeroAdvertisedRoutePriority;
         this.zeroCustomLearnedRoutePriority = $.zeroCustomLearnedRoutePriority;
     }
 
@@ -1109,6 +1143,27 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param isAdvertisedRoutePrioritySet An internal boolean field for provider use for zero_advertised_route_priority.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isAdvertisedRoutePrioritySet(@Nullable Output<Boolean> isAdvertisedRoutePrioritySet) {
+            $.isAdvertisedRoutePrioritySet = isAdvertisedRoutePrioritySet;
+            return this;
+        }
+
+        /**
+         * @param isAdvertisedRoutePrioritySet An internal boolean field for provider use for zero_advertised_route_priority.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isAdvertisedRoutePrioritySet(Boolean isAdvertisedRoutePrioritySet) {
+            return isAdvertisedRoutePrioritySet(Output.of(isAdvertisedRoutePrioritySet));
+        }
+
+        /**
          * @param isCustomLearnedPrioritySet An internal boolean field for provider use.
          * 
          * @return builder
@@ -1410,6 +1465,29 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder routerApplianceInstance(String routerApplianceInstance) {
             return routerApplianceInstance(Output.of(routerApplianceInstance));
+        }
+
+        /**
+         * @param zeroAdvertisedRoutePriority The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
+         * This value has to be set true to force the advertised_route_priority to be 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zeroAdvertisedRoutePriority(@Nullable Output<Boolean> zeroAdvertisedRoutePriority) {
+            $.zeroAdvertisedRoutePriority = zeroAdvertisedRoutePriority;
+            return this;
+        }
+
+        /**
+         * @param zeroAdvertisedRoutePriority The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
+         * This value has to be set true to force the advertised_route_priority to be 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zeroAdvertisedRoutePriority(Boolean zeroAdvertisedRoutePriority) {
+            return zeroAdvertisedRoutePriority(Output.of(zeroAdvertisedRoutePriority));
         }
 
         /**

@@ -124,6 +124,20 @@ public class ServicePerimeterDryRunResource extends com.pulumi.resources.CustomR
         return this.accessPolicyId;
     }
     /**
+     * The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that&#39;s used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
+     * 
+     */
+    @Export(name="etag", refs={String.class}, tree="[0]")
+    private Output<String> etag;
+
+    /**
+     * @return The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that&#39;s used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
+     * 
+     */
+    public Output<String> etag() {
+        return this.etag;
+    }
+    /**
      * The name of the Service Perimeter to add this resource to.
      * 
      * ***

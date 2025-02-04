@@ -25,7 +25,7 @@ class SQuotaAdjusterSettingsArgs:
         The set of arguments for constructing a SQuotaAdjusterSettings resource.
         :param pulumi.Input[str] enablement: Required. The configured value of the enablement at the given resource.
                Possible values are: `ENABLED`, `DISABLED`.
-        :param pulumi.Input[str] parent: The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
+        :param pulumi.Input[str] parent: The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
                
                
                - - -
@@ -51,7 +51,7 @@ class SQuotaAdjusterSettingsArgs:
     @pulumi.getter
     def parent(self) -> Optional[pulumi.Input[str]]:
         """
-        The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
+        The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
 
 
         - - -
@@ -72,13 +72,13 @@ class _SQuotaAdjusterSettingsState:
                  parent: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SQuotaAdjusterSettings resources.
-        :param pulumi.Input[str] effective_container: Fields to capture the hierarchy enablement.
-               The container (org/folder/project) that determines if the quota adjuster is set for this project/folder/org. We use the nearest-ancestor to determine the effective container.
-               The nearest ancestor (including this container) with `enabled` set (either true or false) will be returned.
-        :param pulumi.Input[str] effective_enablement: Based on the effective container`s setting above, determines Whether this container has the quota adjuster enabled.
+        :param pulumi.Input[str] effective_container: The resource container that determines if the quota adjuster is set for this project.
+               Expect this field to be empty currently.
+        :param pulumi.Input[str] effective_enablement: Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+               Expect this field to be empty currently.
         :param pulumi.Input[str] enablement: Required. The configured value of the enablement at the given resource.
                Possible values are: `ENABLED`, `DISABLED`.
-        :param pulumi.Input[str] parent: The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
+        :param pulumi.Input[str] parent: The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
                
                
                - - -
@@ -96,9 +96,8 @@ class _SQuotaAdjusterSettingsState:
     @pulumi.getter(name="effectiveContainer")
     def effective_container(self) -> Optional[pulumi.Input[str]]:
         """
-        Fields to capture the hierarchy enablement.
-        The container (org/folder/project) that determines if the quota adjuster is set for this project/folder/org. We use the nearest-ancestor to determine the effective container.
-        The nearest ancestor (including this container) with `enabled` set (either true or false) will be returned.
+        The resource container that determines if the quota adjuster is set for this project.
+        Expect this field to be empty currently.
         """
         return pulumi.get(self, "effective_container")
 
@@ -110,7 +109,8 @@ class _SQuotaAdjusterSettingsState:
     @pulumi.getter(name="effectiveEnablement")
     def effective_enablement(self) -> Optional[pulumi.Input[str]]:
         """
-        Based on the effective container`s setting above, determines Whether this container has the quota adjuster enabled.
+        Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+        Expect this field to be empty currently.
         """
         return pulumi.get(self, "effective_enablement")
 
@@ -135,7 +135,7 @@ class _SQuotaAdjusterSettingsState:
     @pulumi.getter
     def parent(self) -> Optional[pulumi.Input[str]]:
         """
-        The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
+        The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
 
 
         - - -
@@ -185,7 +185,7 @@ class SQuotaAdjusterSettings(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] enablement: Required. The configured value of the enablement at the given resource.
                Possible values are: `ENABLED`, `DISABLED`.
-        :param pulumi.Input[str] parent: The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
+        :param pulumi.Input[str] parent: The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
                
                
                - - -
@@ -275,13 +275,13 @@ class SQuotaAdjusterSettings(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] effective_container: Fields to capture the hierarchy enablement.
-               The container (org/folder/project) that determines if the quota adjuster is set for this project/folder/org. We use the nearest-ancestor to determine the effective container.
-               The nearest ancestor (including this container) with `enabled` set (either true or false) will be returned.
-        :param pulumi.Input[str] effective_enablement: Based on the effective container`s setting above, determines Whether this container has the quota adjuster enabled.
+        :param pulumi.Input[str] effective_container: The resource container that determines if the quota adjuster is set for this project.
+               Expect this field to be empty currently.
+        :param pulumi.Input[str] effective_enablement: Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+               Expect this field to be empty currently.
         :param pulumi.Input[str] enablement: Required. The configured value of the enablement at the given resource.
                Possible values are: `ENABLED`, `DISABLED`.
-        :param pulumi.Input[str] parent: The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
+        :param pulumi.Input[str] parent: The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
                
                
                - - -
@@ -300,9 +300,8 @@ class SQuotaAdjusterSettings(pulumi.CustomResource):
     @pulumi.getter(name="effectiveContainer")
     def effective_container(self) -> pulumi.Output[str]:
         """
-        Fields to capture the hierarchy enablement.
-        The container (org/folder/project) that determines if the quota adjuster is set for this project/folder/org. We use the nearest-ancestor to determine the effective container.
-        The nearest ancestor (including this container) with `enabled` set (either true or false) will be returned.
+        The resource container that determines if the quota adjuster is set for this project.
+        Expect this field to be empty currently.
         """
         return pulumi.get(self, "effective_container")
 
@@ -310,7 +309,8 @@ class SQuotaAdjusterSettings(pulumi.CustomResource):
     @pulumi.getter(name="effectiveEnablement")
     def effective_enablement(self) -> pulumi.Output[str]:
         """
-        Based on the effective container`s setting above, determines Whether this container has the quota adjuster enabled.
+        Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+        Expect this field to be empty currently.
         """
         return pulumi.get(self, "effective_enablement")
 
@@ -327,7 +327,7 @@ class SQuotaAdjusterSettings(pulumi.CustomResource):
     @pulumi.getter
     def parent(self) -> pulumi.Output[str]:
         """
-        The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
+        The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
 
 
         - - -

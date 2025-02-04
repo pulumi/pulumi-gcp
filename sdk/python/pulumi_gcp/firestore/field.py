@@ -391,6 +391,36 @@ class Field(pulumi.CustomResource):
                 ],
             })
         ```
+        ### Firestore Field Wildcard
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE")
+        wildcard = gcp.firestore.Field("wildcard",
+            project="my-project-name",
+            database=database.name,
+            collection="chatrooms__75223",
+            field="*",
+            index_config={
+                "indexes": [
+                    {
+                        "order": "ASCENDING",
+                        "query_scope": "COLLECTION_GROUP",
+                    },
+                    {
+                        "array_config": "CONTAINS",
+                    },
+                ],
+            })
+        ```
 
         ## Import
 
@@ -522,6 +552,36 @@ class Field(pulumi.CustomResource):
                     },
                     {
                         "order": "DESCENDING",
+                    },
+                    {
+                        "array_config": "CONTAINS",
+                    },
+                ],
+            })
+        ```
+        ### Firestore Field Wildcard
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE")
+        wildcard = gcp.firestore.Field("wildcard",
+            project="my-project-name",
+            database=database.name,
+            collection="chatrooms__75223",
+            field="*",
+            index_config={
+                "indexes": [
+                    {
+                        "order": "ASCENDING",
+                        "query_scope": "COLLECTION_GROUP",
                     },
                     {
                         "array_config": "CONTAINS",

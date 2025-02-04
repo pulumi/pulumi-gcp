@@ -13,6 +13,182 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type BackupScheduleEncryptionConfig struct {
+	// The encryption type of backups created by the backup schedule.
+	// Possible values are USE_DATABASE_ENCRYPTION, GOOGLE_DEFAULT_ENCRYPTION, or CUSTOMER_MANAGED_ENCRYPTION.
+	// If you use CUSTOMER_MANAGED_ENCRYPTION, you must specify a kmsKeyName.
+	// If your backup type is incremental-backup, the encryption type must be GOOGLE_DEFAULT_ENCRYPTION.
+	// Possible values are: `USE_DATABASE_ENCRYPTION`, `GOOGLE_DEFAULT_ENCRYPTION`, `CUSTOMER_MANAGED_ENCRYPTION`.
+	EncryptionType string `pulumi:"encryptionType"`
+	// The resource name of the Cloud KMS key to use for encryption.
+	// Format: 'projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}'
+	KmsKeyName *string `pulumi:"kmsKeyName"`
+}
+
+// BackupScheduleEncryptionConfigInput is an input type that accepts BackupScheduleEncryptionConfigArgs and BackupScheduleEncryptionConfigOutput values.
+// You can construct a concrete instance of `BackupScheduleEncryptionConfigInput` via:
+//
+//	BackupScheduleEncryptionConfigArgs{...}
+type BackupScheduleEncryptionConfigInput interface {
+	pulumi.Input
+
+	ToBackupScheduleEncryptionConfigOutput() BackupScheduleEncryptionConfigOutput
+	ToBackupScheduleEncryptionConfigOutputWithContext(context.Context) BackupScheduleEncryptionConfigOutput
+}
+
+type BackupScheduleEncryptionConfigArgs struct {
+	// The encryption type of backups created by the backup schedule.
+	// Possible values are USE_DATABASE_ENCRYPTION, GOOGLE_DEFAULT_ENCRYPTION, or CUSTOMER_MANAGED_ENCRYPTION.
+	// If you use CUSTOMER_MANAGED_ENCRYPTION, you must specify a kmsKeyName.
+	// If your backup type is incremental-backup, the encryption type must be GOOGLE_DEFAULT_ENCRYPTION.
+	// Possible values are: `USE_DATABASE_ENCRYPTION`, `GOOGLE_DEFAULT_ENCRYPTION`, `CUSTOMER_MANAGED_ENCRYPTION`.
+	EncryptionType pulumi.StringInput `pulumi:"encryptionType"`
+	// The resource name of the Cloud KMS key to use for encryption.
+	// Format: 'projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}'
+	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
+}
+
+func (BackupScheduleEncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupScheduleEncryptionConfig)(nil)).Elem()
+}
+
+func (i BackupScheduleEncryptionConfigArgs) ToBackupScheduleEncryptionConfigOutput() BackupScheduleEncryptionConfigOutput {
+	return i.ToBackupScheduleEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i BackupScheduleEncryptionConfigArgs) ToBackupScheduleEncryptionConfigOutputWithContext(ctx context.Context) BackupScheduleEncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupScheduleEncryptionConfigOutput)
+}
+
+func (i BackupScheduleEncryptionConfigArgs) ToBackupScheduleEncryptionConfigPtrOutput() BackupScheduleEncryptionConfigPtrOutput {
+	return i.ToBackupScheduleEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BackupScheduleEncryptionConfigArgs) ToBackupScheduleEncryptionConfigPtrOutputWithContext(ctx context.Context) BackupScheduleEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupScheduleEncryptionConfigOutput).ToBackupScheduleEncryptionConfigPtrOutputWithContext(ctx)
+}
+
+// BackupScheduleEncryptionConfigPtrInput is an input type that accepts BackupScheduleEncryptionConfigArgs, BackupScheduleEncryptionConfigPtr and BackupScheduleEncryptionConfigPtrOutput values.
+// You can construct a concrete instance of `BackupScheduleEncryptionConfigPtrInput` via:
+//
+//	        BackupScheduleEncryptionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackupScheduleEncryptionConfigPtrInput interface {
+	pulumi.Input
+
+	ToBackupScheduleEncryptionConfigPtrOutput() BackupScheduleEncryptionConfigPtrOutput
+	ToBackupScheduleEncryptionConfigPtrOutputWithContext(context.Context) BackupScheduleEncryptionConfigPtrOutput
+}
+
+type backupScheduleEncryptionConfigPtrType BackupScheduleEncryptionConfigArgs
+
+func BackupScheduleEncryptionConfigPtr(v *BackupScheduleEncryptionConfigArgs) BackupScheduleEncryptionConfigPtrInput {
+	return (*backupScheduleEncryptionConfigPtrType)(v)
+}
+
+func (*backupScheduleEncryptionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupScheduleEncryptionConfig)(nil)).Elem()
+}
+
+func (i *backupScheduleEncryptionConfigPtrType) ToBackupScheduleEncryptionConfigPtrOutput() BackupScheduleEncryptionConfigPtrOutput {
+	return i.ToBackupScheduleEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *backupScheduleEncryptionConfigPtrType) ToBackupScheduleEncryptionConfigPtrOutputWithContext(ctx context.Context) BackupScheduleEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupScheduleEncryptionConfigPtrOutput)
+}
+
+type BackupScheduleEncryptionConfigOutput struct{ *pulumi.OutputState }
+
+func (BackupScheduleEncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupScheduleEncryptionConfig)(nil)).Elem()
+}
+
+func (o BackupScheduleEncryptionConfigOutput) ToBackupScheduleEncryptionConfigOutput() BackupScheduleEncryptionConfigOutput {
+	return o
+}
+
+func (o BackupScheduleEncryptionConfigOutput) ToBackupScheduleEncryptionConfigOutputWithContext(ctx context.Context) BackupScheduleEncryptionConfigOutput {
+	return o
+}
+
+func (o BackupScheduleEncryptionConfigOutput) ToBackupScheduleEncryptionConfigPtrOutput() BackupScheduleEncryptionConfigPtrOutput {
+	return o.ToBackupScheduleEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BackupScheduleEncryptionConfigOutput) ToBackupScheduleEncryptionConfigPtrOutputWithContext(ctx context.Context) BackupScheduleEncryptionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupScheduleEncryptionConfig) *BackupScheduleEncryptionConfig {
+		return &v
+	}).(BackupScheduleEncryptionConfigPtrOutput)
+}
+
+// The encryption type of backups created by the backup schedule.
+// Possible values are USE_DATABASE_ENCRYPTION, GOOGLE_DEFAULT_ENCRYPTION, or CUSTOMER_MANAGED_ENCRYPTION.
+// If you use CUSTOMER_MANAGED_ENCRYPTION, you must specify a kmsKeyName.
+// If your backup type is incremental-backup, the encryption type must be GOOGLE_DEFAULT_ENCRYPTION.
+// Possible values are: `USE_DATABASE_ENCRYPTION`, `GOOGLE_DEFAULT_ENCRYPTION`, `CUSTOMER_MANAGED_ENCRYPTION`.
+func (o BackupScheduleEncryptionConfigOutput) EncryptionType() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupScheduleEncryptionConfig) string { return v.EncryptionType }).(pulumi.StringOutput)
+}
+
+// The resource name of the Cloud KMS key to use for encryption.
+// Format: 'projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}'
+func (o BackupScheduleEncryptionConfigOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupScheduleEncryptionConfig) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
+}
+
+type BackupScheduleEncryptionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BackupScheduleEncryptionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupScheduleEncryptionConfig)(nil)).Elem()
+}
+
+func (o BackupScheduleEncryptionConfigPtrOutput) ToBackupScheduleEncryptionConfigPtrOutput() BackupScheduleEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o BackupScheduleEncryptionConfigPtrOutput) ToBackupScheduleEncryptionConfigPtrOutputWithContext(ctx context.Context) BackupScheduleEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o BackupScheduleEncryptionConfigPtrOutput) Elem() BackupScheduleEncryptionConfigOutput {
+	return o.ApplyT(func(v *BackupScheduleEncryptionConfig) BackupScheduleEncryptionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BackupScheduleEncryptionConfig
+		return ret
+	}).(BackupScheduleEncryptionConfigOutput)
+}
+
+// The encryption type of backups created by the backup schedule.
+// Possible values are USE_DATABASE_ENCRYPTION, GOOGLE_DEFAULT_ENCRYPTION, or CUSTOMER_MANAGED_ENCRYPTION.
+// If you use CUSTOMER_MANAGED_ENCRYPTION, you must specify a kmsKeyName.
+// If your backup type is incremental-backup, the encryption type must be GOOGLE_DEFAULT_ENCRYPTION.
+// Possible values are: `USE_DATABASE_ENCRYPTION`, `GOOGLE_DEFAULT_ENCRYPTION`, `CUSTOMER_MANAGED_ENCRYPTION`.
+func (o BackupScheduleEncryptionConfigPtrOutput) EncryptionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupScheduleEncryptionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EncryptionType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Cloud KMS key to use for encryption.
+// Format: 'projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}'
+func (o BackupScheduleEncryptionConfigPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupScheduleEncryptionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
 type BackupScheduleFullBackupSpec struct {
 }
 
@@ -3344,6 +3520,8 @@ func (o GetInstanceAutoscalingConfigAutoscalingTargetArrayOutput) Index(i pulumi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupScheduleEncryptionConfigInput)(nil)).Elem(), BackupScheduleEncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupScheduleEncryptionConfigPtrInput)(nil)).Elem(), BackupScheduleEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupScheduleFullBackupSpecInput)(nil)).Elem(), BackupScheduleFullBackupSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupScheduleFullBackupSpecPtrInput)(nil)).Elem(), BackupScheduleFullBackupSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupScheduleIncrementalBackupSpecInput)(nil)).Elem(), BackupScheduleIncrementalBackupSpecArgs{})
@@ -3391,6 +3569,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigAutoscalingLimitArrayInput)(nil)).Elem(), GetInstanceAutoscalingConfigAutoscalingLimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigAutoscalingTargetInput)(nil)).Elem(), GetInstanceAutoscalingConfigAutoscalingTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigAutoscalingTargetArrayInput)(nil)).Elem(), GetInstanceAutoscalingConfigAutoscalingTargetArray{})
+	pulumi.RegisterOutputType(BackupScheduleEncryptionConfigOutput{})
+	pulumi.RegisterOutputType(BackupScheduleEncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(BackupScheduleFullBackupSpecOutput{})
 	pulumi.RegisterOutputType(BackupScheduleFullBackupSpecPtrOutput{})
 	pulumi.RegisterOutputType(BackupScheduleIncrementalBackupSpecOutput{})

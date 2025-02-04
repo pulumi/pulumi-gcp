@@ -17,6 +17,8 @@ import (
 // To get more information about Secret, see:
 //
 // * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets)
+// * How-to Guides
+//   - [Create and deploy a Secret](https://cloud.google.com/secret-manager/docs/creating-and-accessing-secrets)
 //
 // ## Example Usage
 //
