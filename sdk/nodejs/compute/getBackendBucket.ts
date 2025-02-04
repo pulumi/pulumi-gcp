@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-backend-bucket = gcp.compute.getBackendBucket({
+ * const my_backend_bucket = gcp.compute.getBackendBucket({
  *     name: "my-backend",
  * });
  * ```
@@ -74,7 +74,7 @@ export interface GetBackendBucketResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-backend-bucket = gcp.compute.getBackendBucket({
+ * const my_backend_bucket = gcp.compute.getBackendBucket({
  *     name: "my-backend",
  * });
  * ```

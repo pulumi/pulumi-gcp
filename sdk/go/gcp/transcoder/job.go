@@ -39,7 +39,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewBucket(ctx, "default", &storage.BucketArgs{
+//			_default, err := storage.NewBucket(ctx, "default", &storage.BucketArgs{
 //				Name:                     pulumi.String("transcoder-job"),
 //				Location:                 pulumi.String("US"),
 //				ForceDestroy:             pulumi.Bool(true),
@@ -201,7 +201,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewBucket(ctx, "default", &storage.BucketArgs{
+//			_default, err := storage.NewBucket(ctx, "default", &storage.BucketArgs{
 //				Name:                     pulumi.String("transcoder-job"),
 //				Location:                 pulumi.String("US"),
 //				ForceDestroy:             pulumi.Bool(true),
@@ -368,7 +368,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewBucket(ctx, "default", &storage.BucketArgs{
+//			_default, err := storage.NewBucket(ctx, "default", &storage.BucketArgs{
 //				Name:                     pulumi.String("transcoder-job"),
 //				Location:                 pulumi.String("US"),
 //				ForceDestroy:             pulumi.Bool(true),
@@ -614,7 +614,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewBucket(ctx, "default", &storage.BucketArgs{
+//			_default, err := storage.NewBucket(ctx, "default", &storage.BucketArgs{
 //				Name:                     pulumi.String("transcoder-job"),
 //				Location:                 pulumi.String("US"),
 //				ForceDestroy:             pulumi.Bool(true),
@@ -801,7 +801,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewBucket(ctx, "default", &storage.BucketArgs{
+//			_default, err := storage.NewBucket(ctx, "default", &storage.BucketArgs{
 //				Name:                     pulumi.String("transcoder-job"),
 //				Location:                 pulumi.String("US"),
 //				ForceDestroy:             pulumi.Bool(true),

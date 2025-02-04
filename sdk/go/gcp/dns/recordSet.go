@@ -420,7 +420,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewHealthCheck(ctx, "http-health-check", &compute.HealthCheckArgs{
+//			http_health_check, err := compute.NewHealthCheck(ctx, "http-health-check", &compute.HealthCheckArgs{
 //				Name:               pulumi.String("http-health-check"),
 //				Description:        pulumi.String("Health check via http"),
 //				TimeoutSec:         pulumi.Int(5),

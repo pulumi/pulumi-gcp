@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-function = gcp.cloudfunctionsv2.getFunction({
+ * const my_function = gcp.cloudfunctionsv2.getFunction({
  *     name: "function",
  *     location: "us-central1",
  * });
@@ -88,7 +88,7 @@ export interface GetFunctionResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-function = gcp.cloudfunctionsv2.getFunction({
+ * const my_function = gcp.cloudfunctionsv2.getFunction({
  *     name: "function",
  *     location: "us-central1",
  * });
