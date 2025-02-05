@@ -129,7 +129,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
 //				Name: pulumi.String("destination-csql"),
 //			})
 //			if err != nil {
@@ -376,7 +376,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
 //				Name: pulumi.String("destination-alloydb"),
 //			})
 //			if err != nil {

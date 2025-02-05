@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vmwareengine.NewNetwork(ctx, "network-policy-nw", &vmwareengine.NetworkArgs{
+//			network_policy_nw, err := vmwareengine.NewNetwork(ctx, "network-policy-nw", &vmwareengine.NetworkArgs{
 //				Name:        pulumi.String("sample-network"),
 //				Location:    pulumi.String("global"),
 //				Type:        pulumi.String("STANDARD"),
@@ -71,7 +71,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vmwareengine.NewNetwork(ctx, "network-policy-nw", &vmwareengine.NetworkArgs{
+//			network_policy_nw, err := vmwareengine.NewNetwork(ctx, "network-policy-nw", &vmwareengine.NetworkArgs{
 //				Name:        pulumi.String("sample-network"),
 //				Location:    pulumi.String("global"),
 //				Type:        pulumi.String("STANDARD"),

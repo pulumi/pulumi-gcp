@@ -51,7 +51,7 @@ import (
 //				return err
 //			}
 //			// Create a private connection
-//			_, err = servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
+//			_default, err := servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
 //				Network: peeringNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{

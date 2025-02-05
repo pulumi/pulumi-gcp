@@ -62,7 +62,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
 //				Name: pulumi.String("test-network"),
 //			})
 //			if err != nil {
