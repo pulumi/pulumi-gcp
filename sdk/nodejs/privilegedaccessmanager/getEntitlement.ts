@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-entitlement = gcp.privilegedaccessmanager.getEntitlement({
+ * const my_entitlement = gcp.privilegedaccessmanager.getEntitlement({
  *     parent: "projects/my-project",
  *     location: "global",
  *     entitlementId: "my-entitlement",
@@ -94,7 +94,7 @@ export interface GetEntitlementResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-entitlement = gcp.privilegedaccessmanager.getEntitlement({
+ * const my_entitlement = gcp.privilegedaccessmanager.getEntitlement({
  *     parent: "projects/my-project",
  *     location: "global",
  *     entitlementId: "my-entitlement",

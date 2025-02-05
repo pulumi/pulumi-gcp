@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := servicedirectory.NewNamespace(ctx, "default", &servicedirectory.NamespaceArgs{
+//			_default, err := servicedirectory.NewNamespace(ctx, "default", &servicedirectory.NamespaceArgs{
 //				NamespaceId: pulumi.String("my-namespace"),
 //				Location:    pulumi.String("us-central1"),
 //			})

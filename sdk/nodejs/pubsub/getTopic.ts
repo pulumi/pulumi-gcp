@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-pubsub-topic = gcp.pubsub.getTopic({
+ * const my_pubsub_topic = gcp.pubsub.getTopic({
  *     name: "my-pubsub-topic",
  * });
  * ```
@@ -77,7 +77,7 @@ export interface GetTopicResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-pubsub-topic = gcp.pubsub.getTopic({
+ * const my_pubsub_topic = gcp.pubsub.getTopic({
  *     name: "my-pubsub-topic",
  * });
  * ```

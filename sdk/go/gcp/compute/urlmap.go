@@ -37,7 +37,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+//			_default, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
 //				Name:             pulumi.String("health-check"),
 //				RequestPath:      pulumi.String("/"),
 //				CheckIntervalSec: pulumi.Int(1),
@@ -149,7 +149,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//			_default, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
 //				Name: pulumi.String("health-check"),
 //				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
 //					Port: pulumi.Int(80),
@@ -281,7 +281,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//			_default, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
 //				Name: pulumi.String("health-check"),
 //				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
 //					Port: pulumi.Int(80),
@@ -370,7 +370,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//			_default, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
 //				Name: pulumi.String("health-check"),
 //				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
 //					Port: pulumi.Int(80),
@@ -529,7 +529,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//			_default, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
 //				Name: pulumi.String("health-check"),
 //				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
 //					Port: pulumi.Int(80),
@@ -663,7 +663,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//			_default, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:         pulumi.String("default"),
 //				PortName:     pulumi.String("http"),
 //				Protocol:     pulumi.String("HTTP"),
@@ -673,7 +673,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewBackendService(ctx, "service-a", &compute.BackendServiceArgs{
+//			service_a, err := compute.NewBackendService(ctx, "service-a", &compute.BackendServiceArgs{
 //				Name:         pulumi.String("service-a"),
 //				PortName:     pulumi.String("http"),
 //				Protocol:     pulumi.String("HTTP"),
@@ -683,7 +683,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewBackendService(ctx, "service-b", &compute.BackendServiceArgs{
+//			service_b, err := compute.NewBackendService(ctx, "service-b", &compute.BackendServiceArgs{
 //				Name:         pulumi.String("service-b"),
 //				PortName:     pulumi.String("http"),
 //				Protocol:     pulumi.String("HTTP"),
@@ -777,7 +777,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//			_default, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:         pulumi.String("default"),
 //				PortName:     pulumi.String("http"),
 //				Protocol:     pulumi.String("HTTP"),
@@ -787,7 +787,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewBackendService(ctx, "service-a", &compute.BackendServiceArgs{
+//			service_a, err := compute.NewBackendService(ctx, "service-a", &compute.BackendServiceArgs{
 //				Name:         pulumi.String("service-a"),
 //				PortName:     pulumi.String("http"),
 //				Protocol:     pulumi.String("HTTP"),
@@ -797,7 +797,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewBackendService(ctx, "service-b", &compute.BackendServiceArgs{
+//			service_b, err := compute.NewBackendService(ctx, "service-b", &compute.BackendServiceArgs{
 //				Name:         pulumi.String("service-b"),
 //				PortName:     pulumi.String("http"),
 //				Protocol:     pulumi.String("HTTP"),
@@ -883,7 +883,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+//			_default, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
 //				Name:             pulumi.String("health-check"),
 //				RequestPath:      pulumi.String("/"),
 //				CheckIntervalSec: pulumi.Int(1),
@@ -892,7 +892,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewBackendService(ctx, "cart-backend", &compute.BackendServiceArgs{
+//			cart_backend, err := compute.NewBackendService(ctx, "cart-backend", &compute.BackendServiceArgs{
 //				Name:                pulumi.String("cart-service"),
 //				PortName:            pulumi.String("http"),
 //				Protocol:            pulumi.String("HTTP"),
@@ -903,7 +903,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewBackendService(ctx, "user-backend", &compute.BackendServiceArgs{
+//			user_backend, err := compute.NewBackendService(ctx, "user-backend", &compute.BackendServiceArgs{
 //				Name:                pulumi.String("user-service"),
 //				PortName:            pulumi.String("http"),
 //				Protocol:            pulumi.String("HTTP"),
@@ -996,7 +996,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+//			_default, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
 //				Name:             pulumi.String("health-check"),
 //				RequestPath:      pulumi.String("/"),
 //				CheckIntervalSec: pulumi.Int(1),
