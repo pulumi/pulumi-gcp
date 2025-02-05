@@ -107,7 +107,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = kms.NewCryptoKey(ctx, "crypto-key", &kms.CryptoKeyArgs{
+//			crypto_key, err := kms.NewCryptoKey(ctx, "crypto-key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("test-attestor-key"),
 //				KeyRing: keyring.ID(),
 //				Purpose: pulumi.String("ASYMMETRIC_SIGN"),

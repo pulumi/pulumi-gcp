@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * // Monitors the default MeshIstio service
- * const default = gcp.monitoring.getIstioCanonicalService({
+ * const _default = gcp.monitoring.getIstioCanonicalService({
  *     meshUid: "proj-573164786102",
  *     canonicalServiceNamespace: "istio-system",
  *     canonicalService: "prometheus",
@@ -129,7 +129,7 @@ export interface GetIstioCanonicalServiceResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * // Monitors the default MeshIstio service
- * const default = gcp.monitoring.getIstioCanonicalService({
+ * const _default = gcp.monitoring.getIstioCanonicalService({
  *     meshUid: "proj-573164786102",
  *     canonicalServiceNamespace: "istio-system",
  *     canonicalService: "prometheus",

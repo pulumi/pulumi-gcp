@@ -36,7 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewSecurityPolicy(ctx, "default", &compute.SecurityPolicyArgs{
+//			_default, err := compute.NewSecurityPolicy(ctx, "default", &compute.SecurityPolicyArgs{
 //				Name:        pulumi.String("policyruletest"),
 //				Description: pulumi.String("basic global security policy"),
 //				Type:        pulumi.String("CLOUD_ARMOR"),
@@ -81,7 +81,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewSecurityPolicy(ctx, "default", &compute.SecurityPolicyArgs{
+//			_default, err := compute.NewSecurityPolicy(ctx, "default", &compute.SecurityPolicyArgs{
 //				Name:        pulumi.String("policyruletest"),
 //				Description: pulumi.String("basic global security policy"),
 //				Type:        pulumi.String("CLOUD_ARMOR"),
@@ -143,7 +143,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewSecurityPolicy(ctx, "default", &compute.SecurityPolicyArgs{
+//			_default, err := compute.NewSecurityPolicy(ctx, "default", &compute.SecurityPolicyArgs{
 //				Name:        pulumi.String("policywithmultiplerules"),
 //				Description: pulumi.String("basic global security policy"),
 //				Type:        pulumi.String("CLOUD_ARMOR"),

@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vmwareengine.NewNetwork(ctx, "external-access-rule-nw", &vmwareengine.NetworkArgs{
+//			external_access_rule_nw, err := vmwareengine.NewNetwork(ctx, "external-access-rule-nw", &vmwareengine.NetworkArgs{
 //				Name:        pulumi.String("sample-nw"),
 //				Location:    pulumi.String("global"),
 //				Type:        pulumi.String("STANDARD"),
@@ -43,7 +43,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vmwareengine.NewNetworkPolicy(ctx, "external-access-rule-np", &vmwareengine.NetworkPolicyArgs{
+//			external_access_rule_np, err := vmwareengine.NewNetworkPolicy(ctx, "external-access-rule-np", &vmwareengine.NetworkPolicyArgs{
 //				Location:            pulumi.String("us-west1"),
 //				Name:                pulumi.String("sample-np"),
 //				EdgeServicesCidr:    pulumi.String("192.168.30.0/26"),
@@ -97,7 +97,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vmwareengine.NewNetwork(ctx, "external-access-rule-nw", &vmwareengine.NetworkArgs{
+//			external_access_rule_nw, err := vmwareengine.NewNetwork(ctx, "external-access-rule-nw", &vmwareengine.NetworkArgs{
 //				Name:        pulumi.String("sample-nw"),
 //				Location:    pulumi.String("global"),
 //				Type:        pulumi.String("STANDARD"),
@@ -106,7 +106,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vmwareengine.NewPrivateCloud(ctx, "external-access-rule-pc", &vmwareengine.PrivateCloudArgs{
+//			external_access_rule_pc, err := vmwareengine.NewPrivateCloud(ctx, "external-access-rule-pc", &vmwareengine.PrivateCloudArgs{
 //				Location:    pulumi.String("us-west1-a"),
 //				Name:        pulumi.String("sample-pc"),
 //				Description: pulumi.String("Sample test PC."),
@@ -127,7 +127,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vmwareengine.NewNetworkPolicy(ctx, "external-access-rule-np", &vmwareengine.NetworkPolicyArgs{
+//			external_access_rule_np, err := vmwareengine.NewNetworkPolicy(ctx, "external-access-rule-np", &vmwareengine.NetworkPolicyArgs{
 //				Location:            pulumi.String("us-west1"),
 //				Name:                pulumi.String("sample-np"),
 //				EdgeServicesCidr:    pulumi.String("192.168.30.0/26"),
@@ -136,7 +136,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vmwareengine.NewExternalAddress(ctx, "external-access-rule-ea", &vmwareengine.ExternalAddressArgs{
+//			external_access_rule_ea, err := vmwareengine.NewExternalAddress(ctx, "external-access-rule-ea", &vmwareengine.ExternalAddressArgs{
 //				Name:       pulumi.String("sample-ea"),
 //				Parent:     external_access_rule_pc.ID(),
 //				InternalIp: pulumi.String("192.168.0.65"),

@@ -51,7 +51,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = serviceaccount.NewAccount(ctx, "test-account", &serviceaccount.AccountArgs{
+//			test_account, err := serviceaccount.NewAccount(ctx, "test-account", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("svc-acc"),
 //				DisplayName: pulumi.String("Test Service Account"),
 //				Project:     project.ProjectId,

@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const regional-parameters = gcp.parametermanager.getRegionalParameters({
+ * const regional_parameters = gcp.parametermanager.getRegionalParameters({
  *     location: "us-central1",
  * });
  * ```
@@ -71,7 +71,7 @@ export interface GetRegionalParametersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const regional-parameters = gcp.parametermanager.getRegionalParameters({
+ * const regional_parameters = gcp.parametermanager.getRegionalParameters({
  *     location: "us-central1",
  * });
  * ```
