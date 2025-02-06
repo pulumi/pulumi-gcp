@@ -92,7 +92,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
 //				Name:                  pulumi.String("compute-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
@@ -235,7 +235,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewForwardingRule(ctx, "default", &compute.ForwardingRuleArgs{
+//			_default, err := compute.NewForwardingRule(ctx, "default", &compute.ForwardingRuleArgs{
 //				Name:                pulumi.String("compute-forwarding-rule"),
 //				Region:              pulumi.String("us-central1"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL"),

@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := networksecurity.NewGatewaySecurityPolicy(ctx, "default", &networksecurity.GatewaySecurityPolicyArgs{
+//			_default, err := networksecurity.NewGatewaySecurityPolicy(ctx, "default", &networksecurity.GatewaySecurityPolicyArgs{
 //				Name:        pulumi.String("my-gateway-security-policy"),
 //				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("gateway security policy created to be used as reference by the rule."),
@@ -75,7 +75,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := networksecurity.NewGatewaySecurityPolicy(ctx, "default", &networksecurity.GatewaySecurityPolicyArgs{
+//			_default, err := networksecurity.NewGatewaySecurityPolicy(ctx, "default", &networksecurity.GatewaySecurityPolicyArgs{
 //				Name:        pulumi.String("my-gateway-security-policy"),
 //				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("gateway security policy created to be used as reference by the rule."),

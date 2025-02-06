@@ -39,7 +39,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := secretmanager.NewSecret(ctx, "private-key-secret", &secretmanager.SecretArgs{
+//			private_key_secret, err := secretmanager.NewSecret(ctx, "private-key-secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("ghe-pk-secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Auto: &secretmanager.SecretReplicationAutoArgs{},
@@ -54,14 +54,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretVersion(ctx, "private-key-secret-version", &secretmanager.SecretVersionArgs{
+//			private_key_secret_version, err := secretmanager.NewSecretVersion(ctx, "private-key-secret-version", &secretmanager.SecretVersionArgs{
 //				Secret:     private_key_secret.ID(),
 //				SecretData: pulumi.String(invokeFile.Result),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecret(ctx, "webhook-secret-secret", &secretmanager.SecretArgs{
+//			webhook_secret_secret, err := secretmanager.NewSecret(ctx, "webhook-secret-secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("github-token-secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Auto: &secretmanager.SecretReplicationAutoArgs{},
@@ -70,7 +70,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretVersion(ctx, "webhook-secret-secret-version", &secretmanager.SecretVersionArgs{
+//			webhook_secret_secret_version, err := secretmanager.NewSecretVersion(ctx, "webhook-secret-secret-version", &secretmanager.SecretVersionArgs{
 //				Secret:     webhook_secret_secret.ID(),
 //				SecretData: pulumi.String("<webhook-secret-data>"),
 //			})
@@ -90,21 +90,21 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretIamPolicy(ctx, "policy-pk", &secretmanager.SecretIamPolicyArgs{
+//			policy_pk, err := secretmanager.NewSecretIamPolicy(ctx, "policy-pk", &secretmanager.SecretIamPolicyArgs{
 //				SecretId:   private_key_secret.SecretId,
 //				PolicyData: pulumi.String(p4sa_secretAccessor.PolicyData),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretIamPolicy(ctx, "policy-whs", &secretmanager.SecretIamPolicyArgs{
+//			policy_whs, err := secretmanager.NewSecretIamPolicy(ctx, "policy-whs", &secretmanager.SecretIamPolicyArgs{
 //				SecretId:   webhook_secret_secret.SecretId,
 //				PolicyData: pulumi.String(p4sa_secretAccessor.PolicyData),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudbuildv2.NewConnection(ctx, "my-connection", &cloudbuildv2.ConnectionArgs{
+//			my_connection, err := cloudbuildv2.NewConnection(ctx, "my-connection", &cloudbuildv2.ConnectionArgs{
 //				Location: pulumi.String("us-central1"),
 //				Name:     pulumi.String("my-terraform-ghe-connection"),
 //				GithubEnterpriseConfig: &cloudbuildv2.ConnectionGithubEnterpriseConfigArgs{
@@ -153,7 +153,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := secretmanager.NewSecret(ctx, "github-token-secret", &secretmanager.SecretArgs{
+//			github_token_secret, err := secretmanager.NewSecret(ctx, "github-token-secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("github-token-secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Auto: &secretmanager.SecretReplicationAutoArgs{},
@@ -168,7 +168,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretVersion(ctx, "github-token-secret-version", &secretmanager.SecretVersionArgs{
+//			github_token_secret_version, err := secretmanager.NewSecretVersion(ctx, "github-token-secret-version", &secretmanager.SecretVersionArgs{
 //				Secret:     github_token_secret.ID(),
 //				SecretData: pulumi.String(invokeFile.Result),
 //			})
@@ -195,7 +195,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudbuildv2.NewConnection(ctx, "my-connection", &cloudbuildv2.ConnectionArgs{
+//			my_connection, err := cloudbuildv2.NewConnection(ctx, "my-connection", &cloudbuildv2.ConnectionArgs{
 //				Location: pulumi.String("us-central1"),
 //				Name:     pulumi.String("my-connection"),
 //				GithubConfig: &cloudbuildv2.ConnectionGithubConfigArgs{

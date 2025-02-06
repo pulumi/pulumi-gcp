@@ -320,7 +320,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := networkservices.NewMesh(ctx, "default", &networkservices.MeshArgs{
+//			_default, err := networkservices.NewMesh(ctx, "default", &networkservices.MeshArgs{
 //				Name: pulumi.String("my-http-route"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),

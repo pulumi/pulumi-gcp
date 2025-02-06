@@ -55,7 +55,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudidentity.NewGroup(ctx, "child-group", &cloudidentity.GroupArgs{
+//			child_group, err := cloudidentity.NewGroup(ctx, "child-group", &cloudidentity.GroupArgs{
 //				DisplayName: pulumi.String("my-identity-group-child"),
 //				Parent:      pulumi.String("customers/A01b123xz"),
 //				GroupKey: &cloudidentity.GroupGroupKeyArgs{

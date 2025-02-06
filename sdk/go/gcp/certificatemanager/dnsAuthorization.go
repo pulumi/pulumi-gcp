@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := certificatemanager.NewDnsAuthorization(ctx, "default", &certificatemanager.DnsAuthorizationArgs{
+//			_default, err := certificatemanager.NewDnsAuthorization(ctx, "default", &certificatemanager.DnsAuthorizationArgs{
 //				Name:        pulumi.String("dns-auth"),
 //				Location:    pulumi.String("global"),
 //				Description: pulumi.String("The default dns"),

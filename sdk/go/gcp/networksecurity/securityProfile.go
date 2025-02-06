@@ -114,7 +114,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
 //				Name:                  pulumi.String("my-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
@@ -169,7 +169,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
 //				Name:                  pulumi.String("my-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})

@@ -19,10 +19,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-org-folders = gcp.organizations.getFolders({
+ * const my_org_folders = gcp.organizations.getFolders({
  *     parentId: `organizations/${organizationId}`,
  * });
- * const first-folder = my_org_folders.then(my_org_folders => gcp.organizations.getFolder({
+ * const first_folder = my_org_folders.then(my_org_folders => gcp.organizations.getFolder({
  *     folder: my_org_folders.folders?.[0]?.name,
  * }));
  * ```
@@ -71,10 +71,10 @@ export interface GetFoldersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-org-folders = gcp.organizations.getFolders({
+ * const my_org_folders = gcp.organizations.getFolders({
  *     parentId: `organizations/${organizationId}`,
  * });
- * const first-folder = my_org_folders.then(my_org_folders => gcp.organizations.getFolder({
+ * const first_folder = my_org_folders.then(my_org_folders => gcp.organizations.getFolder({
  *     folder: my_org_folders.folders?.[0]?.name,
  * }));
  * ```

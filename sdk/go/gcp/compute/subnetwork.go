@@ -58,7 +58,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
+//			custom_test, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
 //				Name:                  pulumi.String("test-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
@@ -99,7 +99,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
+//			custom_test, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
 //				Name:                  pulumi.String("log-test-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
@@ -139,7 +139,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
+//			custom_test, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
 //				Name:                  pulumi.String("l7lb-test-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
@@ -176,7 +176,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
+//			custom_test, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
 //				Name:                  pulumi.String("ipv6-test-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
@@ -213,7 +213,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
+//			custom_test, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
 //				Name:                  pulumi.String("internal-ipv6-test-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //				EnableUlaInternalIpv6: pulumi.Bool(true),
@@ -251,7 +251,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
+//			custom_test, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
 //				Name:                  pulumi.String("subnet-purpose-test-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
@@ -287,7 +287,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "net-cidr-overlap", &compute.NetworkArgs{
+//			net_cidr_overlap, err := compute.NewNetwork(ctx, "net-cidr-overlap", &compute.NetworkArgs{
 //				Name:                  pulumi.String("net-cidr-overlap"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
@@ -326,7 +326,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
 //				Name:                  pulumi.String("network-reserved-internal-range"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
@@ -379,7 +379,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
 //				Name:                  pulumi.String("network-reserved-secondary-range"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
