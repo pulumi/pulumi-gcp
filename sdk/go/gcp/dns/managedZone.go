@@ -69,14 +69,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "network-1", &compute.NetworkArgs{
+//			network_1, err := compute.NewNetwork(ctx, "network-1", &compute.NetworkArgs{
 //				Name:                  pulumi.String("network-1"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewNetwork(ctx, "network-2", &compute.NetworkArgs{
+//			network_2, err := compute.NewNetwork(ctx, "network-2", &compute.NetworkArgs{
 //				Name:                  pulumi.String("network-2"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
@@ -125,14 +125,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "network-1", &compute.NetworkArgs{
+//			network_1, err := compute.NewNetwork(ctx, "network-1", &compute.NetworkArgs{
 //				Name:                  pulumi.String("network-1"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewNetwork(ctx, "network-2", &compute.NetworkArgs{
+//			network_2, err := compute.NewNetwork(ctx, "network-2", &compute.NetworkArgs{
 //				Name:                  pulumi.String("network-2"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
@@ -192,14 +192,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "network-1", &compute.NetworkArgs{
+//			network_1, err := compute.NewNetwork(ctx, "network-1", &compute.NetworkArgs{
 //				Name:                  pulumi.String("network-1"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewSubnetwork(ctx, "subnetwork-1", &compute.SubnetworkArgs{
+//			subnetwork_1, err := compute.NewSubnetwork(ctx, "subnetwork-1", &compute.SubnetworkArgs{
 //				Name:                  network_1.Name,
 //				Network:               network_1.Name,
 //				IpCidrRange:           pulumi.String("10.0.36.0/24"),
@@ -219,7 +219,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = container.NewCluster(ctx, "cluster-1", &container.ClusterArgs{
+//			cluster_1, err := container.NewCluster(ctx, "cluster-1", &container.ClusterArgs{
 //				Name:             pulumi.String("cluster-1"),
 //				Location:         pulumi.String("us-central1-c"),
 //				InitialNodeCount: pulumi.Int(1),
@@ -290,14 +290,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "network-source", &compute.NetworkArgs{
+//			network_source, err := compute.NewNetwork(ctx, "network-source", &compute.NetworkArgs{
 //				Name:                  pulumi.String("network-source"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewNetwork(ctx, "network-target", &compute.NetworkArgs{
+//			network_target, err := compute.NewNetwork(ctx, "network-target", &compute.NetworkArgs{
 //				Name:                  pulumi.String("network-target"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
