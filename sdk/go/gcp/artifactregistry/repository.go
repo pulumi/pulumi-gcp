@@ -170,7 +170,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := artifactregistry.NewRepository(ctx, "my-repo-upstream-1", &artifactregistry.RepositoryArgs{
+//			my_repo_upstream_1, err := artifactregistry.NewRepository(ctx, "my-repo-upstream-1", &artifactregistry.RepositoryArgs{
 //				Location:     pulumi.String("us-central1"),
 //				RepositoryId: pulumi.String("my-repository-upstream-1"),
 //				Description:  pulumi.String("example docker repository (upstream source) 1"),
@@ -179,7 +179,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = artifactregistry.NewRepository(ctx, "my-repo-upstream-2", &artifactregistry.RepositoryArgs{
+//			my_repo_upstream_2, err := artifactregistry.NewRepository(ctx, "my-repo-upstream-2", &artifactregistry.RepositoryArgs{
 //				Location:     pulumi.String("us-central1"),
 //				RepositoryId: pulumi.String("my-repository-upstream-2"),
 //				Description:  pulumi.String("example docker repository (upstream source) 2"),
@@ -434,7 +434,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecret(ctx, "example-remote-secret", &secretmanager.SecretArgs{
+//			example_remote_secret, err := secretmanager.NewSecret(ctx, "example-remote-secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("example-secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Auto: &secretmanager.SecretReplicationAutoArgs{},
@@ -443,7 +443,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
+//			example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
 //				Secret:     example_remote_secret.ID(),
 //				SecretData: pulumi.String("remote-password"),
 //			})
@@ -508,7 +508,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecret(ctx, "example-remote-secret", &secretmanager.SecretArgs{
+//			example_remote_secret, err := secretmanager.NewSecret(ctx, "example-remote-secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("example-secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Auto: &secretmanager.SecretReplicationAutoArgs{},
@@ -517,7 +517,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
+//			example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
 //				Secret:     example_remote_secret.ID(),
 //				SecretData: pulumi.String("remote-password"),
 //			})
@@ -584,7 +584,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecret(ctx, "example-remote-secret", &secretmanager.SecretArgs{
+//			example_remote_secret, err := secretmanager.NewSecret(ctx, "example-remote-secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("example-secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Auto: &secretmanager.SecretReplicationAutoArgs{},
@@ -593,7 +593,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
+//			example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
 //				Secret:     example_remote_secret.ID(),
 //				SecretData: pulumi.String("remote-password"),
 //			})
@@ -660,7 +660,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecret(ctx, "example-remote-secret", &secretmanager.SecretArgs{
+//			example_remote_secret, err := secretmanager.NewSecret(ctx, "example-remote-secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("example-secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Auto: &secretmanager.SecretReplicationAutoArgs{},
@@ -669,7 +669,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
+//			example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
 //				Secret:     example_remote_secret.ID(),
 //				SecretData: pulumi.String("remote-password"),
 //			})
@@ -736,7 +736,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecret(ctx, "example-remote-secret", &secretmanager.SecretArgs{
+//			example_remote_secret, err := secretmanager.NewSecret(ctx, "example-remote-secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("example-secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Auto: &secretmanager.SecretReplicationAutoArgs{},
@@ -745,7 +745,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
+//			example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
 //				Secret:     example_remote_secret.ID(),
 //				SecretData: pulumi.String("remote-password"),
 //			})
@@ -909,7 +909,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecret(ctx, "example-remote-secret", &secretmanager.SecretArgs{
+//			example_remote_secret, err := secretmanager.NewSecret(ctx, "example-remote-secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("example-secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Auto: &secretmanager.SecretReplicationAutoArgs{},
@@ -918,7 +918,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
+//			example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
 //				Secret:     example_remote_secret.ID(),
 //				SecretData: pulumi.String("remote-password"),
 //			})

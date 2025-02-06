@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * export = async () => {
- *     const default = await gcp.organizations.getClientConfig({});
+ *     const _default = await gcp.organizations.getClientConfig({});
  *     const defaultGetAccountAccessToken = await gcp.serviceaccount.getAccountAccessToken({
  *         targetServiceAccount: "service_B@projectB.iam.gserviceaccount.com",
  *         scopes: [
@@ -135,7 +135,7 @@ export interface GetAccountAccessTokenResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * export = async () => {
- *     const default = await gcp.organizations.getClientConfig({});
+ *     const _default = await gcp.organizations.getClientConfig({});
  *     const defaultGetAccountAccessToken = await gcp.serviceaccount.getAccountAccessToken({
  *         targetServiceAccount: "service_B@projectB.iam.gserviceaccount.com",
  *         scopes: [

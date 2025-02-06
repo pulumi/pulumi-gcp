@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
+//			_default, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
 //				Region:           pulumi.String("us-central1"),
 //				Name:             pulumi.String("health-check"),
 //				CheckIntervalSec: pulumi.Int(1),
@@ -128,7 +128,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
+//			_default, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
 //				Region:           pulumi.String("us-central1"),
 //				Name:             pulumi.String("health-check"),
 //				CheckIntervalSec: pulumi.Int(1),
@@ -344,7 +344,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
+//			_default, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
 //				Name: pulumi.String("health-check"),
 //				HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
 //					Port: pulumi.Int(80),
@@ -499,7 +499,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
+//			_default, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
 //				Name: pulumi.String("health-check"),
 //				HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
 //					Port: pulumi.Int(80),
@@ -608,7 +608,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
+//			_default, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
 //				Name: pulumi.String("health-check"),
 //				HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
 //					Port: pulumi.Int(80),
@@ -739,7 +739,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
+//			_default, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
 //				Name: pulumi.String("health-check"),
 //				HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
 //					Port: pulumi.Int(80),
@@ -835,7 +835,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
+//			_default, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
 //				Region:           pulumi.String("us-central1"),
 //				Name:             pulumi.String("health-check"),
 //				CheckIntervalSec: pulumi.Int(1),
@@ -848,7 +848,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewRegionBackendService(ctx, "home-backend", &compute.RegionBackendServiceArgs{
+//			home_backend, err := compute.NewRegionBackendService(ctx, "home-backend", &compute.RegionBackendServiceArgs{
 //				Region:              pulumi.String("us-central1"),
 //				Name:                pulumi.String("home-service"),
 //				PortName:            pulumi.String("http"),
@@ -860,7 +860,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewRegionBackendService(ctx, "cart-backend", &compute.RegionBackendServiceArgs{
+//			cart_backend, err := compute.NewRegionBackendService(ctx, "cart-backend", &compute.RegionBackendServiceArgs{
 //				Region:              pulumi.String("us-central1"),
 //				Name:                pulumi.String("cart-service"),
 //				PortName:            pulumi.String("http"),
@@ -872,7 +872,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewRegionBackendService(ctx, "user-backend", &compute.RegionBackendServiceArgs{
+//			user_backend, err := compute.NewRegionBackendService(ctx, "user-backend", &compute.RegionBackendServiceArgs{
 //				Region:              pulumi.String("us-central1"),
 //				Name:                pulumi.String("user-service"),
 //				PortName:            pulumi.String("http"),
