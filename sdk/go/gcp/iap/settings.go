@@ -54,7 +54,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+//			_default, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
 //				Name:                         pulumi.String("iap-settings-tf"),
 //				Region:                       pulumi.String("us-central1"),
 //				HealthChecks:                 defaultHealthCheck.ID(),

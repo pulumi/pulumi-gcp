@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const run-service = gcp.runtimeconfig.getConfig({
+ * const run_service = gcp.runtimeconfig.getConfig({
  *     name: "my-service",
  * });
  * ```
@@ -60,7 +60,7 @@ export interface GetConfigResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const run-service = gcp.runtimeconfig.getConfig({
+ * const run_service = gcp.runtimeconfig.getConfig({
  *     name: "my-service",
  * });
  * ```

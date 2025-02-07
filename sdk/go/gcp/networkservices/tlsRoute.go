@@ -38,7 +38,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//			_default, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:         pulumi.String("my-backend-service"),
 //				HealthChecks: defaultHttpHealthCheck.ID(),
 //			})
@@ -103,7 +103,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//			_default, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:         pulumi.String("my-backend-service"),
 //				HealthChecks: defaultHttpHealthCheck.ID(),
 //			})
@@ -181,7 +181,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//			_default, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:         pulumi.String("my-backend-service"),
 //				HealthChecks: defaultHttpHealthCheck.ID(),
 //			})

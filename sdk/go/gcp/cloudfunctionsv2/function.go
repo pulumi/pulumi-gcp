@@ -316,7 +316,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewBucket(ctx, "source-bucket", &storage.BucketArgs{
+//			source_bucket, err := storage.NewBucket(ctx, "source-bucket", &storage.BucketArgs{
 //				Name:                     pulumi.String("gcf-source-bucket"),
 //				Location:                 pulumi.String("US"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
@@ -332,7 +332,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = storage.NewBucket(ctx, "trigger-bucket", &storage.BucketArgs{
+//			trigger_bucket, err := storage.NewBucket(ctx, "trigger-bucket", &storage.BucketArgs{
 //				Name:                     pulumi.String("gcf-trigger-bucket"),
 //				Location:                 pulumi.String("us-central1"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
@@ -346,7 +346,7 @@ import (
 //			}
 //			// To use GCS CloudEvent triggers, the GCS service account requires the Pub/Sub Publisher(roles/pubsub.publisher) IAM role in the specified project.
 //			// (See https://cloud.google.com/eventarc/docs/run/quickstart-storage#before-you-begin)
-//			_, err = projects.NewIAMMember(ctx, "gcs-pubsub-publishing", &projects.IAMMemberArgs{
+//			gcs_pubsub_publishing, err := projects.NewIAMMember(ctx, "gcs-pubsub-publishing", &projects.IAMMemberArgs{
 //				Project: pulumi.String("my-project-name"),
 //				Role:    pulumi.String("roles/pubsub.publisher"),
 //				Member:  pulumi.Sprintf("serviceAccount:%v", gcsAccount.EmailAddress),
@@ -374,7 +374,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "event-receiving", &projects.IAMMemberArgs{
+//			event_receiving, err := projects.NewIAMMember(ctx, "event-receiving", &projects.IAMMemberArgs{
 //				Project: pulumi.String("my-project-name"),
 //				Role:    pulumi.String("roles/eventarc.eventReceiver"),
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
@@ -386,7 +386,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "artifactregistry-reader", &projects.IAMMemberArgs{
+//			artifactregistry_reader, err := projects.NewIAMMember(ctx, "artifactregistry-reader", &projects.IAMMemberArgs{
 //				Project: pulumi.String("my-project-name"),
 //				Role:    pulumi.String("roles/artifactregistry.reader"),
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
@@ -473,7 +473,7 @@ import (
 //			// https://medium.com/google-cloud/applying-a-path-pattern-when-filtering-in-eventarc-f06b937b4c34
 //			// and the docs:
 //			// https://cloud.google.com/eventarc/docs/path-patterns
-//			_, err := storage.NewBucket(ctx, "source-bucket", &storage.BucketArgs{
+//			source_bucket, err := storage.NewBucket(ctx, "source-bucket", &storage.BucketArgs{
 //				Name:                     pulumi.String("gcf-source-bucket"),
 //				Location:                 pulumi.String("US"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
@@ -499,7 +499,7 @@ import (
 //			// Note: The right way of listening for Cloud Storage events is to use a Cloud Storage trigger.
 //			// Here we use Audit Logs to monitor the bucket so path patterns can be used in the example of
 //			// google_cloudfunctions2_function below (Audit Log events have path pattern support)
-//			_, err = storage.NewBucket(ctx, "audit-log-bucket", &storage.BucketArgs{
+//			audit_log_bucket, err := storage.NewBucket(ctx, "audit-log-bucket", &storage.BucketArgs{
 //				Name:                     pulumi.String("gcf-auditlog-bucket"),
 //				Location:                 pulumi.String("us-central1"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
@@ -518,7 +518,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "event-receiving", &projects.IAMMemberArgs{
+//			event_receiving, err := projects.NewIAMMember(ctx, "event-receiving", &projects.IAMMemberArgs{
 //				Project: pulumi.String("my-project-name"),
 //				Role:    pulumi.String("roles/eventarc.eventReceiver"),
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
@@ -530,7 +530,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "artifactregistry-reader", &projects.IAMMemberArgs{
+//			artifactregistry_reader, err := projects.NewIAMMember(ctx, "artifactregistry-reader", &projects.IAMMemberArgs{
 //				Project: pulumi.String("my-project-name"),
 //				Role:    pulumi.String("roles/artifactregistry.reader"),
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
@@ -1062,7 +1062,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = artifactregistry.NewRepository(ctx, "encoded-ar-repo", &artifactregistry.RepositoryArgs{
+//			encoded_ar_repo, err := artifactregistry.NewRepository(ctx, "encoded-ar-repo", &artifactregistry.RepositoryArgs{
 //				Location:     pulumi.String("us-central1"),
 //				RepositoryId: pulumi.String("cmek-repo"),
 //				Format:       pulumi.String("DOCKER"),

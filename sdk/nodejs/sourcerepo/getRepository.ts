@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-repo = gcp.sourcerepo.getRepository({
+ * const my_repo = gcp.sourcerepo.getRepository({
  *     name: "my-repository",
  * });
  * ```
@@ -72,7 +72,7 @@ export interface GetRepositoryResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-repo = gcp.sourcerepo.getRepository({
+ * const my_repo = gcp.sourcerepo.getRepository({
  *     name: "my-repository",
  * });
  * ```

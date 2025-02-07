@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := bigquery.NewDataset(ctx, "default", &bigquery.DatasetArgs{
+//			_default, err := bigquery.NewDataset(ctx, "default", &bigquery.DatasetArgs{
 //				DatasetId:                pulumi.String("foo"),
 //				FriendlyName:             pulumi.String("test"),
 //				Description:              pulumi.String("This is a test description"),

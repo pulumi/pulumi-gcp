@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.sql.getDatabaseInstanceLatestRecoveryTime({
+ * const _default = gcp.sql.getDatabaseInstanceLatestRecoveryTime({
  *     instance: "sample-instance",
  * });
  * export const latestRecoveryTime = _default;
@@ -77,7 +77,7 @@ export interface GetDatabaseInstanceLatestRecoveryTimeResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.sql.getDatabaseInstanceLatestRecoveryTime({
+ * const _default = gcp.sql.getDatabaseInstanceLatestRecoveryTime({
  *     instance: "sample-instance",
  * });
  * export const latestRecoveryTime = _default;
