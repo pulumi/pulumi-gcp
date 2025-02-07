@@ -143,7 +143,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewAddress(ctx, "source-addr", &compute.AddressArgs{
+//			source_addr, err := compute.NewAddress(ctx, "source-addr", &compute.AddressArgs{
 //				Name:        pulumi.String("src-addr"),
 //				Subnetwork:  subnet.ID(),
 //				AddressType: pulumi.String("INTERNAL"),
@@ -153,7 +153,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewAddress(ctx, "dest-addr", &compute.AddressArgs{
+//			dest_addr, err := compute.NewAddress(ctx, "dest-addr", &compute.AddressArgs{
 //				Name:        pulumi.String("dest-addr"),
 //				Subnetwork:  subnet.ID(),
 //				AddressType: pulumi.String("INTERNAL"),

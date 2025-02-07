@@ -46,7 +46,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = storage.NewBucket(ctx, "s3-backup-bucket", &storage.BucketArgs{
+//			s3_backup_bucket, err := storage.NewBucket(ctx, "s3-backup-bucket", &storage.BucketArgs{
 //				Name:         pulumi.Sprintf("%v-backup", awsS3Bucket),
 //				StorageClass: pulumi.String("NEARLINE"),
 //				Project:      pulumi.Any(project),
@@ -55,7 +55,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = storage.NewBucketIAMMember(ctx, "s3-backup-bucket", &storage.BucketIAMMemberArgs{
+//			s3_backup_bucketBucketIAMMember, err := storage.NewBucketIAMMember(ctx, "s3-backup-bucket", &storage.BucketIAMMemberArgs{
 //				Bucket: s3_backup_bucket.Name,
 //				Role:   pulumi.String("roles/storage.admin"),
 //				Member: pulumi.Sprintf("serviceAccount:%v", _default.Email),

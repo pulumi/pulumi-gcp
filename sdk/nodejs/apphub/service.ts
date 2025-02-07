@@ -91,7 +91,7 @@ import * as utilities from "../utilities";
  *     subnetwork: ilbSubnet.id,
  * });
  * // discovered service block
- * const catalog-service = gcp.apphub.getDiscoveredServiceOutput({
+ * const catalog_service = gcp.apphub.getDiscoveredServiceOutput({
  *     location: "us-central1",
  *     serviceUri: pulumi.interpolate`//compute.googleapis.com/${forwardingRule.id}`,
  * });
@@ -185,7 +185,7 @@ import * as utilities from "../utilities";
  *     subnetwork: ilbSubnet.id,
  * });
  * // discovered service block
- * const catalog-service = gcp.apphub.getDiscoveredServiceOutput({
+ * const catalog_service = gcp.apphub.getDiscoveredServiceOutput({
  *     location: "us-central1",
  *     serviceUri: pulumi.interpolate`//compute.googleapis.com/${forwardingRule.id}`,
  * });

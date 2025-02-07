@@ -54,7 +54,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
 //				Name:                  pulumi.String("neg-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
@@ -70,7 +70,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewInstance(ctx, "endpoint-instance1", &compute.InstanceArgs{
+//			endpoint_instance1, err := compute.NewInstance(ctx, "endpoint-instance1", &compute.InstanceArgs{
 //				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
 //					&compute.InstanceNetworkInterfaceArgs{
 //						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
@@ -90,7 +90,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewInstance(ctx, "endpoint-instance2", &compute.InstanceArgs{
+//			endpoint_instance2, err := compute.NewInstance(ctx, "endpoint-instance2", &compute.InstanceArgs{
 //				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
 //					&compute.InstanceNetworkInterfaceArgs{
 //						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{

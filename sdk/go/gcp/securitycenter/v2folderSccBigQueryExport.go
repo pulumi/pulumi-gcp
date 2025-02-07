@@ -51,7 +51,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bigquery.NewDataset(ctx, "default", &bigquery.DatasetArgs{
+//			_default, err := bigquery.NewDataset(ctx, "default", &bigquery.DatasetArgs{
 //				DatasetId:                    pulumi.String("my_dataset_id"),
 //				FriendlyName:                 pulumi.String("test"),
 //				Description:                  pulumi.String("This is a test description"),

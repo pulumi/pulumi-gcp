@@ -483,7 +483,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewInterconnectAttachment(ctx, "interconnect-attachment", &compute.InterconnectAttachmentArgs{
+//			interconnect_attachment, err := compute.NewInterconnectAttachment(ctx, "interconnect-attachment", &compute.InterconnectAttachmentArgs{
 //				Name:                   pulumi.String("partner-interconnect1"),
 //				EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
 //				Type:                   pulumi.String("PARTNER"),
