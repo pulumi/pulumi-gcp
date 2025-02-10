@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := parametermanager.NewParameter(ctx, "parameter-basic", &parametermanager.ParameterArgs{
+//			parameter_basic, err := parametermanager.NewParameter(ctx, "parameter-basic", &parametermanager.ParameterArgs{
 //				ParameterId: pulumi.String("parameter"),
 //			})
 //			if err != nil {
@@ -63,7 +63,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := parametermanager.NewParameter(ctx, "parameter-basic", &parametermanager.ParameterArgs{
+//			parameter_basic, err := parametermanager.NewParameter(ctx, "parameter-basic", &parametermanager.ParameterArgs{
 //				ParameterId: pulumi.String("parameter"),
 //				Format:      pulumi.String("JSON"),
 //			})

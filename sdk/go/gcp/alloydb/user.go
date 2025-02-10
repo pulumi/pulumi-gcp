@@ -78,7 +78,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = alloydb.NewInstance(ctx, "default", &alloydb.InstanceArgs{
+//			_default, err := alloydb.NewInstance(ctx, "default", &alloydb.InstanceArgs{
 //				Cluster:      defaultCluster.Name,
 //				InstanceId:   pulumi.String("alloydb-instance"),
 //				InstanceType: pulumi.String("PRIMARY"),
@@ -167,7 +167,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = alloydb.NewInstance(ctx, "default", &alloydb.InstanceArgs{
+//			_default, err := alloydb.NewInstance(ctx, "default", &alloydb.InstanceArgs{
 //				Cluster:      defaultCluster.Name,
 //				InstanceId:   pulumi.String("alloydb-instance"),
 //				InstanceType: pulumi.String("PRIMARY"),
