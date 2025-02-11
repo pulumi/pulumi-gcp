@@ -39,3 +39,4 @@ releaseVerification:
   python: examples/bucket-py
   dotnet: examples/serverless-cs
   go: examples/bucket-go
+AutoMergeProviderUpgrades: false
