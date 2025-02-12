@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := runtimeconfig.NewConfig(ctx, "my-runtime-config", &runtimeconfig.ConfigArgs{
+//			my_runtime_config, err := runtimeconfig.NewConfig(ctx, "my-runtime-config", &runtimeconfig.ConfigArgs{
 //				Name:        pulumi.String("my-service-runtime-config"),
 //				Description: pulumi.String("Runtime configuration values for my service"),
 //			})
@@ -67,7 +67,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := runtimeconfig.NewConfig(ctx, "my-runtime-config", &runtimeconfig.ConfigArgs{
+//			my_runtime_config, err := runtimeconfig.NewConfig(ctx, "my-runtime-config", &runtimeconfig.ConfigArgs{
 //				Name:        pulumi.String("my-service-runtime-config"),
 //				Description: pulumi.String("Runtime configuration values for my service"),
 //			})

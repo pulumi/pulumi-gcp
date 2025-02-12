@@ -552,7 +552,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := bigquery.NewDataset(ctx, "source-one", &bigquery.DatasetArgs{
+//			source_oneDataset, err := bigquery.NewDataset(ctx, "source-one", &bigquery.DatasetArgs{
 //				DatasetId:    pulumi.String("job_extract_dataset"),
 //				FriendlyName: pulumi.String("test"),
 //				Description:  pulumi.String("This is a test description"),
@@ -561,7 +561,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bigquery.NewTable(ctx, "source-one", &bigquery.TableArgs{
+//			source_one, err := bigquery.NewTable(ctx, "source-one", &bigquery.TableArgs{
 //				DeletionProtection: pulumi.Bool(false),
 //				DatasetId:          source_oneDataset.DatasetId,
 //				TableId:            pulumi.String("job_extract_table"),

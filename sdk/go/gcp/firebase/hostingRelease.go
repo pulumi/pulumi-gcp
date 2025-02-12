@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := firebase.NewHostingSite(ctx, "default", &firebase.HostingSiteArgs{
+//			_default, err := firebase.NewHostingSite(ctx, "default", &firebase.HostingSiteArgs{
 //				Project: pulumi.String("my-project-name"),
 //				SiteId:  pulumi.String("site-id"),
 //			})
@@ -77,7 +77,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := firebase.NewHostingSite(ctx, "default", &firebase.HostingSiteArgs{
+//			_default, err := firebase.NewHostingSite(ctx, "default", &firebase.HostingSiteArgs{
 //				Project: pulumi.String("my-project-name"),
 //				SiteId:  pulumi.String("site-with-channel"),
 //			})
@@ -134,7 +134,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := firebase.NewHostingSite(ctx, "default", &firebase.HostingSiteArgs{
+//			_default, err := firebase.NewHostingSite(ctx, "default", &firebase.HostingSiteArgs{
 //				Project: pulumi.String("my-project-name"),
 //				SiteId:  pulumi.String("site-id"),
 //			})

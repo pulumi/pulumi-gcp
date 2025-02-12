@@ -351,7 +351,7 @@ import (
 //			if param := cfg.Get("subnetworkCidr"); param != "" {
 //				subnetworkCidr = param
 //			}
-//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
 //				Name: pulumi.String("my-network"),
 //			})
 //			if err != nil {
@@ -552,7 +552,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewGlobalAddress(ctx, "default", &compute.GlobalAddressArgs{
+//			_default, err := compute.NewGlobalAddress(ctx, "default", &compute.GlobalAddressArgs{
 //				Project:     network.Project,
 //				Name:        pulumi.String("global-psconnect-ip"),
 //				AddressType: pulumi.String("INTERNAL"),
@@ -616,7 +616,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewGlobalAddress(ctx, "default", &compute.GlobalAddressArgs{
+//			_default, err := compute.NewGlobalAddress(ctx, "default", &compute.GlobalAddressArgs{
 //				Project:     network.Project,
 //				Name:        pulumi.String("global-psconnect-ip"),
 //				AddressType: pulumi.String("INTERNAL"),

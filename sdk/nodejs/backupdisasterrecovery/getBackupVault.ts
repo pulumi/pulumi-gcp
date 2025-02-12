@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-backup-vault = gcp.backupdisasterrecovery.getBackupVault({
+ * const my_backup_vault = gcp.backupdisasterrecovery.getBackupVault({
  *     location: "us-central1",
  *     backupVaultId: "bv-1",
  * });
@@ -94,7 +94,7 @@ export interface GetBackupVaultResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-backup-vault = gcp.backupdisasterrecovery.getBackupVault({
+ * const my_backup_vault = gcp.backupdisasterrecovery.getBackupVault({
  *     location: "us-central1",
  *     backupVaultId: "bv-1",
  * });

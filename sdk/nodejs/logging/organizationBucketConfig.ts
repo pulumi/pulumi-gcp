@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.organizations.getOrganization({
+ * const _default = gcp.organizations.getOrganization({
  *     organization: "123456789",
  * });
  * const basic = new gcp.logging.OrganizationBucketConfig("basic", {
