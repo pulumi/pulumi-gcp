@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerBuildInfo;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerEnv;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerLivenessProbe;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerPort;
@@ -22,6 +23,16 @@ public final class GetServiceTemplateContainer {
      * 
      */
     private List<String> args;
+    /**
+     * @return Base image for this container. If set, it indicates that the service is enrolled into automatic base image update.
+     * 
+     */
+    private String baseImageUri;
+    /**
+     * @return The build info of the container image.
+     * 
+     */
+    private List<GetServiceTemplateContainerBuildInfo> buildInfos;
     /**
      * @return Entrypoint array. Not executed within a shell. The docker image&#39;s ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
      * 
@@ -87,6 +98,20 @@ public final class GetServiceTemplateContainer {
      */
     public List<String> args() {
         return this.args;
+    }
+    /**
+     * @return Base image for this container. If set, it indicates that the service is enrolled into automatic base image update.
+     * 
+     */
+    public String baseImageUri() {
+        return this.baseImageUri;
+    }
+    /**
+     * @return The build info of the container image.
+     * 
+     */
+    public List<GetServiceTemplateContainerBuildInfo> buildInfos() {
+        return this.buildInfos;
     }
     /**
      * @return Entrypoint array. Not executed within a shell. The docker image&#39;s ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
@@ -178,6 +203,8 @@ public final class GetServiceTemplateContainer {
     @CustomType.Builder
     public static final class Builder {
         private List<String> args;
+        private String baseImageUri;
+        private List<GetServiceTemplateContainerBuildInfo> buildInfos;
         private List<String> commands;
         private List<String> dependsOns;
         private List<GetServiceTemplateContainerEnv> envs;
@@ -193,6 +220,8 @@ public final class GetServiceTemplateContainer {
         public Builder(GetServiceTemplateContainer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.args = defaults.args;
+    	      this.baseImageUri = defaults.baseImageUri;
+    	      this.buildInfos = defaults.buildInfos;
     	      this.commands = defaults.commands;
     	      this.dependsOns = defaults.dependsOns;
     	      this.envs = defaults.envs;
@@ -216,6 +245,25 @@ public final class GetServiceTemplateContainer {
         }
         public Builder args(String... args) {
             return args(List.of(args));
+        }
+        @CustomType.Setter
+        public Builder baseImageUri(String baseImageUri) {
+            if (baseImageUri == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateContainer", "baseImageUri");
+            }
+            this.baseImageUri = baseImageUri;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder buildInfos(List<GetServiceTemplateContainerBuildInfo> buildInfos) {
+            if (buildInfos == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateContainer", "buildInfos");
+            }
+            this.buildInfos = buildInfos;
+            return this;
+        }
+        public Builder buildInfos(GetServiceTemplateContainerBuildInfo... buildInfos) {
+            return buildInfos(List.of(buildInfos));
         }
         @CustomType.Setter
         public Builder commands(List<String> commands) {
@@ -332,6 +380,8 @@ public final class GetServiceTemplateContainer {
         public GetServiceTemplateContainer build() {
             final var _resultValue = new GetServiceTemplateContainer();
             _resultValue.args = args;
+            _resultValue.baseImageUri = baseImageUri;
+            _resultValue.buildInfos = buildInfos;
             _resultValue.commands = commands;
             _resultValue.dependsOns = dependsOns;
             _resultValue.envs = envs;

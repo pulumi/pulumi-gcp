@@ -27,6 +27,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AppConnector{}
 	case "gcp:beyondcorp/appGateway:AppGateway":
 		r = &AppGateway{}
+	case "gcp:beyondcorp/application:Application":
+		r = &Application{}
+	case "gcp:beyondcorp/applicationIamBinding:ApplicationIamBinding":
+		r = &ApplicationIamBinding{}
+	case "gcp:beyondcorp/applicationIamMember:ApplicationIamMember":
+		r = &ApplicationIamMember{}
+	case "gcp:beyondcorp/applicationIamPolicy:ApplicationIamPolicy":
+		r = &ApplicationIamPolicy{}
 	case "gcp:beyondcorp/securityGateway:SecurityGateway":
 		r = &SecurityGateway{}
 	case "gcp:beyondcorp/securityGatewayIamBinding:SecurityGatewayIamBinding":
@@ -61,6 +69,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"beyondcorp/appGateway",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"beyondcorp/application",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"beyondcorp/applicationIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"beyondcorp/applicationIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"beyondcorp/applicationIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

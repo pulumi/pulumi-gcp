@@ -193,7 +193,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The reference of the compute region scoping this request.
+        /// The reference of the compute region scoping this request. If it is not provided, the provider region is used.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -299,10 +299,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The reference of the compute region scoping this request.
+        /// The reference of the compute region scoping this request. If it is not provided, the provider region is used.
         /// </summary>
-        [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// Requested run duration for instances that will be created by this request. At the end of the run duration instances will be deleted.
@@ -360,7 +360,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The reference of the compute region scoping this request.
+        /// The reference of the compute region scoping this request. If it is not provided, the provider region is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

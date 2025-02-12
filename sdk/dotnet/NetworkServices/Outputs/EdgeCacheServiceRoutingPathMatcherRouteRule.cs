@@ -46,6 +46,12 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         /// </summary>
         public readonly Outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction? RouteAction;
         /// <summary>
+        /// Allow overriding the set of methods that are allowed for this route.
+        /// When not set, Media CDN allows only "GET", "HEAD", and "OPTIONS".
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods? RouteMethods;
+        /// <summary>
         /// The URL redirect configuration for requests that match this route.
         /// Structure is documented below.
         /// </summary>
@@ -65,6 +71,8 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
 
             Outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction? routeAction,
 
+            Outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods? routeMethods,
+
             Outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect? urlRedirect)
         {
             Description = description;
@@ -73,6 +81,7 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
             Origin = origin;
             Priority = priority;
             RouteAction = routeAction;
+            RouteMethods = routeMethods;
             UrlRedirect = urlRedirect;
         }
     }

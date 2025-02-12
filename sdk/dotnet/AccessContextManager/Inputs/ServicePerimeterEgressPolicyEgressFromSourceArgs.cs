@@ -18,6 +18,17 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
 
+        /// <summary>
+        /// A Google Cloud resource that is allowed to egress the perimeter.
+        /// Requests from these resources are allowed to access data outside the perimeter.
+        /// Currently only projects are allowed. Project format: `projects/{project_number}`.
+        /// The resource may be in any Google Cloud organization, not just the
+        /// organization that the perimeter is defined in. `*` is not allowed, the
+        /// case of allowing all Google Cloud resources only is not supported.
+        /// </summary>
+        [Input("resource")]
+        public Input<string>? Resource { get; set; }
+
         public ServicePerimeterEgressPolicyEgressFromSourceArgs()
         {
         }

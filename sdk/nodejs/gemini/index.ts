@@ -15,6 +15,16 @@ export const getRepositoryGroupIamPolicy: typeof import("./getRepositoryGroupIam
 export const getRepositoryGroupIamPolicyOutput: typeof import("./getRepositoryGroupIamPolicy").getRepositoryGroupIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getRepositoryGroupIamPolicy","getRepositoryGroupIamPolicyOutput"], () => require("./getRepositoryGroupIamPolicy"));
 
+export { LoggingSettingArgs, LoggingSettingState } from "./loggingSetting";
+export type LoggingSetting = import("./loggingSetting").LoggingSetting;
+export const LoggingSetting: typeof import("./loggingSetting").LoggingSetting = null as any;
+utilities.lazyLoad(exports, ["LoggingSetting"], () => require("./loggingSetting"));
+
+export { ReleaseChannelSettingArgs, ReleaseChannelSettingState } from "./releaseChannelSetting";
+export type ReleaseChannelSetting = import("./releaseChannelSetting").ReleaseChannelSetting;
+export const ReleaseChannelSetting: typeof import("./releaseChannelSetting").ReleaseChannelSetting = null as any;
+utilities.lazyLoad(exports, ["ReleaseChannelSetting"], () => require("./releaseChannelSetting"));
+
 export { RepositoryGroupArgs, RepositoryGroupState } from "./repositoryGroup";
 export type RepositoryGroup = import("./repositoryGroup").RepositoryGroup;
 export const RepositoryGroup: typeof import("./repositoryGroup").RepositoryGroup = null as any;
@@ -42,6 +52,10 @@ const _module = {
         switch (type) {
             case "gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex":
                 return new CodeRepositoryIndex(name, <any>undefined, { urn })
+            case "gcp:gemini/loggingSetting:LoggingSetting":
+                return new LoggingSetting(name, <any>undefined, { urn })
+            case "gcp:gemini/releaseChannelSetting:ReleaseChannelSetting":
+                return new ReleaseChannelSetting(name, <any>undefined, { urn })
             case "gcp:gemini/repositoryGroup:RepositoryGroup":
                 return new RepositoryGroup(name, <any>undefined, { urn })
             case "gcp:gemini/repositoryGroupIamBinding:RepositoryGroupIamBinding":
@@ -56,6 +70,8 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "gemini/codeRepositoryIndex", _module)
+pulumi.runtime.registerResourceModule("gcp", "gemini/loggingSetting", _module)
+pulumi.runtime.registerResourceModule("gcp", "gemini/releaseChannelSetting", _module)
 pulumi.runtime.registerResourceModule("gcp", "gemini/repositoryGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "gemini/repositoryGroupIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "gemini/repositoryGroupIamMember", _module)

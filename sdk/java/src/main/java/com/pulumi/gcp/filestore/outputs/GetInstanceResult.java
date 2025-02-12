@@ -5,7 +5,9 @@ package com.pulumi.gcp.filestore.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.filestore.outputs.GetInstanceEffectiveReplication;
 import com.pulumi.gcp.filestore.outputs.GetInstanceFileShare;
+import com.pulumi.gcp.filestore.outputs.GetInstanceInitialReplication;
 import com.pulumi.gcp.filestore.outputs.GetInstanceNetwork;
 import com.pulumi.gcp.filestore.outputs.GetInstancePerformanceConfig;
 import java.lang.Boolean;
@@ -23,6 +25,7 @@ public final class GetInstanceResult {
     private String deletionProtectionReason;
     private String description;
     private Map<String,String> effectiveLabels;
+    private List<GetInstanceEffectiveReplication> effectiveReplications;
     private String etag;
     private List<GetInstanceFileShare> fileShares;
     /**
@@ -30,6 +33,7 @@ public final class GetInstanceResult {
      * 
      */
     private String id;
+    private List<GetInstanceInitialReplication> initialReplications;
     private String kmsKeyName;
     private Map<String,String> labels;
     private @Nullable String location;
@@ -59,6 +63,9 @@ public final class GetInstanceResult {
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
     }
+    public List<GetInstanceEffectiveReplication> effectiveReplications() {
+        return this.effectiveReplications;
+    }
     public String etag() {
         return this.etag;
     }
@@ -71,6 +78,9 @@ public final class GetInstanceResult {
      */
     public String id() {
         return this.id;
+    }
+    public List<GetInstanceInitialReplication> initialReplications() {
+        return this.initialReplications;
     }
     public String kmsKeyName() {
         return this.kmsKeyName;
@@ -123,9 +133,11 @@ public final class GetInstanceResult {
         private String deletionProtectionReason;
         private String description;
         private Map<String,String> effectiveLabels;
+        private List<GetInstanceEffectiveReplication> effectiveReplications;
         private String etag;
         private List<GetInstanceFileShare> fileShares;
         private String id;
+        private List<GetInstanceInitialReplication> initialReplications;
         private String kmsKeyName;
         private Map<String,String> labels;
         private @Nullable String location;
@@ -146,9 +158,11 @@ public final class GetInstanceResult {
     	      this.deletionProtectionReason = defaults.deletionProtectionReason;
     	      this.description = defaults.description;
     	      this.effectiveLabels = defaults.effectiveLabels;
+    	      this.effectiveReplications = defaults.effectiveReplications;
     	      this.etag = defaults.etag;
     	      this.fileShares = defaults.fileShares;
     	      this.id = defaults.id;
+    	      this.initialReplications = defaults.initialReplications;
     	      this.kmsKeyName = defaults.kmsKeyName;
     	      this.labels = defaults.labels;
     	      this.location = defaults.location;
@@ -204,6 +218,17 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder effectiveReplications(List<GetInstanceEffectiveReplication> effectiveReplications) {
+            if (effectiveReplications == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "effectiveReplications");
+            }
+            this.effectiveReplications = effectiveReplications;
+            return this;
+        }
+        public Builder effectiveReplications(GetInstanceEffectiveReplication... effectiveReplications) {
+            return effectiveReplications(List.of(effectiveReplications));
+        }
+        @CustomType.Setter
         public Builder etag(String etag) {
             if (etag == null) {
               throw new MissingRequiredPropertyException("GetInstanceResult", "etag");
@@ -229,6 +254,17 @@ public final class GetInstanceResult {
             }
             this.id = id;
             return this;
+        }
+        @CustomType.Setter
+        public Builder initialReplications(List<GetInstanceInitialReplication> initialReplications) {
+            if (initialReplications == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "initialReplications");
+            }
+            this.initialReplications = initialReplications;
+            return this;
+        }
+        public Builder initialReplications(GetInstanceInitialReplication... initialReplications) {
+            return initialReplications(List.of(initialReplications));
         }
         @CustomType.Setter
         public Builder kmsKeyName(String kmsKeyName) {
@@ -335,9 +371,11 @@ public final class GetInstanceResult {
             _resultValue.deletionProtectionReason = deletionProtectionReason;
             _resultValue.description = description;
             _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.effectiveReplications = effectiveReplications;
             _resultValue.etag = etag;
             _resultValue.fileShares = fileShares;
             _resultValue.id = id;
+            _resultValue.initialReplications = initialReplications;
             _resultValue.kmsKeyName = kmsKeyName;
             _resultValue.labels = labels;
             _resultValue.location = location;

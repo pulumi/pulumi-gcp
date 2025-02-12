@@ -9,6 +9,7 @@ import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityAccessUrl;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityConfig;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityKeySpec;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthoritySubordinateConfig;
+import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityUserDefinedAccessUrl;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -53,6 +54,7 @@ public final class GetAuthorityResult {
     private List<GetAuthoritySubordinateConfig> subordinateConfigs;
     private String type;
     private String updateTime;
+    private List<GetAuthorityUserDefinedAccessUrl> userDefinedAccessUrls;
 
     private GetAuthorityResult() {}
     public List<GetAuthorityAccessUrl> accessUrls() {
@@ -141,6 +143,9 @@ public final class GetAuthorityResult {
     public String updateTime() {
         return this.updateTime;
     }
+    public List<GetAuthorityUserDefinedAccessUrl> userDefinedAccessUrls() {
+        return this.userDefinedAccessUrls;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -177,6 +182,7 @@ public final class GetAuthorityResult {
         private List<GetAuthoritySubordinateConfig> subordinateConfigs;
         private String type;
         private String updateTime;
+        private List<GetAuthorityUserDefinedAccessUrl> userDefinedAccessUrls;
         public Builder() {}
         public Builder(GetAuthorityResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -206,6 +212,7 @@ public final class GetAuthorityResult {
     	      this.subordinateConfigs = defaults.subordinateConfigs;
     	      this.type = defaults.type;
     	      this.updateTime = defaults.updateTime;
+    	      this.userDefinedAccessUrls = defaults.userDefinedAccessUrls;
         }
 
         @CustomType.Setter
@@ -423,6 +430,17 @@ public final class GetAuthorityResult {
             this.updateTime = updateTime;
             return this;
         }
+        @CustomType.Setter
+        public Builder userDefinedAccessUrls(List<GetAuthorityUserDefinedAccessUrl> userDefinedAccessUrls) {
+            if (userDefinedAccessUrls == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityResult", "userDefinedAccessUrls");
+            }
+            this.userDefinedAccessUrls = userDefinedAccessUrls;
+            return this;
+        }
+        public Builder userDefinedAccessUrls(GetAuthorityUserDefinedAccessUrl... userDefinedAccessUrls) {
+            return userDefinedAccessUrls(List.of(userDefinedAccessUrls));
+        }
         public GetAuthorityResult build() {
             final var _resultValue = new GetAuthorityResult();
             _resultValue.accessUrls = accessUrls;
@@ -451,6 +469,7 @@ public final class GetAuthorityResult {
             _resultValue.subordinateConfigs = subordinateConfigs;
             _resultValue.type = type;
             _resultValue.updateTime = updateTime;
+            _resultValue.userDefinedAccessUrls = userDefinedAccessUrls;
             return _resultValue;
         }
     }

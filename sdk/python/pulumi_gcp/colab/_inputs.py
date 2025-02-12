@@ -15,6 +15,12 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'NotebookExecutionDataformRepositorySourceArgs',
+    'NotebookExecutionDataformRepositorySourceArgsDict',
+    'NotebookExecutionDirectNotebookSourceArgs',
+    'NotebookExecutionDirectNotebookSourceArgsDict',
+    'NotebookExecutionGcsNotebookSourceArgs',
+    'NotebookExecutionGcsNotebookSourceArgsDict',
     'RuntimeNotebookRuntimeTemplateRefArgs',
     'RuntimeNotebookRuntimeTemplateRefArgsDict',
     'RuntimeTemplateDataPersistentDiskSpecArgs',
@@ -35,9 +41,156 @@ __all__ = [
     'RuntimeTemplateNetworkSpecArgsDict',
     'RuntimeTemplateShieldedVmConfigArgs',
     'RuntimeTemplateShieldedVmConfigArgsDict',
+    'RuntimeTemplateSoftwareConfigArgs',
+    'RuntimeTemplateSoftwareConfigArgsDict',
+    'RuntimeTemplateSoftwareConfigEnvArgs',
+    'RuntimeTemplateSoftwareConfigEnvArgsDict',
+    'RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs',
+    'RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgsDict',
+    'ScheduleCreateNotebookExecutionJobRequestArgs',
+    'ScheduleCreateNotebookExecutionJobRequestArgsDict',
+    'ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs',
+    'ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgsDict',
+    'ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs',
+    'ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgsDict',
+    'ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs',
+    'ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgsDict',
 ]
 
 MYPY = False
+
+if not MYPY:
+    class NotebookExecutionDataformRepositorySourceArgsDict(TypedDict):
+        dataform_repository_resource_name: pulumi.Input[str]
+        """
+        The resource name of the Dataform Repository.
+        """
+        commit_sha: NotRequired[pulumi.Input[str]]
+        """
+        The commit SHA to read repository with. If unset, the file will be read at HEAD.
+        """
+elif False:
+    NotebookExecutionDataformRepositorySourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NotebookExecutionDataformRepositorySourceArgs:
+    def __init__(__self__, *,
+                 dataform_repository_resource_name: pulumi.Input[str],
+                 commit_sha: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] dataform_repository_resource_name: The resource name of the Dataform Repository.
+        :param pulumi.Input[str] commit_sha: The commit SHA to read repository with. If unset, the file will be read at HEAD.
+        """
+        pulumi.set(__self__, "dataform_repository_resource_name", dataform_repository_resource_name)
+        if commit_sha is not None:
+            pulumi.set(__self__, "commit_sha", commit_sha)
+
+    @property
+    @pulumi.getter(name="dataformRepositoryResourceName")
+    def dataform_repository_resource_name(self) -> pulumi.Input[str]:
+        """
+        The resource name of the Dataform Repository.
+        """
+        return pulumi.get(self, "dataform_repository_resource_name")
+
+    @dataform_repository_resource_name.setter
+    def dataform_repository_resource_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dataform_repository_resource_name", value)
+
+    @property
+    @pulumi.getter(name="commitSha")
+    def commit_sha(self) -> Optional[pulumi.Input[str]]:
+        """
+        The commit SHA to read repository with. If unset, the file will be read at HEAD.
+        """
+        return pulumi.get(self, "commit_sha")
+
+    @commit_sha.setter
+    def commit_sha(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "commit_sha", value)
+
+
+if not MYPY:
+    class NotebookExecutionDirectNotebookSourceArgsDict(TypedDict):
+        content: pulumi.Input[str]
+        """
+        The base64-encoded contents of the input notebook file.
+        """
+elif False:
+    NotebookExecutionDirectNotebookSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NotebookExecutionDirectNotebookSourceArgs:
+    def __init__(__self__, *,
+                 content: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] content: The base64-encoded contents of the input notebook file.
+        """
+        pulumi.set(__self__, "content", content)
+
+    @property
+    @pulumi.getter
+    def content(self) -> pulumi.Input[str]:
+        """
+        The base64-encoded contents of the input notebook file.
+        """
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: pulumi.Input[str]):
+        pulumi.set(self, "content", value)
+
+
+if not MYPY:
+    class NotebookExecutionGcsNotebookSourceArgsDict(TypedDict):
+        uri: pulumi.Input[str]
+        """
+        The Cloud Storage uri pointing to the ipynb file.
+        """
+        generation: NotRequired[pulumi.Input[str]]
+        """
+        The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+        """
+elif False:
+    NotebookExecutionGcsNotebookSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NotebookExecutionGcsNotebookSourceArgs:
+    def __init__(__self__, *,
+                 uri: pulumi.Input[str],
+                 generation: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] uri: The Cloud Storage uri pointing to the ipynb file.
+        :param pulumi.Input[str] generation: The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+        """
+        pulumi.set(__self__, "uri", uri)
+        if generation is not None:
+            pulumi.set(__self__, "generation", generation)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        The Cloud Storage uri pointing to the ipynb file.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
+
+    @property
+    @pulumi.getter
+    def generation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+        """
+        return pulumi.get(self, "generation")
+
+    @generation.setter
+    def generation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "generation", value)
+
 
 if not MYPY:
     class RuntimeNotebookRuntimeTemplateRefArgsDict(TypedDict):
@@ -486,5 +639,507 @@ class RuntimeTemplateShieldedVmConfigArgs:
     @enable_secure_boot.setter
     def enable_secure_boot(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_secure_boot", value)
+
+
+if not MYPY:
+    class RuntimeTemplateSoftwareConfigArgsDict(TypedDict):
+        envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['RuntimeTemplateSoftwareConfigEnvArgsDict']]]]
+        """
+        Environment variables to be passed to the container.
+        Structure is documented below.
+        """
+        post_startup_script_config: NotRequired[pulumi.Input['RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgsDict']]
+        """
+        Post startup script config.
+        Structure is documented below.
+        """
+elif False:
+    RuntimeTemplateSoftwareConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RuntimeTemplateSoftwareConfigArgs:
+    def __init__(__self__, *,
+                 envs: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeTemplateSoftwareConfigEnvArgs']]]] = None,
+                 post_startup_script_config: Optional[pulumi.Input['RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RuntimeTemplateSoftwareConfigEnvArgs']]] envs: Environment variables to be passed to the container.
+               Structure is documented below.
+        :param pulumi.Input['RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs'] post_startup_script_config: Post startup script config.
+               Structure is documented below.
+        """
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+        if post_startup_script_config is not None:
+            pulumi.set(__self__, "post_startup_script_config", post_startup_script_config)
+
+    @property
+    @pulumi.getter
+    def envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeTemplateSoftwareConfigEnvArgs']]]]:
+        """
+        Environment variables to be passed to the container.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "envs")
+
+    @envs.setter
+    def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeTemplateSoftwareConfigEnvArgs']]]]):
+        pulumi.set(self, "envs", value)
+
+    @property
+    @pulumi.getter(name="postStartupScriptConfig")
+    def post_startup_script_config(self) -> Optional[pulumi.Input['RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs']]:
+        """
+        Post startup script config.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "post_startup_script_config")
+
+    @post_startup_script_config.setter
+    def post_startup_script_config(self, value: Optional[pulumi.Input['RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs']]):
+        pulumi.set(self, "post_startup_script_config", value)
+
+
+if not MYPY:
+    class RuntimeTemplateSoftwareConfigEnvArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the environment variable. Must be a valid C identifier.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Variables that reference a $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
+        """
+elif False:
+    RuntimeTemplateSoftwareConfigEnvArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RuntimeTemplateSoftwareConfigEnvArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the environment variable. Must be a valid C identifier.
+        :param pulumi.Input[str] value: Variables that reference a $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the environment variable. Must be a valid C identifier.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Variables that reference a $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgsDict(TypedDict):
+        post_startup_script: NotRequired[pulumi.Input[str]]
+        """
+        Post startup script to run after runtime is started.
+        """
+        post_startup_script_behavior: NotRequired[pulumi.Input[str]]
+        """
+        Post startup script behavior that defines download and execution behavior.
+        Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
+        """
+        post_startup_script_url: NotRequired[pulumi.Input[str]]
+        """
+        Post startup script url to download. Example: https://bucket/script.sh.
+        """
+elif False:
+    RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs:
+    def __init__(__self__, *,
+                 post_startup_script: Optional[pulumi.Input[str]] = None,
+                 post_startup_script_behavior: Optional[pulumi.Input[str]] = None,
+                 post_startup_script_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] post_startup_script: Post startup script to run after runtime is started.
+        :param pulumi.Input[str] post_startup_script_behavior: Post startup script behavior that defines download and execution behavior.
+               Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
+        :param pulumi.Input[str] post_startup_script_url: Post startup script url to download. Example: https://bucket/script.sh.
+        """
+        if post_startup_script is not None:
+            pulumi.set(__self__, "post_startup_script", post_startup_script)
+        if post_startup_script_behavior is not None:
+            pulumi.set(__self__, "post_startup_script_behavior", post_startup_script_behavior)
+        if post_startup_script_url is not None:
+            pulumi.set(__self__, "post_startup_script_url", post_startup_script_url)
+
+    @property
+    @pulumi.getter(name="postStartupScript")
+    def post_startup_script(self) -> Optional[pulumi.Input[str]]:
+        """
+        Post startup script to run after runtime is started.
+        """
+        return pulumi.get(self, "post_startup_script")
+
+    @post_startup_script.setter
+    def post_startup_script(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "post_startup_script", value)
+
+    @property
+    @pulumi.getter(name="postStartupScriptBehavior")
+    def post_startup_script_behavior(self) -> Optional[pulumi.Input[str]]:
+        """
+        Post startup script behavior that defines download and execution behavior.
+        Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
+        """
+        return pulumi.get(self, "post_startup_script_behavior")
+
+    @post_startup_script_behavior.setter
+    def post_startup_script_behavior(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "post_startup_script_behavior", value)
+
+    @property
+    @pulumi.getter(name="postStartupScriptUrl")
+    def post_startup_script_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Post startup script url to download. Example: https://bucket/script.sh.
+        """
+        return pulumi.get(self, "post_startup_script_url")
+
+    @post_startup_script_url.setter
+    def post_startup_script_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "post_startup_script_url", value)
+
+
+if not MYPY:
+    class ScheduleCreateNotebookExecutionJobRequestArgsDict(TypedDict):
+        notebook_execution_job: pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgsDict']
+        """
+        The NotebookExecutionJob to create.
+        Structure is documented below.
+        """
+elif False:
+    ScheduleCreateNotebookExecutionJobRequestArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ScheduleCreateNotebookExecutionJobRequestArgs:
+    def __init__(__self__, *,
+                 notebook_execution_job: pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs']):
+        """
+        :param pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs'] notebook_execution_job: The NotebookExecutionJob to create.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "notebook_execution_job", notebook_execution_job)
+
+    @property
+    @pulumi.getter(name="notebookExecutionJob")
+    def notebook_execution_job(self) -> pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs']:
+        """
+        The NotebookExecutionJob to create.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "notebook_execution_job")
+
+    @notebook_execution_job.setter
+    def notebook_execution_job(self, value: pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs']):
+        pulumi.set(self, "notebook_execution_job", value)
+
+
+if not MYPY:
+    class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgsDict(TypedDict):
+        display_name: pulumi.Input[str]
+        """
+        Required. The display name of the Notebook Execution.
+        """
+        gcs_output_uri: pulumi.Input[str]
+        """
+        The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
+        """
+        notebook_runtime_template_resource_name: pulumi.Input[str]
+        """
+        The NotebookRuntimeTemplate to source compute configuration from.
+        """
+        dataform_repository_source: NotRequired[pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgsDict']]
+        """
+        The Dataform Repository containing the input notebook.
+        Structure is documented below.
+        """
+        execution_timeout: NotRequired[pulumi.Input[str]]
+        """
+        Max running time of the execution job in seconds (default 86400s / 24 hrs). A duration in seconds with up to nine fractional digits, ending with "s". Example: "3.5s".
+        """
+        execution_user: NotRequired[pulumi.Input[str]]
+        """
+        The user email to run the execution as.
+        """
+        gcs_notebook_source: NotRequired[pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgsDict']]
+        """
+        The Cloud Storage uri for the input notebook.
+        Structure is documented below.
+        """
+        service_account: NotRequired[pulumi.Input[str]]
+        """
+        The service account to run the execution as.
+        """
+elif False:
+    ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs:
+    def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
+                 gcs_output_uri: pulumi.Input[str],
+                 notebook_runtime_template_resource_name: pulumi.Input[str],
+                 dataform_repository_source: Optional[pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs']] = None,
+                 execution_timeout: Optional[pulumi.Input[str]] = None,
+                 execution_user: Optional[pulumi.Input[str]] = None,
+                 gcs_notebook_source: Optional[pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs']] = None,
+                 service_account: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] display_name: Required. The display name of the Notebook Execution.
+        :param pulumi.Input[str] gcs_output_uri: The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
+        :param pulumi.Input[str] notebook_runtime_template_resource_name: The NotebookRuntimeTemplate to source compute configuration from.
+        :param pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs'] dataform_repository_source: The Dataform Repository containing the input notebook.
+               Structure is documented below.
+        :param pulumi.Input[str] execution_timeout: Max running time of the execution job in seconds (default 86400s / 24 hrs). A duration in seconds with up to nine fractional digits, ending with "s". Example: "3.5s".
+        :param pulumi.Input[str] execution_user: The user email to run the execution as.
+        :param pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs'] gcs_notebook_source: The Cloud Storage uri for the input notebook.
+               Structure is documented below.
+        :param pulumi.Input[str] service_account: The service account to run the execution as.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "gcs_output_uri", gcs_output_uri)
+        pulumi.set(__self__, "notebook_runtime_template_resource_name", notebook_runtime_template_resource_name)
+        if dataform_repository_source is not None:
+            pulumi.set(__self__, "dataform_repository_source", dataform_repository_source)
+        if execution_timeout is not None:
+            pulumi.set(__self__, "execution_timeout", execution_timeout)
+        if execution_user is not None:
+            pulumi.set(__self__, "execution_user", execution_user)
+        if gcs_notebook_source is not None:
+            pulumi.set(__self__, "gcs_notebook_source", gcs_notebook_source)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        Required. The display name of the Notebook Execution.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="gcsOutputUri")
+    def gcs_output_uri(self) -> pulumi.Input[str]:
+        """
+        The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
+        """
+        return pulumi.get(self, "gcs_output_uri")
+
+    @gcs_output_uri.setter
+    def gcs_output_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "gcs_output_uri", value)
+
+    @property
+    @pulumi.getter(name="notebookRuntimeTemplateResourceName")
+    def notebook_runtime_template_resource_name(self) -> pulumi.Input[str]:
+        """
+        The NotebookRuntimeTemplate to source compute configuration from.
+        """
+        return pulumi.get(self, "notebook_runtime_template_resource_name")
+
+    @notebook_runtime_template_resource_name.setter
+    def notebook_runtime_template_resource_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "notebook_runtime_template_resource_name", value)
+
+    @property
+    @pulumi.getter(name="dataformRepositorySource")
+    def dataform_repository_source(self) -> Optional[pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs']]:
+        """
+        The Dataform Repository containing the input notebook.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dataform_repository_source")
+
+    @dataform_repository_source.setter
+    def dataform_repository_source(self, value: Optional[pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs']]):
+        pulumi.set(self, "dataform_repository_source", value)
+
+    @property
+    @pulumi.getter(name="executionTimeout")
+    def execution_timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        Max running time of the execution job in seconds (default 86400s / 24 hrs). A duration in seconds with up to nine fractional digits, ending with "s". Example: "3.5s".
+        """
+        return pulumi.get(self, "execution_timeout")
+
+    @execution_timeout.setter
+    def execution_timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "execution_timeout", value)
+
+    @property
+    @pulumi.getter(name="executionUser")
+    def execution_user(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user email to run the execution as.
+        """
+        return pulumi.get(self, "execution_user")
+
+    @execution_user.setter
+    def execution_user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "execution_user", value)
+
+    @property
+    @pulumi.getter(name="gcsNotebookSource")
+    def gcs_notebook_source(self) -> Optional[pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs']]:
+        """
+        The Cloud Storage uri for the input notebook.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gcs_notebook_source")
+
+    @gcs_notebook_source.setter
+    def gcs_notebook_source(self, value: Optional[pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs']]):
+        pulumi.set(self, "gcs_notebook_source", value)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service account to run the execution as.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+
+if not MYPY:
+    class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgsDict(TypedDict):
+        dataform_repository_resource_name: pulumi.Input[str]
+        """
+        The resource name of the Dataform Repository.
+        """
+        commit_sha: NotRequired[pulumi.Input[str]]
+        """
+        The commit SHA to read repository with. If unset, the file will be read at HEAD.
+        """
+elif False:
+    ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs:
+    def __init__(__self__, *,
+                 dataform_repository_resource_name: pulumi.Input[str],
+                 commit_sha: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] dataform_repository_resource_name: The resource name of the Dataform Repository.
+        :param pulumi.Input[str] commit_sha: The commit SHA to read repository with. If unset, the file will be read at HEAD.
+        """
+        pulumi.set(__self__, "dataform_repository_resource_name", dataform_repository_resource_name)
+        if commit_sha is not None:
+            pulumi.set(__self__, "commit_sha", commit_sha)
+
+    @property
+    @pulumi.getter(name="dataformRepositoryResourceName")
+    def dataform_repository_resource_name(self) -> pulumi.Input[str]:
+        """
+        The resource name of the Dataform Repository.
+        """
+        return pulumi.get(self, "dataform_repository_resource_name")
+
+    @dataform_repository_resource_name.setter
+    def dataform_repository_resource_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dataform_repository_resource_name", value)
+
+    @property
+    @pulumi.getter(name="commitSha")
+    def commit_sha(self) -> Optional[pulumi.Input[str]]:
+        """
+        The commit SHA to read repository with. If unset, the file will be read at HEAD.
+        """
+        return pulumi.get(self, "commit_sha")
+
+    @commit_sha.setter
+    def commit_sha(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "commit_sha", value)
+
+
+if not MYPY:
+    class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgsDict(TypedDict):
+        uri: pulumi.Input[str]
+        """
+        The Cloud Storage uri pointing to the ipynb file. Format: gs://bucket/notebook_file.ipynb
+        """
+        generation: NotRequired[pulumi.Input[str]]
+        """
+        The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+
+        - - -
+        """
+elif False:
+    ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs:
+    def __init__(__self__, *,
+                 uri: pulumi.Input[str],
+                 generation: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] uri: The Cloud Storage uri pointing to the ipynb file. Format: gs://bucket/notebook_file.ipynb
+        :param pulumi.Input[str] generation: The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+               
+               - - -
+        """
+        pulumi.set(__self__, "uri", uri)
+        if generation is not None:
+            pulumi.set(__self__, "generation", generation)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        The Cloud Storage uri pointing to the ipynb file. Format: gs://bucket/notebook_file.ipynb
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
+
+    @property
+    @pulumi.getter
+    def generation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+
+        - - -
+        """
+        return pulumi.get(self, "generation")
+
+    @generation.setter
+    def generation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "generation", value)
 
 

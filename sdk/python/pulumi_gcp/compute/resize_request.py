@@ -23,11 +23,11 @@ class ResizeRequestArgs:
     def __init__(__self__, *,
                  instance_group_manager: pulumi.Input[str],
                  resize_by: pulumi.Input[int],
-                 zone: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 requested_run_duration: Optional[pulumi.Input['ResizeRequestRequestedRunDurationArgs']] = None):
+                 requested_run_duration: Optional[pulumi.Input['ResizeRequestRequestedRunDurationArgs']] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ResizeRequest resource.
         :param pulumi.Input[str] instance_group_manager: The reference of the instance group manager this ResizeRequest is a part of.
@@ -35,17 +35,16 @@ class ResizeRequestArgs:
                
                - - -
         :param pulumi.Input[int] resize_by: The number of instances to be created by this resize request. The group's target size will be increased by this number.
-        :param pulumi.Input[str] zone: The reference of the compute zone scoping this request.
         :param pulumi.Input[str] description: An optional description of this resize-request.
         :param pulumi.Input[str] name: The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['ResizeRequestRequestedRunDurationArgs'] requested_run_duration: Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
                Structure is documented below.
+        :param pulumi.Input[str] zone: The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
         """
         pulumi.set(__self__, "instance_group_manager", instance_group_manager)
         pulumi.set(__self__, "resize_by", resize_by)
-        pulumi.set(__self__, "zone", zone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -54,6 +53,8 @@ class ResizeRequestArgs:
             pulumi.set(__self__, "project", project)
         if requested_run_duration is not None:
             pulumi.set(__self__, "requested_run_duration", requested_run_duration)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="instanceGroupManager")
@@ -81,18 +82,6 @@ class ResizeRequestArgs:
     @resize_by.setter
     def resize_by(self, value: pulumi.Input[int]):
         pulumi.set(self, "resize_by", value)
-
-    @property
-    @pulumi.getter
-    def zone(self) -> pulumi.Input[str]:
-        """
-        The reference of the compute zone scoping this request.
-        """
-        return pulumi.get(self, "zone")
-
-    @zone.setter
-    def zone(self, value: pulumi.Input[str]):
-        pulumi.set(self, "zone", value)
 
     @property
     @pulumi.getter
@@ -144,6 +133,18 @@ class ResizeRequestArgs:
     def requested_run_duration(self, value: Optional[pulumi.Input['ResizeRequestRequestedRunDurationArgs']]):
         pulumi.set(self, "requested_run_duration", value)
 
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
 
 @pulumi.input_type
 class _ResizeRequestState:
@@ -175,7 +176,7 @@ class _ResizeRequestState:
         :param pulumi.Input[str] state: Current state of the request.
         :param pulumi.Input[Sequence[pulumi.Input['ResizeRequestStatusArgs']]] statuses: Status of the request.
                Structure is documented below.
-        :param pulumi.Input[str] zone: The reference of the compute zone scoping this request.
+        :param pulumi.Input[str] zone: The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
         """
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -316,7 +317,7 @@ class _ResizeRequestState:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The reference of the compute zone scoping this request.
+        The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
         """
         return pulumi.get(self, "zone")
 
@@ -458,7 +459,7 @@ class ResizeRequest(pulumi.CustomResource):
         :param pulumi.Input[Union['ResizeRequestRequestedRunDurationArgs', 'ResizeRequestRequestedRunDurationArgsDict']] requested_run_duration: Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
                Structure is documented below.
         :param pulumi.Input[int] resize_by: The number of instances to be created by this resize request. The group's target size will be increased by this number.
-        :param pulumi.Input[str] zone: The reference of the compute zone scoping this request.
+        :param pulumi.Input[str] zone: The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
         """
         ...
     @overload
@@ -614,8 +615,6 @@ class ResizeRequest(pulumi.CustomResource):
             if resize_by is None and not opts.urn:
                 raise TypeError("Missing required property 'resize_by'")
             __props__.__dict__["resize_by"] = resize_by
-            if zone is None and not opts.urn:
-                raise TypeError("Missing required property 'zone'")
             __props__.__dict__["zone"] = zone
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["state"] = None
@@ -662,7 +661,7 @@ class ResizeRequest(pulumi.CustomResource):
         :param pulumi.Input[str] state: Current state of the request.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ResizeRequestStatusArgs', 'ResizeRequestStatusArgsDict']]]] statuses: Status of the request.
                Structure is documented below.
-        :param pulumi.Input[str] zone: The reference of the compute zone scoping this request.
+        :param pulumi.Input[str] zone: The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -762,7 +761,7 @@ class ResizeRequest(pulumi.CustomResource):
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
         """
-        The reference of the compute zone scoping this request.
+        The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
         """
         return pulumi.get(self, "zone")
 

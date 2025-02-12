@@ -187,7 +187,7 @@ export class ResizeRequest extends pulumi.CustomResource {
      */
     public /*out*/ readonly statuses!: pulumi.Output<outputs.compute.ResizeRequestStatus[]>;
     /**
-     * The reference of the compute zone scoping this request.
+     * The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -221,9 +221,6 @@ export class ResizeRequest extends pulumi.CustomResource {
             }
             if ((!args || args.resizeBy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resizeBy'");
-            }
-            if ((!args || args.zone === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'zone'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["instanceGroupManager"] = args ? args.instanceGroupManager : undefined;
@@ -288,7 +285,7 @@ export interface ResizeRequestState {
      */
     statuses?: pulumi.Input<pulumi.Input<inputs.compute.ResizeRequestStatus>[]>;
     /**
-     * The reference of the compute zone scoping this request.
+     * The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
      */
     zone?: pulumi.Input<string>;
 }
@@ -327,7 +324,7 @@ export interface ResizeRequestArgs {
      */
     resizeBy: pulumi.Input<number>;
     /**
-     * The reference of the compute zone scoping this request.
+     * The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
      */
-    zone: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

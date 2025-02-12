@@ -65,6 +65,52 @@ namespace Pulumi.Gcp.Colab
     /// 
     /// });
     /// ```
+    /// ### Colab Runtime Stopped
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myTemplate = new Gcp.Colab.RuntimeTemplate("my_template", new()
+    ///     {
+    ///         Name = "colab-runtime",
+    ///         DisplayName = "Runtime template basic",
+    ///         Location = "us-central1",
+    ///         MachineSpec = new Gcp.Colab.Inputs.RuntimeTemplateMachineSpecArgs
+    ///         {
+    ///             MachineType = "e2-standard-4",
+    ///         },
+    ///         NetworkSpec = new Gcp.Colab.Inputs.RuntimeTemplateNetworkSpecArgs
+    ///         {
+    ///             EnableInternetAccess = true,
+    ///         },
+    ///     });
+    /// 
+    ///     var runtime = new Gcp.Colab.Runtime("runtime", new()
+    ///     {
+    ///         Name = "colab-runtime",
+    ///         Location = "us-central1",
+    ///         NotebookRuntimeTemplateRef = new Gcp.Colab.Inputs.RuntimeNotebookRuntimeTemplateRefArgs
+    ///         {
+    ///             NotebookRuntimeTemplate = myTemplate.Id,
+    ///         },
+    ///         DesiredState = "STOPPED",
+    ///         DisplayName = "Runtime stopped",
+    ///         RuntimeUser = "gterraformtestuser@gmail.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             myTemplate,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Colab Runtime Full
     /// 
     /// ```csharp
@@ -134,6 +180,8 @@ namespace Pulumi.Gcp.Colab
     ///         DisplayName = "Runtime full",
     ///         RuntimeUser = "gterraformtestuser@gmail.com",
     ///         Description = "Full runtime",
+    ///         DesiredState = "ACTIVE",
+    ///         AutoUpgrade = true,
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
@@ -173,16 +221,40 @@ namespace Pulumi.Gcp.Colab
     public partial class Runtime : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Triggers an upgrade anytime the runtime is started if it is upgradable.
+        /// </summary>
+        [Output("autoUpgrade")]
+        public Output<bool?> AutoUpgrade { get; private set; } = null!;
+
+        /// <summary>
         /// The description of the Runtime.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
+        /// </summary>
+        [Output("desiredState")]
+        public Output<string?> DesiredState { get; private set; } = null!;
+
+        /// <summary>
         /// Required. The display name of the Runtime.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Output only. Timestamp when this NotebookRuntime will be expired.
+        /// </summary>
+        [Output("expirationTime")]
+        public Output<string> ExpirationTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Output only. Checks if the NotebookRuntime is upgradable.
+        /// </summary>
+        [Output("isUpgradable")]
+        public Output<bool> IsUpgradable { get; private set; } = null!;
 
         /// <summary>
         /// The location for the resource: https://cloud.google.com/colab/docs/locations
@@ -207,6 +279,12 @@ namespace Pulumi.Gcp.Colab
         public Output<Outputs.RuntimeNotebookRuntimeTemplateRef?> NotebookRuntimeTemplateRef { get; private set; } = null!;
 
         /// <summary>
+        /// Output only. The type of the notebook runtime.
+        /// </summary>
+        [Output("notebookRuntimeType")]
+        public Output<string> NotebookRuntimeType { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -218,6 +296,12 @@ namespace Pulumi.Gcp.Colab
         /// </summary>
         [Output("runtimeUser")]
         public Output<string> RuntimeUser { get; private set; } = null!;
+
+        /// <summary>
+        /// Output only. The state of the runtime.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
 
 
         /// <summary>
@@ -266,10 +350,22 @@ namespace Pulumi.Gcp.Colab
     public sealed class RuntimeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Triggers an upgrade anytime the runtime is started if it is upgradable.
+        /// </summary>
+        [Input("autoUpgrade")]
+        public Input<bool>? AutoUpgrade { get; set; }
+
+        /// <summary>
         /// The description of the Runtime.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
+        /// </summary>
+        [Input("desiredState")]
+        public Input<string>? DesiredState { get; set; }
 
         /// <summary>
         /// Required. The display name of the Runtime.
@@ -321,16 +417,40 @@ namespace Pulumi.Gcp.Colab
     public sealed class RuntimeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Triggers an upgrade anytime the runtime is started if it is upgradable.
+        /// </summary>
+        [Input("autoUpgrade")]
+        public Input<bool>? AutoUpgrade { get; set; }
+
+        /// <summary>
         /// The description of the Runtime.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
+        /// </summary>
+        [Input("desiredState")]
+        public Input<string>? DesiredState { get; set; }
+
+        /// <summary>
         /// Required. The display name of the Runtime.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. Timestamp when this NotebookRuntime will be expired.
+        /// </summary>
+        [Input("expirationTime")]
+        public Input<string>? ExpirationTime { get; set; }
+
+        /// <summary>
+        /// Output only. Checks if the NotebookRuntime is upgradable.
+        /// </summary>
+        [Input("isUpgradable")]
+        public Input<bool>? IsUpgradable { get; set; }
 
         /// <summary>
         /// The location for the resource: https://cloud.google.com/colab/docs/locations
@@ -355,6 +475,12 @@ namespace Pulumi.Gcp.Colab
         public Input<Inputs.RuntimeNotebookRuntimeTemplateRefGetArgs>? NotebookRuntimeTemplateRef { get; set; }
 
         /// <summary>
+        /// Output only. The type of the notebook runtime.
+        /// </summary>
+        [Input("notebookRuntimeType")]
+        public Input<string>? NotebookRuntimeType { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -366,6 +492,12 @@ namespace Pulumi.Gcp.Colab
         /// </summary>
         [Input("runtimeUser")]
         public Input<string>? RuntimeUser { get; set; }
+
+        /// <summary>
+        /// Output only. The state of the runtime.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
 
         public RuntimeState()
         {

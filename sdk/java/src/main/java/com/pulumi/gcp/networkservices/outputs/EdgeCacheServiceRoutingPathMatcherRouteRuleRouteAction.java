@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.networkservices.outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy;
 import com.pulumi.gcp.networkservices.outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy;
 import com.pulumi.gcp.networkservices.outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,6 +20,13 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction {
      * 
      */
     private @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy cdnPolicy;
+    /**
+     * @return Setting the compression mode to automatic enables dynamic compression for every eligible response.
+     * When dynamic compression is enabled, it is recommended to also set a cache policy to maximize efficiency.
+     * Possible values are: `DISABLED`, `AUTOMATIC`.
+     * 
+     */
+    private @Nullable String compressionMode;
     /**
      * @return CORSPolicy defines Cross-Origin-Resource-Sharing configuration, including which CORS response headers will be set.
      * Structure is documented below.
@@ -40,6 +48,15 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction {
      */
     public Optional<EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy> cdnPolicy() {
         return Optional.ofNullable(this.cdnPolicy);
+    }
+    /**
+     * @return Setting the compression mode to automatic enables dynamic compression for every eligible response.
+     * When dynamic compression is enabled, it is recommended to also set a cache policy to maximize efficiency.
+     * Possible values are: `DISABLED`, `AUTOMATIC`.
+     * 
+     */
+    public Optional<String> compressionMode() {
+        return Optional.ofNullable(this.compressionMode);
     }
     /**
      * @return CORSPolicy defines Cross-Origin-Resource-Sharing configuration, including which CORS response headers will be set.
@@ -68,12 +85,14 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy cdnPolicy;
+        private @Nullable String compressionMode;
         private @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy corsPolicy;
         private @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite urlRewrite;
         public Builder() {}
         public Builder(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cdnPolicy = defaults.cdnPolicy;
+    	      this.compressionMode = defaults.compressionMode;
     	      this.corsPolicy = defaults.corsPolicy;
     	      this.urlRewrite = defaults.urlRewrite;
         }
@@ -82,6 +101,12 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction {
         public Builder cdnPolicy(@Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy cdnPolicy) {
 
             this.cdnPolicy = cdnPolicy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder compressionMode(@Nullable String compressionMode) {
+
+            this.compressionMode = compressionMode;
             return this;
         }
         @CustomType.Setter
@@ -99,6 +124,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction {
         public EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction build() {
             final var _resultValue = new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction();
             _resultValue.cdnPolicy = cdnPolicy;
+            _resultValue.compressionMode = compressionMode;
             _resultValue.corsPolicy = corsPolicy;
             _resultValue.urlRewrite = urlRewrite;
             return _resultValue;

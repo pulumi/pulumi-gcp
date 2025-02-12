@@ -2044,6 +2044,10 @@ type EdgeCacheServiceRoutingPathMatcherRouteRule struct {
 	// In response to a matching path, the routeAction performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected origin.
 	// Structure is documented below.
 	RouteAction *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction `pulumi:"routeAction"`
+	// Allow overriding the set of methods that are allowed for this route.
+	// When not set, Media CDN allows only "GET", "HEAD", and "OPTIONS".
+	// Structure is documented below.
+	RouteMethods *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods `pulumi:"routeMethods"`
 	// The URL redirect configuration for requests that match this route.
 	// Structure is documented below.
 	UrlRedirect *EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect `pulumi:"urlRedirect"`
@@ -2081,6 +2085,10 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleArgs struct {
 	// In response to a matching path, the routeAction performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected origin.
 	// Structure is documented below.
 	RouteAction EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrInput `pulumi:"routeAction"`
+	// Allow overriding the set of methods that are allowed for this route.
+	// When not set, Media CDN allows only "GET", "HEAD", and "OPTIONS".
+	// Structure is documented below.
+	RouteMethods EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrInput `pulumi:"routeMethods"`
 	// The URL redirect configuration for requests that match this route.
 	// Structure is documented below.
 	UrlRedirect EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrInput `pulumi:"urlRedirect"`
@@ -2179,6 +2187,15 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleOutput) RouteAction() EdgeCac
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRule) *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction {
 		return v.RouteAction
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrOutput)
+}
+
+// Allow overriding the set of methods that are allowed for this route.
+// When not set, Media CDN allows only "GET", "HEAD", and "OPTIONS".
+// Structure is documented below.
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleOutput) RouteMethods() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutput {
+	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRule) *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods {
+		return v.RouteMethods
+	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutput)
 }
 
 // The URL redirect configuration for requests that match this route.
@@ -3315,6 +3332,10 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction struct {
 	// The policy to use for defining caching and signed request behaviour for requests that match this route.
 	// Structure is documented below.
 	CdnPolicy *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy `pulumi:"cdnPolicy"`
+	// Setting the compression mode to automatic enables dynamic compression for every eligible response.
+	// When dynamic compression is enabled, it is recommended to also set a cache policy to maximize efficiency.
+	// Possible values are: `DISABLED`, `AUTOMATIC`.
+	CompressionMode *string `pulumi:"compressionMode"`
 	// CORSPolicy defines Cross-Origin-Resource-Sharing configuration, including which CORS response headers will be set.
 	// Structure is documented below.
 	CorsPolicy *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy `pulumi:"corsPolicy"`
@@ -3338,6 +3359,10 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs struct {
 	// The policy to use for defining caching and signed request behaviour for requests that match this route.
 	// Structure is documented below.
 	CdnPolicy EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrInput `pulumi:"cdnPolicy"`
+	// Setting the compression mode to automatic enables dynamic compression for every eligible response.
+	// When dynamic compression is enabled, it is recommended to also set a cache policy to maximize efficiency.
+	// Possible values are: `DISABLED`, `AUTOMATIC`.
+	CompressionMode pulumi.StringPtrInput `pulumi:"compressionMode"`
 	// CORSPolicy defines Cross-Origin-Resource-Sharing configuration, including which CORS response headers will be set.
 	// Structure is documented below.
 	CorsPolicy EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrInput `pulumi:"corsPolicy"`
@@ -3431,6 +3456,13 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionOutput) CdnPolicy(
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput)
 }
 
+// Setting the compression mode to automatic enables dynamic compression for every eligible response.
+// When dynamic compression is enabled, it is recommended to also set a cache policy to maximize efficiency.
+// Possible values are: `DISABLED`, `AUTOMATIC`.
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionOutput) CompressionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction) *string { return v.CompressionMode }).(pulumi.StringPtrOutput)
+}
+
 // CORSPolicy defines Cross-Origin-Resource-Sharing configuration, including which CORS response headers will be set.
 // Structure is documented below.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionOutput) CorsPolicy() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput {
@@ -3480,6 +3512,18 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrOutput) CdnPoli
 		}
 		return v.CdnPolicy
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput)
+}
+
+// Setting the compression mode to automatic enables dynamic compression for every eligible response.
+// When dynamic compression is enabled, it is recommended to also set a cache policy to maximize efficiency.
+// Possible values are: `DISABLED`, `AUTOMATIC`.
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrOutput) CompressionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompressionMode
+	}).(pulumi.StringPtrOutput)
 }
 
 // CORSPolicy defines Cross-Origin-Resource-Sharing configuration, including which CORS response headers will be set.
@@ -5344,6 +5388,147 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrOutpu
 		}
 		return v.PathTemplateRewrite
 	}).(pulumi.StringPtrOutput)
+}
+
+type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods struct {
+	// The non-empty set of HTTP methods that are allowed for this route.
+	// Any combination of "GET", "HEAD", "OPTIONS", "PUT", "POST", "DELETE", and "PATCH".
+	AllowedMethods []string `pulumi:"allowedMethods"`
+}
+
+// EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs and EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsOutput values.
+// You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsInput` via:
+//
+//	EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs{...}
+type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsInput interface {
+	pulumi.Input
+
+	ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsOutput
+	ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsOutputWithContext(context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsOutput
+}
+
+type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs struct {
+	// The non-empty set of HTTP methods that are allowed for this route.
+	// Any combination of "GET", "HEAD", "OPTIONS", "PUT", "POST", "DELETE", and "PATCH".
+	AllowedMethods pulumi.StringArrayInput `pulumi:"allowedMethods"`
+}
+
+func (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods)(nil)).Elem()
+}
+
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsOutput {
+	return i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsOutputWithContext(context.Background())
+}
+
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsOutput)
+}
+
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutput {
+	return i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutputWithContext(context.Background())
+}
+
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsOutput).ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutputWithContext(ctx)
+}
+
+// EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs, EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtr and EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutput values.
+// You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrInput` via:
+//
+//	        EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs{...}
+//
+//	or:
+//
+//	        nil
+type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrInput interface {
+	pulumi.Input
+
+	ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutput
+	ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutputWithContext(context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutput
+}
+
+type edgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrType EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs
+
+func EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtr(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrInput {
+	return (*edgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrType)(v)
+}
+
+func (*edgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods)(nil)).Elem()
+}
+
+func (i *edgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrType) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutput {
+	return i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutputWithContext(context.Background())
+}
+
+func (i *edgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrType) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutput)
+}
+
+type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsOutput struct{ *pulumi.OutputState }
+
+func (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods)(nil)).Elem()
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsOutput {
+	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsOutput {
+	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutput {
+	return o.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutputWithContext(context.Background())
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods) *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods {
+		return &v
+	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutput)
+}
+
+// The non-empty set of HTTP methods that are allowed for this route.
+// Any combination of "GET", "HEAD", "OPTIONS", "PUT", "POST", "DELETE", and "PATCH".
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsOutput) AllowedMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods) []string { return v.AllowedMethods }).(pulumi.StringArrayOutput)
+}
+
+type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutput struct{ *pulumi.OutputState }
+
+func (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods)(nil)).Elem()
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutput {
+	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutput {
+	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutput) Elem() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsOutput {
+	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods {
+		if v != nil {
+			return *v
+		}
+		var ret EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods
+		return ret
+	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsOutput)
+}
+
+// The non-empty set of HTTP methods that are allowed for this route.
+// Any combination of "GET", "HEAD", "OPTIONS", "PUT", "POST", "DELETE", and "PATCH".
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutput) AllowedMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedMethods
+	}).(pulumi.StringArrayOutput)
 }
 
 type EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect struct {
@@ -12737,6 +12922,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrInput)(nil)).Elem(), EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteInput)(nil)).Elem(), EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrInput)(nil)).Elem(), EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsInput)(nil)).Elem(), EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrInput)(nil)).Elem(), EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectInput)(nil)).Elem(), EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrInput)(nil)).Elem(), EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointPolicyEndpointMatcherInput)(nil)).Elem(), EndpointPolicyEndpointMatcherArgs{})
@@ -12889,6 +13076,8 @@ func init() {
 	pulumi.RegisterOutputType(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput{})
 	pulumi.RegisterOutputType(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteOutput{})
 	pulumi.RegisterOutputType(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrOutput{})
+	pulumi.RegisterOutputType(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsOutput{})
+	pulumi.RegisterOutputType(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsPtrOutput{})
 	pulumi.RegisterOutputType(EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectOutput{})
 	pulumi.RegisterOutputType(EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutput{})
 	pulumi.RegisterOutputType(EndpointPolicyEndpointMatcherOutput{})

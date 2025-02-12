@@ -161,6 +161,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NetworkFirewallPolicy{}
 	case "gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation":
 		r = &NetworkFirewallPolicyAssociation{}
+	case "gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule":
+		r = &NetworkFirewallPolicyPacketMirroringRule{}
 	case "gcp:compute/networkFirewallPolicyRule:NetworkFirewallPolicyRule":
 		r = &NetworkFirewallPolicyRule{}
 	case "gcp:compute/networkFirewallPolicyWithRules:NetworkFirewallPolicyWithRules":
@@ -688,6 +690,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/networkFirewallPolicyAssociation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/networkFirewallPolicyPacketMirroringRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

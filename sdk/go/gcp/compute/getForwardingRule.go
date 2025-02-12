@@ -76,6 +76,7 @@ type LookupForwardingRuleResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id                            string                                          `pulumi:"id"`
 	IpAddress                     string                                          `pulumi:"ipAddress"`
+	IpCollection                  string                                          `pulumi:"ipCollection"`
 	IpProtocol                    string                                          `pulumi:"ipProtocol"`
 	IpVersion                     string                                          `pulumi:"ipVersion"`
 	IsMirroringCollector          bool                                            `pulumi:"isMirroringCollector"`
@@ -188,6 +189,10 @@ func (o LookupForwardingRuleResultOutput) Id() pulumi.StringOutput {
 
 func (o LookupForwardingRuleResultOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) IpCollection() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.IpCollection }).(pulumi.StringOutput)
 }
 
 func (o LookupForwardingRuleResultOutput) IpProtocol() pulumi.StringOutput {

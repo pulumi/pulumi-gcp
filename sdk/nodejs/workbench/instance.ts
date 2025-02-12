@@ -9,6 +9,12 @@ import * as utilities from "../utilities";
 /**
  * A Workbench instance.
  *
+ * To get more information about Instance, see:
+ *
+ * * [API documentation](https://cloud.google.com/vertex-ai/docs/workbench/reference/rest/v2/projects.locations.instances)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/vertex-ai/docs/workbench/instances/introduction)
+ *
  * ## Example Usage
  *
  * ### Workbench Instance Basic
@@ -165,6 +171,7 @@ import * as utilities from "../utilities";
  *         k: "val",
  *     },
  *     desiredState: "ACTIVE",
+ *     enableThirdPartyIdentity: true,
  * });
  * ```
  *
@@ -241,6 +248,11 @@ export class Instance extends pulumi.CustomResource {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Flag that specifies that a notebook can be accessed with third party
+     * identity provider.
+     */
+    public readonly enableThirdPartyIdentity!: pulumi.Output<boolean | undefined>;
     /**
      * The definition of how to configure a VM instance outside of Resources and Identity.
      * Structure is documented below.
@@ -335,6 +347,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["desiredState"] = state ? state.desiredState : undefined;
             resourceInputs["disableProxyAccess"] = state ? state.disableProxyAccess : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
+            resourceInputs["enableThirdPartyIdentity"] = state ? state.enableThirdPartyIdentity : undefined;
             resourceInputs["gceSetup"] = state ? state.gceSetup : undefined;
             resourceInputs["healthInfos"] = state ? state.healthInfos : undefined;
             resourceInputs["healthState"] = state ? state.healthState : undefined;
@@ -356,6 +369,7 @@ export class Instance extends pulumi.CustomResource {
             }
             resourceInputs["desiredState"] = args ? args.desiredState : undefined;
             resourceInputs["disableProxyAccess"] = args ? args.disableProxyAccess : undefined;
+            resourceInputs["enableThirdPartyIdentity"] = args ? args.enableThirdPartyIdentity : undefined;
             resourceInputs["gceSetup"] = args ? args.gceSetup : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["instanceOwners"] = args ? args.instanceOwners : undefined;
@@ -406,6 +420,11 @@ export interface InstanceState {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Flag that specifies that a notebook can be accessed with third party
+     * identity provider.
+     */
+    enableThirdPartyIdentity?: pulumi.Input<boolean>;
     /**
      * The definition of how to configure a VM instance outside of Resources and Identity.
      * Structure is documented below.
@@ -495,6 +514,11 @@ export interface InstanceArgs {
      * Optional. If true, the workbench instance will not register with the proxy.
      */
     disableProxyAccess?: pulumi.Input<boolean>;
+    /**
+     * Flag that specifies that a notebook can be accessed with third party
+     * identity provider.
+     */
+    enableThirdPartyIdentity?: pulumi.Input<boolean>;
     /**
      * The definition of how to configure a VM instance outside of Resources and Identity.
      * Structure is documented below.

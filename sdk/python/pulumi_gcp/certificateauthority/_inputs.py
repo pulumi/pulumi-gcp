@@ -53,6 +53,8 @@ __all__ = [
     'AuthoritySubordinateConfigArgsDict',
     'AuthoritySubordinateConfigPemIssuerChainArgs',
     'AuthoritySubordinateConfigPemIssuerChainArgsDict',
+    'AuthorityUserDefinedAccessUrlsArgs',
+    'AuthorityUserDefinedAccessUrlsArgsDict',
     'CaPoolIamBindingConditionArgs',
     'CaPoolIamBindingConditionArgsDict',
     'CaPoolIamMemberConditionArgs',
@@ -1938,6 +1940,58 @@ class AuthoritySubordinateConfigPemIssuerChainArgs:
     @pem_certificates.setter
     def pem_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "pem_certificates", value)
+
+
+if not MYPY:
+    class AuthorityUserDefinedAccessUrlsArgsDict(TypedDict):
+        aia_issuing_certificate_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of URLs where this CertificateAuthority's CA certificate is published that is specified by users.
+        """
+        crl_access_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of URLs where this CertificateAuthority's CRLs are published that is specified by users.
+        """
+elif False:
+    AuthorityUserDefinedAccessUrlsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AuthorityUserDefinedAccessUrlsArgs:
+    def __init__(__self__, *,
+                 aia_issuing_certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 crl_access_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] aia_issuing_certificate_urls: A list of URLs where this CertificateAuthority's CA certificate is published that is specified by users.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] crl_access_urls: A list of URLs where this CertificateAuthority's CRLs are published that is specified by users.
+        """
+        if aia_issuing_certificate_urls is not None:
+            pulumi.set(__self__, "aia_issuing_certificate_urls", aia_issuing_certificate_urls)
+        if crl_access_urls is not None:
+            pulumi.set(__self__, "crl_access_urls", crl_access_urls)
+
+    @property
+    @pulumi.getter(name="aiaIssuingCertificateUrls")
+    def aia_issuing_certificate_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of URLs where this CertificateAuthority's CA certificate is published that is specified by users.
+        """
+        return pulumi.get(self, "aia_issuing_certificate_urls")
+
+    @aia_issuing_certificate_urls.setter
+    def aia_issuing_certificate_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "aia_issuing_certificate_urls", value)
+
+    @property
+    @pulumi.getter(name="crlAccessUrls")
+    def crl_access_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of URLs where this CertificateAuthority's CRLs are published that is specified by users.
+        """
+        return pulumi.get(self, "crl_access_urls")
+
+    @crl_access_urls.setter
+    def crl_access_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "crl_access_urls", value)
 
 
 if not MYPY:

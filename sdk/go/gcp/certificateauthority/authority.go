@@ -336,6 +336,70 @@ import (
 //	}
 //
 // ```
+// ### Privateca Certificate Authority Basic With Custom Cdp Aia Urls
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
+//				Pool:                   pulumi.String("ca-pool"),
+//				CertificateAuthorityId: pulumi.String("my-certificate-authority"),
+//				Location:               pulumi.String("us-central1"),
+//				DeletionProtection:     pulumi.Bool(true),
+//				Config: &certificateauthority.AuthorityConfigArgs{
+//					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
+//						Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
+//							Organization: pulumi.String("ACME"),
+//							CommonName:   pulumi.String("my-certificate-authority"),
+//						},
+//					},
+//					X509Config: &certificateauthority.AuthorityConfigX509ConfigArgs{
+//						CaOptions: &certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs{
+//							IsCa: pulumi.Bool(true),
+//						},
+//						KeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs{
+//							BaseKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{
+//								CertSign: pulumi.Bool(true),
+//								CrlSign:  pulumi.Bool(true),
+//							},
+//							ExtendedKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{},
+//						},
+//					},
+//				},
+//				Lifetime: pulumi.Sprintf("%vs", 10*365*24*3600),
+//				KeySpec: &certificateauthority.AuthorityKeySpecArgs{
+//					Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
+//				},
+//				UserDefinedAccessUrls: &certificateauthority.AuthorityUserDefinedAccessUrlsArgs{
+//					AiaIssuingCertificateUrls: pulumi.StringArray{
+//						pulumi.String("http://example.com/ca.crt"),
+//						pulumi.String("http://example.com/anotherca.crt"),
+//					},
+//					CrlAccessUrls: pulumi.StringArray{
+//						pulumi.String("http://example.com/crl1.crt"),
+//						pulumi.String("http://example.com/crl2.crt"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -437,6 +501,9 @@ type Authority struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
 	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
+	// users.
+	UserDefinedAccessUrls AuthorityUserDefinedAccessUrlsPtrOutput `pulumi:"userDefinedAccessUrls"`
 }
 
 // NewAuthority registers a new resource with the given unique name, arguments, and options.
@@ -563,6 +630,9 @@ type authorityState struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
 	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime *string `pulumi:"updateTime"`
+	// Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
+	// users.
+	UserDefinedAccessUrls *AuthorityUserDefinedAccessUrls `pulumi:"userDefinedAccessUrls"`
 }
 
 type AuthorityState struct {
@@ -640,6 +710,9 @@ type AuthorityState struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
 	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringPtrInput
+	// Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
+	// users.
+	UserDefinedAccessUrls AuthorityUserDefinedAccessUrlsPtrInput
 }
 
 func (AuthorityState) ElementType() reflect.Type {
@@ -695,6 +768,9 @@ type authorityArgs struct {
 	// The Type of this CertificateAuthority. > **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
 	// before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
 	Type *string `pulumi:"type"`
+	// Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
+	// users.
+	UserDefinedAccessUrls *AuthorityUserDefinedAccessUrls `pulumi:"userDefinedAccessUrls"`
 }
 
 // The set of arguments for constructing a Authority resource.
@@ -747,6 +823,9 @@ type AuthorityArgs struct {
 	// The Type of this CertificateAuthority. > **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
 	// before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
 	Type pulumi.StringPtrInput
+	// Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
+	// users.
+	UserDefinedAccessUrls AuthorityUserDefinedAccessUrlsPtrInput
 }
 
 func (AuthorityArgs) ElementType() reflect.Type {
@@ -980,6 +1059,12 @@ func (o AuthorityOutput) Type() pulumi.StringPtrOutput {
 // fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o AuthorityOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Authority) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
+// users.
+func (o AuthorityOutput) UserDefinedAccessUrls() AuthorityUserDefinedAccessUrlsPtrOutput {
+	return o.ApplyT(func(v *Authority) AuthorityUserDefinedAccessUrlsPtrOutput { return v.UserDefinedAccessUrls }).(AuthorityUserDefinedAccessUrlsPtrOutput)
 }
 
 type AuthorityArrayOutput struct{ *pulumi.OutputState }

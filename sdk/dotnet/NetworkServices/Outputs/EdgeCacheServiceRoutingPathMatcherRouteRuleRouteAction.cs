@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         /// </summary>
         public readonly Outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy? CdnPolicy;
         /// <summary>
+        /// Setting the compression mode to automatic enables dynamic compression for every eligible response.
+        /// When dynamic compression is enabled, it is recommended to also set a cache policy to maximize efficiency.
+        /// Possible values are: `DISABLED`, `AUTOMATIC`.
+        /// </summary>
+        public readonly string? CompressionMode;
+        /// <summary>
         /// CORSPolicy defines Cross-Origin-Resource-Sharing configuration, including which CORS response headers will be set.
         /// Structure is documented below.
         /// </summary>
@@ -33,11 +39,14 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         private EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction(
             Outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy? cdnPolicy,
 
+            string? compressionMode,
+
             Outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy? corsPolicy,
 
             Outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite? urlRewrite)
         {
             CdnPolicy = cdnPolicy;
+            CompressionMode = compressionMode;
             CorsPolicy = corsPolicy;
             UrlRewrite = urlRewrite;
         }

@@ -99,14 +99,14 @@ public final class ChatEngineState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
+     * The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
      * 
      */
     @Import(name="dataStoreIds")
     private @Nullable Output<List<String>> dataStoreIds;
 
     /**
-     * @return The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
+     * @return The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
      * 
      */
     public Optional<Output<List<String>>> dataStoreIds() {
@@ -375,7 +375,7 @@ public final class ChatEngineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataStoreIds The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
+         * @param dataStoreIds The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
          * 
          * @return builder
          * 
@@ -386,7 +386,7 @@ public final class ChatEngineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataStoreIds The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
+         * @param dataStoreIds The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
          * 
          * @return builder
          * 
@@ -396,7 +396,7 @@ public final class ChatEngineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataStoreIds The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
+         * @param dataStoreIds The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
          * 
          * @return builder
          * 

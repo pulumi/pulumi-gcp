@@ -21,6 +21,9 @@ __all__ = [
     'AppConnectorPrincipalInfo',
     'AppConnectorPrincipalInfoServiceAccount',
     'AppGatewayAllocatedConnection',
+    'ApplicationEndpointMatcher',
+    'ApplicationIamBindingCondition',
+    'ApplicationIamMemberCondition',
     'SecurityGatewayHub',
     'SecurityGatewayHubInternetGateway',
     'SecurityGatewayIamBindingCondition',
@@ -253,6 +256,114 @@ class AppGatewayAllocatedConnection(dict):
         The PSC uri of an allocated connection.
         """
         return pulumi.get(self, "psc_uri")
+
+
+@pulumi.output_type
+class ApplicationEndpointMatcher(dict):
+    def __init__(__self__, *,
+                 hostname: str,
+                 ports: Optional[Sequence[int]] = None):
+        """
+        :param str hostname: Required. Hostname of the application.
+        :param Sequence[int] ports: Optional. Ports of the application.
+               
+               - - -
+        """
+        pulumi.set(__self__, "hostname", hostname)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        Required. Hostname of the application.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[Sequence[int]]:
+        """
+        Optional. Ports of the application.
+
+        - - -
+        """
+        return pulumi.get(self, "ports")
+
+
+@pulumi.output_type
+class ApplicationIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class ApplicationIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

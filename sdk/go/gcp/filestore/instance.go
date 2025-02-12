@@ -253,6 +253,9 @@ type Instance struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// Output only fields for replication configuration.
+	// Structure is documented below.
+	EffectiveReplications InstanceEffectiveReplicationArrayOutput `pulumi:"effectiveReplications"`
 	// Server-specified ETag for the instance resource to prevent
 	// simultaneous updates from overwriting each other.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -260,6 +263,9 @@ type Instance struct {
 	// single file share is supported.
 	// Structure is documented below.
 	FileShares InstanceFileSharesOutput `pulumi:"fileShares"`
+	// Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+	// instance only, indicating the active as the peer_instance
+	InitialReplication InstanceInitialReplicationPtrOutput `pulumi:"initialReplication"`
 	// KMS key name used for data encryption.
 	KmsKeyName pulumi.StringPtrOutput `pulumi:"kmsKeyName"`
 	// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
@@ -353,6 +359,9 @@ type instanceState struct {
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// Output only fields for replication configuration.
+	// Structure is documented below.
+	EffectiveReplications []InstanceEffectiveReplication `pulumi:"effectiveReplications"`
 	// Server-specified ETag for the instance resource to prevent
 	// simultaneous updates from overwriting each other.
 	Etag *string `pulumi:"etag"`
@@ -360,6 +369,9 @@ type instanceState struct {
 	// single file share is supported.
 	// Structure is documented below.
 	FileShares *InstanceFileShares `pulumi:"fileShares"`
+	// Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+	// instance only, indicating the active as the peer_instance
+	InitialReplication *InstanceInitialReplication `pulumi:"initialReplication"`
 	// KMS key name used for data encryption.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
@@ -410,6 +422,9 @@ type InstanceState struct {
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// Output only fields for replication configuration.
+	// Structure is documented below.
+	EffectiveReplications InstanceEffectiveReplicationArrayInput
 	// Server-specified ETag for the instance resource to prevent
 	// simultaneous updates from overwriting each other.
 	Etag pulumi.StringPtrInput
@@ -417,6 +432,9 @@ type InstanceState struct {
 	// single file share is supported.
 	// Structure is documented below.
 	FileShares InstanceFileSharesPtrInput
+	// Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+	// instance only, indicating the active as the peer_instance
+	InitialReplication InstanceInitialReplicationPtrInput
 	// KMS key name used for data encryption.
 	KmsKeyName pulumi.StringPtrInput
 	// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
@@ -471,6 +489,9 @@ type instanceArgs struct {
 	// single file share is supported.
 	// Structure is documented below.
 	FileShares InstanceFileShares `pulumi:"fileShares"`
+	// Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+	// instance only, indicating the active as the peer_instance
+	InitialReplication *InstanceInitialReplication `pulumi:"initialReplication"`
 	// KMS key name used for data encryption.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
@@ -519,6 +540,9 @@ type InstanceArgs struct {
 	// single file share is supported.
 	// Structure is documented below.
 	FileShares InstanceFileSharesInput
+	// Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+	// instance only, indicating the active as the peer_instance
+	InitialReplication InstanceInitialReplicationPtrInput
 	// KMS key name used for data encryption.
 	KmsKeyName pulumi.StringPtrInput
 	// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
@@ -667,6 +691,12 @@ func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
+// Output only fields for replication configuration.
+// Structure is documented below.
+func (o InstanceOutput) EffectiveReplications() InstanceEffectiveReplicationArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceEffectiveReplicationArrayOutput { return v.EffectiveReplications }).(InstanceEffectiveReplicationArrayOutput)
+}
+
 // Server-specified ETag for the instance resource to prevent
 // simultaneous updates from overwriting each other.
 func (o InstanceOutput) Etag() pulumi.StringOutput {
@@ -678,6 +708,12 @@ func (o InstanceOutput) Etag() pulumi.StringOutput {
 // Structure is documented below.
 func (o InstanceOutput) FileShares() InstanceFileSharesOutput {
 	return o.ApplyT(func(v *Instance) InstanceFileSharesOutput { return v.FileShares }).(InstanceFileSharesOutput)
+}
+
+// Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+// instance only, indicating the active as the peer_instance
+func (o InstanceOutput) InitialReplication() InstanceInitialReplicationPtrOutput {
+	return o.ApplyT(func(v *Instance) InstanceInitialReplicationPtrOutput { return v.InitialReplication }).(InstanceInitialReplicationPtrOutput)
 }
 
 // KMS key name used for data encryption.

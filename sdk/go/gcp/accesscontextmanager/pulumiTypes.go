@@ -4164,6 +4164,13 @@ func (o ServicePerimeterDryRunEgressPolicyEgressFromPtrOutput) Sources() Service
 type ServicePerimeterDryRunEgressPolicyEgressFromSource struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel *string `pulumi:"accessLevel"`
+	// A Google Cloud resource that is allowed to egress the perimeter.
+	// Requests from these resources are allowed to access data outside the perimeter.
+	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// The resource may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the
+	// case of allowing all Google Cloud resources only is not supported.
+	Resource *string `pulumi:"resource"`
 }
 
 // ServicePerimeterDryRunEgressPolicyEgressFromSourceInput is an input type that accepts ServicePerimeterDryRunEgressPolicyEgressFromSourceArgs and ServicePerimeterDryRunEgressPolicyEgressFromSourceOutput values.
@@ -4180,6 +4187,13 @@ type ServicePerimeterDryRunEgressPolicyEgressFromSourceInput interface {
 type ServicePerimeterDryRunEgressPolicyEgressFromSourceArgs struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// A Google Cloud resource that is allowed to egress the perimeter.
+	// Requests from these resources are allowed to access data outside the perimeter.
+	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// The resource may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the
+	// case of allowing all Google Cloud resources only is not supported.
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
 }
 
 func (ServicePerimeterDryRunEgressPolicyEgressFromSourceArgs) ElementType() reflect.Type {
@@ -4236,6 +4250,16 @@ func (o ServicePerimeterDryRunEgressPolicyEgressFromSourceOutput) ToServicePerim
 // An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 func (o ServicePerimeterDryRunEgressPolicyEgressFromSourceOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterDryRunEgressPolicyEgressFromSource) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
+}
+
+// A Google Cloud resource that is allowed to egress the perimeter.
+// Requests from these resources are allowed to access data outside the perimeter.
+// Currently only projects are allowed. Project format: `projects/{project_number}`.
+// The resource may be in any Google Cloud organization, not just the
+// organization that the perimeter is defined in. `*` is not allowed, the
+// case of allowing all Google Cloud resources only is not supported.
+func (o ServicePerimeterDryRunEgressPolicyEgressFromSourceOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterDryRunEgressPolicyEgressFromSource) *string { return v.Resource }).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimeterDryRunEgressPolicyEgressFromSourceArrayOutput struct{ *pulumi.OutputState }
@@ -5731,6 +5755,13 @@ func (o ServicePerimeterEgressPolicyEgressFromPtrOutput) Sources() ServicePerime
 type ServicePerimeterEgressPolicyEgressFromSource struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel *string `pulumi:"accessLevel"`
+	// A Google Cloud resource that is allowed to egress the perimeter.
+	// Requests from these resources are allowed to access data outside the perimeter.
+	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// The resource may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the
+	// case of allowing all Google Cloud resources only is not supported.
+	Resource *string `pulumi:"resource"`
 }
 
 // ServicePerimeterEgressPolicyEgressFromSourceInput is an input type that accepts ServicePerimeterEgressPolicyEgressFromSourceArgs and ServicePerimeterEgressPolicyEgressFromSourceOutput values.
@@ -5747,6 +5778,13 @@ type ServicePerimeterEgressPolicyEgressFromSourceInput interface {
 type ServicePerimeterEgressPolicyEgressFromSourceArgs struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// A Google Cloud resource that is allowed to egress the perimeter.
+	// Requests from these resources are allowed to access data outside the perimeter.
+	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// The resource may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the
+	// case of allowing all Google Cloud resources only is not supported.
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
 }
 
 func (ServicePerimeterEgressPolicyEgressFromSourceArgs) ElementType() reflect.Type {
@@ -5803,6 +5841,16 @@ func (o ServicePerimeterEgressPolicyEgressFromSourceOutput) ToServicePerimeterEg
 // An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 func (o ServicePerimeterEgressPolicyEgressFromSourceOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterEgressPolicyEgressFromSource) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
+}
+
+// A Google Cloud resource that is allowed to egress the perimeter.
+// Requests from these resources are allowed to access data outside the perimeter.
+// Currently only projects are allowed. Project format: `projects/{project_number}`.
+// The resource may be in any Google Cloud organization, not just the
+// organization that the perimeter is defined in. `*` is not allowed, the
+// case of allowing all Google Cloud resources only is not supported.
+func (o ServicePerimeterEgressPolicyEgressFromSourceOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterEgressPolicyEgressFromSource) *string { return v.Resource }).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimeterEgressPolicyEgressFromSourceArrayOutput struct{ *pulumi.OutputState }
@@ -7744,6 +7792,13 @@ func (o ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) Sources() ServicePe
 type ServicePerimeterSpecEgressPolicyEgressFromSource struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel *string `pulumi:"accessLevel"`
+	// A Google Cloud resource that is allowed to egress the perimeter.
+	// Requests from these resources are allowed to access data outside the perimeter.
+	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// The resource may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the
+	// case of allowing all Google Cloud resources only is not supported.
+	Resource *string `pulumi:"resource"`
 }
 
 // ServicePerimeterSpecEgressPolicyEgressFromSourceInput is an input type that accepts ServicePerimeterSpecEgressPolicyEgressFromSourceArgs and ServicePerimeterSpecEgressPolicyEgressFromSourceOutput values.
@@ -7760,6 +7815,13 @@ type ServicePerimeterSpecEgressPolicyEgressFromSourceInput interface {
 type ServicePerimeterSpecEgressPolicyEgressFromSourceArgs struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// A Google Cloud resource that is allowed to egress the perimeter.
+	// Requests from these resources are allowed to access data outside the perimeter.
+	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// The resource may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the
+	// case of allowing all Google Cloud resources only is not supported.
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
 }
 
 func (ServicePerimeterSpecEgressPolicyEgressFromSourceArgs) ElementType() reflect.Type {
@@ -7816,6 +7878,16 @@ func (o ServicePerimeterSpecEgressPolicyEgressFromSourceOutput) ToServicePerimet
 // An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 func (o ServicePerimeterSpecEgressPolicyEgressFromSourceOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressFromSource) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
+}
+
+// A Google Cloud resource that is allowed to egress the perimeter.
+// Requests from these resources are allowed to access data outside the perimeter.
+// Currently only projects are allowed. Project format: `projects/{project_number}`.
+// The resource may be in any Google Cloud organization, not just the
+// organization that the perimeter is defined in. `*` is not allowed, the
+// case of allowing all Google Cloud resources only is not supported.
+func (o ServicePerimeterSpecEgressPolicyEgressFromSourceOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressFromSource) *string { return v.Resource }).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput struct{ *pulumi.OutputState }
@@ -8614,12 +8686,12 @@ func (o ServicePerimeterSpecIngressPolicyIngressFromPtrOutput) Sources() Service
 type ServicePerimeterSpecIngressPolicyIngressFromSource struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel *string `pulumi:"accessLevel"`
-	// A Google Cloud resource that is allowed to ingress the perimeter.
-	// Requests from these resources will be allowed to access perimeter data.
-	// Currently only projects are allowed. Format `projects/{project_number}`
-	// The project may be in any Google Cloud organization, not just the
-	// organization that the perimeter is defined in. `*` is not allowed, the case
-	// of allowing all Google Cloud resources only is not supported.
+	// A Google Cloud resource that is allowed to egress the perimeter.
+	// Requests from these resources are allowed to access data outside the perimeter.
+	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// The resource may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the
+	// case of allowing all Google Cloud resources only is not supported.
 	Resource *string `pulumi:"resource"`
 }
 
@@ -8637,12 +8709,12 @@ type ServicePerimeterSpecIngressPolicyIngressFromSourceInput interface {
 type ServicePerimeterSpecIngressPolicyIngressFromSourceArgs struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
-	// A Google Cloud resource that is allowed to ingress the perimeter.
-	// Requests from these resources will be allowed to access perimeter data.
-	// Currently only projects are allowed. Format `projects/{project_number}`
-	// The project may be in any Google Cloud organization, not just the
-	// organization that the perimeter is defined in. `*` is not allowed, the case
-	// of allowing all Google Cloud resources only is not supported.
+	// A Google Cloud resource that is allowed to egress the perimeter.
+	// Requests from these resources are allowed to access data outside the perimeter.
+	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// The resource may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the
+	// case of allowing all Google Cloud resources only is not supported.
 	Resource pulumi.StringPtrInput `pulumi:"resource"`
 }
 
@@ -8702,12 +8774,12 @@ func (o ServicePerimeterSpecIngressPolicyIngressFromSourceOutput) AccessLevel() 
 	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressFromSource) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
 
-// A Google Cloud resource that is allowed to ingress the perimeter.
-// Requests from these resources will be allowed to access perimeter data.
-// Currently only projects are allowed. Format `projects/{project_number}`
-// The project may be in any Google Cloud organization, not just the
-// organization that the perimeter is defined in. `*` is not allowed, the case
-// of allowing all Google Cloud resources only is not supported.
+// A Google Cloud resource that is allowed to egress the perimeter.
+// Requests from these resources are allowed to access data outside the perimeter.
+// Currently only projects are allowed. Project format: `projects/{project_number}`.
+// The resource may be in any Google Cloud organization, not just the
+// organization that the perimeter is defined in. `*` is not allowed, the
+// case of allowing all Google Cloud resources only is not supported.
 func (o ServicePerimeterSpecIngressPolicyIngressFromSourceOutput) Resource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressFromSource) *string { return v.Resource }).(pulumi.StringPtrOutput)
 }
@@ -10007,6 +10079,13 @@ func (o ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) Sources() Service
 type ServicePerimeterStatusEgressPolicyEgressFromSource struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel *string `pulumi:"accessLevel"`
+	// A Google Cloud resource that is allowed to egress the perimeter.
+	// Requests from these resources are allowed to access data outside the perimeter.
+	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// The resource may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the
+	// case of allowing all Google Cloud resources only is not supported.
+	Resource *string `pulumi:"resource"`
 }
 
 // ServicePerimeterStatusEgressPolicyEgressFromSourceInput is an input type that accepts ServicePerimeterStatusEgressPolicyEgressFromSourceArgs and ServicePerimeterStatusEgressPolicyEgressFromSourceOutput values.
@@ -10023,6 +10102,13 @@ type ServicePerimeterStatusEgressPolicyEgressFromSourceInput interface {
 type ServicePerimeterStatusEgressPolicyEgressFromSourceArgs struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// A Google Cloud resource that is allowed to egress the perimeter.
+	// Requests from these resources are allowed to access data outside the perimeter.
+	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// The resource may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the
+	// case of allowing all Google Cloud resources only is not supported.
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
 }
 
 func (ServicePerimeterStatusEgressPolicyEgressFromSourceArgs) ElementType() reflect.Type {
@@ -10079,6 +10165,16 @@ func (o ServicePerimeterStatusEgressPolicyEgressFromSourceOutput) ToServicePerim
 // An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 func (o ServicePerimeterStatusEgressPolicyEgressFromSourceOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressFromSource) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
+}
+
+// A Google Cloud resource that is allowed to egress the perimeter.
+// Requests from these resources are allowed to access data outside the perimeter.
+// Currently only projects are allowed. Project format: `projects/{project_number}`.
+// The resource may be in any Google Cloud organization, not just the
+// organization that the perimeter is defined in. `*` is not allowed, the
+// case of allowing all Google Cloud resources only is not supported.
+func (o ServicePerimeterStatusEgressPolicyEgressFromSourceOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressFromSource) *string { return v.Resource }).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput struct{ *pulumi.OutputState }
@@ -10877,12 +10973,12 @@ func (o ServicePerimeterStatusIngressPolicyIngressFromPtrOutput) Sources() Servi
 type ServicePerimeterStatusIngressPolicyIngressFromSource struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel *string `pulumi:"accessLevel"`
-	// A Google Cloud resource that is allowed to ingress the perimeter.
-	// Requests from these resources will be allowed to access perimeter data.
-	// Currently only projects are allowed. Format `projects/{project_number}`
-	// The project may be in any Google Cloud organization, not just the
-	// organization that the perimeter is defined in. `*` is not allowed, the case
-	// of allowing all Google Cloud resources only is not supported.
+	// A Google Cloud resource that is allowed to egress the perimeter.
+	// Requests from these resources are allowed to access data outside the perimeter.
+	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// The resource may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the
+	// case of allowing all Google Cloud resources only is not supported.
 	Resource *string `pulumi:"resource"`
 }
 
@@ -10900,12 +10996,12 @@ type ServicePerimeterStatusIngressPolicyIngressFromSourceInput interface {
 type ServicePerimeterStatusIngressPolicyIngressFromSourceArgs struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
-	// A Google Cloud resource that is allowed to ingress the perimeter.
-	// Requests from these resources will be allowed to access perimeter data.
-	// Currently only projects are allowed. Format `projects/{project_number}`
-	// The project may be in any Google Cloud organization, not just the
-	// organization that the perimeter is defined in. `*` is not allowed, the case
-	// of allowing all Google Cloud resources only is not supported.
+	// A Google Cloud resource that is allowed to egress the perimeter.
+	// Requests from these resources are allowed to access data outside the perimeter.
+	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// The resource may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the
+	// case of allowing all Google Cloud resources only is not supported.
 	Resource pulumi.StringPtrInput `pulumi:"resource"`
 }
 
@@ -10965,12 +11061,12 @@ func (o ServicePerimeterStatusIngressPolicyIngressFromSourceOutput) AccessLevel(
 	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressFromSource) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
 
-// A Google Cloud resource that is allowed to ingress the perimeter.
-// Requests from these resources will be allowed to access perimeter data.
-// Currently only projects are allowed. Format `projects/{project_number}`
-// The project may be in any Google Cloud organization, not just the
-// organization that the perimeter is defined in. `*` is not allowed, the case
-// of allowing all Google Cloud resources only is not supported.
+// A Google Cloud resource that is allowed to egress the perimeter.
+// Requests from these resources are allowed to access data outside the perimeter.
+// Currently only projects are allowed. Project format: `projects/{project_number}`.
+// The resource may be in any Google Cloud organization, not just the
+// organization that the perimeter is defined in. `*` is not allowed, the
+// case of allowing all Google Cloud resources only is not supported.
 func (o ServicePerimeterStatusIngressPolicyIngressFromSourceOutput) Resource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressFromSource) *string { return v.Resource }).(pulumi.StringPtrOutput)
 }
@@ -12560,6 +12656,13 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) So
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel *string `pulumi:"accessLevel"`
+	// A Google Cloud resource that is allowed to egress the perimeter.
+	// Requests from these resources are allowed to access data outside the perimeter.
+	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// The resource may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the
+	// case of allowing all Google Cloud resources only is not supported.
+	Resource *string `pulumi:"resource"`
 }
 
 // ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs and ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutput values.
@@ -12576,6 +12679,13 @@ type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceInput inte
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// A Google Cloud resource that is allowed to egress the perimeter.
+	// Requests from these resources are allowed to access data outside the perimeter.
+	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// The resource may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the
+	// case of allowing all Google Cloud resources only is not supported.
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
 }
 
 func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs) ElementType() reflect.Type {
@@ -12634,6 +12744,16 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutput)
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource) *string {
 		return v.AccessLevel
 	}).(pulumi.StringPtrOutput)
+}
+
+// A Google Cloud resource that is allowed to egress the perimeter.
+// Requests from these resources are allowed to access data outside the perimeter.
+// Currently only projects are allowed. Project format: `projects/{project_number}`.
+// The resource may be in any Google Cloud organization, not just the
+// organization that the perimeter is defined in. `*` is not allowed, the
+// case of allowing all Google Cloud resources only is not supported.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource) *string { return v.Resource }).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput struct{ *pulumi.OutputState }
@@ -13438,12 +13558,12 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput) 
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel *string `pulumi:"accessLevel"`
-	// A Google Cloud resource that is allowed to ingress the perimeter.
-	// Requests from these resources will be allowed to access perimeter data.
-	// Currently only projects are allowed. Format `projects/{project_number}`
-	// The project may be in any Google Cloud organization, not just the
-	// organization that the perimeter is defined in. `*` is not allowed, the case
-	// of allowing all Google Cloud resources only is not supported.
+	// A Google Cloud resource that is allowed to egress the perimeter.
+	// Requests from these resources are allowed to access data outside the perimeter.
+	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// The resource may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the
+	// case of allowing all Google Cloud resources only is not supported.
 	Resource *string `pulumi:"resource"`
 }
 
@@ -13461,12 +13581,12 @@ type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceInput in
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
-	// A Google Cloud resource that is allowed to ingress the perimeter.
-	// Requests from these resources will be allowed to access perimeter data.
-	// Currently only projects are allowed. Format `projects/{project_number}`
-	// The project may be in any Google Cloud organization, not just the
-	// organization that the perimeter is defined in. `*` is not allowed, the case
-	// of allowing all Google Cloud resources only is not supported.
+	// A Google Cloud resource that is allowed to egress the perimeter.
+	// Requests from these resources are allowed to access data outside the perimeter.
+	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// The resource may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the
+	// case of allowing all Google Cloud resources only is not supported.
 	Resource pulumi.StringPtrInput `pulumi:"resource"`
 }
 
@@ -13528,12 +13648,12 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// A Google Cloud resource that is allowed to ingress the perimeter.
-// Requests from these resources will be allowed to access perimeter data.
-// Currently only projects are allowed. Format `projects/{project_number}`
-// The project may be in any Google Cloud organization, not just the
-// organization that the perimeter is defined in. `*` is not allowed, the case
-// of allowing all Google Cloud resources only is not supported.
+// A Google Cloud resource that is allowed to egress the perimeter.
+// Requests from these resources are allowed to access data outside the perimeter.
+// Currently only projects are allowed. Project format: `projects/{project_number}`.
+// The resource may be in any Google Cloud organization, not just the
+// organization that the perimeter is defined in. `*` is not allowed, the
+// case of allowing all Google Cloud resources only is not supported.
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput) Resource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource) *string { return v.Resource }).(pulumi.StringPtrOutput)
 }
@@ -14853,6 +14973,13 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) 
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel *string `pulumi:"accessLevel"`
+	// A Google Cloud resource that is allowed to egress the perimeter.
+	// Requests from these resources are allowed to access data outside the perimeter.
+	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// The resource may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the
+	// case of allowing all Google Cloud resources only is not supported.
+	Resource *string `pulumi:"resource"`
 }
 
 // ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs and ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutput values.
@@ -14869,6 +14996,13 @@ type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceInput in
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// A Google Cloud resource that is allowed to egress the perimeter.
+	// Requests from these resources are allowed to access data outside the perimeter.
+	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// The resource may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the
+	// case of allowing all Google Cloud resources only is not supported.
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
 }
 
 func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs) ElementType() reflect.Type {
@@ -14927,6 +15061,16 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutpu
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource) *string {
 		return v.AccessLevel
 	}).(pulumi.StringPtrOutput)
+}
+
+// A Google Cloud resource that is allowed to egress the perimeter.
+// Requests from these resources are allowed to access data outside the perimeter.
+// Currently only projects are allowed. Project format: `projects/{project_number}`.
+// The resource may be in any Google Cloud organization, not just the
+// organization that the perimeter is defined in. `*` is not allowed, the
+// case of allowing all Google Cloud resources only is not supported.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource) *string { return v.Resource }).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput struct{ *pulumi.OutputState }
@@ -15733,12 +15877,12 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel *string `pulumi:"accessLevel"`
-	// A Google Cloud resource that is allowed to ingress the perimeter.
-	// Requests from these resources will be allowed to access perimeter data.
-	// Currently only projects are allowed. Format `projects/{project_number}`
-	// The project may be in any Google Cloud organization, not just the
-	// organization that the perimeter is defined in. `*` is not allowed, the case
-	// of allowing all Google Cloud resources only is not supported.
+	// A Google Cloud resource that is allowed to egress the perimeter.
+	// Requests from these resources are allowed to access data outside the perimeter.
+	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// The resource may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the
+	// case of allowing all Google Cloud resources only is not supported.
 	Resource *string `pulumi:"resource"`
 }
 
@@ -15756,12 +15900,12 @@ type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceInput 
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
-	// A Google Cloud resource that is allowed to ingress the perimeter.
-	// Requests from these resources will be allowed to access perimeter data.
-	// Currently only projects are allowed. Format `projects/{project_number}`
-	// The project may be in any Google Cloud organization, not just the
-	// organization that the perimeter is defined in. `*` is not allowed, the case
-	// of allowing all Google Cloud resources only is not supported.
+	// A Google Cloud resource that is allowed to egress the perimeter.
+	// Requests from these resources are allowed to access data outside the perimeter.
+	// Currently only projects are allowed. Project format: `projects/{project_number}`.
+	// The resource may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the
+	// case of allowing all Google Cloud resources only is not supported.
 	Resource pulumi.StringPtrInput `pulumi:"resource"`
 }
 
@@ -15823,12 +15967,12 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// A Google Cloud resource that is allowed to ingress the perimeter.
-// Requests from these resources will be allowed to access perimeter data.
-// Currently only projects are allowed. Format `projects/{project_number}`
-// The project may be in any Google Cloud organization, not just the
-// organization that the perimeter is defined in. `*` is not allowed, the case
-// of allowing all Google Cloud resources only is not supported.
+// A Google Cloud resource that is allowed to egress the perimeter.
+// Requests from these resources are allowed to access data outside the perimeter.
+// Currently only projects are allowed. Project format: `projects/{project_number}`.
+// The resource may be in any Google Cloud organization, not just the
+// organization that the perimeter is defined in. `*` is not allowed, the
+// case of allowing all Google Cloud resources only is not supported.
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput) Resource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource) *string {
 		return v.Resource

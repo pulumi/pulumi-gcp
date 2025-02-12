@@ -30,10 +30,36 @@ public final class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom
         return Optional.ofNullable(this.accessLevel);
     }
 
+    /**
+     * A Google Cloud resource that is allowed to egress the perimeter.
+     * Requests from these resources are allowed to access data outside the perimeter.
+     * Currently only projects are allowed. Project format: `projects/{project_number}`.
+     * The resource may be in any Google Cloud organization, not just the
+     * organization that the perimeter is defined in. `*` is not allowed, the
+     * case of allowing all Google Cloud resources only is not supported.
+     * 
+     */
+    @Import(name="resource")
+    private @Nullable Output<String> resource;
+
+    /**
+     * @return A Google Cloud resource that is allowed to egress the perimeter.
+     * Requests from these resources are allowed to access data outside the perimeter.
+     * Currently only projects are allowed. Project format: `projects/{project_number}`.
+     * The resource may be in any Google Cloud organization, not just the
+     * organization that the perimeter is defined in. `*` is not allowed, the
+     * case of allowing all Google Cloud resources only is not supported.
+     * 
+     */
+    public Optional<Output<String>> resource() {
+        return Optional.ofNullable(this.resource);
+    }
+
     private ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs() {}
 
     private ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs $) {
         this.accessLevel = $.accessLevel;
+        this.resource = $.resource;
     }
 
     public static Builder builder() {
@@ -73,6 +99,37 @@ public final class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom
          */
         public Builder accessLevel(String accessLevel) {
             return accessLevel(Output.of(accessLevel));
+        }
+
+        /**
+         * @param resource A Google Cloud resource that is allowed to egress the perimeter.
+         * Requests from these resources are allowed to access data outside the perimeter.
+         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * The resource may be in any Google Cloud organization, not just the
+         * organization that the perimeter is defined in. `*` is not allowed, the
+         * case of allowing all Google Cloud resources only is not supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resource(@Nullable Output<String> resource) {
+            $.resource = resource;
+            return this;
+        }
+
+        /**
+         * @param resource A Google Cloud resource that is allowed to egress the perimeter.
+         * Requests from these resources are allowed to access data outside the perimeter.
+         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * The resource may be in any Google Cloud organization, not just the
+         * organization that the perimeter is defined in. `*` is not allowed, the
+         * case of allowing all Google Cloud resources only is not supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resource(String resource) {
+            return resource(Output.of(resource));
         }
 
         public ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs build() {

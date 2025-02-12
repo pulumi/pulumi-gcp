@@ -95,6 +95,7 @@ export interface GetAuthorityResult {
     readonly subordinateConfigs: outputs.certificateauthority.GetAuthoritySubordinateConfig[];
     readonly type: string;
     readonly updateTime: string;
+    readonly userDefinedAccessUrls: outputs.certificateauthority.GetAuthorityUserDefinedAccessUrl[];
 }
 /**
  * Get info about a Google CAS Certificate Authority.

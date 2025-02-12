@@ -16,13 +16,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Hierarchical firewall policy rules let you create and enforce a consistent firewall policy across your organization. Rules can explicitly allow or deny connections or delegate evaluation to lower level policies. Policies can be created within organizations or folders.
- * 
- * This resource should be generally be used with `gcp.compute.FirewallPolicyAssociation` and `gcp.compute.FirewallPolicyRule`
- * 
- * For more information see the [official documentation](https://cloud.google.com/vpc/docs/firewall-policies)
- * 
  * ## Example Usage
+ * 
+ * ### Firewall Policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -48,7 +44,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new FirewallPolicy("default", FirewallPolicyArgs.builder()
- *             .parent("organizations/12345")
+ *             .parent("organizations/123456789")
  *             .shortName("my-policy")
  *             .description("Example Resource")
  *             .build());
@@ -62,6 +58,12 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * FirewallPolicy can be imported using any of these accepted formats:
+ * 
+ * * `locations/global/firewallPolicies/{{name}}`
+ * 
+ * * `{{name}}`
+ * 
+ * When using the `pulumi import` command, FirewallPolicy can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/firewallPolicy:FirewallPolicy default locations/global/firewallPolicies/{{name}}
@@ -147,12 +149,16 @@ public class FirewallPolicy extends com.pulumi.resources.CustomResource {
     /**
      * The parent of the firewall policy.
      * 
+     * ***
+     * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
      * @return The parent of the firewall policy.
+     * 
+     * ***
      * 
      */
     public Output<String> parent() {
@@ -201,18 +207,18 @@ public class FirewallPolicy extends com.pulumi.resources.CustomResource {
         return this.selfLinkWithId;
     }
     /**
-     * User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-     * 
-     * ***
+     * User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created.
+     * This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035.
+     * Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      * 
      */
     @Export(name="shortName", refs={String.class}, tree="[0]")
     private Output<String> shortName;
 
     /**
-     * @return User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-     * 
-     * ***
+     * @return User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created.
+     * This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035.
+     * Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      * 
      */
     public Output<String> shortName() {

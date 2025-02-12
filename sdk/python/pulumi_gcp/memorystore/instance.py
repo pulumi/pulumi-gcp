@@ -62,11 +62,11 @@ class InstanceArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels to represent user-provided metadata.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] mode: Optional. Standalone or cluster.
+        :param pulumi.Input[str] mode: Optional. cluster or cluster-disabled.
                Possible values:
                CLUSTER
-               STANDALONE
-               Possible values are: `CLUSTER`, `STANDALONE`.
+               CLUSTER_DISABLED
+               Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
         :param pulumi.Input[str] node_type: Optional. Immutable. Machine type for individual nodes of the instance.
                Possible values:
                SHARED_CORE_NANO
@@ -240,11 +240,11 @@ class InstanceArgs:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Standalone or cluster.
+        Optional. cluster or cluster-disabled.
         Possible values:
         CLUSTER
-        STANDALONE
-        Possible values are: `CLUSTER`, `STANDALONE`.
+        CLUSTER_DISABLED
+        Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
         """
         return pulumi.get(self, "mode")
 
@@ -345,7 +345,7 @@ class _InstanceState:
                  desired_psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]] = None,
                  discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiscoveryEndpointArgs']]]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[Any]]]]] = None,
+                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEndpointArgs']]]] = None,
                  engine_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -379,7 +379,8 @@ class _InstanceState:
                discovery endpoint is supported.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[Sequence[Any]]]] endpoints: Endpoints for the instance.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceEndpointArgs']]] endpoints: Endpoints for the instance.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] engine_configs: Optional. User-provided engine configurations for the instance.
         :param pulumi.Input[str] engine_version: Optional. Immutable. Engine version of the instance.
         :param pulumi.Input[str] instance_id: Required. The ID to use for the instance, which will become the final component of
@@ -397,11 +398,11 @@ class _InstanceState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
-        :param pulumi.Input[str] mode: Optional. Standalone or cluster.
+        :param pulumi.Input[str] mode: Optional. cluster or cluster-disabled.
                Possible values:
                CLUSTER
-               STANDALONE
-               Possible values are: `CLUSTER`, `STANDALONE`.
+               CLUSTER_DISABLED
+               Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
         :param pulumi.Input[str] name: Identifier. Unique name of the instance.
                Format: projects/{project}/locations/{location}/instances/{instance}
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNodeConfigArgs']]] node_configs: Represents configuration for nodes of the instance.
@@ -574,14 +575,15 @@ class _InstanceState:
 
     @property
     @pulumi.getter
-    def endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[Any]]]]]:
+    def endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEndpointArgs']]]]:
         """
         Endpoints for the instance.
+        Structure is documented below.
         """
         return pulumi.get(self, "endpoints")
 
     @endpoints.setter
-    def endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[Any]]]]]):
+    def endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEndpointArgs']]]]):
         pulumi.set(self, "endpoints", value)
 
     @property
@@ -660,11 +662,11 @@ class _InstanceState:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Standalone or cluster.
+        Optional. cluster or cluster-disabled.
         Possible values:
         CLUSTER
-        STANDALONE
-        Possible values are: `CLUSTER`, `STANDALONE`.
+        CLUSTER_DISABLED
+        Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
         """
         return pulumi.get(self, "mode")
 
@@ -1084,11 +1086,11 @@ class Instance(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
-        :param pulumi.Input[str] mode: Optional. Standalone or cluster.
+        :param pulumi.Input[str] mode: Optional. cluster or cluster-disabled.
                Possible values:
                CLUSTER
-               STANDALONE
-               Possible values are: `CLUSTER`, `STANDALONE`.
+               CLUSTER_DISABLED
+               Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
         :param pulumi.Input[str] node_type: Optional. Immutable. Machine type for individual nodes of the instance.
                Possible values:
                SHARED_CORE_NANO
@@ -1372,7 +1374,7 @@ class Instance(pulumi.CustomResource):
             desired_psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]]] = None,
             discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDiscoveryEndpointArgs', 'InstanceDiscoveryEndpointArgsDict']]]]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[Any]]]]] = None,
+            endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]]] = None,
             engine_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
@@ -1411,7 +1413,8 @@ class Instance(pulumi.CustomResource):
                discovery endpoint is supported.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[Sequence[Any]]]] endpoints: Endpoints for the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]] endpoints: Endpoints for the instance.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] engine_configs: Optional. User-provided engine configurations for the instance.
         :param pulumi.Input[str] engine_version: Optional. Immutable. Engine version of the instance.
         :param pulumi.Input[str] instance_id: Required. The ID to use for the instance, which will become the final component of
@@ -1429,11 +1432,11 @@ class Instance(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
-        :param pulumi.Input[str] mode: Optional. Standalone or cluster.
+        :param pulumi.Input[str] mode: Optional. cluster or cluster-disabled.
                Possible values:
                CLUSTER
-               STANDALONE
-               Possible values are: `CLUSTER`, `STANDALONE`.
+               CLUSTER_DISABLED
+               Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
         :param pulumi.Input[str] name: Identifier. Unique name of the instance.
                Format: projects/{project}/locations/{location}/instances/{instance}
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceNodeConfigArgs', 'InstanceNodeConfigArgsDict']]]] node_configs: Represents configuration for nodes of the instance.
@@ -1559,9 +1562,10 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def endpoints(self) -> pulumi.Output[Sequence[Sequence[Any]]]:
+    def endpoints(self) -> pulumi.Output[Sequence['outputs.InstanceEndpoint']]:
         """
         Endpoints for the instance.
+        Structure is documented below.
         """
         return pulumi.get(self, "endpoints")
 
@@ -1621,11 +1625,11 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def mode(self) -> pulumi.Output[str]:
         """
-        Optional. Standalone or cluster.
+        Optional. cluster or cluster-disabled.
         Possible values:
         CLUSTER
-        STANDALONE
-        Possible values are: `CLUSTER`, `STANDALONE`.
+        CLUSTER_DISABLED
+        Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
         """
         return pulumi.get(self, "mode")
 

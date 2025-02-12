@@ -60,6 +60,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/datastream"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
@@ -71,22 +73,35 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-//				Name: pulumi.String("my-network"),
+//				Name:                  pulumi.String("my-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("my-subnetwork"),
+//				IpCidrRange: pulumi.String("10.1.0.0/16"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     _default.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			privateConnection, err := datastream.NewPrivateConnection(ctx, "private_connection", &datastream.PrivateConnectionArgs{
-//				DisplayName:         pulumi.String("Connection profile"),
+//				DisplayName:         pulumi.String("Private connection"),
 //				Location:            pulumi.String("us-central1"),
 //				PrivateConnectionId: pulumi.String("my-connection"),
-//				Labels: pulumi.StringMap{
-//					"key": pulumi.String("value"),
-//				},
 //				VpcPeeringConfig: &datastream.PrivateConnectionVpcPeeringConfigArgs{
 //					Vpc:    _default.ID(),
 //					Subnet: pulumi.String("10.0.0.0/29"),
 //				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			natVmIp, err := compute.NewAddress(ctx, "nat_vm_ip", &compute.AddressArgs{
+//				Name: pulumi.String("nat-vm-ip"),
 //			})
 //			if err != nil {
 //				return err
@@ -100,19 +115,7 @@ import (
 //					IpConfiguration: &sql.DatabaseInstanceSettingsIpConfigurationArgs{
 //						AuthorizedNetworks: sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArray{
 //							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
-//								Value: pulumi.String("34.71.242.81"),
-//							},
-//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
-//								Value: pulumi.String("34.72.28.29"),
-//							},
-//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
-//								Value: pulumi.String("34.67.6.157"),
-//							},
-//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
-//								Value: pulumi.String("34.67.234.134"),
-//							},
-//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
-//								Value: pulumi.String("34.72.239.218"),
+//								Value: natVmIp.Address,
 //							},
 //						},
 //					},
@@ -144,15 +147,94 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			natVm, err := compute.NewInstance(ctx, "nat_vm", &compute.InstanceArgs{
+//				Name:          pulumi.String("nat-vm"),
+//				MachineType:   pulumi.String("e2-medium"),
+//				Zone:          pulumi.String("us-central1-a"),
+//				DesiredStatus: pulumi.String("RUNNING"),
+//				BootDisk: &compute.InstanceBootDiskArgs{
+//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+//						Image: pulumi.String("debian-cloud/debian-12"),
+//					},
+//				},
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						Network: privateConnection.VpcPeeringConfig.ApplyT(func(vpcPeeringConfig datastream.PrivateConnectionVpcPeeringConfig) (*string, error) {
+//							return &vpcPeeringConfig.Vpc, nil
+//						}).(pulumi.StringPtrOutput),
+//						Subnetwork: defaultSubnetwork.SelfLink,
+//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+//							&compute.InstanceNetworkInterfaceAccessConfigArgs{
+//								NatIp: natVmIp.Address,
+//							},
+//						},
+//					},
+//				},
+//				MetadataStartupScript: instance.PublicIpAddress.ApplyT(func(publicIpAddress string) (string, error) {
+//					return fmt.Sprintf(`#! /bin/bash
+//
+// # See https://cloud.google.com/datastream/docs/private-connectivity#set-up-reverse-proxy
+// export DB_ADDR=%v
+// export DB_PORT=5432
+// echo 1 > /proc/sys/net/ipv4/ip_forward
+// md_url_prefix="http://169.254.169.254/computeMetadata/v1/instance"
+// vm_nic_ip="$(curl -H "Metadata-Flavor: Google" ${md_url_prefix}/network-interfaces/0/ip)"
+// iptables -t nat -F
+//
+//	iptables -t nat -A PREROUTING \
+//	     -p tcp --dport $DB_PORT \
+//	     -j DNAT \
+//	     --to-destination $DB_ADDR
+//
+//	iptables -t nat -A POSTROUTING \
+//	     -p tcp --dport $DB_PORT \
+//	     -j SNAT \
+//	     --to-source $vm_nic_ip
+//
+// iptables-save
+// `, publicIpAddress), nil
+//
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewFirewall(ctx, "rules", &compute.FirewallArgs{
+//				Name: pulumi.String("ingress-rule"),
+//				Network: pulumi.String(privateConnection.VpcPeeringConfig.ApplyT(func(vpcPeeringConfig datastream.PrivateConnectionVpcPeeringConfig) (*string, error) {
+//					return &vpcPeeringConfig.Vpc, nil
+//				}).(pulumi.StringPtrOutput)),
+//				Description: pulumi.String("Allow traffic into NAT VM"),
+//				Direction:   pulumi.String("INGRESS"),
+//				Allows: compute.FirewallAllowArray{
+//					&compute.FirewallAllowArgs{
+//						Protocol: pulumi.String("tcp"),
+//						Ports: pulumi.StringArray{
+//							pulumi.String("5432"),
+//						},
+//					},
+//				},
+//				SourceRanges: pulumi.StringArray{
+//					pulumi.String(privateConnection.VpcPeeringConfig.ApplyT(func(vpcPeeringConfig datastream.PrivateConnectionVpcPeeringConfig) (*string, error) {
+//						return &vpcPeeringConfig.Subnet, nil
+//					}).(pulumi.StringPtrOutput)),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = datastream.NewConnectionProfile(ctx, "default", &datastream.ConnectionProfileArgs{
 //				DisplayName:         pulumi.String("Connection profile"),
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("my-profile"),
 //				PostgresqlProfile: &datastream.ConnectionProfilePostgresqlProfileArgs{
-//					Hostname: instance.PublicIpAddress,
+//					Hostname: natVm.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
+//						return &networkInterfaces[0].NetworkIp, nil
+//					}).(pulumi.StringPtrOutput),
 //					Username: user.Name,
 //					Password: user.Password,
 //					Database: db.Name,
+//					Port:     pulumi.Int(5432),
 //				},
 //				PrivateConnectivity: &datastream.ConnectionProfilePrivateConnectivityArgs{
 //					PrivateConnection: privateConnection.ID(),

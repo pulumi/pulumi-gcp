@@ -7,6 +7,8 @@ import typing
 # Export this package's modules as members:
 from .code_repository_index import *
 from .get_repository_group_iam_policy import *
+from .logging_setting import *
+from .release_channel_setting import *
 from .repository_group import *
 from .repository_group_iam_binding import *
 from .repository_group_iam_member import *

@@ -10,13 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
-    /// Hierarchical firewall policy rules let you create and enforce a consistent firewall policy across your organization. Rules can explicitly allow or deny connections or delegate evaluation to lower level policies. Policies can be created within organizations or folders.
-    /// 
-    /// This resource should be generally be used with `gcp.compute.FirewallPolicyAssociation` and `gcp.compute.FirewallPolicyRule`
-    /// 
-    /// For more information see the [official documentation](https://cloud.google.com/vpc/docs/firewall-policies)
-    /// 
     /// ## Example Usage
+    /// 
+    /// ### Firewall Policy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -28,7 +24,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var @default = new Gcp.Compute.FirewallPolicy("default", new()
     ///     {
-    ///         Parent = "organizations/12345",
+    ///         Parent = "organizations/123456789",
     ///         ShortName = "my-policy",
     ///         Description = "Example Resource",
     ///     });
@@ -39,6 +35,12 @@ namespace Pulumi.Gcp.Compute
     /// ## Import
     /// 
     /// FirewallPolicy can be imported using any of these accepted formats:
+    /// 
+    /// * `locations/global/firewallPolicies/{{name}}`
+    /// 
+    /// * `{{name}}`
+    /// 
+    /// When using the `pulumi import` command, FirewallPolicy can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/firewallPolicy:FirewallPolicy default locations/global/firewallPolicies/{{name}}
@@ -83,6 +85,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The parent of the firewall policy.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -106,11 +111,9 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLinkWithId { get; private set; } = null!;
 
         /// <summary>
-        /// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        /// 
-        /// 
-        /// 
-        /// - - -
+        /// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created.
+        /// This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035.
+        /// Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Output("shortName")]
         public Output<string> ShortName { get; private set; } = null!;
@@ -169,16 +172,17 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The parent of the firewall policy.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
 
         /// <summary>
-        /// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        /// 
-        /// 
-        /// 
-        /// - - -
+        /// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created.
+        /// This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035.
+        /// Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("shortName", required: true)]
         public Input<string> ShortName { get; set; } = null!;
@@ -223,6 +227,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The parent of the firewall policy.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
@@ -246,11 +253,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SelfLinkWithId { get; set; }
 
         /// <summary>
-        /// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        /// 
-        /// 
-        /// 
-        /// - - -
+        /// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created.
+        /// This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035.
+        /// Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("shortName")]
         public Input<string>? ShortName { get; set; }

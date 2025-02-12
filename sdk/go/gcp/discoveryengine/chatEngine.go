@@ -191,7 +191,7 @@ type ChatEngine struct {
 	CommonConfig ChatEngineCommonConfigPtrOutput `pulumi:"commonConfig"`
 	// Timestamp the Engine was created at.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
+	// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
 	DataStoreIds pulumi.StringArrayOutput `pulumi:"dataStoreIds"`
 	// The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -272,7 +272,7 @@ type chatEngineState struct {
 	CommonConfig *ChatEngineCommonConfig `pulumi:"commonConfig"`
 	// Timestamp the Engine was created at.
 	CreateTime *string `pulumi:"createTime"`
-	// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
+	// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
 	DataStoreIds []string `pulumi:"dataStoreIds"`
 	// The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
 	DisplayName *string `pulumi:"displayName"`
@@ -306,7 +306,7 @@ type ChatEngineState struct {
 	CommonConfig ChatEngineCommonConfigPtrInput
 	// Timestamp the Engine was created at.
 	CreateTime pulumi.StringPtrInput
-	// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
+	// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
 	DataStoreIds pulumi.StringArrayInput
 	// The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
 	DisplayName pulumi.StringPtrInput
@@ -339,7 +339,7 @@ type chatEngineArgs struct {
 	CollectionId string `pulumi:"collectionId"`
 	// Common config spec that specifies the metadata of the engine.
 	CommonConfig *ChatEngineCommonConfig `pulumi:"commonConfig"`
-	// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
+	// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
 	DataStoreIds []string `pulumi:"dataStoreIds"`
 	// The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
 	DisplayName string `pulumi:"displayName"`
@@ -362,7 +362,7 @@ type ChatEngineArgs struct {
 	CollectionId pulumi.StringInput
 	// Common config spec that specifies the metadata of the engine.
 	CommonConfig ChatEngineCommonConfigPtrInput
-	// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
+	// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
 	DataStoreIds pulumi.StringArrayInput
 	// The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
 	DisplayName pulumi.StringInput
@@ -490,7 +490,7 @@ func (o ChatEngineOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ChatEngine) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
+// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
 func (o ChatEngineOutput) DataStoreIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ChatEngine) pulumi.StringArrayOutput { return v.DataStoreIds }).(pulumi.StringArrayOutput)
 }

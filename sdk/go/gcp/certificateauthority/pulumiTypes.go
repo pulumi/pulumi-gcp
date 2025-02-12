@@ -3502,6 +3502,162 @@ func (o AuthoritySubordinateConfigPemIssuerChainPtrOutput) PemCertificates() pul
 	}).(pulumi.StringArrayOutput)
 }
 
+type AuthorityUserDefinedAccessUrls struct {
+	// A list of URLs where this CertificateAuthority's CA certificate is published that is specified by users.
+	AiaIssuingCertificateUrls []string `pulumi:"aiaIssuingCertificateUrls"`
+	// A list of URLs where this CertificateAuthority's CRLs are published that is specified by users.
+	CrlAccessUrls []string `pulumi:"crlAccessUrls"`
+}
+
+// AuthorityUserDefinedAccessUrlsInput is an input type that accepts AuthorityUserDefinedAccessUrlsArgs and AuthorityUserDefinedAccessUrlsOutput values.
+// You can construct a concrete instance of `AuthorityUserDefinedAccessUrlsInput` via:
+//
+//	AuthorityUserDefinedAccessUrlsArgs{...}
+type AuthorityUserDefinedAccessUrlsInput interface {
+	pulumi.Input
+
+	ToAuthorityUserDefinedAccessUrlsOutput() AuthorityUserDefinedAccessUrlsOutput
+	ToAuthorityUserDefinedAccessUrlsOutputWithContext(context.Context) AuthorityUserDefinedAccessUrlsOutput
+}
+
+type AuthorityUserDefinedAccessUrlsArgs struct {
+	// A list of URLs where this CertificateAuthority's CA certificate is published that is specified by users.
+	AiaIssuingCertificateUrls pulumi.StringArrayInput `pulumi:"aiaIssuingCertificateUrls"`
+	// A list of URLs where this CertificateAuthority's CRLs are published that is specified by users.
+	CrlAccessUrls pulumi.StringArrayInput `pulumi:"crlAccessUrls"`
+}
+
+func (AuthorityUserDefinedAccessUrlsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorityUserDefinedAccessUrls)(nil)).Elem()
+}
+
+func (i AuthorityUserDefinedAccessUrlsArgs) ToAuthorityUserDefinedAccessUrlsOutput() AuthorityUserDefinedAccessUrlsOutput {
+	return i.ToAuthorityUserDefinedAccessUrlsOutputWithContext(context.Background())
+}
+
+func (i AuthorityUserDefinedAccessUrlsArgs) ToAuthorityUserDefinedAccessUrlsOutputWithContext(ctx context.Context) AuthorityUserDefinedAccessUrlsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorityUserDefinedAccessUrlsOutput)
+}
+
+func (i AuthorityUserDefinedAccessUrlsArgs) ToAuthorityUserDefinedAccessUrlsPtrOutput() AuthorityUserDefinedAccessUrlsPtrOutput {
+	return i.ToAuthorityUserDefinedAccessUrlsPtrOutputWithContext(context.Background())
+}
+
+func (i AuthorityUserDefinedAccessUrlsArgs) ToAuthorityUserDefinedAccessUrlsPtrOutputWithContext(ctx context.Context) AuthorityUserDefinedAccessUrlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorityUserDefinedAccessUrlsOutput).ToAuthorityUserDefinedAccessUrlsPtrOutputWithContext(ctx)
+}
+
+// AuthorityUserDefinedAccessUrlsPtrInput is an input type that accepts AuthorityUserDefinedAccessUrlsArgs, AuthorityUserDefinedAccessUrlsPtr and AuthorityUserDefinedAccessUrlsPtrOutput values.
+// You can construct a concrete instance of `AuthorityUserDefinedAccessUrlsPtrInput` via:
+//
+//	        AuthorityUserDefinedAccessUrlsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthorityUserDefinedAccessUrlsPtrInput interface {
+	pulumi.Input
+
+	ToAuthorityUserDefinedAccessUrlsPtrOutput() AuthorityUserDefinedAccessUrlsPtrOutput
+	ToAuthorityUserDefinedAccessUrlsPtrOutputWithContext(context.Context) AuthorityUserDefinedAccessUrlsPtrOutput
+}
+
+type authorityUserDefinedAccessUrlsPtrType AuthorityUserDefinedAccessUrlsArgs
+
+func AuthorityUserDefinedAccessUrlsPtr(v *AuthorityUserDefinedAccessUrlsArgs) AuthorityUserDefinedAccessUrlsPtrInput {
+	return (*authorityUserDefinedAccessUrlsPtrType)(v)
+}
+
+func (*authorityUserDefinedAccessUrlsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorityUserDefinedAccessUrls)(nil)).Elem()
+}
+
+func (i *authorityUserDefinedAccessUrlsPtrType) ToAuthorityUserDefinedAccessUrlsPtrOutput() AuthorityUserDefinedAccessUrlsPtrOutput {
+	return i.ToAuthorityUserDefinedAccessUrlsPtrOutputWithContext(context.Background())
+}
+
+func (i *authorityUserDefinedAccessUrlsPtrType) ToAuthorityUserDefinedAccessUrlsPtrOutputWithContext(ctx context.Context) AuthorityUserDefinedAccessUrlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorityUserDefinedAccessUrlsPtrOutput)
+}
+
+type AuthorityUserDefinedAccessUrlsOutput struct{ *pulumi.OutputState }
+
+func (AuthorityUserDefinedAccessUrlsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorityUserDefinedAccessUrls)(nil)).Elem()
+}
+
+func (o AuthorityUserDefinedAccessUrlsOutput) ToAuthorityUserDefinedAccessUrlsOutput() AuthorityUserDefinedAccessUrlsOutput {
+	return o
+}
+
+func (o AuthorityUserDefinedAccessUrlsOutput) ToAuthorityUserDefinedAccessUrlsOutputWithContext(ctx context.Context) AuthorityUserDefinedAccessUrlsOutput {
+	return o
+}
+
+func (o AuthorityUserDefinedAccessUrlsOutput) ToAuthorityUserDefinedAccessUrlsPtrOutput() AuthorityUserDefinedAccessUrlsPtrOutput {
+	return o.ToAuthorityUserDefinedAccessUrlsPtrOutputWithContext(context.Background())
+}
+
+func (o AuthorityUserDefinedAccessUrlsOutput) ToAuthorityUserDefinedAccessUrlsPtrOutputWithContext(ctx context.Context) AuthorityUserDefinedAccessUrlsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorityUserDefinedAccessUrls) *AuthorityUserDefinedAccessUrls {
+		return &v
+	}).(AuthorityUserDefinedAccessUrlsPtrOutput)
+}
+
+// A list of URLs where this CertificateAuthority's CA certificate is published that is specified by users.
+func (o AuthorityUserDefinedAccessUrlsOutput) AiaIssuingCertificateUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuthorityUserDefinedAccessUrls) []string { return v.AiaIssuingCertificateUrls }).(pulumi.StringArrayOutput)
+}
+
+// A list of URLs where this CertificateAuthority's CRLs are published that is specified by users.
+func (o AuthorityUserDefinedAccessUrlsOutput) CrlAccessUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuthorityUserDefinedAccessUrls) []string { return v.CrlAccessUrls }).(pulumi.StringArrayOutput)
+}
+
+type AuthorityUserDefinedAccessUrlsPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthorityUserDefinedAccessUrlsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorityUserDefinedAccessUrls)(nil)).Elem()
+}
+
+func (o AuthorityUserDefinedAccessUrlsPtrOutput) ToAuthorityUserDefinedAccessUrlsPtrOutput() AuthorityUserDefinedAccessUrlsPtrOutput {
+	return o
+}
+
+func (o AuthorityUserDefinedAccessUrlsPtrOutput) ToAuthorityUserDefinedAccessUrlsPtrOutputWithContext(ctx context.Context) AuthorityUserDefinedAccessUrlsPtrOutput {
+	return o
+}
+
+func (o AuthorityUserDefinedAccessUrlsPtrOutput) Elem() AuthorityUserDefinedAccessUrlsOutput {
+	return o.ApplyT(func(v *AuthorityUserDefinedAccessUrls) AuthorityUserDefinedAccessUrls {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorityUserDefinedAccessUrls
+		return ret
+	}).(AuthorityUserDefinedAccessUrlsOutput)
+}
+
+// A list of URLs where this CertificateAuthority's CA certificate is published that is specified by users.
+func (o AuthorityUserDefinedAccessUrlsPtrOutput) AiaIssuingCertificateUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthorityUserDefinedAccessUrls) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AiaIssuingCertificateUrls
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of URLs where this CertificateAuthority's CRLs are published that is specified by users.
+func (o AuthorityUserDefinedAccessUrlsPtrOutput) CrlAccessUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthorityUserDefinedAccessUrls) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CrlAccessUrls
+	}).(pulumi.StringArrayOutput)
+}
+
 type CaPoolIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
@@ -18072,6 +18228,112 @@ func (o GetAuthoritySubordinateConfigPemIssuerChainArrayOutput) Index(i pulumi.I
 	}).(GetAuthoritySubordinateConfigPemIssuerChainOutput)
 }
 
+type GetAuthorityUserDefinedAccessUrl struct {
+	// A list of URLs where this CertificateAuthority's CA certificate is published that is specified by users.
+	AiaIssuingCertificateUrls []string `pulumi:"aiaIssuingCertificateUrls"`
+	// A list of URLs where this CertificateAuthority's CRLs are published that is specified by users.
+	CrlAccessUrls []string `pulumi:"crlAccessUrls"`
+}
+
+// GetAuthorityUserDefinedAccessUrlInput is an input type that accepts GetAuthorityUserDefinedAccessUrlArgs and GetAuthorityUserDefinedAccessUrlOutput values.
+// You can construct a concrete instance of `GetAuthorityUserDefinedAccessUrlInput` via:
+//
+//	GetAuthorityUserDefinedAccessUrlArgs{...}
+type GetAuthorityUserDefinedAccessUrlInput interface {
+	pulumi.Input
+
+	ToGetAuthorityUserDefinedAccessUrlOutput() GetAuthorityUserDefinedAccessUrlOutput
+	ToGetAuthorityUserDefinedAccessUrlOutputWithContext(context.Context) GetAuthorityUserDefinedAccessUrlOutput
+}
+
+type GetAuthorityUserDefinedAccessUrlArgs struct {
+	// A list of URLs where this CertificateAuthority's CA certificate is published that is specified by users.
+	AiaIssuingCertificateUrls pulumi.StringArrayInput `pulumi:"aiaIssuingCertificateUrls"`
+	// A list of URLs where this CertificateAuthority's CRLs are published that is specified by users.
+	CrlAccessUrls pulumi.StringArrayInput `pulumi:"crlAccessUrls"`
+}
+
+func (GetAuthorityUserDefinedAccessUrlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityUserDefinedAccessUrl)(nil)).Elem()
+}
+
+func (i GetAuthorityUserDefinedAccessUrlArgs) ToGetAuthorityUserDefinedAccessUrlOutput() GetAuthorityUserDefinedAccessUrlOutput {
+	return i.ToGetAuthorityUserDefinedAccessUrlOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityUserDefinedAccessUrlArgs) ToGetAuthorityUserDefinedAccessUrlOutputWithContext(ctx context.Context) GetAuthorityUserDefinedAccessUrlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityUserDefinedAccessUrlOutput)
+}
+
+// GetAuthorityUserDefinedAccessUrlArrayInput is an input type that accepts GetAuthorityUserDefinedAccessUrlArray and GetAuthorityUserDefinedAccessUrlArrayOutput values.
+// You can construct a concrete instance of `GetAuthorityUserDefinedAccessUrlArrayInput` via:
+//
+//	GetAuthorityUserDefinedAccessUrlArray{ GetAuthorityUserDefinedAccessUrlArgs{...} }
+type GetAuthorityUserDefinedAccessUrlArrayInput interface {
+	pulumi.Input
+
+	ToGetAuthorityUserDefinedAccessUrlArrayOutput() GetAuthorityUserDefinedAccessUrlArrayOutput
+	ToGetAuthorityUserDefinedAccessUrlArrayOutputWithContext(context.Context) GetAuthorityUserDefinedAccessUrlArrayOutput
+}
+
+type GetAuthorityUserDefinedAccessUrlArray []GetAuthorityUserDefinedAccessUrlInput
+
+func (GetAuthorityUserDefinedAccessUrlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityUserDefinedAccessUrl)(nil)).Elem()
+}
+
+func (i GetAuthorityUserDefinedAccessUrlArray) ToGetAuthorityUserDefinedAccessUrlArrayOutput() GetAuthorityUserDefinedAccessUrlArrayOutput {
+	return i.ToGetAuthorityUserDefinedAccessUrlArrayOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityUserDefinedAccessUrlArray) ToGetAuthorityUserDefinedAccessUrlArrayOutputWithContext(ctx context.Context) GetAuthorityUserDefinedAccessUrlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityUserDefinedAccessUrlArrayOutput)
+}
+
+type GetAuthorityUserDefinedAccessUrlOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityUserDefinedAccessUrlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityUserDefinedAccessUrl)(nil)).Elem()
+}
+
+func (o GetAuthorityUserDefinedAccessUrlOutput) ToGetAuthorityUserDefinedAccessUrlOutput() GetAuthorityUserDefinedAccessUrlOutput {
+	return o
+}
+
+func (o GetAuthorityUserDefinedAccessUrlOutput) ToGetAuthorityUserDefinedAccessUrlOutputWithContext(ctx context.Context) GetAuthorityUserDefinedAccessUrlOutput {
+	return o
+}
+
+// A list of URLs where this CertificateAuthority's CA certificate is published that is specified by users.
+func (o GetAuthorityUserDefinedAccessUrlOutput) AiaIssuingCertificateUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAuthorityUserDefinedAccessUrl) []string { return v.AiaIssuingCertificateUrls }).(pulumi.StringArrayOutput)
+}
+
+// A list of URLs where this CertificateAuthority's CRLs are published that is specified by users.
+func (o GetAuthorityUserDefinedAccessUrlOutput) CrlAccessUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAuthorityUserDefinedAccessUrl) []string { return v.CrlAccessUrls }).(pulumi.StringArrayOutput)
+}
+
+type GetAuthorityUserDefinedAccessUrlArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityUserDefinedAccessUrlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityUserDefinedAccessUrl)(nil)).Elem()
+}
+
+func (o GetAuthorityUserDefinedAccessUrlArrayOutput) ToGetAuthorityUserDefinedAccessUrlArrayOutput() GetAuthorityUserDefinedAccessUrlArrayOutput {
+	return o
+}
+
+func (o GetAuthorityUserDefinedAccessUrlArrayOutput) ToGetAuthorityUserDefinedAccessUrlArrayOutputWithContext(ctx context.Context) GetAuthorityUserDefinedAccessUrlArrayOutput {
+	return o
+}
+
+func (o GetAuthorityUserDefinedAccessUrlArrayOutput) Index(i pulumi.IntInput) GetAuthorityUserDefinedAccessUrlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthorityUserDefinedAccessUrl {
+		return vs[0].([]GetAuthorityUserDefinedAccessUrl)[vs[1].(int)]
+	}).(GetAuthorityUserDefinedAccessUrlOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityAccessUrlInput)(nil)).Elem(), AuthorityAccessUrlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityAccessUrlArrayInput)(nil)).Elem(), AuthorityAccessUrlArray{})
@@ -18110,6 +18372,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthoritySubordinateConfigPtrInput)(nil)).Elem(), AuthoritySubordinateConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthoritySubordinateConfigPemIssuerChainInput)(nil)).Elem(), AuthoritySubordinateConfigPemIssuerChainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthoritySubordinateConfigPemIssuerChainPtrInput)(nil)).Elem(), AuthoritySubordinateConfigPemIssuerChainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityUserDefinedAccessUrlsInput)(nil)).Elem(), AuthorityUserDefinedAccessUrlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityUserDefinedAccessUrlsPtrInput)(nil)).Elem(), AuthorityUserDefinedAccessUrlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIamBindingConditionInput)(nil)).Elem(), CaPoolIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIamBindingConditionPtrInput)(nil)).Elem(), CaPoolIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIamMemberConditionInput)(nil)).Elem(), CaPoolIamMemberConditionArgs{})
@@ -18289,6 +18553,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthoritySubordinateConfigArrayInput)(nil)).Elem(), GetAuthoritySubordinateConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthoritySubordinateConfigPemIssuerChainInput)(nil)).Elem(), GetAuthoritySubordinateConfigPemIssuerChainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthoritySubordinateConfigPemIssuerChainArrayInput)(nil)).Elem(), GetAuthoritySubordinateConfigPemIssuerChainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityUserDefinedAccessUrlInput)(nil)).Elem(), GetAuthorityUserDefinedAccessUrlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityUserDefinedAccessUrlArrayInput)(nil)).Elem(), GetAuthorityUserDefinedAccessUrlArray{})
 	pulumi.RegisterOutputType(AuthorityAccessUrlOutput{})
 	pulumi.RegisterOutputType(AuthorityAccessUrlArrayOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigOutput{})
@@ -18326,6 +18592,8 @@ func init() {
 	pulumi.RegisterOutputType(AuthoritySubordinateConfigPtrOutput{})
 	pulumi.RegisterOutputType(AuthoritySubordinateConfigPemIssuerChainOutput{})
 	pulumi.RegisterOutputType(AuthoritySubordinateConfigPemIssuerChainPtrOutput{})
+	pulumi.RegisterOutputType(AuthorityUserDefinedAccessUrlsOutput{})
+	pulumi.RegisterOutputType(AuthorityUserDefinedAccessUrlsPtrOutput{})
 	pulumi.RegisterOutputType(CaPoolIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(CaPoolIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(CaPoolIamMemberConditionOutput{})
@@ -18505,4 +18773,6 @@ func init() {
 	pulumi.RegisterOutputType(GetAuthoritySubordinateConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetAuthoritySubordinateConfigPemIssuerChainOutput{})
 	pulumi.RegisterOutputType(GetAuthoritySubordinateConfigPemIssuerChainArrayOutput{})
+	pulumi.RegisterOutputType(GetAuthorityUserDefinedAccessUrlOutput{})
+	pulumi.RegisterOutputType(GetAuthorityUserDefinedAccessUrlArrayOutput{})
 }

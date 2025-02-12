@@ -1055,9 +1055,10 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage(dict):
         :param Mapping[str, str] labels: Labels to add to or overwrite in the PromQL query result. Label names
                must be valid.
                Label values can be templatized by using variables. The only available
-               variable names are the names of the labels in the PromQL result, including
-               "__name__" and "value". "labels" may be empty. This field is intended to be
-               used for organizing and identifying the AlertPolicy
+               variable names are the names of the labels in the PromQL result,
+               although label names beginning with \\_\\_ (two "\\_") are reserved for
+               internal use. "labels" may be empty. This field is intended to be used
+               for organizing and identifying the AlertPolicy.
         :param str rule_group: The rule group name of this alert in the corresponding Prometheus
                configuration file.
                Some external tools may require this field to be populated correctly
@@ -1141,9 +1142,10 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage(dict):
         Labels to add to or overwrite in the PromQL query result. Label names
         must be valid.
         Label values can be templatized by using variables. The only available
-        variable names are the names of the labels in the PromQL result, including
-        "__name__" and "value". "labels" may be empty. This field is intended to be
-        used for organizing and identifying the AlertPolicy
+        variable names are the names of the labels in the PromQL result,
+        although label names beginning with \\_\\_ (two "\\_") are reserved for
+        internal use. "labels" may be empty. This field is intended to be used
+        for organizing and identifying the AlertPolicy.
         """
         return pulumi.get(self, "labels")
 

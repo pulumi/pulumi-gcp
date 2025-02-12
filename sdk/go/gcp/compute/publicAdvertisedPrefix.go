@@ -110,7 +110,7 @@ type PublicAdvertisedPrefix struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The IPv4 address to be used for reverse DNS verification.
 	DnsVerificationIp pulumi.StringOutput `pulumi:"dnsVerificationIp"`
-	// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+	// The address range, in CIDR format, represented by this public advertised prefix.
 	//
 	// ***
 	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
@@ -123,7 +123,11 @@ type PublicAdvertisedPrefix struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specifies how child public delegated prefix will be scoped. pdpScope
 	// must be one of: GLOBAL, REGIONAL
-	// Possible values are: `GLOBAL`, `REGIONAL`.
+	// * REGIONAL: The public delegated prefix is regional only. The
+	//   provisioning will take a few minutes.
+	// * GLOBAL: The public delegated prefix is global only. The provisioning
+	//   will take ~4 weeks.
+	//   Possible values are: `GLOBAL`, `REGIONAL`.
 	PdpScope pulumi.StringPtrOutput `pulumi:"pdpScope"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -174,7 +178,7 @@ type publicAdvertisedPrefixState struct {
 	Description *string `pulumi:"description"`
 	// The IPv4 address to be used for reverse DNS verification.
 	DnsVerificationIp *string `pulumi:"dnsVerificationIp"`
-	// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+	// The address range, in CIDR format, represented by this public advertised prefix.
 	//
 	// ***
 	IpCidrRange *string `pulumi:"ipCidrRange"`
@@ -187,7 +191,11 @@ type publicAdvertisedPrefixState struct {
 	Name *string `pulumi:"name"`
 	// Specifies how child public delegated prefix will be scoped. pdpScope
 	// must be one of: GLOBAL, REGIONAL
-	// Possible values are: `GLOBAL`, `REGIONAL`.
+	// * REGIONAL: The public delegated prefix is regional only. The
+	//   provisioning will take a few minutes.
+	// * GLOBAL: The public delegated prefix is global only. The provisioning
+	//   will take ~4 weeks.
+	//   Possible values are: `GLOBAL`, `REGIONAL`.
 	PdpScope *string `pulumi:"pdpScope"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -203,7 +211,7 @@ type PublicAdvertisedPrefixState struct {
 	Description pulumi.StringPtrInput
 	// The IPv4 address to be used for reverse DNS verification.
 	DnsVerificationIp pulumi.StringPtrInput
-	// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+	// The address range, in CIDR format, represented by this public advertised prefix.
 	//
 	// ***
 	IpCidrRange pulumi.StringPtrInput
@@ -216,7 +224,11 @@ type PublicAdvertisedPrefixState struct {
 	Name pulumi.StringPtrInput
 	// Specifies how child public delegated prefix will be scoped. pdpScope
 	// must be one of: GLOBAL, REGIONAL
-	// Possible values are: `GLOBAL`, `REGIONAL`.
+	// * REGIONAL: The public delegated prefix is regional only. The
+	//   provisioning will take a few minutes.
+	// * GLOBAL: The public delegated prefix is global only. The provisioning
+	//   will take ~4 weeks.
+	//   Possible values are: `GLOBAL`, `REGIONAL`.
 	PdpScope pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -236,7 +248,7 @@ type publicAdvertisedPrefixArgs struct {
 	Description *string `pulumi:"description"`
 	// The IPv4 address to be used for reverse DNS verification.
 	DnsVerificationIp string `pulumi:"dnsVerificationIp"`
-	// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+	// The address range, in CIDR format, represented by this public advertised prefix.
 	//
 	// ***
 	IpCidrRange string `pulumi:"ipCidrRange"`
@@ -249,7 +261,11 @@ type publicAdvertisedPrefixArgs struct {
 	Name *string `pulumi:"name"`
 	// Specifies how child public delegated prefix will be scoped. pdpScope
 	// must be one of: GLOBAL, REGIONAL
-	// Possible values are: `GLOBAL`, `REGIONAL`.
+	// * REGIONAL: The public delegated prefix is regional only. The
+	//   provisioning will take a few minutes.
+	// * GLOBAL: The public delegated prefix is global only. The provisioning
+	//   will take ~4 weeks.
+	//   Possible values are: `GLOBAL`, `REGIONAL`.
 	PdpScope *string `pulumi:"pdpScope"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -262,7 +278,7 @@ type PublicAdvertisedPrefixArgs struct {
 	Description pulumi.StringPtrInput
 	// The IPv4 address to be used for reverse DNS verification.
 	DnsVerificationIp pulumi.StringInput
-	// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+	// The address range, in CIDR format, represented by this public advertised prefix.
 	//
 	// ***
 	IpCidrRange pulumi.StringInput
@@ -275,7 +291,11 @@ type PublicAdvertisedPrefixArgs struct {
 	Name pulumi.StringPtrInput
 	// Specifies how child public delegated prefix will be scoped. pdpScope
 	// must be one of: GLOBAL, REGIONAL
-	// Possible values are: `GLOBAL`, `REGIONAL`.
+	// * REGIONAL: The public delegated prefix is regional only. The
+	//   provisioning will take a few minutes.
+	// * GLOBAL: The public delegated prefix is global only. The provisioning
+	//   will take ~4 weeks.
+	//   Possible values are: `GLOBAL`, `REGIONAL`.
 	PdpScope pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -379,7 +399,7 @@ func (o PublicAdvertisedPrefixOutput) DnsVerificationIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicAdvertisedPrefix) pulumi.StringOutput { return v.DnsVerificationIp }).(pulumi.StringOutput)
 }
 
-// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+// The address range, in CIDR format, represented by this public advertised prefix.
 //
 // ***
 func (o PublicAdvertisedPrefixOutput) IpCidrRange() pulumi.StringOutput {
@@ -398,7 +418,11 @@ func (o PublicAdvertisedPrefixOutput) Name() pulumi.StringOutput {
 
 // Specifies how child public delegated prefix will be scoped. pdpScope
 // must be one of: GLOBAL, REGIONAL
-// Possible values are: `GLOBAL`, `REGIONAL`.
+//   - REGIONAL: The public delegated prefix is regional only. The
+//     provisioning will take a few minutes.
+//   - GLOBAL: The public delegated prefix is global only. The provisioning
+//     will take ~4 weeks.
+//     Possible values are: `GLOBAL`, `REGIONAL`.
 func (o PublicAdvertisedPrefixOutput) PdpScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PublicAdvertisedPrefix) pulumi.StringPtrOutput { return v.PdpScope }).(pulumi.StringPtrOutput)
 }

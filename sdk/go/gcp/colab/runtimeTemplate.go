@@ -159,6 +159,19 @@ import (
 //				EncryptionSpec: &colab.RuntimeTemplateEncryptionSpecArgs{
 //					KmsKeyName: pulumi.String("my-crypto-key"),
 //				},
+//				SoftwareConfig: &colab.RuntimeTemplateSoftwareConfigArgs{
+//					Envs: colab.RuntimeTemplateSoftwareConfigEnvArray{
+//						&colab.RuntimeTemplateSoftwareConfigEnvArgs{
+//							Name:  pulumi.String("TEST"),
+//							Value: pulumi.String("1"),
+//						},
+//					},
+//					PostStartupScriptConfig: &colab.RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs{
+//						PostStartupScript:         pulumi.String("echo 'hello world'"),
+//						PostStartupScriptUrl:      pulumi.String("gs://colab-enterprise-pss-secure/secure_pss.sh"),
+//						PostStartupScriptBehavior: pulumi.String("RUN_ONCE"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -240,6 +253,9 @@ type RuntimeTemplate struct {
 	// Runtime Shielded VM spec.
 	// Structure is documented below.
 	ShieldedVmConfig RuntimeTemplateShieldedVmConfigPtrOutput `pulumi:"shieldedVmConfig"`
+	// The notebook software configuration of the notebook runtime.
+	// Structure is documented below.
+	SoftwareConfig RuntimeTemplateSoftwareConfigPtrOutput `pulumi:"softwareConfig"`
 }
 
 // NewRuntimeTemplate registers a new resource with the given unique name, arguments, and options.
@@ -328,6 +344,9 @@ type runtimeTemplateState struct {
 	// Runtime Shielded VM spec.
 	// Structure is documented below.
 	ShieldedVmConfig *RuntimeTemplateShieldedVmConfig `pulumi:"shieldedVmConfig"`
+	// The notebook software configuration of the notebook runtime.
+	// Structure is documented below.
+	SoftwareConfig *RuntimeTemplateSoftwareConfig `pulumi:"softwareConfig"`
 }
 
 type RuntimeTemplateState struct {
@@ -376,6 +395,9 @@ type RuntimeTemplateState struct {
 	// Runtime Shielded VM spec.
 	// Structure is documented below.
 	ShieldedVmConfig RuntimeTemplateShieldedVmConfigPtrInput
+	// The notebook software configuration of the notebook runtime.
+	// Structure is documented below.
+	SoftwareConfig RuntimeTemplateSoftwareConfigPtrInput
 }
 
 func (RuntimeTemplateState) ElementType() reflect.Type {
@@ -423,6 +445,9 @@ type runtimeTemplateArgs struct {
 	// Runtime Shielded VM spec.
 	// Structure is documented below.
 	ShieldedVmConfig *RuntimeTemplateShieldedVmConfig `pulumi:"shieldedVmConfig"`
+	// The notebook software configuration of the notebook runtime.
+	// Structure is documented below.
+	SoftwareConfig *RuntimeTemplateSoftwareConfig `pulumi:"softwareConfig"`
 }
 
 // The set of arguments for constructing a RuntimeTemplate resource.
@@ -467,6 +492,9 @@ type RuntimeTemplateArgs struct {
 	// Runtime Shielded VM spec.
 	// Structure is documented below.
 	ShieldedVmConfig RuntimeTemplateShieldedVmConfigPtrInput
+	// The notebook software configuration of the notebook runtime.
+	// Structure is documented below.
+	SoftwareConfig RuntimeTemplateSoftwareConfigPtrInput
 }
 
 func (RuntimeTemplateArgs) ElementType() reflect.Type {
@@ -647,6 +675,12 @@ func (o RuntimeTemplateOutput) PulumiLabels() pulumi.StringMapOutput {
 // Structure is documented below.
 func (o RuntimeTemplateOutput) ShieldedVmConfig() RuntimeTemplateShieldedVmConfigPtrOutput {
 	return o.ApplyT(func(v *RuntimeTemplate) RuntimeTemplateShieldedVmConfigPtrOutput { return v.ShieldedVmConfig }).(RuntimeTemplateShieldedVmConfigPtrOutput)
+}
+
+// The notebook software configuration of the notebook runtime.
+// Structure is documented below.
+func (o RuntimeTemplateOutput) SoftwareConfig() RuntimeTemplateSoftwareConfigPtrOutput {
+	return o.ApplyT(func(v *RuntimeTemplate) RuntimeTemplateSoftwareConfigPtrOutput { return v.SoftwareConfig }).(RuntimeTemplateSoftwareConfigPtrOutput)
 }
 
 type RuntimeTemplateArrayOutput struct{ *pulumi.OutputState }

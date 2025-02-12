@@ -36,7 +36,8 @@ class AuthorityArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  skip_grace_period: Optional[pulumi.Input[bool]] = None,
                  subordinate_config: Optional[pulumi.Input['AuthoritySubordinateConfigArgs']] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input[str]] = None,
+                 user_defined_access_urls: Optional[pulumi.Input['AuthorityUserDefinedAccessUrlsArgs']] = None):
         """
         The set of arguments for constructing a Authority resource.
         :param pulumi.Input[str] certificate_authority_id: The user provided Resource ID for this Certificate Authority.
@@ -71,6 +72,8 @@ class AuthorityArgs:
                describes its issuers.
         :param pulumi.Input[str] type: The Type of this CertificateAuthority. > **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
                before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
+        :param pulumi.Input['AuthorityUserDefinedAccessUrlsArgs'] user_defined_access_urls: Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
+               users.
         """
         pulumi.set(__self__, "certificate_authority_id", certificate_authority_id)
         pulumi.set(__self__, "config", config)
@@ -99,6 +102,8 @@ class AuthorityArgs:
             pulumi.set(__self__, "subordinate_config", subordinate_config)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if user_defined_access_urls is not None:
+            pulumi.set(__self__, "user_defined_access_urls", user_defined_access_urls)
 
     @property
     @pulumi.getter(name="certificateAuthorityId")
@@ -304,6 +309,19 @@ class AuthorityArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+    @property
+    @pulumi.getter(name="userDefinedAccessUrls")
+    def user_defined_access_urls(self) -> Optional[pulumi.Input['AuthorityUserDefinedAccessUrlsArgs']]:
+        """
+        Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
+        users.
+        """
+        return pulumi.get(self, "user_defined_access_urls")
+
+    @user_defined_access_urls.setter
+    def user_defined_access_urls(self, value: Optional[pulumi.Input['AuthorityUserDefinedAccessUrlsArgs']]):
+        pulumi.set(self, "user_defined_access_urls", value)
+
 
 @pulumi.input_type
 class _AuthorityState:
@@ -331,7 +349,8 @@ class _AuthorityState:
                  state: Optional[pulumi.Input[str]] = None,
                  subordinate_config: Optional[pulumi.Input['AuthoritySubordinateConfigArgs']] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None):
+                 update_time: Optional[pulumi.Input[str]] = None,
+                 user_defined_access_urls: Optional[pulumi.Input['AuthorityUserDefinedAccessUrlsArgs']] = None):
         """
         Input properties used for looking up and filtering Authority resources.
         :param pulumi.Input[Sequence[pulumi.Input['AuthorityAccessUrlArgs']]] access_urls: URLs for accessing content published by this CA, such as the CA certificate and CRLs.
@@ -384,6 +403,8 @@ class _AuthorityState:
         :param pulumi.Input[str] update_time: The time at which this CertificateAuthority was updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
                fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input['AuthorityUserDefinedAccessUrlsArgs'] user_defined_access_urls: Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
+               users.
         """
         if access_urls is not None:
             pulumi.set(__self__, "access_urls", access_urls)
@@ -433,6 +454,8 @@ class _AuthorityState:
             pulumi.set(__self__, "type", type)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+        if user_defined_access_urls is not None:
+            pulumi.set(__self__, "user_defined_access_urls", user_defined_access_urls)
 
     @property
     @pulumi.getter(name="accessUrls")
@@ -744,6 +767,19 @@ class _AuthorityState:
     def update_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "update_time", value)
 
+    @property
+    @pulumi.getter(name="userDefinedAccessUrls")
+    def user_defined_access_urls(self) -> Optional[pulumi.Input['AuthorityUserDefinedAccessUrlsArgs']]:
+        """
+        Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
+        users.
+        """
+        return pulumi.get(self, "user_defined_access_urls")
+
+    @user_defined_access_urls.setter
+    def user_defined_access_urls(self, value: Optional[pulumi.Input['AuthorityUserDefinedAccessUrlsArgs']]):
+        pulumi.set(self, "user_defined_access_urls", value)
+
 
 class Authority(pulumi.CustomResource):
     @overload
@@ -766,6 +802,7 @@ class Authority(pulumi.CustomResource):
                  skip_grace_period: Optional[pulumi.Input[bool]] = None,
                  subordinate_config: Optional[pulumi.Input[Union['AuthoritySubordinateConfigArgs', 'AuthoritySubordinateConfigArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 user_defined_access_urls: Optional[pulumi.Input[Union['AuthorityUserDefinedAccessUrlsArgs', 'AuthorityUserDefinedAccessUrlsArgsDict']]] = None,
                  __props__=None):
         """
         A CertificateAuthority represents an individual Certificate Authority. A
@@ -988,6 +1025,52 @@ class Authority(pulumi.CustomResource):
                 "cloud_kms_key_version": "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1",
             })
         ```
+        ### Privateca Certificate Authority Basic With Custom Cdp Aia Urls
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificateauthority.Authority("default",
+            pool="ca-pool",
+            certificate_authority_id="my-certificate-authority",
+            location="us-central1",
+            deletion_protection=True,
+            config={
+                "subject_config": {
+                    "subject": {
+                        "organization": "ACME",
+                        "common_name": "my-certificate-authority",
+                    },
+                },
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
+                    },
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
+                        },
+                        "extended_key_usage": {},
+                    },
+                },
+            },
+            lifetime=f"{10 * 365 * 24 * 3600}s",
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
+            user_defined_access_urls={
+                "aia_issuing_certificate_urls": [
+                    "http://example.com/ca.crt",
+                    "http://example.com/anotherca.crt",
+                ],
+                "crl_access_urls": [
+                    "http://example.com/crl1.crt",
+                    "http://example.com/crl2.crt",
+                ],
+            })
+        ```
 
         ## Import
 
@@ -1047,6 +1130,8 @@ class Authority(pulumi.CustomResource):
                describes its issuers.
         :param pulumi.Input[str] type: The Type of this CertificateAuthority. > **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
                before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
+        :param pulumi.Input[Union['AuthorityUserDefinedAccessUrlsArgs', 'AuthorityUserDefinedAccessUrlsArgsDict']] user_defined_access_urls: Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
+               users.
         """
         ...
     @overload
@@ -1275,6 +1360,52 @@ class Authority(pulumi.CustomResource):
                 "cloud_kms_key_version": "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1",
             })
         ```
+        ### Privateca Certificate Authority Basic With Custom Cdp Aia Urls
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificateauthority.Authority("default",
+            pool="ca-pool",
+            certificate_authority_id="my-certificate-authority",
+            location="us-central1",
+            deletion_protection=True,
+            config={
+                "subject_config": {
+                    "subject": {
+                        "organization": "ACME",
+                        "common_name": "my-certificate-authority",
+                    },
+                },
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
+                    },
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
+                        },
+                        "extended_key_usage": {},
+                    },
+                },
+            },
+            lifetime=f"{10 * 365 * 24 * 3600}s",
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
+            user_defined_access_urls={
+                "aia_issuing_certificate_urls": [
+                    "http://example.com/ca.crt",
+                    "http://example.com/anotherca.crt",
+                ],
+                "crl_access_urls": [
+                    "http://example.com/crl1.crt",
+                    "http://example.com/crl2.crt",
+                ],
+            })
+        ```
 
         ## Import
 
@@ -1331,6 +1462,7 @@ class Authority(pulumi.CustomResource):
                  skip_grace_period: Optional[pulumi.Input[bool]] = None,
                  subordinate_config: Optional[pulumi.Input[Union['AuthoritySubordinateConfigArgs', 'AuthoritySubordinateConfigArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 user_defined_access_urls: Optional[pulumi.Input[Union['AuthorityUserDefinedAccessUrlsArgs', 'AuthorityUserDefinedAccessUrlsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1366,6 +1498,7 @@ class Authority(pulumi.CustomResource):
             __props__.__dict__["skip_grace_period"] = skip_grace_period
             __props__.__dict__["subordinate_config"] = subordinate_config
             __props__.__dict__["type"] = type
+            __props__.__dict__["user_defined_access_urls"] = user_defined_access_urls
             __props__.__dict__["access_urls"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
@@ -1409,7 +1542,8 @@ class Authority(pulumi.CustomResource):
             state: Optional[pulumi.Input[str]] = None,
             subordinate_config: Optional[pulumi.Input[Union['AuthoritySubordinateConfigArgs', 'AuthoritySubordinateConfigArgsDict']]] = None,
             type: Optional[pulumi.Input[str]] = None,
-            update_time: Optional[pulumi.Input[str]] = None) -> 'Authority':
+            update_time: Optional[pulumi.Input[str]] = None,
+            user_defined_access_urls: Optional[pulumi.Input[Union['AuthorityUserDefinedAccessUrlsArgs', 'AuthorityUserDefinedAccessUrlsArgsDict']]] = None) -> 'Authority':
         """
         Get an existing Authority resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1467,6 +1601,8 @@ class Authority(pulumi.CustomResource):
         :param pulumi.Input[str] update_time: The time at which this CertificateAuthority was updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
                fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[Union['AuthorityUserDefinedAccessUrlsArgs', 'AuthorityUserDefinedAccessUrlsArgsDict']] user_defined_access_urls: Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
+               users.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1496,6 +1632,7 @@ class Authority(pulumi.CustomResource):
         __props__.__dict__["subordinate_config"] = subordinate_config
         __props__.__dict__["type"] = type
         __props__.__dict__["update_time"] = update_time
+        __props__.__dict__["user_defined_access_urls"] = user_defined_access_urls
         return Authority(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1711,4 +1848,13 @@ class Authority(pulumi.CustomResource):
         fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="userDefinedAccessUrls")
+    def user_defined_access_urls(self) -> pulumi.Output[Optional['outputs.AuthorityUserDefinedAccessUrls']]:
+        """
+        Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
+        users.
+        """
+        return pulumi.get(self, "user_defined_access_urls")
 

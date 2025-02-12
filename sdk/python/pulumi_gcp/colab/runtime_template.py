@@ -34,7 +34,8 @@ class RuntimeTemplateArgs:
                  network_spec: Optional[pulumi.Input['RuntimeTemplateNetworkSpecArgs']] = None,
                  network_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 shielded_vm_config: Optional[pulumi.Input['RuntimeTemplateShieldedVmConfigArgs']] = None):
+                 shielded_vm_config: Optional[pulumi.Input['RuntimeTemplateShieldedVmConfigArgs']] = None,
+                 software_config: Optional[pulumi.Input['RuntimeTemplateSoftwareConfigArgs']] = None):
         """
         The set of arguments for constructing a RuntimeTemplate resource.
         :param pulumi.Input[str] display_name: Required. The display name of the Runtime Template.
@@ -64,6 +65,8 @@ class RuntimeTemplateArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input['RuntimeTemplateShieldedVmConfigArgs'] shielded_vm_config: Runtime Shielded VM spec.
                Structure is documented below.
+        :param pulumi.Input['RuntimeTemplateSoftwareConfigArgs'] software_config: The notebook software configuration of the notebook runtime.
+               Structure is documented below.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
@@ -91,6 +94,8 @@ class RuntimeTemplateArgs:
             pulumi.set(__self__, "project", project)
         if shielded_vm_config is not None:
             pulumi.set(__self__, "shielded_vm_config", shielded_vm_config)
+        if software_config is not None:
+            pulumi.set(__self__, "software_config", software_config)
 
     @property
     @pulumi.getter(name="displayName")
@@ -273,6 +278,19 @@ class RuntimeTemplateArgs:
     def shielded_vm_config(self, value: Optional[pulumi.Input['RuntimeTemplateShieldedVmConfigArgs']]):
         pulumi.set(self, "shielded_vm_config", value)
 
+    @property
+    @pulumi.getter(name="softwareConfig")
+    def software_config(self) -> Optional[pulumi.Input['RuntimeTemplateSoftwareConfigArgs']]:
+        """
+        The notebook software configuration of the notebook runtime.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "software_config")
+
+    @software_config.setter
+    def software_config(self, value: Optional[pulumi.Input['RuntimeTemplateSoftwareConfigArgs']]):
+        pulumi.set(self, "software_config", value)
+
 
 @pulumi.input_type
 class _RuntimeTemplateState:
@@ -292,7 +310,8 @@ class _RuntimeTemplateState:
                  network_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 shielded_vm_config: Optional[pulumi.Input['RuntimeTemplateShieldedVmConfigArgs']] = None):
+                 shielded_vm_config: Optional[pulumi.Input['RuntimeTemplateShieldedVmConfigArgs']] = None,
+                 software_config: Optional[pulumi.Input['RuntimeTemplateSoftwareConfigArgs']] = None):
         """
         Input properties used for looking up and filtering RuntimeTemplate resources.
         :param pulumi.Input['RuntimeTemplateDataPersistentDiskSpecArgs'] data_persistent_disk_spec: The configuration for the data disk of the runtime.
@@ -324,6 +343,8 @@ class _RuntimeTemplateState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input['RuntimeTemplateShieldedVmConfigArgs'] shielded_vm_config: Runtime Shielded VM spec.
+               Structure is documented below.
+        :param pulumi.Input['RuntimeTemplateSoftwareConfigArgs'] software_config: The notebook software configuration of the notebook runtime.
                Structure is documented below.
         """
         if data_persistent_disk_spec is not None:
@@ -358,6 +379,8 @@ class _RuntimeTemplateState:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if shielded_vm_config is not None:
             pulumi.set(__self__, "shielded_vm_config", shielded_vm_config)
+        if software_config is not None:
+            pulumi.set(__self__, "software_config", software_config)
 
     @property
     @pulumi.getter(name="dataPersistentDiskSpec")
@@ -565,6 +588,19 @@ class _RuntimeTemplateState:
     def shielded_vm_config(self, value: Optional[pulumi.Input['RuntimeTemplateShieldedVmConfigArgs']]):
         pulumi.set(self, "shielded_vm_config", value)
 
+    @property
+    @pulumi.getter(name="softwareConfig")
+    def software_config(self) -> Optional[pulumi.Input['RuntimeTemplateSoftwareConfigArgs']]:
+        """
+        The notebook software configuration of the notebook runtime.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "software_config")
+
+    @software_config.setter
+    def software_config(self, value: Optional[pulumi.Input['RuntimeTemplateSoftwareConfigArgs']]):
+        pulumi.set(self, "software_config", value)
+
 
 class RuntimeTemplate(pulumi.CustomResource):
     @overload
@@ -585,6 +621,7 @@ class RuntimeTemplate(pulumi.CustomResource):
                  network_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  shielded_vm_config: Optional[pulumi.Input[Union['RuntimeTemplateShieldedVmConfigArgs', 'RuntimeTemplateShieldedVmConfigArgsDict']]] = None,
+                 software_config: Optional[pulumi.Input[Union['RuntimeTemplateSoftwareConfigArgs', 'RuntimeTemplateSoftwareConfigArgsDict']]] = None,
                  __props__=None):
         """
         'A runtime template is a VM configuration that specifies a machine type and other characteristics of the VM,
@@ -683,6 +720,17 @@ class RuntimeTemplate(pulumi.CustomResource):
             ],
             encryption_spec={
                 "kms_key_name": "my-crypto-key",
+            },
+            software_config={
+                "envs": [{
+                    "name": "TEST",
+                    "value": "1",
+                }],
+                "post_startup_script_config": {
+                    "post_startup_script": "echo 'hello world'",
+                    "post_startup_script_url": "gs://colab-enterprise-pss-secure/secure_pss.sh",
+                    "post_startup_script_behavior": "RUN_ONCE",
+                },
             })
         ```
 
@@ -738,6 +786,8 @@ class RuntimeTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['RuntimeTemplateShieldedVmConfigArgs', 'RuntimeTemplateShieldedVmConfigArgsDict']] shielded_vm_config: Runtime Shielded VM spec.
+               Structure is documented below.
+        :param pulumi.Input[Union['RuntimeTemplateSoftwareConfigArgs', 'RuntimeTemplateSoftwareConfigArgsDict']] software_config: The notebook software configuration of the notebook runtime.
                Structure is documented below.
         """
         ...
@@ -843,6 +893,17 @@ class RuntimeTemplate(pulumi.CustomResource):
             ],
             encryption_spec={
                 "kms_key_name": "my-crypto-key",
+            },
+            software_config={
+                "envs": [{
+                    "name": "TEST",
+                    "value": "1",
+                }],
+                "post_startup_script_config": {
+                    "post_startup_script": "echo 'hello world'",
+                    "post_startup_script_url": "gs://colab-enterprise-pss-secure/secure_pss.sh",
+                    "post_startup_script_behavior": "RUN_ONCE",
+                },
             })
         ```
 
@@ -899,6 +960,7 @@ class RuntimeTemplate(pulumi.CustomResource):
                  network_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  shielded_vm_config: Optional[pulumi.Input[Union['RuntimeTemplateShieldedVmConfigArgs', 'RuntimeTemplateShieldedVmConfigArgsDict']]] = None,
+                 software_config: Optional[pulumi.Input[Union['RuntimeTemplateSoftwareConfigArgs', 'RuntimeTemplateSoftwareConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -926,6 +988,7 @@ class RuntimeTemplate(pulumi.CustomResource):
             __props__.__dict__["network_tags"] = network_tags
             __props__.__dict__["project"] = project
             __props__.__dict__["shielded_vm_config"] = shielded_vm_config
+            __props__.__dict__["software_config"] = software_config
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["pulumi_labels"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
@@ -955,7 +1018,8 @@ class RuntimeTemplate(pulumi.CustomResource):
             network_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            shielded_vm_config: Optional[pulumi.Input[Union['RuntimeTemplateShieldedVmConfigArgs', 'RuntimeTemplateShieldedVmConfigArgsDict']]] = None) -> 'RuntimeTemplate':
+            shielded_vm_config: Optional[pulumi.Input[Union['RuntimeTemplateShieldedVmConfigArgs', 'RuntimeTemplateShieldedVmConfigArgsDict']]] = None,
+            software_config: Optional[pulumi.Input[Union['RuntimeTemplateSoftwareConfigArgs', 'RuntimeTemplateSoftwareConfigArgsDict']]] = None) -> 'RuntimeTemplate':
         """
         Get an existing RuntimeTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -993,6 +1057,8 @@ class RuntimeTemplate(pulumi.CustomResource):
                and default labels configured on the provider.
         :param pulumi.Input[Union['RuntimeTemplateShieldedVmConfigArgs', 'RuntimeTemplateShieldedVmConfigArgsDict']] shielded_vm_config: Runtime Shielded VM spec.
                Structure is documented below.
+        :param pulumi.Input[Union['RuntimeTemplateSoftwareConfigArgs', 'RuntimeTemplateSoftwareConfigArgsDict']] software_config: The notebook software configuration of the notebook runtime.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1014,6 +1080,7 @@ class RuntimeTemplate(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["shielded_vm_config"] = shielded_vm_config
+        __props__.__dict__["software_config"] = software_config
         return RuntimeTemplate(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1157,4 +1224,13 @@ class RuntimeTemplate(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "shielded_vm_config")
+
+    @property
+    @pulumi.getter(name="softwareConfig")
+    def software_config(self) -> pulumi.Output[Optional['outputs.RuntimeTemplateSoftwareConfig']]:
+        """
+        The notebook software configuration of the notebook runtime.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "software_config")
 

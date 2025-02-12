@@ -35,7 +35,7 @@ class ChatEngineArgs:
         :param pulumi.Input['ChatEngineChatEngineConfigArgs'] chat_engine_config: Configurations for a chat Engine.
                Structure is documented below.
         :param pulumi.Input[str] collection_id: The collection ID.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] data_store_ids: The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] data_store_ids: The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
         :param pulumi.Input[str] display_name: The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         :param pulumi.Input[str] engine_id: The ID to use for chat engine.
         :param pulumi.Input[str] location: Location.
@@ -85,7 +85,7 @@ class ChatEngineArgs:
     @pulumi.getter(name="dataStoreIds")
     def data_store_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
+        The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
         """
         return pulumi.get(self, "data_store_ids")
 
@@ -189,7 +189,7 @@ class _ChatEngineState:
         :param pulumi.Input[str] collection_id: The collection ID.
         :param pulumi.Input['ChatEngineCommonConfigArgs'] common_config: Common config spec that specifies the metadata of the engine.
         :param pulumi.Input[str] create_time: Timestamp the Engine was created at.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] data_store_ids: The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] data_store_ids: The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
         :param pulumi.Input[str] display_name: The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         :param pulumi.Input[str] engine_id: The ID to use for chat engine.
         :param pulumi.Input[str] industry_vertical: The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked
@@ -294,7 +294,7 @@ class _ChatEngineState:
     @pulumi.getter(name="dataStoreIds")
     def data_store_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
+        The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
         """
         return pulumi.get(self, "data_store_ids")
 
@@ -518,7 +518,7 @@ class ChatEngine(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] collection_id: The collection ID.
         :param pulumi.Input[Union['ChatEngineCommonConfigArgs', 'ChatEngineCommonConfigArgsDict']] common_config: Common config spec that specifies the metadata of the engine.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] data_store_ids: The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] data_store_ids: The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
         :param pulumi.Input[str] display_name: The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         :param pulumi.Input[str] engine_id: The ID to use for chat engine.
         :param pulumi.Input[str] industry_vertical: The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked
@@ -735,7 +735,7 @@ class ChatEngine(pulumi.CustomResource):
         :param pulumi.Input[str] collection_id: The collection ID.
         :param pulumi.Input[Union['ChatEngineCommonConfigArgs', 'ChatEngineCommonConfigArgsDict']] common_config: Common config spec that specifies the metadata of the engine.
         :param pulumi.Input[str] create_time: Timestamp the Engine was created at.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] data_store_ids: The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] data_store_ids: The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
         :param pulumi.Input[str] display_name: The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         :param pulumi.Input[str] engine_id: The ID to use for chat engine.
         :param pulumi.Input[str] industry_vertical: The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked
@@ -812,7 +812,7 @@ class ChatEngine(pulumi.CustomResource):
     @pulumi.getter(name="dataStoreIds")
     def data_store_ids(self) -> pulumi.Output[Sequence[str]]:
         """
-        The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
+        The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
         """
         return pulumi.get(self, "data_store_ids")
 

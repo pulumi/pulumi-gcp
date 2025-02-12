@@ -318,9 +318,10 @@ namespace Pulumi.Gcp.MemoryStore
 
         /// <summary>
         /// Endpoints for the instance.
+        /// Structure is documented below.
         /// </summary>
         [Output("endpoints")]
-        public Output<ImmutableArray<ImmutableArray<object>>> Endpoints { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.InstanceEndpoint>> Endpoints { get; private set; } = null!;
 
         /// <summary>
         /// Optional. User-provided engine configurations for the instance.
@@ -365,11 +366,11 @@ namespace Pulumi.Gcp.MemoryStore
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Standalone or cluster.
+        /// Optional. cluster or cluster-disabled.
         /// Possible values:
         /// CLUSTER
-        /// STANDALONE
-        /// Possible values are: `CLUSTER`, `STANDALONE`.
+        /// CLUSTER_DISABLED
+        /// Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
         /// </summary>
         [Output("mode")]
         public Output<string> Mode { get; private set; } = null!;
@@ -617,11 +618,11 @@ namespace Pulumi.Gcp.MemoryStore
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Optional. Standalone or cluster.
+        /// Optional. cluster or cluster-disabled.
         /// Possible values:
         /// CLUSTER
-        /// STANDALONE
-        /// Possible values are: `CLUSTER`, `STANDALONE`.
+        /// CLUSTER_DISABLED
+        /// Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -750,14 +751,15 @@ namespace Pulumi.Gcp.MemoryStore
         }
 
         [Input("endpoints")]
-        private InputList<ImmutableArray<object>>? _endpoints;
+        private InputList<Inputs.InstanceEndpointGetArgs>? _endpoints;
 
         /// <summary>
         /// Endpoints for the instance.
+        /// Structure is documented below.
         /// </summary>
-        public InputList<ImmutableArray<object>> Endpoints
+        public InputList<Inputs.InstanceEndpointGetArgs> Endpoints
         {
-            get => _endpoints ?? (_endpoints = new InputList<ImmutableArray<object>>());
+            get => _endpoints ?? (_endpoints = new InputList<Inputs.InstanceEndpointGetArgs>());
             set => _endpoints = value;
         }
 
@@ -816,11 +818,11 @@ namespace Pulumi.Gcp.MemoryStore
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Optional. Standalone or cluster.
+        /// Optional. cluster or cluster-disabled.
         /// Possible values:
         /// CLUSTER
-        /// STANDALONE
-        /// Possible values are: `CLUSTER`, `STANDALONE`.
+        /// CLUSTER_DISABLED
+        /// Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }

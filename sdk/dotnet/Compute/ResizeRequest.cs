@@ -215,7 +215,7 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.ResizeRequestStatus>> Statuses { get; private set; } = null!;
 
         /// <summary>
-        /// The reference of the compute zone scoping this request.
+        /// The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -308,10 +308,10 @@ namespace Pulumi.Gcp.Compute
         public Input<int> ResizeBy { get; set; } = null!;
 
         /// <summary>
-        /// The reference of the compute zone scoping this request.
+        /// The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
         /// </summary>
-        [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public ResizeRequestArgs()
         {
@@ -388,7 +388,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// The reference of the compute zone scoping this request.
+        /// The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

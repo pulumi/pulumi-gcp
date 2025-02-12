@@ -32,6 +32,7 @@ public final class GetForwardingRuleResult {
      */
     private String id;
     private String ipAddress;
+    private String ipCollection;
     private String ipProtocol;
     private String ipVersion;
     private Boolean isMirroringCollector;
@@ -95,6 +96,9 @@ public final class GetForwardingRuleResult {
     }
     public String ipAddress() {
         return this.ipAddress;
+    }
+    public String ipCollection() {
+        return this.ipCollection;
     }
     public String ipProtocol() {
         return this.ipProtocol;
@@ -192,6 +196,7 @@ public final class GetForwardingRuleResult {
         private Integer forwardingRuleId;
         private String id;
         private String ipAddress;
+        private String ipCollection;
         private String ipProtocol;
         private String ipVersion;
         private Boolean isMirroringCollector;
@@ -231,6 +236,7 @@ public final class GetForwardingRuleResult {
     	      this.forwardingRuleId = defaults.forwardingRuleId;
     	      this.id = defaults.id;
     	      this.ipAddress = defaults.ipAddress;
+    	      this.ipCollection = defaults.ipCollection;
     	      this.ipProtocol = defaults.ipProtocol;
     	      this.ipVersion = defaults.ipVersion;
     	      this.isMirroringCollector = defaults.isMirroringCollector;
@@ -344,6 +350,14 @@ public final class GetForwardingRuleResult {
               throw new MissingRequiredPropertyException("GetForwardingRuleResult", "ipAddress");
             }
             this.ipAddress = ipAddress;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipCollection(String ipCollection) {
+            if (ipCollection == null) {
+              throw new MissingRequiredPropertyException("GetForwardingRuleResult", "ipCollection");
+            }
+            this.ipCollection = ipCollection;
             return this;
         }
         @CustomType.Setter
@@ -564,6 +578,7 @@ public final class GetForwardingRuleResult {
             _resultValue.forwardingRuleId = forwardingRuleId;
             _resultValue.id = id;
             _resultValue.ipAddress = ipAddress;
+            _resultValue.ipCollection = ipCollection;
             _resultValue.ipProtocol = ipProtocol;
             _resultValue.ipVersion = ipVersion;
             _resultValue.isMirroringCollector = isMirroringCollector;

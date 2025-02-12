@@ -1597,6 +1597,7 @@ class Service(pulumi.CustomResource):
             template={
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                    "base_image_uri": "us-central1-docker.pkg.dev/serverless-runtimes/google-22-full/runtimes/nodejs22",
                 }],
             },
             build_config={
@@ -2197,6 +2198,7 @@ class Service(pulumi.CustomResource):
             template={
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                    "base_image_uri": "us-central1-docker.pkg.dev/serverless-runtimes/google-22-full/runtimes/nodejs22",
                 }],
             },
             build_config={

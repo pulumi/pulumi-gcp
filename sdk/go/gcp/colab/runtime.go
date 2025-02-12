@@ -69,6 +69,54 @@ import (
 //	}
 //
 // ```
+// ### Colab Runtime Stopped
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/colab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myTemplate, err := colab.NewRuntimeTemplate(ctx, "my_template", &colab.RuntimeTemplateArgs{
+//				Name:        pulumi.String("colab-runtime"),
+//				DisplayName: pulumi.String("Runtime template basic"),
+//				Location:    pulumi.String("us-central1"),
+//				MachineSpec: &colab.RuntimeTemplateMachineSpecArgs{
+//					MachineType: pulumi.String("e2-standard-4"),
+//				},
+//				NetworkSpec: &colab.RuntimeTemplateNetworkSpecArgs{
+//					EnableInternetAccess: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = colab.NewRuntime(ctx, "runtime", &colab.RuntimeArgs{
+//				Name:     pulumi.String("colab-runtime"),
+//				Location: pulumi.String("us-central1"),
+//				NotebookRuntimeTemplateRef: &colab.RuntimeNotebookRuntimeTemplateRefArgs{
+//					NotebookRuntimeTemplate: myTemplate.ID(),
+//				},
+//				DesiredState: pulumi.String("STOPPED"),
+//				DisplayName:  pulumi.String("Runtime stopped"),
+//				RuntimeUser:  pulumi.String("gterraformtestuser@gmail.com"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				myTemplate,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Colab Runtime Full
 //
 // ```go
@@ -129,9 +177,11 @@ import (
 //				NotebookRuntimeTemplateRef: &colab.RuntimeNotebookRuntimeTemplateRefArgs{
 //					NotebookRuntimeTemplate: myTemplate.ID(),
 //				},
-//				DisplayName: pulumi.String("Runtime full"),
-//				RuntimeUser: pulumi.String("gterraformtestuser@gmail.com"),
-//				Description: pulumi.String("Full runtime"),
+//				DisplayName:  pulumi.String("Runtime full"),
+//				RuntimeUser:  pulumi.String("gterraformtestuser@gmail.com"),
+//				Description:  pulumi.String("Full runtime"),
+//				DesiredState: pulumi.String("ACTIVE"),
+//				AutoUpgrade:  pulumi.Bool(true),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				myTemplate,
 //			}))
@@ -170,10 +220,18 @@ import (
 type Runtime struct {
 	pulumi.CustomResourceState
 
+	// Triggers an upgrade anytime the runtime is started if it is upgradable.
+	AutoUpgrade pulumi.BoolPtrOutput `pulumi:"autoUpgrade"`
 	// The description of the Runtime.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
+	DesiredState pulumi.StringPtrOutput `pulumi:"desiredState"`
 	// Required. The display name of the Runtime.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Output only. Timestamp when this NotebookRuntime will be expired.
+	ExpirationTime pulumi.StringOutput `pulumi:"expirationTime"`
+	// Output only. Checks if the NotebookRuntime is upgradable.
+	IsUpgradable pulumi.BoolOutput `pulumi:"isUpgradable"`
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
 	//
 	// ***
@@ -183,11 +241,15 @@ type Runtime struct {
 	// 'Runtime specific information used for NotebookRuntime creation.'
 	// Structure is documented below.
 	NotebookRuntimeTemplateRef RuntimeNotebookRuntimeTemplateRefPtrOutput `pulumi:"notebookRuntimeTemplateRef"`
+	// Output only. The type of the notebook runtime.
+	NotebookRuntimeType pulumi.StringOutput `pulumi:"notebookRuntimeType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The user email of the NotebookRuntime.
 	RuntimeUser pulumi.StringOutput `pulumi:"runtimeUser"`
+	// Output only. The state of the runtime.
+	State pulumi.StringOutput `pulumi:"state"`
 }
 
 // NewRuntime registers a new resource with the given unique name, arguments, and options.
@@ -229,10 +291,18 @@ func GetRuntime(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Runtime resources.
 type runtimeState struct {
+	// Triggers an upgrade anytime the runtime is started if it is upgradable.
+	AutoUpgrade *bool `pulumi:"autoUpgrade"`
 	// The description of the Runtime.
 	Description *string `pulumi:"description"`
+	// Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
+	DesiredState *string `pulumi:"desiredState"`
 	// Required. The display name of the Runtime.
 	DisplayName *string `pulumi:"displayName"`
+	// Output only. Timestamp when this NotebookRuntime will be expired.
+	ExpirationTime *string `pulumi:"expirationTime"`
+	// Output only. Checks if the NotebookRuntime is upgradable.
+	IsUpgradable *bool `pulumi:"isUpgradable"`
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
 	//
 	// ***
@@ -242,18 +312,30 @@ type runtimeState struct {
 	// 'Runtime specific information used for NotebookRuntime creation.'
 	// Structure is documented below.
 	NotebookRuntimeTemplateRef *RuntimeNotebookRuntimeTemplateRef `pulumi:"notebookRuntimeTemplateRef"`
+	// Output only. The type of the notebook runtime.
+	NotebookRuntimeType *string `pulumi:"notebookRuntimeType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The user email of the NotebookRuntime.
 	RuntimeUser *string `pulumi:"runtimeUser"`
+	// Output only. The state of the runtime.
+	State *string `pulumi:"state"`
 }
 
 type RuntimeState struct {
+	// Triggers an upgrade anytime the runtime is started if it is upgradable.
+	AutoUpgrade pulumi.BoolPtrInput
 	// The description of the Runtime.
 	Description pulumi.StringPtrInput
+	// Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
+	DesiredState pulumi.StringPtrInput
 	// Required. The display name of the Runtime.
 	DisplayName pulumi.StringPtrInput
+	// Output only. Timestamp when this NotebookRuntime will be expired.
+	ExpirationTime pulumi.StringPtrInput
+	// Output only. Checks if the NotebookRuntime is upgradable.
+	IsUpgradable pulumi.BoolPtrInput
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
 	//
 	// ***
@@ -263,11 +345,15 @@ type RuntimeState struct {
 	// 'Runtime specific information used for NotebookRuntime creation.'
 	// Structure is documented below.
 	NotebookRuntimeTemplateRef RuntimeNotebookRuntimeTemplateRefPtrInput
+	// Output only. The type of the notebook runtime.
+	NotebookRuntimeType pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The user email of the NotebookRuntime.
 	RuntimeUser pulumi.StringPtrInput
+	// Output only. The state of the runtime.
+	State pulumi.StringPtrInput
 }
 
 func (RuntimeState) ElementType() reflect.Type {
@@ -275,8 +361,12 @@ func (RuntimeState) ElementType() reflect.Type {
 }
 
 type runtimeArgs struct {
+	// Triggers an upgrade anytime the runtime is started if it is upgradable.
+	AutoUpgrade *bool `pulumi:"autoUpgrade"`
 	// The description of the Runtime.
 	Description *string `pulumi:"description"`
+	// Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
+	DesiredState *string `pulumi:"desiredState"`
 	// Required. The display name of the Runtime.
 	DisplayName string `pulumi:"displayName"`
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
@@ -297,8 +387,12 @@ type runtimeArgs struct {
 
 // The set of arguments for constructing a Runtime resource.
 type RuntimeArgs struct {
+	// Triggers an upgrade anytime the runtime is started if it is upgradable.
+	AutoUpgrade pulumi.BoolPtrInput
 	// The description of the Runtime.
 	Description pulumi.StringPtrInput
+	// Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
+	DesiredState pulumi.StringPtrInput
 	// Required. The display name of the Runtime.
 	DisplayName pulumi.StringInput
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
@@ -404,14 +498,34 @@ func (o RuntimeOutput) ToRuntimeOutputWithContext(ctx context.Context) RuntimeOu
 	return o
 }
 
+// Triggers an upgrade anytime the runtime is started if it is upgradable.
+func (o RuntimeOutput) AutoUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Runtime) pulumi.BoolPtrOutput { return v.AutoUpgrade }).(pulumi.BoolPtrOutput)
+}
+
 // The description of the Runtime.
 func (o RuntimeOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Runtime) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
+func (o RuntimeOutput) DesiredState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Runtime) pulumi.StringPtrOutput { return v.DesiredState }).(pulumi.StringPtrOutput)
+}
+
 // Required. The display name of the Runtime.
 func (o RuntimeOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Output only. Timestamp when this NotebookRuntime will be expired.
+func (o RuntimeOutput) ExpirationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.ExpirationTime }).(pulumi.StringOutput)
+}
+
+// Output only. Checks if the NotebookRuntime is upgradable.
+func (o RuntimeOutput) IsUpgradable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Runtime) pulumi.BoolOutput { return v.IsUpgradable }).(pulumi.BoolOutput)
 }
 
 // The location for the resource: https://cloud.google.com/colab/docs/locations
@@ -432,6 +546,11 @@ func (o RuntimeOutput) NotebookRuntimeTemplateRef() RuntimeNotebookRuntimeTempla
 	return o.ApplyT(func(v *Runtime) RuntimeNotebookRuntimeTemplateRefPtrOutput { return v.NotebookRuntimeTemplateRef }).(RuntimeNotebookRuntimeTemplateRefPtrOutput)
 }
 
+// Output only. The type of the notebook runtime.
+func (o RuntimeOutput) NotebookRuntimeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.NotebookRuntimeType }).(pulumi.StringOutput)
+}
+
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
 func (o RuntimeOutput) Project() pulumi.StringOutput {
@@ -441,6 +560,11 @@ func (o RuntimeOutput) Project() pulumi.StringOutput {
 // The user email of the NotebookRuntime.
 func (o RuntimeOutput) RuntimeUser() pulumi.StringOutput {
 	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.RuntimeUser }).(pulumi.StringOutput)
+}
+
+// Output only. The state of the runtime.
+func (o RuntimeOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
 type RuntimeArrayOutput struct{ *pulumi.OutputState }

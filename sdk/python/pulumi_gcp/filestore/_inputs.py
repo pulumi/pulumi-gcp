@@ -15,10 +15,18 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'InstanceEffectiveReplicationArgs',
+    'InstanceEffectiveReplicationArgsDict',
+    'InstanceEffectiveReplicationReplicaArgs',
+    'InstanceEffectiveReplicationReplicaArgsDict',
     'InstanceFileSharesArgs',
     'InstanceFileSharesArgsDict',
     'InstanceFileSharesNfsExportOptionArgs',
     'InstanceFileSharesNfsExportOptionArgsDict',
+    'InstanceInitialReplicationArgs',
+    'InstanceInitialReplicationArgsDict',
+    'InstanceInitialReplicationReplicaArgs',
+    'InstanceInitialReplicationReplicaArgsDict',
     'InstanceNetworkArgs',
     'InstanceNetworkArgsDict',
     'InstancePerformanceConfigArgs',
@@ -30,6 +38,128 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class InstanceEffectiveReplicationArgsDict(TypedDict):
+        replicas: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceEffectiveReplicationReplicaArgsDict']]]]
+        """
+        The replication role.
+        Structure is documented below.
+        """
+elif False:
+    InstanceEffectiveReplicationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceEffectiveReplicationArgs:
+    def __init__(__self__, *,
+                 replicas: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEffectiveReplicationReplicaArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceEffectiveReplicationReplicaArgs']]] replicas: The replication role.
+               Structure is documented below.
+        """
+        if replicas is not None:
+            pulumi.set(__self__, "replicas", replicas)
+
+    @property
+    @pulumi.getter
+    def replicas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEffectiveReplicationReplicaArgs']]]]:
+        """
+        The replication role.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "replicas")
+
+    @replicas.setter
+    def replicas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEffectiveReplicationReplicaArgs']]]]):
+        pulumi.set(self, "replicas", value)
+
+
+if not MYPY:
+    class InstanceEffectiveReplicationReplicaArgsDict(TypedDict):
+        last_active_sync_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The replica state
+        """
+        state_reasons: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (Output)
+        Output only. Additional information about the replication state, if available.
+        """
+elif False:
+    InstanceEffectiveReplicationReplicaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceEffectiveReplicationReplicaArgs:
+    def __init__(__self__, *,
+                 last_active_sync_time: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 state_reasons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] last_active_sync_time: (Output)
+               Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+        :param pulumi.Input[str] state: (Output)
+               Output only. The replica state
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] state_reasons: (Output)
+               Output only. Additional information about the replication state, if available.
+        """
+        if last_active_sync_time is not None:
+            pulumi.set(__self__, "last_active_sync_time", last_active_sync_time)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if state_reasons is not None:
+            pulumi.set(__self__, "state_reasons", state_reasons)
+
+    @property
+    @pulumi.getter(name="lastActiveSyncTime")
+    def last_active_sync_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+        """
+        return pulumi.get(self, "last_active_sync_time")
+
+    @last_active_sync_time.setter
+    def last_active_sync_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_active_sync_time", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. The replica state
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="stateReasons")
+    def state_reasons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        (Output)
+        Output only. Additional information about the replication state, if available.
+        """
+        return pulumi.get(self, "state_reasons")
+
+    @state_reasons.setter
+    def state_reasons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "state_reasons", value)
+
 
 if not MYPY:
     class InstanceFileSharesArgsDict(TypedDict):
@@ -279,6 +409,98 @@ class InstanceFileSharesNfsExportOptionArgs:
     @squash_mode.setter
     def squash_mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "squash_mode", value)
+
+
+if not MYPY:
+    class InstanceInitialReplicationArgsDict(TypedDict):
+        replicas: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceInitialReplicationReplicaArgsDict']]]]
+        """
+        The replication role.
+        Structure is documented below.
+        """
+        role: NotRequired[pulumi.Input[str]]
+        """
+        The replication role.
+        Default value is `STANDBY`.
+        Possible values are: `ROLE_UNSPECIFIED`, `ACTIVE`, `STANDBY`.
+        """
+elif False:
+    InstanceInitialReplicationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceInitialReplicationArgs:
+    def __init__(__self__, *,
+                 replicas: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceInitialReplicationReplicaArgs']]]] = None,
+                 role: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceInitialReplicationReplicaArgs']]] replicas: The replication role.
+               Structure is documented below.
+        :param pulumi.Input[str] role: The replication role.
+               Default value is `STANDBY`.
+               Possible values are: `ROLE_UNSPECIFIED`, `ACTIVE`, `STANDBY`.
+        """
+        if replicas is not None:
+            pulumi.set(__self__, "replicas", replicas)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter
+    def replicas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceInitialReplicationReplicaArgs']]]]:
+        """
+        The replication role.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "replicas")
+
+    @replicas.setter
+    def replicas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceInitialReplicationReplicaArgs']]]]):
+        pulumi.set(self, "replicas", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The replication role.
+        Default value is `STANDBY`.
+        Possible values are: `ROLE_UNSPECIFIED`, `ACTIVE`, `STANDBY`.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+
+
+if not MYPY:
+    class InstanceInitialReplicationReplicaArgsDict(TypedDict):
+        peer_instance: pulumi.Input[str]
+        """
+        The peer instance.
+        """
+elif False:
+    InstanceInitialReplicationReplicaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceInitialReplicationReplicaArgs:
+    def __init__(__self__, *,
+                 peer_instance: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] peer_instance: The peer instance.
+        """
+        pulumi.set(__self__, "peer_instance", peer_instance)
+
+    @property
+    @pulumi.getter(name="peerInstance")
+    def peer_instance(self) -> pulumi.Input[str]:
+        """
+        The peer instance.
+        """
+        return pulumi.get(self, "peer_instance")
+
+    @peer_instance.setter
+    def peer_instance(self, value: pulumi.Input[str]):
+        pulumi.set(self, "peer_instance", value)
 
 
 if not MYPY:

@@ -38,6 +38,8 @@ public final class ServiceTemplateContainerStartupProbeGrpcArgs extends com.pulu
      * (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
      * If this is not specified, the default behavior is defined by gRPC.
      * 
+     * &lt;a name=&#34;nested_template_containers_containers_build_info&#34;&gt;&lt;/a&gt;The `build_info` block contains:
+     * 
      */
     @Import(name="service")
     private @Nullable Output<String> service;
@@ -46,6 +48,8 @@ public final class ServiceTemplateContainerStartupProbeGrpcArgs extends com.pulu
      * @return The name of the service to place in the gRPC HealthCheckRequest
      * (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
      * If this is not specified, the default behavior is defined by gRPC.
+     * 
+     * &lt;a name=&#34;nested_template_containers_containers_build_info&#34;&gt;&lt;/a&gt;The `build_info` block contains:
      * 
      */
     public Optional<Output<String>> service() {
@@ -105,6 +109,8 @@ public final class ServiceTemplateContainerStartupProbeGrpcArgs extends com.pulu
          * (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
          * If this is not specified, the default behavior is defined by gRPC.
          * 
+         * &lt;a name=&#34;nested_template_containers_containers_build_info&#34;&gt;&lt;/a&gt;The `build_info` block contains:
+         * 
          * @return builder
          * 
          */
@@ -117,6 +123,8 @@ public final class ServiceTemplateContainerStartupProbeGrpcArgs extends com.pulu
          * @param service The name of the service to place in the gRPC HealthCheckRequest
          * (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
          * If this is not specified, the default behavior is defined by gRPC.
+         * 
+         * &lt;a name=&#34;nested_template_containers_containers_build_info&#34;&gt;&lt;/a&gt;The `build_info` block contains:
          * 
          * @return builder
          * 

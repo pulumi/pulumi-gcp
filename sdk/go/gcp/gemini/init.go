@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex":
 		r = &CodeRepositoryIndex{}
+	case "gcp:gemini/loggingSetting:LoggingSetting":
+		r = &LoggingSetting{}
+	case "gcp:gemini/releaseChannelSetting:ReleaseChannelSetting":
+		r = &ReleaseChannelSetting{}
 	case "gcp:gemini/repositoryGroup:RepositoryGroup":
 		r = &RepositoryGroup{}
 	case "gcp:gemini/repositoryGroupIamBinding:RepositoryGroupIamBinding":
@@ -47,6 +51,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"gemini/codeRepositoryIndex",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gemini/loggingSetting",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gemini/releaseChannelSetting",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

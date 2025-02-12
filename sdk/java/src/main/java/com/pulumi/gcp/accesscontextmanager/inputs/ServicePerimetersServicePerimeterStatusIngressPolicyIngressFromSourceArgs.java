@@ -31,24 +31,24 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFr
     }
 
     /**
-     * A Google Cloud resource that is allowed to ingress the perimeter.
-     * Requests from these resources will be allowed to access perimeter data.
-     * Currently only projects are allowed. Format `projects/{project_number}`
-     * The project may be in any Google Cloud organization, not just the
-     * organization that the perimeter is defined in. `*` is not allowed, the case
-     * of allowing all Google Cloud resources only is not supported.
+     * A Google Cloud resource that is allowed to egress the perimeter.
+     * Requests from these resources are allowed to access data outside the perimeter.
+     * Currently only projects are allowed. Project format: `projects/{project_number}`.
+     * The resource may be in any Google Cloud organization, not just the
+     * organization that the perimeter is defined in. `*` is not allowed, the
+     * case of allowing all Google Cloud resources only is not supported.
      * 
      */
     @Import(name="resource")
     private @Nullable Output<String> resource;
 
     /**
-     * @return A Google Cloud resource that is allowed to ingress the perimeter.
-     * Requests from these resources will be allowed to access perimeter data.
-     * Currently only projects are allowed. Format `projects/{project_number}`
-     * The project may be in any Google Cloud organization, not just the
-     * organization that the perimeter is defined in. `*` is not allowed, the case
-     * of allowing all Google Cloud resources only is not supported.
+     * @return A Google Cloud resource that is allowed to egress the perimeter.
+     * Requests from these resources are allowed to access data outside the perimeter.
+     * Currently only projects are allowed. Project format: `projects/{project_number}`.
+     * The resource may be in any Google Cloud organization, not just the
+     * organization that the perimeter is defined in. `*` is not allowed, the
+     * case of allowing all Google Cloud resources only is not supported.
      * 
      */
     public Optional<Output<String>> resource() {
@@ -102,12 +102,12 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFr
         }
 
         /**
-         * @param resource A Google Cloud resource that is allowed to ingress the perimeter.
-         * Requests from these resources will be allowed to access perimeter data.
-         * Currently only projects are allowed. Format `projects/{project_number}`
-         * The project may be in any Google Cloud organization, not just the
-         * organization that the perimeter is defined in. `*` is not allowed, the case
-         * of allowing all Google Cloud resources only is not supported.
+         * @param resource A Google Cloud resource that is allowed to egress the perimeter.
+         * Requests from these resources are allowed to access data outside the perimeter.
+         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * The resource may be in any Google Cloud organization, not just the
+         * organization that the perimeter is defined in. `*` is not allowed, the
+         * case of allowing all Google Cloud resources only is not supported.
          * 
          * @return builder
          * 
@@ -118,12 +118,12 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFr
         }
 
         /**
-         * @param resource A Google Cloud resource that is allowed to ingress the perimeter.
-         * Requests from these resources will be allowed to access perimeter data.
-         * Currently only projects are allowed. Format `projects/{project_number}`
-         * The project may be in any Google Cloud organization, not just the
-         * organization that the perimeter is defined in. `*` is not allowed, the case
-         * of allowing all Google Cloud resources only is not supported.
+         * @param resource A Google Cloud resource that is allowed to egress the perimeter.
+         * Requests from these resources are allowed to access data outside the perimeter.
+         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * The resource may be in any Google Cloud organization, not just the
+         * organization that the perimeter is defined in. `*` is not allowed, the
+         * case of allowing all Google Cloud resources only is not supported.
          * 
          * @return builder
          * 

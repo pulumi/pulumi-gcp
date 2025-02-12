@@ -108,6 +108,17 @@ import * as utilities from "../utilities";
  *     encryptionSpec: {
  *         kmsKeyName: "my-crypto-key",
  *     },
+ *     softwareConfig: {
+ *         envs: [{
+ *             name: "TEST",
+ *             value: "1",
+ *         }],
+ *         postStartupScriptConfig: {
+ *             postStartupScript: "echo 'hello world'",
+ *             postStartupScriptUrl: "gs://colab-enterprise-pss-secure/secure_pss.sh",
+ *             postStartupScriptBehavior: "RUN_ONCE",
+ *         },
+ *     },
  * });
  * ```
  *
@@ -241,6 +252,11 @@ export class RuntimeTemplate extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly shieldedVmConfig!: pulumi.Output<outputs.colab.RuntimeTemplateShieldedVmConfig | undefined>;
+    /**
+     * The notebook software configuration of the notebook runtime.
+     * Structure is documented below.
+     */
+    public readonly softwareConfig!: pulumi.Output<outputs.colab.RuntimeTemplateSoftwareConfig | undefined>;
 
     /**
      * Create a RuntimeTemplate resource with the given unique name, arguments, and options.
@@ -271,6 +287,7 @@ export class RuntimeTemplate extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["shieldedVmConfig"] = state ? state.shieldedVmConfig : undefined;
+            resourceInputs["softwareConfig"] = state ? state.softwareConfig : undefined;
         } else {
             const args = argsOrState as RuntimeTemplateArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
@@ -293,6 +310,7 @@ export class RuntimeTemplate extends pulumi.CustomResource {
             resourceInputs["networkTags"] = args ? args.networkTags : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["shieldedVmConfig"] = args ? args.shieldedVmConfig : undefined;
+            resourceInputs["softwareConfig"] = args ? args.softwareConfig : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
@@ -385,6 +403,11 @@ export interface RuntimeTemplateState {
      * Structure is documented below.
      */
     shieldedVmConfig?: pulumi.Input<inputs.colab.RuntimeTemplateShieldedVmConfig>;
+    /**
+     * The notebook software configuration of the notebook runtime.
+     * Structure is documented below.
+     */
+    softwareConfig?: pulumi.Input<inputs.colab.RuntimeTemplateSoftwareConfig>;
 }
 
 /**
@@ -460,4 +483,9 @@ export interface RuntimeTemplateArgs {
      * Structure is documented below.
      */
     shieldedVmConfig?: pulumi.Input<inputs.colab.RuntimeTemplateShieldedVmConfig>;
+    /**
+     * The notebook software configuration of the notebook runtime.
+     * Structure is documented below.
+     */
+    softwareConfig?: pulumi.Input<inputs.colab.RuntimeTemplateSoftwareConfig>;
 }

@@ -70,6 +70,7 @@ export interface GetForwardingRuleResult {
      */
     readonly id: string;
     readonly ipAddress: string;
+    readonly ipCollection: string;
     readonly ipProtocol: string;
     readonly ipVersion: string;
     readonly isMirroringCollector: boolean;

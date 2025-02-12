@@ -24,6 +24,7 @@ class InstanceArgs:
                  location: pulumi.Input[str],
                  desired_state: Optional[pulumi.Input[str]] = None,
                  disable_proxy_access: Optional[pulumi.Input[bool]] = None,
+                 enable_third_party_identity: Optional[pulumi.Input[bool]] = None,
                  gce_setup: Optional[pulumi.Input['InstanceGceSetupArgs']] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -38,6 +39,8 @@ class InstanceArgs:
                - - -
         :param pulumi.Input[str] desired_state: Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[bool] disable_proxy_access: Optional. If true, the workbench instance will not register with the proxy.
+        :param pulumi.Input[bool] enable_third_party_identity: Flag that specifies that a notebook can be accessed with third party
+               identity provider.
         :param pulumi.Input['InstanceGceSetupArgs'] gce_setup: The definition of how to configure a VM instance outside of Resources and Identity.
                Structure is documented below.
         :param pulumi.Input[str] instance_id: Required. User-defined unique ID of this instance.
@@ -60,6 +63,8 @@ class InstanceArgs:
             pulumi.set(__self__, "desired_state", desired_state)
         if disable_proxy_access is not None:
             pulumi.set(__self__, "disable_proxy_access", disable_proxy_access)
+        if enable_third_party_identity is not None:
+            pulumi.set(__self__, "enable_third_party_identity", enable_third_party_identity)
         if gce_setup is not None:
             pulumi.set(__self__, "gce_setup", gce_setup)
         if instance_id is not None:
@@ -111,6 +116,19 @@ class InstanceArgs:
     @disable_proxy_access.setter
     def disable_proxy_access(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disable_proxy_access", value)
+
+    @property
+    @pulumi.getter(name="enableThirdPartyIdentity")
+    def enable_third_party_identity(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag that specifies that a notebook can be accessed with third party
+        identity provider.
+        """
+        return pulumi.get(self, "enable_third_party_identity")
+
+    @enable_third_party_identity.setter
+    def enable_third_party_identity(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_third_party_identity", value)
 
     @property
     @pulumi.getter(name="gceSetup")
@@ -203,6 +221,7 @@ class _InstanceState:
                  desired_state: Optional[pulumi.Input[str]] = None,
                  disable_proxy_access: Optional[pulumi.Input[bool]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 enable_third_party_identity: Optional[pulumi.Input[bool]] = None,
                  gce_setup: Optional[pulumi.Input['InstanceGceSetupArgs']] = None,
                  health_infos: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceHealthInfoArgs']]]] = None,
                  health_state: Optional[pulumi.Input[str]] = None,
@@ -225,6 +244,8 @@ class _InstanceState:
         :param pulumi.Input[str] desired_state: Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[bool] disable_proxy_access: Optional. If true, the workbench instance will not register with the proxy.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[bool] enable_third_party_identity: Flag that specifies that a notebook can be accessed with third party
+               identity provider.
         :param pulumi.Input['InstanceGceSetupArgs'] gce_setup: The definition of how to configure a VM instance outside of Resources and Identity.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceHealthInfoArgs']]] health_infos: 'Output only. Additional information about instance health. Example:
@@ -269,6 +290,8 @@ class _InstanceState:
             pulumi.set(__self__, "disable_proxy_access", disable_proxy_access)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if enable_third_party_identity is not None:
+            pulumi.set(__self__, "enable_third_party_identity", enable_third_party_identity)
         if gce_setup is not None:
             pulumi.set(__self__, "gce_setup", gce_setup)
         if health_infos is not None:
@@ -358,6 +381,19 @@ class _InstanceState:
     @effective_labels.setter
     def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @property
+    @pulumi.getter(name="enableThirdPartyIdentity")
+    def enable_third_party_identity(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag that specifies that a notebook can be accessed with third party
+        identity provider.
+        """
+        return pulumi.get(self, "enable_third_party_identity")
+
+    @enable_third_party_identity.setter
+    def enable_third_party_identity(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_third_party_identity", value)
 
     @property
     @pulumi.getter(name="gceSetup")
@@ -554,6 +590,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  desired_state: Optional[pulumi.Input[str]] = None,
                  disable_proxy_access: Optional[pulumi.Input[bool]] = None,
+                 enable_third_party_identity: Optional[pulumi.Input[bool]] = None,
                  gce_setup: Optional[pulumi.Input[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -564,6 +601,12 @@ class Instance(pulumi.CustomResource):
                  __props__=None):
         """
         A Workbench instance.
+
+        To get more information about Instance, see:
+
+        * [API documentation](https://cloud.google.com/vertex-ai/docs/workbench/reference/rest/v2/projects.locations.instances)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/vertex-ai/docs/workbench/instances/introduction)
 
         ## Example Usage
 
@@ -713,7 +756,8 @@ class Instance(pulumi.CustomResource):
             labels={
                 "k": "val",
             },
-            desired_state="ACTIVE")
+            desired_state="ACTIVE",
+            enable_third_party_identity=True)
         ```
 
         ## Import
@@ -744,6 +788,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] desired_state: Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[bool] disable_proxy_access: Optional. If true, the workbench instance will not register with the proxy.
+        :param pulumi.Input[bool] enable_third_party_identity: Flag that specifies that a notebook can be accessed with third party
+               identity provider.
         :param pulumi.Input[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']] gce_setup: The definition of how to configure a VM instance outside of Resources and Identity.
                Structure is documented below.
         :param pulumi.Input[str] instance_id: Required. User-defined unique ID of this instance.
@@ -773,6 +819,12 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Workbench instance.
+
+        To get more information about Instance, see:
+
+        * [API documentation](https://cloud.google.com/vertex-ai/docs/workbench/reference/rest/v2/projects.locations.instances)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/vertex-ai/docs/workbench/instances/introduction)
 
         ## Example Usage
 
@@ -922,7 +974,8 @@ class Instance(pulumi.CustomResource):
             labels={
                 "k": "val",
             },
-            desired_state="ACTIVE")
+            desired_state="ACTIVE",
+            enable_third_party_identity=True)
         ```
 
         ## Import
@@ -966,6 +1019,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  desired_state: Optional[pulumi.Input[str]] = None,
                  disable_proxy_access: Optional[pulumi.Input[bool]] = None,
+                 enable_third_party_identity: Optional[pulumi.Input[bool]] = None,
                  gce_setup: Optional[pulumi.Input[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -984,6 +1038,7 @@ class Instance(pulumi.CustomResource):
 
             __props__.__dict__["desired_state"] = desired_state
             __props__.__dict__["disable_proxy_access"] = disable_proxy_access
+            __props__.__dict__["enable_third_party_identity"] = enable_third_party_identity
             __props__.__dict__["gce_setup"] = gce_setup
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["instance_owners"] = instance_owners
@@ -1020,6 +1075,7 @@ class Instance(pulumi.CustomResource):
             desired_state: Optional[pulumi.Input[str]] = None,
             disable_proxy_access: Optional[pulumi.Input[bool]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            enable_third_party_identity: Optional[pulumi.Input[bool]] = None,
             gce_setup: Optional[pulumi.Input[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']]] = None,
             health_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceHealthInfoArgs', 'InstanceHealthInfoArgsDict']]]]] = None,
             health_state: Optional[pulumi.Input[str]] = None,
@@ -1047,6 +1103,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] desired_state: Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[bool] disable_proxy_access: Optional. If true, the workbench instance will not register with the proxy.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[bool] enable_third_party_identity: Flag that specifies that a notebook can be accessed with third party
+               identity provider.
         :param pulumi.Input[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']] gce_setup: The definition of how to configure a VM instance outside of Resources and Identity.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceHealthInfoArgs', 'InstanceHealthInfoArgsDict']]]] health_infos: 'Output only. Additional information about instance health. Example:
@@ -1090,6 +1148,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["desired_state"] = desired_state
         __props__.__dict__["disable_proxy_access"] = disable_proxy_access
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["enable_third_party_identity"] = enable_third_party_identity
         __props__.__dict__["gce_setup"] = gce_setup
         __props__.__dict__["health_infos"] = health_infos
         __props__.__dict__["health_state"] = health_state
@@ -1146,6 +1205,15 @@ class Instance(pulumi.CustomResource):
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @property
+    @pulumi.getter(name="enableThirdPartyIdentity")
+    def enable_third_party_identity(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Flag that specifies that a notebook can be accessed with third party
+        identity provider.
+        """
+        return pulumi.get(self, "enable_third_party_identity")
 
     @property
     @pulumi.getter(name="gceSetup")

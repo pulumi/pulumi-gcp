@@ -117,18 +117,18 @@ public final class ResizeRequestArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The reference of the compute zone scoping this request.
+     * The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
      * 
      */
-    @Import(name="zone", required=true)
-    private Output<String> zone;
+    @Import(name="zone")
+    private @Nullable Output<String> zone;
 
     /**
-     * @return The reference of the compute zone scoping this request.
+     * @return The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
      * 
      */
-    public Output<String> zone() {
-        return this.zone;
+    public Optional<Output<String>> zone() {
+        return Optional.ofNullable(this.zone);
     }
 
     private ResizeRequestArgs() {}
@@ -296,18 +296,18 @@ public final class ResizeRequestArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zone The reference of the compute zone scoping this request.
+         * @param zone The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
          * 
          * @return builder
          * 
          */
-        public Builder zone(Output<String> zone) {
+        public Builder zone(@Nullable Output<String> zone) {
             $.zone = zone;
             return this;
         }
 
         /**
-         * @param zone The reference of the compute zone scoping this request.
+         * @param zone The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
          * 
          * @return builder
          * 
@@ -322,9 +322,6 @@ public final class ResizeRequestArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.resizeBy == null) {
                 throw new MissingRequiredPropertyException("ResizeRequestArgs", "resizeBy");
-            }
-            if ($.zone == null) {
-                throw new MissingRequiredPropertyException("ResizeRequestArgs", "zone");
             }
             return $;
         }

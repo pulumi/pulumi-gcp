@@ -16,6 +16,16 @@ public final class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSo
      * 
      */
     private @Nullable String accessLevel;
+    /**
+     * @return A Google Cloud resource that is allowed to egress the perimeter.
+     * Requests from these resources are allowed to access data outside the perimeter.
+     * Currently only projects are allowed. Project format: `projects/{project_number}`.
+     * The resource may be in any Google Cloud organization, not just the
+     * organization that the perimeter is defined in. `*` is not allowed, the
+     * case of allowing all Google Cloud resources only is not supported.
+     * 
+     */
+    private @Nullable String resource;
 
     private ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource() {}
     /**
@@ -24,6 +34,18 @@ public final class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSo
      */
     public Optional<String> accessLevel() {
         return Optional.ofNullable(this.accessLevel);
+    }
+    /**
+     * @return A Google Cloud resource that is allowed to egress the perimeter.
+     * Requests from these resources are allowed to access data outside the perimeter.
+     * Currently only projects are allowed. Project format: `projects/{project_number}`.
+     * The resource may be in any Google Cloud organization, not just the
+     * organization that the perimeter is defined in. `*` is not allowed, the
+     * case of allowing all Google Cloud resources only is not supported.
+     * 
+     */
+    public Optional<String> resource() {
+        return Optional.ofNullable(this.resource);
     }
 
     public static Builder builder() {
@@ -36,10 +58,12 @@ public final class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSo
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accessLevel;
+        private @Nullable String resource;
         public Builder() {}
         public Builder(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessLevel = defaults.accessLevel;
+    	      this.resource = defaults.resource;
         }
 
         @CustomType.Setter
@@ -48,9 +72,16 @@ public final class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSo
             this.accessLevel = accessLevel;
             return this;
         }
+        @CustomType.Setter
+        public Builder resource(@Nullable String resource) {
+
+            this.resource = resource;
+            return this;
+        }
         public ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource build() {
             final var _resultValue = new ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource();
             _resultValue.accessLevel = accessLevel;
+            _resultValue.resource = resource;
             return _resultValue;
         }
     }

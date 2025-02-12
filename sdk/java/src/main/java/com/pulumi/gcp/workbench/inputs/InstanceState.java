@@ -99,6 +99,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Flag that specifies that a notebook can be accessed with third party
+     * identity provider.
+     * 
+     */
+    @Import(name="enableThirdPartyIdentity")
+    private @Nullable Output<Boolean> enableThirdPartyIdentity;
+
+    /**
+     * @return Flag that specifies that a notebook can be accessed with third party
+     * identity provider.
+     * 
+     */
+    public Optional<Output<Boolean>> enableThirdPartyIdentity() {
+        return Optional.ofNullable(this.enableThirdPartyIdentity);
+    }
+
+    /**
      * The definition of how to configure a VM instance outside of Resources and Identity.
      * Structure is documented below.
      * 
@@ -352,6 +369,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.desiredState = $.desiredState;
         this.disableProxyAccess = $.disableProxyAccess;
         this.effectiveLabels = $.effectiveLabels;
+        this.enableThirdPartyIdentity = $.enableThirdPartyIdentity;
         this.gceSetup = $.gceSetup;
         this.healthInfos = $.healthInfos;
         this.healthState = $.healthState;
@@ -491,6 +509,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
+         * @param enableThirdPartyIdentity Flag that specifies that a notebook can be accessed with third party
+         * identity provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableThirdPartyIdentity(@Nullable Output<Boolean> enableThirdPartyIdentity) {
+            $.enableThirdPartyIdentity = enableThirdPartyIdentity;
+            return this;
+        }
+
+        /**
+         * @param enableThirdPartyIdentity Flag that specifies that a notebook can be accessed with third party
+         * identity provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableThirdPartyIdentity(Boolean enableThirdPartyIdentity) {
+            return enableThirdPartyIdentity(Output.of(enableThirdPartyIdentity));
         }
 
         /**

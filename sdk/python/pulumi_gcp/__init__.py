@@ -1156,6 +1156,38 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "beyondcorp/application",
+  "fqn": "pulumi_gcp.beyondcorp",
+  "classes": {
+   "gcp:beyondcorp/application:Application": "Application"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "beyondcorp/applicationIamBinding",
+  "fqn": "pulumi_gcp.beyondcorp",
+  "classes": {
+   "gcp:beyondcorp/applicationIamBinding:ApplicationIamBinding": "ApplicationIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "beyondcorp/applicationIamMember",
+  "fqn": "pulumi_gcp.beyondcorp",
+  "classes": {
+   "gcp:beyondcorp/applicationIamMember:ApplicationIamMember": "ApplicationIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "beyondcorp/applicationIamPolicy",
+  "fqn": "pulumi_gcp.beyondcorp",
+  "classes": {
+   "gcp:beyondcorp/applicationIamPolicy:ApplicationIamPolicy": "ApplicationIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "beyondcorp/securityGateway",
   "fqn": "pulumi_gcp.beyondcorp",
   "classes": {
@@ -1440,6 +1472,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.bigqueryanalyticshub",
   "classes": {
    "gcp:bigqueryanalyticshub/listingIamPolicy:ListingIamPolicy": "ListingIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "bigqueryanalyticshub/listingSubscription",
+  "fqn": "pulumi_gcp.bigqueryanalyticshub",
+  "classes": {
+   "gcp:bigqueryanalyticshub/listingSubscription:ListingSubscription": "ListingSubscription"
   }
  },
  {
@@ -2284,6 +2324,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "colab/notebookExecution",
+  "fqn": "pulumi_gcp.colab",
+  "classes": {
+   "gcp:colab/notebookExecution:NotebookExecution": "NotebookExecution"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "colab/runtime",
   "fqn": "pulumi_gcp.colab",
   "classes": {
@@ -2320,6 +2368,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.colab",
   "classes": {
    "gcp:colab/runtimeTemplateIamPolicy:RuntimeTemplateIamPolicy": "RuntimeTemplateIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "colab/schedule",
+  "fqn": "pulumi_gcp.colab",
+  "classes": {
+   "gcp:colab/schedule:Schedule": "Schedule"
   }
  },
  {
@@ -2904,6 +2960,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation": "NetworkFirewallPolicyAssociation"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/networkFirewallPolicyPacketMirroringRule",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule": "NetworkFirewallPolicyPacketMirroringRule"
   }
  },
  {
@@ -5144,6 +5208,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.gemini",
   "classes": {
    "gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex": "CodeRepositoryIndex"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gemini/loggingSetting",
+  "fqn": "pulumi_gcp.gemini",
+  "classes": {
+   "gcp:gemini/loggingSetting:LoggingSetting": "LoggingSetting"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gemini/releaseChannelSetting",
+  "fqn": "pulumi_gcp.gemini",
+  "classes": {
+   "gcp:gemini/releaseChannelSetting:ReleaseChannelSetting": "ReleaseChannelSetting"
   }
  },
  {

@@ -174,12 +174,14 @@ namespace Pulumi.Gcp.Filestore
         public readonly string DeletionProtectionReason;
         public readonly string Description;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
+        public readonly ImmutableArray<Outputs.GetInstanceEffectiveReplicationResult> EffectiveReplications;
         public readonly string Etag;
         public readonly ImmutableArray<Outputs.GetInstanceFileShareResult> FileShares;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetInstanceInitialReplicationResult> InitialReplications;
         public readonly string KmsKeyName;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string? Location;
@@ -205,11 +207,15 @@ namespace Pulumi.Gcp.Filestore
 
             ImmutableDictionary<string, string> effectiveLabels,
 
+            ImmutableArray<Outputs.GetInstanceEffectiveReplicationResult> effectiveReplications,
+
             string etag,
 
             ImmutableArray<Outputs.GetInstanceFileShareResult> fileShares,
 
             string id,
+
+            ImmutableArray<Outputs.GetInstanceInitialReplicationResult> initialReplications,
 
             string kmsKeyName,
 
@@ -240,9 +246,11 @@ namespace Pulumi.Gcp.Filestore
             DeletionProtectionReason = deletionProtectionReason;
             Description = description;
             EffectiveLabels = effectiveLabels;
+            EffectiveReplications = effectiveReplications;
             Etag = etag;
             FileShares = fileShares;
             Id = id;
+            InitialReplications = initialReplications;
             KmsKeyName = kmsKeyName;
             Labels = labels;
             Location = location;

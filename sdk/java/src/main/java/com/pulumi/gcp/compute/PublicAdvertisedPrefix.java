@@ -157,7 +157,7 @@ public class PublicAdvertisedPrefix extends com.pulumi.resources.CustomResource 
         return this.dnsVerificationIp;
     }
     /**
-     * The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+     * The address range, in CIDR format, represented by this public advertised prefix.
      * 
      * ***
      * 
@@ -166,7 +166,7 @@ public class PublicAdvertisedPrefix extends com.pulumi.resources.CustomResource 
     private Output<String> ipCidrRange;
 
     /**
-     * @return The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+     * @return The address range, in CIDR format, represented by this public advertised prefix.
      * 
      * ***
      * 
@@ -201,7 +201,11 @@ public class PublicAdvertisedPrefix extends com.pulumi.resources.CustomResource 
     /**
      * Specifies how child public delegated prefix will be scoped. pdpScope
      * must be one of: GLOBAL, REGIONAL
-     * Possible values are: `GLOBAL`, `REGIONAL`.
+     * * REGIONAL: The public delegated prefix is regional only. The
+     *   provisioning will take a few minutes.
+     * * GLOBAL: The public delegated prefix is global only. The provisioning
+     *   will take ~4 weeks.
+     *   Possible values are: `GLOBAL`, `REGIONAL`.
      * 
      */
     @Export(name="pdpScope", refs={String.class}, tree="[0]")
@@ -210,7 +214,11 @@ public class PublicAdvertisedPrefix extends com.pulumi.resources.CustomResource 
     /**
      * @return Specifies how child public delegated prefix will be scoped. pdpScope
      * must be one of: GLOBAL, REGIONAL
-     * Possible values are: `GLOBAL`, `REGIONAL`.
+     * * REGIONAL: The public delegated prefix is regional only. The
+     *   provisioning will take a few minutes.
+     * * GLOBAL: The public delegated prefix is global only. The provisioning
+     *   will take ~4 weeks.
+     *   Possible values are: `GLOBAL`, `REGIONAL`.
      * 
      */
     public Output<Optional<String>> pdpScope() {

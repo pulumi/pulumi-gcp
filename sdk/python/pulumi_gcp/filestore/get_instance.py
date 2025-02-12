@@ -27,7 +27,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, create_time=None, deletion_protection_enabled=None, deletion_protection_reason=None, description=None, effective_labels=None, etag=None, file_shares=None, id=None, kms_key_name=None, labels=None, location=None, name=None, networks=None, performance_configs=None, project=None, protocol=None, pulumi_labels=None, tags=None, tier=None, zone=None):
+    def __init__(__self__, create_time=None, deletion_protection_enabled=None, deletion_protection_reason=None, description=None, effective_labels=None, effective_replications=None, etag=None, file_shares=None, id=None, initial_replications=None, kms_key_name=None, labels=None, location=None, name=None, networks=None, performance_configs=None, project=None, protocol=None, pulumi_labels=None, tags=None, tier=None, zone=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -43,6 +43,9 @@ class GetInstanceResult:
         if effective_labels and not isinstance(effective_labels, dict):
             raise TypeError("Expected argument 'effective_labels' to be a dict")
         pulumi.set(__self__, "effective_labels", effective_labels)
+        if effective_replications and not isinstance(effective_replications, list):
+            raise TypeError("Expected argument 'effective_replications' to be a list")
+        pulumi.set(__self__, "effective_replications", effective_replications)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
@@ -52,6 +55,9 @@ class GetInstanceResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if initial_replications and not isinstance(initial_replications, list):
+            raise TypeError("Expected argument 'initial_replications' to be a list")
+        pulumi.set(__self__, "initial_replications", initial_replications)
         if kms_key_name and not isinstance(kms_key_name, str):
             raise TypeError("Expected argument 'kms_key_name' to be a str")
         pulumi.set(__self__, "kms_key_name", kms_key_name)
@@ -115,6 +121,11 @@ class GetInstanceResult:
         return pulumi.get(self, "effective_labels")
 
     @property
+    @pulumi.getter(name="effectiveReplications")
+    def effective_replications(self) -> Sequence['outputs.GetInstanceEffectiveReplicationResult']:
+        return pulumi.get(self, "effective_replications")
+
+    @property
     @pulumi.getter
     def etag(self) -> str:
         return pulumi.get(self, "etag")
@@ -131,6 +142,11 @@ class GetInstanceResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="initialReplications")
+    def initial_replications(self) -> Sequence['outputs.GetInstanceInitialReplicationResult']:
+        return pulumi.get(self, "initial_replications")
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -204,9 +220,11 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             deletion_protection_reason=self.deletion_protection_reason,
             description=self.description,
             effective_labels=self.effective_labels,
+            effective_replications=self.effective_replications,
             etag=self.etag,
             file_shares=self.file_shares,
             id=self.id,
+            initial_replications=self.initial_replications,
             kms_key_name=self.kms_key_name,
             labels=self.labels,
             location=self.location,
@@ -263,9 +281,11 @@ def get_instance(location: Optional[str] = None,
         deletion_protection_reason=pulumi.get(__ret__, 'deletion_protection_reason'),
         description=pulumi.get(__ret__, 'description'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
+        effective_replications=pulumi.get(__ret__, 'effective_replications'),
         etag=pulumi.get(__ret__, 'etag'),
         file_shares=pulumi.get(__ret__, 'file_shares'),
         id=pulumi.get(__ret__, 'id'),
+        initial_replications=pulumi.get(__ret__, 'initial_replications'),
         kms_key_name=pulumi.get(__ret__, 'kms_key_name'),
         labels=pulumi.get(__ret__, 'labels'),
         location=pulumi.get(__ret__, 'location'),
@@ -319,9 +339,11 @@ def get_instance_output(location: Optional[pulumi.Input[Optional[str]]] = None,
         deletion_protection_reason=pulumi.get(__response__, 'deletion_protection_reason'),
         description=pulumi.get(__response__, 'description'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
+        effective_replications=pulumi.get(__response__, 'effective_replications'),
         etag=pulumi.get(__response__, 'etag'),
         file_shares=pulumi.get(__response__, 'file_shares'),
         id=pulumi.get(__response__, 'id'),
+        initial_replications=pulumi.get(__response__, 'initial_replications'),
         kms_key_name=pulumi.get(__response__, 'kms_key_name'),
         labels=pulumi.get(__response__, 'labels'),
         location=pulumi.get(__response__, 'location'),

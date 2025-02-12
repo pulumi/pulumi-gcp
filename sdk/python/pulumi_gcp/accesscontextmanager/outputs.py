@@ -1767,12 +1767,21 @@ class ServicePerimeterDryRunEgressPolicyEgressFromSource(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 access_level: Optional[str] = None):
+                 access_level: Optional[str] = None,
+                 resource: Optional[str] = None):
         """
         :param str access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+        :param str resource: A Google Cloud resource that is allowed to egress the perimeter.
+               Requests from these resources are allowed to access data outside the perimeter.
+               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               The resource may be in any Google Cloud organization, not just the
+               organization that the perimeter is defined in. `*` is not allowed, the
+               case of allowing all Google Cloud resources only is not supported.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
+        if resource is not None:
+            pulumi.set(__self__, "resource", resource)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -1781,6 +1790,19 @@ class ServicePerimeterDryRunEgressPolicyEgressFromSource(dict):
         An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
         """
         return pulumi.get(self, "access_level")
+
+    @property
+    @pulumi.getter
+    def resource(self) -> Optional[str]:
+        """
+        A Google Cloud resource that is allowed to egress the perimeter.
+        Requests from these resources are allowed to access data outside the perimeter.
+        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        The resource may be in any Google Cloud organization, not just the
+        organization that the perimeter is defined in. `*` is not allowed, the
+        case of allowing all Google Cloud resources only is not supported.
+        """
+        return pulumi.get(self, "resource")
 
 
 @pulumi.output_type
@@ -2366,12 +2388,21 @@ class ServicePerimeterEgressPolicyEgressFromSource(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 access_level: Optional[str] = None):
+                 access_level: Optional[str] = None,
+                 resource: Optional[str] = None):
         """
         :param str access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+        :param str resource: A Google Cloud resource that is allowed to egress the perimeter.
+               Requests from these resources are allowed to access data outside the perimeter.
+               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               The resource may be in any Google Cloud organization, not just the
+               organization that the perimeter is defined in. `*` is not allowed, the
+               case of allowing all Google Cloud resources only is not supported.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
+        if resource is not None:
+            pulumi.set(__self__, "resource", resource)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -2380,6 +2411,19 @@ class ServicePerimeterEgressPolicyEgressFromSource(dict):
         An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
         """
         return pulumi.get(self, "access_level")
+
+    @property
+    @pulumi.getter
+    def resource(self) -> Optional[str]:
+        """
+        A Google Cloud resource that is allowed to egress the perimeter.
+        Requests from these resources are allowed to access data outside the perimeter.
+        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        The resource may be in any Google Cloud organization, not just the
+        organization that the perimeter is defined in. `*` is not allowed, the
+        case of allowing all Google Cloud resources only is not supported.
+        """
+        return pulumi.get(self, "resource")
 
 
 @pulumi.output_type
@@ -3175,12 +3219,21 @@ class ServicePerimeterSpecEgressPolicyEgressFromSource(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 access_level: Optional[str] = None):
+                 access_level: Optional[str] = None,
+                 resource: Optional[str] = None):
         """
         :param str access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+        :param str resource: A Google Cloud resource that is allowed to egress the perimeter.
+               Requests from these resources are allowed to access data outside the perimeter.
+               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               The resource may be in any Google Cloud organization, not just the
+               organization that the perimeter is defined in. `*` is not allowed, the
+               case of allowing all Google Cloud resources only is not supported.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
+        if resource is not None:
+            pulumi.set(__self__, "resource", resource)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -3189,6 +3242,19 @@ class ServicePerimeterSpecEgressPolicyEgressFromSource(dict):
         An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
         """
         return pulumi.get(self, "access_level")
+
+    @property
+    @pulumi.getter
+    def resource(self) -> Optional[str]:
+        """
+        A Google Cloud resource that is allowed to egress the perimeter.
+        Requests from these resources are allowed to access data outside the perimeter.
+        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        The resource may be in any Google Cloud organization, not just the
+        organization that the perimeter is defined in. `*` is not allowed, the
+        case of allowing all Google Cloud resources only is not supported.
+        """
+        return pulumi.get(self, "resource")
 
 
 @pulumi.output_type
@@ -3520,12 +3586,12 @@ class ServicePerimeterSpecIngressPolicyIngressFromSource(dict):
                  resource: Optional[str] = None):
         """
         :param str access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
-        :param str resource: A Google Cloud resource that is allowed to ingress the perimeter.
-               Requests from these resources will be allowed to access perimeter data.
-               Currently only projects are allowed. Format `projects/{project_number}`
-               The project may be in any Google Cloud organization, not just the
-               organization that the perimeter is defined in. `*` is not allowed, the case
-               of allowing all Google Cloud resources only is not supported.
+        :param str resource: A Google Cloud resource that is allowed to egress the perimeter.
+               Requests from these resources are allowed to access data outside the perimeter.
+               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               The resource may be in any Google Cloud organization, not just the
+               organization that the perimeter is defined in. `*` is not allowed, the
+               case of allowing all Google Cloud resources only is not supported.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
@@ -3544,12 +3610,12 @@ class ServicePerimeterSpecIngressPolicyIngressFromSource(dict):
     @pulumi.getter
     def resource(self) -> Optional[str]:
         """
-        A Google Cloud resource that is allowed to ingress the perimeter.
-        Requests from these resources will be allowed to access perimeter data.
-        Currently only projects are allowed. Format `projects/{project_number}`
-        The project may be in any Google Cloud organization, not just the
-        organization that the perimeter is defined in. `*` is not allowed, the case
-        of allowing all Google Cloud resources only is not supported.
+        A Google Cloud resource that is allowed to egress the perimeter.
+        Requests from these resources are allowed to access data outside the perimeter.
+        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        The resource may be in any Google Cloud organization, not just the
+        organization that the perimeter is defined in. `*` is not allowed, the
+        case of allowing all Google Cloud resources only is not supported.
         """
         return pulumi.get(self, "resource")
 
@@ -4072,12 +4138,21 @@ class ServicePerimeterStatusEgressPolicyEgressFromSource(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 access_level: Optional[str] = None):
+                 access_level: Optional[str] = None,
+                 resource: Optional[str] = None):
         """
         :param str access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+        :param str resource: A Google Cloud resource that is allowed to egress the perimeter.
+               Requests from these resources are allowed to access data outside the perimeter.
+               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               The resource may be in any Google Cloud organization, not just the
+               organization that the perimeter is defined in. `*` is not allowed, the
+               case of allowing all Google Cloud resources only is not supported.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
+        if resource is not None:
+            pulumi.set(__self__, "resource", resource)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -4086,6 +4161,19 @@ class ServicePerimeterStatusEgressPolicyEgressFromSource(dict):
         An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
         """
         return pulumi.get(self, "access_level")
+
+    @property
+    @pulumi.getter
+    def resource(self) -> Optional[str]:
+        """
+        A Google Cloud resource that is allowed to egress the perimeter.
+        Requests from these resources are allowed to access data outside the perimeter.
+        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        The resource may be in any Google Cloud organization, not just the
+        organization that the perimeter is defined in. `*` is not allowed, the
+        case of allowing all Google Cloud resources only is not supported.
+        """
+        return pulumi.get(self, "resource")
 
 
 @pulumi.output_type
@@ -4417,12 +4505,12 @@ class ServicePerimeterStatusIngressPolicyIngressFromSource(dict):
                  resource: Optional[str] = None):
         """
         :param str access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
-        :param str resource: A Google Cloud resource that is allowed to ingress the perimeter.
-               Requests from these resources will be allowed to access perimeter data.
-               Currently only projects are allowed. Format `projects/{project_number}`
-               The project may be in any Google Cloud organization, not just the
-               organization that the perimeter is defined in. `*` is not allowed, the case
-               of allowing all Google Cloud resources only is not supported.
+        :param str resource: A Google Cloud resource that is allowed to egress the perimeter.
+               Requests from these resources are allowed to access data outside the perimeter.
+               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               The resource may be in any Google Cloud organization, not just the
+               organization that the perimeter is defined in. `*` is not allowed, the
+               case of allowing all Google Cloud resources only is not supported.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
@@ -4441,12 +4529,12 @@ class ServicePerimeterStatusIngressPolicyIngressFromSource(dict):
     @pulumi.getter
     def resource(self) -> Optional[str]:
         """
-        A Google Cloud resource that is allowed to ingress the perimeter.
-        Requests from these resources will be allowed to access perimeter data.
-        Currently only projects are allowed. Format `projects/{project_number}`
-        The project may be in any Google Cloud organization, not just the
-        organization that the perimeter is defined in. `*` is not allowed, the case
-        of allowing all Google Cloud resources only is not supported.
+        A Google Cloud resource that is allowed to egress the perimeter.
+        Requests from these resources are allowed to access data outside the perimeter.
+        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        The resource may be in any Google Cloud organization, not just the
+        organization that the perimeter is defined in. `*` is not allowed, the
+        case of allowing all Google Cloud resources only is not supported.
         """
         return pulumi.get(self, "resource")
 
@@ -5179,12 +5267,21 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 access_level: Optional[str] = None):
+                 access_level: Optional[str] = None,
+                 resource: Optional[str] = None):
         """
         :param str access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+        :param str resource: A Google Cloud resource that is allowed to egress the perimeter.
+               Requests from these resources are allowed to access data outside the perimeter.
+               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               The resource may be in any Google Cloud organization, not just the
+               organization that the perimeter is defined in. `*` is not allowed, the
+               case of allowing all Google Cloud resources only is not supported.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
+        if resource is not None:
+            pulumi.set(__self__, "resource", resource)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -5193,6 +5290,19 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource(dict):
         An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
         """
         return pulumi.get(self, "access_level")
+
+    @property
+    @pulumi.getter
+    def resource(self) -> Optional[str]:
+        """
+        A Google Cloud resource that is allowed to egress the perimeter.
+        Requests from these resources are allowed to access data outside the perimeter.
+        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        The resource may be in any Google Cloud organization, not just the
+        organization that the perimeter is defined in. `*` is not allowed, the
+        case of allowing all Google Cloud resources only is not supported.
+        """
+        return pulumi.get(self, "resource")
 
 
 @pulumi.output_type
@@ -5524,12 +5634,12 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource(dict):
                  resource: Optional[str] = None):
         """
         :param str access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
-        :param str resource: A Google Cloud resource that is allowed to ingress the perimeter.
-               Requests from these resources will be allowed to access perimeter data.
-               Currently only projects are allowed. Format `projects/{project_number}`
-               The project may be in any Google Cloud organization, not just the
-               organization that the perimeter is defined in. `*` is not allowed, the case
-               of allowing all Google Cloud resources only is not supported.
+        :param str resource: A Google Cloud resource that is allowed to egress the perimeter.
+               Requests from these resources are allowed to access data outside the perimeter.
+               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               The resource may be in any Google Cloud organization, not just the
+               organization that the perimeter is defined in. `*` is not allowed, the
+               case of allowing all Google Cloud resources only is not supported.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
@@ -5548,12 +5658,12 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource(dict):
     @pulumi.getter
     def resource(self) -> Optional[str]:
         """
-        A Google Cloud resource that is allowed to ingress the perimeter.
-        Requests from these resources will be allowed to access perimeter data.
-        Currently only projects are allowed. Format `projects/{project_number}`
-        The project may be in any Google Cloud organization, not just the
-        organization that the perimeter is defined in. `*` is not allowed, the case
-        of allowing all Google Cloud resources only is not supported.
+        A Google Cloud resource that is allowed to egress the perimeter.
+        Requests from these resources are allowed to access data outside the perimeter.
+        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        The resource may be in any Google Cloud organization, not just the
+        organization that the perimeter is defined in. `*` is not allowed, the
+        case of allowing all Google Cloud resources only is not supported.
         """
         return pulumi.get(self, "resource")
 
@@ -6080,12 +6190,21 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 access_level: Optional[str] = None):
+                 access_level: Optional[str] = None,
+                 resource: Optional[str] = None):
         """
         :param str access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+        :param str resource: A Google Cloud resource that is allowed to egress the perimeter.
+               Requests from these resources are allowed to access data outside the perimeter.
+               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               The resource may be in any Google Cloud organization, not just the
+               organization that the perimeter is defined in. `*` is not allowed, the
+               case of allowing all Google Cloud resources only is not supported.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
+        if resource is not None:
+            pulumi.set(__self__, "resource", resource)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -6094,6 +6213,19 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource(dict):
         An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
         """
         return pulumi.get(self, "access_level")
+
+    @property
+    @pulumi.getter
+    def resource(self) -> Optional[str]:
+        """
+        A Google Cloud resource that is allowed to egress the perimeter.
+        Requests from these resources are allowed to access data outside the perimeter.
+        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        The resource may be in any Google Cloud organization, not just the
+        organization that the perimeter is defined in. `*` is not allowed, the
+        case of allowing all Google Cloud resources only is not supported.
+        """
+        return pulumi.get(self, "resource")
 
 
 @pulumi.output_type
@@ -6425,12 +6557,12 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource(dict
                  resource: Optional[str] = None):
         """
         :param str access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
-        :param str resource: A Google Cloud resource that is allowed to ingress the perimeter.
-               Requests from these resources will be allowed to access perimeter data.
-               Currently only projects are allowed. Format `projects/{project_number}`
-               The project may be in any Google Cloud organization, not just the
-               organization that the perimeter is defined in. `*` is not allowed, the case
-               of allowing all Google Cloud resources only is not supported.
+        :param str resource: A Google Cloud resource that is allowed to egress the perimeter.
+               Requests from these resources are allowed to access data outside the perimeter.
+               Currently only projects are allowed. Project format: `projects/{project_number}`.
+               The resource may be in any Google Cloud organization, not just the
+               organization that the perimeter is defined in. `*` is not allowed, the
+               case of allowing all Google Cloud resources only is not supported.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
@@ -6449,12 +6581,12 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource(dict
     @pulumi.getter
     def resource(self) -> Optional[str]:
         """
-        A Google Cloud resource that is allowed to ingress the perimeter.
-        Requests from these resources will be allowed to access perimeter data.
-        Currently only projects are allowed. Format `projects/{project_number}`
-        The project may be in any Google Cloud organization, not just the
-        organization that the perimeter is defined in. `*` is not allowed, the case
-        of allowing all Google Cloud resources only is not supported.
+        A Google Cloud resource that is allowed to egress the perimeter.
+        Requests from these resources are allowed to access data outside the perimeter.
+        Currently only projects are allowed. Project format: `projects/{project_number}`.
+        The resource may be in any Google Cloud organization, not just the
+        organization that the perimeter is defined in. `*` is not allowed, the
+        case of allowing all Google Cloud resources only is not supported.
         """
         return pulumi.get(self, "resource")
 

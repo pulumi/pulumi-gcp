@@ -273,14 +273,14 @@ public class ChatEngine extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
+     * The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
      * 
      */
     @Export(name="dataStoreIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> dataStoreIds;
 
     /**
-     * @return The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
+     * @return The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
      * 
      */
     public Output<List<String>> dataStoreIds() {

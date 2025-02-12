@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networkservices.outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction;
 import com.pulumi.gcp.networkservices.outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule;
 import com.pulumi.gcp.networkservices.outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction;
+import com.pulumi.gcp.networkservices.outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods;
 import com.pulumi.gcp.networkservices.outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect;
 import java.lang.String;
 import java.util.List;
@@ -55,6 +56,13 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRule {
      * 
      */
     private @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction routeAction;
+    /**
+     * @return Allow overriding the set of methods that are allowed for this route.
+     * When not set, Media CDN allows only &#34;GET&#34;, &#34;HEAD&#34;, and &#34;OPTIONS&#34;.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods routeMethods;
     /**
      * @return The URL redirect configuration for requests that match this route.
      * Structure is documented below.
@@ -114,6 +122,15 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRule {
         return Optional.ofNullable(this.routeAction);
     }
     /**
+     * @return Allow overriding the set of methods that are allowed for this route.
+     * When not set, Media CDN allows only &#34;GET&#34;, &#34;HEAD&#34;, and &#34;OPTIONS&#34;.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods> routeMethods() {
+        return Optional.ofNullable(this.routeMethods);
+    }
+    /**
      * @return The URL redirect configuration for requests that match this route.
      * Structure is documented below.
      * 
@@ -137,6 +154,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRule {
         private @Nullable String origin;
         private String priority;
         private @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction routeAction;
+        private @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods routeMethods;
         private @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect urlRedirect;
         public Builder() {}
         public Builder(EdgeCacheServiceRoutingPathMatcherRouteRule defaults) {
@@ -147,6 +165,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRule {
     	      this.origin = defaults.origin;
     	      this.priority = defaults.priority;
     	      this.routeAction = defaults.routeAction;
+    	      this.routeMethods = defaults.routeMethods;
     	      this.urlRedirect = defaults.urlRedirect;
         }
 
@@ -194,6 +213,12 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRule {
             return this;
         }
         @CustomType.Setter
+        public Builder routeMethods(@Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods routeMethods) {
+
+            this.routeMethods = routeMethods;
+            return this;
+        }
+        @CustomType.Setter
         public Builder urlRedirect(@Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect urlRedirect) {
 
             this.urlRedirect = urlRedirect;
@@ -207,6 +232,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRule {
             _resultValue.origin = origin;
             _resultValue.priority = priority;
             _resultValue.routeAction = routeAction;
+            _resultValue.routeMethods = routeMethods;
             _resultValue.urlRedirect = urlRedirect;
             return _resultValue;
         }
