@@ -45,7 +45,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewInstanceTemplate(ctx, "igm-basic", &compute.InstanceTemplateArgs{
+//			igm_basic, err := compute.NewInstanceTemplate(ctx, "igm-basic", &compute.InstanceTemplateArgs{
 //				Name:         pulumi.String("my-template"),
 //				MachineType:  pulumi.String("e2-medium"),
 //				CanIpForward: pulumi.Bool(false),
@@ -97,7 +97,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewDisk(ctx, "default", &compute.DiskArgs{
+//			_default, err := compute.NewDisk(ctx, "default", &compute.DiskArgs{
 //				Name:                   pulumi.String("my-disk-name"),
 //				Type:                   pulumi.String("pd-ssd"),
 //				Zone:                   pulumi.String("us-central1-a"),

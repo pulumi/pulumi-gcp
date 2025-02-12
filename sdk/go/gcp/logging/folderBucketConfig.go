@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.NewFolder(ctx, "default", &organizations.FolderArgs{
+//			_default, err := organizations.NewFolder(ctx, "default", &organizations.FolderArgs{
 //				DisplayName: pulumi.String("some-folder-name"),
 //				Parent:      pulumi.String("organizations/123456789"),
 //			})

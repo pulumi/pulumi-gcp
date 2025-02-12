@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewBucket(ctx, "default", &storage.BucketArgs{
+//			_default, err := storage.NewBucket(ctx, "default", &storage.BucketArgs{
 //				Name:                     pulumi.String("test_bucket"),
 //				Location:                 pulumi.String("US"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),

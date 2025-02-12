@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  * // If this network hasn't been created and you are using this example in your
  * // config, add an additional network resource or change
  * // this from "data"to "resource"
- * const redis-network = gcp.compute.getNetwork({
+ * const redis_network = gcp.compute.getNetwork({
  *     name: "redis-test-network",
  * });
  * const cache = new gcp.redis.Instance("cache", {
@@ -145,7 +145,7 @@ import * as utilities from "../utilities";
  * // If this network hasn't been created and you are using this example in your
  * // config, add an additional network resource or change
  * // this from "data"to "resource"
- * const redis-network = gcp.compute.getNetwork({
+ * const redis_network = gcp.compute.getNetwork({
  *     name: "redis-test-network",
  * });
  * const cache = new gcp.redis.Instance("cache", {
@@ -188,7 +188,7 @@ import * as utilities from "../utilities";
  * // If this network hasn't been created and you are using this example in your
  * // config, add an additional network resource or change
  * // this from "data"to "resource"
- * const redis-network = gcp.compute.getNetwork({
+ * const redis_network = gcp.compute.getNetwork({
  *     name: "redis-test-network",
  * });
  * const cache = new gcp.redis.Instance("cache", {
