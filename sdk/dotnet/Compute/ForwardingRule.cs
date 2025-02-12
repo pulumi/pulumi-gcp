@@ -1316,6 +1316,20 @@ namespace Pulumi.Gcp.Compute
         public Output<string> IpAddress { get; private set; } = null!;
 
         /// <summary>
+        /// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+        /// in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+        /// Use one of the following formats to specify a sub-PDP when creating an
+        /// IPv6 NetLB forwarding rule using BYOIP:
+        /// Full resource URL, as in:
+        /// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+        /// Partial URL, as in:
+        /// * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+        /// * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+        /// </summary>
+        [Output("ipCollection")]
+        public Output<string?> IpCollection { get; private set; } = null!;
+
+        /// <summary>
         /// The IP protocol to which this rule applies.
         /// For protocol forwarding, valid
         /// options are `TCP`, `UDP`, `ESP`,
@@ -1723,6 +1737,20 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? IpAddress { get; set; }
 
         /// <summary>
+        /// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+        /// in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+        /// Use one of the following formats to specify a sub-PDP when creating an
+        /// IPv6 NetLB forwarding rule using BYOIP:
+        /// Full resource URL, as in:
+        /// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+        /// Partial URL, as in:
+        /// * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+        /// * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+        /// </summary>
+        [Input("ipCollection")]
+        public Input<string>? IpCollection { get; set; }
+
+        /// <summary>
         /// The IP protocol to which this rule applies.
         /// For protocol forwarding, valid
         /// options are `TCP`, `UDP`, `ESP`,
@@ -2098,6 +2126,20 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
+
+        /// <summary>
+        /// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+        /// in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+        /// Use one of the following formats to specify a sub-PDP when creating an
+        /// IPv6 NetLB forwarding rule using BYOIP:
+        /// Full resource URL, as in:
+        /// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+        /// Partial URL, as in:
+        /// * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+        /// * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+        /// </summary>
+        [Input("ipCollection")]
+        public Input<string>? IpCollection { get; set; }
 
         /// <summary>
         /// The IP protocol to which this rule applies.

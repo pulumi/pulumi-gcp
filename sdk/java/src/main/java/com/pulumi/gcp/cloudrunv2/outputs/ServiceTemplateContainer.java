@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerBuildInfo;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerEnv;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerLivenessProbe;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerPorts;
@@ -24,6 +25,18 @@ public final class ServiceTemplateContainer {
      * 
      */
     private @Nullable List<String> args;
+    /**
+     * @return Base image for this container. If set, it indicates that the service is enrolled into automatic base image update.
+     * 
+     */
+    private @Nullable String baseImageUri;
+    /**
+     * @return (Output)
+     * The build info of the container image.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<ServiceTemplateContainerBuildInfo> buildInfos;
     /**
      * @return Entrypoint array. Not executed within a shell. The docker image&#39;s ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
      * 
@@ -94,6 +107,22 @@ public final class ServiceTemplateContainer {
      */
     public List<String> args() {
         return this.args == null ? List.of() : this.args;
+    }
+    /**
+     * @return Base image for this container. If set, it indicates that the service is enrolled into automatic base image update.
+     * 
+     */
+    public Optional<String> baseImageUri() {
+        return Optional.ofNullable(this.baseImageUri);
+    }
+    /**
+     * @return (Output)
+     * The build info of the container image.
+     * Structure is documented below.
+     * 
+     */
+    public List<ServiceTemplateContainerBuildInfo> buildInfos() {
+        return this.buildInfos == null ? List.of() : this.buildInfos;
     }
     /**
      * @return Entrypoint array. Not executed within a shell. The docker image&#39;s ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
@@ -190,6 +219,8 @@ public final class ServiceTemplateContainer {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> args;
+        private @Nullable String baseImageUri;
+        private @Nullable List<ServiceTemplateContainerBuildInfo> buildInfos;
         private @Nullable List<String> commands;
         private @Nullable List<String> dependsOns;
         private @Nullable List<ServiceTemplateContainerEnv> envs;
@@ -205,6 +236,8 @@ public final class ServiceTemplateContainer {
         public Builder(ServiceTemplateContainer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.args = defaults.args;
+    	      this.baseImageUri = defaults.baseImageUri;
+    	      this.buildInfos = defaults.buildInfos;
     	      this.commands = defaults.commands;
     	      this.dependsOns = defaults.dependsOns;
     	      this.envs = defaults.envs;
@@ -226,6 +259,21 @@ public final class ServiceTemplateContainer {
         }
         public Builder args(String... args) {
             return args(List.of(args));
+        }
+        @CustomType.Setter
+        public Builder baseImageUri(@Nullable String baseImageUri) {
+
+            this.baseImageUri = baseImageUri;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder buildInfos(@Nullable List<ServiceTemplateContainerBuildInfo> buildInfos) {
+
+            this.buildInfos = buildInfos;
+            return this;
+        }
+        public Builder buildInfos(ServiceTemplateContainerBuildInfo... buildInfos) {
+            return buildInfos(List.of(buildInfos));
         }
         @CustomType.Setter
         public Builder commands(@Nullable List<String> commands) {
@@ -310,6 +358,8 @@ public final class ServiceTemplateContainer {
         public ServiceTemplateContainer build() {
             final var _resultValue = new ServiceTemplateContainer();
             _resultValue.args = args;
+            _resultValue.baseImageUri = baseImageUri;
+            _resultValue.buildInfos = buildInfos;
             _resultValue.commands = commands;
             _resultValue.dependsOns = dependsOns;
             _resultValue.envs = envs;

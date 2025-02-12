@@ -24,6 +24,26 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
             set => _args = value;
         }
 
+        /// <summary>
+        /// Base image for this container. If set, it indicates that the service is enrolled into automatic base image update.
+        /// </summary>
+        [Input("baseImageUri")]
+        public Input<string>? BaseImageUri { get; set; }
+
+        [Input("buildInfos")]
+        private InputList<Inputs.ServiceTemplateContainerBuildInfoGetArgs>? _buildInfos;
+
+        /// <summary>
+        /// (Output)
+        /// The build info of the container image.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ServiceTemplateContainerBuildInfoGetArgs> BuildInfos
+        {
+            get => _buildInfos ?? (_buildInfos = new InputList<Inputs.ServiceTemplateContainerBuildInfoGetArgs>());
+            set => _buildInfos = value;
+        }
+
         [Input("commands")]
         private InputList<string>? _commands;
 

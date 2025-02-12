@@ -913,6 +913,18 @@ export class ForwardingRule extends pulumi.CustomResource {
      */
     public readonly ipAddress!: pulumi.Output<string>;
     /**
+     * Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+     * in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+     * Use one of the following formats to specify a sub-PDP when creating an
+     * IPv6 NetLB forwarding rule using BYOIP:
+     * Full resource URL, as in:
+     * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * Partial URL, as in:
+     * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     */
+    public readonly ipCollection!: pulumi.Output<string | undefined>;
+    /**
      * The IP protocol to which this rule applies.
      * For protocol forwarding, valid
      * options are `TCP`, `UDP`, `ESP`,
@@ -1154,6 +1166,7 @@ export class ForwardingRule extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["forwardingRuleId"] = state ? state.forwardingRuleId : undefined;
             resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
+            resourceInputs["ipCollection"] = state ? state.ipCollection : undefined;
             resourceInputs["ipProtocol"] = state ? state.ipProtocol : undefined;
             resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
             resourceInputs["isMirroringCollector"] = state ? state.isMirroringCollector : undefined;
@@ -1187,6 +1200,7 @@ export class ForwardingRule extends pulumi.CustomResource {
             resourceInputs["backendService"] = args ? args.backendService : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
+            resourceInputs["ipCollection"] = args ? args.ipCollection : undefined;
             resourceInputs["ipProtocol"] = args ? args.ipProtocol : undefined;
             resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
             resourceInputs["isMirroringCollector"] = args ? args.isMirroringCollector : undefined;
@@ -1320,6 +1334,18 @@ export interface ForwardingRuleState {
      * address number.
      */
     ipAddress?: pulumi.Input<string>;
+    /**
+     * Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+     * in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+     * Use one of the following formats to specify a sub-PDP when creating an
+     * IPv6 NetLB forwarding rule using BYOIP:
+     * Full resource URL, as in:
+     * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * Partial URL, as in:
+     * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     */
+    ipCollection?: pulumi.Input<string>;
     /**
      * The IP protocol to which this rule applies.
      * For protocol forwarding, valid
@@ -1620,6 +1646,18 @@ export interface ForwardingRuleArgs {
      * address number.
      */
     ipAddress?: pulumi.Input<string>;
+    /**
+     * Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+     * in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+     * Use one of the following formats to specify a sub-PDP when creating an
+     * IPv6 NetLB forwarding rule using BYOIP:
+     * Full resource URL, as in:
+     * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * Partial URL, as in:
+     * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     */
+    ipCollection?: pulumi.Input<string>;
     /**
      * The IP protocol to which this rule applies.
      * For protocol forwarding, valid

@@ -243,8 +243,9 @@ export class Instance extends pulumi.CustomResource {
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Endpoints for the instance.
+     * Structure is documented below.
      */
-    public /*out*/ readonly endpoints!: pulumi.Output<any[][]>;
+    public /*out*/ readonly endpoints!: pulumi.Output<outputs.memorystore.InstanceEndpoint[]>;
     /**
      * Optional. User-provided engine configurations for the instance.
      */
@@ -278,11 +279,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Optional. Standalone or cluster.
+     * Optional. cluster or cluster-disabled.
      * Possible values:
      * CLUSTER
-     * STANDALONE
-     * Possible values are: `CLUSTER`, `STANDALONE`.
+     * CLUSTER_DISABLED
+     * Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
      */
     public readonly mode!: pulumi.Output<string>;
     /**
@@ -492,8 +493,9 @@ export interface InstanceState {
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Endpoints for the instance.
+     * Structure is documented below.
      */
-    endpoints?: pulumi.Input<pulumi.Input<any[]>[]>;
+    endpoints?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceEndpoint>[]>;
     /**
      * Optional. User-provided engine configurations for the instance.
      */
@@ -527,11 +529,11 @@ export interface InstanceState {
      */
     location?: pulumi.Input<string>;
     /**
-     * Optional. Standalone or cluster.
+     * Optional. cluster or cluster-disabled.
      * Possible values:
      * CLUSTER
-     * STANDALONE
-     * Possible values are: `CLUSTER`, `STANDALONE`.
+     * CLUSTER_DISABLED
+     * Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
      */
     mode?: pulumi.Input<string>;
     /**
@@ -668,11 +670,11 @@ export interface InstanceArgs {
      */
     location: pulumi.Input<string>;
     /**
-     * Optional. Standalone or cluster.
+     * Optional. cluster or cluster-disabled.
      * Possible values:
      * CLUSTER
-     * STANDALONE
-     * Possible values are: `CLUSTER`, `STANDALONE`.
+     * CLUSTER_DISABLED
+     * Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
      */
     mode?: pulumi.Input<string>;
     /**

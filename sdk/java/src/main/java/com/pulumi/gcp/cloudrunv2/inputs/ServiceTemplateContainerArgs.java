@@ -6,6 +6,7 @@ package com.pulumi.gcp.cloudrunv2.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerBuildInfoArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerEnvArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerLivenessProbeArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerPortsArgs;
@@ -36,6 +37,40 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
      */
     public Optional<Output<List<String>>> args() {
         return Optional.ofNullable(this.args);
+    }
+
+    /**
+     * Base image for this container. If set, it indicates that the service is enrolled into automatic base image update.
+     * 
+     */
+    @Import(name="baseImageUri")
+    private @Nullable Output<String> baseImageUri;
+
+    /**
+     * @return Base image for this container. If set, it indicates that the service is enrolled into automatic base image update.
+     * 
+     */
+    public Optional<Output<String>> baseImageUri() {
+        return Optional.ofNullable(this.baseImageUri);
+    }
+
+    /**
+     * (Output)
+     * The build info of the container image.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="buildInfos")
+    private @Nullable Output<List<ServiceTemplateContainerBuildInfoArgs>> buildInfos;
+
+    /**
+     * @return (Output)
+     * The build info of the container image.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ServiceTemplateContainerBuildInfoArgs>>> buildInfos() {
+        return Optional.ofNullable(this.buildInfos);
     }
 
     /**
@@ -221,6 +256,8 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
 
     private ServiceTemplateContainerArgs(ServiceTemplateContainerArgs $) {
         this.args = $.args;
+        this.baseImageUri = $.baseImageUri;
+        this.buildInfos = $.buildInfos;
         this.commands = $.commands;
         this.dependsOns = $.dependsOns;
         this.envs = $.envs;
@@ -281,6 +318,64 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
          */
         public Builder args(String... args) {
             return args(List.of(args));
+        }
+
+        /**
+         * @param baseImageUri Base image for this container. If set, it indicates that the service is enrolled into automatic base image update.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder baseImageUri(@Nullable Output<String> baseImageUri) {
+            $.baseImageUri = baseImageUri;
+            return this;
+        }
+
+        /**
+         * @param baseImageUri Base image for this container. If set, it indicates that the service is enrolled into automatic base image update.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder baseImageUri(String baseImageUri) {
+            return baseImageUri(Output.of(baseImageUri));
+        }
+
+        /**
+         * @param buildInfos (Output)
+         * The build info of the container image.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder buildInfos(@Nullable Output<List<ServiceTemplateContainerBuildInfoArgs>> buildInfos) {
+            $.buildInfos = buildInfos;
+            return this;
+        }
+
+        /**
+         * @param buildInfos (Output)
+         * The build info of the container image.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder buildInfos(List<ServiceTemplateContainerBuildInfoArgs> buildInfos) {
+            return buildInfos(Output.of(buildInfos));
+        }
+
+        /**
+         * @param buildInfos (Output)
+         * The build info of the container image.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder buildInfos(ServiceTemplateContainerBuildInfoArgs... buildInfos) {
+            return buildInfos(List.of(buildInfos));
         }
 
         /**

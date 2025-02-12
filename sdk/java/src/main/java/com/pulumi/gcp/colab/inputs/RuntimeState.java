@@ -6,6 +6,7 @@ package com.pulumi.gcp.colab.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.colab.inputs.RuntimeNotebookRuntimeTemplateRefArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +16,21 @@ import javax.annotation.Nullable;
 public final class RuntimeState extends com.pulumi.resources.ResourceArgs {
 
     public static final RuntimeState Empty = new RuntimeState();
+
+    /**
+     * Triggers an upgrade anytime the runtime is started if it is upgradable.
+     * 
+     */
+    @Import(name="autoUpgrade")
+    private @Nullable Output<Boolean> autoUpgrade;
+
+    /**
+     * @return Triggers an upgrade anytime the runtime is started if it is upgradable.
+     * 
+     */
+    public Optional<Output<Boolean>> autoUpgrade() {
+        return Optional.ofNullable(this.autoUpgrade);
+    }
 
     /**
      * The description of the Runtime.
@@ -32,6 +48,21 @@ public final class RuntimeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
+     * 
+     */
+    @Import(name="desiredState")
+    private @Nullable Output<String> desiredState;
+
+    /**
+     * @return Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
+     * 
+     */
+    public Optional<Output<String>> desiredState() {
+        return Optional.ofNullable(this.desiredState);
+    }
+
+    /**
      * Required. The display name of the Runtime.
      * 
      */
@@ -44,6 +75,36 @@ public final class RuntimeState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> displayName() {
         return Optional.ofNullable(this.displayName);
+    }
+
+    /**
+     * Output only. Timestamp when this NotebookRuntime will be expired.
+     * 
+     */
+    @Import(name="expirationTime")
+    private @Nullable Output<String> expirationTime;
+
+    /**
+     * @return Output only. Timestamp when this NotebookRuntime will be expired.
+     * 
+     */
+    public Optional<Output<String>> expirationTime() {
+        return Optional.ofNullable(this.expirationTime);
+    }
+
+    /**
+     * Output only. Checks if the NotebookRuntime is upgradable.
+     * 
+     */
+    @Import(name="isUpgradable")
+    private @Nullable Output<Boolean> isUpgradable;
+
+    /**
+     * @return Output only. Checks if the NotebookRuntime is upgradable.
+     * 
+     */
+    public Optional<Output<Boolean>> isUpgradable() {
+        return Optional.ofNullable(this.isUpgradable);
     }
 
     /**
@@ -98,6 +159,21 @@ public final class RuntimeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Output only. The type of the notebook runtime.
+     * 
+     */
+    @Import(name="notebookRuntimeType")
+    private @Nullable Output<String> notebookRuntimeType;
+
+    /**
+     * @return Output only. The type of the notebook runtime.
+     * 
+     */
+    public Optional<Output<String>> notebookRuntimeType() {
+        return Optional.ofNullable(this.notebookRuntimeType);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -129,16 +205,37 @@ public final class RuntimeState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.runtimeUser);
     }
 
+    /**
+     * Output only. The state of the runtime.
+     * 
+     */
+    @Import(name="state")
+    private @Nullable Output<String> state;
+
+    /**
+     * @return Output only. The state of the runtime.
+     * 
+     */
+    public Optional<Output<String>> state() {
+        return Optional.ofNullable(this.state);
+    }
+
     private RuntimeState() {}
 
     private RuntimeState(RuntimeState $) {
+        this.autoUpgrade = $.autoUpgrade;
         this.description = $.description;
+        this.desiredState = $.desiredState;
         this.displayName = $.displayName;
+        this.expirationTime = $.expirationTime;
+        this.isUpgradable = $.isUpgradable;
         this.location = $.location;
         this.name = $.name;
         this.notebookRuntimeTemplateRef = $.notebookRuntimeTemplateRef;
+        this.notebookRuntimeType = $.notebookRuntimeType;
         this.project = $.project;
         this.runtimeUser = $.runtimeUser;
+        this.state = $.state;
     }
 
     public static Builder builder() {
@@ -157,6 +254,27 @@ public final class RuntimeState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(RuntimeState defaults) {
             $ = new RuntimeState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoUpgrade Triggers an upgrade anytime the runtime is started if it is upgradable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoUpgrade(@Nullable Output<Boolean> autoUpgrade) {
+            $.autoUpgrade = autoUpgrade;
+            return this;
+        }
+
+        /**
+         * @param autoUpgrade Triggers an upgrade anytime the runtime is started if it is upgradable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoUpgrade(Boolean autoUpgrade) {
+            return autoUpgrade(Output.of(autoUpgrade));
         }
 
         /**
@@ -181,6 +299,27 @@ public final class RuntimeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param desiredState Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder desiredState(@Nullable Output<String> desiredState) {
+            $.desiredState = desiredState;
+            return this;
+        }
+
+        /**
+         * @param desiredState Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder desiredState(String desiredState) {
+            return desiredState(Output.of(desiredState));
+        }
+
+        /**
          * @param displayName Required. The display name of the Runtime.
          * 
          * @return builder
@@ -199,6 +338,48 @@ public final class RuntimeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param expirationTime Output only. Timestamp when this NotebookRuntime will be expired.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expirationTime(@Nullable Output<String> expirationTime) {
+            $.expirationTime = expirationTime;
+            return this;
+        }
+
+        /**
+         * @param expirationTime Output only. Timestamp when this NotebookRuntime will be expired.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expirationTime(String expirationTime) {
+            return expirationTime(Output.of(expirationTime));
+        }
+
+        /**
+         * @param isUpgradable Output only. Checks if the NotebookRuntime is upgradable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isUpgradable(@Nullable Output<Boolean> isUpgradable) {
+            $.isUpgradable = isUpgradable;
+            return this;
+        }
+
+        /**
+         * @param isUpgradable Output only. Checks if the NotebookRuntime is upgradable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isUpgradable(Boolean isUpgradable) {
+            return isUpgradable(Output.of(isUpgradable));
         }
 
         /**
@@ -271,6 +452,27 @@ public final class RuntimeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param notebookRuntimeType Output only. The type of the notebook runtime.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notebookRuntimeType(@Nullable Output<String> notebookRuntimeType) {
+            $.notebookRuntimeType = notebookRuntimeType;
+            return this;
+        }
+
+        /**
+         * @param notebookRuntimeType Output only. The type of the notebook runtime.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notebookRuntimeType(String notebookRuntimeType) {
+            return notebookRuntimeType(Output.of(notebookRuntimeType));
+        }
+
+        /**
          * @param project The ID of the project in which the resource belongs.
          * If it is not provided, the provider project is used.
          * 
@@ -312,6 +514,27 @@ public final class RuntimeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder runtimeUser(String runtimeUser) {
             return runtimeUser(Output.of(runtimeUser));
+        }
+
+        /**
+         * @param state Output only. The state of the runtime.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(@Nullable Output<String> state) {
+            $.state = state;
+            return this;
+        }
+
+        /**
+         * @param state Output only. The state of the runtime.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(String state) {
+            return state(Output.of(state));
         }
 
         public RuntimeState build() {

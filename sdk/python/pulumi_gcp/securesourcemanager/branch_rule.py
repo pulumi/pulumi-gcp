@@ -514,6 +514,8 @@ class BranchRule(pulumi.CustomResource):
         BranchRule is the protection rule to enforce pre-defined rules on designated branches within a repository.
 
         To get more information about BranchRule, see:
+
+        * [API documentation](https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories.branchRules)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/overview)
 
@@ -624,6 +626,8 @@ class BranchRule(pulumi.CustomResource):
         BranchRule is the protection rule to enforce pre-defined rules on designated branches within a repository.
 
         To get more information about BranchRule, see:
+
+        * [API documentation](https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories.branchRules)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/overview)
 

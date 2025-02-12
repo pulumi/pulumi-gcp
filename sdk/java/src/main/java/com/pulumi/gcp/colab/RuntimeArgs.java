@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.colab.inputs.RuntimeNotebookRuntimeTemplateRefArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class RuntimeArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RuntimeArgs Empty = new RuntimeArgs();
+
+    /**
+     * Triggers an upgrade anytime the runtime is started if it is upgradable.
+     * 
+     */
+    @Import(name="autoUpgrade")
+    private @Nullable Output<Boolean> autoUpgrade;
+
+    /**
+     * @return Triggers an upgrade anytime the runtime is started if it is upgradable.
+     * 
+     */
+    public Optional<Output<Boolean>> autoUpgrade() {
+        return Optional.ofNullable(this.autoUpgrade);
+    }
 
     /**
      * The description of the Runtime.
@@ -30,6 +46,21 @@ public final class RuntimeArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
+     * 
+     */
+    @Import(name="desiredState")
+    private @Nullable Output<String> desiredState;
+
+    /**
+     * @return Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
+     * 
+     */
+    public Optional<Output<String>> desiredState() {
+        return Optional.ofNullable(this.desiredState);
     }
 
     /**
@@ -133,7 +164,9 @@ public final class RuntimeArgs extends com.pulumi.resources.ResourceArgs {
     private RuntimeArgs() {}
 
     private RuntimeArgs(RuntimeArgs $) {
+        this.autoUpgrade = $.autoUpgrade;
         this.description = $.description;
+        this.desiredState = $.desiredState;
         this.displayName = $.displayName;
         this.location = $.location;
         this.name = $.name;
@@ -161,6 +194,27 @@ public final class RuntimeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param autoUpgrade Triggers an upgrade anytime the runtime is started if it is upgradable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoUpgrade(@Nullable Output<Boolean> autoUpgrade) {
+            $.autoUpgrade = autoUpgrade;
+            return this;
+        }
+
+        /**
+         * @param autoUpgrade Triggers an upgrade anytime the runtime is started if it is upgradable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoUpgrade(Boolean autoUpgrade) {
+            return autoUpgrade(Output.of(autoUpgrade));
+        }
+
+        /**
          * @param description The description of the Runtime.
          * 
          * @return builder
@@ -179,6 +233,27 @@ public final class RuntimeArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param desiredState Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder desiredState(@Nullable Output<String> desiredState) {
+            $.desiredState = desiredState;
+            return this;
+        }
+
+        /**
+         * @param desiredState Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder desiredState(String desiredState) {
+            return desiredState(Output.of(desiredState));
         }
 
         /**

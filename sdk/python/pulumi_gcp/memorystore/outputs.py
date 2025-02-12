@@ -18,6 +18,9 @@ from . import outputs
 __all__ = [
     'InstanceDesiredPscAutoConnection',
     'InstanceDiscoveryEndpoint',
+    'InstanceEndpoint',
+    'InstanceEndpointConnection',
+    'InstanceEndpointConnectionPscAutoConnection',
     'InstanceNodeConfig',
     'InstancePersistenceConfig',
     'InstancePersistenceConfigAofConfig',
@@ -129,6 +132,227 @@ class InstanceDiscoveryEndpoint(dict):
         Output only. Ports of the exposed endpoint.
         """
         return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class InstanceEndpoint(dict):
+    def __init__(__self__, *,
+                 connections: Optional[Sequence['outputs.InstanceEndpointConnection']] = None):
+        """
+        :param Sequence['InstanceEndpointConnectionArgs'] connections: A group of PSC connections. They are created in the same VPC network, one for each service attachment in the cluster.
+               Structure is documented below.
+        """
+        if connections is not None:
+            pulumi.set(__self__, "connections", connections)
+
+    @property
+    @pulumi.getter
+    def connections(self) -> Optional[Sequence['outputs.InstanceEndpointConnection']]:
+        """
+        A group of PSC connections. They are created in the same VPC network, one for each service attachment in the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "connections")
+
+
+@pulumi.output_type
+class InstanceEndpointConnection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pscAutoConnection":
+            suggest = "psc_auto_connection"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceEndpointConnection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceEndpointConnection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceEndpointConnection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 psc_auto_connection: Optional['outputs.InstanceEndpointConnectionPscAutoConnection'] = None):
+        """
+        :param 'InstanceEndpointConnectionPscAutoConnectionArgs' psc_auto_connection: Detailed information of a PSC connection that is created through service connectivity automation.
+               Structure is documented below.
+        """
+        if psc_auto_connection is not None:
+            pulumi.set(__self__, "psc_auto_connection", psc_auto_connection)
+
+    @property
+    @pulumi.getter(name="pscAutoConnection")
+    def psc_auto_connection(self) -> Optional['outputs.InstanceEndpointConnectionPscAutoConnection']:
+        """
+        Detailed information of a PSC connection that is created through service connectivity automation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_auto_connection")
+
+
+@pulumi.output_type
+class InstanceEndpointConnectionPscAutoConnection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionType":
+            suggest = "connection_type"
+        elif key == "forwardingRule":
+            suggest = "forwarding_rule"
+        elif key == "ipAddress":
+            suggest = "ip_address"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "pscConnectionId":
+            suggest = "psc_connection_id"
+        elif key == "serviceAttachment":
+            suggest = "service_attachment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceEndpointConnectionPscAutoConnection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceEndpointConnectionPscAutoConnection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceEndpointConnectionPscAutoConnection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_type: Optional[str] = None,
+                 forwarding_rule: Optional[str] = None,
+                 ip_address: Optional[str] = None,
+                 network: Optional[str] = None,
+                 port: Optional[int] = None,
+                 project_id: Optional[str] = None,
+                 psc_connection_id: Optional[str] = None,
+                 service_attachment: Optional[str] = None):
+        """
+        :param str connection_type: (Output)
+               Output Only. Type of a PSC Connection.
+               Possible values:
+               CONNECTION_TYPE_DISCOVERY
+               CONNECTION_TYPE_PRIMARY
+               CONNECTION_TYPE_READER
+        :param str forwarding_rule: (Output)
+               Output only. The URI of the consumer side forwarding rule.
+               Format:
+               projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+        :param str ip_address: (Output)
+               Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+        :param str network: (Output)
+               Output only. The consumer network where the IP address resides, in the form of
+               projects/{project_id}/global/networks/{network_id}.
+        :param int port: (Output)
+               Output only. Ports of the exposed endpoint.
+        :param str project_id: (Output)
+               Output only. The consumer project_id where the forwarding rule is created from.
+        :param str psc_connection_id: (Output)
+               Output only. The PSC connection id of the forwarding rule connected to the
+               service attachment.
+        :param str service_attachment: (Output)
+               Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+        """
+        if connection_type is not None:
+            pulumi.set(__self__, "connection_type", connection_type)
+        if forwarding_rule is not None:
+            pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if psc_connection_id is not None:
+            pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+        if service_attachment is not None:
+            pulumi.set(__self__, "service_attachment", service_attachment)
+
+    @property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> Optional[str]:
+        """
+        (Output)
+        Output Only. Type of a PSC Connection.
+        Possible values:
+        CONNECTION_TYPE_DISCOVERY
+        CONNECTION_TYPE_PRIMARY
+        CONNECTION_TYPE_READER
+        """
+        return pulumi.get(self, "connection_type")
+
+    @property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. The URI of the consumer side forwarding rule.
+        Format:
+        projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. The consumer network where the IP address resides, in the form of
+        projects/{project_id}/global/networks/{network_id}.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        (Output)
+        Output only. Ports of the exposed endpoint.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. The consumer project_id where the forwarding rule is created from.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. The PSC connection id of the forwarding rule connected to the
+        service attachment.
+        """
+        return pulumi.get(self, "psc_connection_id")
+
+    @property
+    @pulumi.getter(name="serviceAttachment")
+    def service_attachment(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+        """
+        return pulumi.get(self, "service_attachment")
 
 
 @pulumi.output_type

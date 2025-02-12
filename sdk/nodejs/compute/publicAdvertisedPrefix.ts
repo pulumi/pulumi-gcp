@@ -104,7 +104,7 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
      */
     public readonly dnsVerificationIp!: pulumi.Output<string>;
     /**
-     * The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+     * The address range, in CIDR format, represented by this public advertised prefix.
      *
      *
      * - - -
@@ -122,6 +122,10 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
     /**
      * Specifies how child public delegated prefix will be scoped. pdpScope
      * must be one of: GLOBAL, REGIONAL
+     * * REGIONAL: The public delegated prefix is regional only. The
+     * provisioning will take a few minutes.
+     * * GLOBAL: The public delegated prefix is global only. The provisioning
+     * will take ~4 weeks.
      * Possible values are: `GLOBAL`, `REGIONAL`.
      */
     public readonly pdpScope!: pulumi.Output<string | undefined>;
@@ -195,7 +199,7 @@ export interface PublicAdvertisedPrefixState {
      */
     dnsVerificationIp?: pulumi.Input<string>;
     /**
-     * The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+     * The address range, in CIDR format, represented by this public advertised prefix.
      *
      *
      * - - -
@@ -213,6 +217,10 @@ export interface PublicAdvertisedPrefixState {
     /**
      * Specifies how child public delegated prefix will be scoped. pdpScope
      * must be one of: GLOBAL, REGIONAL
+     * * REGIONAL: The public delegated prefix is regional only. The
+     * provisioning will take a few minutes.
+     * * GLOBAL: The public delegated prefix is global only. The provisioning
+     * will take ~4 weeks.
      * Possible values are: `GLOBAL`, `REGIONAL`.
      */
     pdpScope?: pulumi.Input<string>;
@@ -244,7 +252,7 @@ export interface PublicAdvertisedPrefixArgs {
      */
     dnsVerificationIp: pulumi.Input<string>;
     /**
-     * The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+     * The address range, in CIDR format, represented by this public advertised prefix.
      *
      *
      * - - -
@@ -262,6 +270,10 @@ export interface PublicAdvertisedPrefixArgs {
     /**
      * Specifies how child public delegated prefix will be scoped. pdpScope
      * must be one of: GLOBAL, REGIONAL
+     * * REGIONAL: The public delegated prefix is regional only. The
+     * provisioning will take a few minutes.
+     * * GLOBAL: The public delegated prefix is global only. The provisioning
+     * will take ~4 weeks.
      * Possible values are: `GLOBAL`, `REGIONAL`.
      */
     pdpScope?: pulumi.Input<string>;

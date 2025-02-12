@@ -13,18 +13,24 @@ import com.pulumi.gcp.parametermanager.inputs.GetParameterArgs;
 import com.pulumi.gcp.parametermanager.inputs.GetParameterPlainArgs;
 import com.pulumi.gcp.parametermanager.inputs.GetParameterVersionArgs;
 import com.pulumi.gcp.parametermanager.inputs.GetParameterVersionPlainArgs;
+import com.pulumi.gcp.parametermanager.inputs.GetParameterVersionRenderArgs;
+import com.pulumi.gcp.parametermanager.inputs.GetParameterVersionRenderPlainArgs;
 import com.pulumi.gcp.parametermanager.inputs.GetParametersArgs;
 import com.pulumi.gcp.parametermanager.inputs.GetParametersPlainArgs;
 import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterArgs;
 import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterPlainArgs;
 import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterVersionArgs;
 import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterVersionPlainArgs;
+import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterVersionRenderArgs;
+import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterVersionRenderPlainArgs;
 import com.pulumi.gcp.parametermanager.inputs.GetRegionalParametersArgs;
 import com.pulumi.gcp.parametermanager.inputs.GetRegionalParametersPlainArgs;
 import com.pulumi.gcp.parametermanager.outputs.GetParameterResult;
+import com.pulumi.gcp.parametermanager.outputs.GetParameterVersionRenderResult;
 import com.pulumi.gcp.parametermanager.outputs.GetParameterVersionResult;
 import com.pulumi.gcp.parametermanager.outputs.GetParametersResult;
 import com.pulumi.gcp.parametermanager.outputs.GetRegionalParameterResult;
+import com.pulumi.gcp.parametermanager.outputs.GetRegionalParameterVersionRenderResult;
 import com.pulumi.gcp.parametermanager.outputs.GetRegionalParameterVersionResult;
 import com.pulumi.gcp.parametermanager.outputs.GetRegionalParametersResult;
 import java.util.concurrent.CompletableFuture;
@@ -434,6 +440,211 @@ public final class ParametermanagerFunctions {
      */
     public static CompletableFuture<GetParameterVersionResult> getParameterVersionPlain(GetParameterVersionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:parametermanager/getParameterVersion:getParameterVersion", TypeShape.of(GetParameterVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
+     * import com.pulumi.gcp.parametermanager.inputs.GetParameterVersionRenderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var basic = ParametermanagerFunctions.getParameterVersionRender(GetParameterVersionRenderArgs.builder()
+     *             .parameter("test-parameter")
+     *             .parameterVersionId("test-parameter-version")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetParameterVersionRenderResult> getParameterVersionRender(GetParameterVersionRenderArgs args) {
+        return getParameterVersionRender(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
+     * import com.pulumi.gcp.parametermanager.inputs.GetParameterVersionRenderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var basic = ParametermanagerFunctions.getParameterVersionRender(GetParameterVersionRenderArgs.builder()
+     *             .parameter("test-parameter")
+     *             .parameterVersionId("test-parameter-version")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetParameterVersionRenderResult> getParameterVersionRenderPlain(GetParameterVersionRenderPlainArgs args) {
+        return getParameterVersionRenderPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
+     * import com.pulumi.gcp.parametermanager.inputs.GetParameterVersionRenderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var basic = ParametermanagerFunctions.getParameterVersionRender(GetParameterVersionRenderArgs.builder()
+     *             .parameter("test-parameter")
+     *             .parameterVersionId("test-parameter-version")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetParameterVersionRenderResult> getParameterVersionRender(GetParameterVersionRenderArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:parametermanager/getParameterVersionRender:getParameterVersionRender", TypeShape.of(GetParameterVersionRenderResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
+     * import com.pulumi.gcp.parametermanager.inputs.GetParameterVersionRenderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var basic = ParametermanagerFunctions.getParameterVersionRender(GetParameterVersionRenderArgs.builder()
+     *             .parameter("test-parameter")
+     *             .parameterVersionId("test-parameter-version")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetParameterVersionRenderResult> getParameterVersionRender(GetParameterVersionRenderArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:parametermanager/getParameterVersionRender:getParameterVersionRender", TypeShape.of(GetParameterVersionRenderResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
+     * import com.pulumi.gcp.parametermanager.inputs.GetParameterVersionRenderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var basic = ParametermanagerFunctions.getParameterVersionRender(GetParameterVersionRenderArgs.builder()
+     *             .parameter("test-parameter")
+     *             .parameterVersionId("test-parameter-version")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetParameterVersionRenderResult> getParameterVersionRenderPlain(GetParameterVersionRenderPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:parametermanager/getParameterVersionRender:getParameterVersionRender", TypeShape.of(GetParameterVersionRenderResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage
@@ -1115,6 +1326,216 @@ public final class ParametermanagerFunctions {
      */
     public static CompletableFuture<GetRegionalParameterVersionResult> getRegionalParameterVersionPlain(GetRegionalParameterVersionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:parametermanager/getRegionalParameterVersion:getRegionalParameterVersion", TypeShape.of(GetRegionalParameterVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
+     * import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterVersionRenderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var basic = ParametermanagerFunctions.getRegionalParameterVersionRender(GetRegionalParameterVersionRenderArgs.builder()
+     *             .parameter("test-regional-parameter")
+     *             .parameterVersionId("test-regional-parameter-version")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRegionalParameterVersionRenderResult> getRegionalParameterVersionRender(GetRegionalParameterVersionRenderArgs args) {
+        return getRegionalParameterVersionRender(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
+     * import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterVersionRenderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var basic = ParametermanagerFunctions.getRegionalParameterVersionRender(GetRegionalParameterVersionRenderArgs.builder()
+     *             .parameter("test-regional-parameter")
+     *             .parameterVersionId("test-regional-parameter-version")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRegionalParameterVersionRenderResult> getRegionalParameterVersionRenderPlain(GetRegionalParameterVersionRenderPlainArgs args) {
+        return getRegionalParameterVersionRenderPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
+     * import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterVersionRenderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var basic = ParametermanagerFunctions.getRegionalParameterVersionRender(GetRegionalParameterVersionRenderArgs.builder()
+     *             .parameter("test-regional-parameter")
+     *             .parameterVersionId("test-regional-parameter-version")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRegionalParameterVersionRenderResult> getRegionalParameterVersionRender(GetRegionalParameterVersionRenderArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:parametermanager/getRegionalParameterVersionRender:getRegionalParameterVersionRender", TypeShape.of(GetRegionalParameterVersionRenderResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
+     * import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterVersionRenderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var basic = ParametermanagerFunctions.getRegionalParameterVersionRender(GetRegionalParameterVersionRenderArgs.builder()
+     *             .parameter("test-regional-parameter")
+     *             .parameterVersionId("test-regional-parameter-version")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRegionalParameterVersionRenderResult> getRegionalParameterVersionRender(GetRegionalParameterVersionRenderArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:parametermanager/getRegionalParameterVersionRender:getRegionalParameterVersionRender", TypeShape.of(GetRegionalParameterVersionRenderResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
+     * import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterVersionRenderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var basic = ParametermanagerFunctions.getRegionalParameterVersionRender(GetRegionalParameterVersionRenderArgs.builder()
+     *             .parameter("test-regional-parameter")
+     *             .parameterVersionId("test-regional-parameter-version")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRegionalParameterVersionRenderResult> getRegionalParameterVersionRenderPlain(GetRegionalParameterVersionRenderPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:parametermanager/getRegionalParameterVersionRender:getRegionalParameterVersionRender", TypeShape.of(GetRegionalParameterVersionRenderResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage

@@ -147,6 +147,23 @@ namespace Pulumi.Gcp.Colab
     ///         {
     ///             KmsKeyName = "my-crypto-key",
     ///         },
+    ///         SoftwareConfig = new Gcp.Colab.Inputs.RuntimeTemplateSoftwareConfigArgs
+    ///         {
+    ///             Envs = new[]
+    ///             {
+    ///                 new Gcp.Colab.Inputs.RuntimeTemplateSoftwareConfigEnvArgs
+    ///                 {
+    ///                     Name = "TEST",
+    ///                     Value = "1",
+    ///                 },
+    ///             },
+    ///             PostStartupScriptConfig = new Gcp.Colab.Inputs.RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs
+    ///             {
+    ///                 PostStartupScript = "echo 'hello world'",
+    ///                 PostStartupScriptUrl = "gs://colab-enterprise-pss-secure/secure_pss.sh",
+    ///                 PostStartupScriptBehavior = "RUN_ONCE",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -288,6 +305,13 @@ namespace Pulumi.Gcp.Colab
         /// </summary>
         [Output("shieldedVmConfig")]
         public Output<Outputs.RuntimeTemplateShieldedVmConfig?> ShieldedVmConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The notebook software configuration of the notebook runtime.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("softwareConfig")]
+        public Output<Outputs.RuntimeTemplateSoftwareConfig?> SoftwareConfig { get; private set; } = null!;
 
 
         /// <summary>
@@ -449,6 +473,13 @@ namespace Pulumi.Gcp.Colab
         [Input("shieldedVmConfig")]
         public Input<Inputs.RuntimeTemplateShieldedVmConfigArgs>? ShieldedVmConfig { get; set; }
 
+        /// <summary>
+        /// The notebook software configuration of the notebook runtime.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("softwareConfig")]
+        public Input<Inputs.RuntimeTemplateSoftwareConfigArgs>? SoftwareConfig { get; set; }
+
         public RuntimeTemplateArgs()
         {
         }
@@ -598,6 +629,13 @@ namespace Pulumi.Gcp.Colab
         /// </summary>
         [Input("shieldedVmConfig")]
         public Input<Inputs.RuntimeTemplateShieldedVmConfigGetArgs>? ShieldedVmConfig { get; set; }
+
+        /// <summary>
+        /// The notebook software configuration of the notebook runtime.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("softwareConfig")]
+        public Input<Inputs.RuntimeTemplateSoftwareConfigGetArgs>? SoftwareConfig { get; set; }
 
         public RuntimeTemplateState()
         {

@@ -40,19 +40,26 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * import * as random from "@pulumi/random";
  *
- * const _default = new gcp.compute.Network("default", {name: "my-network"});
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "my-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "my-subnetwork",
+ *     ipCidrRange: "10.1.0.0/16",
+ *     region: "us-central1",
+ *     network: _default.id,
+ * });
  * const privateConnection = new gcp.datastream.PrivateConnection("private_connection", {
- *     displayName: "Connection profile",
+ *     displayName: "Private connection",
  *     location: "us-central1",
  *     privateConnectionId: "my-connection",
- *     labels: {
- *         key: "value",
- *     },
  *     vpcPeeringConfig: {
  *         vpc: _default.id,
  *         subnet: "10.0.0.0/29",
  *     },
  * });
+ * const natVmIp = new gcp.compute.Address("nat_vm_ip", {name: "nat-vm-ip"});
  * const instance = new gcp.sql.DatabaseInstance("instance", {
  *     name: "my-instance",
  *     databaseVersion: "POSTGRES_14",
@@ -60,23 +67,9 @@ import * as utilities from "../utilities";
  *     settings: {
  *         tier: "db-f1-micro",
  *         ipConfiguration: {
- *             authorizedNetworks: [
- *                 {
- *                     value: "34.71.242.81",
- *                 },
- *                 {
- *                     value: "34.72.28.29",
- *                 },
- *                 {
- *                     value: "34.67.6.157",
- *                 },
- *                 {
- *                     value: "34.67.234.134",
- *                 },
- *                 {
- *                     value: "34.72.239.218",
- *                 },
- *             ],
+ *             authorizedNetworks: [{
+ *                 value: natVmIp.address,
+ *             }],
  *         },
  *     },
  *     deletionProtection: true,
@@ -94,15 +87,63 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     password: pwd.result,
  * });
+ * const natVm = new gcp.compute.Instance("nat_vm", {
+ *     name: "nat-vm",
+ *     machineType: "e2-medium",
+ *     zone: "us-central1-a",
+ *     desiredStatus: "RUNNING",
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: "debian-cloud/debian-12",
+ *         },
+ *     },
+ *     networkInterfaces: [{
+ *         network: privateConnection.vpcPeeringConfig.apply(vpcPeeringConfig => vpcPeeringConfig.vpc),
+ *         subnetwork: defaultSubnetwork.selfLink,
+ *         accessConfigs: [{
+ *             natIp: natVmIp.address,
+ *         }],
+ *     }],
+ *     metadataStartupScript: pulumi.interpolate`#! /bin/bash
+ * # See https://cloud.google.com/datastream/docs/private-connectivity#set-up-reverse-proxy
+ * export DB_ADDR=${instance.publicIpAddress}
+ * export DB_PORT=5432
+ * echo 1 > /proc/sys/net/ipv4/ip_forward
+ * md_url_prefix="http://169.254.169.254/computeMetadata/v1/instance"
+ * vm_nic_ip="$(curl -H "Metadata-Flavor: Google" ${md_url_prefix}/network-interfaces/0/ip)"
+ * iptables -t nat -F
+ * iptables -t nat -A PREROUTING \
+ *      -p tcp --dport $DB_PORT \
+ *      -j DNAT \
+ *      --to-destination $DB_ADDR
+ * iptables -t nat -A POSTROUTING \
+ *      -p tcp --dport $DB_PORT \
+ *      -j SNAT \
+ *      --to-source $vm_nic_ip
+ * iptables-save
+ * `,
+ * });
+ * const rules = new gcp.compute.Firewall("rules", {
+ *     name: "ingress-rule",
+ *     network: privateConnection.vpcPeeringConfig.apply(vpcPeeringConfig => vpcPeeringConfig.vpc),
+ *     description: "Allow traffic into NAT VM",
+ *     direction: "INGRESS",
+ *     allows: [{
+ *         protocol: "tcp",
+ *         ports: ["5432"],
+ *     }],
+ *     sourceRanges: [privateConnection.vpcPeeringConfig.apply(vpcPeeringConfig => vpcPeeringConfig.subnet)],
+ * });
  * const defaultConnectionProfile = new gcp.datastream.ConnectionProfile("default", {
  *     displayName: "Connection profile",
  *     location: "us-central1",
  *     connectionProfileId: "my-profile",
  *     postgresqlProfile: {
- *         hostname: instance.publicIpAddress,
+ *         hostname: natVm.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].networkIp),
  *         username: user.name,
  *         password: user.password,
  *         database: db.name,
+ *         port: 5432,
  *     },
  *     privateConnectivity: {
  *         privateConnection: privateConnection.id,

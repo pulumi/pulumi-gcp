@@ -58,22 +58,32 @@ namespace Pulumi.Gcp.Datastream
     ///     var @default = new Gcp.Compute.Network("default", new()
     ///     {
     ///         Name = "my-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "my-subnetwork",
+    ///         IpCidrRange = "10.1.0.0/16",
+    ///         Region = "us-central1",
+    ///         Network = @default.Id,
     ///     });
     /// 
     ///     var privateConnection = new Gcp.Datastream.PrivateConnection("private_connection", new()
     ///     {
-    ///         DisplayName = "Connection profile",
+    ///         DisplayName = "Private connection",
     ///         Location = "us-central1",
     ///         PrivateConnectionId = "my-connection",
-    ///         Labels = 
-    ///         {
-    ///             { "key", "value" },
-    ///         },
     ///         VpcPeeringConfig = new Gcp.Datastream.Inputs.PrivateConnectionVpcPeeringConfigArgs
     ///         {
     ///             Vpc = @default.Id,
     ///             Subnet = "10.0.0.0/29",
     ///         },
+    ///     });
+    /// 
+    ///     var natVmIp = new Gcp.Compute.Address("nat_vm_ip", new()
+    ///     {
+    ///         Name = "nat-vm-ip",
     ///     });
     /// 
     ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
@@ -90,23 +100,7 @@ namespace Pulumi.Gcp.Datastream
     ///                 {
     ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
     ///                     {
-    ///                         Value = "34.71.242.81",
-    ///                     },
-    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
-    ///                     {
-    ///                         Value = "34.72.28.29",
-    ///                     },
-    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
-    ///                     {
-    ///                         Value = "34.67.6.157",
-    ///                     },
-    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
-    ///                     {
-    ///                         Value = "34.67.234.134",
-    ///                     },
-    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
-    ///                     {
-    ///                         Value = "34.72.239.218",
+    ///                         Value = natVmIp.IPAddress,
     ///                     },
     ///                 },
     ///             },
@@ -133,6 +127,77 @@ namespace Pulumi.Gcp.Datastream
     ///         Password = pwd.Result,
     ///     });
     /// 
+    ///     var natVm = new Gcp.Compute.Instance("nat_vm", new()
+    ///     {
+    ///         Name = "nat-vm",
+    ///         MachineType = "e2-medium",
+    ///         Zone = "us-central1-a",
+    ///         DesiredStatus = "RUNNING",
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///         {
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///             {
+    ///                 Image = "debian-cloud/debian-12",
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 Network = privateConnection.VpcPeeringConfig.Apply(vpcPeeringConfig =&gt; vpcPeeringConfig.Vpc),
+    ///                 Subnetwork = defaultSubnetwork.SelfLink,
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.InstanceNetworkInterfaceAccessConfigArgs
+    ///                     {
+    ///                         NatIp = natVmIp.IPAddress,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         MetadataStartupScript = instance.PublicIpAddress.Apply(publicIpAddress =&gt; @$"#! /bin/bash
+    /// # See https://cloud.google.com/datastream/docs/private-connectivity#set-up-reverse-proxy
+    /// export DB_ADDR={publicIpAddress}
+    /// export DB_PORT=5432
+    /// echo 1 &gt; /proc/sys/net/ipv4/ip_forward
+    /// md_url_prefix=""http://169.254.169.254/computeMetadata/v1/instance""
+    /// vm_nic_ip=""$(curl -H ""Metadata-Flavor: Google"" ${{md_url_prefix}}/network-interfaces/0/ip)""
+    /// iptables -t nat -F
+    /// iptables -t nat -A PREROUTING \
+    ///      -p tcp --dport $DB_PORT \
+    ///      -j DNAT \
+    ///      --to-destination $DB_ADDR
+    /// iptables -t nat -A POSTROUTING \
+    ///      -p tcp --dport $DB_PORT \
+    ///      -j SNAT \
+    ///      --to-source $vm_nic_ip
+    /// iptables-save
+    /// "),
+    ///     });
+    /// 
+    ///     var rules = new Gcp.Compute.Firewall("rules", new()
+    ///     {
+    ///         Name = "ingress-rule",
+    ///         Network = privateConnection.VpcPeeringConfig.Apply(vpcPeeringConfig =&gt; vpcPeeringConfig.Vpc),
+    ///         Description = "Allow traffic into NAT VM",
+    ///         Direction = "INGRESS",
+    ///         Allows = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///                 Ports = new[]
+    ///                 {
+    ///                     "5432",
+    ///                 },
+    ///             },
+    ///         },
+    ///         SourceRanges = new[]
+    ///         {
+    ///             privateConnection.VpcPeeringConfig.Apply(vpcPeeringConfig =&gt; vpcPeeringConfig.Subnet),
+    ///         },
+    ///     });
+    /// 
     ///     var defaultConnectionProfile = new Gcp.Datastream.ConnectionProfile("default", new()
     ///     {
     ///         DisplayName = "Connection profile",
@@ -140,10 +205,11 @@ namespace Pulumi.Gcp.Datastream
     ///         ConnectionProfileId = "my-profile",
     ///         PostgresqlProfile = new Gcp.Datastream.Inputs.ConnectionProfilePostgresqlProfileArgs
     ///         {
-    ///             Hostname = instance.PublicIpAddress,
+    ///             Hostname = natVm.NetworkInterfaces.Apply(networkInterfaces =&gt; networkInterfaces[0].NetworkIp),
     ///             Username = user.Name,
     ///             Password = user.Password,
     ///             Database = db.Name,
+    ///             Port = 5432,
     ///         },
     ///         PrivateConnectivity = new Gcp.Datastream.Inputs.ConnectionProfilePrivateConnectivityArgs
     ///         {

@@ -411,6 +411,12 @@ __all__ = [
     'NetworkAttachmentConnectionEndpointArgsDict',
     'NetworkEndpointListNetworkEndpointArgs',
     'NetworkEndpointListNetworkEndpointArgsDict',
+    'NetworkFirewallPolicyPacketMirroringRuleMatchArgs',
+    'NetworkFirewallPolicyPacketMirroringRuleMatchArgsDict',
+    'NetworkFirewallPolicyPacketMirroringRuleMatchLayer4ConfigArgs',
+    'NetworkFirewallPolicyPacketMirroringRuleMatchLayer4ConfigArgsDict',
+    'NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs',
+    'NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgsDict',
     'NetworkFirewallPolicyRuleMatchArgs',
     'NetworkFirewallPolicyRuleMatchArgsDict',
     'NetworkFirewallPolicyRuleMatchLayer4ConfigArgs',
@@ -22036,6 +22042,204 @@ class NetworkEndpointListNetworkEndpointArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port", value)
+
+
+if not MYPY:
+    class NetworkFirewallPolicyPacketMirroringRuleMatchArgsDict(TypedDict):
+        layer4_configs: pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyPacketMirroringRuleMatchLayer4ConfigArgsDict']]]
+        """
+        Pairs of IP protocols and ports that the rule should match.
+        Structure is documented below.
+
+
+        <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
+        """
+        dest_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        """
+        src_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        """
+elif False:
+    NetworkFirewallPolicyPacketMirroringRuleMatchArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NetworkFirewallPolicyPacketMirroringRuleMatchArgs:
+    def __init__(__self__, *,
+                 layer4_configs: pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyPacketMirroringRuleMatchLayer4ConfigArgs']]],
+                 dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyPacketMirroringRuleMatchLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
+               Structure is documented below.
+               
+               
+               <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        """
+        pulumi.set(__self__, "layer4_configs", layer4_configs)
+        if dest_ip_ranges is not None:
+            pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if src_ip_ranges is not None:
+            pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+
+    @property
+    @pulumi.getter(name="layer4Configs")
+    def layer4_configs(self) -> pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyPacketMirroringRuleMatchLayer4ConfigArgs']]]:
+        """
+        Pairs of IP protocols and ports that the rule should match.
+        Structure is documented below.
+
+
+        <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
+        """
+        return pulumi.get(self, "layer4_configs")
+
+    @layer4_configs.setter
+    def layer4_configs(self, value: pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyPacketMirroringRuleMatchLayer4ConfigArgs']]]):
+        pulumi.set(self, "layer4_configs", value)
+
+    @property
+    @pulumi.getter(name="destIpRanges")
+    def dest_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        """
+        return pulumi.get(self, "dest_ip_ranges")
+
+    @dest_ip_ranges.setter
+    def dest_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="srcIpRanges")
+    def src_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        """
+        return pulumi.get(self, "src_ip_ranges")
+
+    @src_ip_ranges.setter
+    def src_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_ip_ranges", value)
+
+
+if not MYPY:
+    class NetworkFirewallPolicyPacketMirroringRuleMatchLayer4ConfigArgsDict(TypedDict):
+        ip_protocol: pulumi.Input[str]
+        """
+        The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule.
+        This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+        """
+        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+        Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+        """
+elif False:
+    NetworkFirewallPolicyPacketMirroringRuleMatchLayer4ConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NetworkFirewallPolicyPacketMirroringRuleMatchLayer4ConfigArgs:
+    def __init__(__self__, *,
+                 ip_protocol: pulumi.Input[str],
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule.
+               This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+               Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+        """
+        pulumi.set(__self__, "ip_protocol", ip_protocol)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+
+    @property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> pulumi.Input[str]:
+        """
+        The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule.
+        This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @ip_protocol.setter
+    def ip_protocol(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip_protocol", value)
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+        Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+        """
+        return pulumi.get(self, "ports")
+
+    @ports.setter
+    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ports", value)
+
+
+if not MYPY:
+    class NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        diff_suppress_func: 'tpgresource.CompareSelfLinkOrResourceName'
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+        """
+elif False:
+    NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the secure tag, created with TagManager's TagValue API.
+               diff_suppress_func: 'tpgresource.CompareSelfLinkOrResourceName'
+        :param pulumi.Input[str] state: (Output)
+               State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        diff_suppress_func: 'tpgresource.CompareSelfLinkOrResourceName'
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
 
 
 if not MYPY:

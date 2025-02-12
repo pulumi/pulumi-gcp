@@ -171,7 +171,7 @@ export class RegionResizeRequest extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The reference of the compute region scoping this request.
+     * The reference of the compute region scoping this request. If it is not provided, the provider region is used.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -221,9 +221,6 @@ export class RegionResizeRequest extends pulumi.CustomResource {
             if ((!args || args.instanceGroupManager === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceGroupManager'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'region'");
-            }
             if ((!args || args.resizeBy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resizeBy'");
             }
@@ -272,7 +269,7 @@ export interface RegionResizeRequestState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The reference of the compute region scoping this request.
+     * The reference of the compute region scoping this request. If it is not provided, the provider region is used.
      */
     region?: pulumi.Input<string>;
     /**
@@ -320,9 +317,9 @@ export interface RegionResizeRequestArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * The reference of the compute region scoping this request.
+     * The reference of the compute region scoping this request. If it is not provided, the provider region is used.
      */
-    region: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Requested run duration for instances that will be created by this request. At the end of the run duration instances will be deleted.
      * Structure is documented below.

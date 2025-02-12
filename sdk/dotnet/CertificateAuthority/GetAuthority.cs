@@ -209,6 +209,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         public readonly ImmutableArray<Outputs.GetAuthoritySubordinateConfigResult> SubordinateConfigs;
         public readonly string Type;
         public readonly string UpdateTime;
+        public readonly ImmutableArray<Outputs.GetAuthorityUserDefinedAccessUrlResult> UserDefinedAccessUrls;
 
         [OutputConstructor]
         private GetAuthorityResult(
@@ -262,7 +263,9 @@ namespace Pulumi.Gcp.CertificateAuthority
 
             string type,
 
-            string updateTime)
+            string updateTime,
+
+            ImmutableArray<Outputs.GetAuthorityUserDefinedAccessUrlResult> userDefinedAccessUrls)
         {
             AccessUrls = accessUrls;
             CertificateAuthorityId = certificateAuthorityId;
@@ -290,6 +293,7 @@ namespace Pulumi.Gcp.CertificateAuthority
             SubordinateConfigs = subordinateConfigs;
             Type = type;
             UpdateTime = updateTime;
+            UserDefinedAccessUrls = userDefinedAccessUrls;
         }
     }
 }

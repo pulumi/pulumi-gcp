@@ -12,6 +12,7 @@ import com.pulumi.gcp.memorystore.InstanceArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceState;
 import com.pulumi.gcp.memorystore.outputs.InstanceDesiredPscAutoConnection;
 import com.pulumi.gcp.memorystore.outputs.InstanceDiscoveryEndpoint;
+import com.pulumi.gcp.memorystore.outputs.InstanceEndpoint;
 import com.pulumi.gcp.memorystore.outputs.InstanceNodeConfig;
 import com.pulumi.gcp.memorystore.outputs.InstancePersistenceConfig;
 import com.pulumi.gcp.memorystore.outputs.InstancePscAutoConnection;
@@ -19,7 +20,6 @@ import com.pulumi.gcp.memorystore.outputs.InstanceStateInfo;
 import com.pulumi.gcp.memorystore.outputs.InstanceZoneDistributionConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -420,16 +420,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Endpoints for the instance.
+     * Structure is documented below.
      * 
      */
-    @Export(name="endpoints", refs={List.class,Object.class}, tree="[0,[0,1]]")
-    private Output<List<List<Object>>> endpoints;
+    @Export(name="endpoints", refs={List.class,InstanceEndpoint.class}, tree="[0,1]")
+    private Output<List<InstanceEndpoint>> endpoints;
 
     /**
      * @return Endpoints for the instance.
+     * Structure is documented below.
      * 
      */
-    public Output<List<List<Object>>> endpoints() {
+    public Output<List<InstanceEndpoint>> endpoints() {
         return this.endpoints;
     }
     /**
@@ -525,22 +527,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * Optional. Standalone or cluster.
+     * Optional. cluster or cluster-disabled.
      * Possible values:
      * CLUSTER
-     * STANDALONE
-     * Possible values are: `CLUSTER`, `STANDALONE`.
+     * CLUSTER_DISABLED
+     * Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
      * 
      */
     @Export(name="mode", refs={String.class}, tree="[0]")
     private Output<String> mode;
 
     /**
-     * @return Optional. Standalone or cluster.
+     * @return Optional. cluster or cluster-disabled.
      * Possible values:
      * CLUSTER
-     * STANDALONE
-     * Possible values are: `CLUSTER`, `STANDALONE`.
+     * CLUSTER_DISABLED
+     * Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
      * 
      */
     public Output<String> mode() {

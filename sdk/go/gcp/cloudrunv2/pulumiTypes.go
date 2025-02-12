@@ -5512,6 +5512,12 @@ func (o ServiceTemplatePtrOutput) VpcAccess() ServiceTemplateVpcAccessPtrOutput 
 type ServiceTemplateContainer struct {
 	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
 	Args []string `pulumi:"args"`
+	// Base image for this container. If set, it indicates that the service is enrolled into automatic base image update.
+	BaseImageUri *string `pulumi:"baseImageUri"`
+	// (Output)
+	// The build info of the container image.
+	// Structure is documented below.
+	BuildInfos []ServiceTemplateContainerBuildInfo `pulumi:"buildInfos"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands []string `pulumi:"commands"`
 	// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
@@ -5557,6 +5563,12 @@ type ServiceTemplateContainerInput interface {
 type ServiceTemplateContainerArgs struct {
 	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
 	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Base image for this container. If set, it indicates that the service is enrolled into automatic base image update.
+	BaseImageUri pulumi.StringPtrInput `pulumi:"baseImageUri"`
+	// (Output)
+	// The build info of the container image.
+	// Structure is documented below.
+	BuildInfos ServiceTemplateContainerBuildInfoArrayInput `pulumi:"buildInfos"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands pulumi.StringArrayInput `pulumi:"commands"`
 	// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
@@ -5644,6 +5656,18 @@ func (o ServiceTemplateContainerOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceTemplateContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
+// Base image for this container. If set, it indicates that the service is enrolled into automatic base image update.
+func (o ServiceTemplateContainerOutput) BaseImageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateContainer) *string { return v.BaseImageUri }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The build info of the container image.
+// Structure is documented below.
+func (o ServiceTemplateContainerOutput) BuildInfos() ServiceTemplateContainerBuildInfoArrayOutput {
+	return o.ApplyT(func(v ServiceTemplateContainer) []ServiceTemplateContainerBuildInfo { return v.BuildInfos }).(ServiceTemplateContainerBuildInfoArrayOutput)
+}
+
 // Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 func (o ServiceTemplateContainerOutput) Commands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceTemplateContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
@@ -5724,6 +5748,112 @@ func (o ServiceTemplateContainerArrayOutput) Index(i pulumi.IntInput) ServiceTem
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTemplateContainer {
 		return vs[0].([]ServiceTemplateContainer)[vs[1].(int)]
 	}).(ServiceTemplateContainerOutput)
+}
+
+type ServiceTemplateContainerBuildInfo struct {
+	// Entry point of the function when the image is a Cloud Run function.
+	FunctionTarget *string `pulumi:"functionTarget"`
+	// Source code location of the image.
+	SourceLocation *string `pulumi:"sourceLocation"`
+}
+
+// ServiceTemplateContainerBuildInfoInput is an input type that accepts ServiceTemplateContainerBuildInfoArgs and ServiceTemplateContainerBuildInfoOutput values.
+// You can construct a concrete instance of `ServiceTemplateContainerBuildInfoInput` via:
+//
+//	ServiceTemplateContainerBuildInfoArgs{...}
+type ServiceTemplateContainerBuildInfoInput interface {
+	pulumi.Input
+
+	ToServiceTemplateContainerBuildInfoOutput() ServiceTemplateContainerBuildInfoOutput
+	ToServiceTemplateContainerBuildInfoOutputWithContext(context.Context) ServiceTemplateContainerBuildInfoOutput
+}
+
+type ServiceTemplateContainerBuildInfoArgs struct {
+	// Entry point of the function when the image is a Cloud Run function.
+	FunctionTarget pulumi.StringPtrInput `pulumi:"functionTarget"`
+	// Source code location of the image.
+	SourceLocation pulumi.StringPtrInput `pulumi:"sourceLocation"`
+}
+
+func (ServiceTemplateContainerBuildInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateContainerBuildInfo)(nil)).Elem()
+}
+
+func (i ServiceTemplateContainerBuildInfoArgs) ToServiceTemplateContainerBuildInfoOutput() ServiceTemplateContainerBuildInfoOutput {
+	return i.ToServiceTemplateContainerBuildInfoOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateContainerBuildInfoArgs) ToServiceTemplateContainerBuildInfoOutputWithContext(ctx context.Context) ServiceTemplateContainerBuildInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerBuildInfoOutput)
+}
+
+// ServiceTemplateContainerBuildInfoArrayInput is an input type that accepts ServiceTemplateContainerBuildInfoArray and ServiceTemplateContainerBuildInfoArrayOutput values.
+// You can construct a concrete instance of `ServiceTemplateContainerBuildInfoArrayInput` via:
+//
+//	ServiceTemplateContainerBuildInfoArray{ ServiceTemplateContainerBuildInfoArgs{...} }
+type ServiceTemplateContainerBuildInfoArrayInput interface {
+	pulumi.Input
+
+	ToServiceTemplateContainerBuildInfoArrayOutput() ServiceTemplateContainerBuildInfoArrayOutput
+	ToServiceTemplateContainerBuildInfoArrayOutputWithContext(context.Context) ServiceTemplateContainerBuildInfoArrayOutput
+}
+
+type ServiceTemplateContainerBuildInfoArray []ServiceTemplateContainerBuildInfoInput
+
+func (ServiceTemplateContainerBuildInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTemplateContainerBuildInfo)(nil)).Elem()
+}
+
+func (i ServiceTemplateContainerBuildInfoArray) ToServiceTemplateContainerBuildInfoArrayOutput() ServiceTemplateContainerBuildInfoArrayOutput {
+	return i.ToServiceTemplateContainerBuildInfoArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateContainerBuildInfoArray) ToServiceTemplateContainerBuildInfoArrayOutputWithContext(ctx context.Context) ServiceTemplateContainerBuildInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerBuildInfoArrayOutput)
+}
+
+type ServiceTemplateContainerBuildInfoOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateContainerBuildInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateContainerBuildInfo)(nil)).Elem()
+}
+
+func (o ServiceTemplateContainerBuildInfoOutput) ToServiceTemplateContainerBuildInfoOutput() ServiceTemplateContainerBuildInfoOutput {
+	return o
+}
+
+func (o ServiceTemplateContainerBuildInfoOutput) ToServiceTemplateContainerBuildInfoOutputWithContext(ctx context.Context) ServiceTemplateContainerBuildInfoOutput {
+	return o
+}
+
+// Entry point of the function when the image is a Cloud Run function.
+func (o ServiceTemplateContainerBuildInfoOutput) FunctionTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateContainerBuildInfo) *string { return v.FunctionTarget }).(pulumi.StringPtrOutput)
+}
+
+// Source code location of the image.
+func (o ServiceTemplateContainerBuildInfoOutput) SourceLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateContainerBuildInfo) *string { return v.SourceLocation }).(pulumi.StringPtrOutput)
+}
+
+type ServiceTemplateContainerBuildInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateContainerBuildInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTemplateContainerBuildInfo)(nil)).Elem()
+}
+
+func (o ServiceTemplateContainerBuildInfoArrayOutput) ToServiceTemplateContainerBuildInfoArrayOutput() ServiceTemplateContainerBuildInfoArrayOutput {
+	return o
+}
+
+func (o ServiceTemplateContainerBuildInfoArrayOutput) ToServiceTemplateContainerBuildInfoArrayOutputWithContext(ctx context.Context) ServiceTemplateContainerBuildInfoArrayOutput {
+	return o
+}
+
+func (o ServiceTemplateContainerBuildInfoArrayOutput) Index(i pulumi.IntInput) ServiceTemplateContainerBuildInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTemplateContainerBuildInfo {
+		return vs[0].([]ServiceTemplateContainerBuildInfo)[vs[1].(int)]
+	}).(ServiceTemplateContainerBuildInfoOutput)
 }
 
 type ServiceTemplateContainerEnv struct {
@@ -6419,6 +6549,8 @@ type ServiceTemplateContainerLivenessProbeGrpc struct {
 	// The name of the service to place in the gRPC HealthCheckRequest
 	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
 	// If this is not specified, the default behavior is defined by gRPC.
+	//
+	// <a name="nestedTemplateContainersContainersBuildInfo"></a>The `buildInfo` block contains:
 	Service *string `pulumi:"service"`
 }
 
@@ -6440,6 +6572,8 @@ type ServiceTemplateContainerLivenessProbeGrpcArgs struct {
 	// The name of the service to place in the gRPC HealthCheckRequest
 	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
 	// If this is not specified, the default behavior is defined by gRPC.
+	//
+	// <a name="nestedTemplateContainersContainersBuildInfo"></a>The `buildInfo` block contains:
 	Service pulumi.StringPtrInput `pulumi:"service"`
 }
 
@@ -6529,6 +6663,8 @@ func (o ServiceTemplateContainerLivenessProbeGrpcOutput) Port() pulumi.IntPtrOut
 // The name of the service to place in the gRPC HealthCheckRequest
 // (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
 // If this is not specified, the default behavior is defined by gRPC.
+//
+// <a name="nestedTemplateContainersContainersBuildInfo"></a>The `buildInfo` block contains:
 func (o ServiceTemplateContainerLivenessProbeGrpcOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerLivenessProbeGrpc) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
@@ -6571,6 +6707,8 @@ func (o ServiceTemplateContainerLivenessProbeGrpcPtrOutput) Port() pulumi.IntPtr
 // The name of the service to place in the gRPC HealthCheckRequest
 // (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
 // If this is not specified, the default behavior is defined by gRPC.
+//
+// <a name="nestedTemplateContainersContainersBuildInfo"></a>The `buildInfo` block contains:
 func (o ServiceTemplateContainerLivenessProbeGrpcPtrOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateContainerLivenessProbeGrpc) *string {
 		if v == nil {
@@ -7621,6 +7759,8 @@ type ServiceTemplateContainerStartupProbeGrpc struct {
 	// The name of the service to place in the gRPC HealthCheckRequest
 	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
 	// If this is not specified, the default behavior is defined by gRPC.
+	//
+	// <a name="nestedTemplateContainersContainersBuildInfo"></a>The `buildInfo` block contains:
 	Service *string `pulumi:"service"`
 }
 
@@ -7642,6 +7782,8 @@ type ServiceTemplateContainerStartupProbeGrpcArgs struct {
 	// The name of the service to place in the gRPC HealthCheckRequest
 	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
 	// If this is not specified, the default behavior is defined by gRPC.
+	//
+	// <a name="nestedTemplateContainersContainersBuildInfo"></a>The `buildInfo` block contains:
 	Service pulumi.StringPtrInput `pulumi:"service"`
 }
 
@@ -7731,6 +7873,8 @@ func (o ServiceTemplateContainerStartupProbeGrpcOutput) Port() pulumi.IntPtrOutp
 // The name of the service to place in the gRPC HealthCheckRequest
 // (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
 // If this is not specified, the default behavior is defined by gRPC.
+//
+// <a name="nestedTemplateContainersContainersBuildInfo"></a>The `buildInfo` block contains:
 func (o ServiceTemplateContainerStartupProbeGrpcOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerStartupProbeGrpc) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
@@ -7773,6 +7917,8 @@ func (o ServiceTemplateContainerStartupProbeGrpcPtrOutput) Port() pulumi.IntPtrO
 // The name of the service to place in the gRPC HealthCheckRequest
 // (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
 // If this is not specified, the default behavior is defined by gRPC.
+//
+// <a name="nestedTemplateContainersContainersBuildInfo"></a>The `buildInfo` block contains:
 func (o ServiceTemplateContainerStartupProbeGrpcPtrOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateContainerStartupProbeGrpc) *string {
 		if v == nil {
@@ -14216,6 +14362,10 @@ func (o GetServiceTemplateArrayOutput) Index(i pulumi.IntInput) GetServiceTempla
 type GetServiceTemplateContainer struct {
 	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
 	Args []string `pulumi:"args"`
+	// Base image for this container. If set, it indicates that the service is enrolled into automatic base image update.
+	BaseImageUri string `pulumi:"baseImageUri"`
+	// The build info of the container image.
+	BuildInfos []GetServiceTemplateContainerBuildInfo `pulumi:"buildInfos"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands []string `pulumi:"commands"`
 	// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
@@ -14256,6 +14406,10 @@ type GetServiceTemplateContainerInput interface {
 type GetServiceTemplateContainerArgs struct {
 	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
 	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Base image for this container. If set, it indicates that the service is enrolled into automatic base image update.
+	BaseImageUri pulumi.StringInput `pulumi:"baseImageUri"`
+	// The build info of the container image.
+	BuildInfos GetServiceTemplateContainerBuildInfoArrayInput `pulumi:"buildInfos"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands pulumi.StringArrayInput `pulumi:"commands"`
 	// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
@@ -14338,6 +14492,16 @@ func (o GetServiceTemplateContainerOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
+// Base image for this container. If set, it indicates that the service is enrolled into automatic base image update.
+func (o GetServiceTemplateContainerOutput) BaseImageUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainer) string { return v.BaseImageUri }).(pulumi.StringOutput)
+}
+
+// The build info of the container image.
+func (o GetServiceTemplateContainerOutput) BuildInfos() GetServiceTemplateContainerBuildInfoArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainer) []GetServiceTemplateContainerBuildInfo { return v.BuildInfos }).(GetServiceTemplateContainerBuildInfoArrayOutput)
+}
+
 // Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 func (o GetServiceTemplateContainerOutput) Commands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
@@ -14415,6 +14579,112 @@ func (o GetServiceTemplateContainerArrayOutput) Index(i pulumi.IntInput) GetServ
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateContainer {
 		return vs[0].([]GetServiceTemplateContainer)[vs[1].(int)]
 	}).(GetServiceTemplateContainerOutput)
+}
+
+type GetServiceTemplateContainerBuildInfo struct {
+	// Entry point of the function when the image is a Cloud Run function.
+	FunctionTarget string `pulumi:"functionTarget"`
+	// Source code location of the image.
+	SourceLocation string `pulumi:"sourceLocation"`
+}
+
+// GetServiceTemplateContainerBuildInfoInput is an input type that accepts GetServiceTemplateContainerBuildInfoArgs and GetServiceTemplateContainerBuildInfoOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerBuildInfoInput` via:
+//
+//	GetServiceTemplateContainerBuildInfoArgs{...}
+type GetServiceTemplateContainerBuildInfoInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerBuildInfoOutput() GetServiceTemplateContainerBuildInfoOutput
+	ToGetServiceTemplateContainerBuildInfoOutputWithContext(context.Context) GetServiceTemplateContainerBuildInfoOutput
+}
+
+type GetServiceTemplateContainerBuildInfoArgs struct {
+	// Entry point of the function when the image is a Cloud Run function.
+	FunctionTarget pulumi.StringInput `pulumi:"functionTarget"`
+	// Source code location of the image.
+	SourceLocation pulumi.StringInput `pulumi:"sourceLocation"`
+}
+
+func (GetServiceTemplateContainerBuildInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerBuildInfo)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerBuildInfoArgs) ToGetServiceTemplateContainerBuildInfoOutput() GetServiceTemplateContainerBuildInfoOutput {
+	return i.ToGetServiceTemplateContainerBuildInfoOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerBuildInfoArgs) ToGetServiceTemplateContainerBuildInfoOutputWithContext(ctx context.Context) GetServiceTemplateContainerBuildInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerBuildInfoOutput)
+}
+
+// GetServiceTemplateContainerBuildInfoArrayInput is an input type that accepts GetServiceTemplateContainerBuildInfoArray and GetServiceTemplateContainerBuildInfoArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerBuildInfoArrayInput` via:
+//
+//	GetServiceTemplateContainerBuildInfoArray{ GetServiceTemplateContainerBuildInfoArgs{...} }
+type GetServiceTemplateContainerBuildInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerBuildInfoArrayOutput() GetServiceTemplateContainerBuildInfoArrayOutput
+	ToGetServiceTemplateContainerBuildInfoArrayOutputWithContext(context.Context) GetServiceTemplateContainerBuildInfoArrayOutput
+}
+
+type GetServiceTemplateContainerBuildInfoArray []GetServiceTemplateContainerBuildInfoInput
+
+func (GetServiceTemplateContainerBuildInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerBuildInfo)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerBuildInfoArray) ToGetServiceTemplateContainerBuildInfoArrayOutput() GetServiceTemplateContainerBuildInfoArrayOutput {
+	return i.ToGetServiceTemplateContainerBuildInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerBuildInfoArray) ToGetServiceTemplateContainerBuildInfoArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerBuildInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerBuildInfoArrayOutput)
+}
+
+type GetServiceTemplateContainerBuildInfoOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerBuildInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerBuildInfo)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerBuildInfoOutput) ToGetServiceTemplateContainerBuildInfoOutput() GetServiceTemplateContainerBuildInfoOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerBuildInfoOutput) ToGetServiceTemplateContainerBuildInfoOutputWithContext(ctx context.Context) GetServiceTemplateContainerBuildInfoOutput {
+	return o
+}
+
+// Entry point of the function when the image is a Cloud Run function.
+func (o GetServiceTemplateContainerBuildInfoOutput) FunctionTarget() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerBuildInfo) string { return v.FunctionTarget }).(pulumi.StringOutput)
+}
+
+// Source code location of the image.
+func (o GetServiceTemplateContainerBuildInfoOutput) SourceLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerBuildInfo) string { return v.SourceLocation }).(pulumi.StringOutput)
+}
+
+type GetServiceTemplateContainerBuildInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerBuildInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerBuildInfo)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerBuildInfoArrayOutput) ToGetServiceTemplateContainerBuildInfoArrayOutput() GetServiceTemplateContainerBuildInfoArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerBuildInfoArrayOutput) ToGetServiceTemplateContainerBuildInfoArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerBuildInfoArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerBuildInfoArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateContainerBuildInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateContainerBuildInfo {
+		return vs[0].([]GetServiceTemplateContainerBuildInfo)[vs[1].(int)]
+	}).(GetServiceTemplateContainerBuildInfoOutput)
 }
 
 type GetServiceTemplateContainerEnv struct {
@@ -18107,6 +18377,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplatePtrInput)(nil)).Elem(), ServiceTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerInput)(nil)).Elem(), ServiceTemplateContainerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerArrayInput)(nil)).Elem(), ServiceTemplateContainerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerBuildInfoInput)(nil)).Elem(), ServiceTemplateContainerBuildInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerBuildInfoArrayInput)(nil)).Elem(), ServiceTemplateContainerBuildInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerEnvInput)(nil)).Elem(), ServiceTemplateContainerEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerEnvArrayInput)(nil)).Elem(), ServiceTemplateContainerEnvArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerEnvValueSourceInput)(nil)).Elem(), ServiceTemplateContainerEnvValueSourceArgs{})
@@ -18225,6 +18497,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateArrayInput)(nil)).Elem(), GetServiceTemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerInput)(nil)).Elem(), GetServiceTemplateContainerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerArrayInput)(nil)).Elem(), GetServiceTemplateContainerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerBuildInfoInput)(nil)).Elem(), GetServiceTemplateContainerBuildInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerBuildInfoArrayInput)(nil)).Elem(), GetServiceTemplateContainerBuildInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerEnvInput)(nil)).Elem(), GetServiceTemplateContainerEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerEnvArrayInput)(nil)).Elem(), GetServiceTemplateContainerEnvArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerEnvValueSourceInput)(nil)).Elem(), GetServiceTemplateContainerEnvValueSourceArgs{})
@@ -18351,6 +18625,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceTemplatePtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerArrayOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateContainerBuildInfoOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateContainerBuildInfoArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerEnvOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerEnvArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerEnvValueSourceOutput{})
@@ -18469,6 +18745,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceTemplateArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateContainerOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateContainerArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerBuildInfoOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerBuildInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateContainerEnvOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateContainerEnvArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateContainerEnvValueSourceOutput{})

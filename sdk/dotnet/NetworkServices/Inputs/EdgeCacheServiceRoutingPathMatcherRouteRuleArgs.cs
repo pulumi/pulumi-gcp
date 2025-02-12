@@ -63,6 +63,14 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         public Input<Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs>? RouteAction { get; set; }
 
         /// <summary>
+        /// Allow overriding the set of methods that are allowed for this route.
+        /// When not set, Media CDN allows only "GET", "HEAD", and "OPTIONS".
+        /// Structure is documented below.
+        /// </summary>
+        [Input("routeMethods")]
+        public Input<Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs>? RouteMethods { get; set; }
+
+        /// <summary>
         /// The URL redirect configuration for requests that match this route.
         /// Structure is documented below.
         /// </summary>

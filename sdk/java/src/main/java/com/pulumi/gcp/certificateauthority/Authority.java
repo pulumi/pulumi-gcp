@@ -14,6 +14,7 @@ import com.pulumi.gcp.certificateauthority.outputs.AuthorityAccessUrl;
 import com.pulumi.gcp.certificateauthority.outputs.AuthorityConfig;
 import com.pulumi.gcp.certificateauthority.outputs.AuthorityKeySpec;
 import com.pulumi.gcp.certificateauthority.outputs.AuthoritySubordinateConfig;
+import com.pulumi.gcp.certificateauthority.outputs.AuthorityUserDefinedAccessUrls;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -387,6 +388,85 @@ import javax.annotation.Nullable;
  *             .lifetime(String.format("%ss", 10 * 365 * 24 * 3600))
  *             .keySpec(AuthorityKeySpecArgs.builder()
  *                 .cloudKmsKeyVersion("projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Privateca Certificate Authority Basic With Custom Cdp Aia Urls
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificateauthority.Authority;
+ * import com.pulumi.gcp.certificateauthority.AuthorityArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigSubjectArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigCaOptionsArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityUserDefinedAccessUrlsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Authority("default", AuthorityArgs.builder()
+ *             .pool("ca-pool")
+ *             .certificateAuthorityId("my-certificate-authority")
+ *             .location("us-central1")
+ *             .deletionProtection(true)
+ *             .config(AuthorityConfigArgs.builder()
+ *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
+ *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
+ *                         .organization("ACME")
+ *                         .commonName("my-certificate-authority")
+ *                         .build())
+ *                     .build())
+ *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
+ *                     .caOptions(AuthorityConfigX509ConfigCaOptionsArgs.builder()
+ *                         .isCa(true)
+ *                         .build())
+ *                     .keyUsage(AuthorityConfigX509ConfigKeyUsageArgs.builder()
+ *                         .baseKeyUsage(AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs.builder()
+ *                             .certSign(true)
+ *                             .crlSign(true)
+ *                             .build())
+ *                         .extendedKeyUsage()
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .lifetime(String.format("%ss", 10 * 365 * 24 * 3600))
+ *             .keySpec(AuthorityKeySpecArgs.builder()
+ *                 .algorithm("RSA_PKCS1_4096_SHA256")
+ *                 .build())
+ *             .userDefinedAccessUrls(AuthorityUserDefinedAccessUrlsArgs.builder()
+ *                 .aiaIssuingCertificateUrls(                
+ *                     "http://example.com/ca.crt",
+ *                     "http://example.com/anotherca.crt")
+ *                 .crlAccessUrls(                
+ *                     "http://example.com/crl1.crt",
+ *                     "http://example.com/crl2.crt")
  *                 .build())
  *             .build());
  * 
@@ -798,6 +878,22 @@ public class Authority extends com.pulumi.resources.CustomResource {
      */
     public Output<String> updateTime() {
         return this.updateTime;
+    }
+    /**
+     * Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
+     * users.
+     * 
+     */
+    @Export(name="userDefinedAccessUrls", refs={AuthorityUserDefinedAccessUrls.class}, tree="[0]")
+    private Output</* @Nullable */ AuthorityUserDefinedAccessUrls> userDefinedAccessUrls;
+
+    /**
+     * @return Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
+     * users.
+     * 
+     */
+    public Output<Optional<AuthorityUserDefinedAccessUrls>> userDefinedAccessUrls() {
+        return Codegen.optional(this.userDefinedAccessUrls);
     }
 
     /**

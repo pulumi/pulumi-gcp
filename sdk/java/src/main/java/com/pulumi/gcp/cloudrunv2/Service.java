@@ -993,6 +993,7 @@ import javax.annotation.Nullable;
  *             .template(ServiceTemplateArgs.builder()
  *                 .containers(ServiceTemplateContainerArgs.builder()
  *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
+ *                     .baseImageUri("us-central1-docker.pkg.dev/serverless-runtimes/google-22-full/runtimes/nodejs22")
  *                     .build())
  *                 .build())
  *             .buildConfig(ServiceBuildConfigArgs.builder()

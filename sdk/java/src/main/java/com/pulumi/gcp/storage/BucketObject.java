@@ -29,6 +29,10 @@ import javax.annotation.Nullable;
  * and
  * [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
  * 
+ * A datasource can be used to retrieve the data of the stored object:
+ * 
+ * * `gcp.storage.getBucketObjectContent`: Retrieves the content within a specified bucket object in Google Cloud Storage Service (GCS)
+ * 
  * ## Example Usage
  * 
  * Example creating a public object in an existing `image-store` bucket.

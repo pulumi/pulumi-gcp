@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.filestore.inputs.InstanceFileSharesArgs;
+import com.pulumi.gcp.filestore.inputs.InstanceInitialReplicationArgs;
 import com.pulumi.gcp.filestore.inputs.InstanceNetworkArgs;
 import com.pulumi.gcp.filestore.inputs.InstancePerformanceConfigArgs;
 import java.lang.Boolean;
@@ -84,6 +85,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<InstanceFileSharesArgs> fileShares() {
         return this.fileShares;
+    }
+
+    /**
+     * Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+     * instance only, indicating the active as the peer_instance
+     * 
+     */
+    @Import(name="initialReplication")
+    private @Nullable Output<InstanceInitialReplicationArgs> initialReplication;
+
+    /**
+     * @return Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+     * instance only, indicating the active as the peer_instance
+     * 
+     */
+    public Optional<Output<InstanceInitialReplicationArgs>> initialReplication() {
+        return Optional.ofNullable(this.initialReplication);
     }
 
     /**
@@ -280,6 +298,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.deletionProtectionReason = $.deletionProtectionReason;
         this.description = $.description;
         this.fileShares = $.fileShares;
+        this.initialReplication = $.initialReplication;
         this.kmsKeyName = $.kmsKeyName;
         this.labels = $.labels;
         this.location = $.location;
@@ -397,6 +416,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder fileShares(InstanceFileSharesArgs fileShares) {
             return fileShares(Output.of(fileShares));
+        }
+
+        /**
+         * @param initialReplication Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+         * instance only, indicating the active as the peer_instance
+         * 
+         * @return builder
+         * 
+         */
+        public Builder initialReplication(@Nullable Output<InstanceInitialReplicationArgs> initialReplication) {
+            $.initialReplication = initialReplication;
+            return this;
+        }
+
+        /**
+         * @param initialReplication Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+         * instance only, indicating the active as the peer_instance
+         * 
+         * @return builder
+         * 
+         */
+        public Builder initialReplication(InstanceInitialReplicationArgs initialReplication) {
+            return initialReplication(Output.of(initialReplication));
         }
 
         /**

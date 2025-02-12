@@ -14,6 +14,12 @@ import (
 
 // A Workbench instance.
 //
+// To get more information about Instance, see:
+//
+// * [API documentation](https://cloud.google.com/vertex-ai/docs/workbench/reference/rest/v2/projects.locations.instances)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/vertex-ai/docs/workbench/instances/introduction)
+//
 // ## Example Usage
 //
 // ### Workbench Instance Basic
@@ -269,7 +275,8 @@ import (
 //				Labels: pulumi.StringMap{
 //					"k": pulumi.String("val"),
 //				},
-//				DesiredState: pulumi.String("ACTIVE"),
+//				DesiredState:             pulumi.String("ACTIVE"),
+//				EnableThirdPartyIdentity: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -317,6 +324,9 @@ type Instance struct {
 	DisableProxyAccess pulumi.BoolPtrOutput `pulumi:"disableProxyAccess"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// Flag that specifies that a notebook can be accessed with third party
+	// identity provider.
+	EnableThirdPartyIdentity pulumi.BoolPtrOutput `pulumi:"enableThirdPartyIdentity"`
 	// The definition of how to configure a VM instance outside of Resources and Identity.
 	// Structure is documented below.
 	GceSetup InstanceGceSetupOutput `pulumi:"gceSetup"`
@@ -414,6 +424,9 @@ type instanceState struct {
 	DisableProxyAccess *bool `pulumi:"disableProxyAccess"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// Flag that specifies that a notebook can be accessed with third party
+	// identity provider.
+	EnableThirdPartyIdentity *bool `pulumi:"enableThirdPartyIdentity"`
 	// The definition of how to configure a VM instance outside of Resources and Identity.
 	// Structure is documented below.
 	GceSetup *InstanceGceSetup `pulumi:"gceSetup"`
@@ -474,6 +487,9 @@ type InstanceState struct {
 	DisableProxyAccess pulumi.BoolPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// Flag that specifies that a notebook can be accessed with third party
+	// identity provider.
+	EnableThirdPartyIdentity pulumi.BoolPtrInput
 	// The definition of how to configure a VM instance outside of Resources and Identity.
 	// Structure is documented below.
 	GceSetup InstanceGceSetupPtrInput
@@ -531,6 +547,9 @@ type instanceArgs struct {
 	DesiredState *string `pulumi:"desiredState"`
 	// Optional. If true, the workbench instance will not register with the proxy.
 	DisableProxyAccess *bool `pulumi:"disableProxyAccess"`
+	// Flag that specifies that a notebook can be accessed with third party
+	// identity provider.
+	EnableThirdPartyIdentity *bool `pulumi:"enableThirdPartyIdentity"`
 	// The definition of how to configure a VM instance outside of Resources and Identity.
 	// Structure is documented below.
 	GceSetup *InstanceGceSetup `pulumi:"gceSetup"`
@@ -565,6 +584,9 @@ type InstanceArgs struct {
 	DesiredState pulumi.StringPtrInput
 	// Optional. If true, the workbench instance will not register with the proxy.
 	DisableProxyAccess pulumi.BoolPtrInput
+	// Flag that specifies that a notebook can be accessed with third party
+	// identity provider.
+	EnableThirdPartyIdentity pulumi.BoolPtrInput
 	// The definition of how to configure a VM instance outside of Resources and Identity.
 	// Structure is documented below.
 	GceSetup InstanceGceSetupPtrInput
@@ -704,6 +726,12 @@ func (o InstanceOutput) DisableProxyAccess() pulumi.BoolPtrOutput {
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// Flag that specifies that a notebook can be accessed with third party
+// identity provider.
+func (o InstanceOutput) EnableThirdPartyIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.EnableThirdPartyIdentity }).(pulumi.BoolPtrOutput)
 }
 
 // The definition of how to configure a VM instance outside of Resources and Identity.

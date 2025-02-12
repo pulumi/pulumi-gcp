@@ -101,14 +101,14 @@ public final class RegionResizeRequestState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The reference of the compute region scoping this request.
+     * The reference of the compute region scoping this request. If it is not provided, the provider region is used.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The reference of the compute region scoping this request.
+     * @return The reference of the compute region scoping this request. If it is not provided, the provider region is used.
      * 
      */
     public Optional<Output<String>> region() {
@@ -324,7 +324,7 @@ public final class RegionResizeRequestState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param region The reference of the compute region scoping this request.
+         * @param region The reference of the compute region scoping this request. If it is not provided, the provider region is used.
          * 
          * @return builder
          * 
@@ -335,7 +335,7 @@ public final class RegionResizeRequestState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param region The reference of the compute region scoping this request.
+         * @param region The reference of the compute region scoping this request. If it is not provided, the provider region is used.
          * 
          * @return builder
          * 

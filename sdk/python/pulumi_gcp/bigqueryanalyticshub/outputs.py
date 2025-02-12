@@ -28,6 +28,10 @@ __all__ = [
     'ListingIamMemberCondition',
     'ListingPublisher',
     'ListingRestrictedExportConfig',
+    'ListingSubscriptionDestinationDataset',
+    'ListingSubscriptionDestinationDatasetDatasetReference',
+    'ListingSubscriptionLinkedDatasetMap',
+    'ListingSubscriptionLinkedResource',
 ]
 
 @pulumi.output_type
@@ -428,5 +432,264 @@ class ListingRestrictedExportConfig(dict):
         If true, restrict export of query result derived from restricted linked dataset table.
         """
         return pulumi.get(self, "restrict_query_result")
+
+
+@pulumi.output_type
+class ListingSubscriptionDestinationDataset(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetReference":
+            suggest = "dataset_reference"
+        elif key == "friendlyName":
+            suggest = "friendly_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ListingSubscriptionDestinationDataset. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ListingSubscriptionDestinationDataset.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ListingSubscriptionDestinationDataset.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset_reference: 'outputs.ListingSubscriptionDestinationDatasetDatasetReference',
+                 location: str,
+                 description: Optional[str] = None,
+                 friendly_name: Optional[str] = None,
+                 labels: Optional[Mapping[str, str]] = None):
+        """
+        :param 'ListingSubscriptionDestinationDatasetDatasetReferenceArgs' dataset_reference: A reference that identifies the destination dataset.
+               Structure is documented below.
+        :param str location: The geographic location where the dataset should reside.
+               See https://cloud.google.com/bigquery/docs/locations for supported locations.
+        :param str description: A user-friendly description of the dataset.
+        :param str friendly_name: A descriptive name for the dataset.
+        :param Mapping[str, str] labels: The labels associated with this dataset. You can use these to
+               organize and group your datasets.
+        """
+        pulumi.set(__self__, "dataset_reference", dataset_reference)
+        pulumi.set(__self__, "location", location)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if friendly_name is not None:
+            pulumi.set(__self__, "friendly_name", friendly_name)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+
+    @property
+    @pulumi.getter(name="datasetReference")
+    def dataset_reference(self) -> 'outputs.ListingSubscriptionDestinationDatasetDatasetReference':
+        """
+        A reference that identifies the destination dataset.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dataset_reference")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        The geographic location where the dataset should reside.
+        See https://cloud.google.com/bigquery/docs/locations for supported locations.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A user-friendly description of the dataset.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="friendlyName")
+    def friendly_name(self) -> Optional[str]:
+        """
+        A descriptive name for the dataset.
+        """
+        return pulumi.get(self, "friendly_name")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, str]]:
+        """
+        The labels associated with this dataset. You can use these to
+        organize and group your datasets.
+        """
+        return pulumi.get(self, "labels")
+
+
+@pulumi.output_type
+class ListingSubscriptionDestinationDatasetDatasetReference(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetId":
+            suggest = "dataset_id"
+        elif key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ListingSubscriptionDestinationDatasetDatasetReference. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ListingSubscriptionDestinationDatasetDatasetReference.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ListingSubscriptionDestinationDatasetDatasetReference.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset_id: str,
+                 project_id: str):
+        """
+        :param str dataset_id: A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+        :param str project_id: The ID of the project containing this dataset.
+               
+               - - -
+        """
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> str:
+        """
+        A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        The ID of the project containing this dataset.
+
+        - - -
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class ListingSubscriptionLinkedDatasetMap(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceName":
+            suggest = "resource_name"
+        elif key == "linkedDataset":
+            suggest = "linked_dataset"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ListingSubscriptionLinkedDatasetMap. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ListingSubscriptionLinkedDatasetMap.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ListingSubscriptionLinkedDatasetMap.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_name: str,
+                 linked_dataset: Optional[str] = None,
+                 listing: Optional[str] = None):
+        """
+        :param str resource_name: (Required) The identifier for this object. Format specified above.
+        :param str linked_dataset: (Output)
+               Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+        :param str listing: (Output)
+               Output only. Listing for which linked resource is created.
+        """
+        pulumi.set(__self__, "resource_name", resource_name)
+        if linked_dataset is not None:
+            pulumi.set(__self__, "linked_dataset", linked_dataset)
+        if listing is not None:
+            pulumi.set(__self__, "listing", listing)
+
+    @property
+    @pulumi.getter(name="resourceName")
+    def resource_name(self) -> str:
+        """
+        (Required) The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "resource_name")
+
+    @property
+    @pulumi.getter(name="linkedDataset")
+    def linked_dataset(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+        """
+        return pulumi.get(self, "linked_dataset")
+
+    @property
+    @pulumi.getter
+    def listing(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. Listing for which linked resource is created.
+        """
+        return pulumi.get(self, "listing")
+
+
+@pulumi.output_type
+class ListingSubscriptionLinkedResource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedDataset":
+            suggest = "linked_dataset"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ListingSubscriptionLinkedResource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ListingSubscriptionLinkedResource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ListingSubscriptionLinkedResource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 linked_dataset: Optional[str] = None,
+                 listing: Optional[str] = None):
+        """
+        :param str linked_dataset: (Output)
+               Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+        :param str listing: (Output)
+               Output only. Listing for which linked resource is created.
+        """
+        if linked_dataset is not None:
+            pulumi.set(__self__, "linked_dataset", linked_dataset)
+        if listing is not None:
+            pulumi.set(__self__, "listing", listing)
+
+    @property
+    @pulumi.getter(name="linkedDataset")
+    def linked_dataset(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+        """
+        return pulumi.get(self, "linked_dataset")
+
+    @property
+    @pulumi.getter
+    def listing(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. Listing for which linked resource is created.
+        """
+        return pulumi.get(self, "listing")
 
 

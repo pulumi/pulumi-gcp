@@ -23,6 +23,12 @@ import javax.annotation.Nullable;
 /**
  * A Workbench instance.
  * 
+ * To get more information about Instance, see:
+ * 
+ * * [API documentation](https://cloud.google.com/vertex-ai/docs/workbench/reference/rest/v2/projects.locations.instances)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/vertex-ai/docs/workbench/instances/introduction)
+ * 
  * ## Example Usage
  * 
  * ### Workbench Instance Basic
@@ -309,6 +315,7 @@ import javax.annotation.Nullable;
  *             .instanceOwners("example}{@literal @}{@code example.com")
  *             .labels(Map.of("k", "val"))
  *             .desiredState("ACTIVE")
+ *             .enableThirdPartyIdentity("true")
  *             .build());
  * 
  *     }}{@code
@@ -415,6 +422,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    /**
+     * Flag that specifies that a notebook can be accessed with third party
+     * identity provider.
+     * 
+     */
+    @Export(name="enableThirdPartyIdentity", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enableThirdPartyIdentity;
+
+    /**
+     * @return Flag that specifies that a notebook can be accessed with third party
+     * identity provider.
+     * 
+     */
+    public Output<Optional<Boolean>> enableThirdPartyIdentity() {
+        return Codegen.optional(this.enableThirdPartyIdentity);
     }
     /**
      * The definition of how to configure a VM instance outside of Resources and Identity.

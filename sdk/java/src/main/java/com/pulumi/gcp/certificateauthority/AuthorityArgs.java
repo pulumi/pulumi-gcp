@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
 import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
 import com.pulumi.gcp.certificateauthority.inputs.AuthoritySubordinateConfigArgs;
+import com.pulumi.gcp.certificateauthority.inputs.AuthorityUserDefinedAccessUrlsArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -281,6 +282,23 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
+     * users.
+     * 
+     */
+    @Import(name="userDefinedAccessUrls")
+    private @Nullable Output<AuthorityUserDefinedAccessUrlsArgs> userDefinedAccessUrls;
+
+    /**
+     * @return Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
+     * users.
+     * 
+     */
+    public Optional<Output<AuthorityUserDefinedAccessUrlsArgs>> userDefinedAccessUrls() {
+        return Optional.ofNullable(this.userDefinedAccessUrls);
+    }
+
     private AuthorityArgs() {}
 
     private AuthorityArgs(AuthorityArgs $) {
@@ -300,6 +318,7 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         this.skipGracePeriod = $.skipGracePeriod;
         this.subordinateConfig = $.subordinateConfig;
         this.type = $.type;
+        this.userDefinedAccessUrls = $.userDefinedAccessUrls;
     }
 
     public static Builder builder() {
@@ -666,6 +685,29 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder type(String type) {
             return type(Output.of(type));
+        }
+
+        /**
+         * @param userDefinedAccessUrls Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
+         * users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userDefinedAccessUrls(@Nullable Output<AuthorityUserDefinedAccessUrlsArgs> userDefinedAccessUrls) {
+            $.userDefinedAccessUrls = userDefinedAccessUrls;
+            return this;
+        }
+
+        /**
+         * @param userDefinedAccessUrls Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
+         * users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userDefinedAccessUrls(AuthorityUserDefinedAccessUrlsArgs userDefinedAccessUrls) {
+            return userDefinedAccessUrls(Output.of(userDefinedAccessUrls));
         }
 
         public AuthorityArgs build() {

@@ -133,6 +133,7 @@ from .network_endpoint_group import *
 from .network_endpoint_list import *
 from .network_firewall_policy import *
 from .network_firewall_policy_association import *
+from .network_firewall_policy_packet_mirroring_rule import *
 from .network_firewall_policy_rule import *
 from .network_firewall_policy_with_rules import *
 from .network_peering import *

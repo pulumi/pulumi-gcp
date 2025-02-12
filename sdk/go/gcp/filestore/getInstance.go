@@ -68,27 +68,29 @@ type LookupInstanceArgs struct {
 
 // A collection of values returned by getInstance.
 type LookupInstanceResult struct {
-	CreateTime                string                 `pulumi:"createTime"`
-	DeletionProtectionEnabled bool                   `pulumi:"deletionProtectionEnabled"`
-	DeletionProtectionReason  string                 `pulumi:"deletionProtectionReason"`
-	Description               string                 `pulumi:"description"`
-	EffectiveLabels           map[string]string      `pulumi:"effectiveLabels"`
-	Etag                      string                 `pulumi:"etag"`
-	FileShares                []GetInstanceFileShare `pulumi:"fileShares"`
+	CreateTime                string                            `pulumi:"createTime"`
+	DeletionProtectionEnabled bool                              `pulumi:"deletionProtectionEnabled"`
+	DeletionProtectionReason  string                            `pulumi:"deletionProtectionReason"`
+	Description               string                            `pulumi:"description"`
+	EffectiveLabels           map[string]string                 `pulumi:"effectiveLabels"`
+	EffectiveReplications     []GetInstanceEffectiveReplication `pulumi:"effectiveReplications"`
+	Etag                      string                            `pulumi:"etag"`
+	FileShares                []GetInstanceFileShare            `pulumi:"fileShares"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                 string                         `pulumi:"id"`
-	KmsKeyName         string                         `pulumi:"kmsKeyName"`
-	Labels             map[string]string              `pulumi:"labels"`
-	Location           *string                        `pulumi:"location"`
-	Name               string                         `pulumi:"name"`
-	Networks           []GetInstanceNetwork           `pulumi:"networks"`
-	PerformanceConfigs []GetInstancePerformanceConfig `pulumi:"performanceConfigs"`
-	Project            *string                        `pulumi:"project"`
-	Protocol           string                         `pulumi:"protocol"`
-	PulumiLabels       map[string]string              `pulumi:"pulumiLabels"`
-	Tags               map[string]string              `pulumi:"tags"`
-	Tier               string                         `pulumi:"tier"`
-	Zone               string                         `pulumi:"zone"`
+	Id                  string                          `pulumi:"id"`
+	InitialReplications []GetInstanceInitialReplication `pulumi:"initialReplications"`
+	KmsKeyName          string                          `pulumi:"kmsKeyName"`
+	Labels              map[string]string               `pulumi:"labels"`
+	Location            *string                         `pulumi:"location"`
+	Name                string                          `pulumi:"name"`
+	Networks            []GetInstanceNetwork            `pulumi:"networks"`
+	PerformanceConfigs  []GetInstancePerformanceConfig  `pulumi:"performanceConfigs"`
+	Project             *string                         `pulumi:"project"`
+	Protocol            string                          `pulumi:"protocol"`
+	PulumiLabels        map[string]string               `pulumi:"pulumiLabels"`
+	Tags                map[string]string               `pulumi:"tags"`
+	Tier                string                          `pulumi:"tier"`
+	Zone                string                          `pulumi:"zone"`
 }
 
 func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceResultOutput {
@@ -154,6 +156,10 @@ func (o LookupInstanceResultOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
+func (o LookupInstanceResultOutput) EffectiveReplications() GetInstanceEffectiveReplicationArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceEffectiveReplication { return v.EffectiveReplications }).(GetInstanceEffectiveReplicationArrayOutput)
+}
+
 func (o LookupInstanceResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Etag }).(pulumi.StringOutput)
 }
@@ -165,6 +171,10 @@ func (o LookupInstanceResultOutput) FileShares() GetInstanceFileShareArrayOutput
 // The provider-assigned unique ID for this managed resource.
 func (o LookupInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) InitialReplications() GetInstanceInitialReplicationArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceInitialReplication { return v.InitialReplications }).(GetInstanceInitialReplicationArrayOutput)
 }
 
 func (o LookupInstanceResultOutput) KmsKeyName() pulumi.StringOutput {

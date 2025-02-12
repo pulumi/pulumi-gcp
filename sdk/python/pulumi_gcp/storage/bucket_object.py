@@ -734,6 +734,10 @@ class BucketObject(pulumi.CustomResource):
         and
         [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
 
+        A datasource can be used to retrieve the data of the stored object:
+
+        * `storage_get_bucket_object_content`: Retrieves the content within a specified bucket object in Google Cloud Storage Service (GCS)
+
         ## Example Usage
 
         Example creating a public object in an existing `image-store` bucket.
@@ -805,6 +809,10 @@ class BucketObject(pulumi.CustomResource):
         [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
         and
         [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
+
+        A datasource can be used to retrieve the data of the stored object:
+
+        * `storage_get_bucket_object_content`: Retrieves the content within a specified bucket object in Google Cloud Storage Service (GCS)
 
         ## Example Usage
 

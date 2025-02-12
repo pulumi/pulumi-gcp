@@ -645,6 +645,11 @@ export type NetworkFirewallPolicyAssociation = import("./networkFirewallPolicyAs
 export const NetworkFirewallPolicyAssociation: typeof import("./networkFirewallPolicyAssociation").NetworkFirewallPolicyAssociation = null as any;
 utilities.lazyLoad(exports, ["NetworkFirewallPolicyAssociation"], () => require("./networkFirewallPolicyAssociation"));
 
+export { NetworkFirewallPolicyPacketMirroringRuleArgs, NetworkFirewallPolicyPacketMirroringRuleState } from "./networkFirewallPolicyPacketMirroringRule";
+export type NetworkFirewallPolicyPacketMirroringRule = import("./networkFirewallPolicyPacketMirroringRule").NetworkFirewallPolicyPacketMirroringRule;
+export const NetworkFirewallPolicyPacketMirroringRule: typeof import("./networkFirewallPolicyPacketMirroringRule").NetworkFirewallPolicyPacketMirroringRule = null as any;
+utilities.lazyLoad(exports, ["NetworkFirewallPolicyPacketMirroringRule"], () => require("./networkFirewallPolicyPacketMirroringRule"));
+
 export { NetworkFirewallPolicyRuleArgs, NetworkFirewallPolicyRuleState } from "./networkFirewallPolicyRule";
 export type NetworkFirewallPolicyRule = import("./networkFirewallPolicyRule").NetworkFirewallPolicyRule;
 export const NetworkFirewallPolicyRule: typeof import("./networkFirewallPolicyRule").NetworkFirewallPolicyRule = null as any;
@@ -1210,6 +1215,8 @@ const _module = {
                 return new NetworkFirewallPolicy(name, <any>undefined, { urn })
             case "gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation":
                 return new NetworkFirewallPolicyAssociation(name, <any>undefined, { urn })
+            case "gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule":
+                return new NetworkFirewallPolicyPacketMirroringRule(name, <any>undefined, { urn })
             case "gcp:compute/networkFirewallPolicyRule:NetworkFirewallPolicyRule":
                 return new NetworkFirewallPolicyRule(name, <any>undefined, { urn })
             case "gcp:compute/networkFirewallPolicyWithRules:NetworkFirewallPolicyWithRules":
@@ -1451,6 +1458,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/networkEndpointGroup", _mo
 pulumi.runtime.registerResourceModule("gcp", "compute/networkEndpointList", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkFirewallPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkFirewallPolicyAssociation", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/networkFirewallPolicyPacketMirroringRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkFirewallPolicyRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkFirewallPolicyWithRules", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkPeering", _module)

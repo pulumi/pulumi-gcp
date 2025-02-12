@@ -60,6 +60,58 @@ import (
 //	}
 //
 // ```
+// ### Public Delegated Prefixes Ipv6
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			advertised, err := compute.NewPublicAdvertisedPrefix(ctx, "advertised", &compute.PublicAdvertisedPrefixArgs{
+//				Name:              pulumi.String("ipv6-pap"),
+//				Description:       pulumi.String("description"),
+//				DnsVerificationIp: pulumi.String("2001:db8::"),
+//				IpCidrRange:       pulumi.String("2001:db8::/32"),
+//				PdpScope:          pulumi.String("REGIONAL"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			prefix, err := compute.NewPublicDelegatedPrefix(ctx, "prefix", &compute.PublicDelegatedPrefixArgs{
+//				Name:         pulumi.String("ipv6-root-pdp"),
+//				Description:  pulumi.String("test-delegation-mode-pdp"),
+//				Region:       pulumi.String("us-west1"),
+//				IpCidrRange:  pulumi.String("2001:db8::/40"),
+//				ParentPrefix: advertised.ID(),
+//				Mode:         pulumi.String("DELEGATION"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewPublicDelegatedPrefix(ctx, "subprefix", &compute.PublicDelegatedPrefixArgs{
+//				Name:                    pulumi.String("ipv6-sub-pdp"),
+//				Description:             pulumi.String("test-forwarding-rule-mode-pdp"),
+//				Region:                  pulumi.String("us-west1"),
+//				IpCidrRange:             pulumi.String("2001:db8::/48"),
+//				ParentPrefix:            prefix.ID(),
+//				AllocatablePrefixLength: pulumi.Int(64),
+//				Mode:                    pulumi.String("EXTERNAL_IPV6_FORWARDING_RULE_CREATION"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -93,14 +145,20 @@ import (
 type PublicDelegatedPrefix struct {
 	pulumi.CustomResourceState
 
+	// The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+	AllocatablePrefixLength pulumi.IntPtrOutput `pulumi:"allocatablePrefixLength"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+	// The IP address range, in CIDR format, represented by this public delegated prefix.
 	//
 	// ***
 	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
 	// If true, the prefix will be live migrated.
 	IsLiveMigration pulumi.BoolPtrOutput `pulumi:"isLiveMigration"`
+	// Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
+	// EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
+	// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+	Mode pulumi.StringPtrOutput `pulumi:"mode"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?`
@@ -158,14 +216,20 @@ func GetPublicDelegatedPrefix(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PublicDelegatedPrefix resources.
 type publicDelegatedPrefixState struct {
+	// The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+	AllocatablePrefixLength *int `pulumi:"allocatablePrefixLength"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+	// The IP address range, in CIDR format, represented by this public delegated prefix.
 	//
 	// ***
 	IpCidrRange *string `pulumi:"ipCidrRange"`
 	// If true, the prefix will be live migrated.
 	IsLiveMigration *bool `pulumi:"isLiveMigration"`
+	// Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
+	// EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
+	// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+	Mode *string `pulumi:"mode"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?`
@@ -185,14 +249,20 @@ type publicDelegatedPrefixState struct {
 }
 
 type PublicDelegatedPrefixState struct {
+	// The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+	AllocatablePrefixLength pulumi.IntPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+	// The IP address range, in CIDR format, represented by this public delegated prefix.
 	//
 	// ***
 	IpCidrRange pulumi.StringPtrInput
 	// If true, the prefix will be live migrated.
 	IsLiveMigration pulumi.BoolPtrInput
+	// Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
+	// EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
+	// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+	Mode pulumi.StringPtrInput
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?`
@@ -216,14 +286,20 @@ func (PublicDelegatedPrefixState) ElementType() reflect.Type {
 }
 
 type publicDelegatedPrefixArgs struct {
+	// The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+	AllocatablePrefixLength *int `pulumi:"allocatablePrefixLength"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+	// The IP address range, in CIDR format, represented by this public delegated prefix.
 	//
 	// ***
 	IpCidrRange string `pulumi:"ipCidrRange"`
 	// If true, the prefix will be live migrated.
 	IsLiveMigration *bool `pulumi:"isLiveMigration"`
+	// Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
+	// EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
+	// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+	Mode *string `pulumi:"mode"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?`
@@ -242,14 +318,20 @@ type publicDelegatedPrefixArgs struct {
 
 // The set of arguments for constructing a PublicDelegatedPrefix resource.
 type PublicDelegatedPrefixArgs struct {
+	// The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+	AllocatablePrefixLength pulumi.IntPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+	// The IP address range, in CIDR format, represented by this public delegated prefix.
 	//
 	// ***
 	IpCidrRange pulumi.StringInput
 	// If true, the prefix will be live migrated.
 	IsLiveMigration pulumi.BoolPtrInput
+	// Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
+	// EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
+	// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+	Mode pulumi.StringPtrInput
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?`
@@ -353,12 +435,17 @@ func (o PublicDelegatedPrefixOutput) ToPublicDelegatedPrefixOutputWithContext(ct
 	return o
 }
 
+// The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+func (o PublicDelegatedPrefixOutput) AllocatablePrefixLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.IntPtrOutput { return v.AllocatablePrefixLength }).(pulumi.IntPtrOutput)
+}
+
 // An optional description of this resource.
 func (o PublicDelegatedPrefixOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+// The IP address range, in CIDR format, represented by this public delegated prefix.
 //
 // ***
 func (o PublicDelegatedPrefixOutput) IpCidrRange() pulumi.StringOutput {
@@ -368,6 +455,13 @@ func (o PublicDelegatedPrefixOutput) IpCidrRange() pulumi.StringOutput {
 // If true, the prefix will be live migrated.
 func (o PublicDelegatedPrefixOutput) IsLiveMigration() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.BoolPtrOutput { return v.IsLiveMigration }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
+// EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
+// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+func (o PublicDelegatedPrefixOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.StringPtrOutput { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
 // Name of the resource. The name must be 1-63 characters long, and

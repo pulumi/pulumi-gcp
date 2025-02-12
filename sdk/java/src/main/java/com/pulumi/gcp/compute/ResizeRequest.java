@@ -307,14 +307,14 @@ public class ResizeRequest extends com.pulumi.resources.CustomResource {
         return this.statuses;
     }
     /**
-     * The reference of the compute zone scoping this request.
+     * The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
      * 
      */
     @Export(name="zone", refs={String.class}, tree="[0]")
     private Output<String> zone;
 
     /**
-     * @return The reference of the compute zone scoping this request.
+     * @return The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
      * 
      */
     public Output<String> zone() {

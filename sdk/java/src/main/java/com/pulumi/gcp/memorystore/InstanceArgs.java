@@ -170,22 +170,22 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. Standalone or cluster.
+     * Optional. cluster or cluster-disabled.
      * Possible values:
      * CLUSTER
-     * STANDALONE
-     * Possible values are: `CLUSTER`, `STANDALONE`.
+     * CLUSTER_DISABLED
+     * Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return Optional. Standalone or cluster.
+     * @return Optional. cluster or cluster-disabled.
      * Possible values:
      * CLUSTER
-     * STANDALONE
-     * Possible values are: `CLUSTER`, `STANDALONE`.
+     * CLUSTER_DISABLED
+     * Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -563,11 +563,11 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mode Optional. Standalone or cluster.
+         * @param mode Optional. cluster or cluster-disabled.
          * Possible values:
          * CLUSTER
-         * STANDALONE
-         * Possible values are: `CLUSTER`, `STANDALONE`.
+         * CLUSTER_DISABLED
+         * Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
          * 
          * @return builder
          * 
@@ -578,11 +578,11 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mode Optional. Standalone or cluster.
+         * @param mode Optional. cluster or cluster-disabled.
          * Possible values:
          * CLUSTER
-         * STANDALONE
-         * Possible values are: `CLUSTER`, `STANDALONE`.
+         * CLUSTER_DISABLED
+         * Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
          * 
          * @return builder
          * 

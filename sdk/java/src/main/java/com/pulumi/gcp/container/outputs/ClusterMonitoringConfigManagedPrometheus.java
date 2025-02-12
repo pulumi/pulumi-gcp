@@ -5,11 +5,19 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.container.outputs.ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterMonitoringConfigManagedPrometheus {
+    /**
+     * @return Configuration options for GKE Auto-Monitoring.
+     * 
+     */
+    private @Nullable ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig autoMonitoringConfig;
     /**
      * @return Whether or not the managed collection is enabled.
      * 
@@ -17,6 +25,13 @@ public final class ClusterMonitoringConfigManagedPrometheus {
     private Boolean enabled;
 
     private ClusterMonitoringConfigManagedPrometheus() {}
+    /**
+     * @return Configuration options for GKE Auto-Monitoring.
+     * 
+     */
+    public Optional<ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig> autoMonitoringConfig() {
+        return Optional.ofNullable(this.autoMonitoringConfig);
+    }
     /**
      * @return Whether or not the managed collection is enabled.
      * 
@@ -34,13 +49,21 @@ public final class ClusterMonitoringConfigManagedPrometheus {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig autoMonitoringConfig;
         private Boolean enabled;
         public Builder() {}
         public Builder(ClusterMonitoringConfigManagedPrometheus defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoMonitoringConfig = defaults.autoMonitoringConfig;
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
+        public Builder autoMonitoringConfig(@Nullable ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig autoMonitoringConfig) {
+
+            this.autoMonitoringConfig = autoMonitoringConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             if (enabled == null) {
@@ -51,6 +74,7 @@ public final class ClusterMonitoringConfigManagedPrometheus {
         }
         public ClusterMonitoringConfigManagedPrometheus build() {
             final var _resultValue = new ClusterMonitoringConfigManagedPrometheus();
+            _resultValue.autoMonitoringConfig = autoMonitoringConfig;
             _resultValue.enabled = enabled;
             return _resultValue;
         }

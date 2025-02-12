@@ -214,6 +214,9 @@ __all__ = [
     'MangedSslCertificateManaged',
     'NetworkAttachmentConnectionEndpoint',
     'NetworkEndpointListNetworkEndpoint',
+    'NetworkFirewallPolicyPacketMirroringRuleMatch',
+    'NetworkFirewallPolicyPacketMirroringRuleMatchLayer4Config',
+    'NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag',
     'NetworkFirewallPolicyRuleMatch',
     'NetworkFirewallPolicyRuleMatchLayer4Config',
     'NetworkFirewallPolicyRuleMatchSrcSecureTag',
@@ -16351,6 +16354,163 @@ class NetworkEndpointListNetworkEndpoint(dict):
         with the type of `GCE_VM_IP`
         """
         return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class NetworkFirewallPolicyPacketMirroringRuleMatch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "layer4Configs":
+            suggest = "layer4_configs"
+        elif key == "destIpRanges":
+            suggest = "dest_ip_ranges"
+        elif key == "srcIpRanges":
+            suggest = "src_ip_ranges"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkFirewallPolicyPacketMirroringRuleMatch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkFirewallPolicyPacketMirroringRuleMatch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkFirewallPolicyPacketMirroringRuleMatch.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 layer4_configs: Sequence['outputs.NetworkFirewallPolicyPacketMirroringRuleMatchLayer4Config'],
+                 dest_ip_ranges: Optional[Sequence[str]] = None,
+                 src_ip_ranges: Optional[Sequence[str]] = None):
+        """
+        :param Sequence['NetworkFirewallPolicyPacketMirroringRuleMatchLayer4ConfigArgs'] layer4_configs: Pairs of IP protocols and ports that the rule should match.
+               Structure is documented below.
+               
+               
+               <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
+        :param Sequence[str] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        :param Sequence[str] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        """
+        pulumi.set(__self__, "layer4_configs", layer4_configs)
+        if dest_ip_ranges is not None:
+            pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if src_ip_ranges is not None:
+            pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+
+    @property
+    @pulumi.getter(name="layer4Configs")
+    def layer4_configs(self) -> Sequence['outputs.NetworkFirewallPolicyPacketMirroringRuleMatchLayer4Config']:
+        """
+        Pairs of IP protocols and ports that the rule should match.
+        Structure is documented below.
+
+
+        <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
+        """
+        return pulumi.get(self, "layer4_configs")
+
+    @property
+    @pulumi.getter(name="destIpRanges")
+    def dest_ip_ranges(self) -> Optional[Sequence[str]]:
+        """
+        CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        """
+        return pulumi.get(self, "dest_ip_ranges")
+
+    @property
+    @pulumi.getter(name="srcIpRanges")
+    def src_ip_ranges(self) -> Optional[Sequence[str]]:
+        """
+        CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        """
+        return pulumi.get(self, "src_ip_ranges")
+
+
+@pulumi.output_type
+class NetworkFirewallPolicyPacketMirroringRuleMatchLayer4Config(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipProtocol":
+            suggest = "ip_protocol"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkFirewallPolicyPacketMirroringRuleMatchLayer4Config. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkFirewallPolicyPacketMirroringRuleMatchLayer4Config.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkFirewallPolicyPacketMirroringRuleMatchLayer4Config.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip_protocol: str,
+                 ports: Optional[Sequence[str]] = None):
+        """
+        :param str ip_protocol: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule.
+               This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+        :param Sequence[str] ports: An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+               Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+        """
+        pulumi.set(__self__, "ip_protocol", ip_protocol)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+
+    @property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> str:
+        """
+        The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule.
+        This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[Sequence[str]]:
+        """
+        An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+        Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+        """
+        return pulumi.get(self, "ports")
+
+
+@pulumi.output_type
+class NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 state: Optional[str] = None):
+        """
+        :param str name: Name of the secure tag, created with TagManager's TagValue API.
+               diff_suppress_func: 'tpgresource.CompareSelfLinkOrResourceName'
+        :param str state: (Output)
+               State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        diff_suppress_func: 'tpgresource.CompareSelfLinkOrResourceName'
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        (Output)
+        State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+        """
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type
@@ -50635,6 +50795,7 @@ class GetForwardingRulesRuleResult(dict):
                  effective_labels: Mapping[str, str],
                  forwarding_rule_id: int,
                  ip_address: str,
+                 ip_collection: str,
                  ip_protocol: str,
                  ip_version: str,
                  is_mirroring_collector: bool,
@@ -50733,6 +50894,15 @@ class GetForwardingRulesRuleResult(dict):
                
                When reading an 'IPAddress', the API always returns the IP
                address number.
+        :param str ip_collection: Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+               in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+               Use one of the following formats to specify a sub-PDP when creating an
+               IPv6 NetLB forwarding rule using BYOIP:
+               Full resource URL, as in:
+                 * 'https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}'
+               Partial URL, as in:
+                 * 'projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}'
+                 * 'regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}'
         :param str ip_protocol: The IP protocol to which this rule applies.
                
                For protocol forwarding, valid
@@ -50908,6 +51078,7 @@ class GetForwardingRulesRuleResult(dict):
         pulumi.set(__self__, "effective_labels", effective_labels)
         pulumi.set(__self__, "forwarding_rule_id", forwarding_rule_id)
         pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "ip_collection", ip_collection)
         pulumi.set(__self__, "ip_protocol", ip_protocol)
         pulumi.set(__self__, "ip_version", ip_version)
         pulumi.set(__self__, "is_mirroring_collector", is_mirroring_collector)
@@ -51073,6 +51244,22 @@ class GetForwardingRulesRuleResult(dict):
         address number.
         """
         return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter(name="ipCollection")
+    def ip_collection(self) -> str:
+        """
+        Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+        in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+        Use one of the following formats to specify a sub-PDP when creating an
+        IPv6 NetLB forwarding rule using BYOIP:
+        Full resource URL, as in:
+          * 'https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}'
+        Partial URL, as in:
+          * 'projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}'
+          * 'regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}'
+        """
+        return pulumi.get(self, "ip_collection")
 
     @property
     @pulumi.getter(name="ipProtocol")

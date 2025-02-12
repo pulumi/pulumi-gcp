@@ -235,6 +235,53 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Privateca Certificate Authority Basic With Custom Cdp Aia Urls
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.certificateauthority.Authority("default", {
+ *     pool: "ca-pool",
+ *     certificateAuthorityId: "my-certificate-authority",
+ *     location: "us-central1",
+ *     deletionProtection: true,
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 organization: "ACME",
+ *                 commonName: "my-certificate-authority",
+ *             },
+ *         },
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: true,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     certSign: true,
+ *                     crlSign: true,
+ *                 },
+ *                 extendedKeyUsage: {},
+ *             },
+ *         },
+ *     },
+ *     lifetime: `${10 * 365 * 24 * 3600}s`,
+ *     keySpec: {
+ *         algorithm: "RSA_PKCS1_4096_SHA256",
+ *     },
+ *     userDefinedAccessUrls: {
+ *         aiaIssuingCertificateUrls: [
+ *             "http://example.com/ca.crt",
+ *             "http://example.com/anotherca.crt",
+ *         ],
+ *         crlAccessUrls: [
+ *             "http://example.com/crl1.crt",
+ *             "http://example.com/crl2.crt",
+ *         ],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -406,6 +453,11 @@ export class Authority extends pulumi.CustomResource {
      * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
+     * users.
+     */
+    public readonly userDefinedAccessUrls!: pulumi.Output<outputs.certificateauthority.AuthorityUserDefinedAccessUrls | undefined>;
 
     /**
      * Create a Authority resource with the given unique name, arguments, and options.
@@ -444,6 +496,7 @@ export class Authority extends pulumi.CustomResource {
             resourceInputs["subordinateConfig"] = state ? state.subordinateConfig : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["userDefinedAccessUrls"] = state ? state.userDefinedAccessUrls : undefined;
         } else {
             const args = argsOrState as AuthorityArgs | undefined;
             if ((!args || args.certificateAuthorityId === undefined) && !opts.urn) {
@@ -477,6 +530,7 @@ export class Authority extends pulumi.CustomResource {
             resourceInputs["skipGracePeriod"] = args ? args.skipGracePeriod : undefined;
             resourceInputs["subordinateConfig"] = args ? args.subordinateConfig : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["userDefinedAccessUrls"] = args ? args.userDefinedAccessUrls : undefined;
             resourceInputs["accessUrls"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -615,6 +669,11 @@ export interface AuthorityState {
      * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     updateTime?: pulumi.Input<string>;
+    /**
+     * Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
+     * users.
+     */
+    userDefinedAccessUrls?: pulumi.Input<inputs.certificateauthority.AuthorityUserDefinedAccessUrls>;
 }
 
 /**
@@ -697,4 +756,9 @@ export interface AuthorityArgs {
      * before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
      */
     type?: pulumi.Input<string>;
+    /**
+     * Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
+     * users.
+     */
+    userDefinedAccessUrls?: pulumi.Input<inputs.certificateauthority.AuthorityUserDefinedAccessUrls>;
 }

@@ -49,6 +49,48 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Public Delegated Prefixes Ipv6
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var advertised = new Gcp.Compute.PublicAdvertisedPrefix("advertised", new()
+    ///     {
+    ///         Name = "ipv6-pap",
+    ///         Description = "description",
+    ///         DnsVerificationIp = "2001:db8::",
+    ///         IpCidrRange = "2001:db8::/32",
+    ///         PdpScope = "REGIONAL",
+    ///     });
+    /// 
+    ///     var prefix = new Gcp.Compute.PublicDelegatedPrefix("prefix", new()
+    ///     {
+    ///         Name = "ipv6-root-pdp",
+    ///         Description = "test-delegation-mode-pdp",
+    ///         Region = "us-west1",
+    ///         IpCidrRange = "2001:db8::/40",
+    ///         ParentPrefix = advertised.Id,
+    ///         Mode = "DELEGATION",
+    ///     });
+    /// 
+    ///     var subprefix = new Gcp.Compute.PublicDelegatedPrefix("subprefix", new()
+    ///     {
+    ///         Name = "ipv6-sub-pdp",
+    ///         Description = "test-forwarding-rule-mode-pdp",
+    ///         Region = "us-west1",
+    ///         IpCidrRange = "2001:db8::/48",
+    ///         ParentPrefix = prefix.Id,
+    ///         AllocatablePrefixLength = 64,
+    ///         Mode = "EXTERNAL_IPV6_FORWARDING_RULE_CREATION",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -84,13 +126,19 @@ namespace Pulumi.Gcp.Compute
     public partial class PublicDelegatedPrefix : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+        /// </summary>
+        [Output("allocatablePrefixLength")]
+        public Output<int?> AllocatablePrefixLength { get; private set; } = null!;
+
+        /// <summary>
         /// An optional description of this resource.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+        /// The IP address range, in CIDR format, represented by this public delegated prefix.
         /// 
         /// 
         /// - - -
@@ -103,6 +151,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("isLiveMigration")]
         public Output<bool?> IsLiveMigration { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
+        /// EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
+        /// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+        /// </summary>
+        [Output("mode")]
+        public Output<string?> Mode { get; private set; } = null!;
 
         /// <summary>
         /// Name of the resource. The name must be 1-63 characters long, and
@@ -187,13 +243,19 @@ namespace Pulumi.Gcp.Compute
     public sealed class PublicDelegatedPrefixArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+        /// </summary>
+        [Input("allocatablePrefixLength")]
+        public Input<int>? AllocatablePrefixLength { get; set; }
+
+        /// <summary>
         /// An optional description of this resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+        /// The IP address range, in CIDR format, represented by this public delegated prefix.
         /// 
         /// 
         /// - - -
@@ -206,6 +268,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("isLiveMigration")]
         public Input<bool>? IsLiveMigration { get; set; }
+
+        /// <summary>
+        /// Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
+        /// EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
+        /// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+        /// </summary>
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
 
         /// <summary>
         /// Name of the resource. The name must be 1-63 characters long, and
@@ -246,13 +316,19 @@ namespace Pulumi.Gcp.Compute
     public sealed class PublicDelegatedPrefixState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+        /// </summary>
+        [Input("allocatablePrefixLength")]
+        public Input<int>? AllocatablePrefixLength { get; set; }
+
+        /// <summary>
         /// An optional description of this resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+        /// The IP address range, in CIDR format, represented by this public delegated prefix.
         /// 
         /// 
         /// - - -
@@ -265,6 +341,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("isLiveMigration")]
         public Input<bool>? IsLiveMigration { get; set; }
+
+        /// <summary>
+        /// Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
+        /// EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
+        /// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+        /// </summary>
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
 
         /// <summary>
         /// Name of the resource. The name must be 1-63 characters long, and

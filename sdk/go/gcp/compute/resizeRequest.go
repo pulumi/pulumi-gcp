@@ -175,7 +175,7 @@ type ResizeRequest struct {
 	// Status of the request.
 	// Structure is documented below.
 	Statuses ResizeRequestStatusArrayOutput `pulumi:"statuses"`
-	// The reference of the compute zone scoping this request.
+	// The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -191,9 +191,6 @@ func NewResizeRequest(ctx *pulumi.Context,
 	}
 	if args.ResizeBy == nil {
 		return nil, errors.New("invalid value for required argument 'ResizeBy'")
-	}
-	if args.Zone == nil {
-		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ResizeRequest
@@ -241,7 +238,7 @@ type resizeRequestState struct {
 	// Status of the request.
 	// Structure is documented below.
 	Statuses []ResizeRequestStatus `pulumi:"statuses"`
-	// The reference of the compute zone scoping this request.
+	// The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
 	Zone *string `pulumi:"zone"`
 }
 
@@ -269,7 +266,7 @@ type ResizeRequestState struct {
 	// Status of the request.
 	// Structure is documented below.
 	Statuses ResizeRequestStatusArrayInput
-	// The reference of the compute zone scoping this request.
+	// The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
 	Zone pulumi.StringPtrInput
 }
 
@@ -294,8 +291,8 @@ type resizeRequestArgs struct {
 	RequestedRunDuration *ResizeRequestRequestedRunDuration `pulumi:"requestedRunDuration"`
 	// The number of instances to be created by this resize request. The group's target size will be increased by this number.
 	ResizeBy int `pulumi:"resizeBy"`
-	// The reference of the compute zone scoping this request.
-	Zone string `pulumi:"zone"`
+	// The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
+	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a ResizeRequest resource.
@@ -316,8 +313,8 @@ type ResizeRequestArgs struct {
 	RequestedRunDuration ResizeRequestRequestedRunDurationPtrInput
 	// The number of instances to be created by this resize request. The group's target size will be increased by this number.
 	ResizeBy pulumi.IntInput
-	// The reference of the compute zone scoping this request.
-	Zone pulumi.StringInput
+	// The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
+	Zone pulumi.StringPtrInput
 }
 
 func (ResizeRequestArgs) ElementType() reflect.Type {
@@ -457,7 +454,7 @@ func (o ResizeRequestOutput) Statuses() ResizeRequestStatusArrayOutput {
 	return o.ApplyT(func(v *ResizeRequest) ResizeRequestStatusArrayOutput { return v.Statuses }).(ResizeRequestStatusArrayOutput)
 }
 
-// The reference of the compute zone scoping this request.
+// The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
 func (o ResizeRequestOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResizeRequest) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

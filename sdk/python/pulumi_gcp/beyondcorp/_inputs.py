@@ -25,6 +25,12 @@ __all__ = [
     'AppConnectorPrincipalInfoServiceAccountArgsDict',
     'AppGatewayAllocatedConnectionArgs',
     'AppGatewayAllocatedConnectionArgsDict',
+    'ApplicationEndpointMatcherArgs',
+    'ApplicationEndpointMatcherArgsDict',
+    'ApplicationIamBindingConditionArgs',
+    'ApplicationIamBindingConditionArgsDict',
+    'ApplicationIamMemberConditionArgs',
+    'ApplicationIamMemberConditionArgsDict',
     'SecurityGatewayHubArgs',
     'SecurityGatewayHubArgsDict',
     'SecurityGatewayHubInternetGatewayArgs',
@@ -317,6 +323,189 @@ class AppGatewayAllocatedConnectionArgs:
     @psc_uri.setter
     def psc_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "psc_uri", value)
+
+
+if not MYPY:
+    class ApplicationEndpointMatcherArgsDict(TypedDict):
+        hostname: pulumi.Input[str]
+        """
+        Required. Hostname of the application.
+        """
+        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        Optional. Ports of the application.
+
+        - - -
+        """
+elif False:
+    ApplicationEndpointMatcherArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ApplicationEndpointMatcherArgs:
+    def __init__(__self__, *,
+                 hostname: pulumi.Input[str],
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
+        """
+        :param pulumi.Input[str] hostname: Required. Hostname of the application.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] ports: Optional. Ports of the application.
+               
+               - - -
+        """
+        pulumi.set(__self__, "hostname", hostname)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> pulumi.Input[str]:
+        """
+        Required. Hostname of the application.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: pulumi.Input[str]):
+        pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        Optional. Ports of the application.
+
+        - - -
+        """
+        return pulumi.get(self, "ports")
+
+    @ports.setter
+    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "ports", value)
+
+
+if not MYPY:
+    class ApplicationIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    ApplicationIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ApplicationIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class ApplicationIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    ApplicationIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ApplicationIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
 
 if not MYPY:

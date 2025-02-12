@@ -779,6 +779,460 @@ func (o AppGatewayAllocatedConnectionArrayOutput) Index(i pulumi.IntInput) AppGa
 	}).(AppGatewayAllocatedConnectionOutput)
 }
 
+type ApplicationEndpointMatcher struct {
+	// Required. Hostname of the application.
+	Hostname string `pulumi:"hostname"`
+	// Optional. Ports of the application.
+	//
+	// ***
+	Ports []int `pulumi:"ports"`
+}
+
+// ApplicationEndpointMatcherInput is an input type that accepts ApplicationEndpointMatcherArgs and ApplicationEndpointMatcherOutput values.
+// You can construct a concrete instance of `ApplicationEndpointMatcherInput` via:
+//
+//	ApplicationEndpointMatcherArgs{...}
+type ApplicationEndpointMatcherInput interface {
+	pulumi.Input
+
+	ToApplicationEndpointMatcherOutput() ApplicationEndpointMatcherOutput
+	ToApplicationEndpointMatcherOutputWithContext(context.Context) ApplicationEndpointMatcherOutput
+}
+
+type ApplicationEndpointMatcherArgs struct {
+	// Required. Hostname of the application.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Optional. Ports of the application.
+	//
+	// ***
+	Ports pulumi.IntArrayInput `pulumi:"ports"`
+}
+
+func (ApplicationEndpointMatcherArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationEndpointMatcher)(nil)).Elem()
+}
+
+func (i ApplicationEndpointMatcherArgs) ToApplicationEndpointMatcherOutput() ApplicationEndpointMatcherOutput {
+	return i.ToApplicationEndpointMatcherOutputWithContext(context.Background())
+}
+
+func (i ApplicationEndpointMatcherArgs) ToApplicationEndpointMatcherOutputWithContext(ctx context.Context) ApplicationEndpointMatcherOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationEndpointMatcherOutput)
+}
+
+// ApplicationEndpointMatcherArrayInput is an input type that accepts ApplicationEndpointMatcherArray and ApplicationEndpointMatcherArrayOutput values.
+// You can construct a concrete instance of `ApplicationEndpointMatcherArrayInput` via:
+//
+//	ApplicationEndpointMatcherArray{ ApplicationEndpointMatcherArgs{...} }
+type ApplicationEndpointMatcherArrayInput interface {
+	pulumi.Input
+
+	ToApplicationEndpointMatcherArrayOutput() ApplicationEndpointMatcherArrayOutput
+	ToApplicationEndpointMatcherArrayOutputWithContext(context.Context) ApplicationEndpointMatcherArrayOutput
+}
+
+type ApplicationEndpointMatcherArray []ApplicationEndpointMatcherInput
+
+func (ApplicationEndpointMatcherArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationEndpointMatcher)(nil)).Elem()
+}
+
+func (i ApplicationEndpointMatcherArray) ToApplicationEndpointMatcherArrayOutput() ApplicationEndpointMatcherArrayOutput {
+	return i.ToApplicationEndpointMatcherArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationEndpointMatcherArray) ToApplicationEndpointMatcherArrayOutputWithContext(ctx context.Context) ApplicationEndpointMatcherArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationEndpointMatcherArrayOutput)
+}
+
+type ApplicationEndpointMatcherOutput struct{ *pulumi.OutputState }
+
+func (ApplicationEndpointMatcherOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationEndpointMatcher)(nil)).Elem()
+}
+
+func (o ApplicationEndpointMatcherOutput) ToApplicationEndpointMatcherOutput() ApplicationEndpointMatcherOutput {
+	return o
+}
+
+func (o ApplicationEndpointMatcherOutput) ToApplicationEndpointMatcherOutputWithContext(ctx context.Context) ApplicationEndpointMatcherOutput {
+	return o
+}
+
+// Required. Hostname of the application.
+func (o ApplicationEndpointMatcherOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationEndpointMatcher) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Optional. Ports of the application.
+//
+// ***
+func (o ApplicationEndpointMatcherOutput) Ports() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v ApplicationEndpointMatcher) []int { return v.Ports }).(pulumi.IntArrayOutput)
+}
+
+type ApplicationEndpointMatcherArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationEndpointMatcherArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationEndpointMatcher)(nil)).Elem()
+}
+
+func (o ApplicationEndpointMatcherArrayOutput) ToApplicationEndpointMatcherArrayOutput() ApplicationEndpointMatcherArrayOutput {
+	return o
+}
+
+func (o ApplicationEndpointMatcherArrayOutput) ToApplicationEndpointMatcherArrayOutputWithContext(ctx context.Context) ApplicationEndpointMatcherArrayOutput {
+	return o
+}
+
+func (o ApplicationEndpointMatcherArrayOutput) Index(i pulumi.IntInput) ApplicationEndpointMatcherOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationEndpointMatcher {
+		return vs[0].([]ApplicationEndpointMatcher)[vs[1].(int)]
+	}).(ApplicationEndpointMatcherOutput)
+}
+
+type ApplicationIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// ApplicationIamBindingConditionInput is an input type that accepts ApplicationIamBindingConditionArgs and ApplicationIamBindingConditionOutput values.
+// You can construct a concrete instance of `ApplicationIamBindingConditionInput` via:
+//
+//	ApplicationIamBindingConditionArgs{...}
+type ApplicationIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToApplicationIamBindingConditionOutput() ApplicationIamBindingConditionOutput
+	ToApplicationIamBindingConditionOutputWithContext(context.Context) ApplicationIamBindingConditionOutput
+}
+
+type ApplicationIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ApplicationIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationIamBindingCondition)(nil)).Elem()
+}
+
+func (i ApplicationIamBindingConditionArgs) ToApplicationIamBindingConditionOutput() ApplicationIamBindingConditionOutput {
+	return i.ToApplicationIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i ApplicationIamBindingConditionArgs) ToApplicationIamBindingConditionOutputWithContext(ctx context.Context) ApplicationIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationIamBindingConditionOutput)
+}
+
+func (i ApplicationIamBindingConditionArgs) ToApplicationIamBindingConditionPtrOutput() ApplicationIamBindingConditionPtrOutput {
+	return i.ToApplicationIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationIamBindingConditionArgs) ToApplicationIamBindingConditionPtrOutputWithContext(ctx context.Context) ApplicationIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationIamBindingConditionOutput).ToApplicationIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// ApplicationIamBindingConditionPtrInput is an input type that accepts ApplicationIamBindingConditionArgs, ApplicationIamBindingConditionPtr and ApplicationIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `ApplicationIamBindingConditionPtrInput` via:
+//
+//	        ApplicationIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToApplicationIamBindingConditionPtrOutput() ApplicationIamBindingConditionPtrOutput
+	ToApplicationIamBindingConditionPtrOutputWithContext(context.Context) ApplicationIamBindingConditionPtrOutput
+}
+
+type applicationIamBindingConditionPtrType ApplicationIamBindingConditionArgs
+
+func ApplicationIamBindingConditionPtr(v *ApplicationIamBindingConditionArgs) ApplicationIamBindingConditionPtrInput {
+	return (*applicationIamBindingConditionPtrType)(v)
+}
+
+func (*applicationIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationIamBindingCondition)(nil)).Elem()
+}
+
+func (i *applicationIamBindingConditionPtrType) ToApplicationIamBindingConditionPtrOutput() ApplicationIamBindingConditionPtrOutput {
+	return i.ToApplicationIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationIamBindingConditionPtrType) ToApplicationIamBindingConditionPtrOutputWithContext(ctx context.Context) ApplicationIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationIamBindingConditionPtrOutput)
+}
+
+type ApplicationIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (ApplicationIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationIamBindingCondition)(nil)).Elem()
+}
+
+func (o ApplicationIamBindingConditionOutput) ToApplicationIamBindingConditionOutput() ApplicationIamBindingConditionOutput {
+	return o
+}
+
+func (o ApplicationIamBindingConditionOutput) ToApplicationIamBindingConditionOutputWithContext(ctx context.Context) ApplicationIamBindingConditionOutput {
+	return o
+}
+
+func (o ApplicationIamBindingConditionOutput) ToApplicationIamBindingConditionPtrOutput() ApplicationIamBindingConditionPtrOutput {
+	return o.ToApplicationIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationIamBindingConditionOutput) ToApplicationIamBindingConditionPtrOutputWithContext(ctx context.Context) ApplicationIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationIamBindingCondition) *ApplicationIamBindingCondition {
+		return &v
+	}).(ApplicationIamBindingConditionPtrOutput)
+}
+
+func (o ApplicationIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ApplicationIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o ApplicationIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ApplicationIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationIamBindingCondition)(nil)).Elem()
+}
+
+func (o ApplicationIamBindingConditionPtrOutput) ToApplicationIamBindingConditionPtrOutput() ApplicationIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o ApplicationIamBindingConditionPtrOutput) ToApplicationIamBindingConditionPtrOutputWithContext(ctx context.Context) ApplicationIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o ApplicationIamBindingConditionPtrOutput) Elem() ApplicationIamBindingConditionOutput {
+	return o.ApplyT(func(v *ApplicationIamBindingCondition) ApplicationIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationIamBindingCondition
+		return ret
+	}).(ApplicationIamBindingConditionOutput)
+}
+
+func (o ApplicationIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ApplicationIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o ApplicationIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type ApplicationIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// ApplicationIamMemberConditionInput is an input type that accepts ApplicationIamMemberConditionArgs and ApplicationIamMemberConditionOutput values.
+// You can construct a concrete instance of `ApplicationIamMemberConditionInput` via:
+//
+//	ApplicationIamMemberConditionArgs{...}
+type ApplicationIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToApplicationIamMemberConditionOutput() ApplicationIamMemberConditionOutput
+	ToApplicationIamMemberConditionOutputWithContext(context.Context) ApplicationIamMemberConditionOutput
+}
+
+type ApplicationIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ApplicationIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationIamMemberCondition)(nil)).Elem()
+}
+
+func (i ApplicationIamMemberConditionArgs) ToApplicationIamMemberConditionOutput() ApplicationIamMemberConditionOutput {
+	return i.ToApplicationIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i ApplicationIamMemberConditionArgs) ToApplicationIamMemberConditionOutputWithContext(ctx context.Context) ApplicationIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationIamMemberConditionOutput)
+}
+
+func (i ApplicationIamMemberConditionArgs) ToApplicationIamMemberConditionPtrOutput() ApplicationIamMemberConditionPtrOutput {
+	return i.ToApplicationIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationIamMemberConditionArgs) ToApplicationIamMemberConditionPtrOutputWithContext(ctx context.Context) ApplicationIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationIamMemberConditionOutput).ToApplicationIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// ApplicationIamMemberConditionPtrInput is an input type that accepts ApplicationIamMemberConditionArgs, ApplicationIamMemberConditionPtr and ApplicationIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `ApplicationIamMemberConditionPtrInput` via:
+//
+//	        ApplicationIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToApplicationIamMemberConditionPtrOutput() ApplicationIamMemberConditionPtrOutput
+	ToApplicationIamMemberConditionPtrOutputWithContext(context.Context) ApplicationIamMemberConditionPtrOutput
+}
+
+type applicationIamMemberConditionPtrType ApplicationIamMemberConditionArgs
+
+func ApplicationIamMemberConditionPtr(v *ApplicationIamMemberConditionArgs) ApplicationIamMemberConditionPtrInput {
+	return (*applicationIamMemberConditionPtrType)(v)
+}
+
+func (*applicationIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationIamMemberCondition)(nil)).Elem()
+}
+
+func (i *applicationIamMemberConditionPtrType) ToApplicationIamMemberConditionPtrOutput() ApplicationIamMemberConditionPtrOutput {
+	return i.ToApplicationIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationIamMemberConditionPtrType) ToApplicationIamMemberConditionPtrOutputWithContext(ctx context.Context) ApplicationIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationIamMemberConditionPtrOutput)
+}
+
+type ApplicationIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (ApplicationIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationIamMemberCondition)(nil)).Elem()
+}
+
+func (o ApplicationIamMemberConditionOutput) ToApplicationIamMemberConditionOutput() ApplicationIamMemberConditionOutput {
+	return o
+}
+
+func (o ApplicationIamMemberConditionOutput) ToApplicationIamMemberConditionOutputWithContext(ctx context.Context) ApplicationIamMemberConditionOutput {
+	return o
+}
+
+func (o ApplicationIamMemberConditionOutput) ToApplicationIamMemberConditionPtrOutput() ApplicationIamMemberConditionPtrOutput {
+	return o.ToApplicationIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationIamMemberConditionOutput) ToApplicationIamMemberConditionPtrOutputWithContext(ctx context.Context) ApplicationIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationIamMemberCondition) *ApplicationIamMemberCondition {
+		return &v
+	}).(ApplicationIamMemberConditionPtrOutput)
+}
+
+func (o ApplicationIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ApplicationIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o ApplicationIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ApplicationIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationIamMemberCondition)(nil)).Elem()
+}
+
+func (o ApplicationIamMemberConditionPtrOutput) ToApplicationIamMemberConditionPtrOutput() ApplicationIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o ApplicationIamMemberConditionPtrOutput) ToApplicationIamMemberConditionPtrOutputWithContext(ctx context.Context) ApplicationIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o ApplicationIamMemberConditionPtrOutput) Elem() ApplicationIamMemberConditionOutput {
+	return o.ApplyT(func(v *ApplicationIamMemberCondition) ApplicationIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationIamMemberCondition
+		return ret
+	}).(ApplicationIamMemberConditionOutput)
+}
+
+func (o ApplicationIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ApplicationIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o ApplicationIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type SecurityGatewayHub struct {
 	// Internet Gateway configuration.
 	// Structure is documented below.
@@ -1920,6 +2374,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppConnectorPrincipalInfoServiceAccountPtrInput)(nil)).Elem(), AppConnectorPrincipalInfoServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppGatewayAllocatedConnectionInput)(nil)).Elem(), AppGatewayAllocatedConnectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppGatewayAllocatedConnectionArrayInput)(nil)).Elem(), AppGatewayAllocatedConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationEndpointMatcherInput)(nil)).Elem(), ApplicationEndpointMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationEndpointMatcherArrayInput)(nil)).Elem(), ApplicationEndpointMatcherArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationIamBindingConditionInput)(nil)).Elem(), ApplicationIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationIamBindingConditionPtrInput)(nil)).Elem(), ApplicationIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationIamMemberConditionInput)(nil)).Elem(), ApplicationIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationIamMemberConditionPtrInput)(nil)).Elem(), ApplicationIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayHubInput)(nil)).Elem(), SecurityGatewayHubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayHubArrayInput)(nil)).Elem(), SecurityGatewayHubArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayHubInternetGatewayInput)(nil)).Elem(), SecurityGatewayHubInternetGatewayArgs{})
@@ -1948,6 +2408,12 @@ func init() {
 	pulumi.RegisterOutputType(AppConnectorPrincipalInfoServiceAccountPtrOutput{})
 	pulumi.RegisterOutputType(AppGatewayAllocatedConnectionOutput{})
 	pulumi.RegisterOutputType(AppGatewayAllocatedConnectionArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationEndpointMatcherOutput{})
+	pulumi.RegisterOutputType(ApplicationEndpointMatcherArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(ApplicationIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(ApplicationIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(SecurityGatewayHubOutput{})
 	pulumi.RegisterOutputType(SecurityGatewayHubArrayOutput{})
 	pulumi.RegisterOutputType(SecurityGatewayHubInternetGatewayOutput{})

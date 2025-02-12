@@ -23,6 +23,13 @@ import javax.annotation.Nullable;
 /**
  * An Entitlement defines the eligibility of a set of users to obtain a predefined access for some time possibly after going through an approval workflow.
  * 
+ * To get more information about Entitlement, see:
+ * 
+ * * [API documentation](https://cloud.google.com/iam/docs/reference/pam/rest)
+ * * How-to Guides
+ *     * [How to create an Entitlement](https://cloud.google.com/iam/docs/pam-create-entitlements)
+ *     * [Official Documentation](https://cloud.google.com/iam/docs/pam-overview)
+ * 
  * ## Example Usage
  * 
  * ### Privileged Access Manager Entitlement Basic

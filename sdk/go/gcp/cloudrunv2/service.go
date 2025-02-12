@@ -909,7 +909,8 @@ import (
 //				Template: &cloudrunv2.ServiceTemplateArgs{
 //					Containers: cloudrunv2.ServiceTemplateContainerArray{
 //						&cloudrunv2.ServiceTemplateContainerArgs{
-//							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//							Image:        pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//							BaseImageUri: pulumi.String("us-central1-docker.pkg.dev/serverless-runtimes/google-22-full/runtimes/nodejs22"),
 //						},
 //					},
 //				},

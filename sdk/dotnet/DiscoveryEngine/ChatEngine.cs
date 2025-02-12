@@ -200,7 +200,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
+        /// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
         /// </summary>
         [Output("dataStoreIds")]
         public Output<ImmutableArray<string>> DataStoreIds { get; private set; } = null!;
@@ -317,7 +317,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
         private InputList<string>? _dataStoreIds;
 
         /// <summary>
-        /// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
+        /// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
         /// </summary>
         public InputList<string> DataStoreIds
         {
@@ -403,7 +403,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
         private InputList<string>? _dataStoreIds;
 
         /// <summary>
-        /// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
+        /// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
         /// </summary>
         public InputList<string> DataStoreIds
         {

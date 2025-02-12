@@ -259,6 +259,13 @@ namespace Pulumi.Gcp.Filestore
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
+        /// Output only fields for replication configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("effectiveReplications")]
+        public Output<ImmutableArray<Outputs.InstanceEffectiveReplication>> EffectiveReplications { get; private set; } = null!;
+
+        /// <summary>
         /// Server-specified ETag for the instance resource to prevent
         /// simultaneous updates from overwriting each other.
         /// </summary>
@@ -272,6 +279,13 @@ namespace Pulumi.Gcp.Filestore
         /// </summary>
         [Output("fileShares")]
         public Output<Outputs.InstanceFileShares> FileShares { get; private set; } = null!;
+
+        /// <summary>
+        /// Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+        /// instance only, indicating the active as the peer_instance
+        /// </summary>
+        [Output("initialReplication")]
+        public Output<Outputs.InstanceInitialReplication?> InitialReplication { get; private set; } = null!;
 
         /// <summary>
         /// KMS key name used for data encryption.
@@ -432,6 +446,13 @@ namespace Pulumi.Gcp.Filestore
         public Input<Inputs.InstanceFileSharesArgs> FileShares { get; set; } = null!;
 
         /// <summary>
+        /// Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+        /// instance only, indicating the active as the peer_instance
+        /// </summary>
+        [Input("initialReplication")]
+        public Input<Inputs.InstanceInitialReplicationArgs>? InitialReplication { get; set; }
+
+        /// <summary>
         /// KMS key name used for data encryption.
         /// </summary>
         [Input("kmsKeyName")]
@@ -571,6 +592,19 @@ namespace Pulumi.Gcp.Filestore
             }
         }
 
+        [Input("effectiveReplications")]
+        private InputList<Inputs.InstanceEffectiveReplicationGetArgs>? _effectiveReplications;
+
+        /// <summary>
+        /// Output only fields for replication configuration.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.InstanceEffectiveReplicationGetArgs> EffectiveReplications
+        {
+            get => _effectiveReplications ?? (_effectiveReplications = new InputList<Inputs.InstanceEffectiveReplicationGetArgs>());
+            set => _effectiveReplications = value;
+        }
+
         /// <summary>
         /// Server-specified ETag for the instance resource to prevent
         /// simultaneous updates from overwriting each other.
@@ -585,6 +619,13 @@ namespace Pulumi.Gcp.Filestore
         /// </summary>
         [Input("fileShares")]
         public Input<Inputs.InstanceFileSharesGetArgs>? FileShares { get; set; }
+
+        /// <summary>
+        /// Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+        /// instance only, indicating the active as the peer_instance
+        /// </summary>
+        [Input("initialReplication")]
+        public Input<Inputs.InstanceInitialReplicationGetArgs>? InitialReplication { get; set; }
 
         /// <summary>
         /// KMS key name used for data encryption.

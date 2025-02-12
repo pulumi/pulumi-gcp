@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs;
 import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs;
 import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,6 +33,25 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs ex
      */
     public Optional<Output<EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs>> cdnPolicy() {
         return Optional.ofNullable(this.cdnPolicy);
+    }
+
+    /**
+     * Setting the compression mode to automatic enables dynamic compression for every eligible response.
+     * When dynamic compression is enabled, it is recommended to also set a cache policy to maximize efficiency.
+     * Possible values are: `DISABLED`, `AUTOMATIC`.
+     * 
+     */
+    @Import(name="compressionMode")
+    private @Nullable Output<String> compressionMode;
+
+    /**
+     * @return Setting the compression mode to automatic enables dynamic compression for every eligible response.
+     * When dynamic compression is enabled, it is recommended to also set a cache policy to maximize efficiency.
+     * Possible values are: `DISABLED`, `AUTOMATIC`.
+     * 
+     */
+    public Optional<Output<String>> compressionMode() {
+        return Optional.ofNullable(this.compressionMode);
     }
 
     /**
@@ -72,6 +92,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs ex
 
     private EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs $) {
         this.cdnPolicy = $.cdnPolicy;
+        this.compressionMode = $.compressionMode;
         this.corsPolicy = $.corsPolicy;
         this.urlRewrite = $.urlRewrite;
     }
@@ -115,6 +136,31 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs ex
          */
         public Builder cdnPolicy(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs cdnPolicy) {
             return cdnPolicy(Output.of(cdnPolicy));
+        }
+
+        /**
+         * @param compressionMode Setting the compression mode to automatic enables dynamic compression for every eligible response.
+         * When dynamic compression is enabled, it is recommended to also set a cache policy to maximize efficiency.
+         * Possible values are: `DISABLED`, `AUTOMATIC`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder compressionMode(@Nullable Output<String> compressionMode) {
+            $.compressionMode = compressionMode;
+            return this;
+        }
+
+        /**
+         * @param compressionMode Setting the compression mode to automatic enables dynamic compression for every eligible response.
+         * When dynamic compression is enabled, it is recommended to also set a cache policy to maximize efficiency.
+         * Possible values are: `DISABLED`, `AUTOMATIC`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder compressionMode(String compressionMode) {
+            return compressionMode(Output.of(compressionMode));
         }
 
         /**

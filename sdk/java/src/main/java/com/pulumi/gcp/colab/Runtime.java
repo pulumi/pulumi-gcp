@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.colab.RuntimeArgs;
 import com.pulumi.gcp.colab.inputs.RuntimeState;
 import com.pulumi.gcp.colab.outputs.RuntimeNotebookRuntimeTemplateRef;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -76,6 +77,67 @@ import javax.annotation.Nullable;
  *                 .notebookRuntimeTemplate(myTemplate.id())
  *                 .build())
  *             .displayName("Runtime basic")
+ *             .runtimeUser("gterraformtestuser}{@literal @}{@code gmail.com")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(myTemplate)
+ *                 .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Colab Runtime Stopped
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.colab.RuntimeTemplate;
+ * import com.pulumi.gcp.colab.RuntimeTemplateArgs;
+ * import com.pulumi.gcp.colab.inputs.RuntimeTemplateMachineSpecArgs;
+ * import com.pulumi.gcp.colab.inputs.RuntimeTemplateNetworkSpecArgs;
+ * import com.pulumi.gcp.colab.Runtime;
+ * import com.pulumi.gcp.colab.RuntimeArgs;
+ * import com.pulumi.gcp.colab.inputs.RuntimeNotebookRuntimeTemplateRefArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var myTemplate = new RuntimeTemplate("myTemplate", RuntimeTemplateArgs.builder()
+ *             .name("colab-runtime")
+ *             .displayName("Runtime template basic")
+ *             .location("us-central1")
+ *             .machineSpec(RuntimeTemplateMachineSpecArgs.builder()
+ *                 .machineType("e2-standard-4")
+ *                 .build())
+ *             .networkSpec(RuntimeTemplateNetworkSpecArgs.builder()
+ *                 .enableInternetAccess(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var runtime = new Runtime("runtime", RuntimeArgs.builder()
+ *             .name("colab-runtime")
+ *             .location("us-central1")
+ *             .notebookRuntimeTemplateRef(RuntimeNotebookRuntimeTemplateRefArgs.builder()
+ *                 .notebookRuntimeTemplate(myTemplate.id())
+ *                 .build())
+ *             .desiredState("STOPPED")
+ *             .displayName("Runtime stopped")
  *             .runtimeUser("gterraformtestuser}{@literal @}{@code gmail.com")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(myTemplate)
@@ -166,6 +228,8 @@ import javax.annotation.Nullable;
  *             .displayName("Runtime full")
  *             .runtimeUser("gterraformtestuser}{@literal @}{@code gmail.com")
  *             .description("Full runtime")
+ *             .desiredState("ACTIVE")
+ *             .autoUpgrade(true)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(myTemplate)
  *                 .build());
@@ -204,6 +268,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:colab/runtime:Runtime")
 public class Runtime extends com.pulumi.resources.CustomResource {
     /**
+     * Triggers an upgrade anytime the runtime is started if it is upgradable.
+     * 
+     */
+    @Export(name="autoUpgrade", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> autoUpgrade;
+
+    /**
+     * @return Triggers an upgrade anytime the runtime is started if it is upgradable.
+     * 
+     */
+    public Output<Optional<Boolean>> autoUpgrade() {
+        return Codegen.optional(this.autoUpgrade);
+    }
+    /**
      * The description of the Runtime.
      * 
      */
@@ -218,6 +296,20 @@ public class Runtime extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
+     * 
+     */
+    @Export(name="desiredState", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> desiredState;
+
+    /**
+     * @return Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
+     * 
+     */
+    public Output<Optional<String>> desiredState() {
+        return Codegen.optional(this.desiredState);
+    }
+    /**
      * Required. The display name of the Runtime.
      * 
      */
@@ -230,6 +322,34 @@ public class Runtime extends com.pulumi.resources.CustomResource {
      */
     public Output<String> displayName() {
         return this.displayName;
+    }
+    /**
+     * Output only. Timestamp when this NotebookRuntime will be expired.
+     * 
+     */
+    @Export(name="expirationTime", refs={String.class}, tree="[0]")
+    private Output<String> expirationTime;
+
+    /**
+     * @return Output only. Timestamp when this NotebookRuntime will be expired.
+     * 
+     */
+    public Output<String> expirationTime() {
+        return this.expirationTime;
+    }
+    /**
+     * Output only. Checks if the NotebookRuntime is upgradable.
+     * 
+     */
+    @Export(name="isUpgradable", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> isUpgradable;
+
+    /**
+     * @return Output only. Checks if the NotebookRuntime is upgradable.
+     * 
+     */
+    public Output<Boolean> isUpgradable() {
+        return this.isUpgradable;
     }
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
@@ -280,6 +400,20 @@ public class Runtime extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.notebookRuntimeTemplateRef);
     }
     /**
+     * Output only. The type of the notebook runtime.
+     * 
+     */
+    @Export(name="notebookRuntimeType", refs={String.class}, tree="[0]")
+    private Output<String> notebookRuntimeType;
+
+    /**
+     * @return Output only. The type of the notebook runtime.
+     * 
+     */
+    public Output<String> notebookRuntimeType() {
+        return this.notebookRuntimeType;
+    }
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -308,6 +442,20 @@ public class Runtime extends com.pulumi.resources.CustomResource {
      */
     public Output<String> runtimeUser() {
         return this.runtimeUser;
+    }
+    /**
+     * Output only. The state of the runtime.
+     * 
+     */
+    @Export(name="state", refs={String.class}, tree="[0]")
+    private Output<String> state;
+
+    /**
+     * @return Output only. The state of the runtime.
+     * 
+     */
+    public Output<String> state() {
+        return this.state;
     }
 
     /**

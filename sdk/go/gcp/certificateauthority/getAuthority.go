@@ -87,15 +87,16 @@ type LookupAuthorityResult struct {
 	PemCaCertificate                   string                `pulumi:"pemCaCertificate"`
 	PemCaCertificates                  []string              `pulumi:"pemCaCertificates"`
 	// The PEM-encoded signed certificate signing request (CSR). This is only set on subordinate certificate authorities that are awaiting user activation.
-	PemCsr             string                          `pulumi:"pemCsr"`
-	Pool               *string                         `pulumi:"pool"`
-	Project            *string                         `pulumi:"project"`
-	PulumiLabels       map[string]string               `pulumi:"pulumiLabels"`
-	SkipGracePeriod    bool                            `pulumi:"skipGracePeriod"`
-	State              string                          `pulumi:"state"`
-	SubordinateConfigs []GetAuthoritySubordinateConfig `pulumi:"subordinateConfigs"`
-	Type               string                          `pulumi:"type"`
-	UpdateTime         string                          `pulumi:"updateTime"`
+	PemCsr                string                             `pulumi:"pemCsr"`
+	Pool                  *string                            `pulumi:"pool"`
+	Project               *string                            `pulumi:"project"`
+	PulumiLabels          map[string]string                  `pulumi:"pulumiLabels"`
+	SkipGracePeriod       bool                               `pulumi:"skipGracePeriod"`
+	State                 string                             `pulumi:"state"`
+	SubordinateConfigs    []GetAuthoritySubordinateConfig    `pulumi:"subordinateConfigs"`
+	Type                  string                             `pulumi:"type"`
+	UpdateTime            string                             `pulumi:"updateTime"`
+	UserDefinedAccessUrls []GetAuthorityUserDefinedAccessUrl `pulumi:"userDefinedAccessUrls"`
 }
 
 func LookupAuthorityOutput(ctx *pulumi.Context, args LookupAuthorityOutputArgs, opts ...pulumi.InvokeOption) LookupAuthorityResultOutput {
@@ -245,6 +246,10 @@ func (o LookupAuthorityResultOutput) Type() pulumi.StringOutput {
 
 func (o LookupAuthorityResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthorityResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupAuthorityResultOutput) UserDefinedAccessUrls() GetAuthorityUserDefinedAccessUrlArrayOutput {
+	return o.ApplyT(func(v LookupAuthorityResult) []GetAuthorityUserDefinedAccessUrl { return v.UserDefinedAccessUrls }).(GetAuthorityUserDefinedAccessUrlArrayOutput)
 }
 
 func init() {

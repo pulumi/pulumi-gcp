@@ -172,7 +172,7 @@ export class ChatEngine extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
+     * The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
      */
     public readonly dataStoreIds!: pulumi.Output<string[]>;
     /**
@@ -297,7 +297,7 @@ export interface ChatEngineState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
+     * The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
      */
     dataStoreIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -349,7 +349,7 @@ export interface ChatEngineArgs {
      */
     commonConfig?: pulumi.Input<inputs.discoveryengine.ChatEngineCommonConfig>;
     /**
-     * The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
+     * The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
      */
     dataStoreIds: pulumi.Input<pulumi.Input<string>[]>;
     /**

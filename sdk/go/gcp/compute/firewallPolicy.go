@@ -12,13 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Hierarchical firewall policy rules let you create and enforce a consistent firewall policy across your organization. Rules can explicitly allow or deny connections or delegate evaluation to lower level policies. Policies can be created within organizations or folders.
-//
-// This resource should be generally be used with `compute.FirewallPolicyAssociation` and `compute.FirewallPolicyRule`
-//
-// For more information see the [official documentation](https://cloud.google.com/vpc/docs/firewall-policies)
-//
 // ## Example Usage
+//
+// ### Firewall Policy
 //
 // ```go
 // package main
@@ -33,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewFirewallPolicy(ctx, "default", &compute.FirewallPolicyArgs{
-//				Parent:      pulumi.String("organizations/12345"),
+//				Parent:      pulumi.String("organizations/123456789"),
 //				ShortName:   pulumi.String("my-policy"),
 //				Description: pulumi.String("Example Resource"),
 //			})
@@ -49,6 +45,12 @@ import (
 // ## Import
 //
 // FirewallPolicy can be imported using any of these accepted formats:
+//
+// * `locations/global/firewallPolicies/{{name}}`
+//
+// * `{{name}}`
+//
+// When using the `pulumi import` command, FirewallPolicy can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/firewallPolicy:FirewallPolicy default locations/global/firewallPolicies/{{name}}
@@ -71,6 +73,8 @@ type FirewallPolicy struct {
 	// Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent of the firewall policy.
+	//
+	// ***
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
 	RuleTupleCount pulumi.IntOutput `pulumi:"ruleTupleCount"`
@@ -78,9 +82,9 @@ type FirewallPolicy struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
-	// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	//
-	// ***
+	// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created.
+	// This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035.
+	// Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	ShortName pulumi.StringOutput `pulumi:"shortName"`
 }
 
@@ -131,6 +135,8 @@ type firewallPolicyState struct {
 	// Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
 	Name *string `pulumi:"name"`
 	// The parent of the firewall policy.
+	//
+	// ***
 	Parent *string `pulumi:"parent"`
 	// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
 	RuleTupleCount *int `pulumi:"ruleTupleCount"`
@@ -138,9 +144,9 @@ type firewallPolicyState struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
-	// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	//
-	// ***
+	// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created.
+	// This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035.
+	// Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	ShortName *string `pulumi:"shortName"`
 }
 
@@ -156,6 +162,8 @@ type FirewallPolicyState struct {
 	// Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
 	Name pulumi.StringPtrInput
 	// The parent of the firewall policy.
+	//
+	// ***
 	Parent pulumi.StringPtrInput
 	// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
 	RuleTupleCount pulumi.IntPtrInput
@@ -163,9 +171,9 @@ type FirewallPolicyState struct {
 	SelfLink pulumi.StringPtrInput
 	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringPtrInput
-	// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	//
-	// ***
+	// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created.
+	// This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035.
+	// Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	ShortName pulumi.StringPtrInput
 }
 
@@ -177,10 +185,12 @@ type firewallPolicyArgs struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// The parent of the firewall policy.
-	Parent string `pulumi:"parent"`
-	// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	//
 	// ***
+	Parent string `pulumi:"parent"`
+	// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created.
+	// This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035.
+	// Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	ShortName string `pulumi:"shortName"`
 }
 
@@ -189,10 +199,12 @@ type FirewallPolicyArgs struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// The parent of the firewall policy.
-	Parent pulumi.StringInput
-	// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	//
 	// ***
+	Parent pulumi.StringInput
+	// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created.
+	// This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035.
+	// Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	ShortName pulumi.StringInput
 }
 
@@ -309,6 +321,8 @@ func (o FirewallPolicyOutput) Name() pulumi.StringOutput {
 }
 
 // The parent of the firewall policy.
+//
+// ***
 func (o FirewallPolicyOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallPolicy) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }
@@ -328,9 +342,9 @@ func (o FirewallPolicyOutput) SelfLinkWithId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallPolicy) pulumi.StringOutput { return v.SelfLinkWithId }).(pulumi.StringOutput)
 }
 
-// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-//
-// ***
+// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created.
+// This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035.
+// Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 func (o FirewallPolicyOutput) ShortName() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallPolicy) pulumi.StringOutput { return v.ShortName }).(pulumi.StringOutput)
 }

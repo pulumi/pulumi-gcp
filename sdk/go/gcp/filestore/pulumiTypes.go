@@ -13,6 +13,236 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type InstanceEffectiveReplication struct {
+	// The replication role.
+	// Structure is documented below.
+	Replicas []InstanceEffectiveReplicationReplica `pulumi:"replicas"`
+}
+
+// InstanceEffectiveReplicationInput is an input type that accepts InstanceEffectiveReplicationArgs and InstanceEffectiveReplicationOutput values.
+// You can construct a concrete instance of `InstanceEffectiveReplicationInput` via:
+//
+//	InstanceEffectiveReplicationArgs{...}
+type InstanceEffectiveReplicationInput interface {
+	pulumi.Input
+
+	ToInstanceEffectiveReplicationOutput() InstanceEffectiveReplicationOutput
+	ToInstanceEffectiveReplicationOutputWithContext(context.Context) InstanceEffectiveReplicationOutput
+}
+
+type InstanceEffectiveReplicationArgs struct {
+	// The replication role.
+	// Structure is documented below.
+	Replicas InstanceEffectiveReplicationReplicaArrayInput `pulumi:"replicas"`
+}
+
+func (InstanceEffectiveReplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceEffectiveReplication)(nil)).Elem()
+}
+
+func (i InstanceEffectiveReplicationArgs) ToInstanceEffectiveReplicationOutput() InstanceEffectiveReplicationOutput {
+	return i.ToInstanceEffectiveReplicationOutputWithContext(context.Background())
+}
+
+func (i InstanceEffectiveReplicationArgs) ToInstanceEffectiveReplicationOutputWithContext(ctx context.Context) InstanceEffectiveReplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceEffectiveReplicationOutput)
+}
+
+// InstanceEffectiveReplicationArrayInput is an input type that accepts InstanceEffectiveReplicationArray and InstanceEffectiveReplicationArrayOutput values.
+// You can construct a concrete instance of `InstanceEffectiveReplicationArrayInput` via:
+//
+//	InstanceEffectiveReplicationArray{ InstanceEffectiveReplicationArgs{...} }
+type InstanceEffectiveReplicationArrayInput interface {
+	pulumi.Input
+
+	ToInstanceEffectiveReplicationArrayOutput() InstanceEffectiveReplicationArrayOutput
+	ToInstanceEffectiveReplicationArrayOutputWithContext(context.Context) InstanceEffectiveReplicationArrayOutput
+}
+
+type InstanceEffectiveReplicationArray []InstanceEffectiveReplicationInput
+
+func (InstanceEffectiveReplicationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceEffectiveReplication)(nil)).Elem()
+}
+
+func (i InstanceEffectiveReplicationArray) ToInstanceEffectiveReplicationArrayOutput() InstanceEffectiveReplicationArrayOutput {
+	return i.ToInstanceEffectiveReplicationArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceEffectiveReplicationArray) ToInstanceEffectiveReplicationArrayOutputWithContext(ctx context.Context) InstanceEffectiveReplicationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceEffectiveReplicationArrayOutput)
+}
+
+type InstanceEffectiveReplicationOutput struct{ *pulumi.OutputState }
+
+func (InstanceEffectiveReplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceEffectiveReplication)(nil)).Elem()
+}
+
+func (o InstanceEffectiveReplicationOutput) ToInstanceEffectiveReplicationOutput() InstanceEffectiveReplicationOutput {
+	return o
+}
+
+func (o InstanceEffectiveReplicationOutput) ToInstanceEffectiveReplicationOutputWithContext(ctx context.Context) InstanceEffectiveReplicationOutput {
+	return o
+}
+
+// The replication role.
+// Structure is documented below.
+func (o InstanceEffectiveReplicationOutput) Replicas() InstanceEffectiveReplicationReplicaArrayOutput {
+	return o.ApplyT(func(v InstanceEffectiveReplication) []InstanceEffectiveReplicationReplica { return v.Replicas }).(InstanceEffectiveReplicationReplicaArrayOutput)
+}
+
+type InstanceEffectiveReplicationArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceEffectiveReplicationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceEffectiveReplication)(nil)).Elem()
+}
+
+func (o InstanceEffectiveReplicationArrayOutput) ToInstanceEffectiveReplicationArrayOutput() InstanceEffectiveReplicationArrayOutput {
+	return o
+}
+
+func (o InstanceEffectiveReplicationArrayOutput) ToInstanceEffectiveReplicationArrayOutputWithContext(ctx context.Context) InstanceEffectiveReplicationArrayOutput {
+	return o
+}
+
+func (o InstanceEffectiveReplicationArrayOutput) Index(i pulumi.IntInput) InstanceEffectiveReplicationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceEffectiveReplication {
+		return vs[0].([]InstanceEffectiveReplication)[vs[1].(int)]
+	}).(InstanceEffectiveReplicationOutput)
+}
+
+type InstanceEffectiveReplicationReplica struct {
+	// (Output)
+	// Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+	LastActiveSyncTime *string `pulumi:"lastActiveSyncTime"`
+	// (Output)
+	// Output only. The replica state
+	State *string `pulumi:"state"`
+	// (Output)
+	// Output only. Additional information about the replication state, if available.
+	StateReasons []string `pulumi:"stateReasons"`
+}
+
+// InstanceEffectiveReplicationReplicaInput is an input type that accepts InstanceEffectiveReplicationReplicaArgs and InstanceEffectiveReplicationReplicaOutput values.
+// You can construct a concrete instance of `InstanceEffectiveReplicationReplicaInput` via:
+//
+//	InstanceEffectiveReplicationReplicaArgs{...}
+type InstanceEffectiveReplicationReplicaInput interface {
+	pulumi.Input
+
+	ToInstanceEffectiveReplicationReplicaOutput() InstanceEffectiveReplicationReplicaOutput
+	ToInstanceEffectiveReplicationReplicaOutputWithContext(context.Context) InstanceEffectiveReplicationReplicaOutput
+}
+
+type InstanceEffectiveReplicationReplicaArgs struct {
+	// (Output)
+	// Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+	LastActiveSyncTime pulumi.StringPtrInput `pulumi:"lastActiveSyncTime"`
+	// (Output)
+	// Output only. The replica state
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// (Output)
+	// Output only. Additional information about the replication state, if available.
+	StateReasons pulumi.StringArrayInput `pulumi:"stateReasons"`
+}
+
+func (InstanceEffectiveReplicationReplicaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceEffectiveReplicationReplica)(nil)).Elem()
+}
+
+func (i InstanceEffectiveReplicationReplicaArgs) ToInstanceEffectiveReplicationReplicaOutput() InstanceEffectiveReplicationReplicaOutput {
+	return i.ToInstanceEffectiveReplicationReplicaOutputWithContext(context.Background())
+}
+
+func (i InstanceEffectiveReplicationReplicaArgs) ToInstanceEffectiveReplicationReplicaOutputWithContext(ctx context.Context) InstanceEffectiveReplicationReplicaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceEffectiveReplicationReplicaOutput)
+}
+
+// InstanceEffectiveReplicationReplicaArrayInput is an input type that accepts InstanceEffectiveReplicationReplicaArray and InstanceEffectiveReplicationReplicaArrayOutput values.
+// You can construct a concrete instance of `InstanceEffectiveReplicationReplicaArrayInput` via:
+//
+//	InstanceEffectiveReplicationReplicaArray{ InstanceEffectiveReplicationReplicaArgs{...} }
+type InstanceEffectiveReplicationReplicaArrayInput interface {
+	pulumi.Input
+
+	ToInstanceEffectiveReplicationReplicaArrayOutput() InstanceEffectiveReplicationReplicaArrayOutput
+	ToInstanceEffectiveReplicationReplicaArrayOutputWithContext(context.Context) InstanceEffectiveReplicationReplicaArrayOutput
+}
+
+type InstanceEffectiveReplicationReplicaArray []InstanceEffectiveReplicationReplicaInput
+
+func (InstanceEffectiveReplicationReplicaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceEffectiveReplicationReplica)(nil)).Elem()
+}
+
+func (i InstanceEffectiveReplicationReplicaArray) ToInstanceEffectiveReplicationReplicaArrayOutput() InstanceEffectiveReplicationReplicaArrayOutput {
+	return i.ToInstanceEffectiveReplicationReplicaArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceEffectiveReplicationReplicaArray) ToInstanceEffectiveReplicationReplicaArrayOutputWithContext(ctx context.Context) InstanceEffectiveReplicationReplicaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceEffectiveReplicationReplicaArrayOutput)
+}
+
+type InstanceEffectiveReplicationReplicaOutput struct{ *pulumi.OutputState }
+
+func (InstanceEffectiveReplicationReplicaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceEffectiveReplicationReplica)(nil)).Elem()
+}
+
+func (o InstanceEffectiveReplicationReplicaOutput) ToInstanceEffectiveReplicationReplicaOutput() InstanceEffectiveReplicationReplicaOutput {
+	return o
+}
+
+func (o InstanceEffectiveReplicationReplicaOutput) ToInstanceEffectiveReplicationReplicaOutputWithContext(ctx context.Context) InstanceEffectiveReplicationReplicaOutput {
+	return o
+}
+
+// (Output)
+// Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+func (o InstanceEffectiveReplicationReplicaOutput) LastActiveSyncTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceEffectiveReplicationReplica) *string { return v.LastActiveSyncTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The replica state
+func (o InstanceEffectiveReplicationReplicaOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceEffectiveReplicationReplica) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. Additional information about the replication state, if available.
+func (o InstanceEffectiveReplicationReplicaOutput) StateReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceEffectiveReplicationReplica) []string { return v.StateReasons }).(pulumi.StringArrayOutput)
+}
+
+type InstanceEffectiveReplicationReplicaArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceEffectiveReplicationReplicaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceEffectiveReplicationReplica)(nil)).Elem()
+}
+
+func (o InstanceEffectiveReplicationReplicaArrayOutput) ToInstanceEffectiveReplicationReplicaArrayOutput() InstanceEffectiveReplicationReplicaArrayOutput {
+	return o
+}
+
+func (o InstanceEffectiveReplicationReplicaArrayOutput) ToInstanceEffectiveReplicationReplicaArrayOutputWithContext(ctx context.Context) InstanceEffectiveReplicationReplicaArrayOutput {
+	return o
+}
+
+func (o InstanceEffectiveReplicationReplicaArrayOutput) Index(i pulumi.IntInput) InstanceEffectiveReplicationReplicaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceEffectiveReplicationReplica {
+		return vs[0].([]InstanceEffectiveReplicationReplica)[vs[1].(int)]
+	}).(InstanceEffectiveReplicationReplicaOutput)
+}
+
 type InstanceFileShares struct {
 	// File share capacity in GiB. This must be at least 1024 GiB
 	// for the standard tier, or 2560 GiB for the premium tier.
@@ -390,6 +620,271 @@ func (o InstanceFileSharesNfsExportOptionArrayOutput) Index(i pulumi.IntInput) I
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceFileSharesNfsExportOption {
 		return vs[0].([]InstanceFileSharesNfsExportOption)[vs[1].(int)]
 	}).(InstanceFileSharesNfsExportOptionOutput)
+}
+
+type InstanceInitialReplication struct {
+	// The replication role.
+	// Structure is documented below.
+	Replicas []InstanceInitialReplicationReplica `pulumi:"replicas"`
+	// The replication role.
+	// Default value is `STANDBY`.
+	// Possible values are: `ROLE_UNSPECIFIED`, `ACTIVE`, `STANDBY`.
+	Role *string `pulumi:"role"`
+}
+
+// InstanceInitialReplicationInput is an input type that accepts InstanceInitialReplicationArgs and InstanceInitialReplicationOutput values.
+// You can construct a concrete instance of `InstanceInitialReplicationInput` via:
+//
+//	InstanceInitialReplicationArgs{...}
+type InstanceInitialReplicationInput interface {
+	pulumi.Input
+
+	ToInstanceInitialReplicationOutput() InstanceInitialReplicationOutput
+	ToInstanceInitialReplicationOutputWithContext(context.Context) InstanceInitialReplicationOutput
+}
+
+type InstanceInitialReplicationArgs struct {
+	// The replication role.
+	// Structure is documented below.
+	Replicas InstanceInitialReplicationReplicaArrayInput `pulumi:"replicas"`
+	// The replication role.
+	// Default value is `STANDBY`.
+	// Possible values are: `ROLE_UNSPECIFIED`, `ACTIVE`, `STANDBY`.
+	Role pulumi.StringPtrInput `pulumi:"role"`
+}
+
+func (InstanceInitialReplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceInitialReplication)(nil)).Elem()
+}
+
+func (i InstanceInitialReplicationArgs) ToInstanceInitialReplicationOutput() InstanceInitialReplicationOutput {
+	return i.ToInstanceInitialReplicationOutputWithContext(context.Background())
+}
+
+func (i InstanceInitialReplicationArgs) ToInstanceInitialReplicationOutputWithContext(ctx context.Context) InstanceInitialReplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceInitialReplicationOutput)
+}
+
+func (i InstanceInitialReplicationArgs) ToInstanceInitialReplicationPtrOutput() InstanceInitialReplicationPtrOutput {
+	return i.ToInstanceInitialReplicationPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceInitialReplicationArgs) ToInstanceInitialReplicationPtrOutputWithContext(ctx context.Context) InstanceInitialReplicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceInitialReplicationOutput).ToInstanceInitialReplicationPtrOutputWithContext(ctx)
+}
+
+// InstanceInitialReplicationPtrInput is an input type that accepts InstanceInitialReplicationArgs, InstanceInitialReplicationPtr and InstanceInitialReplicationPtrOutput values.
+// You can construct a concrete instance of `InstanceInitialReplicationPtrInput` via:
+//
+//	        InstanceInitialReplicationArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceInitialReplicationPtrInput interface {
+	pulumi.Input
+
+	ToInstanceInitialReplicationPtrOutput() InstanceInitialReplicationPtrOutput
+	ToInstanceInitialReplicationPtrOutputWithContext(context.Context) InstanceInitialReplicationPtrOutput
+}
+
+type instanceInitialReplicationPtrType InstanceInitialReplicationArgs
+
+func InstanceInitialReplicationPtr(v *InstanceInitialReplicationArgs) InstanceInitialReplicationPtrInput {
+	return (*instanceInitialReplicationPtrType)(v)
+}
+
+func (*instanceInitialReplicationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceInitialReplication)(nil)).Elem()
+}
+
+func (i *instanceInitialReplicationPtrType) ToInstanceInitialReplicationPtrOutput() InstanceInitialReplicationPtrOutput {
+	return i.ToInstanceInitialReplicationPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceInitialReplicationPtrType) ToInstanceInitialReplicationPtrOutputWithContext(ctx context.Context) InstanceInitialReplicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceInitialReplicationPtrOutput)
+}
+
+type InstanceInitialReplicationOutput struct{ *pulumi.OutputState }
+
+func (InstanceInitialReplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceInitialReplication)(nil)).Elem()
+}
+
+func (o InstanceInitialReplicationOutput) ToInstanceInitialReplicationOutput() InstanceInitialReplicationOutput {
+	return o
+}
+
+func (o InstanceInitialReplicationOutput) ToInstanceInitialReplicationOutputWithContext(ctx context.Context) InstanceInitialReplicationOutput {
+	return o
+}
+
+func (o InstanceInitialReplicationOutput) ToInstanceInitialReplicationPtrOutput() InstanceInitialReplicationPtrOutput {
+	return o.ToInstanceInitialReplicationPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceInitialReplicationOutput) ToInstanceInitialReplicationPtrOutputWithContext(ctx context.Context) InstanceInitialReplicationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceInitialReplication) *InstanceInitialReplication {
+		return &v
+	}).(InstanceInitialReplicationPtrOutput)
+}
+
+// The replication role.
+// Structure is documented below.
+func (o InstanceInitialReplicationOutput) Replicas() InstanceInitialReplicationReplicaArrayOutput {
+	return o.ApplyT(func(v InstanceInitialReplication) []InstanceInitialReplicationReplica { return v.Replicas }).(InstanceInitialReplicationReplicaArrayOutput)
+}
+
+// The replication role.
+// Default value is `STANDBY`.
+// Possible values are: `ROLE_UNSPECIFIED`, `ACTIVE`, `STANDBY`.
+func (o InstanceInitialReplicationOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceInitialReplication) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+type InstanceInitialReplicationPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceInitialReplicationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceInitialReplication)(nil)).Elem()
+}
+
+func (o InstanceInitialReplicationPtrOutput) ToInstanceInitialReplicationPtrOutput() InstanceInitialReplicationPtrOutput {
+	return o
+}
+
+func (o InstanceInitialReplicationPtrOutput) ToInstanceInitialReplicationPtrOutputWithContext(ctx context.Context) InstanceInitialReplicationPtrOutput {
+	return o
+}
+
+func (o InstanceInitialReplicationPtrOutput) Elem() InstanceInitialReplicationOutput {
+	return o.ApplyT(func(v *InstanceInitialReplication) InstanceInitialReplication {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceInitialReplication
+		return ret
+	}).(InstanceInitialReplicationOutput)
+}
+
+// The replication role.
+// Structure is documented below.
+func (o InstanceInitialReplicationPtrOutput) Replicas() InstanceInitialReplicationReplicaArrayOutput {
+	return o.ApplyT(func(v *InstanceInitialReplication) []InstanceInitialReplicationReplica {
+		if v == nil {
+			return nil
+		}
+		return v.Replicas
+	}).(InstanceInitialReplicationReplicaArrayOutput)
+}
+
+// The replication role.
+// Default value is `STANDBY`.
+// Possible values are: `ROLE_UNSPECIFIED`, `ACTIVE`, `STANDBY`.
+func (o InstanceInitialReplicationPtrOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceInitialReplication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Role
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceInitialReplicationReplica struct {
+	// The peer instance.
+	PeerInstance string `pulumi:"peerInstance"`
+}
+
+// InstanceInitialReplicationReplicaInput is an input type that accepts InstanceInitialReplicationReplicaArgs and InstanceInitialReplicationReplicaOutput values.
+// You can construct a concrete instance of `InstanceInitialReplicationReplicaInput` via:
+//
+//	InstanceInitialReplicationReplicaArgs{...}
+type InstanceInitialReplicationReplicaInput interface {
+	pulumi.Input
+
+	ToInstanceInitialReplicationReplicaOutput() InstanceInitialReplicationReplicaOutput
+	ToInstanceInitialReplicationReplicaOutputWithContext(context.Context) InstanceInitialReplicationReplicaOutput
+}
+
+type InstanceInitialReplicationReplicaArgs struct {
+	// The peer instance.
+	PeerInstance pulumi.StringInput `pulumi:"peerInstance"`
+}
+
+func (InstanceInitialReplicationReplicaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceInitialReplicationReplica)(nil)).Elem()
+}
+
+func (i InstanceInitialReplicationReplicaArgs) ToInstanceInitialReplicationReplicaOutput() InstanceInitialReplicationReplicaOutput {
+	return i.ToInstanceInitialReplicationReplicaOutputWithContext(context.Background())
+}
+
+func (i InstanceInitialReplicationReplicaArgs) ToInstanceInitialReplicationReplicaOutputWithContext(ctx context.Context) InstanceInitialReplicationReplicaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceInitialReplicationReplicaOutput)
+}
+
+// InstanceInitialReplicationReplicaArrayInput is an input type that accepts InstanceInitialReplicationReplicaArray and InstanceInitialReplicationReplicaArrayOutput values.
+// You can construct a concrete instance of `InstanceInitialReplicationReplicaArrayInput` via:
+//
+//	InstanceInitialReplicationReplicaArray{ InstanceInitialReplicationReplicaArgs{...} }
+type InstanceInitialReplicationReplicaArrayInput interface {
+	pulumi.Input
+
+	ToInstanceInitialReplicationReplicaArrayOutput() InstanceInitialReplicationReplicaArrayOutput
+	ToInstanceInitialReplicationReplicaArrayOutputWithContext(context.Context) InstanceInitialReplicationReplicaArrayOutput
+}
+
+type InstanceInitialReplicationReplicaArray []InstanceInitialReplicationReplicaInput
+
+func (InstanceInitialReplicationReplicaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceInitialReplicationReplica)(nil)).Elem()
+}
+
+func (i InstanceInitialReplicationReplicaArray) ToInstanceInitialReplicationReplicaArrayOutput() InstanceInitialReplicationReplicaArrayOutput {
+	return i.ToInstanceInitialReplicationReplicaArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceInitialReplicationReplicaArray) ToInstanceInitialReplicationReplicaArrayOutputWithContext(ctx context.Context) InstanceInitialReplicationReplicaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceInitialReplicationReplicaArrayOutput)
+}
+
+type InstanceInitialReplicationReplicaOutput struct{ *pulumi.OutputState }
+
+func (InstanceInitialReplicationReplicaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceInitialReplicationReplica)(nil)).Elem()
+}
+
+func (o InstanceInitialReplicationReplicaOutput) ToInstanceInitialReplicationReplicaOutput() InstanceInitialReplicationReplicaOutput {
+	return o
+}
+
+func (o InstanceInitialReplicationReplicaOutput) ToInstanceInitialReplicationReplicaOutputWithContext(ctx context.Context) InstanceInitialReplicationReplicaOutput {
+	return o
+}
+
+// The peer instance.
+func (o InstanceInitialReplicationReplicaOutput) PeerInstance() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceInitialReplicationReplica) string { return v.PeerInstance }).(pulumi.StringOutput)
+}
+
+type InstanceInitialReplicationReplicaArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceInitialReplicationReplicaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceInitialReplicationReplica)(nil)).Elem()
+}
+
+func (o InstanceInitialReplicationReplicaArrayOutput) ToInstanceInitialReplicationReplicaArrayOutput() InstanceInitialReplicationReplicaArrayOutput {
+	return o
+}
+
+func (o InstanceInitialReplicationReplicaArrayOutput) ToInstanceInitialReplicationReplicaArrayOutputWithContext(ctx context.Context) InstanceInitialReplicationReplicaArrayOutput {
+	return o
+}
+
+func (o InstanceInitialReplicationReplicaArrayOutput) Index(i pulumi.IntInput) InstanceInitialReplicationReplicaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceInitialReplicationReplica {
+		return vs[0].([]InstanceInitialReplicationReplica)[vs[1].(int)]
+	}).(InstanceInitialReplicationReplicaOutput)
 }
 
 type InstanceNetwork struct {
@@ -1028,6 +1523,224 @@ func (o InstancePerformanceConfigIopsPerTbPtrOutput) MaxIopsPerTb() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
+type GetInstanceEffectiveReplication struct {
+	// The replication role.
+	Replicas []GetInstanceEffectiveReplicationReplica `pulumi:"replicas"`
+}
+
+// GetInstanceEffectiveReplicationInput is an input type that accepts GetInstanceEffectiveReplicationArgs and GetInstanceEffectiveReplicationOutput values.
+// You can construct a concrete instance of `GetInstanceEffectiveReplicationInput` via:
+//
+//	GetInstanceEffectiveReplicationArgs{...}
+type GetInstanceEffectiveReplicationInput interface {
+	pulumi.Input
+
+	ToGetInstanceEffectiveReplicationOutput() GetInstanceEffectiveReplicationOutput
+	ToGetInstanceEffectiveReplicationOutputWithContext(context.Context) GetInstanceEffectiveReplicationOutput
+}
+
+type GetInstanceEffectiveReplicationArgs struct {
+	// The replication role.
+	Replicas GetInstanceEffectiveReplicationReplicaArrayInput `pulumi:"replicas"`
+}
+
+func (GetInstanceEffectiveReplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceEffectiveReplication)(nil)).Elem()
+}
+
+func (i GetInstanceEffectiveReplicationArgs) ToGetInstanceEffectiveReplicationOutput() GetInstanceEffectiveReplicationOutput {
+	return i.ToGetInstanceEffectiveReplicationOutputWithContext(context.Background())
+}
+
+func (i GetInstanceEffectiveReplicationArgs) ToGetInstanceEffectiveReplicationOutputWithContext(ctx context.Context) GetInstanceEffectiveReplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEffectiveReplicationOutput)
+}
+
+// GetInstanceEffectiveReplicationArrayInput is an input type that accepts GetInstanceEffectiveReplicationArray and GetInstanceEffectiveReplicationArrayOutput values.
+// You can construct a concrete instance of `GetInstanceEffectiveReplicationArrayInput` via:
+//
+//	GetInstanceEffectiveReplicationArray{ GetInstanceEffectiveReplicationArgs{...} }
+type GetInstanceEffectiveReplicationArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceEffectiveReplicationArrayOutput() GetInstanceEffectiveReplicationArrayOutput
+	ToGetInstanceEffectiveReplicationArrayOutputWithContext(context.Context) GetInstanceEffectiveReplicationArrayOutput
+}
+
+type GetInstanceEffectiveReplicationArray []GetInstanceEffectiveReplicationInput
+
+func (GetInstanceEffectiveReplicationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceEffectiveReplication)(nil)).Elem()
+}
+
+func (i GetInstanceEffectiveReplicationArray) ToGetInstanceEffectiveReplicationArrayOutput() GetInstanceEffectiveReplicationArrayOutput {
+	return i.ToGetInstanceEffectiveReplicationArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceEffectiveReplicationArray) ToGetInstanceEffectiveReplicationArrayOutputWithContext(ctx context.Context) GetInstanceEffectiveReplicationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEffectiveReplicationArrayOutput)
+}
+
+type GetInstanceEffectiveReplicationOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceEffectiveReplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceEffectiveReplication)(nil)).Elem()
+}
+
+func (o GetInstanceEffectiveReplicationOutput) ToGetInstanceEffectiveReplicationOutput() GetInstanceEffectiveReplicationOutput {
+	return o
+}
+
+func (o GetInstanceEffectiveReplicationOutput) ToGetInstanceEffectiveReplicationOutputWithContext(ctx context.Context) GetInstanceEffectiveReplicationOutput {
+	return o
+}
+
+// The replication role.
+func (o GetInstanceEffectiveReplicationOutput) Replicas() GetInstanceEffectiveReplicationReplicaArrayOutput {
+	return o.ApplyT(func(v GetInstanceEffectiveReplication) []GetInstanceEffectiveReplicationReplica { return v.Replicas }).(GetInstanceEffectiveReplicationReplicaArrayOutput)
+}
+
+type GetInstanceEffectiveReplicationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceEffectiveReplicationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceEffectiveReplication)(nil)).Elem()
+}
+
+func (o GetInstanceEffectiveReplicationArrayOutput) ToGetInstanceEffectiveReplicationArrayOutput() GetInstanceEffectiveReplicationArrayOutput {
+	return o
+}
+
+func (o GetInstanceEffectiveReplicationArrayOutput) ToGetInstanceEffectiveReplicationArrayOutputWithContext(ctx context.Context) GetInstanceEffectiveReplicationArrayOutput {
+	return o
+}
+
+func (o GetInstanceEffectiveReplicationArrayOutput) Index(i pulumi.IntInput) GetInstanceEffectiveReplicationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceEffectiveReplication {
+		return vs[0].([]GetInstanceEffectiveReplication)[vs[1].(int)]
+	}).(GetInstanceEffectiveReplicationOutput)
+}
+
+type GetInstanceEffectiveReplicationReplica struct {
+	// Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+	LastActiveSyncTime string `pulumi:"lastActiveSyncTime"`
+	// Output only. The replica state
+	State string `pulumi:"state"`
+	// Output only. Additional information about the replication state, if available.
+	StateReasons []string `pulumi:"stateReasons"`
+}
+
+// GetInstanceEffectiveReplicationReplicaInput is an input type that accepts GetInstanceEffectiveReplicationReplicaArgs and GetInstanceEffectiveReplicationReplicaOutput values.
+// You can construct a concrete instance of `GetInstanceEffectiveReplicationReplicaInput` via:
+//
+//	GetInstanceEffectiveReplicationReplicaArgs{...}
+type GetInstanceEffectiveReplicationReplicaInput interface {
+	pulumi.Input
+
+	ToGetInstanceEffectiveReplicationReplicaOutput() GetInstanceEffectiveReplicationReplicaOutput
+	ToGetInstanceEffectiveReplicationReplicaOutputWithContext(context.Context) GetInstanceEffectiveReplicationReplicaOutput
+}
+
+type GetInstanceEffectiveReplicationReplicaArgs struct {
+	// Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+	LastActiveSyncTime pulumi.StringInput `pulumi:"lastActiveSyncTime"`
+	// Output only. The replica state
+	State pulumi.StringInput `pulumi:"state"`
+	// Output only. Additional information about the replication state, if available.
+	StateReasons pulumi.StringArrayInput `pulumi:"stateReasons"`
+}
+
+func (GetInstanceEffectiveReplicationReplicaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceEffectiveReplicationReplica)(nil)).Elem()
+}
+
+func (i GetInstanceEffectiveReplicationReplicaArgs) ToGetInstanceEffectiveReplicationReplicaOutput() GetInstanceEffectiveReplicationReplicaOutput {
+	return i.ToGetInstanceEffectiveReplicationReplicaOutputWithContext(context.Background())
+}
+
+func (i GetInstanceEffectiveReplicationReplicaArgs) ToGetInstanceEffectiveReplicationReplicaOutputWithContext(ctx context.Context) GetInstanceEffectiveReplicationReplicaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEffectiveReplicationReplicaOutput)
+}
+
+// GetInstanceEffectiveReplicationReplicaArrayInput is an input type that accepts GetInstanceEffectiveReplicationReplicaArray and GetInstanceEffectiveReplicationReplicaArrayOutput values.
+// You can construct a concrete instance of `GetInstanceEffectiveReplicationReplicaArrayInput` via:
+//
+//	GetInstanceEffectiveReplicationReplicaArray{ GetInstanceEffectiveReplicationReplicaArgs{...} }
+type GetInstanceEffectiveReplicationReplicaArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceEffectiveReplicationReplicaArrayOutput() GetInstanceEffectiveReplicationReplicaArrayOutput
+	ToGetInstanceEffectiveReplicationReplicaArrayOutputWithContext(context.Context) GetInstanceEffectiveReplicationReplicaArrayOutput
+}
+
+type GetInstanceEffectiveReplicationReplicaArray []GetInstanceEffectiveReplicationReplicaInput
+
+func (GetInstanceEffectiveReplicationReplicaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceEffectiveReplicationReplica)(nil)).Elem()
+}
+
+func (i GetInstanceEffectiveReplicationReplicaArray) ToGetInstanceEffectiveReplicationReplicaArrayOutput() GetInstanceEffectiveReplicationReplicaArrayOutput {
+	return i.ToGetInstanceEffectiveReplicationReplicaArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceEffectiveReplicationReplicaArray) ToGetInstanceEffectiveReplicationReplicaArrayOutputWithContext(ctx context.Context) GetInstanceEffectiveReplicationReplicaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEffectiveReplicationReplicaArrayOutput)
+}
+
+type GetInstanceEffectiveReplicationReplicaOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceEffectiveReplicationReplicaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceEffectiveReplicationReplica)(nil)).Elem()
+}
+
+func (o GetInstanceEffectiveReplicationReplicaOutput) ToGetInstanceEffectiveReplicationReplicaOutput() GetInstanceEffectiveReplicationReplicaOutput {
+	return o
+}
+
+func (o GetInstanceEffectiveReplicationReplicaOutput) ToGetInstanceEffectiveReplicationReplicaOutputWithContext(ctx context.Context) GetInstanceEffectiveReplicationReplicaOutput {
+	return o
+}
+
+// Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+func (o GetInstanceEffectiveReplicationReplicaOutput) LastActiveSyncTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceEffectiveReplicationReplica) string { return v.LastActiveSyncTime }).(pulumi.StringOutput)
+}
+
+// Output only. The replica state
+func (o GetInstanceEffectiveReplicationReplicaOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceEffectiveReplicationReplica) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Output only. Additional information about the replication state, if available.
+func (o GetInstanceEffectiveReplicationReplicaOutput) StateReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceEffectiveReplicationReplica) []string { return v.StateReasons }).(pulumi.StringArrayOutput)
+}
+
+type GetInstanceEffectiveReplicationReplicaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceEffectiveReplicationReplicaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceEffectiveReplicationReplica)(nil)).Elem()
+}
+
+func (o GetInstanceEffectiveReplicationReplicaArrayOutput) ToGetInstanceEffectiveReplicationReplicaArrayOutput() GetInstanceEffectiveReplicationReplicaArrayOutput {
+	return o
+}
+
+func (o GetInstanceEffectiveReplicationReplicaArrayOutput) ToGetInstanceEffectiveReplicationReplicaArrayOutputWithContext(ctx context.Context) GetInstanceEffectiveReplicationReplicaArrayOutput {
+	return o
+}
+
+func (o GetInstanceEffectiveReplicationReplicaArrayOutput) Index(i pulumi.IntInput) GetInstanceEffectiveReplicationReplicaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceEffectiveReplicationReplica {
+		return vs[0].([]GetInstanceEffectiveReplicationReplica)[vs[1].(int)]
+	}).(GetInstanceEffectiveReplicationReplicaOutput)
+}
+
 type GetInstanceFileShare struct {
 	// File share capacity in GiB. This must be at least 1024 GiB
 	// for the standard tier, or 2560 GiB for the premium tier.
@@ -1322,6 +2035,209 @@ func (o GetInstanceFileShareNfsExportOptionArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceFileShareNfsExportOption {
 		return vs[0].([]GetInstanceFileShareNfsExportOption)[vs[1].(int)]
 	}).(GetInstanceFileShareNfsExportOptionOutput)
+}
+
+type GetInstanceInitialReplication struct {
+	// The replication role.
+	Replicas []GetInstanceInitialReplicationReplica `pulumi:"replicas"`
+	// The replication role. Default value: "STANDBY" Possible values: ["ROLE_UNSPECIFIED", "ACTIVE", "STANDBY"]
+	Role string `pulumi:"role"`
+}
+
+// GetInstanceInitialReplicationInput is an input type that accepts GetInstanceInitialReplicationArgs and GetInstanceInitialReplicationOutput values.
+// You can construct a concrete instance of `GetInstanceInitialReplicationInput` via:
+//
+//	GetInstanceInitialReplicationArgs{...}
+type GetInstanceInitialReplicationInput interface {
+	pulumi.Input
+
+	ToGetInstanceInitialReplicationOutput() GetInstanceInitialReplicationOutput
+	ToGetInstanceInitialReplicationOutputWithContext(context.Context) GetInstanceInitialReplicationOutput
+}
+
+type GetInstanceInitialReplicationArgs struct {
+	// The replication role.
+	Replicas GetInstanceInitialReplicationReplicaArrayInput `pulumi:"replicas"`
+	// The replication role. Default value: "STANDBY" Possible values: ["ROLE_UNSPECIFIED", "ACTIVE", "STANDBY"]
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (GetInstanceInitialReplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceInitialReplication)(nil)).Elem()
+}
+
+func (i GetInstanceInitialReplicationArgs) ToGetInstanceInitialReplicationOutput() GetInstanceInitialReplicationOutput {
+	return i.ToGetInstanceInitialReplicationOutputWithContext(context.Background())
+}
+
+func (i GetInstanceInitialReplicationArgs) ToGetInstanceInitialReplicationOutputWithContext(ctx context.Context) GetInstanceInitialReplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceInitialReplicationOutput)
+}
+
+// GetInstanceInitialReplicationArrayInput is an input type that accepts GetInstanceInitialReplicationArray and GetInstanceInitialReplicationArrayOutput values.
+// You can construct a concrete instance of `GetInstanceInitialReplicationArrayInput` via:
+//
+//	GetInstanceInitialReplicationArray{ GetInstanceInitialReplicationArgs{...} }
+type GetInstanceInitialReplicationArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceInitialReplicationArrayOutput() GetInstanceInitialReplicationArrayOutput
+	ToGetInstanceInitialReplicationArrayOutputWithContext(context.Context) GetInstanceInitialReplicationArrayOutput
+}
+
+type GetInstanceInitialReplicationArray []GetInstanceInitialReplicationInput
+
+func (GetInstanceInitialReplicationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceInitialReplication)(nil)).Elem()
+}
+
+func (i GetInstanceInitialReplicationArray) ToGetInstanceInitialReplicationArrayOutput() GetInstanceInitialReplicationArrayOutput {
+	return i.ToGetInstanceInitialReplicationArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceInitialReplicationArray) ToGetInstanceInitialReplicationArrayOutputWithContext(ctx context.Context) GetInstanceInitialReplicationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceInitialReplicationArrayOutput)
+}
+
+type GetInstanceInitialReplicationOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceInitialReplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceInitialReplication)(nil)).Elem()
+}
+
+func (o GetInstanceInitialReplicationOutput) ToGetInstanceInitialReplicationOutput() GetInstanceInitialReplicationOutput {
+	return o
+}
+
+func (o GetInstanceInitialReplicationOutput) ToGetInstanceInitialReplicationOutputWithContext(ctx context.Context) GetInstanceInitialReplicationOutput {
+	return o
+}
+
+// The replication role.
+func (o GetInstanceInitialReplicationOutput) Replicas() GetInstanceInitialReplicationReplicaArrayOutput {
+	return o.ApplyT(func(v GetInstanceInitialReplication) []GetInstanceInitialReplicationReplica { return v.Replicas }).(GetInstanceInitialReplicationReplicaArrayOutput)
+}
+
+// The replication role. Default value: "STANDBY" Possible values: ["ROLE_UNSPECIFIED", "ACTIVE", "STANDBY"]
+func (o GetInstanceInitialReplicationOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceInitialReplication) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type GetInstanceInitialReplicationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceInitialReplicationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceInitialReplication)(nil)).Elem()
+}
+
+func (o GetInstanceInitialReplicationArrayOutput) ToGetInstanceInitialReplicationArrayOutput() GetInstanceInitialReplicationArrayOutput {
+	return o
+}
+
+func (o GetInstanceInitialReplicationArrayOutput) ToGetInstanceInitialReplicationArrayOutputWithContext(ctx context.Context) GetInstanceInitialReplicationArrayOutput {
+	return o
+}
+
+func (o GetInstanceInitialReplicationArrayOutput) Index(i pulumi.IntInput) GetInstanceInitialReplicationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceInitialReplication {
+		return vs[0].([]GetInstanceInitialReplication)[vs[1].(int)]
+	}).(GetInstanceInitialReplicationOutput)
+}
+
+type GetInstanceInitialReplicationReplica struct {
+	// The peer instance.
+	PeerInstance string `pulumi:"peerInstance"`
+}
+
+// GetInstanceInitialReplicationReplicaInput is an input type that accepts GetInstanceInitialReplicationReplicaArgs and GetInstanceInitialReplicationReplicaOutput values.
+// You can construct a concrete instance of `GetInstanceInitialReplicationReplicaInput` via:
+//
+//	GetInstanceInitialReplicationReplicaArgs{...}
+type GetInstanceInitialReplicationReplicaInput interface {
+	pulumi.Input
+
+	ToGetInstanceInitialReplicationReplicaOutput() GetInstanceInitialReplicationReplicaOutput
+	ToGetInstanceInitialReplicationReplicaOutputWithContext(context.Context) GetInstanceInitialReplicationReplicaOutput
+}
+
+type GetInstanceInitialReplicationReplicaArgs struct {
+	// The peer instance.
+	PeerInstance pulumi.StringInput `pulumi:"peerInstance"`
+}
+
+func (GetInstanceInitialReplicationReplicaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceInitialReplicationReplica)(nil)).Elem()
+}
+
+func (i GetInstanceInitialReplicationReplicaArgs) ToGetInstanceInitialReplicationReplicaOutput() GetInstanceInitialReplicationReplicaOutput {
+	return i.ToGetInstanceInitialReplicationReplicaOutputWithContext(context.Background())
+}
+
+func (i GetInstanceInitialReplicationReplicaArgs) ToGetInstanceInitialReplicationReplicaOutputWithContext(ctx context.Context) GetInstanceInitialReplicationReplicaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceInitialReplicationReplicaOutput)
+}
+
+// GetInstanceInitialReplicationReplicaArrayInput is an input type that accepts GetInstanceInitialReplicationReplicaArray and GetInstanceInitialReplicationReplicaArrayOutput values.
+// You can construct a concrete instance of `GetInstanceInitialReplicationReplicaArrayInput` via:
+//
+//	GetInstanceInitialReplicationReplicaArray{ GetInstanceInitialReplicationReplicaArgs{...} }
+type GetInstanceInitialReplicationReplicaArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceInitialReplicationReplicaArrayOutput() GetInstanceInitialReplicationReplicaArrayOutput
+	ToGetInstanceInitialReplicationReplicaArrayOutputWithContext(context.Context) GetInstanceInitialReplicationReplicaArrayOutput
+}
+
+type GetInstanceInitialReplicationReplicaArray []GetInstanceInitialReplicationReplicaInput
+
+func (GetInstanceInitialReplicationReplicaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceInitialReplicationReplica)(nil)).Elem()
+}
+
+func (i GetInstanceInitialReplicationReplicaArray) ToGetInstanceInitialReplicationReplicaArrayOutput() GetInstanceInitialReplicationReplicaArrayOutput {
+	return i.ToGetInstanceInitialReplicationReplicaArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceInitialReplicationReplicaArray) ToGetInstanceInitialReplicationReplicaArrayOutputWithContext(ctx context.Context) GetInstanceInitialReplicationReplicaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceInitialReplicationReplicaArrayOutput)
+}
+
+type GetInstanceInitialReplicationReplicaOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceInitialReplicationReplicaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceInitialReplicationReplica)(nil)).Elem()
+}
+
+func (o GetInstanceInitialReplicationReplicaOutput) ToGetInstanceInitialReplicationReplicaOutput() GetInstanceInitialReplicationReplicaOutput {
+	return o
+}
+
+func (o GetInstanceInitialReplicationReplicaOutput) ToGetInstanceInitialReplicationReplicaOutputWithContext(ctx context.Context) GetInstanceInitialReplicationReplicaOutput {
+	return o
+}
+
+// The peer instance.
+func (o GetInstanceInitialReplicationReplicaOutput) PeerInstance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceInitialReplicationReplica) string { return v.PeerInstance }).(pulumi.StringOutput)
+}
+
+type GetInstanceInitialReplicationReplicaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceInitialReplicationReplicaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceInitialReplicationReplica)(nil)).Elem()
+}
+
+func (o GetInstanceInitialReplicationReplicaArrayOutput) ToGetInstanceInitialReplicationReplicaArrayOutput() GetInstanceInitialReplicationReplicaArrayOutput {
+	return o
+}
+
+func (o GetInstanceInitialReplicationReplicaArrayOutput) ToGetInstanceInitialReplicationReplicaArrayOutputWithContext(ctx context.Context) GetInstanceInitialReplicationReplicaArrayOutput {
+	return o
+}
+
+func (o GetInstanceInitialReplicationReplicaArrayOutput) Index(i pulumi.IntInput) GetInstanceInitialReplicationReplicaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceInitialReplicationReplica {
+		return vs[0].([]GetInstanceInitialReplicationReplica)[vs[1].(int)]
+	}).(GetInstanceInitialReplicationReplicaOutput)
 }
 
 type GetInstanceNetwork struct {
@@ -1797,10 +2713,18 @@ func (o GetInstancePerformanceConfigIopsPerTbArrayOutput) Index(i pulumi.IntInpu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEffectiveReplicationInput)(nil)).Elem(), InstanceEffectiveReplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEffectiveReplicationArrayInput)(nil)).Elem(), InstanceEffectiveReplicationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEffectiveReplicationReplicaInput)(nil)).Elem(), InstanceEffectiveReplicationReplicaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEffectiveReplicationReplicaArrayInput)(nil)).Elem(), InstanceEffectiveReplicationReplicaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFileSharesInput)(nil)).Elem(), InstanceFileSharesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFileSharesPtrInput)(nil)).Elem(), InstanceFileSharesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFileSharesNfsExportOptionInput)(nil)).Elem(), InstanceFileSharesNfsExportOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFileSharesNfsExportOptionArrayInput)(nil)).Elem(), InstanceFileSharesNfsExportOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceInitialReplicationInput)(nil)).Elem(), InstanceInitialReplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceInitialReplicationPtrInput)(nil)).Elem(), InstanceInitialReplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceInitialReplicationReplicaInput)(nil)).Elem(), InstanceInitialReplicationReplicaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceInitialReplicationReplicaArrayInput)(nil)).Elem(), InstanceInitialReplicationReplicaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkInput)(nil)).Elem(), InstanceNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkArrayInput)(nil)).Elem(), InstanceNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePerformanceConfigInput)(nil)).Elem(), InstancePerformanceConfigArgs{})
@@ -1809,10 +2733,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePerformanceConfigFixedIopsPtrInput)(nil)).Elem(), InstancePerformanceConfigFixedIopsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePerformanceConfigIopsPerTbInput)(nil)).Elem(), InstancePerformanceConfigIopsPerTbArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePerformanceConfigIopsPerTbPtrInput)(nil)).Elem(), InstancePerformanceConfigIopsPerTbArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEffectiveReplicationInput)(nil)).Elem(), GetInstanceEffectiveReplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEffectiveReplicationArrayInput)(nil)).Elem(), GetInstanceEffectiveReplicationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEffectiveReplicationReplicaInput)(nil)).Elem(), GetInstanceEffectiveReplicationReplicaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEffectiveReplicationReplicaArrayInput)(nil)).Elem(), GetInstanceEffectiveReplicationReplicaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceFileShareInput)(nil)).Elem(), GetInstanceFileShareArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceFileShareArrayInput)(nil)).Elem(), GetInstanceFileShareArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceFileShareNfsExportOptionInput)(nil)).Elem(), GetInstanceFileShareNfsExportOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceFileShareNfsExportOptionArrayInput)(nil)).Elem(), GetInstanceFileShareNfsExportOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceInitialReplicationInput)(nil)).Elem(), GetInstanceInitialReplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceInitialReplicationArrayInput)(nil)).Elem(), GetInstanceInitialReplicationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceInitialReplicationReplicaInput)(nil)).Elem(), GetInstanceInitialReplicationReplicaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceInitialReplicationReplicaArrayInput)(nil)).Elem(), GetInstanceInitialReplicationReplicaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInput)(nil)).Elem(), GetInstanceNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkArrayInput)(nil)).Elem(), GetInstanceNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePerformanceConfigInput)(nil)).Elem(), GetInstancePerformanceConfigArgs{})
@@ -1821,10 +2753,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePerformanceConfigFixedIopArrayInput)(nil)).Elem(), GetInstancePerformanceConfigFixedIopArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePerformanceConfigIopsPerTbInput)(nil)).Elem(), GetInstancePerformanceConfigIopsPerTbArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePerformanceConfigIopsPerTbArrayInput)(nil)).Elem(), GetInstancePerformanceConfigIopsPerTbArray{})
+	pulumi.RegisterOutputType(InstanceEffectiveReplicationOutput{})
+	pulumi.RegisterOutputType(InstanceEffectiveReplicationArrayOutput{})
+	pulumi.RegisterOutputType(InstanceEffectiveReplicationReplicaOutput{})
+	pulumi.RegisterOutputType(InstanceEffectiveReplicationReplicaArrayOutput{})
 	pulumi.RegisterOutputType(InstanceFileSharesOutput{})
 	pulumi.RegisterOutputType(InstanceFileSharesPtrOutput{})
 	pulumi.RegisterOutputType(InstanceFileSharesNfsExportOptionOutput{})
 	pulumi.RegisterOutputType(InstanceFileSharesNfsExportOptionArrayOutput{})
+	pulumi.RegisterOutputType(InstanceInitialReplicationOutput{})
+	pulumi.RegisterOutputType(InstanceInitialReplicationPtrOutput{})
+	pulumi.RegisterOutputType(InstanceInitialReplicationReplicaOutput{})
+	pulumi.RegisterOutputType(InstanceInitialReplicationReplicaArrayOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkArrayOutput{})
 	pulumi.RegisterOutputType(InstancePerformanceConfigOutput{})
@@ -1833,10 +2773,18 @@ func init() {
 	pulumi.RegisterOutputType(InstancePerformanceConfigFixedIopsPtrOutput{})
 	pulumi.RegisterOutputType(InstancePerformanceConfigIopsPerTbOutput{})
 	pulumi.RegisterOutputType(InstancePerformanceConfigIopsPerTbPtrOutput{})
+	pulumi.RegisterOutputType(GetInstanceEffectiveReplicationOutput{})
+	pulumi.RegisterOutputType(GetInstanceEffectiveReplicationArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceEffectiveReplicationReplicaOutput{})
+	pulumi.RegisterOutputType(GetInstanceEffectiveReplicationReplicaArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceFileShareOutput{})
 	pulumi.RegisterOutputType(GetInstanceFileShareArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceFileShareNfsExportOptionOutput{})
 	pulumi.RegisterOutputType(GetInstanceFileShareNfsExportOptionArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceInitialReplicationOutput{})
+	pulumi.RegisterOutputType(GetInstanceInitialReplicationArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceInitialReplicationReplicaOutput{})
+	pulumi.RegisterOutputType(GetInstanceInitialReplicationReplicaArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancePerformanceConfigOutput{})
