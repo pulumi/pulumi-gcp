@@ -130,7 +130,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.compute.getDefaultServiceAccount({});
+ * const _default = gcp.compute.getDefaultServiceAccount({});
  * const job = new gcp.cloudscheduler.Job("job", {
  *     name: "test-job",
  *     description: "test http job",
@@ -152,7 +152,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.compute.getDefaultServiceAccount({});
+ * const _default = gcp.compute.getDefaultServiceAccount({});
  * const job = new gcp.cloudscheduler.Job("job", {
  *     name: "test-job",
  *     description: "test http job",

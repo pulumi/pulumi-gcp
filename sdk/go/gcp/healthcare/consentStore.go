@@ -117,14 +117,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = healthcare.NewConsentStore(ctx, "my-consent", &healthcare.ConsentStoreArgs{
+//			my_consent, err := healthcare.NewConsentStore(ctx, "my-consent", &healthcare.ConsentStoreArgs{
 //				Dataset: dataset.ID(),
 //				Name:    pulumi.String("my-consent-store"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = serviceaccount.NewAccount(ctx, "test-account", &serviceaccount.AccountArgs{
+//			test_account, err := serviceaccount.NewAccount(ctx, "test-account", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("my-account"),
 //				DisplayName: pulumi.String("Test Service Account"),
 //			})

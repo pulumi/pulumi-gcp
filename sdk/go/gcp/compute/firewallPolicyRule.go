@@ -58,7 +58,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewFirewallPolicy(ctx, "default", &compute.FirewallPolicyArgs{
+//			_default, err := compute.NewFirewallPolicy(ctx, "default", &compute.FirewallPolicyArgs{
 //				Parent:      folder.ID(),
 //				ShortName:   pulumi.String("fw-policy"),
 //				Description: pulumi.String("Resource created for Terraform acceptance testing"),
@@ -140,7 +140,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewFirewallPolicy(ctx, "default", &compute.FirewallPolicyArgs{
+//			_default, err := compute.NewFirewallPolicy(ctx, "default", &compute.FirewallPolicyArgs{
 //				Parent:      folder.ID(),
 //				ShortName:   pulumi.String("fw-policy"),
 //				Description: pulumi.String("Firewall policy"),

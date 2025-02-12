@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const target-vm = gcp.compute.getNetwork({
+ * const target_vm = gcp.compute.getNetwork({
  *     name: "default",
  * });
  * const vmimage = gcp.compute.getImage({
