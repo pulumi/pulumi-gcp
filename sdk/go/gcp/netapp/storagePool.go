@@ -51,7 +51,7 @@ import (
 //			}
 //			// Create a Private Service Access connection
 //			// When using shared-VPCs, this resource needs to be created in host project
-//			_, err = servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
+//			_default, err := servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
 //				Network: peeringNetwork.ID(),
 //				Service: pulumi.String("netapp.servicenetworking.goog"),
 //				ReservedPeeringRanges: pulumi.StringArray{

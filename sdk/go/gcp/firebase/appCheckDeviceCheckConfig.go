@@ -39,7 +39,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := firebase.NewAppleApp(ctx, "default", &firebase.AppleAppArgs{
+//			_default, err := firebase.NewAppleApp(ctx, "default", &firebase.AppleAppArgs{
 //				Project:     pulumi.String("my-project-name"),
 //				DisplayName: pulumi.String("Apple app"),
 //				BundleId:    pulumi.String("bundle.id.devicecheck"),

@@ -36,7 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vmwareengine.NewNetwork(ctx, "subnet-nw", &vmwareengine.NetworkArgs{
+//			subnet_nw, err := vmwareengine.NewNetwork(ctx, "subnet-nw", &vmwareengine.NetworkArgs{
 //				Name:        pulumi.String("pc-nw"),
 //				Location:    pulumi.String("global"),
 //				Type:        pulumi.String("STANDARD"),
@@ -45,7 +45,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vmwareengine.NewPrivateCloud(ctx, "subnet-pc", &vmwareengine.PrivateCloudArgs{
+//			subnet_pc, err := vmwareengine.NewPrivateCloud(ctx, "subnet-pc", &vmwareengine.PrivateCloudArgs{
 //				Location:    pulumi.String("us-west1-a"),
 //				Name:        pulumi.String("sample-pc"),
 //				Description: pulumi.String("Sample test PC."),

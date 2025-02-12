@@ -96,7 +96,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.compute.getDefaultServiceAccount({});
+ * const _default = gcp.compute.getDefaultServiceAccount({});
  * const myImage = gcp.compute.getImage({
  *     family: "debian-11",
  *     project: "debian-cloud",

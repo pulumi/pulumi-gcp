@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-networks = gcp.compute.getNetworks({
+ * const my_networks = gcp.compute.getNetworks({
  *     project: "my-cloud-project",
  * });
  * ```
@@ -66,7 +66,7 @@ export interface GetNetworksResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-networks = gcp.compute.getNetworks({
+ * const my_networks = gcp.compute.getNetworks({
  *     project: "my-cloud-project",
  * });
  * ```

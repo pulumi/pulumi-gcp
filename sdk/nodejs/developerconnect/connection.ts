@@ -73,7 +73,7 @@ import * as utilities from "../utilities";
  *     }).then(invoke => invoke.result),
  * });
  * const devconnect_p4sa = new gcp.projects.ServiceIdentity("devconnect-p4sa", {service: "developerconnect.googleapis.com"});
- * const p4sa-secretAccessor = gcp.organizations.getIAMPolicyOutput({
+ * const p4sa_secretAccessor = gcp.organizations.getIAMPolicyOutput({
  *     bindings: [{
  *         role: "roles/secretmanager.secretAccessor",
  *         members: [devconnect_p4sa.member],
@@ -131,7 +131,7 @@ import * as utilities from "../utilities";
  *         input: "my-github-token.txt",
  *     }).then(invoke => invoke.result),
  * });
- * const p4sa-secretAccessor = gcp.organizations.getIAMPolicy({
+ * const p4sa_secretAccessor = gcp.organizations.getIAMPolicy({
  *     bindings: [{
  *         role: "roles/secretmanager.secretAccessor",
  *         members: ["serviceAccount:service-123456789@gcp-sa-devconnect.iam.gserviceaccount.com"],
@@ -200,7 +200,7 @@ import * as utilities from "../utilities";
  *     secret: webhook_secret_secret.id,
  *     secretData: "<webhook-secret-data>",
  * });
- * const p4sa-secretAccessor = gcp.organizations.getIAMPolicy({
+ * const p4sa_secretAccessor = gcp.organizations.getIAMPolicy({
  *     bindings: [{
  *         role: "roles/secretmanager.secretAccessor",
  *         members: ["serviceAccount:service-123456789@gcp-sa-devconnect.iam.gserviceaccount.com"],

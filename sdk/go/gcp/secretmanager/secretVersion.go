@@ -36,7 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
+//			secret_basic, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("secret-version"),
 //				Labels: pulumi.StringMap{
 //					"label": pulumi.String("my-label"),
@@ -74,7 +74,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
+//			secret_basic, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("secret-version"),
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					UserManaged: &secretmanager.SecretReplicationUserManagedArgs{
@@ -116,7 +116,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
+//			secret_basic, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("secret-version"),
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					UserManaged: &secretmanager.SecretReplicationUserManagedArgs{
@@ -159,7 +159,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
+//			secret_basic, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("secret-version"),
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					UserManaged: &secretmanager.SecretReplicationUserManagedArgs{
