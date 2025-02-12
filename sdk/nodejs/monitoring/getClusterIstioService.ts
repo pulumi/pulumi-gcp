@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * // Monitors the default ClusterIstio service
- * const default = gcp.monitoring.getClusterIstioService({
+ * const _default = gcp.monitoring.getClusterIstioService({
  *     location: "us-west2-a",
  *     clusterName: "west",
  *     serviceNamespace: "istio-system",
@@ -137,7 +137,7 @@ export interface GetClusterIstioServiceResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * // Monitors the default ClusterIstio service
- * const default = gcp.monitoring.getClusterIstioService({
+ * const _default = gcp.monitoring.getClusterIstioService({
  *     location: "us-west2-a",
  *     clusterName: "west",
  *     serviceNamespace: "istio-system",

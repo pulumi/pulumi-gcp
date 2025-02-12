@@ -148,7 +148,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
+//			_default, err := servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
 //				Network: vpcNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
