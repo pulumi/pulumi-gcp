@@ -255,6 +255,542 @@ func (o InstanceDiscoveryEndpointArrayOutput) Index(i pulumi.IntInput) InstanceD
 	}).(InstanceDiscoveryEndpointOutput)
 }
 
+type InstanceEndpoint struct {
+	// A group of PSC connections. They are created in the same VPC network, one for each service attachment in the cluster.
+	// Structure is documented below.
+	Connections []InstanceEndpointConnection `pulumi:"connections"`
+}
+
+// InstanceEndpointInput is an input type that accepts InstanceEndpointArgs and InstanceEndpointOutput values.
+// You can construct a concrete instance of `InstanceEndpointInput` via:
+//
+//	InstanceEndpointArgs{...}
+type InstanceEndpointInput interface {
+	pulumi.Input
+
+	ToInstanceEndpointOutput() InstanceEndpointOutput
+	ToInstanceEndpointOutputWithContext(context.Context) InstanceEndpointOutput
+}
+
+type InstanceEndpointArgs struct {
+	// A group of PSC connections. They are created in the same VPC network, one for each service attachment in the cluster.
+	// Structure is documented below.
+	Connections InstanceEndpointConnectionArrayInput `pulumi:"connections"`
+}
+
+func (InstanceEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceEndpoint)(nil)).Elem()
+}
+
+func (i InstanceEndpointArgs) ToInstanceEndpointOutput() InstanceEndpointOutput {
+	return i.ToInstanceEndpointOutputWithContext(context.Background())
+}
+
+func (i InstanceEndpointArgs) ToInstanceEndpointOutputWithContext(ctx context.Context) InstanceEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceEndpointOutput)
+}
+
+// InstanceEndpointArrayInput is an input type that accepts InstanceEndpointArray and InstanceEndpointArrayOutput values.
+// You can construct a concrete instance of `InstanceEndpointArrayInput` via:
+//
+//	InstanceEndpointArray{ InstanceEndpointArgs{...} }
+type InstanceEndpointArrayInput interface {
+	pulumi.Input
+
+	ToInstanceEndpointArrayOutput() InstanceEndpointArrayOutput
+	ToInstanceEndpointArrayOutputWithContext(context.Context) InstanceEndpointArrayOutput
+}
+
+type InstanceEndpointArray []InstanceEndpointInput
+
+func (InstanceEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceEndpoint)(nil)).Elem()
+}
+
+func (i InstanceEndpointArray) ToInstanceEndpointArrayOutput() InstanceEndpointArrayOutput {
+	return i.ToInstanceEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceEndpointArray) ToInstanceEndpointArrayOutputWithContext(ctx context.Context) InstanceEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceEndpointArrayOutput)
+}
+
+type InstanceEndpointOutput struct{ *pulumi.OutputState }
+
+func (InstanceEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceEndpoint)(nil)).Elem()
+}
+
+func (o InstanceEndpointOutput) ToInstanceEndpointOutput() InstanceEndpointOutput {
+	return o
+}
+
+func (o InstanceEndpointOutput) ToInstanceEndpointOutputWithContext(ctx context.Context) InstanceEndpointOutput {
+	return o
+}
+
+// A group of PSC connections. They are created in the same VPC network, one for each service attachment in the cluster.
+// Structure is documented below.
+func (o InstanceEndpointOutput) Connections() InstanceEndpointConnectionArrayOutput {
+	return o.ApplyT(func(v InstanceEndpoint) []InstanceEndpointConnection { return v.Connections }).(InstanceEndpointConnectionArrayOutput)
+}
+
+type InstanceEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceEndpoint)(nil)).Elem()
+}
+
+func (o InstanceEndpointArrayOutput) ToInstanceEndpointArrayOutput() InstanceEndpointArrayOutput {
+	return o
+}
+
+func (o InstanceEndpointArrayOutput) ToInstanceEndpointArrayOutputWithContext(ctx context.Context) InstanceEndpointArrayOutput {
+	return o
+}
+
+func (o InstanceEndpointArrayOutput) Index(i pulumi.IntInput) InstanceEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceEndpoint {
+		return vs[0].([]InstanceEndpoint)[vs[1].(int)]
+	}).(InstanceEndpointOutput)
+}
+
+type InstanceEndpointConnection struct {
+	// Detailed information of a PSC connection that is created through service connectivity automation.
+	// Structure is documented below.
+	PscAutoConnection *InstanceEndpointConnectionPscAutoConnection `pulumi:"pscAutoConnection"`
+}
+
+// InstanceEndpointConnectionInput is an input type that accepts InstanceEndpointConnectionArgs and InstanceEndpointConnectionOutput values.
+// You can construct a concrete instance of `InstanceEndpointConnectionInput` via:
+//
+//	InstanceEndpointConnectionArgs{...}
+type InstanceEndpointConnectionInput interface {
+	pulumi.Input
+
+	ToInstanceEndpointConnectionOutput() InstanceEndpointConnectionOutput
+	ToInstanceEndpointConnectionOutputWithContext(context.Context) InstanceEndpointConnectionOutput
+}
+
+type InstanceEndpointConnectionArgs struct {
+	// Detailed information of a PSC connection that is created through service connectivity automation.
+	// Structure is documented below.
+	PscAutoConnection InstanceEndpointConnectionPscAutoConnectionPtrInput `pulumi:"pscAutoConnection"`
+}
+
+func (InstanceEndpointConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceEndpointConnection)(nil)).Elem()
+}
+
+func (i InstanceEndpointConnectionArgs) ToInstanceEndpointConnectionOutput() InstanceEndpointConnectionOutput {
+	return i.ToInstanceEndpointConnectionOutputWithContext(context.Background())
+}
+
+func (i InstanceEndpointConnectionArgs) ToInstanceEndpointConnectionOutputWithContext(ctx context.Context) InstanceEndpointConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceEndpointConnectionOutput)
+}
+
+// InstanceEndpointConnectionArrayInput is an input type that accepts InstanceEndpointConnectionArray and InstanceEndpointConnectionArrayOutput values.
+// You can construct a concrete instance of `InstanceEndpointConnectionArrayInput` via:
+//
+//	InstanceEndpointConnectionArray{ InstanceEndpointConnectionArgs{...} }
+type InstanceEndpointConnectionArrayInput interface {
+	pulumi.Input
+
+	ToInstanceEndpointConnectionArrayOutput() InstanceEndpointConnectionArrayOutput
+	ToInstanceEndpointConnectionArrayOutputWithContext(context.Context) InstanceEndpointConnectionArrayOutput
+}
+
+type InstanceEndpointConnectionArray []InstanceEndpointConnectionInput
+
+func (InstanceEndpointConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceEndpointConnection)(nil)).Elem()
+}
+
+func (i InstanceEndpointConnectionArray) ToInstanceEndpointConnectionArrayOutput() InstanceEndpointConnectionArrayOutput {
+	return i.ToInstanceEndpointConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceEndpointConnectionArray) ToInstanceEndpointConnectionArrayOutputWithContext(ctx context.Context) InstanceEndpointConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceEndpointConnectionArrayOutput)
+}
+
+type InstanceEndpointConnectionOutput struct{ *pulumi.OutputState }
+
+func (InstanceEndpointConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceEndpointConnection)(nil)).Elem()
+}
+
+func (o InstanceEndpointConnectionOutput) ToInstanceEndpointConnectionOutput() InstanceEndpointConnectionOutput {
+	return o
+}
+
+func (o InstanceEndpointConnectionOutput) ToInstanceEndpointConnectionOutputWithContext(ctx context.Context) InstanceEndpointConnectionOutput {
+	return o
+}
+
+// Detailed information of a PSC connection that is created through service connectivity automation.
+// Structure is documented below.
+func (o InstanceEndpointConnectionOutput) PscAutoConnection() InstanceEndpointConnectionPscAutoConnectionPtrOutput {
+	return o.ApplyT(func(v InstanceEndpointConnection) *InstanceEndpointConnectionPscAutoConnection {
+		return v.PscAutoConnection
+	}).(InstanceEndpointConnectionPscAutoConnectionPtrOutput)
+}
+
+type InstanceEndpointConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceEndpointConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceEndpointConnection)(nil)).Elem()
+}
+
+func (o InstanceEndpointConnectionArrayOutput) ToInstanceEndpointConnectionArrayOutput() InstanceEndpointConnectionArrayOutput {
+	return o
+}
+
+func (o InstanceEndpointConnectionArrayOutput) ToInstanceEndpointConnectionArrayOutputWithContext(ctx context.Context) InstanceEndpointConnectionArrayOutput {
+	return o
+}
+
+func (o InstanceEndpointConnectionArrayOutput) Index(i pulumi.IntInput) InstanceEndpointConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceEndpointConnection {
+		return vs[0].([]InstanceEndpointConnection)[vs[1].(int)]
+	}).(InstanceEndpointConnectionOutput)
+}
+
+type InstanceEndpointConnectionPscAutoConnection struct {
+	// (Output)
+	// Output Only. Type of a PSC Connection.
+	// Possible values:
+	// CONNECTION_TYPE_DISCOVERY
+	// CONNECTION_TYPE_PRIMARY
+	// CONNECTION_TYPE_READER
+	ConnectionType *string `pulumi:"connectionType"`
+	// (Output)
+	// Output only. The URI of the consumer side forwarding rule.
+	// Format:
+	// projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+	ForwardingRule *string `pulumi:"forwardingRule"`
+	// (Output)
+	// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+	IpAddress *string `pulumi:"ipAddress"`
+	// (Output)
+	// Output only. The consumer network where the IP address resides, in the form of
+	// projects/{project_id}/global/networks/{network_id}.
+	Network *string `pulumi:"network"`
+	// (Output)
+	// Output only. Ports of the exposed endpoint.
+	Port *int `pulumi:"port"`
+	// (Output)
+	// Output only. The consumer projectId where the forwarding rule is created from.
+	ProjectId *string `pulumi:"projectId"`
+	// (Output)
+	// Output only. The PSC connection id of the forwarding rule connected to the
+	// service attachment.
+	PscConnectionId *string `pulumi:"pscConnectionId"`
+	// (Output)
+	// Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+	ServiceAttachment *string `pulumi:"serviceAttachment"`
+}
+
+// InstanceEndpointConnectionPscAutoConnectionInput is an input type that accepts InstanceEndpointConnectionPscAutoConnectionArgs and InstanceEndpointConnectionPscAutoConnectionOutput values.
+// You can construct a concrete instance of `InstanceEndpointConnectionPscAutoConnectionInput` via:
+//
+//	InstanceEndpointConnectionPscAutoConnectionArgs{...}
+type InstanceEndpointConnectionPscAutoConnectionInput interface {
+	pulumi.Input
+
+	ToInstanceEndpointConnectionPscAutoConnectionOutput() InstanceEndpointConnectionPscAutoConnectionOutput
+	ToInstanceEndpointConnectionPscAutoConnectionOutputWithContext(context.Context) InstanceEndpointConnectionPscAutoConnectionOutput
+}
+
+type InstanceEndpointConnectionPscAutoConnectionArgs struct {
+	// (Output)
+	// Output Only. Type of a PSC Connection.
+	// Possible values:
+	// CONNECTION_TYPE_DISCOVERY
+	// CONNECTION_TYPE_PRIMARY
+	// CONNECTION_TYPE_READER
+	ConnectionType pulumi.StringPtrInput `pulumi:"connectionType"`
+	// (Output)
+	// Output only. The URI of the consumer side forwarding rule.
+	// Format:
+	// projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+	ForwardingRule pulumi.StringPtrInput `pulumi:"forwardingRule"`
+	// (Output)
+	// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// (Output)
+	// Output only. The consumer network where the IP address resides, in the form of
+	// projects/{project_id}/global/networks/{network_id}.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// (Output)
+	// Output only. Ports of the exposed endpoint.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// (Output)
+	// Output only. The consumer projectId where the forwarding rule is created from.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// (Output)
+	// Output only. The PSC connection id of the forwarding rule connected to the
+	// service attachment.
+	PscConnectionId pulumi.StringPtrInput `pulumi:"pscConnectionId"`
+	// (Output)
+	// Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+	ServiceAttachment pulumi.StringPtrInput `pulumi:"serviceAttachment"`
+}
+
+func (InstanceEndpointConnectionPscAutoConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceEndpointConnectionPscAutoConnection)(nil)).Elem()
+}
+
+func (i InstanceEndpointConnectionPscAutoConnectionArgs) ToInstanceEndpointConnectionPscAutoConnectionOutput() InstanceEndpointConnectionPscAutoConnectionOutput {
+	return i.ToInstanceEndpointConnectionPscAutoConnectionOutputWithContext(context.Background())
+}
+
+func (i InstanceEndpointConnectionPscAutoConnectionArgs) ToInstanceEndpointConnectionPscAutoConnectionOutputWithContext(ctx context.Context) InstanceEndpointConnectionPscAutoConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceEndpointConnectionPscAutoConnectionOutput)
+}
+
+func (i InstanceEndpointConnectionPscAutoConnectionArgs) ToInstanceEndpointConnectionPscAutoConnectionPtrOutput() InstanceEndpointConnectionPscAutoConnectionPtrOutput {
+	return i.ToInstanceEndpointConnectionPscAutoConnectionPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceEndpointConnectionPscAutoConnectionArgs) ToInstanceEndpointConnectionPscAutoConnectionPtrOutputWithContext(ctx context.Context) InstanceEndpointConnectionPscAutoConnectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceEndpointConnectionPscAutoConnectionOutput).ToInstanceEndpointConnectionPscAutoConnectionPtrOutputWithContext(ctx)
+}
+
+// InstanceEndpointConnectionPscAutoConnectionPtrInput is an input type that accepts InstanceEndpointConnectionPscAutoConnectionArgs, InstanceEndpointConnectionPscAutoConnectionPtr and InstanceEndpointConnectionPscAutoConnectionPtrOutput values.
+// You can construct a concrete instance of `InstanceEndpointConnectionPscAutoConnectionPtrInput` via:
+//
+//	        InstanceEndpointConnectionPscAutoConnectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceEndpointConnectionPscAutoConnectionPtrInput interface {
+	pulumi.Input
+
+	ToInstanceEndpointConnectionPscAutoConnectionPtrOutput() InstanceEndpointConnectionPscAutoConnectionPtrOutput
+	ToInstanceEndpointConnectionPscAutoConnectionPtrOutputWithContext(context.Context) InstanceEndpointConnectionPscAutoConnectionPtrOutput
+}
+
+type instanceEndpointConnectionPscAutoConnectionPtrType InstanceEndpointConnectionPscAutoConnectionArgs
+
+func InstanceEndpointConnectionPscAutoConnectionPtr(v *InstanceEndpointConnectionPscAutoConnectionArgs) InstanceEndpointConnectionPscAutoConnectionPtrInput {
+	return (*instanceEndpointConnectionPscAutoConnectionPtrType)(v)
+}
+
+func (*instanceEndpointConnectionPscAutoConnectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceEndpointConnectionPscAutoConnection)(nil)).Elem()
+}
+
+func (i *instanceEndpointConnectionPscAutoConnectionPtrType) ToInstanceEndpointConnectionPscAutoConnectionPtrOutput() InstanceEndpointConnectionPscAutoConnectionPtrOutput {
+	return i.ToInstanceEndpointConnectionPscAutoConnectionPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceEndpointConnectionPscAutoConnectionPtrType) ToInstanceEndpointConnectionPscAutoConnectionPtrOutputWithContext(ctx context.Context) InstanceEndpointConnectionPscAutoConnectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceEndpointConnectionPscAutoConnectionPtrOutput)
+}
+
+type InstanceEndpointConnectionPscAutoConnectionOutput struct{ *pulumi.OutputState }
+
+func (InstanceEndpointConnectionPscAutoConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceEndpointConnectionPscAutoConnection)(nil)).Elem()
+}
+
+func (o InstanceEndpointConnectionPscAutoConnectionOutput) ToInstanceEndpointConnectionPscAutoConnectionOutput() InstanceEndpointConnectionPscAutoConnectionOutput {
+	return o
+}
+
+func (o InstanceEndpointConnectionPscAutoConnectionOutput) ToInstanceEndpointConnectionPscAutoConnectionOutputWithContext(ctx context.Context) InstanceEndpointConnectionPscAutoConnectionOutput {
+	return o
+}
+
+func (o InstanceEndpointConnectionPscAutoConnectionOutput) ToInstanceEndpointConnectionPscAutoConnectionPtrOutput() InstanceEndpointConnectionPscAutoConnectionPtrOutput {
+	return o.ToInstanceEndpointConnectionPscAutoConnectionPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceEndpointConnectionPscAutoConnectionOutput) ToInstanceEndpointConnectionPscAutoConnectionPtrOutputWithContext(ctx context.Context) InstanceEndpointConnectionPscAutoConnectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceEndpointConnectionPscAutoConnection) *InstanceEndpointConnectionPscAutoConnection {
+		return &v
+	}).(InstanceEndpointConnectionPscAutoConnectionPtrOutput)
+}
+
+// (Output)
+// Output Only. Type of a PSC Connection.
+// Possible values:
+// CONNECTION_TYPE_DISCOVERY
+// CONNECTION_TYPE_PRIMARY
+// CONNECTION_TYPE_READER
+func (o InstanceEndpointConnectionPscAutoConnectionOutput) ConnectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceEndpointConnectionPscAutoConnection) *string { return v.ConnectionType }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The URI of the consumer side forwarding rule.
+// Format:
+// projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+func (o InstanceEndpointConnectionPscAutoConnectionOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceEndpointConnectionPscAutoConnection) *string { return v.ForwardingRule }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+func (o InstanceEndpointConnectionPscAutoConnectionOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceEndpointConnectionPscAutoConnection) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The consumer network where the IP address resides, in the form of
+// projects/{project_id}/global/networks/{network_id}.
+func (o InstanceEndpointConnectionPscAutoConnectionOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceEndpointConnectionPscAutoConnection) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. Ports of the exposed endpoint.
+func (o InstanceEndpointConnectionPscAutoConnectionOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceEndpointConnectionPscAutoConnection) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// Output only. The consumer projectId where the forwarding rule is created from.
+func (o InstanceEndpointConnectionPscAutoConnectionOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceEndpointConnectionPscAutoConnection) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The PSC connection id of the forwarding rule connected to the
+// service attachment.
+func (o InstanceEndpointConnectionPscAutoConnectionOutput) PscConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceEndpointConnectionPscAutoConnection) *string { return v.PscConnectionId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+func (o InstanceEndpointConnectionPscAutoConnectionOutput) ServiceAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceEndpointConnectionPscAutoConnection) *string { return v.ServiceAttachment }).(pulumi.StringPtrOutput)
+}
+
+type InstanceEndpointConnectionPscAutoConnectionPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceEndpointConnectionPscAutoConnectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceEndpointConnectionPscAutoConnection)(nil)).Elem()
+}
+
+func (o InstanceEndpointConnectionPscAutoConnectionPtrOutput) ToInstanceEndpointConnectionPscAutoConnectionPtrOutput() InstanceEndpointConnectionPscAutoConnectionPtrOutput {
+	return o
+}
+
+func (o InstanceEndpointConnectionPscAutoConnectionPtrOutput) ToInstanceEndpointConnectionPscAutoConnectionPtrOutputWithContext(ctx context.Context) InstanceEndpointConnectionPscAutoConnectionPtrOutput {
+	return o
+}
+
+func (o InstanceEndpointConnectionPscAutoConnectionPtrOutput) Elem() InstanceEndpointConnectionPscAutoConnectionOutput {
+	return o.ApplyT(func(v *InstanceEndpointConnectionPscAutoConnection) InstanceEndpointConnectionPscAutoConnection {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceEndpointConnectionPscAutoConnection
+		return ret
+	}).(InstanceEndpointConnectionPscAutoConnectionOutput)
+}
+
+// (Output)
+// Output Only. Type of a PSC Connection.
+// Possible values:
+// CONNECTION_TYPE_DISCOVERY
+// CONNECTION_TYPE_PRIMARY
+// CONNECTION_TYPE_READER
+func (o InstanceEndpointConnectionPscAutoConnectionPtrOutput) ConnectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceEndpointConnectionPscAutoConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionType
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The URI of the consumer side forwarding rule.
+// Format:
+// projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+func (o InstanceEndpointConnectionPscAutoConnectionPtrOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceEndpointConnectionPscAutoConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardingRule
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+func (o InstanceEndpointConnectionPscAutoConnectionPtrOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceEndpointConnectionPscAutoConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The consumer network where the IP address resides, in the form of
+// projects/{project_id}/global/networks/{network_id}.
+func (o InstanceEndpointConnectionPscAutoConnectionPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceEndpointConnectionPscAutoConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. Ports of the exposed endpoint.
+func (o InstanceEndpointConnectionPscAutoConnectionPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceEndpointConnectionPscAutoConnection) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// Output only. The consumer projectId where the forwarding rule is created from.
+func (o InstanceEndpointConnectionPscAutoConnectionPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceEndpointConnectionPscAutoConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The PSC connection id of the forwarding rule connected to the
+// service attachment.
+func (o InstanceEndpointConnectionPscAutoConnectionPtrOutput) PscConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceEndpointConnectionPscAutoConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PscConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+func (o InstanceEndpointConnectionPscAutoConnectionPtrOutput) ServiceAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceEndpointConnectionPscAutoConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAttachment
+	}).(pulumi.StringPtrOutput)
+}
+
 type InstanceNodeConfig struct {
 	// (Output)
 	// Output only. Memory size in GB of the node.
@@ -1520,6 +2056,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDesiredPscAutoConnectionArrayInput)(nil)).Elem(), InstanceDesiredPscAutoConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDiscoveryEndpointInput)(nil)).Elem(), InstanceDiscoveryEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDiscoveryEndpointArrayInput)(nil)).Elem(), InstanceDiscoveryEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEndpointInput)(nil)).Elem(), InstanceEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEndpointArrayInput)(nil)).Elem(), InstanceEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEndpointConnectionInput)(nil)).Elem(), InstanceEndpointConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEndpointConnectionArrayInput)(nil)).Elem(), InstanceEndpointConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEndpointConnectionPscAutoConnectionInput)(nil)).Elem(), InstanceEndpointConnectionPscAutoConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEndpointConnectionPscAutoConnectionPtrInput)(nil)).Elem(), InstanceEndpointConnectionPscAutoConnectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNodeConfigInput)(nil)).Elem(), InstanceNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNodeConfigArrayInput)(nil)).Elem(), InstanceNodeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePersistenceConfigInput)(nil)).Elem(), InstancePersistenceConfigArgs{})
@@ -1540,6 +2082,12 @@ func init() {
 	pulumi.RegisterOutputType(InstanceDesiredPscAutoConnectionArrayOutput{})
 	pulumi.RegisterOutputType(InstanceDiscoveryEndpointOutput{})
 	pulumi.RegisterOutputType(InstanceDiscoveryEndpointArrayOutput{})
+	pulumi.RegisterOutputType(InstanceEndpointOutput{})
+	pulumi.RegisterOutputType(InstanceEndpointArrayOutput{})
+	pulumi.RegisterOutputType(InstanceEndpointConnectionOutput{})
+	pulumi.RegisterOutputType(InstanceEndpointConnectionArrayOutput{})
+	pulumi.RegisterOutputType(InstanceEndpointConnectionPscAutoConnectionOutput{})
+	pulumi.RegisterOutputType(InstanceEndpointConnectionPscAutoConnectionPtrOutput{})
 	pulumi.RegisterOutputType(InstanceNodeConfigOutput{})
 	pulumi.RegisterOutputType(InstanceNodeConfigArrayOutput{})
 	pulumi.RegisterOutputType(InstancePersistenceConfigOutput{})

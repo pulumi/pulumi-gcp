@@ -494,6 +494,15 @@ export namespace accesscontextmanager {
          * An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
          */
         accessLevel?: string;
+        /**
+         * A Google Cloud resource that is allowed to egress the perimeter.
+         * Requests from these resources are allowed to access data outside the perimeter.
+         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * The resource may be in any Google Cloud organization, not just the
+         * organization that the perimeter is defined in. `*` is not allowed, the
+         * case of allowing all Google Cloud resources only is not supported.
+         */
+        resource?: string;
     }
 
     export interface ServicePerimeterDryRunEgressPolicyEgressTo {
@@ -680,6 +689,15 @@ export namespace accesscontextmanager {
          * An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
          */
         accessLevel?: string;
+        /**
+         * A Google Cloud resource that is allowed to egress the perimeter.
+         * Requests from these resources are allowed to access data outside the perimeter.
+         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * The resource may be in any Google Cloud organization, not just the
+         * organization that the perimeter is defined in. `*` is not allowed, the
+         * case of allowing all Google Cloud resources only is not supported.
+         */
+        resource?: string;
     }
 
     export interface ServicePerimeterEgressPolicyEgressTo {
@@ -932,6 +950,15 @@ export namespace accesscontextmanager {
          * An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
          */
         accessLevel?: string;
+        /**
+         * A Google Cloud resource that is allowed to egress the perimeter.
+         * Requests from these resources are allowed to access data outside the perimeter.
+         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * The resource may be in any Google Cloud organization, not just the
+         * organization that the perimeter is defined in. `*` is not allowed, the
+         * case of allowing all Google Cloud resources only is not supported.
+         */
+        resource?: string;
     }
 
     export interface ServicePerimeterSpecEgressPolicyEgressTo {
@@ -1030,12 +1057,12 @@ export namespace accesscontextmanager {
          */
         accessLevel?: string;
         /**
-         * A Google Cloud resource that is allowed to ingress the perimeter.
-         * Requests from these resources will be allowed to access perimeter data.
-         * Currently only projects are allowed. Format `projects/{project_number}`
-         * The project may be in any Google Cloud organization, not just the
-         * organization that the perimeter is defined in. `*` is not allowed, the case
-         * of allowing all Google Cloud resources only is not supported.
+         * A Google Cloud resource that is allowed to egress the perimeter.
+         * Requests from these resources are allowed to access data outside the perimeter.
+         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * The resource may be in any Google Cloud organization, not just the
+         * organization that the perimeter is defined in. `*` is not allowed, the
+         * case of allowing all Google Cloud resources only is not supported.
          */
         resource?: string;
     }
@@ -1200,6 +1227,15 @@ export namespace accesscontextmanager {
          * An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
          */
         accessLevel?: string;
+        /**
+         * A Google Cloud resource that is allowed to egress the perimeter.
+         * Requests from these resources are allowed to access data outside the perimeter.
+         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * The resource may be in any Google Cloud organization, not just the
+         * organization that the perimeter is defined in. `*` is not allowed, the
+         * case of allowing all Google Cloud resources only is not supported.
+         */
+        resource?: string;
     }
 
     export interface ServicePerimeterStatusEgressPolicyEgressTo {
@@ -1298,12 +1334,12 @@ export namespace accesscontextmanager {
          */
         accessLevel?: string;
         /**
-         * A Google Cloud resource that is allowed to ingress the perimeter.
-         * Requests from these resources will be allowed to access perimeter data.
-         * Currently only projects are allowed. Format `projects/{project_number}`
-         * The project may be in any Google Cloud organization, not just the
-         * organization that the perimeter is defined in. `*` is not allowed, the case
-         * of allowing all Google Cloud resources only is not supported.
+         * A Google Cloud resource that is allowed to egress the perimeter.
+         * Requests from these resources are allowed to access data outside the perimeter.
+         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * The resource may be in any Google Cloud organization, not just the
+         * organization that the perimeter is defined in. `*` is not allowed, the
+         * case of allowing all Google Cloud resources only is not supported.
          */
         resource?: string;
     }
@@ -1544,6 +1580,15 @@ export namespace accesscontextmanager {
          * An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
          */
         accessLevel?: string;
+        /**
+         * A Google Cloud resource that is allowed to egress the perimeter.
+         * Requests from these resources are allowed to access data outside the perimeter.
+         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * The resource may be in any Google Cloud organization, not just the
+         * organization that the perimeter is defined in. `*` is not allowed, the
+         * case of allowing all Google Cloud resources only is not supported.
+         */
+        resource?: string;
     }
 
     export interface ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo {
@@ -1642,12 +1687,12 @@ export namespace accesscontextmanager {
          */
         accessLevel?: string;
         /**
-         * A Google Cloud resource that is allowed to ingress the perimeter.
-         * Requests from these resources will be allowed to access perimeter data.
-         * Currently only projects are allowed. Format `projects/{project_number}`
-         * The project may be in any Google Cloud organization, not just the
-         * organization that the perimeter is defined in. `*` is not allowed, the case
-         * of allowing all Google Cloud resources only is not supported.
+         * A Google Cloud resource that is allowed to egress the perimeter.
+         * Requests from these resources are allowed to access data outside the perimeter.
+         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * The resource may be in any Google Cloud organization, not just the
+         * organization that the perimeter is defined in. `*` is not allowed, the
+         * case of allowing all Google Cloud resources only is not supported.
          */
         resource?: string;
     }
@@ -1814,6 +1859,15 @@ export namespace accesscontextmanager {
          * An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
          */
         accessLevel?: string;
+        /**
+         * A Google Cloud resource that is allowed to egress the perimeter.
+         * Requests from these resources are allowed to access data outside the perimeter.
+         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * The resource may be in any Google Cloud organization, not just the
+         * organization that the perimeter is defined in. `*` is not allowed, the
+         * case of allowing all Google Cloud resources only is not supported.
+         */
+        resource?: string;
     }
 
     export interface ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo {
@@ -1912,12 +1966,12 @@ export namespace accesscontextmanager {
          */
         accessLevel?: string;
         /**
-         * A Google Cloud resource that is allowed to ingress the perimeter.
-         * Requests from these resources will be allowed to access perimeter data.
-         * Currently only projects are allowed. Format `projects/{project_number}`
-         * The project may be in any Google Cloud organization, not just the
-         * organization that the perimeter is defined in. `*` is not allowed, the case
-         * of allowing all Google Cloud resources only is not supported.
+         * A Google Cloud resource that is allowed to egress the perimeter.
+         * Requests from these resources are allowed to access data outside the perimeter.
+         * Currently only projects are allowed. Project format: `projects/{project_number}`.
+         * The resource may be in any Google Cloud organization, not just the
+         * organization that the perimeter is defined in. `*` is not allowed, the
+         * case of allowing all Google Cloud resources only is not supported.
          */
         resource?: string;
     }
@@ -3854,8 +3908,9 @@ export namespace appengine {
     export interface StandardAppVersionAutomaticScalingStandardSchedulerSettings {
         /**
          * Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
+         * **Note:** Starting from February 17, 2025, App Engine sets the maxInstances default for standard environment deployments to 20. This change doesn't impact existing apps. To override the default, specify a new value between 0 and 2147483647, and deploy a new version or redeploy over an existing version. To disable the maxInstances default configuration setting, specify the maximum permitted value 2147483647.
          */
-        maxInstances?: number;
+        maxInstances: number;
         /**
          * Minimum number of instances to run for this version. Set to zero to disable minInstances configuration.
          */
@@ -5989,6 +6044,43 @@ export namespace beyondcorp {
          * The PSC uri of an allocated connection.
          */
         pscUri?: string;
+    }
+
+    export interface ApplicationEndpointMatcher {
+        /**
+         * Required. Hostname of the application.
+         */
+        hostname: string;
+        /**
+         * Optional. Ports of the application.
+         *
+         * - - -
+         */
+        ports?: number[];
+    }
+
+    export interface ApplicationIamBindingCondition {
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: string;
+    }
+
+    export interface ApplicationIamMemberCondition {
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: string;
     }
 
     export interface GetAppConnectionApplicationEndpoint {
@@ -8228,6 +8320,75 @@ export namespace bigqueryanalyticshub {
         restrictQueryResult?: boolean;
     }
 
+    export interface ListingSubscriptionDestinationDataset {
+        /**
+         * A reference that identifies the destination dataset.
+         * Structure is documented below.
+         */
+        datasetReference: outputs.bigqueryanalyticshub.ListingSubscriptionDestinationDatasetDatasetReference;
+        /**
+         * A user-friendly description of the dataset.
+         */
+        description?: string;
+        /**
+         * A descriptive name for the dataset.
+         */
+        friendlyName?: string;
+        /**
+         * The labels associated with this dataset. You can use these to
+         * organize and group your datasets.
+         */
+        labels?: {[key: string]: string};
+        /**
+         * The geographic location where the dataset should reside.
+         * See https://cloud.google.com/bigquery/docs/locations for supported locations.
+         */
+        location: string;
+    }
+
+    export interface ListingSubscriptionDestinationDatasetDatasetReference {
+        /**
+         * A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+         */
+        datasetId: string;
+        /**
+         * The ID of the project containing this dataset.
+         *
+         * - - -
+         */
+        projectId: string;
+    }
+
+    export interface ListingSubscriptionLinkedDatasetMap {
+        /**
+         * (Output)
+         * Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+         */
+        linkedDataset: string;
+        /**
+         * (Output)
+         * Output only. Listing for which linked resource is created.
+         */
+        listing: string;
+        /**
+         * (Required) The identifier for this object. Format specified above.
+         */
+        resourceName: string;
+    }
+
+    export interface ListingSubscriptionLinkedResource {
+        /**
+         * (Output)
+         * Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+         */
+        linkedDataset: string;
+        /**
+         * (Output)
+         * Output only. Listing for which linked resource is created.
+         */
+        listing: string;
+    }
+
 }
 
 export namespace bigquerydatapolicy {
@@ -9334,6 +9495,17 @@ export namespace certificateauthority {
          * Expected to be in leaf-to-root order according to RFC 5246.
          */
         pemCertificates?: string[];
+    }
+
+    export interface AuthorityUserDefinedAccessUrls {
+        /**
+         * A list of URLs where this CertificateAuthority's CA certificate is published that is specified by users.
+         */
+        aiaIssuingCertificateUrls?: string[];
+        /**
+         * A list of URLs where this CertificateAuthority's CRLs are published that is specified by users.
+         */
+        crlAccessUrls?: string[];
     }
 
     export interface CaPoolIamBindingCondition {
@@ -11158,6 +11330,17 @@ export namespace certificateauthority {
          * Expected to be in leaf-to-root order according to RFC 5246.
          */
         pemCertificates: string[];
+    }
+
+    export interface GetAuthorityUserDefinedAccessUrl {
+        /**
+         * A list of URLs where this CertificateAuthority's CA certificate is published that is specified by users.
+         */
+        aiaIssuingCertificateUrls: string[];
+        /**
+         * A list of URLs where this CertificateAuthority's CRLs are published that is specified by users.
+         */
+        crlAccessUrls: string[];
     }
 
 }
@@ -18712,6 +18895,14 @@ export namespace cloudrunv2 {
          */
         args: string[];
         /**
+         * Base image for this container. If set, it indicates that the service is enrolled into automatic base image update.
+         */
+        baseImageUri: string;
+        /**
+         * The build info of the container image.
+         */
+        buildInfos: outputs.cloudrunv2.GetServiceTemplateContainerBuildInfo[];
+        /**
          * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
          */
         commands: string[];
@@ -18757,6 +18948,17 @@ export namespace cloudrunv2 {
          * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
          */
         workingDir: string;
+    }
+
+    export interface GetServiceTemplateContainerBuildInfo {
+        /**
+         * Entry point of the function when the image is a Cloud Run function.
+         */
+        functionTarget: string;
+        /**
+         * Source code location of the image.
+         */
+        sourceLocation: string;
     }
 
     export interface GetServiceTemplateContainerEnv {
@@ -19901,6 +20103,16 @@ export namespace cloudrunv2 {
          */
         args?: string[];
         /**
+         * Base image for this container. If set, it indicates that the service is enrolled into automatic base image update.
+         */
+        baseImageUri?: string;
+        /**
+         * (Output)
+         * The build info of the container image.
+         * Structure is documented below.
+         */
+        buildInfos: outputs.cloudrunv2.ServiceTemplateContainerBuildInfo[];
+        /**
          * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
          */
         commands?: string[];
@@ -19951,6 +20163,17 @@ export namespace cloudrunv2 {
          * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
          */
         workingDir?: string;
+    }
+
+    export interface ServiceTemplateContainerBuildInfo {
+        /**
+         * Entry point of the function when the image is a Cloud Run function.
+         */
+        functionTarget: string;
+        /**
+         * Source code location of the image.
+         */
+        sourceLocation: string;
     }
 
     export interface ServiceTemplateContainerEnv {
@@ -20032,6 +20255,8 @@ export namespace cloudrunv2 {
          * The name of the service to place in the gRPC HealthCheckRequest
          * (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
          * If this is not specified, the default behavior is defined by gRPC.
+         *
+         * <a name="nestedTemplateContainersContainersBuildInfo"></a>The `buildInfo` block contains:
          */
         service?: string;
     }
@@ -20143,6 +20368,8 @@ export namespace cloudrunv2 {
          * The name of the service to place in the gRPC HealthCheckRequest
          * (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
          * If this is not specified, the default behavior is defined by gRPC.
+         *
+         * <a name="nestedTemplateContainersContainersBuildInfo"></a>The `buildInfo` block contains:
          */
         service?: string;
     }
@@ -20892,6 +21119,35 @@ export namespace cloudtasks {
 }
 
 export namespace colab {
+    export interface NotebookExecutionDataformRepositorySource {
+        /**
+         * The commit SHA to read repository with. If unset, the file will be read at HEAD.
+         */
+        commitSha?: string;
+        /**
+         * The resource name of the Dataform Repository.
+         */
+        dataformRepositoryResourceName: string;
+    }
+
+    export interface NotebookExecutionDirectNotebookSource {
+        /**
+         * The base64-encoded contents of the input notebook file.
+         */
+        content: string;
+    }
+
+    export interface NotebookExecutionGcsNotebookSource {
+        /**
+         * The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+         */
+        generation?: string;
+        /**
+         * The Cloud Storage uri pointing to the ipynb file.
+         */
+        uri: string;
+    }
+
     export interface RuntimeNotebookRuntimeTemplateRef {
         /**
          * The resource name of the NotebookRuntimeTemplate based on which a NotebookRuntime will be created.
@@ -20978,6 +21234,115 @@ export namespace colab {
          * Enables secure boot for the runtime.
          */
         enableSecureBoot?: boolean;
+    }
+
+    export interface RuntimeTemplateSoftwareConfig {
+        /**
+         * Environment variables to be passed to the container.
+         * Structure is documented below.
+         */
+        envs?: outputs.colab.RuntimeTemplateSoftwareConfigEnv[];
+        /**
+         * Post startup script config.
+         * Structure is documented below.
+         */
+        postStartupScriptConfig?: outputs.colab.RuntimeTemplateSoftwareConfigPostStartupScriptConfig;
+    }
+
+    export interface RuntimeTemplateSoftwareConfigEnv {
+        /**
+         * Name of the environment variable. Must be a valid C identifier.
+         */
+        name?: string;
+        /**
+         * Variables that reference a $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
+         */
+        value?: string;
+    }
+
+    export interface RuntimeTemplateSoftwareConfigPostStartupScriptConfig {
+        /**
+         * Post startup script to run after runtime is started.
+         */
+        postStartupScript?: string;
+        /**
+         * Post startup script behavior that defines download and execution behavior.
+         * Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
+         */
+        postStartupScriptBehavior?: string;
+        /**
+         * Post startup script url to download. Example: https://bucket/script.sh.
+         */
+        postStartupScriptUrl?: string;
+    }
+
+    export interface ScheduleCreateNotebookExecutionJobRequest {
+        /**
+         * The NotebookExecutionJob to create.
+         * Structure is documented below.
+         */
+        notebookExecutionJob: outputs.colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob;
+    }
+
+    export interface ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob {
+        /**
+         * The Dataform Repository containing the input notebook.
+         * Structure is documented below.
+         */
+        dataformRepositorySource?: outputs.colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource;
+        /**
+         * Required. The display name of the Notebook Execution.
+         */
+        displayName: string;
+        /**
+         * Max running time of the execution job in seconds (default 86400s / 24 hrs). A duration in seconds with up to nine fractional digits, ending with "s". Example: "3.5s".
+         */
+        executionTimeout?: string;
+        /**
+         * The user email to run the execution as.
+         */
+        executionUser?: string;
+        /**
+         * The Cloud Storage uri for the input notebook.
+         * Structure is documented below.
+         */
+        gcsNotebookSource?: outputs.colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource;
+        /**
+         * The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
+         */
+        gcsOutputUri: string;
+        /**
+         * The NotebookRuntimeTemplate to source compute configuration from.
+         */
+        notebookRuntimeTemplateResourceName: string;
+        /**
+         * The service account to run the execution as.
+         */
+        serviceAccount?: string;
+    }
+
+    export interface ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource {
+        /**
+         * The commit SHA to read repository with. If unset, the file will be read at HEAD.
+         */
+        commitSha?: string;
+        /**
+         * The resource name of the Dataform Repository.
+         */
+        dataformRepositoryResourceName: string;
+    }
+
+    export interface ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource {
+        /**
+         * The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+         *
+         * - - -
+         */
+        generation?: string;
+        /**
+         * The Cloud Storage uri pointing to the ipynb file. Format: gs://bucket/notebook_file.ipynb
+         */
+        uri: string;
     }
 
 }
@@ -24528,6 +24893,18 @@ export namespace compute {
          * address number.
          */
         ipAddress: string;
+        /**
+         * Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+         * in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+         * Use one of the following formats to specify a sub-PDP when creating an
+         * IPv6 NetLB forwarding rule using BYOIP:
+         * Full resource URL, as in:
+         *   * 'https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}'
+         * Partial URL, as in:
+         *   * 'projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}'
+         *   * 'regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}'
+         */
+        ipCollection: string;
         /**
          * The IP protocol to which this rule applies.
          *
@@ -31517,6 +31894,51 @@ export namespace compute {
          * with the type of `GCE_VM_IP`
          */
         port?: number;
+    }
+
+    export interface NetworkFirewallPolicyPacketMirroringRuleMatch {
+        /**
+         * CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+         */
+        destIpRanges?: string[];
+        /**
+         * Pairs of IP protocols and ports that the rule should match.
+         * Structure is documented below.
+         *
+         *
+         * <a name="nestedMatchLayer4Configs"></a>The `layer4Configs` block supports:
+         */
+        layer4Configs: outputs.compute.NetworkFirewallPolicyPacketMirroringRuleMatchLayer4Config[];
+        /**
+         * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+         */
+        srcIpRanges?: string[];
+    }
+
+    export interface NetworkFirewallPolicyPacketMirroringRuleMatchLayer4Config {
+        /**
+         * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule.
+         * This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+         */
+        ipProtocol: string;
+        /**
+         * An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+         * Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+         */
+        ports?: string[];
+    }
+
+    export interface NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag {
+        /**
+         * Name of the secure tag, created with TagManager's TagValue API.
+         * diff_suppress_func: 'tpgresource.CompareSelfLinkOrResourceName'
+         */
+        name?: string;
+        /**
+         * (Output)
+         * State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+         */
+        state: string;
     }
 
     export interface NetworkFirewallPolicyRuleMatch {
@@ -43164,9 +43586,20 @@ export namespace container {
 
     export interface ClusterMonitoringConfigManagedPrometheus {
         /**
+         * Configuration options for GKE Auto-Monitoring.
+         */
+        autoMonitoringConfig: outputs.container.ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig;
+        /**
          * Whether or not the managed collection is enabled.
          */
         enabled: boolean;
+    }
+
+    export interface ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig {
+        /**
+         * Whether or not to enable GKE Auto-Monitoring. Supported values include: `ALL`, `NONE`.
+         */
+        scope: string;
     }
 
     export interface ClusterNetworkPolicy {
@@ -45611,9 +46044,20 @@ export namespace container {
 
     export interface GetClusterMonitoringConfigManagedPrometheus {
         /**
+         * Configuration for GKE Workload Auto-Monitoring.
+         */
+        autoMonitoringConfigs: outputs.container.GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig[];
+        /**
          * Whether or not the managed collection is enabled.
          */
         enabled: boolean;
+    }
+
+    export interface GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig {
+        /**
+         * The scope of auto-monitoring.
+         */
+        scope: string;
     }
 
     export interface GetClusterNetworkPolicy {
@@ -64969,6 +65413,30 @@ export namespace eventarc {
 }
 
 export namespace filestore {
+    export interface GetInstanceEffectiveReplication {
+        /**
+         * The replication role.
+         */
+        replicas: outputs.filestore.GetInstanceEffectiveReplicationReplica[];
+    }
+
+    export interface GetInstanceEffectiveReplicationReplica {
+        /**
+         * Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+         * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+         */
+        lastActiveSyncTime: string;
+        /**
+         * Output only. The replica state
+         */
+        state: string;
+        /**
+         * Output only. Additional information about the replication state, if available.
+         */
+        stateReasons: string[];
+    }
+
     export interface GetInstanceFileShare {
         /**
          * File share capacity in GiB. This must be at least 1024 GiB
@@ -65022,6 +65490,24 @@ export namespace filestore {
          * for not allowing root access. The default is NO_ROOT_SQUASH. Default value: "NO_ROOT_SQUASH" Possible values: ["NO_ROOT_SQUASH", "ROOT_SQUASH"]
          */
         squashMode: string;
+    }
+
+    export interface GetInstanceInitialReplication {
+        /**
+         * The replication role.
+         */
+        replicas: outputs.filestore.GetInstanceInitialReplicationReplica[];
+        /**
+         * The replication role. Default value: "STANDBY" Possible values: ["ROLE_UNSPECIFIED", "ACTIVE", "STANDBY"]
+         */
+        role: string;
+    }
+
+    export interface GetInstanceInitialReplicationReplica {
+        /**
+         * The peer instance.
+         */
+        peerInstance: string;
     }
 
     export interface GetInstanceNetwork {
@@ -65085,6 +65571,34 @@ export namespace filestore {
         maxIopsPerTb: number;
     }
 
+    export interface InstanceEffectiveReplication {
+        /**
+         * The replication role.
+         * Structure is documented below.
+         */
+        replicas?: outputs.filestore.InstanceEffectiveReplicationReplica[];
+    }
+
+    export interface InstanceEffectiveReplicationReplica {
+        /**
+         * (Output)
+         * Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+         * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+         */
+        lastActiveSyncTime: string;
+        /**
+         * (Output)
+         * Output only. The replica state
+         */
+        state: string;
+        /**
+         * (Output)
+         * Output only. Additional information about the replication state, if available.
+         */
+        stateReasons: string[];
+    }
+
     export interface InstanceFileShares {
         /**
          * File share capacity in GiB. This must be at least 1024 GiB
@@ -65141,6 +65655,27 @@ export namespace filestore {
          * Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`.
          */
         squashMode?: string;
+    }
+
+    export interface InstanceInitialReplication {
+        /**
+         * The replication role.
+         * Structure is documented below.
+         */
+        replicas?: outputs.filestore.InstanceInitialReplicationReplica[];
+        /**
+         * The replication role.
+         * Default value is `STANDBY`.
+         * Possible values are: `ROLE_UNSPECIFIED`, `ACTIVE`, `STANDBY`.
+         */
+        role?: string;
+    }
+
+    export interface InstanceInitialReplicationReplica {
+        /**
+         * The peer instance.
+         */
+        peerInstance: string;
     }
 
     export interface InstanceNetwork {
@@ -74710,6 +75245,73 @@ export namespace memorystore {
         port: number;
     }
 
+    export interface InstanceEndpoint {
+        /**
+         * A group of PSC connections. They are created in the same VPC network, one for each service attachment in the cluster.
+         * Structure is documented below.
+         */
+        connections?: outputs.memorystore.InstanceEndpointConnection[];
+    }
+
+    export interface InstanceEndpointConnection {
+        /**
+         * Detailed information of a PSC connection that is created through service connectivity automation.
+         * Structure is documented below.
+         */
+        pscAutoConnection?: outputs.memorystore.InstanceEndpointConnectionPscAutoConnection;
+    }
+
+    export interface InstanceEndpointConnectionPscAutoConnection {
+        /**
+         * (Output)
+         * Output Only. Type of a PSC Connection.
+         * Possible values:
+         * CONNECTION_TYPE_DISCOVERY
+         * CONNECTION_TYPE_PRIMARY
+         * CONNECTION_TYPE_READER
+         */
+        connectionType: string;
+        /**
+         * (Output)
+         * Output only. The URI of the consumer side forwarding rule.
+         * Format:
+         * projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+         */
+        forwardingRule: string;
+        /**
+         * (Output)
+         * Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+         */
+        ipAddress: string;
+        /**
+         * (Output)
+         * Output only. The consumer network where the IP address resides, in the form of
+         * projects/{project_id}/global/networks/{network_id}.
+         */
+        network: string;
+        /**
+         * (Output)
+         * Output only. Ports of the exposed endpoint.
+         */
+        port: number;
+        /**
+         * (Output)
+         * Output only. The consumer projectId where the forwarding rule is created from.
+         */
+        projectId: string;
+        /**
+         * (Output)
+         * Output only. The PSC connection id of the forwarding rule connected to the
+         * service attachment.
+         */
+        pscConnectionId: string;
+        /**
+         * (Output)
+         * Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+         */
+        serviceAttachment: string;
+    }
+
     export interface InstanceNodeConfig {
         /**
          * (Output)
@@ -75358,9 +75960,10 @@ export namespace monitoring {
          * Labels to add to or overwrite in the PromQL query result. Label names
          * must be valid.
          * Label values can be templatized by using variables. The only available
-         * variable names are the names of the labels in the PromQL result, including
-         * "__name__" and "value". "labels" may be empty. This field is intended to be
-         * used for organizing and identifying the AlertPolicy
+         * variable names are the names of the labels in the PromQL result,
+         * although label names beginning with \_\_ (two "\_") are reserved for
+         * internal use. "labels" may be empty. This field is intended to be used
+         * for organizing and identifying the AlertPolicy.
          */
         labels?: {[key: string]: string};
         /**
@@ -78165,6 +78768,12 @@ export namespace networkservices {
          */
         routeAction?: outputs.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction;
         /**
+         * Allow overriding the set of methods that are allowed for this route.
+         * When not set, Media CDN allows only "GET", "HEAD", and "OPTIONS".
+         * Structure is documented below.
+         */
+        routeMethods?: outputs.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods;
+        /**
          * The URL redirect configuration for requests that match this route.
          * Structure is documented below.
          */
@@ -78325,6 +78934,12 @@ export namespace networkservices {
          * Structure is documented below.
          */
         cdnPolicy?: outputs.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy;
+        /**
+         * Setting the compression mode to automatic enables dynamic compression for every eligible response.
+         * When dynamic compression is enabled, it is recommended to also set a cache policy to maximize efficiency.
+         * Possible values are: `DISABLED`, `AUTOMATIC`.
+         */
+        compressionMode?: string;
         /**
          * CORSPolicy defines Cross-Origin-Resource-Sharing configuration, including which CORS response headers will be set.
          * Structure is documented below.
@@ -78595,6 +79210,14 @@ export namespace networkservices {
          * specified.
          */
         pathTemplateRewrite?: string;
+    }
+
+    export interface EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods {
+        /**
+         * The non-empty set of HTTP methods that are allowed for this route.
+         * Any combination of "GET", "HEAD", "OPTIONS", "PUT", "POST", "DELETE", and "PATCH".
+         */
+        allowedMethods?: string[];
     }
 
     export interface EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect {

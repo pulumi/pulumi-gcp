@@ -35,6 +35,7 @@ __all__ = [
     'AuthorityKeySpec',
     'AuthoritySubordinateConfig',
     'AuthoritySubordinateConfigPemIssuerChain',
+    'AuthorityUserDefinedAccessUrls',
     'CaPoolIamBindingCondition',
     'CaPoolIamMemberCondition',
     'CaPoolIssuancePolicy',
@@ -126,6 +127,7 @@ __all__ = [
     'GetAuthorityKeySpecResult',
     'GetAuthoritySubordinateConfigResult',
     'GetAuthoritySubordinateConfigPemIssuerChainResult',
+    'GetAuthorityUserDefinedAccessUrlResult',
 ]
 
 @pulumi.output_type
@@ -1573,6 +1575,56 @@ class AuthoritySubordinateConfigPemIssuerChain(dict):
         Expected to be in leaf-to-root order according to RFC 5246.
         """
         return pulumi.get(self, "pem_certificates")
+
+
+@pulumi.output_type
+class AuthorityUserDefinedAccessUrls(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aiaIssuingCertificateUrls":
+            suggest = "aia_issuing_certificate_urls"
+        elif key == "crlAccessUrls":
+            suggest = "crl_access_urls"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthorityUserDefinedAccessUrls. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthorityUserDefinedAccessUrls.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthorityUserDefinedAccessUrls.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 aia_issuing_certificate_urls: Optional[Sequence[str]] = None,
+                 crl_access_urls: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] aia_issuing_certificate_urls: A list of URLs where this CertificateAuthority's CA certificate is published that is specified by users.
+        :param Sequence[str] crl_access_urls: A list of URLs where this CertificateAuthority's CRLs are published that is specified by users.
+        """
+        if aia_issuing_certificate_urls is not None:
+            pulumi.set(__self__, "aia_issuing_certificate_urls", aia_issuing_certificate_urls)
+        if crl_access_urls is not None:
+            pulumi.set(__self__, "crl_access_urls", crl_access_urls)
+
+    @property
+    @pulumi.getter(name="aiaIssuingCertificateUrls")
+    def aia_issuing_certificate_urls(self) -> Optional[Sequence[str]]:
+        """
+        A list of URLs where this CertificateAuthority's CA certificate is published that is specified by users.
+        """
+        return pulumi.get(self, "aia_issuing_certificate_urls")
+
+    @property
+    @pulumi.getter(name="crlAccessUrls")
+    def crl_access_urls(self) -> Optional[Sequence[str]]:
+        """
+        A list of URLs where this CertificateAuthority's CRLs are published that is specified by users.
+        """
+        return pulumi.get(self, "crl_access_urls")
 
 
 @pulumi.output_type
@@ -7900,5 +7952,34 @@ class GetAuthoritySubordinateConfigPemIssuerChainResult(dict):
         Expected to be in leaf-to-root order according to RFC 5246.
         """
         return pulumi.get(self, "pem_certificates")
+
+
+@pulumi.output_type
+class GetAuthorityUserDefinedAccessUrlResult(dict):
+    def __init__(__self__, *,
+                 aia_issuing_certificate_urls: Sequence[str],
+                 crl_access_urls: Sequence[str]):
+        """
+        :param Sequence[str] aia_issuing_certificate_urls: A list of URLs where this CertificateAuthority's CA certificate is published that is specified by users.
+        :param Sequence[str] crl_access_urls: A list of URLs where this CertificateAuthority's CRLs are published that is specified by users.
+        """
+        pulumi.set(__self__, "aia_issuing_certificate_urls", aia_issuing_certificate_urls)
+        pulumi.set(__self__, "crl_access_urls", crl_access_urls)
+
+    @property
+    @pulumi.getter(name="aiaIssuingCertificateUrls")
+    def aia_issuing_certificate_urls(self) -> Sequence[str]:
+        """
+        A list of URLs where this CertificateAuthority's CA certificate is published that is specified by users.
+        """
+        return pulumi.get(self, "aia_issuing_certificate_urls")
+
+    @property
+    @pulumi.getter(name="crlAccessUrls")
+    def crl_access_urls(self) -> Sequence[str]:
+        """
+        A list of URLs where this CertificateAuthority's CRLs are published that is specified by users.
+        """
+        return pulumi.get(self, "crl_access_urls")
 
 

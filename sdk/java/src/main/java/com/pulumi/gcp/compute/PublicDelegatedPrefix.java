@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.PublicDelegatedPrefixArgs;
 import com.pulumi.gcp.compute.inputs.PublicDelegatedPrefixState;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -73,6 +74,65 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Public Delegated Prefixes Ipv6
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.PublicAdvertisedPrefix;
+ * import com.pulumi.gcp.compute.PublicAdvertisedPrefixArgs;
+ * import com.pulumi.gcp.compute.PublicDelegatedPrefix;
+ * import com.pulumi.gcp.compute.PublicDelegatedPrefixArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var advertised = new PublicAdvertisedPrefix("advertised", PublicAdvertisedPrefixArgs.builder()
+ *             .name("ipv6-pap")
+ *             .description("description")
+ *             .dnsVerificationIp("2001:db8::")
+ *             .ipCidrRange("2001:db8::/32")
+ *             .pdpScope("REGIONAL")
+ *             .build());
+ * 
+ *         var prefix = new PublicDelegatedPrefix("prefix", PublicDelegatedPrefixArgs.builder()
+ *             .name("ipv6-root-pdp")
+ *             .description("test-delegation-mode-pdp")
+ *             .region("us-west1")
+ *             .ipCidrRange("2001:db8::/40")
+ *             .parentPrefix(advertised.id())
+ *             .mode("DELEGATION")
+ *             .build());
+ * 
+ *         var subprefix = new PublicDelegatedPrefix("subprefix", PublicDelegatedPrefixArgs.builder()
+ *             .name("ipv6-sub-pdp")
+ *             .description("test-forwarding-rule-mode-pdp")
+ *             .region("us-west1")
+ *             .ipCidrRange("2001:db8::/48")
+ *             .parentPrefix(prefix.id())
+ *             .allocatablePrefixLength(64)
+ *             .mode("EXTERNAL_IPV6_FORWARDING_RULE_CREATION")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -108,6 +168,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix")
 public class PublicDelegatedPrefix extends com.pulumi.resources.CustomResource {
     /**
+     * The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+     * 
+     */
+    @Export(name="allocatablePrefixLength", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> allocatablePrefixLength;
+
+    /**
+     * @return The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+     * 
+     */
+    public Output<Optional<Integer>> allocatablePrefixLength() {
+        return Codegen.optional(this.allocatablePrefixLength);
+    }
+    /**
      * An optional description of this resource.
      * 
      */
@@ -122,7 +196,7 @@ public class PublicDelegatedPrefix extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+     * The IP address range, in CIDR format, represented by this public delegated prefix.
      * 
      * ***
      * 
@@ -131,7 +205,7 @@ public class PublicDelegatedPrefix extends com.pulumi.resources.CustomResource {
     private Output<String> ipCidrRange;
 
     /**
-     * @return The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+     * @return The IP address range, in CIDR format, represented by this public delegated prefix.
      * 
      * ***
      * 
@@ -152,6 +226,24 @@ public class PublicDelegatedPrefix extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> isLiveMigration() {
         return Codegen.optional(this.isLiveMigration);
+    }
+    /**
+     * Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
+     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
+     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+     * 
+     */
+    @Export(name="mode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> mode;
+
+    /**
+     * @return Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
+     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
+     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+     * 
+     */
+    public Output<Optional<String>> mode() {
+        return Codegen.optional(this.mode);
     }
     /**
      * Name of the resource. The name must be 1-63 characters long, and

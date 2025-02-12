@@ -27,6 +27,7 @@ class InstanceArgs:
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  deletion_protection_reason: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 initial_replication: Optional[pulumi.Input['InstanceInitialReplicationArgs']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -49,6 +50,8 @@ class InstanceArgs:
         :param pulumi.Input[bool] deletion_protection_enabled: Indicates whether the instance is protected against deletion.
         :param pulumi.Input[str] deletion_protection_reason: The reason for enabling deletion protection.
         :param pulumi.Input[str] description: A description of the instance.
+        :param pulumi.Input['InstanceInitialReplicationArgs'] initial_replication: Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+               instance only, indicating the active as the peer_instance
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
                labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
@@ -75,6 +78,8 @@ class InstanceArgs:
             pulumi.set(__self__, "deletion_protection_reason", deletion_protection_reason)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if initial_replication is not None:
+            pulumi.set(__self__, "initial_replication", initial_replication)
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
         if labels is not None:
@@ -173,6 +178,19 @@ class InstanceArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="initialReplication")
+    def initial_replication(self) -> Optional[pulumi.Input['InstanceInitialReplicationArgs']]:
+        """
+        Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+        instance only, indicating the active as the peer_instance
+        """
+        return pulumi.get(self, "initial_replication")
+
+    @initial_replication.setter
+    def initial_replication(self, value: Optional[pulumi.Input['InstanceInitialReplicationArgs']]):
+        pulumi.set(self, "initial_replication", value)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -297,8 +315,10 @@ class _InstanceState:
                  deletion_protection_reason: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 effective_replications: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEffectiveReplicationArgs']]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  file_shares: Optional[pulumi.Input['InstanceFileSharesArgs']] = None,
+                 initial_replication: Optional[pulumi.Input['InstanceInitialReplicationArgs']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -318,11 +338,15 @@ class _InstanceState:
         :param pulumi.Input[str] deletion_protection_reason: The reason for enabling deletion protection.
         :param pulumi.Input[str] description: A description of the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceEffectiveReplicationArgs']]] effective_replications: Output only fields for replication configuration.
+               Structure is documented below.
         :param pulumi.Input[str] etag: Server-specified ETag for the instance resource to prevent
                simultaneous updates from overwriting each other.
         :param pulumi.Input['InstanceFileSharesArgs'] file_shares: File system shares on the instance. For this version, only a
                single file share is supported.
                Structure is documented below.
+        :param pulumi.Input['InstanceInitialReplicationArgs'] initial_replication: Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+               instance only, indicating the active as the peer_instance
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
                labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
@@ -357,10 +381,14 @@ class _InstanceState:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if effective_replications is not None:
+            pulumi.set(__self__, "effective_replications", effective_replications)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if file_shares is not None:
             pulumi.set(__self__, "file_shares", file_shares)
+        if initial_replication is not None:
+            pulumi.set(__self__, "initial_replication", initial_replication)
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
         if labels is not None:
@@ -450,6 +478,19 @@ class _InstanceState:
         pulumi.set(self, "effective_labels", value)
 
     @property
+    @pulumi.getter(name="effectiveReplications")
+    def effective_replications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEffectiveReplicationArgs']]]]:
+        """
+        Output only fields for replication configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "effective_replications")
+
+    @effective_replications.setter
+    def effective_replications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEffectiveReplicationArgs']]]]):
+        pulumi.set(self, "effective_replications", value)
+
+    @property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
@@ -475,6 +516,19 @@ class _InstanceState:
     @file_shares.setter
     def file_shares(self, value: Optional[pulumi.Input['InstanceFileSharesArgs']]):
         pulumi.set(self, "file_shares", value)
+
+    @property
+    @pulumi.getter(name="initialReplication")
+    def initial_replication(self) -> Optional[pulumi.Input['InstanceInitialReplicationArgs']]:
+        """
+        Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+        instance only, indicating the active as the peer_instance
+        """
+        return pulumi.get(self, "initial_replication")
+
+    @initial_replication.setter
+    def initial_replication(self, value: Optional[pulumi.Input['InstanceInitialReplicationArgs']]):
+        pulumi.set(self, "initial_replication", value)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -640,6 +694,7 @@ class Instance(pulumi.CustomResource):
                  deletion_protection_reason: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  file_shares: Optional[pulumi.Input[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']]] = None,
+                 initial_replication: Optional[pulumi.Input[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict']]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -797,6 +852,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']] file_shares: File system shares on the instance. For this version, only a
                single file share is supported.
                Structure is documented below.
+        :param pulumi.Input[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict']] initial_replication: Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+               instance only, indicating the active as the peer_instance
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
                labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
@@ -981,6 +1038,7 @@ class Instance(pulumi.CustomResource):
                  deletion_protection_reason: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  file_shares: Optional[pulumi.Input[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']]] = None,
+                 initial_replication: Optional[pulumi.Input[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict']]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -1007,6 +1065,7 @@ class Instance(pulumi.CustomResource):
             if file_shares is None and not opts.urn:
                 raise TypeError("Missing required property 'file_shares'")
             __props__.__dict__["file_shares"] = file_shares
+            __props__.__dict__["initial_replication"] = initial_replication
             __props__.__dict__["kms_key_name"] = kms_key_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
@@ -1024,6 +1083,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["zone"] = zone
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["effective_replications"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["pulumi_labels"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
@@ -1043,8 +1103,10 @@ class Instance(pulumi.CustomResource):
             deletion_protection_reason: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            effective_replications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEffectiveReplicationArgs', 'InstanceEffectiveReplicationArgsDict']]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             file_shares: Optional[pulumi.Input[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']]] = None,
+            initial_replication: Optional[pulumi.Input[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict']]] = None,
             kms_key_name: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -1069,11 +1131,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] deletion_protection_reason: The reason for enabling deletion protection.
         :param pulumi.Input[str] description: A description of the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEffectiveReplicationArgs', 'InstanceEffectiveReplicationArgsDict']]]] effective_replications: Output only fields for replication configuration.
+               Structure is documented below.
         :param pulumi.Input[str] etag: Server-specified ETag for the instance resource to prevent
                simultaneous updates from overwriting each other.
         :param pulumi.Input[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']] file_shares: File system shares on the instance. For this version, only a
                single file share is supported.
                Structure is documented below.
+        :param pulumi.Input[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict']] initial_replication: Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+               instance only, indicating the active as the peer_instance
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
                labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
@@ -1107,8 +1173,10 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["deletion_protection_reason"] = deletion_protection_reason
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["effective_replications"] = effective_replications
         __props__.__dict__["etag"] = etag
         __props__.__dict__["file_shares"] = file_shares
+        __props__.__dict__["initial_replication"] = initial_replication
         __props__.__dict__["kms_key_name"] = kms_key_name
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
@@ -1164,6 +1232,15 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "effective_labels")
 
     @property
+    @pulumi.getter(name="effectiveReplications")
+    def effective_replications(self) -> pulumi.Output[Sequence['outputs.InstanceEffectiveReplication']]:
+        """
+        Output only fields for replication configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "effective_replications")
+
+    @property
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
@@ -1181,6 +1258,15 @@ class Instance(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "file_shares")
+
+    @property
+    @pulumi.getter(name="initialReplication")
+    def initial_replication(self) -> pulumi.Output[Optional['outputs.InstanceInitialReplication']]:
+        """
+        Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+        instance only, indicating the active as the peer_instance
+        """
+        return pulumi.get(self, "initial_replication")
 
     @property
     @pulumi.getter(name="kmsKeyName")

@@ -104,9 +104,10 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
      * Labels to add to or overwrite in the PromQL query result. Label names
      * must be valid.
      * Label values can be templatized by using variables. The only available
-     * variable names are the names of the labels in the PromQL result, including
-     * &#34;__name__&#34; and &#34;value&#34;. &#34;labels&#34; may be empty. This field is intended to be
-     * used for organizing and identifying the AlertPolicy
+     * variable names are the names of the labels in the PromQL result,
+     * although label names beginning with \_\_ (two &#34;\_&#34;) are reserved for
+     * internal use. &#34;labels&#34; may be empty. This field is intended to be used
+     * for organizing and identifying the AlertPolicy.
      * 
      */
     @Import(name="labels")
@@ -116,9 +117,10 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
      * @return Labels to add to or overwrite in the PromQL query result. Label names
      * must be valid.
      * Label values can be templatized by using variables. The only available
-     * variable names are the names of the labels in the PromQL result, including
-     * &#34;__name__&#34; and &#34;value&#34;. &#34;labels&#34; may be empty. This field is intended to be
-     * used for organizing and identifying the AlertPolicy
+     * variable names are the names of the labels in the PromQL result,
+     * although label names beginning with \_\_ (two &#34;\_&#34;) are reserved for
+     * internal use. &#34;labels&#34; may be empty. This field is intended to be used
+     * for organizing and identifying the AlertPolicy.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -307,9 +309,10 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
          * @param labels Labels to add to or overwrite in the PromQL query result. Label names
          * must be valid.
          * Label values can be templatized by using variables. The only available
-         * variable names are the names of the labels in the PromQL result, including
-         * &#34;__name__&#34; and &#34;value&#34;. &#34;labels&#34; may be empty. This field is intended to be
-         * used for organizing and identifying the AlertPolicy
+         * variable names are the names of the labels in the PromQL result,
+         * although label names beginning with \_\_ (two &#34;\_&#34;) are reserved for
+         * internal use. &#34;labels&#34; may be empty. This field is intended to be used
+         * for organizing and identifying the AlertPolicy.
          * 
          * @return builder
          * 
@@ -323,9 +326,10 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
          * @param labels Labels to add to or overwrite in the PromQL query result. Label names
          * must be valid.
          * Label values can be templatized by using variables. The only available
-         * variable names are the names of the labels in the PromQL result, including
-         * &#34;__name__&#34; and &#34;value&#34;. &#34;labels&#34; may be empty. This field is intended to be
-         * used for organizing and identifying the AlertPolicy
+         * variable names are the names of the labels in the PromQL result,
+         * although label names beginning with \_\_ (two &#34;\_&#34;) are reserved for
+         * internal use. &#34;labels&#34; may be empty. This field is intended to be used
+         * for organizing and identifying the AlertPolicy.
          * 
          * @return builder
          * 

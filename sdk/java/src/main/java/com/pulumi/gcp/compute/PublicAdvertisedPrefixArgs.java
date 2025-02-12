@@ -47,7 +47,7 @@ public final class PublicAdvertisedPrefixArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+     * The address range, in CIDR format, represented by this public advertised prefix.
      * 
      * ***
      * 
@@ -56,7 +56,7 @@ public final class PublicAdvertisedPrefixArgs extends com.pulumi.resources.Resou
     private Output<String> ipCidrRange;
 
     /**
-     * @return The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+     * @return The address range, in CIDR format, represented by this public advertised prefix.
      * 
      * ***
      * 
@@ -93,7 +93,11 @@ public final class PublicAdvertisedPrefixArgs extends com.pulumi.resources.Resou
     /**
      * Specifies how child public delegated prefix will be scoped. pdpScope
      * must be one of: GLOBAL, REGIONAL
-     * Possible values are: `GLOBAL`, `REGIONAL`.
+     * * REGIONAL: The public delegated prefix is regional only. The
+     *   provisioning will take a few minutes.
+     * * GLOBAL: The public delegated prefix is global only. The provisioning
+     *   will take ~4 weeks.
+     *   Possible values are: `GLOBAL`, `REGIONAL`.
      * 
      */
     @Import(name="pdpScope")
@@ -102,7 +106,11 @@ public final class PublicAdvertisedPrefixArgs extends com.pulumi.resources.Resou
     /**
      * @return Specifies how child public delegated prefix will be scoped. pdpScope
      * must be one of: GLOBAL, REGIONAL
-     * Possible values are: `GLOBAL`, `REGIONAL`.
+     * * REGIONAL: The public delegated prefix is regional only. The
+     *   provisioning will take a few minutes.
+     * * GLOBAL: The public delegated prefix is global only. The provisioning
+     *   will take ~4 weeks.
+     *   Possible values are: `GLOBAL`, `REGIONAL`.
      * 
      */
     public Optional<Output<String>> pdpScope() {
@@ -198,7 +206,7 @@ public final class PublicAdvertisedPrefixArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param ipCidrRange The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+         * @param ipCidrRange The address range, in CIDR format, represented by this public advertised prefix.
          * 
          * ***
          * 
@@ -211,7 +219,7 @@ public final class PublicAdvertisedPrefixArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param ipCidrRange The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+         * @param ipCidrRange The address range, in CIDR format, represented by this public advertised prefix.
          * 
          * ***
          * 
@@ -256,7 +264,11 @@ public final class PublicAdvertisedPrefixArgs extends com.pulumi.resources.Resou
         /**
          * @param pdpScope Specifies how child public delegated prefix will be scoped. pdpScope
          * must be one of: GLOBAL, REGIONAL
-         * Possible values are: `GLOBAL`, `REGIONAL`.
+         * * REGIONAL: The public delegated prefix is regional only. The
+         *   provisioning will take a few minutes.
+         * * GLOBAL: The public delegated prefix is global only. The provisioning
+         *   will take ~4 weeks.
+         *   Possible values are: `GLOBAL`, `REGIONAL`.
          * 
          * @return builder
          * 
@@ -269,7 +281,11 @@ public final class PublicAdvertisedPrefixArgs extends com.pulumi.resources.Resou
         /**
          * @param pdpScope Specifies how child public delegated prefix will be scoped. pdpScope
          * must be one of: GLOBAL, REGIONAL
-         * Possible values are: `GLOBAL`, `REGIONAL`.
+         * * REGIONAL: The public delegated prefix is regional only. The
+         *   provisioning will take a few minutes.
+         * * GLOBAL: The public delegated prefix is global only. The provisioning
+         *   will take ~4 weeks.
+         *   Possible values are: `GLOBAL`, `REGIONAL`.
          * 
          * @return builder
          * 

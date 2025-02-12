@@ -5,20 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Hierarchical firewall policy rules let you create and enforce a consistent firewall policy across your organization. Rules can explicitly allow or deny connections or delegate evaluation to lower level policies. Policies can be created within organizations or folders.
- *
- * This resource should be generally be used with `gcp.compute.FirewallPolicyAssociation` and `gcp.compute.FirewallPolicyRule`
- *
- * For more information see the [official documentation](https://cloud.google.com/vpc/docs/firewall-policies)
- *
  * ## Example Usage
+ *
+ * ### Firewall Policy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.compute.FirewallPolicy("default", {
- *     parent: "organizations/12345",
+ *     parent: "organizations/123456789",
  *     shortName: "my-policy",
  *     description: "Example Resource",
  * });
@@ -27,6 +23,12 @@ import * as utilities from "../utilities";
  * ## Import
  *
  * FirewallPolicy can be imported using any of these accepted formats:
+ *
+ * * `locations/global/firewallPolicies/{{name}}`
+ *
+ * * `{{name}}`
+ *
+ * When using the `pulumi import` command, FirewallPolicy can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/firewallPolicy:FirewallPolicy default locations/global/firewallPolicies/{{name}}
@@ -86,6 +88,9 @@ export class FirewallPolicy extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The parent of the firewall policy.
+     *
+     *
+     * - - -
      */
     public readonly parent!: pulumi.Output<string>;
     /**
@@ -101,11 +106,9 @@ export class FirewallPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
     /**
-     * User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-     *
-     *
-     *
-     * - - -
+     * User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created.
+     * This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035.
+     * Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     public readonly shortName!: pulumi.Output<string>;
 
@@ -182,6 +185,9 @@ export interface FirewallPolicyState {
     name?: pulumi.Input<string>;
     /**
      * The parent of the firewall policy.
+     *
+     *
+     * - - -
      */
     parent?: pulumi.Input<string>;
     /**
@@ -197,11 +203,9 @@ export interface FirewallPolicyState {
      */
     selfLinkWithId?: pulumi.Input<string>;
     /**
-     * User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-     *
-     *
-     *
-     * - - -
+     * User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created.
+     * This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035.
+     * Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     shortName?: pulumi.Input<string>;
 }
@@ -216,14 +220,15 @@ export interface FirewallPolicyArgs {
     description?: pulumi.Input<string>;
     /**
      * The parent of the firewall policy.
-     */
-    parent: pulumi.Input<string>;
-    /**
-     * User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-     *
      *
      *
      * - - -
+     */
+    parent: pulumi.Input<string>;
+    /**
+     * User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created.
+     * This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035.
+     * Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     shortName: pulumi.Input<string>;
 }

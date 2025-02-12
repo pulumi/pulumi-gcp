@@ -10,7 +10,9 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.filestore.InstanceArgs;
 import com.pulumi.gcp.filestore.inputs.InstanceState;
+import com.pulumi.gcp.filestore.outputs.InstanceEffectiveReplication;
 import com.pulumi.gcp.filestore.outputs.InstanceFileShares;
+import com.pulumi.gcp.filestore.outputs.InstanceInitialReplication;
 import com.pulumi.gcp.filestore.outputs.InstanceNetwork;
 import com.pulumi.gcp.filestore.outputs.InstancePerformanceConfig;
 import java.lang.Boolean;
@@ -346,6 +348,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
+     * Output only fields for replication configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="effectiveReplications", refs={List.class,InstanceEffectiveReplication.class}, tree="[0,1]")
+    private Output<List<InstanceEffectiveReplication>> effectiveReplications;
+
+    /**
+     * @return Output only fields for replication configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<InstanceEffectiveReplication>> effectiveReplications() {
+        return this.effectiveReplications;
+    }
+    /**
      * Server-specified ETag for the instance resource to prevent
      * simultaneous updates from overwriting each other.
      * 
@@ -378,6 +396,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<InstanceFileShares> fileShares() {
         return this.fileShares;
+    }
+    /**
+     * Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+     * instance only, indicating the active as the peer_instance
+     * 
+     */
+    @Export(name="initialReplication", refs={InstanceInitialReplication.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceInitialReplication> initialReplication;
+
+    /**
+     * @return Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+     * instance only, indicating the active as the peer_instance
+     * 
+     */
+    public Output<Optional<InstanceInitialReplication>> initialReplication() {
+        return Codegen.optional(this.initialReplication);
     }
     /**
      * KMS key name used for data encryption.

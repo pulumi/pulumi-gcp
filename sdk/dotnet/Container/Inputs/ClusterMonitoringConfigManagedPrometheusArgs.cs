@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterMonitoringConfigManagedPrometheusArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Configuration options for GKE Auto-Monitoring.
+        /// </summary>
+        [Input("autoMonitoringConfig")]
+        public Input<Inputs.ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs>? AutoMonitoringConfig { get; set; }
+
+        /// <summary>
         /// Whether or not the managed collection is enabled.
         /// </summary>
         [Input("enabled", required: true)]

@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +16,21 @@ import javax.annotation.Nullable;
 public final class PublicDelegatedPrefixState extends com.pulumi.resources.ResourceArgs {
 
     public static final PublicDelegatedPrefixState Empty = new PublicDelegatedPrefixState();
+
+    /**
+     * The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+     * 
+     */
+    @Import(name="allocatablePrefixLength")
+    private @Nullable Output<Integer> allocatablePrefixLength;
+
+    /**
+     * @return The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+     * 
+     */
+    public Optional<Output<Integer>> allocatablePrefixLength() {
+        return Optional.ofNullable(this.allocatablePrefixLength);
+    }
 
     /**
      * An optional description of this resource.
@@ -32,7 +48,7 @@ public final class PublicDelegatedPrefixState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+     * The IP address range, in CIDR format, represented by this public delegated prefix.
      * 
      * ***
      * 
@@ -41,7 +57,7 @@ public final class PublicDelegatedPrefixState extends com.pulumi.resources.Resou
     private @Nullable Output<String> ipCidrRange;
 
     /**
-     * @return The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+     * @return The IP address range, in CIDR format, represented by this public delegated prefix.
      * 
      * ***
      * 
@@ -63,6 +79,25 @@ public final class PublicDelegatedPrefixState extends com.pulumi.resources.Resou
      */
     public Optional<Output<Boolean>> isLiveMigration() {
         return Optional.ofNullable(this.isLiveMigration);
+    }
+
+    /**
+     * Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
+     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
+     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+     * 
+     */
+    @Import(name="mode")
+    private @Nullable Output<String> mode;
+
+    /**
+     * @return Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
+     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
+     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+     * 
+     */
+    public Optional<Output<String>> mode() {
+        return Optional.ofNullable(this.mode);
     }
 
     /**
@@ -155,9 +190,11 @@ public final class PublicDelegatedPrefixState extends com.pulumi.resources.Resou
     private PublicDelegatedPrefixState() {}
 
     private PublicDelegatedPrefixState(PublicDelegatedPrefixState $) {
+        this.allocatablePrefixLength = $.allocatablePrefixLength;
         this.description = $.description;
         this.ipCidrRange = $.ipCidrRange;
         this.isLiveMigration = $.isLiveMigration;
+        this.mode = $.mode;
         this.name = $.name;
         this.parentPrefix = $.parentPrefix;
         this.project = $.project;
@@ -184,6 +221,27 @@ public final class PublicDelegatedPrefixState extends com.pulumi.resources.Resou
         }
 
         /**
+         * @param allocatablePrefixLength The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allocatablePrefixLength(@Nullable Output<Integer> allocatablePrefixLength) {
+            $.allocatablePrefixLength = allocatablePrefixLength;
+            return this;
+        }
+
+        /**
+         * @param allocatablePrefixLength The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allocatablePrefixLength(Integer allocatablePrefixLength) {
+            return allocatablePrefixLength(Output.of(allocatablePrefixLength));
+        }
+
+        /**
          * @param description An optional description of this resource.
          * 
          * @return builder
@@ -205,7 +263,7 @@ public final class PublicDelegatedPrefixState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param ipCidrRange The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+         * @param ipCidrRange The IP address range, in CIDR format, represented by this public delegated prefix.
          * 
          * ***
          * 
@@ -218,7 +276,7 @@ public final class PublicDelegatedPrefixState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param ipCidrRange The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+         * @param ipCidrRange The IP address range, in CIDR format, represented by this public delegated prefix.
          * 
          * ***
          * 
@@ -248,6 +306,31 @@ public final class PublicDelegatedPrefixState extends com.pulumi.resources.Resou
          */
         public Builder isLiveMigration(Boolean isLiveMigration) {
             return isLiveMigration(Output.of(isLiveMigration));
+        }
+
+        /**
+         * @param mode Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
+         * EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
+         * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mode(@Nullable Output<String> mode) {
+            $.mode = mode;
+            return this;
+        }
+
+        /**
+         * @param mode Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
+         * EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
+         * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mode(String mode) {
+            return mode(Output.of(mode));
         }
 
         /**

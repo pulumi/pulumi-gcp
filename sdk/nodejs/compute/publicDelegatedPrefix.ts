@@ -35,6 +35,37 @@ import * as utilities from "../utilities";
  *     parentPrefix: advertised.id,
  * });
  * ```
+ * ### Public Delegated Prefixes Ipv6
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const advertised = new gcp.compute.PublicAdvertisedPrefix("advertised", {
+ *     name: "ipv6-pap",
+ *     description: "description",
+ *     dnsVerificationIp: "2001:db8::",
+ *     ipCidrRange: "2001:db8::/32",
+ *     pdpScope: "REGIONAL",
+ * });
+ * const prefix = new gcp.compute.PublicDelegatedPrefix("prefix", {
+ *     name: "ipv6-root-pdp",
+ *     description: "test-delegation-mode-pdp",
+ *     region: "us-west1",
+ *     ipCidrRange: "2001:db8::/40",
+ *     parentPrefix: advertised.id,
+ *     mode: "DELEGATION",
+ * });
+ * const subprefix = new gcp.compute.PublicDelegatedPrefix("subprefix", {
+ *     name: "ipv6-sub-pdp",
+ *     description: "test-forwarding-rule-mode-pdp",
+ *     region: "us-west1",
+ *     ipCidrRange: "2001:db8::/48",
+ *     parentPrefix: prefix.id,
+ *     allocatablePrefixLength: 64,
+ *     mode: "EXTERNAL_IPV6_FORWARDING_RULE_CREATION",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -95,11 +126,15 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
     }
 
     /**
+     * The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+     */
+    public readonly allocatablePrefixLength!: pulumi.Output<number | undefined>;
+    /**
      * An optional description of this resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+     * The IP address range, in CIDR format, represented by this public delegated prefix.
      *
      *
      * - - -
@@ -109,6 +144,12 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
      * If true, the prefix will be live migrated.
      */
     public readonly isLiveMigration!: pulumi.Output<boolean | undefined>;
+    /**
+     * Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
+     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
+     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+     */
+    public readonly mode!: pulumi.Output<string | undefined>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -149,9 +190,11 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PublicDelegatedPrefixState | undefined;
+            resourceInputs["allocatablePrefixLength"] = state ? state.allocatablePrefixLength : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["ipCidrRange"] = state ? state.ipCidrRange : undefined;
             resourceInputs["isLiveMigration"] = state ? state.isLiveMigration : undefined;
+            resourceInputs["mode"] = state ? state.mode : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["parentPrefix"] = state ? state.parentPrefix : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -168,9 +211,11 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
+            resourceInputs["allocatablePrefixLength"] = args ? args.allocatablePrefixLength : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
             resourceInputs["isLiveMigration"] = args ? args.isLiveMigration : undefined;
+            resourceInputs["mode"] = args ? args.mode : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["parentPrefix"] = args ? args.parentPrefix : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -187,11 +232,15 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
  */
 export interface PublicDelegatedPrefixState {
     /**
+     * The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+     */
+    allocatablePrefixLength?: pulumi.Input<number>;
+    /**
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
     /**
-     * The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+     * The IP address range, in CIDR format, represented by this public delegated prefix.
      *
      *
      * - - -
@@ -201,6 +250,12 @@ export interface PublicDelegatedPrefixState {
      * If true, the prefix will be live migrated.
      */
     isLiveMigration?: pulumi.Input<boolean>;
+    /**
+     * Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
+     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
+     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+     */
+    mode?: pulumi.Input<string>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -234,11 +289,15 @@ export interface PublicDelegatedPrefixState {
  */
 export interface PublicDelegatedPrefixArgs {
     /**
+     * The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+     */
+    allocatablePrefixLength?: pulumi.Input<number>;
+    /**
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
     /**
-     * The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+     * The IP address range, in CIDR format, represented by this public delegated prefix.
      *
      *
      * - - -
@@ -248,6 +307,12 @@ export interface PublicDelegatedPrefixArgs {
      * If true, the prefix will be live migrated.
      */
     isLiveMigration?: pulumi.Input<boolean>;
+    /**
+     * Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
+     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
+     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+     */
+    mode?: pulumi.Input<string>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters

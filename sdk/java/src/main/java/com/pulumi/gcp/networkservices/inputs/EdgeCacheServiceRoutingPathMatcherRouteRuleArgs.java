@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs;
 import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs;
 import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs;
+import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs;
 import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs;
 import java.lang.String;
 import java.util.List;
@@ -128,6 +129,25 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleArgs extends com.p
     }
 
     /**
+     * Allow overriding the set of methods that are allowed for this route.
+     * When not set, Media CDN allows only &#34;GET&#34;, &#34;HEAD&#34;, and &#34;OPTIONS&#34;.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="routeMethods")
+    private @Nullable Output<EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs> routeMethods;
+
+    /**
+     * @return Allow overriding the set of methods that are allowed for this route.
+     * When not set, Media CDN allows only &#34;GET&#34;, &#34;HEAD&#34;, and &#34;OPTIONS&#34;.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs>> routeMethods() {
+        return Optional.ofNullable(this.routeMethods);
+    }
+
+    /**
      * The URL redirect configuration for requests that match this route.
      * Structure is documented below.
      * 
@@ -153,6 +173,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleArgs extends com.p
         this.origin = $.origin;
         this.priority = $.priority;
         this.routeAction = $.routeAction;
+        this.routeMethods = $.routeMethods;
         this.urlRedirect = $.urlRedirect;
     }
 
@@ -326,6 +347,31 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleArgs extends com.p
          */
         public Builder routeAction(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs routeAction) {
             return routeAction(Output.of(routeAction));
+        }
+
+        /**
+         * @param routeMethods Allow overriding the set of methods that are allowed for this route.
+         * When not set, Media CDN allows only &#34;GET&#34;, &#34;HEAD&#34;, and &#34;OPTIONS&#34;.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routeMethods(@Nullable Output<EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs> routeMethods) {
+            $.routeMethods = routeMethods;
+            return this;
+        }
+
+        /**
+         * @param routeMethods Allow overriding the set of methods that are allowed for this route.
+         * When not set, Media CDN allows only &#34;GET&#34;, &#34;HEAD&#34;, and &#34;OPTIONS&#34;.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routeMethods(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs routeMethods) {
+            return routeMethods(Output.of(routeMethods));
         }
 
         /**

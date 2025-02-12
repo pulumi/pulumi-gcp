@@ -13,6 +13,455 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type NotebookExecutionDataformRepositorySource struct {
+	// The commit SHA to read repository with. If unset, the file will be read at HEAD.
+	CommitSha *string `pulumi:"commitSha"`
+	// The resource name of the Dataform Repository.
+	DataformRepositoryResourceName string `pulumi:"dataformRepositoryResourceName"`
+}
+
+// NotebookExecutionDataformRepositorySourceInput is an input type that accepts NotebookExecutionDataformRepositorySourceArgs and NotebookExecutionDataformRepositorySourceOutput values.
+// You can construct a concrete instance of `NotebookExecutionDataformRepositorySourceInput` via:
+//
+//	NotebookExecutionDataformRepositorySourceArgs{...}
+type NotebookExecutionDataformRepositorySourceInput interface {
+	pulumi.Input
+
+	ToNotebookExecutionDataformRepositorySourceOutput() NotebookExecutionDataformRepositorySourceOutput
+	ToNotebookExecutionDataformRepositorySourceOutputWithContext(context.Context) NotebookExecutionDataformRepositorySourceOutput
+}
+
+type NotebookExecutionDataformRepositorySourceArgs struct {
+	// The commit SHA to read repository with. If unset, the file will be read at HEAD.
+	CommitSha pulumi.StringPtrInput `pulumi:"commitSha"`
+	// The resource name of the Dataform Repository.
+	DataformRepositoryResourceName pulumi.StringInput `pulumi:"dataformRepositoryResourceName"`
+}
+
+func (NotebookExecutionDataformRepositorySourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotebookExecutionDataformRepositorySource)(nil)).Elem()
+}
+
+func (i NotebookExecutionDataformRepositorySourceArgs) ToNotebookExecutionDataformRepositorySourceOutput() NotebookExecutionDataformRepositorySourceOutput {
+	return i.ToNotebookExecutionDataformRepositorySourceOutputWithContext(context.Background())
+}
+
+func (i NotebookExecutionDataformRepositorySourceArgs) ToNotebookExecutionDataformRepositorySourceOutputWithContext(ctx context.Context) NotebookExecutionDataformRepositorySourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionDataformRepositorySourceOutput)
+}
+
+func (i NotebookExecutionDataformRepositorySourceArgs) ToNotebookExecutionDataformRepositorySourcePtrOutput() NotebookExecutionDataformRepositorySourcePtrOutput {
+	return i.ToNotebookExecutionDataformRepositorySourcePtrOutputWithContext(context.Background())
+}
+
+func (i NotebookExecutionDataformRepositorySourceArgs) ToNotebookExecutionDataformRepositorySourcePtrOutputWithContext(ctx context.Context) NotebookExecutionDataformRepositorySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionDataformRepositorySourceOutput).ToNotebookExecutionDataformRepositorySourcePtrOutputWithContext(ctx)
+}
+
+// NotebookExecutionDataformRepositorySourcePtrInput is an input type that accepts NotebookExecutionDataformRepositorySourceArgs, NotebookExecutionDataformRepositorySourcePtr and NotebookExecutionDataformRepositorySourcePtrOutput values.
+// You can construct a concrete instance of `NotebookExecutionDataformRepositorySourcePtrInput` via:
+//
+//	        NotebookExecutionDataformRepositorySourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type NotebookExecutionDataformRepositorySourcePtrInput interface {
+	pulumi.Input
+
+	ToNotebookExecutionDataformRepositorySourcePtrOutput() NotebookExecutionDataformRepositorySourcePtrOutput
+	ToNotebookExecutionDataformRepositorySourcePtrOutputWithContext(context.Context) NotebookExecutionDataformRepositorySourcePtrOutput
+}
+
+type notebookExecutionDataformRepositorySourcePtrType NotebookExecutionDataformRepositorySourceArgs
+
+func NotebookExecutionDataformRepositorySourcePtr(v *NotebookExecutionDataformRepositorySourceArgs) NotebookExecutionDataformRepositorySourcePtrInput {
+	return (*notebookExecutionDataformRepositorySourcePtrType)(v)
+}
+
+func (*notebookExecutionDataformRepositorySourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotebookExecutionDataformRepositorySource)(nil)).Elem()
+}
+
+func (i *notebookExecutionDataformRepositorySourcePtrType) ToNotebookExecutionDataformRepositorySourcePtrOutput() NotebookExecutionDataformRepositorySourcePtrOutput {
+	return i.ToNotebookExecutionDataformRepositorySourcePtrOutputWithContext(context.Background())
+}
+
+func (i *notebookExecutionDataformRepositorySourcePtrType) ToNotebookExecutionDataformRepositorySourcePtrOutputWithContext(ctx context.Context) NotebookExecutionDataformRepositorySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionDataformRepositorySourcePtrOutput)
+}
+
+type NotebookExecutionDataformRepositorySourceOutput struct{ *pulumi.OutputState }
+
+func (NotebookExecutionDataformRepositorySourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotebookExecutionDataformRepositorySource)(nil)).Elem()
+}
+
+func (o NotebookExecutionDataformRepositorySourceOutput) ToNotebookExecutionDataformRepositorySourceOutput() NotebookExecutionDataformRepositorySourceOutput {
+	return o
+}
+
+func (o NotebookExecutionDataformRepositorySourceOutput) ToNotebookExecutionDataformRepositorySourceOutputWithContext(ctx context.Context) NotebookExecutionDataformRepositorySourceOutput {
+	return o
+}
+
+func (o NotebookExecutionDataformRepositorySourceOutput) ToNotebookExecutionDataformRepositorySourcePtrOutput() NotebookExecutionDataformRepositorySourcePtrOutput {
+	return o.ToNotebookExecutionDataformRepositorySourcePtrOutputWithContext(context.Background())
+}
+
+func (o NotebookExecutionDataformRepositorySourceOutput) ToNotebookExecutionDataformRepositorySourcePtrOutputWithContext(ctx context.Context) NotebookExecutionDataformRepositorySourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotebookExecutionDataformRepositorySource) *NotebookExecutionDataformRepositorySource {
+		return &v
+	}).(NotebookExecutionDataformRepositorySourcePtrOutput)
+}
+
+// The commit SHA to read repository with. If unset, the file will be read at HEAD.
+func (o NotebookExecutionDataformRepositorySourceOutput) CommitSha() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotebookExecutionDataformRepositorySource) *string { return v.CommitSha }).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Dataform Repository.
+func (o NotebookExecutionDataformRepositorySourceOutput) DataformRepositoryResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v NotebookExecutionDataformRepositorySource) string { return v.DataformRepositoryResourceName }).(pulumi.StringOutput)
+}
+
+type NotebookExecutionDataformRepositorySourcePtrOutput struct{ *pulumi.OutputState }
+
+func (NotebookExecutionDataformRepositorySourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotebookExecutionDataformRepositorySource)(nil)).Elem()
+}
+
+func (o NotebookExecutionDataformRepositorySourcePtrOutput) ToNotebookExecutionDataformRepositorySourcePtrOutput() NotebookExecutionDataformRepositorySourcePtrOutput {
+	return o
+}
+
+func (o NotebookExecutionDataformRepositorySourcePtrOutput) ToNotebookExecutionDataformRepositorySourcePtrOutputWithContext(ctx context.Context) NotebookExecutionDataformRepositorySourcePtrOutput {
+	return o
+}
+
+func (o NotebookExecutionDataformRepositorySourcePtrOutput) Elem() NotebookExecutionDataformRepositorySourceOutput {
+	return o.ApplyT(func(v *NotebookExecutionDataformRepositorySource) NotebookExecutionDataformRepositorySource {
+		if v != nil {
+			return *v
+		}
+		var ret NotebookExecutionDataformRepositorySource
+		return ret
+	}).(NotebookExecutionDataformRepositorySourceOutput)
+}
+
+// The commit SHA to read repository with. If unset, the file will be read at HEAD.
+func (o NotebookExecutionDataformRepositorySourcePtrOutput) CommitSha() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotebookExecutionDataformRepositorySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommitSha
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Dataform Repository.
+func (o NotebookExecutionDataformRepositorySourcePtrOutput) DataformRepositoryResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotebookExecutionDataformRepositorySource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DataformRepositoryResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+type NotebookExecutionDirectNotebookSource struct {
+	// The base64-encoded contents of the input notebook file.
+	Content string `pulumi:"content"`
+}
+
+// NotebookExecutionDirectNotebookSourceInput is an input type that accepts NotebookExecutionDirectNotebookSourceArgs and NotebookExecutionDirectNotebookSourceOutput values.
+// You can construct a concrete instance of `NotebookExecutionDirectNotebookSourceInput` via:
+//
+//	NotebookExecutionDirectNotebookSourceArgs{...}
+type NotebookExecutionDirectNotebookSourceInput interface {
+	pulumi.Input
+
+	ToNotebookExecutionDirectNotebookSourceOutput() NotebookExecutionDirectNotebookSourceOutput
+	ToNotebookExecutionDirectNotebookSourceOutputWithContext(context.Context) NotebookExecutionDirectNotebookSourceOutput
+}
+
+type NotebookExecutionDirectNotebookSourceArgs struct {
+	// The base64-encoded contents of the input notebook file.
+	Content pulumi.StringInput `pulumi:"content"`
+}
+
+func (NotebookExecutionDirectNotebookSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotebookExecutionDirectNotebookSource)(nil)).Elem()
+}
+
+func (i NotebookExecutionDirectNotebookSourceArgs) ToNotebookExecutionDirectNotebookSourceOutput() NotebookExecutionDirectNotebookSourceOutput {
+	return i.ToNotebookExecutionDirectNotebookSourceOutputWithContext(context.Background())
+}
+
+func (i NotebookExecutionDirectNotebookSourceArgs) ToNotebookExecutionDirectNotebookSourceOutputWithContext(ctx context.Context) NotebookExecutionDirectNotebookSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionDirectNotebookSourceOutput)
+}
+
+func (i NotebookExecutionDirectNotebookSourceArgs) ToNotebookExecutionDirectNotebookSourcePtrOutput() NotebookExecutionDirectNotebookSourcePtrOutput {
+	return i.ToNotebookExecutionDirectNotebookSourcePtrOutputWithContext(context.Background())
+}
+
+func (i NotebookExecutionDirectNotebookSourceArgs) ToNotebookExecutionDirectNotebookSourcePtrOutputWithContext(ctx context.Context) NotebookExecutionDirectNotebookSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionDirectNotebookSourceOutput).ToNotebookExecutionDirectNotebookSourcePtrOutputWithContext(ctx)
+}
+
+// NotebookExecutionDirectNotebookSourcePtrInput is an input type that accepts NotebookExecutionDirectNotebookSourceArgs, NotebookExecutionDirectNotebookSourcePtr and NotebookExecutionDirectNotebookSourcePtrOutput values.
+// You can construct a concrete instance of `NotebookExecutionDirectNotebookSourcePtrInput` via:
+//
+//	        NotebookExecutionDirectNotebookSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type NotebookExecutionDirectNotebookSourcePtrInput interface {
+	pulumi.Input
+
+	ToNotebookExecutionDirectNotebookSourcePtrOutput() NotebookExecutionDirectNotebookSourcePtrOutput
+	ToNotebookExecutionDirectNotebookSourcePtrOutputWithContext(context.Context) NotebookExecutionDirectNotebookSourcePtrOutput
+}
+
+type notebookExecutionDirectNotebookSourcePtrType NotebookExecutionDirectNotebookSourceArgs
+
+func NotebookExecutionDirectNotebookSourcePtr(v *NotebookExecutionDirectNotebookSourceArgs) NotebookExecutionDirectNotebookSourcePtrInput {
+	return (*notebookExecutionDirectNotebookSourcePtrType)(v)
+}
+
+func (*notebookExecutionDirectNotebookSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotebookExecutionDirectNotebookSource)(nil)).Elem()
+}
+
+func (i *notebookExecutionDirectNotebookSourcePtrType) ToNotebookExecutionDirectNotebookSourcePtrOutput() NotebookExecutionDirectNotebookSourcePtrOutput {
+	return i.ToNotebookExecutionDirectNotebookSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *notebookExecutionDirectNotebookSourcePtrType) ToNotebookExecutionDirectNotebookSourcePtrOutputWithContext(ctx context.Context) NotebookExecutionDirectNotebookSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionDirectNotebookSourcePtrOutput)
+}
+
+type NotebookExecutionDirectNotebookSourceOutput struct{ *pulumi.OutputState }
+
+func (NotebookExecutionDirectNotebookSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotebookExecutionDirectNotebookSource)(nil)).Elem()
+}
+
+func (o NotebookExecutionDirectNotebookSourceOutput) ToNotebookExecutionDirectNotebookSourceOutput() NotebookExecutionDirectNotebookSourceOutput {
+	return o
+}
+
+func (o NotebookExecutionDirectNotebookSourceOutput) ToNotebookExecutionDirectNotebookSourceOutputWithContext(ctx context.Context) NotebookExecutionDirectNotebookSourceOutput {
+	return o
+}
+
+func (o NotebookExecutionDirectNotebookSourceOutput) ToNotebookExecutionDirectNotebookSourcePtrOutput() NotebookExecutionDirectNotebookSourcePtrOutput {
+	return o.ToNotebookExecutionDirectNotebookSourcePtrOutputWithContext(context.Background())
+}
+
+func (o NotebookExecutionDirectNotebookSourceOutput) ToNotebookExecutionDirectNotebookSourcePtrOutputWithContext(ctx context.Context) NotebookExecutionDirectNotebookSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotebookExecutionDirectNotebookSource) *NotebookExecutionDirectNotebookSource {
+		return &v
+	}).(NotebookExecutionDirectNotebookSourcePtrOutput)
+}
+
+// The base64-encoded contents of the input notebook file.
+func (o NotebookExecutionDirectNotebookSourceOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v NotebookExecutionDirectNotebookSource) string { return v.Content }).(pulumi.StringOutput)
+}
+
+type NotebookExecutionDirectNotebookSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (NotebookExecutionDirectNotebookSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotebookExecutionDirectNotebookSource)(nil)).Elem()
+}
+
+func (o NotebookExecutionDirectNotebookSourcePtrOutput) ToNotebookExecutionDirectNotebookSourcePtrOutput() NotebookExecutionDirectNotebookSourcePtrOutput {
+	return o
+}
+
+func (o NotebookExecutionDirectNotebookSourcePtrOutput) ToNotebookExecutionDirectNotebookSourcePtrOutputWithContext(ctx context.Context) NotebookExecutionDirectNotebookSourcePtrOutput {
+	return o
+}
+
+func (o NotebookExecutionDirectNotebookSourcePtrOutput) Elem() NotebookExecutionDirectNotebookSourceOutput {
+	return o.ApplyT(func(v *NotebookExecutionDirectNotebookSource) NotebookExecutionDirectNotebookSource {
+		if v != nil {
+			return *v
+		}
+		var ret NotebookExecutionDirectNotebookSource
+		return ret
+	}).(NotebookExecutionDirectNotebookSourceOutput)
+}
+
+// The base64-encoded contents of the input notebook file.
+func (o NotebookExecutionDirectNotebookSourcePtrOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotebookExecutionDirectNotebookSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Content
+	}).(pulumi.StringPtrOutput)
+}
+
+type NotebookExecutionGcsNotebookSource struct {
+	// The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+	Generation *string `pulumi:"generation"`
+	// The Cloud Storage uri pointing to the ipynb file.
+	Uri string `pulumi:"uri"`
+}
+
+// NotebookExecutionGcsNotebookSourceInput is an input type that accepts NotebookExecutionGcsNotebookSourceArgs and NotebookExecutionGcsNotebookSourceOutput values.
+// You can construct a concrete instance of `NotebookExecutionGcsNotebookSourceInput` via:
+//
+//	NotebookExecutionGcsNotebookSourceArgs{...}
+type NotebookExecutionGcsNotebookSourceInput interface {
+	pulumi.Input
+
+	ToNotebookExecutionGcsNotebookSourceOutput() NotebookExecutionGcsNotebookSourceOutput
+	ToNotebookExecutionGcsNotebookSourceOutputWithContext(context.Context) NotebookExecutionGcsNotebookSourceOutput
+}
+
+type NotebookExecutionGcsNotebookSourceArgs struct {
+	// The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+	Generation pulumi.StringPtrInput `pulumi:"generation"`
+	// The Cloud Storage uri pointing to the ipynb file.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (NotebookExecutionGcsNotebookSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotebookExecutionGcsNotebookSource)(nil)).Elem()
+}
+
+func (i NotebookExecutionGcsNotebookSourceArgs) ToNotebookExecutionGcsNotebookSourceOutput() NotebookExecutionGcsNotebookSourceOutput {
+	return i.ToNotebookExecutionGcsNotebookSourceOutputWithContext(context.Background())
+}
+
+func (i NotebookExecutionGcsNotebookSourceArgs) ToNotebookExecutionGcsNotebookSourceOutputWithContext(ctx context.Context) NotebookExecutionGcsNotebookSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionGcsNotebookSourceOutput)
+}
+
+func (i NotebookExecutionGcsNotebookSourceArgs) ToNotebookExecutionGcsNotebookSourcePtrOutput() NotebookExecutionGcsNotebookSourcePtrOutput {
+	return i.ToNotebookExecutionGcsNotebookSourcePtrOutputWithContext(context.Background())
+}
+
+func (i NotebookExecutionGcsNotebookSourceArgs) ToNotebookExecutionGcsNotebookSourcePtrOutputWithContext(ctx context.Context) NotebookExecutionGcsNotebookSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionGcsNotebookSourceOutput).ToNotebookExecutionGcsNotebookSourcePtrOutputWithContext(ctx)
+}
+
+// NotebookExecutionGcsNotebookSourcePtrInput is an input type that accepts NotebookExecutionGcsNotebookSourceArgs, NotebookExecutionGcsNotebookSourcePtr and NotebookExecutionGcsNotebookSourcePtrOutput values.
+// You can construct a concrete instance of `NotebookExecutionGcsNotebookSourcePtrInput` via:
+//
+//	        NotebookExecutionGcsNotebookSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type NotebookExecutionGcsNotebookSourcePtrInput interface {
+	pulumi.Input
+
+	ToNotebookExecutionGcsNotebookSourcePtrOutput() NotebookExecutionGcsNotebookSourcePtrOutput
+	ToNotebookExecutionGcsNotebookSourcePtrOutputWithContext(context.Context) NotebookExecutionGcsNotebookSourcePtrOutput
+}
+
+type notebookExecutionGcsNotebookSourcePtrType NotebookExecutionGcsNotebookSourceArgs
+
+func NotebookExecutionGcsNotebookSourcePtr(v *NotebookExecutionGcsNotebookSourceArgs) NotebookExecutionGcsNotebookSourcePtrInput {
+	return (*notebookExecutionGcsNotebookSourcePtrType)(v)
+}
+
+func (*notebookExecutionGcsNotebookSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotebookExecutionGcsNotebookSource)(nil)).Elem()
+}
+
+func (i *notebookExecutionGcsNotebookSourcePtrType) ToNotebookExecutionGcsNotebookSourcePtrOutput() NotebookExecutionGcsNotebookSourcePtrOutput {
+	return i.ToNotebookExecutionGcsNotebookSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *notebookExecutionGcsNotebookSourcePtrType) ToNotebookExecutionGcsNotebookSourcePtrOutputWithContext(ctx context.Context) NotebookExecutionGcsNotebookSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionGcsNotebookSourcePtrOutput)
+}
+
+type NotebookExecutionGcsNotebookSourceOutput struct{ *pulumi.OutputState }
+
+func (NotebookExecutionGcsNotebookSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotebookExecutionGcsNotebookSource)(nil)).Elem()
+}
+
+func (o NotebookExecutionGcsNotebookSourceOutput) ToNotebookExecutionGcsNotebookSourceOutput() NotebookExecutionGcsNotebookSourceOutput {
+	return o
+}
+
+func (o NotebookExecutionGcsNotebookSourceOutput) ToNotebookExecutionGcsNotebookSourceOutputWithContext(ctx context.Context) NotebookExecutionGcsNotebookSourceOutput {
+	return o
+}
+
+func (o NotebookExecutionGcsNotebookSourceOutput) ToNotebookExecutionGcsNotebookSourcePtrOutput() NotebookExecutionGcsNotebookSourcePtrOutput {
+	return o.ToNotebookExecutionGcsNotebookSourcePtrOutputWithContext(context.Background())
+}
+
+func (o NotebookExecutionGcsNotebookSourceOutput) ToNotebookExecutionGcsNotebookSourcePtrOutputWithContext(ctx context.Context) NotebookExecutionGcsNotebookSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotebookExecutionGcsNotebookSource) *NotebookExecutionGcsNotebookSource {
+		return &v
+	}).(NotebookExecutionGcsNotebookSourcePtrOutput)
+}
+
+// The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+func (o NotebookExecutionGcsNotebookSourceOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotebookExecutionGcsNotebookSource) *string { return v.Generation }).(pulumi.StringPtrOutput)
+}
+
+// The Cloud Storage uri pointing to the ipynb file.
+func (o NotebookExecutionGcsNotebookSourceOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v NotebookExecutionGcsNotebookSource) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type NotebookExecutionGcsNotebookSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (NotebookExecutionGcsNotebookSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotebookExecutionGcsNotebookSource)(nil)).Elem()
+}
+
+func (o NotebookExecutionGcsNotebookSourcePtrOutput) ToNotebookExecutionGcsNotebookSourcePtrOutput() NotebookExecutionGcsNotebookSourcePtrOutput {
+	return o
+}
+
+func (o NotebookExecutionGcsNotebookSourcePtrOutput) ToNotebookExecutionGcsNotebookSourcePtrOutputWithContext(ctx context.Context) NotebookExecutionGcsNotebookSourcePtrOutput {
+	return o
+}
+
+func (o NotebookExecutionGcsNotebookSourcePtrOutput) Elem() NotebookExecutionGcsNotebookSourceOutput {
+	return o.ApplyT(func(v *NotebookExecutionGcsNotebookSource) NotebookExecutionGcsNotebookSource {
+		if v != nil {
+			return *v
+		}
+		var ret NotebookExecutionGcsNotebookSource
+		return ret
+	}).(NotebookExecutionGcsNotebookSourceOutput)
+}
+
+// The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+func (o NotebookExecutionGcsNotebookSourcePtrOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotebookExecutionGcsNotebookSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Generation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Cloud Storage uri pointing to the ipynb file.
+func (o NotebookExecutionGcsNotebookSourcePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotebookExecutionGcsNotebookSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
 type RuntimeNotebookRuntimeTemplateRef struct {
 	// The resource name of the NotebookRuntimeTemplate based on which a NotebookRuntime will be created.
 	NotebookRuntimeTemplate string `pulumi:"notebookRuntimeTemplate"`
@@ -1530,7 +1979,1223 @@ func (o RuntimeTemplateShieldedVmConfigPtrOutput) EnableSecureBoot() pulumi.Bool
 	}).(pulumi.BoolPtrOutput)
 }
 
+type RuntimeTemplateSoftwareConfig struct {
+	// Environment variables to be passed to the container.
+	// Structure is documented below.
+	Envs []RuntimeTemplateSoftwareConfigEnv `pulumi:"envs"`
+	// Post startup script config.
+	// Structure is documented below.
+	PostStartupScriptConfig *RuntimeTemplateSoftwareConfigPostStartupScriptConfig `pulumi:"postStartupScriptConfig"`
+}
+
+// RuntimeTemplateSoftwareConfigInput is an input type that accepts RuntimeTemplateSoftwareConfigArgs and RuntimeTemplateSoftwareConfigOutput values.
+// You can construct a concrete instance of `RuntimeTemplateSoftwareConfigInput` via:
+//
+//	RuntimeTemplateSoftwareConfigArgs{...}
+type RuntimeTemplateSoftwareConfigInput interface {
+	pulumi.Input
+
+	ToRuntimeTemplateSoftwareConfigOutput() RuntimeTemplateSoftwareConfigOutput
+	ToRuntimeTemplateSoftwareConfigOutputWithContext(context.Context) RuntimeTemplateSoftwareConfigOutput
+}
+
+type RuntimeTemplateSoftwareConfigArgs struct {
+	// Environment variables to be passed to the container.
+	// Structure is documented below.
+	Envs RuntimeTemplateSoftwareConfigEnvArrayInput `pulumi:"envs"`
+	// Post startup script config.
+	// Structure is documented below.
+	PostStartupScriptConfig RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrInput `pulumi:"postStartupScriptConfig"`
+}
+
+func (RuntimeTemplateSoftwareConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeTemplateSoftwareConfig)(nil)).Elem()
+}
+
+func (i RuntimeTemplateSoftwareConfigArgs) ToRuntimeTemplateSoftwareConfigOutput() RuntimeTemplateSoftwareConfigOutput {
+	return i.ToRuntimeTemplateSoftwareConfigOutputWithContext(context.Background())
+}
+
+func (i RuntimeTemplateSoftwareConfigArgs) ToRuntimeTemplateSoftwareConfigOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeTemplateSoftwareConfigOutput)
+}
+
+func (i RuntimeTemplateSoftwareConfigArgs) ToRuntimeTemplateSoftwareConfigPtrOutput() RuntimeTemplateSoftwareConfigPtrOutput {
+	return i.ToRuntimeTemplateSoftwareConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuntimeTemplateSoftwareConfigArgs) ToRuntimeTemplateSoftwareConfigPtrOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeTemplateSoftwareConfigOutput).ToRuntimeTemplateSoftwareConfigPtrOutputWithContext(ctx)
+}
+
+// RuntimeTemplateSoftwareConfigPtrInput is an input type that accepts RuntimeTemplateSoftwareConfigArgs, RuntimeTemplateSoftwareConfigPtr and RuntimeTemplateSoftwareConfigPtrOutput values.
+// You can construct a concrete instance of `RuntimeTemplateSoftwareConfigPtrInput` via:
+//
+//	        RuntimeTemplateSoftwareConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RuntimeTemplateSoftwareConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuntimeTemplateSoftwareConfigPtrOutput() RuntimeTemplateSoftwareConfigPtrOutput
+	ToRuntimeTemplateSoftwareConfigPtrOutputWithContext(context.Context) RuntimeTemplateSoftwareConfigPtrOutput
+}
+
+type runtimeTemplateSoftwareConfigPtrType RuntimeTemplateSoftwareConfigArgs
+
+func RuntimeTemplateSoftwareConfigPtr(v *RuntimeTemplateSoftwareConfigArgs) RuntimeTemplateSoftwareConfigPtrInput {
+	return (*runtimeTemplateSoftwareConfigPtrType)(v)
+}
+
+func (*runtimeTemplateSoftwareConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeTemplateSoftwareConfig)(nil)).Elem()
+}
+
+func (i *runtimeTemplateSoftwareConfigPtrType) ToRuntimeTemplateSoftwareConfigPtrOutput() RuntimeTemplateSoftwareConfigPtrOutput {
+	return i.ToRuntimeTemplateSoftwareConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *runtimeTemplateSoftwareConfigPtrType) ToRuntimeTemplateSoftwareConfigPtrOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeTemplateSoftwareConfigPtrOutput)
+}
+
+type RuntimeTemplateSoftwareConfigOutput struct{ *pulumi.OutputState }
+
+func (RuntimeTemplateSoftwareConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeTemplateSoftwareConfig)(nil)).Elem()
+}
+
+func (o RuntimeTemplateSoftwareConfigOutput) ToRuntimeTemplateSoftwareConfigOutput() RuntimeTemplateSoftwareConfigOutput {
+	return o
+}
+
+func (o RuntimeTemplateSoftwareConfigOutput) ToRuntimeTemplateSoftwareConfigOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigOutput {
+	return o
+}
+
+func (o RuntimeTemplateSoftwareConfigOutput) ToRuntimeTemplateSoftwareConfigPtrOutput() RuntimeTemplateSoftwareConfigPtrOutput {
+	return o.ToRuntimeTemplateSoftwareConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeTemplateSoftwareConfigOutput) ToRuntimeTemplateSoftwareConfigPtrOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeTemplateSoftwareConfig) *RuntimeTemplateSoftwareConfig {
+		return &v
+	}).(RuntimeTemplateSoftwareConfigPtrOutput)
+}
+
+// Environment variables to be passed to the container.
+// Structure is documented below.
+func (o RuntimeTemplateSoftwareConfigOutput) Envs() RuntimeTemplateSoftwareConfigEnvArrayOutput {
+	return o.ApplyT(func(v RuntimeTemplateSoftwareConfig) []RuntimeTemplateSoftwareConfigEnv { return v.Envs }).(RuntimeTemplateSoftwareConfigEnvArrayOutput)
+}
+
+// Post startup script config.
+// Structure is documented below.
+func (o RuntimeTemplateSoftwareConfigOutput) PostStartupScriptConfig() RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
+	return o.ApplyT(func(v RuntimeTemplateSoftwareConfig) *RuntimeTemplateSoftwareConfigPostStartupScriptConfig {
+		return v.PostStartupScriptConfig
+	}).(RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput)
+}
+
+type RuntimeTemplateSoftwareConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuntimeTemplateSoftwareConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeTemplateSoftwareConfig)(nil)).Elem()
+}
+
+func (o RuntimeTemplateSoftwareConfigPtrOutput) ToRuntimeTemplateSoftwareConfigPtrOutput() RuntimeTemplateSoftwareConfigPtrOutput {
+	return o
+}
+
+func (o RuntimeTemplateSoftwareConfigPtrOutput) ToRuntimeTemplateSoftwareConfigPtrOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigPtrOutput {
+	return o
+}
+
+func (o RuntimeTemplateSoftwareConfigPtrOutput) Elem() RuntimeTemplateSoftwareConfigOutput {
+	return o.ApplyT(func(v *RuntimeTemplateSoftwareConfig) RuntimeTemplateSoftwareConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeTemplateSoftwareConfig
+		return ret
+	}).(RuntimeTemplateSoftwareConfigOutput)
+}
+
+// Environment variables to be passed to the container.
+// Structure is documented below.
+func (o RuntimeTemplateSoftwareConfigPtrOutput) Envs() RuntimeTemplateSoftwareConfigEnvArrayOutput {
+	return o.ApplyT(func(v *RuntimeTemplateSoftwareConfig) []RuntimeTemplateSoftwareConfigEnv {
+		if v == nil {
+			return nil
+		}
+		return v.Envs
+	}).(RuntimeTemplateSoftwareConfigEnvArrayOutput)
+}
+
+// Post startup script config.
+// Structure is documented below.
+func (o RuntimeTemplateSoftwareConfigPtrOutput) PostStartupScriptConfig() RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
+	return o.ApplyT(func(v *RuntimeTemplateSoftwareConfig) *RuntimeTemplateSoftwareConfigPostStartupScriptConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PostStartupScriptConfig
+	}).(RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput)
+}
+
+type RuntimeTemplateSoftwareConfigEnv struct {
+	// Name of the environment variable. Must be a valid C identifier.
+	Name *string `pulumi:"name"`
+	// Variables that reference a $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
+	Value *string `pulumi:"value"`
+}
+
+// RuntimeTemplateSoftwareConfigEnvInput is an input type that accepts RuntimeTemplateSoftwareConfigEnvArgs and RuntimeTemplateSoftwareConfigEnvOutput values.
+// You can construct a concrete instance of `RuntimeTemplateSoftwareConfigEnvInput` via:
+//
+//	RuntimeTemplateSoftwareConfigEnvArgs{...}
+type RuntimeTemplateSoftwareConfigEnvInput interface {
+	pulumi.Input
+
+	ToRuntimeTemplateSoftwareConfigEnvOutput() RuntimeTemplateSoftwareConfigEnvOutput
+	ToRuntimeTemplateSoftwareConfigEnvOutputWithContext(context.Context) RuntimeTemplateSoftwareConfigEnvOutput
+}
+
+type RuntimeTemplateSoftwareConfigEnvArgs struct {
+	// Name of the environment variable. Must be a valid C identifier.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Variables that reference a $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (RuntimeTemplateSoftwareConfigEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeTemplateSoftwareConfigEnv)(nil)).Elem()
+}
+
+func (i RuntimeTemplateSoftwareConfigEnvArgs) ToRuntimeTemplateSoftwareConfigEnvOutput() RuntimeTemplateSoftwareConfigEnvOutput {
+	return i.ToRuntimeTemplateSoftwareConfigEnvOutputWithContext(context.Background())
+}
+
+func (i RuntimeTemplateSoftwareConfigEnvArgs) ToRuntimeTemplateSoftwareConfigEnvOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeTemplateSoftwareConfigEnvOutput)
+}
+
+// RuntimeTemplateSoftwareConfigEnvArrayInput is an input type that accepts RuntimeTemplateSoftwareConfigEnvArray and RuntimeTemplateSoftwareConfigEnvArrayOutput values.
+// You can construct a concrete instance of `RuntimeTemplateSoftwareConfigEnvArrayInput` via:
+//
+//	RuntimeTemplateSoftwareConfigEnvArray{ RuntimeTemplateSoftwareConfigEnvArgs{...} }
+type RuntimeTemplateSoftwareConfigEnvArrayInput interface {
+	pulumi.Input
+
+	ToRuntimeTemplateSoftwareConfigEnvArrayOutput() RuntimeTemplateSoftwareConfigEnvArrayOutput
+	ToRuntimeTemplateSoftwareConfigEnvArrayOutputWithContext(context.Context) RuntimeTemplateSoftwareConfigEnvArrayOutput
+}
+
+type RuntimeTemplateSoftwareConfigEnvArray []RuntimeTemplateSoftwareConfigEnvInput
+
+func (RuntimeTemplateSoftwareConfigEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuntimeTemplateSoftwareConfigEnv)(nil)).Elem()
+}
+
+func (i RuntimeTemplateSoftwareConfigEnvArray) ToRuntimeTemplateSoftwareConfigEnvArrayOutput() RuntimeTemplateSoftwareConfigEnvArrayOutput {
+	return i.ToRuntimeTemplateSoftwareConfigEnvArrayOutputWithContext(context.Background())
+}
+
+func (i RuntimeTemplateSoftwareConfigEnvArray) ToRuntimeTemplateSoftwareConfigEnvArrayOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeTemplateSoftwareConfigEnvArrayOutput)
+}
+
+type RuntimeTemplateSoftwareConfigEnvOutput struct{ *pulumi.OutputState }
+
+func (RuntimeTemplateSoftwareConfigEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeTemplateSoftwareConfigEnv)(nil)).Elem()
+}
+
+func (o RuntimeTemplateSoftwareConfigEnvOutput) ToRuntimeTemplateSoftwareConfigEnvOutput() RuntimeTemplateSoftwareConfigEnvOutput {
+	return o
+}
+
+func (o RuntimeTemplateSoftwareConfigEnvOutput) ToRuntimeTemplateSoftwareConfigEnvOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigEnvOutput {
+	return o
+}
+
+// Name of the environment variable. Must be a valid C identifier.
+func (o RuntimeTemplateSoftwareConfigEnvOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeTemplateSoftwareConfigEnv) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Variables that reference a $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
+func (o RuntimeTemplateSoftwareConfigEnvOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeTemplateSoftwareConfigEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type RuntimeTemplateSoftwareConfigEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (RuntimeTemplateSoftwareConfigEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuntimeTemplateSoftwareConfigEnv)(nil)).Elem()
+}
+
+func (o RuntimeTemplateSoftwareConfigEnvArrayOutput) ToRuntimeTemplateSoftwareConfigEnvArrayOutput() RuntimeTemplateSoftwareConfigEnvArrayOutput {
+	return o
+}
+
+func (o RuntimeTemplateSoftwareConfigEnvArrayOutput) ToRuntimeTemplateSoftwareConfigEnvArrayOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigEnvArrayOutput {
+	return o
+}
+
+func (o RuntimeTemplateSoftwareConfigEnvArrayOutput) Index(i pulumi.IntInput) RuntimeTemplateSoftwareConfigEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuntimeTemplateSoftwareConfigEnv {
+		return vs[0].([]RuntimeTemplateSoftwareConfigEnv)[vs[1].(int)]
+	}).(RuntimeTemplateSoftwareConfigEnvOutput)
+}
+
+type RuntimeTemplateSoftwareConfigPostStartupScriptConfig struct {
+	// Post startup script to run after runtime is started.
+	PostStartupScript *string `pulumi:"postStartupScript"`
+	// Post startup script behavior that defines download and execution behavior.
+	// Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
+	PostStartupScriptBehavior *string `pulumi:"postStartupScriptBehavior"`
+	// Post startup script url to download. Example: https://bucket/script.sh.
+	PostStartupScriptUrl *string `pulumi:"postStartupScriptUrl"`
+}
+
+// RuntimeTemplateSoftwareConfigPostStartupScriptConfigInput is an input type that accepts RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs and RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput values.
+// You can construct a concrete instance of `RuntimeTemplateSoftwareConfigPostStartupScriptConfigInput` via:
+//
+//	RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs{...}
+type RuntimeTemplateSoftwareConfigPostStartupScriptConfigInput interface {
+	pulumi.Input
+
+	ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput() RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput
+	ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigOutputWithContext(context.Context) RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput
+}
+
+type RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs struct {
+	// Post startup script to run after runtime is started.
+	PostStartupScript pulumi.StringPtrInput `pulumi:"postStartupScript"`
+	// Post startup script behavior that defines download and execution behavior.
+	// Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
+	PostStartupScriptBehavior pulumi.StringPtrInput `pulumi:"postStartupScriptBehavior"`
+	// Post startup script url to download. Example: https://bucket/script.sh.
+	PostStartupScriptUrl pulumi.StringPtrInput `pulumi:"postStartupScriptUrl"`
+}
+
+func (RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeTemplateSoftwareConfigPostStartupScriptConfig)(nil)).Elem()
+}
+
+func (i RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput() RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput {
+	return i.ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigOutputWithContext(context.Background())
+}
+
+func (i RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput)
+}
+
+func (i RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput() RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
+	return i.ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput).ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutputWithContext(ctx)
+}
+
+// RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrInput is an input type that accepts RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs, RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtr and RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput values.
+// You can construct a concrete instance of `RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrInput` via:
+//
+//	        RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput() RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput
+	ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutputWithContext(context.Context) RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput
+}
+
+type runtimeTemplateSoftwareConfigPostStartupScriptConfigPtrType RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs
+
+func RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtr(v *RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs) RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrInput {
+	return (*runtimeTemplateSoftwareConfigPostStartupScriptConfigPtrType)(v)
+}
+
+func (*runtimeTemplateSoftwareConfigPostStartupScriptConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeTemplateSoftwareConfigPostStartupScriptConfig)(nil)).Elem()
+}
+
+func (i *runtimeTemplateSoftwareConfigPostStartupScriptConfigPtrType) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput() RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
+	return i.ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *runtimeTemplateSoftwareConfigPostStartupScriptConfigPtrType) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput)
+}
+
+type RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput struct{ *pulumi.OutputState }
+
+func (RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeTemplateSoftwareConfigPostStartupScriptConfig)(nil)).Elem()
+}
+
+func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput() RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput {
+	return o
+}
+
+func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput {
+	return o
+}
+
+func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput() RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
+	return o.ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeTemplateSoftwareConfigPostStartupScriptConfig) *RuntimeTemplateSoftwareConfigPostStartupScriptConfig {
+		return &v
+	}).(RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput)
+}
+
+// Post startup script to run after runtime is started.
+func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput) PostStartupScript() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeTemplateSoftwareConfigPostStartupScriptConfig) *string { return v.PostStartupScript }).(pulumi.StringPtrOutput)
+}
+
+// Post startup script behavior that defines download and execution behavior.
+// Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
+func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput) PostStartupScriptBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeTemplateSoftwareConfigPostStartupScriptConfig) *string {
+		return v.PostStartupScriptBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// Post startup script url to download. Example: https://bucket/script.sh.
+func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput) PostStartupScriptUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeTemplateSoftwareConfigPostStartupScriptConfig) *string { return v.PostStartupScriptUrl }).(pulumi.StringPtrOutput)
+}
+
+type RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeTemplateSoftwareConfigPostStartupScriptConfig)(nil)).Elem()
+}
+
+func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput() RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
+	return o
+}
+
+func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
+	return o
+}
+
+func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput) Elem() RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput {
+	return o.ApplyT(func(v *RuntimeTemplateSoftwareConfigPostStartupScriptConfig) RuntimeTemplateSoftwareConfigPostStartupScriptConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeTemplateSoftwareConfigPostStartupScriptConfig
+		return ret
+	}).(RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput)
+}
+
+// Post startup script to run after runtime is started.
+func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput) PostStartupScript() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeTemplateSoftwareConfigPostStartupScriptConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostStartupScript
+	}).(pulumi.StringPtrOutput)
+}
+
+// Post startup script behavior that defines download and execution behavior.
+// Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
+func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput) PostStartupScriptBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeTemplateSoftwareConfigPostStartupScriptConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostStartupScriptBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// Post startup script url to download. Example: https://bucket/script.sh.
+func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput) PostStartupScriptUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeTemplateSoftwareConfigPostStartupScriptConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostStartupScriptUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type ScheduleCreateNotebookExecutionJobRequest struct {
+	// The NotebookExecutionJob to create.
+	// Structure is documented below.
+	NotebookExecutionJob ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob `pulumi:"notebookExecutionJob"`
+}
+
+// ScheduleCreateNotebookExecutionJobRequestInput is an input type that accepts ScheduleCreateNotebookExecutionJobRequestArgs and ScheduleCreateNotebookExecutionJobRequestOutput values.
+// You can construct a concrete instance of `ScheduleCreateNotebookExecutionJobRequestInput` via:
+//
+//	ScheduleCreateNotebookExecutionJobRequestArgs{...}
+type ScheduleCreateNotebookExecutionJobRequestInput interface {
+	pulumi.Input
+
+	ToScheduleCreateNotebookExecutionJobRequestOutput() ScheduleCreateNotebookExecutionJobRequestOutput
+	ToScheduleCreateNotebookExecutionJobRequestOutputWithContext(context.Context) ScheduleCreateNotebookExecutionJobRequestOutput
+}
+
+type ScheduleCreateNotebookExecutionJobRequestArgs struct {
+	// The NotebookExecutionJob to create.
+	// Structure is documented below.
+	NotebookExecutionJob ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobInput `pulumi:"notebookExecutionJob"`
+}
+
+func (ScheduleCreateNotebookExecutionJobRequestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleCreateNotebookExecutionJobRequest)(nil)).Elem()
+}
+
+func (i ScheduleCreateNotebookExecutionJobRequestArgs) ToScheduleCreateNotebookExecutionJobRequestOutput() ScheduleCreateNotebookExecutionJobRequestOutput {
+	return i.ToScheduleCreateNotebookExecutionJobRequestOutputWithContext(context.Background())
+}
+
+func (i ScheduleCreateNotebookExecutionJobRequestArgs) ToScheduleCreateNotebookExecutionJobRequestOutputWithContext(ctx context.Context) ScheduleCreateNotebookExecutionJobRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleCreateNotebookExecutionJobRequestOutput)
+}
+
+func (i ScheduleCreateNotebookExecutionJobRequestArgs) ToScheduleCreateNotebookExecutionJobRequestPtrOutput() ScheduleCreateNotebookExecutionJobRequestPtrOutput {
+	return i.ToScheduleCreateNotebookExecutionJobRequestPtrOutputWithContext(context.Background())
+}
+
+func (i ScheduleCreateNotebookExecutionJobRequestArgs) ToScheduleCreateNotebookExecutionJobRequestPtrOutputWithContext(ctx context.Context) ScheduleCreateNotebookExecutionJobRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleCreateNotebookExecutionJobRequestOutput).ToScheduleCreateNotebookExecutionJobRequestPtrOutputWithContext(ctx)
+}
+
+// ScheduleCreateNotebookExecutionJobRequestPtrInput is an input type that accepts ScheduleCreateNotebookExecutionJobRequestArgs, ScheduleCreateNotebookExecutionJobRequestPtr and ScheduleCreateNotebookExecutionJobRequestPtrOutput values.
+// You can construct a concrete instance of `ScheduleCreateNotebookExecutionJobRequestPtrInput` via:
+//
+//	        ScheduleCreateNotebookExecutionJobRequestArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScheduleCreateNotebookExecutionJobRequestPtrInput interface {
+	pulumi.Input
+
+	ToScheduleCreateNotebookExecutionJobRequestPtrOutput() ScheduleCreateNotebookExecutionJobRequestPtrOutput
+	ToScheduleCreateNotebookExecutionJobRequestPtrOutputWithContext(context.Context) ScheduleCreateNotebookExecutionJobRequestPtrOutput
+}
+
+type scheduleCreateNotebookExecutionJobRequestPtrType ScheduleCreateNotebookExecutionJobRequestArgs
+
+func ScheduleCreateNotebookExecutionJobRequestPtr(v *ScheduleCreateNotebookExecutionJobRequestArgs) ScheduleCreateNotebookExecutionJobRequestPtrInput {
+	return (*scheduleCreateNotebookExecutionJobRequestPtrType)(v)
+}
+
+func (*scheduleCreateNotebookExecutionJobRequestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleCreateNotebookExecutionJobRequest)(nil)).Elem()
+}
+
+func (i *scheduleCreateNotebookExecutionJobRequestPtrType) ToScheduleCreateNotebookExecutionJobRequestPtrOutput() ScheduleCreateNotebookExecutionJobRequestPtrOutput {
+	return i.ToScheduleCreateNotebookExecutionJobRequestPtrOutputWithContext(context.Background())
+}
+
+func (i *scheduleCreateNotebookExecutionJobRequestPtrType) ToScheduleCreateNotebookExecutionJobRequestPtrOutputWithContext(ctx context.Context) ScheduleCreateNotebookExecutionJobRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleCreateNotebookExecutionJobRequestPtrOutput)
+}
+
+type ScheduleCreateNotebookExecutionJobRequestOutput struct{ *pulumi.OutputState }
+
+func (ScheduleCreateNotebookExecutionJobRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleCreateNotebookExecutionJobRequest)(nil)).Elem()
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestOutput) ToScheduleCreateNotebookExecutionJobRequestOutput() ScheduleCreateNotebookExecutionJobRequestOutput {
+	return o
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestOutput) ToScheduleCreateNotebookExecutionJobRequestOutputWithContext(ctx context.Context) ScheduleCreateNotebookExecutionJobRequestOutput {
+	return o
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestOutput) ToScheduleCreateNotebookExecutionJobRequestPtrOutput() ScheduleCreateNotebookExecutionJobRequestPtrOutput {
+	return o.ToScheduleCreateNotebookExecutionJobRequestPtrOutputWithContext(context.Background())
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestOutput) ToScheduleCreateNotebookExecutionJobRequestPtrOutputWithContext(ctx context.Context) ScheduleCreateNotebookExecutionJobRequestPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduleCreateNotebookExecutionJobRequest) *ScheduleCreateNotebookExecutionJobRequest {
+		return &v
+	}).(ScheduleCreateNotebookExecutionJobRequestPtrOutput)
+}
+
+// The NotebookExecutionJob to create.
+// Structure is documented below.
+func (o ScheduleCreateNotebookExecutionJobRequestOutput) NotebookExecutionJob() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput {
+	return o.ApplyT(func(v ScheduleCreateNotebookExecutionJobRequest) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob {
+		return v.NotebookExecutionJob
+	}).(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput)
+}
+
+type ScheduleCreateNotebookExecutionJobRequestPtrOutput struct{ *pulumi.OutputState }
+
+func (ScheduleCreateNotebookExecutionJobRequestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleCreateNotebookExecutionJobRequest)(nil)).Elem()
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestPtrOutput) ToScheduleCreateNotebookExecutionJobRequestPtrOutput() ScheduleCreateNotebookExecutionJobRequestPtrOutput {
+	return o
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestPtrOutput) ToScheduleCreateNotebookExecutionJobRequestPtrOutputWithContext(ctx context.Context) ScheduleCreateNotebookExecutionJobRequestPtrOutput {
+	return o
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestPtrOutput) Elem() ScheduleCreateNotebookExecutionJobRequestOutput {
+	return o.ApplyT(func(v *ScheduleCreateNotebookExecutionJobRequest) ScheduleCreateNotebookExecutionJobRequest {
+		if v != nil {
+			return *v
+		}
+		var ret ScheduleCreateNotebookExecutionJobRequest
+		return ret
+	}).(ScheduleCreateNotebookExecutionJobRequestOutput)
+}
+
+// The NotebookExecutionJob to create.
+// Structure is documented below.
+func (o ScheduleCreateNotebookExecutionJobRequestPtrOutput) NotebookExecutionJob() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput {
+	return o.ApplyT(func(v *ScheduleCreateNotebookExecutionJobRequest) *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob {
+		if v == nil {
+			return nil
+		}
+		return &v.NotebookExecutionJob
+	}).(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput)
+}
+
+type ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob struct {
+	// The Dataform Repository containing the input notebook.
+	// Structure is documented below.
+	DataformRepositorySource *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource `pulumi:"dataformRepositorySource"`
+	// Required. The display name of the Notebook Execution.
+	DisplayName string `pulumi:"displayName"`
+	// Max running time of the execution job in seconds (default 86400s / 24 hrs). A duration in seconds with up to nine fractional digits, ending with "s". Example: "3.5s".
+	ExecutionTimeout *string `pulumi:"executionTimeout"`
+	// The user email to run the execution as.
+	ExecutionUser *string `pulumi:"executionUser"`
+	// The Cloud Storage uri for the input notebook.
+	// Structure is documented below.
+	GcsNotebookSource *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource `pulumi:"gcsNotebookSource"`
+	// The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
+	GcsOutputUri string `pulumi:"gcsOutputUri"`
+	// The NotebookRuntimeTemplate to source compute configuration from.
+	NotebookRuntimeTemplateResourceName string `pulumi:"notebookRuntimeTemplateResourceName"`
+	// The service account to run the execution as.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+}
+
+// ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobInput is an input type that accepts ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs and ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput values.
+// You can construct a concrete instance of `ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobInput` via:
+//
+//	ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs{...}
+type ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobInput interface {
+	pulumi.Input
+
+	ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput
+	ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutputWithContext(context.Context) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput
+}
+
+type ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs struct {
+	// The Dataform Repository containing the input notebook.
+	// Structure is documented below.
+	DataformRepositorySource ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrInput `pulumi:"dataformRepositorySource"`
+	// Required. The display name of the Notebook Execution.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Max running time of the execution job in seconds (default 86400s / 24 hrs). A duration in seconds with up to nine fractional digits, ending with "s". Example: "3.5s".
+	ExecutionTimeout pulumi.StringPtrInput `pulumi:"executionTimeout"`
+	// The user email to run the execution as.
+	ExecutionUser pulumi.StringPtrInput `pulumi:"executionUser"`
+	// The Cloud Storage uri for the input notebook.
+	// Structure is documented below.
+	GcsNotebookSource ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrInput `pulumi:"gcsNotebookSource"`
+	// The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
+	GcsOutputUri pulumi.StringInput `pulumi:"gcsOutputUri"`
+	// The NotebookRuntimeTemplate to source compute configuration from.
+	NotebookRuntimeTemplateResourceName pulumi.StringInput `pulumi:"notebookRuntimeTemplateResourceName"`
+	// The service account to run the execution as.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+}
+
+func (ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob)(nil)).Elem()
+}
+
+func (i ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput {
+	return i.ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutputWithContext(context.Background())
+}
+
+func (i ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutputWithContext(ctx context.Context) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput)
+}
+
+func (i ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput {
+	return i.ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutputWithContext(context.Background())
+}
+
+func (i ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutputWithContext(ctx context.Context) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput).ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutputWithContext(ctx)
+}
+
+// ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrInput is an input type that accepts ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs, ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtr and ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput values.
+// You can construct a concrete instance of `ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrInput` via:
+//
+//	        ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrInput interface {
+	pulumi.Input
+
+	ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput
+	ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutputWithContext(context.Context) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput
+}
+
+type scheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrType ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs
+
+func ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtr(v *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrInput {
+	return (*scheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrType)(v)
+}
+
+func (*scheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob)(nil)).Elem()
+}
+
+func (i *scheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrType) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput {
+	return i.ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutputWithContext(context.Background())
+}
+
+func (i *scheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrType) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutputWithContext(ctx context.Context) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput)
+}
+
+type ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput struct{ *pulumi.OutputState }
+
+func (ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob)(nil)).Elem()
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput {
+	return o
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutputWithContext(ctx context.Context) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput {
+	return o
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput {
+	return o.ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutputWithContext(context.Background())
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutputWithContext(ctx context.Context) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob {
+		return &v
+	}).(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput)
+}
+
+// The Dataform Repository containing the input notebook.
+// Structure is documented below.
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) DataformRepositorySource() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput {
+	return o.ApplyT(func(v ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource {
+		return v.DataformRepositorySource
+	}).(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput)
+}
+
+// Required. The display name of the Notebook Execution.
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Max running time of the execution job in seconds (default 86400s / 24 hrs). A duration in seconds with up to nine fractional digits, ending with "s". Example: "3.5s".
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) ExecutionTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string {
+		return v.ExecutionTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user email to run the execution as.
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) ExecutionUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string { return v.ExecutionUser }).(pulumi.StringPtrOutput)
+}
+
+// The Cloud Storage uri for the input notebook.
+// Structure is documented below.
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) GcsNotebookSource() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput {
+	return o.ApplyT(func(v ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource {
+		return v.GcsNotebookSource
+	}).(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput)
+}
+
+// The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) GcsOutputUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) string { return v.GcsOutputUri }).(pulumi.StringOutput)
+}
+
+// The NotebookRuntimeTemplate to source compute configuration from.
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) NotebookRuntimeTemplateResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) string {
+		return v.NotebookRuntimeTemplateResourceName
+	}).(pulumi.StringOutput)
+}
+
+// The service account to run the execution as.
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+type ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput struct{ *pulumi.OutputState }
+
+func (ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob)(nil)).Elem()
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput {
+	return o
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutputWithContext(ctx context.Context) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput {
+	return o
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) Elem() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput {
+	return o.ApplyT(func(v *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob {
+		if v != nil {
+			return *v
+		}
+		var ret ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob
+		return ret
+	}).(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput)
+}
+
+// The Dataform Repository containing the input notebook.
+// Structure is documented below.
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) DataformRepositorySource() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput {
+	return o.ApplyT(func(v *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource {
+		if v == nil {
+			return nil
+		}
+		return v.DataformRepositorySource
+	}).(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput)
+}
+
+// Required. The display name of the Notebook Execution.
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Max running time of the execution job in seconds (default 86400s / 24 hrs). A duration in seconds with up to nine fractional digits, ending with "s". Example: "3.5s".
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) ExecutionTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExecutionTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user email to run the execution as.
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) ExecutionUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExecutionUser
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Cloud Storage uri for the input notebook.
+// Structure is documented below.
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) GcsNotebookSource() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput {
+	return o.ApplyT(func(v *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource {
+		if v == nil {
+			return nil
+		}
+		return v.GcsNotebookSource
+	}).(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput)
+}
+
+// The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) GcsOutputUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GcsOutputUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The NotebookRuntimeTemplate to source compute configuration from.
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) NotebookRuntimeTemplateResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NotebookRuntimeTemplateResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service account to run the execution as.
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+type ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource struct {
+	// The commit SHA to read repository with. If unset, the file will be read at HEAD.
+	CommitSha *string `pulumi:"commitSha"`
+	// The resource name of the Dataform Repository.
+	DataformRepositoryResourceName string `pulumi:"dataformRepositoryResourceName"`
+}
+
+// ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceInput is an input type that accepts ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs and ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput values.
+// You can construct a concrete instance of `ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceInput` via:
+//
+//	ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs{...}
+type ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceInput interface {
+	pulumi.Input
+
+	ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput
+	ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutputWithContext(context.Context) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput
+}
+
+type ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs struct {
+	// The commit SHA to read repository with. If unset, the file will be read at HEAD.
+	CommitSha pulumi.StringPtrInput `pulumi:"commitSha"`
+	// The resource name of the Dataform Repository.
+	DataformRepositoryResourceName pulumi.StringInput `pulumi:"dataformRepositoryResourceName"`
+}
+
+func (ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource)(nil)).Elem()
+}
+
+func (i ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput {
+	return i.ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutputWithContext(context.Background())
+}
+
+func (i ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutputWithContext(ctx context.Context) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput)
+}
+
+func (i ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput {
+	return i.ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutputWithContext(context.Background())
+}
+
+func (i ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutputWithContext(ctx context.Context) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput).ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutputWithContext(ctx)
+}
+
+// ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrInput is an input type that accepts ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs, ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtr and ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput values.
+// You can construct a concrete instance of `ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrInput` via:
+//
+//	        ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrInput interface {
+	pulumi.Input
+
+	ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput
+	ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutputWithContext(context.Context) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput
+}
+
+type scheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrType ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs
+
+func ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtr(v *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrInput {
+	return (*scheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrType)(v)
+}
+
+func (*scheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource)(nil)).Elem()
+}
+
+func (i *scheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrType) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput {
+	return i.ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutputWithContext(context.Background())
+}
+
+func (i *scheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrType) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutputWithContext(ctx context.Context) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput)
+}
+
+type ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput struct{ *pulumi.OutputState }
+
+func (ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource)(nil)).Elem()
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput {
+	return o
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutputWithContext(ctx context.Context) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput {
+	return o
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput {
+	return o.ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutputWithContext(context.Background())
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutputWithContext(ctx context.Context) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource) *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource {
+		return &v
+	}).(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput)
+}
+
+// The commit SHA to read repository with. If unset, the file will be read at HEAD.
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput) CommitSha() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource) *string {
+		return v.CommitSha
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Dataform Repository.
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput) DataformRepositoryResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource) string {
+		return v.DataformRepositoryResourceName
+	}).(pulumi.StringOutput)
+}
+
+type ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput struct{ *pulumi.OutputState }
+
+func (ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource)(nil)).Elem()
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput {
+	return o
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutputWithContext(ctx context.Context) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput {
+	return o
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput) Elem() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput {
+	return o.ApplyT(func(v *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource {
+		if v != nil {
+			return *v
+		}
+		var ret ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource
+		return ret
+	}).(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput)
+}
+
+// The commit SHA to read repository with. If unset, the file will be read at HEAD.
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput) CommitSha() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommitSha
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Dataform Repository.
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput) DataformRepositoryResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DataformRepositoryResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource struct {
+	// The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+	//
+	// ***
+	Generation *string `pulumi:"generation"`
+	// The Cloud Storage uri pointing to the ipynb file. Format: gs://bucket/notebook_file.ipynb
+	Uri string `pulumi:"uri"`
+}
+
+// ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceInput is an input type that accepts ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs and ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput values.
+// You can construct a concrete instance of `ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceInput` via:
+//
+//	ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs{...}
+type ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceInput interface {
+	pulumi.Input
+
+	ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput
+	ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutputWithContext(context.Context) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput
+}
+
+type ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs struct {
+	// The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+	//
+	// ***
+	Generation pulumi.StringPtrInput `pulumi:"generation"`
+	// The Cloud Storage uri pointing to the ipynb file. Format: gs://bucket/notebook_file.ipynb
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource)(nil)).Elem()
+}
+
+func (i ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput {
+	return i.ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutputWithContext(context.Background())
+}
+
+func (i ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutputWithContext(ctx context.Context) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput)
+}
+
+func (i ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput {
+	return i.ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutputWithContext(context.Background())
+}
+
+func (i ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutputWithContext(ctx context.Context) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput).ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutputWithContext(ctx)
+}
+
+// ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrInput is an input type that accepts ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs, ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtr and ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput values.
+// You can construct a concrete instance of `ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrInput` via:
+//
+//	        ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrInput interface {
+	pulumi.Input
+
+	ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput
+	ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutputWithContext(context.Context) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput
+}
+
+type scheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrType ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs
+
+func ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtr(v *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrInput {
+	return (*scheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrType)(v)
+}
+
+func (*scheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource)(nil)).Elem()
+}
+
+func (i *scheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrType) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput {
+	return i.ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *scheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrType) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutputWithContext(ctx context.Context) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput)
+}
+
+type ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput struct{ *pulumi.OutputState }
+
+func (ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource)(nil)).Elem()
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput {
+	return o
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutputWithContext(ctx context.Context) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput {
+	return o
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput {
+	return o.ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutputWithContext(context.Background())
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutputWithContext(ctx context.Context) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource) *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource {
+		return &v
+	}).(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput)
+}
+
+// The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+//
+// ***
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource) *string {
+		return v.Generation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Cloud Storage uri pointing to the ipynb file. Format: gs://bucket/notebook_file.ipynb
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource) string {
+		return v.Uri
+	}).(pulumi.StringOutput)
+}
+
+type ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource)(nil)).Elem()
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput {
+	return o
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput) ToScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutputWithContext(ctx context.Context) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput {
+	return o
+}
+
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput) Elem() ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput {
+	return o.ApplyT(func(v *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource) ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource {
+		if v != nil {
+			return *v
+		}
+		var ret ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource
+		return ret
+	}).(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput)
+}
+
+// The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+//
+// ***
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Generation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Cloud Storage uri pointing to the ipynb file. Format: gs://bucket/notebook_file.ipynb
+func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionDataformRepositorySourceInput)(nil)).Elem(), NotebookExecutionDataformRepositorySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionDataformRepositorySourcePtrInput)(nil)).Elem(), NotebookExecutionDataformRepositorySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionDirectNotebookSourceInput)(nil)).Elem(), NotebookExecutionDirectNotebookSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionDirectNotebookSourcePtrInput)(nil)).Elem(), NotebookExecutionDirectNotebookSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionGcsNotebookSourceInput)(nil)).Elem(), NotebookExecutionGcsNotebookSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionGcsNotebookSourcePtrInput)(nil)).Elem(), NotebookExecutionGcsNotebookSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeNotebookRuntimeTemplateRefInput)(nil)).Elem(), RuntimeNotebookRuntimeTemplateRefArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeNotebookRuntimeTemplateRefPtrInput)(nil)).Elem(), RuntimeNotebookRuntimeTemplateRefArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateDataPersistentDiskSpecInput)(nil)).Elem(), RuntimeTemplateDataPersistentDiskSpecArgs{})
@@ -1551,6 +3216,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateNetworkSpecPtrInput)(nil)).Elem(), RuntimeTemplateNetworkSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateShieldedVmConfigInput)(nil)).Elem(), RuntimeTemplateShieldedVmConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateShieldedVmConfigPtrInput)(nil)).Elem(), RuntimeTemplateShieldedVmConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateSoftwareConfigInput)(nil)).Elem(), RuntimeTemplateSoftwareConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateSoftwareConfigPtrInput)(nil)).Elem(), RuntimeTemplateSoftwareConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateSoftwareConfigEnvInput)(nil)).Elem(), RuntimeTemplateSoftwareConfigEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateSoftwareConfigEnvArrayInput)(nil)).Elem(), RuntimeTemplateSoftwareConfigEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateSoftwareConfigPostStartupScriptConfigInput)(nil)).Elem(), RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrInput)(nil)).Elem(), RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleCreateNotebookExecutionJobRequestInput)(nil)).Elem(), ScheduleCreateNotebookExecutionJobRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleCreateNotebookExecutionJobRequestPtrInput)(nil)).Elem(), ScheduleCreateNotebookExecutionJobRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobInput)(nil)).Elem(), ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrInput)(nil)).Elem(), ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceInput)(nil)).Elem(), ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrInput)(nil)).Elem(), ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceInput)(nil)).Elem(), ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrInput)(nil)).Elem(), ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs{})
+	pulumi.RegisterOutputType(NotebookExecutionDataformRepositorySourceOutput{})
+	pulumi.RegisterOutputType(NotebookExecutionDataformRepositorySourcePtrOutput{})
+	pulumi.RegisterOutputType(NotebookExecutionDirectNotebookSourceOutput{})
+	pulumi.RegisterOutputType(NotebookExecutionDirectNotebookSourcePtrOutput{})
+	pulumi.RegisterOutputType(NotebookExecutionGcsNotebookSourceOutput{})
+	pulumi.RegisterOutputType(NotebookExecutionGcsNotebookSourcePtrOutput{})
 	pulumi.RegisterOutputType(RuntimeNotebookRuntimeTemplateRefOutput{})
 	pulumi.RegisterOutputType(RuntimeNotebookRuntimeTemplateRefPtrOutput{})
 	pulumi.RegisterOutputType(RuntimeTemplateDataPersistentDiskSpecOutput{})
@@ -1571,4 +3256,18 @@ func init() {
 	pulumi.RegisterOutputType(RuntimeTemplateNetworkSpecPtrOutput{})
 	pulumi.RegisterOutputType(RuntimeTemplateShieldedVmConfigOutput{})
 	pulumi.RegisterOutputType(RuntimeTemplateShieldedVmConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuntimeTemplateSoftwareConfigOutput{})
+	pulumi.RegisterOutputType(RuntimeTemplateSoftwareConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuntimeTemplateSoftwareConfigEnvOutput{})
+	pulumi.RegisterOutputType(RuntimeTemplateSoftwareConfigEnvArrayOutput{})
+	pulumi.RegisterOutputType(RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput{})
+	pulumi.RegisterOutputType(RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput{})
+	pulumi.RegisterOutputType(ScheduleCreateNotebookExecutionJobRequestOutput{})
+	pulumi.RegisterOutputType(ScheduleCreateNotebookExecutionJobRequestPtrOutput{})
+	pulumi.RegisterOutputType(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput{})
+	pulumi.RegisterOutputType(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput{})
+	pulumi.RegisterOutputType(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput{})
+	pulumi.RegisterOutputType(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput{})
+	pulumi.RegisterOutputType(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput{})
+	pulumi.RegisterOutputType(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput{})
 }

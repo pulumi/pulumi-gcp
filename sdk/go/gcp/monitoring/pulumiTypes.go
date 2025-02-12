@@ -2208,9 +2208,10 @@ type AlertPolicyConditionConditionPrometheusQueryLanguage struct {
 	// Labels to add to or overwrite in the PromQL query result. Label names
 	// must be valid.
 	// Label values can be templatized by using variables. The only available
-	// variable names are the names of the labels in the PromQL result, including
-	// "__name__" and "value". "labels" may be empty. This field is intended to be
-	// used for organizing and identifying the AlertPolicy
+	// variable names are the names of the labels in the PromQL result,
+	// although label names beginning with \_\_ (two "\_") are reserved for
+	// internal use. "labels" may be empty. This field is intended to be used
+	// for organizing and identifying the AlertPolicy.
 	Labels map[string]string `pulumi:"labels"`
 	// The PromQL expression to evaluate. Every evaluation cycle this
 	// expression is evaluated at the current time, and all resultant time
@@ -2263,9 +2264,10 @@ type AlertPolicyConditionConditionPrometheusQueryLanguageArgs struct {
 	// Labels to add to or overwrite in the PromQL query result. Label names
 	// must be valid.
 	// Label values can be templatized by using variables. The only available
-	// variable names are the names of the labels in the PromQL result, including
-	// "__name__" and "value". "labels" may be empty. This field is intended to be
-	// used for organizing and identifying the AlertPolicy
+	// variable names are the names of the labels in the PromQL result,
+	// although label names beginning with \_\_ (two "\_") are reserved for
+	// internal use. "labels" may be empty. This field is intended to be used
+	// for organizing and identifying the AlertPolicy.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The PromQL expression to evaluate. Every evaluation cycle this
 	// expression is evaluated at the current time, and all resultant time
@@ -2395,9 +2397,10 @@ func (o AlertPolicyConditionConditionPrometheusQueryLanguageOutput) EvaluationIn
 // Labels to add to or overwrite in the PromQL query result. Label names
 // must be valid.
 // Label values can be templatized by using variables. The only available
-// variable names are the names of the labels in the PromQL result, including
-// "__name__" and "value". "labels" may be empty. This field is intended to be
-// used for organizing and identifying the AlertPolicy
+// variable names are the names of the labels in the PromQL result,
+// although label names beginning with \_\_ (two "\_") are reserved for
+// internal use. "labels" may be empty. This field is intended to be used
+// for organizing and identifying the AlertPolicy.
 func (o AlertPolicyConditionConditionPrometheusQueryLanguageOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionPrometheusQueryLanguage) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -2501,9 +2504,10 @@ func (o AlertPolicyConditionConditionPrometheusQueryLanguagePtrOutput) Evaluatio
 // Labels to add to or overwrite in the PromQL query result. Label names
 // must be valid.
 // Label values can be templatized by using variables. The only available
-// variable names are the names of the labels in the PromQL result, including
-// "__name__" and "value". "labels" may be empty. This field is intended to be
-// used for organizing and identifying the AlertPolicy
+// variable names are the names of the labels in the PromQL result,
+// although label names beginning with \_\_ (two "\_") are reserved for
+// internal use. "labels" may be empty. This field is intended to be used
+// for organizing and identifying the AlertPolicy.
 func (o AlertPolicyConditionConditionPrometheusQueryLanguagePtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionPrometheusQueryLanguage) map[string]string {
 		if v == nil {

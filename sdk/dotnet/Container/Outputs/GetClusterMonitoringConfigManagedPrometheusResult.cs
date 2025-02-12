@@ -14,13 +14,21 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class GetClusterMonitoringConfigManagedPrometheusResult
     {
         /// <summary>
+        /// Configuration for GKE Workload Auto-Monitoring.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigResult> AutoMonitoringConfigs;
+        /// <summary>
         /// Whether or not the managed collection is enabled.
         /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]
-        private GetClusterMonitoringConfigManagedPrometheusResult(bool enabled)
+        private GetClusterMonitoringConfigManagedPrometheusResult(
+            ImmutableArray<Outputs.GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigResult> autoMonitoringConfigs,
+
+            bool enabled)
         {
+            AutoMonitoringConfigs = autoMonitoringConfigs;
             Enabled = enabled;
         }
     }

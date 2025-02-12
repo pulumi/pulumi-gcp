@@ -20406,6 +20406,8 @@ func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput) Ena
 }
 
 type ClusterMonitoringConfigManagedPrometheus struct {
+	// Configuration options for GKE Auto-Monitoring.
+	AutoMonitoringConfig *ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig `pulumi:"autoMonitoringConfig"`
 	// Whether or not the managed collection is enabled.
 	Enabled bool `pulumi:"enabled"`
 }
@@ -20422,6 +20424,8 @@ type ClusterMonitoringConfigManagedPrometheusInput interface {
 }
 
 type ClusterMonitoringConfigManagedPrometheusArgs struct {
+	// Configuration options for GKE Auto-Monitoring.
+	AutoMonitoringConfig ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrInput `pulumi:"autoMonitoringConfig"`
 	// Whether or not the managed collection is enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
@@ -20503,6 +20507,13 @@ func (o ClusterMonitoringConfigManagedPrometheusOutput) ToClusterMonitoringConfi
 	}).(ClusterMonitoringConfigManagedPrometheusPtrOutput)
 }
 
+// Configuration options for GKE Auto-Monitoring.
+func (o ClusterMonitoringConfigManagedPrometheusOutput) AutoMonitoringConfig() ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput {
+	return o.ApplyT(func(v ClusterMonitoringConfigManagedPrometheus) *ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig {
+		return v.AutoMonitoringConfig
+	}).(ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput)
+}
+
 // Whether or not the managed collection is enabled.
 func (o ClusterMonitoringConfigManagedPrometheusOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterMonitoringConfigManagedPrometheus) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -20532,6 +20543,16 @@ func (o ClusterMonitoringConfigManagedPrometheusPtrOutput) Elem() ClusterMonitor
 	}).(ClusterMonitoringConfigManagedPrometheusOutput)
 }
 
+// Configuration options for GKE Auto-Monitoring.
+func (o ClusterMonitoringConfigManagedPrometheusPtrOutput) AutoMonitoringConfig() ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterMonitoringConfigManagedPrometheus) *ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AutoMonitoringConfig
+	}).(ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput)
+}
+
 // Whether or not the managed collection is enabled.
 func (o ClusterMonitoringConfigManagedPrometheusPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterMonitoringConfigManagedPrometheus) *bool {
@@ -20540,6 +20561,143 @@ func (o ClusterMonitoringConfigManagedPrometheusPtrOutput) Enabled() pulumi.Bool
 		}
 		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig struct {
+	// Whether or not to enable GKE Auto-Monitoring. Supported values include: `ALL`, `NONE`.
+	Scope string `pulumi:"scope"`
+}
+
+// ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigInput is an input type that accepts ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs and ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput values.
+// You can construct a concrete instance of `ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigInput` via:
+//
+//	ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs{...}
+type ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigInput interface {
+	pulumi.Input
+
+	ToClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput() ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput
+	ToClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutputWithContext(context.Context) ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput
+}
+
+type ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs struct {
+	// Whether or not to enable GKE Auto-Monitoring. Supported values include: `ALL`, `NONE`.
+	Scope pulumi.StringInput `pulumi:"scope"`
+}
+
+func (ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig)(nil)).Elem()
+}
+
+func (i ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs) ToClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput() ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput {
+	return i.ToClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs) ToClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutputWithContext(ctx context.Context) ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput)
+}
+
+func (i ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs) ToClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput() ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput {
+	return i.ToClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs) ToClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutputWithContext(ctx context.Context) ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput).ToClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrInput is an input type that accepts ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs, ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtr and ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrInput` via:
+//
+//	        ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput() ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput
+	ToClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutputWithContext(context.Context) ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput
+}
+
+type clusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrType ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs
+
+func ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtr(v *ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs) ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrInput {
+	return (*clusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrType)(v)
+}
+
+func (*clusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig)(nil)).Elem()
+}
+
+func (i *clusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrType) ToClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput() ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput {
+	return i.ToClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrType) ToClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutputWithContext(ctx context.Context) ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput)
+}
+
+type ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig)(nil)).Elem()
+}
+
+func (o ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput) ToClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput() ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput {
+	return o
+}
+
+func (o ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput) ToClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutputWithContext(ctx context.Context) ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput {
+	return o
+}
+
+func (o ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput) ToClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput() ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput {
+	return o.ToClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput) ToClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutputWithContext(ctx context.Context) ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig) *ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig {
+		return &v
+	}).(ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput)
+}
+
+// Whether or not to enable GKE Auto-Monitoring. Supported values include: `ALL`, `NONE`.
+func (o ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+type ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig)(nil)).Elem()
+}
+
+func (o ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput) ToClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput() ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput {
+	return o
+}
+
+func (o ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput) ToClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutputWithContext(ctx context.Context) ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput {
+	return o
+}
+
+func (o ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput) Elem() ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput {
+	return o.ApplyT(func(v *ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig) ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig
+		return ret
+	}).(ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput)
+}
+
+// Whether or not to enable GKE Auto-Monitoring. Supported values include: `ALL`, `NONE`.
+func (o ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Scope
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterNetworkPolicy struct {
@@ -51435,6 +51593,8 @@ func (o GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput
 }
 
 type GetClusterMonitoringConfigManagedPrometheus struct {
+	// Configuration for GKE Workload Auto-Monitoring.
+	AutoMonitoringConfigs []GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig `pulumi:"autoMonitoringConfigs"`
 	// Whether or not the managed collection is enabled.
 	Enabled bool `pulumi:"enabled"`
 }
@@ -51451,6 +51611,8 @@ type GetClusterMonitoringConfigManagedPrometheusInput interface {
 }
 
 type GetClusterMonitoringConfigManagedPrometheusArgs struct {
+	// Configuration for GKE Workload Auto-Monitoring.
+	AutoMonitoringConfigs GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayInput `pulumi:"autoMonitoringConfigs"`
 	// Whether or not the managed collection is enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
@@ -51506,6 +51668,13 @@ func (o GetClusterMonitoringConfigManagedPrometheusOutput) ToGetClusterMonitorin
 	return o
 }
 
+// Configuration for GKE Workload Auto-Monitoring.
+func (o GetClusterMonitoringConfigManagedPrometheusOutput) AutoMonitoringConfigs() GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterMonitoringConfigManagedPrometheus) []GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig {
+		return v.AutoMonitoringConfigs
+	}).(GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayOutput)
+}
+
 // Whether or not the managed collection is enabled.
 func (o GetClusterMonitoringConfigManagedPrometheusOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClusterMonitoringConfigManagedPrometheus) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -51529,6 +51698,103 @@ func (o GetClusterMonitoringConfigManagedPrometheusArrayOutput) Index(i pulumi.I
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterMonitoringConfigManagedPrometheus {
 		return vs[0].([]GetClusterMonitoringConfigManagedPrometheus)[vs[1].(int)]
 	}).(GetClusterMonitoringConfigManagedPrometheusOutput)
+}
+
+type GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig struct {
+	// The scope of auto-monitoring.
+	Scope string `pulumi:"scope"`
+}
+
+// GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigInput is an input type that accepts GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs and GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput values.
+// You can construct a concrete instance of `GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigInput` via:
+//
+//	GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs{...}
+type GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput() GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput
+	ToGetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutputWithContext(context.Context) GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput
+}
+
+type GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs struct {
+	// The scope of auto-monitoring.
+	Scope pulumi.StringInput `pulumi:"scope"`
+}
+
+func (GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig)(nil)).Elem()
+}
+
+func (i GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs) ToGetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput() GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput {
+	return i.ToGetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs) ToGetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutputWithContext(ctx context.Context) GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput)
+}
+
+// GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayInput is an input type that accepts GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArray and GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayInput` via:
+//
+//	GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArray{ GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs{...} }
+type GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayOutput() GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayOutput
+	ToGetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayOutputWithContext(context.Context) GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayOutput
+}
+
+type GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArray []GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigInput
+
+func (GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig)(nil)).Elem()
+}
+
+func (i GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArray) ToGetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayOutput() GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayOutput {
+	return i.ToGetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArray) ToGetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayOutputWithContext(ctx context.Context) GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayOutput)
+}
+
+type GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig)(nil)).Elem()
+}
+
+func (o GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput) ToGetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput() GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput {
+	return o
+}
+
+func (o GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput) ToGetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutputWithContext(ctx context.Context) GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput {
+	return o
+}
+
+// The scope of auto-monitoring.
+func (o GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+type GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig)(nil)).Elem()
+}
+
+func (o GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayOutput) ToGetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayOutput() GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayOutput) ToGetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayOutputWithContext(ctx context.Context) GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayOutput) Index(i pulumi.IntInput) GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig {
+		return vs[0].([]GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig)[vs[1].(int)]
+	}).(GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput)
 }
 
 type GetClusterNetworkPolicy struct {
@@ -63660,6 +63926,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrInput)(nil)).Elem(), ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMonitoringConfigManagedPrometheusInput)(nil)).Elem(), ClusterMonitoringConfigManagedPrometheusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMonitoringConfigManagedPrometheusPtrInput)(nil)).Elem(), ClusterMonitoringConfigManagedPrometheusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigInput)(nil)).Elem(), ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrInput)(nil)).Elem(), ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworkPolicyInput)(nil)).Elem(), ClusterNetworkPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworkPolicyPtrInput)(nil)).Elem(), ClusterNetworkPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigInput)(nil)).Elem(), ClusterNodeConfigArgs{})
@@ -64060,6 +64328,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayInput)(nil)).Elem(), GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMonitoringConfigManagedPrometheusInput)(nil)).Elem(), GetClusterMonitoringConfigManagedPrometheusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMonitoringConfigManagedPrometheusArrayInput)(nil)).Elem(), GetClusterMonitoringConfigManagedPrometheusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigInput)(nil)).Elem(), GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayInput)(nil)).Elem(), GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNetworkPolicyInput)(nil)).Elem(), GetClusterNetworkPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNetworkPolicyArrayInput)(nil)).Elem(), GetClusterNetworkPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigInput)(nil)).Elem(), GetClusterNodeConfigArgs{})
@@ -64520,6 +64790,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterMonitoringConfigManagedPrometheusOutput{})
 	pulumi.RegisterOutputType(ClusterMonitoringConfigManagedPrometheusPtrOutput{})
+	pulumi.RegisterOutputType(ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput{})
+	pulumi.RegisterOutputType(ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNetworkPolicyOutput{})
 	pulumi.RegisterOutputType(ClusterNetworkPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigOutput{})
@@ -64920,6 +65192,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterMonitoringConfigManagedPrometheusOutput{})
 	pulumi.RegisterOutputType(GetClusterMonitoringConfigManagedPrometheusArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNetworkPolicyOutput{})
 	pulumi.RegisterOutputType(GetClusterNetworkPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigOutput{})

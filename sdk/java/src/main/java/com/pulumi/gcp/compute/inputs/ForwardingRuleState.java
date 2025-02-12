@@ -275,6 +275,37 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+     * in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+     * Use one of the following formats to specify a sub-PDP when creating an
+     * IPv6 NetLB forwarding rule using BYOIP:
+     * Full resource URL, as in:
+     * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     *   Partial URL, as in:
+     * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * 
+     */
+    @Import(name="ipCollection")
+    private @Nullable Output<String> ipCollection;
+
+    /**
+     * @return Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+     * in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+     * Use one of the following formats to specify a sub-PDP when creating an
+     * IPv6 NetLB forwarding rule using BYOIP:
+     * Full resource URL, as in:
+     * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     *   Partial URL, as in:
+     * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * 
+     */
+    public Optional<Output<String>> ipCollection() {
+        return Optional.ofNullable(this.ipCollection);
+    }
+
+    /**
      * The IP protocol to which this rule applies.
      * For protocol forwarding, valid
      * options are `TCP`, `UDP`, `ESP`,
@@ -894,6 +925,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
         this.effectiveLabels = $.effectiveLabels;
         this.forwardingRuleId = $.forwardingRuleId;
         this.ipAddress = $.ipAddress;
+        this.ipCollection = $.ipCollection;
         this.ipProtocol = $.ipProtocol;
         this.ipVersion = $.ipVersion;
         this.isMirroringCollector = $.isMirroringCollector;
@@ -1251,6 +1283,43 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
          */
         public Builder ipAddress(String ipAddress) {
             return ipAddress(Output.of(ipAddress));
+        }
+
+        /**
+         * @param ipCollection Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+         * in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+         * Use one of the following formats to specify a sub-PDP when creating an
+         * IPv6 NetLB forwarding rule using BYOIP:
+         * Full resource URL, as in:
+         * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+         *   Partial URL, as in:
+         * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+         * * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipCollection(@Nullable Output<String> ipCollection) {
+            $.ipCollection = ipCollection;
+            return this;
+        }
+
+        /**
+         * @param ipCollection Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+         * in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+         * Use one of the following formats to specify a sub-PDP when creating an
+         * IPv6 NetLB forwarding rule using BYOIP:
+         * Full resource URL, as in:
+         * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+         *   Partial URL, as in:
+         * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+         * * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipCollection(String ipCollection) {
+            return ipCollection(Output.of(ipCollection));
         }
 
         /**

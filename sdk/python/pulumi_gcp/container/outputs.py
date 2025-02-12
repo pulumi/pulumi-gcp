@@ -144,6 +144,7 @@ __all__ = [
     'ClusterMonitoringConfig',
     'ClusterMonitoringConfigAdvancedDatapathObservabilityConfig',
     'ClusterMonitoringConfigManagedPrometheus',
+    'ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig',
     'ClusterNetworkPolicy',
     'ClusterNodeConfig',
     'ClusterNodeConfigAdvancedMachineFeatures',
@@ -346,6 +347,7 @@ __all__ = [
     'GetClusterMonitoringConfigResult',
     'GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigResult',
     'GetClusterMonitoringConfigManagedPrometheusResult',
+    'GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigResult',
     'GetClusterNetworkPolicyResult',
     'GetClusterNodeConfigResult',
     'GetClusterNodeConfigAdvancedMachineFeatureResult',
@@ -6829,12 +6831,33 @@ class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig(dict):
 
 @pulumi.output_type
 class ClusterMonitoringConfigManagedPrometheus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoMonitoringConfig":
+            suggest = "auto_monitoring_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterMonitoringConfigManagedPrometheus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterMonitoringConfigManagedPrometheus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterMonitoringConfigManagedPrometheus.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 enabled: bool):
+                 enabled: bool,
+                 auto_monitoring_config: Optional['outputs.ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig'] = None):
         """
         :param bool enabled: Whether or not the managed collection is enabled.
+        :param 'ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs' auto_monitoring_config: Configuration options for GKE Auto-Monitoring.
         """
         pulumi.set(__self__, "enabled", enabled)
+        if auto_monitoring_config is not None:
+            pulumi.set(__self__, "auto_monitoring_config", auto_monitoring_config)
 
     @property
     @pulumi.getter
@@ -6843,6 +6866,32 @@ class ClusterMonitoringConfigManagedPrometheus(dict):
         Whether or not the managed collection is enabled.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="autoMonitoringConfig")
+    def auto_monitoring_config(self) -> Optional['outputs.ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig']:
+        """
+        Configuration options for GKE Auto-Monitoring.
+        """
+        return pulumi.get(self, "auto_monitoring_config")
+
+
+@pulumi.output_type
+class ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig(dict):
+    def __init__(__self__, *,
+                 scope: str):
+        """
+        :param str scope: Whether or not to enable GKE Auto-Monitoring. Supported values include: `ALL`, `NONE`.
+        """
+        pulumi.set(__self__, "scope", scope)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> str:
+        """
+        Whether or not to enable GKE Auto-Monitoring. Supported values include: `ALL`, `NONE`.
+        """
+        return pulumi.get(self, "scope")
 
 
 @pulumi.output_type
@@ -17495,11 +17544,22 @@ class GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigResult(dict):
 @pulumi.output_type
 class GetClusterMonitoringConfigManagedPrometheusResult(dict):
     def __init__(__self__, *,
+                 auto_monitoring_configs: Sequence['outputs.GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigResult'],
                  enabled: bool):
         """
+        :param Sequence['GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs'] auto_monitoring_configs: Configuration for GKE Workload Auto-Monitoring.
         :param bool enabled: Whether or not the managed collection is enabled.
         """
+        pulumi.set(__self__, "auto_monitoring_configs", auto_monitoring_configs)
         pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="autoMonitoringConfigs")
+    def auto_monitoring_configs(self) -> Sequence['outputs.GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigResult']:
+        """
+        Configuration for GKE Workload Auto-Monitoring.
+        """
+        return pulumi.get(self, "auto_monitoring_configs")
 
     @property
     @pulumi.getter
@@ -17508,6 +17568,24 @@ class GetClusterMonitoringConfigManagedPrometheusResult(dict):
         Whether or not the managed collection is enabled.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigResult(dict):
+    def __init__(__self__, *,
+                 scope: str):
+        """
+        :param str scope: The scope of auto-monitoring.
+        """
+        pulumi.set(__self__, "scope", scope)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> str:
+        """
+        The scope of auto-monitoring.
+        """
+        return pulumi.get(self, "scope")
 
 
 @pulumi.output_type

@@ -27,7 +27,7 @@ class GetAuthorityResult:
     """
     A collection of values returned by getAuthority.
     """
-    def __init__(__self__, access_urls=None, certificate_authority_id=None, configs=None, create_time=None, deletion_protection=None, desired_state=None, effective_labels=None, gcs_bucket=None, id=None, ignore_active_certificates_on_deletion=None, key_specs=None, labels=None, lifetime=None, location=None, name=None, pem_ca_certificate=None, pem_ca_certificates=None, pem_csr=None, pool=None, project=None, pulumi_labels=None, skip_grace_period=None, state=None, subordinate_configs=None, type=None, update_time=None):
+    def __init__(__self__, access_urls=None, certificate_authority_id=None, configs=None, create_time=None, deletion_protection=None, desired_state=None, effective_labels=None, gcs_bucket=None, id=None, ignore_active_certificates_on_deletion=None, key_specs=None, labels=None, lifetime=None, location=None, name=None, pem_ca_certificate=None, pem_ca_certificates=None, pem_csr=None, pool=None, project=None, pulumi_labels=None, skip_grace_period=None, state=None, subordinate_configs=None, type=None, update_time=None, user_defined_access_urls=None):
         if access_urls and not isinstance(access_urls, list):
             raise TypeError("Expected argument 'access_urls' to be a list")
         pulumi.set(__self__, "access_urls", access_urls)
@@ -106,6 +106,9 @@ class GetAuthorityResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+        if user_defined_access_urls and not isinstance(user_defined_access_urls, list):
+            raise TypeError("Expected argument 'user_defined_access_urls' to be a list")
+        pulumi.set(__self__, "user_defined_access_urls", user_defined_access_urls)
 
     @property
     @pulumi.getter(name="accessUrls")
@@ -243,6 +246,11 @@ class GetAuthorityResult:
     def update_time(self) -> str:
         return pulumi.get(self, "update_time")
 
+    @property
+    @pulumi.getter(name="userDefinedAccessUrls")
+    def user_defined_access_urls(self) -> Sequence['outputs.GetAuthorityUserDefinedAccessUrlResult']:
+        return pulumi.get(self, "user_defined_access_urls")
+
 
 class AwaitableGetAuthorityResult(GetAuthorityResult):
     # pylint: disable=using-constant-test
@@ -275,7 +283,8 @@ class AwaitableGetAuthorityResult(GetAuthorityResult):
             state=self.state,
             subordinate_configs=self.subordinate_configs,
             type=self.type,
-            update_time=self.update_time)
+            update_time=self.update_time,
+            user_defined_access_urls=self.user_defined_access_urls)
 
 
 def get_authority(certificate_authority_id: Optional[str] = None,
@@ -341,7 +350,8 @@ def get_authority(certificate_authority_id: Optional[str] = None,
         state=pulumi.get(__ret__, 'state'),
         subordinate_configs=pulumi.get(__ret__, 'subordinate_configs'),
         type=pulumi.get(__ret__, 'type'),
-        update_time=pulumi.get(__ret__, 'update_time'))
+        update_time=pulumi.get(__ret__, 'update_time'),
+        user_defined_access_urls=pulumi.get(__ret__, 'user_defined_access_urls'))
 def get_authority_output(certificate_authority_id: Optional[pulumi.Input[Optional[str]]] = None,
                          location: Optional[pulumi.Input[Optional[str]]] = None,
                          pool: Optional[pulumi.Input[Optional[str]]] = None,
@@ -404,4 +414,5 @@ def get_authority_output(certificate_authority_id: Optional[pulumi.Input[Optiona
         state=pulumi.get(__response__, 'state'),
         subordinate_configs=pulumi.get(__response__, 'subordinate_configs'),
         type=pulumi.get(__response__, 'type'),
-        update_time=pulumi.get(__response__, 'update_time')))
+        update_time=pulumi.get(__response__, 'update_time'),
+        user_defined_access_urls=pulumi.get(__response__, 'user_defined_access_urls')))

@@ -3079,6 +3079,7 @@ if not MYPY:
         max_instances: NotRequired[pulumi.Input[int]]
         """
         Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
+        **Note:** Starting from February 17, 2025, App Engine sets the maxInstances default for standard environment deployments to 20. This change doesn't impact existing apps. To override the default, specify a new value between 0 and 2147483647, and deploy a new version or redeploy over an existing version. To disable the maxInstances default configuration setting, specify the maximum permitted value 2147483647.
         """
         min_instances: NotRequired[pulumi.Input[int]]
         """
@@ -3104,6 +3105,7 @@ class StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs:
                  target_throughput_utilization: Optional[pulumi.Input[float]] = None):
         """
         :param pulumi.Input[int] max_instances: Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
+               **Note:** Starting from February 17, 2025, App Engine sets the maxInstances default for standard environment deployments to 20. This change doesn't impact existing apps. To override the default, specify a new value between 0 and 2147483647, and deploy a new version or redeploy over an existing version. To disable the maxInstances default configuration setting, specify the maximum permitted value 2147483647.
         :param pulumi.Input[int] min_instances: Minimum number of instances to run for this version. Set to zero to disable minInstances configuration.
         :param pulumi.Input[float] target_cpu_utilization: Target CPU utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
         :param pulumi.Input[float] target_throughput_utilization: Target throughput utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
@@ -3122,6 +3124,7 @@ class StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs:
     def max_instances(self) -> Optional[pulumi.Input[int]]:
         """
         Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
+        **Note:** Starting from February 17, 2025, App Engine sets the maxInstances default for standard environment deployments to 20. This change doesn't impact existing apps. To override the default, specify a new value between 0 and 2147483647, and deploy a new version or redeploy over an existing version. To disable the maxInstances default configuration setting, specify the maximum permitted value 2147483647.
         """
         return pulumi.get(self, "max_instances")
 

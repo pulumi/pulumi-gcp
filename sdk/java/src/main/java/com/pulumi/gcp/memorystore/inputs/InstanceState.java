@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.memorystore.inputs.InstanceDesiredPscAutoConnectionArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceDiscoveryEndpointArgs;
+import com.pulumi.gcp.memorystore.inputs.InstanceEndpointArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceNodeConfigArgs;
 import com.pulumi.gcp.memorystore.inputs.InstancePersistenceConfigArgs;
 import com.pulumi.gcp.memorystore.inputs.InstancePscAutoConnectionArgs;
@@ -14,7 +15,6 @@ import com.pulumi.gcp.memorystore.inputs.InstanceStateInfoArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceZoneDistributionConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -127,16 +127,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Endpoints for the instance.
+     * Structure is documented below.
      * 
      */
     @Import(name="endpoints")
-    private @Nullable Output<List<List<Object>>> endpoints;
+    private @Nullable Output<List<InstanceEndpointArgs>> endpoints;
 
     /**
      * @return Endpoints for the instance.
+     * Structure is documented below.
      * 
      */
-    public Optional<Output<List<List<Object>>>> endpoints() {
+    public Optional<Output<List<InstanceEndpointArgs>>> endpoints() {
         return Optional.ofNullable(this.endpoints);
     }
 
@@ -238,22 +240,22 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. Standalone or cluster.
+     * Optional. cluster or cluster-disabled.
      * Possible values:
      * CLUSTER
-     * STANDALONE
-     * Possible values are: `CLUSTER`, `STANDALONE`.
+     * CLUSTER_DISABLED
+     * Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return Optional. Standalone or cluster.
+     * @return Optional. cluster or cluster-disabled.
      * Possible values:
      * CLUSTER
-     * STANDALONE
-     * Possible values are: `CLUSTER`, `STANDALONE`.
+     * CLUSTER_DISABLED
+     * Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -736,32 +738,35 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param endpoints Endpoints for the instance.
+         * Structure is documented below.
          * 
          * @return builder
          * 
          */
-        public Builder endpoints(@Nullable Output<List<List<Object>>> endpoints) {
+        public Builder endpoints(@Nullable Output<List<InstanceEndpointArgs>> endpoints) {
             $.endpoints = endpoints;
             return this;
         }
 
         /**
          * @param endpoints Endpoints for the instance.
+         * Structure is documented below.
          * 
          * @return builder
          * 
          */
-        public Builder endpoints(List<List<Object>> endpoints) {
+        public Builder endpoints(List<InstanceEndpointArgs> endpoints) {
             return endpoints(Output.of(endpoints));
         }
 
         /**
          * @param endpoints Endpoints for the instance.
+         * Structure is documented below.
          * 
          * @return builder
          * 
          */
-        public Builder endpoints(List<Object>... endpoints) {
+        public Builder endpoints(InstanceEndpointArgs... endpoints) {
             return endpoints(List.of(endpoints));
         }
 
@@ -893,11 +898,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mode Optional. Standalone or cluster.
+         * @param mode Optional. cluster or cluster-disabled.
          * Possible values:
          * CLUSTER
-         * STANDALONE
-         * Possible values are: `CLUSTER`, `STANDALONE`.
+         * CLUSTER_DISABLED
+         * Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
          * 
          * @return builder
          * 
@@ -908,11 +913,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mode Optional. Standalone or cluster.
+         * @param mode Optional. cluster or cluster-disabled.
          * Possible values:
          * CLUSTER
-         * STANDALONE
-         * Possible values are: `CLUSTER`, `STANDALONE`.
+         * CLUSTER_DISABLED
+         * Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
          * 
          * @return builder
          * 

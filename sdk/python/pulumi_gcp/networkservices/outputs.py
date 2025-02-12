@@ -45,6 +45,7 @@ __all__ = [
     'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions',
     'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy',
     'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite',
+    'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods',
     'EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect',
     'EndpointPolicyEndpointMatcher',
     'EndpointPolicyEndpointMatcherMetadataLabelMatcher',
@@ -863,6 +864,8 @@ class EdgeCacheServiceRoutingPathMatcherRouteRule(dict):
             suggest = "header_action"
         elif key == "routeAction":
             suggest = "route_action"
+        elif key == "routeMethods":
+            suggest = "route_methods"
         elif key == "urlRedirect":
             suggest = "url_redirect"
 
@@ -884,6 +887,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRule(dict):
                  header_action: Optional['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction'] = None,
                  origin: Optional[str] = None,
                  route_action: Optional['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction'] = None,
+                 route_methods: Optional['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods'] = None,
                  url_redirect: Optional['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect'] = None):
         """
         :param Sequence['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs'] match_rules: The list of criteria for matching attributes of a request to this routeRule. This list has OR semantics: the request matches this routeRule when any of the matchRules are satisfied. However predicates
@@ -900,6 +904,9 @@ class EdgeCacheServiceRoutingPathMatcherRouteRule(dict):
                Only one of origin or urlRedirect can be set.
         :param 'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs' route_action: In response to a matching path, the routeAction performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected origin.
                Structure is documented below.
+        :param 'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs' route_methods: Allow overriding the set of methods that are allowed for this route.
+               When not set, Media CDN allows only "GET", "HEAD", and "OPTIONS".
+               Structure is documented below.
         :param 'EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs' url_redirect: The URL redirect configuration for requests that match this route.
                Structure is documented below.
         """
@@ -913,6 +920,8 @@ class EdgeCacheServiceRoutingPathMatcherRouteRule(dict):
             pulumi.set(__self__, "origin", origin)
         if route_action is not None:
             pulumi.set(__self__, "route_action", route_action)
+        if route_methods is not None:
+            pulumi.set(__self__, "route_methods", route_methods)
         if url_redirect is not None:
             pulumi.set(__self__, "url_redirect", url_redirect)
 
@@ -971,6 +980,16 @@ class EdgeCacheServiceRoutingPathMatcherRouteRule(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "route_action")
+
+    @property
+    @pulumi.getter(name="routeMethods")
+    def route_methods(self) -> Optional['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods']:
+        """
+        Allow overriding the set of methods that are allowed for this route.
+        When not set, Media CDN allows only "GET", "HEAD", and "OPTIONS".
+        Structure is documented below.
+        """
+        return pulumi.get(self, "route_methods")
 
     @property
     @pulumi.getter(name="urlRedirect")
@@ -1561,6 +1580,8 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction(dict):
         suggest = None
         if key == "cdnPolicy":
             suggest = "cdn_policy"
+        elif key == "compressionMode":
+            suggest = "compression_mode"
         elif key == "corsPolicy":
             suggest = "cors_policy"
         elif key == "urlRewrite":
@@ -1579,11 +1600,15 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction(dict):
 
     def __init__(__self__, *,
                  cdn_policy: Optional['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy'] = None,
+                 compression_mode: Optional[str] = None,
                  cors_policy: Optional['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy'] = None,
                  url_rewrite: Optional['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite'] = None):
         """
         :param 'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs' cdn_policy: The policy to use for defining caching and signed request behaviour for requests that match this route.
                Structure is documented below.
+        :param str compression_mode: Setting the compression mode to automatic enables dynamic compression for every eligible response.
+               When dynamic compression is enabled, it is recommended to also set a cache policy to maximize efficiency.
+               Possible values are: `DISABLED`, `AUTOMATIC`.
         :param 'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs' cors_policy: CORSPolicy defines Cross-Origin-Resource-Sharing configuration, including which CORS response headers will be set.
                Structure is documented below.
         :param 'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs' url_rewrite: The URL rewrite configuration for requests that match this route.
@@ -1591,6 +1616,8 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction(dict):
         """
         if cdn_policy is not None:
             pulumi.set(__self__, "cdn_policy", cdn_policy)
+        if compression_mode is not None:
+            pulumi.set(__self__, "compression_mode", compression_mode)
         if cors_policy is not None:
             pulumi.set(__self__, "cors_policy", cors_policy)
         if url_rewrite is not None:
@@ -1604,6 +1631,16 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "cdn_policy")
+
+    @property
+    @pulumi.getter(name="compressionMode")
+    def compression_mode(self) -> Optional[str]:
+        """
+        Setting the compression mode to automatic enables dynamic compression for every eligible response.
+        When dynamic compression is enabled, it is recommended to also set a cache policy to maximize efficiency.
+        Possible values are: `DISABLED`, `AUTOMATIC`.
+        """
+        return pulumi.get(self, "compression_mode")
 
     @property
     @pulumi.getter(name="corsPolicy")
@@ -2446,6 +2483,44 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite(dict):
         specified.
         """
         return pulumi.get(self, "path_template_rewrite")
+
+
+@pulumi.output_type
+class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedMethods":
+            suggest = "allowed_methods"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_methods: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] allowed_methods: The non-empty set of HTTP methods that are allowed for this route.
+               Any combination of "GET", "HEAD", "OPTIONS", "PUT", "POST", "DELETE", and "PATCH".
+        """
+        if allowed_methods is not None:
+            pulumi.set(__self__, "allowed_methods", allowed_methods)
+
+    @property
+    @pulumi.getter(name="allowedMethods")
+    def allowed_methods(self) -> Optional[Sequence[str]]:
+        """
+        The non-empty set of HTTP methods that are allowed for this route.
+        Any combination of "GET", "HEAD", "OPTIONS", "PUT", "POST", "DELETE", and "PATCH".
+        """
+        return pulumi.get(self, "allowed_methods")
 
 
 @pulumi.output_type

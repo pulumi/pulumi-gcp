@@ -17,6 +17,7 @@ import com.pulumi.gcp.colab.outputs.RuntimeTemplateIdleShutdownConfig;
 import com.pulumi.gcp.colab.outputs.RuntimeTemplateMachineSpec;
 import com.pulumi.gcp.colab.outputs.RuntimeTemplateNetworkSpec;
 import com.pulumi.gcp.colab.outputs.RuntimeTemplateShieldedVmConfig;
+import com.pulumi.gcp.colab.outputs.RuntimeTemplateSoftwareConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -146,6 +147,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.colab.inputs.RuntimeTemplateEucConfigArgs;
  * import com.pulumi.gcp.colab.inputs.RuntimeTemplateShieldedVmConfigArgs;
  * import com.pulumi.gcp.colab.inputs.RuntimeTemplateEncryptionSpecArgs;
+ * import com.pulumi.gcp.colab.inputs.RuntimeTemplateSoftwareConfigArgs;
+ * import com.pulumi.gcp.colab.inputs.RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -205,6 +208,17 @@ import javax.annotation.Nullable;
  *                 "def")
  *             .encryptionSpec(RuntimeTemplateEncryptionSpecArgs.builder()
  *                 .kmsKeyName("my-crypto-key")
+ *                 .build())
+ *             .softwareConfig(RuntimeTemplateSoftwareConfigArgs.builder()
+ *                 .envs(RuntimeTemplateSoftwareConfigEnvArgs.builder()
+ *                     .name("TEST")
+ *                     .value(1)
+ *                     .build())
+ *                 .postStartupScriptConfig(RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs.builder()
+ *                     .postStartupScript("echo 'hello world'")
+ *                     .postStartupScriptUrl("gs://colab-enterprise-pss-secure/secure_pss.sh")
+ *                     .postStartupScriptBehavior("RUN_ONCE")
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -490,6 +504,22 @@ public class RuntimeTemplate extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<RuntimeTemplateShieldedVmConfig>> shieldedVmConfig() {
         return Codegen.optional(this.shieldedVmConfig);
+    }
+    /**
+     * The notebook software configuration of the notebook runtime.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="softwareConfig", refs={RuntimeTemplateSoftwareConfig.class}, tree="[0]")
+    private Output</* @Nullable */ RuntimeTemplateSoftwareConfig> softwareConfig;
+
+    /**
+     * @return The notebook software configuration of the notebook runtime.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RuntimeTemplateSoftwareConfig>> softwareConfig() {
+        return Codegen.optional(this.softwareConfig);
     }
 
     /**

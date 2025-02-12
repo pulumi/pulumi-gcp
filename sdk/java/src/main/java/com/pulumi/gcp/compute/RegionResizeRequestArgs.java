@@ -85,18 +85,18 @@ public final class RegionResizeRequestArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The reference of the compute region scoping this request.
+     * The reference of the compute region scoping this request. If it is not provided, the provider region is used.
      * 
      */
-    @Import(name="region", required=true)
-    private Output<String> region;
+    @Import(name="region")
+    private @Nullable Output<String> region;
 
     /**
-     * @return The reference of the compute region scoping this request.
+     * @return The reference of the compute region scoping this request. If it is not provided, the provider region is used.
      * 
      */
-    public Output<String> region() {
-        return this.region;
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
     }
 
     /**
@@ -252,18 +252,18 @@ public final class RegionResizeRequestArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param region The reference of the compute region scoping this request.
+         * @param region The reference of the compute region scoping this request. If it is not provided, the provider region is used.
          * 
          * @return builder
          * 
          */
-        public Builder region(Output<String> region) {
+        public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
         /**
-         * @param region The reference of the compute region scoping this request.
+         * @param region The reference of the compute region scoping this request. If it is not provided, the provider region is used.
          * 
          * @return builder
          * 
@@ -319,9 +319,6 @@ public final class RegionResizeRequestArgs extends com.pulumi.resources.Resource
         public RegionResizeRequestArgs build() {
             if ($.instanceGroupManager == null) {
                 throw new MissingRequiredPropertyException("RegionResizeRequestArgs", "instanceGroupManager");
-            }
-            if ($.region == null) {
-                throw new MissingRequiredPropertyException("RegionResizeRequestArgs", "region");
             }
             if ($.resizeBy == null) {
                 throw new MissingRequiredPropertyException("RegionResizeRequestArgs", "resizeBy");

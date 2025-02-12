@@ -13,8 +13,12 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
 
 __all__ = [
+    'NotebookExecutionDataformRepositorySource',
+    'NotebookExecutionDirectNotebookSource',
+    'NotebookExecutionGcsNotebookSource',
     'RuntimeNotebookRuntimeTemplateRef',
     'RuntimeTemplateDataPersistentDiskSpec',
     'RuntimeTemplateEncryptionSpec',
@@ -25,7 +29,111 @@ __all__ = [
     'RuntimeTemplateMachineSpec',
     'RuntimeTemplateNetworkSpec',
     'RuntimeTemplateShieldedVmConfig',
+    'RuntimeTemplateSoftwareConfig',
+    'RuntimeTemplateSoftwareConfigEnv',
+    'RuntimeTemplateSoftwareConfigPostStartupScriptConfig',
+    'ScheduleCreateNotebookExecutionJobRequest',
+    'ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob',
+    'ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource',
+    'ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource',
 ]
+
+@pulumi.output_type
+class NotebookExecutionDataformRepositorySource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataformRepositoryResourceName":
+            suggest = "dataform_repository_resource_name"
+        elif key == "commitSha":
+            suggest = "commit_sha"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NotebookExecutionDataformRepositorySource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NotebookExecutionDataformRepositorySource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NotebookExecutionDataformRepositorySource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataform_repository_resource_name: str,
+                 commit_sha: Optional[str] = None):
+        """
+        :param str dataform_repository_resource_name: The resource name of the Dataform Repository.
+        :param str commit_sha: The commit SHA to read repository with. If unset, the file will be read at HEAD.
+        """
+        pulumi.set(__self__, "dataform_repository_resource_name", dataform_repository_resource_name)
+        if commit_sha is not None:
+            pulumi.set(__self__, "commit_sha", commit_sha)
+
+    @property
+    @pulumi.getter(name="dataformRepositoryResourceName")
+    def dataform_repository_resource_name(self) -> str:
+        """
+        The resource name of the Dataform Repository.
+        """
+        return pulumi.get(self, "dataform_repository_resource_name")
+
+    @property
+    @pulumi.getter(name="commitSha")
+    def commit_sha(self) -> Optional[str]:
+        """
+        The commit SHA to read repository with. If unset, the file will be read at HEAD.
+        """
+        return pulumi.get(self, "commit_sha")
+
+
+@pulumi.output_type
+class NotebookExecutionDirectNotebookSource(dict):
+    def __init__(__self__, *,
+                 content: str):
+        """
+        :param str content: The base64-encoded contents of the input notebook file.
+        """
+        pulumi.set(__self__, "content", content)
+
+    @property
+    @pulumi.getter
+    def content(self) -> str:
+        """
+        The base64-encoded contents of the input notebook file.
+        """
+        return pulumi.get(self, "content")
+
+
+@pulumi.output_type
+class NotebookExecutionGcsNotebookSource(dict):
+    def __init__(__self__, *,
+                 uri: str,
+                 generation: Optional[str] = None):
+        """
+        :param str uri: The Cloud Storage uri pointing to the ipynb file.
+        :param str generation: The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+        """
+        pulumi.set(__self__, "uri", uri)
+        if generation is not None:
+            pulumi.set(__self__, "generation", generation)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        The Cloud Storage uri pointing to the ipynb file.
+        """
+        return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter
+    def generation(self) -> Optional[str]:
+        """
+        The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+        """
+        return pulumi.get(self, "generation")
+
 
 @pulumi.output_type
 class RuntimeNotebookRuntimeTemplateRef(dict):
@@ -432,5 +540,409 @@ class RuntimeTemplateShieldedVmConfig(dict):
         Enables secure boot for the runtime.
         """
         return pulumi.get(self, "enable_secure_boot")
+
+
+@pulumi.output_type
+class RuntimeTemplateSoftwareConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "postStartupScriptConfig":
+            suggest = "post_startup_script_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuntimeTemplateSoftwareConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuntimeTemplateSoftwareConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuntimeTemplateSoftwareConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 envs: Optional[Sequence['outputs.RuntimeTemplateSoftwareConfigEnv']] = None,
+                 post_startup_script_config: Optional['outputs.RuntimeTemplateSoftwareConfigPostStartupScriptConfig'] = None):
+        """
+        :param Sequence['RuntimeTemplateSoftwareConfigEnvArgs'] envs: Environment variables to be passed to the container.
+               Structure is documented below.
+        :param 'RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs' post_startup_script_config: Post startup script config.
+               Structure is documented below.
+        """
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+        if post_startup_script_config is not None:
+            pulumi.set(__self__, "post_startup_script_config", post_startup_script_config)
+
+    @property
+    @pulumi.getter
+    def envs(self) -> Optional[Sequence['outputs.RuntimeTemplateSoftwareConfigEnv']]:
+        """
+        Environment variables to be passed to the container.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "envs")
+
+    @property
+    @pulumi.getter(name="postStartupScriptConfig")
+    def post_startup_script_config(self) -> Optional['outputs.RuntimeTemplateSoftwareConfigPostStartupScriptConfig']:
+        """
+        Post startup script config.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "post_startup_script_config")
+
+
+@pulumi.output_type
+class RuntimeTemplateSoftwareConfigEnv(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str name: Name of the environment variable. Must be a valid C identifier.
+        :param str value: Variables that reference a $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the environment variable. Must be a valid C identifier.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Variables that reference a $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class RuntimeTemplateSoftwareConfigPostStartupScriptConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "postStartupScript":
+            suggest = "post_startup_script"
+        elif key == "postStartupScriptBehavior":
+            suggest = "post_startup_script_behavior"
+        elif key == "postStartupScriptUrl":
+            suggest = "post_startup_script_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuntimeTemplateSoftwareConfigPostStartupScriptConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuntimeTemplateSoftwareConfigPostStartupScriptConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuntimeTemplateSoftwareConfigPostStartupScriptConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 post_startup_script: Optional[str] = None,
+                 post_startup_script_behavior: Optional[str] = None,
+                 post_startup_script_url: Optional[str] = None):
+        """
+        :param str post_startup_script: Post startup script to run after runtime is started.
+        :param str post_startup_script_behavior: Post startup script behavior that defines download and execution behavior.
+               Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
+        :param str post_startup_script_url: Post startup script url to download. Example: https://bucket/script.sh.
+        """
+        if post_startup_script is not None:
+            pulumi.set(__self__, "post_startup_script", post_startup_script)
+        if post_startup_script_behavior is not None:
+            pulumi.set(__self__, "post_startup_script_behavior", post_startup_script_behavior)
+        if post_startup_script_url is not None:
+            pulumi.set(__self__, "post_startup_script_url", post_startup_script_url)
+
+    @property
+    @pulumi.getter(name="postStartupScript")
+    def post_startup_script(self) -> Optional[str]:
+        """
+        Post startup script to run after runtime is started.
+        """
+        return pulumi.get(self, "post_startup_script")
+
+    @property
+    @pulumi.getter(name="postStartupScriptBehavior")
+    def post_startup_script_behavior(self) -> Optional[str]:
+        """
+        Post startup script behavior that defines download and execution behavior.
+        Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
+        """
+        return pulumi.get(self, "post_startup_script_behavior")
+
+    @property
+    @pulumi.getter(name="postStartupScriptUrl")
+    def post_startup_script_url(self) -> Optional[str]:
+        """
+        Post startup script url to download. Example: https://bucket/script.sh.
+        """
+        return pulumi.get(self, "post_startup_script_url")
+
+
+@pulumi.output_type
+class ScheduleCreateNotebookExecutionJobRequest(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "notebookExecutionJob":
+            suggest = "notebook_execution_job"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScheduleCreateNotebookExecutionJobRequest. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScheduleCreateNotebookExecutionJobRequest.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScheduleCreateNotebookExecutionJobRequest.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 notebook_execution_job: 'outputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob'):
+        """
+        :param 'ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs' notebook_execution_job: The NotebookExecutionJob to create.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "notebook_execution_job", notebook_execution_job)
+
+    @property
+    @pulumi.getter(name="notebookExecutionJob")
+    def notebook_execution_job(self) -> 'outputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob':
+        """
+        The NotebookExecutionJob to create.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "notebook_execution_job")
+
+
+@pulumi.output_type
+class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "gcsOutputUri":
+            suggest = "gcs_output_uri"
+        elif key == "notebookRuntimeTemplateResourceName":
+            suggest = "notebook_runtime_template_resource_name"
+        elif key == "dataformRepositorySource":
+            suggest = "dataform_repository_source"
+        elif key == "executionTimeout":
+            suggest = "execution_timeout"
+        elif key == "executionUser":
+            suggest = "execution_user"
+        elif key == "gcsNotebookSource":
+            suggest = "gcs_notebook_source"
+        elif key == "serviceAccount":
+            suggest = "service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: str,
+                 gcs_output_uri: str,
+                 notebook_runtime_template_resource_name: str,
+                 dataform_repository_source: Optional['outputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource'] = None,
+                 execution_timeout: Optional[str] = None,
+                 execution_user: Optional[str] = None,
+                 gcs_notebook_source: Optional['outputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource'] = None,
+                 service_account: Optional[str] = None):
+        """
+        :param str display_name: Required. The display name of the Notebook Execution.
+        :param str gcs_output_uri: The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
+        :param str notebook_runtime_template_resource_name: The NotebookRuntimeTemplate to source compute configuration from.
+        :param 'ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs' dataform_repository_source: The Dataform Repository containing the input notebook.
+               Structure is documented below.
+        :param str execution_timeout: Max running time of the execution job in seconds (default 86400s / 24 hrs). A duration in seconds with up to nine fractional digits, ending with "s". Example: "3.5s".
+        :param str execution_user: The user email to run the execution as.
+        :param 'ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs' gcs_notebook_source: The Cloud Storage uri for the input notebook.
+               Structure is documented below.
+        :param str service_account: The service account to run the execution as.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "gcs_output_uri", gcs_output_uri)
+        pulumi.set(__self__, "notebook_runtime_template_resource_name", notebook_runtime_template_resource_name)
+        if dataform_repository_source is not None:
+            pulumi.set(__self__, "dataform_repository_source", dataform_repository_source)
+        if execution_timeout is not None:
+            pulumi.set(__self__, "execution_timeout", execution_timeout)
+        if execution_user is not None:
+            pulumi.set(__self__, "execution_user", execution_user)
+        if gcs_notebook_source is not None:
+            pulumi.set(__self__, "gcs_notebook_source", gcs_notebook_source)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Required. The display name of the Notebook Execution.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="gcsOutputUri")
+    def gcs_output_uri(self) -> str:
+        """
+        The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
+        """
+        return pulumi.get(self, "gcs_output_uri")
+
+    @property
+    @pulumi.getter(name="notebookRuntimeTemplateResourceName")
+    def notebook_runtime_template_resource_name(self) -> str:
+        """
+        The NotebookRuntimeTemplate to source compute configuration from.
+        """
+        return pulumi.get(self, "notebook_runtime_template_resource_name")
+
+    @property
+    @pulumi.getter(name="dataformRepositorySource")
+    def dataform_repository_source(self) -> Optional['outputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource']:
+        """
+        The Dataform Repository containing the input notebook.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dataform_repository_source")
+
+    @property
+    @pulumi.getter(name="executionTimeout")
+    def execution_timeout(self) -> Optional[str]:
+        """
+        Max running time of the execution job in seconds (default 86400s / 24 hrs). A duration in seconds with up to nine fractional digits, ending with "s". Example: "3.5s".
+        """
+        return pulumi.get(self, "execution_timeout")
+
+    @property
+    @pulumi.getter(name="executionUser")
+    def execution_user(self) -> Optional[str]:
+        """
+        The user email to run the execution as.
+        """
+        return pulumi.get(self, "execution_user")
+
+    @property
+    @pulumi.getter(name="gcsNotebookSource")
+    def gcs_notebook_source(self) -> Optional['outputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource']:
+        """
+        The Cloud Storage uri for the input notebook.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gcs_notebook_source")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[str]:
+        """
+        The service account to run the execution as.
+        """
+        return pulumi.get(self, "service_account")
+
+
+@pulumi.output_type
+class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataformRepositoryResourceName":
+            suggest = "dataform_repository_resource_name"
+        elif key == "commitSha":
+            suggest = "commit_sha"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataform_repository_resource_name: str,
+                 commit_sha: Optional[str] = None):
+        """
+        :param str dataform_repository_resource_name: The resource name of the Dataform Repository.
+        :param str commit_sha: The commit SHA to read repository with. If unset, the file will be read at HEAD.
+        """
+        pulumi.set(__self__, "dataform_repository_resource_name", dataform_repository_resource_name)
+        if commit_sha is not None:
+            pulumi.set(__self__, "commit_sha", commit_sha)
+
+    @property
+    @pulumi.getter(name="dataformRepositoryResourceName")
+    def dataform_repository_resource_name(self) -> str:
+        """
+        The resource name of the Dataform Repository.
+        """
+        return pulumi.get(self, "dataform_repository_resource_name")
+
+    @property
+    @pulumi.getter(name="commitSha")
+    def commit_sha(self) -> Optional[str]:
+        """
+        The commit SHA to read repository with. If unset, the file will be read at HEAD.
+        """
+        return pulumi.get(self, "commit_sha")
+
+
+@pulumi.output_type
+class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource(dict):
+    def __init__(__self__, *,
+                 uri: str,
+                 generation: Optional[str] = None):
+        """
+        :param str uri: The Cloud Storage uri pointing to the ipynb file. Format: gs://bucket/notebook_file.ipynb
+        :param str generation: The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+               
+               - - -
+        """
+        pulumi.set(__self__, "uri", uri)
+        if generation is not None:
+            pulumi.set(__self__, "generation", generation)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        The Cloud Storage uri pointing to the ipynb file. Format: gs://bucket/notebook_file.ipynb
+        """
+        return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter
+    def generation(self) -> Optional[str]:
+        """
+        The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+
+        - - -
+        """
+        return pulumi.get(self, "generation")
 
 

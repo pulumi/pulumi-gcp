@@ -22,6 +22,8 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// The name of the service to place in the gRPC HealthCheckRequest
         /// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
         /// If this is not specified, the default behavior is defined by gRPC.
+        /// 
+        /// &lt;a name="nested_template_containers_containers_build_info"&gt;&lt;/a&gt;The `build_info` block contains:
         /// </summary>
         public readonly string? Service;
 

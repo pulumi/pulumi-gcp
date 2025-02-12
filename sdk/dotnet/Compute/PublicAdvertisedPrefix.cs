@@ -102,7 +102,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> DnsVerificationIp { get; private set; } = null!;
 
         /// <summary>
-        /// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+        /// The address range, in CIDR format, represented by this public advertised prefix.
         /// 
         /// 
         /// - - -
@@ -124,6 +124,10 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Specifies how child public delegated prefix will be scoped. pdpScope
         /// must be one of: GLOBAL, REGIONAL
+        /// * REGIONAL: The public delegated prefix is regional only. The
+        /// provisioning will take a few minutes.
+        /// * GLOBAL: The public delegated prefix is global only. The provisioning
+        /// will take ~4 weeks.
         /// Possible values are: `GLOBAL`, `REGIONAL`.
         /// </summary>
         [Output("pdpScope")]
@@ -207,7 +211,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string> DnsVerificationIp { get; set; } = null!;
 
         /// <summary>
-        /// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+        /// The address range, in CIDR format, represented by this public advertised prefix.
         /// 
         /// 
         /// - - -
@@ -229,6 +233,10 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Specifies how child public delegated prefix will be scoped. pdpScope
         /// must be one of: GLOBAL, REGIONAL
+        /// * REGIONAL: The public delegated prefix is regional only. The
+        /// provisioning will take a few minutes.
+        /// * GLOBAL: The public delegated prefix is global only. The provisioning
+        /// will take ~4 weeks.
         /// Possible values are: `GLOBAL`, `REGIONAL`.
         /// </summary>
         [Input("pdpScope")]
@@ -262,7 +270,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? DnsVerificationIp { get; set; }
 
         /// <summary>
-        /// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+        /// The address range, in CIDR format, represented by this public advertised prefix.
         /// 
         /// 
         /// - - -
@@ -284,6 +292,10 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Specifies how child public delegated prefix will be scoped. pdpScope
         /// must be one of: GLOBAL, REGIONAL
+        /// * REGIONAL: The public delegated prefix is regional only. The
+        /// provisioning will take a few minutes.
+        /// * GLOBAL: The public delegated prefix is global only. The provisioning
+        /// will take ~4 weeks.
         /// Possible values are: `GLOBAL`, `REGIONAL`.
         /// </summary>
         [Input("pdpScope")]

@@ -634,18 +634,23 @@ class ConnectionProfile(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        default = gcp.compute.Network("default", name="my-network")
+        default = gcp.compute.Network("default",
+            name="my-network",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="my-subnetwork",
+            ip_cidr_range="10.1.0.0/16",
+            region="us-central1",
+            network=default.id)
         private_connection = gcp.datastream.PrivateConnection("private_connection",
-            display_name="Connection profile",
+            display_name="Private connection",
             location="us-central1",
             private_connection_id="my-connection",
-            labels={
-                "key": "value",
-            },
             vpc_peering_config={
                 "vpc": default.id,
                 "subnet": "10.0.0.0/29",
             })
+        nat_vm_ip = gcp.compute.Address("nat_vm_ip", name="nat-vm-ip")
         instance = gcp.sql.DatabaseInstance("instance",
             name="my-instance",
             database_version="POSTGRES_14",
@@ -653,23 +658,9 @@ class ConnectionProfile(pulumi.CustomResource):
             settings={
                 "tier": "db-f1-micro",
                 "ip_configuration": {
-                    "authorized_networks": [
-                        {
-                            "value": "34.71.242.81",
-                        },
-                        {
-                            "value": "34.72.28.29",
-                        },
-                        {
-                            "value": "34.67.6.157",
-                        },
-                        {
-                            "value": "34.67.234.134",
-                        },
-                        {
-                            "value": "34.72.239.218",
-                        },
-                    ],
+                    "authorized_networks": [{
+                        "value": nat_vm_ip.address,
+                    }],
                 },
             },
             deletion_protection=True)
@@ -683,15 +674,61 @@ class ConnectionProfile(pulumi.CustomResource):
             name="user",
             instance=instance.name,
             password=pwd.result)
+        nat_vm = gcp.compute.Instance("nat_vm",
+            name="nat-vm",
+            machine_type="e2-medium",
+            zone="us-central1-a",
+            desired_status="RUNNING",
+            boot_disk={
+                "initialize_params": {
+                    "image": "debian-cloud/debian-12",
+                },
+            },
+            network_interfaces=[{
+                "network": private_connection.vpc_peering_config.vpc,
+                "subnetwork": default_subnetwork.self_link,
+                "access_configs": [{
+                    "nat_ip": nat_vm_ip.address,
+                }],
+            }],
+            metadata_startup_script=instance.public_ip_address.apply(lambda public_ip_address: f\"\"\"#! /bin/bash
+        # See https://cloud.google.com/datastream/docs/private-connectivity#set-up-reverse-proxy
+        export DB_ADDR={public_ip_address}
+        export DB_PORT=5432
+        echo 1 > /proc/sys/net/ipv4/ip_forward
+        md_url_prefix="http://169.254.169.254/computeMetadata/v1/instance"
+        vm_nic_ip="$(curl -H "Metadata-Flavor: Google" ${{md_url_prefix}}/network-interfaces/0/ip)"
+        iptables -t nat -F
+        iptables -t nat -A PREROUTING \\
+             -p tcp --dport $DB_PORT \\
+             -j DNAT \\
+             --to-destination $DB_ADDR
+        iptables -t nat -A POSTROUTING \\
+             -p tcp --dport $DB_PORT \\
+             -j SNAT \\
+             --to-source $vm_nic_ip
+        iptables-save
+        \"\"\"))
+        rules = gcp.compute.Firewall("rules",
+            name="ingress-rule",
+            network=private_connection.vpc_peering_config.vpc,
+            description="Allow traffic into NAT VM",
+            direction="INGRESS",
+            allows=[{
+                "protocol": "tcp",
+                "ports": ["5432"],
+            }],
+            source_ranges=[private_connection.vpc_peering_config.subnet])
         default_connection_profile = gcp.datastream.ConnectionProfile("default",
             display_name="Connection profile",
             location="us-central1",
             connection_profile_id="my-profile",
             postgresql_profile={
-                "hostname": instance.public_ip_address,
+                "hostname": nat_vm.network_interfaces[0].network_ip,
                 "username": user.name,
                 "password": user.password,
                 "database": db.name,
+                "port": 5432,
             },
             private_connectivity={
                 "private_connection": private_connection.id,
@@ -923,18 +960,23 @@ class ConnectionProfile(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        default = gcp.compute.Network("default", name="my-network")
+        default = gcp.compute.Network("default",
+            name="my-network",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="my-subnetwork",
+            ip_cidr_range="10.1.0.0/16",
+            region="us-central1",
+            network=default.id)
         private_connection = gcp.datastream.PrivateConnection("private_connection",
-            display_name="Connection profile",
+            display_name="Private connection",
             location="us-central1",
             private_connection_id="my-connection",
-            labels={
-                "key": "value",
-            },
             vpc_peering_config={
                 "vpc": default.id,
                 "subnet": "10.0.0.0/29",
             })
+        nat_vm_ip = gcp.compute.Address("nat_vm_ip", name="nat-vm-ip")
         instance = gcp.sql.DatabaseInstance("instance",
             name="my-instance",
             database_version="POSTGRES_14",
@@ -942,23 +984,9 @@ class ConnectionProfile(pulumi.CustomResource):
             settings={
                 "tier": "db-f1-micro",
                 "ip_configuration": {
-                    "authorized_networks": [
-                        {
-                            "value": "34.71.242.81",
-                        },
-                        {
-                            "value": "34.72.28.29",
-                        },
-                        {
-                            "value": "34.67.6.157",
-                        },
-                        {
-                            "value": "34.67.234.134",
-                        },
-                        {
-                            "value": "34.72.239.218",
-                        },
-                    ],
+                    "authorized_networks": [{
+                        "value": nat_vm_ip.address,
+                    }],
                 },
             },
             deletion_protection=True)
@@ -972,15 +1000,61 @@ class ConnectionProfile(pulumi.CustomResource):
             name="user",
             instance=instance.name,
             password=pwd.result)
+        nat_vm = gcp.compute.Instance("nat_vm",
+            name="nat-vm",
+            machine_type="e2-medium",
+            zone="us-central1-a",
+            desired_status="RUNNING",
+            boot_disk={
+                "initialize_params": {
+                    "image": "debian-cloud/debian-12",
+                },
+            },
+            network_interfaces=[{
+                "network": private_connection.vpc_peering_config.vpc,
+                "subnetwork": default_subnetwork.self_link,
+                "access_configs": [{
+                    "nat_ip": nat_vm_ip.address,
+                }],
+            }],
+            metadata_startup_script=instance.public_ip_address.apply(lambda public_ip_address: f\"\"\"#! /bin/bash
+        # See https://cloud.google.com/datastream/docs/private-connectivity#set-up-reverse-proxy
+        export DB_ADDR={public_ip_address}
+        export DB_PORT=5432
+        echo 1 > /proc/sys/net/ipv4/ip_forward
+        md_url_prefix="http://169.254.169.254/computeMetadata/v1/instance"
+        vm_nic_ip="$(curl -H "Metadata-Flavor: Google" ${{md_url_prefix}}/network-interfaces/0/ip)"
+        iptables -t nat -F
+        iptables -t nat -A PREROUTING \\
+             -p tcp --dport $DB_PORT \\
+             -j DNAT \\
+             --to-destination $DB_ADDR
+        iptables -t nat -A POSTROUTING \\
+             -p tcp --dport $DB_PORT \\
+             -j SNAT \\
+             --to-source $vm_nic_ip
+        iptables-save
+        \"\"\"))
+        rules = gcp.compute.Firewall("rules",
+            name="ingress-rule",
+            network=private_connection.vpc_peering_config.vpc,
+            description="Allow traffic into NAT VM",
+            direction="INGRESS",
+            allows=[{
+                "protocol": "tcp",
+                "ports": ["5432"],
+            }],
+            source_ranges=[private_connection.vpc_peering_config.subnet])
         default_connection_profile = gcp.datastream.ConnectionProfile("default",
             display_name="Connection profile",
             location="us-central1",
             connection_profile_id="my-profile",
             postgresql_profile={
-                "hostname": instance.public_ip_address,
+                "hostname": nat_vm.network_interfaces[0].network_ip,
                 "username": user.name,
                 "password": user.password,
                 "database": db.name,
+                "port": 5432,
             },
             private_connectivity={
                 "private_connection": private_connection.id,

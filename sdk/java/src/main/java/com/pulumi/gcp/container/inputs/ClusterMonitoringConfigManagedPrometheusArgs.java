@@ -6,13 +6,31 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.container.inputs.ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ClusterMonitoringConfigManagedPrometheusArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterMonitoringConfigManagedPrometheusArgs Empty = new ClusterMonitoringConfigManagedPrometheusArgs();
+
+    /**
+     * Configuration options for GKE Auto-Monitoring.
+     * 
+     */
+    @Import(name="autoMonitoringConfig")
+    private @Nullable Output<ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs> autoMonitoringConfig;
+
+    /**
+     * @return Configuration options for GKE Auto-Monitoring.
+     * 
+     */
+    public Optional<Output<ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs>> autoMonitoringConfig() {
+        return Optional.ofNullable(this.autoMonitoringConfig);
+    }
 
     /**
      * Whether or not the managed collection is enabled.
@@ -32,6 +50,7 @@ public final class ClusterMonitoringConfigManagedPrometheusArgs extends com.pulu
     private ClusterMonitoringConfigManagedPrometheusArgs() {}
 
     private ClusterMonitoringConfigManagedPrometheusArgs(ClusterMonitoringConfigManagedPrometheusArgs $) {
+        this.autoMonitoringConfig = $.autoMonitoringConfig;
         this.enabled = $.enabled;
     }
 
@@ -51,6 +70,27 @@ public final class ClusterMonitoringConfigManagedPrometheusArgs extends com.pulu
 
         public Builder(ClusterMonitoringConfigManagedPrometheusArgs defaults) {
             $ = new ClusterMonitoringConfigManagedPrometheusArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoMonitoringConfig Configuration options for GKE Auto-Monitoring.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoMonitoringConfig(@Nullable Output<ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs> autoMonitoringConfig) {
+            $.autoMonitoringConfig = autoMonitoringConfig;
+            return this;
+        }
+
+        /**
+         * @param autoMonitoringConfig Configuration options for GKE Auto-Monitoring.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoMonitoringConfig(ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs autoMonitoringConfig) {
+            return autoMonitoringConfig(Output.of(autoMonitoringConfig));
         }
 
         /**

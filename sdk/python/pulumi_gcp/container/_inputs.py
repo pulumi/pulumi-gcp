@@ -271,6 +271,8 @@ __all__ = [
     'ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgsDict',
     'ClusterMonitoringConfigManagedPrometheusArgs',
     'ClusterMonitoringConfigManagedPrometheusArgsDict',
+    'ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs',
+    'ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgsDict',
     'ClusterNetworkPolicyArgs',
     'ClusterNetworkPolicyArgsDict',
     'ClusterNodeConfigArgs',
@@ -8282,17 +8284,25 @@ if not MYPY:
         """
         Whether or not the managed collection is enabled.
         """
+        auto_monitoring_config: NotRequired[pulumi.Input['ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgsDict']]
+        """
+        Configuration options for GKE Auto-Monitoring.
+        """
 elif False:
     ClusterMonitoringConfigManagedPrometheusArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterMonitoringConfigManagedPrometheusArgs:
     def __init__(__self__, *,
-                 enabled: pulumi.Input[bool]):
+                 enabled: pulumi.Input[bool],
+                 auto_monitoring_config: Optional[pulumi.Input['ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs']] = None):
         """
         :param pulumi.Input[bool] enabled: Whether or not the managed collection is enabled.
+        :param pulumi.Input['ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs'] auto_monitoring_config: Configuration options for GKE Auto-Monitoring.
         """
         pulumi.set(__self__, "enabled", enabled)
+        if auto_monitoring_config is not None:
+            pulumi.set(__self__, "auto_monitoring_config", auto_monitoring_config)
 
     @property
     @pulumi.getter
@@ -8305,6 +8315,49 @@ class ClusterMonitoringConfigManagedPrometheusArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="autoMonitoringConfig")
+    def auto_monitoring_config(self) -> Optional[pulumi.Input['ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs']]:
+        """
+        Configuration options for GKE Auto-Monitoring.
+        """
+        return pulumi.get(self, "auto_monitoring_config")
+
+    @auto_monitoring_config.setter
+    def auto_monitoring_config(self, value: Optional[pulumi.Input['ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs']]):
+        pulumi.set(self, "auto_monitoring_config", value)
+
+
+if not MYPY:
+    class ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgsDict(TypedDict):
+        scope: pulumi.Input[str]
+        """
+        Whether or not to enable GKE Auto-Monitoring. Supported values include: `ALL`, `NONE`.
+        """
+elif False:
+    ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs:
+    def __init__(__self__, *,
+                 scope: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] scope: Whether or not to enable GKE Auto-Monitoring. Supported values include: `ALL`, `NONE`.
+        """
+        pulumi.set(__self__, "scope", scope)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> pulumi.Input[str]:
+        """
+        Whether or not to enable GKE Auto-Monitoring. Supported values include: `ALL`, `NONE`.
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: pulumi.Input[str]):
+        pulumi.set(self, "scope", value)
 
 
 if not MYPY:

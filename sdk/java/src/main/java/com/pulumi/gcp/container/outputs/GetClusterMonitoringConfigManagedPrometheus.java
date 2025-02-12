@@ -5,11 +5,18 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.container.outputs.GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig;
 import java.lang.Boolean;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetClusterMonitoringConfigManagedPrometheus {
+    /**
+     * @return Configuration for GKE Workload Auto-Monitoring.
+     * 
+     */
+    private List<GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig> autoMonitoringConfigs;
     /**
      * @return Whether or not the managed collection is enabled.
      * 
@@ -17,6 +24,13 @@ public final class GetClusterMonitoringConfigManagedPrometheus {
     private Boolean enabled;
 
     private GetClusterMonitoringConfigManagedPrometheus() {}
+    /**
+     * @return Configuration for GKE Workload Auto-Monitoring.
+     * 
+     */
+    public List<GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig> autoMonitoringConfigs() {
+        return this.autoMonitoringConfigs;
+    }
     /**
      * @return Whether or not the managed collection is enabled.
      * 
@@ -34,13 +48,26 @@ public final class GetClusterMonitoringConfigManagedPrometheus {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig> autoMonitoringConfigs;
         private Boolean enabled;
         public Builder() {}
         public Builder(GetClusterMonitoringConfigManagedPrometheus defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoMonitoringConfigs = defaults.autoMonitoringConfigs;
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
+        public Builder autoMonitoringConfigs(List<GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig> autoMonitoringConfigs) {
+            if (autoMonitoringConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterMonitoringConfigManagedPrometheus", "autoMonitoringConfigs");
+            }
+            this.autoMonitoringConfigs = autoMonitoringConfigs;
+            return this;
+        }
+        public Builder autoMonitoringConfigs(GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig... autoMonitoringConfigs) {
+            return autoMonitoringConfigs(List.of(autoMonitoringConfigs));
+        }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             if (enabled == null) {
@@ -51,6 +78,7 @@ public final class GetClusterMonitoringConfigManagedPrometheus {
         }
         public GetClusterMonitoringConfigManagedPrometheus build() {
             final var _resultValue = new GetClusterMonitoringConfigManagedPrometheus();
+            _resultValue.autoMonitoringConfigs = autoMonitoringConfigs;
             _resultValue.enabled = enabled;
             return _resultValue;
         }

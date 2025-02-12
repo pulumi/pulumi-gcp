@@ -125,6 +125,19 @@ public final class GetForwardingRulesRule {
      */
     private String ipAddress;
     /**
+     * @return Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+     * in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+     * Use one of the following formats to specify a sub-PDP when creating an
+     * IPv6 NetLB forwarding rule using BYOIP:
+     * Full resource URL, as in:
+     *   * &#39;https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}&#39;
+     *     Partial URL, as in:
+     *   * &#39;projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}&#39;
+     *   * &#39;regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}&#39;
+     * 
+     */
+    private String ipCollection;
+    /**
      * @return The IP protocol to which this rule applies.
      * 
      * For protocol forwarding, valid
@@ -516,6 +529,21 @@ public final class GetForwardingRulesRule {
         return this.ipAddress;
     }
     /**
+     * @return Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+     * in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+     * Use one of the following formats to specify a sub-PDP when creating an
+     * IPv6 NetLB forwarding rule using BYOIP:
+     * Full resource URL, as in:
+     *   * &#39;https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}&#39;
+     *     Partial URL, as in:
+     *   * &#39;projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}&#39;
+     *   * &#39;regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}&#39;
+     * 
+     */
+    public String ipCollection() {
+        return this.ipCollection;
+    }
+    /**
      * @return The IP protocol to which this rule applies.
      * 
      * For protocol forwarding, valid
@@ -845,6 +873,7 @@ public final class GetForwardingRulesRule {
         private Map<String,String> effectiveLabels;
         private Integer forwardingRuleId;
         private String ipAddress;
+        private String ipCollection;
         private String ipProtocol;
         private String ipVersion;
         private Boolean isMirroringCollector;
@@ -883,6 +912,7 @@ public final class GetForwardingRulesRule {
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.forwardingRuleId = defaults.forwardingRuleId;
     	      this.ipAddress = defaults.ipAddress;
+    	      this.ipCollection = defaults.ipCollection;
     	      this.ipProtocol = defaults.ipProtocol;
     	      this.ipVersion = defaults.ipVersion;
     	      this.isMirroringCollector = defaults.isMirroringCollector;
@@ -988,6 +1018,14 @@ public final class GetForwardingRulesRule {
               throw new MissingRequiredPropertyException("GetForwardingRulesRule", "ipAddress");
             }
             this.ipAddress = ipAddress;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipCollection(String ipCollection) {
+            if (ipCollection == null) {
+              throw new MissingRequiredPropertyException("GetForwardingRulesRule", "ipCollection");
+            }
+            this.ipCollection = ipCollection;
             return this;
         }
         @CustomType.Setter
@@ -1211,6 +1249,7 @@ public final class GetForwardingRulesRule {
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.forwardingRuleId = forwardingRuleId;
             _resultValue.ipAddress = ipAddress;
+            _resultValue.ipCollection = ipCollection;
             _resultValue.ipProtocol = ipProtocol;
             _resultValue.ipVersion = ipVersion;
             _resultValue.isMirroringCollector = isMirroringCollector;

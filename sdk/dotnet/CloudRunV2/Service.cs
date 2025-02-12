@@ -886,6 +886,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
     ///                 {
     ///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                     BaseImageUri = "us-central1-docker.pkg.dev/serverless-runtimes/google-22-full/runtimes/nodejs22",
     ///                 },
     ///             },
     ///         },

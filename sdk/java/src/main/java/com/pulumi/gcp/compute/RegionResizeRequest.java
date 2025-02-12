@@ -249,14 +249,14 @@ public class RegionResizeRequest extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The reference of the compute region scoping this request.
+     * The reference of the compute region scoping this request. If it is not provided, the provider region is used.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
-     * @return The reference of the compute region scoping this request.
+     * @return The reference of the compute region scoping this request. If it is not provided, the provider region is used.
      * 
      */
     public Output<String> region() {

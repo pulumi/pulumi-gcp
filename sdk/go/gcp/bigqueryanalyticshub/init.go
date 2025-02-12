@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ListingIamMember{}
 	case "gcp:bigqueryanalyticshub/listingIamPolicy:ListingIamPolicy":
 		r = &ListingIamPolicy{}
+	case "gcp:bigqueryanalyticshub/listingSubscription:ListingSubscription":
+		r = &ListingSubscription{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -88,6 +90,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"bigqueryanalyticshub/listingIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"bigqueryanalyticshub/listingSubscription",
 		&module{version},
 	)
 }

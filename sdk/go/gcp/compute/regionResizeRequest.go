@@ -167,7 +167,7 @@ type RegionResizeRequest struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The reference of the compute region scoping this request.
+	// The reference of the compute region scoping this request. If it is not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Requested run duration for instances that will be created by this request. At the end of the run duration instances will be deleted.
 	// Structure is documented below.
@@ -190,9 +190,6 @@ func NewRegionResizeRequest(ctx *pulumi.Context,
 
 	if args.InstanceGroupManager == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceGroupManager'")
-	}
-	if args.Region == nil {
-		return nil, errors.New("invalid value for required argument 'Region'")
 	}
 	if args.ResizeBy == nil {
 		return nil, errors.New("invalid value for required argument 'ResizeBy'")
@@ -233,7 +230,7 @@ type regionResizeRequestState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The reference of the compute region scoping this request.
+	// The reference of the compute region scoping this request. If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// Requested run duration for instances that will be created by this request. At the end of the run duration instances will be deleted.
 	// Structure is documented below.
@@ -261,7 +258,7 @@ type RegionResizeRequestState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The reference of the compute region scoping this request.
+	// The reference of the compute region scoping this request. If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// Requested run duration for instances that will be created by this request. At the end of the run duration instances will be deleted.
 	// Structure is documented below.
@@ -291,8 +288,8 @@ type regionResizeRequestArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The reference of the compute region scoping this request.
-	Region string `pulumi:"region"`
+	// The reference of the compute region scoping this request. If it is not provided, the provider region is used.
+	Region *string `pulumi:"region"`
 	// Requested run duration for instances that will be created by this request. At the end of the run duration instances will be deleted.
 	// Structure is documented below.
 	RequestedRunDuration *RegionResizeRequestRequestedRunDuration `pulumi:"requestedRunDuration"`
@@ -313,8 +310,8 @@ type RegionResizeRequestArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The reference of the compute region scoping this request.
-	Region pulumi.StringInput
+	// The reference of the compute region scoping this request. If it is not provided, the provider region is used.
+	Region pulumi.StringPtrInput
 	// Requested run duration for instances that will be created by this request. At the end of the run duration instances will be deleted.
 	// Structure is documented below.
 	RequestedRunDuration RegionResizeRequestRequestedRunDurationPtrInput
@@ -437,7 +434,7 @@ func (o RegionResizeRequestOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionResizeRequest) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The reference of the compute region scoping this request.
+// The reference of the compute region scoping this request. If it is not provided, the provider region is used.
 func (o RegionResizeRequestOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionResizeRequest) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

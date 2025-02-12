@@ -15,11 +15,14 @@ import com.pulumi.gcp.beyondcorp.inputs.GetAppConnectorArgs;
 import com.pulumi.gcp.beyondcorp.inputs.GetAppConnectorPlainArgs;
 import com.pulumi.gcp.beyondcorp.inputs.GetAppGatewayArgs;
 import com.pulumi.gcp.beyondcorp.inputs.GetAppGatewayPlainArgs;
+import com.pulumi.gcp.beyondcorp.inputs.GetApplicationIamPolicyArgs;
+import com.pulumi.gcp.beyondcorp.inputs.GetApplicationIamPolicyPlainArgs;
 import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayIamPolicyArgs;
 import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayIamPolicyPlainArgs;
 import com.pulumi.gcp.beyondcorp.outputs.GetAppConnectionResult;
 import com.pulumi.gcp.beyondcorp.outputs.GetAppConnectorResult;
 import com.pulumi.gcp.beyondcorp.outputs.GetAppGatewayResult;
+import com.pulumi.gcp.beyondcorp.outputs.GetApplicationIamPolicyResult;
 import com.pulumi.gcp.beyondcorp.outputs.GetSecurityGatewayIamPolicyResult;
 import java.util.concurrent.CompletableFuture;
 
@@ -653,6 +656,226 @@ public final class BeyondcorpFunctions {
      */
     public static CompletableFuture<GetAppGatewayResult> getAppGatewayPlain(GetAppGatewayPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:beyondcorp/getAppGateway:getAppGateway", TypeShape.of(GetAppGatewayResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for application
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
+     * import com.pulumi.gcp.beyondcorp.inputs.GetApplicationIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BeyondcorpFunctions.getApplicationIamPolicy(GetApplicationIamPolicyArgs.builder()
+     *             .project(example.project())
+     *             .securityGatewaysId(example.securityGatewaysId())
+     *             .applicationId(example.applicationId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetApplicationIamPolicyResult> getApplicationIamPolicy(GetApplicationIamPolicyArgs args) {
+        return getApplicationIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for application
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
+     * import com.pulumi.gcp.beyondcorp.inputs.GetApplicationIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BeyondcorpFunctions.getApplicationIamPolicy(GetApplicationIamPolicyArgs.builder()
+     *             .project(example.project())
+     *             .securityGatewaysId(example.securityGatewaysId())
+     *             .applicationId(example.applicationId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetApplicationIamPolicyResult> getApplicationIamPolicyPlain(GetApplicationIamPolicyPlainArgs args) {
+        return getApplicationIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for application
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
+     * import com.pulumi.gcp.beyondcorp.inputs.GetApplicationIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BeyondcorpFunctions.getApplicationIamPolicy(GetApplicationIamPolicyArgs.builder()
+     *             .project(example.project())
+     *             .securityGatewaysId(example.securityGatewaysId())
+     *             .applicationId(example.applicationId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetApplicationIamPolicyResult> getApplicationIamPolicy(GetApplicationIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:beyondcorp/getApplicationIamPolicy:getApplicationIamPolicy", TypeShape.of(GetApplicationIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for application
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
+     * import com.pulumi.gcp.beyondcorp.inputs.GetApplicationIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BeyondcorpFunctions.getApplicationIamPolicy(GetApplicationIamPolicyArgs.builder()
+     *             .project(example.project())
+     *             .securityGatewaysId(example.securityGatewaysId())
+     *             .applicationId(example.applicationId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetApplicationIamPolicyResult> getApplicationIamPolicy(GetApplicationIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:beyondcorp/getApplicationIamPolicy:getApplicationIamPolicy", TypeShape.of(GetApplicationIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for application
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
+     * import com.pulumi.gcp.beyondcorp.inputs.GetApplicationIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BeyondcorpFunctions.getApplicationIamPolicy(GetApplicationIamPolicyArgs.builder()
+     *             .project(example.project())
+     *             .securityGatewaysId(example.securityGatewaysId())
+     *             .applicationId(example.applicationId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetApplicationIamPolicyResult> getApplicationIamPolicyPlain(GetApplicationIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:beyondcorp/getApplicationIamPolicy:getApplicationIamPolicy", TypeShape.of(GetApplicationIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves the current IAM policy data for securitygateway

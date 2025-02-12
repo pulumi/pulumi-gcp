@@ -1815,6 +1815,630 @@ func (o ListingRestrictedExportConfigPtrOutput) RestrictQueryResult() pulumi.Boo
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ListingSubscriptionDestinationDataset struct {
+	// A reference that identifies the destination dataset.
+	// Structure is documented below.
+	DatasetReference ListingSubscriptionDestinationDatasetDatasetReference `pulumi:"datasetReference"`
+	// A user-friendly description of the dataset.
+	Description *string `pulumi:"description"`
+	// A descriptive name for the dataset.
+	FriendlyName *string `pulumi:"friendlyName"`
+	// The labels associated with this dataset. You can use these to
+	// organize and group your datasets.
+	Labels map[string]string `pulumi:"labels"`
+	// The geographic location where the dataset should reside.
+	// See https://cloud.google.com/bigquery/docs/locations for supported locations.
+	Location string `pulumi:"location"`
+}
+
+// ListingSubscriptionDestinationDatasetInput is an input type that accepts ListingSubscriptionDestinationDatasetArgs and ListingSubscriptionDestinationDatasetOutput values.
+// You can construct a concrete instance of `ListingSubscriptionDestinationDatasetInput` via:
+//
+//	ListingSubscriptionDestinationDatasetArgs{...}
+type ListingSubscriptionDestinationDatasetInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionDestinationDatasetOutput() ListingSubscriptionDestinationDatasetOutput
+	ToListingSubscriptionDestinationDatasetOutputWithContext(context.Context) ListingSubscriptionDestinationDatasetOutput
+}
+
+type ListingSubscriptionDestinationDatasetArgs struct {
+	// A reference that identifies the destination dataset.
+	// Structure is documented below.
+	DatasetReference ListingSubscriptionDestinationDatasetDatasetReferenceInput `pulumi:"datasetReference"`
+	// A user-friendly description of the dataset.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// A descriptive name for the dataset.
+	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
+	// The labels associated with this dataset. You can use these to
+	// organize and group your datasets.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The geographic location where the dataset should reside.
+	// See https://cloud.google.com/bigquery/docs/locations for supported locations.
+	Location pulumi.StringInput `pulumi:"location"`
+}
+
+func (ListingSubscriptionDestinationDatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionDestinationDataset)(nil)).Elem()
+}
+
+func (i ListingSubscriptionDestinationDatasetArgs) ToListingSubscriptionDestinationDatasetOutput() ListingSubscriptionDestinationDatasetOutput {
+	return i.ToListingSubscriptionDestinationDatasetOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionDestinationDatasetArgs) ToListingSubscriptionDestinationDatasetOutputWithContext(ctx context.Context) ListingSubscriptionDestinationDatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationDatasetOutput)
+}
+
+func (i ListingSubscriptionDestinationDatasetArgs) ToListingSubscriptionDestinationDatasetPtrOutput() ListingSubscriptionDestinationDatasetPtrOutput {
+	return i.ToListingSubscriptionDestinationDatasetPtrOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionDestinationDatasetArgs) ToListingSubscriptionDestinationDatasetPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationDatasetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationDatasetOutput).ToListingSubscriptionDestinationDatasetPtrOutputWithContext(ctx)
+}
+
+// ListingSubscriptionDestinationDatasetPtrInput is an input type that accepts ListingSubscriptionDestinationDatasetArgs, ListingSubscriptionDestinationDatasetPtr and ListingSubscriptionDestinationDatasetPtrOutput values.
+// You can construct a concrete instance of `ListingSubscriptionDestinationDatasetPtrInput` via:
+//
+//	        ListingSubscriptionDestinationDatasetArgs{...}
+//
+//	or:
+//
+//	        nil
+type ListingSubscriptionDestinationDatasetPtrInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionDestinationDatasetPtrOutput() ListingSubscriptionDestinationDatasetPtrOutput
+	ToListingSubscriptionDestinationDatasetPtrOutputWithContext(context.Context) ListingSubscriptionDestinationDatasetPtrOutput
+}
+
+type listingSubscriptionDestinationDatasetPtrType ListingSubscriptionDestinationDatasetArgs
+
+func ListingSubscriptionDestinationDatasetPtr(v *ListingSubscriptionDestinationDatasetArgs) ListingSubscriptionDestinationDatasetPtrInput {
+	return (*listingSubscriptionDestinationDatasetPtrType)(v)
+}
+
+func (*listingSubscriptionDestinationDatasetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingSubscriptionDestinationDataset)(nil)).Elem()
+}
+
+func (i *listingSubscriptionDestinationDatasetPtrType) ToListingSubscriptionDestinationDatasetPtrOutput() ListingSubscriptionDestinationDatasetPtrOutput {
+	return i.ToListingSubscriptionDestinationDatasetPtrOutputWithContext(context.Background())
+}
+
+func (i *listingSubscriptionDestinationDatasetPtrType) ToListingSubscriptionDestinationDatasetPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationDatasetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationDatasetPtrOutput)
+}
+
+type ListingSubscriptionDestinationDatasetOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionDestinationDatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionDestinationDataset)(nil)).Elem()
+}
+
+func (o ListingSubscriptionDestinationDatasetOutput) ToListingSubscriptionDestinationDatasetOutput() ListingSubscriptionDestinationDatasetOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationDatasetOutput) ToListingSubscriptionDestinationDatasetOutputWithContext(ctx context.Context) ListingSubscriptionDestinationDatasetOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationDatasetOutput) ToListingSubscriptionDestinationDatasetPtrOutput() ListingSubscriptionDestinationDatasetPtrOutput {
+	return o.ToListingSubscriptionDestinationDatasetPtrOutputWithContext(context.Background())
+}
+
+func (o ListingSubscriptionDestinationDatasetOutput) ToListingSubscriptionDestinationDatasetPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationDatasetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListingSubscriptionDestinationDataset) *ListingSubscriptionDestinationDataset {
+		return &v
+	}).(ListingSubscriptionDestinationDatasetPtrOutput)
+}
+
+// A reference that identifies the destination dataset.
+// Structure is documented below.
+func (o ListingSubscriptionDestinationDatasetOutput) DatasetReference() ListingSubscriptionDestinationDatasetDatasetReferenceOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationDataset) ListingSubscriptionDestinationDatasetDatasetReference {
+		return v.DatasetReference
+	}).(ListingSubscriptionDestinationDatasetDatasetReferenceOutput)
+}
+
+// A user-friendly description of the dataset.
+func (o ListingSubscriptionDestinationDatasetOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationDataset) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A descriptive name for the dataset.
+func (o ListingSubscriptionDestinationDatasetOutput) FriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationDataset) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// The labels associated with this dataset. You can use these to
+// organize and group your datasets.
+func (o ListingSubscriptionDestinationDatasetOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationDataset) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The geographic location where the dataset should reside.
+// See https://cloud.google.com/bigquery/docs/locations for supported locations.
+func (o ListingSubscriptionDestinationDatasetOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationDataset) string { return v.Location }).(pulumi.StringOutput)
+}
+
+type ListingSubscriptionDestinationDatasetPtrOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionDestinationDatasetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingSubscriptionDestinationDataset)(nil)).Elem()
+}
+
+func (o ListingSubscriptionDestinationDatasetPtrOutput) ToListingSubscriptionDestinationDatasetPtrOutput() ListingSubscriptionDestinationDatasetPtrOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationDatasetPtrOutput) ToListingSubscriptionDestinationDatasetPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationDatasetPtrOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationDatasetPtrOutput) Elem() ListingSubscriptionDestinationDatasetOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationDataset) ListingSubscriptionDestinationDataset {
+		if v != nil {
+			return *v
+		}
+		var ret ListingSubscriptionDestinationDataset
+		return ret
+	}).(ListingSubscriptionDestinationDatasetOutput)
+}
+
+// A reference that identifies the destination dataset.
+// Structure is documented below.
+func (o ListingSubscriptionDestinationDatasetPtrOutput) DatasetReference() ListingSubscriptionDestinationDatasetDatasetReferencePtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationDataset) *ListingSubscriptionDestinationDatasetDatasetReference {
+		if v == nil {
+			return nil
+		}
+		return &v.DatasetReference
+	}).(ListingSubscriptionDestinationDatasetDatasetReferencePtrOutput)
+}
+
+// A user-friendly description of the dataset.
+func (o ListingSubscriptionDestinationDatasetPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationDataset) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// A descriptive name for the dataset.
+func (o ListingSubscriptionDestinationDatasetPtrOutput) FriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationDataset) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FriendlyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The labels associated with this dataset. You can use these to
+// organize and group your datasets.
+func (o ListingSubscriptionDestinationDatasetPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationDataset) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// The geographic location where the dataset should reside.
+// See https://cloud.google.com/bigquery/docs/locations for supported locations.
+func (o ListingSubscriptionDestinationDatasetPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationDataset) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+type ListingSubscriptionDestinationDatasetDatasetReference struct {
+	// A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+	DatasetId string `pulumi:"datasetId"`
+	// The ID of the project containing this dataset.
+	//
+	// ***
+	ProjectId string `pulumi:"projectId"`
+}
+
+// ListingSubscriptionDestinationDatasetDatasetReferenceInput is an input type that accepts ListingSubscriptionDestinationDatasetDatasetReferenceArgs and ListingSubscriptionDestinationDatasetDatasetReferenceOutput values.
+// You can construct a concrete instance of `ListingSubscriptionDestinationDatasetDatasetReferenceInput` via:
+//
+//	ListingSubscriptionDestinationDatasetDatasetReferenceArgs{...}
+type ListingSubscriptionDestinationDatasetDatasetReferenceInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionDestinationDatasetDatasetReferenceOutput() ListingSubscriptionDestinationDatasetDatasetReferenceOutput
+	ToListingSubscriptionDestinationDatasetDatasetReferenceOutputWithContext(context.Context) ListingSubscriptionDestinationDatasetDatasetReferenceOutput
+}
+
+type ListingSubscriptionDestinationDatasetDatasetReferenceArgs struct {
+	// A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	// The ID of the project containing this dataset.
+	//
+	// ***
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (ListingSubscriptionDestinationDatasetDatasetReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionDestinationDatasetDatasetReference)(nil)).Elem()
+}
+
+func (i ListingSubscriptionDestinationDatasetDatasetReferenceArgs) ToListingSubscriptionDestinationDatasetDatasetReferenceOutput() ListingSubscriptionDestinationDatasetDatasetReferenceOutput {
+	return i.ToListingSubscriptionDestinationDatasetDatasetReferenceOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionDestinationDatasetDatasetReferenceArgs) ToListingSubscriptionDestinationDatasetDatasetReferenceOutputWithContext(ctx context.Context) ListingSubscriptionDestinationDatasetDatasetReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationDatasetDatasetReferenceOutput)
+}
+
+func (i ListingSubscriptionDestinationDatasetDatasetReferenceArgs) ToListingSubscriptionDestinationDatasetDatasetReferencePtrOutput() ListingSubscriptionDestinationDatasetDatasetReferencePtrOutput {
+	return i.ToListingSubscriptionDestinationDatasetDatasetReferencePtrOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionDestinationDatasetDatasetReferenceArgs) ToListingSubscriptionDestinationDatasetDatasetReferencePtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationDatasetDatasetReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationDatasetDatasetReferenceOutput).ToListingSubscriptionDestinationDatasetDatasetReferencePtrOutputWithContext(ctx)
+}
+
+// ListingSubscriptionDestinationDatasetDatasetReferencePtrInput is an input type that accepts ListingSubscriptionDestinationDatasetDatasetReferenceArgs, ListingSubscriptionDestinationDatasetDatasetReferencePtr and ListingSubscriptionDestinationDatasetDatasetReferencePtrOutput values.
+// You can construct a concrete instance of `ListingSubscriptionDestinationDatasetDatasetReferencePtrInput` via:
+//
+//	        ListingSubscriptionDestinationDatasetDatasetReferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ListingSubscriptionDestinationDatasetDatasetReferencePtrInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionDestinationDatasetDatasetReferencePtrOutput() ListingSubscriptionDestinationDatasetDatasetReferencePtrOutput
+	ToListingSubscriptionDestinationDatasetDatasetReferencePtrOutputWithContext(context.Context) ListingSubscriptionDestinationDatasetDatasetReferencePtrOutput
+}
+
+type listingSubscriptionDestinationDatasetDatasetReferencePtrType ListingSubscriptionDestinationDatasetDatasetReferenceArgs
+
+func ListingSubscriptionDestinationDatasetDatasetReferencePtr(v *ListingSubscriptionDestinationDatasetDatasetReferenceArgs) ListingSubscriptionDestinationDatasetDatasetReferencePtrInput {
+	return (*listingSubscriptionDestinationDatasetDatasetReferencePtrType)(v)
+}
+
+func (*listingSubscriptionDestinationDatasetDatasetReferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingSubscriptionDestinationDatasetDatasetReference)(nil)).Elem()
+}
+
+func (i *listingSubscriptionDestinationDatasetDatasetReferencePtrType) ToListingSubscriptionDestinationDatasetDatasetReferencePtrOutput() ListingSubscriptionDestinationDatasetDatasetReferencePtrOutput {
+	return i.ToListingSubscriptionDestinationDatasetDatasetReferencePtrOutputWithContext(context.Background())
+}
+
+func (i *listingSubscriptionDestinationDatasetDatasetReferencePtrType) ToListingSubscriptionDestinationDatasetDatasetReferencePtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationDatasetDatasetReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationDatasetDatasetReferencePtrOutput)
+}
+
+type ListingSubscriptionDestinationDatasetDatasetReferenceOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionDestinationDatasetDatasetReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionDestinationDatasetDatasetReference)(nil)).Elem()
+}
+
+func (o ListingSubscriptionDestinationDatasetDatasetReferenceOutput) ToListingSubscriptionDestinationDatasetDatasetReferenceOutput() ListingSubscriptionDestinationDatasetDatasetReferenceOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationDatasetDatasetReferenceOutput) ToListingSubscriptionDestinationDatasetDatasetReferenceOutputWithContext(ctx context.Context) ListingSubscriptionDestinationDatasetDatasetReferenceOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationDatasetDatasetReferenceOutput) ToListingSubscriptionDestinationDatasetDatasetReferencePtrOutput() ListingSubscriptionDestinationDatasetDatasetReferencePtrOutput {
+	return o.ToListingSubscriptionDestinationDatasetDatasetReferencePtrOutputWithContext(context.Background())
+}
+
+func (o ListingSubscriptionDestinationDatasetDatasetReferenceOutput) ToListingSubscriptionDestinationDatasetDatasetReferencePtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationDatasetDatasetReferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListingSubscriptionDestinationDatasetDatasetReference) *ListingSubscriptionDestinationDatasetDatasetReference {
+		return &v
+	}).(ListingSubscriptionDestinationDatasetDatasetReferencePtrOutput)
+}
+
+// A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+func (o ListingSubscriptionDestinationDatasetDatasetReferenceOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationDatasetDatasetReference) string { return v.DatasetId }).(pulumi.StringOutput)
+}
+
+// The ID of the project containing this dataset.
+//
+// ***
+func (o ListingSubscriptionDestinationDatasetDatasetReferenceOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationDatasetDatasetReference) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type ListingSubscriptionDestinationDatasetDatasetReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionDestinationDatasetDatasetReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingSubscriptionDestinationDatasetDatasetReference)(nil)).Elem()
+}
+
+func (o ListingSubscriptionDestinationDatasetDatasetReferencePtrOutput) ToListingSubscriptionDestinationDatasetDatasetReferencePtrOutput() ListingSubscriptionDestinationDatasetDatasetReferencePtrOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationDatasetDatasetReferencePtrOutput) ToListingSubscriptionDestinationDatasetDatasetReferencePtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationDatasetDatasetReferencePtrOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationDatasetDatasetReferencePtrOutput) Elem() ListingSubscriptionDestinationDatasetDatasetReferenceOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationDatasetDatasetReference) ListingSubscriptionDestinationDatasetDatasetReference {
+		if v != nil {
+			return *v
+		}
+		var ret ListingSubscriptionDestinationDatasetDatasetReference
+		return ret
+	}).(ListingSubscriptionDestinationDatasetDatasetReferenceOutput)
+}
+
+// A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+func (o ListingSubscriptionDestinationDatasetDatasetReferencePtrOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationDatasetDatasetReference) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DatasetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the project containing this dataset.
+//
+// ***
+func (o ListingSubscriptionDestinationDatasetDatasetReferencePtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationDatasetDatasetReference) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ListingSubscriptionLinkedDatasetMap struct {
+	// (Output)
+	// Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+	LinkedDataset *string `pulumi:"linkedDataset"`
+	// (Output)
+	// Output only. Listing for which linked resource is created.
+	Listing *string `pulumi:"listing"`
+	// (Required) The identifier for this object. Format specified above.
+	ResourceName string `pulumi:"resourceName"`
+}
+
+// ListingSubscriptionLinkedDatasetMapInput is an input type that accepts ListingSubscriptionLinkedDatasetMap and ListingSubscriptionLinkedDatasetMapOutput values.
+// You can construct a concrete instance of `ListingSubscriptionLinkedDatasetMapInput` via:
+//
+//	ListingSubscriptionLinkedDatasetMap{ "key": ListingSubscriptionLinkedDatasetArgs{...} }
+type ListingSubscriptionLinkedDatasetMapInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionLinkedDatasetMapOutput() ListingSubscriptionLinkedDatasetMapOutput
+	ToListingSubscriptionLinkedDatasetMapOutputWithContext(context.Context) ListingSubscriptionLinkedDatasetMapOutput
+}
+
+type ListingSubscriptionLinkedDatasetMapArgs struct {
+	// (Output)
+	// Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+	LinkedDataset pulumi.StringPtrInput `pulumi:"linkedDataset"`
+	// (Output)
+	// Output only. Listing for which linked resource is created.
+	Listing pulumi.StringPtrInput `pulumi:"listing"`
+	// (Required) The identifier for this object. Format specified above.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
+}
+
+func (ListingSubscriptionLinkedDatasetMapArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionLinkedDatasetMap)(nil)).Elem()
+}
+
+func (i ListingSubscriptionLinkedDatasetMapArgs) ToListingSubscriptionLinkedDatasetMapOutput() ListingSubscriptionLinkedDatasetMapOutput {
+	return i.ToListingSubscriptionLinkedDatasetMapOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionLinkedDatasetMapArgs) ToListingSubscriptionLinkedDatasetMapOutputWithContext(ctx context.Context) ListingSubscriptionLinkedDatasetMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionLinkedDatasetMapOutput)
+}
+
+// ListingSubscriptionLinkedDatasetMapArrayInput is an input type that accepts ListingSubscriptionLinkedDatasetMapArray and ListingSubscriptionLinkedDatasetMapArrayOutput values.
+// You can construct a concrete instance of `ListingSubscriptionLinkedDatasetMapArrayInput` via:
+//
+//	ListingSubscriptionLinkedDatasetMapArray{ ListingSubscriptionLinkedDatasetMapArgs{...} }
+type ListingSubscriptionLinkedDatasetMapArrayInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionLinkedDatasetMapArrayOutput() ListingSubscriptionLinkedDatasetMapArrayOutput
+	ToListingSubscriptionLinkedDatasetMapArrayOutputWithContext(context.Context) ListingSubscriptionLinkedDatasetMapArrayOutput
+}
+
+type ListingSubscriptionLinkedDatasetMapArray []ListingSubscriptionLinkedDatasetMapInput
+
+func (ListingSubscriptionLinkedDatasetMapArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListingSubscriptionLinkedDatasetMap)(nil)).Elem()
+}
+
+func (i ListingSubscriptionLinkedDatasetMapArray) ToListingSubscriptionLinkedDatasetMapArrayOutput() ListingSubscriptionLinkedDatasetMapArrayOutput {
+	return i.ToListingSubscriptionLinkedDatasetMapArrayOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionLinkedDatasetMapArray) ToListingSubscriptionLinkedDatasetMapArrayOutputWithContext(ctx context.Context) ListingSubscriptionLinkedDatasetMapArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionLinkedDatasetMapArrayOutput)
+}
+
+type ListingSubscriptionLinkedDatasetMapOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionLinkedDatasetMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionLinkedDatasetMap)(nil)).Elem()
+}
+
+func (o ListingSubscriptionLinkedDatasetMapOutput) ToListingSubscriptionLinkedDatasetMapOutput() ListingSubscriptionLinkedDatasetMapOutput {
+	return o
+}
+
+func (o ListingSubscriptionLinkedDatasetMapOutput) ToListingSubscriptionLinkedDatasetMapOutputWithContext(ctx context.Context) ListingSubscriptionLinkedDatasetMapOutput {
+	return o
+}
+
+// (Output)
+// Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+func (o ListingSubscriptionLinkedDatasetMapOutput) LinkedDataset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionLinkedDatasetMap) *string { return v.LinkedDataset }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. Listing for which linked resource is created.
+func (o ListingSubscriptionLinkedDatasetMapOutput) Listing() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionLinkedDatasetMap) *string { return v.Listing }).(pulumi.StringPtrOutput)
+}
+
+// (Required) The identifier for this object. Format specified above.
+func (o ListingSubscriptionLinkedDatasetMapOutput) ResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v ListingSubscriptionLinkedDatasetMap) string { return v.ResourceName }).(pulumi.StringOutput)
+}
+
+type ListingSubscriptionLinkedDatasetMapArrayOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionLinkedDatasetMapArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListingSubscriptionLinkedDatasetMap)(nil)).Elem()
+}
+
+func (o ListingSubscriptionLinkedDatasetMapArrayOutput) ToListingSubscriptionLinkedDatasetMapArrayOutput() ListingSubscriptionLinkedDatasetMapArrayOutput {
+	return o
+}
+
+func (o ListingSubscriptionLinkedDatasetMapArrayOutput) ToListingSubscriptionLinkedDatasetMapArrayOutputWithContext(ctx context.Context) ListingSubscriptionLinkedDatasetMapArrayOutput {
+	return o
+}
+
+func (o ListingSubscriptionLinkedDatasetMapArrayOutput) Index(i pulumi.IntInput) ListingSubscriptionLinkedDatasetMapOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListingSubscriptionLinkedDatasetMap {
+		return vs[0].([]ListingSubscriptionLinkedDatasetMap)[vs[1].(int)]
+	}).(ListingSubscriptionLinkedDatasetMapOutput)
+}
+
+type ListingSubscriptionLinkedResource struct {
+	// (Output)
+	// Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+	LinkedDataset *string `pulumi:"linkedDataset"`
+	// (Output)
+	// Output only. Listing for which linked resource is created.
+	Listing *string `pulumi:"listing"`
+}
+
+// ListingSubscriptionLinkedResourceInput is an input type that accepts ListingSubscriptionLinkedResourceArgs and ListingSubscriptionLinkedResourceOutput values.
+// You can construct a concrete instance of `ListingSubscriptionLinkedResourceInput` via:
+//
+//	ListingSubscriptionLinkedResourceArgs{...}
+type ListingSubscriptionLinkedResourceInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionLinkedResourceOutput() ListingSubscriptionLinkedResourceOutput
+	ToListingSubscriptionLinkedResourceOutputWithContext(context.Context) ListingSubscriptionLinkedResourceOutput
+}
+
+type ListingSubscriptionLinkedResourceArgs struct {
+	// (Output)
+	// Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+	LinkedDataset pulumi.StringPtrInput `pulumi:"linkedDataset"`
+	// (Output)
+	// Output only. Listing for which linked resource is created.
+	Listing pulumi.StringPtrInput `pulumi:"listing"`
+}
+
+func (ListingSubscriptionLinkedResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionLinkedResource)(nil)).Elem()
+}
+
+func (i ListingSubscriptionLinkedResourceArgs) ToListingSubscriptionLinkedResourceOutput() ListingSubscriptionLinkedResourceOutput {
+	return i.ToListingSubscriptionLinkedResourceOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionLinkedResourceArgs) ToListingSubscriptionLinkedResourceOutputWithContext(ctx context.Context) ListingSubscriptionLinkedResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionLinkedResourceOutput)
+}
+
+// ListingSubscriptionLinkedResourceArrayInput is an input type that accepts ListingSubscriptionLinkedResourceArray and ListingSubscriptionLinkedResourceArrayOutput values.
+// You can construct a concrete instance of `ListingSubscriptionLinkedResourceArrayInput` via:
+//
+//	ListingSubscriptionLinkedResourceArray{ ListingSubscriptionLinkedResourceArgs{...} }
+type ListingSubscriptionLinkedResourceArrayInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionLinkedResourceArrayOutput() ListingSubscriptionLinkedResourceArrayOutput
+	ToListingSubscriptionLinkedResourceArrayOutputWithContext(context.Context) ListingSubscriptionLinkedResourceArrayOutput
+}
+
+type ListingSubscriptionLinkedResourceArray []ListingSubscriptionLinkedResourceInput
+
+func (ListingSubscriptionLinkedResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListingSubscriptionLinkedResource)(nil)).Elem()
+}
+
+func (i ListingSubscriptionLinkedResourceArray) ToListingSubscriptionLinkedResourceArrayOutput() ListingSubscriptionLinkedResourceArrayOutput {
+	return i.ToListingSubscriptionLinkedResourceArrayOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionLinkedResourceArray) ToListingSubscriptionLinkedResourceArrayOutputWithContext(ctx context.Context) ListingSubscriptionLinkedResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionLinkedResourceArrayOutput)
+}
+
+type ListingSubscriptionLinkedResourceOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionLinkedResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionLinkedResource)(nil)).Elem()
+}
+
+func (o ListingSubscriptionLinkedResourceOutput) ToListingSubscriptionLinkedResourceOutput() ListingSubscriptionLinkedResourceOutput {
+	return o
+}
+
+func (o ListingSubscriptionLinkedResourceOutput) ToListingSubscriptionLinkedResourceOutputWithContext(ctx context.Context) ListingSubscriptionLinkedResourceOutput {
+	return o
+}
+
+// (Output)
+// Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+func (o ListingSubscriptionLinkedResourceOutput) LinkedDataset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionLinkedResource) *string { return v.LinkedDataset }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. Listing for which linked resource is created.
+func (o ListingSubscriptionLinkedResourceOutput) Listing() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionLinkedResource) *string { return v.Listing }).(pulumi.StringPtrOutput)
+}
+
+type ListingSubscriptionLinkedResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionLinkedResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListingSubscriptionLinkedResource)(nil)).Elem()
+}
+
+func (o ListingSubscriptionLinkedResourceArrayOutput) ToListingSubscriptionLinkedResourceArrayOutput() ListingSubscriptionLinkedResourceArrayOutput {
+	return o
+}
+
+func (o ListingSubscriptionLinkedResourceArrayOutput) ToListingSubscriptionLinkedResourceArrayOutputWithContext(ctx context.Context) ListingSubscriptionLinkedResourceArrayOutput {
+	return o
+}
+
+func (o ListingSubscriptionLinkedResourceArrayOutput) Index(i pulumi.IntInput) ListingSubscriptionLinkedResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListingSubscriptionLinkedResource {
+		return vs[0].([]ListingSubscriptionLinkedResource)[vs[1].(int)]
+	}).(ListingSubscriptionLinkedResourceOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataExchangeIamBindingConditionInput)(nil)).Elem(), DataExchangeIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataExchangeIamBindingConditionPtrInput)(nil)).Elem(), DataExchangeIamBindingConditionArgs{})
@@ -1840,6 +2464,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingPublisherPtrInput)(nil)).Elem(), ListingPublisherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingRestrictedExportConfigInput)(nil)).Elem(), ListingRestrictedExportConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingRestrictedExportConfigPtrInput)(nil)).Elem(), ListingRestrictedExportConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationDatasetInput)(nil)).Elem(), ListingSubscriptionDestinationDatasetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationDatasetPtrInput)(nil)).Elem(), ListingSubscriptionDestinationDatasetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationDatasetDatasetReferenceInput)(nil)).Elem(), ListingSubscriptionDestinationDatasetDatasetReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationDatasetDatasetReferencePtrInput)(nil)).Elem(), ListingSubscriptionDestinationDatasetDatasetReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionLinkedDatasetMapInput)(nil)).Elem(), ListingSubscriptionLinkedDatasetMapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionLinkedDatasetMapArrayInput)(nil)).Elem(), ListingSubscriptionLinkedDatasetMapArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionLinkedResourceInput)(nil)).Elem(), ListingSubscriptionLinkedResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionLinkedResourceArrayInput)(nil)).Elem(), ListingSubscriptionLinkedResourceArray{})
 	pulumi.RegisterOutputType(DataExchangeIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(DataExchangeIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(DataExchangeIamMemberConditionOutput{})
@@ -1864,4 +2496,12 @@ func init() {
 	pulumi.RegisterOutputType(ListingPublisherPtrOutput{})
 	pulumi.RegisterOutputType(ListingRestrictedExportConfigOutput{})
 	pulumi.RegisterOutputType(ListingRestrictedExportConfigPtrOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionDestinationDatasetOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionDestinationDatasetPtrOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionDestinationDatasetDatasetReferenceOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionDestinationDatasetDatasetReferencePtrOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionLinkedDatasetMapOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionLinkedDatasetMapArrayOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionLinkedResourceOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionLinkedResourceArrayOutput{})
 }

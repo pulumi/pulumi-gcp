@@ -12,6 +12,12 @@ namespace Pulumi.Gcp.Workbench
     /// <summary>
     /// A Workbench instance.
     /// 
+    /// To get more information about Instance, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/vertex-ai/docs/workbench/reference/rest/v2/projects.locations.instances)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/vertex-ai/docs/workbench/instances/introduction)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Workbench Instance Basic
@@ -256,6 +262,7 @@ namespace Pulumi.Gcp.Workbench
     ///             { "k", "val" },
     ///         },
     ///         DesiredState = "ACTIVE",
+    ///         EnableThirdPartyIdentity = true,
     ///     });
     /// 
     /// });
@@ -318,6 +325,13 @@ namespace Pulumi.Gcp.Workbench
         /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// Flag that specifies that a notebook can be accessed with third party
+        /// identity provider.
+        /// </summary>
+        [Output("enableThirdPartyIdentity")]
+        public Output<bool?> EnableThirdPartyIdentity { get; private set; } = null!;
 
         /// <summary>
         /// The definition of how to configure a VM instance outside of Resources and Identity.
@@ -486,6 +500,13 @@ namespace Pulumi.Gcp.Workbench
         public Input<bool>? DisableProxyAccess { get; set; }
 
         /// <summary>
+        /// Flag that specifies that a notebook can be accessed with third party
+        /// identity provider.
+        /// </summary>
+        [Input("enableThirdPartyIdentity")]
+        public Input<bool>? EnableThirdPartyIdentity { get; set; }
+
+        /// <summary>
         /// The definition of how to configure a VM instance outside of Resources and Identity.
         /// Structure is documented below.
         /// </summary>
@@ -600,6 +621,13 @@ namespace Pulumi.Gcp.Workbench
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// Flag that specifies that a notebook can be accessed with third party
+        /// identity provider.
+        /// </summary>
+        [Input("enableThirdPartyIdentity")]
+        public Input<bool>? EnableThirdPartyIdentity { get; set; }
 
         /// <summary>
         /// The definition of how to configure a VM instance outside of Resources and Identity.

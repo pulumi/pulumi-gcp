@@ -9,6 +9,7 @@ import com.pulumi.gcp.certificateauthority.inputs.AuthorityAccessUrlArgs;
 import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
 import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
 import com.pulumi.gcp.certificateauthority.inputs.AuthoritySubordinateConfigArgs;
+import com.pulumi.gcp.certificateauthority.inputs.AuthorityUserDefinedAccessUrlsArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -422,6 +423,23 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.updateTime);
     }
 
+    /**
+     * Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
+     * users.
+     * 
+     */
+    @Import(name="userDefinedAccessUrls")
+    private @Nullable Output<AuthorityUserDefinedAccessUrlsArgs> userDefinedAccessUrls;
+
+    /**
+     * @return Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
+     * users.
+     * 
+     */
+    public Optional<Output<AuthorityUserDefinedAccessUrlsArgs>> userDefinedAccessUrls() {
+        return Optional.ofNullable(this.userDefinedAccessUrls);
+    }
+
     private AuthorityState() {}
 
     private AuthorityState(AuthorityState $) {
@@ -449,6 +467,7 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
         this.subordinateConfig = $.subordinateConfig;
         this.type = $.type;
         this.updateTime = $.updateTime;
+        this.userDefinedAccessUrls = $.userDefinedAccessUrls;
     }
 
     public static Builder builder() {
@@ -1027,6 +1046,29 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder updateTime(String updateTime) {
             return updateTime(Output.of(updateTime));
+        }
+
+        /**
+         * @param userDefinedAccessUrls Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
+         * users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userDefinedAccessUrls(@Nullable Output<AuthorityUserDefinedAccessUrlsArgs> userDefinedAccessUrls) {
+            $.userDefinedAccessUrls = userDefinedAccessUrls;
+            return this;
+        }
+
+        /**
+         * @param userDefinedAccessUrls Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
+         * users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userDefinedAccessUrls(AuthorityUserDefinedAccessUrlsArgs userDefinedAccessUrls) {
+            return userDefinedAccessUrls(Output.of(userDefinedAccessUrls));
         }
 
         public AuthorityState build() {

@@ -46,6 +46,36 @@ import * as utilities from "../utilities";
  *     dependsOn: [myTemplate],
  * });
  * ```
+ * ### Colab Runtime Stopped
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myTemplate = new gcp.colab.RuntimeTemplate("my_template", {
+ *     name: "colab-runtime",
+ *     displayName: "Runtime template basic",
+ *     location: "us-central1",
+ *     machineSpec: {
+ *         machineType: "e2-standard-4",
+ *     },
+ *     networkSpec: {
+ *         enableInternetAccess: true,
+ *     },
+ * });
+ * const runtime = new gcp.colab.Runtime("runtime", {
+ *     name: "colab-runtime",
+ *     location: "us-central1",
+ *     notebookRuntimeTemplateRef: {
+ *         notebookRuntimeTemplate: myTemplate.id,
+ *     },
+ *     desiredState: "STOPPED",
+ *     displayName: "Runtime stopped",
+ *     runtimeUser: "gterraformtestuser@gmail.com",
+ * }, {
+ *     dependsOn: [myTemplate],
+ * });
+ * ```
  * ### Colab Runtime Full
  *
  * ```typescript
@@ -98,6 +128,8 @@ import * as utilities from "../utilities";
  *     displayName: "Runtime full",
  *     runtimeUser: "gterraformtestuser@gmail.com",
  *     description: "Full runtime",
+ *     desiredState: "ACTIVE",
+ *     autoUpgrade: true,
  * }, {
  *     dependsOn: [myTemplate],
  * });
@@ -156,13 +188,29 @@ export class Runtime extends pulumi.CustomResource {
     }
 
     /**
+     * Triggers an upgrade anytime the runtime is started if it is upgradable.
+     */
+    public readonly autoUpgrade!: pulumi.Output<boolean | undefined>;
+    /**
      * The description of the Runtime.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
+     */
+    public readonly desiredState!: pulumi.Output<string | undefined>;
+    /**
      * Required. The display name of the Runtime.
      */
     public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Output only. Timestamp when this NotebookRuntime will be expired.
+     */
+    public /*out*/ readonly expirationTime!: pulumi.Output<string>;
+    /**
+     * Output only. Checks if the NotebookRuntime is upgradable.
+     */
+    public /*out*/ readonly isUpgradable!: pulumi.Output<boolean>;
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
      *
@@ -180,6 +228,10 @@ export class Runtime extends pulumi.CustomResource {
      */
     public readonly notebookRuntimeTemplateRef!: pulumi.Output<outputs.colab.RuntimeNotebookRuntimeTemplateRef | undefined>;
     /**
+     * Output only. The type of the notebook runtime.
+     */
+    public /*out*/ readonly notebookRuntimeType!: pulumi.Output<string>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -188,6 +240,10 @@ export class Runtime extends pulumi.CustomResource {
      * The user email of the NotebookRuntime.
      */
     public readonly runtimeUser!: pulumi.Output<string>;
+    /**
+     * Output only. The state of the runtime.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a Runtime resource with the given unique name, arguments, and options.
@@ -202,13 +258,19 @@ export class Runtime extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuntimeState | undefined;
+            resourceInputs["autoUpgrade"] = state ? state.autoUpgrade : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["desiredState"] = state ? state.desiredState : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["expirationTime"] = state ? state.expirationTime : undefined;
+            resourceInputs["isUpgradable"] = state ? state.isUpgradable : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notebookRuntimeTemplateRef"] = state ? state.notebookRuntimeTemplateRef : undefined;
+            resourceInputs["notebookRuntimeType"] = state ? state.notebookRuntimeType : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["runtimeUser"] = state ? state.runtimeUser : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as RuntimeArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
@@ -220,13 +282,19 @@ export class Runtime extends pulumi.CustomResource {
             if ((!args || args.runtimeUser === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'runtimeUser'");
             }
+            resourceInputs["autoUpgrade"] = args ? args.autoUpgrade : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["desiredState"] = args ? args.desiredState : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notebookRuntimeTemplateRef"] = args ? args.notebookRuntimeTemplateRef : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["runtimeUser"] = args ? args.runtimeUser : undefined;
+            resourceInputs["expirationTime"] = undefined /*out*/;
+            resourceInputs["isUpgradable"] = undefined /*out*/;
+            resourceInputs["notebookRuntimeType"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Runtime.__pulumiType, name, resourceInputs, opts);
@@ -238,13 +306,29 @@ export class Runtime extends pulumi.CustomResource {
  */
 export interface RuntimeState {
     /**
+     * Triggers an upgrade anytime the runtime is started if it is upgradable.
+     */
+    autoUpgrade?: pulumi.Input<boolean>;
+    /**
      * The description of the Runtime.
      */
     description?: pulumi.Input<string>;
     /**
+     * Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
+     */
+    desiredState?: pulumi.Input<string>;
+    /**
      * Required. The display name of the Runtime.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Output only. Timestamp when this NotebookRuntime will be expired.
+     */
+    expirationTime?: pulumi.Input<string>;
+    /**
+     * Output only. Checks if the NotebookRuntime is upgradable.
+     */
+    isUpgradable?: pulumi.Input<boolean>;
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
      *
@@ -262,6 +346,10 @@ export interface RuntimeState {
      */
     notebookRuntimeTemplateRef?: pulumi.Input<inputs.colab.RuntimeNotebookRuntimeTemplateRef>;
     /**
+     * Output only. The type of the notebook runtime.
+     */
+    notebookRuntimeType?: pulumi.Input<string>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -270,6 +358,10 @@ export interface RuntimeState {
      * The user email of the NotebookRuntime.
      */
     runtimeUser?: pulumi.Input<string>;
+    /**
+     * Output only. The state of the runtime.
+     */
+    state?: pulumi.Input<string>;
 }
 
 /**
@@ -277,9 +369,17 @@ export interface RuntimeState {
  */
 export interface RuntimeArgs {
     /**
+     * Triggers an upgrade anytime the runtime is started if it is upgradable.
+     */
+    autoUpgrade?: pulumi.Input<boolean>;
+    /**
      * The description of the Runtime.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
+     */
+    desiredState?: pulumi.Input<string>;
     /**
      * Required. The display name of the Runtime.
      */

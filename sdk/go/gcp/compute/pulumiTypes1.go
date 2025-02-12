@@ -13,6 +13,725 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type RouterStatusBestRoutesForRouter struct {
+	// An optional description of this resource. Provide this property
+	// when you create the resource.
+	Description string `pulumi:"description"`
+	// The destination range of outgoing packets that this route applies to.
+	// Only IPv4 is supported.
+	DestRange string `pulumi:"destRange"`
+	// The name of the router.
+	Name string `pulumi:"name"`
+	// The network name or resource link to the parent
+	// network of this subnetwork.
+	Network string `pulumi:"network"`
+	// URL to a gateway that should handle matching packets.
+	// Currently, you can only specify the internet gateway, using a full or
+	// partial valid URL:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway'
+	// * 'projects/project/global/gateways/default-internet-gateway'
+	// * 'global/gateways/default-internet-gateway'
+	// * The string 'default-internet-gateway'.
+	NextHopGateway string `pulumi:"nextHopGateway"`
+	// The IP address or URL to a forwarding rule of type
+	// loadBalancingScheme=INTERNAL that should handle matching
+	// packets.
+	//
+	// With the GA provider you can only specify the forwarding
+	// rule as a partial or full URL. For example, the following
+	// are all valid values:
+	// * 10.128.0.56
+	// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+	// * regions/region/forwardingRules/forwardingRule
+	//
+	// When the beta provider, you can also specify the IP address
+	// of a forwarding rule from the same VPC or any peered VPC.
+	//
+	// Note that this can only be used when the destinationRange is
+	// a public (non-RFC 1918) IP CIDR range.
+	NextHopIlb string `pulumi:"nextHopIlb"`
+	// URL to an instance that should handle matching packets.
+	// You can specify this as a full or partial URL. For example:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance'
+	// * 'projects/project/zones/zone/instances/instance'
+	// * 'zones/zone/instances/instance'
+	// * Just the instance name, with the zone in 'next_hop_instance_zone'.
+	NextHopInstance string `pulumi:"nextHopInstance"`
+	// The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
+	NextHopInstanceZone string `pulumi:"nextHopInstanceZone"`
+	// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
+	NextHopInterRegionCost string `pulumi:"nextHopInterRegionCost"`
+	// Network IP address of an instance that should handle matching packets.
+	NextHopIp string `pulumi:"nextHopIp"`
+	// Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+	NextHopMed string `pulumi:"nextHopMed"`
+	// URL to a Network that should handle matching packets.
+	NextHopNetwork string `pulumi:"nextHopNetwork"`
+	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+	NextHopOrigin string `pulumi:"nextHopOrigin"`
+	// URL to a VpnTunnel that should handle matching packets.
+	NextHopVpnTunnel string `pulumi:"nextHopVpnTunnel"`
+	// The priority of this route. Priority is used to break ties in cases
+	// where there is more than one matching route of equal prefix length.
+	//
+	// In the case of two routes with equal prefix length, the one with the
+	// lowest-numbered priority value wins.
+	//
+	// Default value is 1000. Valid range is 0 through 65535.
+	Priority int `pulumi:"priority"`
+	// The ID of the project in which the resource
+	// belongs. If it is not provided, the provider project is used.
+	Project  string `pulumi:"project"`
+	SelfLink string `pulumi:"selfLink"`
+	// A list of instance tags to which this route applies.
+	Tags []string `pulumi:"tags"`
+}
+
+// RouterStatusBestRoutesForRouterInput is an input type that accepts RouterStatusBestRoutesForRouterArgs and RouterStatusBestRoutesForRouterOutput values.
+// You can construct a concrete instance of `RouterStatusBestRoutesForRouterInput` via:
+//
+//	RouterStatusBestRoutesForRouterArgs{...}
+type RouterStatusBestRoutesForRouterInput interface {
+	pulumi.Input
+
+	ToRouterStatusBestRoutesForRouterOutput() RouterStatusBestRoutesForRouterOutput
+	ToRouterStatusBestRoutesForRouterOutputWithContext(context.Context) RouterStatusBestRoutesForRouterOutput
+}
+
+type RouterStatusBestRoutesForRouterArgs struct {
+	// An optional description of this resource. Provide this property
+	// when you create the resource.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The destination range of outgoing packets that this route applies to.
+	// Only IPv4 is supported.
+	DestRange pulumi.StringInput `pulumi:"destRange"`
+	// The name of the router.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The network name or resource link to the parent
+	// network of this subnetwork.
+	Network pulumi.StringInput `pulumi:"network"`
+	// URL to a gateway that should handle matching packets.
+	// Currently, you can only specify the internet gateway, using a full or
+	// partial valid URL:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway'
+	// * 'projects/project/global/gateways/default-internet-gateway'
+	// * 'global/gateways/default-internet-gateway'
+	// * The string 'default-internet-gateway'.
+	NextHopGateway pulumi.StringInput `pulumi:"nextHopGateway"`
+	// The IP address or URL to a forwarding rule of type
+	// loadBalancingScheme=INTERNAL that should handle matching
+	// packets.
+	//
+	// With the GA provider you can only specify the forwarding
+	// rule as a partial or full URL. For example, the following
+	// are all valid values:
+	// * 10.128.0.56
+	// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+	// * regions/region/forwardingRules/forwardingRule
+	//
+	// When the beta provider, you can also specify the IP address
+	// of a forwarding rule from the same VPC or any peered VPC.
+	//
+	// Note that this can only be used when the destinationRange is
+	// a public (non-RFC 1918) IP CIDR range.
+	NextHopIlb pulumi.StringInput `pulumi:"nextHopIlb"`
+	// URL to an instance that should handle matching packets.
+	// You can specify this as a full or partial URL. For example:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance'
+	// * 'projects/project/zones/zone/instances/instance'
+	// * 'zones/zone/instances/instance'
+	// * Just the instance name, with the zone in 'next_hop_instance_zone'.
+	NextHopInstance pulumi.StringInput `pulumi:"nextHopInstance"`
+	// The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
+	NextHopInstanceZone pulumi.StringInput `pulumi:"nextHopInstanceZone"`
+	// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
+	NextHopInterRegionCost pulumi.StringInput `pulumi:"nextHopInterRegionCost"`
+	// Network IP address of an instance that should handle matching packets.
+	NextHopIp pulumi.StringInput `pulumi:"nextHopIp"`
+	// Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+	NextHopMed pulumi.StringInput `pulumi:"nextHopMed"`
+	// URL to a Network that should handle matching packets.
+	NextHopNetwork pulumi.StringInput `pulumi:"nextHopNetwork"`
+	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+	NextHopOrigin pulumi.StringInput `pulumi:"nextHopOrigin"`
+	// URL to a VpnTunnel that should handle matching packets.
+	NextHopVpnTunnel pulumi.StringInput `pulumi:"nextHopVpnTunnel"`
+	// The priority of this route. Priority is used to break ties in cases
+	// where there is more than one matching route of equal prefix length.
+	//
+	// In the case of two routes with equal prefix length, the one with the
+	// lowest-numbered priority value wins.
+	//
+	// Default value is 1000. Valid range is 0 through 65535.
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// The ID of the project in which the resource
+	// belongs. If it is not provided, the provider project is used.
+	Project  pulumi.StringInput `pulumi:"project"`
+	SelfLink pulumi.StringInput `pulumi:"selfLink"`
+	// A list of instance tags to which this route applies.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (RouterStatusBestRoutesForRouterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterStatusBestRoutesForRouter)(nil)).Elem()
+}
+
+func (i RouterStatusBestRoutesForRouterArgs) ToRouterStatusBestRoutesForRouterOutput() RouterStatusBestRoutesForRouterOutput {
+	return i.ToRouterStatusBestRoutesForRouterOutputWithContext(context.Background())
+}
+
+func (i RouterStatusBestRoutesForRouterArgs) ToRouterStatusBestRoutesForRouterOutputWithContext(ctx context.Context) RouterStatusBestRoutesForRouterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterStatusBestRoutesForRouterOutput)
+}
+
+// RouterStatusBestRoutesForRouterArrayInput is an input type that accepts RouterStatusBestRoutesForRouterArray and RouterStatusBestRoutesForRouterArrayOutput values.
+// You can construct a concrete instance of `RouterStatusBestRoutesForRouterArrayInput` via:
+//
+//	RouterStatusBestRoutesForRouterArray{ RouterStatusBestRoutesForRouterArgs{...} }
+type RouterStatusBestRoutesForRouterArrayInput interface {
+	pulumi.Input
+
+	ToRouterStatusBestRoutesForRouterArrayOutput() RouterStatusBestRoutesForRouterArrayOutput
+	ToRouterStatusBestRoutesForRouterArrayOutputWithContext(context.Context) RouterStatusBestRoutesForRouterArrayOutput
+}
+
+type RouterStatusBestRoutesForRouterArray []RouterStatusBestRoutesForRouterInput
+
+func (RouterStatusBestRoutesForRouterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterStatusBestRoutesForRouter)(nil)).Elem()
+}
+
+func (i RouterStatusBestRoutesForRouterArray) ToRouterStatusBestRoutesForRouterArrayOutput() RouterStatusBestRoutesForRouterArrayOutput {
+	return i.ToRouterStatusBestRoutesForRouterArrayOutputWithContext(context.Background())
+}
+
+func (i RouterStatusBestRoutesForRouterArray) ToRouterStatusBestRoutesForRouterArrayOutputWithContext(ctx context.Context) RouterStatusBestRoutesForRouterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterStatusBestRoutesForRouterArrayOutput)
+}
+
+type RouterStatusBestRoutesForRouterOutput struct{ *pulumi.OutputState }
+
+func (RouterStatusBestRoutesForRouterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterStatusBestRoutesForRouter)(nil)).Elem()
+}
+
+func (o RouterStatusBestRoutesForRouterOutput) ToRouterStatusBestRoutesForRouterOutput() RouterStatusBestRoutesForRouterOutput {
+	return o
+}
+
+func (o RouterStatusBestRoutesForRouterOutput) ToRouterStatusBestRoutesForRouterOutputWithContext(ctx context.Context) RouterStatusBestRoutesForRouterOutput {
+	return o
+}
+
+// An optional description of this resource. Provide this property
+// when you create the resource.
+func (o RouterStatusBestRoutesForRouterOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The destination range of outgoing packets that this route applies to.
+// Only IPv4 is supported.
+func (o RouterStatusBestRoutesForRouterOutput) DestRange() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) string { return v.DestRange }).(pulumi.StringOutput)
+}
+
+// The name of the router.
+func (o RouterStatusBestRoutesForRouterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The network name or resource link to the parent
+// network of this subnetwork.
+func (o RouterStatusBestRoutesForRouterOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// URL to a gateway that should handle matching packets.
+// Currently, you can only specify the internet gateway, using a full or
+// partial valid URL:
+// * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway'
+// * 'projects/project/global/gateways/default-internet-gateway'
+// * 'global/gateways/default-internet-gateway'
+// * The string 'default-internet-gateway'.
+func (o RouterStatusBestRoutesForRouterOutput) NextHopGateway() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) string { return v.NextHopGateway }).(pulumi.StringOutput)
+}
+
+// The IP address or URL to a forwarding rule of type
+// loadBalancingScheme=INTERNAL that should handle matching
+// packets.
+//
+// With the GA provider you can only specify the forwarding
+// rule as a partial or full URL. For example, the following
+// are all valid values:
+// * 10.128.0.56
+// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+// * regions/region/forwardingRules/forwardingRule
+//
+// When the beta provider, you can also specify the IP address
+// of a forwarding rule from the same VPC or any peered VPC.
+//
+// Note that this can only be used when the destinationRange is
+// a public (non-RFC 1918) IP CIDR range.
+func (o RouterStatusBestRoutesForRouterOutput) NextHopIlb() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) string { return v.NextHopIlb }).(pulumi.StringOutput)
+}
+
+// URL to an instance that should handle matching packets.
+// You can specify this as a full or partial URL. For example:
+// * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance'
+// * 'projects/project/zones/zone/instances/instance'
+// * 'zones/zone/instances/instance'
+// * Just the instance name, with the zone in 'next_hop_instance_zone'.
+func (o RouterStatusBestRoutesForRouterOutput) NextHopInstance() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) string { return v.NextHopInstance }).(pulumi.StringOutput)
+}
+
+// The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
+func (o RouterStatusBestRoutesForRouterOutput) NextHopInstanceZone() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) string { return v.NextHopInstanceZone }).(pulumi.StringOutput)
+}
+
+// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
+func (o RouterStatusBestRoutesForRouterOutput) NextHopInterRegionCost() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) string { return v.NextHopInterRegionCost }).(pulumi.StringOutput)
+}
+
+// Network IP address of an instance that should handle matching packets.
+func (o RouterStatusBestRoutesForRouterOutput) NextHopIp() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) string { return v.NextHopIp }).(pulumi.StringOutput)
+}
+
+// Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+func (o RouterStatusBestRoutesForRouterOutput) NextHopMed() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) string { return v.NextHopMed }).(pulumi.StringOutput)
+}
+
+// URL to a Network that should handle matching packets.
+func (o RouterStatusBestRoutesForRouterOutput) NextHopNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) string { return v.NextHopNetwork }).(pulumi.StringOutput)
+}
+
+// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+func (o RouterStatusBestRoutesForRouterOutput) NextHopOrigin() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) string { return v.NextHopOrigin }).(pulumi.StringOutput)
+}
+
+// URL to a VpnTunnel that should handle matching packets.
+func (o RouterStatusBestRoutesForRouterOutput) NextHopVpnTunnel() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) string { return v.NextHopVpnTunnel }).(pulumi.StringOutput)
+}
+
+// The priority of this route. Priority is used to break ties in cases
+// where there is more than one matching route of equal prefix length.
+//
+// In the case of two routes with equal prefix length, the one with the
+// lowest-numbered priority value wins.
+//
+// Default value is 1000. Valid range is 0 through 65535.
+func (o RouterStatusBestRoutesForRouterOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// The ID of the project in which the resource
+// belongs. If it is not provided, the provider project is used.
+func (o RouterStatusBestRoutesForRouterOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o RouterStatusBestRoutesForRouterOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// A list of instance tags to which this route applies.
+func (o RouterStatusBestRoutesForRouterOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type RouterStatusBestRoutesForRouterArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterStatusBestRoutesForRouterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterStatusBestRoutesForRouter)(nil)).Elem()
+}
+
+func (o RouterStatusBestRoutesForRouterArrayOutput) ToRouterStatusBestRoutesForRouterArrayOutput() RouterStatusBestRoutesForRouterArrayOutput {
+	return o
+}
+
+func (o RouterStatusBestRoutesForRouterArrayOutput) ToRouterStatusBestRoutesForRouterArrayOutputWithContext(ctx context.Context) RouterStatusBestRoutesForRouterArrayOutput {
+	return o
+}
+
+func (o RouterStatusBestRoutesForRouterArrayOutput) Index(i pulumi.IntInput) RouterStatusBestRoutesForRouterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterStatusBestRoutesForRouter {
+		return vs[0].([]RouterStatusBestRoutesForRouter)[vs[1].(int)]
+	}).(RouterStatusBestRoutesForRouterOutput)
+}
+
+type SecurityPolicyAdaptiveProtectionConfig struct {
+	// Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+	//
+	// <a name="nestedLayer7DdosDefenseConfig"></a>The `layer7DdosDefenseConfig` block supports:
+	AutoDeployConfig *SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig `pulumi:"autoDeployConfig"`
+	// Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+	Layer7DdosDefenseConfig *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig `pulumi:"layer7DdosDefenseConfig"`
+}
+
+// SecurityPolicyAdaptiveProtectionConfigInput is an input type that accepts SecurityPolicyAdaptiveProtectionConfigArgs and SecurityPolicyAdaptiveProtectionConfigOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdaptiveProtectionConfigInput` via:
+//
+//	SecurityPolicyAdaptiveProtectionConfigArgs{...}
+type SecurityPolicyAdaptiveProtectionConfigInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdaptiveProtectionConfigOutput() SecurityPolicyAdaptiveProtectionConfigOutput
+	ToSecurityPolicyAdaptiveProtectionConfigOutputWithContext(context.Context) SecurityPolicyAdaptiveProtectionConfigOutput
+}
+
+type SecurityPolicyAdaptiveProtectionConfigArgs struct {
+	// Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+	//
+	// <a name="nestedLayer7DdosDefenseConfig"></a>The `layer7DdosDefenseConfig` block supports:
+	AutoDeployConfig SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrInput `pulumi:"autoDeployConfig"`
+	// Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+	Layer7DdosDefenseConfig SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrInput `pulumi:"layer7DdosDefenseConfig"`
+}
+
+func (SecurityPolicyAdaptiveProtectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigOutput() SecurityPolicyAdaptiveProtectionConfigOutput {
+	return i.ToSecurityPolicyAdaptiveProtectionConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigOutput)
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigPtrOutput {
+	return i.ToSecurityPolicyAdaptiveProtectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigOutput).ToSecurityPolicyAdaptiveProtectionConfigPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyAdaptiveProtectionConfigPtrInput is an input type that accepts SecurityPolicyAdaptiveProtectionConfigArgs, SecurityPolicyAdaptiveProtectionConfigPtr and SecurityPolicyAdaptiveProtectionConfigPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdaptiveProtectionConfigPtrInput` via:
+//
+//	        SecurityPolicyAdaptiveProtectionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPolicyAdaptiveProtectionConfigPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdaptiveProtectionConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigPtrOutput
+	ToSecurityPolicyAdaptiveProtectionConfigPtrOutputWithContext(context.Context) SecurityPolicyAdaptiveProtectionConfigPtrOutput
+}
+
+type securityPolicyAdaptiveProtectionConfigPtrType SecurityPolicyAdaptiveProtectionConfigArgs
+
+func SecurityPolicyAdaptiveProtectionConfigPtr(v *SecurityPolicyAdaptiveProtectionConfigArgs) SecurityPolicyAdaptiveProtectionConfigPtrInput {
+	return (*securityPolicyAdaptiveProtectionConfigPtrType)(v)
+}
+
+func (*securityPolicyAdaptiveProtectionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyAdaptiveProtectionConfig)(nil)).Elem()
+}
+
+func (i *securityPolicyAdaptiveProtectionConfigPtrType) ToSecurityPolicyAdaptiveProtectionConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigPtrOutput {
+	return i.ToSecurityPolicyAdaptiveProtectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyAdaptiveProtectionConfigPtrType) ToSecurityPolicyAdaptiveProtectionConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigPtrOutput)
+}
+
+type SecurityPolicyAdaptiveProtectionConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdaptiveProtectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigOutput() SecurityPolicyAdaptiveProtectionConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigPtrOutput {
+	return o.ToSecurityPolicyAdaptiveProtectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyAdaptiveProtectionConfig) *SecurityPolicyAdaptiveProtectionConfig {
+		return &v
+	}).(SecurityPolicyAdaptiveProtectionConfigPtrOutput)
+}
+
+// Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+//
+// <a name="nestedLayer7DdosDefenseConfig"></a>The `layer7DdosDefenseConfig` block supports:
+func (o SecurityPolicyAdaptiveProtectionConfigOutput) AutoDeployConfig() SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfig) *SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig {
+		return v.AutoDeployConfig
+	}).(SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput)
+}
+
+// Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+func (o SecurityPolicyAdaptiveProtectionConfigOutput) Layer7DdosDefenseConfig() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfig) *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
+		return v.Layer7DdosDefenseConfig
+	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput)
+}
+
+type SecurityPolicyAdaptiveProtectionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdaptiveProtectionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyAdaptiveProtectionConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigPtrOutput) ToSecurityPolicyAdaptiveProtectionConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigPtrOutput) ToSecurityPolicyAdaptiveProtectionConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigPtrOutput) Elem() SecurityPolicyAdaptiveProtectionConfigOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfig) SecurityPolicyAdaptiveProtectionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyAdaptiveProtectionConfig
+		return ret
+	}).(SecurityPolicyAdaptiveProtectionConfigOutput)
+}
+
+// Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+//
+// <a name="nestedLayer7DdosDefenseConfig"></a>The `layer7DdosDefenseConfig` block supports:
+func (o SecurityPolicyAdaptiveProtectionConfigPtrOutput) AutoDeployConfig() SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfig) *SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AutoDeployConfig
+	}).(SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput)
+}
+
+// Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+func (o SecurityPolicyAdaptiveProtectionConfigPtrOutput) Layer7DdosDefenseConfig() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfig) *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Layer7DdosDefenseConfig
+	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput)
+}
+
+type SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig struct {
+	// Rules are only automatically deployed for alerts on potential attacks with confidence scores greater than this threshold.
+	ConfidenceThreshold *float64 `pulumi:"confidenceThreshold"`
+	// Google Cloud Armor stops applying the action in the automatically deployed rule to an identified attacker after this duration. The rule continues to operate against new requests.
+	ExpirationSec *int `pulumi:"expirationSec"`
+	// Rules are only automatically deployed when the estimated impact to baseline traffic from the suggested mitigation is below this threshold.
+	ImpactedBaselineThreshold *float64 `pulumi:"impactedBaselineThreshold"`
+	// Identifies new attackers only when the load to the backend service that is under attack exceeds this threshold.
+	LoadThreshold *float64 `pulumi:"loadThreshold"`
+}
+
+// SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigInput is an input type that accepts SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs and SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigInput` via:
+//
+//	SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs{...}
+type SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput() SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput
+	ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutputWithContext(context.Context) SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput
+}
+
+type SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs struct {
+	// Rules are only automatically deployed for alerts on potential attacks with confidence scores greater than this threshold.
+	ConfidenceThreshold pulumi.Float64PtrInput `pulumi:"confidenceThreshold"`
+	// Google Cloud Armor stops applying the action in the automatically deployed rule to an identified attacker after this duration. The rule continues to operate against new requests.
+	ExpirationSec pulumi.IntPtrInput `pulumi:"expirationSec"`
+	// Rules are only automatically deployed when the estimated impact to baseline traffic from the suggested mitigation is below this threshold.
+	ImpactedBaselineThreshold pulumi.Float64PtrInput `pulumi:"impactedBaselineThreshold"`
+	// Identifies new attackers only when the load to the backend service that is under attack exceeds this threshold.
+	LoadThreshold pulumi.Float64PtrInput `pulumi:"loadThreshold"`
+}
+
+func (SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput() SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput {
+	return i.ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput)
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput {
+	return i.ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput).ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrInput is an input type that accepts SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs, SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtr and SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrInput` via:
+//
+//	        SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput
+	ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutputWithContext(context.Context) SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput
+}
+
+type securityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrType SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs
+
+func SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtr(v *SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs) SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrInput {
+	return (*securityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrType)(v)
+}
+
+func (*securityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig)(nil)).Elem()
+}
+
+func (i *securityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrType) ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput {
+	return i.ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrType) ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput)
+}
+
+type SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput() SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput {
+	return o.ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) *SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig {
+		return &v
+	}).(SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput)
+}
+
+// Rules are only automatically deployed for alerts on potential attacks with confidence scores greater than this threshold.
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ConfidenceThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) *float64 { return v.ConfidenceThreshold }).(pulumi.Float64PtrOutput)
+}
+
+// Google Cloud Armor stops applying the action in the automatically deployed rule to an identified attacker after this duration. The rule continues to operate against new requests.
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ExpirationSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) *int { return v.ExpirationSec }).(pulumi.IntPtrOutput)
+}
+
+// Rules are only automatically deployed when the estimated impact to baseline traffic from the suggested mitigation is below this threshold.
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ImpactedBaselineThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) *float64 {
+		return v.ImpactedBaselineThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Identifies new attackers only when the load to the backend service that is under attack exceeds this threshold.
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) LoadThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) *float64 { return v.LoadThreshold }).(pulumi.Float64PtrOutput)
+}
+
+type SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput) ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput) ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput) Elem() SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig
+		return ret
+	}).(SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput)
+}
+
+// Rules are only automatically deployed for alerts on potential attacks with confidence scores greater than this threshold.
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput) ConfidenceThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidenceThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Google Cloud Armor stops applying the action in the automatically deployed rule to an identified attacker after this duration. The rule continues to operate against new requests.
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput) ExpirationSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ExpirationSec
+	}).(pulumi.IntPtrOutput)
+}
+
+// Rules are only automatically deployed when the estimated impact to baseline traffic from the suggested mitigation is below this threshold.
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput) ImpactedBaselineThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ImpactedBaselineThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Identifies new attackers only when the load to the backend service that is under attack exceeds this threshold.
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput) LoadThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LoadThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig struct {
 	// If set to true, enables CAAP for L7 DDoS detection.
 	Enable *bool `pulumi:"enable"`
@@ -28331,6 +29050,16 @@ type GetForwardingRulesRule struct {
 	// When reading an 'IPAddress', the API always returns the IP
 	// address number.
 	IpAddress string `pulumi:"ipAddress"`
+	// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+	// in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+	// Use one of the following formats to specify a sub-PDP when creating an
+	// IPv6 NetLB forwarding rule using BYOIP:
+	// Full resource URL, as in:
+	//   * 'https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}'
+	//     Partial URL, as in:
+	//   * 'projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}'
+	//   * 'regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}'
+	IpCollection string `pulumi:"ipCollection"`
 	// The IP protocol to which this rule applies.
 	//
 	// For protocol forwarding, valid
@@ -28615,6 +29344,16 @@ type GetForwardingRulesRuleArgs struct {
 	// When reading an 'IPAddress', the API always returns the IP
 	// address number.
 	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+	// in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+	// Use one of the following formats to specify a sub-PDP when creating an
+	// IPv6 NetLB forwarding rule using BYOIP:
+	// Full resource URL, as in:
+	//   * 'https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}'
+	//     Partial URL, as in:
+	//   * 'projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}'
+	//   * 'regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}'
+	IpCollection pulumi.StringInput `pulumi:"ipCollection"`
 	// The IP protocol to which this rule applies.
 	//
 	// For protocol forwarding, valid
@@ -28966,6 +29705,19 @@ func (o GetForwardingRulesRuleOutput) ForwardingRuleId() pulumi.IntOutput {
 // address number.
 func (o GetForwardingRulesRuleOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+// in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+// Use one of the following formats to specify a sub-PDP when creating an
+// IPv6 NetLB forwarding rule using BYOIP:
+// Full resource URL, as in:
+//   - 'https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}'
+//     Partial URL, as in:
+//   - 'projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}'
+//   - 'regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}'
+func (o GetForwardingRulesRuleOutput) IpCollection() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.IpCollection }).(pulumi.StringOutput)
 }
 
 // The IP protocol to which this rule applies.
@@ -53542,6 +54294,12 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterStatusBestRoutesForRouterInput)(nil)).Elem(), RouterStatusBestRoutesForRouterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterStatusBestRoutesForRouterArrayInput)(nil)).Elem(), RouterStatusBestRoutesForRouterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigPtrInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs{})
@@ -54246,6 +55004,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(RouterStatusBestRoutesForRouterOutput{})
+	pulumi.RegisterOutputType(RouterStatusBestRoutesForRouterArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput{})

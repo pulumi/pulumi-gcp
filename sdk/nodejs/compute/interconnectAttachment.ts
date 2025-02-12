@@ -10,6 +10,12 @@ import * as utilities from "../utilities";
  * Represents an InterconnectAttachment (VLAN attachment) resource. For more
  * information, see Creating VLAN Attachments.
  *
+ * To get more information about InterconnectAttachment, see:
+ *
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/interconnectAttachments)
+ * * How-to Guides
+ *     * [Create a Interconnect attachment](https://cloud.google.com/network-connectivity/docs/interconnect/how-to/dedicated/creating-vlan-attachments)
+ *
  * ## Example Usage
  *
  * ### Interconnect Attachment Basic

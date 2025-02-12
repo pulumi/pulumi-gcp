@@ -24,7 +24,9 @@ class RuntimeArgs:
                  display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
                  runtime_user: pulumi.Input[str],
+                 auto_upgrade: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 desired_state: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notebook_runtime_template_ref: Optional[pulumi.Input['RuntimeNotebookRuntimeTemplateRefArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -36,7 +38,9 @@ class RuntimeArgs:
                
                - - -
         :param pulumi.Input[str] runtime_user: The user email of the NotebookRuntime.
+        :param pulumi.Input[bool] auto_upgrade: Triggers an upgrade anytime the runtime is started if it is upgradable.
         :param pulumi.Input[str] description: The description of the Runtime.
+        :param pulumi.Input[str] desired_state: Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
         :param pulumi.Input[str] name: The resource name of the Runtime
         :param pulumi.Input['RuntimeNotebookRuntimeTemplateRefArgs'] notebook_runtime_template_ref: 'Runtime specific information used for NotebookRuntime creation.'
                Structure is documented below.
@@ -46,8 +50,12 @@ class RuntimeArgs:
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "runtime_user", runtime_user)
+        if auto_upgrade is not None:
+            pulumi.set(__self__, "auto_upgrade", auto_upgrade)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if desired_state is not None:
+            pulumi.set(__self__, "desired_state", desired_state)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if notebook_runtime_template_ref is not None:
@@ -95,6 +103,18 @@ class RuntimeArgs:
         pulumi.set(self, "runtime_user", value)
 
     @property
+    @pulumi.getter(name="autoUpgrade")
+    def auto_upgrade(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Triggers an upgrade anytime the runtime is started if it is upgradable.
+        """
+        return pulumi.get(self, "auto_upgrade")
+
+    @auto_upgrade.setter
+    def auto_upgrade(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_upgrade", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -105,6 +125,18 @@ class RuntimeArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="desiredState")
+    def desired_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
+        """
+        return pulumi.get(self, "desired_state")
+
+    @desired_state.setter
+    def desired_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "desired_state", value)
 
     @property
     @pulumi.getter
@@ -148,17 +180,27 @@ class RuntimeArgs:
 @pulumi.input_type
 class _RuntimeState:
     def __init__(__self__, *,
+                 auto_upgrade: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 desired_state: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 expiration_time: Optional[pulumi.Input[str]] = None,
+                 is_upgradable: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notebook_runtime_template_ref: Optional[pulumi.Input['RuntimeNotebookRuntimeTemplateRefArgs']] = None,
+                 notebook_runtime_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 runtime_user: Optional[pulumi.Input[str]] = None):
+                 runtime_user: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Runtime resources.
+        :param pulumi.Input[bool] auto_upgrade: Triggers an upgrade anytime the runtime is started if it is upgradable.
         :param pulumi.Input[str] description: The description of the Runtime.
+        :param pulumi.Input[str] desired_state: Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
         :param pulumi.Input[str] display_name: Required. The display name of the Runtime.
+        :param pulumi.Input[str] expiration_time: Output only. Timestamp when this NotebookRuntime will be expired.
+        :param pulumi.Input[bool] is_upgradable: Output only. Checks if the NotebookRuntime is upgradable.
         :param pulumi.Input[str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
                
                
@@ -166,24 +208,50 @@ class _RuntimeState:
         :param pulumi.Input[str] name: The resource name of the Runtime
         :param pulumi.Input['RuntimeNotebookRuntimeTemplateRefArgs'] notebook_runtime_template_ref: 'Runtime specific information used for NotebookRuntime creation.'
                Structure is documented below.
+        :param pulumi.Input[str] notebook_runtime_type: Output only. The type of the notebook runtime.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] runtime_user: The user email of the NotebookRuntime.
+        :param pulumi.Input[str] state: Output only. The state of the runtime.
         """
+        if auto_upgrade is not None:
+            pulumi.set(__self__, "auto_upgrade", auto_upgrade)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if desired_state is not None:
+            pulumi.set(__self__, "desired_state", desired_state)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if expiration_time is not None:
+            pulumi.set(__self__, "expiration_time", expiration_time)
+        if is_upgradable is not None:
+            pulumi.set(__self__, "is_upgradable", is_upgradable)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if notebook_runtime_template_ref is not None:
             pulumi.set(__self__, "notebook_runtime_template_ref", notebook_runtime_template_ref)
+        if notebook_runtime_type is not None:
+            pulumi.set(__self__, "notebook_runtime_type", notebook_runtime_type)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if runtime_user is not None:
             pulumi.set(__self__, "runtime_user", runtime_user)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="autoUpgrade")
+    def auto_upgrade(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Triggers an upgrade anytime the runtime is started if it is upgradable.
+        """
+        return pulumi.get(self, "auto_upgrade")
+
+    @auto_upgrade.setter
+    def auto_upgrade(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_upgrade", value)
 
     @property
     @pulumi.getter
@@ -198,6 +266,18 @@ class _RuntimeState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="desiredState")
+    def desired_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
+        """
+        return pulumi.get(self, "desired_state")
+
+    @desired_state.setter
+    def desired_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "desired_state", value)
+
+    @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -208,6 +288,30 @@ class _RuntimeState:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="expirationTime")
+    def expiration_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Timestamp when this NotebookRuntime will be expired.
+        """
+        return pulumi.get(self, "expiration_time")
+
+    @expiration_time.setter
+    def expiration_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expiration_time", value)
+
+    @property
+    @pulumi.getter(name="isUpgradable")
+    def is_upgradable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Output only. Checks if the NotebookRuntime is upgradable.
+        """
+        return pulumi.get(self, "is_upgradable")
+
+    @is_upgradable.setter
+    def is_upgradable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_upgradable", value)
 
     @property
     @pulumi.getter
@@ -250,6 +354,18 @@ class _RuntimeState:
         pulumi.set(self, "notebook_runtime_template_ref", value)
 
     @property
+    @pulumi.getter(name="notebookRuntimeType")
+    def notebook_runtime_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The type of the notebook runtime.
+        """
+        return pulumi.get(self, "notebook_runtime_type")
+
+    @notebook_runtime_type.setter
+    def notebook_runtime_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "notebook_runtime_type", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -274,13 +390,27 @@ class _RuntimeState:
     def runtime_user(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "runtime_user", value)
 
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The state of the runtime.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
 
 class Runtime(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_upgrade: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 desired_state: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -322,6 +452,33 @@ class Runtime(pulumi.CustomResource):
                 "notebook_runtime_template": my_template.id,
             },
             display_name="Runtime basic",
+            runtime_user="gterraformtestuser@gmail.com",
+            opts = pulumi.ResourceOptions(depends_on=[my_template]))
+        ```
+        ### Colab Runtime Stopped
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_template = gcp.colab.RuntimeTemplate("my_template",
+            name="colab-runtime",
+            display_name="Runtime template basic",
+            location="us-central1",
+            machine_spec={
+                "machine_type": "e2-standard-4",
+            },
+            network_spec={
+                "enable_internet_access": True,
+            })
+        runtime = gcp.colab.Runtime("runtime",
+            name="colab-runtime",
+            location="us-central1",
+            notebook_runtime_template_ref={
+                "notebook_runtime_template": my_template.id,
+            },
+            desired_state="STOPPED",
+            display_name="Runtime stopped",
             runtime_user="gterraformtestuser@gmail.com",
             opts = pulumi.ResourceOptions(depends_on=[my_template]))
         ```
@@ -376,6 +533,8 @@ class Runtime(pulumi.CustomResource):
             display_name="Runtime full",
             runtime_user="gterraformtestuser@gmail.com",
             description="Full runtime",
+            desired_state="ACTIVE",
+            auto_upgrade=True,
             opts = pulumi.ResourceOptions(depends_on=[my_template]))
         ```
 
@@ -405,7 +564,9 @@ class Runtime(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] auto_upgrade: Triggers an upgrade anytime the runtime is started if it is upgradable.
         :param pulumi.Input[str] description: The description of the Runtime.
+        :param pulumi.Input[str] desired_state: Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
         :param pulumi.Input[str] display_name: Required. The display name of the Runtime.
         :param pulumi.Input[str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
                
@@ -461,6 +622,33 @@ class Runtime(pulumi.CustomResource):
             runtime_user="gterraformtestuser@gmail.com",
             opts = pulumi.ResourceOptions(depends_on=[my_template]))
         ```
+        ### Colab Runtime Stopped
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_template = gcp.colab.RuntimeTemplate("my_template",
+            name="colab-runtime",
+            display_name="Runtime template basic",
+            location="us-central1",
+            machine_spec={
+                "machine_type": "e2-standard-4",
+            },
+            network_spec={
+                "enable_internet_access": True,
+            })
+        runtime = gcp.colab.Runtime("runtime",
+            name="colab-runtime",
+            location="us-central1",
+            notebook_runtime_template_ref={
+                "notebook_runtime_template": my_template.id,
+            },
+            desired_state="STOPPED",
+            display_name="Runtime stopped",
+            runtime_user="gterraformtestuser@gmail.com",
+            opts = pulumi.ResourceOptions(depends_on=[my_template]))
+        ```
         ### Colab Runtime Full
 
         ```python
@@ -512,6 +700,8 @@ class Runtime(pulumi.CustomResource):
             display_name="Runtime full",
             runtime_user="gterraformtestuser@gmail.com",
             description="Full runtime",
+            desired_state="ACTIVE",
+            auto_upgrade=True,
             opts = pulumi.ResourceOptions(depends_on=[my_template]))
         ```
 
@@ -554,7 +744,9 @@ class Runtime(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_upgrade: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 desired_state: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -570,7 +762,9 @@ class Runtime(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RuntimeArgs.__new__(RuntimeArgs)
 
+            __props__.__dict__["auto_upgrade"] = auto_upgrade
             __props__.__dict__["description"] = description
+            __props__.__dict__["desired_state"] = desired_state
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -583,6 +777,10 @@ class Runtime(pulumi.CustomResource):
             if runtime_user is None and not opts.urn:
                 raise TypeError("Missing required property 'runtime_user'")
             __props__.__dict__["runtime_user"] = runtime_user
+            __props__.__dict__["expiration_time"] = None
+            __props__.__dict__["is_upgradable"] = None
+            __props__.__dict__["notebook_runtime_type"] = None
+            __props__.__dict__["state"] = None
         super(Runtime, __self__).__init__(
             'gcp:colab/runtime:Runtime',
             resource_name,
@@ -593,13 +791,19 @@ class Runtime(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_upgrade: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            desired_state: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            expiration_time: Optional[pulumi.Input[str]] = None,
+            is_upgradable: Optional[pulumi.Input[bool]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             notebook_runtime_template_ref: Optional[pulumi.Input[Union['RuntimeNotebookRuntimeTemplateRefArgs', 'RuntimeNotebookRuntimeTemplateRefArgsDict']]] = None,
+            notebook_runtime_type: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            runtime_user: Optional[pulumi.Input[str]] = None) -> 'Runtime':
+            runtime_user: Optional[pulumi.Input[str]] = None,
+            state: Optional[pulumi.Input[str]] = None) -> 'Runtime':
         """
         Get an existing Runtime resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -607,8 +811,12 @@ class Runtime(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] auto_upgrade: Triggers an upgrade anytime the runtime is started if it is upgradable.
         :param pulumi.Input[str] description: The description of the Runtime.
+        :param pulumi.Input[str] desired_state: Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
         :param pulumi.Input[str] display_name: Required. The display name of the Runtime.
+        :param pulumi.Input[str] expiration_time: Output only. Timestamp when this NotebookRuntime will be expired.
+        :param pulumi.Input[bool] is_upgradable: Output only. Checks if the NotebookRuntime is upgradable.
         :param pulumi.Input[str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
                
                
@@ -616,22 +824,38 @@ class Runtime(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource name of the Runtime
         :param pulumi.Input[Union['RuntimeNotebookRuntimeTemplateRefArgs', 'RuntimeNotebookRuntimeTemplateRefArgsDict']] notebook_runtime_template_ref: 'Runtime specific information used for NotebookRuntime creation.'
                Structure is documented below.
+        :param pulumi.Input[str] notebook_runtime_type: Output only. The type of the notebook runtime.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] runtime_user: The user email of the NotebookRuntime.
+        :param pulumi.Input[str] state: Output only. The state of the runtime.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _RuntimeState.__new__(_RuntimeState)
 
+        __props__.__dict__["auto_upgrade"] = auto_upgrade
         __props__.__dict__["description"] = description
+        __props__.__dict__["desired_state"] = desired_state
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["expiration_time"] = expiration_time
+        __props__.__dict__["is_upgradable"] = is_upgradable
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["notebook_runtime_template_ref"] = notebook_runtime_template_ref
+        __props__.__dict__["notebook_runtime_type"] = notebook_runtime_type
         __props__.__dict__["project"] = project
         __props__.__dict__["runtime_user"] = runtime_user
+        __props__.__dict__["state"] = state
         return Runtime(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="autoUpgrade")
+    def auto_upgrade(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Triggers an upgrade anytime the runtime is started if it is upgradable.
+        """
+        return pulumi.get(self, "auto_upgrade")
 
     @property
     @pulumi.getter
@@ -642,12 +866,36 @@ class Runtime(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="desiredState")
+    def desired_state(self) -> pulumi.Output[Optional[str]]:
+        """
+        Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
+        """
+        return pulumi.get(self, "desired_state")
+
+    @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
         Required. The display name of the Runtime.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="expirationTime")
+    def expiration_time(self) -> pulumi.Output[str]:
+        """
+        Output only. Timestamp when this NotebookRuntime will be expired.
+        """
+        return pulumi.get(self, "expiration_time")
+
+    @property
+    @pulumi.getter(name="isUpgradable")
+    def is_upgradable(self) -> pulumi.Output[bool]:
+        """
+        Output only. Checks if the NotebookRuntime is upgradable.
+        """
+        return pulumi.get(self, "is_upgradable")
 
     @property
     @pulumi.getter
@@ -678,6 +926,14 @@ class Runtime(pulumi.CustomResource):
         return pulumi.get(self, "notebook_runtime_template_ref")
 
     @property
+    @pulumi.getter(name="notebookRuntimeType")
+    def notebook_runtime_type(self) -> pulumi.Output[str]:
+        """
+        Output only. The type of the notebook runtime.
+        """
+        return pulumi.get(self, "notebook_runtime_type")
+
+    @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
@@ -693,4 +949,12 @@ class Runtime(pulumi.CustomResource):
         The user email of the NotebookRuntime.
         """
         return pulumi.get(self, "runtime_user")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        Output only. The state of the runtime.
+        """
+        return pulumi.get(self, "state")
 

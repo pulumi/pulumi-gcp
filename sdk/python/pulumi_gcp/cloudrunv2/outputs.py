@@ -48,6 +48,7 @@ __all__ = [
     'ServiceScaling',
     'ServiceTemplate',
     'ServiceTemplateContainer',
+    'ServiceTemplateContainerBuildInfo',
     'ServiceTemplateContainerEnv',
     'ServiceTemplateContainerEnvValueSource',
     'ServiceTemplateContainerEnvValueSourceSecretKeyRef',
@@ -107,6 +108,7 @@ __all__ = [
     'GetServiceScalingResult',
     'GetServiceTemplateResult',
     'GetServiceTemplateContainerResult',
+    'GetServiceTemplateContainerBuildInfoResult',
     'GetServiceTemplateContainerEnvResult',
     'GetServiceTemplateContainerEnvValueSourceResult',
     'GetServiceTemplateContainerEnvValueSourceSecretKeyRefResult',
@@ -2447,7 +2449,11 @@ class ServiceTemplateContainer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "dependsOns":
+        if key == "baseImageUri":
+            suggest = "base_image_uri"
+        elif key == "buildInfos":
+            suggest = "build_infos"
+        elif key == "dependsOns":
             suggest = "depends_ons"
         elif key == "livenessProbe":
             suggest = "liveness_probe"
@@ -2472,6 +2478,8 @@ class ServiceTemplateContainer(dict):
     def __init__(__self__, *,
                  image: str,
                  args: Optional[Sequence[str]] = None,
+                 base_image_uri: Optional[str] = None,
+                 build_infos: Optional[Sequence['outputs.ServiceTemplateContainerBuildInfo']] = None,
                  commands: Optional[Sequence[str]] = None,
                  depends_ons: Optional[Sequence[str]] = None,
                  envs: Optional[Sequence['outputs.ServiceTemplateContainerEnv']] = None,
@@ -2485,6 +2493,10 @@ class ServiceTemplateContainer(dict):
         """
         :param str image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
         :param Sequence[str] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
+        :param str base_image_uri: Base image for this container. If set, it indicates that the service is enrolled into automatic base image update.
+        :param Sequence['ServiceTemplateContainerBuildInfoArgs'] build_infos: (Output)
+               The build info of the container image.
+               Structure is documented below.
         :param Sequence[str] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         :param Sequence[str] depends_ons: Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
         :param Sequence['ServiceTemplateContainerEnvArgs'] envs: List of environment variables to set in the container.
@@ -2506,6 +2518,10 @@ class ServiceTemplateContainer(dict):
         pulumi.set(__self__, "image", image)
         if args is not None:
             pulumi.set(__self__, "args", args)
+        if base_image_uri is not None:
+            pulumi.set(__self__, "base_image_uri", base_image_uri)
+        if build_infos is not None:
+            pulumi.set(__self__, "build_infos", build_infos)
         if commands is not None:
             pulumi.set(__self__, "commands", commands)
         if depends_ons is not None:
@@ -2542,6 +2558,24 @@ class ServiceTemplateContainer(dict):
         Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
         """
         return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter(name="baseImageUri")
+    def base_image_uri(self) -> Optional[str]:
+        """
+        Base image for this container. If set, it indicates that the service is enrolled into automatic base image update.
+        """
+        return pulumi.get(self, "base_image_uri")
+
+    @property
+    @pulumi.getter(name="buildInfos")
+    def build_infos(self) -> Optional[Sequence['outputs.ServiceTemplateContainerBuildInfo']]:
+        """
+        (Output)
+        The build info of the container image.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "build_infos")
 
     @property
     @pulumi.getter
@@ -2629,6 +2663,56 @@ class ServiceTemplateContainer(dict):
         Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
         """
         return pulumi.get(self, "working_dir")
+
+
+@pulumi.output_type
+class ServiceTemplateContainerBuildInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "functionTarget":
+            suggest = "function_target"
+        elif key == "sourceLocation":
+            suggest = "source_location"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceTemplateContainerBuildInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceTemplateContainerBuildInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceTemplateContainerBuildInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 function_target: Optional[str] = None,
+                 source_location: Optional[str] = None):
+        """
+        :param str function_target: Entry point of the function when the image is a Cloud Run function.
+        :param str source_location: Source code location of the image.
+        """
+        if function_target is not None:
+            pulumi.set(__self__, "function_target", function_target)
+        if source_location is not None:
+            pulumi.set(__self__, "source_location", source_location)
+
+    @property
+    @pulumi.getter(name="functionTarget")
+    def function_target(self) -> Optional[str]:
+        """
+        Entry point of the function when the image is a Cloud Run function.
+        """
+        return pulumi.get(self, "function_target")
+
+    @property
+    @pulumi.getter(name="sourceLocation")
+    def source_location(self) -> Optional[str]:
+        """
+        Source code location of the image.
+        """
+        return pulumi.get(self, "source_location")
 
 
 @pulumi.output_type
@@ -2895,6 +2979,8 @@ class ServiceTemplateContainerLivenessProbeGrpc(dict):
         :param str service: The name of the service to place in the gRPC HealthCheckRequest
                (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
                If this is not specified, the default behavior is defined by gRPC.
+               
+               <a name="nested_template_containers_containers_build_info"></a>The `build_info` block contains:
         """
         if port is not None:
             pulumi.set(__self__, "port", port)
@@ -2917,6 +3003,8 @@ class ServiceTemplateContainerLivenessProbeGrpc(dict):
         The name of the service to place in the gRPC HealthCheckRequest
         (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
         If this is not specified, the default behavior is defined by gRPC.
+
+        <a name="nested_template_containers_containers_build_info"></a>The `build_info` block contains:
         """
         return pulumi.get(self, "service")
 
@@ -3282,6 +3370,8 @@ class ServiceTemplateContainerStartupProbeGrpc(dict):
         :param str service: The name of the service to place in the gRPC HealthCheckRequest
                (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
                If this is not specified, the default behavior is defined by gRPC.
+               
+               <a name="nested_template_containers_containers_build_info"></a>The `build_info` block contains:
         """
         if port is not None:
             pulumi.set(__self__, "port", port)
@@ -3304,6 +3394,8 @@ class ServiceTemplateContainerStartupProbeGrpc(dict):
         The name of the service to place in the gRPC HealthCheckRequest
         (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
         If this is not specified, the default behavior is defined by gRPC.
+
+        <a name="nested_template_containers_containers_build_info"></a>The `build_info` block contains:
         """
         return pulumi.get(self, "service")
 
@@ -5928,6 +6020,8 @@ class GetServiceTemplateResult(dict):
 class GetServiceTemplateContainerResult(dict):
     def __init__(__self__, *,
                  args: Sequence[str],
+                 base_image_uri: str,
+                 build_infos: Sequence['outputs.GetServiceTemplateContainerBuildInfoResult'],
                  commands: Sequence[str],
                  depends_ons: Sequence[str],
                  envs: Sequence['outputs.GetServiceTemplateContainerEnvResult'],
@@ -5941,6 +6035,8 @@ class GetServiceTemplateContainerResult(dict):
                  working_dir: str):
         """
         :param Sequence[str] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
+        :param str base_image_uri: Base image for this container. If set, it indicates that the service is enrolled into automatic base image update.
+        :param Sequence['GetServiceTemplateContainerBuildInfoArgs'] build_infos: The build info of the container image.
         :param Sequence[str] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         :param Sequence[str] depends_ons: Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
         :param Sequence['GetServiceTemplateContainerEnvArgs'] envs: List of environment variables to set in the container.
@@ -5956,6 +6052,8 @@ class GetServiceTemplateContainerResult(dict):
         :param str working_dir: Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
         """
         pulumi.set(__self__, "args", args)
+        pulumi.set(__self__, "base_image_uri", base_image_uri)
+        pulumi.set(__self__, "build_infos", build_infos)
         pulumi.set(__self__, "commands", commands)
         pulumi.set(__self__, "depends_ons", depends_ons)
         pulumi.set(__self__, "envs", envs)
@@ -5975,6 +6073,22 @@ class GetServiceTemplateContainerResult(dict):
         Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
         """
         return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter(name="baseImageUri")
+    def base_image_uri(self) -> str:
+        """
+        Base image for this container. If set, it indicates that the service is enrolled into automatic base image update.
+        """
+        return pulumi.get(self, "base_image_uri")
+
+    @property
+    @pulumi.getter(name="buildInfos")
+    def build_infos(self) -> Sequence['outputs.GetServiceTemplateContainerBuildInfoResult']:
+        """
+        The build info of the container image.
+        """
+        return pulumi.get(self, "build_infos")
 
     @property
     @pulumi.getter
@@ -6065,6 +6179,35 @@ class GetServiceTemplateContainerResult(dict):
         Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
         """
         return pulumi.get(self, "working_dir")
+
+
+@pulumi.output_type
+class GetServiceTemplateContainerBuildInfoResult(dict):
+    def __init__(__self__, *,
+                 function_target: str,
+                 source_location: str):
+        """
+        :param str function_target: Entry point of the function when the image is a Cloud Run function.
+        :param str source_location: Source code location of the image.
+        """
+        pulumi.set(__self__, "function_target", function_target)
+        pulumi.set(__self__, "source_location", source_location)
+
+    @property
+    @pulumi.getter(name="functionTarget")
+    def function_target(self) -> str:
+        """
+        Entry point of the function when the image is a Cloud Run function.
+        """
+        return pulumi.get(self, "function_target")
+
+    @property
+    @pulumi.getter(name="sourceLocation")
+    def source_location(self) -> str:
+        """
+        Source code location of the image.
+        """
+        return pulumi.get(self, "source_location")
 
 
 @pulumi.output_type

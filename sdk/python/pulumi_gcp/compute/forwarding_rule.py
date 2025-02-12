@@ -27,6 +27,7 @@ class ForwardingRuleArgs:
                  backend_service: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
+                 ip_collection: Optional[pulumi.Input[str]] = None,
                  ip_protocol: Optional[pulumi.Input[str]] = None,
                  ip_version: Optional[pulumi.Input[str]] = None,
                  is_mirroring_collector: Optional[pulumi.Input[bool]] = None,
@@ -106,6 +107,15 @@ class ForwardingRuleArgs:
                specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
                When reading an `IPAddress`, the API always returns the IP
                address number.
+        :param pulumi.Input[str] ip_collection: Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+               in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+               Use one of the following formats to specify a sub-PDP when creating an
+               IPv6 NetLB forwarding rule using BYOIP:
+               Full resource URL, as in:
+               * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+               Partial URL, as in:
+               * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+               * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
         :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies.
                For protocol forwarding, valid
                options are `TCP`, `UDP`, `ESP`,
@@ -255,6 +265,8 @@ class ForwardingRuleArgs:
             pulumi.set(__self__, "description", description)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
+        if ip_collection is not None:
+            pulumi.set(__self__, "ip_collection", ip_collection)
         if ip_protocol is not None:
             pulumi.set(__self__, "ip_protocol", ip_protocol)
         if ip_version is not None:
@@ -417,6 +429,26 @@ class ForwardingRuleArgs:
     @ip_address.setter
     def ip_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter(name="ipCollection")
+    def ip_collection(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+        in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+        Use one of the following formats to specify a sub-PDP when creating an
+        IPv6 NetLB forwarding rule using BYOIP:
+        Full resource URL, as in:
+        * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+        Partial URL, as in:
+        * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+        * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+        """
+        return pulumi.get(self, "ip_collection")
+
+    @ip_collection.setter
+    def ip_collection(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_collection", value)
 
     @property
     @pulumi.getter(name="ipProtocol")
@@ -775,6 +807,7 @@ class _ForwardingRuleState:
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  forwarding_rule_id: Optional[pulumi.Input[int]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
+                 ip_collection: Optional[pulumi.Input[str]] = None,
                  ip_protocol: Optional[pulumi.Input[str]] = None,
                  ip_version: Optional[pulumi.Input[str]] = None,
                  is_mirroring_collector: Optional[pulumi.Input[bool]] = None,
@@ -864,6 +897,15 @@ class _ForwardingRuleState:
                specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
                When reading an `IPAddress`, the API always returns the IP
                address number.
+        :param pulumi.Input[str] ip_collection: Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+               in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+               Use one of the following formats to specify a sub-PDP when creating an
+               IPv6 NetLB forwarding rule using BYOIP:
+               Full resource URL, as in:
+               * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+               Partial URL, as in:
+               * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+               * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
         :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies.
                For protocol forwarding, valid
                options are `TCP`, `UDP`, `ESP`,
@@ -1030,6 +1072,8 @@ class _ForwardingRuleState:
             pulumi.set(__self__, "forwarding_rule_id", forwarding_rule_id)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
+        if ip_collection is not None:
+            pulumi.set(__self__, "ip_collection", ip_collection)
         if ip_protocol is not None:
             pulumi.set(__self__, "ip_protocol", ip_protocol)
         if ip_version is not None:
@@ -1252,6 +1296,26 @@ class _ForwardingRuleState:
     @ip_address.setter
     def ip_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter(name="ipCollection")
+    def ip_collection(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+        in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+        Use one of the following formats to specify a sub-PDP when creating an
+        IPv6 NetLB forwarding rule using BYOIP:
+        Full resource URL, as in:
+        * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+        Partial URL, as in:
+        * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+        * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+        """
+        return pulumi.get(self, "ip_collection")
+
+    @ip_collection.setter
+    def ip_collection(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_collection", value)
 
     @property
     @pulumi.getter(name="ipProtocol")
@@ -1683,6 +1747,7 @@ class ForwardingRule(pulumi.CustomResource):
                  backend_service: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
+                 ip_collection: Optional[pulumi.Input[str]] = None,
                  ip_protocol: Optional[pulumi.Input[str]] = None,
                  ip_version: Optional[pulumi.Input[str]] = None,
                  is_mirroring_collector: Optional[pulumi.Input[bool]] = None,
@@ -2457,6 +2522,15 @@ class ForwardingRule(pulumi.CustomResource):
                specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
                When reading an `IPAddress`, the API always returns the IP
                address number.
+        :param pulumi.Input[str] ip_collection: Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+               in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+               Use one of the following formats to specify a sub-PDP when creating an
+               IPv6 NetLB forwarding rule using BYOIP:
+               Full resource URL, as in:
+               * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+               Partial URL, as in:
+               * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+               * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
         :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies.
                For protocol forwarding, valid
                options are `TCP`, `UDP`, `ESP`,
@@ -3315,6 +3389,7 @@ class ForwardingRule(pulumi.CustomResource):
                  backend_service: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
+                 ip_collection: Optional[pulumi.Input[str]] = None,
                  ip_protocol: Optional[pulumi.Input[str]] = None,
                  ip_version: Optional[pulumi.Input[str]] = None,
                  is_mirroring_collector: Optional[pulumi.Input[bool]] = None,
@@ -3349,6 +3424,7 @@ class ForwardingRule(pulumi.CustomResource):
             __props__.__dict__["backend_service"] = backend_service
             __props__.__dict__["description"] = description
             __props__.__dict__["ip_address"] = ip_address
+            __props__.__dict__["ip_collection"] = ip_collection
             __props__.__dict__["ip_protocol"] = ip_protocol
             __props__.__dict__["ip_version"] = ip_version
             __props__.__dict__["is_mirroring_collector"] = is_mirroring_collector
@@ -3400,6 +3476,7 @@ class ForwardingRule(pulumi.CustomResource):
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             forwarding_rule_id: Optional[pulumi.Input[int]] = None,
             ip_address: Optional[pulumi.Input[str]] = None,
+            ip_collection: Optional[pulumi.Input[str]] = None,
             ip_protocol: Optional[pulumi.Input[str]] = None,
             ip_version: Optional[pulumi.Input[str]] = None,
             is_mirroring_collector: Optional[pulumi.Input[bool]] = None,
@@ -3494,6 +3571,15 @@ class ForwardingRule(pulumi.CustomResource):
                specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
                When reading an `IPAddress`, the API always returns the IP
                address number.
+        :param pulumi.Input[str] ip_collection: Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+               in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+               Use one of the following formats to specify a sub-PDP when creating an
+               IPv6 NetLB forwarding rule using BYOIP:
+               Full resource URL, as in:
+               * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+               Partial URL, as in:
+               * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+               * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
         :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies.
                For protocol forwarding, valid
                options are `TCP`, `UDP`, `ESP`,
@@ -3654,6 +3740,7 @@ class ForwardingRule(pulumi.CustomResource):
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["forwarding_rule_id"] = forwarding_rule_id
         __props__.__dict__["ip_address"] = ip_address
+        __props__.__dict__["ip_collection"] = ip_collection
         __props__.__dict__["ip_protocol"] = ip_protocol
         __props__.__dict__["ip_version"] = ip_version
         __props__.__dict__["is_mirroring_collector"] = is_mirroring_collector
@@ -3812,6 +3899,22 @@ class ForwardingRule(pulumi.CustomResource):
         address number.
         """
         return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter(name="ipCollection")
+    def ip_collection(self) -> pulumi.Output[Optional[str]]:
+        """
+        Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+        in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+        Use one of the following formats to specify a sub-PDP when creating an
+        IPv6 NetLB forwarding rule using BYOIP:
+        Full resource URL, as in:
+        * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+        Partial URL, as in:
+        * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+        * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+        """
+        return pulumi.get(self, "ip_collection")
 
     @property
     @pulumi.getter(name="ipProtocol")

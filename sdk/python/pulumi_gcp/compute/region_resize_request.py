@@ -22,11 +22,11 @@ __all__ = ['RegionResizeRequestArgs', 'RegionResizeRequest']
 class RegionResizeRequestArgs:
     def __init__(__self__, *,
                  instance_group_manager: pulumi.Input[str],
-                 region: pulumi.Input[str],
                  resize_by: pulumi.Input[int],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  requested_run_duration: Optional[pulumi.Input['RegionResizeRequestRequestedRunDurationArgs']] = None):
         """
         The set of arguments for constructing a RegionResizeRequest resource.
@@ -34,17 +34,16 @@ class RegionResizeRequestArgs:
                
                
                - - -
-        :param pulumi.Input[str] region: The reference of the compute region scoping this request.
         :param pulumi.Input[int] resize_by: The number of instances to be created by this resize request. The group's target size will be increased by this number.
         :param pulumi.Input[str] description: An optional description of this resize-request.
         :param pulumi.Input[str] name: The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The reference of the compute region scoping this request. If it is not provided, the provider region is used.
         :param pulumi.Input['RegionResizeRequestRequestedRunDurationArgs'] requested_run_duration: Requested run duration for instances that will be created by this request. At the end of the run duration instances will be deleted.
                Structure is documented below.
         """
         pulumi.set(__self__, "instance_group_manager", instance_group_manager)
-        pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "resize_by", resize_by)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -52,6 +51,8 @@ class RegionResizeRequestArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if requested_run_duration is not None:
             pulumi.set(__self__, "requested_run_duration", requested_run_duration)
 
@@ -69,18 +70,6 @@ class RegionResizeRequestArgs:
     @instance_group_manager.setter
     def instance_group_manager(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance_group_manager", value)
-
-    @property
-    @pulumi.getter
-    def region(self) -> pulumi.Input[str]:
-        """
-        The reference of the compute region scoping this request.
-        """
-        return pulumi.get(self, "region")
-
-    @region.setter
-    def region(self, value: pulumi.Input[str]):
-        pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter(name="resizeBy")
@@ -132,6 +121,18 @@ class RegionResizeRequestArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The reference of the compute region scoping this request. If it is not provided, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
     @pulumi.getter(name="requestedRunDuration")
     def requested_run_duration(self) -> Optional[pulumi.Input['RegionResizeRequestRequestedRunDurationArgs']]:
         """
@@ -169,7 +170,7 @@ class _RegionResizeRequestState:
         :param pulumi.Input[str] name: The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] region: The reference of the compute region scoping this request.
+        :param pulumi.Input[str] region: The reference of the compute region scoping this request. If it is not provided, the provider region is used.
         :param pulumi.Input['RegionResizeRequestRequestedRunDurationArgs'] requested_run_duration: Requested run duration for instances that will be created by this request. At the end of the run duration instances will be deleted.
                Structure is documented below.
         :param pulumi.Input[int] resize_by: The number of instances to be created by this resize request. The group's target size will be increased by this number.
@@ -266,7 +267,7 @@ class _RegionResizeRequestState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        The reference of the compute region scoping this request.
+        The reference of the compute region scoping this request. If it is not provided, the provider region is used.
         """
         return pulumi.get(self, "region")
 
@@ -457,7 +458,7 @@ class RegionResizeRequest(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] region: The reference of the compute region scoping this request.
+        :param pulumi.Input[str] region: The reference of the compute region scoping this request. If it is not provided, the provider region is used.
         :param pulumi.Input[Union['RegionResizeRequestRequestedRunDurationArgs', 'RegionResizeRequestRequestedRunDurationArgsDict']] requested_run_duration: Requested run duration for instances that will be created by this request. At the end of the run duration instances will be deleted.
                Structure is documented below.
         :param pulumi.Input[int] resize_by: The number of instances to be created by this resize request. The group's target size will be increased by this number.
@@ -614,8 +615,6 @@ class RegionResizeRequest(pulumi.CustomResource):
             __props__.__dict__["instance_group_manager"] = instance_group_manager
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            if region is None and not opts.urn:
-                raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["requested_run_duration"] = requested_run_duration
             if resize_by is None and not opts.urn:
@@ -660,7 +659,7 @@ class RegionResizeRequest(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] region: The reference of the compute region scoping this request.
+        :param pulumi.Input[str] region: The reference of the compute region scoping this request. If it is not provided, the provider region is used.
         :param pulumi.Input[Union['RegionResizeRequestRequestedRunDurationArgs', 'RegionResizeRequestRequestedRunDurationArgsDict']] requested_run_duration: Requested run duration for instances that will be created by this request. At the end of the run duration instances will be deleted.
                Structure is documented below.
         :param pulumi.Input[int] resize_by: The number of instances to be created by this resize request. The group's target size will be increased by this number.
@@ -732,7 +731,7 @@ class RegionResizeRequest(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        The reference of the compute region scoping this request.
+        The reference of the compute region scoping this request. If it is not provided, the provider region is used.
         """
         return pulumi.get(self, "region")
 

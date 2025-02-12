@@ -10,6 +10,11 @@ export const getRuntimeTemplateIamPolicy: typeof import("./getRuntimeTemplateIam
 export const getRuntimeTemplateIamPolicyOutput: typeof import("./getRuntimeTemplateIamPolicy").getRuntimeTemplateIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getRuntimeTemplateIamPolicy","getRuntimeTemplateIamPolicyOutput"], () => require("./getRuntimeTemplateIamPolicy"));
 
+export { NotebookExecutionArgs, NotebookExecutionState } from "./notebookExecution";
+export type NotebookExecution = import("./notebookExecution").NotebookExecution;
+export const NotebookExecution: typeof import("./notebookExecution").NotebookExecution = null as any;
+utilities.lazyLoad(exports, ["NotebookExecution"], () => require("./notebookExecution"));
+
 export { RuntimeArgs, RuntimeState } from "./runtime";
 export type Runtime = import("./runtime").Runtime;
 export const Runtime: typeof import("./runtime").Runtime = null as any;
@@ -35,11 +40,18 @@ export type RuntimeTemplateIamPolicy = import("./runtimeTemplateIamPolicy").Runt
 export const RuntimeTemplateIamPolicy: typeof import("./runtimeTemplateIamPolicy").RuntimeTemplateIamPolicy = null as any;
 utilities.lazyLoad(exports, ["RuntimeTemplateIamPolicy"], () => require("./runtimeTemplateIamPolicy"));
 
+export { ScheduleArgs, ScheduleState } from "./schedule";
+export type Schedule = import("./schedule").Schedule;
+export const Schedule: typeof import("./schedule").Schedule = null as any;
+utilities.lazyLoad(exports, ["Schedule"], () => require("./schedule"));
+
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:colab/notebookExecution:NotebookExecution":
+                return new NotebookExecution(name, <any>undefined, { urn })
             case "gcp:colab/runtime:Runtime":
                 return new Runtime(name, <any>undefined, { urn })
             case "gcp:colab/runtimeTemplate:RuntimeTemplate":
@@ -50,13 +62,17 @@ const _module = {
                 return new RuntimeTemplateIamMember(name, <any>undefined, { urn })
             case "gcp:colab/runtimeTemplateIamPolicy:RuntimeTemplateIamPolicy":
                 return new RuntimeTemplateIamPolicy(name, <any>undefined, { urn })
+            case "gcp:colab/schedule:Schedule":
+                return new Schedule(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "colab/notebookExecution", _module)
 pulumi.runtime.registerResourceModule("gcp", "colab/runtime", _module)
 pulumi.runtime.registerResourceModule("gcp", "colab/runtimeTemplate", _module)
 pulumi.runtime.registerResourceModule("gcp", "colab/runtimeTemplateIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "colab/runtimeTemplateIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "colab/runtimeTemplateIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "colab/schedule", _module)

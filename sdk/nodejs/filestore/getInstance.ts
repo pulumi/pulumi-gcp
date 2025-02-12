@@ -64,12 +64,14 @@ export interface GetInstanceResult {
     readonly deletionProtectionReason: string;
     readonly description: string;
     readonly effectiveLabels: {[key: string]: string};
+    readonly effectiveReplications: outputs.filestore.GetInstanceEffectiveReplication[];
     readonly etag: string;
     readonly fileShares: outputs.filestore.GetInstanceFileShare[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly initialReplications: outputs.filestore.GetInstanceInitialReplication[];
     readonly kmsKeyName: string;
     readonly labels: {[key: string]: string};
     readonly location?: string;

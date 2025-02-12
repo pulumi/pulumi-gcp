@@ -12,6 +12,7 @@ import com.pulumi.gcp.colab.inputs.RuntimeTemplateIdleShutdownConfigArgs;
 import com.pulumi.gcp.colab.inputs.RuntimeTemplateMachineSpecArgs;
 import com.pulumi.gcp.colab.inputs.RuntimeTemplateNetworkSpecArgs;
 import com.pulumi.gcp.colab.inputs.RuntimeTemplateShieldedVmConfigArgs;
+import com.pulumi.gcp.colab.inputs.RuntimeTemplateSoftwareConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -290,6 +291,23 @@ public final class RuntimeTemplateState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.shieldedVmConfig);
     }
 
+    /**
+     * The notebook software configuration of the notebook runtime.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="softwareConfig")
+    private @Nullable Output<RuntimeTemplateSoftwareConfigArgs> softwareConfig;
+
+    /**
+     * @return The notebook software configuration of the notebook runtime.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RuntimeTemplateSoftwareConfigArgs>> softwareConfig() {
+        return Optional.ofNullable(this.softwareConfig);
+    }
+
     private RuntimeTemplateState() {}
 
     private RuntimeTemplateState(RuntimeTemplateState $) {
@@ -309,6 +327,7 @@ public final class RuntimeTemplateState extends com.pulumi.resources.ResourceArg
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
         this.shieldedVmConfig = $.shieldedVmConfig;
+        this.softwareConfig = $.softwareConfig;
     }
 
     public static Builder builder() {
@@ -699,6 +718,29 @@ public final class RuntimeTemplateState extends com.pulumi.resources.ResourceArg
          */
         public Builder shieldedVmConfig(RuntimeTemplateShieldedVmConfigArgs shieldedVmConfig) {
             return shieldedVmConfig(Output.of(shieldedVmConfig));
+        }
+
+        /**
+         * @param softwareConfig The notebook software configuration of the notebook runtime.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder softwareConfig(@Nullable Output<RuntimeTemplateSoftwareConfigArgs> softwareConfig) {
+            $.softwareConfig = softwareConfig;
+            return this;
+        }
+
+        /**
+         * @param softwareConfig The notebook software configuration of the notebook runtime.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder softwareConfig(RuntimeTemplateSoftwareConfigArgs softwareConfig) {
+            return softwareConfig(Output.of(softwareConfig));
         }
 
         public RuntimeTemplateState build() {

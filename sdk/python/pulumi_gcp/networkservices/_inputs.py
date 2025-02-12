@@ -73,6 +73,8 @@ __all__ = [
     'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgsDict',
     'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs',
     'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgsDict',
+    'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs',
+    'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgsDict',
     'EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs',
     'EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgsDict',
     'EndpointPolicyEndpointMatcherArgs',
@@ -1097,6 +1099,12 @@ if not MYPY:
         In response to a matching path, the routeAction performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected origin.
         Structure is documented below.
         """
+        route_methods: NotRequired[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgsDict']]
+        """
+        Allow overriding the set of methods that are allowed for this route.
+        When not set, Media CDN allows only "GET", "HEAD", and "OPTIONS".
+        Structure is documented below.
+        """
         url_redirect: NotRequired[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgsDict']]
         """
         The URL redirect configuration for requests that match this route.
@@ -1114,6 +1122,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleArgs:
                  header_action: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs']] = None,
                  origin: Optional[pulumi.Input[str]] = None,
                  route_action: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs']] = None,
+                 route_methods: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs']] = None,
                  url_redirect: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs']]] match_rules: The list of criteria for matching attributes of a request to this routeRule. This list has OR semantics: the request matches this routeRule when any of the matchRules are satisfied. However predicates
@@ -1130,6 +1139,9 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleArgs:
                Only one of origin or urlRedirect can be set.
         :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs'] route_action: In response to a matching path, the routeAction performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected origin.
                Structure is documented below.
+        :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs'] route_methods: Allow overriding the set of methods that are allowed for this route.
+               When not set, Media CDN allows only "GET", "HEAD", and "OPTIONS".
+               Structure is documented below.
         :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs'] url_redirect: The URL redirect configuration for requests that match this route.
                Structure is documented below.
         """
@@ -1143,6 +1155,8 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleArgs:
             pulumi.set(__self__, "origin", origin)
         if route_action is not None:
             pulumi.set(__self__, "route_action", route_action)
+        if route_methods is not None:
+            pulumi.set(__self__, "route_methods", route_methods)
         if url_redirect is not None:
             pulumi.set(__self__, "url_redirect", url_redirect)
 
@@ -1225,6 +1239,20 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleArgs:
     @route_action.setter
     def route_action(self, value: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs']]):
         pulumi.set(self, "route_action", value)
+
+    @property
+    @pulumi.getter(name="routeMethods")
+    def route_methods(self) -> Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs']]:
+        """
+        Allow overriding the set of methods that are allowed for this route.
+        When not set, Media CDN allows only "GET", "HEAD", and "OPTIONS".
+        Structure is documented below.
+        """
+        return pulumi.get(self, "route_methods")
+
+    @route_methods.setter
+    def route_methods(self, value: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs']]):
+        pulumi.set(self, "route_methods", value)
 
     @property
     @pulumi.getter(name="urlRedirect")
@@ -1923,6 +1951,12 @@ if not MYPY:
         The policy to use for defining caching and signed request behaviour for requests that match this route.
         Structure is documented below.
         """
+        compression_mode: NotRequired[pulumi.Input[str]]
+        """
+        Setting the compression mode to automatic enables dynamic compression for every eligible response.
+        When dynamic compression is enabled, it is recommended to also set a cache policy to maximize efficiency.
+        Possible values are: `DISABLED`, `AUTOMATIC`.
+        """
         cors_policy: NotRequired[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgsDict']]
         """
         CORSPolicy defines Cross-Origin-Resource-Sharing configuration, including which CORS response headers will be set.
@@ -1940,11 +1974,15 @@ elif False:
 class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs:
     def __init__(__self__, *,
                  cdn_policy: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs']] = None,
+                 compression_mode: Optional[pulumi.Input[str]] = None,
                  cors_policy: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs']] = None,
                  url_rewrite: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs']] = None):
         """
         :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs'] cdn_policy: The policy to use for defining caching and signed request behaviour for requests that match this route.
                Structure is documented below.
+        :param pulumi.Input[str] compression_mode: Setting the compression mode to automatic enables dynamic compression for every eligible response.
+               When dynamic compression is enabled, it is recommended to also set a cache policy to maximize efficiency.
+               Possible values are: `DISABLED`, `AUTOMATIC`.
         :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs'] cors_policy: CORSPolicy defines Cross-Origin-Resource-Sharing configuration, including which CORS response headers will be set.
                Structure is documented below.
         :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs'] url_rewrite: The URL rewrite configuration for requests that match this route.
@@ -1952,6 +1990,8 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs:
         """
         if cdn_policy is not None:
             pulumi.set(__self__, "cdn_policy", cdn_policy)
+        if compression_mode is not None:
+            pulumi.set(__self__, "compression_mode", compression_mode)
         if cors_policy is not None:
             pulumi.set(__self__, "cors_policy", cors_policy)
         if url_rewrite is not None:
@@ -1969,6 +2009,20 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs:
     @cdn_policy.setter
     def cdn_policy(self, value: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs']]):
         pulumi.set(self, "cdn_policy", value)
+
+    @property
+    @pulumi.getter(name="compressionMode")
+    def compression_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Setting the compression mode to automatic enables dynamic compression for every eligible response.
+        When dynamic compression is enabled, it is recommended to also set a cache policy to maximize efficiency.
+        Possible values are: `DISABLED`, `AUTOMATIC`.
+        """
+        return pulumi.get(self, "compression_mode")
+
+    @compression_mode.setter
+    def compression_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compression_mode", value)
 
     @property
     @pulumi.getter(name="corsPolicy")
@@ -3079,6 +3133,41 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs:
     @path_template_rewrite.setter
     def path_template_rewrite(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path_template_rewrite", value)
+
+
+if not MYPY:
+    class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgsDict(TypedDict):
+        allowed_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The non-empty set of HTTP methods that are allowed for this route.
+        Any combination of "GET", "HEAD", "OPTIONS", "PUT", "POST", "DELETE", and "PATCH".
+        """
+elif False:
+    EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs:
+    def __init__(__self__, *,
+                 allowed_methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_methods: The non-empty set of HTTP methods that are allowed for this route.
+               Any combination of "GET", "HEAD", "OPTIONS", "PUT", "POST", "DELETE", and "PATCH".
+        """
+        if allowed_methods is not None:
+            pulumi.set(__self__, "allowed_methods", allowed_methods)
+
+    @property
+    @pulumi.getter(name="allowedMethods")
+    def allowed_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The non-empty set of HTTP methods that are allowed for this route.
+        Any combination of "GET", "HEAD", "OPTIONS", "PUT", "POST", "DELETE", and "PATCH".
+        """
+        return pulumi.get(self, "allowed_methods")
+
+    @allowed_methods.setter
+    def allowed_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_methods", value)
 
 
 if not MYPY:

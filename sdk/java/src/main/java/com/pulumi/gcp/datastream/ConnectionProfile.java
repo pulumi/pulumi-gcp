@@ -89,9 +89,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Network;
  * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
  * import com.pulumi.gcp.datastream.PrivateConnection;
  * import com.pulumi.gcp.datastream.PrivateConnectionArgs;
  * import com.pulumi.gcp.datastream.inputs.PrivateConnectionVpcPeeringConfigArgs;
+ * import com.pulumi.gcp.compute.Address;
+ * import com.pulumi.gcp.compute.AddressArgs;
  * import com.pulumi.gcp.sql.DatabaseInstance;
  * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
@@ -102,6 +106,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.random.RandomPasswordArgs;
  * import com.pulumi.gcp.sql.User;
  * import com.pulumi.gcp.sql.UserArgs;
+ * import com.pulumi.gcp.compute.Instance;
+ * import com.pulumi.gcp.compute.InstanceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.Firewall;
+ * import com.pulumi.gcp.compute.FirewallArgs;
+ * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
  * import com.pulumi.gcp.datastream.ConnectionProfile;
  * import com.pulumi.gcp.datastream.ConnectionProfileArgs;
  * import com.pulumi.gcp.datastream.inputs.ConnectionProfilePostgresqlProfileArgs;
@@ -121,17 +133,28 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("my-network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
+ *             .name("my-subnetwork")
+ *             .ipCidrRange("10.1.0.0/16")
+ *             .region("us-central1")
+ *             .network(default_.id())
  *             .build());
  * 
  *         var privateConnection = new PrivateConnection("privateConnection", PrivateConnectionArgs.builder()
- *             .displayName("Connection profile")
+ *             .displayName("Private connection")
  *             .location("us-central1")
  *             .privateConnectionId("my-connection")
- *             .labels(Map.of("key", "value"))
  *             .vpcPeeringConfig(PrivateConnectionVpcPeeringConfigArgs.builder()
  *                 .vpc(default_.id())
  *                 .subnet("10.0.0.0/29")
  *                 .build())
+ *             .build());
+ * 
+ *         var natVmIp = new Address("natVmIp", AddressArgs.builder()
+ *             .name("nat-vm-ip")
  *             .build());
  * 
  *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
@@ -141,22 +164,9 @@ import javax.annotation.Nullable;
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier("db-f1-micro")
  *                 .ipConfiguration(DatabaseInstanceSettingsIpConfigurationArgs.builder()
- *                     .authorizedNetworks(                    
- *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value("34.71.242.81")
- *                             .build(),
- *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value("34.72.28.29")
- *                             .build(),
- *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value("34.67.6.157")
- *                             .build(),
- *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value("34.67.234.134")
- *                             .build(),
- *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
- *                             .value("34.72.239.218")
- *                             .build())
+ *                     .authorizedNetworks(DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                         .value(natVmIp.address())
+ *                         .build())
  *                     .build())
  *                 .build())
  *             .deletionProtection(true)
@@ -178,15 +188,66 @@ import javax.annotation.Nullable;
  *             .password(pwd.result())
  *             .build());
  * 
+ *         var natVm = new Instance("natVm", InstanceArgs.builder()
+ *             .name("nat-vm")
+ *             .machineType("e2-medium")
+ *             .zone("us-central1-a")
+ *             .desiredStatus("RUNNING")
+ *             .bootDisk(InstanceBootDiskArgs.builder()
+ *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
+ *                     .image("debian-cloud/debian-12")
+ *                     .build())
+ *                 .build())
+ *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+ *                 .network(privateConnection.vpcPeeringConfig().applyValue(vpcPeeringConfig -> vpcPeeringConfig.vpc()))
+ *                 .subnetwork(defaultSubnetwork.selfLink())
+ *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
+ *                     .natIp(natVmIp.address())
+ *                     .build())
+ *                 .build())
+ *             .metadataStartupScript(instance.publicIpAddress().applyValue(publicIpAddress -> """
+ * #! /bin/bash
+ * # See https://cloud.google.com/datastream/docs/private-connectivity#set-up-reverse-proxy
+ * export DB_ADDR=%s
+ * export DB_PORT=5432
+ * echo 1 > /proc/sys/net/ipv4/ip_forward
+ * md_url_prefix="http://169.254.169.254/computeMetadata/v1/instance"
+ * vm_nic_ip="$(curl -H "Metadata-Flavor: Google" ${md_url_prefix}/network-interfaces/0/ip)"
+ * iptables -t nat -F
+ * iptables -t nat -A PREROUTING \
+ *      -p tcp --dport $DB_PORT \
+ *      -j DNAT \
+ *      --to-destination $DB_ADDR
+ * iptables -t nat -A POSTROUTING \
+ *      -p tcp --dport $DB_PORT \
+ *      -j SNAT \
+ *      --to-source $vm_nic_ip
+ * iptables-save
+ * ", publicIpAddress)))
+ *             .build());
+ * 
+ *         var rules = new Firewall("rules", FirewallArgs.builder()
+ *             .name("ingress-rule")
+ *             .network(privateConnection.vpcPeeringConfig().applyValue(vpcPeeringConfig -> vpcPeeringConfig.vpc()))
+ *             .description("Allow traffic into NAT VM")
+ *             .direction("INGRESS")
+ *             .allows(FirewallAllowArgs.builder()
+ *                 .protocol("tcp")
+ *                 .ports("5432")
+ *                 .build())
+ *             .sourceRanges(privateConnection.vpcPeeringConfig().applyValue(vpcPeeringConfig -> vpcPeeringConfig.subnet()))
+ *             .build());
+ * 
  *         var defaultConnectionProfile = new ConnectionProfile("defaultConnectionProfile", ConnectionProfileArgs.builder()
  *             .displayName("Connection profile")
  *             .location("us-central1")
  *             .connectionProfileId("my-profile")
  *             .postgresqlProfile(ConnectionProfilePostgresqlProfileArgs.builder()
- *                 .hostname(instance.publicIpAddress())
+ *                 .hostname(natVm.networkInterfaces().applyValue(networkInterfaces -> networkInterfaces[0].networkIp()))
  *                 .username(user.name())
  *                 .password(user.password())
  *                 .database(db.name())
+ *                 .port(5432)
  *                 .build())
  *             .privateConnectivity(ConnectionProfilePrivateConnectivityArgs.builder()
  *                 .privateConnection(privateConnection.id())

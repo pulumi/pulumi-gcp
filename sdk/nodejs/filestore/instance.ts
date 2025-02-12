@@ -198,6 +198,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Output only fields for replication configuration.
+     * Structure is documented below.
+     */
+    public /*out*/ readonly effectiveReplications!: pulumi.Output<outputs.filestore.InstanceEffectiveReplication[]>;
+    /**
      * Server-specified ETag for the instance resource to prevent
      * simultaneous updates from overwriting each other.
      */
@@ -208,6 +213,11 @@ export class Instance extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly fileShares!: pulumi.Output<outputs.filestore.InstanceFileShares>;
+    /**
+     * Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+     * instance only, indicating the active as the peer_instance
+     */
+    public readonly initialReplication!: pulumi.Output<outputs.filestore.InstanceInitialReplication | undefined>;
     /**
      * KMS key name used for data encryption.
      */
@@ -286,8 +296,10 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["deletionProtectionReason"] = state ? state.deletionProtectionReason : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
+            resourceInputs["effectiveReplications"] = state ? state.effectiveReplications : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["fileShares"] = state ? state.fileShares : undefined;
+            resourceInputs["initialReplication"] = state ? state.initialReplication : undefined;
             resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -315,6 +327,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["deletionProtectionReason"] = args ? args.deletionProtectionReason : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["fileShares"] = args ? args.fileShares : undefined;
+            resourceInputs["initialReplication"] = args ? args.initialReplication : undefined;
             resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -328,6 +341,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["effectiveReplications"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
@@ -363,6 +377,11 @@ export interface InstanceState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Output only fields for replication configuration.
+     * Structure is documented below.
+     */
+    effectiveReplications?: pulumi.Input<pulumi.Input<inputs.filestore.InstanceEffectiveReplication>[]>;
+    /**
      * Server-specified ETag for the instance resource to prevent
      * simultaneous updates from overwriting each other.
      */
@@ -373,6 +392,11 @@ export interface InstanceState {
      * Structure is documented below.
      */
     fileShares?: pulumi.Input<inputs.filestore.InstanceFileShares>;
+    /**
+     * Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+     * instance only, indicating the active as the peer_instance
+     */
+    initialReplication?: pulumi.Input<inputs.filestore.InstanceInitialReplication>;
     /**
      * KMS key name used for data encryption.
      */
@@ -456,6 +480,11 @@ export interface InstanceArgs {
      * Structure is documented below.
      */
     fileShares: pulumi.Input<inputs.filestore.InstanceFileShares>;
+    /**
+     * Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+     * instance only, indicating the active as the peer_instance
+     */
+    initialReplication?: pulumi.Input<inputs.filestore.InstanceInitialReplication>;
     /**
      * KMS key name used for data encryption.
      */

@@ -165,14 +165,14 @@ public final class ResizeRequestState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The reference of the compute zone scoping this request.
+     * The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
      * 
      */
     @Import(name="zone")
     private @Nullable Output<String> zone;
 
     /**
-     * @return The reference of the compute zone scoping this request.
+     * @return The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
      * 
      */
     public Optional<Output<String>> zone() {
@@ -423,7 +423,7 @@ public final class ResizeRequestState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param zone The reference of the compute zone scoping this request.
+         * @param zone The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
          * 
          * @return builder
          * 
@@ -434,7 +434,7 @@ public final class ResizeRequestState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param zone The reference of the compute zone scoping this request.
+         * @param zone The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
          * 
          * @return builder
          * 

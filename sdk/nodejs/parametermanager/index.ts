@@ -15,6 +15,11 @@ export const getParameterVersion: typeof import("./getParameterVersion").getPara
 export const getParameterVersionOutput: typeof import("./getParameterVersion").getParameterVersionOutput = null as any;
 utilities.lazyLoad(exports, ["getParameterVersion","getParameterVersionOutput"], () => require("./getParameterVersion"));
 
+export { GetParameterVersionRenderArgs, GetParameterVersionRenderResult, GetParameterVersionRenderOutputArgs } from "./getParameterVersionRender";
+export const getParameterVersionRender: typeof import("./getParameterVersionRender").getParameterVersionRender = null as any;
+export const getParameterVersionRenderOutput: typeof import("./getParameterVersionRender").getParameterVersionRenderOutput = null as any;
+utilities.lazyLoad(exports, ["getParameterVersionRender","getParameterVersionRenderOutput"], () => require("./getParameterVersionRender"));
+
 export { GetParametersArgs, GetParametersResult, GetParametersOutputArgs } from "./getParameters";
 export const getParameters: typeof import("./getParameters").getParameters = null as any;
 export const getParametersOutput: typeof import("./getParameters").getParametersOutput = null as any;
@@ -29,6 +34,11 @@ export { GetRegionalParameterVersionArgs, GetRegionalParameterVersionResult, Get
 export const getRegionalParameterVersion: typeof import("./getRegionalParameterVersion").getRegionalParameterVersion = null as any;
 export const getRegionalParameterVersionOutput: typeof import("./getRegionalParameterVersion").getRegionalParameterVersionOutput = null as any;
 utilities.lazyLoad(exports, ["getRegionalParameterVersion","getRegionalParameterVersionOutput"], () => require("./getRegionalParameterVersion"));
+
+export { GetRegionalParameterVersionRenderArgs, GetRegionalParameterVersionRenderResult, GetRegionalParameterVersionRenderOutputArgs } from "./getRegionalParameterVersionRender";
+export const getRegionalParameterVersionRender: typeof import("./getRegionalParameterVersionRender").getRegionalParameterVersionRender = null as any;
+export const getRegionalParameterVersionRenderOutput: typeof import("./getRegionalParameterVersionRender").getRegionalParameterVersionRenderOutput = null as any;
+utilities.lazyLoad(exports, ["getRegionalParameterVersionRender","getRegionalParameterVersionRenderOutput"], () => require("./getRegionalParameterVersionRender"));
 
 export { GetRegionalParametersArgs, GetRegionalParametersResult, GetRegionalParametersOutputArgs } from "./getRegionalParameters";
 export const getRegionalParameters: typeof import("./getRegionalParameters").getRegionalParameters = null as any;

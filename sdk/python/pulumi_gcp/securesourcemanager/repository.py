@@ -341,6 +341,8 @@ class Repository(pulumi.CustomResource):
         Repositories store source code. It supports all Git SCM client commands and has built-in pull requests and issue tracking. Both HTTPS and SSH authentication are supported.
 
         To get more information about Repository, see:
+
+        * [API documentation](https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/overview)
 
@@ -436,6 +438,8 @@ class Repository(pulumi.CustomResource):
         Repositories store source code. It supports all Git SCM client commands and has built-in pull requests and issue tracking. Both HTTPS and SSH authentication are supported.
 
         To get more information about Repository, see:
+
+        * [API documentation](https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/overview)
 

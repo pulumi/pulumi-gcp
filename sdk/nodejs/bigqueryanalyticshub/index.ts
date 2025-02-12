@@ -55,6 +55,11 @@ export type ListingIamPolicy = import("./listingIamPolicy").ListingIamPolicy;
 export const ListingIamPolicy: typeof import("./listingIamPolicy").ListingIamPolicy = null as any;
 utilities.lazyLoad(exports, ["ListingIamPolicy"], () => require("./listingIamPolicy"));
 
+export { ListingSubscriptionArgs, ListingSubscriptionState } from "./listingSubscription";
+export type ListingSubscription = import("./listingSubscription").ListingSubscription;
+export const ListingSubscription: typeof import("./listingSubscription").ListingSubscription = null as any;
+utilities.lazyLoad(exports, ["ListingSubscription"], () => require("./listingSubscription"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -76,6 +81,8 @@ const _module = {
                 return new ListingIamMember(name, <any>undefined, { urn })
             case "gcp:bigqueryanalyticshub/listingIamPolicy:ListingIamPolicy":
                 return new ListingIamPolicy(name, <any>undefined, { urn })
+            case "gcp:bigqueryanalyticshub/listingSubscription:ListingSubscription":
+                return new ListingSubscription(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -89,3 +96,4 @@ pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/listing", _mo
 pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/listingIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/listingIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/listingIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/listingSubscription", _module)

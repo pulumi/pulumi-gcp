@@ -16,19 +16,120 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'InstanceEffectiveReplication',
+    'InstanceEffectiveReplicationReplica',
     'InstanceFileShares',
     'InstanceFileSharesNfsExportOption',
+    'InstanceInitialReplication',
+    'InstanceInitialReplicationReplica',
     'InstanceNetwork',
     'InstancePerformanceConfig',
     'InstancePerformanceConfigFixedIops',
     'InstancePerformanceConfigIopsPerTb',
+    'GetInstanceEffectiveReplicationResult',
+    'GetInstanceEffectiveReplicationReplicaResult',
     'GetInstanceFileShareResult',
     'GetInstanceFileShareNfsExportOptionResult',
+    'GetInstanceInitialReplicationResult',
+    'GetInstanceInitialReplicationReplicaResult',
     'GetInstanceNetworkResult',
     'GetInstancePerformanceConfigResult',
     'GetInstancePerformanceConfigFixedIopResult',
     'GetInstancePerformanceConfigIopsPerTbResult',
 ]
+
+@pulumi.output_type
+class InstanceEffectiveReplication(dict):
+    def __init__(__self__, *,
+                 replicas: Optional[Sequence['outputs.InstanceEffectiveReplicationReplica']] = None):
+        """
+        :param Sequence['InstanceEffectiveReplicationReplicaArgs'] replicas: The replication role.
+               Structure is documented below.
+        """
+        if replicas is not None:
+            pulumi.set(__self__, "replicas", replicas)
+
+    @property
+    @pulumi.getter
+    def replicas(self) -> Optional[Sequence['outputs.InstanceEffectiveReplicationReplica']]:
+        """
+        The replication role.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "replicas")
+
+
+@pulumi.output_type
+class InstanceEffectiveReplicationReplica(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastActiveSyncTime":
+            suggest = "last_active_sync_time"
+        elif key == "stateReasons":
+            suggest = "state_reasons"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceEffectiveReplicationReplica. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceEffectiveReplicationReplica.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceEffectiveReplicationReplica.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 last_active_sync_time: Optional[str] = None,
+                 state: Optional[str] = None,
+                 state_reasons: Optional[Sequence[str]] = None):
+        """
+        :param str last_active_sync_time: (Output)
+               Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+        :param str state: (Output)
+               Output only. The replica state
+        :param Sequence[str] state_reasons: (Output)
+               Output only. Additional information about the replication state, if available.
+        """
+        if last_active_sync_time is not None:
+            pulumi.set(__self__, "last_active_sync_time", last_active_sync_time)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if state_reasons is not None:
+            pulumi.set(__self__, "state_reasons", state_reasons)
+
+    @property
+    @pulumi.getter(name="lastActiveSyncTime")
+    def last_active_sync_time(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+        """
+        return pulumi.get(self, "last_active_sync_time")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. The replica state
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="stateReasons")
+    def state_reasons(self) -> Optional[Sequence[str]]:
+        """
+        (Output)
+        Output only. Additional information about the replication state, if available.
+        """
+        return pulumi.get(self, "state_reasons")
+
 
 @pulumi.output_type
 class InstanceFileShares(dict):
@@ -226,6 +327,78 @@ class InstanceFileSharesNfsExportOption(dict):
         Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`.
         """
         return pulumi.get(self, "squash_mode")
+
+
+@pulumi.output_type
+class InstanceInitialReplication(dict):
+    def __init__(__self__, *,
+                 replicas: Optional[Sequence['outputs.InstanceInitialReplicationReplica']] = None,
+                 role: Optional[str] = None):
+        """
+        :param Sequence['InstanceInitialReplicationReplicaArgs'] replicas: The replication role.
+               Structure is documented below.
+        :param str role: The replication role.
+               Default value is `STANDBY`.
+               Possible values are: `ROLE_UNSPECIFIED`, `ACTIVE`, `STANDBY`.
+        """
+        if replicas is not None:
+            pulumi.set(__self__, "replicas", replicas)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter
+    def replicas(self) -> Optional[Sequence['outputs.InstanceInitialReplicationReplica']]:
+        """
+        The replication role.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "replicas")
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[str]:
+        """
+        The replication role.
+        Default value is `STANDBY`.
+        Possible values are: `ROLE_UNSPECIFIED`, `ACTIVE`, `STANDBY`.
+        """
+        return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class InstanceInitialReplicationReplica(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "peerInstance":
+            suggest = "peer_instance"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceInitialReplicationReplica. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceInitialReplicationReplica.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceInitialReplicationReplica.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 peer_instance: str):
+        """
+        :param str peer_instance: The peer instance.
+        """
+        pulumi.set(__self__, "peer_instance", peer_instance)
+
+    @property
+    @pulumi.getter(name="peerInstance")
+    def peer_instance(self) -> str:
+        """
+        The peer instance.
+        """
+        return pulumi.get(self, "peer_instance")
 
 
 @pulumi.output_type
@@ -479,6 +652,68 @@ class InstancePerformanceConfigIopsPerTb(dict):
 
 
 @pulumi.output_type
+class GetInstanceEffectiveReplicationResult(dict):
+    def __init__(__self__, *,
+                 replicas: Sequence['outputs.GetInstanceEffectiveReplicationReplicaResult']):
+        """
+        :param Sequence['GetInstanceEffectiveReplicationReplicaArgs'] replicas: The replication role.
+        """
+        pulumi.set(__self__, "replicas", replicas)
+
+    @property
+    @pulumi.getter
+    def replicas(self) -> Sequence['outputs.GetInstanceEffectiveReplicationReplicaResult']:
+        """
+        The replication role.
+        """
+        return pulumi.get(self, "replicas")
+
+
+@pulumi.output_type
+class GetInstanceEffectiveReplicationReplicaResult(dict):
+    def __init__(__self__, *,
+                 last_active_sync_time: str,
+                 state: str,
+                 state_reasons: Sequence[str]):
+        """
+        :param str last_active_sync_time: Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+        :param str state: Output only. The replica state
+        :param Sequence[str] state_reasons: Output only. Additional information about the replication state, if available.
+        """
+        pulumi.set(__self__, "last_active_sync_time", last_active_sync_time)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "state_reasons", state_reasons)
+
+    @property
+    @pulumi.getter(name="lastActiveSyncTime")
+    def last_active_sync_time(self) -> str:
+        """
+        Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+        """
+        return pulumi.get(self, "last_active_sync_time")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        Output only. The replica state
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="stateReasons")
+    def state_reasons(self) -> Sequence[str]:
+        """
+        Output only. Additional information about the replication state, if available.
+        """
+        return pulumi.get(self, "state_reasons")
+
+
+@pulumi.output_type
 class GetInstanceFileShareResult(dict):
     def __init__(__self__, *,
                  capacity_gb: int,
@@ -615,6 +850,53 @@ class GetInstanceFileShareNfsExportOptionResult(dict):
         for not allowing root access. The default is NO_ROOT_SQUASH. Default value: "NO_ROOT_SQUASH" Possible values: ["NO_ROOT_SQUASH", "ROOT_SQUASH"]
         """
         return pulumi.get(self, "squash_mode")
+
+
+@pulumi.output_type
+class GetInstanceInitialReplicationResult(dict):
+    def __init__(__self__, *,
+                 replicas: Sequence['outputs.GetInstanceInitialReplicationReplicaResult'],
+                 role: str):
+        """
+        :param Sequence['GetInstanceInitialReplicationReplicaArgs'] replicas: The replication role.
+        :param str role: The replication role. Default value: "STANDBY" Possible values: ["ROLE_UNSPECIFIED", "ACTIVE", "STANDBY"]
+        """
+        pulumi.set(__self__, "replicas", replicas)
+        pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter
+    def replicas(self) -> Sequence['outputs.GetInstanceInitialReplicationReplicaResult']:
+        """
+        The replication role.
+        """
+        return pulumi.get(self, "replicas")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        The replication role. Default value: "STANDBY" Possible values: ["ROLE_UNSPECIFIED", "ACTIVE", "STANDBY"]
+        """
+        return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class GetInstanceInitialReplicationReplicaResult(dict):
+    def __init__(__self__, *,
+                 peer_instance: str):
+        """
+        :param str peer_instance: The peer instance.
+        """
+        pulumi.set(__self__, "peer_instance", peer_instance)
+
+    @property
+    @pulumi.getter(name="peerInstance")
+    def peer_instance(self) -> str:
+        """
+        The peer instance.
+        """
+        return pulumi.get(self, "peer_instance")
 
 
 @pulumi.output_type

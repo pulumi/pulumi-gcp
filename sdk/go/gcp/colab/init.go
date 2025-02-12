@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:colab/notebookExecution:NotebookExecution":
+		r = &NotebookExecution{}
 	case "gcp:colab/runtime:Runtime":
 		r = &Runtime{}
 	case "gcp:colab/runtimeTemplate:RuntimeTemplate":
@@ -31,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RuntimeTemplateIamMember{}
 	case "gcp:colab/runtimeTemplateIamPolicy:RuntimeTemplateIamPolicy":
 		r = &RuntimeTemplateIamPolicy{}
+	case "gcp:colab/schedule:Schedule":
+		r = &Schedule{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -44,6 +48,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"colab/notebookExecution",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"colab/runtime",
@@ -67,6 +76,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"colab/runtimeTemplateIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"colab/schedule",
 		&module{version},
 	)
 }

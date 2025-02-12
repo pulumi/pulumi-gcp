@@ -165,6 +165,7 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string Id;
         public readonly string IpAddress;
+        public readonly string IpCollection;
         public readonly string IpProtocol;
         public readonly string IpVersion;
         public readonly bool IsMirroringCollector;
@@ -214,6 +215,8 @@ namespace Pulumi.Gcp.Compute
             string id,
 
             string ipAddress,
+
+            string ipCollection,
 
             string ipProtocol,
 
@@ -276,6 +279,7 @@ namespace Pulumi.Gcp.Compute
             ForwardingRuleId = forwardingRuleId;
             Id = id;
             IpAddress = ipAddress;
+            IpCollection = ipCollection;
             IpProtocol = ipProtocol;
             IpVersion = ipVersion;
             IsMirroringCollector = isMirroringCollector;

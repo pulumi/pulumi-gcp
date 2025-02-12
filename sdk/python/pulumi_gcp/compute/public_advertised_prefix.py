@@ -28,7 +28,7 @@ class PublicAdvertisedPrefixArgs:
         """
         The set of arguments for constructing a PublicAdvertisedPrefix resource.
         :param pulumi.Input[str] dns_verification_ip: The IPv4 address to be used for reverse DNS verification.
-        :param pulumi.Input[str] ip_cidr_range: The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+        :param pulumi.Input[str] ip_cidr_range: The address range, in CIDR format, represented by this public advertised prefix.
                
                
                - - -
@@ -41,6 +41,10 @@ class PublicAdvertisedPrefixArgs:
                except the last character, which cannot be a dash.
         :param pulumi.Input[str] pdp_scope: Specifies how child public delegated prefix will be scoped. pdpScope
                must be one of: GLOBAL, REGIONAL
+               * REGIONAL: The public delegated prefix is regional only. The
+               provisioning will take a few minutes.
+               * GLOBAL: The public delegated prefix is global only. The provisioning
+               will take ~4 weeks.
                Possible values are: `GLOBAL`, `REGIONAL`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -72,7 +76,7 @@ class PublicAdvertisedPrefixArgs:
     @pulumi.getter(name="ipCidrRange")
     def ip_cidr_range(self) -> pulumi.Input[str]:
         """
-        The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+        The address range, in CIDR format, represented by this public advertised prefix.
 
 
         - - -
@@ -118,6 +122,10 @@ class PublicAdvertisedPrefixArgs:
         """
         Specifies how child public delegated prefix will be scoped. pdpScope
         must be one of: GLOBAL, REGIONAL
+        * REGIONAL: The public delegated prefix is regional only. The
+        provisioning will take a few minutes.
+        * GLOBAL: The public delegated prefix is global only. The provisioning
+        will take ~4 weeks.
         Possible values are: `GLOBAL`, `REGIONAL`.
         """
         return pulumi.get(self, "pdp_scope")
@@ -155,7 +163,7 @@ class _PublicAdvertisedPrefixState:
         Input properties used for looking up and filtering PublicAdvertisedPrefix resources.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] dns_verification_ip: The IPv4 address to be used for reverse DNS verification.
-        :param pulumi.Input[str] ip_cidr_range: The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+        :param pulumi.Input[str] ip_cidr_range: The address range, in CIDR format, represented by this public advertised prefix.
                
                
                - - -
@@ -167,6 +175,10 @@ class _PublicAdvertisedPrefixState:
                except the last character, which cannot be a dash.
         :param pulumi.Input[str] pdp_scope: Specifies how child public delegated prefix will be scoped. pdpScope
                must be one of: GLOBAL, REGIONAL
+               * REGIONAL: The public delegated prefix is regional only. The
+               provisioning will take a few minutes.
+               * GLOBAL: The public delegated prefix is global only. The provisioning
+               will take ~4 weeks.
                Possible values are: `GLOBAL`, `REGIONAL`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -218,7 +230,7 @@ class _PublicAdvertisedPrefixState:
     @pulumi.getter(name="ipCidrRange")
     def ip_cidr_range(self) -> Optional[pulumi.Input[str]]:
         """
-        The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+        The address range, in CIDR format, represented by this public advertised prefix.
 
 
         - - -
@@ -252,6 +264,10 @@ class _PublicAdvertisedPrefixState:
         """
         Specifies how child public delegated prefix will be scoped. pdpScope
         must be one of: GLOBAL, REGIONAL
+        * REGIONAL: The public delegated prefix is regional only. The
+        provisioning will take a few minutes.
+        * GLOBAL: The public delegated prefix is global only. The provisioning
+        will take ~4 weeks.
         Possible values are: `GLOBAL`, `REGIONAL`.
         """
         return pulumi.get(self, "pdp_scope")
@@ -375,7 +391,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] dns_verification_ip: The IPv4 address to be used for reverse DNS verification.
-        :param pulumi.Input[str] ip_cidr_range: The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+        :param pulumi.Input[str] ip_cidr_range: The address range, in CIDR format, represented by this public advertised prefix.
                
                
                - - -
@@ -387,6 +403,10 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
                except the last character, which cannot be a dash.
         :param pulumi.Input[str] pdp_scope: Specifies how child public delegated prefix will be scoped. pdpScope
                must be one of: GLOBAL, REGIONAL
+               * REGIONAL: The public delegated prefix is regional only. The
+               provisioning will take a few minutes.
+               * GLOBAL: The public delegated prefix is global only. The provisioning
+               will take ~4 weeks.
                Possible values are: `GLOBAL`, `REGIONAL`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -527,7 +547,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] dns_verification_ip: The IPv4 address to be used for reverse DNS verification.
-        :param pulumi.Input[str] ip_cidr_range: The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+        :param pulumi.Input[str] ip_cidr_range: The address range, in CIDR format, represented by this public advertised prefix.
                
                
                - - -
@@ -539,6 +559,10 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
                except the last character, which cannot be a dash.
         :param pulumi.Input[str] pdp_scope: Specifies how child public delegated prefix will be scoped. pdpScope
                must be one of: GLOBAL, REGIONAL
+               * REGIONAL: The public delegated prefix is regional only. The
+               provisioning will take a few minutes.
+               * GLOBAL: The public delegated prefix is global only. The provisioning
+               will take ~4 weeks.
                Possible values are: `GLOBAL`, `REGIONAL`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -579,7 +603,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
     @pulumi.getter(name="ipCidrRange")
     def ip_cidr_range(self) -> pulumi.Output[str]:
         """
-        The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+        The address range, in CIDR format, represented by this public advertised prefix.
 
 
         - - -
@@ -605,6 +629,10 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         """
         Specifies how child public delegated prefix will be scoped. pdpScope
         must be one of: GLOBAL, REGIONAL
+        * REGIONAL: The public delegated prefix is regional only. The
+        provisioning will take a few minutes.
+        * GLOBAL: The public delegated prefix is global only. The provisioning
+        will take ~4 weeks.
         Possible values are: `GLOBAL`, `REGIONAL`.
         """
         return pulumi.get(self, "pdp_scope")
