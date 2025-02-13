@@ -53,7 +53,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewManagedSslCertificate(ctx, "default", &compute.ManagedSslCertificateArgs{
+//			_default, err := compute.NewManagedSslCertificate(ctx, "default", &compute.ManagedSslCertificateArgs{
 //				Name: pulumi.String("test-cert"),
 //				Managed: &compute.ManagedSslCertificateManagedArgs{
 //					Domains: pulumi.StringArray{

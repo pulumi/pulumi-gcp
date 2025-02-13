@@ -36,7 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := secretmanager.NewRegionalSecret(ctx, "secret-basic", &secretmanager.RegionalSecretArgs{
+//			secret_basic, err := secretmanager.NewRegionalSecret(ctx, "secret-basic", &secretmanager.RegionalSecretArgs{
 //				SecretId: pulumi.String("secret-version"),
 //				Location: pulumi.String("us-central1"),
 //			})
@@ -70,7 +70,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := secretmanager.NewRegionalSecret(ctx, "secret-basic", &secretmanager.RegionalSecretArgs{
+//			secret_basic, err := secretmanager.NewRegionalSecret(ctx, "secret-basic", &secretmanager.RegionalSecretArgs{
 //				SecretId: pulumi.String("secret-version"),
 //				Location: pulumi.String("us-central1"),
 //			})
@@ -110,7 +110,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := secretmanager.NewRegionalSecret(ctx, "secret-basic", &secretmanager.RegionalSecretArgs{
+//			secret_basic, err := secretmanager.NewRegionalSecret(ctx, "secret-basic", &secretmanager.RegionalSecretArgs{
 //				SecretId: pulumi.String("secret-version"),
 //				Location: pulumi.String("us-central1"),
 //			})
@@ -144,7 +144,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := secretmanager.NewRegionalSecret(ctx, "secret-basic", &secretmanager.RegionalSecretArgs{
+//			secret_basic, err := secretmanager.NewRegionalSecret(ctx, "secret-basic", &secretmanager.RegionalSecretArgs{
 //				SecretId: pulumi.String("secret-version"),
 //				Location: pulumi.String("us-central1"),
 //			})
@@ -178,7 +178,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := secretmanager.NewRegionalSecret(ctx, "secret-basic", &secretmanager.RegionalSecretArgs{
+//			secret_basic, err := secretmanager.NewRegionalSecret(ctx, "secret-basic", &secretmanager.RegionalSecretArgs{
 //				SecretId: pulumi.String("secret-version"),
 //				Location: pulumi.String("us-central1"),
 //			})

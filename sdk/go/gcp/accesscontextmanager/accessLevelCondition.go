@@ -52,14 +52,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := accesscontextmanager.NewAccessPolicy(ctx, "access-policy", &accesscontextmanager.AccessPolicyArgs{
+//			access_policy, err := accesscontextmanager.NewAccessPolicy(ctx, "access-policy", &accesscontextmanager.AccessPolicyArgs{
 //				Parent: pulumi.String("organizations/123456789"),
 //				Title:  pulumi.String("my policy"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = accesscontextmanager.NewAccessLevel(ctx, "access-level-service-account", &accesscontextmanager.AccessLevelArgs{
+//			access_level_service_account, err := accesscontextmanager.NewAccessLevel(ctx, "access-level-service-account", &accesscontextmanager.AccessLevelArgs{
 //				Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("accessPolicies/%v", name), nil
 //				}).(pulumi.StringOutput),
@@ -90,7 +90,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = serviceaccount.NewAccount(ctx, "created-later", &serviceaccount.AccountArgs{
+//			created_later, err := serviceaccount.NewAccount(ctx, "created-later", &serviceaccount.AccountArgs{
 //				AccountId: pulumi.String("my-account-id"),
 //			})
 //			if err != nil {

@@ -10,9 +10,9 @@ require (
 	github.com/hashicorp/terraform-provider-google-beta v0.0.0
 	github.com/hexops/autogold/v2 v2.2.1
 	github.com/pulumi/providertest v0.1.3
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.102.0
-	github.com/pulumi/pulumi/pkg/v3 v3.147.0
-	github.com/pulumi/pulumi/sdk/v3 v3.147.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.103.0
+	github.com/pulumi/pulumi/pkg/v3 v3.148.0
+	github.com/pulumi/pulumi/sdk/v3 v3.148.0
 	github.com/stretchr/testify v1.10.0
 	google.golang.org/api v0.214.0
 	sourcegraph.com/sourcegraph/appdash v0.0.0-20211028080628-e2786a622600

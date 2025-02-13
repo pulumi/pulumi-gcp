@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-backupplan-association = gcp.backupdisasterrecovery.getBackupPlanAssociation({
+ * const my_backupplan_association = gcp.backupdisasterrecovery.getBackupPlanAssociation({
  *     location: "us-central1",
  *     backupPlanAssociationId: "bpa-id",
  * });
@@ -73,7 +73,7 @@ export interface GetBackupPlanAssociationResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-backupplan-association = gcp.backupdisasterrecovery.getBackupPlanAssociation({
+ * const my_backupplan_association = gcp.backupdisasterrecovery.getBackupPlanAssociation({
  *     location: "us-central1",
  *     backupPlanAssociationId: "bpa-id",
  * });

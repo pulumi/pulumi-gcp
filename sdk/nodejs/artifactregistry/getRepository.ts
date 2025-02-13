@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-repo = gcp.artifactregistry.getRepository({
+ * const my_repo = gcp.artifactregistry.getRepository({
  *     location: "us-central1",
  *     repositoryId: "my-repository",
  * });
@@ -93,7 +93,7 @@ export interface GetRepositoryResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-repo = gcp.artifactregistry.getRepository({
+ * const my_repo = gcp.artifactregistry.getRepository({
  *     location: "us-central1",
  *     repositoryId: "my-repository",
  * });
