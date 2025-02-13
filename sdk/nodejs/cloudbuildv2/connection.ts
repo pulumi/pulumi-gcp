@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  *     secret: webhook_secret_secret.id,
  *     secretData: "<webhook-secret-data>",
  * });
- * const p4sa-secretAccessor = gcp.organizations.getIAMPolicy({
+ * const p4sa_secretAccessor = gcp.organizations.getIAMPolicy({
  *     bindings: [{
  *         role: "roles/secretmanager.secretAccessor",
  *         members: ["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
@@ -114,7 +114,7 @@ import * as utilities from "../utilities";
  *         input: "my-github-token.txt",
  *     }).then(invoke => invoke.result),
  * });
- * const p4sa-secretAccessor = gcp.organizations.getIAMPolicy({
+ * const p4sa_secretAccessor = gcp.organizations.getIAMPolicy({
  *     bindings: [{
  *         role: "roles/secretmanager.secretAccessor",
  *         members: ["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"],

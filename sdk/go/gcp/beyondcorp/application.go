@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := beyondcorp.NewSecurityGateway(ctx, "default", &beyondcorp.SecurityGatewayArgs{
+//			_default, err := beyondcorp.NewSecurityGateway(ctx, "default", &beyondcorp.SecurityGatewayArgs{
 //				SecurityGatewayId: pulumi.String("default"),
 //				DisplayName:       pulumi.String("My Security Gateway resource"),
 //				Hubs: beyondcorp.SecurityGatewayHubArray{

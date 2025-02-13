@@ -97,7 +97,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := certificateauthority.NewAuthority(ctx, "root-ca", &certificateauthority.AuthorityArgs{
+//			root_ca, err := certificateauthority.NewAuthority(ctx, "root-ca", &certificateauthority.AuthorityArgs{
 //				Pool:                   pulumi.String("ca-pool"),
 //				CertificateAuthorityId: pulumi.String("my-certificate-authority-root"),
 //				Location:               pulumi.String("us-central1"),
