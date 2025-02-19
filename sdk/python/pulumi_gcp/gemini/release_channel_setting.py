@@ -27,18 +27,16 @@ class ReleaseChannelSettingArgs:
         """
         The set of arguments for constructing a ReleaseChannelSetting resource.
         :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[str] release_channel_setting_id: Required. Id of the requesting object.
-               If auto-generating Id server-side, remove this field and
-               release_channel_setting_id from the method_signature of Create RPC
+        :param pulumi.Input[str] release_channel_setting_id: Id of the Release Channel Setting.
                
                
                - - -
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] release_channel: Optional. Release channel to be used.
+        :param pulumi.Input[str] release_channel: Release channel to be used.
                Possible values:
                STABLE
                EXPERIMENTAL
@@ -68,9 +66,7 @@ class ReleaseChannelSettingArgs:
     @pulumi.getter(name="releaseChannelSettingId")
     def release_channel_setting_id(self) -> pulumi.Input[str]:
         """
-        Required. Id of the requesting object.
-        If auto-generating Id server-side, remove this field and
-        release_channel_setting_id from the method_signature of Create RPC
+        Id of the Release Channel Setting.
 
 
         - - -
@@ -85,7 +81,7 @@ class ReleaseChannelSettingArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. Labels as key value pairs.
+        Labels as key value pairs.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
@@ -112,7 +108,7 @@ class ReleaseChannelSettingArgs:
     @pulumi.getter(name="releaseChannel")
     def release_channel(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Release channel to be used.
+        Release channel to be used.
         Possible values:
         STABLE
         EXPERIMENTAL
@@ -139,9 +135,9 @@ class _ReleaseChannelSettingState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ReleaseChannelSetting resources.
-        :param pulumi.Input[str] create_time: Output only. [Output only] Create time stamp.
+        :param pulumi.Input[str] create_time: Create time stamp.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -151,17 +147,15 @@ class _ReleaseChannelSettingState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[str] release_channel: Optional. Release channel to be used.
+        :param pulumi.Input[str] release_channel: Release channel to be used.
                Possible values:
                STABLE
                EXPERIMENTAL
-        :param pulumi.Input[str] release_channel_setting_id: Required. Id of the requesting object.
-               If auto-generating Id server-side, remove this field and
-               release_channel_setting_id from the method_signature of Create RPC
+        :param pulumi.Input[str] release_channel_setting_id: Id of the Release Channel Setting.
                
                
                - - -
-        :param pulumi.Input[str] update_time: Output only. [Output only] Update time stamp.
+        :param pulumi.Input[str] update_time: Update time stamp.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -188,7 +182,7 @@ class _ReleaseChannelSettingState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. [Output only] Create time stamp.
+        Create time stamp.
         """
         return pulumi.get(self, "create_time")
 
@@ -212,7 +206,7 @@ class _ReleaseChannelSettingState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. Labels as key value pairs.
+        Labels as key value pairs.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
@@ -277,7 +271,7 @@ class _ReleaseChannelSettingState:
     @pulumi.getter(name="releaseChannel")
     def release_channel(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Release channel to be used.
+        Release channel to be used.
         Possible values:
         STABLE
         EXPERIMENTAL
@@ -292,9 +286,7 @@ class _ReleaseChannelSettingState:
     @pulumi.getter(name="releaseChannelSettingId")
     def release_channel_setting_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. Id of the requesting object.
-        If auto-generating Id server-side, remove this field and
-        release_channel_setting_id from the method_signature of Create RPC
+        Id of the Release Channel Setting.
 
 
         - - -
@@ -309,7 +301,7 @@ class _ReleaseChannelSettingState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. [Output only] Update time stamp.
+        Update time stamp.
         """
         return pulumi.get(self, "update_time")
 
@@ -330,6 +322,8 @@ class ReleaseChannelSetting(pulumi.CustomResource):
                  release_channel_setting_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        The resource for managing ReleaseChannel settings for Admin Control.
+
         ## Example Usage
 
         ### Gemini Release Channel Setting Basic
@@ -341,6 +335,9 @@ class ReleaseChannelSetting(pulumi.CustomResource):
         example = gcp.gemini.ReleaseChannelSetting("example",
             release_channel_setting_id="ls1-tf",
             location="global",
+            labels={
+                "my_key": "my_value",
+            },
             release_channel="EXPERIMENTAL")
         ```
 
@@ -370,19 +367,17 @@ class ReleaseChannelSetting(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] release_channel: Optional. Release channel to be used.
+        :param pulumi.Input[str] release_channel: Release channel to be used.
                Possible values:
                STABLE
                EXPERIMENTAL
-        :param pulumi.Input[str] release_channel_setting_id: Required. Id of the requesting object.
-               If auto-generating Id server-side, remove this field and
-               release_channel_setting_id from the method_signature of Create RPC
+        :param pulumi.Input[str] release_channel_setting_id: Id of the Release Channel Setting.
                
                
                - - -
@@ -394,6 +389,8 @@ class ReleaseChannelSetting(pulumi.CustomResource):
                  args: ReleaseChannelSettingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The resource for managing ReleaseChannel settings for Admin Control.
+
         ## Example Usage
 
         ### Gemini Release Channel Setting Basic
@@ -405,6 +402,9 @@ class ReleaseChannelSetting(pulumi.CustomResource):
         example = gcp.gemini.ReleaseChannelSetting("example",
             release_channel_setting_id="ls1-tf",
             location="global",
+            labels={
+                "my_key": "my_value",
+            },
             release_channel="EXPERIMENTAL")
         ```
 
@@ -504,9 +504,9 @@ class ReleaseChannelSetting(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Output only. [Output only] Create time stamp.
+        :param pulumi.Input[str] create_time: Create time stamp.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -516,17 +516,15 @@ class ReleaseChannelSetting(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[str] release_channel: Optional. Release channel to be used.
+        :param pulumi.Input[str] release_channel: Release channel to be used.
                Possible values:
                STABLE
                EXPERIMENTAL
-        :param pulumi.Input[str] release_channel_setting_id: Required. Id of the requesting object.
-               If auto-generating Id server-side, remove this field and
-               release_channel_setting_id from the method_signature of Create RPC
+        :param pulumi.Input[str] release_channel_setting_id: Id of the Release Channel Setting.
                
                
                - - -
-        :param pulumi.Input[str] update_time: Output only. [Output only] Update time stamp.
+        :param pulumi.Input[str] update_time: Update time stamp.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -548,7 +546,7 @@ class ReleaseChannelSetting(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Output only. [Output only] Create time stamp.
+        Create time stamp.
         """
         return pulumi.get(self, "create_time")
 
@@ -564,7 +562,7 @@ class ReleaseChannelSetting(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Optional. Labels as key value pairs.
+        Labels as key value pairs.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
@@ -609,7 +607,7 @@ class ReleaseChannelSetting(pulumi.CustomResource):
     @pulumi.getter(name="releaseChannel")
     def release_channel(self) -> pulumi.Output[Optional[str]]:
         """
-        Optional. Release channel to be used.
+        Release channel to be used.
         Possible values:
         STABLE
         EXPERIMENTAL
@@ -620,9 +618,7 @@ class ReleaseChannelSetting(pulumi.CustomResource):
     @pulumi.getter(name="releaseChannelSettingId")
     def release_channel_setting_id(self) -> pulumi.Output[str]:
         """
-        Required. Id of the requesting object.
-        If auto-generating Id server-side, remove this field and
-        release_channel_setting_id from the method_signature of Create RPC
+        Id of the Release Channel Setting.
 
 
         - - -
@@ -633,7 +629,7 @@ class ReleaseChannelSetting(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        Output only. [Output only] Update time stamp.
+        Update time stamp.
         """
         return pulumi.get(self, "update_time")
 

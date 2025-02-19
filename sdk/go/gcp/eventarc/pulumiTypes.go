@@ -14,15 +14,20 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type TriggerDestination struct {
+	// (Output)
 	// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
 	CloudFunction *string `pulumi:"cloudFunction"`
 	// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+	// Structure is documented below.
 	CloudRunService *TriggerDestinationCloudRunService `pulumi:"cloudRunService"`
 	// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+	// Structure is documented below.
 	Gke *TriggerDestinationGke `pulumi:"gke"`
 	// An HTTP endpoint destination described by an URI.
+	// Structure is documented below.
 	HttpEndpoint *TriggerDestinationHttpEndpoint `pulumi:"httpEndpoint"`
 	// Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+	// Structure is documented below.
 	NetworkConfig *TriggerDestinationNetworkConfig `pulumi:"networkConfig"`
 	// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
 	Workflow *string `pulumi:"workflow"`
@@ -40,15 +45,20 @@ type TriggerDestinationInput interface {
 }
 
 type TriggerDestinationArgs struct {
+	// (Output)
 	// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
 	CloudFunction pulumi.StringPtrInput `pulumi:"cloudFunction"`
 	// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+	// Structure is documented below.
 	CloudRunService TriggerDestinationCloudRunServicePtrInput `pulumi:"cloudRunService"`
 	// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+	// Structure is documented below.
 	Gke TriggerDestinationGkePtrInput `pulumi:"gke"`
 	// An HTTP endpoint destination described by an URI.
+	// Structure is documented below.
 	HttpEndpoint TriggerDestinationHttpEndpointPtrInput `pulumi:"httpEndpoint"`
 	// Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+	// Structure is documented below.
 	NetworkConfig TriggerDestinationNetworkConfigPtrInput `pulumi:"networkConfig"`
 	// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
 	Workflow pulumi.StringPtrInput `pulumi:"workflow"`
@@ -131,27 +141,32 @@ func (o TriggerDestinationOutput) ToTriggerDestinationPtrOutputWithContext(ctx c
 	}).(TriggerDestinationPtrOutput)
 }
 
+// (Output)
 // The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
 func (o TriggerDestinationOutput) CloudFunction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerDestination) *string { return v.CloudFunction }).(pulumi.StringPtrOutput)
 }
 
 // Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+// Structure is documented below.
 func (o TriggerDestinationOutput) CloudRunService() TriggerDestinationCloudRunServicePtrOutput {
 	return o.ApplyT(func(v TriggerDestination) *TriggerDestinationCloudRunService { return v.CloudRunService }).(TriggerDestinationCloudRunServicePtrOutput)
 }
 
 // A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+// Structure is documented below.
 func (o TriggerDestinationOutput) Gke() TriggerDestinationGkePtrOutput {
 	return o.ApplyT(func(v TriggerDestination) *TriggerDestinationGke { return v.Gke }).(TriggerDestinationGkePtrOutput)
 }
 
 // An HTTP endpoint destination described by an URI.
+// Structure is documented below.
 func (o TriggerDestinationOutput) HttpEndpoint() TriggerDestinationHttpEndpointPtrOutput {
 	return o.ApplyT(func(v TriggerDestination) *TriggerDestinationHttpEndpoint { return v.HttpEndpoint }).(TriggerDestinationHttpEndpointPtrOutput)
 }
 
 // Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+// Structure is documented below.
 func (o TriggerDestinationOutput) NetworkConfig() TriggerDestinationNetworkConfigPtrOutput {
 	return o.ApplyT(func(v TriggerDestination) *TriggerDestinationNetworkConfig { return v.NetworkConfig }).(TriggerDestinationNetworkConfigPtrOutput)
 }
@@ -185,6 +200,7 @@ func (o TriggerDestinationPtrOutput) Elem() TriggerDestinationOutput {
 	}).(TriggerDestinationOutput)
 }
 
+// (Output)
 // The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
 func (o TriggerDestinationPtrOutput) CloudFunction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerDestination) *string {
@@ -196,6 +212,7 @@ func (o TriggerDestinationPtrOutput) CloudFunction() pulumi.StringPtrOutput {
 }
 
 // Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+// Structure is documented below.
 func (o TriggerDestinationPtrOutput) CloudRunService() TriggerDestinationCloudRunServicePtrOutput {
 	return o.ApplyT(func(v *TriggerDestination) *TriggerDestinationCloudRunService {
 		if v == nil {
@@ -206,6 +223,7 @@ func (o TriggerDestinationPtrOutput) CloudRunService() TriggerDestinationCloudRu
 }
 
 // A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+// Structure is documented below.
 func (o TriggerDestinationPtrOutput) Gke() TriggerDestinationGkePtrOutput {
 	return o.ApplyT(func(v *TriggerDestination) *TriggerDestinationGke {
 		if v == nil {
@@ -216,6 +234,7 @@ func (o TriggerDestinationPtrOutput) Gke() TriggerDestinationGkePtrOutput {
 }
 
 // An HTTP endpoint destination described by an URI.
+// Structure is documented below.
 func (o TriggerDestinationPtrOutput) HttpEndpoint() TriggerDestinationHttpEndpointPtrOutput {
 	return o.ApplyT(func(v *TriggerDestination) *TriggerDestinationHttpEndpoint {
 		if v == nil {
@@ -226,6 +245,7 @@ func (o TriggerDestinationPtrOutput) HttpEndpoint() TriggerDestinationHttpEndpoi
 }
 
 // Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+// Structure is documented below.
 func (o TriggerDestinationPtrOutput) NetworkConfig() TriggerDestinationNetworkConfigPtrOutput {
 	return o.ApplyT(func(v *TriggerDestination) *TriggerDestinationNetworkConfig {
 		if v == nil {
@@ -772,6 +792,8 @@ func (o TriggerDestinationHttpEndpointPtrOutput) Uri() pulumi.StringPtrOutput {
 
 type TriggerDestinationNetworkConfig struct {
 	// Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+	//
+	// ***
 	NetworkAttachment string `pulumi:"networkAttachment"`
 }
 
@@ -788,6 +810,8 @@ type TriggerDestinationNetworkConfigInput interface {
 
 type TriggerDestinationNetworkConfigArgs struct {
 	// Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+	//
+	// ***
 	NetworkAttachment pulumi.StringInput `pulumi:"networkAttachment"`
 }
 
@@ -869,6 +893,8 @@ func (o TriggerDestinationNetworkConfigOutput) ToTriggerDestinationNetworkConfig
 }
 
 // Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+//
+// ***
 func (o TriggerDestinationNetworkConfigOutput) NetworkAttachment() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerDestinationNetworkConfig) string { return v.NetworkAttachment }).(pulumi.StringOutput)
 }
@@ -898,6 +924,8 @@ func (o TriggerDestinationNetworkConfigPtrOutput) Elem() TriggerDestinationNetwo
 }
 
 // Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+//
+// ***
 func (o TriggerDestinationNetworkConfigPtrOutput) NetworkAttachment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerDestinationNetworkConfig) *string {
 		if v == nil {
@@ -913,8 +941,6 @@ type TriggerMatchingCriteria struct {
 	// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
 	Operator *string `pulumi:"operator"`
 	// Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
-	//
-	// ***
 	Value string `pulumi:"value"`
 }
 
@@ -935,8 +961,6 @@ type TriggerMatchingCriteriaArgs struct {
 	// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
-	//
-	// ***
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1002,8 +1026,6 @@ func (o TriggerMatchingCriteriaOutput) Operator() pulumi.StringPtrOutput {
 }
 
 // Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
-//
-// ***
 func (o TriggerMatchingCriteriaOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerMatchingCriteria) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1030,6 +1052,7 @@ func (o TriggerMatchingCriteriaArrayOutput) Index(i pulumi.IntInput) TriggerMatc
 
 type TriggerTransport struct {
 	// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+	// Structure is documented below.
 	Pubsub *TriggerTransportPubsub `pulumi:"pubsub"`
 }
 
@@ -1046,6 +1069,7 @@ type TriggerTransportInput interface {
 
 type TriggerTransportArgs struct {
 	// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+	// Structure is documented below.
 	Pubsub TriggerTransportPubsubPtrInput `pulumi:"pubsub"`
 }
 
@@ -1127,6 +1151,7 @@ func (o TriggerTransportOutput) ToTriggerTransportPtrOutputWithContext(ctx conte
 }
 
 // The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+// Structure is documented below.
 func (o TriggerTransportOutput) Pubsub() TriggerTransportPubsubPtrOutput {
 	return o.ApplyT(func(v TriggerTransport) *TriggerTransportPubsub { return v.Pubsub }).(TriggerTransportPubsubPtrOutput)
 }
@@ -1156,6 +1181,7 @@ func (o TriggerTransportPtrOutput) Elem() TriggerTransportOutput {
 }
 
 // The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+// Structure is documented below.
 func (o TriggerTransportPtrOutput) Pubsub() TriggerTransportPubsubPtrOutput {
 	return o.ApplyT(func(v *TriggerTransport) *TriggerTransportPubsub {
 		if v == nil {
@@ -1166,6 +1192,7 @@ func (o TriggerTransportPtrOutput) Pubsub() TriggerTransportPubsubPtrOutput {
 }
 
 type TriggerTransportPubsub struct {
+	// (Output)
 	// Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
 	Subscription *string `pulumi:"subscription"`
 	// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}. You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
@@ -1184,6 +1211,7 @@ type TriggerTransportPubsubInput interface {
 }
 
 type TriggerTransportPubsubArgs struct {
+	// (Output)
 	// Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
 	Subscription pulumi.StringPtrInput `pulumi:"subscription"`
 	// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}. You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
@@ -1267,6 +1295,7 @@ func (o TriggerTransportPubsubOutput) ToTriggerTransportPubsubPtrOutputWithConte
 	}).(TriggerTransportPubsubPtrOutput)
 }
 
+// (Output)
 // Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
 func (o TriggerTransportPubsubOutput) Subscription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerTransportPubsub) *string { return v.Subscription }).(pulumi.StringPtrOutput)
@@ -1301,6 +1330,7 @@ func (o TriggerTransportPubsubPtrOutput) Elem() TriggerTransportPubsubOutput {
 	}).(TriggerTransportPubsubOutput)
 }
 
+// (Output)
 // Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
 func (o TriggerTransportPubsubPtrOutput) Subscription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerTransportPubsub) *string {

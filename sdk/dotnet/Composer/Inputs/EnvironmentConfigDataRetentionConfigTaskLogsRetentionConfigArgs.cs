@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Composer.Inputs
     public sealed class EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+        /// Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer but not in composer-3*
         /// </summary>
         [Input("storageMode")]
         public Input<string>? StorageMode { get; set; }

@@ -8007,7 +8007,7 @@ if not MYPY:
         """
         private_endpoint_enforcement_enabled: NotRequired[pulumi.Input[bool]]
         """
-        Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+        Whether authorized networks is enforced on the private endpoint or not.
         """
 elif False:
     ClusterMasterAuthorizedNetworksConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -8023,7 +8023,7 @@ class ClusterMasterAuthorizedNetworksConfigArgs:
                Kubernetes cluster master through HTTPS.
         :param pulumi.Input[bool] gcp_public_cidrs_access_enabled: Whether Kubernetes master is
                accessible via Google Compute Engine Public IPs.
-        :param pulumi.Input[bool] private_endpoint_enforcement_enabled: Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+        :param pulumi.Input[bool] private_endpoint_enforcement_enabled: Whether authorized networks is enforced on the private endpoint or not.
         """
         if cidr_blocks is not None:
             pulumi.set(__self__, "cidr_blocks", cidr_blocks)
@@ -8062,7 +8062,7 @@ class ClusterMasterAuthorizedNetworksConfigArgs:
     @pulumi.getter(name="privateEndpointEnforcementEnabled")
     def private_endpoint_enforcement_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+        Whether authorized networks is enforced on the private endpoint or not.
         """
         return pulumi.get(self, "private_endpoint_enforcement_enabled")
 
@@ -10190,6 +10190,22 @@ class ClusterNodeConfigHostMaintenancePolicyArgs:
 
 if not MYPY:
     class ClusterNodeConfigKubeletConfigArgsDict(TypedDict):
+        allowed_unsafe_sysctls: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods. The allowed sysctl groups are `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, and `net.*`.
+        """
+        container_log_max_files: NotRequired[pulumi.Input[int]]
+        """
+        Defines the maximum number of container log files that can be present for a container. The integer must be between 2 and 10, inclusive.
+        """
+        container_log_max_size: NotRequired[pulumi.Input[str]]
+        """
+        Defines the maximum size of the
+        container log file before it is rotated. Specified as a positive number and a
+        unit suffix, such as `"100Ki"`, `"10Mi"`. Valid units are "Ki", "Mi", "Gi".
+        The value must be between `"10Mi"` and `"500Mi"`, inclusive. And the total container log size
+        (`container_log_max_size` * `container_log_max_files`) cannot exceed 1% of the total storage of the node.
+        """
         cpu_cfs_quota: NotRequired[pulumi.Input[bool]]
         """
         If true, enables CPU CFS quota enforcement for
@@ -10210,6 +10226,22 @@ if not MYPY:
         Prior to the 6.4.0 this field was marked as required. The workaround for the required field
         is setting the empty string `""`, which will function identically to not setting this field.
         """
+        image_gc_high_threshold_percent: NotRequired[pulumi.Input[int]]
+        """
+        Defines the percent of disk usage after which image garbage collection is always run. The integer must be between 10 and 85, inclusive.
+        """
+        image_gc_low_threshold_percent: NotRequired[pulumi.Input[int]]
+        """
+        Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to. The integer must be between 10 and 85, inclusive.
+        """
+        image_maximum_gc_age: NotRequired[pulumi.Input[str]]
+        """
+        Defines the maximum age an image can be unused before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`, and `"2h45m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
+        """
+        image_minimum_gc_age: NotRequired[pulumi.Input[str]]
+        """
+        Defines the minimum age for an unused image before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`. The value cannot be greater than "2m".
+        """
         insecure_kubelet_readonly_port_enabled: NotRequired[pulumi.Input[str]]
         """
         Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
@@ -10224,12 +10256,26 @@ elif False:
 @pulumi.input_type
 class ClusterNodeConfigKubeletConfigArgs:
     def __init__(__self__, *,
+                 allowed_unsafe_sysctls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 container_log_max_files: Optional[pulumi.Input[int]] = None,
+                 container_log_max_size: Optional[pulumi.Input[str]] = None,
                  cpu_cfs_quota: Optional[pulumi.Input[bool]] = None,
                  cpu_cfs_quota_period: Optional[pulumi.Input[str]] = None,
                  cpu_manager_policy: Optional[pulumi.Input[str]] = None,
+                 image_gc_high_threshold_percent: Optional[pulumi.Input[int]] = None,
+                 image_gc_low_threshold_percent: Optional[pulumi.Input[int]] = None,
+                 image_maximum_gc_age: Optional[pulumi.Input[str]] = None,
+                 image_minimum_gc_age: Optional[pulumi.Input[str]] = None,
                  insecure_kubelet_readonly_port_enabled: Optional[pulumi.Input[str]] = None,
                  pod_pids_limit: Optional[pulumi.Input[int]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_unsafe_sysctls: Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods. The allowed sysctl groups are `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, and `net.*`.
+        :param pulumi.Input[int] container_log_max_files: Defines the maximum number of container log files that can be present for a container. The integer must be between 2 and 10, inclusive.
+        :param pulumi.Input[str] container_log_max_size: Defines the maximum size of the
+               container log file before it is rotated. Specified as a positive number and a
+               unit suffix, such as `"100Ki"`, `"10Mi"`. Valid units are "Ki", "Mi", "Gi".
+               The value must be between `"10Mi"` and `"500Mi"`, inclusive. And the total container log size
+               (`container_log_max_size` * `container_log_max_files`) cannot exceed 1% of the total storage of the node.
         :param pulumi.Input[bool] cpu_cfs_quota: If true, enables CPU CFS quota enforcement for
                containers that specify CPU limits.
         :param pulumi.Input[str] cpu_cfs_quota_period: The CPU CFS quota period value. Specified
@@ -10241,19 +10287,77 @@ class ClusterNodeConfigKubeletConfigArgs:
                One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
                Prior to the 6.4.0 this field was marked as required. The workaround for the required field
                is setting the empty string `""`, which will function identically to not setting this field.
+        :param pulumi.Input[int] image_gc_high_threshold_percent: Defines the percent of disk usage after which image garbage collection is always run. The integer must be between 10 and 85, inclusive.
+        :param pulumi.Input[int] image_gc_low_threshold_percent: Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to. The integer must be between 10 and 85, inclusive.
+        :param pulumi.Input[str] image_maximum_gc_age: Defines the maximum age an image can be unused before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`, and `"2h45m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
+        :param pulumi.Input[str] image_minimum_gc_age: Defines the minimum age for an unused image before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`. The value cannot be greater than "2m".
         :param pulumi.Input[str] insecure_kubelet_readonly_port_enabled: Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
         :param pulumi.Input[int] pod_pids_limit: Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
         """
+        if allowed_unsafe_sysctls is not None:
+            pulumi.set(__self__, "allowed_unsafe_sysctls", allowed_unsafe_sysctls)
+        if container_log_max_files is not None:
+            pulumi.set(__self__, "container_log_max_files", container_log_max_files)
+        if container_log_max_size is not None:
+            pulumi.set(__self__, "container_log_max_size", container_log_max_size)
         if cpu_cfs_quota is not None:
             pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
         if cpu_cfs_quota_period is not None:
             pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
         if cpu_manager_policy is not None:
             pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+        if image_gc_high_threshold_percent is not None:
+            pulumi.set(__self__, "image_gc_high_threshold_percent", image_gc_high_threshold_percent)
+        if image_gc_low_threshold_percent is not None:
+            pulumi.set(__self__, "image_gc_low_threshold_percent", image_gc_low_threshold_percent)
+        if image_maximum_gc_age is not None:
+            pulumi.set(__self__, "image_maximum_gc_age", image_maximum_gc_age)
+        if image_minimum_gc_age is not None:
+            pulumi.set(__self__, "image_minimum_gc_age", image_minimum_gc_age)
         if insecure_kubelet_readonly_port_enabled is not None:
             pulumi.set(__self__, "insecure_kubelet_readonly_port_enabled", insecure_kubelet_readonly_port_enabled)
         if pod_pids_limit is not None:
             pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
+
+    @property
+    @pulumi.getter(name="allowedUnsafeSysctls")
+    def allowed_unsafe_sysctls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods. The allowed sysctl groups are `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, and `net.*`.
+        """
+        return pulumi.get(self, "allowed_unsafe_sysctls")
+
+    @allowed_unsafe_sysctls.setter
+    def allowed_unsafe_sysctls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_unsafe_sysctls", value)
+
+    @property
+    @pulumi.getter(name="containerLogMaxFiles")
+    def container_log_max_files(self) -> Optional[pulumi.Input[int]]:
+        """
+        Defines the maximum number of container log files that can be present for a container. The integer must be between 2 and 10, inclusive.
+        """
+        return pulumi.get(self, "container_log_max_files")
+
+    @container_log_max_files.setter
+    def container_log_max_files(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "container_log_max_files", value)
+
+    @property
+    @pulumi.getter(name="containerLogMaxSize")
+    def container_log_max_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines the maximum size of the
+        container log file before it is rotated. Specified as a positive number and a
+        unit suffix, such as `"100Ki"`, `"10Mi"`. Valid units are "Ki", "Mi", "Gi".
+        The value must be between `"10Mi"` and `"500Mi"`, inclusive. And the total container log size
+        (`container_log_max_size` * `container_log_max_files`) cannot exceed 1% of the total storage of the node.
+        """
+        return pulumi.get(self, "container_log_max_size")
+
+    @container_log_max_size.setter
+    def container_log_max_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "container_log_max_size", value)
 
     @property
     @pulumi.getter(name="cpuCfsQuota")
@@ -10298,6 +10402,54 @@ class ClusterNodeConfigKubeletConfigArgs:
     @cpu_manager_policy.setter
     def cpu_manager_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cpu_manager_policy", value)
+
+    @property
+    @pulumi.getter(name="imageGcHighThresholdPercent")
+    def image_gc_high_threshold_percent(self) -> Optional[pulumi.Input[int]]:
+        """
+        Defines the percent of disk usage after which image garbage collection is always run. The integer must be between 10 and 85, inclusive.
+        """
+        return pulumi.get(self, "image_gc_high_threshold_percent")
+
+    @image_gc_high_threshold_percent.setter
+    def image_gc_high_threshold_percent(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "image_gc_high_threshold_percent", value)
+
+    @property
+    @pulumi.getter(name="imageGcLowThresholdPercent")
+    def image_gc_low_threshold_percent(self) -> Optional[pulumi.Input[int]]:
+        """
+        Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to. The integer must be between 10 and 85, inclusive.
+        """
+        return pulumi.get(self, "image_gc_low_threshold_percent")
+
+    @image_gc_low_threshold_percent.setter
+    def image_gc_low_threshold_percent(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "image_gc_low_threshold_percent", value)
+
+    @property
+    @pulumi.getter(name="imageMaximumGcAge")
+    def image_maximum_gc_age(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines the maximum age an image can be unused before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`, and `"2h45m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
+        """
+        return pulumi.get(self, "image_maximum_gc_age")
+
+    @image_maximum_gc_age.setter
+    def image_maximum_gc_age(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_maximum_gc_age", value)
+
+    @property
+    @pulumi.getter(name="imageMinimumGcAge")
+    def image_minimum_gc_age(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines the minimum age for an unused image before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`. The value cannot be greater than "2m".
+        """
+        return pulumi.get(self, "image_minimum_gc_age")
+
+    @image_minimum_gc_age.setter
+    def image_minimum_gc_age(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_minimum_gc_age", value)
 
     @property
     @pulumi.getter(name="insecureKubeletReadonlyPortEnabled")
@@ -14200,6 +14352,22 @@ class ClusterNodePoolNodeConfigHostMaintenancePolicyArgs:
 
 if not MYPY:
     class ClusterNodePoolNodeConfigKubeletConfigArgsDict(TypedDict):
+        allowed_unsafe_sysctls: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods. The allowed sysctl groups are `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, and `net.*`.
+        """
+        container_log_max_files: NotRequired[pulumi.Input[int]]
+        """
+        Defines the maximum number of container log files that can be present for a container. The integer must be between 2 and 10, inclusive.
+        """
+        container_log_max_size: NotRequired[pulumi.Input[str]]
+        """
+        Defines the maximum size of the
+        container log file before it is rotated. Specified as a positive number and a
+        unit suffix, such as `"100Ki"`, `"10Mi"`. Valid units are "Ki", "Mi", "Gi".
+        The value must be between `"10Mi"` and `"500Mi"`, inclusive. And the total container log size
+        (`container_log_max_size` * `container_log_max_files`) cannot exceed 1% of the total storage of the node.
+        """
         cpu_cfs_quota: NotRequired[pulumi.Input[bool]]
         """
         If true, enables CPU CFS quota enforcement for
@@ -14220,6 +14388,22 @@ if not MYPY:
         Prior to the 6.4.0 this field was marked as required. The workaround for the required field
         is setting the empty string `""`, which will function identically to not setting this field.
         """
+        image_gc_high_threshold_percent: NotRequired[pulumi.Input[int]]
+        """
+        Defines the percent of disk usage after which image garbage collection is always run. The integer must be between 10 and 85, inclusive.
+        """
+        image_gc_low_threshold_percent: NotRequired[pulumi.Input[int]]
+        """
+        Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to. The integer must be between 10 and 85, inclusive.
+        """
+        image_maximum_gc_age: NotRequired[pulumi.Input[str]]
+        """
+        Defines the maximum age an image can be unused before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`, and `"2h45m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
+        """
+        image_minimum_gc_age: NotRequired[pulumi.Input[str]]
+        """
+        Defines the minimum age for an unused image before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`. The value cannot be greater than "2m".
+        """
         insecure_kubelet_readonly_port_enabled: NotRequired[pulumi.Input[str]]
         """
         Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
@@ -14234,12 +14418,26 @@ elif False:
 @pulumi.input_type
 class ClusterNodePoolNodeConfigKubeletConfigArgs:
     def __init__(__self__, *,
+                 allowed_unsafe_sysctls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 container_log_max_files: Optional[pulumi.Input[int]] = None,
+                 container_log_max_size: Optional[pulumi.Input[str]] = None,
                  cpu_cfs_quota: Optional[pulumi.Input[bool]] = None,
                  cpu_cfs_quota_period: Optional[pulumi.Input[str]] = None,
                  cpu_manager_policy: Optional[pulumi.Input[str]] = None,
+                 image_gc_high_threshold_percent: Optional[pulumi.Input[int]] = None,
+                 image_gc_low_threshold_percent: Optional[pulumi.Input[int]] = None,
+                 image_maximum_gc_age: Optional[pulumi.Input[str]] = None,
+                 image_minimum_gc_age: Optional[pulumi.Input[str]] = None,
                  insecure_kubelet_readonly_port_enabled: Optional[pulumi.Input[str]] = None,
                  pod_pids_limit: Optional[pulumi.Input[int]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_unsafe_sysctls: Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods. The allowed sysctl groups are `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, and `net.*`.
+        :param pulumi.Input[int] container_log_max_files: Defines the maximum number of container log files that can be present for a container. The integer must be between 2 and 10, inclusive.
+        :param pulumi.Input[str] container_log_max_size: Defines the maximum size of the
+               container log file before it is rotated. Specified as a positive number and a
+               unit suffix, such as `"100Ki"`, `"10Mi"`. Valid units are "Ki", "Mi", "Gi".
+               The value must be between `"10Mi"` and `"500Mi"`, inclusive. And the total container log size
+               (`container_log_max_size` * `container_log_max_files`) cannot exceed 1% of the total storage of the node.
         :param pulumi.Input[bool] cpu_cfs_quota: If true, enables CPU CFS quota enforcement for
                containers that specify CPU limits.
         :param pulumi.Input[str] cpu_cfs_quota_period: The CPU CFS quota period value. Specified
@@ -14251,19 +14449,77 @@ class ClusterNodePoolNodeConfigKubeletConfigArgs:
                One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
                Prior to the 6.4.0 this field was marked as required. The workaround for the required field
                is setting the empty string `""`, which will function identically to not setting this field.
+        :param pulumi.Input[int] image_gc_high_threshold_percent: Defines the percent of disk usage after which image garbage collection is always run. The integer must be between 10 and 85, inclusive.
+        :param pulumi.Input[int] image_gc_low_threshold_percent: Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to. The integer must be between 10 and 85, inclusive.
+        :param pulumi.Input[str] image_maximum_gc_age: Defines the maximum age an image can be unused before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`, and `"2h45m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
+        :param pulumi.Input[str] image_minimum_gc_age: Defines the minimum age for an unused image before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`. The value cannot be greater than "2m".
         :param pulumi.Input[str] insecure_kubelet_readonly_port_enabled: Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
         :param pulumi.Input[int] pod_pids_limit: Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
         """
+        if allowed_unsafe_sysctls is not None:
+            pulumi.set(__self__, "allowed_unsafe_sysctls", allowed_unsafe_sysctls)
+        if container_log_max_files is not None:
+            pulumi.set(__self__, "container_log_max_files", container_log_max_files)
+        if container_log_max_size is not None:
+            pulumi.set(__self__, "container_log_max_size", container_log_max_size)
         if cpu_cfs_quota is not None:
             pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
         if cpu_cfs_quota_period is not None:
             pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
         if cpu_manager_policy is not None:
             pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+        if image_gc_high_threshold_percent is not None:
+            pulumi.set(__self__, "image_gc_high_threshold_percent", image_gc_high_threshold_percent)
+        if image_gc_low_threshold_percent is not None:
+            pulumi.set(__self__, "image_gc_low_threshold_percent", image_gc_low_threshold_percent)
+        if image_maximum_gc_age is not None:
+            pulumi.set(__self__, "image_maximum_gc_age", image_maximum_gc_age)
+        if image_minimum_gc_age is not None:
+            pulumi.set(__self__, "image_minimum_gc_age", image_minimum_gc_age)
         if insecure_kubelet_readonly_port_enabled is not None:
             pulumi.set(__self__, "insecure_kubelet_readonly_port_enabled", insecure_kubelet_readonly_port_enabled)
         if pod_pids_limit is not None:
             pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
+
+    @property
+    @pulumi.getter(name="allowedUnsafeSysctls")
+    def allowed_unsafe_sysctls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods. The allowed sysctl groups are `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, and `net.*`.
+        """
+        return pulumi.get(self, "allowed_unsafe_sysctls")
+
+    @allowed_unsafe_sysctls.setter
+    def allowed_unsafe_sysctls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_unsafe_sysctls", value)
+
+    @property
+    @pulumi.getter(name="containerLogMaxFiles")
+    def container_log_max_files(self) -> Optional[pulumi.Input[int]]:
+        """
+        Defines the maximum number of container log files that can be present for a container. The integer must be between 2 and 10, inclusive.
+        """
+        return pulumi.get(self, "container_log_max_files")
+
+    @container_log_max_files.setter
+    def container_log_max_files(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "container_log_max_files", value)
+
+    @property
+    @pulumi.getter(name="containerLogMaxSize")
+    def container_log_max_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines the maximum size of the
+        container log file before it is rotated. Specified as a positive number and a
+        unit suffix, such as `"100Ki"`, `"10Mi"`. Valid units are "Ki", "Mi", "Gi".
+        The value must be between `"10Mi"` and `"500Mi"`, inclusive. And the total container log size
+        (`container_log_max_size` * `container_log_max_files`) cannot exceed 1% of the total storage of the node.
+        """
+        return pulumi.get(self, "container_log_max_size")
+
+    @container_log_max_size.setter
+    def container_log_max_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "container_log_max_size", value)
 
     @property
     @pulumi.getter(name="cpuCfsQuota")
@@ -14308,6 +14564,54 @@ class ClusterNodePoolNodeConfigKubeletConfigArgs:
     @cpu_manager_policy.setter
     def cpu_manager_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cpu_manager_policy", value)
+
+    @property
+    @pulumi.getter(name="imageGcHighThresholdPercent")
+    def image_gc_high_threshold_percent(self) -> Optional[pulumi.Input[int]]:
+        """
+        Defines the percent of disk usage after which image garbage collection is always run. The integer must be between 10 and 85, inclusive.
+        """
+        return pulumi.get(self, "image_gc_high_threshold_percent")
+
+    @image_gc_high_threshold_percent.setter
+    def image_gc_high_threshold_percent(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "image_gc_high_threshold_percent", value)
+
+    @property
+    @pulumi.getter(name="imageGcLowThresholdPercent")
+    def image_gc_low_threshold_percent(self) -> Optional[pulumi.Input[int]]:
+        """
+        Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to. The integer must be between 10 and 85, inclusive.
+        """
+        return pulumi.get(self, "image_gc_low_threshold_percent")
+
+    @image_gc_low_threshold_percent.setter
+    def image_gc_low_threshold_percent(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "image_gc_low_threshold_percent", value)
+
+    @property
+    @pulumi.getter(name="imageMaximumGcAge")
+    def image_maximum_gc_age(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines the maximum age an image can be unused before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`, and `"2h45m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
+        """
+        return pulumi.get(self, "image_maximum_gc_age")
+
+    @image_maximum_gc_age.setter
+    def image_maximum_gc_age(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_maximum_gc_age", value)
+
+    @property
+    @pulumi.getter(name="imageMinimumGcAge")
+    def image_minimum_gc_age(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines the minimum age for an unused image before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`. The value cannot be greater than "2m".
+        """
+        return pulumi.get(self, "image_minimum_gc_age")
+
+    @image_minimum_gc_age.setter
+    def image_minimum_gc_age(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_minimum_gc_age", value)
 
     @property
     @pulumi.getter(name="insecureKubeletReadonlyPortEnabled")
@@ -18558,6 +18862,18 @@ class NodePoolNodeConfigHostMaintenancePolicyArgs:
 
 if not MYPY:
     class NodePoolNodeConfigKubeletConfigArgsDict(TypedDict):
+        allowed_unsafe_sysctls: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.
+        """
+        container_log_max_files: NotRequired[pulumi.Input[int]]
+        """
+        Defines the maximum number of container log files that can be present for a container.
+        """
+        container_log_max_size: NotRequired[pulumi.Input[str]]
+        """
+        Defines the maximum size of the container log file before it is rotated.
+        """
         cpu_cfs_quota: NotRequired[pulumi.Input[bool]]
         """
         Enable CPU CFS quota enforcement for containers that specify CPU limits.
@@ -18569,6 +18885,22 @@ if not MYPY:
         cpu_manager_policy: NotRequired[pulumi.Input[str]]
         """
         Control the CPU management policy on the node.
+        """
+        image_gc_high_threshold_percent: NotRequired[pulumi.Input[int]]
+        """
+        Defines the percent of disk usage after which image garbage collection is always run.
+        """
+        image_gc_low_threshold_percent: NotRequired[pulumi.Input[int]]
+        """
+        Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.
+        """
+        image_maximum_gc_age: NotRequired[pulumi.Input[str]]
+        """
+        Defines the maximum age an image can be unused before it is garbage collected.
+        """
+        image_minimum_gc_age: NotRequired[pulumi.Input[str]]
+        """
+        Defines the minimum age for an unused image before it is garbage collected.
         """
         insecure_kubelet_readonly_port_enabled: NotRequired[pulumi.Input[str]]
         """
@@ -18584,28 +18916,92 @@ elif False:
 @pulumi.input_type
 class NodePoolNodeConfigKubeletConfigArgs:
     def __init__(__self__, *,
+                 allowed_unsafe_sysctls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 container_log_max_files: Optional[pulumi.Input[int]] = None,
+                 container_log_max_size: Optional[pulumi.Input[str]] = None,
                  cpu_cfs_quota: Optional[pulumi.Input[bool]] = None,
                  cpu_cfs_quota_period: Optional[pulumi.Input[str]] = None,
                  cpu_manager_policy: Optional[pulumi.Input[str]] = None,
+                 image_gc_high_threshold_percent: Optional[pulumi.Input[int]] = None,
+                 image_gc_low_threshold_percent: Optional[pulumi.Input[int]] = None,
+                 image_maximum_gc_age: Optional[pulumi.Input[str]] = None,
+                 image_minimum_gc_age: Optional[pulumi.Input[str]] = None,
                  insecure_kubelet_readonly_port_enabled: Optional[pulumi.Input[str]] = None,
                  pod_pids_limit: Optional[pulumi.Input[int]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_unsafe_sysctls: Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.
+        :param pulumi.Input[int] container_log_max_files: Defines the maximum number of container log files that can be present for a container.
+        :param pulumi.Input[str] container_log_max_size: Defines the maximum size of the container log file before it is rotated.
         :param pulumi.Input[bool] cpu_cfs_quota: Enable CPU CFS quota enforcement for containers that specify CPU limits.
         :param pulumi.Input[str] cpu_cfs_quota_period: Set the CPU CFS quota period value 'cpu.cfs_period_us'.
         :param pulumi.Input[str] cpu_manager_policy: Control the CPU management policy on the node.
+        :param pulumi.Input[int] image_gc_high_threshold_percent: Defines the percent of disk usage after which image garbage collection is always run.
+        :param pulumi.Input[int] image_gc_low_threshold_percent: Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.
+        :param pulumi.Input[str] image_maximum_gc_age: Defines the maximum age an image can be unused before it is garbage collected.
+        :param pulumi.Input[str] image_minimum_gc_age: Defines the minimum age for an unused image before it is garbage collected.
         :param pulumi.Input[str] insecure_kubelet_readonly_port_enabled: Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
         :param pulumi.Input[int] pod_pids_limit: Controls the maximum number of processes allowed to run in a pod.
         """
+        if allowed_unsafe_sysctls is not None:
+            pulumi.set(__self__, "allowed_unsafe_sysctls", allowed_unsafe_sysctls)
+        if container_log_max_files is not None:
+            pulumi.set(__self__, "container_log_max_files", container_log_max_files)
+        if container_log_max_size is not None:
+            pulumi.set(__self__, "container_log_max_size", container_log_max_size)
         if cpu_cfs_quota is not None:
             pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
         if cpu_cfs_quota_period is not None:
             pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
         if cpu_manager_policy is not None:
             pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+        if image_gc_high_threshold_percent is not None:
+            pulumi.set(__self__, "image_gc_high_threshold_percent", image_gc_high_threshold_percent)
+        if image_gc_low_threshold_percent is not None:
+            pulumi.set(__self__, "image_gc_low_threshold_percent", image_gc_low_threshold_percent)
+        if image_maximum_gc_age is not None:
+            pulumi.set(__self__, "image_maximum_gc_age", image_maximum_gc_age)
+        if image_minimum_gc_age is not None:
+            pulumi.set(__self__, "image_minimum_gc_age", image_minimum_gc_age)
         if insecure_kubelet_readonly_port_enabled is not None:
             pulumi.set(__self__, "insecure_kubelet_readonly_port_enabled", insecure_kubelet_readonly_port_enabled)
         if pod_pids_limit is not None:
             pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
+
+    @property
+    @pulumi.getter(name="allowedUnsafeSysctls")
+    def allowed_unsafe_sysctls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.
+        """
+        return pulumi.get(self, "allowed_unsafe_sysctls")
+
+    @allowed_unsafe_sysctls.setter
+    def allowed_unsafe_sysctls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_unsafe_sysctls", value)
+
+    @property
+    @pulumi.getter(name="containerLogMaxFiles")
+    def container_log_max_files(self) -> Optional[pulumi.Input[int]]:
+        """
+        Defines the maximum number of container log files that can be present for a container.
+        """
+        return pulumi.get(self, "container_log_max_files")
+
+    @container_log_max_files.setter
+    def container_log_max_files(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "container_log_max_files", value)
+
+    @property
+    @pulumi.getter(name="containerLogMaxSize")
+    def container_log_max_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines the maximum size of the container log file before it is rotated.
+        """
+        return pulumi.get(self, "container_log_max_size")
+
+    @container_log_max_size.setter
+    def container_log_max_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "container_log_max_size", value)
 
     @property
     @pulumi.getter(name="cpuCfsQuota")
@@ -18642,6 +19038,54 @@ class NodePoolNodeConfigKubeletConfigArgs:
     @cpu_manager_policy.setter
     def cpu_manager_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cpu_manager_policy", value)
+
+    @property
+    @pulumi.getter(name="imageGcHighThresholdPercent")
+    def image_gc_high_threshold_percent(self) -> Optional[pulumi.Input[int]]:
+        """
+        Defines the percent of disk usage after which image garbage collection is always run.
+        """
+        return pulumi.get(self, "image_gc_high_threshold_percent")
+
+    @image_gc_high_threshold_percent.setter
+    def image_gc_high_threshold_percent(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "image_gc_high_threshold_percent", value)
+
+    @property
+    @pulumi.getter(name="imageGcLowThresholdPercent")
+    def image_gc_low_threshold_percent(self) -> Optional[pulumi.Input[int]]:
+        """
+        Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.
+        """
+        return pulumi.get(self, "image_gc_low_threshold_percent")
+
+    @image_gc_low_threshold_percent.setter
+    def image_gc_low_threshold_percent(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "image_gc_low_threshold_percent", value)
+
+    @property
+    @pulumi.getter(name="imageMaximumGcAge")
+    def image_maximum_gc_age(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines the maximum age an image can be unused before it is garbage collected.
+        """
+        return pulumi.get(self, "image_maximum_gc_age")
+
+    @image_maximum_gc_age.setter
+    def image_maximum_gc_age(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_maximum_gc_age", value)
+
+    @property
+    @pulumi.getter(name="imageMinimumGcAge")
+    def image_minimum_gc_age(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines the minimum age for an unused image before it is garbage collected.
+        """
+        return pulumi.get(self, "image_minimum_gc_age")
+
+    @image_minimum_gc_age.setter
+    def image_minimum_gc_age(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_minimum_gc_age", value)
 
     @property
     @pulumi.getter(name="insecureKubeletReadonlyPortEnabled")

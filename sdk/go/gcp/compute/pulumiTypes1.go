@@ -13,6 +13,1825 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type RouterNatRuleAction struct {
+	// A list of URLs of the IP resources used for this NAT rule.
+	// These IP addresses must be valid static external IP addresses assigned to the project.
+	// This field is used for public NAT.
+	SourceNatActiveIps []string `pulumi:"sourceNatActiveIps"`
+	// A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+	// These subnetworks must have purpose set to PRIVATE_NAT.
+	// This field is used for private NAT.
+	SourceNatActiveRanges []string `pulumi:"sourceNatActiveRanges"`
+	// A list of URLs of the IP resources to be drained.
+	// These IPs must be valid static external IPs that have been assigned to the NAT.
+	// These IPs should be used for updating/patching a NAT rule only.
+	// This field is used for public NAT.
+	SourceNatDrainIps []string `pulumi:"sourceNatDrainIps"`
+	// A list of URLs of subnetworks representing source ranges to be drained.
+	// This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
+	// This field is used for private NAT.
+	SourceNatDrainRanges []string `pulumi:"sourceNatDrainRanges"`
+}
+
+// RouterNatRuleActionInput is an input type that accepts RouterNatRuleActionArgs and RouterNatRuleActionOutput values.
+// You can construct a concrete instance of `RouterNatRuleActionInput` via:
+//
+//	RouterNatRuleActionArgs{...}
+type RouterNatRuleActionInput interface {
+	pulumi.Input
+
+	ToRouterNatRuleActionOutput() RouterNatRuleActionOutput
+	ToRouterNatRuleActionOutputWithContext(context.Context) RouterNatRuleActionOutput
+}
+
+type RouterNatRuleActionArgs struct {
+	// A list of URLs of the IP resources used for this NAT rule.
+	// These IP addresses must be valid static external IP addresses assigned to the project.
+	// This field is used for public NAT.
+	SourceNatActiveIps pulumi.StringArrayInput `pulumi:"sourceNatActiveIps"`
+	// A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+	// These subnetworks must have purpose set to PRIVATE_NAT.
+	// This field is used for private NAT.
+	SourceNatActiveRanges pulumi.StringArrayInput `pulumi:"sourceNatActiveRanges"`
+	// A list of URLs of the IP resources to be drained.
+	// These IPs must be valid static external IPs that have been assigned to the NAT.
+	// These IPs should be used for updating/patching a NAT rule only.
+	// This field is used for public NAT.
+	SourceNatDrainIps pulumi.StringArrayInput `pulumi:"sourceNatDrainIps"`
+	// A list of URLs of subnetworks representing source ranges to be drained.
+	// This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
+	// This field is used for private NAT.
+	SourceNatDrainRanges pulumi.StringArrayInput `pulumi:"sourceNatDrainRanges"`
+}
+
+func (RouterNatRuleActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterNatRuleAction)(nil)).Elem()
+}
+
+func (i RouterNatRuleActionArgs) ToRouterNatRuleActionOutput() RouterNatRuleActionOutput {
+	return i.ToRouterNatRuleActionOutputWithContext(context.Background())
+}
+
+func (i RouterNatRuleActionArgs) ToRouterNatRuleActionOutputWithContext(ctx context.Context) RouterNatRuleActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterNatRuleActionOutput)
+}
+
+func (i RouterNatRuleActionArgs) ToRouterNatRuleActionPtrOutput() RouterNatRuleActionPtrOutput {
+	return i.ToRouterNatRuleActionPtrOutputWithContext(context.Background())
+}
+
+func (i RouterNatRuleActionArgs) ToRouterNatRuleActionPtrOutputWithContext(ctx context.Context) RouterNatRuleActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterNatRuleActionOutput).ToRouterNatRuleActionPtrOutputWithContext(ctx)
+}
+
+// RouterNatRuleActionPtrInput is an input type that accepts RouterNatRuleActionArgs, RouterNatRuleActionPtr and RouterNatRuleActionPtrOutput values.
+// You can construct a concrete instance of `RouterNatRuleActionPtrInput` via:
+//
+//	        RouterNatRuleActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type RouterNatRuleActionPtrInput interface {
+	pulumi.Input
+
+	ToRouterNatRuleActionPtrOutput() RouterNatRuleActionPtrOutput
+	ToRouterNatRuleActionPtrOutputWithContext(context.Context) RouterNatRuleActionPtrOutput
+}
+
+type routerNatRuleActionPtrType RouterNatRuleActionArgs
+
+func RouterNatRuleActionPtr(v *RouterNatRuleActionArgs) RouterNatRuleActionPtrInput {
+	return (*routerNatRuleActionPtrType)(v)
+}
+
+func (*routerNatRuleActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouterNatRuleAction)(nil)).Elem()
+}
+
+func (i *routerNatRuleActionPtrType) ToRouterNatRuleActionPtrOutput() RouterNatRuleActionPtrOutput {
+	return i.ToRouterNatRuleActionPtrOutputWithContext(context.Background())
+}
+
+func (i *routerNatRuleActionPtrType) ToRouterNatRuleActionPtrOutputWithContext(ctx context.Context) RouterNatRuleActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterNatRuleActionPtrOutput)
+}
+
+type RouterNatRuleActionOutput struct{ *pulumi.OutputState }
+
+func (RouterNatRuleActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterNatRuleAction)(nil)).Elem()
+}
+
+func (o RouterNatRuleActionOutput) ToRouterNatRuleActionOutput() RouterNatRuleActionOutput {
+	return o
+}
+
+func (o RouterNatRuleActionOutput) ToRouterNatRuleActionOutputWithContext(ctx context.Context) RouterNatRuleActionOutput {
+	return o
+}
+
+func (o RouterNatRuleActionOutput) ToRouterNatRuleActionPtrOutput() RouterNatRuleActionPtrOutput {
+	return o.ToRouterNatRuleActionPtrOutputWithContext(context.Background())
+}
+
+func (o RouterNatRuleActionOutput) ToRouterNatRuleActionPtrOutputWithContext(ctx context.Context) RouterNatRuleActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouterNatRuleAction) *RouterNatRuleAction {
+		return &v
+	}).(RouterNatRuleActionPtrOutput)
+}
+
+// A list of URLs of the IP resources used for this NAT rule.
+// These IP addresses must be valid static external IP addresses assigned to the project.
+// This field is used for public NAT.
+func (o RouterNatRuleActionOutput) SourceNatActiveIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouterNatRuleAction) []string { return v.SourceNatActiveIps }).(pulumi.StringArrayOutput)
+}
+
+// A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+// These subnetworks must have purpose set to PRIVATE_NAT.
+// This field is used for private NAT.
+func (o RouterNatRuleActionOutput) SourceNatActiveRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouterNatRuleAction) []string { return v.SourceNatActiveRanges }).(pulumi.StringArrayOutput)
+}
+
+// A list of URLs of the IP resources to be drained.
+// These IPs must be valid static external IPs that have been assigned to the NAT.
+// These IPs should be used for updating/patching a NAT rule only.
+// This field is used for public NAT.
+func (o RouterNatRuleActionOutput) SourceNatDrainIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouterNatRuleAction) []string { return v.SourceNatDrainIps }).(pulumi.StringArrayOutput)
+}
+
+// A list of URLs of subnetworks representing source ranges to be drained.
+// This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
+// This field is used for private NAT.
+func (o RouterNatRuleActionOutput) SourceNatDrainRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouterNatRuleAction) []string { return v.SourceNatDrainRanges }).(pulumi.StringArrayOutput)
+}
+
+type RouterNatRuleActionPtrOutput struct{ *pulumi.OutputState }
+
+func (RouterNatRuleActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouterNatRuleAction)(nil)).Elem()
+}
+
+func (o RouterNatRuleActionPtrOutput) ToRouterNatRuleActionPtrOutput() RouterNatRuleActionPtrOutput {
+	return o
+}
+
+func (o RouterNatRuleActionPtrOutput) ToRouterNatRuleActionPtrOutputWithContext(ctx context.Context) RouterNatRuleActionPtrOutput {
+	return o
+}
+
+func (o RouterNatRuleActionPtrOutput) Elem() RouterNatRuleActionOutput {
+	return o.ApplyT(func(v *RouterNatRuleAction) RouterNatRuleAction {
+		if v != nil {
+			return *v
+		}
+		var ret RouterNatRuleAction
+		return ret
+	}).(RouterNatRuleActionOutput)
+}
+
+// A list of URLs of the IP resources used for this NAT rule.
+// These IP addresses must be valid static external IP addresses assigned to the project.
+// This field is used for public NAT.
+func (o RouterNatRuleActionPtrOutput) SourceNatActiveIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouterNatRuleAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceNatActiveIps
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+// These subnetworks must have purpose set to PRIVATE_NAT.
+// This field is used for private NAT.
+func (o RouterNatRuleActionPtrOutput) SourceNatActiveRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouterNatRuleAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceNatActiveRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of URLs of the IP resources to be drained.
+// These IPs must be valid static external IPs that have been assigned to the NAT.
+// These IPs should be used for updating/patching a NAT rule only.
+// This field is used for public NAT.
+func (o RouterNatRuleActionPtrOutput) SourceNatDrainIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouterNatRuleAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceNatDrainIps
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of URLs of subnetworks representing source ranges to be drained.
+// This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
+// This field is used for private NAT.
+func (o RouterNatRuleActionPtrOutput) SourceNatDrainRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouterNatRuleAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceNatDrainRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+type RouterNatSubnetwork struct {
+	// Self-link of subnetwork to NAT
+	Name string `pulumi:"name"`
+	// List of the secondary ranges of the subnetwork that are allowed
+	// to use NAT. This can be populated only if
+	// `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
+	// sourceIpRangesToNat
+	SecondaryIpRangeNames []string `pulumi:"secondaryIpRangeNames"`
+	// List of options for which source IPs in the subnetwork
+	// should have NAT enabled. Supported values include:
+	// `ALL_IP_RANGES`, `LIST_OF_SECONDARY_IP_RANGES`,
+	// `PRIMARY_IP_RANGE`.
+	SourceIpRangesToNats []string `pulumi:"sourceIpRangesToNats"`
+}
+
+// RouterNatSubnetworkInput is an input type that accepts RouterNatSubnetworkArgs and RouterNatSubnetworkOutput values.
+// You can construct a concrete instance of `RouterNatSubnetworkInput` via:
+//
+//	RouterNatSubnetworkArgs{...}
+type RouterNatSubnetworkInput interface {
+	pulumi.Input
+
+	ToRouterNatSubnetworkOutput() RouterNatSubnetworkOutput
+	ToRouterNatSubnetworkOutputWithContext(context.Context) RouterNatSubnetworkOutput
+}
+
+type RouterNatSubnetworkArgs struct {
+	// Self-link of subnetwork to NAT
+	Name pulumi.StringInput `pulumi:"name"`
+	// List of the secondary ranges of the subnetwork that are allowed
+	// to use NAT. This can be populated only if
+	// `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
+	// sourceIpRangesToNat
+	SecondaryIpRangeNames pulumi.StringArrayInput `pulumi:"secondaryIpRangeNames"`
+	// List of options for which source IPs in the subnetwork
+	// should have NAT enabled. Supported values include:
+	// `ALL_IP_RANGES`, `LIST_OF_SECONDARY_IP_RANGES`,
+	// `PRIMARY_IP_RANGE`.
+	SourceIpRangesToNats pulumi.StringArrayInput `pulumi:"sourceIpRangesToNats"`
+}
+
+func (RouterNatSubnetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterNatSubnetwork)(nil)).Elem()
+}
+
+func (i RouterNatSubnetworkArgs) ToRouterNatSubnetworkOutput() RouterNatSubnetworkOutput {
+	return i.ToRouterNatSubnetworkOutputWithContext(context.Background())
+}
+
+func (i RouterNatSubnetworkArgs) ToRouterNatSubnetworkOutputWithContext(ctx context.Context) RouterNatSubnetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterNatSubnetworkOutput)
+}
+
+// RouterNatSubnetworkArrayInput is an input type that accepts RouterNatSubnetworkArray and RouterNatSubnetworkArrayOutput values.
+// You can construct a concrete instance of `RouterNatSubnetworkArrayInput` via:
+//
+//	RouterNatSubnetworkArray{ RouterNatSubnetworkArgs{...} }
+type RouterNatSubnetworkArrayInput interface {
+	pulumi.Input
+
+	ToRouterNatSubnetworkArrayOutput() RouterNatSubnetworkArrayOutput
+	ToRouterNatSubnetworkArrayOutputWithContext(context.Context) RouterNatSubnetworkArrayOutput
+}
+
+type RouterNatSubnetworkArray []RouterNatSubnetworkInput
+
+func (RouterNatSubnetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterNatSubnetwork)(nil)).Elem()
+}
+
+func (i RouterNatSubnetworkArray) ToRouterNatSubnetworkArrayOutput() RouterNatSubnetworkArrayOutput {
+	return i.ToRouterNatSubnetworkArrayOutputWithContext(context.Background())
+}
+
+func (i RouterNatSubnetworkArray) ToRouterNatSubnetworkArrayOutputWithContext(ctx context.Context) RouterNatSubnetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterNatSubnetworkArrayOutput)
+}
+
+type RouterNatSubnetworkOutput struct{ *pulumi.OutputState }
+
+func (RouterNatSubnetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterNatSubnetwork)(nil)).Elem()
+}
+
+func (o RouterNatSubnetworkOutput) ToRouterNatSubnetworkOutput() RouterNatSubnetworkOutput {
+	return o
+}
+
+func (o RouterNatSubnetworkOutput) ToRouterNatSubnetworkOutputWithContext(ctx context.Context) RouterNatSubnetworkOutput {
+	return o
+}
+
+// Self-link of subnetwork to NAT
+func (o RouterNatSubnetworkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterNatSubnetwork) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// List of the secondary ranges of the subnetwork that are allowed
+// to use NAT. This can be populated only if
+// `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
+// sourceIpRangesToNat
+func (o RouterNatSubnetworkOutput) SecondaryIpRangeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouterNatSubnetwork) []string { return v.SecondaryIpRangeNames }).(pulumi.StringArrayOutput)
+}
+
+// List of options for which source IPs in the subnetwork
+// should have NAT enabled. Supported values include:
+// `ALL_IP_RANGES`, `LIST_OF_SECONDARY_IP_RANGES`,
+// `PRIMARY_IP_RANGE`.
+func (o RouterNatSubnetworkOutput) SourceIpRangesToNats() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouterNatSubnetwork) []string { return v.SourceIpRangesToNats }).(pulumi.StringArrayOutput)
+}
+
+type RouterNatSubnetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterNatSubnetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterNatSubnetwork)(nil)).Elem()
+}
+
+func (o RouterNatSubnetworkArrayOutput) ToRouterNatSubnetworkArrayOutput() RouterNatSubnetworkArrayOutput {
+	return o
+}
+
+func (o RouterNatSubnetworkArrayOutput) ToRouterNatSubnetworkArrayOutputWithContext(ctx context.Context) RouterNatSubnetworkArrayOutput {
+	return o
+}
+
+func (o RouterNatSubnetworkArrayOutput) Index(i pulumi.IntInput) RouterNatSubnetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterNatSubnetwork {
+		return vs[0].([]RouterNatSubnetwork)[vs[1].(int)]
+	}).(RouterNatSubnetworkOutput)
+}
+
+type RouterPeerAdvertisedIpRange struct {
+	// User-specified description for the IP range.
+	Description *string `pulumi:"description"`
+	// The IP range to advertise. The value must be a
+	// CIDR-formatted string.
+	Range string `pulumi:"range"`
+}
+
+// RouterPeerAdvertisedIpRangeInput is an input type that accepts RouterPeerAdvertisedIpRangeArgs and RouterPeerAdvertisedIpRangeOutput values.
+// You can construct a concrete instance of `RouterPeerAdvertisedIpRangeInput` via:
+//
+//	RouterPeerAdvertisedIpRangeArgs{...}
+type RouterPeerAdvertisedIpRangeInput interface {
+	pulumi.Input
+
+	ToRouterPeerAdvertisedIpRangeOutput() RouterPeerAdvertisedIpRangeOutput
+	ToRouterPeerAdvertisedIpRangeOutputWithContext(context.Context) RouterPeerAdvertisedIpRangeOutput
+}
+
+type RouterPeerAdvertisedIpRangeArgs struct {
+	// User-specified description for the IP range.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The IP range to advertise. The value must be a
+	// CIDR-formatted string.
+	Range pulumi.StringInput `pulumi:"range"`
+}
+
+func (RouterPeerAdvertisedIpRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterPeerAdvertisedIpRange)(nil)).Elem()
+}
+
+func (i RouterPeerAdvertisedIpRangeArgs) ToRouterPeerAdvertisedIpRangeOutput() RouterPeerAdvertisedIpRangeOutput {
+	return i.ToRouterPeerAdvertisedIpRangeOutputWithContext(context.Background())
+}
+
+func (i RouterPeerAdvertisedIpRangeArgs) ToRouterPeerAdvertisedIpRangeOutputWithContext(ctx context.Context) RouterPeerAdvertisedIpRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterPeerAdvertisedIpRangeOutput)
+}
+
+// RouterPeerAdvertisedIpRangeArrayInput is an input type that accepts RouterPeerAdvertisedIpRangeArray and RouterPeerAdvertisedIpRangeArrayOutput values.
+// You can construct a concrete instance of `RouterPeerAdvertisedIpRangeArrayInput` via:
+//
+//	RouterPeerAdvertisedIpRangeArray{ RouterPeerAdvertisedIpRangeArgs{...} }
+type RouterPeerAdvertisedIpRangeArrayInput interface {
+	pulumi.Input
+
+	ToRouterPeerAdvertisedIpRangeArrayOutput() RouterPeerAdvertisedIpRangeArrayOutput
+	ToRouterPeerAdvertisedIpRangeArrayOutputWithContext(context.Context) RouterPeerAdvertisedIpRangeArrayOutput
+}
+
+type RouterPeerAdvertisedIpRangeArray []RouterPeerAdvertisedIpRangeInput
+
+func (RouterPeerAdvertisedIpRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterPeerAdvertisedIpRange)(nil)).Elem()
+}
+
+func (i RouterPeerAdvertisedIpRangeArray) ToRouterPeerAdvertisedIpRangeArrayOutput() RouterPeerAdvertisedIpRangeArrayOutput {
+	return i.ToRouterPeerAdvertisedIpRangeArrayOutputWithContext(context.Background())
+}
+
+func (i RouterPeerAdvertisedIpRangeArray) ToRouterPeerAdvertisedIpRangeArrayOutputWithContext(ctx context.Context) RouterPeerAdvertisedIpRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterPeerAdvertisedIpRangeArrayOutput)
+}
+
+type RouterPeerAdvertisedIpRangeOutput struct{ *pulumi.OutputState }
+
+func (RouterPeerAdvertisedIpRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterPeerAdvertisedIpRange)(nil)).Elem()
+}
+
+func (o RouterPeerAdvertisedIpRangeOutput) ToRouterPeerAdvertisedIpRangeOutput() RouterPeerAdvertisedIpRangeOutput {
+	return o
+}
+
+func (o RouterPeerAdvertisedIpRangeOutput) ToRouterPeerAdvertisedIpRangeOutputWithContext(ctx context.Context) RouterPeerAdvertisedIpRangeOutput {
+	return o
+}
+
+// User-specified description for the IP range.
+func (o RouterPeerAdvertisedIpRangeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterPeerAdvertisedIpRange) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The IP range to advertise. The value must be a
+// CIDR-formatted string.
+func (o RouterPeerAdvertisedIpRangeOutput) Range() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterPeerAdvertisedIpRange) string { return v.Range }).(pulumi.StringOutput)
+}
+
+type RouterPeerAdvertisedIpRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterPeerAdvertisedIpRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterPeerAdvertisedIpRange)(nil)).Elem()
+}
+
+func (o RouterPeerAdvertisedIpRangeArrayOutput) ToRouterPeerAdvertisedIpRangeArrayOutput() RouterPeerAdvertisedIpRangeArrayOutput {
+	return o
+}
+
+func (o RouterPeerAdvertisedIpRangeArrayOutput) ToRouterPeerAdvertisedIpRangeArrayOutputWithContext(ctx context.Context) RouterPeerAdvertisedIpRangeArrayOutput {
+	return o
+}
+
+func (o RouterPeerAdvertisedIpRangeArrayOutput) Index(i pulumi.IntInput) RouterPeerAdvertisedIpRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterPeerAdvertisedIpRange {
+		return vs[0].([]RouterPeerAdvertisedIpRange)[vs[1].(int)]
+	}).(RouterPeerAdvertisedIpRangeOutput)
+}
+
+type RouterPeerBfd struct {
+	// The minimum interval, in milliseconds, between BFD control packets
+	// received from the peer router. The actual value is negotiated
+	// between the two routers and is equal to the greater of this value
+	// and the transmit interval of the other router. If set, this value
+	// must be between 1000 and 30000.
+	MinReceiveInterval *int `pulumi:"minReceiveInterval"`
+	// The minimum interval, in milliseconds, between BFD control packets
+	// transmitted to the peer router. The actual value is negotiated
+	// between the two routers and is equal to the greater of this value
+	// and the corresponding receive interval of the other router. If set,
+	// this value must be between 1000 and 30000.
+	MinTransmitInterval *int `pulumi:"minTransmitInterval"`
+	// The number of consecutive BFD packets that must be missed before
+	// BFD declares that a peer is unavailable. If set, the value must
+	// be a value between 5 and 16.
+	//
+	// <a name="nestedMd5AuthenticationKey"></a>The `md5AuthenticationKey` block supports:
+	Multiplier *int `pulumi:"multiplier"`
+	// The BFD session initialization mode for this BGP peer.
+	// If set to `ACTIVE`, the Cloud Router will initiate the BFD session
+	// for this BGP peer. If set to `PASSIVE`, the Cloud Router will wait
+	// for the peer router to initiate the BFD session for this BGP peer.
+	// If set to `DISABLED`, BFD is disabled for this BGP peer.
+	// Possible values are: `ACTIVE`, `DISABLED`, `PASSIVE`.
+	SessionInitializationMode string `pulumi:"sessionInitializationMode"`
+}
+
+// RouterPeerBfdInput is an input type that accepts RouterPeerBfdArgs and RouterPeerBfdOutput values.
+// You can construct a concrete instance of `RouterPeerBfdInput` via:
+//
+//	RouterPeerBfdArgs{...}
+type RouterPeerBfdInput interface {
+	pulumi.Input
+
+	ToRouterPeerBfdOutput() RouterPeerBfdOutput
+	ToRouterPeerBfdOutputWithContext(context.Context) RouterPeerBfdOutput
+}
+
+type RouterPeerBfdArgs struct {
+	// The minimum interval, in milliseconds, between BFD control packets
+	// received from the peer router. The actual value is negotiated
+	// between the two routers and is equal to the greater of this value
+	// and the transmit interval of the other router. If set, this value
+	// must be between 1000 and 30000.
+	MinReceiveInterval pulumi.IntPtrInput `pulumi:"minReceiveInterval"`
+	// The minimum interval, in milliseconds, between BFD control packets
+	// transmitted to the peer router. The actual value is negotiated
+	// between the two routers and is equal to the greater of this value
+	// and the corresponding receive interval of the other router. If set,
+	// this value must be between 1000 and 30000.
+	MinTransmitInterval pulumi.IntPtrInput `pulumi:"minTransmitInterval"`
+	// The number of consecutive BFD packets that must be missed before
+	// BFD declares that a peer is unavailable. If set, the value must
+	// be a value between 5 and 16.
+	//
+	// <a name="nestedMd5AuthenticationKey"></a>The `md5AuthenticationKey` block supports:
+	Multiplier pulumi.IntPtrInput `pulumi:"multiplier"`
+	// The BFD session initialization mode for this BGP peer.
+	// If set to `ACTIVE`, the Cloud Router will initiate the BFD session
+	// for this BGP peer. If set to `PASSIVE`, the Cloud Router will wait
+	// for the peer router to initiate the BFD session for this BGP peer.
+	// If set to `DISABLED`, BFD is disabled for this BGP peer.
+	// Possible values are: `ACTIVE`, `DISABLED`, `PASSIVE`.
+	SessionInitializationMode pulumi.StringInput `pulumi:"sessionInitializationMode"`
+}
+
+func (RouterPeerBfdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterPeerBfd)(nil)).Elem()
+}
+
+func (i RouterPeerBfdArgs) ToRouterPeerBfdOutput() RouterPeerBfdOutput {
+	return i.ToRouterPeerBfdOutputWithContext(context.Background())
+}
+
+func (i RouterPeerBfdArgs) ToRouterPeerBfdOutputWithContext(ctx context.Context) RouterPeerBfdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterPeerBfdOutput)
+}
+
+func (i RouterPeerBfdArgs) ToRouterPeerBfdPtrOutput() RouterPeerBfdPtrOutput {
+	return i.ToRouterPeerBfdPtrOutputWithContext(context.Background())
+}
+
+func (i RouterPeerBfdArgs) ToRouterPeerBfdPtrOutputWithContext(ctx context.Context) RouterPeerBfdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterPeerBfdOutput).ToRouterPeerBfdPtrOutputWithContext(ctx)
+}
+
+// RouterPeerBfdPtrInput is an input type that accepts RouterPeerBfdArgs, RouterPeerBfdPtr and RouterPeerBfdPtrOutput values.
+// You can construct a concrete instance of `RouterPeerBfdPtrInput` via:
+//
+//	        RouterPeerBfdArgs{...}
+//
+//	or:
+//
+//	        nil
+type RouterPeerBfdPtrInput interface {
+	pulumi.Input
+
+	ToRouterPeerBfdPtrOutput() RouterPeerBfdPtrOutput
+	ToRouterPeerBfdPtrOutputWithContext(context.Context) RouterPeerBfdPtrOutput
+}
+
+type routerPeerBfdPtrType RouterPeerBfdArgs
+
+func RouterPeerBfdPtr(v *RouterPeerBfdArgs) RouterPeerBfdPtrInput {
+	return (*routerPeerBfdPtrType)(v)
+}
+
+func (*routerPeerBfdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouterPeerBfd)(nil)).Elem()
+}
+
+func (i *routerPeerBfdPtrType) ToRouterPeerBfdPtrOutput() RouterPeerBfdPtrOutput {
+	return i.ToRouterPeerBfdPtrOutputWithContext(context.Background())
+}
+
+func (i *routerPeerBfdPtrType) ToRouterPeerBfdPtrOutputWithContext(ctx context.Context) RouterPeerBfdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterPeerBfdPtrOutput)
+}
+
+type RouterPeerBfdOutput struct{ *pulumi.OutputState }
+
+func (RouterPeerBfdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterPeerBfd)(nil)).Elem()
+}
+
+func (o RouterPeerBfdOutput) ToRouterPeerBfdOutput() RouterPeerBfdOutput {
+	return o
+}
+
+func (o RouterPeerBfdOutput) ToRouterPeerBfdOutputWithContext(ctx context.Context) RouterPeerBfdOutput {
+	return o
+}
+
+func (o RouterPeerBfdOutput) ToRouterPeerBfdPtrOutput() RouterPeerBfdPtrOutput {
+	return o.ToRouterPeerBfdPtrOutputWithContext(context.Background())
+}
+
+func (o RouterPeerBfdOutput) ToRouterPeerBfdPtrOutputWithContext(ctx context.Context) RouterPeerBfdPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouterPeerBfd) *RouterPeerBfd {
+		return &v
+	}).(RouterPeerBfdPtrOutput)
+}
+
+// The minimum interval, in milliseconds, between BFD control packets
+// received from the peer router. The actual value is negotiated
+// between the two routers and is equal to the greater of this value
+// and the transmit interval of the other router. If set, this value
+// must be between 1000 and 30000.
+func (o RouterPeerBfdOutput) MinReceiveInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RouterPeerBfd) *int { return v.MinReceiveInterval }).(pulumi.IntPtrOutput)
+}
+
+// The minimum interval, in milliseconds, between BFD control packets
+// transmitted to the peer router. The actual value is negotiated
+// between the two routers and is equal to the greater of this value
+// and the corresponding receive interval of the other router. If set,
+// this value must be between 1000 and 30000.
+func (o RouterPeerBfdOutput) MinTransmitInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RouterPeerBfd) *int { return v.MinTransmitInterval }).(pulumi.IntPtrOutput)
+}
+
+// The number of consecutive BFD packets that must be missed before
+// BFD declares that a peer is unavailable. If set, the value must
+// be a value between 5 and 16.
+//
+// <a name="nestedMd5AuthenticationKey"></a>The `md5AuthenticationKey` block supports:
+func (o RouterPeerBfdOutput) Multiplier() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RouterPeerBfd) *int { return v.Multiplier }).(pulumi.IntPtrOutput)
+}
+
+// The BFD session initialization mode for this BGP peer.
+// If set to `ACTIVE`, the Cloud Router will initiate the BFD session
+// for this BGP peer. If set to `PASSIVE`, the Cloud Router will wait
+// for the peer router to initiate the BFD session for this BGP peer.
+// If set to `DISABLED`, BFD is disabled for this BGP peer.
+// Possible values are: `ACTIVE`, `DISABLED`, `PASSIVE`.
+func (o RouterPeerBfdOutput) SessionInitializationMode() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterPeerBfd) string { return v.SessionInitializationMode }).(pulumi.StringOutput)
+}
+
+type RouterPeerBfdPtrOutput struct{ *pulumi.OutputState }
+
+func (RouterPeerBfdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouterPeerBfd)(nil)).Elem()
+}
+
+func (o RouterPeerBfdPtrOutput) ToRouterPeerBfdPtrOutput() RouterPeerBfdPtrOutput {
+	return o
+}
+
+func (o RouterPeerBfdPtrOutput) ToRouterPeerBfdPtrOutputWithContext(ctx context.Context) RouterPeerBfdPtrOutput {
+	return o
+}
+
+func (o RouterPeerBfdPtrOutput) Elem() RouterPeerBfdOutput {
+	return o.ApplyT(func(v *RouterPeerBfd) RouterPeerBfd {
+		if v != nil {
+			return *v
+		}
+		var ret RouterPeerBfd
+		return ret
+	}).(RouterPeerBfdOutput)
+}
+
+// The minimum interval, in milliseconds, between BFD control packets
+// received from the peer router. The actual value is negotiated
+// between the two routers and is equal to the greater of this value
+// and the transmit interval of the other router. If set, this value
+// must be between 1000 and 30000.
+func (o RouterPeerBfdPtrOutput) MinReceiveInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RouterPeerBfd) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinReceiveInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum interval, in milliseconds, between BFD control packets
+// transmitted to the peer router. The actual value is negotiated
+// between the two routers and is equal to the greater of this value
+// and the corresponding receive interval of the other router. If set,
+// this value must be between 1000 and 30000.
+func (o RouterPeerBfdPtrOutput) MinTransmitInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RouterPeerBfd) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinTransmitInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of consecutive BFD packets that must be missed before
+// BFD declares that a peer is unavailable. If set, the value must
+// be a value between 5 and 16.
+//
+// <a name="nestedMd5AuthenticationKey"></a>The `md5AuthenticationKey` block supports:
+func (o RouterPeerBfdPtrOutput) Multiplier() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RouterPeerBfd) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Multiplier
+	}).(pulumi.IntPtrOutput)
+}
+
+// The BFD session initialization mode for this BGP peer.
+// If set to `ACTIVE`, the Cloud Router will initiate the BFD session
+// for this BGP peer. If set to `PASSIVE`, the Cloud Router will wait
+// for the peer router to initiate the BFD session for this BGP peer.
+// If set to `DISABLED`, BFD is disabled for this BGP peer.
+// Possible values are: `ACTIVE`, `DISABLED`, `PASSIVE`.
+func (o RouterPeerBfdPtrOutput) SessionInitializationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouterPeerBfd) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SessionInitializationMode
+	}).(pulumi.StringPtrOutput)
+}
+
+type RouterPeerCustomLearnedIpRange struct {
+	// The IP range to learn. The value must be a
+	// CIDR-formatted string.
+	Range string `pulumi:"range"`
+}
+
+// RouterPeerCustomLearnedIpRangeInput is an input type that accepts RouterPeerCustomLearnedIpRangeArgs and RouterPeerCustomLearnedIpRangeOutput values.
+// You can construct a concrete instance of `RouterPeerCustomLearnedIpRangeInput` via:
+//
+//	RouterPeerCustomLearnedIpRangeArgs{...}
+type RouterPeerCustomLearnedIpRangeInput interface {
+	pulumi.Input
+
+	ToRouterPeerCustomLearnedIpRangeOutput() RouterPeerCustomLearnedIpRangeOutput
+	ToRouterPeerCustomLearnedIpRangeOutputWithContext(context.Context) RouterPeerCustomLearnedIpRangeOutput
+}
+
+type RouterPeerCustomLearnedIpRangeArgs struct {
+	// The IP range to learn. The value must be a
+	// CIDR-formatted string.
+	Range pulumi.StringInput `pulumi:"range"`
+}
+
+func (RouterPeerCustomLearnedIpRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterPeerCustomLearnedIpRange)(nil)).Elem()
+}
+
+func (i RouterPeerCustomLearnedIpRangeArgs) ToRouterPeerCustomLearnedIpRangeOutput() RouterPeerCustomLearnedIpRangeOutput {
+	return i.ToRouterPeerCustomLearnedIpRangeOutputWithContext(context.Background())
+}
+
+func (i RouterPeerCustomLearnedIpRangeArgs) ToRouterPeerCustomLearnedIpRangeOutputWithContext(ctx context.Context) RouterPeerCustomLearnedIpRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterPeerCustomLearnedIpRangeOutput)
+}
+
+// RouterPeerCustomLearnedIpRangeArrayInput is an input type that accepts RouterPeerCustomLearnedIpRangeArray and RouterPeerCustomLearnedIpRangeArrayOutput values.
+// You can construct a concrete instance of `RouterPeerCustomLearnedIpRangeArrayInput` via:
+//
+//	RouterPeerCustomLearnedIpRangeArray{ RouterPeerCustomLearnedIpRangeArgs{...} }
+type RouterPeerCustomLearnedIpRangeArrayInput interface {
+	pulumi.Input
+
+	ToRouterPeerCustomLearnedIpRangeArrayOutput() RouterPeerCustomLearnedIpRangeArrayOutput
+	ToRouterPeerCustomLearnedIpRangeArrayOutputWithContext(context.Context) RouterPeerCustomLearnedIpRangeArrayOutput
+}
+
+type RouterPeerCustomLearnedIpRangeArray []RouterPeerCustomLearnedIpRangeInput
+
+func (RouterPeerCustomLearnedIpRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterPeerCustomLearnedIpRange)(nil)).Elem()
+}
+
+func (i RouterPeerCustomLearnedIpRangeArray) ToRouterPeerCustomLearnedIpRangeArrayOutput() RouterPeerCustomLearnedIpRangeArrayOutput {
+	return i.ToRouterPeerCustomLearnedIpRangeArrayOutputWithContext(context.Background())
+}
+
+func (i RouterPeerCustomLearnedIpRangeArray) ToRouterPeerCustomLearnedIpRangeArrayOutputWithContext(ctx context.Context) RouterPeerCustomLearnedIpRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterPeerCustomLearnedIpRangeArrayOutput)
+}
+
+type RouterPeerCustomLearnedIpRangeOutput struct{ *pulumi.OutputState }
+
+func (RouterPeerCustomLearnedIpRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterPeerCustomLearnedIpRange)(nil)).Elem()
+}
+
+func (o RouterPeerCustomLearnedIpRangeOutput) ToRouterPeerCustomLearnedIpRangeOutput() RouterPeerCustomLearnedIpRangeOutput {
+	return o
+}
+
+func (o RouterPeerCustomLearnedIpRangeOutput) ToRouterPeerCustomLearnedIpRangeOutputWithContext(ctx context.Context) RouterPeerCustomLearnedIpRangeOutput {
+	return o
+}
+
+// The IP range to learn. The value must be a
+// CIDR-formatted string.
+func (o RouterPeerCustomLearnedIpRangeOutput) Range() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterPeerCustomLearnedIpRange) string { return v.Range }).(pulumi.StringOutput)
+}
+
+type RouterPeerCustomLearnedIpRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterPeerCustomLearnedIpRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterPeerCustomLearnedIpRange)(nil)).Elem()
+}
+
+func (o RouterPeerCustomLearnedIpRangeArrayOutput) ToRouterPeerCustomLearnedIpRangeArrayOutput() RouterPeerCustomLearnedIpRangeArrayOutput {
+	return o
+}
+
+func (o RouterPeerCustomLearnedIpRangeArrayOutput) ToRouterPeerCustomLearnedIpRangeArrayOutputWithContext(ctx context.Context) RouterPeerCustomLearnedIpRangeArrayOutput {
+	return o
+}
+
+func (o RouterPeerCustomLearnedIpRangeArrayOutput) Index(i pulumi.IntInput) RouterPeerCustomLearnedIpRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterPeerCustomLearnedIpRange {
+		return vs[0].([]RouterPeerCustomLearnedIpRange)[vs[1].(int)]
+	}).(RouterPeerCustomLearnedIpRangeOutput)
+}
+
+type RouterPeerMd5AuthenticationKey struct {
+	// Value of the key.
+	Key string `pulumi:"key"`
+	// Name of this BGP peer. The name must be 1-63 characters long,
+	// and comply with RFC1035. Specifically, the name must be 1-63 characters
+	// long and match the regular expression `a-z?` which
+	// means the first character must be a lowercase letter, and all
+	// following characters must be a dash, lowercase letter, or digit,
+	// except the last character, which cannot be a dash.
+	Name string `pulumi:"name"`
+}
+
+// RouterPeerMd5AuthenticationKeyInput is an input type that accepts RouterPeerMd5AuthenticationKeyArgs and RouterPeerMd5AuthenticationKeyOutput values.
+// You can construct a concrete instance of `RouterPeerMd5AuthenticationKeyInput` via:
+//
+//	RouterPeerMd5AuthenticationKeyArgs{...}
+type RouterPeerMd5AuthenticationKeyInput interface {
+	pulumi.Input
+
+	ToRouterPeerMd5AuthenticationKeyOutput() RouterPeerMd5AuthenticationKeyOutput
+	ToRouterPeerMd5AuthenticationKeyOutputWithContext(context.Context) RouterPeerMd5AuthenticationKeyOutput
+}
+
+type RouterPeerMd5AuthenticationKeyArgs struct {
+	// Value of the key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Name of this BGP peer. The name must be 1-63 characters long,
+	// and comply with RFC1035. Specifically, the name must be 1-63 characters
+	// long and match the regular expression `a-z?` which
+	// means the first character must be a lowercase letter, and all
+	// following characters must be a dash, lowercase letter, or digit,
+	// except the last character, which cannot be a dash.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (RouterPeerMd5AuthenticationKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterPeerMd5AuthenticationKey)(nil)).Elem()
+}
+
+func (i RouterPeerMd5AuthenticationKeyArgs) ToRouterPeerMd5AuthenticationKeyOutput() RouterPeerMd5AuthenticationKeyOutput {
+	return i.ToRouterPeerMd5AuthenticationKeyOutputWithContext(context.Background())
+}
+
+func (i RouterPeerMd5AuthenticationKeyArgs) ToRouterPeerMd5AuthenticationKeyOutputWithContext(ctx context.Context) RouterPeerMd5AuthenticationKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterPeerMd5AuthenticationKeyOutput)
+}
+
+func (i RouterPeerMd5AuthenticationKeyArgs) ToRouterPeerMd5AuthenticationKeyPtrOutput() RouterPeerMd5AuthenticationKeyPtrOutput {
+	return i.ToRouterPeerMd5AuthenticationKeyPtrOutputWithContext(context.Background())
+}
+
+func (i RouterPeerMd5AuthenticationKeyArgs) ToRouterPeerMd5AuthenticationKeyPtrOutputWithContext(ctx context.Context) RouterPeerMd5AuthenticationKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterPeerMd5AuthenticationKeyOutput).ToRouterPeerMd5AuthenticationKeyPtrOutputWithContext(ctx)
+}
+
+// RouterPeerMd5AuthenticationKeyPtrInput is an input type that accepts RouterPeerMd5AuthenticationKeyArgs, RouterPeerMd5AuthenticationKeyPtr and RouterPeerMd5AuthenticationKeyPtrOutput values.
+// You can construct a concrete instance of `RouterPeerMd5AuthenticationKeyPtrInput` via:
+//
+//	        RouterPeerMd5AuthenticationKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type RouterPeerMd5AuthenticationKeyPtrInput interface {
+	pulumi.Input
+
+	ToRouterPeerMd5AuthenticationKeyPtrOutput() RouterPeerMd5AuthenticationKeyPtrOutput
+	ToRouterPeerMd5AuthenticationKeyPtrOutputWithContext(context.Context) RouterPeerMd5AuthenticationKeyPtrOutput
+}
+
+type routerPeerMd5AuthenticationKeyPtrType RouterPeerMd5AuthenticationKeyArgs
+
+func RouterPeerMd5AuthenticationKeyPtr(v *RouterPeerMd5AuthenticationKeyArgs) RouterPeerMd5AuthenticationKeyPtrInput {
+	return (*routerPeerMd5AuthenticationKeyPtrType)(v)
+}
+
+func (*routerPeerMd5AuthenticationKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouterPeerMd5AuthenticationKey)(nil)).Elem()
+}
+
+func (i *routerPeerMd5AuthenticationKeyPtrType) ToRouterPeerMd5AuthenticationKeyPtrOutput() RouterPeerMd5AuthenticationKeyPtrOutput {
+	return i.ToRouterPeerMd5AuthenticationKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *routerPeerMd5AuthenticationKeyPtrType) ToRouterPeerMd5AuthenticationKeyPtrOutputWithContext(ctx context.Context) RouterPeerMd5AuthenticationKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterPeerMd5AuthenticationKeyPtrOutput)
+}
+
+type RouterPeerMd5AuthenticationKeyOutput struct{ *pulumi.OutputState }
+
+func (RouterPeerMd5AuthenticationKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterPeerMd5AuthenticationKey)(nil)).Elem()
+}
+
+func (o RouterPeerMd5AuthenticationKeyOutput) ToRouterPeerMd5AuthenticationKeyOutput() RouterPeerMd5AuthenticationKeyOutput {
+	return o
+}
+
+func (o RouterPeerMd5AuthenticationKeyOutput) ToRouterPeerMd5AuthenticationKeyOutputWithContext(ctx context.Context) RouterPeerMd5AuthenticationKeyOutput {
+	return o
+}
+
+func (o RouterPeerMd5AuthenticationKeyOutput) ToRouterPeerMd5AuthenticationKeyPtrOutput() RouterPeerMd5AuthenticationKeyPtrOutput {
+	return o.ToRouterPeerMd5AuthenticationKeyPtrOutputWithContext(context.Background())
+}
+
+func (o RouterPeerMd5AuthenticationKeyOutput) ToRouterPeerMd5AuthenticationKeyPtrOutputWithContext(ctx context.Context) RouterPeerMd5AuthenticationKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouterPeerMd5AuthenticationKey) *RouterPeerMd5AuthenticationKey {
+		return &v
+	}).(RouterPeerMd5AuthenticationKeyPtrOutput)
+}
+
+// Value of the key.
+func (o RouterPeerMd5AuthenticationKeyOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterPeerMd5AuthenticationKey) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Name of this BGP peer. The name must be 1-63 characters long,
+// and comply with RFC1035. Specifically, the name must be 1-63 characters
+// long and match the regular expression `a-z?` which
+// means the first character must be a lowercase letter, and all
+// following characters must be a dash, lowercase letter, or digit,
+// except the last character, which cannot be a dash.
+func (o RouterPeerMd5AuthenticationKeyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterPeerMd5AuthenticationKey) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type RouterPeerMd5AuthenticationKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (RouterPeerMd5AuthenticationKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouterPeerMd5AuthenticationKey)(nil)).Elem()
+}
+
+func (o RouterPeerMd5AuthenticationKeyPtrOutput) ToRouterPeerMd5AuthenticationKeyPtrOutput() RouterPeerMd5AuthenticationKeyPtrOutput {
+	return o
+}
+
+func (o RouterPeerMd5AuthenticationKeyPtrOutput) ToRouterPeerMd5AuthenticationKeyPtrOutputWithContext(ctx context.Context) RouterPeerMd5AuthenticationKeyPtrOutput {
+	return o
+}
+
+func (o RouterPeerMd5AuthenticationKeyPtrOutput) Elem() RouterPeerMd5AuthenticationKeyOutput {
+	return o.ApplyT(func(v *RouterPeerMd5AuthenticationKey) RouterPeerMd5AuthenticationKey {
+		if v != nil {
+			return *v
+		}
+		var ret RouterPeerMd5AuthenticationKey
+		return ret
+	}).(RouterPeerMd5AuthenticationKeyOutput)
+}
+
+// Value of the key.
+func (o RouterPeerMd5AuthenticationKeyPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouterPeerMd5AuthenticationKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of this BGP peer. The name must be 1-63 characters long,
+// and comply with RFC1035. Specifically, the name must be 1-63 characters
+// long and match the regular expression `a-z?` which
+// means the first character must be a lowercase letter, and all
+// following characters must be a dash, lowercase letter, or digit,
+// except the last character, which cannot be a dash.
+func (o RouterPeerMd5AuthenticationKeyPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouterPeerMd5AuthenticationKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type RouterRoutePolicyTerm struct {
+	// 'CEL expressions to evaluate to modify a route when this term matches.'\
+	// Structure is documented below.
+	Actions []RouterRoutePolicyTermAction `pulumi:"actions"`
+	// CEL expression evaluated against a route to determine if this term applies (see Policy Language). When not set, the term applies to all routes.
+	// Structure is documented below.
+	Match *RouterRoutePolicyTermMatch `pulumi:"match"`
+	// The evaluation priority for this term, which must be between 0 (inclusive) and 231 (exclusive), and unique within the list.
+	Priority int `pulumi:"priority"`
+}
+
+// RouterRoutePolicyTermInput is an input type that accepts RouterRoutePolicyTermArgs and RouterRoutePolicyTermOutput values.
+// You can construct a concrete instance of `RouterRoutePolicyTermInput` via:
+//
+//	RouterRoutePolicyTermArgs{...}
+type RouterRoutePolicyTermInput interface {
+	pulumi.Input
+
+	ToRouterRoutePolicyTermOutput() RouterRoutePolicyTermOutput
+	ToRouterRoutePolicyTermOutputWithContext(context.Context) RouterRoutePolicyTermOutput
+}
+
+type RouterRoutePolicyTermArgs struct {
+	// 'CEL expressions to evaluate to modify a route when this term matches.'\
+	// Structure is documented below.
+	Actions RouterRoutePolicyTermActionArrayInput `pulumi:"actions"`
+	// CEL expression evaluated against a route to determine if this term applies (see Policy Language). When not set, the term applies to all routes.
+	// Structure is documented below.
+	Match RouterRoutePolicyTermMatchPtrInput `pulumi:"match"`
+	// The evaluation priority for this term, which must be between 0 (inclusive) and 231 (exclusive), and unique within the list.
+	Priority pulumi.IntInput `pulumi:"priority"`
+}
+
+func (RouterRoutePolicyTermArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterRoutePolicyTerm)(nil)).Elem()
+}
+
+func (i RouterRoutePolicyTermArgs) ToRouterRoutePolicyTermOutput() RouterRoutePolicyTermOutput {
+	return i.ToRouterRoutePolicyTermOutputWithContext(context.Background())
+}
+
+func (i RouterRoutePolicyTermArgs) ToRouterRoutePolicyTermOutputWithContext(ctx context.Context) RouterRoutePolicyTermOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterRoutePolicyTermOutput)
+}
+
+// RouterRoutePolicyTermArrayInput is an input type that accepts RouterRoutePolicyTermArray and RouterRoutePolicyTermArrayOutput values.
+// You can construct a concrete instance of `RouterRoutePolicyTermArrayInput` via:
+//
+//	RouterRoutePolicyTermArray{ RouterRoutePolicyTermArgs{...} }
+type RouterRoutePolicyTermArrayInput interface {
+	pulumi.Input
+
+	ToRouterRoutePolicyTermArrayOutput() RouterRoutePolicyTermArrayOutput
+	ToRouterRoutePolicyTermArrayOutputWithContext(context.Context) RouterRoutePolicyTermArrayOutput
+}
+
+type RouterRoutePolicyTermArray []RouterRoutePolicyTermInput
+
+func (RouterRoutePolicyTermArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterRoutePolicyTerm)(nil)).Elem()
+}
+
+func (i RouterRoutePolicyTermArray) ToRouterRoutePolicyTermArrayOutput() RouterRoutePolicyTermArrayOutput {
+	return i.ToRouterRoutePolicyTermArrayOutputWithContext(context.Background())
+}
+
+func (i RouterRoutePolicyTermArray) ToRouterRoutePolicyTermArrayOutputWithContext(ctx context.Context) RouterRoutePolicyTermArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterRoutePolicyTermArrayOutput)
+}
+
+type RouterRoutePolicyTermOutput struct{ *pulumi.OutputState }
+
+func (RouterRoutePolicyTermOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterRoutePolicyTerm)(nil)).Elem()
+}
+
+func (o RouterRoutePolicyTermOutput) ToRouterRoutePolicyTermOutput() RouterRoutePolicyTermOutput {
+	return o
+}
+
+func (o RouterRoutePolicyTermOutput) ToRouterRoutePolicyTermOutputWithContext(ctx context.Context) RouterRoutePolicyTermOutput {
+	return o
+}
+
+// 'CEL expressions to evaluate to modify a route when this term matches.'\
+// Structure is documented below.
+func (o RouterRoutePolicyTermOutput) Actions() RouterRoutePolicyTermActionArrayOutput {
+	return o.ApplyT(func(v RouterRoutePolicyTerm) []RouterRoutePolicyTermAction { return v.Actions }).(RouterRoutePolicyTermActionArrayOutput)
+}
+
+// CEL expression evaluated against a route to determine if this term applies (see Policy Language). When not set, the term applies to all routes.
+// Structure is documented below.
+func (o RouterRoutePolicyTermOutput) Match() RouterRoutePolicyTermMatchPtrOutput {
+	return o.ApplyT(func(v RouterRoutePolicyTerm) *RouterRoutePolicyTermMatch { return v.Match }).(RouterRoutePolicyTermMatchPtrOutput)
+}
+
+// The evaluation priority for this term, which must be between 0 (inclusive) and 231 (exclusive), and unique within the list.
+func (o RouterRoutePolicyTermOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v RouterRoutePolicyTerm) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+type RouterRoutePolicyTermArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterRoutePolicyTermArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterRoutePolicyTerm)(nil)).Elem()
+}
+
+func (o RouterRoutePolicyTermArrayOutput) ToRouterRoutePolicyTermArrayOutput() RouterRoutePolicyTermArrayOutput {
+	return o
+}
+
+func (o RouterRoutePolicyTermArrayOutput) ToRouterRoutePolicyTermArrayOutputWithContext(ctx context.Context) RouterRoutePolicyTermArrayOutput {
+	return o
+}
+
+func (o RouterRoutePolicyTermArrayOutput) Index(i pulumi.IntInput) RouterRoutePolicyTermOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterRoutePolicyTerm {
+		return vs[0].([]RouterRoutePolicyTerm)[vs[1].(int)]
+	}).(RouterRoutePolicyTermOutput)
+}
+
+type RouterRoutePolicyTermAction struct {
+	// Description of the expression
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression
+	// Language syntax.
+	Expression string `pulumi:"expression"`
+	// String indicating the location of the expression for error
+	// reporting, e.g. a file name and a position in the file
+	//
+	// ***
+	Location *string `pulumi:"location"`
+	// Title for the expression, i.e. a short string describing its
+	// purpose.
+	Title *string `pulumi:"title"`
+}
+
+// RouterRoutePolicyTermActionInput is an input type that accepts RouterRoutePolicyTermActionArgs and RouterRoutePolicyTermActionOutput values.
+// You can construct a concrete instance of `RouterRoutePolicyTermActionInput` via:
+//
+//	RouterRoutePolicyTermActionArgs{...}
+type RouterRoutePolicyTermActionInput interface {
+	pulumi.Input
+
+	ToRouterRoutePolicyTermActionOutput() RouterRoutePolicyTermActionOutput
+	ToRouterRoutePolicyTermActionOutputWithContext(context.Context) RouterRoutePolicyTermActionOutput
+}
+
+type RouterRoutePolicyTermActionArgs struct {
+	// Description of the expression
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression
+	// Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// String indicating the location of the expression for error
+	// reporting, e.g. a file name and a position in the file
+	//
+	// ***
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Title for the expression, i.e. a short string describing its
+	// purpose.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (RouterRoutePolicyTermActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterRoutePolicyTermAction)(nil)).Elem()
+}
+
+func (i RouterRoutePolicyTermActionArgs) ToRouterRoutePolicyTermActionOutput() RouterRoutePolicyTermActionOutput {
+	return i.ToRouterRoutePolicyTermActionOutputWithContext(context.Background())
+}
+
+func (i RouterRoutePolicyTermActionArgs) ToRouterRoutePolicyTermActionOutputWithContext(ctx context.Context) RouterRoutePolicyTermActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterRoutePolicyTermActionOutput)
+}
+
+// RouterRoutePolicyTermActionArrayInput is an input type that accepts RouterRoutePolicyTermActionArray and RouterRoutePolicyTermActionArrayOutput values.
+// You can construct a concrete instance of `RouterRoutePolicyTermActionArrayInput` via:
+//
+//	RouterRoutePolicyTermActionArray{ RouterRoutePolicyTermActionArgs{...} }
+type RouterRoutePolicyTermActionArrayInput interface {
+	pulumi.Input
+
+	ToRouterRoutePolicyTermActionArrayOutput() RouterRoutePolicyTermActionArrayOutput
+	ToRouterRoutePolicyTermActionArrayOutputWithContext(context.Context) RouterRoutePolicyTermActionArrayOutput
+}
+
+type RouterRoutePolicyTermActionArray []RouterRoutePolicyTermActionInput
+
+func (RouterRoutePolicyTermActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterRoutePolicyTermAction)(nil)).Elem()
+}
+
+func (i RouterRoutePolicyTermActionArray) ToRouterRoutePolicyTermActionArrayOutput() RouterRoutePolicyTermActionArrayOutput {
+	return i.ToRouterRoutePolicyTermActionArrayOutputWithContext(context.Background())
+}
+
+func (i RouterRoutePolicyTermActionArray) ToRouterRoutePolicyTermActionArrayOutputWithContext(ctx context.Context) RouterRoutePolicyTermActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterRoutePolicyTermActionArrayOutput)
+}
+
+type RouterRoutePolicyTermActionOutput struct{ *pulumi.OutputState }
+
+func (RouterRoutePolicyTermActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterRoutePolicyTermAction)(nil)).Elem()
+}
+
+func (o RouterRoutePolicyTermActionOutput) ToRouterRoutePolicyTermActionOutput() RouterRoutePolicyTermActionOutput {
+	return o
+}
+
+func (o RouterRoutePolicyTermActionOutput) ToRouterRoutePolicyTermActionOutputWithContext(ctx context.Context) RouterRoutePolicyTermActionOutput {
+	return o
+}
+
+// Description of the expression
+func (o RouterRoutePolicyTermActionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterRoutePolicyTermAction) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression
+// Language syntax.
+func (o RouterRoutePolicyTermActionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterRoutePolicyTermAction) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// String indicating the location of the expression for error
+// reporting, e.g. a file name and a position in the file
+//
+// ***
+func (o RouterRoutePolicyTermActionOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterRoutePolicyTermAction) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Title for the expression, i.e. a short string describing its
+// purpose.
+func (o RouterRoutePolicyTermActionOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterRoutePolicyTermAction) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type RouterRoutePolicyTermActionArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterRoutePolicyTermActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterRoutePolicyTermAction)(nil)).Elem()
+}
+
+func (o RouterRoutePolicyTermActionArrayOutput) ToRouterRoutePolicyTermActionArrayOutput() RouterRoutePolicyTermActionArrayOutput {
+	return o
+}
+
+func (o RouterRoutePolicyTermActionArrayOutput) ToRouterRoutePolicyTermActionArrayOutputWithContext(ctx context.Context) RouterRoutePolicyTermActionArrayOutput {
+	return o
+}
+
+func (o RouterRoutePolicyTermActionArrayOutput) Index(i pulumi.IntInput) RouterRoutePolicyTermActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterRoutePolicyTermAction {
+		return vs[0].([]RouterRoutePolicyTermAction)[vs[1].(int)]
+	}).(RouterRoutePolicyTermActionOutput)
+}
+
+type RouterRoutePolicyTermMatch struct {
+	// Description of the expression
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+	Location *string `pulumi:"location"`
+	// Title for the expression, i.e. a short string describing its purpose.
+	Title *string `pulumi:"title"`
+}
+
+// RouterRoutePolicyTermMatchInput is an input type that accepts RouterRoutePolicyTermMatchArgs and RouterRoutePolicyTermMatchOutput values.
+// You can construct a concrete instance of `RouterRoutePolicyTermMatchInput` via:
+//
+//	RouterRoutePolicyTermMatchArgs{...}
+type RouterRoutePolicyTermMatchInput interface {
+	pulumi.Input
+
+	ToRouterRoutePolicyTermMatchOutput() RouterRoutePolicyTermMatchOutput
+	ToRouterRoutePolicyTermMatchOutputWithContext(context.Context) RouterRoutePolicyTermMatchOutput
+}
+
+type RouterRoutePolicyTermMatchArgs struct {
+	// Description of the expression
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (RouterRoutePolicyTermMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterRoutePolicyTermMatch)(nil)).Elem()
+}
+
+func (i RouterRoutePolicyTermMatchArgs) ToRouterRoutePolicyTermMatchOutput() RouterRoutePolicyTermMatchOutput {
+	return i.ToRouterRoutePolicyTermMatchOutputWithContext(context.Background())
+}
+
+func (i RouterRoutePolicyTermMatchArgs) ToRouterRoutePolicyTermMatchOutputWithContext(ctx context.Context) RouterRoutePolicyTermMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterRoutePolicyTermMatchOutput)
+}
+
+func (i RouterRoutePolicyTermMatchArgs) ToRouterRoutePolicyTermMatchPtrOutput() RouterRoutePolicyTermMatchPtrOutput {
+	return i.ToRouterRoutePolicyTermMatchPtrOutputWithContext(context.Background())
+}
+
+func (i RouterRoutePolicyTermMatchArgs) ToRouterRoutePolicyTermMatchPtrOutputWithContext(ctx context.Context) RouterRoutePolicyTermMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterRoutePolicyTermMatchOutput).ToRouterRoutePolicyTermMatchPtrOutputWithContext(ctx)
+}
+
+// RouterRoutePolicyTermMatchPtrInput is an input type that accepts RouterRoutePolicyTermMatchArgs, RouterRoutePolicyTermMatchPtr and RouterRoutePolicyTermMatchPtrOutput values.
+// You can construct a concrete instance of `RouterRoutePolicyTermMatchPtrInput` via:
+//
+//	        RouterRoutePolicyTermMatchArgs{...}
+//
+//	or:
+//
+//	        nil
+type RouterRoutePolicyTermMatchPtrInput interface {
+	pulumi.Input
+
+	ToRouterRoutePolicyTermMatchPtrOutput() RouterRoutePolicyTermMatchPtrOutput
+	ToRouterRoutePolicyTermMatchPtrOutputWithContext(context.Context) RouterRoutePolicyTermMatchPtrOutput
+}
+
+type routerRoutePolicyTermMatchPtrType RouterRoutePolicyTermMatchArgs
+
+func RouterRoutePolicyTermMatchPtr(v *RouterRoutePolicyTermMatchArgs) RouterRoutePolicyTermMatchPtrInput {
+	return (*routerRoutePolicyTermMatchPtrType)(v)
+}
+
+func (*routerRoutePolicyTermMatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouterRoutePolicyTermMatch)(nil)).Elem()
+}
+
+func (i *routerRoutePolicyTermMatchPtrType) ToRouterRoutePolicyTermMatchPtrOutput() RouterRoutePolicyTermMatchPtrOutput {
+	return i.ToRouterRoutePolicyTermMatchPtrOutputWithContext(context.Background())
+}
+
+func (i *routerRoutePolicyTermMatchPtrType) ToRouterRoutePolicyTermMatchPtrOutputWithContext(ctx context.Context) RouterRoutePolicyTermMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterRoutePolicyTermMatchPtrOutput)
+}
+
+type RouterRoutePolicyTermMatchOutput struct{ *pulumi.OutputState }
+
+func (RouterRoutePolicyTermMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterRoutePolicyTermMatch)(nil)).Elem()
+}
+
+func (o RouterRoutePolicyTermMatchOutput) ToRouterRoutePolicyTermMatchOutput() RouterRoutePolicyTermMatchOutput {
+	return o
+}
+
+func (o RouterRoutePolicyTermMatchOutput) ToRouterRoutePolicyTermMatchOutputWithContext(ctx context.Context) RouterRoutePolicyTermMatchOutput {
+	return o
+}
+
+func (o RouterRoutePolicyTermMatchOutput) ToRouterRoutePolicyTermMatchPtrOutput() RouterRoutePolicyTermMatchPtrOutput {
+	return o.ToRouterRoutePolicyTermMatchPtrOutputWithContext(context.Background())
+}
+
+func (o RouterRoutePolicyTermMatchOutput) ToRouterRoutePolicyTermMatchPtrOutputWithContext(ctx context.Context) RouterRoutePolicyTermMatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouterRoutePolicyTermMatch) *RouterRoutePolicyTermMatch {
+		return &v
+	}).(RouterRoutePolicyTermMatchPtrOutput)
+}
+
+// Description of the expression
+func (o RouterRoutePolicyTermMatchOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterRoutePolicyTermMatch) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o RouterRoutePolicyTermMatchOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterRoutePolicyTermMatch) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+func (o RouterRoutePolicyTermMatchOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterRoutePolicyTermMatch) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Title for the expression, i.e. a short string describing its purpose.
+func (o RouterRoutePolicyTermMatchOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterRoutePolicyTermMatch) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type RouterRoutePolicyTermMatchPtrOutput struct{ *pulumi.OutputState }
+
+func (RouterRoutePolicyTermMatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouterRoutePolicyTermMatch)(nil)).Elem()
+}
+
+func (o RouterRoutePolicyTermMatchPtrOutput) ToRouterRoutePolicyTermMatchPtrOutput() RouterRoutePolicyTermMatchPtrOutput {
+	return o
+}
+
+func (o RouterRoutePolicyTermMatchPtrOutput) ToRouterRoutePolicyTermMatchPtrOutputWithContext(ctx context.Context) RouterRoutePolicyTermMatchPtrOutput {
+	return o
+}
+
+func (o RouterRoutePolicyTermMatchPtrOutput) Elem() RouterRoutePolicyTermMatchOutput {
+	return o.ApplyT(func(v *RouterRoutePolicyTermMatch) RouterRoutePolicyTermMatch {
+		if v != nil {
+			return *v
+		}
+		var ret RouterRoutePolicyTermMatch
+		return ret
+	}).(RouterRoutePolicyTermMatchOutput)
+}
+
+// Description of the expression
+func (o RouterRoutePolicyTermMatchPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouterRoutePolicyTermMatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o RouterRoutePolicyTermMatchPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouterRoutePolicyTermMatch) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+func (o RouterRoutePolicyTermMatchPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouterRoutePolicyTermMatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Title for the expression, i.e. a short string describing its purpose.
+func (o RouterRoutePolicyTermMatchPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouterRoutePolicyTermMatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type RouterStatusBestRoute struct {
+	// An optional description of this resource. Provide this property
+	// when you create the resource.
+	Description string `pulumi:"description"`
+	// The destination range of outgoing packets that this route applies to.
+	// Only IPv4 is supported.
+	DestRange string `pulumi:"destRange"`
+	// The name of the router.
+	Name string `pulumi:"name"`
+	// The network name or resource link to the parent
+	// network of this subnetwork.
+	Network string `pulumi:"network"`
+	// URL to a gateway that should handle matching packets.
+	// Currently, you can only specify the internet gateway, using a full or
+	// partial valid URL:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway'
+	// * 'projects/project/global/gateways/default-internet-gateway'
+	// * 'global/gateways/default-internet-gateway'
+	// * The string 'default-internet-gateway'.
+	NextHopGateway string `pulumi:"nextHopGateway"`
+	// The IP address or URL to a forwarding rule of type
+	// loadBalancingScheme=INTERNAL that should handle matching
+	// packets.
+	//
+	// With the GA provider you can only specify the forwarding
+	// rule as a partial or full URL. For example, the following
+	// are all valid values:
+	// * 10.128.0.56
+	// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+	// * regions/region/forwardingRules/forwardingRule
+	//
+	// When the beta provider, you can also specify the IP address
+	// of a forwarding rule from the same VPC or any peered VPC.
+	//
+	// Note that this can only be used when the destinationRange is
+	// a public (non-RFC 1918) IP CIDR range.
+	NextHopIlb string `pulumi:"nextHopIlb"`
+	// URL to an instance that should handle matching packets.
+	// You can specify this as a full or partial URL. For example:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance'
+	// * 'projects/project/zones/zone/instances/instance'
+	// * 'zones/zone/instances/instance'
+	// * Just the instance name, with the zone in 'next_hop_instance_zone'.
+	NextHopInstance string `pulumi:"nextHopInstance"`
+	// The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
+	NextHopInstanceZone string `pulumi:"nextHopInstanceZone"`
+	// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
+	NextHopInterRegionCost string `pulumi:"nextHopInterRegionCost"`
+	// Network IP address of an instance that should handle matching packets.
+	NextHopIp string `pulumi:"nextHopIp"`
+	// Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+	NextHopMed string `pulumi:"nextHopMed"`
+	// URL to a Network that should handle matching packets.
+	NextHopNetwork string `pulumi:"nextHopNetwork"`
+	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+	NextHopOrigin string `pulumi:"nextHopOrigin"`
+	// URL to a VpnTunnel that should handle matching packets.
+	NextHopVpnTunnel string `pulumi:"nextHopVpnTunnel"`
+	// The priority of this route. Priority is used to break ties in cases
+	// where there is more than one matching route of equal prefix length.
+	//
+	// In the case of two routes with equal prefix length, the one with the
+	// lowest-numbered priority value wins.
+	//
+	// Default value is 1000. Valid range is 0 through 65535.
+	Priority int `pulumi:"priority"`
+	// The ID of the project in which the resource
+	// belongs. If it is not provided, the provider project is used.
+	Project  string `pulumi:"project"`
+	SelfLink string `pulumi:"selfLink"`
+	// A list of instance tags to which this route applies.
+	Tags []string `pulumi:"tags"`
+}
+
+// RouterStatusBestRouteInput is an input type that accepts RouterStatusBestRouteArgs and RouterStatusBestRouteOutput values.
+// You can construct a concrete instance of `RouterStatusBestRouteInput` via:
+//
+//	RouterStatusBestRouteArgs{...}
+type RouterStatusBestRouteInput interface {
+	pulumi.Input
+
+	ToRouterStatusBestRouteOutput() RouterStatusBestRouteOutput
+	ToRouterStatusBestRouteOutputWithContext(context.Context) RouterStatusBestRouteOutput
+}
+
+type RouterStatusBestRouteArgs struct {
+	// An optional description of this resource. Provide this property
+	// when you create the resource.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The destination range of outgoing packets that this route applies to.
+	// Only IPv4 is supported.
+	DestRange pulumi.StringInput `pulumi:"destRange"`
+	// The name of the router.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The network name or resource link to the parent
+	// network of this subnetwork.
+	Network pulumi.StringInput `pulumi:"network"`
+	// URL to a gateway that should handle matching packets.
+	// Currently, you can only specify the internet gateway, using a full or
+	// partial valid URL:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway'
+	// * 'projects/project/global/gateways/default-internet-gateway'
+	// * 'global/gateways/default-internet-gateway'
+	// * The string 'default-internet-gateway'.
+	NextHopGateway pulumi.StringInput `pulumi:"nextHopGateway"`
+	// The IP address or URL to a forwarding rule of type
+	// loadBalancingScheme=INTERNAL that should handle matching
+	// packets.
+	//
+	// With the GA provider you can only specify the forwarding
+	// rule as a partial or full URL. For example, the following
+	// are all valid values:
+	// * 10.128.0.56
+	// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+	// * regions/region/forwardingRules/forwardingRule
+	//
+	// When the beta provider, you can also specify the IP address
+	// of a forwarding rule from the same VPC or any peered VPC.
+	//
+	// Note that this can only be used when the destinationRange is
+	// a public (non-RFC 1918) IP CIDR range.
+	NextHopIlb pulumi.StringInput `pulumi:"nextHopIlb"`
+	// URL to an instance that should handle matching packets.
+	// You can specify this as a full or partial URL. For example:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance'
+	// * 'projects/project/zones/zone/instances/instance'
+	// * 'zones/zone/instances/instance'
+	// * Just the instance name, with the zone in 'next_hop_instance_zone'.
+	NextHopInstance pulumi.StringInput `pulumi:"nextHopInstance"`
+	// The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
+	NextHopInstanceZone pulumi.StringInput `pulumi:"nextHopInstanceZone"`
+	// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
+	NextHopInterRegionCost pulumi.StringInput `pulumi:"nextHopInterRegionCost"`
+	// Network IP address of an instance that should handle matching packets.
+	NextHopIp pulumi.StringInput `pulumi:"nextHopIp"`
+	// Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+	NextHopMed pulumi.StringInput `pulumi:"nextHopMed"`
+	// URL to a Network that should handle matching packets.
+	NextHopNetwork pulumi.StringInput `pulumi:"nextHopNetwork"`
+	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+	NextHopOrigin pulumi.StringInput `pulumi:"nextHopOrigin"`
+	// URL to a VpnTunnel that should handle matching packets.
+	NextHopVpnTunnel pulumi.StringInput `pulumi:"nextHopVpnTunnel"`
+	// The priority of this route. Priority is used to break ties in cases
+	// where there is more than one matching route of equal prefix length.
+	//
+	// In the case of two routes with equal prefix length, the one with the
+	// lowest-numbered priority value wins.
+	//
+	// Default value is 1000. Valid range is 0 through 65535.
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// The ID of the project in which the resource
+	// belongs. If it is not provided, the provider project is used.
+	Project  pulumi.StringInput `pulumi:"project"`
+	SelfLink pulumi.StringInput `pulumi:"selfLink"`
+	// A list of instance tags to which this route applies.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (RouterStatusBestRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterStatusBestRoute)(nil)).Elem()
+}
+
+func (i RouterStatusBestRouteArgs) ToRouterStatusBestRouteOutput() RouterStatusBestRouteOutput {
+	return i.ToRouterStatusBestRouteOutputWithContext(context.Background())
+}
+
+func (i RouterStatusBestRouteArgs) ToRouterStatusBestRouteOutputWithContext(ctx context.Context) RouterStatusBestRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterStatusBestRouteOutput)
+}
+
+// RouterStatusBestRouteArrayInput is an input type that accepts RouterStatusBestRouteArray and RouterStatusBestRouteArrayOutput values.
+// You can construct a concrete instance of `RouterStatusBestRouteArrayInput` via:
+//
+//	RouterStatusBestRouteArray{ RouterStatusBestRouteArgs{...} }
+type RouterStatusBestRouteArrayInput interface {
+	pulumi.Input
+
+	ToRouterStatusBestRouteArrayOutput() RouterStatusBestRouteArrayOutput
+	ToRouterStatusBestRouteArrayOutputWithContext(context.Context) RouterStatusBestRouteArrayOutput
+}
+
+type RouterStatusBestRouteArray []RouterStatusBestRouteInput
+
+func (RouterStatusBestRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterStatusBestRoute)(nil)).Elem()
+}
+
+func (i RouterStatusBestRouteArray) ToRouterStatusBestRouteArrayOutput() RouterStatusBestRouteArrayOutput {
+	return i.ToRouterStatusBestRouteArrayOutputWithContext(context.Background())
+}
+
+func (i RouterStatusBestRouteArray) ToRouterStatusBestRouteArrayOutputWithContext(ctx context.Context) RouterStatusBestRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterStatusBestRouteArrayOutput)
+}
+
+type RouterStatusBestRouteOutput struct{ *pulumi.OutputState }
+
+func (RouterStatusBestRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterStatusBestRoute)(nil)).Elem()
+}
+
+func (o RouterStatusBestRouteOutput) ToRouterStatusBestRouteOutput() RouterStatusBestRouteOutput {
+	return o
+}
+
+func (o RouterStatusBestRouteOutput) ToRouterStatusBestRouteOutputWithContext(ctx context.Context) RouterStatusBestRouteOutput {
+	return o
+}
+
+// An optional description of this resource. Provide this property
+// when you create the resource.
+func (o RouterStatusBestRouteOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoute) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The destination range of outgoing packets that this route applies to.
+// Only IPv4 is supported.
+func (o RouterStatusBestRouteOutput) DestRange() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoute) string { return v.DestRange }).(pulumi.StringOutput)
+}
+
+// The name of the router.
+func (o RouterStatusBestRouteOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoute) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The network name or resource link to the parent
+// network of this subnetwork.
+func (o RouterStatusBestRouteOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoute) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// URL to a gateway that should handle matching packets.
+// Currently, you can only specify the internet gateway, using a full or
+// partial valid URL:
+// * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway'
+// * 'projects/project/global/gateways/default-internet-gateway'
+// * 'global/gateways/default-internet-gateway'
+// * The string 'default-internet-gateway'.
+func (o RouterStatusBestRouteOutput) NextHopGateway() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoute) string { return v.NextHopGateway }).(pulumi.StringOutput)
+}
+
+// The IP address or URL to a forwarding rule of type
+// loadBalancingScheme=INTERNAL that should handle matching
+// packets.
+//
+// With the GA provider you can only specify the forwarding
+// rule as a partial or full URL. For example, the following
+// are all valid values:
+// * 10.128.0.56
+// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+// * regions/region/forwardingRules/forwardingRule
+//
+// When the beta provider, you can also specify the IP address
+// of a forwarding rule from the same VPC or any peered VPC.
+//
+// Note that this can only be used when the destinationRange is
+// a public (non-RFC 1918) IP CIDR range.
+func (o RouterStatusBestRouteOutput) NextHopIlb() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoute) string { return v.NextHopIlb }).(pulumi.StringOutput)
+}
+
+// URL to an instance that should handle matching packets.
+// You can specify this as a full or partial URL. For example:
+// * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance'
+// * 'projects/project/zones/zone/instances/instance'
+// * 'zones/zone/instances/instance'
+// * Just the instance name, with the zone in 'next_hop_instance_zone'.
+func (o RouterStatusBestRouteOutput) NextHopInstance() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoute) string { return v.NextHopInstance }).(pulumi.StringOutput)
+}
+
+// The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
+func (o RouterStatusBestRouteOutput) NextHopInstanceZone() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoute) string { return v.NextHopInstanceZone }).(pulumi.StringOutput)
+}
+
+// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
+func (o RouterStatusBestRouteOutput) NextHopInterRegionCost() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoute) string { return v.NextHopInterRegionCost }).(pulumi.StringOutput)
+}
+
+// Network IP address of an instance that should handle matching packets.
+func (o RouterStatusBestRouteOutput) NextHopIp() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoute) string { return v.NextHopIp }).(pulumi.StringOutput)
+}
+
+// Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+func (o RouterStatusBestRouteOutput) NextHopMed() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoute) string { return v.NextHopMed }).(pulumi.StringOutput)
+}
+
+// URL to a Network that should handle matching packets.
+func (o RouterStatusBestRouteOutput) NextHopNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoute) string { return v.NextHopNetwork }).(pulumi.StringOutput)
+}
+
+// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+func (o RouterStatusBestRouteOutput) NextHopOrigin() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoute) string { return v.NextHopOrigin }).(pulumi.StringOutput)
+}
+
+// URL to a VpnTunnel that should handle matching packets.
+func (o RouterStatusBestRouteOutput) NextHopVpnTunnel() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoute) string { return v.NextHopVpnTunnel }).(pulumi.StringOutput)
+}
+
+// The priority of this route. Priority is used to break ties in cases
+// where there is more than one matching route of equal prefix length.
+//
+// In the case of two routes with equal prefix length, the one with the
+// lowest-numbered priority value wins.
+//
+// Default value is 1000. Valid range is 0 through 65535.
+func (o RouterStatusBestRouteOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v RouterStatusBestRoute) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// The ID of the project in which the resource
+// belongs. If it is not provided, the provider project is used.
+func (o RouterStatusBestRouteOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoute) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o RouterStatusBestRouteOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoute) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// A list of instance tags to which this route applies.
+func (o RouterStatusBestRouteOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouterStatusBestRoute) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type RouterStatusBestRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterStatusBestRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterStatusBestRoute)(nil)).Elem()
+}
+
+func (o RouterStatusBestRouteArrayOutput) ToRouterStatusBestRouteArrayOutput() RouterStatusBestRouteArrayOutput {
+	return o
+}
+
+func (o RouterStatusBestRouteArrayOutput) ToRouterStatusBestRouteArrayOutputWithContext(ctx context.Context) RouterStatusBestRouteArrayOutput {
+	return o
+}
+
+func (o RouterStatusBestRouteArrayOutput) Index(i pulumi.IntInput) RouterStatusBestRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterStatusBestRoute {
+		return vs[0].([]RouterStatusBestRoute)[vs[1].(int)]
+	}).(RouterStatusBestRouteOutput)
+}
+
 type RouterStatusBestRoutesForRouter struct {
 	// An optional description of this resource. Provide this property
 	// when you create the resource.
@@ -35940,6 +37759,8 @@ type GetInstanceScheduling struct {
 	AutomaticRestart bool `pulumi:"automaticRestart"`
 	// Specifies the availability domain, which this instance should be scheduled on.
 	AvailabilityDomain int `pulumi:"availabilityDomain"`
+	// Settings for the instance to perform a graceful shutdown.
+	GracefulShutdowns []GetInstanceSchedulingGracefulShutdown `pulumi:"gracefulShutdowns"`
 	// Beta Time in seconds for host error detection.
 	HostErrorTimeoutSeconds int `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
@@ -35985,6 +37806,8 @@ type GetInstanceSchedulingArgs struct {
 	AutomaticRestart pulumi.BoolInput `pulumi:"automaticRestart"`
 	// Specifies the availability domain, which this instance should be scheduled on.
 	AvailabilityDomain pulumi.IntInput `pulumi:"availabilityDomain"`
+	// Settings for the instance to perform a graceful shutdown.
+	GracefulShutdowns GetInstanceSchedulingGracefulShutdownArrayInput `pulumi:"gracefulShutdowns"`
 	// Beta Time in seconds for host error detection.
 	HostErrorTimeoutSeconds pulumi.IntInput `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
@@ -36075,6 +37898,11 @@ func (o GetInstanceSchedulingOutput) AvailabilityDomain() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceScheduling) int { return v.AvailabilityDomain }).(pulumi.IntOutput)
 }
 
+// Settings for the instance to perform a graceful shutdown.
+func (o GetInstanceSchedulingOutput) GracefulShutdowns() GetInstanceSchedulingGracefulShutdownArrayOutput {
+	return o.ApplyT(func(v GetInstanceScheduling) []GetInstanceSchedulingGracefulShutdown { return v.GracefulShutdowns }).(GetInstanceSchedulingGracefulShutdownArrayOutput)
+}
+
 // Beta Time in seconds for host error detection.
 func (o GetInstanceSchedulingOutput) HostErrorTimeoutSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceScheduling) int { return v.HostErrorTimeoutSeconds }).(pulumi.IntOutput)
@@ -36157,6 +37985,241 @@ func (o GetInstanceSchedulingArrayOutput) Index(i pulumi.IntInput) GetInstanceSc
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceScheduling {
 		return vs[0].([]GetInstanceScheduling)[vs[1].(int)]
 	}).(GetInstanceSchedulingOutput)
+}
+
+type GetInstanceSchedulingGracefulShutdown struct {
+	// Opts-in for graceful shutdown.
+	Enabled bool `pulumi:"enabled"`
+	// The time allotted for the instance to gracefully shut down.
+	// 										If the graceful shutdown isn't complete after this time, then the instance
+	// 										transitions to the STOPPING state.
+	MaxDurations []GetInstanceSchedulingGracefulShutdownMaxDuration `pulumi:"maxDurations"`
+}
+
+// GetInstanceSchedulingGracefulShutdownInput is an input type that accepts GetInstanceSchedulingGracefulShutdownArgs and GetInstanceSchedulingGracefulShutdownOutput values.
+// You can construct a concrete instance of `GetInstanceSchedulingGracefulShutdownInput` via:
+//
+//	GetInstanceSchedulingGracefulShutdownArgs{...}
+type GetInstanceSchedulingGracefulShutdownInput interface {
+	pulumi.Input
+
+	ToGetInstanceSchedulingGracefulShutdownOutput() GetInstanceSchedulingGracefulShutdownOutput
+	ToGetInstanceSchedulingGracefulShutdownOutputWithContext(context.Context) GetInstanceSchedulingGracefulShutdownOutput
+}
+
+type GetInstanceSchedulingGracefulShutdownArgs struct {
+	// Opts-in for graceful shutdown.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The time allotted for the instance to gracefully shut down.
+	// 										If the graceful shutdown isn't complete after this time, then the instance
+	// 										transitions to the STOPPING state.
+	MaxDurations GetInstanceSchedulingGracefulShutdownMaxDurationArrayInput `pulumi:"maxDurations"`
+}
+
+func (GetInstanceSchedulingGracefulShutdownArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceSchedulingGracefulShutdown)(nil)).Elem()
+}
+
+func (i GetInstanceSchedulingGracefulShutdownArgs) ToGetInstanceSchedulingGracefulShutdownOutput() GetInstanceSchedulingGracefulShutdownOutput {
+	return i.ToGetInstanceSchedulingGracefulShutdownOutputWithContext(context.Background())
+}
+
+func (i GetInstanceSchedulingGracefulShutdownArgs) ToGetInstanceSchedulingGracefulShutdownOutputWithContext(ctx context.Context) GetInstanceSchedulingGracefulShutdownOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceSchedulingGracefulShutdownOutput)
+}
+
+// GetInstanceSchedulingGracefulShutdownArrayInput is an input type that accepts GetInstanceSchedulingGracefulShutdownArray and GetInstanceSchedulingGracefulShutdownArrayOutput values.
+// You can construct a concrete instance of `GetInstanceSchedulingGracefulShutdownArrayInput` via:
+//
+//	GetInstanceSchedulingGracefulShutdownArray{ GetInstanceSchedulingGracefulShutdownArgs{...} }
+type GetInstanceSchedulingGracefulShutdownArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceSchedulingGracefulShutdownArrayOutput() GetInstanceSchedulingGracefulShutdownArrayOutput
+	ToGetInstanceSchedulingGracefulShutdownArrayOutputWithContext(context.Context) GetInstanceSchedulingGracefulShutdownArrayOutput
+}
+
+type GetInstanceSchedulingGracefulShutdownArray []GetInstanceSchedulingGracefulShutdownInput
+
+func (GetInstanceSchedulingGracefulShutdownArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceSchedulingGracefulShutdown)(nil)).Elem()
+}
+
+func (i GetInstanceSchedulingGracefulShutdownArray) ToGetInstanceSchedulingGracefulShutdownArrayOutput() GetInstanceSchedulingGracefulShutdownArrayOutput {
+	return i.ToGetInstanceSchedulingGracefulShutdownArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceSchedulingGracefulShutdownArray) ToGetInstanceSchedulingGracefulShutdownArrayOutputWithContext(ctx context.Context) GetInstanceSchedulingGracefulShutdownArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceSchedulingGracefulShutdownArrayOutput)
+}
+
+type GetInstanceSchedulingGracefulShutdownOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceSchedulingGracefulShutdownOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceSchedulingGracefulShutdown)(nil)).Elem()
+}
+
+func (o GetInstanceSchedulingGracefulShutdownOutput) ToGetInstanceSchedulingGracefulShutdownOutput() GetInstanceSchedulingGracefulShutdownOutput {
+	return o
+}
+
+func (o GetInstanceSchedulingGracefulShutdownOutput) ToGetInstanceSchedulingGracefulShutdownOutputWithContext(ctx context.Context) GetInstanceSchedulingGracefulShutdownOutput {
+	return o
+}
+
+// Opts-in for graceful shutdown.
+func (o GetInstanceSchedulingGracefulShutdownOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceSchedulingGracefulShutdown) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The time allotted for the instance to gracefully shut down.
+//
+//	If the graceful shutdown isn't complete after this time, then the instance
+//	transitions to the STOPPING state.
+func (o GetInstanceSchedulingGracefulShutdownOutput) MaxDurations() GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput {
+	return o.ApplyT(func(v GetInstanceSchedulingGracefulShutdown) []GetInstanceSchedulingGracefulShutdownMaxDuration {
+		return v.MaxDurations
+	}).(GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput)
+}
+
+type GetInstanceSchedulingGracefulShutdownArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceSchedulingGracefulShutdownArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceSchedulingGracefulShutdown)(nil)).Elem()
+}
+
+func (o GetInstanceSchedulingGracefulShutdownArrayOutput) ToGetInstanceSchedulingGracefulShutdownArrayOutput() GetInstanceSchedulingGracefulShutdownArrayOutput {
+	return o
+}
+
+func (o GetInstanceSchedulingGracefulShutdownArrayOutput) ToGetInstanceSchedulingGracefulShutdownArrayOutputWithContext(ctx context.Context) GetInstanceSchedulingGracefulShutdownArrayOutput {
+	return o
+}
+
+func (o GetInstanceSchedulingGracefulShutdownArrayOutput) Index(i pulumi.IntInput) GetInstanceSchedulingGracefulShutdownOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceSchedulingGracefulShutdown {
+		return vs[0].([]GetInstanceSchedulingGracefulShutdown)[vs[1].(int)]
+	}).(GetInstanceSchedulingGracefulShutdownOutput)
+}
+
+type GetInstanceSchedulingGracefulShutdownMaxDuration struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// 													resolution. Durations less than one second are represented
+	// 													with a 0 seconds field and a positive nanos field. Must
+	// 													be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// 													The value must be between 1 and 3600, which is 3,600 seconds (one hour).
+	Seconds int `pulumi:"seconds"`
+}
+
+// GetInstanceSchedulingGracefulShutdownMaxDurationInput is an input type that accepts GetInstanceSchedulingGracefulShutdownMaxDurationArgs and GetInstanceSchedulingGracefulShutdownMaxDurationOutput values.
+// You can construct a concrete instance of `GetInstanceSchedulingGracefulShutdownMaxDurationInput` via:
+//
+//	GetInstanceSchedulingGracefulShutdownMaxDurationArgs{...}
+type GetInstanceSchedulingGracefulShutdownMaxDurationInput interface {
+	pulumi.Input
+
+	ToGetInstanceSchedulingGracefulShutdownMaxDurationOutput() GetInstanceSchedulingGracefulShutdownMaxDurationOutput
+	ToGetInstanceSchedulingGracefulShutdownMaxDurationOutputWithContext(context.Context) GetInstanceSchedulingGracefulShutdownMaxDurationOutput
+}
+
+type GetInstanceSchedulingGracefulShutdownMaxDurationArgs struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// 													resolution. Durations less than one second are represented
+	// 													with a 0 seconds field and a positive nanos field. Must
+	// 													be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// 													The value must be between 1 and 3600, which is 3,600 seconds (one hour).
+	Seconds pulumi.IntInput `pulumi:"seconds"`
+}
+
+func (GetInstanceSchedulingGracefulShutdownMaxDurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceSchedulingGracefulShutdownMaxDuration)(nil)).Elem()
+}
+
+func (i GetInstanceSchedulingGracefulShutdownMaxDurationArgs) ToGetInstanceSchedulingGracefulShutdownMaxDurationOutput() GetInstanceSchedulingGracefulShutdownMaxDurationOutput {
+	return i.ToGetInstanceSchedulingGracefulShutdownMaxDurationOutputWithContext(context.Background())
+}
+
+func (i GetInstanceSchedulingGracefulShutdownMaxDurationArgs) ToGetInstanceSchedulingGracefulShutdownMaxDurationOutputWithContext(ctx context.Context) GetInstanceSchedulingGracefulShutdownMaxDurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceSchedulingGracefulShutdownMaxDurationOutput)
+}
+
+// GetInstanceSchedulingGracefulShutdownMaxDurationArrayInput is an input type that accepts GetInstanceSchedulingGracefulShutdownMaxDurationArray and GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput values.
+// You can construct a concrete instance of `GetInstanceSchedulingGracefulShutdownMaxDurationArrayInput` via:
+//
+//	GetInstanceSchedulingGracefulShutdownMaxDurationArray{ GetInstanceSchedulingGracefulShutdownMaxDurationArgs{...} }
+type GetInstanceSchedulingGracefulShutdownMaxDurationArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput() GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput
+	ToGetInstanceSchedulingGracefulShutdownMaxDurationArrayOutputWithContext(context.Context) GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput
+}
+
+type GetInstanceSchedulingGracefulShutdownMaxDurationArray []GetInstanceSchedulingGracefulShutdownMaxDurationInput
+
+func (GetInstanceSchedulingGracefulShutdownMaxDurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceSchedulingGracefulShutdownMaxDuration)(nil)).Elem()
+}
+
+func (i GetInstanceSchedulingGracefulShutdownMaxDurationArray) ToGetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput() GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput {
+	return i.ToGetInstanceSchedulingGracefulShutdownMaxDurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceSchedulingGracefulShutdownMaxDurationArray) ToGetInstanceSchedulingGracefulShutdownMaxDurationArrayOutputWithContext(ctx context.Context) GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput)
+}
+
+type GetInstanceSchedulingGracefulShutdownMaxDurationOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceSchedulingGracefulShutdownMaxDurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceSchedulingGracefulShutdownMaxDuration)(nil)).Elem()
+}
+
+func (o GetInstanceSchedulingGracefulShutdownMaxDurationOutput) ToGetInstanceSchedulingGracefulShutdownMaxDurationOutput() GetInstanceSchedulingGracefulShutdownMaxDurationOutput {
+	return o
+}
+
+func (o GetInstanceSchedulingGracefulShutdownMaxDurationOutput) ToGetInstanceSchedulingGracefulShutdownMaxDurationOutputWithContext(ctx context.Context) GetInstanceSchedulingGracefulShutdownMaxDurationOutput {
+	return o
+}
+
+// Span of time that's a fraction of a second at nanosecond
+//
+//	resolution. Durations less than one second are represented
+//	with a 0 seconds field and a positive nanos field. Must
+//	be from 0 to 999,999,999 inclusive.
+func (o GetInstanceSchedulingGracefulShutdownMaxDurationOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceSchedulingGracefulShutdownMaxDuration) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Span of time at a resolution of a second.
+//
+//	The value must be between 1 and 3600, which is 3,600 seconds (one hour).
+func (o GetInstanceSchedulingGracefulShutdownMaxDurationOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceSchedulingGracefulShutdownMaxDuration) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
+type GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceSchedulingGracefulShutdownMaxDuration)(nil)).Elem()
+}
+
+func (o GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput) ToGetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput() GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput {
+	return o
+}
+
+func (o GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput) ToGetInstanceSchedulingGracefulShutdownMaxDurationArrayOutputWithContext(ctx context.Context) GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput {
+	return o
+}
+
+func (o GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput) Index(i pulumi.IntInput) GetInstanceSchedulingGracefulShutdownMaxDurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceSchedulingGracefulShutdownMaxDuration {
+		return vs[0].([]GetInstanceSchedulingGracefulShutdownMaxDuration)[vs[1].(int)]
+	}).(GetInstanceSchedulingGracefulShutdownMaxDurationOutput)
 }
 
 type GetInstanceSchedulingLocalSsdRecoveryTimeout struct {
@@ -38971,6 +41034,8 @@ type GetInstanceTemplateScheduling struct {
 	AutomaticRestart bool `pulumi:"automaticRestart"`
 	// Specifies the availability domain, which this instance should be scheduled on.
 	AvailabilityDomain int `pulumi:"availabilityDomain"`
+	// Settings for the instance to perform a graceful shutdown.
+	GracefulShutdowns []GetInstanceTemplateSchedulingGracefulShutdown `pulumi:"gracefulShutdowns"`
 	// Beta Time in seconds for host error detection.
 	HostErrorTimeoutSeconds int `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
@@ -39023,6 +41088,8 @@ type GetInstanceTemplateSchedulingArgs struct {
 	AutomaticRestart pulumi.BoolInput `pulumi:"automaticRestart"`
 	// Specifies the availability domain, which this instance should be scheduled on.
 	AvailabilityDomain pulumi.IntInput `pulumi:"availabilityDomain"`
+	// Settings for the instance to perform a graceful shutdown.
+	GracefulShutdowns GetInstanceTemplateSchedulingGracefulShutdownArrayInput `pulumi:"gracefulShutdowns"`
 	// Beta Time in seconds for host error detection.
 	HostErrorTimeoutSeconds pulumi.IntInput `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
@@ -39120,6 +41187,13 @@ func (o GetInstanceTemplateSchedulingOutput) AvailabilityDomain() pulumi.IntOutp
 	return o.ApplyT(func(v GetInstanceTemplateScheduling) int { return v.AvailabilityDomain }).(pulumi.IntOutput)
 }
 
+// Settings for the instance to perform a graceful shutdown.
+func (o GetInstanceTemplateSchedulingOutput) GracefulShutdowns() GetInstanceTemplateSchedulingGracefulShutdownArrayOutput {
+	return o.ApplyT(func(v GetInstanceTemplateScheduling) []GetInstanceTemplateSchedulingGracefulShutdown {
+		return v.GracefulShutdowns
+	}).(GetInstanceTemplateSchedulingGracefulShutdownArrayOutput)
+}
+
 // Beta Time in seconds for host error detection.
 func (o GetInstanceTemplateSchedulingOutput) HostErrorTimeoutSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTemplateScheduling) int { return v.HostErrorTimeoutSeconds }).(pulumi.IntOutput)
@@ -39212,6 +41286,241 @@ func (o GetInstanceTemplateSchedulingArrayOutput) Index(i pulumi.IntInput) GetIn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateScheduling {
 		return vs[0].([]GetInstanceTemplateScheduling)[vs[1].(int)]
 	}).(GetInstanceTemplateSchedulingOutput)
+}
+
+type GetInstanceTemplateSchedulingGracefulShutdown struct {
+	// Opts-in for graceful shutdown.
+	Enabled bool `pulumi:"enabled"`
+	// The time allotted for the instance to gracefully shut down.
+	// 										If the graceful shutdown isn't complete after this time, then the instance
+	// 										transitions to the STOPPING state.
+	MaxDurations []GetInstanceTemplateSchedulingGracefulShutdownMaxDuration `pulumi:"maxDurations"`
+}
+
+// GetInstanceTemplateSchedulingGracefulShutdownInput is an input type that accepts GetInstanceTemplateSchedulingGracefulShutdownArgs and GetInstanceTemplateSchedulingGracefulShutdownOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateSchedulingGracefulShutdownInput` via:
+//
+//	GetInstanceTemplateSchedulingGracefulShutdownArgs{...}
+type GetInstanceTemplateSchedulingGracefulShutdownInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateSchedulingGracefulShutdownOutput() GetInstanceTemplateSchedulingGracefulShutdownOutput
+	ToGetInstanceTemplateSchedulingGracefulShutdownOutputWithContext(context.Context) GetInstanceTemplateSchedulingGracefulShutdownOutput
+}
+
+type GetInstanceTemplateSchedulingGracefulShutdownArgs struct {
+	// Opts-in for graceful shutdown.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The time allotted for the instance to gracefully shut down.
+	// 										If the graceful shutdown isn't complete after this time, then the instance
+	// 										transitions to the STOPPING state.
+	MaxDurations GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayInput `pulumi:"maxDurations"`
+}
+
+func (GetInstanceTemplateSchedulingGracefulShutdownArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateSchedulingGracefulShutdown)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateSchedulingGracefulShutdownArgs) ToGetInstanceTemplateSchedulingGracefulShutdownOutput() GetInstanceTemplateSchedulingGracefulShutdownOutput {
+	return i.ToGetInstanceTemplateSchedulingGracefulShutdownOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateSchedulingGracefulShutdownArgs) ToGetInstanceTemplateSchedulingGracefulShutdownOutputWithContext(ctx context.Context) GetInstanceTemplateSchedulingGracefulShutdownOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateSchedulingGracefulShutdownOutput)
+}
+
+// GetInstanceTemplateSchedulingGracefulShutdownArrayInput is an input type that accepts GetInstanceTemplateSchedulingGracefulShutdownArray and GetInstanceTemplateSchedulingGracefulShutdownArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateSchedulingGracefulShutdownArrayInput` via:
+//
+//	GetInstanceTemplateSchedulingGracefulShutdownArray{ GetInstanceTemplateSchedulingGracefulShutdownArgs{...} }
+type GetInstanceTemplateSchedulingGracefulShutdownArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateSchedulingGracefulShutdownArrayOutput() GetInstanceTemplateSchedulingGracefulShutdownArrayOutput
+	ToGetInstanceTemplateSchedulingGracefulShutdownArrayOutputWithContext(context.Context) GetInstanceTemplateSchedulingGracefulShutdownArrayOutput
+}
+
+type GetInstanceTemplateSchedulingGracefulShutdownArray []GetInstanceTemplateSchedulingGracefulShutdownInput
+
+func (GetInstanceTemplateSchedulingGracefulShutdownArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateSchedulingGracefulShutdown)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateSchedulingGracefulShutdownArray) ToGetInstanceTemplateSchedulingGracefulShutdownArrayOutput() GetInstanceTemplateSchedulingGracefulShutdownArrayOutput {
+	return i.ToGetInstanceTemplateSchedulingGracefulShutdownArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateSchedulingGracefulShutdownArray) ToGetInstanceTemplateSchedulingGracefulShutdownArrayOutputWithContext(ctx context.Context) GetInstanceTemplateSchedulingGracefulShutdownArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateSchedulingGracefulShutdownArrayOutput)
+}
+
+type GetInstanceTemplateSchedulingGracefulShutdownOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateSchedulingGracefulShutdownOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateSchedulingGracefulShutdown)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateSchedulingGracefulShutdownOutput) ToGetInstanceTemplateSchedulingGracefulShutdownOutput() GetInstanceTemplateSchedulingGracefulShutdownOutput {
+	return o
+}
+
+func (o GetInstanceTemplateSchedulingGracefulShutdownOutput) ToGetInstanceTemplateSchedulingGracefulShutdownOutputWithContext(ctx context.Context) GetInstanceTemplateSchedulingGracefulShutdownOutput {
+	return o
+}
+
+// Opts-in for graceful shutdown.
+func (o GetInstanceTemplateSchedulingGracefulShutdownOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceTemplateSchedulingGracefulShutdown) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The time allotted for the instance to gracefully shut down.
+//
+//	If the graceful shutdown isn't complete after this time, then the instance
+//	transitions to the STOPPING state.
+func (o GetInstanceTemplateSchedulingGracefulShutdownOutput) MaxDurations() GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput {
+	return o.ApplyT(func(v GetInstanceTemplateSchedulingGracefulShutdown) []GetInstanceTemplateSchedulingGracefulShutdownMaxDuration {
+		return v.MaxDurations
+	}).(GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput)
+}
+
+type GetInstanceTemplateSchedulingGracefulShutdownArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateSchedulingGracefulShutdownArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateSchedulingGracefulShutdown)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateSchedulingGracefulShutdownArrayOutput) ToGetInstanceTemplateSchedulingGracefulShutdownArrayOutput() GetInstanceTemplateSchedulingGracefulShutdownArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateSchedulingGracefulShutdownArrayOutput) ToGetInstanceTemplateSchedulingGracefulShutdownArrayOutputWithContext(ctx context.Context) GetInstanceTemplateSchedulingGracefulShutdownArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateSchedulingGracefulShutdownArrayOutput) Index(i pulumi.IntInput) GetInstanceTemplateSchedulingGracefulShutdownOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateSchedulingGracefulShutdown {
+		return vs[0].([]GetInstanceTemplateSchedulingGracefulShutdown)[vs[1].(int)]
+	}).(GetInstanceTemplateSchedulingGracefulShutdownOutput)
+}
+
+type GetInstanceTemplateSchedulingGracefulShutdownMaxDuration struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// 													resolution. Durations less than one second are represented
+	// 													with a 0 seconds field and a positive nanos field. Must
+	// 													be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// 													The value must be between 1 and 3600, which is 3,600 seconds (one hour).
+	Seconds int `pulumi:"seconds"`
+}
+
+// GetInstanceTemplateSchedulingGracefulShutdownMaxDurationInput is an input type that accepts GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs and GetInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateSchedulingGracefulShutdownMaxDurationInput` via:
+//
+//	GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs{...}
+type GetInstanceTemplateSchedulingGracefulShutdownMaxDurationInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput() GetInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput
+	ToGetInstanceTemplateSchedulingGracefulShutdownMaxDurationOutputWithContext(context.Context) GetInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput
+}
+
+type GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// 													resolution. Durations less than one second are represented
+	// 													with a 0 seconds field and a positive nanos field. Must
+	// 													be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// 													The value must be between 1 and 3600, which is 3,600 seconds (one hour).
+	Seconds pulumi.IntInput `pulumi:"seconds"`
+}
+
+func (GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateSchedulingGracefulShutdownMaxDuration)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs) ToGetInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput() GetInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput {
+	return i.ToGetInstanceTemplateSchedulingGracefulShutdownMaxDurationOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs) ToGetInstanceTemplateSchedulingGracefulShutdownMaxDurationOutputWithContext(ctx context.Context) GetInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput)
+}
+
+// GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayInput is an input type that accepts GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArray and GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayInput` via:
+//
+//	GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArray{ GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs{...} }
+type GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput() GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput
+	ToGetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutputWithContext(context.Context) GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput
+}
+
+type GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArray []GetInstanceTemplateSchedulingGracefulShutdownMaxDurationInput
+
+func (GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateSchedulingGracefulShutdownMaxDuration)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArray) ToGetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput() GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput {
+	return i.ToGetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArray) ToGetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutputWithContext(ctx context.Context) GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput)
+}
+
+type GetInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateSchedulingGracefulShutdownMaxDuration)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput) ToGetInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput() GetInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput {
+	return o
+}
+
+func (o GetInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput) ToGetInstanceTemplateSchedulingGracefulShutdownMaxDurationOutputWithContext(ctx context.Context) GetInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput {
+	return o
+}
+
+// Span of time that's a fraction of a second at nanosecond
+//
+//	resolution. Durations less than one second are represented
+//	with a 0 seconds field and a positive nanos field. Must
+//	be from 0 to 999,999,999 inclusive.
+func (o GetInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTemplateSchedulingGracefulShutdownMaxDuration) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Span of time at a resolution of a second.
+//
+//	The value must be between 1 and 3600, which is 3,600 seconds (one hour).
+func (o GetInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTemplateSchedulingGracefulShutdownMaxDuration) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
+type GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateSchedulingGracefulShutdownMaxDuration)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput) ToGetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput() GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput) ToGetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutputWithContext(ctx context.Context) GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput) Index(i pulumi.IntInput) GetInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateSchedulingGracefulShutdownMaxDuration {
+		return vs[0].([]GetInstanceTemplateSchedulingGracefulShutdownMaxDuration)[vs[1].(int)]
+	}).(GetInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput)
 }
 
 type GetInstanceTemplateSchedulingLocalSsdRecoveryTimeout struct {
@@ -45165,6 +47474,8 @@ type GetRegionInstanceTemplateScheduling struct {
 	AutomaticRestart bool `pulumi:"automaticRestart"`
 	// Specifies the availability domain, which this instance should be scheduled on.
 	AvailabilityDomain int `pulumi:"availabilityDomain"`
+	// Settings for the instance to perform a graceful shutdown.
+	GracefulShutdowns []GetRegionInstanceTemplateSchedulingGracefulShutdown `pulumi:"gracefulShutdowns"`
 	// Beta Time in seconds for host error detection.
 	HostErrorTimeoutSeconds int `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
@@ -45217,6 +47528,8 @@ type GetRegionInstanceTemplateSchedulingArgs struct {
 	AutomaticRestart pulumi.BoolInput `pulumi:"automaticRestart"`
 	// Specifies the availability domain, which this instance should be scheduled on.
 	AvailabilityDomain pulumi.IntInput `pulumi:"availabilityDomain"`
+	// Settings for the instance to perform a graceful shutdown.
+	GracefulShutdowns GetRegionInstanceTemplateSchedulingGracefulShutdownArrayInput `pulumi:"gracefulShutdowns"`
 	// Beta Time in seconds for host error detection.
 	HostErrorTimeoutSeconds pulumi.IntInput `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
@@ -45314,6 +47627,13 @@ func (o GetRegionInstanceTemplateSchedulingOutput) AvailabilityDomain() pulumi.I
 	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) int { return v.AvailabilityDomain }).(pulumi.IntOutput)
 }
 
+// Settings for the instance to perform a graceful shutdown.
+func (o GetRegionInstanceTemplateSchedulingOutput) GracefulShutdowns() GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) []GetRegionInstanceTemplateSchedulingGracefulShutdown {
+		return v.GracefulShutdowns
+	}).(GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput)
+}
+
 // Beta Time in seconds for host error detection.
 func (o GetRegionInstanceTemplateSchedulingOutput) HostErrorTimeoutSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) int { return v.HostErrorTimeoutSeconds }).(pulumi.IntOutput)
@@ -45406,6 +47726,241 @@ func (o GetRegionInstanceTemplateSchedulingArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateScheduling {
 		return vs[0].([]GetRegionInstanceTemplateScheduling)[vs[1].(int)]
 	}).(GetRegionInstanceTemplateSchedulingOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingGracefulShutdown struct {
+	// Opts-in for graceful shutdown.
+	Enabled bool `pulumi:"enabled"`
+	// The time allotted for the instance to gracefully shut down.
+	// 										If the graceful shutdown isn't complete after this time, then the instance
+	// 										transitions to the STOPPING state.
+	MaxDurations []GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration `pulumi:"maxDurations"`
+}
+
+// GetRegionInstanceTemplateSchedulingGracefulShutdownInput is an input type that accepts GetRegionInstanceTemplateSchedulingGracefulShutdownArgs and GetRegionInstanceTemplateSchedulingGracefulShutdownOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateSchedulingGracefulShutdownInput` via:
+//
+//	GetRegionInstanceTemplateSchedulingGracefulShutdownArgs{...}
+type GetRegionInstanceTemplateSchedulingGracefulShutdownInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateSchedulingGracefulShutdownOutput() GetRegionInstanceTemplateSchedulingGracefulShutdownOutput
+	ToGetRegionInstanceTemplateSchedulingGracefulShutdownOutputWithContext(context.Context) GetRegionInstanceTemplateSchedulingGracefulShutdownOutput
+}
+
+type GetRegionInstanceTemplateSchedulingGracefulShutdownArgs struct {
+	// Opts-in for graceful shutdown.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The time allotted for the instance to gracefully shut down.
+	// 										If the graceful shutdown isn't complete after this time, then the instance
+	// 										transitions to the STOPPING state.
+	MaxDurations GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayInput `pulumi:"maxDurations"`
+}
+
+func (GetRegionInstanceTemplateSchedulingGracefulShutdownArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateSchedulingGracefulShutdown)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateSchedulingGracefulShutdownArgs) ToGetRegionInstanceTemplateSchedulingGracefulShutdownOutput() GetRegionInstanceTemplateSchedulingGracefulShutdownOutput {
+	return i.ToGetRegionInstanceTemplateSchedulingGracefulShutdownOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateSchedulingGracefulShutdownArgs) ToGetRegionInstanceTemplateSchedulingGracefulShutdownOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingGracefulShutdownOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateSchedulingGracefulShutdownOutput)
+}
+
+// GetRegionInstanceTemplateSchedulingGracefulShutdownArrayInput is an input type that accepts GetRegionInstanceTemplateSchedulingGracefulShutdownArray and GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateSchedulingGracefulShutdownArrayInput` via:
+//
+//	GetRegionInstanceTemplateSchedulingGracefulShutdownArray{ GetRegionInstanceTemplateSchedulingGracefulShutdownArgs{...} }
+type GetRegionInstanceTemplateSchedulingGracefulShutdownArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput() GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput
+	ToGetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutputWithContext(context.Context) GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput
+}
+
+type GetRegionInstanceTemplateSchedulingGracefulShutdownArray []GetRegionInstanceTemplateSchedulingGracefulShutdownInput
+
+func (GetRegionInstanceTemplateSchedulingGracefulShutdownArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateSchedulingGracefulShutdown)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateSchedulingGracefulShutdownArray) ToGetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput() GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput {
+	return i.ToGetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateSchedulingGracefulShutdownArray) ToGetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingGracefulShutdownOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateSchedulingGracefulShutdownOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateSchedulingGracefulShutdown)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownOutput) ToGetRegionInstanceTemplateSchedulingGracefulShutdownOutput() GetRegionInstanceTemplateSchedulingGracefulShutdownOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownOutput) ToGetRegionInstanceTemplateSchedulingGracefulShutdownOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingGracefulShutdownOutput {
+	return o
+}
+
+// Opts-in for graceful shutdown.
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateSchedulingGracefulShutdown) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The time allotted for the instance to gracefully shut down.
+//
+//	If the graceful shutdown isn't complete after this time, then the instance
+//	transitions to the STOPPING state.
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownOutput) MaxDurations() GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateSchedulingGracefulShutdown) []GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration {
+		return v.MaxDurations
+	}).(GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateSchedulingGracefulShutdown)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput) ToGetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput() GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput) ToGetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceTemplateSchedulingGracefulShutdownOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateSchedulingGracefulShutdown {
+		return vs[0].([]GetRegionInstanceTemplateSchedulingGracefulShutdown)[vs[1].(int)]
+	}).(GetRegionInstanceTemplateSchedulingGracefulShutdownOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// 													resolution. Durations less than one second are represented
+	// 													with a 0 seconds field and a positive nanos field. Must
+	// 													be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// 													The value must be between 1 and 3600, which is 3,600 seconds (one hour).
+	Seconds int `pulumi:"seconds"`
+}
+
+// GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationInput is an input type that accepts GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs and GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationInput` via:
+//
+//	GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs{...}
+type GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput() GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput
+	ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutputWithContext(context.Context) GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput
+}
+
+type GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// 													resolution. Durations less than one second are represented
+	// 													with a 0 seconds field and a positive nanos field. Must
+	// 													be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// 													The value must be between 1 and 3600, which is 3,600 seconds (one hour).
+	Seconds pulumi.IntInput `pulumi:"seconds"`
+}
+
+func (GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs) ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput() GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput {
+	return i.ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs) ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput)
+}
+
+// GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayInput is an input type that accepts GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArray and GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayInput` via:
+//
+//	GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArray{ GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs{...} }
+type GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput() GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput
+	ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutputWithContext(context.Context) GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput
+}
+
+type GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArray []GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationInput
+
+func (GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArray) ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput() GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput {
+	return i.ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArray) ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput) ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput() GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput) ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput {
+	return o
+}
+
+// Span of time that's a fraction of a second at nanosecond
+//
+//	resolution. Durations less than one second are represented
+//	with a 0 seconds field and a positive nanos field. Must
+//	be from 0 to 999,999,999 inclusive.
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Span of time at a resolution of a second.
+//
+//	The value must be between 1 and 3600, which is 3,600 seconds (one hour).
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput) ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput() GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput) ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration {
+		return vs[0].([]GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration)[vs[1].(int)]
+	}).(GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput)
 }
 
 type GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout struct {
@@ -54294,6 +56849,26 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatRuleActionInput)(nil)).Elem(), RouterNatRuleActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatRuleActionPtrInput)(nil)).Elem(), RouterNatRuleActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatSubnetworkInput)(nil)).Elem(), RouterNatSubnetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatSubnetworkArrayInput)(nil)).Elem(), RouterNatSubnetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterPeerAdvertisedIpRangeInput)(nil)).Elem(), RouterPeerAdvertisedIpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterPeerAdvertisedIpRangeArrayInput)(nil)).Elem(), RouterPeerAdvertisedIpRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterPeerBfdInput)(nil)).Elem(), RouterPeerBfdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterPeerBfdPtrInput)(nil)).Elem(), RouterPeerBfdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterPeerCustomLearnedIpRangeInput)(nil)).Elem(), RouterPeerCustomLearnedIpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterPeerCustomLearnedIpRangeArrayInput)(nil)).Elem(), RouterPeerCustomLearnedIpRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterPeerMd5AuthenticationKeyInput)(nil)).Elem(), RouterPeerMd5AuthenticationKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterPeerMd5AuthenticationKeyPtrInput)(nil)).Elem(), RouterPeerMd5AuthenticationKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterRoutePolicyTermInput)(nil)).Elem(), RouterRoutePolicyTermArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterRoutePolicyTermArrayInput)(nil)).Elem(), RouterRoutePolicyTermArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterRoutePolicyTermActionInput)(nil)).Elem(), RouterRoutePolicyTermActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterRoutePolicyTermActionArrayInput)(nil)).Elem(), RouterRoutePolicyTermActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterRoutePolicyTermMatchInput)(nil)).Elem(), RouterRoutePolicyTermMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterRoutePolicyTermMatchPtrInput)(nil)).Elem(), RouterRoutePolicyTermMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterStatusBestRouteInput)(nil)).Elem(), RouterStatusBestRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterStatusBestRouteArrayInput)(nil)).Elem(), RouterStatusBestRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterStatusBestRoutesForRouterInput)(nil)).Elem(), RouterStatusBestRoutesForRouterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterStatusBestRoutesForRouterArrayInput)(nil)).Elem(), RouterStatusBestRoutesForRouterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigArgs{})
@@ -54720,6 +57295,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceReservationAffinitySpecificReservationArrayInput)(nil)).Elem(), GetInstanceReservationAffinitySpecificReservationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSchedulingInput)(nil)).Elem(), GetInstanceSchedulingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSchedulingArrayInput)(nil)).Elem(), GetInstanceSchedulingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSchedulingGracefulShutdownInput)(nil)).Elem(), GetInstanceSchedulingGracefulShutdownArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSchedulingGracefulShutdownArrayInput)(nil)).Elem(), GetInstanceSchedulingGracefulShutdownArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSchedulingGracefulShutdownMaxDurationInput)(nil)).Elem(), GetInstanceSchedulingGracefulShutdownMaxDurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSchedulingGracefulShutdownMaxDurationArrayInput)(nil)).Elem(), GetInstanceSchedulingGracefulShutdownMaxDurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSchedulingLocalSsdRecoveryTimeoutInput)(nil)).Elem(), GetInstanceSchedulingLocalSsdRecoveryTimeoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSchedulingLocalSsdRecoveryTimeoutArrayInput)(nil)).Elem(), GetInstanceSchedulingLocalSsdRecoveryTimeoutArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSchedulingMaxRunDurationInput)(nil)).Elem(), GetInstanceSchedulingMaxRunDurationArgs{})
@@ -54764,6 +57343,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateReservationAffinitySpecificReservationArrayInput)(nil)).Elem(), GetInstanceTemplateReservationAffinitySpecificReservationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateSchedulingInput)(nil)).Elem(), GetInstanceTemplateSchedulingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateSchedulingArrayInput)(nil)).Elem(), GetInstanceTemplateSchedulingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateSchedulingGracefulShutdownInput)(nil)).Elem(), GetInstanceTemplateSchedulingGracefulShutdownArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateSchedulingGracefulShutdownArrayInput)(nil)).Elem(), GetInstanceTemplateSchedulingGracefulShutdownArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateSchedulingGracefulShutdownMaxDurationInput)(nil)).Elem(), GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayInput)(nil)).Elem(), GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateSchedulingLocalSsdRecoveryTimeoutInput)(nil)).Elem(), GetInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayInput)(nil)).Elem(), GetInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateSchedulingMaxRunDurationInput)(nil)).Elem(), GetInstanceTemplateSchedulingMaxRunDurationArgs{})
@@ -54864,6 +57447,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateReservationAffinitySpecificReservationArrayInput)(nil)).Elem(), GetRegionInstanceTemplateReservationAffinitySpecificReservationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingArrayInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingGracefulShutdownInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingGracefulShutdownArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingGracefulShutdownArrayInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingGracefulShutdownArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingMaxRunDurationInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingMaxRunDurationArgs{})
@@ -55004,6 +57591,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(RouterNatRuleActionOutput{})
+	pulumi.RegisterOutputType(RouterNatRuleActionPtrOutput{})
+	pulumi.RegisterOutputType(RouterNatSubnetworkOutput{})
+	pulumi.RegisterOutputType(RouterNatSubnetworkArrayOutput{})
+	pulumi.RegisterOutputType(RouterPeerAdvertisedIpRangeOutput{})
+	pulumi.RegisterOutputType(RouterPeerAdvertisedIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(RouterPeerBfdOutput{})
+	pulumi.RegisterOutputType(RouterPeerBfdPtrOutput{})
+	pulumi.RegisterOutputType(RouterPeerCustomLearnedIpRangeOutput{})
+	pulumi.RegisterOutputType(RouterPeerCustomLearnedIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(RouterPeerMd5AuthenticationKeyOutput{})
+	pulumi.RegisterOutputType(RouterPeerMd5AuthenticationKeyPtrOutput{})
+	pulumi.RegisterOutputType(RouterRoutePolicyTermOutput{})
+	pulumi.RegisterOutputType(RouterRoutePolicyTermArrayOutput{})
+	pulumi.RegisterOutputType(RouterRoutePolicyTermActionOutput{})
+	pulumi.RegisterOutputType(RouterRoutePolicyTermActionArrayOutput{})
+	pulumi.RegisterOutputType(RouterRoutePolicyTermMatchOutput{})
+	pulumi.RegisterOutputType(RouterRoutePolicyTermMatchPtrOutput{})
+	pulumi.RegisterOutputType(RouterStatusBestRouteOutput{})
+	pulumi.RegisterOutputType(RouterStatusBestRouteArrayOutput{})
 	pulumi.RegisterOutputType(RouterStatusBestRoutesForRouterOutput{})
 	pulumi.RegisterOutputType(RouterStatusBestRoutesForRouterArrayOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigOutput{})
@@ -55430,6 +58037,10 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceReservationAffinitySpecificReservationArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceSchedulingOutput{})
 	pulumi.RegisterOutputType(GetInstanceSchedulingArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceSchedulingGracefulShutdownOutput{})
+	pulumi.RegisterOutputType(GetInstanceSchedulingGracefulShutdownArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceSchedulingGracefulShutdownMaxDurationOutput{})
+	pulumi.RegisterOutputType(GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceSchedulingLocalSsdRecoveryTimeoutOutput{})
 	pulumi.RegisterOutputType(GetInstanceSchedulingLocalSsdRecoveryTimeoutArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceSchedulingMaxRunDurationOutput{})
@@ -55474,6 +58085,10 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceTemplateReservationAffinitySpecificReservationArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateSchedulingOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateSchedulingArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateSchedulingGracefulShutdownOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateSchedulingGracefulShutdownArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateSchedulingMaxRunDurationOutput{})
@@ -55574,6 +58189,10 @@ func init() {
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateReservationAffinitySpecificReservationArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingGracefulShutdownOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingMaxRunDurationOutput{})

@@ -22,6 +22,7 @@ class MeshArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  interception_port: Optional[pulumi.Input[int]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -35,6 +36,7 @@ class MeshArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Mesh resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[str] location: Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
         :param pulumi.Input[str] name: Short name of the Mesh resource to be created.
                
                
@@ -48,6 +50,8 @@ class MeshArgs:
             pulumi.set(__self__, "interception_port", interception_port)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -97,6 +101,18 @@ class MeshArgs:
 
     @property
     @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Short name of the Mesh resource to be created.
@@ -132,6 +148,7 @@ class _MeshState:
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  interception_port: Optional[pulumi.Input[int]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -150,6 +167,7 @@ class _MeshState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Mesh resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[str] location: Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
         :param pulumi.Input[str] name: Short name of the Mesh resource to be created.
                
                
@@ -171,6 +189,8 @@ class _MeshState:
             pulumi.set(__self__, "interception_port", interception_port)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -250,6 +270,18 @@ class _MeshState:
 
     @property
     @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Short name of the Mesh resource to be created.
@@ -322,6 +354,7 @@ class Mesh(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  interception_port: Optional[pulumi.Input[int]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -355,29 +388,39 @@ class Mesh(pulumi.CustomResource):
             },
             description="my description")
         ```
+        ### Network Services Mesh Location
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.Mesh("default",
+            name="my-mesh",
+            location="global")
+        ```
 
         ## Import
 
         Mesh can be imported using any of these accepted formats:
 
-        * `projects/{{project}}/locations/global/meshes/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/meshes/{{name}}`
 
-        * `{{project}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-        * `{{name}}`
+        * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Mesh can be imported using one of the formats above. For example:
 
         ```sh
-        $ pulumi import gcp:networkservices/mesh:Mesh default projects/{{project}}/locations/global/meshes/{{name}}
+        $ pulumi import gcp:networkservices/mesh:Mesh default projects/{{project}}/locations/{{location}}/meshes/{{name}}
         ```
 
         ```sh
-        $ pulumi import gcp:networkservices/mesh:Mesh default {{project}}/{{name}}
+        $ pulumi import gcp:networkservices/mesh:Mesh default {{project}}/{{location}}/{{name}}
         ```
 
         ```sh
-        $ pulumi import gcp:networkservices/mesh:Mesh default {{name}}
+        $ pulumi import gcp:networkservices/mesh:Mesh default {{location}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -391,6 +434,7 @@ class Mesh(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Mesh resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[str] location: Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
         :param pulumi.Input[str] name: Short name of the Mesh resource to be created.
                
                
@@ -434,29 +478,39 @@ class Mesh(pulumi.CustomResource):
             },
             description="my description")
         ```
+        ### Network Services Mesh Location
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.Mesh("default",
+            name="my-mesh",
+            location="global")
+        ```
 
         ## Import
 
         Mesh can be imported using any of these accepted formats:
 
-        * `projects/{{project}}/locations/global/meshes/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/meshes/{{name}}`
 
-        * `{{project}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-        * `{{name}}`
+        * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Mesh can be imported using one of the formats above. For example:
 
         ```sh
-        $ pulumi import gcp:networkservices/mesh:Mesh default projects/{{project}}/locations/global/meshes/{{name}}
+        $ pulumi import gcp:networkservices/mesh:Mesh default projects/{{project}}/locations/{{location}}/meshes/{{name}}
         ```
 
         ```sh
-        $ pulumi import gcp:networkservices/mesh:Mesh default {{project}}/{{name}}
+        $ pulumi import gcp:networkservices/mesh:Mesh default {{project}}/{{location}}/{{name}}
         ```
 
         ```sh
-        $ pulumi import gcp:networkservices/mesh:Mesh default {{name}}
+        $ pulumi import gcp:networkservices/mesh:Mesh default {{location}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -477,6 +531,7 @@ class Mesh(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  interception_port: Optional[pulumi.Input[int]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -491,6 +546,7 @@ class Mesh(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["interception_port"] = interception_port
             __props__.__dict__["labels"] = labels
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
@@ -515,6 +571,7 @@ class Mesh(pulumi.CustomResource):
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             interception_port: Optional[pulumi.Input[int]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -538,6 +595,7 @@ class Mesh(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Mesh resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[str] location: Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
         :param pulumi.Input[str] name: Short name of the Mesh resource to be created.
                
                
@@ -558,6 +616,7 @@ class Mesh(pulumi.CustomResource):
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["interception_port"] = interception_port
         __props__.__dict__["labels"] = labels
+        __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
@@ -610,6 +669,14 @@ class Mesh(pulumi.CustomResource):
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[Optional[str]]:
+        """
+        Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
+        """
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter

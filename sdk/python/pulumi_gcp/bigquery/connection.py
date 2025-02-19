@@ -751,11 +751,6 @@ class Connection(pulumi.CustomResource):
             name="user",
             instance=instance.name,
             password="tf-test-my-password_15222")
-        bq_sa = gcp.bigquery.get_default_service_account()
-        key_sa_user = gcp.kms.CryptoKeyIAMMember("key_sa_user",
-            crypto_key_id="projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key",
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            member=f"serviceAccount:{bq_sa.email}")
         bq_connection_cmek = gcp.bigquery.Connection("bq-connection-cmek",
             friendly_name="👋",
             description="a riveting description",
@@ -769,8 +764,7 @@ class Connection(pulumi.CustomResource):
                     "username": user.name,
                     "password": user.password,
                 },
-            },
-            opts = pulumi.ResourceOptions(depends_on=[key_sa_user]))
+            })
         ```
 
         ## Import
@@ -1057,11 +1051,6 @@ class Connection(pulumi.CustomResource):
             name="user",
             instance=instance.name,
             password="tf-test-my-password_15222")
-        bq_sa = gcp.bigquery.get_default_service_account()
-        key_sa_user = gcp.kms.CryptoKeyIAMMember("key_sa_user",
-            crypto_key_id="projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key",
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            member=f"serviceAccount:{bq_sa.email}")
         bq_connection_cmek = gcp.bigquery.Connection("bq-connection-cmek",
             friendly_name="👋",
             description="a riveting description",
@@ -1075,8 +1064,7 @@ class Connection(pulumi.CustomResource):
                     "username": user.name,
                     "password": user.password,
                 },
-            },
-            opts = pulumi.ResourceOptions(depends_on=[key_sa_user]))
+            })
         ```
 
         ## Import

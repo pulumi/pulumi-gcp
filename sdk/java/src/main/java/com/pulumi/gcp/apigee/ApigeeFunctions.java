@@ -18,7 +18,7 @@ public final class ApigeeFunctions {
     /**
      * Retrieves the current IAM policy data for environment
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -61,7 +61,7 @@ public final class ApigeeFunctions {
     /**
      * Retrieves the current IAM policy data for environment
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -104,7 +104,7 @@ public final class ApigeeFunctions {
     /**
      * Retrieves the current IAM policy data for environment
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -147,7 +147,7 @@ public final class ApigeeFunctions {
     /**
      * Retrieves the current IAM policy data for environment
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -190,7 +190,7 @@ public final class ApigeeFunctions {
     /**
      * Retrieves the current IAM policy data for environment
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

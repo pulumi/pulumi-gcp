@@ -108,7 +108,7 @@ def get_iam_policy(data_policy_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for datapolicy
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -148,7 +148,7 @@ def get_iam_policy_output(data_policy_id: Optional[pulumi.Input[str]] = None,
     """
     Retrieves the current IAM policy data for datapolicy
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

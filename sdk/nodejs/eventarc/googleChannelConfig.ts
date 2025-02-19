@@ -7,9 +7,16 @@ import * as utilities from "../utilities";
 /**
  * The Eventarc GoogleChannelConfig resource
  *
+ * To get more information about GoogleChannelConfig, see:
+ *
+ * * [API documentation](https://cloud.google.com/eventarc/docs/reference/rest/v1/projects.locations)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/eventarc/docs/use-cmek#enable-cmek-google-channel)
+ *
  * ## Example Usage
  *
- * ### Basic
+ * ### Eventarc Google Channel Config With Cmek
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -19,24 +26,23 @@ import * as utilities from "../utilities";
  * });
  * const testKeyRing = gcp.kms.getKMSKeyRing({
  *     name: "keyring",
- *     location: "us-west1",
+ *     location: "us-centra1",
  * });
  * const key = testKeyRing.then(testKeyRing => gcp.kms.getKMSCryptoKey({
  *     name: "key",
  *     keyRing: testKeyRing.id,
  * }));
- * const key1Member = new gcp.kms.CryptoKeyIAMMember("key1_member", {
- *     cryptoKeyId: key1.id,
+ * const keyMember = new gcp.kms.CryptoKeyIAMMember("key_member", {
+ *     cryptoKeyId: key.then(key => key.id),
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     member: testProject.then(testProject => `serviceAccount:service-${testProject.number}@gcp-sa-eventarc.iam.gserviceaccount.com`),
  * });
  * const primary = new gcp.eventarc.GoogleChannelConfig("primary", {
- *     location: "us-west1",
- *     name: "channel",
- *     project: testProject.then(testProject => testProject.projectId),
- *     cryptoKeyName: key1.id,
+ *     location: "us-central1",
+ *     name: "googleChannelConfig",
+ *     cryptoKeyName: key.then(key => key.id),
  * }, {
- *     dependsOn: [key1Member],
+ *     dependsOn: [keyMember],
  * });
  * ```
  *
@@ -98,18 +104,18 @@ export class GoogleChannelConfig extends pulumi.CustomResource {
     public readonly cryptoKeyName!: pulumi.Output<string | undefined>;
     /**
      * The location for the resource
-     */
-    public readonly location!: pulumi.Output<string>;
-    /**
-     * Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-     *
      *
      *
      * - - -
      */
+    public readonly location!: pulumi.Output<string>;
+    /**
+     * Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
+     */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -161,18 +167,18 @@ export interface GoogleChannelConfigState {
     cryptoKeyName?: pulumi.Input<string>;
     /**
      * The location for the resource
-     */
-    location?: pulumi.Input<string>;
-    /**
-     * Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-     *
      *
      *
      * - - -
      */
+    location?: pulumi.Input<string>;
+    /**
+     * Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
+     */
     name?: pulumi.Input<string>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
@@ -191,18 +197,18 @@ export interface GoogleChannelConfigArgs {
     cryptoKeyName?: pulumi.Input<string>;
     /**
      * The location for the resource
-     */
-    location: pulumi.Input<string>;
-    /**
-     * Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-     *
      *
      *
      * - - -
      */
+    location: pulumi.Input<string>;
+    /**
+     * Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
+     */
     name?: pulumi.Input<string>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
 }

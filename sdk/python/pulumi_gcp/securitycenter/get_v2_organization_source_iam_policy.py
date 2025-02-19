@@ -98,7 +98,7 @@ def get_v2_organization_source_iam_policy(organization: Optional[str] = None,
     """
     Retrieves the current IAM policy data for organizationsource
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -128,7 +128,7 @@ def get_v2_organization_source_iam_policy_output(organization: Optional[pulumi.I
     """
     Retrieves the current IAM policy data for organizationsource
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

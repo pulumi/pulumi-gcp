@@ -60,6 +60,20 @@ public class ServicePerimeterDryRunIngressPolicy extends com.pulumi.resources.Cu
         return this.accessPolicyId;
     }
     /**
+     * The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that&#39;s used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
+     * 
+     */
+    @Export(name="etag", refs={String.class}, tree="[0]")
+    private Output<String> etag;
+
+    /**
+     * @return The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that&#39;s used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
+     * 
+     */
+    public Output<String> etag() {
+        return this.etag;
+    }
+    /**
      * Defines the conditions on the source of a request causing this `IngressPolicy`
      * to apply.
      * Structure is documented below.
@@ -112,6 +126,20 @@ public class ServicePerimeterDryRunIngressPolicy extends com.pulumi.resources.Cu
      */
     public Output<String> perimeter() {
         return this.perimeter;
+    }
+    /**
+     * Human readable title. Must be unique within the perimeter. Does not affect behavior.
+     * 
+     */
+    @Export(name="title", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> title;
+
+    /**
+     * @return Human readable title. Must be unique within the perimeter. Does not affect behavior.
+     * 
+     */
+    public Output<Optional<String>> title() {
+        return Codegen.optional(this.title);
     }
 
     /**

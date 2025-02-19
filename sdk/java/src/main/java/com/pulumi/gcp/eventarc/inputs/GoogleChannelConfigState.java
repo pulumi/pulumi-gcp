@@ -33,12 +33,16 @@ public final class GoogleChannelConfigState extends com.pulumi.resources.Resourc
     /**
      * The location for the resource
      * 
+     * ***
+     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The location for the resource
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -48,8 +52,6 @@ public final class GoogleChannelConfigState extends com.pulumi.resources.Resourc
     /**
      * Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -57,22 +59,22 @@ public final class GoogleChannelConfigState extends com.pulumi.resources.Resourc
     /**
      * @return Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
      * 
-     * ***
-     * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Optional<Output<String>> project() {
@@ -146,6 +148,8 @@ public final class GoogleChannelConfigState extends com.pulumi.resources.Resourc
         /**
          * @param location The location for the resource
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -157,6 +161,8 @@ public final class GoogleChannelConfigState extends com.pulumi.resources.Resourc
         /**
          * @param location The location for the resource
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -166,8 +172,6 @@ public final class GoogleChannelConfigState extends com.pulumi.resources.Resourc
 
         /**
          * @param name Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -180,8 +184,6 @@ public final class GoogleChannelConfigState extends com.pulumi.resources.Resourc
         /**
          * @param name Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -190,7 +192,8 @@ public final class GoogleChannelConfigState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -201,7 +204,8 @@ public final class GoogleChannelConfigState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 

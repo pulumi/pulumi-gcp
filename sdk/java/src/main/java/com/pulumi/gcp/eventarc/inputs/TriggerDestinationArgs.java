@@ -20,6 +20,7 @@ public final class TriggerDestinationArgs extends com.pulumi.resources.ResourceA
     public static final TriggerDestinationArgs Empty = new TriggerDestinationArgs();
 
     /**
+     * (Output)
      * The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
      * 
      */
@@ -27,7 +28,8 @@ public final class TriggerDestinationArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> cloudFunction;
 
     /**
-     * @return The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
+     * @return (Output)
+     * The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
      * 
      */
     public Optional<Output<String>> cloudFunction() {
@@ -36,6 +38,7 @@ public final class TriggerDestinationArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+     * Structure is documented below.
      * 
      */
     @Import(name="cloudRunService")
@@ -43,6 +46,7 @@ public final class TriggerDestinationArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<TriggerDestinationCloudRunServiceArgs>> cloudRunService() {
@@ -51,6 +55,7 @@ public final class TriggerDestinationArgs extends com.pulumi.resources.ResourceA
 
     /**
      * A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+     * Structure is documented below.
      * 
      */
     @Import(name="gke")
@@ -58,6 +63,7 @@ public final class TriggerDestinationArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<TriggerDestinationGkeArgs>> gke() {
@@ -66,6 +72,7 @@ public final class TriggerDestinationArgs extends com.pulumi.resources.ResourceA
 
     /**
      * An HTTP endpoint destination described by an URI.
+     * Structure is documented below.
      * 
      */
     @Import(name="httpEndpoint")
@@ -73,6 +80,7 @@ public final class TriggerDestinationArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return An HTTP endpoint destination described by an URI.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<TriggerDestinationHttpEndpointArgs>> httpEndpoint() {
@@ -81,6 +89,7 @@ public final class TriggerDestinationArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+     * Structure is documented below.
      * 
      */
     @Import(name="networkConfig")
@@ -88,6 +97,7 @@ public final class TriggerDestinationArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<TriggerDestinationNetworkConfigArgs>> networkConfig() {
@@ -139,7 +149,8 @@ public final class TriggerDestinationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param cloudFunction The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
+         * @param cloudFunction (Output)
+         * The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
          * 
          * @return builder
          * 
@@ -150,7 +161,8 @@ public final class TriggerDestinationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param cloudFunction The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
+         * @param cloudFunction (Output)
+         * The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
          * 
          * @return builder
          * 
@@ -161,6 +173,7 @@ public final class TriggerDestinationArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param cloudRunService Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -172,6 +185,7 @@ public final class TriggerDestinationArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param cloudRunService Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -182,6 +196,7 @@ public final class TriggerDestinationArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param gke A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -193,6 +208,7 @@ public final class TriggerDestinationArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param gke A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -203,6 +219,7 @@ public final class TriggerDestinationArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param httpEndpoint An HTTP endpoint destination described by an URI.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -214,6 +231,7 @@ public final class TriggerDestinationArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param httpEndpoint An HTTP endpoint destination described by an URI.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -224,6 +242,7 @@ public final class TriggerDestinationArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param networkConfig Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -235,6 +254,7 @@ public final class TriggerDestinationArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param networkConfig Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+         * Structure is documented below.
          * 
          * @return builder
          * 

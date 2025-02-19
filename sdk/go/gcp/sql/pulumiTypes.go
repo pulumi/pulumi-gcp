@@ -2195,12 +2195,12 @@ type DatabaseInstanceSettingsBackupConfiguration struct {
 	Enabled *bool `pulumi:"enabled"`
 	// The region where the backup will be stored
 	Location *string `pulumi:"location"`
-	// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
+	// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances. Enabled by default for PostgreSQL Enterprise Plus and SQL Server Enterprise Plus instances.
 	PointInTimeRecoveryEnabled *bool `pulumi:"pointInTimeRecoveryEnabled"`
 	// `HH:MM` format time indicating when backup
 	// configuration starts.
 	StartTime *string `pulumi:"startTime"`
-	// The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
+	// The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus and SQL Server Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
 	TransactionLogRetentionDays *int `pulumi:"transactionLogRetentionDays"`
 }
 
@@ -2225,12 +2225,12 @@ type DatabaseInstanceSettingsBackupConfigurationArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// The region where the backup will be stored
 	Location pulumi.StringPtrInput `pulumi:"location"`
-	// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
+	// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances. Enabled by default for PostgreSQL Enterprise Plus and SQL Server Enterprise Plus instances.
 	PointInTimeRecoveryEnabled pulumi.BoolPtrInput `pulumi:"pointInTimeRecoveryEnabled"`
 	// `HH:MM` format time indicating when backup
 	// configuration starts.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
+	// The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus and SQL Server Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
 	TransactionLogRetentionDays pulumi.IntPtrInput `pulumi:"transactionLogRetentionDays"`
 }
 
@@ -2334,7 +2334,7 @@ func (o DatabaseInstanceSettingsBackupConfigurationOutput) Location() pulumi.Str
 	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
+// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances. Enabled by default for PostgreSQL Enterprise Plus and SQL Server Enterprise Plus instances.
 func (o DatabaseInstanceSettingsBackupConfigurationOutput) PointInTimeRecoveryEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *bool { return v.PointInTimeRecoveryEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -2345,7 +2345,7 @@ func (o DatabaseInstanceSettingsBackupConfigurationOutput) StartTime() pulumi.St
 	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
-// The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
+// The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus and SQL Server Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
 func (o DatabaseInstanceSettingsBackupConfigurationOutput) TransactionLogRetentionDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *int { return v.TransactionLogRetentionDays }).(pulumi.IntPtrOutput)
 }
@@ -2415,7 +2415,7 @@ func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) Location() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
+// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances. Enabled by default for PostgreSQL Enterprise Plus and SQL Server Enterprise Plus instances.
 func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) PointInTimeRecoveryEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsBackupConfiguration) *bool {
 		if v == nil {
@@ -2436,7 +2436,7 @@ func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) StartTime() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
+// The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus and SQL Server Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
 func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) TransactionLogRetentionDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsBackupConfiguration) *int {
 		if v == nil {

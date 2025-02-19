@@ -118,7 +118,7 @@ def get_log_view_iam_policy(bucket: Optional[str] = None,
     """
     Retrieves the current IAM policy data for logview
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -162,7 +162,7 @@ def get_log_view_iam_policy_output(bucket: Optional[pulumi.Input[str]] = None,
     """
     Retrieves the current IAM policy data for logview
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

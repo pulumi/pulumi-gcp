@@ -69,6 +69,21 @@ public final class ServicePerimeterDryRunEgressPolicyState extends com.pulumi.re
     }
 
     /**
+     * The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that&#39;s used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
+     * 
+     */
+    @Import(name="etag")
+    private @Nullable Output<String> etag;
+
+    /**
+     * @return The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that&#39;s used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
+     * 
+     */
+    public Optional<Output<String>> etag() {
+        return Optional.ofNullable(this.etag);
+    }
+
+    /**
      * The name of the Service Perimeter to add this resource to.
      * 
      * ***
@@ -87,13 +102,30 @@ public final class ServicePerimeterDryRunEgressPolicyState extends com.pulumi.re
         return Optional.ofNullable(this.perimeter);
     }
 
+    /**
+     * Human readable title. Must be unique within the perimeter. Does not affect behavior.
+     * 
+     */
+    @Import(name="title")
+    private @Nullable Output<String> title;
+
+    /**
+     * @return Human readable title. Must be unique within the perimeter. Does not affect behavior.
+     * 
+     */
+    public Optional<Output<String>> title() {
+        return Optional.ofNullable(this.title);
+    }
+
     private ServicePerimeterDryRunEgressPolicyState() {}
 
     private ServicePerimeterDryRunEgressPolicyState(ServicePerimeterDryRunEgressPolicyState $) {
         this.accessPolicyId = $.accessPolicyId;
         this.egressFrom = $.egressFrom;
         this.egressTo = $.egressTo;
+        this.etag = $.etag;
         this.perimeter = $.perimeter;
+        this.title = $.title;
     }
 
     public static Builder builder() {
@@ -184,6 +216,27 @@ public final class ServicePerimeterDryRunEgressPolicyState extends com.pulumi.re
         }
 
         /**
+         * @param etag The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that&#39;s used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder etag(@Nullable Output<String> etag) {
+            $.etag = etag;
+            return this;
+        }
+
+        /**
+         * @param etag The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that&#39;s used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder etag(String etag) {
+            return etag(Output.of(etag));
+        }
+
+        /**
          * @param perimeter The name of the Service Perimeter to add this resource to.
          * 
          * ***
@@ -206,6 +259,27 @@ public final class ServicePerimeterDryRunEgressPolicyState extends com.pulumi.re
          */
         public Builder perimeter(String perimeter) {
             return perimeter(Output.of(perimeter));
+        }
+
+        /**
+         * @param title Human readable title. Must be unique within the perimeter. Does not affect behavior.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder title(@Nullable Output<String> title) {
+            $.title = title;
+            return this;
+        }
+
+        /**
+         * @param title Human readable title. Must be unique within the perimeter. Does not affect behavior.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder title(String title) {
+            return title(Output.of(title));
         }
 
         public ServicePerimeterDryRunEgressPolicyState build() {

@@ -98,7 +98,7 @@ def get_note_iam_policy(note: Optional[str] = None,
     """
     Retrieves the current IAM policy data for note
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -131,7 +131,7 @@ def get_note_iam_policy_output(note: Optional[pulumi.Input[str]] = None,
     """
     Retrieves the current IAM policy data for note
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

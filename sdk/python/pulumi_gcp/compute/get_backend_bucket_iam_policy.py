@@ -96,7 +96,16 @@ def get_backend_bucket_iam_policy(name: Optional[str] = None,
                                   project: Optional[str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBackendBucketIamPolicyResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.compute.get_backend_bucket_iam_policy(project=image_backend["project"],
+        name=image_backend["name"])
+    ```
+
 
     :param str name: Used to find the parent resource to bind the IAM policy to
     :param str project: The ID of the project in which the resource belongs.
@@ -118,7 +127,16 @@ def get_backend_bucket_iam_policy_output(name: Optional[pulumi.Input[str]] = Non
                                          project: Optional[pulumi.Input[Optional[str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackendBucketIamPolicyResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.compute.get_backend_bucket_iam_policy(project=image_backend["project"],
+        name=image_backend["name"])
+    ```
+
 
     :param str name: Used to find the parent resource to bind the IAM policy to
     :param str project: The ID of the project in which the resource belongs.

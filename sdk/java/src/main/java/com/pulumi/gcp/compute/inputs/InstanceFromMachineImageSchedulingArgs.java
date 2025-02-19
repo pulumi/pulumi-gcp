@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageSchedulingGracefulShutdownArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageSchedulingMaxRunDurationArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageSchedulingNodeAffinityArgs;
@@ -50,6 +51,21 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
      */
     public Optional<Output<Integer>> availabilityDomain() {
         return Optional.ofNullable(this.availabilityDomain);
+    }
+
+    /**
+     * Settings for the instance to perform a graceful shutdown.
+     * 
+     */
+    @Import(name="gracefulShutdown")
+    private @Nullable Output<InstanceFromMachineImageSchedulingGracefulShutdownArgs> gracefulShutdown;
+
+    /**
+     * @return Settings for the instance to perform a graceful shutdown.
+     * 
+     */
+    public Optional<Output<InstanceFromMachineImageSchedulingGracefulShutdownArgs>> gracefulShutdown() {
+        return Optional.ofNullable(this.gracefulShutdown);
     }
 
     /**
@@ -220,6 +236,7 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
     private InstanceFromMachineImageSchedulingArgs(InstanceFromMachineImageSchedulingArgs $) {
         this.automaticRestart = $.automaticRestart;
         this.availabilityDomain = $.availabilityDomain;
+        this.gracefulShutdown = $.gracefulShutdown;
         this.hostErrorTimeoutSeconds = $.hostErrorTimeoutSeconds;
         this.instanceTerminationAction = $.instanceTerminationAction;
         this.localSsdRecoveryTimeout = $.localSsdRecoveryTimeout;
@@ -291,6 +308,27 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
          */
         public Builder availabilityDomain(Integer availabilityDomain) {
             return availabilityDomain(Output.of(availabilityDomain));
+        }
+
+        /**
+         * @param gracefulShutdown Settings for the instance to perform a graceful shutdown.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gracefulShutdown(@Nullable Output<InstanceFromMachineImageSchedulingGracefulShutdownArgs> gracefulShutdown) {
+            $.gracefulShutdown = gracefulShutdown;
+            return this;
+        }
+
+        /**
+         * @param gracefulShutdown Settings for the instance to perform a graceful shutdown.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gracefulShutdown(InstanceFromMachineImageSchedulingGracefulShutdownArgs gracefulShutdown) {
+            return gracefulShutdown(Output.of(gracefulShutdown));
         }
 
         /**

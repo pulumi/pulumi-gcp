@@ -24,6 +24,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int? AvailabilityDomain;
         /// <summary>
+        /// Settings for the instance to perform a graceful shutdown. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.InstanceTemplateSchedulingGracefulShutdown? GracefulShutdown;
+        /// <summary>
         /// Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         /// </summary>
         public readonly int? HostErrorTimeoutSeconds;
@@ -87,6 +91,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             int? availabilityDomain,
 
+            Outputs.InstanceTemplateSchedulingGracefulShutdown? gracefulShutdown,
+
             int? hostErrorTimeoutSeconds,
 
             string? instanceTerminationAction,
@@ -111,6 +117,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         {
             AutomaticRestart = automaticRestart;
             AvailabilityDomain = availabilityDomain;
+            GracefulShutdown = gracefulShutdown;
             HostErrorTimeoutSeconds = hostErrorTimeoutSeconds;
             InstanceTerminationAction = instanceTerminationAction;
             LocalSsdRecoveryTimeouts = localSsdRecoveryTimeouts;

@@ -32,6 +32,27 @@ public final class MuteConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional. The expiry of the mute config. Only applicable for dynamic configs.
+     * If the expiry is set, when the config expires, it is removed from all findings.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
+     * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    @Import(name="expiryTime")
+    private @Nullable Output<String> expiryTime;
+
+    /**
+     * @return Optional. The expiry of the mute config. Only applicable for dynamic configs.
+     * If the expiry is set, when the config expires, it is removed from all findings.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
+     * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    public Optional<Output<String>> expiryTime() {
+        return Optional.ofNullable(this.expiryTime);
+    }
+
+    /**
      * An expression that defines the filter to apply across create/update
      * events of findings. While creating a filter string, be mindful of
      * the scope in which the mute configuration is being created. E.g.,
@@ -92,13 +113,34 @@ public final class MuteConfigArgs extends com.pulumi.resources.ResourceArgs {
         return this.parent;
     }
 
+    /**
+     * The type of the mute config, which determines what type of mute state the config affects.
+     * Default value is `DYNAMIC`.
+     * Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return The type of the mute config, which determines what type of mute state the config affects.
+     * Default value is `DYNAMIC`.
+     * Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
     private MuteConfigArgs() {}
 
     private MuteConfigArgs(MuteConfigArgs $) {
         this.description = $.description;
+        this.expiryTime = $.expiryTime;
         this.filter = $.filter;
         this.muteConfigId = $.muteConfigId;
         this.parent = $.parent;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -138,6 +180,33 @@ public final class MuteConfigArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param expiryTime Optional. The expiry of the mute config. Only applicable for dynamic configs.
+         * If the expiry is set, when the config expires, it is removed from all findings.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
+         * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiryTime(@Nullable Output<String> expiryTime) {
+            $.expiryTime = expiryTime;
+            return this;
+        }
+
+        /**
+         * @param expiryTime Optional. The expiry of the mute config. Only applicable for dynamic configs.
+         * If the expiry is set, when the config expires, it is removed from all findings.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
+         * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiryTime(String expiryTime) {
+            return expiryTime(Output.of(expiryTime));
         }
 
         /**
@@ -217,6 +286,31 @@ public final class MuteConfigArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder parent(String parent) {
             return parent(Output.of(parent));
+        }
+
+        /**
+         * @param type The type of the mute config, which determines what type of mute state the config affects.
+         * Default value is `DYNAMIC`.
+         * Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type The type of the mute config, which determines what type of mute state the config affects.
+         * Default value is `DYNAMIC`.
+         * Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         public MuteConfigArgs build() {

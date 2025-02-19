@@ -22,7 +22,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Optional. The name of the channel associated with the trigger in
-     * `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from
+     * &#39;projects/{project}/locations/{location}/channels/{channel}&#39; format. You must provide a channel to receive events from
      * Eventarc SaaS partners.
      * 
      */
@@ -31,7 +31,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Optional. The name of the channel associated with the trigger in
-     * `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from
+     * &#39;projects/{project}/locations/{location}/channels/{channel}&#39; format. You must provide a channel to receive events from
      * Eventarc SaaS partners.
      * 
      */
@@ -71,6 +71,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Required. Destination specifies where the events should be sent to.
+     * Structure is documented below.
      * 
      */
     @Import(name="destination")
@@ -78,6 +79,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Required. Destination specifies where the events should be sent to.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<TriggerDestinationArgs>> destination() {
@@ -116,7 +118,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data
-     * field. This is set to `application/json` if the value is not defined.
+     * field. This is set to &#39;application/json&#39; if the value is not defined.
      * 
      */
     @Import(name="eventDataContentType")
@@ -124,7 +126,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data
-     * field. This is set to `application/json` if the value is not defined.
+     * field. This is set to &#39;application/json&#39; if the value is not defined.
      * 
      */
     public Optional<Output<String>> eventDataContentType() {
@@ -134,7 +136,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
     /**
      * Optional. User labels attached to the triggers that can be used to group resources. **Note**: This field is
      * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-     * `effective_labels` for all of the labels present on the resource.
+     * &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -143,7 +145,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Optional. User labels attached to the triggers that can be used to group resources. **Note**: This field is
      * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-     * `effective_labels` for all of the labels present on the resource.
+     * &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -167,6 +169,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
+     * Structure is documented below.
      * 
      */
     @Import(name="matchingCriterias")
@@ -174,6 +177,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<TriggerMatchingCriteriaArgs>>> matchingCriterias() {
@@ -195,30 +199,24 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * The project for the resource
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The project for the resource
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
     /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      * 
      */
     @Import(name="pulumiLabels")
     private @Nullable Output<Map<String,String>> pulumiLabels;
 
     /**
-     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      * 
      */
     public Optional<Output<Map<String,String>>> pulumiLabels() {
@@ -227,12 +225,12 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Optional. The IAM service account email associated with the trigger. The service account represents the identity of the
-     * trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See
+     * trigger. The principal who calls this API must have &#39;iam.serviceAccounts.actAs&#39; permission in the service account. See
      * https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run
      * destinations, this service account is used to generate identity tokens when invoking the service. See
      * https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke
      * authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have
-     * `roles/eventarc.eventReceiver` IAM role.
+     * &#39;roles/eventarc.eventReceiver&#39; IAM role.
      * 
      */
     @Import(name="serviceAccount")
@@ -240,12 +238,12 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Optional. The IAM service account email associated with the trigger. The service account represents the identity of the
-     * trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See
+     * trigger. The principal who calls this API must have &#39;iam.serviceAccounts.actAs&#39; permission in the service account. See
      * https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run
      * destinations, this service account is used to generate identity tokens when invoking the service. See
      * https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke
      * authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have
-     * `roles/eventarc.eventReceiver` IAM role.
+     * &#39;roles/eventarc.eventReceiver&#39; IAM role.
      * 
      */
     public Optional<Output<String>> serviceAccount() {
@@ -341,7 +339,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param channel Optional. The name of the channel associated with the trigger in
-         * `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from
+         * &#39;projects/{project}/locations/{location}/channels/{channel}&#39; format. You must provide a channel to receive events from
          * Eventarc SaaS partners.
          * 
          * @return builder
@@ -354,7 +352,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param channel Optional. The name of the channel associated with the trigger in
-         * `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from
+         * &#39;projects/{project}/locations/{location}/channels/{channel}&#39; format. You must provide a channel to receive events from
          * Eventarc SaaS partners.
          * 
          * @return builder
@@ -408,6 +406,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param destination Required. Destination specifies where the events should be sent to.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -419,6 +418,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param destination Required. Destination specifies where the events should be sent to.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -471,7 +471,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param eventDataContentType Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data
-         * field. This is set to `application/json` if the value is not defined.
+         * field. This is set to &#39;application/json&#39; if the value is not defined.
          * 
          * @return builder
          * 
@@ -483,7 +483,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param eventDataContentType Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data
-         * field. This is set to `application/json` if the value is not defined.
+         * field. This is set to &#39;application/json&#39; if the value is not defined.
          * 
          * @return builder
          * 
@@ -495,7 +495,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels Optional. User labels attached to the triggers that can be used to group resources. **Note**: This field is
          * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-         * `effective_labels` for all of the labels present on the resource.
+         * &#39;effective_labels&#39; for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -508,7 +508,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels Optional. User labels attached to the triggers that can be used to group resources. **Note**: This field is
          * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-         * `effective_labels` for all of the labels present on the resource.
+         * &#39;effective_labels&#39; for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -540,6 +540,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param matchingCriterias Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -551,6 +552,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param matchingCriterias Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -561,6 +563,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param matchingCriterias Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -590,29 +593,18 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
-        /**
-         * @param project The project for the resource
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The project for the resource
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
         /**
-         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
          * 
          * @return builder
          * 
@@ -623,7 +615,8 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
          * 
          * @return builder
          * 
@@ -634,12 +627,12 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serviceAccount Optional. The IAM service account email associated with the trigger. The service account represents the identity of the
-         * trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See
+         * trigger. The principal who calls this API must have &#39;iam.serviceAccounts.actAs&#39; permission in the service account. See
          * https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run
          * destinations, this service account is used to generate identity tokens when invoking the service. See
          * https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke
          * authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have
-         * `roles/eventarc.eventReceiver` IAM role.
+         * &#39;roles/eventarc.eventReceiver&#39; IAM role.
          * 
          * @return builder
          * 
@@ -651,12 +644,12 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serviceAccount Optional. The IAM service account email associated with the trigger. The service account represents the identity of the
-         * trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See
+         * trigger. The principal who calls this API must have &#39;iam.serviceAccounts.actAs&#39; permission in the service account. See
          * https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run
          * destinations, this service account is used to generate identity tokens when invoking the service. See
          * https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke
          * authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have
-         * `roles/eventarc.eventReceiver` IAM role.
+         * &#39;roles/eventarc.eventReceiver&#39; IAM role.
          * 
          * @return builder
          * 

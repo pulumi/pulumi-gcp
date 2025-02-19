@@ -39,7 +39,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for aspecttype
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -83,7 +83,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for aspecttype
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -127,7 +127,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for aspecttype
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -171,7 +171,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for aspecttype
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -215,7 +215,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for aspecttype
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -259,7 +259,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for asset
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -305,7 +305,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for asset
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -351,7 +351,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for asset
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -397,7 +397,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for asset
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -443,7 +443,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for asset
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -489,7 +489,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for datascan
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -533,7 +533,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for datascan
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -577,7 +577,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for datascan
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -621,7 +621,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for datascan
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -665,7 +665,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for datascan
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -709,7 +709,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for entrygroup
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -753,7 +753,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for entrygroup
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -797,7 +797,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for entrygroup
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -841,7 +841,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for entrygroup
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -885,7 +885,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for entrygroup
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -929,7 +929,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for entrytype
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -973,7 +973,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for entrytype
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1017,7 +1017,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for entrytype
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1061,7 +1061,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for entrytype
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1105,7 +1105,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for entrytype
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1149,7 +1149,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for lake
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1193,7 +1193,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for lake
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1237,7 +1237,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for lake
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1281,7 +1281,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for lake
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1325,7 +1325,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for lake
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1369,7 +1369,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for task
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1414,7 +1414,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for task
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1459,7 +1459,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for task
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1504,7 +1504,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for task
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1549,7 +1549,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for task
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1594,7 +1594,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for zone
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1639,7 +1639,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for zone
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1684,7 +1684,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for zone
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1729,7 +1729,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for zone
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1774,7 +1774,7 @@ public final class DataplexFunctions {
     /**
      * Retrieves the current IAM policy data for zone
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

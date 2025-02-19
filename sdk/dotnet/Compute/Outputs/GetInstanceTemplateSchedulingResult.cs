@@ -24,6 +24,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int AvailabilityDomain;
         /// <summary>
+        /// Settings for the instance to perform a graceful shutdown.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstanceTemplateSchedulingGracefulShutdownResult> GracefulShutdowns;
+        /// <summary>
         /// Beta Time in seconds for host error detection.
         /// </summary>
         public readonly int HostErrorTimeoutSeconds;
@@ -84,6 +88,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             int availabilityDomain,
 
+            ImmutableArray<Outputs.GetInstanceTemplateSchedulingGracefulShutdownResult> gracefulShutdowns,
+
             int hostErrorTimeoutSeconds,
 
             string instanceTerminationAction,
@@ -108,6 +114,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         {
             AutomaticRestart = automaticRestart;
             AvailabilityDomain = availabilityDomain;
+            GracefulShutdowns = gracefulShutdowns;
             HostErrorTimeoutSeconds = hostErrorTimeoutSeconds;
             InstanceTerminationAction = instanceTerminationAction;
             LocalSsdRecoveryTimeouts = localSsdRecoveryTimeouts;

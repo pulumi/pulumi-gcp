@@ -108,7 +108,7 @@ def get_metastore_federation_iam_policy(federation_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for federation
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -148,7 +148,7 @@ def get_metastore_federation_iam_policy_output(federation_id: Optional[pulumi.In
     """
     Retrieves the current IAM policy data for federation
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

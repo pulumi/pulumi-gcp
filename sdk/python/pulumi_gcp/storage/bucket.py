@@ -1006,6 +1006,21 @@ class Bucket(pulumi.CustomResource):
             public_access_prevention="enforced")
         ```
 
+        ### Enabling Hierarchical Namespace
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        auto_expire = gcp.storage.Bucket("auto-expire",
+            name="hns-enabled-bucket",
+            location="US",
+            force_destroy=True,
+            hierarchical_namespace={
+                "enabled": True,
+            })
+        ```
+
         ## Import
 
         Storage buckets can be imported using the `name` or  `project/name`. If the project is not
@@ -1180,6 +1195,21 @@ class Bucket(pulumi.CustomResource):
             location="US",
             force_destroy=True,
             public_access_prevention="enforced")
+        ```
+
+        ### Enabling Hierarchical Namespace
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        auto_expire = gcp.storage.Bucket("auto-expire",
+            name="hns-enabled-bucket",
+            location="US",
+            force_destroy=True,
+            hierarchical_namespace={
+                "enabled": True,
+            })
         ```
 
         ## Import

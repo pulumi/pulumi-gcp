@@ -9,6 +9,7 @@ import com.pulumi.gcp.monitoring.outputs.AlertPolicyConditionConditionAbsent;
 import com.pulumi.gcp.monitoring.outputs.AlertPolicyConditionConditionMatchedLog;
 import com.pulumi.gcp.monitoring.outputs.AlertPolicyConditionConditionMonitoringQueryLanguage;
 import com.pulumi.gcp.monitoring.outputs.AlertPolicyConditionConditionPrometheusQueryLanguage;
+import com.pulumi.gcp.monitoring.outputs.AlertPolicyConditionConditionSql;
 import com.pulumi.gcp.monitoring.outputs.AlertPolicyConditionConditionThreshold;
 import java.lang.String;
 import java.util.Objects;
@@ -46,6 +47,14 @@ public final class AlertPolicyCondition {
      * 
      */
     private @Nullable AlertPolicyConditionConditionPrometheusQueryLanguage conditionPrometheusQueryLanguage;
+    /**
+     * @return A condition that allows alerting policies to be defined using GoogleSQL.
+     * SQL conditions examine a sliding window of logs using GoogleSQL.
+     * Alert policies with SQL conditions may incur additional billing.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AlertPolicyConditionConditionSql conditionSql;
     /**
      * @return A condition that compares a time series against a
      * threshold.
@@ -113,6 +122,16 @@ public final class AlertPolicyCondition {
         return Optional.ofNullable(this.conditionPrometheusQueryLanguage);
     }
     /**
+     * @return A condition that allows alerting policies to be defined using GoogleSQL.
+     * SQL conditions examine a sliding window of logs using GoogleSQL.
+     * Alert policies with SQL conditions may incur additional billing.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AlertPolicyConditionConditionSql> conditionSql() {
+        return Optional.ofNullable(this.conditionSql);
+    }
+    /**
      * @return A condition that compares a time series against a
      * threshold.
      * Structure is documented below.
@@ -159,6 +178,7 @@ public final class AlertPolicyCondition {
         private @Nullable AlertPolicyConditionConditionMatchedLog conditionMatchedLog;
         private @Nullable AlertPolicyConditionConditionMonitoringQueryLanguage conditionMonitoringQueryLanguage;
         private @Nullable AlertPolicyConditionConditionPrometheusQueryLanguage conditionPrometheusQueryLanguage;
+        private @Nullable AlertPolicyConditionConditionSql conditionSql;
         private @Nullable AlertPolicyConditionConditionThreshold conditionThreshold;
         private String displayName;
         private @Nullable String name;
@@ -169,6 +189,7 @@ public final class AlertPolicyCondition {
     	      this.conditionMatchedLog = defaults.conditionMatchedLog;
     	      this.conditionMonitoringQueryLanguage = defaults.conditionMonitoringQueryLanguage;
     	      this.conditionPrometheusQueryLanguage = defaults.conditionPrometheusQueryLanguage;
+    	      this.conditionSql = defaults.conditionSql;
     	      this.conditionThreshold = defaults.conditionThreshold;
     	      this.displayName = defaults.displayName;
     	      this.name = defaults.name;
@@ -199,6 +220,12 @@ public final class AlertPolicyCondition {
             return this;
         }
         @CustomType.Setter
+        public Builder conditionSql(@Nullable AlertPolicyConditionConditionSql conditionSql) {
+
+            this.conditionSql = conditionSql;
+            return this;
+        }
+        @CustomType.Setter
         public Builder conditionThreshold(@Nullable AlertPolicyConditionConditionThreshold conditionThreshold) {
 
             this.conditionThreshold = conditionThreshold;
@@ -224,6 +251,7 @@ public final class AlertPolicyCondition {
             _resultValue.conditionMatchedLog = conditionMatchedLog;
             _resultValue.conditionMonitoringQueryLanguage = conditionMonitoringQueryLanguage;
             _resultValue.conditionPrometheusQueryLanguage = conditionPrometheusQueryLanguage;
+            _resultValue.conditionSql = conditionSql;
             _resultValue.conditionThreshold = conditionThreshold;
             _resultValue.displayName = displayName;
             _resultValue.name = name;

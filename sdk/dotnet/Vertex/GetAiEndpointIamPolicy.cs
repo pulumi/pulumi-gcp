@@ -11,12 +11,75 @@ namespace Pulumi.Gcp.Vertex
 {
     public static class GetAiEndpointIamPolicy
     {
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Vertex.GetAiEndpointIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = endpoint.Project,
+        ///         Location = endpoint.Location,
+        ///         Endpoint = endpoint.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetAiEndpointIamPolicyResult> InvokeAsync(GetAiEndpointIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAiEndpointIamPolicyResult>("gcp:vertex/getAiEndpointIamPolicy:getAiEndpointIamPolicy", args ?? new GetAiEndpointIamPolicyArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Vertex.GetAiEndpointIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = endpoint.Project,
+        ///         Location = endpoint.Location,
+        ///         Endpoint = endpoint.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetAiEndpointIamPolicyResult> Invoke(GetAiEndpointIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAiEndpointIamPolicyResult>("gcp:vertex/getAiEndpointIamPolicy:getAiEndpointIamPolicy", args ?? new GetAiEndpointIamPolicyInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Vertex.GetAiEndpointIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = endpoint.Project,
+        ///         Location = endpoint.Location,
+        ///         Endpoint = endpoint.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetAiEndpointIamPolicyResult> Invoke(GetAiEndpointIamPolicyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAiEndpointIamPolicyResult>("gcp:vertex/getAiEndpointIamPolicy:getAiEndpointIamPolicy", args ?? new GetAiEndpointIamPolicyInvokeArgs(), options.WithDefaults());
     }

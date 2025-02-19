@@ -108,7 +108,7 @@ def get_aspect_type_iam_policy(aspect_type_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for aspecttype
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -148,7 +148,7 @@ def get_aspect_type_iam_policy_output(aspect_type_id: Optional[pulumi.Input[str]
     """
     Retrieves the current IAM policy data for aspecttype
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

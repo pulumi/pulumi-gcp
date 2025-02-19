@@ -4,6 +4,21 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.workstations.getWorkstationConfigIamPolicy({
+ *     project: _default.project,
+ *     location: _default.location,
+ *     workstationClusterId: _default.workstationClusterId,
+ *     workstationConfigId: _default.workstationConfigId,
+ * });
+ * ```
+ */
 export function getWorkstationConfigIamPolicy(args: GetWorkstationConfigIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkstationConfigIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy", {
@@ -56,6 +71,21 @@ export interface GetWorkstationConfigIamPolicyResult {
     readonly workstationClusterId: string;
     readonly workstationConfigId: string;
 }
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.workstations.getWorkstationConfigIamPolicy({
+ *     project: _default.project,
+ *     location: _default.location,
+ *     workstationClusterId: _default.workstationClusterId,
+ *     workstationConfigId: _default.workstationConfigId,
+ * });
+ * ```
+ */
 export function getWorkstationConfigIamPolicyOutput(args: GetWorkstationConfigIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkstationConfigIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy", {

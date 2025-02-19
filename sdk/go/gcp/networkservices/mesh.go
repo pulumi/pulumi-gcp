@@ -72,29 +72,55 @@ import (
 //	}
 //
 // ```
+// ### Network Services Mesh Location
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networkservices.NewMesh(ctx, "default", &networkservices.MeshArgs{
+//				Name:     pulumi.String("my-mesh"),
+//				Location: pulumi.String("global"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
 // Mesh can be imported using any of these accepted formats:
 //
-// * `projects/{{project}}/locations/global/meshes/{{name}}`
+// * `projects/{{project}}/locations/{{location}}/meshes/{{name}}`
 //
-// * `{{project}}/{{name}}`
+// * `{{project}}/{{location}}/{{name}}`
 //
-// * `{{name}}`
+// * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, Mesh can be imported using one of the formats above. For example:
 //
 // ```sh
-// $ pulumi import gcp:networkservices/mesh:Mesh default projects/{{project}}/locations/global/meshes/{{name}}
+// $ pulumi import gcp:networkservices/mesh:Mesh default projects/{{project}}/locations/{{location}}/meshes/{{name}}
 // ```
 //
 // ```sh
-// $ pulumi import gcp:networkservices/mesh:Mesh default {{project}}/{{name}}
+// $ pulumi import gcp:networkservices/mesh:Mesh default {{project}}/{{location}}/{{name}}
 // ```
 //
 // ```sh
-// $ pulumi import gcp:networkservices/mesh:Mesh default {{name}}
+// $ pulumi import gcp:networkservices/mesh:Mesh default {{location}}/{{name}}
 // ```
 type Mesh struct {
 	pulumi.CustomResourceState
@@ -115,6 +141,8 @@ type Mesh struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
+	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Short name of the Mesh resource to be created.
 	//
 	// ***
@@ -182,6 +210,8 @@ type meshState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
+	// Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
+	Location *string `pulumi:"location"`
 	// Short name of the Mesh resource to be created.
 	//
 	// ***
@@ -215,6 +245,8 @@ type MeshState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
+	// Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
+	Location pulumi.StringPtrInput
 	// Short name of the Mesh resource to be created.
 	//
 	// ***
@@ -248,6 +280,8 @@ type meshArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
+	// Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
+	Location *string `pulumi:"location"`
 	// Short name of the Mesh resource to be created.
 	//
 	// ***
@@ -271,6 +305,8 @@ type MeshArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
+	// Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
+	Location pulumi.StringPtrInput
 	// Short name of the Mesh resource to be created.
 	//
 	// ***
@@ -396,6 +432,11 @@ func (o MeshOutput) InterceptionPort() pulumi.IntPtrOutput {
 // Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o MeshOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Mesh) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
+func (o MeshOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Mesh) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // Short name of the Mesh resource to be created.

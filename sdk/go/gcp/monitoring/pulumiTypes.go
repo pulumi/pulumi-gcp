@@ -507,6 +507,11 @@ type AlertPolicyCondition struct {
 	// from a Prometheus alerting rule and its associated rule group.
 	// Structure is documented below.
 	ConditionPrometheusQueryLanguage *AlertPolicyConditionConditionPrometheusQueryLanguage `pulumi:"conditionPrometheusQueryLanguage"`
+	// A condition that allows alerting policies to be defined using GoogleSQL.
+	// SQL conditions examine a sliding window of logs using GoogleSQL.
+	// Alert policies with SQL conditions may incur additional billing.
+	// Structure is documented below.
+	ConditionSql *AlertPolicyConditionConditionSql `pulumi:"conditionSql"`
 	// A condition that compares a time series against a
 	// threshold.
 	// Structure is documented below.
@@ -556,6 +561,11 @@ type AlertPolicyConditionArgs struct {
 	// from a Prometheus alerting rule and its associated rule group.
 	// Structure is documented below.
 	ConditionPrometheusQueryLanguage AlertPolicyConditionConditionPrometheusQueryLanguagePtrInput `pulumi:"conditionPrometheusQueryLanguage"`
+	// A condition that allows alerting policies to be defined using GoogleSQL.
+	// SQL conditions examine a sliding window of logs using GoogleSQL.
+	// Alert policies with SQL conditions may incur additional billing.
+	// Structure is documented below.
+	ConditionSql AlertPolicyConditionConditionSqlPtrInput `pulumi:"conditionSql"`
 	// A condition that compares a time series against a
 	// threshold.
 	// Structure is documented below.
@@ -658,6 +668,14 @@ func (o AlertPolicyConditionOutput) ConditionPrometheusQueryLanguage() AlertPoli
 	return o.ApplyT(func(v AlertPolicyCondition) *AlertPolicyConditionConditionPrometheusQueryLanguage {
 		return v.ConditionPrometheusQueryLanguage
 	}).(AlertPolicyConditionConditionPrometheusQueryLanguagePtrOutput)
+}
+
+// A condition that allows alerting policies to be defined using GoogleSQL.
+// SQL conditions examine a sliding window of logs using GoogleSQL.
+// Alert policies with SQL conditions may incur additional billing.
+// Structure is documented below.
+func (o AlertPolicyConditionOutput) ConditionSql() AlertPolicyConditionConditionSqlPtrOutput {
+	return o.ApplyT(func(v AlertPolicyCondition) *AlertPolicyConditionConditionSql { return v.ConditionSql }).(AlertPolicyConditionConditionSqlPtrOutput)
 }
 
 // A condition that compares a time series against a
@@ -2543,6 +2561,1324 @@ func (o AlertPolicyConditionConditionPrometheusQueryLanguagePtrOutput) RuleGroup
 		}
 		return v.RuleGroup
 	}).(pulumi.StringPtrOutput)
+}
+
+type AlertPolicyConditionConditionSql struct {
+	// The start date and time of the query. If left unspecified, then the
+	// query will start immediately.
+	// Structure is documented below.
+	BooleanTest *AlertPolicyConditionConditionSqlBooleanTest `pulumi:"booleanTest"`
+	// Used to schedule the query to run every so many days.
+	// Structure is documented below.
+	Daily *AlertPolicyConditionConditionSqlDaily `pulumi:"daily"`
+	// Used to schedule the query to run every so many hours.
+	// Structure is documented below.
+	Hourly *AlertPolicyConditionConditionSqlHourly `pulumi:"hourly"`
+	// Used to schedule the query to run every so many minutes.
+	// Structure is documented below.
+	Minutes *AlertPolicyConditionConditionSqlMinutes `pulumi:"minutes"`
+	// The Log Analytics SQL query to run, as a string.  The query must
+	// conform to the required shape. Specifically, the query must not try to
+	// filter the input by time.  A filter will automatically be applied
+	// to filter the input so that the query receives all rows received
+	// since the last time the query was run.
+	Query string `pulumi:"query"`
+	// Test the row count against a threshold.
+	// Structure is documented below.
+	RowCountTest *AlertPolicyConditionConditionSqlRowCountTest `pulumi:"rowCountTest"`
+}
+
+// AlertPolicyConditionConditionSqlInput is an input type that accepts AlertPolicyConditionConditionSqlArgs and AlertPolicyConditionConditionSqlOutput values.
+// You can construct a concrete instance of `AlertPolicyConditionConditionSqlInput` via:
+//
+//	AlertPolicyConditionConditionSqlArgs{...}
+type AlertPolicyConditionConditionSqlInput interface {
+	pulumi.Input
+
+	ToAlertPolicyConditionConditionSqlOutput() AlertPolicyConditionConditionSqlOutput
+	ToAlertPolicyConditionConditionSqlOutputWithContext(context.Context) AlertPolicyConditionConditionSqlOutput
+}
+
+type AlertPolicyConditionConditionSqlArgs struct {
+	// The start date and time of the query. If left unspecified, then the
+	// query will start immediately.
+	// Structure is documented below.
+	BooleanTest AlertPolicyConditionConditionSqlBooleanTestPtrInput `pulumi:"booleanTest"`
+	// Used to schedule the query to run every so many days.
+	// Structure is documented below.
+	Daily AlertPolicyConditionConditionSqlDailyPtrInput `pulumi:"daily"`
+	// Used to schedule the query to run every so many hours.
+	// Structure is documented below.
+	Hourly AlertPolicyConditionConditionSqlHourlyPtrInput `pulumi:"hourly"`
+	// Used to schedule the query to run every so many minutes.
+	// Structure is documented below.
+	Minutes AlertPolicyConditionConditionSqlMinutesPtrInput `pulumi:"minutes"`
+	// The Log Analytics SQL query to run, as a string.  The query must
+	// conform to the required shape. Specifically, the query must not try to
+	// filter the input by time.  A filter will automatically be applied
+	// to filter the input so that the query receives all rows received
+	// since the last time the query was run.
+	Query pulumi.StringInput `pulumi:"query"`
+	// Test the row count against a threshold.
+	// Structure is documented below.
+	RowCountTest AlertPolicyConditionConditionSqlRowCountTestPtrInput `pulumi:"rowCountTest"`
+}
+
+func (AlertPolicyConditionConditionSqlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyConditionConditionSql)(nil)).Elem()
+}
+
+func (i AlertPolicyConditionConditionSqlArgs) ToAlertPolicyConditionConditionSqlOutput() AlertPolicyConditionConditionSqlOutput {
+	return i.ToAlertPolicyConditionConditionSqlOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyConditionConditionSqlArgs) ToAlertPolicyConditionConditionSqlOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionSqlOutput)
+}
+
+func (i AlertPolicyConditionConditionSqlArgs) ToAlertPolicyConditionConditionSqlPtrOutput() AlertPolicyConditionConditionSqlPtrOutput {
+	return i.ToAlertPolicyConditionConditionSqlPtrOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyConditionConditionSqlArgs) ToAlertPolicyConditionConditionSqlPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionSqlOutput).ToAlertPolicyConditionConditionSqlPtrOutputWithContext(ctx)
+}
+
+// AlertPolicyConditionConditionSqlPtrInput is an input type that accepts AlertPolicyConditionConditionSqlArgs, AlertPolicyConditionConditionSqlPtr and AlertPolicyConditionConditionSqlPtrOutput values.
+// You can construct a concrete instance of `AlertPolicyConditionConditionSqlPtrInput` via:
+//
+//	        AlertPolicyConditionConditionSqlArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertPolicyConditionConditionSqlPtrInput interface {
+	pulumi.Input
+
+	ToAlertPolicyConditionConditionSqlPtrOutput() AlertPolicyConditionConditionSqlPtrOutput
+	ToAlertPolicyConditionConditionSqlPtrOutputWithContext(context.Context) AlertPolicyConditionConditionSqlPtrOutput
+}
+
+type alertPolicyConditionConditionSqlPtrType AlertPolicyConditionConditionSqlArgs
+
+func AlertPolicyConditionConditionSqlPtr(v *AlertPolicyConditionConditionSqlArgs) AlertPolicyConditionConditionSqlPtrInput {
+	return (*alertPolicyConditionConditionSqlPtrType)(v)
+}
+
+func (*alertPolicyConditionConditionSqlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyConditionConditionSql)(nil)).Elem()
+}
+
+func (i *alertPolicyConditionConditionSqlPtrType) ToAlertPolicyConditionConditionSqlPtrOutput() AlertPolicyConditionConditionSqlPtrOutput {
+	return i.ToAlertPolicyConditionConditionSqlPtrOutputWithContext(context.Background())
+}
+
+func (i *alertPolicyConditionConditionSqlPtrType) ToAlertPolicyConditionConditionSqlPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionSqlPtrOutput)
+}
+
+type AlertPolicyConditionConditionSqlOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyConditionConditionSqlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyConditionConditionSql)(nil)).Elem()
+}
+
+func (o AlertPolicyConditionConditionSqlOutput) ToAlertPolicyConditionConditionSqlOutput() AlertPolicyConditionConditionSqlOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlOutput) ToAlertPolicyConditionConditionSqlOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlOutput) ToAlertPolicyConditionConditionSqlPtrOutput() AlertPolicyConditionConditionSqlPtrOutput {
+	return o.ToAlertPolicyConditionConditionSqlPtrOutputWithContext(context.Background())
+}
+
+func (o AlertPolicyConditionConditionSqlOutput) ToAlertPolicyConditionConditionSqlPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyConditionConditionSql) *AlertPolicyConditionConditionSql {
+		return &v
+	}).(AlertPolicyConditionConditionSqlPtrOutput)
+}
+
+// The start date and time of the query. If left unspecified, then the
+// query will start immediately.
+// Structure is documented below.
+func (o AlertPolicyConditionConditionSqlOutput) BooleanTest() AlertPolicyConditionConditionSqlBooleanTestPtrOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionSql) *AlertPolicyConditionConditionSqlBooleanTest {
+		return v.BooleanTest
+	}).(AlertPolicyConditionConditionSqlBooleanTestPtrOutput)
+}
+
+// Used to schedule the query to run every so many days.
+// Structure is documented below.
+func (o AlertPolicyConditionConditionSqlOutput) Daily() AlertPolicyConditionConditionSqlDailyPtrOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionSql) *AlertPolicyConditionConditionSqlDaily { return v.Daily }).(AlertPolicyConditionConditionSqlDailyPtrOutput)
+}
+
+// Used to schedule the query to run every so many hours.
+// Structure is documented below.
+func (o AlertPolicyConditionConditionSqlOutput) Hourly() AlertPolicyConditionConditionSqlHourlyPtrOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionSql) *AlertPolicyConditionConditionSqlHourly { return v.Hourly }).(AlertPolicyConditionConditionSqlHourlyPtrOutput)
+}
+
+// Used to schedule the query to run every so many minutes.
+// Structure is documented below.
+func (o AlertPolicyConditionConditionSqlOutput) Minutes() AlertPolicyConditionConditionSqlMinutesPtrOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionSql) *AlertPolicyConditionConditionSqlMinutes { return v.Minutes }).(AlertPolicyConditionConditionSqlMinutesPtrOutput)
+}
+
+// The Log Analytics SQL query to run, as a string.  The query must
+// conform to the required shape. Specifically, the query must not try to
+// filter the input by time.  A filter will automatically be applied
+// to filter the input so that the query receives all rows received
+// since the last time the query was run.
+func (o AlertPolicyConditionConditionSqlOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionSql) string { return v.Query }).(pulumi.StringOutput)
+}
+
+// Test the row count against a threshold.
+// Structure is documented below.
+func (o AlertPolicyConditionConditionSqlOutput) RowCountTest() AlertPolicyConditionConditionSqlRowCountTestPtrOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionSql) *AlertPolicyConditionConditionSqlRowCountTest {
+		return v.RowCountTest
+	}).(AlertPolicyConditionConditionSqlRowCountTestPtrOutput)
+}
+
+type AlertPolicyConditionConditionSqlPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyConditionConditionSqlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyConditionConditionSql)(nil)).Elem()
+}
+
+func (o AlertPolicyConditionConditionSqlPtrOutput) ToAlertPolicyConditionConditionSqlPtrOutput() AlertPolicyConditionConditionSqlPtrOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlPtrOutput) ToAlertPolicyConditionConditionSqlPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlPtrOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlPtrOutput) Elem() AlertPolicyConditionConditionSqlOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionSql) AlertPolicyConditionConditionSql {
+		if v != nil {
+			return *v
+		}
+		var ret AlertPolicyConditionConditionSql
+		return ret
+	}).(AlertPolicyConditionConditionSqlOutput)
+}
+
+// The start date and time of the query. If left unspecified, then the
+// query will start immediately.
+// Structure is documented below.
+func (o AlertPolicyConditionConditionSqlPtrOutput) BooleanTest() AlertPolicyConditionConditionSqlBooleanTestPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionSql) *AlertPolicyConditionConditionSqlBooleanTest {
+		if v == nil {
+			return nil
+		}
+		return v.BooleanTest
+	}).(AlertPolicyConditionConditionSqlBooleanTestPtrOutput)
+}
+
+// Used to schedule the query to run every so many days.
+// Structure is documented below.
+func (o AlertPolicyConditionConditionSqlPtrOutput) Daily() AlertPolicyConditionConditionSqlDailyPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionSql) *AlertPolicyConditionConditionSqlDaily {
+		if v == nil {
+			return nil
+		}
+		return v.Daily
+	}).(AlertPolicyConditionConditionSqlDailyPtrOutput)
+}
+
+// Used to schedule the query to run every so many hours.
+// Structure is documented below.
+func (o AlertPolicyConditionConditionSqlPtrOutput) Hourly() AlertPolicyConditionConditionSqlHourlyPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionSql) *AlertPolicyConditionConditionSqlHourly {
+		if v == nil {
+			return nil
+		}
+		return v.Hourly
+	}).(AlertPolicyConditionConditionSqlHourlyPtrOutput)
+}
+
+// Used to schedule the query to run every so many minutes.
+// Structure is documented below.
+func (o AlertPolicyConditionConditionSqlPtrOutput) Minutes() AlertPolicyConditionConditionSqlMinutesPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionSql) *AlertPolicyConditionConditionSqlMinutes {
+		if v == nil {
+			return nil
+		}
+		return v.Minutes
+	}).(AlertPolicyConditionConditionSqlMinutesPtrOutput)
+}
+
+// The Log Analytics SQL query to run, as a string.  The query must
+// conform to the required shape. Specifically, the query must not try to
+// filter the input by time.  A filter will automatically be applied
+// to filter the input so that the query receives all rows received
+// since the last time the query was run.
+func (o AlertPolicyConditionConditionSqlPtrOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionSql) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Query
+	}).(pulumi.StringPtrOutput)
+}
+
+// Test the row count against a threshold.
+// Structure is documented below.
+func (o AlertPolicyConditionConditionSqlPtrOutput) RowCountTest() AlertPolicyConditionConditionSqlRowCountTestPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionSql) *AlertPolicyConditionConditionSqlRowCountTest {
+		if v == nil {
+			return nil
+		}
+		return v.RowCountTest
+	}).(AlertPolicyConditionConditionSqlRowCountTestPtrOutput)
+}
+
+type AlertPolicyConditionConditionSqlBooleanTest struct {
+	// The name of the column containing the boolean value. If the value
+	// in a row is NULL, that row is ignored.
+	//
+	// ***
+	Column string `pulumi:"column"`
+}
+
+// AlertPolicyConditionConditionSqlBooleanTestInput is an input type that accepts AlertPolicyConditionConditionSqlBooleanTestArgs and AlertPolicyConditionConditionSqlBooleanTestOutput values.
+// You can construct a concrete instance of `AlertPolicyConditionConditionSqlBooleanTestInput` via:
+//
+//	AlertPolicyConditionConditionSqlBooleanTestArgs{...}
+type AlertPolicyConditionConditionSqlBooleanTestInput interface {
+	pulumi.Input
+
+	ToAlertPolicyConditionConditionSqlBooleanTestOutput() AlertPolicyConditionConditionSqlBooleanTestOutput
+	ToAlertPolicyConditionConditionSqlBooleanTestOutputWithContext(context.Context) AlertPolicyConditionConditionSqlBooleanTestOutput
+}
+
+type AlertPolicyConditionConditionSqlBooleanTestArgs struct {
+	// The name of the column containing the boolean value. If the value
+	// in a row is NULL, that row is ignored.
+	//
+	// ***
+	Column pulumi.StringInput `pulumi:"column"`
+}
+
+func (AlertPolicyConditionConditionSqlBooleanTestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyConditionConditionSqlBooleanTest)(nil)).Elem()
+}
+
+func (i AlertPolicyConditionConditionSqlBooleanTestArgs) ToAlertPolicyConditionConditionSqlBooleanTestOutput() AlertPolicyConditionConditionSqlBooleanTestOutput {
+	return i.ToAlertPolicyConditionConditionSqlBooleanTestOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyConditionConditionSqlBooleanTestArgs) ToAlertPolicyConditionConditionSqlBooleanTestOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlBooleanTestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionSqlBooleanTestOutput)
+}
+
+func (i AlertPolicyConditionConditionSqlBooleanTestArgs) ToAlertPolicyConditionConditionSqlBooleanTestPtrOutput() AlertPolicyConditionConditionSqlBooleanTestPtrOutput {
+	return i.ToAlertPolicyConditionConditionSqlBooleanTestPtrOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyConditionConditionSqlBooleanTestArgs) ToAlertPolicyConditionConditionSqlBooleanTestPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlBooleanTestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionSqlBooleanTestOutput).ToAlertPolicyConditionConditionSqlBooleanTestPtrOutputWithContext(ctx)
+}
+
+// AlertPolicyConditionConditionSqlBooleanTestPtrInput is an input type that accepts AlertPolicyConditionConditionSqlBooleanTestArgs, AlertPolicyConditionConditionSqlBooleanTestPtr and AlertPolicyConditionConditionSqlBooleanTestPtrOutput values.
+// You can construct a concrete instance of `AlertPolicyConditionConditionSqlBooleanTestPtrInput` via:
+//
+//	        AlertPolicyConditionConditionSqlBooleanTestArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertPolicyConditionConditionSqlBooleanTestPtrInput interface {
+	pulumi.Input
+
+	ToAlertPolicyConditionConditionSqlBooleanTestPtrOutput() AlertPolicyConditionConditionSqlBooleanTestPtrOutput
+	ToAlertPolicyConditionConditionSqlBooleanTestPtrOutputWithContext(context.Context) AlertPolicyConditionConditionSqlBooleanTestPtrOutput
+}
+
+type alertPolicyConditionConditionSqlBooleanTestPtrType AlertPolicyConditionConditionSqlBooleanTestArgs
+
+func AlertPolicyConditionConditionSqlBooleanTestPtr(v *AlertPolicyConditionConditionSqlBooleanTestArgs) AlertPolicyConditionConditionSqlBooleanTestPtrInput {
+	return (*alertPolicyConditionConditionSqlBooleanTestPtrType)(v)
+}
+
+func (*alertPolicyConditionConditionSqlBooleanTestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyConditionConditionSqlBooleanTest)(nil)).Elem()
+}
+
+func (i *alertPolicyConditionConditionSqlBooleanTestPtrType) ToAlertPolicyConditionConditionSqlBooleanTestPtrOutput() AlertPolicyConditionConditionSqlBooleanTestPtrOutput {
+	return i.ToAlertPolicyConditionConditionSqlBooleanTestPtrOutputWithContext(context.Background())
+}
+
+func (i *alertPolicyConditionConditionSqlBooleanTestPtrType) ToAlertPolicyConditionConditionSqlBooleanTestPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlBooleanTestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionSqlBooleanTestPtrOutput)
+}
+
+type AlertPolicyConditionConditionSqlBooleanTestOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyConditionConditionSqlBooleanTestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyConditionConditionSqlBooleanTest)(nil)).Elem()
+}
+
+func (o AlertPolicyConditionConditionSqlBooleanTestOutput) ToAlertPolicyConditionConditionSqlBooleanTestOutput() AlertPolicyConditionConditionSqlBooleanTestOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlBooleanTestOutput) ToAlertPolicyConditionConditionSqlBooleanTestOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlBooleanTestOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlBooleanTestOutput) ToAlertPolicyConditionConditionSqlBooleanTestPtrOutput() AlertPolicyConditionConditionSqlBooleanTestPtrOutput {
+	return o.ToAlertPolicyConditionConditionSqlBooleanTestPtrOutputWithContext(context.Background())
+}
+
+func (o AlertPolicyConditionConditionSqlBooleanTestOutput) ToAlertPolicyConditionConditionSqlBooleanTestPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlBooleanTestPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyConditionConditionSqlBooleanTest) *AlertPolicyConditionConditionSqlBooleanTest {
+		return &v
+	}).(AlertPolicyConditionConditionSqlBooleanTestPtrOutput)
+}
+
+// The name of the column containing the boolean value. If the value
+// in a row is NULL, that row is ignored.
+//
+// ***
+func (o AlertPolicyConditionConditionSqlBooleanTestOutput) Column() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionSqlBooleanTest) string { return v.Column }).(pulumi.StringOutput)
+}
+
+type AlertPolicyConditionConditionSqlBooleanTestPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyConditionConditionSqlBooleanTestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyConditionConditionSqlBooleanTest)(nil)).Elem()
+}
+
+func (o AlertPolicyConditionConditionSqlBooleanTestPtrOutput) ToAlertPolicyConditionConditionSqlBooleanTestPtrOutput() AlertPolicyConditionConditionSqlBooleanTestPtrOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlBooleanTestPtrOutput) ToAlertPolicyConditionConditionSqlBooleanTestPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlBooleanTestPtrOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlBooleanTestPtrOutput) Elem() AlertPolicyConditionConditionSqlBooleanTestOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionSqlBooleanTest) AlertPolicyConditionConditionSqlBooleanTest {
+		if v != nil {
+			return *v
+		}
+		var ret AlertPolicyConditionConditionSqlBooleanTest
+		return ret
+	}).(AlertPolicyConditionConditionSqlBooleanTestOutput)
+}
+
+// The name of the column containing the boolean value. If the value
+// in a row is NULL, that row is ignored.
+//
+// ***
+func (o AlertPolicyConditionConditionSqlBooleanTestPtrOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionSqlBooleanTest) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Column
+	}).(pulumi.StringPtrOutput)
+}
+
+type AlertPolicyConditionConditionSqlDaily struct {
+	// The time of day (in UTC) at which the query should run. If left
+	// unspecified, the server picks an arbitrary time of day and runs
+	// the query at the same time each day.
+	// Structure is documented below.
+	ExecutionTime *AlertPolicyConditionConditionSqlDailyExecutionTime `pulumi:"executionTime"`
+	// The number of days between runs. Must be greater than or equal
+	// to 1 day and less than or equal to 30 days.
+	Periodicity int `pulumi:"periodicity"`
+}
+
+// AlertPolicyConditionConditionSqlDailyInput is an input type that accepts AlertPolicyConditionConditionSqlDailyArgs and AlertPolicyConditionConditionSqlDailyOutput values.
+// You can construct a concrete instance of `AlertPolicyConditionConditionSqlDailyInput` via:
+//
+//	AlertPolicyConditionConditionSqlDailyArgs{...}
+type AlertPolicyConditionConditionSqlDailyInput interface {
+	pulumi.Input
+
+	ToAlertPolicyConditionConditionSqlDailyOutput() AlertPolicyConditionConditionSqlDailyOutput
+	ToAlertPolicyConditionConditionSqlDailyOutputWithContext(context.Context) AlertPolicyConditionConditionSqlDailyOutput
+}
+
+type AlertPolicyConditionConditionSqlDailyArgs struct {
+	// The time of day (in UTC) at which the query should run. If left
+	// unspecified, the server picks an arbitrary time of day and runs
+	// the query at the same time each day.
+	// Structure is documented below.
+	ExecutionTime AlertPolicyConditionConditionSqlDailyExecutionTimePtrInput `pulumi:"executionTime"`
+	// The number of days between runs. Must be greater than or equal
+	// to 1 day and less than or equal to 30 days.
+	Periodicity pulumi.IntInput `pulumi:"periodicity"`
+}
+
+func (AlertPolicyConditionConditionSqlDailyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyConditionConditionSqlDaily)(nil)).Elem()
+}
+
+func (i AlertPolicyConditionConditionSqlDailyArgs) ToAlertPolicyConditionConditionSqlDailyOutput() AlertPolicyConditionConditionSqlDailyOutput {
+	return i.ToAlertPolicyConditionConditionSqlDailyOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyConditionConditionSqlDailyArgs) ToAlertPolicyConditionConditionSqlDailyOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlDailyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionSqlDailyOutput)
+}
+
+func (i AlertPolicyConditionConditionSqlDailyArgs) ToAlertPolicyConditionConditionSqlDailyPtrOutput() AlertPolicyConditionConditionSqlDailyPtrOutput {
+	return i.ToAlertPolicyConditionConditionSqlDailyPtrOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyConditionConditionSqlDailyArgs) ToAlertPolicyConditionConditionSqlDailyPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlDailyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionSqlDailyOutput).ToAlertPolicyConditionConditionSqlDailyPtrOutputWithContext(ctx)
+}
+
+// AlertPolicyConditionConditionSqlDailyPtrInput is an input type that accepts AlertPolicyConditionConditionSqlDailyArgs, AlertPolicyConditionConditionSqlDailyPtr and AlertPolicyConditionConditionSqlDailyPtrOutput values.
+// You can construct a concrete instance of `AlertPolicyConditionConditionSqlDailyPtrInput` via:
+//
+//	        AlertPolicyConditionConditionSqlDailyArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertPolicyConditionConditionSqlDailyPtrInput interface {
+	pulumi.Input
+
+	ToAlertPolicyConditionConditionSqlDailyPtrOutput() AlertPolicyConditionConditionSqlDailyPtrOutput
+	ToAlertPolicyConditionConditionSqlDailyPtrOutputWithContext(context.Context) AlertPolicyConditionConditionSqlDailyPtrOutput
+}
+
+type alertPolicyConditionConditionSqlDailyPtrType AlertPolicyConditionConditionSqlDailyArgs
+
+func AlertPolicyConditionConditionSqlDailyPtr(v *AlertPolicyConditionConditionSqlDailyArgs) AlertPolicyConditionConditionSqlDailyPtrInput {
+	return (*alertPolicyConditionConditionSqlDailyPtrType)(v)
+}
+
+func (*alertPolicyConditionConditionSqlDailyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyConditionConditionSqlDaily)(nil)).Elem()
+}
+
+func (i *alertPolicyConditionConditionSqlDailyPtrType) ToAlertPolicyConditionConditionSqlDailyPtrOutput() AlertPolicyConditionConditionSqlDailyPtrOutput {
+	return i.ToAlertPolicyConditionConditionSqlDailyPtrOutputWithContext(context.Background())
+}
+
+func (i *alertPolicyConditionConditionSqlDailyPtrType) ToAlertPolicyConditionConditionSqlDailyPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlDailyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionSqlDailyPtrOutput)
+}
+
+type AlertPolicyConditionConditionSqlDailyOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyConditionConditionSqlDailyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyConditionConditionSqlDaily)(nil)).Elem()
+}
+
+func (o AlertPolicyConditionConditionSqlDailyOutput) ToAlertPolicyConditionConditionSqlDailyOutput() AlertPolicyConditionConditionSqlDailyOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlDailyOutput) ToAlertPolicyConditionConditionSqlDailyOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlDailyOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlDailyOutput) ToAlertPolicyConditionConditionSqlDailyPtrOutput() AlertPolicyConditionConditionSqlDailyPtrOutput {
+	return o.ToAlertPolicyConditionConditionSqlDailyPtrOutputWithContext(context.Background())
+}
+
+func (o AlertPolicyConditionConditionSqlDailyOutput) ToAlertPolicyConditionConditionSqlDailyPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlDailyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyConditionConditionSqlDaily) *AlertPolicyConditionConditionSqlDaily {
+		return &v
+	}).(AlertPolicyConditionConditionSqlDailyPtrOutput)
+}
+
+// The time of day (in UTC) at which the query should run. If left
+// unspecified, the server picks an arbitrary time of day and runs
+// the query at the same time each day.
+// Structure is documented below.
+func (o AlertPolicyConditionConditionSqlDailyOutput) ExecutionTime() AlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionSqlDaily) *AlertPolicyConditionConditionSqlDailyExecutionTime {
+		return v.ExecutionTime
+	}).(AlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput)
+}
+
+// The number of days between runs. Must be greater than or equal
+// to 1 day and less than or equal to 30 days.
+func (o AlertPolicyConditionConditionSqlDailyOutput) Periodicity() pulumi.IntOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionSqlDaily) int { return v.Periodicity }).(pulumi.IntOutput)
+}
+
+type AlertPolicyConditionConditionSqlDailyPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyConditionConditionSqlDailyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyConditionConditionSqlDaily)(nil)).Elem()
+}
+
+func (o AlertPolicyConditionConditionSqlDailyPtrOutput) ToAlertPolicyConditionConditionSqlDailyPtrOutput() AlertPolicyConditionConditionSqlDailyPtrOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlDailyPtrOutput) ToAlertPolicyConditionConditionSqlDailyPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlDailyPtrOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlDailyPtrOutput) Elem() AlertPolicyConditionConditionSqlDailyOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionSqlDaily) AlertPolicyConditionConditionSqlDaily {
+		if v != nil {
+			return *v
+		}
+		var ret AlertPolicyConditionConditionSqlDaily
+		return ret
+	}).(AlertPolicyConditionConditionSqlDailyOutput)
+}
+
+// The time of day (in UTC) at which the query should run. If left
+// unspecified, the server picks an arbitrary time of day and runs
+// the query at the same time each day.
+// Structure is documented below.
+func (o AlertPolicyConditionConditionSqlDailyPtrOutput) ExecutionTime() AlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionSqlDaily) *AlertPolicyConditionConditionSqlDailyExecutionTime {
+		if v == nil {
+			return nil
+		}
+		return v.ExecutionTime
+	}).(AlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput)
+}
+
+// The number of days between runs. Must be greater than or equal
+// to 1 day and less than or equal to 30 days.
+func (o AlertPolicyConditionConditionSqlDailyPtrOutput) Periodicity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionSqlDaily) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Periodicity
+	}).(pulumi.IntPtrOutput)
+}
+
+type AlertPolicyConditionConditionSqlDailyExecutionTime struct {
+	// Hours of a day in 24 hour format. Must be greater than or equal
+	// to 0 and typically must be less than or equal to 23. An API may
+	// choose to allow the value "24:00:00" for scenarios like business
+	// closing time.
+	Hours *int `pulumi:"hours"`
+	// Minutes of an hour. Must be greater than or equal to 0 and
+	// less than or equal to 59.
+	Minutes *int `pulumi:"minutes"`
+	// Fractions of seconds, in nanoseconds. Must be greater than or
+	// equal to 0 and less than or equal to 999,999,999.
+	Nanos *int `pulumi:"nanos"`
+	// Seconds of a minute. Must be greater than or equal to 0 and
+	// typically must be less than or equal to 59. An API may allow the
+	// value 60 if it allows leap-seconds.
+	Seconds *int `pulumi:"seconds"`
+}
+
+// AlertPolicyConditionConditionSqlDailyExecutionTimeInput is an input type that accepts AlertPolicyConditionConditionSqlDailyExecutionTimeArgs and AlertPolicyConditionConditionSqlDailyExecutionTimeOutput values.
+// You can construct a concrete instance of `AlertPolicyConditionConditionSqlDailyExecutionTimeInput` via:
+//
+//	AlertPolicyConditionConditionSqlDailyExecutionTimeArgs{...}
+type AlertPolicyConditionConditionSqlDailyExecutionTimeInput interface {
+	pulumi.Input
+
+	ToAlertPolicyConditionConditionSqlDailyExecutionTimeOutput() AlertPolicyConditionConditionSqlDailyExecutionTimeOutput
+	ToAlertPolicyConditionConditionSqlDailyExecutionTimeOutputWithContext(context.Context) AlertPolicyConditionConditionSqlDailyExecutionTimeOutput
+}
+
+type AlertPolicyConditionConditionSqlDailyExecutionTimeArgs struct {
+	// Hours of a day in 24 hour format. Must be greater than or equal
+	// to 0 and typically must be less than or equal to 23. An API may
+	// choose to allow the value "24:00:00" for scenarios like business
+	// closing time.
+	Hours pulumi.IntPtrInput `pulumi:"hours"`
+	// Minutes of an hour. Must be greater than or equal to 0 and
+	// less than or equal to 59.
+	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
+	// Fractions of seconds, in nanoseconds. Must be greater than or
+	// equal to 0 and less than or equal to 999,999,999.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Seconds of a minute. Must be greater than or equal to 0 and
+	// typically must be less than or equal to 59. An API may allow the
+	// value 60 if it allows leap-seconds.
+	Seconds pulumi.IntPtrInput `pulumi:"seconds"`
+}
+
+func (AlertPolicyConditionConditionSqlDailyExecutionTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyConditionConditionSqlDailyExecutionTime)(nil)).Elem()
+}
+
+func (i AlertPolicyConditionConditionSqlDailyExecutionTimeArgs) ToAlertPolicyConditionConditionSqlDailyExecutionTimeOutput() AlertPolicyConditionConditionSqlDailyExecutionTimeOutput {
+	return i.ToAlertPolicyConditionConditionSqlDailyExecutionTimeOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyConditionConditionSqlDailyExecutionTimeArgs) ToAlertPolicyConditionConditionSqlDailyExecutionTimeOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlDailyExecutionTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionSqlDailyExecutionTimeOutput)
+}
+
+func (i AlertPolicyConditionConditionSqlDailyExecutionTimeArgs) ToAlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput() AlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput {
+	return i.ToAlertPolicyConditionConditionSqlDailyExecutionTimePtrOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyConditionConditionSqlDailyExecutionTimeArgs) ToAlertPolicyConditionConditionSqlDailyExecutionTimePtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionSqlDailyExecutionTimeOutput).ToAlertPolicyConditionConditionSqlDailyExecutionTimePtrOutputWithContext(ctx)
+}
+
+// AlertPolicyConditionConditionSqlDailyExecutionTimePtrInput is an input type that accepts AlertPolicyConditionConditionSqlDailyExecutionTimeArgs, AlertPolicyConditionConditionSqlDailyExecutionTimePtr and AlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput values.
+// You can construct a concrete instance of `AlertPolicyConditionConditionSqlDailyExecutionTimePtrInput` via:
+//
+//	        AlertPolicyConditionConditionSqlDailyExecutionTimeArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertPolicyConditionConditionSqlDailyExecutionTimePtrInput interface {
+	pulumi.Input
+
+	ToAlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput() AlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput
+	ToAlertPolicyConditionConditionSqlDailyExecutionTimePtrOutputWithContext(context.Context) AlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput
+}
+
+type alertPolicyConditionConditionSqlDailyExecutionTimePtrType AlertPolicyConditionConditionSqlDailyExecutionTimeArgs
+
+func AlertPolicyConditionConditionSqlDailyExecutionTimePtr(v *AlertPolicyConditionConditionSqlDailyExecutionTimeArgs) AlertPolicyConditionConditionSqlDailyExecutionTimePtrInput {
+	return (*alertPolicyConditionConditionSqlDailyExecutionTimePtrType)(v)
+}
+
+func (*alertPolicyConditionConditionSqlDailyExecutionTimePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyConditionConditionSqlDailyExecutionTime)(nil)).Elem()
+}
+
+func (i *alertPolicyConditionConditionSqlDailyExecutionTimePtrType) ToAlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput() AlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput {
+	return i.ToAlertPolicyConditionConditionSqlDailyExecutionTimePtrOutputWithContext(context.Background())
+}
+
+func (i *alertPolicyConditionConditionSqlDailyExecutionTimePtrType) ToAlertPolicyConditionConditionSqlDailyExecutionTimePtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput)
+}
+
+type AlertPolicyConditionConditionSqlDailyExecutionTimeOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyConditionConditionSqlDailyExecutionTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyConditionConditionSqlDailyExecutionTime)(nil)).Elem()
+}
+
+func (o AlertPolicyConditionConditionSqlDailyExecutionTimeOutput) ToAlertPolicyConditionConditionSqlDailyExecutionTimeOutput() AlertPolicyConditionConditionSqlDailyExecutionTimeOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlDailyExecutionTimeOutput) ToAlertPolicyConditionConditionSqlDailyExecutionTimeOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlDailyExecutionTimeOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlDailyExecutionTimeOutput) ToAlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput() AlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput {
+	return o.ToAlertPolicyConditionConditionSqlDailyExecutionTimePtrOutputWithContext(context.Background())
+}
+
+func (o AlertPolicyConditionConditionSqlDailyExecutionTimeOutput) ToAlertPolicyConditionConditionSqlDailyExecutionTimePtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyConditionConditionSqlDailyExecutionTime) *AlertPolicyConditionConditionSqlDailyExecutionTime {
+		return &v
+	}).(AlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput)
+}
+
+// Hours of a day in 24 hour format. Must be greater than or equal
+// to 0 and typically must be less than or equal to 23. An API may
+// choose to allow the value "24:00:00" for scenarios like business
+// closing time.
+func (o AlertPolicyConditionConditionSqlDailyExecutionTimeOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionSqlDailyExecutionTime) *int { return v.Hours }).(pulumi.IntPtrOutput)
+}
+
+// Minutes of an hour. Must be greater than or equal to 0 and
+// less than or equal to 59.
+func (o AlertPolicyConditionConditionSqlDailyExecutionTimeOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionSqlDailyExecutionTime) *int { return v.Minutes }).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds, in nanoseconds. Must be greater than or
+// equal to 0 and less than or equal to 999,999,999.
+func (o AlertPolicyConditionConditionSqlDailyExecutionTimeOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionSqlDailyExecutionTime) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// Seconds of a minute. Must be greater than or equal to 0 and
+// typically must be less than or equal to 59. An API may allow the
+// value 60 if it allows leap-seconds.
+func (o AlertPolicyConditionConditionSqlDailyExecutionTimeOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionSqlDailyExecutionTime) *int { return v.Seconds }).(pulumi.IntPtrOutput)
+}
+
+type AlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyConditionConditionSqlDailyExecutionTime)(nil)).Elem()
+}
+
+func (o AlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput) ToAlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput() AlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput) ToAlertPolicyConditionConditionSqlDailyExecutionTimePtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput) Elem() AlertPolicyConditionConditionSqlDailyExecutionTimeOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionSqlDailyExecutionTime) AlertPolicyConditionConditionSqlDailyExecutionTime {
+		if v != nil {
+			return *v
+		}
+		var ret AlertPolicyConditionConditionSqlDailyExecutionTime
+		return ret
+	}).(AlertPolicyConditionConditionSqlDailyExecutionTimeOutput)
+}
+
+// Hours of a day in 24 hour format. Must be greater than or equal
+// to 0 and typically must be less than or equal to 23. An API may
+// choose to allow the value "24:00:00" for scenarios like business
+// closing time.
+func (o AlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionSqlDailyExecutionTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hours
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minutes of an hour. Must be greater than or equal to 0 and
+// less than or equal to 59.
+func (o AlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionSqlDailyExecutionTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Minutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds, in nanoseconds. Must be greater than or
+// equal to 0 and less than or equal to 999,999,999.
+func (o AlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionSqlDailyExecutionTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds of a minute. Must be greater than or equal to 0 and
+// typically must be less than or equal to 59. An API may allow the
+// value 60 if it allows leap-seconds.
+func (o AlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionSqlDailyExecutionTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Seconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type AlertPolicyConditionConditionSqlHourly struct {
+	// The number of minutes after the hour (in UTC) to run the query.
+	// Must be greater than or equal to 0 minutes and less than or equal to
+	// 59 minutes.  If left unspecified, then an arbitrary offset is used.
+	MinuteOffset *int `pulumi:"minuteOffset"`
+	// Number of hours between runs. The interval must be greater than or
+	// equal to 1 hour and less than or equal to 48 hours.
+	Periodicity int `pulumi:"periodicity"`
+}
+
+// AlertPolicyConditionConditionSqlHourlyInput is an input type that accepts AlertPolicyConditionConditionSqlHourlyArgs and AlertPolicyConditionConditionSqlHourlyOutput values.
+// You can construct a concrete instance of `AlertPolicyConditionConditionSqlHourlyInput` via:
+//
+//	AlertPolicyConditionConditionSqlHourlyArgs{...}
+type AlertPolicyConditionConditionSqlHourlyInput interface {
+	pulumi.Input
+
+	ToAlertPolicyConditionConditionSqlHourlyOutput() AlertPolicyConditionConditionSqlHourlyOutput
+	ToAlertPolicyConditionConditionSqlHourlyOutputWithContext(context.Context) AlertPolicyConditionConditionSqlHourlyOutput
+}
+
+type AlertPolicyConditionConditionSqlHourlyArgs struct {
+	// The number of minutes after the hour (in UTC) to run the query.
+	// Must be greater than or equal to 0 minutes and less than or equal to
+	// 59 minutes.  If left unspecified, then an arbitrary offset is used.
+	MinuteOffset pulumi.IntPtrInput `pulumi:"minuteOffset"`
+	// Number of hours between runs. The interval must be greater than or
+	// equal to 1 hour and less than or equal to 48 hours.
+	Periodicity pulumi.IntInput `pulumi:"periodicity"`
+}
+
+func (AlertPolicyConditionConditionSqlHourlyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyConditionConditionSqlHourly)(nil)).Elem()
+}
+
+func (i AlertPolicyConditionConditionSqlHourlyArgs) ToAlertPolicyConditionConditionSqlHourlyOutput() AlertPolicyConditionConditionSqlHourlyOutput {
+	return i.ToAlertPolicyConditionConditionSqlHourlyOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyConditionConditionSqlHourlyArgs) ToAlertPolicyConditionConditionSqlHourlyOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlHourlyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionSqlHourlyOutput)
+}
+
+func (i AlertPolicyConditionConditionSqlHourlyArgs) ToAlertPolicyConditionConditionSqlHourlyPtrOutput() AlertPolicyConditionConditionSqlHourlyPtrOutput {
+	return i.ToAlertPolicyConditionConditionSqlHourlyPtrOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyConditionConditionSqlHourlyArgs) ToAlertPolicyConditionConditionSqlHourlyPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlHourlyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionSqlHourlyOutput).ToAlertPolicyConditionConditionSqlHourlyPtrOutputWithContext(ctx)
+}
+
+// AlertPolicyConditionConditionSqlHourlyPtrInput is an input type that accepts AlertPolicyConditionConditionSqlHourlyArgs, AlertPolicyConditionConditionSqlHourlyPtr and AlertPolicyConditionConditionSqlHourlyPtrOutput values.
+// You can construct a concrete instance of `AlertPolicyConditionConditionSqlHourlyPtrInput` via:
+//
+//	        AlertPolicyConditionConditionSqlHourlyArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertPolicyConditionConditionSqlHourlyPtrInput interface {
+	pulumi.Input
+
+	ToAlertPolicyConditionConditionSqlHourlyPtrOutput() AlertPolicyConditionConditionSqlHourlyPtrOutput
+	ToAlertPolicyConditionConditionSqlHourlyPtrOutputWithContext(context.Context) AlertPolicyConditionConditionSqlHourlyPtrOutput
+}
+
+type alertPolicyConditionConditionSqlHourlyPtrType AlertPolicyConditionConditionSqlHourlyArgs
+
+func AlertPolicyConditionConditionSqlHourlyPtr(v *AlertPolicyConditionConditionSqlHourlyArgs) AlertPolicyConditionConditionSqlHourlyPtrInput {
+	return (*alertPolicyConditionConditionSqlHourlyPtrType)(v)
+}
+
+func (*alertPolicyConditionConditionSqlHourlyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyConditionConditionSqlHourly)(nil)).Elem()
+}
+
+func (i *alertPolicyConditionConditionSqlHourlyPtrType) ToAlertPolicyConditionConditionSqlHourlyPtrOutput() AlertPolicyConditionConditionSqlHourlyPtrOutput {
+	return i.ToAlertPolicyConditionConditionSqlHourlyPtrOutputWithContext(context.Background())
+}
+
+func (i *alertPolicyConditionConditionSqlHourlyPtrType) ToAlertPolicyConditionConditionSqlHourlyPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlHourlyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionSqlHourlyPtrOutput)
+}
+
+type AlertPolicyConditionConditionSqlHourlyOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyConditionConditionSqlHourlyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyConditionConditionSqlHourly)(nil)).Elem()
+}
+
+func (o AlertPolicyConditionConditionSqlHourlyOutput) ToAlertPolicyConditionConditionSqlHourlyOutput() AlertPolicyConditionConditionSqlHourlyOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlHourlyOutput) ToAlertPolicyConditionConditionSqlHourlyOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlHourlyOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlHourlyOutput) ToAlertPolicyConditionConditionSqlHourlyPtrOutput() AlertPolicyConditionConditionSqlHourlyPtrOutput {
+	return o.ToAlertPolicyConditionConditionSqlHourlyPtrOutputWithContext(context.Background())
+}
+
+func (o AlertPolicyConditionConditionSqlHourlyOutput) ToAlertPolicyConditionConditionSqlHourlyPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlHourlyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyConditionConditionSqlHourly) *AlertPolicyConditionConditionSqlHourly {
+		return &v
+	}).(AlertPolicyConditionConditionSqlHourlyPtrOutput)
+}
+
+// The number of minutes after the hour (in UTC) to run the query.
+// Must be greater than or equal to 0 minutes and less than or equal to
+// 59 minutes.  If left unspecified, then an arbitrary offset is used.
+func (o AlertPolicyConditionConditionSqlHourlyOutput) MinuteOffset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionSqlHourly) *int { return v.MinuteOffset }).(pulumi.IntPtrOutput)
+}
+
+// Number of hours between runs. The interval must be greater than or
+// equal to 1 hour and less than or equal to 48 hours.
+func (o AlertPolicyConditionConditionSqlHourlyOutput) Periodicity() pulumi.IntOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionSqlHourly) int { return v.Periodicity }).(pulumi.IntOutput)
+}
+
+type AlertPolicyConditionConditionSqlHourlyPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyConditionConditionSqlHourlyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyConditionConditionSqlHourly)(nil)).Elem()
+}
+
+func (o AlertPolicyConditionConditionSqlHourlyPtrOutput) ToAlertPolicyConditionConditionSqlHourlyPtrOutput() AlertPolicyConditionConditionSqlHourlyPtrOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlHourlyPtrOutput) ToAlertPolicyConditionConditionSqlHourlyPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlHourlyPtrOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlHourlyPtrOutput) Elem() AlertPolicyConditionConditionSqlHourlyOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionSqlHourly) AlertPolicyConditionConditionSqlHourly {
+		if v != nil {
+			return *v
+		}
+		var ret AlertPolicyConditionConditionSqlHourly
+		return ret
+	}).(AlertPolicyConditionConditionSqlHourlyOutput)
+}
+
+// The number of minutes after the hour (in UTC) to run the query.
+// Must be greater than or equal to 0 minutes and less than or equal to
+// 59 minutes.  If left unspecified, then an arbitrary offset is used.
+func (o AlertPolicyConditionConditionSqlHourlyPtrOutput) MinuteOffset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionSqlHourly) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinuteOffset
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of hours between runs. The interval must be greater than or
+// equal to 1 hour and less than or equal to 48 hours.
+func (o AlertPolicyConditionConditionSqlHourlyPtrOutput) Periodicity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionSqlHourly) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Periodicity
+	}).(pulumi.IntPtrOutput)
+}
+
+type AlertPolicyConditionConditionSqlMinutes struct {
+	// Number of minutes between runs. The interval must be greater than or
+	// equal to 5 minutes and less than or equal to 1440 minutes.
+	Periodicity int `pulumi:"periodicity"`
+}
+
+// AlertPolicyConditionConditionSqlMinutesInput is an input type that accepts AlertPolicyConditionConditionSqlMinutesArgs and AlertPolicyConditionConditionSqlMinutesOutput values.
+// You can construct a concrete instance of `AlertPolicyConditionConditionSqlMinutesInput` via:
+//
+//	AlertPolicyConditionConditionSqlMinutesArgs{...}
+type AlertPolicyConditionConditionSqlMinutesInput interface {
+	pulumi.Input
+
+	ToAlertPolicyConditionConditionSqlMinutesOutput() AlertPolicyConditionConditionSqlMinutesOutput
+	ToAlertPolicyConditionConditionSqlMinutesOutputWithContext(context.Context) AlertPolicyConditionConditionSqlMinutesOutput
+}
+
+type AlertPolicyConditionConditionSqlMinutesArgs struct {
+	// Number of minutes between runs. The interval must be greater than or
+	// equal to 5 minutes and less than or equal to 1440 minutes.
+	Periodicity pulumi.IntInput `pulumi:"periodicity"`
+}
+
+func (AlertPolicyConditionConditionSqlMinutesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyConditionConditionSqlMinutes)(nil)).Elem()
+}
+
+func (i AlertPolicyConditionConditionSqlMinutesArgs) ToAlertPolicyConditionConditionSqlMinutesOutput() AlertPolicyConditionConditionSqlMinutesOutput {
+	return i.ToAlertPolicyConditionConditionSqlMinutesOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyConditionConditionSqlMinutesArgs) ToAlertPolicyConditionConditionSqlMinutesOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlMinutesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionSqlMinutesOutput)
+}
+
+func (i AlertPolicyConditionConditionSqlMinutesArgs) ToAlertPolicyConditionConditionSqlMinutesPtrOutput() AlertPolicyConditionConditionSqlMinutesPtrOutput {
+	return i.ToAlertPolicyConditionConditionSqlMinutesPtrOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyConditionConditionSqlMinutesArgs) ToAlertPolicyConditionConditionSqlMinutesPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlMinutesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionSqlMinutesOutput).ToAlertPolicyConditionConditionSqlMinutesPtrOutputWithContext(ctx)
+}
+
+// AlertPolicyConditionConditionSqlMinutesPtrInput is an input type that accepts AlertPolicyConditionConditionSqlMinutesArgs, AlertPolicyConditionConditionSqlMinutesPtr and AlertPolicyConditionConditionSqlMinutesPtrOutput values.
+// You can construct a concrete instance of `AlertPolicyConditionConditionSqlMinutesPtrInput` via:
+//
+//	        AlertPolicyConditionConditionSqlMinutesArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertPolicyConditionConditionSqlMinutesPtrInput interface {
+	pulumi.Input
+
+	ToAlertPolicyConditionConditionSqlMinutesPtrOutput() AlertPolicyConditionConditionSqlMinutesPtrOutput
+	ToAlertPolicyConditionConditionSqlMinutesPtrOutputWithContext(context.Context) AlertPolicyConditionConditionSqlMinutesPtrOutput
+}
+
+type alertPolicyConditionConditionSqlMinutesPtrType AlertPolicyConditionConditionSqlMinutesArgs
+
+func AlertPolicyConditionConditionSqlMinutesPtr(v *AlertPolicyConditionConditionSqlMinutesArgs) AlertPolicyConditionConditionSqlMinutesPtrInput {
+	return (*alertPolicyConditionConditionSqlMinutesPtrType)(v)
+}
+
+func (*alertPolicyConditionConditionSqlMinutesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyConditionConditionSqlMinutes)(nil)).Elem()
+}
+
+func (i *alertPolicyConditionConditionSqlMinutesPtrType) ToAlertPolicyConditionConditionSqlMinutesPtrOutput() AlertPolicyConditionConditionSqlMinutesPtrOutput {
+	return i.ToAlertPolicyConditionConditionSqlMinutesPtrOutputWithContext(context.Background())
+}
+
+func (i *alertPolicyConditionConditionSqlMinutesPtrType) ToAlertPolicyConditionConditionSqlMinutesPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlMinutesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionSqlMinutesPtrOutput)
+}
+
+type AlertPolicyConditionConditionSqlMinutesOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyConditionConditionSqlMinutesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyConditionConditionSqlMinutes)(nil)).Elem()
+}
+
+func (o AlertPolicyConditionConditionSqlMinutesOutput) ToAlertPolicyConditionConditionSqlMinutesOutput() AlertPolicyConditionConditionSqlMinutesOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlMinutesOutput) ToAlertPolicyConditionConditionSqlMinutesOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlMinutesOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlMinutesOutput) ToAlertPolicyConditionConditionSqlMinutesPtrOutput() AlertPolicyConditionConditionSqlMinutesPtrOutput {
+	return o.ToAlertPolicyConditionConditionSqlMinutesPtrOutputWithContext(context.Background())
+}
+
+func (o AlertPolicyConditionConditionSqlMinutesOutput) ToAlertPolicyConditionConditionSqlMinutesPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlMinutesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyConditionConditionSqlMinutes) *AlertPolicyConditionConditionSqlMinutes {
+		return &v
+	}).(AlertPolicyConditionConditionSqlMinutesPtrOutput)
+}
+
+// Number of minutes between runs. The interval must be greater than or
+// equal to 5 minutes and less than or equal to 1440 minutes.
+func (o AlertPolicyConditionConditionSqlMinutesOutput) Periodicity() pulumi.IntOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionSqlMinutes) int { return v.Periodicity }).(pulumi.IntOutput)
+}
+
+type AlertPolicyConditionConditionSqlMinutesPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyConditionConditionSqlMinutesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyConditionConditionSqlMinutes)(nil)).Elem()
+}
+
+func (o AlertPolicyConditionConditionSqlMinutesPtrOutput) ToAlertPolicyConditionConditionSqlMinutesPtrOutput() AlertPolicyConditionConditionSqlMinutesPtrOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlMinutesPtrOutput) ToAlertPolicyConditionConditionSqlMinutesPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlMinutesPtrOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlMinutesPtrOutput) Elem() AlertPolicyConditionConditionSqlMinutesOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionSqlMinutes) AlertPolicyConditionConditionSqlMinutes {
+		if v != nil {
+			return *v
+		}
+		var ret AlertPolicyConditionConditionSqlMinutes
+		return ret
+	}).(AlertPolicyConditionConditionSqlMinutesOutput)
+}
+
+// Number of minutes between runs. The interval must be greater than or
+// equal to 5 minutes and less than or equal to 1440 minutes.
+func (o AlertPolicyConditionConditionSqlMinutesPtrOutput) Periodicity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionSqlMinutes) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Periodicity
+	}).(pulumi.IntPtrOutput)
+}
+
+type AlertPolicyConditionConditionSqlRowCountTest struct {
+	// The comparison to apply between the time
+	// series (indicated by filter and aggregation)
+	// and the threshold (indicated by
+	// threshold_value). The comparison is applied
+	// on each time series, with the time series on
+	// the left-hand side and the threshold on the
+	// right-hand side. Only COMPARISON_LT and
+	// COMPARISON_GT are supported currently.
+	// Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
+	Comparison string `pulumi:"comparison"`
+	// Test the boolean value in the indicated column.
+	Threshold int `pulumi:"threshold"`
+}
+
+// AlertPolicyConditionConditionSqlRowCountTestInput is an input type that accepts AlertPolicyConditionConditionSqlRowCountTestArgs and AlertPolicyConditionConditionSqlRowCountTestOutput values.
+// You can construct a concrete instance of `AlertPolicyConditionConditionSqlRowCountTestInput` via:
+//
+//	AlertPolicyConditionConditionSqlRowCountTestArgs{...}
+type AlertPolicyConditionConditionSqlRowCountTestInput interface {
+	pulumi.Input
+
+	ToAlertPolicyConditionConditionSqlRowCountTestOutput() AlertPolicyConditionConditionSqlRowCountTestOutput
+	ToAlertPolicyConditionConditionSqlRowCountTestOutputWithContext(context.Context) AlertPolicyConditionConditionSqlRowCountTestOutput
+}
+
+type AlertPolicyConditionConditionSqlRowCountTestArgs struct {
+	// The comparison to apply between the time
+	// series (indicated by filter and aggregation)
+	// and the threshold (indicated by
+	// threshold_value). The comparison is applied
+	// on each time series, with the time series on
+	// the left-hand side and the threshold on the
+	// right-hand side. Only COMPARISON_LT and
+	// COMPARISON_GT are supported currently.
+	// Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
+	Comparison pulumi.StringInput `pulumi:"comparison"`
+	// Test the boolean value in the indicated column.
+	Threshold pulumi.IntInput `pulumi:"threshold"`
+}
+
+func (AlertPolicyConditionConditionSqlRowCountTestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyConditionConditionSqlRowCountTest)(nil)).Elem()
+}
+
+func (i AlertPolicyConditionConditionSqlRowCountTestArgs) ToAlertPolicyConditionConditionSqlRowCountTestOutput() AlertPolicyConditionConditionSqlRowCountTestOutput {
+	return i.ToAlertPolicyConditionConditionSqlRowCountTestOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyConditionConditionSqlRowCountTestArgs) ToAlertPolicyConditionConditionSqlRowCountTestOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlRowCountTestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionSqlRowCountTestOutput)
+}
+
+func (i AlertPolicyConditionConditionSqlRowCountTestArgs) ToAlertPolicyConditionConditionSqlRowCountTestPtrOutput() AlertPolicyConditionConditionSqlRowCountTestPtrOutput {
+	return i.ToAlertPolicyConditionConditionSqlRowCountTestPtrOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyConditionConditionSqlRowCountTestArgs) ToAlertPolicyConditionConditionSqlRowCountTestPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlRowCountTestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionSqlRowCountTestOutput).ToAlertPolicyConditionConditionSqlRowCountTestPtrOutputWithContext(ctx)
+}
+
+// AlertPolicyConditionConditionSqlRowCountTestPtrInput is an input type that accepts AlertPolicyConditionConditionSqlRowCountTestArgs, AlertPolicyConditionConditionSqlRowCountTestPtr and AlertPolicyConditionConditionSqlRowCountTestPtrOutput values.
+// You can construct a concrete instance of `AlertPolicyConditionConditionSqlRowCountTestPtrInput` via:
+//
+//	        AlertPolicyConditionConditionSqlRowCountTestArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertPolicyConditionConditionSqlRowCountTestPtrInput interface {
+	pulumi.Input
+
+	ToAlertPolicyConditionConditionSqlRowCountTestPtrOutput() AlertPolicyConditionConditionSqlRowCountTestPtrOutput
+	ToAlertPolicyConditionConditionSqlRowCountTestPtrOutputWithContext(context.Context) AlertPolicyConditionConditionSqlRowCountTestPtrOutput
+}
+
+type alertPolicyConditionConditionSqlRowCountTestPtrType AlertPolicyConditionConditionSqlRowCountTestArgs
+
+func AlertPolicyConditionConditionSqlRowCountTestPtr(v *AlertPolicyConditionConditionSqlRowCountTestArgs) AlertPolicyConditionConditionSqlRowCountTestPtrInput {
+	return (*alertPolicyConditionConditionSqlRowCountTestPtrType)(v)
+}
+
+func (*alertPolicyConditionConditionSqlRowCountTestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyConditionConditionSqlRowCountTest)(nil)).Elem()
+}
+
+func (i *alertPolicyConditionConditionSqlRowCountTestPtrType) ToAlertPolicyConditionConditionSqlRowCountTestPtrOutput() AlertPolicyConditionConditionSqlRowCountTestPtrOutput {
+	return i.ToAlertPolicyConditionConditionSqlRowCountTestPtrOutputWithContext(context.Background())
+}
+
+func (i *alertPolicyConditionConditionSqlRowCountTestPtrType) ToAlertPolicyConditionConditionSqlRowCountTestPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlRowCountTestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionSqlRowCountTestPtrOutput)
+}
+
+type AlertPolicyConditionConditionSqlRowCountTestOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyConditionConditionSqlRowCountTestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyConditionConditionSqlRowCountTest)(nil)).Elem()
+}
+
+func (o AlertPolicyConditionConditionSqlRowCountTestOutput) ToAlertPolicyConditionConditionSqlRowCountTestOutput() AlertPolicyConditionConditionSqlRowCountTestOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlRowCountTestOutput) ToAlertPolicyConditionConditionSqlRowCountTestOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlRowCountTestOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlRowCountTestOutput) ToAlertPolicyConditionConditionSqlRowCountTestPtrOutput() AlertPolicyConditionConditionSqlRowCountTestPtrOutput {
+	return o.ToAlertPolicyConditionConditionSqlRowCountTestPtrOutputWithContext(context.Background())
+}
+
+func (o AlertPolicyConditionConditionSqlRowCountTestOutput) ToAlertPolicyConditionConditionSqlRowCountTestPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlRowCountTestPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyConditionConditionSqlRowCountTest) *AlertPolicyConditionConditionSqlRowCountTest {
+		return &v
+	}).(AlertPolicyConditionConditionSqlRowCountTestPtrOutput)
+}
+
+// The comparison to apply between the time
+// series (indicated by filter and aggregation)
+// and the threshold (indicated by
+// threshold_value). The comparison is applied
+// on each time series, with the time series on
+// the left-hand side and the threshold on the
+// right-hand side. Only COMPARISON_LT and
+// COMPARISON_GT are supported currently.
+// Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
+func (o AlertPolicyConditionConditionSqlRowCountTestOutput) Comparison() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionSqlRowCountTest) string { return v.Comparison }).(pulumi.StringOutput)
+}
+
+// Test the boolean value in the indicated column.
+func (o AlertPolicyConditionConditionSqlRowCountTestOutput) Threshold() pulumi.IntOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionSqlRowCountTest) int { return v.Threshold }).(pulumi.IntOutput)
+}
+
+type AlertPolicyConditionConditionSqlRowCountTestPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyConditionConditionSqlRowCountTestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyConditionConditionSqlRowCountTest)(nil)).Elem()
+}
+
+func (o AlertPolicyConditionConditionSqlRowCountTestPtrOutput) ToAlertPolicyConditionConditionSqlRowCountTestPtrOutput() AlertPolicyConditionConditionSqlRowCountTestPtrOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlRowCountTestPtrOutput) ToAlertPolicyConditionConditionSqlRowCountTestPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionSqlRowCountTestPtrOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionSqlRowCountTestPtrOutput) Elem() AlertPolicyConditionConditionSqlRowCountTestOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionSqlRowCountTest) AlertPolicyConditionConditionSqlRowCountTest {
+		if v != nil {
+			return *v
+		}
+		var ret AlertPolicyConditionConditionSqlRowCountTest
+		return ret
+	}).(AlertPolicyConditionConditionSqlRowCountTestOutput)
+}
+
+// The comparison to apply between the time
+// series (indicated by filter and aggregation)
+// and the threshold (indicated by
+// threshold_value). The comparison is applied
+// on each time series, with the time series on
+// the left-hand side and the threshold on the
+// right-hand side. Only COMPARISON_LT and
+// COMPARISON_GT are supported currently.
+// Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
+func (o AlertPolicyConditionConditionSqlRowCountTestPtrOutput) Comparison() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionSqlRowCountTest) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Comparison
+	}).(pulumi.StringPtrOutput)
+}
+
+// Test the boolean value in the indicated column.
+func (o AlertPolicyConditionConditionSqlRowCountTestPtrOutput) Threshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionSqlRowCountTest) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Threshold
+	}).(pulumi.IntPtrOutput)
 }
 
 type AlertPolicyConditionConditionThreshold struct {
@@ -12405,6 +13741,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrInput)(nil)).Elem(), AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionPrometheusQueryLanguageInput)(nil)).Elem(), AlertPolicyConditionConditionPrometheusQueryLanguageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionPrometheusQueryLanguagePtrInput)(nil)).Elem(), AlertPolicyConditionConditionPrometheusQueryLanguageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionSqlInput)(nil)).Elem(), AlertPolicyConditionConditionSqlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionSqlPtrInput)(nil)).Elem(), AlertPolicyConditionConditionSqlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionSqlBooleanTestInput)(nil)).Elem(), AlertPolicyConditionConditionSqlBooleanTestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionSqlBooleanTestPtrInput)(nil)).Elem(), AlertPolicyConditionConditionSqlBooleanTestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionSqlDailyInput)(nil)).Elem(), AlertPolicyConditionConditionSqlDailyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionSqlDailyPtrInput)(nil)).Elem(), AlertPolicyConditionConditionSqlDailyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionSqlDailyExecutionTimeInput)(nil)).Elem(), AlertPolicyConditionConditionSqlDailyExecutionTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionSqlDailyExecutionTimePtrInput)(nil)).Elem(), AlertPolicyConditionConditionSqlDailyExecutionTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionSqlHourlyInput)(nil)).Elem(), AlertPolicyConditionConditionSqlHourlyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionSqlHourlyPtrInput)(nil)).Elem(), AlertPolicyConditionConditionSqlHourlyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionSqlMinutesInput)(nil)).Elem(), AlertPolicyConditionConditionSqlMinutesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionSqlMinutesPtrInput)(nil)).Elem(), AlertPolicyConditionConditionSqlMinutesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionSqlRowCountTestInput)(nil)).Elem(), AlertPolicyConditionConditionSqlRowCountTestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionSqlRowCountTestPtrInput)(nil)).Elem(), AlertPolicyConditionConditionSqlRowCountTestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionThresholdInput)(nil)).Elem(), AlertPolicyConditionConditionThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionThresholdPtrInput)(nil)).Elem(), AlertPolicyConditionConditionThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionThresholdAggregationInput)(nil)).Elem(), AlertPolicyConditionConditionThresholdAggregationArgs{})
@@ -12533,6 +13883,20 @@ func init() {
 	pulumi.RegisterOutputType(AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput{})
 	pulumi.RegisterOutputType(AlertPolicyConditionConditionPrometheusQueryLanguageOutput{})
 	pulumi.RegisterOutputType(AlertPolicyConditionConditionPrometheusQueryLanguagePtrOutput{})
+	pulumi.RegisterOutputType(AlertPolicyConditionConditionSqlOutput{})
+	pulumi.RegisterOutputType(AlertPolicyConditionConditionSqlPtrOutput{})
+	pulumi.RegisterOutputType(AlertPolicyConditionConditionSqlBooleanTestOutput{})
+	pulumi.RegisterOutputType(AlertPolicyConditionConditionSqlBooleanTestPtrOutput{})
+	pulumi.RegisterOutputType(AlertPolicyConditionConditionSqlDailyOutput{})
+	pulumi.RegisterOutputType(AlertPolicyConditionConditionSqlDailyPtrOutput{})
+	pulumi.RegisterOutputType(AlertPolicyConditionConditionSqlDailyExecutionTimeOutput{})
+	pulumi.RegisterOutputType(AlertPolicyConditionConditionSqlDailyExecutionTimePtrOutput{})
+	pulumi.RegisterOutputType(AlertPolicyConditionConditionSqlHourlyOutput{})
+	pulumi.RegisterOutputType(AlertPolicyConditionConditionSqlHourlyPtrOutput{})
+	pulumi.RegisterOutputType(AlertPolicyConditionConditionSqlMinutesOutput{})
+	pulumi.RegisterOutputType(AlertPolicyConditionConditionSqlMinutesPtrOutput{})
+	pulumi.RegisterOutputType(AlertPolicyConditionConditionSqlRowCountTestOutput{})
+	pulumi.RegisterOutputType(AlertPolicyConditionConditionSqlRowCountTestPtrOutput{})
 	pulumi.RegisterOutputType(AlertPolicyConditionConditionThresholdOutput{})
 	pulumi.RegisterOutputType(AlertPolicyConditionConditionThresholdPtrOutput{})
 	pulumi.RegisterOutputType(AlertPolicyConditionConditionThresholdAggregationOutput{})

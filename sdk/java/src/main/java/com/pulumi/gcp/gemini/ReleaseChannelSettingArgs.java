@@ -18,7 +18,7 @@ public final class ReleaseChannelSettingArgs extends com.pulumi.resources.Resour
     public static final ReleaseChannelSettingArgs Empty = new ReleaseChannelSettingArgs();
 
     /**
-     * Optional. Labels as key value pairs.
+     * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -27,7 +27,7 @@ public final class ReleaseChannelSettingArgs extends com.pulumi.resources.Resour
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels as key value pairs.
+     * @return Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -69,7 +69,7 @@ public final class ReleaseChannelSettingArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Optional. Release channel to be used.
+     * Release channel to be used.
      * Possible values:
      * STABLE
      * EXPERIMENTAL
@@ -79,7 +79,7 @@ public final class ReleaseChannelSettingArgs extends com.pulumi.resources.Resour
     private @Nullable Output<String> releaseChannel;
 
     /**
-     * @return Optional. Release channel to be used.
+     * @return Release channel to be used.
      * Possible values:
      * STABLE
      * EXPERIMENTAL
@@ -90,9 +90,7 @@ public final class ReleaseChannelSettingArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Required. Id of the requesting object.
-     * If auto-generating Id server-side, remove this field and
-     * release_channel_setting_id from the method_signature of Create RPC
+     * Id of the Release Channel Setting.
      * 
      * ***
      * 
@@ -101,9 +99,7 @@ public final class ReleaseChannelSettingArgs extends com.pulumi.resources.Resour
     private Output<String> releaseChannelSettingId;
 
     /**
-     * @return Required. Id of the requesting object.
-     * If auto-generating Id server-side, remove this field and
-     * release_channel_setting_id from the method_signature of Create RPC
+     * @return Id of the Release Channel Setting.
      * 
      * ***
      * 
@@ -141,7 +137,7 @@ public final class ReleaseChannelSettingArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs.
+         * @param labels Labels as key value pairs.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -154,7 +150,7 @@ public final class ReleaseChannelSettingArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs.
+         * @param labels Labels as key value pairs.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -210,7 +206,7 @@ public final class ReleaseChannelSettingArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param releaseChannel Optional. Release channel to be used.
+         * @param releaseChannel Release channel to be used.
          * Possible values:
          * STABLE
          * EXPERIMENTAL
@@ -224,7 +220,7 @@ public final class ReleaseChannelSettingArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param releaseChannel Optional. Release channel to be used.
+         * @param releaseChannel Release channel to be used.
          * Possible values:
          * STABLE
          * EXPERIMENTAL
@@ -237,9 +233,7 @@ public final class ReleaseChannelSettingArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param releaseChannelSettingId Required. Id of the requesting object.
-         * If auto-generating Id server-side, remove this field and
-         * release_channel_setting_id from the method_signature of Create RPC
+         * @param releaseChannelSettingId Id of the Release Channel Setting.
          * 
          * ***
          * 
@@ -252,9 +246,7 @@ public final class ReleaseChannelSettingArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param releaseChannelSettingId Required. Id of the requesting object.
-         * If auto-generating Id server-side, remove this field and
-         * release_channel_setting_id from the method_signature of Create RPC
+         * @param releaseChannelSettingId Id of the Release Channel Setting.
          * 
          * ***
          * 

@@ -108,7 +108,7 @@ def get_disk_iam_policy(name: Optional[str] = None,
     """
     Retrieves the current IAM policy data for disk
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -148,7 +148,7 @@ def get_disk_iam_policy_output(name: Optional[pulumi.Input[str]] = None,
     """
     Retrieves the current IAM policy data for disk
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

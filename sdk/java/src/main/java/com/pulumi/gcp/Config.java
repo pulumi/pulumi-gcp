@@ -279,6 +279,9 @@ public final class Config {
     public Optional<String> firebaseCustomEndpoint() {
         return Codegen.stringProp("firebaseCustomEndpoint").config(config).get();
     }
+    public Optional<String> firebaseDataConnectCustomEndpoint() {
+        return Codegen.stringProp("firebaseDataConnectCustomEndpoint").config(config).get();
+    }
     public Optional<String> firebaseDatabaseCustomEndpoint() {
         return Codegen.stringProp("firebaseDatabaseCustomEndpoint").config(config).get();
     }

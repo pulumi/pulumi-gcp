@@ -528,7 +528,7 @@ class Backup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.filestore.Instance("instance",
-            name="tf-fs-inst",
+            name="fs-inst",
             location="us-central1-b",
             tier="BASIC_HDD",
             file_shares={
@@ -541,7 +541,7 @@ class Backup(pulumi.CustomResource):
                 "connect_mode": "DIRECT_PEERING",
             }])
         backup = gcp.filestore.Backup("backup",
-            name="tf-fs-bkup",
+            name="fs-bkup",
             location="us-central1",
             description="This is a filestore backup for the test instance",
             source_instance=instance.id,
@@ -628,7 +628,7 @@ class Backup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.filestore.Instance("instance",
-            name="tf-fs-inst",
+            name="fs-inst",
             location="us-central1-b",
             tier="BASIC_HDD",
             file_shares={
@@ -641,7 +641,7 @@ class Backup(pulumi.CustomResource):
                 "connect_mode": "DIRECT_PEERING",
             }])
         backup = gcp.filestore.Backup("backup",
-            name="tf-fs-bkup",
+            name="fs-bkup",
             location="us-central1",
             description="This is a filestore backup for the test instance",
             source_instance=instance.id,

@@ -11,12 +11,72 @@ namespace Pulumi.Gcp.RuntimeConfig
 {
     public static class GetConfigIamPolicy
     {
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.RuntimeConfig.GetConfigIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = config.Project,
+        ///         Config = config.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetConfigIamPolicyResult> InvokeAsync(GetConfigIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConfigIamPolicyResult>("gcp:runtimeconfig/getConfigIamPolicy:getConfigIamPolicy", args ?? new GetConfigIamPolicyArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.RuntimeConfig.GetConfigIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = config.Project,
+        ///         Config = config.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetConfigIamPolicyResult> Invoke(GetConfigIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConfigIamPolicyResult>("gcp:runtimeconfig/getConfigIamPolicy:getConfigIamPolicy", args ?? new GetConfigIamPolicyInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.RuntimeConfig.GetConfigIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = config.Project,
+        ///         Config = config.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetConfigIamPolicyResult> Invoke(GetConfigIamPolicyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetConfigIamPolicyResult>("gcp:runtimeconfig/getConfigIamPolicy:getConfigIamPolicy", args ?? new GetConfigIamPolicyInvokeArgs(), options.WithDefaults());
     }

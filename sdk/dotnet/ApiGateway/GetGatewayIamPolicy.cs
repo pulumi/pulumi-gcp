@@ -11,12 +11,75 @@ namespace Pulumi.Gcp.ApiGateway
 {
     public static class GetGatewayIamPolicy
     {
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.ApiGateway.GetGatewayIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = apiGw.Project,
+        ///         Region = apiGw.Region,
+        ///         Gateway = apiGw.GatewayId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetGatewayIamPolicyResult> InvokeAsync(GetGatewayIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewayIamPolicyResult>("gcp:apigateway/getGatewayIamPolicy:getGatewayIamPolicy", args ?? new GetGatewayIamPolicyArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.ApiGateway.GetGatewayIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = apiGw.Project,
+        ///         Region = apiGw.Region,
+        ///         Gateway = apiGw.GatewayId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetGatewayIamPolicyResult> Invoke(GetGatewayIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewayIamPolicyResult>("gcp:apigateway/getGatewayIamPolicy:getGatewayIamPolicy", args ?? new GetGatewayIamPolicyInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.ApiGateway.GetGatewayIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = apiGw.Project,
+        ///         Region = apiGw.Region,
+        ///         Gateway = apiGw.GatewayId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetGatewayIamPolicyResult> Invoke(GetGatewayIamPolicyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewayIamPolicyResult>("gcp:apigateway/getGatewayIamPolicy:getGatewayIamPolicy", args ?? new GetGatewayIamPolicyInvokeArgs(), options.WithDefaults());
     }

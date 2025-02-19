@@ -85,45 +85,6 @@ import (
 //	}
 //
 // ```
-// ### Spanner Instance With Autoscaling
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/spanner"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := spanner.NewInstance(ctx, "example", &spanner.InstanceArgs{
-//				Config:      pulumi.String("regional-us-central1"),
-//				DisplayName: pulumi.String("Test Spanner Instance"),
-//				AutoscalingConfig: &spanner.InstanceAutoscalingConfigArgs{
-//					AutoscalingLimits: &spanner.InstanceAutoscalingConfigAutoscalingLimitsArgs{
-//						MaxProcessingUnits: pulumi.Int(3000),
-//						MinProcessingUnits: pulumi.Int(2000),
-//					},
-//					AutoscalingTargets: &spanner.InstanceAutoscalingConfigAutoscalingTargetsArgs{
-//						HighPriorityCpuUtilizationPercent: pulumi.Int(75),
-//						StorageUtilizationPercent:         pulumi.Int(90),
-//					},
-//				},
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ### Spanner Instance Multi Regional
 //
 // ```go

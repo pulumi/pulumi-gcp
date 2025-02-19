@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Tags
         /// Retrieves the current IAM policy data for tagkey
         /// 
         /// 
-        /// ## example
+        /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.Tags
         /// Retrieves the current IAM policy data for tagkey
         /// 
         /// 
-        /// ## example
+        /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -65,7 +65,7 @@ namespace Pulumi.Gcp.Tags
         /// Retrieves the current IAM policy data for tagkey
         /// 
         /// 
-        /// ## example
+        /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

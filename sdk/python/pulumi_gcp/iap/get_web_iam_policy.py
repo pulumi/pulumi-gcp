@@ -88,7 +88,7 @@ def get_web_iam_policy(project: Optional[str] = None,
     """
     Retrieves the current IAM policy data for web
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -116,7 +116,7 @@ def get_web_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] = N
     """
     Retrieves the current IAM policy data for web
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

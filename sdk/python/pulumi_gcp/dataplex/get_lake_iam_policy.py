@@ -108,7 +108,7 @@ def get_lake_iam_policy(lake: Optional[str] = None,
     """
     Retrieves the current IAM policy data for lake
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -145,7 +145,7 @@ def get_lake_iam_policy_output(lake: Optional[pulumi.Input[str]] = None,
     """
     Retrieves the current IAM policy data for lake
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

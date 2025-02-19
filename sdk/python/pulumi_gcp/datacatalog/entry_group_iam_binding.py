@@ -288,7 +288,7 @@ class EntryGroupIamBinding(pulumi.CustomResource):
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Three different resources help you manage your IAM policy for Data catalog EntryGroup. Each of these resources serves a different use case:
+        Three different resources help you manage your IAM policy for Data Catalog EntryGroup. Each of these resources serves a different use case:
 
         * `datacatalog.EntryGroupIamPolicy`: Authoritative. Sets the IAM policy for the entrygroup and replaces any existing policy already attached.
         * `datacatalog.EntryGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the entrygroup are preserved.
@@ -345,8 +345,8 @@ class EntryGroupIamBinding(pulumi.CustomResource):
 
         - 
 
-        # IAM policy for Data catalog EntryGroup
-        Three different resources help you manage your IAM policy for Data catalog EntryGroup. Each of these resources serves a different use case:
+        # IAM policy for Data Catalog EntryGroup
+        Three different resources help you manage your IAM policy for Data Catalog EntryGroup. Each of these resources serves a different use case:
 
         * `datacatalog.EntryGroupIamPolicy`: Authoritative. Sets the IAM policy for the entrygroup and replaces any existing policy already attached.
         * `datacatalog.EntryGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the entrygroup are preserved.
@@ -413,7 +413,7 @@ class EntryGroupIamBinding(pulumi.CustomResource):
 
         Any variables not passed in the import command will be taken from the provider configuration.
 
-        Data catalog entrygroup IAM resources can be imported using the resource identifiers, role, and member.
+        Data Catalog entrygroup IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
 
@@ -464,7 +464,7 @@ class EntryGroupIamBinding(pulumi.CustomResource):
                  args: EntryGroupIamBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Three different resources help you manage your IAM policy for Data catalog EntryGroup. Each of these resources serves a different use case:
+        Three different resources help you manage your IAM policy for Data Catalog EntryGroup. Each of these resources serves a different use case:
 
         * `datacatalog.EntryGroupIamPolicy`: Authoritative. Sets the IAM policy for the entrygroup and replaces any existing policy already attached.
         * `datacatalog.EntryGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the entrygroup are preserved.
@@ -521,8 +521,8 @@ class EntryGroupIamBinding(pulumi.CustomResource):
 
         - 
 
-        # IAM policy for Data catalog EntryGroup
-        Three different resources help you manage your IAM policy for Data catalog EntryGroup. Each of these resources serves a different use case:
+        # IAM policy for Data Catalog EntryGroup
+        Three different resources help you manage your IAM policy for Data Catalog EntryGroup. Each of these resources serves a different use case:
 
         * `datacatalog.EntryGroupIamPolicy`: Authoritative. Sets the IAM policy for the entrygroup and replaces any existing policy already attached.
         * `datacatalog.EntryGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the entrygroup are preserved.
@@ -589,7 +589,7 @@ class EntryGroupIamBinding(pulumi.CustomResource):
 
         Any variables not passed in the import command will be taken from the provider configuration.
 
-        Data catalog entrygroup IAM resources can be imported using the resource identifiers, role, and member.
+        Data Catalog entrygroup IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
 

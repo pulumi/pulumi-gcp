@@ -75,12 +75,28 @@ public final class ServicePerimeterIngressPolicyArgs extends com.pulumi.resource
         return this.perimeter;
     }
 
+    /**
+     * Human readable title. Must be unique within the perimeter. Does not affect behavior.
+     * 
+     */
+    @Import(name="title")
+    private @Nullable Output<String> title;
+
+    /**
+     * @return Human readable title. Must be unique within the perimeter. Does not affect behavior.
+     * 
+     */
+    public Optional<Output<String>> title() {
+        return Optional.ofNullable(this.title);
+    }
+
     private ServicePerimeterIngressPolicyArgs() {}
 
     private ServicePerimeterIngressPolicyArgs(ServicePerimeterIngressPolicyArgs $) {
         this.ingressFrom = $.ingressFrom;
         this.ingressTo = $.ingressTo;
         this.perimeter = $.perimeter;
+        this.title = $.title;
     }
 
     public static Builder builder() {
@@ -174,6 +190,27 @@ public final class ServicePerimeterIngressPolicyArgs extends com.pulumi.resource
          */
         public Builder perimeter(String perimeter) {
             return perimeter(Output.of(perimeter));
+        }
+
+        /**
+         * @param title Human readable title. Must be unique within the perimeter. Does not affect behavior.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder title(@Nullable Output<String> title) {
+            $.title = title;
+            return this;
+        }
+
+        /**
+         * @param title Human readable title. Must be unique within the perimeter. Does not affect behavior.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder title(String title) {
+            return title(Output.of(title));
         }
 
         public ServicePerimeterIngressPolicyArgs build() {

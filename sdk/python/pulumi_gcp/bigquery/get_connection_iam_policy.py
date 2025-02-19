@@ -108,7 +108,7 @@ def get_connection_iam_policy(connection_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for connection
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -155,7 +155,7 @@ def get_connection_iam_policy_output(connection_id: Optional[pulumi.Input[str]] 
     """
     Retrieves the current IAM policy data for connection
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

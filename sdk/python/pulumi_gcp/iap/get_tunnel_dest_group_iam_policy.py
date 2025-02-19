@@ -108,7 +108,7 @@ def get_tunnel_dest_group_iam_policy(dest_group: Optional[str] = None,
     """
     Retrieves the current IAM policy data for tunneldestgroup
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -148,7 +148,7 @@ def get_tunnel_dest_group_iam_policy_output(dest_group: Optional[pulumi.Input[st
     """
     Retrieves the current IAM policy data for tunneldestgroup
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

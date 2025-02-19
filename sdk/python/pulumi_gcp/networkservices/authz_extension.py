@@ -61,8 +61,7 @@ class AuthzExtensionArgs:
         :param pulumi.Input[str] name: Identifier. Name of the AuthzExtension resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] wire_format: The format of communication supported by the callout extension.
-               Default value is `EXT_PROC_GRPC`.
+        :param pulumi.Input[str] wire_format: The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
                Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
         """
         pulumi.set(__self__, "authority", authority)
@@ -250,8 +249,7 @@ class AuthzExtensionArgs:
     @pulumi.getter(name="wireFormat")
     def wire_format(self) -> Optional[pulumi.Input[str]]:
         """
-        The format of communication supported by the callout extension.
-        Default value is `EXT_PROC_GRPC`.
+        The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
         Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
         """
         return pulumi.get(self, "wire_format")
@@ -315,8 +313,7 @@ class _AuthzExtensionState:
                https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService} or https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}.
         :param pulumi.Input[str] timeout: Specifies the timeout for each individual message on the stream. The timeout must be between 10-10000 milliseconds.
         :param pulumi.Input[str] update_time: The timestamp when the resource was updated.
-        :param pulumi.Input[str] wire_format: The format of communication supported by the callout extension.
-               Default value is `EXT_PROC_GRPC`.
+        :param pulumi.Input[str] wire_format: The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
                Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
         """
         if authority is not None:
@@ -566,8 +563,7 @@ class _AuthzExtensionState:
     @pulumi.getter(name="wireFormat")
     def wire_format(self) -> Optional[pulumi.Input[str]]:
         """
-        The format of communication supported by the callout extension.
-        Default value is `EXT_PROC_GRPC`.
+        The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
         Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
         """
         return pulumi.get(self, "wire_format")
@@ -690,8 +686,7 @@ class AuthzExtension(pulumi.CustomResource):
                To configure a callout extension, service must be a fully-qualified reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format:
                https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService} or https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}.
         :param pulumi.Input[str] timeout: Specifies the timeout for each individual message on the stream. The timeout must be between 10-10000 milliseconds.
-        :param pulumi.Input[str] wire_format: The format of communication supported by the callout extension.
-               Default value is `EXT_PROC_GRPC`.
+        :param pulumi.Input[str] wire_format: The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
                Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
         """
         ...
@@ -897,8 +892,7 @@ class AuthzExtension(pulumi.CustomResource):
                https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService} or https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}.
         :param pulumi.Input[str] timeout: Specifies the timeout for each individual message on the stream. The timeout must be between 10-10000 milliseconds.
         :param pulumi.Input[str] update_time: The timestamp when the resource was updated.
-        :param pulumi.Input[str] wire_format: The format of communication supported by the callout extension.
-               Default value is `EXT_PROC_GRPC`.
+        :param pulumi.Input[str] wire_format: The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
                Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1070,10 +1064,9 @@ class AuthzExtension(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="wireFormat")
-    def wire_format(self) -> pulumi.Output[Optional[str]]:
+    def wire_format(self) -> pulumi.Output[str]:
         """
-        The format of communication supported by the callout extension.
-        Default value is `EXT_PROC_GRPC`.
+        The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
         Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
         """
         return pulumi.get(self, "wire_format")

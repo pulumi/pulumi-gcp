@@ -273,7 +273,7 @@ public final class StorageFunctions {
     /**
      * Retrieves the current IAM policy data for bucket
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -315,7 +315,7 @@ public final class StorageFunctions {
     /**
      * Retrieves the current IAM policy data for bucket
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -357,7 +357,7 @@ public final class StorageFunctions {
     /**
      * Retrieves the current IAM policy data for bucket
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -399,7 +399,7 @@ public final class StorageFunctions {
     /**
      * Retrieves the current IAM policy data for bucket
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -441,7 +441,7 @@ public final class StorageFunctions {
     /**
      * Retrieves the current IAM policy data for bucket
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

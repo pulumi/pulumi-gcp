@@ -98,7 +98,7 @@ def get_topic_iam_policy(project: Optional[str] = None,
     """
     Retrieves the current IAM policy data for topic
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -131,7 +131,7 @@ def get_topic_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] =
     """
     Retrieves the current IAM policy data for topic
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

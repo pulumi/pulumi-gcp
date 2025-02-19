@@ -570,7 +570,6 @@ class FirewallPolicyRule(pulumi.CustomResource):
                 "dest_threat_intelligences": ["iplist-known-malicious-ips"],
                 "src_address_groups": [],
                 "dest_address_groups": [basic_global_networksecurity_address_group.id],
-                "dest_network_scope": "INTERNET",
                 "layer4_configs": [
                     {
                         "ip_protocol": "tcp",
@@ -721,7 +720,6 @@ class FirewallPolicyRule(pulumi.CustomResource):
                 "dest_threat_intelligences": ["iplist-known-malicious-ips"],
                 "src_address_groups": [],
                 "dest_address_groups": [basic_global_networksecurity_address_group.id],
-                "dest_network_scope": "INTERNET",
                 "layer4_configs": [
                     {
                         "ip_protocol": "tcp",

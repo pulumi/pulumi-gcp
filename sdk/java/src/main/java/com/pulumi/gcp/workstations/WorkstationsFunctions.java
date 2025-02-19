@@ -18,33 +18,438 @@ import com.pulumi.gcp.workstations.outputs.GetWorkstationIamPolicyResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class WorkstationsFunctions {
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.workstations.WorkstationsFunctions;
+     * import com.pulumi.gcp.workstations.inputs.GetWorkstationConfigIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = WorkstationsFunctions.getWorkstationConfigIamPolicy(GetWorkstationConfigIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .workstationClusterId(default_.workstationClusterId())
+     *             .workstationConfigId(default_.workstationConfigId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetWorkstationConfigIamPolicyResult> getWorkstationConfigIamPolicy(GetWorkstationConfigIamPolicyArgs args) {
         return getWorkstationConfigIamPolicy(args, InvokeOptions.Empty);
     }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.workstations.WorkstationsFunctions;
+     * import com.pulumi.gcp.workstations.inputs.GetWorkstationConfigIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = WorkstationsFunctions.getWorkstationConfigIamPolicy(GetWorkstationConfigIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .workstationClusterId(default_.workstationClusterId())
+     *             .workstationConfigId(default_.workstationConfigId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetWorkstationConfigIamPolicyResult> getWorkstationConfigIamPolicyPlain(GetWorkstationConfigIamPolicyPlainArgs args) {
         return getWorkstationConfigIamPolicyPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.workstations.WorkstationsFunctions;
+     * import com.pulumi.gcp.workstations.inputs.GetWorkstationConfigIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = WorkstationsFunctions.getWorkstationConfigIamPolicy(GetWorkstationConfigIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .workstationClusterId(default_.workstationClusterId())
+     *             .workstationConfigId(default_.workstationConfigId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetWorkstationConfigIamPolicyResult> getWorkstationConfigIamPolicy(GetWorkstationConfigIamPolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy", TypeShape.of(GetWorkstationConfigIamPolicyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.workstations.WorkstationsFunctions;
+     * import com.pulumi.gcp.workstations.inputs.GetWorkstationConfigIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = WorkstationsFunctions.getWorkstationConfigIamPolicy(GetWorkstationConfigIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .workstationClusterId(default_.workstationClusterId())
+     *             .workstationConfigId(default_.workstationConfigId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetWorkstationConfigIamPolicyResult> getWorkstationConfigIamPolicy(GetWorkstationConfigIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy", TypeShape.of(GetWorkstationConfigIamPolicyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.workstations.WorkstationsFunctions;
+     * import com.pulumi.gcp.workstations.inputs.GetWorkstationConfigIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = WorkstationsFunctions.getWorkstationConfigIamPolicy(GetWorkstationConfigIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .workstationClusterId(default_.workstationClusterId())
+     *             .workstationConfigId(default_.workstationConfigId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetWorkstationConfigIamPolicyResult> getWorkstationConfigIamPolicyPlain(GetWorkstationConfigIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy", TypeShape.of(GetWorkstationConfigIamPolicyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.workstations.WorkstationsFunctions;
+     * import com.pulumi.gcp.workstations.inputs.GetWorkstationIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = WorkstationsFunctions.getWorkstationIamPolicy(GetWorkstationIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .workstationClusterId(default_.workstationClusterId())
+     *             .workstationConfigId(default_.workstationConfigId())
+     *             .workstationId(default_.workstationId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetWorkstationIamPolicyResult> getWorkstationIamPolicy(GetWorkstationIamPolicyArgs args) {
         return getWorkstationIamPolicy(args, InvokeOptions.Empty);
     }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.workstations.WorkstationsFunctions;
+     * import com.pulumi.gcp.workstations.inputs.GetWorkstationIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = WorkstationsFunctions.getWorkstationIamPolicy(GetWorkstationIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .workstationClusterId(default_.workstationClusterId())
+     *             .workstationConfigId(default_.workstationConfigId())
+     *             .workstationId(default_.workstationId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetWorkstationIamPolicyResult> getWorkstationIamPolicyPlain(GetWorkstationIamPolicyPlainArgs args) {
         return getWorkstationIamPolicyPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.workstations.WorkstationsFunctions;
+     * import com.pulumi.gcp.workstations.inputs.GetWorkstationIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = WorkstationsFunctions.getWorkstationIamPolicy(GetWorkstationIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .workstationClusterId(default_.workstationClusterId())
+     *             .workstationConfigId(default_.workstationConfigId())
+     *             .workstationId(default_.workstationId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetWorkstationIamPolicyResult> getWorkstationIamPolicy(GetWorkstationIamPolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:workstations/getWorkstationIamPolicy:getWorkstationIamPolicy", TypeShape.of(GetWorkstationIamPolicyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.workstations.WorkstationsFunctions;
+     * import com.pulumi.gcp.workstations.inputs.GetWorkstationIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = WorkstationsFunctions.getWorkstationIamPolicy(GetWorkstationIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .workstationClusterId(default_.workstationClusterId())
+     *             .workstationConfigId(default_.workstationConfigId())
+     *             .workstationId(default_.workstationId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetWorkstationIamPolicyResult> getWorkstationIamPolicy(GetWorkstationIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:workstations/getWorkstationIamPolicy:getWorkstationIamPolicy", TypeShape.of(GetWorkstationIamPolicyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.workstations.WorkstationsFunctions;
+     * import com.pulumi.gcp.workstations.inputs.GetWorkstationIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = WorkstationsFunctions.getWorkstationIamPolicy(GetWorkstationIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .workstationClusterId(default_.workstationClusterId())
+     *             .workstationConfigId(default_.workstationConfigId())
+     *             .workstationId(default_.workstationId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetWorkstationIamPolicyResult> getWorkstationIamPolicyPlain(GetWorkstationIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:workstations/getWorkstationIamPolicy:getWorkstationIamPolicy", TypeShape.of(GetWorkstationIamPolicyResult.class), args, Utilities.withVersion(options));
     }

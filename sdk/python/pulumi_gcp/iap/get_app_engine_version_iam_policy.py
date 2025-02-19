@@ -118,7 +118,7 @@ def get_app_engine_version_iam_policy(app_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for appengineversion
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -161,7 +161,7 @@ def get_app_engine_version_iam_policy_output(app_id: Optional[pulumi.Input[str]]
     """
     Retrieves the current IAM policy data for appengineversion
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

@@ -57,29 +57,47 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// ### Network Services Mesh Location
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.NetworkServices.Mesh("default", new()
+    ///     {
+    ///         Name = "my-mesh",
+    ///         Location = "global",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
     /// Mesh can be imported using any of these accepted formats:
     /// 
-    /// * `projects/{{project}}/locations/global/meshes/{{name}}`
+    /// * `projects/{{project}}/locations/{{location}}/meshes/{{name}}`
     /// 
-    /// * `{{project}}/{{name}}`
+    /// * `{{project}}/{{location}}/{{name}}`
     /// 
-    /// * `{{name}}`
+    /// * `{{location}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, Mesh can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    /// $ pulumi import gcp:networkservices/mesh:Mesh default projects/{{project}}/locations/global/meshes/{{name}}
+    /// $ pulumi import gcp:networkservices/mesh:Mesh default projects/{{project}}/locations/{{location}}/meshes/{{name}}
     /// ```
     /// 
     /// ```sh
-    /// $ pulumi import gcp:networkservices/mesh:Mesh default {{project}}/{{name}}
+    /// $ pulumi import gcp:networkservices/mesh:Mesh default {{project}}/{{location}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    /// $ pulumi import gcp:networkservices/mesh:Mesh default {{name}}
+    /// $ pulumi import gcp:networkservices/mesh:Mesh default {{location}}/{{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:networkservices/mesh:Mesh")]
@@ -120,6 +138,12 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
+        /// </summary>
+        [Output("location")]
+        public Output<string?> Location { get; private set; } = null!;
 
         /// <summary>
         /// Short name of the Mesh resource to be created.
@@ -238,6 +262,12 @@ namespace Pulumi.Gcp.NetworkServices
         }
 
         /// <summary>
+        /// Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
+        /// </summary>
+        [Input("location")]
+        public Input<string>? Location { get; set; }
+
+        /// <summary>
         /// Short name of the Mesh resource to be created.
         /// 
         /// 
@@ -312,6 +342,12 @@ namespace Pulumi.Gcp.NetworkServices
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
+        /// </summary>
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Short name of the Mesh resource to be created.

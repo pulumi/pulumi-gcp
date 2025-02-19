@@ -339,7 +339,7 @@ public final class CertificateauthorityFunctions {
     /**
      * Retrieves the current IAM policy data for capool
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -381,7 +381,7 @@ public final class CertificateauthorityFunctions {
     /**
      * Retrieves the current IAM policy data for capool
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -423,7 +423,7 @@ public final class CertificateauthorityFunctions {
     /**
      * Retrieves the current IAM policy data for capool
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -465,7 +465,7 @@ public final class CertificateauthorityFunctions {
     /**
      * Retrieves the current IAM policy data for capool
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -507,7 +507,7 @@ public final class CertificateauthorityFunctions {
     /**
      * Retrieves the current IAM policy data for capool
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -549,7 +549,7 @@ public final class CertificateauthorityFunctions {
     /**
      * Retrieves the current IAM policy data for certificatetemplate
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -591,7 +591,7 @@ public final class CertificateauthorityFunctions {
     /**
      * Retrieves the current IAM policy data for certificatetemplate
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -633,7 +633,7 @@ public final class CertificateauthorityFunctions {
     /**
      * Retrieves the current IAM policy data for certificatetemplate
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -675,7 +675,7 @@ public final class CertificateauthorityFunctions {
     /**
      * Retrieves the current IAM policy data for certificatetemplate
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -717,7 +717,7 @@ public final class CertificateauthorityFunctions {
     /**
      * Retrieves the current IAM policy data for certificatetemplate
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

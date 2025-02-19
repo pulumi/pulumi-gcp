@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<bool>? GcpPublicCidrsAccessEnabled { get; set; }
 
         /// <summary>
-        /// Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+        /// Whether authorized networks is enforced on the private endpoint or not.
         /// </summary>
         [Input("privateEndpointEnforcementEnabled")]
         public Input<bool>? PrivateEndpointEnforcementEnabled { get; set; }

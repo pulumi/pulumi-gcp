@@ -37,6 +37,20 @@ __all__ = [
     'AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgsDict',
     'AlertPolicyConditionConditionPrometheusQueryLanguageArgs',
     'AlertPolicyConditionConditionPrometheusQueryLanguageArgsDict',
+    'AlertPolicyConditionConditionSqlArgs',
+    'AlertPolicyConditionConditionSqlArgsDict',
+    'AlertPolicyConditionConditionSqlBooleanTestArgs',
+    'AlertPolicyConditionConditionSqlBooleanTestArgsDict',
+    'AlertPolicyConditionConditionSqlDailyArgs',
+    'AlertPolicyConditionConditionSqlDailyArgsDict',
+    'AlertPolicyConditionConditionSqlDailyExecutionTimeArgs',
+    'AlertPolicyConditionConditionSqlDailyExecutionTimeArgsDict',
+    'AlertPolicyConditionConditionSqlHourlyArgs',
+    'AlertPolicyConditionConditionSqlHourlyArgsDict',
+    'AlertPolicyConditionConditionSqlMinutesArgs',
+    'AlertPolicyConditionConditionSqlMinutesArgsDict',
+    'AlertPolicyConditionConditionSqlRowCountTestArgs',
+    'AlertPolicyConditionConditionSqlRowCountTestArgsDict',
     'AlertPolicyConditionConditionThresholdArgs',
     'AlertPolicyConditionConditionThresholdArgsDict',
     'AlertPolicyConditionConditionThresholdAggregationArgs',
@@ -373,6 +387,13 @@ if not MYPY:
         from a Prometheus alerting rule and its associated rule group.
         Structure is documented below.
         """
+        condition_sql: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlArgsDict']]
+        """
+        A condition that allows alerting policies to be defined using GoogleSQL.
+        SQL conditions examine a sliding window of logs using GoogleSQL.
+        Alert policies with SQL conditions may incur additional billing.
+        Structure is documented below.
+        """
         condition_threshold: NotRequired[pulumi.Input['AlertPolicyConditionConditionThresholdArgsDict']]
         """
         A condition that compares a time series against a
@@ -400,6 +421,7 @@ class AlertPolicyConditionArgs:
                  condition_matched_log: Optional[pulumi.Input['AlertPolicyConditionConditionMatchedLogArgs']] = None,
                  condition_monitoring_query_language: Optional[pulumi.Input['AlertPolicyConditionConditionMonitoringQueryLanguageArgs']] = None,
                  condition_prometheus_query_language: Optional[pulumi.Input['AlertPolicyConditionConditionPrometheusQueryLanguageArgs']] = None,
+                 condition_sql: Optional[pulumi.Input['AlertPolicyConditionConditionSqlArgs']] = None,
                  condition_threshold: Optional[pulumi.Input['AlertPolicyConditionConditionThresholdArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
@@ -421,6 +443,10 @@ class AlertPolicyConditionArgs:
                The PrometheusQueryLanguageCondition message contains information
                from a Prometheus alerting rule and its associated rule group.
                Structure is documented below.
+        :param pulumi.Input['AlertPolicyConditionConditionSqlArgs'] condition_sql: A condition that allows alerting policies to be defined using GoogleSQL.
+               SQL conditions examine a sliding window of logs using GoogleSQL.
+               Alert policies with SQL conditions may incur additional billing.
+               Structure is documented below.
         :param pulumi.Input['AlertPolicyConditionConditionThresholdArgs'] condition_threshold: A condition that compares a time series against a
                threshold.
                Structure is documented below.
@@ -441,6 +467,8 @@ class AlertPolicyConditionArgs:
             pulumi.set(__self__, "condition_monitoring_query_language", condition_monitoring_query_language)
         if condition_prometheus_query_language is not None:
             pulumi.set(__self__, "condition_prometheus_query_language", condition_prometheus_query_language)
+        if condition_sql is not None:
+            pulumi.set(__self__, "condition_sql", condition_sql)
         if condition_threshold is not None:
             pulumi.set(__self__, "condition_threshold", condition_threshold)
         if name is not None:
@@ -518,6 +546,21 @@ class AlertPolicyConditionArgs:
     @condition_prometheus_query_language.setter
     def condition_prometheus_query_language(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionPrometheusQueryLanguageArgs']]):
         pulumi.set(self, "condition_prometheus_query_language", value)
+
+    @property
+    @pulumi.getter(name="conditionSql")
+    def condition_sql(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionSqlArgs']]:
+        """
+        A condition that allows alerting policies to be defined using GoogleSQL.
+        SQL conditions examine a sliding window of logs using GoogleSQL.
+        Alert policies with SQL conditions may incur additional billing.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "condition_sql")
+
+    @condition_sql.setter
+    def condition_sql(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionSqlArgs']]):
+        pulumi.set(self, "condition_sql", value)
 
     @property
     @pulumi.getter(name="conditionThreshold")
@@ -1629,6 +1672,551 @@ class AlertPolicyConditionConditionPrometheusQueryLanguageArgs:
     @rule_group.setter
     def rule_group(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "rule_group", value)
+
+
+if not MYPY:
+    class AlertPolicyConditionConditionSqlArgsDict(TypedDict):
+        query: pulumi.Input[str]
+        """
+        The Log Analytics SQL query to run, as a string.  The query must
+        conform to the required shape. Specifically, the query must not try to
+        filter the input by time.  A filter will automatically be applied
+        to filter the input so that the query receives all rows received
+        since the last time the query was run.
+        """
+        boolean_test: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlBooleanTestArgsDict']]
+        """
+        The start date and time of the query. If left unspecified, then the
+        query will start immediately.
+        Structure is documented below.
+        """
+        daily: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlDailyArgsDict']]
+        """
+        Used to schedule the query to run every so many days.
+        Structure is documented below.
+        """
+        hourly: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlHourlyArgsDict']]
+        """
+        Used to schedule the query to run every so many hours.
+        Structure is documented below.
+        """
+        minutes: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlMinutesArgsDict']]
+        """
+        Used to schedule the query to run every so many minutes.
+        Structure is documented below.
+        """
+        row_count_test: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlRowCountTestArgsDict']]
+        """
+        Test the row count against a threshold.
+        Structure is documented below.
+        """
+elif False:
+    AlertPolicyConditionConditionSqlArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AlertPolicyConditionConditionSqlArgs:
+    def __init__(__self__, *,
+                 query: pulumi.Input[str],
+                 boolean_test: Optional[pulumi.Input['AlertPolicyConditionConditionSqlBooleanTestArgs']] = None,
+                 daily: Optional[pulumi.Input['AlertPolicyConditionConditionSqlDailyArgs']] = None,
+                 hourly: Optional[pulumi.Input['AlertPolicyConditionConditionSqlHourlyArgs']] = None,
+                 minutes: Optional[pulumi.Input['AlertPolicyConditionConditionSqlMinutesArgs']] = None,
+                 row_count_test: Optional[pulumi.Input['AlertPolicyConditionConditionSqlRowCountTestArgs']] = None):
+        """
+        :param pulumi.Input[str] query: The Log Analytics SQL query to run, as a string.  The query must
+               conform to the required shape. Specifically, the query must not try to
+               filter the input by time.  A filter will automatically be applied
+               to filter the input so that the query receives all rows received
+               since the last time the query was run.
+        :param pulumi.Input['AlertPolicyConditionConditionSqlBooleanTestArgs'] boolean_test: The start date and time of the query. If left unspecified, then the
+               query will start immediately.
+               Structure is documented below.
+        :param pulumi.Input['AlertPolicyConditionConditionSqlDailyArgs'] daily: Used to schedule the query to run every so many days.
+               Structure is documented below.
+        :param pulumi.Input['AlertPolicyConditionConditionSqlHourlyArgs'] hourly: Used to schedule the query to run every so many hours.
+               Structure is documented below.
+        :param pulumi.Input['AlertPolicyConditionConditionSqlMinutesArgs'] minutes: Used to schedule the query to run every so many minutes.
+               Structure is documented below.
+        :param pulumi.Input['AlertPolicyConditionConditionSqlRowCountTestArgs'] row_count_test: Test the row count against a threshold.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "query", query)
+        if boolean_test is not None:
+            pulumi.set(__self__, "boolean_test", boolean_test)
+        if daily is not None:
+            pulumi.set(__self__, "daily", daily)
+        if hourly is not None:
+            pulumi.set(__self__, "hourly", hourly)
+        if minutes is not None:
+            pulumi.set(__self__, "minutes", minutes)
+        if row_count_test is not None:
+            pulumi.set(__self__, "row_count_test", row_count_test)
+
+    @property
+    @pulumi.getter
+    def query(self) -> pulumi.Input[str]:
+        """
+        The Log Analytics SQL query to run, as a string.  The query must
+        conform to the required shape. Specifically, the query must not try to
+        filter the input by time.  A filter will automatically be applied
+        to filter the input so that the query receives all rows received
+        since the last time the query was run.
+        """
+        return pulumi.get(self, "query")
+
+    @query.setter
+    def query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "query", value)
+
+    @property
+    @pulumi.getter(name="booleanTest")
+    def boolean_test(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionSqlBooleanTestArgs']]:
+        """
+        The start date and time of the query. If left unspecified, then the
+        query will start immediately.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "boolean_test")
+
+    @boolean_test.setter
+    def boolean_test(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionSqlBooleanTestArgs']]):
+        pulumi.set(self, "boolean_test", value)
+
+    @property
+    @pulumi.getter
+    def daily(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionSqlDailyArgs']]:
+        """
+        Used to schedule the query to run every so many days.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "daily")
+
+    @daily.setter
+    def daily(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionSqlDailyArgs']]):
+        pulumi.set(self, "daily", value)
+
+    @property
+    @pulumi.getter
+    def hourly(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionSqlHourlyArgs']]:
+        """
+        Used to schedule the query to run every so many hours.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "hourly")
+
+    @hourly.setter
+    def hourly(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionSqlHourlyArgs']]):
+        pulumi.set(self, "hourly", value)
+
+    @property
+    @pulumi.getter
+    def minutes(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionSqlMinutesArgs']]:
+        """
+        Used to schedule the query to run every so many minutes.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "minutes")
+
+    @minutes.setter
+    def minutes(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionSqlMinutesArgs']]):
+        pulumi.set(self, "minutes", value)
+
+    @property
+    @pulumi.getter(name="rowCountTest")
+    def row_count_test(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionSqlRowCountTestArgs']]:
+        """
+        Test the row count against a threshold.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "row_count_test")
+
+    @row_count_test.setter
+    def row_count_test(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionSqlRowCountTestArgs']]):
+        pulumi.set(self, "row_count_test", value)
+
+
+if not MYPY:
+    class AlertPolicyConditionConditionSqlBooleanTestArgsDict(TypedDict):
+        column: pulumi.Input[str]
+        """
+        The name of the column containing the boolean value. If the value
+        in a row is NULL, that row is ignored.
+
+        - - -
+        """
+elif False:
+    AlertPolicyConditionConditionSqlBooleanTestArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AlertPolicyConditionConditionSqlBooleanTestArgs:
+    def __init__(__self__, *,
+                 column: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] column: The name of the column containing the boolean value. If the value
+               in a row is NULL, that row is ignored.
+               
+               - - -
+        """
+        pulumi.set(__self__, "column", column)
+
+    @property
+    @pulumi.getter
+    def column(self) -> pulumi.Input[str]:
+        """
+        The name of the column containing the boolean value. If the value
+        in a row is NULL, that row is ignored.
+
+        - - -
+        """
+        return pulumi.get(self, "column")
+
+    @column.setter
+    def column(self, value: pulumi.Input[str]):
+        pulumi.set(self, "column", value)
+
+
+if not MYPY:
+    class AlertPolicyConditionConditionSqlDailyArgsDict(TypedDict):
+        periodicity: pulumi.Input[int]
+        """
+        The number of days between runs. Must be greater than or equal
+        to 1 day and less than or equal to 30 days.
+        """
+        execution_time: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlDailyExecutionTimeArgsDict']]
+        """
+        The time of day (in UTC) at which the query should run. If left
+        unspecified, the server picks an arbitrary time of day and runs
+        the query at the same time each day.
+        Structure is documented below.
+        """
+elif False:
+    AlertPolicyConditionConditionSqlDailyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AlertPolicyConditionConditionSqlDailyArgs:
+    def __init__(__self__, *,
+                 periodicity: pulumi.Input[int],
+                 execution_time: Optional[pulumi.Input['AlertPolicyConditionConditionSqlDailyExecutionTimeArgs']] = None):
+        """
+        :param pulumi.Input[int] periodicity: The number of days between runs. Must be greater than or equal
+               to 1 day and less than or equal to 30 days.
+        :param pulumi.Input['AlertPolicyConditionConditionSqlDailyExecutionTimeArgs'] execution_time: The time of day (in UTC) at which the query should run. If left
+               unspecified, the server picks an arbitrary time of day and runs
+               the query at the same time each day.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "periodicity", periodicity)
+        if execution_time is not None:
+            pulumi.set(__self__, "execution_time", execution_time)
+
+    @property
+    @pulumi.getter
+    def periodicity(self) -> pulumi.Input[int]:
+        """
+        The number of days between runs. Must be greater than or equal
+        to 1 day and less than or equal to 30 days.
+        """
+        return pulumi.get(self, "periodicity")
+
+    @periodicity.setter
+    def periodicity(self, value: pulumi.Input[int]):
+        pulumi.set(self, "periodicity", value)
+
+    @property
+    @pulumi.getter(name="executionTime")
+    def execution_time(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionSqlDailyExecutionTimeArgs']]:
+        """
+        The time of day (in UTC) at which the query should run. If left
+        unspecified, the server picks an arbitrary time of day and runs
+        the query at the same time each day.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "execution_time")
+
+    @execution_time.setter
+    def execution_time(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionSqlDailyExecutionTimeArgs']]):
+        pulumi.set(self, "execution_time", value)
+
+
+if not MYPY:
+    class AlertPolicyConditionConditionSqlDailyExecutionTimeArgsDict(TypedDict):
+        hours: NotRequired[pulumi.Input[int]]
+        """
+        Hours of a day in 24 hour format. Must be greater than or equal
+        to 0 and typically must be less than or equal to 23. An API may
+        choose to allow the value "24:00:00" for scenarios like business
+        closing time.
+        """
+        minutes: NotRequired[pulumi.Input[int]]
+        """
+        Minutes of an hour. Must be greater than or equal to 0 and
+        less than or equal to 59.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Fractions of seconds, in nanoseconds. Must be greater than or
+        equal to 0 and less than or equal to 999,999,999.
+        """
+        seconds: NotRequired[pulumi.Input[int]]
+        """
+        Seconds of a minute. Must be greater than or equal to 0 and
+        typically must be less than or equal to 59. An API may allow the
+        value 60 if it allows leap-seconds.
+        """
+elif False:
+    AlertPolicyConditionConditionSqlDailyExecutionTimeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AlertPolicyConditionConditionSqlDailyExecutionTimeArgs:
+    def __init__(__self__, *,
+                 hours: Optional[pulumi.Input[int]] = None,
+                 minutes: Optional[pulumi.Input[int]] = None,
+                 nanos: Optional[pulumi.Input[int]] = None,
+                 seconds: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] hours: Hours of a day in 24 hour format. Must be greater than or equal
+               to 0 and typically must be less than or equal to 23. An API may
+               choose to allow the value "24:00:00" for scenarios like business
+               closing time.
+        :param pulumi.Input[int] minutes: Minutes of an hour. Must be greater than or equal to 0 and
+               less than or equal to 59.
+        :param pulumi.Input[int] nanos: Fractions of seconds, in nanoseconds. Must be greater than or
+               equal to 0 and less than or equal to 999,999,999.
+        :param pulumi.Input[int] seconds: Seconds of a minute. Must be greater than or equal to 0 and
+               typically must be less than or equal to 59. An API may allow the
+               value 60 if it allows leap-seconds.
+        """
+        if hours is not None:
+            pulumi.set(__self__, "hours", hours)
+        if minutes is not None:
+            pulumi.set(__self__, "minutes", minutes)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def hours(self) -> Optional[pulumi.Input[int]]:
+        """
+        Hours of a day in 24 hour format. Must be greater than or equal
+        to 0 and typically must be less than or equal to 23. An API may
+        choose to allow the value "24:00:00" for scenarios like business
+        closing time.
+        """
+        return pulumi.get(self, "hours")
+
+    @hours.setter
+    def hours(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "hours", value)
+
+    @property
+    @pulumi.getter
+    def minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minutes of an hour. Must be greater than or equal to 0 and
+        less than or equal to 59.
+        """
+        return pulumi.get(self, "minutes")
+
+    @minutes.setter
+    def minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "minutes", value)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[int]]:
+        """
+        Fractions of seconds, in nanoseconds. Must be greater than or
+        equal to 0 and less than or equal to 999,999,999.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "nanos", value)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Seconds of a minute. Must be greater than or equal to 0 and
+        typically must be less than or equal to 59. An API may allow the
+        value 60 if it allows leap-seconds.
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "seconds", value)
+
+
+if not MYPY:
+    class AlertPolicyConditionConditionSqlHourlyArgsDict(TypedDict):
+        periodicity: pulumi.Input[int]
+        """
+        Number of hours between runs. The interval must be greater than or
+        equal to 1 hour and less than or equal to 48 hours.
+        """
+        minute_offset: NotRequired[pulumi.Input[int]]
+        """
+        The number of minutes after the hour (in UTC) to run the query.
+        Must be greater than or equal to 0 minutes and less than or equal to
+        59 minutes.  If left unspecified, then an arbitrary offset is used.
+        """
+elif False:
+    AlertPolicyConditionConditionSqlHourlyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AlertPolicyConditionConditionSqlHourlyArgs:
+    def __init__(__self__, *,
+                 periodicity: pulumi.Input[int],
+                 minute_offset: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] periodicity: Number of hours between runs. The interval must be greater than or
+               equal to 1 hour and less than or equal to 48 hours.
+        :param pulumi.Input[int] minute_offset: The number of minutes after the hour (in UTC) to run the query.
+               Must be greater than or equal to 0 minutes and less than or equal to
+               59 minutes.  If left unspecified, then an arbitrary offset is used.
+        """
+        pulumi.set(__self__, "periodicity", periodicity)
+        if minute_offset is not None:
+            pulumi.set(__self__, "minute_offset", minute_offset)
+
+    @property
+    @pulumi.getter
+    def periodicity(self) -> pulumi.Input[int]:
+        """
+        Number of hours between runs. The interval must be greater than or
+        equal to 1 hour and less than or equal to 48 hours.
+        """
+        return pulumi.get(self, "periodicity")
+
+    @periodicity.setter
+    def periodicity(self, value: pulumi.Input[int]):
+        pulumi.set(self, "periodicity", value)
+
+    @property
+    @pulumi.getter(name="minuteOffset")
+    def minute_offset(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of minutes after the hour (in UTC) to run the query.
+        Must be greater than or equal to 0 minutes and less than or equal to
+        59 minutes.  If left unspecified, then an arbitrary offset is used.
+        """
+        return pulumi.get(self, "minute_offset")
+
+    @minute_offset.setter
+    def minute_offset(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "minute_offset", value)
+
+
+if not MYPY:
+    class AlertPolicyConditionConditionSqlMinutesArgsDict(TypedDict):
+        periodicity: pulumi.Input[int]
+        """
+        Number of minutes between runs. The interval must be greater than or
+        equal to 5 minutes and less than or equal to 1440 minutes.
+        """
+elif False:
+    AlertPolicyConditionConditionSqlMinutesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AlertPolicyConditionConditionSqlMinutesArgs:
+    def __init__(__self__, *,
+                 periodicity: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] periodicity: Number of minutes between runs. The interval must be greater than or
+               equal to 5 minutes and less than or equal to 1440 minutes.
+        """
+        pulumi.set(__self__, "periodicity", periodicity)
+
+    @property
+    @pulumi.getter
+    def periodicity(self) -> pulumi.Input[int]:
+        """
+        Number of minutes between runs. The interval must be greater than or
+        equal to 5 minutes and less than or equal to 1440 minutes.
+        """
+        return pulumi.get(self, "periodicity")
+
+    @periodicity.setter
+    def periodicity(self, value: pulumi.Input[int]):
+        pulumi.set(self, "periodicity", value)
+
+
+if not MYPY:
+    class AlertPolicyConditionConditionSqlRowCountTestArgsDict(TypedDict):
+        comparison: pulumi.Input[str]
+        """
+        The comparison to apply between the time
+        series (indicated by filter and aggregation)
+        and the threshold (indicated by
+        threshold_value). The comparison is applied
+        on each time series, with the time series on
+        the left-hand side and the threshold on the
+        right-hand side. Only COMPARISON_LT and
+        COMPARISON_GT are supported currently.
+        Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
+        """
+        threshold: pulumi.Input[int]
+        """
+        Test the boolean value in the indicated column.
+        """
+elif False:
+    AlertPolicyConditionConditionSqlRowCountTestArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AlertPolicyConditionConditionSqlRowCountTestArgs:
+    def __init__(__self__, *,
+                 comparison: pulumi.Input[str],
+                 threshold: pulumi.Input[int]):
+        """
+        :param pulumi.Input[str] comparison: The comparison to apply between the time
+               series (indicated by filter and aggregation)
+               and the threshold (indicated by
+               threshold_value). The comparison is applied
+               on each time series, with the time series on
+               the left-hand side and the threshold on the
+               right-hand side. Only COMPARISON_LT and
+               COMPARISON_GT are supported currently.
+               Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
+        :param pulumi.Input[int] threshold: Test the boolean value in the indicated column.
+        """
+        pulumi.set(__self__, "comparison", comparison)
+        pulumi.set(__self__, "threshold", threshold)
+
+    @property
+    @pulumi.getter
+    def comparison(self) -> pulumi.Input[str]:
+        """
+        The comparison to apply between the time
+        series (indicated by filter and aggregation)
+        and the threshold (indicated by
+        threshold_value). The comparison is applied
+        on each time series, with the time series on
+        the left-hand side and the threshold on the
+        right-hand side. Only COMPARISON_LT and
+        COMPARISON_GT are supported currently.
+        Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
+        """
+        return pulumi.get(self, "comparison")
+
+    @comparison.setter
+    def comparison(self, value: pulumi.Input[str]):
+        pulumi.set(self, "comparison", value)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> pulumi.Input[int]:
+        """
+        Test the boolean value in the indicated column.
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: pulumi.Input[int]):
+        pulumi.set(self, "threshold", value)
 
 
 if not MYPY:

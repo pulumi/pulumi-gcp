@@ -45,7 +45,7 @@ public final class GkehubFunctions {
     /**
      * Retrieves the current IAM policy data for feature
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -89,7 +89,7 @@ public final class GkehubFunctions {
     /**
      * Retrieves the current IAM policy data for feature
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -133,7 +133,7 @@ public final class GkehubFunctions {
     /**
      * Retrieves the current IAM policy data for feature
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -177,7 +177,7 @@ public final class GkehubFunctions {
     /**
      * Retrieves the current IAM policy data for feature
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -221,7 +221,7 @@ public final class GkehubFunctions {
     /**
      * Retrieves the current IAM policy data for feature
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -280,7 +280,7 @@ public final class GkehubFunctions {
     /**
      * Retrieves the current IAM policy data for membership
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -324,7 +324,7 @@ public final class GkehubFunctions {
     /**
      * Retrieves the current IAM policy data for membership
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -368,7 +368,7 @@ public final class GkehubFunctions {
     /**
      * Retrieves the current IAM policy data for membership
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -412,7 +412,7 @@ public final class GkehubFunctions {
     /**
      * Retrieves the current IAM policy data for membership
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -456,7 +456,7 @@ public final class GkehubFunctions {
     /**
      * Retrieves the current IAM policy data for membership
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -500,7 +500,7 @@ public final class GkehubFunctions {
     /**
      * Retrieves the current IAM policy data for scope
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -543,7 +543,7 @@ public final class GkehubFunctions {
     /**
      * Retrieves the current IAM policy data for scope
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -586,7 +586,7 @@ public final class GkehubFunctions {
     /**
      * Retrieves the current IAM policy data for scope
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -629,7 +629,7 @@ public final class GkehubFunctions {
     /**
      * Retrieves the current IAM policy data for scope
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -672,7 +672,7 @@ public final class GkehubFunctions {
     /**
      * Retrieves the current IAM policy data for scope
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

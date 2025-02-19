@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQueryAnalyticsHub
 {
     /// <summary>
-    /// Three different resources help you manage your IAM policy for Bigquery Analytics Hub DataExchange. Each of these resources serves a different use case:
+    /// Three different resources help you manage your IAM policy for BigQuery Analytics Hub DataExchange. Each of these resources serves a different use case:
     /// 
     /// * `gcp.bigqueryanalyticshub.DataExchangeIamPolicy`: Authoritative. Sets the IAM policy for the dataexchange and replaces any existing policy already attached.
     /// * `gcp.bigqueryanalyticshub.DataExchangeIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the dataexchange are preserved.
@@ -111,8 +111,8 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// - 
     /// 
-    /// # IAM policy for Bigquery Analytics Hub DataExchange
-    /// Three different resources help you manage your IAM policy for Bigquery Analytics Hub DataExchange. Each of these resources serves a different use case:
+    /// # IAM policy for BigQuery Analytics Hub DataExchange
+    /// Three different resources help you manage your IAM policy for BigQuery Analytics Hub DataExchange. Each of these resources serves a different use case:
     /// 
     /// * `gcp.bigqueryanalyticshub.DataExchangeIamPolicy`: Authoritative. Sets the IAM policy for the dataexchange and replaces any existing policy already attached.
     /// * `gcp.bigqueryanalyticshub.DataExchangeIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the dataexchange are preserved.
@@ -223,7 +223,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// Any variables not passed in the import command will be taken from the provider configuration.
     /// 
-    /// Bigquery Analytics Hub dataexchange IAM resources can be imported using the resource identifiers, role, and member.
+    /// BigQuery Analytics Hub dataexchange IAM resources can be imported using the resource identifiers, role, and member.
     /// 
     /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
     /// 

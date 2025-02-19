@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetHcVpnGatewayVpnInterface;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,15 +16,19 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetHcVpnGatewayResult {
     private String description;
+    private Map<String,String> effectiveLabels;
     private String gatewayIpVersion;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    private String labelFingerprint;
+    private Map<String,String> labels;
     private String name;
     private String network;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private @Nullable String region;
     private String selfLink;
     private String stackType;
@@ -32,6 +37,9 @@ public final class GetHcVpnGatewayResult {
     private GetHcVpnGatewayResult() {}
     public String description() {
         return this.description;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public String gatewayIpVersion() {
         return this.gatewayIpVersion;
@@ -43,6 +51,12 @@ public final class GetHcVpnGatewayResult {
     public String id() {
         return this.id;
     }
+    public String labelFingerprint() {
+        return this.labelFingerprint;
+    }
+    public Map<String,String> labels() {
+        return this.labels;
+    }
     public String name() {
         return this.name;
     }
@@ -51,6 +65,9 @@ public final class GetHcVpnGatewayResult {
     }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
+    }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
     }
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
@@ -75,11 +92,15 @@ public final class GetHcVpnGatewayResult {
     @CustomType.Builder
     public static final class Builder {
         private String description;
+        private Map<String,String> effectiveLabels;
         private String gatewayIpVersion;
         private String id;
+        private String labelFingerprint;
+        private Map<String,String> labels;
         private String name;
         private String network;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private @Nullable String region;
         private String selfLink;
         private String stackType;
@@ -88,11 +109,15 @@ public final class GetHcVpnGatewayResult {
         public Builder(GetHcVpnGatewayResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.gatewayIpVersion = defaults.gatewayIpVersion;
     	      this.id = defaults.id;
+    	      this.labelFingerprint = defaults.labelFingerprint;
+    	      this.labels = defaults.labels;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.region = defaults.region;
     	      this.selfLink = defaults.selfLink;
     	      this.stackType = defaults.stackType;
@@ -105,6 +130,14 @@ public final class GetHcVpnGatewayResult {
               throw new MissingRequiredPropertyException("GetHcVpnGatewayResult", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetHcVpnGatewayResult", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
@@ -121,6 +154,22 @@ public final class GetHcVpnGatewayResult {
               throw new MissingRequiredPropertyException("GetHcVpnGatewayResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder labelFingerprint(String labelFingerprint) {
+            if (labelFingerprint == null) {
+              throw new MissingRequiredPropertyException("GetHcVpnGatewayResult", "labelFingerprint");
+            }
+            this.labelFingerprint = labelFingerprint;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder labels(Map<String,String> labels) {
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetHcVpnGatewayResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
@@ -143,6 +192,14 @@ public final class GetHcVpnGatewayResult {
         public Builder project(@Nullable String project) {
 
             this.project = project;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetHcVpnGatewayResult", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
@@ -181,11 +238,15 @@ public final class GetHcVpnGatewayResult {
         public GetHcVpnGatewayResult build() {
             final var _resultValue = new GetHcVpnGatewayResult();
             _resultValue.description = description;
+            _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.gatewayIpVersion = gatewayIpVersion;
             _resultValue.id = id;
+            _resultValue.labelFingerprint = labelFingerprint;
+            _resultValue.labels = labels;
             _resultValue.name = name;
             _resultValue.network = network;
             _resultValue.project = project;
+            _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.region = region;
             _resultValue.selfLink = selfLink;
             _resultValue.stackType = stackType;

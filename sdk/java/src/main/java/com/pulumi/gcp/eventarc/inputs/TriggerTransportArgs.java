@@ -17,6 +17,7 @@ public final class TriggerTransportArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+     * Structure is documented below.
      * 
      */
     @Import(name="pubsub")
@@ -24,6 +25,7 @@ public final class TriggerTransportArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<TriggerTransportPubsubArgs>> pubsub() {
@@ -56,6 +58,7 @@ public final class TriggerTransportArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param pubsub The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -67,6 +70,7 @@ public final class TriggerTransportArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param pubsub The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+         * Structure is documented below.
          * 
          * @return builder
          * 

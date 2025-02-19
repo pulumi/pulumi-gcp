@@ -56,7 +56,7 @@ public final class EndpointsFunctions {
     /**
      * Retrieves the current IAM policy data for service
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -98,7 +98,7 @@ public final class EndpointsFunctions {
     /**
      * Retrieves the current IAM policy data for service
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -140,7 +140,7 @@ public final class EndpointsFunctions {
     /**
      * Retrieves the current IAM policy data for service
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -182,7 +182,7 @@ public final class EndpointsFunctions {
     /**
      * Retrieves the current IAM policy data for service
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -224,7 +224,7 @@ public final class EndpointsFunctions {
     /**
      * Retrieves the current IAM policy data for service
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

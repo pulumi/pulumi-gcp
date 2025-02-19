@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Kms
         /// Retrieves the current IAM policy data for ekmconnection
         /// 
         /// 
-        /// ## example
+        /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.Kms
         /// Retrieves the current IAM policy data for ekmconnection
         /// 
         /// 
-        /// ## example
+        /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -69,7 +69,7 @@ namespace Pulumi.Gcp.Kms
         /// Retrieves the current IAM policy data for ekmconnection
         /// 
         /// 
-        /// ## example
+        /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

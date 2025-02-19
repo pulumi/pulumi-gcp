@@ -56,7 +56,6 @@ import * as utilities from "../utilities";
  *         destThreatIntelligences: ["iplist-known-malicious-ips"],
  *         srcAddressGroups: [],
  *         destAddressGroups: [basicGlobalNetworksecurityAddressGroup.id],
- *         destNetworkScope: "INTERNET",
  *         layer4Configs: [
  *             {
  *                 ipProtocol: "tcp",

@@ -128,7 +128,7 @@ def get_asset_iam_policy(asset: Optional[str] = None,
     """
     Retrieves the current IAM policy data for asset
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -173,7 +173,7 @@ def get_asset_iam_policy_output(asset: Optional[pulumi.Input[str]] = None,
     """
     Retrieves the current IAM policy data for asset
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

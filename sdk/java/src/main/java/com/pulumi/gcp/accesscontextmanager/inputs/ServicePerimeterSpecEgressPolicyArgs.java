@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterSpecEgressPolicyEgressFromArgs;
 import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterSpecEgressPolicyEgressToArgs;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -52,11 +53,27 @@ public final class ServicePerimeterSpecEgressPolicyArgs extends com.pulumi.resou
         return Optional.ofNullable(this.egressTo);
     }
 
+    /**
+     * Human readable title. Must be unique within the perimeter. Does not affect behavior.
+     * 
+     */
+    @Import(name="title")
+    private @Nullable Output<String> title;
+
+    /**
+     * @return Human readable title. Must be unique within the perimeter. Does not affect behavior.
+     * 
+     */
+    public Optional<Output<String>> title() {
+        return Optional.ofNullable(this.title);
+    }
+
     private ServicePerimeterSpecEgressPolicyArgs() {}
 
     private ServicePerimeterSpecEgressPolicyArgs(ServicePerimeterSpecEgressPolicyArgs $) {
         this.egressFrom = $.egressFrom;
         this.egressTo = $.egressTo;
+        this.title = $.title;
     }
 
     public static Builder builder() {
@@ -123,6 +140,27 @@ public final class ServicePerimeterSpecEgressPolicyArgs extends com.pulumi.resou
          */
         public Builder egressTo(ServicePerimeterSpecEgressPolicyEgressToArgs egressTo) {
             return egressTo(Output.of(egressTo));
+        }
+
+        /**
+         * @param title Human readable title. Must be unique within the perimeter. Does not affect behavior.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder title(@Nullable Output<String> title) {
+            $.title = title;
+            return this;
+        }
+
+        /**
+         * @param title Human readable title. Must be unique within the perimeter. Does not affect behavior.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder title(String title) {
+            return title(Output.of(title));
         }
 
         public ServicePerimeterSpecEgressPolicyArgs build() {

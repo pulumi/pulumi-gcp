@@ -11,6 +11,32 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.LookupBackendServiceIamPolicy(ctx, &compute.LookupBackendServiceIamPolicyArgs{
+//				Project: pulumi.StringRef(_default.Project),
+//				Name:    _default.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupBackendServiceIamPolicy(ctx *pulumi.Context, args *LookupBackendServiceIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupBackendServiceIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBackendServiceIamPolicyResult

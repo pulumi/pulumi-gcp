@@ -538,7 +538,7 @@ func (o EnvironmentConfigPtrOutput) WorkloadsConfig() EnvironmentConfigWorkloads
 }
 
 type EnvironmentConfigDataRetentionConfig struct {
-	// Optional. The configuration setting for database retention.
+	// Optional. The policy for airflow metadata database retention.
 	AirflowMetadataRetentionConfigs []EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig `pulumi:"airflowMetadataRetentionConfigs"`
 	// Optional. The configuration setting for Task Logs.
 	TaskLogsRetentionConfigs []EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig `pulumi:"taskLogsRetentionConfigs"`
@@ -556,7 +556,7 @@ type EnvironmentConfigDataRetentionConfigInput interface {
 }
 
 type EnvironmentConfigDataRetentionConfigArgs struct {
-	// Optional. The configuration setting for database retention.
+	// Optional. The policy for airflow metadata database retention.
 	AirflowMetadataRetentionConfigs EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArrayInput `pulumi:"airflowMetadataRetentionConfigs"`
 	// Optional. The configuration setting for Task Logs.
 	TaskLogsRetentionConfigs EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayInput `pulumi:"taskLogsRetentionConfigs"`
@@ -639,7 +639,7 @@ func (o EnvironmentConfigDataRetentionConfigOutput) ToEnvironmentConfigDataReten
 	}).(EnvironmentConfigDataRetentionConfigPtrOutput)
 }
 
-// Optional. The configuration setting for database retention.
+// Optional. The policy for airflow metadata database retention.
 func (o EnvironmentConfigDataRetentionConfigOutput) AirflowMetadataRetentionConfigs() EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArrayOutput {
 	return o.ApplyT(func(v EnvironmentConfigDataRetentionConfig) []EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig {
 		return v.AirflowMetadataRetentionConfigs
@@ -677,7 +677,7 @@ func (o EnvironmentConfigDataRetentionConfigPtrOutput) Elem() EnvironmentConfigD
 	}).(EnvironmentConfigDataRetentionConfigOutput)
 }
 
-// Optional. The configuration setting for database retention.
+// Optional. The policy for airflow metadata database retention.
 func (o EnvironmentConfigDataRetentionConfigPtrOutput) AirflowMetadataRetentionConfigs() EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArrayOutput {
 	return o.ApplyT(func(v *EnvironmentConfigDataRetentionConfig) []EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig {
 		if v == nil {
@@ -808,7 +808,7 @@ func (o EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArrayO
 }
 
 type EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig struct {
-	// Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+	// Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer but not in composer-3*
 	StorageMode *string `pulumi:"storageMode"`
 }
 
@@ -824,7 +824,7 @@ type EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigInput interface 
 }
 
 type EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs struct {
-	// Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+	// Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer but not in composer-3*
 	StorageMode pulumi.StringPtrInput `pulumi:"storageMode"`
 }
 
@@ -879,7 +879,7 @@ func (o EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput) ToEnv
 	return o
 }
 
-// Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+// Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer but not in composer-3*
 func (o EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput) StorageMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig) *string { return v.StorageMode }).(pulumi.StringPtrOutput)
 }
@@ -5199,7 +5199,7 @@ func (o GetEnvironmentConfigArrayOutput) Index(i pulumi.IntInput) GetEnvironment
 }
 
 type GetEnvironmentConfigDataRetentionConfig struct {
-	// Optional. The configuration setting for database retention.
+	// Optional. The policy for airflow metadata database retention.
 	AirflowMetadataRetentionConfigs []GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig `pulumi:"airflowMetadataRetentionConfigs"`
 	// Optional. The configuration setting for Task Logs.
 	TaskLogsRetentionConfigs []GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig `pulumi:"taskLogsRetentionConfigs"`
@@ -5217,7 +5217,7 @@ type GetEnvironmentConfigDataRetentionConfigInput interface {
 }
 
 type GetEnvironmentConfigDataRetentionConfigArgs struct {
-	// Optional. The configuration setting for database retention.
+	// Optional. The policy for airflow metadata database retention.
 	AirflowMetadataRetentionConfigs GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArrayInput `pulumi:"airflowMetadataRetentionConfigs"`
 	// Optional. The configuration setting for Task Logs.
 	TaskLogsRetentionConfigs GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayInput `pulumi:"taskLogsRetentionConfigs"`
@@ -5274,7 +5274,7 @@ func (o GetEnvironmentConfigDataRetentionConfigOutput) ToGetEnvironmentConfigDat
 	return o
 }
 
-// Optional. The configuration setting for database retention.
+// Optional. The policy for airflow metadata database retention.
 func (o GetEnvironmentConfigDataRetentionConfigOutput) AirflowMetadataRetentionConfigs() GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigDataRetentionConfig) []GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig {
 		return v.AirflowMetadataRetentionConfigs
@@ -5419,7 +5419,7 @@ func (o GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArr
 }
 
 type GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig struct {
-	// Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+	// Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer but not in composer-3*
 	StorageMode string `pulumi:"storageMode"`
 }
 
@@ -5435,7 +5435,7 @@ type GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigInput interfa
 }
 
 type GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs struct {
-	// Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+	// Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer but not in composer-3*
 	StorageMode pulumi.StringInput `pulumi:"storageMode"`
 }
 
@@ -5490,7 +5490,7 @@ func (o GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput) To
 	return o
 }
 
-// Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+// Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer but not in composer-3*
 func (o GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput) StorageMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig) string { return v.StorageMode }).(pulumi.StringOutput)
 }

@@ -33,7 +33,7 @@ public final class BigqueryFunctions {
     /**
      * Retrieves the current IAM policy data for connection
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -77,7 +77,7 @@ public final class BigqueryFunctions {
     /**
      * Retrieves the current IAM policy data for connection
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -121,7 +121,7 @@ public final class BigqueryFunctions {
     /**
      * Retrieves the current IAM policy data for connection
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -165,7 +165,7 @@ public final class BigqueryFunctions {
     /**
      * Retrieves the current IAM policy data for connection
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -209,7 +209,7 @@ public final class BigqueryFunctions {
     /**
      * Retrieves the current IAM policy data for connection
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1080,7 +1080,7 @@ public final class BigqueryFunctions {
     /**
      * Retrieves the current IAM policy data for table
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1124,7 +1124,7 @@ public final class BigqueryFunctions {
     /**
      * Retrieves the current IAM policy data for table
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1168,7 +1168,7 @@ public final class BigqueryFunctions {
     /**
      * Retrieves the current IAM policy data for table
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1212,7 +1212,7 @@ public final class BigqueryFunctions {
     /**
      * Retrieves the current IAM policy data for table
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1256,7 +1256,7 @@ public final class BigqueryFunctions {
     /**
      * Retrieves the current IAM policy data for table
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

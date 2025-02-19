@@ -27,16 +27,25 @@ class GetHcVpnGatewayResult:
     """
     A collection of values returned by getHcVpnGateway.
     """
-    def __init__(__self__, description=None, gateway_ip_version=None, id=None, name=None, network=None, project=None, region=None, self_link=None, stack_type=None, vpn_interfaces=None):
+    def __init__(__self__, description=None, effective_labels=None, gateway_ip_version=None, id=None, label_fingerprint=None, labels=None, name=None, network=None, project=None, pulumi_labels=None, region=None, self_link=None, stack_type=None, vpn_interfaces=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if gateway_ip_version and not isinstance(gateway_ip_version, str):
             raise TypeError("Expected argument 'gateway_ip_version' to be a str")
         pulumi.set(__self__, "gateway_ip_version", gateway_ip_version)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if label_fingerprint and not isinstance(label_fingerprint, str):
+            raise TypeError("Expected argument 'label_fingerprint' to be a str")
+        pulumi.set(__self__, "label_fingerprint", label_fingerprint)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -46,6 +55,9 @@ class GetHcVpnGatewayResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -65,6 +77,11 @@ class GetHcVpnGatewayResult:
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="gatewayIpVersion")
     def gateway_ip_version(self) -> str:
         return pulumi.get(self, "gateway_ip_version")
@@ -76,6 +93,16 @@ class GetHcVpnGatewayResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="labelFingerprint")
+    def label_fingerprint(self) -> str:
+        return pulumi.get(self, "label_fingerprint")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
@@ -91,6 +118,11 @@ class GetHcVpnGatewayResult:
     @pulumi.getter
     def project(self) -> Optional[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter
@@ -120,11 +152,15 @@ class AwaitableGetHcVpnGatewayResult(GetHcVpnGatewayResult):
             yield self
         return GetHcVpnGatewayResult(
             description=self.description,
+            effective_labels=self.effective_labels,
             gateway_ip_version=self.gateway_ip_version,
             id=self.id,
+            label_fingerprint=self.label_fingerprint,
+            labels=self.labels,
             name=self.name,
             network=self.network,
             project=self.project,
+            pulumi_labels=self.pulumi_labels,
             region=self.region,
             self_link=self.self_link,
             stack_type=self.stack_type,
@@ -166,11 +202,15 @@ def get_hc_vpn_gateway(name: Optional[str] = None,
 
     return AwaitableGetHcVpnGatewayResult(
         description=pulumi.get(__ret__, 'description'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         gateway_ip_version=pulumi.get(__ret__, 'gateway_ip_version'),
         id=pulumi.get(__ret__, 'id'),
+        label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),
+        labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         network=pulumi.get(__ret__, 'network'),
         project=pulumi.get(__ret__, 'project'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         region=pulumi.get(__ret__, 'region'),
         self_link=pulumi.get(__ret__, 'self_link'),
         stack_type=pulumi.get(__ret__, 'stack_type'),
@@ -209,11 +249,15 @@ def get_hc_vpn_gateway_output(name: Optional[pulumi.Input[str]] = None,
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getHcVpnGateway:getHcVpnGateway', __args__, opts=opts, typ=GetHcVpnGatewayResult)
     return __ret__.apply(lambda __response__: GetHcVpnGatewayResult(
         description=pulumi.get(__response__, 'description'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
         gateway_ip_version=pulumi.get(__response__, 'gateway_ip_version'),
         id=pulumi.get(__response__, 'id'),
+        label_fingerprint=pulumi.get(__response__, 'label_fingerprint'),
+        labels=pulumi.get(__response__, 'labels'),
         name=pulumi.get(__response__, 'name'),
         network=pulumi.get(__response__, 'network'),
         project=pulumi.get(__response__, 'project'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
         region=pulumi.get(__response__, 'region'),
         self_link=pulumi.get(__response__, 'self_link'),
         stack_type=pulumi.get(__response__, 'stack_type'),

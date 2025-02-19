@@ -75,6 +75,21 @@ public final class MeshArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Location (region) of the Mesh resource to be created. Only the value &#39;global&#39; is currently allowed; defaults to &#39;global&#39; if omitted.
+     * 
+     */
+    @Import(name="location")
+    private @Nullable Output<String> location;
+
+    /**
+     * @return Location (region) of the Mesh resource to be created. Only the value &#39;global&#39; is currently allowed; defaults to &#39;global&#39; if omitted.
+     * 
+     */
+    public Optional<Output<String>> location() {
+        return Optional.ofNullable(this.location);
+    }
+
+    /**
      * Short name of the Mesh resource to be created.
      * 
      * ***
@@ -116,6 +131,7 @@ public final class MeshArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.interceptionPort = $.interceptionPort;
         this.labels = $.labels;
+        this.location = $.location;
         this.name = $.name;
         this.project = $.project;
     }
@@ -211,6 +227,27 @@ public final class MeshArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
+        }
+
+        /**
+         * @param location Location (region) of the Mesh resource to be created. Only the value &#39;global&#39; is currently allowed; defaults to &#39;global&#39; if omitted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder location(@Nullable Output<String> location) {
+            $.location = location;
+            return this;
+        }
+
+        /**
+         * @param location Location (region) of the Mesh resource to be created. Only the value &#39;global&#39; is currently allowed; defaults to &#39;global&#39; if omitted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder location(String location) {
+            return location(Output.of(location));
         }
 
         /**

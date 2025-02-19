@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Retrieves the current IAM policy data for tunneldestgroup
  *
- * ## example
+ * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -72,7 +72,7 @@ export interface GetTunnelDestGroupIamPolicyResult {
 /**
  * Retrieves the current IAM policy data for tunneldestgroup
  *
- * ## example
+ * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

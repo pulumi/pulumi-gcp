@@ -12,6 +12,30 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class NodePoolNodeConfigKubeletConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("allowedUnsafeSysctls")]
+        private InputList<string>? _allowedUnsafeSysctls;
+
+        /// <summary>
+        /// Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.
+        /// </summary>
+        public InputList<string> AllowedUnsafeSysctls
+        {
+            get => _allowedUnsafeSysctls ?? (_allowedUnsafeSysctls = new InputList<string>());
+            set => _allowedUnsafeSysctls = value;
+        }
+
+        /// <summary>
+        /// Defines the maximum number of container log files that can be present for a container.
+        /// </summary>
+        [Input("containerLogMaxFiles")]
+        public Input<int>? ContainerLogMaxFiles { get; set; }
+
+        /// <summary>
+        /// Defines the maximum size of the container log file before it is rotated.
+        /// </summary>
+        [Input("containerLogMaxSize")]
+        public Input<string>? ContainerLogMaxSize { get; set; }
+
         /// <summary>
         /// Enable CPU CFS quota enforcement for containers that specify CPU limits.
         /// </summary>
@@ -29,6 +53,30 @@ namespace Pulumi.Gcp.Container.Inputs
         /// </summary>
         [Input("cpuManagerPolicy")]
         public Input<string>? CpuManagerPolicy { get; set; }
+
+        /// <summary>
+        /// Defines the percent of disk usage after which image garbage collection is always run.
+        /// </summary>
+        [Input("imageGcHighThresholdPercent")]
+        public Input<int>? ImageGcHighThresholdPercent { get; set; }
+
+        /// <summary>
+        /// Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.
+        /// </summary>
+        [Input("imageGcLowThresholdPercent")]
+        public Input<int>? ImageGcLowThresholdPercent { get; set; }
+
+        /// <summary>
+        /// Defines the maximum age an image can be unused before it is garbage collected.
+        /// </summary>
+        [Input("imageMaximumGcAge")]
+        public Input<string>? ImageMaximumGcAge { get; set; }
+
+        /// <summary>
+        /// Defines the minimum age for an unused image before it is garbage collected.
+        /// </summary>
+        [Input("imageMinimumGcAge")]
+        public Input<string>? ImageMinimumGcAge { get; set; }
 
         /// <summary>
         /// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.

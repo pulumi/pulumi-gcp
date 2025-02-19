@@ -108,7 +108,7 @@ def get_repository_iam_policy(location: Optional[str] = None,
     """
     Retrieves the current IAM policy data for repository
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -153,7 +153,7 @@ def get_repository_iam_policy_output(location: Optional[pulumi.Input[Optional[st
     """
     Retrieves the current IAM policy data for repository
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

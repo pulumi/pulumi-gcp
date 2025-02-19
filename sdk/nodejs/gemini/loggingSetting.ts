@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * The resource for managing Logging settings for Admin Control.
- *
  * ## Example Usage
  *
  * ### Gemini Logging Setting Basic
@@ -18,6 +16,9 @@ import * as utilities from "../utilities";
  * const example = new gcp.gemini.LoggingSetting("example", {
  *     loggingSettingId: "ls1-tf",
  *     location: "global",
+ *     labels: {
+ *         my_key: "my_value",
+ *     },
  *     logPromptsAndResponses: true,
  *     logMetadata: true,
  * });
@@ -76,7 +77,7 @@ export class LoggingSetting extends pulumi.CustomResource {
     }
 
     /**
-     * Output only. [Output only] Create time stamp.
+     * Create time stamp.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -84,7 +85,7 @@ export class LoggingSetting extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Optional. Labels as key value pairs.
+     * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
@@ -94,17 +95,15 @@ export class LoggingSetting extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Optional. Whether to log metadata.
+     * Whether to log metadata.
      */
     public readonly logMetadata!: pulumi.Output<boolean | undefined>;
     /**
-     * Optional. Whether to log prompts and responses.
+     * Whether to log prompts and responses.
      */
     public readonly logPromptsAndResponses!: pulumi.Output<boolean | undefined>;
     /**
-     * Required. Id of the requesting object.
-     * If auto-generating Id server-side, remove this field and
-     * settingId from the methodSignature of Create RPC.
+     * Id of the Logging Setting.
      *
      *
      * - - -
@@ -126,7 +125,7 @@ export class LoggingSetting extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Output only. [Output only] Update time stamp.
+     * Update time stamp.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -186,7 +185,7 @@ export class LoggingSetting extends pulumi.CustomResource {
  */
 export interface LoggingSettingState {
     /**
-     * Output only. [Output only] Create time stamp.
+     * Create time stamp.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -194,7 +193,7 @@ export interface LoggingSettingState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Optional. Labels as key value pairs.
+     * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
@@ -204,17 +203,15 @@ export interface LoggingSettingState {
      */
     location?: pulumi.Input<string>;
     /**
-     * Optional. Whether to log metadata.
+     * Whether to log metadata.
      */
     logMetadata?: pulumi.Input<boolean>;
     /**
-     * Optional. Whether to log prompts and responses.
+     * Whether to log prompts and responses.
      */
     logPromptsAndResponses?: pulumi.Input<boolean>;
     /**
-     * Required. Id of the requesting object.
-     * If auto-generating Id server-side, remove this field and
-     * settingId from the methodSignature of Create RPC.
+     * Id of the Logging Setting.
      *
      *
      * - - -
@@ -236,7 +233,7 @@ export interface LoggingSettingState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Output only. [Output only] Update time stamp.
+     * Update time stamp.
      */
     updateTime?: pulumi.Input<string>;
 }
@@ -246,7 +243,7 @@ export interface LoggingSettingState {
  */
 export interface LoggingSettingArgs {
     /**
-     * Optional. Labels as key value pairs.
+     * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
@@ -256,17 +253,15 @@ export interface LoggingSettingArgs {
      */
     location: pulumi.Input<string>;
     /**
-     * Optional. Whether to log metadata.
+     * Whether to log metadata.
      */
     logMetadata?: pulumi.Input<boolean>;
     /**
-     * Optional. Whether to log prompts and responses.
+     * Whether to log prompts and responses.
      */
     logPromptsAndResponses?: pulumi.Input<boolean>;
     /**
-     * Required. Id of the requesting object.
-     * If auto-generating Id server-side, remove this field and
-     * settingId from the methodSignature of Create RPC.
+     * Id of the Logging Setting.
      *
      *
      * - - -

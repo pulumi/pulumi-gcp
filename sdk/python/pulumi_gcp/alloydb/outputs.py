@@ -52,6 +52,15 @@ __all__ = [
     'InstancePscInstanceConfig',
     'InstanceQueryInsightsConfig',
     'InstanceReadPoolConfig',
+    'GetInstanceClientConnectionConfigResult',
+    'GetInstanceClientConnectionConfigSslConfigResult',
+    'GetInstanceMachineConfigResult',
+    'GetInstanceNetworkConfigResult',
+    'GetInstanceNetworkConfigAuthorizedExternalNetworkResult',
+    'GetInstanceObservabilityConfigResult',
+    'GetInstancePscInstanceConfigResult',
+    'GetInstanceQueryInsightsConfigResult',
+    'GetInstanceReadPoolConfigResult',
     'GetLocationsLocationResult',
     'GetSupportedDatabaseFlagsSupportedDatabaseFlagResult',
     'GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsResult',
@@ -1985,6 +1994,349 @@ class InstanceReadPoolConfig(dict):
     @property
     @pulumi.getter(name="nodeCount")
     def node_count(self) -> Optional[int]:
+        """
+        Read capacity, i.e. number of nodes in a read pool instance.
+        """
+        return pulumi.get(self, "node_count")
+
+
+@pulumi.output_type
+class GetInstanceClientConnectionConfigResult(dict):
+    def __init__(__self__, *,
+                 require_connectors: bool,
+                 ssl_configs: Sequence['outputs.GetInstanceClientConnectionConfigSslConfigResult']):
+        """
+        :param bool require_connectors: Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
+        :param Sequence['GetInstanceClientConnectionConfigSslConfigArgs'] ssl_configs: SSL config option for this instance.
+        """
+        pulumi.set(__self__, "require_connectors", require_connectors)
+        pulumi.set(__self__, "ssl_configs", ssl_configs)
+
+    @property
+    @pulumi.getter(name="requireConnectors")
+    def require_connectors(self) -> bool:
+        """
+        Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
+        """
+        return pulumi.get(self, "require_connectors")
+
+    @property
+    @pulumi.getter(name="sslConfigs")
+    def ssl_configs(self) -> Sequence['outputs.GetInstanceClientConnectionConfigSslConfigResult']:
+        """
+        SSL config option for this instance.
+        """
+        return pulumi.get(self, "ssl_configs")
+
+
+@pulumi.output_type
+class GetInstanceClientConnectionConfigSslConfigResult(dict):
+    def __init__(__self__, *,
+                 ssl_mode: str):
+        """
+        :param str ssl_mode: SSL mode. Specifies client-server SSL/TLS connection behavior. Possible values: ["ENCRYPTED_ONLY", "ALLOW_UNENCRYPTED_AND_ENCRYPTED"]
+        """
+        pulumi.set(__self__, "ssl_mode", ssl_mode)
+
+    @property
+    @pulumi.getter(name="sslMode")
+    def ssl_mode(self) -> str:
+        """
+        SSL mode. Specifies client-server SSL/TLS connection behavior. Possible values: ["ENCRYPTED_ONLY", "ALLOW_UNENCRYPTED_AND_ENCRYPTED"]
+        """
+        return pulumi.get(self, "ssl_mode")
+
+
+@pulumi.output_type
+class GetInstanceMachineConfigResult(dict):
+    def __init__(__self__, *,
+                 cpu_count: int):
+        """
+        :param int cpu_count: The number of CPU's in the VM instance.
+        """
+        pulumi.set(__self__, "cpu_count", cpu_count)
+
+    @property
+    @pulumi.getter(name="cpuCount")
+    def cpu_count(self) -> int:
+        """
+        The number of CPU's in the VM instance.
+        """
+        return pulumi.get(self, "cpu_count")
+
+
+@pulumi.output_type
+class GetInstanceNetworkConfigResult(dict):
+    def __init__(__self__, *,
+                 authorized_external_networks: Sequence['outputs.GetInstanceNetworkConfigAuthorizedExternalNetworkResult'],
+                 enable_outbound_public_ip: bool,
+                 enable_public_ip: bool):
+        """
+        :param Sequence['GetInstanceNetworkConfigAuthorizedExternalNetworkArgs'] authorized_external_networks: A list of external networks authorized to access this instance. This
+               field is only allowed to be set when 'enable_public_ip' is set to
+               true.
+        :param bool enable_outbound_public_ip: Enabling outbound public ip for the instance.
+        :param bool enable_public_ip: Enabling public ip for the instance. If a user wishes to disable this,
+               please also clear the list of the authorized external networks set on
+               the same instance.
+        """
+        pulumi.set(__self__, "authorized_external_networks", authorized_external_networks)
+        pulumi.set(__self__, "enable_outbound_public_ip", enable_outbound_public_ip)
+        pulumi.set(__self__, "enable_public_ip", enable_public_ip)
+
+    @property
+    @pulumi.getter(name="authorizedExternalNetworks")
+    def authorized_external_networks(self) -> Sequence['outputs.GetInstanceNetworkConfigAuthorizedExternalNetworkResult']:
+        """
+        A list of external networks authorized to access this instance. This
+        field is only allowed to be set when 'enable_public_ip' is set to
+        true.
+        """
+        return pulumi.get(self, "authorized_external_networks")
+
+    @property
+    @pulumi.getter(name="enableOutboundPublicIp")
+    def enable_outbound_public_ip(self) -> bool:
+        """
+        Enabling outbound public ip for the instance.
+        """
+        return pulumi.get(self, "enable_outbound_public_ip")
+
+    @property
+    @pulumi.getter(name="enablePublicIp")
+    def enable_public_ip(self) -> bool:
+        """
+        Enabling public ip for the instance. If a user wishes to disable this,
+        please also clear the list of the authorized external networks set on
+        the same instance.
+        """
+        return pulumi.get(self, "enable_public_ip")
+
+
+@pulumi.output_type
+class GetInstanceNetworkConfigAuthorizedExternalNetworkResult(dict):
+    def __init__(__self__, *,
+                 cidr_range: str):
+        """
+        :param str cidr_range: CIDR range for one authorized network of the instance.
+        """
+        pulumi.set(__self__, "cidr_range", cidr_range)
+
+    @property
+    @pulumi.getter(name="cidrRange")
+    def cidr_range(self) -> str:
+        """
+        CIDR range for one authorized network of the instance.
+        """
+        return pulumi.get(self, "cidr_range")
+
+
+@pulumi.output_type
+class GetInstanceObservabilityConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 max_query_string_length: int,
+                 preserve_comments: bool,
+                 query_plans_per_minute: int,
+                 record_application_tags: bool,
+                 track_active_queries: bool,
+                 track_wait_event_types: bool,
+                 track_wait_events: bool):
+        """
+        :param bool enabled: Observability feature status for an instance.
+        :param int max_query_string_length: Query string length. The default value is 10240. Any integer between 1024 and 100000 is considered valid.
+        :param bool preserve_comments: Preserve comments in the query string.
+        :param int query_plans_per_minute: Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 200 is considered valid.
+        :param bool record_application_tags: Record application tags for an instance. This flag is turned "on" by default.
+        :param bool track_active_queries: Track actively running queries. If not set, default value is "off".
+        :param bool track_wait_event_types: Record wait event types during query execution for an instance.
+        :param bool track_wait_events: Record wait events during query execution for an instance.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "max_query_string_length", max_query_string_length)
+        pulumi.set(__self__, "preserve_comments", preserve_comments)
+        pulumi.set(__self__, "query_plans_per_minute", query_plans_per_minute)
+        pulumi.set(__self__, "record_application_tags", record_application_tags)
+        pulumi.set(__self__, "track_active_queries", track_active_queries)
+        pulumi.set(__self__, "track_wait_event_types", track_wait_event_types)
+        pulumi.set(__self__, "track_wait_events", track_wait_events)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Observability feature status for an instance.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="maxQueryStringLength")
+    def max_query_string_length(self) -> int:
+        """
+        Query string length. The default value is 10240. Any integer between 1024 and 100000 is considered valid.
+        """
+        return pulumi.get(self, "max_query_string_length")
+
+    @property
+    @pulumi.getter(name="preserveComments")
+    def preserve_comments(self) -> bool:
+        """
+        Preserve comments in the query string.
+        """
+        return pulumi.get(self, "preserve_comments")
+
+    @property
+    @pulumi.getter(name="queryPlansPerMinute")
+    def query_plans_per_minute(self) -> int:
+        """
+        Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 200 is considered valid.
+        """
+        return pulumi.get(self, "query_plans_per_minute")
+
+    @property
+    @pulumi.getter(name="recordApplicationTags")
+    def record_application_tags(self) -> bool:
+        """
+        Record application tags for an instance. This flag is turned "on" by default.
+        """
+        return pulumi.get(self, "record_application_tags")
+
+    @property
+    @pulumi.getter(name="trackActiveQueries")
+    def track_active_queries(self) -> bool:
+        """
+        Track actively running queries. If not set, default value is "off".
+        """
+        return pulumi.get(self, "track_active_queries")
+
+    @property
+    @pulumi.getter(name="trackWaitEventTypes")
+    def track_wait_event_types(self) -> bool:
+        """
+        Record wait event types during query execution for an instance.
+        """
+        return pulumi.get(self, "track_wait_event_types")
+
+    @property
+    @pulumi.getter(name="trackWaitEvents")
+    def track_wait_events(self) -> bool:
+        """
+        Record wait events during query execution for an instance.
+        """
+        return pulumi.get(self, "track_wait_events")
+
+
+@pulumi.output_type
+class GetInstancePscInstanceConfigResult(dict):
+    def __init__(__self__, *,
+                 allowed_consumer_projects: Sequence[str],
+                 psc_dns_name: str,
+                 service_attachment_link: str):
+        """
+        :param Sequence[str] allowed_consumer_projects: List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
+               These should be specified as project numbers only.
+        :param str psc_dns_name: The DNS name of the instance for PSC connectivity.
+               Name convention: <uid>.<uid>.<region>.alloydb-psc.goog
+        :param str service_attachment_link: The service attachment created when Private Service Connect (PSC) is enabled for the instance.
+               The name of the resource will be in the format of
+               'projects/<alloydb-tenant-project-number>/regions/<region-name>/serviceAttachments/<service-attachment-name>'
+        """
+        pulumi.set(__self__, "allowed_consumer_projects", allowed_consumer_projects)
+        pulumi.set(__self__, "psc_dns_name", psc_dns_name)
+        pulumi.set(__self__, "service_attachment_link", service_attachment_link)
+
+    @property
+    @pulumi.getter(name="allowedConsumerProjects")
+    def allowed_consumer_projects(self) -> Sequence[str]:
+        """
+        List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
+        These should be specified as project numbers only.
+        """
+        return pulumi.get(self, "allowed_consumer_projects")
+
+    @property
+    @pulumi.getter(name="pscDnsName")
+    def psc_dns_name(self) -> str:
+        """
+        The DNS name of the instance for PSC connectivity.
+        Name convention: <uid>.<uid>.<region>.alloydb-psc.goog
+        """
+        return pulumi.get(self, "psc_dns_name")
+
+    @property
+    @pulumi.getter(name="serviceAttachmentLink")
+    def service_attachment_link(self) -> str:
+        """
+        The service attachment created when Private Service Connect (PSC) is enabled for the instance.
+        The name of the resource will be in the format of
+        'projects/<alloydb-tenant-project-number>/regions/<region-name>/serviceAttachments/<service-attachment-name>'
+        """
+        return pulumi.get(self, "service_attachment_link")
+
+
+@pulumi.output_type
+class GetInstanceQueryInsightsConfigResult(dict):
+    def __init__(__self__, *,
+                 query_plans_per_minute: int,
+                 query_string_length: int,
+                 record_application_tags: bool,
+                 record_client_address: bool):
+        """
+        :param int query_plans_per_minute: Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 20 is considered valid.
+        :param int query_string_length: Query string length. The default value is 1024. Any integer between 256 and 4500 is considered valid.
+        :param bool record_application_tags: Record application tags for an instance. This flag is turned "on" by default.
+        :param bool record_client_address: Record client address for an instance. Client address is PII information. This flag is turned "on" by default.
+        """
+        pulumi.set(__self__, "query_plans_per_minute", query_plans_per_minute)
+        pulumi.set(__self__, "query_string_length", query_string_length)
+        pulumi.set(__self__, "record_application_tags", record_application_tags)
+        pulumi.set(__self__, "record_client_address", record_client_address)
+
+    @property
+    @pulumi.getter(name="queryPlansPerMinute")
+    def query_plans_per_minute(self) -> int:
+        """
+        Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 20 is considered valid.
+        """
+        return pulumi.get(self, "query_plans_per_minute")
+
+    @property
+    @pulumi.getter(name="queryStringLength")
+    def query_string_length(self) -> int:
+        """
+        Query string length. The default value is 1024. Any integer between 256 and 4500 is considered valid.
+        """
+        return pulumi.get(self, "query_string_length")
+
+    @property
+    @pulumi.getter(name="recordApplicationTags")
+    def record_application_tags(self) -> bool:
+        """
+        Record application tags for an instance. This flag is turned "on" by default.
+        """
+        return pulumi.get(self, "record_application_tags")
+
+    @property
+    @pulumi.getter(name="recordClientAddress")
+    def record_client_address(self) -> bool:
+        """
+        Record client address for an instance. Client address is PII information. This flag is turned "on" by default.
+        """
+        return pulumi.get(self, "record_client_address")
+
+
+@pulumi.output_type
+class GetInstanceReadPoolConfigResult(dict):
+    def __init__(__self__, *,
+                 node_count: int):
+        """
+        :param int node_count: Read capacity, i.e. number of nodes in a read pool instance.
+        """
+        pulumi.set(__self__, "node_count", node_count)
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> int:
         """
         Read capacity, i.e. number of nodes in a read pool instance.
         """

@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 public final class TriggerTransport {
     /**
      * @return The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+     * Structure is documented below.
      * 
      */
     private @Nullable TriggerTransportPubsub pubsub;
@@ -20,6 +21,7 @@ public final class TriggerTransport {
     private TriggerTransport() {}
     /**
      * @return The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+     * Structure is documented below.
      * 
      */
     public Optional<TriggerTransportPubsub> pubsub() {

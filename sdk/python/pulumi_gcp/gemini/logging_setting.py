@@ -28,17 +28,15 @@ class LoggingSettingArgs:
         """
         The set of arguments for constructing a LoggingSetting resource.
         :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[str] logging_setting_id: Required. Id of the requesting object.
-               If auto-generating Id server-side, remove this field and
-               setting_id from the method_signature of Create RPC.
+        :param pulumi.Input[str] logging_setting_id: Id of the Logging Setting.
                
                
                - - -
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[bool] log_metadata: Optional. Whether to log metadata.
-        :param pulumi.Input[bool] log_prompts_and_responses: Optional. Whether to log prompts and responses.
+        :param pulumi.Input[bool] log_metadata: Whether to log metadata.
+        :param pulumi.Input[bool] log_prompts_and_responses: Whether to log prompts and responses.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -69,9 +67,7 @@ class LoggingSettingArgs:
     @pulumi.getter(name="loggingSettingId")
     def logging_setting_id(self) -> pulumi.Input[str]:
         """
-        Required. Id of the requesting object.
-        If auto-generating Id server-side, remove this field and
-        setting_id from the method_signature of Create RPC.
+        Id of the Logging Setting.
 
 
         - - -
@@ -86,7 +82,7 @@ class LoggingSettingArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. Labels as key value pairs.
+        Labels as key value pairs.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
@@ -100,7 +96,7 @@ class LoggingSettingArgs:
     @pulumi.getter(name="logMetadata")
     def log_metadata(self) -> Optional[pulumi.Input[bool]]:
         """
-        Optional. Whether to log metadata.
+        Whether to log metadata.
         """
         return pulumi.get(self, "log_metadata")
 
@@ -112,7 +108,7 @@ class LoggingSettingArgs:
     @pulumi.getter(name="logPromptsAndResponses")
     def log_prompts_and_responses(self) -> Optional[pulumi.Input[bool]]:
         """
-        Optional. Whether to log prompts and responses.
+        Whether to log prompts and responses.
         """
         return pulumi.get(self, "log_prompts_and_responses")
 
@@ -150,17 +146,15 @@ class _LoggingSettingState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LoggingSetting resources.
-        :param pulumi.Input[str] create_time: Output only. [Output only] Create time stamp.
+        :param pulumi.Input[str] create_time: Create time stamp.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[bool] log_metadata: Optional. Whether to log metadata.
-        :param pulumi.Input[bool] log_prompts_and_responses: Optional. Whether to log prompts and responses.
-        :param pulumi.Input[str] logging_setting_id: Required. Id of the requesting object.
-               If auto-generating Id server-side, remove this field and
-               setting_id from the method_signature of Create RPC.
+        :param pulumi.Input[bool] log_metadata: Whether to log metadata.
+        :param pulumi.Input[bool] log_prompts_and_responses: Whether to log prompts and responses.
+        :param pulumi.Input[str] logging_setting_id: Id of the Logging Setting.
                
                
                - - -
@@ -170,7 +164,7 @@ class _LoggingSettingState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[str] update_time: Output only. [Output only] Update time stamp.
+        :param pulumi.Input[str] update_time: Update time stamp.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -199,7 +193,7 @@ class _LoggingSettingState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. [Output only] Create time stamp.
+        Create time stamp.
         """
         return pulumi.get(self, "create_time")
 
@@ -223,7 +217,7 @@ class _LoggingSettingState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. Labels as key value pairs.
+        Labels as key value pairs.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
@@ -249,7 +243,7 @@ class _LoggingSettingState:
     @pulumi.getter(name="logMetadata")
     def log_metadata(self) -> Optional[pulumi.Input[bool]]:
         """
-        Optional. Whether to log metadata.
+        Whether to log metadata.
         """
         return pulumi.get(self, "log_metadata")
 
@@ -261,7 +255,7 @@ class _LoggingSettingState:
     @pulumi.getter(name="logPromptsAndResponses")
     def log_prompts_and_responses(self) -> Optional[pulumi.Input[bool]]:
         """
-        Optional. Whether to log prompts and responses.
+        Whether to log prompts and responses.
         """
         return pulumi.get(self, "log_prompts_and_responses")
 
@@ -273,9 +267,7 @@ class _LoggingSettingState:
     @pulumi.getter(name="loggingSettingId")
     def logging_setting_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. Id of the requesting object.
-        If auto-generating Id server-side, remove this field and
-        setting_id from the method_signature of Create RPC.
+        Id of the Logging Setting.
 
 
         - - -
@@ -329,7 +321,7 @@ class _LoggingSettingState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. [Output only] Update time stamp.
+        Update time stamp.
         """
         return pulumi.get(self, "update_time")
 
@@ -351,8 +343,6 @@ class LoggingSetting(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The resource for managing Logging settings for Admin Control.
-
         ## Example Usage
 
         ### Gemini Logging Setting Basic
@@ -364,6 +354,9 @@ class LoggingSetting(pulumi.CustomResource):
         example = gcp.gemini.LoggingSetting("example",
             logging_setting_id="ls1-tf",
             location="global",
+            labels={
+                "my_key": "my_value",
+            },
             log_prompts_and_responses=True,
             log_metadata=True)
         ```
@@ -394,15 +387,13 @@ class LoggingSetting(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[bool] log_metadata: Optional. Whether to log metadata.
-        :param pulumi.Input[bool] log_prompts_and_responses: Optional. Whether to log prompts and responses.
-        :param pulumi.Input[str] logging_setting_id: Required. Id of the requesting object.
-               If auto-generating Id server-side, remove this field and
-               setting_id from the method_signature of Create RPC.
+        :param pulumi.Input[bool] log_metadata: Whether to log metadata.
+        :param pulumi.Input[bool] log_prompts_and_responses: Whether to log prompts and responses.
+        :param pulumi.Input[str] logging_setting_id: Id of the Logging Setting.
                
                
                - - -
@@ -416,8 +407,6 @@ class LoggingSetting(pulumi.CustomResource):
                  args: LoggingSettingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The resource for managing Logging settings for Admin Control.
-
         ## Example Usage
 
         ### Gemini Logging Setting Basic
@@ -429,6 +418,9 @@ class LoggingSetting(pulumi.CustomResource):
         example = gcp.gemini.LoggingSetting("example",
             logging_setting_id="ls1-tf",
             location="global",
+            labels={
+                "my_key": "my_value",
+            },
             log_prompts_and_responses=True,
             log_metadata=True)
         ```
@@ -532,17 +524,15 @@ class LoggingSetting(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Output only. [Output only] Create time stamp.
+        :param pulumi.Input[str] create_time: Create time stamp.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[bool] log_metadata: Optional. Whether to log metadata.
-        :param pulumi.Input[bool] log_prompts_and_responses: Optional. Whether to log prompts and responses.
-        :param pulumi.Input[str] logging_setting_id: Required. Id of the requesting object.
-               If auto-generating Id server-side, remove this field and
-               setting_id from the method_signature of Create RPC.
+        :param pulumi.Input[bool] log_metadata: Whether to log metadata.
+        :param pulumi.Input[bool] log_prompts_and_responses: Whether to log prompts and responses.
+        :param pulumi.Input[str] logging_setting_id: Id of the Logging Setting.
                
                
                - - -
@@ -552,7 +542,7 @@ class LoggingSetting(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[str] update_time: Output only. [Output only] Update time stamp.
+        :param pulumi.Input[str] update_time: Update time stamp.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -575,7 +565,7 @@ class LoggingSetting(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Output only. [Output only] Create time stamp.
+        Create time stamp.
         """
         return pulumi.get(self, "create_time")
 
@@ -591,7 +581,7 @@ class LoggingSetting(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Optional. Labels as key value pairs.
+        Labels as key value pairs.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
@@ -609,7 +599,7 @@ class LoggingSetting(pulumi.CustomResource):
     @pulumi.getter(name="logMetadata")
     def log_metadata(self) -> pulumi.Output[Optional[bool]]:
         """
-        Optional. Whether to log metadata.
+        Whether to log metadata.
         """
         return pulumi.get(self, "log_metadata")
 
@@ -617,7 +607,7 @@ class LoggingSetting(pulumi.CustomResource):
     @pulumi.getter(name="logPromptsAndResponses")
     def log_prompts_and_responses(self) -> pulumi.Output[Optional[bool]]:
         """
-        Optional. Whether to log prompts and responses.
+        Whether to log prompts and responses.
         """
         return pulumi.get(self, "log_prompts_and_responses")
 
@@ -625,9 +615,7 @@ class LoggingSetting(pulumi.CustomResource):
     @pulumi.getter(name="loggingSettingId")
     def logging_setting_id(self) -> pulumi.Output[str]:
         """
-        Required. Id of the requesting object.
-        If auto-generating Id server-side, remove this field and
-        setting_id from the method_signature of Create RPC.
+        Id of the Logging Setting.
 
 
         - - -
@@ -665,7 +653,7 @@ class LoggingSetting(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        Output only. [Output only] Update time stamp.
+        Update time stamp.
         """
         return pulumi.get(self, "update_time")
 

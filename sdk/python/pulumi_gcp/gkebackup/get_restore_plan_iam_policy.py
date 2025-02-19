@@ -108,7 +108,7 @@ def get_restore_plan_iam_policy(location: Optional[str] = None,
     """
     Retrieves the current IAM policy data for restoreplan
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -149,7 +149,7 @@ def get_restore_plan_iam_policy_output(location: Optional[pulumi.Input[Optional[
     """
     Retrieves the current IAM policy data for restoreplan
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

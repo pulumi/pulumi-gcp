@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Three different resources help you manage your IAM policy for Data catalog TagTemplate. Each of these resources serves a different use case:
+// Three different resources help you manage your IAM policy for Data Catalog TagTemplate. Each of these resources serves a different use case:
 //
 // * `datacatalog.TagTemplateIamPolicy`: Authoritative. Sets the IAM policy for the tagtemplate and replaces any existing policy already attached.
 // * `datacatalog.TagTemplateIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the tagtemplate are preserved.
@@ -129,8 +129,8 @@ import (
 //
 // -
 //
-// # IAM policy for Data catalog TagTemplate
-// Three different resources help you manage your IAM policy for Data catalog TagTemplate. Each of these resources serves a different use case:
+// # IAM policy for Data Catalog TagTemplate
+// Three different resources help you manage your IAM policy for Data Catalog TagTemplate. Each of these resources serves a different use case:
 //
 // * `datacatalog.TagTemplateIamPolicy`: Authoritative. Sets the IAM policy for the tagtemplate and replaces any existing policy already attached.
 // * `datacatalog.TagTemplateIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the tagtemplate are preserved.
@@ -257,7 +257,7 @@ import (
 //
 // Any variables not passed in the import command will be taken from the provider configuration.
 //
-// Data catalog tagtemplate IAM resources can be imported using the resource identifiers, role, and member.
+// Data Catalog tagtemplate IAM resources can be imported using the resource identifiers, role, and member.
 //
 // IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
 //

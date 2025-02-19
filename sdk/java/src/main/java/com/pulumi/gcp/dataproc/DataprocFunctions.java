@@ -33,7 +33,7 @@ public final class DataprocFunctions {
     /**
      * Retrieves the current IAM policy data for autoscalingpolicy
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -77,7 +77,7 @@ public final class DataprocFunctions {
     /**
      * Retrieves the current IAM policy data for autoscalingpolicy
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -121,7 +121,7 @@ public final class DataprocFunctions {
     /**
      * Retrieves the current IAM policy data for autoscalingpolicy
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -165,7 +165,7 @@ public final class DataprocFunctions {
     /**
      * Retrieves the current IAM policy data for autoscalingpolicy
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -209,7 +209,7 @@ public final class DataprocFunctions {
     /**
      * Retrieves the current IAM policy data for autoscalingpolicy
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -683,7 +683,7 @@ public final class DataprocFunctions {
     /**
      * Retrieves the current IAM policy data for federation
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -727,7 +727,7 @@ public final class DataprocFunctions {
     /**
      * Retrieves the current IAM policy data for federation
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -771,7 +771,7 @@ public final class DataprocFunctions {
     /**
      * Retrieves the current IAM policy data for federation
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -815,7 +815,7 @@ public final class DataprocFunctions {
     /**
      * Retrieves the current IAM policy data for federation
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -859,7 +859,7 @@ public final class DataprocFunctions {
     /**
      * Retrieves the current IAM policy data for federation
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1118,7 +1118,7 @@ public final class DataprocFunctions {
     /**
      * Retrieves the current IAM policy data for service
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1162,7 +1162,7 @@ public final class DataprocFunctions {
     /**
      * Retrieves the current IAM policy data for service
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1206,7 +1206,7 @@ public final class DataprocFunctions {
     /**
      * Retrieves the current IAM policy data for service
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1250,7 +1250,7 @@ public final class DataprocFunctions {
     /**
      * Retrieves the current IAM policy data for service
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1294,7 +1294,7 @@ public final class DataprocFunctions {
     /**
      * Retrieves the current IAM policy data for service
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

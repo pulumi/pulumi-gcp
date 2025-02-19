@@ -8,10 +8,26 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodeConfigKubeletConfig {
+    /**
+     * @return Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.
+     * 
+     */
+    private List<String> allowedUnsafeSysctls;
+    /**
+     * @return Defines the maximum number of container log files that can be present for a container.
+     * 
+     */
+    private Integer containerLogMaxFiles;
+    /**
+     * @return Defines the maximum size of the container log file before it is rotated.
+     * 
+     */
+    private String containerLogMaxSize;
     /**
      * @return Enable CPU CFS quota enforcement for containers that specify CPU limits.
      * 
@@ -28,6 +44,26 @@ public final class GetClusterNodeConfigKubeletConfig {
      */
     private String cpuManagerPolicy;
     /**
+     * @return Defines the percent of disk usage after which image garbage collection is always run.
+     * 
+     */
+    private Integer imageGcHighThresholdPercent;
+    /**
+     * @return Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.
+     * 
+     */
+    private Integer imageGcLowThresholdPercent;
+    /**
+     * @return Defines the maximum age an image can be unused before it is garbage collected.
+     * 
+     */
+    private String imageMaximumGcAge;
+    /**
+     * @return Defines the minimum age for an unused image before it is garbage collected.
+     * 
+     */
+    private String imageMinimumGcAge;
+    /**
      * @return Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
      * 
      */
@@ -39,6 +75,27 @@ public final class GetClusterNodeConfigKubeletConfig {
     private Integer podPidsLimit;
 
     private GetClusterNodeConfigKubeletConfig() {}
+    /**
+     * @return Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.
+     * 
+     */
+    public List<String> allowedUnsafeSysctls() {
+        return this.allowedUnsafeSysctls;
+    }
+    /**
+     * @return Defines the maximum number of container log files that can be present for a container.
+     * 
+     */
+    public Integer containerLogMaxFiles() {
+        return this.containerLogMaxFiles;
+    }
+    /**
+     * @return Defines the maximum size of the container log file before it is rotated.
+     * 
+     */
+    public String containerLogMaxSize() {
+        return this.containerLogMaxSize;
+    }
     /**
      * @return Enable CPU CFS quota enforcement for containers that specify CPU limits.
      * 
@@ -59,6 +116,34 @@ public final class GetClusterNodeConfigKubeletConfig {
      */
     public String cpuManagerPolicy() {
         return this.cpuManagerPolicy;
+    }
+    /**
+     * @return Defines the percent of disk usage after which image garbage collection is always run.
+     * 
+     */
+    public Integer imageGcHighThresholdPercent() {
+        return this.imageGcHighThresholdPercent;
+    }
+    /**
+     * @return Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.
+     * 
+     */
+    public Integer imageGcLowThresholdPercent() {
+        return this.imageGcLowThresholdPercent;
+    }
+    /**
+     * @return Defines the maximum age an image can be unused before it is garbage collected.
+     * 
+     */
+    public String imageMaximumGcAge() {
+        return this.imageMaximumGcAge;
+    }
+    /**
+     * @return Defines the minimum age for an unused image before it is garbage collected.
+     * 
+     */
+    public String imageMinimumGcAge() {
+        return this.imageMinimumGcAge;
     }
     /**
      * @return Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
@@ -84,21 +169,62 @@ public final class GetClusterNodeConfigKubeletConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<String> allowedUnsafeSysctls;
+        private Integer containerLogMaxFiles;
+        private String containerLogMaxSize;
         private Boolean cpuCfsQuota;
         private String cpuCfsQuotaPeriod;
         private String cpuManagerPolicy;
+        private Integer imageGcHighThresholdPercent;
+        private Integer imageGcLowThresholdPercent;
+        private String imageMaximumGcAge;
+        private String imageMinimumGcAge;
         private String insecureKubeletReadonlyPortEnabled;
         private Integer podPidsLimit;
         public Builder() {}
         public Builder(GetClusterNodeConfigKubeletConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowedUnsafeSysctls = defaults.allowedUnsafeSysctls;
+    	      this.containerLogMaxFiles = defaults.containerLogMaxFiles;
+    	      this.containerLogMaxSize = defaults.containerLogMaxSize;
     	      this.cpuCfsQuota = defaults.cpuCfsQuota;
     	      this.cpuCfsQuotaPeriod = defaults.cpuCfsQuotaPeriod;
     	      this.cpuManagerPolicy = defaults.cpuManagerPolicy;
+    	      this.imageGcHighThresholdPercent = defaults.imageGcHighThresholdPercent;
+    	      this.imageGcLowThresholdPercent = defaults.imageGcLowThresholdPercent;
+    	      this.imageMaximumGcAge = defaults.imageMaximumGcAge;
+    	      this.imageMinimumGcAge = defaults.imageMinimumGcAge;
     	      this.insecureKubeletReadonlyPortEnabled = defaults.insecureKubeletReadonlyPortEnabled;
     	      this.podPidsLimit = defaults.podPidsLimit;
         }
 
+        @CustomType.Setter
+        public Builder allowedUnsafeSysctls(List<String> allowedUnsafeSysctls) {
+            if (allowedUnsafeSysctls == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfigKubeletConfig", "allowedUnsafeSysctls");
+            }
+            this.allowedUnsafeSysctls = allowedUnsafeSysctls;
+            return this;
+        }
+        public Builder allowedUnsafeSysctls(String... allowedUnsafeSysctls) {
+            return allowedUnsafeSysctls(List.of(allowedUnsafeSysctls));
+        }
+        @CustomType.Setter
+        public Builder containerLogMaxFiles(Integer containerLogMaxFiles) {
+            if (containerLogMaxFiles == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfigKubeletConfig", "containerLogMaxFiles");
+            }
+            this.containerLogMaxFiles = containerLogMaxFiles;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder containerLogMaxSize(String containerLogMaxSize) {
+            if (containerLogMaxSize == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfigKubeletConfig", "containerLogMaxSize");
+            }
+            this.containerLogMaxSize = containerLogMaxSize;
+            return this;
+        }
         @CustomType.Setter
         public Builder cpuCfsQuota(Boolean cpuCfsQuota) {
             if (cpuCfsQuota == null) {
@@ -124,6 +250,38 @@ public final class GetClusterNodeConfigKubeletConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder imageGcHighThresholdPercent(Integer imageGcHighThresholdPercent) {
+            if (imageGcHighThresholdPercent == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfigKubeletConfig", "imageGcHighThresholdPercent");
+            }
+            this.imageGcHighThresholdPercent = imageGcHighThresholdPercent;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder imageGcLowThresholdPercent(Integer imageGcLowThresholdPercent) {
+            if (imageGcLowThresholdPercent == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfigKubeletConfig", "imageGcLowThresholdPercent");
+            }
+            this.imageGcLowThresholdPercent = imageGcLowThresholdPercent;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder imageMaximumGcAge(String imageMaximumGcAge) {
+            if (imageMaximumGcAge == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfigKubeletConfig", "imageMaximumGcAge");
+            }
+            this.imageMaximumGcAge = imageMaximumGcAge;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder imageMinimumGcAge(String imageMinimumGcAge) {
+            if (imageMinimumGcAge == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfigKubeletConfig", "imageMinimumGcAge");
+            }
+            this.imageMinimumGcAge = imageMinimumGcAge;
+            return this;
+        }
+        @CustomType.Setter
         public Builder insecureKubeletReadonlyPortEnabled(String insecureKubeletReadonlyPortEnabled) {
             if (insecureKubeletReadonlyPortEnabled == null) {
               throw new MissingRequiredPropertyException("GetClusterNodeConfigKubeletConfig", "insecureKubeletReadonlyPortEnabled");
@@ -141,9 +299,16 @@ public final class GetClusterNodeConfigKubeletConfig {
         }
         public GetClusterNodeConfigKubeletConfig build() {
             final var _resultValue = new GetClusterNodeConfigKubeletConfig();
+            _resultValue.allowedUnsafeSysctls = allowedUnsafeSysctls;
+            _resultValue.containerLogMaxFiles = containerLogMaxFiles;
+            _resultValue.containerLogMaxSize = containerLogMaxSize;
             _resultValue.cpuCfsQuota = cpuCfsQuota;
             _resultValue.cpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
             _resultValue.cpuManagerPolicy = cpuManagerPolicy;
+            _resultValue.imageGcHighThresholdPercent = imageGcHighThresholdPercent;
+            _resultValue.imageGcLowThresholdPercent = imageGcLowThresholdPercent;
+            _resultValue.imageMaximumGcAge = imageMaximumGcAge;
+            _resultValue.imageMinimumGcAge = imageMinimumGcAge;
             _resultValue.insecureKubeletReadonlyPortEnabled = insecureKubeletReadonlyPortEnabled;
             _resultValue.podPidsLimit = podPidsLimit;
             return _resultValue;

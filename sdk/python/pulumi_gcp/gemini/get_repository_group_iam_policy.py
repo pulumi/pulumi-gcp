@@ -118,7 +118,7 @@ def get_repository_group_iam_policy(code_repository_index: Optional[str] = None,
     """
     Retrieves the current IAM policy data for repositorygroup
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -161,7 +161,7 @@ def get_repository_group_iam_policy_output(code_repository_index: Optional[pulum
     """
     Retrieves the current IAM policy data for repositorygroup
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

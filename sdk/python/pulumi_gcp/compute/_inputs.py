@@ -207,6 +207,10 @@ __all__ = [
     'InstanceFromMachineImageReservationAffinitySpecificReservationArgsDict',
     'InstanceFromMachineImageSchedulingArgs',
     'InstanceFromMachineImageSchedulingArgsDict',
+    'InstanceFromMachineImageSchedulingGracefulShutdownArgs',
+    'InstanceFromMachineImageSchedulingGracefulShutdownArgsDict',
+    'InstanceFromMachineImageSchedulingGracefulShutdownMaxDurationArgs',
+    'InstanceFromMachineImageSchedulingGracefulShutdownMaxDurationArgsDict',
     'InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs',
     'InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgsDict',
     'InstanceFromMachineImageSchedulingMaxRunDurationArgs',
@@ -251,6 +255,10 @@ __all__ = [
     'InstanceFromTemplateReservationAffinitySpecificReservationArgsDict',
     'InstanceFromTemplateSchedulingArgs',
     'InstanceFromTemplateSchedulingArgsDict',
+    'InstanceFromTemplateSchedulingGracefulShutdownArgs',
+    'InstanceFromTemplateSchedulingGracefulShutdownArgsDict',
+    'InstanceFromTemplateSchedulingGracefulShutdownMaxDurationArgs',
+    'InstanceFromTemplateSchedulingGracefulShutdownMaxDurationArgsDict',
     'InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgs',
     'InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgsDict',
     'InstanceFromTemplateSchedulingMaxRunDurationArgs',
@@ -325,6 +333,10 @@ __all__ = [
     'InstanceReservationAffinitySpecificReservationArgsDict',
     'InstanceSchedulingArgs',
     'InstanceSchedulingArgsDict',
+    'InstanceSchedulingGracefulShutdownArgs',
+    'InstanceSchedulingGracefulShutdownArgsDict',
+    'InstanceSchedulingGracefulShutdownMaxDurationArgs',
+    'InstanceSchedulingGracefulShutdownMaxDurationArgsDict',
     'InstanceSchedulingLocalSsdRecoveryTimeoutArgs',
     'InstanceSchedulingLocalSsdRecoveryTimeoutArgsDict',
     'InstanceSchedulingMaxRunDurationArgs',
@@ -375,6 +387,10 @@ __all__ = [
     'InstanceTemplateReservationAffinitySpecificReservationArgsDict',
     'InstanceTemplateSchedulingArgs',
     'InstanceTemplateSchedulingArgsDict',
+    'InstanceTemplateSchedulingGracefulShutdownArgs',
+    'InstanceTemplateSchedulingGracefulShutdownArgsDict',
+    'InstanceTemplateSchedulingGracefulShutdownMaxDurationArgs',
+    'InstanceTemplateSchedulingGracefulShutdownMaxDurationArgsDict',
     'InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs',
     'InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgsDict',
     'InstanceTemplateSchedulingMaxRunDurationArgs',
@@ -649,6 +665,10 @@ __all__ = [
     'RegionInstanceTemplateReservationAffinitySpecificReservationArgsDict',
     'RegionInstanceTemplateSchedulingArgs',
     'RegionInstanceTemplateSchedulingArgsDict',
+    'RegionInstanceTemplateSchedulingGracefulShutdownArgs',
+    'RegionInstanceTemplateSchedulingGracefulShutdownArgsDict',
+    'RegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs',
+    'RegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgsDict',
     'RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs',
     'RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgsDict',
     'RegionInstanceTemplateSchedulingMaxRunDurationArgs',
@@ -12574,6 +12594,10 @@ if not MYPY:
         """
         Specifies the availability domain, which this instance should be scheduled on.
         """
+        graceful_shutdown: NotRequired[pulumi.Input['InstanceFromMachineImageSchedulingGracefulShutdownArgsDict']]
+        """
+        Settings for the instance to perform a graceful shutdown.
+        """
         host_error_timeout_seconds: NotRequired[pulumi.Input[int]]
         """
         Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
@@ -12626,6 +12650,7 @@ class InstanceFromMachineImageSchedulingArgs:
     def __init__(__self__, *,
                  automatic_restart: Optional[pulumi.Input[bool]] = None,
                  availability_domain: Optional[pulumi.Input[int]] = None,
+                 graceful_shutdown: Optional[pulumi.Input['InstanceFromMachineImageSchedulingGracefulShutdownArgs']] = None,
                  host_error_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  instance_termination_action: Optional[pulumi.Input[str]] = None,
                  local_ssd_recovery_timeout: Optional[pulumi.Input['InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs']] = None,
@@ -12640,6 +12665,7 @@ class InstanceFromMachineImageSchedulingArgs:
         """
         :param pulumi.Input[bool] automatic_restart: Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
         :param pulumi.Input[int] availability_domain: Specifies the availability domain, which this instance should be scheduled on.
+        :param pulumi.Input['InstanceFromMachineImageSchedulingGracefulShutdownArgs'] graceful_shutdown: Settings for the instance to perform a graceful shutdown.
         :param pulumi.Input[int] host_error_timeout_seconds: Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param pulumi.Input[str] instance_termination_action: Specifies the action GCE should take when SPOT VM is preempted.
         :param pulumi.Input['InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs'] local_ssd_recovery_timeout: Specifies the maximum amount of time a Local Ssd Vm should wait while
@@ -12658,6 +12684,8 @@ class InstanceFromMachineImageSchedulingArgs:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if availability_domain is not None:
             pulumi.set(__self__, "availability_domain", availability_domain)
+        if graceful_shutdown is not None:
+            pulumi.set(__self__, "graceful_shutdown", graceful_shutdown)
         if host_error_timeout_seconds is not None:
             pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         if instance_termination_action is not None:
@@ -12704,6 +12732,18 @@ class InstanceFromMachineImageSchedulingArgs:
     @availability_domain.setter
     def availability_domain(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "availability_domain", value)
+
+    @property
+    @pulumi.getter(name="gracefulShutdown")
+    def graceful_shutdown(self) -> Optional[pulumi.Input['InstanceFromMachineImageSchedulingGracefulShutdownArgs']]:
+        """
+        Settings for the instance to perform a graceful shutdown.
+        """
+        return pulumi.get(self, "graceful_shutdown")
+
+    @graceful_shutdown.setter
+    def graceful_shutdown(self, value: Optional[pulumi.Input['InstanceFromMachineImageSchedulingGracefulShutdownArgs']]):
+        pulumi.set(self, "graceful_shutdown", value)
 
     @property
     @pulumi.getter(name="hostErrorTimeoutSeconds")
@@ -12836,6 +12876,126 @@ class InstanceFromMachineImageSchedulingArgs:
     @provisioning_model.setter
     def provisioning_model(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "provisioning_model", value)
+
+
+if not MYPY:
+    class InstanceFromMachineImageSchedulingGracefulShutdownArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Opts-in for graceful shutdown.
+        """
+        max_duration: NotRequired[pulumi.Input['InstanceFromMachineImageSchedulingGracefulShutdownMaxDurationArgsDict']]
+        """
+        The time allotted for the instance to gracefully shut down.
+        										If the graceful shutdown isn't complete after this time, then the instance
+        										transitions to the STOPPING state.
+        """
+elif False:
+    InstanceFromMachineImageSchedulingGracefulShutdownArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceFromMachineImageSchedulingGracefulShutdownArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 max_duration: Optional[pulumi.Input['InstanceFromMachineImageSchedulingGracefulShutdownMaxDurationArgs']] = None):
+        """
+        :param pulumi.Input[bool] enabled: Opts-in for graceful shutdown.
+        :param pulumi.Input['InstanceFromMachineImageSchedulingGracefulShutdownMaxDurationArgs'] max_duration: The time allotted for the instance to gracefully shut down.
+               										If the graceful shutdown isn't complete after this time, then the instance
+               										transitions to the STOPPING state.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if max_duration is not None:
+            pulumi.set(__self__, "max_duration", max_duration)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Opts-in for graceful shutdown.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="maxDuration")
+    def max_duration(self) -> Optional[pulumi.Input['InstanceFromMachineImageSchedulingGracefulShutdownMaxDurationArgs']]:
+        """
+        The time allotted for the instance to gracefully shut down.
+        										If the graceful shutdown isn't complete after this time, then the instance
+        										transitions to the STOPPING state.
+        """
+        return pulumi.get(self, "max_duration")
+
+    @max_duration.setter
+    def max_duration(self, value: Optional[pulumi.Input['InstanceFromMachineImageSchedulingGracefulShutdownMaxDurationArgs']]):
+        pulumi.set(self, "max_duration", value)
+
+
+if not MYPY:
+    class InstanceFromMachineImageSchedulingGracefulShutdownMaxDurationArgsDict(TypedDict):
+        seconds: pulumi.Input[int]
+        """
+        Span of time at a resolution of a second.
+        													The value must be between 1 and 3600, which is 3,600 seconds (one hour).
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond
+        													resolution. Durations less than one second are represented
+        													with a 0 seconds field and a positive nanos field. Must
+        													be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    InstanceFromMachineImageSchedulingGracefulShutdownMaxDurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceFromMachineImageSchedulingGracefulShutdownMaxDurationArgs:
+    def __init__(__self__, *,
+                 seconds: pulumi.Input[int],
+                 nanos: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] seconds: Span of time at a resolution of a second.
+               													The value must be between 1 and 3600, which is 3,600 seconds (one hour).
+        :param pulumi.Input[int] nanos: Span of time that's a fraction of a second at nanosecond
+               													resolution. Durations less than one second are represented
+               													with a 0 seconds field and a positive nanos field. Must
+               													be from 0 to 999,999,999 inclusive.
+        """
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> pulumi.Input[int]:
+        """
+        Span of time at a resolution of a second.
+        													The value must be between 1 and 3600, which is 3,600 seconds (one hour).
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: pulumi.Input[int]):
+        pulumi.set(self, "seconds", value)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[int]]:
+        """
+        Span of time that's a fraction of a second at nanosecond
+        													resolution. Durations less than one second are represented
+        													with a 0 seconds field and a positive nanos field. Must
+        													be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "nanos", value)
 
 
 if not MYPY:
@@ -14800,6 +14960,10 @@ if not MYPY:
         """
         Specifies the availability domain, which this instance should be scheduled on.
         """
+        graceful_shutdown: NotRequired[pulumi.Input['InstanceFromTemplateSchedulingGracefulShutdownArgsDict']]
+        """
+        Settings for the instance to perform a graceful shutdown.
+        """
         host_error_timeout_seconds: NotRequired[pulumi.Input[int]]
         """
         Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
@@ -14852,6 +15016,7 @@ class InstanceFromTemplateSchedulingArgs:
     def __init__(__self__, *,
                  automatic_restart: Optional[pulumi.Input[bool]] = None,
                  availability_domain: Optional[pulumi.Input[int]] = None,
+                 graceful_shutdown: Optional[pulumi.Input['InstanceFromTemplateSchedulingGracefulShutdownArgs']] = None,
                  host_error_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  instance_termination_action: Optional[pulumi.Input[str]] = None,
                  local_ssd_recovery_timeout: Optional[pulumi.Input['InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgs']] = None,
@@ -14866,6 +15031,7 @@ class InstanceFromTemplateSchedulingArgs:
         """
         :param pulumi.Input[bool] automatic_restart: Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
         :param pulumi.Input[int] availability_domain: Specifies the availability domain, which this instance should be scheduled on.
+        :param pulumi.Input['InstanceFromTemplateSchedulingGracefulShutdownArgs'] graceful_shutdown: Settings for the instance to perform a graceful shutdown.
         :param pulumi.Input[int] host_error_timeout_seconds: Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param pulumi.Input[str] instance_termination_action: Specifies the action GCE should take when SPOT VM is preempted.
         :param pulumi.Input['InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgs'] local_ssd_recovery_timeout: Specifies the maximum amount of time a Local Ssd Vm should wait while
@@ -14884,6 +15050,8 @@ class InstanceFromTemplateSchedulingArgs:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if availability_domain is not None:
             pulumi.set(__self__, "availability_domain", availability_domain)
+        if graceful_shutdown is not None:
+            pulumi.set(__self__, "graceful_shutdown", graceful_shutdown)
         if host_error_timeout_seconds is not None:
             pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         if instance_termination_action is not None:
@@ -14930,6 +15098,18 @@ class InstanceFromTemplateSchedulingArgs:
     @availability_domain.setter
     def availability_domain(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "availability_domain", value)
+
+    @property
+    @pulumi.getter(name="gracefulShutdown")
+    def graceful_shutdown(self) -> Optional[pulumi.Input['InstanceFromTemplateSchedulingGracefulShutdownArgs']]:
+        """
+        Settings for the instance to perform a graceful shutdown.
+        """
+        return pulumi.get(self, "graceful_shutdown")
+
+    @graceful_shutdown.setter
+    def graceful_shutdown(self, value: Optional[pulumi.Input['InstanceFromTemplateSchedulingGracefulShutdownArgs']]):
+        pulumi.set(self, "graceful_shutdown", value)
 
     @property
     @pulumi.getter(name="hostErrorTimeoutSeconds")
@@ -15062,6 +15242,126 @@ class InstanceFromTemplateSchedulingArgs:
     @provisioning_model.setter
     def provisioning_model(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "provisioning_model", value)
+
+
+if not MYPY:
+    class InstanceFromTemplateSchedulingGracefulShutdownArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Opts-in for graceful shutdown.
+        """
+        max_duration: NotRequired[pulumi.Input['InstanceFromTemplateSchedulingGracefulShutdownMaxDurationArgsDict']]
+        """
+        The time allotted for the instance to gracefully shut down.
+        										If the graceful shutdown isn't complete after this time, then the instance
+        										transitions to the STOPPING state.
+        """
+elif False:
+    InstanceFromTemplateSchedulingGracefulShutdownArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceFromTemplateSchedulingGracefulShutdownArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 max_duration: Optional[pulumi.Input['InstanceFromTemplateSchedulingGracefulShutdownMaxDurationArgs']] = None):
+        """
+        :param pulumi.Input[bool] enabled: Opts-in for graceful shutdown.
+        :param pulumi.Input['InstanceFromTemplateSchedulingGracefulShutdownMaxDurationArgs'] max_duration: The time allotted for the instance to gracefully shut down.
+               										If the graceful shutdown isn't complete after this time, then the instance
+               										transitions to the STOPPING state.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if max_duration is not None:
+            pulumi.set(__self__, "max_duration", max_duration)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Opts-in for graceful shutdown.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="maxDuration")
+    def max_duration(self) -> Optional[pulumi.Input['InstanceFromTemplateSchedulingGracefulShutdownMaxDurationArgs']]:
+        """
+        The time allotted for the instance to gracefully shut down.
+        										If the graceful shutdown isn't complete after this time, then the instance
+        										transitions to the STOPPING state.
+        """
+        return pulumi.get(self, "max_duration")
+
+    @max_duration.setter
+    def max_duration(self, value: Optional[pulumi.Input['InstanceFromTemplateSchedulingGracefulShutdownMaxDurationArgs']]):
+        pulumi.set(self, "max_duration", value)
+
+
+if not MYPY:
+    class InstanceFromTemplateSchedulingGracefulShutdownMaxDurationArgsDict(TypedDict):
+        seconds: pulumi.Input[int]
+        """
+        Span of time at a resolution of a second.
+        													The value must be between 1 and 3600, which is 3,600 seconds (one hour).
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond
+        													resolution. Durations less than one second are represented
+        													with a 0 seconds field and a positive nanos field. Must
+        													be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    InstanceFromTemplateSchedulingGracefulShutdownMaxDurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceFromTemplateSchedulingGracefulShutdownMaxDurationArgs:
+    def __init__(__self__, *,
+                 seconds: pulumi.Input[int],
+                 nanos: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] seconds: Span of time at a resolution of a second.
+               													The value must be between 1 and 3600, which is 3,600 seconds (one hour).
+        :param pulumi.Input[int] nanos: Span of time that's a fraction of a second at nanosecond
+               													resolution. Durations less than one second are represented
+               													with a 0 seconds field and a positive nanos field. Must
+               													be from 0 to 999,999,999 inclusive.
+        """
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> pulumi.Input[int]:
+        """
+        Span of time at a resolution of a second.
+        													The value must be between 1 and 3600, which is 3,600 seconds (one hour).
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: pulumi.Input[int]):
+        pulumi.set(self, "seconds", value)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[int]]:
+        """
+        Span of time that's a fraction of a second at nanosecond
+        													resolution. Durations less than one second are represented
+        													with a 0 seconds field and a positive nanos field. Must
+        													be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "nanos", value)
 
 
 if not MYPY:
@@ -17653,6 +17953,10 @@ if not MYPY:
         """
         Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
         """
+        graceful_shutdown: NotRequired[pulumi.Input['InstanceSchedulingGracefulShutdownArgsDict']]
+        """
+        Settings for the instance to perform a graceful shutdown. Structure is documented below.
+        """
         host_error_timeout_seconds: NotRequired[pulumi.Input[int]]
         """
         Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
@@ -17719,6 +18023,7 @@ class InstanceSchedulingArgs:
     def __init__(__self__, *,
                  automatic_restart: Optional[pulumi.Input[bool]] = None,
                  availability_domain: Optional[pulumi.Input[int]] = None,
+                 graceful_shutdown: Optional[pulumi.Input['InstanceSchedulingGracefulShutdownArgs']] = None,
                  host_error_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  instance_termination_action: Optional[pulumi.Input[str]] = None,
                  local_ssd_recovery_timeout: Optional[pulumi.Input['InstanceSchedulingLocalSsdRecoveryTimeoutArgs']] = None,
@@ -17735,6 +18040,7 @@ class InstanceSchedulingArgs:
                restarted if it was terminated by Compute Engine (not a user).
                Defaults to true.
         :param pulumi.Input[int] availability_domain: Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
+        :param pulumi.Input['InstanceSchedulingGracefulShutdownArgs'] graceful_shutdown: Settings for the instance to perform a graceful shutdown. Structure is documented below.
         :param pulumi.Input[int] host_error_timeout_seconds: Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param pulumi.Input[str] instance_termination_action: Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param pulumi.Input['InstanceSchedulingLocalSsdRecoveryTimeoutArgs'] local_ssd_recovery_timeout: Specifies the maximum amount of time a Local Ssd Vm should wait while
@@ -17765,6 +18071,8 @@ class InstanceSchedulingArgs:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if availability_domain is not None:
             pulumi.set(__self__, "availability_domain", availability_domain)
+        if graceful_shutdown is not None:
+            pulumi.set(__self__, "graceful_shutdown", graceful_shutdown)
         if host_error_timeout_seconds is not None:
             pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         if instance_termination_action is not None:
@@ -17813,6 +18121,18 @@ class InstanceSchedulingArgs:
     @availability_domain.setter
     def availability_domain(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "availability_domain", value)
+
+    @property
+    @pulumi.getter(name="gracefulShutdown")
+    def graceful_shutdown(self) -> Optional[pulumi.Input['InstanceSchedulingGracefulShutdownArgs']]:
+        """
+        Settings for the instance to perform a graceful shutdown. Structure is documented below.
+        """
+        return pulumi.get(self, "graceful_shutdown")
+
+    @graceful_shutdown.setter
+    def graceful_shutdown(self, value: Optional[pulumi.Input['InstanceSchedulingGracefulShutdownArgs']]):
+        pulumi.set(self, "graceful_shutdown", value)
 
     @property
     @pulumi.getter(name="hostErrorTimeoutSeconds")
@@ -17962,34 +18282,91 @@ class InstanceSchedulingArgs:
 
 
 if not MYPY:
-    class InstanceSchedulingLocalSsdRecoveryTimeoutArgsDict(TypedDict):
+    class InstanceSchedulingGracefulShutdownArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Opts-in for graceful shutdown.
+        """
+        max_duration: NotRequired[pulumi.Input['InstanceSchedulingGracefulShutdownMaxDurationArgsDict']]
+        """
+        The time allotted for the instance to gracefully shut down.
+        If the graceful shutdown isn't complete after this time, then the instance
+        transitions to the STOPPING state. Structure is documented below:
+        """
+elif False:
+    InstanceSchedulingGracefulShutdownArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceSchedulingGracefulShutdownArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 max_duration: Optional[pulumi.Input['InstanceSchedulingGracefulShutdownMaxDurationArgs']] = None):
+        """
+        :param pulumi.Input[bool] enabled: Opts-in for graceful shutdown.
+        :param pulumi.Input['InstanceSchedulingGracefulShutdownMaxDurationArgs'] max_duration: The time allotted for the instance to gracefully shut down.
+               If the graceful shutdown isn't complete after this time, then the instance
+               transitions to the STOPPING state. Structure is documented below:
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if max_duration is not None:
+            pulumi.set(__self__, "max_duration", max_duration)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Opts-in for graceful shutdown.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="maxDuration")
+    def max_duration(self) -> Optional[pulumi.Input['InstanceSchedulingGracefulShutdownMaxDurationArgs']]:
+        """
+        The time allotted for the instance to gracefully shut down.
+        If the graceful shutdown isn't complete after this time, then the instance
+        transitions to the STOPPING state. Structure is documented below:
+        """
+        return pulumi.get(self, "max_duration")
+
+    @max_duration.setter
+    def max_duration(self, value: Optional[pulumi.Input['InstanceSchedulingGracefulShutdownMaxDurationArgs']]):
+        pulumi.set(self, "max_duration", value)
+
+
+if not MYPY:
+    class InstanceSchedulingGracefulShutdownMaxDurationArgsDict(TypedDict):
         seconds: pulumi.Input[int]
         """
         Span of time at a resolution of a second.
-        Must be from 0 to 315,576,000,000 inclusive.
+        The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
         """
         nanos: NotRequired[pulumi.Input[int]]
         """
         Span of time that's a fraction of a second at nanosecond
-        resolution. Durations less than one second are represented
-        with a 0 seconds field and a positive nanos field. Must
-        be from 0 to 999,999,999 inclusive.
+        resolution. Durations less than one second are represented with a 0
+        `seconds` field and a positive `nanos` field. Must be from 0 to
+        999,999,999 inclusive.
         """
 elif False:
-    InstanceSchedulingLocalSsdRecoveryTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+    InstanceSchedulingGracefulShutdownMaxDurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class InstanceSchedulingLocalSsdRecoveryTimeoutArgs:
+class InstanceSchedulingGracefulShutdownMaxDurationArgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] seconds: Span of time at a resolution of a second.
-               Must be from 0 to 315,576,000,000 inclusive.
+               The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
         :param pulumi.Input[int] nanos: Span of time that's a fraction of a second at nanosecond
-               resolution. Durations less than one second are represented
-               with a 0 seconds field and a positive nanos field. Must
-               be from 0 to 999,999,999 inclusive.
+               resolution. Durations less than one second are represented with a 0
+               `seconds` field and a positive `nanos` field. Must be from 0 to
+               999,999,999 inclusive.
         """
         pulumi.set(__self__, "seconds", seconds)
         if nanos is not None:
@@ -18000,7 +18377,7 @@ class InstanceSchedulingLocalSsdRecoveryTimeoutArgs:
     def seconds(self) -> pulumi.Input[int]:
         """
         Span of time at a resolution of a second.
-        Must be from 0 to 315,576,000,000 inclusive.
+        The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
         """
         return pulumi.get(self, "seconds")
 
@@ -18013,9 +18390,75 @@ class InstanceSchedulingLocalSsdRecoveryTimeoutArgs:
     def nanos(self) -> Optional[pulumi.Input[int]]:
         """
         Span of time that's a fraction of a second at nanosecond
-        resolution. Durations less than one second are represented
-        with a 0 seconds field and a positive nanos field. Must
-        be from 0 to 999,999,999 inclusive.
+        resolution. Durations less than one second are represented with a 0
+        `seconds` field and a positive `nanos` field. Must be from 0 to
+        999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "nanos", value)
+
+
+if not MYPY:
+    class InstanceSchedulingLocalSsdRecoveryTimeoutArgsDict(TypedDict):
+        seconds: pulumi.Input[int]
+        """
+        Span of time at a resolution of a second. Must be from 0 to
+        315,576,000,000 inclusive. Note: these bounds are computed from: 60
+        sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented with a 0
+        `seconds` field and a positive `nanos` field. Must be from 0 to
+        999,999,999 inclusive.
+        """
+elif False:
+    InstanceSchedulingLocalSsdRecoveryTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceSchedulingLocalSsdRecoveryTimeoutArgs:
+    def __init__(__self__, *,
+                 seconds: pulumi.Input[int],
+                 nanos: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] seconds: Span of time at a resolution of a second. Must be from 0 to
+               315,576,000,000 inclusive. Note: these bounds are computed from: 60
+               sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        :param pulumi.Input[int] nanos: Span of time that's a fraction of a second at nanosecond
+               resolution. Durations less than one second are represented with a 0
+               `seconds` field and a positive `nanos` field. Must be from 0 to
+               999,999,999 inclusive.
+        """
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> pulumi.Input[int]:
+        """
+        Span of time at a resolution of a second. Must be from 0 to
+        315,576,000,000 inclusive. Note: these bounds are computed from: 60
+        sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: pulumi.Input[int]):
+        pulumi.set(self, "seconds", value)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[int]]:
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented with a 0
+        `seconds` field and a positive `nanos` field. Must be from 0 to
+        999,999,999 inclusive.
         """
         return pulumi.get(self, "nanos")
 
@@ -20261,6 +20704,10 @@ if not MYPY:
         """
         Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
         """
+        graceful_shutdown: NotRequired[pulumi.Input['InstanceTemplateSchedulingGracefulShutdownArgsDict']]
+        """
+        Settings for the instance to perform a graceful shutdown. Structure is documented below.
+        """
         host_error_timeout_seconds: NotRequired[pulumi.Input[int]]
         """
         Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
@@ -20326,6 +20773,7 @@ class InstanceTemplateSchedulingArgs:
     def __init__(__self__, *,
                  automatic_restart: Optional[pulumi.Input[bool]] = None,
                  availability_domain: Optional[pulumi.Input[int]] = None,
+                 graceful_shutdown: Optional[pulumi.Input['InstanceTemplateSchedulingGracefulShutdownArgs']] = None,
                  host_error_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  instance_termination_action: Optional[pulumi.Input[str]] = None,
                  local_ssd_recovery_timeouts: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs']]]] = None,
@@ -20342,6 +20790,7 @@ class InstanceTemplateSchedulingArgs:
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
         :param pulumi.Input[int] availability_domain: Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
+        :param pulumi.Input['InstanceTemplateSchedulingGracefulShutdownArgs'] graceful_shutdown: Settings for the instance to perform a graceful shutdown. Structure is documented below.
         :param pulumi.Input[int] host_error_timeout_seconds: Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param pulumi.Input[str] instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs']]] local_ssd_recovery_timeouts: Specifies the maximum amount of time a Local Ssd Vm should wait while
@@ -20371,6 +20820,8 @@ class InstanceTemplateSchedulingArgs:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if availability_domain is not None:
             pulumi.set(__self__, "availability_domain", availability_domain)
+        if graceful_shutdown is not None:
+            pulumi.set(__self__, "graceful_shutdown", graceful_shutdown)
         if host_error_timeout_seconds is not None:
             pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         if instance_termination_action is not None:
@@ -20419,6 +20870,18 @@ class InstanceTemplateSchedulingArgs:
     @availability_domain.setter
     def availability_domain(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "availability_domain", value)
+
+    @property
+    @pulumi.getter(name="gracefulShutdown")
+    def graceful_shutdown(self) -> Optional[pulumi.Input['InstanceTemplateSchedulingGracefulShutdownArgs']]:
+        """
+        Settings for the instance to perform a graceful shutdown. Structure is documented below.
+        """
+        return pulumi.get(self, "graceful_shutdown")
+
+    @graceful_shutdown.setter
+    def graceful_shutdown(self, value: Optional[pulumi.Input['InstanceTemplateSchedulingGracefulShutdownArgs']]):
+        pulumi.set(self, "graceful_shutdown", value)
 
     @property
     @pulumi.getter(name="hostErrorTimeoutSeconds")
@@ -20567,34 +21030,91 @@ class InstanceTemplateSchedulingArgs:
 
 
 if not MYPY:
-    class InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgsDict(TypedDict):
+    class InstanceTemplateSchedulingGracefulShutdownArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Opts-in for graceful shutdown.
+        """
+        max_duration: NotRequired[pulumi.Input['InstanceTemplateSchedulingGracefulShutdownMaxDurationArgsDict']]
+        """
+        The time allotted for the instance to gracefully shut down.
+        If the graceful shutdown isn't complete after this time, then the instance
+        transitions to the STOPPING state. Structure is documented below:
+        """
+elif False:
+    InstanceTemplateSchedulingGracefulShutdownArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceTemplateSchedulingGracefulShutdownArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 max_duration: Optional[pulumi.Input['InstanceTemplateSchedulingGracefulShutdownMaxDurationArgs']] = None):
+        """
+        :param pulumi.Input[bool] enabled: Opts-in for graceful shutdown.
+        :param pulumi.Input['InstanceTemplateSchedulingGracefulShutdownMaxDurationArgs'] max_duration: The time allotted for the instance to gracefully shut down.
+               If the graceful shutdown isn't complete after this time, then the instance
+               transitions to the STOPPING state. Structure is documented below:
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if max_duration is not None:
+            pulumi.set(__self__, "max_duration", max_duration)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Opts-in for graceful shutdown.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="maxDuration")
+    def max_duration(self) -> Optional[pulumi.Input['InstanceTemplateSchedulingGracefulShutdownMaxDurationArgs']]:
+        """
+        The time allotted for the instance to gracefully shut down.
+        If the graceful shutdown isn't complete after this time, then the instance
+        transitions to the STOPPING state. Structure is documented below:
+        """
+        return pulumi.get(self, "max_duration")
+
+    @max_duration.setter
+    def max_duration(self, value: Optional[pulumi.Input['InstanceTemplateSchedulingGracefulShutdownMaxDurationArgs']]):
+        pulumi.set(self, "max_duration", value)
+
+
+if not MYPY:
+    class InstanceTemplateSchedulingGracefulShutdownMaxDurationArgsDict(TypedDict):
         seconds: pulumi.Input[int]
         """
         Span of time at a resolution of a second.
-        Must be from 0 to 315,576,000,000 inclusive.
+        The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
         """
         nanos: NotRequired[pulumi.Input[int]]
         """
         Span of time that's a fraction of a second at nanosecond
-        resolution. Durations less than one second are represented
-        with a 0 seconds field and a positive nanos field. Must
-        be from 0 to 999,999,999 inclusive.
+        resolution. Durations less than one second are represented with a 0
+        `seconds` field and a positive `nanos` field. Must be from 0 to
+        999,999,999 inclusive.
         """
 elif False:
-    InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+    InstanceTemplateSchedulingGracefulShutdownMaxDurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
+class InstanceTemplateSchedulingGracefulShutdownMaxDurationArgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] seconds: Span of time at a resolution of a second.
-               Must be from 0 to 315,576,000,000 inclusive.
+               The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
         :param pulumi.Input[int] nanos: Span of time that's a fraction of a second at nanosecond
-               resolution. Durations less than one second are represented
-               with a 0 seconds field and a positive nanos field. Must
-               be from 0 to 999,999,999 inclusive.
+               resolution. Durations less than one second are represented with a 0
+               `seconds` field and a positive `nanos` field. Must be from 0 to
+               999,999,999 inclusive.
         """
         pulumi.set(__self__, "seconds", seconds)
         if nanos is not None:
@@ -20605,7 +21125,7 @@ class InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
     def seconds(self) -> pulumi.Input[int]:
         """
         Span of time at a resolution of a second.
-        Must be from 0 to 315,576,000,000 inclusive.
+        The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
         """
         return pulumi.get(self, "seconds")
 
@@ -20618,9 +21138,75 @@ class InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
     def nanos(self) -> Optional[pulumi.Input[int]]:
         """
         Span of time that's a fraction of a second at nanosecond
-        resolution. Durations less than one second are represented
-        with a 0 seconds field and a positive nanos field. Must
-        be from 0 to 999,999,999 inclusive.
+        resolution. Durations less than one second are represented with a 0
+        `seconds` field and a positive `nanos` field. Must be from 0 to
+        999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "nanos", value)
+
+
+if not MYPY:
+    class InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgsDict(TypedDict):
+        seconds: pulumi.Input[int]
+        """
+        Span of time at a resolution of a second. Must be from 0 to
+        315,576,000,000 inclusive. Note: these bounds are computed from: 60
+        sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented with a 0
+        `seconds` field and a positive `nanos` field. Must be from 0 to
+        999,999,999 inclusive.
+        """
+elif False:
+    InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
+    def __init__(__self__, *,
+                 seconds: pulumi.Input[int],
+                 nanos: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] seconds: Span of time at a resolution of a second. Must be from 0 to
+               315,576,000,000 inclusive. Note: these bounds are computed from: 60
+               sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        :param pulumi.Input[int] nanos: Span of time that's a fraction of a second at nanosecond
+               resolution. Durations less than one second are represented with a 0
+               `seconds` field and a positive `nanos` field. Must be from 0 to
+               999,999,999 inclusive.
+        """
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> pulumi.Input[int]:
+        """
+        Span of time at a resolution of a second. Must be from 0 to
+        315,576,000,000 inclusive. Note: these bounds are computed from: 60
+        sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: pulumi.Input[int]):
+        pulumi.set(self, "seconds", value)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[int]]:
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented with a 0
+        `seconds` field and a positive `nanos` field. Must be from 0 to
+        999,999,999 inclusive.
         """
         return pulumi.get(self, "nanos")
 
@@ -34168,6 +34754,10 @@ if not MYPY:
         """
         Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
         """
+        graceful_shutdown: NotRequired[pulumi.Input['RegionInstanceTemplateSchedulingGracefulShutdownArgsDict']]
+        """
+        Settings for the instance to perform a graceful shutdown.
+        """
         host_error_timeout_seconds: NotRequired[pulumi.Input[int]]
         """
         Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
@@ -34233,6 +34823,7 @@ class RegionInstanceTemplateSchedulingArgs:
     def __init__(__self__, *,
                  automatic_restart: Optional[pulumi.Input[bool]] = None,
                  availability_domain: Optional[pulumi.Input[int]] = None,
+                 graceful_shutdown: Optional[pulumi.Input['RegionInstanceTemplateSchedulingGracefulShutdownArgs']] = None,
                  host_error_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  instance_termination_action: Optional[pulumi.Input[str]] = None,
                  local_ssd_recovery_timeouts: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs']]]] = None,
@@ -34249,6 +34840,7 @@ class RegionInstanceTemplateSchedulingArgs:
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
         :param pulumi.Input[int] availability_domain: Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
+        :param pulumi.Input['RegionInstanceTemplateSchedulingGracefulShutdownArgs'] graceful_shutdown: Settings for the instance to perform a graceful shutdown.
         :param pulumi.Input[int] host_error_timeout_seconds: Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param pulumi.Input[str] instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs']]] local_ssd_recovery_timeouts: Specifies the maximum amount of time a Local Ssd Vm should wait while
@@ -34278,6 +34870,8 @@ class RegionInstanceTemplateSchedulingArgs:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if availability_domain is not None:
             pulumi.set(__self__, "availability_domain", availability_domain)
+        if graceful_shutdown is not None:
+            pulumi.set(__self__, "graceful_shutdown", graceful_shutdown)
         if host_error_timeout_seconds is not None:
             pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         if instance_termination_action is not None:
@@ -34326,6 +34920,18 @@ class RegionInstanceTemplateSchedulingArgs:
     @availability_domain.setter
     def availability_domain(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "availability_domain", value)
+
+    @property
+    @pulumi.getter(name="gracefulShutdown")
+    def graceful_shutdown(self) -> Optional[pulumi.Input['RegionInstanceTemplateSchedulingGracefulShutdownArgs']]:
+        """
+        Settings for the instance to perform a graceful shutdown.
+        """
+        return pulumi.get(self, "graceful_shutdown")
+
+    @graceful_shutdown.setter
+    def graceful_shutdown(self, value: Optional[pulumi.Input['RegionInstanceTemplateSchedulingGracefulShutdownArgs']]):
+        pulumi.set(self, "graceful_shutdown", value)
 
     @property
     @pulumi.getter(name="hostErrorTimeoutSeconds")
@@ -34471,6 +35077,126 @@ class RegionInstanceTemplateSchedulingArgs:
     @provisioning_model.setter
     def provisioning_model(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "provisioning_model", value)
+
+
+if not MYPY:
+    class RegionInstanceTemplateSchedulingGracefulShutdownArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Opts-in for graceful shutdown.
+        """
+        max_duration: NotRequired[pulumi.Input['RegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgsDict']]
+        """
+        The time allotted for the instance to gracefully shut down.
+        If the graceful shutdown isn't complete after this time, then the instance
+        transitions to the STOPPING state. Structure is documented below:
+        """
+elif False:
+    RegionInstanceTemplateSchedulingGracefulShutdownArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionInstanceTemplateSchedulingGracefulShutdownArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 max_duration: Optional[pulumi.Input['RegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs']] = None):
+        """
+        :param pulumi.Input[bool] enabled: Opts-in for graceful shutdown.
+        :param pulumi.Input['RegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs'] max_duration: The time allotted for the instance to gracefully shut down.
+               If the graceful shutdown isn't complete after this time, then the instance
+               transitions to the STOPPING state. Structure is documented below:
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if max_duration is not None:
+            pulumi.set(__self__, "max_duration", max_duration)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Opts-in for graceful shutdown.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="maxDuration")
+    def max_duration(self) -> Optional[pulumi.Input['RegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs']]:
+        """
+        The time allotted for the instance to gracefully shut down.
+        If the graceful shutdown isn't complete after this time, then the instance
+        transitions to the STOPPING state. Structure is documented below:
+        """
+        return pulumi.get(self, "max_duration")
+
+    @max_duration.setter
+    def max_duration(self, value: Optional[pulumi.Input['RegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs']]):
+        pulumi.set(self, "max_duration", value)
+
+
+if not MYPY:
+    class RegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgsDict(TypedDict):
+        seconds: pulumi.Input[int]
+        """
+        Span of time at a resolution of a second.
+        The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented with a 0
+        `seconds` field and a positive `nanos` field. Must be from 0 to
+        999,999,999 inclusive.
+        """
+elif False:
+    RegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs:
+    def __init__(__self__, *,
+                 seconds: pulumi.Input[int],
+                 nanos: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] seconds: Span of time at a resolution of a second.
+               The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+        :param pulumi.Input[int] nanos: Span of time that's a fraction of a second at nanosecond
+               resolution. Durations less than one second are represented with a 0
+               `seconds` field and a positive `nanos` field. Must be from 0 to
+               999,999,999 inclusive.
+        """
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> pulumi.Input[int]:
+        """
+        Span of time at a resolution of a second.
+        The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: pulumi.Input[int]):
+        pulumi.set(self, "seconds", value)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[int]]:
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented with a 0
+        `seconds` field and a positive `nanos` field. Must be from 0 to
+        999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "nanos", value)
 
 
 if not MYPY:

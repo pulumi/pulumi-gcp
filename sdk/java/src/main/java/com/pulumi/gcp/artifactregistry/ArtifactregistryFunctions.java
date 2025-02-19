@@ -1233,7 +1233,7 @@ public final class ArtifactregistryFunctions {
     /**
      * Retrieves the current IAM policy data for repository
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1277,7 +1277,7 @@ public final class ArtifactregistryFunctions {
     /**
      * Retrieves the current IAM policy data for repository
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1321,7 +1321,7 @@ public final class ArtifactregistryFunctions {
     /**
      * Retrieves the current IAM policy data for repository
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1365,7 +1365,7 @@ public final class ArtifactregistryFunctions {
     /**
      * Retrieves the current IAM policy data for repository
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1409,7 +1409,7 @@ public final class ArtifactregistryFunctions {
     /**
      * Retrieves the current IAM policy data for repository
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

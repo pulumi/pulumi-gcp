@@ -228,8 +228,7 @@ public final class AuthzExtensionArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The format of communication supported by the callout extension.
-     * Default value is `EXT_PROC_GRPC`.
+     * The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
      * Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
      * 
      */
@@ -237,8 +236,7 @@ public final class AuthzExtensionArgs extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<String> wireFormat;
 
     /**
-     * @return The format of communication supported by the callout extension.
-     * Default value is `EXT_PROC_GRPC`.
+     * @return The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
      * Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
      * 
      */
@@ -573,8 +571,7 @@ public final class AuthzExtensionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param wireFormat The format of communication supported by the callout extension.
-         * Default value is `EXT_PROC_GRPC`.
+         * @param wireFormat The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
          * Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
          * 
          * @return builder
@@ -586,8 +583,7 @@ public final class AuthzExtensionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param wireFormat The format of communication supported by the callout extension.
-         * Default value is `EXT_PROC_GRPC`.
+         * @param wireFormat The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
          * Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
          * 
          * @return builder

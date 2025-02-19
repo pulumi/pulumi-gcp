@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly bool? GcpPublicCidrsAccessEnabled;
         /// <summary>
-        /// Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+        /// Whether authorized networks is enforced on the private endpoint or not.
         /// </summary>
         public readonly bool? PrivateEndpointEnforcementEnabled;
 

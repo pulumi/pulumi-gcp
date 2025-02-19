@@ -4,6 +4,19 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.compute.getMachineImageIamPolicy({
+ *     project: image.project,
+ *     machineImage: image.name,
+ * });
+ * ```
+ */
 export function getMachineImageIamPolicy(args: GetMachineImageIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetMachineImageIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getMachineImageIamPolicy:getMachineImageIamPolicy", {
@@ -47,6 +60,19 @@ export interface GetMachineImageIamPolicyResult {
     readonly policyData: string;
     readonly project: string;
 }
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.compute.getMachineImageIamPolicy({
+ *     project: image.project,
+ *     machineImage: image.name,
+ * });
+ * ```
+ */
 export function getMachineImageIamPolicyOutput(args: GetMachineImageIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMachineImageIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getMachineImageIamPolicy:getMachineImageIamPolicy", {

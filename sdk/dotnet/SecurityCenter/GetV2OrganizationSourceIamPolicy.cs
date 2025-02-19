@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.SecurityCenter
         /// Retrieves the current IAM policy data for organizationsource
         /// 
         /// 
-        /// ## example
+        /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.SecurityCenter
         /// Retrieves the current IAM policy data for organizationsource
         /// 
         /// 
-        /// ## example
+        /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -65,7 +65,7 @@ namespace Pulumi.Gcp.SecurityCenter
         /// Retrieves the current IAM policy data for organizationsource
         /// 
         /// 
-        /// ## example
+        /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

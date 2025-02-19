@@ -126,7 +126,19 @@ def get_workstation_iam_policy(location: Optional[str] = None,
                                workstation_id: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkstationIamPolicyResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.workstations.get_workstation_iam_policy(project=default["project"],
+        location=default["location"],
+        workstation_cluster_id=default["workstationClusterId"],
+        workstation_config_id=default["workstationConfigId"],
+        workstation_id=default["workstationId"])
+    ```
+
 
     :param str location: The location where the workstation parent resources reside.
            Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -160,7 +172,19 @@ def get_workstation_iam_policy_output(location: Optional[pulumi.Input[Optional[s
                                       workstation_id: Optional[pulumi.Input[str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkstationIamPolicyResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.workstations.get_workstation_iam_policy(project=default["project"],
+        location=default["location"],
+        workstation_cluster_id=default["workstationClusterId"],
+        workstation_config_id=default["workstationConfigId"],
+        workstation_id=default["workstationId"])
+    ```
+
 
     :param str location: The location where the workstation parent resources reside.
            Used to find the parent resource to bind the IAM policy to. If not specified,

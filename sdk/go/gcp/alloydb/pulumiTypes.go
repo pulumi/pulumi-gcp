@@ -5304,6 +5304,1042 @@ func (o InstanceReadPoolConfigPtrOutput) NodeCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type GetInstanceClientConnectionConfig struct {
+	// Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
+	RequireConnectors bool `pulumi:"requireConnectors"`
+	// SSL config option for this instance.
+	SslConfigs []GetInstanceClientConnectionConfigSslConfig `pulumi:"sslConfigs"`
+}
+
+// GetInstanceClientConnectionConfigInput is an input type that accepts GetInstanceClientConnectionConfigArgs and GetInstanceClientConnectionConfigOutput values.
+// You can construct a concrete instance of `GetInstanceClientConnectionConfigInput` via:
+//
+//	GetInstanceClientConnectionConfigArgs{...}
+type GetInstanceClientConnectionConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceClientConnectionConfigOutput() GetInstanceClientConnectionConfigOutput
+	ToGetInstanceClientConnectionConfigOutputWithContext(context.Context) GetInstanceClientConnectionConfigOutput
+}
+
+type GetInstanceClientConnectionConfigArgs struct {
+	// Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
+	RequireConnectors pulumi.BoolInput `pulumi:"requireConnectors"`
+	// SSL config option for this instance.
+	SslConfigs GetInstanceClientConnectionConfigSslConfigArrayInput `pulumi:"sslConfigs"`
+}
+
+func (GetInstanceClientConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceClientConnectionConfig)(nil)).Elem()
+}
+
+func (i GetInstanceClientConnectionConfigArgs) ToGetInstanceClientConnectionConfigOutput() GetInstanceClientConnectionConfigOutput {
+	return i.ToGetInstanceClientConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceClientConnectionConfigArgs) ToGetInstanceClientConnectionConfigOutputWithContext(ctx context.Context) GetInstanceClientConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceClientConnectionConfigOutput)
+}
+
+// GetInstanceClientConnectionConfigArrayInput is an input type that accepts GetInstanceClientConnectionConfigArray and GetInstanceClientConnectionConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceClientConnectionConfigArrayInput` via:
+//
+//	GetInstanceClientConnectionConfigArray{ GetInstanceClientConnectionConfigArgs{...} }
+type GetInstanceClientConnectionConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceClientConnectionConfigArrayOutput() GetInstanceClientConnectionConfigArrayOutput
+	ToGetInstanceClientConnectionConfigArrayOutputWithContext(context.Context) GetInstanceClientConnectionConfigArrayOutput
+}
+
+type GetInstanceClientConnectionConfigArray []GetInstanceClientConnectionConfigInput
+
+func (GetInstanceClientConnectionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceClientConnectionConfig)(nil)).Elem()
+}
+
+func (i GetInstanceClientConnectionConfigArray) ToGetInstanceClientConnectionConfigArrayOutput() GetInstanceClientConnectionConfigArrayOutput {
+	return i.ToGetInstanceClientConnectionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceClientConnectionConfigArray) ToGetInstanceClientConnectionConfigArrayOutputWithContext(ctx context.Context) GetInstanceClientConnectionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceClientConnectionConfigArrayOutput)
+}
+
+type GetInstanceClientConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceClientConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceClientConnectionConfig)(nil)).Elem()
+}
+
+func (o GetInstanceClientConnectionConfigOutput) ToGetInstanceClientConnectionConfigOutput() GetInstanceClientConnectionConfigOutput {
+	return o
+}
+
+func (o GetInstanceClientConnectionConfigOutput) ToGetInstanceClientConnectionConfigOutputWithContext(ctx context.Context) GetInstanceClientConnectionConfigOutput {
+	return o
+}
+
+// Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
+func (o GetInstanceClientConnectionConfigOutput) RequireConnectors() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceClientConnectionConfig) bool { return v.RequireConnectors }).(pulumi.BoolOutput)
+}
+
+// SSL config option for this instance.
+func (o GetInstanceClientConnectionConfigOutput) SslConfigs() GetInstanceClientConnectionConfigSslConfigArrayOutput {
+	return o.ApplyT(func(v GetInstanceClientConnectionConfig) []GetInstanceClientConnectionConfigSslConfig {
+		return v.SslConfigs
+	}).(GetInstanceClientConnectionConfigSslConfigArrayOutput)
+}
+
+type GetInstanceClientConnectionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceClientConnectionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceClientConnectionConfig)(nil)).Elem()
+}
+
+func (o GetInstanceClientConnectionConfigArrayOutput) ToGetInstanceClientConnectionConfigArrayOutput() GetInstanceClientConnectionConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceClientConnectionConfigArrayOutput) ToGetInstanceClientConnectionConfigArrayOutputWithContext(ctx context.Context) GetInstanceClientConnectionConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceClientConnectionConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceClientConnectionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceClientConnectionConfig {
+		return vs[0].([]GetInstanceClientConnectionConfig)[vs[1].(int)]
+	}).(GetInstanceClientConnectionConfigOutput)
+}
+
+type GetInstanceClientConnectionConfigSslConfig struct {
+	// SSL mode. Specifies client-server SSL/TLS connection behavior. Possible values: ["ENCRYPTED_ONLY", "ALLOW_UNENCRYPTED_AND_ENCRYPTED"]
+	SslMode string `pulumi:"sslMode"`
+}
+
+// GetInstanceClientConnectionConfigSslConfigInput is an input type that accepts GetInstanceClientConnectionConfigSslConfigArgs and GetInstanceClientConnectionConfigSslConfigOutput values.
+// You can construct a concrete instance of `GetInstanceClientConnectionConfigSslConfigInput` via:
+//
+//	GetInstanceClientConnectionConfigSslConfigArgs{...}
+type GetInstanceClientConnectionConfigSslConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceClientConnectionConfigSslConfigOutput() GetInstanceClientConnectionConfigSslConfigOutput
+	ToGetInstanceClientConnectionConfigSslConfigOutputWithContext(context.Context) GetInstanceClientConnectionConfigSslConfigOutput
+}
+
+type GetInstanceClientConnectionConfigSslConfigArgs struct {
+	// SSL mode. Specifies client-server SSL/TLS connection behavior. Possible values: ["ENCRYPTED_ONLY", "ALLOW_UNENCRYPTED_AND_ENCRYPTED"]
+	SslMode pulumi.StringInput `pulumi:"sslMode"`
+}
+
+func (GetInstanceClientConnectionConfigSslConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceClientConnectionConfigSslConfig)(nil)).Elem()
+}
+
+func (i GetInstanceClientConnectionConfigSslConfigArgs) ToGetInstanceClientConnectionConfigSslConfigOutput() GetInstanceClientConnectionConfigSslConfigOutput {
+	return i.ToGetInstanceClientConnectionConfigSslConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceClientConnectionConfigSslConfigArgs) ToGetInstanceClientConnectionConfigSslConfigOutputWithContext(ctx context.Context) GetInstanceClientConnectionConfigSslConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceClientConnectionConfigSslConfigOutput)
+}
+
+// GetInstanceClientConnectionConfigSslConfigArrayInput is an input type that accepts GetInstanceClientConnectionConfigSslConfigArray and GetInstanceClientConnectionConfigSslConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceClientConnectionConfigSslConfigArrayInput` via:
+//
+//	GetInstanceClientConnectionConfigSslConfigArray{ GetInstanceClientConnectionConfigSslConfigArgs{...} }
+type GetInstanceClientConnectionConfigSslConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceClientConnectionConfigSslConfigArrayOutput() GetInstanceClientConnectionConfigSslConfigArrayOutput
+	ToGetInstanceClientConnectionConfigSslConfigArrayOutputWithContext(context.Context) GetInstanceClientConnectionConfigSslConfigArrayOutput
+}
+
+type GetInstanceClientConnectionConfigSslConfigArray []GetInstanceClientConnectionConfigSslConfigInput
+
+func (GetInstanceClientConnectionConfigSslConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceClientConnectionConfigSslConfig)(nil)).Elem()
+}
+
+func (i GetInstanceClientConnectionConfigSslConfigArray) ToGetInstanceClientConnectionConfigSslConfigArrayOutput() GetInstanceClientConnectionConfigSslConfigArrayOutput {
+	return i.ToGetInstanceClientConnectionConfigSslConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceClientConnectionConfigSslConfigArray) ToGetInstanceClientConnectionConfigSslConfigArrayOutputWithContext(ctx context.Context) GetInstanceClientConnectionConfigSslConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceClientConnectionConfigSslConfigArrayOutput)
+}
+
+type GetInstanceClientConnectionConfigSslConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceClientConnectionConfigSslConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceClientConnectionConfigSslConfig)(nil)).Elem()
+}
+
+func (o GetInstanceClientConnectionConfigSslConfigOutput) ToGetInstanceClientConnectionConfigSslConfigOutput() GetInstanceClientConnectionConfigSslConfigOutput {
+	return o
+}
+
+func (o GetInstanceClientConnectionConfigSslConfigOutput) ToGetInstanceClientConnectionConfigSslConfigOutputWithContext(ctx context.Context) GetInstanceClientConnectionConfigSslConfigOutput {
+	return o
+}
+
+// SSL mode. Specifies client-server SSL/TLS connection behavior. Possible values: ["ENCRYPTED_ONLY", "ALLOW_UNENCRYPTED_AND_ENCRYPTED"]
+func (o GetInstanceClientConnectionConfigSslConfigOutput) SslMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceClientConnectionConfigSslConfig) string { return v.SslMode }).(pulumi.StringOutput)
+}
+
+type GetInstanceClientConnectionConfigSslConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceClientConnectionConfigSslConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceClientConnectionConfigSslConfig)(nil)).Elem()
+}
+
+func (o GetInstanceClientConnectionConfigSslConfigArrayOutput) ToGetInstanceClientConnectionConfigSslConfigArrayOutput() GetInstanceClientConnectionConfigSslConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceClientConnectionConfigSslConfigArrayOutput) ToGetInstanceClientConnectionConfigSslConfigArrayOutputWithContext(ctx context.Context) GetInstanceClientConnectionConfigSslConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceClientConnectionConfigSslConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceClientConnectionConfigSslConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceClientConnectionConfigSslConfig {
+		return vs[0].([]GetInstanceClientConnectionConfigSslConfig)[vs[1].(int)]
+	}).(GetInstanceClientConnectionConfigSslConfigOutput)
+}
+
+type GetInstanceMachineConfig struct {
+	// The number of CPU's in the VM instance.
+	CpuCount int `pulumi:"cpuCount"`
+}
+
+// GetInstanceMachineConfigInput is an input type that accepts GetInstanceMachineConfigArgs and GetInstanceMachineConfigOutput values.
+// You can construct a concrete instance of `GetInstanceMachineConfigInput` via:
+//
+//	GetInstanceMachineConfigArgs{...}
+type GetInstanceMachineConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceMachineConfigOutput() GetInstanceMachineConfigOutput
+	ToGetInstanceMachineConfigOutputWithContext(context.Context) GetInstanceMachineConfigOutput
+}
+
+type GetInstanceMachineConfigArgs struct {
+	// The number of CPU's in the VM instance.
+	CpuCount pulumi.IntInput `pulumi:"cpuCount"`
+}
+
+func (GetInstanceMachineConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceMachineConfig)(nil)).Elem()
+}
+
+func (i GetInstanceMachineConfigArgs) ToGetInstanceMachineConfigOutput() GetInstanceMachineConfigOutput {
+	return i.ToGetInstanceMachineConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceMachineConfigArgs) ToGetInstanceMachineConfigOutputWithContext(ctx context.Context) GetInstanceMachineConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceMachineConfigOutput)
+}
+
+// GetInstanceMachineConfigArrayInput is an input type that accepts GetInstanceMachineConfigArray and GetInstanceMachineConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceMachineConfigArrayInput` via:
+//
+//	GetInstanceMachineConfigArray{ GetInstanceMachineConfigArgs{...} }
+type GetInstanceMachineConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceMachineConfigArrayOutput() GetInstanceMachineConfigArrayOutput
+	ToGetInstanceMachineConfigArrayOutputWithContext(context.Context) GetInstanceMachineConfigArrayOutput
+}
+
+type GetInstanceMachineConfigArray []GetInstanceMachineConfigInput
+
+func (GetInstanceMachineConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceMachineConfig)(nil)).Elem()
+}
+
+func (i GetInstanceMachineConfigArray) ToGetInstanceMachineConfigArrayOutput() GetInstanceMachineConfigArrayOutput {
+	return i.ToGetInstanceMachineConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceMachineConfigArray) ToGetInstanceMachineConfigArrayOutputWithContext(ctx context.Context) GetInstanceMachineConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceMachineConfigArrayOutput)
+}
+
+type GetInstanceMachineConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceMachineConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceMachineConfig)(nil)).Elem()
+}
+
+func (o GetInstanceMachineConfigOutput) ToGetInstanceMachineConfigOutput() GetInstanceMachineConfigOutput {
+	return o
+}
+
+func (o GetInstanceMachineConfigOutput) ToGetInstanceMachineConfigOutputWithContext(ctx context.Context) GetInstanceMachineConfigOutput {
+	return o
+}
+
+// The number of CPU's in the VM instance.
+func (o GetInstanceMachineConfigOutput) CpuCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceMachineConfig) int { return v.CpuCount }).(pulumi.IntOutput)
+}
+
+type GetInstanceMachineConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceMachineConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceMachineConfig)(nil)).Elem()
+}
+
+func (o GetInstanceMachineConfigArrayOutput) ToGetInstanceMachineConfigArrayOutput() GetInstanceMachineConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceMachineConfigArrayOutput) ToGetInstanceMachineConfigArrayOutputWithContext(ctx context.Context) GetInstanceMachineConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceMachineConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceMachineConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceMachineConfig {
+		return vs[0].([]GetInstanceMachineConfig)[vs[1].(int)]
+	}).(GetInstanceMachineConfigOutput)
+}
+
+type GetInstanceNetworkConfig struct {
+	// A list of external networks authorized to access this instance. This
+	// field is only allowed to be set when 'enable_public_ip' is set to
+	// true.
+	AuthorizedExternalNetworks []GetInstanceNetworkConfigAuthorizedExternalNetwork `pulumi:"authorizedExternalNetworks"`
+	// Enabling outbound public ip for the instance.
+	EnableOutboundPublicIp bool `pulumi:"enableOutboundPublicIp"`
+	// Enabling public ip for the instance. If a user wishes to disable this,
+	// please also clear the list of the authorized external networks set on
+	// the same instance.
+	EnablePublicIp bool `pulumi:"enablePublicIp"`
+}
+
+// GetInstanceNetworkConfigInput is an input type that accepts GetInstanceNetworkConfigArgs and GetInstanceNetworkConfigOutput values.
+// You can construct a concrete instance of `GetInstanceNetworkConfigInput` via:
+//
+//	GetInstanceNetworkConfigArgs{...}
+type GetInstanceNetworkConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkConfigOutput() GetInstanceNetworkConfigOutput
+	ToGetInstanceNetworkConfigOutputWithContext(context.Context) GetInstanceNetworkConfigOutput
+}
+
+type GetInstanceNetworkConfigArgs struct {
+	// A list of external networks authorized to access this instance. This
+	// field is only allowed to be set when 'enable_public_ip' is set to
+	// true.
+	AuthorizedExternalNetworks GetInstanceNetworkConfigAuthorizedExternalNetworkArrayInput `pulumi:"authorizedExternalNetworks"`
+	// Enabling outbound public ip for the instance.
+	EnableOutboundPublicIp pulumi.BoolInput `pulumi:"enableOutboundPublicIp"`
+	// Enabling public ip for the instance. If a user wishes to disable this,
+	// please also clear the list of the authorized external networks set on
+	// the same instance.
+	EnablePublicIp pulumi.BoolInput `pulumi:"enablePublicIp"`
+}
+
+func (GetInstanceNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkConfig)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkConfigArgs) ToGetInstanceNetworkConfigOutput() GetInstanceNetworkConfigOutput {
+	return i.ToGetInstanceNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkConfigArgs) ToGetInstanceNetworkConfigOutputWithContext(ctx context.Context) GetInstanceNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkConfigOutput)
+}
+
+// GetInstanceNetworkConfigArrayInput is an input type that accepts GetInstanceNetworkConfigArray and GetInstanceNetworkConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceNetworkConfigArrayInput` via:
+//
+//	GetInstanceNetworkConfigArray{ GetInstanceNetworkConfigArgs{...} }
+type GetInstanceNetworkConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkConfigArrayOutput() GetInstanceNetworkConfigArrayOutput
+	ToGetInstanceNetworkConfigArrayOutputWithContext(context.Context) GetInstanceNetworkConfigArrayOutput
+}
+
+type GetInstanceNetworkConfigArray []GetInstanceNetworkConfigInput
+
+func (GetInstanceNetworkConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNetworkConfig)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkConfigArray) ToGetInstanceNetworkConfigArrayOutput() GetInstanceNetworkConfigArrayOutput {
+	return i.ToGetInstanceNetworkConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkConfigArray) ToGetInstanceNetworkConfigArrayOutputWithContext(ctx context.Context) GetInstanceNetworkConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkConfigArrayOutput)
+}
+
+type GetInstanceNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkConfig)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkConfigOutput) ToGetInstanceNetworkConfigOutput() GetInstanceNetworkConfigOutput {
+	return o
+}
+
+func (o GetInstanceNetworkConfigOutput) ToGetInstanceNetworkConfigOutputWithContext(ctx context.Context) GetInstanceNetworkConfigOutput {
+	return o
+}
+
+// A list of external networks authorized to access this instance. This
+// field is only allowed to be set when 'enable_public_ip' is set to
+// true.
+func (o GetInstanceNetworkConfigOutput) AuthorizedExternalNetworks() GetInstanceNetworkConfigAuthorizedExternalNetworkArrayOutput {
+	return o.ApplyT(func(v GetInstanceNetworkConfig) []GetInstanceNetworkConfigAuthorizedExternalNetwork {
+		return v.AuthorizedExternalNetworks
+	}).(GetInstanceNetworkConfigAuthorizedExternalNetworkArrayOutput)
+}
+
+// Enabling outbound public ip for the instance.
+func (o GetInstanceNetworkConfigOutput) EnableOutboundPublicIp() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceNetworkConfig) bool { return v.EnableOutboundPublicIp }).(pulumi.BoolOutput)
+}
+
+// Enabling public ip for the instance. If a user wishes to disable this,
+// please also clear the list of the authorized external networks set on
+// the same instance.
+func (o GetInstanceNetworkConfigOutput) EnablePublicIp() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceNetworkConfig) bool { return v.EnablePublicIp }).(pulumi.BoolOutput)
+}
+
+type GetInstanceNetworkConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNetworkConfig)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkConfigArrayOutput) ToGetInstanceNetworkConfigArrayOutput() GetInstanceNetworkConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceNetworkConfigArrayOutput) ToGetInstanceNetworkConfigArrayOutputWithContext(ctx context.Context) GetInstanceNetworkConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceNetworkConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceNetworkConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceNetworkConfig {
+		return vs[0].([]GetInstanceNetworkConfig)[vs[1].(int)]
+	}).(GetInstanceNetworkConfigOutput)
+}
+
+type GetInstanceNetworkConfigAuthorizedExternalNetwork struct {
+	// CIDR range for one authorized network of the instance.
+	CidrRange string `pulumi:"cidrRange"`
+}
+
+// GetInstanceNetworkConfigAuthorizedExternalNetworkInput is an input type that accepts GetInstanceNetworkConfigAuthorizedExternalNetworkArgs and GetInstanceNetworkConfigAuthorizedExternalNetworkOutput values.
+// You can construct a concrete instance of `GetInstanceNetworkConfigAuthorizedExternalNetworkInput` via:
+//
+//	GetInstanceNetworkConfigAuthorizedExternalNetworkArgs{...}
+type GetInstanceNetworkConfigAuthorizedExternalNetworkInput interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkConfigAuthorizedExternalNetworkOutput() GetInstanceNetworkConfigAuthorizedExternalNetworkOutput
+	ToGetInstanceNetworkConfigAuthorizedExternalNetworkOutputWithContext(context.Context) GetInstanceNetworkConfigAuthorizedExternalNetworkOutput
+}
+
+type GetInstanceNetworkConfigAuthorizedExternalNetworkArgs struct {
+	// CIDR range for one authorized network of the instance.
+	CidrRange pulumi.StringInput `pulumi:"cidrRange"`
+}
+
+func (GetInstanceNetworkConfigAuthorizedExternalNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkConfigAuthorizedExternalNetwork)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkConfigAuthorizedExternalNetworkArgs) ToGetInstanceNetworkConfigAuthorizedExternalNetworkOutput() GetInstanceNetworkConfigAuthorizedExternalNetworkOutput {
+	return i.ToGetInstanceNetworkConfigAuthorizedExternalNetworkOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkConfigAuthorizedExternalNetworkArgs) ToGetInstanceNetworkConfigAuthorizedExternalNetworkOutputWithContext(ctx context.Context) GetInstanceNetworkConfigAuthorizedExternalNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkConfigAuthorizedExternalNetworkOutput)
+}
+
+// GetInstanceNetworkConfigAuthorizedExternalNetworkArrayInput is an input type that accepts GetInstanceNetworkConfigAuthorizedExternalNetworkArray and GetInstanceNetworkConfigAuthorizedExternalNetworkArrayOutput values.
+// You can construct a concrete instance of `GetInstanceNetworkConfigAuthorizedExternalNetworkArrayInput` via:
+//
+//	GetInstanceNetworkConfigAuthorizedExternalNetworkArray{ GetInstanceNetworkConfigAuthorizedExternalNetworkArgs{...} }
+type GetInstanceNetworkConfigAuthorizedExternalNetworkArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkConfigAuthorizedExternalNetworkArrayOutput() GetInstanceNetworkConfigAuthorizedExternalNetworkArrayOutput
+	ToGetInstanceNetworkConfigAuthorizedExternalNetworkArrayOutputWithContext(context.Context) GetInstanceNetworkConfigAuthorizedExternalNetworkArrayOutput
+}
+
+type GetInstanceNetworkConfigAuthorizedExternalNetworkArray []GetInstanceNetworkConfigAuthorizedExternalNetworkInput
+
+func (GetInstanceNetworkConfigAuthorizedExternalNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNetworkConfigAuthorizedExternalNetwork)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkConfigAuthorizedExternalNetworkArray) ToGetInstanceNetworkConfigAuthorizedExternalNetworkArrayOutput() GetInstanceNetworkConfigAuthorizedExternalNetworkArrayOutput {
+	return i.ToGetInstanceNetworkConfigAuthorizedExternalNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkConfigAuthorizedExternalNetworkArray) ToGetInstanceNetworkConfigAuthorizedExternalNetworkArrayOutputWithContext(ctx context.Context) GetInstanceNetworkConfigAuthorizedExternalNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkConfigAuthorizedExternalNetworkArrayOutput)
+}
+
+type GetInstanceNetworkConfigAuthorizedExternalNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkConfigAuthorizedExternalNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkConfigAuthorizedExternalNetwork)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkConfigAuthorizedExternalNetworkOutput) ToGetInstanceNetworkConfigAuthorizedExternalNetworkOutput() GetInstanceNetworkConfigAuthorizedExternalNetworkOutput {
+	return o
+}
+
+func (o GetInstanceNetworkConfigAuthorizedExternalNetworkOutput) ToGetInstanceNetworkConfigAuthorizedExternalNetworkOutputWithContext(ctx context.Context) GetInstanceNetworkConfigAuthorizedExternalNetworkOutput {
+	return o
+}
+
+// CIDR range for one authorized network of the instance.
+func (o GetInstanceNetworkConfigAuthorizedExternalNetworkOutput) CidrRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkConfigAuthorizedExternalNetwork) string { return v.CidrRange }).(pulumi.StringOutput)
+}
+
+type GetInstanceNetworkConfigAuthorizedExternalNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkConfigAuthorizedExternalNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNetworkConfigAuthorizedExternalNetwork)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkConfigAuthorizedExternalNetworkArrayOutput) ToGetInstanceNetworkConfigAuthorizedExternalNetworkArrayOutput() GetInstanceNetworkConfigAuthorizedExternalNetworkArrayOutput {
+	return o
+}
+
+func (o GetInstanceNetworkConfigAuthorizedExternalNetworkArrayOutput) ToGetInstanceNetworkConfigAuthorizedExternalNetworkArrayOutputWithContext(ctx context.Context) GetInstanceNetworkConfigAuthorizedExternalNetworkArrayOutput {
+	return o
+}
+
+func (o GetInstanceNetworkConfigAuthorizedExternalNetworkArrayOutput) Index(i pulumi.IntInput) GetInstanceNetworkConfigAuthorizedExternalNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceNetworkConfigAuthorizedExternalNetwork {
+		return vs[0].([]GetInstanceNetworkConfigAuthorizedExternalNetwork)[vs[1].(int)]
+	}).(GetInstanceNetworkConfigAuthorizedExternalNetworkOutput)
+}
+
+type GetInstanceObservabilityConfig struct {
+	// Observability feature status for an instance.
+	Enabled bool `pulumi:"enabled"`
+	// Query string length. The default value is 10240. Any integer between 1024 and 100000 is considered valid.
+	MaxQueryStringLength int `pulumi:"maxQueryStringLength"`
+	// Preserve comments in the query string.
+	PreserveComments bool `pulumi:"preserveComments"`
+	// Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 200 is considered valid.
+	QueryPlansPerMinute int `pulumi:"queryPlansPerMinute"`
+	// Record application tags for an instance. This flag is turned "on" by default.
+	RecordApplicationTags bool `pulumi:"recordApplicationTags"`
+	// Track actively running queries. If not set, default value is "off".
+	TrackActiveQueries bool `pulumi:"trackActiveQueries"`
+	// Record wait event types during query execution for an instance.
+	TrackWaitEventTypes bool `pulumi:"trackWaitEventTypes"`
+	// Record wait events during query execution for an instance.
+	TrackWaitEvents bool `pulumi:"trackWaitEvents"`
+}
+
+// GetInstanceObservabilityConfigInput is an input type that accepts GetInstanceObservabilityConfigArgs and GetInstanceObservabilityConfigOutput values.
+// You can construct a concrete instance of `GetInstanceObservabilityConfigInput` via:
+//
+//	GetInstanceObservabilityConfigArgs{...}
+type GetInstanceObservabilityConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceObservabilityConfigOutput() GetInstanceObservabilityConfigOutput
+	ToGetInstanceObservabilityConfigOutputWithContext(context.Context) GetInstanceObservabilityConfigOutput
+}
+
+type GetInstanceObservabilityConfigArgs struct {
+	// Observability feature status for an instance.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Query string length. The default value is 10240. Any integer between 1024 and 100000 is considered valid.
+	MaxQueryStringLength pulumi.IntInput `pulumi:"maxQueryStringLength"`
+	// Preserve comments in the query string.
+	PreserveComments pulumi.BoolInput `pulumi:"preserveComments"`
+	// Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 200 is considered valid.
+	QueryPlansPerMinute pulumi.IntInput `pulumi:"queryPlansPerMinute"`
+	// Record application tags for an instance. This flag is turned "on" by default.
+	RecordApplicationTags pulumi.BoolInput `pulumi:"recordApplicationTags"`
+	// Track actively running queries. If not set, default value is "off".
+	TrackActiveQueries pulumi.BoolInput `pulumi:"trackActiveQueries"`
+	// Record wait event types during query execution for an instance.
+	TrackWaitEventTypes pulumi.BoolInput `pulumi:"trackWaitEventTypes"`
+	// Record wait events during query execution for an instance.
+	TrackWaitEvents pulumi.BoolInput `pulumi:"trackWaitEvents"`
+}
+
+func (GetInstanceObservabilityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceObservabilityConfig)(nil)).Elem()
+}
+
+func (i GetInstanceObservabilityConfigArgs) ToGetInstanceObservabilityConfigOutput() GetInstanceObservabilityConfigOutput {
+	return i.ToGetInstanceObservabilityConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceObservabilityConfigArgs) ToGetInstanceObservabilityConfigOutputWithContext(ctx context.Context) GetInstanceObservabilityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceObservabilityConfigOutput)
+}
+
+// GetInstanceObservabilityConfigArrayInput is an input type that accepts GetInstanceObservabilityConfigArray and GetInstanceObservabilityConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceObservabilityConfigArrayInput` via:
+//
+//	GetInstanceObservabilityConfigArray{ GetInstanceObservabilityConfigArgs{...} }
+type GetInstanceObservabilityConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceObservabilityConfigArrayOutput() GetInstanceObservabilityConfigArrayOutput
+	ToGetInstanceObservabilityConfigArrayOutputWithContext(context.Context) GetInstanceObservabilityConfigArrayOutput
+}
+
+type GetInstanceObservabilityConfigArray []GetInstanceObservabilityConfigInput
+
+func (GetInstanceObservabilityConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceObservabilityConfig)(nil)).Elem()
+}
+
+func (i GetInstanceObservabilityConfigArray) ToGetInstanceObservabilityConfigArrayOutput() GetInstanceObservabilityConfigArrayOutput {
+	return i.ToGetInstanceObservabilityConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceObservabilityConfigArray) ToGetInstanceObservabilityConfigArrayOutputWithContext(ctx context.Context) GetInstanceObservabilityConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceObservabilityConfigArrayOutput)
+}
+
+type GetInstanceObservabilityConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceObservabilityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceObservabilityConfig)(nil)).Elem()
+}
+
+func (o GetInstanceObservabilityConfigOutput) ToGetInstanceObservabilityConfigOutput() GetInstanceObservabilityConfigOutput {
+	return o
+}
+
+func (o GetInstanceObservabilityConfigOutput) ToGetInstanceObservabilityConfigOutputWithContext(ctx context.Context) GetInstanceObservabilityConfigOutput {
+	return o
+}
+
+// Observability feature status for an instance.
+func (o GetInstanceObservabilityConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceObservabilityConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Query string length. The default value is 10240. Any integer between 1024 and 100000 is considered valid.
+func (o GetInstanceObservabilityConfigOutput) MaxQueryStringLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceObservabilityConfig) int { return v.MaxQueryStringLength }).(pulumi.IntOutput)
+}
+
+// Preserve comments in the query string.
+func (o GetInstanceObservabilityConfigOutput) PreserveComments() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceObservabilityConfig) bool { return v.PreserveComments }).(pulumi.BoolOutput)
+}
+
+// Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 200 is considered valid.
+func (o GetInstanceObservabilityConfigOutput) QueryPlansPerMinute() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceObservabilityConfig) int { return v.QueryPlansPerMinute }).(pulumi.IntOutput)
+}
+
+// Record application tags for an instance. This flag is turned "on" by default.
+func (o GetInstanceObservabilityConfigOutput) RecordApplicationTags() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceObservabilityConfig) bool { return v.RecordApplicationTags }).(pulumi.BoolOutput)
+}
+
+// Track actively running queries. If not set, default value is "off".
+func (o GetInstanceObservabilityConfigOutput) TrackActiveQueries() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceObservabilityConfig) bool { return v.TrackActiveQueries }).(pulumi.BoolOutput)
+}
+
+// Record wait event types during query execution for an instance.
+func (o GetInstanceObservabilityConfigOutput) TrackWaitEventTypes() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceObservabilityConfig) bool { return v.TrackWaitEventTypes }).(pulumi.BoolOutput)
+}
+
+// Record wait events during query execution for an instance.
+func (o GetInstanceObservabilityConfigOutput) TrackWaitEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceObservabilityConfig) bool { return v.TrackWaitEvents }).(pulumi.BoolOutput)
+}
+
+type GetInstanceObservabilityConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceObservabilityConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceObservabilityConfig)(nil)).Elem()
+}
+
+func (o GetInstanceObservabilityConfigArrayOutput) ToGetInstanceObservabilityConfigArrayOutput() GetInstanceObservabilityConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceObservabilityConfigArrayOutput) ToGetInstanceObservabilityConfigArrayOutputWithContext(ctx context.Context) GetInstanceObservabilityConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceObservabilityConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceObservabilityConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceObservabilityConfig {
+		return vs[0].([]GetInstanceObservabilityConfig)[vs[1].(int)]
+	}).(GetInstanceObservabilityConfigOutput)
+}
+
+type GetInstancePscInstanceConfig struct {
+	// List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
+	// These should be specified as project numbers only.
+	AllowedConsumerProjects []string `pulumi:"allowedConsumerProjects"`
+	// The DNS name of the instance for PSC connectivity.
+	// Name convention: <uid>.<uid>.<region>.alloydb-psc.goog
+	PscDnsName string `pulumi:"pscDnsName"`
+	// The service attachment created when Private Service Connect (PSC) is enabled for the instance.
+	// The name of the resource will be in the format of
+	// 'projects/<alloydb-tenant-project-number>/regions/<region-name>/serviceAttachments/<service-attachment-name>'
+	ServiceAttachmentLink string `pulumi:"serviceAttachmentLink"`
+}
+
+// GetInstancePscInstanceConfigInput is an input type that accepts GetInstancePscInstanceConfigArgs and GetInstancePscInstanceConfigOutput values.
+// You can construct a concrete instance of `GetInstancePscInstanceConfigInput` via:
+//
+//	GetInstancePscInstanceConfigArgs{...}
+type GetInstancePscInstanceConfigInput interface {
+	pulumi.Input
+
+	ToGetInstancePscInstanceConfigOutput() GetInstancePscInstanceConfigOutput
+	ToGetInstancePscInstanceConfigOutputWithContext(context.Context) GetInstancePscInstanceConfigOutput
+}
+
+type GetInstancePscInstanceConfigArgs struct {
+	// List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
+	// These should be specified as project numbers only.
+	AllowedConsumerProjects pulumi.StringArrayInput `pulumi:"allowedConsumerProjects"`
+	// The DNS name of the instance for PSC connectivity.
+	// Name convention: <uid>.<uid>.<region>.alloydb-psc.goog
+	PscDnsName pulumi.StringInput `pulumi:"pscDnsName"`
+	// The service attachment created when Private Service Connect (PSC) is enabled for the instance.
+	// The name of the resource will be in the format of
+	// 'projects/<alloydb-tenant-project-number>/regions/<region-name>/serviceAttachments/<service-attachment-name>'
+	ServiceAttachmentLink pulumi.StringInput `pulumi:"serviceAttachmentLink"`
+}
+
+func (GetInstancePscInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePscInstanceConfig)(nil)).Elem()
+}
+
+func (i GetInstancePscInstanceConfigArgs) ToGetInstancePscInstanceConfigOutput() GetInstancePscInstanceConfigOutput {
+	return i.ToGetInstancePscInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstancePscInstanceConfigArgs) ToGetInstancePscInstanceConfigOutputWithContext(ctx context.Context) GetInstancePscInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePscInstanceConfigOutput)
+}
+
+// GetInstancePscInstanceConfigArrayInput is an input type that accepts GetInstancePscInstanceConfigArray and GetInstancePscInstanceConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstancePscInstanceConfigArrayInput` via:
+//
+//	GetInstancePscInstanceConfigArray{ GetInstancePscInstanceConfigArgs{...} }
+type GetInstancePscInstanceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancePscInstanceConfigArrayOutput() GetInstancePscInstanceConfigArrayOutput
+	ToGetInstancePscInstanceConfigArrayOutputWithContext(context.Context) GetInstancePscInstanceConfigArrayOutput
+}
+
+type GetInstancePscInstanceConfigArray []GetInstancePscInstanceConfigInput
+
+func (GetInstancePscInstanceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePscInstanceConfig)(nil)).Elem()
+}
+
+func (i GetInstancePscInstanceConfigArray) ToGetInstancePscInstanceConfigArrayOutput() GetInstancePscInstanceConfigArrayOutput {
+	return i.ToGetInstancePscInstanceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancePscInstanceConfigArray) ToGetInstancePscInstanceConfigArrayOutputWithContext(ctx context.Context) GetInstancePscInstanceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePscInstanceConfigArrayOutput)
+}
+
+type GetInstancePscInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePscInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePscInstanceConfig)(nil)).Elem()
+}
+
+func (o GetInstancePscInstanceConfigOutput) ToGetInstancePscInstanceConfigOutput() GetInstancePscInstanceConfigOutput {
+	return o
+}
+
+func (o GetInstancePscInstanceConfigOutput) ToGetInstancePscInstanceConfigOutputWithContext(ctx context.Context) GetInstancePscInstanceConfigOutput {
+	return o
+}
+
+// List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
+// These should be specified as project numbers only.
+func (o GetInstancePscInstanceConfigOutput) AllowedConsumerProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancePscInstanceConfig) []string { return v.AllowedConsumerProjects }).(pulumi.StringArrayOutput)
+}
+
+// The DNS name of the instance for PSC connectivity.
+// Name convention: <uid>.<uid>.<region>.alloydb-psc.goog
+func (o GetInstancePscInstanceConfigOutput) PscDnsName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePscInstanceConfig) string { return v.PscDnsName }).(pulumi.StringOutput)
+}
+
+// The service attachment created when Private Service Connect (PSC) is enabled for the instance.
+// The name of the resource will be in the format of
+// 'projects/<alloydb-tenant-project-number>/regions/<region-name>/serviceAttachments/<service-attachment-name>'
+func (o GetInstancePscInstanceConfigOutput) ServiceAttachmentLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePscInstanceConfig) string { return v.ServiceAttachmentLink }).(pulumi.StringOutput)
+}
+
+type GetInstancePscInstanceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePscInstanceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePscInstanceConfig)(nil)).Elem()
+}
+
+func (o GetInstancePscInstanceConfigArrayOutput) ToGetInstancePscInstanceConfigArrayOutput() GetInstancePscInstanceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstancePscInstanceConfigArrayOutput) ToGetInstancePscInstanceConfigArrayOutputWithContext(ctx context.Context) GetInstancePscInstanceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstancePscInstanceConfigArrayOutput) Index(i pulumi.IntInput) GetInstancePscInstanceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancePscInstanceConfig {
+		return vs[0].([]GetInstancePscInstanceConfig)[vs[1].(int)]
+	}).(GetInstancePscInstanceConfigOutput)
+}
+
+type GetInstanceQueryInsightsConfig struct {
+	// Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 20 is considered valid.
+	QueryPlansPerMinute int `pulumi:"queryPlansPerMinute"`
+	// Query string length. The default value is 1024. Any integer between 256 and 4500 is considered valid.
+	QueryStringLength int `pulumi:"queryStringLength"`
+	// Record application tags for an instance. This flag is turned "on" by default.
+	RecordApplicationTags bool `pulumi:"recordApplicationTags"`
+	// Record client address for an instance. Client address is PII information. This flag is turned "on" by default.
+	RecordClientAddress bool `pulumi:"recordClientAddress"`
+}
+
+// GetInstanceQueryInsightsConfigInput is an input type that accepts GetInstanceQueryInsightsConfigArgs and GetInstanceQueryInsightsConfigOutput values.
+// You can construct a concrete instance of `GetInstanceQueryInsightsConfigInput` via:
+//
+//	GetInstanceQueryInsightsConfigArgs{...}
+type GetInstanceQueryInsightsConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceQueryInsightsConfigOutput() GetInstanceQueryInsightsConfigOutput
+	ToGetInstanceQueryInsightsConfigOutputWithContext(context.Context) GetInstanceQueryInsightsConfigOutput
+}
+
+type GetInstanceQueryInsightsConfigArgs struct {
+	// Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 20 is considered valid.
+	QueryPlansPerMinute pulumi.IntInput `pulumi:"queryPlansPerMinute"`
+	// Query string length. The default value is 1024. Any integer between 256 and 4500 is considered valid.
+	QueryStringLength pulumi.IntInput `pulumi:"queryStringLength"`
+	// Record application tags for an instance. This flag is turned "on" by default.
+	RecordApplicationTags pulumi.BoolInput `pulumi:"recordApplicationTags"`
+	// Record client address for an instance. Client address is PII information. This flag is turned "on" by default.
+	RecordClientAddress pulumi.BoolInput `pulumi:"recordClientAddress"`
+}
+
+func (GetInstanceQueryInsightsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceQueryInsightsConfig)(nil)).Elem()
+}
+
+func (i GetInstanceQueryInsightsConfigArgs) ToGetInstanceQueryInsightsConfigOutput() GetInstanceQueryInsightsConfigOutput {
+	return i.ToGetInstanceQueryInsightsConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceQueryInsightsConfigArgs) ToGetInstanceQueryInsightsConfigOutputWithContext(ctx context.Context) GetInstanceQueryInsightsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceQueryInsightsConfigOutput)
+}
+
+// GetInstanceQueryInsightsConfigArrayInput is an input type that accepts GetInstanceQueryInsightsConfigArray and GetInstanceQueryInsightsConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceQueryInsightsConfigArrayInput` via:
+//
+//	GetInstanceQueryInsightsConfigArray{ GetInstanceQueryInsightsConfigArgs{...} }
+type GetInstanceQueryInsightsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceQueryInsightsConfigArrayOutput() GetInstanceQueryInsightsConfigArrayOutput
+	ToGetInstanceQueryInsightsConfigArrayOutputWithContext(context.Context) GetInstanceQueryInsightsConfigArrayOutput
+}
+
+type GetInstanceQueryInsightsConfigArray []GetInstanceQueryInsightsConfigInput
+
+func (GetInstanceQueryInsightsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceQueryInsightsConfig)(nil)).Elem()
+}
+
+func (i GetInstanceQueryInsightsConfigArray) ToGetInstanceQueryInsightsConfigArrayOutput() GetInstanceQueryInsightsConfigArrayOutput {
+	return i.ToGetInstanceQueryInsightsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceQueryInsightsConfigArray) ToGetInstanceQueryInsightsConfigArrayOutputWithContext(ctx context.Context) GetInstanceQueryInsightsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceQueryInsightsConfigArrayOutput)
+}
+
+type GetInstanceQueryInsightsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceQueryInsightsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceQueryInsightsConfig)(nil)).Elem()
+}
+
+func (o GetInstanceQueryInsightsConfigOutput) ToGetInstanceQueryInsightsConfigOutput() GetInstanceQueryInsightsConfigOutput {
+	return o
+}
+
+func (o GetInstanceQueryInsightsConfigOutput) ToGetInstanceQueryInsightsConfigOutputWithContext(ctx context.Context) GetInstanceQueryInsightsConfigOutput {
+	return o
+}
+
+// Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 20 is considered valid.
+func (o GetInstanceQueryInsightsConfigOutput) QueryPlansPerMinute() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceQueryInsightsConfig) int { return v.QueryPlansPerMinute }).(pulumi.IntOutput)
+}
+
+// Query string length. The default value is 1024. Any integer between 256 and 4500 is considered valid.
+func (o GetInstanceQueryInsightsConfigOutput) QueryStringLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceQueryInsightsConfig) int { return v.QueryStringLength }).(pulumi.IntOutput)
+}
+
+// Record application tags for an instance. This flag is turned "on" by default.
+func (o GetInstanceQueryInsightsConfigOutput) RecordApplicationTags() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceQueryInsightsConfig) bool { return v.RecordApplicationTags }).(pulumi.BoolOutput)
+}
+
+// Record client address for an instance. Client address is PII information. This flag is turned "on" by default.
+func (o GetInstanceQueryInsightsConfigOutput) RecordClientAddress() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceQueryInsightsConfig) bool { return v.RecordClientAddress }).(pulumi.BoolOutput)
+}
+
+type GetInstanceQueryInsightsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceQueryInsightsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceQueryInsightsConfig)(nil)).Elem()
+}
+
+func (o GetInstanceQueryInsightsConfigArrayOutput) ToGetInstanceQueryInsightsConfigArrayOutput() GetInstanceQueryInsightsConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceQueryInsightsConfigArrayOutput) ToGetInstanceQueryInsightsConfigArrayOutputWithContext(ctx context.Context) GetInstanceQueryInsightsConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceQueryInsightsConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceQueryInsightsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceQueryInsightsConfig {
+		return vs[0].([]GetInstanceQueryInsightsConfig)[vs[1].(int)]
+	}).(GetInstanceQueryInsightsConfigOutput)
+}
+
+type GetInstanceReadPoolConfig struct {
+	// Read capacity, i.e. number of nodes in a read pool instance.
+	NodeCount int `pulumi:"nodeCount"`
+}
+
+// GetInstanceReadPoolConfigInput is an input type that accepts GetInstanceReadPoolConfigArgs and GetInstanceReadPoolConfigOutput values.
+// You can construct a concrete instance of `GetInstanceReadPoolConfigInput` via:
+//
+//	GetInstanceReadPoolConfigArgs{...}
+type GetInstanceReadPoolConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceReadPoolConfigOutput() GetInstanceReadPoolConfigOutput
+	ToGetInstanceReadPoolConfigOutputWithContext(context.Context) GetInstanceReadPoolConfigOutput
+}
+
+type GetInstanceReadPoolConfigArgs struct {
+	// Read capacity, i.e. number of nodes in a read pool instance.
+	NodeCount pulumi.IntInput `pulumi:"nodeCount"`
+}
+
+func (GetInstanceReadPoolConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceReadPoolConfig)(nil)).Elem()
+}
+
+func (i GetInstanceReadPoolConfigArgs) ToGetInstanceReadPoolConfigOutput() GetInstanceReadPoolConfigOutput {
+	return i.ToGetInstanceReadPoolConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceReadPoolConfigArgs) ToGetInstanceReadPoolConfigOutputWithContext(ctx context.Context) GetInstanceReadPoolConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceReadPoolConfigOutput)
+}
+
+// GetInstanceReadPoolConfigArrayInput is an input type that accepts GetInstanceReadPoolConfigArray and GetInstanceReadPoolConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceReadPoolConfigArrayInput` via:
+//
+//	GetInstanceReadPoolConfigArray{ GetInstanceReadPoolConfigArgs{...} }
+type GetInstanceReadPoolConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceReadPoolConfigArrayOutput() GetInstanceReadPoolConfigArrayOutput
+	ToGetInstanceReadPoolConfigArrayOutputWithContext(context.Context) GetInstanceReadPoolConfigArrayOutput
+}
+
+type GetInstanceReadPoolConfigArray []GetInstanceReadPoolConfigInput
+
+func (GetInstanceReadPoolConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceReadPoolConfig)(nil)).Elem()
+}
+
+func (i GetInstanceReadPoolConfigArray) ToGetInstanceReadPoolConfigArrayOutput() GetInstanceReadPoolConfigArrayOutput {
+	return i.ToGetInstanceReadPoolConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceReadPoolConfigArray) ToGetInstanceReadPoolConfigArrayOutputWithContext(ctx context.Context) GetInstanceReadPoolConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceReadPoolConfigArrayOutput)
+}
+
+type GetInstanceReadPoolConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceReadPoolConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceReadPoolConfig)(nil)).Elem()
+}
+
+func (o GetInstanceReadPoolConfigOutput) ToGetInstanceReadPoolConfigOutput() GetInstanceReadPoolConfigOutput {
+	return o
+}
+
+func (o GetInstanceReadPoolConfigOutput) ToGetInstanceReadPoolConfigOutputWithContext(ctx context.Context) GetInstanceReadPoolConfigOutput {
+	return o
+}
+
+// Read capacity, i.e. number of nodes in a read pool instance.
+func (o GetInstanceReadPoolConfigOutput) NodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceReadPoolConfig) int { return v.NodeCount }).(pulumi.IntOutput)
+}
+
+type GetInstanceReadPoolConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceReadPoolConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceReadPoolConfig)(nil)).Elem()
+}
+
+func (o GetInstanceReadPoolConfigArrayOutput) ToGetInstanceReadPoolConfigArrayOutput() GetInstanceReadPoolConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceReadPoolConfigArrayOutput) ToGetInstanceReadPoolConfigArrayOutputWithContext(ctx context.Context) GetInstanceReadPoolConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceReadPoolConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceReadPoolConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceReadPoolConfig {
+		return vs[0].([]GetInstanceReadPoolConfig)[vs[1].(int)]
+	}).(GetInstanceReadPoolConfigOutput)
+}
+
 type GetLocationsLocation struct {
 	// The friendly name for this location, typically a nearby city name. For example, "Tokyo".
 	DisplayName string `pulumi:"displayName"`
@@ -5788,6 +6824,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceQueryInsightsConfigPtrInput)(nil)).Elem(), InstanceQueryInsightsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReadPoolConfigInput)(nil)).Elem(), InstanceReadPoolConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReadPoolConfigPtrInput)(nil)).Elem(), InstanceReadPoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceClientConnectionConfigInput)(nil)).Elem(), GetInstanceClientConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceClientConnectionConfigArrayInput)(nil)).Elem(), GetInstanceClientConnectionConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceClientConnectionConfigSslConfigInput)(nil)).Elem(), GetInstanceClientConnectionConfigSslConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceClientConnectionConfigSslConfigArrayInput)(nil)).Elem(), GetInstanceClientConnectionConfigSslConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMachineConfigInput)(nil)).Elem(), GetInstanceMachineConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMachineConfigArrayInput)(nil)).Elem(), GetInstanceMachineConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkConfigInput)(nil)).Elem(), GetInstanceNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkConfigArrayInput)(nil)).Elem(), GetInstanceNetworkConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkConfigAuthorizedExternalNetworkInput)(nil)).Elem(), GetInstanceNetworkConfigAuthorizedExternalNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkConfigAuthorizedExternalNetworkArrayInput)(nil)).Elem(), GetInstanceNetworkConfigAuthorizedExternalNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceObservabilityConfigInput)(nil)).Elem(), GetInstanceObservabilityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceObservabilityConfigArrayInput)(nil)).Elem(), GetInstanceObservabilityConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePscInstanceConfigInput)(nil)).Elem(), GetInstancePscInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePscInstanceConfigArrayInput)(nil)).Elem(), GetInstancePscInstanceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceQueryInsightsConfigInput)(nil)).Elem(), GetInstanceQueryInsightsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceQueryInsightsConfigArrayInput)(nil)).Elem(), GetInstanceQueryInsightsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceReadPoolConfigInput)(nil)).Elem(), GetInstanceReadPoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceReadPoolConfigArrayInput)(nil)).Elem(), GetInstanceReadPoolConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLocationsLocationInput)(nil)).Elem(), GetLocationsLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLocationsLocationArrayInput)(nil)).Elem(), GetLocationsLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSupportedDatabaseFlagsSupportedDatabaseFlagInput)(nil)).Elem(), GetSupportedDatabaseFlagsSupportedDatabaseFlagArgs{})
@@ -5865,6 +6919,24 @@ func init() {
 	pulumi.RegisterOutputType(InstanceQueryInsightsConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceReadPoolConfigOutput{})
 	pulumi.RegisterOutputType(InstanceReadPoolConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetInstanceClientConnectionConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceClientConnectionConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceClientConnectionConfigSslConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceClientConnectionConfigSslConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceMachineConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceMachineConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkConfigAuthorizedExternalNetworkOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkConfigAuthorizedExternalNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceObservabilityConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceObservabilityConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancePscInstanceConfigOutput{})
+	pulumi.RegisterOutputType(GetInstancePscInstanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceQueryInsightsConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceQueryInsightsConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceReadPoolConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceReadPoolConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetLocationsLocationOutput{})
 	pulumi.RegisterOutputType(GetLocationsLocationArrayOutput{})
 	pulumi.RegisterOutputType(GetSupportedDatabaseFlagsSupportedDatabaseFlagOutput{})

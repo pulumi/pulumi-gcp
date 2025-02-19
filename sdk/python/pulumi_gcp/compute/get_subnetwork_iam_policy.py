@@ -108,7 +108,7 @@ def get_subnetwork_iam_policy(project: Optional[str] = None,
     """
     Retrieves the current IAM policy data for subnetwork
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -149,7 +149,7 @@ def get_subnetwork_iam_policy_output(project: Optional[pulumi.Input[Optional[str
     """
     Retrieves the current IAM policy data for subnetwork
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

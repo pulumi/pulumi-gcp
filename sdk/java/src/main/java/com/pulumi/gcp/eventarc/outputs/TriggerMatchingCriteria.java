@@ -25,8 +25,6 @@ public final class TriggerMatchingCriteria {
     /**
      * @return Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
      * 
-     * ***
-     * 
      */
     private String value;
 
@@ -47,8 +45,6 @@ public final class TriggerMatchingCriteria {
     }
     /**
      * @return Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
-     * 
-     * ***
      * 
      */
     public String value() {

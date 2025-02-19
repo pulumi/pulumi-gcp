@@ -18,7 +18,7 @@ public final class Cloudbuildv2Functions {
     /**
      * Retrieves the current IAM policy data for connection
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -62,7 +62,7 @@ public final class Cloudbuildv2Functions {
     /**
      * Retrieves the current IAM policy data for connection
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -106,7 +106,7 @@ public final class Cloudbuildv2Functions {
     /**
      * Retrieves the current IAM policy data for connection
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -150,7 +150,7 @@ public final class Cloudbuildv2Functions {
     /**
      * Retrieves the current IAM policy data for connection
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -194,7 +194,7 @@ public final class Cloudbuildv2Functions {
     /**
      * Retrieves the current IAM policy data for connection
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

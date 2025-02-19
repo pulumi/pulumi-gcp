@@ -88,7 +88,7 @@ def get_tag_key_iam_policy(tag_key: Optional[str] = None,
     """
     Retrieves the current IAM policy data for tagkey
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -115,7 +115,7 @@ def get_tag_key_iam_policy_output(tag_key: Optional[pulumi.Input[str]] = None,
     """
     Retrieves the current IAM policy data for tagkey
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

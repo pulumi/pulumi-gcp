@@ -27,6 +27,12 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         [Input("egressTo")]
         public Input<Inputs.ServicePerimeterSpecEgressPolicyEgressToGetArgs>? EgressTo { get; set; }
 
+        /// <summary>
+        /// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+        /// </summary>
+        [Input("title")]
+        public Input<string>? Title { get; set; }
+
         public ServicePerimeterSpecEgressPolicyGetArgs()
         {
         }

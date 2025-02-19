@@ -110,6 +110,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly filestoreCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firebaseAppCheckCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firebaseCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly firebaseDataConnectCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firebaseDatabaseCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firebaseExtensionsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firebaseHostingCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -304,6 +305,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["filestoreCustomEndpoint"] = args ? args.filestoreCustomEndpoint : undefined;
             resourceInputs["firebaseAppCheckCustomEndpoint"] = args ? args.firebaseAppCheckCustomEndpoint : undefined;
             resourceInputs["firebaseCustomEndpoint"] = args ? args.firebaseCustomEndpoint : undefined;
+            resourceInputs["firebaseDataConnectCustomEndpoint"] = args ? args.firebaseDataConnectCustomEndpoint : undefined;
             resourceInputs["firebaseDatabaseCustomEndpoint"] = args ? args.firebaseDatabaseCustomEndpoint : undefined;
             resourceInputs["firebaseExtensionsCustomEndpoint"] = args ? args.firebaseExtensionsCustomEndpoint : undefined;
             resourceInputs["firebaseHostingCustomEndpoint"] = args ? args.firebaseHostingCustomEndpoint : undefined;
@@ -501,6 +503,7 @@ export interface ProviderArgs {
     filestoreCustomEndpoint?: pulumi.Input<string>;
     firebaseAppCheckCustomEndpoint?: pulumi.Input<string>;
     firebaseCustomEndpoint?: pulumi.Input<string>;
+    firebaseDataConnectCustomEndpoint?: pulumi.Input<string>;
     firebaseDatabaseCustomEndpoint?: pulumi.Input<string>;
     firebaseExtensionsCustomEndpoint?: pulumi.Input<string>;
     firebaseHostingCustomEndpoint?: pulumi.Input<string>;

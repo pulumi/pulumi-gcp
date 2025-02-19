@@ -357,15 +357,6 @@ namespace Pulumi.Gcp.BigQuery
     ///         Password = "tf-test-my-password_15222",
     ///     });
     /// 
-    ///     var bqSa = Gcp.BigQuery.GetDefaultServiceAccount.Invoke();
-    /// 
-    ///     var keySaUser = new Gcp.Kms.CryptoKeyIAMMember("key_sa_user", new()
-    ///     {
-    ///         CryptoKeyId = "projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key",
-    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
-    ///         Member = $"serviceAccount:{bqSa.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)}",
-    ///     });
-    /// 
     ///     var bq_connection_cmek = new Gcp.BigQuery.Connection("bq-connection-cmek", new()
     ///     {
     ///         FriendlyName = "👋",
@@ -382,12 +373,6 @@ namespace Pulumi.Gcp.BigQuery
     ///                 Username = user.Name,
     ///                 Password = user.Password,
     ///             },
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             keySaUser,
     ///         },
     ///     });
     /// 

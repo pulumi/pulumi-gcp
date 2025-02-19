@@ -16,6 +16,7 @@ public final class TriggerTransportPubsubArgs extends com.pulumi.resources.Resou
     public static final TriggerTransportPubsubArgs Empty = new TriggerTransportPubsubArgs();
 
     /**
+     * (Output)
      * Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
      * 
      */
@@ -23,7 +24,8 @@ public final class TriggerTransportPubsubArgs extends com.pulumi.resources.Resou
     private @Nullable Output<String> subscription;
 
     /**
-     * @return Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+     * @return (Output)
+     * Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
      * 
      */
     public Optional<Output<String>> subscription() {
@@ -71,7 +73,8 @@ public final class TriggerTransportPubsubArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param subscription Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+         * @param subscription (Output)
+         * Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
          * 
          * @return builder
          * 
@@ -82,7 +85,8 @@ public final class TriggerTransportPubsubArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param subscription Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+         * @param subscription (Output)
+         * Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
          * 
          * @return builder
          * 

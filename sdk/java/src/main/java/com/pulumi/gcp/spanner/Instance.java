@@ -107,55 +107,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Spanner Instance With Autoscaling
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.spanner.Instance;
- * import com.pulumi.gcp.spanner.InstanceArgs;
- * import com.pulumi.gcp.spanner.inputs.InstanceAutoscalingConfigArgs;
- * import com.pulumi.gcp.spanner.inputs.InstanceAutoscalingConfigAutoscalingLimitsArgs;
- * import com.pulumi.gcp.spanner.inputs.InstanceAutoscalingConfigAutoscalingTargetsArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new Instance("example", InstanceArgs.builder()
- *             .config("regional-us-central1")
- *             .displayName("Test Spanner Instance")
- *             .autoscalingConfig(InstanceAutoscalingConfigArgs.builder()
- *                 .autoscalingLimits(InstanceAutoscalingConfigAutoscalingLimitsArgs.builder()
- *                     .maxProcessingUnits(3000)
- *                     .minProcessingUnits(2000)
- *                     .build())
- *                 .autoscalingTargets(InstanceAutoscalingConfigAutoscalingTargetsArgs.builder()
- *                     .highPriorityCpuUtilizationPercent(75)
- *                     .storageUtilizationPercent(90)
- *                     .build())
- *                 .build())
- *             .labels(Map.of("foo", "bar"))
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * ### Spanner Instance Multi Regional
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

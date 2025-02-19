@@ -108,7 +108,7 @@ def get_delivery_pipeline_iam_policy(location: Optional[str] = None,
     """
     Retrieves the current IAM policy data for deliverypipeline
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -145,7 +145,7 @@ def get_delivery_pipeline_iam_policy_output(location: Optional[pulumi.Input[Opti
     """
     Retrieves the current IAM policy data for deliverypipeline
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

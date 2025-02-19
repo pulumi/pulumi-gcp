@@ -56,6 +56,8 @@ import javax.annotation.Nullable;
  *             .parent("organizations/123456789")
  *             .filter("category: \"OS_VULNERABILITY\"")
  *             .description("My Mute Config")
+ *             .type("DYNAMIC")
+ *             .expiryTime("2215-02-03T15:01:23Z")
  *             .build());
  * 
  *     }
@@ -108,6 +110,26 @@ public class MuteConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Optional. The expiry of the mute config. Only applicable for dynamic configs.
+     * If the expiry is set, when the config expires, it is removed from all findings.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
+     * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    @Export(name="expiryTime", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> expiryTime;
+
+    /**
+     * @return Optional. The expiry of the mute config. Only applicable for dynamic configs.
+     * If the expiry is set, when the config expires, it is removed from all findings.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
+     * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    public Output<Optional<String>> expiryTime() {
+        return Codegen.optional(this.expiryTime);
     }
     /**
      * An expression that defines the filter to apply across create/update
@@ -204,6 +226,24 @@ public class MuteConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<String> parent() {
         return this.parent;
+    }
+    /**
+     * The type of the mute config, which determines what type of mute state the config affects.
+     * Default value is `DYNAMIC`.
+     * Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
+     * 
+     */
+    @Export(name="type", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> type;
+
+    /**
+     * @return The type of the mute config, which determines what type of mute state the config affects.
+     * Default value is `DYNAMIC`.
+     * Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
+     * 
+     */
+    public Output<Optional<String>> type() {
+        return Codegen.optional(this.type);
     }
     /**
      * Output only. The most recent time at which the mute config was

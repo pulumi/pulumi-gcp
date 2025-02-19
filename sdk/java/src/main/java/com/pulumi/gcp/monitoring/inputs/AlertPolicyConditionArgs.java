@@ -10,6 +10,7 @@ import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionAbsentArgs;
 import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionMatchedLogArgs;
 import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionMonitoringQueryLanguageArgs;
 import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionPrometheusQueryLanguageArgs;
+import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionSqlArgs;
 import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -100,6 +101,27 @@ public final class AlertPolicyConditionArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * A condition that allows alerting policies to be defined using GoogleSQL.
+     * SQL conditions examine a sliding window of logs using GoogleSQL.
+     * Alert policies with SQL conditions may incur additional billing.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="conditionSql")
+    private @Nullable Output<AlertPolicyConditionConditionSqlArgs> conditionSql;
+
+    /**
+     * @return A condition that allows alerting policies to be defined using GoogleSQL.
+     * SQL conditions examine a sliding window of logs using GoogleSQL.
+     * Alert policies with SQL conditions may incur additional billing.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AlertPolicyConditionConditionSqlArgs>> conditionSql() {
+        return Optional.ofNullable(this.conditionSql);
+    }
+
+    /**
      * A condition that compares a time series against a
      * threshold.
      * Structure is documented below.
@@ -175,6 +197,7 @@ public final class AlertPolicyConditionArgs extends com.pulumi.resources.Resourc
         this.conditionMatchedLog = $.conditionMatchedLog;
         this.conditionMonitoringQueryLanguage = $.conditionMonitoringQueryLanguage;
         this.conditionPrometheusQueryLanguage = $.conditionPrometheusQueryLanguage;
+        this.conditionSql = $.conditionSql;
         this.conditionThreshold = $.conditionThreshold;
         this.displayName = $.displayName;
         this.name = $.name;
@@ -298,6 +321,33 @@ public final class AlertPolicyConditionArgs extends com.pulumi.resources.Resourc
          */
         public Builder conditionPrometheusQueryLanguage(AlertPolicyConditionConditionPrometheusQueryLanguageArgs conditionPrometheusQueryLanguage) {
             return conditionPrometheusQueryLanguage(Output.of(conditionPrometheusQueryLanguage));
+        }
+
+        /**
+         * @param conditionSql A condition that allows alerting policies to be defined using GoogleSQL.
+         * SQL conditions examine a sliding window of logs using GoogleSQL.
+         * Alert policies with SQL conditions may incur additional billing.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conditionSql(@Nullable Output<AlertPolicyConditionConditionSqlArgs> conditionSql) {
+            $.conditionSql = conditionSql;
+            return this;
+        }
+
+        /**
+         * @param conditionSql A condition that allows alerting policies to be defined using GoogleSQL.
+         * SQL conditions examine a sliding window of logs using GoogleSQL.
+         * Alert policies with SQL conditions may incur additional billing.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conditionSql(AlertPolicyConditionConditionSqlArgs conditionSql) {
+            return conditionSql(Output.of(conditionSql));
         }
 
         /**

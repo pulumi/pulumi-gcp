@@ -16,14 +16,14 @@ public final class EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigAr
     public static final EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs Empty = new EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs();
 
     /**
-     * Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+     * Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer but not in composer-3*
      * 
      */
     @Import(name="storageMode")
     private @Nullable Output<String> storageMode;
 
     /**
-     * @return Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+     * @return Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer but not in composer-3*
      * 
      */
     public Optional<Output<String>> storageMode() {
@@ -55,7 +55,7 @@ public final class EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigAr
         }
 
         /**
-         * @param storageMode Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+         * @param storageMode Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer but not in composer-3*
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigAr
         }
 
         /**
-         * @param storageMode Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+         * @param storageMode Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer but not in composer-3*
          * 
          * @return builder
          * 

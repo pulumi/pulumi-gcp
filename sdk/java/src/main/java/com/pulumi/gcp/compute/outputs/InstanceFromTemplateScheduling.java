@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.compute.outputs.InstanceFromTemplateSchedulingGracefulShutdown;
 import com.pulumi.gcp.compute.outputs.InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout;
 import com.pulumi.gcp.compute.outputs.InstanceFromTemplateSchedulingMaxRunDuration;
 import com.pulumi.gcp.compute.outputs.InstanceFromTemplateSchedulingNodeAffinity;
@@ -28,6 +29,11 @@ public final class InstanceFromTemplateScheduling {
      * 
      */
     private @Nullable Integer availabilityDomain;
+    /**
+     * @return Settings for the instance to perform a graceful shutdown.
+     * 
+     */
+    private @Nullable InstanceFromTemplateSchedulingGracefulShutdown gracefulShutdown;
     /**
      * @return Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
      * 
@@ -97,6 +103,13 @@ public final class InstanceFromTemplateScheduling {
      */
     public Optional<Integer> availabilityDomain() {
         return Optional.ofNullable(this.availabilityDomain);
+    }
+    /**
+     * @return Settings for the instance to perform a graceful shutdown.
+     * 
+     */
+    public Optional<InstanceFromTemplateSchedulingGracefulShutdown> gracefulShutdown() {
+        return Optional.ofNullable(this.gracefulShutdown);
     }
     /**
      * @return Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
@@ -186,6 +199,7 @@ public final class InstanceFromTemplateScheduling {
     public static final class Builder {
         private @Nullable Boolean automaticRestart;
         private @Nullable Integer availabilityDomain;
+        private @Nullable InstanceFromTemplateSchedulingGracefulShutdown gracefulShutdown;
         private @Nullable Integer hostErrorTimeoutSeconds;
         private @Nullable String instanceTerminationAction;
         private @Nullable InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout localSsdRecoveryTimeout;
@@ -202,6 +216,7 @@ public final class InstanceFromTemplateScheduling {
     	      Objects.requireNonNull(defaults);
     	      this.automaticRestart = defaults.automaticRestart;
     	      this.availabilityDomain = defaults.availabilityDomain;
+    	      this.gracefulShutdown = defaults.gracefulShutdown;
     	      this.hostErrorTimeoutSeconds = defaults.hostErrorTimeoutSeconds;
     	      this.instanceTerminationAction = defaults.instanceTerminationAction;
     	      this.localSsdRecoveryTimeout = defaults.localSsdRecoveryTimeout;
@@ -225,6 +240,12 @@ public final class InstanceFromTemplateScheduling {
         public Builder availabilityDomain(@Nullable Integer availabilityDomain) {
 
             this.availabilityDomain = availabilityDomain;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gracefulShutdown(@Nullable InstanceFromTemplateSchedulingGracefulShutdown gracefulShutdown) {
+
+            this.gracefulShutdown = gracefulShutdown;
             return this;
         }
         @CustomType.Setter
@@ -300,6 +321,7 @@ public final class InstanceFromTemplateScheduling {
             final var _resultValue = new InstanceFromTemplateScheduling();
             _resultValue.automaticRestart = automaticRestart;
             _resultValue.availabilityDomain = availabilityDomain;
+            _resultValue.gracefulShutdown = gracefulShutdown;
             _resultValue.hostErrorTimeoutSeconds = hostErrorTimeoutSeconds;
             _resultValue.instanceTerminationAction = instanceTerminationAction;
             _resultValue.localSsdRecoveryTimeout = localSsdRecoveryTimeout;

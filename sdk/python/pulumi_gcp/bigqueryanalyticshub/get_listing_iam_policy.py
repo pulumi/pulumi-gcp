@@ -118,7 +118,7 @@ def get_listing_iam_policy(data_exchange_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for listing
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -164,7 +164,7 @@ def get_listing_iam_policy_output(data_exchange_id: Optional[pulumi.Input[str]] 
     """
     Retrieves the current IAM policy data for listing
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

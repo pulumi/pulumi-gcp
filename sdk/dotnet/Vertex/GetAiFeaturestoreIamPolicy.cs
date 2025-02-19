@@ -11,12 +11,75 @@ namespace Pulumi.Gcp.Vertex
 {
     public static class GetAiFeaturestoreIamPolicy
     {
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Vertex.GetAiFeaturestoreIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = featurestore.Project,
+        ///         Region = featurestore.Region,
+        ///         Featurestore = featurestore.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetAiFeaturestoreIamPolicyResult> InvokeAsync(GetAiFeaturestoreIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAiFeaturestoreIamPolicyResult>("gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy", args ?? new GetAiFeaturestoreIamPolicyArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Vertex.GetAiFeaturestoreIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = featurestore.Project,
+        ///         Region = featurestore.Region,
+        ///         Featurestore = featurestore.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetAiFeaturestoreIamPolicyResult> Invoke(GetAiFeaturestoreIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAiFeaturestoreIamPolicyResult>("gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy", args ?? new GetAiFeaturestoreIamPolicyInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Vertex.GetAiFeaturestoreIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = featurestore.Project,
+        ///         Region = featurestore.Region,
+        ///         Featurestore = featurestore.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetAiFeaturestoreIamPolicyResult> Invoke(GetAiFeaturestoreIamPolicyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAiFeaturestoreIamPolicyResult>("gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy", args ?? new GetAiFeaturestoreIamPolicyInvokeArgs(), options.WithDefaults());
     }

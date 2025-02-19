@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
+        /// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances. Enabled by default for PostgreSQL Enterprise Plus and SQL Server Enterprise Plus instances.
         /// </summary>
         [Input("pointInTimeRecoveryEnabled")]
         public Input<bool>? PointInTimeRecoveryEnabled { get; set; }
@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<string>? StartTime { get; set; }
 
         /// <summary>
-        /// The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
+        /// The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus and SQL Server Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
         /// </summary>
         [Input("transactionLogRetentionDays")]
         public Input<int>? TransactionLogRetentionDays { get; set; }

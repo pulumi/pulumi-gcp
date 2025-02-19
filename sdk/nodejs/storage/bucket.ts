@@ -118,6 +118,22 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Enabling Hierarchical Namespace
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const auto_expire = new gcp.storage.Bucket("auto-expire", {
+ *     name: "hns-enabled-bucket",
+ *     location: "US",
+ *     forceDestroy: true,
+ *     hierarchicalNamespace: {
+ *         enabled: true,
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Storage buckets can be imported using the `name` or  `project/name`. If the project is not

@@ -118,7 +118,7 @@ def get_zone_iam_policy(dataplex_zone: Optional[str] = None,
     """
     Retrieves the current IAM policy data for zone
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -159,7 +159,7 @@ def get_zone_iam_policy_output(dataplex_zone: Optional[pulumi.Input[str]] = None
     """
     Retrieves the current IAM policy data for zone
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

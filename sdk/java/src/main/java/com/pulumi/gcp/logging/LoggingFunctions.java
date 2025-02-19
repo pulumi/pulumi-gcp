@@ -278,7 +278,7 @@ public final class LoggingFunctions {
     /**
      * Retrieves the current IAM policy data for logview
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -323,7 +323,7 @@ public final class LoggingFunctions {
     /**
      * Retrieves the current IAM policy data for logview
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -368,7 +368,7 @@ public final class LoggingFunctions {
     /**
      * Retrieves the current IAM policy data for logview
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -413,7 +413,7 @@ public final class LoggingFunctions {
     /**
      * Retrieves the current IAM policy data for logview
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -458,7 +458,7 @@ public final class LoggingFunctions {
     /**
      * Retrieves the current IAM policy data for logview
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

@@ -191,6 +191,8 @@ firebaseAppCheckCustomEndpoint: Optional[str]
 
 firebaseCustomEndpoint: Optional[str]
 
+firebaseDataConnectCustomEndpoint: Optional[str]
+
 firebaseDatabaseCustomEndpoint: Optional[str]
 
 firebaseExtensionsCustomEndpoint: Optional[str]

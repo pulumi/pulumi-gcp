@@ -30,7 +30,7 @@ public final class HealthcareFunctions {
     /**
      * Retrieves the current IAM policy data for consentstore
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -73,7 +73,7 @@ public final class HealthcareFunctions {
     /**
      * Retrieves the current IAM policy data for consentstore
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -116,7 +116,7 @@ public final class HealthcareFunctions {
     /**
      * Retrieves the current IAM policy data for consentstore
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -159,7 +159,7 @@ public final class HealthcareFunctions {
     /**
      * Retrieves the current IAM policy data for consentstore
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -202,7 +202,7 @@ public final class HealthcareFunctions {
     /**
      * Retrieves the current IAM policy data for consentstore
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

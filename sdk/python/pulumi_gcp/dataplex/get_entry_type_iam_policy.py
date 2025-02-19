@@ -108,7 +108,7 @@ def get_entry_type_iam_policy(entry_type_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for entrytype
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -148,7 +148,7 @@ def get_entry_type_iam_policy_output(entry_type_id: Optional[pulumi.Input[str]] 
     """
     Retrieves the current IAM policy data for entrytype
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

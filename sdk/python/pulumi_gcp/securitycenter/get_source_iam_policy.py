@@ -98,7 +98,7 @@ def get_source_iam_policy(organization: Optional[str] = None,
     """
     Retrieves the current IAM policy data for source
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -128,7 +128,7 @@ def get_source_iam_policy_output(organization: Optional[pulumi.Input[str]] = Non
     """
     Retrieves the current IAM policy data for source
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

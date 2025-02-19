@@ -42,6 +42,8 @@ import (
 //				Parent:       pulumi.String("organizations/123456789"),
 //				Filter:       pulumi.String("category: \"OS_VULNERABILITY\""),
 //				Description:  pulumi.String("My Mute Config"),
+//				Type:         pulumi.String("DYNAMIC"),
+//				ExpiryTime:   pulumi.String("2215-02-03T15:01:23Z"),
 //			})
 //			if err != nil {
 //				return err
@@ -71,6 +73,11 @@ type MuteConfig struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A description of the mute config.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Optional. The expiry of the mute config. Only applicable for dynamic configs.
+	// If the expiry is set, when the config expires, it is removed from all findings.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+	// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	ExpiryTime pulumi.StringPtrOutput `pulumi:"expiryTime"`
 	// An expression that defines the filter to apply across create/update
 	// events of findings. While creating a filter string, be mindful of
 	// the scope in which the mute configuration is being created. E.g.,
@@ -94,6 +101,10 @@ type MuteConfig struct {
 	//
 	// ***
 	Parent pulumi.StringOutput `pulumi:"parent"`
+	// The type of the mute config, which determines what type of mute state the config affects.
+	// Default value is `DYNAMIC`.
+	// Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
+	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// Output only. The most recent time at which the mute config was
 	// updated. This field is set by the server and will be ignored if
 	// provided on config creation or update.
@@ -144,6 +155,11 @@ type muteConfigState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// A description of the mute config.
 	Description *string `pulumi:"description"`
+	// Optional. The expiry of the mute config. Only applicable for dynamic configs.
+	// If the expiry is set, when the config expires, it is removed from all findings.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+	// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	ExpiryTime *string `pulumi:"expiryTime"`
 	// An expression that defines the filter to apply across create/update
 	// events of findings. While creating a filter string, be mindful of
 	// the scope in which the mute configuration is being created. E.g.,
@@ -167,6 +183,10 @@ type muteConfigState struct {
 	//
 	// ***
 	Parent *string `pulumi:"parent"`
+	// The type of the mute config, which determines what type of mute state the config affects.
+	// Default value is `DYNAMIC`.
+	// Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
+	Type *string `pulumi:"type"`
 	// Output only. The most recent time at which the mute config was
 	// updated. This field is set by the server and will be ignored if
 	// provided on config creation or update.
@@ -179,6 +199,11 @@ type MuteConfigState struct {
 	CreateTime pulumi.StringPtrInput
 	// A description of the mute config.
 	Description pulumi.StringPtrInput
+	// Optional. The expiry of the mute config. Only applicable for dynamic configs.
+	// If the expiry is set, when the config expires, it is removed from all findings.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+	// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	ExpiryTime pulumi.StringPtrInput
 	// An expression that defines the filter to apply across create/update
 	// events of findings. While creating a filter string, be mindful of
 	// the scope in which the mute configuration is being created. E.g.,
@@ -202,6 +227,10 @@ type MuteConfigState struct {
 	//
 	// ***
 	Parent pulumi.StringPtrInput
+	// The type of the mute config, which determines what type of mute state the config affects.
+	// Default value is `DYNAMIC`.
+	// Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
+	Type pulumi.StringPtrInput
 	// Output only. The most recent time at which the mute config was
 	// updated. This field is set by the server and will be ignored if
 	// provided on config creation or update.
@@ -215,6 +244,11 @@ func (MuteConfigState) ElementType() reflect.Type {
 type muteConfigArgs struct {
 	// A description of the mute config.
 	Description *string `pulumi:"description"`
+	// Optional. The expiry of the mute config. Only applicable for dynamic configs.
+	// If the expiry is set, when the config expires, it is removed from all findings.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+	// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	ExpiryTime *string `pulumi:"expiryTime"`
 	// An expression that defines the filter to apply across create/update
 	// events of findings. While creating a filter string, be mindful of
 	// the scope in which the mute configuration is being created. E.g.,
@@ -229,12 +263,21 @@ type muteConfigArgs struct {
 	//
 	// ***
 	Parent string `pulumi:"parent"`
+	// The type of the mute config, which determines what type of mute state the config affects.
+	// Default value is `DYNAMIC`.
+	// Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
+	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a MuteConfig resource.
 type MuteConfigArgs struct {
 	// A description of the mute config.
 	Description pulumi.StringPtrInput
+	// Optional. The expiry of the mute config. Only applicable for dynamic configs.
+	// If the expiry is set, when the config expires, it is removed from all findings.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+	// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	ExpiryTime pulumi.StringPtrInput
 	// An expression that defines the filter to apply across create/update
 	// events of findings. While creating a filter string, be mindful of
 	// the scope in which the mute configuration is being created. E.g.,
@@ -249,6 +292,10 @@ type MuteConfigArgs struct {
 	//
 	// ***
 	Parent pulumi.StringInput
+	// The type of the mute config, which determines what type of mute state the config affects.
+	// Default value is `DYNAMIC`.
+	// Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
+	Type pulumi.StringPtrInput
 }
 
 func (MuteConfigArgs) ElementType() reflect.Type {
@@ -349,6 +396,14 @@ func (o MuteConfigOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MuteConfig) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Optional. The expiry of the mute config. Only applicable for dynamic configs.
+// If the expiry is set, when the config expires, it is removed from all findings.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o MuteConfigOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MuteConfig) pulumi.StringPtrOutput { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
 // An expression that defines the filter to apply across create/update
 // events of findings. While creating a filter string, be mindful of
 // the scope in which the mute configuration is being created. E.g.,
@@ -385,6 +440,13 @@ func (o MuteConfigOutput) Name() pulumi.StringOutput {
 // ***
 func (o MuteConfigOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *MuteConfig) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
+}
+
+// The type of the mute config, which determines what type of mute state the config affects.
+// Default value is `DYNAMIC`.
+// Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
+func (o MuteConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MuteConfig) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 // Output only. The most recent time at which the mute config was

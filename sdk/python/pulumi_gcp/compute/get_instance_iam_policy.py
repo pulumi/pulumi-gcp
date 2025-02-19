@@ -108,7 +108,7 @@ def get_instance_iam_policy(instance_name: Optional[str] = None,
     """
     Retrieves the current IAM policy data for instance
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -148,7 +148,7 @@ def get_instance_iam_policy_output(instance_name: Optional[pulumi.Input[str]] = 
     """
     Retrieves the current IAM policy data for instance
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

@@ -92,7 +92,6 @@ import (
 //					DestAddressGroups: pulumi.StringArray{
 //						basicGlobalNetworksecurityAddressGroup.ID(),
 //					},
-//					DestNetworkScope: pulumi.String("INTERNET"),
 //					Layer4Configs: compute.FirewallPolicyRuleMatchLayer4ConfigArray{
 //						&compute.FirewallPolicyRuleMatchLayer4ConfigArgs{
 //							IpProtocol: pulumi.String("tcp"),

@@ -14,6 +14,18 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class GetClusterNodeConfigKubeletConfigResult
     {
         /// <summary>
+        /// Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.
+        /// </summary>
+        public readonly ImmutableArray<string> AllowedUnsafeSysctls;
+        /// <summary>
+        /// Defines the maximum number of container log files that can be present for a container.
+        /// </summary>
+        public readonly int ContainerLogMaxFiles;
+        /// <summary>
+        /// Defines the maximum size of the container log file before it is rotated.
+        /// </summary>
+        public readonly string ContainerLogMaxSize;
+        /// <summary>
         /// Enable CPU CFS quota enforcement for containers that specify CPU limits.
         /// </summary>
         public readonly bool CpuCfsQuota;
@@ -26,6 +38,22 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string CpuManagerPolicy;
         /// <summary>
+        /// Defines the percent of disk usage after which image garbage collection is always run.
+        /// </summary>
+        public readonly int ImageGcHighThresholdPercent;
+        /// <summary>
+        /// Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.
+        /// </summary>
+        public readonly int ImageGcLowThresholdPercent;
+        /// <summary>
+        /// Defines the maximum age an image can be unused before it is garbage collected.
+        /// </summary>
+        public readonly string ImageMaximumGcAge;
+        /// <summary>
+        /// Defines the minimum age for an unused image before it is garbage collected.
+        /// </summary>
+        public readonly string ImageMinimumGcAge;
+        /// <summary>
         /// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
         /// </summary>
         public readonly string InsecureKubeletReadonlyPortEnabled;
@@ -36,19 +64,40 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private GetClusterNodeConfigKubeletConfigResult(
+            ImmutableArray<string> allowedUnsafeSysctls,
+
+            int containerLogMaxFiles,
+
+            string containerLogMaxSize,
+
             bool cpuCfsQuota,
 
             string cpuCfsQuotaPeriod,
 
             string cpuManagerPolicy,
 
+            int imageGcHighThresholdPercent,
+
+            int imageGcLowThresholdPercent,
+
+            string imageMaximumGcAge,
+
+            string imageMinimumGcAge,
+
             string insecureKubeletReadonlyPortEnabled,
 
             int podPidsLimit)
         {
+            AllowedUnsafeSysctls = allowedUnsafeSysctls;
+            ContainerLogMaxFiles = containerLogMaxFiles;
+            ContainerLogMaxSize = containerLogMaxSize;
             CpuCfsQuota = cpuCfsQuota;
             CpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
             CpuManagerPolicy = cpuManagerPolicy;
+            ImageGcHighThresholdPercent = imageGcHighThresholdPercent;
+            ImageGcLowThresholdPercent = imageGcLowThresholdPercent;
+            ImageMaximumGcAge = imageMaximumGcAge;
+            ImageMinimumGcAge = imageMinimumGcAge;
             InsecureKubeletReadonlyPortEnabled = insecureKubeletReadonlyPortEnabled;
             PodPidsLimit = podPidsLimit;
         }

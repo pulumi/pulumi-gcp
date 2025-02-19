@@ -11,6 +11,32 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vertex.GetAiFeaturestoreEntitytypeIamPolicy(ctx, &vertex.GetAiFeaturestoreEntitytypeIamPolicyArgs{
+//				Featurestore: entity.Featurestore,
+//				Entitytype:   entity.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAiFeaturestoreEntitytypeIamPolicy(ctx *pulumi.Context, args *GetAiFeaturestoreEntitytypeIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetAiFeaturestoreEntitytypeIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAiFeaturestoreEntitytypeIamPolicyResult

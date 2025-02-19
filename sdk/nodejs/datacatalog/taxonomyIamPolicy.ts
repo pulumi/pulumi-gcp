@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Three different resources help you manage your IAM policy for Data catalog Taxonomy. Each of these resources serves a different use case:
+ * Three different resources help you manage your IAM policy for Data Catalog Taxonomy. Each of these resources serves a different use case:
  *
  * * `gcp.datacatalog.TaxonomyIamPolicy`: Authoritative. Sets the IAM policy for the taxonomy and replaces any existing policy already attached.
  * * `gcp.datacatalog.TaxonomyIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the taxonomy are preserved.
@@ -67,8 +67,8 @@ import * as utilities from "../utilities";
  *
  * - 
  *
- * # IAM policy for Data catalog Taxonomy
- * Three different resources help you manage your IAM policy for Data catalog Taxonomy. Each of these resources serves a different use case:
+ * # IAM policy for Data Catalog Taxonomy
+ * Three different resources help you manage your IAM policy for Data Catalog Taxonomy. Each of these resources serves a different use case:
  *
  * * `gcp.datacatalog.TaxonomyIamPolicy`: Authoritative. Sets the IAM policy for the taxonomy and replaces any existing policy already attached.
  * * `gcp.datacatalog.TaxonomyIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the taxonomy are preserved.
@@ -140,7 +140,7 @@ import * as utilities from "../utilities";
  *
  * Any variables not passed in the import command will be taken from the provider configuration.
  *
- * Data catalog taxonomy IAM resources can be imported using the resource identifiers, role, and member.
+ * Data Catalog taxonomy IAM resources can be imported using the resource identifiers, role, and member.
  *
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  *

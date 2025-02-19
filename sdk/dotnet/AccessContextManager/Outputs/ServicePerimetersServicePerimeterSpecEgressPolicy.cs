@@ -24,15 +24,22 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo? EgressTo;
+        /// <summary>
+        /// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+        /// </summary>
+        public readonly string? Title;
 
         [OutputConstructor]
         private ServicePerimetersServicePerimeterSpecEgressPolicy(
             Outputs.ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom? egressFrom,
 
-            Outputs.ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo? egressTo)
+            Outputs.ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo? egressTo,
+
+            string? title)
         {
             EgressFrom = egressFrom;
             EgressTo = egressTo;
+            Title = title;
         }
     }
 }

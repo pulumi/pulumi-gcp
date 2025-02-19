@@ -108,7 +108,7 @@ def get_web_region_backend_service_iam_policy(project: Optional[str] = None,
     """
     Retrieves the current IAM policy data for webregionbackendservice
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -145,7 +145,7 @@ def get_web_region_backend_service_iam_policy_output(project: Optional[pulumi.In
     """
     Retrieves the current IAM policy data for webregionbackendservice
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

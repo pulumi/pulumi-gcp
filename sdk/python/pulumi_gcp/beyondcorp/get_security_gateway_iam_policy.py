@@ -108,7 +108,7 @@ def get_security_gateway_iam_policy(location: Optional[str] = None,
     """
     Retrieves the current IAM policy data for securitygateway
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -147,7 +147,7 @@ def get_security_gateway_iam_policy_output(location: Optional[pulumi.Input[Optio
     """
     Retrieves the current IAM policy data for securitygateway
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

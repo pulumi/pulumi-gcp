@@ -97,7 +97,6 @@ import javax.annotation.Nullable;
  *                 .destThreatIntelligences("iplist-known-malicious-ips")
  *                 .srcAddressGroups()
  *                 .destAddressGroups(basicGlobalNetworksecurityAddressGroup.id())
- *                 .destNetworkScope("INTERNET")
  *                 .layer4Configs(                
  *                     FirewallPolicyRuleMatchLayer4ConfigArgs.builder()
  *                         .ipProtocol("tcp")

@@ -204,12 +204,11 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The format of communication supported by the callout extension.
-        /// Default value is `EXT_PROC_GRPC`.
+        /// The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
         /// Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
         /// </summary>
         [Output("wireFormat")]
-        public Output<string?> WireFormat { get; private set; } = null!;
+        public Output<string> WireFormat { get; private set; } = null!;
 
 
         /// <summary>
@@ -368,8 +367,7 @@ namespace Pulumi.Gcp.NetworkServices
         public Input<string> Timeout { get; set; } = null!;
 
         /// <summary>
-        /// The format of communication supported by the callout extension.
-        /// Default value is `EXT_PROC_GRPC`.
+        /// The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
         /// Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
         /// </summary>
         [Input("wireFormat")]
@@ -534,8 +532,7 @@ namespace Pulumi.Gcp.NetworkServices
         public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
-        /// The format of communication supported by the callout extension.
-        /// Default value is `EXT_PROC_GRPC`.
+        /// The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
         /// Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
         /// </summary>
         [Input("wireFormat")]

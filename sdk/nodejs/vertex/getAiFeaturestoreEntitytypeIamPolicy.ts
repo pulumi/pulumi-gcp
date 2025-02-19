@@ -4,6 +4,19 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.vertex.getAiFeaturestoreEntitytypeIamPolicy({
+ *     featurestore: entity.featurestore,
+ *     entitytype: entity.name,
+ * });
+ * ```
+ */
 export function getAiFeaturestoreEntitytypeIamPolicy(args: GetAiFeaturestoreEntitytypeIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAiFeaturestoreEntitytypeIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy", {
@@ -46,6 +59,19 @@ export interface GetAiFeaturestoreEntitytypeIamPolicyResult {
      */
     readonly policyData: string;
 }
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.vertex.getAiFeaturestoreEntitytypeIamPolicy({
+ *     featurestore: entity.featurestore,
+ *     entitytype: entity.name,
+ * });
+ * ```
+ */
 export function getAiFeaturestoreEntitytypeIamPolicyOutput(args: GetAiFeaturestoreEntitytypeIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAiFeaturestoreEntitytypeIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy", {

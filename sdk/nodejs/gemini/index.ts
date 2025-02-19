@@ -10,6 +10,16 @@ export type CodeRepositoryIndex = import("./codeRepositoryIndex").CodeRepository
 export const CodeRepositoryIndex: typeof import("./codeRepositoryIndex").CodeRepositoryIndex = null as any;
 utilities.lazyLoad(exports, ["CodeRepositoryIndex"], () => require("./codeRepositoryIndex"));
 
+export { DataSharingWithGoogleSettingArgs, DataSharingWithGoogleSettingState } from "./dataSharingWithGoogleSetting";
+export type DataSharingWithGoogleSetting = import("./dataSharingWithGoogleSetting").DataSharingWithGoogleSetting;
+export const DataSharingWithGoogleSetting: typeof import("./dataSharingWithGoogleSetting").DataSharingWithGoogleSetting = null as any;
+utilities.lazyLoad(exports, ["DataSharingWithGoogleSetting"], () => require("./dataSharingWithGoogleSetting"));
+
+export { GeminiGcpEnablementSettingArgs, GeminiGcpEnablementSettingState } from "./geminiGcpEnablementSetting";
+export type GeminiGcpEnablementSetting = import("./geminiGcpEnablementSetting").GeminiGcpEnablementSetting;
+export const GeminiGcpEnablementSetting: typeof import("./geminiGcpEnablementSetting").GeminiGcpEnablementSetting = null as any;
+utilities.lazyLoad(exports, ["GeminiGcpEnablementSetting"], () => require("./geminiGcpEnablementSetting"));
+
 export { GetRepositoryGroupIamPolicyArgs, GetRepositoryGroupIamPolicyResult, GetRepositoryGroupIamPolicyOutputArgs } from "./getRepositoryGroupIamPolicy";
 export const getRepositoryGroupIamPolicy: typeof import("./getRepositoryGroupIamPolicy").getRepositoryGroupIamPolicy = null as any;
 export const getRepositoryGroupIamPolicyOutput: typeof import("./getRepositoryGroupIamPolicy").getRepositoryGroupIamPolicyOutput = null as any;
@@ -20,10 +30,20 @@ export type LoggingSetting = import("./loggingSetting").LoggingSetting;
 export const LoggingSetting: typeof import("./loggingSetting").LoggingSetting = null as any;
 utilities.lazyLoad(exports, ["LoggingSetting"], () => require("./loggingSetting"));
 
+export { LoggingSettingBindingArgs, LoggingSettingBindingState } from "./loggingSettingBinding";
+export type LoggingSettingBinding = import("./loggingSettingBinding").LoggingSettingBinding;
+export const LoggingSettingBinding: typeof import("./loggingSettingBinding").LoggingSettingBinding = null as any;
+utilities.lazyLoad(exports, ["LoggingSettingBinding"], () => require("./loggingSettingBinding"));
+
 export { ReleaseChannelSettingArgs, ReleaseChannelSettingState } from "./releaseChannelSetting";
 export type ReleaseChannelSetting = import("./releaseChannelSetting").ReleaseChannelSetting;
 export const ReleaseChannelSetting: typeof import("./releaseChannelSetting").ReleaseChannelSetting = null as any;
 utilities.lazyLoad(exports, ["ReleaseChannelSetting"], () => require("./releaseChannelSetting"));
+
+export { ReleaseChannelSettingBindingArgs, ReleaseChannelSettingBindingState } from "./releaseChannelSettingBinding";
+export type ReleaseChannelSettingBinding = import("./releaseChannelSettingBinding").ReleaseChannelSettingBinding;
+export const ReleaseChannelSettingBinding: typeof import("./releaseChannelSettingBinding").ReleaseChannelSettingBinding = null as any;
+utilities.lazyLoad(exports, ["ReleaseChannelSettingBinding"], () => require("./releaseChannelSettingBinding"));
 
 export { RepositoryGroupArgs, RepositoryGroupState } from "./repositoryGroup";
 export type RepositoryGroup = import("./repositoryGroup").RepositoryGroup;
@@ -52,10 +72,18 @@ const _module = {
         switch (type) {
             case "gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex":
                 return new CodeRepositoryIndex(name, <any>undefined, { urn })
+            case "gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting":
+                return new DataSharingWithGoogleSetting(name, <any>undefined, { urn })
+            case "gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting":
+                return new GeminiGcpEnablementSetting(name, <any>undefined, { urn })
             case "gcp:gemini/loggingSetting:LoggingSetting":
                 return new LoggingSetting(name, <any>undefined, { urn })
+            case "gcp:gemini/loggingSettingBinding:LoggingSettingBinding":
+                return new LoggingSettingBinding(name, <any>undefined, { urn })
             case "gcp:gemini/releaseChannelSetting:ReleaseChannelSetting":
                 return new ReleaseChannelSetting(name, <any>undefined, { urn })
+            case "gcp:gemini/releaseChannelSettingBinding:ReleaseChannelSettingBinding":
+                return new ReleaseChannelSettingBinding(name, <any>undefined, { urn })
             case "gcp:gemini/repositoryGroup:RepositoryGroup":
                 return new RepositoryGroup(name, <any>undefined, { urn })
             case "gcp:gemini/repositoryGroupIamBinding:RepositoryGroupIamBinding":
@@ -70,8 +98,12 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "gemini/codeRepositoryIndex", _module)
+pulumi.runtime.registerResourceModule("gcp", "gemini/dataSharingWithGoogleSetting", _module)
+pulumi.runtime.registerResourceModule("gcp", "gemini/geminiGcpEnablementSetting", _module)
 pulumi.runtime.registerResourceModule("gcp", "gemini/loggingSetting", _module)
+pulumi.runtime.registerResourceModule("gcp", "gemini/loggingSettingBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "gemini/releaseChannelSetting", _module)
+pulumi.runtime.registerResourceModule("gcp", "gemini/releaseChannelSettingBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "gemini/repositoryGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "gemini/repositoryGroupIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "gemini/repositoryGroupIamMember", _module)

@@ -388,10 +388,7 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -426,18 +423,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			bqSa, err := bigquery.GetDefaultServiceAccount(ctx, &bigquery.GetDefaultServiceAccountArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			keySaUser, err := kms.NewCryptoKeyIAMMember(ctx, "key_sa_user", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: pulumi.String("projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key"),
-//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Member:      pulumi.Sprintf("serviceAccount:%v", bqSa.Email),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			_, err = bigquery.NewConnection(ctx, "bq-connection-cmek", &bigquery.ConnectionArgs{
 //				FriendlyName: pulumi.String("👋"),
 //				Description:  pulumi.String("a riveting description"),
@@ -452,9 +437,7 @@ import (
 //						Password: user.Password,
 //					},
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				keySaUser,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

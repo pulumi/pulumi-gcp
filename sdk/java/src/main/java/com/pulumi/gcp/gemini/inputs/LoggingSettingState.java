@@ -18,14 +18,14 @@ public final class LoggingSettingState extends com.pulumi.resources.ResourceArgs
     public static final LoggingSettingState Empty = new LoggingSettingState();
 
     /**
-     * Output only. [Output only] Create time stamp.
+     * Create time stamp.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Output only. [Output only] Create time stamp.
+     * @return Create time stamp.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -48,7 +48,7 @@ public final class LoggingSettingState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Optional. Labels as key value pairs.
+     * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -57,7 +57,7 @@ public final class LoggingSettingState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels as key value pairs.
+     * @return Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -82,14 +82,14 @@ public final class LoggingSettingState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Optional. Whether to log metadata.
+     * Whether to log metadata.
      * 
      */
     @Import(name="logMetadata")
     private @Nullable Output<Boolean> logMetadata;
 
     /**
-     * @return Optional. Whether to log metadata.
+     * @return Whether to log metadata.
      * 
      */
     public Optional<Output<Boolean>> logMetadata() {
@@ -97,14 +97,14 @@ public final class LoggingSettingState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Optional. Whether to log prompts and responses.
+     * Whether to log prompts and responses.
      * 
      */
     @Import(name="logPromptsAndResponses")
     private @Nullable Output<Boolean> logPromptsAndResponses;
 
     /**
-     * @return Optional. Whether to log prompts and responses.
+     * @return Whether to log prompts and responses.
      * 
      */
     public Optional<Output<Boolean>> logPromptsAndResponses() {
@@ -112,9 +112,7 @@ public final class LoggingSettingState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Required. Id of the requesting object.
-     * If auto-generating Id server-side, remove this field and
-     * setting_id from the method_signature of Create RPC.
+     * Id of the Logging Setting.
      * 
      * ***
      * 
@@ -123,9 +121,7 @@ public final class LoggingSettingState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> loggingSettingId;
 
     /**
-     * @return Required. Id of the requesting object.
-     * If auto-generating Id server-side, remove this field and
-     * setting_id from the method_signature of Create RPC.
+     * @return Id of the Logging Setting.
      * 
      * ***
      * 
@@ -186,14 +182,14 @@ public final class LoggingSettingState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Output only. [Output only] Update time stamp.
+     * Update time stamp.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return Output only. [Output only] Update time stamp.
+     * @return Update time stamp.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -235,7 +231,7 @@ public final class LoggingSettingState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param createTime Output only. [Output only] Create time stamp.
+         * @param createTime Create time stamp.
          * 
          * @return builder
          * 
@@ -246,7 +242,7 @@ public final class LoggingSettingState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param createTime Output only. [Output only] Create time stamp.
+         * @param createTime Create time stamp.
          * 
          * @return builder
          * 
@@ -277,7 +273,7 @@ public final class LoggingSettingState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs.
+         * @param labels Labels as key value pairs.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -290,7 +286,7 @@ public final class LoggingSettingState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs.
+         * @param labels Labels as key value pairs.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -323,7 +319,7 @@ public final class LoggingSettingState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param logMetadata Optional. Whether to log metadata.
+         * @param logMetadata Whether to log metadata.
          * 
          * @return builder
          * 
@@ -334,7 +330,7 @@ public final class LoggingSettingState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param logMetadata Optional. Whether to log metadata.
+         * @param logMetadata Whether to log metadata.
          * 
          * @return builder
          * 
@@ -344,7 +340,7 @@ public final class LoggingSettingState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param logPromptsAndResponses Optional. Whether to log prompts and responses.
+         * @param logPromptsAndResponses Whether to log prompts and responses.
          * 
          * @return builder
          * 
@@ -355,7 +351,7 @@ public final class LoggingSettingState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param logPromptsAndResponses Optional. Whether to log prompts and responses.
+         * @param logPromptsAndResponses Whether to log prompts and responses.
          * 
          * @return builder
          * 
@@ -365,9 +361,7 @@ public final class LoggingSettingState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param loggingSettingId Required. Id of the requesting object.
-         * If auto-generating Id server-side, remove this field and
-         * setting_id from the method_signature of Create RPC.
+         * @param loggingSettingId Id of the Logging Setting.
          * 
          * ***
          * 
@@ -380,9 +374,7 @@ public final class LoggingSettingState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param loggingSettingId Required. Id of the requesting object.
-         * If auto-generating Id server-side, remove this field and
-         * setting_id from the method_signature of Create RPC.
+         * @param loggingSettingId Id of the Logging Setting.
          * 
          * ***
          * 
@@ -463,7 +455,7 @@ public final class LoggingSettingState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param updateTime Output only. [Output only] Update time stamp.
+         * @param updateTime Update time stamp.
          * 
          * @return builder
          * 
@@ -474,7 +466,7 @@ public final class LoggingSettingState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param updateTime Output only. [Output only] Update time stamp.
+         * @param updateTime Update time stamp.
          * 
          * @return builder
          * 

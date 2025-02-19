@@ -106,7 +106,17 @@ def get_repository_iam_policy(project: Optional[str] = None,
                               repository: Optional[str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRepositoryIamPolicyResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.dataform.get_repository_iam_policy(project=dataform_repository["project"],
+        region=dataform_repository["region"],
+        repository=dataform_repository["name"])
+    ```
+
 
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -134,7 +144,17 @@ def get_repository_iam_policy_output(project: Optional[pulumi.Input[Optional[str
                                      repository: Optional[pulumi.Input[str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRepositoryIamPolicyResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.dataform.get_repository_iam_policy(project=dataform_repository["project"],
+        region=dataform_repository["region"],
+        repository=dataform_repository["name"])
+    ```
+
 
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.

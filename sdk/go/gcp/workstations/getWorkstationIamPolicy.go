@@ -11,6 +11,35 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/workstations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := workstations.LookupWorkstationIamPolicy(ctx, &workstations.LookupWorkstationIamPolicyArgs{
+//				Project:              pulumi.StringRef(_default.Project),
+//				Location:             pulumi.StringRef(_default.Location),
+//				WorkstationClusterId: _default.WorkstationClusterId,
+//				WorkstationConfigId:  _default.WorkstationConfigId,
+//				WorkstationId:        _default.WorkstationId,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupWorkstationIamPolicy(ctx *pulumi.Context, args *LookupWorkstationIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupWorkstationIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkstationIamPolicyResult

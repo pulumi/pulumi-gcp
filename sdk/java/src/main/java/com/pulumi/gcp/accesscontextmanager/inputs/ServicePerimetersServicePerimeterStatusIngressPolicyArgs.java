@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs;
 import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -54,11 +55,27 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyArgs exte
         return Optional.ofNullable(this.ingressTo);
     }
 
+    /**
+     * Human readable title. Must be unique within the perimeter. Does not affect behavior.
+     * 
+     */
+    @Import(name="title")
+    private @Nullable Output<String> title;
+
+    /**
+     * @return Human readable title. Must be unique within the perimeter. Does not affect behavior.
+     * 
+     */
+    public Optional<Output<String>> title() {
+        return Optional.ofNullable(this.title);
+    }
+
     private ServicePerimetersServicePerimeterStatusIngressPolicyArgs() {}
 
     private ServicePerimetersServicePerimeterStatusIngressPolicyArgs(ServicePerimetersServicePerimeterStatusIngressPolicyArgs $) {
         this.ingressFrom = $.ingressFrom;
         this.ingressTo = $.ingressTo;
+        this.title = $.title;
     }
 
     public static Builder builder() {
@@ -127,6 +144,27 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyArgs exte
          */
         public Builder ingressTo(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs ingressTo) {
             return ingressTo(Output.of(ingressTo));
+        }
+
+        /**
+         * @param title Human readable title. Must be unique within the perimeter. Does not affect behavior.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder title(@Nullable Output<String> title) {
+            $.title = title;
+            return this;
+        }
+
+        /**
+         * @param title Human readable title. Must be unique within the perimeter. Does not affect behavior.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder title(String title) {
+            return title(Output.of(title));
         }
 
         public ServicePerimetersServicePerimeterStatusIngressPolicyArgs build() {

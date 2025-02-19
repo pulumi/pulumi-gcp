@@ -17,6 +17,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The resource for managing ReleaseChannel settings for Admin Control.
+ * 
  * ## Example Usage
  * 
  * ### Gemini Release Channel Setting Basic
@@ -47,6 +49,7 @@ import javax.annotation.Nullable;
  *         var example = new ReleaseChannelSetting("example", ReleaseChannelSettingArgs.builder()
  *             .releaseChannelSettingId("ls1-tf")
  *             .location("global")
+ *             .labels(Map.of("my_key", "my_value"))
  *             .releaseChannel("EXPERIMENTAL")
  *             .build());
  * 
@@ -84,14 +87,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:gemini/releaseChannelSetting:ReleaseChannelSetting")
 public class ReleaseChannelSetting extends com.pulumi.resources.CustomResource {
     /**
-     * Output only. [Output only] Create time stamp.
+     * Create time stamp.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Output only. [Output only] Create time stamp.
+     * @return Create time stamp.
      * 
      */
     public Output<String> createTime() {
@@ -112,7 +115,7 @@ public class ReleaseChannelSetting extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * Optional. Labels as key value pairs.
+     * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -121,7 +124,7 @@ public class ReleaseChannelSetting extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels as key value pairs.
+     * @return Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -192,7 +195,7 @@ public class ReleaseChannelSetting extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
-     * Optional. Release channel to be used.
+     * Release channel to be used.
      * Possible values:
      * STABLE
      * EXPERIMENTAL
@@ -202,7 +205,7 @@ public class ReleaseChannelSetting extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> releaseChannel;
 
     /**
-     * @return Optional. Release channel to be used.
+     * @return Release channel to be used.
      * Possible values:
      * STABLE
      * EXPERIMENTAL
@@ -212,9 +215,7 @@ public class ReleaseChannelSetting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.releaseChannel);
     }
     /**
-     * Required. Id of the requesting object.
-     * If auto-generating Id server-side, remove this field and
-     * release_channel_setting_id from the method_signature of Create RPC
+     * Id of the Release Channel Setting.
      * 
      * ***
      * 
@@ -223,9 +224,7 @@ public class ReleaseChannelSetting extends com.pulumi.resources.CustomResource {
     private Output<String> releaseChannelSettingId;
 
     /**
-     * @return Required. Id of the requesting object.
-     * If auto-generating Id server-side, remove this field and
-     * release_channel_setting_id from the method_signature of Create RPC
+     * @return Id of the Release Channel Setting.
      * 
      * ***
      * 
@@ -234,14 +233,14 @@ public class ReleaseChannelSetting extends com.pulumi.resources.CustomResource {
         return this.releaseChannelSettingId;
     }
     /**
-     * Output only. [Output only] Update time stamp.
+     * Update time stamp.
      * 
      */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
-     * @return Output only. [Output only] Update time stamp.
+     * @return Update time stamp.
      * 
      */
     public Output<String> updateTime() {

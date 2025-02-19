@@ -260,7 +260,7 @@ public final class SecretmanagerFunctions {
     /**
      * Retrieves the current IAM policy data for regionalsecret
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -304,7 +304,7 @@ public final class SecretmanagerFunctions {
     /**
      * Retrieves the current IAM policy data for regionalsecret
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -348,7 +348,7 @@ public final class SecretmanagerFunctions {
     /**
      * Retrieves the current IAM policy data for regionalsecret
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -392,7 +392,7 @@ public final class SecretmanagerFunctions {
     /**
      * Retrieves the current IAM policy data for regionalsecret
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -436,7 +436,7 @@ public final class SecretmanagerFunctions {
     /**
      * Retrieves the current IAM policy data for regionalsecret
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1330,7 +1330,7 @@ public final class SecretmanagerFunctions {
     /**
      * Retrieves the current IAM policy data for secret
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1373,7 +1373,7 @@ public final class SecretmanagerFunctions {
     /**
      * Retrieves the current IAM policy data for secret
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1416,7 +1416,7 @@ public final class SecretmanagerFunctions {
     /**
      * Retrieves the current IAM policy data for secret
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1459,7 +1459,7 @@ public final class SecretmanagerFunctions {
     /**
      * Retrieves the current IAM policy data for secret
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1502,7 +1502,7 @@ public final class SecretmanagerFunctions {
     /**
      * Retrieves the current IAM policy data for secret
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

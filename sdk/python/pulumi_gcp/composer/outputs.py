@@ -408,7 +408,7 @@ class EnvironmentConfigDataRetentionConfig(dict):
                  airflow_metadata_retention_configs: Optional[Sequence['outputs.EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig']] = None,
                  task_logs_retention_configs: Optional[Sequence['outputs.EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig']] = None):
         """
-        :param Sequence['EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgs'] airflow_metadata_retention_configs: Optional. The configuration setting for database retention.
+        :param Sequence['EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgs'] airflow_metadata_retention_configs: Optional. The policy for airflow metadata database retention.
         :param Sequence['EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs'] task_logs_retention_configs: Optional. The configuration setting for Task Logs.
         """
         if airflow_metadata_retention_configs is not None:
@@ -420,7 +420,7 @@ class EnvironmentConfigDataRetentionConfig(dict):
     @pulumi.getter(name="airflowMetadataRetentionConfigs")
     def airflow_metadata_retention_configs(self) -> Optional[Sequence['outputs.EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig']]:
         """
-        Optional. The configuration setting for database retention.
+        Optional. The policy for airflow metadata database retention.
         """
         return pulumi.get(self, "airflow_metadata_retention_configs")
 
@@ -505,7 +505,7 @@ class EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig(dict):
     def __init__(__self__, *,
                  storage_mode: Optional[str] = None):
         """
-        :param str storage_mode: Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+        :param str storage_mode: Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer but not in composer-3*
         """
         if storage_mode is not None:
             pulumi.set(__self__, "storage_mode", storage_mode)
@@ -514,7 +514,7 @@ class EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig(dict):
     @pulumi.getter(name="storageMode")
     def storage_mode(self) -> Optional[str]:
         """
-        Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+        Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer but not in composer-3*
         """
         return pulumi.get(self, "storage_mode")
 
@@ -2239,7 +2239,7 @@ class GetEnvironmentConfigDataRetentionConfigResult(dict):
                  airflow_metadata_retention_configs: Sequence['outputs.GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigResult'],
                  task_logs_retention_configs: Sequence['outputs.GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigResult']):
         """
-        :param Sequence['GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgs'] airflow_metadata_retention_configs: Optional. The configuration setting for database retention.
+        :param Sequence['GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgs'] airflow_metadata_retention_configs: Optional. The policy for airflow metadata database retention.
         :param Sequence['GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs'] task_logs_retention_configs: Optional. The configuration setting for Task Logs.
         """
         pulumi.set(__self__, "airflow_metadata_retention_configs", airflow_metadata_retention_configs)
@@ -2249,7 +2249,7 @@ class GetEnvironmentConfigDataRetentionConfigResult(dict):
     @pulumi.getter(name="airflowMetadataRetentionConfigs")
     def airflow_metadata_retention_configs(self) -> Sequence['outputs.GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigResult']:
         """
-        Optional. The configuration setting for database retention.
+        Optional. The policy for airflow metadata database retention.
         """
         return pulumi.get(self, "airflow_metadata_retention_configs")
 
@@ -2296,7 +2296,7 @@ class GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigResult(dict)
     def __init__(__self__, *,
                  storage_mode: str):
         """
-        :param str storage_mode: Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+        :param str storage_mode: Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer but not in composer-3*
         """
         pulumi.set(__self__, "storage_mode", storage_mode)
 
@@ -2304,7 +2304,7 @@ class GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigResult(dict)
     @pulumi.getter(name="storageMode")
     def storage_mode(self) -> str:
         """
-        Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+        Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer but not in composer-3*
         """
         return pulumi.get(self, "storage_mode")
 

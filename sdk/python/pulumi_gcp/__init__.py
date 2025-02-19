@@ -5020,6 +5020,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "firebase/dataConnectService",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/dataConnectService:DataConnectService": "DataConnectService"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "firebase/databaseInstance",
   "fqn": "pulumi_gcp.firebase",
   "classes": {
@@ -5212,6 +5220,22 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "gemini/dataSharingWithGoogleSetting",
+  "fqn": "pulumi_gcp.gemini",
+  "classes": {
+   "gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting": "DataSharingWithGoogleSetting"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gemini/geminiGcpEnablementSetting",
+  "fqn": "pulumi_gcp.gemini",
+  "classes": {
+   "gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting": "GeminiGcpEnablementSetting"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "gemini/loggingSetting",
   "fqn": "pulumi_gcp.gemini",
   "classes": {
@@ -5220,10 +5244,26 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "gemini/loggingSettingBinding",
+  "fqn": "pulumi_gcp.gemini",
+  "classes": {
+   "gcp:gemini/loggingSettingBinding:LoggingSettingBinding": "LoggingSettingBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "gemini/releaseChannelSetting",
   "fqn": "pulumi_gcp.gemini",
   "classes": {
    "gcp:gemini/releaseChannelSetting:ReleaseChannelSetting": "ReleaseChannelSetting"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gemini/releaseChannelSettingBinding",
+  "fqn": "pulumi_gcp.gemini",
+  "classes": {
+   "gcp:gemini/releaseChannelSettingBinding:ReleaseChannelSettingBinding": "ReleaseChannelSettingBinding"
   }
  },
  {
@@ -6632,6 +6672,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.netapp",
   "classes": {
    "gcp:netapp/volume:Volume": "Volume"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "netapp/volumeQuotaRule",
+  "fqn": "pulumi_gcp.netapp",
+  "classes": {
+   "gcp:netapp/volumeQuotaRule:VolumeQuotaRule": "VolumeQuotaRule"
   }
  },
  {

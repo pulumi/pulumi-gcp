@@ -14,6 +14,22 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterNodeConfigKubeletConfig
     {
         /// <summary>
+        /// Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods. The allowed sysctl groups are `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, and `net.*`.
+        /// </summary>
+        public readonly ImmutableArray<string> AllowedUnsafeSysctls;
+        /// <summary>
+        /// Defines the maximum number of container log files that can be present for a container. The integer must be between 2 and 10, inclusive.
+        /// </summary>
+        public readonly int? ContainerLogMaxFiles;
+        /// <summary>
+        /// Defines the maximum size of the
+        /// container log file before it is rotated. Specified as a positive number and a
+        /// unit suffix, such as `"100Ki"`, `"10Mi"`. Valid units are "Ki", "Mi", "Gi".
+        /// The value must be between `"10Mi"` and `"500Mi"`, inclusive. And the total container log size
+        /// (`container_log_max_size` * `container_log_max_files`) cannot exceed 1% of the total storage of the node.
+        /// </summary>
+        public readonly string? ContainerLogMaxSize;
+        /// <summary>
         /// If true, enables CPU CFS quota enforcement for
         /// containers that specify CPU limits.
         /// </summary>
@@ -34,6 +50,22 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? CpuManagerPolicy;
         /// <summary>
+        /// Defines the percent of disk usage after which image garbage collection is always run. The integer must be between 10 and 85, inclusive.
+        /// </summary>
+        public readonly int? ImageGcHighThresholdPercent;
+        /// <summary>
+        /// Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to. The integer must be between 10 and 85, inclusive.
+        /// </summary>
+        public readonly int? ImageGcLowThresholdPercent;
+        /// <summary>
+        /// Defines the maximum age an image can be unused before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`, and `"2h45m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
+        /// </summary>
+        public readonly string? ImageMaximumGcAge;
+        /// <summary>
+        /// Defines the minimum age for an unused image before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`. The value cannot be greater than "2m".
+        /// </summary>
+        public readonly string? ImageMinimumGcAge;
+        /// <summary>
         /// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
         /// </summary>
         public readonly string? InsecureKubeletReadonlyPortEnabled;
@@ -44,19 +76,40 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private ClusterNodeConfigKubeletConfig(
+            ImmutableArray<string> allowedUnsafeSysctls,
+
+            int? containerLogMaxFiles,
+
+            string? containerLogMaxSize,
+
             bool? cpuCfsQuota,
 
             string? cpuCfsQuotaPeriod,
 
             string? cpuManagerPolicy,
 
+            int? imageGcHighThresholdPercent,
+
+            int? imageGcLowThresholdPercent,
+
+            string? imageMaximumGcAge,
+
+            string? imageMinimumGcAge,
+
             string? insecureKubeletReadonlyPortEnabled,
 
             int? podPidsLimit)
         {
+            AllowedUnsafeSysctls = allowedUnsafeSysctls;
+            ContainerLogMaxFiles = containerLogMaxFiles;
+            ContainerLogMaxSize = containerLogMaxSize;
             CpuCfsQuota = cpuCfsQuota;
             CpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
             CpuManagerPolicy = cpuManagerPolicy;
+            ImageGcHighThresholdPercent = imageGcHighThresholdPercent;
+            ImageGcLowThresholdPercent = imageGcLowThresholdPercent;
+            ImageMaximumGcAge = imageMaximumGcAge;
+            ImageMinimumGcAge = imageMinimumGcAge;
             InsecureKubeletReadonlyPortEnabled = insecureKubeletReadonlyPortEnabled;
             PodPidsLimit = podPidsLimit;
         }

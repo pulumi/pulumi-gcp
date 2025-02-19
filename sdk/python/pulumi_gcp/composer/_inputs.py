@@ -502,7 +502,7 @@ if not MYPY:
     class EnvironmentConfigDataRetentionConfigArgsDict(TypedDict):
         airflow_metadata_retention_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgsDict']]]]
         """
-        Optional. The configuration setting for database retention.
+        Optional. The policy for airflow metadata database retention.
         """
         task_logs_retention_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgsDict']]]]
         """
@@ -517,7 +517,7 @@ class EnvironmentConfigDataRetentionConfigArgs:
                  airflow_metadata_retention_configs: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgs']]]] = None,
                  task_logs_retention_configs: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgs']]] airflow_metadata_retention_configs: Optional. The configuration setting for database retention.
+        :param pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgs']]] airflow_metadata_retention_configs: Optional. The policy for airflow metadata database retention.
         :param pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs']]] task_logs_retention_configs: Optional. The configuration setting for Task Logs.
         """
         if airflow_metadata_retention_configs is not None:
@@ -529,7 +529,7 @@ class EnvironmentConfigDataRetentionConfigArgs:
     @pulumi.getter(name="airflowMetadataRetentionConfigs")
     def airflow_metadata_retention_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgs']]]]:
         """
-        Optional. The configuration setting for database retention.
+        Optional. The policy for airflow metadata database retention.
         """
         return pulumi.get(self, "airflow_metadata_retention_configs")
 
@@ -606,7 +606,7 @@ if not MYPY:
     class EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgsDict(TypedDict):
         storage_mode: NotRequired[pulumi.Input[str]]
         """
-        Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+        Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer but not in composer-3*
         """
 elif False:
     EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -616,7 +616,7 @@ class EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs:
     def __init__(__self__, *,
                  storage_mode: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] storage_mode: Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+        :param pulumi.Input[str] storage_mode: Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer but not in composer-3*
         """
         if storage_mode is not None:
             pulumi.set(__self__, "storage_mode", storage_mode)
@@ -625,7 +625,7 @@ class EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs:
     @pulumi.getter(name="storageMode")
     def storage_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+        Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer but not in composer-3*
         """
         return pulumi.get(self, "storage_mode")
 

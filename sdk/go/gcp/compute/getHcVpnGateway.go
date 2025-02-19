@@ -64,17 +64,21 @@ type GetHcVpnGatewayArgs struct {
 
 // A collection of values returned by getHcVpnGateway.
 type GetHcVpnGatewayResult struct {
-	Description      string `pulumi:"description"`
-	GatewayIpVersion string `pulumi:"gatewayIpVersion"`
+	Description      string            `pulumi:"description"`
+	EffectiveLabels  map[string]string `pulumi:"effectiveLabels"`
+	GatewayIpVersion string            `pulumi:"gatewayIpVersion"`
 	// The provider-assigned unique ID for this managed resource.
-	Id            string                        `pulumi:"id"`
-	Name          string                        `pulumi:"name"`
-	Network       string                        `pulumi:"network"`
-	Project       *string                       `pulumi:"project"`
-	Region        *string                       `pulumi:"region"`
-	SelfLink      string                        `pulumi:"selfLink"`
-	StackType     string                        `pulumi:"stackType"`
-	VpnInterfaces []GetHcVpnGatewayVpnInterface `pulumi:"vpnInterfaces"`
+	Id               string                        `pulumi:"id"`
+	LabelFingerprint string                        `pulumi:"labelFingerprint"`
+	Labels           map[string]string             `pulumi:"labels"`
+	Name             string                        `pulumi:"name"`
+	Network          string                        `pulumi:"network"`
+	Project          *string                       `pulumi:"project"`
+	PulumiLabels     map[string]string             `pulumi:"pulumiLabels"`
+	Region           *string                       `pulumi:"region"`
+	SelfLink         string                        `pulumi:"selfLink"`
+	StackType        string                        `pulumi:"stackType"`
+	VpnInterfaces    []GetHcVpnGatewayVpnInterface `pulumi:"vpnInterfaces"`
 }
 
 func GetHcVpnGatewayOutput(ctx *pulumi.Context, args GetHcVpnGatewayOutputArgs, opts ...pulumi.InvokeOption) GetHcVpnGatewayResultOutput {
@@ -123,6 +127,10 @@ func (o GetHcVpnGatewayResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHcVpnGatewayResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+func (o GetHcVpnGatewayResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetHcVpnGatewayResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 func (o GetHcVpnGatewayResultOutput) GatewayIpVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHcVpnGatewayResult) string { return v.GatewayIpVersion }).(pulumi.StringOutput)
 }
@@ -130,6 +138,14 @@ func (o GetHcVpnGatewayResultOutput) GatewayIpVersion() pulumi.StringOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o GetHcVpnGatewayResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHcVpnGatewayResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetHcVpnGatewayResultOutput) LabelFingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHcVpnGatewayResult) string { return v.LabelFingerprint }).(pulumi.StringOutput)
+}
+
+func (o GetHcVpnGatewayResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetHcVpnGatewayResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o GetHcVpnGatewayResultOutput) Name() pulumi.StringOutput {
@@ -142,6 +158,10 @@ func (o GetHcVpnGatewayResultOutput) Network() pulumi.StringOutput {
 
 func (o GetHcVpnGatewayResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHcVpnGatewayResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o GetHcVpnGatewayResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetHcVpnGatewayResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 func (o GetHcVpnGatewayResultOutput) Region() pulumi.StringPtrOutput {

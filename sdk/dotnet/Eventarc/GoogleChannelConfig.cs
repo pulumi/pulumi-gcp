@@ -12,9 +12,16 @@ namespace Pulumi.Gcp.Eventarc
     /// <summary>
     /// The Eventarc GoogleChannelConfig resource
     /// 
+    /// To get more information about GoogleChannelConfig, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/eventarc/docs/reference/rest/v1/projects.locations)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/eventarc/docs/use-cmek#enable-cmek-google-channel)
+    /// 
     /// ## Example Usage
     /// 
-    /// ### Basic
+    /// ### Eventarc Google Channel Config With Cmek
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -31,7 +38,7 @@ namespace Pulumi.Gcp.Eventarc
     ///     var testKeyRing = Gcp.Kms.GetKMSKeyRing.Invoke(new()
     ///     {
     ///         Name = "keyring",
-    ///         Location = "us-west1",
+    ///         Location = "us-centra1",
     ///     });
     /// 
     ///     var key = Gcp.Kms.GetKMSCryptoKey.Invoke(new()
@@ -40,24 +47,23 @@ namespace Pulumi.Gcp.Eventarc
     ///         KeyRing = testKeyRing.Apply(getKMSKeyRingResult =&gt; getKMSKeyRingResult.Id),
     ///     });
     /// 
-    ///     var key1Member = new Gcp.Kms.CryptoKeyIAMMember("key1_member", new()
+    ///     var keyMember = new Gcp.Kms.CryptoKeyIAMMember("key_member", new()
     ///     {
-    ///         CryptoKeyId = key1.Id,
+    ///         CryptoKeyId = key.Apply(getKMSCryptoKeyResult =&gt; getKMSCryptoKeyResult.Id),
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
     ///         Member = $"serviceAccount:service-{testProject.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-eventarc.iam.gserviceaccount.com",
     ///     });
     /// 
     ///     var primary = new Gcp.Eventarc.GoogleChannelConfig("primary", new()
     ///     {
-    ///         Location = "us-west1",
-    ///         Name = "channel",
-    ///         Project = testProject.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
-    ///         CryptoKeyName = key1.Id,
+    ///         Location = "us-central1",
+    ///         Name = "googleChannelConfig",
+    ///         CryptoKeyName = key.Apply(getKMSCryptoKeyResult =&gt; getKMSCryptoKeyResult.Id),
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
     ///         {
-    ///             key1Member,
+    ///             keyMember,
     ///         },
     ///     });
     /// 
@@ -99,22 +105,22 @@ namespace Pulumi.Gcp.Eventarc
 
         /// <summary>
         /// The location for the resource
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -179,22 +185,22 @@ namespace Pulumi.Gcp.Eventarc
 
         /// <summary>
         /// The location for the resource
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -215,22 +221,22 @@ namespace Pulumi.Gcp.Eventarc
 
         /// <summary>
         /// The location for the resource
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

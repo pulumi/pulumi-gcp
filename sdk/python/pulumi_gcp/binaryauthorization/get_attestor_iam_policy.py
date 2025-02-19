@@ -98,7 +98,7 @@ def get_attestor_iam_policy(attestor: Optional[str] = None,
     """
     Retrieves the current IAM policy data for attestor
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -131,7 +131,7 @@ def get_attestor_iam_policy_output(attestor: Optional[pulumi.Input[str]] = None,
     """
     Retrieves the current IAM policy data for attestor
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

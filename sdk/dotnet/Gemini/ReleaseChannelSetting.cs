@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Gemini
 {
     /// <summary>
+    /// The resource for managing ReleaseChannel settings for Admin Control.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Gemini Release Channel Setting Basic
@@ -26,6 +28,10 @@ namespace Pulumi.Gcp.Gemini
     ///     {
     ///         ReleaseChannelSettingId = "ls1-tf",
     ///         Location = "global",
+    ///         Labels = 
+    ///         {
+    ///             { "my_key", "my_value" },
+    ///         },
     ///         ReleaseChannel = "EXPERIMENTAL",
     ///     });
     /// 
@@ -60,7 +66,7 @@ namespace Pulumi.Gcp.Gemini
     public partial class ReleaseChannelSetting : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Output only. [Output only] Create time stamp.
+        /// Create time stamp.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -72,7 +78,7 @@ namespace Pulumi.Gcp.Gemini
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Labels as key value pairs.
+        /// Labels as key value pairs.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -107,7 +113,7 @@ namespace Pulumi.Gcp.Gemini
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Release channel to be used.
+        /// Release channel to be used.
         /// Possible values:
         /// STABLE
         /// EXPERIMENTAL
@@ -116,9 +122,7 @@ namespace Pulumi.Gcp.Gemini
         public Output<string?> ReleaseChannel { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Id of the requesting object.
-        /// If auto-generating Id server-side, remove this field and
-        /// release_channel_setting_id from the method_signature of Create RPC
+        /// Id of the Release Channel Setting.
         /// 
         /// 
         /// - - -
@@ -127,7 +131,7 @@ namespace Pulumi.Gcp.Gemini
         public Output<string> ReleaseChannelSettingId { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. [Output only] Update time stamp.
+        /// Update time stamp.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -187,7 +191,7 @@ namespace Pulumi.Gcp.Gemini
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Labels as key value pairs.
+        /// Labels as key value pairs.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -211,7 +215,7 @@ namespace Pulumi.Gcp.Gemini
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Optional. Release channel to be used.
+        /// Release channel to be used.
         /// Possible values:
         /// STABLE
         /// EXPERIMENTAL
@@ -220,9 +224,7 @@ namespace Pulumi.Gcp.Gemini
         public Input<string>? ReleaseChannel { get; set; }
 
         /// <summary>
-        /// Required. Id of the requesting object.
-        /// If auto-generating Id server-side, remove this field and
-        /// release_channel_setting_id from the method_signature of Create RPC
+        /// Id of the Release Channel Setting.
         /// 
         /// 
         /// - - -
@@ -239,7 +241,7 @@ namespace Pulumi.Gcp.Gemini
     public sealed class ReleaseChannelSettingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. [Output only] Create time stamp.
+        /// Create time stamp.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -264,7 +266,7 @@ namespace Pulumi.Gcp.Gemini
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Labels as key value pairs.
+        /// Labels as key value pairs.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -312,7 +314,7 @@ namespace Pulumi.Gcp.Gemini
         }
 
         /// <summary>
-        /// Optional. Release channel to be used.
+        /// Release channel to be used.
         /// Possible values:
         /// STABLE
         /// EXPERIMENTAL
@@ -321,9 +323,7 @@ namespace Pulumi.Gcp.Gemini
         public Input<string>? ReleaseChannel { get; set; }
 
         /// <summary>
-        /// Required. Id of the requesting object.
-        /// If auto-generating Id server-side, remove this field and
-        /// release_channel_setting_id from the method_signature of Create RPC
+        /// Id of the Release Channel Setting.
         /// 
         /// 
         /// - - -
@@ -332,7 +332,7 @@ namespace Pulumi.Gcp.Gemini
         public Input<string>? ReleaseChannelSettingId { get; set; }
 
         /// <summary>
-        /// Output only. [Output only] Update time stamp.
+        /// Update time stamp.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

@@ -106,7 +106,17 @@ def get_ai_endpoint_iam_policy(endpoint: Optional[str] = None,
                                project: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiEndpointIamPolicyResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.vertex.get_ai_endpoint_iam_policy(project=endpoint["project"],
+        location=endpoint["location"],
+        endpoint=endpoint["name"])
+    ```
+
 
     :param str endpoint: Used to find the parent resource to bind the IAM policy to
     :param str location: The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -134,7 +144,17 @@ def get_ai_endpoint_iam_policy_output(endpoint: Optional[pulumi.Input[str]] = No
                                       project: Optional[pulumi.Input[Optional[str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiEndpointIamPolicyResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.vertex.get_ai_endpoint_iam_policy(project=endpoint["project"],
+        location=endpoint["location"],
+        endpoint=endpoint["name"])
+    ```
+
 
     :param str endpoint: Used to find the parent resource to bind the IAM policy to
     :param str location: The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,

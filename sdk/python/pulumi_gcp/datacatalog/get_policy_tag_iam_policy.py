@@ -88,7 +88,7 @@ def get_policy_tag_iam_policy(policy_tag: Optional[str] = None,
     """
     Retrieves the current IAM policy data for policytag
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -115,7 +115,7 @@ def get_policy_tag_iam_policy_output(policy_tag: Optional[pulumi.Input[str]] = N
     """
     Retrieves the current IAM policy data for policytag
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

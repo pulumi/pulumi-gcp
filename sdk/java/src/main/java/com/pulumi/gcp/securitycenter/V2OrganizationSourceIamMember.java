@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Three different resources help you manage your IAM policy for Security Command Center (SCC)v2 API OrganizationSource. Each of these resources serves a different use case:
+ * Three different resources help you manage your IAM policy for Security Command Center (SCC) v2 API OrganizationSource. Each of these resources serves a different use case:
  * 
  * * `gcp.securitycenter.V2OrganizationSourceIamPolicy`: Authoritative. Sets the IAM policy for the organizationsource and replaces any existing policy already attached.
  * * `gcp.securitycenter.V2OrganizationSourceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the organizationsource are preserved.
@@ -154,8 +154,8 @@ import javax.annotation.Nullable;
  * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * ---
  * 
- * # IAM policy for Security Command Center (SCC)v2 API OrganizationSource
- * Three different resources help you manage your IAM policy for Security Command Center (SCC)v2 API OrganizationSource. Each of these resources serves a different use case:
+ * # IAM policy for Security Command Center (SCC) v2 API OrganizationSource
+ * Three different resources help you manage your IAM policy for Security Command Center (SCC) v2 API OrganizationSource. Each of these resources serves a different use case:
  * 
  * * `gcp.securitycenter.V2OrganizationSourceIamPolicy`: Authoritative. Sets the IAM policy for the organizationsource and replaces any existing policy already attached.
  * * `gcp.securitycenter.V2OrganizationSourceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the organizationsource are preserved.
@@ -300,7 +300,7 @@ import javax.annotation.Nullable;
  * 
  * Any variables not passed in the import command will be taken from the provider configuration.
  * 
- * Security Command Center (SCC)v2 API organizationsource IAM resources can be imported using the resource identifiers, role, and member.
+ * Security Command Center (SCC) v2 API organizationsource IAM resources can be imported using the resource identifiers, role, and member.
  * 
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  * 

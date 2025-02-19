@@ -108,7 +108,7 @@ def get_autoscaling_policy_iam_policy(location: Optional[str] = None,
     """
     Retrieves the current IAM policy data for autoscalingpolicy
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -153,7 +153,7 @@ def get_autoscaling_policy_iam_policy_output(location: Optional[pulumi.Input[Opt
     """
     Retrieves the current IAM policy data for autoscalingpolicy
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

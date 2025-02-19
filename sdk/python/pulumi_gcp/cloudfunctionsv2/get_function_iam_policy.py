@@ -108,7 +108,7 @@ def get_function_iam_policy(cloud_function: Optional[str] = None,
     """
     Retrieves the current IAM policy data for function
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -148,7 +148,7 @@ def get_function_iam_policy_output(cloud_function: Optional[pulumi.Input[str]] =
     """
     Retrieves the current IAM policy data for function
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
