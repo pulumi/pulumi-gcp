@@ -86,7 +86,15 @@ class AwaitableGetNamespaceIamPolicyResult(GetNamespaceIamPolicyResult):
 def get_namespace_iam_policy(name: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNamespaceIamPolicyResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.servicedirectory.get_namespace_iam_policy(name=example["name"])
+    ```
+
 
     :param str name: Used to find the parent resource to bind the IAM policy to
     """
@@ -103,7 +111,15 @@ def get_namespace_iam_policy(name: Optional[str] = None,
 def get_namespace_iam_policy_output(name: Optional[pulumi.Input[str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNamespaceIamPolicyResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.servicedirectory.get_namespace_iam_policy(name=example["name"])
+    ```
+
 
     :param str name: Used to find the parent resource to bind the IAM policy to
     """

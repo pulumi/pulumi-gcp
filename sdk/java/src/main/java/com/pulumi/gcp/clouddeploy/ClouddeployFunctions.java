@@ -24,7 +24,7 @@ public final class ClouddeployFunctions {
     /**
      * Retrieves the current IAM policy data for customtargettype
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -68,7 +68,7 @@ public final class ClouddeployFunctions {
     /**
      * Retrieves the current IAM policy data for customtargettype
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -112,7 +112,7 @@ public final class ClouddeployFunctions {
     /**
      * Retrieves the current IAM policy data for customtargettype
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -156,7 +156,7 @@ public final class ClouddeployFunctions {
     /**
      * Retrieves the current IAM policy data for customtargettype
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -200,7 +200,7 @@ public final class ClouddeployFunctions {
     /**
      * Retrieves the current IAM policy data for customtargettype
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -244,7 +244,7 @@ public final class ClouddeployFunctions {
     /**
      * Retrieves the current IAM policy data for deliverypipeline
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -288,7 +288,7 @@ public final class ClouddeployFunctions {
     /**
      * Retrieves the current IAM policy data for deliverypipeline
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -332,7 +332,7 @@ public final class ClouddeployFunctions {
     /**
      * Retrieves the current IAM policy data for deliverypipeline
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -376,7 +376,7 @@ public final class ClouddeployFunctions {
     /**
      * Retrieves the current IAM policy data for deliverypipeline
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -420,7 +420,7 @@ public final class ClouddeployFunctions {
     /**
      * Retrieves the current IAM policy data for deliverypipeline
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -464,7 +464,7 @@ public final class ClouddeployFunctions {
     /**
      * Retrieves the current IAM policy data for target
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -508,7 +508,7 @@ public final class ClouddeployFunctions {
     /**
      * Retrieves the current IAM policy data for target
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -552,7 +552,7 @@ public final class ClouddeployFunctions {
     /**
      * Retrieves the current IAM policy data for target
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -596,7 +596,7 @@ public final class ClouddeployFunctions {
     /**
      * Retrieves the current IAM policy data for target
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -640,7 +640,7 @@ public final class ClouddeployFunctions {
     /**
      * Retrieves the current IAM policy data for target
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

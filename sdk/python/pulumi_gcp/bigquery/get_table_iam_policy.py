@@ -108,7 +108,7 @@ def get_table_iam_policy(dataset_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for table
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -144,7 +144,7 @@ def get_table_iam_policy_output(dataset_id: Optional[pulumi.Input[str]] = None,
     """
     Retrieves the current IAM policy data for table
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

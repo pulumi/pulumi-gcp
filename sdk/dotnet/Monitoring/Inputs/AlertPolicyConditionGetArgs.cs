@@ -46,6 +46,15 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public Input<Inputs.AlertPolicyConditionConditionPrometheusQueryLanguageGetArgs>? ConditionPrometheusQueryLanguage { get; set; }
 
         /// <summary>
+        /// A condition that allows alerting policies to be defined using GoogleSQL.
+        /// SQL conditions examine a sliding window of logs using GoogleSQL.
+        /// Alert policies with SQL conditions may incur additional billing.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("conditionSql")]
+        public Input<Inputs.AlertPolicyConditionConditionSqlGetArgs>? ConditionSql { get; set; }
+
+        /// <summary>
         /// A condition that compares a time series against a
         /// threshold.
         /// Structure is documented below.

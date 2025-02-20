@@ -98,7 +98,7 @@ def get_web_type_app_engine_iam_policy(app_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for webtypeappengine
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -131,7 +131,7 @@ def get_web_type_app_engine_iam_policy_output(app_id: Optional[pulumi.Input[str]
     """
     Retrieves the current IAM policy data for webtypeappengine
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Retrieves the current IAM policy data for topic
  *
- * ## example
+ * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -65,7 +65,7 @@ export interface GetTopicIamPolicyResult {
 /**
  * Retrieves the current IAM policy data for topic
  *
- * ## example
+ * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -4,6 +4,19 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.apigateway.getApiIamPolicy({
+ *     project: api.project,
+ *     api: api.apiId,
+ * });
+ * ```
+ */
 export function getApiIamPolicy(args: GetApiIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetApiIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:apigateway/getApiIamPolicy:getApiIamPolicy", {
@@ -44,6 +57,19 @@ export interface GetApiIamPolicyResult {
     readonly policyData: string;
     readonly project: string;
 }
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.apigateway.getApiIamPolicy({
+ *     project: api.project,
+ *     api: api.apiId,
+ * });
+ * ```
+ */
 export function getApiIamPolicyOutput(args: GetApiIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:apigateway/getApiIamPolicy:getApiIamPolicy", {

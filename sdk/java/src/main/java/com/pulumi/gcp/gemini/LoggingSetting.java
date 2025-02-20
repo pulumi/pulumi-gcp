@@ -18,8 +18,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The resource for managing Logging settings for Admin Control.
- * 
  * ## Example Usage
  * 
  * ### Gemini Logging Setting Basic
@@ -50,6 +48,7 @@ import javax.annotation.Nullable;
  *         var example = new LoggingSetting("example", LoggingSettingArgs.builder()
  *             .loggingSettingId("ls1-tf")
  *             .location("global")
+ *             .labels(Map.of("my_key", "my_value"))
  *             .logPromptsAndResponses(true)
  *             .logMetadata(true)
  *             .build());
@@ -88,14 +87,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:gemini/loggingSetting:LoggingSetting")
 public class LoggingSetting extends com.pulumi.resources.CustomResource {
     /**
-     * Output only. [Output only] Create time stamp.
+     * Create time stamp.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Output only. [Output only] Create time stamp.
+     * @return Create time stamp.
      * 
      */
     public Output<String> createTime() {
@@ -116,7 +115,7 @@ public class LoggingSetting extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * Optional. Labels as key value pairs.
+     * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -125,7 +124,7 @@ public class LoggingSetting extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels as key value pairs.
+     * @return Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -148,37 +147,35 @@ public class LoggingSetting extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * Optional. Whether to log metadata.
+     * Whether to log metadata.
      * 
      */
     @Export(name="logMetadata", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> logMetadata;
 
     /**
-     * @return Optional. Whether to log metadata.
+     * @return Whether to log metadata.
      * 
      */
     public Output<Optional<Boolean>> logMetadata() {
         return Codegen.optional(this.logMetadata);
     }
     /**
-     * Optional. Whether to log prompts and responses.
+     * Whether to log prompts and responses.
      * 
      */
     @Export(name="logPromptsAndResponses", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> logPromptsAndResponses;
 
     /**
-     * @return Optional. Whether to log prompts and responses.
+     * @return Whether to log prompts and responses.
      * 
      */
     public Output<Optional<Boolean>> logPromptsAndResponses() {
         return Codegen.optional(this.logPromptsAndResponses);
     }
     /**
-     * Required. Id of the requesting object.
-     * If auto-generating Id server-side, remove this field and
-     * setting_id from the method_signature of Create RPC.
+     * Id of the Logging Setting.
      * 
      * ***
      * 
@@ -187,9 +184,7 @@ public class LoggingSetting extends com.pulumi.resources.CustomResource {
     private Output<String> loggingSettingId;
 
     /**
-     * @return Required. Id of the requesting object.
-     * If auto-generating Id server-side, remove this field and
-     * setting_id from the method_signature of Create RPC.
+     * @return Id of the Logging Setting.
      * 
      * ***
      * 
@@ -246,14 +241,14 @@ public class LoggingSetting extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
-     * Output only. [Output only] Update time stamp.
+     * Update time stamp.
      * 
      */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
-     * @return Output only. [Output only] Update time stamp.
+     * @return Update time stamp.
      * 
      */
     public Output<String> updateTime() {

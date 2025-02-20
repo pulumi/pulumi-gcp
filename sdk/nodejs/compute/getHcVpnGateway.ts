@@ -57,14 +57,18 @@ export interface GetHcVpnGatewayArgs {
  */
 export interface GetHcVpnGatewayResult {
     readonly description: string;
+    readonly effectiveLabels: {[key: string]: string};
     readonly gatewayIpVersion: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly labelFingerprint: string;
+    readonly labels: {[key: string]: string};
     readonly name: string;
     readonly network: string;
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly region?: string;
     readonly selfLink: string;
     readonly stackType: string;

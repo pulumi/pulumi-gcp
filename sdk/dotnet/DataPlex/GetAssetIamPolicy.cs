@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.DataPlex
         /// Retrieves the current IAM policy data for asset
         /// 
         /// 
-        /// ## example
+        /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.DataPlex
         /// Retrieves the current IAM policy data for asset
         /// 
         /// 
-        /// ## example
+        /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -73,7 +73,7 @@ namespace Pulumi.Gcp.DataPlex
         /// Retrieves the current IAM policy data for asset
         /// 
         /// 
-        /// ## example
+        /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

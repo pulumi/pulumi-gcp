@@ -26,13 +26,13 @@ class GoogleChannelConfigArgs:
         """
         The set of arguments for constructing a GoogleChannelConfig resource.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
-        :param pulumi.Input[str] name: Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-               
                
                
                - - -
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        :param pulumi.Input[str] name: Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "location", location)
         if crypto_key_name is not None:
@@ -47,6 +47,9 @@ class GoogleChannelConfigArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location for the resource
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -71,10 +74,6 @@ class GoogleChannelConfigArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -86,7 +85,8 @@ class GoogleChannelConfigArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -107,12 +107,12 @@ class _GoogleChannelConfigState:
         Input properties used for looking up and filtering GoogleChannelConfig resources.
         :param pulumi.Input[str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[str] name: Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-               
                
                
                - - -
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] name: Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] update_time: Output only. The last-modified time.
         """
         if crypto_key_name is not None:
@@ -143,6 +143,9 @@ class _GoogleChannelConfigState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location for the resource
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -155,10 +158,6 @@ class _GoogleChannelConfigState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -170,7 +169,8 @@ class _GoogleChannelConfigState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -204,28 +204,34 @@ class GoogleChannelConfig(pulumi.CustomResource):
         """
         The Eventarc GoogleChannelConfig resource
 
+        To get more information about GoogleChannelConfig, see:
+
+        * [API documentation](https://cloud.google.com/eventarc/docs/reference/rest/v1/projects.locations)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/eventarc/docs/use-cmek#enable-cmek-google-channel)
+
         ## Example Usage
 
-        ### Basic
+        ### Eventarc Google Channel Config With Cmek
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         test_project = gcp.organizations.get_project(project_id="my-project-name")
         test_key_ring = gcp.kms.get_kms_key_ring(name="keyring",
-            location="us-west1")
+            location="us-centra1")
         key = gcp.kms.get_kms_crypto_key(name="key",
             key_ring=test_key_ring.id)
-        key1_member = gcp.kms.CryptoKeyIAMMember("key1_member",
-            crypto_key_id=key1["id"],
+        key_member = gcp.kms.CryptoKeyIAMMember("key_member",
+            crypto_key_id=key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{test_project.number}@gcp-sa-eventarc.iam.gserviceaccount.com")
         primary = gcp.eventarc.GoogleChannelConfig("primary",
-            location="us-west1",
-            name="channel",
-            project=test_project.project_id,
-            crypto_key_name=key1["id"],
-            opts = pulumi.ResourceOptions(depends_on=[key1_member]))
+            location="us-central1",
+            name="googleChannelConfig",
+            crypto_key_name=key.id,
+            opts = pulumi.ResourceOptions(depends_on=[key_member]))
         ```
 
         ## Import
@@ -256,12 +262,12 @@ class GoogleChannelConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[str] name: Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-               
                
                
                - - -
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] name: Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         ...
     @overload
@@ -272,28 +278,34 @@ class GoogleChannelConfig(pulumi.CustomResource):
         """
         The Eventarc GoogleChannelConfig resource
 
+        To get more information about GoogleChannelConfig, see:
+
+        * [API documentation](https://cloud.google.com/eventarc/docs/reference/rest/v1/projects.locations)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/eventarc/docs/use-cmek#enable-cmek-google-channel)
+
         ## Example Usage
 
-        ### Basic
+        ### Eventarc Google Channel Config With Cmek
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         test_project = gcp.organizations.get_project(project_id="my-project-name")
         test_key_ring = gcp.kms.get_kms_key_ring(name="keyring",
-            location="us-west1")
+            location="us-centra1")
         key = gcp.kms.get_kms_crypto_key(name="key",
             key_ring=test_key_ring.id)
-        key1_member = gcp.kms.CryptoKeyIAMMember("key1_member",
-            crypto_key_id=key1["id"],
+        key_member = gcp.kms.CryptoKeyIAMMember("key_member",
+            crypto_key_id=key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{test_project.number}@gcp-sa-eventarc.iam.gserviceaccount.com")
         primary = gcp.eventarc.GoogleChannelConfig("primary",
-            location="us-west1",
-            name="channel",
-            project=test_project.project_id,
-            crypto_key_name=key1["id"],
-            opts = pulumi.ResourceOptions(depends_on=[key1_member]))
+            location="us-central1",
+            name="googleChannelConfig",
+            crypto_key_name=key.id,
+            opts = pulumi.ResourceOptions(depends_on=[key_member]))
         ```
 
         ## Import
@@ -379,12 +391,12 @@ class GoogleChannelConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[str] name: Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-               
                
                
                - - -
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] name: Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] update_time: Output only. The last-modified time.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -411,6 +423,9 @@ class GoogleChannelConfig(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location for the resource
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -419,10 +434,6 @@ class GoogleChannelConfig(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -430,7 +441,8 @@ class GoogleChannelConfig(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 

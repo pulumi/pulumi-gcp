@@ -98,7 +98,7 @@ def get_consent_store_iam_policy(consent_store_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for consentstore
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -132,7 +132,7 @@ def get_consent_store_iam_policy_output(consent_store_id: Optional[pulumi.Input[
     """
     Retrieves the current IAM policy data for consentstore
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Retrieves the current IAM policy data for web
  *
- * ## example
+ * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -59,7 +59,7 @@ export interface GetWebIamPolicyResult {
 /**
  * Retrieves the current IAM policy data for web
  *
- * ## example
+ * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

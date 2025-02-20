@@ -492,15 +492,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.sql.DatabaseArgs;
  * import com.pulumi.gcp.sql.User;
  * import com.pulumi.gcp.sql.UserArgs;
- * import com.pulumi.gcp.bigquery.BigqueryFunctions;
- * import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
- * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
- * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
  * import com.pulumi.gcp.bigquery.Connection;
  * import com.pulumi.gcp.bigquery.ConnectionArgs;
  * import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSqlArgs;
  * import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSqlCredentialArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -535,14 +530,6 @@ import javax.annotation.Nullable;
  *             .password("tf-test-my-password_15222")
  *             .build());
  * 
- *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
- * 
- *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()
- *             .cryptoKeyId("projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key")
- *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(String.format("serviceAccount:%s", bqSa.applyValue(getDefaultServiceAccountResult -> getDefaultServiceAccountResult.email())))
- *             .build());
- * 
  *         var bq_connection_cmek = new Connection("bq-connection-cmek", ConnectionArgs.builder()
  *             .friendlyName("👋")
  *             .description("a riveting description")
@@ -557,9 +544,7 @@ import javax.annotation.Nullable;
  *                     .password(user.password())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(keySaUser)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

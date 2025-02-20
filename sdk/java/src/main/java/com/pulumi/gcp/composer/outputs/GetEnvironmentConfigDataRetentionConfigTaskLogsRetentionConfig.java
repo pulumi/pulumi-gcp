@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig {
     /**
-     * @return Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+     * @return Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer but not in composer-3*
      * 
      */
     private String storageMode;
 
     private GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig() {}
     /**
-     * @return Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+     * @return Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer but not in composer-3*
      * 
      */
     public String storageMode() {

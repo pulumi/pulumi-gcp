@@ -106,7 +106,16 @@ def get_api_config_iam_policy(api: Optional[str] = None,
                               project: Optional[str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApiConfigIamPolicyResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.apigateway.get_api_config_iam_policy(api=api_cfg["api"],
+        api_config=api_cfg["apiConfigId"])
+    ```
+
 
     :param str api: The API to attach the config to.
            Used to find the parent resource to bind the IAM policy to
@@ -132,7 +141,16 @@ def get_api_config_iam_policy_output(api: Optional[pulumi.Input[str]] = None,
                                      project: Optional[pulumi.Input[Optional[str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApiConfigIamPolicyResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.apigateway.get_api_config_iam_policy(api=api_cfg["api"],
+        api_config=api_cfg["apiConfigId"])
+    ```
+
 
     :param str api: The API to attach the config to.
            Used to find the parent resource to bind the IAM policy to

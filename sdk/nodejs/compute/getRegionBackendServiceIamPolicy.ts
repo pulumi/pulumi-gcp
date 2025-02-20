@@ -4,6 +4,20 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.compute.getRegionBackendServiceIamPolicy({
+ *     project: _default.project,
+ *     region: _default.region,
+ *     name: _default.name,
+ * });
+ * ```
+ */
 export function getRegionBackendServiceIamPolicy(args: GetRegionBackendServiceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionBackendServiceIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy", {
@@ -57,6 +71,20 @@ export interface GetRegionBackendServiceIamPolicyResult {
     readonly project: string;
     readonly region: string;
 }
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.compute.getRegionBackendServiceIamPolicy({
+ *     project: _default.project,
+ *     region: _default.region,
+ *     name: _default.name,
+ * });
+ * ```
+ */
 export function getRegionBackendServiceIamPolicyOutput(args: GetRegionBackendServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionBackendServiceIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy", {

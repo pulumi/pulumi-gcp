@@ -6,6 +6,7 @@ package com.pulumi.gcp.accesscontextmanager.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.accesscontextmanager.outputs.ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom;
 import com.pulumi.gcp.accesscontextmanager.outputs.ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -25,6 +26,11 @@ public final class ServicePerimetersServicePerimeterSpecEgressPolicy {
      * 
      */
     private @Nullable ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo egressTo;
+    /**
+     * @return Human readable title. Must be unique within the perimeter. Does not affect behavior.
+     * 
+     */
+    private @Nullable String title;
 
     private ServicePerimetersServicePerimeterSpecEgressPolicy() {}
     /**
@@ -44,6 +50,13 @@ public final class ServicePerimetersServicePerimeterSpecEgressPolicy {
     public Optional<ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo> egressTo() {
         return Optional.ofNullable(this.egressTo);
     }
+    /**
+     * @return Human readable title. Must be unique within the perimeter. Does not affect behavior.
+     * 
+     */
+    public Optional<String> title() {
+        return Optional.ofNullable(this.title);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -56,11 +69,13 @@ public final class ServicePerimetersServicePerimeterSpecEgressPolicy {
     public static final class Builder {
         private @Nullable ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom egressFrom;
         private @Nullable ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo egressTo;
+        private @Nullable String title;
         public Builder() {}
         public Builder(ServicePerimetersServicePerimeterSpecEgressPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.egressFrom = defaults.egressFrom;
     	      this.egressTo = defaults.egressTo;
+    	      this.title = defaults.title;
         }
 
         @CustomType.Setter
@@ -75,10 +90,17 @@ public final class ServicePerimetersServicePerimeterSpecEgressPolicy {
             this.egressTo = egressTo;
             return this;
         }
+        @CustomType.Setter
+        public Builder title(@Nullable String title) {
+
+            this.title = title;
+            return this;
+        }
         public ServicePerimetersServicePerimeterSpecEgressPolicy build() {
             final var _resultValue = new ServicePerimetersServicePerimeterSpecEgressPolicy();
             _resultValue.egressFrom = egressFrom;
             _resultValue.egressTo = egressTo;
+            _resultValue.title = title;
             return _resultValue;
         }
     }

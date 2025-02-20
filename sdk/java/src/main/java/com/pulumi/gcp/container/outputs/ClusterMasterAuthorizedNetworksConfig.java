@@ -26,7 +26,7 @@ public final class ClusterMasterAuthorizedNetworksConfig {
      */
     private @Nullable Boolean gcpPublicCidrsAccessEnabled;
     /**
-     * @return Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+     * @return Whether authorized networks is enforced on the private endpoint or not.
      * 
      */
     private @Nullable Boolean privateEndpointEnforcementEnabled;
@@ -49,7 +49,7 @@ public final class ClusterMasterAuthorizedNetworksConfig {
         return Optional.ofNullable(this.gcpPublicCidrsAccessEnabled);
     }
     /**
-     * @return Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+     * @return Whether authorized networks is enforced on the private endpoint or not.
      * 
      */
     public Optional<Boolean> privateEndpointEnforcementEnabled() {

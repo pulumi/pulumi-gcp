@@ -88,7 +88,7 @@ def get_bucket_iam_policy(bucket: Optional[str] = None,
     """
     Retrieves the current IAM policy data for bucket
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -115,7 +115,7 @@ def get_bucket_iam_policy_output(bucket: Optional[pulumi.Input[str]] = None,
     """
     Retrieves the current IAM policy data for bucket
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

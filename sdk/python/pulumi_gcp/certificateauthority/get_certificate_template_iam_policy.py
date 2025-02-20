@@ -108,7 +108,7 @@ def get_certificate_template_iam_policy(certificate_template: Optional[str] = No
     """
     Retrieves the current IAM policy data for certificatetemplate
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -146,7 +146,7 @@ def get_certificate_template_iam_policy_output(certificate_template: Optional[pu
     """
     Retrieves the current IAM policy data for certificatetemplate
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

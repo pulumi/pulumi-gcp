@@ -45,6 +45,12 @@ namespace Pulumi.Gcp.AccessContextManager
         public Output<string> AccessPolicyId { get; private set; } = null!;
 
         /// <summary>
+        /// The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
         /// Defines the conditions on the source of a request causing this `IngressPolicy`
         /// to apply.
         /// Structure is documented below.
@@ -68,6 +74,12 @@ namespace Pulumi.Gcp.AccessContextManager
         /// </summary>
         [Output("perimeter")]
         public Output<string> Perimeter { get; private set; } = null!;
+
+        /// <summary>
+        /// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+        /// </summary>
+        [Output("title")]
+        public Output<string?> Title { get; private set; } = null!;
 
 
         /// <summary>
@@ -140,6 +152,12 @@ namespace Pulumi.Gcp.AccessContextManager
         [Input("perimeter", required: true)]
         public Input<string> Perimeter { get; set; } = null!;
 
+        /// <summary>
+        /// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+        /// </summary>
+        [Input("title")]
+        public Input<string>? Title { get; set; }
+
         public ServicePerimeterIngressPolicyArgs()
         {
         }
@@ -153,6 +171,12 @@ namespace Pulumi.Gcp.AccessContextManager
         /// </summary>
         [Input("accessPolicyId")]
         public Input<string>? AccessPolicyId { get; set; }
+
+        /// <summary>
+        /// The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
+        /// </summary>
+        [Input("etag")]
+        public Input<string>? Etag { get; set; }
 
         /// <summary>
         /// Defines the conditions on the source of a request causing this `IngressPolicy`
@@ -178,6 +202,12 @@ namespace Pulumi.Gcp.AccessContextManager
         /// </summary>
         [Input("perimeter")]
         public Input<string>? Perimeter { get; set; }
+
+        /// <summary>
+        /// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+        /// </summary>
+        [Input("title")]
+        public Input<string>? Title { get; set; }
 
         public ServicePerimeterIngressPolicyState()
         {

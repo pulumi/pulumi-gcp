@@ -54,11 +54,8 @@ class InstanceTemplateArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateDiskArgs']]] disks: Disks to attach to instances created from this template.
                This can be specified multiple times for multiple disks. Structure is
                documented below.
-        :param pulumi.Input[str] machine_type: The machine type to create.
-               
-               To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-               
-               - - -
+        :param pulumi.Input[str] machine_type: The machine type to create. To create a machine with a custom type (such as extended memory), format the value like
+               custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
         :param pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
@@ -196,11 +193,8 @@ class InstanceTemplateArgs:
     @pulumi.getter(name="machineType")
     def machine_type(self) -> pulumi.Input[str]:
         """
-        The machine type to create.
-
-        To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-
-        - - -
+        The machine type to create. To create a machine with a custom type (such as extended memory), format the value like
+        custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
         """
         return pulumi.get(self, "machine_type")
 
@@ -619,11 +613,8 @@ class _InstanceTemplateState:
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[str] machine_type: The machine type to create.
-               
-               To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-               
-               - - -
+        :param pulumi.Input[str] machine_type: The machine type to create. To create a machine with a custom type (such as extended memory), format the value like
+               custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
         :param pulumi.Input[str] metadata_fingerprint: The unique fingerprint of the metadata.
@@ -906,11 +897,8 @@ class _InstanceTemplateState:
     @pulumi.getter(name="machineType")
     def machine_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The machine type to create.
-
-        To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-
-        - - -
+        The machine type to create. To create a machine with a custom type (such as extended memory), format the value like
+        custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
         """
         return pulumi.get(self, "machine_type")
 
@@ -1524,11 +1512,8 @@ class InstanceTemplate(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[str] machine_type: The machine type to create.
-               
-               To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-               
-               - - -
+        :param pulumi.Input[str] machine_type: The machine type to create. To create a machine with a custom type (such as extended memory), format the value like
+               custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
         :param pulumi.Input[str] metadata_startup_script: An alternative to using the
@@ -2004,11 +1989,8 @@ class InstanceTemplate(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[str] machine_type: The machine type to create.
-               
-               To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-               
-               - - -
+        :param pulumi.Input[str] machine_type: The machine type to create. To create a machine with a custom type (such as extended memory), format the value like
+               custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
         :param pulumi.Input[str] metadata_fingerprint: The unique fingerprint of the metadata.
@@ -2213,11 +2195,8 @@ class InstanceTemplate(pulumi.CustomResource):
     @pulumi.getter(name="machineType")
     def machine_type(self) -> pulumi.Output[str]:
         """
-        The machine type to create.
-
-        To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-
-        - - -
+        The machine type to create. To create a machine with a custom type (such as extended memory), format the value like
+        custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
         """
         return pulumi.get(self, "machine_type")
 

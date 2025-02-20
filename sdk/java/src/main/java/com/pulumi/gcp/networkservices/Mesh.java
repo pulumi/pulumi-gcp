@@ -93,29 +93,64 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Network Services Mesh Location
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.networkservices.Mesh;
+ * import com.pulumi.gcp.networkservices.MeshArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Mesh("default", MeshArgs.builder()
+ *             .name("my-mesh")
+ *             .location("global")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Mesh can be imported using any of these accepted formats:
  * 
- * * `projects/{{project}}/locations/global/meshes/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/meshes/{{name}}`
  * 
- * * `{{project}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  * 
- * * `{{name}}`
+ * * `{{location}}/{{name}}`
  * 
  * When using the `pulumi import` command, Mesh can be imported using one of the formats above. For example:
  * 
  * ```sh
- * $ pulumi import gcp:networkservices/mesh:Mesh default projects/{{project}}/locations/global/meshes/{{name}}
+ * $ pulumi import gcp:networkservices/mesh:Mesh default projects/{{project}}/locations/{{location}}/meshes/{{name}}
  * ```
  * 
  * ```sh
- * $ pulumi import gcp:networkservices/mesh:Mesh default {{project}}/{{name}}
+ * $ pulumi import gcp:networkservices/mesh:Mesh default {{project}}/{{location}}/{{name}}
  * ```
  * 
  * ```sh
- * $ pulumi import gcp:networkservices/mesh:Mesh default {{name}}
+ * $ pulumi import gcp:networkservices/mesh:Mesh default {{location}}/{{name}}
  * ```
  * 
  */
@@ -202,6 +237,20 @@ public class Mesh extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> labels() {
         return Codegen.optional(this.labels);
+    }
+    /**
+     * Location (region) of the Mesh resource to be created. Only the value &#39;global&#39; is currently allowed; defaults to &#39;global&#39; if omitted.
+     * 
+     */
+    @Export(name="location", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> location;
+
+    /**
+     * @return Location (region) of the Mesh resource to be created. Only the value &#39;global&#39; is currently allowed; defaults to &#39;global&#39; if omitted.
+     * 
+     */
+    public Output<Optional<String>> location() {
+        return Codegen.optional(this.location);
     }
     /**
      * Short name of the Mesh resource to be created.

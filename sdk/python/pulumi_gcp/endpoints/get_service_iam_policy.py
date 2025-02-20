@@ -88,7 +88,7 @@ def get_service_iam_policy(service_name: Optional[str] = None,
     """
     Retrieves the current IAM policy data for service
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -112,7 +112,7 @@ def get_service_iam_policy_output(service_name: Optional[pulumi.Input[str]] = No
     """
     Retrieves the current IAM policy data for service
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

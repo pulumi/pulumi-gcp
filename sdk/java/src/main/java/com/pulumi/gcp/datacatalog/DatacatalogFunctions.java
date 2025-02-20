@@ -27,7 +27,7 @@ public final class DatacatalogFunctions {
     /**
      * Retrieves the current IAM policy data for entrygroup
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -69,7 +69,7 @@ public final class DatacatalogFunctions {
     /**
      * Retrieves the current IAM policy data for entrygroup
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -111,7 +111,7 @@ public final class DatacatalogFunctions {
     /**
      * Retrieves the current IAM policy data for entrygroup
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -153,7 +153,7 @@ public final class DatacatalogFunctions {
     /**
      * Retrieves the current IAM policy data for entrygroup
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -195,7 +195,7 @@ public final class DatacatalogFunctions {
     /**
      * Retrieves the current IAM policy data for entrygroup
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -237,7 +237,7 @@ public final class DatacatalogFunctions {
     /**
      * Retrieves the current IAM policy data for policytag
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -279,7 +279,7 @@ public final class DatacatalogFunctions {
     /**
      * Retrieves the current IAM policy data for policytag
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -321,7 +321,7 @@ public final class DatacatalogFunctions {
     /**
      * Retrieves the current IAM policy data for policytag
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -363,7 +363,7 @@ public final class DatacatalogFunctions {
     /**
      * Retrieves the current IAM policy data for policytag
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -405,7 +405,7 @@ public final class DatacatalogFunctions {
     /**
      * Retrieves the current IAM policy data for policytag
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -447,7 +447,7 @@ public final class DatacatalogFunctions {
     /**
      * Retrieves the current IAM policy data for tagtemplate
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -489,7 +489,7 @@ public final class DatacatalogFunctions {
     /**
      * Retrieves the current IAM policy data for tagtemplate
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -531,7 +531,7 @@ public final class DatacatalogFunctions {
     /**
      * Retrieves the current IAM policy data for tagtemplate
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -573,7 +573,7 @@ public final class DatacatalogFunctions {
     /**
      * Retrieves the current IAM policy data for tagtemplate
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -615,7 +615,7 @@ public final class DatacatalogFunctions {
     /**
      * Retrieves the current IAM policy data for tagtemplate
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -657,7 +657,7 @@ public final class DatacatalogFunctions {
     /**
      * Retrieves the current IAM policy data for taxonomy
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -699,7 +699,7 @@ public final class DatacatalogFunctions {
     /**
      * Retrieves the current IAM policy data for taxonomy
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -741,7 +741,7 @@ public final class DatacatalogFunctions {
     /**
      * Retrieves the current IAM policy data for taxonomy
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -783,7 +783,7 @@ public final class DatacatalogFunctions {
     /**
      * Retrieves the current IAM policy data for taxonomy
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -825,7 +825,7 @@ public final class DatacatalogFunctions {
     /**
      * Retrieves the current IAM policy data for taxonomy
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

@@ -283,6 +283,9 @@ func GetFirebaseAppCheckCustomEndpoint(ctx *pulumi.Context) string {
 func GetFirebaseCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:firebaseCustomEndpoint")
 }
+func GetFirebaseDataConnectCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:firebaseDataConnectCustomEndpoint")
+}
 func GetFirebaseDatabaseCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:firebaseDatabaseCustomEndpoint")
 }

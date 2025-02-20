@@ -23,10 +23,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex":
 		r = &CodeRepositoryIndex{}
+	case "gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting":
+		r = &DataSharingWithGoogleSetting{}
+	case "gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting":
+		r = &GeminiGcpEnablementSetting{}
 	case "gcp:gemini/loggingSetting:LoggingSetting":
 		r = &LoggingSetting{}
+	case "gcp:gemini/loggingSettingBinding:LoggingSettingBinding":
+		r = &LoggingSettingBinding{}
 	case "gcp:gemini/releaseChannelSetting:ReleaseChannelSetting":
 		r = &ReleaseChannelSetting{}
+	case "gcp:gemini/releaseChannelSettingBinding:ReleaseChannelSettingBinding":
+		r = &ReleaseChannelSettingBinding{}
 	case "gcp:gemini/repositoryGroup:RepositoryGroup":
 		r = &RepositoryGroup{}
 	case "gcp:gemini/repositoryGroupIamBinding:RepositoryGroupIamBinding":
@@ -55,12 +63,32 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"gemini/dataSharingWithGoogleSetting",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gemini/geminiGcpEnablementSetting",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"gemini/loggingSetting",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"gemini/loggingSettingBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"gemini/releaseChannelSetting",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gemini/releaseChannelSettingBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

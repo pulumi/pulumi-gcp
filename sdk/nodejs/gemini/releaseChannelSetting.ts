@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * The resource for managing ReleaseChannel settings for Admin Control.
+ *
  * ## Example Usage
  *
  * ### Gemini Release Channel Setting Basic
@@ -16,6 +18,9 @@ import * as utilities from "../utilities";
  * const example = new gcp.gemini.ReleaseChannelSetting("example", {
  *     releaseChannelSettingId: "ls1-tf",
  *     location: "global",
+ *     labels: {
+ *         my_key: "my_value",
+ *     },
  *     releaseChannel: "EXPERIMENTAL",
  * });
  * ```
@@ -73,7 +78,7 @@ export class ReleaseChannelSetting extends pulumi.CustomResource {
     }
 
     /**
-     * Output only. [Output only] Create time stamp.
+     * Create time stamp.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -81,7 +86,7 @@ export class ReleaseChannelSetting extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Optional. Labels as key value pairs.
+     * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
@@ -106,23 +111,21 @@ export class ReleaseChannelSetting extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Optional. Release channel to be used.
+     * Release channel to be used.
      * Possible values:
      * STABLE
      * EXPERIMENTAL
      */
     public readonly releaseChannel!: pulumi.Output<string | undefined>;
     /**
-     * Required. Id of the requesting object.
-     * If auto-generating Id server-side, remove this field and
-     * releaseChannelSettingId from the methodSignature of Create RPC
+     * Id of the Release Channel Setting.
      *
      *
      * - - -
      */
     public readonly releaseChannelSettingId!: pulumi.Output<string>;
     /**
-     * Output only. [Output only] Update time stamp.
+     * Update time stamp.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -180,7 +183,7 @@ export class ReleaseChannelSetting extends pulumi.CustomResource {
  */
 export interface ReleaseChannelSettingState {
     /**
-     * Output only. [Output only] Create time stamp.
+     * Create time stamp.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -188,7 +191,7 @@ export interface ReleaseChannelSettingState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Optional. Labels as key value pairs.
+     * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
@@ -213,23 +216,21 @@ export interface ReleaseChannelSettingState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Optional. Release channel to be used.
+     * Release channel to be used.
      * Possible values:
      * STABLE
      * EXPERIMENTAL
      */
     releaseChannel?: pulumi.Input<string>;
     /**
-     * Required. Id of the requesting object.
-     * If auto-generating Id server-side, remove this field and
-     * releaseChannelSettingId from the methodSignature of Create RPC
+     * Id of the Release Channel Setting.
      *
      *
      * - - -
      */
     releaseChannelSettingId?: pulumi.Input<string>;
     /**
-     * Output only. [Output only] Update time stamp.
+     * Update time stamp.
      */
     updateTime?: pulumi.Input<string>;
 }
@@ -239,7 +240,7 @@ export interface ReleaseChannelSettingState {
  */
 export interface ReleaseChannelSettingArgs {
     /**
-     * Optional. Labels as key value pairs.
+     * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
@@ -254,16 +255,14 @@ export interface ReleaseChannelSettingArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * Optional. Release channel to be used.
+     * Release channel to be used.
      * Possible values:
      * STABLE
      * EXPERIMENTAL
      */
     releaseChannel?: pulumi.Input<string>;
     /**
-     * Required. Id of the requesting object.
-     * If auto-generating Id server-side, remove this field and
-     * releaseChannelSettingId from the methodSignature of Create RPC
+     * Id of the Release Channel Setting.
      *
      *
      * - - -

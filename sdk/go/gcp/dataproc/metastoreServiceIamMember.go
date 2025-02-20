@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Three different resources help you manage your IAM policy for Dataproc metastore Service. Each of these resources serves a different use case:
+// Three different resources help you manage your IAM policy for Dataproc Metastore Service. Each of these resources serves a different use case:
 //
 // * `dataproc.MetastoreServiceIamPolicy`: Authoritative. Sets the IAM policy for the service and replaces any existing policy already attached.
 // * `dataproc.MetastoreServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service are preserved.
@@ -135,8 +135,8 @@ import (
 //
 // -
 //
-// # IAM policy for Dataproc metastore Service
-// Three different resources help you manage your IAM policy for Dataproc metastore Service. Each of these resources serves a different use case:
+// # IAM policy for Dataproc Metastore Service
+// Three different resources help you manage your IAM policy for Dataproc Metastore Service. Each of these resources serves a different use case:
 //
 // * `dataproc.MetastoreServiceIamPolicy`: Authoritative. Sets the IAM policy for the service and replaces any existing policy already attached.
 // * `dataproc.MetastoreServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service are preserved.
@@ -269,7 +269,7 @@ import (
 //
 // Any variables not passed in the import command will be taken from the provider configuration.
 //
-// Dataproc metastore service IAM resources can be imported using the resource identifiers, role, and member.
+// Dataproc Metastore service IAM resources can be imported using the resource identifiers, role, and member.
 //
 // IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
 //

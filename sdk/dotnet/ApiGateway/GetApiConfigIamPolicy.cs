@@ -11,12 +11,72 @@ namespace Pulumi.Gcp.ApiGateway
 {
     public static class GetApiConfigIamPolicy
     {
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.ApiGateway.GetApiConfigIamPolicy.Invoke(new()
+        ///     {
+        ///         Api = apiCfg.Api,
+        ///         ApiConfig = apiCfg.ApiConfigId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetApiConfigIamPolicyResult> InvokeAsync(GetApiConfigIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApiConfigIamPolicyResult>("gcp:apigateway/getApiConfigIamPolicy:getApiConfigIamPolicy", args ?? new GetApiConfigIamPolicyArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.ApiGateway.GetApiConfigIamPolicy.Invoke(new()
+        ///     {
+        ///         Api = apiCfg.Api,
+        ///         ApiConfig = apiCfg.ApiConfigId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetApiConfigIamPolicyResult> Invoke(GetApiConfigIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApiConfigIamPolicyResult>("gcp:apigateway/getApiConfigIamPolicy:getApiConfigIamPolicy", args ?? new GetApiConfigIamPolicyInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.ApiGateway.GetApiConfigIamPolicy.Invoke(new()
+        ///     {
+        ///         Api = apiCfg.Api,
+        ///         ApiConfig = apiCfg.ApiConfigId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetApiConfigIamPolicyResult> Invoke(GetApiConfigIamPolicyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetApiConfigIamPolicyResult>("gcp:apigateway/getApiConfigIamPolicy:getApiConfigIamPolicy", args ?? new GetApiConfigIamPolicyInvokeArgs(), options.WithDefaults());
     }

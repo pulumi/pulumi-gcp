@@ -921,6 +921,10 @@ export namespace accesscontextmanager {
          * Structure is documented below.
          */
         egressTo?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpecEgressPolicyEgressTo>;
+        /**
+         * Human readable title. Must be unique within the perimeter. Does not affect behavior.
+         */
+        title?: pulumi.Input<string>;
     }
 
     export interface ServicePerimeterSpecEgressPolicyEgressFrom {
@@ -1032,6 +1036,10 @@ export namespace accesscontextmanager {
          * Structure is documented below.
          */
         ingressTo?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpecIngressPolicyIngressTo>;
+        /**
+         * Human readable title. Must be unique within the perimeter. Does not affect behavior.
+         */
+        title?: pulumi.Input<string>;
     }
 
     export interface ServicePerimeterSpecIngressPolicyIngressFrom {
@@ -1198,6 +1206,10 @@ export namespace accesscontextmanager {
          * Structure is documented below.
          */
         egressTo?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatusEgressPolicyEgressTo>;
+        /**
+         * Human readable title. Must be unique within the perimeter. Does not affect behavior.
+         */
+        title?: pulumi.Input<string>;
     }
 
     export interface ServicePerimeterStatusEgressPolicyEgressFrom {
@@ -1309,6 +1321,10 @@ export namespace accesscontextmanager {
          * Structure is documented below.
          */
         ingressTo?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressTo>;
+        /**
+         * Human readable title. Must be unique within the perimeter. Does not affect behavior.
+         */
+        title?: pulumi.Input<string>;
     }
 
     export interface ServicePerimeterStatusIngressPolicyIngressFrom {
@@ -1549,6 +1565,10 @@ export namespace accesscontextmanager {
          * Structure is documented below.
          */
         egressTo?: pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo>;
+        /**
+         * Human readable title. Must be unique within the perimeter. Does not affect behavior.
+         */
+        title?: pulumi.Input<string>;
     }
 
     export interface ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom {
@@ -1662,6 +1682,10 @@ export namespace accesscontextmanager {
          * Structure is documented below.
          */
         ingressTo?: pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo>;
+        /**
+         * Human readable title. Must be unique within the perimeter. Does not affect behavior.
+         */
+        title?: pulumi.Input<string>;
     }
 
     export interface ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom {
@@ -1828,6 +1852,10 @@ export namespace accesscontextmanager {
          * Structure is documented below.
          */
         egressTo?: pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo>;
+        /**
+         * Human readable title. Must be unique within the perimeter. Does not affect behavior.
+         */
+        title?: pulumi.Input<string>;
     }
 
     export interface ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom {
@@ -1941,6 +1969,10 @@ export namespace accesscontextmanager {
          * Structure is documented below.
          */
         ingressTo?: pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo>;
+        /**
+         * Human readable title. Must be unique within the perimeter. Does not affect behavior.
+         */
+        title?: pulumi.Input<string>;
     }
 
     export interface ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom {
@@ -13908,7 +13940,8 @@ export namespace cloudrun {
         /**
          * The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project.
          * If the secret is in another project, you must define an alias.
-         * An alias definition has the form: :projects/{project-id|project-number}/secrets/.
+         * An alias definition has the form:
+         * {alias}:projects/{project-id|project-number}/secrets/{secret-name}.
          * If multiple alias definitions are needed, they must be separated by commas.
          * The alias definitions must be set on the run.googleapis.com/secrets annotation.
          */
@@ -16285,7 +16318,7 @@ export namespace composer {
 
     export interface EnvironmentConfigDataRetentionConfig {
         /**
-         * Optional. The configuration setting for database retention.
+         * Optional. The policy for airflow metadata database retention.
          */
         airflowMetadataRetentionConfigs?: pulumi.Input<pulumi.Input<inputs.composer.EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig>[]>;
         /**
@@ -16307,7 +16340,7 @@ export namespace composer {
 
     export interface EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig {
         /**
-         * Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+         * Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer but not in composer-3*
          */
         storageMode?: pulumi.Input<string>;
     }
@@ -19297,6 +19330,10 @@ export namespace compute {
          */
         availabilityDomain?: pulumi.Input<number>;
         /**
+         * Settings for the instance to perform a graceful shutdown.
+         */
+        gracefulShutdown?: pulumi.Input<inputs.compute.InstanceFromMachineImageSchedulingGracefulShutdown>;
+        /**
          * Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
          */
         hostErrorTimeoutSeconds?: pulumi.Input<number>;
@@ -19340,6 +19377,34 @@ export namespace compute {
          * Whether the instance is spot. If this is set as SPOT.
          */
         provisioningModel?: pulumi.Input<string>;
+    }
+
+    export interface InstanceFromMachineImageSchedulingGracefulShutdown {
+        /**
+         * Opts-in for graceful shutdown.
+         */
+        enabled: pulumi.Input<boolean>;
+        /**
+         * The time allotted for the instance to gracefully shut down.
+         * 										If the graceful shutdown isn't complete after this time, then the instance
+         * 										transitions to the STOPPING state.
+         */
+        maxDuration?: pulumi.Input<inputs.compute.InstanceFromMachineImageSchedulingGracefulShutdownMaxDuration>;
+    }
+
+    export interface InstanceFromMachineImageSchedulingGracefulShutdownMaxDuration {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * 													resolution. Durations less than one second are represented
+         * 													with a 0 seconds field and a positive nanos field. Must
+         * 													be from 0 to 999,999,999 inclusive.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Span of time at a resolution of a second.
+         * 													The value must be between 1 and 3600, which is 3,600 seconds (one hour).
+         */
+        seconds: pulumi.Input<number>;
     }
 
     export interface InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout {
@@ -19759,6 +19824,10 @@ export namespace compute {
          */
         availabilityDomain?: pulumi.Input<number>;
         /**
+         * Settings for the instance to perform a graceful shutdown.
+         */
+        gracefulShutdown?: pulumi.Input<inputs.compute.InstanceFromTemplateSchedulingGracefulShutdown>;
+        /**
          * Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
          */
         hostErrorTimeoutSeconds?: pulumi.Input<number>;
@@ -19802,6 +19871,34 @@ export namespace compute {
          * Whether the instance is spot. If this is set as SPOT.
          */
         provisioningModel?: pulumi.Input<string>;
+    }
+
+    export interface InstanceFromTemplateSchedulingGracefulShutdown {
+        /**
+         * Opts-in for graceful shutdown.
+         */
+        enabled: pulumi.Input<boolean>;
+        /**
+         * The time allotted for the instance to gracefully shut down.
+         * 										If the graceful shutdown isn't complete after this time, then the instance
+         * 										transitions to the STOPPING state.
+         */
+        maxDuration?: pulumi.Input<inputs.compute.InstanceFromTemplateSchedulingGracefulShutdownMaxDuration>;
+    }
+
+    export interface InstanceFromTemplateSchedulingGracefulShutdownMaxDuration {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * 													resolution. Durations less than one second are represented
+         * 													with a 0 seconds field and a positive nanos field. Must
+         * 													be from 0 to 999,999,999 inclusive.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Span of time at a resolution of a second.
+         * 													The value must be between 1 and 3600, which is 3,600 seconds (one hour).
+         */
+        seconds: pulumi.Input<number>;
     }
 
     export interface InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout {
@@ -20378,6 +20475,10 @@ export namespace compute {
          */
         availabilityDomain?: pulumi.Input<number>;
         /**
+         * Settings for the instance to perform a graceful shutdown. Structure is documented below.
+         */
+        gracefulShutdown?: pulumi.Input<inputs.compute.InstanceSchedulingGracefulShutdown>;
+        /**
          * Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
          */
         hostErrorTimeoutSeconds?: pulumi.Input<number>;
@@ -20437,17 +20538,46 @@ export namespace compute {
         provisioningModel?: pulumi.Input<string>;
     }
 
-    export interface InstanceSchedulingLocalSsdRecoveryTimeout {
+    export interface InstanceSchedulingGracefulShutdown {
+        /**
+         * Opts-in for graceful shutdown.
+         */
+        enabled: pulumi.Input<boolean>;
+        /**
+         * The time allotted for the instance to gracefully shut down.
+         * If the graceful shutdown isn't complete after this time, then the instance
+         * transitions to the STOPPING state. Structure is documented below:
+         */
+        maxDuration?: pulumi.Input<inputs.compute.InstanceSchedulingGracefulShutdownMaxDuration>;
+    }
+
+    export interface InstanceSchedulingGracefulShutdownMaxDuration {
         /**
          * Span of time that's a fraction of a second at nanosecond
-         * resolution. Durations less than one second are represented
-         * with a 0 seconds field and a positive nanos field. Must
-         * be from 0 to 999,999,999 inclusive.
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
          */
         nanos?: pulumi.Input<number>;
         /**
          * Span of time at a resolution of a second.
-         * Must be from 0 to 315,576,000,000 inclusive.
+         * The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+         */
+        seconds: pulumi.Input<number>;
+    }
+
+    export interface InstanceSchedulingLocalSsdRecoveryTimeout {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to
+         * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+         * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
          */
         seconds: pulumi.Input<number>;
     }
@@ -20959,6 +21089,10 @@ export namespace compute {
          */
         availabilityDomain?: pulumi.Input<number>;
         /**
+         * Settings for the instance to perform a graceful shutdown. Structure is documented below.
+         */
+        gracefulShutdown?: pulumi.Input<inputs.compute.InstanceTemplateSchedulingGracefulShutdown>;
+        /**
          * Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
          */
         hostErrorTimeoutSeconds?: pulumi.Input<number>;
@@ -21017,17 +21151,46 @@ export namespace compute {
         provisioningModel?: pulumi.Input<string>;
     }
 
-    export interface InstanceTemplateSchedulingLocalSsdRecoveryTimeout {
+    export interface InstanceTemplateSchedulingGracefulShutdown {
+        /**
+         * Opts-in for graceful shutdown.
+         */
+        enabled: pulumi.Input<boolean>;
+        /**
+         * The time allotted for the instance to gracefully shut down.
+         * If the graceful shutdown isn't complete after this time, then the instance
+         * transitions to the STOPPING state. Structure is documented below:
+         */
+        maxDuration?: pulumi.Input<inputs.compute.InstanceTemplateSchedulingGracefulShutdownMaxDuration>;
+    }
+
+    export interface InstanceTemplateSchedulingGracefulShutdownMaxDuration {
         /**
          * Span of time that's a fraction of a second at nanosecond
-         * resolution. Durations less than one second are represented
-         * with a 0 seconds field and a positive nanos field. Must
-         * be from 0 to 999,999,999 inclusive.
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
          */
         nanos?: pulumi.Input<number>;
         /**
          * Span of time at a resolution of a second.
-         * Must be from 0 to 315,576,000,000 inclusive.
+         * The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+         */
+        seconds: pulumi.Input<number>;
+    }
+
+    export interface InstanceTemplateSchedulingLocalSsdRecoveryTimeout {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to
+         * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+         * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
          */
         seconds: pulumi.Input<number>;
     }
@@ -24174,6 +24337,10 @@ export namespace compute {
          */
         availabilityDomain?: pulumi.Input<number>;
         /**
+         * Settings for the instance to perform a graceful shutdown.
+         */
+        gracefulShutdown?: pulumi.Input<inputs.compute.RegionInstanceTemplateSchedulingGracefulShutdown>;
+        /**
          * Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
          */
         hostErrorTimeoutSeconds?: pulumi.Input<number>;
@@ -24230,6 +24397,34 @@ export namespace compute {
          * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
          */
         provisioningModel?: pulumi.Input<string>;
+    }
+
+    export interface RegionInstanceTemplateSchedulingGracefulShutdown {
+        /**
+         * Opts-in for graceful shutdown.
+         */
+        enabled: pulumi.Input<boolean>;
+        /**
+         * The time allotted for the instance to gracefully shut down.
+         * If the graceful shutdown isn't complete after this time, then the instance
+         * transitions to the STOPPING state. Structure is documented below:
+         */
+        maxDuration?: pulumi.Input<inputs.compute.RegionInstanceTemplateSchedulingGracefulShutdownMaxDuration>;
+    }
+
+    export interface RegionInstanceTemplateSchedulingGracefulShutdownMaxDuration {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Span of time at a resolution of a second.
+         * The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+         */
+        seconds: pulumi.Input<number>;
     }
 
     export interface RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout {
@@ -32780,7 +32975,7 @@ export namespace container {
          */
         gcpPublicCidrsAccessEnabled?: pulumi.Input<boolean>;
         /**
-         * Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+         * Whether authorized networks is enforced on the private endpoint or not.
          */
         privateEndpointEnforcementEnabled?: pulumi.Input<boolean>;
     }
@@ -33258,6 +33453,22 @@ export namespace container {
 
     export interface ClusterNodeConfigKubeletConfig {
         /**
+         * Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods. The allowed sysctl groups are `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, and `net.*`.
+         */
+        allowedUnsafeSysctls?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Defines the maximum number of container log files that can be present for a container. The integer must be between 2 and 10, inclusive.
+         */
+        containerLogMaxFiles?: pulumi.Input<number>;
+        /**
+         * Defines the maximum size of the
+         * container log file before it is rotated. Specified as a positive number and a
+         * unit suffix, such as `"100Ki"`, `"10Mi"`. Valid units are "Ki", "Mi", "Gi".
+         * The value must be between `"10Mi"` and `"500Mi"`, inclusive. And the total container log size
+         * (`containerLogMaxSize` * `containerLogMaxFiles`) cannot exceed 1% of the total storage of the node.
+         */
+        containerLogMaxSize?: pulumi.Input<string>;
+        /**
          * If true, enables CPU CFS quota enforcement for
          * containers that specify CPU limits.
          */
@@ -33277,6 +33488,22 @@ export namespace container {
          * is setting the empty string `""`, which will function identically to not setting this field.
          */
         cpuManagerPolicy?: pulumi.Input<string>;
+        /**
+         * Defines the percent of disk usage after which image garbage collection is always run. The integer must be between 10 and 85, inclusive.
+         */
+        imageGcHighThresholdPercent?: pulumi.Input<number>;
+        /**
+         * Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to. The integer must be between 10 and 85, inclusive.
+         */
+        imageGcLowThresholdPercent?: pulumi.Input<number>;
+        /**
+         * Defines the maximum age an image can be unused before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`, and `"2h45m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
+         */
+        imageMaximumGcAge?: pulumi.Input<string>;
+        /**
+         * Defines the minimum age for an unused image before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`. The value cannot be greater than "2m".
+         */
+        imageMinimumGcAge?: pulumi.Input<string>;
         /**
          * Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
          */
@@ -34150,6 +34377,22 @@ export namespace container {
 
     export interface ClusterNodePoolNodeConfigKubeletConfig {
         /**
+         * Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods. The allowed sysctl groups are `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, and `net.*`.
+         */
+        allowedUnsafeSysctls?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Defines the maximum number of container log files that can be present for a container. The integer must be between 2 and 10, inclusive.
+         */
+        containerLogMaxFiles?: pulumi.Input<number>;
+        /**
+         * Defines the maximum size of the
+         * container log file before it is rotated. Specified as a positive number and a
+         * unit suffix, such as `"100Ki"`, `"10Mi"`. Valid units are "Ki", "Mi", "Gi".
+         * The value must be between `"10Mi"` and `"500Mi"`, inclusive. And the total container log size
+         * (`containerLogMaxSize` * `containerLogMaxFiles`) cannot exceed 1% of the total storage of the node.
+         */
+        containerLogMaxSize?: pulumi.Input<string>;
+        /**
          * If true, enables CPU CFS quota enforcement for
          * containers that specify CPU limits.
          */
@@ -34169,6 +34412,22 @@ export namespace container {
          * is setting the empty string `""`, which will function identically to not setting this field.
          */
         cpuManagerPolicy?: pulumi.Input<string>;
+        /**
+         * Defines the percent of disk usage after which image garbage collection is always run. The integer must be between 10 and 85, inclusive.
+         */
+        imageGcHighThresholdPercent?: pulumi.Input<number>;
+        /**
+         * Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to. The integer must be between 10 and 85, inclusive.
+         */
+        imageGcLowThresholdPercent?: pulumi.Input<number>;
+        /**
+         * Defines the maximum age an image can be unused before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`, and `"2h45m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
+         */
+        imageMaximumGcAge?: pulumi.Input<string>;
+        /**
+         * Defines the minimum age for an unused image before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`. The value cannot be greater than "2m".
+         */
+        imageMinimumGcAge?: pulumi.Input<string>;
         /**
          * Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
          */
@@ -35100,6 +35359,18 @@ export namespace container {
 
     export interface NodePoolNodeConfigKubeletConfig {
         /**
+         * Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.
+         */
+        allowedUnsafeSysctls?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Defines the maximum number of container log files that can be present for a container.
+         */
+        containerLogMaxFiles?: pulumi.Input<number>;
+        /**
+         * Defines the maximum size of the container log file before it is rotated.
+         */
+        containerLogMaxSize?: pulumi.Input<string>;
+        /**
          * Enable CPU CFS quota enforcement for containers that specify CPU limits.
          */
         cpuCfsQuota?: pulumi.Input<boolean>;
@@ -35111,6 +35382,22 @@ export namespace container {
          * Control the CPU management policy on the node.
          */
         cpuManagerPolicy?: pulumi.Input<string>;
+        /**
+         * Defines the percent of disk usage after which image garbage collection is always run.
+         */
+        imageGcHighThresholdPercent?: pulumi.Input<number>;
+        /**
+         * Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.
+         */
+        imageGcLowThresholdPercent?: pulumi.Input<number>;
+        /**
+         * Defines the maximum age an image can be unused before it is garbage collected.
+         */
+        imageMaximumGcAge?: pulumi.Input<string>;
+        /**
+         * Defines the minimum age for an unused image before it is garbage collected.
+         */
+        imageMinimumGcAge?: pulumi.Input<string>;
         /**
          * Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
          */
@@ -52037,23 +52324,28 @@ export namespace essentialcontacts {
 export namespace eventarc {
     export interface TriggerDestination {
         /**
+         * (Output)
          * The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
          */
         cloudFunction?: pulumi.Input<string>;
         /**
          * Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+         * Structure is documented below.
          */
         cloudRunService?: pulumi.Input<inputs.eventarc.TriggerDestinationCloudRunService>;
         /**
          * A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+         * Structure is documented below.
          */
         gke?: pulumi.Input<inputs.eventarc.TriggerDestinationGke>;
         /**
          * An HTTP endpoint destination described by an URI.
+         * Structure is documented below.
          */
         httpEndpoint?: pulumi.Input<inputs.eventarc.TriggerDestinationHttpEndpoint>;
         /**
          * Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+         * Structure is documented below.
          */
         networkConfig?: pulumi.Input<inputs.eventarc.TriggerDestinationNetworkConfig>;
         /**
@@ -52110,6 +52402,8 @@ export namespace eventarc {
     export interface TriggerDestinationNetworkConfig {
         /**
          * Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+         *
+         * - - -
          */
         networkAttachment: pulumi.Input<string>;
     }
@@ -52125,8 +52419,6 @@ export namespace eventarc {
         operator?: pulumi.Input<string>;
         /**
          * Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
-         *
-         * - - -
          */
         value: pulumi.Input<string>;
     }
@@ -52134,12 +52426,14 @@ export namespace eventarc {
     export interface TriggerTransport {
         /**
          * The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+         * Structure is documented below.
          */
         pubsub?: pulumi.Input<inputs.eventarc.TriggerTransportPubsub>;
     }
 
     export interface TriggerTransportPubsub {
         /**
+         * (Output)
          * Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
          */
         subscription?: pulumi.Input<string>;
@@ -61363,6 +61657,13 @@ export namespace monitoring {
          */
         conditionPrometheusQueryLanguage?: pulumi.Input<inputs.monitoring.AlertPolicyConditionConditionPrometheusQueryLanguage>;
         /**
+         * A condition that allows alerting policies to be defined using GoogleSQL.
+         * SQL conditions examine a sliding window of logs using GoogleSQL.
+         * Alert policies with SQL conditions may incur additional billing.
+         * Structure is documented below.
+         */
+        conditionSql?: pulumi.Input<inputs.monitoring.AlertPolicyConditionConditionSql>;
+        /**
          * A condition that compares a time series against a
          * threshold.
          * Structure is documented below.
@@ -61673,6 +61974,135 @@ export namespace monitoring {
          * in the future. This field is optional.
          */
         ruleGroup?: pulumi.Input<string>;
+    }
+
+    export interface AlertPolicyConditionConditionSql {
+        /**
+         * The start date and time of the query. If left unspecified, then the
+         * query will start immediately.
+         * Structure is documented below.
+         */
+        booleanTest?: pulumi.Input<inputs.monitoring.AlertPolicyConditionConditionSqlBooleanTest>;
+        /**
+         * Used to schedule the query to run every so many days.
+         * Structure is documented below.
+         */
+        daily?: pulumi.Input<inputs.monitoring.AlertPolicyConditionConditionSqlDaily>;
+        /**
+         * Used to schedule the query to run every so many hours.
+         * Structure is documented below.
+         */
+        hourly?: pulumi.Input<inputs.monitoring.AlertPolicyConditionConditionSqlHourly>;
+        /**
+         * Used to schedule the query to run every so many minutes.
+         * Structure is documented below.
+         */
+        minutes?: pulumi.Input<inputs.monitoring.AlertPolicyConditionConditionSqlMinutes>;
+        /**
+         * The Log Analytics SQL query to run, as a string.  The query must
+         * conform to the required shape. Specifically, the query must not try to
+         * filter the input by time.  A filter will automatically be applied
+         * to filter the input so that the query receives all rows received
+         * since the last time the query was run.
+         */
+        query: pulumi.Input<string>;
+        /**
+         * Test the row count against a threshold.
+         * Structure is documented below.
+         */
+        rowCountTest?: pulumi.Input<inputs.monitoring.AlertPolicyConditionConditionSqlRowCountTest>;
+    }
+
+    export interface AlertPolicyConditionConditionSqlBooleanTest {
+        /**
+         * The name of the column containing the boolean value. If the value
+         * in a row is NULL, that row is ignored.
+         *
+         * - - -
+         */
+        column: pulumi.Input<string>;
+    }
+
+    export interface AlertPolicyConditionConditionSqlDaily {
+        /**
+         * The time of day (in UTC) at which the query should run. If left
+         * unspecified, the server picks an arbitrary time of day and runs
+         * the query at the same time each day.
+         * Structure is documented below.
+         */
+        executionTime?: pulumi.Input<inputs.monitoring.AlertPolicyConditionConditionSqlDailyExecutionTime>;
+        /**
+         * The number of days between runs. Must be greater than or equal
+         * to 1 day and less than or equal to 30 days.
+         */
+        periodicity: pulumi.Input<number>;
+    }
+
+    export interface AlertPolicyConditionConditionSqlDailyExecutionTime {
+        /**
+         * Hours of a day in 24 hour format. Must be greater than or equal
+         * to 0 and typically must be less than or equal to 23. An API may
+         * choose to allow the value "24:00:00" for scenarios like business
+         * closing time.
+         */
+        hours?: pulumi.Input<number>;
+        /**
+         * Minutes of an hour. Must be greater than or equal to 0 and
+         * less than or equal to 59.
+         */
+        minutes?: pulumi.Input<number>;
+        /**
+         * Fractions of seconds, in nanoseconds. Must be greater than or
+         * equal to 0 and less than or equal to 999,999,999.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Seconds of a minute. Must be greater than or equal to 0 and
+         * typically must be less than or equal to 59. An API may allow the
+         * value 60 if it allows leap-seconds.
+         */
+        seconds?: pulumi.Input<number>;
+    }
+
+    export interface AlertPolicyConditionConditionSqlHourly {
+        /**
+         * The number of minutes after the hour (in UTC) to run the query.
+         * Must be greater than or equal to 0 minutes and less than or equal to
+         * 59 minutes.  If left unspecified, then an arbitrary offset is used.
+         */
+        minuteOffset?: pulumi.Input<number>;
+        /**
+         * Number of hours between runs. The interval must be greater than or
+         * equal to 1 hour and less than or equal to 48 hours.
+         */
+        periodicity: pulumi.Input<number>;
+    }
+
+    export interface AlertPolicyConditionConditionSqlMinutes {
+        /**
+         * Number of minutes between runs. The interval must be greater than or
+         * equal to 5 minutes and less than or equal to 1440 minutes.
+         */
+        periodicity: pulumi.Input<number>;
+    }
+
+    export interface AlertPolicyConditionConditionSqlRowCountTest {
+        /**
+         * The comparison to apply between the time
+         * series (indicated by filter and aggregation)
+         * and the threshold (indicated by
+         * threshold_value). The comparison is applied
+         * on each time series, with the time series on
+         * the left-hand side and the threshold on the
+         * right-hand side. Only COMPARISON_LT and
+         * COMPARISON_GT are supported currently.
+         * Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
+         */
+        comparison: pulumi.Input<string>;
+        /**
+         * Test the boolean value in the indicated column.
+         */
+        threshold: pulumi.Input<number>;
     }
 
     export interface AlertPolicyConditionConditionThreshold {
@@ -73406,7 +73836,7 @@ export namespace sql {
          */
         location?: pulumi.Input<string>;
         /**
-         * True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
+         * True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances. Enabled by default for PostgreSQL Enterprise Plus and SQL Server Enterprise Plus instances.
          */
         pointInTimeRecoveryEnabled?: pulumi.Input<boolean>;
         /**
@@ -73415,7 +73845,7 @@ export namespace sql {
          */
         startTime?: pulumi.Input<string>;
         /**
-         * The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
+         * The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus and SQL Server Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
          */
         transactionLogRetentionDays?: pulumi.Input<number>;
     }

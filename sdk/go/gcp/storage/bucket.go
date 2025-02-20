@@ -191,6 +191,37 @@ import (
 //
 // ```
 //
+// ### Enabling Hierarchical Namespace
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.NewBucket(ctx, "auto-expire", &storage.BucketArgs{
+//				Name:         pulumi.String("hns-enabled-bucket"),
+//				Location:     pulumi.String("US"),
+//				ForceDestroy: pulumi.Bool(true),
+//				HierarchicalNamespace: &storage.BucketHierarchicalNamespaceArgs{
+//					Enabled: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Storage buckets can be imported using the `name` or  `project/name`. If the project is not

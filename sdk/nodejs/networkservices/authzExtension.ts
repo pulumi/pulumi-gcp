@@ -180,11 +180,10 @@ export class AuthzExtension extends pulumi.CustomResource {
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
-     * The format of communication supported by the callout extension.
-     * Default value is `EXT_PROC_GRPC`.
+     * The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
      * Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
      */
-    public readonly wireFormat!: pulumi.Output<string | undefined>;
+    public readonly wireFormat!: pulumi.Output<string>;
 
     /**
      * Create a AuthzExtension resource with the given unique name, arguments, and options.
@@ -343,8 +342,7 @@ export interface AuthzExtensionState {
      */
     updateTime?: pulumi.Input<string>;
     /**
-     * The format of communication supported by the callout extension.
-     * Default value is `EXT_PROC_GRPC`.
+     * The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
      * Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
      */
     wireFormat?: pulumi.Input<string>;
@@ -418,8 +416,7 @@ export interface AuthzExtensionArgs {
      */
     timeout: pulumi.Input<string>;
     /**
-     * The format of communication supported by the callout extension.
-     * Default value is `EXT_PROC_GRPC`.
+     * The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
      * Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
      */
     wireFormat?: pulumi.Input<string>;

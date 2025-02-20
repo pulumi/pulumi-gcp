@@ -21,7 +21,7 @@ public final class SecuritycenterFunctions {
     /**
      * Retrieves the current IAM policy data for source
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -63,7 +63,7 @@ public final class SecuritycenterFunctions {
     /**
      * Retrieves the current IAM policy data for source
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -105,7 +105,7 @@ public final class SecuritycenterFunctions {
     /**
      * Retrieves the current IAM policy data for source
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -147,7 +147,7 @@ public final class SecuritycenterFunctions {
     /**
      * Retrieves the current IAM policy data for source
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -189,7 +189,7 @@ public final class SecuritycenterFunctions {
     /**
      * Retrieves the current IAM policy data for source
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -231,7 +231,7 @@ public final class SecuritycenterFunctions {
     /**
      * Retrieves the current IAM policy data for organizationsource
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -273,7 +273,7 @@ public final class SecuritycenterFunctions {
     /**
      * Retrieves the current IAM policy data for organizationsource
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -315,7 +315,7 @@ public final class SecuritycenterFunctions {
     /**
      * Retrieves the current IAM policy data for organizationsource
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -357,7 +357,7 @@ public final class SecuritycenterFunctions {
     /**
      * Retrieves the current IAM policy data for organizationsource
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -399,7 +399,7 @@ public final class SecuritycenterFunctions {
     /**
      * Retrieves the current IAM policy data for organizationsource
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

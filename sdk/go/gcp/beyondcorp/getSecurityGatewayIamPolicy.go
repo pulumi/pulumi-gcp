@@ -13,7 +13,7 @@ import (
 
 // Retrieves the current IAM policy data for securitygateway
 //
-// ## example
+// ## Example Usage
 //
 // ```go
 // package main

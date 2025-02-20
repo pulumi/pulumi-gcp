@@ -118,7 +118,7 @@ def get_task_iam_policy(lake: Optional[str] = None,
     """
     Retrieves the current IAM policy data for task
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -164,7 +164,7 @@ def get_task_iam_policy_output(lake: Optional[pulumi.Input[str]] = None,
     """
     Retrieves the current IAM policy data for task
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

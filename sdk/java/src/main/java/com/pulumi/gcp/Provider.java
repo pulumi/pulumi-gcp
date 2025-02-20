@@ -521,6 +521,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> firebaseCustomEndpoint() {
         return Codegen.optional(this.firebaseCustomEndpoint);
     }
+    @Export(name="firebaseDataConnectCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> firebaseDataConnectCustomEndpoint;
+
+    public Output<Optional<String>> firebaseDataConnectCustomEndpoint() {
+        return Codegen.optional(this.firebaseDataConnectCustomEndpoint);
+    }
     @Export(name="firebaseDatabaseCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> firebaseDatabaseCustomEndpoint;
 

@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Retrieves the current IAM policy data for tagkey
  *
- * ## example
+ * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -57,7 +57,7 @@ export interface GetTagKeyIamPolicyResult {
 /**
  * Retrieves the current IAM policy data for tagkey
  *
- * ## example
+ * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

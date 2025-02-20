@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataCatalog
 {
     /// <summary>
-    /// Three different resources help you manage your IAM policy for Data catalog PolicyTag. Each of these resources serves a different use case:
+    /// Three different resources help you manage your IAM policy for Data Catalog PolicyTag. Each of these resources serves a different use case:
     /// 
     /// * `gcp.datacatalog.PolicyTagIamPolicy`: Authoritative. Sets the IAM policy for the policytag and replaces any existing policy already attached.
     /// * `gcp.datacatalog.PolicyTagIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the policytag are preserved.
@@ -106,8 +106,8 @@ namespace Pulumi.Gcp.DataCatalog
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// ---
     /// 
-    /// # IAM policy for Data catalog PolicyTag
-    /// Three different resources help you manage your IAM policy for Data catalog PolicyTag. Each of these resources serves a different use case:
+    /// # IAM policy for Data Catalog PolicyTag
+    /// Three different resources help you manage your IAM policy for Data Catalog PolicyTag. Each of these resources serves a different use case:
     /// 
     /// * `gcp.datacatalog.PolicyTagIamPolicy`: Authoritative. Sets the IAM policy for the policytag and replaces any existing policy already attached.
     /// * `gcp.datacatalog.PolicyTagIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the policytag are preserved.
@@ -206,7 +206,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// Any variables not passed in the import command will be taken from the provider configuration.
     /// 
-    /// Data catalog policytag IAM resources can be imported using the resource identifiers, role, and member.
+    /// Data Catalog policytag IAM resources can be imported using the resource identifiers, role, and member.
     /// 
     /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
     /// 

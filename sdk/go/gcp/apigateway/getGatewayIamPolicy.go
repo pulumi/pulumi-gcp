@@ -11,6 +11,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/apigateway"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := apigateway.LookupGatewayIamPolicy(ctx, &apigateway.LookupGatewayIamPolicyArgs{
+//				Project: pulumi.StringRef(apiGw.Project),
+//				Region:  pulumi.StringRef(apiGw.Region),
+//				Gateway: apiGw.GatewayId,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupGatewayIamPolicy(ctx *pulumi.Context, args *LookupGatewayIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupGatewayIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGatewayIamPolicyResult

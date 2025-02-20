@@ -256,7 +256,7 @@ public final class AccesscontextmanagerFunctions {
     /**
      * Retrieves the current IAM policy data for accesspolicy
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -298,7 +298,7 @@ public final class AccesscontextmanagerFunctions {
     /**
      * Retrieves the current IAM policy data for accesspolicy
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -340,7 +340,7 @@ public final class AccesscontextmanagerFunctions {
     /**
      * Retrieves the current IAM policy data for accesspolicy
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -382,7 +382,7 @@ public final class AccesscontextmanagerFunctions {
     /**
      * Retrieves the current IAM policy data for accesspolicy
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -424,7 +424,7 @@ public final class AccesscontextmanagerFunctions {
     /**
      * Retrieves the current IAM policy data for accesspolicy
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

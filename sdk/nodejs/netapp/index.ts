@@ -40,6 +40,11 @@ export type Volume = import("./volume").Volume;
 export const Volume: typeof import("./volume").Volume = null as any;
 utilities.lazyLoad(exports, ["Volume"], () => require("./volume"));
 
+export { VolumeQuotaRuleArgs, VolumeQuotaRuleState } from "./volumeQuotaRule";
+export type VolumeQuotaRule = import("./volumeQuotaRule").VolumeQuotaRule;
+export const VolumeQuotaRule: typeof import("./volumeQuotaRule").VolumeQuotaRule = null as any;
+utilities.lazyLoad(exports, ["VolumeQuotaRule"], () => require("./volumeQuotaRule"));
+
 export { VolumeReplicationArgs, VolumeReplicationState } from "./volumeReplication";
 export type VolumeReplication = import("./volumeReplication").VolumeReplication;
 export const VolumeReplication: typeof import("./volumeReplication").VolumeReplication = null as any;
@@ -69,6 +74,8 @@ const _module = {
                 return new StoragePool(name, <any>undefined, { urn })
             case "gcp:netapp/volume:Volume":
                 return new Volume(name, <any>undefined, { urn })
+            case "gcp:netapp/volumeQuotaRule:VolumeQuotaRule":
+                return new VolumeQuotaRule(name, <any>undefined, { urn })
             case "gcp:netapp/volumeReplication:VolumeReplication":
                 return new VolumeReplication(name, <any>undefined, { urn })
             case "gcp:netapp/volumeSnapshot:VolumeSnapshot":
@@ -85,5 +92,6 @@ pulumi.runtime.registerResourceModule("gcp", "netapp/backupVault", _module)
 pulumi.runtime.registerResourceModule("gcp", "netapp/kmsconfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "netapp/storagePool", _module)
 pulumi.runtime.registerResourceModule("gcp", "netapp/volume", _module)
+pulumi.runtime.registerResourceModule("gcp", "netapp/volumeQuotaRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "netapp/volumeReplication", _module)
 pulumi.runtime.registerResourceModule("gcp", "netapp/volumeSnapshot", _module)

@@ -108,7 +108,7 @@ def get_app_engine_service_iam_policy(app_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for appengineservice
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -146,7 +146,7 @@ def get_app_engine_service_iam_policy_output(app_id: Optional[pulumi.Input[str]]
     """
     Retrieves the current IAM policy data for appengineservice
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

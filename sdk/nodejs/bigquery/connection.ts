@@ -251,12 +251,6 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     password: "tf-test-my-password_15222",
  * });
- * const bqSa = gcp.bigquery.getDefaultServiceAccount({});
- * const keySaUser = new gcp.kms.CryptoKeyIAMMember("key_sa_user", {
- *     cryptoKeyId: "projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key",
- *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
- *     member: bqSa.then(bqSa => `serviceAccount:${bqSa.email}`),
- * });
  * const bq_connection_cmek = new gcp.bigquery.Connection("bq-connection-cmek", {
  *     friendlyName: "👋",
  *     description: "a riveting description",
@@ -271,8 +265,6 @@ import * as utilities from "../utilities";
  *             password: user.password,
  *         },
  *     },
- * }, {
- *     dependsOn: [keySaUser],
  * });
  * ```
  *

@@ -4,6 +4,20 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.vertex.getAiFeaturestoreIamPolicy({
+ *     project: featurestore.project,
+ *     region: featurestore.region,
+ *     featurestore: featurestore.name,
+ * });
+ * ```
+ */
 export function getAiFeaturestoreIamPolicy(args: GetAiFeaturestoreIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAiFeaturestoreIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy", {
@@ -55,6 +69,20 @@ export interface GetAiFeaturestoreIamPolicyResult {
     readonly project: string;
     readonly region: string;
 }
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.vertex.getAiFeaturestoreIamPolicy({
+ *     project: featurestore.project,
+ *     region: featurestore.region,
+ *     featurestore: featurestore.name,
+ * });
+ * ```
+ */
 export function getAiFeaturestoreIamPolicyOutput(args: GetAiFeaturestoreIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAiFeaturestoreIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy", {

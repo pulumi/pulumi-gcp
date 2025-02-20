@@ -108,7 +108,7 @@ def get_data_exchange_iam_policy(data_exchange_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for dataexchange
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -149,7 +149,7 @@ def get_data_exchange_iam_policy_output(data_exchange_id: Optional[pulumi.Input[
     """
     Retrieves the current IAM policy data for dataexchange
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

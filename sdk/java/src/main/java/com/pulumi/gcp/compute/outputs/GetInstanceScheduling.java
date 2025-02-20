@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.outputs.GetInstanceSchedulingGracefulShutdown;
 import com.pulumi.gcp.compute.outputs.GetInstanceSchedulingLocalSsdRecoveryTimeout;
 import com.pulumi.gcp.compute.outputs.GetInstanceSchedulingMaxRunDuration;
 import com.pulumi.gcp.compute.outputs.GetInstanceSchedulingNodeAffinity;
@@ -28,6 +29,11 @@ public final class GetInstanceScheduling {
      * 
      */
     private Integer availabilityDomain;
+    /**
+     * @return Settings for the instance to perform a graceful shutdown.
+     * 
+     */
+    private List<GetInstanceSchedulingGracefulShutdown> gracefulShutdowns;
     /**
      * @return Beta Time in seconds for host error detection.
      * 
@@ -100,6 +106,13 @@ public final class GetInstanceScheduling {
      */
     public Integer availabilityDomain() {
         return this.availabilityDomain;
+    }
+    /**
+     * @return Settings for the instance to perform a graceful shutdown.
+     * 
+     */
+    public List<GetInstanceSchedulingGracefulShutdown> gracefulShutdowns() {
+        return this.gracefulShutdowns;
     }
     /**
      * @return Beta Time in seconds for host error detection.
@@ -191,6 +204,7 @@ public final class GetInstanceScheduling {
     public static final class Builder {
         private Boolean automaticRestart;
         private Integer availabilityDomain;
+        private List<GetInstanceSchedulingGracefulShutdown> gracefulShutdowns;
         private Integer hostErrorTimeoutSeconds;
         private String instanceTerminationAction;
         private List<GetInstanceSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts;
@@ -207,6 +221,7 @@ public final class GetInstanceScheduling {
     	      Objects.requireNonNull(defaults);
     	      this.automaticRestart = defaults.automaticRestart;
     	      this.availabilityDomain = defaults.availabilityDomain;
+    	      this.gracefulShutdowns = defaults.gracefulShutdowns;
     	      this.hostErrorTimeoutSeconds = defaults.hostErrorTimeoutSeconds;
     	      this.instanceTerminationAction = defaults.instanceTerminationAction;
     	      this.localSsdRecoveryTimeouts = defaults.localSsdRecoveryTimeouts;
@@ -235,6 +250,17 @@ public final class GetInstanceScheduling {
             }
             this.availabilityDomain = availabilityDomain;
             return this;
+        }
+        @CustomType.Setter
+        public Builder gracefulShutdowns(List<GetInstanceSchedulingGracefulShutdown> gracefulShutdowns) {
+            if (gracefulShutdowns == null) {
+              throw new MissingRequiredPropertyException("GetInstanceScheduling", "gracefulShutdowns");
+            }
+            this.gracefulShutdowns = gracefulShutdowns;
+            return this;
+        }
+        public Builder gracefulShutdowns(GetInstanceSchedulingGracefulShutdown... gracefulShutdowns) {
+            return gracefulShutdowns(List.of(gracefulShutdowns));
         }
         @CustomType.Setter
         public Builder hostErrorTimeoutSeconds(Integer hostErrorTimeoutSeconds) {
@@ -340,6 +366,7 @@ public final class GetInstanceScheduling {
             final var _resultValue = new GetInstanceScheduling();
             _resultValue.automaticRestart = automaticRestart;
             _resultValue.availabilityDomain = availabilityDomain;
+            _resultValue.gracefulShutdowns = gracefulShutdowns;
             _resultValue.hostErrorTimeoutSeconds = hostErrorTimeoutSeconds;
             _resultValue.instanceTerminationAction = instanceTerminationAction;
             _resultValue.localSsdRecoveryTimeouts = localSsdRecoveryTimeouts;

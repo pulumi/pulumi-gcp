@@ -37,6 +37,8 @@ namespace Pulumi.Gcp.SecurityCenter
     ///         Parent = "organizations/123456789",
     ///         Filter = "category: \"OS_VULNERABILITY\"",
     ///         Description = "My Mute Config",
+    ///         Type = "DYNAMIC",
+    ///         ExpiryTime = "2215-02-03T15:01:23Z",
     ///     });
     /// 
     /// });
@@ -69,6 +71,15 @@ namespace Pulumi.Gcp.SecurityCenter
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The expiry of the mute config. Only applicable for dynamic configs.
+        /// If the expiry is set, when the config expires, it is removed from all findings.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+        /// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Output("expiryTime")]
+        public Output<string?> ExpiryTime { get; private set; } = null!;
 
         /// <summary>
         /// An expression that defines the filter to apply across create/update
@@ -113,6 +124,14 @@ namespace Pulumi.Gcp.SecurityCenter
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the mute config, which determines what type of mute state the config affects.
+        /// Default value is `DYNAMIC`.
+        /// Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
+        /// </summary>
+        [Output("type")]
+        public Output<string?> Type { get; private set; } = null!;
 
         /// <summary>
         /// Output only. The most recent time at which the mute config was
@@ -175,6 +194,15 @@ namespace Pulumi.Gcp.SecurityCenter
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Optional. The expiry of the mute config. Only applicable for dynamic configs.
+        /// If the expiry is set, when the config expires, it is removed from all findings.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+        /// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Input("expiryTime")]
+        public Input<string>? ExpiryTime { get; set; }
+
+        /// <summary>
         /// An expression that defines the filter to apply across create/update
         /// events of findings. While creating a filter string, be mindful of
         /// the scope in which the mute configuration is being created. E.g.,
@@ -201,6 +229,14 @@ namespace Pulumi.Gcp.SecurityCenter
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
 
+        /// <summary>
+        /// The type of the mute config, which determines what type of mute state the config affects.
+        /// Default value is `DYNAMIC`.
+        /// Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
         public MuteConfigArgs()
         {
         }
@@ -221,6 +257,15 @@ namespace Pulumi.Gcp.SecurityCenter
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Optional. The expiry of the mute config. Only applicable for dynamic configs.
+        /// If the expiry is set, when the config expires, it is removed from all findings.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+        /// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Input("expiryTime")]
+        public Input<string>? ExpiryTime { get; set; }
 
         /// <summary>
         /// An expression that defines the filter to apply across create/update
@@ -265,6 +310,14 @@ namespace Pulumi.Gcp.SecurityCenter
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
+
+        /// <summary>
+        /// The type of the mute config, which determines what type of mute state the config affects.
+        /// Default value is `DYNAMIC`.
+        /// Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         /// <summary>
         /// Output only. The most recent time at which the mute config was

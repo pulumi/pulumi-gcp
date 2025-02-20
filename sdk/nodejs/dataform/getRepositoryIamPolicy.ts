@@ -4,6 +4,20 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.dataform.getRepositoryIamPolicy({
+ *     project: dataformRepository.project,
+ *     region: dataformRepository.region,
+ *     repository: dataformRepository.name,
+ * });
+ * ```
+ */
 export function getRepositoryIamPolicy(args: GetRepositoryIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRepositoryIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:dataform/getRepositoryIamPolicy:getRepositoryIamPolicy", {
@@ -55,6 +69,20 @@ export interface GetRepositoryIamPolicyResult {
     readonly region: string;
     readonly repository: string;
 }
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.dataform.getRepositoryIamPolicy({
+ *     project: dataformRepository.project,
+ *     region: dataformRepository.region,
+ *     repository: dataformRepository.name,
+ * });
+ * ```
+ */
 export function getRepositoryIamPolicyOutput(args: GetRepositoryIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRepositoryIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:dataform/getRepositoryIamPolicy:getRepositoryIamPolicy", {

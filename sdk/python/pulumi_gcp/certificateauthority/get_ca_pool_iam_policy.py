@@ -108,7 +108,7 @@ def get_ca_pool_iam_policy(ca_pool: Optional[str] = None,
     """
     Retrieves the current IAM policy data for capool
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -148,7 +148,7 @@ def get_ca_pool_iam_policy_output(ca_pool: Optional[pulumi.Input[str]] = None,
     """
     Retrieves the current IAM policy data for capool
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetEnvironmentConfigDataRetentionConfig {
     /**
-     * @return Optional. The configuration setting for database retention.
+     * @return Optional. The policy for airflow metadata database retention.
      * 
      */
     private List<GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig> airflowMetadataRetentionConfigs;
@@ -25,7 +25,7 @@ public final class GetEnvironmentConfigDataRetentionConfig {
 
     private GetEnvironmentConfigDataRetentionConfig() {}
     /**
-     * @return Optional. The configuration setting for database retention.
+     * @return Optional. The policy for airflow metadata database retention.
      * 
      */
     public List<GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig> airflowMetadataRetentionConfigs() {

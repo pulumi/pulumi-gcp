@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateSchedulingGracefulShutdown;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateSchedulingMaxRunDuration;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateSchedulingNodeAffinity;
@@ -29,6 +30,11 @@ public final class GetRegionInstanceTemplateScheduling {
      * 
      */
     private Integer availabilityDomain;
+    /**
+     * @return Settings for the instance to perform a graceful shutdown.
+     * 
+     */
+    private List<GetRegionInstanceTemplateSchedulingGracefulShutdown> gracefulShutdowns;
     /**
      * @return Beta Time in seconds for host error detection.
      * 
@@ -111,6 +117,13 @@ public final class GetRegionInstanceTemplateScheduling {
      */
     public Integer availabilityDomain() {
         return this.availabilityDomain;
+    }
+    /**
+     * @return Settings for the instance to perform a graceful shutdown.
+     * 
+     */
+    public List<GetRegionInstanceTemplateSchedulingGracefulShutdown> gracefulShutdowns() {
+        return this.gracefulShutdowns;
     }
     /**
      * @return Beta Time in seconds for host error detection.
@@ -211,6 +224,7 @@ public final class GetRegionInstanceTemplateScheduling {
     public static final class Builder {
         private Boolean automaticRestart;
         private Integer availabilityDomain;
+        private List<GetRegionInstanceTemplateSchedulingGracefulShutdown> gracefulShutdowns;
         private Integer hostErrorTimeoutSeconds;
         private String instanceTerminationAction;
         private List<GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts;
@@ -227,6 +241,7 @@ public final class GetRegionInstanceTemplateScheduling {
     	      Objects.requireNonNull(defaults);
     	      this.automaticRestart = defaults.automaticRestart;
     	      this.availabilityDomain = defaults.availabilityDomain;
+    	      this.gracefulShutdowns = defaults.gracefulShutdowns;
     	      this.hostErrorTimeoutSeconds = defaults.hostErrorTimeoutSeconds;
     	      this.instanceTerminationAction = defaults.instanceTerminationAction;
     	      this.localSsdRecoveryTimeouts = defaults.localSsdRecoveryTimeouts;
@@ -255,6 +270,17 @@ public final class GetRegionInstanceTemplateScheduling {
             }
             this.availabilityDomain = availabilityDomain;
             return this;
+        }
+        @CustomType.Setter
+        public Builder gracefulShutdowns(List<GetRegionInstanceTemplateSchedulingGracefulShutdown> gracefulShutdowns) {
+            if (gracefulShutdowns == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateScheduling", "gracefulShutdowns");
+            }
+            this.gracefulShutdowns = gracefulShutdowns;
+            return this;
+        }
+        public Builder gracefulShutdowns(GetRegionInstanceTemplateSchedulingGracefulShutdown... gracefulShutdowns) {
+            return gracefulShutdowns(List.of(gracefulShutdowns));
         }
         @CustomType.Setter
         public Builder hostErrorTimeoutSeconds(Integer hostErrorTimeoutSeconds) {
@@ -360,6 +386,7 @@ public final class GetRegionInstanceTemplateScheduling {
             final var _resultValue = new GetRegionInstanceTemplateScheduling();
             _resultValue.automaticRestart = automaticRestart;
             _resultValue.availabilityDomain = availabilityDomain;
+            _resultValue.gracefulShutdowns = gracefulShutdowns;
             _resultValue.hostErrorTimeoutSeconds = hostErrorTimeoutSeconds;
             _resultValue.instanceTerminationAction = instanceTerminationAction;
             _resultValue.localSsdRecoveryTimeouts = localSsdRecoveryTimeouts;

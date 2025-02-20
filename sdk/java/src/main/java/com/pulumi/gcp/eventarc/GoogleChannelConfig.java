@@ -17,9 +17,16 @@ import javax.annotation.Nullable;
 /**
  * The Eventarc GoogleChannelConfig resource
  * 
+ * To get more information about GoogleChannelConfig, see:
+ * 
+ * * [API documentation](https://cloud.google.com/eventarc/docs/reference/rest/v1/projects.locations)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/eventarc/docs/use-cmek#enable-cmek-google-channel)
+ * 
  * ## Example Usage
  * 
- * ### Basic
+ * ### Eventarc Google Channel Config With Cmek
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -57,7 +64,7 @@ import javax.annotation.Nullable;
  * 
  *         final var testKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
  *             .name("keyring")
- *             .location("us-west1")
+ *             .location("us-centra1")
  *             .build());
  * 
  *         final var key = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
@@ -65,19 +72,18 @@ import javax.annotation.Nullable;
  *             .keyRing(testKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
  *             .build());
  * 
- *         var key1Member = new CryptoKeyIAMMember("key1Member", CryptoKeyIAMMemberArgs.builder()
- *             .cryptoKeyId(key1.id())
+ *         var keyMember = new CryptoKeyIAMMember("keyMember", CryptoKeyIAMMemberArgs.builder()
+ *             .cryptoKeyId(key.applyValue(getKMSCryptoKeyResult -> getKMSCryptoKeyResult.id()))
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-eventarc.iam.gserviceaccount.com", testProject.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var primary = new GoogleChannelConfig("primary", GoogleChannelConfigArgs.builder()
- *             .location("us-west1")
- *             .name("channel")
- *             .project(testProject.applyValue(getProjectResult -> getProjectResult.projectId()))
- *             .cryptoKeyName(key1.id())
+ *             .location("us-central1")
+ *             .name("googleChannelConfig")
+ *             .cryptoKeyName(key.applyValue(getKMSCryptoKeyResult -> getKMSCryptoKeyResult.id()))
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(key1Member)
+ *                 .dependsOn(keyMember)
  *                 .build());
  * 
  *     }}{@code
@@ -130,12 +136,16 @@ public class GoogleChannelConfig extends com.pulumi.resources.CustomResource {
     /**
      * The location for the resource
      * 
+     * ***
+     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location for the resource
+     * 
+     * ***
      * 
      */
     public Output<String> location() {
@@ -144,8 +154,6 @@ public class GoogleChannelConfig extends com.pulumi.resources.CustomResource {
     /**
      * Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -153,21 +161,21 @@ public class GoogleChannelConfig extends com.pulumi.resources.CustomResource {
     /**
      * @return Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
      * 
-     * ***
-     * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Output<String> project() {

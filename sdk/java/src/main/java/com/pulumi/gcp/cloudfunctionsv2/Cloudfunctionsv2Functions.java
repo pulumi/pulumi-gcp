@@ -246,7 +246,7 @@ public final class Cloudfunctionsv2Functions {
     /**
      * Retrieves the current IAM policy data for function
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -290,7 +290,7 @@ public final class Cloudfunctionsv2Functions {
     /**
      * Retrieves the current IAM policy data for function
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -334,7 +334,7 @@ public final class Cloudfunctionsv2Functions {
     /**
      * Retrieves the current IAM policy data for function
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -378,7 +378,7 @@ public final class Cloudfunctionsv2Functions {
     /**
      * Retrieves the current IAM policy data for function
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -422,7 +422,7 @@ public final class Cloudfunctionsv2Functions {
     /**
      * Retrieves the current IAM policy data for function
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

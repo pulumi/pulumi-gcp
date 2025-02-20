@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EnvironmentConfigDataRetentionConfig {
     /**
-     * @return Optional. The configuration setting for database retention.
+     * @return Optional. The policy for airflow metadata database retention.
      * 
      */
     private @Nullable List<EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig> airflowMetadataRetentionConfigs;
@@ -25,7 +25,7 @@ public final class EnvironmentConfigDataRetentionConfig {
 
     private EnvironmentConfigDataRetentionConfig() {}
     /**
-     * @return Optional. The configuration setting for database retention.
+     * @return Optional. The policy for airflow metadata database retention.
      * 
      */
     public List<EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig> airflowMetadataRetentionConfigs() {

@@ -23,7 +23,8 @@ class ServicePerimeterDryRunEgressPolicyArgs:
     def __init__(__self__, *,
                  perimeter: pulumi.Input[str],
                  egress_from: Optional[pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressFromArgs']] = None,
-                 egress_to: Optional[pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressToArgs']] = None):
+                 egress_to: Optional[pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressToArgs']] = None,
+                 title: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServicePerimeterDryRunEgressPolicy resource.
         :param pulumi.Input[str] perimeter: The name of the Service Perimeter to add this resource to.
@@ -35,12 +36,15 @@ class ServicePerimeterDryRunEgressPolicyArgs:
         :param pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressToArgs'] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
                cause this `EgressPolicy` to apply.
                Structure is documented below.
+        :param pulumi.Input[str] title: Human readable title. Must be unique within the perimeter. Does not affect behavior.
         """
         pulumi.set(__self__, "perimeter", perimeter)
         if egress_from is not None:
             pulumi.set(__self__, "egress_from", egress_from)
         if egress_to is not None:
             pulumi.set(__self__, "egress_to", egress_to)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter
@@ -84,6 +88,18 @@ class ServicePerimeterDryRunEgressPolicyArgs:
     def egress_to(self, value: Optional[pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressToArgs']]):
         pulumi.set(self, "egress_to", value)
 
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human readable title. Must be unique within the perimeter. Does not affect behavior.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
 
 @pulumi.input_type
 class _ServicePerimeterDryRunEgressPolicyState:
@@ -91,7 +107,9 @@ class _ServicePerimeterDryRunEgressPolicyState:
                  access_policy_id: Optional[pulumi.Input[str]] = None,
                  egress_from: Optional[pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressFromArgs']] = None,
                  egress_to: Optional[pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressToArgs']] = None,
-                 perimeter: Optional[pulumi.Input[str]] = None):
+                 etag: Optional[pulumi.Input[str]] = None,
+                 perimeter: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServicePerimeterDryRunEgressPolicy resources.
         :param pulumi.Input[str] access_policy_id: The name of the Access Policy this resource belongs to.
@@ -100,10 +118,12 @@ class _ServicePerimeterDryRunEgressPolicyState:
         :param pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressToArgs'] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
                cause this `EgressPolicy` to apply.
                Structure is documented below.
+        :param pulumi.Input[str] etag: The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
         :param pulumi.Input[str] perimeter: The name of the Service Perimeter to add this resource to.
                
                
                - - -
+        :param pulumi.Input[str] title: Human readable title. Must be unique within the perimeter. Does not affect behavior.
         """
         if access_policy_id is not None:
             pulumi.set(__self__, "access_policy_id", access_policy_id)
@@ -111,8 +131,12 @@ class _ServicePerimeterDryRunEgressPolicyState:
             pulumi.set(__self__, "egress_from", egress_from)
         if egress_to is not None:
             pulumi.set(__self__, "egress_to", egress_to)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
         if perimeter is not None:
             pulumi.set(__self__, "perimeter", perimeter)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter(name="accessPolicyId")
@@ -155,6 +179,18 @@ class _ServicePerimeterDryRunEgressPolicyState:
 
     @property
     @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
     def perimeter(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the Service Perimeter to add this resource to.
@@ -168,6 +204,18 @@ class _ServicePerimeterDryRunEgressPolicyState:
     def perimeter(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "perimeter", value)
 
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human readable title. Must be unique within the perimeter. Does not affect behavior.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
 
 class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
     @overload
@@ -177,6 +225,7 @@ class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
                  egress_from: Optional[pulumi.Input[Union['ServicePerimeterDryRunEgressPolicyEgressFromArgs', 'ServicePerimeterDryRunEgressPolicyEgressFromArgsDict']]] = None,
                  egress_to: Optional[pulumi.Input[Union['ServicePerimeterDryRunEgressPolicyEgressToArgs', 'ServicePerimeterDryRunEgressPolicyEgressToArgsDict']]] = None,
                  perimeter: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Manage a single EgressPolicy in the spec (dry-run) configuration for a service perimeter.
@@ -214,6 +263,7 @@ class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[str] title: Human readable title. Must be unique within the perimeter. Does not affect behavior.
         """
         ...
     @overload
@@ -264,6 +314,7 @@ class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
                  egress_from: Optional[pulumi.Input[Union['ServicePerimeterDryRunEgressPolicyEgressFromArgs', 'ServicePerimeterDryRunEgressPolicyEgressFromArgsDict']]] = None,
                  egress_to: Optional[pulumi.Input[Union['ServicePerimeterDryRunEgressPolicyEgressToArgs', 'ServicePerimeterDryRunEgressPolicyEgressToArgsDict']]] = None,
                  perimeter: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -278,7 +329,9 @@ class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
             if perimeter is None and not opts.urn:
                 raise TypeError("Missing required property 'perimeter'")
             __props__.__dict__["perimeter"] = perimeter
+            __props__.__dict__["title"] = title
             __props__.__dict__["access_policy_id"] = None
+            __props__.__dict__["etag"] = None
         super(ServicePerimeterDryRunEgressPolicy, __self__).__init__(
             'gcp:accesscontextmanager/servicePerimeterDryRunEgressPolicy:ServicePerimeterDryRunEgressPolicy',
             resource_name,
@@ -292,7 +345,9 @@ class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
             access_policy_id: Optional[pulumi.Input[str]] = None,
             egress_from: Optional[pulumi.Input[Union['ServicePerimeterDryRunEgressPolicyEgressFromArgs', 'ServicePerimeterDryRunEgressPolicyEgressFromArgsDict']]] = None,
             egress_to: Optional[pulumi.Input[Union['ServicePerimeterDryRunEgressPolicyEgressToArgs', 'ServicePerimeterDryRunEgressPolicyEgressToArgsDict']]] = None,
-            perimeter: Optional[pulumi.Input[str]] = None) -> 'ServicePerimeterDryRunEgressPolicy':
+            etag: Optional[pulumi.Input[str]] = None,
+            perimeter: Optional[pulumi.Input[str]] = None,
+            title: Optional[pulumi.Input[str]] = None) -> 'ServicePerimeterDryRunEgressPolicy':
         """
         Get an existing ServicePerimeterDryRunEgressPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -306,10 +361,12 @@ class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
         :param pulumi.Input[Union['ServicePerimeterDryRunEgressPolicyEgressToArgs', 'ServicePerimeterDryRunEgressPolicyEgressToArgsDict']] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
                cause this `EgressPolicy` to apply.
                Structure is documented below.
+        :param pulumi.Input[str] etag: The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
         :param pulumi.Input[str] perimeter: The name of the Service Perimeter to add this resource to.
                
                
                - - -
+        :param pulumi.Input[str] title: Human readable title. Must be unique within the perimeter. Does not affect behavior.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -318,7 +375,9 @@ class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
         __props__.__dict__["access_policy_id"] = access_policy_id
         __props__.__dict__["egress_from"] = egress_from
         __props__.__dict__["egress_to"] = egress_to
+        __props__.__dict__["etag"] = etag
         __props__.__dict__["perimeter"] = perimeter
+        __props__.__dict__["title"] = title
         return ServicePerimeterDryRunEgressPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -350,6 +409,14 @@ class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
     def perimeter(self) -> pulumi.Output[str]:
         """
         The name of the Service Perimeter to add this resource to.
@@ -358,4 +425,12 @@ class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "perimeter")
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Output[Optional[str]]:
+        """
+        Human readable title. Must be unique within the perimeter. Does not affect behavior.
+        """
+        return pulumi.get(self, "title")
 

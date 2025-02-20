@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The resource for managing ReleaseChannel settings for Admin Control.
+//
 // ## Example Usage
 //
 // ### Gemini Release Channel Setting Basic
@@ -31,7 +33,10 @@ import (
 //			_, err := gemini.NewReleaseChannelSetting(ctx, "example", &gemini.ReleaseChannelSettingArgs{
 //				ReleaseChannelSettingId: pulumi.String("ls1-tf"),
 //				Location:                pulumi.String("global"),
-//				ReleaseChannel:          pulumi.String("EXPERIMENTAL"),
+//				Labels: pulumi.StringMap{
+//					"my_key": pulumi.String("my_value"),
+//				},
+//				ReleaseChannel: pulumi.String("EXPERIMENTAL"),
 //			})
 //			if err != nil {
 //				return err
@@ -68,11 +73,11 @@ import (
 type ReleaseChannelSetting struct {
 	pulumi.CustomResourceState
 
-	// Output only. [Output only] Create time stamp.
+	// Create time stamp.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// Optional. Labels as key value pairs.
+	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -87,18 +92,16 @@ type ReleaseChannelSetting struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// Optional. Release channel to be used.
+	// Release channel to be used.
 	// Possible values:
 	// STABLE
 	// EXPERIMENTAL
 	ReleaseChannel pulumi.StringPtrOutput `pulumi:"releaseChannel"`
-	// Required. Id of the requesting object.
-	// If auto-generating Id server-side, remove this field and
-	// releaseChannelSettingId from the methodSignature of Create RPC
+	// Id of the Release Channel Setting.
 	//
 	// ***
 	ReleaseChannelSettingId pulumi.StringOutput `pulumi:"releaseChannelSettingId"`
-	// Output only. [Output only] Update time stamp.
+	// Update time stamp.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -143,11 +146,11 @@ func GetReleaseChannelSetting(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ReleaseChannelSetting resources.
 type releaseChannelSettingState struct {
-	// Output only. [Output only] Create time stamp.
+	// Create time stamp.
 	CreateTime *string `pulumi:"createTime"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// Optional. Labels as key value pairs.
+	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
@@ -162,27 +165,25 @@ type releaseChannelSettingState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// Optional. Release channel to be used.
+	// Release channel to be used.
 	// Possible values:
 	// STABLE
 	// EXPERIMENTAL
 	ReleaseChannel *string `pulumi:"releaseChannel"`
-	// Required. Id of the requesting object.
-	// If auto-generating Id server-side, remove this field and
-	// releaseChannelSettingId from the methodSignature of Create RPC
+	// Id of the Release Channel Setting.
 	//
 	// ***
 	ReleaseChannelSettingId *string `pulumi:"releaseChannelSettingId"`
-	// Output only. [Output only] Update time stamp.
+	// Update time stamp.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type ReleaseChannelSettingState struct {
-	// Output only. [Output only] Create time stamp.
+	// Create time stamp.
 	CreateTime pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
-	// Optional. Labels as key value pairs.
+	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
@@ -197,18 +198,16 @@ type ReleaseChannelSettingState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
-	// Optional. Release channel to be used.
+	// Release channel to be used.
 	// Possible values:
 	// STABLE
 	// EXPERIMENTAL
 	ReleaseChannel pulumi.StringPtrInput
-	// Required. Id of the requesting object.
-	// If auto-generating Id server-side, remove this field and
-	// releaseChannelSettingId from the methodSignature of Create RPC
+	// Id of the Release Channel Setting.
 	//
 	// ***
 	ReleaseChannelSettingId pulumi.StringPtrInput
-	// Output only. [Output only] Update time stamp.
+	// Update time stamp.
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -217,7 +216,7 @@ func (ReleaseChannelSettingState) ElementType() reflect.Type {
 }
 
 type releaseChannelSettingArgs struct {
-	// Optional. Labels as key value pairs.
+	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
@@ -226,14 +225,12 @@ type releaseChannelSettingArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Optional. Release channel to be used.
+	// Release channel to be used.
 	// Possible values:
 	// STABLE
 	// EXPERIMENTAL
 	ReleaseChannel *string `pulumi:"releaseChannel"`
-	// Required. Id of the requesting object.
-	// If auto-generating Id server-side, remove this field and
-	// releaseChannelSettingId from the methodSignature of Create RPC
+	// Id of the Release Channel Setting.
 	//
 	// ***
 	ReleaseChannelSettingId string `pulumi:"releaseChannelSettingId"`
@@ -241,7 +238,7 @@ type releaseChannelSettingArgs struct {
 
 // The set of arguments for constructing a ReleaseChannelSetting resource.
 type ReleaseChannelSettingArgs struct {
-	// Optional. Labels as key value pairs.
+	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
@@ -250,14 +247,12 @@ type ReleaseChannelSettingArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Optional. Release channel to be used.
+	// Release channel to be used.
 	// Possible values:
 	// STABLE
 	// EXPERIMENTAL
 	ReleaseChannel pulumi.StringPtrInput
-	// Required. Id of the requesting object.
-	// If auto-generating Id server-side, remove this field and
-	// releaseChannelSettingId from the methodSignature of Create RPC
+	// Id of the Release Channel Setting.
 	//
 	// ***
 	ReleaseChannelSettingId pulumi.StringInput
@@ -350,7 +345,7 @@ func (o ReleaseChannelSettingOutput) ToReleaseChannelSettingOutputWithContext(ct
 	return o
 }
 
-// Output only. [Output only] Create time stamp.
+// Create time stamp.
 func (o ReleaseChannelSettingOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReleaseChannelSetting) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -360,7 +355,7 @@ func (o ReleaseChannelSettingOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ReleaseChannelSetting) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// Optional. Labels as key value pairs.
+// Labels as key value pairs.
 // **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 // Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ReleaseChannelSettingOutput) Labels() pulumi.StringMapOutput {
@@ -390,7 +385,7 @@ func (o ReleaseChannelSettingOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ReleaseChannelSetting) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// Optional. Release channel to be used.
+// Release channel to be used.
 // Possible values:
 // STABLE
 // EXPERIMENTAL
@@ -398,16 +393,14 @@ func (o ReleaseChannelSettingOutput) ReleaseChannel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelSetting) pulumi.StringPtrOutput { return v.ReleaseChannel }).(pulumi.StringPtrOutput)
 }
 
-// Required. Id of the requesting object.
-// If auto-generating Id server-side, remove this field and
-// releaseChannelSettingId from the methodSignature of Create RPC
+// Id of the Release Channel Setting.
 //
 // ***
 func (o ReleaseChannelSettingOutput) ReleaseChannelSettingId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReleaseChannelSetting) pulumi.StringOutput { return v.ReleaseChannelSettingId }).(pulumi.StringOutput)
 }
 
-// Output only. [Output only] Update time stamp.
+// Update time stamp.
 func (o ReleaseChannelSettingOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReleaseChannelSetting) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

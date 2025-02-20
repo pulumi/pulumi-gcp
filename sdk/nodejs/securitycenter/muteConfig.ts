@@ -27,6 +27,8 @@ import * as utilities from "../utilities";
  *     parent: "organizations/123456789",
  *     filter: "category: \"OS_VULNERABILITY\"",
  *     description: "My Mute Config",
+ *     type: "DYNAMIC",
+ *     expiryTime: "2215-02-03T15:01:23Z",
  * });
  * ```
  *
@@ -80,6 +82,13 @@ export class MuteConfig extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Optional. The expiry of the mute config. Only applicable for dynamic configs.
+     * If the expiry is set, when the config expires, it is removed from all findings.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+     * nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
+    public readonly expiryTime!: pulumi.Output<string | undefined>;
+    /**
      * An expression that defines the filter to apply across create/update
      * events of findings. While creating a filter string, be mindful of
      * the scope in which the mute configuration is being created. E.g.,
@@ -114,6 +123,12 @@ export class MuteConfig extends pulumi.CustomResource {
      */
     public readonly parent!: pulumi.Output<string>;
     /**
+     * The type of the mute config, which determines what type of mute state the config affects.
+     * Default value is `DYNAMIC`.
+     * Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
+     */
+    public readonly type!: pulumi.Output<string | undefined>;
+    /**
      * Output only. The most recent time at which the mute config was
      * updated. This field is set by the server and will be ignored if
      * provided on config creation or update.
@@ -135,11 +150,13 @@ export class MuteConfig extends pulumi.CustomResource {
             const state = argsOrState as MuteConfigState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["expiryTime"] = state ? state.expiryTime : undefined;
             resourceInputs["filter"] = state ? state.filter : undefined;
             resourceInputs["mostRecentEditor"] = state ? state.mostRecentEditor : undefined;
             resourceInputs["muteConfigId"] = state ? state.muteConfigId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as MuteConfigArgs | undefined;
@@ -153,9 +170,11 @@ export class MuteConfig extends pulumi.CustomResource {
                 throw new Error("Missing required property 'parent'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["expiryTime"] = args ? args.expiryTime : undefined;
             resourceInputs["filter"] = args ? args.filter : undefined;
             resourceInputs["muteConfigId"] = args ? args.muteConfigId : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["mostRecentEditor"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -179,6 +198,13 @@ export interface MuteConfigState {
      * A description of the mute config.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Optional. The expiry of the mute config. Only applicable for dynamic configs.
+     * If the expiry is set, when the config expires, it is removed from all findings.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+     * nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
+    expiryTime?: pulumi.Input<string>;
     /**
      * An expression that defines the filter to apply across create/update
      * events of findings. While creating a filter string, be mindful of
@@ -214,6 +240,12 @@ export interface MuteConfigState {
      */
     parent?: pulumi.Input<string>;
     /**
+     * The type of the mute config, which determines what type of mute state the config affects.
+     * Default value is `DYNAMIC`.
+     * Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
+     */
+    type?: pulumi.Input<string>;
+    /**
      * Output only. The most recent time at which the mute config was
      * updated. This field is set by the server and will be ignored if
      * provided on config creation or update.
@@ -229,6 +261,13 @@ export interface MuteConfigArgs {
      * A description of the mute config.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Optional. The expiry of the mute config. Only applicable for dynamic configs.
+     * If the expiry is set, when the config expires, it is removed from all findings.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+     * nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
+    expiryTime?: pulumi.Input<string>;
     /**
      * An expression that defines the filter to apply across create/update
      * events of findings. While creating a filter string, be mindful of
@@ -250,4 +289,10 @@ export interface MuteConfigArgs {
      * - - -
      */
     parent: pulumi.Input<string>;
+    /**
+     * The type of the mute config, which determines what type of mute state the config affects.
+     * Default value is `DYNAMIC`.
+     * Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
+     */
+    type?: pulumi.Input<string>;
 }

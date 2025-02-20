@@ -22,9 +22,16 @@ import javax.annotation.Nullable;
 /**
  * The Eventarc Trigger resource
  * 
+ * To get more information about Trigger, see:
+ * 
+ * * [API documentation](https://cloud.google.com/eventarc/docs/reference/rest/v1/projects.locations.triggers)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/eventarc/standard/docs/overview#eventarc-triggers)
+ * 
  * ## Example Usage
  * 
- * ### Basic
+ * ### Eventarc Trigger With Cloud Run Destination
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -33,9 +40,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
  * import com.pulumi.gcp.cloudrun.Service;
  * import com.pulumi.gcp.cloudrun.ServiceArgs;
- * import com.pulumi.gcp.cloudrun.inputs.ServiceMetadataArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
@@ -44,8 +52,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.eventarc.inputs.TriggerMatchingCriteriaArgs;
  * import com.pulumi.gcp.eventarc.inputs.TriggerDestinationArgs;
  * import com.pulumi.gcp.eventarc.inputs.TriggerDestinationCloudRunServiceArgs;
- * import com.pulumi.gcp.pubsub.Topic;
- * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.eventarc.inputs.TriggerTransportArgs;
+ * import com.pulumi.gcp.eventarc.inputs.TriggerTransportPubsubArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -59,12 +67,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var foo = new Topic("foo", TopicArgs.builder()
+ *             .name("some-topic")
+ *             .build());
+ * 
  *         var default_ = new Service("default", ServiceArgs.builder()
- *             .name("eventarc-service")
- *             .location("europe-west1")
- *             .metadata(ServiceMetadataArgs.builder()
- *                 .namespace("my-project-name")
- *                 .build())
+ *             .name("some-service")
+ *             .location("us-central1")
  *             .template(ServiceTemplateArgs.builder()
  *                 .spec(ServiceTemplateSpecArgs.builder()
  *                     .containers(ServiceTemplateSpecContainerArgs.builder()
@@ -84,8 +93,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary = new Trigger("primary", TriggerArgs.builder()
- *             .name("name")
- *             .location("europe-west1")
+ *             .name("some-trigger")
+ *             .location("us-central1")
  *             .matchingCriterias(TriggerMatchingCriteriaArgs.builder()
  *                 .attribute("type")
  *                 .value("google.cloud.pubsub.topic.v1.messagePublished")
@@ -93,14 +102,15 @@ import javax.annotation.Nullable;
  *             .destination(TriggerDestinationArgs.builder()
  *                 .cloudRunService(TriggerDestinationCloudRunServiceArgs.builder()
  *                     .service(default_.name())
- *                     .region("europe-west1")
+ *                     .region("us-central1")
  *                     .build())
  *                 .build())
  *             .labels(Map.of("foo", "bar"))
- *             .build());
- * 
- *         var foo = new Topic("foo", TopicArgs.builder()
- *             .name("topic")
+ *             .transport(TriggerTransportArgs.builder()
+ *                 .pubsub(TriggerTransportPubsubArgs.builder()
+ *                     .topic(foo.id())
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -138,7 +148,7 @@ import javax.annotation.Nullable;
 public class Trigger extends com.pulumi.resources.CustomResource {
     /**
      * Optional. The name of the channel associated with the trigger in
-     * `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from
+     * &#39;projects/{project}/locations/{location}/channels/{channel}&#39; format. You must provide a channel to receive events from
      * Eventarc SaaS partners.
      * 
      */
@@ -147,7 +157,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Optional. The name of the channel associated with the trigger in
-     * `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from
+     * &#39;projects/{project}/locations/{location}/channels/{channel}&#39; format. You must provide a channel to receive events from
      * Eventarc SaaS partners.
      * 
      */
@@ -184,6 +194,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
     }
     /**
      * Required. Destination specifies where the events should be sent to.
+     * Structure is documented below.
      * 
      */
     @Export(name="destination", refs={TriggerDestination.class}, tree="[0]")
@@ -191,6 +202,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Required. Destination specifies where the events should be sent to.
+     * Structure is documented below.
      * 
      */
     public Output<TriggerDestination> destination() {
@@ -226,7 +238,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
     }
     /**
      * Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data
-     * field. This is set to `application/json` if the value is not defined.
+     * field. This is set to &#39;application/json&#39; if the value is not defined.
      * 
      */
     @Export(name="eventDataContentType", refs={String.class}, tree="[0]")
@@ -234,7 +246,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data
-     * field. This is set to `application/json` if the value is not defined.
+     * field. This is set to &#39;application/json&#39; if the value is not defined.
      * 
      */
     public Output<String> eventDataContentType() {
@@ -243,7 +255,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
     /**
      * Optional. User labels attached to the triggers that can be used to group resources. **Note**: This field is
      * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-     * `effective_labels` for all of the labels present on the resource.
+     * &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -252,7 +264,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
     /**
      * @return Optional. User labels attached to the triggers that can be used to group resources. **Note**: This field is
      * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-     * `effective_labels` for all of the labels present on the resource.
+     * &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -274,6 +286,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
     }
     /**
      * Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
+     * Structure is documented below.
      * 
      */
     @Export(name="matchingCriterias", refs={List.class,TriggerMatchingCriteria.class}, tree="[0,1]")
@@ -281,6 +294,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
+     * Structure is documented below.
      * 
      */
     public Output<List<TriggerMatchingCriteria>> matchingCriterias() {
@@ -300,29 +314,23 @@ public class Trigger extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * The project for the resource
-     * 
-     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
-    /**
-     * @return The project for the resource
-     * 
-     */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> pulumiLabels;
 
     /**
-     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {
@@ -330,12 +338,12 @@ public class Trigger extends com.pulumi.resources.CustomResource {
     }
     /**
      * Optional. The IAM service account email associated with the trigger. The service account represents the identity of the
-     * trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See
+     * trigger. The principal who calls this API must have &#39;iam.serviceAccounts.actAs&#39; permission in the service account. See
      * https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run
      * destinations, this service account is used to generate identity tokens when invoking the service. See
      * https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke
      * authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have
-     * `roles/eventarc.eventReceiver` IAM role.
+     * &#39;roles/eventarc.eventReceiver&#39; IAM role.
      * 
      */
     @Export(name="serviceAccount", refs={String.class}, tree="[0]")
@@ -343,12 +351,12 @@ public class Trigger extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Optional. The IAM service account email associated with the trigger. The service account represents the identity of the
-     * trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See
+     * trigger. The principal who calls this API must have &#39;iam.serviceAccounts.actAs&#39; permission in the service account. See
      * https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run
      * destinations, this service account is used to generate identity tokens when invoking the service. See
      * https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke
      * authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have
-     * `roles/eventarc.eventReceiver` IAM role.
+     * &#39;roles/eventarc.eventReceiver&#39; IAM role.
      * 
      */
     public Output<Optional<String>> serviceAccount() {

@@ -98,7 +98,7 @@ def get_environment_iam_policy(env_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for environment
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -129,7 +129,7 @@ def get_environment_iam_policy_output(env_id: Optional[pulumi.Input[str]] = None
     """
     Retrieves the current IAM policy data for environment
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

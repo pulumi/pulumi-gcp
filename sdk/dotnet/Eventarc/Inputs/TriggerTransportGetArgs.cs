@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Eventarc.Inputs
     {
         /// <summary>
         /// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+        /// Structure is documented below.
         /// </summary>
         [Input("pubsub")]
         public Input<Inputs.TriggerTransportPubsubGetArgs>? Pubsub { get; set; }

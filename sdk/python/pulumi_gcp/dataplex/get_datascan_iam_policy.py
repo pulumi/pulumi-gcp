@@ -108,7 +108,7 @@ def get_datascan_iam_policy(data_scan_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for datascan
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -148,7 +148,7 @@ def get_datascan_iam_policy_output(data_scan_id: Optional[pulumi.Input[str]] = N
     """
     Retrieves the current IAM policy data for datascan
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

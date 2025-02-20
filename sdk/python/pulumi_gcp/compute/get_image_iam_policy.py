@@ -98,7 +98,7 @@ def get_image_iam_policy(image: Optional[str] = None,
     """
     Retrieves the current IAM policy data for image
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -131,7 +131,7 @@ def get_image_iam_policy_output(image: Optional[pulumi.Input[str]] = None,
     """
     Retrieves the current IAM policy data for image
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

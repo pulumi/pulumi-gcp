@@ -7456,6 +7456,8 @@ type ServicePerimeterSpecEgressPolicy struct {
 	// cause this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressTo *ServicePerimeterSpecEgressPolicyEgressTo `pulumi:"egressTo"`
+	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+	Title *string `pulumi:"title"`
 }
 
 // ServicePerimeterSpecEgressPolicyInput is an input type that accepts ServicePerimeterSpecEgressPolicyArgs and ServicePerimeterSpecEgressPolicyOutput values.
@@ -7477,6 +7479,8 @@ type ServicePerimeterSpecEgressPolicyArgs struct {
 	// cause this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressTo ServicePerimeterSpecEgressPolicyEgressToPtrInput `pulumi:"egressTo"`
+	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+	Title pulumi.StringPtrInput `pulumi:"title"`
 }
 
 func (ServicePerimeterSpecEgressPolicyArgs) ElementType() reflect.Type {
@@ -7543,6 +7547,11 @@ func (o ServicePerimeterSpecEgressPolicyOutput) EgressFrom() ServicePerimeterSpe
 // Structure is documented below.
 func (o ServicePerimeterSpecEgressPolicyOutput) EgressTo() ServicePerimeterSpecEgressPolicyEgressToPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicy) *ServicePerimeterSpecEgressPolicyEgressTo { return v.EgressTo }).(ServicePerimeterSpecEgressPolicyEgressToPtrOutput)
+}
+
+// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+func (o ServicePerimeterSpecEgressPolicyOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicy) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimeterSpecEgressPolicyArrayOutput struct{ *pulumi.OutputState }
@@ -8369,6 +8378,8 @@ type ServicePerimeterSpecIngressPolicy struct {
 	// this `IngressPolicy` to apply.
 	// Structure is documented below.
 	IngressTo *ServicePerimeterSpecIngressPolicyIngressTo `pulumi:"ingressTo"`
+	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+	Title *string `pulumi:"title"`
 }
 
 // ServicePerimeterSpecIngressPolicyInput is an input type that accepts ServicePerimeterSpecIngressPolicyArgs and ServicePerimeterSpecIngressPolicyOutput values.
@@ -8391,6 +8402,8 @@ type ServicePerimeterSpecIngressPolicyArgs struct {
 	// this `IngressPolicy` to apply.
 	// Structure is documented below.
 	IngressTo ServicePerimeterSpecIngressPolicyIngressToPtrInput `pulumi:"ingressTo"`
+	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+	Title pulumi.StringPtrInput `pulumi:"title"`
 }
 
 func (ServicePerimeterSpecIngressPolicyArgs) ElementType() reflect.Type {
@@ -8460,6 +8473,11 @@ func (o ServicePerimeterSpecIngressPolicyOutput) IngressTo() ServicePerimeterSpe
 	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicy) *ServicePerimeterSpecIngressPolicyIngressTo {
 		return v.IngressTo
 	}).(ServicePerimeterSpecIngressPolicyIngressToPtrOutput)
+}
+
+// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+func (o ServicePerimeterSpecIngressPolicyOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicy) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimeterSpecIngressPolicyArrayOutput struct{ *pulumi.OutputState }
@@ -9741,6 +9759,8 @@ type ServicePerimeterStatusEgressPolicy struct {
 	// cause this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressTo *ServicePerimeterStatusEgressPolicyEgressTo `pulumi:"egressTo"`
+	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+	Title *string `pulumi:"title"`
 }
 
 // ServicePerimeterStatusEgressPolicyInput is an input type that accepts ServicePerimeterStatusEgressPolicyArgs and ServicePerimeterStatusEgressPolicyOutput values.
@@ -9762,6 +9782,8 @@ type ServicePerimeterStatusEgressPolicyArgs struct {
 	// cause this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressTo ServicePerimeterStatusEgressPolicyEgressToPtrInput `pulumi:"egressTo"`
+	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+	Title pulumi.StringPtrInput `pulumi:"title"`
 }
 
 func (ServicePerimeterStatusEgressPolicyArgs) ElementType() reflect.Type {
@@ -9830,6 +9852,11 @@ func (o ServicePerimeterStatusEgressPolicyOutput) EgressTo() ServicePerimeterSta
 	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicy) *ServicePerimeterStatusEgressPolicyEgressTo {
 		return v.EgressTo
 	}).(ServicePerimeterStatusEgressPolicyEgressToPtrOutput)
+}
+
+// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+func (o ServicePerimeterStatusEgressPolicyOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicy) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimeterStatusEgressPolicyArrayOutput struct{ *pulumi.OutputState }
@@ -10656,6 +10683,8 @@ type ServicePerimeterStatusIngressPolicy struct {
 	// this `IngressPolicy` to apply.
 	// Structure is documented below.
 	IngressTo *ServicePerimeterStatusIngressPolicyIngressTo `pulumi:"ingressTo"`
+	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+	Title *string `pulumi:"title"`
 }
 
 // ServicePerimeterStatusIngressPolicyInput is an input type that accepts ServicePerimeterStatusIngressPolicyArgs and ServicePerimeterStatusIngressPolicyOutput values.
@@ -10678,6 +10707,8 @@ type ServicePerimeterStatusIngressPolicyArgs struct {
 	// this `IngressPolicy` to apply.
 	// Structure is documented below.
 	IngressTo ServicePerimeterStatusIngressPolicyIngressToPtrInput `pulumi:"ingressTo"`
+	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+	Title pulumi.StringPtrInput `pulumi:"title"`
 }
 
 func (ServicePerimeterStatusIngressPolicyArgs) ElementType() reflect.Type {
@@ -10747,6 +10778,11 @@ func (o ServicePerimeterStatusIngressPolicyOutput) IngressTo() ServicePerimeterS
 	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicy) *ServicePerimeterStatusIngressPolicyIngressTo {
 		return v.IngressTo
 	}).(ServicePerimeterStatusIngressPolicyIngressToPtrOutput)
+}
+
+// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+func (o ServicePerimeterStatusIngressPolicyOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicy) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimeterStatusIngressPolicyArrayOutput struct{ *pulumi.OutputState }
@@ -12308,6 +12344,8 @@ type ServicePerimetersServicePerimeterSpecEgressPolicy struct {
 	// cause this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressTo *ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo `pulumi:"egressTo"`
+	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+	Title *string `pulumi:"title"`
 }
 
 // ServicePerimetersServicePerimeterSpecEgressPolicyInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyArgs and ServicePerimetersServicePerimeterSpecEgressPolicyOutput values.
@@ -12329,6 +12367,8 @@ type ServicePerimetersServicePerimeterSpecEgressPolicyArgs struct {
 	// cause this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressTo ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrInput `pulumi:"egressTo"`
+	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+	Title pulumi.StringPtrInput `pulumi:"title"`
 }
 
 func (ServicePerimetersServicePerimeterSpecEgressPolicyArgs) ElementType() reflect.Type {
@@ -12397,6 +12437,11 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyOutput) EgressTo() Serv
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicy) *ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo {
 		return v.EgressTo
 	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput)
+}
+
+// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicy) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput struct{ *pulumi.OutputState }
@@ -13241,6 +13286,8 @@ type ServicePerimetersServicePerimeterSpecIngressPolicy struct {
 	// this `IngressPolicy` to apply.
 	// Structure is documented below.
 	IngressTo *ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo `pulumi:"ingressTo"`
+	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+	Title *string `pulumi:"title"`
 }
 
 // ServicePerimetersServicePerimeterSpecIngressPolicyInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyArgs and ServicePerimetersServicePerimeterSpecIngressPolicyOutput values.
@@ -13263,6 +13310,8 @@ type ServicePerimetersServicePerimeterSpecIngressPolicyArgs struct {
 	// this `IngressPolicy` to apply.
 	// Structure is documented below.
 	IngressTo ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrInput `pulumi:"ingressTo"`
+	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+	Title pulumi.StringPtrInput `pulumi:"title"`
 }
 
 func (ServicePerimetersServicePerimeterSpecIngressPolicyArgs) ElementType() reflect.Type {
@@ -13332,6 +13381,11 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyOutput) IngressTo() Se
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicy) *ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo {
 		return v.IngressTo
 	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput)
+}
+
+// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicy) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput struct{ *pulumi.OutputState }
@@ -14625,6 +14679,8 @@ type ServicePerimetersServicePerimeterStatusEgressPolicy struct {
 	// cause this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressTo *ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo `pulumi:"egressTo"`
+	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+	Title *string `pulumi:"title"`
 }
 
 // ServicePerimetersServicePerimeterStatusEgressPolicyInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyArgs and ServicePerimetersServicePerimeterStatusEgressPolicyOutput values.
@@ -14646,6 +14702,8 @@ type ServicePerimetersServicePerimeterStatusEgressPolicyArgs struct {
 	// cause this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressTo ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrInput `pulumi:"egressTo"`
+	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+	Title pulumi.StringPtrInput `pulumi:"title"`
 }
 
 func (ServicePerimetersServicePerimeterStatusEgressPolicyArgs) ElementType() reflect.Type {
@@ -14714,6 +14772,11 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyOutput) EgressTo() Se
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicy) *ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo {
 		return v.EgressTo
 	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput)
+}
+
+// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicy) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput struct{ *pulumi.OutputState }
@@ -15560,6 +15623,8 @@ type ServicePerimetersServicePerimeterStatusIngressPolicy struct {
 	// this `IngressPolicy` to apply.
 	// Structure is documented below.
 	IngressTo *ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo `pulumi:"ingressTo"`
+	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+	Title *string `pulumi:"title"`
 }
 
 // ServicePerimetersServicePerimeterStatusIngressPolicyInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyArgs and ServicePerimetersServicePerimeterStatusIngressPolicyOutput values.
@@ -15582,6 +15647,8 @@ type ServicePerimetersServicePerimeterStatusIngressPolicyArgs struct {
 	// this `IngressPolicy` to apply.
 	// Structure is documented below.
 	IngressTo ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrInput `pulumi:"ingressTo"`
+	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+	Title pulumi.StringPtrInput `pulumi:"title"`
 }
 
 func (ServicePerimetersServicePerimeterStatusIngressPolicyArgs) ElementType() reflect.Type {
@@ -15651,6 +15718,11 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyOutput) IngressTo() 
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicy) *ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo {
 		return v.IngressTo
 	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput)
+}
+
+// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicy) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput struct{ *pulumi.OutputState }

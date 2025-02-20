@@ -11,12 +11,75 @@ namespace Pulumi.Gcp.Compute
 {
     public static class GetRegionBackendServiceIamPolicy
     {
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Compute.GetRegionBackendServiceIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = @default.Project,
+        ///         Region = @default.Region,
+        ///         Name = @default.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetRegionBackendServiceIamPolicyResult> InvokeAsync(GetRegionBackendServiceIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionBackendServiceIamPolicyResult>("gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy", args ?? new GetRegionBackendServiceIamPolicyArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Compute.GetRegionBackendServiceIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = @default.Project,
+        ///         Region = @default.Region,
+        ///         Name = @default.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetRegionBackendServiceIamPolicyResult> Invoke(GetRegionBackendServiceIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionBackendServiceIamPolicyResult>("gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy", args ?? new GetRegionBackendServiceIamPolicyInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Compute.GetRegionBackendServiceIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = @default.Project,
+        ///         Region = @default.Region,
+        ///         Name = @default.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetRegionBackendServiceIamPolicyResult> Invoke(GetRegionBackendServiceIamPolicyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionBackendServiceIamPolicyResult>("gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy", args ?? new GetRegionBackendServiceIamPolicyInvokeArgs(), options.WithDefaults());
     }

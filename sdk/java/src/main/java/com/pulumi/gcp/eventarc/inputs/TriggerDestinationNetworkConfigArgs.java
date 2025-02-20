@@ -17,12 +17,16 @@ public final class TriggerDestinationNetworkConfigArgs extends com.pulumi.resour
     /**
      * Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
      * 
+     * ***
+     * 
      */
     @Import(name="networkAttachment", required=true)
     private Output<String> networkAttachment;
 
     /**
      * @return Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+     * 
+     * ***
      * 
      */
     public Output<String> networkAttachment() {
@@ -56,6 +60,8 @@ public final class TriggerDestinationNetworkConfigArgs extends com.pulumi.resour
         /**
          * @param networkAttachment Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -66,6 +72,8 @@ public final class TriggerDestinationNetworkConfigArgs extends com.pulumi.resour
 
         /**
          * @param networkAttachment Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+         * 
+         * ***
          * 
          * @return builder
          * 

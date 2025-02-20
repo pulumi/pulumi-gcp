@@ -4,6 +4,20 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.vertex.getAiEndpointIamPolicy({
+ *     project: endpoint.project,
+ *     location: endpoint.location,
+ *     endpoint: endpoint.name,
+ * });
+ * ```
+ */
 export function getAiEndpointIamPolicy(args: GetAiEndpointIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAiEndpointIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:vertex/getAiEndpointIamPolicy:getAiEndpointIamPolicy", {
@@ -55,6 +69,20 @@ export interface GetAiEndpointIamPolicyResult {
     readonly policyData: string;
     readonly project: string;
 }
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.vertex.getAiEndpointIamPolicy({
+ *     project: endpoint.project,
+ *     location: endpoint.location,
+ *     endpoint: endpoint.name,
+ * });
+ * ```
+ */
 export function getAiEndpointIamPolicyOutput(args: GetAiEndpointIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAiEndpointIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:vertex/getAiEndpointIamPolicy:getAiEndpointIamPolicy", {

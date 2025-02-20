@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.servicedirectory.getNamespaceIamPolicy({
+ *     name: example.name,
+ * });
+ * ```
+ */
 export function getNamespaceIamPolicy(args: GetNamespaceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespaceIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:servicedirectory/getNamespaceIamPolicy:getNamespaceIamPolicy", {
@@ -40,6 +52,18 @@ export interface GetNamespaceIamPolicyResult {
      */
     readonly policyData: string;
 }
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.servicedirectory.getNamespaceIamPolicy({
+ *     name: example.name,
+ * });
+ * ```
+ */
 export function getNamespaceIamPolicyOutput(args: GetNamespaceIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNamespaceIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:servicedirectory/getNamespaceIamPolicy:getNamespaceIamPolicy", {

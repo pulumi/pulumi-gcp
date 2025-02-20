@@ -152,14 +152,18 @@ namespace Pulumi.Gcp.Compute
     public sealed class GetHcVpnGatewayResult
     {
         public readonly string Description;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string GatewayIpVersion;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string LabelFingerprint;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         public readonly string Network;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string? Region;
         public readonly string SelfLink;
         public readonly string StackType;
@@ -169,15 +173,23 @@ namespace Pulumi.Gcp.Compute
         private GetHcVpnGatewayResult(
             string description,
 
+            ImmutableDictionary<string, string> effectiveLabels,
+
             string gatewayIpVersion,
 
             string id,
+
+            string labelFingerprint,
+
+            ImmutableDictionary<string, string> labels,
 
             string name,
 
             string network,
 
             string? project,
+
+            ImmutableDictionary<string, string> pulumiLabels,
 
             string? region,
 
@@ -188,11 +200,15 @@ namespace Pulumi.Gcp.Compute
             ImmutableArray<Outputs.GetHcVpnGatewayVpnInterfaceResult> vpnInterfaces)
         {
             Description = description;
+            EffectiveLabels = effectiveLabels;
             GatewayIpVersion = gatewayIpVersion;
             Id = id;
+            LabelFingerprint = labelFingerprint;
+            Labels = labels;
             Name = name;
             Network = network;
             Project = project;
+            PulumiLabels = pulumiLabels;
             Region = region;
             SelfLink = selfLink;
             StackType = stackType;

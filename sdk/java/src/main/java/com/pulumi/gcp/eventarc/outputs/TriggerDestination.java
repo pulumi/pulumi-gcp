@@ -16,27 +16,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TriggerDestination {
     /**
-     * @return The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
+     * @return (Output)
+     * The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
      * 
      */
     private @Nullable String cloudFunction;
     /**
      * @return Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+     * Structure is documented below.
      * 
      */
     private @Nullable TriggerDestinationCloudRunService cloudRunService;
     /**
      * @return A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+     * Structure is documented below.
      * 
      */
     private @Nullable TriggerDestinationGke gke;
     /**
      * @return An HTTP endpoint destination described by an URI.
+     * Structure is documented below.
      * 
      */
     private @Nullable TriggerDestinationHttpEndpoint httpEndpoint;
     /**
      * @return Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+     * Structure is documented below.
      * 
      */
     private @Nullable TriggerDestinationNetworkConfig networkConfig;
@@ -48,7 +53,8 @@ public final class TriggerDestination {
 
     private TriggerDestination() {}
     /**
-     * @return The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
+     * @return (Output)
+     * The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
      * 
      */
     public Optional<String> cloudFunction() {
@@ -56,6 +62,7 @@ public final class TriggerDestination {
     }
     /**
      * @return Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+     * Structure is documented below.
      * 
      */
     public Optional<TriggerDestinationCloudRunService> cloudRunService() {
@@ -63,6 +70,7 @@ public final class TriggerDestination {
     }
     /**
      * @return A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+     * Structure is documented below.
      * 
      */
     public Optional<TriggerDestinationGke> gke() {
@@ -70,6 +78,7 @@ public final class TriggerDestination {
     }
     /**
      * @return An HTTP endpoint destination described by an URI.
+     * Structure is documented below.
      * 
      */
     public Optional<TriggerDestinationHttpEndpoint> httpEndpoint() {
@@ -77,6 +86,7 @@ public final class TriggerDestination {
     }
     /**
      * @return Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+     * Structure is documented below.
      * 
      */
     public Optional<TriggerDestinationNetworkConfig> networkConfig() {

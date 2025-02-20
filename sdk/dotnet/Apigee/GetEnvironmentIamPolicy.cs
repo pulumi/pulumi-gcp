@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Apigee
         /// Retrieves the current IAM policy data for environment
         /// 
         /// 
-        /// ## example
+        /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.Apigee
         /// Retrieves the current IAM policy data for environment
         /// 
         /// 
-        /// ## example
+        /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -67,7 +67,7 @@ namespace Pulumi.Gcp.Apigee
         /// Retrieves the current IAM policy data for environment
         /// 
         /// 
-        /// ## example
+        /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

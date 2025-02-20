@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Retrieves the current IAM policy data for entrytype
  *
- * ## example
+ * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -72,7 +72,7 @@ export interface GetEntryTypeIamPolicyResult {
 /**
  * Retrieves the current IAM policy data for entrytype
  *
- * ## example
+ * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

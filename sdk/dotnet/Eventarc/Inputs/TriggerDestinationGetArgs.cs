@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.Eventarc.Inputs
     public sealed class TriggerDestinationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Output)
         /// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
         /// </summary>
         [Input("cloudFunction")]
@@ -20,24 +21,28 @@ namespace Pulumi.Gcp.Eventarc.Inputs
 
         /// <summary>
         /// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+        /// Structure is documented below.
         /// </summary>
         [Input("cloudRunService")]
         public Input<Inputs.TriggerDestinationCloudRunServiceGetArgs>? CloudRunService { get; set; }
 
         /// <summary>
         /// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+        /// Structure is documented below.
         /// </summary>
         [Input("gke")]
         public Input<Inputs.TriggerDestinationGkeGetArgs>? Gke { get; set; }
 
         /// <summary>
         /// An HTTP endpoint destination described by an URI.
+        /// Structure is documented below.
         /// </summary>
         [Input("httpEndpoint")]
         public Input<Inputs.TriggerDestinationHttpEndpointGetArgs>? HttpEndpoint { get; set; }
 
         /// <summary>
         /// Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+        /// Structure is documented below.
         /// </summary>
         [Input("networkConfig")]
         public Input<Inputs.TriggerDestinationNetworkConfigGetArgs>? NetworkConfig { get; set; }

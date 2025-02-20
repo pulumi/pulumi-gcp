@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Gemini
 {
     /// <summary>
-    /// The resource for managing Logging settings for Admin Control.
-    /// 
     /// ## Example Usage
     /// 
     /// ### Gemini Logging Setting Basic
@@ -28,6 +26,10 @@ namespace Pulumi.Gcp.Gemini
     ///     {
     ///         LoggingSettingId = "ls1-tf",
     ///         Location = "global",
+    ///         Labels = 
+    ///         {
+    ///             { "my_key", "my_value" },
+    ///         },
     ///         LogPromptsAndResponses = true,
     ///         LogMetadata = true,
     ///     });
@@ -63,7 +65,7 @@ namespace Pulumi.Gcp.Gemini
     public partial class LoggingSetting : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Output only. [Output only] Create time stamp.
+        /// Create time stamp.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -75,7 +77,7 @@ namespace Pulumi.Gcp.Gemini
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Labels as key value pairs.
+        /// Labels as key value pairs.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -89,21 +91,19 @@ namespace Pulumi.Gcp.Gemini
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Whether to log metadata.
+        /// Whether to log metadata.
         /// </summary>
         [Output("logMetadata")]
         public Output<bool?> LogMetadata { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Whether to log prompts and responses.
+        /// Whether to log prompts and responses.
         /// </summary>
         [Output("logPromptsAndResponses")]
         public Output<bool?> LogPromptsAndResponses { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Id of the requesting object.
-        /// If auto-generating Id server-side, remove this field and
-        /// setting_id from the method_signature of Create RPC.
+        /// Id of the Logging Setting.
         /// 
         /// 
         /// - - -
@@ -133,7 +133,7 @@ namespace Pulumi.Gcp.Gemini
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. [Output only] Update time stamp.
+        /// Update time stamp.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -193,7 +193,7 @@ namespace Pulumi.Gcp.Gemini
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Labels as key value pairs.
+        /// Labels as key value pairs.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -210,21 +210,19 @@ namespace Pulumi.Gcp.Gemini
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Optional. Whether to log metadata.
+        /// Whether to log metadata.
         /// </summary>
         [Input("logMetadata")]
         public Input<bool>? LogMetadata { get; set; }
 
         /// <summary>
-        /// Optional. Whether to log prompts and responses.
+        /// Whether to log prompts and responses.
         /// </summary>
         [Input("logPromptsAndResponses")]
         public Input<bool>? LogPromptsAndResponses { get; set; }
 
         /// <summary>
-        /// Required. Id of the requesting object.
-        /// If auto-generating Id server-side, remove this field and
-        /// setting_id from the method_signature of Create RPC.
+        /// Id of the Logging Setting.
         /// 
         /// 
         /// - - -
@@ -248,7 +246,7 @@ namespace Pulumi.Gcp.Gemini
     public sealed class LoggingSettingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. [Output only] Create time stamp.
+        /// Create time stamp.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -273,7 +271,7 @@ namespace Pulumi.Gcp.Gemini
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Labels as key value pairs.
+        /// Labels as key value pairs.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -290,21 +288,19 @@ namespace Pulumi.Gcp.Gemini
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Optional. Whether to log metadata.
+        /// Whether to log metadata.
         /// </summary>
         [Input("logMetadata")]
         public Input<bool>? LogMetadata { get; set; }
 
         /// <summary>
-        /// Optional. Whether to log prompts and responses.
+        /// Whether to log prompts and responses.
         /// </summary>
         [Input("logPromptsAndResponses")]
         public Input<bool>? LogPromptsAndResponses { get; set; }
 
         /// <summary>
-        /// Required. Id of the requesting object.
-        /// If auto-generating Id server-side, remove this field and
-        /// setting_id from the method_signature of Create RPC.
+        /// Id of the Logging Setting.
         /// 
         /// 
         /// - - -
@@ -344,7 +340,7 @@ namespace Pulumi.Gcp.Gemini
         }
 
         /// <summary>
-        /// Output only. [Output only] Update time stamp.
+        /// Update time stamp.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

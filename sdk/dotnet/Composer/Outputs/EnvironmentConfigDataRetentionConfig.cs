@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Composer.Outputs
     public sealed class EnvironmentConfigDataRetentionConfig
     {
         /// <summary>
-        /// Optional. The configuration setting for database retention.
+        /// Optional. The policy for airflow metadata database retention.
         /// </summary>
         public readonly ImmutableArray<Outputs.EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig> AirflowMetadataRetentionConfigs;
         /// <summary>

@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Retrieves the current IAM policy data for consentstore
  *
- * ## example
+ * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -66,7 +66,7 @@ export interface GetConsentStoreIamPolicyResult {
 /**
  * Retrieves the current IAM policy data for consentstore
  *
- * ## example
+ * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

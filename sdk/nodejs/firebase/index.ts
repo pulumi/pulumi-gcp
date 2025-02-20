@@ -50,6 +50,11 @@ export type AppleApp = import("./appleApp").AppleApp;
 export const AppleApp: typeof import("./appleApp").AppleApp = null as any;
 utilities.lazyLoad(exports, ["AppleApp"], () => require("./appleApp"));
 
+export { DataConnectServiceArgs, DataConnectServiceState } from "./dataConnectService";
+export type DataConnectService = import("./dataConnectService").DataConnectService;
+export const DataConnectService: typeof import("./dataConnectService").DataConnectService = null as any;
+utilities.lazyLoad(exports, ["DataConnectService"], () => require("./dataConnectService"));
+
 export { DatabaseInstanceArgs, DatabaseInstanceState } from "./databaseInstance";
 export type DatabaseInstance = import("./databaseInstance").DatabaseInstance;
 export const DatabaseInstance: typeof import("./databaseInstance").DatabaseInstance = null as any;
@@ -158,6 +163,8 @@ const _module = {
                 return new AppCheckServiceConfig(name, <any>undefined, { urn })
             case "gcp:firebase/appleApp:AppleApp":
                 return new AppleApp(name, <any>undefined, { urn })
+            case "gcp:firebase/dataConnectService:DataConnectService":
+                return new DataConnectService(name, <any>undefined, { urn })
             case "gcp:firebase/databaseInstance:DatabaseInstance":
                 return new DatabaseInstance(name, <any>undefined, { urn })
             case "gcp:firebase/extensionsInstance:ExtensionsInstance":
@@ -192,6 +199,7 @@ pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckRecaptchaEnterpri
 pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckRecaptchaV3Config", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckServiceConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/appleApp", _module)
+pulumi.runtime.registerResourceModule("gcp", "firebase/dataConnectService", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/databaseInstance", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/extensionsInstance", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/hostingChannel", _module)

@@ -89,7 +89,6 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 basicGlobalNetworksecurityAddressGroup.Id,
     ///             },
-    ///             DestNetworkScope = "INTERNET",
     ///             Layer4Configs = new[]
     ///             {
     ///                 new Gcp.Compute.Inputs.FirewallPolicyRuleMatchLayer4ConfigArgs

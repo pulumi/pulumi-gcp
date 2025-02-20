@@ -106,7 +106,17 @@ def get_region_backend_service_iam_policy(name: Optional[str] = None,
                                           region: Optional[str] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionBackendServiceIamPolicyResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.compute.get_region_backend_service_iam_policy(project=default["project"],
+        region=default["region"],
+        name=default["name"])
+    ```
+
 
     :param str name: Used to find the parent resource to bind the IAM policy to
     :param str project: The ID of the project in which the resource belongs.
@@ -136,7 +146,17 @@ def get_region_backend_service_iam_policy_output(name: Optional[pulumi.Input[str
                                                  region: Optional[pulumi.Input[Optional[str]]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionBackendServiceIamPolicyResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.compute.get_region_backend_service_iam_policy(project=default["project"],
+        region=default["region"],
+        name=default["name"])
+    ```
+
 
     :param str name: Used to find the parent resource to bind the IAM policy to
     :param str project: The ID of the project in which the resource belongs.

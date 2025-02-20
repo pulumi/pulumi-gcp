@@ -11,6 +11,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vertex.LookupAiEndpointIamPolicy(ctx, &vertex.LookupAiEndpointIamPolicyArgs{
+//				Project:  pulumi.StringRef(endpoint.Project),
+//				Location: pulumi.StringRef(endpoint.Location),
+//				Endpoint: endpoint.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupAiEndpointIamPolicy(ctx *pulumi.Context, args *LookupAiEndpointIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAiEndpointIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAiEndpointIamPolicyResult

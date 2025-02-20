@@ -648,6 +648,13 @@ namespace Pulumi.Gcp
             set => _firebaseCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _firebaseDataConnectCustomEndpoint = new __Value<string?>(() => __config.Get("firebaseDataConnectCustomEndpoint"));
+        public static string? FirebaseDataConnectCustomEndpoint
+        {
+            get => _firebaseDataConnectCustomEndpoint.Get();
+            set => _firebaseDataConnectCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _firebaseDatabaseCustomEndpoint = new __Value<string?>(() => __config.Get("firebaseDatabaseCustomEndpoint"));
         public static string? FirebaseDatabaseCustomEndpoint
         {

@@ -106,7 +106,17 @@ def get_ai_featurestore_iam_policy(featurestore: Optional[str] = None,
                                    region: Optional[str] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiFeaturestoreIamPolicyResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.vertex.get_ai_featurestore_iam_policy(project=featurestore["project"],
+        region=featurestore["region"],
+        featurestore=featurestore["name"])
+    ```
+
 
     :param str featurestore: Used to find the parent resource to bind the IAM policy to
     :param str project: The ID of the project in which the resource belongs.
@@ -134,7 +144,17 @@ def get_ai_featurestore_iam_policy_output(featurestore: Optional[pulumi.Input[st
                                           region: Optional[pulumi.Input[Optional[str]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiFeaturestoreIamPolicyResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.vertex.get_ai_featurestore_iam_policy(project=featurestore["project"],
+        region=featurestore["region"],
+        featurestore=featurestore["name"])
+    ```
+
 
     :param str featurestore: Used to find the parent resource to bind the IAM policy to
     :param str project: The ID of the project in which the resource belongs.

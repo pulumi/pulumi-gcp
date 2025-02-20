@@ -11,12 +11,72 @@ namespace Pulumi.Gcp.Compute
 {
     public static class GetBackendServiceIamPolicy
     {
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Compute.GetBackendServiceIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = @default.Project,
+        ///         Name = @default.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetBackendServiceIamPolicyResult> InvokeAsync(GetBackendServiceIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBackendServiceIamPolicyResult>("gcp:compute/getBackendServiceIamPolicy:getBackendServiceIamPolicy", args ?? new GetBackendServiceIamPolicyArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Compute.GetBackendServiceIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = @default.Project,
+        ///         Name = @default.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetBackendServiceIamPolicyResult> Invoke(GetBackendServiceIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBackendServiceIamPolicyResult>("gcp:compute/getBackendServiceIamPolicy:getBackendServiceIamPolicy", args ?? new GetBackendServiceIamPolicyInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Compute.GetBackendServiceIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = @default.Project,
+        ///         Name = @default.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetBackendServiceIamPolicyResult> Invoke(GetBackendServiceIamPolicyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetBackendServiceIamPolicyResult>("gcp:compute/getBackendServiceIamPolicy:getBackendServiceIamPolicy", args ?? new GetBackendServiceIamPolicyInvokeArgs(), options.WithDefaults());
     }

@@ -106,7 +106,17 @@ def get_gateway_iam_policy(gateway: Optional[str] = None,
                            region: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGatewayIamPolicyResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.apigateway.get_gateway_iam_policy(project=api_gw["project"],
+        region=api_gw["region"],
+        gateway=api_gw["gatewayId"])
+    ```
+
 
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -134,7 +144,17 @@ def get_gateway_iam_policy_output(gateway: Optional[pulumi.Input[str]] = None,
                                   region: Optional[pulumi.Input[Optional[str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGatewayIamPolicyResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.apigateway.get_gateway_iam_policy(project=api_gw["project"],
+        region=api_gw["region"],
+        gateway=api_gw["gatewayId"])
+    ```
+
 
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.

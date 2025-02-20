@@ -65,6 +65,10 @@ export class ServicePerimeterIngressPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly accessPolicyId!: pulumi.Output<string>;
     /**
+     * The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
+     */
+    public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
      * Defines the conditions on the source of a request causing this `IngressPolicy`
      * to apply.
      * Structure is documented below.
@@ -83,6 +87,10 @@ export class ServicePerimeterIngressPolicy extends pulumi.CustomResource {
      * - - -
      */
     public readonly perimeter!: pulumi.Output<string>;
+    /**
+     * Human readable title. Must be unique within the perimeter. Does not affect behavior.
+     */
+    public readonly title!: pulumi.Output<string | undefined>;
 
     /**
      * Create a ServicePerimeterIngressPolicy resource with the given unique name, arguments, and options.
@@ -98,9 +106,11 @@ export class ServicePerimeterIngressPolicy extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ServicePerimeterIngressPolicyState | undefined;
             resourceInputs["accessPolicyId"] = state ? state.accessPolicyId : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["ingressFrom"] = state ? state.ingressFrom : undefined;
             resourceInputs["ingressTo"] = state ? state.ingressTo : undefined;
             resourceInputs["perimeter"] = state ? state.perimeter : undefined;
+            resourceInputs["title"] = state ? state.title : undefined;
         } else {
             const args = argsOrState as ServicePerimeterIngressPolicyArgs | undefined;
             if ((!args || args.perimeter === undefined) && !opts.urn) {
@@ -109,7 +119,9 @@ export class ServicePerimeterIngressPolicy extends pulumi.CustomResource {
             resourceInputs["ingressFrom"] = args ? args.ingressFrom : undefined;
             resourceInputs["ingressTo"] = args ? args.ingressTo : undefined;
             resourceInputs["perimeter"] = args ? args.perimeter : undefined;
+            resourceInputs["title"] = args ? args.title : undefined;
             resourceInputs["accessPolicyId"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServicePerimeterIngressPolicy.__pulumiType, name, resourceInputs, opts);
@@ -124,6 +136,10 @@ export interface ServicePerimeterIngressPolicyState {
      * The name of the Access Policy this resource belongs to.
      */
     accessPolicyId?: pulumi.Input<string>;
+    /**
+     * The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
+     */
+    etag?: pulumi.Input<string>;
     /**
      * Defines the conditions on the source of a request causing this `IngressPolicy`
      * to apply.
@@ -143,6 +159,10 @@ export interface ServicePerimeterIngressPolicyState {
      * - - -
      */
     perimeter?: pulumi.Input<string>;
+    /**
+     * Human readable title. Must be unique within the perimeter. Does not affect behavior.
+     */
+    title?: pulumi.Input<string>;
 }
 
 /**
@@ -168,4 +188,8 @@ export interface ServicePerimeterIngressPolicyArgs {
      * - - -
      */
     perimeter: pulumi.Input<string>;
+    /**
+     * Human readable title. Must be unique within the perimeter. Does not affect behavior.
+     */
+    title?: pulumi.Input<string>;
 }

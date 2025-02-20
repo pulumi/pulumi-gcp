@@ -374,6 +374,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('firebaseCustomEndpoint')
 
     @property
+    def firebase_data_connect_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('firebaseDataConnectCustomEndpoint')
+
+    @property
     def firebase_database_custom_endpoint(self) -> Optional[str]:
         return __config__.get('firebaseDatabaseCustomEndpoint')
 

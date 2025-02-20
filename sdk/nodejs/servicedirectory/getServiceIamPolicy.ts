@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.servicedirectory.getServiceIamPolicy({
+ *     name: example.name,
+ * });
+ * ```
+ */
 export function getServiceIamPolicy(args: GetServiceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:servicedirectory/getServiceIamPolicy:getServiceIamPolicy", {
@@ -40,6 +52,18 @@ export interface GetServiceIamPolicyResult {
      */
     readonly policyData: string;
 }
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.servicedirectory.getServiceIamPolicy({
+ *     name: example.name,
+ * });
+ * ```
+ */
 export function getServiceIamPolicyOutput(args: GetServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:servicedirectory/getServiceIamPolicy:getServiceIamPolicy", {

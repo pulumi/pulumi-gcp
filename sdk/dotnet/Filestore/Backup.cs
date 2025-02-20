@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Filestore
     /// {
     ///     var instance = new Gcp.Filestore.Instance("instance", new()
     ///     {
-    ///         Name = "tf-fs-inst",
+    ///         Name = "fs-inst",
     ///         Location = "us-central1-b",
     ///         Tier = "BASIC_HDD",
     ///         FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.Filestore
     /// 
     ///     var backup = new Gcp.Filestore.Backup("backup", new()
     ///     {
-    ///         Name = "tf-fs-bkup",
+    ///         Name = "fs-bkup",
     ///         Location = "us-central1",
     ///         Description = "This is a filestore backup for the test instance",
     ///         SourceInstance = instance.Id,

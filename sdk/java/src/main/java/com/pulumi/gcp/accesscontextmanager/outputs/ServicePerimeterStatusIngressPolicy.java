@@ -6,6 +6,7 @@ package com.pulumi.gcp.accesscontextmanager.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.accesscontextmanager.outputs.ServicePerimeterStatusIngressPolicyIngressFrom;
 import com.pulumi.gcp.accesscontextmanager.outputs.ServicePerimeterStatusIngressPolicyIngressTo;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -26,6 +27,11 @@ public final class ServicePerimeterStatusIngressPolicy {
      * 
      */
     private @Nullable ServicePerimeterStatusIngressPolicyIngressTo ingressTo;
+    /**
+     * @return Human readable title. Must be unique within the perimeter. Does not affect behavior.
+     * 
+     */
+    private @Nullable String title;
 
     private ServicePerimeterStatusIngressPolicy() {}
     /**
@@ -46,6 +52,13 @@ public final class ServicePerimeterStatusIngressPolicy {
     public Optional<ServicePerimeterStatusIngressPolicyIngressTo> ingressTo() {
         return Optional.ofNullable(this.ingressTo);
     }
+    /**
+     * @return Human readable title. Must be unique within the perimeter. Does not affect behavior.
+     * 
+     */
+    public Optional<String> title() {
+        return Optional.ofNullable(this.title);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -58,11 +71,13 @@ public final class ServicePerimeterStatusIngressPolicy {
     public static final class Builder {
         private @Nullable ServicePerimeterStatusIngressPolicyIngressFrom ingressFrom;
         private @Nullable ServicePerimeterStatusIngressPolicyIngressTo ingressTo;
+        private @Nullable String title;
         public Builder() {}
         public Builder(ServicePerimeterStatusIngressPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ingressFrom = defaults.ingressFrom;
     	      this.ingressTo = defaults.ingressTo;
+    	      this.title = defaults.title;
         }
 
         @CustomType.Setter
@@ -77,10 +92,17 @@ public final class ServicePerimeterStatusIngressPolicy {
             this.ingressTo = ingressTo;
             return this;
         }
+        @CustomType.Setter
+        public Builder title(@Nullable String title) {
+
+            this.title = title;
+            return this;
+        }
         public ServicePerimeterStatusIngressPolicy build() {
             final var _resultValue = new ServicePerimeterStatusIngressPolicy();
             _resultValue.ingressFrom = ingressFrom;
             _resultValue.ingressTo = ingressTo;
+            _resultValue.title = title;
             return _resultValue;
         }
     }

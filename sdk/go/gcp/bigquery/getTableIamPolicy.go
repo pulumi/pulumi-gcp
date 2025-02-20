@@ -13,7 +13,7 @@ import (
 
 // Retrieves the current IAM policy data for table
 //
-// ## example
+// ## Example Usage
 //
 // ```go
 // package main

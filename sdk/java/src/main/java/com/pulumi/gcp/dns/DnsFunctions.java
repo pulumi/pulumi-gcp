@@ -620,7 +620,7 @@ public final class DnsFunctions {
     /**
      * Retrieves the current IAM policy data for managedzone
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -663,7 +663,7 @@ public final class DnsFunctions {
     /**
      * Retrieves the current IAM policy data for managedzone
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -706,7 +706,7 @@ public final class DnsFunctions {
     /**
      * Retrieves the current IAM policy data for managedzone
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -749,7 +749,7 @@ public final class DnsFunctions {
     /**
      * Retrieves the current IAM policy data for managedzone
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -792,7 +792,7 @@ public final class DnsFunctions {
     /**
      * Retrieves the current IAM policy data for managedzone
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

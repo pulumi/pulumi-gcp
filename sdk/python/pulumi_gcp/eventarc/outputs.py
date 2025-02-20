@@ -59,11 +59,16 @@ class TriggerDestination(dict):
                  network_config: Optional['outputs.TriggerDestinationNetworkConfig'] = None,
                  workflow: Optional[str] = None):
         """
-        :param str cloud_function: The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
+        :param str cloud_function: (Output)
+               The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
         :param 'TriggerDestinationCloudRunServiceArgs' cloud_run_service: Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+               Structure is documented below.
         :param 'TriggerDestinationGkeArgs' gke: A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+               Structure is documented below.
         :param 'TriggerDestinationHttpEndpointArgs' http_endpoint: An HTTP endpoint destination described by an URI.
+               Structure is documented below.
         :param 'TriggerDestinationNetworkConfigArgs' network_config: Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+               Structure is documented below.
         :param str workflow: The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
         """
         if cloud_function is not None:
@@ -83,6 +88,7 @@ class TriggerDestination(dict):
     @pulumi.getter(name="cloudFunction")
     def cloud_function(self) -> Optional[str]:
         """
+        (Output)
         The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
         """
         return pulumi.get(self, "cloud_function")
@@ -92,6 +98,7 @@ class TriggerDestination(dict):
     def cloud_run_service(self) -> Optional['outputs.TriggerDestinationCloudRunService']:
         """
         Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+        Structure is documented below.
         """
         return pulumi.get(self, "cloud_run_service")
 
@@ -100,6 +107,7 @@ class TriggerDestination(dict):
     def gke(self) -> Optional['outputs.TriggerDestinationGke']:
         """
         A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+        Structure is documented below.
         """
         return pulumi.get(self, "gke")
 
@@ -108,6 +116,7 @@ class TriggerDestination(dict):
     def http_endpoint(self) -> Optional['outputs.TriggerDestinationHttpEndpoint']:
         """
         An HTTP endpoint destination described by an URI.
+        Structure is documented below.
         """
         return pulumi.get(self, "http_endpoint")
 
@@ -116,6 +125,7 @@ class TriggerDestination(dict):
     def network_config(self) -> Optional['outputs.TriggerDestinationNetworkConfig']:
         """
         Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+        Structure is documented below.
         """
         return pulumi.get(self, "network_config")
 
@@ -274,6 +284,8 @@ class TriggerDestinationNetworkConfig(dict):
                  network_attachment: str):
         """
         :param str network_attachment: Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+               
+               - - -
         """
         pulumi.set(__self__, "network_attachment", network_attachment)
 
@@ -282,6 +294,8 @@ class TriggerDestinationNetworkConfig(dict):
     def network_attachment(self) -> str:
         """
         Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+
+        - - -
         """
         return pulumi.get(self, "network_attachment")
 
@@ -295,8 +309,6 @@ class TriggerMatchingCriteria(dict):
         """
         :param str attribute: Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
         :param str value: Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
-               
-               - - -
         :param str operator: Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
         """
         pulumi.set(__self__, "attribute", attribute)
@@ -317,8 +329,6 @@ class TriggerMatchingCriteria(dict):
     def value(self) -> str:
         """
         Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
-
-        - - -
         """
         return pulumi.get(self, "value")
 
@@ -337,6 +347,7 @@ class TriggerTransport(dict):
                  pubsub: Optional['outputs.TriggerTransportPubsub'] = None):
         """
         :param 'TriggerTransportPubsubArgs' pubsub: The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+               Structure is documented below.
         """
         if pubsub is not None:
             pulumi.set(__self__, "pubsub", pubsub)
@@ -346,6 +357,7 @@ class TriggerTransport(dict):
     def pubsub(self) -> Optional['outputs.TriggerTransportPubsub']:
         """
         The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+        Structure is documented below.
         """
         return pulumi.get(self, "pubsub")
 
@@ -356,7 +368,8 @@ class TriggerTransportPubsub(dict):
                  subscription: Optional[str] = None,
                  topic: Optional[str] = None):
         """
-        :param str subscription: Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+        :param str subscription: (Output)
+               Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
         :param str topic: Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}. You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
         """
         if subscription is not None:
@@ -368,6 +381,7 @@ class TriggerTransportPubsub(dict):
     @pulumi.getter
     def subscription(self) -> Optional[str]:
         """
+        (Output)
         Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
         """
         return pulumi.get(self, "subscription")

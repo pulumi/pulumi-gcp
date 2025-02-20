@@ -6579,6 +6579,16 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "graceful_shutdown": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "max_duration": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
                                 "local_ssd_recovery_timeout": {
                                     "maxItemsOne": true
                                 },
@@ -6701,6 +6711,16 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "graceful_shutdown": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "max_duration": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
                                 "local_ssd_recovery_timeout": {
                                     "maxItemsOne": true
                                 },
@@ -6823,6 +6843,16 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "graceful_shutdown": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "max_duration": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
                                 "local_ssd_recovery_timeout": {
                                     "maxItemsOne": true
                                 },
@@ -7067,6 +7097,16 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "graceful_shutdown": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "max_duration": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
                                 "local_ssd_recovery_timeout": {
                                     "maxItemsOne": false
                                 },
@@ -8177,6 +8217,16 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "graceful_shutdown": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "max_duration": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
                                 "local_ssd_recovery_timeout": {
                                     "maxItemsOne": false
                                 },
@@ -11432,7 +11482,14 @@
                                     "maxItemsOne": true
                                 },
                                 "kubelet_config": {
-                                    "maxItemsOne": true
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "allowed_unsafe_sysctls": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "linux_node_config": {
                                     "maxItemsOne": true,
@@ -11611,7 +11668,14 @@
                                                 "maxItemsOne": true
                                             },
                                             "kubelet_config": {
-                                                "maxItemsOne": true
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "allowed_unsafe_sysctls": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
                                             },
                                             "linux_node_config": {
                                                 "maxItemsOne": true,
@@ -11979,7 +12043,14 @@
                                     "maxItemsOne": true
                                 },
                                 "kubelet_config": {
-                                    "maxItemsOne": true
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "allowed_unsafe_sysctls": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "linux_node_config": {
                                     "maxItemsOne": true,
@@ -18721,6 +18792,10 @@
                 "current": "gcp:firebase/appleApp:AppleApp",
                 "majorVersion": 8
             },
+            "google_firebase_data_connect_service": {
+                "current": "gcp:firebase/dataConnectService:DataConnectService",
+                "majorVersion": 8
+            },
             "google_firebase_database_instance": {
                 "current": "gcp:firebase/databaseInstance:DatabaseInstance",
                 "majorVersion": 8
@@ -19106,12 +19181,28 @@
                 "current": "gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex",
                 "majorVersion": 8
             },
+            "google_gemini_data_sharing_with_google_setting": {
+                "current": "gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting",
+                "majorVersion": 8
+            },
+            "google_gemini_gemini_gcp_enablement_setting": {
+                "current": "gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting",
+                "majorVersion": 8
+            },
             "google_gemini_logging_setting": {
                 "current": "gcp:gemini/loggingSetting:LoggingSetting",
                 "majorVersion": 8
             },
+            "google_gemini_logging_setting_binding": {
+                "current": "gcp:gemini/loggingSettingBinding:LoggingSettingBinding",
+                "majorVersion": 8
+            },
             "google_gemini_release_channel_setting": {
                 "current": "gcp:gemini/releaseChannelSetting:ReleaseChannelSetting",
+                "majorVersion": 8
+            },
+            "google_gemini_release_channel_setting_binding": {
+                "current": "gcp:gemini/releaseChannelSettingBinding:ReleaseChannelSettingBinding",
                 "majorVersion": 8
             },
             "google_gemini_repository_group": {
@@ -22814,6 +22905,35 @@
                                 "condition_prometheus_query_language": {
                                     "maxItemsOne": true
                                 },
+                                "condition_sql": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "boolean_test": {
+                                                "maxItemsOne": true
+                                            },
+                                            "daily": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "execution_time": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "hourly": {
+                                                "maxItemsOne": true
+                                            },
+                                            "minutes": {
+                                                "maxItemsOne": true
+                                            },
+                                            "row_count_test": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
                                 "condition_threshold": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -23210,6 +23330,10 @@
                         "maxItemsOne": true
                     }
                 }
+            },
+            "google_netapp_volume_quota_rule": {
+                "current": "gcp:netapp/volumeQuotaRule:VolumeQuotaRule",
+                "majorVersion": 8
             },
             "google_netapp_volume_replication": {
                 "current": "gcp:netapp/volumeReplication:VolumeReplication",
@@ -30184,6 +30308,57 @@
                 "current": "gcp:organizations/getActiveFolder:getActiveFolder",
                 "majorVersion": 8
             },
+            "google_alloydb_instance": {
+                "current": "gcp:alloydb/getInstance:getInstance",
+                "majorVersion": 8,
+                "fields": {
+                    "client_connection_config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ssl_config": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "machine_config": {
+                        "maxItemsOne": false
+                    },
+                    "network_config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "authorized_external_networks": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "observability_config": {
+                        "maxItemsOne": false
+                    },
+                    "outbound_public_ip_addresses": {
+                        "maxItemsOne": false
+                    },
+                    "psc_instance_config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "allowed_consumer_projects": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "query_insights_config": {
+                        "maxItemsOne": false
+                    },
+                    "read_pool_config": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_alloydb_locations": {
                 "current": "gcp:alloydb/getLocations:getLocations",
                 "majorVersion": 8,
@@ -32387,6 +32562,16 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "graceful_shutdown": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "max_duration": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "local_ssd_recovery_timeout": {
                                     "maxItemsOne": false
                                 },
@@ -32606,6 +32791,16 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "graceful_shutdown": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "max_duration": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "local_ssd_recovery_timeout": {
                                     "maxItemsOne": false
                                 },
@@ -32941,6 +33136,16 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "graceful_shutdown": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "max_duration": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "local_ssd_recovery_timeout": {
                                     "maxItemsOne": false
                                 },
@@ -33877,7 +34082,14 @@
                                     "maxItemsOne": false
                                 },
                                 "kubelet_config": {
-                                    "maxItemsOne": false
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "allowed_unsafe_sysctls": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "linux_node_config": {
                                     "maxItemsOne": false,
@@ -34056,7 +34268,14 @@
                                                 "maxItemsOne": false
                                             },
                                             "kubelet_config": {
-                                                "maxItemsOne": false
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "allowed_unsafe_sysctls": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
                                             },
                                             "linux_node_config": {
                                                 "maxItemsOne": false,
@@ -37510,6 +37729,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_compute_ha_vpn_gateway": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_compute_image": [
                 "effective_labels",
                 "terraform_labels"
@@ -37722,6 +37945,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_firebase_data_connect_service": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_firebase_hosting_channel": [
                 "effective_labels",
                 "terraform_labels"
@@ -37730,11 +37957,27 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_gemini_data_sharing_with_google_setting": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_gemini_gemini_gcp_enablement_setting": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_gemini_logging_setting": [
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_gemini_logging_setting_binding": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_gemini_release_channel_setting": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_gemini_release_channel_setting_binding": [
                 "effective_labels",
                 "terraform_labels"
             ],
@@ -37859,6 +38102,10 @@
                 "terraform_labels"
             ],
             "google_netapp_volume": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_netapp_volume_quota_rule": [
                 "effective_labels",
                 "terraform_labels"
             ],
@@ -38212,6 +38459,10 @@
             ]
         },
         "dataSources": {
+            "google_alloydb_instance": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_artifact_registry_repository": [
                 "effective_labels",
                 "terraform_labels"
@@ -38281,6 +38532,10 @@
                 "rules.$.terraform_labels"
             ],
             "google_compute_global_forwarding_rule": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_compute_ha_vpn_gateway": [
                 "effective_labels",
                 "terraform_labels"
             ],
@@ -39020,6 +39275,7 @@
             "gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config": 0,
             "gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig": 0,
             "gcp:firebase/appleApp:AppleApp": 0,
+            "gcp:firebase/dataConnectService:DataConnectService": 0,
             "gcp:firebase/databaseInstance:DatabaseInstance": 0,
             "gcp:firebase/extensionsInstance:ExtensionsInstance": 0,
             "gcp:firebase/hostingChannel:HostingChannel": 0,
@@ -39044,8 +39300,12 @@
             "gcp:folder/iamAuditConfig:IamAuditConfig": 0,
             "gcp:folder/organizationPolicy:OrganizationPolicy": 0,
             "gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex": 0,
+            "gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting": 0,
+            "gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting": 0,
             "gcp:gemini/loggingSetting:LoggingSetting": 0,
+            "gcp:gemini/loggingSettingBinding:LoggingSettingBinding": 0,
             "gcp:gemini/releaseChannelSetting:ReleaseChannelSetting": 0,
+            "gcp:gemini/releaseChannelSettingBinding:ReleaseChannelSettingBinding": 0,
             "gcp:gemini/repositoryGroup:RepositoryGroup": 0,
             "gcp:gemini/repositoryGroupIamBinding:RepositoryGroupIamBinding": 0,
             "gcp:gemini/repositoryGroupIamMember:RepositoryGroupIamMember": 0,
@@ -39222,6 +39482,7 @@
             "gcp:netapp/kmsconfig:Kmsconfig": 0,
             "gcp:netapp/storagePool:StoragePool": 0,
             "gcp:netapp/volume:Volume": 0,
+            "gcp:netapp/volumeQuotaRule:VolumeQuotaRule": 0,
             "gcp:netapp/volumeReplication:VolumeReplication": 0,
             "gcp:netapp/volumeSnapshot:VolumeSnapshot": 0,
             "gcp:networkconnectivity/group:Group": 0,
@@ -39530,6 +39791,7 @@
             "gcp:accessapproval/getProjectServiceAccount:getProjectServiceAccount": 0,
             "gcp:accesscontextmanager/getAccessPolicy:getAccessPolicy": 0,
             "gcp:accesscontextmanager/getAccessPolicyIamPolicy:getAccessPolicyIamPolicy": 0,
+            "gcp:alloydb/getInstance:getInstance": 0,
             "gcp:alloydb/getLocations:getLocations": 0,
             "gcp:alloydb/getSupportedDatabaseFlags:getSupportedDatabaseFlags": 0,
             "gcp:apigateway/getApiConfigIamPolicy:getApiConfigIamPolicy": 0,

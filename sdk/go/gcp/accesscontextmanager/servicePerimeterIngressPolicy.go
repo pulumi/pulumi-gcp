@@ -41,6 +41,8 @@ type ServicePerimeterIngressPolicy struct {
 
 	// The name of the Access Policy this resource belongs to.
 	AccessPolicyId pulumi.StringOutput `pulumi:"accessPolicyId"`
+	// The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Defines the conditions on the source of a request causing this `IngressPolicy`
 	// to apply.
 	// Structure is documented below.
@@ -53,6 +55,8 @@ type ServicePerimeterIngressPolicy struct {
 	//
 	// ***
 	Perimeter pulumi.StringOutput `pulumi:"perimeter"`
+	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+	Title pulumi.StringPtrOutput `pulumi:"title"`
 }
 
 // NewServicePerimeterIngressPolicy registers a new resource with the given unique name, arguments, and options.
@@ -90,6 +94,8 @@ func GetServicePerimeterIngressPolicy(ctx *pulumi.Context,
 type servicePerimeterIngressPolicyState struct {
 	// The name of the Access Policy this resource belongs to.
 	AccessPolicyId *string `pulumi:"accessPolicyId"`
+	// The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
+	Etag *string `pulumi:"etag"`
 	// Defines the conditions on the source of a request causing this `IngressPolicy`
 	// to apply.
 	// Structure is documented below.
@@ -102,11 +108,15 @@ type servicePerimeterIngressPolicyState struct {
 	//
 	// ***
 	Perimeter *string `pulumi:"perimeter"`
+	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+	Title *string `pulumi:"title"`
 }
 
 type ServicePerimeterIngressPolicyState struct {
 	// The name of the Access Policy this resource belongs to.
 	AccessPolicyId pulumi.StringPtrInput
+	// The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
+	Etag pulumi.StringPtrInput
 	// Defines the conditions on the source of a request causing this `IngressPolicy`
 	// to apply.
 	// Structure is documented below.
@@ -119,6 +129,8 @@ type ServicePerimeterIngressPolicyState struct {
 	//
 	// ***
 	Perimeter pulumi.StringPtrInput
+	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+	Title pulumi.StringPtrInput
 }
 
 func (ServicePerimeterIngressPolicyState) ElementType() reflect.Type {
@@ -138,6 +150,8 @@ type servicePerimeterIngressPolicyArgs struct {
 	//
 	// ***
 	Perimeter string `pulumi:"perimeter"`
+	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+	Title *string `pulumi:"title"`
 }
 
 // The set of arguments for constructing a ServicePerimeterIngressPolicy resource.
@@ -154,6 +168,8 @@ type ServicePerimeterIngressPolicyArgs struct {
 	//
 	// ***
 	Perimeter pulumi.StringInput
+	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+	Title pulumi.StringPtrInput
 }
 
 func (ServicePerimeterIngressPolicyArgs) ElementType() reflect.Type {
@@ -248,6 +264,11 @@ func (o ServicePerimeterIngressPolicyOutput) AccessPolicyId() pulumi.StringOutpu
 	return o.ApplyT(func(v *ServicePerimeterIngressPolicy) pulumi.StringOutput { return v.AccessPolicyId }).(pulumi.StringOutput)
 }
 
+// The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
+func (o ServicePerimeterIngressPolicyOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePerimeterIngressPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
 // Defines the conditions on the source of a request causing this `IngressPolicy`
 // to apply.
 // Structure is documented below.
@@ -271,6 +292,11 @@ func (o ServicePerimeterIngressPolicyOutput) IngressTo() ServicePerimeterIngress
 // ***
 func (o ServicePerimeterIngressPolicyOutput) Perimeter() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePerimeterIngressPolicy) pulumi.StringOutput { return v.Perimeter }).(pulumi.StringOutput)
+}
+
+// Human readable title. Must be unique within the perimeter. Does not affect behavior.
+func (o ServicePerimeterIngressPolicyOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimeterIngressPolicy) pulumi.StringPtrOutput { return v.Title }).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimeterIngressPolicyArrayOutput struct{ *pulumi.OutputState }

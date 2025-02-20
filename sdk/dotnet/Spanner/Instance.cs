@@ -69,41 +69,6 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// });
     /// ```
-    /// ### Spanner Instance With Autoscaling
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Gcp.Spanner.Instance("example", new()
-    ///     {
-    ///         Config = "regional-us-central1",
-    ///         DisplayName = "Test Spanner Instance",
-    ///         AutoscalingConfig = new Gcp.Spanner.Inputs.InstanceAutoscalingConfigArgs
-    ///         {
-    ///             AutoscalingLimits = new Gcp.Spanner.Inputs.InstanceAutoscalingConfigAutoscalingLimitsArgs
-    ///             {
-    ///                 MaxProcessingUnits = 3000,
-    ///                 MinProcessingUnits = 2000,
-    ///             },
-    ///             AutoscalingTargets = new Gcp.Spanner.Inputs.InstanceAutoscalingConfigAutoscalingTargetsArgs
-    ///             {
-    ///                 HighPriorityCpuUtilizationPercent = 75,
-    ///                 StorageUtilizationPercent = 90,
-    ///             },
-    ///         },
-    ///         Labels = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ### Spanner Instance Multi Regional
     /// 
     /// ```csharp

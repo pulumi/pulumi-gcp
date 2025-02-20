@@ -19648,7 +19648,7 @@ type ClusterMasterAuthorizedNetworksConfig struct {
 	// Whether Kubernetes master is
 	// accessible via Google Compute Engine Public IPs.
 	GcpPublicCidrsAccessEnabled *bool `pulumi:"gcpPublicCidrsAccessEnabled"`
-	// Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+	// Whether authorized networks is enforced on the private endpoint or not.
 	PrivateEndpointEnforcementEnabled *bool `pulumi:"privateEndpointEnforcementEnabled"`
 }
 
@@ -19670,7 +19670,7 @@ type ClusterMasterAuthorizedNetworksConfigArgs struct {
 	// Whether Kubernetes master is
 	// accessible via Google Compute Engine Public IPs.
 	GcpPublicCidrsAccessEnabled pulumi.BoolPtrInput `pulumi:"gcpPublicCidrsAccessEnabled"`
-	// Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+	// Whether authorized networks is enforced on the private endpoint or not.
 	PrivateEndpointEnforcementEnabled pulumi.BoolPtrInput `pulumi:"privateEndpointEnforcementEnabled"`
 }
 
@@ -19765,7 +19765,7 @@ func (o ClusterMasterAuthorizedNetworksConfigOutput) GcpPublicCidrsAccessEnabled
 	return o.ApplyT(func(v ClusterMasterAuthorizedNetworksConfig) *bool { return v.GcpPublicCidrsAccessEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+// Whether authorized networks is enforced on the private endpoint or not.
 func (o ClusterMasterAuthorizedNetworksConfigOutput) PrivateEndpointEnforcementEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterMasterAuthorizedNetworksConfig) *bool { return v.PrivateEndpointEnforcementEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -19816,7 +19816,7 @@ func (o ClusterMasterAuthorizedNetworksConfigPtrOutput) GcpPublicCidrsAccessEnab
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+// Whether authorized networks is enforced on the private endpoint or not.
 func (o ClusterMasterAuthorizedNetworksConfigPtrOutput) PrivateEndpointEnforcementEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterMasterAuthorizedNetworksConfig) *bool {
 		if v == nil {
@@ -24159,6 +24159,16 @@ func (o ClusterNodeConfigHostMaintenancePolicyPtrOutput) MaintenanceInterval() p
 }
 
 type ClusterNodeConfigKubeletConfig struct {
+	// Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods. The allowed sysctl groups are `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, and `net.*`.
+	AllowedUnsafeSysctls []string `pulumi:"allowedUnsafeSysctls"`
+	// Defines the maximum number of container log files that can be present for a container. The integer must be between 2 and 10, inclusive.
+	ContainerLogMaxFiles *int `pulumi:"containerLogMaxFiles"`
+	// Defines the maximum size of the
+	// container log file before it is rotated. Specified as a positive number and a
+	// unit suffix, such as `"100Ki"`, `"10Mi"`. Valid units are "Ki", "Mi", "Gi".
+	// The value must be between `"10Mi"` and `"500Mi"`, inclusive. And the total container log size
+	// (`containerLogMaxSize` * `containerLogMaxFiles`) cannot exceed 1% of the total storage of the node.
+	ContainerLogMaxSize *string `pulumi:"containerLogMaxSize"`
 	// If true, enables CPU CFS quota enforcement for
 	// containers that specify CPU limits.
 	CpuCfsQuota *bool `pulumi:"cpuCfsQuota"`
@@ -24173,6 +24183,14 @@ type ClusterNodeConfigKubeletConfig struct {
 	// Prior to the 6.4.0 this field was marked as required. The workaround for the required field
 	// is setting the empty string `""`, which will function identically to not setting this field.
 	CpuManagerPolicy *string `pulumi:"cpuManagerPolicy"`
+	// Defines the percent of disk usage after which image garbage collection is always run. The integer must be between 10 and 85, inclusive.
+	ImageGcHighThresholdPercent *int `pulumi:"imageGcHighThresholdPercent"`
+	// Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to. The integer must be between 10 and 85, inclusive.
+	ImageGcLowThresholdPercent *int `pulumi:"imageGcLowThresholdPercent"`
+	// Defines the maximum age an image can be unused before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`, and `"2h45m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
+	ImageMaximumGcAge *string `pulumi:"imageMaximumGcAge"`
+	// Defines the minimum age for an unused image before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`. The value cannot be greater than "2m".
+	ImageMinimumGcAge *string `pulumi:"imageMinimumGcAge"`
 	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
 	InsecureKubeletReadonlyPortEnabled *string `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
@@ -24191,6 +24209,16 @@ type ClusterNodeConfigKubeletConfigInput interface {
 }
 
 type ClusterNodeConfigKubeletConfigArgs struct {
+	// Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods. The allowed sysctl groups are `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, and `net.*`.
+	AllowedUnsafeSysctls pulumi.StringArrayInput `pulumi:"allowedUnsafeSysctls"`
+	// Defines the maximum number of container log files that can be present for a container. The integer must be between 2 and 10, inclusive.
+	ContainerLogMaxFiles pulumi.IntPtrInput `pulumi:"containerLogMaxFiles"`
+	// Defines the maximum size of the
+	// container log file before it is rotated. Specified as a positive number and a
+	// unit suffix, such as `"100Ki"`, `"10Mi"`. Valid units are "Ki", "Mi", "Gi".
+	// The value must be between `"10Mi"` and `"500Mi"`, inclusive. And the total container log size
+	// (`containerLogMaxSize` * `containerLogMaxFiles`) cannot exceed 1% of the total storage of the node.
+	ContainerLogMaxSize pulumi.StringPtrInput `pulumi:"containerLogMaxSize"`
 	// If true, enables CPU CFS quota enforcement for
 	// containers that specify CPU limits.
 	CpuCfsQuota pulumi.BoolPtrInput `pulumi:"cpuCfsQuota"`
@@ -24205,6 +24233,14 @@ type ClusterNodeConfigKubeletConfigArgs struct {
 	// Prior to the 6.4.0 this field was marked as required. The workaround for the required field
 	// is setting the empty string `""`, which will function identically to not setting this field.
 	CpuManagerPolicy pulumi.StringPtrInput `pulumi:"cpuManagerPolicy"`
+	// Defines the percent of disk usage after which image garbage collection is always run. The integer must be between 10 and 85, inclusive.
+	ImageGcHighThresholdPercent pulumi.IntPtrInput `pulumi:"imageGcHighThresholdPercent"`
+	// Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to. The integer must be between 10 and 85, inclusive.
+	ImageGcLowThresholdPercent pulumi.IntPtrInput `pulumi:"imageGcLowThresholdPercent"`
+	// Defines the maximum age an image can be unused before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`, and `"2h45m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
+	ImageMaximumGcAge pulumi.StringPtrInput `pulumi:"imageMaximumGcAge"`
+	// Defines the minimum age for an unused image before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`. The value cannot be greater than "2m".
+	ImageMinimumGcAge pulumi.StringPtrInput `pulumi:"imageMinimumGcAge"`
 	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
 	InsecureKubeletReadonlyPortEnabled pulumi.StringPtrInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
@@ -24288,6 +24324,25 @@ func (o ClusterNodeConfigKubeletConfigOutput) ToClusterNodeConfigKubeletConfigPt
 	}).(ClusterNodeConfigKubeletConfigPtrOutput)
 }
 
+// Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods. The allowed sysctl groups are `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, and `net.*`.
+func (o ClusterNodeConfigKubeletConfigOutput) AllowedUnsafeSysctls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterNodeConfigKubeletConfig) []string { return v.AllowedUnsafeSysctls }).(pulumi.StringArrayOutput)
+}
+
+// Defines the maximum number of container log files that can be present for a container. The integer must be between 2 and 10, inclusive.
+func (o ClusterNodeConfigKubeletConfigOutput) ContainerLogMaxFiles() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigKubeletConfig) *int { return v.ContainerLogMaxFiles }).(pulumi.IntPtrOutput)
+}
+
+// Defines the maximum size of the
+// container log file before it is rotated. Specified as a positive number and a
+// unit suffix, such as `"100Ki"`, `"10Mi"`. Valid units are "Ki", "Mi", "Gi".
+// The value must be between `"10Mi"` and `"500Mi"`, inclusive. And the total container log size
+// (`containerLogMaxSize` * `containerLogMaxFiles`) cannot exceed 1% of the total storage of the node.
+func (o ClusterNodeConfigKubeletConfigOutput) ContainerLogMaxSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigKubeletConfig) *string { return v.ContainerLogMaxSize }).(pulumi.StringPtrOutput)
+}
+
 // If true, enables CPU CFS quota enforcement for
 // containers that specify CPU limits.
 func (o ClusterNodeConfigKubeletConfigOutput) CpuCfsQuota() pulumi.BoolPtrOutput {
@@ -24309,6 +24364,26 @@ func (o ClusterNodeConfigKubeletConfigOutput) CpuCfsQuotaPeriod() pulumi.StringP
 // is setting the empty string `""`, which will function identically to not setting this field.
 func (o ClusterNodeConfigKubeletConfigOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfigKubeletConfig) *string { return v.CpuManagerPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Defines the percent of disk usage after which image garbage collection is always run. The integer must be between 10 and 85, inclusive.
+func (o ClusterNodeConfigKubeletConfigOutput) ImageGcHighThresholdPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigKubeletConfig) *int { return v.ImageGcHighThresholdPercent }).(pulumi.IntPtrOutput)
+}
+
+// Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to. The integer must be between 10 and 85, inclusive.
+func (o ClusterNodeConfigKubeletConfigOutput) ImageGcLowThresholdPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigKubeletConfig) *int { return v.ImageGcLowThresholdPercent }).(pulumi.IntPtrOutput)
+}
+
+// Defines the maximum age an image can be unused before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`, and `"2h45m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
+func (o ClusterNodeConfigKubeletConfigOutput) ImageMaximumGcAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigKubeletConfig) *string { return v.ImageMaximumGcAge }).(pulumi.StringPtrOutput)
+}
+
+// Defines the minimum age for an unused image before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`. The value cannot be greater than "2m".
+func (o ClusterNodeConfigKubeletConfigOutput) ImageMinimumGcAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigKubeletConfig) *string { return v.ImageMinimumGcAge }).(pulumi.StringPtrOutput)
 }
 
 // Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
@@ -24343,6 +24418,40 @@ func (o ClusterNodeConfigKubeletConfigPtrOutput) Elem() ClusterNodeConfigKubelet
 		var ret ClusterNodeConfigKubeletConfig
 		return ret
 	}).(ClusterNodeConfigKubeletConfigOutput)
+}
+
+// Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods. The allowed sysctl groups are `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, and `net.*`.
+func (o ClusterNodeConfigKubeletConfigPtrOutput) AllowedUnsafeSysctls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigKubeletConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedUnsafeSysctls
+	}).(pulumi.StringArrayOutput)
+}
+
+// Defines the maximum number of container log files that can be present for a container. The integer must be between 2 and 10, inclusive.
+func (o ClusterNodeConfigKubeletConfigPtrOutput) ContainerLogMaxFiles() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigKubeletConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerLogMaxFiles
+	}).(pulumi.IntPtrOutput)
+}
+
+// Defines the maximum size of the
+// container log file before it is rotated. Specified as a positive number and a
+// unit suffix, such as `"100Ki"`, `"10Mi"`. Valid units are "Ki", "Mi", "Gi".
+// The value must be between `"10Mi"` and `"500Mi"`, inclusive. And the total container log size
+// (`containerLogMaxSize` * `containerLogMaxFiles`) cannot exceed 1% of the total storage of the node.
+func (o ClusterNodeConfigKubeletConfigPtrOutput) ContainerLogMaxSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigKubeletConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerLogMaxSize
+	}).(pulumi.StringPtrOutput)
 }
 
 // If true, enables CPU CFS quota enforcement for
@@ -24380,6 +24489,46 @@ func (o ClusterNodeConfigKubeletConfigPtrOutput) CpuManagerPolicy() pulumi.Strin
 			return nil
 		}
 		return v.CpuManagerPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the percent of disk usage after which image garbage collection is always run. The integer must be between 10 and 85, inclusive.
+func (o ClusterNodeConfigKubeletConfigPtrOutput) ImageGcHighThresholdPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigKubeletConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ImageGcHighThresholdPercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to. The integer must be between 10 and 85, inclusive.
+func (o ClusterNodeConfigKubeletConfigPtrOutput) ImageGcLowThresholdPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigKubeletConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ImageGcLowThresholdPercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// Defines the maximum age an image can be unused before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`, and `"2h45m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
+func (o ClusterNodeConfigKubeletConfigPtrOutput) ImageMaximumGcAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigKubeletConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageMaximumGcAge
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the minimum age for an unused image before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`. The value cannot be greater than "2m".
+func (o ClusterNodeConfigKubeletConfigPtrOutput) ImageMinimumGcAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigKubeletConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageMinimumGcAge
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -32416,6 +32565,16 @@ func (o ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput) MaintenanceInte
 }
 
 type ClusterNodePoolNodeConfigKubeletConfig struct {
+	// Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods. The allowed sysctl groups are `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, and `net.*`.
+	AllowedUnsafeSysctls []string `pulumi:"allowedUnsafeSysctls"`
+	// Defines the maximum number of container log files that can be present for a container. The integer must be between 2 and 10, inclusive.
+	ContainerLogMaxFiles *int `pulumi:"containerLogMaxFiles"`
+	// Defines the maximum size of the
+	// container log file before it is rotated. Specified as a positive number and a
+	// unit suffix, such as `"100Ki"`, `"10Mi"`. Valid units are "Ki", "Mi", "Gi".
+	// The value must be between `"10Mi"` and `"500Mi"`, inclusive. And the total container log size
+	// (`containerLogMaxSize` * `containerLogMaxFiles`) cannot exceed 1% of the total storage of the node.
+	ContainerLogMaxSize *string `pulumi:"containerLogMaxSize"`
 	// If true, enables CPU CFS quota enforcement for
 	// containers that specify CPU limits.
 	CpuCfsQuota *bool `pulumi:"cpuCfsQuota"`
@@ -32430,6 +32589,14 @@ type ClusterNodePoolNodeConfigKubeletConfig struct {
 	// Prior to the 6.4.0 this field was marked as required. The workaround for the required field
 	// is setting the empty string `""`, which will function identically to not setting this field.
 	CpuManagerPolicy *string `pulumi:"cpuManagerPolicy"`
+	// Defines the percent of disk usage after which image garbage collection is always run. The integer must be between 10 and 85, inclusive.
+	ImageGcHighThresholdPercent *int `pulumi:"imageGcHighThresholdPercent"`
+	// Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to. The integer must be between 10 and 85, inclusive.
+	ImageGcLowThresholdPercent *int `pulumi:"imageGcLowThresholdPercent"`
+	// Defines the maximum age an image can be unused before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`, and `"2h45m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
+	ImageMaximumGcAge *string `pulumi:"imageMaximumGcAge"`
+	// Defines the minimum age for an unused image before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`. The value cannot be greater than "2m".
+	ImageMinimumGcAge *string `pulumi:"imageMinimumGcAge"`
 	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
 	InsecureKubeletReadonlyPortEnabled *string `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
@@ -32448,6 +32615,16 @@ type ClusterNodePoolNodeConfigKubeletConfigInput interface {
 }
 
 type ClusterNodePoolNodeConfigKubeletConfigArgs struct {
+	// Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods. The allowed sysctl groups are `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, and `net.*`.
+	AllowedUnsafeSysctls pulumi.StringArrayInput `pulumi:"allowedUnsafeSysctls"`
+	// Defines the maximum number of container log files that can be present for a container. The integer must be between 2 and 10, inclusive.
+	ContainerLogMaxFiles pulumi.IntPtrInput `pulumi:"containerLogMaxFiles"`
+	// Defines the maximum size of the
+	// container log file before it is rotated. Specified as a positive number and a
+	// unit suffix, such as `"100Ki"`, `"10Mi"`. Valid units are "Ki", "Mi", "Gi".
+	// The value must be between `"10Mi"` and `"500Mi"`, inclusive. And the total container log size
+	// (`containerLogMaxSize` * `containerLogMaxFiles`) cannot exceed 1% of the total storage of the node.
+	ContainerLogMaxSize pulumi.StringPtrInput `pulumi:"containerLogMaxSize"`
 	// If true, enables CPU CFS quota enforcement for
 	// containers that specify CPU limits.
 	CpuCfsQuota pulumi.BoolPtrInput `pulumi:"cpuCfsQuota"`
@@ -32462,6 +32639,14 @@ type ClusterNodePoolNodeConfigKubeletConfigArgs struct {
 	// Prior to the 6.4.0 this field was marked as required. The workaround for the required field
 	// is setting the empty string `""`, which will function identically to not setting this field.
 	CpuManagerPolicy pulumi.StringPtrInput `pulumi:"cpuManagerPolicy"`
+	// Defines the percent of disk usage after which image garbage collection is always run. The integer must be between 10 and 85, inclusive.
+	ImageGcHighThresholdPercent pulumi.IntPtrInput `pulumi:"imageGcHighThresholdPercent"`
+	// Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to. The integer must be between 10 and 85, inclusive.
+	ImageGcLowThresholdPercent pulumi.IntPtrInput `pulumi:"imageGcLowThresholdPercent"`
+	// Defines the maximum age an image can be unused before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`, and `"2h45m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
+	ImageMaximumGcAge pulumi.StringPtrInput `pulumi:"imageMaximumGcAge"`
+	// Defines the minimum age for an unused image before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`. The value cannot be greater than "2m".
+	ImageMinimumGcAge pulumi.StringPtrInput `pulumi:"imageMinimumGcAge"`
 	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
 	InsecureKubeletReadonlyPortEnabled pulumi.StringPtrInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
@@ -32545,6 +32730,25 @@ func (o ClusterNodePoolNodeConfigKubeletConfigOutput) ToClusterNodePoolNodeConfi
 	}).(ClusterNodePoolNodeConfigKubeletConfigPtrOutput)
 }
 
+// Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods. The allowed sysctl groups are `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, and `net.*`.
+func (o ClusterNodePoolNodeConfigKubeletConfigOutput) AllowedUnsafeSysctls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigKubeletConfig) []string { return v.AllowedUnsafeSysctls }).(pulumi.StringArrayOutput)
+}
+
+// Defines the maximum number of container log files that can be present for a container. The integer must be between 2 and 10, inclusive.
+func (o ClusterNodePoolNodeConfigKubeletConfigOutput) ContainerLogMaxFiles() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigKubeletConfig) *int { return v.ContainerLogMaxFiles }).(pulumi.IntPtrOutput)
+}
+
+// Defines the maximum size of the
+// container log file before it is rotated. Specified as a positive number and a
+// unit suffix, such as `"100Ki"`, `"10Mi"`. Valid units are "Ki", "Mi", "Gi".
+// The value must be between `"10Mi"` and `"500Mi"`, inclusive. And the total container log size
+// (`containerLogMaxSize` * `containerLogMaxFiles`) cannot exceed 1% of the total storage of the node.
+func (o ClusterNodePoolNodeConfigKubeletConfigOutput) ContainerLogMaxSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigKubeletConfig) *string { return v.ContainerLogMaxSize }).(pulumi.StringPtrOutput)
+}
+
 // If true, enables CPU CFS quota enforcement for
 // containers that specify CPU limits.
 func (o ClusterNodePoolNodeConfigKubeletConfigOutput) CpuCfsQuota() pulumi.BoolPtrOutput {
@@ -32566,6 +32770,26 @@ func (o ClusterNodePoolNodeConfigKubeletConfigOutput) CpuCfsQuotaPeriod() pulumi
 // is setting the empty string `""`, which will function identically to not setting this field.
 func (o ClusterNodePoolNodeConfigKubeletConfigOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigKubeletConfig) *string { return v.CpuManagerPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Defines the percent of disk usage after which image garbage collection is always run. The integer must be between 10 and 85, inclusive.
+func (o ClusterNodePoolNodeConfigKubeletConfigOutput) ImageGcHighThresholdPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigKubeletConfig) *int { return v.ImageGcHighThresholdPercent }).(pulumi.IntPtrOutput)
+}
+
+// Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to. The integer must be between 10 and 85, inclusive.
+func (o ClusterNodePoolNodeConfigKubeletConfigOutput) ImageGcLowThresholdPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigKubeletConfig) *int { return v.ImageGcLowThresholdPercent }).(pulumi.IntPtrOutput)
+}
+
+// Defines the maximum age an image can be unused before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`, and `"2h45m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
+func (o ClusterNodePoolNodeConfigKubeletConfigOutput) ImageMaximumGcAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigKubeletConfig) *string { return v.ImageMaximumGcAge }).(pulumi.StringPtrOutput)
+}
+
+// Defines the minimum age for an unused image before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`. The value cannot be greater than "2m".
+func (o ClusterNodePoolNodeConfigKubeletConfigOutput) ImageMinimumGcAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigKubeletConfig) *string { return v.ImageMinimumGcAge }).(pulumi.StringPtrOutput)
 }
 
 // Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
@@ -32600,6 +32824,40 @@ func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) Elem() ClusterNodePoolN
 		var ret ClusterNodePoolNodeConfigKubeletConfig
 		return ret
 	}).(ClusterNodePoolNodeConfigKubeletConfigOutput)
+}
+
+// Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods. The allowed sysctl groups are `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, and `net.*`.
+func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) AllowedUnsafeSysctls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigKubeletConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedUnsafeSysctls
+	}).(pulumi.StringArrayOutput)
+}
+
+// Defines the maximum number of container log files that can be present for a container. The integer must be between 2 and 10, inclusive.
+func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) ContainerLogMaxFiles() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigKubeletConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerLogMaxFiles
+	}).(pulumi.IntPtrOutput)
+}
+
+// Defines the maximum size of the
+// container log file before it is rotated. Specified as a positive number and a
+// unit suffix, such as `"100Ki"`, `"10Mi"`. Valid units are "Ki", "Mi", "Gi".
+// The value must be between `"10Mi"` and `"500Mi"`, inclusive. And the total container log size
+// (`containerLogMaxSize` * `containerLogMaxFiles`) cannot exceed 1% of the total storage of the node.
+func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) ContainerLogMaxSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigKubeletConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerLogMaxSize
+	}).(pulumi.StringPtrOutput)
 }
 
 // If true, enables CPU CFS quota enforcement for
@@ -32637,6 +32895,46 @@ func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) CpuManagerPolicy() pulu
 			return nil
 		}
 		return v.CpuManagerPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the percent of disk usage after which image garbage collection is always run. The integer must be between 10 and 85, inclusive.
+func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) ImageGcHighThresholdPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigKubeletConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ImageGcHighThresholdPercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to. The integer must be between 10 and 85, inclusive.
+func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) ImageGcLowThresholdPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigKubeletConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ImageGcLowThresholdPercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// Defines the maximum age an image can be unused before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`, and `"2h45m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
+func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) ImageMaximumGcAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigKubeletConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageMaximumGcAge
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the minimum age for an unused image before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`. The value cannot be greater than "2m".
+func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) ImageMinimumGcAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigKubeletConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageMinimumGcAge
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -42585,12 +42883,26 @@ func (o NodePoolNodeConfigHostMaintenancePolicyPtrOutput) MaintenanceInterval() 
 }
 
 type NodePoolNodeConfigKubeletConfig struct {
+	// Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.
+	AllowedUnsafeSysctls []string `pulumi:"allowedUnsafeSysctls"`
+	// Defines the maximum number of container log files that can be present for a container.
+	ContainerLogMaxFiles *int `pulumi:"containerLogMaxFiles"`
+	// Defines the maximum size of the container log file before it is rotated.
+	ContainerLogMaxSize *string `pulumi:"containerLogMaxSize"`
 	// Enable CPU CFS quota enforcement for containers that specify CPU limits.
 	CpuCfsQuota *bool `pulumi:"cpuCfsQuota"`
 	// Set the CPU CFS quota period value 'cpu.cfs_period_us'.
 	CpuCfsQuotaPeriod *string `pulumi:"cpuCfsQuotaPeriod"`
 	// Control the CPU management policy on the node.
 	CpuManagerPolicy *string `pulumi:"cpuManagerPolicy"`
+	// Defines the percent of disk usage after which image garbage collection is always run.
+	ImageGcHighThresholdPercent *int `pulumi:"imageGcHighThresholdPercent"`
+	// Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.
+	ImageGcLowThresholdPercent *int `pulumi:"imageGcLowThresholdPercent"`
+	// Defines the maximum age an image can be unused before it is garbage collected.
+	ImageMaximumGcAge *string `pulumi:"imageMaximumGcAge"`
+	// Defines the minimum age for an unused image before it is garbage collected.
+	ImageMinimumGcAge *string `pulumi:"imageMinimumGcAge"`
 	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
 	InsecureKubeletReadonlyPortEnabled *string `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod.
@@ -42609,12 +42921,26 @@ type NodePoolNodeConfigKubeletConfigInput interface {
 }
 
 type NodePoolNodeConfigKubeletConfigArgs struct {
+	// Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.
+	AllowedUnsafeSysctls pulumi.StringArrayInput `pulumi:"allowedUnsafeSysctls"`
+	// Defines the maximum number of container log files that can be present for a container.
+	ContainerLogMaxFiles pulumi.IntPtrInput `pulumi:"containerLogMaxFiles"`
+	// Defines the maximum size of the container log file before it is rotated.
+	ContainerLogMaxSize pulumi.StringPtrInput `pulumi:"containerLogMaxSize"`
 	// Enable CPU CFS quota enforcement for containers that specify CPU limits.
 	CpuCfsQuota pulumi.BoolPtrInput `pulumi:"cpuCfsQuota"`
 	// Set the CPU CFS quota period value 'cpu.cfs_period_us'.
 	CpuCfsQuotaPeriod pulumi.StringPtrInput `pulumi:"cpuCfsQuotaPeriod"`
 	// Control the CPU management policy on the node.
 	CpuManagerPolicy pulumi.StringPtrInput `pulumi:"cpuManagerPolicy"`
+	// Defines the percent of disk usage after which image garbage collection is always run.
+	ImageGcHighThresholdPercent pulumi.IntPtrInput `pulumi:"imageGcHighThresholdPercent"`
+	// Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.
+	ImageGcLowThresholdPercent pulumi.IntPtrInput `pulumi:"imageGcLowThresholdPercent"`
+	// Defines the maximum age an image can be unused before it is garbage collected.
+	ImageMaximumGcAge pulumi.StringPtrInput `pulumi:"imageMaximumGcAge"`
+	// Defines the minimum age for an unused image before it is garbage collected.
+	ImageMinimumGcAge pulumi.StringPtrInput `pulumi:"imageMinimumGcAge"`
 	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
 	InsecureKubeletReadonlyPortEnabled pulumi.StringPtrInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod.
@@ -42698,6 +43024,21 @@ func (o NodePoolNodeConfigKubeletConfigOutput) ToNodePoolNodeConfigKubeletConfig
 	}).(NodePoolNodeConfigKubeletConfigPtrOutput)
 }
 
+// Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.
+func (o NodePoolNodeConfigKubeletConfigOutput) AllowedUnsafeSysctls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigKubeletConfig) []string { return v.AllowedUnsafeSysctls }).(pulumi.StringArrayOutput)
+}
+
+// Defines the maximum number of container log files that can be present for a container.
+func (o NodePoolNodeConfigKubeletConfigOutput) ContainerLogMaxFiles() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigKubeletConfig) *int { return v.ContainerLogMaxFiles }).(pulumi.IntPtrOutput)
+}
+
+// Defines the maximum size of the container log file before it is rotated.
+func (o NodePoolNodeConfigKubeletConfigOutput) ContainerLogMaxSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigKubeletConfig) *string { return v.ContainerLogMaxSize }).(pulumi.StringPtrOutput)
+}
+
 // Enable CPU CFS quota enforcement for containers that specify CPU limits.
 func (o NodePoolNodeConfigKubeletConfigOutput) CpuCfsQuota() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfigKubeletConfig) *bool { return v.CpuCfsQuota }).(pulumi.BoolPtrOutput)
@@ -42711,6 +43052,26 @@ func (o NodePoolNodeConfigKubeletConfigOutput) CpuCfsQuotaPeriod() pulumi.String
 // Control the CPU management policy on the node.
 func (o NodePoolNodeConfigKubeletConfigOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfigKubeletConfig) *string { return v.CpuManagerPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Defines the percent of disk usage after which image garbage collection is always run.
+func (o NodePoolNodeConfigKubeletConfigOutput) ImageGcHighThresholdPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigKubeletConfig) *int { return v.ImageGcHighThresholdPercent }).(pulumi.IntPtrOutput)
+}
+
+// Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.
+func (o NodePoolNodeConfigKubeletConfigOutput) ImageGcLowThresholdPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigKubeletConfig) *int { return v.ImageGcLowThresholdPercent }).(pulumi.IntPtrOutput)
+}
+
+// Defines the maximum age an image can be unused before it is garbage collected.
+func (o NodePoolNodeConfigKubeletConfigOutput) ImageMaximumGcAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigKubeletConfig) *string { return v.ImageMaximumGcAge }).(pulumi.StringPtrOutput)
+}
+
+// Defines the minimum age for an unused image before it is garbage collected.
+func (o NodePoolNodeConfigKubeletConfigOutput) ImageMinimumGcAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigKubeletConfig) *string { return v.ImageMinimumGcAge }).(pulumi.StringPtrOutput)
 }
 
 // Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
@@ -42747,6 +43108,36 @@ func (o NodePoolNodeConfigKubeletConfigPtrOutput) Elem() NodePoolNodeConfigKubel
 	}).(NodePoolNodeConfigKubeletConfigOutput)
 }
 
+// Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.
+func (o NodePoolNodeConfigKubeletConfigPtrOutput) AllowedUnsafeSysctls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigKubeletConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedUnsafeSysctls
+	}).(pulumi.StringArrayOutput)
+}
+
+// Defines the maximum number of container log files that can be present for a container.
+func (o NodePoolNodeConfigKubeletConfigPtrOutput) ContainerLogMaxFiles() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigKubeletConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerLogMaxFiles
+	}).(pulumi.IntPtrOutput)
+}
+
+// Defines the maximum size of the container log file before it is rotated.
+func (o NodePoolNodeConfigKubeletConfigPtrOutput) ContainerLogMaxSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigKubeletConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerLogMaxSize
+	}).(pulumi.StringPtrOutput)
+}
+
 // Enable CPU CFS quota enforcement for containers that specify CPU limits.
 func (o NodePoolNodeConfigKubeletConfigPtrOutput) CpuCfsQuota() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePoolNodeConfigKubeletConfig) *bool {
@@ -42774,6 +43165,46 @@ func (o NodePoolNodeConfigKubeletConfigPtrOutput) CpuManagerPolicy() pulumi.Stri
 			return nil
 		}
 		return v.CpuManagerPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the percent of disk usage after which image garbage collection is always run.
+func (o NodePoolNodeConfigKubeletConfigPtrOutput) ImageGcHighThresholdPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigKubeletConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ImageGcHighThresholdPercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.
+func (o NodePoolNodeConfigKubeletConfigPtrOutput) ImageGcLowThresholdPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigKubeletConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ImageGcLowThresholdPercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// Defines the maximum age an image can be unused before it is garbage collected.
+func (o NodePoolNodeConfigKubeletConfigPtrOutput) ImageMaximumGcAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigKubeletConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageMaximumGcAge
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the minimum age for an unused image before it is garbage collected.
+func (o NodePoolNodeConfigKubeletConfigPtrOutput) ImageMinimumGcAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigKubeletConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageMinimumGcAge
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -54051,12 +54482,26 @@ func (o GetClusterNodeConfigHostMaintenancePolicyArrayOutput) Index(i pulumi.Int
 }
 
 type GetClusterNodeConfigKubeletConfig struct {
+	// Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.
+	AllowedUnsafeSysctls []string `pulumi:"allowedUnsafeSysctls"`
+	// Defines the maximum number of container log files that can be present for a container.
+	ContainerLogMaxFiles int `pulumi:"containerLogMaxFiles"`
+	// Defines the maximum size of the container log file before it is rotated.
+	ContainerLogMaxSize string `pulumi:"containerLogMaxSize"`
 	// Enable CPU CFS quota enforcement for containers that specify CPU limits.
 	CpuCfsQuota bool `pulumi:"cpuCfsQuota"`
 	// Set the CPU CFS quota period value 'cpu.cfs_period_us'.
 	CpuCfsQuotaPeriod string `pulumi:"cpuCfsQuotaPeriod"`
 	// Control the CPU management policy on the node.
 	CpuManagerPolicy string `pulumi:"cpuManagerPolicy"`
+	// Defines the percent of disk usage after which image garbage collection is always run.
+	ImageGcHighThresholdPercent int `pulumi:"imageGcHighThresholdPercent"`
+	// Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.
+	ImageGcLowThresholdPercent int `pulumi:"imageGcLowThresholdPercent"`
+	// Defines the maximum age an image can be unused before it is garbage collected.
+	ImageMaximumGcAge string `pulumi:"imageMaximumGcAge"`
+	// Defines the minimum age for an unused image before it is garbage collected.
+	ImageMinimumGcAge string `pulumi:"imageMinimumGcAge"`
 	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
 	InsecureKubeletReadonlyPortEnabled string `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod.
@@ -54075,12 +54520,26 @@ type GetClusterNodeConfigKubeletConfigInput interface {
 }
 
 type GetClusterNodeConfigKubeletConfigArgs struct {
+	// Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.
+	AllowedUnsafeSysctls pulumi.StringArrayInput `pulumi:"allowedUnsafeSysctls"`
+	// Defines the maximum number of container log files that can be present for a container.
+	ContainerLogMaxFiles pulumi.IntInput `pulumi:"containerLogMaxFiles"`
+	// Defines the maximum size of the container log file before it is rotated.
+	ContainerLogMaxSize pulumi.StringInput `pulumi:"containerLogMaxSize"`
 	// Enable CPU CFS quota enforcement for containers that specify CPU limits.
 	CpuCfsQuota pulumi.BoolInput `pulumi:"cpuCfsQuota"`
 	// Set the CPU CFS quota period value 'cpu.cfs_period_us'.
 	CpuCfsQuotaPeriod pulumi.StringInput `pulumi:"cpuCfsQuotaPeriod"`
 	// Control the CPU management policy on the node.
 	CpuManagerPolicy pulumi.StringInput `pulumi:"cpuManagerPolicy"`
+	// Defines the percent of disk usage after which image garbage collection is always run.
+	ImageGcHighThresholdPercent pulumi.IntInput `pulumi:"imageGcHighThresholdPercent"`
+	// Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.
+	ImageGcLowThresholdPercent pulumi.IntInput `pulumi:"imageGcLowThresholdPercent"`
+	// Defines the maximum age an image can be unused before it is garbage collected.
+	ImageMaximumGcAge pulumi.StringInput `pulumi:"imageMaximumGcAge"`
+	// Defines the minimum age for an unused image before it is garbage collected.
+	ImageMinimumGcAge pulumi.StringInput `pulumi:"imageMinimumGcAge"`
 	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
 	InsecureKubeletReadonlyPortEnabled pulumi.StringInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod.
@@ -54138,6 +54597,21 @@ func (o GetClusterNodeConfigKubeletConfigOutput) ToGetClusterNodeConfigKubeletCo
 	return o
 }
 
+// Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.
+func (o GetClusterNodeConfigKubeletConfigOutput) AllowedUnsafeSysctls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) []string { return v.AllowedUnsafeSysctls }).(pulumi.StringArrayOutput)
+}
+
+// Defines the maximum number of container log files that can be present for a container.
+func (o GetClusterNodeConfigKubeletConfigOutput) ContainerLogMaxFiles() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) int { return v.ContainerLogMaxFiles }).(pulumi.IntOutput)
+}
+
+// Defines the maximum size of the container log file before it is rotated.
+func (o GetClusterNodeConfigKubeletConfigOutput) ContainerLogMaxSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) string { return v.ContainerLogMaxSize }).(pulumi.StringOutput)
+}
+
 // Enable CPU CFS quota enforcement for containers that specify CPU limits.
 func (o GetClusterNodeConfigKubeletConfigOutput) CpuCfsQuota() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) bool { return v.CpuCfsQuota }).(pulumi.BoolOutput)
@@ -54151,6 +54625,26 @@ func (o GetClusterNodeConfigKubeletConfigOutput) CpuCfsQuotaPeriod() pulumi.Stri
 // Control the CPU management policy on the node.
 func (o GetClusterNodeConfigKubeletConfigOutput) CpuManagerPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) string { return v.CpuManagerPolicy }).(pulumi.StringOutput)
+}
+
+// Defines the percent of disk usage after which image garbage collection is always run.
+func (o GetClusterNodeConfigKubeletConfigOutput) ImageGcHighThresholdPercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) int { return v.ImageGcHighThresholdPercent }).(pulumi.IntOutput)
+}
+
+// Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.
+func (o GetClusterNodeConfigKubeletConfigOutput) ImageGcLowThresholdPercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) int { return v.ImageGcLowThresholdPercent }).(pulumi.IntOutput)
+}
+
+// Defines the maximum age an image can be unused before it is garbage collected.
+func (o GetClusterNodeConfigKubeletConfigOutput) ImageMaximumGcAge() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) string { return v.ImageMaximumGcAge }).(pulumi.StringOutput)
+}
+
+// Defines the minimum age for an unused image before it is garbage collected.
+func (o GetClusterNodeConfigKubeletConfigOutput) ImageMinimumGcAge() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) string { return v.ImageMinimumGcAge }).(pulumi.StringOutput)
 }
 
 // Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
@@ -59738,12 +60232,26 @@ func (o GetClusterNodePoolNodeConfigHostMaintenancePolicyArrayOutput) Index(i pu
 }
 
 type GetClusterNodePoolNodeConfigKubeletConfig struct {
+	// Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.
+	AllowedUnsafeSysctls []string `pulumi:"allowedUnsafeSysctls"`
+	// Defines the maximum number of container log files that can be present for a container.
+	ContainerLogMaxFiles int `pulumi:"containerLogMaxFiles"`
+	// Defines the maximum size of the container log file before it is rotated.
+	ContainerLogMaxSize string `pulumi:"containerLogMaxSize"`
 	// Enable CPU CFS quota enforcement for containers that specify CPU limits.
 	CpuCfsQuota bool `pulumi:"cpuCfsQuota"`
 	// Set the CPU CFS quota period value 'cpu.cfs_period_us'.
 	CpuCfsQuotaPeriod string `pulumi:"cpuCfsQuotaPeriod"`
 	// Control the CPU management policy on the node.
 	CpuManagerPolicy string `pulumi:"cpuManagerPolicy"`
+	// Defines the percent of disk usage after which image garbage collection is always run.
+	ImageGcHighThresholdPercent int `pulumi:"imageGcHighThresholdPercent"`
+	// Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.
+	ImageGcLowThresholdPercent int `pulumi:"imageGcLowThresholdPercent"`
+	// Defines the maximum age an image can be unused before it is garbage collected.
+	ImageMaximumGcAge string `pulumi:"imageMaximumGcAge"`
+	// Defines the minimum age for an unused image before it is garbage collected.
+	ImageMinimumGcAge string `pulumi:"imageMinimumGcAge"`
 	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
 	InsecureKubeletReadonlyPortEnabled string `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod.
@@ -59762,12 +60270,26 @@ type GetClusterNodePoolNodeConfigKubeletConfigInput interface {
 }
 
 type GetClusterNodePoolNodeConfigKubeletConfigArgs struct {
+	// Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.
+	AllowedUnsafeSysctls pulumi.StringArrayInput `pulumi:"allowedUnsafeSysctls"`
+	// Defines the maximum number of container log files that can be present for a container.
+	ContainerLogMaxFiles pulumi.IntInput `pulumi:"containerLogMaxFiles"`
+	// Defines the maximum size of the container log file before it is rotated.
+	ContainerLogMaxSize pulumi.StringInput `pulumi:"containerLogMaxSize"`
 	// Enable CPU CFS quota enforcement for containers that specify CPU limits.
 	CpuCfsQuota pulumi.BoolInput `pulumi:"cpuCfsQuota"`
 	// Set the CPU CFS quota period value 'cpu.cfs_period_us'.
 	CpuCfsQuotaPeriod pulumi.StringInput `pulumi:"cpuCfsQuotaPeriod"`
 	// Control the CPU management policy on the node.
 	CpuManagerPolicy pulumi.StringInput `pulumi:"cpuManagerPolicy"`
+	// Defines the percent of disk usage after which image garbage collection is always run.
+	ImageGcHighThresholdPercent pulumi.IntInput `pulumi:"imageGcHighThresholdPercent"`
+	// Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.
+	ImageGcLowThresholdPercent pulumi.IntInput `pulumi:"imageGcLowThresholdPercent"`
+	// Defines the maximum age an image can be unused before it is garbage collected.
+	ImageMaximumGcAge pulumi.StringInput `pulumi:"imageMaximumGcAge"`
+	// Defines the minimum age for an unused image before it is garbage collected.
+	ImageMinimumGcAge pulumi.StringInput `pulumi:"imageMinimumGcAge"`
 	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
 	InsecureKubeletReadonlyPortEnabled pulumi.StringInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod.
@@ -59825,6 +60347,21 @@ func (o GetClusterNodePoolNodeConfigKubeletConfigOutput) ToGetClusterNodePoolNod
 	return o
 }
 
+// Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.
+func (o GetClusterNodePoolNodeConfigKubeletConfigOutput) AllowedUnsafeSysctls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigKubeletConfig) []string { return v.AllowedUnsafeSysctls }).(pulumi.StringArrayOutput)
+}
+
+// Defines the maximum number of container log files that can be present for a container.
+func (o GetClusterNodePoolNodeConfigKubeletConfigOutput) ContainerLogMaxFiles() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigKubeletConfig) int { return v.ContainerLogMaxFiles }).(pulumi.IntOutput)
+}
+
+// Defines the maximum size of the container log file before it is rotated.
+func (o GetClusterNodePoolNodeConfigKubeletConfigOutput) ContainerLogMaxSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigKubeletConfig) string { return v.ContainerLogMaxSize }).(pulumi.StringOutput)
+}
+
 // Enable CPU CFS quota enforcement for containers that specify CPU limits.
 func (o GetClusterNodePoolNodeConfigKubeletConfigOutput) CpuCfsQuota() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfigKubeletConfig) bool { return v.CpuCfsQuota }).(pulumi.BoolOutput)
@@ -59838,6 +60375,26 @@ func (o GetClusterNodePoolNodeConfigKubeletConfigOutput) CpuCfsQuotaPeriod() pul
 // Control the CPU management policy on the node.
 func (o GetClusterNodePoolNodeConfigKubeletConfigOutput) CpuManagerPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfigKubeletConfig) string { return v.CpuManagerPolicy }).(pulumi.StringOutput)
+}
+
+// Defines the percent of disk usage after which image garbage collection is always run.
+func (o GetClusterNodePoolNodeConfigKubeletConfigOutput) ImageGcHighThresholdPercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigKubeletConfig) int { return v.ImageGcHighThresholdPercent }).(pulumi.IntOutput)
+}
+
+// Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.
+func (o GetClusterNodePoolNodeConfigKubeletConfigOutput) ImageGcLowThresholdPercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigKubeletConfig) int { return v.ImageGcLowThresholdPercent }).(pulumi.IntOutput)
+}
+
+// Defines the maximum age an image can be unused before it is garbage collected.
+func (o GetClusterNodePoolNodeConfigKubeletConfigOutput) ImageMaximumGcAge() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigKubeletConfig) string { return v.ImageMaximumGcAge }).(pulumi.StringOutput)
+}
+
+// Defines the minimum age for an unused image before it is garbage collected.
+func (o GetClusterNodePoolNodeConfigKubeletConfigOutput) ImageMinimumGcAge() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigKubeletConfig) string { return v.ImageMinimumGcAge }).(pulumi.StringOutput)
 }
 
 // Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.

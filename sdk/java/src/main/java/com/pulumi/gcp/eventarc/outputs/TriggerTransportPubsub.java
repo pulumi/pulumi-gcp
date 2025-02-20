@@ -12,7 +12,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TriggerTransportPubsub {
     /**
-     * @return Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+     * @return (Output)
+     * Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
      * 
      */
     private @Nullable String subscription;
@@ -24,7 +25,8 @@ public final class TriggerTransportPubsub {
 
     private TriggerTransportPubsub() {}
     /**
-     * @return Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+     * @return (Output)
+     * Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
      * 
      */
     public Optional<String> subscription() {

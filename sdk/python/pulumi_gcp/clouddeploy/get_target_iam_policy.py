@@ -108,7 +108,7 @@ def get_target_iam_policy(location: Optional[str] = None,
     """
     Retrieves the current IAM policy data for target
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -145,7 +145,7 @@ def get_target_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]]
     """
     Retrieves the current IAM policy data for target
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

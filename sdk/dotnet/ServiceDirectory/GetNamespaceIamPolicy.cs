@@ -11,12 +11,69 @@ namespace Pulumi.Gcp.ServiceDirectory
 {
     public static class GetNamespaceIamPolicy
     {
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.ServiceDirectory.GetNamespaceIamPolicy.Invoke(new()
+        ///     {
+        ///         Name = example.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetNamespaceIamPolicyResult> InvokeAsync(GetNamespaceIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNamespaceIamPolicyResult>("gcp:servicedirectory/getNamespaceIamPolicy:getNamespaceIamPolicy", args ?? new GetNamespaceIamPolicyArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.ServiceDirectory.GetNamespaceIamPolicy.Invoke(new()
+        ///     {
+        ///         Name = example.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetNamespaceIamPolicyResult> Invoke(GetNamespaceIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNamespaceIamPolicyResult>("gcp:servicedirectory/getNamespaceIamPolicy:getNamespaceIamPolicy", args ?? new GetNamespaceIamPolicyInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.ServiceDirectory.GetNamespaceIamPolicy.Invoke(new()
+        ///     {
+        ///         Name = example.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetNamespaceIamPolicyResult> Invoke(GetNamespaceIamPolicyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetNamespaceIamPolicyResult>("gcp:servicedirectory/getNamespaceIamPolicy:getNamespaceIamPolicy", args ?? new GetNamespaceIamPolicyInvokeArgs(), options.WithDefaults());
     }

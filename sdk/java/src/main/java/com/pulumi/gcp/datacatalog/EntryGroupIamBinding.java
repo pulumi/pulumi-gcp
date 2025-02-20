@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Three different resources help you manage your IAM policy for Data catalog EntryGroup. Each of these resources serves a different use case:
+ * Three different resources help you manage your IAM policy for Data Catalog EntryGroup. Each of these resources serves a different use case:
  * 
  * * `gcp.datacatalog.EntryGroupIamPolicy`: Authoritative. Sets the IAM policy for the entrygroup and replaces any existing policy already attached.
  * * `gcp.datacatalog.EntryGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the entrygroup are preserved.
@@ -154,8 +154,8 @@ import javax.annotation.Nullable;
  * 
  * - 
  * 
- * # IAM policy for Data catalog EntryGroup
- * Three different resources help you manage your IAM policy for Data catalog EntryGroup. Each of these resources serves a different use case:
+ * # IAM policy for Data Catalog EntryGroup
+ * Three different resources help you manage your IAM policy for Data Catalog EntryGroup. Each of these resources serves a different use case:
  * 
  * * `gcp.datacatalog.EntryGroupIamPolicy`: Authoritative. Sets the IAM policy for the entrygroup and replaces any existing policy already attached.
  * * `gcp.datacatalog.EntryGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the entrygroup are preserved.
@@ -302,7 +302,7 @@ import javax.annotation.Nullable;
  * 
  * Any variables not passed in the import command will be taken from the provider configuration.
  * 
- * Data catalog entrygroup IAM resources can be imported using the resource identifiers, role, and member.
+ * Data Catalog entrygroup IAM resources can be imported using the resource identifiers, role, and member.
  * 
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  * 

@@ -108,7 +108,7 @@ def get_runtime_template_iam_policy(location: Optional[str] = None,
     """
     Retrieves the current IAM policy data for runtimetemplate
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -148,7 +148,7 @@ def get_runtime_template_iam_policy_output(location: Optional[pulumi.Input[Optio
     """
     Retrieves the current IAM policy data for runtimetemplate
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

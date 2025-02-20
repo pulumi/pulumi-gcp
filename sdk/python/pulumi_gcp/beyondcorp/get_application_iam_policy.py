@@ -108,7 +108,7 @@ def get_application_iam_policy(application_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for application
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -144,7 +144,7 @@ def get_application_iam_policy_output(application_id: Optional[pulumi.Input[str]
     """
     Retrieves the current IAM policy data for application
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

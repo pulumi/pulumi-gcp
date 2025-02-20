@@ -39,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AppCheckServiceConfig{}
 	case "gcp:firebase/appleApp:AppleApp":
 		r = &AppleApp{}
+	case "gcp:firebase/dataConnectService:DataConnectService":
+		r = &DataConnectService{}
 	case "gcp:firebase/databaseInstance:DatabaseInstance":
 		r = &DatabaseInstance{}
 	case "gcp:firebase/extensionsInstance:ExtensionsInstance":
@@ -115,6 +117,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"firebase/appleApp",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"firebase/dataConnectService",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

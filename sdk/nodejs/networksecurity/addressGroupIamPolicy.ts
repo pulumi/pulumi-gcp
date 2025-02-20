@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Three different resources help you manage your IAM policy for Network security ProjectAddressGroup. Each of these resources serves a different use case:
+ * Three different resources help you manage your IAM policy for Network Security ProjectAddressGroup. Each of these resources serves a different use case:
  *
  * * `gcp.networksecurity.AddressGroupIamPolicy`: Authoritative. Sets the IAM policy for the projectaddressgroup and replaces any existing policy already attached.
  * * `gcp.networksecurity.AddressGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the projectaddressgroup are preserved.
@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *
  * Any variables not passed in the import command will be taken from the provider configuration.
  *
- * Network security projectaddressgroup IAM resources can be imported using the resource identifiers, role, and member.
+ * Network Security projectaddressgroup IAM resources can be imported using the resource identifiers, role, and member.
  *
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  *

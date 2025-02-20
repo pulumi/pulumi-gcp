@@ -36,29 +36,40 @@ import * as utilities from "../utilities";
  *     description: "my description",
  * });
  * ```
+ * ### Network Services Mesh Location
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.networkservices.Mesh("default", {
+ *     name: "my-mesh",
+ *     location: "global",
+ * });
+ * ```
  *
  * ## Import
  *
  * Mesh can be imported using any of these accepted formats:
  *
- * * `projects/{{project}}/locations/global/meshes/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/meshes/{{name}}`
  *
- * * `{{project}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  *
- * * `{{name}}`
+ * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, Mesh can be imported using one of the formats above. For example:
  *
  * ```sh
- * $ pulumi import gcp:networkservices/mesh:Mesh default projects/{{project}}/locations/global/meshes/{{name}}
+ * $ pulumi import gcp:networkservices/mesh:Mesh default projects/{{project}}/locations/{{location}}/meshes/{{name}}
  * ```
  *
  * ```sh
- * $ pulumi import gcp:networkservices/mesh:Mesh default {{project}}/{{name}}
+ * $ pulumi import gcp:networkservices/mesh:Mesh default {{project}}/{{location}}/{{name}}
  * ```
  *
  * ```sh
- * $ pulumi import gcp:networkservices/mesh:Mesh default {{name}}
+ * $ pulumi import gcp:networkservices/mesh:Mesh default {{location}}/{{name}}
  * ```
  */
 export class Mesh extends pulumi.CustomResource {
@@ -116,6 +127,10 @@ export class Mesh extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
+     */
+    public readonly location!: pulumi.Output<string | undefined>;
+    /**
      * Short name of the Mesh resource to be created.
      *
      *
@@ -159,6 +174,7 @@ export class Mesh extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["interceptionPort"] = state ? state.interceptionPort : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
@@ -169,6 +185,7 @@ export class Mesh extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["interceptionPort"] = args ? args.interceptionPort : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -214,6 +231,10 @@ export interface MeshState {
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
+     */
+    location?: pulumi.Input<string>;
     /**
      * Short name of the Mesh resource to be created.
      *
@@ -263,6 +284,10 @@ export interface MeshArgs {
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
+     */
+    location?: pulumi.Input<string>;
     /**
      * Short name of the Mesh resource to be created.
      *

@@ -713,6 +713,14 @@ Object.defineProperty(exports, "firebaseCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const firebaseDataConnectCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "firebaseDataConnectCustomEndpoint", {
+    get() {
+        return __config.get("firebaseDataConnectCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const firebaseDatabaseCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "firebaseDatabaseCustomEndpoint", {
     get() {

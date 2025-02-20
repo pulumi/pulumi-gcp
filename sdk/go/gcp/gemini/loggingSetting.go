@@ -12,8 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The resource for managing Logging settings for Admin Control.
-//
 // ## Example Usage
 //
 // ### Gemini Logging Setting Basic
@@ -31,8 +29,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gemini.NewLoggingSetting(ctx, "example", &gemini.LoggingSettingArgs{
-//				LoggingSettingId:       pulumi.String("ls1-tf"),
-//				Location:               pulumi.String("global"),
+//				LoggingSettingId: pulumi.String("ls1-tf"),
+//				Location:         pulumi.String("global"),
+//				Labels: pulumi.StringMap{
+//					"my_key": pulumi.String("my_value"),
+//				},
 //				LogPromptsAndResponses: pulumi.Bool(true),
 //				LogMetadata:            pulumi.Bool(true),
 //			})
@@ -71,23 +72,21 @@ import (
 type LoggingSetting struct {
 	pulumi.CustomResourceState
 
-	// Output only. [Output only] Create time stamp.
+	// Create time stamp.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// Optional. Labels as key value pairs.
+	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Optional. Whether to log metadata.
+	// Whether to log metadata.
 	LogMetadata pulumi.BoolPtrOutput `pulumi:"logMetadata"`
-	// Optional. Whether to log prompts and responses.
+	// Whether to log prompts and responses.
 	LogPromptsAndResponses pulumi.BoolPtrOutput `pulumi:"logPromptsAndResponses"`
-	// Required. Id of the requesting object.
-	// If auto-generating Id server-side, remove this field and
-	// settingId from the methodSignature of Create RPC.
+	// Id of the Logging Setting.
 	//
 	// ***
 	LoggingSettingId pulumi.StringOutput `pulumi:"loggingSettingId"`
@@ -100,7 +99,7 @@ type LoggingSetting struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// Output only. [Output only] Update time stamp.
+	// Update time stamp.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -145,23 +144,21 @@ func GetLoggingSetting(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LoggingSetting resources.
 type loggingSettingState struct {
-	// Output only. [Output only] Create time stamp.
+	// Create time stamp.
 	CreateTime *string `pulumi:"createTime"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// Optional. Labels as key value pairs.
+	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location *string `pulumi:"location"`
-	// Optional. Whether to log metadata.
+	// Whether to log metadata.
 	LogMetadata *bool `pulumi:"logMetadata"`
-	// Optional. Whether to log prompts and responses.
+	// Whether to log prompts and responses.
 	LogPromptsAndResponses *bool `pulumi:"logPromptsAndResponses"`
-	// Required. Id of the requesting object.
-	// If auto-generating Id server-side, remove this field and
-	// settingId from the methodSignature of Create RPC.
+	// Id of the Logging Setting.
 	//
 	// ***
 	LoggingSettingId *string `pulumi:"loggingSettingId"`
@@ -174,28 +171,26 @@ type loggingSettingState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// Output only. [Output only] Update time stamp.
+	// Update time stamp.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type LoggingSettingState struct {
-	// Output only. [Output only] Create time stamp.
+	// Create time stamp.
 	CreateTime pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
-	// Optional. Labels as key value pairs.
+	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringPtrInput
-	// Optional. Whether to log metadata.
+	// Whether to log metadata.
 	LogMetadata pulumi.BoolPtrInput
-	// Optional. Whether to log prompts and responses.
+	// Whether to log prompts and responses.
 	LogPromptsAndResponses pulumi.BoolPtrInput
-	// Required. Id of the requesting object.
-	// If auto-generating Id server-side, remove this field and
-	// settingId from the methodSignature of Create RPC.
+	// Id of the Logging Setting.
 	//
 	// ***
 	LoggingSettingId pulumi.StringPtrInput
@@ -208,7 +203,7 @@ type LoggingSettingState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
-	// Output only. [Output only] Update time stamp.
+	// Update time stamp.
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -217,19 +212,17 @@ func (LoggingSettingState) ElementType() reflect.Type {
 }
 
 type loggingSettingArgs struct {
-	// Optional. Labels as key value pairs.
+	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location string `pulumi:"location"`
-	// Optional. Whether to log metadata.
+	// Whether to log metadata.
 	LogMetadata *bool `pulumi:"logMetadata"`
-	// Optional. Whether to log prompts and responses.
+	// Whether to log prompts and responses.
 	LogPromptsAndResponses *bool `pulumi:"logPromptsAndResponses"`
-	// Required. Id of the requesting object.
-	// If auto-generating Id server-side, remove this field and
-	// settingId from the methodSignature of Create RPC.
+	// Id of the Logging Setting.
 	//
 	// ***
 	LoggingSettingId string `pulumi:"loggingSettingId"`
@@ -240,19 +233,17 @@ type loggingSettingArgs struct {
 
 // The set of arguments for constructing a LoggingSetting resource.
 type LoggingSettingArgs struct {
-	// Optional. Labels as key value pairs.
+	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringInput
-	// Optional. Whether to log metadata.
+	// Whether to log metadata.
 	LogMetadata pulumi.BoolPtrInput
-	// Optional. Whether to log prompts and responses.
+	// Whether to log prompts and responses.
 	LogPromptsAndResponses pulumi.BoolPtrInput
-	// Required. Id of the requesting object.
-	// If auto-generating Id server-side, remove this field and
-	// settingId from the methodSignature of Create RPC.
+	// Id of the Logging Setting.
 	//
 	// ***
 	LoggingSettingId pulumi.StringInput
@@ -348,7 +339,7 @@ func (o LoggingSettingOutput) ToLoggingSettingOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Output only. [Output only] Create time stamp.
+// Create time stamp.
 func (o LoggingSettingOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoggingSetting) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -358,7 +349,7 @@ func (o LoggingSettingOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *LoggingSetting) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// Optional. Labels as key value pairs.
+// Labels as key value pairs.
 // **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 // Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o LoggingSettingOutput) Labels() pulumi.StringMapOutput {
@@ -370,19 +361,17 @@ func (o LoggingSettingOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoggingSetting) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Optional. Whether to log metadata.
+// Whether to log metadata.
 func (o LoggingSettingOutput) LogMetadata() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LoggingSetting) pulumi.BoolPtrOutput { return v.LogMetadata }).(pulumi.BoolPtrOutput)
 }
 
-// Optional. Whether to log prompts and responses.
+// Whether to log prompts and responses.
 func (o LoggingSettingOutput) LogPromptsAndResponses() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LoggingSetting) pulumi.BoolPtrOutput { return v.LogPromptsAndResponses }).(pulumi.BoolPtrOutput)
 }
 
-// Required. Id of the requesting object.
-// If auto-generating Id server-side, remove this field and
-// settingId from the methodSignature of Create RPC.
+// Id of the Logging Setting.
 //
 // ***
 func (o LoggingSettingOutput) LoggingSettingId() pulumi.StringOutput {
@@ -407,7 +396,7 @@ func (o LoggingSettingOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *LoggingSetting) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// Output only. [Output only] Update time stamp.
+// Update time stamp.
 func (o LoggingSettingOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoggingSetting) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

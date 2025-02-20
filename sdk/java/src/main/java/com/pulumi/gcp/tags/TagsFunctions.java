@@ -413,7 +413,7 @@ public final class TagsFunctions {
     /**
      * Retrieves the current IAM policy data for tagkey
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -455,7 +455,7 @@ public final class TagsFunctions {
     /**
      * Retrieves the current IAM policy data for tagkey
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -497,7 +497,7 @@ public final class TagsFunctions {
     /**
      * Retrieves the current IAM policy data for tagkey
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -539,7 +539,7 @@ public final class TagsFunctions {
     /**
      * Retrieves the current IAM policy data for tagkey
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -581,7 +581,7 @@ public final class TagsFunctions {
     /**
      * Retrieves the current IAM policy data for tagkey
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1208,7 +1208,7 @@ public final class TagsFunctions {
     /**
      * Retrieves the current IAM policy data for tagvalue
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1250,7 +1250,7 @@ public final class TagsFunctions {
     /**
      * Retrieves the current IAM policy data for tagvalue
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1292,7 +1292,7 @@ public final class TagsFunctions {
     /**
      * Retrieves the current IAM policy data for tagvalue
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1334,7 +1334,7 @@ public final class TagsFunctions {
     /**
      * Retrieves the current IAM policy data for tagvalue
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1376,7 +1376,7 @@ public final class TagsFunctions {
     /**
      * Retrieves the current IAM policy data for tagvalue
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

@@ -18,7 +18,7 @@ public final class GeminiFunctions {
     /**
      * Retrieves the current IAM policy data for repositorygroup
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -63,7 +63,7 @@ public final class GeminiFunctions {
     /**
      * Retrieves the current IAM policy data for repositorygroup
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -108,7 +108,7 @@ public final class GeminiFunctions {
     /**
      * Retrieves the current IAM policy data for repositorygroup
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -153,7 +153,7 @@ public final class GeminiFunctions {
     /**
      * Retrieves the current IAM policy data for repositorygroup
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -198,7 +198,7 @@ public final class GeminiFunctions {
     /**
      * Retrieves the current IAM policy data for repositorygroup
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

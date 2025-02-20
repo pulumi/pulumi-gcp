@@ -30,7 +30,7 @@ public final class PubsubFunctions {
     /**
      * Retrieves the current IAM policy data for schema
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -73,7 +73,7 @@ public final class PubsubFunctions {
     /**
      * Retrieves the current IAM policy data for schema
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -116,7 +116,7 @@ public final class PubsubFunctions {
     /**
      * Retrieves the current IAM policy data for schema
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -159,7 +159,7 @@ public final class PubsubFunctions {
     /**
      * Retrieves the current IAM policy data for schema
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -202,7 +202,7 @@ public final class PubsubFunctions {
     /**
      * Retrieves the current IAM policy data for schema
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -895,7 +895,7 @@ public final class PubsubFunctions {
     /**
      * Retrieves the current IAM policy data for topic
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -938,7 +938,7 @@ public final class PubsubFunctions {
     /**
      * Retrieves the current IAM policy data for topic
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -981,7 +981,7 @@ public final class PubsubFunctions {
     /**
      * Retrieves the current IAM policy data for topic
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1024,7 +1024,7 @@ public final class PubsubFunctions {
     /**
      * Retrieves the current IAM policy data for topic
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1067,7 +1067,7 @@ public final class PubsubFunctions {
     /**
      * Retrieves the current IAM policy data for topic
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

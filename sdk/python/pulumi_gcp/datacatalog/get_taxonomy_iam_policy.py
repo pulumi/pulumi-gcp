@@ -108,7 +108,7 @@ def get_taxonomy_iam_policy(project: Optional[str] = None,
     """
     Retrieves the current IAM policy data for taxonomy
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -143,7 +143,7 @@ def get_taxonomy_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]
     """
     Retrieves the current IAM policy data for taxonomy
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

@@ -629,6 +629,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.firebaseCustomEndpoint);
     }
 
+    @Import(name="firebaseDataConnectCustomEndpoint")
+    private @Nullable Output<String> firebaseDataConnectCustomEndpoint;
+
+    public Optional<Output<String>> firebaseDataConnectCustomEndpoint() {
+        return Optional.ofNullable(this.firebaseDataConnectCustomEndpoint);
+    }
+
     @Import(name="firebaseDatabaseCustomEndpoint")
     private @Nullable Output<String> firebaseDatabaseCustomEndpoint;
 
@@ -1405,6 +1412,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.filestoreCustomEndpoint = $.filestoreCustomEndpoint;
         this.firebaseAppCheckCustomEndpoint = $.firebaseAppCheckCustomEndpoint;
         this.firebaseCustomEndpoint = $.firebaseCustomEndpoint;
+        this.firebaseDataConnectCustomEndpoint = $.firebaseDataConnectCustomEndpoint;
         this.firebaseDatabaseCustomEndpoint = $.firebaseDatabaseCustomEndpoint;
         this.firebaseExtensionsCustomEndpoint = $.firebaseExtensionsCustomEndpoint;
         this.firebaseHostingCustomEndpoint = $.firebaseHostingCustomEndpoint;
@@ -2304,6 +2312,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder firebaseCustomEndpoint(String firebaseCustomEndpoint) {
             return firebaseCustomEndpoint(Output.of(firebaseCustomEndpoint));
+        }
+
+        public Builder firebaseDataConnectCustomEndpoint(@Nullable Output<String> firebaseDataConnectCustomEndpoint) {
+            $.firebaseDataConnectCustomEndpoint = firebaseDataConnectCustomEndpoint;
+            return this;
+        }
+
+        public Builder firebaseDataConnectCustomEndpoint(String firebaseDataConnectCustomEndpoint) {
+            return firebaseDataConnectCustomEndpoint(Output.of(firebaseDataConnectCustomEndpoint));
         }
 
         public Builder firebaseDatabaseCustomEndpoint(@Nullable Output<String> firebaseDatabaseCustomEndpoint) {

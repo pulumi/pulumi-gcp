@@ -11,6 +11,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.LookupRegionBackendServiceIamPolicy(ctx, &compute.LookupRegionBackendServiceIamPolicyArgs{
+//				Project: pulumi.StringRef(_default.Project),
+//				Region:  pulumi.StringRef(_default.Region),
+//				Name:    _default.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupRegionBackendServiceIamPolicy(ctx *pulumi.Context, args *LookupRegionBackendServiceIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupRegionBackendServiceIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegionBackendServiceIamPolicyResult

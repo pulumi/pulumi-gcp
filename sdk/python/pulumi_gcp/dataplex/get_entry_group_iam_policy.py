@@ -108,7 +108,7 @@ def get_entry_group_iam_policy(entry_group_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for entrygroup
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -148,7 +148,7 @@ def get_entry_group_iam_policy_output(entry_group_id: Optional[pulumi.Input[str]
     """
     Retrieves the current IAM policy data for entrygroup
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

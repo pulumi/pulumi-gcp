@@ -4499,7 +4499,8 @@ type ServiceTemplateSpecContainerEnvValueFromSecretKeyRef struct {
 	Key string `pulumi:"key"`
 	// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project.
 	// If the secret is in another project, you must define an alias.
-	// An alias definition has the form: :projects/{project-id|project-number}/secrets/.
+	// An alias definition has the form:
+	// {alias}:projects/{project-id|project-number}/secrets/{secret-name}.
 	// If multiple alias definitions are needed, they must be separated by commas.
 	// The alias definitions must be set on the run.googleapis.com/secrets annotation.
 	Name string `pulumi:"name"`
@@ -4522,7 +4523,8 @@ type ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs struct {
 	Key pulumi.StringInput `pulumi:"key"`
 	// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project.
 	// If the secret is in another project, you must define an alias.
-	// An alias definition has the form: :projects/{project-id|project-number}/secrets/.
+	// An alias definition has the form:
+	// {alias}:projects/{project-id|project-number}/secrets/{secret-name}.
 	// If multiple alias definitions are needed, they must be separated by commas.
 	// The alias definitions must be set on the run.googleapis.com/secrets annotation.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -4613,7 +4615,8 @@ func (o ServiceTemplateSpecContainerEnvValueFromSecretKeyRefOutput) Key() pulumi
 
 // The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project.
 // If the secret is in another project, you must define an alias.
-// An alias definition has the form: :projects/{project-id|project-number}/secrets/.
+// An alias definition has the form:
+// {alias}:projects/{project-id|project-number}/secrets/{secret-name}.
 // If multiple alias definitions are needed, they must be separated by commas.
 // The alias definitions must be set on the run.googleapis.com/secrets annotation.
 func (o ServiceTemplateSpecContainerEnvValueFromSecretKeyRefOutput) Name() pulumi.StringOutput {
@@ -4657,7 +4660,8 @@ func (o ServiceTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput) Key() pul
 
 // The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project.
 // If the secret is in another project, you must define an alias.
-// An alias definition has the form: :projects/{project-id|project-number}/secrets/.
+// An alias definition has the form:
+// {alias}:projects/{project-id|project-number}/secrets/{secret-name}.
 // If multiple alias definitions are needed, they must be separated by commas.
 // The alias definitions must be set on the run.googleapis.com/secrets annotation.
 func (o ServiceTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput) Name() pulumi.StringPtrOutput {

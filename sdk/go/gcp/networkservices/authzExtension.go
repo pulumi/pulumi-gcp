@@ -148,10 +148,9 @@ type AuthzExtension struct {
 	Timeout pulumi.StringOutput `pulumi:"timeout"`
 	// The timestamp when the resource was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// The format of communication supported by the callout extension.
-	// Default value is `EXT_PROC_GRPC`.
+	// The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
 	// Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
-	WireFormat pulumi.StringPtrOutput `pulumi:"wireFormat"`
+	WireFormat pulumi.StringOutput `pulumi:"wireFormat"`
 }
 
 // NewAuthzExtension registers a new resource with the given unique name, arguments, and options.
@@ -251,8 +250,7 @@ type authzExtensionState struct {
 	Timeout *string `pulumi:"timeout"`
 	// The timestamp when the resource was updated.
 	UpdateTime *string `pulumi:"updateTime"`
-	// The format of communication supported by the callout extension.
-	// Default value is `EXT_PROC_GRPC`.
+	// The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
 	// Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
 	WireFormat *string `pulumi:"wireFormat"`
 }
@@ -305,8 +303,7 @@ type AuthzExtensionState struct {
 	Timeout pulumi.StringPtrInput
 	// The timestamp when the resource was updated.
 	UpdateTime pulumi.StringPtrInput
-	// The format of communication supported by the callout extension.
-	// Default value is `EXT_PROC_GRPC`.
+	// The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
 	// Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
 	WireFormat pulumi.StringPtrInput
 }
@@ -354,8 +351,7 @@ type authzExtensionArgs struct {
 	Service string `pulumi:"service"`
 	// Specifies the timeout for each individual message on the stream. The timeout must be between 10-10000 milliseconds.
 	Timeout string `pulumi:"timeout"`
-	// The format of communication supported by the callout extension.
-	// Default value is `EXT_PROC_GRPC`.
+	// The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
 	// Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
 	WireFormat *string `pulumi:"wireFormat"`
 }
@@ -400,8 +396,7 @@ type AuthzExtensionArgs struct {
 	Service pulumi.StringInput
 	// Specifies the timeout for each individual message on the stream. The timeout must be between 10-10000 milliseconds.
 	Timeout pulumi.StringInput
-	// The format of communication supported by the callout extension.
-	// Default value is `EXT_PROC_GRPC`.
+	// The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
 	// Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
 	WireFormat pulumi.StringPtrInput
 }
@@ -588,11 +583,10 @@ func (o AuthzExtensionOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthzExtension) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// The format of communication supported by the callout extension.
-// Default value is `EXT_PROC_GRPC`.
+// The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
 // Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
-func (o AuthzExtensionOutput) WireFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AuthzExtension) pulumi.StringPtrOutput { return v.WireFormat }).(pulumi.StringPtrOutput)
+func (o AuthzExtensionOutput) WireFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthzExtension) pulumi.StringOutput { return v.WireFormat }).(pulumi.StringOutput)
 }
 
 type AuthzExtensionArrayOutput struct{ *pulumi.OutputState }

@@ -108,7 +108,7 @@ def get_metastore_service_iam_policy(location: Optional[str] = None,
     """
     Retrieves the current IAM policy data for service
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -149,7 +149,7 @@ def get_metastore_service_iam_policy_output(location: Optional[pulumi.Input[Opti
     """
     Retrieves the current IAM policy data for service
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

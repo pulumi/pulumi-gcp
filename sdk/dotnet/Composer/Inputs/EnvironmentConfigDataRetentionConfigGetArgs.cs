@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Composer.Inputs
         private InputList<Inputs.EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigGetArgs>? _airflowMetadataRetentionConfigs;
 
         /// <summary>
-        /// Optional. The configuration setting for database retention.
+        /// Optional. The policy for airflow metadata database retention.
         /// </summary>
         public InputList<Inputs.EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigGetArgs> AirflowMetadataRetentionConfigs
         {

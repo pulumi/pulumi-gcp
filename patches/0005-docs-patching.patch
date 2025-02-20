@@ -306,7 +306,7 @@ index 7007e82bb..3051111fd 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/certificate_manager_certificate.html.markdown b/website/docs/r/certificate_manager_certificate.html.markdown
-index b69758516..d2097742d 100644
+index e669291cd..fddbca7ed 100644
 --- a/website/docs/r/certificate_manager_certificate.html.markdown
 +++ b/website/docs/r/certificate_manager_certificate.html.markdown
 @@ -156,19 +156,38 @@ resource "google_privateca_certificate_authority" "ca_authority" {
@@ -375,7 +375,7 @@ index b963eecc9..7aa5ce965 100644
    **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
    Please refer to the field `effective_annotations` for all of the annotations present on the resource.
 diff --git a/website/docs/r/cloud_run_service.html.markdown b/website/docs/r/cloud_run_service.html.markdown
-index 017c9a4b1..bd462ca22 100644
+index f58a5229b..1bee63b73 100644
 --- a/website/docs/r/cloud_run_service.html.markdown
 +++ b/website/docs/r/cloud_run_service.html.markdown
 @@ -31,8 +31,63 @@ To get more information about Service, see:
@@ -471,7 +471,7 @@ index 017c9a4b1..bd462ca22 100644
    Structure is [documented below](#nested_spec_template_spec_containers_containers_liveness_probe).
  
  
-@@ -1035,7 +1091,7 @@ this field is set to false, the revision name will still autogenerate.)
+@@ -1036,7 +1092,7 @@ this field is set to false, the revision name will still autogenerate.)
    may be set by external tools to store and retrieve arbitrary metadata.
    More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
    **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
@@ -494,7 +494,7 @@ index 2e5459c7e..e4d2a69e9 100644
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
 diff --git a/website/docs/r/composer_environment.html.markdown b/website/docs/r/composer_environment.html.markdown
-index 8f560d4f6..72c5979c7 100644
+index eda3590c8..8a193ce59 100644
 --- a/website/docs/r/composer_environment.html.markdown
 +++ b/website/docs/r/composer_environment.html.markdown
 @@ -31,24 +31,21 @@ To get more information about Environments, see:
@@ -669,7 +669,7 @@ index df91843c5..40b452e03 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance.html.markdown b/website/docs/r/compute_instance.html.markdown
-index 3610f431c..0b6b99dd1 100644
+index 0c1854455..ff259a2a7 100644
 --- a/website/docs/r/compute_instance.html.markdown
 +++ b/website/docs/r/compute_instance.html.markdown
 @@ -140,7 +140,7 @@ The following arguments are supported:
@@ -825,7 +825,7 @@ index c7a253e6d..fd7c0580c 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance_template.html.markdown b/website/docs/r/compute_instance_template.html.markdown
-index 06e187f81..1f9ebc826 100644
+index 5740d8b01..3cc38af3f 100644
 --- a/website/docs/r/compute_instance_template.html.markdown
 +++ b/website/docs/r/compute_instance_template.html.markdown
 @@ -183,12 +183,11 @@ resource "google_compute_instance_template" "foobar" {
@@ -878,8 +878,8 @@ index 06e187f81..1f9ebc826 100644
  the template to use that specific image:
  
  ```tf
-@@ -332,8 +331,9 @@ The following arguments are supported:
-     To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+@@ -335,8 +334,9 @@ The following arguments are supported:
+     create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
  
  - - -
 +
@@ -889,7 +889,7 @@ index 06e187f81..1f9ebc826 100644
  
  * `name_prefix` - (Optional) Creates a unique name beginning with the specified
    prefix. Conflicts with `name`. Max length is 54 characters.
-@@ -553,7 +553,7 @@ The following arguments are supported:
+@@ -556,7 +556,7 @@ The following arguments are supported:
  * `access_config` - (Optional) Access configurations, i.e. IPs via which this
      instance can be accessed via the Internet. Omit to ensure that the instance
      is not accessible from the Internet (this means that ssh provisioners will
@@ -1581,7 +1581,7 @@ index f18c91533..924ad4cc0 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=vpn_tunnel_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index c170ef83a..b6c0cea0e 100644
+index 6b229fb80..b1e00aa7a 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -13,15 +13,12 @@ To get more information about GKE clusters, see:
@@ -1833,7 +1833,7 @@ index 9a2cc5411..44ca4db4d 100644
  * `placement_policy` - (Optional) Specifies a custom placement policy for the
    nodes.
 diff --git a/website/docs/r/data_catalog_entry_group.html.markdown b/website/docs/r/data_catalog_entry_group.html.markdown
-index 9ac4437d7..5da37f1c0 100644
+index 3260b973c..1d04f082b 100644
 --- a/website/docs/r/data_catalog_entry_group.html.markdown
 +++ b/website/docs/r/data_catalog_entry_group.html.markdown
 @@ -53,8 +53,8 @@ resource "google_data_catalog_entry_group" "basic_entry_group" {
@@ -3558,7 +3558,7 @@ index b6e4a06bd..a775c628e 100644
  
  <a name="nested_encryption_config"></a>The `encryption_config` block supports:
 diff --git a/website/docs/r/sql_database_instance.html.markdown b/website/docs/r/sql_database_instance.html.markdown
-index 8992cfead..79ca28100 100644
+index 07c4fb700..78075d386 100644
 --- a/website/docs/r/sql_database_instance.html.markdown
 +++ b/website/docs/r/sql_database_instance.html.markdown
 @@ -10,12 +10,12 @@ Creates a new Google SQL Database Instance. For more information, see the [offic
@@ -3682,7 +3682,7 @@ index cefb6d1a4..38e6d1608 100644
  ## Example Usage
  
 diff --git a/website/docs/r/storage_bucket.html.markdown b/website/docs/r/storage_bucket.html.markdown
-index 958029498..6c8c65e89 100644
+index f18fb57cc..9ef3b40de 100644
 --- a/website/docs/r/storage_bucket.html.markdown
 +++ b/website/docs/r/storage_bucket.html.markdown
 @@ -129,7 +129,7 @@ The following arguments are supported:

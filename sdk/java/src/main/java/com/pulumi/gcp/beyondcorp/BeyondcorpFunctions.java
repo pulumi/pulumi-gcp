@@ -660,7 +660,7 @@ public final class BeyondcorpFunctions {
     /**
      * Retrieves the current IAM policy data for application
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -704,7 +704,7 @@ public final class BeyondcorpFunctions {
     /**
      * Retrieves the current IAM policy data for application
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -748,7 +748,7 @@ public final class BeyondcorpFunctions {
     /**
      * Retrieves the current IAM policy data for application
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -792,7 +792,7 @@ public final class BeyondcorpFunctions {
     /**
      * Retrieves the current IAM policy data for application
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -836,7 +836,7 @@ public final class BeyondcorpFunctions {
     /**
      * Retrieves the current IAM policy data for application
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -880,7 +880,7 @@ public final class BeyondcorpFunctions {
     /**
      * Retrieves the current IAM policy data for securitygateway
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -924,7 +924,7 @@ public final class BeyondcorpFunctions {
     /**
      * Retrieves the current IAM policy data for securitygateway
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -968,7 +968,7 @@ public final class BeyondcorpFunctions {
     /**
      * Retrieves the current IAM policy data for securitygateway
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1012,7 +1012,7 @@ public final class BeyondcorpFunctions {
     /**
      * Retrieves the current IAM policy data for securitygateway
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1056,7 +1056,7 @@ public final class BeyondcorpFunctions {
     /**
      * Retrieves the current IAM policy data for securitygateway
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

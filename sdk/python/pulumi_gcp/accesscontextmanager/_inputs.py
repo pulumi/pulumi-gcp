@@ -4067,6 +4067,10 @@ if not MYPY:
         cause this `EgressPolicy` to apply.
         Structure is documented below.
         """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Human readable title. Must be unique within the perimeter. Does not affect behavior.
+        """
 elif False:
     ServicePerimeterSpecEgressPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -4074,18 +4078,22 @@ elif False:
 class ServicePerimeterSpecEgressPolicyArgs:
     def __init__(__self__, *,
                  egress_from: Optional[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressFromArgs']] = None,
-                 egress_to: Optional[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToArgs']] = None):
+                 egress_to: Optional[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToArgs']] = None,
+                 title: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['ServicePerimeterSpecEgressPolicyEgressFromArgs'] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
         :param pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToArgs'] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
                cause this `EgressPolicy` to apply.
                Structure is documented below.
+        :param pulumi.Input[str] title: Human readable title. Must be unique within the perimeter. Does not affect behavior.
         """
         if egress_from is not None:
             pulumi.set(__self__, "egress_from", egress_from)
         if egress_to is not None:
             pulumi.set(__self__, "egress_to", egress_to)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter(name="egressFrom")
@@ -4113,6 +4121,18 @@ class ServicePerimeterSpecEgressPolicyArgs:
     @egress_to.setter
     def egress_to(self, value: Optional[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToArgs']]):
         pulumi.set(self, "egress_to", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human readable title. Must be unique within the perimeter. Does not affect behavior.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
 
 
 if not MYPY:
@@ -4536,6 +4556,10 @@ if not MYPY:
         this `IngressPolicy` to apply.
         Structure is documented below.
         """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Human readable title. Must be unique within the perimeter. Does not affect behavior.
+        """
 elif False:
     ServicePerimeterSpecIngressPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -4543,7 +4567,8 @@ elif False:
 class ServicePerimeterSpecIngressPolicyArgs:
     def __init__(__self__, *,
                  ingress_from: Optional[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressFromArgs']] = None,
-                 ingress_to: Optional[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToArgs']] = None):
+                 ingress_to: Optional[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToArgs']] = None,
+                 title: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['ServicePerimeterSpecIngressPolicyIngressFromArgs'] ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
                to apply.
@@ -4551,11 +4576,14 @@ class ServicePerimeterSpecIngressPolicyArgs:
         :param pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToArgs'] ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
                this `IngressPolicy` to apply.
                Structure is documented below.
+        :param pulumi.Input[str] title: Human readable title. Must be unique within the perimeter. Does not affect behavior.
         """
         if ingress_from is not None:
             pulumi.set(__self__, "ingress_from", ingress_from)
         if ingress_to is not None:
             pulumi.set(__self__, "ingress_to", ingress_to)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter(name="ingressFrom")
@@ -4584,6 +4612,18 @@ class ServicePerimeterSpecIngressPolicyArgs:
     @ingress_to.setter
     def ingress_to(self, value: Optional[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToArgs']]):
         pulumi.set(self, "ingress_to", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human readable title. Must be unique within the perimeter. Does not affect behavior.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
 
 
 if not MYPY:
@@ -5228,6 +5268,10 @@ if not MYPY:
         cause this `EgressPolicy` to apply.
         Structure is documented below.
         """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Human readable title. Must be unique within the perimeter. Does not affect behavior.
+        """
 elif False:
     ServicePerimeterStatusEgressPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -5235,18 +5279,22 @@ elif False:
 class ServicePerimeterStatusEgressPolicyArgs:
     def __init__(__self__, *,
                  egress_from: Optional[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressFromArgs']] = None,
-                 egress_to: Optional[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToArgs']] = None):
+                 egress_to: Optional[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToArgs']] = None,
+                 title: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['ServicePerimeterStatusEgressPolicyEgressFromArgs'] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
         :param pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToArgs'] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
                cause this `EgressPolicy` to apply.
                Structure is documented below.
+        :param pulumi.Input[str] title: Human readable title. Must be unique within the perimeter. Does not affect behavior.
         """
         if egress_from is not None:
             pulumi.set(__self__, "egress_from", egress_from)
         if egress_to is not None:
             pulumi.set(__self__, "egress_to", egress_to)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter(name="egressFrom")
@@ -5274,6 +5322,18 @@ class ServicePerimeterStatusEgressPolicyArgs:
     @egress_to.setter
     def egress_to(self, value: Optional[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToArgs']]):
         pulumi.set(self, "egress_to", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human readable title. Must be unique within the perimeter. Does not affect behavior.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
 
 
 if not MYPY:
@@ -5697,6 +5757,10 @@ if not MYPY:
         this `IngressPolicy` to apply.
         Structure is documented below.
         """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Human readable title. Must be unique within the perimeter. Does not affect behavior.
+        """
 elif False:
     ServicePerimeterStatusIngressPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -5704,7 +5768,8 @@ elif False:
 class ServicePerimeterStatusIngressPolicyArgs:
     def __init__(__self__, *,
                  ingress_from: Optional[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressFromArgs']] = None,
-                 ingress_to: Optional[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToArgs']] = None):
+                 ingress_to: Optional[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToArgs']] = None,
+                 title: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['ServicePerimeterStatusIngressPolicyIngressFromArgs'] ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
                to apply.
@@ -5712,11 +5777,14 @@ class ServicePerimeterStatusIngressPolicyArgs:
         :param pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToArgs'] ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
                this `IngressPolicy` to apply.
                Structure is documented below.
+        :param pulumi.Input[str] title: Human readable title. Must be unique within the perimeter. Does not affect behavior.
         """
         if ingress_from is not None:
             pulumi.set(__self__, "ingress_from", ingress_from)
         if ingress_to is not None:
             pulumi.set(__self__, "ingress_to", ingress_to)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter(name="ingressFrom")
@@ -5745,6 +5813,18 @@ class ServicePerimeterStatusIngressPolicyArgs:
     @ingress_to.setter
     def ingress_to(self, value: Optional[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToArgs']]):
         pulumi.set(self, "ingress_to", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human readable title. Must be unique within the perimeter. Does not affect behavior.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
 
 
 if not MYPY:
@@ -6684,6 +6764,10 @@ if not MYPY:
         cause this `EgressPolicy` to apply.
         Structure is documented below.
         """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Human readable title. Must be unique within the perimeter. Does not affect behavior.
+        """
 elif False:
     ServicePerimetersServicePerimeterSpecEgressPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -6691,18 +6775,22 @@ elif False:
 class ServicePerimetersServicePerimeterSpecEgressPolicyArgs:
     def __init__(__self__, *,
                  egress_from: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs']] = None,
-                 egress_to: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs']] = None):
+                 egress_to: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs']] = None,
+                 title: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs'] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
         :param pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs'] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
                cause this `EgressPolicy` to apply.
                Structure is documented below.
+        :param pulumi.Input[str] title: Human readable title. Must be unique within the perimeter. Does not affect behavior.
         """
         if egress_from is not None:
             pulumi.set(__self__, "egress_from", egress_from)
         if egress_to is not None:
             pulumi.set(__self__, "egress_to", egress_to)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter(name="egressFrom")
@@ -6730,6 +6818,18 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyArgs:
     @egress_to.setter
     def egress_to(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs']]):
         pulumi.set(self, "egress_to", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human readable title. Must be unique within the perimeter. Does not affect behavior.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
 
 
 if not MYPY:
@@ -7159,6 +7259,10 @@ if not MYPY:
         this `IngressPolicy` to apply.
         Structure is documented below.
         """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Human readable title. Must be unique within the perimeter. Does not affect behavior.
+        """
 elif False:
     ServicePerimetersServicePerimeterSpecIngressPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -7166,7 +7270,8 @@ elif False:
 class ServicePerimetersServicePerimeterSpecIngressPolicyArgs:
     def __init__(__self__, *,
                  ingress_from: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs']] = None,
-                 ingress_to: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs']] = None):
+                 ingress_to: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs']] = None,
+                 title: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs'] ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
                to apply.
@@ -7174,11 +7279,14 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyArgs:
         :param pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs'] ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
                this `IngressPolicy` to apply.
                Structure is documented below.
+        :param pulumi.Input[str] title: Human readable title. Must be unique within the perimeter. Does not affect behavior.
         """
         if ingress_from is not None:
             pulumi.set(__self__, "ingress_from", ingress_from)
         if ingress_to is not None:
             pulumi.set(__self__, "ingress_to", ingress_to)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter(name="ingressFrom")
@@ -7207,6 +7315,18 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyArgs:
     @ingress_to.setter
     def ingress_to(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs']]):
         pulumi.set(self, "ingress_to", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human readable title. Must be unique within the perimeter. Does not affect behavior.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
 
 
 if not MYPY:
@@ -7851,6 +7971,10 @@ if not MYPY:
         cause this `EgressPolicy` to apply.
         Structure is documented below.
         """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Human readable title. Must be unique within the perimeter. Does not affect behavior.
+        """
 elif False:
     ServicePerimetersServicePerimeterStatusEgressPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -7858,18 +7982,22 @@ elif False:
 class ServicePerimetersServicePerimeterStatusEgressPolicyArgs:
     def __init__(__self__, *,
                  egress_from: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs']] = None,
-                 egress_to: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs']] = None):
+                 egress_to: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs']] = None,
+                 title: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs'] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
         :param pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs'] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
                cause this `EgressPolicy` to apply.
                Structure is documented below.
+        :param pulumi.Input[str] title: Human readable title. Must be unique within the perimeter. Does not affect behavior.
         """
         if egress_from is not None:
             pulumi.set(__self__, "egress_from", egress_from)
         if egress_to is not None:
             pulumi.set(__self__, "egress_to", egress_to)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter(name="egressFrom")
@@ -7897,6 +8025,18 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyArgs:
     @egress_to.setter
     def egress_to(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs']]):
         pulumi.set(self, "egress_to", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human readable title. Must be unique within the perimeter. Does not affect behavior.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
 
 
 if not MYPY:
@@ -8326,6 +8466,10 @@ if not MYPY:
         this `IngressPolicy` to apply.
         Structure is documented below.
         """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Human readable title. Must be unique within the perimeter. Does not affect behavior.
+        """
 elif False:
     ServicePerimetersServicePerimeterStatusIngressPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -8333,7 +8477,8 @@ elif False:
 class ServicePerimetersServicePerimeterStatusIngressPolicyArgs:
     def __init__(__self__, *,
                  ingress_from: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs']] = None,
-                 ingress_to: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs']] = None):
+                 ingress_to: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs']] = None,
+                 title: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs'] ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
                to apply.
@@ -8341,11 +8486,14 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyArgs:
         :param pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs'] ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
                this `IngressPolicy` to apply.
                Structure is documented below.
+        :param pulumi.Input[str] title: Human readable title. Must be unique within the perimeter. Does not affect behavior.
         """
         if ingress_from is not None:
             pulumi.set(__self__, "ingress_from", ingress_from)
         if ingress_to is not None:
             pulumi.set(__self__, "ingress_to", ingress_to)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter(name="ingressFrom")
@@ -8374,6 +8522,18 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyArgs:
     @ingress_to.setter
     def ingress_to(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs']]):
         pulumi.set(self, "ingress_to", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human readable title. Must be unique within the perimeter. Does not affect behavior.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
 
 
 if not MYPY:

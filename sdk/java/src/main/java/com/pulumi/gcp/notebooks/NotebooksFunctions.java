@@ -21,7 +21,7 @@ public final class NotebooksFunctions {
     /**
      * Retrieves the current IAM policy data for instance
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -65,7 +65,7 @@ public final class NotebooksFunctions {
     /**
      * Retrieves the current IAM policy data for instance
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -109,7 +109,7 @@ public final class NotebooksFunctions {
     /**
      * Retrieves the current IAM policy data for instance
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -153,7 +153,7 @@ public final class NotebooksFunctions {
     /**
      * Retrieves the current IAM policy data for instance
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -197,7 +197,7 @@ public final class NotebooksFunctions {
     /**
      * Retrieves the current IAM policy data for instance
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -241,7 +241,7 @@ public final class NotebooksFunctions {
     /**
      * Retrieves the current IAM policy data for runtime
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -285,7 +285,7 @@ public final class NotebooksFunctions {
     /**
      * Retrieves the current IAM policy data for runtime
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -329,7 +329,7 @@ public final class NotebooksFunctions {
     /**
      * Retrieves the current IAM policy data for runtime
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -373,7 +373,7 @@ public final class NotebooksFunctions {
     /**
      * Retrieves the current IAM policy data for runtime
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -417,7 +417,7 @@ public final class NotebooksFunctions {
     /**
      * Retrieves the current IAM policy data for runtime
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

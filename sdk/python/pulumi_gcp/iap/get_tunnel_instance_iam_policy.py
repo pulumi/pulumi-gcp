@@ -108,7 +108,7 @@ def get_tunnel_instance_iam_policy(instance: Optional[str] = None,
     """
     Retrieves the current IAM policy data for tunnelinstance
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -145,7 +145,7 @@ def get_tunnel_instance_iam_policy_output(instance: Optional[pulumi.Input[str]] 
     """
     Retrieves the current IAM policy data for tunnelinstance
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

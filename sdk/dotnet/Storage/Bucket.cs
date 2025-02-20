@@ -174,6 +174,30 @@ namespace Pulumi.Gcp.Storage
     /// });
     /// ```
     /// 
+    /// ### Enabling Hierarchical Namespace
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var auto_expire = new Gcp.Storage.Bucket("auto-expire", new()
+    ///     {
+    ///         Name = "hns-enabled-bucket",
+    ///         Location = "US",
+    ///         ForceDestroy = true,
+    ///         HierarchicalNamespace = new Gcp.Storage.Inputs.BucketHierarchicalNamespaceArgs
+    ///         {
+    ///             Enabled = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Storage buckets can be imported using the `name` or  `project/name`. If the project is not

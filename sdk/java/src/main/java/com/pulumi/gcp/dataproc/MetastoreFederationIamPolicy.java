@@ -14,7 +14,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Three different resources help you manage your IAM policy for Dataproc metastore Federation. Each of these resources serves a different use case:
+ * Three different resources help you manage your IAM policy for Dataproc Metastore Federation. Each of these resources serves a different use case:
  * 
  * * `gcp.dataproc.MetastoreFederationIamPolicy`: Authoritative. Sets the IAM policy for the federation and replaces any existing policy already attached.
  * * `gcp.dataproc.MetastoreFederationIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the federation are preserved.
@@ -157,8 +157,8 @@ import javax.annotation.Nullable;
  * 
  * - 
  * 
- * # IAM policy for Dataproc metastore Federation
- * Three different resources help you manage your IAM policy for Dataproc metastore Federation. Each of these resources serves a different use case:
+ * # IAM policy for Dataproc Metastore Federation
+ * Three different resources help you manage your IAM policy for Dataproc Metastore Federation. Each of these resources serves a different use case:
  * 
  * * `gcp.dataproc.MetastoreFederationIamPolicy`: Authoritative. Sets the IAM policy for the federation and replaces any existing policy already attached.
  * * `gcp.dataproc.MetastoreFederationIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the federation are preserved.
@@ -311,7 +311,7 @@ import javax.annotation.Nullable;
  * 
  * Any variables not passed in the import command will be taken from the provider configuration.
  * 
- * Dataproc metastore federation IAM resources can be imported using the resource identifiers, role, and member.
+ * Dataproc Metastore federation IAM resources can be imported using the resource identifiers, role, and member.
  * 
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  * 

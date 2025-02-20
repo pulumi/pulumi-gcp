@@ -13,7 +13,7 @@ import (
 
 // Retrieves the current IAM policy data for autoscalingpolicy
 //
-// ## example
+// ## Example Usage
 //
 // ```go
 // package main

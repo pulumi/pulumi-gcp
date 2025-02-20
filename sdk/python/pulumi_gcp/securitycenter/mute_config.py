@@ -22,7 +22,9 @@ class MuteConfigArgs:
                  filter: pulumi.Input[str],
                  mute_config_id: pulumi.Input[str],
                  parent: pulumi.Input[str],
-                 description: Optional[pulumi.Input[str]] = None):
+                 description: Optional[pulumi.Input[str]] = None,
+                 expiry_time: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a MuteConfig resource.
         :param pulumi.Input[str] filter: An expression that defines the filter to apply across create/update
@@ -38,12 +40,23 @@ class MuteConfigArgs:
                
                - - -
         :param pulumi.Input[str] description: A description of the mute config.
+        :param pulumi.Input[str] expiry_time: Optional. The expiry of the mute config. Only applicable for dynamic configs.
+               If the expiry is set, when the config expires, it is removed from all findings.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+               nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] type: The type of the mute config, which determines what type of mute state the config affects.
+               Default value is `DYNAMIC`.
+               Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
         """
         pulumi.set(__self__, "filter", filter)
         pulumi.set(__self__, "mute_config_id", mute_config_id)
         pulumi.set(__self__, "parent", parent)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if expiry_time is not None:
+            pulumi.set(__self__, "expiry_time", expiry_time)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -102,23 +115,58 @@ class MuteConfigArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+    @property
+    @pulumi.getter(name="expiryTime")
+    def expiry_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The expiry of the mute config. Only applicable for dynamic configs.
+        If the expiry is set, when the config expires, it is removed from all findings.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+        nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "expiry_time")
+
+    @expiry_time.setter
+    def expiry_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expiry_time", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the mute config, which determines what type of mute state the config affects.
+        Default value is `DYNAMIC`.
+        Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
 
 @pulumi.input_type
 class _MuteConfigState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 expiry_time: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  most_recent_editor: Optional[pulumi.Input[str]] = None,
                  mute_config_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MuteConfig resources.
         :param pulumi.Input[str] create_time: The time at which the mute config was created. This field is set by
                the server and will be ignored if provided on config creation.
         :param pulumi.Input[str] description: A description of the mute config.
+        :param pulumi.Input[str] expiry_time: Optional. The expiry of the mute config. Only applicable for dynamic configs.
+               If the expiry is set, when the config expires, it is removed from all findings.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+               nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] filter: An expression that defines the filter to apply across create/update
                events of findings. While creating a filter string, be mindful of
                the scope in which the mute configuration is being created. E.g.,
@@ -138,6 +186,9 @@ class _MuteConfigState:
                
                
                - - -
+        :param pulumi.Input[str] type: The type of the mute config, which determines what type of mute state the config affects.
+               Default value is `DYNAMIC`.
+               Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
         :param pulumi.Input[str] update_time: Output only. The most recent time at which the mute config was
                updated. This field is set by the server and will be ignored if
                provided on config creation or update.
@@ -146,6 +197,8 @@ class _MuteConfigState:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if expiry_time is not None:
+            pulumi.set(__self__, "expiry_time", expiry_time)
         if filter is not None:
             pulumi.set(__self__, "filter", filter)
         if most_recent_editor is not None:
@@ -156,6 +209,8 @@ class _MuteConfigState:
             pulumi.set(__self__, "name", name)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -183,6 +238,21 @@ class _MuteConfigState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="expiryTime")
+    def expiry_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The expiry of the mute config. Only applicable for dynamic configs.
+        If the expiry is set, when the config expires, it is removed from all findings.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+        nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "expiry_time")
+
+    @expiry_time.setter
+    def expiry_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expiry_time", value)
 
     @property
     @pulumi.getter
@@ -259,6 +329,20 @@ class _MuteConfigState:
         pulumi.set(self, "parent", value)
 
     @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the mute config, which determines what type of mute state the config affects.
+        Default value is `DYNAMIC`.
+        Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -279,9 +363,11 @@ class MuteConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 expiry_time: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  mute_config_id: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Mute Findings is a volume management feature in Security Command Center
@@ -305,7 +391,9 @@ class MuteConfig(pulumi.CustomResource):
             mute_config_id="my-config",
             parent="organizations/123456789",
             filter="category: \\"OS_VULNERABILITY\\"",
-            description="My Mute Config")
+            description="My Mute Config",
+            type="DYNAMIC",
+            expiry_time="2215-02-03T15:01:23Z")
         ```
 
         ## Import
@@ -323,6 +411,10 @@ class MuteConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the mute config.
+        :param pulumi.Input[str] expiry_time: Optional. The expiry of the mute config. Only applicable for dynamic configs.
+               If the expiry is set, when the config expires, it is removed from all findings.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+               nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] filter: An expression that defines the filter to apply across create/update
                events of findings. While creating a filter string, be mindful of
                the scope in which the mute configuration is being created. E.g.,
@@ -335,6 +427,9 @@ class MuteConfig(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[str] type: The type of the mute config, which determines what type of mute state the config affects.
+               Default value is `DYNAMIC`.
+               Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
         """
         ...
     @overload
@@ -364,7 +459,9 @@ class MuteConfig(pulumi.CustomResource):
             mute_config_id="my-config",
             parent="organizations/123456789",
             filter="category: \\"OS_VULNERABILITY\\"",
-            description="My Mute Config")
+            description="My Mute Config",
+            type="DYNAMIC",
+            expiry_time="2215-02-03T15:01:23Z")
         ```
 
         ## Import
@@ -395,9 +492,11 @@ class MuteConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 expiry_time: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  mute_config_id: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -408,6 +507,7 @@ class MuteConfig(pulumi.CustomResource):
             __props__ = MuteConfigArgs.__new__(MuteConfigArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["expiry_time"] = expiry_time
             if filter is None and not opts.urn:
                 raise TypeError("Missing required property 'filter'")
             __props__.__dict__["filter"] = filter
@@ -417,6 +517,7 @@ class MuteConfig(pulumi.CustomResource):
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
+            __props__.__dict__["type"] = type
             __props__.__dict__["create_time"] = None
             __props__.__dict__["most_recent_editor"] = None
             __props__.__dict__["name"] = None
@@ -433,11 +534,13 @@ class MuteConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            expiry_time: Optional[pulumi.Input[str]] = None,
             filter: Optional[pulumi.Input[str]] = None,
             most_recent_editor: Optional[pulumi.Input[str]] = None,
             mute_config_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
+            type: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'MuteConfig':
         """
         Get an existing MuteConfig resource's state with the given name, id, and optional extra
@@ -449,6 +552,10 @@ class MuteConfig(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The time at which the mute config was created. This field is set by
                the server and will be ignored if provided on config creation.
         :param pulumi.Input[str] description: A description of the mute config.
+        :param pulumi.Input[str] expiry_time: Optional. The expiry of the mute config. Only applicable for dynamic configs.
+               If the expiry is set, when the config expires, it is removed from all findings.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+               nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] filter: An expression that defines the filter to apply across create/update
                events of findings. While creating a filter string, be mindful of
                the scope in which the mute configuration is being created. E.g.,
@@ -468,6 +575,9 @@ class MuteConfig(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[str] type: The type of the mute config, which determines what type of mute state the config affects.
+               Default value is `DYNAMIC`.
+               Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
         :param pulumi.Input[str] update_time: Output only. The most recent time at which the mute config was
                updated. This field is set by the server and will be ignored if
                provided on config creation or update.
@@ -478,11 +588,13 @@ class MuteConfig(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["expiry_time"] = expiry_time
         __props__.__dict__["filter"] = filter
         __props__.__dict__["most_recent_editor"] = most_recent_editor
         __props__.__dict__["mute_config_id"] = mute_config_id
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
+        __props__.__dict__["type"] = type
         __props__.__dict__["update_time"] = update_time
         return MuteConfig(resource_name, opts=opts, __props__=__props__)
 
@@ -502,6 +614,17 @@ class MuteConfig(pulumi.CustomResource):
         A description of the mute config.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="expiryTime")
+    def expiry_time(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. The expiry of the mute config. Only applicable for dynamic configs.
+        If the expiry is set, when the config expires, it is removed from all findings.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+        nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "expiry_time")
 
     @property
     @pulumi.getter
@@ -556,6 +679,16 @@ class MuteConfig(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "parent")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The type of the mute config, which determines what type of mute state the config affects.
+        Default value is `DYNAMIC`.
+        Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
+        """
+        return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="updateTime")

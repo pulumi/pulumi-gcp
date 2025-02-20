@@ -18,14 +18,14 @@ public final class EnvironmentConfigDataRetentionConfigArgs extends com.pulumi.r
     public static final EnvironmentConfigDataRetentionConfigArgs Empty = new EnvironmentConfigDataRetentionConfigArgs();
 
     /**
-     * Optional. The configuration setting for database retention.
+     * Optional. The policy for airflow metadata database retention.
      * 
      */
     @Import(name="airflowMetadataRetentionConfigs")
     private @Nullable Output<List<EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgs>> airflowMetadataRetentionConfigs;
 
     /**
-     * @return Optional. The configuration setting for database retention.
+     * @return Optional. The policy for airflow metadata database retention.
      * 
      */
     public Optional<Output<List<EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgs>>> airflowMetadataRetentionConfigs() {
@@ -73,7 +73,7 @@ public final class EnvironmentConfigDataRetentionConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param airflowMetadataRetentionConfigs Optional. The configuration setting for database retention.
+         * @param airflowMetadataRetentionConfigs Optional. The policy for airflow metadata database retention.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class EnvironmentConfigDataRetentionConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param airflowMetadataRetentionConfigs Optional. The configuration setting for database retention.
+         * @param airflowMetadataRetentionConfigs Optional. The policy for airflow metadata database retention.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class EnvironmentConfigDataRetentionConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param airflowMetadataRetentionConfigs Optional. The configuration setting for database retention.
+         * @param airflowMetadataRetentionConfigs Optional. The policy for airflow metadata database retention.
          * 
          * @return builder
          * 

@@ -369,22 +369,20 @@ public class AuthzExtension extends com.pulumi.resources.CustomResource {
         return this.updateTime;
     }
     /**
-     * The format of communication supported by the callout extension.
-     * Default value is `EXT_PROC_GRPC`.
+     * The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
      * Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
      * 
      */
     @Export(name="wireFormat", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> wireFormat;
+    private Output<String> wireFormat;
 
     /**
-     * @return The format of communication supported by the callout extension.
-     * Default value is `EXT_PROC_GRPC`.
+     * @return The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
      * Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
      * 
      */
-    public Output<Optional<String>> wireFormat() {
-        return Codegen.optional(this.wireFormat);
+    public Output<String> wireFormat() {
+        return this.wireFormat;
     }
 
     /**

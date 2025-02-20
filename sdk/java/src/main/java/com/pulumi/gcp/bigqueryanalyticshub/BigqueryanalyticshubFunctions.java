@@ -21,7 +21,7 @@ public final class BigqueryanalyticshubFunctions {
     /**
      * Retrieves the current IAM policy data for dataexchange
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -65,7 +65,7 @@ public final class BigqueryanalyticshubFunctions {
     /**
      * Retrieves the current IAM policy data for dataexchange
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -109,7 +109,7 @@ public final class BigqueryanalyticshubFunctions {
     /**
      * Retrieves the current IAM policy data for dataexchange
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -153,7 +153,7 @@ public final class BigqueryanalyticshubFunctions {
     /**
      * Retrieves the current IAM policy data for dataexchange
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -197,7 +197,7 @@ public final class BigqueryanalyticshubFunctions {
     /**
      * Retrieves the current IAM policy data for dataexchange
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -241,7 +241,7 @@ public final class BigqueryanalyticshubFunctions {
     /**
      * Retrieves the current IAM policy data for listing
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -286,7 +286,7 @@ public final class BigqueryanalyticshubFunctions {
     /**
      * Retrieves the current IAM policy data for listing
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -331,7 +331,7 @@ public final class BigqueryanalyticshubFunctions {
     /**
      * Retrieves the current IAM policy data for listing
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -376,7 +376,7 @@ public final class BigqueryanalyticshubFunctions {
     /**
      * Retrieves the current IAM policy data for listing
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -421,7 +421,7 @@ public final class BigqueryanalyticshubFunctions {
     /**
      * Retrieves the current IAM policy data for listing
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Iap
         /// Retrieves the current IAM policy data for appengineversion
         /// 
         /// 
-        /// ## example
+        /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.Iap
         /// Retrieves the current IAM policy data for appengineversion
         /// 
         /// 
-        /// ## example
+        /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -71,7 +71,7 @@ namespace Pulumi.Gcp.Iap
         /// Retrieves the current IAM policy data for appengineversion
         /// 
         /// 
-        /// ## example
+        /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

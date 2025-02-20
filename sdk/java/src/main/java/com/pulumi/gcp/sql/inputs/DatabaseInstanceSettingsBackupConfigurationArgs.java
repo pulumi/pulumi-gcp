@@ -81,14 +81,14 @@ public final class DatabaseInstanceSettingsBackupConfigurationArgs extends com.p
     }
 
     /**
-     * True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
+     * True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances. Enabled by default for PostgreSQL Enterprise Plus and SQL Server Enterprise Plus instances.
      * 
      */
     @Import(name="pointInTimeRecoveryEnabled")
     private @Nullable Output<Boolean> pointInTimeRecoveryEnabled;
 
     /**
-     * @return True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
+     * @return True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances. Enabled by default for PostgreSQL Enterprise Plus and SQL Server Enterprise Plus instances.
      * 
      */
     public Optional<Output<Boolean>> pointInTimeRecoveryEnabled() {
@@ -113,14 +113,14 @@ public final class DatabaseInstanceSettingsBackupConfigurationArgs extends com.p
     }
 
     /**
-     * The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
+     * The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus and SQL Server Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
      * 
      */
     @Import(name="transactionLogRetentionDays")
     private @Nullable Output<Integer> transactionLogRetentionDays;
 
     /**
-     * @return The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
+     * @return The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus and SQL Server Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
      * 
      */
     public Optional<Output<Integer>> transactionLogRetentionDays() {
@@ -244,7 +244,7 @@ public final class DatabaseInstanceSettingsBackupConfigurationArgs extends com.p
         }
 
         /**
-         * @param pointInTimeRecoveryEnabled True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
+         * @param pointInTimeRecoveryEnabled True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances. Enabled by default for PostgreSQL Enterprise Plus and SQL Server Enterprise Plus instances.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class DatabaseInstanceSettingsBackupConfigurationArgs extends com.p
         }
 
         /**
-         * @param pointInTimeRecoveryEnabled True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
+         * @param pointInTimeRecoveryEnabled True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances. Enabled by default for PostgreSQL Enterprise Plus and SQL Server Enterprise Plus instances.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class DatabaseInstanceSettingsBackupConfigurationArgs extends com.p
         }
 
         /**
-         * @param transactionLogRetentionDays The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
+         * @param transactionLogRetentionDays The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus and SQL Server Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class DatabaseInstanceSettingsBackupConfigurationArgs extends com.p
         }
 
         /**
-         * @param transactionLogRetentionDays The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
+         * @param transactionLogRetentionDays The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus and SQL Server Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
          * 
          * @return builder
          * 

@@ -52,14 +52,14 @@ public final class ClusterMasterAuthorizedNetworksConfigArgs extends com.pulumi.
     }
 
     /**
-     * Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+     * Whether authorized networks is enforced on the private endpoint or not.
      * 
      */
     @Import(name="privateEndpointEnforcementEnabled")
     private @Nullable Output<Boolean> privateEndpointEnforcementEnabled;
 
     /**
-     * @return Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+     * @return Whether authorized networks is enforced on the private endpoint or not.
      * 
      */
     public Optional<Output<Boolean>> privateEndpointEnforcementEnabled() {
@@ -150,7 +150,7 @@ public final class ClusterMasterAuthorizedNetworksConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param privateEndpointEnforcementEnabled Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+         * @param privateEndpointEnforcementEnabled Whether authorized networks is enforced on the private endpoint or not.
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class ClusterMasterAuthorizedNetworksConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param privateEndpointEnforcementEnabled Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+         * @param privateEndpointEnforcementEnabled Whether authorized networks is enforced on the private endpoint or not.
          * 
          * @return builder
          * 

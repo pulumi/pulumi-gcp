@@ -11,12 +11,72 @@ namespace Pulumi.Gcp.Compute
 {
     public static class GetMachineImageIamPolicy
     {
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Compute.GetMachineImageIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = image.Project,
+        ///         MachineImage = image.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetMachineImageIamPolicyResult> InvokeAsync(GetMachineImageIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMachineImageIamPolicyResult>("gcp:compute/getMachineImageIamPolicy:getMachineImageIamPolicy", args ?? new GetMachineImageIamPolicyArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Compute.GetMachineImageIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = image.Project,
+        ///         MachineImage = image.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetMachineImageIamPolicyResult> Invoke(GetMachineImageIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMachineImageIamPolicyResult>("gcp:compute/getMachineImageIamPolicy:getMachineImageIamPolicy", args ?? new GetMachineImageIamPolicyInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Compute.GetMachineImageIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = image.Project,
+        ///         MachineImage = image.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetMachineImageIamPolicyResult> Invoke(GetMachineImageIamPolicyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetMachineImageIamPolicyResult>("gcp:compute/getMachineImageIamPolicy:getMachineImageIamPolicy", args ?? new GetMachineImageIamPolicyInvokeArgs(), options.WithDefaults());
     }

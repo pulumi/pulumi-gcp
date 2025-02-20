@@ -6,6 +6,7 @@ package com.pulumi.gcp.accesscontextmanager.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.accesscontextmanager.outputs.ServicePerimeterStatusEgressPolicyEgressFrom;
 import com.pulumi.gcp.accesscontextmanager.outputs.ServicePerimeterStatusEgressPolicyEgressTo;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -25,6 +26,11 @@ public final class ServicePerimeterStatusEgressPolicy {
      * 
      */
     private @Nullable ServicePerimeterStatusEgressPolicyEgressTo egressTo;
+    /**
+     * @return Human readable title. Must be unique within the perimeter. Does not affect behavior.
+     * 
+     */
+    private @Nullable String title;
 
     private ServicePerimeterStatusEgressPolicy() {}
     /**
@@ -44,6 +50,13 @@ public final class ServicePerimeterStatusEgressPolicy {
     public Optional<ServicePerimeterStatusEgressPolicyEgressTo> egressTo() {
         return Optional.ofNullable(this.egressTo);
     }
+    /**
+     * @return Human readable title. Must be unique within the perimeter. Does not affect behavior.
+     * 
+     */
+    public Optional<String> title() {
+        return Optional.ofNullable(this.title);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -56,11 +69,13 @@ public final class ServicePerimeterStatusEgressPolicy {
     public static final class Builder {
         private @Nullable ServicePerimeterStatusEgressPolicyEgressFrom egressFrom;
         private @Nullable ServicePerimeterStatusEgressPolicyEgressTo egressTo;
+        private @Nullable String title;
         public Builder() {}
         public Builder(ServicePerimeterStatusEgressPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.egressFrom = defaults.egressFrom;
     	      this.egressTo = defaults.egressTo;
+    	      this.title = defaults.title;
         }
 
         @CustomType.Setter
@@ -75,10 +90,17 @@ public final class ServicePerimeterStatusEgressPolicy {
             this.egressTo = egressTo;
             return this;
         }
+        @CustomType.Setter
+        public Builder title(@Nullable String title) {
+
+            this.title = title;
+            return this;
+        }
         public ServicePerimeterStatusEgressPolicy build() {
             final var _resultValue = new ServicePerimeterStatusEgressPolicy();
             _resultValue.egressFrom = egressFrom;
             _resultValue.egressTo = egressTo;
+            _resultValue.title = title;
             return _resultValue;
         }
     }

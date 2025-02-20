@@ -98,7 +98,7 @@ def get_managed_zone_iam_policy(managed_zone: Optional[str] = None,
     """
     Retrieves the current IAM policy data for managedzone
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -131,7 +131,7 @@ def get_managed_zone_iam_policy_output(managed_zone: Optional[pulumi.Input[str]]
     """
     Retrieves the current IAM policy data for managedzone
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

@@ -108,7 +108,7 @@ def get_ekm_connection_iam_policy(location: Optional[str] = None,
     """
     Retrieves the current IAM policy data for ekmconnection
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi
@@ -150,7 +150,7 @@ def get_ekm_connection_iam_policy_output(location: Optional[pulumi.Input[Optiona
     """
     Retrieves the current IAM policy data for ekmconnection
 
-    ## example
+    ## Example Usage
 
     ```python
     import pulumi

@@ -11,12 +11,81 @@ namespace Pulumi.Gcp.Workstations
 {
     public static class GetWorkstationIamPolicy
     {
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Workstations.GetWorkstationIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = @default.Project,
+        ///         Location = @default.Location,
+        ///         WorkstationClusterId = @default.WorkstationClusterId,
+        ///         WorkstationConfigId = @default.WorkstationConfigId,
+        ///         WorkstationId = @default.WorkstationId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetWorkstationIamPolicyResult> InvokeAsync(GetWorkstationIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkstationIamPolicyResult>("gcp:workstations/getWorkstationIamPolicy:getWorkstationIamPolicy", args ?? new GetWorkstationIamPolicyArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Workstations.GetWorkstationIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = @default.Project,
+        ///         Location = @default.Location,
+        ///         WorkstationClusterId = @default.WorkstationClusterId,
+        ///         WorkstationConfigId = @default.WorkstationConfigId,
+        ///         WorkstationId = @default.WorkstationId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetWorkstationIamPolicyResult> Invoke(GetWorkstationIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkstationIamPolicyResult>("gcp:workstations/getWorkstationIamPolicy:getWorkstationIamPolicy", args ?? new GetWorkstationIamPolicyInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Workstations.GetWorkstationIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = @default.Project,
+        ///         Location = @default.Location,
+        ///         WorkstationClusterId = @default.WorkstationClusterId,
+        ///         WorkstationConfigId = @default.WorkstationConfigId,
+        ///         WorkstationId = @default.WorkstationId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetWorkstationIamPolicyResult> Invoke(GetWorkstationIamPolicyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkstationIamPolicyResult>("gcp:workstations/getWorkstationIamPolicy:getWorkstationIamPolicy", args ?? new GetWorkstationIamPolicyInvokeArgs(), options.WithDefaults());
     }

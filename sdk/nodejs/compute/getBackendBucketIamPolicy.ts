@@ -4,6 +4,19 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.compute.getBackendBucketIamPolicy({
+ *     project: imageBackend.project,
+ *     name: imageBackend.name,
+ * });
+ * ```
+ */
 export function getBackendBucketIamPolicy(args: GetBackendBucketIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendBucketIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getBackendBucketIamPolicy:getBackendBucketIamPolicy", {
@@ -47,6 +60,19 @@ export interface GetBackendBucketIamPolicyResult {
     readonly policyData: string;
     readonly project: string;
 }
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.compute.getBackendBucketIamPolicy({
+ *     project: imageBackend.project,
+ *     name: imageBackend.name,
+ * });
+ * ```
+ */
 export function getBackendBucketIamPolicyOutput(args: GetBackendBucketIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBackendBucketIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getBackendBucketIamPolicy:getBackendBucketIamPolicy", {

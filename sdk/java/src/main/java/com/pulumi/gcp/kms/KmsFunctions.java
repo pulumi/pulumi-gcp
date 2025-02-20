@@ -1108,7 +1108,7 @@ public final class KmsFunctions {
     /**
      * Retrieves the current IAM policy data for ekmconnection
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1152,7 +1152,7 @@ public final class KmsFunctions {
     /**
      * Retrieves the current IAM policy data for ekmconnection
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1196,7 +1196,7 @@ public final class KmsFunctions {
     /**
      * Retrieves the current IAM policy data for ekmconnection
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1240,7 +1240,7 @@ public final class KmsFunctions {
     /**
      * Retrieves the current IAM policy data for ekmconnection
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1284,7 +1284,7 @@ public final class KmsFunctions {
     /**
      * Retrieves the current IAM policy data for ekmconnection
      * 
-     * ## example
+     * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
