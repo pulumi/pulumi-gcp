@@ -503,7 +503,7 @@ export class MetastoreService extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: MetastoreServiceArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: MetastoreServiceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MetastoreServiceArgs | MetastoreServiceState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -537,9 +537,6 @@ export class MetastoreService extends pulumi.CustomResource {
             resourceInputs["uid"] = state ? state.uid : undefined;
         } else {
             const args = argsOrState as MetastoreServiceArgs | undefined;
-            if ((!args || args.serviceId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serviceId'");
-            }
             resourceInputs["databaseType"] = args ? args.databaseType : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
@@ -802,7 +799,7 @@ export interface MetastoreServiceArgs {
      *
      * - - -
      */
-    serviceId: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string>;
     /**
      * The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
      * Structure is documented below.

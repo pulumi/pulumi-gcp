@@ -21,7 +21,6 @@ __all__ = ['MetastoreServiceArgs', 'MetastoreService']
 @pulumi.input_type
 class MetastoreServiceArgs:
     def __init__(__self__, *,
-                 service_id: pulumi.Input[str],
                  database_type: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  encryption_config: Optional[pulumi.Input['MetastoreServiceEncryptionConfigArgs']] = None,
@@ -37,16 +36,11 @@ class MetastoreServiceArgs:
                  release_channel: Optional[pulumi.Input[str]] = None,
                  scaling_config: Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']] = None,
                  scheduled_backup: Optional[pulumi.Input['MetastoreServiceScheduledBackupArgs']] = None,
+                 service_id: Optional[pulumi.Input[str]] = None,
                  telemetry_config: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']] = None,
                  tier: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a MetastoreService resource.
-        :param pulumi.Input[str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
-               and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
-               3 and 63 characters.
-               
-               
-               - - -
         :param pulumi.Input[str] database_type: The database type that the Metastore service stores its data.
                Default value is `MYSQL`.
                Possible values are: `MYSQL`, `SPANNER`.
@@ -81,12 +75,17 @@ class MetastoreServiceArgs:
                Structure is documented below.
         :param pulumi.Input['MetastoreServiceScheduledBackupArgs'] scheduled_backup: The configuration of scheduled backup for the metastore service.
                Structure is documented below.
+        :param pulumi.Input[str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
+               and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
+               3 and 63 characters.
+               
+               
+               - - -
         :param pulumi.Input['MetastoreServiceTelemetryConfigArgs'] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
                Structure is documented below.
         :param pulumi.Input[str] tier: The tier of the service.
                Possible values are: `DEVELOPER`, `ENTERPRISE`.
         """
-        pulumi.set(__self__, "service_id", service_id)
         if database_type is not None:
             pulumi.set(__self__, "database_type", database_type)
         if deletion_protection is not None:
@@ -117,27 +116,12 @@ class MetastoreServiceArgs:
             pulumi.set(__self__, "scaling_config", scaling_config)
         if scheduled_backup is not None:
             pulumi.set(__self__, "scheduled_backup", scheduled_backup)
+        if service_id is not None:
+            pulumi.set(__self__, "service_id", service_id)
         if telemetry_config is not None:
             pulumi.set(__self__, "telemetry_config", telemetry_config)
         if tier is not None:
             pulumi.set(__self__, "tier", tier)
-
-    @property
-    @pulumi.getter(name="serviceId")
-    def service_id(self) -> pulumi.Input[str]:
-        """
-        The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
-        and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
-        3 and 63 characters.
-
-
-        - - -
-        """
-        return pulumi.get(self, "service_id")
-
-    @service_id.setter
-    def service_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "service_id", value)
 
     @property
     @pulumi.getter(name="databaseType")
@@ -337,6 +321,23 @@ class MetastoreServiceArgs:
     @scheduled_backup.setter
     def scheduled_backup(self, value: Optional[pulumi.Input['MetastoreServiceScheduledBackupArgs']]):
         pulumi.set(self, "scheduled_backup", value)
+
+    @property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
+        and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
+        3 and 63 characters.
+
+
+        - - -
+        """
+        return pulumi.get(self, "service_id")
+
+    @service_id.setter
+    def service_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_id", value)
 
     @property
     @pulumi.getter(name="telemetryConfig")
@@ -1229,7 +1230,7 @@ class MetastoreService(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: MetastoreServiceArgs,
+                 args: Optional[MetastoreServiceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A managed metastore service that serves metadata queries.
@@ -1599,8 +1600,6 @@ class MetastoreService(pulumi.CustomResource):
             __props__.__dict__["release_channel"] = release_channel
             __props__.__dict__["scaling_config"] = scaling_config
             __props__.__dict__["scheduled_backup"] = scheduled_backup
-            if service_id is None and not opts.urn:
-                raise TypeError("Missing required property 'service_id'")
             __props__.__dict__["service_id"] = service_id
             __props__.__dict__["telemetry_config"] = telemetry_config
             __props__.__dict__["tier"] = tier

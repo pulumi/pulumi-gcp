@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -640,12 +639,9 @@ type MetastoreService struct {
 func NewMetastoreService(ctx *pulumi.Context,
 	name string, args *MetastoreServiceArgs, opts ...pulumi.ResourceOption) (*MetastoreService, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &MetastoreServiceArgs{}
 	}
 
-	if args.ServiceId == nil {
-		return nil, errors.New("invalid value for required argument 'ServiceId'")
-	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"effectiveLabels",
 		"pulumiLabels",
@@ -894,7 +890,7 @@ type metastoreServiceArgs struct {
 	// 3 and 63 characters.
 	//
 	// ***
-	ServiceId string `pulumi:"serviceId"`
+	ServiceId *string `pulumi:"serviceId"`
 	// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
 	// Structure is documented below.
 	TelemetryConfig *MetastoreServiceTelemetryConfig `pulumi:"telemetryConfig"`
@@ -959,7 +955,7 @@ type MetastoreServiceArgs struct {
 	// 3 and 63 characters.
 	//
 	// ***
-	ServiceId pulumi.StringInput
+	ServiceId pulumi.StringPtrInput
 	// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
 	// Structure is documented below.
 	TelemetryConfig MetastoreServiceTelemetryConfigPtrInput

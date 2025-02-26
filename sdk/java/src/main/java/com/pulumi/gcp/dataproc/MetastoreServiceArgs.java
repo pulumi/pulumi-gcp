@@ -5,7 +5,6 @@ package com.pulumi.gcp.dataproc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceEncryptionConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceMaintenanceWindowArgs;
@@ -298,8 +297,8 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
      * ***
      * 
      */
-    @Import(name="serviceId", required=true)
-    private Output<String> serviceId;
+    @Import(name="serviceId")
+    private @Nullable Output<String> serviceId;
 
     /**
      * @return The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
@@ -309,8 +308,8 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
      * ***
      * 
      */
-    public Output<String> serviceId() {
-        return this.serviceId;
+    public Optional<Output<String>> serviceId() {
+        return Optional.ofNullable(this.serviceId);
     }
 
     /**
@@ -751,7 +750,7 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder serviceId(Output<String> serviceId) {
+        public Builder serviceId(@Nullable Output<String> serviceId) {
             $.serviceId = serviceId;
             return this;
         }
@@ -817,9 +816,6 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
         }
 
         public MetastoreServiceArgs build() {
-            if ($.serviceId == null) {
-                throw new MissingRequiredPropertyException("MetastoreServiceArgs", "serviceId");
-            }
             return $;
         }
     }
