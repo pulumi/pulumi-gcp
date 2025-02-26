@@ -32,6 +32,25 @@ public final class NetworkPeeringRoutesConfigState extends com.pulumi.resources.
     }
 
     /**
+     * Whether subnet routes with public IP range are exported.
+     * IPv4 special-use ranges are always exported to peers and
+     * are not controlled by this field.
+     * 
+     */
+    @Import(name="exportSubnetRoutesWithPublicIp")
+    private @Nullable Output<Boolean> exportSubnetRoutesWithPublicIp;
+
+    /**
+     * @return Whether subnet routes with public IP range are exported.
+     * IPv4 special-use ranges are always exported to peers and
+     * are not controlled by this field.
+     * 
+     */
+    public Optional<Output<Boolean>> exportSubnetRoutesWithPublicIp() {
+        return Optional.ofNullable(this.exportSubnetRoutesWithPublicIp);
+    }
+
+    /**
      * Whether to import the custom routes to the peer network.
      * 
      */
@@ -44,6 +63,25 @@ public final class NetworkPeeringRoutesConfigState extends com.pulumi.resources.
      */
     public Optional<Output<Boolean>> importCustomRoutes() {
         return Optional.ofNullable(this.importCustomRoutes);
+    }
+
+    /**
+     * Whether subnet routes with public IP range are imported.
+     * IPv4 special-use ranges are always imported from peers and
+     * are not controlled by this field.
+     * 
+     */
+    @Import(name="importSubnetRoutesWithPublicIp")
+    private @Nullable Output<Boolean> importSubnetRoutesWithPublicIp;
+
+    /**
+     * @return Whether subnet routes with public IP range are imported.
+     * IPv4 special-use ranges are always imported from peers and
+     * are not controlled by this field.
+     * 
+     */
+    public Optional<Output<Boolean>> importSubnetRoutesWithPublicIp() {
+        return Optional.ofNullable(this.importSubnetRoutesWithPublicIp);
     }
 
     /**
@@ -101,7 +139,9 @@ public final class NetworkPeeringRoutesConfigState extends com.pulumi.resources.
 
     private NetworkPeeringRoutesConfigState(NetworkPeeringRoutesConfigState $) {
         this.exportCustomRoutes = $.exportCustomRoutes;
+        this.exportSubnetRoutesWithPublicIp = $.exportSubnetRoutesWithPublicIp;
         this.importCustomRoutes = $.importCustomRoutes;
+        this.importSubnetRoutesWithPublicIp = $.importSubnetRoutesWithPublicIp;
         this.network = $.network;
         this.peering = $.peering;
         this.project = $.project;
@@ -147,6 +187,31 @@ public final class NetworkPeeringRoutesConfigState extends com.pulumi.resources.
         }
 
         /**
+         * @param exportSubnetRoutesWithPublicIp Whether subnet routes with public IP range are exported.
+         * IPv4 special-use ranges are always exported to peers and
+         * are not controlled by this field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exportSubnetRoutesWithPublicIp(@Nullable Output<Boolean> exportSubnetRoutesWithPublicIp) {
+            $.exportSubnetRoutesWithPublicIp = exportSubnetRoutesWithPublicIp;
+            return this;
+        }
+
+        /**
+         * @param exportSubnetRoutesWithPublicIp Whether subnet routes with public IP range are exported.
+         * IPv4 special-use ranges are always exported to peers and
+         * are not controlled by this field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exportSubnetRoutesWithPublicIp(Boolean exportSubnetRoutesWithPublicIp) {
+            return exportSubnetRoutesWithPublicIp(Output.of(exportSubnetRoutesWithPublicIp));
+        }
+
+        /**
          * @param importCustomRoutes Whether to import the custom routes to the peer network.
          * 
          * @return builder
@@ -165,6 +230,31 @@ public final class NetworkPeeringRoutesConfigState extends com.pulumi.resources.
          */
         public Builder importCustomRoutes(Boolean importCustomRoutes) {
             return importCustomRoutes(Output.of(importCustomRoutes));
+        }
+
+        /**
+         * @param importSubnetRoutesWithPublicIp Whether subnet routes with public IP range are imported.
+         * IPv4 special-use ranges are always imported from peers and
+         * are not controlled by this field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importSubnetRoutesWithPublicIp(@Nullable Output<Boolean> importSubnetRoutesWithPublicIp) {
+            $.importSubnetRoutesWithPublicIp = importSubnetRoutesWithPublicIp;
+            return this;
+        }
+
+        /**
+         * @param importSubnetRoutesWithPublicIp Whether subnet routes with public IP range are imported.
+         * IPv4 special-use ranges are always imported from peers and
+         * are not controlled by this field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importSubnetRoutesWithPublicIp(Boolean importSubnetRoutesWithPublicIp) {
+            return importSubnetRoutesWithPublicIp(Output.of(importSubnetRoutesWithPublicIp));
         }
 
         /**

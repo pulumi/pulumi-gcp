@@ -9,6 +9,12 @@ import * as utilities from "../utilities";
 /**
  * A connection for GitHub, GitHub Enterprise, GitLab, and GitLab Enterprise.
  *
+ * To get more information about Connection, see:
+ *
+ * * [API documentation](https://cloud.google.com/developer-connect/docs/api/reference/rest/v1/projects.locations.connections)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/developer-connect/docs/overview)
+ *
  * ## Example Usage
  *
  * ### Developer Connect Connection New
@@ -272,6 +278,48 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Developer Connect Connection Bbc
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_connection = new gcp.developerconnect.Connection("my-connection", {
+ *     location: "us-central1",
+ *     connectionId: "tf-test-connection",
+ *     bitbucketCloudConfig: {
+ *         workspace: "proctor-test",
+ *         webhookSecretSecretVersion: "projects/devconnect-terraform-creds/secrets/bbc-webhook/versions/latest",
+ *         readAuthorizerCredential: {
+ *             userTokenSecretVersion: "projects/devconnect-terraform-creds/secrets/bbc-read-token/versions/latest",
+ *         },
+ *         authorizerCredential: {
+ *             userTokenSecretVersion: "projects/devconnect-terraform-creds/secrets/bbc-auth-token/versions/latest",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Developer Connect Connection Bbdc
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_connection = new gcp.developerconnect.Connection("my-connection", {
+ *     location: "us-central1",
+ *     connectionId: "tf-test-connection",
+ *     bitbucketDataCenterConfig: {
+ *         hostUri: "https://bitbucket-us-central.gcb-test.com",
+ *         webhookSecretSecretVersion: "projects/devconnect-terraform-creds/secrets/bbdc-webhook/versions/latest",
+ *         readAuthorizerCredential: {
+ *             userTokenSecretVersion: "projects/devconnect-terraform-creds/secrets/bbdc-read-token/versions/latest",
+ *         },
+ *         authorizerCredential: {
+ *             userTokenSecretVersion: "projects/devconnect-terraform-creds/secrets/bbdc-auth-token/versions/latest",
+ *         },
+ *     },
+ * });
+ * ```
  * ## Import
  *
  * Connection can be imported using any of these accepted formats:
@@ -330,6 +378,16 @@ export class Connection extends pulumi.CustomResource {
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Configuration for connections to an instance of Bitbucket Cloud.
+     * Structure is documented below.
+     */
+    public readonly bitbucketCloudConfig!: pulumi.Output<outputs.developerconnect.ConnectionBitbucketCloudConfig | undefined>;
+    /**
+     * Configuration for connections to an instance of Bitbucket Data Center.
+     * Structure is documented below.
+     */
+    public readonly bitbucketDataCenterConfig!: pulumi.Output<outputs.developerconnect.ConnectionBitbucketDataCenterConfig | undefined>;
     /**
      * Required. Id of the requesting object
      * If auto-generating Id server-side, remove this field and
@@ -450,6 +508,8 @@ export class Connection extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
             resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["bitbucketCloudConfig"] = state ? state.bitbucketCloudConfig : undefined;
+            resourceInputs["bitbucketDataCenterConfig"] = state ? state.bitbucketDataCenterConfig : undefined;
             resourceInputs["connectionId"] = state ? state.connectionId : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["cryptoKeyConfig"] = state ? state.cryptoKeyConfig : undefined;
@@ -480,6 +540,8 @@ export class Connection extends pulumi.CustomResource {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["bitbucketCloudConfig"] = args ? args.bitbucketCloudConfig : undefined;
+            resourceInputs["bitbucketDataCenterConfig"] = args ? args.bitbucketDataCenterConfig : undefined;
             resourceInputs["connectionId"] = args ? args.connectionId : undefined;
             resourceInputs["cryptoKeyConfig"] = args ? args.cryptoKeyConfig : undefined;
             resourceInputs["disabled"] = args ? args.disabled : undefined;
@@ -519,6 +581,16 @@ export interface ConnectionState {
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Configuration for connections to an instance of Bitbucket Cloud.
+     * Structure is documented below.
+     */
+    bitbucketCloudConfig?: pulumi.Input<inputs.developerconnect.ConnectionBitbucketCloudConfig>;
+    /**
+     * Configuration for connections to an instance of Bitbucket Data Center.
+     * Structure is documented below.
+     */
+    bitbucketDataCenterConfig?: pulumi.Input<inputs.developerconnect.ConnectionBitbucketDataCenterConfig>;
     /**
      * Required. Id of the requesting object
      * If auto-generating Id server-side, remove this field and
@@ -636,6 +708,16 @@ export interface ConnectionArgs {
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Configuration for connections to an instance of Bitbucket Cloud.
+     * Structure is documented below.
+     */
+    bitbucketCloudConfig?: pulumi.Input<inputs.developerconnect.ConnectionBitbucketCloudConfig>;
+    /**
+     * Configuration for connections to an instance of Bitbucket Data Center.
+     * Structure is documented below.
+     */
+    bitbucketDataCenterConfig?: pulumi.Input<inputs.developerconnect.ConnectionBitbucketDataCenterConfig>;
     /**
      * Required. Id of the requesting object
      * If auto-generating Id server-side, remove this field and

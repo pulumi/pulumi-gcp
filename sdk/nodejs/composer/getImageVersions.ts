@@ -9,6 +9,12 @@ import * as utilities from "../utilities";
 /**
  * Provides access to available Cloud Composer versions in a region for a given project.
  *
+ * To get more information about Composer Image Versions, see:
+ *
+ * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.imageVersions)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -69,6 +75,12 @@ export interface GetImageVersionsResult {
 }
 /**
  * Provides access to available Cloud Composer versions in a region for a given project.
+ *
+ * To get more information about Composer Image Versions, see:
+ *
+ * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.imageVersions)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
  *
  * ## Example Usage
  *

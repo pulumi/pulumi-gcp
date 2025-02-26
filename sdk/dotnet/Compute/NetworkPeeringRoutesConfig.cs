@@ -52,6 +52,8 @@ namespace Pulumi.Gcp.Compute
     ///         PeerNetwork = networkSecondary.Id,
     ///         ImportCustomRoutes = true,
     ///         ExportCustomRoutes = true,
+    ///         ImportSubnetRoutesWithPublicIp = true,
+    ///         ExportSubnetRoutesWithPublicIp = true,
     ///     });
     /// 
     ///     var peeringPrimaryRoutes = new Gcp.Compute.NetworkPeeringRoutesConfig("peering_primary_routes", new()
@@ -60,6 +62,8 @@ namespace Pulumi.Gcp.Compute
     ///         Network = networkPrimary.Name,
     ///         ImportCustomRoutes = true,
     ///         ExportCustomRoutes = true,
+    ///         ImportSubnetRoutesWithPublicIp = true,
+    ///         ExportSubnetRoutesWithPublicIp = true,
     ///     });
     /// 
     ///     var peeringSecondary = new Gcp.Compute.NetworkPeering("peering_secondary", new()
@@ -137,6 +141,8 @@ namespace Pulumi.Gcp.Compute
     ///         Network = containerNetwork.Name,
     ///         ImportCustomRoutes = true,
     ///         ExportCustomRoutes = true,
+    ///         ImportSubnetRoutesWithPublicIp = true,
+    ///         ExportSubnetRoutesWithPublicIp = true,
     ///     });
     /// 
     /// });
@@ -176,10 +182,26 @@ namespace Pulumi.Gcp.Compute
         public Output<bool> ExportCustomRoutes { get; private set; } = null!;
 
         /// <summary>
+        /// Whether subnet routes with public IP range are exported.
+        /// IPv4 special-use ranges are always exported to peers and
+        /// are not controlled by this field.
+        /// </summary>
+        [Output("exportSubnetRoutesWithPublicIp")]
+        public Output<bool> ExportSubnetRoutesWithPublicIp { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to import the custom routes to the peer network.
         /// </summary>
         [Output("importCustomRoutes")]
         public Output<bool> ImportCustomRoutes { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether subnet routes with public IP range are imported.
+        /// IPv4 special-use ranges are always imported from peers and
+        /// are not controlled by this field.
+        /// </summary>
+        [Output("importSubnetRoutesWithPublicIp")]
+        public Output<bool> ImportSubnetRoutesWithPublicIp { get; private set; } = null!;
 
         /// <summary>
         /// The name of the primary network for the peering.
@@ -256,10 +278,26 @@ namespace Pulumi.Gcp.Compute
         public Input<bool> ExportCustomRoutes { get; set; } = null!;
 
         /// <summary>
+        /// Whether subnet routes with public IP range are exported.
+        /// IPv4 special-use ranges are always exported to peers and
+        /// are not controlled by this field.
+        /// </summary>
+        [Input("exportSubnetRoutesWithPublicIp")]
+        public Input<bool>? ExportSubnetRoutesWithPublicIp { get; set; }
+
+        /// <summary>
         /// Whether to import the custom routes to the peer network.
         /// </summary>
         [Input("importCustomRoutes", required: true)]
         public Input<bool> ImportCustomRoutes { get; set; } = null!;
+
+        /// <summary>
+        /// Whether subnet routes with public IP range are imported.
+        /// IPv4 special-use ranges are always imported from peers and
+        /// are not controlled by this field.
+        /// </summary>
+        [Input("importSubnetRoutesWithPublicIp")]
+        public Input<bool>? ImportSubnetRoutesWithPublicIp { get; set; }
 
         /// <summary>
         /// The name of the primary network for the peering.
@@ -298,10 +336,26 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? ExportCustomRoutes { get; set; }
 
         /// <summary>
+        /// Whether subnet routes with public IP range are exported.
+        /// IPv4 special-use ranges are always exported to peers and
+        /// are not controlled by this field.
+        /// </summary>
+        [Input("exportSubnetRoutesWithPublicIp")]
+        public Input<bool>? ExportSubnetRoutesWithPublicIp { get; set; }
+
+        /// <summary>
         /// Whether to import the custom routes to the peer network.
         /// </summary>
         [Input("importCustomRoutes")]
         public Input<bool>? ImportCustomRoutes { get; set; }
+
+        /// <summary>
+        /// Whether subnet routes with public IP range are imported.
+        /// IPv4 special-use ranges are always imported from peers and
+        /// are not controlled by this field.
+        /// </summary>
+        [Input("importSubnetRoutesWithPublicIp")]
+        public Input<bool>? ImportSubnetRoutesWithPublicIp { get; set; }
 
         /// <summary>
         /// The name of the primary network for the peering.

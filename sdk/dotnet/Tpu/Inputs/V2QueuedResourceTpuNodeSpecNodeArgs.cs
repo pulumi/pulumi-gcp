@@ -25,6 +25,13 @@ namespace Pulumi.Gcp.Tpu.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Network configurations for the TPU node.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("networkConfig")]
+        public Input<Inputs.V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs>? NetworkConfig { get; set; }
+
+        /// <summary>
         /// Runtime version for the TPU.
         /// </summary>
         [Input("runtimeVersion", required: true)]

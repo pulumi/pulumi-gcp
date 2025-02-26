@@ -15,6 +15,11 @@ export type DataSharingWithGoogleSetting = import("./dataSharingWithGoogleSettin
 export const DataSharingWithGoogleSetting: typeof import("./dataSharingWithGoogleSetting").DataSharingWithGoogleSetting = null as any;
 utilities.lazyLoad(exports, ["DataSharingWithGoogleSetting"], () => require("./dataSharingWithGoogleSetting"));
 
+export { DataSharingWithGoogleSettingBindingArgs, DataSharingWithGoogleSettingBindingState } from "./dataSharingWithGoogleSettingBinding";
+export type DataSharingWithGoogleSettingBinding = import("./dataSharingWithGoogleSettingBinding").DataSharingWithGoogleSettingBinding;
+export const DataSharingWithGoogleSettingBinding: typeof import("./dataSharingWithGoogleSettingBinding").DataSharingWithGoogleSettingBinding = null as any;
+utilities.lazyLoad(exports, ["DataSharingWithGoogleSettingBinding"], () => require("./dataSharingWithGoogleSettingBinding"));
+
 export { GeminiGcpEnablementSettingArgs, GeminiGcpEnablementSettingState } from "./geminiGcpEnablementSetting";
 export type GeminiGcpEnablementSetting = import("./geminiGcpEnablementSetting").GeminiGcpEnablementSetting;
 export const GeminiGcpEnablementSetting: typeof import("./geminiGcpEnablementSetting").GeminiGcpEnablementSetting = null as any;
@@ -74,6 +79,8 @@ const _module = {
                 return new CodeRepositoryIndex(name, <any>undefined, { urn })
             case "gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting":
                 return new DataSharingWithGoogleSetting(name, <any>undefined, { urn })
+            case "gcp:gemini/dataSharingWithGoogleSettingBinding:DataSharingWithGoogleSettingBinding":
+                return new DataSharingWithGoogleSettingBinding(name, <any>undefined, { urn })
             case "gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting":
                 return new GeminiGcpEnablementSetting(name, <any>undefined, { urn })
             case "gcp:gemini/loggingSetting:LoggingSetting":
@@ -99,6 +106,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "gemini/codeRepositoryIndex", _module)
 pulumi.runtime.registerResourceModule("gcp", "gemini/dataSharingWithGoogleSetting", _module)
+pulumi.runtime.registerResourceModule("gcp", "gemini/dataSharingWithGoogleSettingBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "gemini/geminiGcpEnablementSetting", _module)
 pulumi.runtime.registerResourceModule("gcp", "gemini/loggingSetting", _module)
 pulumi.runtime.registerResourceModule("gcp", "gemini/loggingSettingBinding", _module)

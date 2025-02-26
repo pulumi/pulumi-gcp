@@ -217,6 +217,43 @@ class V2QueuedResource(pulumi.CustomResource):
                 }],
             })
         ```
+        ### Tpu V2 Queued Resource Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network",
+            name="tpu-net",
+            auto_create_subnetworks=False)
+        subnet = gcp.compute.Subnetwork("subnet",
+            name="tpu-subnet",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=network.id)
+        qr = gcp.tpu.V2QueuedResource("qr",
+            name="test-qr",
+            zone="us-central1-c",
+            project="my-project-name",
+            tpu={
+                "node_specs": [{
+                    "parent": "projects/my-project-name/locations/us-central1-c",
+                    "node_id": "test-tpu",
+                    "node": {
+                        "runtime_version": "tpu-vm-tf-2.13.0",
+                        "accelerator_type": "v2-8",
+                        "description": "Text description of the TPU.",
+                        "network_config": {
+                            "can_ip_forward": True,
+                            "enable_external_ips": True,
+                            "network": network.id,
+                            "subnetwork": subnet.id,
+                            "queue_count": 32,
+                        },
+                    },
+                }],
+            })
+        ```
 
         ## Import
 
@@ -287,6 +324,43 @@ class V2QueuedResource(pulumi.CustomResource):
                         "runtime_version": "tpu-vm-tf-2.13.0",
                         "accelerator_type": "v2-8",
                         "description": "Text description of the TPU.",
+                    },
+                }],
+            })
+        ```
+        ### Tpu V2 Queued Resource Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network",
+            name="tpu-net",
+            auto_create_subnetworks=False)
+        subnet = gcp.compute.Subnetwork("subnet",
+            name="tpu-subnet",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=network.id)
+        qr = gcp.tpu.V2QueuedResource("qr",
+            name="test-qr",
+            zone="us-central1-c",
+            project="my-project-name",
+            tpu={
+                "node_specs": [{
+                    "parent": "projects/my-project-name/locations/us-central1-c",
+                    "node_id": "test-tpu",
+                    "node": {
+                        "runtime_version": "tpu-vm-tf-2.13.0",
+                        "accelerator_type": "v2-8",
+                        "description": "Text description of the TPU.",
+                        "network_config": {
+                            "can_ip_forward": True,
+                            "enable_external_ips": True,
+                            "network": network.id,
+                            "subnetwork": subnet.id,
+                            "queue_count": 32,
+                        },
                     },
                 }],
             })

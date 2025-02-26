@@ -54,7 +54,9 @@ namespace Pulumi.Gcp.Chronicle
 
         /// <summary>
         /// The archive state of the rule deployment.
-        /// Cannot be set to true unless enabled is set to false.
+        /// Cannot be set to true unless enabled is set to false i.e.
+        /// archiving requires a two-step process: first, disable the rule by
+        /// setting 'enabled' to false, then set 'archive' to true.
         /// If set to true, alerting will automatically be set to false.
         /// If currently set to true, enabled, alerting, and run_frequency cannot be
         /// updated.
@@ -206,7 +208,9 @@ namespace Pulumi.Gcp.Chronicle
 
         /// <summary>
         /// The archive state of the rule deployment.
-        /// Cannot be set to true unless enabled is set to false.
+        /// Cannot be set to true unless enabled is set to false i.e.
+        /// archiving requires a two-step process: first, disable the rule by
+        /// setting 'enabled' to false, then set 'archive' to true.
         /// If set to true, alerting will automatically be set to false.
         /// If currently set to true, enabled, alerting, and run_frequency cannot be
         /// updated.
@@ -281,7 +285,9 @@ namespace Pulumi.Gcp.Chronicle
 
         /// <summary>
         /// The archive state of the rule deployment.
-        /// Cannot be set to true unless enabled is set to false.
+        /// Cannot be set to true unless enabled is set to false i.e.
+        /// archiving requires a two-step process: first, disable the rule by
+        /// setting 'enabled' to false, then set 'archive' to true.
         /// If set to true, alerting will automatically be set to false.
         /// If currently set to true, enabled, alerting, and run_frequency cannot be
         /// updated.

@@ -25,6 +25,7 @@ class ClusterArgs:
                  authorization_mode: Optional[pulumi.Input[str]] = None,
                  cross_cluster_replication_config: Optional[pulumi.Input['ClusterCrossClusterReplicationConfigArgs']] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
+                 kms_key: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
@@ -47,6 +48,7 @@ class ClusterArgs:
         :param pulumi.Input[bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not.
                If the value if set to true, any delete cluster operation will fail.
                Default value is true.
+        :param pulumi.Input[str] kms_key: The KMS key used to encrypt the at-rest data of the cluster.
         :param pulumi.Input['ClusterMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for a cluster
                Structure is documented below.
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form:
@@ -84,6 +86,8 @@ class ClusterArgs:
             pulumi.set(__self__, "cross_cluster_replication_config", cross_cluster_replication_config)
         if deletion_protection_enabled is not None:
             pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if name is not None:
@@ -159,6 +163,18 @@ class ClusterArgs:
     @deletion_protection_enabled.setter
     def deletion_protection_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "deletion_protection_enabled", value)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The KMS key used to encrypt the at-rest data of the cluster.
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key", value)
 
     @property
     @pulumi.getter(name="maintenancePolicy")
@@ -319,6 +335,7 @@ class _ClusterState:
                  cross_cluster_replication_config: Optional[pulumi.Input['ClusterCrossClusterReplicationConfigArgs']] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDiscoveryEndpointArgs']]]] = None,
+                 kms_key: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']] = None,
                  maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenanceScheduleArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -356,6 +373,7 @@ class _ClusterState:
                for Redis clients to connect to the cluster.
                Currently only one endpoint is supported.
                Structure is documented below.
+        :param pulumi.Input[str] kms_key: The KMS key used to encrypt the at-rest data of the cluster.
         :param pulumi.Input['ClusterMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for a cluster
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterMaintenanceScheduleArgs']]] maintenance_schedules: Upcoming maintenance schedule.
@@ -409,6 +427,8 @@ class _ClusterState:
             pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
         if discovery_endpoints is not None:
             pulumi.set(__self__, "discovery_endpoints", discovery_endpoints)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if maintenance_schedules is not None:
@@ -519,6 +539,18 @@ class _ClusterState:
     @discovery_endpoints.setter
     def discovery_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDiscoveryEndpointArgs']]]]):
         pulumi.set(self, "discovery_endpoints", value)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The KMS key used to encrypt the at-rest data of the cluster.
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key", value)
 
     @property
     @pulumi.getter(name="maintenancePolicy")
@@ -791,6 +823,7 @@ class Cluster(pulumi.CustomResource):
                  authorization_mode: Optional[pulumi.Input[str]] = None,
                  cross_cluster_replication_config: Optional[pulumi.Input[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']]] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
+                 kms_key: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
@@ -813,28 +846,28 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        producer_net = gcp.compute.Network("producer_net",
-            name="mynetwork",
+        consumer_net = gcp.compute.Network("consumer_net",
+            name="my-network",
             auto_create_subnetworks=False)
-        producer_subnet = gcp.compute.Subnetwork("producer_subnet",
-            name="mysubnet",
+        consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
+            name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
             region="us-central1",
-            network=producer_net.id)
+            network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
-            name="mypolicy",
+            name="my-policy",
             location="us-central1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
-            network=producer_net.id,
+            network=consumer_net.id,
             psc_config={
-                "subnetworks": [producer_subnet.id],
+                "subnetworks": [consumer_subnet.id],
             })
         cluster_ha = gcp.redis.Cluster("cluster-ha",
             name="ha-cluster",
             shard_count=3,
             psc_configs=[{
-                "network": producer_net.id,
+                "network": consumer_net.id,
             }],
             region="us-central1",
             replica_count=1,
@@ -867,28 +900,28 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        producer_net = gcp.compute.Network("producer_net",
-            name="mynetwork",
+        consumer_net = gcp.compute.Network("consumer_net",
+            name="my-network",
             auto_create_subnetworks=False)
-        producer_subnet = gcp.compute.Subnetwork("producer_subnet",
-            name="mysubnet",
+        consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
+            name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
             region="us-central1",
-            network=producer_net.id)
+            network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
-            name="mypolicy",
+            name="my-policy",
             location="us-central1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
-            network=producer_net.id,
+            network=consumer_net.id,
             psc_config={
-                "subnetworks": [producer_subnet.id],
+                "subnetworks": [consumer_subnet.id],
             })
         cluster_ha_single_zone = gcp.redis.Cluster("cluster-ha-single-zone",
             name="ha-cluster-single-zone",
             shard_count=3,
             psc_configs=[{
-                "network": producer_net.id,
+                "network": consumer_net.id,
             }],
             region="us-central1",
             zone_distribution_config={
@@ -915,29 +948,29 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        producer_net = gcp.compute.Network("producer_net",
+        consumer_net = gcp.compute.Network("consumer_net",
             name="mynetwork",
             auto_create_subnetworks=False)
-        primary_cluster_producer_subnet = gcp.compute.Subnetwork("primary_cluster_producer_subnet",
+        primary_cluster_consumer_subnet = gcp.compute.Subnetwork("primary_cluster_consumer_subnet",
             name="mysubnet-primary-cluster",
             ip_cidr_range="10.0.1.0/29",
             region="us-east1",
-            network=producer_net.id)
+            network=consumer_net.id)
         primary_cluster_region_scp = gcp.networkconnectivity.ServiceConnectionPolicy("primary_cluster_region_scp",
             name="mypolicy-primary-cluster",
             location="us-east1",
             service_class="gcp-memorystore-redis",
             description="Primary cluster service connection policy",
-            network=producer_net.id,
+            network=consumer_net.id,
             psc_config={
-                "subnetworks": [primary_cluster_producer_subnet.id],
+                "subnetworks": [primary_cluster_consumer_subnet.id],
             })
         # Primary cluster
         primary_cluster = gcp.redis.Cluster("primary_cluster",
             name="my-primary-cluster",
             region="us-east1",
             psc_configs=[{
-                "network": producer_net.id,
+                "network": consumer_net.id,
             }],
             authorization_mode="AUTH_MODE_DISABLED",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -970,26 +1003,26 @@ class Cluster(pulumi.CustomResource):
             },
             deletion_protection_enabled=True,
             opts = pulumi.ResourceOptions(depends_on=[primary_cluster_region_scp]))
-        secondary_cluster_producer_subnet = gcp.compute.Subnetwork("secondary_cluster_producer_subnet",
+        secondary_cluster_consumer_subnet = gcp.compute.Subnetwork("secondary_cluster_consumer_subnet",
             name="mysubnet-secondary-cluster",
             ip_cidr_range="10.0.2.0/29",
             region="europe-west1",
-            network=producer_net.id)
+            network=consumer_net.id)
         secondary_cluster_region_scp = gcp.networkconnectivity.ServiceConnectionPolicy("secondary_cluster_region_scp",
             name="mypolicy-secondary-cluster",
             location="europe-west1",
             service_class="gcp-memorystore-redis",
             description="Secondary cluster service connection policy",
-            network=producer_net.id,
+            network=consumer_net.id,
             psc_config={
-                "subnetworks": [secondary_cluster_producer_subnet.id],
+                "subnetworks": [secondary_cluster_consumer_subnet.id],
             })
         # Secondary cluster
         secondary_cluster = gcp.redis.Cluster("secondary_cluster",
             name="my-secondary-cluster",
             region="europe-west1",
             psc_configs=[{
-                "network": producer_net.id,
+                "network": consumer_net.id,
             }],
             authorization_mode="AUTH_MODE_DISABLED",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -1035,28 +1068,28 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        producer_net = gcp.compute.Network("producer_net",
-            name="mynetwork",
+        consumer_net = gcp.compute.Network("consumer_net",
+            name="my-network",
             auto_create_subnetworks=False)
-        producer_subnet = gcp.compute.Subnetwork("producer_subnet",
-            name="mysubnet",
+        consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
+            name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
             region="us-central1",
-            network=producer_net.id)
+            network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
-            name="mypolicy",
+            name="my-policy",
             location="us-central1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
-            network=producer_net.id,
+            network=consumer_net.id,
             psc_config={
-                "subnetworks": [producer_subnet.id],
+                "subnetworks": [consumer_subnet.id],
             })
         cluster_rdb = gcp.redis.Cluster("cluster-rdb",
             name="rdb-cluster",
             shard_count=3,
             psc_configs=[{
-                "network": producer_net.id,
+                "network": consumer_net.id,
             }],
             region="us-central1",
             replica_count=0,
@@ -1096,28 +1129,28 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        producer_net = gcp.compute.Network("producer_net",
-            name="mynetwork",
+        consumer_net = gcp.compute.Network("consumer_net",
+            name="my-network",
             auto_create_subnetworks=False)
-        producer_subnet = gcp.compute.Subnetwork("producer_subnet",
-            name="mysubnet",
+        consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
+            name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
             region="us-central1",
-            network=producer_net.id)
+            network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
-            name="mypolicy",
+            name="my-policy",
             location="us-central1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
-            network=producer_net.id,
+            network=consumer_net.id,
             psc_config={
-                "subnetworks": [producer_subnet.id],
+                "subnetworks": [consumer_subnet.id],
             })
         cluster_aof = gcp.redis.Cluster("cluster-aof",
             name="aof-cluster",
             shard_count=3,
             psc_configs=[{
-                "network": producer_net.id,
+                "network": consumer_net.id,
             }],
             region="us-central1",
             replica_count=0,
@@ -1149,6 +1182,41 @@ class Cluster(pulumi.CustomResource):
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[default]))
+        ```
+        ### Redis Cluster Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        consumer_net = gcp.compute.Network("consumer_net",
+            name="my-network",
+            auto_create_subnetworks=False)
+        consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
+            name="my-subnet",
+            ip_cidr_range="10.0.0.248/29",
+            region="us-central1",
+            network=consumer_net.id)
+        default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
+            name="my-policy",
+            location="us-central1",
+            service_class="gcp-memorystore-redis",
+            description="my basic service connection policy",
+            network=consumer_net.id,
+            psc_config={
+                "subnetworks": [consumer_subnet.id],
+            })
+        cluster_cmek = gcp.redis.Cluster("cluster-cmek",
+            name="cmek-cluster",
+            shard_count=3,
+            psc_configs=[{
+                "network": consumer_net.id,
+            }],
+            kms_key="my-key",
+            region="us-central1",
+            deletion_protection_enabled=True,
+            opts = pulumi.ResourceOptions(depends_on=[default]))
+        project = gcp.organizations.get_project()
         ```
 
         ## Import
@@ -1191,6 +1259,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not.
                If the value if set to true, any delete cluster operation will fail.
                Default value is true.
+        :param pulumi.Input[str] kms_key: The KMS key used to encrypt the at-rest data of the cluster.
         :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']] maintenance_policy: Maintenance policy for a cluster
                Structure is documented below.
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form:
@@ -1237,28 +1306,28 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        producer_net = gcp.compute.Network("producer_net",
-            name="mynetwork",
+        consumer_net = gcp.compute.Network("consumer_net",
+            name="my-network",
             auto_create_subnetworks=False)
-        producer_subnet = gcp.compute.Subnetwork("producer_subnet",
-            name="mysubnet",
+        consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
+            name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
             region="us-central1",
-            network=producer_net.id)
+            network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
-            name="mypolicy",
+            name="my-policy",
             location="us-central1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
-            network=producer_net.id,
+            network=consumer_net.id,
             psc_config={
-                "subnetworks": [producer_subnet.id],
+                "subnetworks": [consumer_subnet.id],
             })
         cluster_ha = gcp.redis.Cluster("cluster-ha",
             name="ha-cluster",
             shard_count=3,
             psc_configs=[{
-                "network": producer_net.id,
+                "network": consumer_net.id,
             }],
             region="us-central1",
             replica_count=1,
@@ -1291,28 +1360,28 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        producer_net = gcp.compute.Network("producer_net",
-            name="mynetwork",
+        consumer_net = gcp.compute.Network("consumer_net",
+            name="my-network",
             auto_create_subnetworks=False)
-        producer_subnet = gcp.compute.Subnetwork("producer_subnet",
-            name="mysubnet",
+        consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
+            name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
             region="us-central1",
-            network=producer_net.id)
+            network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
-            name="mypolicy",
+            name="my-policy",
             location="us-central1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
-            network=producer_net.id,
+            network=consumer_net.id,
             psc_config={
-                "subnetworks": [producer_subnet.id],
+                "subnetworks": [consumer_subnet.id],
             })
         cluster_ha_single_zone = gcp.redis.Cluster("cluster-ha-single-zone",
             name="ha-cluster-single-zone",
             shard_count=3,
             psc_configs=[{
-                "network": producer_net.id,
+                "network": consumer_net.id,
             }],
             region="us-central1",
             zone_distribution_config={
@@ -1339,29 +1408,29 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        producer_net = gcp.compute.Network("producer_net",
+        consumer_net = gcp.compute.Network("consumer_net",
             name="mynetwork",
             auto_create_subnetworks=False)
-        primary_cluster_producer_subnet = gcp.compute.Subnetwork("primary_cluster_producer_subnet",
+        primary_cluster_consumer_subnet = gcp.compute.Subnetwork("primary_cluster_consumer_subnet",
             name="mysubnet-primary-cluster",
             ip_cidr_range="10.0.1.0/29",
             region="us-east1",
-            network=producer_net.id)
+            network=consumer_net.id)
         primary_cluster_region_scp = gcp.networkconnectivity.ServiceConnectionPolicy("primary_cluster_region_scp",
             name="mypolicy-primary-cluster",
             location="us-east1",
             service_class="gcp-memorystore-redis",
             description="Primary cluster service connection policy",
-            network=producer_net.id,
+            network=consumer_net.id,
             psc_config={
-                "subnetworks": [primary_cluster_producer_subnet.id],
+                "subnetworks": [primary_cluster_consumer_subnet.id],
             })
         # Primary cluster
         primary_cluster = gcp.redis.Cluster("primary_cluster",
             name="my-primary-cluster",
             region="us-east1",
             psc_configs=[{
-                "network": producer_net.id,
+                "network": consumer_net.id,
             }],
             authorization_mode="AUTH_MODE_DISABLED",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -1394,26 +1463,26 @@ class Cluster(pulumi.CustomResource):
             },
             deletion_protection_enabled=True,
             opts = pulumi.ResourceOptions(depends_on=[primary_cluster_region_scp]))
-        secondary_cluster_producer_subnet = gcp.compute.Subnetwork("secondary_cluster_producer_subnet",
+        secondary_cluster_consumer_subnet = gcp.compute.Subnetwork("secondary_cluster_consumer_subnet",
             name="mysubnet-secondary-cluster",
             ip_cidr_range="10.0.2.0/29",
             region="europe-west1",
-            network=producer_net.id)
+            network=consumer_net.id)
         secondary_cluster_region_scp = gcp.networkconnectivity.ServiceConnectionPolicy("secondary_cluster_region_scp",
             name="mypolicy-secondary-cluster",
             location="europe-west1",
             service_class="gcp-memorystore-redis",
             description="Secondary cluster service connection policy",
-            network=producer_net.id,
+            network=consumer_net.id,
             psc_config={
-                "subnetworks": [secondary_cluster_producer_subnet.id],
+                "subnetworks": [secondary_cluster_consumer_subnet.id],
             })
         # Secondary cluster
         secondary_cluster = gcp.redis.Cluster("secondary_cluster",
             name="my-secondary-cluster",
             region="europe-west1",
             psc_configs=[{
-                "network": producer_net.id,
+                "network": consumer_net.id,
             }],
             authorization_mode="AUTH_MODE_DISABLED",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
@@ -1459,28 +1528,28 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        producer_net = gcp.compute.Network("producer_net",
-            name="mynetwork",
+        consumer_net = gcp.compute.Network("consumer_net",
+            name="my-network",
             auto_create_subnetworks=False)
-        producer_subnet = gcp.compute.Subnetwork("producer_subnet",
-            name="mysubnet",
+        consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
+            name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
             region="us-central1",
-            network=producer_net.id)
+            network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
-            name="mypolicy",
+            name="my-policy",
             location="us-central1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
-            network=producer_net.id,
+            network=consumer_net.id,
             psc_config={
-                "subnetworks": [producer_subnet.id],
+                "subnetworks": [consumer_subnet.id],
             })
         cluster_rdb = gcp.redis.Cluster("cluster-rdb",
             name="rdb-cluster",
             shard_count=3,
             psc_configs=[{
-                "network": producer_net.id,
+                "network": consumer_net.id,
             }],
             region="us-central1",
             replica_count=0,
@@ -1520,28 +1589,28 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        producer_net = gcp.compute.Network("producer_net",
-            name="mynetwork",
+        consumer_net = gcp.compute.Network("consumer_net",
+            name="my-network",
             auto_create_subnetworks=False)
-        producer_subnet = gcp.compute.Subnetwork("producer_subnet",
-            name="mysubnet",
+        consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
+            name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
             region="us-central1",
-            network=producer_net.id)
+            network=consumer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
-            name="mypolicy",
+            name="my-policy",
             location="us-central1",
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
-            network=producer_net.id,
+            network=consumer_net.id,
             psc_config={
-                "subnetworks": [producer_subnet.id],
+                "subnetworks": [consumer_subnet.id],
             })
         cluster_aof = gcp.redis.Cluster("cluster-aof",
             name="aof-cluster",
             shard_count=3,
             psc_configs=[{
-                "network": producer_net.id,
+                "network": consumer_net.id,
             }],
             region="us-central1",
             replica_count=0,
@@ -1573,6 +1642,41 @@ class Cluster(pulumi.CustomResource):
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[default]))
+        ```
+        ### Redis Cluster Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        consumer_net = gcp.compute.Network("consumer_net",
+            name="my-network",
+            auto_create_subnetworks=False)
+        consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
+            name="my-subnet",
+            ip_cidr_range="10.0.0.248/29",
+            region="us-central1",
+            network=consumer_net.id)
+        default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
+            name="my-policy",
+            location="us-central1",
+            service_class="gcp-memorystore-redis",
+            description="my basic service connection policy",
+            network=consumer_net.id,
+            psc_config={
+                "subnetworks": [consumer_subnet.id],
+            })
+        cluster_cmek = gcp.redis.Cluster("cluster-cmek",
+            name="cmek-cluster",
+            shard_count=3,
+            psc_configs=[{
+                "network": consumer_net.id,
+            }],
+            kms_key="my-key",
+            region="us-central1",
+            deletion_protection_enabled=True,
+            opts = pulumi.ResourceOptions(depends_on=[default]))
+        project = gcp.organizations.get_project()
         ```
 
         ## Import
@@ -1623,6 +1727,7 @@ class Cluster(pulumi.CustomResource):
                  authorization_mode: Optional[pulumi.Input[str]] = None,
                  cross_cluster_replication_config: Optional[pulumi.Input[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']]] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
+                 kms_key: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
@@ -1647,6 +1752,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["authorization_mode"] = authorization_mode
             __props__.__dict__["cross_cluster_replication_config"] = cross_cluster_replication_config
             __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
+            __props__.__dict__["kms_key"] = kms_key
             __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["name"] = name
             __props__.__dict__["node_type"] = node_type
@@ -1686,6 +1792,7 @@ class Cluster(pulumi.CustomResource):
             cross_cluster_replication_config: Optional[pulumi.Input[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']]] = None,
             deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
             discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterDiscoveryEndpointArgs', 'ClusterDiscoveryEndpointArgsDict']]]]] = None,
+            kms_key: Optional[pulumi.Input[str]] = None,
             maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
             maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterMaintenanceScheduleArgs', 'ClusterMaintenanceScheduleArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -1728,6 +1835,7 @@ class Cluster(pulumi.CustomResource):
                for Redis clients to connect to the cluster.
                Currently only one endpoint is supported.
                Structure is documented below.
+        :param pulumi.Input[str] kms_key: The KMS key used to encrypt the at-rest data of the cluster.
         :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']] maintenance_policy: Maintenance policy for a cluster
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterMaintenanceScheduleArgs', 'ClusterMaintenanceScheduleArgsDict']]]] maintenance_schedules: Upcoming maintenance schedule.
@@ -1780,6 +1888,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["cross_cluster_replication_config"] = cross_cluster_replication_config
         __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
         __props__.__dict__["discovery_endpoints"] = discovery_endpoints
+        __props__.__dict__["kms_key"] = kms_key
         __props__.__dict__["maintenance_policy"] = maintenance_policy
         __props__.__dict__["maintenance_schedules"] = maintenance_schedules
         __props__.__dict__["name"] = name
@@ -1851,6 +1960,14 @@ class Cluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "discovery_endpoints")
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        The KMS key used to encrypt the at-rest data of the cluster.
+        """
+        return pulumi.get(self, "kms_key")
 
     @property
     @pulumi.getter(name="maintenancePolicy")

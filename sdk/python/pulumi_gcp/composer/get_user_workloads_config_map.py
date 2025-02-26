@@ -106,6 +106,12 @@ def get_user_workloads_config_map(environment: Optional[str] = None,
     """
     Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
 
+    To get more information about Composer User Workloads Config Map, see:
+
+    * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsConfigMaps)
+    * How-to Guides
+        * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+
     ## Example Usage
 
     ```python
@@ -160,6 +166,12 @@ def get_user_workloads_config_map_output(environment: Optional[pulumi.Input[str]
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserWorkloadsConfigMapResult]:
     """
     Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
+
+    To get more information about Composer User Workloads Config Map, see:
+
+    * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsConfigMaps)
+    * How-to Guides
+        * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
 
     ## Example Usage
 

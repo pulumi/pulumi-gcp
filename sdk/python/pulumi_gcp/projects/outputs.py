@@ -32,6 +32,7 @@ __all__ = [
     'OrganizationPolicyListPolicyAllow',
     'OrganizationPolicyListPolicyDeny',
     'OrganizationPolicyRestorePolicy',
+    'GetAncestryAncestorResult',
     'GetOrganizationPolicyBooleanPolicyResult',
     'GetOrganizationPolicyListPolicyResult',
     'GetOrganizationPolicyListPolicyAllowResult',
@@ -754,6 +755,35 @@ class OrganizationPolicyRestorePolicy(dict):
         May only be set to true. If set, then the default Policy is restored.
         """
         return pulumi.get(self, "default")
+
+
+@pulumi.output_type
+class GetAncestryAncestorResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 type: str):
+        """
+        :param str id: If it's a project, the `project_id` is exported, else the numeric folder id or organization id.
+        :param str type: One of `"project"`, `"folder"` or `"organization"`.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        If it's a project, the `project_id` is exported, else the numeric folder id or organization id.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        One of `"project"`, `"folder"` or `"organization"`.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

@@ -70,6 +70,9 @@ export interface GetParameterVersionRenderResult {
     readonly parameterData: string;
     readonly parameterVersionId: string;
     readonly project: string;
+    /**
+     * The Rendered Parameter Data specifies that if you use `__REF__()` to reference a secret and the format is JSON or YAML, the placeholder `__REF__()` will be replaced with the actual secret value. However, if the format is UNFORMATTED, it will stay the same as the original `parameterData`.
+     */
     readonly renderedParameterData: string;
 }
 /**

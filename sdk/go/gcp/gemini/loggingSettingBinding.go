@@ -12,6 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The resource for managing Logging setting bindings for Admin Control.
+//
+// To get more information about LoggingSettingBinding, see:
+// * How-to Guides
+//   - [Gemini Cloud Assist overview](https://cloud.google.com/gemini/docs/cloud-assist/overview)
+//
 // ## Example Usage
 //
 // ### Gemini Logging Setting Binding Basic

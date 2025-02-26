@@ -6,6 +6,7 @@ package com.pulumi.gcp.tpu.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.tpu.inputs.V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -47,6 +48,23 @@ public final class V2QueuedResourceTpuNodeSpecNodeArgs extends com.pulumi.resour
     }
 
     /**
+     * Network configurations for the TPU node.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="networkConfig")
+    private @Nullable Output<V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs> networkConfig;
+
+    /**
+     * @return Network configurations for the TPU node.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs>> networkConfig() {
+        return Optional.ofNullable(this.networkConfig);
+    }
+
+    /**
      * Runtime version for the TPU.
      * 
      */
@@ -66,6 +84,7 @@ public final class V2QueuedResourceTpuNodeSpecNodeArgs extends com.pulumi.resour
     private V2QueuedResourceTpuNodeSpecNodeArgs(V2QueuedResourceTpuNodeSpecNodeArgs $) {
         this.acceleratorType = $.acceleratorType;
         this.description = $.description;
+        this.networkConfig = $.networkConfig;
         this.runtimeVersion = $.runtimeVersion;
     }
 
@@ -127,6 +146,29 @@ public final class V2QueuedResourceTpuNodeSpecNodeArgs extends com.pulumi.resour
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param networkConfig Network configurations for the TPU node.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkConfig(@Nullable Output<V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs> networkConfig) {
+            $.networkConfig = networkConfig;
+            return this;
+        }
+
+        /**
+         * @param networkConfig Network configurations for the TPU node.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkConfig(V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs networkConfig) {
+            return networkConfig(Output.of(networkConfig));
         }
 
         /**
