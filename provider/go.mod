@@ -279,3 +279,7 @@ require (
 	lukechampine.com/frand v1.4.2 // indirect
 	mvdan.cc/gofumpt v0.5.0 // indirect
 )
+
+replace github.com/pulumi/pulumi/pkg/v3 => github.com/pulumi/pulumi/pkg/v3 v3.147.1-0.20250226100127-1e3e4809491b
+
+replace github.com/pulumi/pulumi/sdk/v3 => github.com/pulumi/pulumi/sdk/v3 v3.147.1-0.20250226100127-1e3e4809491b
