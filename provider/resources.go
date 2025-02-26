@@ -1255,10 +1255,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"google_dataproc_autoscaling_policy":   {Tok: gcpResource(gcpDataProc, "AutoscalingPolicy")},
-			"google_dataproc_metastore_service":    {
-				Tok: gcpResource(gcpDataProc, "MetastoreService"),
-				DeleteBeforeReplace: true,
-			},
+			"google_dataproc_metastore_service":    {Tok: gcpResource(gcpDataProc, "MetastoreService")},
 			"google_dataproc_metastore_federation": {Tok: gcpResource(gcpDataProc, "MetastoreFederation")},
 			"google_dataproc_workflow_template":    {Tok: gcpResource(gcpDataProc, "WorkflowTemplate")},
 
