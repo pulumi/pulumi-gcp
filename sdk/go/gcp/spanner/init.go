@@ -41,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InstanceIAMMember{}
 	case "gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy":
 		r = &InstanceIAMPolicy{}
+	case "gcp:spanner/instancePartition:InstancePartition":
+		r = &InstancePartition{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -102,6 +104,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"spanner/instanceIAMPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"spanner/instancePartition",
 		&module{version},
 	)
 }

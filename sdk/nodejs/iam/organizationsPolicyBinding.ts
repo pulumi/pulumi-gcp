@@ -22,12 +22,16 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumi/time";
  *
  * const pabPolicy = new gcp.iam.PrincipalAccessBoundaryPolicy("pab_policy", {
  *     organization: "123456789",
  *     location: "global",
  *     displayName: "test org binding",
  *     principalAccessBoundaryPolicyId: "my-pab-policy",
+ * });
+ * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"}, {
+ *     dependsOn: [pabPolicy],
  * });
  * const my_org_binding = new gcp.iam.OrganizationsPolicyBinding("my-org-binding", {
  *     organization: "123456789",
@@ -39,6 +43,8 @@ import * as utilities from "../utilities";
  *     target: {
  *         principalSet: "//cloudresourcemanager.googleapis.com/organizations/123456789",
  *     },
+ * }, {
+ *     dependsOn: [wait60Seconds],
  * });
  * ```
  *

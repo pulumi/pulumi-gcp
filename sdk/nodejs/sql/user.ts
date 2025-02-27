@@ -95,6 +95,16 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ## Ephemeral Attributes Reference
+ *
+ * The following write-only attributes are supported:
+ *
+ * * `passwordWo` - (Optional) The password for the user. Can be updated. For Postgres
+ *     instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+ *     or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
+ *     and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
+ *   **Note**: This property is write-only and will not be read from the API.
+ *
  * ## Import
  *
  * SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.
@@ -153,8 +163,6 @@ export class User extends pulumi.CustomResource {
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
      *
      * Possible values are: `ABANDON`.
-     *
-     * - - -
      */
     public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
@@ -181,6 +189,17 @@ export class User extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string | undefined>;
     public readonly passwordPolicy!: pulumi.Output<outputs.sql.UserPasswordPolicy | undefined>;
+    /**
+     * The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to either
+     * CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+     */
+    public readonly passwordWo!: pulumi.Output<string | undefined>;
+    /**
+     * The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
+     *
+     * - - -
+     */
+    public readonly passwordWoVersion!: pulumi.Output<number | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -216,6 +235,8 @@ export class User extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["passwordPolicy"] = state ? state.passwordPolicy : undefined;
+            resourceInputs["passwordWo"] = state ? state.passwordWo : undefined;
+            resourceInputs["passwordWoVersion"] = state ? state.passwordWoVersion : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["sqlServerUserDetails"] = state ? state.sqlServerUserDetails : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -230,6 +251,8 @@ export class User extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["passwordPolicy"] = args ? args.passwordPolicy : undefined;
+            resourceInputs["passwordWo"] = args ? args.passwordWo : undefined;
+            resourceInputs["passwordWoVersion"] = args ? args.passwordWoVersion : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["sqlServerUserDetails"] = undefined /*out*/;
@@ -251,8 +274,6 @@ export interface UserState {
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
      *
      * Possible values are: `ABANDON`.
-     *
-     * - - -
      */
     deletionPolicy?: pulumi.Input<string>;
     /**
@@ -280,6 +301,17 @@ export interface UserState {
     password?: pulumi.Input<string>;
     passwordPolicy?: pulumi.Input<inputs.sql.UserPasswordPolicy>;
     /**
+     * The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to either
+     * CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+     */
+    passwordWo?: pulumi.Input<string>;
+    /**
+     * The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
+     *
+     * - - -
+     */
+    passwordWoVersion?: pulumi.Input<number>;
+    /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
@@ -306,8 +338,6 @@ export interface UserArgs {
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
      *
      * Possible values are: `ABANDON`.
-     *
-     * - - -
      */
     deletionPolicy?: pulumi.Input<string>;
     /**
@@ -334,6 +364,17 @@ export interface UserArgs {
      */
     password?: pulumi.Input<string>;
     passwordPolicy?: pulumi.Input<inputs.sql.UserPasswordPolicy>;
+    /**
+     * The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to either
+     * CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+     */
+    passwordWo?: pulumi.Input<string>;
+    /**
+     * The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
+     *
+     * - - -
+     */
+    passwordWoVersion?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.

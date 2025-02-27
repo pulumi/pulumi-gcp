@@ -12,12 +12,11 @@ namespace Pulumi.Gcp.BigQuery.Inputs
 
     public sealed class DataTransferConfigSensitiveParamsGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("secretAccessKey", required: true)]
+        [Input("secretAccessKey")]
         private Input<string>? _secretAccessKey;
 
         /// <summary>
         /// The Secret Access Key of the AWS account transferring data from.
-        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public Input<string>? SecretAccessKey
         {
@@ -28,6 +27,18 @@ namespace Pulumi.Gcp.BigQuery.Inputs
                 _secretAccessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        /// <summary>
+        /// The Secret Access Key of the AWS account transferring data from.
+        /// </summary>
+        [Input("secretAccessKeyWo")]
+        public Input<string>? SecretAccessKeyWo { get; set; }
+
+        /// <summary>
+        /// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        /// </summary>
+        [Input("secretAccessKeyWoVersion")]
+        public Input<int>? SecretAccessKeyWoVersion { get; set; }
 
         public DataTransferConfigSensitiveParamsGetArgs()
         {

@@ -22,6 +22,11 @@ namespace Pulumi.Gcp.Tpu.Outputs
         /// </summary>
         public readonly string? Description;
         /// <summary>
+        /// Network configurations for the TPU node.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.V2QueuedResourceTpuNodeSpecNodeNetworkConfig? NetworkConfig;
+        /// <summary>
         /// Runtime version for the TPU.
         /// </summary>
         public readonly string RuntimeVersion;
@@ -32,10 +37,13 @@ namespace Pulumi.Gcp.Tpu.Outputs
 
             string? description,
 
+            Outputs.V2QueuedResourceTpuNodeSpecNodeNetworkConfig? networkConfig,
+
             string runtimeVersion)
         {
             AcceleratorType = acceleratorType;
             Description = description;
+            NetworkConfig = networkConfig;
             RuntimeVersion = runtimeVersion;
         }
     }

@@ -32,6 +32,46 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Tpu V2 Queued Resource Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const network = new gcp.compute.Network("network", {
+ *     name: "tpu-net",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const subnet = new gcp.compute.Subnetwork("subnet", {
+ *     name: "tpu-subnet",
+ *     ipCidrRange: "10.0.0.0/16",
+ *     region: "us-central1",
+ *     network: network.id,
+ * });
+ * const qr = new gcp.tpu.V2QueuedResource("qr", {
+ *     name: "test-qr",
+ *     zone: "us-central1-c",
+ *     project: "my-project-name",
+ *     tpu: {
+ *         nodeSpecs: [{
+ *             parent: "projects/my-project-name/locations/us-central1-c",
+ *             nodeId: "test-tpu",
+ *             node: {
+ *                 runtimeVersion: "tpu-vm-tf-2.13.0",
+ *                 acceleratorType: "v2-8",
+ *                 description: "Text description of the TPU.",
+ *                 networkConfig: {
+ *                     canIpForward: true,
+ *                     enableExternalIps: true,
+ *                     network: network.id,
+ *                     subnetwork: subnet.id,
+ *                     queueCount: 32,
+ *                 },
+ *             },
+ *         }],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

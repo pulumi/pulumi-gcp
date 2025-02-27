@@ -1398,10 +1398,17 @@ class DataTransferConfigScheduleOptionsArgs:
 
 if not MYPY:
     class DataTransferConfigSensitiveParamsArgsDict(TypedDict):
-        secret_access_key: pulumi.Input[str]
+        secret_access_key: NotRequired[pulumi.Input[str]]
         """
         The Secret Access Key of the AWS account transferring data from.
-        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        secret_access_key_wo: NotRequired[pulumi.Input[str]]
+        """
+        The Secret Access Key of the AWS account transferring data from.
+        """
+        secret_access_key_wo_version: NotRequired[pulumi.Input[int]]
+        """
+        The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         """
 elif False:
     DataTransferConfigSensitiveParamsArgsDict: TypeAlias = Mapping[str, Any]
@@ -1409,25 +1416,56 @@ elif False:
 @pulumi.input_type
 class DataTransferConfigSensitiveParamsArgs:
     def __init__(__self__, *,
-                 secret_access_key: pulumi.Input[str]):
+                 secret_access_key: Optional[pulumi.Input[str]] = None,
+                 secret_access_key_wo: Optional[pulumi.Input[str]] = None,
+                 secret_access_key_wo_version: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] secret_access_key: The Secret Access Key of the AWS account transferring data from.
-               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[str] secret_access_key_wo: The Secret Access Key of the AWS account transferring data from.
+        :param pulumi.Input[int] secret_access_key_wo_version: The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         """
-        pulumi.set(__self__, "secret_access_key", secret_access_key)
+        if secret_access_key is not None:
+            pulumi.set(__self__, "secret_access_key", secret_access_key)
+        if secret_access_key_wo is not None:
+            pulumi.set(__self__, "secret_access_key_wo", secret_access_key_wo)
+        if secret_access_key_wo_version is not None:
+            pulumi.set(__self__, "secret_access_key_wo_version", secret_access_key_wo_version)
 
     @property
     @pulumi.getter(name="secretAccessKey")
-    def secret_access_key(self) -> pulumi.Input[str]:
+    def secret_access_key(self) -> Optional[pulumi.Input[str]]:
         """
         The Secret Access Key of the AWS account transferring data from.
-        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "secret_access_key")
 
     @secret_access_key.setter
-    def secret_access_key(self, value: pulumi.Input[str]):
+    def secret_access_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_access_key", value)
+
+    @property
+    @pulumi.getter(name="secretAccessKeyWo")
+    def secret_access_key_wo(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Secret Access Key of the AWS account transferring data from.
+        """
+        return pulumi.get(self, "secret_access_key_wo")
+
+    @secret_access_key_wo.setter
+    def secret_access_key_wo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_access_key_wo", value)
+
+    @property
+    @pulumi.getter(name="secretAccessKeyWoVersion")
+    def secret_access_key_wo_version(self) -> Optional[pulumi.Input[int]]:
+        """
+        The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        """
+        return pulumi.get(self, "secret_access_key_wo_version")
+
+    @secret_access_key_wo_version.setter
+    def secret_access_key_wo_version(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "secret_access_key_wo_version", value)
 
 
 if not MYPY:

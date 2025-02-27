@@ -85,7 +85,24 @@ namespace Pulumi.Gcp.Iam
     ///         },
     ///         Saml = new Gcp.Iam.Inputs.WorkforcePoolProviderSamlArgs
     ///         {
-    ///             IdpMetadataXml = "&lt;?xml version=\"1.0\"?&gt;&lt;md:EntityDescriptor xmlns:md=\"urn:oasis:names:tc:SAML:2.0:metadata\" entityID=\"https://test.com\"&gt;&lt;md:IDPSSODescriptor protocolSupportEnumeration=\"urn:oasis:names:tc:SAML:2.0:protocol\"&gt; &lt;md:KeyDescriptor use=\"signing\"&gt;&lt;ds:KeyInfo xmlns:ds=\"http://www.w3.org/2000/09/xmldsig#\"&gt;&lt;ds:X509Data&gt;&lt;ds:X509Certificate&gt;MIIDpDCCAoygAwIBAgIGAX7/5qPhMA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEUMBIGA1UECwwLU1NPUHJvdmlkZXIxEzARBgNVBAMMCmRldi00NTg0MjExHDAaBgkqhkiG9w0BCQEWDWluZm9Ab2t0YS5jb20wHhcNMjIwMjE2MDAxOTEyWhcNMzIwMjE2MDAyMDEyWjCBkjELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xDTALBgNVBAoMBE9rdGExFDASBgNVBAsMC1NTT1Byb3ZpZGVyMRMwEQYDVQQDDApkZXYtNDU4NDIxMRwwGgYJKoZIhvcNAQkBFg1pbmZvQG9rdGEuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxrBl7GKz52cRpxF9xCsirnRuMxnhFBaUrsHqAQrLqWmdlpNYZTVg+T9iQ+aq/iE68L+BRZcZniKIvW58wqqS0ltXVvIkXuDSvnvnkkI5yMIVErR20K8jSOKQm1FmK+fgAJ4koshFiu9oLiqu0Ejc0DuL3/XRsb4RuxjktKTb1khgBBtb+7idEk0sFR0RPefAweXImJkDHDm7SxjDwGJUubbqpdTxasPr0W+AHI1VUzsUsTiHAoyb0XDkYqHfDzhj/ZdIEl4zHQ3bEZvlD984ztAnmX2SuFLLKfXeAAGHei8MMixJvwxYkkPeYZ/5h8WgBZPP4heS2CPjwYExt29L8QIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQARjJFz++a9Z5IQGFzsZMrX2EDR5ML4xxUiQkbhld1S1PljOLcYFARDmUC2YYHOueU4ee8Jid9nPGEUebV/4Jok+b+oQh+dWMgiWjSLI7h5q4OYZ3VJtdlVwgMFt2iz+/4yBKMUZ50g3Qgg36vE34us+eKitg759JgCNsibxn0qtJgSPm0sgP2L6yTaLnoEUbXBRxCwynTSkp9ZijZqEzbhN0e2dWv7Rx/nfpohpDP6vEiFImKFHpDSv3M/5de1ytQzPFrZBYt9WlzlYwE1aD9FHCxdd+rWgYMVVoRaRmndpV/Rq3QUuDuFJtaoX11bC7ExkOpg9KstZzA63i3VcfYv&lt;/ds:X509Certificate&gt;&lt;/ds:X509Data&gt;&lt;/ds:KeyInfo&gt;&lt;/md:KeyDescriptor&gt;&lt;md:SingleSignOnService Binding=\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect\" Location=\"https://test.com/sso\"/&gt;&lt;/md:IDPSSODescriptor&gt;&lt;/md:EntityDescriptor&gt;",
+    ///             IdpMetadataXml = "&lt;?xml version=\"1.0\"?&gt;&lt;md:EntityDescriptor xmlns:md=\"urn:oasis:names:tc:SAML:2.0:metadata\" entityID=\"https://sts.windows.net/826602fe-2101-470c-9d71-ee1343668989\"&gt;&lt;md:IDPSSODescriptor protocolSupportEnumeration=\"urn:oasis:names:tc:SAML:2.0:protocol\"&gt; &lt;md:KeyDescriptor use=\"signing\"&gt;&lt;ds:KeyInfo xmlns:ds=\"http://www.w3.org/2000/09/xmldsig#\"&gt;&lt;ds:X509Data&gt;&lt;ds:X509Certificate&gt;MIIDpDCCAoygAwIBAgIGAX7/5qPhMA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEUMBIGA1UECwwLU1NPUHJvdmlkZXIxEzARBgNVBAMMCmRldi00NTg0MjExHDAaBgkqhkiG9w0BCQEWDWluZm9Ab2t0YS5jb20wHhcNMjIwMjE2MDAxOTEyWhcNMzIwMjE2MDAyMDEyWjCBkjELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xDTALBgNVBAoMBE9rdGExFDASBgNVBAsMC1NTT1Byb3ZpZGVyMRMwEQYDVQQDDApkZXYtNDU4NDIxMRwwGgYJKoZIhvcNAQkBFg1pbmZvQG9rdGEuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxrBl7GKz52cRpxF9xCsirnRuMxnhFBaUrsHqAQrLqWmdlpNYZTVg+T9iQ+aq/iE68L+BRZcZniKIvW58wqqS0ltXVvIkXuDSvnvnkkI5yMIVErR20K8jSOKQm1FmK+fgAJ4koshFiu9oLiqu0Ejc0DuL3/XRsb4RuxjktKTb1khgBBtb+7idEk0sFR0RPefAweXImJkDHDm7SxjDwGJUubbqpdTxasPr0W+AHI1VUzsUsTiHAoyb0XDkYqHfDzhj/ZdIEl4zHQ3bEZvlD984ztAnmX2SuFLLKfXeAAGHei8MMixJvwxYkkPeYZ/5h8WgBZPP4heS2CPjwYExt29L8QIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQARjJFz++a9Z5IQGFzsZMrX2EDR5ML4xxUiQkbhld1S1PljOLcYFARDmUC2YYHOueU4ee8Jid9nPGEUebV/4Jok+b+oQh+dWMgiWjSLI7h5q4OYZ3VJtdlVwgMFt2iz+/4yBKMUZ50g3Qgg36vE34us+eKitg759JgCNsibxn0qtJgSPm0sgP2L6yTaLnoEUbXBRxCwynTSkp9ZijZqEzbhN0e2dWv7Rx/nfpohpDP6vEiFImKFHpDSv3M/5de1ytQzPFrZBYt9WlzlYwE1aD9FHCxdd+rWgYMVVoRaRmndpV/Rq3QUuDuFJtaoX11bC7ExkOpg9KstZzA63i3VcfYv&lt;/ds:X509Certificate&gt;&lt;/ds:X509Data&gt;&lt;/ds:KeyInfo&gt;&lt;/md:KeyDescriptor&gt;&lt;md:SingleSignOnService Binding=\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect\" Location=\"https://test.com/sso\"/&gt;&lt;/md:IDPSSODescriptor&gt;&lt;/md:EntityDescriptor&gt;",
+    ///         },
+    ///         ExtraAttributesOauth2Client = new Gcp.Iam.Inputs.WorkforcePoolProviderExtraAttributesOauth2ClientArgs
+    ///         {
+    ///             IssuerUri = "https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+    ///             ClientId = "client-id",
+    ///             ClientSecret = new Gcp.Iam.Inputs.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs
+    ///             {
+    ///                 Value = new Gcp.Iam.Inputs.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs
+    ///                 {
+    ///                     PlainText = "client-secret",
+    ///                 },
+    ///             },
+    ///             AttributesType = "AZURE_AD_GROUPS_MAIL",
+    ///             QueryParameters = new Gcp.Iam.Inputs.WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs
+    ///             {
+    ///                 Filter = "mail:gcp",
+    ///             },
     ///         },
     ///         DisplayName = "Display name",
     ///         Description = "A sample SAML workforce pool provider.",
@@ -170,7 +187,7 @@ namespace Pulumi.Gcp.Iam
     ///         },
     ///         Oidc = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcArgs
     ///         {
-    ///             IssuerUri = "https://accounts.thirdparty.com",
+    ///             IssuerUri = "https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
     ///             ClientId = "client-id",
     ///             ClientSecret = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcClientSecretArgs
     ///             {
@@ -188,6 +205,23 @@ namespace Pulumi.Gcp.Iam
     ///                     "groups",
     ///                     "roles",
     ///                 },
+    ///             },
+    ///         },
+    ///         ExtraAttributesOauth2Client = new Gcp.Iam.Inputs.WorkforcePoolProviderExtraAttributesOauth2ClientArgs
+    ///         {
+    ///             IssuerUri = "https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+    ///             ClientId = "client-id",
+    ///             ClientSecret = new Gcp.Iam.Inputs.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs
+    ///             {
+    ///                 Value = new Gcp.Iam.Inputs.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs
+    ///                 {
+    ///                     PlainText = "client-secret",
+    ///                 },
+    ///             },
+    ///             AttributesType = "AZURE_AD_GROUPS_MAIL",
+    ///             QueryParameters = new Gcp.Iam.Inputs.WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs
+    ///             {
+    ///                 Filter = "mail:sales",
     ///             },
     ///         },
     ///         DisplayName = "Display name",
@@ -424,7 +458,7 @@ namespace Pulumi.Gcp.Iam
         /// The configuration for OAuth 2.0 client used to get the additional user
         /// attributes. This should be used when users can't get the desired claims
         /// in authentication credentials. Currently this configuration is only
-        /// supported with OIDC protocol.
+        /// supported with SAML and OIDC protocol.
         /// Structure is documented below.
         /// </summary>
         [Output("extraAttributesOauth2Client")]
@@ -620,7 +654,7 @@ namespace Pulumi.Gcp.Iam
         /// The configuration for OAuth 2.0 client used to get the additional user
         /// attributes. This should be used when users can't get the desired claims
         /// in authentication credentials. Currently this configuration is only
-        /// supported with OIDC protocol.
+        /// supported with SAML and OIDC protocol.
         /// Structure is documented below.
         /// </summary>
         [Input("extraAttributesOauth2Client")]
@@ -760,7 +794,7 @@ namespace Pulumi.Gcp.Iam
         /// The configuration for OAuth 2.0 client used to get the additional user
         /// attributes. This should be used when users can't get the desired claims
         /// in authentication credentials. Currently this configuration is only
-        /// supported with OIDC protocol.
+        /// supported with SAML and OIDC protocol.
         /// Structure is documented below.
         /// </summary>
         [Input("extraAttributesOauth2Client")]

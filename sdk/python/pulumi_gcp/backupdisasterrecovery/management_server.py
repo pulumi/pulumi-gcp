@@ -267,6 +267,14 @@ class ManagementServer(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A Backup and DR Management Server (Also referred as Management Console)
+
+        To get more information about ManagementServer, see:
+
+        * [API documentation](https://cloud.google.com/backup-disaster-recovery/docs/deployment/deployment-plan)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/backup-disaster-recovery/docs)
+
         ## Example Usage
 
         ### Backup Dr Management Server
@@ -339,6 +347,14 @@ class ManagementServer(pulumi.CustomResource):
                  args: ManagementServerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Backup and DR Management Server (Also referred as Management Console)
+
+        To get more information about ManagementServer, see:
+
+        * [API documentation](https://cloud.google.com/backup-disaster-recovery/docs/deployment/deployment-plan)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/backup-disaster-recovery/docs)
+
         ## Example Usage
 
         ### Backup Dr Management Server

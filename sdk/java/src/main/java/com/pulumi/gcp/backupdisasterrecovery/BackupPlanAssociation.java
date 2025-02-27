@@ -16,6 +16,14 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
+ * A Backup and DR BackupPlanAssociation.
+ * 
+ * To get more information about BackupPlanAssociation, see:
+ * 
+ * * [API documentation](https://cloud.google.com/backup-disaster-recovery/docs/reference/rest)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/backup-disaster-recovery/docs)
+ * 
  * ## Example Usage
  * 
  * ### Backup Dr Bpa

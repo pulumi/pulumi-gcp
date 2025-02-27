@@ -21,6 +21,7 @@ __all__ = [
     'V2QueuedResourceTpu',
     'V2QueuedResourceTpuNodeSpec',
     'V2QueuedResourceTpuNodeSpecNode',
+    'V2QueuedResourceTpuNodeSpecNodeNetworkConfig',
     'V2VmAcceleratorConfig',
     'V2VmDataDisk',
     'V2VmNetworkConfig',
@@ -209,6 +210,8 @@ class V2QueuedResourceTpuNodeSpecNode(dict):
             suggest = "runtime_version"
         elif key == "acceleratorType":
             suggest = "accelerator_type"
+        elif key == "networkConfig":
+            suggest = "network_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in V2QueuedResourceTpuNodeSpecNode. Access the value via the '{suggest}' property getter instead.")
@@ -224,17 +227,22 @@ class V2QueuedResourceTpuNodeSpecNode(dict):
     def __init__(__self__, *,
                  runtime_version: str,
                  accelerator_type: Optional[str] = None,
-                 description: Optional[str] = None):
+                 description: Optional[str] = None,
+                 network_config: Optional['outputs.V2QueuedResourceTpuNodeSpecNodeNetworkConfig'] = None):
         """
         :param str runtime_version: Runtime version for the TPU.
         :param str accelerator_type: TPU accelerator type for the TPU. If not specified, this defaults to 'v2-8'.
         :param str description: Text description of the TPU.
+        :param 'V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs' network_config: Network configurations for the TPU node.
+               Structure is documented below.
         """
         pulumi.set(__self__, "runtime_version", runtime_version)
         if accelerator_type is not None:
             pulumi.set(__self__, "accelerator_type", accelerator_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if network_config is not None:
+            pulumi.set(__self__, "network_config", network_config)
 
     @property
     @pulumi.getter(name="runtimeVersion")
@@ -259,6 +267,111 @@ class V2QueuedResourceTpuNodeSpecNode(dict):
         Text description of the TPU.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> Optional['outputs.V2QueuedResourceTpuNodeSpecNodeNetworkConfig']:
+        """
+        Network configurations for the TPU node.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network_config")
+
+
+@pulumi.output_type
+class V2QueuedResourceTpuNodeSpecNodeNetworkConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "canIpForward":
+            suggest = "can_ip_forward"
+        elif key == "enableExternalIps":
+            suggest = "enable_external_ips"
+        elif key == "queueCount":
+            suggest = "queue_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V2QueuedResourceTpuNodeSpecNodeNetworkConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V2QueuedResourceTpuNodeSpecNodeNetworkConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V2QueuedResourceTpuNodeSpecNodeNetworkConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 can_ip_forward: Optional[bool] = None,
+                 enable_external_ips: Optional[bool] = None,
+                 network: Optional[str] = None,
+                 queue_count: Optional[int] = None,
+                 subnetwork: Optional[str] = None):
+        """
+        :param bool can_ip_forward: Allows the TPU node to send and receive packets with non-matching destination or source
+               IPs. This is required if you plan to use the TPU workers to forward routes.
+        :param bool enable_external_ips: Indicates that external IP addresses would be associated with the TPU workers. If set to
+               false, the specified subnetwork or network should have Private Google Access enabled.
+        :param str network: The name of the network for the TPU node. It must be a preexisting Google Compute Engine
+               network. If none is provided, "default" will be used.
+        :param int queue_count: Specifies networking queue count for TPU VM instance's network interface.
+        :param str subnetwork: The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
+               Engine subnetwork. If none is provided, "default" will be used.
+        """
+        if can_ip_forward is not None:
+            pulumi.set(__self__, "can_ip_forward", can_ip_forward)
+        if enable_external_ips is not None:
+            pulumi.set(__self__, "enable_external_ips", enable_external_ips)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if queue_count is not None:
+            pulumi.set(__self__, "queue_count", queue_count)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
+
+    @property
+    @pulumi.getter(name="canIpForward")
+    def can_ip_forward(self) -> Optional[bool]:
+        """
+        Allows the TPU node to send and receive packets with non-matching destination or source
+        IPs. This is required if you plan to use the TPU workers to forward routes.
+        """
+        return pulumi.get(self, "can_ip_forward")
+
+    @property
+    @pulumi.getter(name="enableExternalIps")
+    def enable_external_ips(self) -> Optional[bool]:
+        """
+        Indicates that external IP addresses would be associated with the TPU workers. If set to
+        false, the specified subnetwork or network should have Private Google Access enabled.
+        """
+        return pulumi.get(self, "enable_external_ips")
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[str]:
+        """
+        The name of the network for the TPU node. It must be a preexisting Google Compute Engine
+        network. If none is provided, "default" will be used.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="queueCount")
+    def queue_count(self) -> Optional[int]:
+        """
+        Specifies networking queue count for TPU VM instance's network interface.
+        """
+        return pulumi.get(self, "queue_count")
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[str]:
+        """
+        The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
+        Engine subnetwork. If none is provided, "default" will be used.
+        """
+        return pulumi.get(self, "subnetwork")
 
 
 @pulumi.output_type

@@ -27,6 +27,7 @@ namespace Pulumi.Gcp.Iam
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumi.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -36,6 +37,17 @@ namespace Pulumi.Gcp.Iam
     ///         Location = "global",
     ///         DisplayName = "test org binding",
     ///         PrincipalAccessBoundaryPolicyId = "my-pab-policy",
+    ///     });
+    /// 
+    ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
+    ///     {
+    ///         CreateDuration = "60s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             pabPolicy,
+    ///         },
     ///     });
     /// 
     ///     var my_org_binding = new Gcp.Iam.OrganizationsPolicyBinding("my-org-binding", new()
@@ -49,6 +61,12 @@ namespace Pulumi.Gcp.Iam
     ///         Target = new Gcp.Iam.Inputs.OrganizationsPolicyBindingTargetArgs
     ///         {
     ///             PrincipalSet = "//cloudresourcemanager.googleapis.com/organizations/123456789",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait60Seconds,
     ///         },
     ///     });
     /// 

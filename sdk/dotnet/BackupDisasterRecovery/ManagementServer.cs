@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BackupDisasterRecovery
 {
     /// <summary>
+    /// A Backup and DR Management Server (Also referred as Management Console)
+    /// 
+    /// To get more information about ManagementServer, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/backup-disaster-recovery/docs/deployment/deployment-plan)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/backup-disaster-recovery/docs)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Backup Dr Management Server

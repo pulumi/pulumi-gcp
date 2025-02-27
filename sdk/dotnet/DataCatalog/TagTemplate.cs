@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataCatalog
 {
     /// <summary>
+    /// &gt; **Warning:** `gcp.datacatalog.TagTemplate` is deprecated and will be removed in a future major release. Use `gcp.dataplex.AspectType` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
+    /// 
     /// A tag template defines a tag, which can have one or more typed fields.
     /// The template is used to create and attach the tag to GCP resources.
     /// 
