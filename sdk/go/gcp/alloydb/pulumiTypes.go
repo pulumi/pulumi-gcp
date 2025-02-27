@@ -5304,6 +5304,2655 @@ func (o InstanceReadPoolConfigPtrOutput) NodeCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type GetClusterAutomatedBackupPolicy struct {
+	// The length of the time window during which a backup can be taken. If a backup does not succeed within this time window, it will be canceled and considered failed.
+	//
+	// The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it will default to 1 hour.
+	//
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	BackupWindow string `pulumi:"backupWindow"`
+	// Whether automated backups are enabled.
+	Enabled bool `pulumi:"enabled"`
+	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+	EncryptionConfigs []GetClusterAutomatedBackupPolicyEncryptionConfig `pulumi:"encryptionConfigs"`
+	// Labels to apply to backups created using this configuration.
+	Labels map[string]string `pulumi:"labels"`
+	// (optional)
+	// The canonical id of the location.If it is not provided, the provider project is used. For example: us-east1.
+	Location string `pulumi:"location"`
+	// Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
+	QuantityBasedRetentions []GetClusterAutomatedBackupPolicyQuantityBasedRetention `pulumi:"quantityBasedRetentions"`
+	// Time-based Backup retention policy. Conflicts with 'quantity_based_retention', both can't be set together.
+	TimeBasedRetentions []GetClusterAutomatedBackupPolicyTimeBasedRetention `pulumi:"timeBasedRetentions"`
+	// Weekly schedule for the Backup.
+	WeeklySchedules []GetClusterAutomatedBackupPolicyWeeklySchedule `pulumi:"weeklySchedules"`
+}
+
+// GetClusterAutomatedBackupPolicyInput is an input type that accepts GetClusterAutomatedBackupPolicyArgs and GetClusterAutomatedBackupPolicyOutput values.
+// You can construct a concrete instance of `GetClusterAutomatedBackupPolicyInput` via:
+//
+//	GetClusterAutomatedBackupPolicyArgs{...}
+type GetClusterAutomatedBackupPolicyInput interface {
+	pulumi.Input
+
+	ToGetClusterAutomatedBackupPolicyOutput() GetClusterAutomatedBackupPolicyOutput
+	ToGetClusterAutomatedBackupPolicyOutputWithContext(context.Context) GetClusterAutomatedBackupPolicyOutput
+}
+
+type GetClusterAutomatedBackupPolicyArgs struct {
+	// The length of the time window during which a backup can be taken. If a backup does not succeed within this time window, it will be canceled and considered failed.
+	//
+	// The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it will default to 1 hour.
+	//
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	BackupWindow pulumi.StringInput `pulumi:"backupWindow"`
+	// Whether automated backups are enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+	EncryptionConfigs GetClusterAutomatedBackupPolicyEncryptionConfigArrayInput `pulumi:"encryptionConfigs"`
+	// Labels to apply to backups created using this configuration.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// (optional)
+	// The canonical id of the location.If it is not provided, the provider project is used. For example: us-east1.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
+	QuantityBasedRetentions GetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayInput `pulumi:"quantityBasedRetentions"`
+	// Time-based Backup retention policy. Conflicts with 'quantity_based_retention', both can't be set together.
+	TimeBasedRetentions GetClusterAutomatedBackupPolicyTimeBasedRetentionArrayInput `pulumi:"timeBasedRetentions"`
+	// Weekly schedule for the Backup.
+	WeeklySchedules GetClusterAutomatedBackupPolicyWeeklyScheduleArrayInput `pulumi:"weeklySchedules"`
+}
+
+func (GetClusterAutomatedBackupPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAutomatedBackupPolicy)(nil)).Elem()
+}
+
+func (i GetClusterAutomatedBackupPolicyArgs) ToGetClusterAutomatedBackupPolicyOutput() GetClusterAutomatedBackupPolicyOutput {
+	return i.ToGetClusterAutomatedBackupPolicyOutputWithContext(context.Background())
+}
+
+func (i GetClusterAutomatedBackupPolicyArgs) ToGetClusterAutomatedBackupPolicyOutputWithContext(ctx context.Context) GetClusterAutomatedBackupPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAutomatedBackupPolicyOutput)
+}
+
+// GetClusterAutomatedBackupPolicyArrayInput is an input type that accepts GetClusterAutomatedBackupPolicyArray and GetClusterAutomatedBackupPolicyArrayOutput values.
+// You can construct a concrete instance of `GetClusterAutomatedBackupPolicyArrayInput` via:
+//
+//	GetClusterAutomatedBackupPolicyArray{ GetClusterAutomatedBackupPolicyArgs{...} }
+type GetClusterAutomatedBackupPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAutomatedBackupPolicyArrayOutput() GetClusterAutomatedBackupPolicyArrayOutput
+	ToGetClusterAutomatedBackupPolicyArrayOutputWithContext(context.Context) GetClusterAutomatedBackupPolicyArrayOutput
+}
+
+type GetClusterAutomatedBackupPolicyArray []GetClusterAutomatedBackupPolicyInput
+
+func (GetClusterAutomatedBackupPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAutomatedBackupPolicy)(nil)).Elem()
+}
+
+func (i GetClusterAutomatedBackupPolicyArray) ToGetClusterAutomatedBackupPolicyArrayOutput() GetClusterAutomatedBackupPolicyArrayOutput {
+	return i.ToGetClusterAutomatedBackupPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAutomatedBackupPolicyArray) ToGetClusterAutomatedBackupPolicyArrayOutputWithContext(ctx context.Context) GetClusterAutomatedBackupPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAutomatedBackupPolicyArrayOutput)
+}
+
+type GetClusterAutomatedBackupPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAutomatedBackupPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAutomatedBackupPolicy)(nil)).Elem()
+}
+
+func (o GetClusterAutomatedBackupPolicyOutput) ToGetClusterAutomatedBackupPolicyOutput() GetClusterAutomatedBackupPolicyOutput {
+	return o
+}
+
+func (o GetClusterAutomatedBackupPolicyOutput) ToGetClusterAutomatedBackupPolicyOutputWithContext(ctx context.Context) GetClusterAutomatedBackupPolicyOutput {
+	return o
+}
+
+// The length of the time window during which a backup can be taken. If a backup does not succeed within this time window, it will be canceled and considered failed.
+//
+// The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it will default to 1 hour.
+//
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o GetClusterAutomatedBackupPolicyOutput) BackupWindow() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterAutomatedBackupPolicy) string { return v.BackupWindow }).(pulumi.StringOutput)
+}
+
+// Whether automated backups are enabled.
+func (o GetClusterAutomatedBackupPolicyOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterAutomatedBackupPolicy) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+func (o GetClusterAutomatedBackupPolicyOutput) EncryptionConfigs() GetClusterAutomatedBackupPolicyEncryptionConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterAutomatedBackupPolicy) []GetClusterAutomatedBackupPolicyEncryptionConfig {
+		return v.EncryptionConfigs
+	}).(GetClusterAutomatedBackupPolicyEncryptionConfigArrayOutput)
+}
+
+// Labels to apply to backups created using this configuration.
+func (o GetClusterAutomatedBackupPolicyOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClusterAutomatedBackupPolicy) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// (optional)
+// The canonical id of the location.If it is not provided, the provider project is used. For example: us-east1.
+func (o GetClusterAutomatedBackupPolicyOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterAutomatedBackupPolicy) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
+func (o GetClusterAutomatedBackupPolicyOutput) QuantityBasedRetentions() GetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayOutput {
+	return o.ApplyT(func(v GetClusterAutomatedBackupPolicy) []GetClusterAutomatedBackupPolicyQuantityBasedRetention {
+		return v.QuantityBasedRetentions
+	}).(GetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayOutput)
+}
+
+// Time-based Backup retention policy. Conflicts with 'quantity_based_retention', both can't be set together.
+func (o GetClusterAutomatedBackupPolicyOutput) TimeBasedRetentions() GetClusterAutomatedBackupPolicyTimeBasedRetentionArrayOutput {
+	return o.ApplyT(func(v GetClusterAutomatedBackupPolicy) []GetClusterAutomatedBackupPolicyTimeBasedRetention {
+		return v.TimeBasedRetentions
+	}).(GetClusterAutomatedBackupPolicyTimeBasedRetentionArrayOutput)
+}
+
+// Weekly schedule for the Backup.
+func (o GetClusterAutomatedBackupPolicyOutput) WeeklySchedules() GetClusterAutomatedBackupPolicyWeeklyScheduleArrayOutput {
+	return o.ApplyT(func(v GetClusterAutomatedBackupPolicy) []GetClusterAutomatedBackupPolicyWeeklySchedule {
+		return v.WeeklySchedules
+	}).(GetClusterAutomatedBackupPolicyWeeklyScheduleArrayOutput)
+}
+
+type GetClusterAutomatedBackupPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAutomatedBackupPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAutomatedBackupPolicy)(nil)).Elem()
+}
+
+func (o GetClusterAutomatedBackupPolicyArrayOutput) ToGetClusterAutomatedBackupPolicyArrayOutput() GetClusterAutomatedBackupPolicyArrayOutput {
+	return o
+}
+
+func (o GetClusterAutomatedBackupPolicyArrayOutput) ToGetClusterAutomatedBackupPolicyArrayOutputWithContext(ctx context.Context) GetClusterAutomatedBackupPolicyArrayOutput {
+	return o
+}
+
+func (o GetClusterAutomatedBackupPolicyArrayOutput) Index(i pulumi.IntInput) GetClusterAutomatedBackupPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAutomatedBackupPolicy {
+		return vs[0].([]GetClusterAutomatedBackupPolicy)[vs[1].(int)]
+	}).(GetClusterAutomatedBackupPolicyOutput)
+}
+
+type GetClusterAutomatedBackupPolicyEncryptionConfig struct {
+	// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// GetClusterAutomatedBackupPolicyEncryptionConfigInput is an input type that accepts GetClusterAutomatedBackupPolicyEncryptionConfigArgs and GetClusterAutomatedBackupPolicyEncryptionConfigOutput values.
+// You can construct a concrete instance of `GetClusterAutomatedBackupPolicyEncryptionConfigInput` via:
+//
+//	GetClusterAutomatedBackupPolicyEncryptionConfigArgs{...}
+type GetClusterAutomatedBackupPolicyEncryptionConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterAutomatedBackupPolicyEncryptionConfigOutput() GetClusterAutomatedBackupPolicyEncryptionConfigOutput
+	ToGetClusterAutomatedBackupPolicyEncryptionConfigOutputWithContext(context.Context) GetClusterAutomatedBackupPolicyEncryptionConfigOutput
+}
+
+type GetClusterAutomatedBackupPolicyEncryptionConfigArgs struct {
+	// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (GetClusterAutomatedBackupPolicyEncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAutomatedBackupPolicyEncryptionConfig)(nil)).Elem()
+}
+
+func (i GetClusterAutomatedBackupPolicyEncryptionConfigArgs) ToGetClusterAutomatedBackupPolicyEncryptionConfigOutput() GetClusterAutomatedBackupPolicyEncryptionConfigOutput {
+	return i.ToGetClusterAutomatedBackupPolicyEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterAutomatedBackupPolicyEncryptionConfigArgs) ToGetClusterAutomatedBackupPolicyEncryptionConfigOutputWithContext(ctx context.Context) GetClusterAutomatedBackupPolicyEncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAutomatedBackupPolicyEncryptionConfigOutput)
+}
+
+// GetClusterAutomatedBackupPolicyEncryptionConfigArrayInput is an input type that accepts GetClusterAutomatedBackupPolicyEncryptionConfigArray and GetClusterAutomatedBackupPolicyEncryptionConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterAutomatedBackupPolicyEncryptionConfigArrayInput` via:
+//
+//	GetClusterAutomatedBackupPolicyEncryptionConfigArray{ GetClusterAutomatedBackupPolicyEncryptionConfigArgs{...} }
+type GetClusterAutomatedBackupPolicyEncryptionConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAutomatedBackupPolicyEncryptionConfigArrayOutput() GetClusterAutomatedBackupPolicyEncryptionConfigArrayOutput
+	ToGetClusterAutomatedBackupPolicyEncryptionConfigArrayOutputWithContext(context.Context) GetClusterAutomatedBackupPolicyEncryptionConfigArrayOutput
+}
+
+type GetClusterAutomatedBackupPolicyEncryptionConfigArray []GetClusterAutomatedBackupPolicyEncryptionConfigInput
+
+func (GetClusterAutomatedBackupPolicyEncryptionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAutomatedBackupPolicyEncryptionConfig)(nil)).Elem()
+}
+
+func (i GetClusterAutomatedBackupPolicyEncryptionConfigArray) ToGetClusterAutomatedBackupPolicyEncryptionConfigArrayOutput() GetClusterAutomatedBackupPolicyEncryptionConfigArrayOutput {
+	return i.ToGetClusterAutomatedBackupPolicyEncryptionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAutomatedBackupPolicyEncryptionConfigArray) ToGetClusterAutomatedBackupPolicyEncryptionConfigArrayOutputWithContext(ctx context.Context) GetClusterAutomatedBackupPolicyEncryptionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAutomatedBackupPolicyEncryptionConfigArrayOutput)
+}
+
+type GetClusterAutomatedBackupPolicyEncryptionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAutomatedBackupPolicyEncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAutomatedBackupPolicyEncryptionConfig)(nil)).Elem()
+}
+
+func (o GetClusterAutomatedBackupPolicyEncryptionConfigOutput) ToGetClusterAutomatedBackupPolicyEncryptionConfigOutput() GetClusterAutomatedBackupPolicyEncryptionConfigOutput {
+	return o
+}
+
+func (o GetClusterAutomatedBackupPolicyEncryptionConfigOutput) ToGetClusterAutomatedBackupPolicyEncryptionConfigOutputWithContext(ctx context.Context) GetClusterAutomatedBackupPolicyEncryptionConfigOutput {
+	return o
+}
+
+// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+func (o GetClusterAutomatedBackupPolicyEncryptionConfigOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterAutomatedBackupPolicyEncryptionConfig) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type GetClusterAutomatedBackupPolicyEncryptionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAutomatedBackupPolicyEncryptionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAutomatedBackupPolicyEncryptionConfig)(nil)).Elem()
+}
+
+func (o GetClusterAutomatedBackupPolicyEncryptionConfigArrayOutput) ToGetClusterAutomatedBackupPolicyEncryptionConfigArrayOutput() GetClusterAutomatedBackupPolicyEncryptionConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAutomatedBackupPolicyEncryptionConfigArrayOutput) ToGetClusterAutomatedBackupPolicyEncryptionConfigArrayOutputWithContext(ctx context.Context) GetClusterAutomatedBackupPolicyEncryptionConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAutomatedBackupPolicyEncryptionConfigArrayOutput) Index(i pulumi.IntInput) GetClusterAutomatedBackupPolicyEncryptionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAutomatedBackupPolicyEncryptionConfig {
+		return vs[0].([]GetClusterAutomatedBackupPolicyEncryptionConfig)[vs[1].(int)]
+	}).(GetClusterAutomatedBackupPolicyEncryptionConfigOutput)
+}
+
+type GetClusterAutomatedBackupPolicyQuantityBasedRetention struct {
+	// The number of backups to retain.
+	Count int `pulumi:"count"`
+}
+
+// GetClusterAutomatedBackupPolicyQuantityBasedRetentionInput is an input type that accepts GetClusterAutomatedBackupPolicyQuantityBasedRetentionArgs and GetClusterAutomatedBackupPolicyQuantityBasedRetentionOutput values.
+// You can construct a concrete instance of `GetClusterAutomatedBackupPolicyQuantityBasedRetentionInput` via:
+//
+//	GetClusterAutomatedBackupPolicyQuantityBasedRetentionArgs{...}
+type GetClusterAutomatedBackupPolicyQuantityBasedRetentionInput interface {
+	pulumi.Input
+
+	ToGetClusterAutomatedBackupPolicyQuantityBasedRetentionOutput() GetClusterAutomatedBackupPolicyQuantityBasedRetentionOutput
+	ToGetClusterAutomatedBackupPolicyQuantityBasedRetentionOutputWithContext(context.Context) GetClusterAutomatedBackupPolicyQuantityBasedRetentionOutput
+}
+
+type GetClusterAutomatedBackupPolicyQuantityBasedRetentionArgs struct {
+	// The number of backups to retain.
+	Count pulumi.IntInput `pulumi:"count"`
+}
+
+func (GetClusterAutomatedBackupPolicyQuantityBasedRetentionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAutomatedBackupPolicyQuantityBasedRetention)(nil)).Elem()
+}
+
+func (i GetClusterAutomatedBackupPolicyQuantityBasedRetentionArgs) ToGetClusterAutomatedBackupPolicyQuantityBasedRetentionOutput() GetClusterAutomatedBackupPolicyQuantityBasedRetentionOutput {
+	return i.ToGetClusterAutomatedBackupPolicyQuantityBasedRetentionOutputWithContext(context.Background())
+}
+
+func (i GetClusterAutomatedBackupPolicyQuantityBasedRetentionArgs) ToGetClusterAutomatedBackupPolicyQuantityBasedRetentionOutputWithContext(ctx context.Context) GetClusterAutomatedBackupPolicyQuantityBasedRetentionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAutomatedBackupPolicyQuantityBasedRetentionOutput)
+}
+
+// GetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayInput is an input type that accepts GetClusterAutomatedBackupPolicyQuantityBasedRetentionArray and GetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayOutput values.
+// You can construct a concrete instance of `GetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayInput` via:
+//
+//	GetClusterAutomatedBackupPolicyQuantityBasedRetentionArray{ GetClusterAutomatedBackupPolicyQuantityBasedRetentionArgs{...} }
+type GetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayOutput() GetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayOutput
+	ToGetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayOutputWithContext(context.Context) GetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayOutput
+}
+
+type GetClusterAutomatedBackupPolicyQuantityBasedRetentionArray []GetClusterAutomatedBackupPolicyQuantityBasedRetentionInput
+
+func (GetClusterAutomatedBackupPolicyQuantityBasedRetentionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAutomatedBackupPolicyQuantityBasedRetention)(nil)).Elem()
+}
+
+func (i GetClusterAutomatedBackupPolicyQuantityBasedRetentionArray) ToGetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayOutput() GetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayOutput {
+	return i.ToGetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAutomatedBackupPolicyQuantityBasedRetentionArray) ToGetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayOutputWithContext(ctx context.Context) GetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayOutput)
+}
+
+type GetClusterAutomatedBackupPolicyQuantityBasedRetentionOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAutomatedBackupPolicyQuantityBasedRetentionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAutomatedBackupPolicyQuantityBasedRetention)(nil)).Elem()
+}
+
+func (o GetClusterAutomatedBackupPolicyQuantityBasedRetentionOutput) ToGetClusterAutomatedBackupPolicyQuantityBasedRetentionOutput() GetClusterAutomatedBackupPolicyQuantityBasedRetentionOutput {
+	return o
+}
+
+func (o GetClusterAutomatedBackupPolicyQuantityBasedRetentionOutput) ToGetClusterAutomatedBackupPolicyQuantityBasedRetentionOutputWithContext(ctx context.Context) GetClusterAutomatedBackupPolicyQuantityBasedRetentionOutput {
+	return o
+}
+
+// The number of backups to retain.
+func (o GetClusterAutomatedBackupPolicyQuantityBasedRetentionOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterAutomatedBackupPolicyQuantityBasedRetention) int { return v.Count }).(pulumi.IntOutput)
+}
+
+type GetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAutomatedBackupPolicyQuantityBasedRetention)(nil)).Elem()
+}
+
+func (o GetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayOutput) ToGetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayOutput() GetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayOutput {
+	return o
+}
+
+func (o GetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayOutput) ToGetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayOutputWithContext(ctx context.Context) GetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayOutput {
+	return o
+}
+
+func (o GetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayOutput) Index(i pulumi.IntInput) GetClusterAutomatedBackupPolicyQuantityBasedRetentionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAutomatedBackupPolicyQuantityBasedRetention {
+		return vs[0].([]GetClusterAutomatedBackupPolicyQuantityBasedRetention)[vs[1].(int)]
+	}).(GetClusterAutomatedBackupPolicyQuantityBasedRetentionOutput)
+}
+
+type GetClusterAutomatedBackupPolicyTimeBasedRetention struct {
+	// The retention period.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	RetentionPeriod string `pulumi:"retentionPeriod"`
+}
+
+// GetClusterAutomatedBackupPolicyTimeBasedRetentionInput is an input type that accepts GetClusterAutomatedBackupPolicyTimeBasedRetentionArgs and GetClusterAutomatedBackupPolicyTimeBasedRetentionOutput values.
+// You can construct a concrete instance of `GetClusterAutomatedBackupPolicyTimeBasedRetentionInput` via:
+//
+//	GetClusterAutomatedBackupPolicyTimeBasedRetentionArgs{...}
+type GetClusterAutomatedBackupPolicyTimeBasedRetentionInput interface {
+	pulumi.Input
+
+	ToGetClusterAutomatedBackupPolicyTimeBasedRetentionOutput() GetClusterAutomatedBackupPolicyTimeBasedRetentionOutput
+	ToGetClusterAutomatedBackupPolicyTimeBasedRetentionOutputWithContext(context.Context) GetClusterAutomatedBackupPolicyTimeBasedRetentionOutput
+}
+
+type GetClusterAutomatedBackupPolicyTimeBasedRetentionArgs struct {
+	// The retention period.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	RetentionPeriod pulumi.StringInput `pulumi:"retentionPeriod"`
+}
+
+func (GetClusterAutomatedBackupPolicyTimeBasedRetentionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAutomatedBackupPolicyTimeBasedRetention)(nil)).Elem()
+}
+
+func (i GetClusterAutomatedBackupPolicyTimeBasedRetentionArgs) ToGetClusterAutomatedBackupPolicyTimeBasedRetentionOutput() GetClusterAutomatedBackupPolicyTimeBasedRetentionOutput {
+	return i.ToGetClusterAutomatedBackupPolicyTimeBasedRetentionOutputWithContext(context.Background())
+}
+
+func (i GetClusterAutomatedBackupPolicyTimeBasedRetentionArgs) ToGetClusterAutomatedBackupPolicyTimeBasedRetentionOutputWithContext(ctx context.Context) GetClusterAutomatedBackupPolicyTimeBasedRetentionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAutomatedBackupPolicyTimeBasedRetentionOutput)
+}
+
+// GetClusterAutomatedBackupPolicyTimeBasedRetentionArrayInput is an input type that accepts GetClusterAutomatedBackupPolicyTimeBasedRetentionArray and GetClusterAutomatedBackupPolicyTimeBasedRetentionArrayOutput values.
+// You can construct a concrete instance of `GetClusterAutomatedBackupPolicyTimeBasedRetentionArrayInput` via:
+//
+//	GetClusterAutomatedBackupPolicyTimeBasedRetentionArray{ GetClusterAutomatedBackupPolicyTimeBasedRetentionArgs{...} }
+type GetClusterAutomatedBackupPolicyTimeBasedRetentionArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAutomatedBackupPolicyTimeBasedRetentionArrayOutput() GetClusterAutomatedBackupPolicyTimeBasedRetentionArrayOutput
+	ToGetClusterAutomatedBackupPolicyTimeBasedRetentionArrayOutputWithContext(context.Context) GetClusterAutomatedBackupPolicyTimeBasedRetentionArrayOutput
+}
+
+type GetClusterAutomatedBackupPolicyTimeBasedRetentionArray []GetClusterAutomatedBackupPolicyTimeBasedRetentionInput
+
+func (GetClusterAutomatedBackupPolicyTimeBasedRetentionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAutomatedBackupPolicyTimeBasedRetention)(nil)).Elem()
+}
+
+func (i GetClusterAutomatedBackupPolicyTimeBasedRetentionArray) ToGetClusterAutomatedBackupPolicyTimeBasedRetentionArrayOutput() GetClusterAutomatedBackupPolicyTimeBasedRetentionArrayOutput {
+	return i.ToGetClusterAutomatedBackupPolicyTimeBasedRetentionArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAutomatedBackupPolicyTimeBasedRetentionArray) ToGetClusterAutomatedBackupPolicyTimeBasedRetentionArrayOutputWithContext(ctx context.Context) GetClusterAutomatedBackupPolicyTimeBasedRetentionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAutomatedBackupPolicyTimeBasedRetentionArrayOutput)
+}
+
+type GetClusterAutomatedBackupPolicyTimeBasedRetentionOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAutomatedBackupPolicyTimeBasedRetentionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAutomatedBackupPolicyTimeBasedRetention)(nil)).Elem()
+}
+
+func (o GetClusterAutomatedBackupPolicyTimeBasedRetentionOutput) ToGetClusterAutomatedBackupPolicyTimeBasedRetentionOutput() GetClusterAutomatedBackupPolicyTimeBasedRetentionOutput {
+	return o
+}
+
+func (o GetClusterAutomatedBackupPolicyTimeBasedRetentionOutput) ToGetClusterAutomatedBackupPolicyTimeBasedRetentionOutputWithContext(ctx context.Context) GetClusterAutomatedBackupPolicyTimeBasedRetentionOutput {
+	return o
+}
+
+// The retention period.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o GetClusterAutomatedBackupPolicyTimeBasedRetentionOutput) RetentionPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterAutomatedBackupPolicyTimeBasedRetention) string { return v.RetentionPeriod }).(pulumi.StringOutput)
+}
+
+type GetClusterAutomatedBackupPolicyTimeBasedRetentionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAutomatedBackupPolicyTimeBasedRetentionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAutomatedBackupPolicyTimeBasedRetention)(nil)).Elem()
+}
+
+func (o GetClusterAutomatedBackupPolicyTimeBasedRetentionArrayOutput) ToGetClusterAutomatedBackupPolicyTimeBasedRetentionArrayOutput() GetClusterAutomatedBackupPolicyTimeBasedRetentionArrayOutput {
+	return o
+}
+
+func (o GetClusterAutomatedBackupPolicyTimeBasedRetentionArrayOutput) ToGetClusterAutomatedBackupPolicyTimeBasedRetentionArrayOutputWithContext(ctx context.Context) GetClusterAutomatedBackupPolicyTimeBasedRetentionArrayOutput {
+	return o
+}
+
+func (o GetClusterAutomatedBackupPolicyTimeBasedRetentionArrayOutput) Index(i pulumi.IntInput) GetClusterAutomatedBackupPolicyTimeBasedRetentionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAutomatedBackupPolicyTimeBasedRetention {
+		return vs[0].([]GetClusterAutomatedBackupPolicyTimeBasedRetention)[vs[1].(int)]
+	}).(GetClusterAutomatedBackupPolicyTimeBasedRetentionOutput)
+}
+
+type GetClusterAutomatedBackupPolicyWeeklySchedule struct {
+	// The days of the week to perform a backup. At least one day of the week must be provided. Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+	DaysOfWeeks []string `pulumi:"daysOfWeeks"`
+	// The times during the day to start a backup. At least one start time must be provided. The start times are assumed to be in UTC and to be an exact hour (e.g., 04:00:00).
+	StartTimes []GetClusterAutomatedBackupPolicyWeeklyScheduleStartTime `pulumi:"startTimes"`
+}
+
+// GetClusterAutomatedBackupPolicyWeeklyScheduleInput is an input type that accepts GetClusterAutomatedBackupPolicyWeeklyScheduleArgs and GetClusterAutomatedBackupPolicyWeeklyScheduleOutput values.
+// You can construct a concrete instance of `GetClusterAutomatedBackupPolicyWeeklyScheduleInput` via:
+//
+//	GetClusterAutomatedBackupPolicyWeeklyScheduleArgs{...}
+type GetClusterAutomatedBackupPolicyWeeklyScheduleInput interface {
+	pulumi.Input
+
+	ToGetClusterAutomatedBackupPolicyWeeklyScheduleOutput() GetClusterAutomatedBackupPolicyWeeklyScheduleOutput
+	ToGetClusterAutomatedBackupPolicyWeeklyScheduleOutputWithContext(context.Context) GetClusterAutomatedBackupPolicyWeeklyScheduleOutput
+}
+
+type GetClusterAutomatedBackupPolicyWeeklyScheduleArgs struct {
+	// The days of the week to perform a backup. At least one day of the week must be provided. Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+	DaysOfWeeks pulumi.StringArrayInput `pulumi:"daysOfWeeks"`
+	// The times during the day to start a backup. At least one start time must be provided. The start times are assumed to be in UTC and to be an exact hour (e.g., 04:00:00).
+	StartTimes GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayInput `pulumi:"startTimes"`
+}
+
+func (GetClusterAutomatedBackupPolicyWeeklyScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAutomatedBackupPolicyWeeklySchedule)(nil)).Elem()
+}
+
+func (i GetClusterAutomatedBackupPolicyWeeklyScheduleArgs) ToGetClusterAutomatedBackupPolicyWeeklyScheduleOutput() GetClusterAutomatedBackupPolicyWeeklyScheduleOutput {
+	return i.ToGetClusterAutomatedBackupPolicyWeeklyScheduleOutputWithContext(context.Background())
+}
+
+func (i GetClusterAutomatedBackupPolicyWeeklyScheduleArgs) ToGetClusterAutomatedBackupPolicyWeeklyScheduleOutputWithContext(ctx context.Context) GetClusterAutomatedBackupPolicyWeeklyScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAutomatedBackupPolicyWeeklyScheduleOutput)
+}
+
+// GetClusterAutomatedBackupPolicyWeeklyScheduleArrayInput is an input type that accepts GetClusterAutomatedBackupPolicyWeeklyScheduleArray and GetClusterAutomatedBackupPolicyWeeklyScheduleArrayOutput values.
+// You can construct a concrete instance of `GetClusterAutomatedBackupPolicyWeeklyScheduleArrayInput` via:
+//
+//	GetClusterAutomatedBackupPolicyWeeklyScheduleArray{ GetClusterAutomatedBackupPolicyWeeklyScheduleArgs{...} }
+type GetClusterAutomatedBackupPolicyWeeklyScheduleArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAutomatedBackupPolicyWeeklyScheduleArrayOutput() GetClusterAutomatedBackupPolicyWeeklyScheduleArrayOutput
+	ToGetClusterAutomatedBackupPolicyWeeklyScheduleArrayOutputWithContext(context.Context) GetClusterAutomatedBackupPolicyWeeklyScheduleArrayOutput
+}
+
+type GetClusterAutomatedBackupPolicyWeeklyScheduleArray []GetClusterAutomatedBackupPolicyWeeklyScheduleInput
+
+func (GetClusterAutomatedBackupPolicyWeeklyScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAutomatedBackupPolicyWeeklySchedule)(nil)).Elem()
+}
+
+func (i GetClusterAutomatedBackupPolicyWeeklyScheduleArray) ToGetClusterAutomatedBackupPolicyWeeklyScheduleArrayOutput() GetClusterAutomatedBackupPolicyWeeklyScheduleArrayOutput {
+	return i.ToGetClusterAutomatedBackupPolicyWeeklyScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAutomatedBackupPolicyWeeklyScheduleArray) ToGetClusterAutomatedBackupPolicyWeeklyScheduleArrayOutputWithContext(ctx context.Context) GetClusterAutomatedBackupPolicyWeeklyScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAutomatedBackupPolicyWeeklyScheduleArrayOutput)
+}
+
+type GetClusterAutomatedBackupPolicyWeeklyScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAutomatedBackupPolicyWeeklyScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAutomatedBackupPolicyWeeklySchedule)(nil)).Elem()
+}
+
+func (o GetClusterAutomatedBackupPolicyWeeklyScheduleOutput) ToGetClusterAutomatedBackupPolicyWeeklyScheduleOutput() GetClusterAutomatedBackupPolicyWeeklyScheduleOutput {
+	return o
+}
+
+func (o GetClusterAutomatedBackupPolicyWeeklyScheduleOutput) ToGetClusterAutomatedBackupPolicyWeeklyScheduleOutputWithContext(ctx context.Context) GetClusterAutomatedBackupPolicyWeeklyScheduleOutput {
+	return o
+}
+
+// The days of the week to perform a backup. At least one day of the week must be provided. Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+func (o GetClusterAutomatedBackupPolicyWeeklyScheduleOutput) DaysOfWeeks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterAutomatedBackupPolicyWeeklySchedule) []string { return v.DaysOfWeeks }).(pulumi.StringArrayOutput)
+}
+
+// The times during the day to start a backup. At least one start time must be provided. The start times are assumed to be in UTC and to be an exact hour (e.g., 04:00:00).
+func (o GetClusterAutomatedBackupPolicyWeeklyScheduleOutput) StartTimes() GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutput {
+	return o.ApplyT(func(v GetClusterAutomatedBackupPolicyWeeklySchedule) []GetClusterAutomatedBackupPolicyWeeklyScheduleStartTime {
+		return v.StartTimes
+	}).(GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutput)
+}
+
+type GetClusterAutomatedBackupPolicyWeeklyScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAutomatedBackupPolicyWeeklyScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAutomatedBackupPolicyWeeklySchedule)(nil)).Elem()
+}
+
+func (o GetClusterAutomatedBackupPolicyWeeklyScheduleArrayOutput) ToGetClusterAutomatedBackupPolicyWeeklyScheduleArrayOutput() GetClusterAutomatedBackupPolicyWeeklyScheduleArrayOutput {
+	return o
+}
+
+func (o GetClusterAutomatedBackupPolicyWeeklyScheduleArrayOutput) ToGetClusterAutomatedBackupPolicyWeeklyScheduleArrayOutputWithContext(ctx context.Context) GetClusterAutomatedBackupPolicyWeeklyScheduleArrayOutput {
+	return o
+}
+
+func (o GetClusterAutomatedBackupPolicyWeeklyScheduleArrayOutput) Index(i pulumi.IntInput) GetClusterAutomatedBackupPolicyWeeklyScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAutomatedBackupPolicyWeeklySchedule {
+		return vs[0].([]GetClusterAutomatedBackupPolicyWeeklySchedule)[vs[1].(int)]
+	}).(GetClusterAutomatedBackupPolicyWeeklyScheduleOutput)
+}
+
+type GetClusterAutomatedBackupPolicyWeeklyScheduleStartTime struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours int `pulumi:"hours"`
+	// Minutes of hour of day. Currently, only the value 0 is supported.
+	Minutes int `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
+	Nanos int `pulumi:"nanos"`
+	// Seconds of minutes of the time. Currently, only the value 0 is supported.
+	Seconds int `pulumi:"seconds"`
+}
+
+// GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeInput is an input type that accepts GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs and GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutput values.
+// You can construct a concrete instance of `GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeInput` via:
+//
+//	GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs{...}
+type GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeInput interface {
+	pulumi.Input
+
+	ToGetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutput() GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutput
+	ToGetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutputWithContext(context.Context) GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutput
+}
+
+type GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours pulumi.IntInput `pulumi:"hours"`
+	// Minutes of hour of day. Currently, only the value 0 is supported.
+	Minutes pulumi.IntInput `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Seconds of minutes of the time. Currently, only the value 0 is supported.
+	Seconds pulumi.IntInput `pulumi:"seconds"`
+}
+
+func (GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAutomatedBackupPolicyWeeklyScheduleStartTime)(nil)).Elem()
+}
+
+func (i GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs) ToGetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutput() GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutput {
+	return i.ToGetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutputWithContext(context.Background())
+}
+
+func (i GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs) ToGetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutputWithContext(ctx context.Context) GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutput)
+}
+
+// GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayInput is an input type that accepts GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArray and GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutput values.
+// You can construct a concrete instance of `GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayInput` via:
+//
+//	GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArray{ GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs{...} }
+type GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutput() GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutput
+	ToGetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutputWithContext(context.Context) GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutput
+}
+
+type GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArray []GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeInput
+
+func (GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAutomatedBackupPolicyWeeklyScheduleStartTime)(nil)).Elem()
+}
+
+func (i GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArray) ToGetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutput() GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutput {
+	return i.ToGetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArray) ToGetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutputWithContext(ctx context.Context) GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutput)
+}
+
+type GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAutomatedBackupPolicyWeeklyScheduleStartTime)(nil)).Elem()
+}
+
+func (o GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutput) ToGetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutput() GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutput {
+	return o
+}
+
+func (o GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutput) ToGetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutputWithContext(ctx context.Context) GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutput {
+	return o
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutput) Hours() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterAutomatedBackupPolicyWeeklyScheduleStartTime) int { return v.Hours }).(pulumi.IntOutput)
+}
+
+// Minutes of hour of day. Currently, only the value 0 is supported.
+func (o GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutput) Minutes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterAutomatedBackupPolicyWeeklyScheduleStartTime) int { return v.Minutes }).(pulumi.IntOutput)
+}
+
+// Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
+func (o GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterAutomatedBackupPolicyWeeklyScheduleStartTime) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Seconds of minutes of the time. Currently, only the value 0 is supported.
+func (o GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterAutomatedBackupPolicyWeeklyScheduleStartTime) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
+type GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAutomatedBackupPolicyWeeklyScheduleStartTime)(nil)).Elem()
+}
+
+func (o GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutput) ToGetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutput() GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutput {
+	return o
+}
+
+func (o GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutput) ToGetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutputWithContext(ctx context.Context) GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutput {
+	return o
+}
+
+func (o GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutput) Index(i pulumi.IntInput) GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAutomatedBackupPolicyWeeklyScheduleStartTime {
+		return vs[0].([]GetClusterAutomatedBackupPolicyWeeklyScheduleStartTime)[vs[1].(int)]
+	}).(GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutput)
+}
+
+type GetClusterBackupSource struct {
+	// The name of the backup resource.
+	BackupName string `pulumi:"backupName"`
+}
+
+// GetClusterBackupSourceInput is an input type that accepts GetClusterBackupSourceArgs and GetClusterBackupSourceOutput values.
+// You can construct a concrete instance of `GetClusterBackupSourceInput` via:
+//
+//	GetClusterBackupSourceArgs{...}
+type GetClusterBackupSourceInput interface {
+	pulumi.Input
+
+	ToGetClusterBackupSourceOutput() GetClusterBackupSourceOutput
+	ToGetClusterBackupSourceOutputWithContext(context.Context) GetClusterBackupSourceOutput
+}
+
+type GetClusterBackupSourceArgs struct {
+	// The name of the backup resource.
+	BackupName pulumi.StringInput `pulumi:"backupName"`
+}
+
+func (GetClusterBackupSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterBackupSource)(nil)).Elem()
+}
+
+func (i GetClusterBackupSourceArgs) ToGetClusterBackupSourceOutput() GetClusterBackupSourceOutput {
+	return i.ToGetClusterBackupSourceOutputWithContext(context.Background())
+}
+
+func (i GetClusterBackupSourceArgs) ToGetClusterBackupSourceOutputWithContext(ctx context.Context) GetClusterBackupSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterBackupSourceOutput)
+}
+
+// GetClusterBackupSourceArrayInput is an input type that accepts GetClusterBackupSourceArray and GetClusterBackupSourceArrayOutput values.
+// You can construct a concrete instance of `GetClusterBackupSourceArrayInput` via:
+//
+//	GetClusterBackupSourceArray{ GetClusterBackupSourceArgs{...} }
+type GetClusterBackupSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterBackupSourceArrayOutput() GetClusterBackupSourceArrayOutput
+	ToGetClusterBackupSourceArrayOutputWithContext(context.Context) GetClusterBackupSourceArrayOutput
+}
+
+type GetClusterBackupSourceArray []GetClusterBackupSourceInput
+
+func (GetClusterBackupSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterBackupSource)(nil)).Elem()
+}
+
+func (i GetClusterBackupSourceArray) ToGetClusterBackupSourceArrayOutput() GetClusterBackupSourceArrayOutput {
+	return i.ToGetClusterBackupSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterBackupSourceArray) ToGetClusterBackupSourceArrayOutputWithContext(ctx context.Context) GetClusterBackupSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterBackupSourceArrayOutput)
+}
+
+type GetClusterBackupSourceOutput struct{ *pulumi.OutputState }
+
+func (GetClusterBackupSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterBackupSource)(nil)).Elem()
+}
+
+func (o GetClusterBackupSourceOutput) ToGetClusterBackupSourceOutput() GetClusterBackupSourceOutput {
+	return o
+}
+
+func (o GetClusterBackupSourceOutput) ToGetClusterBackupSourceOutputWithContext(ctx context.Context) GetClusterBackupSourceOutput {
+	return o
+}
+
+// The name of the backup resource.
+func (o GetClusterBackupSourceOutput) BackupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterBackupSource) string { return v.BackupName }).(pulumi.StringOutput)
+}
+
+type GetClusterBackupSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterBackupSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterBackupSource)(nil)).Elem()
+}
+
+func (o GetClusterBackupSourceArrayOutput) ToGetClusterBackupSourceArrayOutput() GetClusterBackupSourceArrayOutput {
+	return o
+}
+
+func (o GetClusterBackupSourceArrayOutput) ToGetClusterBackupSourceArrayOutputWithContext(ctx context.Context) GetClusterBackupSourceArrayOutput {
+	return o
+}
+
+func (o GetClusterBackupSourceArrayOutput) Index(i pulumi.IntInput) GetClusterBackupSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterBackupSource {
+		return vs[0].([]GetClusterBackupSource)[vs[1].(int)]
+	}).(GetClusterBackupSourceOutput)
+}
+
+type GetClusterContinuousBackupConfig struct {
+	// Whether continuous backup recovery is enabled. If not set, defaults to true.
+	Enabled bool `pulumi:"enabled"`
+	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+	EncryptionConfigs []GetClusterContinuousBackupConfigEncryptionConfig `pulumi:"encryptionConfigs"`
+	// The numbers of days that are eligible to restore from using PITR. To support the entire recovery window, backups and logs are retained for one day more than the recovery window.
+	//
+	// If not set, defaults to 14 days.
+	RecoveryWindowDays int `pulumi:"recoveryWindowDays"`
+}
+
+// GetClusterContinuousBackupConfigInput is an input type that accepts GetClusterContinuousBackupConfigArgs and GetClusterContinuousBackupConfigOutput values.
+// You can construct a concrete instance of `GetClusterContinuousBackupConfigInput` via:
+//
+//	GetClusterContinuousBackupConfigArgs{...}
+type GetClusterContinuousBackupConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterContinuousBackupConfigOutput() GetClusterContinuousBackupConfigOutput
+	ToGetClusterContinuousBackupConfigOutputWithContext(context.Context) GetClusterContinuousBackupConfigOutput
+}
+
+type GetClusterContinuousBackupConfigArgs struct {
+	// Whether continuous backup recovery is enabled. If not set, defaults to true.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+	EncryptionConfigs GetClusterContinuousBackupConfigEncryptionConfigArrayInput `pulumi:"encryptionConfigs"`
+	// The numbers of days that are eligible to restore from using PITR. To support the entire recovery window, backups and logs are retained for one day more than the recovery window.
+	//
+	// If not set, defaults to 14 days.
+	RecoveryWindowDays pulumi.IntInput `pulumi:"recoveryWindowDays"`
+}
+
+func (GetClusterContinuousBackupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterContinuousBackupConfig)(nil)).Elem()
+}
+
+func (i GetClusterContinuousBackupConfigArgs) ToGetClusterContinuousBackupConfigOutput() GetClusterContinuousBackupConfigOutput {
+	return i.ToGetClusterContinuousBackupConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterContinuousBackupConfigArgs) ToGetClusterContinuousBackupConfigOutputWithContext(ctx context.Context) GetClusterContinuousBackupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterContinuousBackupConfigOutput)
+}
+
+// GetClusterContinuousBackupConfigArrayInput is an input type that accepts GetClusterContinuousBackupConfigArray and GetClusterContinuousBackupConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterContinuousBackupConfigArrayInput` via:
+//
+//	GetClusterContinuousBackupConfigArray{ GetClusterContinuousBackupConfigArgs{...} }
+type GetClusterContinuousBackupConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterContinuousBackupConfigArrayOutput() GetClusterContinuousBackupConfigArrayOutput
+	ToGetClusterContinuousBackupConfigArrayOutputWithContext(context.Context) GetClusterContinuousBackupConfigArrayOutput
+}
+
+type GetClusterContinuousBackupConfigArray []GetClusterContinuousBackupConfigInput
+
+func (GetClusterContinuousBackupConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterContinuousBackupConfig)(nil)).Elem()
+}
+
+func (i GetClusterContinuousBackupConfigArray) ToGetClusterContinuousBackupConfigArrayOutput() GetClusterContinuousBackupConfigArrayOutput {
+	return i.ToGetClusterContinuousBackupConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterContinuousBackupConfigArray) ToGetClusterContinuousBackupConfigArrayOutputWithContext(ctx context.Context) GetClusterContinuousBackupConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterContinuousBackupConfigArrayOutput)
+}
+
+type GetClusterContinuousBackupConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterContinuousBackupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterContinuousBackupConfig)(nil)).Elem()
+}
+
+func (o GetClusterContinuousBackupConfigOutput) ToGetClusterContinuousBackupConfigOutput() GetClusterContinuousBackupConfigOutput {
+	return o
+}
+
+func (o GetClusterContinuousBackupConfigOutput) ToGetClusterContinuousBackupConfigOutputWithContext(ctx context.Context) GetClusterContinuousBackupConfigOutput {
+	return o
+}
+
+// Whether continuous backup recovery is enabled. If not set, defaults to true.
+func (o GetClusterContinuousBackupConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterContinuousBackupConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+func (o GetClusterContinuousBackupConfigOutput) EncryptionConfigs() GetClusterContinuousBackupConfigEncryptionConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterContinuousBackupConfig) []GetClusterContinuousBackupConfigEncryptionConfig {
+		return v.EncryptionConfigs
+	}).(GetClusterContinuousBackupConfigEncryptionConfigArrayOutput)
+}
+
+// The numbers of days that are eligible to restore from using PITR. To support the entire recovery window, backups and logs are retained for one day more than the recovery window.
+//
+// If not set, defaults to 14 days.
+func (o GetClusterContinuousBackupConfigOutput) RecoveryWindowDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterContinuousBackupConfig) int { return v.RecoveryWindowDays }).(pulumi.IntOutput)
+}
+
+type GetClusterContinuousBackupConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterContinuousBackupConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterContinuousBackupConfig)(nil)).Elem()
+}
+
+func (o GetClusterContinuousBackupConfigArrayOutput) ToGetClusterContinuousBackupConfigArrayOutput() GetClusterContinuousBackupConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterContinuousBackupConfigArrayOutput) ToGetClusterContinuousBackupConfigArrayOutputWithContext(ctx context.Context) GetClusterContinuousBackupConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterContinuousBackupConfigArrayOutput) Index(i pulumi.IntInput) GetClusterContinuousBackupConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterContinuousBackupConfig {
+		return vs[0].([]GetClusterContinuousBackupConfig)[vs[1].(int)]
+	}).(GetClusterContinuousBackupConfigOutput)
+}
+
+type GetClusterContinuousBackupConfigEncryptionConfig struct {
+	// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// GetClusterContinuousBackupConfigEncryptionConfigInput is an input type that accepts GetClusterContinuousBackupConfigEncryptionConfigArgs and GetClusterContinuousBackupConfigEncryptionConfigOutput values.
+// You can construct a concrete instance of `GetClusterContinuousBackupConfigEncryptionConfigInput` via:
+//
+//	GetClusterContinuousBackupConfigEncryptionConfigArgs{...}
+type GetClusterContinuousBackupConfigEncryptionConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterContinuousBackupConfigEncryptionConfigOutput() GetClusterContinuousBackupConfigEncryptionConfigOutput
+	ToGetClusterContinuousBackupConfigEncryptionConfigOutputWithContext(context.Context) GetClusterContinuousBackupConfigEncryptionConfigOutput
+}
+
+type GetClusterContinuousBackupConfigEncryptionConfigArgs struct {
+	// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (GetClusterContinuousBackupConfigEncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterContinuousBackupConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (i GetClusterContinuousBackupConfigEncryptionConfigArgs) ToGetClusterContinuousBackupConfigEncryptionConfigOutput() GetClusterContinuousBackupConfigEncryptionConfigOutput {
+	return i.ToGetClusterContinuousBackupConfigEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterContinuousBackupConfigEncryptionConfigArgs) ToGetClusterContinuousBackupConfigEncryptionConfigOutputWithContext(ctx context.Context) GetClusterContinuousBackupConfigEncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterContinuousBackupConfigEncryptionConfigOutput)
+}
+
+// GetClusterContinuousBackupConfigEncryptionConfigArrayInput is an input type that accepts GetClusterContinuousBackupConfigEncryptionConfigArray and GetClusterContinuousBackupConfigEncryptionConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterContinuousBackupConfigEncryptionConfigArrayInput` via:
+//
+//	GetClusterContinuousBackupConfigEncryptionConfigArray{ GetClusterContinuousBackupConfigEncryptionConfigArgs{...} }
+type GetClusterContinuousBackupConfigEncryptionConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterContinuousBackupConfigEncryptionConfigArrayOutput() GetClusterContinuousBackupConfigEncryptionConfigArrayOutput
+	ToGetClusterContinuousBackupConfigEncryptionConfigArrayOutputWithContext(context.Context) GetClusterContinuousBackupConfigEncryptionConfigArrayOutput
+}
+
+type GetClusterContinuousBackupConfigEncryptionConfigArray []GetClusterContinuousBackupConfigEncryptionConfigInput
+
+func (GetClusterContinuousBackupConfigEncryptionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterContinuousBackupConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (i GetClusterContinuousBackupConfigEncryptionConfigArray) ToGetClusterContinuousBackupConfigEncryptionConfigArrayOutput() GetClusterContinuousBackupConfigEncryptionConfigArrayOutput {
+	return i.ToGetClusterContinuousBackupConfigEncryptionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterContinuousBackupConfigEncryptionConfigArray) ToGetClusterContinuousBackupConfigEncryptionConfigArrayOutputWithContext(ctx context.Context) GetClusterContinuousBackupConfigEncryptionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterContinuousBackupConfigEncryptionConfigArrayOutput)
+}
+
+type GetClusterContinuousBackupConfigEncryptionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterContinuousBackupConfigEncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterContinuousBackupConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (o GetClusterContinuousBackupConfigEncryptionConfigOutput) ToGetClusterContinuousBackupConfigEncryptionConfigOutput() GetClusterContinuousBackupConfigEncryptionConfigOutput {
+	return o
+}
+
+func (o GetClusterContinuousBackupConfigEncryptionConfigOutput) ToGetClusterContinuousBackupConfigEncryptionConfigOutputWithContext(ctx context.Context) GetClusterContinuousBackupConfigEncryptionConfigOutput {
+	return o
+}
+
+// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+func (o GetClusterContinuousBackupConfigEncryptionConfigOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterContinuousBackupConfigEncryptionConfig) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type GetClusterContinuousBackupConfigEncryptionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterContinuousBackupConfigEncryptionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterContinuousBackupConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (o GetClusterContinuousBackupConfigEncryptionConfigArrayOutput) ToGetClusterContinuousBackupConfigEncryptionConfigArrayOutput() GetClusterContinuousBackupConfigEncryptionConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterContinuousBackupConfigEncryptionConfigArrayOutput) ToGetClusterContinuousBackupConfigEncryptionConfigArrayOutputWithContext(ctx context.Context) GetClusterContinuousBackupConfigEncryptionConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterContinuousBackupConfigEncryptionConfigArrayOutput) Index(i pulumi.IntInput) GetClusterContinuousBackupConfigEncryptionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterContinuousBackupConfigEncryptionConfig {
+		return vs[0].([]GetClusterContinuousBackupConfigEncryptionConfig)[vs[1].(int)]
+	}).(GetClusterContinuousBackupConfigEncryptionConfigOutput)
+}
+
+type GetClusterContinuousBackupInfo struct {
+	// The earliest restorable time that can be restored to. Output only field.
+	EarliestRestorableTime string `pulumi:"earliestRestorableTime"`
+	// When ContinuousBackup was most recently enabled. Set to null if ContinuousBackup is not enabled.
+	EnabledTime string `pulumi:"enabledTime"`
+	// Output only. The encryption information for the WALs and backups required for ContinuousBackup.
+	EncryptionInfos []GetClusterContinuousBackupInfoEncryptionInfo `pulumi:"encryptionInfos"`
+	// Days of the week on which a continuous backup is taken. Output only field. Ignored if passed into the request.
+	Schedules []string `pulumi:"schedules"`
+}
+
+// GetClusterContinuousBackupInfoInput is an input type that accepts GetClusterContinuousBackupInfoArgs and GetClusterContinuousBackupInfoOutput values.
+// You can construct a concrete instance of `GetClusterContinuousBackupInfoInput` via:
+//
+//	GetClusterContinuousBackupInfoArgs{...}
+type GetClusterContinuousBackupInfoInput interface {
+	pulumi.Input
+
+	ToGetClusterContinuousBackupInfoOutput() GetClusterContinuousBackupInfoOutput
+	ToGetClusterContinuousBackupInfoOutputWithContext(context.Context) GetClusterContinuousBackupInfoOutput
+}
+
+type GetClusterContinuousBackupInfoArgs struct {
+	// The earliest restorable time that can be restored to. Output only field.
+	EarliestRestorableTime pulumi.StringInput `pulumi:"earliestRestorableTime"`
+	// When ContinuousBackup was most recently enabled. Set to null if ContinuousBackup is not enabled.
+	EnabledTime pulumi.StringInput `pulumi:"enabledTime"`
+	// Output only. The encryption information for the WALs and backups required for ContinuousBackup.
+	EncryptionInfos GetClusterContinuousBackupInfoEncryptionInfoArrayInput `pulumi:"encryptionInfos"`
+	// Days of the week on which a continuous backup is taken. Output only field. Ignored if passed into the request.
+	Schedules pulumi.StringArrayInput `pulumi:"schedules"`
+}
+
+func (GetClusterContinuousBackupInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterContinuousBackupInfo)(nil)).Elem()
+}
+
+func (i GetClusterContinuousBackupInfoArgs) ToGetClusterContinuousBackupInfoOutput() GetClusterContinuousBackupInfoOutput {
+	return i.ToGetClusterContinuousBackupInfoOutputWithContext(context.Background())
+}
+
+func (i GetClusterContinuousBackupInfoArgs) ToGetClusterContinuousBackupInfoOutputWithContext(ctx context.Context) GetClusterContinuousBackupInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterContinuousBackupInfoOutput)
+}
+
+// GetClusterContinuousBackupInfoArrayInput is an input type that accepts GetClusterContinuousBackupInfoArray and GetClusterContinuousBackupInfoArrayOutput values.
+// You can construct a concrete instance of `GetClusterContinuousBackupInfoArrayInput` via:
+//
+//	GetClusterContinuousBackupInfoArray{ GetClusterContinuousBackupInfoArgs{...} }
+type GetClusterContinuousBackupInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterContinuousBackupInfoArrayOutput() GetClusterContinuousBackupInfoArrayOutput
+	ToGetClusterContinuousBackupInfoArrayOutputWithContext(context.Context) GetClusterContinuousBackupInfoArrayOutput
+}
+
+type GetClusterContinuousBackupInfoArray []GetClusterContinuousBackupInfoInput
+
+func (GetClusterContinuousBackupInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterContinuousBackupInfo)(nil)).Elem()
+}
+
+func (i GetClusterContinuousBackupInfoArray) ToGetClusterContinuousBackupInfoArrayOutput() GetClusterContinuousBackupInfoArrayOutput {
+	return i.ToGetClusterContinuousBackupInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterContinuousBackupInfoArray) ToGetClusterContinuousBackupInfoArrayOutputWithContext(ctx context.Context) GetClusterContinuousBackupInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterContinuousBackupInfoArrayOutput)
+}
+
+type GetClusterContinuousBackupInfoOutput struct{ *pulumi.OutputState }
+
+func (GetClusterContinuousBackupInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterContinuousBackupInfo)(nil)).Elem()
+}
+
+func (o GetClusterContinuousBackupInfoOutput) ToGetClusterContinuousBackupInfoOutput() GetClusterContinuousBackupInfoOutput {
+	return o
+}
+
+func (o GetClusterContinuousBackupInfoOutput) ToGetClusterContinuousBackupInfoOutputWithContext(ctx context.Context) GetClusterContinuousBackupInfoOutput {
+	return o
+}
+
+// The earliest restorable time that can be restored to. Output only field.
+func (o GetClusterContinuousBackupInfoOutput) EarliestRestorableTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterContinuousBackupInfo) string { return v.EarliestRestorableTime }).(pulumi.StringOutput)
+}
+
+// When ContinuousBackup was most recently enabled. Set to null if ContinuousBackup is not enabled.
+func (o GetClusterContinuousBackupInfoOutput) EnabledTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterContinuousBackupInfo) string { return v.EnabledTime }).(pulumi.StringOutput)
+}
+
+// Output only. The encryption information for the WALs and backups required for ContinuousBackup.
+func (o GetClusterContinuousBackupInfoOutput) EncryptionInfos() GetClusterContinuousBackupInfoEncryptionInfoArrayOutput {
+	return o.ApplyT(func(v GetClusterContinuousBackupInfo) []GetClusterContinuousBackupInfoEncryptionInfo {
+		return v.EncryptionInfos
+	}).(GetClusterContinuousBackupInfoEncryptionInfoArrayOutput)
+}
+
+// Days of the week on which a continuous backup is taken. Output only field. Ignored if passed into the request.
+func (o GetClusterContinuousBackupInfoOutput) Schedules() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterContinuousBackupInfo) []string { return v.Schedules }).(pulumi.StringArrayOutput)
+}
+
+type GetClusterContinuousBackupInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterContinuousBackupInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterContinuousBackupInfo)(nil)).Elem()
+}
+
+func (o GetClusterContinuousBackupInfoArrayOutput) ToGetClusterContinuousBackupInfoArrayOutput() GetClusterContinuousBackupInfoArrayOutput {
+	return o
+}
+
+func (o GetClusterContinuousBackupInfoArrayOutput) ToGetClusterContinuousBackupInfoArrayOutputWithContext(ctx context.Context) GetClusterContinuousBackupInfoArrayOutput {
+	return o
+}
+
+func (o GetClusterContinuousBackupInfoArrayOutput) Index(i pulumi.IntInput) GetClusterContinuousBackupInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterContinuousBackupInfo {
+		return vs[0].([]GetClusterContinuousBackupInfo)[vs[1].(int)]
+	}).(GetClusterContinuousBackupInfoOutput)
+}
+
+type GetClusterContinuousBackupInfoEncryptionInfo struct {
+	// Output only. Type of encryption.
+	EncryptionType string `pulumi:"encryptionType"`
+	// Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+	KmsKeyVersions []string `pulumi:"kmsKeyVersions"`
+}
+
+// GetClusterContinuousBackupInfoEncryptionInfoInput is an input type that accepts GetClusterContinuousBackupInfoEncryptionInfoArgs and GetClusterContinuousBackupInfoEncryptionInfoOutput values.
+// You can construct a concrete instance of `GetClusterContinuousBackupInfoEncryptionInfoInput` via:
+//
+//	GetClusterContinuousBackupInfoEncryptionInfoArgs{...}
+type GetClusterContinuousBackupInfoEncryptionInfoInput interface {
+	pulumi.Input
+
+	ToGetClusterContinuousBackupInfoEncryptionInfoOutput() GetClusterContinuousBackupInfoEncryptionInfoOutput
+	ToGetClusterContinuousBackupInfoEncryptionInfoOutputWithContext(context.Context) GetClusterContinuousBackupInfoEncryptionInfoOutput
+}
+
+type GetClusterContinuousBackupInfoEncryptionInfoArgs struct {
+	// Output only. Type of encryption.
+	EncryptionType pulumi.StringInput `pulumi:"encryptionType"`
+	// Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+	KmsKeyVersions pulumi.StringArrayInput `pulumi:"kmsKeyVersions"`
+}
+
+func (GetClusterContinuousBackupInfoEncryptionInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterContinuousBackupInfoEncryptionInfo)(nil)).Elem()
+}
+
+func (i GetClusterContinuousBackupInfoEncryptionInfoArgs) ToGetClusterContinuousBackupInfoEncryptionInfoOutput() GetClusterContinuousBackupInfoEncryptionInfoOutput {
+	return i.ToGetClusterContinuousBackupInfoEncryptionInfoOutputWithContext(context.Background())
+}
+
+func (i GetClusterContinuousBackupInfoEncryptionInfoArgs) ToGetClusterContinuousBackupInfoEncryptionInfoOutputWithContext(ctx context.Context) GetClusterContinuousBackupInfoEncryptionInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterContinuousBackupInfoEncryptionInfoOutput)
+}
+
+// GetClusterContinuousBackupInfoEncryptionInfoArrayInput is an input type that accepts GetClusterContinuousBackupInfoEncryptionInfoArray and GetClusterContinuousBackupInfoEncryptionInfoArrayOutput values.
+// You can construct a concrete instance of `GetClusterContinuousBackupInfoEncryptionInfoArrayInput` via:
+//
+//	GetClusterContinuousBackupInfoEncryptionInfoArray{ GetClusterContinuousBackupInfoEncryptionInfoArgs{...} }
+type GetClusterContinuousBackupInfoEncryptionInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterContinuousBackupInfoEncryptionInfoArrayOutput() GetClusterContinuousBackupInfoEncryptionInfoArrayOutput
+	ToGetClusterContinuousBackupInfoEncryptionInfoArrayOutputWithContext(context.Context) GetClusterContinuousBackupInfoEncryptionInfoArrayOutput
+}
+
+type GetClusterContinuousBackupInfoEncryptionInfoArray []GetClusterContinuousBackupInfoEncryptionInfoInput
+
+func (GetClusterContinuousBackupInfoEncryptionInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterContinuousBackupInfoEncryptionInfo)(nil)).Elem()
+}
+
+func (i GetClusterContinuousBackupInfoEncryptionInfoArray) ToGetClusterContinuousBackupInfoEncryptionInfoArrayOutput() GetClusterContinuousBackupInfoEncryptionInfoArrayOutput {
+	return i.ToGetClusterContinuousBackupInfoEncryptionInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterContinuousBackupInfoEncryptionInfoArray) ToGetClusterContinuousBackupInfoEncryptionInfoArrayOutputWithContext(ctx context.Context) GetClusterContinuousBackupInfoEncryptionInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterContinuousBackupInfoEncryptionInfoArrayOutput)
+}
+
+type GetClusterContinuousBackupInfoEncryptionInfoOutput struct{ *pulumi.OutputState }
+
+func (GetClusterContinuousBackupInfoEncryptionInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterContinuousBackupInfoEncryptionInfo)(nil)).Elem()
+}
+
+func (o GetClusterContinuousBackupInfoEncryptionInfoOutput) ToGetClusterContinuousBackupInfoEncryptionInfoOutput() GetClusterContinuousBackupInfoEncryptionInfoOutput {
+	return o
+}
+
+func (o GetClusterContinuousBackupInfoEncryptionInfoOutput) ToGetClusterContinuousBackupInfoEncryptionInfoOutputWithContext(ctx context.Context) GetClusterContinuousBackupInfoEncryptionInfoOutput {
+	return o
+}
+
+// Output only. Type of encryption.
+func (o GetClusterContinuousBackupInfoEncryptionInfoOutput) EncryptionType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterContinuousBackupInfoEncryptionInfo) string { return v.EncryptionType }).(pulumi.StringOutput)
+}
+
+// Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+func (o GetClusterContinuousBackupInfoEncryptionInfoOutput) KmsKeyVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterContinuousBackupInfoEncryptionInfo) []string { return v.KmsKeyVersions }).(pulumi.StringArrayOutput)
+}
+
+type GetClusterContinuousBackupInfoEncryptionInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterContinuousBackupInfoEncryptionInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterContinuousBackupInfoEncryptionInfo)(nil)).Elem()
+}
+
+func (o GetClusterContinuousBackupInfoEncryptionInfoArrayOutput) ToGetClusterContinuousBackupInfoEncryptionInfoArrayOutput() GetClusterContinuousBackupInfoEncryptionInfoArrayOutput {
+	return o
+}
+
+func (o GetClusterContinuousBackupInfoEncryptionInfoArrayOutput) ToGetClusterContinuousBackupInfoEncryptionInfoArrayOutputWithContext(ctx context.Context) GetClusterContinuousBackupInfoEncryptionInfoArrayOutput {
+	return o
+}
+
+func (o GetClusterContinuousBackupInfoEncryptionInfoArrayOutput) Index(i pulumi.IntInput) GetClusterContinuousBackupInfoEncryptionInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterContinuousBackupInfoEncryptionInfo {
+		return vs[0].([]GetClusterContinuousBackupInfoEncryptionInfo)[vs[1].(int)]
+	}).(GetClusterContinuousBackupInfoEncryptionInfoOutput)
+}
+
+type GetClusterEncryptionConfig struct {
+	// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// GetClusterEncryptionConfigInput is an input type that accepts GetClusterEncryptionConfigArgs and GetClusterEncryptionConfigOutput values.
+// You can construct a concrete instance of `GetClusterEncryptionConfigInput` via:
+//
+//	GetClusterEncryptionConfigArgs{...}
+type GetClusterEncryptionConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterEncryptionConfigOutput() GetClusterEncryptionConfigOutput
+	ToGetClusterEncryptionConfigOutputWithContext(context.Context) GetClusterEncryptionConfigOutput
+}
+
+type GetClusterEncryptionConfigArgs struct {
+	// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (GetClusterEncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterEncryptionConfig)(nil)).Elem()
+}
+
+func (i GetClusterEncryptionConfigArgs) ToGetClusterEncryptionConfigOutput() GetClusterEncryptionConfigOutput {
+	return i.ToGetClusterEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterEncryptionConfigArgs) ToGetClusterEncryptionConfigOutputWithContext(ctx context.Context) GetClusterEncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterEncryptionConfigOutput)
+}
+
+// GetClusterEncryptionConfigArrayInput is an input type that accepts GetClusterEncryptionConfigArray and GetClusterEncryptionConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterEncryptionConfigArrayInput` via:
+//
+//	GetClusterEncryptionConfigArray{ GetClusterEncryptionConfigArgs{...} }
+type GetClusterEncryptionConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterEncryptionConfigArrayOutput() GetClusterEncryptionConfigArrayOutput
+	ToGetClusterEncryptionConfigArrayOutputWithContext(context.Context) GetClusterEncryptionConfigArrayOutput
+}
+
+type GetClusterEncryptionConfigArray []GetClusterEncryptionConfigInput
+
+func (GetClusterEncryptionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterEncryptionConfig)(nil)).Elem()
+}
+
+func (i GetClusterEncryptionConfigArray) ToGetClusterEncryptionConfigArrayOutput() GetClusterEncryptionConfigArrayOutput {
+	return i.ToGetClusterEncryptionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterEncryptionConfigArray) ToGetClusterEncryptionConfigArrayOutputWithContext(ctx context.Context) GetClusterEncryptionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterEncryptionConfigArrayOutput)
+}
+
+type GetClusterEncryptionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterEncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterEncryptionConfig)(nil)).Elem()
+}
+
+func (o GetClusterEncryptionConfigOutput) ToGetClusterEncryptionConfigOutput() GetClusterEncryptionConfigOutput {
+	return o
+}
+
+func (o GetClusterEncryptionConfigOutput) ToGetClusterEncryptionConfigOutputWithContext(ctx context.Context) GetClusterEncryptionConfigOutput {
+	return o
+}
+
+// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+func (o GetClusterEncryptionConfigOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterEncryptionConfig) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type GetClusterEncryptionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterEncryptionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterEncryptionConfig)(nil)).Elem()
+}
+
+func (o GetClusterEncryptionConfigArrayOutput) ToGetClusterEncryptionConfigArrayOutput() GetClusterEncryptionConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterEncryptionConfigArrayOutput) ToGetClusterEncryptionConfigArrayOutputWithContext(ctx context.Context) GetClusterEncryptionConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterEncryptionConfigArrayOutput) Index(i pulumi.IntInput) GetClusterEncryptionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterEncryptionConfig {
+		return vs[0].([]GetClusterEncryptionConfig)[vs[1].(int)]
+	}).(GetClusterEncryptionConfigOutput)
+}
+
+type GetClusterEncryptionInfo struct {
+	// Output only. Type of encryption.
+	EncryptionType string `pulumi:"encryptionType"`
+	// Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+	KmsKeyVersions []string `pulumi:"kmsKeyVersions"`
+}
+
+// GetClusterEncryptionInfoInput is an input type that accepts GetClusterEncryptionInfoArgs and GetClusterEncryptionInfoOutput values.
+// You can construct a concrete instance of `GetClusterEncryptionInfoInput` via:
+//
+//	GetClusterEncryptionInfoArgs{...}
+type GetClusterEncryptionInfoInput interface {
+	pulumi.Input
+
+	ToGetClusterEncryptionInfoOutput() GetClusterEncryptionInfoOutput
+	ToGetClusterEncryptionInfoOutputWithContext(context.Context) GetClusterEncryptionInfoOutput
+}
+
+type GetClusterEncryptionInfoArgs struct {
+	// Output only. Type of encryption.
+	EncryptionType pulumi.StringInput `pulumi:"encryptionType"`
+	// Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+	KmsKeyVersions pulumi.StringArrayInput `pulumi:"kmsKeyVersions"`
+}
+
+func (GetClusterEncryptionInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterEncryptionInfo)(nil)).Elem()
+}
+
+func (i GetClusterEncryptionInfoArgs) ToGetClusterEncryptionInfoOutput() GetClusterEncryptionInfoOutput {
+	return i.ToGetClusterEncryptionInfoOutputWithContext(context.Background())
+}
+
+func (i GetClusterEncryptionInfoArgs) ToGetClusterEncryptionInfoOutputWithContext(ctx context.Context) GetClusterEncryptionInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterEncryptionInfoOutput)
+}
+
+// GetClusterEncryptionInfoArrayInput is an input type that accepts GetClusterEncryptionInfoArray and GetClusterEncryptionInfoArrayOutput values.
+// You can construct a concrete instance of `GetClusterEncryptionInfoArrayInput` via:
+//
+//	GetClusterEncryptionInfoArray{ GetClusterEncryptionInfoArgs{...} }
+type GetClusterEncryptionInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterEncryptionInfoArrayOutput() GetClusterEncryptionInfoArrayOutput
+	ToGetClusterEncryptionInfoArrayOutputWithContext(context.Context) GetClusterEncryptionInfoArrayOutput
+}
+
+type GetClusterEncryptionInfoArray []GetClusterEncryptionInfoInput
+
+func (GetClusterEncryptionInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterEncryptionInfo)(nil)).Elem()
+}
+
+func (i GetClusterEncryptionInfoArray) ToGetClusterEncryptionInfoArrayOutput() GetClusterEncryptionInfoArrayOutput {
+	return i.ToGetClusterEncryptionInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterEncryptionInfoArray) ToGetClusterEncryptionInfoArrayOutputWithContext(ctx context.Context) GetClusterEncryptionInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterEncryptionInfoArrayOutput)
+}
+
+type GetClusterEncryptionInfoOutput struct{ *pulumi.OutputState }
+
+func (GetClusterEncryptionInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterEncryptionInfo)(nil)).Elem()
+}
+
+func (o GetClusterEncryptionInfoOutput) ToGetClusterEncryptionInfoOutput() GetClusterEncryptionInfoOutput {
+	return o
+}
+
+func (o GetClusterEncryptionInfoOutput) ToGetClusterEncryptionInfoOutputWithContext(ctx context.Context) GetClusterEncryptionInfoOutput {
+	return o
+}
+
+// Output only. Type of encryption.
+func (o GetClusterEncryptionInfoOutput) EncryptionType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterEncryptionInfo) string { return v.EncryptionType }).(pulumi.StringOutput)
+}
+
+// Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+func (o GetClusterEncryptionInfoOutput) KmsKeyVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterEncryptionInfo) []string { return v.KmsKeyVersions }).(pulumi.StringArrayOutput)
+}
+
+type GetClusterEncryptionInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterEncryptionInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterEncryptionInfo)(nil)).Elem()
+}
+
+func (o GetClusterEncryptionInfoArrayOutput) ToGetClusterEncryptionInfoArrayOutput() GetClusterEncryptionInfoArrayOutput {
+	return o
+}
+
+func (o GetClusterEncryptionInfoArrayOutput) ToGetClusterEncryptionInfoArrayOutputWithContext(ctx context.Context) GetClusterEncryptionInfoArrayOutput {
+	return o
+}
+
+func (o GetClusterEncryptionInfoArrayOutput) Index(i pulumi.IntInput) GetClusterEncryptionInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterEncryptionInfo {
+		return vs[0].([]GetClusterEncryptionInfo)[vs[1].(int)]
+	}).(GetClusterEncryptionInfoOutput)
+}
+
+type GetClusterInitialUser struct {
+	// The initial password for the user.
+	Password string `pulumi:"password"`
+	// The database username.
+	User string `pulumi:"user"`
+}
+
+// GetClusterInitialUserInput is an input type that accepts GetClusterInitialUserArgs and GetClusterInitialUserOutput values.
+// You can construct a concrete instance of `GetClusterInitialUserInput` via:
+//
+//	GetClusterInitialUserArgs{...}
+type GetClusterInitialUserInput interface {
+	pulumi.Input
+
+	ToGetClusterInitialUserOutput() GetClusterInitialUserOutput
+	ToGetClusterInitialUserOutputWithContext(context.Context) GetClusterInitialUserOutput
+}
+
+type GetClusterInitialUserArgs struct {
+	// The initial password for the user.
+	Password pulumi.StringInput `pulumi:"password"`
+	// The database username.
+	User pulumi.StringInput `pulumi:"user"`
+}
+
+func (GetClusterInitialUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterInitialUser)(nil)).Elem()
+}
+
+func (i GetClusterInitialUserArgs) ToGetClusterInitialUserOutput() GetClusterInitialUserOutput {
+	return i.ToGetClusterInitialUserOutputWithContext(context.Background())
+}
+
+func (i GetClusterInitialUserArgs) ToGetClusterInitialUserOutputWithContext(ctx context.Context) GetClusterInitialUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterInitialUserOutput)
+}
+
+// GetClusterInitialUserArrayInput is an input type that accepts GetClusterInitialUserArray and GetClusterInitialUserArrayOutput values.
+// You can construct a concrete instance of `GetClusterInitialUserArrayInput` via:
+//
+//	GetClusterInitialUserArray{ GetClusterInitialUserArgs{...} }
+type GetClusterInitialUserArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterInitialUserArrayOutput() GetClusterInitialUserArrayOutput
+	ToGetClusterInitialUserArrayOutputWithContext(context.Context) GetClusterInitialUserArrayOutput
+}
+
+type GetClusterInitialUserArray []GetClusterInitialUserInput
+
+func (GetClusterInitialUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterInitialUser)(nil)).Elem()
+}
+
+func (i GetClusterInitialUserArray) ToGetClusterInitialUserArrayOutput() GetClusterInitialUserArrayOutput {
+	return i.ToGetClusterInitialUserArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterInitialUserArray) ToGetClusterInitialUserArrayOutputWithContext(ctx context.Context) GetClusterInitialUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterInitialUserArrayOutput)
+}
+
+type GetClusterInitialUserOutput struct{ *pulumi.OutputState }
+
+func (GetClusterInitialUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterInitialUser)(nil)).Elem()
+}
+
+func (o GetClusterInitialUserOutput) ToGetClusterInitialUserOutput() GetClusterInitialUserOutput {
+	return o
+}
+
+func (o GetClusterInitialUserOutput) ToGetClusterInitialUserOutputWithContext(ctx context.Context) GetClusterInitialUserOutput {
+	return o
+}
+
+// The initial password for the user.
+func (o GetClusterInitialUserOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterInitialUser) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// The database username.
+func (o GetClusterInitialUserOutput) User() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterInitialUser) string { return v.User }).(pulumi.StringOutput)
+}
+
+type GetClusterInitialUserArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterInitialUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterInitialUser)(nil)).Elem()
+}
+
+func (o GetClusterInitialUserArrayOutput) ToGetClusterInitialUserArrayOutput() GetClusterInitialUserArrayOutput {
+	return o
+}
+
+func (o GetClusterInitialUserArrayOutput) ToGetClusterInitialUserArrayOutputWithContext(ctx context.Context) GetClusterInitialUserArrayOutput {
+	return o
+}
+
+func (o GetClusterInitialUserArrayOutput) Index(i pulumi.IntInput) GetClusterInitialUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterInitialUser {
+		return vs[0].([]GetClusterInitialUser)[vs[1].(int)]
+	}).(GetClusterInitialUserOutput)
+}
+
+type GetClusterMaintenanceUpdatePolicy struct {
+	// Preferred windows to perform maintenance. Currently limited to 1.
+	MaintenanceWindows []GetClusterMaintenanceUpdatePolicyMaintenanceWindow `pulumi:"maintenanceWindows"`
+}
+
+// GetClusterMaintenanceUpdatePolicyInput is an input type that accepts GetClusterMaintenanceUpdatePolicyArgs and GetClusterMaintenanceUpdatePolicyOutput values.
+// You can construct a concrete instance of `GetClusterMaintenanceUpdatePolicyInput` via:
+//
+//	GetClusterMaintenanceUpdatePolicyArgs{...}
+type GetClusterMaintenanceUpdatePolicyInput interface {
+	pulumi.Input
+
+	ToGetClusterMaintenanceUpdatePolicyOutput() GetClusterMaintenanceUpdatePolicyOutput
+	ToGetClusterMaintenanceUpdatePolicyOutputWithContext(context.Context) GetClusterMaintenanceUpdatePolicyOutput
+}
+
+type GetClusterMaintenanceUpdatePolicyArgs struct {
+	// Preferred windows to perform maintenance. Currently limited to 1.
+	MaintenanceWindows GetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayInput `pulumi:"maintenanceWindows"`
+}
+
+func (GetClusterMaintenanceUpdatePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterMaintenanceUpdatePolicy)(nil)).Elem()
+}
+
+func (i GetClusterMaintenanceUpdatePolicyArgs) ToGetClusterMaintenanceUpdatePolicyOutput() GetClusterMaintenanceUpdatePolicyOutput {
+	return i.ToGetClusterMaintenanceUpdatePolicyOutputWithContext(context.Background())
+}
+
+func (i GetClusterMaintenanceUpdatePolicyArgs) ToGetClusterMaintenanceUpdatePolicyOutputWithContext(ctx context.Context) GetClusterMaintenanceUpdatePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterMaintenanceUpdatePolicyOutput)
+}
+
+// GetClusterMaintenanceUpdatePolicyArrayInput is an input type that accepts GetClusterMaintenanceUpdatePolicyArray and GetClusterMaintenanceUpdatePolicyArrayOutput values.
+// You can construct a concrete instance of `GetClusterMaintenanceUpdatePolicyArrayInput` via:
+//
+//	GetClusterMaintenanceUpdatePolicyArray{ GetClusterMaintenanceUpdatePolicyArgs{...} }
+type GetClusterMaintenanceUpdatePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterMaintenanceUpdatePolicyArrayOutput() GetClusterMaintenanceUpdatePolicyArrayOutput
+	ToGetClusterMaintenanceUpdatePolicyArrayOutputWithContext(context.Context) GetClusterMaintenanceUpdatePolicyArrayOutput
+}
+
+type GetClusterMaintenanceUpdatePolicyArray []GetClusterMaintenanceUpdatePolicyInput
+
+func (GetClusterMaintenanceUpdatePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterMaintenanceUpdatePolicy)(nil)).Elem()
+}
+
+func (i GetClusterMaintenanceUpdatePolicyArray) ToGetClusterMaintenanceUpdatePolicyArrayOutput() GetClusterMaintenanceUpdatePolicyArrayOutput {
+	return i.ToGetClusterMaintenanceUpdatePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterMaintenanceUpdatePolicyArray) ToGetClusterMaintenanceUpdatePolicyArrayOutputWithContext(ctx context.Context) GetClusterMaintenanceUpdatePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterMaintenanceUpdatePolicyArrayOutput)
+}
+
+type GetClusterMaintenanceUpdatePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetClusterMaintenanceUpdatePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterMaintenanceUpdatePolicy)(nil)).Elem()
+}
+
+func (o GetClusterMaintenanceUpdatePolicyOutput) ToGetClusterMaintenanceUpdatePolicyOutput() GetClusterMaintenanceUpdatePolicyOutput {
+	return o
+}
+
+func (o GetClusterMaintenanceUpdatePolicyOutput) ToGetClusterMaintenanceUpdatePolicyOutputWithContext(ctx context.Context) GetClusterMaintenanceUpdatePolicyOutput {
+	return o
+}
+
+// Preferred windows to perform maintenance. Currently limited to 1.
+func (o GetClusterMaintenanceUpdatePolicyOutput) MaintenanceWindows() GetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayOutput {
+	return o.ApplyT(func(v GetClusterMaintenanceUpdatePolicy) []GetClusterMaintenanceUpdatePolicyMaintenanceWindow {
+		return v.MaintenanceWindows
+	}).(GetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayOutput)
+}
+
+type GetClusterMaintenanceUpdatePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterMaintenanceUpdatePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterMaintenanceUpdatePolicy)(nil)).Elem()
+}
+
+func (o GetClusterMaintenanceUpdatePolicyArrayOutput) ToGetClusterMaintenanceUpdatePolicyArrayOutput() GetClusterMaintenanceUpdatePolicyArrayOutput {
+	return o
+}
+
+func (o GetClusterMaintenanceUpdatePolicyArrayOutput) ToGetClusterMaintenanceUpdatePolicyArrayOutputWithContext(ctx context.Context) GetClusterMaintenanceUpdatePolicyArrayOutput {
+	return o
+}
+
+func (o GetClusterMaintenanceUpdatePolicyArrayOutput) Index(i pulumi.IntInput) GetClusterMaintenanceUpdatePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterMaintenanceUpdatePolicy {
+		return vs[0].([]GetClusterMaintenanceUpdatePolicy)[vs[1].(int)]
+	}).(GetClusterMaintenanceUpdatePolicyOutput)
+}
+
+type GetClusterMaintenanceUpdatePolicyMaintenanceWindow struct {
+	// Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc. Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+	Day string `pulumi:"day"`
+	// Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour of this time.
+	StartTimes []GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime `pulumi:"startTimes"`
+}
+
+// GetClusterMaintenanceUpdatePolicyMaintenanceWindowInput is an input type that accepts GetClusterMaintenanceUpdatePolicyMaintenanceWindowArgs and GetClusterMaintenanceUpdatePolicyMaintenanceWindowOutput values.
+// You can construct a concrete instance of `GetClusterMaintenanceUpdatePolicyMaintenanceWindowInput` via:
+//
+//	GetClusterMaintenanceUpdatePolicyMaintenanceWindowArgs{...}
+type GetClusterMaintenanceUpdatePolicyMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowOutput() GetClusterMaintenanceUpdatePolicyMaintenanceWindowOutput
+	ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowOutputWithContext(context.Context) GetClusterMaintenanceUpdatePolicyMaintenanceWindowOutput
+}
+
+type GetClusterMaintenanceUpdatePolicyMaintenanceWindowArgs struct {
+	// Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc. Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+	Day pulumi.StringInput `pulumi:"day"`
+	// Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour of this time.
+	StartTimes GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayInput `pulumi:"startTimes"`
+}
+
+func (GetClusterMaintenanceUpdatePolicyMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterMaintenanceUpdatePolicyMaintenanceWindow)(nil)).Elem()
+}
+
+func (i GetClusterMaintenanceUpdatePolicyMaintenanceWindowArgs) ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowOutput() GetClusterMaintenanceUpdatePolicyMaintenanceWindowOutput {
+	return i.ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i GetClusterMaintenanceUpdatePolicyMaintenanceWindowArgs) ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowOutputWithContext(ctx context.Context) GetClusterMaintenanceUpdatePolicyMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterMaintenanceUpdatePolicyMaintenanceWindowOutput)
+}
+
+// GetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayInput is an input type that accepts GetClusterMaintenanceUpdatePolicyMaintenanceWindowArray and GetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayOutput values.
+// You can construct a concrete instance of `GetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayInput` via:
+//
+//	GetClusterMaintenanceUpdatePolicyMaintenanceWindowArray{ GetClusterMaintenanceUpdatePolicyMaintenanceWindowArgs{...} }
+type GetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayOutput() GetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayOutput
+	ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayOutputWithContext(context.Context) GetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayOutput
+}
+
+type GetClusterMaintenanceUpdatePolicyMaintenanceWindowArray []GetClusterMaintenanceUpdatePolicyMaintenanceWindowInput
+
+func (GetClusterMaintenanceUpdatePolicyMaintenanceWindowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterMaintenanceUpdatePolicyMaintenanceWindow)(nil)).Elem()
+}
+
+func (i GetClusterMaintenanceUpdatePolicyMaintenanceWindowArray) ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayOutput() GetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayOutput {
+	return i.ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterMaintenanceUpdatePolicyMaintenanceWindowArray) ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayOutputWithContext(ctx context.Context) GetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayOutput)
+}
+
+type GetClusterMaintenanceUpdatePolicyMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (GetClusterMaintenanceUpdatePolicyMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterMaintenanceUpdatePolicyMaintenanceWindow)(nil)).Elem()
+}
+
+func (o GetClusterMaintenanceUpdatePolicyMaintenanceWindowOutput) ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowOutput() GetClusterMaintenanceUpdatePolicyMaintenanceWindowOutput {
+	return o
+}
+
+func (o GetClusterMaintenanceUpdatePolicyMaintenanceWindowOutput) ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowOutputWithContext(ctx context.Context) GetClusterMaintenanceUpdatePolicyMaintenanceWindowOutput {
+	return o
+}
+
+// Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc. Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+func (o GetClusterMaintenanceUpdatePolicyMaintenanceWindowOutput) Day() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterMaintenanceUpdatePolicyMaintenanceWindow) string { return v.Day }).(pulumi.StringOutput)
+}
+
+// Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour of this time.
+func (o GetClusterMaintenanceUpdatePolicyMaintenanceWindowOutput) StartTimes() GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayOutput {
+	return o.ApplyT(func(v GetClusterMaintenanceUpdatePolicyMaintenanceWindow) []GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime {
+		return v.StartTimes
+	}).(GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayOutput)
+}
+
+type GetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterMaintenanceUpdatePolicyMaintenanceWindow)(nil)).Elem()
+}
+
+func (o GetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayOutput) ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayOutput() GetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayOutput {
+	return o
+}
+
+func (o GetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayOutput) ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayOutputWithContext(ctx context.Context) GetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayOutput {
+	return o
+}
+
+func (o GetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) GetClusterMaintenanceUpdatePolicyMaintenanceWindowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterMaintenanceUpdatePolicyMaintenanceWindow {
+		return vs[0].([]GetClusterMaintenanceUpdatePolicyMaintenanceWindow)[vs[1].(int)]
+	}).(GetClusterMaintenanceUpdatePolicyMaintenanceWindowOutput)
+}
+
+type GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23.
+	Hours int `pulumi:"hours"`
+	// Minutes of hour of day. Currently, only the value 0 is supported.
+	Minutes int `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
+	Nanos int `pulumi:"nanos"`
+	// Seconds of minutes of the time. Currently, only the value 0 is supported.
+	Seconds int `pulumi:"seconds"`
+}
+
+// GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeInput is an input type that accepts GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArgs and GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeOutput values.
+// You can construct a concrete instance of `GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeInput` via:
+//
+//	GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArgs{...}
+type GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeInput interface {
+	pulumi.Input
+
+	ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeOutput() GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeOutput
+	ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeOutputWithContext(context.Context) GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeOutput
+}
+
+type GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArgs struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23.
+	Hours pulumi.IntInput `pulumi:"hours"`
+	// Minutes of hour of day. Currently, only the value 0 is supported.
+	Minutes pulumi.IntInput `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Seconds of minutes of the time. Currently, only the value 0 is supported.
+	Seconds pulumi.IntInput `pulumi:"seconds"`
+}
+
+func (GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime)(nil)).Elem()
+}
+
+func (i GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArgs) ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeOutput() GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeOutput {
+	return i.ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeOutputWithContext(context.Background())
+}
+
+func (i GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArgs) ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeOutputWithContext(ctx context.Context) GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeOutput)
+}
+
+// GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayInput is an input type that accepts GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArray and GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayOutput values.
+// You can construct a concrete instance of `GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayInput` via:
+//
+//	GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArray{ GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArgs{...} }
+type GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayOutput() GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayOutput
+	ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayOutputWithContext(context.Context) GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayOutput
+}
+
+type GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArray []GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeInput
+
+func (GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime)(nil)).Elem()
+}
+
+func (i GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArray) ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayOutput() GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayOutput {
+	return i.ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArray) ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayOutputWithContext(ctx context.Context) GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayOutput)
+}
+
+type GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeOutput struct{ *pulumi.OutputState }
+
+func (GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime)(nil)).Elem()
+}
+
+func (o GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeOutput) ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeOutput() GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeOutput {
+	return o
+}
+
+func (o GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeOutput) ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeOutputWithContext(ctx context.Context) GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeOutput {
+	return o
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23.
+func (o GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeOutput) Hours() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime) int { return v.Hours }).(pulumi.IntOutput)
+}
+
+// Minutes of hour of day. Currently, only the value 0 is supported.
+func (o GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeOutput) Minutes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime) int { return v.Minutes }).(pulumi.IntOutput)
+}
+
+// Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
+func (o GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Seconds of minutes of the time. Currently, only the value 0 is supported.
+func (o GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
+type GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime)(nil)).Elem()
+}
+
+func (o GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayOutput) ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayOutput() GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayOutput {
+	return o
+}
+
+func (o GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayOutput) ToGetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayOutputWithContext(ctx context.Context) GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayOutput {
+	return o
+}
+
+func (o GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayOutput) Index(i pulumi.IntInput) GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime {
+		return vs[0].([]GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime)[vs[1].(int)]
+	}).(GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeOutput)
+}
+
+type GetClusterMigrationSource struct {
+	// The host and port of the on-premises instance in host:port format
+	HostPort string `pulumi:"hostPort"`
+	// Place holder for the external source identifier(e.g DMS job name) that created the cluster.
+	ReferenceId string `pulumi:"referenceId"`
+	// Type of migration source.
+	SourceType string `pulumi:"sourceType"`
+}
+
+// GetClusterMigrationSourceInput is an input type that accepts GetClusterMigrationSourceArgs and GetClusterMigrationSourceOutput values.
+// You can construct a concrete instance of `GetClusterMigrationSourceInput` via:
+//
+//	GetClusterMigrationSourceArgs{...}
+type GetClusterMigrationSourceInput interface {
+	pulumi.Input
+
+	ToGetClusterMigrationSourceOutput() GetClusterMigrationSourceOutput
+	ToGetClusterMigrationSourceOutputWithContext(context.Context) GetClusterMigrationSourceOutput
+}
+
+type GetClusterMigrationSourceArgs struct {
+	// The host and port of the on-premises instance in host:port format
+	HostPort pulumi.StringInput `pulumi:"hostPort"`
+	// Place holder for the external source identifier(e.g DMS job name) that created the cluster.
+	ReferenceId pulumi.StringInput `pulumi:"referenceId"`
+	// Type of migration source.
+	SourceType pulumi.StringInput `pulumi:"sourceType"`
+}
+
+func (GetClusterMigrationSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterMigrationSource)(nil)).Elem()
+}
+
+func (i GetClusterMigrationSourceArgs) ToGetClusterMigrationSourceOutput() GetClusterMigrationSourceOutput {
+	return i.ToGetClusterMigrationSourceOutputWithContext(context.Background())
+}
+
+func (i GetClusterMigrationSourceArgs) ToGetClusterMigrationSourceOutputWithContext(ctx context.Context) GetClusterMigrationSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterMigrationSourceOutput)
+}
+
+// GetClusterMigrationSourceArrayInput is an input type that accepts GetClusterMigrationSourceArray and GetClusterMigrationSourceArrayOutput values.
+// You can construct a concrete instance of `GetClusterMigrationSourceArrayInput` via:
+//
+//	GetClusterMigrationSourceArray{ GetClusterMigrationSourceArgs{...} }
+type GetClusterMigrationSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterMigrationSourceArrayOutput() GetClusterMigrationSourceArrayOutput
+	ToGetClusterMigrationSourceArrayOutputWithContext(context.Context) GetClusterMigrationSourceArrayOutput
+}
+
+type GetClusterMigrationSourceArray []GetClusterMigrationSourceInput
+
+func (GetClusterMigrationSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterMigrationSource)(nil)).Elem()
+}
+
+func (i GetClusterMigrationSourceArray) ToGetClusterMigrationSourceArrayOutput() GetClusterMigrationSourceArrayOutput {
+	return i.ToGetClusterMigrationSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterMigrationSourceArray) ToGetClusterMigrationSourceArrayOutputWithContext(ctx context.Context) GetClusterMigrationSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterMigrationSourceArrayOutput)
+}
+
+type GetClusterMigrationSourceOutput struct{ *pulumi.OutputState }
+
+func (GetClusterMigrationSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterMigrationSource)(nil)).Elem()
+}
+
+func (o GetClusterMigrationSourceOutput) ToGetClusterMigrationSourceOutput() GetClusterMigrationSourceOutput {
+	return o
+}
+
+func (o GetClusterMigrationSourceOutput) ToGetClusterMigrationSourceOutputWithContext(ctx context.Context) GetClusterMigrationSourceOutput {
+	return o
+}
+
+// The host and port of the on-premises instance in host:port format
+func (o GetClusterMigrationSourceOutput) HostPort() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterMigrationSource) string { return v.HostPort }).(pulumi.StringOutput)
+}
+
+// Place holder for the external source identifier(e.g DMS job name) that created the cluster.
+func (o GetClusterMigrationSourceOutput) ReferenceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterMigrationSource) string { return v.ReferenceId }).(pulumi.StringOutput)
+}
+
+// Type of migration source.
+func (o GetClusterMigrationSourceOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterMigrationSource) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
+type GetClusterMigrationSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterMigrationSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterMigrationSource)(nil)).Elem()
+}
+
+func (o GetClusterMigrationSourceArrayOutput) ToGetClusterMigrationSourceArrayOutput() GetClusterMigrationSourceArrayOutput {
+	return o
+}
+
+func (o GetClusterMigrationSourceArrayOutput) ToGetClusterMigrationSourceArrayOutputWithContext(ctx context.Context) GetClusterMigrationSourceArrayOutput {
+	return o
+}
+
+func (o GetClusterMigrationSourceArrayOutput) Index(i pulumi.IntInput) GetClusterMigrationSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterMigrationSource {
+		return vs[0].([]GetClusterMigrationSource)[vs[1].(int)]
+	}).(GetClusterMigrationSourceOutput)
+}
+
+type GetClusterNetworkConfig struct {
+	// The name of the allocated IP range for the private IP AlloyDB cluster. For example: "google-managed-services-default".
+	// If set, the instance IPs for this cluster will be created in the allocated range.
+	AllocatedIpRange string `pulumi:"allocatedIpRange"`
+	// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
+	// It is specified in the form: "projects/{projectNumber}/global/networks/{network_id}".
+	Network string `pulumi:"network"`
+}
+
+// GetClusterNetworkConfigInput is an input type that accepts GetClusterNetworkConfigArgs and GetClusterNetworkConfigOutput values.
+// You can construct a concrete instance of `GetClusterNetworkConfigInput` via:
+//
+//	GetClusterNetworkConfigArgs{...}
+type GetClusterNetworkConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNetworkConfigOutput() GetClusterNetworkConfigOutput
+	ToGetClusterNetworkConfigOutputWithContext(context.Context) GetClusterNetworkConfigOutput
+}
+
+type GetClusterNetworkConfigArgs struct {
+	// The name of the allocated IP range for the private IP AlloyDB cluster. For example: "google-managed-services-default".
+	// If set, the instance IPs for this cluster will be created in the allocated range.
+	AllocatedIpRange pulumi.StringInput `pulumi:"allocatedIpRange"`
+	// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
+	// It is specified in the form: "projects/{projectNumber}/global/networks/{network_id}".
+	Network pulumi.StringInput `pulumi:"network"`
+}
+
+func (GetClusterNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNetworkConfig)(nil)).Elem()
+}
+
+func (i GetClusterNetworkConfigArgs) ToGetClusterNetworkConfigOutput() GetClusterNetworkConfigOutput {
+	return i.ToGetClusterNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNetworkConfigArgs) ToGetClusterNetworkConfigOutputWithContext(ctx context.Context) GetClusterNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNetworkConfigOutput)
+}
+
+// GetClusterNetworkConfigArrayInput is an input type that accepts GetClusterNetworkConfigArray and GetClusterNetworkConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNetworkConfigArrayInput` via:
+//
+//	GetClusterNetworkConfigArray{ GetClusterNetworkConfigArgs{...} }
+type GetClusterNetworkConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNetworkConfigArrayOutput() GetClusterNetworkConfigArrayOutput
+	ToGetClusterNetworkConfigArrayOutputWithContext(context.Context) GetClusterNetworkConfigArrayOutput
+}
+
+type GetClusterNetworkConfigArray []GetClusterNetworkConfigInput
+
+func (GetClusterNetworkConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNetworkConfig)(nil)).Elem()
+}
+
+func (i GetClusterNetworkConfigArray) ToGetClusterNetworkConfigArrayOutput() GetClusterNetworkConfigArrayOutput {
+	return i.ToGetClusterNetworkConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNetworkConfigArray) ToGetClusterNetworkConfigArrayOutputWithContext(ctx context.Context) GetClusterNetworkConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNetworkConfigArrayOutput)
+}
+
+type GetClusterNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNetworkConfig)(nil)).Elem()
+}
+
+func (o GetClusterNetworkConfigOutput) ToGetClusterNetworkConfigOutput() GetClusterNetworkConfigOutput {
+	return o
+}
+
+func (o GetClusterNetworkConfigOutput) ToGetClusterNetworkConfigOutputWithContext(ctx context.Context) GetClusterNetworkConfigOutput {
+	return o
+}
+
+// The name of the allocated IP range for the private IP AlloyDB cluster. For example: "google-managed-services-default".
+// If set, the instance IPs for this cluster will be created in the allocated range.
+func (o GetClusterNetworkConfigOutput) AllocatedIpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNetworkConfig) string { return v.AllocatedIpRange }).(pulumi.StringOutput)
+}
+
+// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
+// It is specified in the form: "projects/{projectNumber}/global/networks/{network_id}".
+func (o GetClusterNetworkConfigOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNetworkConfig) string { return v.Network }).(pulumi.StringOutput)
+}
+
+type GetClusterNetworkConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNetworkConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNetworkConfig)(nil)).Elem()
+}
+
+func (o GetClusterNetworkConfigArrayOutput) ToGetClusterNetworkConfigArrayOutput() GetClusterNetworkConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNetworkConfigArrayOutput) ToGetClusterNetworkConfigArrayOutputWithContext(ctx context.Context) GetClusterNetworkConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNetworkConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNetworkConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNetworkConfig {
+		return vs[0].([]GetClusterNetworkConfig)[vs[1].(int)]
+	}).(GetClusterNetworkConfigOutput)
+}
+
+type GetClusterPscConfig struct {
+	// Create an instance that allows connections from Private Service Connect endpoints to the instance.
+	PscEnabled bool `pulumi:"pscEnabled"`
+}
+
+// GetClusterPscConfigInput is an input type that accepts GetClusterPscConfigArgs and GetClusterPscConfigOutput values.
+// You can construct a concrete instance of `GetClusterPscConfigInput` via:
+//
+//	GetClusterPscConfigArgs{...}
+type GetClusterPscConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterPscConfigOutput() GetClusterPscConfigOutput
+	ToGetClusterPscConfigOutputWithContext(context.Context) GetClusterPscConfigOutput
+}
+
+type GetClusterPscConfigArgs struct {
+	// Create an instance that allows connections from Private Service Connect endpoints to the instance.
+	PscEnabled pulumi.BoolInput `pulumi:"pscEnabled"`
+}
+
+func (GetClusterPscConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterPscConfig)(nil)).Elem()
+}
+
+func (i GetClusterPscConfigArgs) ToGetClusterPscConfigOutput() GetClusterPscConfigOutput {
+	return i.ToGetClusterPscConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterPscConfigArgs) ToGetClusterPscConfigOutputWithContext(ctx context.Context) GetClusterPscConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterPscConfigOutput)
+}
+
+// GetClusterPscConfigArrayInput is an input type that accepts GetClusterPscConfigArray and GetClusterPscConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterPscConfigArrayInput` via:
+//
+//	GetClusterPscConfigArray{ GetClusterPscConfigArgs{...} }
+type GetClusterPscConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterPscConfigArrayOutput() GetClusterPscConfigArrayOutput
+	ToGetClusterPscConfigArrayOutputWithContext(context.Context) GetClusterPscConfigArrayOutput
+}
+
+type GetClusterPscConfigArray []GetClusterPscConfigInput
+
+func (GetClusterPscConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterPscConfig)(nil)).Elem()
+}
+
+func (i GetClusterPscConfigArray) ToGetClusterPscConfigArrayOutput() GetClusterPscConfigArrayOutput {
+	return i.ToGetClusterPscConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterPscConfigArray) ToGetClusterPscConfigArrayOutputWithContext(ctx context.Context) GetClusterPscConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterPscConfigArrayOutput)
+}
+
+type GetClusterPscConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterPscConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterPscConfig)(nil)).Elem()
+}
+
+func (o GetClusterPscConfigOutput) ToGetClusterPscConfigOutput() GetClusterPscConfigOutput {
+	return o
+}
+
+func (o GetClusterPscConfigOutput) ToGetClusterPscConfigOutputWithContext(ctx context.Context) GetClusterPscConfigOutput {
+	return o
+}
+
+// Create an instance that allows connections from Private Service Connect endpoints to the instance.
+func (o GetClusterPscConfigOutput) PscEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterPscConfig) bool { return v.PscEnabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterPscConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterPscConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterPscConfig)(nil)).Elem()
+}
+
+func (o GetClusterPscConfigArrayOutput) ToGetClusterPscConfigArrayOutput() GetClusterPscConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterPscConfigArrayOutput) ToGetClusterPscConfigArrayOutputWithContext(ctx context.Context) GetClusterPscConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterPscConfigArrayOutput) Index(i pulumi.IntInput) GetClusterPscConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterPscConfig {
+		return vs[0].([]GetClusterPscConfig)[vs[1].(int)]
+	}).(GetClusterPscConfigOutput)
+}
+
+type GetClusterRestoreBackupSource struct {
+	// The name of the backup that this cluster is restored from.
+	BackupName string `pulumi:"backupName"`
+}
+
+// GetClusterRestoreBackupSourceInput is an input type that accepts GetClusterRestoreBackupSourceArgs and GetClusterRestoreBackupSourceOutput values.
+// You can construct a concrete instance of `GetClusterRestoreBackupSourceInput` via:
+//
+//	GetClusterRestoreBackupSourceArgs{...}
+type GetClusterRestoreBackupSourceInput interface {
+	pulumi.Input
+
+	ToGetClusterRestoreBackupSourceOutput() GetClusterRestoreBackupSourceOutput
+	ToGetClusterRestoreBackupSourceOutputWithContext(context.Context) GetClusterRestoreBackupSourceOutput
+}
+
+type GetClusterRestoreBackupSourceArgs struct {
+	// The name of the backup that this cluster is restored from.
+	BackupName pulumi.StringInput `pulumi:"backupName"`
+}
+
+func (GetClusterRestoreBackupSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRestoreBackupSource)(nil)).Elem()
+}
+
+func (i GetClusterRestoreBackupSourceArgs) ToGetClusterRestoreBackupSourceOutput() GetClusterRestoreBackupSourceOutput {
+	return i.ToGetClusterRestoreBackupSourceOutputWithContext(context.Background())
+}
+
+func (i GetClusterRestoreBackupSourceArgs) ToGetClusterRestoreBackupSourceOutputWithContext(ctx context.Context) GetClusterRestoreBackupSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRestoreBackupSourceOutput)
+}
+
+// GetClusterRestoreBackupSourceArrayInput is an input type that accepts GetClusterRestoreBackupSourceArray and GetClusterRestoreBackupSourceArrayOutput values.
+// You can construct a concrete instance of `GetClusterRestoreBackupSourceArrayInput` via:
+//
+//	GetClusterRestoreBackupSourceArray{ GetClusterRestoreBackupSourceArgs{...} }
+type GetClusterRestoreBackupSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterRestoreBackupSourceArrayOutput() GetClusterRestoreBackupSourceArrayOutput
+	ToGetClusterRestoreBackupSourceArrayOutputWithContext(context.Context) GetClusterRestoreBackupSourceArrayOutput
+}
+
+type GetClusterRestoreBackupSourceArray []GetClusterRestoreBackupSourceInput
+
+func (GetClusterRestoreBackupSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterRestoreBackupSource)(nil)).Elem()
+}
+
+func (i GetClusterRestoreBackupSourceArray) ToGetClusterRestoreBackupSourceArrayOutput() GetClusterRestoreBackupSourceArrayOutput {
+	return i.ToGetClusterRestoreBackupSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterRestoreBackupSourceArray) ToGetClusterRestoreBackupSourceArrayOutputWithContext(ctx context.Context) GetClusterRestoreBackupSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRestoreBackupSourceArrayOutput)
+}
+
+type GetClusterRestoreBackupSourceOutput struct{ *pulumi.OutputState }
+
+func (GetClusterRestoreBackupSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRestoreBackupSource)(nil)).Elem()
+}
+
+func (o GetClusterRestoreBackupSourceOutput) ToGetClusterRestoreBackupSourceOutput() GetClusterRestoreBackupSourceOutput {
+	return o
+}
+
+func (o GetClusterRestoreBackupSourceOutput) ToGetClusterRestoreBackupSourceOutputWithContext(ctx context.Context) GetClusterRestoreBackupSourceOutput {
+	return o
+}
+
+// The name of the backup that this cluster is restored from.
+func (o GetClusterRestoreBackupSourceOutput) BackupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterRestoreBackupSource) string { return v.BackupName }).(pulumi.StringOutput)
+}
+
+type GetClusterRestoreBackupSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterRestoreBackupSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterRestoreBackupSource)(nil)).Elem()
+}
+
+func (o GetClusterRestoreBackupSourceArrayOutput) ToGetClusterRestoreBackupSourceArrayOutput() GetClusterRestoreBackupSourceArrayOutput {
+	return o
+}
+
+func (o GetClusterRestoreBackupSourceArrayOutput) ToGetClusterRestoreBackupSourceArrayOutputWithContext(ctx context.Context) GetClusterRestoreBackupSourceArrayOutput {
+	return o
+}
+
+func (o GetClusterRestoreBackupSourceArrayOutput) Index(i pulumi.IntInput) GetClusterRestoreBackupSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterRestoreBackupSource {
+		return vs[0].([]GetClusterRestoreBackupSource)[vs[1].(int)]
+	}).(GetClusterRestoreBackupSourceOutput)
+}
+
+type GetClusterRestoreContinuousBackupSource struct {
+	// The name of the source cluster that this cluster is restored from.
+	Cluster string `pulumi:"cluster"`
+	// The point in time that this cluster is restored to, in RFC 3339 format.
+	PointInTime string `pulumi:"pointInTime"`
+}
+
+// GetClusterRestoreContinuousBackupSourceInput is an input type that accepts GetClusterRestoreContinuousBackupSourceArgs and GetClusterRestoreContinuousBackupSourceOutput values.
+// You can construct a concrete instance of `GetClusterRestoreContinuousBackupSourceInput` via:
+//
+//	GetClusterRestoreContinuousBackupSourceArgs{...}
+type GetClusterRestoreContinuousBackupSourceInput interface {
+	pulumi.Input
+
+	ToGetClusterRestoreContinuousBackupSourceOutput() GetClusterRestoreContinuousBackupSourceOutput
+	ToGetClusterRestoreContinuousBackupSourceOutputWithContext(context.Context) GetClusterRestoreContinuousBackupSourceOutput
+}
+
+type GetClusterRestoreContinuousBackupSourceArgs struct {
+	// The name of the source cluster that this cluster is restored from.
+	Cluster pulumi.StringInput `pulumi:"cluster"`
+	// The point in time that this cluster is restored to, in RFC 3339 format.
+	PointInTime pulumi.StringInput `pulumi:"pointInTime"`
+}
+
+func (GetClusterRestoreContinuousBackupSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRestoreContinuousBackupSource)(nil)).Elem()
+}
+
+func (i GetClusterRestoreContinuousBackupSourceArgs) ToGetClusterRestoreContinuousBackupSourceOutput() GetClusterRestoreContinuousBackupSourceOutput {
+	return i.ToGetClusterRestoreContinuousBackupSourceOutputWithContext(context.Background())
+}
+
+func (i GetClusterRestoreContinuousBackupSourceArgs) ToGetClusterRestoreContinuousBackupSourceOutputWithContext(ctx context.Context) GetClusterRestoreContinuousBackupSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRestoreContinuousBackupSourceOutput)
+}
+
+// GetClusterRestoreContinuousBackupSourceArrayInput is an input type that accepts GetClusterRestoreContinuousBackupSourceArray and GetClusterRestoreContinuousBackupSourceArrayOutput values.
+// You can construct a concrete instance of `GetClusterRestoreContinuousBackupSourceArrayInput` via:
+//
+//	GetClusterRestoreContinuousBackupSourceArray{ GetClusterRestoreContinuousBackupSourceArgs{...} }
+type GetClusterRestoreContinuousBackupSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterRestoreContinuousBackupSourceArrayOutput() GetClusterRestoreContinuousBackupSourceArrayOutput
+	ToGetClusterRestoreContinuousBackupSourceArrayOutputWithContext(context.Context) GetClusterRestoreContinuousBackupSourceArrayOutput
+}
+
+type GetClusterRestoreContinuousBackupSourceArray []GetClusterRestoreContinuousBackupSourceInput
+
+func (GetClusterRestoreContinuousBackupSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterRestoreContinuousBackupSource)(nil)).Elem()
+}
+
+func (i GetClusterRestoreContinuousBackupSourceArray) ToGetClusterRestoreContinuousBackupSourceArrayOutput() GetClusterRestoreContinuousBackupSourceArrayOutput {
+	return i.ToGetClusterRestoreContinuousBackupSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterRestoreContinuousBackupSourceArray) ToGetClusterRestoreContinuousBackupSourceArrayOutputWithContext(ctx context.Context) GetClusterRestoreContinuousBackupSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRestoreContinuousBackupSourceArrayOutput)
+}
+
+type GetClusterRestoreContinuousBackupSourceOutput struct{ *pulumi.OutputState }
+
+func (GetClusterRestoreContinuousBackupSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRestoreContinuousBackupSource)(nil)).Elem()
+}
+
+func (o GetClusterRestoreContinuousBackupSourceOutput) ToGetClusterRestoreContinuousBackupSourceOutput() GetClusterRestoreContinuousBackupSourceOutput {
+	return o
+}
+
+func (o GetClusterRestoreContinuousBackupSourceOutput) ToGetClusterRestoreContinuousBackupSourceOutputWithContext(ctx context.Context) GetClusterRestoreContinuousBackupSourceOutput {
+	return o
+}
+
+// The name of the source cluster that this cluster is restored from.
+func (o GetClusterRestoreContinuousBackupSourceOutput) Cluster() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterRestoreContinuousBackupSource) string { return v.Cluster }).(pulumi.StringOutput)
+}
+
+// The point in time that this cluster is restored to, in RFC 3339 format.
+func (o GetClusterRestoreContinuousBackupSourceOutput) PointInTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterRestoreContinuousBackupSource) string { return v.PointInTime }).(pulumi.StringOutput)
+}
+
+type GetClusterRestoreContinuousBackupSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterRestoreContinuousBackupSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterRestoreContinuousBackupSource)(nil)).Elem()
+}
+
+func (o GetClusterRestoreContinuousBackupSourceArrayOutput) ToGetClusterRestoreContinuousBackupSourceArrayOutput() GetClusterRestoreContinuousBackupSourceArrayOutput {
+	return o
+}
+
+func (o GetClusterRestoreContinuousBackupSourceArrayOutput) ToGetClusterRestoreContinuousBackupSourceArrayOutputWithContext(ctx context.Context) GetClusterRestoreContinuousBackupSourceArrayOutput {
+	return o
+}
+
+func (o GetClusterRestoreContinuousBackupSourceArrayOutput) Index(i pulumi.IntInput) GetClusterRestoreContinuousBackupSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterRestoreContinuousBackupSource {
+		return vs[0].([]GetClusterRestoreContinuousBackupSource)[vs[1].(int)]
+	}).(GetClusterRestoreContinuousBackupSourceOutput)
+}
+
+type GetClusterSecondaryConfig struct {
+	// Name of the primary cluster must be in the format
+	// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+	PrimaryClusterName string `pulumi:"primaryClusterName"`
+}
+
+// GetClusterSecondaryConfigInput is an input type that accepts GetClusterSecondaryConfigArgs and GetClusterSecondaryConfigOutput values.
+// You can construct a concrete instance of `GetClusterSecondaryConfigInput` via:
+//
+//	GetClusterSecondaryConfigArgs{...}
+type GetClusterSecondaryConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterSecondaryConfigOutput() GetClusterSecondaryConfigOutput
+	ToGetClusterSecondaryConfigOutputWithContext(context.Context) GetClusterSecondaryConfigOutput
+}
+
+type GetClusterSecondaryConfigArgs struct {
+	// Name of the primary cluster must be in the format
+	// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+	PrimaryClusterName pulumi.StringInput `pulumi:"primaryClusterName"`
+}
+
+func (GetClusterSecondaryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterSecondaryConfig)(nil)).Elem()
+}
+
+func (i GetClusterSecondaryConfigArgs) ToGetClusterSecondaryConfigOutput() GetClusterSecondaryConfigOutput {
+	return i.ToGetClusterSecondaryConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterSecondaryConfigArgs) ToGetClusterSecondaryConfigOutputWithContext(ctx context.Context) GetClusterSecondaryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterSecondaryConfigOutput)
+}
+
+// GetClusterSecondaryConfigArrayInput is an input type that accepts GetClusterSecondaryConfigArray and GetClusterSecondaryConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterSecondaryConfigArrayInput` via:
+//
+//	GetClusterSecondaryConfigArray{ GetClusterSecondaryConfigArgs{...} }
+type GetClusterSecondaryConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterSecondaryConfigArrayOutput() GetClusterSecondaryConfigArrayOutput
+	ToGetClusterSecondaryConfigArrayOutputWithContext(context.Context) GetClusterSecondaryConfigArrayOutput
+}
+
+type GetClusterSecondaryConfigArray []GetClusterSecondaryConfigInput
+
+func (GetClusterSecondaryConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterSecondaryConfig)(nil)).Elem()
+}
+
+func (i GetClusterSecondaryConfigArray) ToGetClusterSecondaryConfigArrayOutput() GetClusterSecondaryConfigArrayOutput {
+	return i.ToGetClusterSecondaryConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterSecondaryConfigArray) ToGetClusterSecondaryConfigArrayOutputWithContext(ctx context.Context) GetClusterSecondaryConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterSecondaryConfigArrayOutput)
+}
+
+type GetClusterSecondaryConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterSecondaryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterSecondaryConfig)(nil)).Elem()
+}
+
+func (o GetClusterSecondaryConfigOutput) ToGetClusterSecondaryConfigOutput() GetClusterSecondaryConfigOutput {
+	return o
+}
+
+func (o GetClusterSecondaryConfigOutput) ToGetClusterSecondaryConfigOutputWithContext(ctx context.Context) GetClusterSecondaryConfigOutput {
+	return o
+}
+
+// Name of the primary cluster must be in the format
+// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+func (o GetClusterSecondaryConfigOutput) PrimaryClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterSecondaryConfig) string { return v.PrimaryClusterName }).(pulumi.StringOutput)
+}
+
+type GetClusterSecondaryConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterSecondaryConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterSecondaryConfig)(nil)).Elem()
+}
+
+func (o GetClusterSecondaryConfigArrayOutput) ToGetClusterSecondaryConfigArrayOutput() GetClusterSecondaryConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterSecondaryConfigArrayOutput) ToGetClusterSecondaryConfigArrayOutputWithContext(ctx context.Context) GetClusterSecondaryConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterSecondaryConfigArrayOutput) Index(i pulumi.IntInput) GetClusterSecondaryConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterSecondaryConfig {
+		return vs[0].([]GetClusterSecondaryConfig)[vs[1].(int)]
+	}).(GetClusterSecondaryConfigOutput)
+}
+
+type GetClusterTrialMetadata struct {
+	// End time of the trial cluster.
+	EndTime string `pulumi:"endTime"`
+	// Grace end time of the trial cluster.
+	GraceEndTime string `pulumi:"graceEndTime"`
+	// Start time of the trial cluster.
+	StartTime string `pulumi:"startTime"`
+	// Upgrade time of the trial cluster to standard cluster.
+	UpgradeTime string `pulumi:"upgradeTime"`
+}
+
+// GetClusterTrialMetadataInput is an input type that accepts GetClusterTrialMetadataArgs and GetClusterTrialMetadataOutput values.
+// You can construct a concrete instance of `GetClusterTrialMetadataInput` via:
+//
+//	GetClusterTrialMetadataArgs{...}
+type GetClusterTrialMetadataInput interface {
+	pulumi.Input
+
+	ToGetClusterTrialMetadataOutput() GetClusterTrialMetadataOutput
+	ToGetClusterTrialMetadataOutputWithContext(context.Context) GetClusterTrialMetadataOutput
+}
+
+type GetClusterTrialMetadataArgs struct {
+	// End time of the trial cluster.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// Grace end time of the trial cluster.
+	GraceEndTime pulumi.StringInput `pulumi:"graceEndTime"`
+	// Start time of the trial cluster.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// Upgrade time of the trial cluster to standard cluster.
+	UpgradeTime pulumi.StringInput `pulumi:"upgradeTime"`
+}
+
+func (GetClusterTrialMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTrialMetadata)(nil)).Elem()
+}
+
+func (i GetClusterTrialMetadataArgs) ToGetClusterTrialMetadataOutput() GetClusterTrialMetadataOutput {
+	return i.ToGetClusterTrialMetadataOutputWithContext(context.Background())
+}
+
+func (i GetClusterTrialMetadataArgs) ToGetClusterTrialMetadataOutputWithContext(ctx context.Context) GetClusterTrialMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTrialMetadataOutput)
+}
+
+// GetClusterTrialMetadataArrayInput is an input type that accepts GetClusterTrialMetadataArray and GetClusterTrialMetadataArrayOutput values.
+// You can construct a concrete instance of `GetClusterTrialMetadataArrayInput` via:
+//
+//	GetClusterTrialMetadataArray{ GetClusterTrialMetadataArgs{...} }
+type GetClusterTrialMetadataArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterTrialMetadataArrayOutput() GetClusterTrialMetadataArrayOutput
+	ToGetClusterTrialMetadataArrayOutputWithContext(context.Context) GetClusterTrialMetadataArrayOutput
+}
+
+type GetClusterTrialMetadataArray []GetClusterTrialMetadataInput
+
+func (GetClusterTrialMetadataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterTrialMetadata)(nil)).Elem()
+}
+
+func (i GetClusterTrialMetadataArray) ToGetClusterTrialMetadataArrayOutput() GetClusterTrialMetadataArrayOutput {
+	return i.ToGetClusterTrialMetadataArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterTrialMetadataArray) ToGetClusterTrialMetadataArrayOutputWithContext(ctx context.Context) GetClusterTrialMetadataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTrialMetadataArrayOutput)
+}
+
+type GetClusterTrialMetadataOutput struct{ *pulumi.OutputState }
+
+func (GetClusterTrialMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTrialMetadata)(nil)).Elem()
+}
+
+func (o GetClusterTrialMetadataOutput) ToGetClusterTrialMetadataOutput() GetClusterTrialMetadataOutput {
+	return o
+}
+
+func (o GetClusterTrialMetadataOutput) ToGetClusterTrialMetadataOutputWithContext(ctx context.Context) GetClusterTrialMetadataOutput {
+	return o
+}
+
+// End time of the trial cluster.
+func (o GetClusterTrialMetadataOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterTrialMetadata) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Grace end time of the trial cluster.
+func (o GetClusterTrialMetadataOutput) GraceEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterTrialMetadata) string { return v.GraceEndTime }).(pulumi.StringOutput)
+}
+
+// Start time of the trial cluster.
+func (o GetClusterTrialMetadataOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterTrialMetadata) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// Upgrade time of the trial cluster to standard cluster.
+func (o GetClusterTrialMetadataOutput) UpgradeTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterTrialMetadata) string { return v.UpgradeTime }).(pulumi.StringOutput)
+}
+
+type GetClusterTrialMetadataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterTrialMetadataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterTrialMetadata)(nil)).Elem()
+}
+
+func (o GetClusterTrialMetadataArrayOutput) ToGetClusterTrialMetadataArrayOutput() GetClusterTrialMetadataArrayOutput {
+	return o
+}
+
+func (o GetClusterTrialMetadataArrayOutput) ToGetClusterTrialMetadataArrayOutputWithContext(ctx context.Context) GetClusterTrialMetadataArrayOutput {
+	return o
+}
+
+func (o GetClusterTrialMetadataArrayOutput) Index(i pulumi.IntInput) GetClusterTrialMetadataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterTrialMetadata {
+		return vs[0].([]GetClusterTrialMetadata)[vs[1].(int)]
+	}).(GetClusterTrialMetadataOutput)
+}
+
 type GetInstanceClientConnectionConfig struct {
 	// Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
 	RequireConnectors bool `pulumi:"requireConnectors"`
@@ -6824,6 +9473,54 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceQueryInsightsConfigPtrInput)(nil)).Elem(), InstanceQueryInsightsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReadPoolConfigInput)(nil)).Elem(), InstanceReadPoolConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReadPoolConfigPtrInput)(nil)).Elem(), InstanceReadPoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutomatedBackupPolicyInput)(nil)).Elem(), GetClusterAutomatedBackupPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutomatedBackupPolicyArrayInput)(nil)).Elem(), GetClusterAutomatedBackupPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutomatedBackupPolicyEncryptionConfigInput)(nil)).Elem(), GetClusterAutomatedBackupPolicyEncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutomatedBackupPolicyEncryptionConfigArrayInput)(nil)).Elem(), GetClusterAutomatedBackupPolicyEncryptionConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutomatedBackupPolicyQuantityBasedRetentionInput)(nil)).Elem(), GetClusterAutomatedBackupPolicyQuantityBasedRetentionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayInput)(nil)).Elem(), GetClusterAutomatedBackupPolicyQuantityBasedRetentionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutomatedBackupPolicyTimeBasedRetentionInput)(nil)).Elem(), GetClusterAutomatedBackupPolicyTimeBasedRetentionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutomatedBackupPolicyTimeBasedRetentionArrayInput)(nil)).Elem(), GetClusterAutomatedBackupPolicyTimeBasedRetentionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutomatedBackupPolicyWeeklyScheduleInput)(nil)).Elem(), GetClusterAutomatedBackupPolicyWeeklyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutomatedBackupPolicyWeeklyScheduleArrayInput)(nil)).Elem(), GetClusterAutomatedBackupPolicyWeeklyScheduleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeInput)(nil)).Elem(), GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayInput)(nil)).Elem(), GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterBackupSourceInput)(nil)).Elem(), GetClusterBackupSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterBackupSourceArrayInput)(nil)).Elem(), GetClusterBackupSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterContinuousBackupConfigInput)(nil)).Elem(), GetClusterContinuousBackupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterContinuousBackupConfigArrayInput)(nil)).Elem(), GetClusterContinuousBackupConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterContinuousBackupConfigEncryptionConfigInput)(nil)).Elem(), GetClusterContinuousBackupConfigEncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterContinuousBackupConfigEncryptionConfigArrayInput)(nil)).Elem(), GetClusterContinuousBackupConfigEncryptionConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterContinuousBackupInfoInput)(nil)).Elem(), GetClusterContinuousBackupInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterContinuousBackupInfoArrayInput)(nil)).Elem(), GetClusterContinuousBackupInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterContinuousBackupInfoEncryptionInfoInput)(nil)).Elem(), GetClusterContinuousBackupInfoEncryptionInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterContinuousBackupInfoEncryptionInfoArrayInput)(nil)).Elem(), GetClusterContinuousBackupInfoEncryptionInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterEncryptionConfigInput)(nil)).Elem(), GetClusterEncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterEncryptionConfigArrayInput)(nil)).Elem(), GetClusterEncryptionConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterEncryptionInfoInput)(nil)).Elem(), GetClusterEncryptionInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterEncryptionInfoArrayInput)(nil)).Elem(), GetClusterEncryptionInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterInitialUserInput)(nil)).Elem(), GetClusterInitialUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterInitialUserArrayInput)(nil)).Elem(), GetClusterInitialUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMaintenanceUpdatePolicyInput)(nil)).Elem(), GetClusterMaintenanceUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMaintenanceUpdatePolicyArrayInput)(nil)).Elem(), GetClusterMaintenanceUpdatePolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMaintenanceUpdatePolicyMaintenanceWindowInput)(nil)).Elem(), GetClusterMaintenanceUpdatePolicyMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayInput)(nil)).Elem(), GetClusterMaintenanceUpdatePolicyMaintenanceWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeInput)(nil)).Elem(), GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayInput)(nil)).Elem(), GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMigrationSourceInput)(nil)).Elem(), GetClusterMigrationSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMigrationSourceArrayInput)(nil)).Elem(), GetClusterMigrationSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNetworkConfigInput)(nil)).Elem(), GetClusterNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNetworkConfigArrayInput)(nil)).Elem(), GetClusterNetworkConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterPscConfigInput)(nil)).Elem(), GetClusterPscConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterPscConfigArrayInput)(nil)).Elem(), GetClusterPscConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterRestoreBackupSourceInput)(nil)).Elem(), GetClusterRestoreBackupSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterRestoreBackupSourceArrayInput)(nil)).Elem(), GetClusterRestoreBackupSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterRestoreContinuousBackupSourceInput)(nil)).Elem(), GetClusterRestoreContinuousBackupSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterRestoreContinuousBackupSourceArrayInput)(nil)).Elem(), GetClusterRestoreContinuousBackupSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecondaryConfigInput)(nil)).Elem(), GetClusterSecondaryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecondaryConfigArrayInput)(nil)).Elem(), GetClusterSecondaryConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterTrialMetadataInput)(nil)).Elem(), GetClusterTrialMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterTrialMetadataArrayInput)(nil)).Elem(), GetClusterTrialMetadataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceClientConnectionConfigInput)(nil)).Elem(), GetInstanceClientConnectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceClientConnectionConfigArrayInput)(nil)).Elem(), GetInstanceClientConnectionConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceClientConnectionConfigSslConfigInput)(nil)).Elem(), GetInstanceClientConnectionConfigSslConfigArgs{})
@@ -6919,6 +9616,54 @@ func init() {
 	pulumi.RegisterOutputType(InstanceQueryInsightsConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceReadPoolConfigOutput{})
 	pulumi.RegisterOutputType(InstanceReadPoolConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterAutomatedBackupPolicyOutput{})
+	pulumi.RegisterOutputType(GetClusterAutomatedBackupPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAutomatedBackupPolicyEncryptionConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterAutomatedBackupPolicyEncryptionConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAutomatedBackupPolicyQuantityBasedRetentionOutput{})
+	pulumi.RegisterOutputType(GetClusterAutomatedBackupPolicyQuantityBasedRetentionArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAutomatedBackupPolicyTimeBasedRetentionOutput{})
+	pulumi.RegisterOutputType(GetClusterAutomatedBackupPolicyTimeBasedRetentionArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAutomatedBackupPolicyWeeklyScheduleOutput{})
+	pulumi.RegisterOutputType(GetClusterAutomatedBackupPolicyWeeklyScheduleArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutput{})
+	pulumi.RegisterOutputType(GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterBackupSourceOutput{})
+	pulumi.RegisterOutputType(GetClusterBackupSourceArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterContinuousBackupConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterContinuousBackupConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterContinuousBackupConfigEncryptionConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterContinuousBackupConfigEncryptionConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterContinuousBackupInfoOutput{})
+	pulumi.RegisterOutputType(GetClusterContinuousBackupInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterContinuousBackupInfoEncryptionInfoOutput{})
+	pulumi.RegisterOutputType(GetClusterContinuousBackupInfoEncryptionInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterEncryptionConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterEncryptionConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterEncryptionInfoOutput{})
+	pulumi.RegisterOutputType(GetClusterEncryptionInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterInitialUserOutput{})
+	pulumi.RegisterOutputType(GetClusterInitialUserArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterMaintenanceUpdatePolicyOutput{})
+	pulumi.RegisterOutputType(GetClusterMaintenanceUpdatePolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterMaintenanceUpdatePolicyMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(GetClusterMaintenanceUpdatePolicyMaintenanceWindowArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeOutput{})
+	pulumi.RegisterOutputType(GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterMigrationSourceOutput{})
+	pulumi.RegisterOutputType(GetClusterMigrationSourceArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNetworkConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNetworkConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterPscConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterPscConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterRestoreBackupSourceOutput{})
+	pulumi.RegisterOutputType(GetClusterRestoreBackupSourceArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterRestoreContinuousBackupSourceOutput{})
+	pulumi.RegisterOutputType(GetClusterRestoreContinuousBackupSourceArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterSecondaryConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterSecondaryConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterTrialMetadataOutput{})
+	pulumi.RegisterOutputType(GetClusterTrialMetadataArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceClientConnectionConfigOutput{})
 	pulumi.RegisterOutputType(GetInstanceClientConnectionConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceClientConnectionConfigSslConfigOutput{})

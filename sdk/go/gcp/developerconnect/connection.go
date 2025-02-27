@@ -14,6 +14,12 @@ import (
 
 // A connection for GitHub, GitHub Enterprise, GitLab, and GitLab Enterprise.
 //
+// To get more information about Connection, see:
+//
+// * [API documentation](https://cloud.google.com/developer-connect/docs/api/reference/rest/v1/projects.locations.connections)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/developer-connect/docs/overview)
+//
 // ## Example Usage
 //
 // ### Developer Connect Connection New
@@ -499,6 +505,78 @@ import (
 //	}
 //
 // ```
+// ### Developer Connect Connection Bbc
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/developerconnect"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := developerconnect.NewConnection(ctx, "my-connection", &developerconnect.ConnectionArgs{
+//				Location:     pulumi.String("us-central1"),
+//				ConnectionId: pulumi.String("tf-test-connection"),
+//				BitbucketCloudConfig: &developerconnect.ConnectionBitbucketCloudConfigArgs{
+//					Workspace:                  pulumi.String("proctor-test"),
+//					WebhookSecretSecretVersion: pulumi.String("projects/devconnect-terraform-creds/secrets/bbc-webhook/versions/latest"),
+//					ReadAuthorizerCredential: &developerconnect.ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs{
+//						UserTokenSecretVersion: pulumi.String("projects/devconnect-terraform-creds/secrets/bbc-read-token/versions/latest"),
+//					},
+//					AuthorizerCredential: &developerconnect.ConnectionBitbucketCloudConfigAuthorizerCredentialArgs{
+//						UserTokenSecretVersion: pulumi.String("projects/devconnect-terraform-creds/secrets/bbc-auth-token/versions/latest"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Developer Connect Connection Bbdc
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/developerconnect"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := developerconnect.NewConnection(ctx, "my-connection", &developerconnect.ConnectionArgs{
+//				Location:     pulumi.String("us-central1"),
+//				ConnectionId: pulumi.String("tf-test-connection"),
+//				BitbucketDataCenterConfig: &developerconnect.ConnectionBitbucketDataCenterConfigArgs{
+//					HostUri:                    pulumi.String("https://bitbucket-us-central.gcb-test.com"),
+//					WebhookSecretSecretVersion: pulumi.String("projects/devconnect-terraform-creds/secrets/bbdc-webhook/versions/latest"),
+//					ReadAuthorizerCredential: &developerconnect.ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs{
+//						UserTokenSecretVersion: pulumi.String("projects/devconnect-terraform-creds/secrets/bbdc-read-token/versions/latest"),
+//					},
+//					AuthorizerCredential: &developerconnect.ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs{
+//						UserTokenSecretVersion: pulumi.String("projects/devconnect-terraform-creds/secrets/bbdc-auth-token/versions/latest"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Import
 //
 // Connection can be imported using any of these accepted formats:
@@ -529,6 +607,12 @@ type Connection struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
+	// Configuration for connections to an instance of Bitbucket Cloud.
+	// Structure is documented below.
+	BitbucketCloudConfig ConnectionBitbucketCloudConfigPtrOutput `pulumi:"bitbucketCloudConfig"`
+	// Configuration for connections to an instance of Bitbucket Data Center.
+	// Structure is documented below.
+	BitbucketDataCenterConfig ConnectionBitbucketDataCenterConfigPtrOutput `pulumi:"bitbucketDataCenterConfig"`
 	// Required. Id of the requesting object
 	// If auto-generating Id server-side, remove this field and
 	// connectionId from the methodSignature of Create RPC
@@ -640,6 +724,12 @@ type connectionState struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
+	// Configuration for connections to an instance of Bitbucket Cloud.
+	// Structure is documented below.
+	BitbucketCloudConfig *ConnectionBitbucketCloudConfig `pulumi:"bitbucketCloudConfig"`
+	// Configuration for connections to an instance of Bitbucket Data Center.
+	// Structure is documented below.
+	BitbucketDataCenterConfig *ConnectionBitbucketDataCenterConfig `pulumi:"bitbucketDataCenterConfig"`
 	// Required. Id of the requesting object
 	// If auto-generating Id server-side, remove this field and
 	// connectionId from the methodSignature of Create RPC
@@ -711,6 +801,12 @@ type ConnectionState struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
+	// Configuration for connections to an instance of Bitbucket Cloud.
+	// Structure is documented below.
+	BitbucketCloudConfig ConnectionBitbucketCloudConfigPtrInput
+	// Configuration for connections to an instance of Bitbucket Data Center.
+	// Structure is documented below.
+	BitbucketDataCenterConfig ConnectionBitbucketDataCenterConfigPtrInput
 	// Required. Id of the requesting object
 	// If auto-generating Id server-side, remove this field and
 	// connectionId from the methodSignature of Create RPC
@@ -786,6 +882,12 @@ type connectionArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
+	// Configuration for connections to an instance of Bitbucket Cloud.
+	// Structure is documented below.
+	BitbucketCloudConfig *ConnectionBitbucketCloudConfig `pulumi:"bitbucketCloudConfig"`
+	// Configuration for connections to an instance of Bitbucket Data Center.
+	// Structure is documented below.
+	BitbucketDataCenterConfig *ConnectionBitbucketDataCenterConfig `pulumi:"bitbucketDataCenterConfig"`
 	// Required. Id of the requesting object
 	// If auto-generating Id server-side, remove this field and
 	// connectionId from the methodSignature of Create RPC
@@ -833,6 +935,12 @@ type ConnectionArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
+	// Configuration for connections to an instance of Bitbucket Cloud.
+	// Structure is documented below.
+	BitbucketCloudConfig ConnectionBitbucketCloudConfigPtrInput
+	// Configuration for connections to an instance of Bitbucket Data Center.
+	// Structure is documented below.
+	BitbucketDataCenterConfig ConnectionBitbucketDataCenterConfigPtrInput
 	// Required. Id of the requesting object
 	// If auto-generating Id server-side, remove this field and
 	// connectionId from the methodSignature of Create RPC
@@ -966,6 +1074,18 @@ func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) Con
 // Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o ConnectionOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// Configuration for connections to an instance of Bitbucket Cloud.
+// Structure is documented below.
+func (o ConnectionOutput) BitbucketCloudConfig() ConnectionBitbucketCloudConfigPtrOutput {
+	return o.ApplyT(func(v *Connection) ConnectionBitbucketCloudConfigPtrOutput { return v.BitbucketCloudConfig }).(ConnectionBitbucketCloudConfigPtrOutput)
+}
+
+// Configuration for connections to an instance of Bitbucket Data Center.
+// Structure is documented below.
+func (o ConnectionOutput) BitbucketDataCenterConfig() ConnectionBitbucketDataCenterConfigPtrOutput {
+	return o.ApplyT(func(v *Connection) ConnectionBitbucketDataCenterConfigPtrOutput { return v.BitbucketDataCenterConfig }).(ConnectionBitbucketDataCenterConfigPtrOutput)
 }
 
 // Required. Id of the requesting object

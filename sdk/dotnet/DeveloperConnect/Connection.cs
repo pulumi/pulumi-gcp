@@ -12,6 +12,12 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// <summary>
     /// A connection for GitHub, GitHub Enterprise, GitLab, and GitLab Enterprise.
     /// 
+    /// To get more information about Connection, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/developer-connect/docs/api/reference/rest/v1/projects.locations.connections)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/developer-connect/docs/overview)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Developer Connect Connection New
@@ -435,6 +441,68 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// 
     /// });
     /// ```
+    /// ### Developer Connect Connection Bbc
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_connection = new Gcp.DeveloperConnect.Connection("my-connection", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         ConnectionId = "tf-test-connection",
+    ///         BitbucketCloudConfig = new Gcp.DeveloperConnect.Inputs.ConnectionBitbucketCloudConfigArgs
+    ///         {
+    ///             Workspace = "proctor-test",
+    ///             WebhookSecretSecretVersion = "projects/devconnect-terraform-creds/secrets/bbc-webhook/versions/latest",
+    ///             ReadAuthorizerCredential = new Gcp.DeveloperConnect.Inputs.ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs
+    ///             {
+    ///                 UserTokenSecretVersion = "projects/devconnect-terraform-creds/secrets/bbc-read-token/versions/latest",
+    ///             },
+    ///             AuthorizerCredential = new Gcp.DeveloperConnect.Inputs.ConnectionBitbucketCloudConfigAuthorizerCredentialArgs
+    ///             {
+    ///                 UserTokenSecretVersion = "projects/devconnect-terraform-creds/secrets/bbc-auth-token/versions/latest",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Developer Connect Connection Bbdc
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_connection = new Gcp.DeveloperConnect.Connection("my-connection", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         ConnectionId = "tf-test-connection",
+    ///         BitbucketDataCenterConfig = new Gcp.DeveloperConnect.Inputs.ConnectionBitbucketDataCenterConfigArgs
+    ///         {
+    ///             HostUri = "https://bitbucket-us-central.gcb-test.com",
+    ///             WebhookSecretSecretVersion = "projects/devconnect-terraform-creds/secrets/bbdc-webhook/versions/latest",
+    ///             ReadAuthorizerCredential = new Gcp.DeveloperConnect.Inputs.ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs
+    ///             {
+    ///                 UserTokenSecretVersion = "projects/devconnect-terraform-creds/secrets/bbdc-read-token/versions/latest",
+    ///             },
+    ///             AuthorizerCredential = new Gcp.DeveloperConnect.Inputs.ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs
+    ///             {
+    ///                 UserTokenSecretVersion = "projects/devconnect-terraform-creds/secrets/bbdc-auth-token/versions/latest",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Import
     /// 
     /// Connection can be imported using any of these accepted formats:
@@ -469,6 +537,20 @@ namespace Pulumi.Gcp.DeveloperConnect
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for connections to an instance of Bitbucket Cloud.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("bitbucketCloudConfig")]
+        public Output<Outputs.ConnectionBitbucketCloudConfig?> BitbucketCloudConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for connections to an instance of Bitbucket Data Center.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("bitbucketDataCenterConfig")]
+        public Output<Outputs.ConnectionBitbucketDataCenterConfig?> BitbucketDataCenterConfig { get; private set; } = null!;
 
         /// <summary>
         /// Required. Id of the requesting object
@@ -683,6 +765,20 @@ namespace Pulumi.Gcp.DeveloperConnect
         }
 
         /// <summary>
+        /// Configuration for connections to an instance of Bitbucket Cloud.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("bitbucketCloudConfig")]
+        public Input<Inputs.ConnectionBitbucketCloudConfigArgs>? BitbucketCloudConfig { get; set; }
+
+        /// <summary>
+        /// Configuration for connections to an instance of Bitbucket Data Center.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("bitbucketDataCenterConfig")]
+        public Input<Inputs.ConnectionBitbucketDataCenterConfigArgs>? BitbucketDataCenterConfig { get; set; }
+
+        /// <summary>
         /// Required. Id of the requesting object
         /// If auto-generating Id server-side, remove this field and
         /// connection_id from the method_signature of Create RPC
@@ -793,6 +889,20 @@ namespace Pulumi.Gcp.DeveloperConnect
             get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
+
+        /// <summary>
+        /// Configuration for connections to an instance of Bitbucket Cloud.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("bitbucketCloudConfig")]
+        public Input<Inputs.ConnectionBitbucketCloudConfigGetArgs>? BitbucketCloudConfig { get; set; }
+
+        /// <summary>
+        /// Configuration for connections to an instance of Bitbucket Data Center.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("bitbucketDataCenterConfig")]
+        public Input<Inputs.ConnectionBitbucketDataCenterConfigGetArgs>? BitbucketDataCenterConfig { get; set; }
 
         /// <summary>
         /// Required. Id of the requesting object

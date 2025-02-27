@@ -15,14 +15,28 @@ namespace Pulumi.Gcp.BigQuery.Outputs
     {
         /// <summary>
         /// The Secret Access Key of the AWS account transferring data from.
-        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        public readonly string SecretAccessKey;
+        public readonly string? SecretAccessKey;
+        /// <summary>
+        /// The Secret Access Key of the AWS account transferring data from.
+        /// </summary>
+        public readonly string? SecretAccessKeyWo;
+        /// <summary>
+        /// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        /// </summary>
+        public readonly int? SecretAccessKeyWoVersion;
 
         [OutputConstructor]
-        private DataTransferConfigSensitiveParams(string secretAccessKey)
+        private DataTransferConfigSensitiveParams(
+            string? secretAccessKey,
+
+            string? secretAccessKeyWo,
+
+            int? secretAccessKeyWoVersion)
         {
             SecretAccessKey = secretAccessKey;
+            SecretAccessKeyWo = secretAccessKeyWo;
+            SecretAccessKeyWoVersion = secretAccessKeyWoVersion;
         }
     }
 }

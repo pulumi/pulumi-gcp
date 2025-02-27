@@ -14,6 +14,12 @@ namespace Pulumi.Gcp.Composer
         /// <summary>
         /// Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
         /// 
+        /// To get more information about Composer User Workloads Config Map, see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsConfigMaps)
+        /// * How-to Guides
+        ///     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -66,6 +72,12 @@ namespace Pulumi.Gcp.Composer
         /// <summary>
         /// Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
         /// 
+        /// To get more information about Composer User Workloads Config Map, see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsConfigMaps)
+        /// * How-to Guides
+        ///     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -117,6 +129,12 @@ namespace Pulumi.Gcp.Composer
 
         /// <summary>
         /// Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
+        /// 
+        /// To get more information about Composer User Workloads Config Map, see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsConfigMaps)
+        /// * How-to Guides
+        ///     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
         /// 
         /// ## Example Usage
         /// 

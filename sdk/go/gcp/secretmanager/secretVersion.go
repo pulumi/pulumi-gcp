@@ -20,6 +20,9 @@ import (
 // * How-to Guides
 //   - [Create and deploy a Secret Version](https://cloud.google.com/secret-manager/docs/add-secret-version)
 //
+// > **Note:**  All arguments marked as write-only values will not be stored in the state: `payload.secret_data_wo`.
+// Read more about Write-only Attributes.
+//
 // ## Example Usage
 //
 // ### Secret Version Basic
@@ -51,6 +54,45 @@ import (
 //			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-basic", &secretmanager.SecretVersionArgs{
 //				Secret:     secret_basic.ID(),
 //				SecretData: pulumi.String("secret-data"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Secret Version Basic Write Only
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			secret_basic_write_only, err := secretmanager.NewSecret(ctx, "secret-basic-write-only", &secretmanager.SecretArgs{
+//				SecretId: pulumi.String("secret-version-write-only"),
+//				Labels: pulumi.StringMap{
+//					"label": pulumi.String("my-label"),
+//				},
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					Auto: &secretmanager.SecretReplicationAutoArgs{},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-basic-write-only", &secretmanager.SecretVersionArgs{
+//				Secret:              secret_basic_write_only.ID(),
+//				SecretDataWoVersion: pulumi.Int(1),
+//				SecretDataWo:        pulumi.String("secret-data-write-only"),
 //			})
 //			if err != nil {
 //				return err
@@ -193,6 +235,72 @@ import (
 //	}
 //
 // ```
+// ### Secret Version With Base64 String Secret Data Write Only
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			secret_basic, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
+//				SecretId: pulumi.String("secret-version-base64-write-only"),
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					UserManaged: &secretmanager.SecretReplicationUserManagedArgs{
+//						Replicas: secretmanager.SecretReplicationUserManagedReplicaArray{
+//							&secretmanager.SecretReplicationUserManagedReplicaArgs{
+//								Location: pulumi.String("us-central1"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFilebase64, err := std.Filebase64(ctx, &std.Filebase64Args{
+//				Input: "secret-data-base64-write-only.pfx",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-base64-write-only", &secretmanager.SecretVersionArgs{
+//				Secret:              secret_basic.ID(),
+//				IsSecretDataBase64:  pulumi.Bool(true),
+//				SecretDataWoVersion: pulumi.Int(1),
+//				SecretDataWo:        pulumi.String(invokeFilebase64.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Ephemeral Attributes Reference
+//
+// The following write-only attributes are supported:
+//
+//   - `secretDataWo` -
+//     (Optional)
+//     The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+//     **Note**: This property is write-only and will not be read from the API.
+//
+// <a name="nestedPayload"></a>The `payload` block supports:
+//
+//   - `secretDataWo` -
+//     (Optional)
+//     The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+//     **Note**: This property is write-only and will not be read from the API.
 //
 // ## Import
 //
@@ -232,7 +340,12 @@ type SecretVersion struct {
 	Secret pulumi.StringOutput `pulumi:"secret"`
 	// The secret data. Must be no larger than 64KiB.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	SecretData pulumi.StringOutput `pulumi:"secretData"`
+	SecretData pulumi.StringPtrOutput `pulumi:"secretData"`
+	// The secret data. Must be no larger than 64KiB. For more info see [updating write-only
+	// attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	SecretDataWo pulumi.StringPtrOutput `pulumi:"secretDataWo"`
+	// Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	SecretDataWoVersion pulumi.IntPtrOutput `pulumi:"secretDataWoVersion"`
 	// The version of the Secret.
 	Version pulumi.StringOutput `pulumi:"version"`
 }
@@ -247,11 +360,8 @@ func NewSecretVersion(ctx *pulumi.Context,
 	if args.Secret == nil {
 		return nil, errors.New("invalid value for required argument 'Secret'")
 	}
-	if args.SecretData == nil {
-		return nil, errors.New("invalid value for required argument 'SecretData'")
-	}
 	if args.SecretData != nil {
-		args.SecretData = pulumi.ToSecret(args.SecretData).(pulumi.StringInput)
+		args.SecretData = pulumi.ToSecret(args.SecretData).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"secretData",
@@ -305,6 +415,11 @@ type secretVersionState struct {
 	// The secret data. Must be no larger than 64KiB.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SecretData *string `pulumi:"secretData"`
+	// The secret data. Must be no larger than 64KiB. For more info see [updating write-only
+	// attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	SecretDataWo *string `pulumi:"secretDataWo"`
+	// Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	SecretDataWoVersion *int `pulumi:"secretDataWoVersion"`
 	// The version of the Secret.
 	Version *string `pulumi:"version"`
 }
@@ -335,6 +450,11 @@ type SecretVersionState struct {
 	// The secret data. Must be no larger than 64KiB.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SecretData pulumi.StringPtrInput
+	// The secret data. Must be no larger than 64KiB. For more info see [updating write-only
+	// attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	SecretDataWo pulumi.StringPtrInput
+	// Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	SecretDataWoVersion pulumi.IntPtrInput
 	// The version of the Secret.
 	Version pulumi.StringPtrInput
 }
@@ -361,7 +481,12 @@ type secretVersionArgs struct {
 	Secret string `pulumi:"secret"`
 	// The secret data. Must be no larger than 64KiB.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	SecretData string `pulumi:"secretData"`
+	SecretData *string `pulumi:"secretData"`
+	// The secret data. Must be no larger than 64KiB. For more info see [updating write-only
+	// attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	SecretDataWo *string `pulumi:"secretDataWo"`
+	// Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	SecretDataWoVersion *int `pulumi:"secretDataWoVersion"`
 }
 
 // The set of arguments for constructing a SecretVersion resource.
@@ -383,7 +508,12 @@ type SecretVersionArgs struct {
 	Secret pulumi.StringInput
 	// The secret data. Must be no larger than 64KiB.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	SecretData pulumi.StringInput
+	SecretData pulumi.StringPtrInput
+	// The secret data. Must be no larger than 64KiB. For more info see [updating write-only
+	// attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	SecretDataWo pulumi.StringPtrInput
+	// Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	SecretDataWoVersion pulumi.IntPtrInput
 }
 
 func (SecretVersionArgs) ElementType() reflect.Type {
@@ -518,8 +648,19 @@ func (o SecretVersionOutput) Secret() pulumi.StringOutput {
 
 // The secret data. Must be no larger than 64KiB.
 // **Note**: This property is sensitive and will not be displayed in the plan.
-func (o SecretVersionOutput) SecretData() pulumi.StringOutput {
-	return o.ApplyT(func(v *SecretVersion) pulumi.StringOutput { return v.SecretData }).(pulumi.StringOutput)
+func (o SecretVersionOutput) SecretData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretVersion) pulumi.StringPtrOutput { return v.SecretData }).(pulumi.StringPtrOutput)
+}
+
+// The secret data. Must be no larger than 64KiB. For more info see [updating write-only
+// attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+func (o SecretVersionOutput) SecretDataWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretVersion) pulumi.StringPtrOutput { return v.SecretDataWo }).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+func (o SecretVersionOutput) SecretDataWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecretVersion) pulumi.IntPtrOutput { return v.SecretDataWoVersion }).(pulumi.IntPtrOutput)
 }
 
 // The version of the Secret.

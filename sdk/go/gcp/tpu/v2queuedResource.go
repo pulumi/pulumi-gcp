@@ -53,6 +53,70 @@ import (
 //	}
 //
 // ```
+// ### Tpu V2 Queued Resource Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/tpu"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("tpu-net"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("tpu-subnet"),
+//				IpCidrRange: pulumi.String("10.0.0.0/16"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     network.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = tpu.NewV2QueuedResource(ctx, "qr", &tpu.V2QueuedResourceArgs{
+//				Name:    pulumi.String("test-qr"),
+//				Zone:    pulumi.String("us-central1-c"),
+//				Project: pulumi.String("my-project-name"),
+//				Tpu: &tpu.V2QueuedResourceTpuArgs{
+//					NodeSpecs: tpu.V2QueuedResourceTpuNodeSpecArray{
+//						&tpu.V2QueuedResourceTpuNodeSpecArgs{
+//							Parent: pulumi.String("projects/my-project-name/locations/us-central1-c"),
+//							NodeId: pulumi.String("test-tpu"),
+//							Node: &tpu.V2QueuedResourceTpuNodeSpecNodeArgs{
+//								RuntimeVersion:  pulumi.String("tpu-vm-tf-2.13.0"),
+//								AcceleratorType: pulumi.String("v2-8"),
+//								Description:     pulumi.String("Text description of the TPU."),
+//								NetworkConfig: &tpu.V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs{
+//									CanIpForward:      pulumi.Bool(true),
+//									EnableExternalIps: pulumi.Bool(true),
+//									Network:           network.ID(),
+//									Subnetwork:        subnet.ID(),
+//									QueueCount:        pulumi.Int(32),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

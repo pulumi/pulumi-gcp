@@ -324,6 +324,9 @@ class DataSharingWithGoogleSetting(pulumi.CustomResource):
         example = gcp.gemini.DataSharingWithGoogleSetting("example",
             data_sharing_with_google_setting_id="ls1-tf",
             location="global",
+            labels={
+                "my_key": "my_value",
+            },
             enable_preview_data_sharing=True)
         ```
 
@@ -385,6 +388,9 @@ class DataSharingWithGoogleSetting(pulumi.CustomResource):
         example = gcp.gemini.DataSharingWithGoogleSetting("example",
             data_sharing_with_google_setting_id="ls1-tf",
             location="global",
+            labels={
+                "my_key": "my_value",
+            },
             enable_preview_data_sharing=True)
         ```
 

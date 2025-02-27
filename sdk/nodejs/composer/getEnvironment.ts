@@ -9,6 +9,12 @@ import * as utilities from "../utilities";
 /**
  * Provides access to Cloud Composer environment configuration in a region for a given project.
  *
+ * To get more information about Composer Environment, see:
+ *
+ * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -72,6 +78,12 @@ export interface GetEnvironmentResult {
 }
 /**
  * Provides access to Cloud Composer environment configuration in a region for a given project.
+ *
+ * To get more information about Composer Environment, see:
+ *
+ * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
  *
  * ## Example Usage
  *

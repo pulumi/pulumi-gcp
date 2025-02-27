@@ -12,6 +12,7 @@ import com.pulumi.gcp.sql.UserArgs;
 import com.pulumi.gcp.sql.inputs.UserState;
 import com.pulumi.gcp.sql.outputs.UserPasswordPolicy;
 import com.pulumi.gcp.sql.outputs.UserSqlServerUserDetail;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -202,6 +203,16 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Ephemeral Attributes Reference
+ * 
+ * The following write-only attributes are supported:
+ * 
+ * * `password_wo` - (Optional) The password for the user. Can be updated. For Postgres
+ *     instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+ *     or CLOUD_IAM_SERVICE_ACCOUNT. Don&#39;t set this field for CLOUD_IAM_USER
+ *     and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
+ *   **Note**: This property is write-only and will not be read from the API.
+ * 
  * ## Import
  * 
  * SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.
@@ -236,8 +247,6 @@ public class User extends com.pulumi.resources.CustomResource {
      * 
      * Possible values are: `ABANDON`.
      * 
-     * ***
-     * 
      */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deletionPolicy;
@@ -248,8 +257,6 @@ public class User extends com.pulumi.resources.CustomResource {
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
      * 
      * Possible values are: `ABANDON`.
-     * 
-     * ***
      * 
      */
     public Output<Optional<String>> deletionPolicy() {
@@ -330,6 +337,40 @@ public class User extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<UserPasswordPolicy>> passwordPolicy() {
         return Codegen.optional(this.passwordPolicy);
+    }
+    /**
+     * The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to either
+     * CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+     * 
+     */
+    @Export(name="passwordWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> passwordWo;
+
+    /**
+     * @return The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to either
+     * CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+     * 
+     */
+    public Output<Optional<String>> passwordWo() {
+        return Codegen.optional(this.passwordWo);
+    }
+    /**
+     * The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
+     * 
+     * ***
+     * 
+     */
+    @Export(name="passwordWoVersion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> passwordWoVersion;
+
+    /**
+     * @return The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
+     * 
+     * ***
+     * 
+     */
+    public Output<Optional<Integer>> passwordWoVersion() {
+        return Codegen.optional(this.passwordWoVersion);
     }
     /**
      * The ID of the project in which the resource belongs. If it

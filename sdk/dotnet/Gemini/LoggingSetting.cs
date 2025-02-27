@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Gemini
 {
     /// <summary>
+    /// The resource for managing Logging settings for Admin Control.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Gemini Logging Setting Basic

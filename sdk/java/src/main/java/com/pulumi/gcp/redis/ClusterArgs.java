@@ -81,6 +81,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The KMS key used to encrypt the at-rest data of the cluster.
+     * 
+     */
+    @Import(name="kmsKey")
+    private @Nullable Output<String> kmsKey;
+
+    /**
+     * @return The KMS key used to encrypt the at-rest data of the cluster.
+     * 
+     */
+    public Optional<Output<String>> kmsKey() {
+        return Optional.ofNullable(this.kmsKey);
+    }
+
+    /**
      * Maintenance policy for a cluster
      * Structure is documented below.
      * 
@@ -300,6 +315,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.authorizationMode = $.authorizationMode;
         this.crossClusterReplicationConfig = $.crossClusterReplicationConfig;
         this.deletionProtectionEnabled = $.deletionProtectionEnabled;
+        this.kmsKey = $.kmsKey;
         this.maintenancePolicy = $.maintenancePolicy;
         this.name = $.name;
         this.nodeType = $.nodeType;
@@ -403,6 +419,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder deletionProtectionEnabled(Boolean deletionProtectionEnabled) {
             return deletionProtectionEnabled(Output.of(deletionProtectionEnabled));
+        }
+
+        /**
+         * @param kmsKey The KMS key used to encrypt the at-rest data of the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKey(@Nullable Output<String> kmsKey) {
+            $.kmsKey = kmsKey;
+            return this;
+        }
+
+        /**
+         * @param kmsKey The KMS key used to encrypt the at-rest data of the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKey(String kmsKey) {
+            return kmsKey(Output.of(kmsKey));
         }
 
         /**

@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumi/time";
  *
  * const project = gcp.organizations.getProject({});
  * const pabPolicy = new gcp.iam.PrincipalAccessBoundaryPolicy("pab_policy", {
@@ -29,6 +30,9 @@ import * as utilities from "../utilities";
  *     location: "global",
  *     displayName: "test project binding",
  *     principalAccessBoundaryPolicyId: "my-pab-policy",
+ * });
+ * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"}, {
+ *     dependsOn: [pabPolicy],
  * });
  * const my_project_binding = new gcp.iam.ProjectsPolicyBinding("my-project-binding", {
  *     project: project.then(project => project.projectId),
@@ -40,6 +44,8 @@ import * as utilities from "../utilities";
  *     target: {
  *         principalSet: project.then(project => `//cloudresourcemanager.googleapis.com/projects/${project.projectId}`),
  *     },
+ * }, {
+ *     dependsOn: [wait60Seconds],
  * });
  * ```
  *

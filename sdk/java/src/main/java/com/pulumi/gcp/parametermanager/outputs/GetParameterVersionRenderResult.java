@@ -35,6 +35,10 @@ public final class GetParameterVersionRenderResult {
     private String parameterData;
     private String parameterVersionId;
     private String project;
+    /**
+     * @return The Rendered Parameter Data specifies that if you use `__REF__()` to reference a secret and the format is JSON or YAML, the placeholder `__REF__()` will be replaced with the actual secret value. However, if the format is UNFORMATTED, it will stay the same as the original `parameter_data`.
+     * 
+     */
     private String renderedParameterData;
 
     private GetParameterVersionRenderResult() {}
@@ -76,6 +80,10 @@ public final class GetParameterVersionRenderResult {
     public String project() {
         return this.project;
     }
+    /**
+     * @return The Rendered Parameter Data specifies that if you use `__REF__()` to reference a secret and the format is JSON or YAML, the placeholder `__REF__()` will be replaced with the actual secret value. However, if the format is UNFORMATTED, it will stay the same as the original `parameter_data`.
+     * 
+     */
     public String renderedParameterData() {
         return this.renderedParameterData;
     }

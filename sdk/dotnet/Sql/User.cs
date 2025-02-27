@@ -151,6 +151,16 @@ namespace Pulumi.Gcp.Sql
     /// });
     /// ```
     /// 
+    /// ## Ephemeral Attributes Reference
+    /// 
+    /// The following write-only attributes are supported:
+    /// 
+    /// * `password_wo` - (Optional) The password for the user. Can be updated. For Postgres
+    ///     instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+    ///     or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
+    ///     and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
+    ///   **Note**: This property is write-only and will not be read from the API.
+    /// 
     /// ## Import
     /// 
     /// SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.
@@ -184,8 +194,6 @@ namespace Pulumi.Gcp.Sql
         /// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
         /// 
         /// Possible values are: `ABANDON`.
-        /// 
-        /// - - -
         /// </summary>
         [Output("deletionPolicy")]
         public Output<string?> DeletionPolicy { get; private set; } = null!;
@@ -223,6 +231,21 @@ namespace Pulumi.Gcp.Sql
 
         [Output("passwordPolicy")]
         public Output<Outputs.UserPasswordPolicy?> PasswordPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to either
+        /// CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+        /// </summary>
+        [Output("passwordWo")]
+        public Output<string?> PasswordWo { get; private set; } = null!;
+
+        /// <summary>
+        /// The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
+        /// 
+        /// - - -
+        /// </summary>
+        [Output("passwordWoVersion")]
+        public Output<int?> PasswordWoVersion { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs. If it
@@ -301,8 +324,6 @@ namespace Pulumi.Gcp.Sql
         /// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
         /// 
         /// Possible values are: `ABANDON`.
-        /// 
-        /// - - -
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -352,6 +373,21 @@ namespace Pulumi.Gcp.Sql
         public Input<Inputs.UserPasswordPolicyArgs>? PasswordPolicy { get; set; }
 
         /// <summary>
+        /// The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to either
+        /// CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+        /// </summary>
+        [Input("passwordWo")]
+        public Input<string>? PasswordWo { get; set; }
+
+        /// <summary>
+        /// The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
+        /// 
+        /// - - -
+        /// </summary>
+        [Input("passwordWoVersion")]
+        public Input<int>? PasswordWoVersion { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
         /// </summary>
@@ -383,8 +419,6 @@ namespace Pulumi.Gcp.Sql
         /// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
         /// 
         /// Possible values are: `ABANDON`.
-        /// 
-        /// - - -
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -432,6 +466,21 @@ namespace Pulumi.Gcp.Sql
 
         [Input("passwordPolicy")]
         public Input<Inputs.UserPasswordPolicyGetArgs>? PasswordPolicy { get; set; }
+
+        /// <summary>
+        /// The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to either
+        /// CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+        /// </summary>
+        [Input("passwordWo")]
+        public Input<string>? PasswordWo { get; set; }
+
+        /// <summary>
+        /// The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
+        /// 
+        /// - - -
+        /// </summary>
+        [Input("passwordWoVersion")]
+        public Input<int>? PasswordWoVersion { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs. If it

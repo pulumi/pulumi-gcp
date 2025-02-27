@@ -239,6 +239,8 @@ class EntryGroup(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        > **Warning:** `datacatalog.EntryGroup` is deprecated and will be removed in a future major release. Use `dataplex.EntryGroup` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
+
         An EntryGroup resource represents a logical grouping of zero or more Data Catalog Entry resources.
 
         To get more information about EntryGroup, see:
@@ -301,6 +303,8 @@ class EntryGroup(pulumi.CustomResource):
                  args: EntryGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Warning:** `datacatalog.EntryGroup` is deprecated and will be removed in a future major release. Use `dataplex.EntryGroup` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
+
         An EntryGroup resource represents a logical grouping of zero or more Data Catalog Entry resources.
 
         To get more information about EntryGroup, see:

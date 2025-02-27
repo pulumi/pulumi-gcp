@@ -5228,6 +5228,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "gemini/dataSharingWithGoogleSettingBinding",
+  "fqn": "pulumi_gcp.gemini",
+  "classes": {
+   "gcp:gemini/dataSharingWithGoogleSettingBinding:DataSharingWithGoogleSettingBinding": "DataSharingWithGoogleSettingBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "gemini/geminiGcpEnablementSetting",
   "fqn": "pulumi_gcp.gemini",
   "classes": {
@@ -8384,6 +8392,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.spanner",
   "classes": {
    "gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy": "InstanceIAMPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "spanner/instancePartition",
+  "fqn": "pulumi_gcp.spanner",
+  "classes": {
+   "gcp:spanner/instancePartition:InstancePartition": "InstancePartition"
   }
  },
  {

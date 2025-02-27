@@ -52,6 +52,30 @@ __all__ = [
     'InstancePscInstanceConfig',
     'InstanceQueryInsightsConfig',
     'InstanceReadPoolConfig',
+    'GetClusterAutomatedBackupPolicyResult',
+    'GetClusterAutomatedBackupPolicyEncryptionConfigResult',
+    'GetClusterAutomatedBackupPolicyQuantityBasedRetentionResult',
+    'GetClusterAutomatedBackupPolicyTimeBasedRetentionResult',
+    'GetClusterAutomatedBackupPolicyWeeklyScheduleResult',
+    'GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeResult',
+    'GetClusterBackupSourceResult',
+    'GetClusterContinuousBackupConfigResult',
+    'GetClusterContinuousBackupConfigEncryptionConfigResult',
+    'GetClusterContinuousBackupInfoResult',
+    'GetClusterContinuousBackupInfoEncryptionInfoResult',
+    'GetClusterEncryptionConfigResult',
+    'GetClusterEncryptionInfoResult',
+    'GetClusterInitialUserResult',
+    'GetClusterMaintenanceUpdatePolicyResult',
+    'GetClusterMaintenanceUpdatePolicyMaintenanceWindowResult',
+    'GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeResult',
+    'GetClusterMigrationSourceResult',
+    'GetClusterNetworkConfigResult',
+    'GetClusterPscConfigResult',
+    'GetClusterRestoreBackupSourceResult',
+    'GetClusterRestoreContinuousBackupSourceResult',
+    'GetClusterSecondaryConfigResult',
+    'GetClusterTrialMetadataResult',
     'GetInstanceClientConnectionConfigResult',
     'GetInstanceClientConnectionConfigSslConfigResult',
     'GetInstanceMachineConfigResult',
@@ -1998,6 +2022,790 @@ class InstanceReadPoolConfig(dict):
         Read capacity, i.e. number of nodes in a read pool instance.
         """
         return pulumi.get(self, "node_count")
+
+
+@pulumi.output_type
+class GetClusterAutomatedBackupPolicyResult(dict):
+    def __init__(__self__, *,
+                 backup_window: str,
+                 enabled: bool,
+                 encryption_configs: Sequence['outputs.GetClusterAutomatedBackupPolicyEncryptionConfigResult'],
+                 labels: Mapping[str, str],
+                 location: str,
+                 quantity_based_retentions: Sequence['outputs.GetClusterAutomatedBackupPolicyQuantityBasedRetentionResult'],
+                 time_based_retentions: Sequence['outputs.GetClusterAutomatedBackupPolicyTimeBasedRetentionResult'],
+                 weekly_schedules: Sequence['outputs.GetClusterAutomatedBackupPolicyWeeklyScheduleResult']):
+        """
+        :param str backup_window: The length of the time window during which a backup can be taken. If a backup does not succeed within this time window, it will be canceled and considered failed.
+               
+               The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it will default to 1 hour.
+               
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        :param bool enabled: Whether automated backups are enabled.
+        :param Sequence['GetClusterAutomatedBackupPolicyEncryptionConfigArgs'] encryption_configs: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        :param Mapping[str, str] labels: Labels to apply to backups created using this configuration.
+        :param str location: (optional)
+               The canonical id of the location.If it is not provided, the provider project is used. For example: us-east1.
+        :param Sequence['GetClusterAutomatedBackupPolicyQuantityBasedRetentionArgs'] quantity_based_retentions: Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
+        :param Sequence['GetClusterAutomatedBackupPolicyTimeBasedRetentionArgs'] time_based_retentions: Time-based Backup retention policy. Conflicts with 'quantity_based_retention', both can't be set together.
+        :param Sequence['GetClusterAutomatedBackupPolicyWeeklyScheduleArgs'] weekly_schedules: Weekly schedule for the Backup.
+        """
+        pulumi.set(__self__, "backup_window", backup_window)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "encryption_configs", encryption_configs)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "quantity_based_retentions", quantity_based_retentions)
+        pulumi.set(__self__, "time_based_retentions", time_based_retentions)
+        pulumi.set(__self__, "weekly_schedules", weekly_schedules)
+
+    @property
+    @pulumi.getter(name="backupWindow")
+    def backup_window(self) -> str:
+        """
+        The length of the time window during which a backup can be taken. If a backup does not succeed within this time window, it will be canceled and considered failed.
+
+        The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it will default to 1 hour.
+
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "backup_window")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether automated backups are enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="encryptionConfigs")
+    def encryption_configs(self) -> Sequence['outputs.GetClusterAutomatedBackupPolicyEncryptionConfigResult']:
+        """
+        EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        """
+        return pulumi.get(self, "encryption_configs")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Labels to apply to backups created using this configuration.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        (optional)
+        The canonical id of the location.If it is not provided, the provider project is used. For example: us-east1.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="quantityBasedRetentions")
+    def quantity_based_retentions(self) -> Sequence['outputs.GetClusterAutomatedBackupPolicyQuantityBasedRetentionResult']:
+        """
+        Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
+        """
+        return pulumi.get(self, "quantity_based_retentions")
+
+    @property
+    @pulumi.getter(name="timeBasedRetentions")
+    def time_based_retentions(self) -> Sequence['outputs.GetClusterAutomatedBackupPolicyTimeBasedRetentionResult']:
+        """
+        Time-based Backup retention policy. Conflicts with 'quantity_based_retention', both can't be set together.
+        """
+        return pulumi.get(self, "time_based_retentions")
+
+    @property
+    @pulumi.getter(name="weeklySchedules")
+    def weekly_schedules(self) -> Sequence['outputs.GetClusterAutomatedBackupPolicyWeeklyScheduleResult']:
+        """
+        Weekly schedule for the Backup.
+        """
+        return pulumi.get(self, "weekly_schedules")
+
+
+@pulumi.output_type
+class GetClusterAutomatedBackupPolicyEncryptionConfigResult(dict):
+    def __init__(__self__, *,
+                 kms_key_name: str):
+        """
+        :param str kms_key_name: The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+        """
+        return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class GetClusterAutomatedBackupPolicyQuantityBasedRetentionResult(dict):
+    def __init__(__self__, *,
+                 count: int):
+        """
+        :param int count: The number of backups to retain.
+        """
+        pulumi.set(__self__, "count", count)
+
+    @property
+    @pulumi.getter
+    def count(self) -> int:
+        """
+        The number of backups to retain.
+        """
+        return pulumi.get(self, "count")
+
+
+@pulumi.output_type
+class GetClusterAutomatedBackupPolicyTimeBasedRetentionResult(dict):
+    def __init__(__self__, *,
+                 retention_period: str):
+        """
+        :param str retention_period: The retention period.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        pulumi.set(__self__, "retention_period", retention_period)
+
+    @property
+    @pulumi.getter(name="retentionPeriod")
+    def retention_period(self) -> str:
+        """
+        The retention period.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "retention_period")
+
+
+@pulumi.output_type
+class GetClusterAutomatedBackupPolicyWeeklyScheduleResult(dict):
+    def __init__(__self__, *,
+                 days_of_weeks: Sequence[str],
+                 start_times: Sequence['outputs.GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeResult']):
+        """
+        :param Sequence[str] days_of_weeks: The days of the week to perform a backup. At least one day of the week must be provided. Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+        :param Sequence['GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs'] start_times: The times during the day to start a backup. At least one start time must be provided. The start times are assumed to be in UTC and to be an exact hour (e.g., 04:00:00).
+        """
+        pulumi.set(__self__, "days_of_weeks", days_of_weeks)
+        pulumi.set(__self__, "start_times", start_times)
+
+    @property
+    @pulumi.getter(name="daysOfWeeks")
+    def days_of_weeks(self) -> Sequence[str]:
+        """
+        The days of the week to perform a backup. At least one day of the week must be provided. Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+        """
+        return pulumi.get(self, "days_of_weeks")
+
+    @property
+    @pulumi.getter(name="startTimes")
+    def start_times(self) -> Sequence['outputs.GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeResult']:
+        """
+        The times during the day to start a backup. At least one start time must be provided. The start times are assumed to be in UTC and to be an exact hour (e.g., 04:00:00).
+        """
+        return pulumi.get(self, "start_times")
+
+
+@pulumi.output_type
+class GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeResult(dict):
+    def __init__(__self__, *,
+                 hours: int,
+                 minutes: int,
+                 nanos: int,
+                 seconds: int):
+        """
+        :param int hours: Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        :param int minutes: Minutes of hour of day. Currently, only the value 0 is supported.
+        :param int nanos: Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
+        :param int seconds: Seconds of minutes of the time. Currently, only the value 0 is supported.
+        """
+        pulumi.set(__self__, "hours", hours)
+        pulumi.set(__self__, "minutes", minutes)
+        pulumi.set(__self__, "nanos", nanos)
+        pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def hours(self) -> int:
+        """
+        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+        return pulumi.get(self, "hours")
+
+    @property
+    @pulumi.getter
+    def minutes(self) -> int:
+        """
+        Minutes of hour of day. Currently, only the value 0 is supported.
+        """
+        return pulumi.get(self, "minutes")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> int:
+        """
+        Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
+        """
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        """
+        Seconds of minutes of the time. Currently, only the value 0 is supported.
+        """
+        return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class GetClusterBackupSourceResult(dict):
+    def __init__(__self__, *,
+                 backup_name: str):
+        """
+        :param str backup_name: The name of the backup resource.
+        """
+        pulumi.set(__self__, "backup_name", backup_name)
+
+    @property
+    @pulumi.getter(name="backupName")
+    def backup_name(self) -> str:
+        """
+        The name of the backup resource.
+        """
+        return pulumi.get(self, "backup_name")
+
+
+@pulumi.output_type
+class GetClusterContinuousBackupConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 encryption_configs: Sequence['outputs.GetClusterContinuousBackupConfigEncryptionConfigResult'],
+                 recovery_window_days: int):
+        """
+        :param bool enabled: Whether continuous backup recovery is enabled. If not set, defaults to true.
+        :param Sequence['GetClusterContinuousBackupConfigEncryptionConfigArgs'] encryption_configs: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        :param int recovery_window_days: The numbers of days that are eligible to restore from using PITR. To support the entire recovery window, backups and logs are retained for one day more than the recovery window.
+               
+               If not set, defaults to 14 days.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "encryption_configs", encryption_configs)
+        pulumi.set(__self__, "recovery_window_days", recovery_window_days)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether continuous backup recovery is enabled. If not set, defaults to true.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="encryptionConfigs")
+    def encryption_configs(self) -> Sequence['outputs.GetClusterContinuousBackupConfigEncryptionConfigResult']:
+        """
+        EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        """
+        return pulumi.get(self, "encryption_configs")
+
+    @property
+    @pulumi.getter(name="recoveryWindowDays")
+    def recovery_window_days(self) -> int:
+        """
+        The numbers of days that are eligible to restore from using PITR. To support the entire recovery window, backups and logs are retained for one day more than the recovery window.
+
+        If not set, defaults to 14 days.
+        """
+        return pulumi.get(self, "recovery_window_days")
+
+
+@pulumi.output_type
+class GetClusterContinuousBackupConfigEncryptionConfigResult(dict):
+    def __init__(__self__, *,
+                 kms_key_name: str):
+        """
+        :param str kms_key_name: The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+        """
+        return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class GetClusterContinuousBackupInfoResult(dict):
+    def __init__(__self__, *,
+                 earliest_restorable_time: str,
+                 enabled_time: str,
+                 encryption_infos: Sequence['outputs.GetClusterContinuousBackupInfoEncryptionInfoResult'],
+                 schedules: Sequence[str]):
+        """
+        :param str earliest_restorable_time: The earliest restorable time that can be restored to. Output only field.
+        :param str enabled_time: When ContinuousBackup was most recently enabled. Set to null if ContinuousBackup is not enabled.
+        :param Sequence['GetClusterContinuousBackupInfoEncryptionInfoArgs'] encryption_infos: Output only. The encryption information for the WALs and backups required for ContinuousBackup.
+        :param Sequence[str] schedules: Days of the week on which a continuous backup is taken. Output only field. Ignored if passed into the request.
+        """
+        pulumi.set(__self__, "earliest_restorable_time", earliest_restorable_time)
+        pulumi.set(__self__, "enabled_time", enabled_time)
+        pulumi.set(__self__, "encryption_infos", encryption_infos)
+        pulumi.set(__self__, "schedules", schedules)
+
+    @property
+    @pulumi.getter(name="earliestRestorableTime")
+    def earliest_restorable_time(self) -> str:
+        """
+        The earliest restorable time that can be restored to. Output only field.
+        """
+        return pulumi.get(self, "earliest_restorable_time")
+
+    @property
+    @pulumi.getter(name="enabledTime")
+    def enabled_time(self) -> str:
+        """
+        When ContinuousBackup was most recently enabled. Set to null if ContinuousBackup is not enabled.
+        """
+        return pulumi.get(self, "enabled_time")
+
+    @property
+    @pulumi.getter(name="encryptionInfos")
+    def encryption_infos(self) -> Sequence['outputs.GetClusterContinuousBackupInfoEncryptionInfoResult']:
+        """
+        Output only. The encryption information for the WALs and backups required for ContinuousBackup.
+        """
+        return pulumi.get(self, "encryption_infos")
+
+    @property
+    @pulumi.getter
+    def schedules(self) -> Sequence[str]:
+        """
+        Days of the week on which a continuous backup is taken. Output only field. Ignored if passed into the request.
+        """
+        return pulumi.get(self, "schedules")
+
+
+@pulumi.output_type
+class GetClusterContinuousBackupInfoEncryptionInfoResult(dict):
+    def __init__(__self__, *,
+                 encryption_type: str,
+                 kms_key_versions: Sequence[str]):
+        """
+        :param str encryption_type: Output only. Type of encryption.
+        :param Sequence[str] kms_key_versions: Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+        """
+        pulumi.set(__self__, "encryption_type", encryption_type)
+        pulumi.set(__self__, "kms_key_versions", kms_key_versions)
+
+    @property
+    @pulumi.getter(name="encryptionType")
+    def encryption_type(self) -> str:
+        """
+        Output only. Type of encryption.
+        """
+        return pulumi.get(self, "encryption_type")
+
+    @property
+    @pulumi.getter(name="kmsKeyVersions")
+    def kms_key_versions(self) -> Sequence[str]:
+        """
+        Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+        """
+        return pulumi.get(self, "kms_key_versions")
+
+
+@pulumi.output_type
+class GetClusterEncryptionConfigResult(dict):
+    def __init__(__self__, *,
+                 kms_key_name: str):
+        """
+        :param str kms_key_name: The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+        """
+        return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class GetClusterEncryptionInfoResult(dict):
+    def __init__(__self__, *,
+                 encryption_type: str,
+                 kms_key_versions: Sequence[str]):
+        """
+        :param str encryption_type: Output only. Type of encryption.
+        :param Sequence[str] kms_key_versions: Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+        """
+        pulumi.set(__self__, "encryption_type", encryption_type)
+        pulumi.set(__self__, "kms_key_versions", kms_key_versions)
+
+    @property
+    @pulumi.getter(name="encryptionType")
+    def encryption_type(self) -> str:
+        """
+        Output only. Type of encryption.
+        """
+        return pulumi.get(self, "encryption_type")
+
+    @property
+    @pulumi.getter(name="kmsKeyVersions")
+    def kms_key_versions(self) -> Sequence[str]:
+        """
+        Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+        """
+        return pulumi.get(self, "kms_key_versions")
+
+
+@pulumi.output_type
+class GetClusterInitialUserResult(dict):
+    def __init__(__self__, *,
+                 password: str,
+                 user: str):
+        """
+        :param str password: The initial password for the user.
+        :param str user: The database username.
+        """
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        The initial password for the user.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def user(self) -> str:
+        """
+        The database username.
+        """
+        return pulumi.get(self, "user")
+
+
+@pulumi.output_type
+class GetClusterMaintenanceUpdatePolicyResult(dict):
+    def __init__(__self__, *,
+                 maintenance_windows: Sequence['outputs.GetClusterMaintenanceUpdatePolicyMaintenanceWindowResult']):
+        """
+        :param Sequence['GetClusterMaintenanceUpdatePolicyMaintenanceWindowArgs'] maintenance_windows: Preferred windows to perform maintenance. Currently limited to 1.
+        """
+        pulumi.set(__self__, "maintenance_windows", maintenance_windows)
+
+    @property
+    @pulumi.getter(name="maintenanceWindows")
+    def maintenance_windows(self) -> Sequence['outputs.GetClusterMaintenanceUpdatePolicyMaintenanceWindowResult']:
+        """
+        Preferred windows to perform maintenance. Currently limited to 1.
+        """
+        return pulumi.get(self, "maintenance_windows")
+
+
+@pulumi.output_type
+class GetClusterMaintenanceUpdatePolicyMaintenanceWindowResult(dict):
+    def __init__(__self__, *,
+                 day: str,
+                 start_times: Sequence['outputs.GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeResult']):
+        """
+        :param str day: Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc. Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+        :param Sequence['GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArgs'] start_times: Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour of this time.
+        """
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "start_times", start_times)
+
+    @property
+    @pulumi.getter
+    def day(self) -> str:
+        """
+        Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc. Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+        """
+        return pulumi.get(self, "day")
+
+    @property
+    @pulumi.getter(name="startTimes")
+    def start_times(self) -> Sequence['outputs.GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeResult']:
+        """
+        Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour of this time.
+        """
+        return pulumi.get(self, "start_times")
+
+
+@pulumi.output_type
+class GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeResult(dict):
+    def __init__(__self__, *,
+                 hours: int,
+                 minutes: int,
+                 nanos: int,
+                 seconds: int):
+        """
+        :param int hours: Hours of day in 24 hour format. Should be from 0 to 23.
+        :param int minutes: Minutes of hour of day. Currently, only the value 0 is supported.
+        :param int nanos: Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
+        :param int seconds: Seconds of minutes of the time. Currently, only the value 0 is supported.
+        """
+        pulumi.set(__self__, "hours", hours)
+        pulumi.set(__self__, "minutes", minutes)
+        pulumi.set(__self__, "nanos", nanos)
+        pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def hours(self) -> int:
+        """
+        Hours of day in 24 hour format. Should be from 0 to 23.
+        """
+        return pulumi.get(self, "hours")
+
+    @property
+    @pulumi.getter
+    def minutes(self) -> int:
+        """
+        Minutes of hour of day. Currently, only the value 0 is supported.
+        """
+        return pulumi.get(self, "minutes")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> int:
+        """
+        Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
+        """
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        """
+        Seconds of minutes of the time. Currently, only the value 0 is supported.
+        """
+        return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class GetClusterMigrationSourceResult(dict):
+    def __init__(__self__, *,
+                 host_port: str,
+                 reference_id: str,
+                 source_type: str):
+        """
+        :param str host_port: The host and port of the on-premises instance in host:port format
+        :param str reference_id: Place holder for the external source identifier(e.g DMS job name) that created the cluster.
+        :param str source_type: Type of migration source.
+        """
+        pulumi.set(__self__, "host_port", host_port)
+        pulumi.set(__self__, "reference_id", reference_id)
+        pulumi.set(__self__, "source_type", source_type)
+
+    @property
+    @pulumi.getter(name="hostPort")
+    def host_port(self) -> str:
+        """
+        The host and port of the on-premises instance in host:port format
+        """
+        return pulumi.get(self, "host_port")
+
+    @property
+    @pulumi.getter(name="referenceId")
+    def reference_id(self) -> str:
+        """
+        Place holder for the external source identifier(e.g DMS job name) that created the cluster.
+        """
+        return pulumi.get(self, "reference_id")
+
+    @property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> str:
+        """
+        Type of migration source.
+        """
+        return pulumi.get(self, "source_type")
+
+
+@pulumi.output_type
+class GetClusterNetworkConfigResult(dict):
+    def __init__(__self__, *,
+                 allocated_ip_range: str,
+                 network: str):
+        """
+        :param str allocated_ip_range: The name of the allocated IP range for the private IP AlloyDB cluster. For example: "google-managed-services-default".
+               If set, the instance IPs for this cluster will be created in the allocated range.
+        :param str network: The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
+               It is specified in the form: "projects/{projectNumber}/global/networks/{network_id}".
+        """
+        pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
+        pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter(name="allocatedIpRange")
+    def allocated_ip_range(self) -> str:
+        """
+        The name of the allocated IP range for the private IP AlloyDB cluster. For example: "google-managed-services-default".
+        If set, the instance IPs for this cluster will be created in the allocated range.
+        """
+        return pulumi.get(self, "allocated_ip_range")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
+        It is specified in the form: "projects/{projectNumber}/global/networks/{network_id}".
+        """
+        return pulumi.get(self, "network")
+
+
+@pulumi.output_type
+class GetClusterPscConfigResult(dict):
+    def __init__(__self__, *,
+                 psc_enabled: bool):
+        """
+        :param bool psc_enabled: Create an instance that allows connections from Private Service Connect endpoints to the instance.
+        """
+        pulumi.set(__self__, "psc_enabled", psc_enabled)
+
+    @property
+    @pulumi.getter(name="pscEnabled")
+    def psc_enabled(self) -> bool:
+        """
+        Create an instance that allows connections from Private Service Connect endpoints to the instance.
+        """
+        return pulumi.get(self, "psc_enabled")
+
+
+@pulumi.output_type
+class GetClusterRestoreBackupSourceResult(dict):
+    def __init__(__self__, *,
+                 backup_name: str):
+        """
+        :param str backup_name: The name of the backup that this cluster is restored from.
+        """
+        pulumi.set(__self__, "backup_name", backup_name)
+
+    @property
+    @pulumi.getter(name="backupName")
+    def backup_name(self) -> str:
+        """
+        The name of the backup that this cluster is restored from.
+        """
+        return pulumi.get(self, "backup_name")
+
+
+@pulumi.output_type
+class GetClusterRestoreContinuousBackupSourceResult(dict):
+    def __init__(__self__, *,
+                 cluster: str,
+                 point_in_time: str):
+        """
+        :param str cluster: The name of the source cluster that this cluster is restored from.
+        :param str point_in_time: The point in time that this cluster is restored to, in RFC 3339 format.
+        """
+        pulumi.set(__self__, "cluster", cluster)
+        pulumi.set(__self__, "point_in_time", point_in_time)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> str:
+        """
+        The name of the source cluster that this cluster is restored from.
+        """
+        return pulumi.get(self, "cluster")
+
+    @property
+    @pulumi.getter(name="pointInTime")
+    def point_in_time(self) -> str:
+        """
+        The point in time that this cluster is restored to, in RFC 3339 format.
+        """
+        return pulumi.get(self, "point_in_time")
+
+
+@pulumi.output_type
+class GetClusterSecondaryConfigResult(dict):
+    def __init__(__self__, *,
+                 primary_cluster_name: str):
+        """
+        :param str primary_cluster_name: Name of the primary cluster must be in the format
+               'projects/{project}/locations/{location}/clusters/{cluster_id}'
+        """
+        pulumi.set(__self__, "primary_cluster_name", primary_cluster_name)
+
+    @property
+    @pulumi.getter(name="primaryClusterName")
+    def primary_cluster_name(self) -> str:
+        """
+        Name of the primary cluster must be in the format
+        'projects/{project}/locations/{location}/clusters/{cluster_id}'
+        """
+        return pulumi.get(self, "primary_cluster_name")
+
+
+@pulumi.output_type
+class GetClusterTrialMetadataResult(dict):
+    def __init__(__self__, *,
+                 end_time: str,
+                 grace_end_time: str,
+                 start_time: str,
+                 upgrade_time: str):
+        """
+        :param str end_time: End time of the trial cluster.
+        :param str grace_end_time: Grace end time of the trial cluster.
+        :param str start_time: Start time of the trial cluster.
+        :param str upgrade_time: Upgrade time of the trial cluster to standard cluster.
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "grace_end_time", grace_end_time)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "upgrade_time", upgrade_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        End time of the trial cluster.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="graceEndTime")
+    def grace_end_time(self) -> str:
+        """
+        Grace end time of the trial cluster.
+        """
+        return pulumi.get(self, "grace_end_time")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        Start time of the trial cluster.
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter(name="upgradeTime")
+    def upgrade_time(self) -> str:
+        """
+        Upgrade time of the trial cluster to standard cluster.
+        """
+        return pulumi.get(self, "upgrade_time")
 
 
 @pulumi.output_type

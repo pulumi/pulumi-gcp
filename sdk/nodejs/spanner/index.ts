@@ -75,6 +75,11 @@ export type InstanceIAMPolicy = import("./instanceIAMPolicy").InstanceIAMPolicy;
 export const InstanceIAMPolicy: typeof import("./instanceIAMPolicy").InstanceIAMPolicy = null as any;
 utilities.lazyLoad(exports, ["InstanceIAMPolicy"], () => require("./instanceIAMPolicy"));
 
+export { InstancePartitionArgs, InstancePartitionState } from "./instancePartition";
+export type InstancePartition = import("./instancePartition").InstancePartition;
+export const InstancePartition: typeof import("./instancePartition").InstancePartition = null as any;
+utilities.lazyLoad(exports, ["InstancePartition"], () => require("./instancePartition"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -100,6 +105,8 @@ const _module = {
                 return new InstanceIAMMember(name, <any>undefined, { urn })
             case "gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy":
                 return new InstanceIAMPolicy(name, <any>undefined, { urn })
+            case "gcp:spanner/instancePartition:InstancePartition":
+                return new InstancePartition(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -115,3 +122,4 @@ pulumi.runtime.registerResourceModule("gcp", "spanner/instanceConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "spanner/instanceIAMBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "spanner/instanceIAMMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "spanner/instanceIAMPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "spanner/instancePartition", _module)

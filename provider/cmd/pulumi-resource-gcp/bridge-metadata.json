@@ -17054,6 +17054,35 @@
                 "current": "gcp:developerconnect/connection:Connection",
                 "majorVersion": 8,
                 "fields": {
+                    "bitbucket_cloud_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "authorizer_credential": {
+                                    "maxItemsOne": true
+                                },
+                                "read_authorizer_credential": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "bitbucket_data_center_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "authorizer_credential": {
+                                    "maxItemsOne": true
+                                },
+                                "read_authorizer_credential": {
+                                    "maxItemsOne": true
+                                },
+                                "service_directory_config": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
                     "crypto_key_config": {
                         "maxItemsOne": true
                     },
@@ -19183,6 +19212,10 @@
             },
             "google_gemini_data_sharing_with_google_setting": {
                 "current": "gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting",
+                "majorVersion": 8
+            },
+            "google_gemini_data_sharing_with_google_setting_binding": {
+                "current": "gcp:gemini/dataSharingWithGoogleSettingBinding:DataSharingWithGoogleSettingBinding",
                 "majorVersion": 8
             },
             "google_gemini_gemini_gcp_enablement_setting": {
@@ -28398,6 +28431,10 @@
                 "current": "gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy",
                 "majorVersion": 8
             },
+            "google_spanner_instance_partition": {
+                "current": "gcp:spanner/instancePartition:InstancePartition",
+                "majorVersion": 8
+            },
             "google_sql_database": {
                 "current": "gcp:sql/database:Database",
                 "majorVersion": 8
@@ -29020,7 +29057,14 @@
                                     "elem": {
                                         "fields": {
                                             "node": {
-                                                "maxItemsOne": true
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "network_config": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -30307,6 +30351,128 @@
             "google_active_folder": {
                 "current": "gcp:organizations/getActiveFolder:getActiveFolder",
                 "majorVersion": 8
+            },
+            "google_alloydb_cluster": {
+                "current": "gcp:alloydb/getCluster:getCluster",
+                "majorVersion": 8,
+                "fields": {
+                    "automated_backup_policy": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "encryption_config": {
+                                    "maxItemsOne": false
+                                },
+                                "quantity_based_retention": {
+                                    "maxItemsOne": false
+                                },
+                                "time_based_retention": {
+                                    "maxItemsOne": false
+                                },
+                                "weekly_schedule": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "days_of_week": {
+                                                "maxItemsOne": false
+                                            },
+                                            "start_times": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "backup_source": {
+                        "maxItemsOne": false
+                    },
+                    "continuous_backup_config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "encryption_config": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "continuous_backup_info": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "encryption_info": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "kms_key_versions": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "schedule": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "encryption_config": {
+                        "maxItemsOne": false
+                    },
+                    "encryption_info": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "kms_key_versions": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "initial_user": {
+                        "maxItemsOne": false
+                    },
+                    "maintenance_update_policy": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "maintenance_windows": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "start_time": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "migration_source": {
+                        "maxItemsOne": false
+                    },
+                    "network_config": {
+                        "maxItemsOne": false
+                    },
+                    "psc_config": {
+                        "maxItemsOne": false
+                    },
+                    "restore_backup_source": {
+                        "maxItemsOne": false
+                    },
+                    "restore_continuous_backup_source": {
+                        "maxItemsOne": false
+                    },
+                    "secondary_config": {
+                        "maxItemsOne": false
+                    },
+                    "trial_metadata": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "google_alloydb_instance": {
                 "current": "gcp:alloydb/getInstance:getInstance",
@@ -36266,6 +36432,15 @@
                 "current": "gcp:organizations/getProject:getProject",
                 "majorVersion": 8
             },
+            "google_project_ancestry": {
+                "current": "gcp:projects/getAncestry:getAncestry",
+                "majorVersion": 8,
+                "fields": {
+                    "ancestors": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_project_iam_policy": {
                 "current": "gcp:projects/getIamPolicy:getIamPolicy",
                 "majorVersion": 8
@@ -37961,6 +38136,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_gemini_data_sharing_with_google_setting_binding": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_gemini_gemini_gcp_enablement_setting": [
                 "effective_labels",
                 "terraform_labels"
@@ -38459,6 +38638,10 @@
             ]
         },
         "dataSources": {
+            "google_alloydb_cluster": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_alloydb_instance": [
                 "effective_labels",
                 "terraform_labels"
@@ -39301,6 +39484,7 @@
             "gcp:folder/organizationPolicy:OrganizationPolicy": 0,
             "gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex": 0,
             "gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting": 0,
+            "gcp:gemini/dataSharingWithGoogleSettingBinding:DataSharingWithGoogleSettingBinding": 0,
             "gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting": 0,
             "gcp:gemini/loggingSetting:LoggingSetting": 0,
             "gcp:gemini/loggingSettingBinding:LoggingSettingBinding": 0,
@@ -39696,6 +39880,7 @@
             "gcp:spanner/instanceIAMBinding:InstanceIAMBinding": 0,
             "gcp:spanner/instanceIAMMember:InstanceIAMMember": 0,
             "gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy": 0,
+            "gcp:spanner/instancePartition:InstancePartition": 0,
             "gcp:sql/database:Database": 0,
             "gcp:sql/databaseInstance:DatabaseInstance": 0,
             "gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance": 0,
@@ -39791,6 +39976,7 @@
             "gcp:accessapproval/getProjectServiceAccount:getProjectServiceAccount": 0,
             "gcp:accesscontextmanager/getAccessPolicy:getAccessPolicy": 0,
             "gcp:accesscontextmanager/getAccessPolicyIamPolicy:getAccessPolicyIamPolicy": 0,
+            "gcp:alloydb/getCluster:getCluster": 0,
             "gcp:alloydb/getInstance:getInstance": 0,
             "gcp:alloydb/getLocations:getLocations": 0,
             "gcp:alloydb/getSupportedDatabaseFlags:getSupportedDatabaseFlags": 0,
@@ -40058,6 +40244,7 @@
             "gcp:parametermanager/getRegionalParameterVersionRender:getRegionalParameterVersionRender": 0,
             "gcp:parametermanager/getRegionalParameters:getRegionalParameters": 0,
             "gcp:privilegedaccessmanager/getEntitlement:getEntitlement": 0,
+            "gcp:projects/getAncestry:getAncestry": 0,
             "gcp:projects/getIamPolicy:getIamPolicy": 0,
             "gcp:projects/getOrganizationPolicy:getOrganizationPolicy": 0,
             "gcp:projects/getProject:getProject": 0,

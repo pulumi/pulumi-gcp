@@ -9,6 +9,8 @@ import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
+import com.pulumi.gcp.projects.inputs.GetAncestryArgs;
+import com.pulumi.gcp.projects.inputs.GetAncestryPlainArgs;
 import com.pulumi.gcp.projects.inputs.GetIamPolicyArgs;
 import com.pulumi.gcp.projects.inputs.GetIamPolicyPlainArgs;
 import com.pulumi.gcp.projects.inputs.GetOrganizationPolicyArgs;
@@ -17,6 +19,7 @@ import com.pulumi.gcp.projects.inputs.GetProjectArgs;
 import com.pulumi.gcp.projects.inputs.GetProjectPlainArgs;
 import com.pulumi.gcp.projects.inputs.GetProjectServiceArgs;
 import com.pulumi.gcp.projects.inputs.GetProjectServicePlainArgs;
+import com.pulumi.gcp.projects.outputs.GetAncestryResult;
 import com.pulumi.gcp.projects.outputs.GetIamPolicyResult;
 import com.pulumi.gcp.projects.outputs.GetOrganizationPolicyResult;
 import com.pulumi.gcp.projects.outputs.GetProjectResult;
@@ -24,6 +27,307 @@ import com.pulumi.gcp.projects.outputs.GetProjectServiceResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class ProjectsFunctions {
+    /**
+     * Retrieve the ancestors for a project.
+     * See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.projects.ProjectsFunctions;
+     * import com.pulumi.gcp.projects.inputs.GetAncestryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProjectsFunctions.getAncestry(GetAncestryArgs.builder()
+     *             .projectId("example-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAncestryResult> getAncestry() {
+        return getAncestry(GetAncestryArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieve the ancestors for a project.
+     * See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.projects.ProjectsFunctions;
+     * import com.pulumi.gcp.projects.inputs.GetAncestryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProjectsFunctions.getAncestry(GetAncestryArgs.builder()
+     *             .projectId("example-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAncestryResult> getAncestryPlain() {
+        return getAncestryPlain(GetAncestryPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieve the ancestors for a project.
+     * See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.projects.ProjectsFunctions;
+     * import com.pulumi.gcp.projects.inputs.GetAncestryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProjectsFunctions.getAncestry(GetAncestryArgs.builder()
+     *             .projectId("example-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAncestryResult> getAncestry(GetAncestryArgs args) {
+        return getAncestry(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieve the ancestors for a project.
+     * See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.projects.ProjectsFunctions;
+     * import com.pulumi.gcp.projects.inputs.GetAncestryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProjectsFunctions.getAncestry(GetAncestryArgs.builder()
+     *             .projectId("example-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAncestryResult> getAncestryPlain(GetAncestryPlainArgs args) {
+        return getAncestryPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieve the ancestors for a project.
+     * See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.projects.ProjectsFunctions;
+     * import com.pulumi.gcp.projects.inputs.GetAncestryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProjectsFunctions.getAncestry(GetAncestryArgs.builder()
+     *             .projectId("example-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAncestryResult> getAncestry(GetAncestryArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:projects/getAncestry:getAncestry", TypeShape.of(GetAncestryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieve the ancestors for a project.
+     * See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.projects.ProjectsFunctions;
+     * import com.pulumi.gcp.projects.inputs.GetAncestryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProjectsFunctions.getAncestry(GetAncestryArgs.builder()
+     *             .projectId("example-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAncestryResult> getAncestry(GetAncestryArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:projects/getAncestry:getAncestry", TypeShape.of(GetAncestryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieve the ancestors for a project.
+     * See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.projects.ProjectsFunctions;
+     * import com.pulumi.gcp.projects.inputs.GetAncestryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProjectsFunctions.getAncestry(GetAncestryArgs.builder()
+     *             .projectId("example-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAncestryResult> getAncestryPlain(GetAncestryPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:projects/getAncestry:getAncestry", TypeShape.of(GetAncestryResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Retrieves the current IAM policy data for a project.
      * 

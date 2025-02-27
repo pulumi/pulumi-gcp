@@ -24,6 +24,8 @@ class ConnectionArgs:
                  connection_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 bitbucket_cloud_config: Optional[pulumi.Input['ConnectionBitbucketCloudConfigArgs']] = None,
+                 bitbucket_data_center_config: Optional[pulumi.Input['ConnectionBitbucketDataCenterConfigArgs']] = None,
                  crypto_key_config: Optional[pulumi.Input['ConnectionCryptoKeyConfigArgs']] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -45,6 +47,10 @@ class ConnectionArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Allows clients to store small amounts of arbitrary data.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input['ConnectionBitbucketCloudConfigArgs'] bitbucket_cloud_config: Configuration for connections to an instance of Bitbucket Cloud.
+               Structure is documented below.
+        :param pulumi.Input['ConnectionBitbucketDataCenterConfigArgs'] bitbucket_data_center_config: Configuration for connections to an instance of Bitbucket Data Center.
+               Structure is documented below.
         :param pulumi.Input['ConnectionCryptoKeyConfigArgs'] crypto_key_config: The crypto key configuration. This field is used by the Customer-managed
                encryption keys (CMEK) feature.
                Structure is documented below.
@@ -72,6 +78,10 @@ class ConnectionArgs:
         pulumi.set(__self__, "location", location)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if bitbucket_cloud_config is not None:
+            pulumi.set(__self__, "bitbucket_cloud_config", bitbucket_cloud_config)
+        if bitbucket_data_center_config is not None:
+            pulumi.set(__self__, "bitbucket_data_center_config", bitbucket_data_center_config)
         if crypto_key_config is not None:
             pulumi.set(__self__, "crypto_key_config", crypto_key_config)
         if disabled is not None:
@@ -133,6 +143,32 @@ class ConnectionArgs:
     @annotations.setter
     def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter(name="bitbucketCloudConfig")
+    def bitbucket_cloud_config(self) -> Optional[pulumi.Input['ConnectionBitbucketCloudConfigArgs']]:
+        """
+        Configuration for connections to an instance of Bitbucket Cloud.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bitbucket_cloud_config")
+
+    @bitbucket_cloud_config.setter
+    def bitbucket_cloud_config(self, value: Optional[pulumi.Input['ConnectionBitbucketCloudConfigArgs']]):
+        pulumi.set(self, "bitbucket_cloud_config", value)
+
+    @property
+    @pulumi.getter(name="bitbucketDataCenterConfig")
+    def bitbucket_data_center_config(self) -> Optional[pulumi.Input['ConnectionBitbucketDataCenterConfigArgs']]:
+        """
+        Configuration for connections to an instance of Bitbucket Data Center.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bitbucket_data_center_config")
+
+    @bitbucket_data_center_config.setter
+    def bitbucket_data_center_config(self, value: Optional[pulumi.Input['ConnectionBitbucketDataCenterConfigArgs']]):
+        pulumi.set(self, "bitbucket_data_center_config", value)
 
     @property
     @pulumi.getter(name="cryptoKeyConfig")
@@ -260,6 +296,8 @@ class ConnectionArgs:
 class _ConnectionState:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 bitbucket_cloud_config: Optional[pulumi.Input['ConnectionBitbucketCloudConfigArgs']] = None,
+                 bitbucket_data_center_config: Optional[pulumi.Input['ConnectionBitbucketDataCenterConfigArgs']] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  crypto_key_config: Optional[pulumi.Input['ConnectionCryptoKeyConfigArgs']] = None,
@@ -286,6 +324,10 @@ class _ConnectionState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Allows clients to store small amounts of arbitrary data.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input['ConnectionBitbucketCloudConfigArgs'] bitbucket_cloud_config: Configuration for connections to an instance of Bitbucket Cloud.
+               Structure is documented below.
+        :param pulumi.Input['ConnectionBitbucketDataCenterConfigArgs'] bitbucket_data_center_config: Configuration for connections to an instance of Bitbucket Data Center.
+               Structure is documented below.
         :param pulumi.Input[str] connection_id: Required. Id of the requesting object
                If auto-generating Id server-side, remove this field and
                connection_id from the method_signature of Create RPC
@@ -333,6 +375,10 @@ class _ConnectionState:
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if bitbucket_cloud_config is not None:
+            pulumi.set(__self__, "bitbucket_cloud_config", bitbucket_cloud_config)
+        if bitbucket_data_center_config is not None:
+            pulumi.set(__self__, "bitbucket_data_center_config", bitbucket_data_center_config)
         if connection_id is not None:
             pulumi.set(__self__, "connection_id", connection_id)
         if create_time is not None:
@@ -389,6 +435,32 @@ class _ConnectionState:
     @annotations.setter
     def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter(name="bitbucketCloudConfig")
+    def bitbucket_cloud_config(self) -> Optional[pulumi.Input['ConnectionBitbucketCloudConfigArgs']]:
+        """
+        Configuration for connections to an instance of Bitbucket Cloud.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bitbucket_cloud_config")
+
+    @bitbucket_cloud_config.setter
+    def bitbucket_cloud_config(self, value: Optional[pulumi.Input['ConnectionBitbucketCloudConfigArgs']]):
+        pulumi.set(self, "bitbucket_cloud_config", value)
+
+    @property
+    @pulumi.getter(name="bitbucketDataCenterConfig")
+    def bitbucket_data_center_config(self) -> Optional[pulumi.Input['ConnectionBitbucketDataCenterConfigArgs']]:
+        """
+        Configuration for connections to an instance of Bitbucket Data Center.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bitbucket_data_center_config")
+
+    @bitbucket_data_center_config.setter
+    def bitbucket_data_center_config(self, value: Optional[pulumi.Input['ConnectionBitbucketDataCenterConfigArgs']]):
+        pulumi.set(self, "bitbucket_data_center_config", value)
 
     @property
     @pulumi.getter(name="connectionId")
@@ -670,6 +742,8 @@ class Connection(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 bitbucket_cloud_config: Optional[pulumi.Input[Union['ConnectionBitbucketCloudConfigArgs', 'ConnectionBitbucketCloudConfigArgsDict']]] = None,
+                 bitbucket_data_center_config: Optional[pulumi.Input[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict']]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  crypto_key_config: Optional[pulumi.Input[Union['ConnectionCryptoKeyConfigArgs', 'ConnectionCryptoKeyConfigArgsDict']]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -684,6 +758,12 @@ class Connection(pulumi.CustomResource):
                  __props__=None):
         """
         A connection for GitHub, GitHub Enterprise, GitLab, and GitLab Enterprise.
+
+        To get more information about Connection, see:
+
+        * [API documentation](https://cloud.google.com/developer-connect/docs/api/reference/rest/v1/projects.locations.connections)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/developer-connect/docs/overview)
 
         ## Example Usage
 
@@ -912,6 +992,46 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+        ### Developer Connect Connection Bbc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_connection = gcp.developerconnect.Connection("my-connection",
+            location="us-central1",
+            connection_id="tf-test-connection",
+            bitbucket_cloud_config={
+                "workspace": "proctor-test",
+                "webhook_secret_secret_version": "projects/devconnect-terraform-creds/secrets/bbc-webhook/versions/latest",
+                "read_authorizer_credential": {
+                    "user_token_secret_version": "projects/devconnect-terraform-creds/secrets/bbc-read-token/versions/latest",
+                },
+                "authorizer_credential": {
+                    "user_token_secret_version": "projects/devconnect-terraform-creds/secrets/bbc-auth-token/versions/latest",
+                },
+            })
+        ```
+        ### Developer Connect Connection Bbdc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_connection = gcp.developerconnect.Connection("my-connection",
+            location="us-central1",
+            connection_id="tf-test-connection",
+            bitbucket_data_center_config={
+                "host_uri": "https://bitbucket-us-central.gcb-test.com",
+                "webhook_secret_secret_version": "projects/devconnect-terraform-creds/secrets/bbdc-webhook/versions/latest",
+                "read_authorizer_credential": {
+                    "user_token_secret_version": "projects/devconnect-terraform-creds/secrets/bbdc-read-token/versions/latest",
+                },
+                "authorizer_credential": {
+                    "user_token_secret_version": "projects/devconnect-terraform-creds/secrets/bbdc-auth-token/versions/latest",
+                },
+            })
+        ```
         ## Import
 
         Connection can be imported using any of these accepted formats:
@@ -941,6 +1061,10 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Allows clients to store small amounts of arbitrary data.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Union['ConnectionBitbucketCloudConfigArgs', 'ConnectionBitbucketCloudConfigArgsDict']] bitbucket_cloud_config: Configuration for connections to an instance of Bitbucket Cloud.
+               Structure is documented below.
+        :param pulumi.Input[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict']] bitbucket_data_center_config: Configuration for connections to an instance of Bitbucket Data Center.
+               Structure is documented below.
         :param pulumi.Input[str] connection_id: Required. Id of the requesting object
                If auto-generating Id server-side, remove this field and
                connection_id from the method_signature of Create RPC
@@ -980,6 +1104,12 @@ class Connection(pulumi.CustomResource):
         """
         A connection for GitHub, GitHub Enterprise, GitLab, and GitLab Enterprise.
 
+        To get more information about Connection, see:
+
+        * [API documentation](https://cloud.google.com/developer-connect/docs/api/reference/rest/v1/projects.locations.connections)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/developer-connect/docs/overview)
+
         ## Example Usage
 
         ### Developer Connect Connection New
@@ -1204,6 +1334,46 @@ class Connection(pulumi.CustomResource):
                 },
                 "authorizer_credential": {
                     "user_token_secret_version": "projects/devconnect-terraform-creds/secrets/gitlab-enterprise-auth-cred/versions/latest",
+                },
+            })
+        ```
+        ### Developer Connect Connection Bbc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_connection = gcp.developerconnect.Connection("my-connection",
+            location="us-central1",
+            connection_id="tf-test-connection",
+            bitbucket_cloud_config={
+                "workspace": "proctor-test",
+                "webhook_secret_secret_version": "projects/devconnect-terraform-creds/secrets/bbc-webhook/versions/latest",
+                "read_authorizer_credential": {
+                    "user_token_secret_version": "projects/devconnect-terraform-creds/secrets/bbc-read-token/versions/latest",
+                },
+                "authorizer_credential": {
+                    "user_token_secret_version": "projects/devconnect-terraform-creds/secrets/bbc-auth-token/versions/latest",
+                },
+            })
+        ```
+        ### Developer Connect Connection Bbdc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_connection = gcp.developerconnect.Connection("my-connection",
+            location="us-central1",
+            connection_id="tf-test-connection",
+            bitbucket_data_center_config={
+                "host_uri": "https://bitbucket-us-central.gcb-test.com",
+                "webhook_secret_secret_version": "projects/devconnect-terraform-creds/secrets/bbdc-webhook/versions/latest",
+                "read_authorizer_credential": {
+                    "user_token_secret_version": "projects/devconnect-terraform-creds/secrets/bbdc-read-token/versions/latest",
+                },
+                "authorizer_credential": {
+                    "user_token_secret_version": "projects/devconnect-terraform-creds/secrets/bbdc-auth-token/versions/latest",
                 },
             })
         ```
@@ -1247,6 +1417,8 @@ class Connection(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 bitbucket_cloud_config: Optional[pulumi.Input[Union['ConnectionBitbucketCloudConfigArgs', 'ConnectionBitbucketCloudConfigArgsDict']]] = None,
+                 bitbucket_data_center_config: Optional[pulumi.Input[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict']]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  crypto_key_config: Optional[pulumi.Input[Union['ConnectionCryptoKeyConfigArgs', 'ConnectionCryptoKeyConfigArgsDict']]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -1268,6 +1440,8 @@ class Connection(pulumi.CustomResource):
             __props__ = ConnectionArgs.__new__(ConnectionArgs)
 
             __props__.__dict__["annotations"] = annotations
+            __props__.__dict__["bitbucket_cloud_config"] = bitbucket_cloud_config
+            __props__.__dict__["bitbucket_data_center_config"] = bitbucket_data_center_config
             if connection_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_id'")
             __props__.__dict__["connection_id"] = connection_id
@@ -1306,6 +1480,8 @@ class Connection(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            bitbucket_cloud_config: Optional[pulumi.Input[Union['ConnectionBitbucketCloudConfigArgs', 'ConnectionBitbucketCloudConfigArgsDict']]] = None,
+            bitbucket_data_center_config: Optional[pulumi.Input[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict']]] = None,
             connection_id: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             crypto_key_config: Optional[pulumi.Input[Union['ConnectionCryptoKeyConfigArgs', 'ConnectionCryptoKeyConfigArgsDict']]] = None,
@@ -1337,6 +1513,10 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Allows clients to store small amounts of arbitrary data.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Union['ConnectionBitbucketCloudConfigArgs', 'ConnectionBitbucketCloudConfigArgsDict']] bitbucket_cloud_config: Configuration for connections to an instance of Bitbucket Cloud.
+               Structure is documented below.
+        :param pulumi.Input[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict']] bitbucket_data_center_config: Configuration for connections to an instance of Bitbucket Data Center.
+               Structure is documented below.
         :param pulumi.Input[str] connection_id: Required. Id of the requesting object
                If auto-generating Id server-side, remove this field and
                connection_id from the method_signature of Create RPC
@@ -1387,6 +1567,8 @@ class Connection(pulumi.CustomResource):
         __props__ = _ConnectionState.__new__(_ConnectionState)
 
         __props__.__dict__["annotations"] = annotations
+        __props__.__dict__["bitbucket_cloud_config"] = bitbucket_cloud_config
+        __props__.__dict__["bitbucket_data_center_config"] = bitbucket_data_center_config
         __props__.__dict__["connection_id"] = connection_id
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["crypto_key_config"] = crypto_key_config
@@ -1419,6 +1601,24 @@ class Connection(pulumi.CustomResource):
         Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="bitbucketCloudConfig")
+    def bitbucket_cloud_config(self) -> pulumi.Output[Optional['outputs.ConnectionBitbucketCloudConfig']]:
+        """
+        Configuration for connections to an instance of Bitbucket Cloud.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bitbucket_cloud_config")
+
+    @property
+    @pulumi.getter(name="bitbucketDataCenterConfig")
+    def bitbucket_data_center_config(self) -> pulumi.Output[Optional['outputs.ConnectionBitbucketDataCenterConfig']]:
+        """
+        Configuration for connections to an instance of Bitbucket Data Center.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bitbucket_data_center_config")
 
     @property
     @pulumi.getter(name="connectionId")

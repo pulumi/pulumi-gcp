@@ -186,7 +186,7 @@ public final class WorkforcePoolProviderArgs extends com.pulumi.resources.Resour
      * The configuration for OAuth 2.0 client used to get the additional user
      * attributes. This should be used when users can&#39;t get the desired claims
      * in authentication credentials. Currently this configuration is only
-     * supported with OIDC protocol.
+     * supported with SAML and OIDC protocol.
      * Structure is documented below.
      * 
      */
@@ -197,7 +197,7 @@ public final class WorkforcePoolProviderArgs extends com.pulumi.resources.Resour
      * @return The configuration for OAuth 2.0 client used to get the additional user
      * attributes. This should be used when users can&#39;t get the desired claims
      * in authentication credentials. Currently this configuration is only
-     * supported with OIDC protocol.
+     * supported with SAML and OIDC protocol.
      * Structure is documented below.
      * 
      */
@@ -527,7 +527,7 @@ public final class WorkforcePoolProviderArgs extends com.pulumi.resources.Resour
          * @param extraAttributesOauth2Client The configuration for OAuth 2.0 client used to get the additional user
          * attributes. This should be used when users can&#39;t get the desired claims
          * in authentication credentials. Currently this configuration is only
-         * supported with OIDC protocol.
+         * supported with SAML and OIDC protocol.
          * Structure is documented below.
          * 
          * @return builder
@@ -542,7 +542,7 @@ public final class WorkforcePoolProviderArgs extends com.pulumi.resources.Resour
          * @param extraAttributesOauth2Client The configuration for OAuth 2.0 client used to get the additional user
          * attributes. This should be used when users can&#39;t get the desired claims
          * in authentication credentials. Currently this configuration is only
-         * supported with OIDC protocol.
+         * supported with SAML and OIDC protocol.
          * Structure is documented below.
          * 
          * @return builder
