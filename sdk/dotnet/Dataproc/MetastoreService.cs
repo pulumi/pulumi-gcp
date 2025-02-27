@@ -674,7 +674,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public MetastoreService(string name, MetastoreServiceArgs args, CustomResourceOptions? options = null)
+        public MetastoreService(string name, MetastoreServiceArgs? args = null, CustomResourceOptions? options = null)
             : base("gcp:dataproc/metastoreService:MetastoreService", name, args ?? new MetastoreServiceArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -840,8 +840,8 @@ namespace Pulumi.Gcp.Dataproc
         /// 
         /// - - -
         /// </summary>
-        [Input("serviceId", required: true)]
-        public Input<string> ServiceId { get; set; } = null!;
+        [Input("serviceId")]
+        public Input<string>? ServiceId { get; set; }
 
         /// <summary>
         /// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
