@@ -15,10 +15,10 @@ index dbd57f2ec..f43ca0947 100644
 -See [google_cloud_run_service](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloud_run_service#argument-reference) resource for details of the available attributes.
 +See google_cloud_run_service resource for details of the available attributes.
 diff --git a/website/docs/d/composer_environment.html.markdown b/website/docs/d/composer_environment.html.markdown
-index ab74bbe2e..189aa56f7 100644
+index 97e6a0ebd..813e871da 100644
 --- a/website/docs/d/composer_environment.html.markdown
 +++ b/website/docs/d/composer_environment.html.markdown
-@@ -44,7 +44,6 @@ The following attributes are exported:
+@@ -50,7 +50,6 @@ The following attributes are exported:
  * `id` - An identifier for the resource in format `projects/{{project}}/locations/{{region}}/environments/{{name}}`
  
  * `config` - Configuration parameters for the environment.
