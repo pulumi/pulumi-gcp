@@ -1254,8 +1254,8 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "dataproc_job_iam.html.markdown",
 				},
 			},
-			"google_dataproc_autoscaling_policy":   {Tok: gcpResource(gcpDataProc, "AutoscalingPolicy")},
-			"google_dataproc_metastore_service":    {
+			"google_dataproc_autoscaling_policy": {Tok: gcpResource(gcpDataProc, "AutoscalingPolicy")},
+			"google_dataproc_metastore_service": {
 				Tok: gcpResource(gcpDataProc, "MetastoreService"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					// https://cloud.google.com/dataproc-metastore/docs/reference/rpc/google.cloud.metastore.v1#createservicerequest
