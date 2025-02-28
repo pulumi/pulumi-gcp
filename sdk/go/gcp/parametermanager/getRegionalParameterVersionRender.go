@@ -75,9 +75,10 @@ type GetRegionalParameterVersionRenderResult struct {
 	Name      string `pulumi:"name"`
 	Parameter string `pulumi:"parameter"`
 	// The Parameter data.
-	ParameterData         string `pulumi:"parameterData"`
-	ParameterVersionId    string `pulumi:"parameterVersionId"`
-	Project               string `pulumi:"project"`
+	ParameterData      string `pulumi:"parameterData"`
+	ParameterVersionId string `pulumi:"parameterVersionId"`
+	Project            string `pulumi:"project"`
+	// The Rendered Parameter Data specifies that if you use `__REF__()` to reference a secret and the format is JSON or YAML, the placeholder `__REF__()` will be replaced with the actual secret value. However, if the format is UNFORMATTED, it will stay the same as the original `parameterData`.
 	RenderedParameterData string `pulumi:"renderedParameterData"`
 }
 
@@ -161,6 +162,7 @@ func (o GetRegionalParameterVersionRenderResultOutput) Project() pulumi.StringOu
 	return o.ApplyT(func(v GetRegionalParameterVersionRenderResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// The Rendered Parameter Data specifies that if you use `__REF__()` to reference a secret and the format is JSON or YAML, the placeholder `__REF__()` will be replaced with the actual secret value. However, if the format is UNFORMATTED, it will stay the same as the original `parameterData`.
 func (o GetRegionalParameterVersionRenderResultOutput) RenderedParameterData() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionalParameterVersionRenderResult) string { return v.RenderedParameterData }).(pulumi.StringOutput)
 }

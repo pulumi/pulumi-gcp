@@ -22,32 +22,32 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var producerNet = new Gcp.Compute.Network("producer_net", new()
+    ///     var consumerNet = new Gcp.Compute.Network("consumer_net", new()
     ///     {
-    ///         Name = "mynetwork",
+    ///         Name = "my-network",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     var producerSubnet = new Gcp.Compute.Subnetwork("producer_subnet", new()
+    ///     var consumerSubnet = new Gcp.Compute.Subnetwork("consumer_subnet", new()
     ///     {
-    ///         Name = "mysubnet",
+    ///         Name = "my-subnet",
     ///         IpCidrRange = "10.0.0.248/29",
     ///         Region = "us-central1",
-    ///         Network = producerNet.Id,
+    ///         Network = consumerNet.Id,
     ///     });
     /// 
     ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
     ///     {
-    ///         Name = "mypolicy",
+    ///         Name = "my-policy",
     ///         Location = "us-central1",
     ///         ServiceClass = "gcp-memorystore-redis",
     ///         Description = "my basic service connection policy",
-    ///         Network = producerNet.Id,
+    ///         Network = consumerNet.Id,
     ///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
     ///         {
     ///             Subnetworks = new[]
     ///             {
-    ///                 producerSubnet.Id,
+    ///                 consumerSubnet.Id,
     ///             },
     ///         },
     ///     });
@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.Redis
     ///         {
     ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
     ///             {
-    ///                 Network = producerNet.Id,
+    ///                 Network = consumerNet.Id,
     ///             },
     ///         },
     ///         Region = "us-central1",
@@ -114,32 +114,32 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var producerNet = new Gcp.Compute.Network("producer_net", new()
+    ///     var consumerNet = new Gcp.Compute.Network("consumer_net", new()
     ///     {
-    ///         Name = "mynetwork",
+    ///         Name = "my-network",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     var producerSubnet = new Gcp.Compute.Subnetwork("producer_subnet", new()
+    ///     var consumerSubnet = new Gcp.Compute.Subnetwork("consumer_subnet", new()
     ///     {
-    ///         Name = "mysubnet",
+    ///         Name = "my-subnet",
     ///         IpCidrRange = "10.0.0.248/29",
     ///         Region = "us-central1",
-    ///         Network = producerNet.Id,
+    ///         Network = consumerNet.Id,
     ///     });
     /// 
     ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
     ///     {
-    ///         Name = "mypolicy",
+    ///         Name = "my-policy",
     ///         Location = "us-central1",
     ///         ServiceClass = "gcp-memorystore-redis",
     ///         Description = "my basic service connection policy",
-    ///         Network = producerNet.Id,
+    ///         Network = consumerNet.Id,
     ///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
     ///         {
     ///             Subnetworks = new[]
     ///             {
-    ///                 producerSubnet.Id,
+    ///                 consumerSubnet.Id,
     ///             },
     ///         },
     ///     });
@@ -152,7 +152,7 @@ namespace Pulumi.Gcp.Redis
     ///         {
     ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
     ///             {
-    ///                 Network = producerNet.Id,
+    ///                 Network = consumerNet.Id,
     ///             },
     ///         },
     ///         Region = "us-central1",
@@ -199,18 +199,18 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var producerNet = new Gcp.Compute.Network("producer_net", new()
+    ///     var consumerNet = new Gcp.Compute.Network("consumer_net", new()
     ///     {
     ///         Name = "mynetwork",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     var primaryClusterProducerSubnet = new Gcp.Compute.Subnetwork("primary_cluster_producer_subnet", new()
+    ///     var primaryClusterConsumerSubnet = new Gcp.Compute.Subnetwork("primary_cluster_consumer_subnet", new()
     ///     {
     ///         Name = "mysubnet-primary-cluster",
     ///         IpCidrRange = "10.0.1.0/29",
     ///         Region = "us-east1",
-    ///         Network = producerNet.Id,
+    ///         Network = consumerNet.Id,
     ///     });
     /// 
     ///     var primaryClusterRegionScp = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("primary_cluster_region_scp", new()
@@ -219,12 +219,12 @@ namespace Pulumi.Gcp.Redis
     ///         Location = "us-east1",
     ///         ServiceClass = "gcp-memorystore-redis",
     ///         Description = "Primary cluster service connection policy",
-    ///         Network = producerNet.Id,
+    ///         Network = consumerNet.Id,
     ///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
     ///         {
     ///             Subnetworks = new[]
     ///             {
-    ///                 primaryClusterProducerSubnet.Id,
+    ///                 primaryClusterConsumerSubnet.Id,
     ///             },
     ///         },
     ///     });
@@ -238,7 +238,7 @@ namespace Pulumi.Gcp.Redis
     ///         {
     ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
     ///             {
-    ///                 Network = producerNet.Id,
+    ///                 Network = consumerNet.Id,
     ///             },
     ///         },
     ///         AuthorizationMode = "AUTH_MODE_DISABLED",
@@ -289,12 +289,12 @@ namespace Pulumi.Gcp.Redis
     ///         },
     ///     });
     /// 
-    ///     var secondaryClusterProducerSubnet = new Gcp.Compute.Subnetwork("secondary_cluster_producer_subnet", new()
+    ///     var secondaryClusterConsumerSubnet = new Gcp.Compute.Subnetwork("secondary_cluster_consumer_subnet", new()
     ///     {
     ///         Name = "mysubnet-secondary-cluster",
     ///         IpCidrRange = "10.0.2.0/29",
     ///         Region = "europe-west1",
-    ///         Network = producerNet.Id,
+    ///         Network = consumerNet.Id,
     ///     });
     /// 
     ///     var secondaryClusterRegionScp = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("secondary_cluster_region_scp", new()
@@ -303,12 +303,12 @@ namespace Pulumi.Gcp.Redis
     ///         Location = "europe-west1",
     ///         ServiceClass = "gcp-memorystore-redis",
     ///         Description = "Secondary cluster service connection policy",
-    ///         Network = producerNet.Id,
+    ///         Network = consumerNet.Id,
     ///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
     ///         {
     ///             Subnetworks = new[]
     ///             {
-    ///                 secondaryClusterProducerSubnet.Id,
+    ///                 secondaryClusterConsumerSubnet.Id,
     ///             },
     ///         },
     ///     });
@@ -322,7 +322,7 @@ namespace Pulumi.Gcp.Redis
     ///         {
     ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
     ///             {
-    ///                 Network = producerNet.Id,
+    ///                 Network = consumerNet.Id,
     ///             },
     ///         },
     ///         AuthorizationMode = "AUTH_MODE_DISABLED",
@@ -393,32 +393,32 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var producerNet = new Gcp.Compute.Network("producer_net", new()
+    ///     var consumerNet = new Gcp.Compute.Network("consumer_net", new()
     ///     {
-    ///         Name = "mynetwork",
+    ///         Name = "my-network",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     var producerSubnet = new Gcp.Compute.Subnetwork("producer_subnet", new()
+    ///     var consumerSubnet = new Gcp.Compute.Subnetwork("consumer_subnet", new()
     ///     {
-    ///         Name = "mysubnet",
+    ///         Name = "my-subnet",
     ///         IpCidrRange = "10.0.0.248/29",
     ///         Region = "us-central1",
-    ///         Network = producerNet.Id,
+    ///         Network = consumerNet.Id,
     ///     });
     /// 
     ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
     ///     {
-    ///         Name = "mypolicy",
+    ///         Name = "my-policy",
     ///         Location = "us-central1",
     ///         ServiceClass = "gcp-memorystore-redis",
     ///         Description = "my basic service connection policy",
-    ///         Network = producerNet.Id,
+    ///         Network = consumerNet.Id,
     ///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
     ///         {
     ///             Subnetworks = new[]
     ///             {
-    ///                 producerSubnet.Id,
+    ///                 consumerSubnet.Id,
     ///             },
     ///         },
     ///     });
@@ -431,7 +431,7 @@ namespace Pulumi.Gcp.Redis
     ///         {
     ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
     ///             {
-    ///                 Network = producerNet.Id,
+    ///                 Network = consumerNet.Id,
     ///             },
     ///         },
     ///         Region = "us-central1",
@@ -494,32 +494,32 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var producerNet = new Gcp.Compute.Network("producer_net", new()
+    ///     var consumerNet = new Gcp.Compute.Network("consumer_net", new()
     ///     {
-    ///         Name = "mynetwork",
+    ///         Name = "my-network",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     var producerSubnet = new Gcp.Compute.Subnetwork("producer_subnet", new()
+    ///     var consumerSubnet = new Gcp.Compute.Subnetwork("consumer_subnet", new()
     ///     {
-    ///         Name = "mysubnet",
+    ///         Name = "my-subnet",
     ///         IpCidrRange = "10.0.0.248/29",
     ///         Region = "us-central1",
-    ///         Network = producerNet.Id,
+    ///         Network = consumerNet.Id,
     ///     });
     /// 
     ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
     ///     {
-    ///         Name = "mypolicy",
+    ///         Name = "my-policy",
     ///         Location = "us-central1",
     ///         ServiceClass = "gcp-memorystore-redis",
     ///         Description = "my basic service connection policy",
-    ///         Network = producerNet.Id,
+    ///         Network = consumerNet.Id,
     ///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
     ///         {
     ///             Subnetworks = new[]
     ///             {
-    ///                 producerSubnet.Id,
+    ///                 consumerSubnet.Id,
     ///             },
     ///         },
     ///     });
@@ -532,7 +532,7 @@ namespace Pulumi.Gcp.Redis
     ///         {
     ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
     ///             {
-    ///                 Network = producerNet.Id,
+    ///                 Network = consumerNet.Id,
     ///             },
     ///         },
     ///         Region = "us-central1",
@@ -581,6 +581,72 @@ namespace Pulumi.Gcp.Redis
     ///             @default,
     ///         },
     ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Redis Cluster Cmek
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var consumerNet = new Gcp.Compute.Network("consumer_net", new()
+    ///     {
+    ///         Name = "my-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var consumerSubnet = new Gcp.Compute.Subnetwork("consumer_subnet", new()
+    ///     {
+    ///         Name = "my-subnet",
+    ///         IpCidrRange = "10.0.0.248/29",
+    ///         Region = "us-central1",
+    ///         Network = consumerNet.Id,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
+    ///     {
+    ///         Name = "my-policy",
+    ///         Location = "us-central1",
+    ///         ServiceClass = "gcp-memorystore-redis",
+    ///         Description = "my basic service connection policy",
+    ///         Network = consumerNet.Id,
+    ///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
+    ///         {
+    ///             Subnetworks = new[]
+    ///             {
+    ///                 consumerSubnet.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var cluster_cmek = new Gcp.Redis.Cluster("cluster-cmek", new()
+    ///     {
+    ///         Name = "cmek-cluster",
+    ///         ShardCount = 3,
+    ///         PscConfigs = new[]
+    ///         {
+    ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
+    ///             {
+    ///                 Network = consumerNet.Id,
+    ///             },
+    ///         },
+    ///         KmsKey = "my-key",
+    ///         Region = "us-central1",
+    ///         DeletionProtectionEnabled = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             @default,
+    ///         },
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
     /// });
     /// ```
@@ -657,6 +723,12 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Output("discoveryEndpoints")]
         public Output<ImmutableArray<Outputs.ClusterDiscoveryEndpoint>> DiscoveryEndpoints { get; private set; } = null!;
+
+        /// <summary>
+        /// The KMS key used to encrypt the at-rest data of the cluster.
+        /// </summary>
+        [Output("kmsKey")]
+        public Output<string?> KmsKey { get; private set; } = null!;
 
         /// <summary>
         /// Maintenance policy for a cluster
@@ -870,6 +942,12 @@ namespace Pulumi.Gcp.Redis
         public Input<bool>? DeletionProtectionEnabled { get; set; }
 
         /// <summary>
+        /// The KMS key used to encrypt the at-rest data of the cluster.
+        /// </summary>
+        [Input("kmsKey")]
+        public Input<string>? KmsKey { get; set; }
+
+        /// <summary>
         /// Maintenance policy for a cluster
         /// Structure is documented below.
         /// </summary>
@@ -1024,6 +1102,12 @@ namespace Pulumi.Gcp.Redis
             get => _discoveryEndpoints ?? (_discoveryEndpoints = new InputList<Inputs.ClusterDiscoveryEndpointGetArgs>());
             set => _discoveryEndpoints = value;
         }
+
+        /// <summary>
+        /// The KMS key used to encrypt the at-rest data of the cluster.
+        /// </summary>
+        [Input("kmsKey")]
+        public Input<string>? KmsKey { get; set; }
 
         /// <summary>
         /// Maintenance policy for a cluster

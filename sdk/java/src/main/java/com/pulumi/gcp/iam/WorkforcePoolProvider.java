@@ -97,6 +97,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.iam.WorkforcePoolProvider;
  * import com.pulumi.gcp.iam.WorkforcePoolProviderArgs;
  * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderSamlArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderExtraAttributesOauth2ClientArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -122,7 +126,20 @@ import javax.annotation.Nullable;
  *             .providerId("example-prvdr")
  *             .attributeMapping(Map.of("google.subject", "assertion.sub"))
  *             .saml(WorkforcePoolProviderSamlArgs.builder()
- *                 .idpMetadataXml("<?xml version=\"1.0\"?><md:EntityDescriptor xmlns:md=\"urn:oasis:names:tc:SAML:2.0:metadata\" entityID=\"https://test.com\"><md:IDPSSODescriptor protocolSupportEnumeration=\"urn:oasis:names:tc:SAML:2.0:protocol\"> <md:KeyDescriptor use=\"signing\"><ds:KeyInfo xmlns:ds=\"http://www.w3.org/2000/09/xmldsig#\"><ds:X509Data><ds:X509Certificate>MIIDpDCCAoygAwIBAgIGAX7/5qPhMA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEUMBIGA1UECwwLU1NPUHJvdmlkZXIxEzARBgNVBAMMCmRldi00NTg0MjExHDAaBgkqhkiG9w0BCQEWDWluZm9Ab2t0YS5jb20wHhcNMjIwMjE2MDAxOTEyWhcNMzIwMjE2MDAyMDEyWjCBkjELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xDTALBgNVBAoMBE9rdGExFDASBgNVBAsMC1NTT1Byb3ZpZGVyMRMwEQYDVQQDDApkZXYtNDU4NDIxMRwwGgYJKoZIhvcNAQkBFg1pbmZvQG9rdGEuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxrBl7GKz52cRpxF9xCsirnRuMxnhFBaUrsHqAQrLqWmdlpNYZTVg+T9iQ+aq/iE68L+BRZcZniKIvW58wqqS0ltXVvIkXuDSvnvnkkI5yMIVErR20K8jSOKQm1FmK+fgAJ4koshFiu9oLiqu0Ejc0DuL3/XRsb4RuxjktKTb1khgBBtb+7idEk0sFR0RPefAweXImJkDHDm7SxjDwGJUubbqpdTxasPr0W+AHI1VUzsUsTiHAoyb0XDkYqHfDzhj/ZdIEl4zHQ3bEZvlD984ztAnmX2SuFLLKfXeAAGHei8MMixJvwxYkkPeYZ/5h8WgBZPP4heS2CPjwYExt29L8QIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQARjJFz++a9Z5IQGFzsZMrX2EDR5ML4xxUiQkbhld1S1PljOLcYFARDmUC2YYHOueU4ee8Jid9nPGEUebV/4Jok+b+oQh+dWMgiWjSLI7h5q4OYZ3VJtdlVwgMFt2iz+/4yBKMUZ50g3Qgg36vE34us+eKitg759JgCNsibxn0qtJgSPm0sgP2L6yTaLnoEUbXBRxCwynTSkp9ZijZqEzbhN0e2dWv7Rx/nfpohpDP6vEiFImKFHpDSv3M/5de1ytQzPFrZBYt9WlzlYwE1aD9FHCxdd+rWgYMVVoRaRmndpV/Rq3QUuDuFJtaoX11bC7ExkOpg9KstZzA63i3VcfYv</ds:X509Certificate></ds:X509Data></ds:KeyInfo></md:KeyDescriptor><md:SingleSignOnService Binding=\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect\" Location=\"https://test.com/sso\"/></md:IDPSSODescriptor></md:EntityDescriptor>")
+ *                 .idpMetadataXml("<?xml version=\"1.0\"?><md:EntityDescriptor xmlns:md=\"urn:oasis:names:tc:SAML:2.0:metadata\" entityID=\"https://sts.windows.net/826602fe-2101-470c-9d71-ee1343668989\"><md:IDPSSODescriptor protocolSupportEnumeration=\"urn:oasis:names:tc:SAML:2.0:protocol\"> <md:KeyDescriptor use=\"signing\"><ds:KeyInfo xmlns:ds=\"http://www.w3.org/2000/09/xmldsig#\"><ds:X509Data><ds:X509Certificate>MIIDpDCCAoygAwIBAgIGAX7/5qPhMA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEUMBIGA1UECwwLU1NPUHJvdmlkZXIxEzARBgNVBAMMCmRldi00NTg0MjExHDAaBgkqhkiG9w0BCQEWDWluZm9Ab2t0YS5jb20wHhcNMjIwMjE2MDAxOTEyWhcNMzIwMjE2MDAyMDEyWjCBkjELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xDTALBgNVBAoMBE9rdGExFDASBgNVBAsMC1NTT1Byb3ZpZGVyMRMwEQYDVQQDDApkZXYtNDU4NDIxMRwwGgYJKoZIhvcNAQkBFg1pbmZvQG9rdGEuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxrBl7GKz52cRpxF9xCsirnRuMxnhFBaUrsHqAQrLqWmdlpNYZTVg+T9iQ+aq/iE68L+BRZcZniKIvW58wqqS0ltXVvIkXuDSvnvnkkI5yMIVErR20K8jSOKQm1FmK+fgAJ4koshFiu9oLiqu0Ejc0DuL3/XRsb4RuxjktKTb1khgBBtb+7idEk0sFR0RPefAweXImJkDHDm7SxjDwGJUubbqpdTxasPr0W+AHI1VUzsUsTiHAoyb0XDkYqHfDzhj/ZdIEl4zHQ3bEZvlD984ztAnmX2SuFLLKfXeAAGHei8MMixJvwxYkkPeYZ/5h8WgBZPP4heS2CPjwYExt29L8QIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQARjJFz++a9Z5IQGFzsZMrX2EDR5ML4xxUiQkbhld1S1PljOLcYFARDmUC2YYHOueU4ee8Jid9nPGEUebV/4Jok+b+oQh+dWMgiWjSLI7h5q4OYZ3VJtdlVwgMFt2iz+/4yBKMUZ50g3Qgg36vE34us+eKitg759JgCNsibxn0qtJgSPm0sgP2L6yTaLnoEUbXBRxCwynTSkp9ZijZqEzbhN0e2dWv7Rx/nfpohpDP6vEiFImKFHpDSv3M/5de1ytQzPFrZBYt9WlzlYwE1aD9FHCxdd+rWgYMVVoRaRmndpV/Rq3QUuDuFJtaoX11bC7ExkOpg9KstZzA63i3VcfYv</ds:X509Certificate></ds:X509Data></ds:KeyInfo></md:KeyDescriptor><md:SingleSignOnService Binding=\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect\" Location=\"https://test.com/sso\"/></md:IDPSSODescriptor></md:EntityDescriptor>")
+ *                 .build())
+ *             .extraAttributesOauth2Client(WorkforcePoolProviderExtraAttributesOauth2ClientArgs.builder()
+ *                 .issuerUri("https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0")
+ *                 .clientId("client-id")
+ *                 .clientSecret(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs.builder()
+ *                     .value(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs.builder()
+ *                         .plainText("client-secret")
+ *                         .build())
+ *                     .build())
+ *                 .attributesType("AZURE_AD_GROUPS_MAIL")
+ *                 .queryParameters(WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs.builder()
+ *                     .filter("mail:gcp")
+ *                     .build())
  *                 .build())
  *             .displayName("Display name")
  *             .description("A sample SAML workforce pool provider.")
@@ -215,6 +232,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcClientSecretArgs;
  * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcClientSecretValueArgs;
  * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcWebSsoConfigArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderExtraAttributesOauth2ClientArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -240,7 +261,7 @@ import javax.annotation.Nullable;
  *             .providerId("example-prvdr")
  *             .attributeMapping(Map.of("google.subject", "assertion.sub"))
  *             .oidc(WorkforcePoolProviderOidcArgs.builder()
- *                 .issuerUri("https://accounts.thirdparty.com")
+ *                 .issuerUri("https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0")
  *                 .clientId("client-id")
  *                 .clientSecret(WorkforcePoolProviderOidcClientSecretArgs.builder()
  *                     .value(WorkforcePoolProviderOidcClientSecretValueArgs.builder()
@@ -253,6 +274,19 @@ import javax.annotation.Nullable;
  *                     .additionalScopes(                    
  *                         "groups",
  *                         "roles")
+ *                     .build())
+ *                 .build())
+ *             .extraAttributesOauth2Client(WorkforcePoolProviderExtraAttributesOauth2ClientArgs.builder()
+ *                 .issuerUri("https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0")
+ *                 .clientId("client-id")
+ *                 .clientSecret(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs.builder()
+ *                     .value(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs.builder()
+ *                         .plainText("client-secret")
+ *                         .build())
+ *                     .build())
+ *                 .attributesType("AZURE_AD_GROUPS_MAIL")
+ *                 .queryParameters(WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs.builder()
+ *                     .filter("mail:sales")
  *                     .build())
  *                 .build())
  *             .displayName("Display name")
@@ -602,7 +636,7 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * The configuration for OAuth 2.0 client used to get the additional user
      * attributes. This should be used when users can&#39;t get the desired claims
      * in authentication credentials. Currently this configuration is only
-     * supported with OIDC protocol.
+     * supported with SAML and OIDC protocol.
      * Structure is documented below.
      * 
      */
@@ -613,7 +647,7 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * @return The configuration for OAuth 2.0 client used to get the additional user
      * attributes. This should be used when users can&#39;t get the desired claims
      * in authentication credentials. Currently this configuration is only
-     * supported with OIDC protocol.
+     * supported with SAML and OIDC protocol.
      * Structure is documented below.
      * 
      */

@@ -18,6 +18,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The resource for managing Logging settings for Admin Control.
+ * 
  * ## Example Usage
  * 
  * ### Gemini Logging Setting Basic

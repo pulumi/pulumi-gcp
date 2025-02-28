@@ -2422,6 +2422,112 @@ func (o OrganizationPolicyRestorePolicyPtrOutput) Default() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
+type GetAncestryAncestor struct {
+	// If it's a project, the `projectId` is exported, else the numeric folder id or organization id.
+	Id string `pulumi:"id"`
+	// One of `"project"`, `"folder"` or `"organization"`.
+	Type string `pulumi:"type"`
+}
+
+// GetAncestryAncestorInput is an input type that accepts GetAncestryAncestorArgs and GetAncestryAncestorOutput values.
+// You can construct a concrete instance of `GetAncestryAncestorInput` via:
+//
+//	GetAncestryAncestorArgs{...}
+type GetAncestryAncestorInput interface {
+	pulumi.Input
+
+	ToGetAncestryAncestorOutput() GetAncestryAncestorOutput
+	ToGetAncestryAncestorOutputWithContext(context.Context) GetAncestryAncestorOutput
+}
+
+type GetAncestryAncestorArgs struct {
+	// If it's a project, the `projectId` is exported, else the numeric folder id or organization id.
+	Id pulumi.StringInput `pulumi:"id"`
+	// One of `"project"`, `"folder"` or `"organization"`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetAncestryAncestorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAncestryAncestor)(nil)).Elem()
+}
+
+func (i GetAncestryAncestorArgs) ToGetAncestryAncestorOutput() GetAncestryAncestorOutput {
+	return i.ToGetAncestryAncestorOutputWithContext(context.Background())
+}
+
+func (i GetAncestryAncestorArgs) ToGetAncestryAncestorOutputWithContext(ctx context.Context) GetAncestryAncestorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAncestryAncestorOutput)
+}
+
+// GetAncestryAncestorArrayInput is an input type that accepts GetAncestryAncestorArray and GetAncestryAncestorArrayOutput values.
+// You can construct a concrete instance of `GetAncestryAncestorArrayInput` via:
+//
+//	GetAncestryAncestorArray{ GetAncestryAncestorArgs{...} }
+type GetAncestryAncestorArrayInput interface {
+	pulumi.Input
+
+	ToGetAncestryAncestorArrayOutput() GetAncestryAncestorArrayOutput
+	ToGetAncestryAncestorArrayOutputWithContext(context.Context) GetAncestryAncestorArrayOutput
+}
+
+type GetAncestryAncestorArray []GetAncestryAncestorInput
+
+func (GetAncestryAncestorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAncestryAncestor)(nil)).Elem()
+}
+
+func (i GetAncestryAncestorArray) ToGetAncestryAncestorArrayOutput() GetAncestryAncestorArrayOutput {
+	return i.ToGetAncestryAncestorArrayOutputWithContext(context.Background())
+}
+
+func (i GetAncestryAncestorArray) ToGetAncestryAncestorArrayOutputWithContext(ctx context.Context) GetAncestryAncestorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAncestryAncestorArrayOutput)
+}
+
+type GetAncestryAncestorOutput struct{ *pulumi.OutputState }
+
+func (GetAncestryAncestorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAncestryAncestor)(nil)).Elem()
+}
+
+func (o GetAncestryAncestorOutput) ToGetAncestryAncestorOutput() GetAncestryAncestorOutput {
+	return o
+}
+
+func (o GetAncestryAncestorOutput) ToGetAncestryAncestorOutputWithContext(ctx context.Context) GetAncestryAncestorOutput {
+	return o
+}
+
+// If it's a project, the `projectId` is exported, else the numeric folder id or organization id.
+func (o GetAncestryAncestorOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAncestryAncestor) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// One of `"project"`, `"folder"` or `"organization"`.
+func (o GetAncestryAncestorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAncestryAncestor) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetAncestryAncestorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAncestryAncestorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAncestryAncestor)(nil)).Elem()
+}
+
+func (o GetAncestryAncestorArrayOutput) ToGetAncestryAncestorArrayOutput() GetAncestryAncestorArrayOutput {
+	return o
+}
+
+func (o GetAncestryAncestorArrayOutput) ToGetAncestryAncestorArrayOutputWithContext(ctx context.Context) GetAncestryAncestorArrayOutput {
+	return o
+}
+
+func (o GetAncestryAncestorArrayOutput) Index(i pulumi.IntInput) GetAncestryAncestorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAncestryAncestor {
+		return vs[0].([]GetAncestryAncestor)[vs[1].(int)]
+	}).(GetAncestryAncestorOutput)
+}
+
 type GetOrganizationPolicyBooleanPolicy struct {
 	// If true, then the Policy is enforced. If false, then any configuration is acceptable.
 	Enforced bool `pulumi:"enforced"`
@@ -3136,6 +3242,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPolicyListPolicyDenyPtrInput)(nil)).Elem(), OrganizationPolicyListPolicyDenyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPolicyRestorePolicyInput)(nil)).Elem(), OrganizationPolicyRestorePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPolicyRestorePolicyPtrInput)(nil)).Elem(), OrganizationPolicyRestorePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAncestryAncestorInput)(nil)).Elem(), GetAncestryAncestorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAncestryAncestorArrayInput)(nil)).Elem(), GetAncestryAncestorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationPolicyBooleanPolicyInput)(nil)).Elem(), GetOrganizationPolicyBooleanPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationPolicyBooleanPolicyArrayInput)(nil)).Elem(), GetOrganizationPolicyBooleanPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationPolicyListPolicyInput)(nil)).Elem(), GetOrganizationPolicyListPolicyArgs{})
@@ -3180,6 +3288,8 @@ func init() {
 	pulumi.RegisterOutputType(OrganizationPolicyListPolicyDenyPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationPolicyRestorePolicyOutput{})
 	pulumi.RegisterOutputType(OrganizationPolicyRestorePolicyPtrOutput{})
+	pulumi.RegisterOutputType(GetAncestryAncestorOutput{})
+	pulumi.RegisterOutputType(GetAncestryAncestorArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationPolicyBooleanPolicyOutput{})
 	pulumi.RegisterOutputType(GetOrganizationPolicyBooleanPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationPolicyListPolicyOutput{})

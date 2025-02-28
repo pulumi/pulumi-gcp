@@ -42,9 +42,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.iam.PrincipalAccessBoundaryPolicy;
  * import com.pulumi.gcp.iam.PrincipalAccessBoundaryPolicyArgs;
+ * import com.pulumi.time.sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.iam.ProjectsPolicyBinding;
  * import com.pulumi.gcp.iam.ProjectsPolicyBindingArgs;
  * import com.pulumi.gcp.iam.inputs.ProjectsPolicyBindingTargetArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -67,6 +70,12 @@ import javax.annotation.Nullable;
  *             .principalAccessBoundaryPolicyId("my-pab-policy")
  *             .build());
  * 
+ *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
+ *             .createDuration("60s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(pabPolicy)
+ *                 .build());
+ * 
  *         var my_project_binding = new ProjectsPolicyBinding("my-project-binding", ProjectsPolicyBindingArgs.builder()
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .location("global")
@@ -77,7 +86,9 @@ import javax.annotation.Nullable;
  *             .target(ProjectsPolicyBindingTargetArgs.builder()
  *                 .principalSet(String.format("//cloudresourcemanager.googleapis.com/projects/%s", project.applyValue(getProjectResult -> getProjectResult.projectId())))
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait60Seconds)
+ *                 .build());
  * 
  *     }
  * }

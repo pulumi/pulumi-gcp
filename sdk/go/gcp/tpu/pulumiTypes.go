@@ -526,6 +526,9 @@ type V2QueuedResourceTpuNodeSpecNode struct {
 	AcceleratorType *string `pulumi:"acceleratorType"`
 	// Text description of the TPU.
 	Description *string `pulumi:"description"`
+	// Network configurations for the TPU node.
+	// Structure is documented below.
+	NetworkConfig *V2QueuedResourceTpuNodeSpecNodeNetworkConfig `pulumi:"networkConfig"`
 	// Runtime version for the TPU.
 	RuntimeVersion string `pulumi:"runtimeVersion"`
 }
@@ -546,6 +549,9 @@ type V2QueuedResourceTpuNodeSpecNodeArgs struct {
 	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
 	// Text description of the TPU.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Network configurations for the TPU node.
+	// Structure is documented below.
+	NetworkConfig V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrInput `pulumi:"networkConfig"`
 	// Runtime version for the TPU.
 	RuntimeVersion pulumi.StringInput `pulumi:"runtimeVersion"`
 }
@@ -586,9 +592,246 @@ func (o V2QueuedResourceTpuNodeSpecNodeOutput) Description() pulumi.StringPtrOut
 	return o.ApplyT(func(v V2QueuedResourceTpuNodeSpecNode) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Network configurations for the TPU node.
+// Structure is documented below.
+func (o V2QueuedResourceTpuNodeSpecNodeOutput) NetworkConfig() V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput {
+	return o.ApplyT(func(v V2QueuedResourceTpuNodeSpecNode) *V2QueuedResourceTpuNodeSpecNodeNetworkConfig {
+		return v.NetworkConfig
+	}).(V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput)
+}
+
 // Runtime version for the TPU.
 func (o V2QueuedResourceTpuNodeSpecNodeOutput) RuntimeVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v V2QueuedResourceTpuNodeSpecNode) string { return v.RuntimeVersion }).(pulumi.StringOutput)
+}
+
+type V2QueuedResourceTpuNodeSpecNodeNetworkConfig struct {
+	// Allows the TPU node to send and receive packets with non-matching destination or source
+	// IPs. This is required if you plan to use the TPU workers to forward routes.
+	CanIpForward *bool `pulumi:"canIpForward"`
+	// Indicates that external IP addresses would be associated with the TPU workers. If set to
+	// false, the specified subnetwork or network should have Private Google Access enabled.
+	EnableExternalIps *bool `pulumi:"enableExternalIps"`
+	// The name of the network for the TPU node. It must be a preexisting Google Compute Engine
+	// network. If none is provided, "default" will be used.
+	Network *string `pulumi:"network"`
+	// Specifies networking queue count for TPU VM instance's network interface.
+	QueueCount *int `pulumi:"queueCount"`
+	// The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
+	// Engine subnetwork. If none is provided, "default" will be used.
+	Subnetwork *string `pulumi:"subnetwork"`
+}
+
+// V2QueuedResourceTpuNodeSpecNodeNetworkConfigInput is an input type that accepts V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs and V2QueuedResourceTpuNodeSpecNodeNetworkConfigOutput values.
+// You can construct a concrete instance of `V2QueuedResourceTpuNodeSpecNodeNetworkConfigInput` via:
+//
+//	V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs{...}
+type V2QueuedResourceTpuNodeSpecNodeNetworkConfigInput interface {
+	pulumi.Input
+
+	ToV2QueuedResourceTpuNodeSpecNodeNetworkConfigOutput() V2QueuedResourceTpuNodeSpecNodeNetworkConfigOutput
+	ToV2QueuedResourceTpuNodeSpecNodeNetworkConfigOutputWithContext(context.Context) V2QueuedResourceTpuNodeSpecNodeNetworkConfigOutput
+}
+
+type V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs struct {
+	// Allows the TPU node to send and receive packets with non-matching destination or source
+	// IPs. This is required if you plan to use the TPU workers to forward routes.
+	CanIpForward pulumi.BoolPtrInput `pulumi:"canIpForward"`
+	// Indicates that external IP addresses would be associated with the TPU workers. If set to
+	// false, the specified subnetwork or network should have Private Google Access enabled.
+	EnableExternalIps pulumi.BoolPtrInput `pulumi:"enableExternalIps"`
+	// The name of the network for the TPU node. It must be a preexisting Google Compute Engine
+	// network. If none is provided, "default" will be used.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// Specifies networking queue count for TPU VM instance's network interface.
+	QueueCount pulumi.IntPtrInput `pulumi:"queueCount"`
+	// The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
+	// Engine subnetwork. If none is provided, "default" will be used.
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
+}
+
+func (V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2QueuedResourceTpuNodeSpecNodeNetworkConfig)(nil)).Elem()
+}
+
+func (i V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs) ToV2QueuedResourceTpuNodeSpecNodeNetworkConfigOutput() V2QueuedResourceTpuNodeSpecNodeNetworkConfigOutput {
+	return i.ToV2QueuedResourceTpuNodeSpecNodeNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs) ToV2QueuedResourceTpuNodeSpecNodeNetworkConfigOutputWithContext(ctx context.Context) V2QueuedResourceTpuNodeSpecNodeNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2QueuedResourceTpuNodeSpecNodeNetworkConfigOutput)
+}
+
+func (i V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs) ToV2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput() V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput {
+	return i.ToV2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs) ToV2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutputWithContext(ctx context.Context) V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2QueuedResourceTpuNodeSpecNodeNetworkConfigOutput).ToV2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutputWithContext(ctx)
+}
+
+// V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrInput is an input type that accepts V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs, V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtr and V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput values.
+// You can construct a concrete instance of `V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrInput` via:
+//
+//	        V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrInput interface {
+	pulumi.Input
+
+	ToV2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput() V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput
+	ToV2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutputWithContext(context.Context) V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput
+}
+
+type v2queuedResourceTpuNodeSpecNodeNetworkConfigPtrType V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs
+
+func V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtr(v *V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs) V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrInput {
+	return (*v2queuedResourceTpuNodeSpecNodeNetworkConfigPtrType)(v)
+}
+
+func (*v2queuedResourceTpuNodeSpecNodeNetworkConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2QueuedResourceTpuNodeSpecNodeNetworkConfig)(nil)).Elem()
+}
+
+func (i *v2queuedResourceTpuNodeSpecNodeNetworkConfigPtrType) ToV2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput() V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput {
+	return i.ToV2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v2queuedResourceTpuNodeSpecNodeNetworkConfigPtrType) ToV2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutputWithContext(ctx context.Context) V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput)
+}
+
+type V2QueuedResourceTpuNodeSpecNodeNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (V2QueuedResourceTpuNodeSpecNodeNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2QueuedResourceTpuNodeSpecNodeNetworkConfig)(nil)).Elem()
+}
+
+func (o V2QueuedResourceTpuNodeSpecNodeNetworkConfigOutput) ToV2QueuedResourceTpuNodeSpecNodeNetworkConfigOutput() V2QueuedResourceTpuNodeSpecNodeNetworkConfigOutput {
+	return o
+}
+
+func (o V2QueuedResourceTpuNodeSpecNodeNetworkConfigOutput) ToV2QueuedResourceTpuNodeSpecNodeNetworkConfigOutputWithContext(ctx context.Context) V2QueuedResourceTpuNodeSpecNodeNetworkConfigOutput {
+	return o
+}
+
+func (o V2QueuedResourceTpuNodeSpecNodeNetworkConfigOutput) ToV2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput() V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput {
+	return o.ToV2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V2QueuedResourceTpuNodeSpecNodeNetworkConfigOutput) ToV2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutputWithContext(ctx context.Context) V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2QueuedResourceTpuNodeSpecNodeNetworkConfig) *V2QueuedResourceTpuNodeSpecNodeNetworkConfig {
+		return &v
+	}).(V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput)
+}
+
+// Allows the TPU node to send and receive packets with non-matching destination or source
+// IPs. This is required if you plan to use the TPU workers to forward routes.
+func (o V2QueuedResourceTpuNodeSpecNodeNetworkConfigOutput) CanIpForward() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V2QueuedResourceTpuNodeSpecNodeNetworkConfig) *bool { return v.CanIpForward }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates that external IP addresses would be associated with the TPU workers. If set to
+// false, the specified subnetwork or network should have Private Google Access enabled.
+func (o V2QueuedResourceTpuNodeSpecNodeNetworkConfigOutput) EnableExternalIps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V2QueuedResourceTpuNodeSpecNodeNetworkConfig) *bool { return v.EnableExternalIps }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the network for the TPU node. It must be a preexisting Google Compute Engine
+// network. If none is provided, "default" will be used.
+func (o V2QueuedResourceTpuNodeSpecNodeNetworkConfigOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2QueuedResourceTpuNodeSpecNodeNetworkConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// Specifies networking queue count for TPU VM instance's network interface.
+func (o V2QueuedResourceTpuNodeSpecNodeNetworkConfigOutput) QueueCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V2QueuedResourceTpuNodeSpecNodeNetworkConfig) *int { return v.QueueCount }).(pulumi.IntPtrOutput)
+}
+
+// The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
+// Engine subnetwork. If none is provided, "default" will be used.
+func (o V2QueuedResourceTpuNodeSpecNodeNetworkConfigOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2QueuedResourceTpuNodeSpecNodeNetworkConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+type V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2QueuedResourceTpuNodeSpecNodeNetworkConfig)(nil)).Elem()
+}
+
+func (o V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput) ToV2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput() V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput {
+	return o
+}
+
+func (o V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput) ToV2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutputWithContext(ctx context.Context) V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput {
+	return o
+}
+
+func (o V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput) Elem() V2QueuedResourceTpuNodeSpecNodeNetworkConfigOutput {
+	return o.ApplyT(func(v *V2QueuedResourceTpuNodeSpecNodeNetworkConfig) V2QueuedResourceTpuNodeSpecNodeNetworkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V2QueuedResourceTpuNodeSpecNodeNetworkConfig
+		return ret
+	}).(V2QueuedResourceTpuNodeSpecNodeNetworkConfigOutput)
+}
+
+// Allows the TPU node to send and receive packets with non-matching destination or source
+// IPs. This is required if you plan to use the TPU workers to forward routes.
+func (o V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput) CanIpForward() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V2QueuedResourceTpuNodeSpecNodeNetworkConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CanIpForward
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates that external IP addresses would be associated with the TPU workers. If set to
+// false, the specified subnetwork or network should have Private Google Access enabled.
+func (o V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput) EnableExternalIps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V2QueuedResourceTpuNodeSpecNodeNetworkConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableExternalIps
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the network for the TPU node. It must be a preexisting Google Compute Engine
+// network. If none is provided, "default" will be used.
+func (o V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2QueuedResourceTpuNodeSpecNodeNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies networking queue count for TPU VM instance's network interface.
+func (o V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput) QueueCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V2QueuedResourceTpuNodeSpecNodeNetworkConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.QueueCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
+// Engine subnetwork. If none is provided, "default" will be used.
+func (o V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2QueuedResourceTpuNodeSpecNodeNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subnetwork
+	}).(pulumi.StringPtrOutput)
 }
 
 type V2VmAcceleratorConfig struct {
@@ -1965,6 +2208,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*V2QueuedResourceTpuNodeSpecInput)(nil)).Elem(), V2QueuedResourceTpuNodeSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2QueuedResourceTpuNodeSpecArrayInput)(nil)).Elem(), V2QueuedResourceTpuNodeSpecArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2QueuedResourceTpuNodeSpecNodeInput)(nil)).Elem(), V2QueuedResourceTpuNodeSpecNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2QueuedResourceTpuNodeSpecNodeNetworkConfigInput)(nil)).Elem(), V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrInput)(nil)).Elem(), V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2VmAcceleratorConfigInput)(nil)).Elem(), V2VmAcceleratorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2VmAcceleratorConfigPtrInput)(nil)).Elem(), V2VmAcceleratorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2VmDataDiskInput)(nil)).Elem(), V2VmDataDiskArgs{})
@@ -1993,6 +2238,8 @@ func init() {
 	pulumi.RegisterOutputType(V2QueuedResourceTpuNodeSpecOutput{})
 	pulumi.RegisterOutputType(V2QueuedResourceTpuNodeSpecArrayOutput{})
 	pulumi.RegisterOutputType(V2QueuedResourceTpuNodeSpecNodeOutput{})
+	pulumi.RegisterOutputType(V2QueuedResourceTpuNodeSpecNodeNetworkConfigOutput{})
+	pulumi.RegisterOutputType(V2QueuedResourceTpuNodeSpecNodeNetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(V2VmAcceleratorConfigOutput{})
 	pulumi.RegisterOutputType(V2VmAcceleratorConfigPtrOutput{})
 	pulumi.RegisterOutputType(V2VmDataDiskOutput{})

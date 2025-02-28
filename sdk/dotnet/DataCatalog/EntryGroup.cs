@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataCatalog
 {
     /// <summary>
+    /// &gt; **Warning:** `gcp.datacatalog.EntryGroup` is deprecated and will be removed in a future major release. Use `gcp.dataplex.EntryGroup` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
+    /// 
     /// An EntryGroup resource represents a logical grouping of zero or more Data Catalog Entry resources.
     /// 
     /// To get more information about EntryGroup, see:

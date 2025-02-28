@@ -68,26 +68,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var producerNet = new Network("producerNet", NetworkArgs.builder()
- *             .name("mynetwork")
+ *         var consumerNet = new Network("consumerNet", NetworkArgs.builder()
+ *             .name("my-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var producerSubnet = new Subnetwork("producerSubnet", SubnetworkArgs.builder()
- *             .name("mysubnet")
+ *         var consumerSubnet = new Subnetwork("consumerSubnet", SubnetworkArgs.builder()
+ *             .name("my-subnet")
  *             .ipCidrRange("10.0.0.248/29")
  *             .region("us-central1")
- *             .network(producerNet.id())
+ *             .network(consumerNet.id())
  *             .build());
  * 
  *         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
- *             .name("mypolicy")
+ *             .name("my-policy")
  *             .location("us-central1")
  *             .serviceClass("gcp-memorystore-redis")
  *             .description("my basic service connection policy")
- *             .network(producerNet.id())
+ *             .network(consumerNet.id())
  *             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
- *                 .subnetworks(producerSubnet.id())
+ *                 .subnetworks(consumerSubnet.id())
  *                 .build())
  *             .build());
  * 
@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  *             .name("ha-cluster")
  *             .shardCount(3)
  *             .pscConfigs(ClusterPscConfigArgs.builder()
- *                 .network(producerNet.id())
+ *                 .network(consumerNet.id())
  *                 .build())
  *             .region("us-central1")
  *             .replicaCount(1)
@@ -163,26 +163,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var producerNet = new Network("producerNet", NetworkArgs.builder()
- *             .name("mynetwork")
+ *         var consumerNet = new Network("consumerNet", NetworkArgs.builder()
+ *             .name("my-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var producerSubnet = new Subnetwork("producerSubnet", SubnetworkArgs.builder()
- *             .name("mysubnet")
+ *         var consumerSubnet = new Subnetwork("consumerSubnet", SubnetworkArgs.builder()
+ *             .name("my-subnet")
  *             .ipCidrRange("10.0.0.248/29")
  *             .region("us-central1")
- *             .network(producerNet.id())
+ *             .network(consumerNet.id())
  *             .build());
  * 
  *         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
- *             .name("mypolicy")
+ *             .name("my-policy")
  *             .location("us-central1")
  *             .serviceClass("gcp-memorystore-redis")
  *             .description("my basic service connection policy")
- *             .network(producerNet.id())
+ *             .network(consumerNet.id())
  *             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
- *                 .subnetworks(producerSubnet.id())
+ *                 .subnetworks(consumerSubnet.id())
  *                 .build())
  *             .build());
  * 
@@ -190,7 +190,7 @@ import javax.annotation.Nullable;
  *             .name("ha-cluster-single-zone")
  *             .shardCount(3)
  *             .pscConfigs(ClusterPscConfigArgs.builder()
- *                 .network(producerNet.id())
+ *                 .network(consumerNet.id())
  *                 .build())
  *             .region("us-central1")
  *             .zoneDistributionConfig(ClusterZoneDistributionConfigArgs.builder()
@@ -258,16 +258,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var producerNet = new Network("producerNet", NetworkArgs.builder()
+ *         var consumerNet = new Network("consumerNet", NetworkArgs.builder()
  *             .name("mynetwork")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var primaryClusterProducerSubnet = new Subnetwork("primaryClusterProducerSubnet", SubnetworkArgs.builder()
+ *         var primaryClusterConsumerSubnet = new Subnetwork("primaryClusterConsumerSubnet", SubnetworkArgs.builder()
  *             .name("mysubnet-primary-cluster")
  *             .ipCidrRange("10.0.1.0/29")
  *             .region("us-east1")
- *             .network(producerNet.id())
+ *             .network(consumerNet.id())
  *             .build());
  * 
  *         var primaryClusterRegionScp = new ServiceConnectionPolicy("primaryClusterRegionScp", ServiceConnectionPolicyArgs.builder()
@@ -275,9 +275,9 @@ import javax.annotation.Nullable;
  *             .location("us-east1")
  *             .serviceClass("gcp-memorystore-redis")
  *             .description("Primary cluster service connection policy")
- *             .network(producerNet.id())
+ *             .network(consumerNet.id())
  *             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
- *                 .subnetworks(primaryClusterProducerSubnet.id())
+ *                 .subnetworks(primaryClusterConsumerSubnet.id())
  *                 .build())
  *             .build());
  * 
@@ -286,7 +286,7 @@ import javax.annotation.Nullable;
  *             .name("my-primary-cluster")
  *             .region("us-east1")
  *             .pscConfigs(ClusterPscConfigArgs.builder()
- *                 .network(producerNet.id())
+ *                 .network(consumerNet.id())
  *                 .build())
  *             .authorizationMode("AUTH_MODE_DISABLED")
  *             .transitEncryptionMode("TRANSIT_ENCRYPTION_MODE_DISABLED")
@@ -320,11 +320,11 @@ import javax.annotation.Nullable;
  *                 .dependsOn(primaryClusterRegionScp)
  *                 .build());
  * 
- *         var secondaryClusterProducerSubnet = new Subnetwork("secondaryClusterProducerSubnet", SubnetworkArgs.builder()
+ *         var secondaryClusterConsumerSubnet = new Subnetwork("secondaryClusterConsumerSubnet", SubnetworkArgs.builder()
  *             .name("mysubnet-secondary-cluster")
  *             .ipCidrRange("10.0.2.0/29")
  *             .region("europe-west1")
- *             .network(producerNet.id())
+ *             .network(consumerNet.id())
  *             .build());
  * 
  *         var secondaryClusterRegionScp = new ServiceConnectionPolicy("secondaryClusterRegionScp", ServiceConnectionPolicyArgs.builder()
@@ -332,9 +332,9 @@ import javax.annotation.Nullable;
  *             .location("europe-west1")
  *             .serviceClass("gcp-memorystore-redis")
  *             .description("Secondary cluster service connection policy")
- *             .network(producerNet.id())
+ *             .network(consumerNet.id())
  *             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
- *                 .subnetworks(secondaryClusterProducerSubnet.id())
+ *                 .subnetworks(secondaryClusterConsumerSubnet.id())
  *                 .build())
  *             .build());
  * 
@@ -343,7 +343,7 @@ import javax.annotation.Nullable;
  *             .name("my-secondary-cluster")
  *             .region("europe-west1")
  *             .pscConfigs(ClusterPscConfigArgs.builder()
- *                 .network(producerNet.id())
+ *                 .network(consumerNet.id())
  *                 .build())
  *             .authorizationMode("AUTH_MODE_DISABLED")
  *             .transitEncryptionMode("TRANSIT_ENCRYPTION_MODE_DISABLED")
@@ -426,26 +426,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var producerNet = new Network("producerNet", NetworkArgs.builder()
- *             .name("mynetwork")
+ *         var consumerNet = new Network("consumerNet", NetworkArgs.builder()
+ *             .name("my-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var producerSubnet = new Subnetwork("producerSubnet", SubnetworkArgs.builder()
- *             .name("mysubnet")
+ *         var consumerSubnet = new Subnetwork("consumerSubnet", SubnetworkArgs.builder()
+ *             .name("my-subnet")
  *             .ipCidrRange("10.0.0.248/29")
  *             .region("us-central1")
- *             .network(producerNet.id())
+ *             .network(consumerNet.id())
  *             .build());
  * 
  *         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
- *             .name("mypolicy")
+ *             .name("my-policy")
  *             .location("us-central1")
  *             .serviceClass("gcp-memorystore-redis")
  *             .description("my basic service connection policy")
- *             .network(producerNet.id())
+ *             .network(consumerNet.id())
  *             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
- *                 .subnetworks(producerSubnet.id())
+ *                 .subnetworks(consumerSubnet.id())
  *                 .build())
  *             .build());
  * 
@@ -453,7 +453,7 @@ import javax.annotation.Nullable;
  *             .name("rdb-cluster")
  *             .shardCount(3)
  *             .pscConfigs(ClusterPscConfigArgs.builder()
- *                 .network(producerNet.id())
+ *                 .network(consumerNet.id())
  *                 .build())
  *             .region("us-central1")
  *             .replicaCount(0)
@@ -530,26 +530,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var producerNet = new Network("producerNet", NetworkArgs.builder()
- *             .name("mynetwork")
+ *         var consumerNet = new Network("consumerNet", NetworkArgs.builder()
+ *             .name("my-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var producerSubnet = new Subnetwork("producerSubnet", SubnetworkArgs.builder()
- *             .name("mysubnet")
+ *         var consumerSubnet = new Subnetwork("consumerSubnet", SubnetworkArgs.builder()
+ *             .name("my-subnet")
  *             .ipCidrRange("10.0.0.248/29")
  *             .region("us-central1")
- *             .network(producerNet.id())
+ *             .network(consumerNet.id())
  *             .build());
  * 
  *         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
- *             .name("mypolicy")
+ *             .name("my-policy")
  *             .location("us-central1")
  *             .serviceClass("gcp-memorystore-redis")
  *             .description("my basic service connection policy")
- *             .network(producerNet.id())
+ *             .network(consumerNet.id())
  *             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
- *                 .subnetworks(producerSubnet.id())
+ *                 .subnetworks(consumerSubnet.id())
  *                 .build())
  *             .build());
  * 
@@ -557,7 +557,7 @@ import javax.annotation.Nullable;
  *             .name("aof-cluster")
  *             .shardCount(3)
  *             .pscConfigs(ClusterPscConfigArgs.builder()
- *                 .network(producerNet.id())
+ *                 .network(consumerNet.id())
  *                 .build())
  *             .region("us-central1")
  *             .replicaCount(0)
@@ -589,6 +589,85 @@ import javax.annotation.Nullable;
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(default_)
  *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Redis Cluster Cmek
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicy;
+ * import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicyArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.ServiceConnectionPolicyPscConfigArgs;
+ * import com.pulumi.gcp.redis.Cluster;
+ * import com.pulumi.gcp.redis.ClusterArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var consumerNet = new Network("consumerNet", NetworkArgs.builder()
+ *             .name("my-network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var consumerSubnet = new Subnetwork("consumerSubnet", SubnetworkArgs.builder()
+ *             .name("my-subnet")
+ *             .ipCidrRange("10.0.0.248/29")
+ *             .region("us-central1")
+ *             .network(consumerNet.id())
+ *             .build());
+ * 
+ *         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
+ *             .name("my-policy")
+ *             .location("us-central1")
+ *             .serviceClass("gcp-memorystore-redis")
+ *             .description("my basic service connection policy")
+ *             .network(consumerNet.id())
+ *             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
+ *                 .subnetworks(consumerSubnet.id())
+ *                 .build())
+ *             .build());
+ * 
+ *         var cluster_cmek = new Cluster("cluster-cmek", ClusterArgs.builder()
+ *             .name("cmek-cluster")
+ *             .shardCount(3)
+ *             .pscConfigs(ClusterPscConfigArgs.builder()
+ *                 .network(consumerNet.id())
+ *                 .build())
+ *             .kmsKey("my-key")
+ *             .region("us-central1")
+ *             .deletionProtectionEnabled(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(default_)
+ *                 .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
  * 
  *     }
  * }
@@ -718,6 +797,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<List<ClusterDiscoveryEndpoint>> discoveryEndpoints() {
         return this.discoveryEndpoints;
+    }
+    /**
+     * The KMS key used to encrypt the at-rest data of the cluster.
+     * 
+     */
+    @Export(name="kmsKey", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> kmsKey;
+
+    /**
+     * @return The KMS key used to encrypt the at-rest data of the cluster.
+     * 
+     */
+    public Output<Optional<String>> kmsKey() {
+        return Codegen.optional(this.kmsKey);
     }
     /**
      * Maintenance policy for a cluster

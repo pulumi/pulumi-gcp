@@ -66,6 +66,77 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Tpu V2 Queued Resource Full
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.tpu.V2QueuedResource;
+ * import com.pulumi.gcp.tpu.V2QueuedResourceArgs;
+ * import com.pulumi.gcp.tpu.inputs.V2QueuedResourceTpuArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var network = new Network("network", NetworkArgs.builder()
+ *             .name("tpu-net")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()
+ *             .name("tpu-subnet")
+ *             .ipCidrRange("10.0.0.0/16")
+ *             .region("us-central1")
+ *             .network(network.id())
+ *             .build());
+ * 
+ *         var qr = new V2QueuedResource("qr", V2QueuedResourceArgs.builder()
+ *             .name("test-qr")
+ *             .zone("us-central1-c")
+ *             .project("my-project-name")
+ *             .tpu(V2QueuedResourceTpuArgs.builder()
+ *                 .nodeSpecs(V2QueuedResourceTpuNodeSpecArgs.builder()
+ *                     .parent("projects/my-project-name/locations/us-central1-c")
+ *                     .nodeId("test-tpu")
+ *                     .node(V2QueuedResourceTpuNodeSpecNodeArgs.builder()
+ *                         .runtimeVersion("tpu-vm-tf-2.13.0")
+ *                         .acceleratorType("v2-8")
+ *                         .description("Text description of the TPU.")
+ *                         .networkConfig(V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs.builder()
+ *                             .canIpForward(true)
+ *                             .enableExternalIps(true)
+ *                             .network(network.id())
+ *                             .subnetwork(subnet.id())
+ *                             .queueCount(32)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

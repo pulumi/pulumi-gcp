@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.secretmanager.SecretVersionArgs;
 import com.pulumi.gcp.secretmanager.inputs.SecretVersionState;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +25,9 @@ import javax.annotation.Nullable;
  * * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions)
  * * How-to Guides
  *     * [Create and deploy a Secret Version](https://cloud.google.com/secret-manager/docs/add-secret-version)
+ * 
+ * &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `payload.secret_data_wo`.
+ * Read more about Write-only Attributes.
  * 
  * ## Example Usage
  * 
@@ -67,6 +71,54 @@ import javax.annotation.Nullable;
  *         var secret_version_basic = new SecretVersion("secret-version-basic", SecretVersionArgs.builder()
  *             .secret(secret_basic.id())
  *             .secretData("secret-data")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Secret Version Basic Write Only
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.Secret;
+ * import com.pulumi.gcp.secretmanager.SecretArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
+ * import com.pulumi.gcp.secretmanager.SecretVersion;
+ * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var secret_basic_write_only = new Secret("secret-basic-write-only", SecretArgs.builder()
+ *             .secretId("secret-version-write-only")
+ *             .labels(Map.of("label", "my-label"))
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .auto()
+ *                 .build())
+ *             .build());
+ * 
+ *         var secret_version_basic_write_only = new SecretVersion("secret-version-basic-write-only", SecretVersionArgs.builder()
+ *             .secret(secret_basic_write_only.id())
+ *             .secretDataWoVersion(1)
+ *             .secretDataWo("secret-data-write-only")
  *             .build());
  * 
  *     }
@@ -229,6 +281,76 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Secret Version With Base64 String Secret Data Write Only
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.Secret;
+ * import com.pulumi.gcp.secretmanager.SecretArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedArgs;
+ * import com.pulumi.gcp.secretmanager.SecretVersion;
+ * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()
+ *             .secretId("secret-version-base64-write-only")
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .userManaged(SecretReplicationUserManagedArgs.builder()
+ *                     .replicas(SecretReplicationUserManagedReplicaArgs.builder()
+ *                         .location("us-central1")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var secret_version_base64_write_only = new SecretVersion("secret-version-base64-write-only", SecretVersionArgs.builder()
+ *             .secret(secret_basic.id())
+ *             .isSecretDataBase64(true)
+ *             .secretDataWoVersion(1)
+ *             .secretDataWo(StdFunctions.filebase64(Filebase64Args.builder()
+ *                 .input("secret-data-base64-write-only.pfx")
+ *                 .build()).result())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Ephemeral Attributes Reference
+ * 
+ * The following write-only attributes are supported:
+ * 
+ * * `secret_data_wo` -
+ *   (Optional)
+ *   The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+ *   **Note**: This property is write-only and will not be read from the API.
+ * 
+ * &lt;a name=&#34;nested_payload&#34;&gt;&lt;/a&gt;The `payload` block supports:
+ * 
+ * * `secret_data_wo` -
+ *   (Optional)
+ *   The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+ *   **Note**: This property is write-only and will not be read from the API.
  * 
  * ## Import
  * 
@@ -365,15 +487,45 @@ public class SecretVersion extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="secretData", refs={String.class}, tree="[0]")
-    private Output<String> secretData;
+    private Output</* @Nullable */ String> secretData;
 
     /**
      * @return The secret data. Must be no larger than 64KiB.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public Output<String> secretData() {
-        return this.secretData;
+    public Output<Optional<String>> secretData() {
+        return Codegen.optional(this.secretData);
+    }
+    /**
+     * The secret data. Must be no larger than 64KiB. For more info see [updating write-only
+     * attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * 
+     */
+    @Export(name="secretDataWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> secretDataWo;
+
+    /**
+     * @return The secret data. Must be no larger than 64KiB. For more info see [updating write-only
+     * attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * 
+     */
+    public Output<Optional<String>> secretDataWo() {
+        return Codegen.optional(this.secretDataWo);
+    }
+    /**
+     * Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * 
+     */
+    @Export(name="secretDataWoVersion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> secretDataWoVersion;
+
+    /**
+     * @return Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * 
+     */
+    public Output<Optional<Integer>> secretDataWoVersion() {
+        return Codegen.optional(this.secretDataWoVersion);
     }
     /**
      * The version of the Secret.

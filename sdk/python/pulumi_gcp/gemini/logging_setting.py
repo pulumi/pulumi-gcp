@@ -343,6 +343,8 @@ class LoggingSetting(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        The resource for managing Logging settings for Admin Control.
+
         ## Example Usage
 
         ### Gemini Logging Setting Basic
@@ -407,6 +409,8 @@ class LoggingSetting(pulumi.CustomResource):
                  args: LoggingSettingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The resource for managing Logging settings for Admin Control.
+
         ## Example Usage
 
         ### Gemini Logging Setting Basic

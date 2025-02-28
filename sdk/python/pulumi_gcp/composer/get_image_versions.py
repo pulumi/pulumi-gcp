@@ -86,6 +86,12 @@ def get_image_versions(project: Optional[str] = None,
     """
     Provides access to available Cloud Composer versions in a region for a given project.
 
+    To get more information about Composer Image Versions, see:
+
+    * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.imageVersions)
+    * How-to Guides
+        * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+
     ## Example Usage
 
     ```python
@@ -125,6 +131,12 @@ def get_image_versions_output(project: Optional[pulumi.Input[Optional[str]]] = N
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImageVersionsResult]:
     """
     Provides access to available Cloud Composer versions in a region for a given project.
+
+    To get more information about Composer Image Versions, see:
+
+    * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.imageVersions)
+    * How-to Guides
+        * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
 
     ## Example Usage
 

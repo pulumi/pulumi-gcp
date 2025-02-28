@@ -10,6 +10,8 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.developerconnect.ConnectionArgs;
 import com.pulumi.gcp.developerconnect.inputs.ConnectionState;
+import com.pulumi.gcp.developerconnect.outputs.ConnectionBitbucketCloudConfig;
+import com.pulumi.gcp.developerconnect.outputs.ConnectionBitbucketDataCenterConfig;
 import com.pulumi.gcp.developerconnect.outputs.ConnectionCryptoKeyConfig;
 import com.pulumi.gcp.developerconnect.outputs.ConnectionGithubConfig;
 import com.pulumi.gcp.developerconnect.outputs.ConnectionGithubEnterpriseConfig;
@@ -25,6 +27,12 @@ import javax.annotation.Nullable;
 
 /**
  * A connection for GitHub, GitHub Enterprise, GitLab, and GitLab Enterprise.
+ * 
+ * To get more information about Connection, see:
+ * 
+ * * [API documentation](https://cloud.google.com/developer-connect/docs/api/reference/rest/v1/projects.locations.connections)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/developer-connect/docs/overview)
  * 
  * ## Example Usage
  * 
@@ -578,6 +586,102 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Developer Connect Connection Bbc
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.developerconnect.Connection;
+ * import com.pulumi.gcp.developerconnect.ConnectionArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.ConnectionBitbucketCloudConfigArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.ConnectionBitbucketCloudConfigAuthorizerCredentialArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()
+ *             .location("us-central1")
+ *             .connectionId("tf-test-connection")
+ *             .bitbucketCloudConfig(ConnectionBitbucketCloudConfigArgs.builder()
+ *                 .workspace("proctor-test")
+ *                 .webhookSecretSecretVersion("projects/devconnect-terraform-creds/secrets/bbc-webhook/versions/latest")
+ *                 .readAuthorizerCredential(ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs.builder()
+ *                     .userTokenSecretVersion("projects/devconnect-terraform-creds/secrets/bbc-read-token/versions/latest")
+ *                     .build())
+ *                 .authorizerCredential(ConnectionBitbucketCloudConfigAuthorizerCredentialArgs.builder()
+ *                     .userTokenSecretVersion("projects/devconnect-terraform-creds/secrets/bbc-auth-token/versions/latest")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Developer Connect Connection Bbdc
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.developerconnect.Connection;
+ * import com.pulumi.gcp.developerconnect.ConnectionArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.ConnectionBitbucketDataCenterConfigArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()
+ *             .location("us-central1")
+ *             .connectionId("tf-test-connection")
+ *             .bitbucketDataCenterConfig(ConnectionBitbucketDataCenterConfigArgs.builder()
+ *                 .hostUri("https://bitbucket-us-central.gcb-test.com")
+ *                 .webhookSecretSecretVersion("projects/devconnect-terraform-creds/secrets/bbdc-webhook/versions/latest")
+ *                 .readAuthorizerCredential(ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs.builder()
+ *                     .userTokenSecretVersion("projects/devconnect-terraform-creds/secrets/bbdc-read-token/versions/latest")
+ *                     .build())
+ *                 .authorizerCredential(ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs.builder()
+ *                     .userTokenSecretVersion("projects/devconnect-terraform-creds/secrets/bbdc-auth-token/versions/latest")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ## Import
  * 
  * Connection can be imported using any of these accepted formats:
@@ -622,6 +726,38 @@ public class Connection extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> annotations() {
         return Codegen.optional(this.annotations);
+    }
+    /**
+     * Configuration for connections to an instance of Bitbucket Cloud.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="bitbucketCloudConfig", refs={ConnectionBitbucketCloudConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectionBitbucketCloudConfig> bitbucketCloudConfig;
+
+    /**
+     * @return Configuration for connections to an instance of Bitbucket Cloud.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ConnectionBitbucketCloudConfig>> bitbucketCloudConfig() {
+        return Codegen.optional(this.bitbucketCloudConfig);
+    }
+    /**
+     * Configuration for connections to an instance of Bitbucket Data Center.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="bitbucketDataCenterConfig", refs={ConnectionBitbucketDataCenterConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectionBitbucketDataCenterConfig> bitbucketDataCenterConfig;
+
+    /**
+     * @return Configuration for connections to an instance of Bitbucket Data Center.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ConnectionBitbucketDataCenterConfig>> bitbucketDataCenterConfig() {
+        return Codegen.optional(this.bitbucketDataCenterConfig);
     }
     /**
      * Required. Id of the requesting object

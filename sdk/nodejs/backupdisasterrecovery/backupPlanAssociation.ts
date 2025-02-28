@@ -7,6 +7,14 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A Backup and DR BackupPlanAssociation.
+ *
+ * To get more information about BackupPlanAssociation, see:
+ *
+ * * [API documentation](https://cloud.google.com/backup-disaster-recovery/docs/reference/rest)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/backup-disaster-recovery/docs)
+ *
  * ## Example Usage
  *
  * ### Backup Dr Bpa

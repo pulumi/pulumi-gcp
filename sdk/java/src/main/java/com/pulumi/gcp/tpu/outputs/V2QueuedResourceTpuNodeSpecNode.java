@@ -5,6 +5,7 @@ package com.pulumi.gcp.tpu.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.tpu.outputs.V2QueuedResourceTpuNodeSpecNodeNetworkConfig;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -22,6 +23,12 @@ public final class V2QueuedResourceTpuNodeSpecNode {
      * 
      */
     private @Nullable String description;
+    /**
+     * @return Network configurations for the TPU node.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable V2QueuedResourceTpuNodeSpecNodeNetworkConfig networkConfig;
     /**
      * @return Runtime version for the TPU.
      * 
@@ -44,6 +51,14 @@ public final class V2QueuedResourceTpuNodeSpecNode {
         return Optional.ofNullable(this.description);
     }
     /**
+     * @return Network configurations for the TPU node.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<V2QueuedResourceTpuNodeSpecNodeNetworkConfig> networkConfig() {
+        return Optional.ofNullable(this.networkConfig);
+    }
+    /**
      * @return Runtime version for the TPU.
      * 
      */
@@ -62,12 +77,14 @@ public final class V2QueuedResourceTpuNodeSpecNode {
     public static final class Builder {
         private @Nullable String acceleratorType;
         private @Nullable String description;
+        private @Nullable V2QueuedResourceTpuNodeSpecNodeNetworkConfig networkConfig;
         private String runtimeVersion;
         public Builder() {}
         public Builder(V2QueuedResourceTpuNodeSpecNode defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acceleratorType = defaults.acceleratorType;
     	      this.description = defaults.description;
+    	      this.networkConfig = defaults.networkConfig;
     	      this.runtimeVersion = defaults.runtimeVersion;
         }
 
@@ -84,6 +101,12 @@ public final class V2QueuedResourceTpuNodeSpecNode {
             return this;
         }
         @CustomType.Setter
+        public Builder networkConfig(@Nullable V2QueuedResourceTpuNodeSpecNodeNetworkConfig networkConfig) {
+
+            this.networkConfig = networkConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder runtimeVersion(String runtimeVersion) {
             if (runtimeVersion == null) {
               throw new MissingRequiredPropertyException("V2QueuedResourceTpuNodeSpecNode", "runtimeVersion");
@@ -95,6 +118,7 @@ public final class V2QueuedResourceTpuNodeSpecNode {
             final var _resultValue = new V2QueuedResourceTpuNodeSpecNode();
             _resultValue.acceleratorType = acceleratorType;
             _resultValue.description = description;
+            _resultValue.networkConfig = networkConfig;
             _resultValue.runtimeVersion = runtimeVersion;
             return _resultValue;
         }

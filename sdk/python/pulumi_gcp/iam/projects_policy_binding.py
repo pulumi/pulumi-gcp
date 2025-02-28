@@ -505,6 +505,7 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_time as time
 
         project = gcp.organizations.get_project()
         pab_policy = gcp.iam.PrincipalAccessBoundaryPolicy("pab_policy",
@@ -512,6 +513,8 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
             location="global",
             display_name="test project binding",
             principal_access_boundary_policy_id="my-pab-policy")
+        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
+        opts = pulumi.ResourceOptions(depends_on=[pab_policy]))
         my_project_binding = gcp.iam.ProjectsPolicyBinding("my-project-binding",
             project=project.project_id,
             location="global",
@@ -521,7 +524,8 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
             policy=pab_policy.principal_access_boundary_policy_id.apply(lambda principal_access_boundary_policy_id: f"organizations/123456789/locations/global/principalAccessBoundaryPolicies/{principal_access_boundary_policy_id}"),
             target={
                 "principal_set": f"//cloudresourcemanager.googleapis.com/projects/{project.project_id}",
-            })
+            },
+            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
         ```
 
         ## Import
@@ -595,6 +599,7 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_time as time
 
         project = gcp.organizations.get_project()
         pab_policy = gcp.iam.PrincipalAccessBoundaryPolicy("pab_policy",
@@ -602,6 +607,8 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
             location="global",
             display_name="test project binding",
             principal_access_boundary_policy_id="my-pab-policy")
+        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
+        opts = pulumi.ResourceOptions(depends_on=[pab_policy]))
         my_project_binding = gcp.iam.ProjectsPolicyBinding("my-project-binding",
             project=project.project_id,
             location="global",
@@ -611,7 +618,8 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
             policy=pab_policy.principal_access_boundary_policy_id.apply(lambda principal_access_boundary_policy_id: f"organizations/123456789/locations/global/principalAccessBoundaryPolicies/{principal_access_boundary_policy_id}"),
             target={
                 "principal_set": f"//cloudresourcemanager.googleapis.com/projects/{project.project_id}",
-            })
+            },
+            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
         ```
 
         ## Import

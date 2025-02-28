@@ -18,6 +18,9 @@ import * as utilities from "../utilities";
  * const example = new gcp.gemini.DataSharingWithGoogleSetting("example", {
  *     dataSharingWithGoogleSettingId: "ls1-tf",
  *     location: "global",
+ *     labels: {
+ *         my_key: "my_value",
+ *     },
  *     enablePreviewDataSharing: true,
  * });
  * ```

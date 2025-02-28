@@ -40,9 +40,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.iam.PrincipalAccessBoundaryPolicy;
  * import com.pulumi.gcp.iam.PrincipalAccessBoundaryPolicyArgs;
+ * import com.pulumi.time.sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.iam.OrganizationsPolicyBinding;
  * import com.pulumi.gcp.iam.OrganizationsPolicyBindingArgs;
  * import com.pulumi.gcp.iam.inputs.OrganizationsPolicyBindingTargetArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -63,6 +66,12 @@ import javax.annotation.Nullable;
  *             .principalAccessBoundaryPolicyId("my-pab-policy")
  *             .build());
  * 
+ *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
+ *             .createDuration("60s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(pabPolicy)
+ *                 .build());
+ * 
  *         var my_org_binding = new OrganizationsPolicyBinding("my-org-binding", OrganizationsPolicyBindingArgs.builder()
  *             .organization("123456789")
  *             .location("global")
@@ -73,7 +82,9 @@ import javax.annotation.Nullable;
  *             .target(OrganizationsPolicyBindingTargetArgs.builder()
  *                 .principalSet("//cloudresourcemanager.googleapis.com/organizations/123456789")
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait60Seconds)
+ *                 .build());
  * 
  *     }
  * }

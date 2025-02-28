@@ -3863,7 +3863,7 @@ export namespace appengine {
     export interface StandardAppVersionAutomaticScalingStandardSchedulerSettings {
         /**
          * Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
-         * **Note:** Starting from February 17, 2025, App Engine sets the maxInstances default for standard environment deployments to 20. This change doesn't impact existing apps. To override the default, specify a new value between 0 and 2147483647, and deploy a new version or redeploy over an existing version. To disable the maxInstances default configuration setting, specify the maximum permitted value 2147483647.
+         * **Note:** Starting from March 2025, App Engine sets the maxInstances default for standard environment deployments to 20. This change doesn't impact existing apps. To override the default, specify a new value between 0 and 2147483647, and deploy a new version or redeploy over an existing version. To disable the maxInstances default configuration setting, specify the maximum permitted value 2147483647.
          */
         maxInstances?: pulumi.Input<number>;
         /**
@@ -5676,9 +5676,16 @@ export namespace bigquery {
     export interface DataTransferConfigSensitiveParams {
         /**
          * The Secret Access Key of the AWS account transferring data from.
-         * **Note**: This property is sensitive and will not be displayed in the plan.
          */
-        secretAccessKey: pulumi.Input<string>;
+        secretAccessKey?: pulumi.Input<string>;
+        /**
+         * The Secret Access Key of the AWS account transferring data from.
+         */
+        secretAccessKeyWo?: pulumi.Input<string>;
+        /**
+         * The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+         */
+        secretAccessKeyWoVersion?: pulumi.Input<number>;
     }
 
     export interface DatasetAccess {
@@ -48387,6 +48394,137 @@ export namespace deploymentmanager {
 }
 
 export namespace developerconnect {
+    export interface ConnectionBitbucketCloudConfig {
+        /**
+         * Represents a personal access token that authorized the Connection,
+         * and associated metadata.
+         * Structure is documented below.
+         */
+        authorizerCredential: pulumi.Input<inputs.developerconnect.ConnectionBitbucketCloudConfigAuthorizerCredential>;
+        /**
+         * Represents a personal access token that authorized the Connection,
+         * and associated metadata.
+         * Structure is documented below.
+         */
+        readAuthorizerCredential: pulumi.Input<inputs.developerconnect.ConnectionBitbucketCloudConfigReadAuthorizerCredential>;
+        /**
+         * Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook
+         * events, formatted as `projects/*&#47;secrets/*&#47;versions/*`. This is used to
+         * validate and create webhooks.
+         */
+        webhookSecretSecretVersion: pulumi.Input<string>;
+        /**
+         * Required. The Bitbucket Cloud Workspace ID to be connected to Google Cloud Platform.
+         */
+        workspace: pulumi.Input<string>;
+    }
+
+    export interface ConnectionBitbucketCloudConfigAuthorizerCredential {
+        /**
+         * Required. A SecretManager resource containing the user token that authorizes
+         * the Developer Connect connection. Format:
+         * `projects/*&#47;secrets/*&#47;versions/*`.
+         */
+        userTokenSecretVersion: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The username associated with this token.
+         */
+        username?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionBitbucketCloudConfigReadAuthorizerCredential {
+        /**
+         * Required. A SecretManager resource containing the user token that authorizes
+         * the Developer Connect connection. Format:
+         * `projects/*&#47;secrets/*&#47;versions/*`.
+         */
+        userTokenSecretVersion: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The username associated with this token.
+         */
+        username?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionBitbucketDataCenterConfig {
+        /**
+         * Represents a personal access token that authorized the Connection,
+         * and associated metadata.
+         * Structure is documented below.
+         */
+        authorizerCredential: pulumi.Input<inputs.developerconnect.ConnectionBitbucketDataCenterConfigAuthorizerCredential>;
+        /**
+         * Required. The URI of the Bitbucket Data Center host this connection is for.
+         */
+        hostUri: pulumi.Input<string>;
+        /**
+         * Represents a personal access token that authorized the Connection,
+         * and associated metadata.
+         * Structure is documented below.
+         */
+        readAuthorizerCredential: pulumi.Input<inputs.developerconnect.ConnectionBitbucketDataCenterConfigReadAuthorizerCredential>;
+        /**
+         * (Output)
+         * Output only. Version of the Bitbucket Data Center server running on the `hostUri`.
+         */
+        serverVersion?: pulumi.Input<string>;
+        /**
+         * ServiceDirectoryConfig represents Service Directory configuration for a
+         * connection.
+         * Structure is documented below.
+         */
+        serviceDirectoryConfig?: pulumi.Input<inputs.developerconnect.ConnectionBitbucketDataCenterConfigServiceDirectoryConfig>;
+        /**
+         * Optional. SSL certificate authority to trust when making requests to Bitbucket Data
+         * Center.
+         */
+        sslCaCertificate?: pulumi.Input<string>;
+        /**
+         * Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook
+         * events, formatted as `projects/*&#47;secrets/*&#47;versions/*`. This is used to
+         * validate webhooks.
+         */
+        webhookSecretSecretVersion: pulumi.Input<string>;
+    }
+
+    export interface ConnectionBitbucketDataCenterConfigAuthorizerCredential {
+        /**
+         * Required. A SecretManager resource containing the user token that authorizes
+         * the Developer Connect connection. Format:
+         * `projects/*&#47;secrets/*&#47;versions/*`.
+         */
+        userTokenSecretVersion: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The username associated with this token.
+         */
+        username?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionBitbucketDataCenterConfigReadAuthorizerCredential {
+        /**
+         * Required. A SecretManager resource containing the user token that authorizes
+         * the Developer Connect connection. Format:
+         * `projects/*&#47;secrets/*&#47;versions/*`.
+         */
+        userTokenSecretVersion: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The username associated with this token.
+         */
+        username?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionBitbucketDataCenterConfigServiceDirectoryConfig {
+        /**
+         * Required. The Service Directory service name.
+         * Format:
+         * projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+         */
+        service: pulumi.Input<string>;
+    }
+
     export interface ConnectionCryptoKeyConfig {
         /**
          * Required. The name of the key which is used to encrypt/decrypt customer data. For key
@@ -75021,9 +75159,41 @@ export namespace tpu {
          */
         description?: pulumi.Input<string>;
         /**
+         * Network configurations for the TPU node.
+         * Structure is documented below.
+         */
+        networkConfig?: pulumi.Input<inputs.tpu.V2QueuedResourceTpuNodeSpecNodeNetworkConfig>;
+        /**
          * Runtime version for the TPU.
          */
         runtimeVersion: pulumi.Input<string>;
+    }
+
+    export interface V2QueuedResourceTpuNodeSpecNodeNetworkConfig {
+        /**
+         * Allows the TPU node to send and receive packets with non-matching destination or source
+         * IPs. This is required if you plan to use the TPU workers to forward routes.
+         */
+        canIpForward?: pulumi.Input<boolean>;
+        /**
+         * Indicates that external IP addresses would be associated with the TPU workers. If set to
+         * false, the specified subnetwork or network should have Private Google Access enabled.
+         */
+        enableExternalIps?: pulumi.Input<boolean>;
+        /**
+         * The name of the network for the TPU node. It must be a preexisting Google Compute Engine
+         * network. If none is provided, "default" will be used.
+         */
+        network?: pulumi.Input<string>;
+        /**
+         * Specifies networking queue count for TPU VM instance's network interface.
+         */
+        queueCount?: pulumi.Input<number>;
+        /**
+         * The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
+         * Engine subnetwork. If none is provided, "default" will be used.
+         */
+        subnetwork?: pulumi.Input<string>;
     }
 
     export interface V2VmAcceleratorConfig {
