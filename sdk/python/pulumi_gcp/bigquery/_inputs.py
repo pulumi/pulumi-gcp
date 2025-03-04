@@ -1398,10 +1398,9 @@ class DataTransferConfigScheduleOptionsArgs:
 
 if not MYPY:
     class DataTransferConfigSensitiveParamsArgsDict(TypedDict):
-        secret_access_key: pulumi.Input[str]
+        secret_access_key: NotRequired[pulumi.Input[str]]
         """
         The Secret Access Key of the AWS account transferring data from.
-        **Note**: This property is sensitive and will not be displayed in the plan.
         """
 elif False:
     DataTransferConfigSensitiveParamsArgsDict: TypeAlias = Mapping[str, Any]
@@ -1409,24 +1408,23 @@ elif False:
 @pulumi.input_type
 class DataTransferConfigSensitiveParamsArgs:
     def __init__(__self__, *,
-                 secret_access_key: pulumi.Input[str]):
+                 secret_access_key: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] secret_access_key: The Secret Access Key of the AWS account transferring data from.
-               **Note**: This property is sensitive and will not be displayed in the plan.
         """
-        pulumi.set(__self__, "secret_access_key", secret_access_key)
+        if secret_access_key is not None:
+            pulumi.set(__self__, "secret_access_key", secret_access_key)
 
     @property
     @pulumi.getter(name="secretAccessKey")
-    def secret_access_key(self) -> pulumi.Input[str]:
+    def secret_access_key(self) -> Optional[pulumi.Input[str]]:
         """
         The Secret Access Key of the AWS account transferring data from.
-        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "secret_access_key")
 
     @secret_access_key.setter
-    def secret_access_key(self, value: pulumi.Input[str]):
+    def secret_access_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_access_key", value)
 
 

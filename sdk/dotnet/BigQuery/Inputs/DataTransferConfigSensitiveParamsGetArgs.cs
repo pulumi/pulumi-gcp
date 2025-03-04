@@ -12,12 +12,11 @@ namespace Pulumi.Gcp.BigQuery.Inputs
 
     public sealed class DataTransferConfigSensitiveParamsGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("secretAccessKey", required: true)]
+        [Input("secretAccessKey")]
         private Input<string>? _secretAccessKey;
 
         /// <summary>
         /// The Secret Access Key of the AWS account transferring data from.
-        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public Input<string>? SecretAccessKey
         {

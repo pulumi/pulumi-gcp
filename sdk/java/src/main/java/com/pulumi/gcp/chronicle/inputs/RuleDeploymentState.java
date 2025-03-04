@@ -51,7 +51,9 @@ public final class RuleDeploymentState extends com.pulumi.resources.ResourceArgs
 
     /**
      * The archive state of the rule deployment.
-     * Cannot be set to true unless enabled is set to false.
+     * Cannot be set to true unless enabled is set to false i.e.
+     * archiving requires a two-step process: first, disable the rule by
+     * setting &#39;enabled&#39; to false, then set &#39;archive&#39; to true.
      * If set to true, alerting will automatically be set to false.
      * If currently set to true, enabled, alerting, and run_frequency cannot be
      * updated.
@@ -62,7 +64,9 @@ public final class RuleDeploymentState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The archive state of the rule deployment.
-     * Cannot be set to true unless enabled is set to false.
+     * Cannot be set to true unless enabled is set to false i.e.
+     * archiving requires a two-step process: first, disable the rule by
+     * setting &#39;enabled&#39; to false, then set &#39;archive&#39; to true.
      * If set to true, alerting will automatically be set to false.
      * If currently set to true, enabled, alerting, and run_frequency cannot be
      * updated.
@@ -364,7 +368,9 @@ public final class RuleDeploymentState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param archived The archive state of the rule deployment.
-         * Cannot be set to true unless enabled is set to false.
+         * Cannot be set to true unless enabled is set to false i.e.
+         * archiving requires a two-step process: first, disable the rule by
+         * setting &#39;enabled&#39; to false, then set &#39;archive&#39; to true.
          * If set to true, alerting will automatically be set to false.
          * If currently set to true, enabled, alerting, and run_frequency cannot be
          * updated.
@@ -379,7 +385,9 @@ public final class RuleDeploymentState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param archived The archive state of the rule deployment.
-         * Cannot be set to true unless enabled is set to false.
+         * Cannot be set to true unless enabled is set to false i.e.
+         * archiving requires a two-step process: first, disable the rule by
+         * setting &#39;enabled&#39; to false, then set &#39;archive&#39; to true.
          * If set to true, alerting will automatically be set to false.
          * If currently set to true, enabled, alerting, and run_frequency cannot be
          * updated.

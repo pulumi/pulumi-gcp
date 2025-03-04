@@ -20,6 +20,11 @@ export type DefaultServiceAccounts = import("./defaultServiceAccounts").DefaultS
 export const DefaultServiceAccounts: typeof import("./defaultServiceAccounts").DefaultServiceAccounts = null as any;
 utilities.lazyLoad(exports, ["DefaultServiceAccounts"], () => require("./defaultServiceAccounts"));
 
+export { GetAncestryArgs, GetAncestryResult, GetAncestryOutputArgs } from "./getAncestry";
+export const getAncestry: typeof import("./getAncestry").getAncestry = null as any;
+export const getAncestryOutput: typeof import("./getAncestry").getAncestryOutput = null as any;
+utilities.lazyLoad(exports, ["getAncestry","getAncestryOutput"], () => require("./getAncestry"));
+
 export { GetIamPolicyArgs, GetIamPolicyResult, GetIamPolicyOutputArgs } from "./getIamPolicy";
 export const getIamPolicy: typeof import("./getIamPolicy").getIamPolicy = null as any;
 export const getIamPolicyOutput: typeof import("./getIamPolicy").getIamPolicyOutput = null as any;

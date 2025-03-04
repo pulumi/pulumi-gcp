@@ -38,8 +38,6 @@ class UserArgs:
                for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
                
                Possible values are: `ABANDON`.
-               
-               - - -
         :param pulumi.Input[str] host: The host the user can connect from. This is only supported
                for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
                Can be an IP address. Changing this forces a new resource to be created.
@@ -96,8 +94,6 @@ class UserArgs:
         for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
 
         Possible values are: `ABANDON`.
-
-        - - -
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -206,8 +202,6 @@ class _UserState:
                for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
                
                Possible values are: `ABANDON`.
-               
-               - - -
         :param pulumi.Input[str] host: The host the user can connect from. This is only supported
                for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
                Can be an IP address. Changing this forces a new resource to be created.
@@ -256,8 +250,6 @@ class _UserState:
         for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
 
         Possible values are: `ABANDON`.
-
-        - - -
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -463,6 +455,16 @@ class User(pulumi.CustomResource):
             type="CLOUD_IAM_GROUP")
         ```
 
+        ## Ephemeral Attributes Reference
+
+        The following write-only attributes are supported:
+
+        * `password_wo` - (Optional) The password for the user. Can be updated. For Postgres
+            instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+            or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
+            and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
+          **Note**: This property is write-only and will not be read from the API.
+
         ## Import
 
         SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.
@@ -494,8 +496,6 @@ class User(pulumi.CustomResource):
                for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
                
                Possible values are: `ABANDON`.
-               
-               - - -
         :param pulumi.Input[str] host: The host the user can connect from. This is only supported
                for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
                Can be an IP address. Changing this forces a new resource to be created.
@@ -602,6 +602,16 @@ class User(pulumi.CustomResource):
             type="CLOUD_IAM_GROUP")
         ```
 
+        ## Ephemeral Attributes Reference
+
+        The following write-only attributes are supported:
+
+        * `password_wo` - (Optional) The password for the user. Can be updated. For Postgres
+            instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+            or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
+            and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
+          **Note**: This property is write-only and will not be read from the API.
+
         ## Import
 
         SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.
@@ -702,8 +712,6 @@ class User(pulumi.CustomResource):
                for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
                
                Possible values are: `ABANDON`.
-               
-               - - -
         :param pulumi.Input[str] host: The host the user can connect from. This is only supported
                for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
                Can be an IP address. Changing this forces a new resource to be created.
@@ -748,8 +756,6 @@ class User(pulumi.CustomResource):
         for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
 
         Possible values are: `ABANDON`.
-
-        - - -
         """
         return pulumi.get(self, "deletion_policy")
 

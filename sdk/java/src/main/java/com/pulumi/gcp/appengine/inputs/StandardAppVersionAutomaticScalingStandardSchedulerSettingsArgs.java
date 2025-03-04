@@ -18,7 +18,7 @@ public final class StandardAppVersionAutomaticScalingStandardSchedulerSettingsAr
 
     /**
      * Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
-     * **Note:** Starting from February 17, 2025, App Engine sets the maxInstances default for standard environment deployments to 20. This change doesn&#39;t impact existing apps. To override the default, specify a new value between 0 and 2147483647, and deploy a new version or redeploy over an existing version. To disable the maxInstances default configuration setting, specify the maximum permitted value 2147483647.
+     * **Note:** Starting from March 2025, App Engine sets the maxInstances default for standard environment deployments to 20. This change doesn&#39;t impact existing apps. To override the default, specify a new value between 0 and 2147483647, and deploy a new version or redeploy over an existing version. To disable the maxInstances default configuration setting, specify the maximum permitted value 2147483647.
      * 
      */
     @Import(name="maxInstances")
@@ -26,7 +26,7 @@ public final class StandardAppVersionAutomaticScalingStandardSchedulerSettingsAr
 
     /**
      * @return Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
-     * **Note:** Starting from February 17, 2025, App Engine sets the maxInstances default for standard environment deployments to 20. This change doesn&#39;t impact existing apps. To override the default, specify a new value between 0 and 2147483647, and deploy a new version or redeploy over an existing version. To disable the maxInstances default configuration setting, specify the maximum permitted value 2147483647.
+     * **Note:** Starting from March 2025, App Engine sets the maxInstances default for standard environment deployments to 20. This change doesn&#39;t impact existing apps. To override the default, specify a new value between 0 and 2147483647, and deploy a new version or redeploy over an existing version. To disable the maxInstances default configuration setting, specify the maximum permitted value 2147483647.
      * 
      */
     public Optional<Output<Integer>> maxInstances() {
@@ -107,7 +107,7 @@ public final class StandardAppVersionAutomaticScalingStandardSchedulerSettingsAr
 
         /**
          * @param maxInstances Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
-         * **Note:** Starting from February 17, 2025, App Engine sets the maxInstances default for standard environment deployments to 20. This change doesn&#39;t impact existing apps. To override the default, specify a new value between 0 and 2147483647, and deploy a new version or redeploy over an existing version. To disable the maxInstances default configuration setting, specify the maximum permitted value 2147483647.
+         * **Note:** Starting from March 2025, App Engine sets the maxInstances default for standard environment deployments to 20. This change doesn&#39;t impact existing apps. To override the default, specify a new value between 0 and 2147483647, and deploy a new version or redeploy over an existing version. To disable the maxInstances default configuration setting, specify the maximum permitted value 2147483647.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class StandardAppVersionAutomaticScalingStandardSchedulerSettingsAr
 
         /**
          * @param maxInstances Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
-         * **Note:** Starting from February 17, 2025, App Engine sets the maxInstances default for standard environment deployments to 20. This change doesn&#39;t impact existing apps. To override the default, specify a new value between 0 and 2147483647, and deploy a new version or redeploy over an existing version. To disable the maxInstances default configuration setting, specify the maximum permitted value 2147483647.
+         * **Note:** Starting from March 2025, App Engine sets the maxInstances default for standard environment deployments to 20. This change doesn&#39;t impact existing apps. To override the default, specify a new value between 0 and 2147483647, and deploy a new version or redeploy over an existing version. To disable the maxInstances default configuration setting, specify the maximum permitted value 2147483647.
          * 
          * @return builder
          * 

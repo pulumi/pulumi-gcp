@@ -348,6 +348,14 @@ class BackupPlanAssociation(pulumi.CustomResource):
                  resource_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A Backup and DR BackupPlanAssociation.
+
+        To get more information about BackupPlanAssociation, see:
+
+        * [API documentation](https://cloud.google.com/backup-disaster-recovery/docs/reference/rest)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/backup-disaster-recovery/docs)
+
         ## Example Usage
 
         ### Backup Dr Bpa
@@ -457,6 +465,14 @@ class BackupPlanAssociation(pulumi.CustomResource):
                  args: BackupPlanAssociationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Backup and DR BackupPlanAssociation.
+
+        To get more information about BackupPlanAssociation, see:
+
+        * [API documentation](https://cloud.google.com/backup-disaster-recovery/docs/reference/rest)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/backup-disaster-recovery/docs)
+
         ## Example Usage
 
         ### Backup Dr Bpa

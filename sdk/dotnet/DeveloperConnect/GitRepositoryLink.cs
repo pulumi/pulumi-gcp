@@ -12,6 +12,12 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// <summary>
     /// A git repository link to a parent connection.
     /// 
+    /// To get more information about GitRepositoryLink, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/developer-connect/docs/api/reference/rest/v1/projects.locations.connections.gitRepositoryLinks)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/developer-connect/docs/overview)
+    /// 
     /// ## Example Usage
     /// 
     /// ## Import

@@ -151,6 +151,16 @@ namespace Pulumi.Gcp.Sql
     /// });
     /// ```
     /// 
+    /// ## Ephemeral Attributes Reference
+    /// 
+    /// The following write-only attributes are supported:
+    /// 
+    /// * `password_wo` - (Optional) The password for the user. Can be updated. For Postgres
+    ///     instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+    ///     or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
+    ///     and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
+    ///   **Note**: This property is write-only and will not be read from the API.
+    /// 
     /// ## Import
     /// 
     /// SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.
@@ -184,8 +194,6 @@ namespace Pulumi.Gcp.Sql
         /// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
         /// 
         /// Possible values are: `ABANDON`.
-        /// 
-        /// - - -
         /// </summary>
         [Output("deletionPolicy")]
         public Output<string?> DeletionPolicy { get; private set; } = null!;
@@ -301,8 +309,6 @@ namespace Pulumi.Gcp.Sql
         /// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
         /// 
         /// Possible values are: `ABANDON`.
-        /// 
-        /// - - -
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -383,8 +389,6 @@ namespace Pulumi.Gcp.Sql
         /// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
         /// 
         /// Possible values are: `ABANDON`.
-        /// 
-        /// - - -
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }

@@ -33,7 +33,10 @@ import (
 //			_, err := gemini.NewDataSharingWithGoogleSetting(ctx, "example", &gemini.DataSharingWithGoogleSettingArgs{
 //				DataSharingWithGoogleSettingId: pulumi.String("ls1-tf"),
 //				Location:                       pulumi.String("global"),
-//				EnablePreviewDataSharing:       pulumi.Bool(true),
+//				Labels: pulumi.StringMap{
+//					"my_key": pulumi.String("my_value"),
+//				},
+//				EnablePreviewDataSharing: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -96,16 +97,31 @@ public final class SecretVersionArgs extends com.pulumi.resources.ResourceArgs {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Import(name="secretData", required=true)
-    private Output<String> secretData;
+    @Import(name="secretData")
+    private @Nullable Output<String> secretData;
 
     /**
      * @return The secret data. Must be no larger than 64KiB.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public Output<String> secretData() {
-        return this.secretData;
+    public Optional<Output<String>> secretData() {
+        return Optional.ofNullable(this.secretData);
+    }
+
+    /**
+     * Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * 
+     */
+    @Import(name="secretDataWoVersion")
+    private @Nullable Output<Integer> secretDataWoVersion;
+
+    /**
+     * @return Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * 
+     */
+    public Optional<Output<Integer>> secretDataWoVersion() {
+        return Optional.ofNullable(this.secretDataWoVersion);
     }
 
     private SecretVersionArgs() {}
@@ -116,6 +132,7 @@ public final class SecretVersionArgs extends com.pulumi.resources.ResourceArgs {
         this.isSecretDataBase64 = $.isSecretDataBase64;
         this.secret = $.secret;
         this.secretData = $.secretData;
+        this.secretDataWoVersion = $.secretDataWoVersion;
     }
 
     public static Builder builder() {
@@ -241,7 +258,7 @@ public final class SecretVersionArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder secretData(Output<String> secretData) {
+        public Builder secretData(@Nullable Output<String> secretData) {
             $.secretData = secretData;
             return this;
         }
@@ -257,12 +274,30 @@ public final class SecretVersionArgs extends com.pulumi.resources.ResourceArgs {
             return secretData(Output.of(secretData));
         }
 
+        /**
+         * @param secretDataWoVersion Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretDataWoVersion(@Nullable Output<Integer> secretDataWoVersion) {
+            $.secretDataWoVersion = secretDataWoVersion;
+            return this;
+        }
+
+        /**
+         * @param secretDataWoVersion Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretDataWoVersion(Integer secretDataWoVersion) {
+            return secretDataWoVersion(Output.of(secretDataWoVersion));
+        }
+
         public SecretVersionArgs build() {
             if ($.secret == null) {
                 throw new MissingRequiredPropertyException("SecretVersionArgs", "secret");
-            }
-            if ($.secretData == null) {
-                throw new MissingRequiredPropertyException("SecretVersionArgs", "secretData");
             }
             return $;
         }

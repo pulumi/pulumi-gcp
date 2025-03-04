@@ -5,9 +5,10 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class DataTransferConfigSensitiveParamsArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,19 +17,17 @@ public final class DataTransferConfigSensitiveParamsArgs extends com.pulumi.reso
 
     /**
      * The Secret Access Key of the AWS account transferring data from.
-     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Import(name="secretAccessKey", required=true)
-    private Output<String> secretAccessKey;
+    @Import(name="secretAccessKey")
+    private @Nullable Output<String> secretAccessKey;
 
     /**
      * @return The Secret Access Key of the AWS account transferring data from.
-     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public Output<String> secretAccessKey() {
-        return this.secretAccessKey;
+    public Optional<Output<String>> secretAccessKey() {
+        return Optional.ofNullable(this.secretAccessKey);
     }
 
     private DataTransferConfigSensitiveParamsArgs() {}
@@ -57,19 +56,17 @@ public final class DataTransferConfigSensitiveParamsArgs extends com.pulumi.reso
 
         /**
          * @param secretAccessKey The Secret Access Key of the AWS account transferring data from.
-         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
          */
-        public Builder secretAccessKey(Output<String> secretAccessKey) {
+        public Builder secretAccessKey(@Nullable Output<String> secretAccessKey) {
             $.secretAccessKey = secretAccessKey;
             return this;
         }
 
         /**
          * @param secretAccessKey The Secret Access Key of the AWS account transferring data from.
-         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
@@ -79,9 +76,6 @@ public final class DataTransferConfigSensitiveParamsArgs extends com.pulumi.reso
         }
 
         public DataTransferConfigSensitiveParamsArgs build() {
-            if ($.secretAccessKey == null) {
-                throw new MissingRequiredPropertyException("DataTransferConfigSensitiveParamsArgs", "secretAccessKey");
-            }
             return $;
         }
     }

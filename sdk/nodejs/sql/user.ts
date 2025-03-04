@@ -95,6 +95,16 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ## Ephemeral Attributes Reference
+ *
+ * The following write-only attributes are supported:
+ *
+ * * `passwordWo` - (Optional) The password for the user. Can be updated. For Postgres
+ *     instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+ *     or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
+ *     and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
+ *   **Note**: This property is write-only and will not be read from the API.
+ *
  * ## Import
  *
  * SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.
@@ -153,8 +163,6 @@ export class User extends pulumi.CustomResource {
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
      *
      * Possible values are: `ABANDON`.
-     *
-     * - - -
      */
     public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
@@ -251,8 +259,6 @@ export interface UserState {
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
      *
      * Possible values are: `ABANDON`.
-     *
-     * - - -
      */
     deletionPolicy?: pulumi.Input<string>;
     /**
@@ -306,8 +312,6 @@ export interface UserArgs {
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
      *
      * Possible values are: `ABANDON`.
-     *
-     * - - -
      */
     deletionPolicy?: pulumi.Input<string>;
     /**

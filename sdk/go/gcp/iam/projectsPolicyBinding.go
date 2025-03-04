@@ -33,6 +33,7 @@ import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/iam"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -52,6 +53,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			wait60Seconds, err := time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
+//				CreateDuration: "60s",
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				pabPolicy,
+//			}))
+//			if err != nil {
+//				return err
+//			}
 //			_, err = iam.NewProjectsPolicyBinding(ctx, "my-project-binding", &iam.ProjectsPolicyBindingArgs{
 //				Project:         pulumi.String(project.ProjectId),
 //				Location:        pulumi.String("global"),
@@ -64,7 +73,9 @@ import (
 //				Target: &iam.ProjectsPolicyBindingTargetArgs{
 //					PrincipalSet: pulumi.Sprintf("//cloudresourcemanager.googleapis.com/projects/%v", project.ProjectId),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait60Seconds,
+//			}))
 //			if err != nil {
 //				return err
 //			}
