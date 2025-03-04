@@ -50,6 +50,7 @@ import javax.annotation.Nullable;
  *         var example = new DataSharingWithGoogleSetting("example", DataSharingWithGoogleSettingArgs.builder()
  *             .dataSharingWithGoogleSettingId("ls1-tf")
  *             .location("global")
+ *             .labels(Map.of("my_key", "my_value"))
  *             .enablePreviewDataSharing(true)
  *             .build());
  * 

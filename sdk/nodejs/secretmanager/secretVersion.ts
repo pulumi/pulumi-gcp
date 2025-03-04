@@ -13,6 +13,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Create and deploy a Secret Version](https://cloud.google.com/secret-manager/docs/add-secret-version)
  *
+ * > **Note:**  All arguments marked as write-only values will not be stored in the state: `payload.secret_data_wo`.
+ * Read more about Write-only Attributes.
+ *
  * ## Example Usage
  *
  * ### Secret Version Basic
@@ -104,7 +107,6 @@ import * as utilities from "../utilities";
  *     }).then(invoke => invoke.result),
  * });
  * ```
- *
  * ## Import
  *
  * SecretVersion can be imported using any of these accepted formats:
@@ -186,7 +188,11 @@ export class SecretVersion extends pulumi.CustomResource {
      * The secret data. Must be no larger than 64KiB.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    public readonly secretData!: pulumi.Output<string>;
+    public readonly secretData!: pulumi.Output<string | undefined>;
+    /**
+     * Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     */
+    public readonly secretDataWoVersion!: pulumi.Output<number | undefined>;
     /**
      * The version of the Secret.
      */
@@ -213,20 +219,19 @@ export class SecretVersion extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["secret"] = state ? state.secret : undefined;
             resourceInputs["secretData"] = state ? state.secretData : undefined;
+            resourceInputs["secretDataWoVersion"] = state ? state.secretDataWoVersion : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as SecretVersionArgs | undefined;
             if ((!args || args.secret === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'secret'");
             }
-            if ((!args || args.secretData === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'secretData'");
-            }
             resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["isSecretDataBase64"] = args ? args.isSecretDataBase64 : undefined;
             resourceInputs["secret"] = args ? args.secret : undefined;
             resourceInputs["secretData"] = args?.secretData ? pulumi.secret(args.secretData) : undefined;
+            resourceInputs["secretDataWoVersion"] = args ? args.secretDataWoVersion : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["destroyTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -286,6 +291,10 @@ export interface SecretVersionState {
      */
     secretData?: pulumi.Input<string>;
     /**
+     * Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     */
+    secretDataWoVersion?: pulumi.Input<number>;
+    /**
      * The version of the Secret.
      */
     version?: pulumi.Input<string>;
@@ -323,5 +332,9 @@ export interface SecretVersionArgs {
      * The secret data. Must be no larger than 64KiB.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    secretData: pulumi.Input<string>;
+    secretData?: pulumi.Input<string>;
+    /**
+     * Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     */
+    secretDataWoVersion?: pulumi.Input<number>;
 }

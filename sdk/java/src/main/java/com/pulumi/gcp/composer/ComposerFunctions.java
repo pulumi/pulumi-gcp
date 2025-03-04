@@ -27,6 +27,12 @@ public final class ComposerFunctions {
     /**
      * Provides access to Cloud Composer environment configuration in a region for a given project.
      * 
+     * To get more information about Composer Environment, see:
+     * 
+     * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -75,6 +81,12 @@ public final class ComposerFunctions {
     }
     /**
      * Provides access to Cloud Composer environment configuration in a region for a given project.
+     * 
+     * To get more information about Composer Environment, see:
+     * 
+     * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
      * 
      * ## Example Usage
      * 
@@ -125,6 +137,12 @@ public final class ComposerFunctions {
     /**
      * Provides access to Cloud Composer environment configuration in a region for a given project.
      * 
+     * To get more information about Composer Environment, see:
+     * 
+     * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -173,6 +191,12 @@ public final class ComposerFunctions {
     }
     /**
      * Provides access to Cloud Composer environment configuration in a region for a given project.
+     * 
+     * To get more information about Composer Environment, see:
+     * 
+     * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
      * 
      * ## Example Usage
      * 
@@ -223,6 +247,12 @@ public final class ComposerFunctions {
     /**
      * Provides access to Cloud Composer environment configuration in a region for a given project.
      * 
+     * To get more information about Composer Environment, see:
+     * 
+     * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -271,6 +301,12 @@ public final class ComposerFunctions {
     }
     /**
      * Provides access to available Cloud Composer versions in a region for a given project.
+     * 
+     * To get more information about Composer Image Versions, see:
+     * 
+     * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.imageVersions)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
      * 
      * ## Example Usage
      * 
@@ -326,6 +362,12 @@ public final class ComposerFunctions {
     /**
      * Provides access to available Cloud Composer versions in a region for a given project.
      * 
+     * To get more information about Composer Image Versions, see:
+     * 
+     * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.imageVersions)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -379,6 +421,12 @@ public final class ComposerFunctions {
     }
     /**
      * Provides access to available Cloud Composer versions in a region for a given project.
+     * 
+     * To get more information about Composer Image Versions, see:
+     * 
+     * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.imageVersions)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
      * 
      * ## Example Usage
      * 
@@ -434,6 +482,12 @@ public final class ComposerFunctions {
     /**
      * Provides access to available Cloud Composer versions in a region for a given project.
      * 
+     * To get more information about Composer Image Versions, see:
+     * 
+     * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.imageVersions)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -487,6 +541,12 @@ public final class ComposerFunctions {
     }
     /**
      * Provides access to available Cloud Composer versions in a region for a given project.
+     * 
+     * To get more information about Composer Image Versions, see:
+     * 
+     * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.imageVersions)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
      * 
      * ## Example Usage
      * 
@@ -542,6 +602,12 @@ public final class ComposerFunctions {
     /**
      * Provides access to available Cloud Composer versions in a region for a given project.
      * 
+     * To get more information about Composer Image Versions, see:
+     * 
+     * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.imageVersions)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -596,6 +662,12 @@ public final class ComposerFunctions {
     /**
      * Provides access to available Cloud Composer versions in a region for a given project.
      * 
+     * To get more information about Composer Image Versions, see:
+     * 
+     * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.imageVersions)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -649,6 +721,12 @@ public final class ComposerFunctions {
     }
     /**
      * Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
+     * 
+     * To get more information about Composer User Workloads Config Map, see:
+     * 
+     * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsConfigMaps)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
      * 
      * ## Example Usage
      * 
@@ -718,6 +796,12 @@ public final class ComposerFunctions {
     /**
      * Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
      * 
+     * To get more information about Composer User Workloads Config Map, see:
+     * 
+     * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsConfigMaps)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -785,6 +869,12 @@ public final class ComposerFunctions {
     }
     /**
      * Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
+     * 
+     * To get more information about Composer User Workloads Config Map, see:
+     * 
+     * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsConfigMaps)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
      * 
      * ## Example Usage
      * 
@@ -854,6 +944,12 @@ public final class ComposerFunctions {
     /**
      * Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
      * 
+     * To get more information about Composer User Workloads Config Map, see:
+     * 
+     * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsConfigMaps)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -922,6 +1018,12 @@ public final class ComposerFunctions {
     /**
      * Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
      * 
+     * To get more information about Composer User Workloads Config Map, see:
+     * 
+     * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsConfigMaps)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -989,6 +1091,12 @@ public final class ComposerFunctions {
     }
     /**
      * Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
+     * 
+     * To get more information about Composer User Workloads Secrets, see:
+     * 
+     * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsSecrets)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
      * 
      * ## Example Usage
      * 
@@ -1062,6 +1170,12 @@ public final class ComposerFunctions {
     /**
      * Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
      * 
+     * To get more information about Composer User Workloads Secrets, see:
+     * 
+     * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsSecrets)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1133,6 +1247,12 @@ public final class ComposerFunctions {
     }
     /**
      * Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
+     * 
+     * To get more information about Composer User Workloads Secrets, see:
+     * 
+     * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsSecrets)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
      * 
      * ## Example Usage
      * 
@@ -1206,6 +1326,12 @@ public final class ComposerFunctions {
     /**
      * Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
      * 
+     * To get more information about Composer User Workloads Secrets, see:
+     * 
+     * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsSecrets)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1277,6 +1403,12 @@ public final class ComposerFunctions {
     }
     /**
      * Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
+     * 
+     * To get more information about Composer User Workloads Secrets, see:
+     * 
+     * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsSecrets)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
      * 
      * ## Example Usage
      * 

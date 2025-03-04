@@ -15,12 +15,11 @@ namespace Pulumi.Gcp.BigQuery.Outputs
     {
         /// <summary>
         /// The Secret Access Key of the AWS account transferring data from.
-        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        public readonly string SecretAccessKey;
+        public readonly string? SecretAccessKey;
 
         [OutputConstructor]
-        private DataTransferConfigSensitiveParams(string secretAccessKey)
+        private DataTransferConfigSensitiveParams(string? secretAccessKey)
         {
             SecretAccessKey = secretAccessKey;
         }

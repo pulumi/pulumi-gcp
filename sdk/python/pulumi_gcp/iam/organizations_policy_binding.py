@@ -512,12 +512,15 @@ class OrganizationsPolicyBinding(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_time as time
 
         pab_policy = gcp.iam.PrincipalAccessBoundaryPolicy("pab_policy",
             organization="123456789",
             location="global",
             display_name="test org binding",
             principal_access_boundary_policy_id="my-pab-policy")
+        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
+        opts = pulumi.ResourceOptions(depends_on=[pab_policy]))
         my_org_binding = gcp.iam.OrganizationsPolicyBinding("my-org-binding",
             organization="123456789",
             location="global",
@@ -527,7 +530,8 @@ class OrganizationsPolicyBinding(pulumi.CustomResource):
             policy=pab_policy.principal_access_boundary_policy_id.apply(lambda principal_access_boundary_policy_id: f"organizations/123456789/locations/global/principalAccessBoundaryPolicies/{principal_access_boundary_policy_id}"),
             target={
                 "principal_set": "//cloudresourcemanager.googleapis.com/organizations/123456789",
-            })
+            },
+            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
         ```
 
         ## Import
@@ -596,12 +600,15 @@ class OrganizationsPolicyBinding(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_time as time
 
         pab_policy = gcp.iam.PrincipalAccessBoundaryPolicy("pab_policy",
             organization="123456789",
             location="global",
             display_name="test org binding",
             principal_access_boundary_policy_id="my-pab-policy")
+        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
+        opts = pulumi.ResourceOptions(depends_on=[pab_policy]))
         my_org_binding = gcp.iam.OrganizationsPolicyBinding("my-org-binding",
             organization="123456789",
             location="global",
@@ -611,7 +618,8 @@ class OrganizationsPolicyBinding(pulumi.CustomResource):
             policy=pab_policy.principal_access_boundary_policy_id.apply(lambda principal_access_boundary_policy_id: f"organizations/123456789/locations/global/principalAccessBoundaryPolicies/{principal_access_boundary_policy_id}"),
             target={
                 "principal_set": "//cloudresourcemanager.googleapis.com/organizations/123456789",
-            })
+            },
+            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
         ```
 
         ## Import

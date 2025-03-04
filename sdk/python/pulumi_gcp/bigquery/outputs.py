@@ -1137,19 +1137,18 @@ class DataTransferConfigSensitiveParams(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 secret_access_key: str):
+                 secret_access_key: Optional[str] = None):
         """
         :param str secret_access_key: The Secret Access Key of the AWS account transferring data from.
-               **Note**: This property is sensitive and will not be displayed in the plan.
         """
-        pulumi.set(__self__, "secret_access_key", secret_access_key)
+        if secret_access_key is not None:
+            pulumi.set(__self__, "secret_access_key", secret_access_key)
 
     @property
     @pulumi.getter(name="secretAccessKey")
-    def secret_access_key(self) -> str:
+    def secret_access_key(self) -> Optional[str]:
         """
         The Secret Access Key of the AWS account transferring data from.
-        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "secret_access_key")
 

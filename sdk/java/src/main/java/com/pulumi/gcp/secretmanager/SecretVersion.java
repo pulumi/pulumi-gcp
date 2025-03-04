@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.secretmanager.SecretVersionArgs;
 import com.pulumi.gcp.secretmanager.inputs.SecretVersionState;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +25,9 @@ import javax.annotation.Nullable;
  * * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions)
  * * How-to Guides
  *     * [Create and deploy a Secret Version](https://cloud.google.com/secret-manager/docs/add-secret-version)
+ * 
+ * &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `payload.secret_data_wo`.
+ * Read more about Write-only Attributes.
  * 
  * ## Example Usage
  * 
@@ -73,6 +77,10 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Secret Version Basic Write Only
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Secret Version Deletion Policy Abandon
  * 
@@ -229,6 +237,26 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Secret Version With Base64 String Secret Data Write Only
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Ephemeral Attributes Reference
+ * 
+ * The following write-only attributes are supported:
+ * 
+ * * `secret_data_wo` -
+ *   (Optional)
+ *   The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+ *   **Note**: This property is write-only and will not be read from the API.
+ * 
+ * &lt;a name=&#34;nested_payload&#34;&gt;&lt;/a&gt;The `payload` block supports:
+ * 
+ * * `secret_data_wo` -
+ *   (Optional)
+ *   The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+ *   **Note**: This property is write-only and will not be read from the API.
  * 
  * ## Import
  * 
@@ -365,15 +393,29 @@ public class SecretVersion extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="secretData", refs={String.class}, tree="[0]")
-    private Output<String> secretData;
+    private Output</* @Nullable */ String> secretData;
 
     /**
      * @return The secret data. Must be no larger than 64KiB.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public Output<String> secretData() {
-        return this.secretData;
+    public Output<Optional<String>> secretData() {
+        return Codegen.optional(this.secretData);
+    }
+    /**
+     * Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * 
+     */
+    @Export(name="secretDataWoVersion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> secretDataWoVersion;
+
+    /**
+     * @return Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * 
+     */
+    public Output<Optional<Integer>> secretDataWoVersion() {
+        return Codegen.optional(this.secretDataWoVersion);
     }
     /**
      * The version of the Secret.

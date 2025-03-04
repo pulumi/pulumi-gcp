@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * The resource for managing Logging settings for Admin Control.
+ *
  * ## Example Usage
  *
  * ### Gemini Logging Setting Basic

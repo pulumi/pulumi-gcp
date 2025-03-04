@@ -18,6 +18,9 @@ namespace Pulumi.Gcp.SecretManager
     /// * How-to Guides
     ///     * [Create and deploy a Secret Version](https://cloud.google.com/secret-manager/docs/add-secret-version)
     /// 
+    /// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `payload.secret_data_wo`.
+    /// Read more about Write-only Attributes.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Secret Version Basic
@@ -166,7 +169,6 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
-    /// 
     /// ## Import
     /// 
     /// SecretVersion can be imported using any of these accepted formats:
@@ -238,7 +240,13 @@ namespace Pulumi.Gcp.SecretManager
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Output("secretData")]
-        public Output<string> SecretData { get; private set; } = null!;
+        public Output<string?> SecretData { get; private set; } = null!;
+
+        /// <summary>
+        /// Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        /// </summary>
+        [Output("secretDataWoVersion")]
+        public Output<int?> SecretDataWoVersion { get; private set; } = null!;
 
         /// <summary>
         /// The version of the Secret.
@@ -328,7 +336,7 @@ namespace Pulumi.Gcp.SecretManager
         [Input("secret", required: true)]
         public Input<string> Secret { get; set; } = null!;
 
-        [Input("secretData", required: true)]
+        [Input("secretData")]
         private Input<string>? _secretData;
 
         /// <summary>
@@ -344,6 +352,12 @@ namespace Pulumi.Gcp.SecretManager
                 _secretData = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        /// <summary>
+        /// Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        /// </summary>
+        [Input("secretDataWoVersion")]
+        public Input<int>? SecretDataWoVersion { get; set; }
 
         public SecretVersionArgs()
         {
@@ -420,6 +434,12 @@ namespace Pulumi.Gcp.SecretManager
                 _secretData = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        /// <summary>
+        /// Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        /// </summary>
+        [Input("secretDataWoVersion")]
+        public Input<int>? SecretDataWoVersion { get; set; }
 
         /// <summary>
         /// The version of the Secret.

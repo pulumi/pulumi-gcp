@@ -38,7 +38,9 @@ class RuleDeploymentArgs:
         :param pulumi.Input[bool] alerting: Whether detections resulting from this deployment should be considered
                alerts.
         :param pulumi.Input[bool] archived: The archive state of the rule deployment.
-               Cannot be set to true unless enabled is set to false.
+               Cannot be set to true unless enabled is set to false i.e.
+               archiving requires a two-step process: first, disable the rule by
+               setting 'enabled' to false, then set 'archive' to true.
                If set to true, alerting will automatically be set to false.
                If currently set to true, enabled, alerting, and run_frequency cannot be
                updated.
@@ -122,7 +124,9 @@ class RuleDeploymentArgs:
     def archived(self) -> Optional[pulumi.Input[bool]]:
         """
         The archive state of the rule deployment.
-        Cannot be set to true unless enabled is set to false.
+        Cannot be set to true unless enabled is set to false i.e.
+        archiving requires a two-step process: first, disable the rule by
+        setting 'enabled' to false, then set 'archive' to true.
         If set to true, alerting will automatically be set to false.
         If currently set to true, enabled, alerting, and run_frequency cannot be
         updated.
@@ -198,7 +202,9 @@ class _RuleDeploymentState:
                alerts.
         :param pulumi.Input[str] archive_time: Output only. The timestamp when the rule deployment archive state was last set to true. If the rule deployment's current archive state is not set to true, the field will be empty.
         :param pulumi.Input[bool] archived: The archive state of the rule deployment.
-               Cannot be set to true unless enabled is set to false.
+               Cannot be set to true unless enabled is set to false i.e.
+               archiving requires a two-step process: first, disable the rule by
+               setting 'enabled' to false, then set 'archive' to true.
                If set to true, alerting will automatically be set to false.
                If currently set to true, enabled, alerting, and run_frequency cannot be
                updated.
@@ -296,7 +302,9 @@ class _RuleDeploymentState:
     def archived(self) -> Optional[pulumi.Input[bool]]:
         """
         The archive state of the rule deployment.
-        Cannot be set to true unless enabled is set to false.
+        Cannot be set to true unless enabled is set to false i.e.
+        archiving requires a two-step process: first, disable the rule by
+        setting 'enabled' to false, then set 'archive' to true.
         If set to true, alerting will automatically be set to false.
         If currently set to true, enabled, alerting, and run_frequency cannot be
         updated.
@@ -509,7 +517,9 @@ class RuleDeployment(pulumi.CustomResource):
         :param pulumi.Input[bool] alerting: Whether detections resulting from this deployment should be considered
                alerts.
         :param pulumi.Input[bool] archived: The archive state of the rule deployment.
-               Cannot be set to true unless enabled is set to false.
+               Cannot be set to true unless enabled is set to false i.e.
+               archiving requires a two-step process: first, disable the rule by
+               setting 'enabled' to false, then set 'archive' to true.
                If set to true, alerting will automatically be set to false.
                If currently set to true, enabled, alerting, and run_frequency cannot be
                updated.
@@ -648,7 +658,9 @@ class RuleDeployment(pulumi.CustomResource):
                alerts.
         :param pulumi.Input[str] archive_time: Output only. The timestamp when the rule deployment archive state was last set to true. If the rule deployment's current archive state is not set to true, the field will be empty.
         :param pulumi.Input[bool] archived: The archive state of the rule deployment.
-               Cannot be set to true unless enabled is set to false.
+               Cannot be set to true unless enabled is set to false i.e.
+               archiving requires a two-step process: first, disable the rule by
+               setting 'enabled' to false, then set 'archive' to true.
                If set to true, alerting will automatically be set to false.
                If currently set to true, enabled, alerting, and run_frequency cannot be
                updated.
@@ -729,7 +741,9 @@ class RuleDeployment(pulumi.CustomResource):
     def archived(self) -> pulumi.Output[Optional[bool]]:
         """
         The archive state of the rule deployment.
-        Cannot be set to true unless enabled is set to false.
+        Cannot be set to true unless enabled is set to false i.e.
+        archiving requires a two-step process: first, disable the rule by
+        setting 'enabled' to false, then set 'archive' to true.
         If set to true, alerting will automatically be set to false.
         If currently set to true, enabled, alerting, and run_frequency cannot be
         updated.

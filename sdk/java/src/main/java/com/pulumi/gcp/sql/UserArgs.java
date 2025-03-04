@@ -24,8 +24,6 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
      * 
      * Possible values are: `ABANDON`.
      * 
-     * ***
-     * 
      */
     @Import(name="deletionPolicy")
     private @Nullable Output<String> deletionPolicy;
@@ -36,8 +34,6 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
      * 
      * Possible values are: `ABANDON`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> deletionPolicy() {
@@ -205,8 +201,6 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * Possible values are: `ABANDON`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -221,8 +215,6 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
          * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
          * 
          * Possible values are: `ABANDON`.
-         * 
-         * ***
          * 
          * @return builder
          * 

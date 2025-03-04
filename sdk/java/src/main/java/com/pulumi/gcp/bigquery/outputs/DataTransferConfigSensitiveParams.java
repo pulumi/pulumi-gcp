@@ -4,27 +4,26 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class DataTransferConfigSensitiveParams {
     /**
      * @return The Secret Access Key of the AWS account transferring data from.
-     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private String secretAccessKey;
+    private @Nullable String secretAccessKey;
 
     private DataTransferConfigSensitiveParams() {}
     /**
      * @return The Secret Access Key of the AWS account transferring data from.
-     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public String secretAccessKey() {
-        return this.secretAccessKey;
+    public Optional<String> secretAccessKey() {
+        return Optional.ofNullable(this.secretAccessKey);
     }
 
     public static Builder builder() {
@@ -36,7 +35,7 @@ public final class DataTransferConfigSensitiveParams {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String secretAccessKey;
+        private @Nullable String secretAccessKey;
         public Builder() {}
         public Builder(DataTransferConfigSensitiveParams defaults) {
     	      Objects.requireNonNull(defaults);
@@ -44,10 +43,8 @@ public final class DataTransferConfigSensitiveParams {
         }
 
         @CustomType.Setter
-        public Builder secretAccessKey(String secretAccessKey) {
-            if (secretAccessKey == null) {
-              throw new MissingRequiredPropertyException("DataTransferConfigSensitiveParams", "secretAccessKey");
-            }
+        public Builder secretAccessKey(@Nullable String secretAccessKey) {
+
             this.secretAccessKey = secretAccessKey;
             return this;
         }

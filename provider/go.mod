@@ -6,7 +6,7 @@ toolchain go1.23.3
 
 require (
 	github.com/hashicorp/go-cty v1.4.1-0.20200414143053-d3edf31b6320
-	github.com/hashicorp/terraform-plugin-sdk/v2 v2.33.0
+	github.com/hashicorp/terraform-plugin-sdk/v2 v2.36.0
 	github.com/hashicorp/terraform-provider-google-beta v0.0.0
 	github.com/hexops/autogold/v2 v2.2.1
 	github.com/pulumi/providertest v0.1.3

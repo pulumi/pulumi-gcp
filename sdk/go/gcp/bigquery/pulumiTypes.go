@@ -3202,8 +3202,7 @@ func (o DataTransferConfigScheduleOptionsPtrOutput) StartTime() pulumi.StringPtr
 
 type DataTransferConfigSensitiveParams struct {
 	// The Secret Access Key of the AWS account transferring data from.
-	// **Note**: This property is sensitive and will not be displayed in the plan.
-	SecretAccessKey string `pulumi:"secretAccessKey"`
+	SecretAccessKey *string `pulumi:"secretAccessKey"`
 }
 
 // DataTransferConfigSensitiveParamsInput is an input type that accepts DataTransferConfigSensitiveParamsArgs and DataTransferConfigSensitiveParamsOutput values.
@@ -3219,8 +3218,7 @@ type DataTransferConfigSensitiveParamsInput interface {
 
 type DataTransferConfigSensitiveParamsArgs struct {
 	// The Secret Access Key of the AWS account transferring data from.
-	// **Note**: This property is sensitive and will not be displayed in the plan.
-	SecretAccessKey pulumi.StringInput `pulumi:"secretAccessKey"`
+	SecretAccessKey pulumi.StringPtrInput `pulumi:"secretAccessKey"`
 }
 
 func (DataTransferConfigSensitiveParamsArgs) ElementType() reflect.Type {
@@ -3301,9 +3299,8 @@ func (o DataTransferConfigSensitiveParamsOutput) ToDataTransferConfigSensitivePa
 }
 
 // The Secret Access Key of the AWS account transferring data from.
-// **Note**: This property is sensitive and will not be displayed in the plan.
-func (o DataTransferConfigSensitiveParamsOutput) SecretAccessKey() pulumi.StringOutput {
-	return o.ApplyT(func(v DataTransferConfigSensitiveParams) string { return v.SecretAccessKey }).(pulumi.StringOutput)
+func (o DataTransferConfigSensitiveParamsOutput) SecretAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataTransferConfigSensitiveParams) *string { return v.SecretAccessKey }).(pulumi.StringPtrOutput)
 }
 
 type DataTransferConfigSensitiveParamsPtrOutput struct{ *pulumi.OutputState }
@@ -3331,13 +3328,12 @@ func (o DataTransferConfigSensitiveParamsPtrOutput) Elem() DataTransferConfigSen
 }
 
 // The Secret Access Key of the AWS account transferring data from.
-// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o DataTransferConfigSensitiveParamsPtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataTransferConfigSensitiveParams) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.SecretAccessKey
+		return v.SecretAccessKey
 	}).(pulumi.StringPtrOutput)
 }
 

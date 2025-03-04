@@ -30,31 +30,31 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			producerNet, err := compute.NewNetwork(ctx, "producer_net", &compute.NetworkArgs{
-//				Name:                  pulumi.String("mynetwork"),
+//			consumerNet, err := compute.NewNetwork(ctx, "consumer_net", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("mysubnet"),
+//			consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     producerNet.ID(),
+//				Network:     consumerNet.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
-//				Name:         pulumi.String("mypolicy"),
+//				Name:         pulumi.String("my-policy"),
 //				Location:     pulumi.String("us-central1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("my basic service connection policy"),
-//				Network:      producerNet.ID(),
+//				Network:      consumerNet.ID(),
 //				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 //					Subnetworks: pulumi.StringArray{
-//						producerSubnet.ID(),
+//						consumerSubnet.ID(),
 //					},
 //				},
 //			})
@@ -66,7 +66,7 @@ import (
 //				ShardCount: pulumi.Int(3),
 //				PscConfigs: redis.ClusterPscConfigArray{
 //					&redis.ClusterPscConfigArgs{
-//						Network: producerNet.ID(),
+//						Network: consumerNet.ID(),
 //					},
 //				},
 //				Region:                pulumi.String("us-central1"),
@@ -121,31 +121,31 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			producerNet, err := compute.NewNetwork(ctx, "producer_net", &compute.NetworkArgs{
-//				Name:                  pulumi.String("mynetwork"),
+//			consumerNet, err := compute.NewNetwork(ctx, "consumer_net", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("mysubnet"),
+//			consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     producerNet.ID(),
+//				Network:     consumerNet.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
-//				Name:         pulumi.String("mypolicy"),
+//				Name:         pulumi.String("my-policy"),
 //				Location:     pulumi.String("us-central1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("my basic service connection policy"),
-//				Network:      producerNet.ID(),
+//				Network:      consumerNet.ID(),
 //				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 //					Subnetworks: pulumi.StringArray{
-//						producerSubnet.ID(),
+//						consumerSubnet.ID(),
 //					},
 //				},
 //			})
@@ -157,7 +157,7 @@ import (
 //				ShardCount: pulumi.Int(3),
 //				PscConfigs: redis.ClusterPscConfigArray{
 //					&redis.ClusterPscConfigArgs{
-//						Network: producerNet.ID(),
+//						Network: consumerNet.ID(),
 //					},
 //				},
 //				Region: pulumi.String("us-central1"),
@@ -206,18 +206,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			producerNet, err := compute.NewNetwork(ctx, "producer_net", &compute.NetworkArgs{
+//			consumerNet, err := compute.NewNetwork(ctx, "consumer_net", &compute.NetworkArgs{
 //				Name:                  pulumi.String("mynetwork"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			primaryClusterProducerSubnet, err := compute.NewSubnetwork(ctx, "primary_cluster_producer_subnet", &compute.SubnetworkArgs{
+//			primaryClusterConsumerSubnet, err := compute.NewSubnetwork(ctx, "primary_cluster_consumer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("mysubnet-primary-cluster"),
 //				IpCidrRange: pulumi.String("10.0.1.0/29"),
 //				Region:      pulumi.String("us-east1"),
-//				Network:     producerNet.ID(),
+//				Network:     consumerNet.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -227,10 +227,10 @@ import (
 //				Location:     pulumi.String("us-east1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("Primary cluster service connection policy"),
-//				Network:      producerNet.ID(),
+//				Network:      consumerNet.ID(),
 //				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 //					Subnetworks: pulumi.StringArray{
-//						primaryClusterProducerSubnet.ID(),
+//						primaryClusterConsumerSubnet.ID(),
 //					},
 //				},
 //			})
@@ -243,7 +243,7 @@ import (
 //				Region: pulumi.String("us-east1"),
 //				PscConfigs: redis.ClusterPscConfigArray{
 //					&redis.ClusterPscConfigArgs{
-//						Network: producerNet.ID(),
+//						Network: consumerNet.ID(),
 //					},
 //				},
 //				AuthorizationMode:     pulumi.String("AUTH_MODE_DISABLED"),
@@ -284,11 +284,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			secondaryClusterProducerSubnet, err := compute.NewSubnetwork(ctx, "secondary_cluster_producer_subnet", &compute.SubnetworkArgs{
+//			secondaryClusterConsumerSubnet, err := compute.NewSubnetwork(ctx, "secondary_cluster_consumer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("mysubnet-secondary-cluster"),
 //				IpCidrRange: pulumi.String("10.0.2.0/29"),
 //				Region:      pulumi.String("europe-west1"),
-//				Network:     producerNet.ID(),
+//				Network:     consumerNet.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -298,10 +298,10 @@ import (
 //				Location:     pulumi.String("europe-west1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("Secondary cluster service connection policy"),
-//				Network:      producerNet.ID(),
+//				Network:      consumerNet.ID(),
 //				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 //					Subnetworks: pulumi.StringArray{
-//						secondaryClusterProducerSubnet.ID(),
+//						secondaryClusterConsumerSubnet.ID(),
 //					},
 //				},
 //			})
@@ -314,7 +314,7 @@ import (
 //				Region: pulumi.String("europe-west1"),
 //				PscConfigs: redis.ClusterPscConfigArray{
 //					&redis.ClusterPscConfigArgs{
-//						Network: producerNet.ID(),
+//						Network: consumerNet.ID(),
 //					},
 //				},
 //				AuthorizationMode:     pulumi.String("AUTH_MODE_DISABLED"),
@@ -382,31 +382,31 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			producerNet, err := compute.NewNetwork(ctx, "producer_net", &compute.NetworkArgs{
-//				Name:                  pulumi.String("mynetwork"),
+//			consumerNet, err := compute.NewNetwork(ctx, "consumer_net", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("mysubnet"),
+//			consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     producerNet.ID(),
+//				Network:     consumerNet.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
-//				Name:         pulumi.String("mypolicy"),
+//				Name:         pulumi.String("my-policy"),
 //				Location:     pulumi.String("us-central1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("my basic service connection policy"),
-//				Network:      producerNet.ID(),
+//				Network:      consumerNet.ID(),
 //				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 //					Subnetworks: pulumi.StringArray{
-//						producerSubnet.ID(),
+//						consumerSubnet.ID(),
 //					},
 //				},
 //			})
@@ -418,7 +418,7 @@ import (
 //				ShardCount: pulumi.Int(3),
 //				PscConfigs: redis.ClusterPscConfigArray{
 //					&redis.ClusterPscConfigArgs{
-//						Network: producerNet.ID(),
+//						Network: consumerNet.ID(),
 //					},
 //				},
 //				Region:                pulumi.String("us-central1"),
@@ -480,31 +480,31 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			producerNet, err := compute.NewNetwork(ctx, "producer_net", &compute.NetworkArgs{
-//				Name:                  pulumi.String("mynetwork"),
+//			consumerNet, err := compute.NewNetwork(ctx, "consumer_net", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("mysubnet"),
+//			consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     producerNet.ID(),
+//				Network:     consumerNet.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
-//				Name:         pulumi.String("mypolicy"),
+//				Name:         pulumi.String("my-policy"),
 //				Location:     pulumi.String("us-central1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("my basic service connection policy"),
-//				Network:      producerNet.ID(),
+//				Network:      consumerNet.ID(),
 //				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 //					Subnetworks: pulumi.StringArray{
-//						producerSubnet.ID(),
+//						consumerSubnet.ID(),
 //					},
 //				},
 //			})
@@ -516,7 +516,7 @@ import (
 //				ShardCount: pulumi.Int(3),
 //				PscConfigs: redis.ClusterPscConfigArray{
 //					&redis.ClusterPscConfigArgs{
-//						Network: producerNet.ID(),
+//						Network: consumerNet.ID(),
 //					},
 //				},
 //				Region:                pulumi.String("us-central1"),
@@ -553,6 +553,80 @@ import (
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				_default,
 //			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Redis Cluster Cmek
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/redis"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			consumerNet, err := compute.NewNetwork(ctx, "consumer_net", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("my-subnet"),
+//				IpCidrRange: pulumi.String("10.0.0.248/29"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     consumerNet.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
+//				Name:         pulumi.String("my-policy"),
+//				Location:     pulumi.String("us-central1"),
+//				ServiceClass: pulumi.String("gcp-memorystore-redis"),
+//				Description:  pulumi.String("my basic service connection policy"),
+//				Network:      consumerNet.ID(),
+//				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
+//					Subnetworks: pulumi.StringArray{
+//						consumerSubnet.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = redis.NewCluster(ctx, "cluster-cmek", &redis.ClusterArgs{
+//				Name:       pulumi.String("cmek-cluster"),
+//				ShardCount: pulumi.Int(3),
+//				PscConfigs: redis.ClusterPscConfigArray{
+//					&redis.ClusterPscConfigArgs{
+//						Network: consumerNet.ID(),
+//					},
+//				},
+//				KmsKey:                    pulumi.String("my-key"),
+//				Region:                    pulumi.String("us-central1"),
+//				DeletionProtectionEnabled: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				_default,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -614,6 +688,8 @@ type Cluster struct {
 	// Currently only one endpoint is supported.
 	// Structure is documented below.
 	DiscoveryEndpoints ClusterDiscoveryEndpointArrayOutput `pulumi:"discoveryEndpoints"`
+	// The KMS key used to encrypt the at-rest data of the cluster.
+	KmsKey pulumi.StringPtrOutput `pulumi:"kmsKey"`
 	// Maintenance policy for a cluster
 	// Structure is documented below.
 	MaintenancePolicy ClusterMaintenancePolicyPtrOutput `pulumi:"maintenancePolicy"`
@@ -730,6 +806,8 @@ type clusterState struct {
 	// Currently only one endpoint is supported.
 	// Structure is documented below.
 	DiscoveryEndpoints []ClusterDiscoveryEndpoint `pulumi:"discoveryEndpoints"`
+	// The KMS key used to encrypt the at-rest data of the cluster.
+	KmsKey *string `pulumi:"kmsKey"`
 	// Maintenance policy for a cluster
 	// Structure is documented below.
 	MaintenancePolicy *ClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
@@ -814,6 +892,8 @@ type ClusterState struct {
 	// Currently only one endpoint is supported.
 	// Structure is documented below.
 	DiscoveryEndpoints ClusterDiscoveryEndpointArrayInput
+	// The KMS key used to encrypt the at-rest data of the cluster.
+	KmsKey pulumi.StringPtrInput
 	// Maintenance policy for a cluster
 	// Structure is documented below.
 	MaintenancePolicy ClusterMaintenancePolicyPtrInput
@@ -893,6 +973,8 @@ type clusterArgs struct {
 	// If the value if set to true, any delete cluster operation will fail.
 	// Default value is true.
 	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
+	// The KMS key used to encrypt the at-rest data of the cluster.
+	KmsKey *string `pulumi:"kmsKey"`
 	// Maintenance policy for a cluster
 	// Structure is documented below.
 	MaintenancePolicy *ClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
@@ -949,6 +1031,8 @@ type ClusterArgs struct {
 	// If the value if set to true, any delete cluster operation will fail.
 	// Default value is true.
 	DeletionProtectionEnabled pulumi.BoolPtrInput
+	// The KMS key used to encrypt the at-rest data of the cluster.
+	KmsKey pulumi.StringPtrInput
 	// Maintenance policy for a cluster
 	// Structure is documented below.
 	MaintenancePolicy ClusterMaintenancePolicyPtrInput
@@ -1112,6 +1196,11 @@ func (o ClusterOutput) DeletionProtectionEnabled() pulumi.BoolPtrOutput {
 // Structure is documented below.
 func (o ClusterOutput) DiscoveryEndpoints() ClusterDiscoveryEndpointArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterDiscoveryEndpointArrayOutput { return v.DiscoveryEndpoints }).(ClusterDiscoveryEndpointArrayOutput)
+}
+
+// The KMS key used to encrypt the at-rest data of the cluster.
+func (o ClusterOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.KmsKey }).(pulumi.StringPtrOutput)
 }
 
 // Maintenance policy for a cluster

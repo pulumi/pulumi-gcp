@@ -48,6 +48,64 @@ namespace Pulumi.Gcp.Tpu
     /// 
     /// });
     /// ```
+    /// ### Tpu V2 Queued Resource Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         Name = "tpu-net",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var subnet = new Gcp.Compute.Subnetwork("subnet", new()
+    ///     {
+    ///         Name = "tpu-subnet",
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///         Region = "us-central1",
+    ///         Network = network.Id,
+    ///     });
+    /// 
+    ///     var qr = new Gcp.Tpu.V2QueuedResource("qr", new()
+    ///     {
+    ///         Name = "test-qr",
+    ///         Zone = "us-central1-c",
+    ///         Project = "my-project-name",
+    ///         Tpu = new Gcp.Tpu.Inputs.V2QueuedResourceTpuArgs
+    ///         {
+    ///             NodeSpecs = new[]
+    ///             {
+    ///                 new Gcp.Tpu.Inputs.V2QueuedResourceTpuNodeSpecArgs
+    ///                 {
+    ///                     Parent = "projects/my-project-name/locations/us-central1-c",
+    ///                     NodeId = "test-tpu",
+    ///                     Node = new Gcp.Tpu.Inputs.V2QueuedResourceTpuNodeSpecNodeArgs
+    ///                     {
+    ///                         RuntimeVersion = "tpu-vm-tf-2.13.0",
+    ///                         AcceleratorType = "v2-8",
+    ///                         Description = "Text description of the TPU.",
+    ///                         NetworkConfig = new Gcp.Tpu.Inputs.V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs
+    ///                         {
+    ///                             CanIpForward = true,
+    ///                             EnableExternalIps = true,
+    ///                             Network = network.Id,
+    ///                             Subnetwork = subnet.Id,
+    ///                             QueueCount = 32,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

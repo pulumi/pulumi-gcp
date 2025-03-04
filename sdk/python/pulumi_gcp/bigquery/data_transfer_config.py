@@ -698,6 +698,9 @@ class DataTransferConfig(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
 
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `sensitive_params.secret_access_key_wo`.
+        Read more about Write-only Attributes.
+
         ## Example Usage
 
         ### Bigquerydatatransfer Config Scheduled Query
@@ -793,6 +796,17 @@ class DataTransferConfig(pulumi.CustomResource):
                 "assets": "[\\"asset-a\\",\\"asset-b\\"]",
             })
         ```
+
+        ## Ephemeral Attributes Reference
+
+        The following write-only attributes are supported:
+
+        <a name="nested_sensitive_params"></a>The `sensitive_params` block supports:
+
+        * `secret_access_key_wo` -
+          (Optional)
+          The Secret Access Key of the AWS account transferring data from.
+          **Note**: This property is write-only and will not be read from the API.
 
         ## Import
 
@@ -885,6 +899,9 @@ class DataTransferConfig(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
 
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `sensitive_params.secret_access_key_wo`.
+        Read more about Write-only Attributes.
+
         ## Example Usage
 
         ### Bigquerydatatransfer Config Scheduled Query
@@ -980,6 +997,17 @@ class DataTransferConfig(pulumi.CustomResource):
                 "assets": "[\\"asset-a\\",\\"asset-b\\"]",
             })
         ```
+
+        ## Ephemeral Attributes Reference
+
+        The following write-only attributes are supported:
+
+        <a name="nested_sensitive_params"></a>The `sensitive_params` block supports:
+
+        * `secret_access_key_wo` -
+          (Optional)
+          The Secret Access Key of the AWS account transferring data from.
+          **Note**: This property is write-only and will not be read from the API.
 
         ## Import
 

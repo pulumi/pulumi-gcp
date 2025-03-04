@@ -38,12 +38,16 @@ import * as utilities from "../utilities";
  *     peerNetwork: networkSecondary.id,
  *     importCustomRoutes: true,
  *     exportCustomRoutes: true,
+ *     importSubnetRoutesWithPublicIp: true,
+ *     exportSubnetRoutesWithPublicIp: true,
  * });
  * const peeringPrimaryRoutes = new gcp.compute.NetworkPeeringRoutesConfig("peering_primary_routes", {
  *     peering: peeringPrimary.name,
  *     network: networkPrimary.name,
  *     importCustomRoutes: true,
  *     exportCustomRoutes: true,
+ *     importSubnetRoutesWithPublicIp: true,
+ *     exportSubnetRoutesWithPublicIp: true,
  * });
  * const peeringSecondary = new gcp.compute.NetworkPeering("peering_secondary", {
  *     name: "secondary-peering",
@@ -101,6 +105,8 @@ import * as utilities from "../utilities";
  *     network: containerNetwork.name,
  *     importCustomRoutes: true,
  *     exportCustomRoutes: true,
+ *     importSubnetRoutesWithPublicIp: true,
+ *     exportSubnetRoutesWithPublicIp: true,
  * });
  * ```
  *
@@ -161,9 +167,21 @@ export class NetworkPeeringRoutesConfig extends pulumi.CustomResource {
      */
     public readonly exportCustomRoutes!: pulumi.Output<boolean>;
     /**
+     * Whether subnet routes with public IP range are exported.
+     * IPv4 special-use ranges are always exported to peers and
+     * are not controlled by this field.
+     */
+    public readonly exportSubnetRoutesWithPublicIp!: pulumi.Output<boolean>;
+    /**
      * Whether to import the custom routes to the peer network.
      */
     public readonly importCustomRoutes!: pulumi.Output<boolean>;
+    /**
+     * Whether subnet routes with public IP range are imported.
+     * IPv4 special-use ranges are always imported from peers and
+     * are not controlled by this field.
+     */
+    public readonly importSubnetRoutesWithPublicIp!: pulumi.Output<boolean>;
     /**
      * The name of the primary network for the peering.
      *
@@ -195,7 +213,9 @@ export class NetworkPeeringRoutesConfig extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as NetworkPeeringRoutesConfigState | undefined;
             resourceInputs["exportCustomRoutes"] = state ? state.exportCustomRoutes : undefined;
+            resourceInputs["exportSubnetRoutesWithPublicIp"] = state ? state.exportSubnetRoutesWithPublicIp : undefined;
             resourceInputs["importCustomRoutes"] = state ? state.importCustomRoutes : undefined;
+            resourceInputs["importSubnetRoutesWithPublicIp"] = state ? state.importSubnetRoutesWithPublicIp : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["peering"] = state ? state.peering : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -214,7 +234,9 @@ export class NetworkPeeringRoutesConfig extends pulumi.CustomResource {
                 throw new Error("Missing required property 'peering'");
             }
             resourceInputs["exportCustomRoutes"] = args ? args.exportCustomRoutes : undefined;
+            resourceInputs["exportSubnetRoutesWithPublicIp"] = args ? args.exportSubnetRoutesWithPublicIp : undefined;
             resourceInputs["importCustomRoutes"] = args ? args.importCustomRoutes : undefined;
+            resourceInputs["importSubnetRoutesWithPublicIp"] = args ? args.importSubnetRoutesWithPublicIp : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["peering"] = args ? args.peering : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -233,9 +255,21 @@ export interface NetworkPeeringRoutesConfigState {
      */
     exportCustomRoutes?: pulumi.Input<boolean>;
     /**
+     * Whether subnet routes with public IP range are exported.
+     * IPv4 special-use ranges are always exported to peers and
+     * are not controlled by this field.
+     */
+    exportSubnetRoutesWithPublicIp?: pulumi.Input<boolean>;
+    /**
      * Whether to import the custom routes to the peer network.
      */
     importCustomRoutes?: pulumi.Input<boolean>;
+    /**
+     * Whether subnet routes with public IP range are imported.
+     * IPv4 special-use ranges are always imported from peers and
+     * are not controlled by this field.
+     */
+    importSubnetRoutesWithPublicIp?: pulumi.Input<boolean>;
     /**
      * The name of the primary network for the peering.
      *
@@ -263,9 +297,21 @@ export interface NetworkPeeringRoutesConfigArgs {
      */
     exportCustomRoutes: pulumi.Input<boolean>;
     /**
+     * Whether subnet routes with public IP range are exported.
+     * IPv4 special-use ranges are always exported to peers and
+     * are not controlled by this field.
+     */
+    exportSubnetRoutesWithPublicIp?: pulumi.Input<boolean>;
+    /**
      * Whether to import the custom routes to the peer network.
      */
     importCustomRoutes: pulumi.Input<boolean>;
+    /**
+     * Whether subnet routes with public IP range are imported.
+     * IPv4 special-use ranges are always imported from peers and
+     * are not controlled by this field.
+     */
+    importSubnetRoutesWithPublicIp?: pulumi.Input<boolean>;
     /**
      * The name of the primary network for the peering.
      *

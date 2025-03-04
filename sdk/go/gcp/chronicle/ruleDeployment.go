@@ -46,7 +46,9 @@ type RuleDeployment struct {
 	// Output only. The timestamp when the rule deployment archive state was last set to true. If the rule deployment's current archive state is not set to true, the field will be empty.
 	ArchiveTime pulumi.StringOutput `pulumi:"archiveTime"`
 	// The archive state of the rule deployment.
-	// Cannot be set to true unless enabled is set to false.
+	// Cannot be set to true unless enabled is set to false i.e.
+	// archiving requires a two-step process: first, disable the rule by
+	// setting 'enabled' to false, then set 'archive' to true.
 	// If set to true, alerting will automatically be set to false.
 	// If currently set to true, enabled, alerting, and runFrequency cannot be
 	// updated.
@@ -142,7 +144,9 @@ type ruleDeploymentState struct {
 	// Output only. The timestamp when the rule deployment archive state was last set to true. If the rule deployment's current archive state is not set to true, the field will be empty.
 	ArchiveTime *string `pulumi:"archiveTime"`
 	// The archive state of the rule deployment.
-	// Cannot be set to true unless enabled is set to false.
+	// Cannot be set to true unless enabled is set to false i.e.
+	// archiving requires a two-step process: first, disable the rule by
+	// setting 'enabled' to false, then set 'archive' to true.
 	// If set to true, alerting will automatically be set to false.
 	// If currently set to true, enabled, alerting, and runFrequency cannot be
 	// updated.
@@ -200,7 +204,9 @@ type RuleDeploymentState struct {
 	// Output only. The timestamp when the rule deployment archive state was last set to true. If the rule deployment's current archive state is not set to true, the field will be empty.
 	ArchiveTime pulumi.StringPtrInput
 	// The archive state of the rule deployment.
-	// Cannot be set to true unless enabled is set to false.
+	// Cannot be set to true unless enabled is set to false i.e.
+	// archiving requires a two-step process: first, disable the rule by
+	// setting 'enabled' to false, then set 'archive' to true.
 	// If set to true, alerting will automatically be set to false.
 	// If currently set to true, enabled, alerting, and runFrequency cannot be
 	// updated.
@@ -260,7 +266,9 @@ type ruleDeploymentArgs struct {
 	// alerts.
 	Alerting *bool `pulumi:"alerting"`
 	// The archive state of the rule deployment.
-	// Cannot be set to true unless enabled is set to false.
+	// Cannot be set to true unless enabled is set to false i.e.
+	// archiving requires a two-step process: first, disable the rule by
+	// setting 'enabled' to false, then set 'archive' to true.
 	// If set to true, alerting will automatically be set to false.
 	// If currently set to true, enabled, alerting, and runFrequency cannot be
 	// updated.
@@ -292,7 +300,9 @@ type RuleDeploymentArgs struct {
 	// alerts.
 	Alerting pulumi.BoolPtrInput
 	// The archive state of the rule deployment.
-	// Cannot be set to true unless enabled is set to false.
+	// Cannot be set to true unless enabled is set to false i.e.
+	// archiving requires a two-step process: first, disable the rule by
+	// setting 'enabled' to false, then set 'archive' to true.
 	// If set to true, alerting will automatically be set to false.
 	// If currently set to true, enabled, alerting, and runFrequency cannot be
 	// updated.
@@ -417,7 +427,9 @@ func (o RuleDeploymentOutput) ArchiveTime() pulumi.StringOutput {
 }
 
 // The archive state of the rule deployment.
-// Cannot be set to true unless enabled is set to false.
+// Cannot be set to true unless enabled is set to false i.e.
+// archiving requires a two-step process: first, disable the rule by
+// setting 'enabled' to false, then set 'archive' to true.
 // If set to true, alerting will automatically be set to false.
 // If currently set to true, enabled, alerting, and runFrequency cannot be
 // updated.

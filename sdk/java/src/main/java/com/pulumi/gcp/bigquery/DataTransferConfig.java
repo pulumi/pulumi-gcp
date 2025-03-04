@@ -31,6 +31,9 @@ import javax.annotation.Nullable;
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
  * 
+ * &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `sensitive_params.secret_access_key_wo`.
+ * Read more about Write-only Attributes.
+ * 
  * ## Example Usage
  * 
  * ### Bigquerydatatransfer Config Scheduled Query
@@ -245,6 +248,17 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Ephemeral Attributes Reference
+ * 
+ * The following write-only attributes are supported:
+ * 
+ * &lt;a name=&#34;nested_sensitive_params&#34;&gt;&lt;/a&gt;The `sensitive_params` block supports:
+ * 
+ * * `secret_access_key_wo` -
+ *   (Optional)
+ *   The Secret Access Key of the AWS account transferring data from.
+ *   **Note**: This property is write-only and will not be read from the API.
  * 
  * ## Import
  * 
