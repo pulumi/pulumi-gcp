@@ -27,8 +27,6 @@ class UserArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  password_policy: Optional[pulumi.Input['UserPasswordPolicyArgs']] = None,
-                 password_wo: Optional[pulumi.Input[str]] = None,
-                 password_wo_version: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
@@ -49,11 +47,6 @@ class UserArgs:
                instances this is a Required field, unless type is set to either CLOUD_IAM_USER
                or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
                and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
-        :param pulumi.Input[str] password_wo: The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to either
-               CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
-        :param pulumi.Input[int] password_wo_version: The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] type: The user type. It determines the method to authenticate the
@@ -74,10 +67,6 @@ class UserArgs:
             pulumi.set(__self__, "password", password)
         if password_policy is not None:
             pulumi.set(__self__, "password_policy", password_policy)
-        if password_wo is not None:
-            pulumi.set(__self__, "password_wo", password_wo)
-        if password_wo_version is not None:
-            pulumi.set(__self__, "password_wo_version", password_wo_version)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if type is not None:
@@ -164,33 +153,6 @@ class UserArgs:
         pulumi.set(self, "password_policy", value)
 
     @property
-    @pulumi.getter(name="passwordWo")
-    def password_wo(self) -> Optional[pulumi.Input[str]]:
-        """
-        The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to either
-        CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
-        """
-        return pulumi.get(self, "password_wo")
-
-    @password_wo.setter
-    def password_wo(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "password_wo", value)
-
-    @property
-    @pulumi.getter(name="passwordWoVersion")
-    def password_wo_version(self) -> Optional[pulumi.Input[int]]:
-        """
-        The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
-
-        - - -
-        """
-        return pulumi.get(self, "password_wo_version")
-
-    @password_wo_version.setter
-    def password_wo_version(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "password_wo_version", value)
-
-    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -230,8 +192,6 @@ class _UserState:
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  password_policy: Optional[pulumi.Input['UserPasswordPolicyArgs']] = None,
-                 password_wo: Optional[pulumi.Input[str]] = None,
-                 password_wo_version: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  sql_server_user_details: Optional[pulumi.Input[Sequence[pulumi.Input['UserSqlServerUserDetailArgs']]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
@@ -253,11 +213,6 @@ class _UserState:
                instances this is a Required field, unless type is set to either CLOUD_IAM_USER
                or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
                and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
-        :param pulumi.Input[str] password_wo: The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to either
-               CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
-        :param pulumi.Input[int] password_wo_version: The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] type: The user type. It determines the method to authenticate the
@@ -279,10 +234,6 @@ class _UserState:
             pulumi.set(__self__, "password", password)
         if password_policy is not None:
             pulumi.set(__self__, "password_policy", password_policy)
-        if password_wo is not None:
-            pulumi.set(__self__, "password_wo", password_wo)
-        if password_wo_version is not None:
-            pulumi.set(__self__, "password_wo_version", password_wo_version)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if sql_server_user_details is not None:
@@ -371,33 +322,6 @@ class _UserState:
         pulumi.set(self, "password_policy", value)
 
     @property
-    @pulumi.getter(name="passwordWo")
-    def password_wo(self) -> Optional[pulumi.Input[str]]:
-        """
-        The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to either
-        CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
-        """
-        return pulumi.get(self, "password_wo")
-
-    @password_wo.setter
-    def password_wo(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "password_wo", value)
-
-    @property
-    @pulumi.getter(name="passwordWoVersion")
-    def password_wo_version(self) -> Optional[pulumi.Input[int]]:
-        """
-        The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
-
-        - - -
-        """
-        return pulumi.get(self, "password_wo_version")
-
-    @password_wo_version.setter
-    def password_wo_version(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "password_wo_version", value)
-
-    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -448,8 +372,6 @@ class User(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  password_policy: Optional[pulumi.Input[Union['UserPasswordPolicyArgs', 'UserPasswordPolicyArgsDict']]] = None,
-                 password_wo: Optional[pulumi.Input[str]] = None,
-                 password_wo_version: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -585,11 +507,6 @@ class User(pulumi.CustomResource):
                instances this is a Required field, unless type is set to either CLOUD_IAM_USER
                or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
                and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
-        :param pulumi.Input[str] password_wo: The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to either
-               CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
-        :param pulumi.Input[int] password_wo_version: The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] type: The user type. It determines the method to authenticate the
@@ -740,8 +657,6 @@ class User(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  password_policy: Optional[pulumi.Input[Union['UserPasswordPolicyArgs', 'UserPasswordPolicyArgsDict']]] = None,
-                 password_wo: Optional[pulumi.Input[str]] = None,
-                 password_wo_version: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -761,8 +676,6 @@ class User(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["password_policy"] = password_policy
-            __props__.__dict__["password_wo"] = password_wo
-            __props__.__dict__["password_wo_version"] = password_wo_version
             __props__.__dict__["project"] = project
             __props__.__dict__["type"] = type
             __props__.__dict__["sql_server_user_details"] = None
@@ -784,8 +697,6 @@ class User(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
             password_policy: Optional[pulumi.Input[Union['UserPasswordPolicyArgs', 'UserPasswordPolicyArgsDict']]] = None,
-            password_wo: Optional[pulumi.Input[str]] = None,
-            password_wo_version: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             sql_server_user_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserSqlServerUserDetailArgs', 'UserSqlServerUserDetailArgsDict']]]]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'User':
@@ -812,11 +723,6 @@ class User(pulumi.CustomResource):
                instances this is a Required field, unless type is set to either CLOUD_IAM_USER
                or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
                and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
-        :param pulumi.Input[str] password_wo: The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to either
-               CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
-        :param pulumi.Input[int] password_wo_version: The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] type: The user type. It determines the method to authenticate the
@@ -836,8 +742,6 @@ class User(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["password"] = password
         __props__.__dict__["password_policy"] = password_policy
-        __props__.__dict__["password_wo"] = password_wo
-        __props__.__dict__["password_wo_version"] = password_wo_version
         __props__.__dict__["project"] = project
         __props__.__dict__["sql_server_user_details"] = sql_server_user_details
         __props__.__dict__["type"] = type
@@ -898,25 +802,6 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="passwordPolicy")
     def password_policy(self) -> pulumi.Output[Optional['outputs.UserPasswordPolicy']]:
         return pulumi.get(self, "password_policy")
-
-    @property
-    @pulumi.getter(name="passwordWo")
-    def password_wo(self) -> pulumi.Output[Optional[str]]:
-        """
-        The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to either
-        CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
-        """
-        return pulumi.get(self, "password_wo")
-
-    @property
-    @pulumi.getter(name="passwordWoVersion")
-    def password_wo_version(self) -> pulumi.Output[Optional[int]]:
-        """
-        The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
-
-        - - -
-        """
-        return pulumi.get(self, "password_wo_version")
 
     @property
     @pulumi.getter

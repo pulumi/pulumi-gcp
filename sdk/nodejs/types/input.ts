@@ -5678,14 +5678,6 @@ export namespace bigquery {
          * The Secret Access Key of the AWS account transferring data from.
          */
         secretAccessKey?: pulumi.Input<string>;
-        /**
-         * The Secret Access Key of the AWS account transferring data from.
-         */
-        secretAccessKeyWo?: pulumi.Input<string>;
-        /**
-         * The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-         */
-        secretAccessKeyWoVersion?: pulumi.Input<number>;
     }
 
     export interface DatasetAccess {

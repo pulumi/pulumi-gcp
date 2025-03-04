@@ -38,27 +38,6 @@ import * as utilities from "../utilities";
  *     secretData: "secret-data",
  * });
  * ```
- * ### Secret Version Basic Write Only
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const secret_basic_write_only = new gcp.secretmanager.Secret("secret-basic-write-only", {
- *     secretId: "secret-version-write-only",
- *     labels: {
- *         label: "my-label",
- *     },
- *     replication: {
- *         auto: {},
- *     },
- * });
- * const secret_version_basic_write_only = new gcp.secretmanager.SecretVersion("secret-version-basic-write-only", {
- *     secret: secret_basic_write_only.id,
- *     secretDataWoVersion: 1,
- *     secretDataWo: "secret-data-write-only",
- * });
- * ```
  * ### Secret Version Deletion Policy Abandon
  *
  * ```typescript
@@ -128,49 +107,6 @@ import * as utilities from "../utilities";
  *     }).then(invoke => invoke.result),
  * });
  * ```
- * ### Secret Version With Base64 String Secret Data Write Only
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as std from "@pulumi/std";
- *
- * const secret_basic = new gcp.secretmanager.Secret("secret-basic", {
- *     secretId: "secret-version-base64-write-only",
- *     replication: {
- *         userManaged: {
- *             replicas: [{
- *                 location: "us-central1",
- *             }],
- *         },
- *     },
- * });
- * const secret_version_base64_write_only = new gcp.secretmanager.SecretVersion("secret-version-base64-write-only", {
- *     secret: secret_basic.id,
- *     isSecretDataBase64: true,
- *     secretDataWoVersion: 1,
- *     secretDataWo: std.filebase64({
- *         input: "secret-data-base64-write-only.pfx",
- *     }).then(invoke => invoke.result),
- * });
- * ```
- *
- * ## Ephemeral Attributes Reference
- *
- * The following write-only attributes are supported:
- *
- * * `secretDataWo` -
- *   (Optional)
- *   The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
- *   **Note**: This property is write-only and will not be read from the API.
- *
- * <a name="nestedPayload"></a>The `payload` block supports:
- *
- * * `secretDataWo` -
- *   (Optional)
- *   The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
- *   **Note**: This property is write-only and will not be read from the API.
- *
  * ## Import
  *
  * SecretVersion can be imported using any of these accepted formats:
@@ -254,11 +190,6 @@ export class SecretVersion extends pulumi.CustomResource {
      */
     public readonly secretData!: pulumi.Output<string | undefined>;
     /**
-     * The secret data. Must be no larger than 64KiB. For more info see [updating write-only
-     * attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-     */
-    public readonly secretDataWo!: pulumi.Output<string | undefined>;
-    /**
      * Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
      */
     public readonly secretDataWoVersion!: pulumi.Output<number | undefined>;
@@ -288,7 +219,6 @@ export class SecretVersion extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["secret"] = state ? state.secret : undefined;
             resourceInputs["secretData"] = state ? state.secretData : undefined;
-            resourceInputs["secretDataWo"] = state ? state.secretDataWo : undefined;
             resourceInputs["secretDataWoVersion"] = state ? state.secretDataWoVersion : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
         } else {
@@ -301,7 +231,6 @@ export class SecretVersion extends pulumi.CustomResource {
             resourceInputs["isSecretDataBase64"] = args ? args.isSecretDataBase64 : undefined;
             resourceInputs["secret"] = args ? args.secret : undefined;
             resourceInputs["secretData"] = args?.secretData ? pulumi.secret(args.secretData) : undefined;
-            resourceInputs["secretDataWo"] = args ? args.secretDataWo : undefined;
             resourceInputs["secretDataWoVersion"] = args ? args.secretDataWoVersion : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["destroyTime"] = undefined /*out*/;
@@ -362,11 +291,6 @@ export interface SecretVersionState {
      */
     secretData?: pulumi.Input<string>;
     /**
-     * The secret data. Must be no larger than 64KiB. For more info see [updating write-only
-     * attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-     */
-    secretDataWo?: pulumi.Input<string>;
-    /**
      * Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
      */
     secretDataWoVersion?: pulumi.Input<number>;
@@ -409,11 +333,6 @@ export interface SecretVersionArgs {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     secretData?: pulumi.Input<string>;
-    /**
-     * The secret data. Must be no larger than 64KiB. For more info see [updating write-only
-     * attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-     */
-    secretDataWo?: pulumi.Input<string>;
     /**
      * Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
      */

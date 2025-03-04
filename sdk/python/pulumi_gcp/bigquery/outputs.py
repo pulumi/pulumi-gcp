@@ -1124,10 +1124,6 @@ class DataTransferConfigSensitiveParams(dict):
         suggest = None
         if key == "secretAccessKey":
             suggest = "secret_access_key"
-        elif key == "secretAccessKeyWo":
-            suggest = "secret_access_key_wo"
-        elif key == "secretAccessKeyWoVersion":
-            suggest = "secret_access_key_wo_version"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DataTransferConfigSensitiveParams. Access the value via the '{suggest}' property getter instead.")
@@ -1141,20 +1137,12 @@ class DataTransferConfigSensitiveParams(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 secret_access_key: Optional[str] = None,
-                 secret_access_key_wo: Optional[str] = None,
-                 secret_access_key_wo_version: Optional[int] = None):
+                 secret_access_key: Optional[str] = None):
         """
         :param str secret_access_key: The Secret Access Key of the AWS account transferring data from.
-        :param str secret_access_key_wo: The Secret Access Key of the AWS account transferring data from.
-        :param int secret_access_key_wo_version: The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         """
         if secret_access_key is not None:
             pulumi.set(__self__, "secret_access_key", secret_access_key)
-        if secret_access_key_wo is not None:
-            pulumi.set(__self__, "secret_access_key_wo", secret_access_key_wo)
-        if secret_access_key_wo_version is not None:
-            pulumi.set(__self__, "secret_access_key_wo_version", secret_access_key_wo_version)
 
     @property
     @pulumi.getter(name="secretAccessKey")
@@ -1163,22 +1151,6 @@ class DataTransferConfigSensitiveParams(dict):
         The Secret Access Key of the AWS account transferring data from.
         """
         return pulumi.get(self, "secret_access_key")
-
-    @property
-    @pulumi.getter(name="secretAccessKeyWo")
-    def secret_access_key_wo(self) -> Optional[str]:
-        """
-        The Secret Access Key of the AWS account transferring data from.
-        """
-        return pulumi.get(self, "secret_access_key_wo")
-
-    @property
-    @pulumi.getter(name="secretAccessKeyWoVersion")
-    def secret_access_key_wo_version(self) -> Optional[int]:
-        """
-        The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-        """
-        return pulumi.get(self, "secret_access_key_wo_version")
 
 
 @pulumi.output_type

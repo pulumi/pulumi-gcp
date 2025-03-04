@@ -110,23 +110,6 @@ public final class SecretVersionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The secret data. Must be no larger than 64KiB. For more info see [updating write-only
-     * attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-     * 
-     */
-    @Import(name="secretDataWo")
-    private @Nullable Output<String> secretDataWo;
-
-    /**
-     * @return The secret data. Must be no larger than 64KiB. For more info see [updating write-only
-     * attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-     * 
-     */
-    public Optional<Output<String>> secretDataWo() {
-        return Optional.ofNullable(this.secretDataWo);
-    }
-
-    /**
      * Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
      * 
      */
@@ -149,7 +132,6 @@ public final class SecretVersionArgs extends com.pulumi.resources.ResourceArgs {
         this.isSecretDataBase64 = $.isSecretDataBase64;
         this.secret = $.secret;
         this.secretData = $.secretData;
-        this.secretDataWo = $.secretDataWo;
         this.secretDataWoVersion = $.secretDataWoVersion;
     }
 
@@ -290,29 +272,6 @@ public final class SecretVersionArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder secretData(String secretData) {
             return secretData(Output.of(secretData));
-        }
-
-        /**
-         * @param secretDataWo The secret data. Must be no larger than 64KiB. For more info see [updating write-only
-         * attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder secretDataWo(@Nullable Output<String> secretDataWo) {
-            $.secretDataWo = secretDataWo;
-            return this;
-        }
-
-        /**
-         * @param secretDataWo The secret data. Must be no larger than 64KiB. For more info see [updating write-only
-         * attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder secretDataWo(String secretDataWo) {
-            return secretDataWo(Output.of(secretDataWo));
         }
 
         /**

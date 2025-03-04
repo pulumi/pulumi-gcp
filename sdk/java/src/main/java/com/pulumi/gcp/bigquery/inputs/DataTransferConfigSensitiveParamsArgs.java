@@ -5,7 +5,6 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -31,42 +30,10 @@ public final class DataTransferConfigSensitiveParamsArgs extends com.pulumi.reso
         return Optional.ofNullable(this.secretAccessKey);
     }
 
-    /**
-     * The Secret Access Key of the AWS account transferring data from.
-     * 
-     */
-    @Import(name="secretAccessKeyWo")
-    private @Nullable Output<String> secretAccessKeyWo;
-
-    /**
-     * @return The Secret Access Key of the AWS account transferring data from.
-     * 
-     */
-    public Optional<Output<String>> secretAccessKeyWo() {
-        return Optional.ofNullable(this.secretAccessKeyWo);
-    }
-
-    /**
-     * The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-     * 
-     */
-    @Import(name="secretAccessKeyWoVersion")
-    private @Nullable Output<Integer> secretAccessKeyWoVersion;
-
-    /**
-     * @return The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-     * 
-     */
-    public Optional<Output<Integer>> secretAccessKeyWoVersion() {
-        return Optional.ofNullable(this.secretAccessKeyWoVersion);
-    }
-
     private DataTransferConfigSensitiveParamsArgs() {}
 
     private DataTransferConfigSensitiveParamsArgs(DataTransferConfigSensitiveParamsArgs $) {
         this.secretAccessKey = $.secretAccessKey;
-        this.secretAccessKeyWo = $.secretAccessKeyWo;
-        this.secretAccessKeyWoVersion = $.secretAccessKeyWoVersion;
     }
 
     public static Builder builder() {
@@ -106,48 +73,6 @@ public final class DataTransferConfigSensitiveParamsArgs extends com.pulumi.reso
          */
         public Builder secretAccessKey(String secretAccessKey) {
             return secretAccessKey(Output.of(secretAccessKey));
-        }
-
-        /**
-         * @param secretAccessKeyWo The Secret Access Key of the AWS account transferring data from.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder secretAccessKeyWo(@Nullable Output<String> secretAccessKeyWo) {
-            $.secretAccessKeyWo = secretAccessKeyWo;
-            return this;
-        }
-
-        /**
-         * @param secretAccessKeyWo The Secret Access Key of the AWS account transferring data from.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder secretAccessKeyWo(String secretAccessKeyWo) {
-            return secretAccessKeyWo(Output.of(secretAccessKeyWo));
-        }
-
-        /**
-         * @param secretAccessKeyWoVersion The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder secretAccessKeyWoVersion(@Nullable Output<Integer> secretAccessKeyWoVersion) {
-            $.secretAccessKeyWoVersion = secretAccessKeyWoVersion;
-            return this;
-        }
-
-        /**
-         * @param secretAccessKeyWoVersion The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder secretAccessKeyWoVersion(Integer secretAccessKeyWoVersion) {
-            return secretAccessKeyWoVersion(Output.of(secretAccessKeyWoVersion));
         }
 
         public DataTransferConfigSensitiveParamsArgs build() {

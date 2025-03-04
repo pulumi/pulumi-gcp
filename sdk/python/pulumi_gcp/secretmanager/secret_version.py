@@ -24,7 +24,6 @@ class SecretVersionArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  is_secret_data_base64: Optional[pulumi.Input[bool]] = None,
                  secret_data: Optional[pulumi.Input[str]] = None,
-                 secret_data_wo: Optional[pulumi.Input[str]] = None,
                  secret_data_wo_version: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a SecretVersion resource.
@@ -42,8 +41,6 @@ class SecretVersionArgs:
         :param pulumi.Input[bool] is_secret_data_base64: If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
         :param pulumi.Input[str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param pulumi.Input[str] secret_data_wo: The secret data. Must be no larger than 64KiB. For more info see [updating write-only
-               attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         :param pulumi.Input[int] secret_data_wo_version: Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         """
         pulumi.set(__self__, "secret", secret)
@@ -55,8 +52,6 @@ class SecretVersionArgs:
             pulumi.set(__self__, "is_secret_data_base64", is_secret_data_base64)
         if secret_data is not None:
             pulumi.set(__self__, "secret_data", secret_data)
-        if secret_data_wo is not None:
-            pulumi.set(__self__, "secret_data_wo", secret_data_wo)
         if secret_data_wo_version is not None:
             pulumi.set(__self__, "secret_data_wo_version", secret_data_wo_version)
 
@@ -130,19 +125,6 @@ class SecretVersionArgs:
         pulumi.set(self, "secret_data", value)
 
     @property
-    @pulumi.getter(name="secretDataWo")
-    def secret_data_wo(self) -> Optional[pulumi.Input[str]]:
-        """
-        The secret data. Must be no larger than 64KiB. For more info see [updating write-only
-        attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-        """
-        return pulumi.get(self, "secret_data_wo")
-
-    @secret_data_wo.setter
-    def secret_data_wo(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_data_wo", value)
-
-    @property
     @pulumi.getter(name="secretDataWoVersion")
     def secret_data_wo_version(self) -> Optional[pulumi.Input[int]]:
         """
@@ -166,7 +148,6 @@ class _SecretVersionState:
                  name: Optional[pulumi.Input[str]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
                  secret_data: Optional[pulumi.Input[str]] = None,
-                 secret_data_wo: Optional[pulumi.Input[str]] = None,
                  secret_data_wo_version: Optional[pulumi.Input[int]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
@@ -189,8 +170,6 @@ class _SecretVersionState:
                - - -
         :param pulumi.Input[str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param pulumi.Input[str] secret_data_wo: The secret data. Must be no larger than 64KiB. For more info see [updating write-only
-               attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         :param pulumi.Input[int] secret_data_wo_version: Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         :param pulumi.Input[str] version: The version of the Secret.
         """
@@ -210,8 +189,6 @@ class _SecretVersionState:
             pulumi.set(__self__, "secret", secret)
         if secret_data is not None:
             pulumi.set(__self__, "secret_data", secret_data)
-        if secret_data_wo is not None:
-            pulumi.set(__self__, "secret_data_wo", secret_data_wo)
         if secret_data_wo_version is not None:
             pulumi.set(__self__, "secret_data_wo_version", secret_data_wo_version)
         if version is not None:
@@ -324,19 +301,6 @@ class _SecretVersionState:
         pulumi.set(self, "secret_data", value)
 
     @property
-    @pulumi.getter(name="secretDataWo")
-    def secret_data_wo(self) -> Optional[pulumi.Input[str]]:
-        """
-        The secret data. Must be no larger than 64KiB. For more info see [updating write-only
-        attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-        """
-        return pulumi.get(self, "secret_data_wo")
-
-    @secret_data_wo.setter
-    def secret_data_wo(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_data_wo", value)
-
-    @property
     @pulumi.getter(name="secretDataWoVersion")
     def secret_data_wo_version(self) -> Optional[pulumi.Input[int]]:
         """
@@ -371,7 +335,6 @@ class SecretVersion(pulumi.CustomResource):
                  is_secret_data_base64: Optional[pulumi.Input[bool]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
                  secret_data: Optional[pulumi.Input[str]] = None,
-                 secret_data_wo: Optional[pulumi.Input[str]] = None,
                  secret_data_wo_version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -405,25 +368,6 @@ class SecretVersion(pulumi.CustomResource):
         secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
             secret=secret_basic.id,
             secret_data="secret-data")
-        ```
-        ### Secret Version Basic Write Only
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        secret_basic_write_only = gcp.secretmanager.Secret("secret-basic-write-only",
-            secret_id="secret-version-write-only",
-            labels={
-                "label": "my-label",
-            },
-            replication={
-                "auto": {},
-            })
-        secret_version_basic_write_only = gcp.secretmanager.SecretVersion("secret-version-basic-write-only",
-            secret=secret_basic_write_only.id,
-            secret_data_wo_version=1,
-            secret_data_wo="secret-data-write-only")
         ```
         ### Secret Version Deletion Policy Abandon
 
@@ -486,45 +430,6 @@ class SecretVersion(pulumi.CustomResource):
             is_secret_data_base64=True,
             secret_data=std.filebase64(input="secret-data.pfx").result)
         ```
-        ### Secret Version With Base64 String Secret Data Write Only
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        secret_basic = gcp.secretmanager.Secret("secret-basic",
-            secret_id="secret-version-base64-write-only",
-            replication={
-                "user_managed": {
-                    "replicas": [{
-                        "location": "us-central1",
-                    }],
-                },
-            })
-        secret_version_base64_write_only = gcp.secretmanager.SecretVersion("secret-version-base64-write-only",
-            secret=secret_basic.id,
-            is_secret_data_base64=True,
-            secret_data_wo_version=1,
-            secret_data_wo=std.filebase64(input="secret-data-base64-write-only.pfx").result)
-        ```
-
-        ## Ephemeral Attributes Reference
-
-        The following write-only attributes are supported:
-
-        * `secret_data_wo` -
-          (Optional)
-          The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-          **Note**: This property is write-only and will not be read from the API.
-
-        <a name="nested_payload"></a>The `payload` block supports:
-
-        * `secret_data_wo` -
-          (Optional)
-          The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-          **Note**: This property is write-only and will not be read from the API.
-
         ## Import
 
         SecretVersion can be imported using any of these accepted formats:
@@ -553,8 +458,6 @@ class SecretVersion(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param pulumi.Input[str] secret_data_wo: The secret data. Must be no larger than 64KiB. For more info see [updating write-only
-               attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         :param pulumi.Input[int] secret_data_wo_version: Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         """
         ...
@@ -595,25 +498,6 @@ class SecretVersion(pulumi.CustomResource):
             secret=secret_basic.id,
             secret_data="secret-data")
         ```
-        ### Secret Version Basic Write Only
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        secret_basic_write_only = gcp.secretmanager.Secret("secret-basic-write-only",
-            secret_id="secret-version-write-only",
-            labels={
-                "label": "my-label",
-            },
-            replication={
-                "auto": {},
-            })
-        secret_version_basic_write_only = gcp.secretmanager.SecretVersion("secret-version-basic-write-only",
-            secret=secret_basic_write_only.id,
-            secret_data_wo_version=1,
-            secret_data_wo="secret-data-write-only")
-        ```
         ### Secret Version Deletion Policy Abandon
 
         ```python
@@ -675,45 +559,6 @@ class SecretVersion(pulumi.CustomResource):
             is_secret_data_base64=True,
             secret_data=std.filebase64(input="secret-data.pfx").result)
         ```
-        ### Secret Version With Base64 String Secret Data Write Only
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        secret_basic = gcp.secretmanager.Secret("secret-basic",
-            secret_id="secret-version-base64-write-only",
-            replication={
-                "user_managed": {
-                    "replicas": [{
-                        "location": "us-central1",
-                    }],
-                },
-            })
-        secret_version_base64_write_only = gcp.secretmanager.SecretVersion("secret-version-base64-write-only",
-            secret=secret_basic.id,
-            is_secret_data_base64=True,
-            secret_data_wo_version=1,
-            secret_data_wo=std.filebase64(input="secret-data-base64-write-only.pfx").result)
-        ```
-
-        ## Ephemeral Attributes Reference
-
-        The following write-only attributes are supported:
-
-        * `secret_data_wo` -
-          (Optional)
-          The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-          **Note**: This property is write-only and will not be read from the API.
-
-        <a name="nested_payload"></a>The `payload` block supports:
-
-        * `secret_data_wo` -
-          (Optional)
-          The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-          **Note**: This property is write-only and will not be read from the API.
-
         ## Import
 
         SecretVersion can be imported using any of these accepted formats:
@@ -746,7 +591,6 @@ class SecretVersion(pulumi.CustomResource):
                  is_secret_data_base64: Optional[pulumi.Input[bool]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
                  secret_data: Optional[pulumi.Input[str]] = None,
-                 secret_data_wo: Optional[pulumi.Input[str]] = None,
                  secret_data_wo_version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -764,7 +608,6 @@ class SecretVersion(pulumi.CustomResource):
                 raise TypeError("Missing required property 'secret'")
             __props__.__dict__["secret"] = secret
             __props__.__dict__["secret_data"] = None if secret_data is None else pulumi.Output.secret(secret_data)
-            __props__.__dict__["secret_data_wo"] = secret_data_wo
             __props__.__dict__["secret_data_wo_version"] = secret_data_wo_version
             __props__.__dict__["create_time"] = None
             __props__.__dict__["destroy_time"] = None
@@ -790,7 +633,6 @@ class SecretVersion(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             secret: Optional[pulumi.Input[str]] = None,
             secret_data: Optional[pulumi.Input[str]] = None,
-            secret_data_wo: Optional[pulumi.Input[str]] = None,
             secret_data_wo_version: Optional[pulumi.Input[int]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'SecretVersion':
         """
@@ -818,8 +660,6 @@ class SecretVersion(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param pulumi.Input[str] secret_data_wo: The secret data. Must be no larger than 64KiB. For more info see [updating write-only
-               attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         :param pulumi.Input[int] secret_data_wo_version: Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         :param pulumi.Input[str] version: The version of the Secret.
         """
@@ -835,7 +675,6 @@ class SecretVersion(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["secret"] = secret
         __props__.__dict__["secret_data"] = secret_data
-        __props__.__dict__["secret_data_wo"] = secret_data_wo
         __props__.__dict__["secret_data_wo_version"] = secret_data_wo_version
         __props__.__dict__["version"] = version
         return SecretVersion(resource_name, opts=opts, __props__=__props__)
@@ -913,15 +752,6 @@ class SecretVersion(pulumi.CustomResource):
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "secret_data")
-
-    @property
-    @pulumi.getter(name="secretDataWo")
-    def secret_data_wo(self) -> pulumi.Output[Optional[str]]:
-        """
-        The secret data. Must be no larger than 64KiB. For more info see [updating write-only
-        attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-        """
-        return pulumi.get(self, "secret_data_wo")
 
     @property
     @pulumi.getter(name="secretDataWoVersion")

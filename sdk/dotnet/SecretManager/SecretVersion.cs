@@ -54,38 +54,6 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
-    /// ### Secret Version Basic Write Only
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var secret_basic_write_only = new Gcp.SecretManager.Secret("secret-basic-write-only", new()
-    ///     {
-    ///         SecretId = "secret-version-write-only",
-    ///         Labels = 
-    ///         {
-    ///             { "label", "my-label" },
-    ///         },
-    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
-    ///         {
-    ///             Auto = null,
-    ///         },
-    ///     });
-    /// 
-    ///     var secret_version_basic_write_only = new Gcp.SecretManager.SecretVersion("secret-version-basic-write-only", new()
-    ///     {
-    ///         Secret = secret_basic_write_only.Id,
-    ///         SecretDataWoVersion = 1,
-    ///         SecretDataWo = "secret-data-write-only",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ### Secret Version Deletion Policy Abandon
     /// 
     /// ```csharp
@@ -201,65 +169,6 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
-    /// ### Secret Version With Base64 String Secret Data Write Only
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var secret_basic = new Gcp.SecretManager.Secret("secret-basic", new()
-    ///     {
-    ///         SecretId = "secret-version-base64-write-only",
-    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
-    ///         {
-    ///             UserManaged = new Gcp.SecretManager.Inputs.SecretReplicationUserManagedArgs
-    ///             {
-    ///                 Replicas = new[]
-    ///                 {
-    ///                     new Gcp.SecretManager.Inputs.SecretReplicationUserManagedReplicaArgs
-    ///                     {
-    ///                         Location = "us-central1",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var secret_version_base64_write_only = new Gcp.SecretManager.SecretVersion("secret-version-base64-write-only", new()
-    ///     {
-    ///         Secret = secret_basic.Id,
-    ///         IsSecretDataBase64 = true,
-    ///         SecretDataWoVersion = 1,
-    ///         SecretDataWo = Std.Filebase64.Invoke(new()
-    ///         {
-    ///             Input = "secret-data-base64-write-only.pfx",
-    ///         }).Apply(invoke =&gt; invoke.Result),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Ephemeral Attributes Reference
-    /// 
-    /// The following write-only attributes are supported:
-    /// 
-    /// * `secret_data_wo` -
-    ///   (Optional)
-    ///   The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-    ///   **Note**: This property is write-only and will not be read from the API.
-    /// 
-    /// &lt;a name="nested_payload"&gt;&lt;/a&gt;The `payload` block supports:
-    /// 
-    /// * `secret_data_wo` -
-    ///   (Optional)
-    ///   The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-    ///   **Note**: This property is write-only and will not be read from the API.
-    /// 
     /// ## Import
     /// 
     /// SecretVersion can be imported using any of these accepted formats:
@@ -332,13 +241,6 @@ namespace Pulumi.Gcp.SecretManager
         /// </summary>
         [Output("secretData")]
         public Output<string?> SecretData { get; private set; } = null!;
-
-        /// <summary>
-        /// The secret data. Must be no larger than 64KiB. For more info see [updating write-only
-        /// attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-        /// </summary>
-        [Output("secretDataWo")]
-        public Output<string?> SecretDataWo { get; private set; } = null!;
 
         /// <summary>
         /// Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
@@ -452,13 +354,6 @@ namespace Pulumi.Gcp.SecretManager
         }
 
         /// <summary>
-        /// The secret data. Must be no larger than 64KiB. For more info see [updating write-only
-        /// attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-        /// </summary>
-        [Input("secretDataWo")]
-        public Input<string>? SecretDataWo { get; set; }
-
-        /// <summary>
         /// Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         /// </summary>
         [Input("secretDataWoVersion")]
@@ -539,13 +434,6 @@ namespace Pulumi.Gcp.SecretManager
                 _secretData = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
-
-        /// <summary>
-        /// The secret data. Must be no larger than 64KiB. For more info see [updating write-only
-        /// attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-        /// </summary>
-        [Input("secretDataWo")]
-        public Input<string>? SecretDataWo { get; set; }
 
         /// <summary>
         /// Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
