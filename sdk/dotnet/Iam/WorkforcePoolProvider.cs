@@ -98,7 +98,7 @@ namespace Pulumi.Gcp.Iam
     ///                     PlainText = "client-secret",
     ///                 },
     ///             },
-    ///             AttributesType = "AZURE_AD_GROUPS_MAIL",
+    ///             AttributesType = "AZURE_AD_GROUPS_ID",
     ///             QueryParameters = new Gcp.Iam.Inputs.WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs
     ///             {
     ///                 Filter = "mail:gcp",

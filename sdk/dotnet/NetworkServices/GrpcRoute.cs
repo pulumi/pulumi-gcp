@@ -212,29 +212,82 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// ### Network Services Grpc Route Location
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.NetworkServices.GrpcRoute("default", new()
+    ///     {
+    ///         Name = "my-grpc-route",
+    ///         Location = "global",
+    ///         Hostnames = new[]
+    ///         {
+    ///             "example",
+    ///         },
+    ///         Rules = new[]
+    ///         {
+    ///             new Gcp.NetworkServices.Inputs.GrpcRouteRuleArgs
+    ///             {
+    ///                 Matches = new[]
+    ///                 {
+    ///                     new Gcp.NetworkServices.Inputs.GrpcRouteRuleMatchArgs
+    ///                     {
+    ///                         Headers = new[]
+    ///                         {
+    ///                             new Gcp.NetworkServices.Inputs.GrpcRouteRuleMatchHeaderArgs
+    ///                             {
+    ///                                 Key = "key",
+    ///                                 Value = "value",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Action = new Gcp.NetworkServices.Inputs.GrpcRouteRuleActionArgs
+    ///                 {
+    ///                     RetryPolicy = new Gcp.NetworkServices.Inputs.GrpcRouteRuleActionRetryPolicyArgs
+    ///                     {
+    ///                         RetryConditions = new[]
+    ///                         {
+    ///                             "cancelled",
+    ///                         },
+    ///                         NumRetries = 1,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
     /// GrpcRoute can be imported using any of these accepted formats:
     /// 
-    /// * `projects/{{project}}/locations/global/grpcRoutes/{{name}}`
+    /// * `projects/{{project}}/locations/{{location}}/grpcRoutes/{{name}}`
     /// 
-    /// * `{{project}}/{{name}}`
+    /// * `{{project}}/{{location}}/{{name}}`
     /// 
-    /// * `{{name}}`
+    /// * `{{location}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, GrpcRoute can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    /// $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default projects/{{project}}/locations/global/grpcRoutes/{{name}}
+    /// $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default projects/{{project}}/locations/{{location}}/grpcRoutes/{{name}}
     /// ```
     /// 
     /// ```sh
-    /// $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{project}}/{{name}}
+    /// $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{project}}/{{location}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    /// $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{name}}
+    /// $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{location}}/{{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:networkservices/grpcRoute:GrpcRoute")]
@@ -277,6 +330,13 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to
+        /// 'global' if omitted.
+        /// </summary>
+        [Output("location")]
+        public Output<string?> Location { get; private set; } = null!;
 
         /// <summary>
         /// List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
@@ -414,6 +474,13 @@ namespace Pulumi.Gcp.NetworkServices
             set => _labels = value;
         }
 
+        /// <summary>
+        /// Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to
+        /// 'global' if omitted.
+        /// </summary>
+        [Input("location")]
+        public Input<string>? Location { get; set; }
+
         [Input("meshes")]
         private InputList<string>? _meshes;
 
@@ -521,6 +588,13 @@ namespace Pulumi.Gcp.NetworkServices
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to
+        /// 'global' if omitted.
+        /// </summary>
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("meshes")]
         private InputList<string>? _meshes;

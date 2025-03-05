@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * const basic = new gcp.discoveryengine.TargetSite("basic", {
  *     location: basicDataStore.location,
  *     dataStoreId: basicDataStore.dataStoreId,
- *     providedUriPattern: "http://cloud.google.com/docs/*",
+ *     providedUriPattern: "cloud.google.com/docs/*",
  *     type: "INCLUDE",
  *     exactMatch: false,
  * });
@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  * const advanced = new gcp.discoveryengine.TargetSite("advanced", {
  *     location: advancedDataStore.location,
  *     dataStoreId: advancedDataStore.dataStoreId,
- *     providedUriPattern: "http://cloud.google.com/docs/*",
+ *     providedUriPattern: "cloud.google.com/docs/*",
  *     type: "INCLUDE",
  *     exactMatch: false,
  * });

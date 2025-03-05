@@ -96,6 +96,16 @@ import * as utilities from "../utilities";
  *         ],
  *         payloadFormat: "JSON",
  *     },
+ *     loggingConfig: {
+ *         logActions: [
+ *             "COPY",
+ *             "DELETE",
+ *         ],
+ *         logActionStates: [
+ *             "SUCCEEDED",
+ *             "FAILED",
+ *         ],
+ *     },
  * }, {
  *     dependsOn: [
  *         s3_backup_bucketBucketIAMMember,
@@ -165,6 +175,10 @@ export class TransferJob extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastModificationTime!: pulumi.Output<string>;
     /**
+     * Logging configuration. Structure documented below.
+     */
+    public readonly loggingConfig!: pulumi.Output<outputs.storage.TransferJobLoggingConfig | undefined>;
+    /**
      * The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
      */
     public readonly name!: pulumi.Output<string>;
@@ -214,6 +228,7 @@ export class TransferJob extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["eventStream"] = state ? state.eventStream : undefined;
             resourceInputs["lastModificationTime"] = state ? state.lastModificationTime : undefined;
+            resourceInputs["loggingConfig"] = state ? state.loggingConfig : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notificationConfig"] = state ? state.notificationConfig : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -228,6 +243,7 @@ export class TransferJob extends pulumi.CustomResource {
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["eventStream"] = args ? args.eventStream : undefined;
+            resourceInputs["loggingConfig"] = args ? args.loggingConfig : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -268,6 +284,10 @@ export interface TransferJobState {
      * When the Transfer Job was last modified.
      */
     lastModificationTime?: pulumi.Input<string>;
+    /**
+     * Logging configuration. Structure documented below.
+     */
+    loggingConfig?: pulumi.Input<inputs.storage.TransferJobLoggingConfig>;
     /**
      * The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
      */
@@ -313,6 +333,10 @@ export interface TransferJobArgs {
      * Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `eventStream` or `schedule` must be set.
      */
     eventStream?: pulumi.Input<inputs.storage.TransferJobEventStream>;
+    /**
+     * Logging configuration. Structure documented below.
+     */
+    loggingConfig?: pulumi.Input<inputs.storage.TransferJobLoggingConfig>;
     /**
      * The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
      */

@@ -479,7 +479,8 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly healthChecks!: pulumi.Output<string | undefined>;
     /**
-     * Settings for enabling Cloud Identity Aware Proxy
+     * Settings for enabling Cloud Identity Aware Proxy.
+     * If OAuth client is not set, Google-managed OAuth client is used.
      * Structure is documented below.
      */
     public readonly iap!: pulumi.Output<outputs.compute.RegionBackendServiceIap>;
@@ -807,7 +808,8 @@ export interface RegionBackendServiceState {
      */
     healthChecks?: pulumi.Input<string>;
     /**
-     * Settings for enabling Cloud Identity Aware Proxy
+     * Settings for enabling Cloud Identity Aware Proxy.
+     * If OAuth client is not set, Google-managed OAuth client is used.
      * Structure is documented below.
      */
     iap?: pulumi.Input<inputs.compute.RegionBackendServiceIap>;
@@ -1038,7 +1040,8 @@ export interface RegionBackendServiceArgs {
      */
     healthChecks?: pulumi.Input<string>;
     /**
-     * Settings for enabling Cloud Identity Aware Proxy
+     * Settings for enabling Cloud Identity Aware Proxy.
+     * If OAuth client is not set, Google-managed OAuth client is used.
      * Structure is documented below.
      */
     iap?: pulumi.Input<inputs.compute.RegionBackendServiceIap>;

@@ -17,6 +17,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The resource for managing DataSharingWithGoogle setting bindings for Admin Control.
+ * 
+ * To get more information about DataSharingWithGoogleSettingBinding, see:
+ * * How-to Guides
+ *     * [Gemini Cloud Assist overview](https://cloud.google.com/gemini/docs/cloud-assist/overview)
+ * 
  * ## Example Usage
  * 
  * ### Gemini Data Sharing With Google Setting Binding Basic
@@ -185,19 +191,19 @@ public class DataSharingWithGoogleSettingBinding extends com.pulumi.resources.Cu
     }
     /**
      * Product type of the setting binding.
-     * Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+     * Possible values are: `GEMINI_CLOUD_ASSIST`.
      * 
      */
     @Export(name="product", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> product;
+    private Output<String> product;
 
     /**
      * @return Product type of the setting binding.
-     * Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+     * Possible values are: `GEMINI_CLOUD_ASSIST`.
      * 
      */
-    public Output<Optional<String>> product() {
-        return Codegen.optional(this.product);
+    public Output<String> product() {
+        return this.product;
     }
     /**
      * The ID of the project in which the resource belongs.

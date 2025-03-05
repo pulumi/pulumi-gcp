@@ -125,6 +125,8 @@ class Location(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        > **Warning:** `notebooks.Location` is deprecated and will be removed in a future major release. This resource is not functional.
+
         Represents a Location resource.
 
         ## Import
@@ -164,6 +166,8 @@ class Location(pulumi.CustomResource):
                  args: Optional[LocationArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Warning:** `notebooks.Location` is deprecated and will be removed in a future major release. This resource is not functional.
+
         Represents a Location resource.
 
         ## Import

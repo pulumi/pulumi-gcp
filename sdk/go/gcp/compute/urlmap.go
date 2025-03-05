@@ -619,6 +619,10 @@ import (
 //											},
 //										},
 //									},
+//									MaxStreamDuration: &compute.URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs{
+//										Nanos:   pulumi.Int(500000),
+//										Seconds: pulumi.String("9"),
+//									},
 //								},
 //							},
 //						},

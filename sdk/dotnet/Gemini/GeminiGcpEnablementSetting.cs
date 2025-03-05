@@ -28,6 +28,10 @@ namespace Pulumi.Gcp.Gemini
     ///     {
     ///         GeminiGcpEnablementSettingId = "ls1-tf",
     ///         Location = "global",
+    ///         Labels = 
+    ///         {
+    ///             { "my_key", "my_value" },
+    ///         },
     ///         EnableCustomerDataSharing = true,
     ///     });
     /// 

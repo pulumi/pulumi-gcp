@@ -10,6 +10,8 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.RouteArgs;
 import com.pulumi.gcp.compute.inputs.RouteState;
+import com.pulumi.gcp.compute.outputs.RouteAsPath;
+import com.pulumi.gcp.compute.outputs.RouteWarning;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -327,6 +329,34 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/route:Route")
 public class Route extends com.pulumi.resources.CustomResource {
     /**
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="asPaths", refs={List.class,RouteAsPath.class}, tree="[0,1]")
+    private Output<List<RouteAsPath>> asPaths;
+
+    /**
+     * @return Structure is documented below.
+     * 
+     */
+    public Output<List<RouteAsPath>> asPaths() {
+        return this.asPaths;
+    }
+    /**
+     * Creation timestamp in RFC3339 text format.
+     * 
+     */
+    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
+    private Output<String> creationTimestamp;
+
+    /**
+     * @return Creation timestamp in RFC3339 text format.
+     * 
+     */
+    public Output<String> creationTimestamp() {
+        return this.creationTimestamp;
+    }
+    /**
      * An optional description of this resource. Provide this property
      * when you create the resource.
      * 
@@ -427,6 +457,20 @@ public class Route extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> nextHopGateway() {
         return Codegen.optional(this.nextHopGateway);
+    }
+    /**
+     * The hub network that should handle matching packets, which should conform to RFC1035.
+     * 
+     */
+    @Export(name="nextHopHub", refs={String.class}, tree="[0]")
+    private Output<String> nextHopHub;
+
+    /**
+     * @return The hub network that should handle matching packets, which should conform to RFC1035.
+     * 
+     */
+    public Output<String> nextHopHub() {
+        return this.nextHopHub;
     }
     /**
      * The IP address or URL to a forwarding rule of type
@@ -581,6 +625,20 @@ public class Route extends com.pulumi.resources.CustomResource {
         return this.nextHopOrigin;
     }
     /**
+     * The network peering name that should handle matching packets, which should conform to RFC1035.
+     * 
+     */
+    @Export(name="nextHopPeering", refs={String.class}, tree="[0]")
+    private Output<String> nextHopPeering;
+
+    /**
+     * @return The network peering name that should handle matching packets, which should conform to RFC1035.
+     * 
+     */
+    public Output<String> nextHopPeering() {
+        return this.nextHopPeering;
+    }
+    /**
      * URL to a VpnTunnel that should handle matching packets.
      * 
      */
@@ -633,6 +691,46 @@ public class Route extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * The status of the route, which can be one of the following values:
+     * - &#39;ACTIVE&#39; for an active route
+     * - &#39;INACTIVE&#39; for an inactive route
+     * 
+     */
+    @Export(name="routeStatus", refs={String.class}, tree="[0]")
+    private Output<String> routeStatus;
+
+    /**
+     * @return The status of the route, which can be one of the following values:
+     * - &#39;ACTIVE&#39; for an active route
+     * - &#39;INACTIVE&#39; for an inactive route
+     * 
+     */
+    public Output<String> routeStatus() {
+        return this.routeStatus;
+    }
+    /**
+     * The type of this route, which can be one of the following values:
+     * - &#39;TRANSIT&#39; for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+     * - &#39;SUBNET&#39; for a route from a subnet of the VPC
+     * - &#39;BGP&#39; for a route learned from a BGP peer of this router
+     * - &#39;STATIC&#39; for a static route
+     * 
+     */
+    @Export(name="routeType", refs={String.class}, tree="[0]")
+    private Output<String> routeType;
+
+    /**
+     * @return The type of this route, which can be one of the following values:
+     * - &#39;TRANSIT&#39; for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+     * - &#39;SUBNET&#39; for a route from a subnet of the VPC
+     * - &#39;BGP&#39; for a route learned from a BGP peer of this router
+     * - &#39;STATIC&#39; for a static route
+     * 
+     */
+    public Output<String> routeType() {
+        return this.routeType;
+    }
+    /**
      * The URI of the created resource.
      * 
      */
@@ -659,6 +757,22 @@ public class Route extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
+    }
+    /**
+     * If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="warnings", refs={List.class,RouteWarning.class}, tree="[0,1]")
+    private Output<List<RouteWarning>> warnings;
+
+    /**
+     * @return If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<RouteWarning>> warnings() {
+        return this.warnings;
     }
 
     /**

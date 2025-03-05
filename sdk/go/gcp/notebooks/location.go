@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Warning:** `notebooks.Location` is deprecated and will be removed in a future major release. This resource is not functional.
+//
 // Represents a Location resource.
 //
 // ## Import

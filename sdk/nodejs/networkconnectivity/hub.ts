@@ -72,6 +72,22 @@ import * as utilities from "../utilities";
  *     presetTopology: "STAR",
  * });
  * ```
+ * ### Network Connectivity Hub Policy Mode
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.networkconnectivity.Hub("primary", {
+ *     name: "policy",
+ *     description: "A sample hub with PRESET policy_mode and STAR topology",
+ *     policyMode: "PRESET",
+ *     presetTopology: "STAR",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -155,6 +171,11 @@ export class Hub extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
+     * Possible values are: `CUSTOM`, `PRESET`.
+     */
+    public readonly policyMode!: pulumi.Output<string>;
+    /**
      * Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
      * Possible values are: `MESH`, `STAR`.
      */
@@ -206,6 +227,7 @@ export class Hub extends pulumi.CustomResource {
             resourceInputs["exportPsc"] = state ? state.exportPsc : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["policyMode"] = state ? state.policyMode : undefined;
             resourceInputs["presetTopology"] = state ? state.presetTopology : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
@@ -219,6 +241,7 @@ export class Hub extends pulumi.CustomResource {
             resourceInputs["exportPsc"] = args ? args.exportPsc : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["policyMode"] = args ? args.policyMode : undefined;
             resourceInputs["presetTopology"] = args ? args.presetTopology : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -269,6 +292,11 @@ export interface HubState {
      * - - -
      */
     name?: pulumi.Input<string>;
+    /**
+     * Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
+     * Possible values are: `CUSTOM`, `PRESET`.
+     */
+    policyMode?: pulumi.Input<string>;
     /**
      * Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
      * Possible values are: `MESH`, `STAR`.
@@ -328,6 +356,11 @@ export interface HubArgs {
      * - - -
      */
     name?: pulumi.Input<string>;
+    /**
+     * Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
+     * Possible values are: `CUSTOM`, `PRESET`.
+     */
+    policyMode?: pulumi.Input<string>;
     /**
      * Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
      * Possible values are: `MESH`, `STAR`.

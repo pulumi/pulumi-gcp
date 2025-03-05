@@ -57,7 +57,7 @@ public final class GetInstanceNetworkInterface {
      */
     private String network;
     /**
-     * @return Beta The URL of the network attachment to this interface.
+     * @return The URL of the network attachment to this interface.
      * 
      */
     private String networkAttachment;
@@ -156,7 +156,7 @@ public final class GetInstanceNetworkInterface {
         return this.network;
     }
     /**
-     * @return Beta The URL of the network attachment to this interface.
+     * @return The URL of the network attachment to this interface.
      * 
      */
     public String networkAttachment() {

@@ -75,6 +75,8 @@ __all__ = [
     'TransferAgentPoolBandwidthLimitArgsDict',
     'TransferJobEventStreamArgs',
     'TransferJobEventStreamArgsDict',
+    'TransferJobLoggingConfigArgs',
+    'TransferJobLoggingConfigArgsDict',
     'TransferJobNotificationConfigArgs',
     'TransferJobNotificationConfigArgsDict',
     'TransferJobReplicationSpecArgs',
@@ -2122,6 +2124,78 @@ class TransferJobEventStreamArgs:
     @event_stream_start_time.setter
     def event_stream_start_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "event_stream_start_time", value)
+
+
+if not MYPY:
+    class TransferJobLoggingConfigArgsDict(TypedDict):
+        enable_on_prem_gcs_transfer_logs: NotRequired[pulumi.Input[bool]]
+        """
+        For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
+        """
+        log_action_states: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+        """
+        log_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+        """
+elif False:
+    TransferJobLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TransferJobLoggingConfigArgs:
+    def __init__(__self__, *,
+                 enable_on_prem_gcs_transfer_logs: Optional[pulumi.Input[bool]] = None,
+                 log_action_states: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 log_actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[bool] enable_on_prem_gcs_transfer_logs: For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] log_action_states: States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] log_actions: Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+        """
+        if enable_on_prem_gcs_transfer_logs is not None:
+            pulumi.set(__self__, "enable_on_prem_gcs_transfer_logs", enable_on_prem_gcs_transfer_logs)
+        if log_action_states is not None:
+            pulumi.set(__self__, "log_action_states", log_action_states)
+        if log_actions is not None:
+            pulumi.set(__self__, "log_actions", log_actions)
+
+    @property
+    @pulumi.getter(name="enableOnPremGcsTransferLogs")
+    def enable_on_prem_gcs_transfer_logs(self) -> Optional[pulumi.Input[bool]]:
+        """
+        For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
+        """
+        return pulumi.get(self, "enable_on_prem_gcs_transfer_logs")
+
+    @enable_on_prem_gcs_transfer_logs.setter
+    def enable_on_prem_gcs_transfer_logs(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_on_prem_gcs_transfer_logs", value)
+
+    @property
+    @pulumi.getter(name="logActionStates")
+    def log_action_states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+        """
+        return pulumi.get(self, "log_action_states")
+
+    @log_action_states.setter
+    def log_action_states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "log_action_states", value)
+
+    @property
+    @pulumi.getter(name="logActions")
+    def log_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+        """
+        return pulumi.get(self, "log_actions")
+
+    @log_actions.setter
+    def log_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "log_actions", value)
 
 
 if not MYPY:

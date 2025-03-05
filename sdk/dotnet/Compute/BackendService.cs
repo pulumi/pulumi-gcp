@@ -634,7 +634,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> HealthChecks { get; private set; } = null!;
 
         /// <summary>
-        /// Settings for enabling Cloud Identity Aware Proxy
+        /// Settings for enabling Cloud Identity Aware Proxy.
+        /// If OAuth client is not set, the Google-managed OAuth client is used.
         /// Structure is documented below.
         /// </summary>
         [Output("iap")]
@@ -1000,7 +1001,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? HealthChecks { get; set; }
 
         /// <summary>
-        /// Settings for enabling Cloud Identity Aware Proxy
+        /// Settings for enabling Cloud Identity Aware Proxy.
+        /// If OAuth client is not set, the Google-managed OAuth client is used.
         /// Structure is documented below.
         /// </summary>
         [Input("iap")]
@@ -1347,7 +1349,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? HealthChecks { get; set; }
 
         /// <summary>
-        /// Settings for enabling Cloud Identity Aware Proxy
+        /// Settings for enabling Cloud Identity Aware Proxy.
+        /// If OAuth client is not set, the Google-managed OAuth client is used.
         /// Structure is documented below.
         /// </summary>
         [Input("iap")]

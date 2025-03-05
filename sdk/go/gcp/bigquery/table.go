@@ -195,7 +195,7 @@ type Table struct {
 	// returned when the table (or stale MV) is queried. Staleness encoded as a
 	// string encoding of [SQL IntervalValue
 	// type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
-	MaxStaleness pulumi.StringPtrOutput `pulumi:"maxStaleness"`
+	MaxStaleness pulumi.StringOutput `pulumi:"maxStaleness"`
 	// The size of this table in bytes, excluding any data in the streaming buffer.
 	NumBytes pulumi.IntOutput `pulumi:"numBytes"`
 	// The number of bytes in the table that are considered "long-term storage".
@@ -918,8 +918,8 @@ func (o TableOutput) MaterializedView() TableMaterializedViewPtrOutput {
 // returned when the table (or stale MV) is queried. Staleness encoded as a
 // string encoding of [SQL IntervalValue
 // type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
-func (o TableOutput) MaxStaleness() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Table) pulumi.StringPtrOutput { return v.MaxStaleness }).(pulumi.StringPtrOutput)
+func (o TableOutput) MaxStaleness() pulumi.StringOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.MaxStaleness }).(pulumi.StringOutput)
 }
 
 // The size of this table in bytes, excluding any data in the streaming buffer.

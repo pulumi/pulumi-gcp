@@ -979,6 +979,10 @@ class URLMap(pulumi.CustomResource):
                                 }],
                             },
                         }],
+                        "max_stream_duration": {
+                            "nanos": 500000,
+                            "seconds": "9",
+                        },
                     },
                 }],
             }],
@@ -1719,6 +1723,10 @@ class URLMap(pulumi.CustomResource):
                                 }],
                             },
                         }],
+                        "max_stream_duration": {
+                            "nanos": 500000,
+                            "seconds": "9",
+                        },
                     },
                 }],
             }],

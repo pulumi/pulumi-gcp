@@ -13,6 +13,1008 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type RouteWarning struct {
+	// (Output)
+	// A warning code, if applicable. For example, Compute Engine returns
+	// NO_RESULTS_ON_PAGE if there are no results in the response.
+	Code *string `pulumi:"code"`
+	// (Output)
+	// Metadata about this warning in key: value format. For example:
+	// "data":   {  "key": "scope",  "value": "zones/us-east1-d"  }
+	// Structure is [documented below.
+	Datas []RouteWarningData `pulumi:"datas"`
+	// (Output)
+	// A human-readable description of the warning code.
+	Message *string `pulumi:"message"`
+}
+
+// RouteWarningInput is an input type that accepts RouteWarningArgs and RouteWarningOutput values.
+// You can construct a concrete instance of `RouteWarningInput` via:
+//
+//	RouteWarningArgs{...}
+type RouteWarningInput interface {
+	pulumi.Input
+
+	ToRouteWarningOutput() RouteWarningOutput
+	ToRouteWarningOutputWithContext(context.Context) RouteWarningOutput
+}
+
+type RouteWarningArgs struct {
+	// (Output)
+	// A warning code, if applicable. For example, Compute Engine returns
+	// NO_RESULTS_ON_PAGE if there are no results in the response.
+	Code pulumi.StringPtrInput `pulumi:"code"`
+	// (Output)
+	// Metadata about this warning in key: value format. For example:
+	// "data":   {  "key": "scope",  "value": "zones/us-east1-d"  }
+	// Structure is [documented below.
+	Datas RouteWarningDataArrayInput `pulumi:"datas"`
+	// (Output)
+	// A human-readable description of the warning code.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (RouteWarningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteWarning)(nil)).Elem()
+}
+
+func (i RouteWarningArgs) ToRouteWarningOutput() RouteWarningOutput {
+	return i.ToRouteWarningOutputWithContext(context.Background())
+}
+
+func (i RouteWarningArgs) ToRouteWarningOutputWithContext(ctx context.Context) RouteWarningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteWarningOutput)
+}
+
+// RouteWarningArrayInput is an input type that accepts RouteWarningArray and RouteWarningArrayOutput values.
+// You can construct a concrete instance of `RouteWarningArrayInput` via:
+//
+//	RouteWarningArray{ RouteWarningArgs{...} }
+type RouteWarningArrayInput interface {
+	pulumi.Input
+
+	ToRouteWarningArrayOutput() RouteWarningArrayOutput
+	ToRouteWarningArrayOutputWithContext(context.Context) RouteWarningArrayOutput
+}
+
+type RouteWarningArray []RouteWarningInput
+
+func (RouteWarningArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteWarning)(nil)).Elem()
+}
+
+func (i RouteWarningArray) ToRouteWarningArrayOutput() RouteWarningArrayOutput {
+	return i.ToRouteWarningArrayOutputWithContext(context.Background())
+}
+
+func (i RouteWarningArray) ToRouteWarningArrayOutputWithContext(ctx context.Context) RouteWarningArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteWarningArrayOutput)
+}
+
+type RouteWarningOutput struct{ *pulumi.OutputState }
+
+func (RouteWarningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteWarning)(nil)).Elem()
+}
+
+func (o RouteWarningOutput) ToRouteWarningOutput() RouteWarningOutput {
+	return o
+}
+
+func (o RouteWarningOutput) ToRouteWarningOutputWithContext(ctx context.Context) RouteWarningOutput {
+	return o
+}
+
+// (Output)
+// A warning code, if applicable. For example, Compute Engine returns
+// NO_RESULTS_ON_PAGE if there are no results in the response.
+func (o RouteWarningOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteWarning) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Metadata about this warning in key: value format. For example:
+// "data":   {  "key": "scope",  "value": "zones/us-east1-d"  }
+// Structure is [documented below.
+func (o RouteWarningOutput) Datas() RouteWarningDataArrayOutput {
+	return o.ApplyT(func(v RouteWarning) []RouteWarningData { return v.Datas }).(RouteWarningDataArrayOutput)
+}
+
+// (Output)
+// A human-readable description of the warning code.
+func (o RouteWarningOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteWarning) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type RouteWarningArrayOutput struct{ *pulumi.OutputState }
+
+func (RouteWarningArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteWarning)(nil)).Elem()
+}
+
+func (o RouteWarningArrayOutput) ToRouteWarningArrayOutput() RouteWarningArrayOutput {
+	return o
+}
+
+func (o RouteWarningArrayOutput) ToRouteWarningArrayOutputWithContext(ctx context.Context) RouteWarningArrayOutput {
+	return o
+}
+
+func (o RouteWarningArrayOutput) Index(i pulumi.IntInput) RouteWarningOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouteWarning {
+		return vs[0].([]RouteWarning)[vs[1].(int)]
+	}).(RouteWarningOutput)
+}
+
+type RouteWarningData struct {
+	// (Output)
+	// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	Key *string `pulumi:"key"`
+	// (Output)
+	// A warning data value corresponding to the key.
+	Value *string `pulumi:"value"`
+}
+
+// RouteWarningDataInput is an input type that accepts RouteWarningDataArgs and RouteWarningDataOutput values.
+// You can construct a concrete instance of `RouteWarningDataInput` via:
+//
+//	RouteWarningDataArgs{...}
+type RouteWarningDataInput interface {
+	pulumi.Input
+
+	ToRouteWarningDataOutput() RouteWarningDataOutput
+	ToRouteWarningDataOutputWithContext(context.Context) RouteWarningDataOutput
+}
+
+type RouteWarningDataArgs struct {
+	// (Output)
+	// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// (Output)
+	// A warning data value corresponding to the key.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (RouteWarningDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteWarningData)(nil)).Elem()
+}
+
+func (i RouteWarningDataArgs) ToRouteWarningDataOutput() RouteWarningDataOutput {
+	return i.ToRouteWarningDataOutputWithContext(context.Background())
+}
+
+func (i RouteWarningDataArgs) ToRouteWarningDataOutputWithContext(ctx context.Context) RouteWarningDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteWarningDataOutput)
+}
+
+// RouteWarningDataArrayInput is an input type that accepts RouteWarningDataArray and RouteWarningDataArrayOutput values.
+// You can construct a concrete instance of `RouteWarningDataArrayInput` via:
+//
+//	RouteWarningDataArray{ RouteWarningDataArgs{...} }
+type RouteWarningDataArrayInput interface {
+	pulumi.Input
+
+	ToRouteWarningDataArrayOutput() RouteWarningDataArrayOutput
+	ToRouteWarningDataArrayOutputWithContext(context.Context) RouteWarningDataArrayOutput
+}
+
+type RouteWarningDataArray []RouteWarningDataInput
+
+func (RouteWarningDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteWarningData)(nil)).Elem()
+}
+
+func (i RouteWarningDataArray) ToRouteWarningDataArrayOutput() RouteWarningDataArrayOutput {
+	return i.ToRouteWarningDataArrayOutputWithContext(context.Background())
+}
+
+func (i RouteWarningDataArray) ToRouteWarningDataArrayOutputWithContext(ctx context.Context) RouteWarningDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteWarningDataArrayOutput)
+}
+
+type RouteWarningDataOutput struct{ *pulumi.OutputState }
+
+func (RouteWarningDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteWarningData)(nil)).Elem()
+}
+
+func (o RouteWarningDataOutput) ToRouteWarningDataOutput() RouteWarningDataOutput {
+	return o
+}
+
+func (o RouteWarningDataOutput) ToRouteWarningDataOutputWithContext(ctx context.Context) RouteWarningDataOutput {
+	return o
+}
+
+// (Output)
+// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+func (o RouteWarningDataOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteWarningData) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A warning data value corresponding to the key.
+func (o RouteWarningDataOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteWarningData) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type RouteWarningDataArrayOutput struct{ *pulumi.OutputState }
+
+func (RouteWarningDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteWarningData)(nil)).Elem()
+}
+
+func (o RouteWarningDataArrayOutput) ToRouteWarningDataArrayOutput() RouteWarningDataArrayOutput {
+	return o
+}
+
+func (o RouteWarningDataArrayOutput) ToRouteWarningDataArrayOutputWithContext(ctx context.Context) RouteWarningDataArrayOutput {
+	return o
+}
+
+func (o RouteWarningDataArrayOutput) Index(i pulumi.IntInput) RouteWarningDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouteWarningData {
+		return vs[0].([]RouteWarningData)[vs[1].(int)]
+	}).(RouteWarningDataOutput)
+}
+
+type RouterBgp struct {
+	// User-specified flag to indicate which mode to use for advertisement.
+	// Default value is `DEFAULT`.
+	// Possible values are: `DEFAULT`, `CUSTOM`.
+	AdvertiseMode *string `pulumi:"advertiseMode"`
+	// User-specified list of prefix groups to advertise in custom mode.
+	// This field can only be populated if advertiseMode is CUSTOM and
+	// is advertised to all peers of the router. These groups will be
+	// advertised in addition to any specified prefixes. Leave this field
+	// blank to advertise no custom groups.
+	// This enum field has the one valid value: ALL_SUBNETS
+	AdvertisedGroups []string `pulumi:"advertisedGroups"`
+	// User-specified list of individual IP ranges to advertise in
+	// custom mode. This field can only be populated if advertiseMode
+	// is CUSTOM and is advertised to all peers of the router. These IP
+	// ranges will be advertised in addition to any specified groups.
+	// Leave this field blank to advertise no custom IP ranges.
+	// Structure is documented below.
+	AdvertisedIpRanges []RouterBgpAdvertisedIpRange `pulumi:"advertisedIpRanges"`
+	// Local BGP Autonomous System Number (ASN). Must be an RFC6996
+	// private ASN, either 16-bit or 32-bit. The value will be fixed for
+	// this router resource. All VPN tunnels that link to this router
+	// will have the same local ASN.
+	Asn int `pulumi:"asn"`
+	// Explicitly specifies a range of valid BGP Identifiers for this Router.
+	// It is provided as a link-local IPv4 range (from 169.254.0.0/16), of
+	// size at least /30, even if the BGP sessions are over IPv6. It must
+	// not overlap with any IPv4 BGP session ranges. Other vendors commonly
+	// call this router ID.
+	IdentifierRange *string `pulumi:"identifierRange"`
+	// The interval in seconds between BGP keepalive messages that are sent
+	// to the peer. Hold time is three times the interval at which keepalive
+	// messages are sent, and the hold time is the maximum number of seconds
+	// allowed to elapse between successive keepalive messages that BGP
+	// receives from a peer.
+	// BGP will use the smaller of either the local hold time value or the
+	// peer's hold time value as the hold time for the BGP connection
+	// between the two peers. If set, this value must be between 20 and 60.
+	// The default is 20.
+	KeepaliveInterval *int `pulumi:"keepaliveInterval"`
+}
+
+// RouterBgpInput is an input type that accepts RouterBgpArgs and RouterBgpOutput values.
+// You can construct a concrete instance of `RouterBgpInput` via:
+//
+//	RouterBgpArgs{...}
+type RouterBgpInput interface {
+	pulumi.Input
+
+	ToRouterBgpOutput() RouterBgpOutput
+	ToRouterBgpOutputWithContext(context.Context) RouterBgpOutput
+}
+
+type RouterBgpArgs struct {
+	// User-specified flag to indicate which mode to use for advertisement.
+	// Default value is `DEFAULT`.
+	// Possible values are: `DEFAULT`, `CUSTOM`.
+	AdvertiseMode pulumi.StringPtrInput `pulumi:"advertiseMode"`
+	// User-specified list of prefix groups to advertise in custom mode.
+	// This field can only be populated if advertiseMode is CUSTOM and
+	// is advertised to all peers of the router. These groups will be
+	// advertised in addition to any specified prefixes. Leave this field
+	// blank to advertise no custom groups.
+	// This enum field has the one valid value: ALL_SUBNETS
+	AdvertisedGroups pulumi.StringArrayInput `pulumi:"advertisedGroups"`
+	// User-specified list of individual IP ranges to advertise in
+	// custom mode. This field can only be populated if advertiseMode
+	// is CUSTOM and is advertised to all peers of the router. These IP
+	// ranges will be advertised in addition to any specified groups.
+	// Leave this field blank to advertise no custom IP ranges.
+	// Structure is documented below.
+	AdvertisedIpRanges RouterBgpAdvertisedIpRangeArrayInput `pulumi:"advertisedIpRanges"`
+	// Local BGP Autonomous System Number (ASN). Must be an RFC6996
+	// private ASN, either 16-bit or 32-bit. The value will be fixed for
+	// this router resource. All VPN tunnels that link to this router
+	// will have the same local ASN.
+	Asn pulumi.IntInput `pulumi:"asn"`
+	// Explicitly specifies a range of valid BGP Identifiers for this Router.
+	// It is provided as a link-local IPv4 range (from 169.254.0.0/16), of
+	// size at least /30, even if the BGP sessions are over IPv6. It must
+	// not overlap with any IPv4 BGP session ranges. Other vendors commonly
+	// call this router ID.
+	IdentifierRange pulumi.StringPtrInput `pulumi:"identifierRange"`
+	// The interval in seconds between BGP keepalive messages that are sent
+	// to the peer. Hold time is three times the interval at which keepalive
+	// messages are sent, and the hold time is the maximum number of seconds
+	// allowed to elapse between successive keepalive messages that BGP
+	// receives from a peer.
+	// BGP will use the smaller of either the local hold time value or the
+	// peer's hold time value as the hold time for the BGP connection
+	// between the two peers. If set, this value must be between 20 and 60.
+	// The default is 20.
+	KeepaliveInterval pulumi.IntPtrInput `pulumi:"keepaliveInterval"`
+}
+
+func (RouterBgpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterBgp)(nil)).Elem()
+}
+
+func (i RouterBgpArgs) ToRouterBgpOutput() RouterBgpOutput {
+	return i.ToRouterBgpOutputWithContext(context.Background())
+}
+
+func (i RouterBgpArgs) ToRouterBgpOutputWithContext(ctx context.Context) RouterBgpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterBgpOutput)
+}
+
+func (i RouterBgpArgs) ToRouterBgpPtrOutput() RouterBgpPtrOutput {
+	return i.ToRouterBgpPtrOutputWithContext(context.Background())
+}
+
+func (i RouterBgpArgs) ToRouterBgpPtrOutputWithContext(ctx context.Context) RouterBgpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterBgpOutput).ToRouterBgpPtrOutputWithContext(ctx)
+}
+
+// RouterBgpPtrInput is an input type that accepts RouterBgpArgs, RouterBgpPtr and RouterBgpPtrOutput values.
+// You can construct a concrete instance of `RouterBgpPtrInput` via:
+//
+//	        RouterBgpArgs{...}
+//
+//	or:
+//
+//	        nil
+type RouterBgpPtrInput interface {
+	pulumi.Input
+
+	ToRouterBgpPtrOutput() RouterBgpPtrOutput
+	ToRouterBgpPtrOutputWithContext(context.Context) RouterBgpPtrOutput
+}
+
+type routerBgpPtrType RouterBgpArgs
+
+func RouterBgpPtr(v *RouterBgpArgs) RouterBgpPtrInput {
+	return (*routerBgpPtrType)(v)
+}
+
+func (*routerBgpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouterBgp)(nil)).Elem()
+}
+
+func (i *routerBgpPtrType) ToRouterBgpPtrOutput() RouterBgpPtrOutput {
+	return i.ToRouterBgpPtrOutputWithContext(context.Background())
+}
+
+func (i *routerBgpPtrType) ToRouterBgpPtrOutputWithContext(ctx context.Context) RouterBgpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterBgpPtrOutput)
+}
+
+type RouterBgpOutput struct{ *pulumi.OutputState }
+
+func (RouterBgpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterBgp)(nil)).Elem()
+}
+
+func (o RouterBgpOutput) ToRouterBgpOutput() RouterBgpOutput {
+	return o
+}
+
+func (o RouterBgpOutput) ToRouterBgpOutputWithContext(ctx context.Context) RouterBgpOutput {
+	return o
+}
+
+func (o RouterBgpOutput) ToRouterBgpPtrOutput() RouterBgpPtrOutput {
+	return o.ToRouterBgpPtrOutputWithContext(context.Background())
+}
+
+func (o RouterBgpOutput) ToRouterBgpPtrOutputWithContext(ctx context.Context) RouterBgpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouterBgp) *RouterBgp {
+		return &v
+	}).(RouterBgpPtrOutput)
+}
+
+// User-specified flag to indicate which mode to use for advertisement.
+// Default value is `DEFAULT`.
+// Possible values are: `DEFAULT`, `CUSTOM`.
+func (o RouterBgpOutput) AdvertiseMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterBgp) *string { return v.AdvertiseMode }).(pulumi.StringPtrOutput)
+}
+
+// User-specified list of prefix groups to advertise in custom mode.
+// This field can only be populated if advertiseMode is CUSTOM and
+// is advertised to all peers of the router. These groups will be
+// advertised in addition to any specified prefixes. Leave this field
+// blank to advertise no custom groups.
+// This enum field has the one valid value: ALL_SUBNETS
+func (o RouterBgpOutput) AdvertisedGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouterBgp) []string { return v.AdvertisedGroups }).(pulumi.StringArrayOutput)
+}
+
+// User-specified list of individual IP ranges to advertise in
+// custom mode. This field can only be populated if advertiseMode
+// is CUSTOM and is advertised to all peers of the router. These IP
+// ranges will be advertised in addition to any specified groups.
+// Leave this field blank to advertise no custom IP ranges.
+// Structure is documented below.
+func (o RouterBgpOutput) AdvertisedIpRanges() RouterBgpAdvertisedIpRangeArrayOutput {
+	return o.ApplyT(func(v RouterBgp) []RouterBgpAdvertisedIpRange { return v.AdvertisedIpRanges }).(RouterBgpAdvertisedIpRangeArrayOutput)
+}
+
+// Local BGP Autonomous System Number (ASN). Must be an RFC6996
+// private ASN, either 16-bit or 32-bit. The value will be fixed for
+// this router resource. All VPN tunnels that link to this router
+// will have the same local ASN.
+func (o RouterBgpOutput) Asn() pulumi.IntOutput {
+	return o.ApplyT(func(v RouterBgp) int { return v.Asn }).(pulumi.IntOutput)
+}
+
+// Explicitly specifies a range of valid BGP Identifiers for this Router.
+// It is provided as a link-local IPv4 range (from 169.254.0.0/16), of
+// size at least /30, even if the BGP sessions are over IPv6. It must
+// not overlap with any IPv4 BGP session ranges. Other vendors commonly
+// call this router ID.
+func (o RouterBgpOutput) IdentifierRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterBgp) *string { return v.IdentifierRange }).(pulumi.StringPtrOutput)
+}
+
+// The interval in seconds between BGP keepalive messages that are sent
+// to the peer. Hold time is three times the interval at which keepalive
+// messages are sent, and the hold time is the maximum number of seconds
+// allowed to elapse between successive keepalive messages that BGP
+// receives from a peer.
+// BGP will use the smaller of either the local hold time value or the
+// peer's hold time value as the hold time for the BGP connection
+// between the two peers. If set, this value must be between 20 and 60.
+// The default is 20.
+func (o RouterBgpOutput) KeepaliveInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RouterBgp) *int { return v.KeepaliveInterval }).(pulumi.IntPtrOutput)
+}
+
+type RouterBgpPtrOutput struct{ *pulumi.OutputState }
+
+func (RouterBgpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouterBgp)(nil)).Elem()
+}
+
+func (o RouterBgpPtrOutput) ToRouterBgpPtrOutput() RouterBgpPtrOutput {
+	return o
+}
+
+func (o RouterBgpPtrOutput) ToRouterBgpPtrOutputWithContext(ctx context.Context) RouterBgpPtrOutput {
+	return o
+}
+
+func (o RouterBgpPtrOutput) Elem() RouterBgpOutput {
+	return o.ApplyT(func(v *RouterBgp) RouterBgp {
+		if v != nil {
+			return *v
+		}
+		var ret RouterBgp
+		return ret
+	}).(RouterBgpOutput)
+}
+
+// User-specified flag to indicate which mode to use for advertisement.
+// Default value is `DEFAULT`.
+// Possible values are: `DEFAULT`, `CUSTOM`.
+func (o RouterBgpPtrOutput) AdvertiseMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouterBgp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdvertiseMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-specified list of prefix groups to advertise in custom mode.
+// This field can only be populated if advertiseMode is CUSTOM and
+// is advertised to all peers of the router. These groups will be
+// advertised in addition to any specified prefixes. Leave this field
+// blank to advertise no custom groups.
+// This enum field has the one valid value: ALL_SUBNETS
+func (o RouterBgpPtrOutput) AdvertisedGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouterBgp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AdvertisedGroups
+	}).(pulumi.StringArrayOutput)
+}
+
+// User-specified list of individual IP ranges to advertise in
+// custom mode. This field can only be populated if advertiseMode
+// is CUSTOM and is advertised to all peers of the router. These IP
+// ranges will be advertised in addition to any specified groups.
+// Leave this field blank to advertise no custom IP ranges.
+// Structure is documented below.
+func (o RouterBgpPtrOutput) AdvertisedIpRanges() RouterBgpAdvertisedIpRangeArrayOutput {
+	return o.ApplyT(func(v *RouterBgp) []RouterBgpAdvertisedIpRange {
+		if v == nil {
+			return nil
+		}
+		return v.AdvertisedIpRanges
+	}).(RouterBgpAdvertisedIpRangeArrayOutput)
+}
+
+// Local BGP Autonomous System Number (ASN). Must be an RFC6996
+// private ASN, either 16-bit or 32-bit. The value will be fixed for
+// this router resource. All VPN tunnels that link to this router
+// will have the same local ASN.
+func (o RouterBgpPtrOutput) Asn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RouterBgp) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Asn
+	}).(pulumi.IntPtrOutput)
+}
+
+// Explicitly specifies a range of valid BGP Identifiers for this Router.
+// It is provided as a link-local IPv4 range (from 169.254.0.0/16), of
+// size at least /30, even if the BGP sessions are over IPv6. It must
+// not overlap with any IPv4 BGP session ranges. Other vendors commonly
+// call this router ID.
+func (o RouterBgpPtrOutput) IdentifierRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouterBgp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentifierRange
+	}).(pulumi.StringPtrOutput)
+}
+
+// The interval in seconds between BGP keepalive messages that are sent
+// to the peer. Hold time is three times the interval at which keepalive
+// messages are sent, and the hold time is the maximum number of seconds
+// allowed to elapse between successive keepalive messages that BGP
+// receives from a peer.
+// BGP will use the smaller of either the local hold time value or the
+// peer's hold time value as the hold time for the BGP connection
+// between the two peers. If set, this value must be between 20 and 60.
+// The default is 20.
+func (o RouterBgpPtrOutput) KeepaliveInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RouterBgp) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepaliveInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+type RouterBgpAdvertisedIpRange struct {
+	// User-specified description for the IP range.
+	Description *string `pulumi:"description"`
+	// The IP range to advertise. The value must be a
+	// CIDR-formatted string.
+	Range string `pulumi:"range"`
+}
+
+// RouterBgpAdvertisedIpRangeInput is an input type that accepts RouterBgpAdvertisedIpRangeArgs and RouterBgpAdvertisedIpRangeOutput values.
+// You can construct a concrete instance of `RouterBgpAdvertisedIpRangeInput` via:
+//
+//	RouterBgpAdvertisedIpRangeArgs{...}
+type RouterBgpAdvertisedIpRangeInput interface {
+	pulumi.Input
+
+	ToRouterBgpAdvertisedIpRangeOutput() RouterBgpAdvertisedIpRangeOutput
+	ToRouterBgpAdvertisedIpRangeOutputWithContext(context.Context) RouterBgpAdvertisedIpRangeOutput
+}
+
+type RouterBgpAdvertisedIpRangeArgs struct {
+	// User-specified description for the IP range.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The IP range to advertise. The value must be a
+	// CIDR-formatted string.
+	Range pulumi.StringInput `pulumi:"range"`
+}
+
+func (RouterBgpAdvertisedIpRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterBgpAdvertisedIpRange)(nil)).Elem()
+}
+
+func (i RouterBgpAdvertisedIpRangeArgs) ToRouterBgpAdvertisedIpRangeOutput() RouterBgpAdvertisedIpRangeOutput {
+	return i.ToRouterBgpAdvertisedIpRangeOutputWithContext(context.Background())
+}
+
+func (i RouterBgpAdvertisedIpRangeArgs) ToRouterBgpAdvertisedIpRangeOutputWithContext(ctx context.Context) RouterBgpAdvertisedIpRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterBgpAdvertisedIpRangeOutput)
+}
+
+// RouterBgpAdvertisedIpRangeArrayInput is an input type that accepts RouterBgpAdvertisedIpRangeArray and RouterBgpAdvertisedIpRangeArrayOutput values.
+// You can construct a concrete instance of `RouterBgpAdvertisedIpRangeArrayInput` via:
+//
+//	RouterBgpAdvertisedIpRangeArray{ RouterBgpAdvertisedIpRangeArgs{...} }
+type RouterBgpAdvertisedIpRangeArrayInput interface {
+	pulumi.Input
+
+	ToRouterBgpAdvertisedIpRangeArrayOutput() RouterBgpAdvertisedIpRangeArrayOutput
+	ToRouterBgpAdvertisedIpRangeArrayOutputWithContext(context.Context) RouterBgpAdvertisedIpRangeArrayOutput
+}
+
+type RouterBgpAdvertisedIpRangeArray []RouterBgpAdvertisedIpRangeInput
+
+func (RouterBgpAdvertisedIpRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterBgpAdvertisedIpRange)(nil)).Elem()
+}
+
+func (i RouterBgpAdvertisedIpRangeArray) ToRouterBgpAdvertisedIpRangeArrayOutput() RouterBgpAdvertisedIpRangeArrayOutput {
+	return i.ToRouterBgpAdvertisedIpRangeArrayOutputWithContext(context.Background())
+}
+
+func (i RouterBgpAdvertisedIpRangeArray) ToRouterBgpAdvertisedIpRangeArrayOutputWithContext(ctx context.Context) RouterBgpAdvertisedIpRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterBgpAdvertisedIpRangeArrayOutput)
+}
+
+type RouterBgpAdvertisedIpRangeOutput struct{ *pulumi.OutputState }
+
+func (RouterBgpAdvertisedIpRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterBgpAdvertisedIpRange)(nil)).Elem()
+}
+
+func (o RouterBgpAdvertisedIpRangeOutput) ToRouterBgpAdvertisedIpRangeOutput() RouterBgpAdvertisedIpRangeOutput {
+	return o
+}
+
+func (o RouterBgpAdvertisedIpRangeOutput) ToRouterBgpAdvertisedIpRangeOutputWithContext(ctx context.Context) RouterBgpAdvertisedIpRangeOutput {
+	return o
+}
+
+// User-specified description for the IP range.
+func (o RouterBgpAdvertisedIpRangeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterBgpAdvertisedIpRange) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The IP range to advertise. The value must be a
+// CIDR-formatted string.
+func (o RouterBgpAdvertisedIpRangeOutput) Range() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterBgpAdvertisedIpRange) string { return v.Range }).(pulumi.StringOutput)
+}
+
+type RouterBgpAdvertisedIpRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterBgpAdvertisedIpRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterBgpAdvertisedIpRange)(nil)).Elem()
+}
+
+func (o RouterBgpAdvertisedIpRangeArrayOutput) ToRouterBgpAdvertisedIpRangeArrayOutput() RouterBgpAdvertisedIpRangeArrayOutput {
+	return o
+}
+
+func (o RouterBgpAdvertisedIpRangeArrayOutput) ToRouterBgpAdvertisedIpRangeArrayOutputWithContext(ctx context.Context) RouterBgpAdvertisedIpRangeArrayOutput {
+	return o
+}
+
+func (o RouterBgpAdvertisedIpRangeArrayOutput) Index(i pulumi.IntInput) RouterBgpAdvertisedIpRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterBgpAdvertisedIpRange {
+		return vs[0].([]RouterBgpAdvertisedIpRange)[vs[1].(int)]
+	}).(RouterBgpAdvertisedIpRangeOutput)
+}
+
+type RouterNatLogConfig struct {
+	// Indicates whether or not to export logs.
+	Enable bool `pulumi:"enable"`
+	// Specifies the desired filtering of logs on this NAT.
+	// Possible values are: `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, `ALL`.
+	Filter string `pulumi:"filter"`
+}
+
+// RouterNatLogConfigInput is an input type that accepts RouterNatLogConfigArgs and RouterNatLogConfigOutput values.
+// You can construct a concrete instance of `RouterNatLogConfigInput` via:
+//
+//	RouterNatLogConfigArgs{...}
+type RouterNatLogConfigInput interface {
+	pulumi.Input
+
+	ToRouterNatLogConfigOutput() RouterNatLogConfigOutput
+	ToRouterNatLogConfigOutputWithContext(context.Context) RouterNatLogConfigOutput
+}
+
+type RouterNatLogConfigArgs struct {
+	// Indicates whether or not to export logs.
+	Enable pulumi.BoolInput `pulumi:"enable"`
+	// Specifies the desired filtering of logs on this NAT.
+	// Possible values are: `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, `ALL`.
+	Filter pulumi.StringInput `pulumi:"filter"`
+}
+
+func (RouterNatLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterNatLogConfig)(nil)).Elem()
+}
+
+func (i RouterNatLogConfigArgs) ToRouterNatLogConfigOutput() RouterNatLogConfigOutput {
+	return i.ToRouterNatLogConfigOutputWithContext(context.Background())
+}
+
+func (i RouterNatLogConfigArgs) ToRouterNatLogConfigOutputWithContext(ctx context.Context) RouterNatLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterNatLogConfigOutput)
+}
+
+func (i RouterNatLogConfigArgs) ToRouterNatLogConfigPtrOutput() RouterNatLogConfigPtrOutput {
+	return i.ToRouterNatLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RouterNatLogConfigArgs) ToRouterNatLogConfigPtrOutputWithContext(ctx context.Context) RouterNatLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterNatLogConfigOutput).ToRouterNatLogConfigPtrOutputWithContext(ctx)
+}
+
+// RouterNatLogConfigPtrInput is an input type that accepts RouterNatLogConfigArgs, RouterNatLogConfigPtr and RouterNatLogConfigPtrOutput values.
+// You can construct a concrete instance of `RouterNatLogConfigPtrInput` via:
+//
+//	        RouterNatLogConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RouterNatLogConfigPtrInput interface {
+	pulumi.Input
+
+	ToRouterNatLogConfigPtrOutput() RouterNatLogConfigPtrOutput
+	ToRouterNatLogConfigPtrOutputWithContext(context.Context) RouterNatLogConfigPtrOutput
+}
+
+type routerNatLogConfigPtrType RouterNatLogConfigArgs
+
+func RouterNatLogConfigPtr(v *RouterNatLogConfigArgs) RouterNatLogConfigPtrInput {
+	return (*routerNatLogConfigPtrType)(v)
+}
+
+func (*routerNatLogConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouterNatLogConfig)(nil)).Elem()
+}
+
+func (i *routerNatLogConfigPtrType) ToRouterNatLogConfigPtrOutput() RouterNatLogConfigPtrOutput {
+	return i.ToRouterNatLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *routerNatLogConfigPtrType) ToRouterNatLogConfigPtrOutputWithContext(ctx context.Context) RouterNatLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterNatLogConfigPtrOutput)
+}
+
+type RouterNatLogConfigOutput struct{ *pulumi.OutputState }
+
+func (RouterNatLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterNatLogConfig)(nil)).Elem()
+}
+
+func (o RouterNatLogConfigOutput) ToRouterNatLogConfigOutput() RouterNatLogConfigOutput {
+	return o
+}
+
+func (o RouterNatLogConfigOutput) ToRouterNatLogConfigOutputWithContext(ctx context.Context) RouterNatLogConfigOutput {
+	return o
+}
+
+func (o RouterNatLogConfigOutput) ToRouterNatLogConfigPtrOutput() RouterNatLogConfigPtrOutput {
+	return o.ToRouterNatLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RouterNatLogConfigOutput) ToRouterNatLogConfigPtrOutputWithContext(ctx context.Context) RouterNatLogConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouterNatLogConfig) *RouterNatLogConfig {
+		return &v
+	}).(RouterNatLogConfigPtrOutput)
+}
+
+// Indicates whether or not to export logs.
+func (o RouterNatLogConfigOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v RouterNatLogConfig) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+// Specifies the desired filtering of logs on this NAT.
+// Possible values are: `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, `ALL`.
+func (o RouterNatLogConfigOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterNatLogConfig) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+type RouterNatLogConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RouterNatLogConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouterNatLogConfig)(nil)).Elem()
+}
+
+func (o RouterNatLogConfigPtrOutput) ToRouterNatLogConfigPtrOutput() RouterNatLogConfigPtrOutput {
+	return o
+}
+
+func (o RouterNatLogConfigPtrOutput) ToRouterNatLogConfigPtrOutputWithContext(ctx context.Context) RouterNatLogConfigPtrOutput {
+	return o
+}
+
+func (o RouterNatLogConfigPtrOutput) Elem() RouterNatLogConfigOutput {
+	return o.ApplyT(func(v *RouterNatLogConfig) RouterNatLogConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RouterNatLogConfig
+		return ret
+	}).(RouterNatLogConfigOutput)
+}
+
+// Indicates whether or not to export logs.
+func (o RouterNatLogConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RouterNatLogConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the desired filtering of logs on this NAT.
+// Possible values are: `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, `ALL`.
+func (o RouterNatLogConfigPtrOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouterNatLogConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Filter
+	}).(pulumi.StringPtrOutput)
+}
+
+type RouterNatRule struct {
+	// The action to be enforced for traffic that matches this rule.
+	// Structure is documented below.
+	Action *RouterNatRuleAction `pulumi:"action"`
+	// An optional description of this rule.
+	Description *string `pulumi:"description"`
+	// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against.
+	// If it evaluates to true, the corresponding action is enforced.
+	// The following examples are valid match expressions for public NAT:
+	// "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')"
+	// "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'"
+	// The following example is a valid match expression for private NAT:
+	// "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
+	Match string `pulumi:"match"`
+	// An integer uniquely identifying a rule in the list.
+	// The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+	RuleNumber int `pulumi:"ruleNumber"`
+}
+
+// RouterNatRuleInput is an input type that accepts RouterNatRuleArgs and RouterNatRuleOutput values.
+// You can construct a concrete instance of `RouterNatRuleInput` via:
+//
+//	RouterNatRuleArgs{...}
+type RouterNatRuleInput interface {
+	pulumi.Input
+
+	ToRouterNatRuleOutput() RouterNatRuleOutput
+	ToRouterNatRuleOutputWithContext(context.Context) RouterNatRuleOutput
+}
+
+type RouterNatRuleArgs struct {
+	// The action to be enforced for traffic that matches this rule.
+	// Structure is documented below.
+	Action RouterNatRuleActionPtrInput `pulumi:"action"`
+	// An optional description of this rule.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against.
+	// If it evaluates to true, the corresponding action is enforced.
+	// The following examples are valid match expressions for public NAT:
+	// "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')"
+	// "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'"
+	// The following example is a valid match expression for private NAT:
+	// "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
+	Match pulumi.StringInput `pulumi:"match"`
+	// An integer uniquely identifying a rule in the list.
+	// The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+	RuleNumber pulumi.IntInput `pulumi:"ruleNumber"`
+}
+
+func (RouterNatRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterNatRule)(nil)).Elem()
+}
+
+func (i RouterNatRuleArgs) ToRouterNatRuleOutput() RouterNatRuleOutput {
+	return i.ToRouterNatRuleOutputWithContext(context.Background())
+}
+
+func (i RouterNatRuleArgs) ToRouterNatRuleOutputWithContext(ctx context.Context) RouterNatRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterNatRuleOutput)
+}
+
+// RouterNatRuleArrayInput is an input type that accepts RouterNatRuleArray and RouterNatRuleArrayOutput values.
+// You can construct a concrete instance of `RouterNatRuleArrayInput` via:
+//
+//	RouterNatRuleArray{ RouterNatRuleArgs{...} }
+type RouterNatRuleArrayInput interface {
+	pulumi.Input
+
+	ToRouterNatRuleArrayOutput() RouterNatRuleArrayOutput
+	ToRouterNatRuleArrayOutputWithContext(context.Context) RouterNatRuleArrayOutput
+}
+
+type RouterNatRuleArray []RouterNatRuleInput
+
+func (RouterNatRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterNatRule)(nil)).Elem()
+}
+
+func (i RouterNatRuleArray) ToRouterNatRuleArrayOutput() RouterNatRuleArrayOutput {
+	return i.ToRouterNatRuleArrayOutputWithContext(context.Background())
+}
+
+func (i RouterNatRuleArray) ToRouterNatRuleArrayOutputWithContext(ctx context.Context) RouterNatRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterNatRuleArrayOutput)
+}
+
+type RouterNatRuleOutput struct{ *pulumi.OutputState }
+
+func (RouterNatRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterNatRule)(nil)).Elem()
+}
+
+func (o RouterNatRuleOutput) ToRouterNatRuleOutput() RouterNatRuleOutput {
+	return o
+}
+
+func (o RouterNatRuleOutput) ToRouterNatRuleOutputWithContext(ctx context.Context) RouterNatRuleOutput {
+	return o
+}
+
+// The action to be enforced for traffic that matches this rule.
+// Structure is documented below.
+func (o RouterNatRuleOutput) Action() RouterNatRuleActionPtrOutput {
+	return o.ApplyT(func(v RouterNatRule) *RouterNatRuleAction { return v.Action }).(RouterNatRuleActionPtrOutput)
+}
+
+// An optional description of this rule.
+func (o RouterNatRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterNatRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against.
+// If it evaluates to true, the corresponding action is enforced.
+// The following examples are valid match expressions for public NAT:
+// "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')"
+// "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'"
+// The following example is a valid match expression for private NAT:
+// "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
+func (o RouterNatRuleOutput) Match() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterNatRule) string { return v.Match }).(pulumi.StringOutput)
+}
+
+// An integer uniquely identifying a rule in the list.
+// The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+func (o RouterNatRuleOutput) RuleNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v RouterNatRule) int { return v.RuleNumber }).(pulumi.IntOutput)
+}
+
+type RouterNatRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterNatRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterNatRule)(nil)).Elem()
+}
+
+func (o RouterNatRuleArrayOutput) ToRouterNatRuleArrayOutput() RouterNatRuleArrayOutput {
+	return o
+}
+
+func (o RouterNatRuleArrayOutput) ToRouterNatRuleArrayOutputWithContext(ctx context.Context) RouterNatRuleArrayOutput {
+	return o
+}
+
+func (o RouterNatRuleArrayOutput) Index(i pulumi.IntInput) RouterNatRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterNatRule {
+		return vs[0].([]RouterNatRule)[vs[1].(int)]
+	}).(RouterNatRuleOutput)
+}
+
 type RouterNatRuleAction struct {
 	// A list of URLs of the IP resources used for this NAT rule.
 	// These IP addresses must be valid static external IP addresses assigned to the project.
@@ -1478,6 +2480,9 @@ func (o RouterRoutePolicyTermMatchPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type RouterStatusBestRoute struct {
+	AsPaths []RouterStatusBestRouteAsPath `pulumi:"asPaths"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property
 	// when you create the resource.
 	Description string `pulumi:"description"`
@@ -1497,6 +2502,8 @@ type RouterStatusBestRoute struct {
 	// * 'global/gateways/default-internet-gateway'
 	// * The string 'default-internet-gateway'.
 	NextHopGateway string `pulumi:"nextHopGateway"`
+	// The hub network that should handle matching packets, which should conform to RFC1035.
+	NextHopHub string `pulumi:"nextHopHub"`
 	// The IP address or URL to a forwarding rule of type
 	// loadBalancingScheme=INTERNAL that should handle matching
 	// packets.
@@ -1533,6 +2540,8 @@ type RouterStatusBestRoute struct {
 	NextHopNetwork string `pulumi:"nextHopNetwork"`
 	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
 	NextHopOrigin string `pulumi:"nextHopOrigin"`
+	// The network peering name that should handle matching packets, which should conform to RFC1035.
+	NextHopPeering string `pulumi:"nextHopPeering"`
 	// URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel string `pulumi:"nextHopVpnTunnel"`
 	// The priority of this route. Priority is used to break ties in cases
@@ -1545,10 +2554,22 @@ type RouterStatusBestRoute struct {
 	Priority int `pulumi:"priority"`
 	// The ID of the project in which the resource
 	// belongs. If it is not provided, the provider project is used.
-	Project  string `pulumi:"project"`
-	SelfLink string `pulumi:"selfLink"`
+	Project string `pulumi:"project"`
+	// The status of the route, which can be one of the following values:
+	// - 'ACTIVE' for an active route
+	// - 'INACTIVE' for an inactive route
+	RouteStatus string `pulumi:"routeStatus"`
+	// The type of this route, which can be one of the following values:
+	// - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+	// - 'SUBNET' for a route from a subnet of the VPC
+	// - 'BGP' for a route learned from a BGP peer of this router
+	// - 'STATIC' for a static route
+	RouteType string `pulumi:"routeType"`
+	SelfLink  string `pulumi:"selfLink"`
 	// A list of instance tags to which this route applies.
 	Tags []string `pulumi:"tags"`
+	// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+	Warnings []RouterStatusBestRouteWarning `pulumi:"warnings"`
 }
 
 // RouterStatusBestRouteInput is an input type that accepts RouterStatusBestRouteArgs and RouterStatusBestRouteOutput values.
@@ -1563,6 +2584,9 @@ type RouterStatusBestRouteInput interface {
 }
 
 type RouterStatusBestRouteArgs struct {
+	AsPaths RouterStatusBestRouteAsPathArrayInput `pulumi:"asPaths"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringInput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property
 	// when you create the resource.
 	Description pulumi.StringInput `pulumi:"description"`
@@ -1582,6 +2606,8 @@ type RouterStatusBestRouteArgs struct {
 	// * 'global/gateways/default-internet-gateway'
 	// * The string 'default-internet-gateway'.
 	NextHopGateway pulumi.StringInput `pulumi:"nextHopGateway"`
+	// The hub network that should handle matching packets, which should conform to RFC1035.
+	NextHopHub pulumi.StringInput `pulumi:"nextHopHub"`
 	// The IP address or URL to a forwarding rule of type
 	// loadBalancingScheme=INTERNAL that should handle matching
 	// packets.
@@ -1618,6 +2644,8 @@ type RouterStatusBestRouteArgs struct {
 	NextHopNetwork pulumi.StringInput `pulumi:"nextHopNetwork"`
 	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
 	NextHopOrigin pulumi.StringInput `pulumi:"nextHopOrigin"`
+	// The network peering name that should handle matching packets, which should conform to RFC1035.
+	NextHopPeering pulumi.StringInput `pulumi:"nextHopPeering"`
 	// URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel pulumi.StringInput `pulumi:"nextHopVpnTunnel"`
 	// The priority of this route. Priority is used to break ties in cases
@@ -1630,10 +2658,22 @@ type RouterStatusBestRouteArgs struct {
 	Priority pulumi.IntInput `pulumi:"priority"`
 	// The ID of the project in which the resource
 	// belongs. If it is not provided, the provider project is used.
-	Project  pulumi.StringInput `pulumi:"project"`
-	SelfLink pulumi.StringInput `pulumi:"selfLink"`
+	Project pulumi.StringInput `pulumi:"project"`
+	// The status of the route, which can be one of the following values:
+	// - 'ACTIVE' for an active route
+	// - 'INACTIVE' for an inactive route
+	RouteStatus pulumi.StringInput `pulumi:"routeStatus"`
+	// The type of this route, which can be one of the following values:
+	// - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+	// - 'SUBNET' for a route from a subnet of the VPC
+	// - 'BGP' for a route learned from a BGP peer of this router
+	// - 'STATIC' for a static route
+	RouteType pulumi.StringInput `pulumi:"routeType"`
+	SelfLink  pulumi.StringInput `pulumi:"selfLink"`
 	// A list of instance tags to which this route applies.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+	Warnings RouterStatusBestRouteWarningArrayInput `pulumi:"warnings"`
 }
 
 func (RouterStatusBestRouteArgs) ElementType() reflect.Type {
@@ -1687,6 +2727,15 @@ func (o RouterStatusBestRouteOutput) ToRouterStatusBestRouteOutputWithContext(ct
 	return o
 }
 
+func (o RouterStatusBestRouteOutput) AsPaths() RouterStatusBestRouteAsPathArrayOutput {
+	return o.ApplyT(func(v RouterStatusBestRoute) []RouterStatusBestRouteAsPath { return v.AsPaths }).(RouterStatusBestRouteAsPathArrayOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o RouterStatusBestRouteOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoute) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
 // An optional description of this resource. Provide this property
 // when you create the resource.
 func (o RouterStatusBestRouteOutput) Description() pulumi.StringOutput {
@@ -1719,6 +2768,11 @@ func (o RouterStatusBestRouteOutput) Network() pulumi.StringOutput {
 // * The string 'default-internet-gateway'.
 func (o RouterStatusBestRouteOutput) NextHopGateway() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterStatusBestRoute) string { return v.NextHopGateway }).(pulumi.StringOutput)
+}
+
+// The hub network that should handle matching packets, which should conform to RFC1035.
+func (o RouterStatusBestRouteOutput) NextHopHub() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoute) string { return v.NextHopHub }).(pulumi.StringOutput)
 }
 
 // The IP address or URL to a forwarding rule of type
@@ -1781,6 +2835,11 @@ func (o RouterStatusBestRouteOutput) NextHopOrigin() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterStatusBestRoute) string { return v.NextHopOrigin }).(pulumi.StringOutput)
 }
 
+// The network peering name that should handle matching packets, which should conform to RFC1035.
+func (o RouterStatusBestRouteOutput) NextHopPeering() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoute) string { return v.NextHopPeering }).(pulumi.StringOutput)
+}
+
 // URL to a VpnTunnel that should handle matching packets.
 func (o RouterStatusBestRouteOutput) NextHopVpnTunnel() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterStatusBestRoute) string { return v.NextHopVpnTunnel }).(pulumi.StringOutput)
@@ -1803,6 +2862,22 @@ func (o RouterStatusBestRouteOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterStatusBestRoute) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// The status of the route, which can be one of the following values:
+// - 'ACTIVE' for an active route
+// - 'INACTIVE' for an inactive route
+func (o RouterStatusBestRouteOutput) RouteStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoute) string { return v.RouteStatus }).(pulumi.StringOutput)
+}
+
+// The type of this route, which can be one of the following values:
+// - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+// - 'SUBNET' for a route from a subnet of the VPC
+// - 'BGP' for a route learned from a BGP peer of this router
+// - 'STATIC' for a static route
+func (o RouterStatusBestRouteOutput) RouteType() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoute) string { return v.RouteType }).(pulumi.StringOutput)
+}
+
 func (o RouterStatusBestRouteOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterStatusBestRoute) string { return v.SelfLink }).(pulumi.StringOutput)
 }
@@ -1810,6 +2885,11 @@ func (o RouterStatusBestRouteOutput) SelfLink() pulumi.StringOutput {
 // A list of instance tags to which this route applies.
 func (o RouterStatusBestRouteOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RouterStatusBestRoute) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+func (o RouterStatusBestRouteOutput) Warnings() RouterStatusBestRouteWarningArrayOutput {
+	return o.ApplyT(func(v RouterStatusBestRoute) []RouterStatusBestRouteWarning { return v.Warnings }).(RouterStatusBestRouteWarningArrayOutput)
 }
 
 type RouterStatusBestRouteArrayOutput struct{ *pulumi.OutputState }
@@ -1832,7 +2912,355 @@ func (o RouterStatusBestRouteArrayOutput) Index(i pulumi.IntInput) RouterStatusB
 	}).(RouterStatusBestRouteOutput)
 }
 
+type RouterStatusBestRouteAsPath struct {
+	// The AS numbers of the AS Path.
+	AsLists []int `pulumi:"asLists"`
+	// The type of the AS Path, which can be one of the following values:
+	// - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+	// - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+	// - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+	// - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+	PathSegmentType string `pulumi:"pathSegmentType"`
+}
+
+// RouterStatusBestRouteAsPathInput is an input type that accepts RouterStatusBestRouteAsPathArgs and RouterStatusBestRouteAsPathOutput values.
+// You can construct a concrete instance of `RouterStatusBestRouteAsPathInput` via:
+//
+//	RouterStatusBestRouteAsPathArgs{...}
+type RouterStatusBestRouteAsPathInput interface {
+	pulumi.Input
+
+	ToRouterStatusBestRouteAsPathOutput() RouterStatusBestRouteAsPathOutput
+	ToRouterStatusBestRouteAsPathOutputWithContext(context.Context) RouterStatusBestRouteAsPathOutput
+}
+
+type RouterStatusBestRouteAsPathArgs struct {
+	// The AS numbers of the AS Path.
+	AsLists pulumi.IntArrayInput `pulumi:"asLists"`
+	// The type of the AS Path, which can be one of the following values:
+	// - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+	// - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+	// - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+	// - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+	PathSegmentType pulumi.StringInput `pulumi:"pathSegmentType"`
+}
+
+func (RouterStatusBestRouteAsPathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterStatusBestRouteAsPath)(nil)).Elem()
+}
+
+func (i RouterStatusBestRouteAsPathArgs) ToRouterStatusBestRouteAsPathOutput() RouterStatusBestRouteAsPathOutput {
+	return i.ToRouterStatusBestRouteAsPathOutputWithContext(context.Background())
+}
+
+func (i RouterStatusBestRouteAsPathArgs) ToRouterStatusBestRouteAsPathOutputWithContext(ctx context.Context) RouterStatusBestRouteAsPathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterStatusBestRouteAsPathOutput)
+}
+
+// RouterStatusBestRouteAsPathArrayInput is an input type that accepts RouterStatusBestRouteAsPathArray and RouterStatusBestRouteAsPathArrayOutput values.
+// You can construct a concrete instance of `RouterStatusBestRouteAsPathArrayInput` via:
+//
+//	RouterStatusBestRouteAsPathArray{ RouterStatusBestRouteAsPathArgs{...} }
+type RouterStatusBestRouteAsPathArrayInput interface {
+	pulumi.Input
+
+	ToRouterStatusBestRouteAsPathArrayOutput() RouterStatusBestRouteAsPathArrayOutput
+	ToRouterStatusBestRouteAsPathArrayOutputWithContext(context.Context) RouterStatusBestRouteAsPathArrayOutput
+}
+
+type RouterStatusBestRouteAsPathArray []RouterStatusBestRouteAsPathInput
+
+func (RouterStatusBestRouteAsPathArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterStatusBestRouteAsPath)(nil)).Elem()
+}
+
+func (i RouterStatusBestRouteAsPathArray) ToRouterStatusBestRouteAsPathArrayOutput() RouterStatusBestRouteAsPathArrayOutput {
+	return i.ToRouterStatusBestRouteAsPathArrayOutputWithContext(context.Background())
+}
+
+func (i RouterStatusBestRouteAsPathArray) ToRouterStatusBestRouteAsPathArrayOutputWithContext(ctx context.Context) RouterStatusBestRouteAsPathArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterStatusBestRouteAsPathArrayOutput)
+}
+
+type RouterStatusBestRouteAsPathOutput struct{ *pulumi.OutputState }
+
+func (RouterStatusBestRouteAsPathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterStatusBestRouteAsPath)(nil)).Elem()
+}
+
+func (o RouterStatusBestRouteAsPathOutput) ToRouterStatusBestRouteAsPathOutput() RouterStatusBestRouteAsPathOutput {
+	return o
+}
+
+func (o RouterStatusBestRouteAsPathOutput) ToRouterStatusBestRouteAsPathOutputWithContext(ctx context.Context) RouterStatusBestRouteAsPathOutput {
+	return o
+}
+
+// The AS numbers of the AS Path.
+func (o RouterStatusBestRouteAsPathOutput) AsLists() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v RouterStatusBestRouteAsPath) []int { return v.AsLists }).(pulumi.IntArrayOutput)
+}
+
+// The type of the AS Path, which can be one of the following values:
+// - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+// - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+// - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+// - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+func (o RouterStatusBestRouteAsPathOutput) PathSegmentType() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRouteAsPath) string { return v.PathSegmentType }).(pulumi.StringOutput)
+}
+
+type RouterStatusBestRouteAsPathArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterStatusBestRouteAsPathArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterStatusBestRouteAsPath)(nil)).Elem()
+}
+
+func (o RouterStatusBestRouteAsPathArrayOutput) ToRouterStatusBestRouteAsPathArrayOutput() RouterStatusBestRouteAsPathArrayOutput {
+	return o
+}
+
+func (o RouterStatusBestRouteAsPathArrayOutput) ToRouterStatusBestRouteAsPathArrayOutputWithContext(ctx context.Context) RouterStatusBestRouteAsPathArrayOutput {
+	return o
+}
+
+func (o RouterStatusBestRouteAsPathArrayOutput) Index(i pulumi.IntInput) RouterStatusBestRouteAsPathOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterStatusBestRouteAsPath {
+		return vs[0].([]RouterStatusBestRouteAsPath)[vs[1].(int)]
+	}).(RouterStatusBestRouteAsPathOutput)
+}
+
+type RouterStatusBestRouteWarning struct {
+	// A warning code, if applicable. For example, Compute Engine returns
+	// NO_RESULTS_ON_PAGE if there are no results in the response.
+	Code string `pulumi:"code"`
+	// Metadata about this warning in key: value format. For example:
+	// "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
+	Datas []RouterStatusBestRouteWarningData `pulumi:"datas"`
+	// A human-readable description of the warning code.
+	Message string `pulumi:"message"`
+}
+
+// RouterStatusBestRouteWarningInput is an input type that accepts RouterStatusBestRouteWarningArgs and RouterStatusBestRouteWarningOutput values.
+// You can construct a concrete instance of `RouterStatusBestRouteWarningInput` via:
+//
+//	RouterStatusBestRouteWarningArgs{...}
+type RouterStatusBestRouteWarningInput interface {
+	pulumi.Input
+
+	ToRouterStatusBestRouteWarningOutput() RouterStatusBestRouteWarningOutput
+	ToRouterStatusBestRouteWarningOutputWithContext(context.Context) RouterStatusBestRouteWarningOutput
+}
+
+type RouterStatusBestRouteWarningArgs struct {
+	// A warning code, if applicable. For example, Compute Engine returns
+	// NO_RESULTS_ON_PAGE if there are no results in the response.
+	Code pulumi.StringInput `pulumi:"code"`
+	// Metadata about this warning in key: value format. For example:
+	// "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
+	Datas RouterStatusBestRouteWarningDataArrayInput `pulumi:"datas"`
+	// A human-readable description of the warning code.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (RouterStatusBestRouteWarningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterStatusBestRouteWarning)(nil)).Elem()
+}
+
+func (i RouterStatusBestRouteWarningArgs) ToRouterStatusBestRouteWarningOutput() RouterStatusBestRouteWarningOutput {
+	return i.ToRouterStatusBestRouteWarningOutputWithContext(context.Background())
+}
+
+func (i RouterStatusBestRouteWarningArgs) ToRouterStatusBestRouteWarningOutputWithContext(ctx context.Context) RouterStatusBestRouteWarningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterStatusBestRouteWarningOutput)
+}
+
+// RouterStatusBestRouteWarningArrayInput is an input type that accepts RouterStatusBestRouteWarningArray and RouterStatusBestRouteWarningArrayOutput values.
+// You can construct a concrete instance of `RouterStatusBestRouteWarningArrayInput` via:
+//
+//	RouterStatusBestRouteWarningArray{ RouterStatusBestRouteWarningArgs{...} }
+type RouterStatusBestRouteWarningArrayInput interface {
+	pulumi.Input
+
+	ToRouterStatusBestRouteWarningArrayOutput() RouterStatusBestRouteWarningArrayOutput
+	ToRouterStatusBestRouteWarningArrayOutputWithContext(context.Context) RouterStatusBestRouteWarningArrayOutput
+}
+
+type RouterStatusBestRouteWarningArray []RouterStatusBestRouteWarningInput
+
+func (RouterStatusBestRouteWarningArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterStatusBestRouteWarning)(nil)).Elem()
+}
+
+func (i RouterStatusBestRouteWarningArray) ToRouterStatusBestRouteWarningArrayOutput() RouterStatusBestRouteWarningArrayOutput {
+	return i.ToRouterStatusBestRouteWarningArrayOutputWithContext(context.Background())
+}
+
+func (i RouterStatusBestRouteWarningArray) ToRouterStatusBestRouteWarningArrayOutputWithContext(ctx context.Context) RouterStatusBestRouteWarningArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterStatusBestRouteWarningArrayOutput)
+}
+
+type RouterStatusBestRouteWarningOutput struct{ *pulumi.OutputState }
+
+func (RouterStatusBestRouteWarningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterStatusBestRouteWarning)(nil)).Elem()
+}
+
+func (o RouterStatusBestRouteWarningOutput) ToRouterStatusBestRouteWarningOutput() RouterStatusBestRouteWarningOutput {
+	return o
+}
+
+func (o RouterStatusBestRouteWarningOutput) ToRouterStatusBestRouteWarningOutputWithContext(ctx context.Context) RouterStatusBestRouteWarningOutput {
+	return o
+}
+
+// A warning code, if applicable. For example, Compute Engine returns
+// NO_RESULTS_ON_PAGE if there are no results in the response.
+func (o RouterStatusBestRouteWarningOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRouteWarning) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Metadata about this warning in key: value format. For example:
+// "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
+func (o RouterStatusBestRouteWarningOutput) Datas() RouterStatusBestRouteWarningDataArrayOutput {
+	return o.ApplyT(func(v RouterStatusBestRouteWarning) []RouterStatusBestRouteWarningData { return v.Datas }).(RouterStatusBestRouteWarningDataArrayOutput)
+}
+
+// A human-readable description of the warning code.
+func (o RouterStatusBestRouteWarningOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRouteWarning) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type RouterStatusBestRouteWarningArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterStatusBestRouteWarningArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterStatusBestRouteWarning)(nil)).Elem()
+}
+
+func (o RouterStatusBestRouteWarningArrayOutput) ToRouterStatusBestRouteWarningArrayOutput() RouterStatusBestRouteWarningArrayOutput {
+	return o
+}
+
+func (o RouterStatusBestRouteWarningArrayOutput) ToRouterStatusBestRouteWarningArrayOutputWithContext(ctx context.Context) RouterStatusBestRouteWarningArrayOutput {
+	return o
+}
+
+func (o RouterStatusBestRouteWarningArrayOutput) Index(i pulumi.IntInput) RouterStatusBestRouteWarningOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterStatusBestRouteWarning {
+		return vs[0].([]RouterStatusBestRouteWarning)[vs[1].(int)]
+	}).(RouterStatusBestRouteWarningOutput)
+}
+
+type RouterStatusBestRouteWarningData struct {
+	// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	Key string `pulumi:"key"`
+	// A warning data value corresponding to the key.
+	Value string `pulumi:"value"`
+}
+
+// RouterStatusBestRouteWarningDataInput is an input type that accepts RouterStatusBestRouteWarningDataArgs and RouterStatusBestRouteWarningDataOutput values.
+// You can construct a concrete instance of `RouterStatusBestRouteWarningDataInput` via:
+//
+//	RouterStatusBestRouteWarningDataArgs{...}
+type RouterStatusBestRouteWarningDataInput interface {
+	pulumi.Input
+
+	ToRouterStatusBestRouteWarningDataOutput() RouterStatusBestRouteWarningDataOutput
+	ToRouterStatusBestRouteWarningDataOutputWithContext(context.Context) RouterStatusBestRouteWarningDataOutput
+}
+
+type RouterStatusBestRouteWarningDataArgs struct {
+	// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	Key pulumi.StringInput `pulumi:"key"`
+	// A warning data value corresponding to the key.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (RouterStatusBestRouteWarningDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterStatusBestRouteWarningData)(nil)).Elem()
+}
+
+func (i RouterStatusBestRouteWarningDataArgs) ToRouterStatusBestRouteWarningDataOutput() RouterStatusBestRouteWarningDataOutput {
+	return i.ToRouterStatusBestRouteWarningDataOutputWithContext(context.Background())
+}
+
+func (i RouterStatusBestRouteWarningDataArgs) ToRouterStatusBestRouteWarningDataOutputWithContext(ctx context.Context) RouterStatusBestRouteWarningDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterStatusBestRouteWarningDataOutput)
+}
+
+// RouterStatusBestRouteWarningDataArrayInput is an input type that accepts RouterStatusBestRouteWarningDataArray and RouterStatusBestRouteWarningDataArrayOutput values.
+// You can construct a concrete instance of `RouterStatusBestRouteWarningDataArrayInput` via:
+//
+//	RouterStatusBestRouteWarningDataArray{ RouterStatusBestRouteWarningDataArgs{...} }
+type RouterStatusBestRouteWarningDataArrayInput interface {
+	pulumi.Input
+
+	ToRouterStatusBestRouteWarningDataArrayOutput() RouterStatusBestRouteWarningDataArrayOutput
+	ToRouterStatusBestRouteWarningDataArrayOutputWithContext(context.Context) RouterStatusBestRouteWarningDataArrayOutput
+}
+
+type RouterStatusBestRouteWarningDataArray []RouterStatusBestRouteWarningDataInput
+
+func (RouterStatusBestRouteWarningDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterStatusBestRouteWarningData)(nil)).Elem()
+}
+
+func (i RouterStatusBestRouteWarningDataArray) ToRouterStatusBestRouteWarningDataArrayOutput() RouterStatusBestRouteWarningDataArrayOutput {
+	return i.ToRouterStatusBestRouteWarningDataArrayOutputWithContext(context.Background())
+}
+
+func (i RouterStatusBestRouteWarningDataArray) ToRouterStatusBestRouteWarningDataArrayOutputWithContext(ctx context.Context) RouterStatusBestRouteWarningDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterStatusBestRouteWarningDataArrayOutput)
+}
+
+type RouterStatusBestRouteWarningDataOutput struct{ *pulumi.OutputState }
+
+func (RouterStatusBestRouteWarningDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterStatusBestRouteWarningData)(nil)).Elem()
+}
+
+func (o RouterStatusBestRouteWarningDataOutput) ToRouterStatusBestRouteWarningDataOutput() RouterStatusBestRouteWarningDataOutput {
+	return o
+}
+
+func (o RouterStatusBestRouteWarningDataOutput) ToRouterStatusBestRouteWarningDataOutputWithContext(ctx context.Context) RouterStatusBestRouteWarningDataOutput {
+	return o
+}
+
+// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+func (o RouterStatusBestRouteWarningDataOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRouteWarningData) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// A warning data value corresponding to the key.
+func (o RouterStatusBestRouteWarningDataOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRouteWarningData) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type RouterStatusBestRouteWarningDataArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterStatusBestRouteWarningDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterStatusBestRouteWarningData)(nil)).Elem()
+}
+
+func (o RouterStatusBestRouteWarningDataArrayOutput) ToRouterStatusBestRouteWarningDataArrayOutput() RouterStatusBestRouteWarningDataArrayOutput {
+	return o
+}
+
+func (o RouterStatusBestRouteWarningDataArrayOutput) ToRouterStatusBestRouteWarningDataArrayOutputWithContext(ctx context.Context) RouterStatusBestRouteWarningDataArrayOutput {
+	return o
+}
+
+func (o RouterStatusBestRouteWarningDataArrayOutput) Index(i pulumi.IntInput) RouterStatusBestRouteWarningDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterStatusBestRouteWarningData {
+		return vs[0].([]RouterStatusBestRouteWarningData)[vs[1].(int)]
+	}).(RouterStatusBestRouteWarningDataOutput)
+}
+
 type RouterStatusBestRoutesForRouter struct {
+	AsPaths []RouterStatusBestRoutesForRouterAsPath `pulumi:"asPaths"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property
 	// when you create the resource.
 	Description string `pulumi:"description"`
@@ -1852,6 +3280,8 @@ type RouterStatusBestRoutesForRouter struct {
 	// * 'global/gateways/default-internet-gateway'
 	// * The string 'default-internet-gateway'.
 	NextHopGateway string `pulumi:"nextHopGateway"`
+	// The hub network that should handle matching packets, which should conform to RFC1035.
+	NextHopHub string `pulumi:"nextHopHub"`
 	// The IP address or URL to a forwarding rule of type
 	// loadBalancingScheme=INTERNAL that should handle matching
 	// packets.
@@ -1888,6 +3318,8 @@ type RouterStatusBestRoutesForRouter struct {
 	NextHopNetwork string `pulumi:"nextHopNetwork"`
 	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
 	NextHopOrigin string `pulumi:"nextHopOrigin"`
+	// The network peering name that should handle matching packets, which should conform to RFC1035.
+	NextHopPeering string `pulumi:"nextHopPeering"`
 	// URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel string `pulumi:"nextHopVpnTunnel"`
 	// The priority of this route. Priority is used to break ties in cases
@@ -1900,10 +3332,22 @@ type RouterStatusBestRoutesForRouter struct {
 	Priority int `pulumi:"priority"`
 	// The ID of the project in which the resource
 	// belongs. If it is not provided, the provider project is used.
-	Project  string `pulumi:"project"`
-	SelfLink string `pulumi:"selfLink"`
+	Project string `pulumi:"project"`
+	// The status of the route, which can be one of the following values:
+	// - 'ACTIVE' for an active route
+	// - 'INACTIVE' for an inactive route
+	RouteStatus string `pulumi:"routeStatus"`
+	// The type of this route, which can be one of the following values:
+	// - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+	// - 'SUBNET' for a route from a subnet of the VPC
+	// - 'BGP' for a route learned from a BGP peer of this router
+	// - 'STATIC' for a static route
+	RouteType string `pulumi:"routeType"`
+	SelfLink  string `pulumi:"selfLink"`
 	// A list of instance tags to which this route applies.
 	Tags []string `pulumi:"tags"`
+	// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+	Warnings []RouterStatusBestRoutesForRouterWarning `pulumi:"warnings"`
 }
 
 // RouterStatusBestRoutesForRouterInput is an input type that accepts RouterStatusBestRoutesForRouterArgs and RouterStatusBestRoutesForRouterOutput values.
@@ -1918,6 +3362,9 @@ type RouterStatusBestRoutesForRouterInput interface {
 }
 
 type RouterStatusBestRoutesForRouterArgs struct {
+	AsPaths RouterStatusBestRoutesForRouterAsPathArrayInput `pulumi:"asPaths"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringInput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property
 	// when you create the resource.
 	Description pulumi.StringInput `pulumi:"description"`
@@ -1937,6 +3384,8 @@ type RouterStatusBestRoutesForRouterArgs struct {
 	// * 'global/gateways/default-internet-gateway'
 	// * The string 'default-internet-gateway'.
 	NextHopGateway pulumi.StringInput `pulumi:"nextHopGateway"`
+	// The hub network that should handle matching packets, which should conform to RFC1035.
+	NextHopHub pulumi.StringInput `pulumi:"nextHopHub"`
 	// The IP address or URL to a forwarding rule of type
 	// loadBalancingScheme=INTERNAL that should handle matching
 	// packets.
@@ -1973,6 +3422,8 @@ type RouterStatusBestRoutesForRouterArgs struct {
 	NextHopNetwork pulumi.StringInput `pulumi:"nextHopNetwork"`
 	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
 	NextHopOrigin pulumi.StringInput `pulumi:"nextHopOrigin"`
+	// The network peering name that should handle matching packets, which should conform to RFC1035.
+	NextHopPeering pulumi.StringInput `pulumi:"nextHopPeering"`
 	// URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel pulumi.StringInput `pulumi:"nextHopVpnTunnel"`
 	// The priority of this route. Priority is used to break ties in cases
@@ -1985,10 +3436,22 @@ type RouterStatusBestRoutesForRouterArgs struct {
 	Priority pulumi.IntInput `pulumi:"priority"`
 	// The ID of the project in which the resource
 	// belongs. If it is not provided, the provider project is used.
-	Project  pulumi.StringInput `pulumi:"project"`
-	SelfLink pulumi.StringInput `pulumi:"selfLink"`
+	Project pulumi.StringInput `pulumi:"project"`
+	// The status of the route, which can be one of the following values:
+	// - 'ACTIVE' for an active route
+	// - 'INACTIVE' for an inactive route
+	RouteStatus pulumi.StringInput `pulumi:"routeStatus"`
+	// The type of this route, which can be one of the following values:
+	// - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+	// - 'SUBNET' for a route from a subnet of the VPC
+	// - 'BGP' for a route learned from a BGP peer of this router
+	// - 'STATIC' for a static route
+	RouteType pulumi.StringInput `pulumi:"routeType"`
+	SelfLink  pulumi.StringInput `pulumi:"selfLink"`
 	// A list of instance tags to which this route applies.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+	Warnings RouterStatusBestRoutesForRouterWarningArrayInput `pulumi:"warnings"`
 }
 
 func (RouterStatusBestRoutesForRouterArgs) ElementType() reflect.Type {
@@ -2042,6 +3505,15 @@ func (o RouterStatusBestRoutesForRouterOutput) ToRouterStatusBestRoutesForRouter
 	return o
 }
 
+func (o RouterStatusBestRoutesForRouterOutput) AsPaths() RouterStatusBestRoutesForRouterAsPathArrayOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) []RouterStatusBestRoutesForRouterAsPath { return v.AsPaths }).(RouterStatusBestRoutesForRouterAsPathArrayOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o RouterStatusBestRoutesForRouterOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
 // An optional description of this resource. Provide this property
 // when you create the resource.
 func (o RouterStatusBestRoutesForRouterOutput) Description() pulumi.StringOutput {
@@ -2074,6 +3546,11 @@ func (o RouterStatusBestRoutesForRouterOutput) Network() pulumi.StringOutput {
 // * The string 'default-internet-gateway'.
 func (o RouterStatusBestRoutesForRouterOutput) NextHopGateway() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) string { return v.NextHopGateway }).(pulumi.StringOutput)
+}
+
+// The hub network that should handle matching packets, which should conform to RFC1035.
+func (o RouterStatusBestRoutesForRouterOutput) NextHopHub() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) string { return v.NextHopHub }).(pulumi.StringOutput)
 }
 
 // The IP address or URL to a forwarding rule of type
@@ -2136,6 +3613,11 @@ func (o RouterStatusBestRoutesForRouterOutput) NextHopOrigin() pulumi.StringOutp
 	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) string { return v.NextHopOrigin }).(pulumi.StringOutput)
 }
 
+// The network peering name that should handle matching packets, which should conform to RFC1035.
+func (o RouterStatusBestRoutesForRouterOutput) NextHopPeering() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) string { return v.NextHopPeering }).(pulumi.StringOutput)
+}
+
 // URL to a VpnTunnel that should handle matching packets.
 func (o RouterStatusBestRoutesForRouterOutput) NextHopVpnTunnel() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) string { return v.NextHopVpnTunnel }).(pulumi.StringOutput)
@@ -2158,6 +3640,22 @@ func (o RouterStatusBestRoutesForRouterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// The status of the route, which can be one of the following values:
+// - 'ACTIVE' for an active route
+// - 'INACTIVE' for an inactive route
+func (o RouterStatusBestRoutesForRouterOutput) RouteStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) string { return v.RouteStatus }).(pulumi.StringOutput)
+}
+
+// The type of this route, which can be one of the following values:
+// - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+// - 'SUBNET' for a route from a subnet of the VPC
+// - 'BGP' for a route learned from a BGP peer of this router
+// - 'STATIC' for a static route
+func (o RouterStatusBestRoutesForRouterOutput) RouteType() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) string { return v.RouteType }).(pulumi.StringOutput)
+}
+
 func (o RouterStatusBestRoutesForRouterOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) string { return v.SelfLink }).(pulumi.StringOutput)
 }
@@ -2165,6 +3663,11 @@ func (o RouterStatusBestRoutesForRouterOutput) SelfLink() pulumi.StringOutput {
 // A list of instance tags to which this route applies.
 func (o RouterStatusBestRoutesForRouterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+func (o RouterStatusBestRoutesForRouterOutput) Warnings() RouterStatusBestRoutesForRouterWarningArrayOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouter) []RouterStatusBestRoutesForRouterWarning { return v.Warnings }).(RouterStatusBestRoutesForRouterWarningArrayOutput)
 }
 
 type RouterStatusBestRoutesForRouterArrayOutput struct{ *pulumi.OutputState }
@@ -2185,6 +3688,353 @@ func (o RouterStatusBestRoutesForRouterArrayOutput) Index(i pulumi.IntInput) Rou
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterStatusBestRoutesForRouter {
 		return vs[0].([]RouterStatusBestRoutesForRouter)[vs[1].(int)]
 	}).(RouterStatusBestRoutesForRouterOutput)
+}
+
+type RouterStatusBestRoutesForRouterAsPath struct {
+	// The AS numbers of the AS Path.
+	AsLists []int `pulumi:"asLists"`
+	// The type of the AS Path, which can be one of the following values:
+	// - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+	// - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+	// - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+	// - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+	PathSegmentType string `pulumi:"pathSegmentType"`
+}
+
+// RouterStatusBestRoutesForRouterAsPathInput is an input type that accepts RouterStatusBestRoutesForRouterAsPathArgs and RouterStatusBestRoutesForRouterAsPathOutput values.
+// You can construct a concrete instance of `RouterStatusBestRoutesForRouterAsPathInput` via:
+//
+//	RouterStatusBestRoutesForRouterAsPathArgs{...}
+type RouterStatusBestRoutesForRouterAsPathInput interface {
+	pulumi.Input
+
+	ToRouterStatusBestRoutesForRouterAsPathOutput() RouterStatusBestRoutesForRouterAsPathOutput
+	ToRouterStatusBestRoutesForRouterAsPathOutputWithContext(context.Context) RouterStatusBestRoutesForRouterAsPathOutput
+}
+
+type RouterStatusBestRoutesForRouterAsPathArgs struct {
+	// The AS numbers of the AS Path.
+	AsLists pulumi.IntArrayInput `pulumi:"asLists"`
+	// The type of the AS Path, which can be one of the following values:
+	// - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+	// - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+	// - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+	// - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+	PathSegmentType pulumi.StringInput `pulumi:"pathSegmentType"`
+}
+
+func (RouterStatusBestRoutesForRouterAsPathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterStatusBestRoutesForRouterAsPath)(nil)).Elem()
+}
+
+func (i RouterStatusBestRoutesForRouterAsPathArgs) ToRouterStatusBestRoutesForRouterAsPathOutput() RouterStatusBestRoutesForRouterAsPathOutput {
+	return i.ToRouterStatusBestRoutesForRouterAsPathOutputWithContext(context.Background())
+}
+
+func (i RouterStatusBestRoutesForRouterAsPathArgs) ToRouterStatusBestRoutesForRouterAsPathOutputWithContext(ctx context.Context) RouterStatusBestRoutesForRouterAsPathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterStatusBestRoutesForRouterAsPathOutput)
+}
+
+// RouterStatusBestRoutesForRouterAsPathArrayInput is an input type that accepts RouterStatusBestRoutesForRouterAsPathArray and RouterStatusBestRoutesForRouterAsPathArrayOutput values.
+// You can construct a concrete instance of `RouterStatusBestRoutesForRouterAsPathArrayInput` via:
+//
+//	RouterStatusBestRoutesForRouterAsPathArray{ RouterStatusBestRoutesForRouterAsPathArgs{...} }
+type RouterStatusBestRoutesForRouterAsPathArrayInput interface {
+	pulumi.Input
+
+	ToRouterStatusBestRoutesForRouterAsPathArrayOutput() RouterStatusBestRoutesForRouterAsPathArrayOutput
+	ToRouterStatusBestRoutesForRouterAsPathArrayOutputWithContext(context.Context) RouterStatusBestRoutesForRouterAsPathArrayOutput
+}
+
+type RouterStatusBestRoutesForRouterAsPathArray []RouterStatusBestRoutesForRouterAsPathInput
+
+func (RouterStatusBestRoutesForRouterAsPathArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterStatusBestRoutesForRouterAsPath)(nil)).Elem()
+}
+
+func (i RouterStatusBestRoutesForRouterAsPathArray) ToRouterStatusBestRoutesForRouterAsPathArrayOutput() RouterStatusBestRoutesForRouterAsPathArrayOutput {
+	return i.ToRouterStatusBestRoutesForRouterAsPathArrayOutputWithContext(context.Background())
+}
+
+func (i RouterStatusBestRoutesForRouterAsPathArray) ToRouterStatusBestRoutesForRouterAsPathArrayOutputWithContext(ctx context.Context) RouterStatusBestRoutesForRouterAsPathArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterStatusBestRoutesForRouterAsPathArrayOutput)
+}
+
+type RouterStatusBestRoutesForRouterAsPathOutput struct{ *pulumi.OutputState }
+
+func (RouterStatusBestRoutesForRouterAsPathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterStatusBestRoutesForRouterAsPath)(nil)).Elem()
+}
+
+func (o RouterStatusBestRoutesForRouterAsPathOutput) ToRouterStatusBestRoutesForRouterAsPathOutput() RouterStatusBestRoutesForRouterAsPathOutput {
+	return o
+}
+
+func (o RouterStatusBestRoutesForRouterAsPathOutput) ToRouterStatusBestRoutesForRouterAsPathOutputWithContext(ctx context.Context) RouterStatusBestRoutesForRouterAsPathOutput {
+	return o
+}
+
+// The AS numbers of the AS Path.
+func (o RouterStatusBestRoutesForRouterAsPathOutput) AsLists() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouterAsPath) []int { return v.AsLists }).(pulumi.IntArrayOutput)
+}
+
+// The type of the AS Path, which can be one of the following values:
+// - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+// - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+// - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+// - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+func (o RouterStatusBestRoutesForRouterAsPathOutput) PathSegmentType() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouterAsPath) string { return v.PathSegmentType }).(pulumi.StringOutput)
+}
+
+type RouterStatusBestRoutesForRouterAsPathArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterStatusBestRoutesForRouterAsPathArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterStatusBestRoutesForRouterAsPath)(nil)).Elem()
+}
+
+func (o RouterStatusBestRoutesForRouterAsPathArrayOutput) ToRouterStatusBestRoutesForRouterAsPathArrayOutput() RouterStatusBestRoutesForRouterAsPathArrayOutput {
+	return o
+}
+
+func (o RouterStatusBestRoutesForRouterAsPathArrayOutput) ToRouterStatusBestRoutesForRouterAsPathArrayOutputWithContext(ctx context.Context) RouterStatusBestRoutesForRouterAsPathArrayOutput {
+	return o
+}
+
+func (o RouterStatusBestRoutesForRouterAsPathArrayOutput) Index(i pulumi.IntInput) RouterStatusBestRoutesForRouterAsPathOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterStatusBestRoutesForRouterAsPath {
+		return vs[0].([]RouterStatusBestRoutesForRouterAsPath)[vs[1].(int)]
+	}).(RouterStatusBestRoutesForRouterAsPathOutput)
+}
+
+type RouterStatusBestRoutesForRouterWarning struct {
+	// A warning code, if applicable. For example, Compute Engine returns
+	// NO_RESULTS_ON_PAGE if there are no results in the response.
+	Code string `pulumi:"code"`
+	// Metadata about this warning in key: value format. For example:
+	// "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
+	Datas []RouterStatusBestRoutesForRouterWarningData `pulumi:"datas"`
+	// A human-readable description of the warning code.
+	Message string `pulumi:"message"`
+}
+
+// RouterStatusBestRoutesForRouterWarningInput is an input type that accepts RouterStatusBestRoutesForRouterWarningArgs and RouterStatusBestRoutesForRouterWarningOutput values.
+// You can construct a concrete instance of `RouterStatusBestRoutesForRouterWarningInput` via:
+//
+//	RouterStatusBestRoutesForRouterWarningArgs{...}
+type RouterStatusBestRoutesForRouterWarningInput interface {
+	pulumi.Input
+
+	ToRouterStatusBestRoutesForRouterWarningOutput() RouterStatusBestRoutesForRouterWarningOutput
+	ToRouterStatusBestRoutesForRouterWarningOutputWithContext(context.Context) RouterStatusBestRoutesForRouterWarningOutput
+}
+
+type RouterStatusBestRoutesForRouterWarningArgs struct {
+	// A warning code, if applicable. For example, Compute Engine returns
+	// NO_RESULTS_ON_PAGE if there are no results in the response.
+	Code pulumi.StringInput `pulumi:"code"`
+	// Metadata about this warning in key: value format. For example:
+	// "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
+	Datas RouterStatusBestRoutesForRouterWarningDataArrayInput `pulumi:"datas"`
+	// A human-readable description of the warning code.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (RouterStatusBestRoutesForRouterWarningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterStatusBestRoutesForRouterWarning)(nil)).Elem()
+}
+
+func (i RouterStatusBestRoutesForRouterWarningArgs) ToRouterStatusBestRoutesForRouterWarningOutput() RouterStatusBestRoutesForRouterWarningOutput {
+	return i.ToRouterStatusBestRoutesForRouterWarningOutputWithContext(context.Background())
+}
+
+func (i RouterStatusBestRoutesForRouterWarningArgs) ToRouterStatusBestRoutesForRouterWarningOutputWithContext(ctx context.Context) RouterStatusBestRoutesForRouterWarningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterStatusBestRoutesForRouterWarningOutput)
+}
+
+// RouterStatusBestRoutesForRouterWarningArrayInput is an input type that accepts RouterStatusBestRoutesForRouterWarningArray and RouterStatusBestRoutesForRouterWarningArrayOutput values.
+// You can construct a concrete instance of `RouterStatusBestRoutesForRouterWarningArrayInput` via:
+//
+//	RouterStatusBestRoutesForRouterWarningArray{ RouterStatusBestRoutesForRouterWarningArgs{...} }
+type RouterStatusBestRoutesForRouterWarningArrayInput interface {
+	pulumi.Input
+
+	ToRouterStatusBestRoutesForRouterWarningArrayOutput() RouterStatusBestRoutesForRouterWarningArrayOutput
+	ToRouterStatusBestRoutesForRouterWarningArrayOutputWithContext(context.Context) RouterStatusBestRoutesForRouterWarningArrayOutput
+}
+
+type RouterStatusBestRoutesForRouterWarningArray []RouterStatusBestRoutesForRouterWarningInput
+
+func (RouterStatusBestRoutesForRouterWarningArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterStatusBestRoutesForRouterWarning)(nil)).Elem()
+}
+
+func (i RouterStatusBestRoutesForRouterWarningArray) ToRouterStatusBestRoutesForRouterWarningArrayOutput() RouterStatusBestRoutesForRouterWarningArrayOutput {
+	return i.ToRouterStatusBestRoutesForRouterWarningArrayOutputWithContext(context.Background())
+}
+
+func (i RouterStatusBestRoutesForRouterWarningArray) ToRouterStatusBestRoutesForRouterWarningArrayOutputWithContext(ctx context.Context) RouterStatusBestRoutesForRouterWarningArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterStatusBestRoutesForRouterWarningArrayOutput)
+}
+
+type RouterStatusBestRoutesForRouterWarningOutput struct{ *pulumi.OutputState }
+
+func (RouterStatusBestRoutesForRouterWarningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterStatusBestRoutesForRouterWarning)(nil)).Elem()
+}
+
+func (o RouterStatusBestRoutesForRouterWarningOutput) ToRouterStatusBestRoutesForRouterWarningOutput() RouterStatusBestRoutesForRouterWarningOutput {
+	return o
+}
+
+func (o RouterStatusBestRoutesForRouterWarningOutput) ToRouterStatusBestRoutesForRouterWarningOutputWithContext(ctx context.Context) RouterStatusBestRoutesForRouterWarningOutput {
+	return o
+}
+
+// A warning code, if applicable. For example, Compute Engine returns
+// NO_RESULTS_ON_PAGE if there are no results in the response.
+func (o RouterStatusBestRoutesForRouterWarningOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouterWarning) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Metadata about this warning in key: value format. For example:
+// "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
+func (o RouterStatusBestRoutesForRouterWarningOutput) Datas() RouterStatusBestRoutesForRouterWarningDataArrayOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouterWarning) []RouterStatusBestRoutesForRouterWarningData {
+		return v.Datas
+	}).(RouterStatusBestRoutesForRouterWarningDataArrayOutput)
+}
+
+// A human-readable description of the warning code.
+func (o RouterStatusBestRoutesForRouterWarningOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouterWarning) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type RouterStatusBestRoutesForRouterWarningArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterStatusBestRoutesForRouterWarningArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterStatusBestRoutesForRouterWarning)(nil)).Elem()
+}
+
+func (o RouterStatusBestRoutesForRouterWarningArrayOutput) ToRouterStatusBestRoutesForRouterWarningArrayOutput() RouterStatusBestRoutesForRouterWarningArrayOutput {
+	return o
+}
+
+func (o RouterStatusBestRoutesForRouterWarningArrayOutput) ToRouterStatusBestRoutesForRouterWarningArrayOutputWithContext(ctx context.Context) RouterStatusBestRoutesForRouterWarningArrayOutput {
+	return o
+}
+
+func (o RouterStatusBestRoutesForRouterWarningArrayOutput) Index(i pulumi.IntInput) RouterStatusBestRoutesForRouterWarningOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterStatusBestRoutesForRouterWarning {
+		return vs[0].([]RouterStatusBestRoutesForRouterWarning)[vs[1].(int)]
+	}).(RouterStatusBestRoutesForRouterWarningOutput)
+}
+
+type RouterStatusBestRoutesForRouterWarningData struct {
+	// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	Key string `pulumi:"key"`
+	// A warning data value corresponding to the key.
+	Value string `pulumi:"value"`
+}
+
+// RouterStatusBestRoutesForRouterWarningDataInput is an input type that accepts RouterStatusBestRoutesForRouterWarningDataArgs and RouterStatusBestRoutesForRouterWarningDataOutput values.
+// You can construct a concrete instance of `RouterStatusBestRoutesForRouterWarningDataInput` via:
+//
+//	RouterStatusBestRoutesForRouterWarningDataArgs{...}
+type RouterStatusBestRoutesForRouterWarningDataInput interface {
+	pulumi.Input
+
+	ToRouterStatusBestRoutesForRouterWarningDataOutput() RouterStatusBestRoutesForRouterWarningDataOutput
+	ToRouterStatusBestRoutesForRouterWarningDataOutputWithContext(context.Context) RouterStatusBestRoutesForRouterWarningDataOutput
+}
+
+type RouterStatusBestRoutesForRouterWarningDataArgs struct {
+	// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	Key pulumi.StringInput `pulumi:"key"`
+	// A warning data value corresponding to the key.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (RouterStatusBestRoutesForRouterWarningDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterStatusBestRoutesForRouterWarningData)(nil)).Elem()
+}
+
+func (i RouterStatusBestRoutesForRouterWarningDataArgs) ToRouterStatusBestRoutesForRouterWarningDataOutput() RouterStatusBestRoutesForRouterWarningDataOutput {
+	return i.ToRouterStatusBestRoutesForRouterWarningDataOutputWithContext(context.Background())
+}
+
+func (i RouterStatusBestRoutesForRouterWarningDataArgs) ToRouterStatusBestRoutesForRouterWarningDataOutputWithContext(ctx context.Context) RouterStatusBestRoutesForRouterWarningDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterStatusBestRoutesForRouterWarningDataOutput)
+}
+
+// RouterStatusBestRoutesForRouterWarningDataArrayInput is an input type that accepts RouterStatusBestRoutesForRouterWarningDataArray and RouterStatusBestRoutesForRouterWarningDataArrayOutput values.
+// You can construct a concrete instance of `RouterStatusBestRoutesForRouterWarningDataArrayInput` via:
+//
+//	RouterStatusBestRoutesForRouterWarningDataArray{ RouterStatusBestRoutesForRouterWarningDataArgs{...} }
+type RouterStatusBestRoutesForRouterWarningDataArrayInput interface {
+	pulumi.Input
+
+	ToRouterStatusBestRoutesForRouterWarningDataArrayOutput() RouterStatusBestRoutesForRouterWarningDataArrayOutput
+	ToRouterStatusBestRoutesForRouterWarningDataArrayOutputWithContext(context.Context) RouterStatusBestRoutesForRouterWarningDataArrayOutput
+}
+
+type RouterStatusBestRoutesForRouterWarningDataArray []RouterStatusBestRoutesForRouterWarningDataInput
+
+func (RouterStatusBestRoutesForRouterWarningDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterStatusBestRoutesForRouterWarningData)(nil)).Elem()
+}
+
+func (i RouterStatusBestRoutesForRouterWarningDataArray) ToRouterStatusBestRoutesForRouterWarningDataArrayOutput() RouterStatusBestRoutesForRouterWarningDataArrayOutput {
+	return i.ToRouterStatusBestRoutesForRouterWarningDataArrayOutputWithContext(context.Background())
+}
+
+func (i RouterStatusBestRoutesForRouterWarningDataArray) ToRouterStatusBestRoutesForRouterWarningDataArrayOutputWithContext(ctx context.Context) RouterStatusBestRoutesForRouterWarningDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterStatusBestRoutesForRouterWarningDataArrayOutput)
+}
+
+type RouterStatusBestRoutesForRouterWarningDataOutput struct{ *pulumi.OutputState }
+
+func (RouterStatusBestRoutesForRouterWarningDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterStatusBestRoutesForRouterWarningData)(nil)).Elem()
+}
+
+func (o RouterStatusBestRoutesForRouterWarningDataOutput) ToRouterStatusBestRoutesForRouterWarningDataOutput() RouterStatusBestRoutesForRouterWarningDataOutput {
+	return o
+}
+
+func (o RouterStatusBestRoutesForRouterWarningDataOutput) ToRouterStatusBestRoutesForRouterWarningDataOutputWithContext(ctx context.Context) RouterStatusBestRoutesForRouterWarningDataOutput {
+	return o
+}
+
+// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+func (o RouterStatusBestRoutesForRouterWarningDataOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouterWarningData) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// A warning data value corresponding to the key.
+func (o RouterStatusBestRoutesForRouterWarningDataOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterStatusBestRoutesForRouterWarningData) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type RouterStatusBestRoutesForRouterWarningDataArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterStatusBestRoutesForRouterWarningDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterStatusBestRoutesForRouterWarningData)(nil)).Elem()
+}
+
+func (o RouterStatusBestRoutesForRouterWarningDataArrayOutput) ToRouterStatusBestRoutesForRouterWarningDataArrayOutput() RouterStatusBestRoutesForRouterWarningDataArrayOutput {
+	return o
+}
+
+func (o RouterStatusBestRoutesForRouterWarningDataArrayOutput) ToRouterStatusBestRoutesForRouterWarningDataArrayOutputWithContext(ctx context.Context) RouterStatusBestRoutesForRouterWarningDataArrayOutput {
+	return o
+}
+
+func (o RouterStatusBestRoutesForRouterWarningDataArrayOutput) Index(i pulumi.IntInput) RouterStatusBestRoutesForRouterWarningDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterStatusBestRoutesForRouterWarningData {
+		return vs[0].([]RouterStatusBestRoutesForRouterWarningData)[vs[1].(int)]
+	}).(RouterStatusBestRoutesForRouterWarningDataOutput)
 }
 
 type SecurityPolicyAdaptiveProtectionConfig struct {
@@ -9553,6 +11403,13 @@ type URLMapDefaultRouteAction struct {
 	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
 	// Structure is documented below.
 	FaultInjectionPolicy *URLMapDefaultRouteActionFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
+	// Specifies the maximum duration (timeout) for streams on the selected route.
+	// Unlike the `Timeout` field where the timeout duration starts from the time the request
+	// has been fully processed (known as end-of-stream), the duration in this field
+	// is computed from the beginning of the stream until the response has been processed,
+	// including all retries. A stream that does not complete in this duration is closed.
+	// Structure is documented below.
+	MaxStreamDuration *URLMapDefaultRouteActionMaxStreamDuration `pulumi:"maxStreamDuration"`
 	// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
 	// Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
 	// the host / authority header is suffixed with -shadow.
@@ -9603,6 +11460,13 @@ type URLMapDefaultRouteActionArgs struct {
 	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
 	// Structure is documented below.
 	FaultInjectionPolicy URLMapDefaultRouteActionFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
+	// Specifies the maximum duration (timeout) for streams on the selected route.
+	// Unlike the `Timeout` field where the timeout duration starts from the time the request
+	// has been fully processed (known as end-of-stream), the duration in this field
+	// is computed from the beginning of the stream until the response has been processed,
+	// including all retries. A stream that does not complete in this duration is closed.
+	// Structure is documented below.
+	MaxStreamDuration URLMapDefaultRouteActionMaxStreamDurationPtrInput `pulumi:"maxStreamDuration"`
 	// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
 	// Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
 	// the host / authority header is suffixed with -shadow.
@@ -9726,6 +11590,18 @@ func (o URLMapDefaultRouteActionOutput) FaultInjectionPolicy() URLMapDefaultRout
 	}).(URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput)
 }
 
+// Specifies the maximum duration (timeout) for streams on the selected route.
+// Unlike the `Timeout` field where the timeout duration starts from the time the request
+// has been fully processed (known as end-of-stream), the duration in this field
+// is computed from the beginning of the stream until the response has been processed,
+// including all retries. A stream that does not complete in this duration is closed.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionOutput) MaxStreamDuration() URLMapDefaultRouteActionMaxStreamDurationPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteAction) *URLMapDefaultRouteActionMaxStreamDuration {
+		return v.MaxStreamDuration
+	}).(URLMapDefaultRouteActionMaxStreamDurationPtrOutput)
+}
+
 // Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
 // Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
 // the host / authority header is suffixed with -shadow.
@@ -9819,6 +11695,21 @@ func (o URLMapDefaultRouteActionPtrOutput) FaultInjectionPolicy() URLMapDefaultR
 		}
 		return v.FaultInjectionPolicy
 	}).(URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput)
+}
+
+// Specifies the maximum duration (timeout) for streams on the selected route.
+// Unlike the `Timeout` field where the timeout duration starts from the time the request
+// has been fully processed (known as end-of-stream), the duration in this field
+// is computed from the beginning of the stream until the response has been processed,
+// including all retries. A stream that does not complete in this duration is closed.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionPtrOutput) MaxStreamDuration() URLMapDefaultRouteActionMaxStreamDurationPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteAction) *URLMapDefaultRouteActionMaxStreamDuration {
+		if v == nil {
+			return nil
+		}
+		return v.MaxStreamDuration
+	}).(URLMapDefaultRouteActionMaxStreamDurationPtrOutput)
 }
 
 // Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
@@ -10835,6 +12726,170 @@ func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput) Se
 			return nil
 		}
 		return v.Seconds
+	}).(pulumi.StringPtrOutput)
+}
+
+type URLMapDefaultRouteActionMaxStreamDuration struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+	Nanos *int `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+	// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+	Seconds string `pulumi:"seconds"`
+}
+
+// URLMapDefaultRouteActionMaxStreamDurationInput is an input type that accepts URLMapDefaultRouteActionMaxStreamDurationArgs and URLMapDefaultRouteActionMaxStreamDurationOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionMaxStreamDurationInput` via:
+//
+//	URLMapDefaultRouteActionMaxStreamDurationArgs{...}
+type URLMapDefaultRouteActionMaxStreamDurationInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionMaxStreamDurationOutput() URLMapDefaultRouteActionMaxStreamDurationOutput
+	ToURLMapDefaultRouteActionMaxStreamDurationOutputWithContext(context.Context) URLMapDefaultRouteActionMaxStreamDurationOutput
+}
+
+type URLMapDefaultRouteActionMaxStreamDurationArgs struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+	// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+	Seconds pulumi.StringInput `pulumi:"seconds"`
+}
+
+func (URLMapDefaultRouteActionMaxStreamDurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionMaxStreamDuration)(nil)).Elem()
+}
+
+func (i URLMapDefaultRouteActionMaxStreamDurationArgs) ToURLMapDefaultRouteActionMaxStreamDurationOutput() URLMapDefaultRouteActionMaxStreamDurationOutput {
+	return i.ToURLMapDefaultRouteActionMaxStreamDurationOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionMaxStreamDurationArgs) ToURLMapDefaultRouteActionMaxStreamDurationOutputWithContext(ctx context.Context) URLMapDefaultRouteActionMaxStreamDurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionMaxStreamDurationOutput)
+}
+
+func (i URLMapDefaultRouteActionMaxStreamDurationArgs) ToURLMapDefaultRouteActionMaxStreamDurationPtrOutput() URLMapDefaultRouteActionMaxStreamDurationPtrOutput {
+	return i.ToURLMapDefaultRouteActionMaxStreamDurationPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionMaxStreamDurationArgs) ToURLMapDefaultRouteActionMaxStreamDurationPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionMaxStreamDurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionMaxStreamDurationOutput).ToURLMapDefaultRouteActionMaxStreamDurationPtrOutputWithContext(ctx)
+}
+
+// URLMapDefaultRouteActionMaxStreamDurationPtrInput is an input type that accepts URLMapDefaultRouteActionMaxStreamDurationArgs, URLMapDefaultRouteActionMaxStreamDurationPtr and URLMapDefaultRouteActionMaxStreamDurationPtrOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionMaxStreamDurationPtrInput` via:
+//
+//	        URLMapDefaultRouteActionMaxStreamDurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapDefaultRouteActionMaxStreamDurationPtrInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionMaxStreamDurationPtrOutput() URLMapDefaultRouteActionMaxStreamDurationPtrOutput
+	ToURLMapDefaultRouteActionMaxStreamDurationPtrOutputWithContext(context.Context) URLMapDefaultRouteActionMaxStreamDurationPtrOutput
+}
+
+type urlmapDefaultRouteActionMaxStreamDurationPtrType URLMapDefaultRouteActionMaxStreamDurationArgs
+
+func URLMapDefaultRouteActionMaxStreamDurationPtr(v *URLMapDefaultRouteActionMaxStreamDurationArgs) URLMapDefaultRouteActionMaxStreamDurationPtrInput {
+	return (*urlmapDefaultRouteActionMaxStreamDurationPtrType)(v)
+}
+
+func (*urlmapDefaultRouteActionMaxStreamDurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionMaxStreamDuration)(nil)).Elem()
+}
+
+func (i *urlmapDefaultRouteActionMaxStreamDurationPtrType) ToURLMapDefaultRouteActionMaxStreamDurationPtrOutput() URLMapDefaultRouteActionMaxStreamDurationPtrOutput {
+	return i.ToURLMapDefaultRouteActionMaxStreamDurationPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapDefaultRouteActionMaxStreamDurationPtrType) ToURLMapDefaultRouteActionMaxStreamDurationPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionMaxStreamDurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionMaxStreamDurationPtrOutput)
+}
+
+type URLMapDefaultRouteActionMaxStreamDurationOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionMaxStreamDurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionMaxStreamDuration)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionMaxStreamDurationOutput) ToURLMapDefaultRouteActionMaxStreamDurationOutput() URLMapDefaultRouteActionMaxStreamDurationOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionMaxStreamDurationOutput) ToURLMapDefaultRouteActionMaxStreamDurationOutputWithContext(ctx context.Context) URLMapDefaultRouteActionMaxStreamDurationOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionMaxStreamDurationOutput) ToURLMapDefaultRouteActionMaxStreamDurationPtrOutput() URLMapDefaultRouteActionMaxStreamDurationPtrOutput {
+	return o.ToURLMapDefaultRouteActionMaxStreamDurationPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapDefaultRouteActionMaxStreamDurationOutput) ToURLMapDefaultRouteActionMaxStreamDurationPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionMaxStreamDurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapDefaultRouteActionMaxStreamDuration) *URLMapDefaultRouteActionMaxStreamDuration {
+		return &v
+	}).(URLMapDefaultRouteActionMaxStreamDurationPtrOutput)
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+func (o URLMapDefaultRouteActionMaxStreamDurationOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionMaxStreamDuration) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+func (o URLMapDefaultRouteActionMaxStreamDurationOutput) Seconds() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionMaxStreamDuration) string { return v.Seconds }).(pulumi.StringOutput)
+}
+
+type URLMapDefaultRouteActionMaxStreamDurationPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionMaxStreamDurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionMaxStreamDuration)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionMaxStreamDurationPtrOutput) ToURLMapDefaultRouteActionMaxStreamDurationPtrOutput() URLMapDefaultRouteActionMaxStreamDurationPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionMaxStreamDurationPtrOutput) ToURLMapDefaultRouteActionMaxStreamDurationPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionMaxStreamDurationPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionMaxStreamDurationPtrOutput) Elem() URLMapDefaultRouteActionMaxStreamDurationOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionMaxStreamDuration) URLMapDefaultRouteActionMaxStreamDuration {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapDefaultRouteActionMaxStreamDuration
+		return ret
+	}).(URLMapDefaultRouteActionMaxStreamDurationOutput)
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+func (o URLMapDefaultRouteActionMaxStreamDurationPtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionMaxStreamDuration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+func (o URLMapDefaultRouteActionMaxStreamDurationPtrOutput) Seconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionMaxStreamDuration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Seconds
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -13845,6 +15900,13 @@ type URLMapPathMatcherDefaultRouteAction struct {
 	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
 	// Structure is documented below.
 	FaultInjectionPolicy *URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
+	// Specifies the maximum duration (timeout) for streams on the selected route.
+	// Unlike the `Timeout` field where the timeout duration starts from the time the request
+	// has been fully processed (known as end-of-stream), the duration in this field
+	// is computed from the beginning of the stream until the response has been processed,
+	// including all retries. A stream that does not complete in this duration is closed.
+	// Structure is documented below.
+	MaxStreamDuration *URLMapPathMatcherDefaultRouteActionMaxStreamDuration `pulumi:"maxStreamDuration"`
 	// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
 	// Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
 	// the host / authority header is suffixed with -shadow.
@@ -13895,6 +15957,13 @@ type URLMapPathMatcherDefaultRouteActionArgs struct {
 	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
 	// Structure is documented below.
 	FaultInjectionPolicy URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
+	// Specifies the maximum duration (timeout) for streams on the selected route.
+	// Unlike the `Timeout` field where the timeout duration starts from the time the request
+	// has been fully processed (known as end-of-stream), the duration in this field
+	// is computed from the beginning of the stream until the response has been processed,
+	// including all retries. A stream that does not complete in this duration is closed.
+	// Structure is documented below.
+	MaxStreamDuration URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrInput `pulumi:"maxStreamDuration"`
 	// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
 	// Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
 	// the host / authority header is suffixed with -shadow.
@@ -14020,6 +16089,18 @@ func (o URLMapPathMatcherDefaultRouteActionOutput) FaultInjectionPolicy() URLMap
 	}).(URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyPtrOutput)
 }
 
+// Specifies the maximum duration (timeout) for streams on the selected route.
+// Unlike the `Timeout` field where the timeout duration starts from the time the request
+// has been fully processed (known as end-of-stream), the duration in this field
+// is computed from the beginning of the stream until the response has been processed,
+// including all retries. A stream that does not complete in this duration is closed.
+// Structure is documented below.
+func (o URLMapPathMatcherDefaultRouteActionOutput) MaxStreamDuration() URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherDefaultRouteAction) *URLMapPathMatcherDefaultRouteActionMaxStreamDuration {
+		return v.MaxStreamDuration
+	}).(URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput)
+}
+
 // Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
 // Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
 // the host / authority header is suffixed with -shadow.
@@ -14119,6 +16200,21 @@ func (o URLMapPathMatcherDefaultRouteActionPtrOutput) FaultInjectionPolicy() URL
 		}
 		return v.FaultInjectionPolicy
 	}).(URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyPtrOutput)
+}
+
+// Specifies the maximum duration (timeout) for streams on the selected route.
+// Unlike the `Timeout` field where the timeout duration starts from the time the request
+// has been fully processed (known as end-of-stream), the duration in this field
+// is computed from the beginning of the stream until the response has been processed,
+// including all retries. A stream that does not complete in this duration is closed.
+// Structure is documented below.
+func (o URLMapPathMatcherDefaultRouteActionPtrOutput) MaxStreamDuration() URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherDefaultRouteAction) *URLMapPathMatcherDefaultRouteActionMaxStreamDuration {
+		if v == nil {
+			return nil
+		}
+		return v.MaxStreamDuration
+	}).(URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput)
 }
 
 // Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
@@ -15137,6 +17233,170 @@ func (o URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPt
 			return nil
 		}
 		return v.Seconds
+	}).(pulumi.StringPtrOutput)
+}
+
+type URLMapPathMatcherDefaultRouteActionMaxStreamDuration struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+	Nanos *int `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+	// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+	Seconds string `pulumi:"seconds"`
+}
+
+// URLMapPathMatcherDefaultRouteActionMaxStreamDurationInput is an input type that accepts URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs and URLMapPathMatcherDefaultRouteActionMaxStreamDurationOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherDefaultRouteActionMaxStreamDurationInput` via:
+//
+//	URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs{...}
+type URLMapPathMatcherDefaultRouteActionMaxStreamDurationInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherDefaultRouteActionMaxStreamDurationOutput() URLMapPathMatcherDefaultRouteActionMaxStreamDurationOutput
+	ToURLMapPathMatcherDefaultRouteActionMaxStreamDurationOutputWithContext(context.Context) URLMapPathMatcherDefaultRouteActionMaxStreamDurationOutput
+}
+
+type URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+	// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+	Seconds pulumi.StringInput `pulumi:"seconds"`
+}
+
+func (URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionMaxStreamDuration)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs) ToURLMapPathMatcherDefaultRouteActionMaxStreamDurationOutput() URLMapPathMatcherDefaultRouteActionMaxStreamDurationOutput {
+	return i.ToURLMapPathMatcherDefaultRouteActionMaxStreamDurationOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs) ToURLMapPathMatcherDefaultRouteActionMaxStreamDurationOutputWithContext(ctx context.Context) URLMapPathMatcherDefaultRouteActionMaxStreamDurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherDefaultRouteActionMaxStreamDurationOutput)
+}
+
+func (i URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs) ToURLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput() URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput {
+	return i.ToURLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs) ToURLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutputWithContext(ctx context.Context) URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherDefaultRouteActionMaxStreamDurationOutput).ToURLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrInput is an input type that accepts URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs, URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtr and URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrInput` via:
+//
+//	        URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput() URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput
+	ToURLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutputWithContext(context.Context) URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput
+}
+
+type urlmapPathMatcherDefaultRouteActionMaxStreamDurationPtrType URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs
+
+func URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtr(v *URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs) URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrInput {
+	return (*urlmapPathMatcherDefaultRouteActionMaxStreamDurationPtrType)(v)
+}
+
+func (*urlmapPathMatcherDefaultRouteActionMaxStreamDurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherDefaultRouteActionMaxStreamDuration)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherDefaultRouteActionMaxStreamDurationPtrType) ToURLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput() URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput {
+	return i.ToURLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherDefaultRouteActionMaxStreamDurationPtrType) ToURLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutputWithContext(ctx context.Context) URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput)
+}
+
+type URLMapPathMatcherDefaultRouteActionMaxStreamDurationOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherDefaultRouteActionMaxStreamDurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionMaxStreamDuration)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherDefaultRouteActionMaxStreamDurationOutput) ToURLMapPathMatcherDefaultRouteActionMaxStreamDurationOutput() URLMapPathMatcherDefaultRouteActionMaxStreamDurationOutput {
+	return o
+}
+
+func (o URLMapPathMatcherDefaultRouteActionMaxStreamDurationOutput) ToURLMapPathMatcherDefaultRouteActionMaxStreamDurationOutputWithContext(ctx context.Context) URLMapPathMatcherDefaultRouteActionMaxStreamDurationOutput {
+	return o
+}
+
+func (o URLMapPathMatcherDefaultRouteActionMaxStreamDurationOutput) ToURLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput() URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput {
+	return o.ToURLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherDefaultRouteActionMaxStreamDurationOutput) ToURLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutputWithContext(ctx context.Context) URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherDefaultRouteActionMaxStreamDuration) *URLMapPathMatcherDefaultRouteActionMaxStreamDuration {
+		return &v
+	}).(URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput)
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+func (o URLMapPathMatcherDefaultRouteActionMaxStreamDurationOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherDefaultRouteActionMaxStreamDuration) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+func (o URLMapPathMatcherDefaultRouteActionMaxStreamDurationOutput) Seconds() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherDefaultRouteActionMaxStreamDuration) string { return v.Seconds }).(pulumi.StringOutput)
+}
+
+type URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherDefaultRouteActionMaxStreamDuration)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput) ToURLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput() URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput) ToURLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutputWithContext(ctx context.Context) URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput) Elem() URLMapPathMatcherDefaultRouteActionMaxStreamDurationOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherDefaultRouteActionMaxStreamDuration) URLMapPathMatcherDefaultRouteActionMaxStreamDuration {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherDefaultRouteActionMaxStreamDuration
+		return ret
+	}).(URLMapPathMatcherDefaultRouteActionMaxStreamDurationOutput)
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+func (o URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherDefaultRouteActionMaxStreamDuration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+func (o URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput) Seconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherDefaultRouteActionMaxStreamDuration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Seconds
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -17951,6 +20211,13 @@ type URLMapPathMatcherPathRuleRouteAction struct {
 	// ignored by clients that are configured with a fault_injection_policy.
 	// Structure is documented below.
 	FaultInjectionPolicy *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
+	// Specifies the maximum duration (timeout) for streams on the selected route.
+	// Unlike the `Timeout` field where the timeout duration starts from the time the request
+	// has been fully processed (known as end-of-stream), the duration in this field
+	// is computed from the beginning of the stream until the response has been processed,
+	// including all retries. A stream that does not complete in this duration is closed.
+	// Structure is documented below.
+	MaxStreamDuration *URLMapPathMatcherPathRuleRouteActionMaxStreamDuration `pulumi:"maxStreamDuration"`
 	// Specifies the policy on how requests intended for the route's backends are
 	// shadowed to a separate mirrored backend service. Loadbalancer does not wait for
 	// responses from the shadow service. Prior to sending traffic to the shadow
@@ -18007,6 +20274,13 @@ type URLMapPathMatcherPathRuleRouteActionArgs struct {
 	// ignored by clients that are configured with a fault_injection_policy.
 	// Structure is documented below.
 	FaultInjectionPolicy URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
+	// Specifies the maximum duration (timeout) for streams on the selected route.
+	// Unlike the `Timeout` field where the timeout duration starts from the time the request
+	// has been fully processed (known as end-of-stream), the duration in this field
+	// is computed from the beginning of the stream until the response has been processed,
+	// including all retries. A stream that does not complete in this duration is closed.
+	// Structure is documented below.
+	MaxStreamDuration URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrInput `pulumi:"maxStreamDuration"`
 	// Specifies the policy on how requests intended for the route's backends are
 	// shadowed to a separate mirrored backend service. Loadbalancer does not wait for
 	// responses from the shadow service. Prior to sending traffic to the shadow
@@ -18138,6 +20412,18 @@ func (o URLMapPathMatcherPathRuleRouteActionOutput) FaultInjectionPolicy() URLMa
 	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput)
 }
 
+// Specifies the maximum duration (timeout) for streams on the selected route.
+// Unlike the `Timeout` field where the timeout duration starts from the time the request
+// has been fully processed (known as end-of-stream), the duration in this field
+// is computed from the beginning of the stream until the response has been processed,
+// including all retries. A stream that does not complete in this duration is closed.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionOutput) MaxStreamDuration() URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionMaxStreamDuration {
+		return v.MaxStreamDuration
+	}).(URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput)
+}
+
 // Specifies the policy on how requests intended for the route's backends are
 // shadowed to a separate mirrored backend service. Loadbalancer does not wait for
 // responses from the shadow service. Prior to sending traffic to the shadow
@@ -18243,6 +20529,21 @@ func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) FaultInjectionPolicy() UR
 		}
 		return v.FaultInjectionPolicy
 	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput)
+}
+
+// Specifies the maximum duration (timeout) for streams on the selected route.
+// Unlike the `Timeout` field where the timeout duration starts from the time the request
+// has been fully processed (known as end-of-stream), the duration in this field
+// is computed from the beginning of the stream until the response has been processed,
+// including all retries. A stream that does not complete in this duration is closed.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) MaxStreamDuration() URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionMaxStreamDuration {
+		if v == nil {
+			return nil
+		}
+		return v.MaxStreamDuration
+	}).(URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput)
 }
 
 // Specifies the policy on how requests intended for the route's backends are
@@ -19261,6 +21562,170 @@ func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayP
 // Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
 func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput) Seconds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Seconds
+	}).(pulumi.StringPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionMaxStreamDuration struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+	Nanos *int `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+	// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+	Seconds string `pulumi:"seconds"`
+}
+
+// URLMapPathMatcherPathRuleRouteActionMaxStreamDurationInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs and URLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionMaxStreamDurationInput` via:
+//
+//	URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs{...}
+type URLMapPathMatcherPathRuleRouteActionMaxStreamDurationInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutput() URLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutput
+	ToURLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutput
+}
+
+type URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+	// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+	Seconds pulumi.StringInput `pulumi:"seconds"`
+}
+
+func (URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionMaxStreamDuration)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs) ToURLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutput() URLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs) ToURLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutput)
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs) ToURLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput() URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs) ToURLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutput).ToURLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs, URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtr and URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrInput` via:
+//
+//	        URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput() URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput
+	ToURLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput
+}
+
+type urlmapPathMatcherPathRuleRouteActionMaxStreamDurationPtrType URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs
+
+func URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtr(v *URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs) URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrInput {
+	return (*urlmapPathMatcherPathRuleRouteActionMaxStreamDurationPtrType)(v)
+}
+
+func (*urlmapPathMatcherPathRuleRouteActionMaxStreamDurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionMaxStreamDuration)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionMaxStreamDurationPtrType) ToURLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput() URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionMaxStreamDurationPtrType) ToURLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionMaxStreamDuration)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutput) ToURLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutput() URLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutput) ToURLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutput) ToURLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput() URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput {
+	return o.ToURLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutput) ToURLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherPathRuleRouteActionMaxStreamDuration) *URLMapPathMatcherPathRuleRouteActionMaxStreamDuration {
+		return &v
+	}).(URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput)
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+func (o URLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionMaxStreamDuration) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+func (o URLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutput) Seconds() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionMaxStreamDuration) string { return v.Seconds }).(pulumi.StringOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionMaxStreamDuration)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput) ToURLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput() URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput) ToURLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput) Elem() URLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionMaxStreamDuration) URLMapPathMatcherPathRuleRouteActionMaxStreamDuration {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherPathRuleRouteActionMaxStreamDuration
+		return ret
+	}).(URLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutput)
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+func (o URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionMaxStreamDuration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+func (o URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput) Seconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionMaxStreamDuration) *string {
 		if v == nil {
 			return nil
 		}
@@ -22806,6 +25271,13 @@ type URLMapPathMatcherRouteRuleRouteAction struct {
 	// ignored by clients that are configured with a fault_injection_policy.
 	// Structure is documented below.
 	FaultInjectionPolicy *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
+	// Specifies the maximum duration (timeout) for streams on the selected route.
+	// Unlike the `Timeout` field where the timeout duration starts from the time the request
+	// has been fully processed (known as end-of-stream), the duration in this field
+	// is computed from the beginning of the stream until the response has been processed,
+	// including all retries. A stream that does not complete in this duration is closed.
+	// Structure is documented below.
+	MaxStreamDuration *URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration `pulumi:"maxStreamDuration"`
 	// Specifies the policy on how requests intended for the route's backends are
 	// shadowed to a separate mirrored backend service. Loadbalancer does not wait for
 	// responses from the shadow service. Prior to sending traffic to the shadow
@@ -22862,6 +25334,13 @@ type URLMapPathMatcherRouteRuleRouteActionArgs struct {
 	// ignored by clients that are configured with a fault_injection_policy.
 	// Structure is documented below.
 	FaultInjectionPolicy URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
+	// Specifies the maximum duration (timeout) for streams on the selected route.
+	// Unlike the `Timeout` field where the timeout duration starts from the time the request
+	// has been fully processed (known as end-of-stream), the duration in this field
+	// is computed from the beginning of the stream until the response has been processed,
+	// including all retries. A stream that does not complete in this duration is closed.
+	// Structure is documented below.
+	MaxStreamDuration URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrInput `pulumi:"maxStreamDuration"`
 	// Specifies the policy on how requests intended for the route's backends are
 	// shadowed to a separate mirrored backend service. Loadbalancer does not wait for
 	// responses from the shadow service. Prior to sending traffic to the shadow
@@ -22993,6 +25472,18 @@ func (o URLMapPathMatcherRouteRuleRouteActionOutput) FaultInjectionPolicy() URLM
 	}).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput)
 }
 
+// Specifies the maximum duration (timeout) for streams on the selected route.
+// Unlike the `Timeout` field where the timeout duration starts from the time the request
+// has been fully processed (known as end-of-stream), the duration in this field
+// is computed from the beginning of the stream until the response has been processed,
+// including all retries. A stream that does not complete in this duration is closed.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionOutput) MaxStreamDuration() URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration {
+		return v.MaxStreamDuration
+	}).(URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput)
+}
+
 // Specifies the policy on how requests intended for the route's backends are
 // shadowed to a separate mirrored backend service. Loadbalancer does not wait for
 // responses from the shadow service. Prior to sending traffic to the shadow
@@ -23098,6 +25589,21 @@ func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) FaultInjectionPolicy() U
 		}
 		return v.FaultInjectionPolicy
 	}).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput)
+}
+
+// Specifies the maximum duration (timeout) for streams on the selected route.
+// Unlike the `Timeout` field where the timeout duration starts from the time the request
+// has been fully processed (known as end-of-stream), the duration in this field
+// is computed from the beginning of the stream until the response has been processed,
+// including all retries. A stream that does not complete in this duration is closed.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) MaxStreamDuration() URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration {
+		if v == nil {
+			return nil
+		}
+		return v.MaxStreamDuration
+	}).(URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput)
 }
 
 // Specifies the policy on how requests intended for the route's backends are
@@ -24116,6 +26622,170 @@ func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay
 // Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
 func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput) Seconds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Seconds
+	}).(pulumi.StringPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+	Nanos *int `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+	// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+	Seconds string `pulumi:"seconds"`
+}
+
+// URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs and URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationInput` via:
+//
+//	URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs{...}
+type URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutput() URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutput
+	ToURLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutput
+}
+
+type URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+	// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+	Seconds pulumi.StringInput `pulumi:"seconds"`
+}
+
+func (URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs) ToURLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutput() URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs) ToURLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutput)
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs) ToURLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput() URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs) ToURLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutput).ToURLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs, URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtr and URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrInput` via:
+//
+//	        URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput() URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput
+	ToURLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput
+}
+
+type urlmapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrType URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs
+
+func URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtr(v *URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs) URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrInput {
+	return (*urlmapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrType)(v)
+}
+
+func (*urlmapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrType) ToURLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput() URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrType) ToURLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutput) ToURLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutput() URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutput) ToURLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutput) ToURLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput() URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput {
+	return o.ToURLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutput) ToURLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration) *URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration {
+		return &v
+	}).(URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput)
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+func (o URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+func (o URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutput) Seconds() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration) string { return v.Seconds }).(pulumi.StringOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput) ToURLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput() URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput) ToURLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput) Elem() URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration) URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration
+		return ret
+	}).(URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutput)
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+func (o URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+func (o URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput) Seconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration) *string {
 		if v == nil {
 			return nil
 		}
@@ -30388,6 +33058,109 @@ func (o GetDiskGuestOsFeatureArrayOutput) Index(i pulumi.IntInput) GetDiskGuestO
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiskGuestOsFeature {
 		return vs[0].([]GetDiskGuestOsFeature)[vs[1].(int)]
 	}).(GetDiskGuestOsFeatureOutput)
+}
+
+type GetDiskParam struct {
+	// Resource manager tags to be bound to the disk. Tag keys and values have the
+	// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+	// and values are in the format tagValues/456.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
+}
+
+// GetDiskParamInput is an input type that accepts GetDiskParamArgs and GetDiskParamOutput values.
+// You can construct a concrete instance of `GetDiskParamInput` via:
+//
+//	GetDiskParamArgs{...}
+type GetDiskParamInput interface {
+	pulumi.Input
+
+	ToGetDiskParamOutput() GetDiskParamOutput
+	ToGetDiskParamOutputWithContext(context.Context) GetDiskParamOutput
+}
+
+type GetDiskParamArgs struct {
+	// Resource manager tags to be bound to the disk. Tag keys and values have the
+	// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+	// and values are in the format tagValues/456.
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
+}
+
+func (GetDiskParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiskParam)(nil)).Elem()
+}
+
+func (i GetDiskParamArgs) ToGetDiskParamOutput() GetDiskParamOutput {
+	return i.ToGetDiskParamOutputWithContext(context.Background())
+}
+
+func (i GetDiskParamArgs) ToGetDiskParamOutputWithContext(ctx context.Context) GetDiskParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiskParamOutput)
+}
+
+// GetDiskParamArrayInput is an input type that accepts GetDiskParamArray and GetDiskParamArrayOutput values.
+// You can construct a concrete instance of `GetDiskParamArrayInput` via:
+//
+//	GetDiskParamArray{ GetDiskParamArgs{...} }
+type GetDiskParamArrayInput interface {
+	pulumi.Input
+
+	ToGetDiskParamArrayOutput() GetDiskParamArrayOutput
+	ToGetDiskParamArrayOutputWithContext(context.Context) GetDiskParamArrayOutput
+}
+
+type GetDiskParamArray []GetDiskParamInput
+
+func (GetDiskParamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiskParam)(nil)).Elem()
+}
+
+func (i GetDiskParamArray) ToGetDiskParamArrayOutput() GetDiskParamArrayOutput {
+	return i.ToGetDiskParamArrayOutputWithContext(context.Background())
+}
+
+func (i GetDiskParamArray) ToGetDiskParamArrayOutputWithContext(ctx context.Context) GetDiskParamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiskParamArrayOutput)
+}
+
+type GetDiskParamOutput struct{ *pulumi.OutputState }
+
+func (GetDiskParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiskParam)(nil)).Elem()
+}
+
+func (o GetDiskParamOutput) ToGetDiskParamOutput() GetDiskParamOutput {
+	return o
+}
+
+func (o GetDiskParamOutput) ToGetDiskParamOutputWithContext(ctx context.Context) GetDiskParamOutput {
+	return o
+}
+
+// Resource manager tags to be bound to the disk. Tag keys and values have the
+// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+// and values are in the format tagValues/456.
+func (o GetDiskParamOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetDiskParam) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
+type GetDiskParamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDiskParamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiskParam)(nil)).Elem()
+}
+
+func (o GetDiskParamArrayOutput) ToGetDiskParamArrayOutput() GetDiskParamArrayOutput {
+	return o
+}
+
+func (o GetDiskParamArrayOutput) ToGetDiskParamArrayOutputWithContext(ctx context.Context) GetDiskParamArrayOutput {
+	return o
+}
+
+func (o GetDiskParamArrayOutput) Index(i pulumi.IntInput) GetDiskParamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiskParam {
+		return vs[0].([]GetDiskParam)[vs[1].(int)]
+	}).(GetDiskParamOutput)
 }
 
 type GetDiskSourceImageEncryptionKey struct {
@@ -36748,7 +39521,7 @@ type GetInstanceNetworkInterface struct {
 	Name string `pulumi:"name"`
 	// The name or selfLink of the network attached to this interface.
 	Network string `pulumi:"network"`
-	// Beta The URL of the network attachment to this interface.
+	// The URL of the network attachment to this interface.
 	NetworkAttachment string `pulumi:"networkAttachment"`
 	// The internal ip address of the instance, either manually or dynamically assigned.
 	NetworkIp string `pulumi:"networkIp"`
@@ -36795,7 +39568,7 @@ type GetInstanceNetworkInterfaceArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The name or selfLink of the network attached to this interface.
 	Network pulumi.StringInput `pulumi:"network"`
-	// Beta The URL of the network attachment to this interface.
+	// The URL of the network attachment to this interface.
 	NetworkAttachment pulumi.StringInput `pulumi:"networkAttachment"`
 	// The internal ip address of the instance, either manually or dynamically assigned.
 	NetworkIp pulumi.StringInput `pulumi:"networkIp"`
@@ -36907,7 +39680,7 @@ func (o GetInstanceNetworkInterfaceOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.Network }).(pulumi.StringOutput)
 }
 
-// Beta The URL of the network attachment to this interface.
+// The URL of the network attachment to this interface.
 func (o GetInstanceNetworkInterfaceOutput) NetworkAttachment() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.NetworkAttachment }).(pulumi.StringOutput)
 }
@@ -52392,6 +55165,9 @@ func (o GetRouterNatSubnetworkArrayOutput) Index(i pulumi.IntInput) GetRouterNat
 }
 
 type GetRouterStatusBestRoute struct {
+	AsPaths []GetRouterStatusBestRouteAsPath `pulumi:"asPaths"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property
 	// when you create the resource.
 	Description string `pulumi:"description"`
@@ -52411,6 +55187,8 @@ type GetRouterStatusBestRoute struct {
 	// * 'global/gateways/default-internet-gateway'
 	// * The string 'default-internet-gateway'.
 	NextHopGateway string `pulumi:"nextHopGateway"`
+	// The hub network that should handle matching packets, which should conform to RFC1035.
+	NextHopHub string `pulumi:"nextHopHub"`
 	// The IP address or URL to a forwarding rule of type
 	// loadBalancingScheme=INTERNAL that should handle matching
 	// packets.
@@ -52447,6 +55225,8 @@ type GetRouterStatusBestRoute struct {
 	NextHopNetwork string `pulumi:"nextHopNetwork"`
 	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
 	NextHopOrigin string `pulumi:"nextHopOrigin"`
+	// The network peering name that should handle matching packets, which should conform to RFC1035.
+	NextHopPeering string `pulumi:"nextHopPeering"`
 	// URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel string `pulumi:"nextHopVpnTunnel"`
 	// The priority of this route. Priority is used to break ties in cases
@@ -52459,10 +55239,22 @@ type GetRouterStatusBestRoute struct {
 	Priority int `pulumi:"priority"`
 	// The ID of the project in which the resource
 	// belongs. If it is not provided, the provider project is used.
-	Project  string `pulumi:"project"`
-	SelfLink string `pulumi:"selfLink"`
+	Project string `pulumi:"project"`
+	// The status of the route, which can be one of the following values:
+	// - 'ACTIVE' for an active route
+	// - 'INACTIVE' for an inactive route
+	RouteStatus string `pulumi:"routeStatus"`
+	// The type of this route, which can be one of the following values:
+	// - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+	// - 'SUBNET' for a route from a subnet of the VPC
+	// - 'BGP' for a route learned from a BGP peer of this router
+	// - 'STATIC' for a static route
+	RouteType string `pulumi:"routeType"`
+	SelfLink  string `pulumi:"selfLink"`
 	// A list of instance tags to which this route applies.
 	Tags []string `pulumi:"tags"`
+	// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+	Warnings []GetRouterStatusBestRouteWarning `pulumi:"warnings"`
 }
 
 // GetRouterStatusBestRouteInput is an input type that accepts GetRouterStatusBestRouteArgs and GetRouterStatusBestRouteOutput values.
@@ -52477,6 +55269,9 @@ type GetRouterStatusBestRouteInput interface {
 }
 
 type GetRouterStatusBestRouteArgs struct {
+	AsPaths GetRouterStatusBestRouteAsPathArrayInput `pulumi:"asPaths"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringInput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property
 	// when you create the resource.
 	Description pulumi.StringInput `pulumi:"description"`
@@ -52496,6 +55291,8 @@ type GetRouterStatusBestRouteArgs struct {
 	// * 'global/gateways/default-internet-gateway'
 	// * The string 'default-internet-gateway'.
 	NextHopGateway pulumi.StringInput `pulumi:"nextHopGateway"`
+	// The hub network that should handle matching packets, which should conform to RFC1035.
+	NextHopHub pulumi.StringInput `pulumi:"nextHopHub"`
 	// The IP address or URL to a forwarding rule of type
 	// loadBalancingScheme=INTERNAL that should handle matching
 	// packets.
@@ -52532,6 +55329,8 @@ type GetRouterStatusBestRouteArgs struct {
 	NextHopNetwork pulumi.StringInput `pulumi:"nextHopNetwork"`
 	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
 	NextHopOrigin pulumi.StringInput `pulumi:"nextHopOrigin"`
+	// The network peering name that should handle matching packets, which should conform to RFC1035.
+	NextHopPeering pulumi.StringInput `pulumi:"nextHopPeering"`
 	// URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel pulumi.StringInput `pulumi:"nextHopVpnTunnel"`
 	// The priority of this route. Priority is used to break ties in cases
@@ -52544,10 +55343,22 @@ type GetRouterStatusBestRouteArgs struct {
 	Priority pulumi.IntInput `pulumi:"priority"`
 	// The ID of the project in which the resource
 	// belongs. If it is not provided, the provider project is used.
-	Project  pulumi.StringInput `pulumi:"project"`
-	SelfLink pulumi.StringInput `pulumi:"selfLink"`
+	Project pulumi.StringInput `pulumi:"project"`
+	// The status of the route, which can be one of the following values:
+	// - 'ACTIVE' for an active route
+	// - 'INACTIVE' for an inactive route
+	RouteStatus pulumi.StringInput `pulumi:"routeStatus"`
+	// The type of this route, which can be one of the following values:
+	// - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+	// - 'SUBNET' for a route from a subnet of the VPC
+	// - 'BGP' for a route learned from a BGP peer of this router
+	// - 'STATIC' for a static route
+	RouteType pulumi.StringInput `pulumi:"routeType"`
+	SelfLink  pulumi.StringInput `pulumi:"selfLink"`
 	// A list of instance tags to which this route applies.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+	Warnings GetRouterStatusBestRouteWarningArrayInput `pulumi:"warnings"`
 }
 
 func (GetRouterStatusBestRouteArgs) ElementType() reflect.Type {
@@ -52601,6 +55412,15 @@ func (o GetRouterStatusBestRouteOutput) ToGetRouterStatusBestRouteOutputWithCont
 	return o
 }
 
+func (o GetRouterStatusBestRouteOutput) AsPaths() GetRouterStatusBestRouteAsPathArrayOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) []GetRouterStatusBestRouteAsPath { return v.AsPaths }).(GetRouterStatusBestRouteAsPathArrayOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o GetRouterStatusBestRouteOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
 // An optional description of this resource. Provide this property
 // when you create the resource.
 func (o GetRouterStatusBestRouteOutput) Description() pulumi.StringOutput {
@@ -52633,6 +55453,11 @@ func (o GetRouterStatusBestRouteOutput) Network() pulumi.StringOutput {
 // * The string 'default-internet-gateway'.
 func (o GetRouterStatusBestRouteOutput) NextHopGateway() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopGateway }).(pulumi.StringOutput)
+}
+
+// The hub network that should handle matching packets, which should conform to RFC1035.
+func (o GetRouterStatusBestRouteOutput) NextHopHub() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopHub }).(pulumi.StringOutput)
 }
 
 // The IP address or URL to a forwarding rule of type
@@ -52695,6 +55520,11 @@ func (o GetRouterStatusBestRouteOutput) NextHopOrigin() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopOrigin }).(pulumi.StringOutput)
 }
 
+// The network peering name that should handle matching packets, which should conform to RFC1035.
+func (o GetRouterStatusBestRouteOutput) NextHopPeering() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopPeering }).(pulumi.StringOutput)
+}
+
 // URL to a VpnTunnel that should handle matching packets.
 func (o GetRouterStatusBestRouteOutput) NextHopVpnTunnel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopVpnTunnel }).(pulumi.StringOutput)
@@ -52717,6 +55547,22 @@ func (o GetRouterStatusBestRouteOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// The status of the route, which can be one of the following values:
+// - 'ACTIVE' for an active route
+// - 'INACTIVE' for an inactive route
+func (o GetRouterStatusBestRouteOutput) RouteStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.RouteStatus }).(pulumi.StringOutput)
+}
+
+// The type of this route, which can be one of the following values:
+// - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+// - 'SUBNET' for a route from a subnet of the VPC
+// - 'BGP' for a route learned from a BGP peer of this router
+// - 'STATIC' for a static route
+func (o GetRouterStatusBestRouteOutput) RouteType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.RouteType }).(pulumi.StringOutput)
+}
+
 func (o GetRouterStatusBestRouteOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.SelfLink }).(pulumi.StringOutput)
 }
@@ -52724,6 +55570,11 @@ func (o GetRouterStatusBestRouteOutput) SelfLink() pulumi.StringOutput {
 // A list of instance tags to which this route applies.
 func (o GetRouterStatusBestRouteOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoute) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+func (o GetRouterStatusBestRouteOutput) Warnings() GetRouterStatusBestRouteWarningArrayOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) []GetRouterStatusBestRouteWarning { return v.Warnings }).(GetRouterStatusBestRouteWarningArrayOutput)
 }
 
 type GetRouterStatusBestRouteArrayOutput struct{ *pulumi.OutputState }
@@ -52746,7 +55597,355 @@ func (o GetRouterStatusBestRouteArrayOutput) Index(i pulumi.IntInput) GetRouterS
 	}).(GetRouterStatusBestRouteOutput)
 }
 
+type GetRouterStatusBestRouteAsPath struct {
+	// The AS numbers of the AS Path.
+	AsLists []int `pulumi:"asLists"`
+	// The type of the AS Path, which can be one of the following values:
+	// - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+	// - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+	// - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+	// - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+	PathSegmentType string `pulumi:"pathSegmentType"`
+}
+
+// GetRouterStatusBestRouteAsPathInput is an input type that accepts GetRouterStatusBestRouteAsPathArgs and GetRouterStatusBestRouteAsPathOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRouteAsPathInput` via:
+//
+//	GetRouterStatusBestRouteAsPathArgs{...}
+type GetRouterStatusBestRouteAsPathInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRouteAsPathOutput() GetRouterStatusBestRouteAsPathOutput
+	ToGetRouterStatusBestRouteAsPathOutputWithContext(context.Context) GetRouterStatusBestRouteAsPathOutput
+}
+
+type GetRouterStatusBestRouteAsPathArgs struct {
+	// The AS numbers of the AS Path.
+	AsLists pulumi.IntArrayInput `pulumi:"asLists"`
+	// The type of the AS Path, which can be one of the following values:
+	// - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+	// - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+	// - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+	// - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+	PathSegmentType pulumi.StringInput `pulumi:"pathSegmentType"`
+}
+
+func (GetRouterStatusBestRouteAsPathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRouteAsPath)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRouteAsPathArgs) ToGetRouterStatusBestRouteAsPathOutput() GetRouterStatusBestRouteAsPathOutput {
+	return i.ToGetRouterStatusBestRouteAsPathOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRouteAsPathArgs) ToGetRouterStatusBestRouteAsPathOutputWithContext(ctx context.Context) GetRouterStatusBestRouteAsPathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRouteAsPathOutput)
+}
+
+// GetRouterStatusBestRouteAsPathArrayInput is an input type that accepts GetRouterStatusBestRouteAsPathArray and GetRouterStatusBestRouteAsPathArrayOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRouteAsPathArrayInput` via:
+//
+//	GetRouterStatusBestRouteAsPathArray{ GetRouterStatusBestRouteAsPathArgs{...} }
+type GetRouterStatusBestRouteAsPathArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRouteAsPathArrayOutput() GetRouterStatusBestRouteAsPathArrayOutput
+	ToGetRouterStatusBestRouteAsPathArrayOutputWithContext(context.Context) GetRouterStatusBestRouteAsPathArrayOutput
+}
+
+type GetRouterStatusBestRouteAsPathArray []GetRouterStatusBestRouteAsPathInput
+
+func (GetRouterStatusBestRouteAsPathArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRouteAsPath)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRouteAsPathArray) ToGetRouterStatusBestRouteAsPathArrayOutput() GetRouterStatusBestRouteAsPathArrayOutput {
+	return i.ToGetRouterStatusBestRouteAsPathArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRouteAsPathArray) ToGetRouterStatusBestRouteAsPathArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRouteAsPathArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRouteAsPathArrayOutput)
+}
+
+type GetRouterStatusBestRouteAsPathOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRouteAsPathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRouteAsPath)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRouteAsPathOutput) ToGetRouterStatusBestRouteAsPathOutput() GetRouterStatusBestRouteAsPathOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRouteAsPathOutput) ToGetRouterStatusBestRouteAsPathOutputWithContext(ctx context.Context) GetRouterStatusBestRouteAsPathOutput {
+	return o
+}
+
+// The AS numbers of the AS Path.
+func (o GetRouterStatusBestRouteAsPathOutput) AsLists() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRouteAsPath) []int { return v.AsLists }).(pulumi.IntArrayOutput)
+}
+
+// The type of the AS Path, which can be one of the following values:
+// - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+// - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+// - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+// - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+func (o GetRouterStatusBestRouteAsPathOutput) PathSegmentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRouteAsPath) string { return v.PathSegmentType }).(pulumi.StringOutput)
+}
+
+type GetRouterStatusBestRouteAsPathArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRouteAsPathArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRouteAsPath)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRouteAsPathArrayOutput) ToGetRouterStatusBestRouteAsPathArrayOutput() GetRouterStatusBestRouteAsPathArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRouteAsPathArrayOutput) ToGetRouterStatusBestRouteAsPathArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRouteAsPathArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRouteAsPathArrayOutput) Index(i pulumi.IntInput) GetRouterStatusBestRouteAsPathOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterStatusBestRouteAsPath {
+		return vs[0].([]GetRouterStatusBestRouteAsPath)[vs[1].(int)]
+	}).(GetRouterStatusBestRouteAsPathOutput)
+}
+
+type GetRouterStatusBestRouteWarning struct {
+	// A warning code, if applicable. For example, Compute Engine returns
+	// NO_RESULTS_ON_PAGE if there are no results in the response.
+	Code string `pulumi:"code"`
+	// Metadata about this warning in key: value format. For example:
+	// "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
+	Datas []GetRouterStatusBestRouteWarningData `pulumi:"datas"`
+	// A human-readable description of the warning code.
+	Message string `pulumi:"message"`
+}
+
+// GetRouterStatusBestRouteWarningInput is an input type that accepts GetRouterStatusBestRouteWarningArgs and GetRouterStatusBestRouteWarningOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRouteWarningInput` via:
+//
+//	GetRouterStatusBestRouteWarningArgs{...}
+type GetRouterStatusBestRouteWarningInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRouteWarningOutput() GetRouterStatusBestRouteWarningOutput
+	ToGetRouterStatusBestRouteWarningOutputWithContext(context.Context) GetRouterStatusBestRouteWarningOutput
+}
+
+type GetRouterStatusBestRouteWarningArgs struct {
+	// A warning code, if applicable. For example, Compute Engine returns
+	// NO_RESULTS_ON_PAGE if there are no results in the response.
+	Code pulumi.StringInput `pulumi:"code"`
+	// Metadata about this warning in key: value format. For example:
+	// "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
+	Datas GetRouterStatusBestRouteWarningDataArrayInput `pulumi:"datas"`
+	// A human-readable description of the warning code.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (GetRouterStatusBestRouteWarningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRouteWarning)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRouteWarningArgs) ToGetRouterStatusBestRouteWarningOutput() GetRouterStatusBestRouteWarningOutput {
+	return i.ToGetRouterStatusBestRouteWarningOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRouteWarningArgs) ToGetRouterStatusBestRouteWarningOutputWithContext(ctx context.Context) GetRouterStatusBestRouteWarningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRouteWarningOutput)
+}
+
+// GetRouterStatusBestRouteWarningArrayInput is an input type that accepts GetRouterStatusBestRouteWarningArray and GetRouterStatusBestRouteWarningArrayOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRouteWarningArrayInput` via:
+//
+//	GetRouterStatusBestRouteWarningArray{ GetRouterStatusBestRouteWarningArgs{...} }
+type GetRouterStatusBestRouteWarningArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRouteWarningArrayOutput() GetRouterStatusBestRouteWarningArrayOutput
+	ToGetRouterStatusBestRouteWarningArrayOutputWithContext(context.Context) GetRouterStatusBestRouteWarningArrayOutput
+}
+
+type GetRouterStatusBestRouteWarningArray []GetRouterStatusBestRouteWarningInput
+
+func (GetRouterStatusBestRouteWarningArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRouteWarning)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRouteWarningArray) ToGetRouterStatusBestRouteWarningArrayOutput() GetRouterStatusBestRouteWarningArrayOutput {
+	return i.ToGetRouterStatusBestRouteWarningArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRouteWarningArray) ToGetRouterStatusBestRouteWarningArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRouteWarningArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRouteWarningArrayOutput)
+}
+
+type GetRouterStatusBestRouteWarningOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRouteWarningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRouteWarning)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRouteWarningOutput) ToGetRouterStatusBestRouteWarningOutput() GetRouterStatusBestRouteWarningOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRouteWarningOutput) ToGetRouterStatusBestRouteWarningOutputWithContext(ctx context.Context) GetRouterStatusBestRouteWarningOutput {
+	return o
+}
+
+// A warning code, if applicable. For example, Compute Engine returns
+// NO_RESULTS_ON_PAGE if there are no results in the response.
+func (o GetRouterStatusBestRouteWarningOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRouteWarning) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Metadata about this warning in key: value format. For example:
+// "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
+func (o GetRouterStatusBestRouteWarningOutput) Datas() GetRouterStatusBestRouteWarningDataArrayOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRouteWarning) []GetRouterStatusBestRouteWarningData { return v.Datas }).(GetRouterStatusBestRouteWarningDataArrayOutput)
+}
+
+// A human-readable description of the warning code.
+func (o GetRouterStatusBestRouteWarningOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRouteWarning) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type GetRouterStatusBestRouteWarningArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRouteWarningArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRouteWarning)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRouteWarningArrayOutput) ToGetRouterStatusBestRouteWarningArrayOutput() GetRouterStatusBestRouteWarningArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRouteWarningArrayOutput) ToGetRouterStatusBestRouteWarningArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRouteWarningArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRouteWarningArrayOutput) Index(i pulumi.IntInput) GetRouterStatusBestRouteWarningOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterStatusBestRouteWarning {
+		return vs[0].([]GetRouterStatusBestRouteWarning)[vs[1].(int)]
+	}).(GetRouterStatusBestRouteWarningOutput)
+}
+
+type GetRouterStatusBestRouteWarningData struct {
+	// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	Key string `pulumi:"key"`
+	// A warning data value corresponding to the key.
+	Value string `pulumi:"value"`
+}
+
+// GetRouterStatusBestRouteWarningDataInput is an input type that accepts GetRouterStatusBestRouteWarningDataArgs and GetRouterStatusBestRouteWarningDataOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRouteWarningDataInput` via:
+//
+//	GetRouterStatusBestRouteWarningDataArgs{...}
+type GetRouterStatusBestRouteWarningDataInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRouteWarningDataOutput() GetRouterStatusBestRouteWarningDataOutput
+	ToGetRouterStatusBestRouteWarningDataOutputWithContext(context.Context) GetRouterStatusBestRouteWarningDataOutput
+}
+
+type GetRouterStatusBestRouteWarningDataArgs struct {
+	// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	Key pulumi.StringInput `pulumi:"key"`
+	// A warning data value corresponding to the key.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetRouterStatusBestRouteWarningDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRouteWarningData)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRouteWarningDataArgs) ToGetRouterStatusBestRouteWarningDataOutput() GetRouterStatusBestRouteWarningDataOutput {
+	return i.ToGetRouterStatusBestRouteWarningDataOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRouteWarningDataArgs) ToGetRouterStatusBestRouteWarningDataOutputWithContext(ctx context.Context) GetRouterStatusBestRouteWarningDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRouteWarningDataOutput)
+}
+
+// GetRouterStatusBestRouteWarningDataArrayInput is an input type that accepts GetRouterStatusBestRouteWarningDataArray and GetRouterStatusBestRouteWarningDataArrayOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRouteWarningDataArrayInput` via:
+//
+//	GetRouterStatusBestRouteWarningDataArray{ GetRouterStatusBestRouteWarningDataArgs{...} }
+type GetRouterStatusBestRouteWarningDataArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRouteWarningDataArrayOutput() GetRouterStatusBestRouteWarningDataArrayOutput
+	ToGetRouterStatusBestRouteWarningDataArrayOutputWithContext(context.Context) GetRouterStatusBestRouteWarningDataArrayOutput
+}
+
+type GetRouterStatusBestRouteWarningDataArray []GetRouterStatusBestRouteWarningDataInput
+
+func (GetRouterStatusBestRouteWarningDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRouteWarningData)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRouteWarningDataArray) ToGetRouterStatusBestRouteWarningDataArrayOutput() GetRouterStatusBestRouteWarningDataArrayOutput {
+	return i.ToGetRouterStatusBestRouteWarningDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRouteWarningDataArray) ToGetRouterStatusBestRouteWarningDataArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRouteWarningDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRouteWarningDataArrayOutput)
+}
+
+type GetRouterStatusBestRouteWarningDataOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRouteWarningDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRouteWarningData)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRouteWarningDataOutput) ToGetRouterStatusBestRouteWarningDataOutput() GetRouterStatusBestRouteWarningDataOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRouteWarningDataOutput) ToGetRouterStatusBestRouteWarningDataOutputWithContext(ctx context.Context) GetRouterStatusBestRouteWarningDataOutput {
+	return o
+}
+
+// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+func (o GetRouterStatusBestRouteWarningDataOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRouteWarningData) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// A warning data value corresponding to the key.
+func (o GetRouterStatusBestRouteWarningDataOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRouteWarningData) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetRouterStatusBestRouteWarningDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRouteWarningDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRouteWarningData)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRouteWarningDataArrayOutput) ToGetRouterStatusBestRouteWarningDataArrayOutput() GetRouterStatusBestRouteWarningDataArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRouteWarningDataArrayOutput) ToGetRouterStatusBestRouteWarningDataArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRouteWarningDataArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRouteWarningDataArrayOutput) Index(i pulumi.IntInput) GetRouterStatusBestRouteWarningDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterStatusBestRouteWarningData {
+		return vs[0].([]GetRouterStatusBestRouteWarningData)[vs[1].(int)]
+	}).(GetRouterStatusBestRouteWarningDataOutput)
+}
+
 type GetRouterStatusBestRoutesForRouter struct {
+	AsPaths []GetRouterStatusBestRoutesForRouterAsPath `pulumi:"asPaths"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property
 	// when you create the resource.
 	Description string `pulumi:"description"`
@@ -52766,6 +55965,8 @@ type GetRouterStatusBestRoutesForRouter struct {
 	// * 'global/gateways/default-internet-gateway'
 	// * The string 'default-internet-gateway'.
 	NextHopGateway string `pulumi:"nextHopGateway"`
+	// The hub network that should handle matching packets, which should conform to RFC1035.
+	NextHopHub string `pulumi:"nextHopHub"`
 	// The IP address or URL to a forwarding rule of type
 	// loadBalancingScheme=INTERNAL that should handle matching
 	// packets.
@@ -52802,6 +56003,8 @@ type GetRouterStatusBestRoutesForRouter struct {
 	NextHopNetwork string `pulumi:"nextHopNetwork"`
 	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
 	NextHopOrigin string `pulumi:"nextHopOrigin"`
+	// The network peering name that should handle matching packets, which should conform to RFC1035.
+	NextHopPeering string `pulumi:"nextHopPeering"`
 	// URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel string `pulumi:"nextHopVpnTunnel"`
 	// The priority of this route. Priority is used to break ties in cases
@@ -52814,10 +56017,22 @@ type GetRouterStatusBestRoutesForRouter struct {
 	Priority int `pulumi:"priority"`
 	// The ID of the project in which the resource
 	// belongs. If it is not provided, the provider project is used.
-	Project  string `pulumi:"project"`
-	SelfLink string `pulumi:"selfLink"`
+	Project string `pulumi:"project"`
+	// The status of the route, which can be one of the following values:
+	// - 'ACTIVE' for an active route
+	// - 'INACTIVE' for an inactive route
+	RouteStatus string `pulumi:"routeStatus"`
+	// The type of this route, which can be one of the following values:
+	// - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+	// - 'SUBNET' for a route from a subnet of the VPC
+	// - 'BGP' for a route learned from a BGP peer of this router
+	// - 'STATIC' for a static route
+	RouteType string `pulumi:"routeType"`
+	SelfLink  string `pulumi:"selfLink"`
 	// A list of instance tags to which this route applies.
 	Tags []string `pulumi:"tags"`
+	// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+	Warnings []GetRouterStatusBestRoutesForRouterWarning `pulumi:"warnings"`
 }
 
 // GetRouterStatusBestRoutesForRouterInput is an input type that accepts GetRouterStatusBestRoutesForRouterArgs and GetRouterStatusBestRoutesForRouterOutput values.
@@ -52832,6 +56047,9 @@ type GetRouterStatusBestRoutesForRouterInput interface {
 }
 
 type GetRouterStatusBestRoutesForRouterArgs struct {
+	AsPaths GetRouterStatusBestRoutesForRouterAsPathArrayInput `pulumi:"asPaths"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringInput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property
 	// when you create the resource.
 	Description pulumi.StringInput `pulumi:"description"`
@@ -52851,6 +56069,8 @@ type GetRouterStatusBestRoutesForRouterArgs struct {
 	// * 'global/gateways/default-internet-gateway'
 	// * The string 'default-internet-gateway'.
 	NextHopGateway pulumi.StringInput `pulumi:"nextHopGateway"`
+	// The hub network that should handle matching packets, which should conform to RFC1035.
+	NextHopHub pulumi.StringInput `pulumi:"nextHopHub"`
 	// The IP address or URL to a forwarding rule of type
 	// loadBalancingScheme=INTERNAL that should handle matching
 	// packets.
@@ -52887,6 +56107,8 @@ type GetRouterStatusBestRoutesForRouterArgs struct {
 	NextHopNetwork pulumi.StringInput `pulumi:"nextHopNetwork"`
 	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
 	NextHopOrigin pulumi.StringInput `pulumi:"nextHopOrigin"`
+	// The network peering name that should handle matching packets, which should conform to RFC1035.
+	NextHopPeering pulumi.StringInput `pulumi:"nextHopPeering"`
 	// URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel pulumi.StringInput `pulumi:"nextHopVpnTunnel"`
 	// The priority of this route. Priority is used to break ties in cases
@@ -52899,10 +56121,22 @@ type GetRouterStatusBestRoutesForRouterArgs struct {
 	Priority pulumi.IntInput `pulumi:"priority"`
 	// The ID of the project in which the resource
 	// belongs. If it is not provided, the provider project is used.
-	Project  pulumi.StringInput `pulumi:"project"`
-	SelfLink pulumi.StringInput `pulumi:"selfLink"`
+	Project pulumi.StringInput `pulumi:"project"`
+	// The status of the route, which can be one of the following values:
+	// - 'ACTIVE' for an active route
+	// - 'INACTIVE' for an inactive route
+	RouteStatus pulumi.StringInput `pulumi:"routeStatus"`
+	// The type of this route, which can be one of the following values:
+	// - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+	// - 'SUBNET' for a route from a subnet of the VPC
+	// - 'BGP' for a route learned from a BGP peer of this router
+	// - 'STATIC' for a static route
+	RouteType pulumi.StringInput `pulumi:"routeType"`
+	SelfLink  pulumi.StringInput `pulumi:"selfLink"`
 	// A list of instance tags to which this route applies.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+	Warnings GetRouterStatusBestRoutesForRouterWarningArrayInput `pulumi:"warnings"`
 }
 
 func (GetRouterStatusBestRoutesForRouterArgs) ElementType() reflect.Type {
@@ -52956,6 +56190,17 @@ func (o GetRouterStatusBestRoutesForRouterOutput) ToGetRouterStatusBestRoutesFor
 	return o
 }
 
+func (o GetRouterStatusBestRoutesForRouterOutput) AsPaths() GetRouterStatusBestRoutesForRouterAsPathArrayOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) []GetRouterStatusBestRoutesForRouterAsPath {
+		return v.AsPaths
+	}).(GetRouterStatusBestRoutesForRouterAsPathArrayOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o GetRouterStatusBestRoutesForRouterOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
 // An optional description of this resource. Provide this property
 // when you create the resource.
 func (o GetRouterStatusBestRoutesForRouterOutput) Description() pulumi.StringOutput {
@@ -52988,6 +56233,11 @@ func (o GetRouterStatusBestRoutesForRouterOutput) Network() pulumi.StringOutput 
 // * The string 'default-internet-gateway'.
 func (o GetRouterStatusBestRoutesForRouterOutput) NextHopGateway() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopGateway }).(pulumi.StringOutput)
+}
+
+// The hub network that should handle matching packets, which should conform to RFC1035.
+func (o GetRouterStatusBestRoutesForRouterOutput) NextHopHub() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopHub }).(pulumi.StringOutput)
 }
 
 // The IP address or URL to a forwarding rule of type
@@ -53050,6 +56300,11 @@ func (o GetRouterStatusBestRoutesForRouterOutput) NextHopOrigin() pulumi.StringO
 	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopOrigin }).(pulumi.StringOutput)
 }
 
+// The network peering name that should handle matching packets, which should conform to RFC1035.
+func (o GetRouterStatusBestRoutesForRouterOutput) NextHopPeering() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopPeering }).(pulumi.StringOutput)
+}
+
 // URL to a VpnTunnel that should handle matching packets.
 func (o GetRouterStatusBestRoutesForRouterOutput) NextHopVpnTunnel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopVpnTunnel }).(pulumi.StringOutput)
@@ -53072,6 +56327,22 @@ func (o GetRouterStatusBestRoutesForRouterOutput) Project() pulumi.StringOutput 
 	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// The status of the route, which can be one of the following values:
+// - 'ACTIVE' for an active route
+// - 'INACTIVE' for an inactive route
+func (o GetRouterStatusBestRoutesForRouterOutput) RouteStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.RouteStatus }).(pulumi.StringOutput)
+}
+
+// The type of this route, which can be one of the following values:
+// - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+// - 'SUBNET' for a route from a subnet of the VPC
+// - 'BGP' for a route learned from a BGP peer of this router
+// - 'STATIC' for a static route
+func (o GetRouterStatusBestRoutesForRouterOutput) RouteType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.RouteType }).(pulumi.StringOutput)
+}
+
 func (o GetRouterStatusBestRoutesForRouterOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.SelfLink }).(pulumi.StringOutput)
 }
@@ -53079,6 +56350,13 @@ func (o GetRouterStatusBestRoutesForRouterOutput) SelfLink() pulumi.StringOutput
 // A list of instance tags to which this route applies.
 func (o GetRouterStatusBestRoutesForRouterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+func (o GetRouterStatusBestRoutesForRouterOutput) Warnings() GetRouterStatusBestRoutesForRouterWarningArrayOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) []GetRouterStatusBestRoutesForRouterWarning {
+		return v.Warnings
+	}).(GetRouterStatusBestRoutesForRouterWarningArrayOutput)
 }
 
 type GetRouterStatusBestRoutesForRouterArrayOutput struct{ *pulumi.OutputState }
@@ -53099,6 +56377,353 @@ func (o GetRouterStatusBestRoutesForRouterArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterStatusBestRoutesForRouter {
 		return vs[0].([]GetRouterStatusBestRoutesForRouter)[vs[1].(int)]
 	}).(GetRouterStatusBestRoutesForRouterOutput)
+}
+
+type GetRouterStatusBestRoutesForRouterAsPath struct {
+	// The AS numbers of the AS Path.
+	AsLists []int `pulumi:"asLists"`
+	// The type of the AS Path, which can be one of the following values:
+	// - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+	// - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+	// - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+	// - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+	PathSegmentType string `pulumi:"pathSegmentType"`
+}
+
+// GetRouterStatusBestRoutesForRouterAsPathInput is an input type that accepts GetRouterStatusBestRoutesForRouterAsPathArgs and GetRouterStatusBestRoutesForRouterAsPathOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRoutesForRouterAsPathInput` via:
+//
+//	GetRouterStatusBestRoutesForRouterAsPathArgs{...}
+type GetRouterStatusBestRoutesForRouterAsPathInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRoutesForRouterAsPathOutput() GetRouterStatusBestRoutesForRouterAsPathOutput
+	ToGetRouterStatusBestRoutesForRouterAsPathOutputWithContext(context.Context) GetRouterStatusBestRoutesForRouterAsPathOutput
+}
+
+type GetRouterStatusBestRoutesForRouterAsPathArgs struct {
+	// The AS numbers of the AS Path.
+	AsLists pulumi.IntArrayInput `pulumi:"asLists"`
+	// The type of the AS Path, which can be one of the following values:
+	// - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+	// - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+	// - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+	// - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+	PathSegmentType pulumi.StringInput `pulumi:"pathSegmentType"`
+}
+
+func (GetRouterStatusBestRoutesForRouterAsPathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRoutesForRouterAsPath)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRoutesForRouterAsPathArgs) ToGetRouterStatusBestRoutesForRouterAsPathOutput() GetRouterStatusBestRoutesForRouterAsPathOutput {
+	return i.ToGetRouterStatusBestRoutesForRouterAsPathOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRoutesForRouterAsPathArgs) ToGetRouterStatusBestRoutesForRouterAsPathOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterAsPathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRoutesForRouterAsPathOutput)
+}
+
+// GetRouterStatusBestRoutesForRouterAsPathArrayInput is an input type that accepts GetRouterStatusBestRoutesForRouterAsPathArray and GetRouterStatusBestRoutesForRouterAsPathArrayOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRoutesForRouterAsPathArrayInput` via:
+//
+//	GetRouterStatusBestRoutesForRouterAsPathArray{ GetRouterStatusBestRoutesForRouterAsPathArgs{...} }
+type GetRouterStatusBestRoutesForRouterAsPathArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRoutesForRouterAsPathArrayOutput() GetRouterStatusBestRoutesForRouterAsPathArrayOutput
+	ToGetRouterStatusBestRoutesForRouterAsPathArrayOutputWithContext(context.Context) GetRouterStatusBestRoutesForRouterAsPathArrayOutput
+}
+
+type GetRouterStatusBestRoutesForRouterAsPathArray []GetRouterStatusBestRoutesForRouterAsPathInput
+
+func (GetRouterStatusBestRoutesForRouterAsPathArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRoutesForRouterAsPath)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRoutesForRouterAsPathArray) ToGetRouterStatusBestRoutesForRouterAsPathArrayOutput() GetRouterStatusBestRoutesForRouterAsPathArrayOutput {
+	return i.ToGetRouterStatusBestRoutesForRouterAsPathArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRoutesForRouterAsPathArray) ToGetRouterStatusBestRoutesForRouterAsPathArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterAsPathArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRoutesForRouterAsPathArrayOutput)
+}
+
+type GetRouterStatusBestRoutesForRouterAsPathOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRoutesForRouterAsPathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRoutesForRouterAsPath)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRoutesForRouterAsPathOutput) ToGetRouterStatusBestRoutesForRouterAsPathOutput() GetRouterStatusBestRoutesForRouterAsPathOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterAsPathOutput) ToGetRouterStatusBestRoutesForRouterAsPathOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterAsPathOutput {
+	return o
+}
+
+// The AS numbers of the AS Path.
+func (o GetRouterStatusBestRoutesForRouterAsPathOutput) AsLists() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouterAsPath) []int { return v.AsLists }).(pulumi.IntArrayOutput)
+}
+
+// The type of the AS Path, which can be one of the following values:
+// - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+// - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+// - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+// - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+func (o GetRouterStatusBestRoutesForRouterAsPathOutput) PathSegmentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouterAsPath) string { return v.PathSegmentType }).(pulumi.StringOutput)
+}
+
+type GetRouterStatusBestRoutesForRouterAsPathArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRoutesForRouterAsPathArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRoutesForRouterAsPath)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRoutesForRouterAsPathArrayOutput) ToGetRouterStatusBestRoutesForRouterAsPathArrayOutput() GetRouterStatusBestRoutesForRouterAsPathArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterAsPathArrayOutput) ToGetRouterStatusBestRoutesForRouterAsPathArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterAsPathArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterAsPathArrayOutput) Index(i pulumi.IntInput) GetRouterStatusBestRoutesForRouterAsPathOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterStatusBestRoutesForRouterAsPath {
+		return vs[0].([]GetRouterStatusBestRoutesForRouterAsPath)[vs[1].(int)]
+	}).(GetRouterStatusBestRoutesForRouterAsPathOutput)
+}
+
+type GetRouterStatusBestRoutesForRouterWarning struct {
+	// A warning code, if applicable. For example, Compute Engine returns
+	// NO_RESULTS_ON_PAGE if there are no results in the response.
+	Code string `pulumi:"code"`
+	// Metadata about this warning in key: value format. For example:
+	// "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
+	Datas []GetRouterStatusBestRoutesForRouterWarningData `pulumi:"datas"`
+	// A human-readable description of the warning code.
+	Message string `pulumi:"message"`
+}
+
+// GetRouterStatusBestRoutesForRouterWarningInput is an input type that accepts GetRouterStatusBestRoutesForRouterWarningArgs and GetRouterStatusBestRoutesForRouterWarningOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRoutesForRouterWarningInput` via:
+//
+//	GetRouterStatusBestRoutesForRouterWarningArgs{...}
+type GetRouterStatusBestRoutesForRouterWarningInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRoutesForRouterWarningOutput() GetRouterStatusBestRoutesForRouterWarningOutput
+	ToGetRouterStatusBestRoutesForRouterWarningOutputWithContext(context.Context) GetRouterStatusBestRoutesForRouterWarningOutput
+}
+
+type GetRouterStatusBestRoutesForRouterWarningArgs struct {
+	// A warning code, if applicable. For example, Compute Engine returns
+	// NO_RESULTS_ON_PAGE if there are no results in the response.
+	Code pulumi.StringInput `pulumi:"code"`
+	// Metadata about this warning in key: value format. For example:
+	// "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
+	Datas GetRouterStatusBestRoutesForRouterWarningDataArrayInput `pulumi:"datas"`
+	// A human-readable description of the warning code.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (GetRouterStatusBestRoutesForRouterWarningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRoutesForRouterWarning)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRoutesForRouterWarningArgs) ToGetRouterStatusBestRoutesForRouterWarningOutput() GetRouterStatusBestRoutesForRouterWarningOutput {
+	return i.ToGetRouterStatusBestRoutesForRouterWarningOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRoutesForRouterWarningArgs) ToGetRouterStatusBestRoutesForRouterWarningOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterWarningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRoutesForRouterWarningOutput)
+}
+
+// GetRouterStatusBestRoutesForRouterWarningArrayInput is an input type that accepts GetRouterStatusBestRoutesForRouterWarningArray and GetRouterStatusBestRoutesForRouterWarningArrayOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRoutesForRouterWarningArrayInput` via:
+//
+//	GetRouterStatusBestRoutesForRouterWarningArray{ GetRouterStatusBestRoutesForRouterWarningArgs{...} }
+type GetRouterStatusBestRoutesForRouterWarningArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRoutesForRouterWarningArrayOutput() GetRouterStatusBestRoutesForRouterWarningArrayOutput
+	ToGetRouterStatusBestRoutesForRouterWarningArrayOutputWithContext(context.Context) GetRouterStatusBestRoutesForRouterWarningArrayOutput
+}
+
+type GetRouterStatusBestRoutesForRouterWarningArray []GetRouterStatusBestRoutesForRouterWarningInput
+
+func (GetRouterStatusBestRoutesForRouterWarningArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRoutesForRouterWarning)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRoutesForRouterWarningArray) ToGetRouterStatusBestRoutesForRouterWarningArrayOutput() GetRouterStatusBestRoutesForRouterWarningArrayOutput {
+	return i.ToGetRouterStatusBestRoutesForRouterWarningArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRoutesForRouterWarningArray) ToGetRouterStatusBestRoutesForRouterWarningArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterWarningArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRoutesForRouterWarningArrayOutput)
+}
+
+type GetRouterStatusBestRoutesForRouterWarningOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRoutesForRouterWarningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRoutesForRouterWarning)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRoutesForRouterWarningOutput) ToGetRouterStatusBestRoutesForRouterWarningOutput() GetRouterStatusBestRoutesForRouterWarningOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterWarningOutput) ToGetRouterStatusBestRoutesForRouterWarningOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterWarningOutput {
+	return o
+}
+
+// A warning code, if applicable. For example, Compute Engine returns
+// NO_RESULTS_ON_PAGE if there are no results in the response.
+func (o GetRouterStatusBestRoutesForRouterWarningOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouterWarning) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Metadata about this warning in key: value format. For example:
+// "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
+func (o GetRouterStatusBestRoutesForRouterWarningOutput) Datas() GetRouterStatusBestRoutesForRouterWarningDataArrayOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouterWarning) []GetRouterStatusBestRoutesForRouterWarningData {
+		return v.Datas
+	}).(GetRouterStatusBestRoutesForRouterWarningDataArrayOutput)
+}
+
+// A human-readable description of the warning code.
+func (o GetRouterStatusBestRoutesForRouterWarningOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouterWarning) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type GetRouterStatusBestRoutesForRouterWarningArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRoutesForRouterWarningArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRoutesForRouterWarning)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRoutesForRouterWarningArrayOutput) ToGetRouterStatusBestRoutesForRouterWarningArrayOutput() GetRouterStatusBestRoutesForRouterWarningArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterWarningArrayOutput) ToGetRouterStatusBestRoutesForRouterWarningArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterWarningArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterWarningArrayOutput) Index(i pulumi.IntInput) GetRouterStatusBestRoutesForRouterWarningOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterStatusBestRoutesForRouterWarning {
+		return vs[0].([]GetRouterStatusBestRoutesForRouterWarning)[vs[1].(int)]
+	}).(GetRouterStatusBestRoutesForRouterWarningOutput)
+}
+
+type GetRouterStatusBestRoutesForRouterWarningData struct {
+	// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	Key string `pulumi:"key"`
+	// A warning data value corresponding to the key.
+	Value string `pulumi:"value"`
+}
+
+// GetRouterStatusBestRoutesForRouterWarningDataInput is an input type that accepts GetRouterStatusBestRoutesForRouterWarningDataArgs and GetRouterStatusBestRoutesForRouterWarningDataOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRoutesForRouterWarningDataInput` via:
+//
+//	GetRouterStatusBestRoutesForRouterWarningDataArgs{...}
+type GetRouterStatusBestRoutesForRouterWarningDataInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRoutesForRouterWarningDataOutput() GetRouterStatusBestRoutesForRouterWarningDataOutput
+	ToGetRouterStatusBestRoutesForRouterWarningDataOutputWithContext(context.Context) GetRouterStatusBestRoutesForRouterWarningDataOutput
+}
+
+type GetRouterStatusBestRoutesForRouterWarningDataArgs struct {
+	// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	Key pulumi.StringInput `pulumi:"key"`
+	// A warning data value corresponding to the key.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetRouterStatusBestRoutesForRouterWarningDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRoutesForRouterWarningData)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRoutesForRouterWarningDataArgs) ToGetRouterStatusBestRoutesForRouterWarningDataOutput() GetRouterStatusBestRoutesForRouterWarningDataOutput {
+	return i.ToGetRouterStatusBestRoutesForRouterWarningDataOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRoutesForRouterWarningDataArgs) ToGetRouterStatusBestRoutesForRouterWarningDataOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterWarningDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRoutesForRouterWarningDataOutput)
+}
+
+// GetRouterStatusBestRoutesForRouterWarningDataArrayInput is an input type that accepts GetRouterStatusBestRoutesForRouterWarningDataArray and GetRouterStatusBestRoutesForRouterWarningDataArrayOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRoutesForRouterWarningDataArrayInput` via:
+//
+//	GetRouterStatusBestRoutesForRouterWarningDataArray{ GetRouterStatusBestRoutesForRouterWarningDataArgs{...} }
+type GetRouterStatusBestRoutesForRouterWarningDataArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRoutesForRouterWarningDataArrayOutput() GetRouterStatusBestRoutesForRouterWarningDataArrayOutput
+	ToGetRouterStatusBestRoutesForRouterWarningDataArrayOutputWithContext(context.Context) GetRouterStatusBestRoutesForRouterWarningDataArrayOutput
+}
+
+type GetRouterStatusBestRoutesForRouterWarningDataArray []GetRouterStatusBestRoutesForRouterWarningDataInput
+
+func (GetRouterStatusBestRoutesForRouterWarningDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRoutesForRouterWarningData)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRoutesForRouterWarningDataArray) ToGetRouterStatusBestRoutesForRouterWarningDataArrayOutput() GetRouterStatusBestRoutesForRouterWarningDataArrayOutput {
+	return i.ToGetRouterStatusBestRoutesForRouterWarningDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRoutesForRouterWarningDataArray) ToGetRouterStatusBestRoutesForRouterWarningDataArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterWarningDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRoutesForRouterWarningDataArrayOutput)
+}
+
+type GetRouterStatusBestRoutesForRouterWarningDataOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRoutesForRouterWarningDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRoutesForRouterWarningData)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRoutesForRouterWarningDataOutput) ToGetRouterStatusBestRoutesForRouterWarningDataOutput() GetRouterStatusBestRoutesForRouterWarningDataOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterWarningDataOutput) ToGetRouterStatusBestRoutesForRouterWarningDataOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterWarningDataOutput {
+	return o
+}
+
+// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+func (o GetRouterStatusBestRoutesForRouterWarningDataOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouterWarningData) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// A warning data value corresponding to the key.
+func (o GetRouterStatusBestRoutesForRouterWarningDataOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouterWarningData) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetRouterStatusBestRoutesForRouterWarningDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRoutesForRouterWarningDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRoutesForRouterWarningData)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRoutesForRouterWarningDataArrayOutput) ToGetRouterStatusBestRoutesForRouterWarningDataArrayOutput() GetRouterStatusBestRoutesForRouterWarningDataArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterWarningDataArrayOutput) ToGetRouterStatusBestRoutesForRouterWarningDataArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterWarningDataArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterWarningDataArrayOutput) Index(i pulumi.IntInput) GetRouterStatusBestRoutesForRouterWarningDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterStatusBestRoutesForRouterWarningData {
+		return vs[0].([]GetRouterStatusBestRoutesForRouterWarningData)[vs[1].(int)]
+	}).(GetRouterStatusBestRoutesForRouterWarningDataOutput)
 }
 
 type GetSecurityPolicyAdaptiveProtectionConfig struct {
@@ -56849,6 +60474,18 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteWarningInput)(nil)).Elem(), RouteWarningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteWarningArrayInput)(nil)).Elem(), RouteWarningArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteWarningDataInput)(nil)).Elem(), RouteWarningDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteWarningDataArrayInput)(nil)).Elem(), RouteWarningDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpInput)(nil)).Elem(), RouterBgpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPtrInput)(nil)).Elem(), RouterBgpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpAdvertisedIpRangeInput)(nil)).Elem(), RouterBgpAdvertisedIpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpAdvertisedIpRangeArrayInput)(nil)).Elem(), RouterBgpAdvertisedIpRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatLogConfigInput)(nil)).Elem(), RouterNatLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatLogConfigPtrInput)(nil)).Elem(), RouterNatLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatRuleInput)(nil)).Elem(), RouterNatRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatRuleArrayInput)(nil)).Elem(), RouterNatRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatRuleActionInput)(nil)).Elem(), RouterNatRuleActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatRuleActionPtrInput)(nil)).Elem(), RouterNatRuleActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatSubnetworkInput)(nil)).Elem(), RouterNatSubnetworkArgs{})
@@ -56869,8 +60506,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterRoutePolicyTermMatchPtrInput)(nil)).Elem(), RouterRoutePolicyTermMatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterStatusBestRouteInput)(nil)).Elem(), RouterStatusBestRouteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterStatusBestRouteArrayInput)(nil)).Elem(), RouterStatusBestRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterStatusBestRouteAsPathInput)(nil)).Elem(), RouterStatusBestRouteAsPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterStatusBestRouteAsPathArrayInput)(nil)).Elem(), RouterStatusBestRouteAsPathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterStatusBestRouteWarningInput)(nil)).Elem(), RouterStatusBestRouteWarningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterStatusBestRouteWarningArrayInput)(nil)).Elem(), RouterStatusBestRouteWarningArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterStatusBestRouteWarningDataInput)(nil)).Elem(), RouterStatusBestRouteWarningDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterStatusBestRouteWarningDataArrayInput)(nil)).Elem(), RouterStatusBestRouteWarningDataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterStatusBestRoutesForRouterInput)(nil)).Elem(), RouterStatusBestRoutesForRouterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterStatusBestRoutesForRouterArrayInput)(nil)).Elem(), RouterStatusBestRoutesForRouterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterStatusBestRoutesForRouterAsPathInput)(nil)).Elem(), RouterStatusBestRoutesForRouterAsPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterStatusBestRoutesForRouterAsPathArrayInput)(nil)).Elem(), RouterStatusBestRoutesForRouterAsPathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterStatusBestRoutesForRouterWarningInput)(nil)).Elem(), RouterStatusBestRoutesForRouterWarningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterStatusBestRoutesForRouterWarningArrayInput)(nil)).Elem(), RouterStatusBestRoutesForRouterWarningArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterStatusBestRoutesForRouterWarningDataInput)(nil)).Elem(), RouterStatusBestRoutesForRouterWarningDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterStatusBestRoutesForRouterWarningDataArrayInput)(nil)).Elem(), RouterStatusBestRoutesForRouterWarningDataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigPtrInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs{})
@@ -56971,6 +60620,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrInput)(nil)).Elem(), URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayInput)(nil)).Elem(), URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrInput)(nil)).Elem(), URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionMaxStreamDurationInput)(nil)).Elem(), URLMapDefaultRouteActionMaxStreamDurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionMaxStreamDurationPtrInput)(nil)).Elem(), URLMapDefaultRouteActionMaxStreamDurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionRequestMirrorPolicyInput)(nil)).Elem(), URLMapDefaultRouteActionRequestMirrorPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionRequestMirrorPolicyPtrInput)(nil)).Elem(), URLMapDefaultRouteActionRequestMirrorPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionRetryPolicyInput)(nil)).Elem(), URLMapDefaultRouteActionRetryPolicyArgs{})
@@ -57017,6 +60668,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayPtrInput)(nil)).Elem(), URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayInput)(nil)).Elem(), URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrInput)(nil)).Elem(), URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionMaxStreamDurationInput)(nil)).Elem(), URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrInput)(nil)).Elem(), URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyInput)(nil)).Elem(), URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyPtrInput)(nil)).Elem(), URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionRetryPolicyInput)(nil)).Elem(), URLMapPathMatcherDefaultRouteActionRetryPolicyArgs{})
@@ -57061,6 +60714,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionMaxStreamDurationInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionRetryPolicyInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs{})
@@ -57113,6 +60768,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionRetryPolicyInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs{})
@@ -57195,6 +60852,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskDiskEncryptionKeyArrayInput)(nil)).Elem(), GetDiskDiskEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskGuestOsFeatureInput)(nil)).Elem(), GetDiskGuestOsFeatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskGuestOsFeatureArrayInput)(nil)).Elem(), GetDiskGuestOsFeatureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskParamInput)(nil)).Elem(), GetDiskParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskParamArrayInput)(nil)).Elem(), GetDiskParamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskSourceImageEncryptionKeyInput)(nil)).Elem(), GetDiskSourceImageEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskSourceImageEncryptionKeyArrayInput)(nil)).Elem(), GetDiskSourceImageEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskSourceSnapshotEncryptionKeyInput)(nil)).Elem(), GetDiskSourceSnapshotEncryptionKeyArgs{})
@@ -57525,8 +61184,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterNatSubnetworkArrayInput)(nil)).Elem(), GetRouterNatSubnetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteInput)(nil)).Elem(), GetRouterStatusBestRouteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteArrayInput)(nil)).Elem(), GetRouterStatusBestRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteAsPathInput)(nil)).Elem(), GetRouterStatusBestRouteAsPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteAsPathArrayInput)(nil)).Elem(), GetRouterStatusBestRouteAsPathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteWarningInput)(nil)).Elem(), GetRouterStatusBestRouteWarningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteWarningArrayInput)(nil)).Elem(), GetRouterStatusBestRouteWarningArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteWarningDataInput)(nil)).Elem(), GetRouterStatusBestRouteWarningDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteWarningDataArrayInput)(nil)).Elem(), GetRouterStatusBestRouteWarningDataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterArrayInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterAsPathInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterAsPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterAsPathArrayInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterAsPathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterWarningInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterWarningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterWarningArrayInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterWarningArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterWarningDataInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterWarningDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterWarningDataArrayInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterWarningDataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigArrayInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs{})
@@ -57591,6 +61262,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(RouteWarningOutput{})
+	pulumi.RegisterOutputType(RouteWarningArrayOutput{})
+	pulumi.RegisterOutputType(RouteWarningDataOutput{})
+	pulumi.RegisterOutputType(RouteWarningDataArrayOutput{})
+	pulumi.RegisterOutputType(RouterBgpOutput{})
+	pulumi.RegisterOutputType(RouterBgpPtrOutput{})
+	pulumi.RegisterOutputType(RouterBgpAdvertisedIpRangeOutput{})
+	pulumi.RegisterOutputType(RouterBgpAdvertisedIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(RouterNatLogConfigOutput{})
+	pulumi.RegisterOutputType(RouterNatLogConfigPtrOutput{})
+	pulumi.RegisterOutputType(RouterNatRuleOutput{})
+	pulumi.RegisterOutputType(RouterNatRuleArrayOutput{})
 	pulumi.RegisterOutputType(RouterNatRuleActionOutput{})
 	pulumi.RegisterOutputType(RouterNatRuleActionPtrOutput{})
 	pulumi.RegisterOutputType(RouterNatSubnetworkOutput{})
@@ -57611,8 +61294,20 @@ func init() {
 	pulumi.RegisterOutputType(RouterRoutePolicyTermMatchPtrOutput{})
 	pulumi.RegisterOutputType(RouterStatusBestRouteOutput{})
 	pulumi.RegisterOutputType(RouterStatusBestRouteArrayOutput{})
+	pulumi.RegisterOutputType(RouterStatusBestRouteAsPathOutput{})
+	pulumi.RegisterOutputType(RouterStatusBestRouteAsPathArrayOutput{})
+	pulumi.RegisterOutputType(RouterStatusBestRouteWarningOutput{})
+	pulumi.RegisterOutputType(RouterStatusBestRouteWarningArrayOutput{})
+	pulumi.RegisterOutputType(RouterStatusBestRouteWarningDataOutput{})
+	pulumi.RegisterOutputType(RouterStatusBestRouteWarningDataArrayOutput{})
 	pulumi.RegisterOutputType(RouterStatusBestRoutesForRouterOutput{})
 	pulumi.RegisterOutputType(RouterStatusBestRoutesForRouterArrayOutput{})
+	pulumi.RegisterOutputType(RouterStatusBestRoutesForRouterAsPathOutput{})
+	pulumi.RegisterOutputType(RouterStatusBestRoutesForRouterAsPathArrayOutput{})
+	pulumi.RegisterOutputType(RouterStatusBestRoutesForRouterWarningOutput{})
+	pulumi.RegisterOutputType(RouterStatusBestRoutesForRouterWarningArrayOutput{})
+	pulumi.RegisterOutputType(RouterStatusBestRoutesForRouterWarningDataOutput{})
+	pulumi.RegisterOutputType(RouterStatusBestRoutesForRouterWarningDataArrayOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput{})
@@ -57713,6 +61408,8 @@ func init() {
 	pulumi.RegisterOutputType(URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput{})
 	pulumi.RegisterOutputType(URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutput{})
 	pulumi.RegisterOutputType(URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionMaxStreamDurationOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionMaxStreamDurationPtrOutput{})
 	pulumi.RegisterOutputType(URLMapDefaultRouteActionRequestMirrorPolicyOutput{})
 	pulumi.RegisterOutputType(URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput{})
 	pulumi.RegisterOutputType(URLMapDefaultRouteActionRetryPolicyOutput{})
@@ -57759,6 +61456,8 @@ func init() {
 	pulumi.RegisterOutputType(URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherDefaultRouteActionMaxStreamDurationOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherDefaultRouteActionRetryPolicyOutput{})
@@ -57803,6 +61502,8 @@ func init() {
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionRetryPolicyOutput{})
@@ -57855,6 +61556,8 @@ func init() {
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput{})
@@ -57937,6 +61640,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDiskDiskEncryptionKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetDiskGuestOsFeatureOutput{})
 	pulumi.RegisterOutputType(GetDiskGuestOsFeatureArrayOutput{})
+	pulumi.RegisterOutputType(GetDiskParamOutput{})
+	pulumi.RegisterOutputType(GetDiskParamArrayOutput{})
 	pulumi.RegisterOutputType(GetDiskSourceImageEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(GetDiskSourceImageEncryptionKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetDiskSourceSnapshotEncryptionKeyOutput{})
@@ -58267,8 +61972,20 @@ func init() {
 	pulumi.RegisterOutputType(GetRouterNatSubnetworkArrayOutput{})
 	pulumi.RegisterOutputType(GetRouterStatusBestRouteOutput{})
 	pulumi.RegisterOutputType(GetRouterStatusBestRouteArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRouteAsPathOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRouteAsPathArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRouteWarningOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRouteWarningArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRouteWarningDataOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRouteWarningDataArrayOutput{})
 	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterOutput{})
 	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterAsPathOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterAsPathArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterWarningOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterWarningArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterWarningDataOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterWarningDataArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigOutput{})
 	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput{})

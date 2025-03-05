@@ -17797,6 +17797,15 @@ export namespace compute {
         title: pulumi.Input<string>;
     }
 
+    export interface DiskParams {
+        /**
+         * Resource manager tags to be bound to the disk. Tag keys and values have the
+         * same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+         * and values are in the format tagValues/456.
+         */
+        resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
     export interface DiskSourceImageEncryptionKey {
         /**
          * The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
@@ -21267,6 +21276,30 @@ export namespace compute {
          * - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
          */
         enableVtpm?: pulumi.Input<boolean>;
+    }
+
+    export interface InstantSnapshotIamBindingCondition {
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
+    }
+
+    export interface InstantSnapshotIamMemberCondition {
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
     }
 
     export interface InterconnectAttachmentPrivateInterconnectInfo {
@@ -28143,6 +28176,57 @@ export namespace compute {
         storageLocations?: pulumi.Input<string>;
     }
 
+    export interface RouteAsPath {
+        /**
+         * (Output)
+         * The AS numbers of the AS Path.
+         */
+        asLists?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * (Output)
+         * The type of the AS Path, which can be one of the following values:
+         * - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+         * - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+         * - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+         * - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+         */
+        pathSegmentType?: pulumi.Input<string>;
+    }
+
+    export interface RouteWarning {
+        /**
+         * (Output)
+         * A warning code, if applicable. For example, Compute Engine returns
+         * NO_RESULTS_ON_PAGE if there are no results in the response.
+         */
+        code?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Metadata about this warning in key: value format. For example:
+         * "data":   {  "key": "scope",  "value": "zones/us-east1-d"  }
+         * Structure is [documented below.
+         */
+        datas?: pulumi.Input<pulumi.Input<inputs.compute.RouteWarningData>[]>;
+        /**
+         * (Output)
+         * A human-readable description of the warning code.
+         */
+        message?: pulumi.Input<string>;
+    }
+
+    export interface RouteWarningData {
+        /**
+         * (Output)
+         * A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * A warning data value corresponding to the key.
+         */
+        value?: pulumi.Input<string>;
+    }
+
     export interface RouterBgp {
         /**
          * User-specified flag to indicate which mode to use for advertisement.
@@ -29250,6 +29334,15 @@ export namespace compute {
          */
         faultInjectionPolicy?: pulumi.Input<inputs.compute.URLMapDefaultRouteActionFaultInjectionPolicy>;
         /**
+         * Specifies the maximum duration (timeout) for streams on the selected route.
+         * Unlike the `Timeout` field where the timeout duration starts from the time the request
+         * has been fully processed (known as end-of-stream), the duration in this field
+         * is computed from the beginning of the stream until the response has been processed,
+         * including all retries. A stream that does not complete in this duration is closed.
+         * Structure is documented below.
+         */
+        maxStreamDuration?: pulumi.Input<inputs.compute.URLMapDefaultRouteActionMaxStreamDuration>;
+        /**
          * Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
          * Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
          * the host / authority header is suffixed with -shadow.
@@ -29376,6 +29469,19 @@ export namespace compute {
          * Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
          */
         seconds?: pulumi.Input<string>;
+    }
+
+    export interface URLMapDefaultRouteActionMaxStreamDuration {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+         * with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+         * Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+         */
+        seconds: pulumi.Input<string>;
     }
 
     export interface URLMapDefaultRouteActionRequestMirrorPolicy {
@@ -29793,6 +29899,15 @@ export namespace compute {
          */
         faultInjectionPolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy>;
         /**
+         * Specifies the maximum duration (timeout) for streams on the selected route.
+         * Unlike the `Timeout` field where the timeout duration starts from the time the request
+         * has been fully processed (known as end-of-stream), the duration in this field
+         * is computed from the beginning of the stream until the response has been processed,
+         * including all retries. A stream that does not complete in this duration is closed.
+         * Structure is documented below.
+         */
+        maxStreamDuration?: pulumi.Input<inputs.compute.URLMapPathMatcherDefaultRouteActionMaxStreamDuration>;
+        /**
          * Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
          * Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
          * the host / authority header is suffixed with -shadow.
@@ -29919,6 +30034,19 @@ export namespace compute {
          * Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
          */
         seconds?: pulumi.Input<string>;
+    }
+
+    export interface URLMapPathMatcherDefaultRouteActionMaxStreamDuration {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+         * with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+         * Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+         */
+        seconds: pulumi.Input<string>;
     }
 
     export interface URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy {
@@ -30290,6 +30418,15 @@ export namespace compute {
          */
         faultInjectionPolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy>;
         /**
+         * Specifies the maximum duration (timeout) for streams on the selected route.
+         * Unlike the `Timeout` field where the timeout duration starts from the time the request
+         * has been fully processed (known as end-of-stream), the duration in this field
+         * is computed from the beginning of the stream until the response has been processed,
+         * including all retries. A stream that does not complete in this duration is closed.
+         * Structure is documented below.
+         */
+        maxStreamDuration?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionMaxStreamDuration>;
+        /**
          * Specifies the policy on how requests intended for the route's backends are
          * shadowed to a separate mirrored backend service. Loadbalancer does not wait for
          * responses from the shadow service. Prior to sending traffic to the shadow
@@ -30413,6 +30550,19 @@ export namespace compute {
         /**
          * Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
          * represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+         * Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+         */
+        seconds: pulumi.Input<string>;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionMaxStreamDuration {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+         * with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
          */
         nanos?: pulumi.Input<number>;
         /**
@@ -30955,6 +31105,15 @@ export namespace compute {
          */
         faultInjectionPolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy>;
         /**
+         * Specifies the maximum duration (timeout) for streams on the selected route.
+         * Unlike the `Timeout` field where the timeout duration starts from the time the request
+         * has been fully processed (known as end-of-stream), the duration in this field
+         * is computed from the beginning of the stream until the response has been processed,
+         * including all retries. A stream that does not complete in this duration is closed.
+         * Structure is documented below.
+         */
+        maxStreamDuration?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration>;
+        /**
          * Specifies the policy on how requests intended for the route's backends are
          * shadowed to a separate mirrored backend service. Loadbalancer does not wait for
          * responses from the shadow service. Prior to sending traffic to the shadow
@@ -31078,6 +31237,19 @@ export namespace compute {
         /**
          * Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
          * represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+         * Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+         */
+        seconds: pulumi.Input<string>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+         * with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
          */
         nanos?: pulumi.Input<number>;
         /**
@@ -34675,7 +34847,7 @@ export namespace container {
 
     export interface ClusterNotificationConfigPubsubFilter {
         /**
-         * Can be used to filter what notifications are sent. Accepted values are `UPGRADE_AVAILABLE_EVENT`, `UPGRADE_EVENT` and `SECURITY_BULLETIN_EVENT`. See [Filtering notifications](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-notifications#filtering) for more details.
+         * Can be used to filter what notifications are sent. Accepted values are `UPGRADE_AVAILABLE_EVENT`, `UPGRADE_EVENT`, `SECURITY_BULLETIN_EVENT` and `UPGRADE_INFO_EVENT`. See [Filtering notifications](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-notifications#filtering) for more details.
          */
         eventTypes: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -44743,7 +44915,7 @@ export namespace dataproc {
          */
         instanceSelectionResults?: pulumi.Input<pulumi.Input<inputs.dataproc.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult>[]>;
         /**
-         * Defines how Dataproc should create VMs with a mixture of provisioning models.
+         * Defines how the Group selects the provisioning model to ensure required reliability.
          */
         provisioningModelMix?: pulumi.Input<inputs.dataproc.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix>;
     }
@@ -44755,8 +44927,6 @@ export namespace dataproc {
         machineTypes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
-         *
-         * - - -
          */
         rank?: pulumi.Input<number>;
     }
@@ -44774,11 +44944,12 @@ export namespace dataproc {
 
     export interface ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix {
         /**
-         * The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need.
+         * The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need. Dataproc will create only standard VMs until it reaches standardCapacityBase, then it will start using standardCapacityPercentAboveBase to mix Spot with Standard VMs. eg. If 15 instances are requested and standardCapacityBase is 5, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances.
          */
         standardCapacityBase?: pulumi.Input<number>;
         /**
-         * The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs.
+         * The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs. The percentage applies only to the capacity above standardCapacityBase. eg. If 15 instances are requested and standardCapacityBase is 5 and standardCapacityPercentAboveBase is 30, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances. The mix will be 30% standard and 70% spot.
+         * - - -
          */
         standardCapacityPercentAboveBase?: pulumi.Input<number>;
     }
@@ -52452,6 +52623,15 @@ export namespace essentialcontacts {
 }
 
 export namespace eventarc {
+    export interface MessageBusLoggingConfig {
+        /**
+         * Optional. The minimum severity of logs that will be sent to Stackdriver/Platform
+         * Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+         * Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+         */
+        logSeverity?: pulumi.Input<string>;
+    }
+
     export interface TriggerDestination {
         /**
          * (Output)
@@ -58235,7 +58415,15 @@ export namespace iam {
          * * AZURE_AD_GROUPS_MAIL: Used to get the user's group claims from the Azure AD identity provider using configuration provided
          * in ExtraAttributesOAuth2Client and 'mail' property of the 'microsoft.graph.group' object is used for claim mapping.
          * See https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on
-         * 'microsoft.graph.group' properties. The attributes obtained from idntity provider are mapped to 'assertion.groups'. Possible values: ["AZURE_AD_GROUPS_MAIL"]
+         * 'microsoft.graph.group' properties. The attributes obtained from idntity provider are mapped to 'assertion.groups'.
+         * * AZURE_AD_GROUPS_ID:  Used to get the user's group claims from the Azure AD identity provider
+         * using configuration provided in ExtraAttributesOAuth2Client and 'id'
+         * property of the 'microsoft.graph.group' object is used for claim mapping. See
+         * https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
+         * for more details on 'microsoft.graph.group' properties. The
+         * group IDs obtained from Azure AD are present in 'assertion.groups' for
+         * OIDC providers and 'assertion.attributes.groups' for SAML providers for
+         * attribute mapping. Possible values: ["AZURE_AD_GROUPS_MAIL", "AZURE_AD_GROUPS_ID"]
          */
         attributesType: pulumi.Input<string>;
         /**
@@ -58278,9 +58466,9 @@ export namespace iam {
 
     export interface WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters {
         /**
-         * The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL, it represents the
+         * The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL and AZURE_AD_GROUPS_ID, it represents the
          * filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
-         * groups should be mail enabled and security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
+         * groups should be security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
          */
         filter?: pulumi.Input<string>;
     }
@@ -74686,6 +74874,21 @@ export namespace storage {
          * Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
          */
         name: pulumi.Input<string>;
+    }
+
+    export interface TransferJobLoggingConfig {
+        /**
+         * For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
+         */
+        enableOnPremGcsTransferLogs?: pulumi.Input<boolean>;
+        /**
+         * States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enableOnPremGcsTransferLogs instead.
+         */
+        logActionStates?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enableOnPremGcsTransferLogs instead.
+         */
+        logActions?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface TransferJobNotificationConfig {

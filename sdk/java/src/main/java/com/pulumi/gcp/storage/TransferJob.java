@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.storage.TransferJobArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobState;
 import com.pulumi.gcp.storage.outputs.TransferJobEventStream;
+import com.pulumi.gcp.storage.outputs.TransferJobLoggingConfig;
 import com.pulumi.gcp.storage.outputs.TransferJobNotificationConfig;
 import com.pulumi.gcp.storage.outputs.TransferJobReplicationSpec;
 import com.pulumi.gcp.storage.outputs.TransferJobSchedule;
@@ -64,6 +65,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.inputs.TransferJobScheduleScheduleEndDateArgs;
  * import com.pulumi.gcp.storage.inputs.TransferJobScheduleStartTimeOfDayArgs;
  * import com.pulumi.gcp.storage.inputs.TransferJobNotificationConfigArgs;
+ * import com.pulumi.gcp.storage.inputs.TransferJobLoggingConfigArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -155,6 +157,14 @@ import javax.annotation.Nullable;
  *                     "TRANSFER_OPERATION_SUCCESS",
  *                     "TRANSFER_OPERATION_FAILED")
  *                 .payloadFormat("JSON")
+ *                 .build())
+ *             .loggingConfig(TransferJobLoggingConfigArgs.builder()
+ *                 .logActions(                
+ *                     "COPY",
+ *                     "DELETE")
+ *                 .logActionStates(                
+ *                     "SUCCEEDED",
+ *                     "FAILED")
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(                
@@ -252,6 +262,20 @@ public class TransferJob extends com.pulumi.resources.CustomResource {
      */
     public Output<String> lastModificationTime() {
         return this.lastModificationTime;
+    }
+    /**
+     * Logging configuration. Structure documented below.
+     * 
+     */
+    @Export(name="loggingConfig", refs={TransferJobLoggingConfig.class}, tree="[0]")
+    private Output</* @Nullable */ TransferJobLoggingConfig> loggingConfig;
+
+    /**
+     * @return Logging configuration. Structure documented below.
+     * 
+     */
+    public Output<Optional<TransferJobLoggingConfig>> loggingConfig() {
+        return Codegen.optional(this.loggingConfig);
     }
     /**
      * The name of the Transfer Job. This name must start with &#34;transferJobs/&#34; prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.

@@ -692,6 +692,11 @@ namespace Pulumi.Gcp.Compute
     ///                                     },
     ///                                 },
     ///                             },
+    ///                             MaxStreamDuration = new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs
+    ///                             {
+    ///                                 Nanos = 500000,
+    ///                                 Seconds = "9",
+    ///                             },
     ///                         },
     ///                     },
     ///                 },

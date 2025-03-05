@@ -49,14 +49,14 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
     }
 
     /**
-     * Defines how Dataproc should create VMs with a mixture of provisioning models.
+     * Defines how the Group selects the provisioning model to ensure required reliability.
      * 
      */
     @Import(name="provisioningModelMix")
     private @Nullable Output<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs> provisioningModelMix;
 
     /**
-     * @return Defines how Dataproc should create VMs with a mixture of provisioning models.
+     * @return Defines how the Group selects the provisioning model to ensure required reliability.
      * 
      */
     public Optional<Output<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs>> provisioningModelMix() {
@@ -152,7 +152,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
         }
 
         /**
-         * @param provisioningModelMix Defines how Dataproc should create VMs with a mixture of provisioning models.
+         * @param provisioningModelMix Defines how the Group selects the provisioning model to ensure required reliability.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
         }
 
         /**
-         * @param provisioningModelMix Defines how Dataproc should create VMs with a mixture of provisioning models.
+         * @param provisioningModelMix Defines how the Group selects the provisioning model to ensure required reliability.
          * 
          * @return builder
          * 

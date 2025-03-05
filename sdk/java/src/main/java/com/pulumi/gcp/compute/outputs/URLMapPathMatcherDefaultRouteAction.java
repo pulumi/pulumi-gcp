@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherDefaultRouteActionCorsPolicy;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy;
+import com.pulumi.gcp.compute.outputs.URLMapPathMatcherDefaultRouteActionMaxStreamDuration;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherDefaultRouteActionRetryPolicy;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherDefaultRouteActionTimeout;
@@ -35,6 +36,16 @@ public final class URLMapPathMatcherDefaultRouteAction {
      * 
      */
     private @Nullable URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy faultInjectionPolicy;
+    /**
+     * @return Specifies the maximum duration (timeout) for streams on the selected route.
+     * Unlike the `Timeout` field where the timeout duration starts from the time the request
+     * has been fully processed (known as end-of-stream), the duration in this field
+     * is computed from the beginning of the stream until the response has been processed,
+     * including all retries. A stream that does not complete in this duration is closed.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable URLMapPathMatcherDefaultRouteActionMaxStreamDuration maxStreamDuration;
     /**
      * @return Specifies the policy on how requests intended for the route&#39;s backends are shadowed to a separate mirrored backend service.
      * Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
@@ -99,6 +110,18 @@ public final class URLMapPathMatcherDefaultRouteAction {
         return Optional.ofNullable(this.faultInjectionPolicy);
     }
     /**
+     * @return Specifies the maximum duration (timeout) for streams on the selected route.
+     * Unlike the `Timeout` field where the timeout duration starts from the time the request
+     * has been fully processed (known as end-of-stream), the duration in this field
+     * is computed from the beginning of the stream until the response has been processed,
+     * including all retries. A stream that does not complete in this duration is closed.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<URLMapPathMatcherDefaultRouteActionMaxStreamDuration> maxStreamDuration() {
+        return Optional.ofNullable(this.maxStreamDuration);
+    }
+    /**
      * @return Specifies the policy on how requests intended for the route&#39;s backends are shadowed to a separate mirrored backend service.
      * Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
      * the host / authority header is suffixed with -shadow.
@@ -160,6 +183,7 @@ public final class URLMapPathMatcherDefaultRouteAction {
     public static final class Builder {
         private @Nullable URLMapPathMatcherDefaultRouteActionCorsPolicy corsPolicy;
         private @Nullable URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy faultInjectionPolicy;
+        private @Nullable URLMapPathMatcherDefaultRouteActionMaxStreamDuration maxStreamDuration;
         private @Nullable URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy requestMirrorPolicy;
         private @Nullable URLMapPathMatcherDefaultRouteActionRetryPolicy retryPolicy;
         private @Nullable URLMapPathMatcherDefaultRouteActionTimeout timeout;
@@ -170,6 +194,7 @@ public final class URLMapPathMatcherDefaultRouteAction {
     	      Objects.requireNonNull(defaults);
     	      this.corsPolicy = defaults.corsPolicy;
     	      this.faultInjectionPolicy = defaults.faultInjectionPolicy;
+    	      this.maxStreamDuration = defaults.maxStreamDuration;
     	      this.requestMirrorPolicy = defaults.requestMirrorPolicy;
     	      this.retryPolicy = defaults.retryPolicy;
     	      this.timeout = defaults.timeout;
@@ -187,6 +212,12 @@ public final class URLMapPathMatcherDefaultRouteAction {
         public Builder faultInjectionPolicy(@Nullable URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy faultInjectionPolicy) {
 
             this.faultInjectionPolicy = faultInjectionPolicy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxStreamDuration(@Nullable URLMapPathMatcherDefaultRouteActionMaxStreamDuration maxStreamDuration) {
+
+            this.maxStreamDuration = maxStreamDuration;
             return this;
         }
         @CustomType.Setter
@@ -226,6 +257,7 @@ public final class URLMapPathMatcherDefaultRouteAction {
             final var _resultValue = new URLMapPathMatcherDefaultRouteAction();
             _resultValue.corsPolicy = corsPolicy;
             _resultValue.faultInjectionPolicy = faultInjectionPolicy;
+            _resultValue.maxStreamDuration = maxStreamDuration;
             _resultValue.requestMirrorPolicy = requestMirrorPolicy;
             _resultValue.retryPolicy = retryPolicy;
             _resultValue.timeout = timeout;

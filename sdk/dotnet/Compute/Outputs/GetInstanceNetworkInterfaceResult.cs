@@ -47,7 +47,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string Network;
         /// <summary>
-        /// Beta The URL of the network attachment to this interface.
+        /// The URL of the network attachment to this interface.
         /// </summary>
         public readonly string NetworkAttachment;
         /// <summary>

@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult> InstanceSelectionResults;
         /// <summary>
-        /// Defines how Dataproc should create VMs with a mixture of provisioning models.
+        /// Defines how the Group selects the provisioning model to ensure required reliability.
         /// </summary>
         public readonly Outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix? ProvisioningModelMix;
 

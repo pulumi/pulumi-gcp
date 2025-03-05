@@ -323,6 +323,9 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
         example = gcp.gemini.GeminiGcpEnablementSetting("example",
             gemini_gcp_enablement_setting_id="ls1-tf",
             location="global",
+            labels={
+                "my_key": "my_value",
+            },
             enable_customer_data_sharing=True)
         ```
 
@@ -384,6 +387,9 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
         example = gcp.gemini.GeminiGcpEnablementSetting("example",
             gemini_gcp_enablement_setting_id="ls1-tf",
             location="global",
+            labels={
+                "my_key": "my_value",
+            },
             enable_customer_data_sharing=True)
         ```
 

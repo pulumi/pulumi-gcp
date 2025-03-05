@@ -129,6 +129,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InstanceTemplateIamMember{}
 	case "gcp:compute/instanceTemplateIamPolicy:InstanceTemplateIamPolicy":
 		r = &InstanceTemplateIamPolicy{}
+	case "gcp:compute/instantSnapshot:InstantSnapshot":
+		r = &InstantSnapshot{}
+	case "gcp:compute/instantSnapshotIamBinding:InstantSnapshotIamBinding":
+		r = &InstantSnapshotIamBinding{}
+	case "gcp:compute/instantSnapshotIamMember:InstantSnapshotIamMember":
+		r = &InstantSnapshotIamMember{}
+	case "gcp:compute/instantSnapshotIamPolicy:InstantSnapshotIamPolicy":
+		r = &InstantSnapshotIamPolicy{}
 	case "gcp:compute/interconnect:Interconnect":
 		r = &Interconnect{}
 	case "gcp:compute/interconnectAttachment:InterconnectAttachment":
@@ -610,6 +618,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/instanceTemplateIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/instantSnapshot",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/instantSnapshotIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/instantSnapshotIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/instantSnapshotIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

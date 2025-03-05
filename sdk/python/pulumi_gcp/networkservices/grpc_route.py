@@ -26,6 +26,7 @@ class GrpcRouteArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  gateways: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -39,6 +40,8 @@ class GrpcRouteArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the GrpcRoute resource. **Note**: This field is non-authoritative, and will only
                manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
                present on the resource.
+        :param pulumi.Input[str] location: Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to
+               'global' if omitted.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
         :param pulumi.Input[str] name: Name of the GrpcRoute resource.
         """
@@ -50,6 +53,8 @@ class GrpcRouteArgs:
             pulumi.set(__self__, "gateways", gateways)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if meshes is not None:
             pulumi.set(__self__, "meshes", meshes)
         if name is not None:
@@ -122,6 +127,19 @@ class GrpcRouteArgs:
 
     @property
     @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to
+        'global' if omitted.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
     def meshes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
@@ -163,6 +181,7 @@ class _GrpcRouteState:
                  gateways: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -180,6 +199,8 @@ class _GrpcRouteState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the GrpcRoute resource. **Note**: This field is non-authoritative, and will only
                manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
                present on the resource.
+        :param pulumi.Input[str] location: Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to
+               'global' if omitted.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
         :param pulumi.Input[str] name: Name of the GrpcRoute resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -201,6 +222,8 @@ class _GrpcRouteState:
             pulumi.set(__self__, "hostnames", hostnames)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if meshes is not None:
             pulumi.set(__self__, "meshes", meshes)
         if name is not None:
@@ -289,6 +312,19 @@ class _GrpcRouteState:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to
+        'global' if omitted.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -383,6 +419,7 @@ class GrpcRoute(pulumi.CustomResource):
                  gateways: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -502,29 +539,54 @@ class GrpcRoute(pulumi.CustomResource):
                 },
             }])
         ```
+        ### Network Services Grpc Route Location
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.GrpcRoute("default",
+            name="my-grpc-route",
+            location="global",
+            hostnames=["example"],
+            rules=[{
+                "matches": [{
+                    "headers": [{
+                        "key": "key",
+                        "value": "value",
+                    }],
+                }],
+                "action": {
+                    "retry_policy": {
+                        "retry_conditions": ["cancelled"],
+                        "num_retries": 1,
+                    },
+                },
+            }])
+        ```
 
         ## Import
 
         GrpcRoute can be imported using any of these accepted formats:
 
-        * `projects/{{project}}/locations/global/grpcRoutes/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/grpcRoutes/{{name}}`
 
-        * `{{project}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-        * `{{name}}`
+        * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, GrpcRoute can be imported using one of the formats above. For example:
 
         ```sh
-        $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default projects/{{project}}/locations/global/grpcRoutes/{{name}}
+        $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default projects/{{project}}/locations/{{location}}/grpcRoutes/{{name}}
         ```
 
         ```sh
-        $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{project}}/{{name}}
+        $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{project}}/{{location}}/{{name}}
         ```
 
         ```sh
-        $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{name}}
+        $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{location}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -535,6 +597,8 @@ class GrpcRoute(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the GrpcRoute resource. **Note**: This field is non-authoritative, and will only
                manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
                present on the resource.
+        :param pulumi.Input[str] location: Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to
+               'global' if omitted.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
         :param pulumi.Input[str] name: Name of the GrpcRoute resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GrpcRouteRuleArgs', 'GrpcRouteRuleArgsDict']]]] rules: Rules that define how traffic is routed and handled.
@@ -660,29 +724,54 @@ class GrpcRoute(pulumi.CustomResource):
                 },
             }])
         ```
+        ### Network Services Grpc Route Location
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.GrpcRoute("default",
+            name="my-grpc-route",
+            location="global",
+            hostnames=["example"],
+            rules=[{
+                "matches": [{
+                    "headers": [{
+                        "key": "key",
+                        "value": "value",
+                    }],
+                }],
+                "action": {
+                    "retry_policy": {
+                        "retry_conditions": ["cancelled"],
+                        "num_retries": 1,
+                    },
+                },
+            }])
+        ```
 
         ## Import
 
         GrpcRoute can be imported using any of these accepted formats:
 
-        * `projects/{{project}}/locations/global/grpcRoutes/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/grpcRoutes/{{name}}`
 
-        * `{{project}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-        * `{{name}}`
+        * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, GrpcRoute can be imported using one of the formats above. For example:
 
         ```sh
-        $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default projects/{{project}}/locations/global/grpcRoutes/{{name}}
+        $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default projects/{{project}}/locations/{{location}}/grpcRoutes/{{name}}
         ```
 
         ```sh
-        $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{project}}/{{name}}
+        $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{project}}/{{location}}/{{name}}
         ```
 
         ```sh
-        $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{name}}
+        $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{location}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -704,6 +793,7 @@ class GrpcRoute(pulumi.CustomResource):
                  gateways: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -723,6 +813,7 @@ class GrpcRoute(pulumi.CustomResource):
                 raise TypeError("Missing required property 'hostnames'")
             __props__.__dict__["hostnames"] = hostnames
             __props__.__dict__["labels"] = labels
+            __props__.__dict__["location"] = location
             __props__.__dict__["meshes"] = meshes
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -752,6 +843,7 @@ class GrpcRoute(pulumi.CustomResource):
             gateways: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            location: Optional[pulumi.Input[str]] = None,
             meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -774,6 +866,8 @@ class GrpcRoute(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the GrpcRoute resource. **Note**: This field is non-authoritative, and will only
                manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
                present on the resource.
+        :param pulumi.Input[str] location: Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to
+               'global' if omitted.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
         :param pulumi.Input[str] name: Name of the GrpcRoute resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -793,6 +887,7 @@ class GrpcRoute(pulumi.CustomResource):
         __props__.__dict__["gateways"] = gateways
         __props__.__dict__["hostnames"] = hostnames
         __props__.__dict__["labels"] = labels
+        __props__.__dict__["location"] = location
         __props__.__dict__["meshes"] = meshes
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -851,6 +946,15 @@ class GrpcRoute(pulumi.CustomResource):
         present on the resource.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[Optional[str]]:
+        """
+        Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to
+        'global' if omitted.
+        """
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter

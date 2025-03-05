@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
     ///     {
     ///         Location = basicDataStore.Location,
     ///         DataStoreId = basicDataStore.DataStoreId,
-    ///         ProvidedUriPattern = "http://cloud.google.com/docs/*",
+    ///         ProvidedUriPattern = "cloud.google.com/docs/*",
     ///         Type = "INCLUDE",
     ///         ExactMatch = false,
     ///     });
@@ -84,7 +84,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
     ///     {
     ///         Location = advancedDataStore.Location,
     ///         DataStoreId = advancedDataStore.DataStoreId,
-    ///         ProvidedUriPattern = "http://cloud.google.com/docs/*",
+    ///         ProvidedUriPattern = "cloud.google.com/docs/*",
     ///         Type = "INCLUDE",
     ///         ExactMatch = false,
     ///     });

@@ -23,7 +23,15 @@ public final class WorkforcePoolProviderExtraAttributesOauth2ClientArgs extends 
      * * AZURE_AD_GROUPS_MAIL: Used to get the user&#39;s group claims from the Azure AD identity provider using configuration provided
      *   in ExtraAttributesOAuth2Client and &#39;mail&#39; property of the &#39;microsoft.graph.group&#39; object is used for claim mapping.
      *   See https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on
-     *   &#39;microsoft.graph.group&#39; properties. The attributes obtained from idntity provider are mapped to &#39;assertion.groups&#39;. Possible values: [&#34;AZURE_AD_GROUPS_MAIL&#34;]
+     *   &#39;microsoft.graph.group&#39; properties. The attributes obtained from idntity provider are mapped to &#39;assertion.groups&#39;.
+     * * AZURE_AD_GROUPS_ID:  Used to get the user&#39;s group claims from the Azure AD identity provider
+     *   using configuration provided in ExtraAttributesOAuth2Client and &#39;id&#39;
+     *   property of the &#39;microsoft.graph.group&#39; object is used for claim mapping. See
+     *   https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
+     *   for more details on &#39;microsoft.graph.group&#39; properties. The
+     *   group IDs obtained from Azure AD are present in &#39;assertion.groups&#39; for
+     *   OIDC providers and &#39;assertion.attributes.groups&#39; for SAML providers for
+     *   attribute mapping. Possible values: [&#34;AZURE_AD_GROUPS_MAIL&#34;, &#34;AZURE_AD_GROUPS_ID&#34;]
      * 
      */
     @Import(name="attributesType", required=true)
@@ -34,7 +42,15 @@ public final class WorkforcePoolProviderExtraAttributesOauth2ClientArgs extends 
      * * AZURE_AD_GROUPS_MAIL: Used to get the user&#39;s group claims from the Azure AD identity provider using configuration provided
      *   in ExtraAttributesOAuth2Client and &#39;mail&#39; property of the &#39;microsoft.graph.group&#39; object is used for claim mapping.
      *   See https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on
-     *   &#39;microsoft.graph.group&#39; properties. The attributes obtained from idntity provider are mapped to &#39;assertion.groups&#39;. Possible values: [&#34;AZURE_AD_GROUPS_MAIL&#34;]
+     *   &#39;microsoft.graph.group&#39; properties. The attributes obtained from idntity provider are mapped to &#39;assertion.groups&#39;.
+     * * AZURE_AD_GROUPS_ID:  Used to get the user&#39;s group claims from the Azure AD identity provider
+     *   using configuration provided in ExtraAttributesOAuth2Client and &#39;id&#39;
+     *   property of the &#39;microsoft.graph.group&#39; object is used for claim mapping. See
+     *   https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
+     *   for more details on &#39;microsoft.graph.group&#39; properties. The
+     *   group IDs obtained from Azure AD are present in &#39;assertion.groups&#39; for
+     *   OIDC providers and &#39;assertion.attributes.groups&#39; for SAML providers for
+     *   attribute mapping. Possible values: [&#34;AZURE_AD_GROUPS_MAIL&#34;, &#34;AZURE_AD_GROUPS_ID&#34;]
      * 
      */
     public Output<String> attributesType() {
@@ -134,7 +150,15 @@ public final class WorkforcePoolProviderExtraAttributesOauth2ClientArgs extends 
          * * AZURE_AD_GROUPS_MAIL: Used to get the user&#39;s group claims from the Azure AD identity provider using configuration provided
          *   in ExtraAttributesOAuth2Client and &#39;mail&#39; property of the &#39;microsoft.graph.group&#39; object is used for claim mapping.
          *   See https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on
-         *   &#39;microsoft.graph.group&#39; properties. The attributes obtained from idntity provider are mapped to &#39;assertion.groups&#39;. Possible values: [&#34;AZURE_AD_GROUPS_MAIL&#34;]
+         *   &#39;microsoft.graph.group&#39; properties. The attributes obtained from idntity provider are mapped to &#39;assertion.groups&#39;.
+         * * AZURE_AD_GROUPS_ID:  Used to get the user&#39;s group claims from the Azure AD identity provider
+         *   using configuration provided in ExtraAttributesOAuth2Client and &#39;id&#39;
+         *   property of the &#39;microsoft.graph.group&#39; object is used for claim mapping. See
+         *   https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
+         *   for more details on &#39;microsoft.graph.group&#39; properties. The
+         *   group IDs obtained from Azure AD are present in &#39;assertion.groups&#39; for
+         *   OIDC providers and &#39;assertion.attributes.groups&#39; for SAML providers for
+         *   attribute mapping. Possible values: [&#34;AZURE_AD_GROUPS_MAIL&#34;, &#34;AZURE_AD_GROUPS_ID&#34;]
          * 
          * @return builder
          * 
@@ -149,7 +173,15 @@ public final class WorkforcePoolProviderExtraAttributesOauth2ClientArgs extends 
          * * AZURE_AD_GROUPS_MAIL: Used to get the user&#39;s group claims from the Azure AD identity provider using configuration provided
          *   in ExtraAttributesOAuth2Client and &#39;mail&#39; property of the &#39;microsoft.graph.group&#39; object is used for claim mapping.
          *   See https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on
-         *   &#39;microsoft.graph.group&#39; properties. The attributes obtained from idntity provider are mapped to &#39;assertion.groups&#39;. Possible values: [&#34;AZURE_AD_GROUPS_MAIL&#34;]
+         *   &#39;microsoft.graph.group&#39; properties. The attributes obtained from idntity provider are mapped to &#39;assertion.groups&#39;.
+         * * AZURE_AD_GROUPS_ID:  Used to get the user&#39;s group claims from the Azure AD identity provider
+         *   using configuration provided in ExtraAttributesOAuth2Client and &#39;id&#39;
+         *   property of the &#39;microsoft.graph.group&#39; object is used for claim mapping. See
+         *   https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
+         *   for more details on &#39;microsoft.graph.group&#39; properties. The
+         *   group IDs obtained from Azure AD are present in &#39;assertion.groups&#39; for
+         *   OIDC providers and &#39;assertion.attributes.groups&#39; for SAML providers for
+         *   attribute mapping. Possible values: [&#34;AZURE_AD_GROUPS_MAIL&#34;, &#34;AZURE_AD_GROUPS_ID&#34;]
          * 
          * @return builder
          * 

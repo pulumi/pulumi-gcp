@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         }
 
         /// <summary>
-        /// Defines how Dataproc should create VMs with a mixture of provisioning models.
+        /// Defines how the Group selects the provisioning model to ensure required reliability.
         /// </summary>
         [Input("provisioningModelMix")]
         public Input<Inputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs>? ProvisioningModelMix { get; set; }

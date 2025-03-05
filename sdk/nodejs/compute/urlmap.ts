@@ -396,6 +396,10 @@ import * as utilities from "../utilities";
  *                         }],
  *                     },
  *                 }],
+ *                 maxStreamDuration: {
+ *                     nanos: 500000,
+ *                     seconds: "9",
+ *                 },
  *             },
  *         }],
  *     }],

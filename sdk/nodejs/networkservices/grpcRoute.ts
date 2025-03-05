@@ -123,29 +123,55 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Network Services Grpc Route Location
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.networkservices.GrpcRoute("default", {
+ *     name: "my-grpc-route",
+ *     location: "global",
+ *     hostnames: ["example"],
+ *     rules: [{
+ *         matches: [{
+ *             headers: [{
+ *                 key: "key",
+ *                 value: "value",
+ *             }],
+ *         }],
+ *         action: {
+ *             retryPolicy: {
+ *                 retryConditions: ["cancelled"],
+ *                 numRetries: 1,
+ *             },
+ *         },
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *
  * GrpcRoute can be imported using any of these accepted formats:
  *
- * * `projects/{{project}}/locations/global/grpcRoutes/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/grpcRoutes/{{name}}`
  *
- * * `{{project}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  *
- * * `{{name}}`
+ * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, GrpcRoute can be imported using one of the formats above. For example:
  *
  * ```sh
- * $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default projects/{{project}}/locations/global/grpcRoutes/{{name}}
+ * $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default projects/{{project}}/locations/{{location}}/grpcRoutes/{{name}}
  * ```
  *
  * ```sh
- * $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{project}}/{{name}}
+ * $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{project}}/{{location}}/{{name}}
  * ```
  *
  * ```sh
- * $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{name}}
+ * $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{location}}/{{name}}
  * ```
  */
 export class GrpcRoute extends pulumi.CustomResource {
@@ -203,6 +229,11 @@ export class GrpcRoute extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to
+     * 'global' if omitted.
+     */
+    public readonly location!: pulumi.Output<string | undefined>;
+    /**
      * List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
      */
     public readonly meshes!: pulumi.Output<string[] | undefined>;
@@ -249,6 +280,7 @@ export class GrpcRoute extends pulumi.CustomResource {
             resourceInputs["gateways"] = state ? state.gateways : undefined;
             resourceInputs["hostnames"] = state ? state.hostnames : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["meshes"] = state ? state.meshes : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -268,6 +300,7 @@ export class GrpcRoute extends pulumi.CustomResource {
             resourceInputs["gateways"] = args ? args.gateways : undefined;
             resourceInputs["hostnames"] = args ? args.hostnames : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["meshes"] = args ? args.meshes : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -315,6 +348,11 @@ export interface GrpcRouteState {
      * present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to
+     * 'global' if omitted.
+     */
+    location?: pulumi.Input<string>;
     /**
      * List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
      */
@@ -366,6 +404,11 @@ export interface GrpcRouteArgs {
      * present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to
+     * 'global' if omitted.
+     */
+    location?: pulumi.Input<string>;
     /**
      * List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
      */

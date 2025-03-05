@@ -184,6 +184,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class GetDiskResult
     {
         public readonly string AccessMode;
+        public readonly string Architecture;
         public readonly ImmutableArray<Outputs.GetDiskAsyncPrimaryDiskResult> AsyncPrimaryDisks;
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -227,6 +228,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<string> Licenses;
         public readonly bool MultiWriter;
         public readonly string Name;
+        public readonly ImmutableArray<Outputs.GetDiskParamResult> Params;
         /// <summary>
         /// Physical block size of the persistent disk, in bytes.
         /// </summary>
@@ -262,6 +264,8 @@ namespace Pulumi.Gcp.Compute
         /// image ID would identify the exact version of the image that was used.
         /// </summary>
         public readonly string SourceImageId;
+        public readonly string SourceInstantSnapshot;
+        public readonly string SourceInstantSnapshotId;
         /// <summary>
         /// The customer-supplied encryption key of the source snapshot.
         /// </summary>
@@ -275,6 +279,7 @@ namespace Pulumi.Gcp.Compute
         /// used.
         /// </summary>
         public readonly string SourceSnapshotId;
+        public readonly string SourceStorageObject;
         public readonly string StoragePool;
         /// <summary>
         /// URL of the disk type resource describing which disk type to use to
@@ -294,6 +299,8 @@ namespace Pulumi.Gcp.Compute
         [OutputConstructor]
         private GetDiskResult(
             string accessMode,
+
+            string architecture,
 
             ImmutableArray<Outputs.GetDiskAsyncPrimaryDiskResult> asyncPrimaryDisks,
 
@@ -331,6 +338,8 @@ namespace Pulumi.Gcp.Compute
 
             string name,
 
+            ImmutableArray<Outputs.GetDiskParamResult> @params,
+
             int physicalBlockSizeBytes,
 
             string? project,
@@ -357,9 +366,15 @@ namespace Pulumi.Gcp.Compute
 
             string sourceImageId,
 
+            string sourceInstantSnapshot,
+
+            string sourceInstantSnapshotId,
+
             ImmutableArray<Outputs.GetDiskSourceSnapshotEncryptionKeyResult> sourceSnapshotEncryptionKeys,
 
             string sourceSnapshotId,
+
+            string sourceStorageObject,
 
             string storagePool,
 
@@ -370,6 +385,7 @@ namespace Pulumi.Gcp.Compute
             string? zone)
         {
             AccessMode = accessMode;
+            Architecture = architecture;
             AsyncPrimaryDisks = asyncPrimaryDisks;
             CreationTimestamp = creationTimestamp;
             Description = description;
@@ -388,6 +404,7 @@ namespace Pulumi.Gcp.Compute
             Licenses = licenses;
             MultiWriter = multiWriter;
             Name = name;
+            Params = @params;
             PhysicalBlockSizeBytes = physicalBlockSizeBytes;
             Project = project;
             ProvisionedIops = provisionedIops;
@@ -401,8 +418,11 @@ namespace Pulumi.Gcp.Compute
             SourceDiskId = sourceDiskId;
             SourceImageEncryptionKeys = sourceImageEncryptionKeys;
             SourceImageId = sourceImageId;
+            SourceInstantSnapshot = sourceInstantSnapshot;
+            SourceInstantSnapshotId = sourceInstantSnapshotId;
             SourceSnapshotEncryptionKeys = sourceSnapshotEncryptionKeys;
             SourceSnapshotId = sourceSnapshotId;
+            SourceStorageObject = sourceStorageObject;
             StoragePool = storagePool;
             Type = type;
             Users = users;

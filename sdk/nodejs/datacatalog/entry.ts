@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **Warning:** `gcp.datacatalog.Entry` is deprecated and will be removed in a future major release. Data Catalog is deprecated and will be discontinued on January 30, 2026. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
+ *
  * Entry Metadata. A Data Catalog Entry resource represents another resource in Google Cloud Platform
  * (such as a BigQuery dataset or a Pub/Sub topic) or outside of Google Cloud Platform. Clients can use
  * the linkedResource field in the Entry resource to refer to the original resource ID of the source system.

@@ -53,7 +53,7 @@ import (
 //			_, err = discoveryengine.NewTargetSite(ctx, "basic", &discoveryengine.TargetSiteArgs{
 //				Location:           basicDataStore.Location,
 //				DataStoreId:        basicDataStore.DataStoreId,
-//				ProvidedUriPattern: pulumi.String("http://cloud.google.com/docs/*"),
+//				ProvidedUriPattern: pulumi.String("cloud.google.com/docs/*"),
 //				Type:               pulumi.String("INCLUDE"),
 //				ExactMatch:         pulumi.Bool(false),
 //			})
@@ -97,7 +97,7 @@ import (
 //			_, err = discoveryengine.NewTargetSite(ctx, "advanced", &discoveryengine.TargetSiteArgs{
 //				Location:           advancedDataStore.Location,
 //				DataStoreId:        advancedDataStore.DataStoreId,
-//				ProvidedUriPattern: pulumi.String("http://cloud.google.com/docs/*"),
+//				ProvidedUriPattern: pulumi.String("cloud.google.com/docs/*"),
 //				Type:               pulumi.String("INCLUDE"),
 //				ExactMatch:         pulumi.Bool(false),
 //			})

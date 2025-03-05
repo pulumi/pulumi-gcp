@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['RouteArgs', 'Route']
 
@@ -317,11 +319,14 @@ class RouteArgs:
 @pulumi.input_type
 class _RouteState:
     def __init__(__self__, *,
+                 as_paths: Optional[pulumi.Input[Sequence[pulumi.Input['RouteAsPathArgs']]]] = None,
+                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dest_range: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  next_hop_gateway: Optional[pulumi.Input[str]] = None,
+                 next_hop_hub: Optional[pulumi.Input[str]] = None,
                  next_hop_ilb: Optional[pulumi.Input[str]] = None,
                  next_hop_instance: Optional[pulumi.Input[str]] = None,
                  next_hop_instance_zone: Optional[pulumi.Input[str]] = None,
@@ -330,13 +335,19 @@ class _RouteState:
                  next_hop_med: Optional[pulumi.Input[str]] = None,
                  next_hop_network: Optional[pulumi.Input[str]] = None,
                  next_hop_origin: Optional[pulumi.Input[str]] = None,
+                 next_hop_peering: Optional[pulumi.Input[str]] = None,
                  next_hop_vpn_tunnel: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 route_status: Optional[pulumi.Input[str]] = None,
+                 route_type: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 warnings: Optional[pulumi.Input[Sequence[pulumi.Input['RouteWarningArgs']]]] = None):
         """
         Input properties used for looking up and filtering Route resources.
+        :param pulumi.Input[Sequence[pulumi.Input['RouteAsPathArgs']]] as_paths: Structure is documented below.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property
                when you create the resource.
         :param pulumi.Input[str] dest_range: The destination range of outgoing packets that this route applies to.
@@ -359,6 +370,7 @@ class _RouteState:
                * `projects/project/global/gateways/default-internet-gateway`
                * `global/gateways/default-internet-gateway`
                * The string `default-internet-gateway`.
+        :param pulumi.Input[str] next_hop_hub: The hub network that should handle matching packets, which should conform to RFC1035.
         :param pulumi.Input[str] next_hop_ilb: The IP address or URL to a forwarding rule of type
                loadBalancingScheme=INTERNAL that should handle matching
                packets.
@@ -387,6 +399,7 @@ class _RouteState:
         :param pulumi.Input[str] next_hop_med: Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
         :param pulumi.Input[str] next_hop_network: URL to a Network that should handle matching packets.
         :param pulumi.Input[str] next_hop_origin: Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+        :param pulumi.Input[str] next_hop_peering: The network peering name that should handle matching packets, which should conform to RFC1035.
         :param pulumi.Input[str] next_hop_vpn_tunnel: URL to a VpnTunnel that should handle matching packets.
         :param pulumi.Input[int] priority: The priority of this route. Priority is used to break ties in cases
                where there is more than one matching route of equal prefix length.
@@ -395,9 +408,23 @@ class _RouteState:
                Default value is 1000. Valid range is 0 through 65535.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] route_status: The status of the route, which can be one of the following values:
+               - 'ACTIVE' for an active route
+               - 'INACTIVE' for an inactive route
+        :param pulumi.Input[str] route_type: The type of this route, which can be one of the following values:
+               - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+               - 'SUBNET' for a route from a subnet of the VPC
+               - 'BGP' for a route learned from a BGP peer of this router
+               - 'STATIC' for a static route
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of instance tags to which this route applies.
+        :param pulumi.Input[Sequence[pulumi.Input['RouteWarningArgs']]] warnings: If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+               Structure is documented below.
         """
+        if as_paths is not None:
+            pulumi.set(__self__, "as_paths", as_paths)
+        if creation_timestamp is not None:
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dest_range is not None:
@@ -408,6 +435,8 @@ class _RouteState:
             pulumi.set(__self__, "network", network)
         if next_hop_gateway is not None:
             pulumi.set(__self__, "next_hop_gateway", next_hop_gateway)
+        if next_hop_hub is not None:
+            pulumi.set(__self__, "next_hop_hub", next_hop_hub)
         if next_hop_ilb is not None:
             pulumi.set(__self__, "next_hop_ilb", next_hop_ilb)
         if next_hop_instance is not None:
@@ -424,16 +453,48 @@ class _RouteState:
             pulumi.set(__self__, "next_hop_network", next_hop_network)
         if next_hop_origin is not None:
             pulumi.set(__self__, "next_hop_origin", next_hop_origin)
+        if next_hop_peering is not None:
+            pulumi.set(__self__, "next_hop_peering", next_hop_peering)
         if next_hop_vpn_tunnel is not None:
             pulumi.set(__self__, "next_hop_vpn_tunnel", next_hop_vpn_tunnel)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if route_status is not None:
+            pulumi.set(__self__, "route_status", route_status)
+        if route_type is not None:
+            pulumi.set(__self__, "route_type", route_type)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if warnings is not None:
+            pulumi.set(__self__, "warnings", warnings)
+
+    @property
+    @pulumi.getter(name="asPaths")
+    def as_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouteAsPathArgs']]]]:
+        """
+        Structure is documented below.
+        """
+        return pulumi.get(self, "as_paths")
+
+    @as_paths.setter
+    def as_paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouteAsPathArgs']]]]):
+        pulumi.set(self, "as_paths", value)
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @creation_timestamp.setter
+    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_timestamp", value)
 
     @property
     @pulumi.getter
@@ -511,6 +572,18 @@ class _RouteState:
     @next_hop_gateway.setter
     def next_hop_gateway(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "next_hop_gateway", value)
+
+    @property
+    @pulumi.getter(name="nextHopHub")
+    def next_hop_hub(self) -> Optional[pulumi.Input[str]]:
+        """
+        The hub network that should handle matching packets, which should conform to RFC1035.
+        """
+        return pulumi.get(self, "next_hop_hub")
+
+    @next_hop_hub.setter
+    def next_hop_hub(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "next_hop_hub", value)
 
     @property
     @pulumi.getter(name="nextHopIlb")
@@ -629,6 +702,18 @@ class _RouteState:
         pulumi.set(self, "next_hop_origin", value)
 
     @property
+    @pulumi.getter(name="nextHopPeering")
+    def next_hop_peering(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network peering name that should handle matching packets, which should conform to RFC1035.
+        """
+        return pulumi.get(self, "next_hop_peering")
+
+    @next_hop_peering.setter
+    def next_hop_peering(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "next_hop_peering", value)
+
+    @property
     @pulumi.getter(name="nextHopVpnTunnel")
     def next_hop_vpn_tunnel(self) -> Optional[pulumi.Input[str]]:
         """
@@ -670,6 +755,36 @@ class _RouteState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="routeStatus")
+    def route_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the route, which can be one of the following values:
+        - 'ACTIVE' for an active route
+        - 'INACTIVE' for an inactive route
+        """
+        return pulumi.get(self, "route_status")
+
+    @route_status.setter
+    def route_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "route_status", value)
+
+    @property
+    @pulumi.getter(name="routeType")
+    def route_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of this route, which can be one of the following values:
+        - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+        - 'SUBNET' for a route from a subnet of the VPC
+        - 'BGP' for a route learned from a BGP peer of this router
+        - 'STATIC' for a static route
+        """
+        return pulumi.get(self, "route_type")
+
+    @route_type.setter
+    def route_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "route_type", value)
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -692,6 +807,19 @@ class _RouteState:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def warnings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouteWarningArgs']]]]:
+        """
+        If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "warnings")
+
+    @warnings.setter
+    def warnings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouteWarningArgs']]]]):
+        pulumi.set(self, "warnings", value)
 
 
 class Route(pulumi.CustomResource):
@@ -1181,11 +1309,18 @@ class Route(pulumi.CustomResource):
             __props__.__dict__["priority"] = priority
             __props__.__dict__["project"] = project
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["as_paths"] = None
+            __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["next_hop_hub"] = None
             __props__.__dict__["next_hop_inter_region_cost"] = None
             __props__.__dict__["next_hop_med"] = None
             __props__.__dict__["next_hop_network"] = None
             __props__.__dict__["next_hop_origin"] = None
+            __props__.__dict__["next_hop_peering"] = None
+            __props__.__dict__["route_status"] = None
+            __props__.__dict__["route_type"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["warnings"] = None
         super(Route, __self__).__init__(
             'gcp:compute/route:Route',
             resource_name,
@@ -1196,11 +1331,14 @@ class Route(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            as_paths: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouteAsPathArgs', 'RouteAsPathArgsDict']]]]] = None,
+            creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             dest_range: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
             next_hop_gateway: Optional[pulumi.Input[str]] = None,
+            next_hop_hub: Optional[pulumi.Input[str]] = None,
             next_hop_ilb: Optional[pulumi.Input[str]] = None,
             next_hop_instance: Optional[pulumi.Input[str]] = None,
             next_hop_instance_zone: Optional[pulumi.Input[str]] = None,
@@ -1209,11 +1347,15 @@ class Route(pulumi.CustomResource):
             next_hop_med: Optional[pulumi.Input[str]] = None,
             next_hop_network: Optional[pulumi.Input[str]] = None,
             next_hop_origin: Optional[pulumi.Input[str]] = None,
+            next_hop_peering: Optional[pulumi.Input[str]] = None,
             next_hop_vpn_tunnel: Optional[pulumi.Input[str]] = None,
             priority: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            route_status: Optional[pulumi.Input[str]] = None,
+            route_type: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Route':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            warnings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouteWarningArgs', 'RouteWarningArgsDict']]]]] = None) -> 'Route':
         """
         Get an existing Route resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1221,6 +1363,8 @@ class Route(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouteAsPathArgs', 'RouteAsPathArgsDict']]]] as_paths: Structure is documented below.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property
                when you create the resource.
         :param pulumi.Input[str] dest_range: The destination range of outgoing packets that this route applies to.
@@ -1243,6 +1387,7 @@ class Route(pulumi.CustomResource):
                * `projects/project/global/gateways/default-internet-gateway`
                * `global/gateways/default-internet-gateway`
                * The string `default-internet-gateway`.
+        :param pulumi.Input[str] next_hop_hub: The hub network that should handle matching packets, which should conform to RFC1035.
         :param pulumi.Input[str] next_hop_ilb: The IP address or URL to a forwarding rule of type
                loadBalancingScheme=INTERNAL that should handle matching
                packets.
@@ -1271,6 +1416,7 @@ class Route(pulumi.CustomResource):
         :param pulumi.Input[str] next_hop_med: Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
         :param pulumi.Input[str] next_hop_network: URL to a Network that should handle matching packets.
         :param pulumi.Input[str] next_hop_origin: Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+        :param pulumi.Input[str] next_hop_peering: The network peering name that should handle matching packets, which should conform to RFC1035.
         :param pulumi.Input[str] next_hop_vpn_tunnel: URL to a VpnTunnel that should handle matching packets.
         :param pulumi.Input[int] priority: The priority of this route. Priority is used to break ties in cases
                where there is more than one matching route of equal prefix length.
@@ -1279,18 +1425,31 @@ class Route(pulumi.CustomResource):
                Default value is 1000. Valid range is 0 through 65535.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] route_status: The status of the route, which can be one of the following values:
+               - 'ACTIVE' for an active route
+               - 'INACTIVE' for an inactive route
+        :param pulumi.Input[str] route_type: The type of this route, which can be one of the following values:
+               - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+               - 'SUBNET' for a route from a subnet of the VPC
+               - 'BGP' for a route learned from a BGP peer of this router
+               - 'STATIC' for a static route
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of instance tags to which this route applies.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouteWarningArgs', 'RouteWarningArgsDict']]]] warnings: If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _RouteState.__new__(_RouteState)
 
+        __props__.__dict__["as_paths"] = as_paths
+        __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
         __props__.__dict__["dest_range"] = dest_range
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
         __props__.__dict__["next_hop_gateway"] = next_hop_gateway
+        __props__.__dict__["next_hop_hub"] = next_hop_hub
         __props__.__dict__["next_hop_ilb"] = next_hop_ilb
         __props__.__dict__["next_hop_instance"] = next_hop_instance
         __props__.__dict__["next_hop_instance_zone"] = next_hop_instance_zone
@@ -1299,12 +1458,32 @@ class Route(pulumi.CustomResource):
         __props__.__dict__["next_hop_med"] = next_hop_med
         __props__.__dict__["next_hop_network"] = next_hop_network
         __props__.__dict__["next_hop_origin"] = next_hop_origin
+        __props__.__dict__["next_hop_peering"] = next_hop_peering
         __props__.__dict__["next_hop_vpn_tunnel"] = next_hop_vpn_tunnel
         __props__.__dict__["priority"] = priority
         __props__.__dict__["project"] = project
+        __props__.__dict__["route_status"] = route_status
+        __props__.__dict__["route_type"] = route_type
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["warnings"] = warnings
         return Route(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="asPaths")
+    def as_paths(self) -> pulumi.Output[Sequence['outputs.RouteAsPath']]:
+        """
+        Structure is documented below.
+        """
+        return pulumi.get(self, "as_paths")
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
 
     @property
     @pulumi.getter
@@ -1362,6 +1541,14 @@ class Route(pulumi.CustomResource):
         * The string `default-internet-gateway`.
         """
         return pulumi.get(self, "next_hop_gateway")
+
+    @property
+    @pulumi.getter(name="nextHopHub")
+    def next_hop_hub(self) -> pulumi.Output[str]:
+        """
+        The hub network that should handle matching packets, which should conform to RFC1035.
+        """
+        return pulumi.get(self, "next_hop_hub")
 
     @property
     @pulumi.getter(name="nextHopIlb")
@@ -1448,6 +1635,14 @@ class Route(pulumi.CustomResource):
         return pulumi.get(self, "next_hop_origin")
 
     @property
+    @pulumi.getter(name="nextHopPeering")
+    def next_hop_peering(self) -> pulumi.Output[str]:
+        """
+        The network peering name that should handle matching packets, which should conform to RFC1035.
+        """
+        return pulumi.get(self, "next_hop_peering")
+
+    @property
     @pulumi.getter(name="nextHopVpnTunnel")
     def next_hop_vpn_tunnel(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1477,6 +1672,28 @@ class Route(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="routeStatus")
+    def route_status(self) -> pulumi.Output[str]:
+        """
+        The status of the route, which can be one of the following values:
+        - 'ACTIVE' for an active route
+        - 'INACTIVE' for an inactive route
+        """
+        return pulumi.get(self, "route_status")
+
+    @property
+    @pulumi.getter(name="routeType")
+    def route_type(self) -> pulumi.Output[str]:
+        """
+        The type of this route, which can be one of the following values:
+        - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+        - 'SUBNET' for a route from a subnet of the VPC
+        - 'BGP' for a route learned from a BGP peer of this router
+        - 'STATIC' for a static route
+        """
+        return pulumi.get(self, "route_type")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
@@ -1491,4 +1708,13 @@ class Route(pulumi.CustomResource):
         A list of instance tags to which this route applies.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def warnings(self) -> pulumi.Output[Sequence['outputs.RouteWarning']]:
+        """
+        If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "warnings")
 

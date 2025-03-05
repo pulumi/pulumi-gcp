@@ -102,7 +102,7 @@ type LoggingSettingBinding struct {
 	// Format:projects/{project}/locations/{location}/loggingSettings/{setting}/settingBindings/{setting_binding}
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Product type of the setting binding.
-	// Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+	// Possible values are: `GEMINI_CODE_ASSIST`.
 	Product pulumi.StringPtrOutput `pulumi:"product"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -180,7 +180,7 @@ type loggingSettingBindingState struct {
 	// Format:projects/{project}/locations/{location}/loggingSettings/{setting}/settingBindings/{setting_binding}
 	Name *string `pulumi:"name"`
 	// Product type of the setting binding.
-	// Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+	// Possible values are: `GEMINI_CODE_ASSIST`.
 	Product *string `pulumi:"product"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -215,7 +215,7 @@ type LoggingSettingBindingState struct {
 	// Format:projects/{project}/locations/{location}/loggingSettings/{setting}/settingBindings/{setting_binding}
 	Name pulumi.StringPtrInput
 	// Product type of the setting binding.
-	// Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+	// Possible values are: `GEMINI_CODE_ASSIST`.
 	Product pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -247,7 +247,7 @@ type loggingSettingBindingArgs struct {
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	LoggingSettingId string `pulumi:"loggingSettingId"`
 	// Product type of the setting binding.
-	// Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+	// Possible values are: `GEMINI_CODE_ASSIST`.
 	Product *string `pulumi:"product"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -271,7 +271,7 @@ type LoggingSettingBindingArgs struct {
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	LoggingSettingId pulumi.StringInput
 	// Product type of the setting binding.
-	// Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+	// Possible values are: `GEMINI_CODE_ASSIST`.
 	Product pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -405,7 +405,7 @@ func (o LoggingSettingBindingOutput) Name() pulumi.StringOutput {
 }
 
 // Product type of the setting binding.
-// Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+// Possible values are: `GEMINI_CODE_ASSIST`.
 func (o LoggingSettingBindingOutput) Product() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoggingSettingBinding) pulumi.StringPtrOutput { return v.Product }).(pulumi.StringPtrOutput)
 }

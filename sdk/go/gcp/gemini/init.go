@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DataSharingWithGoogleSettingBinding{}
 	case "gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting":
 		r = &GeminiGcpEnablementSetting{}
+	case "gcp:gemini/geminiGcpEnablementSettingBinding:GeminiGcpEnablementSettingBinding":
+		r = &GeminiGcpEnablementSettingBinding{}
 	case "gcp:gemini/loggingSetting:LoggingSetting":
 		r = &LoggingSetting{}
 	case "gcp:gemini/loggingSettingBinding:LoggingSettingBinding":
@@ -76,6 +78,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"gemini/geminiGcpEnablementSetting",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gemini/geminiGcpEnablementSettingBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -25,6 +25,7 @@ class HubArgs:
                  export_psc: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 policy_mode: Optional[pulumi.Input[str]] = None,
                  preset_topology: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -38,6 +39,8 @@ class HubArgs:
                
                
                - - -
+        :param pulumi.Input[str] policy_mode: Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
+               Possible values are: `CUSTOM`, `PRESET`.
         :param pulumi.Input[str] preset_topology: Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
                Possible values are: `MESH`, `STAR`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -51,6 +54,8 @@ class HubArgs:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if policy_mode is not None:
+            pulumi.set(__self__, "policy_mode", policy_mode)
         if preset_topology is not None:
             pulumi.set(__self__, "preset_topology", preset_topology)
         if project is not None:
@@ -110,6 +115,19 @@ class HubArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="policyMode")
+    def policy_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
+        Possible values are: `CUSTOM`, `PRESET`.
+        """
+        return pulumi.get(self, "policy_mode")
+
+    @policy_mode.setter
+    def policy_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_mode", value)
+
+    @property
     @pulumi.getter(name="presetTopology")
     def preset_topology(self) -> Optional[pulumi.Input[str]]:
         """
@@ -145,6 +163,7 @@ class _HubState:
                  export_psc: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 policy_mode: Optional[pulumi.Input[str]] = None,
                  preset_topology: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -165,6 +184,8 @@ class _HubState:
                
                
                - - -
+        :param pulumi.Input[str] policy_mode: Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
+               Possible values are: `CUSTOM`, `PRESET`.
         :param pulumi.Input[str] preset_topology: Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
                Possible values are: `MESH`, `STAR`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -189,6 +210,8 @@ class _HubState:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if policy_mode is not None:
+            pulumi.set(__self__, "policy_mode", policy_mode)
         if preset_topology is not None:
             pulumi.set(__self__, "preset_topology", preset_topology)
         if project is not None:
@@ -280,6 +303,19 @@ class _HubState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="policyMode")
+    def policy_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
+        Possible values are: `CUSTOM`, `PRESET`.
+        """
+        return pulumi.get(self, "policy_mode")
+
+    @policy_mode.setter
+    def policy_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_mode", value)
 
     @property
     @pulumi.getter(name="presetTopology")
@@ -379,6 +415,7 @@ class Hub(pulumi.CustomResource):
                  export_psc: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 policy_mode: Optional[pulumi.Input[str]] = None,
                  preset_topology: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -444,6 +481,21 @@ class Hub(pulumi.CustomResource):
             },
             preset_topology="STAR")
         ```
+        ### Network Connectivity Hub Policy Mode
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.networkconnectivity.Hub("primary",
+            name="policy",
+            description="A sample hub with PRESET policy_mode and STAR topology",
+            policy_mode="PRESET",
+            preset_topology="STAR",
+            labels={
+                "label-one": "value-one",
+            })
+        ```
 
         ## Import
 
@@ -480,6 +532,8 @@ class Hub(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[str] policy_mode: Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
+               Possible values are: `CUSTOM`, `PRESET`.
         :param pulumi.Input[str] preset_topology: Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
                Possible values are: `MESH`, `STAR`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -553,6 +607,21 @@ class Hub(pulumi.CustomResource):
             },
             preset_topology="STAR")
         ```
+        ### Network Connectivity Hub Policy Mode
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.networkconnectivity.Hub("primary",
+            name="policy",
+            description="A sample hub with PRESET policy_mode and STAR topology",
+            policy_mode="PRESET",
+            preset_topology="STAR",
+            labels={
+                "label-one": "value-one",
+            })
+        ```
 
         ## Import
 
@@ -597,6 +666,7 @@ class Hub(pulumi.CustomResource):
                  export_psc: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 policy_mode: Optional[pulumi.Input[str]] = None,
                  preset_topology: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -612,6 +682,7 @@ class Hub(pulumi.CustomResource):
             __props__.__dict__["export_psc"] = export_psc
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
+            __props__.__dict__["policy_mode"] = policy_mode
             __props__.__dict__["preset_topology"] = preset_topology
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
@@ -639,6 +710,7 @@ class Hub(pulumi.CustomResource):
             export_psc: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            policy_mode: Optional[pulumi.Input[str]] = None,
             preset_topology: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -664,6 +736,8 @@ class Hub(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[str] policy_mode: Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
+               Possible values are: `CUSTOM`, `PRESET`.
         :param pulumi.Input[str] preset_topology: Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
                Possible values are: `MESH`, `STAR`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -686,6 +760,7 @@ class Hub(pulumi.CustomResource):
         __props__.__dict__["export_psc"] = export_psc
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
+        __props__.__dict__["policy_mode"] = policy_mode
         __props__.__dict__["preset_topology"] = preset_topology
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
@@ -747,6 +822,15 @@ class Hub(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="policyMode")
+    def policy_mode(self) -> pulumi.Output[str]:
+        """
+        Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
+        Possible values are: `CUSTOM`, `PRESET`.
+        """
+        return pulumi.get(self, "policy_mode")
 
     @property
     @pulumi.getter(name="presetTopology")

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs;
 import com.pulumi.gcp.compute.inputs.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs;
+import com.pulumi.gcp.compute.inputs.URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs;
 import com.pulumi.gcp.compute.inputs.URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs;
 import com.pulumi.gcp.compute.inputs.URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs;
 import com.pulumi.gcp.compute.inputs.URLMapPathMatcherPathRuleRouteActionTimeoutArgs;
@@ -68,6 +69,31 @@ public final class URLMapPathMatcherPathRuleRouteActionArgs extends com.pulumi.r
      */
     public Optional<Output<URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs>> faultInjectionPolicy() {
         return Optional.ofNullable(this.faultInjectionPolicy);
+    }
+
+    /**
+     * Specifies the maximum duration (timeout) for streams on the selected route.
+     * Unlike the `Timeout` field where the timeout duration starts from the time the request
+     * has been fully processed (known as end-of-stream), the duration in this field
+     * is computed from the beginning of the stream until the response has been processed,
+     * including all retries. A stream that does not complete in this duration is closed.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="maxStreamDuration")
+    private @Nullable Output<URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs> maxStreamDuration;
+
+    /**
+     * @return Specifies the maximum duration (timeout) for streams on the selected route.
+     * Unlike the `Timeout` field where the timeout duration starts from the time the request
+     * has been fully processed (known as end-of-stream), the duration in this field
+     * is computed from the beginning of the stream until the response has been processed,
+     * including all retries. A stream that does not complete in this duration is closed.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs>> maxStreamDuration() {
+        return Optional.ofNullable(this.maxStreamDuration);
     }
 
     /**
@@ -188,6 +214,7 @@ public final class URLMapPathMatcherPathRuleRouteActionArgs extends com.pulumi.r
     private URLMapPathMatcherPathRuleRouteActionArgs(URLMapPathMatcherPathRuleRouteActionArgs $) {
         this.corsPolicy = $.corsPolicy;
         this.faultInjectionPolicy = $.faultInjectionPolicy;
+        this.maxStreamDuration = $.maxStreamDuration;
         this.requestMirrorPolicy = $.requestMirrorPolicy;
         this.retryPolicy = $.retryPolicy;
         this.timeout = $.timeout;
@@ -271,6 +298,37 @@ public final class URLMapPathMatcherPathRuleRouteActionArgs extends com.pulumi.r
          */
         public Builder faultInjectionPolicy(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs faultInjectionPolicy) {
             return faultInjectionPolicy(Output.of(faultInjectionPolicy));
+        }
+
+        /**
+         * @param maxStreamDuration Specifies the maximum duration (timeout) for streams on the selected route.
+         * Unlike the `Timeout` field where the timeout duration starts from the time the request
+         * has been fully processed (known as end-of-stream), the duration in this field
+         * is computed from the beginning of the stream until the response has been processed,
+         * including all retries. A stream that does not complete in this duration is closed.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxStreamDuration(@Nullable Output<URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs> maxStreamDuration) {
+            $.maxStreamDuration = maxStreamDuration;
+            return this;
+        }
+
+        /**
+         * @param maxStreamDuration Specifies the maximum duration (timeout) for streams on the selected route.
+         * Unlike the `Timeout` field where the timeout duration starts from the time the request
+         * has been fully processed (known as end-of-stream), the duration in this field
+         * is computed from the beginning of the stream until the response has been processed,
+         * including all retries. A stream that does not complete in this duration is closed.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxStreamDuration(URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs maxStreamDuration) {
+            return maxStreamDuration(Output.of(maxStreamDuration));
         }
 
         /**

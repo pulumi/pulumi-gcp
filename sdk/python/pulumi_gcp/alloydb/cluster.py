@@ -1108,6 +1108,80 @@ class Cluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
+        ### Alloydb Cluster Before Upgrade
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("default", name="alloydb-network")
+        default_cluster = gcp.alloydb.Cluster("default",
+            cluster_id="alloydb-cluster",
+            location="us-central1",
+            network_config={
+                "network": default_network.id,
+            },
+            database_version="POSTGRES_14",
+            initial_user={
+                "password": "alloydb-cluster",
+            })
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name="alloydb-cluster",
+            address_type="INTERNAL",
+            purpose="VPC_PEERING",
+            prefix_length=16,
+            network=default_network.id)
+        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
+            network=default_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_alloc.name])
+        default = gcp.alloydb.Instance("default",
+            cluster=default_cluster.name,
+            instance_id="alloydb-instance",
+            instance_type="PRIMARY",
+            machine_config={
+                "cpu_count": 2,
+            },
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
+        project = gcp.organizations.get_project()
+        ```
+        ### Alloydb Cluster After Upgrade
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("default", name="alloydb-network")
+        default_cluster = gcp.alloydb.Cluster("default",
+            cluster_id="alloydb-cluster",
+            location="us-central1",
+            network_config={
+                "network": default_network.id,
+            },
+            database_version="POSTGRES_15",
+            initial_user={
+                "password": "alloydb-cluster",
+            })
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name="alloydb-cluster",
+            address_type="INTERNAL",
+            purpose="VPC_PEERING",
+            prefix_length=16,
+            network=default_network.id)
+        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
+            network=default_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_alloc.name])
+        default = gcp.alloydb.Instance("default",
+            cluster=default_cluster.name,
+            instance_id="alloydb-instance",
+            instance_type="PRIMARY",
+            machine_config={
+                "cpu_count": 2,
+            },
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
+        project = gcp.organizations.get_project()
+        ```
         ### Alloydb Cluster Full
 
         ```python
@@ -1310,6 +1384,80 @@ class Cluster(pulumi.CustomResource):
             network_config={
                 "network": default_network.id,
             })
+        project = gcp.organizations.get_project()
+        ```
+        ### Alloydb Cluster Before Upgrade
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("default", name="alloydb-network")
+        default_cluster = gcp.alloydb.Cluster("default",
+            cluster_id="alloydb-cluster",
+            location="us-central1",
+            network_config={
+                "network": default_network.id,
+            },
+            database_version="POSTGRES_14",
+            initial_user={
+                "password": "alloydb-cluster",
+            })
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name="alloydb-cluster",
+            address_type="INTERNAL",
+            purpose="VPC_PEERING",
+            prefix_length=16,
+            network=default_network.id)
+        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
+            network=default_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_alloc.name])
+        default = gcp.alloydb.Instance("default",
+            cluster=default_cluster.name,
+            instance_id="alloydb-instance",
+            instance_type="PRIMARY",
+            machine_config={
+                "cpu_count": 2,
+            },
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
+        project = gcp.organizations.get_project()
+        ```
+        ### Alloydb Cluster After Upgrade
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("default", name="alloydb-network")
+        default_cluster = gcp.alloydb.Cluster("default",
+            cluster_id="alloydb-cluster",
+            location="us-central1",
+            network_config={
+                "network": default_network.id,
+            },
+            database_version="POSTGRES_15",
+            initial_user={
+                "password": "alloydb-cluster",
+            })
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name="alloydb-cluster",
+            address_type="INTERNAL",
+            purpose="VPC_PEERING",
+            prefix_length=16,
+            network=default_network.id)
+        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
+            network=default_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_alloc.name])
+        default = gcp.alloydb.Instance("default",
+            cluster=default_cluster.name,
+            instance_id="alloydb-instance",
+            instance_type="PRIMARY",
+            machine_config={
+                "cpu_count": 2,
+            },
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         project = gcp.organizations.get_project()
         ```
         ### Alloydb Cluster Full

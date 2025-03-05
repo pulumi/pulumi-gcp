@@ -1851,7 +1851,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxStaleness")
-    def max_staleness(self) -> pulumi.Output[Optional[str]]:
+    def max_staleness(self) -> pulumi.Output[str]:
         """
         The maximum staleness of data that could be
         returned when the table (or stale MV) is queried. Staleness encoded as a

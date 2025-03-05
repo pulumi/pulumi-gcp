@@ -76,6 +76,7 @@ type LookupDiskArgs struct {
 // A collection of values returned by getDisk.
 type LookupDiskResult struct {
 	AccessMode        string                    `pulumi:"accessMode"`
+	Architecture      string                    `pulumi:"architecture"`
 	AsyncPrimaryDisks []GetDiskAsyncPrimaryDisk `pulumi:"asyncPrimaryDisks"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
@@ -99,10 +100,11 @@ type LookupDiskResult struct {
 	// Last attach timestamp in RFC3339 text format.
 	LastAttachTimestamp string `pulumi:"lastAttachTimestamp"`
 	// Last detach timestamp in RFC3339 text format.
-	LastDetachTimestamp string   `pulumi:"lastDetachTimestamp"`
-	Licenses            []string `pulumi:"licenses"`
-	MultiWriter         bool     `pulumi:"multiWriter"`
-	Name                string   `pulumi:"name"`
+	LastDetachTimestamp string         `pulumi:"lastDetachTimestamp"`
+	Licenses            []string       `pulumi:"licenses"`
+	MultiWriter         bool           `pulumi:"multiWriter"`
+	Name                string         `pulumi:"name"`
+	Params              []GetDiskParam `pulumi:"params"`
 	// Physical block size of the persistent disk, in bytes.
 	PhysicalBlockSizeBytes int               `pulumi:"physicalBlockSizeBytes"`
 	Project                *string           `pulumi:"project"`
@@ -125,7 +127,9 @@ type LookupDiskResult struct {
 	// disk. For example, if you created the persistent disk from an image
 	// that was later deleted and recreated under the same name, the source
 	// image ID would identify the exact version of the image that was used.
-	SourceImageId string `pulumi:"sourceImageId"`
+	SourceImageId           string `pulumi:"sourceImageId"`
+	SourceInstantSnapshot   string `pulumi:"sourceInstantSnapshot"`
+	SourceInstantSnapshotId string `pulumi:"sourceInstantSnapshotId"`
 	// The customer-supplied encryption key of the source snapshot.
 	SourceSnapshotEncryptionKeys []GetDiskSourceSnapshotEncryptionKey `pulumi:"sourceSnapshotEncryptionKeys"`
 	// The unique ID of the snapshot used to create this disk. This value
@@ -134,8 +138,9 @@ type LookupDiskResult struct {
 	// that was later deleted and recreated under the same name, the source
 	// snapshot ID would identify the exact version of the snapshot that was
 	// used.
-	SourceSnapshotId string `pulumi:"sourceSnapshotId"`
-	StoragePool      string `pulumi:"storagePool"`
+	SourceSnapshotId    string `pulumi:"sourceSnapshotId"`
+	SourceStorageObject string `pulumi:"sourceStorageObject"`
+	StoragePool         string `pulumi:"storagePool"`
 	// URL of the disk type resource describing which disk type to use to
 	// create the disk.
 	Type string `pulumi:"type"`
@@ -189,6 +194,10 @@ func (o LookupDiskResultOutput) ToLookupDiskResultOutputWithContext(ctx context.
 
 func (o LookupDiskResultOutput) AccessMode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.AccessMode }).(pulumi.StringOutput)
+}
+
+func (o LookupDiskResultOutput) Architecture() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiskResult) string { return v.Architecture }).(pulumi.StringOutput)
 }
 
 func (o LookupDiskResultOutput) AsyncPrimaryDisks() GetDiskAsyncPrimaryDiskArrayOutput {
@@ -272,6 +281,10 @@ func (o LookupDiskResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o LookupDiskResultOutput) Params() GetDiskParamArrayOutput {
+	return o.ApplyT(func(v LookupDiskResult) []GetDiskParam { return v.Params }).(GetDiskParamArrayOutput)
+}
+
 // Physical block size of the persistent disk, in bytes.
 func (o LookupDiskResultOutput) PhysicalBlockSizeBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDiskResult) int { return v.PhysicalBlockSizeBytes }).(pulumi.IntOutput)
@@ -334,6 +347,14 @@ func (o LookupDiskResultOutput) SourceImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.SourceImageId }).(pulumi.StringOutput)
 }
 
+func (o LookupDiskResultOutput) SourceInstantSnapshot() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiskResult) string { return v.SourceInstantSnapshot }).(pulumi.StringOutput)
+}
+
+func (o LookupDiskResultOutput) SourceInstantSnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiskResult) string { return v.SourceInstantSnapshotId }).(pulumi.StringOutput)
+}
+
 // The customer-supplied encryption key of the source snapshot.
 func (o LookupDiskResultOutput) SourceSnapshotEncryptionKeys() GetDiskSourceSnapshotEncryptionKeyArrayOutput {
 	return o.ApplyT(func(v LookupDiskResult) []GetDiskSourceSnapshotEncryptionKey { return v.SourceSnapshotEncryptionKeys }).(GetDiskSourceSnapshotEncryptionKeyArrayOutput)
@@ -347,6 +368,10 @@ func (o LookupDiskResultOutput) SourceSnapshotEncryptionKeys() GetDiskSourceSnap
 // used.
 func (o LookupDiskResultOutput) SourceSnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.SourceSnapshotId }).(pulumi.StringOutput)
+}
+
+func (o LookupDiskResultOutput) SourceStorageObject() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiskResult) string { return v.SourceStorageObject }).(pulumi.StringOutput)
 }
 
 func (o LookupDiskResultOutput) StoragePool() pulumi.StringOutput {

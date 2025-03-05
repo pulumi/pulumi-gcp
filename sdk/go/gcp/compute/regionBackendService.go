@@ -646,7 +646,8 @@ type RegionBackendService struct {
 	// A health check must be specified unless the backend service uses an internet
 	// or serverless NEG as a backend.
 	HealthChecks pulumi.StringPtrOutput `pulumi:"healthChecks"`
-	// Settings for enabling Cloud Identity Aware Proxy
+	// Settings for enabling Cloud Identity Aware Proxy.
+	// If OAuth client is not set, Google-managed OAuth client is used.
 	// Structure is documented below.
 	Iap RegionBackendServiceIapOutput `pulumi:"iap"`
 	// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
@@ -851,7 +852,8 @@ type regionBackendServiceState struct {
 	// A health check must be specified unless the backend service uses an internet
 	// or serverless NEG as a backend.
 	HealthChecks *string `pulumi:"healthChecks"`
-	// Settings for enabling Cloud Identity Aware Proxy
+	// Settings for enabling Cloud Identity Aware Proxy.
+	// If OAuth client is not set, Google-managed OAuth client is used.
 	// Structure is documented below.
 	Iap *RegionBackendServiceIap `pulumi:"iap"`
 	// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
@@ -1027,7 +1029,8 @@ type RegionBackendServiceState struct {
 	// A health check must be specified unless the backend service uses an internet
 	// or serverless NEG as a backend.
 	HealthChecks pulumi.StringPtrInput
-	// Settings for enabling Cloud Identity Aware Proxy
+	// Settings for enabling Cloud Identity Aware Proxy.
+	// If OAuth client is not set, Google-managed OAuth client is used.
 	// Structure is documented below.
 	Iap RegionBackendServiceIapPtrInput
 	// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
@@ -1200,7 +1203,8 @@ type regionBackendServiceArgs struct {
 	// A health check must be specified unless the backend service uses an internet
 	// or serverless NEG as a backend.
 	HealthChecks *string `pulumi:"healthChecks"`
-	// Settings for enabling Cloud Identity Aware Proxy
+	// Settings for enabling Cloud Identity Aware Proxy.
+	// If OAuth client is not set, Google-managed OAuth client is used.
 	// Structure is documented below.
 	Iap *RegionBackendServiceIap `pulumi:"iap"`
 	// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
@@ -1368,7 +1372,8 @@ type RegionBackendServiceArgs struct {
 	// A health check must be specified unless the backend service uses an internet
 	// or serverless NEG as a backend.
 	HealthChecks pulumi.StringPtrInput
-	// Settings for enabling Cloud Identity Aware Proxy
+	// Settings for enabling Cloud Identity Aware Proxy.
+	// If OAuth client is not set, Google-managed OAuth client is used.
 	// Structure is documented below.
 	Iap RegionBackendServiceIapPtrInput
 	// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
@@ -1672,7 +1677,8 @@ func (o RegionBackendServiceOutput) HealthChecks() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringPtrOutput { return v.HealthChecks }).(pulumi.StringPtrOutput)
 }
 
-// Settings for enabling Cloud Identity Aware Proxy
+// Settings for enabling Cloud Identity Aware Proxy.
+// If OAuth client is not set, Google-managed OAuth client is used.
 // Structure is documented below.
 func (o RegionBackendServiceOutput) Iap() RegionBackendServiceIapOutput {
 	return o.ApplyT(func(v *RegionBackendService) RegionBackendServiceIapOutput { return v.Iap }).(RegionBackendServiceIapOutput)

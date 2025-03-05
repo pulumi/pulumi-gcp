@@ -29,6 +29,15 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly Outputs.URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy? FaultInjectionPolicy;
         /// <summary>
+        /// Specifies the maximum duration (timeout) for streams on the selected route.
+        /// Unlike the `Timeout` field where the timeout duration starts from the time the request
+        /// has been fully processed (known as end-of-stream), the duration in this field
+        /// is computed from the beginning of the stream until the response has been processed,
+        /// including all retries. A stream that does not complete in this duration is closed.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.URLMapPathMatcherDefaultRouteActionMaxStreamDuration? MaxStreamDuration;
+        /// <summary>
         /// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
         /// Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
         /// the host / authority header is suffixed with -shadow.
@@ -70,6 +79,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             Outputs.URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy? faultInjectionPolicy,
 
+            Outputs.URLMapPathMatcherDefaultRouteActionMaxStreamDuration? maxStreamDuration,
+
             Outputs.URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy? requestMirrorPolicy,
 
             Outputs.URLMapPathMatcherDefaultRouteActionRetryPolicy? retryPolicy,
@@ -82,6 +93,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         {
             CorsPolicy = corsPolicy;
             FaultInjectionPolicy = faultInjectionPolicy;
+            MaxStreamDuration = maxStreamDuration;
             RequestMirrorPolicy = requestMirrorPolicy;
             RetryPolicy = retryPolicy;
             Timeout = timeout;

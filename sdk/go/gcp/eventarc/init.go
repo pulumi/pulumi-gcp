@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Channel{}
 	case "gcp:eventarc/googleChannelConfig:GoogleChannelConfig":
 		r = &GoogleChannelConfig{}
+	case "gcp:eventarc/messageBus:MessageBus":
+		r = &MessageBus{}
 	case "gcp:eventarc/trigger:Trigger":
 		r = &Trigger{}
 	default:
@@ -48,6 +50,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"eventarc/googleChannelConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"eventarc/messageBus",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

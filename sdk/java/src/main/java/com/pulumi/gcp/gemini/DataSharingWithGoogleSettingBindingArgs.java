@@ -68,7 +68,7 @@ public final class DataSharingWithGoogleSettingBindingArgs extends com.pulumi.re
 
     /**
      * Product type of the setting binding.
-     * Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+     * Possible values are: `GEMINI_CLOUD_ASSIST`.
      * 
      */
     @Import(name="product")
@@ -76,7 +76,7 @@ public final class DataSharingWithGoogleSettingBindingArgs extends com.pulumi.re
 
     /**
      * @return Product type of the setting binding.
-     * Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+     * Possible values are: `GEMINI_CLOUD_ASSIST`.
      * 
      */
     public Optional<Output<String>> product() {
@@ -233,7 +233,7 @@ public final class DataSharingWithGoogleSettingBindingArgs extends com.pulumi.re
 
         /**
          * @param product Product type of the setting binding.
-         * Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+         * Possible values are: `GEMINI_CLOUD_ASSIST`.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class DataSharingWithGoogleSettingBindingArgs extends com.pulumi.re
 
         /**
          * @param product Product type of the setting binding.
-         * Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+         * Possible values are: `GEMINI_CLOUD_ASSIST`.
          * 
          * @return builder
          * 

@@ -296,6 +296,10 @@ import (
 type Route struct {
 	pulumi.CustomResourceState
 
+	// Structure is documented below.
+	AsPaths RouteAsPathArrayOutput `pulumi:"asPaths"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property
 	// when you create the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -322,6 +326,8 @@ type Route struct {
 	// * `global/gateways/default-internet-gateway`
 	// * The string `default-internet-gateway`.
 	NextHopGateway pulumi.StringPtrOutput `pulumi:"nextHopGateway"`
+	// The hub network that should handle matching packets, which should conform to RFC1035.
+	NextHopHub pulumi.StringOutput `pulumi:"nextHopHub"`
 	// The IP address or URL to a forwarding rule of type
 	// loadBalancingScheme=INTERNAL that should handle matching
 	// packets.
@@ -358,6 +364,8 @@ type Route struct {
 	NextHopNetwork pulumi.StringOutput `pulumi:"nextHopNetwork"`
 	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
 	NextHopOrigin pulumi.StringOutput `pulumi:"nextHopOrigin"`
+	// The network peering name that should handle matching packets, which should conform to RFC1035.
+	NextHopPeering pulumi.StringOutput `pulumi:"nextHopPeering"`
 	// URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel pulumi.StringPtrOutput `pulumi:"nextHopVpnTunnel"`
 	// The priority of this route. Priority is used to break ties in cases
@@ -369,10 +377,23 @@ type Route struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The status of the route, which can be one of the following values:
+	// - 'ACTIVE' for an active route
+	// - 'INACTIVE' for an inactive route
+	RouteStatus pulumi.StringOutput `pulumi:"routeStatus"`
+	// The type of this route, which can be one of the following values:
+	// - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+	// - 'SUBNET' for a route from a subnet of the VPC
+	// - 'BGP' for a route learned from a BGP peer of this router
+	// - 'STATIC' for a static route
+	RouteType pulumi.StringOutput `pulumi:"routeType"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// A list of instance tags to which this route applies.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+	// Structure is documented below.
+	Warnings RouteWarningArrayOutput `pulumi:"warnings"`
 }
 
 // NewRoute registers a new resource with the given unique name, arguments, and options.
@@ -411,6 +432,10 @@ func GetRoute(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Route resources.
 type routeState struct {
+	// Structure is documented below.
+	AsPaths []RouteAsPath `pulumi:"asPaths"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property
 	// when you create the resource.
 	Description *string `pulumi:"description"`
@@ -437,6 +462,8 @@ type routeState struct {
 	// * `global/gateways/default-internet-gateway`
 	// * The string `default-internet-gateway`.
 	NextHopGateway *string `pulumi:"nextHopGateway"`
+	// The hub network that should handle matching packets, which should conform to RFC1035.
+	NextHopHub *string `pulumi:"nextHopHub"`
 	// The IP address or URL to a forwarding rule of type
 	// loadBalancingScheme=INTERNAL that should handle matching
 	// packets.
@@ -473,6 +500,8 @@ type routeState struct {
 	NextHopNetwork *string `pulumi:"nextHopNetwork"`
 	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
 	NextHopOrigin *string `pulumi:"nextHopOrigin"`
+	// The network peering name that should handle matching packets, which should conform to RFC1035.
+	NextHopPeering *string `pulumi:"nextHopPeering"`
 	// URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel *string `pulumi:"nextHopVpnTunnel"`
 	// The priority of this route. Priority is used to break ties in cases
@@ -484,13 +513,30 @@ type routeState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The status of the route, which can be one of the following values:
+	// - 'ACTIVE' for an active route
+	// - 'INACTIVE' for an inactive route
+	RouteStatus *string `pulumi:"routeStatus"`
+	// The type of this route, which can be one of the following values:
+	// - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+	// - 'SUBNET' for a route from a subnet of the VPC
+	// - 'BGP' for a route learned from a BGP peer of this router
+	// - 'STATIC' for a static route
+	RouteType *string `pulumi:"routeType"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// A list of instance tags to which this route applies.
 	Tags []string `pulumi:"tags"`
+	// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+	// Structure is documented below.
+	Warnings []RouteWarning `pulumi:"warnings"`
 }
 
 type RouteState struct {
+	// Structure is documented below.
+	AsPaths RouteAsPathArrayInput
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property
 	// when you create the resource.
 	Description pulumi.StringPtrInput
@@ -517,6 +563,8 @@ type RouteState struct {
 	// * `global/gateways/default-internet-gateway`
 	// * The string `default-internet-gateway`.
 	NextHopGateway pulumi.StringPtrInput
+	// The hub network that should handle matching packets, which should conform to RFC1035.
+	NextHopHub pulumi.StringPtrInput
 	// The IP address or URL to a forwarding rule of type
 	// loadBalancingScheme=INTERNAL that should handle matching
 	// packets.
@@ -553,6 +601,8 @@ type RouteState struct {
 	NextHopNetwork pulumi.StringPtrInput
 	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
 	NextHopOrigin pulumi.StringPtrInput
+	// The network peering name that should handle matching packets, which should conform to RFC1035.
+	NextHopPeering pulumi.StringPtrInput
 	// URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel pulumi.StringPtrInput
 	// The priority of this route. Priority is used to break ties in cases
@@ -564,10 +614,23 @@ type RouteState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The status of the route, which can be one of the following values:
+	// - 'ACTIVE' for an active route
+	// - 'INACTIVE' for an inactive route
+	RouteStatus pulumi.StringPtrInput
+	// The type of this route, which can be one of the following values:
+	// - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+	// - 'SUBNET' for a route from a subnet of the VPC
+	// - 'BGP' for a route learned from a BGP peer of this router
+	// - 'STATIC' for a static route
+	RouteType pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// A list of instance tags to which this route applies.
 	Tags pulumi.StringArrayInput
+	// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+	// Structure is documented below.
+	Warnings RouteWarningArrayInput
 }
 
 func (RouteState) ElementType() reflect.Type {
@@ -802,6 +865,16 @@ func (o RouteOutput) ToRouteOutputWithContext(ctx context.Context) RouteOutput {
 	return o
 }
 
+// Structure is documented below.
+func (o RouteOutput) AsPaths() RouteAsPathArrayOutput {
+	return o.ApplyT(func(v *Route) RouteAsPathArrayOutput { return v.AsPaths }).(RouteAsPathArrayOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o RouteOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
 // An optional description of this resource. Provide this property
 // when you create the resource.
 func (o RouteOutput) Description() pulumi.StringPtrOutput {
@@ -841,6 +914,11 @@ func (o RouteOutput) Network() pulumi.StringOutput {
 // * The string `default-internet-gateway`.
 func (o RouteOutput) NextHopGateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringPtrOutput { return v.NextHopGateway }).(pulumi.StringPtrOutput)
+}
+
+// The hub network that should handle matching packets, which should conform to RFC1035.
+func (o RouteOutput) NextHopHub() pulumi.StringOutput {
+	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.NextHopHub }).(pulumi.StringOutput)
 }
 
 // The IP address or URL to a forwarding rule of type
@@ -903,6 +981,11 @@ func (o RouteOutput) NextHopOrigin() pulumi.StringOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.NextHopOrigin }).(pulumi.StringOutput)
 }
 
+// The network peering name that should handle matching packets, which should conform to RFC1035.
+func (o RouteOutput) NextHopPeering() pulumi.StringOutput {
+	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.NextHopPeering }).(pulumi.StringOutput)
+}
+
 // URL to a VpnTunnel that should handle matching packets.
 func (o RouteOutput) NextHopVpnTunnel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringPtrOutput { return v.NextHopVpnTunnel }).(pulumi.StringPtrOutput)
@@ -923,6 +1006,22 @@ func (o RouteOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The status of the route, which can be one of the following values:
+// - 'ACTIVE' for an active route
+// - 'INACTIVE' for an inactive route
+func (o RouteOutput) RouteStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.RouteStatus }).(pulumi.StringOutput)
+}
+
+// The type of this route, which can be one of the following values:
+// - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+// - 'SUBNET' for a route from a subnet of the VPC
+// - 'BGP' for a route learned from a BGP peer of this router
+// - 'STATIC' for a static route
+func (o RouteOutput) RouteType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.RouteType }).(pulumi.StringOutput)
+}
+
 // The URI of the created resource.
 func (o RouteOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
@@ -931,6 +1030,12 @@ func (o RouteOutput) SelfLink() pulumi.StringOutput {
 // A list of instance tags to which this route applies.
 func (o RouteOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+// Structure is documented below.
+func (o RouteOutput) Warnings() RouteWarningArrayOutput {
+	return o.ApplyT(func(v *Route) RouteWarningArrayOutput { return v.Warnings }).(RouteWarningArrayOutput)
 }
 
 type RouteArrayOutput struct{ *pulumi.OutputState }

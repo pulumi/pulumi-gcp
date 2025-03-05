@@ -29,6 +29,19 @@ __all__ = [
     'InstanceStateInfo',
     'InstanceStateInfoUpdateInfo',
     'InstanceZoneDistributionConfig',
+    'GetInstanceDesiredPscAutoConnectionResult',
+    'GetInstanceDiscoveryEndpointResult',
+    'GetInstanceEndpointResult',
+    'GetInstanceEndpointConnectionResult',
+    'GetInstanceEndpointConnectionPscAutoConnectionResult',
+    'GetInstanceNodeConfigResult',
+    'GetInstancePersistenceConfigResult',
+    'GetInstancePersistenceConfigAofConfigResult',
+    'GetInstancePersistenceConfigRdbConfigResult',
+    'GetInstancePscAutoConnectionResult',
+    'GetInstanceStateInfoResult',
+    'GetInstanceStateInfoUpdateInfoResult',
+    'GetInstanceZoneDistributionConfigResult',
 ]
 
 @pulumi.output_type
@@ -889,6 +902,575 @@ class InstanceZoneDistributionConfig(dict):
     @property
     @pulumi.getter
     def zone(self) -> Optional[str]:
+        """
+        Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
+        Ignored for MULTI_ZONE mode.
+        """
+        return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
+class GetInstanceDesiredPscAutoConnectionResult(dict):
+    def __init__(__self__, *,
+                 network: str,
+                 project_id: str):
+        """
+        :param str network: Required. The consumer network where the IP address resides, in the form of
+               projects/{project_id}/global/networks/{network_id}.
+        :param str project_id: Required. The consumer project_id where the forwarding rule is created from.
+        """
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        Required. The consumer network where the IP address resides, in the form of
+        projects/{project_id}/global/networks/{network_id}.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        Required. The consumer project_id where the forwarding rule is created from.
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class GetInstanceDiscoveryEndpointResult(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 network: str,
+                 port: int):
+        """
+        :param str address: Output only. IP address of the exposed endpoint clients connect to.
+        :param str network: Output only. The network where the IP address of the discovery endpoint will be
+               reserved, in the form of
+               projects/{network_project}/global/networks/{network_id}.
+        :param int port: Output only. The port number of the exposed endpoint.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        Output only. IP address of the exposed endpoint clients connect to.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        Output only. The network where the IP address of the discovery endpoint will be
+        reserved, in the form of
+        projects/{network_project}/global/networks/{network_id}.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        Output only. The port number of the exposed endpoint.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class GetInstanceEndpointResult(dict):
+    def __init__(__self__, *,
+                 connections: Sequence['outputs.GetInstanceEndpointConnectionResult']):
+        """
+        :param Sequence['GetInstanceEndpointConnectionArgs'] connections: A group of PSC connections. They are created in the same VPC network, one for each service attachment in the cluster.
+        """
+        pulumi.set(__self__, "connections", connections)
+
+    @property
+    @pulumi.getter
+    def connections(self) -> Sequence['outputs.GetInstanceEndpointConnectionResult']:
+        """
+        A group of PSC connections. They are created in the same VPC network, one for each service attachment in the cluster.
+        """
+        return pulumi.get(self, "connections")
+
+
+@pulumi.output_type
+class GetInstanceEndpointConnectionResult(dict):
+    def __init__(__self__, *,
+                 psc_auto_connections: Sequence['outputs.GetInstanceEndpointConnectionPscAutoConnectionResult']):
+        """
+        :param Sequence['GetInstanceEndpointConnectionPscAutoConnectionArgs'] psc_auto_connections: Detailed information of a PSC connection that is created through service connectivity automation.
+        """
+        pulumi.set(__self__, "psc_auto_connections", psc_auto_connections)
+
+    @property
+    @pulumi.getter(name="pscAutoConnections")
+    def psc_auto_connections(self) -> Sequence['outputs.GetInstanceEndpointConnectionPscAutoConnectionResult']:
+        """
+        Detailed information of a PSC connection that is created through service connectivity automation.
+        """
+        return pulumi.get(self, "psc_auto_connections")
+
+
+@pulumi.output_type
+class GetInstanceEndpointConnectionPscAutoConnectionResult(dict):
+    def __init__(__self__, *,
+                 connection_type: str,
+                 forwarding_rule: str,
+                 ip_address: str,
+                 network: str,
+                 port: int,
+                 project_id: str,
+                 psc_connection_id: str,
+                 service_attachment: str):
+        """
+        :param str connection_type: Output Only. Type of a PSC Connection. 
+                Possible values:
+                CONNECTION_TYPE_DISCOVERY 
+                CONNECTION_TYPE_PRIMARY 
+                CONNECTION_TYPE_READER
+        :param str forwarding_rule: Output only. The URI of the consumer side forwarding rule.
+               Format:
+               projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+        :param str ip_address: Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+        :param str network: Output only. The consumer network where the IP address resides, in the form of
+               projects/{project_id}/global/networks/{network_id}.
+        :param int port: Output only. Ports of the exposed endpoint.
+        :param str project_id: Output only. The consumer project_id where the forwarding rule is created from.
+        :param str psc_connection_id: Output only. The PSC connection id of the forwarding rule connected to the
+               service attachment.
+        :param str service_attachment: Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+        """
+        pulumi.set(__self__, "connection_type", connection_type)
+        pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+        pulumi.set(__self__, "service_attachment", service_attachment)
+
+    @property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> str:
+        """
+        Output Only. Type of a PSC Connection. 
+         Possible values:
+         CONNECTION_TYPE_DISCOVERY 
+         CONNECTION_TYPE_PRIMARY 
+         CONNECTION_TYPE_READER
+        """
+        return pulumi.get(self, "connection_type")
+
+    @property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> str:
+        """
+        Output only. The URI of the consumer side forwarding rule.
+        Format:
+        projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> str:
+        """
+        Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        Output only. The consumer network where the IP address resides, in the form of
+        projects/{project_id}/global/networks/{network_id}.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        Output only. Ports of the exposed endpoint.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        Output only. The consumer project_id where the forwarding rule is created from.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> str:
+        """
+        Output only. The PSC connection id of the forwarding rule connected to the
+        service attachment.
+        """
+        return pulumi.get(self, "psc_connection_id")
+
+    @property
+    @pulumi.getter(name="serviceAttachment")
+    def service_attachment(self) -> str:
+        """
+        Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+        """
+        return pulumi.get(self, "service_attachment")
+
+
+@pulumi.output_type
+class GetInstanceNodeConfigResult(dict):
+    def __init__(__self__, *,
+                 size_gb: float):
+        """
+        :param float size_gb: Output only. Memory size in GB of the node.
+        """
+        pulumi.set(__self__, "size_gb", size_gb)
+
+    @property
+    @pulumi.getter(name="sizeGb")
+    def size_gb(self) -> float:
+        """
+        Output only. Memory size in GB of the node.
+        """
+        return pulumi.get(self, "size_gb")
+
+
+@pulumi.output_type
+class GetInstancePersistenceConfigResult(dict):
+    def __init__(__self__, *,
+                 aof_configs: Sequence['outputs.GetInstancePersistenceConfigAofConfigResult'],
+                 mode: str,
+                 rdb_configs: Sequence['outputs.GetInstancePersistenceConfigRdbConfigResult']):
+        """
+        :param Sequence['GetInstancePersistenceConfigAofConfigArgs'] aof_configs: Configuration for AOF based persistence.
+        :param str mode: Optional. Current persistence mode. 
+                Possible values:
+               DISABLED
+               RDB
+               AOF Possible values: ["DISABLED", "RDB", "AOF"]
+        :param Sequence['GetInstancePersistenceConfigRdbConfigArgs'] rdb_configs: Configuration for RDB based persistence.
+        """
+        pulumi.set(__self__, "aof_configs", aof_configs)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "rdb_configs", rdb_configs)
+
+    @property
+    @pulumi.getter(name="aofConfigs")
+    def aof_configs(self) -> Sequence['outputs.GetInstancePersistenceConfigAofConfigResult']:
+        """
+        Configuration for AOF based persistence.
+        """
+        return pulumi.get(self, "aof_configs")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        Optional. Current persistence mode. 
+         Possible values:
+        DISABLED
+        RDB
+        AOF Possible values: ["DISABLED", "RDB", "AOF"]
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="rdbConfigs")
+    def rdb_configs(self) -> Sequence['outputs.GetInstancePersistenceConfigRdbConfigResult']:
+        """
+        Configuration for RDB based persistence.
+        """
+        return pulumi.get(self, "rdb_configs")
+
+
+@pulumi.output_type
+class GetInstancePersistenceConfigAofConfigResult(dict):
+    def __init__(__self__, *,
+                 append_fsync: str):
+        """
+        :param str append_fsync: Optional. The fsync mode. 
+                Possible values:
+                NEVER
+               EVERY_SEC
+               ALWAYS
+        """
+        pulumi.set(__self__, "append_fsync", append_fsync)
+
+    @property
+    @pulumi.getter(name="appendFsync")
+    def append_fsync(self) -> str:
+        """
+        Optional. The fsync mode. 
+         Possible values:
+         NEVER
+        EVERY_SEC
+        ALWAYS
+        """
+        return pulumi.get(self, "append_fsync")
+
+
+@pulumi.output_type
+class GetInstancePersistenceConfigRdbConfigResult(dict):
+    def __init__(__self__, *,
+                 rdb_snapshot_period: str,
+                 rdb_snapshot_start_time: str):
+        """
+        :param str rdb_snapshot_period: Optional. Period between RDB snapshots. 
+                Possible values:
+                ONE_HOUR
+               SIX_HOURS
+               TWELVE_HOURS
+               TWENTY_FOUR_HOURS
+        :param str rdb_snapshot_start_time: Optional. Time that the first snapshot was/will be attempted, and to which future
+               snapshots will be aligned. If not provided, the current time will be
+               used.
+        """
+        pulumi.set(__self__, "rdb_snapshot_period", rdb_snapshot_period)
+        pulumi.set(__self__, "rdb_snapshot_start_time", rdb_snapshot_start_time)
+
+    @property
+    @pulumi.getter(name="rdbSnapshotPeriod")
+    def rdb_snapshot_period(self) -> str:
+        """
+        Optional. Period between RDB snapshots. 
+         Possible values:
+         ONE_HOUR
+        SIX_HOURS
+        TWELVE_HOURS
+        TWENTY_FOUR_HOURS
+        """
+        return pulumi.get(self, "rdb_snapshot_period")
+
+    @property
+    @pulumi.getter(name="rdbSnapshotStartTime")
+    def rdb_snapshot_start_time(self) -> str:
+        """
+        Optional. Time that the first snapshot was/will be attempted, and to which future
+        snapshots will be aligned. If not provided, the current time will be
+        used.
+        """
+        return pulumi.get(self, "rdb_snapshot_start_time")
+
+
+@pulumi.output_type
+class GetInstancePscAutoConnectionResult(dict):
+    def __init__(__self__, *,
+                 connection_type: str,
+                 forwarding_rule: str,
+                 ip_address: str,
+                 network: str,
+                 port: int,
+                 project_id: str,
+                 psc_connection_id: str,
+                 psc_connection_status: str,
+                 service_attachment: str):
+        """
+        :param str connection_type: Output Only. Type of a PSC Connection. 
+                Possible values:
+                CONNECTION_TYPE_DISCOVERY 
+                CONNECTION_TYPE_PRIMARY 
+                CONNECTION_TYPE_READER
+        :param str forwarding_rule: Output only. The URI of the consumer side forwarding rule.
+               Format:
+               projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+        :param str ip_address: Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+        :param str network: Output only. The consumer network where the IP address resides, in the form of
+               projects/{project_id}/global/networks/{network_id}.
+        :param int port: Output only. Ports of the exposed endpoint.
+        :param str project_id: Output only. The consumer project_id where the forwarding rule is created from.
+        :param str psc_connection_id: Output only. The PSC connection id of the forwarding rule connected to the
+               service attachment.
+        :param str psc_connection_status: Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists. 
+                Possible values:
+                ACTIVE 
+                NOT_FOUND
+        :param str service_attachment: Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+        """
+        pulumi.set(__self__, "connection_type", connection_type)
+        pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+        pulumi.set(__self__, "psc_connection_status", psc_connection_status)
+        pulumi.set(__self__, "service_attachment", service_attachment)
+
+    @property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> str:
+        """
+        Output Only. Type of a PSC Connection. 
+         Possible values:
+         CONNECTION_TYPE_DISCOVERY 
+         CONNECTION_TYPE_PRIMARY 
+         CONNECTION_TYPE_READER
+        """
+        return pulumi.get(self, "connection_type")
+
+    @property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> str:
+        """
+        Output only. The URI of the consumer side forwarding rule.
+        Format:
+        projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> str:
+        """
+        Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        Output only. The consumer network where the IP address resides, in the form of
+        projects/{project_id}/global/networks/{network_id}.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        Output only. Ports of the exposed endpoint.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        Output only. The consumer project_id where the forwarding rule is created from.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> str:
+        """
+        Output only. The PSC connection id of the forwarding rule connected to the
+        service attachment.
+        """
+        return pulumi.get(self, "psc_connection_id")
+
+    @property
+    @pulumi.getter(name="pscConnectionStatus")
+    def psc_connection_status(self) -> str:
+        """
+        Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists. 
+         Possible values:
+         ACTIVE 
+         NOT_FOUND
+        """
+        return pulumi.get(self, "psc_connection_status")
+
+    @property
+    @pulumi.getter(name="serviceAttachment")
+    def service_attachment(self) -> str:
+        """
+        Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+        """
+        return pulumi.get(self, "service_attachment")
+
+
+@pulumi.output_type
+class GetInstanceStateInfoResult(dict):
+    def __init__(__self__, *,
+                 update_infos: Sequence['outputs.GetInstanceStateInfoUpdateInfoResult']):
+        """
+        :param Sequence['GetInstanceStateInfoUpdateInfoArgs'] update_infos: Represents information about instance with state UPDATING.
+        """
+        pulumi.set(__self__, "update_infos", update_infos)
+
+    @property
+    @pulumi.getter(name="updateInfos")
+    def update_infos(self) -> Sequence['outputs.GetInstanceStateInfoUpdateInfoResult']:
+        """
+        Represents information about instance with state UPDATING.
+        """
+        return pulumi.get(self, "update_infos")
+
+
+@pulumi.output_type
+class GetInstanceStateInfoUpdateInfoResult(dict):
+    def __init__(__self__, *,
+                 target_replica_count: int,
+                 target_shard_count: int):
+        """
+        :param int target_replica_count: Output only. Target number of replica nodes per shard for the instance.
+        :param int target_shard_count: Output only. Target number of shards for the instance.
+        """
+        pulumi.set(__self__, "target_replica_count", target_replica_count)
+        pulumi.set(__self__, "target_shard_count", target_shard_count)
+
+    @property
+    @pulumi.getter(name="targetReplicaCount")
+    def target_replica_count(self) -> int:
+        """
+        Output only. Target number of replica nodes per shard for the instance.
+        """
+        return pulumi.get(self, "target_replica_count")
+
+    @property
+    @pulumi.getter(name="targetShardCount")
+    def target_shard_count(self) -> int:
+        """
+        Output only. Target number of shards for the instance.
+        """
+        return pulumi.get(self, "target_shard_count")
+
+
+@pulumi.output_type
+class GetInstanceZoneDistributionConfigResult(dict):
+    def __init__(__self__, *,
+                 mode: str,
+                 zone: str):
+        """
+        :param str mode: Optional. Current zone distribution mode. Defaults to MULTI_ZONE. 
+                Possible values:
+                MULTI_ZONE
+               SINGLE_ZONE Possible values: ["MULTI_ZONE", "SINGLE_ZONE"]
+        :param str zone: Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
+               Ignored for MULTI_ZONE mode.
+        """
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        Optional. Current zone distribution mode. Defaults to MULTI_ZONE. 
+         Possible values:
+         MULTI_ZONE
+        SINGLE_ZONE Possible values: ["MULTI_ZONE", "SINGLE_ZONE"]
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> str:
         """
         Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
         Ignored for MULTI_ZONE mode.

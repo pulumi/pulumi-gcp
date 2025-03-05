@@ -16,14 +16,14 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
     public static final ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs Empty = new ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs();
 
     /**
-     * The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need.
+     * The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need. Dataproc will create only standard VMs until it reaches standardCapacityBase, then it will start using standardCapacityPercentAboveBase to mix Spot with Standard VMs. eg. If 15 instances are requested and standardCapacityBase is 5, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances.
      * 
      */
     @Import(name="standardCapacityBase")
     private @Nullable Output<Integer> standardCapacityBase;
 
     /**
-     * @return The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need.
+     * @return The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need. Dataproc will create only standard VMs until it reaches standardCapacityBase, then it will start using standardCapacityPercentAboveBase to mix Spot with Standard VMs. eg. If 15 instances are requested and standardCapacityBase is 5, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances.
      * 
      */
     public Optional<Output<Integer>> standardCapacityBase() {
@@ -31,14 +31,16 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
     }
 
     /**
-     * The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs.
+     * The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs. The percentage applies only to the capacity above standardCapacityBase. eg. If 15 instances are requested and standardCapacityBase is 5 and standardCapacityPercentAboveBase is 30, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances. The mix will be 30% standard and 70% spot.
+     * ***
      * 
      */
     @Import(name="standardCapacityPercentAboveBase")
     private @Nullable Output<Integer> standardCapacityPercentAboveBase;
 
     /**
-     * @return The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs.
+     * @return The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs. The percentage applies only to the capacity above standardCapacityBase. eg. If 15 instances are requested and standardCapacityBase is 5 and standardCapacityPercentAboveBase is 30, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances. The mix will be 30% standard and 70% spot.
+     * ***
      * 
      */
     public Optional<Output<Integer>> standardCapacityPercentAboveBase() {
@@ -71,7 +73,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
         }
 
         /**
-         * @param standardCapacityBase The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need.
+         * @param standardCapacityBase The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need. Dataproc will create only standard VMs until it reaches standardCapacityBase, then it will start using standardCapacityPercentAboveBase to mix Spot with Standard VMs. eg. If 15 instances are requested and standardCapacityBase is 5, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances.
          * 
          * @return builder
          * 
@@ -82,7 +84,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
         }
 
         /**
-         * @param standardCapacityBase The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need.
+         * @param standardCapacityBase The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need. Dataproc will create only standard VMs until it reaches standardCapacityBase, then it will start using standardCapacityPercentAboveBase to mix Spot with Standard VMs. eg. If 15 instances are requested and standardCapacityBase is 5, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances.
          * 
          * @return builder
          * 
@@ -92,7 +94,8 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
         }
 
         /**
-         * @param standardCapacityPercentAboveBase The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs.
+         * @param standardCapacityPercentAboveBase The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs. The percentage applies only to the capacity above standardCapacityBase. eg. If 15 instances are requested and standardCapacityBase is 5 and standardCapacityPercentAboveBase is 30, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances. The mix will be 30% standard and 70% spot.
+         * ***
          * 
          * @return builder
          * 
@@ -103,7 +106,8 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
         }
 
         /**
-         * @param standardCapacityPercentAboveBase The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs.
+         * @param standardCapacityPercentAboveBase The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs. The percentage applies only to the capacity above standardCapacityBase. eg. If 15 instances are requested and standardCapacityBase is 5 and standardCapacityPercentAboveBase is 30, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances. The mix will be 30% standard and 70% spot.
+         * ***
          * 
          * @return builder
          * 

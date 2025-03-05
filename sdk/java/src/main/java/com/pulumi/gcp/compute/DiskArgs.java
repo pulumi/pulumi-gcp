@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.DiskAsyncPrimaryDiskArgs;
 import com.pulumi.gcp.compute.inputs.DiskDiskEncryptionKeyArgs;
 import com.pulumi.gcp.compute.inputs.DiskGuestOsFeatureArgs;
+import com.pulumi.gcp.compute.inputs.DiskParamsArgs;
 import com.pulumi.gcp.compute.inputs.DiskSourceImageEncryptionKeyArgs;
 import com.pulumi.gcp.compute.inputs.DiskSourceSnapshotEncryptionKeyArgs;
 import java.lang.Boolean;
@@ -45,6 +46,21 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> accessMode() {
         return Optional.ofNullable(this.accessMode);
+    }
+
+    /**
+     * (Optional)
+     * 
+     */
+    @Import(name="architecture")
+    private @Nullable Output<String> architecture;
+
+    /**
+     * @return (Optional)
+     * 
+     */
+    public Optional<Output<String>> architecture() {
+        return Optional.ofNullable(this.architecture);
     }
 
     /**
@@ -291,6 +307,23 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<DiskParamsArgs> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DiskParamsArgs>> params() {
+        return Optional.ofNullable(this.params);
+    }
+
+    /**
      * Physical block size of the persistent disk, in bytes. If not present
      * in a request, a default value is used. Currently supported sizes
      * are 4096 and 16384, other sizes may be added in the future.
@@ -504,6 +537,29 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
+     * For example, the following are valid values:
+     * * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot`
+     * * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
+     * * `zones/zone/instantSnapshots/instantSnapshot`
+     * 
+     */
+    @Import(name="sourceInstantSnapshot")
+    private @Nullable Output<String> sourceInstantSnapshot;
+
+    /**
+     * @return The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
+     * For example, the following are valid values:
+     * * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot`
+     * * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
+     * * `zones/zone/instantSnapshots/instantSnapshot`
+     * 
+     */
+    public Optional<Output<String>> sourceInstantSnapshot() {
+        return Optional.ofNullable(this.sourceInstantSnapshot);
+    }
+
+    /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption
      * key.
@@ -522,6 +578,29 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<DiskSourceSnapshotEncryptionKeyArgs>> sourceSnapshotEncryptionKey() {
         return Optional.ofNullable(this.sourceSnapshotEncryptionKey);
+    }
+
+    /**
+     * The full Google Cloud Storage URI where the disk image is stored.
+     * This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
+     * Valid URIs may start with gs:// or https://storage.googleapis.com/.
+     * This flag is not optimized for creating multiple disks from a source storage object.
+     * To create many disks from a source storage object, use gcloud compute images import instead.
+     * 
+     */
+    @Import(name="sourceStorageObject")
+    private @Nullable Output<String> sourceStorageObject;
+
+    /**
+     * @return The full Google Cloud Storage URI where the disk image is stored.
+     * This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
+     * Valid URIs may start with gs:// or https://storage.googleapis.com/.
+     * This flag is not optimized for creating multiple disks from a source storage object.
+     * To create many disks from a source storage object, use gcloud compute images import instead.
+     * 
+     */
+    public Optional<Output<String>> sourceStorageObject() {
+        return Optional.ofNullable(this.sourceStorageObject);
     }
 
     /**
@@ -585,6 +664,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
     private DiskArgs(DiskArgs $) {
         this.accessMode = $.accessMode;
+        this.architecture = $.architecture;
         this.asyncPrimaryDisk = $.asyncPrimaryDisk;
         this.description = $.description;
         this.diskEncryptionKey = $.diskEncryptionKey;
@@ -596,6 +676,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
         this.licenses = $.licenses;
         this.multiWriter = $.multiWriter;
         this.name = $.name;
+        this.params = $.params;
         this.physicalBlockSizeBytes = $.physicalBlockSizeBytes;
         this.project = $.project;
         this.provisionedIops = $.provisionedIops;
@@ -605,7 +686,9 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
         this.snapshot = $.snapshot;
         this.sourceDisk = $.sourceDisk;
         this.sourceImageEncryptionKey = $.sourceImageEncryptionKey;
+        this.sourceInstantSnapshot = $.sourceInstantSnapshot;
         this.sourceSnapshotEncryptionKey = $.sourceSnapshotEncryptionKey;
+        this.sourceStorageObject = $.sourceStorageObject;
         this.storagePool = $.storagePool;
         this.type = $.type;
         this.zone = $.zone;
@@ -656,6 +739,27 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder accessMode(String accessMode) {
             return accessMode(Output.of(accessMode));
+        }
+
+        /**
+         * @param architecture (Optional)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder architecture(@Nullable Output<String> architecture) {
+            $.architecture = architecture;
+            return this;
+        }
+
+        /**
+         * @param architecture (Optional)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder architecture(String architecture) {
+            return architecture(Output.of(architecture));
         }
 
         /**
@@ -990,6 +1094,29 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<DiskParamsArgs> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(DiskParamsArgs params) {
+            return params(Output.of(params));
+        }
+
+        /**
          * @param physicalBlockSizeBytes Physical block size of the persistent disk, in bytes. If not present
          * in a request, a default value is used. Currently supported sizes
          * are 4096 and 16384, other sizes may be added in the future.
@@ -1272,6 +1399,35 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param sourceInstantSnapshot The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
+         * For example, the following are valid values:
+         * * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot`
+         * * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
+         * * `zones/zone/instantSnapshots/instantSnapshot`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceInstantSnapshot(@Nullable Output<String> sourceInstantSnapshot) {
+            $.sourceInstantSnapshot = sourceInstantSnapshot;
+            return this;
+        }
+
+        /**
+         * @param sourceInstantSnapshot The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
+         * For example, the following are valid values:
+         * * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot`
+         * * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
+         * * `zones/zone/instantSnapshots/instantSnapshot`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceInstantSnapshot(String sourceInstantSnapshot) {
+            return sourceInstantSnapshot(Output.of(sourceInstantSnapshot));
+        }
+
+        /**
          * @param sourceSnapshotEncryptionKey The customer-supplied encryption key of the source snapshot. Required
          * if the source snapshot is protected by a customer-supplied encryption
          * key.
@@ -1296,6 +1452,35 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sourceSnapshotEncryptionKey(DiskSourceSnapshotEncryptionKeyArgs sourceSnapshotEncryptionKey) {
             return sourceSnapshotEncryptionKey(Output.of(sourceSnapshotEncryptionKey));
+        }
+
+        /**
+         * @param sourceStorageObject The full Google Cloud Storage URI where the disk image is stored.
+         * This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
+         * Valid URIs may start with gs:// or https://storage.googleapis.com/.
+         * This flag is not optimized for creating multiple disks from a source storage object.
+         * To create many disks from a source storage object, use gcloud compute images import instead.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceStorageObject(@Nullable Output<String> sourceStorageObject) {
+            $.sourceStorageObject = sourceStorageObject;
+            return this;
+        }
+
+        /**
+         * @param sourceStorageObject The full Google Cloud Storage URI where the disk image is stored.
+         * This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
+         * Valid URIs may start with gs:// or https://storage.googleapis.com/.
+         * This flag is not optimized for creating multiple disks from a source storage object.
+         * To create many disks from a source storage object, use gcloud compute images import instead.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceStorageObject(String sourceStorageObject) {
+            return sourceStorageObject(Output.of(sourceStorageObject));
         }
 
         /**

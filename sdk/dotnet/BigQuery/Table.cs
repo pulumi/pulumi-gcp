@@ -259,7 +259,7 @@ namespace Pulumi.Gcp.BigQuery
         /// type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
         /// </summary>
         [Output("maxStaleness")]
-        public Output<string?> MaxStaleness { get; private set; } = null!;
+        public Output<string> MaxStaleness { get; private set; } = null!;
 
         /// <summary>
         /// The size of this table in bytes, excluding any data in the streaming buffer.

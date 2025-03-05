@@ -4816,7 +4816,7 @@ if not MYPY:
         """
         provisioning_model_mix: NotRequired[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgsDict']]
         """
-        Defines how Dataproc should create VMs with a mixture of provisioning models.
+        Defines how the Group selects the provisioning model to ensure required reliability.
         """
 elif False:
     ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgsDict: TypeAlias = Mapping[str, Any]
@@ -4830,7 +4830,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs']]] instance_selection_lists: List of instance selection options that the group will use when creating new VMs.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs']]] instance_selection_results: A list of instance selection results in the group.
-        :param pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs'] provisioning_model_mix: Defines how Dataproc should create VMs with a mixture of provisioning models.
+        :param pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs'] provisioning_model_mix: Defines how the Group selects the provisioning model to ensure required reliability.
         """
         if instance_selection_lists is not None:
             pulumi.set(__self__, "instance_selection_lists", instance_selection_lists)
@@ -4867,7 +4867,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs:
     @pulumi.getter(name="provisioningModelMix")
     def provisioning_model_mix(self) -> Optional[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs']]:
         """
-        Defines how Dataproc should create VMs with a mixture of provisioning models.
+        Defines how the Group selects the provisioning model to ensure required reliability.
         """
         return pulumi.get(self, "provisioning_model_mix")
 
@@ -4885,8 +4885,6 @@ if not MYPY:
         rank: NotRequired[pulumi.Input[int]]
         """
         Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
-
-        - - -
         """
 elif False:
     ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgsDict: TypeAlias = Mapping[str, Any]
@@ -4899,8 +4897,6 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] machine_types: Full machine-type names, e.g. `"n1-standard-16"`.
         :param pulumi.Input[int] rank: Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
-               
-               - - -
         """
         if machine_types is not None:
             pulumi.set(__self__, "machine_types", machine_types)
@@ -4924,8 +4920,6 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
     def rank(self) -> Optional[pulumi.Input[int]]:
         """
         Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
-
-        - - -
         """
         return pulumi.get(self, "rank")
 
@@ -4990,11 +4984,12 @@ if not MYPY:
     class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgsDict(TypedDict):
         standard_capacity_base: NotRequired[pulumi.Input[int]]
         """
-        The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need.
+        The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need. Dataproc will create only standard VMs until it reaches standardCapacityBase, then it will start using standardCapacityPercentAboveBase to mix Spot with Standard VMs. eg. If 15 instances are requested and standardCapacityBase is 5, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances.
         """
         standard_capacity_percent_above_base: NotRequired[pulumi.Input[int]]
         """
-        The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs.
+        The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs. The percentage applies only to the capacity above standardCapacityBase. eg. If 15 instances are requested and standardCapacityBase is 5 and standardCapacityPercentAboveBase is 30, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances. The mix will be 30% standard and 70% spot.
+        - - -
         """
 elif False:
     ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgsDict: TypeAlias = Mapping[str, Any]
@@ -5005,8 +5000,9 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvis
                  standard_capacity_base: Optional[pulumi.Input[int]] = None,
                  standard_capacity_percent_above_base: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] standard_capacity_base: The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need.
-        :param pulumi.Input[int] standard_capacity_percent_above_base: The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs.
+        :param pulumi.Input[int] standard_capacity_base: The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need. Dataproc will create only standard VMs until it reaches standardCapacityBase, then it will start using standardCapacityPercentAboveBase to mix Spot with Standard VMs. eg. If 15 instances are requested and standardCapacityBase is 5, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances.
+        :param pulumi.Input[int] standard_capacity_percent_above_base: The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs. The percentage applies only to the capacity above standardCapacityBase. eg. If 15 instances are requested and standardCapacityBase is 5 and standardCapacityPercentAboveBase is 30, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances. The mix will be 30% standard and 70% spot.
+               - - -
         """
         if standard_capacity_base is not None:
             pulumi.set(__self__, "standard_capacity_base", standard_capacity_base)
@@ -5017,7 +5013,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvis
     @pulumi.getter(name="standardCapacityBase")
     def standard_capacity_base(self) -> Optional[pulumi.Input[int]]:
         """
-        The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need.
+        The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need. Dataproc will create only standard VMs until it reaches standardCapacityBase, then it will start using standardCapacityPercentAboveBase to mix Spot with Standard VMs. eg. If 15 instances are requested and standardCapacityBase is 5, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances.
         """
         return pulumi.get(self, "standard_capacity_base")
 
@@ -5029,7 +5025,8 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvis
     @pulumi.getter(name="standardCapacityPercentAboveBase")
     def standard_capacity_percent_above_base(self) -> Optional[pulumi.Input[int]]:
         """
-        The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs.
+        The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs. The percentage applies only to the capacity above standardCapacityBase. eg. If 15 instances are requested and standardCapacityBase is 5 and standardCapacityPercentAboveBase is 30, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances. The mix will be 30% standard and 70% spot.
+        - - -
         """
         return pulumi.get(self, "standard_capacity_percent_above_base")
 
