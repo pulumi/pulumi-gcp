@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Notebooks
 {
     /// <summary>
+    /// &gt; **Warning:** `gcp.notebooks.Location` is deprecated and will be removed in a future major release. This resource is not functional.
+    /// 
     /// Represents a Location resource.
     /// 
     /// ## Import

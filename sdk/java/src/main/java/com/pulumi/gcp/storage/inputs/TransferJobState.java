@@ -6,6 +6,7 @@ package com.pulumi.gcp.storage.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.storage.inputs.TransferJobEventStreamArgs;
+import com.pulumi.gcp.storage.inputs.TransferJobLoggingConfigArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobNotificationConfigArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobReplicationSpecArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobScheduleArgs;
@@ -93,6 +94,21 @@ public final class TransferJobState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> lastModificationTime() {
         return Optional.ofNullable(this.lastModificationTime);
+    }
+
+    /**
+     * Logging configuration. Structure documented below.
+     * 
+     */
+    @Import(name="loggingConfig")
+    private @Nullable Output<TransferJobLoggingConfigArgs> loggingConfig;
+
+    /**
+     * @return Logging configuration. Structure documented below.
+     * 
+     */
+    public Optional<Output<TransferJobLoggingConfigArgs>> loggingConfig() {
+        return Optional.ofNullable(this.loggingConfig);
     }
 
     /**
@@ -214,6 +230,7 @@ public final class TransferJobState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.eventStream = $.eventStream;
         this.lastModificationTime = $.lastModificationTime;
+        this.loggingConfig = $.loggingConfig;
         this.name = $.name;
         this.notificationConfig = $.notificationConfig;
         this.project = $.project;
@@ -344,6 +361,27 @@ public final class TransferJobState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder lastModificationTime(String lastModificationTime) {
             return lastModificationTime(Output.of(lastModificationTime));
+        }
+
+        /**
+         * @param loggingConfig Logging configuration. Structure documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loggingConfig(@Nullable Output<TransferJobLoggingConfigArgs> loggingConfig) {
+            $.loggingConfig = loggingConfig;
+            return this;
+        }
+
+        /**
+         * @param loggingConfig Logging configuration. Structure documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loggingConfig(TransferJobLoggingConfigArgs loggingConfig) {
+            return loggingConfig(Output.of(loggingConfig));
         }
 
         /**

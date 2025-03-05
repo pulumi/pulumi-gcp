@@ -118,6 +118,23 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
+     * Possible values are: `CUSTOM`, `PRESET`.
+     * 
+     */
+    @Import(name="policyMode")
+    private @Nullable Output<String> policyMode;
+
+    /**
+     * @return Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
+     * Possible values are: `CUSTOM`, `PRESET`.
+     * 
+     */
+    public Optional<Output<String>> policyMode() {
+        return Optional.ofNullable(this.policyMode);
+    }
+
+    /**
      * Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
      * Possible values are: `MESH`, `STAR`.
      * 
@@ -239,6 +256,7 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
         this.exportPsc = $.exportPsc;
         this.labels = $.labels;
         this.name = $.name;
+        this.policyMode = $.policyMode;
         this.presetTopology = $.presetTopology;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
@@ -398,6 +416,29 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param policyMode Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
+         * Possible values are: `CUSTOM`, `PRESET`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyMode(@Nullable Output<String> policyMode) {
+            $.policyMode = policyMode;
+            return this;
+        }
+
+        /**
+         * @param policyMode Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
+         * Possible values are: `CUSTOM`, `PRESET`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyMode(String policyMode) {
+            return policyMode(Output.of(policyMode));
         }
 
         /**

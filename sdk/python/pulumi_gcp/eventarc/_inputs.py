@@ -15,6 +15,8 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'MessageBusLoggingConfigArgs',
+    'MessageBusLoggingConfigArgsDict',
     'TriggerDestinationArgs',
     'TriggerDestinationArgsDict',
     'TriggerDestinationCloudRunServiceArgs',
@@ -34,6 +36,44 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class MessageBusLoggingConfigArgsDict(TypedDict):
+        log_severity: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The minimum severity of logs that will be sent to Stackdriver/Platform
+        Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+        Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+        """
+elif False:
+    MessageBusLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MessageBusLoggingConfigArgs:
+    def __init__(__self__, *,
+                 log_severity: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] log_severity: Optional. The minimum severity of logs that will be sent to Stackdriver/Platform
+               Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+               Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+        """
+        if log_severity is not None:
+            pulumi.set(__self__, "log_severity", log_severity)
+
+    @property
+    @pulumi.getter(name="logSeverity")
+    def log_severity(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The minimum severity of logs that will be sent to Stackdriver/Platform
+        Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+        Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+        """
+        return pulumi.get(self, "log_severity")
+
+    @log_severity.setter
+    def log_severity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_severity", value)
+
 
 if not MYPY:
     class TriggerDestinationArgsDict(TypedDict):

@@ -10,6 +10,11 @@ export type ApiHubInstance = import("./apiHubInstance").ApiHubInstance;
 export const ApiHubInstance: typeof import("./apiHubInstance").ApiHubInstance = null as any;
 utilities.lazyLoad(exports, ["ApiHubInstance"], () => require("./apiHubInstance"));
 
+export { HostProjectRegistrationArgs, HostProjectRegistrationState } from "./hostProjectRegistration";
+export type HostProjectRegistration = import("./hostProjectRegistration").HostProjectRegistration;
+export const HostProjectRegistration: typeof import("./hostProjectRegistration").HostProjectRegistration = null as any;
+utilities.lazyLoad(exports, ["HostProjectRegistration"], () => require("./hostProjectRegistration"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -17,9 +22,12 @@ const _module = {
         switch (type) {
             case "gcp:apihub/apiHubInstance:ApiHubInstance":
                 return new ApiHubInstance(name, <any>undefined, { urn })
+            case "gcp:apihub/hostProjectRegistration:HostProjectRegistration":
+                return new HostProjectRegistration(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "apihub/apiHubInstance", _module)
+pulumi.runtime.registerResourceModule("gcp", "apihub/hostProjectRegistration", _module)

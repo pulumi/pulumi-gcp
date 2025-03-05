@@ -940,6 +940,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "apihub/hostProjectRegistration",
+  "fqn": "pulumi_gcp.apihub",
+  "classes": {
+   "gcp:apihub/hostProjectRegistration:HostProjectRegistration": "HostProjectRegistration"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "appengine/application",
   "fqn": "pulumi_gcp.appengine",
   "classes": {
@@ -2832,6 +2840,38 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/instanceTemplateIamPolicy:InstanceTemplateIamPolicy": "InstanceTemplateIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/instantSnapshot",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/instantSnapshot:InstantSnapshot": "InstantSnapshot"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/instantSnapshotIamBinding",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/instantSnapshotIamBinding:InstantSnapshotIamBinding": "InstantSnapshotIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/instantSnapshotIamMember",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/instantSnapshotIamMember:InstantSnapshotIamMember": "InstantSnapshotIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/instantSnapshotIamPolicy",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/instantSnapshotIamPolicy:InstantSnapshotIamPolicy": "InstantSnapshotIamPolicy"
   }
  },
  {
@@ -4916,6 +4956,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "eventarc/messageBus",
+  "fqn": "pulumi_gcp.eventarc",
+  "classes": {
+   "gcp:eventarc/messageBus:MessageBus": "MessageBus"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "eventarc/trigger",
   "fqn": "pulumi_gcp.eventarc",
   "classes": {
@@ -5240,6 +5288,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.gemini",
   "classes": {
    "gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting": "GeminiGcpEnablementSetting"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gemini/geminiGcpEnablementSettingBinding",
+  "fqn": "pulumi_gcp.gemini",
+  "classes": {
+   "gcp:gemini/geminiGcpEnablementSettingBinding:GeminiGcpEnablementSettingBinding": "GeminiGcpEnablementSettingBinding"
   }
  },
  {
@@ -8440,6 +8496,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.sql",
   "classes": {
    "gcp:sql/user:User": "User"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "storage/anywhereCache",
+  "fqn": "pulumi_gcp.storage",
+  "classes": {
+   "gcp:storage/anywhereCache:AnywhereCache": "AnywhereCache"
   }
  },
  {

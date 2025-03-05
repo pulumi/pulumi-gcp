@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AnywhereCacheArgs, AnywhereCacheState } from "./anywhereCache";
+export type AnywhereCache = import("./anywhereCache").AnywhereCache;
+export const AnywhereCache: typeof import("./anywhereCache").AnywhereCache = null as any;
+utilities.lazyLoad(exports, ["AnywhereCache"], () => require("./anywhereCache"));
+
 export { BucketArgs, BucketState } from "./bucket";
 export type Bucket = import("./bucket").Bucket;
 export const Bucket: typeof import("./bucket").Bucket = null as any;
@@ -171,6 +176,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:storage/anywhereCache:AnywhereCache":
+                return new AnywhereCache(name, <any>undefined, { urn })
             case "gcp:storage/bucket:Bucket":
                 return new Bucket(name, <any>undefined, { urn })
             case "gcp:storage/bucketACL:BucketACL":
@@ -218,6 +225,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "storage/anywhereCache", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/bucket", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/bucketACL", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/bucketAccessControl", _module)

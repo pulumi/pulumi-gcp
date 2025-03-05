@@ -13,6 +13,151 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type MessageBusLoggingConfig struct {
+	// Optional. The minimum severity of logs that will be sent to Stackdriver/Platform
+	// Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+	// Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+	LogSeverity *string `pulumi:"logSeverity"`
+}
+
+// MessageBusLoggingConfigInput is an input type that accepts MessageBusLoggingConfigArgs and MessageBusLoggingConfigOutput values.
+// You can construct a concrete instance of `MessageBusLoggingConfigInput` via:
+//
+//	MessageBusLoggingConfigArgs{...}
+type MessageBusLoggingConfigInput interface {
+	pulumi.Input
+
+	ToMessageBusLoggingConfigOutput() MessageBusLoggingConfigOutput
+	ToMessageBusLoggingConfigOutputWithContext(context.Context) MessageBusLoggingConfigOutput
+}
+
+type MessageBusLoggingConfigArgs struct {
+	// Optional. The minimum severity of logs that will be sent to Stackdriver/Platform
+	// Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+	// Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+	LogSeverity pulumi.StringPtrInput `pulumi:"logSeverity"`
+}
+
+func (MessageBusLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MessageBusLoggingConfig)(nil)).Elem()
+}
+
+func (i MessageBusLoggingConfigArgs) ToMessageBusLoggingConfigOutput() MessageBusLoggingConfigOutput {
+	return i.ToMessageBusLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i MessageBusLoggingConfigArgs) ToMessageBusLoggingConfigOutputWithContext(ctx context.Context) MessageBusLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MessageBusLoggingConfigOutput)
+}
+
+func (i MessageBusLoggingConfigArgs) ToMessageBusLoggingConfigPtrOutput() MessageBusLoggingConfigPtrOutput {
+	return i.ToMessageBusLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MessageBusLoggingConfigArgs) ToMessageBusLoggingConfigPtrOutputWithContext(ctx context.Context) MessageBusLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MessageBusLoggingConfigOutput).ToMessageBusLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// MessageBusLoggingConfigPtrInput is an input type that accepts MessageBusLoggingConfigArgs, MessageBusLoggingConfigPtr and MessageBusLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `MessageBusLoggingConfigPtrInput` via:
+//
+//	        MessageBusLoggingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type MessageBusLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToMessageBusLoggingConfigPtrOutput() MessageBusLoggingConfigPtrOutput
+	ToMessageBusLoggingConfigPtrOutputWithContext(context.Context) MessageBusLoggingConfigPtrOutput
+}
+
+type messageBusLoggingConfigPtrType MessageBusLoggingConfigArgs
+
+func MessageBusLoggingConfigPtr(v *MessageBusLoggingConfigArgs) MessageBusLoggingConfigPtrInput {
+	return (*messageBusLoggingConfigPtrType)(v)
+}
+
+func (*messageBusLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MessageBusLoggingConfig)(nil)).Elem()
+}
+
+func (i *messageBusLoggingConfigPtrType) ToMessageBusLoggingConfigPtrOutput() MessageBusLoggingConfigPtrOutput {
+	return i.ToMessageBusLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *messageBusLoggingConfigPtrType) ToMessageBusLoggingConfigPtrOutputWithContext(ctx context.Context) MessageBusLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MessageBusLoggingConfigPtrOutput)
+}
+
+type MessageBusLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (MessageBusLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MessageBusLoggingConfig)(nil)).Elem()
+}
+
+func (o MessageBusLoggingConfigOutput) ToMessageBusLoggingConfigOutput() MessageBusLoggingConfigOutput {
+	return o
+}
+
+func (o MessageBusLoggingConfigOutput) ToMessageBusLoggingConfigOutputWithContext(ctx context.Context) MessageBusLoggingConfigOutput {
+	return o
+}
+
+func (o MessageBusLoggingConfigOutput) ToMessageBusLoggingConfigPtrOutput() MessageBusLoggingConfigPtrOutput {
+	return o.ToMessageBusLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MessageBusLoggingConfigOutput) ToMessageBusLoggingConfigPtrOutputWithContext(ctx context.Context) MessageBusLoggingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MessageBusLoggingConfig) *MessageBusLoggingConfig {
+		return &v
+	}).(MessageBusLoggingConfigPtrOutput)
+}
+
+// Optional. The minimum severity of logs that will be sent to Stackdriver/Platform
+// Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+// Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+func (o MessageBusLoggingConfigOutput) LogSeverity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MessageBusLoggingConfig) *string { return v.LogSeverity }).(pulumi.StringPtrOutput)
+}
+
+type MessageBusLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MessageBusLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MessageBusLoggingConfig)(nil)).Elem()
+}
+
+func (o MessageBusLoggingConfigPtrOutput) ToMessageBusLoggingConfigPtrOutput() MessageBusLoggingConfigPtrOutput {
+	return o
+}
+
+func (o MessageBusLoggingConfigPtrOutput) ToMessageBusLoggingConfigPtrOutputWithContext(ctx context.Context) MessageBusLoggingConfigPtrOutput {
+	return o
+}
+
+func (o MessageBusLoggingConfigPtrOutput) Elem() MessageBusLoggingConfigOutput {
+	return o.ApplyT(func(v *MessageBusLoggingConfig) MessageBusLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MessageBusLoggingConfig
+		return ret
+	}).(MessageBusLoggingConfigOutput)
+}
+
+// Optional. The minimum severity of logs that will be sent to Stackdriver/Platform
+// Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+// Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+func (o MessageBusLoggingConfigPtrOutput) LogSeverity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MessageBusLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogSeverity
+	}).(pulumi.StringPtrOutput)
+}
+
 type TriggerDestination struct {
 	// (Output)
 	// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
@@ -1352,6 +1497,8 @@ func (o TriggerTransportPubsubPtrOutput) Topic() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MessageBusLoggingConfigInput)(nil)).Elem(), MessageBusLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MessageBusLoggingConfigPtrInput)(nil)).Elem(), MessageBusLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationInput)(nil)).Elem(), TriggerDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationPtrInput)(nil)).Elem(), TriggerDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationCloudRunServiceInput)(nil)).Elem(), TriggerDestinationCloudRunServiceArgs{})
@@ -1368,6 +1515,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerTransportPtrInput)(nil)).Elem(), TriggerTransportArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerTransportPubsubInput)(nil)).Elem(), TriggerTransportPubsubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerTransportPubsubPtrInput)(nil)).Elem(), TriggerTransportPubsubArgs{})
+	pulumi.RegisterOutputType(MessageBusLoggingConfigOutput{})
+	pulumi.RegisterOutputType(MessageBusLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(TriggerDestinationOutput{})
 	pulumi.RegisterOutputType(TriggerDestinationPtrOutput{})
 	pulumi.RegisterOutputType(TriggerDestinationCloudRunServiceOutput{})

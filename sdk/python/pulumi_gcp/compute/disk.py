@@ -22,6 +22,7 @@ __all__ = ['DiskArgs', 'Disk']
 class DiskArgs:
     def __init__(__self__, *,
                  access_mode: Optional[pulumi.Input[str]] = None,
+                 architecture: Optional[pulumi.Input[str]] = None,
                  async_primary_disk: Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input['DiskDiskEncryptionKeyArgs']] = None,
@@ -33,6 +34,7 @@ class DiskArgs:
                  licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  multi_writer: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 params: Optional[pulumi.Input['DiskParamsArgs']] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provisioned_iops: Optional[pulumi.Input[int]] = None,
@@ -42,7 +44,9 @@ class DiskArgs:
                  snapshot: Optional[pulumi.Input[str]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_image_encryption_key: Optional[pulumi.Input['DiskSourceImageEncryptionKeyArgs']] = None,
+                 source_instant_snapshot: Optional[pulumi.Input[str]] = None,
                  source_snapshot_encryption_key: Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs']] = None,
+                 source_storage_object: Optional[pulumi.Input[str]] = None,
                  storage_pool: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -53,6 +57,7 @@ class DiskArgs:
                * READ_WRITE_SINGLE
                * READ_WRITE_MANY
                * READ_ONLY_SINGLE
+        :param pulumi.Input[str] architecture: (Optional)
         :param pulumi.Input['DiskAsyncPrimaryDiskArgs'] async_primary_disk: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
@@ -100,6 +105,8 @@ class DiskArgs:
                
                
                - - -
+        :param pulumi.Input['DiskParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[int] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present
                in a request, a default value is used. Currently supported sizes
                are 4096 and 16384, other sizes may be added in the future.
@@ -148,10 +155,20 @@ class DiskArgs:
         :param pulumi.Input['DiskSourceImageEncryptionKeyArgs'] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
                the source image is protected by a customer-supplied encryption key.
                Structure is documented below.
+        :param pulumi.Input[str] source_instant_snapshot: The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
+               For example, the following are valid values:
+               * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot`
+               * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
+               * `zones/zone/instantSnapshots/instantSnapshot`
         :param pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs'] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
                Structure is documented below.
+        :param pulumi.Input[str] source_storage_object: The full Google Cloud Storage URI where the disk image is stored.
+               This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
+               Valid URIs may start with gs:// or https://storage.googleapis.com/.
+               This flag is not optimized for creating multiple disks from a source storage object.
+               To create many disks from a source storage object, use gcloud compute images import instead.
         :param pulumi.Input[str] storage_pool: The URL or the name of the storage pool in which the new disk is created.
                For example:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
@@ -164,6 +181,8 @@ class DiskArgs:
         """
         if access_mode is not None:
             pulumi.set(__self__, "access_mode", access_mode)
+        if architecture is not None:
+            pulumi.set(__self__, "architecture", architecture)
         if async_primary_disk is not None:
             pulumi.set(__self__, "async_primary_disk", async_primary_disk)
         if description is not None:
@@ -189,6 +208,8 @@ class DiskArgs:
             pulumi.set(__self__, "multi_writer", multi_writer)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if physical_block_size_bytes is not None:
             pulumi.set(__self__, "physical_block_size_bytes", physical_block_size_bytes)
         if project is not None:
@@ -207,8 +228,12 @@ class DiskArgs:
             pulumi.set(__self__, "source_disk", source_disk)
         if source_image_encryption_key is not None:
             pulumi.set(__self__, "source_image_encryption_key", source_image_encryption_key)
+        if source_instant_snapshot is not None:
+            pulumi.set(__self__, "source_instant_snapshot", source_instant_snapshot)
         if source_snapshot_encryption_key is not None:
             pulumi.set(__self__, "source_snapshot_encryption_key", source_snapshot_encryption_key)
+        if source_storage_object is not None:
+            pulumi.set(__self__, "source_storage_object", source_storage_object)
         if storage_pool is not None:
             pulumi.set(__self__, "storage_pool", storage_pool)
         if type is not None:
@@ -231,6 +256,18 @@ class DiskArgs:
     @access_mode.setter
     def access_mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "access_mode", value)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Optional)
+        """
+        return pulumi.get(self, "architecture")
+
+    @architecture.setter
+    def architecture(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "architecture", value)
 
     @property
     @pulumi.getter(name="asyncPrimaryDisk")
@@ -402,6 +439,19 @@ class DiskArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['DiskParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['DiskParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @property
     @pulumi.getter(name="physicalBlockSizeBytes")
     def physical_block_size_bytes(self) -> Optional[pulumi.Input[int]]:
         """
@@ -549,6 +599,22 @@ class DiskArgs:
         pulumi.set(self, "source_image_encryption_key", value)
 
     @property
+    @pulumi.getter(name="sourceInstantSnapshot")
+    def source_instant_snapshot(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
+        For example, the following are valid values:
+        * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot`
+        * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
+        * `zones/zone/instantSnapshots/instantSnapshot`
+        """
+        return pulumi.get(self, "source_instant_snapshot")
+
+    @source_instant_snapshot.setter
+    def source_instant_snapshot(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_instant_snapshot", value)
+
+    @property
     @pulumi.getter(name="sourceSnapshotEncryptionKey")
     def source_snapshot_encryption_key(self) -> Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs']]:
         """
@@ -562,6 +628,22 @@ class DiskArgs:
     @source_snapshot_encryption_key.setter
     def source_snapshot_encryption_key(self, value: Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs']]):
         pulumi.set(self, "source_snapshot_encryption_key", value)
+
+    @property
+    @pulumi.getter(name="sourceStorageObject")
+    def source_storage_object(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full Google Cloud Storage URI where the disk image is stored.
+        This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
+        Valid URIs may start with gs:// or https://storage.googleapis.com/.
+        This flag is not optimized for creating multiple disks from a source storage object.
+        To create many disks from a source storage object, use gcloud compute images import instead.
+        """
+        return pulumi.get(self, "source_storage_object")
+
+    @source_storage_object.setter
+    def source_storage_object(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_storage_object", value)
 
     @property
     @pulumi.getter(name="storagePool")
@@ -610,6 +692,7 @@ class DiskArgs:
 class _DiskState:
     def __init__(__self__, *,
                  access_mode: Optional[pulumi.Input[str]] = None,
+                 architecture: Optional[pulumi.Input[str]] = None,
                  async_primary_disk: Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -627,6 +710,7 @@ class _DiskState:
                  licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  multi_writer: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 params: Optional[pulumi.Input['DiskParamsArgs']] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provisioned_iops: Optional[pulumi.Input[int]] = None,
@@ -640,8 +724,11 @@ class _DiskState:
                  source_disk_id: Optional[pulumi.Input[str]] = None,
                  source_image_encryption_key: Optional[pulumi.Input['DiskSourceImageEncryptionKeyArgs']] = None,
                  source_image_id: Optional[pulumi.Input[str]] = None,
+                 source_instant_snapshot: Optional[pulumi.Input[str]] = None,
+                 source_instant_snapshot_id: Optional[pulumi.Input[str]] = None,
                  source_snapshot_encryption_key: Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs']] = None,
                  source_snapshot_id: Optional[pulumi.Input[str]] = None,
+                 source_storage_object: Optional[pulumi.Input[str]] = None,
                  storage_pool: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -653,6 +740,7 @@ class _DiskState:
                * READ_WRITE_SINGLE
                * READ_WRITE_MANY
                * READ_ONLY_SINGLE
+        :param pulumi.Input[str] architecture: (Optional)
         :param pulumi.Input['DiskAsyncPrimaryDiskArgs'] async_primary_disk: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
@@ -707,6 +795,8 @@ class _DiskState:
                
                
                - - -
+        :param pulumi.Input['DiskParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[int] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present
                in a request, a default value is used. Currently supported sizes
                are 4096 and 16384, other sizes may be added in the future.
@@ -766,6 +856,16 @@ class _DiskState:
                disk. For example, if you created the persistent disk from an image
                that was later deleted and recreated under the same name, the source
                image ID would identify the exact version of the image that was used.
+        :param pulumi.Input[str] source_instant_snapshot: The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
+               For example, the following are valid values:
+               * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot`
+               * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
+               * `zones/zone/instantSnapshots/instantSnapshot`
+        :param pulumi.Input[str] source_instant_snapshot_id: The unique ID of the instant snapshot used to create this disk. This value identifies
+               the exact instant snapshot that was used to create this persistent disk.
+               For example, if you created the persistent disk from an instant snapshot that was later
+               deleted and recreated under the same name, the source instant snapshot ID would identify
+               the exact version of the instant snapshot that was used.
         :param pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs'] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
@@ -776,6 +876,11 @@ class _DiskState:
                that was later deleted and recreated under the same name, the source
                snapshot ID would identify the exact version of the snapshot that was
                used.
+        :param pulumi.Input[str] source_storage_object: The full Google Cloud Storage URI where the disk image is stored.
+               This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
+               Valid URIs may start with gs:// or https://storage.googleapis.com/.
+               This flag is not optimized for creating multiple disks from a source storage object.
+               To create many disks from a source storage object, use gcloud compute images import instead.
         :param pulumi.Input[str] storage_pool: The URL or the name of the storage pool in which the new disk is created.
                For example:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
@@ -790,6 +895,8 @@ class _DiskState:
         """
         if access_mode is not None:
             pulumi.set(__self__, "access_mode", access_mode)
+        if architecture is not None:
+            pulumi.set(__self__, "architecture", architecture)
         if async_primary_disk is not None:
             pulumi.set(__self__, "async_primary_disk", async_primary_disk)
         if creation_timestamp is not None:
@@ -827,6 +934,8 @@ class _DiskState:
             pulumi.set(__self__, "multi_writer", multi_writer)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if physical_block_size_bytes is not None:
             pulumi.set(__self__, "physical_block_size_bytes", physical_block_size_bytes)
         if project is not None:
@@ -853,10 +962,16 @@ class _DiskState:
             pulumi.set(__self__, "source_image_encryption_key", source_image_encryption_key)
         if source_image_id is not None:
             pulumi.set(__self__, "source_image_id", source_image_id)
+        if source_instant_snapshot is not None:
+            pulumi.set(__self__, "source_instant_snapshot", source_instant_snapshot)
+        if source_instant_snapshot_id is not None:
+            pulumi.set(__self__, "source_instant_snapshot_id", source_instant_snapshot_id)
         if source_snapshot_encryption_key is not None:
             pulumi.set(__self__, "source_snapshot_encryption_key", source_snapshot_encryption_key)
         if source_snapshot_id is not None:
             pulumi.set(__self__, "source_snapshot_id", source_snapshot_id)
+        if source_storage_object is not None:
+            pulumi.set(__self__, "source_storage_object", source_storage_object)
         if storage_pool is not None:
             pulumi.set(__self__, "storage_pool", storage_pool)
         if type is not None:
@@ -881,6 +996,18 @@ class _DiskState:
     @access_mode.setter
     def access_mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "access_mode", value)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Optional)
+        """
+        return pulumi.get(self, "architecture")
+
+    @architecture.setter
+    def architecture(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "architecture", value)
 
     @property
     @pulumi.getter(name="asyncPrimaryDisk")
@@ -1125,6 +1252,19 @@ class _DiskState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['DiskParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['DiskParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @property
     @pulumi.getter(name="physicalBlockSizeBytes")
     def physical_block_size_bytes(self) -> Optional[pulumi.Input[int]]:
         """
@@ -1327,6 +1467,38 @@ class _DiskState:
         pulumi.set(self, "source_image_id", value)
 
     @property
+    @pulumi.getter(name="sourceInstantSnapshot")
+    def source_instant_snapshot(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
+        For example, the following are valid values:
+        * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot`
+        * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
+        * `zones/zone/instantSnapshots/instantSnapshot`
+        """
+        return pulumi.get(self, "source_instant_snapshot")
+
+    @source_instant_snapshot.setter
+    def source_instant_snapshot(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_instant_snapshot", value)
+
+    @property
+    @pulumi.getter(name="sourceInstantSnapshotId")
+    def source_instant_snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique ID of the instant snapshot used to create this disk. This value identifies
+        the exact instant snapshot that was used to create this persistent disk.
+        For example, if you created the persistent disk from an instant snapshot that was later
+        deleted and recreated under the same name, the source instant snapshot ID would identify
+        the exact version of the instant snapshot that was used.
+        """
+        return pulumi.get(self, "source_instant_snapshot_id")
+
+    @source_instant_snapshot_id.setter
+    def source_instant_snapshot_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_instant_snapshot_id", value)
+
+    @property
     @pulumi.getter(name="sourceSnapshotEncryptionKey")
     def source_snapshot_encryption_key(self) -> Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs']]:
         """
@@ -1357,6 +1529,22 @@ class _DiskState:
     @source_snapshot_id.setter
     def source_snapshot_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_snapshot_id", value)
+
+    @property
+    @pulumi.getter(name="sourceStorageObject")
+    def source_storage_object(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full Google Cloud Storage URI where the disk image is stored.
+        This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
+        Valid URIs may start with gs:// or https://storage.googleapis.com/.
+        This flag is not optimized for creating multiple disks from a source storage object.
+        To create many disks from a source storage object, use gcloud compute images import instead.
+        """
+        return pulumi.get(self, "source_storage_object")
+
+    @source_storage_object.setter
+    def source_storage_object(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_storage_object", value)
 
     @property
     @pulumi.getter(name="storagePool")
@@ -1420,6 +1608,7 @@ class Disk(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_mode: Optional[pulumi.Input[str]] = None,
+                 architecture: Optional[pulumi.Input[str]] = None,
                  async_primary_disk: Optional[pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict']]] = None,
@@ -1431,6 +1620,7 @@ class Disk(pulumi.CustomResource):
                  licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  multi_writer: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 params: Optional[pulumi.Input[Union['DiskParamsArgs', 'DiskParamsArgsDict']]] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provisioned_iops: Optional[pulumi.Input[int]] = None,
@@ -1440,7 +1630,9 @@ class Disk(pulumi.CustomResource):
                  snapshot: Optional[pulumi.Input[str]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_image_encryption_key: Optional[pulumi.Input[Union['DiskSourceImageEncryptionKeyArgs', 'DiskSourceImageEncryptionKeyArgsDict']]] = None,
+                 source_instant_snapshot: Optional[pulumi.Input[str]] = None,
                  source_snapshot_encryption_key: Optional[pulumi.Input[Union['DiskSourceSnapshotEncryptionKeyArgs', 'DiskSourceSnapshotEncryptionKeyArgsDict']]] = None,
+                 source_storage_object: Optional[pulumi.Input[str]] = None,
                  storage_pool: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -1571,6 +1763,7 @@ class Disk(pulumi.CustomResource):
                * READ_WRITE_SINGLE
                * READ_WRITE_MANY
                * READ_ONLY_SINGLE
+        :param pulumi.Input[str] architecture: (Optional)
         :param pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']] async_primary_disk: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
@@ -1618,6 +1811,8 @@ class Disk(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[Union['DiskParamsArgs', 'DiskParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[int] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present
                in a request, a default value is used. Currently supported sizes
                are 4096 and 16384, other sizes may be added in the future.
@@ -1666,10 +1861,20 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[Union['DiskSourceImageEncryptionKeyArgs', 'DiskSourceImageEncryptionKeyArgsDict']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
                the source image is protected by a customer-supplied encryption key.
                Structure is documented below.
+        :param pulumi.Input[str] source_instant_snapshot: The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
+               For example, the following are valid values:
+               * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot`
+               * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
+               * `zones/zone/instantSnapshots/instantSnapshot`
         :param pulumi.Input[Union['DiskSourceSnapshotEncryptionKeyArgs', 'DiskSourceSnapshotEncryptionKeyArgsDict']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
                Structure is documented below.
+        :param pulumi.Input[str] source_storage_object: The full Google Cloud Storage URI where the disk image is stored.
+               This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
+               Valid URIs may start with gs:// or https://storage.googleapis.com/.
+               This flag is not optimized for creating multiple disks from a source storage object.
+               To create many disks from a source storage object, use gcloud compute images import instead.
         :param pulumi.Input[str] storage_pool: The URL or the name of the storage pool in which the new disk is created.
                For example:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
@@ -1821,6 +2026,7 @@ class Disk(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_mode: Optional[pulumi.Input[str]] = None,
+                 architecture: Optional[pulumi.Input[str]] = None,
                  async_primary_disk: Optional[pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict']]] = None,
@@ -1832,6 +2038,7 @@ class Disk(pulumi.CustomResource):
                  licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  multi_writer: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 params: Optional[pulumi.Input[Union['DiskParamsArgs', 'DiskParamsArgsDict']]] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provisioned_iops: Optional[pulumi.Input[int]] = None,
@@ -1841,7 +2048,9 @@ class Disk(pulumi.CustomResource):
                  snapshot: Optional[pulumi.Input[str]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_image_encryption_key: Optional[pulumi.Input[Union['DiskSourceImageEncryptionKeyArgs', 'DiskSourceImageEncryptionKeyArgsDict']]] = None,
+                 source_instant_snapshot: Optional[pulumi.Input[str]] = None,
                  source_snapshot_encryption_key: Optional[pulumi.Input[Union['DiskSourceSnapshotEncryptionKeyArgs', 'DiskSourceSnapshotEncryptionKeyArgsDict']]] = None,
+                 source_storage_object: Optional[pulumi.Input[str]] = None,
                  storage_pool: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -1855,6 +2064,7 @@ class Disk(pulumi.CustomResource):
             __props__ = DiskArgs.__new__(DiskArgs)
 
             __props__.__dict__["access_mode"] = access_mode
+            __props__.__dict__["architecture"] = architecture
             __props__.__dict__["async_primary_disk"] = async_primary_disk
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_encryption_key"] = disk_encryption_key
@@ -1866,6 +2076,7 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["licenses"] = licenses
             __props__.__dict__["multi_writer"] = multi_writer
             __props__.__dict__["name"] = name
+            __props__.__dict__["params"] = params
             __props__.__dict__["physical_block_size_bytes"] = physical_block_size_bytes
             __props__.__dict__["project"] = project
             __props__.__dict__["provisioned_iops"] = provisioned_iops
@@ -1875,7 +2086,9 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["snapshot"] = snapshot
             __props__.__dict__["source_disk"] = source_disk
             __props__.__dict__["source_image_encryption_key"] = source_image_encryption_key
+            __props__.__dict__["source_instant_snapshot"] = source_instant_snapshot
             __props__.__dict__["source_snapshot_encryption_key"] = source_snapshot_encryption_key
+            __props__.__dict__["source_storage_object"] = source_storage_object
             __props__.__dict__["storage_pool"] = storage_pool
             __props__.__dict__["type"] = type
             __props__.__dict__["zone"] = zone
@@ -1889,6 +2102,7 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["self_link"] = None
             __props__.__dict__["source_disk_id"] = None
             __props__.__dict__["source_image_id"] = None
+            __props__.__dict__["source_instant_snapshot_id"] = None
             __props__.__dict__["source_snapshot_id"] = None
             __props__.__dict__["users"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
@@ -1904,6 +2118,7 @@ class Disk(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_mode: Optional[pulumi.Input[str]] = None,
+            architecture: Optional[pulumi.Input[str]] = None,
             async_primary_disk: Optional[pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -1921,6 +2136,7 @@ class Disk(pulumi.CustomResource):
             licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             multi_writer: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            params: Optional[pulumi.Input[Union['DiskParamsArgs', 'DiskParamsArgsDict']]] = None,
             physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             provisioned_iops: Optional[pulumi.Input[int]] = None,
@@ -1934,8 +2150,11 @@ class Disk(pulumi.CustomResource):
             source_disk_id: Optional[pulumi.Input[str]] = None,
             source_image_encryption_key: Optional[pulumi.Input[Union['DiskSourceImageEncryptionKeyArgs', 'DiskSourceImageEncryptionKeyArgsDict']]] = None,
             source_image_id: Optional[pulumi.Input[str]] = None,
+            source_instant_snapshot: Optional[pulumi.Input[str]] = None,
+            source_instant_snapshot_id: Optional[pulumi.Input[str]] = None,
             source_snapshot_encryption_key: Optional[pulumi.Input[Union['DiskSourceSnapshotEncryptionKeyArgs', 'DiskSourceSnapshotEncryptionKeyArgsDict']]] = None,
             source_snapshot_id: Optional[pulumi.Input[str]] = None,
+            source_storage_object: Optional[pulumi.Input[str]] = None,
             storage_pool: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1952,6 +2171,7 @@ class Disk(pulumi.CustomResource):
                * READ_WRITE_SINGLE
                * READ_WRITE_MANY
                * READ_ONLY_SINGLE
+        :param pulumi.Input[str] architecture: (Optional)
         :param pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']] async_primary_disk: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
@@ -2006,6 +2226,8 @@ class Disk(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[Union['DiskParamsArgs', 'DiskParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[int] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present
                in a request, a default value is used. Currently supported sizes
                are 4096 and 16384, other sizes may be added in the future.
@@ -2065,6 +2287,16 @@ class Disk(pulumi.CustomResource):
                disk. For example, if you created the persistent disk from an image
                that was later deleted and recreated under the same name, the source
                image ID would identify the exact version of the image that was used.
+        :param pulumi.Input[str] source_instant_snapshot: The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
+               For example, the following are valid values:
+               * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot`
+               * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
+               * `zones/zone/instantSnapshots/instantSnapshot`
+        :param pulumi.Input[str] source_instant_snapshot_id: The unique ID of the instant snapshot used to create this disk. This value identifies
+               the exact instant snapshot that was used to create this persistent disk.
+               For example, if you created the persistent disk from an instant snapshot that was later
+               deleted and recreated under the same name, the source instant snapshot ID would identify
+               the exact version of the instant snapshot that was used.
         :param pulumi.Input[Union['DiskSourceSnapshotEncryptionKeyArgs', 'DiskSourceSnapshotEncryptionKeyArgsDict']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
@@ -2075,6 +2307,11 @@ class Disk(pulumi.CustomResource):
                that was later deleted and recreated under the same name, the source
                snapshot ID would identify the exact version of the snapshot that was
                used.
+        :param pulumi.Input[str] source_storage_object: The full Google Cloud Storage URI where the disk image is stored.
+               This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
+               Valid URIs may start with gs:// or https://storage.googleapis.com/.
+               This flag is not optimized for creating multiple disks from a source storage object.
+               To create many disks from a source storage object, use gcloud compute images import instead.
         :param pulumi.Input[str] storage_pool: The URL or the name of the storage pool in which the new disk is created.
                For example:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
@@ -2092,6 +2329,7 @@ class Disk(pulumi.CustomResource):
         __props__ = _DiskState.__new__(_DiskState)
 
         __props__.__dict__["access_mode"] = access_mode
+        __props__.__dict__["architecture"] = architecture
         __props__.__dict__["async_primary_disk"] = async_primary_disk
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
@@ -2109,6 +2347,7 @@ class Disk(pulumi.CustomResource):
         __props__.__dict__["licenses"] = licenses
         __props__.__dict__["multi_writer"] = multi_writer
         __props__.__dict__["name"] = name
+        __props__.__dict__["params"] = params
         __props__.__dict__["physical_block_size_bytes"] = physical_block_size_bytes
         __props__.__dict__["project"] = project
         __props__.__dict__["provisioned_iops"] = provisioned_iops
@@ -2122,8 +2361,11 @@ class Disk(pulumi.CustomResource):
         __props__.__dict__["source_disk_id"] = source_disk_id
         __props__.__dict__["source_image_encryption_key"] = source_image_encryption_key
         __props__.__dict__["source_image_id"] = source_image_id
+        __props__.__dict__["source_instant_snapshot"] = source_instant_snapshot
+        __props__.__dict__["source_instant_snapshot_id"] = source_instant_snapshot_id
         __props__.__dict__["source_snapshot_encryption_key"] = source_snapshot_encryption_key
         __props__.__dict__["source_snapshot_id"] = source_snapshot_id
+        __props__.__dict__["source_storage_object"] = source_storage_object
         __props__.__dict__["storage_pool"] = storage_pool
         __props__.__dict__["type"] = type
         __props__.__dict__["users"] = users
@@ -2141,6 +2383,14 @@ class Disk(pulumi.CustomResource):
         * READ_ONLY_SINGLE
         """
         return pulumi.get(self, "access_mode")
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> pulumi.Output[Optional[str]]:
+        """
+        (Optional)
+        """
+        return pulumi.get(self, "architecture")
 
     @property
     @pulumi.getter(name="asyncPrimaryDisk")
@@ -2317,6 +2567,15 @@ class Disk(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def params(self) -> pulumi.Output[Optional['outputs.DiskParams']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @property
     @pulumi.getter(name="physicalBlockSizeBytes")
     def physical_block_size_bytes(self) -> pulumi.Output[int]:
         """
@@ -2467,6 +2726,30 @@ class Disk(pulumi.CustomResource):
         return pulumi.get(self, "source_image_id")
 
     @property
+    @pulumi.getter(name="sourceInstantSnapshot")
+    def source_instant_snapshot(self) -> pulumi.Output[Optional[str]]:
+        """
+        The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
+        For example, the following are valid values:
+        * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot`
+        * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
+        * `zones/zone/instantSnapshots/instantSnapshot`
+        """
+        return pulumi.get(self, "source_instant_snapshot")
+
+    @property
+    @pulumi.getter(name="sourceInstantSnapshotId")
+    def source_instant_snapshot_id(self) -> pulumi.Output[str]:
+        """
+        The unique ID of the instant snapshot used to create this disk. This value identifies
+        the exact instant snapshot that was used to create this persistent disk.
+        For example, if you created the persistent disk from an instant snapshot that was later
+        deleted and recreated under the same name, the source instant snapshot ID would identify
+        the exact version of the instant snapshot that was used.
+        """
+        return pulumi.get(self, "source_instant_snapshot_id")
+
+    @property
     @pulumi.getter(name="sourceSnapshotEncryptionKey")
     def source_snapshot_encryption_key(self) -> pulumi.Output[Optional['outputs.DiskSourceSnapshotEncryptionKey']]:
         """
@@ -2489,6 +2772,18 @@ class Disk(pulumi.CustomResource):
         used.
         """
         return pulumi.get(self, "source_snapshot_id")
+
+    @property
+    @pulumi.getter(name="sourceStorageObject")
+    def source_storage_object(self) -> pulumi.Output[Optional[str]]:
+        """
+        The full Google Cloud Storage URI where the disk image is stored.
+        This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
+        Valid URIs may start with gs:// or https://storage.googleapis.com/.
+        This flag is not optimized for creating multiple disks from a source storage object.
+        To create many disks from a source storage object, use gcloud compute images import instead.
+        """
+        return pulumi.get(self, "source_storage_object")
 
     @property
     @pulumi.getter(name="storagePool")

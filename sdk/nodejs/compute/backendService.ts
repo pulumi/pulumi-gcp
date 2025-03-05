@@ -477,7 +477,8 @@ export class BackendService extends pulumi.CustomResource {
      */
     public readonly healthChecks!: pulumi.Output<string | undefined>;
     /**
-     * Settings for enabling Cloud Identity Aware Proxy
+     * Settings for enabling Cloud Identity Aware Proxy.
+     * If OAuth client is not set, the Google-managed OAuth client is used.
      * Structure is documented below.
      */
     public readonly iap!: pulumi.Output<outputs.compute.BackendServiceIap>;
@@ -824,7 +825,8 @@ export interface BackendServiceState {
      */
     healthChecks?: pulumi.Input<string>;
     /**
-     * Settings for enabling Cloud Identity Aware Proxy
+     * Settings for enabling Cloud Identity Aware Proxy.
+     * If OAuth client is not set, the Google-managed OAuth client is used.
      * Structure is documented below.
      */
     iap?: pulumi.Input<inputs.compute.BackendServiceIap>;
@@ -1070,7 +1072,8 @@ export interface BackendServiceArgs {
      */
     healthChecks?: pulumi.Input<string>;
     /**
-     * Settings for enabling Cloud Identity Aware Proxy
+     * Settings for enabling Cloud Identity Aware Proxy.
+     * If OAuth client is not set, the Google-managed OAuth client is used.
      * Structure is documented below.
      */
     iap?: pulumi.Input<inputs.compute.BackendServiceIap>;

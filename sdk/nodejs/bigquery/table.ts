@@ -227,7 +227,7 @@ export class Table extends pulumi.CustomResource {
      * string encoding of [SQL IntervalValue
      * type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
      */
-    public readonly maxStaleness!: pulumi.Output<string | undefined>;
+    public readonly maxStaleness!: pulumi.Output<string>;
     /**
      * The size of this table in bytes, excluding any data in the streaming buffer.
      */

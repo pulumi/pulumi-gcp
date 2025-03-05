@@ -290,7 +290,8 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Settings for enabling Cloud Identity Aware Proxy
+     * Settings for enabling Cloud Identity Aware Proxy.
+     * If OAuth client is not set, Google-managed OAuth client is used.
      * Structure is documented below.
      * 
      */
@@ -298,7 +299,8 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
     private @Nullable Output<RegionBackendServiceIapArgs> iap;
 
     /**
-     * @return Settings for enabling Cloud Identity Aware Proxy
+     * @return Settings for enabling Cloud Identity Aware Proxy.
+     * If OAuth client is not set, Google-managed OAuth client is used.
      * Structure is documented below.
      * 
      */
@@ -1138,7 +1140,8 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param iap Settings for enabling Cloud Identity Aware Proxy
+         * @param iap Settings for enabling Cloud Identity Aware Proxy.
+         * If OAuth client is not set, Google-managed OAuth client is used.
          * Structure is documented below.
          * 
          * @return builder
@@ -1150,7 +1153,8 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param iap Settings for enabling Cloud Identity Aware Proxy
+         * @param iap Settings for enabling Cloud Identity Aware Proxy.
+         * If OAuth client is not set, Google-managed OAuth client is used.
          * Structure is documented below.
          * 
          * @return builder

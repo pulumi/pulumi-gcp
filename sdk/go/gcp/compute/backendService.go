@@ -659,7 +659,8 @@ type BackendService struct {
 	// or serverless NEG as a backend.
 	// For internal load balancing, a URL to a HealthCheck resource must be specified instead.
 	HealthChecks pulumi.StringPtrOutput `pulumi:"healthChecks"`
-	// Settings for enabling Cloud Identity Aware Proxy
+	// Settings for enabling Cloud Identity Aware Proxy.
+	// If OAuth client is not set, the Google-managed OAuth client is used.
 	// Structure is documented below.
 	Iap BackendServiceIapOutput `pulumi:"iap"`
 	// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
@@ -875,7 +876,8 @@ type backendServiceState struct {
 	// or serverless NEG as a backend.
 	// For internal load balancing, a URL to a HealthCheck resource must be specified instead.
 	HealthChecks *string `pulumi:"healthChecks"`
-	// Settings for enabling Cloud Identity Aware Proxy
+	// Settings for enabling Cloud Identity Aware Proxy.
+	// If OAuth client is not set, the Google-managed OAuth client is used.
 	// Structure is documented below.
 	Iap *BackendServiceIap `pulumi:"iap"`
 	// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
@@ -1062,7 +1064,8 @@ type BackendServiceState struct {
 	// or serverless NEG as a backend.
 	// For internal load balancing, a URL to a HealthCheck resource must be specified instead.
 	HealthChecks pulumi.StringPtrInput
-	// Settings for enabling Cloud Identity Aware Proxy
+	// Settings for enabling Cloud Identity Aware Proxy.
+	// If OAuth client is not set, the Google-managed OAuth client is used.
 	// Structure is documented below.
 	Iap BackendServiceIapPtrInput
 	// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
@@ -1246,7 +1249,8 @@ type backendServiceArgs struct {
 	// or serverless NEG as a backend.
 	// For internal load balancing, a URL to a HealthCheck resource must be specified instead.
 	HealthChecks *string `pulumi:"healthChecks"`
-	// Settings for enabling Cloud Identity Aware Proxy
+	// Settings for enabling Cloud Identity Aware Proxy.
+	// If OAuth client is not set, the Google-managed OAuth client is used.
 	// Structure is documented below.
 	Iap *BackendServiceIap `pulumi:"iap"`
 	// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
@@ -1425,7 +1429,8 @@ type BackendServiceArgs struct {
 	// or serverless NEG as a backend.
 	// For internal load balancing, a URL to a HealthCheck resource must be specified instead.
 	HealthChecks pulumi.StringPtrInput
-	// Settings for enabling Cloud Identity Aware Proxy
+	// Settings for enabling Cloud Identity Aware Proxy.
+	// If OAuth client is not set, the Google-managed OAuth client is used.
 	// Structure is documented below.
 	Iap BackendServiceIapPtrInput
 	// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
@@ -1744,7 +1749,8 @@ func (o BackendServiceOutput) HealthChecks() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.StringPtrOutput { return v.HealthChecks }).(pulumi.StringPtrOutput)
 }
 
-// Settings for enabling Cloud Identity Aware Proxy
+// Settings for enabling Cloud Identity Aware Proxy.
+// If OAuth client is not set, the Google-managed OAuth client is used.
 // Structure is documented below.
 func (o BackendServiceOutput) Iap() BackendServiceIapOutput {
 	return o.ApplyT(func(v *BackendService) BackendServiceIapOutput { return v.Iap }).(BackendServiceIapOutput)

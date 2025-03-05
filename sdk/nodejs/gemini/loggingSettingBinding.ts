@@ -116,7 +116,7 @@ export class LoggingSettingBinding extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Product type of the setting binding.
-     * Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+     * Possible values are: `GEMINI_CODE_ASSIST`.
      */
     public readonly product!: pulumi.Output<string | undefined>;
     /**
@@ -234,7 +234,7 @@ export interface LoggingSettingBindingState {
     name?: pulumi.Input<string>;
     /**
      * Product type of the setting binding.
-     * Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+     * Possible values are: `GEMINI_CODE_ASSIST`.
      */
     product?: pulumi.Input<string>;
     /**
@@ -284,7 +284,7 @@ export interface LoggingSettingBindingArgs {
     loggingSettingId: pulumi.Input<string>;
     /**
      * Product type of the setting binding.
-     * Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+     * Possible values are: `GEMINI_CODE_ASSIST`.
      */
     product?: pulumi.Input<string>;
     /**

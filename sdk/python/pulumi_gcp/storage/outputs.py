@@ -46,6 +46,7 @@ __all__ = [
     'ObjectAccessControlProjectTeam',
     'TransferAgentPoolBandwidthLimit',
     'TransferJobEventStream',
+    'TransferJobLoggingConfig',
     'TransferJobNotificationConfig',
     'TransferJobReplicationSpec',
     'TransferJobReplicationSpecGcsDataSink',
@@ -1663,6 +1664,70 @@ class TransferJobEventStream(dict):
         Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If no start time is specified or start time is in the past, Storage Transfer Service starts listening immediately. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "event_stream_start_time")
+
+
+@pulumi.output_type
+class TransferJobLoggingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableOnPremGcsTransferLogs":
+            suggest = "enable_on_prem_gcs_transfer_logs"
+        elif key == "logActionStates":
+            suggest = "log_action_states"
+        elif key == "logActions":
+            suggest = "log_actions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransferJobLoggingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransferJobLoggingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransferJobLoggingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_on_prem_gcs_transfer_logs: Optional[bool] = None,
+                 log_action_states: Optional[Sequence[str]] = None,
+                 log_actions: Optional[Sequence[str]] = None):
+        """
+        :param bool enable_on_prem_gcs_transfer_logs: For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
+        :param Sequence[str] log_action_states: States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+        :param Sequence[str] log_actions: Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+        """
+        if enable_on_prem_gcs_transfer_logs is not None:
+            pulumi.set(__self__, "enable_on_prem_gcs_transfer_logs", enable_on_prem_gcs_transfer_logs)
+        if log_action_states is not None:
+            pulumi.set(__self__, "log_action_states", log_action_states)
+        if log_actions is not None:
+            pulumi.set(__self__, "log_actions", log_actions)
+
+    @property
+    @pulumi.getter(name="enableOnPremGcsTransferLogs")
+    def enable_on_prem_gcs_transfer_logs(self) -> Optional[bool]:
+        """
+        For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
+        """
+        return pulumi.get(self, "enable_on_prem_gcs_transfer_logs")
+
+    @property
+    @pulumi.getter(name="logActionStates")
+    def log_action_states(self) -> Optional[Sequence[str]]:
+        """
+        States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+        """
+        return pulumi.get(self, "log_action_states")
+
+    @property
+    @pulumi.getter(name="logActions")
+    def log_actions(self) -> Optional[Sequence[str]]:
+        """
+        Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+        """
+        return pulumi.get(self, "log_actions")
 
 
 @pulumi.output_type

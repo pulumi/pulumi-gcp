@@ -61,6 +61,8 @@ import com.pulumi.gcp.compute.inputs.GetInstanceTemplateArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceTemplateIamPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceTemplateIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceTemplatePlainArgs;
+import com.pulumi.gcp.compute.inputs.GetInstantSnapshotIamPolicyArgs;
+import com.pulumi.gcp.compute.inputs.GetInstantSnapshotIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetMachineImageIamPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetMachineImageIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetMachineTypesArgs;
@@ -151,6 +153,7 @@ import com.pulumi.gcp.compute.outputs.GetInstanceResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceSerialPortResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceTemplateIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceTemplateResult;
+import com.pulumi.gcp.compute.outputs.GetInstantSnapshotIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetLBIPRangesResult;
 import com.pulumi.gcp.compute.outputs.GetMachineImageIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetMachineTypesResult;
@@ -7394,6 +7397,226 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetInstanceTemplateIamPolicyResult> getInstanceTemplateIamPolicyPlain(GetInstanceTemplateIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getInstanceTemplateIamPolicy:getInstanceTemplateIamPolicy", TypeShape.of(GetInstanceTemplateIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for instantsnapshot
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstantSnapshotIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getInstantSnapshotIamPolicy(GetInstantSnapshotIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .zone(default_.zone())
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstantSnapshotIamPolicyResult> getInstantSnapshotIamPolicy(GetInstantSnapshotIamPolicyArgs args) {
+        return getInstantSnapshotIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for instantsnapshot
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstantSnapshotIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getInstantSnapshotIamPolicy(GetInstantSnapshotIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .zone(default_.zone())
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetInstantSnapshotIamPolicyResult> getInstantSnapshotIamPolicyPlain(GetInstantSnapshotIamPolicyPlainArgs args) {
+        return getInstantSnapshotIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for instantsnapshot
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstantSnapshotIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getInstantSnapshotIamPolicy(GetInstantSnapshotIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .zone(default_.zone())
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstantSnapshotIamPolicyResult> getInstantSnapshotIamPolicy(GetInstantSnapshotIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getInstantSnapshotIamPolicy:getInstantSnapshotIamPolicy", TypeShape.of(GetInstantSnapshotIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for instantsnapshot
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstantSnapshotIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getInstantSnapshotIamPolicy(GetInstantSnapshotIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .zone(default_.zone())
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstantSnapshotIamPolicyResult> getInstantSnapshotIamPolicy(GetInstantSnapshotIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getInstantSnapshotIamPolicy:getInstantSnapshotIamPolicy", TypeShape.of(GetInstantSnapshotIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for instantsnapshot
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstantSnapshotIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getInstantSnapshotIamPolicy(GetInstantSnapshotIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .zone(default_.zone())
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetInstantSnapshotIamPolicyResult> getInstantSnapshotIamPolicyPlain(GetInstantSnapshotIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getInstantSnapshotIamPolicy:getInstantSnapshotIamPolicy", TypeShape.of(GetInstantSnapshotIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to access IP ranges in your firewall rules.

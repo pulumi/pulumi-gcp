@@ -4660,6 +4660,181 @@ func (o TransferJobEventStreamPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type TransferJobLoggingConfig struct {
+	// For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
+	EnableOnPremGcsTransferLogs *bool `pulumi:"enableOnPremGcsTransferLogs"`
+	// States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enableOnPremGcsTransferLogs instead.
+	LogActionStates []string `pulumi:"logActionStates"`
+	// Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enableOnPremGcsTransferLogs instead.
+	LogActions []string `pulumi:"logActions"`
+}
+
+// TransferJobLoggingConfigInput is an input type that accepts TransferJobLoggingConfigArgs and TransferJobLoggingConfigOutput values.
+// You can construct a concrete instance of `TransferJobLoggingConfigInput` via:
+//
+//	TransferJobLoggingConfigArgs{...}
+type TransferJobLoggingConfigInput interface {
+	pulumi.Input
+
+	ToTransferJobLoggingConfigOutput() TransferJobLoggingConfigOutput
+	ToTransferJobLoggingConfigOutputWithContext(context.Context) TransferJobLoggingConfigOutput
+}
+
+type TransferJobLoggingConfigArgs struct {
+	// For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
+	EnableOnPremGcsTransferLogs pulumi.BoolPtrInput `pulumi:"enableOnPremGcsTransferLogs"`
+	// States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enableOnPremGcsTransferLogs instead.
+	LogActionStates pulumi.StringArrayInput `pulumi:"logActionStates"`
+	// Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enableOnPremGcsTransferLogs instead.
+	LogActions pulumi.StringArrayInput `pulumi:"logActions"`
+}
+
+func (TransferJobLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobLoggingConfig)(nil)).Elem()
+}
+
+func (i TransferJobLoggingConfigArgs) ToTransferJobLoggingConfigOutput() TransferJobLoggingConfigOutput {
+	return i.ToTransferJobLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i TransferJobLoggingConfigArgs) ToTransferJobLoggingConfigOutputWithContext(ctx context.Context) TransferJobLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobLoggingConfigOutput)
+}
+
+func (i TransferJobLoggingConfigArgs) ToTransferJobLoggingConfigPtrOutput() TransferJobLoggingConfigPtrOutput {
+	return i.ToTransferJobLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i TransferJobLoggingConfigArgs) ToTransferJobLoggingConfigPtrOutputWithContext(ctx context.Context) TransferJobLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobLoggingConfigOutput).ToTransferJobLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// TransferJobLoggingConfigPtrInput is an input type that accepts TransferJobLoggingConfigArgs, TransferJobLoggingConfigPtr and TransferJobLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `TransferJobLoggingConfigPtrInput` via:
+//
+//	        TransferJobLoggingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type TransferJobLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToTransferJobLoggingConfigPtrOutput() TransferJobLoggingConfigPtrOutput
+	ToTransferJobLoggingConfigPtrOutputWithContext(context.Context) TransferJobLoggingConfigPtrOutput
+}
+
+type transferJobLoggingConfigPtrType TransferJobLoggingConfigArgs
+
+func TransferJobLoggingConfigPtr(v *TransferJobLoggingConfigArgs) TransferJobLoggingConfigPtrInput {
+	return (*transferJobLoggingConfigPtrType)(v)
+}
+
+func (*transferJobLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobLoggingConfig)(nil)).Elem()
+}
+
+func (i *transferJobLoggingConfigPtrType) ToTransferJobLoggingConfigPtrOutput() TransferJobLoggingConfigPtrOutput {
+	return i.ToTransferJobLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *transferJobLoggingConfigPtrType) ToTransferJobLoggingConfigPtrOutputWithContext(ctx context.Context) TransferJobLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobLoggingConfigPtrOutput)
+}
+
+type TransferJobLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (TransferJobLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobLoggingConfig)(nil)).Elem()
+}
+
+func (o TransferJobLoggingConfigOutput) ToTransferJobLoggingConfigOutput() TransferJobLoggingConfigOutput {
+	return o
+}
+
+func (o TransferJobLoggingConfigOutput) ToTransferJobLoggingConfigOutputWithContext(ctx context.Context) TransferJobLoggingConfigOutput {
+	return o
+}
+
+func (o TransferJobLoggingConfigOutput) ToTransferJobLoggingConfigPtrOutput() TransferJobLoggingConfigPtrOutput {
+	return o.ToTransferJobLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o TransferJobLoggingConfigOutput) ToTransferJobLoggingConfigPtrOutputWithContext(ctx context.Context) TransferJobLoggingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobLoggingConfig) *TransferJobLoggingConfig {
+		return &v
+	}).(TransferJobLoggingConfigPtrOutput)
+}
+
+// For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
+func (o TransferJobLoggingConfigOutput) EnableOnPremGcsTransferLogs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TransferJobLoggingConfig) *bool { return v.EnableOnPremGcsTransferLogs }).(pulumi.BoolPtrOutput)
+}
+
+// States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enableOnPremGcsTransferLogs instead.
+func (o TransferJobLoggingConfigOutput) LogActionStates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TransferJobLoggingConfig) []string { return v.LogActionStates }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enableOnPremGcsTransferLogs instead.
+func (o TransferJobLoggingConfigOutput) LogActions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TransferJobLoggingConfig) []string { return v.LogActions }).(pulumi.StringArrayOutput)
+}
+
+type TransferJobLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (TransferJobLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobLoggingConfig)(nil)).Elem()
+}
+
+func (o TransferJobLoggingConfigPtrOutput) ToTransferJobLoggingConfigPtrOutput() TransferJobLoggingConfigPtrOutput {
+	return o
+}
+
+func (o TransferJobLoggingConfigPtrOutput) ToTransferJobLoggingConfigPtrOutputWithContext(ctx context.Context) TransferJobLoggingConfigPtrOutput {
+	return o
+}
+
+func (o TransferJobLoggingConfigPtrOutput) Elem() TransferJobLoggingConfigOutput {
+	return o.ApplyT(func(v *TransferJobLoggingConfig) TransferJobLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobLoggingConfig
+		return ret
+	}).(TransferJobLoggingConfigOutput)
+}
+
+// For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
+func (o TransferJobLoggingConfigPtrOutput) EnableOnPremGcsTransferLogs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransferJobLoggingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableOnPremGcsTransferLogs
+	}).(pulumi.BoolPtrOutput)
+}
+
+// States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enableOnPremGcsTransferLogs instead.
+func (o TransferJobLoggingConfigPtrOutput) LogActionStates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TransferJobLoggingConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LogActionStates
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enableOnPremGcsTransferLogs instead.
+func (o TransferJobLoggingConfigPtrOutput) LogActions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TransferJobLoggingConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LogActions
+	}).(pulumi.StringArrayOutput)
+}
+
 type TransferJobNotificationConfig struct {
 	// Event types for which a notification is desired. If empty, send notifications for all event types. The valid types are "TRANSFER_OPERATION_SUCCESS", "TRANSFER_OPERATION_FAILED", "TRANSFER_OPERATION_ABORTED".
 	EventTypes []string `pulumi:"eventTypes"`
@@ -11099,6 +11274,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferAgentPoolBandwidthLimitPtrInput)(nil)).Elem(), TransferAgentPoolBandwidthLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobEventStreamInput)(nil)).Elem(), TransferJobEventStreamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobEventStreamPtrInput)(nil)).Elem(), TransferJobEventStreamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobLoggingConfigInput)(nil)).Elem(), TransferJobLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobLoggingConfigPtrInput)(nil)).Elem(), TransferJobLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobNotificationConfigInput)(nil)).Elem(), TransferJobNotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobNotificationConfigPtrInput)(nil)).Elem(), TransferJobNotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobReplicationSpecInput)(nil)).Elem(), TransferJobReplicationSpecArgs{})
@@ -11241,6 +11418,8 @@ func init() {
 	pulumi.RegisterOutputType(TransferAgentPoolBandwidthLimitPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobEventStreamOutput{})
 	pulumi.RegisterOutputType(TransferJobEventStreamPtrOutput{})
+	pulumi.RegisterOutputType(TransferJobLoggingConfigOutput{})
+	pulumi.RegisterOutputType(TransferJobLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobNotificationConfigOutput{})
 	pulumi.RegisterOutputType(TransferJobNotificationConfigPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobReplicationSpecOutput{})

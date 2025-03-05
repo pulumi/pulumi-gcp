@@ -13,6 +13,7 @@ import com.pulumi.gcp.compute.inputs.DiskState;
 import com.pulumi.gcp.compute.outputs.DiskAsyncPrimaryDisk;
 import com.pulumi.gcp.compute.outputs.DiskDiskEncryptionKey;
 import com.pulumi.gcp.compute.outputs.DiskGuestOsFeature;
+import com.pulumi.gcp.compute.outputs.DiskParams;
 import com.pulumi.gcp.compute.outputs.DiskSourceImageEncryptionKey;
 import com.pulumi.gcp.compute.outputs.DiskSourceSnapshotEncryptionKey;
 import java.lang.Boolean;
@@ -240,6 +241,20 @@ public class Disk extends com.pulumi.resources.CustomResource {
      */
     public Output<String> accessMode() {
         return this.accessMode;
+    }
+    /**
+     * (Optional)
+     * 
+     */
+    @Export(name="architecture", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> architecture;
+
+    /**
+     * @return (Optional)
+     * 
+     */
+    public Output<Optional<String>> architecture() {
+        return Codegen.optional(this.architecture);
     }
     /**
      * A nested object resource.
@@ -556,6 +571,22 @@ public class Disk extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="params", refs={DiskParams.class}, tree="[0]")
+    private Output</* @Nullable */ DiskParams> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<DiskParams>> params() {
+        return Codegen.optional(this.params);
+    }
+    /**
      * Physical block size of the persistent disk, in bytes. If not present
      * in a request, a default value is used. Currently supported sizes
      * are 4096 and 16384, other sizes may be added in the future.
@@ -830,6 +861,50 @@ public class Disk extends com.pulumi.resources.CustomResource {
         return this.sourceImageId;
     }
     /**
+     * The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
+     * For example, the following are valid values:
+     * * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot`
+     * * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
+     * * `zones/zone/instantSnapshots/instantSnapshot`
+     * 
+     */
+    @Export(name="sourceInstantSnapshot", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> sourceInstantSnapshot;
+
+    /**
+     * @return The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
+     * For example, the following are valid values:
+     * * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot`
+     * * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
+     * * `zones/zone/instantSnapshots/instantSnapshot`
+     * 
+     */
+    public Output<Optional<String>> sourceInstantSnapshot() {
+        return Codegen.optional(this.sourceInstantSnapshot);
+    }
+    /**
+     * The unique ID of the instant snapshot used to create this disk. This value identifies
+     * the exact instant snapshot that was used to create this persistent disk.
+     * For example, if you created the persistent disk from an instant snapshot that was later
+     * deleted and recreated under the same name, the source instant snapshot ID would identify
+     * the exact version of the instant snapshot that was used.
+     * 
+     */
+    @Export(name="sourceInstantSnapshotId", refs={String.class}, tree="[0]")
+    private Output<String> sourceInstantSnapshotId;
+
+    /**
+     * @return The unique ID of the instant snapshot used to create this disk. This value identifies
+     * the exact instant snapshot that was used to create this persistent disk.
+     * For example, if you created the persistent disk from an instant snapshot that was later
+     * deleted and recreated under the same name, the source instant snapshot ID would identify
+     * the exact version of the instant snapshot that was used.
+     * 
+     */
+    public Output<String> sourceInstantSnapshotId() {
+        return this.sourceInstantSnapshotId;
+    }
+    /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption
      * key.
@@ -872,6 +947,28 @@ public class Disk extends com.pulumi.resources.CustomResource {
      */
     public Output<String> sourceSnapshotId() {
         return this.sourceSnapshotId;
+    }
+    /**
+     * The full Google Cloud Storage URI where the disk image is stored.
+     * This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
+     * Valid URIs may start with gs:// or https://storage.googleapis.com/.
+     * This flag is not optimized for creating multiple disks from a source storage object.
+     * To create many disks from a source storage object, use gcloud compute images import instead.
+     * 
+     */
+    @Export(name="sourceStorageObject", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> sourceStorageObject;
+
+    /**
+     * @return The full Google Cloud Storage URI where the disk image is stored.
+     * This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
+     * Valid URIs may start with gs:// or https://storage.googleapis.com/.
+     * This flag is not optimized for creating multiple disks from a source storage object.
+     * To create many disks from a source storage object, use gcloud compute images import instead.
+     * 
+     */
+    public Output<Optional<String>> sourceStorageObject() {
+        return Codegen.optional(this.sourceStorageObject);
     }
     /**
      * The URL or the name of the storage pool in which the new disk is created.

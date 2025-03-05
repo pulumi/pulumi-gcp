@@ -449,7 +449,7 @@ class TargetSite(pulumi.CustomResource):
         basic = gcp.discoveryengine.TargetSite("basic",
             location=basic_data_store.location,
             data_store_id=basic_data_store.data_store_id,
-            provided_uri_pattern="http://cloud.google.com/docs/*",
+            provided_uri_pattern="cloud.google.com/docs/*",
             type="INCLUDE",
             exact_match=False)
         ```
@@ -471,7 +471,7 @@ class TargetSite(pulumi.CustomResource):
         advanced = gcp.discoveryengine.TargetSite("advanced",
             location=advanced_data_store.location,
             data_store_id=advanced_data_store.data_store_id,
-            provided_uri_pattern="http://cloud.google.com/docs/*",
+            provided_uri_pattern="cloud.google.com/docs/*",
             type="INCLUDE",
             exact_match=False)
         ```
@@ -555,7 +555,7 @@ class TargetSite(pulumi.CustomResource):
         basic = gcp.discoveryengine.TargetSite("basic",
             location=basic_data_store.location,
             data_store_id=basic_data_store.data_store_id,
-            provided_uri_pattern="http://cloud.google.com/docs/*",
+            provided_uri_pattern="cloud.google.com/docs/*",
             type="INCLUDE",
             exact_match=False)
         ```
@@ -577,7 +577,7 @@ class TargetSite(pulumi.CustomResource):
         advanced = gcp.discoveryengine.TargetSite("advanced",
             location=advanced_data_store.location,
             data_store_id=advanced_data_store.data_store_id,
-            provided_uri_pattern="http://cloud.google.com/docs/*",
+            provided_uri_pattern="cloud.google.com/docs/*",
             type="INCLUDE",
             exact_match=False)
         ```

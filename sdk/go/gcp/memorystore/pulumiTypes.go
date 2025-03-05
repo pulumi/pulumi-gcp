@@ -2051,6 +2051,1610 @@ func (o InstanceZoneDistributionConfigPtrOutput) Zone() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetInstanceDesiredPscAutoConnection struct {
+	// Required. The consumer network where the IP address resides, in the form of
+	// projects/{project_id}/global/networks/{network_id}.
+	Network string `pulumi:"network"`
+	// Required. The consumer projectId where the forwarding rule is created from.
+	ProjectId string `pulumi:"projectId"`
+}
+
+// GetInstanceDesiredPscAutoConnectionInput is an input type that accepts GetInstanceDesiredPscAutoConnectionArgs and GetInstanceDesiredPscAutoConnectionOutput values.
+// You can construct a concrete instance of `GetInstanceDesiredPscAutoConnectionInput` via:
+//
+//	GetInstanceDesiredPscAutoConnectionArgs{...}
+type GetInstanceDesiredPscAutoConnectionInput interface {
+	pulumi.Input
+
+	ToGetInstanceDesiredPscAutoConnectionOutput() GetInstanceDesiredPscAutoConnectionOutput
+	ToGetInstanceDesiredPscAutoConnectionOutputWithContext(context.Context) GetInstanceDesiredPscAutoConnectionOutput
+}
+
+type GetInstanceDesiredPscAutoConnectionArgs struct {
+	// Required. The consumer network where the IP address resides, in the form of
+	// projects/{project_id}/global/networks/{network_id}.
+	Network pulumi.StringInput `pulumi:"network"`
+	// Required. The consumer projectId where the forwarding rule is created from.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (GetInstanceDesiredPscAutoConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceDesiredPscAutoConnection)(nil)).Elem()
+}
+
+func (i GetInstanceDesiredPscAutoConnectionArgs) ToGetInstanceDesiredPscAutoConnectionOutput() GetInstanceDesiredPscAutoConnectionOutput {
+	return i.ToGetInstanceDesiredPscAutoConnectionOutputWithContext(context.Background())
+}
+
+func (i GetInstanceDesiredPscAutoConnectionArgs) ToGetInstanceDesiredPscAutoConnectionOutputWithContext(ctx context.Context) GetInstanceDesiredPscAutoConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceDesiredPscAutoConnectionOutput)
+}
+
+// GetInstanceDesiredPscAutoConnectionArrayInput is an input type that accepts GetInstanceDesiredPscAutoConnectionArray and GetInstanceDesiredPscAutoConnectionArrayOutput values.
+// You can construct a concrete instance of `GetInstanceDesiredPscAutoConnectionArrayInput` via:
+//
+//	GetInstanceDesiredPscAutoConnectionArray{ GetInstanceDesiredPscAutoConnectionArgs{...} }
+type GetInstanceDesiredPscAutoConnectionArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceDesiredPscAutoConnectionArrayOutput() GetInstanceDesiredPscAutoConnectionArrayOutput
+	ToGetInstanceDesiredPscAutoConnectionArrayOutputWithContext(context.Context) GetInstanceDesiredPscAutoConnectionArrayOutput
+}
+
+type GetInstanceDesiredPscAutoConnectionArray []GetInstanceDesiredPscAutoConnectionInput
+
+func (GetInstanceDesiredPscAutoConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceDesiredPscAutoConnection)(nil)).Elem()
+}
+
+func (i GetInstanceDesiredPscAutoConnectionArray) ToGetInstanceDesiredPscAutoConnectionArrayOutput() GetInstanceDesiredPscAutoConnectionArrayOutput {
+	return i.ToGetInstanceDesiredPscAutoConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceDesiredPscAutoConnectionArray) ToGetInstanceDesiredPscAutoConnectionArrayOutputWithContext(ctx context.Context) GetInstanceDesiredPscAutoConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceDesiredPscAutoConnectionArrayOutput)
+}
+
+type GetInstanceDesiredPscAutoConnectionOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceDesiredPscAutoConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceDesiredPscAutoConnection)(nil)).Elem()
+}
+
+func (o GetInstanceDesiredPscAutoConnectionOutput) ToGetInstanceDesiredPscAutoConnectionOutput() GetInstanceDesiredPscAutoConnectionOutput {
+	return o
+}
+
+func (o GetInstanceDesiredPscAutoConnectionOutput) ToGetInstanceDesiredPscAutoConnectionOutputWithContext(ctx context.Context) GetInstanceDesiredPscAutoConnectionOutput {
+	return o
+}
+
+// Required. The consumer network where the IP address resides, in the form of
+// projects/{project_id}/global/networks/{network_id}.
+func (o GetInstanceDesiredPscAutoConnectionOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceDesiredPscAutoConnection) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Required. The consumer projectId where the forwarding rule is created from.
+func (o GetInstanceDesiredPscAutoConnectionOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceDesiredPscAutoConnection) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type GetInstanceDesiredPscAutoConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceDesiredPscAutoConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceDesiredPscAutoConnection)(nil)).Elem()
+}
+
+func (o GetInstanceDesiredPscAutoConnectionArrayOutput) ToGetInstanceDesiredPscAutoConnectionArrayOutput() GetInstanceDesiredPscAutoConnectionArrayOutput {
+	return o
+}
+
+func (o GetInstanceDesiredPscAutoConnectionArrayOutput) ToGetInstanceDesiredPscAutoConnectionArrayOutputWithContext(ctx context.Context) GetInstanceDesiredPscAutoConnectionArrayOutput {
+	return o
+}
+
+func (o GetInstanceDesiredPscAutoConnectionArrayOutput) Index(i pulumi.IntInput) GetInstanceDesiredPscAutoConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceDesiredPscAutoConnection {
+		return vs[0].([]GetInstanceDesiredPscAutoConnection)[vs[1].(int)]
+	}).(GetInstanceDesiredPscAutoConnectionOutput)
+}
+
+type GetInstanceDiscoveryEndpoint struct {
+	// Output only. IP address of the exposed endpoint clients connect to.
+	Address string `pulumi:"address"`
+	// Output only. The network where the IP address of the discovery endpoint will be
+	// reserved, in the form of
+	// projects/{network_project}/global/networks/{network_id}.
+	Network string `pulumi:"network"`
+	// Output only. The port number of the exposed endpoint.
+	Port int `pulumi:"port"`
+}
+
+// GetInstanceDiscoveryEndpointInput is an input type that accepts GetInstanceDiscoveryEndpointArgs and GetInstanceDiscoveryEndpointOutput values.
+// You can construct a concrete instance of `GetInstanceDiscoveryEndpointInput` via:
+//
+//	GetInstanceDiscoveryEndpointArgs{...}
+type GetInstanceDiscoveryEndpointInput interface {
+	pulumi.Input
+
+	ToGetInstanceDiscoveryEndpointOutput() GetInstanceDiscoveryEndpointOutput
+	ToGetInstanceDiscoveryEndpointOutputWithContext(context.Context) GetInstanceDiscoveryEndpointOutput
+}
+
+type GetInstanceDiscoveryEndpointArgs struct {
+	// Output only. IP address of the exposed endpoint clients connect to.
+	Address pulumi.StringInput `pulumi:"address"`
+	// Output only. The network where the IP address of the discovery endpoint will be
+	// reserved, in the form of
+	// projects/{network_project}/global/networks/{network_id}.
+	Network pulumi.StringInput `pulumi:"network"`
+	// Output only. The port number of the exposed endpoint.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (GetInstanceDiscoveryEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceDiscoveryEndpoint)(nil)).Elem()
+}
+
+func (i GetInstanceDiscoveryEndpointArgs) ToGetInstanceDiscoveryEndpointOutput() GetInstanceDiscoveryEndpointOutput {
+	return i.ToGetInstanceDiscoveryEndpointOutputWithContext(context.Background())
+}
+
+func (i GetInstanceDiscoveryEndpointArgs) ToGetInstanceDiscoveryEndpointOutputWithContext(ctx context.Context) GetInstanceDiscoveryEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceDiscoveryEndpointOutput)
+}
+
+// GetInstanceDiscoveryEndpointArrayInput is an input type that accepts GetInstanceDiscoveryEndpointArray and GetInstanceDiscoveryEndpointArrayOutput values.
+// You can construct a concrete instance of `GetInstanceDiscoveryEndpointArrayInput` via:
+//
+//	GetInstanceDiscoveryEndpointArray{ GetInstanceDiscoveryEndpointArgs{...} }
+type GetInstanceDiscoveryEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceDiscoveryEndpointArrayOutput() GetInstanceDiscoveryEndpointArrayOutput
+	ToGetInstanceDiscoveryEndpointArrayOutputWithContext(context.Context) GetInstanceDiscoveryEndpointArrayOutput
+}
+
+type GetInstanceDiscoveryEndpointArray []GetInstanceDiscoveryEndpointInput
+
+func (GetInstanceDiscoveryEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceDiscoveryEndpoint)(nil)).Elem()
+}
+
+func (i GetInstanceDiscoveryEndpointArray) ToGetInstanceDiscoveryEndpointArrayOutput() GetInstanceDiscoveryEndpointArrayOutput {
+	return i.ToGetInstanceDiscoveryEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceDiscoveryEndpointArray) ToGetInstanceDiscoveryEndpointArrayOutputWithContext(ctx context.Context) GetInstanceDiscoveryEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceDiscoveryEndpointArrayOutput)
+}
+
+type GetInstanceDiscoveryEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceDiscoveryEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceDiscoveryEndpoint)(nil)).Elem()
+}
+
+func (o GetInstanceDiscoveryEndpointOutput) ToGetInstanceDiscoveryEndpointOutput() GetInstanceDiscoveryEndpointOutput {
+	return o
+}
+
+func (o GetInstanceDiscoveryEndpointOutput) ToGetInstanceDiscoveryEndpointOutputWithContext(ctx context.Context) GetInstanceDiscoveryEndpointOutput {
+	return o
+}
+
+// Output only. IP address of the exposed endpoint clients connect to.
+func (o GetInstanceDiscoveryEndpointOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceDiscoveryEndpoint) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// Output only. The network where the IP address of the discovery endpoint will be
+// reserved, in the form of
+// projects/{network_project}/global/networks/{network_id}.
+func (o GetInstanceDiscoveryEndpointOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceDiscoveryEndpoint) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Output only. The port number of the exposed endpoint.
+func (o GetInstanceDiscoveryEndpointOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceDiscoveryEndpoint) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetInstanceDiscoveryEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceDiscoveryEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceDiscoveryEndpoint)(nil)).Elem()
+}
+
+func (o GetInstanceDiscoveryEndpointArrayOutput) ToGetInstanceDiscoveryEndpointArrayOutput() GetInstanceDiscoveryEndpointArrayOutput {
+	return o
+}
+
+func (o GetInstanceDiscoveryEndpointArrayOutput) ToGetInstanceDiscoveryEndpointArrayOutputWithContext(ctx context.Context) GetInstanceDiscoveryEndpointArrayOutput {
+	return o
+}
+
+func (o GetInstanceDiscoveryEndpointArrayOutput) Index(i pulumi.IntInput) GetInstanceDiscoveryEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceDiscoveryEndpoint {
+		return vs[0].([]GetInstanceDiscoveryEndpoint)[vs[1].(int)]
+	}).(GetInstanceDiscoveryEndpointOutput)
+}
+
+type GetInstanceEndpoint struct {
+	// A group of PSC connections. They are created in the same VPC network, one for each service attachment in the cluster.
+	Connections []GetInstanceEndpointConnection `pulumi:"connections"`
+}
+
+// GetInstanceEndpointInput is an input type that accepts GetInstanceEndpointArgs and GetInstanceEndpointOutput values.
+// You can construct a concrete instance of `GetInstanceEndpointInput` via:
+//
+//	GetInstanceEndpointArgs{...}
+type GetInstanceEndpointInput interface {
+	pulumi.Input
+
+	ToGetInstanceEndpointOutput() GetInstanceEndpointOutput
+	ToGetInstanceEndpointOutputWithContext(context.Context) GetInstanceEndpointOutput
+}
+
+type GetInstanceEndpointArgs struct {
+	// A group of PSC connections. They are created in the same VPC network, one for each service attachment in the cluster.
+	Connections GetInstanceEndpointConnectionArrayInput `pulumi:"connections"`
+}
+
+func (GetInstanceEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceEndpoint)(nil)).Elem()
+}
+
+func (i GetInstanceEndpointArgs) ToGetInstanceEndpointOutput() GetInstanceEndpointOutput {
+	return i.ToGetInstanceEndpointOutputWithContext(context.Background())
+}
+
+func (i GetInstanceEndpointArgs) ToGetInstanceEndpointOutputWithContext(ctx context.Context) GetInstanceEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEndpointOutput)
+}
+
+// GetInstanceEndpointArrayInput is an input type that accepts GetInstanceEndpointArray and GetInstanceEndpointArrayOutput values.
+// You can construct a concrete instance of `GetInstanceEndpointArrayInput` via:
+//
+//	GetInstanceEndpointArray{ GetInstanceEndpointArgs{...} }
+type GetInstanceEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceEndpointArrayOutput() GetInstanceEndpointArrayOutput
+	ToGetInstanceEndpointArrayOutputWithContext(context.Context) GetInstanceEndpointArrayOutput
+}
+
+type GetInstanceEndpointArray []GetInstanceEndpointInput
+
+func (GetInstanceEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceEndpoint)(nil)).Elem()
+}
+
+func (i GetInstanceEndpointArray) ToGetInstanceEndpointArrayOutput() GetInstanceEndpointArrayOutput {
+	return i.ToGetInstanceEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceEndpointArray) ToGetInstanceEndpointArrayOutputWithContext(ctx context.Context) GetInstanceEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEndpointArrayOutput)
+}
+
+type GetInstanceEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceEndpoint)(nil)).Elem()
+}
+
+func (o GetInstanceEndpointOutput) ToGetInstanceEndpointOutput() GetInstanceEndpointOutput {
+	return o
+}
+
+func (o GetInstanceEndpointOutput) ToGetInstanceEndpointOutputWithContext(ctx context.Context) GetInstanceEndpointOutput {
+	return o
+}
+
+// A group of PSC connections. They are created in the same VPC network, one for each service attachment in the cluster.
+func (o GetInstanceEndpointOutput) Connections() GetInstanceEndpointConnectionArrayOutput {
+	return o.ApplyT(func(v GetInstanceEndpoint) []GetInstanceEndpointConnection { return v.Connections }).(GetInstanceEndpointConnectionArrayOutput)
+}
+
+type GetInstanceEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceEndpoint)(nil)).Elem()
+}
+
+func (o GetInstanceEndpointArrayOutput) ToGetInstanceEndpointArrayOutput() GetInstanceEndpointArrayOutput {
+	return o
+}
+
+func (o GetInstanceEndpointArrayOutput) ToGetInstanceEndpointArrayOutputWithContext(ctx context.Context) GetInstanceEndpointArrayOutput {
+	return o
+}
+
+func (o GetInstanceEndpointArrayOutput) Index(i pulumi.IntInput) GetInstanceEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceEndpoint {
+		return vs[0].([]GetInstanceEndpoint)[vs[1].(int)]
+	}).(GetInstanceEndpointOutput)
+}
+
+type GetInstanceEndpointConnection struct {
+	// Detailed information of a PSC connection that is created through service connectivity automation.
+	PscAutoConnections []GetInstanceEndpointConnectionPscAutoConnection `pulumi:"pscAutoConnections"`
+}
+
+// GetInstanceEndpointConnectionInput is an input type that accepts GetInstanceEndpointConnectionArgs and GetInstanceEndpointConnectionOutput values.
+// You can construct a concrete instance of `GetInstanceEndpointConnectionInput` via:
+//
+//	GetInstanceEndpointConnectionArgs{...}
+type GetInstanceEndpointConnectionInput interface {
+	pulumi.Input
+
+	ToGetInstanceEndpointConnectionOutput() GetInstanceEndpointConnectionOutput
+	ToGetInstanceEndpointConnectionOutputWithContext(context.Context) GetInstanceEndpointConnectionOutput
+}
+
+type GetInstanceEndpointConnectionArgs struct {
+	// Detailed information of a PSC connection that is created through service connectivity automation.
+	PscAutoConnections GetInstanceEndpointConnectionPscAutoConnectionArrayInput `pulumi:"pscAutoConnections"`
+}
+
+func (GetInstanceEndpointConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceEndpointConnection)(nil)).Elem()
+}
+
+func (i GetInstanceEndpointConnectionArgs) ToGetInstanceEndpointConnectionOutput() GetInstanceEndpointConnectionOutput {
+	return i.ToGetInstanceEndpointConnectionOutputWithContext(context.Background())
+}
+
+func (i GetInstanceEndpointConnectionArgs) ToGetInstanceEndpointConnectionOutputWithContext(ctx context.Context) GetInstanceEndpointConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEndpointConnectionOutput)
+}
+
+// GetInstanceEndpointConnectionArrayInput is an input type that accepts GetInstanceEndpointConnectionArray and GetInstanceEndpointConnectionArrayOutput values.
+// You can construct a concrete instance of `GetInstanceEndpointConnectionArrayInput` via:
+//
+//	GetInstanceEndpointConnectionArray{ GetInstanceEndpointConnectionArgs{...} }
+type GetInstanceEndpointConnectionArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceEndpointConnectionArrayOutput() GetInstanceEndpointConnectionArrayOutput
+	ToGetInstanceEndpointConnectionArrayOutputWithContext(context.Context) GetInstanceEndpointConnectionArrayOutput
+}
+
+type GetInstanceEndpointConnectionArray []GetInstanceEndpointConnectionInput
+
+func (GetInstanceEndpointConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceEndpointConnection)(nil)).Elem()
+}
+
+func (i GetInstanceEndpointConnectionArray) ToGetInstanceEndpointConnectionArrayOutput() GetInstanceEndpointConnectionArrayOutput {
+	return i.ToGetInstanceEndpointConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceEndpointConnectionArray) ToGetInstanceEndpointConnectionArrayOutputWithContext(ctx context.Context) GetInstanceEndpointConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEndpointConnectionArrayOutput)
+}
+
+type GetInstanceEndpointConnectionOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceEndpointConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceEndpointConnection)(nil)).Elem()
+}
+
+func (o GetInstanceEndpointConnectionOutput) ToGetInstanceEndpointConnectionOutput() GetInstanceEndpointConnectionOutput {
+	return o
+}
+
+func (o GetInstanceEndpointConnectionOutput) ToGetInstanceEndpointConnectionOutputWithContext(ctx context.Context) GetInstanceEndpointConnectionOutput {
+	return o
+}
+
+// Detailed information of a PSC connection that is created through service connectivity automation.
+func (o GetInstanceEndpointConnectionOutput) PscAutoConnections() GetInstanceEndpointConnectionPscAutoConnectionArrayOutput {
+	return o.ApplyT(func(v GetInstanceEndpointConnection) []GetInstanceEndpointConnectionPscAutoConnection {
+		return v.PscAutoConnections
+	}).(GetInstanceEndpointConnectionPscAutoConnectionArrayOutput)
+}
+
+type GetInstanceEndpointConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceEndpointConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceEndpointConnection)(nil)).Elem()
+}
+
+func (o GetInstanceEndpointConnectionArrayOutput) ToGetInstanceEndpointConnectionArrayOutput() GetInstanceEndpointConnectionArrayOutput {
+	return o
+}
+
+func (o GetInstanceEndpointConnectionArrayOutput) ToGetInstanceEndpointConnectionArrayOutputWithContext(ctx context.Context) GetInstanceEndpointConnectionArrayOutput {
+	return o
+}
+
+func (o GetInstanceEndpointConnectionArrayOutput) Index(i pulumi.IntInput) GetInstanceEndpointConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceEndpointConnection {
+		return vs[0].([]GetInstanceEndpointConnection)[vs[1].(int)]
+	}).(GetInstanceEndpointConnectionOutput)
+}
+
+type GetInstanceEndpointConnectionPscAutoConnection struct {
+	// Output Only. Type of a PSC Connection.
+	//  Possible values:
+	//  CONNECTION_TYPE_DISCOVERY
+	//  CONNECTION_TYPE_PRIMARY
+	//  CONNECTION_TYPE_READER
+	ConnectionType string `pulumi:"connectionType"`
+	// Output only. The URI of the consumer side forwarding rule.
+	// Format:
+	// projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+	ForwardingRule string `pulumi:"forwardingRule"`
+	// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+	IpAddress string `pulumi:"ipAddress"`
+	// Output only. The consumer network where the IP address resides, in the form of
+	// projects/{project_id}/global/networks/{network_id}.
+	Network string `pulumi:"network"`
+	// Output only. Ports of the exposed endpoint.
+	Port int `pulumi:"port"`
+	// Output only. The consumer projectId where the forwarding rule is created from.
+	ProjectId string `pulumi:"projectId"`
+	// Output only. The PSC connection id of the forwarding rule connected to the
+	// service attachment.
+	PscConnectionId string `pulumi:"pscConnectionId"`
+	// Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+	ServiceAttachment string `pulumi:"serviceAttachment"`
+}
+
+// GetInstanceEndpointConnectionPscAutoConnectionInput is an input type that accepts GetInstanceEndpointConnectionPscAutoConnectionArgs and GetInstanceEndpointConnectionPscAutoConnectionOutput values.
+// You can construct a concrete instance of `GetInstanceEndpointConnectionPscAutoConnectionInput` via:
+//
+//	GetInstanceEndpointConnectionPscAutoConnectionArgs{...}
+type GetInstanceEndpointConnectionPscAutoConnectionInput interface {
+	pulumi.Input
+
+	ToGetInstanceEndpointConnectionPscAutoConnectionOutput() GetInstanceEndpointConnectionPscAutoConnectionOutput
+	ToGetInstanceEndpointConnectionPscAutoConnectionOutputWithContext(context.Context) GetInstanceEndpointConnectionPscAutoConnectionOutput
+}
+
+type GetInstanceEndpointConnectionPscAutoConnectionArgs struct {
+	// Output Only. Type of a PSC Connection.
+	//  Possible values:
+	//  CONNECTION_TYPE_DISCOVERY
+	//  CONNECTION_TYPE_PRIMARY
+	//  CONNECTION_TYPE_READER
+	ConnectionType pulumi.StringInput `pulumi:"connectionType"`
+	// Output only. The URI of the consumer side forwarding rule.
+	// Format:
+	// projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+	ForwardingRule pulumi.StringInput `pulumi:"forwardingRule"`
+	// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// Output only. The consumer network where the IP address resides, in the form of
+	// projects/{project_id}/global/networks/{network_id}.
+	Network pulumi.StringInput `pulumi:"network"`
+	// Output only. Ports of the exposed endpoint.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Output only. The consumer projectId where the forwarding rule is created from.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Output only. The PSC connection id of the forwarding rule connected to the
+	// service attachment.
+	PscConnectionId pulumi.StringInput `pulumi:"pscConnectionId"`
+	// Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+	ServiceAttachment pulumi.StringInput `pulumi:"serviceAttachment"`
+}
+
+func (GetInstanceEndpointConnectionPscAutoConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceEndpointConnectionPscAutoConnection)(nil)).Elem()
+}
+
+func (i GetInstanceEndpointConnectionPscAutoConnectionArgs) ToGetInstanceEndpointConnectionPscAutoConnectionOutput() GetInstanceEndpointConnectionPscAutoConnectionOutput {
+	return i.ToGetInstanceEndpointConnectionPscAutoConnectionOutputWithContext(context.Background())
+}
+
+func (i GetInstanceEndpointConnectionPscAutoConnectionArgs) ToGetInstanceEndpointConnectionPscAutoConnectionOutputWithContext(ctx context.Context) GetInstanceEndpointConnectionPscAutoConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEndpointConnectionPscAutoConnectionOutput)
+}
+
+// GetInstanceEndpointConnectionPscAutoConnectionArrayInput is an input type that accepts GetInstanceEndpointConnectionPscAutoConnectionArray and GetInstanceEndpointConnectionPscAutoConnectionArrayOutput values.
+// You can construct a concrete instance of `GetInstanceEndpointConnectionPscAutoConnectionArrayInput` via:
+//
+//	GetInstanceEndpointConnectionPscAutoConnectionArray{ GetInstanceEndpointConnectionPscAutoConnectionArgs{...} }
+type GetInstanceEndpointConnectionPscAutoConnectionArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceEndpointConnectionPscAutoConnectionArrayOutput() GetInstanceEndpointConnectionPscAutoConnectionArrayOutput
+	ToGetInstanceEndpointConnectionPscAutoConnectionArrayOutputWithContext(context.Context) GetInstanceEndpointConnectionPscAutoConnectionArrayOutput
+}
+
+type GetInstanceEndpointConnectionPscAutoConnectionArray []GetInstanceEndpointConnectionPscAutoConnectionInput
+
+func (GetInstanceEndpointConnectionPscAutoConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceEndpointConnectionPscAutoConnection)(nil)).Elem()
+}
+
+func (i GetInstanceEndpointConnectionPscAutoConnectionArray) ToGetInstanceEndpointConnectionPscAutoConnectionArrayOutput() GetInstanceEndpointConnectionPscAutoConnectionArrayOutput {
+	return i.ToGetInstanceEndpointConnectionPscAutoConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceEndpointConnectionPscAutoConnectionArray) ToGetInstanceEndpointConnectionPscAutoConnectionArrayOutputWithContext(ctx context.Context) GetInstanceEndpointConnectionPscAutoConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEndpointConnectionPscAutoConnectionArrayOutput)
+}
+
+type GetInstanceEndpointConnectionPscAutoConnectionOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceEndpointConnectionPscAutoConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceEndpointConnectionPscAutoConnection)(nil)).Elem()
+}
+
+func (o GetInstanceEndpointConnectionPscAutoConnectionOutput) ToGetInstanceEndpointConnectionPscAutoConnectionOutput() GetInstanceEndpointConnectionPscAutoConnectionOutput {
+	return o
+}
+
+func (o GetInstanceEndpointConnectionPscAutoConnectionOutput) ToGetInstanceEndpointConnectionPscAutoConnectionOutputWithContext(ctx context.Context) GetInstanceEndpointConnectionPscAutoConnectionOutput {
+	return o
+}
+
+// Output Only. Type of a PSC Connection.
+//
+//	Possible values:
+//	CONNECTION_TYPE_DISCOVERY
+//	CONNECTION_TYPE_PRIMARY
+//	CONNECTION_TYPE_READER
+func (o GetInstanceEndpointConnectionPscAutoConnectionOutput) ConnectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceEndpointConnectionPscAutoConnection) string { return v.ConnectionType }).(pulumi.StringOutput)
+}
+
+// Output only. The URI of the consumer side forwarding rule.
+// Format:
+// projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+func (o GetInstanceEndpointConnectionPscAutoConnectionOutput) ForwardingRule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceEndpointConnectionPscAutoConnection) string { return v.ForwardingRule }).(pulumi.StringOutput)
+}
+
+// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+func (o GetInstanceEndpointConnectionPscAutoConnectionOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceEndpointConnectionPscAutoConnection) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// Output only. The consumer network where the IP address resides, in the form of
+// projects/{project_id}/global/networks/{network_id}.
+func (o GetInstanceEndpointConnectionPscAutoConnectionOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceEndpointConnectionPscAutoConnection) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Output only. Ports of the exposed endpoint.
+func (o GetInstanceEndpointConnectionPscAutoConnectionOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceEndpointConnectionPscAutoConnection) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Output only. The consumer projectId where the forwarding rule is created from.
+func (o GetInstanceEndpointConnectionPscAutoConnectionOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceEndpointConnectionPscAutoConnection) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Output only. The PSC connection id of the forwarding rule connected to the
+// service attachment.
+func (o GetInstanceEndpointConnectionPscAutoConnectionOutput) PscConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceEndpointConnectionPscAutoConnection) string { return v.PscConnectionId }).(pulumi.StringOutput)
+}
+
+// Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+func (o GetInstanceEndpointConnectionPscAutoConnectionOutput) ServiceAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceEndpointConnectionPscAutoConnection) string { return v.ServiceAttachment }).(pulumi.StringOutput)
+}
+
+type GetInstanceEndpointConnectionPscAutoConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceEndpointConnectionPscAutoConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceEndpointConnectionPscAutoConnection)(nil)).Elem()
+}
+
+func (o GetInstanceEndpointConnectionPscAutoConnectionArrayOutput) ToGetInstanceEndpointConnectionPscAutoConnectionArrayOutput() GetInstanceEndpointConnectionPscAutoConnectionArrayOutput {
+	return o
+}
+
+func (o GetInstanceEndpointConnectionPscAutoConnectionArrayOutput) ToGetInstanceEndpointConnectionPscAutoConnectionArrayOutputWithContext(ctx context.Context) GetInstanceEndpointConnectionPscAutoConnectionArrayOutput {
+	return o
+}
+
+func (o GetInstanceEndpointConnectionPscAutoConnectionArrayOutput) Index(i pulumi.IntInput) GetInstanceEndpointConnectionPscAutoConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceEndpointConnectionPscAutoConnection {
+		return vs[0].([]GetInstanceEndpointConnectionPscAutoConnection)[vs[1].(int)]
+	}).(GetInstanceEndpointConnectionPscAutoConnectionOutput)
+}
+
+type GetInstanceNodeConfig struct {
+	// Output only. Memory size in GB of the node.
+	SizeGb float64 `pulumi:"sizeGb"`
+}
+
+// GetInstanceNodeConfigInput is an input type that accepts GetInstanceNodeConfigArgs and GetInstanceNodeConfigOutput values.
+// You can construct a concrete instance of `GetInstanceNodeConfigInput` via:
+//
+//	GetInstanceNodeConfigArgs{...}
+type GetInstanceNodeConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceNodeConfigOutput() GetInstanceNodeConfigOutput
+	ToGetInstanceNodeConfigOutputWithContext(context.Context) GetInstanceNodeConfigOutput
+}
+
+type GetInstanceNodeConfigArgs struct {
+	// Output only. Memory size in GB of the node.
+	SizeGb pulumi.Float64Input `pulumi:"sizeGb"`
+}
+
+func (GetInstanceNodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNodeConfig)(nil)).Elem()
+}
+
+func (i GetInstanceNodeConfigArgs) ToGetInstanceNodeConfigOutput() GetInstanceNodeConfigOutput {
+	return i.ToGetInstanceNodeConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNodeConfigArgs) ToGetInstanceNodeConfigOutputWithContext(ctx context.Context) GetInstanceNodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNodeConfigOutput)
+}
+
+// GetInstanceNodeConfigArrayInput is an input type that accepts GetInstanceNodeConfigArray and GetInstanceNodeConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceNodeConfigArrayInput` via:
+//
+//	GetInstanceNodeConfigArray{ GetInstanceNodeConfigArgs{...} }
+type GetInstanceNodeConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceNodeConfigArrayOutput() GetInstanceNodeConfigArrayOutput
+	ToGetInstanceNodeConfigArrayOutputWithContext(context.Context) GetInstanceNodeConfigArrayOutput
+}
+
+type GetInstanceNodeConfigArray []GetInstanceNodeConfigInput
+
+func (GetInstanceNodeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNodeConfig)(nil)).Elem()
+}
+
+func (i GetInstanceNodeConfigArray) ToGetInstanceNodeConfigArrayOutput() GetInstanceNodeConfigArrayOutput {
+	return i.ToGetInstanceNodeConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNodeConfigArray) ToGetInstanceNodeConfigArrayOutputWithContext(ctx context.Context) GetInstanceNodeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNodeConfigArrayOutput)
+}
+
+type GetInstanceNodeConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNodeConfig)(nil)).Elem()
+}
+
+func (o GetInstanceNodeConfigOutput) ToGetInstanceNodeConfigOutput() GetInstanceNodeConfigOutput {
+	return o
+}
+
+func (o GetInstanceNodeConfigOutput) ToGetInstanceNodeConfigOutputWithContext(ctx context.Context) GetInstanceNodeConfigOutput {
+	return o
+}
+
+// Output only. Memory size in GB of the node.
+func (o GetInstanceNodeConfigOutput) SizeGb() pulumi.Float64Output {
+	return o.ApplyT(func(v GetInstanceNodeConfig) float64 { return v.SizeGb }).(pulumi.Float64Output)
+}
+
+type GetInstanceNodeConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNodeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNodeConfig)(nil)).Elem()
+}
+
+func (o GetInstanceNodeConfigArrayOutput) ToGetInstanceNodeConfigArrayOutput() GetInstanceNodeConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceNodeConfigArrayOutput) ToGetInstanceNodeConfigArrayOutputWithContext(ctx context.Context) GetInstanceNodeConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceNodeConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceNodeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceNodeConfig {
+		return vs[0].([]GetInstanceNodeConfig)[vs[1].(int)]
+	}).(GetInstanceNodeConfigOutput)
+}
+
+type GetInstancePersistenceConfig struct {
+	// Configuration for AOF based persistence.
+	AofConfigs []GetInstancePersistenceConfigAofConfig `pulumi:"aofConfigs"`
+	// Optional. Current persistence mode.
+	//  Possible values:
+	// DISABLED
+	// RDB
+	// AOF Possible values: ["DISABLED", "RDB", "AOF"]
+	Mode string `pulumi:"mode"`
+	// Configuration for RDB based persistence.
+	RdbConfigs []GetInstancePersistenceConfigRdbConfig `pulumi:"rdbConfigs"`
+}
+
+// GetInstancePersistenceConfigInput is an input type that accepts GetInstancePersistenceConfigArgs and GetInstancePersistenceConfigOutput values.
+// You can construct a concrete instance of `GetInstancePersistenceConfigInput` via:
+//
+//	GetInstancePersistenceConfigArgs{...}
+type GetInstancePersistenceConfigInput interface {
+	pulumi.Input
+
+	ToGetInstancePersistenceConfigOutput() GetInstancePersistenceConfigOutput
+	ToGetInstancePersistenceConfigOutputWithContext(context.Context) GetInstancePersistenceConfigOutput
+}
+
+type GetInstancePersistenceConfigArgs struct {
+	// Configuration for AOF based persistence.
+	AofConfigs GetInstancePersistenceConfigAofConfigArrayInput `pulumi:"aofConfigs"`
+	// Optional. Current persistence mode.
+	//  Possible values:
+	// DISABLED
+	// RDB
+	// AOF Possible values: ["DISABLED", "RDB", "AOF"]
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// Configuration for RDB based persistence.
+	RdbConfigs GetInstancePersistenceConfigRdbConfigArrayInput `pulumi:"rdbConfigs"`
+}
+
+func (GetInstancePersistenceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePersistenceConfig)(nil)).Elem()
+}
+
+func (i GetInstancePersistenceConfigArgs) ToGetInstancePersistenceConfigOutput() GetInstancePersistenceConfigOutput {
+	return i.ToGetInstancePersistenceConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstancePersistenceConfigArgs) ToGetInstancePersistenceConfigOutputWithContext(ctx context.Context) GetInstancePersistenceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePersistenceConfigOutput)
+}
+
+// GetInstancePersistenceConfigArrayInput is an input type that accepts GetInstancePersistenceConfigArray and GetInstancePersistenceConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstancePersistenceConfigArrayInput` via:
+//
+//	GetInstancePersistenceConfigArray{ GetInstancePersistenceConfigArgs{...} }
+type GetInstancePersistenceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancePersistenceConfigArrayOutput() GetInstancePersistenceConfigArrayOutput
+	ToGetInstancePersistenceConfigArrayOutputWithContext(context.Context) GetInstancePersistenceConfigArrayOutput
+}
+
+type GetInstancePersistenceConfigArray []GetInstancePersistenceConfigInput
+
+func (GetInstancePersistenceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePersistenceConfig)(nil)).Elem()
+}
+
+func (i GetInstancePersistenceConfigArray) ToGetInstancePersistenceConfigArrayOutput() GetInstancePersistenceConfigArrayOutput {
+	return i.ToGetInstancePersistenceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancePersistenceConfigArray) ToGetInstancePersistenceConfigArrayOutputWithContext(ctx context.Context) GetInstancePersistenceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePersistenceConfigArrayOutput)
+}
+
+type GetInstancePersistenceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePersistenceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePersistenceConfig)(nil)).Elem()
+}
+
+func (o GetInstancePersistenceConfigOutput) ToGetInstancePersistenceConfigOutput() GetInstancePersistenceConfigOutput {
+	return o
+}
+
+func (o GetInstancePersistenceConfigOutput) ToGetInstancePersistenceConfigOutputWithContext(ctx context.Context) GetInstancePersistenceConfigOutput {
+	return o
+}
+
+// Configuration for AOF based persistence.
+func (o GetInstancePersistenceConfigOutput) AofConfigs() GetInstancePersistenceConfigAofConfigArrayOutput {
+	return o.ApplyT(func(v GetInstancePersistenceConfig) []GetInstancePersistenceConfigAofConfig { return v.AofConfigs }).(GetInstancePersistenceConfigAofConfigArrayOutput)
+}
+
+// Optional. Current persistence mode.
+//
+//	Possible values:
+//
+// DISABLED
+// RDB
+// AOF Possible values: ["DISABLED", "RDB", "AOF"]
+func (o GetInstancePersistenceConfigOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePersistenceConfig) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// Configuration for RDB based persistence.
+func (o GetInstancePersistenceConfigOutput) RdbConfigs() GetInstancePersistenceConfigRdbConfigArrayOutput {
+	return o.ApplyT(func(v GetInstancePersistenceConfig) []GetInstancePersistenceConfigRdbConfig { return v.RdbConfigs }).(GetInstancePersistenceConfigRdbConfigArrayOutput)
+}
+
+type GetInstancePersistenceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePersistenceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePersistenceConfig)(nil)).Elem()
+}
+
+func (o GetInstancePersistenceConfigArrayOutput) ToGetInstancePersistenceConfigArrayOutput() GetInstancePersistenceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstancePersistenceConfigArrayOutput) ToGetInstancePersistenceConfigArrayOutputWithContext(ctx context.Context) GetInstancePersistenceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstancePersistenceConfigArrayOutput) Index(i pulumi.IntInput) GetInstancePersistenceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancePersistenceConfig {
+		return vs[0].([]GetInstancePersistenceConfig)[vs[1].(int)]
+	}).(GetInstancePersistenceConfigOutput)
+}
+
+type GetInstancePersistenceConfigAofConfig struct {
+	// Optional. The fsync mode.
+	//  Possible values:
+	//  NEVER
+	// EVERY_SEC
+	// ALWAYS
+	AppendFsync string `pulumi:"appendFsync"`
+}
+
+// GetInstancePersistenceConfigAofConfigInput is an input type that accepts GetInstancePersistenceConfigAofConfigArgs and GetInstancePersistenceConfigAofConfigOutput values.
+// You can construct a concrete instance of `GetInstancePersistenceConfigAofConfigInput` via:
+//
+//	GetInstancePersistenceConfigAofConfigArgs{...}
+type GetInstancePersistenceConfigAofConfigInput interface {
+	pulumi.Input
+
+	ToGetInstancePersistenceConfigAofConfigOutput() GetInstancePersistenceConfigAofConfigOutput
+	ToGetInstancePersistenceConfigAofConfigOutputWithContext(context.Context) GetInstancePersistenceConfigAofConfigOutput
+}
+
+type GetInstancePersistenceConfigAofConfigArgs struct {
+	// Optional. The fsync mode.
+	//  Possible values:
+	//  NEVER
+	// EVERY_SEC
+	// ALWAYS
+	AppendFsync pulumi.StringInput `pulumi:"appendFsync"`
+}
+
+func (GetInstancePersistenceConfigAofConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePersistenceConfigAofConfig)(nil)).Elem()
+}
+
+func (i GetInstancePersistenceConfigAofConfigArgs) ToGetInstancePersistenceConfigAofConfigOutput() GetInstancePersistenceConfigAofConfigOutput {
+	return i.ToGetInstancePersistenceConfigAofConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstancePersistenceConfigAofConfigArgs) ToGetInstancePersistenceConfigAofConfigOutputWithContext(ctx context.Context) GetInstancePersistenceConfigAofConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePersistenceConfigAofConfigOutput)
+}
+
+// GetInstancePersistenceConfigAofConfigArrayInput is an input type that accepts GetInstancePersistenceConfigAofConfigArray and GetInstancePersistenceConfigAofConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstancePersistenceConfigAofConfigArrayInput` via:
+//
+//	GetInstancePersistenceConfigAofConfigArray{ GetInstancePersistenceConfigAofConfigArgs{...} }
+type GetInstancePersistenceConfigAofConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancePersistenceConfigAofConfigArrayOutput() GetInstancePersistenceConfigAofConfigArrayOutput
+	ToGetInstancePersistenceConfigAofConfigArrayOutputWithContext(context.Context) GetInstancePersistenceConfigAofConfigArrayOutput
+}
+
+type GetInstancePersistenceConfigAofConfigArray []GetInstancePersistenceConfigAofConfigInput
+
+func (GetInstancePersistenceConfigAofConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePersistenceConfigAofConfig)(nil)).Elem()
+}
+
+func (i GetInstancePersistenceConfigAofConfigArray) ToGetInstancePersistenceConfigAofConfigArrayOutput() GetInstancePersistenceConfigAofConfigArrayOutput {
+	return i.ToGetInstancePersistenceConfigAofConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancePersistenceConfigAofConfigArray) ToGetInstancePersistenceConfigAofConfigArrayOutputWithContext(ctx context.Context) GetInstancePersistenceConfigAofConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePersistenceConfigAofConfigArrayOutput)
+}
+
+type GetInstancePersistenceConfigAofConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePersistenceConfigAofConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePersistenceConfigAofConfig)(nil)).Elem()
+}
+
+func (o GetInstancePersistenceConfigAofConfigOutput) ToGetInstancePersistenceConfigAofConfigOutput() GetInstancePersistenceConfigAofConfigOutput {
+	return o
+}
+
+func (o GetInstancePersistenceConfigAofConfigOutput) ToGetInstancePersistenceConfigAofConfigOutputWithContext(ctx context.Context) GetInstancePersistenceConfigAofConfigOutput {
+	return o
+}
+
+// Optional. The fsync mode.
+//
+//	Possible values:
+//	NEVER
+//
+// EVERY_SEC
+// ALWAYS
+func (o GetInstancePersistenceConfigAofConfigOutput) AppendFsync() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePersistenceConfigAofConfig) string { return v.AppendFsync }).(pulumi.StringOutput)
+}
+
+type GetInstancePersistenceConfigAofConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePersistenceConfigAofConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePersistenceConfigAofConfig)(nil)).Elem()
+}
+
+func (o GetInstancePersistenceConfigAofConfigArrayOutput) ToGetInstancePersistenceConfigAofConfigArrayOutput() GetInstancePersistenceConfigAofConfigArrayOutput {
+	return o
+}
+
+func (o GetInstancePersistenceConfigAofConfigArrayOutput) ToGetInstancePersistenceConfigAofConfigArrayOutputWithContext(ctx context.Context) GetInstancePersistenceConfigAofConfigArrayOutput {
+	return o
+}
+
+func (o GetInstancePersistenceConfigAofConfigArrayOutput) Index(i pulumi.IntInput) GetInstancePersistenceConfigAofConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancePersistenceConfigAofConfig {
+		return vs[0].([]GetInstancePersistenceConfigAofConfig)[vs[1].(int)]
+	}).(GetInstancePersistenceConfigAofConfigOutput)
+}
+
+type GetInstancePersistenceConfigRdbConfig struct {
+	// Optional. Period between RDB snapshots.
+	//  Possible values:
+	//  ONE_HOUR
+	// SIX_HOURS
+	// TWELVE_HOURS
+	// TWENTY_FOUR_HOURS
+	RdbSnapshotPeriod string `pulumi:"rdbSnapshotPeriod"`
+	// Optional. Time that the first snapshot was/will be attempted, and to which future
+	// snapshots will be aligned. If not provided, the current time will be
+	// used.
+	RdbSnapshotStartTime string `pulumi:"rdbSnapshotStartTime"`
+}
+
+// GetInstancePersistenceConfigRdbConfigInput is an input type that accepts GetInstancePersistenceConfigRdbConfigArgs and GetInstancePersistenceConfigRdbConfigOutput values.
+// You can construct a concrete instance of `GetInstancePersistenceConfigRdbConfigInput` via:
+//
+//	GetInstancePersistenceConfigRdbConfigArgs{...}
+type GetInstancePersistenceConfigRdbConfigInput interface {
+	pulumi.Input
+
+	ToGetInstancePersistenceConfigRdbConfigOutput() GetInstancePersistenceConfigRdbConfigOutput
+	ToGetInstancePersistenceConfigRdbConfigOutputWithContext(context.Context) GetInstancePersistenceConfigRdbConfigOutput
+}
+
+type GetInstancePersistenceConfigRdbConfigArgs struct {
+	// Optional. Period between RDB snapshots.
+	//  Possible values:
+	//  ONE_HOUR
+	// SIX_HOURS
+	// TWELVE_HOURS
+	// TWENTY_FOUR_HOURS
+	RdbSnapshotPeriod pulumi.StringInput `pulumi:"rdbSnapshotPeriod"`
+	// Optional. Time that the first snapshot was/will be attempted, and to which future
+	// snapshots will be aligned. If not provided, the current time will be
+	// used.
+	RdbSnapshotStartTime pulumi.StringInput `pulumi:"rdbSnapshotStartTime"`
+}
+
+func (GetInstancePersistenceConfigRdbConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePersistenceConfigRdbConfig)(nil)).Elem()
+}
+
+func (i GetInstancePersistenceConfigRdbConfigArgs) ToGetInstancePersistenceConfigRdbConfigOutput() GetInstancePersistenceConfigRdbConfigOutput {
+	return i.ToGetInstancePersistenceConfigRdbConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstancePersistenceConfigRdbConfigArgs) ToGetInstancePersistenceConfigRdbConfigOutputWithContext(ctx context.Context) GetInstancePersistenceConfigRdbConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePersistenceConfigRdbConfigOutput)
+}
+
+// GetInstancePersistenceConfigRdbConfigArrayInput is an input type that accepts GetInstancePersistenceConfigRdbConfigArray and GetInstancePersistenceConfigRdbConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstancePersistenceConfigRdbConfigArrayInput` via:
+//
+//	GetInstancePersistenceConfigRdbConfigArray{ GetInstancePersistenceConfigRdbConfigArgs{...} }
+type GetInstancePersistenceConfigRdbConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancePersistenceConfigRdbConfigArrayOutput() GetInstancePersistenceConfigRdbConfigArrayOutput
+	ToGetInstancePersistenceConfigRdbConfigArrayOutputWithContext(context.Context) GetInstancePersistenceConfigRdbConfigArrayOutput
+}
+
+type GetInstancePersistenceConfigRdbConfigArray []GetInstancePersistenceConfigRdbConfigInput
+
+func (GetInstancePersistenceConfigRdbConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePersistenceConfigRdbConfig)(nil)).Elem()
+}
+
+func (i GetInstancePersistenceConfigRdbConfigArray) ToGetInstancePersistenceConfigRdbConfigArrayOutput() GetInstancePersistenceConfigRdbConfigArrayOutput {
+	return i.ToGetInstancePersistenceConfigRdbConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancePersistenceConfigRdbConfigArray) ToGetInstancePersistenceConfigRdbConfigArrayOutputWithContext(ctx context.Context) GetInstancePersistenceConfigRdbConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePersistenceConfigRdbConfigArrayOutput)
+}
+
+type GetInstancePersistenceConfigRdbConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePersistenceConfigRdbConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePersistenceConfigRdbConfig)(nil)).Elem()
+}
+
+func (o GetInstancePersistenceConfigRdbConfigOutput) ToGetInstancePersistenceConfigRdbConfigOutput() GetInstancePersistenceConfigRdbConfigOutput {
+	return o
+}
+
+func (o GetInstancePersistenceConfigRdbConfigOutput) ToGetInstancePersistenceConfigRdbConfigOutputWithContext(ctx context.Context) GetInstancePersistenceConfigRdbConfigOutput {
+	return o
+}
+
+// Optional. Period between RDB snapshots.
+//
+//	Possible values:
+//	ONE_HOUR
+//
+// SIX_HOURS
+// TWELVE_HOURS
+// TWENTY_FOUR_HOURS
+func (o GetInstancePersistenceConfigRdbConfigOutput) RdbSnapshotPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePersistenceConfigRdbConfig) string { return v.RdbSnapshotPeriod }).(pulumi.StringOutput)
+}
+
+// Optional. Time that the first snapshot was/will be attempted, and to which future
+// snapshots will be aligned. If not provided, the current time will be
+// used.
+func (o GetInstancePersistenceConfigRdbConfigOutput) RdbSnapshotStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePersistenceConfigRdbConfig) string { return v.RdbSnapshotStartTime }).(pulumi.StringOutput)
+}
+
+type GetInstancePersistenceConfigRdbConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePersistenceConfigRdbConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePersistenceConfigRdbConfig)(nil)).Elem()
+}
+
+func (o GetInstancePersistenceConfigRdbConfigArrayOutput) ToGetInstancePersistenceConfigRdbConfigArrayOutput() GetInstancePersistenceConfigRdbConfigArrayOutput {
+	return o
+}
+
+func (o GetInstancePersistenceConfigRdbConfigArrayOutput) ToGetInstancePersistenceConfigRdbConfigArrayOutputWithContext(ctx context.Context) GetInstancePersistenceConfigRdbConfigArrayOutput {
+	return o
+}
+
+func (o GetInstancePersistenceConfigRdbConfigArrayOutput) Index(i pulumi.IntInput) GetInstancePersistenceConfigRdbConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancePersistenceConfigRdbConfig {
+		return vs[0].([]GetInstancePersistenceConfigRdbConfig)[vs[1].(int)]
+	}).(GetInstancePersistenceConfigRdbConfigOutput)
+}
+
+type GetInstancePscAutoConnection struct {
+	// Output Only. Type of a PSC Connection.
+	//  Possible values:
+	//  CONNECTION_TYPE_DISCOVERY
+	//  CONNECTION_TYPE_PRIMARY
+	//  CONNECTION_TYPE_READER
+	ConnectionType string `pulumi:"connectionType"`
+	// Output only. The URI of the consumer side forwarding rule.
+	// Format:
+	// projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+	ForwardingRule string `pulumi:"forwardingRule"`
+	// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+	IpAddress string `pulumi:"ipAddress"`
+	// Output only. The consumer network where the IP address resides, in the form of
+	// projects/{project_id}/global/networks/{network_id}.
+	Network string `pulumi:"network"`
+	// Output only. Ports of the exposed endpoint.
+	Port int `pulumi:"port"`
+	// Output only. The consumer projectId where the forwarding rule is created from.
+	ProjectId string `pulumi:"projectId"`
+	// Output only. The PSC connection id of the forwarding rule connected to the
+	// service attachment.
+	PscConnectionId string `pulumi:"pscConnectionId"`
+	// Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+	//  Possible values:
+	//  ACTIVE
+	//  NOT_FOUND
+	PscConnectionStatus string `pulumi:"pscConnectionStatus"`
+	// Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+	ServiceAttachment string `pulumi:"serviceAttachment"`
+}
+
+// GetInstancePscAutoConnectionInput is an input type that accepts GetInstancePscAutoConnectionArgs and GetInstancePscAutoConnectionOutput values.
+// You can construct a concrete instance of `GetInstancePscAutoConnectionInput` via:
+//
+//	GetInstancePscAutoConnectionArgs{...}
+type GetInstancePscAutoConnectionInput interface {
+	pulumi.Input
+
+	ToGetInstancePscAutoConnectionOutput() GetInstancePscAutoConnectionOutput
+	ToGetInstancePscAutoConnectionOutputWithContext(context.Context) GetInstancePscAutoConnectionOutput
+}
+
+type GetInstancePscAutoConnectionArgs struct {
+	// Output Only. Type of a PSC Connection.
+	//  Possible values:
+	//  CONNECTION_TYPE_DISCOVERY
+	//  CONNECTION_TYPE_PRIMARY
+	//  CONNECTION_TYPE_READER
+	ConnectionType pulumi.StringInput `pulumi:"connectionType"`
+	// Output only. The URI of the consumer side forwarding rule.
+	// Format:
+	// projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+	ForwardingRule pulumi.StringInput `pulumi:"forwardingRule"`
+	// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// Output only. The consumer network where the IP address resides, in the form of
+	// projects/{project_id}/global/networks/{network_id}.
+	Network pulumi.StringInput `pulumi:"network"`
+	// Output only. Ports of the exposed endpoint.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Output only. The consumer projectId where the forwarding rule is created from.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Output only. The PSC connection id of the forwarding rule connected to the
+	// service attachment.
+	PscConnectionId pulumi.StringInput `pulumi:"pscConnectionId"`
+	// Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+	//  Possible values:
+	//  ACTIVE
+	//  NOT_FOUND
+	PscConnectionStatus pulumi.StringInput `pulumi:"pscConnectionStatus"`
+	// Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+	ServiceAttachment pulumi.StringInput `pulumi:"serviceAttachment"`
+}
+
+func (GetInstancePscAutoConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePscAutoConnection)(nil)).Elem()
+}
+
+func (i GetInstancePscAutoConnectionArgs) ToGetInstancePscAutoConnectionOutput() GetInstancePscAutoConnectionOutput {
+	return i.ToGetInstancePscAutoConnectionOutputWithContext(context.Background())
+}
+
+func (i GetInstancePscAutoConnectionArgs) ToGetInstancePscAutoConnectionOutputWithContext(ctx context.Context) GetInstancePscAutoConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePscAutoConnectionOutput)
+}
+
+// GetInstancePscAutoConnectionArrayInput is an input type that accepts GetInstancePscAutoConnectionArray and GetInstancePscAutoConnectionArrayOutput values.
+// You can construct a concrete instance of `GetInstancePscAutoConnectionArrayInput` via:
+//
+//	GetInstancePscAutoConnectionArray{ GetInstancePscAutoConnectionArgs{...} }
+type GetInstancePscAutoConnectionArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancePscAutoConnectionArrayOutput() GetInstancePscAutoConnectionArrayOutput
+	ToGetInstancePscAutoConnectionArrayOutputWithContext(context.Context) GetInstancePscAutoConnectionArrayOutput
+}
+
+type GetInstancePscAutoConnectionArray []GetInstancePscAutoConnectionInput
+
+func (GetInstancePscAutoConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePscAutoConnection)(nil)).Elem()
+}
+
+func (i GetInstancePscAutoConnectionArray) ToGetInstancePscAutoConnectionArrayOutput() GetInstancePscAutoConnectionArrayOutput {
+	return i.ToGetInstancePscAutoConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancePscAutoConnectionArray) ToGetInstancePscAutoConnectionArrayOutputWithContext(ctx context.Context) GetInstancePscAutoConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePscAutoConnectionArrayOutput)
+}
+
+type GetInstancePscAutoConnectionOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePscAutoConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePscAutoConnection)(nil)).Elem()
+}
+
+func (o GetInstancePscAutoConnectionOutput) ToGetInstancePscAutoConnectionOutput() GetInstancePscAutoConnectionOutput {
+	return o
+}
+
+func (o GetInstancePscAutoConnectionOutput) ToGetInstancePscAutoConnectionOutputWithContext(ctx context.Context) GetInstancePscAutoConnectionOutput {
+	return o
+}
+
+// Output Only. Type of a PSC Connection.
+//
+//	Possible values:
+//	CONNECTION_TYPE_DISCOVERY
+//	CONNECTION_TYPE_PRIMARY
+//	CONNECTION_TYPE_READER
+func (o GetInstancePscAutoConnectionOutput) ConnectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePscAutoConnection) string { return v.ConnectionType }).(pulumi.StringOutput)
+}
+
+// Output only. The URI of the consumer side forwarding rule.
+// Format:
+// projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+func (o GetInstancePscAutoConnectionOutput) ForwardingRule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePscAutoConnection) string { return v.ForwardingRule }).(pulumi.StringOutput)
+}
+
+// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+func (o GetInstancePscAutoConnectionOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePscAutoConnection) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// Output only. The consumer network where the IP address resides, in the form of
+// projects/{project_id}/global/networks/{network_id}.
+func (o GetInstancePscAutoConnectionOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePscAutoConnection) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Output only. Ports of the exposed endpoint.
+func (o GetInstancePscAutoConnectionOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancePscAutoConnection) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Output only. The consumer projectId where the forwarding rule is created from.
+func (o GetInstancePscAutoConnectionOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePscAutoConnection) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Output only. The PSC connection id of the forwarding rule connected to the
+// service attachment.
+func (o GetInstancePscAutoConnectionOutput) PscConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePscAutoConnection) string { return v.PscConnectionId }).(pulumi.StringOutput)
+}
+
+// Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+//
+//	Possible values:
+//	ACTIVE
+//	NOT_FOUND
+func (o GetInstancePscAutoConnectionOutput) PscConnectionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePscAutoConnection) string { return v.PscConnectionStatus }).(pulumi.StringOutput)
+}
+
+// Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+func (o GetInstancePscAutoConnectionOutput) ServiceAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePscAutoConnection) string { return v.ServiceAttachment }).(pulumi.StringOutput)
+}
+
+type GetInstancePscAutoConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePscAutoConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePscAutoConnection)(nil)).Elem()
+}
+
+func (o GetInstancePscAutoConnectionArrayOutput) ToGetInstancePscAutoConnectionArrayOutput() GetInstancePscAutoConnectionArrayOutput {
+	return o
+}
+
+func (o GetInstancePscAutoConnectionArrayOutput) ToGetInstancePscAutoConnectionArrayOutputWithContext(ctx context.Context) GetInstancePscAutoConnectionArrayOutput {
+	return o
+}
+
+func (o GetInstancePscAutoConnectionArrayOutput) Index(i pulumi.IntInput) GetInstancePscAutoConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancePscAutoConnection {
+		return vs[0].([]GetInstancePscAutoConnection)[vs[1].(int)]
+	}).(GetInstancePscAutoConnectionOutput)
+}
+
+type GetInstanceStateInfo struct {
+	// Represents information about instance with state UPDATING.
+	UpdateInfos []GetInstanceStateInfoUpdateInfo `pulumi:"updateInfos"`
+}
+
+// GetInstanceStateInfoInput is an input type that accepts GetInstanceStateInfoArgs and GetInstanceStateInfoOutput values.
+// You can construct a concrete instance of `GetInstanceStateInfoInput` via:
+//
+//	GetInstanceStateInfoArgs{...}
+type GetInstanceStateInfoInput interface {
+	pulumi.Input
+
+	ToGetInstanceStateInfoOutput() GetInstanceStateInfoOutput
+	ToGetInstanceStateInfoOutputWithContext(context.Context) GetInstanceStateInfoOutput
+}
+
+type GetInstanceStateInfoArgs struct {
+	// Represents information about instance with state UPDATING.
+	UpdateInfos GetInstanceStateInfoUpdateInfoArrayInput `pulumi:"updateInfos"`
+}
+
+func (GetInstanceStateInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceStateInfo)(nil)).Elem()
+}
+
+func (i GetInstanceStateInfoArgs) ToGetInstanceStateInfoOutput() GetInstanceStateInfoOutput {
+	return i.ToGetInstanceStateInfoOutputWithContext(context.Background())
+}
+
+func (i GetInstanceStateInfoArgs) ToGetInstanceStateInfoOutputWithContext(ctx context.Context) GetInstanceStateInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceStateInfoOutput)
+}
+
+// GetInstanceStateInfoArrayInput is an input type that accepts GetInstanceStateInfoArray and GetInstanceStateInfoArrayOutput values.
+// You can construct a concrete instance of `GetInstanceStateInfoArrayInput` via:
+//
+//	GetInstanceStateInfoArray{ GetInstanceStateInfoArgs{...} }
+type GetInstanceStateInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceStateInfoArrayOutput() GetInstanceStateInfoArrayOutput
+	ToGetInstanceStateInfoArrayOutputWithContext(context.Context) GetInstanceStateInfoArrayOutput
+}
+
+type GetInstanceStateInfoArray []GetInstanceStateInfoInput
+
+func (GetInstanceStateInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceStateInfo)(nil)).Elem()
+}
+
+func (i GetInstanceStateInfoArray) ToGetInstanceStateInfoArrayOutput() GetInstanceStateInfoArrayOutput {
+	return i.ToGetInstanceStateInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceStateInfoArray) ToGetInstanceStateInfoArrayOutputWithContext(ctx context.Context) GetInstanceStateInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceStateInfoArrayOutput)
+}
+
+type GetInstanceStateInfoOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceStateInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceStateInfo)(nil)).Elem()
+}
+
+func (o GetInstanceStateInfoOutput) ToGetInstanceStateInfoOutput() GetInstanceStateInfoOutput {
+	return o
+}
+
+func (o GetInstanceStateInfoOutput) ToGetInstanceStateInfoOutputWithContext(ctx context.Context) GetInstanceStateInfoOutput {
+	return o
+}
+
+// Represents information about instance with state UPDATING.
+func (o GetInstanceStateInfoOutput) UpdateInfos() GetInstanceStateInfoUpdateInfoArrayOutput {
+	return o.ApplyT(func(v GetInstanceStateInfo) []GetInstanceStateInfoUpdateInfo { return v.UpdateInfos }).(GetInstanceStateInfoUpdateInfoArrayOutput)
+}
+
+type GetInstanceStateInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceStateInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceStateInfo)(nil)).Elem()
+}
+
+func (o GetInstanceStateInfoArrayOutput) ToGetInstanceStateInfoArrayOutput() GetInstanceStateInfoArrayOutput {
+	return o
+}
+
+func (o GetInstanceStateInfoArrayOutput) ToGetInstanceStateInfoArrayOutputWithContext(ctx context.Context) GetInstanceStateInfoArrayOutput {
+	return o
+}
+
+func (o GetInstanceStateInfoArrayOutput) Index(i pulumi.IntInput) GetInstanceStateInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceStateInfo {
+		return vs[0].([]GetInstanceStateInfo)[vs[1].(int)]
+	}).(GetInstanceStateInfoOutput)
+}
+
+type GetInstanceStateInfoUpdateInfo struct {
+	// Output only. Target number of replica nodes per shard for the instance.
+	TargetReplicaCount int `pulumi:"targetReplicaCount"`
+	// Output only. Target number of shards for the instance.
+	TargetShardCount int `pulumi:"targetShardCount"`
+}
+
+// GetInstanceStateInfoUpdateInfoInput is an input type that accepts GetInstanceStateInfoUpdateInfoArgs and GetInstanceStateInfoUpdateInfoOutput values.
+// You can construct a concrete instance of `GetInstanceStateInfoUpdateInfoInput` via:
+//
+//	GetInstanceStateInfoUpdateInfoArgs{...}
+type GetInstanceStateInfoUpdateInfoInput interface {
+	pulumi.Input
+
+	ToGetInstanceStateInfoUpdateInfoOutput() GetInstanceStateInfoUpdateInfoOutput
+	ToGetInstanceStateInfoUpdateInfoOutputWithContext(context.Context) GetInstanceStateInfoUpdateInfoOutput
+}
+
+type GetInstanceStateInfoUpdateInfoArgs struct {
+	// Output only. Target number of replica nodes per shard for the instance.
+	TargetReplicaCount pulumi.IntInput `pulumi:"targetReplicaCount"`
+	// Output only. Target number of shards for the instance.
+	TargetShardCount pulumi.IntInput `pulumi:"targetShardCount"`
+}
+
+func (GetInstanceStateInfoUpdateInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceStateInfoUpdateInfo)(nil)).Elem()
+}
+
+func (i GetInstanceStateInfoUpdateInfoArgs) ToGetInstanceStateInfoUpdateInfoOutput() GetInstanceStateInfoUpdateInfoOutput {
+	return i.ToGetInstanceStateInfoUpdateInfoOutputWithContext(context.Background())
+}
+
+func (i GetInstanceStateInfoUpdateInfoArgs) ToGetInstanceStateInfoUpdateInfoOutputWithContext(ctx context.Context) GetInstanceStateInfoUpdateInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceStateInfoUpdateInfoOutput)
+}
+
+// GetInstanceStateInfoUpdateInfoArrayInput is an input type that accepts GetInstanceStateInfoUpdateInfoArray and GetInstanceStateInfoUpdateInfoArrayOutput values.
+// You can construct a concrete instance of `GetInstanceStateInfoUpdateInfoArrayInput` via:
+//
+//	GetInstanceStateInfoUpdateInfoArray{ GetInstanceStateInfoUpdateInfoArgs{...} }
+type GetInstanceStateInfoUpdateInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceStateInfoUpdateInfoArrayOutput() GetInstanceStateInfoUpdateInfoArrayOutput
+	ToGetInstanceStateInfoUpdateInfoArrayOutputWithContext(context.Context) GetInstanceStateInfoUpdateInfoArrayOutput
+}
+
+type GetInstanceStateInfoUpdateInfoArray []GetInstanceStateInfoUpdateInfoInput
+
+func (GetInstanceStateInfoUpdateInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceStateInfoUpdateInfo)(nil)).Elem()
+}
+
+func (i GetInstanceStateInfoUpdateInfoArray) ToGetInstanceStateInfoUpdateInfoArrayOutput() GetInstanceStateInfoUpdateInfoArrayOutput {
+	return i.ToGetInstanceStateInfoUpdateInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceStateInfoUpdateInfoArray) ToGetInstanceStateInfoUpdateInfoArrayOutputWithContext(ctx context.Context) GetInstanceStateInfoUpdateInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceStateInfoUpdateInfoArrayOutput)
+}
+
+type GetInstanceStateInfoUpdateInfoOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceStateInfoUpdateInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceStateInfoUpdateInfo)(nil)).Elem()
+}
+
+func (o GetInstanceStateInfoUpdateInfoOutput) ToGetInstanceStateInfoUpdateInfoOutput() GetInstanceStateInfoUpdateInfoOutput {
+	return o
+}
+
+func (o GetInstanceStateInfoUpdateInfoOutput) ToGetInstanceStateInfoUpdateInfoOutputWithContext(ctx context.Context) GetInstanceStateInfoUpdateInfoOutput {
+	return o
+}
+
+// Output only. Target number of replica nodes per shard for the instance.
+func (o GetInstanceStateInfoUpdateInfoOutput) TargetReplicaCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceStateInfoUpdateInfo) int { return v.TargetReplicaCount }).(pulumi.IntOutput)
+}
+
+// Output only. Target number of shards for the instance.
+func (o GetInstanceStateInfoUpdateInfoOutput) TargetShardCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceStateInfoUpdateInfo) int { return v.TargetShardCount }).(pulumi.IntOutput)
+}
+
+type GetInstanceStateInfoUpdateInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceStateInfoUpdateInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceStateInfoUpdateInfo)(nil)).Elem()
+}
+
+func (o GetInstanceStateInfoUpdateInfoArrayOutput) ToGetInstanceStateInfoUpdateInfoArrayOutput() GetInstanceStateInfoUpdateInfoArrayOutput {
+	return o
+}
+
+func (o GetInstanceStateInfoUpdateInfoArrayOutput) ToGetInstanceStateInfoUpdateInfoArrayOutputWithContext(ctx context.Context) GetInstanceStateInfoUpdateInfoArrayOutput {
+	return o
+}
+
+func (o GetInstanceStateInfoUpdateInfoArrayOutput) Index(i pulumi.IntInput) GetInstanceStateInfoUpdateInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceStateInfoUpdateInfo {
+		return vs[0].([]GetInstanceStateInfoUpdateInfo)[vs[1].(int)]
+	}).(GetInstanceStateInfoUpdateInfoOutput)
+}
+
+type GetInstanceZoneDistributionConfig struct {
+	// Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
+	//  Possible values:
+	//  MULTI_ZONE
+	// SINGLE_ZONE Possible values: ["MULTI_ZONE", "SINGLE_ZONE"]
+	Mode string `pulumi:"mode"`
+	// Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
+	// Ignored for MULTI_ZONE mode.
+	Zone string `pulumi:"zone"`
+}
+
+// GetInstanceZoneDistributionConfigInput is an input type that accepts GetInstanceZoneDistributionConfigArgs and GetInstanceZoneDistributionConfigOutput values.
+// You can construct a concrete instance of `GetInstanceZoneDistributionConfigInput` via:
+//
+//	GetInstanceZoneDistributionConfigArgs{...}
+type GetInstanceZoneDistributionConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceZoneDistributionConfigOutput() GetInstanceZoneDistributionConfigOutput
+	ToGetInstanceZoneDistributionConfigOutputWithContext(context.Context) GetInstanceZoneDistributionConfigOutput
+}
+
+type GetInstanceZoneDistributionConfigArgs struct {
+	// Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
+	//  Possible values:
+	//  MULTI_ZONE
+	// SINGLE_ZONE Possible values: ["MULTI_ZONE", "SINGLE_ZONE"]
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
+	// Ignored for MULTI_ZONE mode.
+	Zone pulumi.StringInput `pulumi:"zone"`
+}
+
+func (GetInstanceZoneDistributionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceZoneDistributionConfig)(nil)).Elem()
+}
+
+func (i GetInstanceZoneDistributionConfigArgs) ToGetInstanceZoneDistributionConfigOutput() GetInstanceZoneDistributionConfigOutput {
+	return i.ToGetInstanceZoneDistributionConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceZoneDistributionConfigArgs) ToGetInstanceZoneDistributionConfigOutputWithContext(ctx context.Context) GetInstanceZoneDistributionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceZoneDistributionConfigOutput)
+}
+
+// GetInstanceZoneDistributionConfigArrayInput is an input type that accepts GetInstanceZoneDistributionConfigArray and GetInstanceZoneDistributionConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceZoneDistributionConfigArrayInput` via:
+//
+//	GetInstanceZoneDistributionConfigArray{ GetInstanceZoneDistributionConfigArgs{...} }
+type GetInstanceZoneDistributionConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceZoneDistributionConfigArrayOutput() GetInstanceZoneDistributionConfigArrayOutput
+	ToGetInstanceZoneDistributionConfigArrayOutputWithContext(context.Context) GetInstanceZoneDistributionConfigArrayOutput
+}
+
+type GetInstanceZoneDistributionConfigArray []GetInstanceZoneDistributionConfigInput
+
+func (GetInstanceZoneDistributionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceZoneDistributionConfig)(nil)).Elem()
+}
+
+func (i GetInstanceZoneDistributionConfigArray) ToGetInstanceZoneDistributionConfigArrayOutput() GetInstanceZoneDistributionConfigArrayOutput {
+	return i.ToGetInstanceZoneDistributionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceZoneDistributionConfigArray) ToGetInstanceZoneDistributionConfigArrayOutputWithContext(ctx context.Context) GetInstanceZoneDistributionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceZoneDistributionConfigArrayOutput)
+}
+
+type GetInstanceZoneDistributionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceZoneDistributionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceZoneDistributionConfig)(nil)).Elem()
+}
+
+func (o GetInstanceZoneDistributionConfigOutput) ToGetInstanceZoneDistributionConfigOutput() GetInstanceZoneDistributionConfigOutput {
+	return o
+}
+
+func (o GetInstanceZoneDistributionConfigOutput) ToGetInstanceZoneDistributionConfigOutputWithContext(ctx context.Context) GetInstanceZoneDistributionConfigOutput {
+	return o
+}
+
+// Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
+//
+//	Possible values:
+//	MULTI_ZONE
+//
+// SINGLE_ZONE Possible values: ["MULTI_ZONE", "SINGLE_ZONE"]
+func (o GetInstanceZoneDistributionConfigOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceZoneDistributionConfig) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
+// Ignored for MULTI_ZONE mode.
+func (o GetInstanceZoneDistributionConfigOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceZoneDistributionConfig) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+type GetInstanceZoneDistributionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceZoneDistributionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceZoneDistributionConfig)(nil)).Elem()
+}
+
+func (o GetInstanceZoneDistributionConfigArrayOutput) ToGetInstanceZoneDistributionConfigArrayOutput() GetInstanceZoneDistributionConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceZoneDistributionConfigArrayOutput) ToGetInstanceZoneDistributionConfigArrayOutputWithContext(ctx context.Context) GetInstanceZoneDistributionConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceZoneDistributionConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceZoneDistributionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceZoneDistributionConfig {
+		return vs[0].([]GetInstanceZoneDistributionConfig)[vs[1].(int)]
+	}).(GetInstanceZoneDistributionConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDesiredPscAutoConnectionInput)(nil)).Elem(), InstanceDesiredPscAutoConnectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDesiredPscAutoConnectionArrayInput)(nil)).Elem(), InstanceDesiredPscAutoConnectionArray{})
@@ -2078,6 +3682,32 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceStateInfoUpdateInfoArrayInput)(nil)).Elem(), InstanceStateInfoUpdateInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceZoneDistributionConfigInput)(nil)).Elem(), InstanceZoneDistributionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceZoneDistributionConfigPtrInput)(nil)).Elem(), InstanceZoneDistributionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceDesiredPscAutoConnectionInput)(nil)).Elem(), GetInstanceDesiredPscAutoConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceDesiredPscAutoConnectionArrayInput)(nil)).Elem(), GetInstanceDesiredPscAutoConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceDiscoveryEndpointInput)(nil)).Elem(), GetInstanceDiscoveryEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceDiscoveryEndpointArrayInput)(nil)).Elem(), GetInstanceDiscoveryEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEndpointInput)(nil)).Elem(), GetInstanceEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEndpointArrayInput)(nil)).Elem(), GetInstanceEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEndpointConnectionInput)(nil)).Elem(), GetInstanceEndpointConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEndpointConnectionArrayInput)(nil)).Elem(), GetInstanceEndpointConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEndpointConnectionPscAutoConnectionInput)(nil)).Elem(), GetInstanceEndpointConnectionPscAutoConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEndpointConnectionPscAutoConnectionArrayInput)(nil)).Elem(), GetInstanceEndpointConnectionPscAutoConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNodeConfigInput)(nil)).Elem(), GetInstanceNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNodeConfigArrayInput)(nil)).Elem(), GetInstanceNodeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePersistenceConfigInput)(nil)).Elem(), GetInstancePersistenceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePersistenceConfigArrayInput)(nil)).Elem(), GetInstancePersistenceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePersistenceConfigAofConfigInput)(nil)).Elem(), GetInstancePersistenceConfigAofConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePersistenceConfigAofConfigArrayInput)(nil)).Elem(), GetInstancePersistenceConfigAofConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePersistenceConfigRdbConfigInput)(nil)).Elem(), GetInstancePersistenceConfigRdbConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePersistenceConfigRdbConfigArrayInput)(nil)).Elem(), GetInstancePersistenceConfigRdbConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePscAutoConnectionInput)(nil)).Elem(), GetInstancePscAutoConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePscAutoConnectionArrayInput)(nil)).Elem(), GetInstancePscAutoConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceStateInfoInput)(nil)).Elem(), GetInstanceStateInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceStateInfoArrayInput)(nil)).Elem(), GetInstanceStateInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceStateInfoUpdateInfoInput)(nil)).Elem(), GetInstanceStateInfoUpdateInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceStateInfoUpdateInfoArrayInput)(nil)).Elem(), GetInstanceStateInfoUpdateInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceZoneDistributionConfigInput)(nil)).Elem(), GetInstanceZoneDistributionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceZoneDistributionConfigArrayInput)(nil)).Elem(), GetInstanceZoneDistributionConfigArray{})
 	pulumi.RegisterOutputType(InstanceDesiredPscAutoConnectionOutput{})
 	pulumi.RegisterOutputType(InstanceDesiredPscAutoConnectionArrayOutput{})
 	pulumi.RegisterOutputType(InstanceDiscoveryEndpointOutput{})
@@ -2104,4 +3734,30 @@ func init() {
 	pulumi.RegisterOutputType(InstanceStateInfoUpdateInfoArrayOutput{})
 	pulumi.RegisterOutputType(InstanceZoneDistributionConfigOutput{})
 	pulumi.RegisterOutputType(InstanceZoneDistributionConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetInstanceDesiredPscAutoConnectionOutput{})
+	pulumi.RegisterOutputType(GetInstanceDesiredPscAutoConnectionArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceDiscoveryEndpointOutput{})
+	pulumi.RegisterOutputType(GetInstanceDiscoveryEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceEndpointOutput{})
+	pulumi.RegisterOutputType(GetInstanceEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceEndpointConnectionOutput{})
+	pulumi.RegisterOutputType(GetInstanceEndpointConnectionArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceEndpointConnectionPscAutoConnectionOutput{})
+	pulumi.RegisterOutputType(GetInstanceEndpointConnectionPscAutoConnectionArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceNodeConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceNodeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancePersistenceConfigOutput{})
+	pulumi.RegisterOutputType(GetInstancePersistenceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancePersistenceConfigAofConfigOutput{})
+	pulumi.RegisterOutputType(GetInstancePersistenceConfigAofConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancePersistenceConfigRdbConfigOutput{})
+	pulumi.RegisterOutputType(GetInstancePersistenceConfigRdbConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancePscAutoConnectionOutput{})
+	pulumi.RegisterOutputType(GetInstancePscAutoConnectionArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceStateInfoOutput{})
+	pulumi.RegisterOutputType(GetInstanceStateInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceStateInfoUpdateInfoOutput{})
+	pulumi.RegisterOutputType(GetInstanceStateInfoUpdateInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceZoneDistributionConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceZoneDistributionConfigArrayOutput{})
 }

@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * The resource for managing DataSharingWithGoogle setting bindings for Admin Control.
+ *
+ * To get more information about DataSharingWithGoogleSettingBinding, see:
+ * * How-to Guides
+ *     * [Gemini Cloud Assist overview](https://cloud.google.com/gemini/docs/cloud-assist/overview)
+ *
  * ## Example Usage
  *
  * ### Gemini Data Sharing With Google Setting Binding Basic
@@ -110,9 +116,9 @@ export class DataSharingWithGoogleSettingBinding extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Product type of the setting binding.
-     * Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+     * Possible values are: `GEMINI_CLOUD_ASSIST`.
      */
-    public readonly product!: pulumi.Output<string | undefined>;
+    public readonly product!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -228,7 +234,7 @@ export interface DataSharingWithGoogleSettingBindingState {
     name?: pulumi.Input<string>;
     /**
      * Product type of the setting binding.
-     * Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+     * Possible values are: `GEMINI_CLOUD_ASSIST`.
      */
     product?: pulumi.Input<string>;
     /**
@@ -278,7 +284,7 @@ export interface DataSharingWithGoogleSettingBindingArgs {
     location?: pulumi.Input<string>;
     /**
      * Product type of the setting binding.
-     * Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+     * Possible values are: `GEMINI_CLOUD_ASSIST`.
      */
     product?: pulumi.Input<string>;
     /**

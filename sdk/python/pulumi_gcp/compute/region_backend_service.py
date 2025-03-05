@@ -86,7 +86,8 @@ class RegionBackendServiceArgs:
                check can be specified.
                A health check must be specified unless the backend service uses an internet
                or serverless NEG as a backend.
-        :param pulumi.Input['RegionBackendServiceIapArgs'] iap: Settings for enabling Cloud Identity Aware Proxy
+        :param pulumi.Input['RegionBackendServiceIapArgs'] iap: Settings for enabling Cloud Identity Aware Proxy.
+               If OAuth client is not set, Google-managed OAuth client is used.
                Structure is documented below.
         :param pulumi.Input[str] ip_address_selection_policy: Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
                Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
@@ -406,7 +407,8 @@ class RegionBackendServiceArgs:
     @pulumi.getter
     def iap(self) -> Optional[pulumi.Input['RegionBackendServiceIapArgs']]:
         """
-        Settings for enabling Cloud Identity Aware Proxy
+        Settings for enabling Cloud Identity Aware Proxy.
+        If OAuth client is not set, Google-managed OAuth client is used.
         Structure is documented below.
         """
         return pulumi.get(self, "iap")
@@ -768,7 +770,8 @@ class _RegionBackendServiceState:
                check can be specified.
                A health check must be specified unless the backend service uses an internet
                or serverless NEG as a backend.
-        :param pulumi.Input['RegionBackendServiceIapArgs'] iap: Settings for enabling Cloud Identity Aware Proxy
+        :param pulumi.Input['RegionBackendServiceIapArgs'] iap: Settings for enabling Cloud Identity Aware Proxy.
+               If OAuth client is not set, Google-managed OAuth client is used.
                Structure is documented below.
         :param pulumi.Input[str] ip_address_selection_policy: Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
                Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
@@ -1134,7 +1137,8 @@ class _RegionBackendServiceState:
     @pulumi.getter
     def iap(self) -> Optional[pulumi.Input['RegionBackendServiceIapArgs']]:
         """
-        Settings for enabling Cloud Identity Aware Proxy
+        Settings for enabling Cloud Identity Aware Proxy.
+        If OAuth client is not set, Google-managed OAuth client is used.
         Structure is documented below.
         """
         return pulumi.get(self, "iap")
@@ -1839,7 +1843,8 @@ class RegionBackendService(pulumi.CustomResource):
                check can be specified.
                A health check must be specified unless the backend service uses an internet
                or serverless NEG as a backend.
-        :param pulumi.Input[Union['RegionBackendServiceIapArgs', 'RegionBackendServiceIapArgsDict']] iap: Settings for enabling Cloud Identity Aware Proxy
+        :param pulumi.Input[Union['RegionBackendServiceIapArgs', 'RegionBackendServiceIapArgsDict']] iap: Settings for enabling Cloud Identity Aware Proxy.
+               If OAuth client is not set, Google-managed OAuth client is used.
                Structure is documented below.
         :param pulumi.Input[str] ip_address_selection_policy: Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
                Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
@@ -2456,7 +2461,8 @@ class RegionBackendService(pulumi.CustomResource):
                check can be specified.
                A health check must be specified unless the backend service uses an internet
                or serverless NEG as a backend.
-        :param pulumi.Input[Union['RegionBackendServiceIapArgs', 'RegionBackendServiceIapArgsDict']] iap: Settings for enabling Cloud Identity Aware Proxy
+        :param pulumi.Input[Union['RegionBackendServiceIapArgs', 'RegionBackendServiceIapArgsDict']] iap: Settings for enabling Cloud Identity Aware Proxy.
+               If OAuth client is not set, Google-managed OAuth client is used.
                Structure is documented below.
         :param pulumi.Input[str] ip_address_selection_policy: Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
                Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
@@ -2739,7 +2745,8 @@ class RegionBackendService(pulumi.CustomResource):
     @pulumi.getter
     def iap(self) -> pulumi.Output['outputs.RegionBackendServiceIap']:
         """
-        Settings for enabling Cloud Identity Aware Proxy
+        Settings for enabling Cloud Identity Aware Proxy.
+        If OAuth client is not set, Google-managed OAuth client is used.
         Structure is documented below.
         """
         return pulumi.get(self, "iap")

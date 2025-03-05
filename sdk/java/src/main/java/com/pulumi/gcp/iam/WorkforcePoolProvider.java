@@ -136,7 +136,7 @@ import javax.annotation.Nullable;
  *                         .plainText("client-secret")
  *                         .build())
  *                     .build())
- *                 .attributesType("AZURE_AD_GROUPS_MAIL")
+ *                 .attributesType("AZURE_AD_GROUPS_ID")
  *                 .queryParameters(WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs.builder()
  *                     .filter("mail:gcp")
  *                     .build())

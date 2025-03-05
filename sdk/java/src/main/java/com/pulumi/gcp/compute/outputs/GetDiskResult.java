@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetDiskAsyncPrimaryDisk;
 import com.pulumi.gcp.compute.outputs.GetDiskDiskEncryptionKey;
 import com.pulumi.gcp.compute.outputs.GetDiskGuestOsFeature;
+import com.pulumi.gcp.compute.outputs.GetDiskParam;
 import com.pulumi.gcp.compute.outputs.GetDiskSourceImageEncryptionKey;
 import com.pulumi.gcp.compute.outputs.GetDiskSourceSnapshotEncryptionKey;
 import java.lang.Boolean;
@@ -22,6 +23,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDiskResult {
     private String accessMode;
+    private String architecture;
     private List<GetDiskAsyncPrimaryDisk> asyncPrimaryDisks;
     /**
      * @return Creation timestamp in RFC3339 text format.
@@ -73,6 +75,7 @@ public final class GetDiskResult {
     private List<String> licenses;
     private Boolean multiWriter;
     private String name;
+    private List<GetDiskParam> params;
     /**
      * @return Physical block size of the persistent disk, in bytes.
      * 
@@ -114,6 +117,8 @@ public final class GetDiskResult {
      * 
      */
     private String sourceImageId;
+    private String sourceInstantSnapshot;
+    private String sourceInstantSnapshotId;
     /**
      * @return The customer-supplied encryption key of the source snapshot.
      * 
@@ -129,6 +134,7 @@ public final class GetDiskResult {
      * 
      */
     private String sourceSnapshotId;
+    private String sourceStorageObject;
     private String storagePool;
     /**
      * @return URL of the disk type resource describing which disk type to use to
@@ -151,6 +157,9 @@ public final class GetDiskResult {
     private GetDiskResult() {}
     public String accessMode() {
         return this.accessMode;
+    }
+    public String architecture() {
+        return this.architecture;
     }
     public List<GetDiskAsyncPrimaryDisk> asyncPrimaryDisks() {
         return this.asyncPrimaryDisks;
@@ -239,6 +248,9 @@ public final class GetDiskResult {
     public String name() {
         return this.name;
     }
+    public List<GetDiskParam> params() {
+        return this.params;
+    }
     /**
      * @return Physical block size of the persistent disk, in bytes.
      * 
@@ -306,6 +318,12 @@ public final class GetDiskResult {
     public String sourceImageId() {
         return this.sourceImageId;
     }
+    public String sourceInstantSnapshot() {
+        return this.sourceInstantSnapshot;
+    }
+    public String sourceInstantSnapshotId() {
+        return this.sourceInstantSnapshotId;
+    }
     /**
      * @return The customer-supplied encryption key of the source snapshot.
      * 
@@ -324,6 +342,9 @@ public final class GetDiskResult {
      */
     public String sourceSnapshotId() {
         return this.sourceSnapshotId;
+    }
+    public String sourceStorageObject() {
+        return this.sourceStorageObject;
     }
     public String storagePool() {
         return this.storagePool;
@@ -362,6 +383,7 @@ public final class GetDiskResult {
     @CustomType.Builder
     public static final class Builder {
         private String accessMode;
+        private String architecture;
         private List<GetDiskAsyncPrimaryDisk> asyncPrimaryDisks;
         private String creationTimestamp;
         private String description;
@@ -380,6 +402,7 @@ public final class GetDiskResult {
         private List<String> licenses;
         private Boolean multiWriter;
         private String name;
+        private List<GetDiskParam> params;
         private Integer physicalBlockSizeBytes;
         private @Nullable String project;
         private Integer provisionedIops;
@@ -393,8 +416,11 @@ public final class GetDiskResult {
         private String sourceDiskId;
         private List<GetDiskSourceImageEncryptionKey> sourceImageEncryptionKeys;
         private String sourceImageId;
+        private String sourceInstantSnapshot;
+        private String sourceInstantSnapshotId;
         private List<GetDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys;
         private String sourceSnapshotId;
+        private String sourceStorageObject;
         private String storagePool;
         private String type;
         private List<String> users;
@@ -403,6 +429,7 @@ public final class GetDiskResult {
         public Builder(GetDiskResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessMode = defaults.accessMode;
+    	      this.architecture = defaults.architecture;
     	      this.asyncPrimaryDisks = defaults.asyncPrimaryDisks;
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.description = defaults.description;
@@ -421,6 +448,7 @@ public final class GetDiskResult {
     	      this.licenses = defaults.licenses;
     	      this.multiWriter = defaults.multiWriter;
     	      this.name = defaults.name;
+    	      this.params = defaults.params;
     	      this.physicalBlockSizeBytes = defaults.physicalBlockSizeBytes;
     	      this.project = defaults.project;
     	      this.provisionedIops = defaults.provisionedIops;
@@ -434,8 +462,11 @@ public final class GetDiskResult {
     	      this.sourceDiskId = defaults.sourceDiskId;
     	      this.sourceImageEncryptionKeys = defaults.sourceImageEncryptionKeys;
     	      this.sourceImageId = defaults.sourceImageId;
+    	      this.sourceInstantSnapshot = defaults.sourceInstantSnapshot;
+    	      this.sourceInstantSnapshotId = defaults.sourceInstantSnapshotId;
     	      this.sourceSnapshotEncryptionKeys = defaults.sourceSnapshotEncryptionKeys;
     	      this.sourceSnapshotId = defaults.sourceSnapshotId;
+    	      this.sourceStorageObject = defaults.sourceStorageObject;
     	      this.storagePool = defaults.storagePool;
     	      this.type = defaults.type;
     	      this.users = defaults.users;
@@ -448,6 +479,14 @@ public final class GetDiskResult {
               throw new MissingRequiredPropertyException("GetDiskResult", "accessMode");
             }
             this.accessMode = accessMode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder architecture(String architecture) {
+            if (architecture == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "architecture");
+            }
+            this.architecture = architecture;
             return this;
         }
         @CustomType.Setter
@@ -607,6 +646,17 @@ public final class GetDiskResult {
             return this;
         }
         @CustomType.Setter
+        public Builder params(List<GetDiskParam> params) {
+            if (params == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "params");
+            }
+            this.params = params;
+            return this;
+        }
+        public Builder params(GetDiskParam... params) {
+            return params(List.of(params));
+        }
+        @CustomType.Setter
         public Builder physicalBlockSizeBytes(Integer physicalBlockSizeBytes) {
             if (physicalBlockSizeBytes == null) {
               throw new MissingRequiredPropertyException("GetDiskResult", "physicalBlockSizeBytes");
@@ -715,6 +765,22 @@ public final class GetDiskResult {
             return this;
         }
         @CustomType.Setter
+        public Builder sourceInstantSnapshot(String sourceInstantSnapshot) {
+            if (sourceInstantSnapshot == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "sourceInstantSnapshot");
+            }
+            this.sourceInstantSnapshot = sourceInstantSnapshot;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sourceInstantSnapshotId(String sourceInstantSnapshotId) {
+            if (sourceInstantSnapshotId == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "sourceInstantSnapshotId");
+            }
+            this.sourceInstantSnapshotId = sourceInstantSnapshotId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sourceSnapshotEncryptionKeys(List<GetDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys) {
             if (sourceSnapshotEncryptionKeys == null) {
               throw new MissingRequiredPropertyException("GetDiskResult", "sourceSnapshotEncryptionKeys");
@@ -731,6 +797,14 @@ public final class GetDiskResult {
               throw new MissingRequiredPropertyException("GetDiskResult", "sourceSnapshotId");
             }
             this.sourceSnapshotId = sourceSnapshotId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sourceStorageObject(String sourceStorageObject) {
+            if (sourceStorageObject == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "sourceStorageObject");
+            }
+            this.sourceStorageObject = sourceStorageObject;
             return this;
         }
         @CustomType.Setter
@@ -769,6 +843,7 @@ public final class GetDiskResult {
         public GetDiskResult build() {
             final var _resultValue = new GetDiskResult();
             _resultValue.accessMode = accessMode;
+            _resultValue.architecture = architecture;
             _resultValue.asyncPrimaryDisks = asyncPrimaryDisks;
             _resultValue.creationTimestamp = creationTimestamp;
             _resultValue.description = description;
@@ -787,6 +862,7 @@ public final class GetDiskResult {
             _resultValue.licenses = licenses;
             _resultValue.multiWriter = multiWriter;
             _resultValue.name = name;
+            _resultValue.params = params;
             _resultValue.physicalBlockSizeBytes = physicalBlockSizeBytes;
             _resultValue.project = project;
             _resultValue.provisionedIops = provisionedIops;
@@ -800,8 +876,11 @@ public final class GetDiskResult {
             _resultValue.sourceDiskId = sourceDiskId;
             _resultValue.sourceImageEncryptionKeys = sourceImageEncryptionKeys;
             _resultValue.sourceImageId = sourceImageId;
+            _resultValue.sourceInstantSnapshot = sourceInstantSnapshot;
+            _resultValue.sourceInstantSnapshotId = sourceInstantSnapshotId;
             _resultValue.sourceSnapshotEncryptionKeys = sourceSnapshotEncryptionKeys;
             _resultValue.sourceSnapshotId = sourceSnapshotId;
+            _resultValue.sourceStorageObject = sourceStorageObject;
             _resultValue.storagePool = storagePool;
             _resultValue.type = type;
             _resultValue.users = users;

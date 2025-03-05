@@ -62,6 +62,7 @@ export interface GetDiskArgs {
  */
 export interface GetDiskResult {
     readonly accessMode: string;
+    readonly architecture: string;
     readonly asyncPrimaryDisks: outputs.compute.GetDiskAsyncPrimaryDisk[];
     /**
      * Creation timestamp in RFC3339 text format.
@@ -105,6 +106,7 @@ export interface GetDiskResult {
     readonly licenses: string[];
     readonly multiWriter: boolean;
     readonly name: string;
+    readonly params: outputs.compute.GetDiskParam[];
     /**
      * Physical block size of the persistent disk, in bytes.
      */
@@ -140,6 +142,8 @@ export interface GetDiskResult {
      * image ID would identify the exact version of the image that was used.
      */
     readonly sourceImageId: string;
+    readonly sourceInstantSnapshot: string;
+    readonly sourceInstantSnapshotId: string;
     /**
      * The customer-supplied encryption key of the source snapshot.
      */
@@ -153,6 +157,7 @@ export interface GetDiskResult {
      * used.
      */
     readonly sourceSnapshotId: string;
+    readonly sourceStorageObject: string;
     readonly storagePool: string;
     /**
      * URL of the disk type resource describing which disk type to use to

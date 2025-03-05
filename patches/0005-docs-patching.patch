@@ -577,7 +577,7 @@ index eea0057a2..726c86dd3 100644
  ## Example Usage - Backend Bucket Signed Url Key
  
 diff --git a/website/docs/r/compute_backend_service.html.markdown b/website/docs/r/compute_backend_service.html.markdown
-index 268a3ae3b..10e9e22d8 100644
+index 522eca68d..e8660ed81 100644
 --- a/website/docs/r/compute_backend_service.html.markdown
 +++ b/website/docs/r/compute_backend_service.html.markdown
 @@ -38,7 +38,6 @@ To get more information about BackendService, see:
@@ -605,7 +605,7 @@ index 4c0f23475..e298f9d8e 100644
  ## Example Usage - Backend Service Signed Url Key
  
 diff --git a/website/docs/r/compute_disk.html.markdown b/website/docs/r/compute_disk.html.markdown
-index 9da659539..be0845e90 100644
+index 2818372cc..5df6b203d 100644
 --- a/website/docs/r/compute_disk.html.markdown
 +++ b/website/docs/r/compute_disk.html.markdown
 @@ -45,9 +45,6 @@ To get more information about Disk, see:
@@ -618,7 +618,7 @@ index 9da659539..be0845e90 100644
  
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=disk_basic&open_in_editor=main.tf" target="_blank">
-@@ -199,7 +196,7 @@ The following arguments are supported:
+@@ -215,7 +212,7 @@ The following arguments are supported:
    If you specify this field along with `image` or `snapshot`,
    the value must not be less than the size of the image
    or the size of the snapshot.
@@ -669,7 +669,7 @@ index c02f73582..1f47b804b 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance.html.markdown b/website/docs/r/compute_instance.html.markdown
-index 0c1854455..ff259a2a7 100644
+index 1a5e56b0f..c01c0d65c 100644
 --- a/website/docs/r/compute_instance.html.markdown
 +++ b/website/docs/r/compute_instance.html.markdown
 @@ -140,7 +140,7 @@ The following arguments are supported:
@@ -1581,7 +1581,7 @@ index 85fd0b322..177058967 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=vpn_tunnel_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index 6b229fb80..b1e00aa7a 100644
+index f8f659a21..e33fa3e1b 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -13,15 +13,12 @@ To get more information about GKE clusters, see:
@@ -1984,7 +1984,7 @@ index 98421f823..dfd01911a 100644
  * `zone` - (Optional) The zone in which the created job should run. If it is not provided, the provider zone is used.
  * `region` - (Optional) The region in which the created job should run.
 diff --git a/website/docs/r/dataproc_cluster.html.markdown b/website/docs/r/dataproc_cluster.html.markdown
-index 28e215e4e..34636c6b7 100644
+index e4e4fe15e..a831ec72b 100644
 --- a/website/docs/r/dataproc_cluster.html.markdown
 +++ b/website/docs/r/dataproc_cluster.html.markdown
 @@ -146,7 +146,7 @@ resource "google_dataproc_cluster" "accelerated_cluster" {
@@ -1996,7 +1996,7 @@ index 28e215e4e..34636c6b7 100644
        Does not affect auto scaling decomissioning from an autoscaling policy.
        Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
        Timeout specifies how long to wait for jobs in progress to finish before forcefully removing nodes (and potentially interrupting jobs).
-@@ -644,7 +644,6 @@ will be set for you based on whatever was set for the `worker_config.machine_typ
+@@ -648,7 +648,6 @@ will be set for you based on whatever was set for the `worker_config.machine_typ
    * PREEMPTIBILITY_UNSPECIFIED
    * NON_PREEMPTIBLE
    * PREEMPTIBLE
@@ -2303,7 +2303,7 @@ index 3ee7bcb3d..752a8ebbb 100644
  
  ## Attributes Reference
 diff --git a/website/docs/r/google_folder.html.markdown b/website/docs/r/google_folder.html.markdown
-index 404437cbe..b2a41d19e 100644
+index 4bed99d43..8b44d21bf 100644
 --- a/website/docs/r/google_folder.html.markdown
 +++ b/website/docs/r/google_folder.html.markdown
 @@ -15,7 +15,7 @@ A folder can contain projects, other folders, or a combination of both. You can
@@ -3734,10 +3734,10 @@ index e5ae8ba87..937c973b6 100644
  Permissions can be granted either by ACLs or Cloud IAM policies. In general, permissions granted by Cloud IAM policies do not appear in ACLs, and permissions granted by ACLs do not appear in Cloud IAM policies. The only exception is for ACLs applied directly on a bucket and certain bucket-level Cloud IAM policies, as described in [Cloud IAM relation to ACLs](https://cloud.google.com/storage/docs/access-control/iam#acls).
  
 diff --git a/website/docs/r/storage_bucket_iam.html.markdown b/website/docs/r/storage_bucket_iam.html.markdown
-index 1d79dc26d..f3d27d46e 100644
+index a86ae68df..baabd912b 100644
 --- a/website/docs/r/storage_bucket_iam.html.markdown
 +++ b/website/docs/r/storage_bucket_iam.html.markdown
-@@ -171,8 +171,8 @@ The `condition` block supports:
+@@ -156,8 +156,8 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  

@@ -2692,7 +2692,15 @@ type WorkforcePoolProviderExtraAttributesOauth2Client struct {
 	// * AZURE_AD_GROUPS_MAIL: Used to get the user's group claims from the Azure AD identity provider using configuration provided
 	//   in ExtraAttributesOAuth2Client and 'mail' property of the 'microsoft.graph.group' object is used for claim mapping.
 	//   See https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on
-	//   'microsoft.graph.group' properties. The attributes obtained from idntity provider are mapped to 'assertion.groups'. Possible values: ["AZURE_AD_GROUPS_MAIL"]
+	//   'microsoft.graph.group' properties. The attributes obtained from idntity provider are mapped to 'assertion.groups'.
+	// * AZURE_AD_GROUPS_ID:  Used to get the user's group claims from the Azure AD identity provider
+	//   using configuration provided in ExtraAttributesOAuth2Client and 'id'
+	//   property of the 'microsoft.graph.group' object is used for claim mapping. See
+	//   https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
+	//   for more details on 'microsoft.graph.group' properties. The
+	//   group IDs obtained from Azure AD are present in 'assertion.groups' for
+	//   OIDC providers and 'assertion.attributes.groups' for SAML providers for
+	//   attribute mapping. Possible values: ["AZURE_AD_GROUPS_MAIL", "AZURE_AD_GROUPS_ID"]
 	AttributesType string `pulumi:"attributesType"`
 	// The OAuth 2.0 client ID for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
 	ClientId string `pulumi:"clientId"`
@@ -2720,7 +2728,15 @@ type WorkforcePoolProviderExtraAttributesOauth2ClientArgs struct {
 	// * AZURE_AD_GROUPS_MAIL: Used to get the user's group claims from the Azure AD identity provider using configuration provided
 	//   in ExtraAttributesOAuth2Client and 'mail' property of the 'microsoft.graph.group' object is used for claim mapping.
 	//   See https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on
-	//   'microsoft.graph.group' properties. The attributes obtained from idntity provider are mapped to 'assertion.groups'. Possible values: ["AZURE_AD_GROUPS_MAIL"]
+	//   'microsoft.graph.group' properties. The attributes obtained from idntity provider are mapped to 'assertion.groups'.
+	// * AZURE_AD_GROUPS_ID:  Used to get the user's group claims from the Azure AD identity provider
+	//   using configuration provided in ExtraAttributesOAuth2Client and 'id'
+	//   property of the 'microsoft.graph.group' object is used for claim mapping. See
+	//   https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
+	//   for more details on 'microsoft.graph.group' properties. The
+	//   group IDs obtained from Azure AD are present in 'assertion.groups' for
+	//   OIDC providers and 'assertion.attributes.groups' for SAML providers for
+	//   attribute mapping. Possible values: ["AZURE_AD_GROUPS_MAIL", "AZURE_AD_GROUPS_ID"]
 	AttributesType pulumi.StringInput `pulumi:"attributesType"`
 	// The OAuth 2.0 client ID for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
 	ClientId pulumi.StringInput `pulumi:"clientId"`
@@ -2813,7 +2829,15 @@ func (o WorkforcePoolProviderExtraAttributesOauth2ClientOutput) ToWorkforcePoolP
 //   - AZURE_AD_GROUPS_MAIL: Used to get the user's group claims from the Azure AD identity provider using configuration provided
 //     in ExtraAttributesOAuth2Client and 'mail' property of the 'microsoft.graph.group' object is used for claim mapping.
 //     See https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on
-//     'microsoft.graph.group' properties. The attributes obtained from idntity provider are mapped to 'assertion.groups'. Possible values: ["AZURE_AD_GROUPS_MAIL"]
+//     'microsoft.graph.group' properties. The attributes obtained from idntity provider are mapped to 'assertion.groups'.
+//   - AZURE_AD_GROUPS_ID:  Used to get the user's group claims from the Azure AD identity provider
+//     using configuration provided in ExtraAttributesOAuth2Client and 'id'
+//     property of the 'microsoft.graph.group' object is used for claim mapping. See
+//     https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
+//     for more details on 'microsoft.graph.group' properties. The
+//     group IDs obtained from Azure AD are present in 'assertion.groups' for
+//     OIDC providers and 'assertion.attributes.groups' for SAML providers for
+//     attribute mapping. Possible values: ["AZURE_AD_GROUPS_MAIL", "AZURE_AD_GROUPS_ID"]
 func (o WorkforcePoolProviderExtraAttributesOauth2ClientOutput) AttributesType() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkforcePoolProviderExtraAttributesOauth2Client) string { return v.AttributesType }).(pulumi.StringOutput)
 }
@@ -2870,7 +2894,15 @@ func (o WorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput) Elem() Workfo
 //   - AZURE_AD_GROUPS_MAIL: Used to get the user's group claims from the Azure AD identity provider using configuration provided
 //     in ExtraAttributesOAuth2Client and 'mail' property of the 'microsoft.graph.group' object is used for claim mapping.
 //     See https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on
-//     'microsoft.graph.group' properties. The attributes obtained from idntity provider are mapped to 'assertion.groups'. Possible values: ["AZURE_AD_GROUPS_MAIL"]
+//     'microsoft.graph.group' properties. The attributes obtained from idntity provider are mapped to 'assertion.groups'.
+//   - AZURE_AD_GROUPS_ID:  Used to get the user's group claims from the Azure AD identity provider
+//     using configuration provided in ExtraAttributesOAuth2Client and 'id'
+//     property of the 'microsoft.graph.group' object is used for claim mapping. See
+//     https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
+//     for more details on 'microsoft.graph.group' properties. The
+//     group IDs obtained from Azure AD are present in 'assertion.groups' for
+//     OIDC providers and 'assertion.attributes.groups' for SAML providers for
+//     attribute mapping. Possible values: ["AZURE_AD_GROUPS_MAIL", "AZURE_AD_GROUPS_ID"]
 func (o WorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput) AttributesType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkforcePoolProviderExtraAttributesOauth2Client) *string {
 		if v == nil {
@@ -3224,9 +3256,9 @@ func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutp
 }
 
 type WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters struct {
-	// The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL, it represents the
+	// The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL and AZURE_AD_GROUPS_ID, it represents the
 	// filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
-	// groups should be mail enabled and security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
+	// groups should be security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
 	Filter *string `pulumi:"filter"`
 }
 
@@ -3242,9 +3274,9 @@ type WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersInput interf
 }
 
 type WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs struct {
-	// The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL, it represents the
+	// The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL and AZURE_AD_GROUPS_ID, it represents the
 	// filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
-	// groups should be mail enabled and security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
+	// groups should be security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
 }
 
@@ -3325,9 +3357,9 @@ func (o WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutput) T
 	}).(WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput)
 }
 
-// The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL, it represents the
+// The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL and AZURE_AD_GROUPS_ID, it represents the
 // filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
-// groups should be mail enabled and security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
+// groups should be security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
 func (o WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
@@ -3356,9 +3388,9 @@ func (o WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput
 	}).(WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutput)
 }
 
-// The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL, it represents the
+// The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL and AZURE_AD_GROUPS_ID, it represents the
 // filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
-// groups should be mail enabled and security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
+// groups should be security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
 func (o WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters) *string {
 		if v == nil {

@@ -12643,7 +12643,7 @@ class ClusterNotificationConfigPubsubFilter(dict):
     def __init__(__self__, *,
                  event_types: Sequence[str]):
         """
-        :param Sequence[str] event_types: Can be used to filter what notifications are sent. Accepted values are `UPGRADE_AVAILABLE_EVENT`, `UPGRADE_EVENT` and `SECURITY_BULLETIN_EVENT`. See [Filtering notifications](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-notifications#filtering) for more details.
+        :param Sequence[str] event_types: Can be used to filter what notifications are sent. Accepted values are `UPGRADE_AVAILABLE_EVENT`, `UPGRADE_EVENT`, `SECURITY_BULLETIN_EVENT` and `UPGRADE_INFO_EVENT`. See [Filtering notifications](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-notifications#filtering) for more details.
         """
         pulumi.set(__self__, "event_types", event_types)
 
@@ -12651,7 +12651,7 @@ class ClusterNotificationConfigPubsubFilter(dict):
     @pulumi.getter(name="eventTypes")
     def event_types(self) -> Sequence[str]:
         """
-        Can be used to filter what notifications are sent. Accepted values are `UPGRADE_AVAILABLE_EVENT`, `UPGRADE_EVENT` and `SECURITY_BULLETIN_EVENT`. See [Filtering notifications](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-notifications#filtering) for more details.
+        Can be used to filter what notifications are sent. Accepted values are `UPGRADE_AVAILABLE_EVENT`, `UPGRADE_EVENT`, `SECURITY_BULLETIN_EVENT` and `UPGRADE_INFO_EVENT`. See [Filtering notifications](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-notifications#filtering) for more details.
         """
         return pulumi.get(self, "event_types")
 
@@ -21590,7 +21590,7 @@ class GetClusterNotificationConfigPubsubFilterResult(dict):
     def __init__(__self__, *,
                  event_types: Sequence[str]):
         """
-        :param Sequence[str] event_types: Can be used to filter what notifications are sent. Valid values include include UPGRADE_AVAILABLE_EVENT, UPGRADE_EVENT and SECURITY_BULLETIN_EVENT
+        :param Sequence[str] event_types: Can be used to filter what notifications are sent. Valid values include include UPGRADE_AVAILABLE_EVENT, UPGRADE_EVENT, SECURITY_BULLETIN_EVENT, and UPGRADE_INFO_EVENT
         """
         pulumi.set(__self__, "event_types", event_types)
 
@@ -21598,7 +21598,7 @@ class GetClusterNotificationConfigPubsubFilterResult(dict):
     @pulumi.getter(name="eventTypes")
     def event_types(self) -> Sequence[str]:
         """
-        Can be used to filter what notifications are sent. Valid values include include UPGRADE_AVAILABLE_EVENT, UPGRADE_EVENT and SECURITY_BULLETIN_EVENT
+        Can be used to filter what notifications are sent. Valid values include include UPGRADE_AVAILABLE_EVENT, UPGRADE_EVENT, SECURITY_BULLETIN_EVENT, and UPGRADE_INFO_EVENT
         """
         return pulumi.get(self, "event_types")
 

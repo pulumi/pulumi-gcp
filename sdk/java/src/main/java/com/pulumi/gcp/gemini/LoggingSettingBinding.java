@@ -191,7 +191,7 @@ public class LoggingSettingBinding extends com.pulumi.resources.CustomResource {
     }
     /**
      * Product type of the setting binding.
-     * Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+     * Possible values are: `GEMINI_CODE_ASSIST`.
      * 
      */
     @Export(name="product", refs={String.class}, tree="[0]")
@@ -199,7 +199,7 @@ public class LoggingSettingBinding extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Product type of the setting binding.
-     * Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+     * Possible values are: `GEMINI_CODE_ASSIST`.
      * 
      */
     public Output<Optional<String>> product() {

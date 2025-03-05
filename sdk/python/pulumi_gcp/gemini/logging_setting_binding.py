@@ -39,7 +39,7 @@ class LoggingSettingBindingArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[str] product: Product type of the setting binding.
-               Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+               Possible values are: `GEMINI_CODE_ASSIST`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -125,7 +125,7 @@ class LoggingSettingBindingArgs:
     def product(self) -> Optional[pulumi.Input[str]]:
         """
         Product type of the setting binding.
-        Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+        Possible values are: `GEMINI_CODE_ASSIST`.
         """
         return pulumi.get(self, "product")
 
@@ -174,7 +174,7 @@ class _LoggingSettingBindingState:
         :param pulumi.Input[str] name: Identifier. Name of the resource.
                Format:projects/{project}/locations/{location}/loggingSettings/{setting}/settingBindings/{setting_binding}
         :param pulumi.Input[str] product: Product type of the setting binding.
-               Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+               Possible values are: `GEMINI_CODE_ASSIST`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -291,7 +291,7 @@ class _LoggingSettingBindingState:
     def product(self) -> Optional[pulumi.Input[str]]:
         """
         Product type of the setting binding.
-        Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+        Possible values are: `GEMINI_CODE_ASSIST`.
         """
         return pulumi.get(self, "product")
 
@@ -439,7 +439,7 @@ class LoggingSettingBinding(pulumi.CustomResource):
         :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[str] logging_setting_id: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[str] product: Product type of the setting binding.
-               Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+               Possible values are: `GEMINI_CODE_ASSIST`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] setting_binding_id: Id of the setting binding.
@@ -597,7 +597,7 @@ class LoggingSettingBinding(pulumi.CustomResource):
         :param pulumi.Input[str] name: Identifier. Name of the resource.
                Format:projects/{project}/locations/{location}/loggingSettings/{setting}/settingBindings/{setting_binding}
         :param pulumi.Input[str] product: Product type of the setting binding.
-               Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+               Possible values are: `GEMINI_CODE_ASSIST`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -683,7 +683,7 @@ class LoggingSettingBinding(pulumi.CustomResource):
     def product(self) -> pulumi.Output[Optional[str]]:
         """
         Product type of the setting binding.
-        Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+        Possible values are: `GEMINI_CODE_ASSIST`.
         """
         return pulumi.get(self, "product")
 

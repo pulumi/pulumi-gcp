@@ -23,6 +23,7 @@ class TransferJobArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[str],
                  event_stream: Optional[pulumi.Input['TransferJobEventStreamArgs']] = None,
+                 logging_config: Optional[pulumi.Input['TransferJobLoggingConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input['TransferJobNotificationConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -34,6 +35,7 @@ class TransferJobArgs:
         The set of arguments for constructing a TransferJob resource.
         :param pulumi.Input[str] description: Unique description to identify the Transfer Job.
         :param pulumi.Input['TransferJobEventStreamArgs'] event_stream: Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
+        :param pulumi.Input['TransferJobLoggingConfigArgs'] logging_config: Logging configuration. Structure documented below.
         :param pulumi.Input[str] name: The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
         :param pulumi.Input['TransferJobNotificationConfigArgs'] notification_config: Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
@@ -48,6 +50,8 @@ class TransferJobArgs:
         pulumi.set(__self__, "description", description)
         if event_stream is not None:
             pulumi.set(__self__, "event_stream", event_stream)
+        if logging_config is not None:
+            pulumi.set(__self__, "logging_config", logging_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if notification_config is not None:
@@ -86,6 +90,18 @@ class TransferJobArgs:
     @event_stream.setter
     def event_stream(self, value: Optional[pulumi.Input['TransferJobEventStreamArgs']]):
         pulumi.set(self, "event_stream", value)
+
+    @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> Optional[pulumi.Input['TransferJobLoggingConfigArgs']]:
+        """
+        Logging configuration. Structure documented below.
+        """
+        return pulumi.get(self, "logging_config")
+
+    @logging_config.setter
+    def logging_config(self, value: Optional[pulumi.Input['TransferJobLoggingConfigArgs']]):
+        pulumi.set(self, "logging_config", value)
 
     @property
     @pulumi.getter
@@ -183,6 +199,7 @@ class _TransferJobState:
                  description: Optional[pulumi.Input[str]] = None,
                  event_stream: Optional[pulumi.Input['TransferJobEventStreamArgs']] = None,
                  last_modification_time: Optional[pulumi.Input[str]] = None,
+                 logging_config: Optional[pulumi.Input['TransferJobLoggingConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input['TransferJobNotificationConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -197,6 +214,7 @@ class _TransferJobState:
         :param pulumi.Input[str] description: Unique description to identify the Transfer Job.
         :param pulumi.Input['TransferJobEventStreamArgs'] event_stream: Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
         :param pulumi.Input[str] last_modification_time: When the Transfer Job was last modified.
+        :param pulumi.Input['TransferJobLoggingConfigArgs'] logging_config: Logging configuration. Structure documented below.
         :param pulumi.Input[str] name: The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
         :param pulumi.Input['TransferJobNotificationConfigArgs'] notification_config: Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
@@ -218,6 +236,8 @@ class _TransferJobState:
             pulumi.set(__self__, "event_stream", event_stream)
         if last_modification_time is not None:
             pulumi.set(__self__, "last_modification_time", last_modification_time)
+        if logging_config is not None:
+            pulumi.set(__self__, "logging_config", logging_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if notification_config is not None:
@@ -292,6 +312,18 @@ class _TransferJobState:
     @last_modification_time.setter
     def last_modification_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "last_modification_time", value)
+
+    @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> Optional[pulumi.Input['TransferJobLoggingConfigArgs']]:
+        """
+        Logging configuration. Structure documented below.
+        """
+        return pulumi.get(self, "logging_config")
+
+    @logging_config.setter
+    def logging_config(self, value: Optional[pulumi.Input['TransferJobLoggingConfigArgs']]):
+        pulumi.set(self, "logging_config", value)
 
     @property
     @pulumi.getter
@@ -388,6 +420,7 @@ class TransferJob(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  event_stream: Optional[pulumi.Input[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict']]] = None,
+                 logging_config: Optional[pulumi.Input[Union['TransferJobLoggingConfigArgs', 'TransferJobLoggingConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -480,6 +513,16 @@ class TransferJob(pulumi.CustomResource):
                 ],
                 "payload_format": "JSON",
             },
+            logging_config={
+                "log_actions": [
+                    "COPY",
+                    "DELETE",
+                ],
+                "log_action_states": [
+                    "SUCCEEDED",
+                    "FAILED",
+                ],
+            },
             opts = pulumi.ResourceOptions(depends_on=[
                     s3_backup_bucket_bucket_iam_member,
                     notification_config,
@@ -502,6 +545,7 @@ class TransferJob(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Unique description to identify the Transfer Job.
         :param pulumi.Input[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict']] event_stream: Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
+        :param pulumi.Input[Union['TransferJobLoggingConfigArgs', 'TransferJobLoggingConfigArgsDict']] logging_config: Logging configuration. Structure documented below.
         :param pulumi.Input[str] name: The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
         :param pulumi.Input[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict']] notification_config: Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
@@ -603,6 +647,16 @@ class TransferJob(pulumi.CustomResource):
                 ],
                 "payload_format": "JSON",
             },
+            logging_config={
+                "log_actions": [
+                    "COPY",
+                    "DELETE",
+                ],
+                "log_action_states": [
+                    "SUCCEEDED",
+                    "FAILED",
+                ],
+            },
             opts = pulumi.ResourceOptions(depends_on=[
                     s3_backup_bucket_bucket_iam_member,
                     notification_config,
@@ -638,6 +692,7 @@ class TransferJob(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  event_stream: Optional[pulumi.Input[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict']]] = None,
+                 logging_config: Optional[pulumi.Input[Union['TransferJobLoggingConfigArgs', 'TransferJobLoggingConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -658,6 +713,7 @@ class TransferJob(pulumi.CustomResource):
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
             __props__.__dict__["event_stream"] = event_stream
+            __props__.__dict__["logging_config"] = logging_config
             __props__.__dict__["name"] = name
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["project"] = project
@@ -683,6 +739,7 @@ class TransferJob(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             event_stream: Optional[pulumi.Input[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict']]] = None,
             last_modification_time: Optional[pulumi.Input[str]] = None,
+            logging_config: Optional[pulumi.Input[Union['TransferJobLoggingConfigArgs', 'TransferJobLoggingConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             notification_config: Optional[pulumi.Input[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -702,6 +759,7 @@ class TransferJob(pulumi.CustomResource):
         :param pulumi.Input[str] description: Unique description to identify the Transfer Job.
         :param pulumi.Input[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict']] event_stream: Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
         :param pulumi.Input[str] last_modification_time: When the Transfer Job was last modified.
+        :param pulumi.Input[Union['TransferJobLoggingConfigArgs', 'TransferJobLoggingConfigArgsDict']] logging_config: Logging configuration. Structure documented below.
         :param pulumi.Input[str] name: The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
         :param pulumi.Input[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict']] notification_config: Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
@@ -722,6 +780,7 @@ class TransferJob(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["event_stream"] = event_stream
         __props__.__dict__["last_modification_time"] = last_modification_time
+        __props__.__dict__["logging_config"] = logging_config
         __props__.__dict__["name"] = name
         __props__.__dict__["notification_config"] = notification_config
         __props__.__dict__["project"] = project
@@ -770,6 +829,14 @@ class TransferJob(pulumi.CustomResource):
         When the Transfer Job was last modified.
         """
         return pulumi.get(self, "last_modification_time")
+
+    @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> pulumi.Output[Optional['outputs.TransferJobLoggingConfig']]:
+        """
+        Logging configuration. Structure documented below.
+        """
+        return pulumi.get(self, "logging_config")
 
     @property
     @pulumi.getter

@@ -136,6 +136,37 @@ import (
 //	}
 //
 // ```
+// ### Network Connectivity Hub Policy Mode
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networkconnectivity.NewHub(ctx, "primary", &networkconnectivity.HubArgs{
+//				Name:           pulumi.String("policy"),
+//				Description:    pulumi.String("A sample hub with PRESET policy_mode and STAR topology"),
+//				PolicyMode:     pulumi.String("PRESET"),
+//				PresetTopology: pulumi.String("STAR"),
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -179,6 +210,9 @@ type Hub struct {
 	//
 	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
+	// Possible values are: `CUSTOM`, `PRESET`.
+	PolicyMode pulumi.StringOutput `pulumi:"policyMode"`
 	// Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
 	// Possible values are: `MESH`, `STAR`.
 	PresetTopology pulumi.StringOutput `pulumi:"presetTopology"`
@@ -250,6 +284,9 @@ type hubState struct {
 	//
 	// ***
 	Name *string `pulumi:"name"`
+	// Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
+	// Possible values are: `CUSTOM`, `PRESET`.
+	PolicyMode *string `pulumi:"policyMode"`
 	// Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
 	// Possible values are: `MESH`, `STAR`.
 	PresetTopology *string `pulumi:"presetTopology"`
@@ -287,6 +324,9 @@ type HubState struct {
 	//
 	// ***
 	Name pulumi.StringPtrInput
+	// Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
+	// Possible values are: `CUSTOM`, `PRESET`.
+	PolicyMode pulumi.StringPtrInput
 	// Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
 	// Possible values are: `MESH`, `STAR`.
 	PresetTopology pulumi.StringPtrInput
@@ -324,6 +364,9 @@ type hubArgs struct {
 	//
 	// ***
 	Name *string `pulumi:"name"`
+	// Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
+	// Possible values are: `CUSTOM`, `PRESET`.
+	PolicyMode *string `pulumi:"policyMode"`
 	// Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
 	// Possible values are: `MESH`, `STAR`.
 	PresetTopology *string `pulumi:"presetTopology"`
@@ -346,6 +389,9 @@ type HubArgs struct {
 	//
 	// ***
 	Name pulumi.StringPtrInput
+	// Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
+	// Possible values are: `CUSTOM`, `PRESET`.
+	PolicyMode pulumi.StringPtrInput
 	// Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
 	// Possible values are: `MESH`, `STAR`.
 	PresetTopology pulumi.StringPtrInput
@@ -473,6 +519,12 @@ func (o HubOutput) Labels() pulumi.StringMapOutput {
 // ***
 func (o HubOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
+// Possible values are: `CUSTOM`, `PRESET`.
+func (o HubOutput) PolicyMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.PolicyMode }).(pulumi.StringOutput)
 }
 
 // Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.

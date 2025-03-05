@@ -84,6 +84,180 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Alloydb Cluster Before Upgrade
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.alloydb.Cluster;
+ * import com.pulumi.gcp.alloydb.ClusterArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.servicenetworking.Connection;
+ * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
+ * import com.pulumi.gcp.alloydb.Instance;
+ * import com.pulumi.gcp.alloydb.InstanceArgs;
+ * import com.pulumi.gcp.alloydb.inputs.InstanceMachineConfigArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .name("alloydb-network")
+ *             .build());
+ * 
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
+ *             .clusterId("alloydb-cluster")
+ *             .location("us-central1")
+ *             .networkConfig(ClusterNetworkConfigArgs.builder()
+ *                 .network(defaultNetwork.id())
+ *                 .build())
+ *             .databaseVersion("POSTGRES_14")
+ *             .initialUser(ClusterInitialUserArgs.builder()
+ *                 .password("alloydb-cluster")
+ *                 .build())
+ *             .build());
+ * 
+ *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
+ *             .name("alloydb-cluster")
+ *             .addressType("INTERNAL")
+ *             .purpose("VPC_PEERING")
+ *             .prefixLength(16)
+ *             .network(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var vpcConnection = new Connection("vpcConnection", ConnectionArgs.builder()
+ *             .network(defaultNetwork.id())
+ *             .service("servicenetworking.googleapis.com")
+ *             .reservedPeeringRanges(privateIpAlloc.name())
+ *             .build());
+ * 
+ *         var default_ = new Instance("default", InstanceArgs.builder()
+ *             .cluster(defaultCluster.name())
+ *             .instanceId("alloydb-instance")
+ *             .instanceType("PRIMARY")
+ *             .machineConfig(InstanceMachineConfigArgs.builder()
+ *                 .cpuCount(2)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(vpcConnection)
+ *                 .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Alloydb Cluster After Upgrade
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.alloydb.Cluster;
+ * import com.pulumi.gcp.alloydb.ClusterArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.servicenetworking.Connection;
+ * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
+ * import com.pulumi.gcp.alloydb.Instance;
+ * import com.pulumi.gcp.alloydb.InstanceArgs;
+ * import com.pulumi.gcp.alloydb.inputs.InstanceMachineConfigArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .name("alloydb-network")
+ *             .build());
+ * 
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
+ *             .clusterId("alloydb-cluster")
+ *             .location("us-central1")
+ *             .networkConfig(ClusterNetworkConfigArgs.builder()
+ *                 .network(defaultNetwork.id())
+ *                 .build())
+ *             .databaseVersion("POSTGRES_15")
+ *             .initialUser(ClusterInitialUserArgs.builder()
+ *                 .password("alloydb-cluster")
+ *                 .build())
+ *             .build());
+ * 
+ *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
+ *             .name("alloydb-cluster")
+ *             .addressType("INTERNAL")
+ *             .purpose("VPC_PEERING")
+ *             .prefixLength(16)
+ *             .network(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var vpcConnection = new Connection("vpcConnection", ConnectionArgs.builder()
+ *             .network(defaultNetwork.id())
+ *             .service("servicenetworking.googleapis.com")
+ *             .reservedPeeringRanges(privateIpAlloc.name())
+ *             .build());
+ * 
+ *         var default_ = new Instance("default", InstanceArgs.builder()
+ *             .cluster(defaultCluster.name())
+ *             .instanceId("alloydb-instance")
+ *             .instanceType("PRIMARY")
+ *             .machineConfig(InstanceMachineConfigArgs.builder()
+ *                 .cpuCount(2)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(vpcConnection)
+ *                 .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Alloydb Cluster Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

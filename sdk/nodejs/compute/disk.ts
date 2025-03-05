@@ -166,6 +166,10 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly accessMode!: pulumi.Output<string>;
     /**
+     * (Optional)
+     */
+    public readonly architecture!: pulumi.Output<string | undefined>;
+    /**
      * A nested object resource.
      * Structure is documented below.
      */
@@ -273,6 +277,11 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    public readonly params!: pulumi.Output<outputs.compute.DiskParams | undefined>;
+    /**
      * Physical block size of the persistent disk, in bytes. If not present
      * in a request, a default value is used. Currently supported sizes
      * are 4096 and 16384, other sizes may be added in the future.
@@ -371,6 +380,22 @@ export class Disk extends pulumi.CustomResource {
      */
     public /*out*/ readonly sourceImageId!: pulumi.Output<string>;
     /**
+     * The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
+     * For example, the following are valid values:
+     * * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot`
+     * * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
+     * * `zones/zone/instantSnapshots/instantSnapshot`
+     */
+    public readonly sourceInstantSnapshot!: pulumi.Output<string | undefined>;
+    /**
+     * The unique ID of the instant snapshot used to create this disk. This value identifies
+     * the exact instant snapshot that was used to create this persistent disk.
+     * For example, if you created the persistent disk from an instant snapshot that was later
+     * deleted and recreated under the same name, the source instant snapshot ID would identify
+     * the exact version of the instant snapshot that was used.
+     */
+    public /*out*/ readonly sourceInstantSnapshotId!: pulumi.Output<string>;
+    /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption
      * key.
@@ -386,6 +411,14 @@ export class Disk extends pulumi.CustomResource {
      * used.
      */
     public /*out*/ readonly sourceSnapshotId!: pulumi.Output<string>;
+    /**
+     * The full Google Cloud Storage URI where the disk image is stored.
+     * This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
+     * Valid URIs may start with gs:// or https://storage.googleapis.com/.
+     * This flag is not optimized for creating multiple disks from a source storage object.
+     * To create many disks from a source storage object, use gcloud compute images import instead.
+     */
+    public readonly sourceStorageObject!: pulumi.Output<string | undefined>;
     /**
      * The URL or the name of the storage pool in which the new disk is created.
      * For example:
@@ -424,6 +457,7 @@ export class Disk extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as DiskState | undefined;
             resourceInputs["accessMode"] = state ? state.accessMode : undefined;
+            resourceInputs["architecture"] = state ? state.architecture : undefined;
             resourceInputs["asyncPrimaryDisk"] = state ? state.asyncPrimaryDisk : undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -441,6 +475,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["licenses"] = state ? state.licenses : undefined;
             resourceInputs["multiWriter"] = state ? state.multiWriter : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["params"] = state ? state.params : undefined;
             resourceInputs["physicalBlockSizeBytes"] = state ? state.physicalBlockSizeBytes : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["provisionedIops"] = state ? state.provisionedIops : undefined;
@@ -454,8 +489,11 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["sourceDiskId"] = state ? state.sourceDiskId : undefined;
             resourceInputs["sourceImageEncryptionKey"] = state ? state.sourceImageEncryptionKey : undefined;
             resourceInputs["sourceImageId"] = state ? state.sourceImageId : undefined;
+            resourceInputs["sourceInstantSnapshot"] = state ? state.sourceInstantSnapshot : undefined;
+            resourceInputs["sourceInstantSnapshotId"] = state ? state.sourceInstantSnapshotId : undefined;
             resourceInputs["sourceSnapshotEncryptionKey"] = state ? state.sourceSnapshotEncryptionKey : undefined;
             resourceInputs["sourceSnapshotId"] = state ? state.sourceSnapshotId : undefined;
+            resourceInputs["sourceStorageObject"] = state ? state.sourceStorageObject : undefined;
             resourceInputs["storagePool"] = state ? state.storagePool : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["users"] = state ? state.users : undefined;
@@ -463,6 +501,7 @@ export class Disk extends pulumi.CustomResource {
         } else {
             const args = argsOrState as DiskArgs | undefined;
             resourceInputs["accessMode"] = args ? args.accessMode : undefined;
+            resourceInputs["architecture"] = args ? args.architecture : undefined;
             resourceInputs["asyncPrimaryDisk"] = args ? args.asyncPrimaryDisk : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["diskEncryptionKey"] = args ? args.diskEncryptionKey : undefined;
@@ -474,6 +513,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["licenses"] = args ? args.licenses : undefined;
             resourceInputs["multiWriter"] = args ? args.multiWriter : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["params"] = args ? args.params : undefined;
             resourceInputs["physicalBlockSizeBytes"] = args ? args.physicalBlockSizeBytes : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["provisionedIops"] = args ? args.provisionedIops : undefined;
@@ -483,7 +523,9 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["snapshot"] = args ? args.snapshot : undefined;
             resourceInputs["sourceDisk"] = args ? args.sourceDisk : undefined;
             resourceInputs["sourceImageEncryptionKey"] = args ? args.sourceImageEncryptionKey : undefined;
+            resourceInputs["sourceInstantSnapshot"] = args ? args.sourceInstantSnapshot : undefined;
             resourceInputs["sourceSnapshotEncryptionKey"] = args ? args.sourceSnapshotEncryptionKey : undefined;
+            resourceInputs["sourceStorageObject"] = args ? args.sourceStorageObject : undefined;
             resourceInputs["storagePool"] = args ? args.storagePool : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
@@ -497,6 +539,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["sourceDiskId"] = undefined /*out*/;
             resourceInputs["sourceImageId"] = undefined /*out*/;
+            resourceInputs["sourceInstantSnapshotId"] = undefined /*out*/;
             resourceInputs["sourceSnapshotId"] = undefined /*out*/;
             resourceInputs["users"] = undefined /*out*/;
         }
@@ -519,6 +562,10 @@ export interface DiskState {
      * * READ_ONLY_SINGLE
      */
     accessMode?: pulumi.Input<string>;
+    /**
+     * (Optional)
+     */
+    architecture?: pulumi.Input<string>;
     /**
      * A nested object resource.
      * Structure is documented below.
@@ -627,6 +674,11 @@ export interface DiskState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.DiskParams>;
+    /**
      * Physical block size of the persistent disk, in bytes. If not present
      * in a request, a default value is used. Currently supported sizes
      * are 4096 and 16384, other sizes may be added in the future.
@@ -725,6 +777,22 @@ export interface DiskState {
      */
     sourceImageId?: pulumi.Input<string>;
     /**
+     * The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
+     * For example, the following are valid values:
+     * * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot`
+     * * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
+     * * `zones/zone/instantSnapshots/instantSnapshot`
+     */
+    sourceInstantSnapshot?: pulumi.Input<string>;
+    /**
+     * The unique ID of the instant snapshot used to create this disk. This value identifies
+     * the exact instant snapshot that was used to create this persistent disk.
+     * For example, if you created the persistent disk from an instant snapshot that was later
+     * deleted and recreated under the same name, the source instant snapshot ID would identify
+     * the exact version of the instant snapshot that was used.
+     */
+    sourceInstantSnapshotId?: pulumi.Input<string>;
+    /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption
      * key.
@@ -740,6 +808,14 @@ export interface DiskState {
      * used.
      */
     sourceSnapshotId?: pulumi.Input<string>;
+    /**
+     * The full Google Cloud Storage URI where the disk image is stored.
+     * This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
+     * Valid URIs may start with gs:// or https://storage.googleapis.com/.
+     * This flag is not optimized for creating multiple disks from a source storage object.
+     * To create many disks from a source storage object, use gcloud compute images import instead.
+     */
+    sourceStorageObject?: pulumi.Input<string>;
     /**
      * The URL or the name of the storage pool in which the new disk is created.
      * For example:
@@ -777,6 +853,10 @@ export interface DiskArgs {
      * * READ_ONLY_SINGLE
      */
     accessMode?: pulumi.Input<string>;
+    /**
+     * (Optional)
+     */
+    architecture?: pulumi.Input<string>;
     /**
      * A nested object resource.
      * Structure is documented below.
@@ -860,6 +940,11 @@ export interface DiskArgs {
      */
     name?: pulumi.Input<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.DiskParams>;
+    /**
      * Physical block size of the persistent disk, in bytes. If not present
      * in a request, a default value is used. Currently supported sizes
      * are 4096 and 16384, other sizes may be added in the future.
@@ -935,12 +1020,28 @@ export interface DiskArgs {
      */
     sourceImageEncryptionKey?: pulumi.Input<inputs.compute.DiskSourceImageEncryptionKey>;
     /**
+     * The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
+     * For example, the following are valid values:
+     * * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot`
+     * * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
+     * * `zones/zone/instantSnapshots/instantSnapshot`
+     */
+    sourceInstantSnapshot?: pulumi.Input<string>;
+    /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption
      * key.
      * Structure is documented below.
      */
     sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.DiskSourceSnapshotEncryptionKey>;
+    /**
+     * The full Google Cloud Storage URI where the disk image is stored.
+     * This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
+     * Valid URIs may start with gs:// or https://storage.googleapis.com/.
+     * This flag is not optimized for creating multiple disks from a source storage object.
+     * To create many disks from a source storage object, use gcloud compute images import instead.
+     */
+    sourceStorageObject?: pulumi.Input<string>;
     /**
      * The URL or the name of the storage pool in which the new disk is created.
      * For example:

@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * > **Warning:** `gcp.notebooks.Location` is deprecated and will be removed in a future major release. This resource is not functional.
+ *
  * Represents a Location resource.
  *
  * ## Import

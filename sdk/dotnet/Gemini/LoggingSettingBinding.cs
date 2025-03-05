@@ -118,7 +118,7 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// Product type of the setting binding.
-        /// Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+        /// Possible values are: `GEMINI_CODE_ASSIST`.
         /// </summary>
         [Output("product")]
         public Output<string?> Product { get; private set; } = null!;
@@ -237,7 +237,7 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// Product type of the setting binding.
-        /// Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+        /// Possible values are: `GEMINI_CODE_ASSIST`.
         /// </summary>
         [Input("product")]
         public Input<string>? Product { get; set; }
@@ -329,7 +329,7 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// Product type of the setting binding.
-        /// Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+        /// Possible values are: `GEMINI_CODE_ASSIST`.
         /// </summary>
         [Input("product")]
         public Input<string>? Product { get; set; }

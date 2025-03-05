@@ -5,6 +5,8 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.RouteAsPathArgs;
+import com.pulumi.gcp.compute.inputs.RouteWarningArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -16,6 +18,36 @@ import javax.annotation.Nullable;
 public final class RouteState extends com.pulumi.resources.ResourceArgs {
 
     public static final RouteState Empty = new RouteState();
+
+    /**
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="asPaths")
+    private @Nullable Output<List<RouteAsPathArgs>> asPaths;
+
+    /**
+     * @return Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<RouteAsPathArgs>>> asPaths() {
+        return Optional.ofNullable(this.asPaths);
+    }
+
+    /**
+     * Creation timestamp in RFC3339 text format.
+     * 
+     */
+    @Import(name="creationTimestamp")
+    private @Nullable Output<String> creationTimestamp;
+
+    /**
+     * @return Creation timestamp in RFC3339 text format.
+     * 
+     */
+    public Optional<Output<String>> creationTimestamp() {
+        return Optional.ofNullable(this.creationTimestamp);
+    }
 
     /**
      * An optional description of this resource. Provide this property
@@ -122,6 +154,21 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> nextHopGateway() {
         return Optional.ofNullable(this.nextHopGateway);
+    }
+
+    /**
+     * The hub network that should handle matching packets, which should conform to RFC1035.
+     * 
+     */
+    @Import(name="nextHopHub")
+    private @Nullable Output<String> nextHopHub;
+
+    /**
+     * @return The hub network that should handle matching packets, which should conform to RFC1035.
+     * 
+     */
+    public Optional<Output<String>> nextHopHub() {
+        return Optional.ofNullable(this.nextHopHub);
     }
 
     /**
@@ -285,6 +332,21 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The network peering name that should handle matching packets, which should conform to RFC1035.
+     * 
+     */
+    @Import(name="nextHopPeering")
+    private @Nullable Output<String> nextHopPeering;
+
+    /**
+     * @return The network peering name that should handle matching packets, which should conform to RFC1035.
+     * 
+     */
+    public Optional<Output<String>> nextHopPeering() {
+        return Optional.ofNullable(this.nextHopPeering);
+    }
+
+    /**
      * URL to a VpnTunnel that should handle matching packets.
      * 
      */
@@ -340,6 +402,48 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The status of the route, which can be one of the following values:
+     * - &#39;ACTIVE&#39; for an active route
+     * - &#39;INACTIVE&#39; for an inactive route
+     * 
+     */
+    @Import(name="routeStatus")
+    private @Nullable Output<String> routeStatus;
+
+    /**
+     * @return The status of the route, which can be one of the following values:
+     * - &#39;ACTIVE&#39; for an active route
+     * - &#39;INACTIVE&#39; for an inactive route
+     * 
+     */
+    public Optional<Output<String>> routeStatus() {
+        return Optional.ofNullable(this.routeStatus);
+    }
+
+    /**
+     * The type of this route, which can be one of the following values:
+     * - &#39;TRANSIT&#39; for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+     * - &#39;SUBNET&#39; for a route from a subnet of the VPC
+     * - &#39;BGP&#39; for a route learned from a BGP peer of this router
+     * - &#39;STATIC&#39; for a static route
+     * 
+     */
+    @Import(name="routeType")
+    private @Nullable Output<String> routeType;
+
+    /**
+     * @return The type of this route, which can be one of the following values:
+     * - &#39;TRANSIT&#39; for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+     * - &#39;SUBNET&#39; for a route from a subnet of the VPC
+     * - &#39;BGP&#39; for a route learned from a BGP peer of this router
+     * - &#39;STATIC&#39; for a static route
+     * 
+     */
+    public Optional<Output<String>> routeType() {
+        return Optional.ofNullable(this.routeType);
+    }
+
+    /**
      * The URI of the created resource.
      * 
      */
@@ -369,14 +473,34 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="warnings")
+    private @Nullable Output<List<RouteWarningArgs>> warnings;
+
+    /**
+     * @return If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<RouteWarningArgs>>> warnings() {
+        return Optional.ofNullable(this.warnings);
+    }
+
     private RouteState() {}
 
     private RouteState(RouteState $) {
+        this.asPaths = $.asPaths;
+        this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
         this.destRange = $.destRange;
         this.name = $.name;
         this.network = $.network;
         this.nextHopGateway = $.nextHopGateway;
+        this.nextHopHub = $.nextHopHub;
         this.nextHopIlb = $.nextHopIlb;
         this.nextHopInstance = $.nextHopInstance;
         this.nextHopInstanceZone = $.nextHopInstanceZone;
@@ -385,11 +509,15 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
         this.nextHopMed = $.nextHopMed;
         this.nextHopNetwork = $.nextHopNetwork;
         this.nextHopOrigin = $.nextHopOrigin;
+        this.nextHopPeering = $.nextHopPeering;
         this.nextHopVpnTunnel = $.nextHopVpnTunnel;
         this.priority = $.priority;
         this.project = $.project;
+        this.routeStatus = $.routeStatus;
+        this.routeType = $.routeType;
         this.selfLink = $.selfLink;
         this.tags = $.tags;
+        this.warnings = $.warnings;
     }
 
     public static Builder builder() {
@@ -408,6 +536,58 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(RouteState defaults) {
             $ = new RouteState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param asPaths Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder asPaths(@Nullable Output<List<RouteAsPathArgs>> asPaths) {
+            $.asPaths = asPaths;
+            return this;
+        }
+
+        /**
+         * @param asPaths Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder asPaths(List<RouteAsPathArgs> asPaths) {
+            return asPaths(Output.of(asPaths));
+        }
+
+        /**
+         * @param asPaths Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder asPaths(RouteAsPathArgs... asPaths) {
+            return asPaths(List.of(asPaths));
+        }
+
+        /**
+         * @param creationTimestamp Creation timestamp in RFC3339 text format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creationTimestamp(@Nullable Output<String> creationTimestamp) {
+            $.creationTimestamp = creationTimestamp;
+            return this;
+        }
+
+        /**
+         * @param creationTimestamp Creation timestamp in RFC3339 text format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creationTimestamp(String creationTimestamp) {
+            return creationTimestamp(Output.of(creationTimestamp));
         }
 
         /**
@@ -545,6 +725,27 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder nextHopGateway(String nextHopGateway) {
             return nextHopGateway(Output.of(nextHopGateway));
+        }
+
+        /**
+         * @param nextHopHub The hub network that should handle matching packets, which should conform to RFC1035.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nextHopHub(@Nullable Output<String> nextHopHub) {
+            $.nextHopHub = nextHopHub;
+            return this;
+        }
+
+        /**
+         * @param nextHopHub The hub network that should handle matching packets, which should conform to RFC1035.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nextHopHub(String nextHopHub) {
+            return nextHopHub(Output.of(nextHopHub));
         }
 
         /**
@@ -756,6 +957,27 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param nextHopPeering The network peering name that should handle matching packets, which should conform to RFC1035.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nextHopPeering(@Nullable Output<String> nextHopPeering) {
+            $.nextHopPeering = nextHopPeering;
+            return this;
+        }
+
+        /**
+         * @param nextHopPeering The network peering name that should handle matching packets, which should conform to RFC1035.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nextHopPeering(String nextHopPeering) {
+            return nextHopPeering(Output.of(nextHopPeering));
+        }
+
+        /**
          * @param nextHopVpnTunnel URL to a VpnTunnel that should handle matching packets.
          * 
          * @return builder
@@ -829,6 +1051,60 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param routeStatus The status of the route, which can be one of the following values:
+         * - &#39;ACTIVE&#39; for an active route
+         * - &#39;INACTIVE&#39; for an inactive route
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routeStatus(@Nullable Output<String> routeStatus) {
+            $.routeStatus = routeStatus;
+            return this;
+        }
+
+        /**
+         * @param routeStatus The status of the route, which can be one of the following values:
+         * - &#39;ACTIVE&#39; for an active route
+         * - &#39;INACTIVE&#39; for an inactive route
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routeStatus(String routeStatus) {
+            return routeStatus(Output.of(routeStatus));
+        }
+
+        /**
+         * @param routeType The type of this route, which can be one of the following values:
+         * - &#39;TRANSIT&#39; for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+         * - &#39;SUBNET&#39; for a route from a subnet of the VPC
+         * - &#39;BGP&#39; for a route learned from a BGP peer of this router
+         * - &#39;STATIC&#39; for a static route
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routeType(@Nullable Output<String> routeType) {
+            $.routeType = routeType;
+            return this;
+        }
+
+        /**
+         * @param routeType The type of this route, which can be one of the following values:
+         * - &#39;TRANSIT&#39; for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+         * - &#39;SUBNET&#39; for a route from a subnet of the VPC
+         * - &#39;BGP&#39; for a route learned from a BGP peer of this router
+         * - &#39;STATIC&#39; for a static route
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routeType(String routeType) {
+            return routeType(Output.of(routeType));
+        }
+
+        /**
          * @param selfLink The URI of the created resource.
          * 
          * @return builder
@@ -878,6 +1154,40 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
+        }
+
+        /**
+         * @param warnings If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warnings(@Nullable Output<List<RouteWarningArgs>> warnings) {
+            $.warnings = warnings;
+            return this;
+        }
+
+        /**
+         * @param warnings If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warnings(List<RouteWarningArgs> warnings) {
+            return warnings(Output.of(warnings));
+        }
+
+        /**
+         * @param warnings If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warnings(RouteWarningArgs... warnings) {
+            return warnings(List.of(warnings));
         }
 
         public RouteState build() {

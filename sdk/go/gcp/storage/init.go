@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:storage/anywhereCache:AnywhereCache":
+		r = &AnywhereCache{}
 	case "gcp:storage/bucket:Bucket":
 		r = &Bucket{}
 	case "gcp:storage/bucketACL:BucketACL":
@@ -76,6 +78,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"storage/anywhereCache",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"storage/bucket",

@@ -8628,7 +8628,7 @@ type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy struct
 	InstanceSelectionLists []ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList `pulumi:"instanceSelectionLists"`
 	// A list of instance selection results in the group.
 	InstanceSelectionResults []ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult `pulumi:"instanceSelectionResults"`
-	// Defines how Dataproc should create VMs with a mixture of provisioning models.
+	// Defines how the Group selects the provisioning model to ensure required reliability.
 	ProvisioningModelMix *ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix `pulumi:"provisioningModelMix"`
 }
 
@@ -8648,7 +8648,7 @@ type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs st
 	InstanceSelectionLists ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput `pulumi:"instanceSelectionLists"`
 	// A list of instance selection results in the group.
 	InstanceSelectionResults ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput `pulumi:"instanceSelectionResults"`
-	// Defines how Dataproc should create VMs with a mixture of provisioning models.
+	// Defines how the Group selects the provisioning model to ensure required reliability.
 	ProvisioningModelMix ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrInput `pulumi:"provisioningModelMix"`
 }
 
@@ -8743,7 +8743,7 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyOutp
 	}).(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput)
 }
 
-// Defines how Dataproc should create VMs with a mixture of provisioning models.
+// Defines how the Group selects the provisioning model to ensure required reliability.
 func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyOutput) ProvisioningModelMix() ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy) *ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix {
 		return v.ProvisioningModelMix
@@ -8794,7 +8794,7 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyPtrO
 	}).(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput)
 }
 
-// Defines how Dataproc should create VMs with a mixture of provisioning models.
+// Defines how the Group selects the provisioning model to ensure required reliability.
 func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyPtrOutput) ProvisioningModelMix() ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy) *ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix {
 		if v == nil {
@@ -8808,8 +8808,6 @@ type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanc
 	// Full machine-type names, e.g. `"n1-standard-16"`.
 	MachineTypes []string `pulumi:"machineTypes"`
 	// Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
-	//
-	// ***
 	Rank *int `pulumi:"rank"`
 }
 
@@ -8828,8 +8826,6 @@ type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanc
 	// Full machine-type names, e.g. `"n1-standard-16"`.
 	MachineTypes pulumi.StringArrayInput `pulumi:"machineTypes"`
 	// Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
-	//
-	// ***
 	Rank pulumi.IntPtrInput `pulumi:"rank"`
 }
 
@@ -8892,8 +8888,6 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInst
 }
 
 // Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
-//
-// ***
 func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) Rank() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList) *int {
 		return v.Rank
@@ -9031,9 +9025,10 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInst
 }
 
 type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix struct {
-	// The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need.
+	// The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need. Dataproc will create only standard VMs until it reaches standardCapacityBase, then it will start using standardCapacityPercentAboveBase to mix Spot with Standard VMs. eg. If 15 instances are requested and standardCapacityBase is 5, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances.
 	StandardCapacityBase *int `pulumi:"standardCapacityBase"`
-	// The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs.
+	// The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs. The percentage applies only to the capacity above standardCapacityBase. eg. If 15 instances are requested and standardCapacityBase is 5 and standardCapacityPercentAboveBase is 30, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances. The mix will be 30% standard and 70% spot.
+	// ***
 	StandardCapacityPercentAboveBase *int `pulumi:"standardCapacityPercentAboveBase"`
 }
 
@@ -9049,9 +9044,10 @@ type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisi
 }
 
 type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs struct {
-	// The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need.
+	// The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need. Dataproc will create only standard VMs until it reaches standardCapacityBase, then it will start using standardCapacityPercentAboveBase to mix Spot with Standard VMs. eg. If 15 instances are requested and standardCapacityBase is 5, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances.
 	StandardCapacityBase pulumi.IntPtrInput `pulumi:"standardCapacityBase"`
-	// The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs.
+	// The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs. The percentage applies only to the capacity above standardCapacityBase. eg. If 15 instances are requested and standardCapacityBase is 5 and standardCapacityPercentAboveBase is 30, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances. The mix will be 30% standard and 70% spot.
+	// ***
 	StandardCapacityPercentAboveBase pulumi.IntPtrInput `pulumi:"standardCapacityPercentAboveBase"`
 }
 
@@ -9132,14 +9128,15 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProv
 	}).(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput)
 }
 
-// The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need.
+// The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need. Dataproc will create only standard VMs until it reaches standardCapacityBase, then it will start using standardCapacityPercentAboveBase to mix Spot with Standard VMs. eg. If 15 instances are requested and standardCapacityBase is 5, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances.
 func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput) StandardCapacityBase() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix) *int {
 		return v.StandardCapacityBase
 	}).(pulumi.IntPtrOutput)
 }
 
-// The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs.
+// The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs. The percentage applies only to the capacity above standardCapacityBase. eg. If 15 instances are requested and standardCapacityBase is 5 and standardCapacityPercentAboveBase is 30, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances. The mix will be 30% standard and 70% spot.
+// ***
 func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput) StandardCapacityPercentAboveBase() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix) *int {
 		return v.StandardCapacityPercentAboveBase
@@ -9170,7 +9167,7 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProv
 	}).(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput)
 }
 
-// The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need.
+// The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need. Dataproc will create only standard VMs until it reaches standardCapacityBase, then it will start using standardCapacityPercentAboveBase to mix Spot with Standard VMs. eg. If 15 instances are requested and standardCapacityBase is 5, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances.
 func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput) StandardCapacityBase() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix) *int {
 		if v == nil {
@@ -9180,7 +9177,8 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProv
 	}).(pulumi.IntPtrOutput)
 }
 
-// The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs.
+// The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs. The percentage applies only to the capacity above standardCapacityBase. eg. If 15 instances are requested and standardCapacityBase is 5 and standardCapacityPercentAboveBase is 30, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances. The mix will be 30% standard and 70% spot.
+// ***
 func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput) StandardCapacityPercentAboveBase() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix) *int {
 		if v == nil {

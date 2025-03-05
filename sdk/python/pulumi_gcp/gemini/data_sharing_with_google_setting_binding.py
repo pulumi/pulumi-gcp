@@ -39,7 +39,7 @@ class DataSharingWithGoogleSettingBindingArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[str] product: Product type of the setting binding.
-               Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+               Possible values are: `GEMINI_CLOUD_ASSIST`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -125,7 +125,7 @@ class DataSharingWithGoogleSettingBindingArgs:
     def product(self) -> Optional[pulumi.Input[str]]:
         """
         Product type of the setting binding.
-        Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+        Possible values are: `GEMINI_CLOUD_ASSIST`.
         """
         return pulumi.get(self, "product")
 
@@ -174,7 +174,7 @@ class _DataSharingWithGoogleSettingBindingState:
         :param pulumi.Input[str] name: Identifier. Name of the resource.
                Format:projects/{project}/locations/{location}/dataSharingWithGoogleSettings/{setting}/settingBindings/{setting_binding}
         :param pulumi.Input[str] product: Product type of the setting binding.
-               Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+               Possible values are: `GEMINI_CLOUD_ASSIST`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -291,7 +291,7 @@ class _DataSharingWithGoogleSettingBindingState:
     def product(self) -> Optional[pulumi.Input[str]]:
         """
         Product type of the setting binding.
-        Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+        Possible values are: `GEMINI_CLOUD_ASSIST`.
         """
         return pulumi.get(self, "product")
 
@@ -379,6 +379,12 @@ class DataSharingWithGoogleSettingBinding(pulumi.CustomResource):
                  target: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        The resource for managing DataSharingWithGoogle setting bindings for Admin Control.
+
+        To get more information about DataSharingWithGoogleSettingBinding, see:
+        * How-to Guides
+            * [Gemini Cloud Assist overview](https://cloud.google.com/gemini/docs/cloud-assist/overview)
+
         ## Example Usage
 
         ### Gemini Data Sharing With Google Setting Binding Basic
@@ -433,7 +439,7 @@ class DataSharingWithGoogleSettingBinding(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[str] product: Product type of the setting binding.
-               Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+               Possible values are: `GEMINI_CLOUD_ASSIST`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] setting_binding_id: Required. Id of the setting binding.
@@ -449,6 +455,12 @@ class DataSharingWithGoogleSettingBinding(pulumi.CustomResource):
                  args: DataSharingWithGoogleSettingBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The resource for managing DataSharingWithGoogle setting bindings for Admin Control.
+
+        To get more information about DataSharingWithGoogleSettingBinding, see:
+        * How-to Guides
+            * [Gemini Cloud Assist overview](https://cloud.google.com/gemini/docs/cloud-assist/overview)
+
         ## Example Usage
 
         ### Gemini Data Sharing With Google Setting Binding Basic
@@ -585,7 +597,7 @@ class DataSharingWithGoogleSettingBinding(pulumi.CustomResource):
         :param pulumi.Input[str] name: Identifier. Name of the resource.
                Format:projects/{project}/locations/{location}/dataSharingWithGoogleSettings/{setting}/settingBindings/{setting_binding}
         :param pulumi.Input[str] product: Product type of the setting binding.
-               Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+               Possible values are: `GEMINI_CLOUD_ASSIST`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -668,10 +680,10 @@ class DataSharingWithGoogleSettingBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def product(self) -> pulumi.Output[Optional[str]]:
+    def product(self) -> pulumi.Output[str]:
         """
         Product type of the setting binding.
-        Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+        Possible values are: `GEMINI_CLOUD_ASSIST`.
         """
         return pulumi.get(self, "product")
 

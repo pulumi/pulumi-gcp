@@ -270,6 +270,11 @@ export const getInstanceTemplateIamPolicy: typeof import("./getInstanceTemplateI
 export const getInstanceTemplateIamPolicyOutput: typeof import("./getInstanceTemplateIamPolicy").getInstanceTemplateIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getInstanceTemplateIamPolicy","getInstanceTemplateIamPolicyOutput"], () => require("./getInstanceTemplateIamPolicy"));
 
+export { GetInstantSnapshotIamPolicyArgs, GetInstantSnapshotIamPolicyResult, GetInstantSnapshotIamPolicyOutputArgs } from "./getInstantSnapshotIamPolicy";
+export const getInstantSnapshotIamPolicy: typeof import("./getInstantSnapshotIamPolicy").getInstantSnapshotIamPolicy = null as any;
+export const getInstantSnapshotIamPolicyOutput: typeof import("./getInstantSnapshotIamPolicy").getInstantSnapshotIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getInstantSnapshotIamPolicy","getInstantSnapshotIamPolicyOutput"], () => require("./getInstantSnapshotIamPolicy"));
+
 export { GetLBIPRangesResult } from "./getLBIPRanges";
 export const getLBIPRanges: typeof import("./getLBIPRanges").getLBIPRanges = null as any;
 export const getLBIPRangesOutput: typeof import("./getLBIPRanges").getLBIPRangesOutput = null as any;
@@ -564,6 +569,26 @@ export { InstanceTemplateIamPolicyArgs, InstanceTemplateIamPolicyState } from ".
 export type InstanceTemplateIamPolicy = import("./instanceTemplateIamPolicy").InstanceTemplateIamPolicy;
 export const InstanceTemplateIamPolicy: typeof import("./instanceTemplateIamPolicy").InstanceTemplateIamPolicy = null as any;
 utilities.lazyLoad(exports, ["InstanceTemplateIamPolicy"], () => require("./instanceTemplateIamPolicy"));
+
+export { InstantSnapshotArgs, InstantSnapshotState } from "./instantSnapshot";
+export type InstantSnapshot = import("./instantSnapshot").InstantSnapshot;
+export const InstantSnapshot: typeof import("./instantSnapshot").InstantSnapshot = null as any;
+utilities.lazyLoad(exports, ["InstantSnapshot"], () => require("./instantSnapshot"));
+
+export { InstantSnapshotIamBindingArgs, InstantSnapshotIamBindingState } from "./instantSnapshotIamBinding";
+export type InstantSnapshotIamBinding = import("./instantSnapshotIamBinding").InstantSnapshotIamBinding;
+export const InstantSnapshotIamBinding: typeof import("./instantSnapshotIamBinding").InstantSnapshotIamBinding = null as any;
+utilities.lazyLoad(exports, ["InstantSnapshotIamBinding"], () => require("./instantSnapshotIamBinding"));
+
+export { InstantSnapshotIamMemberArgs, InstantSnapshotIamMemberState } from "./instantSnapshotIamMember";
+export type InstantSnapshotIamMember = import("./instantSnapshotIamMember").InstantSnapshotIamMember;
+export const InstantSnapshotIamMember: typeof import("./instantSnapshotIamMember").InstantSnapshotIamMember = null as any;
+utilities.lazyLoad(exports, ["InstantSnapshotIamMember"], () => require("./instantSnapshotIamMember"));
+
+export { InstantSnapshotIamPolicyArgs, InstantSnapshotIamPolicyState } from "./instantSnapshotIamPolicy";
+export type InstantSnapshotIamPolicy = import("./instantSnapshotIamPolicy").InstantSnapshotIamPolicy;
+export const InstantSnapshotIamPolicy: typeof import("./instantSnapshotIamPolicy").InstantSnapshotIamPolicy = null as any;
+utilities.lazyLoad(exports, ["InstantSnapshotIamPolicy"], () => require("./instantSnapshotIamPolicy"));
 
 export { InterconnectArgs, InterconnectState } from "./interconnect";
 export type Interconnect = import("./interconnect").Interconnect;
@@ -1183,6 +1208,14 @@ const _module = {
                 return new InstanceTemplateIamMember(name, <any>undefined, { urn })
             case "gcp:compute/instanceTemplateIamPolicy:InstanceTemplateIamPolicy":
                 return new InstanceTemplateIamPolicy(name, <any>undefined, { urn })
+            case "gcp:compute/instantSnapshot:InstantSnapshot":
+                return new InstantSnapshot(name, <any>undefined, { urn })
+            case "gcp:compute/instantSnapshotIamBinding:InstantSnapshotIamBinding":
+                return new InstantSnapshotIamBinding(name, <any>undefined, { urn })
+            case "gcp:compute/instantSnapshotIamMember:InstantSnapshotIamMember":
+                return new InstantSnapshotIamMember(name, <any>undefined, { urn })
+            case "gcp:compute/instantSnapshotIamPolicy:InstantSnapshotIamPolicy":
+                return new InstantSnapshotIamPolicy(name, <any>undefined, { urn })
             case "gcp:compute/interconnect:Interconnect":
                 return new Interconnect(name, <any>undefined, { urn })
             case "gcp:compute/interconnectAttachment:InterconnectAttachment":
@@ -1442,6 +1475,10 @@ pulumi.runtime.registerResourceModule("gcp", "compute/instanceTemplate", _module
 pulumi.runtime.registerResourceModule("gcp", "compute/instanceTemplateIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/instanceTemplateIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/instanceTemplateIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/instantSnapshot", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/instantSnapshotIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/instantSnapshotIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/instantSnapshotIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/interconnect", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/interconnectAttachment", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/machineImage", _module)

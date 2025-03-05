@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Gemini
 {
     /// <summary>
+    /// The resource for managing DataSharingWithGoogle setting bindings for Admin Control.
+    /// 
+    /// To get more information about DataSharingWithGoogleSettingBinding, see:
+    /// * How-to Guides
+    ///     * [Gemini Cloud Assist overview](https://cloud.google.com/gemini/docs/cloud-assist/overview)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Gemini Data Sharing With Google Setting Binding Basic
@@ -112,10 +118,10 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// Product type of the setting binding.
-        /// Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+        /// Possible values are: `GEMINI_CLOUD_ASSIST`.
         /// </summary>
         [Output("product")]
-        public Output<string?> Product { get; private set; } = null!;
+        public Output<string> Product { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -231,7 +237,7 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// Product type of the setting binding.
-        /// Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+        /// Possible values are: `GEMINI_CLOUD_ASSIST`.
         /// </summary>
         [Input("product")]
         public Input<string>? Product { get; set; }
@@ -323,7 +329,7 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// Product type of the setting binding.
-        /// Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+        /// Possible values are: `GEMINI_CLOUD_ASSIST`.
         /// </summary>
         [Input("product")]
         public Input<string>? Product { get; set; }

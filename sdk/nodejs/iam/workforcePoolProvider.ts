@@ -72,7 +72,7 @@ import * as utilities from "../utilities";
  *                 plainText: "client-secret",
  *             },
  *         },
- *         attributesType: "AZURE_AD_GROUPS_MAIL",
+ *         attributesType: "AZURE_AD_GROUPS_ID",
  *         queryParameters: {
  *             filter: "mail:gcp",
  *         },

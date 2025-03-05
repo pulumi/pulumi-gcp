@@ -12,18 +12,18 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters {
     /**
-     * @return The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL, it represents the
+     * @return The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL and AZURE_AD_GROUPS_ID, it represents the
      * filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
-     * groups should be mail enabled and security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
+     * groups should be security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
      * 
      */
     private @Nullable String filter;
 
     private WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters() {}
     /**
-     * @return The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL, it represents the
+     * @return The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL and AZURE_AD_GROUPS_ID, it represents the
      * filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
-     * groups should be mail enabled and security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
+     * groups should be security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
      * 
      */
     public Optional<String> filter() {

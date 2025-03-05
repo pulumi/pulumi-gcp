@@ -27,10 +27,13 @@ class GetDiskResult:
     """
     A collection of values returned by getDisk.
     """
-    def __init__(__self__, access_mode=None, async_primary_disks=None, creation_timestamp=None, description=None, disk_encryption_keys=None, disk_id=None, effective_labels=None, enable_confidential_compute=None, guest_os_features=None, id=None, image=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, multi_writer=None, name=None, physical_block_size_bytes=None, project=None, provisioned_iops=None, provisioned_throughput=None, pulumi_labels=None, resource_policies=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_image_encryption_keys=None, source_image_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, storage_pool=None, type=None, users=None, zone=None):
+    def __init__(__self__, access_mode=None, architecture=None, async_primary_disks=None, creation_timestamp=None, description=None, disk_encryption_keys=None, disk_id=None, effective_labels=None, enable_confidential_compute=None, guest_os_features=None, id=None, image=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, multi_writer=None, name=None, params=None, physical_block_size_bytes=None, project=None, provisioned_iops=None, provisioned_throughput=None, pulumi_labels=None, resource_policies=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_image_encryption_keys=None, source_image_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, source_storage_object=None, storage_pool=None, type=None, users=None, zone=None):
         if access_mode and not isinstance(access_mode, str):
             raise TypeError("Expected argument 'access_mode' to be a str")
         pulumi.set(__self__, "access_mode", access_mode)
+        if architecture and not isinstance(architecture, str):
+            raise TypeError("Expected argument 'architecture' to be a str")
+        pulumi.set(__self__, "architecture", architecture)
         if async_primary_disks and not isinstance(async_primary_disks, list):
             raise TypeError("Expected argument 'async_primary_disks' to be a list")
         pulumi.set(__self__, "async_primary_disks", async_primary_disks)
@@ -85,6 +88,9 @@ class GetDiskResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if params and not isinstance(params, list):
+            raise TypeError("Expected argument 'params' to be a list")
+        pulumi.set(__self__, "params", params)
         if physical_block_size_bytes and not isinstance(physical_block_size_bytes, int):
             raise TypeError("Expected argument 'physical_block_size_bytes' to be a int")
         pulumi.set(__self__, "physical_block_size_bytes", physical_block_size_bytes)
@@ -124,12 +130,21 @@ class GetDiskResult:
         if source_image_id and not isinstance(source_image_id, str):
             raise TypeError("Expected argument 'source_image_id' to be a str")
         pulumi.set(__self__, "source_image_id", source_image_id)
+        if source_instant_snapshot and not isinstance(source_instant_snapshot, str):
+            raise TypeError("Expected argument 'source_instant_snapshot' to be a str")
+        pulumi.set(__self__, "source_instant_snapshot", source_instant_snapshot)
+        if source_instant_snapshot_id and not isinstance(source_instant_snapshot_id, str):
+            raise TypeError("Expected argument 'source_instant_snapshot_id' to be a str")
+        pulumi.set(__self__, "source_instant_snapshot_id", source_instant_snapshot_id)
         if source_snapshot_encryption_keys and not isinstance(source_snapshot_encryption_keys, list):
             raise TypeError("Expected argument 'source_snapshot_encryption_keys' to be a list")
         pulumi.set(__self__, "source_snapshot_encryption_keys", source_snapshot_encryption_keys)
         if source_snapshot_id and not isinstance(source_snapshot_id, str):
             raise TypeError("Expected argument 'source_snapshot_id' to be a str")
         pulumi.set(__self__, "source_snapshot_id", source_snapshot_id)
+        if source_storage_object and not isinstance(source_storage_object, str):
+            raise TypeError("Expected argument 'source_storage_object' to be a str")
+        pulumi.set(__self__, "source_storage_object", source_storage_object)
         if storage_pool and not isinstance(storage_pool, str):
             raise TypeError("Expected argument 'storage_pool' to be a str")
         pulumi.set(__self__, "storage_pool", storage_pool)
@@ -147,6 +162,11 @@ class GetDiskResult:
     @pulumi.getter(name="accessMode")
     def access_mode(self) -> str:
         return pulumi.get(self, "access_mode")
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> str:
+        return pulumi.get(self, "architecture")
 
     @property
     @pulumi.getter(name="asyncPrimaryDisks")
@@ -264,6 +284,11 @@ class GetDiskResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def params(self) -> Sequence['outputs.GetDiskParamResult']:
+        return pulumi.get(self, "params")
+
+    @property
     @pulumi.getter(name="physicalBlockSizeBytes")
     def physical_block_size_bytes(self) -> int:
         """
@@ -351,6 +376,16 @@ class GetDiskResult:
         return pulumi.get(self, "source_image_id")
 
     @property
+    @pulumi.getter(name="sourceInstantSnapshot")
+    def source_instant_snapshot(self) -> str:
+        return pulumi.get(self, "source_instant_snapshot")
+
+    @property
+    @pulumi.getter(name="sourceInstantSnapshotId")
+    def source_instant_snapshot_id(self) -> str:
+        return pulumi.get(self, "source_instant_snapshot_id")
+
+    @property
     @pulumi.getter(name="sourceSnapshotEncryptionKeys")
     def source_snapshot_encryption_keys(self) -> Sequence['outputs.GetDiskSourceSnapshotEncryptionKeyResult']:
         """
@@ -370,6 +405,11 @@ class GetDiskResult:
         used.
         """
         return pulumi.get(self, "source_snapshot_id")
+
+    @property
+    @pulumi.getter(name="sourceStorageObject")
+    def source_storage_object(self) -> str:
+        return pulumi.get(self, "source_storage_object")
 
     @property
     @pulumi.getter(name="storagePool")
@@ -410,6 +450,7 @@ class AwaitableGetDiskResult(GetDiskResult):
             yield self
         return GetDiskResult(
             access_mode=self.access_mode,
+            architecture=self.architecture,
             async_primary_disks=self.async_primary_disks,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
@@ -428,6 +469,7 @@ class AwaitableGetDiskResult(GetDiskResult):
             licenses=self.licenses,
             multi_writer=self.multi_writer,
             name=self.name,
+            params=self.params,
             physical_block_size_bytes=self.physical_block_size_bytes,
             project=self.project,
             provisioned_iops=self.provisioned_iops,
@@ -441,8 +483,11 @@ class AwaitableGetDiskResult(GetDiskResult):
             source_disk_id=self.source_disk_id,
             source_image_encryption_keys=self.source_image_encryption_keys,
             source_image_id=self.source_image_id,
+            source_instant_snapshot=self.source_instant_snapshot,
+            source_instant_snapshot_id=self.source_instant_snapshot_id,
             source_snapshot_encryption_keys=self.source_snapshot_encryption_keys,
             source_snapshot_id=self.source_snapshot_id,
+            source_storage_object=self.source_storage_object,
             storage_pool=self.storage_pool,
             type=self.type,
             users=self.users,
@@ -489,6 +534,7 @@ def get_disk(name: Optional[str] = None,
 
     return AwaitableGetDiskResult(
         access_mode=pulumi.get(__ret__, 'access_mode'),
+        architecture=pulumi.get(__ret__, 'architecture'),
         async_primary_disks=pulumi.get(__ret__, 'async_primary_disks'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         description=pulumi.get(__ret__, 'description'),
@@ -507,6 +553,7 @@ def get_disk(name: Optional[str] = None,
         licenses=pulumi.get(__ret__, 'licenses'),
         multi_writer=pulumi.get(__ret__, 'multi_writer'),
         name=pulumi.get(__ret__, 'name'),
+        params=pulumi.get(__ret__, 'params'),
         physical_block_size_bytes=pulumi.get(__ret__, 'physical_block_size_bytes'),
         project=pulumi.get(__ret__, 'project'),
         provisioned_iops=pulumi.get(__ret__, 'provisioned_iops'),
@@ -520,8 +567,11 @@ def get_disk(name: Optional[str] = None,
         source_disk_id=pulumi.get(__ret__, 'source_disk_id'),
         source_image_encryption_keys=pulumi.get(__ret__, 'source_image_encryption_keys'),
         source_image_id=pulumi.get(__ret__, 'source_image_id'),
+        source_instant_snapshot=pulumi.get(__ret__, 'source_instant_snapshot'),
+        source_instant_snapshot_id=pulumi.get(__ret__, 'source_instant_snapshot_id'),
         source_snapshot_encryption_keys=pulumi.get(__ret__, 'source_snapshot_encryption_keys'),
         source_snapshot_id=pulumi.get(__ret__, 'source_snapshot_id'),
+        source_storage_object=pulumi.get(__ret__, 'source_storage_object'),
         storage_pool=pulumi.get(__ret__, 'storage_pool'),
         type=pulumi.get(__ret__, 'type'),
         users=pulumi.get(__ret__, 'users'),
@@ -565,6 +615,7 @@ def get_disk_output(name: Optional[pulumi.Input[str]] = None,
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getDisk:getDisk', __args__, opts=opts, typ=GetDiskResult)
     return __ret__.apply(lambda __response__: GetDiskResult(
         access_mode=pulumi.get(__response__, 'access_mode'),
+        architecture=pulumi.get(__response__, 'architecture'),
         async_primary_disks=pulumi.get(__response__, 'async_primary_disks'),
         creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
         description=pulumi.get(__response__, 'description'),
@@ -583,6 +634,7 @@ def get_disk_output(name: Optional[pulumi.Input[str]] = None,
         licenses=pulumi.get(__response__, 'licenses'),
         multi_writer=pulumi.get(__response__, 'multi_writer'),
         name=pulumi.get(__response__, 'name'),
+        params=pulumi.get(__response__, 'params'),
         physical_block_size_bytes=pulumi.get(__response__, 'physical_block_size_bytes'),
         project=pulumi.get(__response__, 'project'),
         provisioned_iops=pulumi.get(__response__, 'provisioned_iops'),
@@ -596,8 +648,11 @@ def get_disk_output(name: Optional[pulumi.Input[str]] = None,
         source_disk_id=pulumi.get(__response__, 'source_disk_id'),
         source_image_encryption_keys=pulumi.get(__response__, 'source_image_encryption_keys'),
         source_image_id=pulumi.get(__response__, 'source_image_id'),
+        source_instant_snapshot=pulumi.get(__response__, 'source_instant_snapshot'),
+        source_instant_snapshot_id=pulumi.get(__response__, 'source_instant_snapshot_id'),
         source_snapshot_encryption_keys=pulumi.get(__response__, 'source_snapshot_encryption_keys'),
         source_snapshot_id=pulumi.get(__response__, 'source_snapshot_id'),
+        source_storage_object=pulumi.get(__response__, 'source_storage_object'),
         storage_pool=pulumi.get(__response__, 'storage_pool'),
         type=pulumi.get(__response__, 'type'),
         users=pulumi.get(__response__, 'users'),

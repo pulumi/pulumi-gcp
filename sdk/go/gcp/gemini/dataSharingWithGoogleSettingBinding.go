@@ -12,6 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The resource for managing DataSharingWithGoogle setting bindings for Admin Control.
+//
+// To get more information about DataSharingWithGoogleSettingBinding, see:
+// * How-to Guides
+//   - [Gemini Cloud Assist overview](https://cloud.google.com/gemini/docs/cloud-assist/overview)
+//
 // ## Example Usage
 //
 // ### Gemini Data Sharing With Google Setting Binding Basic
@@ -96,8 +102,8 @@ type DataSharingWithGoogleSettingBinding struct {
 	// Format:projects/{project}/locations/{location}/dataSharingWithGoogleSettings/{setting}/settingBindings/{setting_binding}
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Product type of the setting binding.
-	// Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
-	Product pulumi.StringPtrOutput `pulumi:"product"`
+	// Possible values are: `GEMINI_CLOUD_ASSIST`.
+	Product pulumi.StringOutput `pulumi:"product"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -174,7 +180,7 @@ type dataSharingWithGoogleSettingBindingState struct {
 	// Format:projects/{project}/locations/{location}/dataSharingWithGoogleSettings/{setting}/settingBindings/{setting_binding}
 	Name *string `pulumi:"name"`
 	// Product type of the setting binding.
-	// Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+	// Possible values are: `GEMINI_CLOUD_ASSIST`.
 	Product *string `pulumi:"product"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -209,7 +215,7 @@ type DataSharingWithGoogleSettingBindingState struct {
 	// Format:projects/{project}/locations/{location}/dataSharingWithGoogleSettings/{setting}/settingBindings/{setting_binding}
 	Name pulumi.StringPtrInput
 	// Product type of the setting binding.
-	// Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+	// Possible values are: `GEMINI_CLOUD_ASSIST`.
 	Product pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -241,7 +247,7 @@ type dataSharingWithGoogleSettingBindingArgs struct {
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location *string `pulumi:"location"`
 	// Product type of the setting binding.
-	// Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+	// Possible values are: `GEMINI_CLOUD_ASSIST`.
 	Product *string `pulumi:"product"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -265,7 +271,7 @@ type DataSharingWithGoogleSettingBindingArgs struct {
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringPtrInput
 	// Product type of the setting binding.
-	// Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
+	// Possible values are: `GEMINI_CLOUD_ASSIST`.
 	Product pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -401,9 +407,9 @@ func (o DataSharingWithGoogleSettingBindingOutput) Name() pulumi.StringOutput {
 }
 
 // Product type of the setting binding.
-// Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
-func (o DataSharingWithGoogleSettingBindingOutput) Product() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataSharingWithGoogleSettingBinding) pulumi.StringPtrOutput { return v.Product }).(pulumi.StringPtrOutput)
+// Possible values are: `GEMINI_CLOUD_ASSIST`.
+func (o DataSharingWithGoogleSettingBindingOutput) Product() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataSharingWithGoogleSettingBinding) pulumi.StringOutput { return v.Product }).(pulumi.StringOutput)
 }
 
 // The ID of the project in which the resource belongs.

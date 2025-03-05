@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -226,6 +228,14 @@ export class Route extends pulumi.CustomResource {
     }
 
     /**
+     * Structure is documented below.
+     */
+    public /*out*/ readonly asPaths!: pulumi.Output<outputs.compute.RouteAsPath[]>;
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    /**
      * An optional description of this resource. Provide this property
      * when you create the resource.
      */
@@ -262,6 +272,10 @@ export class Route extends pulumi.CustomResource {
      * * The string `default-internet-gateway`.
      */
     public readonly nextHopGateway!: pulumi.Output<string | undefined>;
+    /**
+     * The hub network that should handle matching packets, which should conform to RFC1035.
+     */
+    public /*out*/ readonly nextHopHub!: pulumi.Output<string>;
     /**
      * The IP address or URL to a forwarding rule of type
      * loadBalancingScheme=INTERNAL that should handle matching
@@ -315,6 +329,10 @@ export class Route extends pulumi.CustomResource {
      */
     public /*out*/ readonly nextHopOrigin!: pulumi.Output<string>;
     /**
+     * The network peering name that should handle matching packets, which should conform to RFC1035.
+     */
+    public /*out*/ readonly nextHopPeering!: pulumi.Output<string>;
+    /**
      * URL to a VpnTunnel that should handle matching packets.
      */
     public readonly nextHopVpnTunnel!: pulumi.Output<string | undefined>;
@@ -332,6 +350,20 @@ export class Route extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The status of the route, which can be one of the following values:
+     * - 'ACTIVE' for an active route
+     * - 'INACTIVE' for an inactive route
+     */
+    public /*out*/ readonly routeStatus!: pulumi.Output<string>;
+    /**
+     * The type of this route, which can be one of the following values:
+     * - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+     * - 'SUBNET' for a route from a subnet of the VPC
+     * - 'BGP' for a route learned from a BGP peer of this router
+     * - 'STATIC' for a static route
+     */
+    public /*out*/ readonly routeType!: pulumi.Output<string>;
+    /**
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -339,6 +371,11 @@ export class Route extends pulumi.CustomResource {
      * A list of instance tags to which this route applies.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
+     * If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+     * Structure is documented below.
+     */
+    public /*out*/ readonly warnings!: pulumi.Output<outputs.compute.RouteWarning[]>;
 
     /**
      * Create a Route resource with the given unique name, arguments, and options.
@@ -353,11 +390,14 @@ export class Route extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouteState | undefined;
+            resourceInputs["asPaths"] = state ? state.asPaths : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["destRange"] = state ? state.destRange : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["nextHopGateway"] = state ? state.nextHopGateway : undefined;
+            resourceInputs["nextHopHub"] = state ? state.nextHopHub : undefined;
             resourceInputs["nextHopIlb"] = state ? state.nextHopIlb : undefined;
             resourceInputs["nextHopInstance"] = state ? state.nextHopInstance : undefined;
             resourceInputs["nextHopInstanceZone"] = state ? state.nextHopInstanceZone : undefined;
@@ -366,11 +406,15 @@ export class Route extends pulumi.CustomResource {
             resourceInputs["nextHopMed"] = state ? state.nextHopMed : undefined;
             resourceInputs["nextHopNetwork"] = state ? state.nextHopNetwork : undefined;
             resourceInputs["nextHopOrigin"] = state ? state.nextHopOrigin : undefined;
+            resourceInputs["nextHopPeering"] = state ? state.nextHopPeering : undefined;
             resourceInputs["nextHopVpnTunnel"] = state ? state.nextHopVpnTunnel : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["routeStatus"] = state ? state.routeStatus : undefined;
+            resourceInputs["routeType"] = state ? state.routeType : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["warnings"] = state ? state.warnings : undefined;
         } else {
             const args = argsOrState as RouteArgs | undefined;
             if ((!args || args.destRange === undefined) && !opts.urn) {
@@ -392,11 +436,18 @@ export class Route extends pulumi.CustomResource {
             resourceInputs["priority"] = args ? args.priority : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["asPaths"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["nextHopHub"] = undefined /*out*/;
             resourceInputs["nextHopInterRegionCost"] = undefined /*out*/;
             resourceInputs["nextHopMed"] = undefined /*out*/;
             resourceInputs["nextHopNetwork"] = undefined /*out*/;
             resourceInputs["nextHopOrigin"] = undefined /*out*/;
+            resourceInputs["nextHopPeering"] = undefined /*out*/;
+            resourceInputs["routeStatus"] = undefined /*out*/;
+            resourceInputs["routeType"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["warnings"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Route.__pulumiType, name, resourceInputs, opts);
@@ -407,6 +458,14 @@ export class Route extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Route resources.
  */
 export interface RouteState {
+    /**
+     * Structure is documented below.
+     */
+    asPaths?: pulumi.Input<pulumi.Input<inputs.compute.RouteAsPath>[]>;
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property
      * when you create the resource.
@@ -444,6 +503,10 @@ export interface RouteState {
      * * The string `default-internet-gateway`.
      */
     nextHopGateway?: pulumi.Input<string>;
+    /**
+     * The hub network that should handle matching packets, which should conform to RFC1035.
+     */
+    nextHopHub?: pulumi.Input<string>;
     /**
      * The IP address or URL to a forwarding rule of type
      * loadBalancingScheme=INTERNAL that should handle matching
@@ -497,6 +560,10 @@ export interface RouteState {
      */
     nextHopOrigin?: pulumi.Input<string>;
     /**
+     * The network peering name that should handle matching packets, which should conform to RFC1035.
+     */
+    nextHopPeering?: pulumi.Input<string>;
+    /**
      * URL to a VpnTunnel that should handle matching packets.
      */
     nextHopVpnTunnel?: pulumi.Input<string>;
@@ -514,6 +581,20 @@ export interface RouteState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The status of the route, which can be one of the following values:
+     * - 'ACTIVE' for an active route
+     * - 'INACTIVE' for an inactive route
+     */
+    routeStatus?: pulumi.Input<string>;
+    /**
+     * The type of this route, which can be one of the following values:
+     * - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+     * - 'SUBNET' for a route from a subnet of the VPC
+     * - 'BGP' for a route learned from a BGP peer of this router
+     * - 'STATIC' for a static route
+     */
+    routeType?: pulumi.Input<string>;
+    /**
      * The URI of the created resource.
      */
     selfLink?: pulumi.Input<string>;
@@ -521,6 +602,11 @@ export interface RouteState {
      * A list of instance tags to which this route applies.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+     * Structure is documented below.
+     */
+    warnings?: pulumi.Input<pulumi.Input<inputs.compute.RouteWarning>[]>;
 }
 
 /**

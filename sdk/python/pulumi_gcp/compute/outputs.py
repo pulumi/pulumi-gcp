@@ -61,6 +61,7 @@ __all__ = [
     'DiskGuestOsFeature',
     'DiskIamBindingCondition',
     'DiskIamMemberCondition',
+    'DiskParams',
     'DiskSourceImageEncryptionKey',
     'DiskSourceSnapshotEncryptionKey',
     'ExternalVpnGatewayInterface',
@@ -210,6 +211,8 @@ __all__ = [
     'InstanceTemplateSchedulingOnInstanceStopAction',
     'InstanceTemplateServiceAccount',
     'InstanceTemplateShieldedInstanceConfig',
+    'InstantSnapshotIamBindingCondition',
+    'InstantSnapshotIamMemberCondition',
     'InterconnectAttachmentPrivateInterconnectInfo',
     'InterconnectCircuitInfo',
     'InterconnectExpectedOutage',
@@ -512,6 +515,9 @@ __all__ = [
     'ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule',
     'ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek',
     'ResourcePolicySnapshotSchedulePolicySnapshotProperties',
+    'RouteAsPath',
+    'RouteWarning',
+    'RouteWarningData',
     'RouterBgp',
     'RouterBgpAdvertisedIpRange',
     'RouterNatLogConfig',
@@ -526,7 +532,13 @@ __all__ = [
     'RouterRoutePolicyTermAction',
     'RouterRoutePolicyTermMatch',
     'RouterStatusBestRouteResult',
+    'RouterStatusBestRouteAsPathResult',
+    'RouterStatusBestRouteWarningResult',
+    'RouterStatusBestRouteWarningDataResult',
     'RouterStatusBestRoutesForRouterResult',
+    'RouterStatusBestRoutesForRouterAsPathResult',
+    'RouterStatusBestRoutesForRouterWarningResult',
+    'RouterStatusBestRoutesForRouterWarningDataResult',
     'SecurityPolicyAdaptiveProtectionConfig',
     'SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig',
     'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig',
@@ -577,6 +589,7 @@ __all__ = [
     'URLMapDefaultRouteActionFaultInjectionPolicyAbort',
     'URLMapDefaultRouteActionFaultInjectionPolicyDelay',
     'URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay',
+    'URLMapDefaultRouteActionMaxStreamDuration',
     'URLMapDefaultRouteActionRequestMirrorPolicy',
     'URLMapDefaultRouteActionRetryPolicy',
     'URLMapDefaultRouteActionRetryPolicyPerTryTimeout',
@@ -600,6 +613,7 @@ __all__ = [
     'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort',
     'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay',
     'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelay',
+    'URLMapPathMatcherDefaultRouteActionMaxStreamDuration',
     'URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy',
     'URLMapPathMatcherDefaultRouteActionRetryPolicy',
     'URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeout',
@@ -622,6 +636,7 @@ __all__ = [
     'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort',
     'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay',
     'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay',
+    'URLMapPathMatcherPathRuleRouteActionMaxStreamDuration',
     'URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy',
     'URLMapPathMatcherPathRuleRouteActionRetryPolicy',
     'URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout',
@@ -648,6 +663,7 @@ __all__ = [
     'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort',
     'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay',
     'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay',
+    'URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration',
     'URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy',
     'URLMapPathMatcherRouteRuleRouteActionRetryPolicy',
     'URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout',
@@ -689,6 +705,7 @@ __all__ = [
     'GetDiskAsyncPrimaryDiskResult',
     'GetDiskDiskEncryptionKeyResult',
     'GetDiskGuestOsFeatureResult',
+    'GetDiskParamResult',
     'GetDiskSourceImageEncryptionKeyResult',
     'GetDiskSourceSnapshotEncryptionKeyResult',
     'GetForwardingRuleServiceDirectoryRegistrationResult',
@@ -854,7 +871,13 @@ __all__ = [
     'GetRouterNatRuleActionResult',
     'GetRouterNatSubnetworkResult',
     'GetRouterStatusBestRouteResult',
+    'GetRouterStatusBestRouteAsPathResult',
+    'GetRouterStatusBestRouteWarningResult',
+    'GetRouterStatusBestRouteWarningDataResult',
     'GetRouterStatusBestRoutesForRouterResult',
+    'GetRouterStatusBestRoutesForRouterAsPathResult',
+    'GetRouterStatusBestRoutesForRouterWarningResult',
+    'GetRouterStatusBestRoutesForRouterWarningDataResult',
     'GetSecurityPolicyAdaptiveProtectionConfigResult',
     'GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResult',
     'GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResult',
@@ -4214,6 +4237,46 @@ class DiskIamMemberCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class DiskParams(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiskParams. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiskParams.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiskParams.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[Mapping[str, str]] = None):
+        """
+        :param Mapping[str, str] resource_manager_tags: Resource manager tags to be bound to the disk. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Resource manager tags to be bound to the disk. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
 
 
 @pulumi.output_type
@@ -15983,6 +16046,80 @@ class InstanceTemplateShieldedInstanceConfig(dict):
         - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
         """
         return pulumi.get(self, "enable_vtpm")
+
+
+@pulumi.output_type
+class InstantSnapshotIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class InstantSnapshotIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type
@@ -38225,6 +38362,158 @@ class ResourcePolicySnapshotSchedulePolicySnapshotProperties(dict):
 
 
 @pulumi.output_type
+class RouteAsPath(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "asLists":
+            suggest = "as_lists"
+        elif key == "pathSegmentType":
+            suggest = "path_segment_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouteAsPath. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouteAsPath.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouteAsPath.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 as_lists: Optional[Sequence[int]] = None,
+                 path_segment_type: Optional[str] = None):
+        """
+        :param Sequence[int] as_lists: (Output)
+               The AS numbers of the AS Path.
+        :param str path_segment_type: (Output)
+               The type of the AS Path, which can be one of the following values:
+               - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+               - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+               - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+               - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+        """
+        if as_lists is not None:
+            pulumi.set(__self__, "as_lists", as_lists)
+        if path_segment_type is not None:
+            pulumi.set(__self__, "path_segment_type", path_segment_type)
+
+    @property
+    @pulumi.getter(name="asLists")
+    def as_lists(self) -> Optional[Sequence[int]]:
+        """
+        (Output)
+        The AS numbers of the AS Path.
+        """
+        return pulumi.get(self, "as_lists")
+
+    @property
+    @pulumi.getter(name="pathSegmentType")
+    def path_segment_type(self) -> Optional[str]:
+        """
+        (Output)
+        The type of the AS Path, which can be one of the following values:
+        - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+        - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+        - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+        - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+        """
+        return pulumi.get(self, "path_segment_type")
+
+
+@pulumi.output_type
+class RouteWarning(dict):
+    def __init__(__self__, *,
+                 code: Optional[str] = None,
+                 datas: Optional[Sequence['outputs.RouteWarningData']] = None,
+                 message: Optional[str] = None):
+        """
+        :param str code: (Output)
+               A warning code, if applicable. For example, Compute Engine returns
+               NO_RESULTS_ON_PAGE if there are no results in the response.
+        :param Sequence['RouteWarningDataArgs'] datas: (Output)
+               Metadata about this warning in key: value format. For example:
+               "data":   {  "key": "scope",  "value": "zones/us-east1-d"  }
+               Structure is [documented below.
+        :param str message: (Output)
+               A human-readable description of the warning code.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if datas is not None:
+            pulumi.set(__self__, "datas", datas)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[str]:
+        """
+        (Output)
+        A warning code, if applicable. For example, Compute Engine returns
+        NO_RESULTS_ON_PAGE if there are no results in the response.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def datas(self) -> Optional[Sequence['outputs.RouteWarningData']]:
+        """
+        (Output)
+        Metadata about this warning in key: value format. For example:
+        "data":   {  "key": "scope",  "value": "zones/us-east1-d"  }
+        Structure is [documented below.
+        """
+        return pulumi.get(self, "datas")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        (Output)
+        A human-readable description of the warning code.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class RouteWarningData(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str key: (Output)
+               A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        :param str value: (Output)
+               A warning data value corresponding to the key.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        (Output)
+        A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        (Output)
+        A warning data value corresponding to the key.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class RouterBgp(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -39065,11 +39354,14 @@ class RouterRoutePolicyTermMatch(dict):
 @pulumi.output_type
 class RouterStatusBestRouteResult(dict):
     def __init__(__self__, *,
+                 as_paths: Sequence['outputs.RouterStatusBestRouteAsPathResult'],
+                 creation_timestamp: str,
                  description: str,
                  dest_range: str,
                  name: str,
                  network: str,
                  next_hop_gateway: str,
+                 next_hop_hub: str,
                  next_hop_ilb: str,
                  next_hop_instance: str,
                  next_hop_instance_zone: str,
@@ -39078,12 +39370,17 @@ class RouterStatusBestRouteResult(dict):
                  next_hop_med: str,
                  next_hop_network: str,
                  next_hop_origin: str,
+                 next_hop_peering: str,
                  next_hop_vpn_tunnel: str,
                  priority: int,
                  project: str,
+                 route_status: str,
+                 route_type: str,
                  self_link: str,
-                 tags: Sequence[str]):
+                 tags: Sequence[str],
+                 warnings: Sequence['outputs.RouterStatusBestRouteWarningResult']):
         """
+        :param str creation_timestamp: Creation timestamp in RFC3339 text format.
         :param str description: An optional description of this resource. Provide this property
                when you create the resource.
         :param str dest_range: The destination range of outgoing packets that this route applies to.
@@ -39098,6 +39395,7 @@ class RouterStatusBestRouteResult(dict):
                * 'projects/project/global/gateways/default-internet-gateway'
                * 'global/gateways/default-internet-gateway'
                * The string 'default-internet-gateway'.
+        :param str next_hop_hub: The hub network that should handle matching packets, which should conform to RFC1035.
         :param str next_hop_ilb: The IP address or URL to a forwarding rule of type
                loadBalancingScheme=INTERNAL that should handle matching
                packets.
@@ -39126,6 +39424,7 @@ class RouterStatusBestRouteResult(dict):
         :param str next_hop_med: Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
         :param str next_hop_network: URL to a Network that should handle matching packets.
         :param str next_hop_origin: Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+        :param str next_hop_peering: The network peering name that should handle matching packets, which should conform to RFC1035.
         :param str next_hop_vpn_tunnel: URL to a VpnTunnel that should handle matching packets.
         :param int priority: The priority of this route. Priority is used to break ties in cases
                where there is more than one matching route of equal prefix length.
@@ -39136,13 +39435,25 @@ class RouterStatusBestRouteResult(dict):
                Default value is 1000. Valid range is 0 through 65535.
         :param str project: The ID of the project in which the resource
                belongs. If it is not provided, the provider project is used.
+        :param str route_status: The status of the route, which can be one of the following values:
+               - 'ACTIVE' for an active route
+               - 'INACTIVE' for an inactive route
+        :param str route_type: The type of this route, which can be one of the following values:
+               - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+               - 'SUBNET' for a route from a subnet of the VPC
+               - 'BGP' for a route learned from a BGP peer of this router
+               - 'STATIC' for a static route
         :param Sequence[str] tags: A list of instance tags to which this route applies.
+        :param Sequence['RouterStatusBestRouteWarningArgs'] warnings: If potential misconfigurations are detected for this route, this field will be populated with warning messages.
         """
+        pulumi.set(__self__, "as_paths", as_paths)
+        pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "dest_range", dest_range)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "next_hop_gateway", next_hop_gateway)
+        pulumi.set(__self__, "next_hop_hub", next_hop_hub)
         pulumi.set(__self__, "next_hop_ilb", next_hop_ilb)
         pulumi.set(__self__, "next_hop_instance", next_hop_instance)
         pulumi.set(__self__, "next_hop_instance_zone", next_hop_instance_zone)
@@ -39151,11 +39462,28 @@ class RouterStatusBestRouteResult(dict):
         pulumi.set(__self__, "next_hop_med", next_hop_med)
         pulumi.set(__self__, "next_hop_network", next_hop_network)
         pulumi.set(__self__, "next_hop_origin", next_hop_origin)
+        pulumi.set(__self__, "next_hop_peering", next_hop_peering)
         pulumi.set(__self__, "next_hop_vpn_tunnel", next_hop_vpn_tunnel)
         pulumi.set(__self__, "priority", priority)
         pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "route_status", route_status)
+        pulumi.set(__self__, "route_type", route_type)
         pulumi.set(__self__, "self_link", self_link)
         pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "warnings", warnings)
+
+    @property
+    @pulumi.getter(name="asPaths")
+    def as_paths(self) -> Sequence['outputs.RouterStatusBestRouteAsPathResult']:
+        return pulumi.get(self, "as_paths")
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> str:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
 
     @property
     @pulumi.getter
@@ -39205,6 +39533,14 @@ class RouterStatusBestRouteResult(dict):
         * The string 'default-internet-gateway'.
         """
         return pulumi.get(self, "next_hop_gateway")
+
+    @property
+    @pulumi.getter(name="nextHopHub")
+    def next_hop_hub(self) -> str:
+        """
+        The hub network that should handle matching packets, which should conform to RFC1035.
+        """
+        return pulumi.get(self, "next_hop_hub")
 
     @property
     @pulumi.getter(name="nextHopIlb")
@@ -39291,6 +39627,14 @@ class RouterStatusBestRouteResult(dict):
         return pulumi.get(self, "next_hop_origin")
 
     @property
+    @pulumi.getter(name="nextHopPeering")
+    def next_hop_peering(self) -> str:
+        """
+        The network peering name that should handle matching packets, which should conform to RFC1035.
+        """
+        return pulumi.get(self, "next_hop_peering")
+
+    @property
     @pulumi.getter(name="nextHopVpnTunnel")
     def next_hop_vpn_tunnel(self) -> str:
         """
@@ -39322,6 +39666,28 @@ class RouterStatusBestRouteResult(dict):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="routeStatus")
+    def route_status(self) -> str:
+        """
+        The status of the route, which can be one of the following values:
+        - 'ACTIVE' for an active route
+        - 'INACTIVE' for an inactive route
+        """
+        return pulumi.get(self, "route_status")
+
+    @property
+    @pulumi.getter(name="routeType")
+    def route_type(self) -> str:
+        """
+        The type of this route, which can be one of the following values:
+        - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+        - 'SUBNET' for a route from a subnet of the VPC
+        - 'BGP' for a route learned from a BGP peer of this router
+        - 'STATIC' for a static route
+        """
+        return pulumi.get(self, "route_type")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         return pulumi.get(self, "self_link")
@@ -39333,16 +39699,137 @@ class RouterStatusBestRouteResult(dict):
         A list of instance tags to which this route applies.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def warnings(self) -> Sequence['outputs.RouterStatusBestRouteWarningResult']:
+        """
+        If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+        """
+        return pulumi.get(self, "warnings")
+
+
+@pulumi.output_type
+class RouterStatusBestRouteAsPathResult(dict):
+    def __init__(__self__, *,
+                 as_lists: Sequence[int],
+                 path_segment_type: str):
+        """
+        :param Sequence[int] as_lists: The AS numbers of the AS Path.
+        :param str path_segment_type: The type of the AS Path, which can be one of the following values:
+               - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+               - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+               - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+               - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+        """
+        pulumi.set(__self__, "as_lists", as_lists)
+        pulumi.set(__self__, "path_segment_type", path_segment_type)
+
+    @property
+    @pulumi.getter(name="asLists")
+    def as_lists(self) -> Sequence[int]:
+        """
+        The AS numbers of the AS Path.
+        """
+        return pulumi.get(self, "as_lists")
+
+    @property
+    @pulumi.getter(name="pathSegmentType")
+    def path_segment_type(self) -> str:
+        """
+        The type of the AS Path, which can be one of the following values:
+        - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+        - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+        - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+        - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+        """
+        return pulumi.get(self, "path_segment_type")
+
+
+@pulumi.output_type
+class RouterStatusBestRouteWarningResult(dict):
+    def __init__(__self__, *,
+                 code: str,
+                 datas: Sequence['outputs.RouterStatusBestRouteWarningDataResult'],
+                 message: str):
+        """
+        :param str code: A warning code, if applicable. For example, Compute Engine returns
+               NO_RESULTS_ON_PAGE if there are no results in the response.
+        :param Sequence['RouterStatusBestRouteWarningDataArgs'] datas: Metadata about this warning in key: value format. For example:
+               "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
+        :param str message: A human-readable description of the warning code.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "datas", datas)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        A warning code, if applicable. For example, Compute Engine returns
+        NO_RESULTS_ON_PAGE if there are no results in the response.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def datas(self) -> Sequence['outputs.RouterStatusBestRouteWarningDataResult']:
+        """
+        Metadata about this warning in key: value format. For example:
+        "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
+        """
+        return pulumi.get(self, "datas")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        A human-readable description of the warning code.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class RouterStatusBestRouteWarningDataResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        :param str value: A warning data value corresponding to the key.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        A warning data value corresponding to the key.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class RouterStatusBestRoutesForRouterResult(dict):
     def __init__(__self__, *,
+                 as_paths: Sequence['outputs.RouterStatusBestRoutesForRouterAsPathResult'],
+                 creation_timestamp: str,
                  description: str,
                  dest_range: str,
                  name: str,
                  network: str,
                  next_hop_gateway: str,
+                 next_hop_hub: str,
                  next_hop_ilb: str,
                  next_hop_instance: str,
                  next_hop_instance_zone: str,
@@ -39351,12 +39838,17 @@ class RouterStatusBestRoutesForRouterResult(dict):
                  next_hop_med: str,
                  next_hop_network: str,
                  next_hop_origin: str,
+                 next_hop_peering: str,
                  next_hop_vpn_tunnel: str,
                  priority: int,
                  project: str,
+                 route_status: str,
+                 route_type: str,
                  self_link: str,
-                 tags: Sequence[str]):
+                 tags: Sequence[str],
+                 warnings: Sequence['outputs.RouterStatusBestRoutesForRouterWarningResult']):
         """
+        :param str creation_timestamp: Creation timestamp in RFC3339 text format.
         :param str description: An optional description of this resource. Provide this property
                when you create the resource.
         :param str dest_range: The destination range of outgoing packets that this route applies to.
@@ -39371,6 +39863,7 @@ class RouterStatusBestRoutesForRouterResult(dict):
                * 'projects/project/global/gateways/default-internet-gateway'
                * 'global/gateways/default-internet-gateway'
                * The string 'default-internet-gateway'.
+        :param str next_hop_hub: The hub network that should handle matching packets, which should conform to RFC1035.
         :param str next_hop_ilb: The IP address or URL to a forwarding rule of type
                loadBalancingScheme=INTERNAL that should handle matching
                packets.
@@ -39399,6 +39892,7 @@ class RouterStatusBestRoutesForRouterResult(dict):
         :param str next_hop_med: Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
         :param str next_hop_network: URL to a Network that should handle matching packets.
         :param str next_hop_origin: Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+        :param str next_hop_peering: The network peering name that should handle matching packets, which should conform to RFC1035.
         :param str next_hop_vpn_tunnel: URL to a VpnTunnel that should handle matching packets.
         :param int priority: The priority of this route. Priority is used to break ties in cases
                where there is more than one matching route of equal prefix length.
@@ -39409,13 +39903,25 @@ class RouterStatusBestRoutesForRouterResult(dict):
                Default value is 1000. Valid range is 0 through 65535.
         :param str project: The ID of the project in which the resource
                belongs. If it is not provided, the provider project is used.
+        :param str route_status: The status of the route, which can be one of the following values:
+               - 'ACTIVE' for an active route
+               - 'INACTIVE' for an inactive route
+        :param str route_type: The type of this route, which can be one of the following values:
+               - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+               - 'SUBNET' for a route from a subnet of the VPC
+               - 'BGP' for a route learned from a BGP peer of this router
+               - 'STATIC' for a static route
         :param Sequence[str] tags: A list of instance tags to which this route applies.
+        :param Sequence['RouterStatusBestRoutesForRouterWarningArgs'] warnings: If potential misconfigurations are detected for this route, this field will be populated with warning messages.
         """
+        pulumi.set(__self__, "as_paths", as_paths)
+        pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "dest_range", dest_range)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "next_hop_gateway", next_hop_gateway)
+        pulumi.set(__self__, "next_hop_hub", next_hop_hub)
         pulumi.set(__self__, "next_hop_ilb", next_hop_ilb)
         pulumi.set(__self__, "next_hop_instance", next_hop_instance)
         pulumi.set(__self__, "next_hop_instance_zone", next_hop_instance_zone)
@@ -39424,11 +39930,28 @@ class RouterStatusBestRoutesForRouterResult(dict):
         pulumi.set(__self__, "next_hop_med", next_hop_med)
         pulumi.set(__self__, "next_hop_network", next_hop_network)
         pulumi.set(__self__, "next_hop_origin", next_hop_origin)
+        pulumi.set(__self__, "next_hop_peering", next_hop_peering)
         pulumi.set(__self__, "next_hop_vpn_tunnel", next_hop_vpn_tunnel)
         pulumi.set(__self__, "priority", priority)
         pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "route_status", route_status)
+        pulumi.set(__self__, "route_type", route_type)
         pulumi.set(__self__, "self_link", self_link)
         pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "warnings", warnings)
+
+    @property
+    @pulumi.getter(name="asPaths")
+    def as_paths(self) -> Sequence['outputs.RouterStatusBestRoutesForRouterAsPathResult']:
+        return pulumi.get(self, "as_paths")
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> str:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
 
     @property
     @pulumi.getter
@@ -39478,6 +40001,14 @@ class RouterStatusBestRoutesForRouterResult(dict):
         * The string 'default-internet-gateway'.
         """
         return pulumi.get(self, "next_hop_gateway")
+
+    @property
+    @pulumi.getter(name="nextHopHub")
+    def next_hop_hub(self) -> str:
+        """
+        The hub network that should handle matching packets, which should conform to RFC1035.
+        """
+        return pulumi.get(self, "next_hop_hub")
 
     @property
     @pulumi.getter(name="nextHopIlb")
@@ -39564,6 +40095,14 @@ class RouterStatusBestRoutesForRouterResult(dict):
         return pulumi.get(self, "next_hop_origin")
 
     @property
+    @pulumi.getter(name="nextHopPeering")
+    def next_hop_peering(self) -> str:
+        """
+        The network peering name that should handle matching packets, which should conform to RFC1035.
+        """
+        return pulumi.get(self, "next_hop_peering")
+
+    @property
     @pulumi.getter(name="nextHopVpnTunnel")
     def next_hop_vpn_tunnel(self) -> str:
         """
@@ -39595,6 +40134,28 @@ class RouterStatusBestRoutesForRouterResult(dict):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="routeStatus")
+    def route_status(self) -> str:
+        """
+        The status of the route, which can be one of the following values:
+        - 'ACTIVE' for an active route
+        - 'INACTIVE' for an inactive route
+        """
+        return pulumi.get(self, "route_status")
+
+    @property
+    @pulumi.getter(name="routeType")
+    def route_type(self) -> str:
+        """
+        The type of this route, which can be one of the following values:
+        - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+        - 'SUBNET' for a route from a subnet of the VPC
+        - 'BGP' for a route learned from a BGP peer of this router
+        - 'STATIC' for a static route
+        """
+        return pulumi.get(self, "route_type")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         return pulumi.get(self, "self_link")
@@ -39606,6 +40167,124 @@ class RouterStatusBestRoutesForRouterResult(dict):
         A list of instance tags to which this route applies.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def warnings(self) -> Sequence['outputs.RouterStatusBestRoutesForRouterWarningResult']:
+        """
+        If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+        """
+        return pulumi.get(self, "warnings")
+
+
+@pulumi.output_type
+class RouterStatusBestRoutesForRouterAsPathResult(dict):
+    def __init__(__self__, *,
+                 as_lists: Sequence[int],
+                 path_segment_type: str):
+        """
+        :param Sequence[int] as_lists: The AS numbers of the AS Path.
+        :param str path_segment_type: The type of the AS Path, which can be one of the following values:
+               - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+               - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+               - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+               - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+        """
+        pulumi.set(__self__, "as_lists", as_lists)
+        pulumi.set(__self__, "path_segment_type", path_segment_type)
+
+    @property
+    @pulumi.getter(name="asLists")
+    def as_lists(self) -> Sequence[int]:
+        """
+        The AS numbers of the AS Path.
+        """
+        return pulumi.get(self, "as_lists")
+
+    @property
+    @pulumi.getter(name="pathSegmentType")
+    def path_segment_type(self) -> str:
+        """
+        The type of the AS Path, which can be one of the following values:
+        - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+        - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+        - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+        - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+        """
+        return pulumi.get(self, "path_segment_type")
+
+
+@pulumi.output_type
+class RouterStatusBestRoutesForRouterWarningResult(dict):
+    def __init__(__self__, *,
+                 code: str,
+                 datas: Sequence['outputs.RouterStatusBestRoutesForRouterWarningDataResult'],
+                 message: str):
+        """
+        :param str code: A warning code, if applicable. For example, Compute Engine returns
+               NO_RESULTS_ON_PAGE if there are no results in the response.
+        :param Sequence['RouterStatusBestRoutesForRouterWarningDataArgs'] datas: Metadata about this warning in key: value format. For example:
+               "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
+        :param str message: A human-readable description of the warning code.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "datas", datas)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        A warning code, if applicable. For example, Compute Engine returns
+        NO_RESULTS_ON_PAGE if there are no results in the response.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def datas(self) -> Sequence['outputs.RouterStatusBestRoutesForRouterWarningDataResult']:
+        """
+        Metadata about this warning in key: value format. For example:
+        "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
+        """
+        return pulumi.get(self, "datas")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        A human-readable description of the warning code.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class RouterStatusBestRoutesForRouterWarningDataResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        :param str value: A warning data value corresponding to the key.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        A warning data value corresponding to the key.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -42396,6 +43075,8 @@ class URLMapDefaultRouteAction(dict):
             suggest = "cors_policy"
         elif key == "faultInjectionPolicy":
             suggest = "fault_injection_policy"
+        elif key == "maxStreamDuration":
+            suggest = "max_stream_duration"
         elif key == "requestMirrorPolicy":
             suggest = "request_mirror_policy"
         elif key == "retryPolicy":
@@ -42419,6 +43100,7 @@ class URLMapDefaultRouteAction(dict):
     def __init__(__self__, *,
                  cors_policy: Optional['outputs.URLMapDefaultRouteActionCorsPolicy'] = None,
                  fault_injection_policy: Optional['outputs.URLMapDefaultRouteActionFaultInjectionPolicy'] = None,
+                 max_stream_duration: Optional['outputs.URLMapDefaultRouteActionMaxStreamDuration'] = None,
                  request_mirror_policy: Optional['outputs.URLMapDefaultRouteActionRequestMirrorPolicy'] = None,
                  retry_policy: Optional['outputs.URLMapDefaultRouteActionRetryPolicy'] = None,
                  timeout: Optional['outputs.URLMapDefaultRouteActionTimeout'] = None,
@@ -42433,6 +43115,12 @@ class URLMapDefaultRouteAction(dict):
                percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
                by the Loadbalancer for a percentage of requests.
                timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+               Structure is documented below.
+        :param 'URLMapDefaultRouteActionMaxStreamDurationArgs' max_stream_duration: Specifies the maximum duration (timeout) for streams on the selected route.
+               Unlike the `Timeout` field where the timeout duration starts from the time the request
+               has been fully processed (known as end-of-stream), the duration in this field
+               is computed from the beginning of the stream until the response has been processed,
+               including all retries. A stream that does not complete in this duration is closed.
                Structure is documented below.
         :param 'URLMapDefaultRouteActionRequestMirrorPolicyArgs' request_mirror_policy: Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
                Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
@@ -42459,6 +43147,8 @@ class URLMapDefaultRouteAction(dict):
             pulumi.set(__self__, "cors_policy", cors_policy)
         if fault_injection_policy is not None:
             pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
+        if max_stream_duration is not None:
+            pulumi.set(__self__, "max_stream_duration", max_stream_duration)
         if request_mirror_policy is not None:
             pulumi.set(__self__, "request_mirror_policy", request_mirror_policy)
         if retry_policy is not None:
@@ -42492,6 +43182,19 @@ class URLMapDefaultRouteAction(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "fault_injection_policy")
+
+    @property
+    @pulumi.getter(name="maxStreamDuration")
+    def max_stream_duration(self) -> Optional['outputs.URLMapDefaultRouteActionMaxStreamDuration']:
+        """
+        Specifies the maximum duration (timeout) for streams on the selected route.
+        Unlike the `Timeout` field where the timeout duration starts from the time the request
+        has been fully processed (known as end-of-stream), the duration in this field
+        is computed from the beginning of the stream until the response has been processed,
+        including all retries. A stream that does not complete in this duration is closed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "max_stream_duration")
 
     @property
     @pulumi.getter(name="requestMirrorPolicy")
@@ -42863,6 +43566,40 @@ class URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay(dict):
         Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
         """
         return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class URLMapDefaultRouteActionMaxStreamDuration(dict):
+    def __init__(__self__, *,
+                 seconds: str,
+                 nanos: Optional[int] = None):
+        """
+        :param str seconds: Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+               Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        :param int nanos: Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+               with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> str:
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[int]:
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
 
 
 @pulumi.output_type
@@ -44209,6 +44946,8 @@ class URLMapPathMatcherDefaultRouteAction(dict):
             suggest = "cors_policy"
         elif key == "faultInjectionPolicy":
             suggest = "fault_injection_policy"
+        elif key == "maxStreamDuration":
+            suggest = "max_stream_duration"
         elif key == "requestMirrorPolicy":
             suggest = "request_mirror_policy"
         elif key == "retryPolicy":
@@ -44232,6 +44971,7 @@ class URLMapPathMatcherDefaultRouteAction(dict):
     def __init__(__self__, *,
                  cors_policy: Optional['outputs.URLMapPathMatcherDefaultRouteActionCorsPolicy'] = None,
                  fault_injection_policy: Optional['outputs.URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy'] = None,
+                 max_stream_duration: Optional['outputs.URLMapPathMatcherDefaultRouteActionMaxStreamDuration'] = None,
                  request_mirror_policy: Optional['outputs.URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy'] = None,
                  retry_policy: Optional['outputs.URLMapPathMatcherDefaultRouteActionRetryPolicy'] = None,
                  timeout: Optional['outputs.URLMapPathMatcherDefaultRouteActionTimeout'] = None,
@@ -44246,6 +44986,12 @@ class URLMapPathMatcherDefaultRouteAction(dict):
                percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
                by the Loadbalancer for a percentage of requests.
                timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+               Structure is documented below.
+        :param 'URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs' max_stream_duration: Specifies the maximum duration (timeout) for streams on the selected route.
+               Unlike the `Timeout` field where the timeout duration starts from the time the request
+               has been fully processed (known as end-of-stream), the duration in this field
+               is computed from the beginning of the stream until the response has been processed,
+               including all retries. A stream that does not complete in this duration is closed.
                Structure is documented below.
         :param 'URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs' request_mirror_policy: Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
                Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
@@ -44272,6 +45018,8 @@ class URLMapPathMatcherDefaultRouteAction(dict):
             pulumi.set(__self__, "cors_policy", cors_policy)
         if fault_injection_policy is not None:
             pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
+        if max_stream_duration is not None:
+            pulumi.set(__self__, "max_stream_duration", max_stream_duration)
         if request_mirror_policy is not None:
             pulumi.set(__self__, "request_mirror_policy", request_mirror_policy)
         if retry_policy is not None:
@@ -44305,6 +45053,19 @@ class URLMapPathMatcherDefaultRouteAction(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "fault_injection_policy")
+
+    @property
+    @pulumi.getter(name="maxStreamDuration")
+    def max_stream_duration(self) -> Optional['outputs.URLMapPathMatcherDefaultRouteActionMaxStreamDuration']:
+        """
+        Specifies the maximum duration (timeout) for streams on the selected route.
+        Unlike the `Timeout` field where the timeout duration starts from the time the request
+        has been fully processed (known as end-of-stream), the duration in this field
+        is computed from the beginning of the stream until the response has been processed,
+        including all retries. A stream that does not complete in this duration is closed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "max_stream_duration")
 
     @property
     @pulumi.getter(name="requestMirrorPolicy")
@@ -44676,6 +45437,40 @@ class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelay(dic
         Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
         """
         return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class URLMapPathMatcherDefaultRouteActionMaxStreamDuration(dict):
+    def __init__(__self__, *,
+                 seconds: str,
+                 nanos: Optional[int] = None):
+        """
+        :param str seconds: Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+               Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        :param int nanos: Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+               with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> str:
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[int]:
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
 
 
 @pulumi.output_type
@@ -45874,6 +46669,8 @@ class URLMapPathMatcherPathRuleRouteAction(dict):
             suggest = "cors_policy"
         elif key == "faultInjectionPolicy":
             suggest = "fault_injection_policy"
+        elif key == "maxStreamDuration":
+            suggest = "max_stream_duration"
         elif key == "requestMirrorPolicy":
             suggest = "request_mirror_policy"
         elif key == "retryPolicy":
@@ -45897,6 +46694,7 @@ class URLMapPathMatcherPathRuleRouteAction(dict):
     def __init__(__self__, *,
                  cors_policy: Optional['outputs.URLMapPathMatcherPathRuleRouteActionCorsPolicy'] = None,
                  fault_injection_policy: Optional['outputs.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy'] = None,
+                 max_stream_duration: Optional['outputs.URLMapPathMatcherPathRuleRouteActionMaxStreamDuration'] = None,
                  request_mirror_policy: Optional['outputs.URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy'] = None,
                  retry_policy: Optional['outputs.URLMapPathMatcherPathRuleRouteActionRetryPolicy'] = None,
                  timeout: Optional['outputs.URLMapPathMatcherPathRuleRouteActionTimeout'] = None,
@@ -45913,6 +46711,12 @@ class URLMapPathMatcherPathRuleRouteAction(dict):
                backend service. Similarly requests from clients can be aborted by the
                Loadbalancer for a percentage of requests. timeout and retry_policy will be
                ignored by clients that are configured with a fault_injection_policy.
+               Structure is documented below.
+        :param 'URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs' max_stream_duration: Specifies the maximum duration (timeout) for streams on the selected route.
+               Unlike the `Timeout` field where the timeout duration starts from the time the request
+               has been fully processed (known as end-of-stream), the duration in this field
+               is computed from the beginning of the stream until the response has been processed,
+               including all retries. A stream that does not complete in this duration is closed.
                Structure is documented below.
         :param 'URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs' request_mirror_policy: Specifies the policy on how requests intended for the route's backends are
                shadowed to a separate mirrored backend service. Loadbalancer does not wait for
@@ -45943,6 +46747,8 @@ class URLMapPathMatcherPathRuleRouteAction(dict):
             pulumi.set(__self__, "cors_policy", cors_policy)
         if fault_injection_policy is not None:
             pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
+        if max_stream_duration is not None:
+            pulumi.set(__self__, "max_stream_duration", max_stream_duration)
         if request_mirror_policy is not None:
             pulumi.set(__self__, "request_mirror_policy", request_mirror_policy)
         if retry_policy is not None:
@@ -45978,6 +46784,19 @@ class URLMapPathMatcherPathRuleRouteAction(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "fault_injection_policy")
+
+    @property
+    @pulumi.getter(name="maxStreamDuration")
+    def max_stream_duration(self) -> Optional['outputs.URLMapPathMatcherPathRuleRouteActionMaxStreamDuration']:
+        """
+        Specifies the maximum duration (timeout) for streams on the selected route.
+        Unlike the `Timeout` field where the timeout duration starts from the time the request
+        has been fully processed (known as end-of-stream), the duration in this field
+        is computed from the beginning of the stream until the response has been processed,
+        including all retries. A stream that does not complete in this duration is closed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "max_stream_duration")
 
     @property
     @pulumi.getter(name="requestMirrorPolicy")
@@ -46345,6 +47164,40 @@ class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay(di
         """
         Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
         represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+
+@pulumi.output_type
+class URLMapPathMatcherPathRuleRouteActionMaxStreamDuration(dict):
+    def __init__(__self__, *,
+                 seconds: str,
+                 nanos: Optional[int] = None):
+        """
+        :param str seconds: Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+               Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        :param int nanos: Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+               with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> str:
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[int]:
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
         """
         return pulumi.get(self, "nanos")
 
@@ -48032,6 +48885,8 @@ class URLMapPathMatcherRouteRuleRouteAction(dict):
             suggest = "cors_policy"
         elif key == "faultInjectionPolicy":
             suggest = "fault_injection_policy"
+        elif key == "maxStreamDuration":
+            suggest = "max_stream_duration"
         elif key == "requestMirrorPolicy":
             suggest = "request_mirror_policy"
         elif key == "retryPolicy":
@@ -48055,6 +48910,7 @@ class URLMapPathMatcherRouteRuleRouteAction(dict):
     def __init__(__self__, *,
                  cors_policy: Optional['outputs.URLMapPathMatcherRouteRuleRouteActionCorsPolicy'] = None,
                  fault_injection_policy: Optional['outputs.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy'] = None,
+                 max_stream_duration: Optional['outputs.URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration'] = None,
                  request_mirror_policy: Optional['outputs.URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy'] = None,
                  retry_policy: Optional['outputs.URLMapPathMatcherRouteRuleRouteActionRetryPolicy'] = None,
                  timeout: Optional['outputs.URLMapPathMatcherRouteRuleRouteActionTimeout'] = None,
@@ -48071,6 +48927,12 @@ class URLMapPathMatcherRouteRuleRouteAction(dict):
                backend service. Similarly requests from clients can be aborted by the
                Loadbalancer for a percentage of requests. timeout and retry_policy will be
                ignored by clients that are configured with a fault_injection_policy.
+               Structure is documented below.
+        :param 'URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs' max_stream_duration: Specifies the maximum duration (timeout) for streams on the selected route.
+               Unlike the `Timeout` field where the timeout duration starts from the time the request
+               has been fully processed (known as end-of-stream), the duration in this field
+               is computed from the beginning of the stream until the response has been processed,
+               including all retries. A stream that does not complete in this duration is closed.
                Structure is documented below.
         :param 'URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs' request_mirror_policy: Specifies the policy on how requests intended for the route's backends are
                shadowed to a separate mirrored backend service. Loadbalancer does not wait for
@@ -48101,6 +48963,8 @@ class URLMapPathMatcherRouteRuleRouteAction(dict):
             pulumi.set(__self__, "cors_policy", cors_policy)
         if fault_injection_policy is not None:
             pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
+        if max_stream_duration is not None:
+            pulumi.set(__self__, "max_stream_duration", max_stream_duration)
         if request_mirror_policy is not None:
             pulumi.set(__self__, "request_mirror_policy", request_mirror_policy)
         if retry_policy is not None:
@@ -48136,6 +49000,19 @@ class URLMapPathMatcherRouteRuleRouteAction(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "fault_injection_policy")
+
+    @property
+    @pulumi.getter(name="maxStreamDuration")
+    def max_stream_duration(self) -> Optional['outputs.URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration']:
+        """
+        Specifies the maximum duration (timeout) for streams on the selected route.
+        Unlike the `Timeout` field where the timeout duration starts from the time the request
+        has been fully processed (known as end-of-stream), the duration in this field
+        is computed from the beginning of the stream until the response has been processed,
+        including all retries. A stream that does not complete in this duration is closed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "max_stream_duration")
 
     @property
     @pulumi.getter(name="requestMirrorPolicy")
@@ -48508,6 +49385,40 @@ class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay(d
         """
         Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
         represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+
+@pulumi.output_type
+class URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration(dict):
+    def __init__(__self__, *,
+                 seconds: str,
+                 nanos: Optional[int] = None):
+        """
+        :param str seconds: Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+               Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        :param int nanos: Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+               with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> str:
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[int]:
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
         """
         return pulumi.get(self, "nanos")
 
@@ -51156,6 +52067,28 @@ class GetDiskGuestOsFeatureResult(dict):
         create the disk.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDiskParamResult(dict):
+    def __init__(__self__, *,
+                 resource_manager_tags: Mapping[str, str]):
+        """
+        :param Mapping[str, str] resource_manager_tags: Resource manager tags to be bound to the disk. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456.
+        """
+        pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Mapping[str, str]:
+        """
+        Resource manager tags to be bound to the disk. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
 
 
 @pulumi.output_type
@@ -54162,7 +55095,7 @@ class GetInstanceNetworkInterfaceResult(dict):
         :param str ipv6_address: An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
         :param str name: The name of the instance. One of `name` or `self_link` must be provided.
         :param str network: The name or self_link of the network attached to this interface.
-        :param str network_attachment: Beta The URL of the network attachment to this interface.
+        :param str network_attachment: The URL of the network attachment to this interface.
         :param str network_ip: The internal ip address of the instance, either manually or dynamically assigned.
         :param str nic_type: The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
         :param int queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
@@ -54257,7 +55190,7 @@ class GetInstanceNetworkInterfaceResult(dict):
     @pulumi.getter(name="networkAttachment")
     def network_attachment(self) -> str:
         """
-        Beta The URL of the network attachment to this interface.
+        The URL of the network attachment to this interface.
         """
         return pulumi.get(self, "network_attachment")
 
@@ -60196,11 +61129,14 @@ class GetRouterNatSubnetworkResult(dict):
 @pulumi.output_type
 class GetRouterStatusBestRouteResult(dict):
     def __init__(__self__, *,
+                 as_paths: Sequence['outputs.GetRouterStatusBestRouteAsPathResult'],
+                 creation_timestamp: str,
                  description: str,
                  dest_range: str,
                  name: str,
                  network: str,
                  next_hop_gateway: str,
+                 next_hop_hub: str,
                  next_hop_ilb: str,
                  next_hop_instance: str,
                  next_hop_instance_zone: str,
@@ -60209,12 +61145,17 @@ class GetRouterStatusBestRouteResult(dict):
                  next_hop_med: str,
                  next_hop_network: str,
                  next_hop_origin: str,
+                 next_hop_peering: str,
                  next_hop_vpn_tunnel: str,
                  priority: int,
                  project: str,
+                 route_status: str,
+                 route_type: str,
                  self_link: str,
-                 tags: Sequence[str]):
+                 tags: Sequence[str],
+                 warnings: Sequence['outputs.GetRouterStatusBestRouteWarningResult']):
         """
+        :param str creation_timestamp: Creation timestamp in RFC3339 text format.
         :param str description: An optional description of this resource. Provide this property
                when you create the resource.
         :param str dest_range: The destination range of outgoing packets that this route applies to.
@@ -60229,6 +61170,7 @@ class GetRouterStatusBestRouteResult(dict):
                * 'projects/project/global/gateways/default-internet-gateway'
                * 'global/gateways/default-internet-gateway'
                * The string 'default-internet-gateway'.
+        :param str next_hop_hub: The hub network that should handle matching packets, which should conform to RFC1035.
         :param str next_hop_ilb: The IP address or URL to a forwarding rule of type
                loadBalancingScheme=INTERNAL that should handle matching
                packets.
@@ -60257,6 +61199,7 @@ class GetRouterStatusBestRouteResult(dict):
         :param str next_hop_med: Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
         :param str next_hop_network: URL to a Network that should handle matching packets.
         :param str next_hop_origin: Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+        :param str next_hop_peering: The network peering name that should handle matching packets, which should conform to RFC1035.
         :param str next_hop_vpn_tunnel: URL to a VpnTunnel that should handle matching packets.
         :param int priority: The priority of this route. Priority is used to break ties in cases
                where there is more than one matching route of equal prefix length.
@@ -60267,13 +61210,25 @@ class GetRouterStatusBestRouteResult(dict):
                Default value is 1000. Valid range is 0 through 65535.
         :param str project: The ID of the project in which the resource
                belongs. If it is not provided, the provider project is used.
+        :param str route_status: The status of the route, which can be one of the following values:
+               - 'ACTIVE' for an active route
+               - 'INACTIVE' for an inactive route
+        :param str route_type: The type of this route, which can be one of the following values:
+               - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+               - 'SUBNET' for a route from a subnet of the VPC
+               - 'BGP' for a route learned from a BGP peer of this router
+               - 'STATIC' for a static route
         :param Sequence[str] tags: A list of instance tags to which this route applies.
+        :param Sequence['GetRouterStatusBestRouteWarningArgs'] warnings: If potential misconfigurations are detected for this route, this field will be populated with warning messages.
         """
+        pulumi.set(__self__, "as_paths", as_paths)
+        pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "dest_range", dest_range)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "next_hop_gateway", next_hop_gateway)
+        pulumi.set(__self__, "next_hop_hub", next_hop_hub)
         pulumi.set(__self__, "next_hop_ilb", next_hop_ilb)
         pulumi.set(__self__, "next_hop_instance", next_hop_instance)
         pulumi.set(__self__, "next_hop_instance_zone", next_hop_instance_zone)
@@ -60282,11 +61237,28 @@ class GetRouterStatusBestRouteResult(dict):
         pulumi.set(__self__, "next_hop_med", next_hop_med)
         pulumi.set(__self__, "next_hop_network", next_hop_network)
         pulumi.set(__self__, "next_hop_origin", next_hop_origin)
+        pulumi.set(__self__, "next_hop_peering", next_hop_peering)
         pulumi.set(__self__, "next_hop_vpn_tunnel", next_hop_vpn_tunnel)
         pulumi.set(__self__, "priority", priority)
         pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "route_status", route_status)
+        pulumi.set(__self__, "route_type", route_type)
         pulumi.set(__self__, "self_link", self_link)
         pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "warnings", warnings)
+
+    @property
+    @pulumi.getter(name="asPaths")
+    def as_paths(self) -> Sequence['outputs.GetRouterStatusBestRouteAsPathResult']:
+        return pulumi.get(self, "as_paths")
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> str:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
 
     @property
     @pulumi.getter
@@ -60336,6 +61308,14 @@ class GetRouterStatusBestRouteResult(dict):
         * The string 'default-internet-gateway'.
         """
         return pulumi.get(self, "next_hop_gateway")
+
+    @property
+    @pulumi.getter(name="nextHopHub")
+    def next_hop_hub(self) -> str:
+        """
+        The hub network that should handle matching packets, which should conform to RFC1035.
+        """
+        return pulumi.get(self, "next_hop_hub")
 
     @property
     @pulumi.getter(name="nextHopIlb")
@@ -60422,6 +61402,14 @@ class GetRouterStatusBestRouteResult(dict):
         return pulumi.get(self, "next_hop_origin")
 
     @property
+    @pulumi.getter(name="nextHopPeering")
+    def next_hop_peering(self) -> str:
+        """
+        The network peering name that should handle matching packets, which should conform to RFC1035.
+        """
+        return pulumi.get(self, "next_hop_peering")
+
+    @property
     @pulumi.getter(name="nextHopVpnTunnel")
     def next_hop_vpn_tunnel(self) -> str:
         """
@@ -60453,6 +61441,28 @@ class GetRouterStatusBestRouteResult(dict):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="routeStatus")
+    def route_status(self) -> str:
+        """
+        The status of the route, which can be one of the following values:
+        - 'ACTIVE' for an active route
+        - 'INACTIVE' for an inactive route
+        """
+        return pulumi.get(self, "route_status")
+
+    @property
+    @pulumi.getter(name="routeType")
+    def route_type(self) -> str:
+        """
+        The type of this route, which can be one of the following values:
+        - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+        - 'SUBNET' for a route from a subnet of the VPC
+        - 'BGP' for a route learned from a BGP peer of this router
+        - 'STATIC' for a static route
+        """
+        return pulumi.get(self, "route_type")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         return pulumi.get(self, "self_link")
@@ -60464,16 +61474,137 @@ class GetRouterStatusBestRouteResult(dict):
         A list of instance tags to which this route applies.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def warnings(self) -> Sequence['outputs.GetRouterStatusBestRouteWarningResult']:
+        """
+        If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+        """
+        return pulumi.get(self, "warnings")
+
+
+@pulumi.output_type
+class GetRouterStatusBestRouteAsPathResult(dict):
+    def __init__(__self__, *,
+                 as_lists: Sequence[int],
+                 path_segment_type: str):
+        """
+        :param Sequence[int] as_lists: The AS numbers of the AS Path.
+        :param str path_segment_type: The type of the AS Path, which can be one of the following values:
+               - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+               - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+               - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+               - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+        """
+        pulumi.set(__self__, "as_lists", as_lists)
+        pulumi.set(__self__, "path_segment_type", path_segment_type)
+
+    @property
+    @pulumi.getter(name="asLists")
+    def as_lists(self) -> Sequence[int]:
+        """
+        The AS numbers of the AS Path.
+        """
+        return pulumi.get(self, "as_lists")
+
+    @property
+    @pulumi.getter(name="pathSegmentType")
+    def path_segment_type(self) -> str:
+        """
+        The type of the AS Path, which can be one of the following values:
+        - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+        - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+        - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+        - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+        """
+        return pulumi.get(self, "path_segment_type")
+
+
+@pulumi.output_type
+class GetRouterStatusBestRouteWarningResult(dict):
+    def __init__(__self__, *,
+                 code: str,
+                 datas: Sequence['outputs.GetRouterStatusBestRouteWarningDataResult'],
+                 message: str):
+        """
+        :param str code: A warning code, if applicable. For example, Compute Engine returns
+               NO_RESULTS_ON_PAGE if there are no results in the response.
+        :param Sequence['GetRouterStatusBestRouteWarningDataArgs'] datas: Metadata about this warning in key: value format. For example:
+               "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
+        :param str message: A human-readable description of the warning code.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "datas", datas)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        A warning code, if applicable. For example, Compute Engine returns
+        NO_RESULTS_ON_PAGE if there are no results in the response.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def datas(self) -> Sequence['outputs.GetRouterStatusBestRouteWarningDataResult']:
+        """
+        Metadata about this warning in key: value format. For example:
+        "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
+        """
+        return pulumi.get(self, "datas")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        A human-readable description of the warning code.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class GetRouterStatusBestRouteWarningDataResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        :param str value: A warning data value corresponding to the key.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        A warning data value corresponding to the key.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class GetRouterStatusBestRoutesForRouterResult(dict):
     def __init__(__self__, *,
+                 as_paths: Sequence['outputs.GetRouterStatusBestRoutesForRouterAsPathResult'],
+                 creation_timestamp: str,
                  description: str,
                  dest_range: str,
                  name: str,
                  network: str,
                  next_hop_gateway: str,
+                 next_hop_hub: str,
                  next_hop_ilb: str,
                  next_hop_instance: str,
                  next_hop_instance_zone: str,
@@ -60482,12 +61613,17 @@ class GetRouterStatusBestRoutesForRouterResult(dict):
                  next_hop_med: str,
                  next_hop_network: str,
                  next_hop_origin: str,
+                 next_hop_peering: str,
                  next_hop_vpn_tunnel: str,
                  priority: int,
                  project: str,
+                 route_status: str,
+                 route_type: str,
                  self_link: str,
-                 tags: Sequence[str]):
+                 tags: Sequence[str],
+                 warnings: Sequence['outputs.GetRouterStatusBestRoutesForRouterWarningResult']):
         """
+        :param str creation_timestamp: Creation timestamp in RFC3339 text format.
         :param str description: An optional description of this resource. Provide this property
                when you create the resource.
         :param str dest_range: The destination range of outgoing packets that this route applies to.
@@ -60502,6 +61638,7 @@ class GetRouterStatusBestRoutesForRouterResult(dict):
                * 'projects/project/global/gateways/default-internet-gateway'
                * 'global/gateways/default-internet-gateway'
                * The string 'default-internet-gateway'.
+        :param str next_hop_hub: The hub network that should handle matching packets, which should conform to RFC1035.
         :param str next_hop_ilb: The IP address or URL to a forwarding rule of type
                loadBalancingScheme=INTERNAL that should handle matching
                packets.
@@ -60530,6 +61667,7 @@ class GetRouterStatusBestRoutesForRouterResult(dict):
         :param str next_hop_med: Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
         :param str next_hop_network: URL to a Network that should handle matching packets.
         :param str next_hop_origin: Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+        :param str next_hop_peering: The network peering name that should handle matching packets, which should conform to RFC1035.
         :param str next_hop_vpn_tunnel: URL to a VpnTunnel that should handle matching packets.
         :param int priority: The priority of this route. Priority is used to break ties in cases
                where there is more than one matching route of equal prefix length.
@@ -60540,13 +61678,25 @@ class GetRouterStatusBestRoutesForRouterResult(dict):
                Default value is 1000. Valid range is 0 through 65535.
         :param str project: The ID of the project in which the resource
                belongs. If it is not provided, the provider project is used.
+        :param str route_status: The status of the route, which can be one of the following values:
+               - 'ACTIVE' for an active route
+               - 'INACTIVE' for an inactive route
+        :param str route_type: The type of this route, which can be one of the following values:
+               - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+               - 'SUBNET' for a route from a subnet of the VPC
+               - 'BGP' for a route learned from a BGP peer of this router
+               - 'STATIC' for a static route
         :param Sequence[str] tags: A list of instance tags to which this route applies.
+        :param Sequence['GetRouterStatusBestRoutesForRouterWarningArgs'] warnings: If potential misconfigurations are detected for this route, this field will be populated with warning messages.
         """
+        pulumi.set(__self__, "as_paths", as_paths)
+        pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "dest_range", dest_range)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "next_hop_gateway", next_hop_gateway)
+        pulumi.set(__self__, "next_hop_hub", next_hop_hub)
         pulumi.set(__self__, "next_hop_ilb", next_hop_ilb)
         pulumi.set(__self__, "next_hop_instance", next_hop_instance)
         pulumi.set(__self__, "next_hop_instance_zone", next_hop_instance_zone)
@@ -60555,11 +61705,28 @@ class GetRouterStatusBestRoutesForRouterResult(dict):
         pulumi.set(__self__, "next_hop_med", next_hop_med)
         pulumi.set(__self__, "next_hop_network", next_hop_network)
         pulumi.set(__self__, "next_hop_origin", next_hop_origin)
+        pulumi.set(__self__, "next_hop_peering", next_hop_peering)
         pulumi.set(__self__, "next_hop_vpn_tunnel", next_hop_vpn_tunnel)
         pulumi.set(__self__, "priority", priority)
         pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "route_status", route_status)
+        pulumi.set(__self__, "route_type", route_type)
         pulumi.set(__self__, "self_link", self_link)
         pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "warnings", warnings)
+
+    @property
+    @pulumi.getter(name="asPaths")
+    def as_paths(self) -> Sequence['outputs.GetRouterStatusBestRoutesForRouterAsPathResult']:
+        return pulumi.get(self, "as_paths")
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> str:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
 
     @property
     @pulumi.getter
@@ -60609,6 +61776,14 @@ class GetRouterStatusBestRoutesForRouterResult(dict):
         * The string 'default-internet-gateway'.
         """
         return pulumi.get(self, "next_hop_gateway")
+
+    @property
+    @pulumi.getter(name="nextHopHub")
+    def next_hop_hub(self) -> str:
+        """
+        The hub network that should handle matching packets, which should conform to RFC1035.
+        """
+        return pulumi.get(self, "next_hop_hub")
 
     @property
     @pulumi.getter(name="nextHopIlb")
@@ -60695,6 +61870,14 @@ class GetRouterStatusBestRoutesForRouterResult(dict):
         return pulumi.get(self, "next_hop_origin")
 
     @property
+    @pulumi.getter(name="nextHopPeering")
+    def next_hop_peering(self) -> str:
+        """
+        The network peering name that should handle matching packets, which should conform to RFC1035.
+        """
+        return pulumi.get(self, "next_hop_peering")
+
+    @property
     @pulumi.getter(name="nextHopVpnTunnel")
     def next_hop_vpn_tunnel(self) -> str:
         """
@@ -60726,6 +61909,28 @@ class GetRouterStatusBestRoutesForRouterResult(dict):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="routeStatus")
+    def route_status(self) -> str:
+        """
+        The status of the route, which can be one of the following values:
+        - 'ACTIVE' for an active route
+        - 'INACTIVE' for an inactive route
+        """
+        return pulumi.get(self, "route_status")
+
+    @property
+    @pulumi.getter(name="routeType")
+    def route_type(self) -> str:
+        """
+        The type of this route, which can be one of the following values:
+        - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+        - 'SUBNET' for a route from a subnet of the VPC
+        - 'BGP' for a route learned from a BGP peer of this router
+        - 'STATIC' for a static route
+        """
+        return pulumi.get(self, "route_type")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         return pulumi.get(self, "self_link")
@@ -60737,6 +61942,124 @@ class GetRouterStatusBestRoutesForRouterResult(dict):
         A list of instance tags to which this route applies.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def warnings(self) -> Sequence['outputs.GetRouterStatusBestRoutesForRouterWarningResult']:
+        """
+        If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+        """
+        return pulumi.get(self, "warnings")
+
+
+@pulumi.output_type
+class GetRouterStatusBestRoutesForRouterAsPathResult(dict):
+    def __init__(__self__, *,
+                 as_lists: Sequence[int],
+                 path_segment_type: str):
+        """
+        :param Sequence[int] as_lists: The AS numbers of the AS Path.
+        :param str path_segment_type: The type of the AS Path, which can be one of the following values:
+               - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+               - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+               - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+               - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+        """
+        pulumi.set(__self__, "as_lists", as_lists)
+        pulumi.set(__self__, "path_segment_type", path_segment_type)
+
+    @property
+    @pulumi.getter(name="asLists")
+    def as_lists(self) -> Sequence[int]:
+        """
+        The AS numbers of the AS Path.
+        """
+        return pulumi.get(self, "as_lists")
+
+    @property
+    @pulumi.getter(name="pathSegmentType")
+    def path_segment_type(self) -> str:
+        """
+        The type of the AS Path, which can be one of the following values:
+        - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+        - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+        - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+        - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+        """
+        return pulumi.get(self, "path_segment_type")
+
+
+@pulumi.output_type
+class GetRouterStatusBestRoutesForRouterWarningResult(dict):
+    def __init__(__self__, *,
+                 code: str,
+                 datas: Sequence['outputs.GetRouterStatusBestRoutesForRouterWarningDataResult'],
+                 message: str):
+        """
+        :param str code: A warning code, if applicable. For example, Compute Engine returns
+               NO_RESULTS_ON_PAGE if there are no results in the response.
+        :param Sequence['GetRouterStatusBestRoutesForRouterWarningDataArgs'] datas: Metadata about this warning in key: value format. For example:
+               "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
+        :param str message: A human-readable description of the warning code.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "datas", datas)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        A warning code, if applicable. For example, Compute Engine returns
+        NO_RESULTS_ON_PAGE if there are no results in the response.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def datas(self) -> Sequence['outputs.GetRouterStatusBestRoutesForRouterWarningDataResult']:
+        """
+        Metadata about this warning in key: value format. For example:
+        "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
+        """
+        return pulumi.get(self, "datas")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        A human-readable description of the warning code.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class GetRouterStatusBestRoutesForRouterWarningDataResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        :param str value: A warning data value corresponding to the key.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        A warning data value corresponding to the key.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

@@ -191,6 +191,8 @@ type Disk struct {
 	// * READ_WRITE_MANY
 	// * READ_ONLY_SINGLE
 	AccessMode pulumi.StringOutput `pulumi:"accessMode"`
+	// (Optional)
+	Architecture pulumi.StringPtrOutput `pulumi:"architecture"`
 	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk DiskAsyncPrimaryDiskPtrOutput `pulumi:"asyncPrimaryDisk"`
@@ -263,6 +265,9 @@ type Disk struct {
 	//
 	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params DiskParamsPtrOutput `pulumi:"params"`
 	// Physical block size of the persistent disk, in bytes. If not present
 	// in a request, a default value is used. Currently supported sizes
 	// are 4096 and 16384, other sizes may be added in the future.
@@ -335,6 +340,18 @@ type Disk struct {
 	// that was later deleted and recreated under the same name, the source
 	// image ID would identify the exact version of the image that was used.
 	SourceImageId pulumi.StringOutput `pulumi:"sourceImageId"`
+	// The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
+	// For example, the following are valid values:
+	// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot`
+	// * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
+	// * `zones/zone/instantSnapshots/instantSnapshot`
+	SourceInstantSnapshot pulumi.StringPtrOutput `pulumi:"sourceInstantSnapshot"`
+	// The unique ID of the instant snapshot used to create this disk. This value identifies
+	// the exact instant snapshot that was used to create this persistent disk.
+	// For example, if you created the persistent disk from an instant snapshot that was later
+	// deleted and recreated under the same name, the source instant snapshot ID would identify
+	// the exact version of the instant snapshot that was used.
+	SourceInstantSnapshotId pulumi.StringOutput `pulumi:"sourceInstantSnapshotId"`
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
 	// key.
@@ -347,6 +364,12 @@ type Disk struct {
 	// snapshot ID would identify the exact version of the snapshot that was
 	// used.
 	SourceSnapshotId pulumi.StringOutput `pulumi:"sourceSnapshotId"`
+	// The full Google Cloud Storage URI where the disk image is stored.
+	// This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
+	// Valid URIs may start with gs:// or https://storage.googleapis.com/.
+	// This flag is not optimized for creating multiple disks from a source storage object.
+	// To create many disks from a source storage object, use gcloud compute images import instead.
+	SourceStorageObject pulumi.StringPtrOutput `pulumi:"sourceStorageObject"`
 	// The URL or the name of the storage pool in which the new disk is created.
 	// For example:
 	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
@@ -405,6 +428,8 @@ type diskState struct {
 	// * READ_WRITE_MANY
 	// * READ_ONLY_SINGLE
 	AccessMode *string `pulumi:"accessMode"`
+	// (Optional)
+	Architecture *string `pulumi:"architecture"`
 	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk *DiskAsyncPrimaryDisk `pulumi:"asyncPrimaryDisk"`
@@ -477,6 +502,9 @@ type diskState struct {
 	//
 	// ***
 	Name *string `pulumi:"name"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *DiskParams `pulumi:"params"`
 	// Physical block size of the persistent disk, in bytes. If not present
 	// in a request, a default value is used. Currently supported sizes
 	// are 4096 and 16384, other sizes may be added in the future.
@@ -549,6 +577,18 @@ type diskState struct {
 	// that was later deleted and recreated under the same name, the source
 	// image ID would identify the exact version of the image that was used.
 	SourceImageId *string `pulumi:"sourceImageId"`
+	// The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
+	// For example, the following are valid values:
+	// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot`
+	// * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
+	// * `zones/zone/instantSnapshots/instantSnapshot`
+	SourceInstantSnapshot *string `pulumi:"sourceInstantSnapshot"`
+	// The unique ID of the instant snapshot used to create this disk. This value identifies
+	// the exact instant snapshot that was used to create this persistent disk.
+	// For example, if you created the persistent disk from an instant snapshot that was later
+	// deleted and recreated under the same name, the source instant snapshot ID would identify
+	// the exact version of the instant snapshot that was used.
+	SourceInstantSnapshotId *string `pulumi:"sourceInstantSnapshotId"`
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
 	// key.
@@ -561,6 +601,12 @@ type diskState struct {
 	// snapshot ID would identify the exact version of the snapshot that was
 	// used.
 	SourceSnapshotId *string `pulumi:"sourceSnapshotId"`
+	// The full Google Cloud Storage URI where the disk image is stored.
+	// This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
+	// Valid URIs may start with gs:// or https://storage.googleapis.com/.
+	// This flag is not optimized for creating multiple disks from a source storage object.
+	// To create many disks from a source storage object, use gcloud compute images import instead.
+	SourceStorageObject *string `pulumi:"sourceStorageObject"`
 	// The URL or the name of the storage pool in which the new disk is created.
 	// For example:
 	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
@@ -585,6 +631,8 @@ type DiskState struct {
 	// * READ_WRITE_MANY
 	// * READ_ONLY_SINGLE
 	AccessMode pulumi.StringPtrInput
+	// (Optional)
+	Architecture pulumi.StringPtrInput
 	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk DiskAsyncPrimaryDiskPtrInput
@@ -657,6 +705,9 @@ type DiskState struct {
 	//
 	// ***
 	Name pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params DiskParamsPtrInput
 	// Physical block size of the persistent disk, in bytes. If not present
 	// in a request, a default value is used. Currently supported sizes
 	// are 4096 and 16384, other sizes may be added in the future.
@@ -729,6 +780,18 @@ type DiskState struct {
 	// that was later deleted and recreated under the same name, the source
 	// image ID would identify the exact version of the image that was used.
 	SourceImageId pulumi.StringPtrInput
+	// The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
+	// For example, the following are valid values:
+	// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot`
+	// * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
+	// * `zones/zone/instantSnapshots/instantSnapshot`
+	SourceInstantSnapshot pulumi.StringPtrInput
+	// The unique ID of the instant snapshot used to create this disk. This value identifies
+	// the exact instant snapshot that was used to create this persistent disk.
+	// For example, if you created the persistent disk from an instant snapshot that was later
+	// deleted and recreated under the same name, the source instant snapshot ID would identify
+	// the exact version of the instant snapshot that was used.
+	SourceInstantSnapshotId pulumi.StringPtrInput
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
 	// key.
@@ -741,6 +804,12 @@ type DiskState struct {
 	// snapshot ID would identify the exact version of the snapshot that was
 	// used.
 	SourceSnapshotId pulumi.StringPtrInput
+	// The full Google Cloud Storage URI where the disk image is stored.
+	// This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
+	// Valid URIs may start with gs:// or https://storage.googleapis.com/.
+	// This flag is not optimized for creating multiple disks from a source storage object.
+	// To create many disks from a source storage object, use gcloud compute images import instead.
+	SourceStorageObject pulumi.StringPtrInput
 	// The URL or the name of the storage pool in which the new disk is created.
 	// For example:
 	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
@@ -769,6 +838,8 @@ type diskArgs struct {
 	// * READ_WRITE_MANY
 	// * READ_ONLY_SINGLE
 	AccessMode *string `pulumi:"accessMode"`
+	// (Optional)
+	Architecture *string `pulumi:"architecture"`
 	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk *DiskAsyncPrimaryDisk `pulumi:"asyncPrimaryDisk"`
@@ -828,6 +899,9 @@ type diskArgs struct {
 	//
 	// ***
 	Name *string `pulumi:"name"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *DiskParams `pulumi:"params"`
 	// Physical block size of the persistent disk, in bytes. If not present
 	// in a request, a default value is used. Currently supported sizes
 	// are 4096 and 16384, other sizes may be added in the future.
@@ -885,11 +959,23 @@ type diskArgs struct {
 	// the source image is protected by a customer-supplied encryption key.
 	// Structure is documented below.
 	SourceImageEncryptionKey *DiskSourceImageEncryptionKey `pulumi:"sourceImageEncryptionKey"`
+	// The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
+	// For example, the following are valid values:
+	// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot`
+	// * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
+	// * `zones/zone/instantSnapshots/instantSnapshot`
+	SourceInstantSnapshot *string `pulumi:"sourceInstantSnapshot"`
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
 	// key.
 	// Structure is documented below.
 	SourceSnapshotEncryptionKey *DiskSourceSnapshotEncryptionKey `pulumi:"sourceSnapshotEncryptionKey"`
+	// The full Google Cloud Storage URI where the disk image is stored.
+	// This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
+	// Valid URIs may start with gs:// or https://storage.googleapis.com/.
+	// This flag is not optimized for creating multiple disks from a source storage object.
+	// To create many disks from a source storage object, use gcloud compute images import instead.
+	SourceStorageObject *string `pulumi:"sourceStorageObject"`
 	// The URL or the name of the storage pool in which the new disk is created.
 	// For example:
 	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
@@ -912,6 +998,8 @@ type DiskArgs struct {
 	// * READ_WRITE_MANY
 	// * READ_ONLY_SINGLE
 	AccessMode pulumi.StringPtrInput
+	// (Optional)
+	Architecture pulumi.StringPtrInput
 	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk DiskAsyncPrimaryDiskPtrInput
@@ -971,6 +1059,9 @@ type DiskArgs struct {
 	//
 	// ***
 	Name pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params DiskParamsPtrInput
 	// Physical block size of the persistent disk, in bytes. If not present
 	// in a request, a default value is used. Currently supported sizes
 	// are 4096 and 16384, other sizes may be added in the future.
@@ -1028,11 +1119,23 @@ type DiskArgs struct {
 	// the source image is protected by a customer-supplied encryption key.
 	// Structure is documented below.
 	SourceImageEncryptionKey DiskSourceImageEncryptionKeyPtrInput
+	// The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
+	// For example, the following are valid values:
+	// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot`
+	// * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
+	// * `zones/zone/instantSnapshots/instantSnapshot`
+	SourceInstantSnapshot pulumi.StringPtrInput
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
 	// key.
 	// Structure is documented below.
 	SourceSnapshotEncryptionKey DiskSourceSnapshotEncryptionKeyPtrInput
+	// The full Google Cloud Storage URI where the disk image is stored.
+	// This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
+	// Valid URIs may start with gs:// or https://storage.googleapis.com/.
+	// This flag is not optimized for creating multiple disks from a source storage object.
+	// To create many disks from a source storage object, use gcloud compute images import instead.
+	SourceStorageObject pulumi.StringPtrInput
 	// The URL or the name of the storage pool in which the new disk is created.
 	// For example:
 	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
@@ -1141,6 +1244,11 @@ func (o DiskOutput) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 // * READ_ONLY_SINGLE
 func (o DiskOutput) AccessMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.AccessMode }).(pulumi.StringOutput)
+}
+
+// (Optional)
+func (o DiskOutput) Architecture() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.Architecture }).(pulumi.StringPtrOutput)
 }
 
 // A nested object resource.
@@ -1266,6 +1374,12 @@ func (o DiskOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Additional params passed with the request, but not persisted as part of resource payload
+// Structure is documented below.
+func (o DiskOutput) Params() DiskParamsPtrOutput {
+	return o.ApplyT(func(v *Disk) DiskParamsPtrOutput { return v.Params }).(DiskParamsPtrOutput)
+}
+
 // Physical block size of the persistent disk, in bytes. If not present
 // in a request, a default value is used. Currently supported sizes
 // are 4096 and 16384, other sizes may be added in the future.
@@ -1377,6 +1491,24 @@ func (o DiskOutput) SourceImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.SourceImageId }).(pulumi.StringOutput)
 }
 
+// The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
+// For example, the following are valid values:
+// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot`
+// * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
+// * `zones/zone/instantSnapshots/instantSnapshot`
+func (o DiskOutput) SourceInstantSnapshot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.SourceInstantSnapshot }).(pulumi.StringPtrOutput)
+}
+
+// The unique ID of the instant snapshot used to create this disk. This value identifies
+// the exact instant snapshot that was used to create this persistent disk.
+// For example, if you created the persistent disk from an instant snapshot that was later
+// deleted and recreated under the same name, the source instant snapshot ID would identify
+// the exact version of the instant snapshot that was used.
+func (o DiskOutput) SourceInstantSnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.SourceInstantSnapshotId }).(pulumi.StringOutput)
+}
+
 // The customer-supplied encryption key of the source snapshot. Required
 // if the source snapshot is protected by a customer-supplied encryption
 // key.
@@ -1393,6 +1525,15 @@ func (o DiskOutput) SourceSnapshotEncryptionKey() DiskSourceSnapshotEncryptionKe
 // used.
 func (o DiskOutput) SourceSnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.SourceSnapshotId }).(pulumi.StringOutput)
+}
+
+// The full Google Cloud Storage URI where the disk image is stored.
+// This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
+// Valid URIs may start with gs:// or https://storage.googleapis.com/.
+// This flag is not optimized for creating multiple disks from a source storage object.
+// To create many disks from a source storage object, use gcloud compute images import instead.
+func (o DiskOutput) SourceStorageObject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.SourceStorageObject }).(pulumi.StringPtrOutput)
 }
 
 // The URL or the name of the storage pool in which the new disk is created.

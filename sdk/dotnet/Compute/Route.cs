@@ -264,6 +264,18 @@ namespace Pulumi.Gcp.Compute
     public partial class Route : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Structure is documented below.
+        /// </summary>
+        [Output("asPaths")]
+        public Output<ImmutableArray<Outputs.RouteAsPath>> AsPaths { get; private set; } = null!;
+
+        /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
+        [Output("creationTimestamp")]
+        public Output<string> CreationTimestamp { get; private set; } = null!;
+
+        /// <summary>
         /// An optional description of this resource. Provide this property
         /// when you create the resource.
         /// </summary>
@@ -309,6 +321,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("nextHopGateway")]
         public Output<string?> NextHopGateway { get; private set; } = null!;
+
+        /// <summary>
+        /// The hub network that should handle matching packets, which should conform to RFC1035.
+        /// </summary>
+        [Output("nextHopHub")]
+        public Output<string> NextHopHub { get; private set; } = null!;
 
         /// <summary>
         /// The IP address or URL to a forwarding rule of type
@@ -379,6 +397,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> NextHopOrigin { get; private set; } = null!;
 
         /// <summary>
+        /// The network peering name that should handle matching packets, which should conform to RFC1035.
+        /// </summary>
+        [Output("nextHopPeering")]
+        public Output<string> NextHopPeering { get; private set; } = null!;
+
+        /// <summary>
         /// URL to a VpnTunnel that should handle matching packets.
         /// </summary>
         [Output("nextHopVpnTunnel")]
@@ -402,6 +426,24 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The status of the route, which can be one of the following values:
+        /// - 'ACTIVE' for an active route
+        /// - 'INACTIVE' for an inactive route
+        /// </summary>
+        [Output("routeStatus")]
+        public Output<string> RouteStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of this route, which can be one of the following values:
+        /// - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+        /// - 'SUBNET' for a route from a subnet of the VPC
+        /// - 'BGP' for a route learned from a BGP peer of this router
+        /// - 'STATIC' for a static route
+        /// </summary>
+        [Output("routeType")]
+        public Output<string> RouteType { get; private set; } = null!;
+
+        /// <summary>
         /// The URI of the created resource.
         /// </summary>
         [Output("selfLink")]
@@ -412,6 +454,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("warnings")]
+        public Output<ImmutableArray<Outputs.RouteWarning>> Warnings { get; private set; } = null!;
 
 
         /// <summary>
@@ -593,6 +642,24 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class RouteState : global::Pulumi.ResourceArgs
     {
+        [Input("asPaths")]
+        private InputList<Inputs.RouteAsPathGetArgs>? _asPaths;
+
+        /// <summary>
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.RouteAsPathGetArgs> AsPaths
+        {
+            get => _asPaths ?? (_asPaths = new InputList<Inputs.RouteAsPathGetArgs>());
+            set => _asPaths = value;
+        }
+
+        /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
+        [Input("creationTimestamp")]
+        public Input<string>? CreationTimestamp { get; set; }
+
         /// <summary>
         /// An optional description of this resource. Provide this property
         /// when you create the resource.
@@ -639,6 +706,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("nextHopGateway")]
         public Input<string>? NextHopGateway { get; set; }
+
+        /// <summary>
+        /// The hub network that should handle matching packets, which should conform to RFC1035.
+        /// </summary>
+        [Input("nextHopHub")]
+        public Input<string>? NextHopHub { get; set; }
 
         /// <summary>
         /// The IP address or URL to a forwarding rule of type
@@ -709,6 +782,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? NextHopOrigin { get; set; }
 
         /// <summary>
+        /// The network peering name that should handle matching packets, which should conform to RFC1035.
+        /// </summary>
+        [Input("nextHopPeering")]
+        public Input<string>? NextHopPeering { get; set; }
+
+        /// <summary>
         /// URL to a VpnTunnel that should handle matching packets.
         /// </summary>
         [Input("nextHopVpnTunnel")]
@@ -732,6 +811,24 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// The status of the route, which can be one of the following values:
+        /// - 'ACTIVE' for an active route
+        /// - 'INACTIVE' for an inactive route
+        /// </summary>
+        [Input("routeStatus")]
+        public Input<string>? RouteStatus { get; set; }
+
+        /// <summary>
+        /// The type of this route, which can be one of the following values:
+        /// - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+        /// - 'SUBNET' for a route from a subnet of the VPC
+        /// - 'BGP' for a route learned from a BGP peer of this router
+        /// - 'STATIC' for a static route
+        /// </summary>
+        [Input("routeType")]
+        public Input<string>? RouteType { get; set; }
+
+        /// <summary>
         /// The URI of the created resource.
         /// </summary>
         [Input("selfLink")]
@@ -747,6 +844,19 @@ namespace Pulumi.Gcp.Compute
         {
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
+        }
+
+        [Input("warnings")]
+        private InputList<Inputs.RouteWarningGetArgs>? _warnings;
+
+        /// <summary>
+        /// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.RouteWarningGetArgs> Warnings
+        {
+            get => _warnings ?? (_warnings = new InputList<Inputs.RouteWarningGetArgs>());
+            set => _warnings = value;
         }
 
         public RouteState()

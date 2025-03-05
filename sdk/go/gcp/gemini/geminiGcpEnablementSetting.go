@@ -33,7 +33,10 @@ import (
 //			_, err := gemini.NewGeminiGcpEnablementSetting(ctx, "example", &gemini.GeminiGcpEnablementSettingArgs{
 //				GeminiGcpEnablementSettingId: pulumi.String("ls1-tf"),
 //				Location:                     pulumi.String("global"),
-//				EnableCustomerDataSharing:    pulumi.Bool(true),
+//				Labels: pulumi.StringMap{
+//					"my_key": pulumi.String("my_value"),
+//				},
+//				EnableCustomerDataSharing: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

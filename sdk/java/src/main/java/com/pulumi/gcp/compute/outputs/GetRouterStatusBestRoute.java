@@ -5,6 +5,8 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.outputs.GetRouterStatusBestRouteAsPath;
+import com.pulumi.gcp.compute.outputs.GetRouterStatusBestRouteWarning;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -12,6 +14,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRouterStatusBestRoute {
+    private List<GetRouterStatusBestRouteAsPath> asPaths;
+    /**
+     * @return Creation timestamp in RFC3339 text format.
+     * 
+     */
+    private String creationTimestamp;
     /**
      * @return An optional description of this resource. Provide this property
      * when you create the resource.
@@ -46,6 +54,11 @@ public final class GetRouterStatusBestRoute {
      * 
      */
     private String nextHopGateway;
+    /**
+     * @return The hub network that should handle matching packets, which should conform to RFC1035.
+     * 
+     */
+    private String nextHopHub;
     /**
      * @return The IP address or URL to a forwarding rule of type
      * loadBalancingScheme=INTERNAL that should handle matching
@@ -107,6 +120,11 @@ public final class GetRouterStatusBestRoute {
      */
     private String nextHopOrigin;
     /**
+     * @return The network peering name that should handle matching packets, which should conform to RFC1035.
+     * 
+     */
+    private String nextHopPeering;
+    /**
      * @return URL to a VpnTunnel that should handle matching packets.
      * 
      */
@@ -128,14 +146,45 @@ public final class GetRouterStatusBestRoute {
      * 
      */
     private String project;
+    /**
+     * @return The status of the route, which can be one of the following values:
+     * - &#39;ACTIVE&#39; for an active route
+     * - &#39;INACTIVE&#39; for an inactive route
+     * 
+     */
+    private String routeStatus;
+    /**
+     * @return The type of this route, which can be one of the following values:
+     * - &#39;TRANSIT&#39; for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+     * - &#39;SUBNET&#39; for a route from a subnet of the VPC
+     * - &#39;BGP&#39; for a route learned from a BGP peer of this router
+     * - &#39;STATIC&#39; for a static route
+     * 
+     */
+    private String routeType;
     private String selfLink;
     /**
      * @return A list of instance tags to which this route applies.
      * 
      */
     private List<String> tags;
+    /**
+     * @return If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+     * 
+     */
+    private List<GetRouterStatusBestRouteWarning> warnings;
 
     private GetRouterStatusBestRoute() {}
+    public List<GetRouterStatusBestRouteAsPath> asPaths() {
+        return this.asPaths;
+    }
+    /**
+     * @return Creation timestamp in RFC3339 text format.
+     * 
+     */
+    public String creationTimestamp() {
+        return this.creationTimestamp;
+    }
     /**
      * @return An optional description of this resource. Provide this property
      * when you create the resource.
@@ -179,6 +228,13 @@ public final class GetRouterStatusBestRoute {
      */
     public String nextHopGateway() {
         return this.nextHopGateway;
+    }
+    /**
+     * @return The hub network that should handle matching packets, which should conform to RFC1035.
+     * 
+     */
+    public String nextHopHub() {
+        return this.nextHopHub;
     }
     /**
      * @return The IP address or URL to a forwarding rule of type
@@ -257,6 +313,13 @@ public final class GetRouterStatusBestRoute {
         return this.nextHopOrigin;
     }
     /**
+     * @return The network peering name that should handle matching packets, which should conform to RFC1035.
+     * 
+     */
+    public String nextHopPeering() {
+        return this.nextHopPeering;
+    }
+    /**
      * @return URL to a VpnTunnel that should handle matching packets.
      * 
      */
@@ -284,6 +347,26 @@ public final class GetRouterStatusBestRoute {
     public String project() {
         return this.project;
     }
+    /**
+     * @return The status of the route, which can be one of the following values:
+     * - &#39;ACTIVE&#39; for an active route
+     * - &#39;INACTIVE&#39; for an inactive route
+     * 
+     */
+    public String routeStatus() {
+        return this.routeStatus;
+    }
+    /**
+     * @return The type of this route, which can be one of the following values:
+     * - &#39;TRANSIT&#39; for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+     * - &#39;SUBNET&#39; for a route from a subnet of the VPC
+     * - &#39;BGP&#39; for a route learned from a BGP peer of this router
+     * - &#39;STATIC&#39; for a static route
+     * 
+     */
+    public String routeType() {
+        return this.routeType;
+    }
     public String selfLink() {
         return this.selfLink;
     }
@@ -293,6 +376,13 @@ public final class GetRouterStatusBestRoute {
      */
     public List<String> tags() {
         return this.tags;
+    }
+    /**
+     * @return If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+     * 
+     */
+    public List<GetRouterStatusBestRouteWarning> warnings() {
+        return this.warnings;
     }
 
     public static Builder builder() {
@@ -304,11 +394,14 @@ public final class GetRouterStatusBestRoute {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetRouterStatusBestRouteAsPath> asPaths;
+        private String creationTimestamp;
         private String description;
         private String destRange;
         private String name;
         private String network;
         private String nextHopGateway;
+        private String nextHopHub;
         private String nextHopIlb;
         private String nextHopInstance;
         private String nextHopInstanceZone;
@@ -317,19 +410,26 @@ public final class GetRouterStatusBestRoute {
         private String nextHopMed;
         private String nextHopNetwork;
         private String nextHopOrigin;
+        private String nextHopPeering;
         private String nextHopVpnTunnel;
         private Integer priority;
         private String project;
+        private String routeStatus;
+        private String routeType;
         private String selfLink;
         private List<String> tags;
+        private List<GetRouterStatusBestRouteWarning> warnings;
         public Builder() {}
         public Builder(GetRouterStatusBestRoute defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.asPaths = defaults.asPaths;
+    	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.description = defaults.description;
     	      this.destRange = defaults.destRange;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
     	      this.nextHopGateway = defaults.nextHopGateway;
+    	      this.nextHopHub = defaults.nextHopHub;
     	      this.nextHopIlb = defaults.nextHopIlb;
     	      this.nextHopInstance = defaults.nextHopInstance;
     	      this.nextHopInstanceZone = defaults.nextHopInstanceZone;
@@ -338,13 +438,36 @@ public final class GetRouterStatusBestRoute {
     	      this.nextHopMed = defaults.nextHopMed;
     	      this.nextHopNetwork = defaults.nextHopNetwork;
     	      this.nextHopOrigin = defaults.nextHopOrigin;
+    	      this.nextHopPeering = defaults.nextHopPeering;
     	      this.nextHopVpnTunnel = defaults.nextHopVpnTunnel;
     	      this.priority = defaults.priority;
     	      this.project = defaults.project;
+    	      this.routeStatus = defaults.routeStatus;
+    	      this.routeType = defaults.routeType;
     	      this.selfLink = defaults.selfLink;
     	      this.tags = defaults.tags;
+    	      this.warnings = defaults.warnings;
         }
 
+        @CustomType.Setter
+        public Builder asPaths(List<GetRouterStatusBestRouteAsPath> asPaths) {
+            if (asPaths == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusBestRoute", "asPaths");
+            }
+            this.asPaths = asPaths;
+            return this;
+        }
+        public Builder asPaths(GetRouterStatusBestRouteAsPath... asPaths) {
+            return asPaths(List.of(asPaths));
+        }
+        @CustomType.Setter
+        public Builder creationTimestamp(String creationTimestamp) {
+            if (creationTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusBestRoute", "creationTimestamp");
+            }
+            this.creationTimestamp = creationTimestamp;
+            return this;
+        }
         @CustomType.Setter
         public Builder description(String description) {
             if (description == null) {
@@ -383,6 +506,14 @@ public final class GetRouterStatusBestRoute {
               throw new MissingRequiredPropertyException("GetRouterStatusBestRoute", "nextHopGateway");
             }
             this.nextHopGateway = nextHopGateway;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder nextHopHub(String nextHopHub) {
+            if (nextHopHub == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusBestRoute", "nextHopHub");
+            }
+            this.nextHopHub = nextHopHub;
             return this;
         }
         @CustomType.Setter
@@ -450,6 +581,14 @@ public final class GetRouterStatusBestRoute {
             return this;
         }
         @CustomType.Setter
+        public Builder nextHopPeering(String nextHopPeering) {
+            if (nextHopPeering == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusBestRoute", "nextHopPeering");
+            }
+            this.nextHopPeering = nextHopPeering;
+            return this;
+        }
+        @CustomType.Setter
         public Builder nextHopVpnTunnel(String nextHopVpnTunnel) {
             if (nextHopVpnTunnel == null) {
               throw new MissingRequiredPropertyException("GetRouterStatusBestRoute", "nextHopVpnTunnel");
@@ -474,6 +613,22 @@ public final class GetRouterStatusBestRoute {
             return this;
         }
         @CustomType.Setter
+        public Builder routeStatus(String routeStatus) {
+            if (routeStatus == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusBestRoute", "routeStatus");
+            }
+            this.routeStatus = routeStatus;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder routeType(String routeType) {
+            if (routeType == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusBestRoute", "routeType");
+            }
+            this.routeType = routeType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             if (selfLink == null) {
               throw new MissingRequiredPropertyException("GetRouterStatusBestRoute", "selfLink");
@@ -492,13 +647,27 @@ public final class GetRouterStatusBestRoute {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
+        public Builder warnings(List<GetRouterStatusBestRouteWarning> warnings) {
+            if (warnings == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusBestRoute", "warnings");
+            }
+            this.warnings = warnings;
+            return this;
+        }
+        public Builder warnings(GetRouterStatusBestRouteWarning... warnings) {
+            return warnings(List.of(warnings));
+        }
         public GetRouterStatusBestRoute build() {
             final var _resultValue = new GetRouterStatusBestRoute();
+            _resultValue.asPaths = asPaths;
+            _resultValue.creationTimestamp = creationTimestamp;
             _resultValue.description = description;
             _resultValue.destRange = destRange;
             _resultValue.name = name;
             _resultValue.network = network;
             _resultValue.nextHopGateway = nextHopGateway;
+            _resultValue.nextHopHub = nextHopHub;
             _resultValue.nextHopIlb = nextHopIlb;
             _resultValue.nextHopInstance = nextHopInstance;
             _resultValue.nextHopInstanceZone = nextHopInstanceZone;
@@ -507,11 +676,15 @@ public final class GetRouterStatusBestRoute {
             _resultValue.nextHopMed = nextHopMed;
             _resultValue.nextHopNetwork = nextHopNetwork;
             _resultValue.nextHopOrigin = nextHopOrigin;
+            _resultValue.nextHopPeering = nextHopPeering;
             _resultValue.nextHopVpnTunnel = nextHopVpnTunnel;
             _resultValue.priority = priority;
             _resultValue.project = project;
+            _resultValue.routeStatus = routeStatus;
+            _resultValue.routeType = routeType;
             _resultValue.selfLink = selfLink;
             _resultValue.tags = tags;
+            _resultValue.warnings = warnings;
             return _resultValue;
         }
     }

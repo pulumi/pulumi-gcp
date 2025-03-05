@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *         var basic = new TargetSite("basic", TargetSiteArgs.builder()
  *             .location(basicDataStore.location())
  *             .dataStoreId(basicDataStore.dataStoreId())
- *             .providedUriPattern("http://cloud.google.com/docs/*")
+ *             .providedUriPattern("cloud.google.com/docs/*")
  *             .type("INCLUDE")
  *             .exactMatch(false)
  *             .build());
@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  *         var advanced = new TargetSite("advanced", TargetSiteArgs.builder()
  *             .location(advancedDataStore.location())
  *             .dataStoreId(advancedDataStore.dataStoreId())
- *             .providedUriPattern("http://cloud.google.com/docs/*")
+ *             .providedUriPattern("cloud.google.com/docs/*")
  *             .type("INCLUDE")
  *             .exactMatch(false)
  *             .build());

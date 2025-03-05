@@ -25,7 +25,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
      */
     private @Nullable List<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult> instanceSelectionResults;
     /**
-     * @return Defines how Dataproc should create VMs with a mixture of provisioning models.
+     * @return Defines how the Group selects the provisioning model to ensure required reliability.
      * 
      */
     private @Nullable ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix provisioningModelMix;
@@ -46,7 +46,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
         return this.instanceSelectionResults == null ? List.of() : this.instanceSelectionResults;
     }
     /**
-     * @return Defines how Dataproc should create VMs with a mixture of provisioning models.
+     * @return Defines how the Group selects the provisioning model to ensure required reliability.
      * 
      */
     public Optional<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix> provisioningModelMix() {

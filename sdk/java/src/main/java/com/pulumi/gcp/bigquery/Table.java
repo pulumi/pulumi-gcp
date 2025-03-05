@@ -456,7 +456,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="maxStaleness", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> maxStaleness;
+    private Output<String> maxStaleness;
 
     /**
      * @return The maximum staleness of data that could be
@@ -465,8 +465,8 @@ public class Table extends com.pulumi.resources.CustomResource {
      * type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
      * 
      */
-    public Output<Optional<String>> maxStaleness() {
-        return Codegen.optional(this.maxStaleness);
+    public Output<String> maxStaleness() {
+        return this.maxStaleness;
     }
     /**
      * The size of this table in bytes, excluding any data in the streaming buffer.

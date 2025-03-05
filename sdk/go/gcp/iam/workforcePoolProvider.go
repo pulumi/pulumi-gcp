@@ -106,7 +106,7 @@ import (
 //							PlainText: pulumi.String("client-secret"),
 //						},
 //					},
-//					AttributesType: pulumi.String("AZURE_AD_GROUPS_MAIL"),
+//					AttributesType: pulumi.String("AZURE_AD_GROUPS_ID"),
 //					QueryParameters: &iam.WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs{
 //						Filter: pulumi.String("mail:gcp"),
 //					},

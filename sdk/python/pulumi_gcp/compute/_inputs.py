@@ -105,6 +105,8 @@ __all__ = [
     'DiskIamBindingConditionArgsDict',
     'DiskIamMemberConditionArgs',
     'DiskIamMemberConditionArgsDict',
+    'DiskParamsArgs',
+    'DiskParamsArgsDict',
     'DiskSourceImageEncryptionKeyArgs',
     'DiskSourceImageEncryptionKeyArgsDict',
     'DiskSourceSnapshotEncryptionKeyArgs',
@@ -403,6 +405,10 @@ __all__ = [
     'InstanceTemplateServiceAccountArgsDict',
     'InstanceTemplateShieldedInstanceConfigArgs',
     'InstanceTemplateShieldedInstanceConfigArgsDict',
+    'InstantSnapshotIamBindingConditionArgs',
+    'InstantSnapshotIamBindingConditionArgsDict',
+    'InstantSnapshotIamMemberConditionArgs',
+    'InstantSnapshotIamMemberConditionArgsDict',
     'InterconnectAttachmentPrivateInterconnectInfoArgs',
     'InterconnectAttachmentPrivateInterconnectInfoArgsDict',
     'InterconnectCircuitInfoArgs',
@@ -1007,6 +1013,12 @@ __all__ = [
     'ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgsDict',
     'ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs',
     'ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgsDict',
+    'RouteAsPathArgs',
+    'RouteAsPathArgsDict',
+    'RouteWarningArgs',
+    'RouteWarningArgsDict',
+    'RouteWarningDataArgs',
+    'RouteWarningDataArgsDict',
     'RouterBgpArgs',
     'RouterBgpArgsDict',
     'RouterBgpAdvertisedIpRangeArgs',
@@ -1133,6 +1145,8 @@ __all__ = [
     'URLMapDefaultRouteActionFaultInjectionPolicyDelayArgsDict',
     'URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs',
     'URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict',
+    'URLMapDefaultRouteActionMaxStreamDurationArgs',
+    'URLMapDefaultRouteActionMaxStreamDurationArgsDict',
     'URLMapDefaultRouteActionRequestMirrorPolicyArgs',
     'URLMapDefaultRouteActionRequestMirrorPolicyArgsDict',
     'URLMapDefaultRouteActionRetryPolicyArgs',
@@ -1179,6 +1193,8 @@ __all__ = [
     'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgsDict',
     'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs',
     'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict',
+    'URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs',
+    'URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgsDict',
     'URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs',
     'URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgsDict',
     'URLMapPathMatcherDefaultRouteActionRetryPolicyArgs',
@@ -1223,6 +1239,8 @@ __all__ = [
     'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgsDict',
     'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs',
     'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict',
+    'URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs',
+    'URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgsDict',
     'URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs',
     'URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgsDict',
     'URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs',
@@ -1275,6 +1293,8 @@ __all__ = [
     'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgsDict',
     'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs',
     'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict',
+    'URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs',
+    'URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgsDict',
     'URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs',
     'URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgsDict',
     'URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs',
@@ -5912,6 +5932,44 @@ class DiskIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class DiskParamsArgsDict(TypedDict):
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Resource manager tags to be bound to the disk. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+elif False:
+    DiskParamsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DiskParamsArgs:
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_manager_tags: Resource manager tags to be bound to the disk. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource manager tags to be bound to the disk. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_manager_tags", value)
 
 
 if not MYPY:
@@ -21536,6 +21594,132 @@ class InstanceTemplateShieldedInstanceConfigArgs:
     @enable_vtpm.setter
     def enable_vtpm(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_vtpm", value)
+
+
+if not MYPY:
+    class InstantSnapshotIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    InstantSnapshotIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstantSnapshotIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class InstantSnapshotIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    InstantSnapshotIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstantSnapshotIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
 
 if not MYPY:
@@ -51185,6 +51369,224 @@ class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs:
 
 
 if not MYPY:
+    class RouteAsPathArgsDict(TypedDict):
+        as_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        (Output)
+        The AS numbers of the AS Path.
+        """
+        path_segment_type: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The type of the AS Path, which can be one of the following values:
+        - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+        - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+        - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+        - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+        """
+elif False:
+    RouteAsPathArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RouteAsPathArgs:
+    def __init__(__self__, *,
+                 as_lists: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 path_segment_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] as_lists: (Output)
+               The AS numbers of the AS Path.
+        :param pulumi.Input[str] path_segment_type: (Output)
+               The type of the AS Path, which can be one of the following values:
+               - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+               - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+               - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+               - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+        """
+        if as_lists is not None:
+            pulumi.set(__self__, "as_lists", as_lists)
+        if path_segment_type is not None:
+            pulumi.set(__self__, "path_segment_type", path_segment_type)
+
+    @property
+    @pulumi.getter(name="asLists")
+    def as_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        (Output)
+        The AS numbers of the AS Path.
+        """
+        return pulumi.get(self, "as_lists")
+
+    @as_lists.setter
+    def as_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "as_lists", value)
+
+    @property
+    @pulumi.getter(name="pathSegmentType")
+    def path_segment_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The type of the AS Path, which can be one of the following values:
+        - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+        - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+        - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+        - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+        """
+        return pulumi.get(self, "path_segment_type")
+
+    @path_segment_type.setter
+    def path_segment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path_segment_type", value)
+
+
+if not MYPY:
+    class RouteWarningArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A warning code, if applicable. For example, Compute Engine returns
+        NO_RESULTS_ON_PAGE if there are no results in the response.
+        """
+        datas: NotRequired[pulumi.Input[Sequence[pulumi.Input['RouteWarningDataArgsDict']]]]
+        """
+        (Output)
+        Metadata about this warning in key: value format. For example:
+        "data":   {  "key": "scope",  "value": "zones/us-east1-d"  }
+        Structure is [documented below.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A human-readable description of the warning code.
+        """
+elif False:
+    RouteWarningArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RouteWarningArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[str]] = None,
+                 datas: Optional[pulumi.Input[Sequence[pulumi.Input['RouteWarningDataArgs']]]] = None,
+                 message: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] code: (Output)
+               A warning code, if applicable. For example, Compute Engine returns
+               NO_RESULTS_ON_PAGE if there are no results in the response.
+        :param pulumi.Input[Sequence[pulumi.Input['RouteWarningDataArgs']]] datas: (Output)
+               Metadata about this warning in key: value format. For example:
+               "data":   {  "key": "scope",  "value": "zones/us-east1-d"  }
+               Structure is [documented below.
+        :param pulumi.Input[str] message: (Output)
+               A human-readable description of the warning code.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if datas is not None:
+            pulumi.set(__self__, "datas", datas)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        A warning code, if applicable. For example, Compute Engine returns
+        NO_RESULTS_ON_PAGE if there are no results in the response.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def datas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouteWarningDataArgs']]]]:
+        """
+        (Output)
+        Metadata about this warning in key: value format. For example:
+        "data":   {  "key": "scope",  "value": "zones/us-east1-d"  }
+        Structure is [documented below.
+        """
+        return pulumi.get(self, "datas")
+
+    @datas.setter
+    def datas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouteWarningDataArgs']]]]):
+        pulumi.set(self, "datas", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        A human-readable description of the warning code.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+
+if not MYPY:
+    class RouteWarningDataArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A warning data value corresponding to the key.
+        """
+elif False:
+    RouteWarningDataArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RouteWarningDataArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: (Output)
+               A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        :param pulumi.Input[str] value: (Output)
+               A warning data value corresponding to the key.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        A warning data value corresponding to the key.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
     class RouterBgpArgsDict(TypedDict):
         asn: pulumi.Input[int]
         """
@@ -55972,6 +56374,15 @@ if not MYPY:
         timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
         Structure is documented below.
         """
+        max_stream_duration: NotRequired[pulumi.Input['URLMapDefaultRouteActionMaxStreamDurationArgsDict']]
+        """
+        Specifies the maximum duration (timeout) for streams on the selected route.
+        Unlike the `Timeout` field where the timeout duration starts from the time the request
+        has been fully processed (known as end-of-stream), the duration in this field
+        is computed from the beginning of the stream until the response has been processed,
+        including all retries. A stream that does not complete in this duration is closed.
+        Structure is documented below.
+        """
         request_mirror_policy: NotRequired[pulumi.Input['URLMapDefaultRouteActionRequestMirrorPolicyArgsDict']]
         """
         Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
@@ -56015,6 +56426,7 @@ class URLMapDefaultRouteActionArgs:
     def __init__(__self__, *,
                  cors_policy: Optional[pulumi.Input['URLMapDefaultRouteActionCorsPolicyArgs']] = None,
                  fault_injection_policy: Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyArgs']] = None,
+                 max_stream_duration: Optional[pulumi.Input['URLMapDefaultRouteActionMaxStreamDurationArgs']] = None,
                  request_mirror_policy: Optional[pulumi.Input['URLMapDefaultRouteActionRequestMirrorPolicyArgs']] = None,
                  retry_policy: Optional[pulumi.Input['URLMapDefaultRouteActionRetryPolicyArgs']] = None,
                  timeout: Optional[pulumi.Input['URLMapDefaultRouteActionTimeoutArgs']] = None,
@@ -56029,6 +56441,12 @@ class URLMapDefaultRouteActionArgs:
                percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
                by the Loadbalancer for a percentage of requests.
                timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+               Structure is documented below.
+        :param pulumi.Input['URLMapDefaultRouteActionMaxStreamDurationArgs'] max_stream_duration: Specifies the maximum duration (timeout) for streams on the selected route.
+               Unlike the `Timeout` field where the timeout duration starts from the time the request
+               has been fully processed (known as end-of-stream), the duration in this field
+               is computed from the beginning of the stream until the response has been processed,
+               including all retries. A stream that does not complete in this duration is closed.
                Structure is documented below.
         :param pulumi.Input['URLMapDefaultRouteActionRequestMirrorPolicyArgs'] request_mirror_policy: Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
                Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
@@ -56055,6 +56473,8 @@ class URLMapDefaultRouteActionArgs:
             pulumi.set(__self__, "cors_policy", cors_policy)
         if fault_injection_policy is not None:
             pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
+        if max_stream_duration is not None:
+            pulumi.set(__self__, "max_stream_duration", max_stream_duration)
         if request_mirror_policy is not None:
             pulumi.set(__self__, "request_mirror_policy", request_mirror_policy)
         if retry_policy is not None:
@@ -56096,6 +56516,23 @@ class URLMapDefaultRouteActionArgs:
     @fault_injection_policy.setter
     def fault_injection_policy(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyArgs']]):
         pulumi.set(self, "fault_injection_policy", value)
+
+    @property
+    @pulumi.getter(name="maxStreamDuration")
+    def max_stream_duration(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionMaxStreamDurationArgs']]:
+        """
+        Specifies the maximum duration (timeout) for streams on the selected route.
+        Unlike the `Timeout` field where the timeout duration starts from the time the request
+        has been fully processed (known as end-of-stream), the duration in this field
+        is computed from the beginning of the stream until the response has been processed,
+        including all retries. A stream that does not complete in this duration is closed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "max_stream_duration")
+
+    @max_stream_duration.setter
+    def max_stream_duration(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionMaxStreamDurationArgs']]):
+        pulumi.set(self, "max_stream_duration", value)
 
     @property
     @pulumi.getter(name="requestMirrorPolicy")
@@ -56590,6 +57027,63 @@ class URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs:
     @seconds.setter
     def seconds(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "seconds", value)
+
+
+if not MYPY:
+    class URLMapDefaultRouteActionMaxStreamDurationArgsDict(TypedDict):
+        seconds: pulumi.Input[str]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    URLMapDefaultRouteActionMaxStreamDurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class URLMapDefaultRouteActionMaxStreamDurationArgs:
+    def __init__(__self__, *,
+                 seconds: pulumi.Input[str],
+                 nanos: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] seconds: Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+               Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        :param pulumi.Input[int] nanos: Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+               with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> pulumi.Input[str]:
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: pulumi.Input[str]):
+        pulumi.set(self, "seconds", value)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[int]]:
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "nanos", value)
 
 
 if not MYPY:
@@ -58291,6 +58785,15 @@ if not MYPY:
         timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
         Structure is documented below.
         """
+        max_stream_duration: NotRequired[pulumi.Input['URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgsDict']]
+        """
+        Specifies the maximum duration (timeout) for streams on the selected route.
+        Unlike the `Timeout` field where the timeout duration starts from the time the request
+        has been fully processed (known as end-of-stream), the duration in this field
+        is computed from the beginning of the stream until the response has been processed,
+        including all retries. A stream that does not complete in this duration is closed.
+        Structure is documented below.
+        """
         request_mirror_policy: NotRequired[pulumi.Input['URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgsDict']]
         """
         Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
@@ -58334,6 +58837,7 @@ class URLMapPathMatcherDefaultRouteActionArgs:
     def __init__(__self__, *,
                  cors_policy: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionCorsPolicyArgs']] = None,
                  fault_injection_policy: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs']] = None,
+                 max_stream_duration: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs']] = None,
                  request_mirror_policy: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs']] = None,
                  retry_policy: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionRetryPolicyArgs']] = None,
                  timeout: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionTimeoutArgs']] = None,
@@ -58348,6 +58852,12 @@ class URLMapPathMatcherDefaultRouteActionArgs:
                percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
                by the Loadbalancer for a percentage of requests.
                timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+               Structure is documented below.
+        :param pulumi.Input['URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs'] max_stream_duration: Specifies the maximum duration (timeout) for streams on the selected route.
+               Unlike the `Timeout` field where the timeout duration starts from the time the request
+               has been fully processed (known as end-of-stream), the duration in this field
+               is computed from the beginning of the stream until the response has been processed,
+               including all retries. A stream that does not complete in this duration is closed.
                Structure is documented below.
         :param pulumi.Input['URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs'] request_mirror_policy: Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
                Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
@@ -58374,6 +58884,8 @@ class URLMapPathMatcherDefaultRouteActionArgs:
             pulumi.set(__self__, "cors_policy", cors_policy)
         if fault_injection_policy is not None:
             pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
+        if max_stream_duration is not None:
+            pulumi.set(__self__, "max_stream_duration", max_stream_duration)
         if request_mirror_policy is not None:
             pulumi.set(__self__, "request_mirror_policy", request_mirror_policy)
         if retry_policy is not None:
@@ -58415,6 +58927,23 @@ class URLMapPathMatcherDefaultRouteActionArgs:
     @fault_injection_policy.setter
     def fault_injection_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs']]):
         pulumi.set(self, "fault_injection_policy", value)
+
+    @property
+    @pulumi.getter(name="maxStreamDuration")
+    def max_stream_duration(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs']]:
+        """
+        Specifies the maximum duration (timeout) for streams on the selected route.
+        Unlike the `Timeout` field where the timeout duration starts from the time the request
+        has been fully processed (known as end-of-stream), the duration in this field
+        is computed from the beginning of the stream until the response has been processed,
+        including all retries. A stream that does not complete in this duration is closed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "max_stream_duration")
+
+    @max_stream_duration.setter
+    def max_stream_duration(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs']]):
+        pulumi.set(self, "max_stream_duration", value)
 
     @property
     @pulumi.getter(name="requestMirrorPolicy")
@@ -58909,6 +59438,63 @@ class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs
     @seconds.setter
     def seconds(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "seconds", value)
+
+
+if not MYPY:
+    class URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgsDict(TypedDict):
+        seconds: pulumi.Input[str]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs:
+    def __init__(__self__, *,
+                 seconds: pulumi.Input[str],
+                 nanos: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] seconds: Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+               Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        :param pulumi.Input[int] nanos: Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+               with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> pulumi.Input[str]:
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: pulumi.Input[str]):
+        pulumi.set(self, "seconds", value)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[int]]:
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "nanos", value)
 
 
 if not MYPY:
@@ -60411,6 +60997,15 @@ if not MYPY:
         ignored by clients that are configured with a fault_injection_policy.
         Structure is documented below.
         """
+        max_stream_duration: NotRequired[pulumi.Input['URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgsDict']]
+        """
+        Specifies the maximum duration (timeout) for streams on the selected route.
+        Unlike the `Timeout` field where the timeout duration starts from the time the request
+        has been fully processed (known as end-of-stream), the duration in this field
+        is computed from the beginning of the stream until the response has been processed,
+        including all retries. A stream that does not complete in this duration is closed.
+        Structure is documented below.
+        """
         request_mirror_policy: NotRequired[pulumi.Input['URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgsDict']]
         """
         Specifies the policy on how requests intended for the route's backends are
@@ -60458,6 +61053,7 @@ class URLMapPathMatcherPathRuleRouteActionArgs:
     def __init__(__self__, *,
                  cors_policy: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs']] = None,
                  fault_injection_policy: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs']] = None,
+                 max_stream_duration: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs']] = None,
                  request_mirror_policy: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs']] = None,
                  retry_policy: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs']] = None,
                  timeout: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionTimeoutArgs']] = None,
@@ -60474,6 +61070,12 @@ class URLMapPathMatcherPathRuleRouteActionArgs:
                backend service. Similarly requests from clients can be aborted by the
                Loadbalancer for a percentage of requests. timeout and retry_policy will be
                ignored by clients that are configured with a fault_injection_policy.
+               Structure is documented below.
+        :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs'] max_stream_duration: Specifies the maximum duration (timeout) for streams on the selected route.
+               Unlike the `Timeout` field where the timeout duration starts from the time the request
+               has been fully processed (known as end-of-stream), the duration in this field
+               is computed from the beginning of the stream until the response has been processed,
+               including all retries. A stream that does not complete in this duration is closed.
                Structure is documented below.
         :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs'] request_mirror_policy: Specifies the policy on how requests intended for the route's backends are
                shadowed to a separate mirrored backend service. Loadbalancer does not wait for
@@ -60504,6 +61106,8 @@ class URLMapPathMatcherPathRuleRouteActionArgs:
             pulumi.set(__self__, "cors_policy", cors_policy)
         if fault_injection_policy is not None:
             pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
+        if max_stream_duration is not None:
+            pulumi.set(__self__, "max_stream_duration", max_stream_duration)
         if request_mirror_policy is not None:
             pulumi.set(__self__, "request_mirror_policy", request_mirror_policy)
         if retry_policy is not None:
@@ -60547,6 +61151,23 @@ class URLMapPathMatcherPathRuleRouteActionArgs:
     @fault_injection_policy.setter
     def fault_injection_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs']]):
         pulumi.set(self, "fault_injection_policy", value)
+
+    @property
+    @pulumi.getter(name="maxStreamDuration")
+    def max_stream_duration(self) -> Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs']]:
+        """
+        Specifies the maximum duration (timeout) for streams on the selected route.
+        Unlike the `Timeout` field where the timeout duration starts from the time the request
+        has been fully processed (known as end-of-stream), the duration in this field
+        is computed from the beginning of the stream until the response has been processed,
+        including all retries. A stream that does not complete in this duration is closed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "max_stream_duration")
+
+    @max_stream_duration.setter
+    def max_stream_duration(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs']]):
+        pulumi.set(self, "max_stream_duration", value)
 
     @property
     @pulumi.getter(name="requestMirrorPolicy")
@@ -61033,6 +61654,63 @@ class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArg
         """
         Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
         represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "nanos", value)
+
+
+if not MYPY:
+    class URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgsDict(TypedDict):
+        seconds: pulumi.Input[str]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs:
+    def __init__(__self__, *,
+                 seconds: pulumi.Input[str],
+                 nanos: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] seconds: Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+               Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        :param pulumi.Input[int] nanos: Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+               with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> pulumi.Input[str]:
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: pulumi.Input[str]):
+        pulumi.set(self, "seconds", value)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[int]]:
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
         """
         return pulumi.get(self, "nanos")
 
@@ -63203,6 +63881,15 @@ if not MYPY:
         ignored by clients that are configured with a fault_injection_policy.
         Structure is documented below.
         """
+        max_stream_duration: NotRequired[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgsDict']]
+        """
+        Specifies the maximum duration (timeout) for streams on the selected route.
+        Unlike the `Timeout` field where the timeout duration starts from the time the request
+        has been fully processed (known as end-of-stream), the duration in this field
+        is computed from the beginning of the stream until the response has been processed,
+        including all retries. A stream that does not complete in this duration is closed.
+        Structure is documented below.
+        """
         request_mirror_policy: NotRequired[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgsDict']]
         """
         Specifies the policy on how requests intended for the route's backends are
@@ -63250,6 +63937,7 @@ class URLMapPathMatcherRouteRuleRouteActionArgs:
     def __init__(__self__, *,
                  cors_policy: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs']] = None,
                  fault_injection_policy: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs']] = None,
+                 max_stream_duration: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs']] = None,
                  request_mirror_policy: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs']] = None,
                  retry_policy: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs']] = None,
                  timeout: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionTimeoutArgs']] = None,
@@ -63266,6 +63954,12 @@ class URLMapPathMatcherRouteRuleRouteActionArgs:
                backend service. Similarly requests from clients can be aborted by the
                Loadbalancer for a percentage of requests. timeout and retry_policy will be
                ignored by clients that are configured with a fault_injection_policy.
+               Structure is documented below.
+        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs'] max_stream_duration: Specifies the maximum duration (timeout) for streams on the selected route.
+               Unlike the `Timeout` field where the timeout duration starts from the time the request
+               has been fully processed (known as end-of-stream), the duration in this field
+               is computed from the beginning of the stream until the response has been processed,
+               including all retries. A stream that does not complete in this duration is closed.
                Structure is documented below.
         :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs'] request_mirror_policy: Specifies the policy on how requests intended for the route's backends are
                shadowed to a separate mirrored backend service. Loadbalancer does not wait for
@@ -63296,6 +63990,8 @@ class URLMapPathMatcherRouteRuleRouteActionArgs:
             pulumi.set(__self__, "cors_policy", cors_policy)
         if fault_injection_policy is not None:
             pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
+        if max_stream_duration is not None:
+            pulumi.set(__self__, "max_stream_duration", max_stream_duration)
         if request_mirror_policy is not None:
             pulumi.set(__self__, "request_mirror_policy", request_mirror_policy)
         if retry_policy is not None:
@@ -63339,6 +64035,23 @@ class URLMapPathMatcherRouteRuleRouteActionArgs:
     @fault_injection_policy.setter
     def fault_injection_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs']]):
         pulumi.set(self, "fault_injection_policy", value)
+
+    @property
+    @pulumi.getter(name="maxStreamDuration")
+    def max_stream_duration(self) -> Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs']]:
+        """
+        Specifies the maximum duration (timeout) for streams on the selected route.
+        Unlike the `Timeout` field where the timeout duration starts from the time the request
+        has been fully processed (known as end-of-stream), the duration in this field
+        is computed from the beginning of the stream until the response has been processed,
+        including all retries. A stream that does not complete in this duration is closed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "max_stream_duration")
+
+    @max_stream_duration.setter
+    def max_stream_duration(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs']]):
+        pulumi.set(self, "max_stream_duration", value)
 
     @property
     @pulumi.getter(name="requestMirrorPolicy")
@@ -63830,6 +64543,63 @@ class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayAr
         """
         Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
         represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "nanos", value)
+
+
+if not MYPY:
+    class URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgsDict(TypedDict):
+        seconds: pulumi.Input[str]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs:
+    def __init__(__self__, *,
+                 seconds: pulumi.Input[str],
+                 nanos: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] seconds: Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+               Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        :param pulumi.Input[int] nanos: Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+               with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> pulumi.Input[str]:
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: pulumi.Input[str]):
+        pulumi.set(self, "seconds", value)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[int]]:
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
         """
         return pulumi.get(self, "nanos")
 

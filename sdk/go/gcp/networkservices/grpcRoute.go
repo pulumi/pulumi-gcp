@@ -199,29 +199,80 @@ import (
 //	}
 //
 // ```
+// ### Network Services Grpc Route Location
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networkservices.NewGrpcRoute(ctx, "default", &networkservices.GrpcRouteArgs{
+//				Name:     pulumi.String("my-grpc-route"),
+//				Location: pulumi.String("global"),
+//				Hostnames: pulumi.StringArray{
+//					pulumi.String("example"),
+//				},
+//				Rules: networkservices.GrpcRouteRuleArray{
+//					&networkservices.GrpcRouteRuleArgs{
+//						Matches: networkservices.GrpcRouteRuleMatchArray{
+//							&networkservices.GrpcRouteRuleMatchArgs{
+//								Headers: networkservices.GrpcRouteRuleMatchHeaderArray{
+//									&networkservices.GrpcRouteRuleMatchHeaderArgs{
+//										Key:   pulumi.String("key"),
+//										Value: pulumi.String("value"),
+//									},
+//								},
+//							},
+//						},
+//						Action: &networkservices.GrpcRouteRuleActionArgs{
+//							RetryPolicy: &networkservices.GrpcRouteRuleActionRetryPolicyArgs{
+//								RetryConditions: pulumi.StringArray{
+//									pulumi.String("cancelled"),
+//								},
+//								NumRetries: pulumi.Int(1),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
 // GrpcRoute can be imported using any of these accepted formats:
 //
-// * `projects/{{project}}/locations/global/grpcRoutes/{{name}}`
+// * `projects/{{project}}/locations/{{location}}/grpcRoutes/{{name}}`
 //
-// * `{{project}}/{{name}}`
+// * `{{project}}/{{location}}/{{name}}`
 //
-// * `{{name}}`
+// * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, GrpcRoute can be imported using one of the formats above. For example:
 //
 // ```sh
-// $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default projects/{{project}}/locations/global/grpcRoutes/{{name}}
+// $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default projects/{{project}}/locations/{{location}}/grpcRoutes/{{name}}
 // ```
 //
 // ```sh
-// $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{project}}/{{name}}
+// $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{project}}/{{location}}/{{name}}
 // ```
 //
 // ```sh
-// $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{name}}
+// $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{location}}/{{name}}
 // ```
 type GrpcRoute struct {
 	pulumi.CustomResourceState
@@ -240,6 +291,9 @@ type GrpcRoute struct {
 	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
 	// present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to
+	// 'global' if omitted.
+	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
 	Meshes pulumi.StringArrayOutput `pulumi:"meshes"`
 	// Name of the GrpcRoute resource.
@@ -312,6 +366,9 @@ type grpcRouteState struct {
 	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
 	// present on the resource.
 	Labels map[string]string `pulumi:"labels"`
+	// Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to
+	// 'global' if omitted.
+	Location *string `pulumi:"location"`
 	// List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
 	Meshes []string `pulumi:"meshes"`
 	// Name of the GrpcRoute resource.
@@ -344,6 +401,9 @@ type GrpcRouteState struct {
 	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
 	// present on the resource.
 	Labels pulumi.StringMapInput
+	// Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to
+	// 'global' if omitted.
+	Location pulumi.StringPtrInput
 	// List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
 	Meshes pulumi.StringArrayInput
 	// Name of the GrpcRoute resource.
@@ -376,6 +436,9 @@ type grpcRouteArgs struct {
 	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
 	// present on the resource.
 	Labels map[string]string `pulumi:"labels"`
+	// Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to
+	// 'global' if omitted.
+	Location *string `pulumi:"location"`
 	// List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
 	Meshes []string `pulumi:"meshes"`
 	// Name of the GrpcRoute resource.
@@ -398,6 +461,9 @@ type GrpcRouteArgs struct {
 	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
 	// present on the resource.
 	Labels pulumi.StringMapInput
+	// Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to
+	// 'global' if omitted.
+	Location pulumi.StringPtrInput
 	// List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
 	Meshes pulumi.StringArrayInput
 	// Name of the GrpcRoute resource.
@@ -525,6 +591,12 @@ func (o GrpcRouteOutput) Hostnames() pulumi.StringArrayOutput {
 // present on the resource.
 func (o GrpcRouteOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GrpcRoute) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to
+// 'global' if omitted.
+func (o GrpcRouteOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GrpcRoute) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.

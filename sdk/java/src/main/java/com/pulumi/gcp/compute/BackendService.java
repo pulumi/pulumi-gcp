@@ -1019,7 +1019,8 @@ public class BackendService extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.healthChecks);
     }
     /**
-     * Settings for enabling Cloud Identity Aware Proxy
+     * Settings for enabling Cloud Identity Aware Proxy.
+     * If OAuth client is not set, the Google-managed OAuth client is used.
      * Structure is documented below.
      * 
      */
@@ -1027,7 +1028,8 @@ public class BackendService extends com.pulumi.resources.CustomResource {
     private Output<BackendServiceIap> iap;
 
     /**
-     * @return Settings for enabling Cloud Identity Aware Proxy
+     * @return Settings for enabling Cloud Identity Aware Proxy.
+     * If OAuth client is not set, the Google-managed OAuth client is used.
      * Structure is documented below.
      * 
      */

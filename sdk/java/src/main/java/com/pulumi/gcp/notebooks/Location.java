@@ -14,6 +14,8 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **Warning:** `gcp.notebooks.Location` is deprecated and will be removed in a future major release. This resource is not functional.
+ * 
  * Represents a Location resource.
  * 
  * ## Import

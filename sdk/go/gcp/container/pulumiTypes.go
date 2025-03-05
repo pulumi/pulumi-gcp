@@ -35772,7 +35772,7 @@ func (o ClusterNotificationConfigPubsubPtrOutput) Topic() pulumi.StringPtrOutput
 }
 
 type ClusterNotificationConfigPubsubFilter struct {
-	// Can be used to filter what notifications are sent. Accepted values are `UPGRADE_AVAILABLE_EVENT`, `UPGRADE_EVENT` and `SECURITY_BULLETIN_EVENT`. See [Filtering notifications](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-notifications#filtering) for more details.
+	// Can be used to filter what notifications are sent. Accepted values are `UPGRADE_AVAILABLE_EVENT`, `UPGRADE_EVENT`, `SECURITY_BULLETIN_EVENT` and `UPGRADE_INFO_EVENT`. See [Filtering notifications](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-notifications#filtering) for more details.
 	EventTypes []string `pulumi:"eventTypes"`
 }
 
@@ -35788,7 +35788,7 @@ type ClusterNotificationConfigPubsubFilterInput interface {
 }
 
 type ClusterNotificationConfigPubsubFilterArgs struct {
-	// Can be used to filter what notifications are sent. Accepted values are `UPGRADE_AVAILABLE_EVENT`, `UPGRADE_EVENT` and `SECURITY_BULLETIN_EVENT`. See [Filtering notifications](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-notifications#filtering) for more details.
+	// Can be used to filter what notifications are sent. Accepted values are `UPGRADE_AVAILABLE_EVENT`, `UPGRADE_EVENT`, `SECURITY_BULLETIN_EVENT` and `UPGRADE_INFO_EVENT`. See [Filtering notifications](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-notifications#filtering) for more details.
 	EventTypes pulumi.StringArrayInput `pulumi:"eventTypes"`
 }
 
@@ -35869,7 +35869,7 @@ func (o ClusterNotificationConfigPubsubFilterOutput) ToClusterNotificationConfig
 	}).(ClusterNotificationConfigPubsubFilterPtrOutput)
 }
 
-// Can be used to filter what notifications are sent. Accepted values are `UPGRADE_AVAILABLE_EVENT`, `UPGRADE_EVENT` and `SECURITY_BULLETIN_EVENT`. See [Filtering notifications](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-notifications#filtering) for more details.
+// Can be used to filter what notifications are sent. Accepted values are `UPGRADE_AVAILABLE_EVENT`, `UPGRADE_EVENT`, `SECURITY_BULLETIN_EVENT` and `UPGRADE_INFO_EVENT`. See [Filtering notifications](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-notifications#filtering) for more details.
 func (o ClusterNotificationConfigPubsubFilterOutput) EventTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNotificationConfigPubsubFilter) []string { return v.EventTypes }).(pulumi.StringArrayOutput)
 }
@@ -35898,7 +35898,7 @@ func (o ClusterNotificationConfigPubsubFilterPtrOutput) Elem() ClusterNotificati
 	}).(ClusterNotificationConfigPubsubFilterOutput)
 }
 
-// Can be used to filter what notifications are sent. Accepted values are `UPGRADE_AVAILABLE_EVENT`, `UPGRADE_EVENT` and `SECURITY_BULLETIN_EVENT`. See [Filtering notifications](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-notifications#filtering) for more details.
+// Can be used to filter what notifications are sent. Accepted values are `UPGRADE_AVAILABLE_EVENT`, `UPGRADE_EVENT`, `SECURITY_BULLETIN_EVENT` and `UPGRADE_INFO_EVENT`. See [Filtering notifications](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-notifications#filtering) for more details.
 func (o ClusterNotificationConfigPubsubFilterPtrOutput) EventTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterNotificationConfigPubsubFilter) []string {
 		if v == nil {
@@ -62379,7 +62379,7 @@ func (o GetClusterNotificationConfigPubsubArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetClusterNotificationConfigPubsubFilter struct {
-	// Can be used to filter what notifications are sent. Valid values include include UPGRADE_AVAILABLE_EVENT, UPGRADE_EVENT and SECURITY_BULLETIN_EVENT
+	// Can be used to filter what notifications are sent. Valid values include include UPGRADE_AVAILABLE_EVENT, UPGRADE_EVENT, SECURITY_BULLETIN_EVENT, and UPGRADE_INFO_EVENT
 	EventTypes []string `pulumi:"eventTypes"`
 }
 
@@ -62395,7 +62395,7 @@ type GetClusterNotificationConfigPubsubFilterInput interface {
 }
 
 type GetClusterNotificationConfigPubsubFilterArgs struct {
-	// Can be used to filter what notifications are sent. Valid values include include UPGRADE_AVAILABLE_EVENT, UPGRADE_EVENT and SECURITY_BULLETIN_EVENT
+	// Can be used to filter what notifications are sent. Valid values include include UPGRADE_AVAILABLE_EVENT, UPGRADE_EVENT, SECURITY_BULLETIN_EVENT, and UPGRADE_INFO_EVENT
 	EventTypes pulumi.StringArrayInput `pulumi:"eventTypes"`
 }
 
@@ -62450,7 +62450,7 @@ func (o GetClusterNotificationConfigPubsubFilterOutput) ToGetClusterNotification
 	return o
 }
 
-// Can be used to filter what notifications are sent. Valid values include include UPGRADE_AVAILABLE_EVENT, UPGRADE_EVENT and SECURITY_BULLETIN_EVENT
+// Can be used to filter what notifications are sent. Valid values include include UPGRADE_AVAILABLE_EVENT, UPGRADE_EVENT, SECURITY_BULLETIN_EVENT, and UPGRADE_INFO_EVENT
 func (o GetClusterNotificationConfigPubsubFilterOutput) EventTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClusterNotificationConfigPubsubFilter) []string { return v.EventTypes }).(pulumi.StringArrayOutput)
 }

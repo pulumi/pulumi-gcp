@@ -84,6 +84,23 @@ public final class GrpcRouteArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Location (region) of the GRPCRoute resource to be created. Only the value &#39;global&#39; is currently allowed; defaults to
+     * &#39;global&#39; if omitted.
+     * 
+     */
+    @Import(name="location")
+    private @Nullable Output<String> location;
+
+    /**
+     * @return Location (region) of the GRPCRoute resource to be created. Only the value &#39;global&#39; is currently allowed; defaults to
+     * &#39;global&#39; if omitted.
+     * 
+     */
+    public Optional<Output<String>> location() {
+        return Optional.ofNullable(this.location);
+    }
+
+    /**
      * List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
      * 
      */
@@ -144,6 +161,7 @@ public final class GrpcRouteArgs extends com.pulumi.resources.ResourceArgs {
         this.gateways = $.gateways;
         this.hostnames = $.hostnames;
         this.labels = $.labels;
+        this.location = $.location;
         this.meshes = $.meshes;
         this.name = $.name;
         this.project = $.project;
@@ -274,6 +292,29 @@ public final class GrpcRouteArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
+        }
+
+        /**
+         * @param location Location (region) of the GRPCRoute resource to be created. Only the value &#39;global&#39; is currently allowed; defaults to
+         * &#39;global&#39; if omitted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder location(@Nullable Output<String> location) {
+            $.location = location;
+            return this;
+        }
+
+        /**
+         * @param location Location (region) of the GRPCRoute resource to be created. Only the value &#39;global&#39; is currently allowed; defaults to
+         * &#39;global&#39; if omitted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder location(String location) {
+            return location(Output.of(location));
         }
 
         /**

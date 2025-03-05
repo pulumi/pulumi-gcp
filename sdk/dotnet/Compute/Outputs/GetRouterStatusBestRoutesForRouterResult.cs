@@ -13,6 +13,11 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetRouterStatusBestRoutesForRouterResult
     {
+        public readonly ImmutableArray<Outputs.GetRouterStatusBestRoutesForRouterAsPathResult> AsPaths;
+        /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
+        public readonly string CreationTimestamp;
         /// <summary>
         /// An optional description of this resource. Provide this property
         /// when you create the resource.
@@ -42,6 +47,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// * The string 'default-internet-gateway'.
         /// </summary>
         public readonly string NextHopGateway;
+        /// <summary>
+        /// The hub network that should handle matching packets, which should conform to RFC1035.
+        /// </summary>
+        public readonly string NextHopHub;
         /// <summary>
         /// The IP address or URL to a forwarding rule of type
         /// loadBalancingScheme=INTERNAL that should handle matching
@@ -95,6 +104,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string NextHopOrigin;
         /// <summary>
+        /// The network peering name that should handle matching packets, which should conform to RFC1035.
+        /// </summary>
+        public readonly string NextHopPeering;
+        /// <summary>
         /// URL to a VpnTunnel that should handle matching packets.
         /// </summary>
         public readonly string NextHopVpnTunnel;
@@ -113,14 +126,36 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// belongs. If it is not provided, the provider project is used.
         /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// The status of the route, which can be one of the following values:
+        /// - 'ACTIVE' for an active route
+        /// - 'INACTIVE' for an inactive route
+        /// </summary>
+        public readonly string RouteStatus;
+        /// <summary>
+        /// The type of this route, which can be one of the following values:
+        /// - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+        /// - 'SUBNET' for a route from a subnet of the VPC
+        /// - 'BGP' for a route learned from a BGP peer of this router
+        /// - 'STATIC' for a static route
+        /// </summary>
+        public readonly string RouteType;
         public readonly string SelfLink;
         /// <summary>
         /// A list of instance tags to which this route applies.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRouterStatusBestRoutesForRouterWarningResult> Warnings;
 
         [OutputConstructor]
         private GetRouterStatusBestRoutesForRouterResult(
+            ImmutableArray<Outputs.GetRouterStatusBestRoutesForRouterAsPathResult> asPaths,
+
+            string creationTimestamp,
+
             string description,
 
             string destRange,
@@ -130,6 +165,8 @@ namespace Pulumi.Gcp.Compute.Outputs
             string network,
 
             string nextHopGateway,
+
+            string nextHopHub,
 
             string nextHopIlb,
 
@@ -147,21 +184,32 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string nextHopOrigin,
 
+            string nextHopPeering,
+
             string nextHopVpnTunnel,
 
             int priority,
 
             string project,
 
+            string routeStatus,
+
+            string routeType,
+
             string selfLink,
 
-            ImmutableArray<string> tags)
+            ImmutableArray<string> tags,
+
+            ImmutableArray<Outputs.GetRouterStatusBestRoutesForRouterWarningResult> warnings)
         {
+            AsPaths = asPaths;
+            CreationTimestamp = creationTimestamp;
             Description = description;
             DestRange = destRange;
             Name = name;
             Network = network;
             NextHopGateway = nextHopGateway;
+            NextHopHub = nextHopHub;
             NextHopIlb = nextHopIlb;
             NextHopInstance = nextHopInstance;
             NextHopInstanceZone = nextHopInstanceZone;
@@ -170,11 +218,15 @@ namespace Pulumi.Gcp.Compute.Outputs
             NextHopMed = nextHopMed;
             NextHopNetwork = nextHopNetwork;
             NextHopOrigin = nextHopOrigin;
+            NextHopPeering = nextHopPeering;
             NextHopVpnTunnel = nextHopVpnTunnel;
             Priority = priority;
             Project = project;
+            RouteStatus = routeStatus;
+            RouteType = routeType;
             SelfLink = selfLink;
             Tags = tags;
+            Warnings = warnings;
         }
     }
 }

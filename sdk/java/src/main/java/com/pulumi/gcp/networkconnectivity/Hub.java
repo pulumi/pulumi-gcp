@@ -174,6 +174,44 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Network Connectivity Hub Policy Mode
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.networkconnectivity.Hub;
+ * import com.pulumi.gcp.networkconnectivity.HubArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new Hub("primary", HubArgs.builder()
+ *             .name("policy")
+ *             .description("A sample hub with PRESET policy_mode and STAR topology")
+ *             .policyMode("PRESET")
+ *             .presetTopology("STAR")
+ *             .labels(Map.of("label-one", "value-one"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -293,6 +331,22 @@ public class Hub extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
+     * Possible values are: `CUSTOM`, `PRESET`.
+     * 
+     */
+    @Export(name="policyMode", refs={String.class}, tree="[0]")
+    private Output<String> policyMode;
+
+    /**
+     * @return Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
+     * Possible values are: `CUSTOM`, `PRESET`.
+     * 
+     */
+    public Output<String> policyMode() {
+        return this.policyMode;
     }
     /**
      * Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
