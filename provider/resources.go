@@ -2326,6 +2326,12 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_google_compute_region_network_endpoint_group.html.markdown",
 				},
 			},
+			"google_compute_region_ssl_policy": {
+				Tok: gcpDataSource(gcpCompute, "getRegionSSLPolicy"),
+				Docs: &tfbridge.DocInfo{
+					AllowMissing: true,
+				},
+			},
 			"google_compute_router_nat":    {Tok: gcpDataSource(gcpCompute, "getRouterNat")},
 			"google_compute_router_status": {Tok: gcpDataSource(gcpCompute, "RouterStatus")}, // fixed via alias
 			"google_compute_disk":          {Tok: gcpDataSource(gcpCompute, "getDisk")},
