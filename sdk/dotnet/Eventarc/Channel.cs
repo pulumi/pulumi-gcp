@@ -12,9 +12,16 @@ namespace Pulumi.Gcp.Eventarc
     /// <summary>
     /// The Eventarc Channel resource
     /// 
+    /// To get more information about Channel, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/eventarc/docs/reference/rest/v1/projects.locations.channels)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/eventarc/standard/docs/third-parties/create-channels)
+    /// 
     /// ## Example Usage
     /// 
-    /// ### Basic
+    /// ### Eventarc Channel With Cmek
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -23,43 +30,12 @@ namespace Pulumi.Gcp.Eventarc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testProject = Gcp.Organizations.GetProject.Invoke(new()
-    ///     {
-    ///         ProjectId = "my-project-name",
-    ///     });
-    /// 
-    ///     var testKeyRing = Gcp.Kms.GetKMSKeyRing.Invoke(new()
-    ///     {
-    ///         Name = "keyring",
-    ///         Location = "us-west1",
-    ///     });
-    /// 
-    ///     var key = Gcp.Kms.GetKMSCryptoKey.Invoke(new()
-    ///     {
-    ///         Name = "key",
-    ///         KeyRing = testKeyRing.Apply(getKMSKeyRingResult =&gt; getKMSKeyRingResult.Id),
-    ///     });
-    /// 
-    ///     var key1Member = new Gcp.Kms.CryptoKeyIAMMember("key1_member", new()
-    ///     {
-    ///         CryptoKeyId = key1.Id,
-    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
-    ///         Member = $"serviceAccount:service-{testProject.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-eventarc.iam.gserviceaccount.com",
-    ///     });
-    /// 
     ///     var primary = new Gcp.Eventarc.Channel("primary", new()
     ///     {
-    ///         Location = "us-west1",
-    ///         Name = "channel",
-    ///         Project = testProject.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
-    ///         CryptoKeyName = key1.Id,
-    ///         ThirdPartyProvider = $"projects/{testProject.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/locations/us-west1/providers/datadog",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             key1Member,
-    ///         },
+    ///         Location = "us-central1",
+    ///         Name = "some-channel",
+    ///         CryptoKeyName = "some-key",
+    ///         ThirdPartyProvider = "projects/my-project-name/locations/us-central1/providers/datadog",
     ///     });
     /// 
     /// });
@@ -93,53 +69,53 @@ namespace Pulumi.Gcp.Eventarc
     public partial class Channel : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
+        /// The activation token for the channel. The token must be used by the provider to register the channel for publishing.
         /// </summary>
         [Output("activationToken")]
         public Output<string> ActivationToken { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The creation time.
+        /// The creation time.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         /// </summary>
         [Output("cryptoKeyName")]
         public Output<string?> CryptoKeyName { get; private set; } = null!;
 
         /// <summary>
         /// The location for the resource
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The resource name of the channel. Must be unique within the location on the project.
-        /// 
-        /// 
-        /// 
-        /// - - -
+        /// The resource name of the channel. Must be unique within the location on the project.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
+        /// The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
         /// </summary>
         [Output("pubsubTopic")]
         public Output<string> PubsubTopic { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The state of a Channel. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE, INACTIVE
+        /// The state of a Channel.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -151,13 +127,13 @@ namespace Pulumi.Gcp.Eventarc
         public Output<string?> ThirdPartyProvider { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+        /// Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The last-modified time.
+        /// The last-modified time.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -209,29 +185,29 @@ namespace Pulumi.Gcp.Eventarc
     public sealed class ChannelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         /// </summary>
         [Input("cryptoKeyName")]
         public Input<string>? CryptoKeyName { get; set; }
 
         /// <summary>
         /// The location for the resource
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Required. The resource name of the channel. Must be unique within the location on the project.
-        /// 
-        /// 
-        /// 
-        /// - - -
+        /// The resource name of the channel. Must be unique within the location on the project.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -251,53 +227,53 @@ namespace Pulumi.Gcp.Eventarc
     public sealed class ChannelState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
+        /// The activation token for the channel. The token must be used by the provider to register the channel for publishing.
         /// </summary>
         [Input("activationToken")]
         public Input<string>? ActivationToken { get; set; }
 
         /// <summary>
-        /// Output only. The creation time.
+        /// The creation time.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         /// </summary>
         [Input("cryptoKeyName")]
         public Input<string>? CryptoKeyName { get; set; }
 
         /// <summary>
         /// The location for the resource
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Required. The resource name of the channel. Must be unique within the location on the project.
-        /// 
-        /// 
-        /// 
-        /// - - -
+        /// The resource name of the channel. Must be unique within the location on the project.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
+        /// The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
         /// </summary>
         [Input("pubsubTopic")]
         public Input<string>? PubsubTopic { get; set; }
 
         /// <summary>
-        /// Output only. The state of a Channel. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE, INACTIVE
+        /// The state of a Channel.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -309,13 +285,13 @@ namespace Pulumi.Gcp.Eventarc
         public Input<string>? ThirdPartyProvider { get; set; }
 
         /// <summary>
-        /// Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+        /// Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }
 
         /// <summary>
-        /// Output only. The last-modified time.
+        /// The last-modified time.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

@@ -97,7 +97,8 @@ export class InterceptEndpointGroupAssociation extends pulumi.CustomResource {
     }
 
     /**
-     * Create time stamp.
+     * The timestamp when the resource was created.
+     * See https://google.aip.dev/148#timestamps.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -105,40 +106,47 @@ export class InterceptEndpointGroupAssociation extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Immutable. The Intercept Endpoint Group that this resource is connected to. Format
-     * is:
-     * `projects/{project}/locations/global/interceptEndpointGroups/{interceptEndpointGroup}`.
+     * The endpoint group that this association is connected to, for example:
+     * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+     * See https://google.aip.dev/124.
      */
     public readonly interceptEndpointGroup!: pulumi.Output<string>;
     /**
-     * ID of the Intercept Endpoint Group Association.
+     * The ID to use for the new association, which will become the final
+     * component of the endpoint group's resource name. If not provided, the
+     * server will generate a unique ID.
      */
     public readonly interceptEndpointGroupAssociationId!: pulumi.Output<string | undefined>;
     /**
-     * Optional. Labels as key value pairs.
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+     * The cloud location of the association, currently restricted to `global`.
      *
      *
      * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * The list of locations that are currently supported by the associated Intercept Deployment Group and their state.
+     * The list of locations where the association is present. This information
+     * is retrieved from the linked endpoint group, and not configured as part
+     * of the association itself.
      * Structure is documented below.
      */
     public /*out*/ readonly locationsDetails!: pulumi.Output<outputs.networksecurity.InterceptEndpointGroupAssociationLocationsDetail[]>;
     /**
-     * Identifier. The name of the Intercept Endpoint Group Association.
+     * The resource name of this endpoint group association, for example:
+     * `projects/123456789/locations/global/interceptEndpointGroupAssociations/my-eg-association`.
+     * See https://google.aip.dev/122 for more details.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Immutable. The VPC network associated. Format:
-     * `projects/{project}/global/networks/{network}`.
+     * The VPC network that is associated. for example:
+     * `projects/123456789/global/networks/my-network`.
+     * See https://google.aip.dev/124.
      */
     public readonly network!: pulumi.Output<string>;
     /**
@@ -152,12 +160,15 @@ export class InterceptEndpointGroupAssociation extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Whether reconciling is in progress.
+     * The current state of the resource does not match the user's intended state,
+     * and the system is working to reconcile them. This part of the normal
+     * operation (e.g. adding a new location to the target deployment group).
+     * See https://google.aip.dev/128.
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
      * (Output)
-     * The association state in this location.
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -165,7 +176,8 @@ export class InterceptEndpointGroupAssociation extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Update time stamp.
+     * The timestamp when the resource was most recently updated.
+     * See https://google.aip.dev/148#timestamps.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -234,7 +246,8 @@ export class InterceptEndpointGroupAssociation extends pulumi.CustomResource {
  */
 export interface InterceptEndpointGroupAssociationState {
     /**
-     * Create time stamp.
+     * The timestamp when the resource was created.
+     * See https://google.aip.dev/148#timestamps.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -242,40 +255,47 @@ export interface InterceptEndpointGroupAssociationState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Immutable. The Intercept Endpoint Group that this resource is connected to. Format
-     * is:
-     * `projects/{project}/locations/global/interceptEndpointGroups/{interceptEndpointGroup}`.
+     * The endpoint group that this association is connected to, for example:
+     * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+     * See https://google.aip.dev/124.
      */
     interceptEndpointGroup?: pulumi.Input<string>;
     /**
-     * ID of the Intercept Endpoint Group Association.
+     * The ID to use for the new association, which will become the final
+     * component of the endpoint group's resource name. If not provided, the
+     * server will generate a unique ID.
      */
     interceptEndpointGroupAssociationId?: pulumi.Input<string>;
     /**
-     * Optional. Labels as key value pairs.
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+     * The cloud location of the association, currently restricted to `global`.
      *
      *
      * - - -
      */
     location?: pulumi.Input<string>;
     /**
-     * The list of locations that are currently supported by the associated Intercept Deployment Group and their state.
+     * The list of locations where the association is present. This information
+     * is retrieved from the linked endpoint group, and not configured as part
+     * of the association itself.
      * Structure is documented below.
      */
     locationsDetails?: pulumi.Input<pulumi.Input<inputs.networksecurity.InterceptEndpointGroupAssociationLocationsDetail>[]>;
     /**
-     * Identifier. The name of the Intercept Endpoint Group Association.
+     * The resource name of this endpoint group association, for example:
+     * `projects/123456789/locations/global/interceptEndpointGroupAssociations/my-eg-association`.
+     * See https://google.aip.dev/122 for more details.
      */
     name?: pulumi.Input<string>;
     /**
-     * Immutable. The VPC network associated. Format:
-     * `projects/{project}/global/networks/{network}`.
+     * The VPC network that is associated. for example:
+     * `projects/123456789/global/networks/my-network`.
+     * See https://google.aip.dev/124.
      */
     network?: pulumi.Input<string>;
     /**
@@ -289,12 +309,15 @@ export interface InterceptEndpointGroupAssociationState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Whether reconciling is in progress.
+     * The current state of the resource does not match the user's intended state,
+     * and the system is working to reconcile them. This part of the normal
+     * operation (e.g. adding a new location to the target deployment group).
+     * See https://google.aip.dev/128.
      */
     reconciling?: pulumi.Input<boolean>;
     /**
      * (Output)
-     * The association state in this location.
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -302,7 +325,8 @@ export interface InterceptEndpointGroupAssociationState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Update time stamp.
+     * The timestamp when the resource was most recently updated.
+     * See https://google.aip.dev/148#timestamps.
      */
     updateTime?: pulumi.Input<string>;
 }
@@ -312,31 +336,34 @@ export interface InterceptEndpointGroupAssociationState {
  */
 export interface InterceptEndpointGroupAssociationArgs {
     /**
-     * Immutable. The Intercept Endpoint Group that this resource is connected to. Format
-     * is:
-     * `projects/{project}/locations/global/interceptEndpointGroups/{interceptEndpointGroup}`.
+     * The endpoint group that this association is connected to, for example:
+     * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+     * See https://google.aip.dev/124.
      */
     interceptEndpointGroup: pulumi.Input<string>;
     /**
-     * ID of the Intercept Endpoint Group Association.
+     * The ID to use for the new association, which will become the final
+     * component of the endpoint group's resource name. If not provided, the
+     * server will generate a unique ID.
      */
     interceptEndpointGroupAssociationId?: pulumi.Input<string>;
     /**
-     * Optional. Labels as key value pairs.
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+     * The cloud location of the association, currently restricted to `global`.
      *
      *
      * - - -
      */
     location: pulumi.Input<string>;
     /**
-     * Immutable. The VPC network associated. Format:
-     * `projects/{project}/global/networks/{network}`.
+     * The VPC network that is associated. for example:
+     * `projects/123456789/global/networks/my-network`.
+     * See https://google.aip.dev/124.
      */
     network: pulumi.Input<string>;
     /**

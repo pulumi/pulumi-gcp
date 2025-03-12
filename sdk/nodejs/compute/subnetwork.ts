@@ -342,6 +342,18 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly ipCidrRange!: pulumi.Output<string>;
     /**
+     * Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+     * in EXTERNAL_IPV6_SUBNETWORK_CREATION mode.
+     * Use one of the following formats to specify a sub-PDP when creating an
+     * IPv6 NetLB forwarding rule using BYOIP:
+     * Full resource URL, as in:
+     * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * Partial URL, as in:
+     * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     */
+    public readonly ipCollection!: pulumi.Output<string | undefined>;
+    /**
      * The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
      * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
      * cannot enable direct path.
@@ -352,6 +364,14 @@ export class Subnetwork extends pulumi.CustomResource {
      * The range of internal IPv6 addresses that are owned by this subnetwork.
      */
     public /*out*/ readonly ipv6CidrRange!: pulumi.Output<string>;
+    /**
+     * Possible endpoints of this subnetwork. It can be one of the following:
+     * * VM_ONLY: The subnetwork can be used for creating instances and IPv6 addresses with VM endpoint type. Such a subnetwork
+     * gets external IPv6 ranges from a public delegated prefix and cannot be used to create NetLb.
+     * * VM_AND_FR: The subnetwork can be used for creating both VM instances and Forwarding Rules. It can also be used to reserve
+     * IPv6 addresses with both VM and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP Pool directly.
+     */
+    public /*out*/ readonly ipv6GceEndpoint!: pulumi.Output<string>;
     /**
      * This field denotes the VPC flow logging options for this subnetwork. If
      * logging is enabled, logs are exported to Cloud Logging. Flow logging
@@ -426,6 +446,9 @@ export class Subnetwork extends pulumi.CustomResource {
      * contained in this subnetwork. The primary IP of such VM must belong
      * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
      * to either primary or secondary ranges.
+     * **Note**: This field uses attr-as-block mode to avoid
+     * breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+     * set `sendSecondaryIpRangeIfEmpty = true`
      * Structure is documented below.
      */
     public readonly secondaryIpRanges!: pulumi.Output<outputs.compute.SubnetworkSecondaryIpRange[]>;
@@ -474,8 +497,10 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["gatewayAddress"] = state ? state.gatewayAddress : undefined;
             resourceInputs["internalIpv6Prefix"] = state ? state.internalIpv6Prefix : undefined;
             resourceInputs["ipCidrRange"] = state ? state.ipCidrRange : undefined;
+            resourceInputs["ipCollection"] = state ? state.ipCollection : undefined;
             resourceInputs["ipv6AccessType"] = state ? state.ipv6AccessType : undefined;
             resourceInputs["ipv6CidrRange"] = state ? state.ipv6CidrRange : undefined;
+            resourceInputs["ipv6GceEndpoint"] = state ? state.ipv6GceEndpoint : undefined;
             resourceInputs["logConfig"] = state ? state.logConfig : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
@@ -500,6 +525,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["externalIpv6Prefix"] = args ? args.externalIpv6Prefix : undefined;
             resourceInputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
+            resourceInputs["ipCollection"] = args ? args.ipCollection : undefined;
             resourceInputs["ipv6AccessType"] = args ? args.ipv6AccessType : undefined;
             resourceInputs["logConfig"] = args ? args.logConfig : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -519,6 +545,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["gatewayAddress"] = undefined /*out*/;
             resourceInputs["internalIpv6Prefix"] = undefined /*out*/;
             resourceInputs["ipv6CidrRange"] = undefined /*out*/;
+            resourceInputs["ipv6GceEndpoint"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["subnetworkId"] = undefined /*out*/;
         }
@@ -576,6 +603,18 @@ export interface SubnetworkState {
      */
     ipCidrRange?: pulumi.Input<string>;
     /**
+     * Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+     * in EXTERNAL_IPV6_SUBNETWORK_CREATION mode.
+     * Use one of the following formats to specify a sub-PDP when creating an
+     * IPv6 NetLB forwarding rule using BYOIP:
+     * Full resource URL, as in:
+     * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * Partial URL, as in:
+     * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     */
+    ipCollection?: pulumi.Input<string>;
+    /**
      * The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
      * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
      * cannot enable direct path.
@@ -586,6 +625,14 @@ export interface SubnetworkState {
      * The range of internal IPv6 addresses that are owned by this subnetwork.
      */
     ipv6CidrRange?: pulumi.Input<string>;
+    /**
+     * Possible endpoints of this subnetwork. It can be one of the following:
+     * * VM_ONLY: The subnetwork can be used for creating instances and IPv6 addresses with VM endpoint type. Such a subnetwork
+     * gets external IPv6 ranges from a public delegated prefix and cannot be used to create NetLb.
+     * * VM_AND_FR: The subnetwork can be used for creating both VM instances and Forwarding Rules. It can also be used to reserve
+     * IPv6 addresses with both VM and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP Pool directly.
+     */
+    ipv6GceEndpoint?: pulumi.Input<string>;
     /**
      * This field denotes the VPC flow logging options for this subnetwork. If
      * logging is enabled, logs are exported to Cloud Logging. Flow logging
@@ -660,6 +707,9 @@ export interface SubnetworkState {
      * contained in this subnetwork. The primary IP of such VM must belong
      * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
      * to either primary or secondary ranges.
+     * **Note**: This field uses attr-as-block mode to avoid
+     * breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+     * set `sendSecondaryIpRangeIfEmpty = true`
      * Structure is documented below.
      */
     secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.SubnetworkSecondaryIpRange>[]>;
@@ -717,6 +767,18 @@ export interface SubnetworkArgs {
      * Field is optional when `reservedInternalRange` is defined, otherwise required.
      */
     ipCidrRange?: pulumi.Input<string>;
+    /**
+     * Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+     * in EXTERNAL_IPV6_SUBNETWORK_CREATION mode.
+     * Use one of the following formats to specify a sub-PDP when creating an
+     * IPv6 NetLB forwarding rule using BYOIP:
+     * Full resource URL, as in:
+     * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * Partial URL, as in:
+     * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     */
+    ipCollection?: pulumi.Input<string>;
     /**
      * The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
      * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
@@ -798,6 +860,9 @@ export interface SubnetworkArgs {
      * contained in this subnetwork. The primary IP of such VM must belong
      * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
      * to either primary or secondary ranges.
+     * **Note**: This field uses attr-as-block mode to avoid
+     * breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+     * set `sendSecondaryIpRangeIfEmpty = true`
      * Structure is documented below.
      */
     secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.SubnetworkSecondaryIpRange>[]>;

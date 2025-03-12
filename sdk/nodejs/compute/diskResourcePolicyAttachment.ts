@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
  * Adds existing resource policies to a disk. You can only add one policy
  * which will be applied to this disk for scheduling snapshot creation.
  *
- * > **Note:** This resource does not support regional disks (`gcp.compute.RegionDisk`). For regional disks, please refer to the `gcp.compute.RegionDiskResourcePolicyAttachment` resource.
+ * > **Note:** This resource does not support regional disks (`gcp.compute.RegionDisk`). For regional disks, please refer to `gcp.compute.RegionDiskResourcePolicyAttachment`
  *
  * ## Example Usage
  *

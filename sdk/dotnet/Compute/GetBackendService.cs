@@ -171,6 +171,7 @@ namespace Pulumi.Gcp.Compute
         public readonly int ConnectionDrainingTimeoutSec;
         public readonly ImmutableArray<Outputs.GetBackendServiceConsistentHashResult> ConsistentHash;
         public readonly string CreationTimestamp;
+        public readonly ImmutableArray<Outputs.GetBackendServiceCustomMetricResult> CustomMetrics;
         public readonly ImmutableArray<string> CustomRequestHeaders;
         public readonly ImmutableArray<string> CustomResponseHeaders;
         /// <summary>
@@ -250,6 +251,8 @@ namespace Pulumi.Gcp.Compute
 
             string creationTimestamp,
 
+            ImmutableArray<Outputs.GetBackendServiceCustomMetricResult> customMetrics,
+
             ImmutableArray<string> customRequestHeaders,
 
             ImmutableArray<string> customResponseHeaders,
@@ -312,6 +315,7 @@ namespace Pulumi.Gcp.Compute
             ConnectionDrainingTimeoutSec = connectionDrainingTimeoutSec;
             ConsistentHash = consistentHash;
             CreationTimestamp = creationTimestamp;
+            CustomMetrics = customMetrics;
             CustomRequestHeaders = customRequestHeaders;
             CustomResponseHeaders = customResponseHeaders;
             Description = description;

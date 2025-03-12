@@ -10,14 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
-    /// A rule for the OrganizationSecurityPolicy.
-    /// 
-    /// To get more information about OrganizationSecurityPolicyRule, see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addRule)
-    /// * How-to Guides
-    ///     * [Creating firewall rules](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
-    /// 
     /// ## Example Usage
     /// 
     /// ### Organization Security Policy Rule Basic
@@ -32,7 +24,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
     ///     {
-    ///         DisplayName = "tf-test",
+    ///         DisplayName = "tf-test_22811",
     ///         Parent = "organizations/123456789",
     ///     });
     /// 

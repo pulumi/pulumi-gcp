@@ -17,6 +17,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * ServiceBinding is the resource that defines a Service Directory Service to be used in a
+ * BackendService resource.
+ * 
+ * To get more information about ServiceBinding, see:
+ * 
+ * * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1beta1/projects.locations.serviceBindings)
+ * 
  * ## Example Usage
  * 
  * ### Network Services Service Binding Basic

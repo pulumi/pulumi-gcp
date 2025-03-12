@@ -41,8 +41,8 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * If `true`, services that are enabled
      * and which depend on this service should also be disabled when this service is
-     * destroyed. If `false` or unset, an error will be generated if any enabled
-     * services depend on this service when destroying it.
+     * destroyed. If `false` or unset, an error will be returned if any enabled
+     * services depend on this service when attempting to destroy it.
      * 
      */
     @Import(name="disableDependentServices")
@@ -51,8 +51,8 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return If `true`, services that are enabled
      * and which depend on this service should also be disabled when this service is
-     * destroyed. If `false` or unset, an error will be generated if any enabled
-     * services depend on this service when destroying it.
+     * destroyed. If `false` or unset, an error will be returned if any enabled
+     * services depend on this service when attempting to destroy it.
      * 
      */
     public Optional<Output<Boolean>> disableDependentServices() {
@@ -156,8 +156,8 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param disableDependentServices If `true`, services that are enabled
          * and which depend on this service should also be disabled when this service is
-         * destroyed. If `false` or unset, an error will be generated if any enabled
-         * services depend on this service when destroying it.
+         * destroyed. If `false` or unset, an error will be returned if any enabled
+         * services depend on this service when attempting to destroy it.
          * 
          * @return builder
          * 
@@ -170,8 +170,8 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param disableDependentServices If `true`, services that are enabled
          * and which depend on this service should also be disabled when this service is
-         * destroyed. If `false` or unset, an error will be generated if any enabled
-         * services depend on this service when destroying it.
+         * destroyed. If `false` or unset, an error will be returned if any enabled
+         * services depend on this service when attempting to destroy it.
          * 
          * @return builder
          * 

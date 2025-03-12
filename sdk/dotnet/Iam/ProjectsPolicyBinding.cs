@@ -10,14 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Iam
 {
     /// <summary>
-    /// A policy binding to a Project
-    /// 
-    /// To get more information about ProjectsPolicyBinding, see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/projects.locations.policyBindings)
-    /// * How-to Guides
-    ///     * [Apply a policy binding](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create#create_binding)
-    /// 
     /// ## Example Usage
     /// 
     /// ### Iam Projects Policy Binding
@@ -37,7 +29,7 @@ namespace Pulumi.Gcp.Iam
     ///     {
     ///         Organization = "123456789",
     ///         Location = "global",
-    ///         DisplayName = "test project binding",
+    ///         DisplayName = "binding for all principals in the project",
     ///         PrincipalAccessBoundaryPolicyId = "my-pab-policy",
     ///     });
     /// 
@@ -52,13 +44,13 @@ namespace Pulumi.Gcp.Iam
     ///         },
     ///     });
     /// 
-    ///     var my_project_binding = new Gcp.Iam.ProjectsPolicyBinding("my-project-binding", new()
+    ///     var binding_for_all_project_principals = new Gcp.Iam.ProjectsPolicyBinding("binding-for-all-project-principals", new()
     ///     {
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///         Location = "global",
-    ///         DisplayName = "test project binding",
+    ///         DisplayName = "binding for all principals in the project",
     ///         PolicyKind = "PRINCIPAL_ACCESS_BOUNDARY",
-    ///         PolicyBindingId = "test-project-binding",
+    ///         PolicyBindingId = "binding-for-all-project-principals",
     ///         Policy = pabPolicy.PrincipalAccessBoundaryPolicyId.Apply(principalAccessBoundaryPolicyId =&gt; $"organizations/123456789/locations/global/principalAccessBoundaryPolicies/{principalAccessBoundaryPolicyId}"),
     ///         Target = new Gcp.Iam.Inputs.ProjectsPolicyBindingTargetArgs
     ///         {

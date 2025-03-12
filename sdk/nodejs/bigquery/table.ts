@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  * [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
  *
  * > **Note**: On newer versions of the provider, you must explicitly set `deletion_protection=false`
- * (and run `pulumi update` to write the field to state) in order to destroy an instance.
+ * (and run `pulumi up` to write the field to state) in order to destroy an instance.
  * It is recommended to not set this field (or set it to true) until you're ready to destroy.
  *
  * ## Example Usage
@@ -141,10 +141,6 @@ export class Table extends pulumi.CustomResource {
      * Changing this forces a new resource to be created.
      */
     public readonly datasetId!: pulumi.Output<string>;
-    /**
-     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `=destroy` or `=update` that would delete the instance will fail.
-     */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
      * The field description.
@@ -435,10 +431,6 @@ export interface TableState {
      * Changing this forces a new resource to be created.
      */
     datasetId?: pulumi.Input<string>;
-    /**
-     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `=destroy` or `=update` that would delete the instance will fail.
-     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * The field description.
@@ -627,10 +619,6 @@ export interface TableArgs {
      * Changing this forces a new resource to be created.
      */
     datasetId: pulumi.Input<string>;
-    /**
-     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `=destroy` or `=update` that would delete the instance will fail.
-     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * The field description.

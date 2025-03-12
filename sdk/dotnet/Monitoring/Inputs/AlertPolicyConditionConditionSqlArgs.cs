@@ -13,8 +13,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
     public sealed class AlertPolicyConditionConditionSqlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The start date and time of the query. If left unspecified, then the
-        /// query will start immediately.
+        /// A test that uses an alerting result in a boolean column produced by the SQL query.
         /// Structure is documented below.
         /// </summary>
         [Input("booleanTest")]
@@ -52,7 +51,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public Input<string> Query { get; set; } = null!;
 
         /// <summary>
-        /// Test the row count against a threshold.
+        /// A test that checks if the number of rows in the result set violates some threshold.
         /// Structure is documented below.
         /// </summary>
         [Input("rowCountTest")]

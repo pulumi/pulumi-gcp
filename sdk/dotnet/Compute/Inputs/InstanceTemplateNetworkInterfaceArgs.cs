@@ -14,15 +14,6 @@ namespace Pulumi.Gcp.Compute.Inputs
     {
         [Input("accessConfigs")]
         private InputList<Inputs.InstanceTemplateNetworkInterfaceAccessConfigArgs>? _accessConfigs;
-
-        /// <summary>
-        /// Access configurations, i.e. IPs via which this
-        /// instance can be accessed via the Internet. Omit to ensure that the instance
-        /// is not accessible from the Internet (this means that ssh provisioners will
-        /// not work unless you can send traffic to the instance's
-        /// network (e.g. via tunnel or because it is running on another cloud instance
-        /// on that network). This block can be specified once per `network_interface`. Structure documented below.
-        /// </summary>
         public InputList<Inputs.InstanceTemplateNetworkInterfaceAccessConfigArgs> AccessConfigs
         {
             get => _accessConfigs ?? (_accessConfigs = new InputList<Inputs.InstanceTemplateNetworkInterfaceAccessConfigArgs>());
@@ -76,8 +67,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? Ipv6Address { get; set; }
 
         /// <summary>
-        /// The name of the instance template. If you leave
-        /// this blank, the provider will auto-generate a unique name.
+        /// The name of the network_interface.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

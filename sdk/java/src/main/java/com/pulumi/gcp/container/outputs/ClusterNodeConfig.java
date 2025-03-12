@@ -43,7 +43,7 @@ public final class ClusterNodeConfig {
      */
     private @Nullable ClusterNodeConfigAdvancedMachineFeatures advancedMachineFeatures;
     /**
-     * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
+     * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
      * 
      */
     private @Nullable String bootDiskKmsKey;
@@ -110,6 +110,10 @@ public final class ClusterNodeConfig {
     /**
      * @return List of the type and count of accelerator cards attached to the instance.
      * Structure documented below.
+     * **Note**: As of 6.0.0, argument syntax
+     * is no longer supported for this field in favor of block syntax.
+     * To dynamically set a list of guest accelerators, use dynamic blocks.
+     * To set an empty list, use a single `guest_accelerator` block with `count = 0`.
      * 
      */
     private @Nullable List<ClusterNodeConfigGuestAccelerator> guestAccelerators;
@@ -187,11 +191,7 @@ public final class ClusterNodeConfig {
      */
     private @Nullable String maxRunDuration;
     /**
-     * @return The metadata key/value pairs assigned to instances in
-     * the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-     * `true` by the API; if `metadata` is set but that default value is not
-     * included, the provider will attempt to unset the value. To avoid this, set the
-     * value in your config.
+     * @return The metadata key/value pairs assigned to instances in the cluster.
      * 
      */
     private @Nullable Map<String,String> metadata;
@@ -242,7 +242,8 @@ public final class ClusterNodeConfig {
      */
     private @Nullable Map<String,String> resourceManagerTags;
     /**
-     * @return Sandbox configuration for this node.
+     * @return [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = &#34;COS_CONTAINERD&#34;` and `node_version = &#34;1.12.7-gke.17&#34;` or later to use it.
+     * Structure is documented below.
      * 
      */
     private @Nullable ClusterNodeConfigSandboxConfig sandboxConfig;
@@ -286,14 +287,7 @@ public final class ClusterNodeConfig {
      */
     private @Nullable List<String> tags;
     /**
-     * @return A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-     * to apply to nodes. GKE&#39;s API can only set this field on cluster creation.
-     * However, GKE will add taints to your nodes if you enable certain features such
-     * as GPUs. If this field is set, any diffs on this field will cause the provider to
-     * recreate the underlying resource. Taint values can be updated safely in
-     * Kubernetes (eg. through `kubectl`), and it&#39;s recommended that you do not use
-     * this field to manage taints. If you do, `lifecycle.ignore_changes` is
-     * recommended. Structure is documented below.
+     * @return List of Kubernetes taints to be applied to each node.
      * 
      */
     private @Nullable List<ClusterNodeConfigTaint> taints;
@@ -314,7 +308,7 @@ public final class ClusterNodeConfig {
         return Optional.ofNullable(this.advancedMachineFeatures);
     }
     /**
-     * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
+     * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
      * 
      */
     public Optional<String> bootDiskKmsKey() {
@@ -403,6 +397,10 @@ public final class ClusterNodeConfig {
     /**
      * @return List of the type and count of accelerator cards attached to the instance.
      * Structure documented below.
+     * **Note**: As of 6.0.0, argument syntax
+     * is no longer supported for this field in favor of block syntax.
+     * To dynamically set a list of guest accelerators, use dynamic blocks.
+     * To set an empty list, use a single `guest_accelerator` block with `count = 0`.
      * 
      */
     public List<ClusterNodeConfigGuestAccelerator> guestAccelerators() {
@@ -506,11 +504,7 @@ public final class ClusterNodeConfig {
         return Optional.ofNullable(this.maxRunDuration);
     }
     /**
-     * @return The metadata key/value pairs assigned to instances in
-     * the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-     * `true` by the API; if `metadata` is set but that default value is not
-     * included, the provider will attempt to unset the value. To avoid this, set the
-     * value in your config.
+     * @return The metadata key/value pairs assigned to instances in the cluster.
      * 
      */
     public Map<String,String> metadata() {
@@ -577,7 +571,8 @@ public final class ClusterNodeConfig {
         return this.resourceManagerTags == null ? Map.of() : this.resourceManagerTags;
     }
     /**
-     * @return Sandbox configuration for this node.
+     * @return [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = &#34;COS_CONTAINERD&#34;` and `node_version = &#34;1.12.7-gke.17&#34;` or later to use it.
+     * Structure is documented below.
      * 
      */
     public Optional<ClusterNodeConfigSandboxConfig> sandboxConfig() {
@@ -637,14 +632,7 @@ public final class ClusterNodeConfig {
         return this.tags == null ? List.of() : this.tags;
     }
     /**
-     * @return A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-     * to apply to nodes. GKE&#39;s API can only set this field on cluster creation.
-     * However, GKE will add taints to your nodes if you enable certain features such
-     * as GPUs. If this field is set, any diffs on this field will cause the provider to
-     * recreate the underlying resource. Taint values can be updated safely in
-     * Kubernetes (eg. through `kubectl`), and it&#39;s recommended that you do not use
-     * this field to manage taints. If you do, `lifecycle.ignore_changes` is
-     * recommended. Structure is documented below.
+     * @return List of Kubernetes taints to be applied to each node.
      * 
      */
     public List<ClusterNodeConfigTaint> taints() {

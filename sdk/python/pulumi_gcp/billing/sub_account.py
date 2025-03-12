@@ -27,9 +27,6 @@ class SubAccountArgs:
         :param pulumi.Input[str] display_name: The display name of the billing account.
         :param pulumi.Input[str] master_billing_account: The name of the master billing account that the subaccount
                will be created under in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
-        :param pulumi.Input[str] deletion_policy: If set to "RENAME_ON_DESTROY" the billing account display_name
-               will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-               Default is "".
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "master_billing_account", master_billing_account)
@@ -64,11 +61,6 @@ class SubAccountArgs:
     @property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> Optional[pulumi.Input[str]]:
-        """
-        If set to "RENAME_ON_DESTROY" the billing account display_name
-        will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-        Default is "".
-        """
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
@@ -88,9 +80,6 @@ class _SubAccountState:
         """
         Input properties used for looking up and filtering SubAccount resources.
         :param pulumi.Input[str] billing_account_id: The billing account id.
-        :param pulumi.Input[str] deletion_policy: If set to "RENAME_ON_DESTROY" the billing account display_name
-               will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-               Default is "".
         :param pulumi.Input[str] display_name: The display name of the billing account.
         :param pulumi.Input[str] master_billing_account: The name of the master billing account that the subaccount
                will be created under in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
@@ -125,11 +114,6 @@ class _SubAccountState:
     @property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> Optional[pulumi.Input[str]]:
-        """
-        If set to "RENAME_ON_DESTROY" the billing account display_name
-        will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-        Default is "".
-        """
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
@@ -196,19 +180,6 @@ class SubAccount(pulumi.CustomResource):
                  master_billing_account: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Allows creation and management of a Google Cloud Billing Subaccount.
-
-        !> **WARNING:** Deleting this resource will not delete or close the billing subaccount.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        subaccount = gcp.billing.SubAccount("subaccount",
-            display_name="My Billing Account",
-            master_billing_account="012345-567890-ABCDEF")
-        ```
-
         ## Import
 
         Billing Subaccounts can be imported using any of these accepted formats:
@@ -223,9 +194,6 @@ class SubAccount(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] deletion_policy: If set to "RENAME_ON_DESTROY" the billing account display_name
-               will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-               Default is "".
         :param pulumi.Input[str] display_name: The display name of the billing account.
         :param pulumi.Input[str] master_billing_account: The name of the master billing account that the subaccount
                will be created under in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
@@ -237,19 +205,6 @@ class SubAccount(pulumi.CustomResource):
                  args: SubAccountArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Allows creation and management of a Google Cloud Billing Subaccount.
-
-        !> **WARNING:** Deleting this resource will not delete or close the billing subaccount.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        subaccount = gcp.billing.SubAccount("subaccount",
-            display_name="My Billing Account",
-            master_billing_account="012345-567890-ABCDEF")
-        ```
-
         ## Import
 
         Billing Subaccounts can be imported using any of these accepted formats:
@@ -323,9 +278,6 @@ class SubAccount(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] billing_account_id: The billing account id.
-        :param pulumi.Input[str] deletion_policy: If set to "RENAME_ON_DESTROY" the billing account display_name
-               will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-               Default is "".
         :param pulumi.Input[str] display_name: The display name of the billing account.
         :param pulumi.Input[str] master_billing_account: The name of the master billing account that the subaccount
                will be created under in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
@@ -355,11 +307,6 @@ class SubAccount(pulumi.CustomResource):
     @property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[Optional[str]]:
-        """
-        If set to "RENAME_ON_DESTROY" the billing account display_name
-        will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-        Default is "".
-        """
         return pulumi.get(self, "deletion_policy")
 
     @property

@@ -65,8 +65,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := datacatalog.NewEntryGroup(ctx, "basic_entry_group", &datacatalog.EntryGroupArgs{
 //				EntryGroupId: pulumi.String("my_group"),
-//				DisplayName:  pulumi.String("entry group"),
-//				Description:  pulumi.String("example entry group"),
+//				DisplayName:  pulumi.String("terraform entry group"),
+//				Description:  pulumi.String("entry group created by Terraform"),
 //			})
 //			if err != nil {
 //				return err

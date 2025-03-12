@@ -50,6 +50,27 @@ public final class RegionDiskDiskEncryptionKeyArgs extends com.pulumi.resources.
     }
 
     /**
+     * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+     * customer-supplied encryption key to either encrypt or decrypt
+     * this resource. You can provide either the rawKey or the rsaEncryptedKey.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
+    @Import(name="rsaEncryptedKey")
+    private @Nullable Output<String> rsaEncryptedKey;
+
+    /**
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+     * customer-supplied encryption key to either encrypt or decrypt
+     * this resource. You can provide either the rawKey or the rsaEncryptedKey.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
+    public Optional<Output<String>> rsaEncryptedKey() {
+        return Optional.ofNullable(this.rsaEncryptedKey);
+    }
+
+    /**
      * (Output)
      * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
      * encryption key that protects this resource.
@@ -73,6 +94,7 @@ public final class RegionDiskDiskEncryptionKeyArgs extends com.pulumi.resources.
     private RegionDiskDiskEncryptionKeyArgs(RegionDiskDiskEncryptionKeyArgs $) {
         this.kmsKeyName = $.kmsKeyName;
         this.rawKey = $.rawKey;
+        this.rsaEncryptedKey = $.rsaEncryptedKey;
         this.sha256 = $.sha256;
     }
 
@@ -138,6 +160,33 @@ public final class RegionDiskDiskEncryptionKeyArgs extends com.pulumi.resources.
          */
         public Builder rawKey(String rawKey) {
             return rawKey(Output.of(rawKey));
+        }
+
+        /**
+         * @param rsaEncryptedKey Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+         * customer-supplied encryption key to either encrypt or decrypt
+         * this resource. You can provide either the rawKey or the rsaEncryptedKey.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rsaEncryptedKey(@Nullable Output<String> rsaEncryptedKey) {
+            $.rsaEncryptedKey = rsaEncryptedKey;
+            return this;
+        }
+
+        /**
+         * @param rsaEncryptedKey Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+         * customer-supplied encryption key to either encrypt or decrypt
+         * this resource. You can provide either the rawKey or the rsaEncryptedKey.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rsaEncryptedKey(String rsaEncryptedKey) {
+            return rsaEncryptedKey(Output.of(rsaEncryptedKey));
         }
 
         /**

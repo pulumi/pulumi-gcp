@@ -16,21 +16,9 @@ public final class SubAccountArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SubAccountArgs Empty = new SubAccountArgs();
 
-    /**
-     * If set to &#34;RENAME_ON_DESTROY&#34; the billing account display_name
-     * will be changed to &#34;Destroyed&#34; along with a timestamp.  If set to &#34;&#34; this will not occur.
-     * Default is &#34;&#34;.
-     * 
-     */
     @Import(name="deletionPolicy")
     private @Nullable Output<String> deletionPolicy;
 
-    /**
-     * @return If set to &#34;RENAME_ON_DESTROY&#34; the billing account display_name
-     * will be changed to &#34;Destroyed&#34; along with a timestamp.  If set to &#34;&#34; this will not occur.
-     * Default is &#34;&#34;.
-     * 
-     */
     public Optional<Output<String>> deletionPolicy() {
         return Optional.ofNullable(this.deletionPolicy);
     }
@@ -93,27 +81,11 @@ public final class SubAccountArgs extends com.pulumi.resources.ResourceArgs {
             $ = new SubAccountArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param deletionPolicy If set to &#34;RENAME_ON_DESTROY&#34; the billing account display_name
-         * will be changed to &#34;Destroyed&#34; along with a timestamp.  If set to &#34;&#34; this will not occur.
-         * Default is &#34;&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
             $.deletionPolicy = deletionPolicy;
             return this;
         }
 
-        /**
-         * @param deletionPolicy If set to &#34;RENAME_ON_DESTROY&#34; the billing account display_name
-         * will be changed to &#34;Destroyed&#34; along with a timestamp.  If set to &#34;&#34; this will not occur.
-         * Default is &#34;&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deletionPolicy(String deletionPolicy) {
             return deletionPolicy(Output.of(deletionPolicy));
         }

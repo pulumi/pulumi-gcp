@@ -193,6 +193,44 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
+    /// ### Monitoring Alert Policy Sql Condition
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var alertPolicy = new Gcp.Monitoring.AlertPolicy("alert_policy", new()
+    ///     {
+    ///         DisplayName = "My Alert Policy",
+    ///         Combiner = "OR",
+    ///         Conditions = new[]
+    ///         {
+    ///             new Gcp.Monitoring.Inputs.AlertPolicyConditionArgs
+    ///             {
+    ///                 DisplayName = "minutes row count",
+    ///                 ConditionSql = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionSqlArgs
+    ///                 {
+    ///                     Query = "SELECT severity, resource FROM my_project.global._Default._AllLogs WHERE severity IS NOT NULL",
+    ///                     Minutes = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionSqlMinutesArgs
+    ///                     {
+    ///                         Periodicity = 600,
+    ///                     },
+    ///                     RowCountTest = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionSqlRowCountTestArgs
+    ///                     {
+    ///                         Comparison = "COMPARISON_GT",
+    ///                         Threshold = 0,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -85,10 +85,8 @@ type ObjectACL struct {
 	// ***
 	Object pulumi.StringOutput `pulumi:"object"`
 	// The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `roleEntity` is not.
-	PredefinedAcl pulumi.StringPtrOutput `pulumi:"predefinedAcl"`
-	// List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-	// Must be set if `predefinedAcl` is not.
-	RoleEntities pulumi.StringArrayOutput `pulumi:"roleEntities"`
+	PredefinedAcl pulumi.StringPtrOutput   `pulumi:"predefinedAcl"`
+	RoleEntities  pulumi.StringArrayOutput `pulumi:"roleEntities"`
 }
 
 // NewObjectACL registers a new resource with the given unique name, arguments, and options.
@@ -134,10 +132,8 @@ type objectACLState struct {
 	// ***
 	Object *string `pulumi:"object"`
 	// The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `roleEntity` is not.
-	PredefinedAcl *string `pulumi:"predefinedAcl"`
-	// List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-	// Must be set if `predefinedAcl` is not.
-	RoleEntities []string `pulumi:"roleEntities"`
+	PredefinedAcl *string  `pulumi:"predefinedAcl"`
+	RoleEntities  []string `pulumi:"roleEntities"`
 }
 
 type ObjectACLState struct {
@@ -149,9 +145,7 @@ type ObjectACLState struct {
 	Object pulumi.StringPtrInput
 	// The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `roleEntity` is not.
 	PredefinedAcl pulumi.StringPtrInput
-	// List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-	// Must be set if `predefinedAcl` is not.
-	RoleEntities pulumi.StringArrayInput
+	RoleEntities  pulumi.StringArrayInput
 }
 
 func (ObjectACLState) ElementType() reflect.Type {
@@ -166,10 +160,8 @@ type objectACLArgs struct {
 	// ***
 	Object string `pulumi:"object"`
 	// The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `roleEntity` is not.
-	PredefinedAcl *string `pulumi:"predefinedAcl"`
-	// List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-	// Must be set if `predefinedAcl` is not.
-	RoleEntities []string `pulumi:"roleEntities"`
+	PredefinedAcl *string  `pulumi:"predefinedAcl"`
+	RoleEntities  []string `pulumi:"roleEntities"`
 }
 
 // The set of arguments for constructing a ObjectACL resource.
@@ -182,9 +174,7 @@ type ObjectACLArgs struct {
 	Object pulumi.StringInput
 	// The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `roleEntity` is not.
 	PredefinedAcl pulumi.StringPtrInput
-	// List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-	// Must be set if `predefinedAcl` is not.
-	RoleEntities pulumi.StringArrayInput
+	RoleEntities  pulumi.StringArrayInput
 }
 
 func (ObjectACLArgs) ElementType() reflect.Type {
@@ -291,8 +281,6 @@ func (o ObjectACLOutput) PredefinedAcl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectACL) pulumi.StringPtrOutput { return v.PredefinedAcl }).(pulumi.StringPtrOutput)
 }
 
-// List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-// Must be set if `predefinedAcl` is not.
 func (o ObjectACLOutput) RoleEntities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ObjectACL) pulumi.StringArrayOutput { return v.RoleEntities }).(pulumi.StringArrayOutput)
 }

@@ -66,19 +66,9 @@ public final class ObjectACLArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.predefinedAcl);
     }
 
-    /**
-     * List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-     * Must be set if `predefined_acl` is not.
-     * 
-     */
     @Import(name="roleEntities")
     private @Nullable Output<List<String>> roleEntities;
 
-    /**
-     * @return List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-     * Must be set if `predefined_acl` is not.
-     * 
-     */
     public Optional<Output<List<String>>> roleEntities() {
         return Optional.ofNullable(this.roleEntities);
     }
@@ -177,36 +167,15 @@ public final class ObjectACLArgs extends com.pulumi.resources.ResourceArgs {
             return predefinedAcl(Output.of(predefinedAcl));
         }
 
-        /**
-         * @param roleEntities List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-         * Must be set if `predefined_acl` is not.
-         * 
-         * @return builder
-         * 
-         */
         public Builder roleEntities(@Nullable Output<List<String>> roleEntities) {
             $.roleEntities = roleEntities;
             return this;
         }
 
-        /**
-         * @param roleEntities List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-         * Must be set if `predefined_acl` is not.
-         * 
-         * @return builder
-         * 
-         */
         public Builder roleEntities(List<String> roleEntities) {
             return roleEntities(Output.of(roleEntities));
         }
 
-        /**
-         * @param roleEntities List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-         * Must be set if `predefined_acl` is not.
-         * 
-         * @return builder
-         * 
-         */
         public Builder roleEntities(String... roleEntities) {
             return roleEntities(List.of(roleEntities));
         }

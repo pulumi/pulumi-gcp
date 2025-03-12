@@ -80,8 +80,6 @@ class InstanceTemplateArgs:
                thus the two mechanisms are not allowed to be used simultaneously.
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-        :param pulumi.Input[str] name: The name of the instance template. If you leave
-               this blank, the provider will auto-generate a unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified
                prefix. Conflicts with `name`. Max length is 54 characters.
                Prefixes with lengths longer than 37 characters will use a shortened
@@ -361,10 +359,6 @@ class InstanceTemplateArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the instance template. If you leave
-        this blank, the provider will auto-generate a unique name.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -624,8 +618,6 @@ class _InstanceTemplateState:
                thus the two mechanisms are not allowed to be used simultaneously.
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-        :param pulumi.Input[str] name: The name of the instance template. If you leave
-               this blank, the provider will auto-generate a unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified
                prefix. Conflicts with `name`. Max length is 54 characters.
                Prefixes with lengths longer than 37 characters will use a shortened
@@ -962,10 +954,6 @@ class _InstanceTemplateState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the instance template. If you leave
-        this blank, the provider will auto-generate a unique name.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1237,236 +1225,6 @@ class InstanceTemplate(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        > **Note**: Global instance templates can be used in any region. To lower the impact of outages outside your region and gain data residency within your region, use google_compute_region_instance_template.
-
-        Manages a VM instance template resource within GCE. For more information see
-        [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
-        and
-        [API](https://cloud.google.com/compute/docs/reference/latest/instanceTemplates).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.serviceaccount.Account("default",
-            account_id="service-account-id",
-            display_name="Service Account")
-        my_image = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        foobar = gcp.compute.Disk("foobar",
-            name="existing-disk",
-            image=my_image.self_link,
-            size=10,
-            type="pd-ssd",
-            zone="us-central1-a")
-        daily_backup = gcp.compute.ResourcePolicy("daily_backup",
-            name="every-day-4am",
-            region="us-central1",
-            snapshot_schedule_policy={
-                "schedule": {
-                    "daily_schedule": {
-                        "days_in_cycle": 1,
-                        "start_time": "04:00",
-                    },
-                },
-            })
-        default_instance_template = gcp.compute.InstanceTemplate("default",
-            name="appserver-template",
-            description="This template is used to create app server instances.",
-            tags=[
-                "foo",
-                "bar",
-            ],
-            labels={
-                "environment": "dev",
-            },
-            instance_description="description assigned to instances",
-            machine_type="e2-medium",
-            can_ip_forward=False,
-            scheduling={
-                "automatic_restart": True,
-                "on_host_maintenance": "MIGRATE",
-            },
-            disks=[
-                {
-                    "source_image": "debian-cloud/debian-11",
-                    "auto_delete": True,
-                    "boot": True,
-                    "resource_policies": daily_backup.id,
-                },
-                {
-                    "source": foobar.name,
-                    "auto_delete": False,
-                    "boot": False,
-                },
-            ],
-            network_interfaces=[{
-                "network": "default",
-            }],
-            metadata={
-                "foo": "bar",
-            },
-            service_account={
-                "email": default.email,
-                "scopes": ["cloud-platform"],
-            })
-        ```
-
-        ### Automatic Envoy Deployment
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.get_default_service_account()
-        my_image = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        foobar = gcp.compute.InstanceTemplate("foobar",
-            name="appserver-template",
-            machine_type="e2-medium",
-            can_ip_forward=False,
-            tags=[
-                "foo",
-                "bar",
-            ],
-            disks=[{
-                "source_image": my_image.self_link,
-                "auto_delete": True,
-                "boot": True,
-            }],
-            network_interfaces=[{
-                "network": "default",
-            }],
-            scheduling={
-                "preemptible": False,
-                "automatic_restart": True,
-            },
-            metadata={
-                "gce-software-declaration": \"\"\"{
-          "softwareRecipes": [{
-            "name": "install-gce-service-proxy-agent",
-            "desired_state": "INSTALLED",
-            "installSteps": [{
-              "scriptRun": {
-                "script": "#! /bin/bash\\nZONE=$(curl --silent http://metadata.google.internal/computeMetadata/v1/instance/zone -H Metadata-Flavor:Google | cut -d/ -f4 )\\nexport SERVICE_PROXY_AGENT_DIRECTORY=$(mktemp -d)\\nsudo gsutil cp   gs://gce-service-proxy-"$ZONE"/service-proxy-agent/releases/service-proxy-agent-0.2.tgz   "$SERVICE_PROXY_AGENT_DIRECTORY"   || sudo gsutil cp     gs://gce-service-proxy/service-proxy-agent/releases/service-proxy-agent-0.2.tgz     "$SERVICE_PROXY_AGENT_DIRECTORY"\\nsudo tar -xzf "$SERVICE_PROXY_AGENT_DIRECTORY"/service-proxy-agent-0.2.tgz -C "$SERVICE_PROXY_AGENT_DIRECTORY"\\n"$SERVICE_PROXY_AGENT_DIRECTORY"/service-proxy-agent/service-proxy-agent-bootstrap.sh"
-              }
-            }]
-          }]
-        }
-        \"\"\",
-                "gce-service-proxy": \"\"\"{
-          "api-version": "0.2",
-          "proxy-spec": {
-            "proxy-port": 15001,
-            "network": "my-network",
-            "tracing": "ON",
-            "access-log": "/var/log/envoy/access.log"
-          }
-          "service": {
-            "serving-ports": [80, 81]
-          },
-         "labels": {
-           "app_name": "bookserver_app",
-           "app_version": "STABLE"
-          }
-        }
-        \"\"\",
-                "enable-guest-attributes": "true",
-                "enable-osconfig": "true",
-            },
-            service_account={
-                "email": default.email,
-                "scopes": ["cloud-platform"],
-            },
-            labels={
-                "gce-service-proxy": "on",
-            })
-        ```
-
-        ### Confidential Computing
-
-        Example with [Confidential Mode](https://cloud.google.com/confidential-computing/confidential-vm/docs/confidential-vm-overview) activated.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.serviceaccount.Account("default",
-            account_id="my-custom-sa",
-            display_name="Custom SA for VM Instance")
-        confidential_instance_template = gcp.compute.InstanceTemplate("confidential_instance_template",
-            network_interfaces=[{
-                "access_configs": [{}],
-                "network": "default",
-            }],
-            name="my-confidential-instance-template",
-            region="us-central1",
-            machine_type="n2d-standard-2",
-            min_cpu_platform="AMD Milan",
-            confidential_instance_config={
-                "enable_confidential_compute": True,
-                "confidential_instance_type": "SEV",
-            },
-            disks=[{
-                "source_image": "ubuntu-os-cloud/ubuntu-2004-lts",
-            }],
-            service_account={
-                "email": default.email,
-                "scopes": ["cloud-platform"],
-            })
-        ```
-
-        ## Deploying the Latest Image
-
-        A common way to use instance templates and managed instance groups is to deploy the
-        latest image in a family, usually the latest build of your application. There are two
-        ways to do this in the provider, and they have their pros and cons. The difference ends
-        up being in how "latest" is interpreted. You can either deploy the latest image available
-        when the provider runs, or you can have each instance check what the latest image is when
-        it's being created, either as part of a scaling event or being rebuilt by the instance
-        group manager.
-
-        If you're not sure, we recommend deploying the latest image available when the provider runs,
-        because this means all the instances in your group will be based on the same image, always,
-        and means that no upgrades or changes to your instances happen outside of a `pulumi up`.
-        You can achieve this by using the `compute.Image`
-        data source, which will retrieve the latest image on every `pulumi apply`, and will update
-        the template to use that specific image:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_image = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        instance_template = gcp.compute.InstanceTemplate("instance_template",
-            name_prefix="instance-template-",
-            machine_type="e2-medium",
-            region="us-central1",
-            disks=[{
-                "source_image": my_image.self_link,
-            }])
-        ```
-
-        To have instances update to the latest on every scaling event or instance re-creation,
-        use the family as the image for the disk, and it will use GCP's default behavior, setting
-        the image for the template to the family:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance_template = gcp.compute.InstanceTemplate("instance_template",
-            name_prefix="instance-template-",
-            machine_type="e2-medium",
-            region="us-central1",
-            disks=[{
-                "source_image": "debian-cloud/debian-11",
-            }])
-        ```
-
         ## Import
 
         Instance templates can be imported using any of these accepted formats:
@@ -1522,8 +1280,6 @@ class InstanceTemplate(pulumi.CustomResource):
                thus the two mechanisms are not allowed to be used simultaneously.
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-        :param pulumi.Input[str] name: The name of the instance template. If you leave
-               this blank, the provider will auto-generate a unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified
                prefix. Conflicts with `name`. Max length is 54 characters.
                Prefixes with lengths longer than 37 characters will use a shortened
@@ -1569,236 +1325,6 @@ class InstanceTemplate(pulumi.CustomResource):
                  args: InstanceTemplateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Note**: Global instance templates can be used in any region. To lower the impact of outages outside your region and gain data residency within your region, use google_compute_region_instance_template.
-
-        Manages a VM instance template resource within GCE. For more information see
-        [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
-        and
-        [API](https://cloud.google.com/compute/docs/reference/latest/instanceTemplates).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.serviceaccount.Account("default",
-            account_id="service-account-id",
-            display_name="Service Account")
-        my_image = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        foobar = gcp.compute.Disk("foobar",
-            name="existing-disk",
-            image=my_image.self_link,
-            size=10,
-            type="pd-ssd",
-            zone="us-central1-a")
-        daily_backup = gcp.compute.ResourcePolicy("daily_backup",
-            name="every-day-4am",
-            region="us-central1",
-            snapshot_schedule_policy={
-                "schedule": {
-                    "daily_schedule": {
-                        "days_in_cycle": 1,
-                        "start_time": "04:00",
-                    },
-                },
-            })
-        default_instance_template = gcp.compute.InstanceTemplate("default",
-            name="appserver-template",
-            description="This template is used to create app server instances.",
-            tags=[
-                "foo",
-                "bar",
-            ],
-            labels={
-                "environment": "dev",
-            },
-            instance_description="description assigned to instances",
-            machine_type="e2-medium",
-            can_ip_forward=False,
-            scheduling={
-                "automatic_restart": True,
-                "on_host_maintenance": "MIGRATE",
-            },
-            disks=[
-                {
-                    "source_image": "debian-cloud/debian-11",
-                    "auto_delete": True,
-                    "boot": True,
-                    "resource_policies": daily_backup.id,
-                },
-                {
-                    "source": foobar.name,
-                    "auto_delete": False,
-                    "boot": False,
-                },
-            ],
-            network_interfaces=[{
-                "network": "default",
-            }],
-            metadata={
-                "foo": "bar",
-            },
-            service_account={
-                "email": default.email,
-                "scopes": ["cloud-platform"],
-            })
-        ```
-
-        ### Automatic Envoy Deployment
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.get_default_service_account()
-        my_image = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        foobar = gcp.compute.InstanceTemplate("foobar",
-            name="appserver-template",
-            machine_type="e2-medium",
-            can_ip_forward=False,
-            tags=[
-                "foo",
-                "bar",
-            ],
-            disks=[{
-                "source_image": my_image.self_link,
-                "auto_delete": True,
-                "boot": True,
-            }],
-            network_interfaces=[{
-                "network": "default",
-            }],
-            scheduling={
-                "preemptible": False,
-                "automatic_restart": True,
-            },
-            metadata={
-                "gce-software-declaration": \"\"\"{
-          "softwareRecipes": [{
-            "name": "install-gce-service-proxy-agent",
-            "desired_state": "INSTALLED",
-            "installSteps": [{
-              "scriptRun": {
-                "script": "#! /bin/bash\\nZONE=$(curl --silent http://metadata.google.internal/computeMetadata/v1/instance/zone -H Metadata-Flavor:Google | cut -d/ -f4 )\\nexport SERVICE_PROXY_AGENT_DIRECTORY=$(mktemp -d)\\nsudo gsutil cp   gs://gce-service-proxy-"$ZONE"/service-proxy-agent/releases/service-proxy-agent-0.2.tgz   "$SERVICE_PROXY_AGENT_DIRECTORY"   || sudo gsutil cp     gs://gce-service-proxy/service-proxy-agent/releases/service-proxy-agent-0.2.tgz     "$SERVICE_PROXY_AGENT_DIRECTORY"\\nsudo tar -xzf "$SERVICE_PROXY_AGENT_DIRECTORY"/service-proxy-agent-0.2.tgz -C "$SERVICE_PROXY_AGENT_DIRECTORY"\\n"$SERVICE_PROXY_AGENT_DIRECTORY"/service-proxy-agent/service-proxy-agent-bootstrap.sh"
-              }
-            }]
-          }]
-        }
-        \"\"\",
-                "gce-service-proxy": \"\"\"{
-          "api-version": "0.2",
-          "proxy-spec": {
-            "proxy-port": 15001,
-            "network": "my-network",
-            "tracing": "ON",
-            "access-log": "/var/log/envoy/access.log"
-          }
-          "service": {
-            "serving-ports": [80, 81]
-          },
-         "labels": {
-           "app_name": "bookserver_app",
-           "app_version": "STABLE"
-          }
-        }
-        \"\"\",
-                "enable-guest-attributes": "true",
-                "enable-osconfig": "true",
-            },
-            service_account={
-                "email": default.email,
-                "scopes": ["cloud-platform"],
-            },
-            labels={
-                "gce-service-proxy": "on",
-            })
-        ```
-
-        ### Confidential Computing
-
-        Example with [Confidential Mode](https://cloud.google.com/confidential-computing/confidential-vm/docs/confidential-vm-overview) activated.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.serviceaccount.Account("default",
-            account_id="my-custom-sa",
-            display_name="Custom SA for VM Instance")
-        confidential_instance_template = gcp.compute.InstanceTemplate("confidential_instance_template",
-            network_interfaces=[{
-                "access_configs": [{}],
-                "network": "default",
-            }],
-            name="my-confidential-instance-template",
-            region="us-central1",
-            machine_type="n2d-standard-2",
-            min_cpu_platform="AMD Milan",
-            confidential_instance_config={
-                "enable_confidential_compute": True,
-                "confidential_instance_type": "SEV",
-            },
-            disks=[{
-                "source_image": "ubuntu-os-cloud/ubuntu-2004-lts",
-            }],
-            service_account={
-                "email": default.email,
-                "scopes": ["cloud-platform"],
-            })
-        ```
-
-        ## Deploying the Latest Image
-
-        A common way to use instance templates and managed instance groups is to deploy the
-        latest image in a family, usually the latest build of your application. There are two
-        ways to do this in the provider, and they have their pros and cons. The difference ends
-        up being in how "latest" is interpreted. You can either deploy the latest image available
-        when the provider runs, or you can have each instance check what the latest image is when
-        it's being created, either as part of a scaling event or being rebuilt by the instance
-        group manager.
-
-        If you're not sure, we recommend deploying the latest image available when the provider runs,
-        because this means all the instances in your group will be based on the same image, always,
-        and means that no upgrades or changes to your instances happen outside of a `pulumi up`.
-        You can achieve this by using the `compute.Image`
-        data source, which will retrieve the latest image on every `pulumi apply`, and will update
-        the template to use that specific image:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_image = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        instance_template = gcp.compute.InstanceTemplate("instance_template",
-            name_prefix="instance-template-",
-            machine_type="e2-medium",
-            region="us-central1",
-            disks=[{
-                "source_image": my_image.self_link,
-            }])
-        ```
-
-        To have instances update to the latest on every scaling event or instance re-creation,
-        use the family as the image for the disk, and it will use GCP's default behavior, setting
-        the image for the template to the family:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance_template = gcp.compute.InstanceTemplate("instance_template",
-            name_prefix="instance-template-",
-            machine_type="e2-medium",
-            region="us-central1",
-            disks=[{
-                "source_image": "debian-cloud/debian-11",
-            }])
-        ```
-
         ## Import
 
         Instance templates can be imported using any of these accepted formats:
@@ -2000,8 +1526,6 @@ class InstanceTemplate(pulumi.CustomResource):
                thus the two mechanisms are not allowed to be used simultaneously.
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-        :param pulumi.Input[str] name: The name of the instance template. If you leave
-               this blank, the provider will auto-generate a unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified
                prefix. Conflicts with `name`. Max length is 54 characters.
                Prefixes with lengths longer than 37 characters will use a shortened
@@ -2240,10 +1764,6 @@ class InstanceTemplate(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the instance template. If you leave
-        this blank, the provider will auto-generate a unique name.
-        """
         return pulumi.get(self, "name")
 
     @property

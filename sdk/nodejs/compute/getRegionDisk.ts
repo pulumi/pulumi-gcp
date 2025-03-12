@@ -46,6 +46,8 @@ export interface GetRegionDiskArgs {
  */
 export interface GetRegionDiskResult {
     readonly asyncPrimaryDisks: outputs.compute.GetRegionDiskAsyncPrimaryDisk[];
+    readonly createSnapshotBeforeDestroy: boolean;
+    readonly createSnapshotBeforeDestroyPrefix: string;
     readonly creationTimestamp: string;
     readonly description: string;
     readonly diskEncryptionKeys: outputs.compute.GetRegionDiskDiskEncryptionKey[];

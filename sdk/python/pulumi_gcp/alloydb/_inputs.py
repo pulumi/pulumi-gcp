@@ -83,6 +83,8 @@ __all__ = [
     'InstanceObservabilityConfigArgsDict',
     'InstancePscInstanceConfigArgs',
     'InstancePscInstanceConfigArgsDict',
+    'InstancePscInstanceConfigPscInterfaceConfigArgs',
+    'InstancePscInstanceConfigPscInterfaceConfigArgsDict',
     'InstanceQueryInsightsConfigArgs',
     'InstanceQueryInsightsConfigArgsDict',
     'InstanceReadPoolConfigArgs',
@@ -2105,6 +2107,12 @@ if not MYPY:
         The DNS name of the instance for PSC connectivity.
         Name convention: <uid>.<uid>.<region>.alloydb-psc.goog
         """
+        psc_interface_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstancePscInstanceConfigPscInterfaceConfigArgsDict']]]]
+        """
+        Configurations for setting up PSC interfaces attached to the instance
+        which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
+        Structure is documented below.
+        """
         service_attachment_link: NotRequired[pulumi.Input[str]]
         """
         (Output)
@@ -2120,6 +2128,7 @@ class InstancePscInstanceConfigArgs:
     def __init__(__self__, *,
                  allowed_consumer_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  psc_dns_name: Optional[pulumi.Input[str]] = None,
+                 psc_interface_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePscInstanceConfigPscInterfaceConfigArgs']]]] = None,
                  service_attachment_link: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_consumer_projects: List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
@@ -2127,6 +2136,9 @@ class InstancePscInstanceConfigArgs:
         :param pulumi.Input[str] psc_dns_name: (Output)
                The DNS name of the instance for PSC connectivity.
                Name convention: <uid>.<uid>.<region>.alloydb-psc.goog
+        :param pulumi.Input[Sequence[pulumi.Input['InstancePscInstanceConfigPscInterfaceConfigArgs']]] psc_interface_configs: Configurations for setting up PSC interfaces attached to the instance
+               which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
+               Structure is documented below.
         :param pulumi.Input[str] service_attachment_link: (Output)
                The service attachment created when Private Service Connect (PSC) is enabled for the instance.
                The name of the resource will be in the format of
@@ -2136,6 +2148,8 @@ class InstancePscInstanceConfigArgs:
             pulumi.set(__self__, "allowed_consumer_projects", allowed_consumer_projects)
         if psc_dns_name is not None:
             pulumi.set(__self__, "psc_dns_name", psc_dns_name)
+        if psc_interface_configs is not None:
+            pulumi.set(__self__, "psc_interface_configs", psc_interface_configs)
         if service_attachment_link is not None:
             pulumi.set(__self__, "service_attachment_link", service_attachment_link)
 
@@ -2167,6 +2181,20 @@ class InstancePscInstanceConfigArgs:
         pulumi.set(self, "psc_dns_name", value)
 
     @property
+    @pulumi.getter(name="pscInterfaceConfigs")
+    def psc_interface_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstancePscInstanceConfigPscInterfaceConfigArgs']]]]:
+        """
+        Configurations for setting up PSC interfaces attached to the instance
+        which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_interface_configs")
+
+    @psc_interface_configs.setter
+    def psc_interface_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePscInstanceConfigPscInterfaceConfigArgs']]]]):
+        pulumi.set(self, "psc_interface_configs", value)
+
+    @property
     @pulumi.getter(name="serviceAttachmentLink")
     def service_attachment_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2180,6 +2208,44 @@ class InstancePscInstanceConfigArgs:
     @service_attachment_link.setter
     def service_attachment_link(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_attachment_link", value)
+
+
+if not MYPY:
+    class InstancePscInstanceConfigPscInterfaceConfigArgsDict(TypedDict):
+        network_attachment_resource: NotRequired[pulumi.Input[str]]
+        """
+        The network attachment resource created in the consumer project to which the PSC interface will be linked.
+        This is of the format: "projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}".
+        The network attachment must be in the same region as the instance.
+        """
+elif False:
+    InstancePscInstanceConfigPscInterfaceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstancePscInstanceConfigPscInterfaceConfigArgs:
+    def __init__(__self__, *,
+                 network_attachment_resource: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] network_attachment_resource: The network attachment resource created in the consumer project to which the PSC interface will be linked.
+               This is of the format: "projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}".
+               The network attachment must be in the same region as the instance.
+        """
+        if network_attachment_resource is not None:
+            pulumi.set(__self__, "network_attachment_resource", network_attachment_resource)
+
+    @property
+    @pulumi.getter(name="networkAttachmentResource")
+    def network_attachment_resource(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network attachment resource created in the consumer project to which the PSC interface will be linked.
+        This is of the format: "projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}".
+        The network attachment must be in the same region as the instance.
+        """
+        return pulumi.get(self, "network_attachment_resource")
+
+    @network_attachment_resource.setter
+    def network_attachment_resource(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_attachment_resource", value)
 
 
 if not MYPY:

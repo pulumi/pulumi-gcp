@@ -7359,8 +7359,8 @@ type JobLoad struct {
 	// The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
 	// an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
 	MaxBadRecords *int `pulumi:"maxBadRecords"`
-	// Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
-	// property to a custom value, BigQuery throws an error if an
+	// Specifies a string that represents a null value in a CSV file. For example, if you specify "\N", BigQuery interprets "\N" as a null value
+	// when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
 	// empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
 	// an empty value.
 	NullMarker *string `pulumi:"nullMarker"`
@@ -7476,8 +7476,8 @@ type JobLoadArgs struct {
 	// The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
 	// an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
 	MaxBadRecords pulumi.IntPtrInput `pulumi:"maxBadRecords"`
-	// Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
-	// property to a custom value, BigQuery throws an error if an
+	// Specifies a string that represents a null value in a CSV file. For example, if you specify "\N", BigQuery interprets "\N" as a null value
+	// when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
 	// empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
 	// an empty value.
 	NullMarker pulumi.StringPtrInput `pulumi:"nullMarker"`
@@ -7693,8 +7693,8 @@ func (o JobLoadOutput) MaxBadRecords() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobLoad) *int { return v.MaxBadRecords }).(pulumi.IntPtrOutput)
 }
 
-// Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
-// property to a custom value, BigQuery throws an error if an
+// Specifies a string that represents a null value in a CSV file. For example, if you specify "\N", BigQuery interprets "\N" as a null value
+// when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
 // empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
 // an empty value.
 func (o JobLoadOutput) NullMarker() pulumi.StringPtrOutput {
@@ -7938,8 +7938,8 @@ func (o JobLoadPtrOutput) MaxBadRecords() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
-// property to a custom value, BigQuery throws an error if an
+// Specifies a string that represents a null value in a CSV file. For example, if you specify "\N", BigQuery interprets "\N" as a null value
+// when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
 // empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
 // an empty value.
 func (o JobLoadPtrOutput) NullMarker() pulumi.StringPtrOutput {
@@ -13641,14 +13641,7 @@ type TableExternalDataConfigurationCsvOptions struct {
 	Encoding *string `pulumi:"encoding"`
 	// The separator for fields in a CSV file.
 	FieldDelimiter *string `pulumi:"fieldDelimiter"`
-	// The value that is used to quote data sections in a
-	// CSV file. If your data does not contain quoted sections, set the
-	// property value to an empty string. If your data contains quoted newline
-	// characters, you must also set the `allowQuotedNewlines` property to true.
-	// The API-side default is `"`, specified in the provider escaped as `\"`. Due to
-	// limitations with default values, this value is required to be
-	// explicitly set.
-	Quote string `pulumi:"quote"`
+	Quote          string  `pulumi:"quote"`
 	// The number of rows at the top of a CSV
 	// file that BigQuery will skip when reading the data.
 	SkipLeadingRows *int `pulumi:"skipLeadingRows"`
@@ -13678,14 +13671,7 @@ type TableExternalDataConfigurationCsvOptionsArgs struct {
 	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
 	// The separator for fields in a CSV file.
 	FieldDelimiter pulumi.StringPtrInput `pulumi:"fieldDelimiter"`
-	// The value that is used to quote data sections in a
-	// CSV file. If your data does not contain quoted sections, set the
-	// property value to an empty string. If your data contains quoted newline
-	// characters, you must also set the `allowQuotedNewlines` property to true.
-	// The API-side default is `"`, specified in the provider escaped as `\"`. Due to
-	// limitations with default values, this value is required to be
-	// explicitly set.
-	Quote pulumi.StringInput `pulumi:"quote"`
+	Quote          pulumi.StringInput    `pulumi:"quote"`
 	// The number of rows at the top of a CSV
 	// file that BigQuery will skip when reading the data.
 	SkipLeadingRows pulumi.IntPtrInput `pulumi:"skipLeadingRows"`
@@ -13792,13 +13778,6 @@ func (o TableExternalDataConfigurationCsvOptionsOutput) FieldDelimiter() pulumi.
 	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *string { return v.FieldDelimiter }).(pulumi.StringPtrOutput)
 }
 
-// The value that is used to quote data sections in a
-// CSV file. If your data does not contain quoted sections, set the
-// property value to an empty string. If your data contains quoted newline
-// characters, you must also set the `allowQuotedNewlines` property to true.
-// The API-side default is `"`, specified in the provider escaped as `\"`. Due to
-// limitations with default values, this value is required to be
-// explicitly set.
 func (o TableExternalDataConfigurationCsvOptionsOutput) Quote() pulumi.StringOutput {
 	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) string { return v.Quote }).(pulumi.StringOutput)
 }
@@ -13877,13 +13856,6 @@ func (o TableExternalDataConfigurationCsvOptionsPtrOutput) FieldDelimiter() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The value that is used to quote data sections in a
-// CSV file. If your data does not contain quoted sections, set the
-// property value to an empty string. If your data contains quoted newline
-// characters, you must also set the `allowQuotedNewlines` property to true.
-// The API-side default is `"`, specified in the provider escaped as `\"`. Due to
-// limitations with default values, this value is required to be
-// explicitly set.
 func (o TableExternalDataConfigurationCsvOptionsPtrOutput) Quote() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TableExternalDataConfigurationCsvOptions) *string {
 		if v == nil {

@@ -12,20 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Cloud Spanner Database which is hosted on a Spanner instance.
-//
-// To get more information about Database, see:
-//
-// * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
-// * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/spanner/)
-//
-// > **Warning:** On newer versions of the provider, you must explicitly set `deletion_protection=false`
-// (and run `pulumi up` to write the field to state) in order to destroy an instance.
-// It is recommended to not set this field (or set it to true) until you're ready to destroy.
-// On older versions, it is strongly recommended to set `lifecycle { preventDestroy = true }`
-// on databases in order to prevent accidental data loss.
-//
 // ## Example Usage
 //
 // ### Spanner Database Basic
@@ -109,11 +95,9 @@ type Database struct {
 	// database. Statements can create tables, indexes, etc. These statements
 	// execute atomically with the creation of the database: if there is an
 	// error in any statement, the database is not created.
-	Ddls pulumi.StringArrayOutput `pulumi:"ddls"`
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` that would delete the instance will fail.
-	DeletionProtection   pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
-	EnableDropProtection pulumi.BoolPtrOutput `pulumi:"enableDropProtection"`
+	Ddls                 pulumi.StringArrayOutput `pulumi:"ddls"`
+	DeletionProtection   pulumi.BoolPtrOutput     `pulumi:"deletionProtection"`
+	EnableDropProtection pulumi.BoolPtrOutput     `pulumi:"enableDropProtection"`
 	// Encryption configuration for the database
 	// Structure is documented below.
 	EncryptionConfig DatabaseEncryptionConfigPtrOutput `pulumi:"encryptionConfig"`
@@ -178,11 +162,9 @@ type databaseState struct {
 	// database. Statements can create tables, indexes, etc. These statements
 	// execute atomically with the creation of the database: if there is an
 	// error in any statement, the database is not created.
-	Ddls []string `pulumi:"ddls"`
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` that would delete the instance will fail.
-	DeletionProtection   *bool `pulumi:"deletionProtection"`
-	EnableDropProtection *bool `pulumi:"enableDropProtection"`
+	Ddls                 []string `pulumi:"ddls"`
+	DeletionProtection   *bool    `pulumi:"deletionProtection"`
+	EnableDropProtection *bool    `pulumi:"enableDropProtection"`
 	// Encryption configuration for the database
 	// Structure is documented below.
 	EncryptionConfig *DatabaseEncryptionConfig `pulumi:"encryptionConfig"`
@@ -215,9 +197,7 @@ type DatabaseState struct {
 	// database. Statements can create tables, indexes, etc. These statements
 	// execute atomically with the creation of the database: if there is an
 	// error in any statement, the database is not created.
-	Ddls pulumi.StringArrayInput
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` that would delete the instance will fail.
+	Ddls                 pulumi.StringArrayInput
 	DeletionProtection   pulumi.BoolPtrInput
 	EnableDropProtection pulumi.BoolPtrInput
 	// Encryption configuration for the database
@@ -256,11 +236,9 @@ type databaseArgs struct {
 	// database. Statements can create tables, indexes, etc. These statements
 	// execute atomically with the creation of the database: if there is an
 	// error in any statement, the database is not created.
-	Ddls []string `pulumi:"ddls"`
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` that would delete the instance will fail.
-	DeletionProtection   *bool `pulumi:"deletionProtection"`
-	EnableDropProtection *bool `pulumi:"enableDropProtection"`
+	Ddls                 []string `pulumi:"ddls"`
+	DeletionProtection   *bool    `pulumi:"deletionProtection"`
+	EnableDropProtection *bool    `pulumi:"enableDropProtection"`
 	// Encryption configuration for the database
 	// Structure is documented below.
 	EncryptionConfig *DatabaseEncryptionConfig `pulumi:"encryptionConfig"`
@@ -292,9 +270,7 @@ type DatabaseArgs struct {
 	// database. Statements can create tables, indexes, etc. These statements
 	// execute atomically with the creation of the database: if there is an
 	// error in any statement, the database is not created.
-	Ddls pulumi.StringArrayInput
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` that would delete the instance will fail.
+	Ddls                 pulumi.StringArrayInput
 	DeletionProtection   pulumi.BoolPtrInput
 	EnableDropProtection pulumi.BoolPtrInput
 	// Encryption configuration for the database
@@ -420,8 +396,6 @@ func (o DatabaseOutput) Ddls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringArrayOutput { return v.Ddls }).(pulumi.StringArrayOutput)
 }
 
-// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-// in state, a `destroy` or `update` that would delete the instance will fail.
 func (o DatabaseOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }

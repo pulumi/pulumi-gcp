@@ -12,14 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An individual endpoint that provides a service.
-//
-// To get more information about Endpoint, see:
-//
-// * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces.services.endpoints)
-// * How-to Guides
-//   - [Configuring an endpoint](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_an_endpoint)
-//
 // ## Example Usage
 //
 // ### Service Directory Endpoint Basic

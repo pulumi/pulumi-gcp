@@ -71,8 +71,8 @@ type Service struct {
 	CheckIfServiceHasUsageOnDestroy pulumi.BoolPtrOutput `pulumi:"checkIfServiceHasUsageOnDestroy"`
 	// If `true`, services that are enabled
 	// and which depend on this service should also be disabled when this service is
-	// destroyed. If `false` or unset, an error will be generated if any enabled
-	// services depend on this service when destroying it.
+	// destroyed. If `false` or unset, an error will be returned if any enabled
+	// services depend on this service when attempting to destroy it.
 	DisableDependentServices pulumi.BoolPtrOutput `pulumi:"disableDependentServices"`
 	DisableOnDestroy         pulumi.BoolPtrOutput `pulumi:"disableOnDestroy"`
 	// The project ID. If not provided, the provider project
@@ -122,8 +122,8 @@ type serviceState struct {
 	CheckIfServiceHasUsageOnDestroy *bool `pulumi:"checkIfServiceHasUsageOnDestroy"`
 	// If `true`, services that are enabled
 	// and which depend on this service should also be disabled when this service is
-	// destroyed. If `false` or unset, an error will be generated if any enabled
-	// services depend on this service when destroying it.
+	// destroyed. If `false` or unset, an error will be returned if any enabled
+	// services depend on this service when attempting to destroy it.
 	DisableDependentServices *bool `pulumi:"disableDependentServices"`
 	DisableOnDestroy         *bool `pulumi:"disableOnDestroy"`
 	// The project ID. If not provided, the provider project
@@ -141,8 +141,8 @@ type ServiceState struct {
 	CheckIfServiceHasUsageOnDestroy pulumi.BoolPtrInput
 	// If `true`, services that are enabled
 	// and which depend on this service should also be disabled when this service is
-	// destroyed. If `false` or unset, an error will be generated if any enabled
-	// services depend on this service when destroying it.
+	// destroyed. If `false` or unset, an error will be returned if any enabled
+	// services depend on this service when attempting to destroy it.
 	DisableDependentServices pulumi.BoolPtrInput
 	DisableOnDestroy         pulumi.BoolPtrInput
 	// The project ID. If not provided, the provider project
@@ -164,8 +164,8 @@ type serviceArgs struct {
 	CheckIfServiceHasUsageOnDestroy *bool `pulumi:"checkIfServiceHasUsageOnDestroy"`
 	// If `true`, services that are enabled
 	// and which depend on this service should also be disabled when this service is
-	// destroyed. If `false` or unset, an error will be generated if any enabled
-	// services depend on this service when destroying it.
+	// destroyed. If `false` or unset, an error will be returned if any enabled
+	// services depend on this service when attempting to destroy it.
 	DisableDependentServices *bool `pulumi:"disableDependentServices"`
 	DisableOnDestroy         *bool `pulumi:"disableOnDestroy"`
 	// The project ID. If not provided, the provider project
@@ -184,8 +184,8 @@ type ServiceArgs struct {
 	CheckIfServiceHasUsageOnDestroy pulumi.BoolPtrInput
 	// If `true`, services that are enabled
 	// and which depend on this service should also be disabled when this service is
-	// destroyed. If `false` or unset, an error will be generated if any enabled
-	// services depend on this service when destroying it.
+	// destroyed. If `false` or unset, an error will be returned if any enabled
+	// services depend on this service when attempting to destroy it.
 	DisableDependentServices pulumi.BoolPtrInput
 	DisableOnDestroy         pulumi.BoolPtrInput
 	// The project ID. If not provided, the provider project
@@ -292,8 +292,8 @@ func (o ServiceOutput) CheckIfServiceHasUsageOnDestroy() pulumi.BoolPtrOutput {
 
 // If `true`, services that are enabled
 // and which depend on this service should also be disabled when this service is
-// destroyed. If `false` or unset, an error will be generated if any enabled
-// services depend on this service when destroying it.
+// destroyed. If `false` or unset, an error will be returned if any enabled
+// services depend on this service when attempting to destroy it.
 func (o ServiceOutput) DisableDependentServices() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.DisableDependentServices }).(pulumi.BoolPtrOutput)
 }

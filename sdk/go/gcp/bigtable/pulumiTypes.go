@@ -578,16 +578,7 @@ type InstanceCluster struct {
 	AutoscalingConfig *InstanceClusterAutoscalingConfig `pulumi:"autoscalingConfig"`
 	// The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
 	ClusterId string `pulumi:"clusterId"`
-	// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
-	//
-	// > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
-	//
-	// !> **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
-	//
-	// !> **Warning:** Modifying the `storageType`, `zone` or `kmsKeyName` of an existing cluster (by
-	// `clusterId`) will cause the provider to delete/recreate the entire
-	// `bigtable.Instance` resource. If these values are changing, use a new
-	// `clusterId`.
+	// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the cloudkms.cryptoKeyEncrypterDecrypter role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. 3) All clusters within an instance must use the same CMEK key. Values are of the form projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// The number of nodes in the cluster.
 	// If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
@@ -619,16 +610,7 @@ type InstanceClusterArgs struct {
 	AutoscalingConfig InstanceClusterAutoscalingConfigPtrInput `pulumi:"autoscalingConfig"`
 	// The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
-	//
-	// > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
-	//
-	// !> **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
-	//
-	// !> **Warning:** Modifying the `storageType`, `zone` or `kmsKeyName` of an existing cluster (by
-	// `clusterId`) will cause the provider to delete/recreate the entire
-	// `bigtable.Instance` resource. If these values are changing, use a new
-	// `clusterId`.
+	// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the cloudkms.cryptoKeyEncrypterDecrypter role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. 3) All clusters within an instance must use the same CMEK key. Values are of the form projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
 	// The number of nodes in the cluster.
 	// If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
@@ -705,16 +687,7 @@ func (o InstanceClusterOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceCluster) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
-//
-// > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
-//
-// !> **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
-//
-// !> **Warning:** Modifying the `storageType`, `zone` or `kmsKeyName` of an existing cluster (by
-// `clusterId`) will cause the provider to delete/recreate the entire
-// `bigtable.Instance` resource. If these values are changing, use a new
-// `clusterId`.
+// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the cloudkms.cryptoKeyEncrypterDecrypter role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. 3) All clusters within an instance must use the same CMEK key. Values are of the form projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}
 func (o InstanceClusterOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceCluster) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
 }

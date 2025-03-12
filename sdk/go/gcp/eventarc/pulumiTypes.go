@@ -13,6 +13,151 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GoogleApiSourceLoggingConfig struct {
+	// The minimum severity of logs that will be sent to Stackdriver/Platform
+	// Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+	// Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+	LogSeverity *string `pulumi:"logSeverity"`
+}
+
+// GoogleApiSourceLoggingConfigInput is an input type that accepts GoogleApiSourceLoggingConfigArgs and GoogleApiSourceLoggingConfigOutput values.
+// You can construct a concrete instance of `GoogleApiSourceLoggingConfigInput` via:
+//
+//	GoogleApiSourceLoggingConfigArgs{...}
+type GoogleApiSourceLoggingConfigInput interface {
+	pulumi.Input
+
+	ToGoogleApiSourceLoggingConfigOutput() GoogleApiSourceLoggingConfigOutput
+	ToGoogleApiSourceLoggingConfigOutputWithContext(context.Context) GoogleApiSourceLoggingConfigOutput
+}
+
+type GoogleApiSourceLoggingConfigArgs struct {
+	// The minimum severity of logs that will be sent to Stackdriver/Platform
+	// Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+	// Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+	LogSeverity pulumi.StringPtrInput `pulumi:"logSeverity"`
+}
+
+func (GoogleApiSourceLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleApiSourceLoggingConfig)(nil)).Elem()
+}
+
+func (i GoogleApiSourceLoggingConfigArgs) ToGoogleApiSourceLoggingConfigOutput() GoogleApiSourceLoggingConfigOutput {
+	return i.ToGoogleApiSourceLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleApiSourceLoggingConfigArgs) ToGoogleApiSourceLoggingConfigOutputWithContext(ctx context.Context) GoogleApiSourceLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleApiSourceLoggingConfigOutput)
+}
+
+func (i GoogleApiSourceLoggingConfigArgs) ToGoogleApiSourceLoggingConfigPtrOutput() GoogleApiSourceLoggingConfigPtrOutput {
+	return i.ToGoogleApiSourceLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleApiSourceLoggingConfigArgs) ToGoogleApiSourceLoggingConfigPtrOutputWithContext(ctx context.Context) GoogleApiSourceLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleApiSourceLoggingConfigOutput).ToGoogleApiSourceLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleApiSourceLoggingConfigPtrInput is an input type that accepts GoogleApiSourceLoggingConfigArgs, GoogleApiSourceLoggingConfigPtr and GoogleApiSourceLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleApiSourceLoggingConfigPtrInput` via:
+//
+//	        GoogleApiSourceLoggingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleApiSourceLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleApiSourceLoggingConfigPtrOutput() GoogleApiSourceLoggingConfigPtrOutput
+	ToGoogleApiSourceLoggingConfigPtrOutputWithContext(context.Context) GoogleApiSourceLoggingConfigPtrOutput
+}
+
+type googleApiSourceLoggingConfigPtrType GoogleApiSourceLoggingConfigArgs
+
+func GoogleApiSourceLoggingConfigPtr(v *GoogleApiSourceLoggingConfigArgs) GoogleApiSourceLoggingConfigPtrInput {
+	return (*googleApiSourceLoggingConfigPtrType)(v)
+}
+
+func (*googleApiSourceLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleApiSourceLoggingConfig)(nil)).Elem()
+}
+
+func (i *googleApiSourceLoggingConfigPtrType) ToGoogleApiSourceLoggingConfigPtrOutput() GoogleApiSourceLoggingConfigPtrOutput {
+	return i.ToGoogleApiSourceLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleApiSourceLoggingConfigPtrType) ToGoogleApiSourceLoggingConfigPtrOutputWithContext(ctx context.Context) GoogleApiSourceLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleApiSourceLoggingConfigPtrOutput)
+}
+
+type GoogleApiSourceLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleApiSourceLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleApiSourceLoggingConfig)(nil)).Elem()
+}
+
+func (o GoogleApiSourceLoggingConfigOutput) ToGoogleApiSourceLoggingConfigOutput() GoogleApiSourceLoggingConfigOutput {
+	return o
+}
+
+func (o GoogleApiSourceLoggingConfigOutput) ToGoogleApiSourceLoggingConfigOutputWithContext(ctx context.Context) GoogleApiSourceLoggingConfigOutput {
+	return o
+}
+
+func (o GoogleApiSourceLoggingConfigOutput) ToGoogleApiSourceLoggingConfigPtrOutput() GoogleApiSourceLoggingConfigPtrOutput {
+	return o.ToGoogleApiSourceLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleApiSourceLoggingConfigOutput) ToGoogleApiSourceLoggingConfigPtrOutputWithContext(ctx context.Context) GoogleApiSourceLoggingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleApiSourceLoggingConfig) *GoogleApiSourceLoggingConfig {
+		return &v
+	}).(GoogleApiSourceLoggingConfigPtrOutput)
+}
+
+// The minimum severity of logs that will be sent to Stackdriver/Platform
+// Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+// Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+func (o GoogleApiSourceLoggingConfigOutput) LogSeverity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleApiSourceLoggingConfig) *string { return v.LogSeverity }).(pulumi.StringPtrOutput)
+}
+
+type GoogleApiSourceLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleApiSourceLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleApiSourceLoggingConfig)(nil)).Elem()
+}
+
+func (o GoogleApiSourceLoggingConfigPtrOutput) ToGoogleApiSourceLoggingConfigPtrOutput() GoogleApiSourceLoggingConfigPtrOutput {
+	return o
+}
+
+func (o GoogleApiSourceLoggingConfigPtrOutput) ToGoogleApiSourceLoggingConfigPtrOutputWithContext(ctx context.Context) GoogleApiSourceLoggingConfigPtrOutput {
+	return o
+}
+
+func (o GoogleApiSourceLoggingConfigPtrOutput) Elem() GoogleApiSourceLoggingConfigOutput {
+	return o.ApplyT(func(v *GoogleApiSourceLoggingConfig) GoogleApiSourceLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleApiSourceLoggingConfig
+		return ret
+	}).(GoogleApiSourceLoggingConfigOutput)
+}
+
+// The minimum severity of logs that will be sent to Stackdriver/Platform
+// Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+// Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+func (o GoogleApiSourceLoggingConfigPtrOutput) LogSeverity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleApiSourceLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogSeverity
+	}).(pulumi.StringPtrOutput)
+}
+
 type MessageBusLoggingConfig struct {
 	// Optional. The minimum severity of logs that will be sent to Stackdriver/Platform
 	// Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
@@ -1497,6 +1642,8 @@ func (o TriggerTransportPubsubPtrOutput) Topic() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleApiSourceLoggingConfigInput)(nil)).Elem(), GoogleApiSourceLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleApiSourceLoggingConfigPtrInput)(nil)).Elem(), GoogleApiSourceLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MessageBusLoggingConfigInput)(nil)).Elem(), MessageBusLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MessageBusLoggingConfigPtrInput)(nil)).Elem(), MessageBusLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationInput)(nil)).Elem(), TriggerDestinationArgs{})
@@ -1515,6 +1662,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerTransportPtrInput)(nil)).Elem(), TriggerTransportArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerTransportPubsubInput)(nil)).Elem(), TriggerTransportPubsubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerTransportPubsubPtrInput)(nil)).Elem(), TriggerTransportPubsubArgs{})
+	pulumi.RegisterOutputType(GoogleApiSourceLoggingConfigOutput{})
+	pulumi.RegisterOutputType(GoogleApiSourceLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(MessageBusLoggingConfigOutput{})
 	pulumi.RegisterOutputType(MessageBusLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(TriggerDestinationOutput{})

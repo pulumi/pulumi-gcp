@@ -19,9 +19,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.serviceaccount.IAMBinding` resources **can be** used in conjunction with `gcp.serviceaccount.IAMMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## Example Usage
- *
- * ### Service Account IAM Policy
+ * ## gcp.serviceaccount.IAMPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -43,7 +41,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Service Account IAM Binding
+ * ## gcp.serviceaccount.IAMBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -60,7 +58,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Service Account IAM Binding With IAM Conditions:
+ * With IAM Conditions:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -82,7 +80,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Service Account IAM Member
+ * ## gcp.serviceaccount.IAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -106,7 +104,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Service Account IAM Member With IAM Conditions:
+ * With IAM Conditions:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -128,31 +126,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Additional Examples
- *
- * ### Service Account IAM Policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/iam.serviceAccountUser",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const sa = new gcp.serviceaccount.Account("sa", {
- *     accountId: "my-service-account",
- *     displayName: "A service account that only Jane can interact with",
- * });
- * const admin_account_iam = new gcp.serviceaccount.IAMPolicy("admin-account-iam", {
- *     serviceAccountId: sa.name,
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
- *
- * ### Service Account IAM Binding
+ * ## gcp.serviceaccount.IAMBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -169,7 +143,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Service Account IAM Binding With IAM Conditions:
+ * With IAM Conditions:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -191,7 +165,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Service Account IAM Member
+ * ## gcp.serviceaccount.IAMMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -215,7 +189,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Service Account IAM Member With IAM Conditions:
+ * With IAM Conditions:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

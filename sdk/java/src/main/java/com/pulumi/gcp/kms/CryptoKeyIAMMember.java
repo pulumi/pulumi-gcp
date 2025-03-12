@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * With IAM Conditions:
+ * With IAM Conditions (beta):
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -162,7 +162,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * With IAM Conditions:
+ * With IAM Conditions (beta):
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -240,7 +240,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * With IAM Conditions:
+ * With IAM Conditions (beta):
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

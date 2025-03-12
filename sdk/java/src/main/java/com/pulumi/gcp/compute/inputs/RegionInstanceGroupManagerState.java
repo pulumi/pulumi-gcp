@@ -537,21 +537,9 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
         return Optional.ofNullable(this.versions);
     }
 
-    /**
-     * Whether to wait for all instances to be created/updated before
-     * returning. Note that if this is set to true and the operation does not succeed, the provider will
-     * continue trying until it times out.
-     * 
-     */
     @Import(name="waitForInstances")
     private @Nullable Output<Boolean> waitForInstances;
 
-    /**
-     * @return Whether to wait for all instances to be created/updated before
-     * returning. Note that if this is set to true and the operation does not succeed, the provider will
-     * continue trying until it times out.
-     * 
-     */
     public Optional<Output<Boolean>> waitForInstances() {
         return Optional.ofNullable(this.waitForInstances);
     }
@@ -1404,27 +1392,11 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
             return versions(List.of(versions));
         }
 
-        /**
-         * @param waitForInstances Whether to wait for all instances to be created/updated before
-         * returning. Note that if this is set to true and the operation does not succeed, the provider will
-         * continue trying until it times out.
-         * 
-         * @return builder
-         * 
-         */
         public Builder waitForInstances(@Nullable Output<Boolean> waitForInstances) {
             $.waitForInstances = waitForInstances;
             return this;
         }
 
-        /**
-         * @param waitForInstances Whether to wait for all instances to be created/updated before
-         * returning. Note that if this is set to true and the operation does not succeed, the provider will
-         * continue trying until it times out.
-         * 
-         * @return builder
-         * 
-         */
         public Builder waitForInstances(Boolean waitForInstances) {
             return waitForInstances(Output.of(waitForInstances));
         }

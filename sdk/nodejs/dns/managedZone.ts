@@ -24,10 +24,12 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
  *
+ * const rnd = new random.RandomId("rnd", {byteLength: 4});
  * const example_zone = new gcp.dns.ManagedZone("example-zone", {
  *     name: "example-zone",
- *     dnsName: "my-domain.com.",
+ *     dnsName: pulumi.interpolate`example-${rnd.hex}.com.`,
  *     description: "Example DNS zone",
  *     labels: {
  *         foo: "bar",
@@ -317,9 +319,6 @@ export class ManagedZone extends pulumi.CustomResource {
      * This is in RFC3339 text format.
      */
     public /*out*/ readonly creationTime!: pulumi.Output<string>;
-    /**
-     * A textual description field. Defaults to 'Managed by Pulumi'.
-     */
     public readonly description!: pulumi.Output<string>;
     /**
      * The DNS name of this managed zone, for instance "example.com.".
@@ -359,6 +358,7 @@ export class ManagedZone extends pulumi.CustomResource {
     /**
      * User assigned name for this resource.
      * Must be unique within the project.
+     *
      *
      * - - -
      */
@@ -487,9 +487,6 @@ export interface ManagedZoneState {
      * This is in RFC3339 text format.
      */
     creationTime?: pulumi.Input<string>;
-    /**
-     * A textual description field. Defaults to 'Managed by Pulumi'.
-     */
     description?: pulumi.Input<string>;
     /**
      * The DNS name of this managed zone, for instance "example.com.".
@@ -529,6 +526,7 @@ export interface ManagedZoneState {
     /**
      * User assigned name for this resource.
      * Must be unique within the project.
+     *
      *
      * - - -
      */
@@ -589,9 +587,6 @@ export interface ManagedZoneArgs {
      * Structure is documented below.
      */
     cloudLoggingConfig?: pulumi.Input<inputs.dns.ManagedZoneCloudLoggingConfig>;
-    /**
-     * A textual description field. Defaults to 'Managed by Pulumi'.
-     */
     description?: pulumi.Input<string>;
     /**
      * The DNS name of this managed zone, for instance "example.com.".
@@ -623,6 +618,7 @@ export interface ManagedZoneArgs {
     /**
      * User assigned name for this resource.
      * Must be unique within the project.
+     *
      *
      * - - -
      */

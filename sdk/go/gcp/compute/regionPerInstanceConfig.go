@@ -77,7 +77,7 @@ import (
 //				return err
 //			}
 //			rigm, err := compute.NewRegionInstanceGroupManager(ctx, "rigm", &compute.RegionInstanceGroupManagerArgs{
-//				Description: pulumi.String("Demo test instance group manager"),
+//				Description: pulumi.String("Terraform test instance group manager"),
 //				Name:        pulumi.String("my-rigm"),
 //				Versions: compute.RegionInstanceGroupManagerVersionArray{
 //					&compute.RegionInstanceGroupManagerVersionArgs{

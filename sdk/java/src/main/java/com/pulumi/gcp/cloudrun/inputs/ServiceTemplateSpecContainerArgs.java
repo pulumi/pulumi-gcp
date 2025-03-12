@@ -132,8 +132,7 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
     }
 
     /**
-     * Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
-     * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * Periodic probe of container liveness. Container will be restarted if the probe fails.
      * Structure is documented below.
      * 
      */
@@ -141,8 +140,7 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
     private @Nullable Output<ServiceTemplateSpecContainerLivenessProbeArgs> livenessProbe;
 
     /**
-     * @return Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
-     * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * @return Periodic probe of container liveness. Container will be restarted if the probe fails.
      * Structure is documented below.
      * 
      */
@@ -500,8 +498,7 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
         }
 
         /**
-         * @param livenessProbe Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
-         * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * @param livenessProbe Periodic probe of container liveness. Container will be restarted if the probe fails.
          * Structure is documented below.
          * 
          * @return builder
@@ -513,8 +510,7 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
         }
 
         /**
-         * @param livenessProbe Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
-         * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * @param livenessProbe Periodic probe of container liveness. Container will be restarted if the probe fails.
          * Structure is documented below.
          * 
          * @return builder

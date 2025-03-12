@@ -12,18 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/docs/mysql/create-instance),
-// or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
-//
-// > **NOTE on `sql.DatabaseInstance`:** - Second-generation instances include a
-// default 'root'@'%' user with no password. This user will be deleted by the provider on
-// instance creation. You should use `sql.User` to define a custom user with
-// a restricted host and strong password.
-//
-// > **Note**: On newer versions of the provider, you must explicitly set `deletion_protection=false`
-// (and run `pulumi update` to write the field to state) in order to destroy an instance.
-// It is recommended to not set this field (or set it to true) until you're ready to destroy the instance and its databases.
-//
 // ## Example Usage
 //
 // ### SQL Second Generation Instance
@@ -339,9 +327,7 @@ type DatabaseInstance struct {
 
 	// The list of all maintenance versions applicable on the instance.
 	AvailableMaintenanceVersions pulumi.StringArrayOutput `pulumi:"availableMaintenanceVersions"`
-	// The context needed to create this instance as a clone of another instance. When this field is set during
-	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
-	// configuration is detailed below.
+	// Configuration for creating a new instance as a clone of another instance.
 	Clone DatabaseInstanceClonePtrOutput `pulumi:"clone"`
 	// The connection name of the instance to be used in
 	// connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
@@ -355,23 +341,12 @@ type DatabaseInstance struct {
 	// `SQLSERVER_2019_WEB`.
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
-	DatabaseVersion pulumi.StringOutput `pulumi:"databaseVersion"`
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+	DatabaseVersion    pulumi.StringOutput  `pulumi:"databaseVersion"`
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
-	DnsName pulumi.StringOutput `pulumi:"dnsName"`
-	// The full path to the encryption key used for the CMEK disk encryption.  Setting
-	// up disk encryption currently requires manual steps outside of this provider.
-	// The provided key must be in the same region as the SQL instance.  In order
-	// to use this feature, a special kind of service account must be created and
-	// granted permission on this key.  This step can currently only be done
-	// manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
-	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
-	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+	DnsName           pulumi.StringOutput `pulumi:"dnsName"`
 	EncryptionKeyName pulumi.StringOutput `pulumi:"encryptionKeyName"`
-	// The first IPv4 address of any type assigned.
-	FirstIpAddress pulumi.StringOutput `pulumi:"firstIpAddress"`
+	FirstIpAddress    pulumi.StringOutput `pulumi:"firstIpAddress"`
 	// The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
 	InstanceType pulumi.StringOutput                  `pulumi:"instanceType"`
 	IpAddresses  DatabaseInstanceIpAddressArrayOutput `pulumi:"ipAddresses"`
@@ -381,20 +356,14 @@ type DatabaseInstance struct {
 	// act as the master in the replication setup. Note, this requires the master to
 	// have `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName pulumi.StringOutput `pulumi:"masterInstanceName"`
-	// The name of the instance. If the name is left
-	// blank, the provider will randomly generate one when the instance is first
-	// created. This is done because after a name is used, it cannot be reused for
-	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The first private (`PRIVATE`) IPv4 address assigned.
-	PrivateIpAddress pulumi.StringOutput `pulumi:"privateIpAddress"`
+	Name               pulumi.StringOutput `pulumi:"name"`
+	PrivateIpAddress   pulumi.StringOutput `pulumi:"privateIpAddress"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// the URI that points to the service attachment of the instance.
 	PscServiceAttachmentLink pulumi.StringOutput `pulumi:"pscServiceAttachmentLink"`
-	// The first public (`PRIMARY`) IPv4 address assigned.
-	PublicIpAddress pulumi.StringOutput `pulumi:"publicIpAddress"`
+	PublicIpAddress          pulumi.StringOutput `pulumi:"publicIpAddress"`
 	// The region the instance will sit in. If a region is not provided in the resource definition,
 	// the provider region will be used instead.
 	//
@@ -407,11 +376,7 @@ type DatabaseInstance struct {
 	ReplicaNames pulumi.StringArrayOutput `pulumi:"replicaNames"`
 	// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
 	// after both the primary and replica are created.
-	ReplicationCluster DatabaseInstanceReplicationClusterOutput `pulumi:"replicationCluster"`
-	// The context needed to restore the database to a backup run. This field will
-	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
-	// block during resource creation/update will trigger the restore action after the resource is created/updated.
+	ReplicationCluster   DatabaseInstanceReplicationClusterOutput      `pulumi:"replicationCluster"`
 	RestoreBackupContext DatabaseInstanceRestoreBackupContextPtrOutput `pulumi:"restoreBackupContext"`
 	// Initial root password. Can be updated. Required for MS SQL Server.
 	RootPassword pulumi.StringPtrOutput `pulumi:"rootPassword"`
@@ -473,9 +438,7 @@ func GetDatabaseInstance(ctx *pulumi.Context,
 type databaseInstanceState struct {
 	// The list of all maintenance versions applicable on the instance.
 	AvailableMaintenanceVersions []string `pulumi:"availableMaintenanceVersions"`
-	// The context needed to create this instance as a clone of another instance. When this field is set during
-	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
-	// configuration is detailed below.
+	// Configuration for creating a new instance as a clone of another instance.
 	Clone *DatabaseInstanceClone `pulumi:"clone"`
 	// The connection name of the instance to be used in
 	// connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
@@ -489,23 +452,12 @@ type databaseInstanceState struct {
 	// `SQLSERVER_2019_WEB`.
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
-	DatabaseVersion *string `pulumi:"databaseVersion"`
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
-	DeletionProtection *bool `pulumi:"deletionProtection"`
+	DatabaseVersion    *string `pulumi:"databaseVersion"`
+	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
-	DnsName *string `pulumi:"dnsName"`
-	// The full path to the encryption key used for the CMEK disk encryption.  Setting
-	// up disk encryption currently requires manual steps outside of this provider.
-	// The provided key must be in the same region as the SQL instance.  In order
-	// to use this feature, a special kind of service account must be created and
-	// granted permission on this key.  This step can currently only be done
-	// manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
-	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
-	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+	DnsName           *string `pulumi:"dnsName"`
 	EncryptionKeyName *string `pulumi:"encryptionKeyName"`
-	// The first IPv4 address of any type assigned.
-	FirstIpAddress *string `pulumi:"firstIpAddress"`
+	FirstIpAddress    *string `pulumi:"firstIpAddress"`
 	// The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
 	InstanceType *string                     `pulumi:"instanceType"`
 	IpAddresses  []DatabaseInstanceIpAddress `pulumi:"ipAddresses"`
@@ -515,20 +467,14 @@ type databaseInstanceState struct {
 	// act as the master in the replication setup. Note, this requires the master to
 	// have `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName *string `pulumi:"masterInstanceName"`
-	// The name of the instance. If the name is left
-	// blank, the provider will randomly generate one when the instance is first
-	// created. This is done because after a name is used, it cannot be reused for
-	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-	Name *string `pulumi:"name"`
-	// The first private (`PRIVATE`) IPv4 address assigned.
-	PrivateIpAddress *string `pulumi:"privateIpAddress"`
+	Name               *string `pulumi:"name"`
+	PrivateIpAddress   *string `pulumi:"privateIpAddress"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// the URI that points to the service attachment of the instance.
 	PscServiceAttachmentLink *string `pulumi:"pscServiceAttachmentLink"`
-	// The first public (`PRIMARY`) IPv4 address assigned.
-	PublicIpAddress *string `pulumi:"publicIpAddress"`
+	PublicIpAddress          *string `pulumi:"publicIpAddress"`
 	// The region the instance will sit in. If a region is not provided in the resource definition,
 	// the provider region will be used instead.
 	//
@@ -541,11 +487,7 @@ type databaseInstanceState struct {
 	ReplicaNames []string `pulumi:"replicaNames"`
 	// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
 	// after both the primary and replica are created.
-	ReplicationCluster *DatabaseInstanceReplicationCluster `pulumi:"replicationCluster"`
-	// The context needed to restore the database to a backup run. This field will
-	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
-	// block during resource creation/update will trigger the restore action after the resource is created/updated.
+	ReplicationCluster   *DatabaseInstanceReplicationCluster   `pulumi:"replicationCluster"`
 	RestoreBackupContext *DatabaseInstanceRestoreBackupContext `pulumi:"restoreBackupContext"`
 	// Initial root password. Can be updated. Required for MS SQL Server.
 	RootPassword *string `pulumi:"rootPassword"`
@@ -563,9 +505,7 @@ type databaseInstanceState struct {
 type DatabaseInstanceState struct {
 	// The list of all maintenance versions applicable on the instance.
 	AvailableMaintenanceVersions pulumi.StringArrayInput
-	// The context needed to create this instance as a clone of another instance. When this field is set during
-	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
-	// configuration is detailed below.
+	// Configuration for creating a new instance as a clone of another instance.
 	Clone DatabaseInstanceClonePtrInput
 	// The connection name of the instance to be used in
 	// connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
@@ -579,23 +519,12 @@ type DatabaseInstanceState struct {
 	// `SQLSERVER_2019_WEB`.
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
-	DatabaseVersion pulumi.StringPtrInput
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+	DatabaseVersion    pulumi.StringPtrInput
 	DeletionProtection pulumi.BoolPtrInput
 	// The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
-	DnsName pulumi.StringPtrInput
-	// The full path to the encryption key used for the CMEK disk encryption.  Setting
-	// up disk encryption currently requires manual steps outside of this provider.
-	// The provided key must be in the same region as the SQL instance.  In order
-	// to use this feature, a special kind of service account must be created and
-	// granted permission on this key.  This step can currently only be done
-	// manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
-	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
-	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+	DnsName           pulumi.StringPtrInput
 	EncryptionKeyName pulumi.StringPtrInput
-	// The first IPv4 address of any type assigned.
-	FirstIpAddress pulumi.StringPtrInput
+	FirstIpAddress    pulumi.StringPtrInput
 	// The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
 	InstanceType pulumi.StringPtrInput
 	IpAddresses  DatabaseInstanceIpAddressArrayInput
@@ -605,20 +534,14 @@ type DatabaseInstanceState struct {
 	// act as the master in the replication setup. Note, this requires the master to
 	// have `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName pulumi.StringPtrInput
-	// The name of the instance. If the name is left
-	// blank, the provider will randomly generate one when the instance is first
-	// created. This is done because after a name is used, it cannot be reused for
-	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-	Name pulumi.StringPtrInput
-	// The first private (`PRIVATE`) IPv4 address assigned.
-	PrivateIpAddress pulumi.StringPtrInput
+	Name               pulumi.StringPtrInput
+	PrivateIpAddress   pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// the URI that points to the service attachment of the instance.
 	PscServiceAttachmentLink pulumi.StringPtrInput
-	// The first public (`PRIMARY`) IPv4 address assigned.
-	PublicIpAddress pulumi.StringPtrInput
+	PublicIpAddress          pulumi.StringPtrInput
 	// The region the instance will sit in. If a region is not provided in the resource definition,
 	// the provider region will be used instead.
 	//
@@ -631,11 +554,7 @@ type DatabaseInstanceState struct {
 	ReplicaNames pulumi.StringArrayInput
 	// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
 	// after both the primary and replica are created.
-	ReplicationCluster DatabaseInstanceReplicationClusterPtrInput
-	// The context needed to restore the database to a backup run. This field will
-	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
-	// block during resource creation/update will trigger the restore action after the resource is created/updated.
+	ReplicationCluster   DatabaseInstanceReplicationClusterPtrInput
 	RestoreBackupContext DatabaseInstanceRestoreBackupContextPtrInput
 	// Initial root password. Can be updated. Required for MS SQL Server.
 	RootPassword pulumi.StringPtrInput
@@ -655,9 +574,7 @@ func (DatabaseInstanceState) ElementType() reflect.Type {
 }
 
 type databaseInstanceArgs struct {
-	// The context needed to create this instance as a clone of another instance. When this field is set during
-	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
-	// configuration is detailed below.
+	// Configuration for creating a new instance as a clone of another instance.
 	Clone *DatabaseInstanceClone `pulumi:"clone"`
 	// The MySQL, PostgreSQL or
 	// SQL Server version to use. Supported values include `MYSQL_5_6`,
@@ -668,19 +585,9 @@ type databaseInstanceArgs struct {
 	// `SQLSERVER_2019_WEB`.
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
-	DatabaseVersion string `pulumi:"databaseVersion"`
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
-	DeletionProtection *bool `pulumi:"deletionProtection"`
-	// The full path to the encryption key used for the CMEK disk encryption.  Setting
-	// up disk encryption currently requires manual steps outside of this provider.
-	// The provided key must be in the same region as the SQL instance.  In order
-	// to use this feature, a special kind of service account must be created and
-	// granted permission on this key.  This step can currently only be done
-	// manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
-	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
-	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
-	EncryptionKeyName *string `pulumi:"encryptionKeyName"`
+	DatabaseVersion    string  `pulumi:"databaseVersion"`
+	DeletionProtection *bool   `pulumi:"deletionProtection"`
+	EncryptionKeyName  *string `pulumi:"encryptionKeyName"`
 	// The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
 	InstanceType *string `pulumi:"instanceType"`
 	// The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
@@ -689,11 +596,7 @@ type databaseInstanceArgs struct {
 	// act as the master in the replication setup. Note, this requires the master to
 	// have `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName *string `pulumi:"masterInstanceName"`
-	// The name of the instance. If the name is left
-	// blank, the provider will randomly generate one when the instance is first
-	// created. This is done because after a name is used, it cannot be reused for
-	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-	Name *string `pulumi:"name"`
+	Name               *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -709,11 +612,7 @@ type databaseInstanceArgs struct {
 	ReplicaNames []string `pulumi:"replicaNames"`
 	// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
 	// after both the primary and replica are created.
-	ReplicationCluster *DatabaseInstanceReplicationCluster `pulumi:"replicationCluster"`
-	// The context needed to restore the database to a backup run. This field will
-	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
-	// block during resource creation/update will trigger the restore action after the resource is created/updated.
+	ReplicationCluster   *DatabaseInstanceReplicationCluster   `pulumi:"replicationCluster"`
 	RestoreBackupContext *DatabaseInstanceRestoreBackupContext `pulumi:"restoreBackupContext"`
 	// Initial root password. Can be updated. Required for MS SQL Server.
 	RootPassword *string `pulumi:"rootPassword"`
@@ -724,9 +623,7 @@ type databaseInstanceArgs struct {
 
 // The set of arguments for constructing a DatabaseInstance resource.
 type DatabaseInstanceArgs struct {
-	// The context needed to create this instance as a clone of another instance. When this field is set during
-	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
-	// configuration is detailed below.
+	// Configuration for creating a new instance as a clone of another instance.
 	Clone DatabaseInstanceClonePtrInput
 	// The MySQL, PostgreSQL or
 	// SQL Server version to use. Supported values include `MYSQL_5_6`,
@@ -737,19 +634,9 @@ type DatabaseInstanceArgs struct {
 	// `SQLSERVER_2019_WEB`.
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
-	DatabaseVersion pulumi.StringInput
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+	DatabaseVersion    pulumi.StringInput
 	DeletionProtection pulumi.BoolPtrInput
-	// The full path to the encryption key used for the CMEK disk encryption.  Setting
-	// up disk encryption currently requires manual steps outside of this provider.
-	// The provided key must be in the same region as the SQL instance.  In order
-	// to use this feature, a special kind of service account must be created and
-	// granted permission on this key.  This step can currently only be done
-	// manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
-	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
-	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
-	EncryptionKeyName pulumi.StringPtrInput
+	EncryptionKeyName  pulumi.StringPtrInput
 	// The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
 	InstanceType pulumi.StringPtrInput
 	// The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
@@ -758,11 +645,7 @@ type DatabaseInstanceArgs struct {
 	// act as the master in the replication setup. Note, this requires the master to
 	// have `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName pulumi.StringPtrInput
-	// The name of the instance. If the name is left
-	// blank, the provider will randomly generate one when the instance is first
-	// created. This is done because after a name is used, it cannot be reused for
-	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-	Name pulumi.StringPtrInput
+	Name               pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -778,11 +661,7 @@ type DatabaseInstanceArgs struct {
 	ReplicaNames pulumi.StringArrayInput
 	// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
 	// after both the primary and replica are created.
-	ReplicationCluster DatabaseInstanceReplicationClusterPtrInput
-	// The context needed to restore the database to a backup run. This field will
-	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
-	// block during resource creation/update will trigger the restore action after the resource is created/updated.
+	ReplicationCluster   DatabaseInstanceReplicationClusterPtrInput
 	RestoreBackupContext DatabaseInstanceRestoreBackupContextPtrInput
 	// Initial root password. Can be updated. Required for MS SQL Server.
 	RootPassword pulumi.StringPtrInput
@@ -883,9 +762,7 @@ func (o DatabaseInstanceOutput) AvailableMaintenanceVersions() pulumi.StringArra
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringArrayOutput { return v.AvailableMaintenanceVersions }).(pulumi.StringArrayOutput)
 }
 
-// The context needed to create this instance as a clone of another instance. When this field is set during
-// resource creation, this provider will attempt to clone another instance as indicated in the context. The
-// configuration is detailed below.
+// Configuration for creating a new instance as a clone of another instance.
 func (o DatabaseInstanceOutput) Clone() DatabaseInstanceClonePtrOutput {
 	return o.ApplyT(func(v *DatabaseInstance) DatabaseInstanceClonePtrOutput { return v.Clone }).(DatabaseInstanceClonePtrOutput)
 }
@@ -909,8 +786,6 @@ func (o DatabaseInstanceOutput) DatabaseVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.DatabaseVersion }).(pulumi.StringOutput)
 }
 
-// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
 func (o DatabaseInstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
@@ -920,19 +795,10 @@ func (o DatabaseInstanceOutput) DnsName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.DnsName }).(pulumi.StringOutput)
 }
 
-// The full path to the encryption key used for the CMEK disk encryption.  Setting
-// up disk encryption currently requires manual steps outside of this provider.
-// The provided key must be in the same region as the SQL instance.  In order
-// to use this feature, a special kind of service account must be created and
-// granted permission on this key.  This step can currently only be done
-// manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
-// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
-// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
 func (o DatabaseInstanceOutput) EncryptionKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.EncryptionKeyName }).(pulumi.StringOutput)
 }
 
-// The first IPv4 address of any type assigned.
 func (o DatabaseInstanceOutput) FirstIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.FirstIpAddress }).(pulumi.StringOutput)
 }
@@ -958,15 +824,10 @@ func (o DatabaseInstanceOutput) MasterInstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.MasterInstanceName }).(pulumi.StringOutput)
 }
 
-// The name of the instance. If the name is left
-// blank, the provider will randomly generate one when the instance is first
-// created. This is done because after a name is used, it cannot be reused for
-// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 func (o DatabaseInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The first private (`PRIVATE`) IPv4 address assigned.
 func (o DatabaseInstanceOutput) PrivateIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.PrivateIpAddress }).(pulumi.StringOutput)
 }
@@ -982,7 +843,6 @@ func (o DatabaseInstanceOutput) PscServiceAttachmentLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.PscServiceAttachmentLink }).(pulumi.StringOutput)
 }
 
-// The first public (`PRIMARY`) IPv4 address assigned.
 func (o DatabaseInstanceOutput) PublicIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.PublicIpAddress }).(pulumi.StringOutput)
 }
@@ -1012,10 +872,6 @@ func (o DatabaseInstanceOutput) ReplicationCluster() DatabaseInstanceReplication
 	return o.ApplyT(func(v *DatabaseInstance) DatabaseInstanceReplicationClusterOutput { return v.ReplicationCluster }).(DatabaseInstanceReplicationClusterOutput)
 }
 
-// The context needed to restore the database to a backup run. This field will
-// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
-// block during resource creation/update will trigger the restore action after the resource is created/updated.
 func (o DatabaseInstanceOutput) RestoreBackupContext() DatabaseInstanceRestoreBackupContextPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstance) DatabaseInstanceRestoreBackupContextPtrOutput { return v.RestoreBackupContext }).(DatabaseInstanceRestoreBackupContextPtrOutput)
 }

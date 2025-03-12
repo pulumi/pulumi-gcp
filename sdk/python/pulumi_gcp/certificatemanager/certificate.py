@@ -54,7 +54,9 @@ class CertificateArgs:
                EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
                See https://cloud.google.com/vpc/docs/edge-locations.
                ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-               See https://cloud.google.com/compute/docs/regions-zones
+               See https://cloud.google.com/compute/docs/regions-zones.
+               CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
+               See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
         :param pulumi.Input['CertificateSelfManagedArgs'] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
@@ -170,7 +172,9 @@ class CertificateArgs:
         EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
         See https://cloud.google.com/vpc/docs/edge-locations.
         ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-        See https://cloud.google.com/compute/docs/regions-zones
+        See https://cloud.google.com/compute/docs/regions-zones.
+        CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
+        See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
         """
         return pulumi.get(self, "scope")
 
@@ -237,7 +241,9 @@ class _CertificateState:
                EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
                See https://cloud.google.com/vpc/docs/edge-locations.
                ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-               See https://cloud.google.com/compute/docs/regions-zones
+               See https://cloud.google.com/compute/docs/regions-zones.
+               CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
+               See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
         :param pulumi.Input['CertificateSelfManagedArgs'] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
@@ -396,7 +402,9 @@ class _CertificateState:
         EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
         See https://cloud.google.com/vpc/docs/edge-locations.
         ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-        See https://cloud.google.com/compute/docs/regions-zones
+        See https://cloud.google.com/compute/docs/regions-zones.
+        CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
+        See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
         """
         return pulumi.get(self, "scope")
 
@@ -538,33 +546,20 @@ class Certificate(pulumi.CustomResource):
                 "issuance_config": issuanceconfig.id,
             })
         ```
-        ### Certificate Manager Certificate Basic
+        ### Certificate Manager Self Managed Certificate
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
-        instance = gcp.certificatemanager.DnsAuthorization("instance",
-            name="dns-auth",
-            description="The default dnss",
-            domain="subdomain.hashicorptest.com")
-        instance2 = gcp.certificatemanager.DnsAuthorization("instance2",
-            name="dns-auth2",
-            description="The default dnss",
-            domain="subdomain2.hashicorptest.com")
         default = gcp.certificatemanager.Certificate("default",
             name="self-managed-cert",
             description="Global cert",
-            scope="EDGE_CACHE",
-            managed={
-                "domains": [
-                    instance.domain,
-                    instance2.domain,
-                ],
-                "dns_authorizations": [
-                    instance.id,
-                    instance2.id,
-                ],
+            scope="ALL_REGIONS",
+            self_managed={
+                "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
+                "pem_private_key": std.file(input="test-fixtures/private-key.pem").result,
             })
         ```
         ### Certificate Manager Self Managed Certificate Regional
@@ -699,6 +694,22 @@ class Certificate(pulumi.CustomResource):
                 "dns_authorizations": [instance.id],
             })
         ```
+        ### Certificate Manager Client Auth Certificate
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        default = gcp.certificatemanager.Certificate("default",
+            name="client-auth-cert",
+            description="Global cert",
+            scope="CLIENT_AUTH",
+            self_managed={
+                "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
+                "pem_private_key": std.file(input="test-fixtures/private-key.pem").result,
+            })
+        ```
 
         ## Import
 
@@ -749,7 +760,9 @@ class Certificate(pulumi.CustomResource):
                EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
                See https://cloud.google.com/vpc/docs/edge-locations.
                ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-               See https://cloud.google.com/compute/docs/regions-zones
+               See https://cloud.google.com/compute/docs/regions-zones.
+               CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
+               See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
         :param pulumi.Input[Union['CertificateSelfManagedArgs', 'CertificateSelfManagedArgsDict']] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
@@ -865,33 +878,20 @@ class Certificate(pulumi.CustomResource):
                 "issuance_config": issuanceconfig.id,
             })
         ```
-        ### Certificate Manager Certificate Basic
+        ### Certificate Manager Self Managed Certificate
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
-        instance = gcp.certificatemanager.DnsAuthorization("instance",
-            name="dns-auth",
-            description="The default dnss",
-            domain="subdomain.hashicorptest.com")
-        instance2 = gcp.certificatemanager.DnsAuthorization("instance2",
-            name="dns-auth2",
-            description="The default dnss",
-            domain="subdomain2.hashicorptest.com")
         default = gcp.certificatemanager.Certificate("default",
             name="self-managed-cert",
             description="Global cert",
-            scope="EDGE_CACHE",
-            managed={
-                "domains": [
-                    instance.domain,
-                    instance2.domain,
-                ],
-                "dns_authorizations": [
-                    instance.id,
-                    instance2.id,
-                ],
+            scope="ALL_REGIONS",
+            self_managed={
+                "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
+                "pem_private_key": std.file(input="test-fixtures/private-key.pem").result,
             })
         ```
         ### Certificate Manager Self Managed Certificate Regional
@@ -1024,6 +1024,22 @@ class Certificate(pulumi.CustomResource):
             managed={
                 "domains": [instance.domain],
                 "dns_authorizations": [instance.id],
+            })
+        ```
+        ### Certificate Manager Client Auth Certificate
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        default = gcp.certificatemanager.Certificate("default",
+            name="client-auth-cert",
+            description="Global cert",
+            scope="CLIENT_AUTH",
+            self_managed={
+                "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
+                "pem_private_key": std.file(input="test-fixtures/private-key.pem").result,
             })
         ```
 
@@ -1151,7 +1167,9 @@ class Certificate(pulumi.CustomResource):
                EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
                See https://cloud.google.com/vpc/docs/edge-locations.
                ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-               See https://cloud.google.com/compute/docs/regions-zones
+               See https://cloud.google.com/compute/docs/regions-zones.
+               CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
+               See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
         :param pulumi.Input[Union['CertificateSelfManagedArgs', 'CertificateSelfManagedArgsDict']] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
@@ -1268,7 +1286,9 @@ class Certificate(pulumi.CustomResource):
         EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
         See https://cloud.google.com/vpc/docs/edge-locations.
         ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-        See https://cloud.google.com/compute/docs/regions-zones
+        See https://cloud.google.com/compute/docs/regions-zones.
+        CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
+        See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
         """
         return pulumi.get(self, "scope")
 

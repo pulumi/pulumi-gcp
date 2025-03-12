@@ -269,20 +269,7 @@ class BucketEncryption(dict):
     def __init__(__self__, *,
                  default_kms_key_name: str):
         """
-        :param str default_kms_key_name: The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
-               You must pay attention to whether the crypto key is available in the location that this bucket is created in.
-               See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
-               
-               > As per [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for customer-managed encryption keys, the IAM policy for the
-               specified key must permit the [automatic Google Cloud Storage service account](https://cloud.google.com/storage/docs/projects#service-accounts) for the bucket's
-               project to use the specified key for encryption and decryption operations.
-               Although the service account email address follows a well-known format, the service account is created on-demand and may not necessarily exist for your project
-               until a relevant action has occurred which triggers its creation.
-               You should use the [`storage_get_project_service_account`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
-               address for the service account when configuring IAM policy on the Cloud KMS key.
-               This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
-               state of the project.
-               You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
+        :param str default_kms_key_name: A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified. You must pay attention to whether the crypto key is available in the location that this bucket is created in. See the docs for more details.
         """
         pulumi.set(__self__, "default_kms_key_name", default_kms_key_name)
 
@@ -290,20 +277,7 @@ class BucketEncryption(dict):
     @pulumi.getter(name="defaultKmsKeyName")
     def default_kms_key_name(self) -> str:
         """
-        The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
-        You must pay attention to whether the crypto key is available in the location that this bucket is created in.
-        See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
-
-        > As per [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for customer-managed encryption keys, the IAM policy for the
-        specified key must permit the [automatic Google Cloud Storage service account](https://cloud.google.com/storage/docs/projects#service-accounts) for the bucket's
-        project to use the specified key for encryption and decryption operations.
-        Although the service account email address follows a well-known format, the service account is created on-demand and may not necessarily exist for your project
-        until a relevant action has occurred which triggers its creation.
-        You should use the [`storage_get_project_service_account`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
-        address for the service account when configuring IAM policy on the Cloud KMS key.
-        This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
-        state of the project.
-        You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
+        A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified. You must pay attention to whether the crypto key is available in the location that this bucket is created in. See the docs for more details.
         """
         return pulumi.get(self, "default_kms_key_name")
 
@@ -335,11 +309,6 @@ class BucketIAMBindingCondition(dict):
         """
         :param str expression: Textual representation of an expression in Common Expression Language syntax.
         :param str title: A title for the expression, i.e. a short string describing its purpose.
-        :param str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -365,13 +334,6 @@ class BucketIAMBindingCondition(dict):
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
         return pulumi.get(self, "description")
 
 
@@ -384,11 +346,6 @@ class BucketIAMMemberCondition(dict):
         """
         :param str expression: Textual representation of an expression in Common Expression Language syntax.
         :param str title: A title for the expression, i.e. a short string describing its purpose.
-        :param str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -414,13 +371,6 @@ class BucketIAMMemberCondition(dict):
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
         return pulumi.get(self, "description")
 
 

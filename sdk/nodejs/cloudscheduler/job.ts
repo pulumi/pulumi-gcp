@@ -280,9 +280,6 @@ export class Job extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly pubsubTarget!: pulumi.Output<outputs.cloudscheduler.JobPubsubTarget | undefined>;
-    /**
-     * Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
-     */
     public readonly region!: pulumi.Output<string>;
     /**
      * By default, if a job does not complete successfully,
@@ -409,9 +406,6 @@ export interface JobState {
      * Structure is documented below.
      */
     pubsubTarget?: pulumi.Input<inputs.cloudscheduler.JobPubsubTarget>;
-    /**
-     * Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
-     */
     region?: pulumi.Input<string>;
     /**
      * By default, if a job does not complete successfully,
@@ -492,9 +486,6 @@ export interface JobArgs {
      * Structure is documented below.
      */
     pubsubTarget?: pulumi.Input<inputs.cloudscheduler.JobPubsubTarget>;
-    /**
-     * Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
-     */
     region?: pulumi.Input<string>;
     /**
      * By default, if a job does not complete successfully,

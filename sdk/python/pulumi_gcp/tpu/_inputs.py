@@ -830,6 +830,10 @@ if not MYPY:
         """
         Whether the node is created under a reservation.
         """
+        spot: NotRequired[pulumi.Input[bool]]
+        """
+        Optional. Defines whether the node is Spot VM.
+        """
 elif False:
     V2VmSchedulingConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -837,15 +841,19 @@ elif False:
 class V2VmSchedulingConfigArgs:
     def __init__(__self__, *,
                  preemptible: Optional[pulumi.Input[bool]] = None,
-                 reserved: Optional[pulumi.Input[bool]] = None):
+                 reserved: Optional[pulumi.Input[bool]] = None,
+                 spot: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] preemptible: Defines whether the node is preemptible.
         :param pulumi.Input[bool] reserved: Whether the node is created under a reservation.
+        :param pulumi.Input[bool] spot: Optional. Defines whether the node is Spot VM.
         """
         if preemptible is not None:
             pulumi.set(__self__, "preemptible", preemptible)
         if reserved is not None:
             pulumi.set(__self__, "reserved", reserved)
+        if spot is not None:
+            pulumi.set(__self__, "spot", spot)
 
     @property
     @pulumi.getter
@@ -870,6 +878,18 @@ class V2VmSchedulingConfigArgs:
     @reserved.setter
     def reserved(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "reserved", value)
+
+    @property
+    @pulumi.getter
+    def spot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Defines whether the node is Spot VM.
+        """
+        return pulumi.get(self, "spot")
+
+    @spot.setter
+    def spot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "spot", value)
 
 
 if not MYPY:

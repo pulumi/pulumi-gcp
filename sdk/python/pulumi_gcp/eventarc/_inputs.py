@@ -15,6 +15,8 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'GoogleApiSourceLoggingConfigArgs',
+    'GoogleApiSourceLoggingConfigArgsDict',
     'MessageBusLoggingConfigArgs',
     'MessageBusLoggingConfigArgsDict',
     'TriggerDestinationArgs',
@@ -36,6 +38,44 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class GoogleApiSourceLoggingConfigArgsDict(TypedDict):
+        log_severity: NotRequired[pulumi.Input[str]]
+        """
+        The minimum severity of logs that will be sent to Stackdriver/Platform
+        Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+        Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+        """
+elif False:
+    GoogleApiSourceLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GoogleApiSourceLoggingConfigArgs:
+    def __init__(__self__, *,
+                 log_severity: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] log_severity: The minimum severity of logs that will be sent to Stackdriver/Platform
+               Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+               Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+        """
+        if log_severity is not None:
+            pulumi.set(__self__, "log_severity", log_severity)
+
+    @property
+    @pulumi.getter(name="logSeverity")
+    def log_severity(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum severity of logs that will be sent to Stackdriver/Platform
+        Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+        Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+        """
+        return pulumi.get(self, "log_severity")
+
+    @log_severity.setter
+    def log_severity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_severity", value)
+
 
 if not MYPY:
     class MessageBusLoggingConfigArgsDict(TypedDict):

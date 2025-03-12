@@ -13,12 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class IamAuditConfigAuditLogConfig {
     /**
-     * @return Identities that do not cause logging for this type of permission.
-     * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
-     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     * @return Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
      * 
      */
     private @Nullable List<String> exemptedMembers;
@@ -30,12 +25,7 @@ public final class IamAuditConfigAuditLogConfig {
 
     private IamAuditConfigAuditLogConfig() {}
     /**
-     * @return Identities that do not cause logging for this type of permission.
-     * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
-     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     * @return Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
      * 
      */
     public List<String> exemptedMembers() {

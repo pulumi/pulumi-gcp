@@ -67,12 +67,6 @@ class AgentArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] supported_language_codes: The list of all languages supported by this agent (except for the defaultLanguageCode).
-        :param pulumi.Input[str] tier: The agent tier. If not specified, TIER_STANDARD is assumed.
-               * TIER_STANDARD: Standard tier.
-               * TIER_ENTERPRISE: Enterprise tier (Essentials).
-               * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
-               NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-               the the provider state and Dialogflow if the agent tier is changed outside of the provider.
         """
         pulumi.set(__self__, "default_language_code", default_language_code)
         pulumi.set(__self__, "display_name", display_name)
@@ -254,14 +248,6 @@ class AgentArgs:
     @property
     @pulumi.getter
     def tier(self) -> Optional[pulumi.Input[str]]:
-        """
-        The agent tier. If not specified, TIER_STANDARD is assumed.
-        * TIER_STANDARD: Standard tier.
-        * TIER_ENTERPRISE: Enterprise tier (Essentials).
-        * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
-        NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-        the the provider state and Dialogflow if the agent tier is changed outside of the provider.
-        """
         return pulumi.get(self, "tier")
 
     @tier.setter
@@ -318,12 +304,6 @@ class _AgentState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] supported_language_codes: The list of all languages supported by this agent (except for the defaultLanguageCode).
-        :param pulumi.Input[str] tier: The agent tier. If not specified, TIER_STANDARD is assumed.
-               * TIER_STANDARD: Standard tier.
-               * TIER_ENTERPRISE: Enterprise tier (Essentials).
-               * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
-               NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-               the the provider state and Dialogflow if the agent tier is changed outside of the provider.
         :param pulumi.Input[str] time_zone: The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
                Europe/Paris.
                
@@ -512,14 +492,6 @@ class _AgentState:
     @property
     @pulumi.getter
     def tier(self) -> Optional[pulumi.Input[str]]:
-        """
-        The agent tier. If not specified, TIER_STANDARD is assumed.
-        * TIER_STANDARD: Standard tier.
-        * TIER_ENTERPRISE: Enterprise tier (Essentials).
-        * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
-        NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-        the the provider state and Dialogflow if the agent tier is changed outside of the provider.
-        """
         return pulumi.get(self, "tier")
 
     @tier.setter
@@ -642,12 +614,6 @@ class Agent(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] supported_language_codes: The list of all languages supported by this agent (except for the defaultLanguageCode).
-        :param pulumi.Input[str] tier: The agent tier. If not specified, TIER_STANDARD is assumed.
-               * TIER_STANDARD: Standard tier.
-               * TIER_ENTERPRISE: Enterprise tier (Essentials).
-               * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
-               NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-               the the provider state and Dialogflow if the agent tier is changed outside of the provider.
         :param pulumi.Input[str] time_zone: The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
                Europe/Paris.
                
@@ -826,12 +792,6 @@ class Agent(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] supported_language_codes: The list of all languages supported by this agent (except for the defaultLanguageCode).
-        :param pulumi.Input[str] tier: The agent tier. If not specified, TIER_STANDARD is assumed.
-               * TIER_STANDARD: Standard tier.
-               * TIER_ENTERPRISE: Enterprise tier (Essentials).
-               * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
-               NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-               the the provider state and Dialogflow if the agent tier is changed outside of the provider.
         :param pulumi.Input[str] time_zone: The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
                Europe/Paris.
                
@@ -968,14 +928,6 @@ class Agent(pulumi.CustomResource):
     @property
     @pulumi.getter
     def tier(self) -> pulumi.Output[Optional[str]]:
-        """
-        The agent tier. If not specified, TIER_STANDARD is assumed.
-        * TIER_STANDARD: Standard tier.
-        * TIER_ENTERPRISE: Enterprise tier (Essentials).
-        * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
-        NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-        the the provider state and Dialogflow if the agent tier is changed outside of the provider.
-        """
         return pulumi.get(self, "tier")
 
     @property

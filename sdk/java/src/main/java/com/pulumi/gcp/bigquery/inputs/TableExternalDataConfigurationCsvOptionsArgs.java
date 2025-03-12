@@ -86,29 +86,9 @@ public final class TableExternalDataConfigurationCsvOptionsArgs extends com.pulu
         return Optional.ofNullable(this.fieldDelimiter);
     }
 
-    /**
-     * The value that is used to quote data sections in a
-     * CSV file. If your data does not contain quoted sections, set the
-     * property value to an empty string. If your data contains quoted newline
-     * characters, you must also set the `allow_quoted_newlines` property to true.
-     * The API-side default is `&#34;`, specified in the provider escaped as `\&#34;`. Due to
-     * limitations with default values, this value is required to be
-     * explicitly set.
-     * 
-     */
     @Import(name="quote", required=true)
     private Output<String> quote;
 
-    /**
-     * @return The value that is used to quote data sections in a
-     * CSV file. If your data does not contain quoted sections, set the
-     * property value to an empty string. If your data contains quoted newline
-     * characters, you must also set the `allow_quoted_newlines` property to true.
-     * The API-side default is `&#34;`, specified in the provider escaped as `\&#34;`. Due to
-     * limitations with default values, this value is required to be
-     * explicitly set.
-     * 
-     */
     public Output<String> quote() {
         return this.quote;
     }
@@ -251,35 +231,11 @@ public final class TableExternalDataConfigurationCsvOptionsArgs extends com.pulu
             return fieldDelimiter(Output.of(fieldDelimiter));
         }
 
-        /**
-         * @param quote The value that is used to quote data sections in a
-         * CSV file. If your data does not contain quoted sections, set the
-         * property value to an empty string. If your data contains quoted newline
-         * characters, you must also set the `allow_quoted_newlines` property to true.
-         * The API-side default is `&#34;`, specified in the provider escaped as `\&#34;`. Due to
-         * limitations with default values, this value is required to be
-         * explicitly set.
-         * 
-         * @return builder
-         * 
-         */
         public Builder quote(Output<String> quote) {
             $.quote = quote;
             return this;
         }
 
-        /**
-         * @param quote The value that is used to quote data sections in a
-         * CSV file. If your data does not contain quoted sections, set the
-         * property value to an empty string. If your data contains quoted newline
-         * characters, you must also set the `allow_quoted_newlines` property to true.
-         * The API-side default is `&#34;`, specified in the provider escaped as `\&#34;`. Due to
-         * limitations with default values, this value is required to be
-         * explicitly set.
-         * 
-         * @return builder
-         * 
-         */
         public Builder quote(String quote) {
             return quote(Output.of(quote));
         }

@@ -41,9 +41,6 @@ class TableArgs:
         :param pulumi.Input[str] name: The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] split_keys: A list of predefined keys to split the table on.
-               !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
-               to delete/recreate the entire `bigtable.Table` resource.
         """
         pulumi.set(__self__, "instance_name", instance_name)
         if automated_backup_policy is not None:
@@ -151,11 +148,6 @@ class TableArgs:
     @property
     @pulumi.getter(name="splitKeys")
     def split_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of predefined keys to split the table on.
-        !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
-        to delete/recreate the entire `bigtable.Table` resource.
-        """
         return pulumi.get(self, "split_keys")
 
     @split_keys.setter
@@ -186,9 +178,6 @@ class _TableState:
         :param pulumi.Input[str] name: The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] split_keys: A list of predefined keys to split the table on.
-               !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
-               to delete/recreate the entire `bigtable.Table` resource.
         """
         if automated_backup_policy is not None:
             pulumi.set(__self__, "automated_backup_policy", automated_backup_policy)
@@ -297,11 +286,6 @@ class _TableState:
     @property
     @pulumi.getter(name="splitKeys")
     def split_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of predefined keys to split the table on.
-        !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
-        to delete/recreate the entire `bigtable.Table` resource.
-        """
         return pulumi.get(self, "split_keys")
 
     @split_keys.setter
@@ -324,10 +308,6 @@ class Table(pulumi.CustomResource):
                  split_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Creates a Google Cloud Bigtable table inside an instance. For more information see
-        [the official documentation](https://cloud.google.com/bigtable/) and
-        [API](https://cloud.google.com/bigtable/docs/go/reference).
-
         ## Example Usage
 
         ```python
@@ -420,9 +400,6 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] split_keys: A list of predefined keys to split the table on.
-               !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
-               to delete/recreate the entire `bigtable.Table` resource.
         """
         ...
     @overload
@@ -431,10 +408,6 @@ class Table(pulumi.CustomResource):
                  args: TableArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a Google Cloud Bigtable table inside an instance. For more information see
-        [the official documentation](https://cloud.google.com/bigtable/) and
-        [API](https://cloud.google.com/bigtable/docs/go/reference).
-
         ## Example Usage
 
         ```python
@@ -592,9 +565,6 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] split_keys: A list of predefined keys to split the table on.
-               !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
-               to delete/recreate the entire `bigtable.Table` resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -672,10 +642,5 @@ class Table(pulumi.CustomResource):
     @property
     @pulumi.getter(name="splitKeys")
     def split_keys(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        A list of predefined keys to split the table on.
-        !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
-        to delete/recreate the entire `bigtable.Table` resource.
-        """
         return pulumi.get(self, "split_keys")
 

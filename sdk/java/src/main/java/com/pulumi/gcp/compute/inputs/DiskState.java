@@ -81,6 +81,40 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If set to true, a snapshot of the disk will be created before it is destroyed.
+     * If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+     * The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+     * 
+     */
+    @Import(name="createSnapshotBeforeDestroy")
+    private @Nullable Output<Boolean> createSnapshotBeforeDestroy;
+
+    /**
+     * @return If set to true, a snapshot of the disk will be created before it is destroyed.
+     * If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+     * The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+     * 
+     */
+    public Optional<Output<Boolean>> createSnapshotBeforeDestroy() {
+        return Optional.ofNullable(this.createSnapshotBeforeDestroy);
+    }
+
+    /**
+     * This will set a custom name prefix for the snapshot that&#39;s created when the disk is deleted.
+     * 
+     */
+    @Import(name="createSnapshotBeforeDestroyPrefix")
+    private @Nullable Output<String> createSnapshotBeforeDestroyPrefix;
+
+    /**
+     * @return This will set a custom name prefix for the snapshot that&#39;s created when the disk is deleted.
+     * 
+     */
+    public Optional<Output<String>> createSnapshotBeforeDestroyPrefix() {
+        return Optional.ofNullable(this.createSnapshotBeforeDestroyPrefix);
+    }
+
+    /**
      * Creation timestamp in RFC3339 text format.
      * 
      */
@@ -550,37 +584,9 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.selfLink);
     }
 
-    /**
-     * Size of the persistent disk, specified in GB. You can specify this
-     * field when creating a persistent disk using the `image` or
-     * `snapshot` parameter, or specify it alone to create an empty
-     * persistent disk.
-     * If you specify this field along with `image` or `snapshot`,
-     * the value must not be less than the size of the image
-     * or the size of the snapshot.
-     * ~&gt;**NOTE** If you change the size, the provider updates the disk size
-     * if upsizing is detected but recreates the disk if downsizing is requested.
-     * You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-     * and recreating.
-     * 
-     */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
-    /**
-     * @return Size of the persistent disk, specified in GB. You can specify this
-     * field when creating a persistent disk using the `image` or
-     * `snapshot` parameter, or specify it alone to create an empty
-     * persistent disk.
-     * If you specify this field along with `image` or `snapshot`,
-     * the value must not be less than the size of the image
-     * or the size of the snapshot.
-     * ~&gt;**NOTE** If you change the size, the provider updates the disk size
-     * if upsizing is detected but recreates the disk if downsizing is requested.
-     * You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-     * and recreating.
-     * 
-     */
     public Optional<Output<Integer>> size() {
         return Optional.ofNullable(this.size);
     }
@@ -897,6 +903,8 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         this.accessMode = $.accessMode;
         this.architecture = $.architecture;
         this.asyncPrimaryDisk = $.asyncPrimaryDisk;
+        this.createSnapshotBeforeDestroy = $.createSnapshotBeforeDestroy;
+        this.createSnapshotBeforeDestroyPrefix = $.createSnapshotBeforeDestroyPrefix;
         this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
         this.diskEncryptionKey = $.diskEncryptionKey;
@@ -1027,6 +1035,52 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder asyncPrimaryDisk(DiskAsyncPrimaryDiskArgs asyncPrimaryDisk) {
             return asyncPrimaryDisk(Output.of(asyncPrimaryDisk));
+        }
+
+        /**
+         * @param createSnapshotBeforeDestroy If set to true, a snapshot of the disk will be created before it is destroyed.
+         * If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+         * The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createSnapshotBeforeDestroy(@Nullable Output<Boolean> createSnapshotBeforeDestroy) {
+            $.createSnapshotBeforeDestroy = createSnapshotBeforeDestroy;
+            return this;
+        }
+
+        /**
+         * @param createSnapshotBeforeDestroy If set to true, a snapshot of the disk will be created before it is destroyed.
+         * If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+         * The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createSnapshotBeforeDestroy(Boolean createSnapshotBeforeDestroy) {
+            return createSnapshotBeforeDestroy(Output.of(createSnapshotBeforeDestroy));
+        }
+
+        /**
+         * @param createSnapshotBeforeDestroyPrefix This will set a custom name prefix for the snapshot that&#39;s created when the disk is deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createSnapshotBeforeDestroyPrefix(@Nullable Output<String> createSnapshotBeforeDestroyPrefix) {
+            $.createSnapshotBeforeDestroyPrefix = createSnapshotBeforeDestroyPrefix;
+            return this;
+        }
+
+        /**
+         * @param createSnapshotBeforeDestroyPrefix This will set a custom name prefix for the snapshot that&#39;s created when the disk is deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createSnapshotBeforeDestroyPrefix(String createSnapshotBeforeDestroyPrefix) {
+            return createSnapshotBeforeDestroyPrefix(Output.of(createSnapshotBeforeDestroyPrefix));
         }
 
         /**
@@ -1680,43 +1734,11 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
             return selfLink(Output.of(selfLink));
         }
 
-        /**
-         * @param size Size of the persistent disk, specified in GB. You can specify this
-         * field when creating a persistent disk using the `image` or
-         * `snapshot` parameter, or specify it alone to create an empty
-         * persistent disk.
-         * If you specify this field along with `image` or `snapshot`,
-         * the value must not be less than the size of the image
-         * or the size of the snapshot.
-         * ~&gt;**NOTE** If you change the size, the provider updates the disk size
-         * if upsizing is detected but recreates the disk if downsizing is requested.
-         * You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-         * and recreating.
-         * 
-         * @return builder
-         * 
-         */
         public Builder size(@Nullable Output<Integer> size) {
             $.size = size;
             return this;
         }
 
-        /**
-         * @param size Size of the persistent disk, specified in GB. You can specify this
-         * field when creating a persistent disk using the `image` or
-         * `snapshot` parameter, or specify it alone to create an empty
-         * persistent disk.
-         * If you specify this field along with `image` or `snapshot`,
-         * the value must not be less than the size of the image
-         * or the size of the snapshot.
-         * ~&gt;**NOTE** If you change the size, the provider updates the disk size
-         * if upsizing is detected but recreates the disk if downsizing is requested.
-         * You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-         * and recreating.
-         * 
-         * @return builder
-         * 
-         */
         public Builder size(Integer size) {
             return size(Output.of(size));
         }

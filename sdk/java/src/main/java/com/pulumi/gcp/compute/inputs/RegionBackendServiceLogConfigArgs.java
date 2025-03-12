@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Double;
+import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -29,6 +31,40 @@ public final class RegionBackendServiceLogConfigArgs extends com.pulumi.resource
      */
     public Optional<Output<Boolean>> enable() {
         return Optional.ofNullable(this.enable);
+    }
+
+    /**
+     * Specifies the fields to include in logging. This field can only be specified if logging is enabled for this backend service.
+     * 
+     */
+    @Import(name="optionalFields")
+    private @Nullable Output<List<String>> optionalFields;
+
+    /**
+     * @return Specifies the fields to include in logging. This field can only be specified if logging is enabled for this backend service.
+     * 
+     */
+    public Optional<Output<List<String>>> optionalFields() {
+        return Optional.ofNullable(this.optionalFields);
+    }
+
+    /**
+     * Specifies the optional logging mode for the load balancer traffic.
+     * Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM.
+     * Possible values are: `INCLUDE_ALL_OPTIONAL`, `EXCLUDE_ALL_OPTIONAL`, `CUSTOM`.
+     * 
+     */
+    @Import(name="optionalMode")
+    private @Nullable Output<String> optionalMode;
+
+    /**
+     * @return Specifies the optional logging mode for the load balancer traffic.
+     * Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM.
+     * Possible values are: `INCLUDE_ALL_OPTIONAL`, `EXCLUDE_ALL_OPTIONAL`, `CUSTOM`.
+     * 
+     */
+    public Optional<Output<String>> optionalMode() {
+        return Optional.ofNullable(this.optionalMode);
     }
 
     /**
@@ -56,6 +92,8 @@ public final class RegionBackendServiceLogConfigArgs extends com.pulumi.resource
 
     private RegionBackendServiceLogConfigArgs(RegionBackendServiceLogConfigArgs $) {
         this.enable = $.enable;
+        this.optionalFields = $.optionalFields;
+        this.optionalMode = $.optionalMode;
         this.sampleRate = $.sampleRate;
     }
 
@@ -96,6 +134,62 @@ public final class RegionBackendServiceLogConfigArgs extends com.pulumi.resource
          */
         public Builder enable(Boolean enable) {
             return enable(Output.of(enable));
+        }
+
+        /**
+         * @param optionalFields Specifies the fields to include in logging. This field can only be specified if logging is enabled for this backend service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optionalFields(@Nullable Output<List<String>> optionalFields) {
+            $.optionalFields = optionalFields;
+            return this;
+        }
+
+        /**
+         * @param optionalFields Specifies the fields to include in logging. This field can only be specified if logging is enabled for this backend service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optionalFields(List<String> optionalFields) {
+            return optionalFields(Output.of(optionalFields));
+        }
+
+        /**
+         * @param optionalFields Specifies the fields to include in logging. This field can only be specified if logging is enabled for this backend service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optionalFields(String... optionalFields) {
+            return optionalFields(List.of(optionalFields));
+        }
+
+        /**
+         * @param optionalMode Specifies the optional logging mode for the load balancer traffic.
+         * Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM.
+         * Possible values are: `INCLUDE_ALL_OPTIONAL`, `EXCLUDE_ALL_OPTIONAL`, `CUSTOM`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optionalMode(@Nullable Output<String> optionalMode) {
+            $.optionalMode = optionalMode;
+            return this;
+        }
+
+        /**
+         * @param optionalMode Specifies the optional logging mode for the load balancer traffic.
+         * Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM.
+         * Possible values are: `INCLUDE_ALL_OPTIONAL`, `EXCLUDE_ALL_OPTIONAL`, `CUSTOM`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optionalMode(String optionalMode) {
+            return optionalMode(Output.of(optionalMode));
         }
 
         /**

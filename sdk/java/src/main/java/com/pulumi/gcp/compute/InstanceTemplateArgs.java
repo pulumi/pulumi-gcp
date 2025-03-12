@@ -269,19 +269,9 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.minCpuPlatform);
     }
 
-    /**
-     * The name of the instance template. If you leave
-     * this blank, the provider will auto-generate a unique name.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return The name of the instance template. If you leave
-     * this blank, the provider will auto-generate a unique name.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -926,25 +916,11 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
             return minCpuPlatform(Output.of(minCpuPlatform));
         }
 
-        /**
-         * @param name The name of the instance template. If you leave
-         * this blank, the provider will auto-generate a unique name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name The name of the instance template. If you leave
-         * this blank, the provider will auto-generate a unique name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

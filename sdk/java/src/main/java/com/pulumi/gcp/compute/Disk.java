@@ -273,6 +273,38 @@ public class Disk extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.asyncPrimaryDisk);
     }
     /**
+     * If set to true, a snapshot of the disk will be created before it is destroyed.
+     * If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+     * The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+     * 
+     */
+    @Export(name="createSnapshotBeforeDestroy", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> createSnapshotBeforeDestroy;
+
+    /**
+     * @return If set to true, a snapshot of the disk will be created before it is destroyed.
+     * If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+     * The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+     * 
+     */
+    public Output<Optional<Boolean>> createSnapshotBeforeDestroy() {
+        return Codegen.optional(this.createSnapshotBeforeDestroy);
+    }
+    /**
+     * This will set a custom name prefix for the snapshot that&#39;s created when the disk is deleted.
+     * 
+     */
+    @Export(name="createSnapshotBeforeDestroyPrefix", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> createSnapshotBeforeDestroyPrefix;
+
+    /**
+     * @return This will set a custom name prefix for the snapshot that&#39;s created when the disk is deleted.
+     * 
+     */
+    public Output<Optional<String>> createSnapshotBeforeDestroyPrefix() {
+        return Codegen.optional(this.createSnapshotBeforeDestroyPrefix);
+    }
+    /**
      * Creation timestamp in RFC3339 text format.
      * 
      */
@@ -714,37 +746,9 @@ public class Disk extends com.pulumi.resources.CustomResource {
     public Output<String> selfLink() {
         return this.selfLink;
     }
-    /**
-     * Size of the persistent disk, specified in GB. You can specify this
-     * field when creating a persistent disk using the `image` or
-     * `snapshot` parameter, or specify it alone to create an empty
-     * persistent disk.
-     * If you specify this field along with `image` or `snapshot`,
-     * the value must not be less than the size of the image
-     * or the size of the snapshot.
-     * ~&gt;**NOTE** If you change the size, the provider updates the disk size
-     * if upsizing is detected but recreates the disk if downsizing is requested.
-     * You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-     * and recreating.
-     * 
-     */
     @Export(name="size", refs={Integer.class}, tree="[0]")
     private Output<Integer> size;
 
-    /**
-     * @return Size of the persistent disk, specified in GB. You can specify this
-     * field when creating a persistent disk using the `image` or
-     * `snapshot` parameter, or specify it alone to create an empty
-     * persistent disk.
-     * If you specify this field along with `image` or `snapshot`,
-     * the value must not be less than the size of the image
-     * or the size of the snapshot.
-     * ~&gt;**NOTE** If you change the size, the provider updates the disk size
-     * if upsizing is detected but recreates the disk if downsizing is requested.
-     * You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-     * and recreating.
-     * 
-     */
     public Output<Integer> size() {
         return this.size;
     }

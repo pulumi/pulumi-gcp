@@ -12,14 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A policy binding to a folder
-//
-// To get more information about FoldersPolicyBinding, see:
-//
-// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/folders.locations.policyBindings)
-// * How-to Guides
-//   - [Apply a policy binding](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create#create_binding)
-//
 // ## Example Usage
 //
 // ### Iam Folders Policy Binding
@@ -43,14 +35,14 @@ import (
 //			pabPolicy, err := iam.NewPrincipalAccessBoundaryPolicy(ctx, "pab_policy", &iam.PrincipalAccessBoundaryPolicyArgs{
 //				Organization:                    pulumi.String("123456789"),
 //				Location:                        pulumi.String("global"),
-//				DisplayName:                     pulumi.String("test folder binding"),
+//				DisplayName:                     pulumi.String("binding for all principals in the folder"),
 //				PrincipalAccessBoundaryPolicyId: pulumi.String("my-pab-policy"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			folder, err := organizations.NewFolder(ctx, "folder", &organizations.FolderArgs{
-//				DisplayName:        pulumi.String("test folder"),
+//				DisplayName:        pulumi.String("my folder"),
 //				Parent:             pulumi.String("organizations/123456789"),
 //				DeletionProtection: pulumi.Bool(false),
 //			})
@@ -65,12 +57,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = iam.NewFoldersPolicyBinding(ctx, "my-folder-binding", &iam.FoldersPolicyBindingArgs{
+//			_, err = iam.NewFoldersPolicyBinding(ctx, "binding-for-all-folder-principals", &iam.FoldersPolicyBindingArgs{
 //				Folder:          folder.FolderId,
 //				Location:        pulumi.String("global"),
-//				DisplayName:     pulumi.String("test folder binding"),
+//				DisplayName:     pulumi.String("binding for all principals in the folder"),
 //				PolicyKind:      pulumi.String("PRINCIPAL_ACCESS_BOUNDARY"),
-//				PolicyBindingId: pulumi.String("test-folder-binding"),
+//				PolicyBindingId: pulumi.String("binding-for-all-folder-principals"),
 //				Policy: pabPolicy.PrincipalAccessBoundaryPolicyId.ApplyT(func(principalAccessBoundaryPolicyId string) (string, error) {
 //					return fmt.Sprintf("organizations/123456789/locations/global/principalAccessBoundaryPolicies/%v", principalAccessBoundaryPolicyId), nil
 //				}).(pulumi.StringOutput),

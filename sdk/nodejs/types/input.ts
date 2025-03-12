@@ -2528,12 +2528,27 @@ export namespace alloydb {
          */
         pscDnsName?: pulumi.Input<string>;
         /**
+         * Configurations for setting up PSC interfaces attached to the instance
+         * which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
+         * Structure is documented below.
+         */
+        pscInterfaceConfigs?: pulumi.Input<pulumi.Input<inputs.alloydb.InstancePscInstanceConfigPscInterfaceConfig>[]>;
+        /**
          * (Output)
          * The service attachment created when Private Service Connect (PSC) is enabled for the instance.
          * The name of the resource will be in the format of
          * `projects/<alloydb-tenant-project-number>/regions/<region-name>/serviceAttachments/<service-attachment-name>`
          */
         serviceAttachmentLink?: pulumi.Input<string>;
+    }
+
+    export interface InstancePscInstanceConfigPscInterfaceConfig {
+        /**
+         * The network attachment resource created in the consumer project to which the PSC interface will be linked.
+         * This is of the format: "projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}".
+         * The network attachment must be in the same region as the instance.
+         */
+        networkAttachmentResource?: pulumi.Input<string>;
     }
 
     export interface InstanceQueryInsightsConfig {
@@ -5131,7 +5146,7 @@ export namespace backupdisasterrecovery {
         daysOfMonths?: pulumi.Input<pulumi.Input<number>[]>;
         /**
          * Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrenceType`, `WEEKLY` and is not applicable otherwise.
-         * Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+         * Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          */
         daysOfWeeks?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -6136,8 +6151,8 @@ export namespace bigquery {
          */
         maxBadRecords?: pulumi.Input<number>;
         /**
-         * Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
-         * property to a custom value, BigQuery throws an error if an
+         * Specifies a string that represents a null value in a CSV file. For example, if you specify "\N", BigQuery interprets "\N" as a null value
+         * when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
          * empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
          * an empty value.
          */
@@ -6932,15 +6947,6 @@ export namespace bigquery {
          * The separator for fields in a CSV file.
          */
         fieldDelimiter?: pulumi.Input<string>;
-        /**
-         * The value that is used to quote data sections in a
-         * CSV file. If your data does not contain quoted sections, set the
-         * property value to an empty string. If your data contains quoted newline
-         * characters, you must also set the `allowQuotedNewlines` property to true.
-         * The API-side default is `"`, specified in the provider escaped as `\"`. Due to
-         * limitations with default values, this value is required to be
-         * explicitly set.
-         */
         quote: pulumi.Input<string>;
         /**
          * The number of rows at the top of a CSV
@@ -7466,16 +7472,7 @@ export namespace bigtable {
          */
         clusterId: pulumi.Input<string>;
         /**
-         * Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
-         *
-         * > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
-         *
-         * !> **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
-         *
-         * !> **Warning:** Modifying the `storageType`, `zone` or `kmsKeyName` of an existing cluster (by
-         * `clusterId`) will cause the provider to delete/recreate the entire
-         * `gcp.bigtable.Instance` resource. If these values are changing, use a new
-         * `clusterId`.
+         * Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the cloudkms.cryptoKeyEncrypterDecrypter role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. 3) All clusters within an instance must use the same CMEK key. Values are of the form projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}
          */
         kmsKeyName?: pulumi.Input<string>;
         /**
@@ -10084,7 +10081,6 @@ export namespace certificatemanager {
         /**
          * The certificate chain in PEM-encoded form.
          * Leaf certificate comes first, followed by intermediate ones if any.
-         * **Note**: This property is sensitive and will not be displayed in the plan.
          */
         pemCertificate?: pulumi.Input<string>;
         /**
@@ -13294,7 +13290,7 @@ export namespace cloudrun {
          * may be set by external tools to store and retrieve arbitrary metadata.
          * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
          * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
-         * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+         * If pulumi preview shows a diff where a server-side annotation is added, you can add it to your config
          * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
          * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
@@ -13466,7 +13462,7 @@ export namespace cloudrun {
          * may be set by external tools to store and retrieve arbitrary metadata.
          * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
          * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
-         * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+         * If pulumi preview shows a diff where a server-side annotation is added, you can add it to your config
          * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
          * Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
          * keys to configure features on a Service:
@@ -13658,7 +13654,7 @@ export namespace cloudrun {
          * may be set by external tools to store and retrieve arbitrary metadata.
          * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
          * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
-         * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+         * If pulumi preview shows a diff where a server-side annotation is added, you can add it to your config
          * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
          * Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
          * keys to configure features on a Service:
@@ -13806,8 +13802,7 @@ export namespace cloudrun {
          */
         image: pulumi.Input<string>;
         /**
-         * Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
-         * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * Periodic probe of container liveness. Container will be restarted if the probe fails.
          * Structure is documented below.
          */
         livenessProbe?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerLivenessProbe>;
@@ -17095,12 +17090,12 @@ export namespace compute {
         /**
          * Specifies the balancing mode for this backend.
          * For global HTTP(S) or TCP/SSL load balancing, the default is
-         * UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
-         * and CONNECTION (for TCP/SSL).
+         * UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S)),
+         * CUSTOM_METRICS (for HTTP(s)) and CONNECTION (for TCP/SSL).
          * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
          * for an explanation of load balancing modes.
          * Default value is `UTILIZATION`.
-         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
+         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
          */
         balancingMode?: pulumi.Input<string>;
         /**
@@ -17112,6 +17107,11 @@ export namespace compute {
          * 0% of its available Capacity. Valid range is [0.0,1.0].
          */
         capacityScaler?: pulumi.Input<number>;
+        /**
+         * The set of custom metrics that are used for <code>CUSTOM_METRICS</code> BalancingMode.
+         * Structure is documented below.
+         */
+        customMetrics?: pulumi.Input<pulumi.Input<inputs.compute.BackendServiceBackendCustomMetric>[]>;
         /**
          * An optional description of this resource.
          * Provide this property when you create the resource.
@@ -17187,6 +17187,30 @@ export namespace compute {
          * CPU utilization target for the group. Valid range is [0.0, 1.0].
          */
         maxUtilization?: pulumi.Input<number>;
+    }
+
+    export interface BackendServiceBackendCustomMetric {
+        /**
+         * If true, the metric data is not used for load balancing.
+         */
+        dryRun: pulumi.Input<boolean>;
+        /**
+         * Optional parameter to define a target utilization for the Custom Metrics
+         * balancing mode. The valid range is <code>[0.0, 1.0]</code>.
+         */
+        maxUtilization?: pulumi.Input<number>;
+        /**
+         * Name of a custom utilization signal. The name must be 1-64 characters
+         * long and match the regular expression a-z? which
+         * means the first character must be a lowercase letter, and all following
+         * characters must be a dash, period, underscore, lowercase letter, or
+         * digit, except the last character, which cannot be a dash, period, or
+         * underscore. For usage guidelines, see Custom Metrics balancing mode. This
+         * field can only be used for a global or regional backend service with the
+         * loadBalancingScheme set to <code>EXTERNAL_MANAGED</code>,
+         * <code>INTERNAL_MANAGED</code> <code>INTERNAL_SELF_MANAGED</code>.
+         */
+        name: pulumi.Input<string>;
     }
 
     export interface BackendServiceCdnPolicy {
@@ -17417,6 +17441,25 @@ export namespace compute {
          * Must be from 0 to 315,576,000,000 inclusive.
          */
         seconds: pulumi.Input<number>;
+    }
+
+    export interface BackendServiceCustomMetric {
+        /**
+         * If true, the metric data is not used for load balancing.
+         */
+        dryRun: pulumi.Input<boolean>;
+        /**
+         * Name of a custom utilization signal. The name must be 1-64 characters
+         * long and match the regular expression a-z? which
+         * means the first character must be a lowercase letter, and all following
+         * characters must be a dash, period, underscore, lowercase letter, or
+         * digit, except the last character, which cannot be a dash, period, or
+         * underscore. For usage guidelines, see Custom Metrics balancing mode. This
+         * field can only be used for a global or regional backend service with the
+         * loadBalancingScheme set to <code>EXTERNAL_MANAGED</code>,
+         * <code>INTERNAL_MANAGED</code> <code>INTERNAL_SELF_MANAGED</code>.
+         */
+        name: pulumi.Input<string>;
     }
 
     export interface BackendServiceIamBindingCondition {
@@ -18730,13 +18773,6 @@ export namespace compute {
     }
 
     export interface ImageIamBindingCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -18749,13 +18785,6 @@ export namespace compute {
     }
 
     export interface ImageIamMemberCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -19385,6 +19414,12 @@ export namespace compute {
          * Whether the instance is spot. If this is set as SPOT.
          */
         provisioningModel?: pulumi.Input<string>;
+        /**
+         * Specifies the timestamp, when the instance will be terminated,
+         * in RFC3339 text format. If specified, the instance termination action
+         * will be performed at the termination time.
+         */
+        terminationTime?: pulumi.Input<string>;
     }
 
     export interface InstanceFromMachineImageSchedulingGracefulShutdown {
@@ -19879,6 +19914,12 @@ export namespace compute {
          * Whether the instance is spot. If this is set as SPOT.
          */
         provisioningModel?: pulumi.Input<string>;
+        /**
+         * Specifies the timestamp, when the instance will be terminated,
+         * in RFC3339 text format. If specified, the instance termination action
+         * will be performed at the termination time.
+         */
+        terminationTime?: pulumi.Input<string>;
     }
 
     export interface InstanceFromTemplateSchedulingGracefulShutdown {
@@ -20245,13 +20286,6 @@ export namespace compute {
     }
 
     export interface InstanceIAMBindingCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -20264,13 +20298,6 @@ export namespace compute {
     }
 
     export interface InstanceIAMMemberCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -20544,6 +20571,10 @@ export namespace compute {
          * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
          */
         provisioningModel?: pulumi.Input<string>;
+        /**
+         * Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
+         */
+        terminationTime?: pulumi.Input<string>;
     }
 
     export interface InstanceSchedulingGracefulShutdown {
@@ -20919,14 +20950,6 @@ export namespace compute {
     }
 
     export interface InstanceTemplateNetworkInterface {
-        /**
-         * Access configurations, i.e. IPs via which this
-         * instance can be accessed via the Internet. Omit to ensure that the instance
-         * is not accessible from the Internet (this means that ssh provisioners will
-         * not work unless you can send traffic to the instance's
-         * network (e.g. via tunnel or because it is running on another cloud instance
-         * on that network). This block can be specified once per `networkInterface`. Structure documented below.
-         */
         accessConfigs?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateNetworkInterfaceAccessConfig>[]>;
         /**
          * An
@@ -20953,8 +20976,7 @@ export namespace compute {
          */
         ipv6Address?: pulumi.Input<string>;
         /**
-         * The name of the instance template. If you leave
-         * this blank, the provider will auto-generate a unique name.
+         * The name of the network_interface.
          */
         name?: pulumi.Input<string>;
         /**
@@ -21041,8 +21063,7 @@ export namespace compute {
          */
         externalIpv6PrefixLength?: pulumi.Input<string>;
         /**
-         * The name of the instance template. If you leave
-         * this blank, the provider will auto-generate a unique name.
+         * The name of this access configuration.
          */
         name?: pulumi.Input<string>;
         /**
@@ -21157,6 +21178,10 @@ export namespace compute {
          * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
          */
         provisioningModel?: pulumi.Input<string>;
+        /**
+         * Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
+         */
+        terminationTime?: pulumi.Input<string>;
     }
 
     export interface InstanceTemplateSchedulingGracefulShutdown {
@@ -21442,9 +21467,6 @@ export namespace compute {
     }
 
     export interface MachineImageIamBindingCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -21457,9 +21479,6 @@ export namespace compute {
     }
 
     export interface MachineImageIamMemberCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -22753,7 +22772,7 @@ export namespace compute {
          * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
          * for an explanation of load balancing modes.
          * Default value is `UTILIZATION`.
-         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
+         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
          */
         balancingMode?: pulumi.Input<string>;
         /**
@@ -22767,6 +22786,11 @@ export namespace compute {
          * 0% of its available Capacity. Valid range is [0.0,1.0].
          */
         capacityScaler?: pulumi.Input<number>;
+        /**
+         * The set of custom metrics that are used for <code>CUSTOM_METRICS</code> BalancingMode.
+         * Structure is documented below.
+         */
+        customMetrics?: pulumi.Input<pulumi.Input<inputs.compute.RegionBackendServiceBackendCustomMetric>[]>;
         /**
          * An optional description of this resource.
          * Provide this property when you create the resource.
@@ -22856,6 +22880,30 @@ export namespace compute {
          * Cannot be set for INTERNAL backend services.
          */
         maxUtilization?: pulumi.Input<number>;
+    }
+
+    export interface RegionBackendServiceBackendCustomMetric {
+        /**
+         * If true, the metric data is not used for load balancing.
+         */
+        dryRun: pulumi.Input<boolean>;
+        /**
+         * Optional parameter to define a target utilization for the Custom Metrics
+         * balancing mode. The valid range is <code>[0.0, 1.0]</code>.
+         */
+        maxUtilization?: pulumi.Input<number>;
+        /**
+         * Name of a custom utilization signal. The name must be 1-64 characters
+         * long and match the regular expression a-z? which
+         * means the first character must be a lowercase letter, and all following
+         * characters must be a dash, period, underscore, lowercase letter, or
+         * digit, except the last character, which cannot be a dash, period, or
+         * underscore. For usage guidelines, see Custom Metrics balancing mode. This
+         * field can only be used for a global or regional backend service with the
+         * loadBalancingScheme set to <code>EXTERNAL_MANAGED</code>,
+         * <code>INTERNAL_MANAGED</code> <code>INTERNAL_SELF_MANAGED</code>.
+         */
+        name: pulumi.Input<string>;
     }
 
     export interface RegionBackendServiceCdnPolicy {
@@ -23112,6 +23160,25 @@ export namespace compute {
         seconds: pulumi.Input<number>;
     }
 
+    export interface RegionBackendServiceCustomMetric {
+        /**
+         * If true, the metric data is not used for load balancing.
+         */
+        dryRun: pulumi.Input<boolean>;
+        /**
+         * Name of a custom utilization signal. The name must be 1-64 characters
+         * long and match the regular expression a-z? which
+         * means the first character must be a lowercase letter, and all following
+         * characters must be a dash, period, underscore, lowercase letter, or
+         * digit, except the last character, which cannot be a dash, period, or
+         * underscore. For usage guidelines, see Custom Metrics balancing mode. This
+         * field can only be used for a global or regional backend service with the
+         * loadBalancingScheme set to <code>EXTERNAL_MANAGED</code>,
+         * <code>INTERNAL_MANAGED</code> <code>INTERNAL_SELF_MANAGED</code>.
+         */
+        name: pulumi.Input<string>;
+    }
+
     export interface RegionBackendServiceFailoverPolicy {
         /**
          * On failover or failback, this field indicates whether connection drain
@@ -23195,6 +23262,16 @@ export namespace compute {
          * Whether to enable logging for the load balancer traffic served by this backend service.
          */
         enable?: pulumi.Input<boolean>;
+        /**
+         * Specifies the fields to include in logging. This field can only be specified if logging is enabled for this backend service.
+         */
+        optionalFields?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Specifies the optional logging mode for the load balancer traffic.
+         * Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM.
+         * Possible values are: `INCLUDE_ALL_OPTIONAL`, `EXCLUDE_ALL_OPTIONAL`, `CUSTOM`.
+         */
+        optionalMode?: pulumi.Input<string>;
         /**
          * This field can only be specified if logging is enabled for this backend service. The value of
          * the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
@@ -23398,6 +23475,13 @@ export namespace compute {
          * **Note**: This property is sensitive and will not be displayed in the plan.
          */
         rawKey?: pulumi.Input<string>;
+        /**
+         * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+         * customer-supplied encryption key to either encrypt or decrypt
+         * this resource. You can provide either the rawKey or the rsaEncryptedKey.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        rsaEncryptedKey?: pulumi.Input<string>;
         /**
          * (Output)
          * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
@@ -24429,6 +24513,10 @@ export namespace compute {
          * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
          */
         provisioningModel?: pulumi.Input<string>;
+        /**
+         * Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
+         */
+        terminationTime?: pulumi.Input<string>;
     }
 
     export interface RegionInstanceTemplateSchedulingGracefulShutdown {
@@ -29175,13 +29263,6 @@ export namespace compute {
     }
 
     export interface SubnetworkIAMBindingCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -29194,13 +29275,6 @@ export namespace compute {
     }
 
     export interface SubnetworkIAMMemberCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -33176,7 +33250,7 @@ export namespace container {
          */
         advancedDatapathObservabilityConfig?: pulumi.Input<inputs.container.ClusterMonitoringConfigAdvancedDatapathObservabilityConfig>;
         /**
-         * The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET`, `CADVISOR` and `DCGM`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
+         * The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET`, `CADVISOR`, `DCGM` and `JOBSET`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above. `JOBSET` is only supported in GKE 1.32.1-gke.1357001 and above.
          */
         enableComponents?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -33232,7 +33306,7 @@ export namespace container {
          */
         advancedMachineFeatures?: pulumi.Input<inputs.container.ClusterNodeConfigAdvancedMachineFeatures>;
         /**
-         * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+         * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
          */
         bootDiskKmsKey?: pulumi.Input<string>;
         /**
@@ -33288,6 +33362,10 @@ export namespace container {
         /**
          * List of the type and count of accelerator cards attached to the instance.
          * Structure documented below.
+         * **Note**: As of 6.0.0, argument syntax
+         * is no longer supported for this field in favor of block syntax.
+         * To dynamically set a list of guest accelerators, use dynamic blocks.
+         * To set an empty list, use a single `guestAccelerator` block with `count = 0`.
          */
         guestAccelerators?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodeConfigGuestAccelerator>[]>;
         /**
@@ -33361,11 +33439,7 @@ export namespace container {
          */
         maxRunDuration?: pulumi.Input<string>;
         /**
-         * The metadata key/value pairs assigned to instances in
-         * the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-         * `true` by the API; if `metadata` is set but that default value is not
-         * included, the provider will attempt to unset the value. To avoid this, set the
-         * value in your config.
+         * The metadata key/value pairs assigned to instances in the cluster.
          */
         metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -33408,7 +33482,8 @@ export namespace container {
          */
         resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * Sandbox configuration for this node.
+         * [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+         * Structure is documented below.
          */
         sandboxConfig?: pulumi.Input<inputs.container.ClusterNodeConfigSandboxConfig>;
         /**
@@ -33444,14 +33519,7 @@ export namespace container {
          */
         tags?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-         * to apply to nodes. GKE's API can only set this field on cluster creation.
-         * However, GKE will add taints to your nodes if you enable certain features such
-         * as GPUs. If this field is set, any diffs on this field will cause the provider to
-         * recreate the underlying resource. Taint values can be updated safely in
-         * Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-         * this field to manage taints. If you do, `lifecycle.ignore_changes` is
-         * recommended. Structure is documented below.
+         * List of Kubernetes taints to be applied to each node.
          */
         taints?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodeConfigTaint>[]>;
         /**
@@ -33824,7 +33892,7 @@ export namespace container {
         /**
          * How to expose the node metadata to the workload running on the node.
          * Accepted values are:
-         * * UNSPECIFIED: Not Set
+         * * MODE_UNSPECIFIED: Not Set
          * * GCE_METADATA: Expose all Compute Engine metadata to pods.
          * * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
          */
@@ -33873,16 +33941,11 @@ export namespace container {
          */
         namePrefix?: pulumi.Input<string>;
         /**
-         * Configuration for
-         * [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
+         * Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
          */
         networkConfig?: pulumi.Input<inputs.container.ClusterNodePoolNetworkConfig>;
         /**
-         * Parameters used in creating the default node pool.
-         * Generally, this field should not be used at the same time as a
-         * `gcp.container.NodePool` or a `nodePool` block; this configuration
-         * manages the default node pool, which isn't recommended to be used.
-         * Structure is documented below.
+         * The configuration of the nodepool
          */
         nodeConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfig>;
         /**
@@ -34078,7 +34141,7 @@ export namespace container {
          */
         additionalPodNetworkConfigs?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig>[]>;
         /**
-         * Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
+         * Whether to create a new range for pod IPs in this node pool. Defaults are provided for podRange and podIpv4CidrBlock if they are not specified.
          */
         createPodRange?: pulumi.Input<boolean>;
         /**
@@ -34098,7 +34161,7 @@ export namespace container {
          */
         podIpv4CidrBlock?: pulumi.Input<string>;
         /**
-         * The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
+         * The ID of the secondary range for pod IPs. If createPodRange is true, this ID is used for the new range. If createPodRange is false, uses an existing secondary range with this ID.
          */
         podRange?: pulumi.Input<string>;
     }
@@ -34156,7 +34219,7 @@ export namespace container {
          */
         advancedMachineFeatures?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigAdvancedMachineFeatures>;
         /**
-         * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+         * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
          */
         bootDiskKmsKey?: pulumi.Input<string>;
         /**
@@ -34212,6 +34275,10 @@ export namespace container {
         /**
          * List of the type and count of accelerator cards attached to the instance.
          * Structure documented below.
+         * **Note**: As of 6.0.0, argument syntax
+         * is no longer supported for this field in favor of block syntax.
+         * To dynamically set a list of guest accelerators, use dynamic blocks.
+         * To set an empty list, use a single `guestAccelerator` block with `count = 0`.
          */
         guestAccelerators?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodePoolNodeConfigGuestAccelerator>[]>;
         /**
@@ -34285,11 +34352,7 @@ export namespace container {
          */
         maxRunDuration?: pulumi.Input<string>;
         /**
-         * The metadata key/value pairs assigned to instances in
-         * the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-         * `true` by the API; if `metadata` is set but that default value is not
-         * included, the provider will attempt to unset the value. To avoid this, set the
-         * value in your config.
+         * The metadata key/value pairs assigned to instances in the cluster.
          */
         metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -34332,7 +34395,8 @@ export namespace container {
          */
         resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * Sandbox configuration for this node.
+         * [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+         * Structure is documented below.
          */
         sandboxConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigSandboxConfig>;
         /**
@@ -34368,14 +34432,7 @@ export namespace container {
          */
         tags?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-         * to apply to nodes. GKE's API can only set this field on cluster creation.
-         * However, GKE will add taints to your nodes if you enable certain features such
-         * as GPUs. If this field is set, any diffs on this field will cause the provider to
-         * recreate the underlying resource. Taint values can be updated safely in
-         * Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-         * this field to manage taints. If you do, `lifecycle.ignore_changes` is
-         * recommended. Structure is documented below.
+         * List of Kubernetes taints to be applied to each node.
          */
         taints?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodePoolNodeConfigTaint>[]>;
         /**
@@ -34748,7 +34805,7 @@ export namespace container {
         /**
          * How to expose the node metadata to the workload running on the node.
          * Accepted values are:
-         * * UNSPECIFIED: Not Set
+         * * MODE_UNSPECIFIED: Not Set
          * * GCE_METADATA: Expose all Compute Engine metadata to pods.
          * * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
          */
@@ -34876,9 +34933,7 @@ export namespace container {
          */
         enablePrivateNodes?: pulumi.Input<boolean>;
         /**
-         * Controls cluster master global
-         * access settings. If unset, the provider will no longer manage this field and will
-         * not modify the previously-set value. Structure is documented below.
+         * Controls cluster master global access settings.
          */
         masterGlobalAccessConfig?: pulumi.Input<inputs.container.ClusterPrivateClusterConfigMasterGlobalAccessConfig>;
         /**
@@ -44877,6 +44932,7 @@ export namespace dataproc {
          * * PREEMPTIBILITY_UNSPECIFIED
          * * NON_PREEMPTIBLE
          * * PREEMPTIBLE
+         * * SPOT
          */
         preemptibility?: pulumi.Input<string>;
     }
@@ -47264,6 +47320,63 @@ export namespace datastream {
          * A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
          */
         privateConnection: pulumi.Input<string>;
+    }
+
+    export interface ConnectionProfileSalesforceProfile {
+        /**
+         * Domain for the Salesforce Org.
+         */
+        domain: pulumi.Input<string>;
+        /**
+         * OAuth credentials to use for Salesforce authentication.
+         * Structure is documented below.
+         */
+        oauth2ClientCredentials?: pulumi.Input<inputs.datastream.ConnectionProfileSalesforceProfileOauth2ClientCredentials>;
+        /**
+         * User credentials to use for Salesforce authentication.
+         * Structure is documented below.
+         */
+        userCredentials?: pulumi.Input<inputs.datastream.ConnectionProfileSalesforceProfileUserCredentials>;
+    }
+
+    export interface ConnectionProfileSalesforceProfileOauth2ClientCredentials {
+        /**
+         * Client ID to use for authentication.
+         */
+        clientId?: pulumi.Input<string>;
+        /**
+         * Client secret to use for authentication.
+         */
+        clientSecret?: pulumi.Input<string>;
+        /**
+         * A reference to a Secret Manager resource name storing the client secret.
+         */
+        secretManagerStoredClientSecret?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionProfileSalesforceProfileUserCredentials {
+        /**
+         * Password of the user.
+         */
+        password?: pulumi.Input<string>;
+        /**
+         * A reference to a Secret Manager resource name storing the user's password.
+         */
+        secretManagerStoredPassword?: pulumi.Input<string>;
+        /**
+         * A reference to a Secret Manager resource name storing the user's security token.
+         *
+         * <a name="nestedSalesforceProfileOauth2ClientCredentials"></a>The `oauth2ClientCredentials` block supports:
+         */
+        secretManagerStoredSecurityToken?: pulumi.Input<string>;
+        /**
+         * Security token of the user.
+         */
+        securityToken?: pulumi.Input<string>;
+        /**
+         * Username to use for authentication.
+         */
+        username?: pulumi.Input<string>;
     }
 
     export interface ConnectionProfileSqlServerProfile {
@@ -52623,6 +52736,15 @@ export namespace essentialcontacts {
 }
 
 export namespace eventarc {
+    export interface GoogleApiSourceLoggingConfig {
+        /**
+         * The minimum severity of logs that will be sent to Stackdriver/Platform
+         * Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+         * Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+         */
+        logSeverity?: pulumi.Input<string>;
+    }
+
     export interface MessageBusLoggingConfig {
         /**
          * Optional. The minimum severity of logs that will be sent to Stackdriver/Platform
@@ -53587,18 +53709,17 @@ export namespace folder {
 
     export interface IAMBindingCondition {
         description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: pulumi.Input<string>;
     }
 
     export interface IAMMemberCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -58283,8 +58404,10 @@ export namespace iam {
 
     export interface FoldersPolicyBindingTarget {
         /**
-         * Required. Immutable. The resource name of the policy to be bound.
-         * The binding parent and policy must belong to the same Organization (or Project).
+         * Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+         * Examples for each one of the following supported principal set types:
+         * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+         * It must be parent by the policy binding's parent (the folder).
          *
          * - - -
          */
@@ -58312,8 +58435,12 @@ export namespace iam {
 
     export interface OrganizationsPolicyBindingTarget {
         /**
-         * Required. Immutable. The resource name of the policy to be bound.
-         * The binding parent and policy must belong to the same Organization (or Project).
+         * Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+         * Examples for each one of the following supported principal set types:
+         * * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+         * * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
+         * * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
+         * It must be parent by the policy binding's parent (the organization).
          *
          * - - -
          */
@@ -58379,8 +58506,13 @@ export namespace iam {
 
     export interface ProjectsPolicyBindingTarget {
         /**
-         * Required. Immutable. The resource name of the policy to be bound.
-         * The binding parent and policy must belong to the same Organization (or Project).
+         * Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+         * Examples for each one of the following supported principal set types:
+         * * Project:
+         * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+         * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+         * * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
+         * It must be parent by the policy binding's parent (the project).
          *
          * - - -
          */
@@ -58694,13 +58826,6 @@ export namespace iam {
 
 export namespace iap {
     export interface AppEngineServiceIamBindingCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -58713,13 +58838,6 @@ export namespace iap {
     }
 
     export interface AppEngineServiceIamMemberCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -58732,13 +58850,6 @@ export namespace iap {
     }
 
     export interface AppEngineVersionIamBindingCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -58751,13 +58862,6 @@ export namespace iap {
     }
 
     export interface AppEngineVersionIamMemberCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -59023,9 +59127,6 @@ export namespace iap {
     }
 
     export interface TunnelIamBindingCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -59038,9 +59139,6 @@ export namespace iap {
     }
 
     export interface TunnelIamMemberCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -59053,13 +59151,6 @@ export namespace iap {
     }
 
     export interface TunnelInstanceIAMBindingCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -59072,13 +59163,6 @@ export namespace iap {
     }
 
     export interface TunnelInstanceIAMMemberCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -59091,13 +59175,6 @@ export namespace iap {
     }
 
     export interface WebBackendServiceIamBindingCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -59110,13 +59187,6 @@ export namespace iap {
     }
 
     export interface WebBackendServiceIamMemberCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -59129,13 +59199,6 @@ export namespace iap {
     }
 
     export interface WebIamBindingCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -59148,13 +59211,6 @@ export namespace iap {
     }
 
     export interface WebIamMemberCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -59191,13 +59247,6 @@ export namespace iap {
     }
 
     export interface WebTypeAppEngingIamBindingCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -59210,13 +59259,6 @@ export namespace iap {
     }
 
     export interface WebTypeAppEngingIamMemberCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -59229,13 +59271,6 @@ export namespace iap {
     }
 
     export interface WebTypeComputeIamBindingCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -59248,13 +59283,6 @@ export namespace iap {
     }
 
     export interface WebTypeComputeIamMemberCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -60373,13 +60401,6 @@ export namespace integrationconnectors {
 
 export namespace kms {
     export interface CryptoKeyIAMBindingCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -60392,13 +60413,6 @@ export namespace kms {
     }
 
     export interface CryptoKeyIAMMemberCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -60601,13 +60615,6 @@ export namespace kms {
     }
 
     export interface KeyRingIAMBindingCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -60620,13 +60627,6 @@ export namespace kms {
     }
 
     export interface KeyRingIAMMemberCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -62296,8 +62296,7 @@ export namespace monitoring {
 
     export interface AlertPolicyConditionConditionSql {
         /**
-         * The start date and time of the query. If left unspecified, then the
-         * query will start immediately.
+         * A test that uses an alerting result in a boolean column produced by the SQL query.
          * Structure is documented below.
          */
         booleanTest?: pulumi.Input<inputs.monitoring.AlertPolicyConditionConditionSqlBooleanTest>;
@@ -62325,7 +62324,7 @@ export namespace monitoring {
          */
         query: pulumi.Input<string>;
         /**
-         * Test the row count against a threshold.
+         * A test that checks if the number of rows in the result set violates some threshold.
          * Structure is documented below.
          */
         rowCountTest?: pulumi.Input<inputs.monitoring.AlertPolicyConditionConditionSqlRowCountTest>;
@@ -62333,8 +62332,8 @@ export namespace monitoring {
 
     export interface AlertPolicyConditionConditionSqlBooleanTest {
         /**
-         * The name of the column containing the boolean value. If the value
-         * in a row is NULL, that row is ignored.
+         * The name of the column containing the boolean value. If the value in a row is
+         * NULL, that row is ignored.
          *
          * - - -
          */
@@ -62418,7 +62417,7 @@ export namespace monitoring {
          */
         comparison: pulumi.Input<string>;
         /**
-         * Test the boolean value in the indicated column.
+         * The value against which to compare the row count.
          */
         threshold: pulumi.Input<number>;
     }
@@ -64697,14 +64696,16 @@ export namespace networksecurity {
     export interface InterceptDeploymentGroupConnectedEndpointGroup {
         /**
          * (Output)
-         * Output only. A connected intercept endpoint group.
+         * The connected endpoint group's resource name, for example:
+         * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+         * See https://google.aip.dev/124.
          */
         name?: pulumi.Input<string>;
     }
 
     export interface InterceptEndpointGroupAssociationLocationsDetail {
         /**
-         * The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+         * The cloud location of the association, currently restricted to `global`.
          *
          *
          * - - -
@@ -64712,7 +64713,7 @@ export namespace networksecurity {
         location?: pulumi.Input<string>;
         /**
          * (Output)
-         * The association state in this location.
+         * The current state of the association in this location.
          * Possible values:
          * STATE_UNSPECIFIED
          * ACTIVE
@@ -64724,14 +64725,16 @@ export namespace networksecurity {
     export interface MirroringDeploymentGroupConnectedEndpointGroup {
         /**
          * (Output)
-         * Output only. A connected mirroring endpoint group.
+         * The connected endpoint group's resource name, for example:
+         * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+         * See https://google.aip.dev/124.
          */
         name?: pulumi.Input<string>;
     }
 
     export interface MirroringEndpointGroupAssociationLocationsDetail {
         /**
-         * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+         * The cloud location of the association, currently restricted to `global`.
          *
          *
          * - - -
@@ -64739,7 +64742,7 @@ export namespace networksecurity {
         location?: pulumi.Input<string>;
         /**
          * (Output)
-         * Output only. The association state in this location.
+         * The current state of the association in this location.
          * Possible values:
          * STATE_UNSPECIFIED
          * ACTIVE
@@ -68209,18 +68212,17 @@ export namespace organizations {
 
     export interface IAMBindingCondition {
         description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: pulumi.Input<string>;
     }
 
     export interface IAMMemberCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -68234,12 +68236,7 @@ export namespace organizations {
 
     export interface IamAuditConfigAuditLogConfig {
         /**
-         * Identities that do not cause logging for this type of permission.
-         * Each entry can have one of the following values:
-         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-         * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+         * Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
          */
         exemptedMembers?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -70656,13 +70653,6 @@ export namespace projects {
     }
 
     export interface IAMBindingCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -70675,13 +70665,6 @@ export namespace projects {
     }
 
     export interface IAMMemberCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -73527,13 +73510,6 @@ export namespace securityposture {
 
 export namespace serviceaccount {
     export interface IAMBindingCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -73546,13 +73522,6 @@ export namespace serviceaccount {
     }
 
     export interface IAMMemberCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -74479,20 +74448,7 @@ export namespace storage {
 
     export interface BucketEncryption {
         /**
-         * The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
-         * You must pay attention to whether the crypto key is available in the location that this bucket is created in.
-         * See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
-         *
-         * > As per [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for customer-managed encryption keys, the IAM policy for the
-         * specified key must permit the [automatic Google Cloud Storage service account](https://cloud.google.com/storage/docs/projects#service-accounts) for the bucket's
-         * project to use the specified key for encryption and decryption operations.
-         * Although the service account email address follows a well-known format, the service account is created on-demand and may not necessarily exist for your project
-         * until a relevant action has occurred which triggers its creation.
-         * You should use the [`gcp.storage.getProjectServiceAccount`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
-         * address for the service account when configuring IAM policy on the Cloud KMS key.
-         * This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
-         * state of the project.
-         * You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
+         * A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified. You must pay attention to whether the crypto key is available in the location that this bucket is created in. See the docs for more details.
          */
         defaultKmsKeyName: pulumi.Input<string>;
     }
@@ -74505,13 +74461,6 @@ export namespace storage {
     }
 
     export interface BucketIAMBindingCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -74524,13 +74473,6 @@ export namespace storage {
     }
 
     export interface BucketIAMMemberCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -75480,6 +75422,10 @@ export namespace tpu {
          * Whether the node is created under a reservation.
          */
         reserved?: pulumi.Input<boolean>;
+        /**
+         * Optional. Defines whether the node is Spot VM.
+         */
+        spot?: pulumi.Input<boolean>;
     }
 
     export interface V2VmServiceAccount {
@@ -77532,10 +77478,12 @@ export namespace vmwareengine {
     export interface PrivateCloudManagementClusterStretchedClusterConfig {
         /**
          * Zone that will remain operational when connection between the two zones is lost.
+         * Specify the zone in the following format: projects/{project}/locations/{location}.
          */
         preferredLocation?: pulumi.Input<string>;
         /**
          * Additional zone for a higher level of availability and load balancing.
+         * Specify the zone in the following format: projects/{project}/locations/{location}.
          */
         secondaryLocation?: pulumi.Input<string>;
     }

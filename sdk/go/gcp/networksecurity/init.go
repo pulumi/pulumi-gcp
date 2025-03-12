@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AuthorizationPolicy{}
 	case "gcp:networksecurity/authzPolicy:AuthzPolicy":
 		r = &AuthzPolicy{}
+	case "gcp:networksecurity/backendAuthenticationConfig:BackendAuthenticationConfig":
+		r = &BackendAuthenticationConfig{}
 	case "gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy":
 		r = &ClientTlsPolicy{}
 	case "gcp:networksecurity/firewallEndpoint:FirewallEndpoint":
@@ -110,6 +112,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"networksecurity/authzPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networksecurity/backendAuthenticationConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

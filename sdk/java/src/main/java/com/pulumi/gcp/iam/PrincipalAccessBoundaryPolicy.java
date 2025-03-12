@@ -17,14 +17,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * An IAM Principal Access Boundary Policy resource
- * 
- * To get more information about PrincipalAccessBoundaryPolicy, see:
- * 
- * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/organizations.locations.principalAccessBoundaryPolicies)
- * * How-to Guides
- *     * [Create and apply Principal Access Boundaries](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create)
- * 
  * ## Example Usage
  * 
  * ### Iam Principal Access Boundary Policy
@@ -52,12 +44,75 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_pab_policy = new PrincipalAccessBoundaryPolicy("my-pab-policy", PrincipalAccessBoundaryPolicyArgs.builder()
+ *         var pab_policy_for_org = new PrincipalAccessBoundaryPolicy("pab-policy-for-org", PrincipalAccessBoundaryPolicyArgs.builder()
  *             .organization("123456789")
  *             .location("global")
- *             .displayName("test pab policy")
- *             .principalAccessBoundaryPolicyId("test-pab-policy")
+ *             .displayName("PAB policy for Organization")
+ *             .principalAccessBoundaryPolicyId("pab-policy-for-org")
  *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Iam Organizations Policy Binding
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.iam.PrincipalAccessBoundaryPolicy;
+ * import com.pulumi.gcp.iam.PrincipalAccessBoundaryPolicyArgs;
+ * import com.pulumi.time.sleep;
+ * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.gcp.iam.OrganizationsPolicyBinding;
+ * import com.pulumi.gcp.iam.OrganizationsPolicyBindingArgs;
+ * import com.pulumi.gcp.iam.inputs.OrganizationsPolicyBindingTargetArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var pabPolicy = new PrincipalAccessBoundaryPolicy("pabPolicy", PrincipalAccessBoundaryPolicyArgs.builder()
+ *             .organization("123456789")
+ *             .location("global")
+ *             .displayName("Binding for all principals in the Organization")
+ *             .principalAccessBoundaryPolicyId("my-pab-policy")
+ *             .build());
+ * 
+ *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
+ *             .createDuration("60s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(pabPolicy)
+ *                 .build());
+ * 
+ *         var my_pab_policy = new OrganizationsPolicyBinding("my-pab-policy", OrganizationsPolicyBindingArgs.builder()
+ *             .organization("123456789")
+ *             .location("global")
+ *             .displayName("Binding for all principals in the Organization")
+ *             .policyKind("PRINCIPAL_ACCESS_BOUNDARY")
+ *             .policyBindingId("binding-for-all-org-principals")
+ *             .policy(pabPolicy.principalAccessBoundaryPolicyId().applyValue(principalAccessBoundaryPolicyId -> String.format("organizations/123456789/locations/global/principalAccessBoundaryPolicies/%s", principalAccessBoundaryPolicyId)))
+ *             .target(OrganizationsPolicyBindingTargetArgs.builder()
+ *                 .principalSet("//cloudresourcemanager.googleapis.com/organizations/123456789")
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait60Seconds)
+ *                 .build());
  * 
  *     }
  * }

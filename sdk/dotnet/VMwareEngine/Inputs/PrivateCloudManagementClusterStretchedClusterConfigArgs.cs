@@ -14,12 +14,14 @@ namespace Pulumi.Gcp.VMwareEngine.Inputs
     {
         /// <summary>
         /// Zone that will remain operational when connection between the two zones is lost.
+        /// Specify the zone in the following format: projects/{project}/locations/{location}.
         /// </summary>
         [Input("preferredLocation")]
         public Input<string>? PreferredLocation { get; set; }
 
         /// <summary>
         /// Additional zone for a higher level of availability and load balancing.
+        /// Specify the zone in the following format: projects/{project}/locations/{location}.
         /// </summary>
         [Input("secondaryLocation")]
         public Input<string>? SecondaryLocation { get; set; }

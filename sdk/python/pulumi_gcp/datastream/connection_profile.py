@@ -34,6 +34,7 @@ class ConnectionProfileArgs:
                  postgresql_profile: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileArgs']] = None,
                  private_connectivity: Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 salesforce_profile: Optional[pulumi.Input['ConnectionProfileSalesforceProfileArgs']] = None,
                  sql_server_profile: Optional[pulumi.Input['ConnectionProfileSqlServerProfileArgs']] = None):
         """
         The set of arguments for constructing a ConnectionProfile resource.
@@ -62,6 +63,8 @@ class ConnectionProfileArgs:
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['ConnectionProfileSalesforceProfileArgs'] salesforce_profile: Salesforce profile.
+               Structure is documented below.
         :param pulumi.Input['ConnectionProfileSqlServerProfileArgs'] sql_server_profile: SQL Server database profile.
                Structure is documented below.
         """
@@ -88,6 +91,8 @@ class ConnectionProfileArgs:
             pulumi.set(__self__, "private_connectivity", private_connectivity)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if salesforce_profile is not None:
+            pulumi.set(__self__, "salesforce_profile", salesforce_profile)
         if sql_server_profile is not None:
             pulumi.set(__self__, "sql_server_profile", sql_server_profile)
 
@@ -260,6 +265,19 @@ class ConnectionProfileArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="salesforceProfile")
+    def salesforce_profile(self) -> Optional[pulumi.Input['ConnectionProfileSalesforceProfileArgs']]:
+        """
+        Salesforce profile.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "salesforce_profile")
+
+    @salesforce_profile.setter
+    def salesforce_profile(self, value: Optional[pulumi.Input['ConnectionProfileSalesforceProfileArgs']]):
+        pulumi.set(self, "salesforce_profile", value)
+
+    @property
     @pulumi.getter(name="sqlServerProfile")
     def sql_server_profile(self) -> Optional[pulumi.Input['ConnectionProfileSqlServerProfileArgs']]:
         """
@@ -292,6 +310,7 @@ class _ConnectionProfileState:
                  private_connectivity: Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 salesforce_profile: Optional[pulumi.Input['ConnectionProfileSalesforceProfileArgs']] = None,
                  sql_server_profile: Optional[pulumi.Input['ConnectionProfileSqlServerProfileArgs']] = None):
         """
         Input properties used for looking up and filtering ConnectionProfile resources.
@@ -324,6 +343,8 @@ class _ConnectionProfileState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input['ConnectionProfileSalesforceProfileArgs'] salesforce_profile: Salesforce profile.
+               Structure is documented below.
         :param pulumi.Input['ConnectionProfileSqlServerProfileArgs'] sql_server_profile: SQL Server database profile.
                Structure is documented below.
         """
@@ -359,6 +380,8 @@ class _ConnectionProfileState:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if salesforce_profile is not None:
+            pulumi.set(__self__, "salesforce_profile", salesforce_profile)
         if sql_server_profile is not None:
             pulumi.set(__self__, "sql_server_profile", sql_server_profile)
 
@@ -568,6 +591,19 @@ class _ConnectionProfileState:
         pulumi.set(self, "pulumi_labels", value)
 
     @property
+    @pulumi.getter(name="salesforceProfile")
+    def salesforce_profile(self) -> Optional[pulumi.Input['ConnectionProfileSalesforceProfileArgs']]:
+        """
+        Salesforce profile.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "salesforce_profile")
+
+    @salesforce_profile.setter
+    def salesforce_profile(self, value: Optional[pulumi.Input['ConnectionProfileSalesforceProfileArgs']]):
+        pulumi.set(self, "salesforce_profile", value)
+
+    @property
     @pulumi.getter(name="sqlServerProfile")
     def sql_server_profile(self) -> Optional[pulumi.Input['ConnectionProfileSqlServerProfileArgs']]:
         """
@@ -599,6 +635,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  postgresql_profile: Optional[pulumi.Input[Union['ConnectionProfilePostgresqlProfileArgs', 'ConnectionProfilePostgresqlProfileArgsDict']]] = None,
                  private_connectivity: Optional[pulumi.Input[Union['ConnectionProfilePrivateConnectivityArgs', 'ConnectionProfilePrivateConnectivityArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 salesforce_profile: Optional[pulumi.Input[Union['ConnectionProfileSalesforceProfileArgs', 'ConnectionProfileSalesforceProfileArgsDict']]] = None,
                  sql_server_profile: Optional[pulumi.Input[Union['ConnectionProfileSqlServerProfileArgs', 'ConnectionProfileSqlServerProfileArgsDict']]] = None,
                  __props__=None):
         """
@@ -866,7 +903,6 @@ class ConnectionProfile(pulumi.CustomResource):
                 "database": db.name,
             })
         ```
-
         ## Import
 
         ConnectionProfile can be imported using any of these accepted formats:
@@ -918,6 +954,8 @@ class ConnectionProfile(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['ConnectionProfileSalesforceProfileArgs', 'ConnectionProfileSalesforceProfileArgsDict']] salesforce_profile: Salesforce profile.
+               Structure is documented below.
         :param pulumi.Input[Union['ConnectionProfileSqlServerProfileArgs', 'ConnectionProfileSqlServerProfileArgsDict']] sql_server_profile: SQL Server database profile.
                Structure is documented below.
         """
@@ -1192,7 +1230,6 @@ class ConnectionProfile(pulumi.CustomResource):
                 "database": db.name,
             })
         ```
-
         ## Import
 
         ConnectionProfile can be imported using any of these accepted formats:
@@ -1245,6 +1282,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  postgresql_profile: Optional[pulumi.Input[Union['ConnectionProfilePostgresqlProfileArgs', 'ConnectionProfilePostgresqlProfileArgsDict']]] = None,
                  private_connectivity: Optional[pulumi.Input[Union['ConnectionProfilePrivateConnectivityArgs', 'ConnectionProfilePrivateConnectivityArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 salesforce_profile: Optional[pulumi.Input[Union['ConnectionProfileSalesforceProfileArgs', 'ConnectionProfileSalesforceProfileArgsDict']]] = None,
                  sql_server_profile: Optional[pulumi.Input[Union['ConnectionProfileSqlServerProfileArgs', 'ConnectionProfileSqlServerProfileArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1274,6 +1312,7 @@ class ConnectionProfile(pulumi.CustomResource):
             __props__.__dict__["postgresql_profile"] = postgresql_profile
             __props__.__dict__["private_connectivity"] = private_connectivity
             __props__.__dict__["project"] = project
+            __props__.__dict__["salesforce_profile"] = salesforce_profile
             __props__.__dict__["sql_server_profile"] = sql_server_profile
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
@@ -1306,6 +1345,7 @@ class ConnectionProfile(pulumi.CustomResource):
             private_connectivity: Optional[pulumi.Input[Union['ConnectionProfilePrivateConnectivityArgs', 'ConnectionProfilePrivateConnectivityArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            salesforce_profile: Optional[pulumi.Input[Union['ConnectionProfileSalesforceProfileArgs', 'ConnectionProfileSalesforceProfileArgsDict']]] = None,
             sql_server_profile: Optional[pulumi.Input[Union['ConnectionProfileSqlServerProfileArgs', 'ConnectionProfileSqlServerProfileArgsDict']]] = None) -> 'ConnectionProfile':
         """
         Get an existing ConnectionProfile resource's state with the given name, id, and optional extra
@@ -1343,6 +1383,8 @@ class ConnectionProfile(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[Union['ConnectionProfileSalesforceProfileArgs', 'ConnectionProfileSalesforceProfileArgsDict']] salesforce_profile: Salesforce profile.
+               Structure is documented below.
         :param pulumi.Input[Union['ConnectionProfileSqlServerProfileArgs', 'ConnectionProfileSqlServerProfileArgsDict']] sql_server_profile: SQL Server database profile.
                Structure is documented below.
         """
@@ -1366,6 +1408,7 @@ class ConnectionProfile(pulumi.CustomResource):
         __props__.__dict__["private_connectivity"] = private_connectivity
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["salesforce_profile"] = salesforce_profile
         __props__.__dict__["sql_server_profile"] = sql_server_profile
         return ConnectionProfile(resource_name, opts=opts, __props__=__props__)
 
@@ -1509,6 +1552,15 @@ class ConnectionProfile(pulumi.CustomResource):
         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @property
+    @pulumi.getter(name="salesforceProfile")
+    def salesforce_profile(self) -> pulumi.Output[Optional['outputs.ConnectionProfileSalesforceProfile']]:
+        """
+        Salesforce profile.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "salesforce_profile")
 
     @property
     @pulumi.getter(name="sqlServerProfile")

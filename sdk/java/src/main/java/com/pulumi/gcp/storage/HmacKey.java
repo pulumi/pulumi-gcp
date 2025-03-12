@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/storage/docs/authentication/managing-hmackeys)
  * 
+ * On import, the `secret` value will not be retrieved.
+ * 
  * ## Example Usage
  * 
  * ### Storage Hmac Key
@@ -60,7 +62,7 @@ import javax.annotation.Nullable;
  *             .accountId("my-svc-acc")
  *             .build());
  * 
- *         //Create the HMAC key for the associated service account
+ *         //Create the HMAC key for the associated service account 
  *         var key = new HmacKey("key", HmacKeyArgs.builder()
  *             .serviceAccountEmail(serviceAccount.email())
  *             .build());

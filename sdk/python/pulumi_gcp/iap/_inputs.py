@@ -94,13 +94,6 @@ if not MYPY:
         A title for the expression, i.e. a short string describing its purpose.
         """
         description: NotRequired[pulumi.Input[str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
 elif False:
     AppEngineServiceIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -113,11 +106,6 @@ class AppEngineServiceIamBindingConditionArgs:
         """
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -151,13 +139,6 @@ class AppEngineServiceIamBindingConditionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -176,13 +157,6 @@ if not MYPY:
         A title for the expression, i.e. a short string describing its purpose.
         """
         description: NotRequired[pulumi.Input[str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
 elif False:
     AppEngineServiceIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -195,11 +169,6 @@ class AppEngineServiceIamMemberConditionArgs:
         """
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -233,13 +202,6 @@ class AppEngineServiceIamMemberConditionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -258,13 +220,6 @@ if not MYPY:
         A title for the expression, i.e. a short string describing its purpose.
         """
         description: NotRequired[pulumi.Input[str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
 elif False:
     AppEngineVersionIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -277,11 +232,6 @@ class AppEngineVersionIamBindingConditionArgs:
         """
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -315,13 +265,6 @@ class AppEngineVersionIamBindingConditionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -340,13 +283,6 @@ if not MYPY:
         A title for the expression, i.e. a short string describing its purpose.
         """
         description: NotRequired[pulumi.Input[str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
 elif False:
     AppEngineVersionIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -359,11 +295,6 @@ class AppEngineVersionIamMemberConditionArgs:
         """
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -397,13 +328,6 @@ class AppEngineVersionIamMemberConditionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -1532,9 +1456,6 @@ if not MYPY:
         A title for the expression, i.e. a short string describing its purpose.
         """
         description: NotRequired[pulumi.Input[str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        """
 elif False:
     TunnelIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1547,7 +1468,6 @@ class TunnelIamBindingConditionArgs:
         """
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -1581,9 +1501,6 @@ class TunnelIamBindingConditionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -1602,9 +1519,6 @@ if not MYPY:
         A title for the expression, i.e. a short string describing its purpose.
         """
         description: NotRequired[pulumi.Input[str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        """
 elif False:
     TunnelIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1617,7 +1531,6 @@ class TunnelIamMemberConditionArgs:
         """
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -1651,9 +1564,6 @@ class TunnelIamMemberConditionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -1672,13 +1582,6 @@ if not MYPY:
         A title for the expression, i.e. a short string describing its purpose.
         """
         description: NotRequired[pulumi.Input[str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
 elif False:
     TunnelInstanceIAMBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1691,11 +1594,6 @@ class TunnelInstanceIAMBindingConditionArgs:
         """
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -1729,13 +1627,6 @@ class TunnelInstanceIAMBindingConditionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -1754,13 +1645,6 @@ if not MYPY:
         A title for the expression, i.e. a short string describing its purpose.
         """
         description: NotRequired[pulumi.Input[str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
 elif False:
     TunnelInstanceIAMMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1773,11 +1657,6 @@ class TunnelInstanceIAMMemberConditionArgs:
         """
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -1811,13 +1690,6 @@ class TunnelInstanceIAMMemberConditionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -1836,13 +1708,6 @@ if not MYPY:
         A title for the expression, i.e. a short string describing its purpose.
         """
         description: NotRequired[pulumi.Input[str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
 elif False:
     WebBackendServiceIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1855,11 +1720,6 @@ class WebBackendServiceIamBindingConditionArgs:
         """
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -1893,13 +1753,6 @@ class WebBackendServiceIamBindingConditionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -1918,13 +1771,6 @@ if not MYPY:
         A title for the expression, i.e. a short string describing its purpose.
         """
         description: NotRequired[pulumi.Input[str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
 elif False:
     WebBackendServiceIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1937,11 +1783,6 @@ class WebBackendServiceIamMemberConditionArgs:
         """
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -1975,13 +1816,6 @@ class WebBackendServiceIamMemberConditionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -2000,13 +1834,6 @@ if not MYPY:
         A title for the expression, i.e. a short string describing its purpose.
         """
         description: NotRequired[pulumi.Input[str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
 elif False:
     WebIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2019,11 +1846,6 @@ class WebIamBindingConditionArgs:
         """
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -2057,13 +1879,6 @@ class WebIamBindingConditionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -2082,13 +1897,6 @@ if not MYPY:
         A title for the expression, i.e. a short string describing its purpose.
         """
         description: NotRequired[pulumi.Input[str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
 elif False:
     WebIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2101,11 +1909,6 @@ class WebIamMemberConditionArgs:
         """
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -2139,13 +1942,6 @@ class WebIamMemberConditionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -2290,13 +2086,6 @@ if not MYPY:
         A title for the expression, i.e. a short string describing its purpose.
         """
         description: NotRequired[pulumi.Input[str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
 elif False:
     WebTypeAppEngingIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2309,11 +2098,6 @@ class WebTypeAppEngingIamBindingConditionArgs:
         """
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -2347,13 +2131,6 @@ class WebTypeAppEngingIamBindingConditionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -2372,13 +2149,6 @@ if not MYPY:
         A title for the expression, i.e. a short string describing its purpose.
         """
         description: NotRequired[pulumi.Input[str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
 elif False:
     WebTypeAppEngingIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2391,11 +2161,6 @@ class WebTypeAppEngingIamMemberConditionArgs:
         """
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -2429,13 +2194,6 @@ class WebTypeAppEngingIamMemberConditionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -2454,13 +2212,6 @@ if not MYPY:
         A title for the expression, i.e. a short string describing its purpose.
         """
         description: NotRequired[pulumi.Input[str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
 elif False:
     WebTypeComputeIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2473,11 +2224,6 @@ class WebTypeComputeIamBindingConditionArgs:
         """
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -2511,13 +2257,6 @@ class WebTypeComputeIamBindingConditionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -2536,13 +2275,6 @@ if not MYPY:
         A title for the expression, i.e. a short string describing its purpose.
         """
         description: NotRequired[pulumi.Input[str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
 elif False:
     WebTypeComputeIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2555,11 +2287,6 @@ class WebTypeComputeIamMemberConditionArgs:
         """
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -2593,13 +2320,6 @@ class WebTypeComputeIamMemberConditionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
         return pulumi.get(self, "description")
 
     @description.setter

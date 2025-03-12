@@ -141,7 +141,13 @@ class AccessApprovalSettingsEnrolledServiceArgs:
 if not MYPY:
     class IAMBindingConditionArgsDict(TypedDict):
         expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
         title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
         description: NotRequired[pulumi.Input[str]]
 elif False:
     IAMBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
@@ -152,6 +158,10 @@ class IAMBindingConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
+        """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -160,6 +170,9 @@ class IAMBindingConditionArgs:
     @property
     @pulumi.getter
     def expression(self) -> pulumi.Input[str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
         return pulumi.get(self, "expression")
 
     @expression.setter
@@ -169,6 +182,9 @@ class IAMBindingConditionArgs:
     @property
     @pulumi.getter
     def title(self) -> pulumi.Input[str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
         return pulumi.get(self, "title")
 
     @title.setter
@@ -196,13 +212,6 @@ if not MYPY:
         A title for the expression, i.e. a short string describing its purpose.
         """
         description: NotRequired[pulumi.Input[str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
 elif False:
     IAMMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -215,11 +224,6 @@ class IAMMemberConditionArgs:
         """
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -253,13 +257,6 @@ class IAMMemberConditionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -275,12 +272,7 @@ if not MYPY:
         """
         exempted_members: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        Identities that do not cause logging for this type of permission.
-        Each entry can have one of the following values:
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
         """
 elif False:
     IamAuditConfigAuditLogConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -292,12 +284,7 @@ class IamAuditConfigAuditLogConfigArgs:
                  exempted_members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] log_type: Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] exempted_members: Identities that do not cause logging for this type of permission.
-               Each entry can have one of the following values:
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exempted_members: Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
         """
         pulumi.set(__self__, "log_type", log_type)
         if exempted_members is not None:
@@ -319,12 +306,7 @@ class IamAuditConfigAuditLogConfigArgs:
     @pulumi.getter(name="exemptedMembers")
     def exempted_members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Identities that do not cause logging for this type of permission.
-        Each entry can have one of the following values:
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
         """
         return pulumi.get(self, "exempted_members")
 

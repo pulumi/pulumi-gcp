@@ -99,7 +99,8 @@ type CryptoKeyVersion struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
 	ProtectionLevel pulumi.StringOutput `pulumi:"protectionLevel"`
-	// The current state of the CryptoKeyVersion.
+	// The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
+	// otherwise the value of this field is always retrieved automatically.
 	// Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
 	State pulumi.StringOutput `pulumi:"state"`
 }
@@ -157,7 +158,8 @@ type cryptoKeyVersionState struct {
 	Name *string `pulumi:"name"`
 	// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
 	ProtectionLevel *string `pulumi:"protectionLevel"`
-	// The current state of the CryptoKeyVersion.
+	// The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
+	// otherwise the value of this field is always retrieved automatically.
 	// Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
 	State *string `pulumi:"state"`
 }
@@ -183,7 +185,8 @@ type CryptoKeyVersionState struct {
 	Name pulumi.StringPtrInput
 	// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
 	ProtectionLevel pulumi.StringPtrInput
-	// The current state of the CryptoKeyVersion.
+	// The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
+	// otherwise the value of this field is always retrieved automatically.
 	// Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
 	State pulumi.StringPtrInput
 }
@@ -201,7 +204,8 @@ type cryptoKeyVersionArgs struct {
 	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 	// Structure is documented below.
 	ExternalProtectionLevelOptions *CryptoKeyVersionExternalProtectionLevelOptions `pulumi:"externalProtectionLevelOptions"`
-	// The current state of the CryptoKeyVersion.
+	// The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
+	// otherwise the value of this field is always retrieved automatically.
 	// Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
 	State *string `pulumi:"state"`
 }
@@ -216,7 +220,8 @@ type CryptoKeyVersionArgs struct {
 	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 	// Structure is documented below.
 	ExternalProtectionLevelOptions CryptoKeyVersionExternalProtectionLevelOptionsPtrInput
-	// The current state of the CryptoKeyVersion.
+	// The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
+	// otherwise the value of this field is always retrieved automatically.
 	// Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
 	State pulumi.StringPtrInput
 }
@@ -351,7 +356,8 @@ func (o CryptoKeyVersionOutput) ProtectionLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.ProtectionLevel }).(pulumi.StringOutput)
 }
 
-// The current state of the CryptoKeyVersion.
+// The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
+// otherwise the value of this field is always retrieved automatically.
 // Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
 func (o CryptoKeyVersionOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)

@@ -76,6 +76,7 @@ from .get_region_instance_group_manager import *
 from .get_region_instance_template import *
 from .get_region_network_endpoint_group import *
 from .get_region_ssl_certificate import *
+from .get_region_ssl_policy import *
 from .get_regions import *
 from .get_reservation import *
 from .get_resource_policy import *

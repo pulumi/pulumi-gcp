@@ -99,13 +99,8 @@ type TargetPool struct {
 	FailoverRatio pulumi.Float64PtrOutput `pulumi:"failoverRatio"`
 	// List of zero or one health check name or self_link. Only
 	// legacy `compute.HttpHealthCheck` is supported.
-	HealthChecks pulumi.StringPtrOutput `pulumi:"healthChecks"`
-	// List of instances in the pool. They can be given as
-	// URLs, or in the form of "zone/name". Note that the instances need not exist
-	// at the time of target pool creation, so there is no need to use the
-	// interpolation to create a dependency on the instances from the
-	// target pool.
-	Instances pulumi.StringArrayOutput `pulumi:"instances"`
+	HealthChecks pulumi.StringPtrOutput   `pulumi:"healthChecks"`
+	Instances    pulumi.StringArrayOutput `pulumi:"instances"`
 	// A unique name for the resource, required by GCE. Changing
 	// this forces a new resource to be created.
 	//
@@ -167,13 +162,8 @@ type targetPoolState struct {
 	FailoverRatio *float64 `pulumi:"failoverRatio"`
 	// List of zero or one health check name or self_link. Only
 	// legacy `compute.HttpHealthCheck` is supported.
-	HealthChecks *string `pulumi:"healthChecks"`
-	// List of instances in the pool. They can be given as
-	// URLs, or in the form of "zone/name". Note that the instances need not exist
-	// at the time of target pool creation, so there is no need to use the
-	// interpolation to create a dependency on the instances from the
-	// target pool.
-	Instances []string `pulumi:"instances"`
+	HealthChecks *string  `pulumi:"healthChecks"`
+	Instances    []string `pulumi:"instances"`
 	// A unique name for the resource, required by GCE. Changing
 	// this forces a new resource to be created.
 	//
@@ -207,12 +197,7 @@ type TargetPoolState struct {
 	// List of zero or one health check name or self_link. Only
 	// legacy `compute.HttpHealthCheck` is supported.
 	HealthChecks pulumi.StringPtrInput
-	// List of instances in the pool. They can be given as
-	// URLs, or in the form of "zone/name". Note that the instances need not exist
-	// at the time of target pool creation, so there is no need to use the
-	// interpolation to create a dependency on the instances from the
-	// target pool.
-	Instances pulumi.StringArrayInput
+	Instances    pulumi.StringArrayInput
 	// A unique name for the resource, required by GCE. Changing
 	// this forces a new resource to be created.
 	//
@@ -249,13 +234,8 @@ type targetPoolArgs struct {
 	FailoverRatio *float64 `pulumi:"failoverRatio"`
 	// List of zero or one health check name or self_link. Only
 	// legacy `compute.HttpHealthCheck` is supported.
-	HealthChecks *string `pulumi:"healthChecks"`
-	// List of instances in the pool. They can be given as
-	// URLs, or in the form of "zone/name". Note that the instances need not exist
-	// at the time of target pool creation, so there is no need to use the
-	// interpolation to create a dependency on the instances from the
-	// target pool.
-	Instances []string `pulumi:"instances"`
+	HealthChecks *string  `pulumi:"healthChecks"`
+	Instances    []string `pulumi:"instances"`
 	// A unique name for the resource, required by GCE. Changing
 	// this forces a new resource to be created.
 	//
@@ -288,12 +268,7 @@ type TargetPoolArgs struct {
 	// List of zero or one health check name or self_link. Only
 	// legacy `compute.HttpHealthCheck` is supported.
 	HealthChecks pulumi.StringPtrInput
-	// List of instances in the pool. They can be given as
-	// URLs, or in the form of "zone/name". Note that the instances need not exist
-	// at the time of target pool creation, so there is no need to use the
-	// interpolation to create a dependency on the instances from the
-	// target pool.
-	Instances pulumi.StringArrayInput
+	Instances    pulumi.StringArrayInput
 	// A unique name for the resource, required by GCE. Changing
 	// this forces a new resource to be created.
 	//
@@ -423,11 +398,6 @@ func (o TargetPoolOutput) HealthChecks() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TargetPool) pulumi.StringPtrOutput { return v.HealthChecks }).(pulumi.StringPtrOutput)
 }
 
-// List of instances in the pool. They can be given as
-// URLs, or in the form of "zone/name". Note that the instances need not exist
-// at the time of target pool creation, so there is no need to use the
-// interpolation to create a dependency on the instances from the
-// target pool.
 func (o TargetPoolOutput) Instances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TargetPool) pulumi.StringArrayOutput { return v.Instances }).(pulumi.StringArrayOutput)
 }

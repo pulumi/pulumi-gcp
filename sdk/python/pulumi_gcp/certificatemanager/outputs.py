@@ -516,7 +516,6 @@ class CertificateSelfManaged(dict):
                > **Warning:** `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
         :param str pem_certificate: The certificate chain in PEM-encoded form.
                Leaf certificate comes first, followed by intermediate ones if any.
-               **Note**: This property is sensitive and will not be displayed in the plan.
         :param str pem_private_key: The private key of the leaf certificate in PEM-encoded form.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param str private_key_pem: (Optional, Deprecated)
@@ -554,7 +553,6 @@ class CertificateSelfManaged(dict):
         """
         The certificate chain in PEM-encoded form.
         Leaf certificate comes first, followed by intermediate ones if any.
-        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "pem_certificate")
 
@@ -936,7 +934,10 @@ class GetCertificatesCertificateResult(dict):
                See https://cloud.google.com/vpc/docs/edge-locations.
                
                ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-               See https://cloud.google.com/compute/docs/regions-zones
+               See https://cloud.google.com/compute/docs/regions-zones.
+               
+               CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
+               See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "effective_labels", effective_labels)
@@ -1040,7 +1041,10 @@ class GetCertificatesCertificateResult(dict):
         See https://cloud.google.com/vpc/docs/edge-locations.
 
         ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-        See https://cloud.google.com/compute/docs/regions-zones
+        See https://cloud.google.com/compute/docs/regions-zones.
+
+        CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
+        See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
         """
         return pulumi.get(self, "scope")
 

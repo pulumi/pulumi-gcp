@@ -10,132 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataflow
 {
     /// <summary>
-    /// Creates a job on Dataflow, which is an implementation of Apache Beam running on Google Compute Engine. For more information see
-    /// the official documentation for
-    /// [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var bigDataJob = new Gcp.Dataflow.Job("big_data_job", new()
-    ///     {
-    ///         Name = "dataflow-job",
-    ///         TemplateGcsPath = "gs://my-bucket/templates/template_file",
-    ///         TempGcsLocation = "gs://my-bucket/tmp_dir",
-    ///         Parameters = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///             { "baz", "qux" },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ### Streaming Job
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var topic = new Gcp.PubSub.Topic("topic", new()
-    ///     {
-    ///         Name = "dataflow-job1",
-    ///     });
-    /// 
-    ///     var bucket1 = new Gcp.Storage.Bucket("bucket1", new()
-    ///     {
-    ///         Name = "tf-test-bucket1",
-    ///         Location = "US",
-    ///         ForceDestroy = true,
-    ///     });
-    /// 
-    ///     var bucket2 = new Gcp.Storage.Bucket("bucket2", new()
-    ///     {
-    ///         Name = "tf-test-bucket2",
-    ///         Location = "US",
-    ///         ForceDestroy = true,
-    ///     });
-    /// 
-    ///     var pubsubStream = new Gcp.Dataflow.Job("pubsub_stream", new()
-    ///     {
-    ///         Name = "tf-test-dataflow-job1",
-    ///         TemplateGcsPath = "gs://my-bucket/templates/template_file",
-    ///         TempGcsLocation = "gs://my-bucket/tmp_dir",
-    ///         EnableStreamingEngine = true,
-    ///         Parameters = 
-    ///         {
-    ///             { "inputFilePattern", bucket1.Url.Apply(url =&gt; $"{url}/*.json") },
-    ///             { "outputTopic", topic.Id },
-    ///         },
-    ///         TransformNameMapping = 
-    ///         {
-    ///             { "name", "test_job" },
-    ///             { "env", "test" },
-    ///         },
-    ///         OnDelete = "cancel",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Note on "destroy" / "apply"
-    /// 
-    /// There are many types of Dataflow jobs.  Some Dataflow jobs run constantly, getting new data from (e.g.) a GCS bucket, and outputting data continuously.  Some jobs process a set amount of data then terminate.  All jobs can fail while running due to programming errors or other issues.  In this way, Dataflow jobs are different from most other Google resources.
-    /// 
-    /// The Dataflow resource is considered 'existing' while it is in a nonterminal state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE', 'CANCELLED'), it will be recreated on the next 'apply'.  This is as expected for jobs which run continuously, but may surprise users who use this resource for other kinds of Dataflow jobs.
-    /// 
-    /// A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If "cancelled", the job terminates - any data written remains where it is, but no new data will be processed.  If "drained", no new data will enter the pipeline, but any data currently in the pipeline will finish being processed.  The default is "drain". When `on_delete` is set to `"drain"` in the configuration, you may experience a long wait for your `pulumi destroy` to complete.
-    /// 
-    /// You can potentially short-circuit the wait by setting `skip_wait_on_job_termination` to `true`, but beware that unless you take active steps to ensure that the job `name` parameter changes between instances, the name will conflict and the launch of the new job will fail. One way to do this is with a random_id resource, for example:
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// using Random = Pulumi.Random;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var bigDataJobSubscriptionId = config.Get("bigDataJobSubscriptionId") ?? "projects/myproject/subscriptions/messages";
-    ///     var bigDataJobNameSuffix = new Random.RandomId("big_data_job_name_suffix", new()
-    ///     {
-    ///         ByteLength = 4,
-    ///         Keepers = 
-    ///         {
-    ///             { "region", region },
-    ///             { "subscription_id", bigDataJobSubscriptionId },
-    ///         },
-    ///     });
-    /// 
-    ///     var bigDataJob = new Gcp.Dataflow.FlexTemplateJob("big_data_job", new()
-    ///     {
-    ///         Name = bigDataJobNameSuffix.Dec.Apply(dec =&gt; $"dataflow-flextemplates-job-{dec}"),
-    ///         Region = region,
-    ///         ContainerSpecGcsPath = "gs://my-bucket/templates/template.json",
-    ///         SkipWaitOnJobTermination = true,
-    ///         Parameters = 
-    ///         {
-    ///             { "inputSubscription", bigDataJobSubscriptionId },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Dataflow jobs can be imported using the job `id` e.g.
@@ -219,9 +93,6 @@ namespace Pulumi.Gcp.Dataflow
         [Output("network")]
         public Output<string?> Network { get; private set; } = null!;
 
-        /// <summary>
-        /// One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
-        /// </summary>
         [Output("onDelete")]
         public Output<string?> OnDelete { get; private set; } = null!;
 
@@ -257,9 +128,6 @@ namespace Pulumi.Gcp.Dataflow
         [Output("serviceAccountEmail")]
         public Output<string?> ServiceAccountEmail { get; private set; } = null!;
 
-        /// <summary>
-        /// If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
-        /// </summary>
         [Output("skipWaitOnJobTermination")]
         public Output<bool?> SkipWaitOnJobTermination { get; private set; } = null!;
 
@@ -426,9 +294,6 @@ namespace Pulumi.Gcp.Dataflow
         [Input("network")]
         public Input<string>? Network { get; set; }
 
-        /// <summary>
-        /// One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
-        /// </summary>
         [Input("onDelete")]
         public Input<string>? OnDelete { get; set; }
 
@@ -464,9 +329,6 @@ namespace Pulumi.Gcp.Dataflow
         [Input("serviceAccountEmail")]
         public Input<string>? ServiceAccountEmail { get; set; }
 
-        /// <summary>
-        /// If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
-        /// </summary>
         [Input("skipWaitOnJobTermination")]
         public Input<bool>? SkipWaitOnJobTermination { get; set; }
 
@@ -606,9 +468,6 @@ namespace Pulumi.Gcp.Dataflow
         [Input("network")]
         public Input<string>? Network { get; set; }
 
-        /// <summary>
-        /// One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
-        /// </summary>
         [Input("onDelete")]
         public Input<string>? OnDelete { get; set; }
 
@@ -660,9 +519,6 @@ namespace Pulumi.Gcp.Dataflow
         [Input("serviceAccountEmail")]
         public Input<string>? ServiceAccountEmail { get; set; }
 
-        /// <summary>
-        /// If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
-        /// </summary>
         [Input("skipWaitOnJobTermination")]
         public Input<bool>? SkipWaitOnJobTermination { get; set; }
 

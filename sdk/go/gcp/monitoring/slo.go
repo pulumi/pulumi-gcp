@@ -52,7 +52,7 @@ import (
 //			_, err = monitoring.NewSlo(ctx, "appeng_slo", &monitoring.SloArgs{
 //				Service:        pulumi.String(_default.ServiceId),
 //				SloId:          pulumi.String("ae-slo"),
-//				DisplayName:    pulumi.String("Test SLO for App Engine"),
+//				DisplayName:    pulumi.String("Terraform Test SLO for App Engine"),
 //				Goal:           pulumi.Float64(0.9),
 //				CalendarPeriod: pulumi.String("DAY"),
 //				BasicSli: &monitoring.SloBasicSliArgs{
@@ -97,7 +97,7 @@ import (
 //			_, err = monitoring.NewSlo(ctx, "request_based_slo", &monitoring.SloArgs{
 //				Service:           customsrv.ServiceId,
 //				SloId:             pulumi.String("consumed-api-slo"),
-//				DisplayName:       pulumi.String("Test SLO with request based SLI (good total ratio)"),
+//				DisplayName:       pulumi.String("Terraform Test SLO with request based SLI (good total ratio)"),
 //				Goal:              pulumi.Float64(0.9),
 //				RollingPeriodDays: pulumi.Int(30),
 //				RequestBasedSli: &monitoring.SloRequestBasedSliArgs{
@@ -151,7 +151,7 @@ import (
 //			}
 //			_, err = monitoring.NewSlo(ctx, "windows_based", &monitoring.SloArgs{
 //				Service:        customsrv.ServiceId,
-//				DisplayName:    pulumi.String("Test SLO with window based SLI"),
+//				DisplayName:    pulumi.String("Terraform Test SLO with window based SLI"),
 //				Goal:           pulumi.Float64(0.95),
 //				CalendarPeriod: pulumi.String("FORTNIGHT"),
 //				WindowsBasedSli: &monitoring.SloWindowsBasedSliArgs{
@@ -201,7 +201,7 @@ import (
 //			}
 //			_, err = monitoring.NewSlo(ctx, "windows_based", &monitoring.SloArgs{
 //				Service:           customsrv.ServiceId,
-//				DisplayName:       pulumi.String("Test SLO with window based SLI"),
+//				DisplayName:       pulumi.String("Terraform Test SLO with window based SLI"),
 //				Goal:              pulumi.Float64(0.9),
 //				RollingPeriodDays: pulumi.Int(20),
 //				WindowsBasedSli: &monitoring.SloWindowsBasedSliArgs{
@@ -256,7 +256,7 @@ import (
 //			}
 //			_, err = monitoring.NewSlo(ctx, "windows_based", &monitoring.SloArgs{
 //				Service:           customsrv.ServiceId,
-//				DisplayName:       pulumi.String("Test SLO with window based SLI"),
+//				DisplayName:       pulumi.String("Terraform Test SLO with window based SLI"),
 //				Goal:              pulumi.Float64(0.9),
 //				RollingPeriodDays: pulumi.Int(20),
 //				WindowsBasedSli: &monitoring.SloWindowsBasedSliArgs{
@@ -311,7 +311,7 @@ import (
 //			}
 //			_, err = monitoring.NewSlo(ctx, "windows_based", &monitoring.SloArgs{
 //				Service:           customsrv.ServiceId,
-//				DisplayName:       pulumi.String("Test SLO with window based SLI"),
+//				DisplayName:       pulumi.String("Terraform Test SLO with window based SLI"),
 //				Goal:              pulumi.Float64(0.9),
 //				RollingPeriodDays: pulumi.Int(20),
 //				WindowsBasedSli: &monitoring.SloWindowsBasedSliArgs{

@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InterceptEndpointGroupAssociationLocationsDetail {
     /**
-     * @return The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+     * @return The cloud location of the association, currently restricted to `global`.
      * 
      * ***
      * 
@@ -20,7 +20,7 @@ public final class InterceptEndpointGroupAssociationLocationsDetail {
     private @Nullable String location;
     /**
      * @return (Output)
-     * The association state in this location.
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -31,7 +31,7 @@ public final class InterceptEndpointGroupAssociationLocationsDetail {
 
     private InterceptEndpointGroupAssociationLocationsDetail() {}
     /**
-     * @return The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+     * @return The cloud location of the association, currently restricted to `global`.
      * 
      * ***
      * 
@@ -41,7 +41,7 @@ public final class InterceptEndpointGroupAssociationLocationsDetail {
     }
     /**
      * @return (Output)
-     * The association state in this location.
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE

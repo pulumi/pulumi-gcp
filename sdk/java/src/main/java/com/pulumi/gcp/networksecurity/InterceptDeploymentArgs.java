@@ -18,18 +18,35 @@ public final class InterceptDeploymentArgs extends com.pulumi.resources.Resource
     public static final InterceptDeploymentArgs Empty = new InterceptDeploymentArgs();
 
     /**
-     * Immutable. The regional load balancer which the intercepted traffic should be forwarded
-     * to. Format is:
-     * projects/{project}/regions/{region}/forwardingRules/{forwardingRule}
+     * User-provided description of the deployment.
+     * Used as additional context for the deployment.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return User-provided description of the deployment.
+     * Used as additional context for the deployment.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The regional forwarding rule that fronts the interceptors, for example:
+     * `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
+     * See https://google.aip.dev/124.
      * 
      */
     @Import(name="forwardingRule", required=true)
     private Output<String> forwardingRule;
 
     /**
-     * @return Immutable. The regional load balancer which the intercepted traffic should be forwarded
-     * to. Format is:
-     * projects/{project}/regions/{region}/forwardingRules/{forwardingRule}
+     * @return The regional forwarding rule that fronts the interceptors, for example:
+     * `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
+     * See https://google.aip.dev/124.
      * 
      */
     public Output<String> forwardingRule() {
@@ -37,16 +54,18 @@ public final class InterceptDeploymentArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Immutable. The Intercept Deployment Group that this resource is part of. Format is:
-     * `projects/{project}/locations/global/interceptDeploymentGroups/{interceptDeploymentGroup}`
+     * The deployment group that this deployment is a part of, for example:
+     * `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
      * 
      */
     @Import(name="interceptDeploymentGroup", required=true)
     private Output<String> interceptDeploymentGroup;
 
     /**
-     * @return Immutable. The Intercept Deployment Group that this resource is part of. Format is:
-     * `projects/{project}/locations/global/interceptDeploymentGroups/{interceptDeploymentGroup}`
+     * @return The deployment group that this deployment is a part of, for example:
+     * `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
      * 
      */
     public Output<String> interceptDeploymentGroup() {
@@ -54,9 +73,8 @@ public final class InterceptDeploymentArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * intercept_deployment_id from the method_signature of Create RPC
+     * The ID to use for the new deployment, which will become the final
+     * component of the deployment&#39;s resource name.
      * 
      * ***
      * 
@@ -65,9 +83,8 @@ public final class InterceptDeploymentArgs extends com.pulumi.resources.Resource
     private Output<String> interceptDeploymentId;
 
     /**
-     * @return Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * intercept_deployment_id from the method_signature of Create RPC
+     * @return The ID to use for the new deployment, which will become the final
+     * component of the deployment&#39;s resource name.
      * 
      * ***
      * 
@@ -77,7 +94,7 @@ public final class InterceptDeploymentArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Optional. Labels as key value pairs
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -86,7 +103,7 @@ public final class InterceptDeploymentArgs extends com.pulumi.resources.Resource
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels as key value pairs
+     * @return Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -96,14 +113,14 @@ public final class InterceptDeploymentArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/InterceptDeployment`.
+     * The cloud location of the deployment, e.g. `us-central1-a` or `asia-south1-b`.
      * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
-     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/InterceptDeployment`.
+     * @return The cloud location of the deployment, e.g. `us-central1-a` or `asia-south1-b`.
      * 
      */
     public Output<String> location() {
@@ -130,6 +147,7 @@ public final class InterceptDeploymentArgs extends com.pulumi.resources.Resource
     private InterceptDeploymentArgs() {}
 
     private InterceptDeploymentArgs(InterceptDeploymentArgs $) {
+        this.description = $.description;
         this.forwardingRule = $.forwardingRule;
         this.interceptDeploymentGroup = $.interceptDeploymentGroup;
         this.interceptDeploymentId = $.interceptDeploymentId;
@@ -157,9 +175,32 @@ public final class InterceptDeploymentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param forwardingRule Immutable. The regional load balancer which the intercepted traffic should be forwarded
-         * to. Format is:
-         * projects/{project}/regions/{region}/forwardingRules/{forwardingRule}
+         * @param description User-provided description of the deployment.
+         * Used as additional context for the deployment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description User-provided description of the deployment.
+         * Used as additional context for the deployment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
+        /**
+         * @param forwardingRule The regional forwarding rule that fronts the interceptors, for example:
+         * `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -170,9 +211,9 @@ public final class InterceptDeploymentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param forwardingRule Immutable. The regional load balancer which the intercepted traffic should be forwarded
-         * to. Format is:
-         * projects/{project}/regions/{region}/forwardingRules/{forwardingRule}
+         * @param forwardingRule The regional forwarding rule that fronts the interceptors, for example:
+         * `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -182,8 +223,9 @@ public final class InterceptDeploymentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param interceptDeploymentGroup Immutable. The Intercept Deployment Group that this resource is part of. Format is:
-         * `projects/{project}/locations/global/interceptDeploymentGroups/{interceptDeploymentGroup}`
+         * @param interceptDeploymentGroup The deployment group that this deployment is a part of, for example:
+         * `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -194,8 +236,9 @@ public final class InterceptDeploymentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param interceptDeploymentGroup Immutable. The Intercept Deployment Group that this resource is part of. Format is:
-         * `projects/{project}/locations/global/interceptDeploymentGroups/{interceptDeploymentGroup}`
+         * @param interceptDeploymentGroup The deployment group that this deployment is a part of, for example:
+         * `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -205,9 +248,8 @@ public final class InterceptDeploymentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param interceptDeploymentId Id of the requesting object
-         * If auto-generating Id server-side, remove this field and
-         * intercept_deployment_id from the method_signature of Create RPC
+         * @param interceptDeploymentId The ID to use for the new deployment, which will become the final
+         * component of the deployment&#39;s resource name.
          * 
          * ***
          * 
@@ -220,9 +262,8 @@ public final class InterceptDeploymentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param interceptDeploymentId Id of the requesting object
-         * If auto-generating Id server-side, remove this field and
-         * intercept_deployment_id from the method_signature of Create RPC
+         * @param interceptDeploymentId The ID to use for the new deployment, which will become the final
+         * component of the deployment&#39;s resource name.
          * 
          * ***
          * 
@@ -234,7 +275,7 @@ public final class InterceptDeploymentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs
+         * @param labels Labels are key/value pairs that help to organize and filter resources.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -247,7 +288,7 @@ public final class InterceptDeploymentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs
+         * @param labels Labels are key/value pairs that help to organize and filter resources.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -259,7 +300,7 @@ public final class InterceptDeploymentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/InterceptDeployment`.
+         * @param location The cloud location of the deployment, e.g. `us-central1-a` or `asia-south1-b`.
          * 
          * @return builder
          * 
@@ -270,7 +311,7 @@ public final class InterceptDeploymentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/InterceptDeployment`.
+         * @param location The cloud location of the deployment, e.g. `us-central1-a` or `asia-south1-b`.
          * 
          * @return builder
          * 

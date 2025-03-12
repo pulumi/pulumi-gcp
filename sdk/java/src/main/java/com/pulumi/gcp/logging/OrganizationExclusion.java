@@ -16,14 +16,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Manages an organization-level logging exclusion. For more information see:
- * 
- * * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.exclusions)
- * * How-to Guides
- *     * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
- * 
- * &gt; You can specify exclusions for log sinks created by the provider by using the exclusions field of `gcp.logging.OrganizationSink`
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

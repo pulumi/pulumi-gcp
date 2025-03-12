@@ -108,13 +108,6 @@ namespace Pulumi.Gcp.Compute
         [Output("healthChecks")]
         public Output<string?> HealthChecks { get; private set; } = null!;
 
-        /// <summary>
-        /// List of instances in the pool. They can be given as
-        /// URLs, or in the form of "zone/name". Note that the instances need not exist
-        /// at the time of target pool creation, so there is no need to use the
-        /// interpolation to create a dependency on the instances from the
-        /// target pool.
-        /// </summary>
         [Output("instances")]
         public Output<ImmutableArray<string>> Instances { get; private set; } = null!;
 
@@ -236,14 +229,6 @@ namespace Pulumi.Gcp.Compute
 
         [Input("instances")]
         private InputList<string>? _instances;
-
-        /// <summary>
-        /// List of instances in the pool. They can be given as
-        /// URLs, or in the form of "zone/name". Note that the instances need not exist
-        /// at the time of target pool creation, so there is no need to use the
-        /// interpolation to create a dependency on the instances from the
-        /// target pool.
-        /// </summary>
         public InputList<string> Instances
         {
             get => _instances ?? (_instances = new InputList<string>());
@@ -324,14 +309,6 @@ namespace Pulumi.Gcp.Compute
 
         [Input("instances")]
         private InputList<string>? _instances;
-
-        /// <summary>
-        /// List of instances in the pool. They can be given as
-        /// URLs, or in the form of "zone/name". Note that the instances need not exist
-        /// at the time of target pool creation, so there is no need to use the
-        /// interpolation to create a dependency on the instances from the
-        /// target pool.
-        /// </summary>
         public InputList<string> Instances
         {
             get => _instances ?? (_instances = new InputList<string>());

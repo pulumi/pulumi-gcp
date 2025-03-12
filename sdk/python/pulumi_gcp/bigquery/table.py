@@ -55,8 +55,6 @@ class TableArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] clusterings: Specifies column names to use for data clustering.
                Up to four top-level columns are allowed, and should be specified in
                descending priority order.
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-               in state, a `=destroy` or `=update` that would delete the instance will fail.
         :param pulumi.Input[str] description: The field description.
         :param pulumi.Input['TableEncryptionConfigurationArgs'] encryption_configuration: Specifies how the table should be encrypted.
                If left blank, the table will be encrypted with a Google-managed key; that process
@@ -209,10 +207,6 @@ class TableArgs:
     @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-        in state, a `=destroy` or `=update` that would delete the instance will fail.
-        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -525,8 +519,6 @@ class _TableState:
         :param pulumi.Input[int] creation_time: The time when this table was created, in milliseconds since the epoch.
         :param pulumi.Input[str] dataset_id: The dataset ID to create the table in.
                Changing this forces a new resource to be created.
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-               in state, a `=destroy` or `=update` that would delete the instance will fail.
         :param pulumi.Input[str] description: The field description.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
                
@@ -729,10 +721,6 @@ class _TableState:
     @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-        in state, a `=destroy` or `=update` that would delete the instance will fail.
-        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -1182,7 +1170,7 @@ class Table(pulumi.CustomResource):
         [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
 
         > **Note**: On newer versions of the provider, you must explicitly set `deletion_protection=false`
-        (and run `pulumi update` to write the field to state) in order to destroy an instance.
+        (and run `pulumi up` to write the field to state) in order to destroy an instance.
         It is recommended to not set this field (or set it to true) until you're ready to destroy.
 
         ## Example Usage
@@ -1269,8 +1257,6 @@ class Table(pulumi.CustomResource):
                descending priority order.
         :param pulumi.Input[str] dataset_id: The dataset ID to create the table in.
                Changing this forces a new resource to be created.
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-               in state, a `=destroy` or `=update` that would delete the instance will fail.
         :param pulumi.Input[str] description: The field description.
         :param pulumi.Input[Union['TableEncryptionConfigurationArgs', 'TableEncryptionConfigurationArgsDict']] encryption_configuration: Specifies how the table should be encrypted.
                If left blank, the table will be encrypted with a Google-managed key; that process
@@ -1335,7 +1321,7 @@ class Table(pulumi.CustomResource):
         [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
 
         > **Note**: On newer versions of the provider, you must explicitly set `deletion_protection=false`
-        (and run `pulumi update` to write the field to state) in order to destroy an instance.
+        (and run `pulumi up` to write the field to state) in order to destroy an instance.
         It is recommended to not set this field (or set it to true) until you're ready to destroy.
 
         ## Example Usage
@@ -1562,8 +1548,6 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[int] creation_time: The time when this table was created, in milliseconds since the epoch.
         :param pulumi.Input[str] dataset_id: The dataset ID to create the table in.
                Changing this forces a new resource to be created.
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-               in state, a `=destroy` or `=update` that would delete the instance will fail.
         :param pulumi.Input[str] description: The field description.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
                
@@ -1720,10 +1704,6 @@ class Table(pulumi.CustomResource):
     @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-        in state, a `=destroy` or `=update` that would delete the instance will fail.
-        """
         return pulumi.get(self, "deletion_protection")
 
     @property

@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// </summary>
         public readonly string Comparison;
         /// <summary>
-        /// Test the boolean value in the indicated column.
+        /// The value against which to compare the row count.
         /// </summary>
         public readonly int Threshold;
 

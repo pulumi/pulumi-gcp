@@ -270,9 +270,7 @@ type TableIamBinding struct {
 	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayOutput `pulumi:"members"`
-	// The project in which the table belongs. If it
-	// is not provided, this provider will use the provider default.
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project pulumi.StringOutput      `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -341,9 +339,7 @@ type tableIamBindingState struct {
 	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members []string `pulumi:"members"`
-	// The project in which the table belongs. If it
-	// is not provided, this provider will use the provider default.
-	Project *string `pulumi:"project"`
+	Project *string  `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -371,8 +367,6 @@ type TableIamBindingState struct {
 	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayInput
-	// The project in which the table belongs. If it
-	// is not provided, this provider will use the provider default.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
@@ -403,9 +397,7 @@ type tableIamBindingArgs struct {
 	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members []string `pulumi:"members"`
-	// The project in which the table belongs. If it
-	// is not provided, this provider will use the provider default.
-	Project *string `pulumi:"project"`
+	Project *string  `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -432,8 +424,6 @@ type TableIamBindingArgs struct {
 	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayInput
-	// The project in which the table belongs. If it
-	// is not provided, this provider will use the provider default.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
@@ -560,8 +550,6 @@ func (o TableIamBindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TableIamBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// The project in which the table belongs. If it
-// is not provided, this provider will use the provider default.
 func (o TableIamBindingOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *TableIamBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

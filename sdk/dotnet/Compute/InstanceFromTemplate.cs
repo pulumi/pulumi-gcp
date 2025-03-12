@@ -295,7 +295,8 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.InstanceFromTemplateScheduling> Scheduling { get; private set; } = null!;
 
         /// <summary>
-        /// The scratch disks attached to the instance.
+        /// * `network_interface.alias_ip_range`
+        /// * `network_interface.access_config`
         /// </summary>
         [Output("scratchDisks")]
         public Output<ImmutableArray<Outputs.InstanceFromTemplateScratchDisk>> ScratchDisks { get; private set; } = null!;
@@ -341,12 +342,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> TagsFingerprint { get; private set; } = null!;
 
         /// <summary>
-        /// The zone that the machine should be created in. If not
-        /// set, the provider zone is used.
-        /// 
-        /// In addition to these, all arguments from `gcp.compute.Instance` are supported
-        /// as a way to override the properties in the template. All exported attributes
-        /// from `gcp.compute.Instance` are likewise exported here.
+        /// The zone of the instance. If self_link is provided, this value is ignored. If neither self_link nor zone are provided,
+        /// the provider zone is used.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -610,7 +607,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.InstanceFromTemplateScratchDiskArgs>? _scratchDisks;
 
         /// <summary>
-        /// The scratch disks attached to the instance.
+        /// * `network_interface.alias_ip_range`
+        /// * `network_interface.access_config`
         /// </summary>
         public InputList<Inputs.InstanceFromTemplateScratchDiskArgs> ScratchDisks
         {
@@ -653,12 +651,8 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// The zone that the machine should be created in. If not
-        /// set, the provider zone is used.
-        /// 
-        /// In addition to these, all arguments from `gcp.compute.Instance` are supported
-        /// as a way to override the properties in the template. All exported attributes
-        /// from `gcp.compute.Instance` are likewise exported here.
+        /// The zone of the instance. If self_link is provided, this value is ignored. If neither self_link nor zone are provided,
+        /// the provider zone is used.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
@@ -945,7 +939,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.InstanceFromTemplateScratchDiskGetArgs>? _scratchDisks;
 
         /// <summary>
-        /// The scratch disks attached to the instance.
+        /// * `network_interface.alias_ip_range`
+        /// * `network_interface.access_config`
         /// </summary>
         public InputList<Inputs.InstanceFromTemplateScratchDiskGetArgs> ScratchDisks
         {
@@ -1000,12 +995,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? TagsFingerprint { get; set; }
 
         /// <summary>
-        /// The zone that the machine should be created in. If not
-        /// set, the provider zone is used.
-        /// 
-        /// In addition to these, all arguments from `gcp.compute.Instance` are supported
-        /// as a way to override the properties in the template. All exported attributes
-        /// from `gcp.compute.Instance` are likewise exported here.
+        /// The zone of the instance. If self_link is provided, this value is ignored. If neither self_link nor zone are provided,
+        /// the provider zone is used.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

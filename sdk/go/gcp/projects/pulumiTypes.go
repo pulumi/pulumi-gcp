@@ -1249,11 +1249,6 @@ func (o IAMAuditConfigAuditLogConfigArrayOutput) Index(i pulumi.IntInput) IAMAud
 }
 
 type IAMBindingCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -1273,11 +1268,6 @@ type IAMBindingConditionInput interface {
 }
 
 type IAMBindingConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -1362,11 +1352,6 @@ func (o IAMBindingConditionOutput) ToIAMBindingConditionPtrOutputWithContext(ctx
 	}).(IAMBindingConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o IAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1405,11 +1390,6 @@ func (o IAMBindingConditionPtrOutput) Elem() IAMBindingConditionOutput {
 	}).(IAMBindingConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o IAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IAMBindingCondition) *string {
 		if v == nil {
@@ -1440,11 +1420,6 @@ func (o IAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type IAMMemberCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -1464,11 +1439,6 @@ type IAMMemberConditionInput interface {
 }
 
 type IAMMemberConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -1553,11 +1523,6 @@ func (o IAMMemberConditionOutput) ToIAMMemberConditionPtrOutputWithContext(ctx c
 	}).(IAMMemberConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o IAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1596,11 +1561,6 @@ func (o IAMMemberConditionPtrOutput) Elem() IAMMemberConditionOutput {
 	}).(IAMMemberConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o IAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IAMMemberCondition) *string {
 		if v == nil {

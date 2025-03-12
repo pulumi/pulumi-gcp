@@ -7,14 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * A ScanConfig resource contains the configurations to launch a scan.
- *
- * To get more information about ScanConfig, see:
- *
- * * [API documentation](https://cloud.google.com/security-scanner/docs/reference/rest/v1beta/projects.scanConfigs)
- * * How-to Guides
- *     * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
- *
  * ## Example Usage
  *
  * ### Scan Config Basic
@@ -25,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * const scannerStaticIp = new gcp.compute.Address("scanner_static_ip", {name: "scan-basic-static-ip"});
  * const scan_config = new gcp.compute.SecurityScanConfig("scan-config", {
- *     displayName: "scan-config",
+ *     displayName: "terraform-scan-config",
  *     startingUrls: [pulumi.interpolate`http://${scannerStaticIp.address}`],
  *     targetPlatforms: ["COMPUTE"],
  * });

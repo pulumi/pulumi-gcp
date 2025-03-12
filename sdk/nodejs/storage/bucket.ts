@@ -217,11 +217,6 @@ export class Bucket extends pulumi.CustomResource {
      * The bucket's encryption configuration. Structure is documented below.
      */
     public readonly encryption!: pulumi.Output<outputs.storage.BucketEncryption | undefined>;
-    /**
-     * When deleting a bucket, this
-     * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, the provider will fail that run.
-     */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     /**
      * The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
@@ -419,11 +414,6 @@ export interface BucketState {
      * The bucket's encryption configuration. Structure is documented below.
      */
     encryption?: pulumi.Input<inputs.storage.BucketEncryption>;
-    /**
-     * When deleting a bucket, this
-     * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, the provider will fail that run.
-     */
     forceDestroy?: pulumi.Input<boolean>;
     /**
      * The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
@@ -539,11 +529,6 @@ export interface BucketArgs {
      * The bucket's encryption configuration. Structure is documented below.
      */
     encryption?: pulumi.Input<inputs.storage.BucketEncryption>;
-    /**
-     * When deleting a bucket, this
-     * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, the provider will fail that run.
-     */
     forceDestroy?: pulumi.Input<boolean>;
     /**
      * The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.

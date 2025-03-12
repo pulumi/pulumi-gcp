@@ -47,19 +47,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.advancedMachineFeatures);
     }
 
-    /**
-     * If true, allows this prvider to stop the instance to update its properties.
-     * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
-     * 
-     */
     @Import(name="allowStoppingForUpdate")
     private @Nullable Output<Boolean> allowStoppingForUpdate;
 
-    /**
-     * @return If true, allows this prvider to stop the instance to update its properties.
-     * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
-     * 
-     */
     public Optional<Output<Boolean>> allowStoppingForUpdate() {
         return Optional.ofNullable(this.allowStoppingForUpdate);
     }
@@ -131,16 +121,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable deletion protection on this instance. Defaults to false.
-     * **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+     * Whether deletion protection is enabled on this instance.
      * 
      */
     @Import(name="deletionProtection")
     private @Nullable Output<Boolean> deletionProtection;
 
     /**
-     * @return Enable deletion protection on this instance. Defaults to false.
-     * **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+     * @return Whether deletion protection is enabled on this instance.
      * 
      */
     public Optional<Output<Boolean>> deletionProtection() {
@@ -199,6 +187,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+     * **Note**: As of 6.0.0, argument syntax
+     * is no longer supported for this field in favor of block syntax.
+     * To dynamically set a list of guest accelerators, use dynamic blocks.
+     * To set an empty list, use a single `guest_accelerator` block with `count = 0`.
      * 
      */
     @Import(name="guestAccelerators")
@@ -207,6 +199,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+     * **Note**: As of 6.0.0, argument syntax
+     * is no longer supported for this field in favor of block syntax.
+     * To dynamically set a list of guest accelerators, use dynamic blocks.
+     * To set an empty list, use a single `guest_accelerator` block with `count = 0`.
      * 
      */
     public Optional<Output<List<InstanceGuestAcceleratorArgs>>> guestAccelerators() {
@@ -337,32 +333,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An alternative to using the
-     * startup-script metadata key, except this one forces the instance to be recreated
-     * (thus re-running the script) if it is changed. This replaces the startup-script
-     * metadata key on the created instance and thus the two mechanisms are not
-     * allowed to be used simultaneously.  Users are free to use either mechanism - the
-     * only distinction is that this separate attribute will cause a recreate on
-     * modification.  On import, `metadata_startup_script` will not be set - if you
-     * choose to specify it you will see a diff immediately after import causing a
-     * destroy/recreate operation. If importing an instance and specifying this value
-     * is desired, you will need to modify your state file.
+     * Metadata startup scripts made available within the instance.
      * 
      */
     @Import(name="metadataStartupScript")
     private @Nullable Output<String> metadataStartupScript;
 
     /**
-     * @return An alternative to using the
-     * startup-script metadata key, except this one forces the instance to be recreated
-     * (thus re-running the script) if it is changed. This replaces the startup-script
-     * metadata key on the created instance and thus the two mechanisms are not
-     * allowed to be used simultaneously.  Users are free to use either mechanism - the
-     * only distinction is that this separate attribute will cause a recreate on
-     * modification.  On import, `metadata_startup_script` will not be set - if you
-     * choose to specify it you will see a diff immediately after import causing a
-     * destroy/recreate operation. If importing an instance and specifying this value
-     * is desired, you will need to modify your state file.
+     * @return Metadata startup scripts made available within the instance.
      * 
      */
     public Optional<Output<String>> metadataStartupScript() {
@@ -710,25 +688,11 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
             return advancedMachineFeatures(Output.of(advancedMachineFeatures));
         }
 
-        /**
-         * @param allowStoppingForUpdate If true, allows this prvider to stop the instance to update its properties.
-         * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
-         * 
-         * @return builder
-         * 
-         */
         public Builder allowStoppingForUpdate(@Nullable Output<Boolean> allowStoppingForUpdate) {
             $.allowStoppingForUpdate = allowStoppingForUpdate;
             return this;
         }
 
-        /**
-         * @param allowStoppingForUpdate If true, allows this prvider to stop the instance to update its properties.
-         * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
-         * 
-         * @return builder
-         * 
-         */
         public Builder allowStoppingForUpdate(Boolean allowStoppingForUpdate) {
             return allowStoppingForUpdate(Output.of(allowStoppingForUpdate));
         }
@@ -834,8 +798,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtection Enable deletion protection on this instance. Defaults to false.
-         * **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+         * @param deletionProtection Whether deletion protection is enabled on this instance.
          * 
          * @return builder
          * 
@@ -846,8 +809,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtection Enable deletion protection on this instance. Defaults to false.
-         * **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+         * @param deletionProtection Whether deletion protection is enabled on this instance.
          * 
          * @return builder
          * 
@@ -926,6 +888,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param guestAccelerators List of the type and count of accelerator cards attached to the instance. Structure documented below.
          * **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+         * **Note**: As of 6.0.0, argument syntax
+         * is no longer supported for this field in favor of block syntax.
+         * To dynamically set a list of guest accelerators, use dynamic blocks.
+         * To set an empty list, use a single `guest_accelerator` block with `count = 0`.
          * 
          * @return builder
          * 
@@ -938,6 +904,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param guestAccelerators List of the type and count of accelerator cards attached to the instance. Structure documented below.
          * **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+         * **Note**: As of 6.0.0, argument syntax
+         * is no longer supported for this field in favor of block syntax.
+         * To dynamically set a list of guest accelerators, use dynamic blocks.
+         * To set an empty list, use a single `guest_accelerator` block with `count = 0`.
          * 
          * @return builder
          * 
@@ -949,6 +919,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param guestAccelerators List of the type and count of accelerator cards attached to the instance. Structure documented below.
          * **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+         * **Note**: As of 6.0.0, argument syntax
+         * is no longer supported for this field in favor of block syntax.
+         * To dynamically set a list of guest accelerators, use dynamic blocks.
+         * To set an empty list, use a single `guest_accelerator` block with `count = 0`.
          * 
          * @return builder
          * 
@@ -1111,16 +1085,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metadataStartupScript An alternative to using the
-         * startup-script metadata key, except this one forces the instance to be recreated
-         * (thus re-running the script) if it is changed. This replaces the startup-script
-         * metadata key on the created instance and thus the two mechanisms are not
-         * allowed to be used simultaneously.  Users are free to use either mechanism - the
-         * only distinction is that this separate attribute will cause a recreate on
-         * modification.  On import, `metadata_startup_script` will not be set - if you
-         * choose to specify it you will see a diff immediately after import causing a
-         * destroy/recreate operation. If importing an instance and specifying this value
-         * is desired, you will need to modify your state file.
+         * @param metadataStartupScript Metadata startup scripts made available within the instance.
          * 
          * @return builder
          * 
@@ -1131,16 +1096,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metadataStartupScript An alternative to using the
-         * startup-script metadata key, except this one forces the instance to be recreated
-         * (thus re-running the script) if it is changed. This replaces the startup-script
-         * metadata key on the created instance and thus the two mechanisms are not
-         * allowed to be used simultaneously.  Users are free to use either mechanism - the
-         * only distinction is that this separate attribute will cause a recreate on
-         * modification.  On import, `metadata_startup_script` will not be set - if you
-         * choose to specify it you will see a diff immediately after import causing a
-         * destroy/recreate operation. If importing an instance and specifying this value
-         * is desired, you will need to modify your state file.
+         * @param metadataStartupScript Metadata startup scripts made available within the instance.
          * 
          * @return builder
          * 

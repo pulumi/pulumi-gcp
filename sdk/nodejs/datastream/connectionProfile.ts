@@ -292,7 +292,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ## Import
  *
  * ConnectionProfile can be imported using any of these accepted formats:
@@ -423,6 +422,11 @@ export class ConnectionProfile extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Salesforce profile.
+     * Structure is documented below.
+     */
+    public readonly salesforceProfile!: pulumi.Output<outputs.datastream.ConnectionProfileSalesforceProfile | undefined>;
+    /**
      * SQL Server database profile.
      * Structure is documented below.
      */
@@ -457,6 +461,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["privateConnectivity"] = state ? state.privateConnectivity : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["salesforceProfile"] = state ? state.salesforceProfile : undefined;
             resourceInputs["sqlServerProfile"] = state ? state.sqlServerProfile : undefined;
         } else {
             const args = argsOrState as ConnectionProfileArgs | undefined;
@@ -482,6 +487,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["postgresqlProfile"] = args ? args.postgresqlProfile : undefined;
             resourceInputs["privateConnectivity"] = args ? args.privateConnectivity : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["salesforceProfile"] = args ? args.salesforceProfile : undefined;
             resourceInputs["sqlServerProfile"] = args ? args.sqlServerProfile : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -576,6 +582,11 @@ export interface ConnectionProfileState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Salesforce profile.
+     * Structure is documented below.
+     */
+    salesforceProfile?: pulumi.Input<inputs.datastream.ConnectionProfileSalesforceProfile>;
+    /**
      * SQL Server database profile.
      * Structure is documented below.
      */
@@ -650,6 +661,11 @@ export interface ConnectionProfileArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Salesforce profile.
+     * Structure is documented below.
+     */
+    salesforceProfile?: pulumi.Input<inputs.datastream.ConnectionProfileSalesforceProfile>;
     /**
      * SQL Server database profile.
      * Structure is documented below.

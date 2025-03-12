@@ -131,7 +131,7 @@ import javax.annotation.Nullable;
  *             .zone("us-central1-b")
  *             .acceleratorType("v3-8")
  *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -> getTensorflowVersionsResult.versions()[0]))
- *             .description("Google Provider test TPU")
+ *             .description("Terraform Google Provider test TPU")
  *             .useServiceNetworking(true)
  *             .network(privateServiceConnection.network())
  *             .labels(Map.of("foo", "bar"))

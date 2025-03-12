@@ -238,14 +238,6 @@ class WebApp(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        A Google Cloud Firebase web application instance
-
-        To get more information about WebApp, see:
-
-        * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps)
-        * How-to Guides
-            * [Official Documentation](https://firebase.google.com/)
-
         ## Example Usage
 
         ### Firebase Web App Custom Api Key
@@ -325,14 +317,6 @@ class WebApp(pulumi.CustomResource):
                  args: WebAppArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A Google Cloud Firebase web application instance
-
-        To get more information about WebApp, see:
-
-        * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps)
-        * How-to Guides
-            * [Official Documentation](https://firebase.google.com/)
-
         ## Example Usage
 
         ### Firebase Web App Custom Api Key

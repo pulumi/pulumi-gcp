@@ -315,7 +315,7 @@ import (
 //			apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 //				AnalyticsRegion:                  pulumi.String("us-central1"),
 //				DisplayName:                      pulumi.String("apigee-org"),
-//				Description:                      pulumi.String("Auto-provisioned Apigee Org."),
+//				Description:                      pulumi.String("Terraform-provisioned Apigee Org."),
 //				ProjectId:                        pulumi.String(current.Project),
 //				AuthorizedNetwork:                apigeeNetwork.ID(),
 //				RuntimeDatabaseEncryptionKeyName: apigeeKey.ID(),
@@ -329,7 +329,7 @@ import (
 //			_, err = apigee.NewInstance(ctx, "apigee_instance", &apigee.InstanceArgs{
 //				Name:                  pulumi.String("my-instance-name"),
 //				Location:              pulumi.String("us-central1"),
-//				Description:           pulumi.String("Auto-managed Apigee Runtime Instance"),
+//				Description:           pulumi.String("Terraform-managed Apigee Runtime Instance"),
 //				DisplayName:           pulumi.String("my-instance-name"),
 //				OrgId:                 apigeeOrg.ID(),
 //				DiskEncryptionKeyName: apigeeKey.ID(),

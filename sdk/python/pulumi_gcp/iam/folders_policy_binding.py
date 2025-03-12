@@ -497,14 +497,6 @@ class FoldersPolicyBinding(pulumi.CustomResource):
                  target: Optional[pulumi.Input[Union['FoldersPolicyBindingTargetArgs', 'FoldersPolicyBindingTargetArgsDict']]] = None,
                  __props__=None):
         """
-        A policy binding to a folder
-
-        To get more information about FoldersPolicyBinding, see:
-
-        * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/folders.locations.policyBindings)
-        * How-to Guides
-            * [Apply a policy binding](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create#create_binding)
-
         ## Example Usage
 
         ### Iam Folders Policy Binding
@@ -517,20 +509,20 @@ class FoldersPolicyBinding(pulumi.CustomResource):
         pab_policy = gcp.iam.PrincipalAccessBoundaryPolicy("pab_policy",
             organization="123456789",
             location="global",
-            display_name="test folder binding",
+            display_name="binding for all principals in the folder",
             principal_access_boundary_policy_id="my-pab-policy")
         folder = gcp.organizations.Folder("folder",
-            display_name="test folder",
+            display_name="my folder",
             parent="organizations/123456789",
             deletion_protection=False)
         wait120s = time.index.Sleep("wait_120s", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[folder]))
-        my_folder_binding = gcp.iam.FoldersPolicyBinding("my-folder-binding",
+        binding_for_all_folder_principals = gcp.iam.FoldersPolicyBinding("binding-for-all-folder-principals",
             folder=folder.folder_id,
             location="global",
-            display_name="test folder binding",
+            display_name="binding for all principals in the folder",
             policy_kind="PRINCIPAL_ACCESS_BOUNDARY",
-            policy_binding_id="test-folder-binding",
+            policy_binding_id="binding-for-all-folder-principals",
             policy=pab_policy.principal_access_boundary_policy_id.apply(lambda principal_access_boundary_policy_id: f"organizations/123456789/locations/global/principalAccessBoundaryPolicies/{principal_access_boundary_policy_id}"),
             target={
                 "principal_set": folder.folder_id.apply(lambda folder_id: f"//cloudresourcemanager.googleapis.com/folders/{folder_id}"),
@@ -589,14 +581,6 @@ class FoldersPolicyBinding(pulumi.CustomResource):
                  args: FoldersPolicyBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A policy binding to a folder
-
-        To get more information about FoldersPolicyBinding, see:
-
-        * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/folders.locations.policyBindings)
-        * How-to Guides
-            * [Apply a policy binding](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create#create_binding)
-
         ## Example Usage
 
         ### Iam Folders Policy Binding
@@ -609,20 +593,20 @@ class FoldersPolicyBinding(pulumi.CustomResource):
         pab_policy = gcp.iam.PrincipalAccessBoundaryPolicy("pab_policy",
             organization="123456789",
             location="global",
-            display_name="test folder binding",
+            display_name="binding for all principals in the folder",
             principal_access_boundary_policy_id="my-pab-policy")
         folder = gcp.organizations.Folder("folder",
-            display_name="test folder",
+            display_name="my folder",
             parent="organizations/123456789",
             deletion_protection=False)
         wait120s = time.index.Sleep("wait_120s", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[folder]))
-        my_folder_binding = gcp.iam.FoldersPolicyBinding("my-folder-binding",
+        binding_for_all_folder_principals = gcp.iam.FoldersPolicyBinding("binding-for-all-folder-principals",
             folder=folder.folder_id,
             location="global",
-            display_name="test folder binding",
+            display_name="binding for all principals in the folder",
             policy_kind="PRINCIPAL_ACCESS_BOUNDARY",
-            policy_binding_id="test-folder-binding",
+            policy_binding_id="binding-for-all-folder-principals",
             policy=pab_policy.principal_access_boundary_policy_id.apply(lambda principal_access_boundary_policy_id: f"organizations/123456789/locations/global/principalAccessBoundaryPolicies/{principal_access_boundary_policy_id}"),
             target={
                 "principal_set": folder.folder_id.apply(lambda folder_id: f"//cloudresourcemanager.googleapis.com/folders/{folder_id}"),

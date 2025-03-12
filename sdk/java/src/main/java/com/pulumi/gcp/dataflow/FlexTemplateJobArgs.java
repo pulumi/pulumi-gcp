@@ -119,11 +119,8 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
     /**
      * User labels to be specified for the job. Keys and values
      * should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-     * page. **Note**: This field is marked as deprecated as the API does not currently
-     * support adding labels.
-     * **NOTE**: Google-provided Dataflow templates often provide default labels
-     * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-     * labels will be ignored to prevent diffs on re-apply.
+     * page.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -132,11 +129,8 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
     /**
      * @return User labels to be specified for the job. Keys and values
      * should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-     * page. **Note**: This field is marked as deprecated as the API does not currently
-     * support adding labels.
-     * **NOTE**: Google-provided Dataflow templates often provide default labels
-     * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-     * labels will be ignored to prevent diffs on re-apply.
+     * page.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -233,19 +227,9 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.numWorkers);
     }
 
-    /**
-     * One of &#34;drain&#34; or &#34;cancel&#34;. Specifies behavior of
-     * deletion during `pulumi destroy`.  See above note.
-     * 
-     */
     @Import(name="onDelete")
     private @Nullable Output<String> onDelete;
 
-    /**
-     * @return One of &#34;drain&#34; or &#34;cancel&#34;. Specifies behavior of
-     * deletion during `pulumi destroy`.  See above note.
-     * 
-     */
     public Optional<Output<String>> onDelete() {
         return Optional.ofNullable(this.onDelete);
     }
@@ -590,11 +574,8 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param labels User labels to be specified for the job. Keys and values
          * should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-         * page. **Note**: This field is marked as deprecated as the API does not currently
-         * support adding labels.
-         * **NOTE**: Google-provided Dataflow templates often provide default labels
-         * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-         * labels will be ignored to prevent diffs on re-apply.
+         * page.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -607,11 +588,8 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param labels User labels to be specified for the job. Keys and values
          * should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-         * page. **Note**: This field is marked as deprecated as the API does not currently
-         * support adding labels.
-         * **NOTE**: Google-provided Dataflow templates often provide default labels
-         * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-         * labels will be ignored to prevent diffs on re-apply.
+         * page.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -746,25 +724,11 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
             return numWorkers(Output.of(numWorkers));
         }
 
-        /**
-         * @param onDelete One of &#34;drain&#34; or &#34;cancel&#34;. Specifies behavior of
-         * deletion during `pulumi destroy`.  See above note.
-         * 
-         * @return builder
-         * 
-         */
         public Builder onDelete(@Nullable Output<String> onDelete) {
             $.onDelete = onDelete;
             return this;
         }
 
-        /**
-         * @param onDelete One of &#34;drain&#34; or &#34;cancel&#34;. Specifies behavior of
-         * deletion during `pulumi destroy`.  See above note.
-         * 
-         * @return builder
-         * 
-         */
         public Builder onDelete(String onDelete) {
             return onDelete(Output.of(onDelete));
         }

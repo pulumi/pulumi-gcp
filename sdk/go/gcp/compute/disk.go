@@ -196,6 +196,12 @@ type Disk struct {
 	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk DiskAsyncPrimaryDiskPtrOutput `pulumi:"asyncPrimaryDisk"`
+	// If set to true, a snapshot of the disk will be created before it is destroyed.
+	// If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+	// The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+	CreateSnapshotBeforeDestroy pulumi.BoolPtrOutput `pulumi:"createSnapshotBeforeDestroy"`
+	// This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+	CreateSnapshotBeforeDestroyPrefix pulumi.StringPtrOutput `pulumi:"createSnapshotBeforeDestroyPrefix"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when
@@ -297,18 +303,7 @@ type Disk struct {
 	ResourcePolicies pulumi.StringArrayOutput `pulumi:"resourcePolicies"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// Size of the persistent disk, specified in GB. You can specify this
-	// field when creating a persistent disk using the `image` or
-	// `snapshot` parameter, or specify it alone to create an empty
-	// persistent disk.
-	// If you specify this field along with `image` or `snapshot`,
-	// the value must not be less than the size of the image
-	// or the size of the snapshot.
-	// ~>**NOTE** If you change the size, the provider updates the disk size
-	// if upsizing is detected but recreates the disk if downsizing is requested.
-	// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-	// and recreating.
-	Size pulumi.IntOutput `pulumi:"size"`
+	Size     pulumi.IntOutput    `pulumi:"size"`
 	// The source snapshot used to create this disk. You can provide this as
 	// a partial or full URL to the resource. If the snapshot is in another
 	// project than this disk, you must supply a full URL. For example, the
@@ -433,6 +428,12 @@ type diskState struct {
 	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk *DiskAsyncPrimaryDisk `pulumi:"asyncPrimaryDisk"`
+	// If set to true, a snapshot of the disk will be created before it is destroyed.
+	// If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+	// The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+	CreateSnapshotBeforeDestroy *bool `pulumi:"createSnapshotBeforeDestroy"`
+	// This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+	CreateSnapshotBeforeDestroyPrefix *string `pulumi:"createSnapshotBeforeDestroyPrefix"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when
@@ -534,18 +535,7 @@ type diskState struct {
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// Size of the persistent disk, specified in GB. You can specify this
-	// field when creating a persistent disk using the `image` or
-	// `snapshot` parameter, or specify it alone to create an empty
-	// persistent disk.
-	// If you specify this field along with `image` or `snapshot`,
-	// the value must not be less than the size of the image
-	// or the size of the snapshot.
-	// ~>**NOTE** If you change the size, the provider updates the disk size
-	// if upsizing is detected but recreates the disk if downsizing is requested.
-	// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-	// and recreating.
-	Size *int `pulumi:"size"`
+	Size     *int    `pulumi:"size"`
 	// The source snapshot used to create this disk. You can provide this as
 	// a partial or full URL to the resource. If the snapshot is in another
 	// project than this disk, you must supply a full URL. For example, the
@@ -636,6 +626,12 @@ type DiskState struct {
 	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk DiskAsyncPrimaryDiskPtrInput
+	// If set to true, a snapshot of the disk will be created before it is destroyed.
+	// If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+	// The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+	CreateSnapshotBeforeDestroy pulumi.BoolPtrInput
+	// This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+	CreateSnapshotBeforeDestroyPrefix pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when
@@ -737,18 +733,7 @@ type DiskState struct {
 	ResourcePolicies pulumi.StringArrayInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// Size of the persistent disk, specified in GB. You can specify this
-	// field when creating a persistent disk using the `image` or
-	// `snapshot` parameter, or specify it alone to create an empty
-	// persistent disk.
-	// If you specify this field along with `image` or `snapshot`,
-	// the value must not be less than the size of the image
-	// or the size of the snapshot.
-	// ~>**NOTE** If you change the size, the provider updates the disk size
-	// if upsizing is detected but recreates the disk if downsizing is requested.
-	// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-	// and recreating.
-	Size pulumi.IntPtrInput
+	Size     pulumi.IntPtrInput
 	// The source snapshot used to create this disk. You can provide this as
 	// a partial or full URL to the resource. If the snapshot is in another
 	// project than this disk, you must supply a full URL. For example, the
@@ -843,6 +828,12 @@ type diskArgs struct {
 	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk *DiskAsyncPrimaryDisk `pulumi:"asyncPrimaryDisk"`
+	// If set to true, a snapshot of the disk will be created before it is destroyed.
+	// If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+	// The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+	CreateSnapshotBeforeDestroy *bool `pulumi:"createSnapshotBeforeDestroy"`
+	// This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+	CreateSnapshotBeforeDestroyPrefix *string `pulumi:"createSnapshotBeforeDestroyPrefix"`
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description *string `pulumi:"description"`
@@ -926,18 +917,7 @@ type diskArgs struct {
 	// `compute.DiskResourcePolicyAttachment`
 	// to allow for updating the resource policy attached to the disk.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
-	// Size of the persistent disk, specified in GB. You can specify this
-	// field when creating a persistent disk using the `image` or
-	// `snapshot` parameter, or specify it alone to create an empty
-	// persistent disk.
-	// If you specify this field along with `image` or `snapshot`,
-	// the value must not be less than the size of the image
-	// or the size of the snapshot.
-	// ~>**NOTE** If you change the size, the provider updates the disk size
-	// if upsizing is detected but recreates the disk if downsizing is requested.
-	// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-	// and recreating.
-	Size *int `pulumi:"size"`
+	Size             *int     `pulumi:"size"`
 	// The source snapshot used to create this disk. You can provide this as
 	// a partial or full URL to the resource. If the snapshot is in another
 	// project than this disk, you must supply a full URL. For example, the
@@ -1003,6 +983,12 @@ type DiskArgs struct {
 	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk DiskAsyncPrimaryDiskPtrInput
+	// If set to true, a snapshot of the disk will be created before it is destroyed.
+	// If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+	// The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+	CreateSnapshotBeforeDestroy pulumi.BoolPtrInput
+	// This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+	CreateSnapshotBeforeDestroyPrefix pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description pulumi.StringPtrInput
@@ -1086,18 +1072,7 @@ type DiskArgs struct {
 	// `compute.DiskResourcePolicyAttachment`
 	// to allow for updating the resource policy attached to the disk.
 	ResourcePolicies pulumi.StringArrayInput
-	// Size of the persistent disk, specified in GB. You can specify this
-	// field when creating a persistent disk using the `image` or
-	// `snapshot` parameter, or specify it alone to create an empty
-	// persistent disk.
-	// If you specify this field along with `image` or `snapshot`,
-	// the value must not be less than the size of the image
-	// or the size of the snapshot.
-	// ~>**NOTE** If you change the size, the provider updates the disk size
-	// if upsizing is detected but recreates the disk if downsizing is requested.
-	// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-	// and recreating.
-	Size pulumi.IntPtrInput
+	Size             pulumi.IntPtrInput
 	// The source snapshot used to create this disk. You can provide this as
 	// a partial or full URL to the resource. If the snapshot is in another
 	// project than this disk, you must supply a full URL. For example, the
@@ -1255,6 +1230,18 @@ func (o DiskOutput) Architecture() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o DiskOutput) AsyncPrimaryDisk() DiskAsyncPrimaryDiskPtrOutput {
 	return o.ApplyT(func(v *Disk) DiskAsyncPrimaryDiskPtrOutput { return v.AsyncPrimaryDisk }).(DiskAsyncPrimaryDiskPtrOutput)
+}
+
+// If set to true, a snapshot of the disk will be created before it is destroyed.
+// If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+// The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+func (o DiskOutput) CreateSnapshotBeforeDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Disk) pulumi.BoolPtrOutput { return v.CreateSnapshotBeforeDestroy }).(pulumi.BoolPtrOutput)
+}
+
+// This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+func (o DiskOutput) CreateSnapshotBeforeDestroyPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.CreateSnapshotBeforeDestroyPrefix }).(pulumi.StringPtrOutput)
 }
 
 // Creation timestamp in RFC3339 text format.
@@ -1430,17 +1417,6 @@ func (o DiskOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// Size of the persistent disk, specified in GB. You can specify this
-// field when creating a persistent disk using the `image` or
-// `snapshot` parameter, or specify it alone to create an empty
-// persistent disk.
-// If you specify this field along with `image` or `snapshot`,
-// the value must not be less than the size of the image
-// or the size of the snapshot.
-// ~>**NOTE** If you change the size, the provider updates the disk size
-// if upsizing is detected but recreates the disk if downsizing is requested.
-// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-// and recreating.
 func (o DiskOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *Disk) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }

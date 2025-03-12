@@ -301,14 +301,6 @@ class Api(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        A consumable API that can be used by multiple Gateways.
-
-        To get more information about Api, see:
-
-        * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
-
         ## Example Usage
 
         ### Apigateway Api Basic
@@ -367,14 +359,6 @@ class Api(pulumi.CustomResource):
                  args: ApiArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A consumable API that can be used by multiple Gateways.
-
-        To get more information about Api, see:
-
-        * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
-
         ## Example Usage
 
         ### Apigateway Api Basic

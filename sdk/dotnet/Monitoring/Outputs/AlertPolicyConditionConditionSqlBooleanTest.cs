@@ -14,8 +14,8 @@ namespace Pulumi.Gcp.Monitoring.Outputs
     public sealed class AlertPolicyConditionConditionSqlBooleanTest
     {
         /// <summary>
-        /// The name of the column containing the boolean value. If the value
-        /// in a row is NULL, that row is ignored.
+        /// The name of the column containing the boolean value. If the value in a row is
+        /// NULL, that row is ignored.
         /// 
         /// - - -
         /// </summary>

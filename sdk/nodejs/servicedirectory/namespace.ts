@@ -5,15 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * A container for `services`. Namespaces allow administrators to group services
- * together and define permissions for a collection of services.
- *
- * To get more information about Namespace, see:
- *
- * * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces)
- * * How-to Guides
- *     * [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
- *
  * ## Example Usage
  *
  * ### Service Directory Namespace Basic

@@ -40,7 +40,6 @@ class ManagedZoneArgs:
         :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
         :param pulumi.Input['ManagedZoneCloudLoggingConfigArgs'] cloud_logging_config: Cloud logging configuration
                Structure is documented below.
-        :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input['ManagedZoneDnssecConfigArgs'] dnssec_config: DNSSEC configuration
                Structure is documented below.
         :param pulumi.Input[bool] force_destroy: Set this true to delete all records in the zone.
@@ -54,6 +53,7 @@ class ManagedZoneArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: User assigned name for this resource.
                Must be unique within the project.
+               
                
                - - -
         :param pulumi.Input['ManagedZonePeeringConfigArgs'] peering_config: The presence of this field indicates that DNS Peering is enabled for this
@@ -132,9 +132,6 @@ class ManagedZoneArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        A textual description field. Defaults to 'Managed by Pulumi'.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -202,6 +199,7 @@ class ManagedZoneArgs:
         """
         User assigned name for this resource.
         Must be unique within the project.
+
 
         - - -
         """
@@ -323,7 +321,6 @@ class _ManagedZoneState:
                Structure is documented below.
         :param pulumi.Input[str] creation_time: The time that this resource was created on the server.
                This is in RFC3339 text format.
-        :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
         :param pulumi.Input['ManagedZoneDnssecConfigArgs'] dnssec_config: DNSSEC configuration
                Structure is documented below.
@@ -340,6 +337,7 @@ class _ManagedZoneState:
         :param pulumi.Input[str] managed_zone_id: Unique identifier for the resource; defined by the server.
         :param pulumi.Input[str] name: User assigned name for this resource.
                Must be unique within the project.
+               
                
                - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: Delegate your managed_zone to these virtual name servers;
@@ -434,9 +432,6 @@ class _ManagedZoneState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        A textual description field. Defaults to 'Managed by Pulumi'.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -540,6 +535,7 @@ class _ManagedZoneState:
         """
         User assigned name for this resource.
         Must be unique within the project.
+
 
         - - -
         """
@@ -697,10 +693,12 @@ class ManagedZone(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_random as random
 
+        rnd = random.RandomId("rnd", byte_length=4)
         example_zone = gcp.dns.ManagedZone("example-zone",
             name="example-zone",
-            dns_name="my-domain.com.",
+            dns_name=rnd.hex.apply(lambda hex: f"example-{hex}.com."),
             description="Example DNS zone",
             labels={
                 "foo": "bar",
@@ -938,7 +936,6 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ManagedZoneCloudLoggingConfigArgs', 'ManagedZoneCloudLoggingConfigArgsDict']] cloud_logging_config: Cloud logging configuration
                Structure is documented below.
-        :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
         :param pulumi.Input[Union['ManagedZoneDnssecConfigArgs', 'ManagedZoneDnssecConfigArgsDict']] dnssec_config: DNSSEC configuration
                Structure is documented below.
@@ -953,6 +950,7 @@ class ManagedZone(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: User assigned name for this resource.
                Must be unique within the project.
+               
                
                - - -
         :param pulumi.Input[Union['ManagedZonePeeringConfigArgs', 'ManagedZonePeeringConfigArgsDict']] peering_config: The presence of this field indicates that DNS Peering is enabled for this
@@ -997,10 +995,12 @@ class ManagedZone(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_random as random
 
+        rnd = random.RandomId("rnd", byte_length=4)
         example_zone = gcp.dns.ManagedZone("example-zone",
             name="example-zone",
-            dns_name="my-domain.com.",
+            dns_name=rnd.hex.apply(lambda hex: f"example-{hex}.com."),
             description="Example DNS zone",
             labels={
                 "foo": "bar",
@@ -1337,7 +1337,6 @@ class ManagedZone(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] creation_time: The time that this resource was created on the server.
                This is in RFC3339 text format.
-        :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
         :param pulumi.Input[Union['ManagedZoneDnssecConfigArgs', 'ManagedZoneDnssecConfigArgsDict']] dnssec_config: DNSSEC configuration
                Structure is documented below.
@@ -1354,6 +1353,7 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.Input[str] managed_zone_id: Unique identifier for the resource; defined by the server.
         :param pulumi.Input[str] name: User assigned name for this resource.
                Must be unique within the project.
+               
                
                - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: Delegate your managed_zone to these virtual name servers;
@@ -1424,9 +1424,6 @@ class ManagedZone(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
-        """
-        A textual description field. Defaults to 'Managed by Pulumi'.
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -1498,6 +1495,7 @@ class ManagedZone(pulumi.CustomResource):
         """
         User assigned name for this resource.
         Must be unique within the project.
+
 
         - - -
         """

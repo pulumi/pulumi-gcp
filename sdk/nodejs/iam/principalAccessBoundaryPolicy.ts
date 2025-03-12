@@ -7,14 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * An IAM Principal Access Boundary Policy resource
- *
- * To get more information about PrincipalAccessBoundaryPolicy, see:
- *
- * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/organizations.locations.principalAccessBoundaryPolicies)
- * * How-to Guides
- *     * [Create and apply Principal Access Boundaries](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create)
- *
  * ## Example Usage
  *
  * ### Iam Principal Access Boundary Policy
@@ -23,11 +15,41 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my_pab_policy = new gcp.iam.PrincipalAccessBoundaryPolicy("my-pab-policy", {
+ * const pab_policy_for_org = new gcp.iam.PrincipalAccessBoundaryPolicy("pab-policy-for-org", {
  *     organization: "123456789",
  *     location: "global",
- *     displayName: "test pab policy",
- *     principalAccessBoundaryPolicyId: "test-pab-policy",
+ *     displayName: "PAB policy for Organization",
+ *     principalAccessBoundaryPolicyId: "pab-policy-for-org",
+ * });
+ * ```
+ * ### Iam Organizations Policy Binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumi/time";
+ *
+ * const pabPolicy = new gcp.iam.PrincipalAccessBoundaryPolicy("pab_policy", {
+ *     organization: "123456789",
+ *     location: "global",
+ *     displayName: "Binding for all principals in the Organization",
+ *     principalAccessBoundaryPolicyId: "my-pab-policy",
+ * });
+ * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"}, {
+ *     dependsOn: [pabPolicy],
+ * });
+ * const my_pab_policy = new gcp.iam.OrganizationsPolicyBinding("my-pab-policy", {
+ *     organization: "123456789",
+ *     location: "global",
+ *     displayName: "Binding for all principals in the Organization",
+ *     policyKind: "PRINCIPAL_ACCESS_BOUNDARY",
+ *     policyBindingId: "binding-for-all-org-principals",
+ *     policy: pulumi.interpolate`organizations/123456789/locations/global/principalAccessBoundaryPolicies/${pabPolicy.principalAccessBoundaryPolicyId}`,
+ *     target: {
+ *         principalSet: "//cloudresourcemanager.googleapis.com/organizations/123456789",
+ *     },
+ * }, {
+ *     dependsOn: [wait60Seconds],
  * });
  * ```
  *

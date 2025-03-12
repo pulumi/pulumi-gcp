@@ -88,7 +88,7 @@ export class BucketObject extends pulumi.CustomResource {
      */
     public readonly cacheControl!: pulumi.Output<string | undefined>;
     /**
-     * Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
+     * Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
      */
     public readonly content!: pulumi.Output<string>;
     /**
@@ -264,7 +264,7 @@ export interface BucketObjectState {
      */
     cacheControl?: pulumi.Input<string>;
     /**
-     * Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
+     * Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
      */
     content?: pulumi.Input<string>;
     /**
@@ -369,7 +369,7 @@ export interface BucketObjectArgs {
      */
     cacheControl?: pulumi.Input<string>;
     /**
-     * Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
+     * Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
      */
     content?: pulumi.Input<string>;
     /**

@@ -15,10 +15,12 @@ namespace Pulumi.Gcp.VMwareEngine.Outputs
     {
         /// <summary>
         /// Zone that will remain operational when connection between the two zones is lost.
+        /// Specify the zone in the following format: projects/{project}/locations/{location}.
         /// </summary>
         public readonly string? PreferredLocation;
         /// <summary>
         /// Additional zone for a higher level of availability and load balancing.
+        /// Specify the zone in the following format: projects/{project}/locations/{location}.
         /// </summary>
         public readonly string? SecondaryLocation;
 

@@ -15,14 +15,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Organization security policies are used to control incoming/outgoing traffic.
- * 
- * To get more information about OrganizationSecurityPolicy, see:
- * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies)
- * * How-to Guides
- *     * [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
- * 
  * ## Example Usage
  * 
  * ### Organization Security Policy Basic
@@ -51,7 +43,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
- *             .displayName("tf-test")
+ *             .displayName("tf-test_21197")
  *             .parent("organizations/123456789")
  *             .build());
  * 

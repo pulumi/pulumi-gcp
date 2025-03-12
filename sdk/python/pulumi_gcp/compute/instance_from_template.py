@@ -96,16 +96,13 @@ class InstanceFromTemplateArgs:
         :param pulumi.Input['InstanceFromTemplateReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[str] resource_policies: A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         :param pulumi.Input['InstanceFromTemplateSchedulingArgs'] scheduling: The scheduling strategy being used by the instance.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateScratchDiskArgs']]] scratch_disks: The scratch disks attached to the instance.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateScratchDiskArgs']]] scratch_disks: * `network_interface.alias_ip_range`
+               * `network_interface.access_config`
         :param pulumi.Input['InstanceFromTemplateServiceAccountArgs'] service_account: The service account to attach to the instance.
         :param pulumi.Input['InstanceFromTemplateShieldedInstanceConfigArgs'] shielded_instance_config: The shielded vm config being used by the instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags attached to the instance.
-        :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
-               set, the provider zone is used.
-               
-               In addition to these, all arguments from `compute.Instance` are supported
-               as a way to override the properties in the template. All exported attributes
-               from `compute.Instance` are likewise exported here.
+        :param pulumi.Input[str] zone: The zone of the instance. If self_link is provided, this value is ignored. If neither self_link nor zone are provided,
+               the provider zone is used.
         """
         pulumi.set(__self__, "source_instance_template", source_instance_template)
         if advanced_machine_features is not None:
@@ -523,7 +520,8 @@ class InstanceFromTemplateArgs:
     @pulumi.getter(name="scratchDisks")
     def scratch_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateScratchDiskArgs']]]]:
         """
-        The scratch disks attached to the instance.
+        * `network_interface.alias_ip_range`
+        * `network_interface.access_config`
         """
         return pulumi.get(self, "scratch_disks")
 
@@ -571,12 +569,8 @@ class InstanceFromTemplateArgs:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone that the machine should be created in. If not
-        set, the provider zone is used.
-
-        In addition to these, all arguments from `compute.Instance` are supported
-        as a way to override the properties in the template. All exported attributes
-        from `compute.Instance` are likewise exported here.
+        The zone of the instance. If self_link is provided, this value is ignored. If neither self_link nor zone are provided,
+        the provider zone is used.
         """
         return pulumi.get(self, "zone")
 
@@ -677,7 +671,8 @@ class _InstanceFromTemplateState:
         :param pulumi.Input['InstanceFromTemplateReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[str] resource_policies: A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         :param pulumi.Input['InstanceFromTemplateSchedulingArgs'] scheduling: The scheduling strategy being used by the instance.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateScratchDiskArgs']]] scratch_disks: The scratch disks attached to the instance.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateScratchDiskArgs']]] scratch_disks: * `network_interface.alias_ip_range`
+               * `network_interface.access_config`
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input['InstanceFromTemplateServiceAccountArgs'] service_account: The service account to attach to the instance.
         :param pulumi.Input['InstanceFromTemplateShieldedInstanceConfigArgs'] shielded_instance_config: The shielded vm config being used by the instance.
@@ -688,12 +683,8 @@ class _InstanceFromTemplateState:
                - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags attached to the instance.
         :param pulumi.Input[str] tags_fingerprint: The unique fingerprint of the tags.
-        :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
-               set, the provider zone is used.
-               
-               In addition to these, all arguments from `compute.Instance` are supported
-               as a way to override the properties in the template. All exported attributes
-               from `compute.Instance` are likewise exported here.
+        :param pulumi.Input[str] zone: The zone of the instance. If self_link is provided, this value is ignored. If neither self_link nor zone are provided,
+               the provider zone is used.
         """
         if advanced_machine_features is not None:
             pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -1211,7 +1202,8 @@ class _InstanceFromTemplateState:
     @pulumi.getter(name="scratchDisks")
     def scratch_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateScratchDiskArgs']]]]:
         """
-        The scratch disks attached to the instance.
+        * `network_interface.alias_ip_range`
+        * `network_interface.access_config`
         """
         return pulumi.get(self, "scratch_disks")
 
@@ -1299,12 +1291,8 @@ class _InstanceFromTemplateState:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone that the machine should be created in. If not
-        set, the provider zone is used.
-
-        In addition to these, all arguments from `compute.Instance` are supported
-        as a way to override the properties in the template. All exported attributes
-        from `compute.Instance` are likewise exported here.
+        The zone of the instance. If self_link is provided, this value is ignored. If neither self_link nor zone are provided,
+        the provider zone is used.
         """
         return pulumi.get(self, "zone")
 
@@ -1435,7 +1423,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
         :param pulumi.Input[Union['InstanceFromTemplateReservationAffinityArgs', 'InstanceFromTemplateReservationAffinityArgsDict']] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[str] resource_policies: A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         :param pulumi.Input[Union['InstanceFromTemplateSchedulingArgs', 'InstanceFromTemplateSchedulingArgsDict']] scheduling: The scheduling strategy being used by the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromTemplateScratchDiskArgs', 'InstanceFromTemplateScratchDiskArgsDict']]]] scratch_disks: The scratch disks attached to the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromTemplateScratchDiskArgs', 'InstanceFromTemplateScratchDiskArgsDict']]]] scratch_disks: * `network_interface.alias_ip_range`
+               * `network_interface.access_config`
         :param pulumi.Input[Union['InstanceFromTemplateServiceAccountArgs', 'InstanceFromTemplateServiceAccountArgsDict']] service_account: The service account to attach to the instance.
         :param pulumi.Input[Union['InstanceFromTemplateShieldedInstanceConfigArgs', 'InstanceFromTemplateShieldedInstanceConfigArgsDict']] shielded_instance_config: The shielded vm config being used by the instance.
         :param pulumi.Input[str] source_instance_template: Name or self link of an instance
@@ -1444,12 +1433,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags attached to the instance.
-        :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
-               set, the provider zone is used.
-               
-               In addition to these, all arguments from `compute.Instance` are supported
-               as a way to override the properties in the template. All exported attributes
-               from `compute.Instance` are likewise exported here.
+        :param pulumi.Input[str] zone: The zone of the instance. If self_link is provided, this value is ignored. If neither self_link nor zone are provided,
+               the provider zone is used.
         """
         ...
     @overload
@@ -1711,7 +1696,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
         :param pulumi.Input[Union['InstanceFromTemplateReservationAffinityArgs', 'InstanceFromTemplateReservationAffinityArgsDict']] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[str] resource_policies: A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         :param pulumi.Input[Union['InstanceFromTemplateSchedulingArgs', 'InstanceFromTemplateSchedulingArgsDict']] scheduling: The scheduling strategy being used by the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromTemplateScratchDiskArgs', 'InstanceFromTemplateScratchDiskArgsDict']]]] scratch_disks: The scratch disks attached to the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromTemplateScratchDiskArgs', 'InstanceFromTemplateScratchDiskArgsDict']]]] scratch_disks: * `network_interface.alias_ip_range`
+               * `network_interface.access_config`
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[Union['InstanceFromTemplateServiceAccountArgs', 'InstanceFromTemplateServiceAccountArgsDict']] service_account: The service account to attach to the instance.
         :param pulumi.Input[Union['InstanceFromTemplateShieldedInstanceConfigArgs', 'InstanceFromTemplateShieldedInstanceConfigArgsDict']] shielded_instance_config: The shielded vm config being used by the instance.
@@ -1722,12 +1708,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
                - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags attached to the instance.
         :param pulumi.Input[str] tags_fingerprint: The unique fingerprint of the tags.
-        :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
-               set, the provider zone is used.
-               
-               In addition to these, all arguments from `compute.Instance` are supported
-               as a way to override the properties in the template. All exported attributes
-               from `compute.Instance` are likewise exported here.
+        :param pulumi.Input[str] zone: The zone of the instance. If self_link is provided, this value is ignored. If neither self_link nor zone are provided,
+               the provider zone is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2067,7 +2049,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
     @pulumi.getter(name="scratchDisks")
     def scratch_disks(self) -> pulumi.Output[Sequence['outputs.InstanceFromTemplateScratchDisk']]:
         """
-        The scratch disks attached to the instance.
+        * `network_interface.alias_ip_range`
+        * `network_interface.access_config`
         """
         return pulumi.get(self, "scratch_disks")
 
@@ -2127,12 +2110,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
         """
-        The zone that the machine should be created in. If not
-        set, the provider zone is used.
-
-        In addition to these, all arguments from `compute.Instance` are supported
-        as a way to override the properties in the template. All exported attributes
-        from `compute.Instance` are likewise exported here.
+        The zone of the instance. If self_link is provided, this value is ignored. If neither self_link nor zone are provided,
+        the provider zone is used.
         """
         return pulumi.get(self, "zone")
 

@@ -12,9 +12,6 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class MachineImageIamBindingConditionArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 

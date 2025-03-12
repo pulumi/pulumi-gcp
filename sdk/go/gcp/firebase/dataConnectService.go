@@ -46,7 +46,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// Create an FDC service
+//			// Create a Firebase Data Connect service
 //			_, err = firebase.NewDataConnectService(ctx, "default", &firebase.DataConnectServiceArgs{
 //				Project:        pulumi.String("my-project-name"),
 //				Location:       pulumi.String("us-central1"),
@@ -59,6 +59,47 @@ import (
 //					"key1": pulumi.String("value1"),
 //					"key2": pulumi.String("value2"),
 //				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				fdc,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Firebasedataconnect Service With Force Deletion
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Enable Firebase Data Connect API
+//			fdc, err := projects.NewService(ctx, "fdc", &projects.ServiceArgs{
+//				Project:          pulumi.String("my-project-name"),
+//				Service:          pulumi.String("firebasedataconnect.googleapis.com"),
+//				DisableOnDestroy: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a Firebase Data Connect service
+//			_, err = firebase.NewDataConnectService(ctx, "default", &firebase.DataConnectServiceArgs{
+//				Project:        pulumi.String("my-project-name"),
+//				Location:       pulumi.String("us-central1"),
+//				ServiceId:      pulumi.String("example-service"),
+//				DeletionPolicy: pulumi.String("FORCE"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				fdc,
 //			}))

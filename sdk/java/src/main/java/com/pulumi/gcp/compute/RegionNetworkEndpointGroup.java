@@ -23,6 +23,10 @@ import javax.annotation.Nullable;
  * A regional NEG that can support Serverless Products, proxying traffic to
  * external backends and providing traffic to the PSC port mapping endpoints.
  * 
+ * Recreating a region network endpoint group that&#39;s in use by another resource will give a
+ * `resourceInUseByAnotherResource` error. Use `lifecycle.create_before_destroy`
+ * to avoid this type of error.
+ * 
  * To get more information about RegionNetworkEndpointGroup, see:
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionNetworkEndpointGroups)

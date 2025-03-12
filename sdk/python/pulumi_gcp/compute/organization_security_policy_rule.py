@@ -395,14 +395,6 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        A rule for the OrganizationSecurityPolicy.
-
-        To get more information about OrganizationSecurityPolicyRule, see:
-
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addRule)
-        * How-to Guides
-            * [Creating firewall rules](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
-
         ## Example Usage
 
         ### Organization Security Policy Rule Basic
@@ -412,7 +404,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            display_name="tf-test",
+            display_name="tf-test_22811",
             parent="organizations/123456789")
         policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
             policy_id=policy.id,
@@ -478,14 +470,6 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                  args: OrganizationSecurityPolicyRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A rule for the OrganizationSecurityPolicy.
-
-        To get more information about OrganizationSecurityPolicyRule, see:
-
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addRule)
-        * How-to Guides
-            * [Creating firewall rules](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
-
         ## Example Usage
 
         ### Organization Security Policy Rule Basic
@@ -495,7 +479,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            display_name="tf-test",
+            display_name="tf-test_22811",
             parent="organizations/123456789")
         policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
             policy_id=policy.id,

@@ -12,14 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Organization security policies are used to control incoming/outgoing traffic.
-//
-// To get more information about OrganizationSecurityPolicy, see:
-//
-// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies)
-// * How-to Guides
-//   - [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
-//
 // ## Example Usage
 //
 // ### Organization Security Policy Basic
@@ -37,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
-//				DisplayName: pulumi.String("tf-test"),
+//				DisplayName: pulumi.String("tf-test_21197"),
 //				Parent:      pulumi.String("organizations/123456789"),
 //			})
 //			if err != nil {

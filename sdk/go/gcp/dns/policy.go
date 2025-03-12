@@ -115,8 +115,7 @@ type Policy struct {
 	// Names such as .internal are not available when an alternative name server is specified.
 	// Structure is documented below.
 	AlternativeNameServerConfig PolicyAlternativeNameServerConfigPtrOutput `pulumi:"alternativeNameServerConfig"`
-	// A textual description field. Defaults to 'Managed by Pulumi'.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description                 pulumi.StringPtrOutput                     `pulumi:"description"`
 	// Allows networks bound to this policy to receive DNS queries sent
 	// by VMs or applications over VPN connections. When enabled, a
 	// virtual IP address will be allocated from each of the sub-networks
@@ -172,8 +171,7 @@ type policyState struct {
 	// Names such as .internal are not available when an alternative name server is specified.
 	// Structure is documented below.
 	AlternativeNameServerConfig *PolicyAlternativeNameServerConfig `pulumi:"alternativeNameServerConfig"`
-	// A textual description field. Defaults to 'Managed by Pulumi'.
-	Description *string `pulumi:"description"`
+	Description                 *string                            `pulumi:"description"`
 	// Allows networks bound to this policy to receive DNS queries sent
 	// by VMs or applications over VPN connections. When enabled, a
 	// virtual IP address will be allocated from each of the sub-networks
@@ -200,8 +198,7 @@ type PolicyState struct {
 	// Names such as .internal are not available when an alternative name server is specified.
 	// Structure is documented below.
 	AlternativeNameServerConfig PolicyAlternativeNameServerConfigPtrInput
-	// A textual description field. Defaults to 'Managed by Pulumi'.
-	Description pulumi.StringPtrInput
+	Description                 pulumi.StringPtrInput
 	// Allows networks bound to this policy to receive DNS queries sent
 	// by VMs or applications over VPN connections. When enabled, a
 	// virtual IP address will be allocated from each of the sub-networks
@@ -232,8 +229,7 @@ type policyArgs struct {
 	// Names such as .internal are not available when an alternative name server is specified.
 	// Structure is documented below.
 	AlternativeNameServerConfig *PolicyAlternativeNameServerConfig `pulumi:"alternativeNameServerConfig"`
-	// A textual description field. Defaults to 'Managed by Pulumi'.
-	Description *string `pulumi:"description"`
+	Description                 *string                            `pulumi:"description"`
 	// Allows networks bound to this policy to receive DNS queries sent
 	// by VMs or applications over VPN connections. When enabled, a
 	// virtual IP address will be allocated from each of the sub-networks
@@ -261,8 +257,7 @@ type PolicyArgs struct {
 	// Names such as .internal are not available when an alternative name server is specified.
 	// Structure is documented below.
 	AlternativeNameServerConfig PolicyAlternativeNameServerConfigPtrInput
-	// A textual description field. Defaults to 'Managed by Pulumi'.
-	Description pulumi.StringPtrInput
+	Description                 pulumi.StringPtrInput
 	// Allows networks bound to this policy to receive DNS queries sent
 	// by VMs or applications over VPN connections. When enabled, a
 	// virtual IP address will be allocated from each of the sub-networks
@@ -378,7 +373,6 @@ func (o PolicyOutput) AlternativeNameServerConfig() PolicyAlternativeNameServerC
 	return o.ApplyT(func(v *Policy) PolicyAlternativeNameServerConfigPtrOutput { return v.AlternativeNameServerConfig }).(PolicyAlternativeNameServerConfigPtrOutput)
 }
 
-// A textual description field. Defaults to 'Managed by Pulumi'.
 func (o PolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }

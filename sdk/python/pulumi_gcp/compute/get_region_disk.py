@@ -27,10 +27,16 @@ class GetRegionDiskResult:
     """
     A collection of values returned by getRegionDisk.
     """
-    def __init__(__self__, async_primary_disks=None, creation_timestamp=None, description=None, disk_encryption_keys=None, effective_labels=None, guest_os_features=None, id=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, name=None, physical_block_size_bytes=None, project=None, pulumi_labels=None, region=None, replica_zones=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, type=None, users=None):
+    def __init__(__self__, async_primary_disks=None, create_snapshot_before_destroy=None, create_snapshot_before_destroy_prefix=None, creation_timestamp=None, description=None, disk_encryption_keys=None, effective_labels=None, guest_os_features=None, id=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, name=None, physical_block_size_bytes=None, project=None, pulumi_labels=None, region=None, replica_zones=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, type=None, users=None):
         if async_primary_disks and not isinstance(async_primary_disks, list):
             raise TypeError("Expected argument 'async_primary_disks' to be a list")
         pulumi.set(__self__, "async_primary_disks", async_primary_disks)
+        if create_snapshot_before_destroy and not isinstance(create_snapshot_before_destroy, bool):
+            raise TypeError("Expected argument 'create_snapshot_before_destroy' to be a bool")
+        pulumi.set(__self__, "create_snapshot_before_destroy", create_snapshot_before_destroy)
+        if create_snapshot_before_destroy_prefix and not isinstance(create_snapshot_before_destroy_prefix, str):
+            raise TypeError("Expected argument 'create_snapshot_before_destroy_prefix' to be a str")
+        pulumi.set(__self__, "create_snapshot_before_destroy_prefix", create_snapshot_before_destroy_prefix)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -117,6 +123,16 @@ class GetRegionDiskResult:
     @pulumi.getter(name="asyncPrimaryDisks")
     def async_primary_disks(self) -> Sequence['outputs.GetRegionDiskAsyncPrimaryDiskResult']:
         return pulumi.get(self, "async_primary_disks")
+
+    @property
+    @pulumi.getter(name="createSnapshotBeforeDestroy")
+    def create_snapshot_before_destroy(self) -> bool:
+        return pulumi.get(self, "create_snapshot_before_destroy")
+
+    @property
+    @pulumi.getter(name="createSnapshotBeforeDestroyPrefix")
+    def create_snapshot_before_destroy_prefix(self) -> str:
+        return pulumi.get(self, "create_snapshot_before_destroy_prefix")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -264,6 +280,8 @@ class AwaitableGetRegionDiskResult(GetRegionDiskResult):
             yield self
         return GetRegionDiskResult(
             async_primary_disks=self.async_primary_disks,
+            create_snapshot_before_destroy=self.create_snapshot_before_destroy,
+            create_snapshot_before_destroy_prefix=self.create_snapshot_before_destroy_prefix,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             disk_encryption_keys=self.disk_encryption_keys,
@@ -319,6 +337,8 @@ def get_region_disk(name: Optional[str] = None,
 
     return AwaitableGetRegionDiskResult(
         async_primary_disks=pulumi.get(__ret__, 'async_primary_disks'),
+        create_snapshot_before_destroy=pulumi.get(__ret__, 'create_snapshot_before_destroy'),
+        create_snapshot_before_destroy_prefix=pulumi.get(__ret__, 'create_snapshot_before_destroy_prefix'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         description=pulumi.get(__ret__, 'description'),
         disk_encryption_keys=pulumi.get(__ret__, 'disk_encryption_keys'),
@@ -371,6 +391,8 @@ def get_region_disk_output(name: Optional[pulumi.Input[str]] = None,
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getRegionDisk:getRegionDisk', __args__, opts=opts, typ=GetRegionDiskResult)
     return __ret__.apply(lambda __response__: GetRegionDiskResult(
         async_primary_disks=pulumi.get(__response__, 'async_primary_disks'),
+        create_snapshot_before_destroy=pulumi.get(__response__, 'create_snapshot_before_destroy'),
+        create_snapshot_before_destroy_prefix=pulumi.get(__response__, 'create_snapshot_before_destroy_prefix'),
         creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
         description=pulumi.get(__response__, 'description'),
         disk_encryption_keys=pulumi.get(__response__, 'disk_encryption_keys'),

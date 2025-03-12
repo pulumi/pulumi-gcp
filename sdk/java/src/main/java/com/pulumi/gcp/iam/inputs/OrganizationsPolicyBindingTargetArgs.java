@@ -16,8 +16,12 @@ public final class OrganizationsPolicyBindingTargetArgs extends com.pulumi.resou
     public static final OrganizationsPolicyBindingTargetArgs Empty = new OrganizationsPolicyBindingTargetArgs();
 
     /**
-     * Required. Immutable. The resource name of the policy to be bound.
-     * The binding parent and policy must belong to the same Organization (or Project).
+     * Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+     * Examples for each one of the following supported principal set types:
+     * * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+     * * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
+     * * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
+     *   It must be parent by the policy binding&#39;s parent (the organization).
      * 
      * ***
      * 
@@ -26,8 +30,12 @@ public final class OrganizationsPolicyBindingTargetArgs extends com.pulumi.resou
     private @Nullable Output<String> principalSet;
 
     /**
-     * @return Required. Immutable. The resource name of the policy to be bound.
-     * The binding parent and policy must belong to the same Organization (or Project).
+     * @return Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+     * Examples for each one of the following supported principal set types:
+     * * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+     * * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
+     * * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
+     *   It must be parent by the policy binding&#39;s parent (the organization).
      * 
      * ***
      * 
@@ -61,8 +69,12 @@ public final class OrganizationsPolicyBindingTargetArgs extends com.pulumi.resou
         }
 
         /**
-         * @param principalSet Required. Immutable. The resource name of the policy to be bound.
-         * The binding parent and policy must belong to the same Organization (or Project).
+         * @param principalSet Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+         * Examples for each one of the following supported principal set types:
+         * * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+         * * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
+         * * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
+         *   It must be parent by the policy binding&#39;s parent (the organization).
          * 
          * ***
          * 
@@ -75,8 +87,12 @@ public final class OrganizationsPolicyBindingTargetArgs extends com.pulumi.resou
         }
 
         /**
-         * @param principalSet Required. Immutable. The resource name of the policy to be bound.
-         * The binding parent and policy must belong to the same Organization (or Project).
+         * @param principalSet Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+         * Examples for each one of the following supported principal set types:
+         * * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+         * * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
+         * * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
+         *   It must be parent by the policy binding&#39;s parent (the organization).
          * 
          * ***
          * 

@@ -12,35 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Allows creation and management of a Google Cloud Billing Subaccount.
-//
-// !> **WARNING:** Deleting this resource will not delete or close the billing subaccount.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/billing"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := billing.NewSubAccount(ctx, "subaccount", &billing.SubAccountArgs{
-//				DisplayName:          pulumi.String("My Billing Account"),
-//				MasterBillingAccount: pulumi.String("012345-567890-ABCDEF"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Billing Subaccounts can be imported using any of these accepted formats:
@@ -56,11 +27,8 @@ type SubAccount struct {
 	pulumi.CustomResourceState
 
 	// The billing account id.
-	BillingAccountId pulumi.StringOutput `pulumi:"billingAccountId"`
-	// If set to "RENAME_ON_DESTROY" the billing account displayName
-	// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-	// Default is "".
-	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
+	BillingAccountId pulumi.StringOutput    `pulumi:"billingAccountId"`
+	DeletionPolicy   pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// The display name of the billing account.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The name of the master billing account that the subaccount
@@ -110,10 +78,7 @@ func GetSubAccount(ctx *pulumi.Context,
 type subAccountState struct {
 	// The billing account id.
 	BillingAccountId *string `pulumi:"billingAccountId"`
-	// If set to "RENAME_ON_DESTROY" the billing account displayName
-	// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-	// Default is "".
-	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	DeletionPolicy   *string `pulumi:"deletionPolicy"`
 	// The display name of the billing account.
 	DisplayName *string `pulumi:"displayName"`
 	// The name of the master billing account that the subaccount
@@ -128,10 +93,7 @@ type subAccountState struct {
 type SubAccountState struct {
 	// The billing account id.
 	BillingAccountId pulumi.StringPtrInput
-	// If set to "RENAME_ON_DESTROY" the billing account displayName
-	// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-	// Default is "".
-	DeletionPolicy pulumi.StringPtrInput
+	DeletionPolicy   pulumi.StringPtrInput
 	// The display name of the billing account.
 	DisplayName pulumi.StringPtrInput
 	// The name of the master billing account that the subaccount
@@ -148,9 +110,6 @@ func (SubAccountState) ElementType() reflect.Type {
 }
 
 type subAccountArgs struct {
-	// If set to "RENAME_ON_DESTROY" the billing account displayName
-	// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-	// Default is "".
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The display name of the billing account.
 	DisplayName string `pulumi:"displayName"`
@@ -161,9 +120,6 @@ type subAccountArgs struct {
 
 // The set of arguments for constructing a SubAccount resource.
 type SubAccountArgs struct {
-	// If set to "RENAME_ON_DESTROY" the billing account displayName
-	// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-	// Default is "".
 	DeletionPolicy pulumi.StringPtrInput
 	// The display name of the billing account.
 	DisplayName pulumi.StringInput
@@ -264,9 +220,6 @@ func (o SubAccountOutput) BillingAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SubAccount) pulumi.StringOutput { return v.BillingAccountId }).(pulumi.StringOutput)
 }
 
-// If set to "RENAME_ON_DESTROY" the billing account displayName
-// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-// Default is "".
 func (o SubAccountOutput) DeletionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SubAccount) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }

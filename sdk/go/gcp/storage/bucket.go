@@ -266,11 +266,8 @@ type Bucket struct {
 	// Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
 	EnableObjectRetention pulumi.BoolPtrOutput `pulumi:"enableObjectRetention"`
 	// The bucket's encryption configuration. Structure is documented below.
-	Encryption BucketEncryptionPtrOutput `pulumi:"encryption"`
-	// When deleting a bucket, this
-	// boolean option will delete all contained objects. If you try to delete a
-	// bucket that contains objects, the provider will fail that run.
-	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
+	Encryption   BucketEncryptionPtrOutput `pulumi:"encryption"`
+	ForceDestroy pulumi.BoolPtrOutput      `pulumi:"forceDestroy"`
 	// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
 	HierarchicalNamespace BucketHierarchicalNamespacePtrOutput `pulumi:"hierarchicalNamespace"`
 	// A map of key/value label pairs to assign to the bucket.
@@ -367,11 +364,8 @@ type bucketState struct {
 	// Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
 	EnableObjectRetention *bool `pulumi:"enableObjectRetention"`
 	// The bucket's encryption configuration. Structure is documented below.
-	Encryption *BucketEncryption `pulumi:"encryption"`
-	// When deleting a bucket, this
-	// boolean option will delete all contained objects. If you try to delete a
-	// bucket that contains objects, the provider will fail that run.
-	ForceDestroy *bool `pulumi:"forceDestroy"`
+	Encryption   *BucketEncryption `pulumi:"encryption"`
+	ForceDestroy *bool             `pulumi:"forceDestroy"`
 	// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
 	HierarchicalNamespace *BucketHierarchicalNamespace `pulumi:"hierarchicalNamespace"`
 	// A map of key/value label pairs to assign to the bucket.
@@ -431,10 +425,7 @@ type BucketState struct {
 	// Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
 	EnableObjectRetention pulumi.BoolPtrInput
 	// The bucket's encryption configuration. Structure is documented below.
-	Encryption BucketEncryptionPtrInput
-	// When deleting a bucket, this
-	// boolean option will delete all contained objects. If you try to delete a
-	// bucket that contains objects, the provider will fail that run.
+	Encryption   BucketEncryptionPtrInput
 	ForceDestroy pulumi.BoolPtrInput
 	// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
 	HierarchicalNamespace BucketHierarchicalNamespacePtrInput
@@ -498,11 +489,8 @@ type bucketArgs struct {
 	// Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
 	EnableObjectRetention *bool `pulumi:"enableObjectRetention"`
 	// The bucket's encryption configuration. Structure is documented below.
-	Encryption *BucketEncryption `pulumi:"encryption"`
-	// When deleting a bucket, this
-	// boolean option will delete all contained objects. If you try to delete a
-	// bucket that contains objects, the provider will fail that run.
-	ForceDestroy *bool `pulumi:"forceDestroy"`
+	Encryption   *BucketEncryption `pulumi:"encryption"`
+	ForceDestroy *bool             `pulumi:"forceDestroy"`
 	// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
 	HierarchicalNamespace *BucketHierarchicalNamespace `pulumi:"hierarchicalNamespace"`
 	// A map of key/value label pairs to assign to the bucket.
@@ -554,10 +542,7 @@ type BucketArgs struct {
 	// Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
 	EnableObjectRetention pulumi.BoolPtrInput
 	// The bucket's encryption configuration. Structure is documented below.
-	Encryption BucketEncryptionPtrInput
-	// When deleting a bucket, this
-	// boolean option will delete all contained objects. If you try to delete a
-	// bucket that contains objects, the provider will fail that run.
+	Encryption   BucketEncryptionPtrInput
 	ForceDestroy pulumi.BoolPtrInput
 	// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
 	HierarchicalNamespace BucketHierarchicalNamespacePtrInput
@@ -718,9 +703,6 @@ func (o BucketOutput) Encryption() BucketEncryptionPtrOutput {
 	return o.ApplyT(func(v *Bucket) BucketEncryptionPtrOutput { return v.Encryption }).(BucketEncryptionPtrOutput)
 }
 
-// When deleting a bucket, this
-// boolean option will delete all contained objects. If you try to delete a
-// bucket that contains objects, the provider will fail that run.
 func (o BucketOutput) ForceDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
 }

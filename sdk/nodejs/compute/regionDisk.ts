@@ -185,6 +185,16 @@ export class RegionDisk extends pulumi.CustomResource {
      */
     public readonly asyncPrimaryDisk!: pulumi.Output<outputs.compute.RegionDiskAsyncPrimaryDisk | undefined>;
     /**
+     * If set to true, a snapshot of the disk will be created before it is destroyed.
+     * If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+     * The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+     */
+    public readonly createSnapshotBeforeDestroy!: pulumi.Output<boolean | undefined>;
+    /**
+     * This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+     */
+    public readonly createSnapshotBeforeDestroyPrefix!: pulumi.Output<string | undefined>;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -368,6 +378,8 @@ export class RegionDisk extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as RegionDiskState | undefined;
             resourceInputs["asyncPrimaryDisk"] = state ? state.asyncPrimaryDisk : undefined;
+            resourceInputs["createSnapshotBeforeDestroy"] = state ? state.createSnapshotBeforeDestroy : undefined;
+            resourceInputs["createSnapshotBeforeDestroyPrefix"] = state ? state.createSnapshotBeforeDestroyPrefix : undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["diskEncryptionKey"] = state ? state.diskEncryptionKey : undefined;
@@ -400,6 +412,8 @@ export class RegionDisk extends pulumi.CustomResource {
                 throw new Error("Missing required property 'replicaZones'");
             }
             resourceInputs["asyncPrimaryDisk"] = args ? args.asyncPrimaryDisk : undefined;
+            resourceInputs["createSnapshotBeforeDestroy"] = args ? args.createSnapshotBeforeDestroy : undefined;
+            resourceInputs["createSnapshotBeforeDestroyPrefix"] = args ? args.createSnapshotBeforeDestroyPrefix : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["diskEncryptionKey"] = args ? args.diskEncryptionKey : undefined;
             resourceInputs["guestOsFeatures"] = args ? args.guestOsFeatures : undefined;
@@ -443,6 +457,16 @@ export interface RegionDiskState {
      * Structure is documented below.
      */
     asyncPrimaryDisk?: pulumi.Input<inputs.compute.RegionDiskAsyncPrimaryDisk>;
+    /**
+     * If set to true, a snapshot of the disk will be created before it is destroyed.
+     * If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+     * The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+     */
+    createSnapshotBeforeDestroy?: pulumi.Input<boolean>;
+    /**
+     * This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+     */
+    createSnapshotBeforeDestroyPrefix?: pulumi.Input<string>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
@@ -623,6 +647,16 @@ export interface RegionDiskArgs {
      * Structure is documented below.
      */
     asyncPrimaryDisk?: pulumi.Input<inputs.compute.RegionDiskAsyncPrimaryDisk>;
+    /**
+     * If set to true, a snapshot of the disk will be created before it is destroyed.
+     * If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+     * The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+     */
+    createSnapshotBeforeDestroy?: pulumi.Input<boolean>;
+    /**
+     * This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+     */
+    createSnapshotBeforeDestroyPrefix?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.

@@ -288,27 +288,9 @@ public class Agent extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> supportedLanguageCodes() {
         return Codegen.optional(this.supportedLanguageCodes);
     }
-    /**
-     * The agent tier. If not specified, TIER_STANDARD is assumed.
-     * * TIER_STANDARD: Standard tier.
-     * * TIER_ENTERPRISE: Enterprise tier (Essentials).
-     * * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
-     *   NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-     *   the the provider state and Dialogflow if the agent tier is changed outside of the provider.
-     * 
-     */
     @Export(name="tier", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tier;
 
-    /**
-     * @return The agent tier. If not specified, TIER_STANDARD is assumed.
-     * * TIER_STANDARD: Standard tier.
-     * * TIER_ENTERPRISE: Enterprise tier (Essentials).
-     * * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
-     *   NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-     *   the the provider state and Dialogflow if the agent tier is changed outside of the provider.
-     * 
-     */
     public Output<Optional<String>> tier() {
         return Codegen.optional(this.tier);
     }

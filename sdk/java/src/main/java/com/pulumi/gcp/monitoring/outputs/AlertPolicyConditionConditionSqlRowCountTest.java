@@ -25,7 +25,7 @@ public final class AlertPolicyConditionConditionSqlRowCountTest {
      */
     private String comparison;
     /**
-     * @return Test the boolean value in the indicated column.
+     * @return The value against which to compare the row count.
      * 
      */
     private Integer threshold;
@@ -47,7 +47,7 @@ public final class AlertPolicyConditionConditionSqlRowCountTest {
         return this.comparison;
     }
     /**
-     * @return Test the boolean value in the indicated column.
+     * @return The value against which to compare the row count.
      * 
      */
     public Integer threshold() {

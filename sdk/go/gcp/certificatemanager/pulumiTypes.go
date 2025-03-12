@@ -1079,7 +1079,6 @@ type CertificateSelfManaged struct {
 	CertificatePem *string `pulumi:"certificatePem"`
 	// The certificate chain in PEM-encoded form.
 	// Leaf certificate comes first, followed by intermediate ones if any.
-	// **Note**: This property is sensitive and will not be displayed in the plan.
 	PemCertificate *string `pulumi:"pemCertificate"`
 	// The private key of the leaf certificate in PEM-encoded form.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -1117,7 +1116,6 @@ type CertificateSelfManagedArgs struct {
 	CertificatePem pulumi.StringPtrInput `pulumi:"certificatePem"`
 	// The certificate chain in PEM-encoded form.
 	// Leaf certificate comes first, followed by intermediate ones if any.
-	// **Note**: This property is sensitive and will not be displayed in the plan.
 	PemCertificate pulumi.StringPtrInput `pulumi:"pemCertificate"`
 	// The private key of the leaf certificate in PEM-encoded form.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -1223,7 +1221,6 @@ func (o CertificateSelfManagedOutput) CertificatePem() pulumi.StringPtrOutput {
 
 // The certificate chain in PEM-encoded form.
 // Leaf certificate comes first, followed by intermediate ones if any.
-// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o CertificateSelfManagedOutput) PemCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateSelfManaged) *string { return v.PemCertificate }).(pulumi.StringPtrOutput)
 }
@@ -1288,7 +1285,6 @@ func (o CertificateSelfManagedPtrOutput) CertificatePem() pulumi.StringPtrOutput
 
 // The certificate chain in PEM-encoded form.
 // Leaf certificate comes first, followed by intermediate ones if any.
-// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o CertificateSelfManagedPtrOutput) PemCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateSelfManaged) *string {
 		if v == nil {
@@ -2160,7 +2156,10 @@ type GetCertificatesCertificate struct {
 	// See https://cloud.google.com/vpc/docs/edge-locations.
 	//
 	// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-	// See https://cloud.google.com/compute/docs/regions-zones
+	// See https://cloud.google.com/compute/docs/regions-zones.
+	//
+	// CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
+	// See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
 	Scope string `pulumi:"scope"`
 }
 
@@ -2211,7 +2210,10 @@ type GetCertificatesCertificateArgs struct {
 	// See https://cloud.google.com/vpc/docs/edge-locations.
 	//
 	// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-	// See https://cloud.google.com/compute/docs/regions-zones
+	// See https://cloud.google.com/compute/docs/regions-zones.
+	//
+	// CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
+	// See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
 	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
@@ -2329,7 +2331,10 @@ func (o GetCertificatesCertificateOutput) SanDnsnames() pulumi.StringArrayOutput
 // See https://cloud.google.com/vpc/docs/edge-locations.
 //
 // ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-// See https://cloud.google.com/compute/docs/regions-zones
+// See https://cloud.google.com/compute/docs/regions-zones.
+//
+// CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
+// See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
 func (o GetCertificatesCertificateOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.Scope }).(pulumi.StringOutput)
 }

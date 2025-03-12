@@ -11,6 +11,7 @@ from .address_group_iam_member import *
 from .address_group_iam_policy import *
 from .authorization_policy import *
 from .authz_policy import *
+from .backend_authentication_config import *
 from .client_tls_policy import *
 from .firewall_endpoint import *
 from .firewall_endpoint_association import *

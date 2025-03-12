@@ -397,6 +397,7 @@ class AttachedDisk(pulumi.CustomResource):
         To get more information about attaching disks, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instances/attachDisk)
+        * Resource: compute.Disk
         * How-to Guides
             * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
 
@@ -499,6 +500,7 @@ class AttachedDisk(pulumi.CustomResource):
         To get more information about attaching disks, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instances/attachDisk)
+        * Resource: compute.Disk
         * How-to Guides
             * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
 

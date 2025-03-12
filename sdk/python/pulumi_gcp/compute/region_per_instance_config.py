@@ -453,7 +453,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                 ],
             })
         rigm = gcp.compute.RegionInstanceGroupManager("rigm",
-            description="Demo test instance group manager",
+            description="Terraform test instance group manager",
             name="my-rigm",
             versions=[{
                 "name": "prod",
@@ -601,7 +601,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                 ],
             })
         rigm = gcp.compute.RegionInstanceGroupManager("rigm",
-            description="Demo test instance group manager",
+            description="Terraform test instance group manager",
             name="my-rigm",
             versions=[{
                 "name": "prod",

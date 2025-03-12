@@ -312,6 +312,27 @@ public final class WorkstationClusterState extends com.pulumi.resources.Resource
     }
 
     /**
+     * Resource manager tags bound to this resource.
+     * For example:
+     * &#34;123/environment&#34;: &#34;production&#34;,
+     * &#34;123/costCenter&#34;: &#34;marketing&#34;
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return Resource manager tags bound to this resource.
+     * For example:
+     * &#34;123/environment&#34;: &#34;production&#34;,
+     * &#34;123/costCenter&#34;: &#34;marketing&#34;
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * The system-generated UID of the resource.
      * 
      */
@@ -366,6 +387,7 @@ public final class WorkstationClusterState extends com.pulumi.resources.Resource
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
         this.subnetwork = $.subnetwork;
+        this.tags = $.tags;
         this.uid = $.uid;
         this.workstationClusterId = $.workstationClusterId;
     }
@@ -791,6 +813,33 @@ public final class WorkstationClusterState extends com.pulumi.resources.Resource
          */
         public Builder subnetwork(String subnetwork) {
             return subnetwork(Output.of(subnetwork));
+        }
+
+        /**
+         * @param tags Resource manager tags bound to this resource.
+         * For example:
+         * &#34;123/environment&#34;: &#34;production&#34;,
+         * &#34;123/costCenter&#34;: &#34;marketing&#34;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Resource manager tags bound to this resource.
+         * For example:
+         * &#34;123/environment&#34;: &#34;production&#34;,
+         * &#34;123/costCenter&#34;: &#34;marketing&#34;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         /**

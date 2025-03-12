@@ -18,28 +18,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Allows creation and management of a Google Cloud Platform project.
- * 
- * Projects created with this resource must be associated with an Organization.
- * See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
- * 
- * The user or service account that is running this provider when creating a `gcp.organizations.Project`
- * resource must have `roles/resourcemanager.projectCreator` on the specified organization. See the
- * [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
- * doc for more information.
- * 
- * &gt; This resource reads the specified billing account on every pulumi up and plan operation so you must have permissions on the specified billing account.
- * 
- * &gt; It is recommended to use the `constraints/compute.skipDefaultNetworkCreation` [constraint](https://www.terraform.io/docs/providers/google/r/google_organization_policy.html) to remove the default network instead of setting `auto_create_network` to false, when possible.
- * 
- * &gt; It may take a while for the attached tag bindings to be deleted after the project is scheduled to be deleted.
- * 
- * To get more information about projects, see:
- * 
- * * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
- * * How-to Guides
- *     * [Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -192,25 +170,9 @@ public class Project extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> autoCreateNetwork() {
         return Codegen.optional(this.autoCreateNetwork);
     }
-    /**
-     * The alphanumeric ID of the billing account this project
-     * belongs to. The user or service account performing this operation with the provider
-     * must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-     * See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-     * for more details.
-     * 
-     */
     @Export(name="billingAccount", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> billingAccount;
 
-    /**
-     * @return The alphanumeric ID of the billing account this project
-     * belongs to. The user or service account performing this operation with the provider
-     * must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-     * See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-     * for more details.
-     * 
-     */
     public Output<Optional<String>> billingAccount() {
         return Codegen.optional(this.billingAccount);
     }

@@ -83,25 +83,9 @@ public final class TargetPoolState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.healthChecks);
     }
 
-    /**
-     * List of instances in the pool. They can be given as
-     * URLs, or in the form of &#34;zone/name&#34;. Note that the instances need not exist
-     * at the time of target pool creation, so there is no need to use the
-     * interpolation to create a dependency on the instances from the
-     * target pool.
-     * 
-     */
     @Import(name="instances")
     private @Nullable Output<List<String>> instances;
 
-    /**
-     * @return List of instances in the pool. They can be given as
-     * URLs, or in the form of &#34;zone/name&#34;. Note that the instances need not exist
-     * at the time of target pool creation, so there is no need to use the
-     * interpolation to create a dependency on the instances from the
-     * target pool.
-     * 
-     */
     public Optional<Output<List<String>>> instances() {
         return Optional.ofNullable(this.instances);
     }
@@ -334,45 +318,15 @@ public final class TargetPoolState extends com.pulumi.resources.ResourceArgs {
             return healthChecks(Output.of(healthChecks));
         }
 
-        /**
-         * @param instances List of instances in the pool. They can be given as
-         * URLs, or in the form of &#34;zone/name&#34;. Note that the instances need not exist
-         * at the time of target pool creation, so there is no need to use the
-         * interpolation to create a dependency on the instances from the
-         * target pool.
-         * 
-         * @return builder
-         * 
-         */
         public Builder instances(@Nullable Output<List<String>> instances) {
             $.instances = instances;
             return this;
         }
 
-        /**
-         * @param instances List of instances in the pool. They can be given as
-         * URLs, or in the form of &#34;zone/name&#34;. Note that the instances need not exist
-         * at the time of target pool creation, so there is no need to use the
-         * interpolation to create a dependency on the instances from the
-         * target pool.
-         * 
-         * @return builder
-         * 
-         */
         public Builder instances(List<String> instances) {
             return instances(Output.of(instances));
         }
 
-        /**
-         * @param instances List of instances in the pool. They can be given as
-         * URLs, or in the form of &#34;zone/name&#34;. Note that the instances need not exist
-         * at the time of target pool creation, so there is no need to use the
-         * interpolation to create a dependency on the instances from the
-         * target pool.
-         * 
-         * @return builder
-         * 
-         */
         public Builder instances(String... instances) {
             return instances(List.of(instances));
         }

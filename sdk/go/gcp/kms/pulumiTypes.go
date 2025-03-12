@@ -14,11 +14,6 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type CryptoKeyIAMBindingCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -38,11 +33,6 @@ type CryptoKeyIAMBindingConditionInput interface {
 }
 
 type CryptoKeyIAMBindingConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -127,11 +117,6 @@ func (o CryptoKeyIAMBindingConditionOutput) ToCryptoKeyIAMBindingConditionPtrOut
 	}).(CryptoKeyIAMBindingConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o CryptoKeyIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CryptoKeyIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -170,11 +155,6 @@ func (o CryptoKeyIAMBindingConditionPtrOutput) Elem() CryptoKeyIAMBindingConditi
 	}).(CryptoKeyIAMBindingConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o CryptoKeyIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CryptoKeyIAMBindingCondition) *string {
 		if v == nil {
@@ -205,11 +185,6 @@ func (o CryptoKeyIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type CryptoKeyIAMMemberCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -229,11 +204,6 @@ type CryptoKeyIAMMemberConditionInput interface {
 }
 
 type CryptoKeyIAMMemberConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -318,11 +288,6 @@ func (o CryptoKeyIAMMemberConditionOutput) ToCryptoKeyIAMMemberConditionPtrOutpu
 	}).(CryptoKeyIAMMemberConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o CryptoKeyIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CryptoKeyIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -361,11 +326,6 @@ func (o CryptoKeyIAMMemberConditionPtrOutput) Elem() CryptoKeyIAMMemberCondition
 	}).(CryptoKeyIAMMemberConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o CryptoKeyIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CryptoKeyIAMMemberCondition) *string {
 		if v == nil {
@@ -2119,11 +2079,6 @@ func (o EkmConnectionServiceResolverServerCertificateArrayOutput) Index(i pulumi
 }
 
 type KeyRingIAMBindingCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -2143,11 +2098,6 @@ type KeyRingIAMBindingConditionInput interface {
 }
 
 type KeyRingIAMBindingConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -2232,11 +2182,6 @@ func (o KeyRingIAMBindingConditionOutput) ToKeyRingIAMBindingConditionPtrOutputW
 	}).(KeyRingIAMBindingConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o KeyRingIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyRingIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -2275,11 +2220,6 @@ func (o KeyRingIAMBindingConditionPtrOutput) Elem() KeyRingIAMBindingConditionOu
 	}).(KeyRingIAMBindingConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o KeyRingIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KeyRingIAMBindingCondition) *string {
 		if v == nil {
@@ -2310,11 +2250,6 @@ func (o KeyRingIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type KeyRingIAMMemberCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -2334,11 +2269,6 @@ type KeyRingIAMMemberConditionInput interface {
 }
 
 type KeyRingIAMMemberConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -2423,11 +2353,6 @@ func (o KeyRingIAMMemberConditionOutput) ToKeyRingIAMMemberConditionPtrOutputWit
 	}).(KeyRingIAMMemberConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o KeyRingIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyRingIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -2466,11 +2391,6 @@ func (o KeyRingIAMMemberConditionPtrOutput) Elem() KeyRingIAMMemberConditionOutp
 	}).(KeyRingIAMMemberConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o KeyRingIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KeyRingIAMMemberCondition) *string {
 		if v == nil {

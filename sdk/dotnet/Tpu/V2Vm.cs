@@ -112,6 +112,7 @@ namespace Pulumi.Gcp.Tpu
     ///         SchedulingConfig = new Gcp.Tpu.Inputs.V2VmSchedulingConfigArgs
     ///         {
     ///             Preemptible = true,
+    ///             Spot = true,
     ///         },
     ///         ShieldedInstanceConfig = new Gcp.Tpu.Inputs.V2VmShieldedInstanceConfigArgs
     ///         {

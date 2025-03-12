@@ -5,14 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * An individual service. A service contains a name and optional metadata.
- *
- * To get more information about Service, see:
- *
- * * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces.services)
- * * How-to Guides
- *     * [Configuring a service](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_service)
- *
  * ## Example Usage
  *
  * ### Service Directory Service Basic

@@ -164,14 +164,6 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
                  policy_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        An association for the OrganizationSecurityPolicy.
-
-        To get more information about OrganizationSecurityPolicyAssociation, see:
-
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addAssociation)
-        * How-to Guides
-            * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
-
         ## Example Usage
 
         ### Organization Security Policy Association Basic
@@ -181,11 +173,11 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         security_policy_target = gcp.organizations.Folder("security_policy_target",
-            display_name="tf-test-secpol",
+            display_name="tf-test-secpol-_52865",
             parent="organizations/123456789",
             deletion_protection=False)
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            display_name="tf-test",
+            display_name="tf-test_85840",
             parent=security_policy_target.name)
         policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
             policy_id=policy.id,
@@ -211,7 +203,7 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
             },
             priority=100)
         policy_organization_security_policy_association = gcp.compute.OrganizationSecurityPolicyAssociation("policy",
-            name="tf-test",
+            name="tf-test_60302",
             attachment_id=policy.parent,
             policy_id=policy.id)
         ```
@@ -244,14 +236,6 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
                  args: OrganizationSecurityPolicyAssociationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        An association for the OrganizationSecurityPolicy.
-
-        To get more information about OrganizationSecurityPolicyAssociation, see:
-
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addAssociation)
-        * How-to Guides
-            * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
-
         ## Example Usage
 
         ### Organization Security Policy Association Basic
@@ -261,11 +245,11 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         security_policy_target = gcp.organizations.Folder("security_policy_target",
-            display_name="tf-test-secpol",
+            display_name="tf-test-secpol-_52865",
             parent="organizations/123456789",
             deletion_protection=False)
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            display_name="tf-test",
+            display_name="tf-test_85840",
             parent=security_policy_target.name)
         policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
             policy_id=policy.id,
@@ -291,7 +275,7 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
             },
             priority=100)
         policy_organization_security_policy_association = gcp.compute.OrganizationSecurityPolicyAssociation("policy",
-            name="tf-test",
+            name="tf-test_60302",
             attachment_id=policy.parent,
             policy_id=policy.id)
         ```

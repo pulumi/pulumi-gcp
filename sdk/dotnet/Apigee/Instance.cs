@@ -261,7 +261,7 @@ namespace Pulumi.Gcp.Apigee
     ///     {
     ///         AnalyticsRegion = "us-central1",
     ///         DisplayName = "apigee-org",
-    ///         Description = "Auto-provisioned Apigee Org.",
+    ///         Description = "Terraform-provisioned Apigee Org.",
     ///         ProjectId = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
     ///         AuthorizedNetwork = apigeeNetwork.Id,
     ///         RuntimeDatabaseEncryptionKeyName = apigeeKey.Id,
@@ -278,7 +278,7 @@ namespace Pulumi.Gcp.Apigee
     ///     {
     ///         Name = "my-instance-name",
     ///         Location = "us-central1",
-    ///         Description = "Auto-managed Apigee Runtime Instance",
+    ///         Description = "Terraform-managed Apigee Runtime Instance",
     ///         DisplayName = "my-instance-name",
     ///         OrgId = apigeeOrg.Id,
     ///         DiskEncryptionKeyName = apigeeKey.Id,

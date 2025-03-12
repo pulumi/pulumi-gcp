@@ -12,14 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An association for the OrganizationSecurityPolicy.
-//
-// To get more information about OrganizationSecurityPolicyAssociation, see:
-//
-// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addAssociation)
-// * How-to Guides
-//   - [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
-//
 // ## Example Usage
 //
 // ### Organization Security Policy Association Basic
@@ -38,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			securityPolicyTarget, err := organizations.NewFolder(ctx, "security_policy_target", &organizations.FolderArgs{
-//				DisplayName:        pulumi.String("tf-test-secpol"),
+//				DisplayName:        pulumi.String("tf-test-secpol-_52865"),
 //				Parent:             pulumi.String("organizations/123456789"),
 //				DeletionProtection: pulumi.Bool(false),
 //			})
@@ -46,7 +38,7 @@ import (
 //				return err
 //			}
 //			policy, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
-//				DisplayName: pulumi.String("tf-test"),
+//				DisplayName: pulumi.String("tf-test_85840"),
 //				Parent:      securityPolicyTarget.Name,
 //			})
 //			if err != nil {
@@ -82,7 +74,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewOrganizationSecurityPolicyAssociation(ctx, "policy", &compute.OrganizationSecurityPolicyAssociationArgs{
-//				Name:         pulumi.String("tf-test"),
+//				Name:         pulumi.String("tf-test_60302"),
 //				AttachmentId: policy.Parent,
 //				PolicyId:     policy.ID(),
 //			})

@@ -33,8 +33,8 @@ import * as utilities from "../utilities";
  *
  * const basicEntryGroup = new gcp.datacatalog.EntryGroup("basic_entry_group", {
  *     entryGroupId: "my_group",
- *     displayName: "entry group",
- *     description: "example entry group",
+ *     displayName: "terraform entry group",
+ *     description: "entry group created by Terraform",
  * });
  * ```
  *

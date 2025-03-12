@@ -202,7 +202,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Certificate Manager Certificate Basic
+ * ### Certificate Manager Self Managed Certificate
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -212,11 +212,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.certificatemanager.DnsAuthorization;
- * import com.pulumi.gcp.certificatemanager.DnsAuthorizationArgs;
  * import com.pulumi.gcp.certificatemanager.Certificate;
  * import com.pulumi.gcp.certificatemanager.CertificateArgs;
- * import com.pulumi.gcp.certificatemanager.inputs.CertificateManagedArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.CertificateSelfManagedArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -230,29 +228,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new DnsAuthorization("instance", DnsAuthorizationArgs.builder()
- *             .name("dns-auth")
- *             .description("The default dnss")
- *             .domain("subdomain.hashicorptest.com")
- *             .build());
- * 
- *         var instance2 = new DnsAuthorization("instance2", DnsAuthorizationArgs.builder()
- *             .name("dns-auth2")
- *             .description("The default dnss")
- *             .domain("subdomain2.hashicorptest.com")
- *             .build());
- * 
  *         var default_ = new Certificate("default", CertificateArgs.builder()
  *             .name("self-managed-cert")
  *             .description("Global cert")
- *             .scope("EDGE_CACHE")
- *             .managed(CertificateManagedArgs.builder()
- *                 .domains(                
- *                     instance.domain(),
- *                     instance2.domain())
- *                 .dnsAuthorizations(                
- *                     instance.id(),
- *                     instance2.id())
+ *             .scope("ALL_REGIONS")
+ *             .selfManaged(CertificateSelfManagedArgs.builder()
+ *                 .pemCertificate(StdFunctions.file(FileArgs.builder()
+ *                     .input("test-fixtures/cert.pem")
+ *                     .build()).result())
+ *                 .pemPrivateKey(StdFunctions.file(FileArgs.builder()
+ *                     .input("test-fixtures/private-key.pem")
+ *                     .build()).result())
  *                 .build())
  *             .build());
  * 
@@ -534,6 +520,51 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Certificate Manager Client Auth Certificate
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificatemanager.Certificate;
+ * import com.pulumi.gcp.certificatemanager.CertificateArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.CertificateSelfManagedArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Certificate("default", CertificateArgs.builder()
+ *             .name("client-auth-cert")
+ *             .description("Global cert")
+ *             .scope("CLIENT_AUTH")
+ *             .selfManaged(CertificateSelfManagedArgs.builder()
+ *                 .pemCertificate(StdFunctions.file(FileArgs.builder()
+ *                     .input("test-fixtures/cert.pem")
+ *                     .build()).result())
+ *                 .pemPrivateKey(StdFunctions.file(FileArgs.builder()
+ *                     .input("test-fixtures/private-key.pem")
+ *                     .build()).result())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -717,7 +748,9 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
      * See https://cloud.google.com/vpc/docs/edge-locations.
      * ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-     * See https://cloud.google.com/compute/docs/regions-zones
+     * See https://cloud.google.com/compute/docs/regions-zones.
+     * CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
+     * See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
      * 
      */
     @Export(name="scope", refs={String.class}, tree="[0]")
@@ -730,7 +763,9 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
      * See https://cloud.google.com/vpc/docs/edge-locations.
      * ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-     * See https://cloud.google.com/compute/docs/regions-zones
+     * See https://cloud.google.com/compute/docs/regions-zones.
+     * CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
+     * See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
      * 
      */
     public Output<Optional<String>> scope() {

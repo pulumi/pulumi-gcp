@@ -68,6 +68,7 @@ export interface GetBackendServiceResult {
     readonly connectionDrainingTimeoutSec: number;
     readonly consistentHash: outputs.compute.GetBackendServiceConsistentHash[];
     readonly creationTimestamp: string;
+    readonly customMetrics: outputs.compute.GetBackendServiceCustomMetric[];
     readonly customRequestHeaders: string[];
     readonly customResponseHeaders: string[];
     /**

@@ -7,30 +7,30 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Allows management of audit logging config for a given service for a Google Cloud Platform Organization.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const config = new gcp.organizations.IamAuditConfig("config", {
- *     orgId: "your-organization-id",
- *     service: "allServices",
- *     auditLogConfigs: [{
- *         logType: "DATA_READ",
- *         exemptedMembers: ["user:joebloggs@example.com"],
- *     }],
- * });
- * ```
- *
  * ## Import
  *
- * IAM audit config imports use the identifier of the resource in question and the service, e.g.
+ * ### Importing Audit Configs
+ *
+ * An audit config can be imported into a `google_organization_iam_audit_config` resource using the resource's `org_id` and the `service`, e.g:
+ *
+ * * `"{{org_id}} foo.googleapis.com"`
+ *
+ * An `import` block (Terraform v1.5.0 and later) can be used to import audit configs:
+ *
+ * tf
+ *
+ * import {
+ *
+ *   id = "{{org_id}} foo.googleapis.com"
+ *
+ *   to = google_organization_iam_audit_config.default
+ *
+ * }
+ *
+ * The `pulumi import` command can also be used:
  *
  * ```sh
- * $ pulumi import gcp:organizations/iamAuditConfig:IamAuditConfig config "your-organization-id foo.googleapis.com"
+ * $ pulumi import gcp:organizations/iamAuditConfig:IamAuditConfig default "{{org_id}} foo.googleapis.com"
  * ```
  */
 export class IamAuditConfig extends pulumi.CustomResource {
@@ -66,15 +66,15 @@ export class IamAuditConfig extends pulumi.CustomResource {
      */
     public readonly auditLogConfigs!: pulumi.Output<outputs.organizations.IamAuditConfigAuditLogConfig[]>;
     /**
-     * The etag of iam policy
+     * (Computed) The etag of the organization's IAM policy.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * The numeric ID of the organization in which you want to manage the audit logging config.
+     * The organization id of the target organization.
      */
     public readonly orgId!: pulumi.Output<string>;
     /**
-     * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+     * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
      */
     public readonly service!: pulumi.Output<string>;
 
@@ -125,15 +125,15 @@ export interface IamAuditConfigState {
      */
     auditLogConfigs?: pulumi.Input<pulumi.Input<inputs.organizations.IamAuditConfigAuditLogConfig>[]>;
     /**
-     * The etag of iam policy
+     * (Computed) The etag of the organization's IAM policy.
      */
     etag?: pulumi.Input<string>;
     /**
-     * The numeric ID of the organization in which you want to manage the audit logging config.
+     * The organization id of the target organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+     * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
      */
     service?: pulumi.Input<string>;
 }
@@ -147,11 +147,11 @@ export interface IamAuditConfigArgs {
      */
     auditLogConfigs: pulumi.Input<pulumi.Input<inputs.organizations.IamAuditConfigAuditLogConfig>[]>;
     /**
-     * The numeric ID of the organization in which you want to manage the audit logging config.
+     * The organization id of the target organization.
      */
     orgId: pulumi.Input<string>;
     /**
-     * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+     * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
      */
     service: pulumi.Input<string>;
 }

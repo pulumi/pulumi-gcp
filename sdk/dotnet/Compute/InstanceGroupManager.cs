@@ -379,11 +379,6 @@ namespace Pulumi.Gcp.Compute
         [Output("versions")]
         public Output<ImmutableArray<Outputs.InstanceGroupManagerVersion>> Versions { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether to wait for all instances to be created/updated before
-        /// returning. Note that if this is set to true and the operation does not succeed, this provider will
-        /// continue trying until it times out.
-        /// </summary>
         [Output("waitForInstances")]
         public Output<bool?> WaitForInstances { get; private set; } = null!;
 
@@ -633,11 +628,6 @@ namespace Pulumi.Gcp.Compute
             set => _versions = value;
         }
 
-        /// <summary>
-        /// Whether to wait for all instances to be created/updated before
-        /// returning. Note that if this is set to true and the operation does not succeed, this provider will
-        /// continue trying until it times out.
-        /// </summary>
         [Input("waitForInstances")]
         public Input<bool>? WaitForInstances { get; set; }
 
@@ -894,11 +884,6 @@ namespace Pulumi.Gcp.Compute
             set => _versions = value;
         }
 
-        /// <summary>
-        /// Whether to wait for all instances to be created/updated before
-        /// returning. Note that if this is set to true and the operation does not succeed, this provider will
-        /// continue trying until it times out.
-        /// </summary>
         [Input("waitForInstances")]
         public Input<bool>? WaitForInstances { get; set; }
 

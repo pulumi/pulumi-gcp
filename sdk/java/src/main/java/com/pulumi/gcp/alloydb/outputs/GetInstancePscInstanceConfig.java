@@ -5,6 +5,7 @@ package com.pulumi.gcp.alloydb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.alloydb.outputs.GetInstancePscInstanceConfigPscInterfaceConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -23,6 +24,12 @@ public final class GetInstancePscInstanceConfig {
      * 
      */
     private String pscDnsName;
+    /**
+     * @return Configurations for setting up PSC interfaces attached to the instance
+     * which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
+     * 
+     */
+    private List<GetInstancePscInstanceConfigPscInterfaceConfig> pscInterfaceConfigs;
     /**
      * @return The service attachment created when Private Service Connect (PSC) is enabled for the instance.
      * The name of the resource will be in the format of
@@ -49,6 +56,14 @@ public final class GetInstancePscInstanceConfig {
         return this.pscDnsName;
     }
     /**
+     * @return Configurations for setting up PSC interfaces attached to the instance
+     * which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
+     * 
+     */
+    public List<GetInstancePscInstanceConfigPscInterfaceConfig> pscInterfaceConfigs() {
+        return this.pscInterfaceConfigs;
+    }
+    /**
      * @return The service attachment created when Private Service Connect (PSC) is enabled for the instance.
      * The name of the resource will be in the format of
      * &#39;projects/&lt;alloydb-tenant-project-number&gt;/regions/&lt;region-name&gt;/serviceAttachments/&lt;service-attachment-name&gt;&#39;
@@ -69,12 +84,14 @@ public final class GetInstancePscInstanceConfig {
     public static final class Builder {
         private List<String> allowedConsumerProjects;
         private String pscDnsName;
+        private List<GetInstancePscInstanceConfigPscInterfaceConfig> pscInterfaceConfigs;
         private String serviceAttachmentLink;
         public Builder() {}
         public Builder(GetInstancePscInstanceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedConsumerProjects = defaults.allowedConsumerProjects;
     	      this.pscDnsName = defaults.pscDnsName;
+    	      this.pscInterfaceConfigs = defaults.pscInterfaceConfigs;
     	      this.serviceAttachmentLink = defaults.serviceAttachmentLink;
         }
 
@@ -98,6 +115,17 @@ public final class GetInstancePscInstanceConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder pscInterfaceConfigs(List<GetInstancePscInstanceConfigPscInterfaceConfig> pscInterfaceConfigs) {
+            if (pscInterfaceConfigs == null) {
+              throw new MissingRequiredPropertyException("GetInstancePscInstanceConfig", "pscInterfaceConfigs");
+            }
+            this.pscInterfaceConfigs = pscInterfaceConfigs;
+            return this;
+        }
+        public Builder pscInterfaceConfigs(GetInstancePscInstanceConfigPscInterfaceConfig... pscInterfaceConfigs) {
+            return pscInterfaceConfigs(List.of(pscInterfaceConfigs));
+        }
+        @CustomType.Setter
         public Builder serviceAttachmentLink(String serviceAttachmentLink) {
             if (serviceAttachmentLink == null) {
               throw new MissingRequiredPropertyException("GetInstancePscInstanceConfig", "serviceAttachmentLink");
@@ -109,6 +137,7 @@ public final class GetInstancePscInstanceConfig {
             final var _resultValue = new GetInstancePscInstanceConfig();
             _resultValue.allowedConsumerProjects = allowedConsumerProjects;
             _resultValue.pscDnsName = pscDnsName;
+            _resultValue.pscInterfaceConfigs = pscInterfaceConfigs;
             _resultValue.serviceAttachmentLink = serviceAttachmentLink;
             return _resultValue;
         }

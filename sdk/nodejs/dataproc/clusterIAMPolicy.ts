@@ -177,15 +177,7 @@ export class ClusterIAMPolicy extends pulumi.CustomResource {
      * - - -
      */
     public readonly policyData!: pulumi.Output<string>;
-    /**
-     * The project in which the cluster belongs. If it
-     * is not provided, the provider will use a default.
-     */
     public readonly project!: pulumi.Output<string>;
-    /**
-     * The region in which the cluster belongs. If it
-     * is not provided, the provider will use a default.
-     */
     public readonly region!: pulumi.Output<string>;
 
     /**
@@ -245,15 +237,7 @@ export interface ClusterIAMPolicyState {
      * - - -
      */
     policyData?: pulumi.Input<string>;
-    /**
-     * The project in which the cluster belongs. If it
-     * is not provided, the provider will use a default.
-     */
     project?: pulumi.Input<string>;
-    /**
-     * The region in which the cluster belongs. If it
-     * is not provided, the provider will use a default.
-     */
     region?: pulumi.Input<string>;
 }
 
@@ -273,14 +257,6 @@ export interface ClusterIAMPolicyArgs {
      * - - -
      */
     policyData: pulumi.Input<string>;
-    /**
-     * The project in which the cluster belongs. If it
-     * is not provided, the provider will use a default.
-     */
     project?: pulumi.Input<string>;
-    /**
-     * The region in which the cluster belongs. If it
-     * is not provided, the provider will use a default.
-     */
     region?: pulumi.Input<string>;
 }

@@ -180,15 +180,7 @@ export class JobIAMMember extends pulumi.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
     public readonly member!: pulumi.Output<string>;
-    /**
-     * The project in which the job belongs. If it
-     * is not provided, the provider will use a default.
-     */
     public readonly project!: pulumi.Output<string>;
-    /**
-     * The region in which the job belongs. If it
-     * is not provided, the provider will use a default.
-     */
     public readonly region!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
@@ -264,15 +256,7 @@ export interface JobIAMMemberState {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
     member?: pulumi.Input<string>;
-    /**
-     * The project in which the job belongs. If it
-     * is not provided, the provider will use a default.
-     */
     project?: pulumi.Input<string>;
-    /**
-     * The region in which the job belongs. If it
-     * is not provided, the provider will use a default.
-     */
     region?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
@@ -301,15 +285,7 @@ export interface JobIAMMemberArgs {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
     member: pulumi.Input<string>;
-    /**
-     * The project in which the job belongs. If it
-     * is not provided, the provider will use a default.
-     */
     project?: pulumi.Input<string>;
-    /**
-     * The region in which the job belongs. If it
-     * is not provided, the provider will use a default.
-     */
     region?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one

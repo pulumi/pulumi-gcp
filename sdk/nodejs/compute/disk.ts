@@ -175,6 +175,16 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly asyncPrimaryDisk!: pulumi.Output<outputs.compute.DiskAsyncPrimaryDisk | undefined>;
     /**
+     * If set to true, a snapshot of the disk will be created before it is destroyed.
+     * If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+     * The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+     */
+    public readonly createSnapshotBeforeDestroy!: pulumi.Output<boolean | undefined>;
+    /**
+     * This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+     */
+    public readonly createSnapshotBeforeDestroyPrefix!: pulumi.Output<string | undefined>;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -324,19 +334,6 @@ export class Disk extends pulumi.CustomResource {
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
-    /**
-     * Size of the persistent disk, specified in GB. You can specify this
-     * field when creating a persistent disk using the `image` or
-     * `snapshot` parameter, or specify it alone to create an empty
-     * persistent disk.
-     * If you specify this field along with `image` or `snapshot`,
-     * the value must not be less than the size of the image
-     * or the size of the snapshot.
-     * ~>**NOTE** If you change the size, the provider updates the disk size
-     * if upsizing is detected but recreates the disk if downsizing is requested.
-     * You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-     * and recreating.
-     */
     public readonly size!: pulumi.Output<number>;
     /**
      * The source snapshot used to create this disk. You can provide this as
@@ -459,6 +456,8 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["accessMode"] = state ? state.accessMode : undefined;
             resourceInputs["architecture"] = state ? state.architecture : undefined;
             resourceInputs["asyncPrimaryDisk"] = state ? state.asyncPrimaryDisk : undefined;
+            resourceInputs["createSnapshotBeforeDestroy"] = state ? state.createSnapshotBeforeDestroy : undefined;
+            resourceInputs["createSnapshotBeforeDestroyPrefix"] = state ? state.createSnapshotBeforeDestroyPrefix : undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["diskEncryptionKey"] = state ? state.diskEncryptionKey : undefined;
@@ -503,6 +502,8 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["accessMode"] = args ? args.accessMode : undefined;
             resourceInputs["architecture"] = args ? args.architecture : undefined;
             resourceInputs["asyncPrimaryDisk"] = args ? args.asyncPrimaryDisk : undefined;
+            resourceInputs["createSnapshotBeforeDestroy"] = args ? args.createSnapshotBeforeDestroy : undefined;
+            resourceInputs["createSnapshotBeforeDestroyPrefix"] = args ? args.createSnapshotBeforeDestroyPrefix : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["diskEncryptionKey"] = args ? args.diskEncryptionKey : undefined;
             resourceInputs["enableConfidentialCompute"] = args ? args.enableConfidentialCompute : undefined;
@@ -571,6 +572,16 @@ export interface DiskState {
      * Structure is documented below.
      */
     asyncPrimaryDisk?: pulumi.Input<inputs.compute.DiskAsyncPrimaryDisk>;
+    /**
+     * If set to true, a snapshot of the disk will be created before it is destroyed.
+     * If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+     * The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+     */
+    createSnapshotBeforeDestroy?: pulumi.Input<boolean>;
+    /**
+     * This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+     */
+    createSnapshotBeforeDestroyPrefix?: pulumi.Input<string>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
@@ -721,19 +732,6 @@ export interface DiskState {
      * The URI of the created resource.
      */
     selfLink?: pulumi.Input<string>;
-    /**
-     * Size of the persistent disk, specified in GB. You can specify this
-     * field when creating a persistent disk using the `image` or
-     * `snapshot` parameter, or specify it alone to create an empty
-     * persistent disk.
-     * If you specify this field along with `image` or `snapshot`,
-     * the value must not be less than the size of the image
-     * or the size of the snapshot.
-     * ~>**NOTE** If you change the size, the provider updates the disk size
-     * if upsizing is detected but recreates the disk if downsizing is requested.
-     * You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-     * and recreating.
-     */
     size?: pulumi.Input<number>;
     /**
      * The source snapshot used to create this disk. You can provide this as
@@ -863,6 +861,16 @@ export interface DiskArgs {
      */
     asyncPrimaryDisk?: pulumi.Input<inputs.compute.DiskAsyncPrimaryDisk>;
     /**
+     * If set to true, a snapshot of the disk will be created before it is destroyed.
+     * If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+     * The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+     */
+    createSnapshotBeforeDestroy?: pulumi.Input<boolean>;
+    /**
+     * This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+     */
+    createSnapshotBeforeDestroyPrefix?: pulumi.Input<string>;
+    /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
@@ -978,19 +986,6 @@ export interface DiskArgs {
      * to allow for updating the resource policy attached to the disk.
      */
     resourcePolicies?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Size of the persistent disk, specified in GB. You can specify this
-     * field when creating a persistent disk using the `image` or
-     * `snapshot` parameter, or specify it alone to create an empty
-     * persistent disk.
-     * If you specify this field along with `image` or `snapshot`,
-     * the value must not be less than the size of the image
-     * or the size of the snapshot.
-     * ~>**NOTE** If you change the size, the provider updates the disk size
-     * if upsizing is detected but recreates the disk if downsizing is requested.
-     * You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-     * and recreating.
-     */
     size?: pulumi.Input<number>;
     /**
      * The source snapshot used to create this disk. You can provide this as

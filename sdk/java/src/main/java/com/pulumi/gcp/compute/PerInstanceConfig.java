@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var igm_no_tp = new InstanceGroupManager("igm-no-tp", InstanceGroupManagerArgs.builder()
- *             .description("Test instance group manager")
+ *             .description("Terraform test instance group manager")
  *             .name("my-igm")
  *             .versions(InstanceGroupManagerVersionArgs.builder()
  *                 .name("prod")

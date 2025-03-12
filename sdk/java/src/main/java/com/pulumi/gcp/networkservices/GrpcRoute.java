@@ -18,6 +18,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * GrpcRoute is the resource defining how gRPC traffic routed by a Mesh or Gateway resource is routed.
+ * 
+ * To get more information about GrpcRoute, see:
+ * 
+ * * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1beta1/projects.locations.grpcRoutes)
+ * 
  * ## Example Usage
  * 
  * ### Network Services Grpc Route Basic

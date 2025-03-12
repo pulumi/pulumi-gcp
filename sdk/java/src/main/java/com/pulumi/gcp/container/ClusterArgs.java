@@ -785,38 +785,18 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The minimum version of the master. GKE
-     * will auto-update the master to new versions, so this does not guarantee the
-     * current master version--use the read-only `master_version` field to obtain that.
-     * If unset, the cluster&#39;s version will be set by GKE to the version of the most recent
-     * official release (which is not necessarily the latest version).  Most users will find
-     * the `gcp.container.getEngineVersions` data source useful - it indicates which versions
-     * are available. If you intend to specify versions manually,
-     * [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
-     * describe the various acceptable formats for this field.
-     * 
-     * &gt; If you are using the `gcp.container.getEngineVersions` datasource with a regional cluster, ensure that you have provided a `location`
-     * to the datasource. A region can have a different set of supported versions than its corresponding zones, and not all zones in a
-     * region are guaranteed to support the same version.
+     * The minimum version of the master. GKE will auto-update the master to new versions, so this does not guarantee the
+     * current master version--use the read-only master_version field to obtain that. If unset, the cluster&#39;s version will be
+     * set by GKE to the version of the most recent official release (which is not necessarily the latest version).
      * 
      */
     @Import(name="minMasterVersion")
     private @Nullable Output<String> minMasterVersion;
 
     /**
-     * @return The minimum version of the master. GKE
-     * will auto-update the master to new versions, so this does not guarantee the
-     * current master version--use the read-only `master_version` field to obtain that.
-     * If unset, the cluster&#39;s version will be set by GKE to the version of the most recent
-     * official release (which is not necessarily the latest version).  Most users will find
-     * the `gcp.container.getEngineVersions` data source useful - it indicates which versions
-     * are available. If you intend to specify versions manually,
-     * [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
-     * describe the various acceptable formats for this field.
-     * 
-     * &gt; If you are using the `gcp.container.getEngineVersions` datasource with a regional cluster, ensure that you have provided a `location`
-     * to the datasource. A region can have a different set of supported versions than its corresponding zones, and not all zones in a
-     * region are guaranteed to support the same version.
+     * @return The minimum version of the master. GKE will auto-update the master to new versions, so this does not guarantee the
+     * current master version--use the read-only master_version field to obtain that. If unset, the cluster&#39;s version will be
+     * set by GKE to the version of the most recent official release (which is not necessarily the latest version).
      * 
      */
     public Optional<Output<String>> minMasterVersion() {
@@ -944,22 +924,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Parameters used in creating the default node pool.
-     * Generally, this field should not be used at the same time as a
-     * `gcp.container.NodePool` or a `node_pool` block; this configuration
-     * manages the default node pool, which isn&#39;t recommended to be used.
-     * Structure is documented below.
+     * The configuration of the nodepool
      * 
      */
     @Import(name="nodeConfig")
     private @Nullable Output<ClusterNodeConfigArgs> nodeConfig;
 
     /**
-     * @return Parameters used in creating the default node pool.
-     * Generally, this field should not be used at the same time as a
-     * `gcp.container.NodePool` or a `node_pool` block; this configuration
-     * manages the default node pool, which isn&#39;t recommended to be used.
-     * Structure is documented below.
+     * @return The configuration of the nodepool
      * 
      */
     public Optional<Output<ClusterNodeConfigArgs>> nodeConfig() {
@@ -1060,31 +1032,9 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.nodePools);
     }
 
-    /**
-     * The Kubernetes version on the nodes. Must either be unset
-     * or set to the same value as `min_master_version` on create. Defaults to the default
-     * version set by GKE which is not necessarily the latest version. This only affects
-     * nodes in the default node pool. While a fuzzy version can be specified, it&#39;s
-     * recommended that you specify explicit versions as the provider will see spurious diffs
-     * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source&#39;s
-     * `version_prefix` field to approximate fuzzy versions.
-     * To update nodes in other node pools, use the `version` attribute on the node pool.
-     * 
-     */
     @Import(name="nodeVersion")
     private @Nullable Output<String> nodeVersion;
 
-    /**
-     * @return The Kubernetes version on the nodes. Must either be unset
-     * or set to the same value as `min_master_version` on create. Defaults to the default
-     * version set by GKE which is not necessarily the latest version. This only affects
-     * nodes in the default node pool. While a fuzzy version can be specified, it&#39;s
-     * recommended that you specify explicit versions as the provider will see spurious diffs
-     * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source&#39;s
-     * `version_prefix` field to approximate fuzzy versions.
-     * To update nodes in other node pools, use the `version` attribute on the node pool.
-     * 
-     */
     public Optional<Output<String>> nodeVersion() {
         return Optional.ofNullable(this.nodeVersion);
     }
@@ -1188,30 +1138,16 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
-     * feature, which provide more control over automatic upgrades of your GKE clusters.
-     * When updating this field, GKE imposes specific version requirements. See
-     * [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
-     * for more details; the `gcp.container.getEngineVersions` datasource can provide
-     * the default version for a channel. Note that removing the `release_channel`
-     * field from your config will cause the provider to stop managing your cluster&#39;s
-     * release channel, but will not unenroll it. Instead, use the `&#34;UNSPECIFIED&#34;`
-     * channel. Structure is documented below.
+     * Configuration options for the Release channel feature, which provide more control over automatic upgrades of your GKE
+     * clusters. Note that removing this field from your config will not unenroll it. Instead, use the &#34;UNSPECIFIED&#34; channel.
      * 
      */
     @Import(name="releaseChannel")
     private @Nullable Output<ClusterReleaseChannelArgs> releaseChannel;
 
     /**
-     * @return Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
-     * feature, which provide more control over automatic upgrades of your GKE clusters.
-     * When updating this field, GKE imposes specific version requirements. See
-     * [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
-     * for more details; the `gcp.container.getEngineVersions` datasource can provide
-     * the default version for a channel. Note that removing the `release_channel`
-     * field from your config will cause the provider to stop managing your cluster&#39;s
-     * release channel, but will not unenroll it. Instead, use the `&#34;UNSPECIFIED&#34;`
-     * channel. Structure is documented below.
+     * @return Configuration options for the Release channel feature, which provide more control over automatic upgrades of your GKE
+     * clusters. Note that removing this field from your config will not unenroll it. Instead, use the &#34;UNSPECIFIED&#34; channel.
      * 
      */
     public Optional<Output<ClusterReleaseChannelArgs>> releaseChannel() {
@@ -2488,19 +2424,9 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minMasterVersion The minimum version of the master. GKE
-         * will auto-update the master to new versions, so this does not guarantee the
-         * current master version--use the read-only `master_version` field to obtain that.
-         * If unset, the cluster&#39;s version will be set by GKE to the version of the most recent
-         * official release (which is not necessarily the latest version).  Most users will find
-         * the `gcp.container.getEngineVersions` data source useful - it indicates which versions
-         * are available. If you intend to specify versions manually,
-         * [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
-         * describe the various acceptable formats for this field.
-         * 
-         * &gt; If you are using the `gcp.container.getEngineVersions` datasource with a regional cluster, ensure that you have provided a `location`
-         * to the datasource. A region can have a different set of supported versions than its corresponding zones, and not all zones in a
-         * region are guaranteed to support the same version.
+         * @param minMasterVersion The minimum version of the master. GKE will auto-update the master to new versions, so this does not guarantee the
+         * current master version--use the read-only master_version field to obtain that. If unset, the cluster&#39;s version will be
+         * set by GKE to the version of the most recent official release (which is not necessarily the latest version).
          * 
          * @return builder
          * 
@@ -2511,19 +2437,9 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minMasterVersion The minimum version of the master. GKE
-         * will auto-update the master to new versions, so this does not guarantee the
-         * current master version--use the read-only `master_version` field to obtain that.
-         * If unset, the cluster&#39;s version will be set by GKE to the version of the most recent
-         * official release (which is not necessarily the latest version).  Most users will find
-         * the `gcp.container.getEngineVersions` data source useful - it indicates which versions
-         * are available. If you intend to specify versions manually,
-         * [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
-         * describe the various acceptable formats for this field.
-         * 
-         * &gt; If you are using the `gcp.container.getEngineVersions` datasource with a regional cluster, ensure that you have provided a `location`
-         * to the datasource. A region can have a different set of supported versions than its corresponding zones, and not all zones in a
-         * region are guaranteed to support the same version.
+         * @param minMasterVersion The minimum version of the master. GKE will auto-update the master to new versions, so this does not guarantee the
+         * current master version--use the read-only master_version field to obtain that. If unset, the cluster&#39;s version will be
+         * set by GKE to the version of the most recent official release (which is not necessarily the latest version).
          * 
          * @return builder
          * 
@@ -2689,11 +2605,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeConfig Parameters used in creating the default node pool.
-         * Generally, this field should not be used at the same time as a
-         * `gcp.container.NodePool` or a `node_pool` block; this configuration
-         * manages the default node pool, which isn&#39;t recommended to be used.
-         * Structure is documented below.
+         * @param nodeConfig The configuration of the nodepool
          * 
          * @return builder
          * 
@@ -2704,11 +2616,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeConfig Parameters used in creating the default node pool.
-         * Generally, this field should not be used at the same time as a
-         * `gcp.container.NodePool` or a `node_pool` block; this configuration
-         * manages the default node pool, which isn&#39;t recommended to be used.
-         * Structure is documented below.
+         * @param nodeConfig The configuration of the nodepool
          * 
          * @return builder
          * 
@@ -2870,37 +2778,11 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
             return nodePools(List.of(nodePools));
         }
 
-        /**
-         * @param nodeVersion The Kubernetes version on the nodes. Must either be unset
-         * or set to the same value as `min_master_version` on create. Defaults to the default
-         * version set by GKE which is not necessarily the latest version. This only affects
-         * nodes in the default node pool. While a fuzzy version can be specified, it&#39;s
-         * recommended that you specify explicit versions as the provider will see spurious diffs
-         * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source&#39;s
-         * `version_prefix` field to approximate fuzzy versions.
-         * To update nodes in other node pools, use the `version` attribute on the node pool.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeVersion(@Nullable Output<String> nodeVersion) {
             $.nodeVersion = nodeVersion;
             return this;
         }
 
-        /**
-         * @param nodeVersion The Kubernetes version on the nodes. Must either be unset
-         * or set to the same value as `min_master_version` on create. Defaults to the default
-         * version set by GKE which is not necessarily the latest version. This only affects
-         * nodes in the default node pool. While a fuzzy version can be specified, it&#39;s
-         * recommended that you specify explicit versions as the provider will see spurious diffs
-         * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source&#39;s
-         * `version_prefix` field to approximate fuzzy versions.
-         * To update nodes in other node pools, use the `version` attribute on the node pool.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeVersion(String nodeVersion) {
             return nodeVersion(Output.of(nodeVersion));
         }
@@ -3040,15 +2922,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param releaseChannel Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
-         * feature, which provide more control over automatic upgrades of your GKE clusters.
-         * When updating this field, GKE imposes specific version requirements. See
-         * [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
-         * for more details; the `gcp.container.getEngineVersions` datasource can provide
-         * the default version for a channel. Note that removing the `release_channel`
-         * field from your config will cause the provider to stop managing your cluster&#39;s
-         * release channel, but will not unenroll it. Instead, use the `&#34;UNSPECIFIED&#34;`
-         * channel. Structure is documented below.
+         * @param releaseChannel Configuration options for the Release channel feature, which provide more control over automatic upgrades of your GKE
+         * clusters. Note that removing this field from your config will not unenroll it. Instead, use the &#34;UNSPECIFIED&#34; channel.
          * 
          * @return builder
          * 
@@ -3059,15 +2934,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param releaseChannel Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
-         * feature, which provide more control over automatic upgrades of your GKE clusters.
-         * When updating this field, GKE imposes specific version requirements. See
-         * [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
-         * for more details; the `gcp.container.getEngineVersions` datasource can provide
-         * the default version for a channel. Note that removing the `release_channel`
-         * field from your config will cause the provider to stop managing your cluster&#39;s
-         * release channel, but will not unenroll it. Instead, use the `&#34;UNSPECIFIED&#34;`
-         * channel. Structure is documented below.
+         * @param releaseChannel Configuration options for the Release channel feature, which provide more control over automatic upgrades of your GKE
+         * clusters. Note that removing this field from your config will not unenroll it. Instead, use the &#34;UNSPECIFIED&#34; channel.
          * 
          * @return builder
          * 

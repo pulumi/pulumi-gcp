@@ -281,11 +281,8 @@ type InstanceGroupManager struct {
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
 	// Structure is documented below.
-	Versions InstanceGroupManagerVersionArrayOutput `pulumi:"versions"`
-	// Whether to wait for all instances to be created/updated before
-	// returning. Note that if this is set to true and the operation does not succeed, this provider will
-	// continue trying until it times out.
-	WaitForInstances pulumi.BoolPtrOutput `pulumi:"waitForInstances"`
+	Versions         InstanceGroupManagerVersionArrayOutput `pulumi:"versions"`
+	WaitForInstances pulumi.BoolPtrOutput                   `pulumi:"waitForInstances"`
 	// When used with `waitForInstances` it specifies the status to wait for.
 	// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
 	// set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
@@ -412,11 +409,8 @@ type instanceGroupManagerState struct {
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
 	// Structure is documented below.
-	Versions []InstanceGroupManagerVersion `pulumi:"versions"`
-	// Whether to wait for all instances to be created/updated before
-	// returning. Note that if this is set to true and the operation does not succeed, this provider will
-	// continue trying until it times out.
-	WaitForInstances *bool `pulumi:"waitForInstances"`
+	Versions         []InstanceGroupManagerVersion `pulumi:"versions"`
+	WaitForInstances *bool                         `pulumi:"waitForInstances"`
 	// When used with `waitForInstances` it specifies the status to wait for.
 	// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
 	// set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
@@ -508,10 +502,7 @@ type InstanceGroupManagerState struct {
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
 	// Structure is documented below.
-	Versions InstanceGroupManagerVersionArrayInput
-	// Whether to wait for all instances to be created/updated before
-	// returning. Note that if this is set to true and the operation does not succeed, this provider will
-	// continue trying until it times out.
+	Versions         InstanceGroupManagerVersionArrayInput
 	WaitForInstances pulumi.BoolPtrInput
 	// When used with `waitForInstances` it specifies the status to wait for.
 	// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
@@ -595,11 +586,8 @@ type instanceGroupManagerArgs struct {
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
 	// Structure is documented below.
-	Versions []InstanceGroupManagerVersion `pulumi:"versions"`
-	// Whether to wait for all instances to be created/updated before
-	// returning. Note that if this is set to true and the operation does not succeed, this provider will
-	// continue trying until it times out.
-	WaitForInstances *bool `pulumi:"waitForInstances"`
+	Versions         []InstanceGroupManagerVersion `pulumi:"versions"`
+	WaitForInstances *bool                         `pulumi:"waitForInstances"`
 	// When used with `waitForInstances` it specifies the status to wait for.
 	// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
 	// set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
@@ -679,10 +667,7 @@ type InstanceGroupManagerArgs struct {
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
 	// Structure is documented below.
-	Versions InstanceGroupManagerVersionArrayInput
-	// Whether to wait for all instances to be created/updated before
-	// returning. Note that if this is set to true and the operation does not succeed, this provider will
-	// continue trying until it times out.
+	Versions         InstanceGroupManagerVersionArrayInput
 	WaitForInstances pulumi.BoolPtrInput
 	// When used with `waitForInstances` it specifies the status to wait for.
 	// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
@@ -953,9 +938,6 @@ func (o InstanceGroupManagerOutput) Versions() InstanceGroupManagerVersionArrayO
 	return o.ApplyT(func(v *InstanceGroupManager) InstanceGroupManagerVersionArrayOutput { return v.Versions }).(InstanceGroupManagerVersionArrayOutput)
 }
 
-// Whether to wait for all instances to be created/updated before
-// returning. Note that if this is set to true and the operation does not succeed, this provider will
-// continue trying until it times out.
 func (o InstanceGroupManagerOutput) WaitForInstances() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) pulumi.BoolPtrOutput { return v.WaitForInstances }).(pulumi.BoolPtrOutput)
 }

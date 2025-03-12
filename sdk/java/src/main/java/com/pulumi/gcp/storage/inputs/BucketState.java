@@ -127,21 +127,9 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.encryption);
     }
 
-    /**
-     * When deleting a bucket, this
-     * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, the provider will fail that run.
-     * 
-     */
     @Import(name="forceDestroy")
     private @Nullable Output<Boolean> forceDestroy;
 
-    /**
-     * @return When deleting a bucket, this
-     * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, the provider will fail that run.
-     * 
-     */
     public Optional<Output<Boolean>> forceDestroy() {
         return Optional.ofNullable(this.forceDestroy);
     }
@@ -650,27 +638,11 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
             return encryption(Output.of(encryption));
         }
 
-        /**
-         * @param forceDestroy When deleting a bucket, this
-         * boolean option will delete all contained objects. If you try to delete a
-         * bucket that contains objects, the provider will fail that run.
-         * 
-         * @return builder
-         * 
-         */
         public Builder forceDestroy(@Nullable Output<Boolean> forceDestroy) {
             $.forceDestroy = forceDestroy;
             return this;
         }
 
-        /**
-         * @param forceDestroy When deleting a bucket, this
-         * boolean option will delete all contained objects. If you try to delete a
-         * bucket that contains objects, the provider will fail that run.
-         * 
-         * @return builder
-         * 
-         */
         public Builder forceDestroy(Boolean forceDestroy) {
             return forceDestroy(Output.of(forceDestroy));
         }

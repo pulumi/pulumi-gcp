@@ -18,14 +18,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A policy binding to an organizations
- * 
- * To get more information about OrganizationsPolicyBinding, see:
- * 
- * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/organizations.locations.policyBindings)
- * * How-to Guides
- *     * [Apply a policy binding](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create#create_binding)
- * 
  * ## Example Usage
  * 
  * ### Iam Organizations Policy Binding
@@ -62,7 +54,7 @@ import javax.annotation.Nullable;
  *         var pabPolicy = new PrincipalAccessBoundaryPolicy("pabPolicy", PrincipalAccessBoundaryPolicyArgs.builder()
  *             .organization("123456789")
  *             .location("global")
- *             .displayName("test org binding")
+ *             .displayName("binding for all principals in the Organization")
  *             .principalAccessBoundaryPolicyId("my-pab-policy")
  *             .build());
  * 
@@ -72,12 +64,12 @@ import javax.annotation.Nullable;
  *                 .dependsOn(pabPolicy)
  *                 .build());
  * 
- *         var my_org_binding = new OrganizationsPolicyBinding("my-org-binding", OrganizationsPolicyBindingArgs.builder()
+ *         var binding_for_all_org_principals = new OrganizationsPolicyBinding("binding-for-all-org-principals", OrganizationsPolicyBindingArgs.builder()
  *             .organization("123456789")
  *             .location("global")
- *             .displayName("test org binding")
+ *             .displayName("binding for all principals in the Organization")
  *             .policyKind("PRINCIPAL_ACCESS_BOUNDARY")
- *             .policyBindingId("test-org-binding")
+ *             .policyBindingId("binding-for-all-org-principals")
  *             .policy(pabPolicy.principalAccessBoundaryPolicyId().applyValue(principalAccessBoundaryPolicyId -> String.format("organizations/123456789/locations/global/principalAccessBoundaryPolicies/%s", principalAccessBoundaryPolicyId)))
  *             .target(OrganizationsPolicyBindingTargetArgs.builder()
  *                 .principalSet("//cloudresourcemanager.googleapis.com/organizations/123456789")

@@ -153,7 +153,10 @@ import javax.annotation.Nullable;
  *             .name("notebooks-instance")
  *             .location("us-west1-a")
  *             .machineType("e2-medium")
- *             .metadata(Map.of("proxy-mode", "service_account"))
+ *             .metadata(Map.ofEntries(
+ *                 Map.entry("proxy-mode", "service_account"),
+ *                 Map.entry("terraform", "true")
+ *             ))
  *             .containerImage(InstanceContainerImageArgs.builder()
  *                 .repository("gcr.io/deeplearning-platform-release/base-cpu")
  *                 .tag("latest")

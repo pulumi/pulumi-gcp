@@ -30,15 +30,6 @@ import java.util.Map;
 import javax.annotation.Nullable;
 
 /**
- * Manages a VM instance resource within GCE. For more information see
- * [the official documentation](https://cloud.google.com/compute/docs/instances)
- * and
- * [API](https://cloud.google.com/compute/docs/reference/latest/instances).
- * 
- * This resource is specifically to create a compute instance from a given
- * `source_machine_image`. To create an instance without a machine image, use the
- * `gcp.compute.Instance` resource.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

@@ -62,8 +62,7 @@ public final class ServiceTemplateSpecContainer {
      */
     private String image;
     /**
-     * @return Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
-     * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * @return Periodic probe of container liveness. Container will be restarted if the probe fails.
      * Structure is documented below.
      * 
      */
@@ -168,8 +167,7 @@ public final class ServiceTemplateSpecContainer {
         return this.image;
     }
     /**
-     * @return Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
-     * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * @return Periodic probe of container liveness. Container will be restarted if the probe fails.
      * Structure is documented below.
      * 
      */

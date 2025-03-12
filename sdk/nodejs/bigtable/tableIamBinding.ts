@@ -187,10 +187,6 @@ export class TableIamBinding extends pulumi.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
     public readonly members!: pulumi.Output<string[]>;
-    /**
-     * The project in which the table belongs. If it
-     * is not provided, this provider will use the provider default.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
@@ -278,10 +274,6 @@ export interface TableIamBindingState {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The project in which the table belongs. If it
-     * is not provided, this provider will use the provider default.
-     */
     project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
@@ -319,10 +311,6 @@ export interface TableIamBindingArgs {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
     members: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The project in which the table belongs. If it
-     * is not provided, this provider will use the provider default.
-     */
     project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one

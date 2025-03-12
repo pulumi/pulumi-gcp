@@ -10,55 +10,39 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Organizations
 {
     /// <summary>
-    /// Allows creation and management of a single binding within IAM policy for
-    /// an existing Google Cloud Platform Organization.
-    /// 
-    /// &gt; **Note:** This resource __must not__ be used in conjunction with
-    ///    `gcp.organizations.IAMMember` for the __same role__ or they will fight over
-    ///    what your policy should be.
-    /// 
-    /// &gt; **Note:** On create, this resource will overwrite members of any existing roles.
-    ///     Use `pulumi import` and inspect the `output to ensure
-    ///     your existing members are preserved.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var binding = new Gcp.Organizations.IAMBinding("binding", new()
-    ///     {
-    ///         OrgId = "123456789",
-    ///         Role = "roles/browser",
-    ///         Members = new[]
-    ///         {
-    ///             "user:alice@gmail.com",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
-    /// IAM binding imports use space-delimited identifiers; first the resource in question and then the role.  These bindings can be imported using the `org_id` and role, e.g.
+    /// ### Importing Audit Configs
+    /// 
+    /// An audit config can be imported into a `google_organization_iam_audit_config` resource using the resource's `org_id` and the `service`, e.g:
+    /// 
+    /// * `"{{org_id}} foo.googleapis.com"`
+    /// 
+    /// An `import` block (Terraform v1.5.0 and later) can be used to import audit configs:
+    /// 
+    /// tf
+    /// 
+    /// import {
+    /// 
+    ///   id = "{{org_id}} foo.googleapis.com"
+    /// 
+    ///   to = google_organization_iam_audit_config.default
+    /// 
+    /// }
+    /// 
+    /// The `pulumi import` command can also be used:
     /// 
     /// ```sh
-    /// $ pulumi import gcp:organizations/iAMBinding:IAMBinding my_org "your-org-id roles/viewer"
+    /// $ pulumi import gcp:organizations/iAMBinding:IAMBinding default "{{org_id}} foo.googleapis.com"
     /// ```
-    /// 
-    /// -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
-    /// 
-    ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:organizations/iAMBinding:IAMBinding")]
     public partial class IAMBinding : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Output("condition")]
         public Output<Outputs.IAMBindingCondition?> Condition { get; private set; } = null!;
 
@@ -69,13 +53,18 @@ namespace Pulumi.Gcp.Organizations
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+        /// Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
 
         /// <summary>
-        /// The numeric ID of the organization in which you want to create a custom role.
+        /// The organization id of the target organization.
         /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
@@ -83,7 +72,7 @@ namespace Pulumi.Gcp.Organizations
         /// <summary>
         /// The role that should be applied. Only one
         /// `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
-        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// `organizations/{{org_id}}/roles/{{role_id}}`.
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
@@ -134,6 +123,10 @@ namespace Pulumi.Gcp.Organizations
 
     public sealed class IAMBindingArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.IAMBindingConditionArgs>? Condition { get; set; }
 
@@ -141,7 +134,12 @@ namespace Pulumi.Gcp.Organizations
         private InputList<string>? _members;
 
         /// <summary>
-        /// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+        /// Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
         public InputList<string> Members
         {
@@ -150,7 +148,7 @@ namespace Pulumi.Gcp.Organizations
         }
 
         /// <summary>
-        /// The numeric ID of the organization in which you want to create a custom role.
+        /// The organization id of the target organization.
         /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
@@ -158,7 +156,7 @@ namespace Pulumi.Gcp.Organizations
         /// <summary>
         /// The role that should be applied. Only one
         /// `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
-        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// `organizations/{{org_id}}/roles/{{role_id}}`.
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
@@ -171,6 +169,10 @@ namespace Pulumi.Gcp.Organizations
 
     public sealed class IAMBindingState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.IAMBindingConditionGetArgs>? Condition { get; set; }
 
@@ -184,7 +186,12 @@ namespace Pulumi.Gcp.Organizations
         private InputList<string>? _members;
 
         /// <summary>
-        /// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+        /// Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
         public InputList<string> Members
         {
@@ -193,7 +200,7 @@ namespace Pulumi.Gcp.Organizations
         }
 
         /// <summary>
-        /// The numeric ID of the organization in which you want to create a custom role.
+        /// The organization id of the target organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
@@ -201,7 +208,7 @@ namespace Pulumi.Gcp.Organizations
         /// <summary>
         /// The role that should be applied. Only one
         /// `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
-        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// `organizations/{{org_id}}/roles/{{role_id}}`.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

@@ -65,7 +65,6 @@ import (
 //	}
 //
 // ```
-//
 // ## Import
 //
 // FirewallPolicyAssociation can be imported using any of these accepted formats:
@@ -89,6 +88,10 @@ type FirewallPolicyAssociation struct {
 	// The target that the firewall policy is attached to.
 	AttachmentTarget pulumi.StringOutput `pulumi:"attachmentTarget"`
 	// The firewall policy of the resource.
+	// This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
+	// firewall policy with the flag to override the existing attachmentTarget's policy association.
+	// **Note** Due to potential risks with this operation it is *highly* recommended to use the `createBeforeDestroy` life cycle option
+	// on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
 	//
 	// ***
 	FirewallPolicy pulumi.StringOutput `pulumi:"firewallPolicy"`
@@ -137,6 +140,10 @@ type firewallPolicyAssociationState struct {
 	// The target that the firewall policy is attached to.
 	AttachmentTarget *string `pulumi:"attachmentTarget"`
 	// The firewall policy of the resource.
+	// This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
+	// firewall policy with the flag to override the existing attachmentTarget's policy association.
+	// **Note** Due to potential risks with this operation it is *highly* recommended to use the `createBeforeDestroy` life cycle option
+	// on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
 	//
 	// ***
 	FirewallPolicy *string `pulumi:"firewallPolicy"`
@@ -150,6 +157,10 @@ type FirewallPolicyAssociationState struct {
 	// The target that the firewall policy is attached to.
 	AttachmentTarget pulumi.StringPtrInput
 	// The firewall policy of the resource.
+	// This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
+	// firewall policy with the flag to override the existing attachmentTarget's policy association.
+	// **Note** Due to potential risks with this operation it is *highly* recommended to use the `createBeforeDestroy` life cycle option
+	// on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
 	//
 	// ***
 	FirewallPolicy pulumi.StringPtrInput
@@ -167,6 +178,10 @@ type firewallPolicyAssociationArgs struct {
 	// The target that the firewall policy is attached to.
 	AttachmentTarget string `pulumi:"attachmentTarget"`
 	// The firewall policy of the resource.
+	// This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
+	// firewall policy with the flag to override the existing attachmentTarget's policy association.
+	// **Note** Due to potential risks with this operation it is *highly* recommended to use the `createBeforeDestroy` life cycle option
+	// on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
 	//
 	// ***
 	FirewallPolicy string `pulumi:"firewallPolicy"`
@@ -179,6 +194,10 @@ type FirewallPolicyAssociationArgs struct {
 	// The target that the firewall policy is attached to.
 	AttachmentTarget pulumi.StringInput
 	// The firewall policy of the resource.
+	// This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
+	// firewall policy with the flag to override the existing attachmentTarget's policy association.
+	// **Note** Due to potential risks with this operation it is *highly* recommended to use the `createBeforeDestroy` life cycle option
+	// on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
 	//
 	// ***
 	FirewallPolicy pulumi.StringInput
@@ -279,6 +298,10 @@ func (o FirewallPolicyAssociationOutput) AttachmentTarget() pulumi.StringOutput 
 }
 
 // The firewall policy of the resource.
+// This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
+// firewall policy with the flag to override the existing attachmentTarget's policy association.
+// **Note** Due to potential risks with this operation it is *highly* recommended to use the `createBeforeDestroy` life cycle option
+// on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
 //
 // ***
 func (o FirewallPolicyAssociationOutput) FirewallPolicy() pulumi.StringOutput {

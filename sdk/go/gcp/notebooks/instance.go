@@ -111,6 +111,7 @@ import (
 //				MachineType: pulumi.String("e2-medium"),
 //				Metadata: pulumi.StringMap{
 //					"proxy-mode": pulumi.String("service_account"),
+//					"terraform":  pulumi.String("true"),
 //				},
 //				ContainerImage: &notebooks.InstanceContainerImageArgs{
 //					Repository: pulumi.String("gcr.io/deeplearning-platform-release/base-cpu"),

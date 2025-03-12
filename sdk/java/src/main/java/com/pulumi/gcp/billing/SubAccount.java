@@ -16,44 +16,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Allows creation and management of a Google Cloud Billing Subaccount.
- * 
- * !&gt; **WARNING:** Deleting this resource will not delete or close the billing subaccount.
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.billing.SubAccount;
- * import com.pulumi.gcp.billing.SubAccountArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var subaccount = new SubAccount("subaccount", SubAccountArgs.builder()
- *             .displayName("My Billing Account")
- *             .masterBillingAccount("012345-567890-ABCDEF")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * Billing Subaccounts can be imported using any of these accepted formats:
@@ -83,21 +45,9 @@ public class SubAccount extends com.pulumi.resources.CustomResource {
     public Output<String> billingAccountId() {
         return this.billingAccountId;
     }
-    /**
-     * If set to &#34;RENAME_ON_DESTROY&#34; the billing account display_name
-     * will be changed to &#34;Destroyed&#34; along with a timestamp.  If set to &#34;&#34; this will not occur.
-     * Default is &#34;&#34;.
-     * 
-     */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deletionPolicy;
 
-    /**
-     * @return If set to &#34;RENAME_ON_DESTROY&#34; the billing account display_name
-     * will be changed to &#34;Destroyed&#34; along with a timestamp.  If set to &#34;&#34; this will not occur.
-     * Default is &#34;&#34;.
-     * 
-     */
     public Output<Optional<String>> deletionPolicy() {
         return Codegen.optional(this.deletionPolicy);
     }

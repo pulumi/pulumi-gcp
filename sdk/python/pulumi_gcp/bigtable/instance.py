@@ -36,10 +36,8 @@ class InstanceArgs:
                to default to the backend value. See structure below.
                
                -----
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-               in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
         :param pulumi.Input[str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
-        :param pulumi.Input[bool] force_destroy: Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+        :param pulumi.Input[bool] force_destroy: When deleting a BigTable instance, this boolean option will delete all backups within the instance.
         :param pulumi.Input[str] instance_type: The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
                It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
                and all instances will become `"PRODUCTION"` instances. This means that new and existing `"DEVELOPMENT"` instances will be converted to
@@ -92,10 +90,6 @@ class InstanceArgs:
     @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-        in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
-        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -118,7 +112,7 @@ class InstanceArgs:
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[bool]]:
         """
-        Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+        When deleting a BigTable instance, this boolean option will delete all backups within the instance.
         """
         return pulumi.get(self, "force_destroy")
 
@@ -204,13 +198,11 @@ class _InstanceState:
                to default to the backend value. See structure below.
                
                -----
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-               in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
         :param pulumi.Input[str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
                
                -----
-        :param pulumi.Input[bool] force_destroy: Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+        :param pulumi.Input[bool] force_destroy: When deleting a BigTable instance, this boolean option will delete all backups within the instance.
         :param pulumi.Input[str] instance_type: The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
                It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
                and all instances will become `"PRODUCTION"` instances. This means that new and existing `"DEVELOPMENT"` instances will be converted to
@@ -268,10 +260,6 @@ class _InstanceState:
     @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-        in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
-        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -308,7 +296,7 @@ class _InstanceState:
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[bool]]:
         """
-        Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+        When deleting a BigTable instance, this boolean option will delete all backups within the instance.
         """
         return pulumi.get(self, "force_destroy")
 
@@ -401,21 +389,6 @@ class Instance(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## +---
-
-        subcategory: "Cloud Bigtable"
-        description: |-
-          Creates a Google Bigtable instance.
-        ---
-
-        # bigtable.Instance
-
-        Creates a Google Bigtable instance. For more information see:
-
-        * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/bigtable/docs)
-
         ## Example Usage
 
         ### Simple Instance
@@ -498,10 +471,8 @@ class Instance(pulumi.CustomResource):
                to default to the backend value. See structure below.
                
                -----
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-               in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
         :param pulumi.Input[str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
-        :param pulumi.Input[bool] force_destroy: Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+        :param pulumi.Input[bool] force_destroy: When deleting a BigTable instance, this boolean option will delete all backups within the instance.
         :param pulumi.Input[str] instance_type: The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
                It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
                and all instances will become `"PRODUCTION"` instances. This means that new and existing `"DEVELOPMENT"` instances will be converted to
@@ -522,21 +493,6 @@ class Instance(pulumi.CustomResource):
                  args: Optional[InstanceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## +---
-
-        subcategory: "Cloud Bigtable"
-        description: |-
-          Creates a Google Bigtable instance.
-        ---
-
-        # bigtable.Instance
-
-        Creates a Google Bigtable instance. For more information see:
-
-        * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/bigtable/docs)
-
         ## Example Usage
 
         ### Simple Instance
@@ -688,13 +644,11 @@ class Instance(pulumi.CustomResource):
                to default to the backend value. See structure below.
                
                -----
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-               in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
         :param pulumi.Input[str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
                
                -----
-        :param pulumi.Input[bool] force_destroy: Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+        :param pulumi.Input[bool] force_destroy: When deleting a BigTable instance, this boolean option will delete all backups within the instance.
         :param pulumi.Input[str] instance_type: The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
                It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
                and all instances will become `"PRODUCTION"` instances. This means that new and existing `"DEVELOPMENT"` instances will be converted to
@@ -740,10 +694,6 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-        in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
-        """
         return pulumi.get(self, "deletion_protection")
 
     @property
@@ -768,7 +718,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Output[Optional[bool]]:
         """
-        Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+        When deleting a BigTable instance, this boolean option will delete all backups within the instance.
         """
         return pulumi.get(self, "force_destroy")
 

@@ -20,57 +20,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Cloud Run Service Pubsub
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.cloudrun.Service("default", {
- *     name: "cloud_run_service_name",
- *     location: "us-central1",
- *     template: {
- *         spec: {
- *             containers: [{
- *                 image: "gcr.io/cloudrun/hello",
- *             }],
- *         },
- *     },
- *     traffics: [{
- *         percent: 100,
- *         latestRevision: true,
- *     }],
- * });
- * const sa = new gcp.serviceaccount.Account("sa", {
- *     accountId: "cloud-run-pubsub-invoker",
- *     displayName: "Cloud Run Pub/Sub Invoker",
- * });
- * const binding = new gcp.cloudrun.IamBinding("binding", {
- *     location: _default.location,
- *     service: _default.name,
- *     role: "roles/run.invoker",
- *     members: [pulumi.interpolate`serviceAccount:${sa.email}`],
- * });
- * const project = new gcp.projects.IAMBinding("project", {
- *     role: "roles/iam.serviceAccountTokenCreator",
- *     members: [pulumi.interpolate`serviceAccount:${sa.email}`],
- * });
- * const topic = new gcp.pubsub.Topic("topic", {name: "pubsub_topic"});
- * const subscription = new gcp.pubsub.Subscription("subscription", {
- *     name: "pubsub_subscription",
- *     topic: topic.name,
- *     pushConfig: {
- *         pushEndpoint: _default.statuses.apply(statuses => statuses[0].url),
- *         oidcToken: {
- *             serviceAccountEmail: sa.email,
- *         },
- *         attributes: {
- *             "x-goog-version": "v1",
- *         },
- *     },
- * });
- * ```
- *
  * ### Cloud Run Service Basic
  *
  * ```typescript
@@ -160,7 +109,7 @@ import * as utilities from "../utilities";
  *             annotations: {
  *                 "autoscaling.knative.dev/maxScale": "1000",
  *                 "run.googleapis.com/cloudsql-instances": instance.connectionName,
- *                 "run.googleapis.com/client-name": "demo",
+ *                 "run.googleapis.com/client-name": "terraform",
  *             },
  *         },
  *     },

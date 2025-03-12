@@ -2547,7 +2547,9 @@ if not MYPY:
         name: NotRequired[pulumi.Input[str]]
         """
         (Output)
-        Output only. A connected intercept endpoint group.
+        The connected endpoint group's resource name, for example:
+        `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+        See https://google.aip.dev/124.
         """
 elif False:
     InterceptDeploymentGroupConnectedEndpointGroupArgsDict: TypeAlias = Mapping[str, Any]
@@ -2558,7 +2560,9 @@ class InterceptDeploymentGroupConnectedEndpointGroupArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: (Output)
-               Output only. A connected intercept endpoint group.
+               The connected endpoint group's resource name, for example:
+               `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+               See https://google.aip.dev/124.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -2568,7 +2572,9 @@ class InterceptDeploymentGroupConnectedEndpointGroupArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         (Output)
-        Output only. A connected intercept endpoint group.
+        The connected endpoint group's resource name, for example:
+        `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+        See https://google.aip.dev/124.
         """
         return pulumi.get(self, "name")
 
@@ -2581,7 +2587,7 @@ if not MYPY:
     class InterceptEndpointGroupAssociationLocationsDetailArgsDict(TypedDict):
         location: NotRequired[pulumi.Input[str]]
         """
-        The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+        The cloud location of the association, currently restricted to `global`.
 
 
         - - -
@@ -2589,7 +2595,7 @@ if not MYPY:
         state: NotRequired[pulumi.Input[str]]
         """
         (Output)
-        The association state in this location.
+        The current state of the association in this location.
         Possible values:
         STATE_UNSPECIFIED
         ACTIVE
@@ -2604,12 +2610,12 @@ class InterceptEndpointGroupAssociationLocationsDetailArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] location: The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+        :param pulumi.Input[str] location: The cloud location of the association, currently restricted to `global`.
                
                
                - - -
         :param pulumi.Input[str] state: (Output)
-               The association state in this location.
+               The current state of the association in this location.
                Possible values:
                STATE_UNSPECIFIED
                ACTIVE
@@ -2624,7 +2630,7 @@ class InterceptEndpointGroupAssociationLocationsDetailArgs:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+        The cloud location of the association, currently restricted to `global`.
 
 
         - - -
@@ -2640,7 +2646,7 @@ class InterceptEndpointGroupAssociationLocationsDetailArgs:
     def state(self) -> Optional[pulumi.Input[str]]:
         """
         (Output)
-        The association state in this location.
+        The current state of the association in this location.
         Possible values:
         STATE_UNSPECIFIED
         ACTIVE
@@ -2658,7 +2664,9 @@ if not MYPY:
         name: NotRequired[pulumi.Input[str]]
         """
         (Output)
-        Output only. A connected mirroring endpoint group.
+        The connected endpoint group's resource name, for example:
+        `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+        See https://google.aip.dev/124.
         """
 elif False:
     MirroringDeploymentGroupConnectedEndpointGroupArgsDict: TypeAlias = Mapping[str, Any]
@@ -2669,7 +2677,9 @@ class MirroringDeploymentGroupConnectedEndpointGroupArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: (Output)
-               Output only. A connected mirroring endpoint group.
+               The connected endpoint group's resource name, for example:
+               `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+               See https://google.aip.dev/124.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -2679,7 +2689,9 @@ class MirroringDeploymentGroupConnectedEndpointGroupArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         (Output)
-        Output only. A connected mirroring endpoint group.
+        The connected endpoint group's resource name, for example:
+        `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+        See https://google.aip.dev/124.
         """
         return pulumi.get(self, "name")
 
@@ -2692,7 +2704,7 @@ if not MYPY:
     class MirroringEndpointGroupAssociationLocationsDetailArgsDict(TypedDict):
         location: NotRequired[pulumi.Input[str]]
         """
-        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+        The cloud location of the association, currently restricted to `global`.
 
 
         - - -
@@ -2700,7 +2712,7 @@ if not MYPY:
         state: NotRequired[pulumi.Input[str]]
         """
         (Output)
-        Output only. The association state in this location.
+        The current state of the association in this location.
         Possible values:
         STATE_UNSPECIFIED
         ACTIVE
@@ -2715,12 +2727,12 @@ class MirroringEndpointGroupAssociationLocationsDetailArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+        :param pulumi.Input[str] location: The cloud location of the association, currently restricted to `global`.
                
                
                - - -
         :param pulumi.Input[str] state: (Output)
-               Output only. The association state in this location.
+               The current state of the association in this location.
                Possible values:
                STATE_UNSPECIFIED
                ACTIVE
@@ -2735,7 +2747,7 @@ class MirroringEndpointGroupAssociationLocationsDetailArgs:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+        The cloud location of the association, currently restricted to `global`.
 
 
         - - -
@@ -2751,7 +2763,7 @@ class MirroringEndpointGroupAssociationLocationsDetailArgs:
     def state(self) -> Optional[pulumi.Input[str]]:
         """
         (Output)
-        Output only. The association state in this location.
+        The current state of the association in this location.
         Possible values:
         STATE_UNSPECIFIED
         ACTIVE

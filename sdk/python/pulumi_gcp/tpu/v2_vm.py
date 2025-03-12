@@ -919,6 +919,7 @@ class V2Vm(pulumi.CustomResource):
             },
             scheduling_config={
                 "preemptible": True,
+                "spot": True,
             },
             shielded_instance_config={
                 "enable_secure_boot": True,
@@ -1082,6 +1083,7 @@ class V2Vm(pulumi.CustomResource):
             },
             scheduling_config={
                 "preemptible": True,
+                "spot": True,
             },
             shielded_instance_config={
                 "enable_secure_boot": True,

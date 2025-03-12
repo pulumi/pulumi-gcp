@@ -579,7 +579,7 @@ class Slo(pulumi.CustomResource):
         appeng_slo = gcp.monitoring.Slo("appeng_slo",
             service=default.service_id,
             slo_id="ae-slo",
-            display_name="Test SLO for App Engine",
+            display_name="Terraform Test SLO for App Engine",
             goal=0.9,
             calendar_period="DAY",
             basic_sli={
@@ -604,7 +604,7 @@ class Slo(pulumi.CustomResource):
         request_based_slo = gcp.monitoring.Slo("request_based_slo",
             service=customsrv.service_id,
             slo_id="consumed-api-slo",
-            display_name="Test SLO with request based SLI (good total ratio)",
+            display_name="Terraform Test SLO with request based SLI (good total ratio)",
             goal=0.9,
             rolling_period_days=30,
             request_based_sli={
@@ -628,7 +628,7 @@ class Slo(pulumi.CustomResource):
             display_name="My Custom Service")
         windows_based = gcp.monitoring.Slo("windows_based",
             service=customsrv.service_id,
-            display_name="Test SLO with window based SLI",
+            display_name="Terraform Test SLO with window based SLI",
             goal=0.95,
             calendar_period="FORTNIGHT",
             windows_based_sli={
@@ -652,7 +652,7 @@ class Slo(pulumi.CustomResource):
             display_name="My Custom Service")
         windows_based = gcp.monitoring.Slo("windows_based",
             service=customsrv.service_id,
-            display_name="Test SLO with window based SLI",
+            display_name="Terraform Test SLO with window based SLI",
             goal=0.9,
             rolling_period_days=20,
             windows_based_sli={
@@ -681,7 +681,7 @@ class Slo(pulumi.CustomResource):
             display_name="My Custom Service")
         windows_based = gcp.monitoring.Slo("windows_based",
             service=customsrv.service_id,
-            display_name="Test SLO with window based SLI",
+            display_name="Terraform Test SLO with window based SLI",
             goal=0.9,
             rolling_period_days=20,
             windows_based_sli={
@@ -710,7 +710,7 @@ class Slo(pulumi.CustomResource):
             display_name="My Custom Service")
         windows_based = gcp.monitoring.Slo("windows_based",
             service=customsrv.service_id,
-            display_name="Test SLO with window based SLI",
+            display_name="Terraform Test SLO with window based SLI",
             goal=0.9,
             rolling_period_days=20,
             windows_based_sli={
@@ -839,7 +839,7 @@ class Slo(pulumi.CustomResource):
         appeng_slo = gcp.monitoring.Slo("appeng_slo",
             service=default.service_id,
             slo_id="ae-slo",
-            display_name="Test SLO for App Engine",
+            display_name="Terraform Test SLO for App Engine",
             goal=0.9,
             calendar_period="DAY",
             basic_sli={
@@ -864,7 +864,7 @@ class Slo(pulumi.CustomResource):
         request_based_slo = gcp.monitoring.Slo("request_based_slo",
             service=customsrv.service_id,
             slo_id="consumed-api-slo",
-            display_name="Test SLO with request based SLI (good total ratio)",
+            display_name="Terraform Test SLO with request based SLI (good total ratio)",
             goal=0.9,
             rolling_period_days=30,
             request_based_sli={
@@ -888,7 +888,7 @@ class Slo(pulumi.CustomResource):
             display_name="My Custom Service")
         windows_based = gcp.monitoring.Slo("windows_based",
             service=customsrv.service_id,
-            display_name="Test SLO with window based SLI",
+            display_name="Terraform Test SLO with window based SLI",
             goal=0.95,
             calendar_period="FORTNIGHT",
             windows_based_sli={
@@ -912,7 +912,7 @@ class Slo(pulumi.CustomResource):
             display_name="My Custom Service")
         windows_based = gcp.monitoring.Slo("windows_based",
             service=customsrv.service_id,
-            display_name="Test SLO with window based SLI",
+            display_name="Terraform Test SLO with window based SLI",
             goal=0.9,
             rolling_period_days=20,
             windows_based_sli={
@@ -941,7 +941,7 @@ class Slo(pulumi.CustomResource):
             display_name="My Custom Service")
         windows_based = gcp.monitoring.Slo("windows_based",
             service=customsrv.service_id,
-            display_name="Test SLO with window based SLI",
+            display_name="Terraform Test SLO with window based SLI",
             goal=0.9,
             rolling_period_days=20,
             windows_based_sli={
@@ -970,7 +970,7 @@ class Slo(pulumi.CustomResource):
             display_name="My Custom Service")
         windows_based = gcp.monitoring.Slo("windows_based",
             service=customsrv.service_id,
-            display_name="Test SLO with window based SLI",
+            display_name="Terraform Test SLO with window based SLI",
             goal=0.9,
             rolling_period_days=20,
             windows_based_sli={

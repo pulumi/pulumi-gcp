@@ -338,6 +338,54 @@ import * as utilities from "../utilities";
  *     ipAddressSelectionPolicy: "IPV6_ONLY",
  * });
  * ```
+ * ### Region Backend Service Ilb Custom Metrics
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {name: "network"});
+ * // Zonal NEG with GCE_VM_IP_PORT
+ * const defaultNetworkEndpointGroup = new gcp.compute.NetworkEndpointGroup("default", {
+ *     name: "network-endpoint",
+ *     network: _default.id,
+ *     defaultPort: 90,
+ *     zone: "us-central1-a",
+ *     networkEndpointType: "GCE_VM_IP_PORT",
+ * });
+ * const healthCheck = new gcp.compute.HealthCheck("health_check", {
+ *     name: "rbs-health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const defaultRegionBackendService = new gcp.compute.RegionBackendService("default", {
+ *     region: "us-central1",
+ *     name: "region-service",
+ *     healthChecks: healthCheck.id,
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     localityLbPolicy: "WEIGHTED_ROUND_ROBIN",
+ *     customMetrics: [{
+ *         name: "orca.application_utilization",
+ *         dryRun: false,
+ *     }],
+ *     backends: [{
+ *         group: defaultNetworkEndpointGroup.id,
+ *         balancingMode: "CUSTOM_METRICS",
+ *         customMetrics: [
+ *             {
+ *                 name: "orca.cpu_utilization",
+ *                 maxUtilization: 0.9,
+ *                 dryRun: true,
+ *             },
+ *             {
+ *                 name: "orca.named_metrics.foo",
+ *                 dryRun: false,
+ *             },
+ *         ],
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -449,6 +497,11 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
+     * List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
+     * Structure is documented below.
+     */
+    public readonly customMetrics!: pulumi.Output<outputs.compute.RegionBackendServiceCustomMetric[] | undefined>;
+    /**
      * An optional description of this resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -532,6 +585,12 @@ export class RegionBackendService extends pulumi.CustomResource {
      * instance either reported a valid weight or had
      * UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
      * equal-weight.
+     * * `WEIGHTED_ROUND_ROBIN`: Per-endpoint weighted round-robin Load Balancing using weights computed
+     * from Backend reported Custom Metrics. If set, the Backend Service
+     * responses are expected to contain non-standard HTTP response header field
+     * X-Endpoint-Load-Metrics. The reported metrics
+     * to use for computing the weights are specified via the
+     * backends[].customMetrics fields.
      * localityLbPolicy is applicable to either:
      * * A regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2,
      * and loadBalancingScheme set to INTERNAL_MANAGED.
@@ -544,7 +603,7 @@ export class RegionBackendService extends pulumi.CustomResource {
      * Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
      * by a URL map that is bound to target gRPC proxy that has validateForProxyless
      * field set to true.
-     * Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
+     * Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
      */
     public readonly localityLbPolicy!: pulumi.Output<string | undefined>;
     /**
@@ -658,6 +717,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["connectionTrackingPolicy"] = state ? state.connectionTrackingPolicy : undefined;
             resourceInputs["consistentHash"] = state ? state.consistentHash : undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["customMetrics"] = state ? state.customMetrics : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["enableCdn"] = state ? state.enableCdn : undefined;
             resourceInputs["failoverPolicy"] = state ? state.failoverPolicy : undefined;
@@ -691,6 +751,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["connectionDrainingTimeoutSec"] = args ? args.connectionDrainingTimeoutSec : undefined;
             resourceInputs["connectionTrackingPolicy"] = args ? args.connectionTrackingPolicy : undefined;
             resourceInputs["consistentHash"] = args ? args.consistentHash : undefined;
+            resourceInputs["customMetrics"] = args ? args.customMetrics : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enableCdn"] = args ? args.enableCdn : undefined;
             resourceInputs["failoverPolicy"] = args ? args.failoverPolicy : undefined;
@@ -778,6 +839,11 @@ export interface RegionBackendServiceState {
      */
     creationTimestamp?: pulumi.Input<string>;
     /**
+     * List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
+     * Structure is documented below.
+     */
+    customMetrics?: pulumi.Input<pulumi.Input<inputs.compute.RegionBackendServiceCustomMetric>[]>;
+    /**
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
@@ -861,6 +927,12 @@ export interface RegionBackendServiceState {
      * instance either reported a valid weight or had
      * UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
      * equal-weight.
+     * * `WEIGHTED_ROUND_ROBIN`: Per-endpoint weighted round-robin Load Balancing using weights computed
+     * from Backend reported Custom Metrics. If set, the Backend Service
+     * responses are expected to contain non-standard HTTP response header field
+     * X-Endpoint-Load-Metrics. The reported metrics
+     * to use for computing the weights are specified via the
+     * backends[].customMetrics fields.
      * localityLbPolicy is applicable to either:
      * * A regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2,
      * and loadBalancingScheme set to INTERNAL_MANAGED.
@@ -873,7 +945,7 @@ export interface RegionBackendServiceState {
      * Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
      * by a URL map that is bound to target gRPC proxy that has validateForProxyless
      * field set to true.
-     * Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
+     * Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
      */
     localityLbPolicy?: pulumi.Input<string>;
     /**
@@ -1019,6 +1091,11 @@ export interface RegionBackendServiceArgs {
      */
     consistentHash?: pulumi.Input<inputs.compute.RegionBackendServiceConsistentHash>;
     /**
+     * List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
+     * Structure is documented below.
+     */
+    customMetrics?: pulumi.Input<pulumi.Input<inputs.compute.RegionBackendServiceCustomMetric>[]>;
+    /**
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
@@ -1093,6 +1170,12 @@ export interface RegionBackendServiceArgs {
      * instance either reported a valid weight or had
      * UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
      * equal-weight.
+     * * `WEIGHTED_ROUND_ROBIN`: Per-endpoint weighted round-robin Load Balancing using weights computed
+     * from Backend reported Custom Metrics. If set, the Backend Service
+     * responses are expected to contain non-standard HTTP response header field
+     * X-Endpoint-Load-Metrics. The reported metrics
+     * to use for computing the weights are specified via the
+     * backends[].customMetrics fields.
      * localityLbPolicy is applicable to either:
      * * A regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2,
      * and loadBalancingScheme set to INTERNAL_MANAGED.
@@ -1105,7 +1188,7 @@ export interface RegionBackendServiceArgs {
      * Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
      * by a URL map that is bound to target gRPC proxy that has validateForProxyless
      * field set to true.
-     * Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
+     * Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
      */
     localityLbPolicy?: pulumi.Input<string>;
     /**

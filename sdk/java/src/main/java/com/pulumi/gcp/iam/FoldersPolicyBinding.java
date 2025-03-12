@@ -18,14 +18,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A policy binding to a folder
- * 
- * To get more information about FoldersPolicyBinding, see:
- * 
- * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/folders.locations.policyBindings)
- * * How-to Guides
- *     * [Apply a policy binding](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create#create_binding)
- * 
  * ## Example Usage
  * 
  * ### Iam Folders Policy Binding
@@ -64,12 +56,12 @@ import javax.annotation.Nullable;
  *         var pabPolicy = new PrincipalAccessBoundaryPolicy("pabPolicy", PrincipalAccessBoundaryPolicyArgs.builder()
  *             .organization("123456789")
  *             .location("global")
- *             .displayName("test folder binding")
+ *             .displayName("binding for all principals in the folder")
  *             .principalAccessBoundaryPolicyId("my-pab-policy")
  *             .build());
  * 
  *         var folder = new Folder("folder", FolderArgs.builder()
- *             .displayName("test folder")
+ *             .displayName("my folder")
  *             .parent("organizations/123456789")
  *             .deletionProtection(false)
  *             .build());
@@ -80,12 +72,12 @@ import javax.annotation.Nullable;
  *                 .dependsOn(folder)
  *                 .build());
  * 
- *         var my_folder_binding = new FoldersPolicyBinding("my-folder-binding", FoldersPolicyBindingArgs.builder()
+ *         var binding_for_all_folder_principals = new FoldersPolicyBinding("binding-for-all-folder-principals", FoldersPolicyBindingArgs.builder()
  *             .folder(folder.folderId())
  *             .location("global")
- *             .displayName("test folder binding")
+ *             .displayName("binding for all principals in the folder")
  *             .policyKind("PRINCIPAL_ACCESS_BOUNDARY")
- *             .policyBindingId("test-folder-binding")
+ *             .policyBindingId("binding-for-all-folder-principals")
  *             .policy(pabPolicy.principalAccessBoundaryPolicyId().applyValue(principalAccessBoundaryPolicyId -> String.format("organizations/123456789/locations/global/principalAccessBoundaryPolicies/%s", principalAccessBoundaryPolicyId)))
  *             .target(FoldersPolicyBindingTargetArgs.builder()
  *                 .principalSet(folder.folderId().applyValue(folderId -> String.format("//cloudresourcemanager.googleapis.com/folders/%s", folderId)))

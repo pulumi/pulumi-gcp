@@ -33,6 +33,20 @@ namespace Pulumi.Gcp.Alloydb.Inputs
         [Input("pscDnsName")]
         public Input<string>? PscDnsName { get; set; }
 
+        [Input("pscInterfaceConfigs")]
+        private InputList<Inputs.InstancePscInstanceConfigPscInterfaceConfigGetArgs>? _pscInterfaceConfigs;
+
+        /// <summary>
+        /// Configurations for setting up PSC interfaces attached to the instance
+        /// which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.InstancePscInstanceConfigPscInterfaceConfigGetArgs> PscInterfaceConfigs
+        {
+            get => _pscInterfaceConfigs ?? (_pscInterfaceConfigs = new InputList<Inputs.InstancePscInstanceConfigPscInterfaceConfigGetArgs>());
+            set => _pscInterfaceConfigs = value;
+        }
+
         /// <summary>
         /// (Output)
         /// The service attachment created when Private Service Connect (PSC) is enabled for the instance.

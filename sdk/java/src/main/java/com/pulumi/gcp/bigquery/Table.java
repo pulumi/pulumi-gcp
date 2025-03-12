@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
  * [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
  * 
  * &gt; **Note**: On newer versions of the provider, you must explicitly set `deletion_protection=false`
- * (and run `pulumi update` to write the field to state) in order to destroy an instance.
+ * (and run `pulumi up` to write the field to state) in order to destroy an instance.
  * It is recommended to not set this field (or set it to true) until you&#39;re ready to destroy.
  * 
  * ## Example Usage
@@ -210,19 +210,9 @@ public class Table extends com.pulumi.resources.CustomResource {
     public Output<String> datasetId() {
         return this.datasetId;
     }
-    /**
-     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `=destroy` or `=update` that would delete the instance will fail.
-     * 
-     */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
-    /**
-     * @return Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `=destroy` or `=update` that would delete the instance will fail.
-     * 
-     */
     public Output<Optional<Boolean>> deletionProtection() {
         return Codegen.optional(this.deletionProtection);
     }

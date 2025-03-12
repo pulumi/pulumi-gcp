@@ -7,37 +7,25 @@ import * as utilities from "../utilities";
 /**
  * The Eventarc Channel resource
  *
+ * To get more information about Channel, see:
+ *
+ * * [API documentation](https://cloud.google.com/eventarc/docs/reference/rest/v1/projects.locations.channels)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/eventarc/standard/docs/third-parties/create-channels)
+ *
  * ## Example Usage
  *
- * ### Basic
+ * ### Eventarc Channel With Cmek
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const testProject = gcp.organizations.getProject({
- *     projectId: "my-project-name",
- * });
- * const testKeyRing = gcp.kms.getKMSKeyRing({
- *     name: "keyring",
- *     location: "us-west1",
- * });
- * const key = testKeyRing.then(testKeyRing => gcp.kms.getKMSCryptoKey({
- *     name: "key",
- *     keyRing: testKeyRing.id,
- * }));
- * const key1Member = new gcp.kms.CryptoKeyIAMMember("key1_member", {
- *     cryptoKeyId: key1.id,
- *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
- *     member: testProject.then(testProject => `serviceAccount:service-${testProject.number}@gcp-sa-eventarc.iam.gserviceaccount.com`),
- * });
  * const primary = new gcp.eventarc.Channel("primary", {
- *     location: "us-west1",
- *     name: "channel",
- *     project: testProject.then(testProject => testProject.projectId),
- *     cryptoKeyName: key1.id,
- *     thirdPartyProvider: testProject.then(testProject => `projects/${testProject.projectId}/locations/us-west1/providers/datadog`),
- * }, {
- *     dependsOn: [key1Member],
+ *     location: "us-central1",
+ *     name: "some-channel",
+ *     cryptoKeyName: "some-key",
+ *     thirdPartyProvider: "projects/my-project-name/locations/us-central1/providers/datadog",
  * });
  * ```
  *
@@ -94,39 +82,39 @@ export class Channel extends pulumi.CustomResource {
     }
 
     /**
-     * Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
+     * The activation token for the channel. The token must be used by the provider to register the channel for publishing.
      */
     public /*out*/ readonly activationToken!: pulumi.Output<string>;
     /**
-     * Output only. The creation time.
+     * The creation time.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
+     * Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      */
     public readonly cryptoKeyName!: pulumi.Output<string | undefined>;
     /**
      * The location for the resource
-     */
-    public readonly location!: pulumi.Output<string>;
-    /**
-     * Required. The resource name of the channel. Must be unique within the location on the project.
-     *
      *
      *
      * - - -
      */
+    public readonly location!: pulumi.Output<string>;
+    /**
+     * The resource name of the channel. Must be unique within the location on the project.
+     */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
+     * The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
      */
     public /*out*/ readonly pubsubTopic!: pulumi.Output<string>;
     /**
-     * Output only. The state of a Channel. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE, INACTIVE
+     * The state of a Channel.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -134,11 +122,11 @@ export class Channel extends pulumi.CustomResource {
      */
     public readonly thirdPartyProvider!: pulumi.Output<string | undefined>;
     /**
-     * Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+     * Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
-     * Output only. The last-modified time.
+     * The last-modified time.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -193,39 +181,39 @@ export class Channel extends pulumi.CustomResource {
  */
 export interface ChannelState {
     /**
-     * Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
+     * The activation token for the channel. The token must be used by the provider to register the channel for publishing.
      */
     activationToken?: pulumi.Input<string>;
     /**
-     * Output only. The creation time.
+     * The creation time.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
+     * Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      */
     cryptoKeyName?: pulumi.Input<string>;
     /**
      * The location for the resource
-     */
-    location?: pulumi.Input<string>;
-    /**
-     * Required. The resource name of the channel. Must be unique within the location on the project.
-     *
      *
      *
      * - - -
      */
+    location?: pulumi.Input<string>;
+    /**
+     * The resource name of the channel. Must be unique within the location on the project.
+     */
     name?: pulumi.Input<string>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
-     * Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
+     * The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
      */
     pubsubTopic?: pulumi.Input<string>;
     /**
-     * Output only. The state of a Channel. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE, INACTIVE
+     * The state of a Channel.
      */
     state?: pulumi.Input<string>;
     /**
@@ -233,11 +221,11 @@ export interface ChannelState {
      */
     thirdPartyProvider?: pulumi.Input<string>;
     /**
-     * Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+     * Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      */
     uid?: pulumi.Input<string>;
     /**
-     * Output only. The last-modified time.
+     * The last-modified time.
      */
     updateTime?: pulumi.Input<string>;
 }
@@ -247,23 +235,23 @@ export interface ChannelState {
  */
 export interface ChannelArgs {
     /**
-     * Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
+     * Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      */
     cryptoKeyName?: pulumi.Input<string>;
     /**
      * The location for the resource
-     */
-    location: pulumi.Input<string>;
-    /**
-     * Required. The resource name of the channel. Must be unique within the location on the project.
-     *
      *
      *
      * - - -
      */
+    location: pulumi.Input<string>;
+    /**
+     * The resource name of the channel. Must be unique within the location on the project.
+     */
     name?: pulumi.Input<string>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**

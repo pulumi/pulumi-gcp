@@ -297,6 +297,13 @@ class ServiceBinding(pulumi.CustomResource):
                  service: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ServiceBinding is the resource that defines a Service Directory Service to be used in a
+        BackendService resource.
+
+        To get more information about ServiceBinding, see:
+
+        * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1beta1/projects.locations.serviceBindings)
+
         ## Example Usage
 
         ### Network Services Service Binding Basic
@@ -370,6 +377,13 @@ class ServiceBinding(pulumi.CustomResource):
                  args: ServiceBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ServiceBinding is the resource that defines a Service Directory Service to be used in a
+        BackendService resource.
+
+        To get more information about ServiceBinding, see:
+
+        * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1beta1/projects.locations.serviceBindings)
+
         ## Example Usage
 
         ### Network Services Service Binding Basic

@@ -74,36 +74,16 @@ public final class JobIAMMemberState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.member);
     }
 
-    /**
-     * The project in which the job belongs. If it
-     * is not provided, the provider will use a default.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The project in which the job belongs. If it
-     * is not provided, the provider will use a default.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
-    /**
-     * The region in which the job belongs. If it
-     * is not provided, the provider will use a default.
-     * 
-     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
-    /**
-     * @return The region in which the job belongs. If it
-     * is not provided, the provider will use a default.
-     * 
-     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
@@ -235,48 +215,20 @@ public final class JobIAMMemberState extends com.pulumi.resources.ResourceArgs {
             return member(Output.of(member));
         }
 
-        /**
-         * @param project The project in which the job belongs. If it
-         * is not provided, the provider will use a default.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The project in which the job belongs. If it
-         * is not provided, the provider will use a default.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
-        /**
-         * @param region The region in which the job belongs. If it
-         * is not provided, the provider will use a default.
-         * 
-         * @return builder
-         * 
-         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
-        /**
-         * @param region The region in which the job belongs. If it
-         * is not provided, the provider will use a default.
-         * 
-         * @return builder
-         * 
-         */
         public Builder region(String region) {
             return region(Output.of(region));
         }

@@ -99,6 +99,37 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+     * in EXTERNAL_IPV6_SUBNETWORK_CREATION mode.
+     * Use one of the following formats to specify a sub-PDP when creating an
+     * IPv6 NetLB forwarding rule using BYOIP:
+     * Full resource URL, as in:
+     * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     *   Partial URL, as in:
+     * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * 
+     */
+    @Import(name="ipCollection")
+    private @Nullable Output<String> ipCollection;
+
+    /**
+     * @return Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+     * in EXTERNAL_IPV6_SUBNETWORK_CREATION mode.
+     * Use one of the following formats to specify a sub-PDP when creating an
+     * IPv6 NetLB forwarding rule using BYOIP:
+     * Full resource URL, as in:
+     * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     *   Partial URL, as in:
+     * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * 
+     */
+    public Optional<Output<String>> ipCollection() {
+        return Optional.ofNullable(this.ipCollection);
+    }
+
+    /**
      * The access type of IPv6 address this subnet holds. It&#39;s immutable and can only be specified during creation
      * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
      * cannot enable direct path.
@@ -330,6 +361,9 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
      * contained in this subnetwork. The primary IP of such VM must belong
      * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
      * to either primary or secondary ranges.
+     * **Note**: This field uses attr-as-block mode to avoid
+     * breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+     * set `send_secondary_ip_range_if_empty = true`
      * Structure is documented below.
      * 
      */
@@ -341,6 +375,9 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
      * contained in this subnetwork. The primary IP of such VM must belong
      * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
      * to either primary or secondary ranges.
+     * **Note**: This field uses attr-as-block mode to avoid
+     * breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+     * set `send_secondary_ip_range_if_empty = true`
      * Structure is documented below.
      * 
      */
@@ -399,6 +436,7 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.externalIpv6Prefix = $.externalIpv6Prefix;
         this.ipCidrRange = $.ipCidrRange;
+        this.ipCollection = $.ipCollection;
         this.ipv6AccessType = $.ipv6AccessType;
         this.logConfig = $.logConfig;
         this.name = $.name;
@@ -533,6 +571,43 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ipCidrRange(String ipCidrRange) {
             return ipCidrRange(Output.of(ipCidrRange));
+        }
+
+        /**
+         * @param ipCollection Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+         * in EXTERNAL_IPV6_SUBNETWORK_CREATION mode.
+         * Use one of the following formats to specify a sub-PDP when creating an
+         * IPv6 NetLB forwarding rule using BYOIP:
+         * Full resource URL, as in:
+         * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+         *   Partial URL, as in:
+         * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+         * * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipCollection(@Nullable Output<String> ipCollection) {
+            $.ipCollection = ipCollection;
+            return this;
+        }
+
+        /**
+         * @param ipCollection Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+         * in EXTERNAL_IPV6_SUBNETWORK_CREATION mode.
+         * Use one of the following formats to specify a sub-PDP when creating an
+         * IPv6 NetLB forwarding rule using BYOIP:
+         * Full resource URL, as in:
+         * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+         *   Partial URL, as in:
+         * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+         * * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipCollection(String ipCollection) {
+            return ipCollection(Output.of(ipCollection));
         }
 
         /**
@@ -833,6 +908,9 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
          * contained in this subnetwork. The primary IP of such VM must belong
          * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
          * to either primary or secondary ranges.
+         * **Note**: This field uses attr-as-block mode to avoid
+         * breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+         * set `send_secondary_ip_range_if_empty = true`
          * Structure is documented below.
          * 
          * @return builder
@@ -848,6 +926,9 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
          * contained in this subnetwork. The primary IP of such VM must belong
          * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
          * to either primary or secondary ranges.
+         * **Note**: This field uses attr-as-block mode to avoid
+         * breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+         * set `send_secondary_ip_range_if_empty = true`
          * Structure is documented below.
          * 
          * @return builder
@@ -862,6 +943,9 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
          * contained in this subnetwork. The primary IP of such VM must belong
          * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
          * to either primary or secondary ranges.
+         * **Note**: This field uses attr-as-block mode to avoid
+         * breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+         * set `send_secondary_ip_range_if_empty = true`
          * Structure is documented below.
          * 
          * @return builder

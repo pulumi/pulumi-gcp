@@ -9,6 +9,7 @@ import com.pulumi.gcp.compute.inputs.RegionDiskAsyncPrimaryDiskArgs;
 import com.pulumi.gcp.compute.inputs.RegionDiskDiskEncryptionKeyArgs;
 import com.pulumi.gcp.compute.inputs.RegionDiskGuestOsFeatureArgs;
 import com.pulumi.gcp.compute.inputs.RegionDiskSourceSnapshotEncryptionKeyArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -37,6 +38,40 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<RegionDiskAsyncPrimaryDiskArgs>> asyncPrimaryDisk() {
         return Optional.ofNullable(this.asyncPrimaryDisk);
+    }
+
+    /**
+     * If set to true, a snapshot of the disk will be created before it is destroyed.
+     * If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+     * The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+     * 
+     */
+    @Import(name="createSnapshotBeforeDestroy")
+    private @Nullable Output<Boolean> createSnapshotBeforeDestroy;
+
+    /**
+     * @return If set to true, a snapshot of the disk will be created before it is destroyed.
+     * If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+     * The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+     * 
+     */
+    public Optional<Output<Boolean>> createSnapshotBeforeDestroy() {
+        return Optional.ofNullable(this.createSnapshotBeforeDestroy);
+    }
+
+    /**
+     * This will set a custom name prefix for the snapshot that&#39;s created when the disk is deleted.
+     * 
+     */
+    @Import(name="createSnapshotBeforeDestroyPrefix")
+    private @Nullable Output<String> createSnapshotBeforeDestroyPrefix;
+
+    /**
+     * @return This will set a custom name prefix for the snapshot that&#39;s created when the disk is deleted.
+     * 
+     */
+    public Optional<Output<String>> createSnapshotBeforeDestroyPrefix() {
+        return Optional.ofNullable(this.createSnapshotBeforeDestroyPrefix);
     }
 
     /**
@@ -565,6 +600,8 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
 
     private RegionDiskState(RegionDiskState $) {
         this.asyncPrimaryDisk = $.asyncPrimaryDisk;
+        this.createSnapshotBeforeDestroy = $.createSnapshotBeforeDestroy;
+        this.createSnapshotBeforeDestroyPrefix = $.createSnapshotBeforeDestroyPrefix;
         this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
         this.diskEncryptionKey = $.diskEncryptionKey;
@@ -632,6 +669,52 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder asyncPrimaryDisk(RegionDiskAsyncPrimaryDiskArgs asyncPrimaryDisk) {
             return asyncPrimaryDisk(Output.of(asyncPrimaryDisk));
+        }
+
+        /**
+         * @param createSnapshotBeforeDestroy If set to true, a snapshot of the disk will be created before it is destroyed.
+         * If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+         * The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createSnapshotBeforeDestroy(@Nullable Output<Boolean> createSnapshotBeforeDestroy) {
+            $.createSnapshotBeforeDestroy = createSnapshotBeforeDestroy;
+            return this;
+        }
+
+        /**
+         * @param createSnapshotBeforeDestroy If set to true, a snapshot of the disk will be created before it is destroyed.
+         * If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+         * The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createSnapshotBeforeDestroy(Boolean createSnapshotBeforeDestroy) {
+            return createSnapshotBeforeDestroy(Output.of(createSnapshotBeforeDestroy));
+        }
+
+        /**
+         * @param createSnapshotBeforeDestroyPrefix This will set a custom name prefix for the snapshot that&#39;s created when the disk is deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createSnapshotBeforeDestroyPrefix(@Nullable Output<String> createSnapshotBeforeDestroyPrefix) {
+            $.createSnapshotBeforeDestroyPrefix = createSnapshotBeforeDestroyPrefix;
+            return this;
+        }
+
+        /**
+         * @param createSnapshotBeforeDestroyPrefix This will set a custom name prefix for the snapshot that&#39;s created when the disk is deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createSnapshotBeforeDestroyPrefix(String createSnapshotBeforeDestroyPrefix) {
+            return createSnapshotBeforeDestroyPrefix(Output.of(createSnapshotBeforeDestroyPrefix));
         }
 
         /**

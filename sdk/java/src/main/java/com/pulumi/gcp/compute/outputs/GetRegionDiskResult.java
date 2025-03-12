@@ -9,6 +9,7 @@ import com.pulumi.gcp.compute.outputs.GetRegionDiskAsyncPrimaryDisk;
 import com.pulumi.gcp.compute.outputs.GetRegionDiskDiskEncryptionKey;
 import com.pulumi.gcp.compute.outputs.GetRegionDiskGuestOsFeature;
 import com.pulumi.gcp.compute.outputs.GetRegionDiskSourceSnapshotEncryptionKey;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -20,6 +21,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetRegionDiskResult {
     private List<GetRegionDiskAsyncPrimaryDisk> asyncPrimaryDisks;
+    private Boolean createSnapshotBeforeDestroy;
+    private String createSnapshotBeforeDestroyPrefix;
     private String creationTimestamp;
     private String description;
     private List<GetRegionDiskDiskEncryptionKey> diskEncryptionKeys;
@@ -55,6 +58,12 @@ public final class GetRegionDiskResult {
     private GetRegionDiskResult() {}
     public List<GetRegionDiskAsyncPrimaryDisk> asyncPrimaryDisks() {
         return this.asyncPrimaryDisks;
+    }
+    public Boolean createSnapshotBeforeDestroy() {
+        return this.createSnapshotBeforeDestroy;
+    }
+    public String createSnapshotBeforeDestroyPrefix() {
+        return this.createSnapshotBeforeDestroyPrefix;
     }
     public String creationTimestamp() {
         return this.creationTimestamp;
@@ -152,6 +161,8 @@ public final class GetRegionDiskResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetRegionDiskAsyncPrimaryDisk> asyncPrimaryDisks;
+        private Boolean createSnapshotBeforeDestroy;
+        private String createSnapshotBeforeDestroyPrefix;
         private String creationTimestamp;
         private String description;
         private List<GetRegionDiskDiskEncryptionKey> diskEncryptionKeys;
@@ -183,6 +194,8 @@ public final class GetRegionDiskResult {
         public Builder(GetRegionDiskResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.asyncPrimaryDisks = defaults.asyncPrimaryDisks;
+    	      this.createSnapshotBeforeDestroy = defaults.createSnapshotBeforeDestroy;
+    	      this.createSnapshotBeforeDestroyPrefix = defaults.createSnapshotBeforeDestroyPrefix;
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.description = defaults.description;
     	      this.diskEncryptionKeys = defaults.diskEncryptionKeys;
@@ -222,6 +235,22 @@ public final class GetRegionDiskResult {
         }
         public Builder asyncPrimaryDisks(GetRegionDiskAsyncPrimaryDisk... asyncPrimaryDisks) {
             return asyncPrimaryDisks(List.of(asyncPrimaryDisks));
+        }
+        @CustomType.Setter
+        public Builder createSnapshotBeforeDestroy(Boolean createSnapshotBeforeDestroy) {
+            if (createSnapshotBeforeDestroy == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "createSnapshotBeforeDestroy");
+            }
+            this.createSnapshotBeforeDestroy = createSnapshotBeforeDestroy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder createSnapshotBeforeDestroyPrefix(String createSnapshotBeforeDestroyPrefix) {
+            if (createSnapshotBeforeDestroyPrefix == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "createSnapshotBeforeDestroyPrefix");
+            }
+            this.createSnapshotBeforeDestroyPrefix = createSnapshotBeforeDestroyPrefix;
+            return this;
         }
         @CustomType.Setter
         public Builder creationTimestamp(String creationTimestamp) {
@@ -456,6 +485,8 @@ public final class GetRegionDiskResult {
         public GetRegionDiskResult build() {
             final var _resultValue = new GetRegionDiskResult();
             _resultValue.asyncPrimaryDisks = asyncPrimaryDisks;
+            _resultValue.createSnapshotBeforeDestroy = createSnapshotBeforeDestroy;
+            _resultValue.createSnapshotBeforeDestroyPrefix = createSnapshotBeforeDestroyPrefix;
             _resultValue.creationTimestamp = creationTimestamp;
             _resultValue.description = description;
             _resultValue.diskEncryptionKeys = diskEncryptionKeys;

@@ -91,7 +91,8 @@ namespace Pulumi.Gcp.NetworkSecurity
     public partial class InterceptEndpointGroupAssociation : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Create time stamp.
+        /// The timestamp when the resource was created.
+        /// See https://google.aip.dev/148#timestamps.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -103,21 +104,23 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The Intercept Endpoint Group that this resource is connected to. Format
-        /// is:
-        /// `projects/{project}/locations/global/interceptEndpointGroups/{interceptEndpointGroup}`.
+        /// The endpoint group that this association is connected to, for example:
+        /// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+        /// See https://google.aip.dev/124.
         /// </summary>
         [Output("interceptEndpointGroup")]
         public Output<string> InterceptEndpointGroup { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the Intercept Endpoint Group Association.
+        /// The ID to use for the new association, which will become the final
+        /// component of the endpoint group's resource name. If not provided, the
+        /// server will generate a unique ID.
         /// </summary>
         [Output("interceptEndpointGroupAssociationId")]
         public Output<string?> InterceptEndpointGroupAssociationId { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Labels as key value pairs.
+        /// Labels are key/value pairs that help to organize and filter resources.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -125,7 +128,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+        /// The cloud location of the association, currently restricted to `global`.
         /// 
         /// 
         /// - - -
@@ -134,21 +137,26 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The list of locations that are currently supported by the associated Intercept Deployment Group and their state.
+        /// The list of locations where the association is present. This information
+        /// is retrieved from the linked endpoint group, and not configured as part
+        /// of the association itself.
         /// Structure is documented below.
         /// </summary>
         [Output("locationsDetails")]
         public Output<ImmutableArray<Outputs.InterceptEndpointGroupAssociationLocationsDetail>> LocationsDetails { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier. The name of the Intercept Endpoint Group Association.
+        /// The resource name of this endpoint group association, for example:
+        /// `projects/123456789/locations/global/interceptEndpointGroupAssociations/my-eg-association`.
+        /// See https://google.aip.dev/122 for more details.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The VPC network associated. Format:
-        /// `projects/{project}/global/networks/{network}`.
+        /// The VPC network that is associated. for example:
+        /// `projects/123456789/global/networks/my-network`.
+        /// See https://google.aip.dev/124.
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -168,14 +176,17 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Whether reconciling is in progress.
+        /// The current state of the resource does not match the user's intended state,
+        /// and the system is working to reconcile them. This part of the normal
+        /// operation (e.g. adding a new location to the target deployment group).
+        /// See https://google.aip.dev/128.
         /// </summary>
         [Output("reconciling")]
         public Output<bool> Reconciling { get; private set; } = null!;
 
         /// <summary>
         /// (Output)
-        /// The association state in this location.
+        /// The current state of the association in this location.
         /// Possible values:
         /// STATE_UNSPECIFIED
         /// ACTIVE
@@ -185,7 +196,8 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Update time stamp.
+        /// The timestamp when the resource was most recently updated.
+        /// See https://google.aip.dev/148#timestamps.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -242,15 +254,17 @@ namespace Pulumi.Gcp.NetworkSecurity
     public sealed class InterceptEndpointGroupAssociationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Immutable. The Intercept Endpoint Group that this resource is connected to. Format
-        /// is:
-        /// `projects/{project}/locations/global/interceptEndpointGroups/{interceptEndpointGroup}`.
+        /// The endpoint group that this association is connected to, for example:
+        /// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+        /// See https://google.aip.dev/124.
         /// </summary>
         [Input("interceptEndpointGroup", required: true)]
         public Input<string> InterceptEndpointGroup { get; set; } = null!;
 
         /// <summary>
-        /// ID of the Intercept Endpoint Group Association.
+        /// The ID to use for the new association, which will become the final
+        /// component of the endpoint group's resource name. If not provided, the
+        /// server will generate a unique ID.
         /// </summary>
         [Input("interceptEndpointGroupAssociationId")]
         public Input<string>? InterceptEndpointGroupAssociationId { get; set; }
@@ -259,7 +273,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Labels as key value pairs.
+        /// Labels are key/value pairs that help to organize and filter resources.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -270,7 +284,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         }
 
         /// <summary>
-        /// The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+        /// The cloud location of the association, currently restricted to `global`.
         /// 
         /// 
         /// - - -
@@ -279,8 +293,9 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Immutable. The VPC network associated. Format:
-        /// `projects/{project}/global/networks/{network}`.
+        /// The VPC network that is associated. for example:
+        /// `projects/123456789/global/networks/my-network`.
+        /// See https://google.aip.dev/124.
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
@@ -301,7 +316,8 @@ namespace Pulumi.Gcp.NetworkSecurity
     public sealed class InterceptEndpointGroupAssociationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Create time stamp.
+        /// The timestamp when the resource was created.
+        /// See https://google.aip.dev/148#timestamps.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -323,15 +339,17 @@ namespace Pulumi.Gcp.NetworkSecurity
         }
 
         /// <summary>
-        /// Immutable. The Intercept Endpoint Group that this resource is connected to. Format
-        /// is:
-        /// `projects/{project}/locations/global/interceptEndpointGroups/{interceptEndpointGroup}`.
+        /// The endpoint group that this association is connected to, for example:
+        /// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+        /// See https://google.aip.dev/124.
         /// </summary>
         [Input("interceptEndpointGroup")]
         public Input<string>? InterceptEndpointGroup { get; set; }
 
         /// <summary>
-        /// ID of the Intercept Endpoint Group Association.
+        /// The ID to use for the new association, which will become the final
+        /// component of the endpoint group's resource name. If not provided, the
+        /// server will generate a unique ID.
         /// </summary>
         [Input("interceptEndpointGroupAssociationId")]
         public Input<string>? InterceptEndpointGroupAssociationId { get; set; }
@@ -340,7 +358,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Labels as key value pairs.
+        /// Labels are key/value pairs that help to organize and filter resources.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -351,7 +369,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         }
 
         /// <summary>
-        /// The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+        /// The cloud location of the association, currently restricted to `global`.
         /// 
         /// 
         /// - - -
@@ -363,7 +381,9 @@ namespace Pulumi.Gcp.NetworkSecurity
         private InputList<Inputs.InterceptEndpointGroupAssociationLocationsDetailGetArgs>? _locationsDetails;
 
         /// <summary>
-        /// The list of locations that are currently supported by the associated Intercept Deployment Group and their state.
+        /// The list of locations where the association is present. This information
+        /// is retrieved from the linked endpoint group, and not configured as part
+        /// of the association itself.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.InterceptEndpointGroupAssociationLocationsDetailGetArgs> LocationsDetails
@@ -373,14 +393,17 @@ namespace Pulumi.Gcp.NetworkSecurity
         }
 
         /// <summary>
-        /// Identifier. The name of the Intercept Endpoint Group Association.
+        /// The resource name of this endpoint group association, for example:
+        /// `projects/123456789/locations/global/interceptEndpointGroupAssociations/my-eg-association`.
+        /// See https://google.aip.dev/122 for more details.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Immutable. The VPC network associated. Format:
-        /// `projects/{project}/global/networks/{network}`.
+        /// The VPC network that is associated. for example:
+        /// `projects/123456789/global/networks/my-network`.
+        /// See https://google.aip.dev/124.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -410,14 +433,17 @@ namespace Pulumi.Gcp.NetworkSecurity
         }
 
         /// <summary>
-        /// Whether reconciling is in progress.
+        /// The current state of the resource does not match the user's intended state,
+        /// and the system is working to reconcile them. This part of the normal
+        /// operation (e.g. adding a new location to the target deployment group).
+        /// See https://google.aip.dev/128.
         /// </summary>
         [Input("reconciling")]
         public Input<bool>? Reconciling { get; set; }
 
         /// <summary>
         /// (Output)
-        /// The association state in this location.
+        /// The current state of the association in this location.
         /// Possible values:
         /// STATE_UNSPECIFIED
         /// ACTIVE
@@ -427,7 +453,8 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Update time stamp.
+        /// The timestamp when the resource was most recently updated.
+        /// See https://google.aip.dev/148#timestamps.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

@@ -76,7 +76,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var igm_no_tp = new Gcp.Compute.InstanceGroupManager("igm-no-tp", new()
     ///     {
-    ///         Description = "Test instance group manager",
+    ///         Description = "Terraform test instance group manager",
     ///         Name = "my-igm",
     ///         Versions = new[]
     ///         {

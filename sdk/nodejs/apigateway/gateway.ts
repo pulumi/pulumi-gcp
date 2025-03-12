@@ -5,14 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * A consumable API that can be used by multiple Gateways.
- *
- * To get more information about Gateway, see:
- *
- * * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
- *
  * ## Example Usage
  *
  * ## Import

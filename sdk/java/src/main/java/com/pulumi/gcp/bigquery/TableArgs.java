@@ -82,19 +82,9 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
         return this.datasetId;
     }
 
-    /**
-     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `=destroy` or `=update` that would delete the instance will fail.
-     * 
-     */
     @Import(name="deletionProtection")
     private @Nullable Output<Boolean> deletionProtection;
 
-    /**
-     * @return Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `=destroy` or `=update` that would delete the instance will fail.
-     * 
-     */
     public Optional<Output<Boolean>> deletionProtection() {
         return Optional.ofNullable(this.deletionProtection);
     }
@@ -589,25 +579,11 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
             return datasetId(Output.of(datasetId));
         }
 
-        /**
-         * @param deletionProtection Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-         * in state, a `=destroy` or `=update` that would delete the instance will fail.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
             $.deletionProtection = deletionProtection;
             return this;
         }
 
-        /**
-         * @param deletionProtection Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-         * in state, a `=destroy` or `=update` that would delete the instance will fail.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deletionProtection(Boolean deletionProtection) {
             return deletionProtection(Output.of(deletionProtection));
         }

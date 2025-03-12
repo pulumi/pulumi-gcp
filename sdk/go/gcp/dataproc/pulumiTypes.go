@@ -8184,6 +8184,7 @@ type ClusterClusterConfigPreemptibleWorkerConfig struct {
 	// * PREEMPTIBILITY_UNSPECIFIED
 	// * NON_PREEMPTIBLE
 	// * PREEMPTIBLE
+	// * SPOT
 	Preemptibility *string `pulumi:"preemptibility"`
 }
 
@@ -8214,6 +8215,7 @@ type ClusterClusterConfigPreemptibleWorkerConfigArgs struct {
 	// * PREEMPTIBILITY_UNSPECIFIED
 	// * NON_PREEMPTIBLE
 	// * PREEMPTIBLE
+	// * SPOT
 	Preemptibility pulumi.StringPtrInput `pulumi:"preemptibility"`
 }
 
@@ -8325,6 +8327,7 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigOutput) NumInstances() pulumi
 // * PREEMPTIBILITY_UNSPECIFIED
 // * NON_PREEMPTIBLE
 // * PREEMPTIBLE
+// * SPOT
 func (o ClusterClusterConfigPreemptibleWorkerConfigOutput) Preemptibility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfig) *string { return v.Preemptibility }).(pulumi.StringPtrOutput)
 }
@@ -8400,6 +8403,7 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigPtrOutput) NumInstances() pul
 // * PREEMPTIBILITY_UNSPECIFIED
 // * NON_PREEMPTIBLE
 // * PREEMPTIBLE
+// * SPOT
 func (o ClusterClusterConfigPreemptibleWorkerConfigPtrOutput) Preemptibility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigPreemptibleWorkerConfig) *string {
 		if v == nil {

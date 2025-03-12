@@ -186,6 +186,8 @@ namespace Pulumi.Gcp.Compute
         public readonly string AccessMode;
         public readonly string Architecture;
         public readonly ImmutableArray<Outputs.GetDiskAsyncPrimaryDiskResult> AsyncPrimaryDisks;
+        public readonly bool CreateSnapshotBeforeDestroy;
+        public readonly string CreateSnapshotBeforeDestroyPrefix;
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
@@ -304,6 +306,10 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<Outputs.GetDiskAsyncPrimaryDiskResult> asyncPrimaryDisks,
 
+            bool createSnapshotBeforeDestroy,
+
+            string createSnapshotBeforeDestroyPrefix,
+
             string creationTimestamp,
 
             string description,
@@ -387,6 +393,8 @@ namespace Pulumi.Gcp.Compute
             AccessMode = accessMode;
             Architecture = architecture;
             AsyncPrimaryDisks = asyncPrimaryDisks;
+            CreateSnapshotBeforeDestroy = createSnapshotBeforeDestroy;
+            CreateSnapshotBeforeDestroyPrefix = createSnapshotBeforeDestroyPrefix;
             CreationTimestamp = creationTimestamp;
             Description = description;
             DiskEncryptionKeys = diskEncryptionKeys;

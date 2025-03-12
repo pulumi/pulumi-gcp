@@ -36,25 +36,9 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.autoCreateNetwork);
     }
 
-    /**
-     * The alphanumeric ID of the billing account this project
-     * belongs to. The user or service account performing this operation with the provider
-     * must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-     * See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-     * for more details.
-     * 
-     */
     @Import(name="billingAccount")
     private @Nullable Output<String> billingAccount;
 
-    /**
-     * @return The alphanumeric ID of the billing account this project
-     * belongs to. The user or service account performing this operation with the provider
-     * must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-     * See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-     * for more details.
-     * 
-     */
     public Optional<Output<String>> billingAccount() {
         return Optional.ofNullable(this.billingAccount);
     }
@@ -235,31 +219,11 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
             return autoCreateNetwork(Output.of(autoCreateNetwork));
         }
 
-        /**
-         * @param billingAccount The alphanumeric ID of the billing account this project
-         * belongs to. The user or service account performing this operation with the provider
-         * must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-         * See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-         * for more details.
-         * 
-         * @return builder
-         * 
-         */
         public Builder billingAccount(@Nullable Output<String> billingAccount) {
             $.billingAccount = billingAccount;
             return this;
         }
 
-        /**
-         * @param billingAccount The alphanumeric ID of the billing account this project
-         * belongs to. The user or service account performing this operation with the provider
-         * must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-         * See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-         * for more details.
-         * 
-         * @return builder
-         * 
-         */
         public Builder billingAccount(String billingAccount) {
             return billingAccount(Output.of(billingAccount));
         }

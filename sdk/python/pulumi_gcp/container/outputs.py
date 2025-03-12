@@ -6746,7 +6746,7 @@ class ClusterMonitoringConfig(dict):
                  managed_prometheus: Optional['outputs.ClusterMonitoringConfigManagedPrometheus'] = None):
         """
         :param 'ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs' advanced_datapath_observability_config: Configuration for Advanced Datapath Monitoring. Structure is documented below.
-        :param Sequence[str] enable_components: The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET`, `CADVISOR` and `DCGM`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
+        :param Sequence[str] enable_components: The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET`, `CADVISOR`, `DCGM` and `JOBSET`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above. `JOBSET` is only supported in GKE 1.32.1-gke.1357001 and above.
         :param 'ClusterMonitoringConfigManagedPrometheusArgs' managed_prometheus: Configuration for Managed Service for Prometheus. Structure is documented below.
         """
         if advanced_datapath_observability_config is not None:
@@ -6768,7 +6768,7 @@ class ClusterMonitoringConfig(dict):
     @pulumi.getter(name="enableComponents")
     def enable_components(self) -> Optional[Sequence[str]]:
         """
-        The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET`, `CADVISOR` and `DCGM`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
+        The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET`, `CADVISOR`, `DCGM` and `JOBSET`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above. `JOBSET` is only supported in GKE 1.32.1-gke.1357001 and above.
         """
         return pulumi.get(self, "enable_components")
 
@@ -7060,7 +7060,7 @@ class ClusterNodeConfig(dict):
         """
         :param 'ClusterNodeConfigAdvancedMachineFeaturesArgs' advanced_machine_features: Specifies options for controlling
                advanced machine features. Structure is documented below.
-        :param str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+        :param str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         :param 'ClusterNodeConfigConfidentialNodesArgs' confidential_nodes: Configuration for Confidential Nodes feature. Structure is documented below.
         :param 'ClusterNodeConfigContainerdConfigArgs' containerd_config: Parameters to customize containerd runtime. Structure is documented below.
         :param int disk_size_gb: Size of the disk attached to each node, specified
@@ -7083,6 +7083,10 @@ class ClusterNodeConfig(dict):
                Structure is documented below.
         :param Sequence['ClusterNodeConfigGuestAcceleratorArgs'] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
+               **Note**: As of 6.0.0, argument syntax
+               is no longer supported for this field in favor of block syntax.
+               To dynamically set a list of guest accelerators, use dynamic blocks.
+               To set an empty list, use a single `guest_accelerator` block with `count = 0`.
         :param 'ClusterNodeConfigGvnicArgs' gvnic: Google Virtual NIC (gVNIC) is a virtual network interface.
                Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
                gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
@@ -7117,11 +7121,7 @@ class ClusterNodeConfig(dict):
                Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
                [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
         :param str max_run_duration: The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
-        :param Mapping[str, str] metadata: The metadata key/value pairs assigned to instances in
-               the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-               `true` by the API; if `metadata` is set but that default value is not
-               included, the provider will attempt to unset the value. To avoid this, set the
-               value in your config.
+        :param Mapping[str, str] metadata: The metadata key/value pairs assigned to instances in the cluster.
         :param str min_cpu_platform: Minimum CPU platform to be used by this instance.
                The instance may be scheduled on the specified or newer CPU platform. Applicable
                values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
@@ -7140,7 +7140,8 @@ class ClusterNodeConfig(dict):
         :param Mapping[str, str] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
                for how these labels are applied to clusters, node pools and nodes.
         :param Mapping[str, str] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
-        :param 'ClusterNodeConfigSandboxConfigArgs' sandbox_config: Sandbox configuration for this node.
+        :param 'ClusterNodeConfigSandboxConfigArgs' sandbox_config: [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+               Structure is documented below.
         :param Sequence['ClusterNodeConfigSecondaryBootDiskArgs'] secondary_boot_disks: Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
         :param str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
@@ -7152,14 +7153,7 @@ class ClusterNodeConfig(dict):
         :param Sequence[str] storage_pools: The list of Storage Pools where boot disks are provisioned.
         :param Sequence[str] tags: The list of instance tags applied to all nodes. Tags are used to identify
                valid sources or targets for network firewalls.
-        :param Sequence['ClusterNodeConfigTaintArgs'] taints: A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-               to apply to nodes. GKE's API can only set this field on cluster creation.
-               However, GKE will add taints to your nodes if you enable certain features such
-               as GPUs. If this field is set, any diffs on this field will cause the provider to
-               recreate the underlying resource. Taint values can be updated safely in
-               Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-               this field to manage taints. If you do, `lifecycle.ignore_changes` is
-               recommended. Structure is documented below.
+        :param Sequence['ClusterNodeConfigTaintArgs'] taints: List of Kubernetes taints to be applied to each node.
         :param 'ClusterNodeConfigWorkloadMetadataConfigArgs' workload_metadata_config: Metadata configuration to expose to workloads on the node pool.
                Structure is documented below.
         """
@@ -7263,7 +7257,7 @@ class ClusterNodeConfig(dict):
     @pulumi.getter(name="bootDiskKmsKey")
     def boot_disk_kms_key(self) -> Optional[str]:
         """
-        The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+        The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         """
         return pulumi.get(self, "boot_disk_kms_key")
 
@@ -7363,6 +7357,10 @@ class ClusterNodeConfig(dict):
         """
         List of the type and count of accelerator cards attached to the instance.
         Structure documented below.
+        **Note**: As of 6.0.0, argument syntax
+        is no longer supported for this field in favor of block syntax.
+        To dynamically set a list of guest accelerators, use dynamic blocks.
+        To set an empty list, use a single `guest_accelerator` block with `count = 0`.
         """
         return pulumi.get(self, "guest_accelerators")
 
@@ -7488,11 +7486,7 @@ class ClusterNodeConfig(dict):
     @pulumi.getter
     def metadata(self) -> Optional[Mapping[str, str]]:
         """
-        The metadata key/value pairs assigned to instances in
-        the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-        `true` by the API; if `metadata` is set but that default value is not
-        included, the provider will attempt to unset the value. To avoid this, set the
-        value in your config.
+        The metadata key/value pairs assigned to instances in the cluster.
         """
         return pulumi.get(self, "metadata")
 
@@ -7567,7 +7561,8 @@ class ClusterNodeConfig(dict):
     @pulumi.getter(name="sandboxConfig")
     def sandbox_config(self) -> Optional['outputs.ClusterNodeConfigSandboxConfig']:
         """
-        Sandbox configuration for this node.
+        [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+        Structure is documented below.
         """
         return pulumi.get(self, "sandbox_config")
 
@@ -7635,14 +7630,7 @@ class ClusterNodeConfig(dict):
     @pulumi.getter
     def taints(self) -> Optional[Sequence['outputs.ClusterNodeConfigTaint']]:
         """
-        A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-        to apply to nodes. GKE's API can only set this field on cluster creation.
-        However, GKE will add taints to your nodes if you enable certain features such
-        as GPUs. If this field is set, any diffs on this field will cause the provider to
-        recreate the underlying resource. Taint values can be updated safely in
-        Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-        this field to manage taints. If you do, `lifecycle.ignore_changes` is
-        recommended. Structure is documented below.
+        List of Kubernetes taints to be applied to each node.
         """
         return pulumi.get(self, "taints")
 
@@ -8992,7 +8980,7 @@ class ClusterNodeConfigWorkloadMetadataConfig(dict):
         """
         :param str mode: How to expose the node metadata to the workload running on the node.
                Accepted values are:
-               * UNSPECIFIED: Not Set
+               * MODE_UNSPECIFIED: Not Set
                * GCE_METADATA: Expose all Compute Engine metadata to pods.
                * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
         """
@@ -9004,7 +8992,7 @@ class ClusterNodeConfigWorkloadMetadataConfig(dict):
         """
         How to expose the node metadata to the workload running on the node.
         Accepted values are:
-        * UNSPECIFIED: Not Set
+        * MODE_UNSPECIFIED: Not Set
         * GCE_METADATA: Expose all Compute Engine metadata to pods.
         * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
         """
@@ -9086,13 +9074,8 @@ class ClusterNodePool(dict):
                
                - - -
         :param str name_prefix: Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
-        :param 'ClusterNodePoolNetworkConfigArgs' network_config: Configuration for
-               [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
-        :param 'ClusterNodePoolNodeConfigArgs' node_config: Parameters used in creating the default node pool.
-               Generally, this field should not be used at the same time as a
-               `container.NodePool` or a `node_pool` block; this configuration
-               manages the default node pool, which isn't recommended to be used.
-               Structure is documented below.
+        :param 'ClusterNodePoolNetworkConfigArgs' network_config: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+        :param 'ClusterNodePoolNodeConfigArgs' node_config: The configuration of the nodepool
         :param int node_count: The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
         :param Sequence[str] node_locations: The list of zones in which the cluster's nodes
                are located. Nodes must be in the region of their regional cluster or in the
@@ -9218,8 +9201,7 @@ class ClusterNodePool(dict):
     @pulumi.getter(name="networkConfig")
     def network_config(self) -> Optional['outputs.ClusterNodePoolNetworkConfig']:
         """
-        Configuration for
-        [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
+        Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
         """
         return pulumi.get(self, "network_config")
 
@@ -9227,11 +9209,7 @@ class ClusterNodePool(dict):
     @pulumi.getter(name="nodeConfig")
     def node_config(self) -> Optional['outputs.ClusterNodePoolNodeConfig']:
         """
-        Parameters used in creating the default node pool.
-        Generally, this field should not be used at the same time as a
-        `container.NodePool` or a `node_pool` block; this configuration
-        manages the default node pool, which isn't recommended to be used.
-        Structure is documented below.
+        The configuration of the nodepool
         """
         return pulumi.get(self, "node_config")
 
@@ -9957,12 +9935,12 @@ class ClusterNodePoolNetworkConfig(dict):
         """
         :param Sequence['ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs'] additional_node_network_configs: We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
         :param Sequence['ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs'] additional_pod_network_configs: We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
-        :param bool create_pod_range: Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+        :param bool create_pod_range: Whether to create a new range for pod IPs in this node pool. Defaults are provided for pod_range and pod_ipv4_cidr_block if they are not specified.
         :param bool enable_private_nodes: Whether nodes have internal IP addresses only.
         :param 'ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs' network_performance_config: Network bandwidth tier configuration.
         :param 'ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs' pod_cidr_overprovision_config: Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
-        :param str pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
-        :param str pod_range: The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+        :param str pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if create_pod_range is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+        :param str pod_range: The ID of the secondary range for pod IPs. If create_pod_range is true, this ID is used for the new range. If create_pod_range is false, uses an existing secondary range with this ID.
         """
         if additional_node_network_configs is not None:
             pulumi.set(__self__, "additional_node_network_configs", additional_node_network_configs)
@@ -10001,7 +9979,7 @@ class ClusterNodePoolNetworkConfig(dict):
     @pulumi.getter(name="createPodRange")
     def create_pod_range(self) -> Optional[bool]:
         """
-        Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+        Whether to create a new range for pod IPs in this node pool. Defaults are provided for pod_range and pod_ipv4_cidr_block if they are not specified.
         """
         return pulumi.get(self, "create_pod_range")
 
@@ -10033,7 +10011,7 @@ class ClusterNodePoolNetworkConfig(dict):
     @pulumi.getter(name="podIpv4CidrBlock")
     def pod_ipv4_cidr_block(self) -> Optional[str]:
         """
-        The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+        The IP address range for pod IPs in this node pool. Only applicable if create_pod_range is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
         """
         return pulumi.get(self, "pod_ipv4_cidr_block")
 
@@ -10041,7 +10019,7 @@ class ClusterNodePoolNetworkConfig(dict):
     @pulumi.getter(name="podRange")
     def pod_range(self) -> Optional[str]:
         """
-        The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+        The ID of the secondary range for pod IPs. If create_pod_range is true, this ID is used for the new range. If create_pod_range is false, uses an existing secondary range with this ID.
         """
         return pulumi.get(self, "pod_range")
 
@@ -10340,7 +10318,7 @@ class ClusterNodePoolNodeConfig(dict):
         """
         :param 'ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs' advanced_machine_features: Specifies options for controlling
                advanced machine features. Structure is documented below.
-        :param str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+        :param str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         :param 'ClusterNodePoolNodeConfigConfidentialNodesArgs' confidential_nodes: Configuration for Confidential Nodes feature. Structure is documented below.
         :param 'ClusterNodePoolNodeConfigContainerdConfigArgs' containerd_config: Parameters to customize containerd runtime. Structure is documented below.
         :param int disk_size_gb: Size of the disk attached to each node, specified
@@ -10363,6 +10341,10 @@ class ClusterNodePoolNodeConfig(dict):
                Structure is documented below.
         :param Sequence['ClusterNodePoolNodeConfigGuestAcceleratorArgs'] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
+               **Note**: As of 6.0.0, argument syntax
+               is no longer supported for this field in favor of block syntax.
+               To dynamically set a list of guest accelerators, use dynamic blocks.
+               To set an empty list, use a single `guest_accelerator` block with `count = 0`.
         :param 'ClusterNodePoolNodeConfigGvnicArgs' gvnic: Google Virtual NIC (gVNIC) is a virtual network interface.
                Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
                gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
@@ -10397,11 +10379,7 @@ class ClusterNodePoolNodeConfig(dict):
                Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
                [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
         :param str max_run_duration: The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
-        :param Mapping[str, str] metadata: The metadata key/value pairs assigned to instances in
-               the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-               `true` by the API; if `metadata` is set but that default value is not
-               included, the provider will attempt to unset the value. To avoid this, set the
-               value in your config.
+        :param Mapping[str, str] metadata: The metadata key/value pairs assigned to instances in the cluster.
         :param str min_cpu_platform: Minimum CPU platform to be used by this instance.
                The instance may be scheduled on the specified or newer CPU platform. Applicable
                values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
@@ -10420,7 +10398,8 @@ class ClusterNodePoolNodeConfig(dict):
         :param Mapping[str, str] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
                for how these labels are applied to clusters, node pools and nodes.
         :param Mapping[str, str] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
-        :param 'ClusterNodePoolNodeConfigSandboxConfigArgs' sandbox_config: Sandbox configuration for this node.
+        :param 'ClusterNodePoolNodeConfigSandboxConfigArgs' sandbox_config: [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+               Structure is documented below.
         :param Sequence['ClusterNodePoolNodeConfigSecondaryBootDiskArgs'] secondary_boot_disks: Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
         :param str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
@@ -10432,14 +10411,7 @@ class ClusterNodePoolNodeConfig(dict):
         :param Sequence[str] storage_pools: The list of Storage Pools where boot disks are provisioned.
         :param Sequence[str] tags: The list of instance tags applied to all nodes. Tags are used to identify
                valid sources or targets for network firewalls.
-        :param Sequence['ClusterNodePoolNodeConfigTaintArgs'] taints: A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-               to apply to nodes. GKE's API can only set this field on cluster creation.
-               However, GKE will add taints to your nodes if you enable certain features such
-               as GPUs. If this field is set, any diffs on this field will cause the provider to
-               recreate the underlying resource. Taint values can be updated safely in
-               Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-               this field to manage taints. If you do, `lifecycle.ignore_changes` is
-               recommended. Structure is documented below.
+        :param Sequence['ClusterNodePoolNodeConfigTaintArgs'] taints: List of Kubernetes taints to be applied to each node.
         :param 'ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs' workload_metadata_config: Metadata configuration to expose to workloads on the node pool.
                Structure is documented below.
         """
@@ -10543,7 +10515,7 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter(name="bootDiskKmsKey")
     def boot_disk_kms_key(self) -> Optional[str]:
         """
-        The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+        The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         """
         return pulumi.get(self, "boot_disk_kms_key")
 
@@ -10643,6 +10615,10 @@ class ClusterNodePoolNodeConfig(dict):
         """
         List of the type and count of accelerator cards attached to the instance.
         Structure documented below.
+        **Note**: As of 6.0.0, argument syntax
+        is no longer supported for this field in favor of block syntax.
+        To dynamically set a list of guest accelerators, use dynamic blocks.
+        To set an empty list, use a single `guest_accelerator` block with `count = 0`.
         """
         return pulumi.get(self, "guest_accelerators")
 
@@ -10768,11 +10744,7 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter
     def metadata(self) -> Optional[Mapping[str, str]]:
         """
-        The metadata key/value pairs assigned to instances in
-        the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-        `true` by the API; if `metadata` is set but that default value is not
-        included, the provider will attempt to unset the value. To avoid this, set the
-        value in your config.
+        The metadata key/value pairs assigned to instances in the cluster.
         """
         return pulumi.get(self, "metadata")
 
@@ -10847,7 +10819,8 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter(name="sandboxConfig")
     def sandbox_config(self) -> Optional['outputs.ClusterNodePoolNodeConfigSandboxConfig']:
         """
-        Sandbox configuration for this node.
+        [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+        Structure is documented below.
         """
         return pulumi.get(self, "sandbox_config")
 
@@ -10915,14 +10888,7 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter
     def taints(self) -> Optional[Sequence['outputs.ClusterNodePoolNodeConfigTaint']]:
         """
-        A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-        to apply to nodes. GKE's API can only set this field on cluster creation.
-        However, GKE will add taints to your nodes if you enable certain features such
-        as GPUs. If this field is set, any diffs on this field will cause the provider to
-        recreate the underlying resource. Taint values can be updated safely in
-        Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-        this field to manage taints. If you do, `lifecycle.ignore_changes` is
-        recommended. Structure is documented below.
+        List of Kubernetes taints to be applied to each node.
         """
         return pulumi.get(self, "taints")
 
@@ -12272,7 +12238,7 @@ class ClusterNodePoolNodeConfigWorkloadMetadataConfig(dict):
         """
         :param str mode: How to expose the node metadata to the workload running on the node.
                Accepted values are:
-               * UNSPECIFIED: Not Set
+               * MODE_UNSPECIFIED: Not Set
                * GCE_METADATA: Expose all Compute Engine metadata to pods.
                * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
         """
@@ -12284,7 +12250,7 @@ class ClusterNodePoolNodeConfigWorkloadMetadataConfig(dict):
         """
         How to expose the node metadata to the workload running on the node.
         Accepted values are:
-        * UNSPECIFIED: Not Set
+        * MODE_UNSPECIFIED: Not Set
         * GCE_METADATA: Expose all Compute Engine metadata to pods.
         * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
         """
@@ -12727,9 +12693,7 @@ class ClusterPrivateClusterConfig(dict):
                creating a private endpoint on the cluster. In a private cluster, nodes only
                have RFC 1918 private addresses and communicate with the master's private
                endpoint via private networking.
-        :param 'ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs' master_global_access_config: Controls cluster master global
-               access settings. If unset, the provider will no longer manage this field and will
-               not modify the previously-set value. Structure is documented below.
+        :param 'ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs' master_global_access_config: Controls cluster master global access settings.
         :param str master_ipv4_cidr_block: The IP range in CIDR notation to use for
                the hosted master network. This range will be used for assigning private IP
                addresses to the cluster master(s) and the ILB VIP. This range must not overlap
@@ -12789,9 +12753,7 @@ class ClusterPrivateClusterConfig(dict):
     @pulumi.getter(name="masterGlobalAccessConfig")
     def master_global_access_config(self) -> Optional['outputs.ClusterPrivateClusterConfigMasterGlobalAccessConfig']:
         """
-        Controls cluster master global
-        access settings. If unset, the provider will no longer manage this field and will
-        not modify the previously-set value. Structure is documented below.
+        Controls cluster master global access settings.
         """
         return pulumi.get(self, "master_global_access_config")
 
@@ -17790,7 +17752,7 @@ class GetClusterMonitoringConfigResult(dict):
                  managed_prometheuses: Sequence['outputs.GetClusterMonitoringConfigManagedPrometheusResult']):
         """
         :param Sequence['GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs'] advanced_datapath_observability_configs: Configuration of Advanced Datapath Observability features.
-        :param Sequence[str] enable_components: GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET, WORKLOADS, KUBELET, CADVISOR and DCGM.
+        :param Sequence[str] enable_components: GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET, WORKLOADS, KUBELET, CADVISOR, DCGM and JOBSET.
         :param Sequence['GetClusterMonitoringConfigManagedPrometheusArgs'] managed_prometheuses: Configuration for Google Cloud Managed Services for Prometheus.
         """
         pulumi.set(__self__, "advanced_datapath_observability_configs", advanced_datapath_observability_configs)
@@ -17809,7 +17771,7 @@ class GetClusterMonitoringConfigResult(dict):
     @pulumi.getter(name="enableComponents")
     def enable_components(self) -> Sequence[str]:
         """
-        GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET, WORKLOADS, KUBELET, CADVISOR and DCGM.
+        GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET, WORKLOADS, KUBELET, CADVISOR, DCGM and JOBSET.
         """
         return pulumi.get(self, "enable_components")
 

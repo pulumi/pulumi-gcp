@@ -52,8 +52,8 @@ namespace Pulumi.Gcp.DataCatalog
     ///     var basicEntryGroup = new Gcp.DataCatalog.EntryGroup("basic_entry_group", new()
     ///     {
     ///         EntryGroupId = "my_group",
-    ///         DisplayName = "entry group",
-    ///         Description = "example entry group",
+    ///         DisplayName = "terraform entry group",
+    ///         Description = "entry group created by Terraform",
     ///     });
     /// 
     /// });

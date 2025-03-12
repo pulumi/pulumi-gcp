@@ -192,6 +192,20 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.DiskAsyncPrimaryDisk?> AsyncPrimaryDisk { get; private set; } = null!;
 
         /// <summary>
+        /// If set to true, a snapshot of the disk will be created before it is destroyed.
+        /// If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+        /// The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+        /// </summary>
+        [Output("createSnapshotBeforeDestroy")]
+        public Output<bool?> CreateSnapshotBeforeDestroy { get; private set; } = null!;
+
+        /// <summary>
+        /// This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+        /// </summary>
+        [Output("createSnapshotBeforeDestroyPrefix")]
+        public Output<string?> CreateSnapshotBeforeDestroyPrefix { get; private set; } = null!;
+
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
@@ -387,19 +401,6 @@ namespace Pulumi.Gcp.Compute
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
-        /// <summary>
-        /// Size of the persistent disk, specified in GB. You can specify this
-        /// field when creating a persistent disk using the `image` or
-        /// `snapshot` parameter, or specify it alone to create an empty
-        /// persistent disk.
-        /// If you specify this field along with `image` or `snapshot`,
-        /// the value must not be less than the size of the image
-        /// or the size of the snapshot.
-        /// ~&gt;**NOTE** If you change the size, the provider updates the disk size
-        /// if upsizing is detected but recreates the disk if downsizing is requested.
-        /// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-        /// and recreating.
-        /// </summary>
         [Output("size")]
         public Output<int> Size { get; private set; } = null!;
 
@@ -610,6 +611,20 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.DiskAsyncPrimaryDiskArgs>? AsyncPrimaryDisk { get; set; }
 
         /// <summary>
+        /// If set to true, a snapshot of the disk will be created before it is destroyed.
+        /// If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+        /// The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+        /// </summary>
+        [Input("createSnapshotBeforeDestroy")]
+        public Input<bool>? CreateSnapshotBeforeDestroy { get; set; }
+
+        /// <summary>
+        /// This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+        /// </summary>
+        [Input("createSnapshotBeforeDestroyPrefix")]
+        public Input<string>? CreateSnapshotBeforeDestroyPrefix { get; set; }
+
+        /// <summary>
         /// An optional description of this resource. Provide this property when
         /// you create the resource.
         /// </summary>
@@ -779,19 +794,6 @@ namespace Pulumi.Gcp.Compute
             set => _resourcePolicies = value;
         }
 
-        /// <summary>
-        /// Size of the persistent disk, specified in GB. You can specify this
-        /// field when creating a persistent disk using the `image` or
-        /// `snapshot` parameter, or specify it alone to create an empty
-        /// persistent disk.
-        /// If you specify this field along with `image` or `snapshot`,
-        /// the value must not be less than the size of the image
-        /// or the size of the snapshot.
-        /// ~&gt;**NOTE** If you change the size, the provider updates the disk size
-        /// if upsizing is detected but recreates the disk if downsizing is requested.
-        /// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-        /// and recreating.
-        /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 
@@ -911,6 +913,20 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("asyncPrimaryDisk")]
         public Input<Inputs.DiskAsyncPrimaryDiskGetArgs>? AsyncPrimaryDisk { get; set; }
+
+        /// <summary>
+        /// If set to true, a snapshot of the disk will be created before it is destroyed.
+        /// If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+        /// The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+        /// </summary>
+        [Input("createSnapshotBeforeDestroy")]
+        public Input<bool>? CreateSnapshotBeforeDestroy { get; set; }
+
+        /// <summary>
+        /// This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+        /// </summary>
+        [Input("createSnapshotBeforeDestroyPrefix")]
+        public Input<string>? CreateSnapshotBeforeDestroyPrefix { get; set; }
 
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -1152,19 +1168,6 @@ namespace Pulumi.Gcp.Compute
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
-        /// <summary>
-        /// Size of the persistent disk, specified in GB. You can specify this
-        /// field when creating a persistent disk using the `image` or
-        /// `snapshot` parameter, or specify it alone to create an empty
-        /// persistent disk.
-        /// If you specify this field along with `image` or `snapshot`,
-        /// the value must not be less than the size of the image
-        /// or the size of the snapshot.
-        /// ~&gt;**NOTE** If you change the size, the provider updates the disk size
-        /// if upsizing is detected but recreates the disk if downsizing is requested.
-        /// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-        /// and recreating.
-        /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 

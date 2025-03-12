@@ -16,17 +16,9 @@ public final class TunnelIamMemberConditionArgs extends com.pulumi.resources.Res
 
     public static final TunnelIamMemberConditionArgs Empty = new TunnelIamMemberConditionArgs();
 
-    /**
-     * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-     * 
-     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
-    /**
-     * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-     * 
-     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
@@ -87,23 +79,11 @@ public final class TunnelIamMemberConditionArgs extends com.pulumi.resources.Res
             $ = new TunnelIamMemberConditionArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param description An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
-        /**
-         * @param description An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(String description) {
             return description(Output.of(description));
         }

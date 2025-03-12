@@ -1593,10 +1593,12 @@ if not MYPY:
         preferred_location: NotRequired[pulumi.Input[str]]
         """
         Zone that will remain operational when connection between the two zones is lost.
+        Specify the zone in the following format: projects/{project}/locations/{location}.
         """
         secondary_location: NotRequired[pulumi.Input[str]]
         """
         Additional zone for a higher level of availability and load balancing.
+        Specify the zone in the following format: projects/{project}/locations/{location}.
         """
 elif False:
     PrivateCloudManagementClusterStretchedClusterConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -1608,7 +1610,9 @@ class PrivateCloudManagementClusterStretchedClusterConfigArgs:
                  secondary_location: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] preferred_location: Zone that will remain operational when connection between the two zones is lost.
+               Specify the zone in the following format: projects/{project}/locations/{location}.
         :param pulumi.Input[str] secondary_location: Additional zone for a higher level of availability and load balancing.
+               Specify the zone in the following format: projects/{project}/locations/{location}.
         """
         if preferred_location is not None:
             pulumi.set(__self__, "preferred_location", preferred_location)
@@ -1620,6 +1624,7 @@ class PrivateCloudManagementClusterStretchedClusterConfigArgs:
     def preferred_location(self) -> Optional[pulumi.Input[str]]:
         """
         Zone that will remain operational when connection between the two zones is lost.
+        Specify the zone in the following format: projects/{project}/locations/{location}.
         """
         return pulumi.get(self, "preferred_location")
 
@@ -1632,6 +1637,7 @@ class PrivateCloudManagementClusterStretchedClusterConfigArgs:
     def secondary_location(self) -> Optional[pulumi.Input[str]]:
         """
         Additional zone for a higher level of availability and load balancing.
+        Specify the zone in the following format: projects/{project}/locations/{location}.
         """
         return pulumi.get(self, "secondary_location")
 

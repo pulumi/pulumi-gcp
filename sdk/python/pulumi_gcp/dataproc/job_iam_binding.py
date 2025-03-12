@@ -42,10 +42,6 @@ class JobIAMBindingArgs:
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
                
                `dataproc.JobIAMPolicy` only:
-        :param pulumi.Input[str] project: The project in which the job belongs. If it
-               is not provided, the provider will use a default.
-        :param pulumi.Input[str] region: The region in which the job belongs. If it
-               is not provided, the provider will use a default.
         """
         pulumi.set(__self__, "job_id", job_id)
         pulumi.set(__self__, "members", members)
@@ -113,10 +109,6 @@ class JobIAMBindingArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The project in which the job belongs. If it
-        is not provided, the provider will use a default.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -126,10 +118,6 @@ class JobIAMBindingArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which the job belongs. If it
-        is not provided, the provider will use a default.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -158,10 +146,6 @@ class _JobIAMBindingState:
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        :param pulumi.Input[str] project: The project in which the job belongs. If it
-               is not provided, the provider will use a default.
-        :param pulumi.Input[str] region: The region in which the job belongs. If it
-               is not provided, the provider will use a default.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -235,10 +219,6 @@ class _JobIAMBindingState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The project in which the job belongs. If it
-        is not provided, the provider will use a default.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -248,10 +228,6 @@ class _JobIAMBindingState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which the job belongs. If it
-        is not provided, the provider will use a default.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -416,10 +392,6 @@ class JobIAMBinding(pulumi.CustomResource):
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        :param pulumi.Input[str] project: The project in which the job belongs. If it
-               is not provided, the provider will use a default.
-        :param pulumi.Input[str] region: The region in which the job belongs. If it
-               is not provided, the provider will use a default.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -627,10 +599,6 @@ class JobIAMBinding(pulumi.CustomResource):
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        :param pulumi.Input[str] project: The project in which the job belongs. If it
-               is not provided, the provider will use a default.
-        :param pulumi.Input[str] region: The region in which the job belongs. If it
-               is not provided, the provider will use a default.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -686,19 +654,11 @@ class JobIAMBinding(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The project in which the job belongs. If it
-        is not provided, the provider will use a default.
-        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which the job belongs. If it
-        is not provided, the provider will use a default.
-        """
         return pulumi.get(self, "region")
 
     @property

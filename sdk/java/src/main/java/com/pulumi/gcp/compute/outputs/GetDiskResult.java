@@ -25,6 +25,8 @@ public final class GetDiskResult {
     private String accessMode;
     private String architecture;
     private List<GetDiskAsyncPrimaryDisk> asyncPrimaryDisks;
+    private Boolean createSnapshotBeforeDestroy;
+    private String createSnapshotBeforeDestroyPrefix;
     /**
      * @return Creation timestamp in RFC3339 text format.
      * 
@@ -163,6 +165,12 @@ public final class GetDiskResult {
     }
     public List<GetDiskAsyncPrimaryDisk> asyncPrimaryDisks() {
         return this.asyncPrimaryDisks;
+    }
+    public Boolean createSnapshotBeforeDestroy() {
+        return this.createSnapshotBeforeDestroy;
+    }
+    public String createSnapshotBeforeDestroyPrefix() {
+        return this.createSnapshotBeforeDestroyPrefix;
     }
     /**
      * @return Creation timestamp in RFC3339 text format.
@@ -385,6 +393,8 @@ public final class GetDiskResult {
         private String accessMode;
         private String architecture;
         private List<GetDiskAsyncPrimaryDisk> asyncPrimaryDisks;
+        private Boolean createSnapshotBeforeDestroy;
+        private String createSnapshotBeforeDestroyPrefix;
         private String creationTimestamp;
         private String description;
         private List<GetDiskDiskEncryptionKey> diskEncryptionKeys;
@@ -431,6 +441,8 @@ public final class GetDiskResult {
     	      this.accessMode = defaults.accessMode;
     	      this.architecture = defaults.architecture;
     	      this.asyncPrimaryDisks = defaults.asyncPrimaryDisks;
+    	      this.createSnapshotBeforeDestroy = defaults.createSnapshotBeforeDestroy;
+    	      this.createSnapshotBeforeDestroyPrefix = defaults.createSnapshotBeforeDestroyPrefix;
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.description = defaults.description;
     	      this.diskEncryptionKeys = defaults.diskEncryptionKeys;
@@ -499,6 +511,22 @@ public final class GetDiskResult {
         }
         public Builder asyncPrimaryDisks(GetDiskAsyncPrimaryDisk... asyncPrimaryDisks) {
             return asyncPrimaryDisks(List.of(asyncPrimaryDisks));
+        }
+        @CustomType.Setter
+        public Builder createSnapshotBeforeDestroy(Boolean createSnapshotBeforeDestroy) {
+            if (createSnapshotBeforeDestroy == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "createSnapshotBeforeDestroy");
+            }
+            this.createSnapshotBeforeDestroy = createSnapshotBeforeDestroy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder createSnapshotBeforeDestroyPrefix(String createSnapshotBeforeDestroyPrefix) {
+            if (createSnapshotBeforeDestroyPrefix == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "createSnapshotBeforeDestroyPrefix");
+            }
+            this.createSnapshotBeforeDestroyPrefix = createSnapshotBeforeDestroyPrefix;
+            return this;
         }
         @CustomType.Setter
         public Builder creationTimestamp(String creationTimestamp) {
@@ -845,6 +873,8 @@ public final class GetDiskResult {
             _resultValue.accessMode = accessMode;
             _resultValue.architecture = architecture;
             _resultValue.asyncPrimaryDisks = asyncPrimaryDisks;
+            _resultValue.createSnapshotBeforeDestroy = createSnapshotBeforeDestroy;
+            _resultValue.createSnapshotBeforeDestroyPrefix = createSnapshotBeforeDestroyPrefix;
             _resultValue.creationTimestamp = creationTimestamp;
             _resultValue.description = description;
             _resultValue.diskEncryptionKeys = diskEncryptionKeys;

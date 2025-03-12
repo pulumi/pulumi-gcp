@@ -218,7 +218,7 @@ import javax.annotation.Nullable;
  *         var org = new Organization("org", OrganizationArgs.builder()
  *             .analyticsRegion("us-central1")
  *             .displayName("apigee-org")
- *             .description("Auto-provisioned Apigee Org.")
+ *             .description("Terraform-provisioned Apigee Org.")
  *             .projectId(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
  *             .authorizedNetwork(apigeeNetwork.id())
  *             .runtimeDatabaseEncryptionKeyName(apigeeKey.id())

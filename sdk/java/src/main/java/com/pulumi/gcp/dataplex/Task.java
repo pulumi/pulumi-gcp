@@ -67,13 +67,13 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var example = new Lake("example", LakeArgs.builder()
- *             .name("tf-test-lake_72490")
+ *             .name("tf-test-lake_34962")
  *             .location("us-central1")
  *             .project("my-project-name")
  *             .build());
  * 
  *         var exampleTask = new Task("exampleTask", TaskArgs.builder()
- *             .taskId("tf-test-task_89605")
+ *             .taskId("tf-test-task_74000")
  *             .location("us-central1")
  *             .lake(example.name())
  *             .description("Test Task Basic")
@@ -143,20 +143,20 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         // VPC network
  *         var default_ = new Network("default", NetworkArgs.builder()
- *             .name("tf-test-workstation-cluster_56730")
+ *             .name("tf-test-workstation-cluster_75125")
  *             .autoCreateSubnetworks(true)
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var exampleSpark = new Lake("exampleSpark", LakeArgs.builder()
- *             .name("tf-test-lake_95154")
+ *             .name("tf-test-lake_88722")
  *             .location("us-central1")
  *             .project("my-project-name")
  *             .build());
  * 
  *         var exampleSparkTask = new Task("exampleSparkTask", TaskArgs.builder()
- *             .taskId("tf-test-task_64336")
+ *             .taskId("tf-test-task_39249")
  *             .location("us-central1")
  *             .lake(exampleSpark.name())
  *             .triggerSpec(TaskTriggerSpecArgs.builder()
@@ -240,20 +240,20 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         // VPC network
  *         var default_ = new Network("default", NetworkArgs.builder()
- *             .name("tf-test-workstation-cluster_34962")
+ *             .name("tf-test-workstation-cluster_74391")
  *             .autoCreateSubnetworks(true)
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var exampleNotebook = new Lake("exampleNotebook", LakeArgs.builder()
- *             .name("tf-test-lake_74000")
+ *             .name("tf-test-lake_16511")
  *             .location("us-central1")
  *             .project("my-project-name")
  *             .build());
  * 
  *         var exampleNotebookTask = new Task("exampleNotebookTask", TaskArgs.builder()
- *             .taskId("tf-test-task_75125")
+ *             .taskId("tf-test-task_8493")
  *             .location("us-central1")
  *             .lake(exampleNotebook.name())
  *             .triggerSpec(TaskTriggerSpecArgs.builder()

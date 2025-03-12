@@ -15,6 +15,8 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/storage/docs/authentication/managing-hmackeys)
  *
+ * On import, the `secret` value will not be retrieved.
+ *
  * ## Example Usage
  *
  * ### Storage Hmac Key
@@ -25,7 +27,7 @@ import * as utilities from "../utilities";
  *
  * // Create a new service account
  * const serviceAccount = new gcp.serviceaccount.Account("service_account", {accountId: "my-svc-acc"});
- * //Create the HMAC key for the associated service account
+ * //Create the HMAC key for the associated service account 
  * const key = new gcp.storage.HmacKey("key", {serviceAccountEmail: serviceAccount.email});
  * ```
  *

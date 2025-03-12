@@ -266,7 +266,7 @@ class KeyRingIAMBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        With IAM Conditions:
+        With IAM Conditions (beta):
 
         ```python
         import pulumi
@@ -301,7 +301,7 @@ class KeyRingIAMBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        With IAM Conditions:
+        With IAM Conditions (beta):
 
         ```python
         import pulumi
@@ -330,7 +330,7 @@ class KeyRingIAMBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        With IAM Conditions:
+        With IAM Conditions (beta):
 
         ```python
         import pulumi
@@ -359,7 +359,7 @@ class KeyRingIAMBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        With IAM Conditions:
+        With IAM Conditions (beta):
 
         ```python
         import pulumi
@@ -388,7 +388,7 @@ class KeyRingIAMBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        With IAM Conditions:
+        With IAM Conditions (beta):
 
         ```python
         import pulumi
@@ -486,7 +486,7 @@ class KeyRingIAMBinding(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        With IAM Conditions:
+        With IAM Conditions (beta):
 
         ```python
         import pulumi
@@ -521,7 +521,7 @@ class KeyRingIAMBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        With IAM Conditions:
+        With IAM Conditions (beta):
 
         ```python
         import pulumi
@@ -550,7 +550,7 @@ class KeyRingIAMBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        With IAM Conditions:
+        With IAM Conditions (beta):
 
         ```python
         import pulumi
@@ -579,7 +579,7 @@ class KeyRingIAMBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        With IAM Conditions:
+        With IAM Conditions (beta):
 
         ```python
         import pulumi
@@ -608,7 +608,7 @@ class KeyRingIAMBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        With IAM Conditions:
+        With IAM Conditions (beta):
 
         ```python
         import pulumi

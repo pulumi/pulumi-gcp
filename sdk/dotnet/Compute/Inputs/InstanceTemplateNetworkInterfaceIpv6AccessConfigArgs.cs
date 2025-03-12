@@ -25,8 +25,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? ExternalIpv6PrefixLength { get; set; }
 
         /// <summary>
-        /// The name of the instance template. If you leave
-        /// this blank, the provider will auto-generate a unique name.
+        /// The name of this access configuration.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

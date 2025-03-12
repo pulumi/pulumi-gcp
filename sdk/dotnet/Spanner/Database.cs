@@ -10,20 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Spanner
 {
     /// <summary>
-    /// A Cloud Spanner Database which is hosted on a Spanner instance.
-    /// 
-    /// To get more information about Database, see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
-    /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/spanner/)
-    /// 
-    /// &gt; **Warning:** On newer versions of the provider, you must explicitly set `deletion_protection=false`
-    /// (and run `pulumi up` to write the field to state) in order to destroy an instance.
-    /// It is recommended to not set this field (or set it to true) until you're ready to destroy.
-    /// On older versions, it is strongly recommended to set `lifecycle { prevent_destroy = true }`
-    /// on databases in order to prevent accidental data loss.
-    /// 
     /// ## Example Usage
     /// 
     /// ### Spanner Database Basic
@@ -109,10 +95,6 @@ namespace Pulumi.Gcp.Spanner
         [Output("ddls")]
         public Output<ImmutableArray<string>> Ddls { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-        /// in state, a `destroy` or `update` that would delete the instance will fail.
-        /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
@@ -234,10 +216,6 @@ namespace Pulumi.Gcp.Spanner
             set => _ddls = value;
         }
 
-        /// <summary>
-        /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-        /// in state, a `destroy` or `update` that would delete the instance will fail.
-        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -315,10 +293,6 @@ namespace Pulumi.Gcp.Spanner
             set => _ddls = value;
         }
 
-        /// <summary>
-        /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-        /// in state, a `destroy` or `update` that would delete the instance will fail.
-        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 

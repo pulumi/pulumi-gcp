@@ -117,9 +117,6 @@ export class Policy extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly alternativeNameServerConfig!: pulumi.Output<outputs.dns.PolicyAlternativeNameServerConfig | undefined>;
-    /**
-     * A textual description field. Defaults to 'Managed by Pulumi'.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Allows networks bound to this policy to receive DNS queries sent
@@ -197,9 +194,6 @@ export interface PolicyState {
      * Structure is documented below.
      */
     alternativeNameServerConfig?: pulumi.Input<inputs.dns.PolicyAlternativeNameServerConfig>;
-    /**
-     * A textual description field. Defaults to 'Managed by Pulumi'.
-     */
     description?: pulumi.Input<string>;
     /**
      * Allows networks bound to this policy to receive DNS queries sent
@@ -243,9 +237,6 @@ export interface PolicyArgs {
      * Structure is documented below.
      */
     alternativeNameServerConfig?: pulumi.Input<inputs.dns.PolicyAlternativeNameServerConfig>;
-    /**
-     * A textual description field. Defaults to 'Managed by Pulumi'.
-     */
     description?: pulumi.Input<string>;
     /**
      * Allows networks bound to this policy to receive DNS queries sent
