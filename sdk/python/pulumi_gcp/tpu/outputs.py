@@ -666,15 +666,19 @@ class V2VmNetworkEndpointAccessConfig(dict):
 class V2VmSchedulingConfig(dict):
     def __init__(__self__, *,
                  preemptible: Optional[bool] = None,
-                 reserved: Optional[bool] = None):
+                 reserved: Optional[bool] = None,
+                 spot: Optional[bool] = None):
         """
         :param bool preemptible: Defines whether the node is preemptible.
         :param bool reserved: Whether the node is created under a reservation.
+        :param bool spot: Optional. Defines whether the node is Spot VM.
         """
         if preemptible is not None:
             pulumi.set(__self__, "preemptible", preemptible)
         if reserved is not None:
             pulumi.set(__self__, "reserved", reserved)
+        if spot is not None:
+            pulumi.set(__self__, "spot", spot)
 
     @property
     @pulumi.getter
@@ -691,6 +695,14 @@ class V2VmSchedulingConfig(dict):
         Whether the node is created under a reservation.
         """
         return pulumi.get(self, "reserved")
+
+    @property
+    @pulumi.getter
+    def spot(self) -> Optional[bool]:
+        """
+        Optional. Defines whether the node is Spot VM.
+        """
+        return pulumi.get(self, "spot")
 
 
 @pulumi.output_type

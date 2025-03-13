@@ -69,6 +69,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Whether the instance is spot. If this is set as SPOT.
         /// </summary>
         public readonly string? ProvisioningModel;
+        /// <summary>
+        /// Specifies the timestamp, when the instance will be terminated,
+        /// in RFC3339 text format. If specified, the instance termination action
+        /// will be performed at the termination time.
+        /// </summary>
+        public readonly string? TerminationTime;
 
         [OutputConstructor]
         private InstanceFromMachineImageScheduling(
@@ -98,7 +104,9 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             bool? preemptible,
 
-            string? provisioningModel)
+            string? provisioningModel,
+
+            string? terminationTime)
         {
             AutomaticRestart = automaticRestart;
             AvailabilityDomain = availabilityDomain;
@@ -114,6 +122,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             OnInstanceStopAction = onInstanceStopAction;
             Preemptible = preemptible;
             ProvisioningModel = provisioningModel;
+            TerminationTime = terminationTime;
         }
     }
 }

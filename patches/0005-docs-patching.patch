@@ -306,7 +306,7 @@ index 7007e82bb..3051111fd 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/certificate_manager_certificate.html.markdown b/website/docs/r/certificate_manager_certificate.html.markdown
-index ad1e9290a..45d7564ec 100644
+index ac4492743..0cf02faf2 100644
 --- a/website/docs/r/certificate_manager_certificate.html.markdown
 +++ b/website/docs/r/certificate_manager_certificate.html.markdown
 @@ -158,19 +158,38 @@ resource "google_privateca_certificate_authority" "ca_authority" {
@@ -353,7 +353,7 @@ index ad1e9290a..45d7564ec 100644
  ```
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=certificate_manager_self_managed_certificate_regional&open_in_editor=main.tf" target="_blank">
-@@ -420,6 +439,7 @@ The following arguments are supported:
+@@ -441,6 +460,7 @@ The following arguments are supported:
    (Optional)
    The certificate chain in PEM-encoded form.
    Leaf certificate comes first, followed by intermediate ones if any.
@@ -577,7 +577,7 @@ index eea0057a2..726c86dd3 100644
  ## Example Usage - Backend Bucket Signed Url Key
  
 diff --git a/website/docs/r/compute_backend_service.html.markdown b/website/docs/r/compute_backend_service.html.markdown
-index 522eca68d..e8660ed81 100644
+index 6728b94ec..c8c3c65d0 100644
 --- a/website/docs/r/compute_backend_service.html.markdown
 +++ b/website/docs/r/compute_backend_service.html.markdown
 @@ -38,7 +38,6 @@ To get more information about BackendService, see:
@@ -605,7 +605,7 @@ index 4c0f23475..e298f9d8e 100644
  ## Example Usage - Backend Service Signed Url Key
  
 diff --git a/website/docs/r/compute_disk.html.markdown b/website/docs/r/compute_disk.html.markdown
-index 2818372cc..5df6b203d 100644
+index 8a0a9f896..a9d030759 100644
 --- a/website/docs/r/compute_disk.html.markdown
 +++ b/website/docs/r/compute_disk.html.markdown
 @@ -45,9 +45,6 @@ To get more information about Disk, see:
@@ -669,7 +669,7 @@ index c02f73582..1f47b804b 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance.html.markdown b/website/docs/r/compute_instance.html.markdown
-index 1a5e56b0f..c01c0d65c 100644
+index 0b4220685..f0fef3857 100644
 --- a/website/docs/r/compute_instance.html.markdown
 +++ b/website/docs/r/compute_instance.html.markdown
 @@ -140,7 +140,7 @@ The following arguments are supported:
@@ -825,7 +825,7 @@ index 3abfdbb98..c6fade74b 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance_template.html.markdown b/website/docs/r/compute_instance_template.html.markdown
-index 5740d8b01..3cc38af3f 100644
+index ec227ad15..e6356b4d5 100644
 --- a/website/docs/r/compute_instance_template.html.markdown
 +++ b/website/docs/r/compute_instance_template.html.markdown
 @@ -183,12 +183,11 @@ resource "google_compute_instance_template" "foobar" {
@@ -1090,18 +1090,14 @@ index ff0556f26..42a358a8a 100644
  
  ## Example Usage
 diff --git a/website/docs/r/compute_region_disk.html.markdown b/website/docs/r/compute_region_disk.html.markdown
-index 768c28a23..a5948c0e1 100644
+index ed146ae48..303017f5c 100644
 --- a/website/docs/r/compute_region_disk.html.markdown
 +++ b/website/docs/r/compute_region_disk.html.markdown
-@@ -45,9 +45,8 @@ To get more information about RegionDisk, see:
- * How-to Guides
-     * [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
+@@ -47,7 +47,6 @@ To get more information about RegionDisk, see:
  
--~> **Warning:** All arguments including the following potentially sensitive
--values will be stored in the raw state as plain text: `disk_encryption_key.raw_key`.
+ ~> **Warning:** All arguments including the following potentially sensitive
+ values will be stored in the raw state as plain text: `disk_encryption_key.raw_key`, `disk_encryption_key.rsa_encrypted_key`.
 -[Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
-+~> **Warning:** All arguments including `disk_encryption_key.raw_key` will be stored in the raw
-+state as plain-text.
  
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=region_disk_basic&open_in_editor=main.tf" target="_blank">
@@ -1523,7 +1519,7 @@ index ce8b687dc..532f74446 100644
  resource "google_compute_ssl_certificate" "default" {
    name_prefix = "my-certificate-"
 diff --git a/website/docs/r/compute_subnetwork.html.markdown b/website/docs/r/compute_subnetwork.html.markdown
-index afa98a25e..786015461 100644
+index 6d1f875a0..0dd7b5edb 100644
 --- a/website/docs/r/compute_subnetwork.html.markdown
 +++ b/website/docs/r/compute_subnetwork.html.markdown
 @@ -394,9 +394,6 @@ The following arguments are supported:
@@ -1581,7 +1577,7 @@ index 85fd0b322..177058967 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=vpn_tunnel_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index f8f659a21..e33fa3e1b 100644
+index 9fa27e165..8a7d567a2 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -13,15 +13,12 @@ To get more information about GKE clusters, see:

@@ -19,6 +19,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * EndpointPolicy is a resource that helps apply desired configuration on the endpoints that match specific criteria.
+ * 
+ * To get more information about EndpointPolicy, see:
+ * 
+ * * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1beta1/projects.locations.endpointPolicies)
+ * 
  * ## Example Usage
  * 
  * ### Network Services Endpoint Policy Basic

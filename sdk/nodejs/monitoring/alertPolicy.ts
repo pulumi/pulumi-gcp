@@ -125,6 +125,30 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Monitoring Alert Policy Sql Condition
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const alertPolicy = new gcp.monitoring.AlertPolicy("alert_policy", {
+ *     displayName: "My Alert Policy",
+ *     combiner: "OR",
+ *     conditions: [{
+ *         displayName: "minutes row count",
+ *         conditionSql: {
+ *             query: "SELECT severity, resource FROM my_project.global._Default._AllLogs WHERE severity IS NOT NULL",
+ *             minutes: {
+ *                 periodicity: 600,
+ *             },
+ *             rowCountTest: {
+ *                 comparison: "COMPARISON_GT",
+ *                 threshold: 0,
+ *             },
+ *         },
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *

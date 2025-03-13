@@ -17,14 +17,14 @@ public final class ChannelArgs extends com.pulumi.resources.ResourceArgs {
     public static final ChannelArgs Empty = new ChannelArgs();
 
     /**
-     * Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
+     * Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      * 
      */
     @Import(name="cryptoKeyName")
     private @Nullable Output<String> cryptoKeyName;
 
     /**
-     * @return Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
+     * @return Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      * 
      */
     public Optional<Output<String>> cryptoKeyName() {
@@ -34,6 +34,8 @@ public final class ChannelArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The location for the resource
      * 
+     * ***
+     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
@@ -41,24 +43,22 @@ public final class ChannelArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The location for the resource
      * 
+     * ***
+     * 
      */
     public Output<String> location() {
         return this.location;
     }
 
     /**
-     * Required. The resource name of the channel. Must be unique within the location on the project.
-     * 
-     * ***
+     * The resource name of the channel. Must be unique within the location on the project.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Required. The resource name of the channel. Must be unique within the location on the project.
-     * 
-     * ***
+     * @return The resource name of the channel. Must be unique within the location on the project.
      * 
      */
     public Optional<Output<String>> name() {
@@ -66,14 +66,16 @@ public final class ChannelArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Optional<Output<String>> project() {
@@ -124,7 +126,7 @@ public final class ChannelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cryptoKeyName Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
+         * @param cryptoKeyName Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
          * 
          * @return builder
          * 
@@ -135,7 +137,7 @@ public final class ChannelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cryptoKeyName Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
+         * @param cryptoKeyName Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
          * 
          * @return builder
          * 
@@ -146,6 +148,8 @@ public final class ChannelArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The location for the resource
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -158,6 +162,8 @@ public final class ChannelArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The location for the resource
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -166,9 +172,7 @@ public final class ChannelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Required. The resource name of the channel. Must be unique within the location on the project.
-         * 
-         * ***
+         * @param name The resource name of the channel. Must be unique within the location on the project.
          * 
          * @return builder
          * 
@@ -179,9 +183,7 @@ public final class ChannelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Required. The resource name of the channel. Must be unique within the location on the project.
-         * 
-         * ***
+         * @param name The resource name of the channel. Must be unique within the location on the project.
          * 
          * @return builder
          * 
@@ -191,7 +193,8 @@ public final class ChannelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -202,7 +205,8 @@ public final class ChannelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 

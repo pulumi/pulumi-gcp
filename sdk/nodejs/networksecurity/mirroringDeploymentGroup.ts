@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  *     mirroringDeploymentGroupId: "example-dg",
  *     location: "global",
  *     network: network.id,
+ *     description: "some description",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -82,32 +83,37 @@ export class MirroringDeploymentGroup extends pulumi.CustomResource {
     }
 
     /**
-     * Output only. The list of Mirroring Endpoint Groups that are connected to this resource.
+     * The list of endpoint groups that are connected to this resource.
      * Structure is documented below.
      */
     public /*out*/ readonly connectedEndpointGroups!: pulumi.Output<outputs.networksecurity.MirroringDeploymentGroupConnectedEndpointGroup[]>;
     /**
-     * Output only. [Output only] Create time stamp
+     * The timestamp when the resource was created.
+     * See https://google.aip.dev/148#timestamps.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * User-provided description of the deployment group.
+     * Used as additional context for the deployment group.
+     */
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Optional. Labels as key value pairs
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringDeploymentGroup`.
+     * The cloud location of the deployment group, currently restricted to `global`.
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Required. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * mirroringDeploymentGroupId from the methodSignature of Create RPC
+     * The ID to use for the new deployment group, which will become the final
+     * component of the deployment group's resource name.
      *
      *
      * - - -
@@ -115,12 +121,15 @@ export class MirroringDeploymentGroup extends pulumi.CustomResource {
     public readonly mirroringDeploymentGroupId!: pulumi.Output<string>;
     /**
      * (Output)
-     * Output only. A connected mirroring endpoint group.
+     * The connected endpoint group's resource name, for example:
+     * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+     * See https://google.aip.dev/124.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Required. Immutable. The network that is being used for the deployment. Format is:
-     * projects/{project}/global/networks/{network}.
+     * The network that will be used for all child deployments, for example:
+     * `projects/{project}/global/networks/{network}`.
+     * See https://google.aip.dev/124.
      */
     public readonly network!: pulumi.Output<string>;
     /**
@@ -134,12 +143,15 @@ export class MirroringDeploymentGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Output only. Whether reconciling is in progress, recommended per
-     * https://google.aip.dev/128.
+     * The current state of the resource does not match the user's intended state,
+     * and the system is working to reconcile them. This is part of the normal
+     * operation (e.g. adding a new deployment to the group)
+     * See https://google.aip.dev/128.
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
-     * Output only. Current state of the deployment group.
+     * The current state of the deployment group.
+     * See https://google.aip.dev/216.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -148,7 +160,8 @@ export class MirroringDeploymentGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Output only. [Output only] Update time stamp
+     * The timestamp when the resource was most recently updated.
+     * See https://google.aip.dev/148#timestamps.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -167,6 +180,7 @@ export class MirroringDeploymentGroup extends pulumi.CustomResource {
             const state = argsOrState as MirroringDeploymentGroupState | undefined;
             resourceInputs["connectedEndpointGroups"] = state ? state.connectedEndpointGroups : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -189,6 +203,7 @@ export class MirroringDeploymentGroup extends pulumi.CustomResource {
             if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
+            resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["mirroringDeploymentGroupId"] = args ? args.mirroringDeploymentGroupId : undefined;
@@ -215,32 +230,37 @@ export class MirroringDeploymentGroup extends pulumi.CustomResource {
  */
 export interface MirroringDeploymentGroupState {
     /**
-     * Output only. The list of Mirroring Endpoint Groups that are connected to this resource.
+     * The list of endpoint groups that are connected to this resource.
      * Structure is documented below.
      */
     connectedEndpointGroups?: pulumi.Input<pulumi.Input<inputs.networksecurity.MirroringDeploymentGroupConnectedEndpointGroup>[]>;
     /**
-     * Output only. [Output only] Create time stamp
+     * The timestamp when the resource was created.
+     * See https://google.aip.dev/148#timestamps.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * User-provided description of the deployment group.
+     * Used as additional context for the deployment group.
+     */
+    description?: pulumi.Input<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Optional. Labels as key value pairs
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringDeploymentGroup`.
+     * The cloud location of the deployment group, currently restricted to `global`.
      */
     location?: pulumi.Input<string>;
     /**
-     * Required. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * mirroringDeploymentGroupId from the methodSignature of Create RPC
+     * The ID to use for the new deployment group, which will become the final
+     * component of the deployment group's resource name.
      *
      *
      * - - -
@@ -248,12 +268,15 @@ export interface MirroringDeploymentGroupState {
     mirroringDeploymentGroupId?: pulumi.Input<string>;
     /**
      * (Output)
-     * Output only. A connected mirroring endpoint group.
+     * The connected endpoint group's resource name, for example:
+     * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+     * See https://google.aip.dev/124.
      */
     name?: pulumi.Input<string>;
     /**
-     * Required. Immutable. The network that is being used for the deployment. Format is:
-     * projects/{project}/global/networks/{network}.
+     * The network that will be used for all child deployments, for example:
+     * `projects/{project}/global/networks/{network}`.
+     * See https://google.aip.dev/124.
      */
     network?: pulumi.Input<string>;
     /**
@@ -267,12 +290,15 @@ export interface MirroringDeploymentGroupState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Output only. Whether reconciling is in progress, recommended per
-     * https://google.aip.dev/128.
+     * The current state of the resource does not match the user's intended state,
+     * and the system is working to reconcile them. This is part of the normal
+     * operation (e.g. adding a new deployment to the group)
+     * See https://google.aip.dev/128.
      */
     reconciling?: pulumi.Input<boolean>;
     /**
-     * Output only. Current state of the deployment group.
+     * The current state of the deployment group.
+     * See https://google.aip.dev/216.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -281,7 +307,8 @@ export interface MirroringDeploymentGroupState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Output only. [Output only] Update time stamp
+     * The timestamp when the resource was most recently updated.
+     * See https://google.aip.dev/148#timestamps.
      */
     updateTime?: pulumi.Input<string>;
 }
@@ -291,27 +318,32 @@ export interface MirroringDeploymentGroupState {
  */
 export interface MirroringDeploymentGroupArgs {
     /**
-     * Optional. Labels as key value pairs
+     * User-provided description of the deployment group.
+     * Used as additional context for the deployment group.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringDeploymentGroup`.
+     * The cloud location of the deployment group, currently restricted to `global`.
      */
     location: pulumi.Input<string>;
     /**
-     * Required. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * mirroringDeploymentGroupId from the methodSignature of Create RPC
+     * The ID to use for the new deployment group, which will become the final
+     * component of the deployment group's resource name.
      *
      *
      * - - -
      */
     mirroringDeploymentGroupId: pulumi.Input<string>;
     /**
-     * Required. Immutable. The network that is being used for the deployment. Format is:
-     * projects/{project}/global/networks/{network}.
+     * The network that will be used for all child deployments, for example:
+     * `projects/{project}/global/networks/{network}`.
+     * See https://google.aip.dev/124.
      */
     network: pulumi.Input<string>;
     /**

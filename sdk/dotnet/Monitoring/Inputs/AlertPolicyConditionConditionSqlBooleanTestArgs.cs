@@ -13,8 +13,8 @@ namespace Pulumi.Gcp.Monitoring.Inputs
     public sealed class AlertPolicyConditionConditionSqlBooleanTestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the column containing the boolean value. If the value
-        /// in a row is NULL, that row is ignored.
+        /// The name of the column containing the boolean value. If the value in a row is
+        /// NULL, that row is ignored.
         /// 
         /// - - -
         /// </summary>

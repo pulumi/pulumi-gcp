@@ -64,6 +64,7 @@ import javax.annotation.Nullable;
  *             .interceptEndpointGroupId("example-eg")
  *             .location("global")
  *             .interceptDeploymentGroup(deploymentGroup.id())
+ *             .description("some description")
  *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
@@ -101,18 +102,36 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup")
 public class InterceptEndpointGroup extends com.pulumi.resources.CustomResource {
     /**
-     * Create time stamp.
+     * The timestamp when the resource was created.
+     * See https://google.aip.dev/148#timestamps.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Create time stamp.
+     * @return The timestamp when the resource was created.
+     * See https://google.aip.dev/148#timestamps.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * User-provided description of the endpoint group.
+     * Used as additional context for the endpoint group.
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> description;
+
+    /**
+     * @return User-provided description of the endpoint group.
+     * Used as additional context for the endpoint group.
+     * 
+     */
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
     }
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -129,25 +148,26 @@ public class InterceptEndpointGroup extends com.pulumi.resources.CustomResource 
         return this.effectiveLabels;
     }
     /**
-     * Immutable. The Intercept Deployment Group that this resource is connected to. Format
-     * is:
-     * `projects/{project}/locations/global/interceptDeploymentGroups/{interceptDeploymentGroup}`
+     * The deployment group that this endpoint group is connected to, for example:
+     * `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
      * 
      */
     @Export(name="interceptDeploymentGroup", refs={String.class}, tree="[0]")
     private Output<String> interceptDeploymentGroup;
 
     /**
-     * @return Immutable. The Intercept Deployment Group that this resource is connected to. Format
-     * is:
-     * `projects/{project}/locations/global/interceptDeploymentGroups/{interceptDeploymentGroup}`
+     * @return The deployment group that this endpoint group is connected to, for example:
+     * `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
      * 
      */
     public Output<String> interceptDeploymentGroup() {
         return this.interceptDeploymentGroup;
     }
     /**
-     * ID of the Intercept Endpoint Group.
+     * The ID to use for the endpoint group, which will become the final component
+     * of the endpoint group&#39;s resource name.
      * 
      * ***
      * 
@@ -156,7 +176,8 @@ public class InterceptEndpointGroup extends com.pulumi.resources.CustomResource 
     private Output<String> interceptEndpointGroupId;
 
     /**
-     * @return ID of the Intercept Endpoint Group.
+     * @return The ID to use for the endpoint group, which will become the final component
+     * of the endpoint group&#39;s resource name.
      * 
      * ***
      * 
@@ -165,7 +186,7 @@ public class InterceptEndpointGroup extends com.pulumi.resources.CustomResource 
         return this.interceptEndpointGroupId;
     }
     /**
-     * Optional. Labels as key value pairs
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -174,7 +195,7 @@ public class InterceptEndpointGroup extends com.pulumi.resources.CustomResource 
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels as key value pairs
+     * @return Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -183,28 +204,32 @@ public class InterceptEndpointGroup extends com.pulumi.resources.CustomResource 
         return Codegen.optional(this.labels);
     }
     /**
-     * The location of the Intercept Endpoint Group, currently restricted to `global`.
+     * The cloud location of the endpoint group, currently restricted to `global`.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
-     * @return The location of the Intercept Endpoint Group, currently restricted to `global`.
+     * @return The cloud location of the endpoint group, currently restricted to `global`.
      * 
      */
     public Output<String> location() {
         return this.location;
     }
     /**
-     * Identifier. The name of the Intercept Endpoint Group.
+     * The resource name of this endpoint group, for example:
+     * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+     * See https://google.aip.dev/122 for more details.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Identifier. The name of the Intercept Endpoint Group.
+     * @return The resource name of this endpoint group, for example:
+     * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+     * See https://google.aip.dev/122 for more details.
      * 
      */
     public Output<String> name() {
@@ -243,23 +268,28 @@ public class InterceptEndpointGroup extends com.pulumi.resources.CustomResource 
         return this.pulumiLabels;
     }
     /**
-     * Whether reconciling is in progress, recommended per
-     * https://google.aip.dev/128.
+     * The current state of the resource does not match the user&#39;s intended state,
+     * and the system is working to reconcile them. This is part of the normal
+     * operation (e.g. adding a new association to the group).
+     * See https://google.aip.dev/128.
      * 
      */
     @Export(name="reconciling", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> reconciling;
 
     /**
-     * @return Whether reconciling is in progress, recommended per
-     * https://google.aip.dev/128.
+     * @return The current state of the resource does not match the user&#39;s intended state,
+     * and the system is working to reconcile them. This is part of the normal
+     * operation (e.g. adding a new association to the group).
+     * See https://google.aip.dev/128.
      * 
      */
     public Output<Boolean> reconciling() {
         return this.reconciling;
     }
     /**
-     * Current state of the endpoint group.
+     * The current state of the endpoint group.
+     * See https://google.aip.dev/216.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -267,13 +297,15 @@ public class InterceptEndpointGroup extends com.pulumi.resources.CustomResource 
      * CREATING
      * DELETING
      * OUT_OF_SYNC
+     * DELETE_FAILED
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return Current state of the endpoint group.
+     * @return The current state of the endpoint group.
+     * See https://google.aip.dev/216.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -281,20 +313,23 @@ public class InterceptEndpointGroup extends com.pulumi.resources.CustomResource 
      * CREATING
      * DELETING
      * OUT_OF_SYNC
+     * DELETE_FAILED
      * 
      */
     public Output<String> state() {
         return this.state;
     }
     /**
-     * Update time stamp.
+     * The timestamp when the resource was most recently updated.
+     * See https://google.aip.dev/148#timestamps.
      * 
      */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
-     * @return Update time stamp.
+     * @return The timestamp when the resource was most recently updated.
+     * See https://google.aip.dev/148#timestamps.
      * 
      */
     public Output<String> updateTime() {

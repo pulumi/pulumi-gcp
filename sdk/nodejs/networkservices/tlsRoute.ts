@@ -7,6 +7,12 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * TlsRoute defines how traffic should be routed based on SNI and other matching L3 attributes.
+ *
+ * To get more information about TlsRoute, see:
+ *
+ * * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1beta1/projects.locations.tlsRoutes)
+ *
  * ## Example Usage
  *
  * ### Network Services Tls Route Basic

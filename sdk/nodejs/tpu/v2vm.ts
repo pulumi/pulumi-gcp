@@ -75,6 +75,7 @@ import * as utilities from "../utilities";
  *     },
  *     schedulingConfig: {
  *         preemptible: true,
+ *         spot: true,
  *     },
  *     shieldedInstanceConfig: {
  *         enableSecureBoot: true,

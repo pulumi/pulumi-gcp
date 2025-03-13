@@ -16,14 +16,14 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
     public static final ChannelState Empty = new ChannelState();
 
     /**
-     * Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
+     * The activation token for the channel. The token must be used by the provider to register the channel for publishing.
      * 
      */
     @Import(name="activationToken")
     private @Nullable Output<String> activationToken;
 
     /**
-     * @return Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
+     * @return The activation token for the channel. The token must be used by the provider to register the channel for publishing.
      * 
      */
     public Optional<Output<String>> activationToken() {
@@ -31,14 +31,14 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. The creation time.
+     * The creation time.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Output only. The creation time.
+     * @return The creation time.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -46,14 +46,14 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
+     * Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      * 
      */
     @Import(name="cryptoKeyName")
     private @Nullable Output<String> cryptoKeyName;
 
     /**
-     * @return Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
+     * @return Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      * 
      */
     public Optional<Output<String>> cryptoKeyName() {
@@ -63,6 +63,8 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
     /**
      * The location for the resource
      * 
+     * ***
+     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
@@ -70,24 +72,22 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The location for the resource
      * 
+     * ***
+     * 
      */
     public Optional<Output<String>> location() {
         return Optional.ofNullable(this.location);
     }
 
     /**
-     * Required. The resource name of the channel. Must be unique within the location on the project.
-     * 
-     * ***
+     * The resource name of the channel. Must be unique within the location on the project.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Required. The resource name of the channel. Must be unique within the location on the project.
-     * 
-     * ***
+     * @return The resource name of the channel. Must be unique within the location on the project.
      * 
      */
     public Optional<Output<String>> name() {
@@ -95,14 +95,16 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Optional<Output<String>> project() {
@@ -110,14 +112,14 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
+     * The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
      * 
      */
     @Import(name="pubsubTopic")
     private @Nullable Output<String> pubsubTopic;
 
     /**
-     * @return Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
+     * @return The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
      * 
      */
     public Optional<Output<String>> pubsubTopic() {
@@ -125,14 +127,14 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. The state of a Channel. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE, INACTIVE
+     * The state of a Channel.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return Output only. The state of a Channel. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE, INACTIVE
+     * @return The state of a Channel.
      * 
      */
     public Optional<Output<String>> state() {
@@ -155,14 +157,14 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+     * Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      * 
      */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
     /**
-     * @return Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+     * @return Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      * 
      */
     public Optional<Output<String>> uid() {
@@ -170,14 +172,14 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. The last-modified time.
+     * The last-modified time.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return Output only. The last-modified time.
+     * @return The last-modified time.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -219,7 +221,7 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param activationToken Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
+         * @param activationToken The activation token for the channel. The token must be used by the provider to register the channel for publishing.
          * 
          * @return builder
          * 
@@ -230,7 +232,7 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param activationToken Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
+         * @param activationToken The activation token for the channel. The token must be used by the provider to register the channel for publishing.
          * 
          * @return builder
          * 
@@ -240,7 +242,7 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Output only. The creation time.
+         * @param createTime The creation time.
          * 
          * @return builder
          * 
@@ -251,7 +253,7 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Output only. The creation time.
+         * @param createTime The creation time.
          * 
          * @return builder
          * 
@@ -261,7 +263,7 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cryptoKeyName Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
+         * @param cryptoKeyName Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
          * 
          * @return builder
          * 
@@ -272,7 +274,7 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cryptoKeyName Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
+         * @param cryptoKeyName Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
          * 
          * @return builder
          * 
@@ -283,6 +285,8 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The location for the resource
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -295,6 +299,8 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The location for the resource
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -303,9 +309,7 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Required. The resource name of the channel. Must be unique within the location on the project.
-         * 
-         * ***
+         * @param name The resource name of the channel. Must be unique within the location on the project.
          * 
          * @return builder
          * 
@@ -316,9 +320,7 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Required. The resource name of the channel. Must be unique within the location on the project.
-         * 
-         * ***
+         * @param name The resource name of the channel. Must be unique within the location on the project.
          * 
          * @return builder
          * 
@@ -328,7 +330,8 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -339,7 +342,8 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -349,7 +353,7 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pubsubTopic Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
+         * @param pubsubTopic The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
          * 
          * @return builder
          * 
@@ -360,7 +364,7 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pubsubTopic Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
+         * @param pubsubTopic The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
          * 
          * @return builder
          * 
@@ -370,7 +374,7 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state Output only. The state of a Channel. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE, INACTIVE
+         * @param state The state of a Channel.
          * 
          * @return builder
          * 
@@ -381,7 +385,7 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state Output only. The state of a Channel. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE, INACTIVE
+         * @param state The state of a Channel.
          * 
          * @return builder
          * 
@@ -412,7 +416,7 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uid Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+         * @param uid Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
          * 
          * @return builder
          * 
@@ -423,7 +427,7 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uid Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+         * @param uid Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
          * 
          * @return builder
          * 
@@ -433,7 +437,7 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateTime Output only. The last-modified time.
+         * @param updateTime The last-modified time.
          * 
          * @return builder
          * 
@@ -444,7 +448,7 @@ public final class ChannelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateTime Output only. The last-modified time.
+         * @param updateTime The last-modified time.
          * 
          * @return builder
          * 

@@ -7,14 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * A policy binding to a Project
- *
- * To get more information about ProjectsPolicyBinding, see:
- *
- * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/projects.locations.policyBindings)
- * * How-to Guides
- *     * [Apply a policy binding](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create#create_binding)
- *
  * ## Example Usage
  *
  * ### Iam Projects Policy Binding
@@ -28,18 +20,18 @@ import * as utilities from "../utilities";
  * const pabPolicy = new gcp.iam.PrincipalAccessBoundaryPolicy("pab_policy", {
  *     organization: "123456789",
  *     location: "global",
- *     displayName: "test project binding",
+ *     displayName: "binding for all principals in the project",
  *     principalAccessBoundaryPolicyId: "my-pab-policy",
  * });
  * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"}, {
  *     dependsOn: [pabPolicy],
  * });
- * const my_project_binding = new gcp.iam.ProjectsPolicyBinding("my-project-binding", {
+ * const binding_for_all_project_principals = new gcp.iam.ProjectsPolicyBinding("binding-for-all-project-principals", {
  *     project: project.then(project => project.projectId),
  *     location: "global",
- *     displayName: "test project binding",
+ *     displayName: "binding for all principals in the project",
  *     policyKind: "PRINCIPAL_ACCESS_BOUNDARY",
- *     policyBindingId: "test-project-binding",
+ *     policyBindingId: "binding-for-all-project-principals",
  *     policy: pulumi.interpolate`organizations/123456789/locations/global/principalAccessBoundaryPolicies/${pabPolicy.principalAccessBoundaryPolicyId}`,
  *     target: {
  *         principalSet: project.then(project => `//cloudresourcemanager.googleapis.com/projects/${project.projectId}`),

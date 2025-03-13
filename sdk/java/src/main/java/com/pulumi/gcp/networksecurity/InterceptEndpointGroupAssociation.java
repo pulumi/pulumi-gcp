@@ -116,14 +116,16 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:networksecurity/interceptEndpointGroupAssociation:InterceptEndpointGroupAssociation")
 public class InterceptEndpointGroupAssociation extends com.pulumi.resources.CustomResource {
     /**
-     * Create time stamp.
+     * The timestamp when the resource was created.
+     * See https://google.aip.dev/148#timestamps.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Create time stamp.
+     * @return The timestamp when the resource was created.
+     * See https://google.aip.dev/148#timestamps.
      * 
      */
     public Output<String> createTime() {
@@ -144,39 +146,43 @@ public class InterceptEndpointGroupAssociation extends com.pulumi.resources.Cust
         return this.effectiveLabels;
     }
     /**
-     * Immutable. The Intercept Endpoint Group that this resource is connected to. Format
-     * is:
-     * `projects/{project}/locations/global/interceptEndpointGroups/{interceptEndpointGroup}`.
+     * The endpoint group that this association is connected to, for example:
+     * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+     * See https://google.aip.dev/124.
      * 
      */
     @Export(name="interceptEndpointGroup", refs={String.class}, tree="[0]")
     private Output<String> interceptEndpointGroup;
 
     /**
-     * @return Immutable. The Intercept Endpoint Group that this resource is connected to. Format
-     * is:
-     * `projects/{project}/locations/global/interceptEndpointGroups/{interceptEndpointGroup}`.
+     * @return The endpoint group that this association is connected to, for example:
+     * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+     * See https://google.aip.dev/124.
      * 
      */
     public Output<String> interceptEndpointGroup() {
         return this.interceptEndpointGroup;
     }
     /**
-     * ID of the Intercept Endpoint Group Association.
+     * The ID to use for the new association, which will become the final
+     * component of the endpoint group&#39;s resource name. If not provided, the
+     * server will generate a unique ID.
      * 
      */
     @Export(name="interceptEndpointGroupAssociationId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> interceptEndpointGroupAssociationId;
 
     /**
-     * @return ID of the Intercept Endpoint Group Association.
+     * @return The ID to use for the new association, which will become the final
+     * component of the endpoint group&#39;s resource name. If not provided, the
+     * server will generate a unique ID.
      * 
      */
     public Output<Optional<String>> interceptEndpointGroupAssociationId() {
         return Codegen.optional(this.interceptEndpointGroupAssociationId);
     }
     /**
-     * Optional. Labels as key value pairs.
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -185,7 +191,7 @@ public class InterceptEndpointGroupAssociation extends com.pulumi.resources.Cust
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels as key value pairs.
+     * @return Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -194,7 +200,7 @@ public class InterceptEndpointGroupAssociation extends com.pulumi.resources.Cust
         return Codegen.optional(this.labels);
     }
     /**
-     * The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+     * The cloud location of the association, currently restricted to `global`.
      * 
      * ***
      * 
@@ -203,7 +209,7 @@ public class InterceptEndpointGroupAssociation extends com.pulumi.resources.Cust
     private Output<String> location;
 
     /**
-     * @return The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+     * @return The cloud location of the association, currently restricted to `global`.
      * 
      * ***
      * 
@@ -212,7 +218,9 @@ public class InterceptEndpointGroupAssociation extends com.pulumi.resources.Cust
         return this.location;
     }
     /**
-     * The list of locations that are currently supported by the associated Intercept Deployment Group and their state.
+     * The list of locations where the association is present. This information
+     * is retrieved from the linked endpoint group, and not configured as part
+     * of the association itself.
      * Structure is documented below.
      * 
      */
@@ -220,7 +228,9 @@ public class InterceptEndpointGroupAssociation extends com.pulumi.resources.Cust
     private Output<List<InterceptEndpointGroupAssociationLocationsDetail>> locationsDetails;
 
     /**
-     * @return The list of locations that are currently supported by the associated Intercept Deployment Group and their state.
+     * @return The list of locations where the association is present. This information
+     * is retrieved from the linked endpoint group, and not configured as part
+     * of the association itself.
      * Structure is documented below.
      * 
      */
@@ -228,30 +238,36 @@ public class InterceptEndpointGroupAssociation extends com.pulumi.resources.Cust
         return this.locationsDetails;
     }
     /**
-     * Identifier. The name of the Intercept Endpoint Group Association.
+     * The resource name of this endpoint group association, for example:
+     * `projects/123456789/locations/global/interceptEndpointGroupAssociations/my-eg-association`.
+     * See https://google.aip.dev/122 for more details.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Identifier. The name of the Intercept Endpoint Group Association.
+     * @return The resource name of this endpoint group association, for example:
+     * `projects/123456789/locations/global/interceptEndpointGroupAssociations/my-eg-association`.
+     * See https://google.aip.dev/122 for more details.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Immutable. The VPC network associated. Format:
-     * `projects/{project}/global/networks/{network}`.
+     * The VPC network that is associated. for example:
+     * `projects/123456789/global/networks/my-network`.
+     * See https://google.aip.dev/124.
      * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
-     * @return Immutable. The VPC network associated. Format:
-     * `projects/{project}/global/networks/{network}`.
+     * @return The VPC network that is associated. for example:
+     * `projects/123456789/global/networks/my-network`.
+     * See https://google.aip.dev/124.
      * 
      */
     public Output<String> network() {
@@ -290,14 +306,20 @@ public class InterceptEndpointGroupAssociation extends com.pulumi.resources.Cust
         return this.pulumiLabels;
     }
     /**
-     * Whether reconciling is in progress.
+     * The current state of the resource does not match the user&#39;s intended state,
+     * and the system is working to reconcile them. This part of the normal
+     * operation (e.g. adding a new location to the target deployment group).
+     * See https://google.aip.dev/128.
      * 
      */
     @Export(name="reconciling", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> reconciling;
 
     /**
-     * @return Whether reconciling is in progress.
+     * @return The current state of the resource does not match the user&#39;s intended state,
+     * and the system is working to reconcile them. This part of the normal
+     * operation (e.g. adding a new location to the target deployment group).
+     * See https://google.aip.dev/128.
      * 
      */
     public Output<Boolean> reconciling() {
@@ -305,7 +327,7 @@ public class InterceptEndpointGroupAssociation extends com.pulumi.resources.Cust
     }
     /**
      * (Output)
-     * The association state in this location.
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -317,7 +339,7 @@ public class InterceptEndpointGroupAssociation extends com.pulumi.resources.Cust
 
     /**
      * @return (Output)
-     * The association state in this location.
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -328,14 +350,16 @@ public class InterceptEndpointGroupAssociation extends com.pulumi.resources.Cust
         return this.state;
     }
     /**
-     * Update time stamp.
+     * The timestamp when the resource was most recently updated.
+     * See https://google.aip.dev/148#timestamps.
      * 
      */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
-     * @return Update time stamp.
+     * @return The timestamp when the resource was most recently updated.
+     * See https://google.aip.dev/148#timestamps.
      * 
      */
     public Output<String> updateTime() {

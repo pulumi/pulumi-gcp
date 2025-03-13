@@ -17,7 +17,9 @@ public final class MirroringDeploymentGroupConnectedEndpointGroupArgs extends co
 
     /**
      * (Output)
-     * Output only. A connected mirroring endpoint group.
+     * The connected endpoint group&#39;s resource name, for example:
+     * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+     * See https://google.aip.dev/124.
      * 
      */
     @Import(name="name")
@@ -25,7 +27,9 @@ public final class MirroringDeploymentGroupConnectedEndpointGroupArgs extends co
 
     /**
      * @return (Output)
-     * Output only. A connected mirroring endpoint group.
+     * The connected endpoint group&#39;s resource name, for example:
+     * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+     * See https://google.aip.dev/124.
      * 
      */
     public Optional<Output<String>> name() {
@@ -58,7 +62,9 @@ public final class MirroringDeploymentGroupConnectedEndpointGroupArgs extends co
 
         /**
          * @param name (Output)
-         * Output only. A connected mirroring endpoint group.
+         * The connected endpoint group&#39;s resource name, for example:
+         * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -70,7 +76,9 @@ public final class MirroringDeploymentGroupConnectedEndpointGroupArgs extends co
 
         /**
          * @param name (Output)
-         * Output only. A connected mirroring endpoint group.
+         * The connected endpoint group&#39;s resource name, for example:
+         * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 

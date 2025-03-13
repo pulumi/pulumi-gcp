@@ -1686,8 +1686,7 @@ if not MYPY:
         """
         boolean_test: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlBooleanTestArgsDict']]
         """
-        The start date and time of the query. If left unspecified, then the
-        query will start immediately.
+        A test that uses an alerting result in a boolean column produced by the SQL query.
         Structure is documented below.
         """
         daily: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlDailyArgsDict']]
@@ -1707,7 +1706,7 @@ if not MYPY:
         """
         row_count_test: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlRowCountTestArgsDict']]
         """
-        Test the row count against a threshold.
+        A test that checks if the number of rows in the result set violates some threshold.
         Structure is documented below.
         """
 elif False:
@@ -1728,8 +1727,7 @@ class AlertPolicyConditionConditionSqlArgs:
                filter the input by time.  A filter will automatically be applied
                to filter the input so that the query receives all rows received
                since the last time the query was run.
-        :param pulumi.Input['AlertPolicyConditionConditionSqlBooleanTestArgs'] boolean_test: The start date and time of the query. If left unspecified, then the
-               query will start immediately.
+        :param pulumi.Input['AlertPolicyConditionConditionSqlBooleanTestArgs'] boolean_test: A test that uses an alerting result in a boolean column produced by the SQL query.
                Structure is documented below.
         :param pulumi.Input['AlertPolicyConditionConditionSqlDailyArgs'] daily: Used to schedule the query to run every so many days.
                Structure is documented below.
@@ -1737,7 +1735,7 @@ class AlertPolicyConditionConditionSqlArgs:
                Structure is documented below.
         :param pulumi.Input['AlertPolicyConditionConditionSqlMinutesArgs'] minutes: Used to schedule the query to run every so many minutes.
                Structure is documented below.
-        :param pulumi.Input['AlertPolicyConditionConditionSqlRowCountTestArgs'] row_count_test: Test the row count against a threshold.
+        :param pulumi.Input['AlertPolicyConditionConditionSqlRowCountTestArgs'] row_count_test: A test that checks if the number of rows in the result set violates some threshold.
                Structure is documented below.
         """
         pulumi.set(__self__, "query", query)
@@ -1772,8 +1770,7 @@ class AlertPolicyConditionConditionSqlArgs:
     @pulumi.getter(name="booleanTest")
     def boolean_test(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionSqlBooleanTestArgs']]:
         """
-        The start date and time of the query. If left unspecified, then the
-        query will start immediately.
+        A test that uses an alerting result in a boolean column produced by the SQL query.
         Structure is documented below.
         """
         return pulumi.get(self, "boolean_test")
@@ -1825,7 +1822,7 @@ class AlertPolicyConditionConditionSqlArgs:
     @pulumi.getter(name="rowCountTest")
     def row_count_test(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionSqlRowCountTestArgs']]:
         """
-        Test the row count against a threshold.
+        A test that checks if the number of rows in the result set violates some threshold.
         Structure is documented below.
         """
         return pulumi.get(self, "row_count_test")
@@ -1839,8 +1836,8 @@ if not MYPY:
     class AlertPolicyConditionConditionSqlBooleanTestArgsDict(TypedDict):
         column: pulumi.Input[str]
         """
-        The name of the column containing the boolean value. If the value
-        in a row is NULL, that row is ignored.
+        The name of the column containing the boolean value. If the value in a row is
+        NULL, that row is ignored.
 
         - - -
         """
@@ -1852,8 +1849,8 @@ class AlertPolicyConditionConditionSqlBooleanTestArgs:
     def __init__(__self__, *,
                  column: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] column: The name of the column containing the boolean value. If the value
-               in a row is NULL, that row is ignored.
+        :param pulumi.Input[str] column: The name of the column containing the boolean value. If the value in a row is
+               NULL, that row is ignored.
                
                - - -
         """
@@ -1863,8 +1860,8 @@ class AlertPolicyConditionConditionSqlBooleanTestArgs:
     @pulumi.getter
     def column(self) -> pulumi.Input[str]:
         """
-        The name of the column containing the boolean value. If the value
-        in a row is NULL, that row is ignored.
+        The name of the column containing the boolean value. If the value in a row is
+        NULL, that row is ignored.
 
         - - -
         """
@@ -2161,7 +2158,7 @@ if not MYPY:
         """
         threshold: pulumi.Input[int]
         """
-        Test the boolean value in the indicated column.
+        The value against which to compare the row count.
         """
 elif False:
     AlertPolicyConditionConditionSqlRowCountTestArgsDict: TypeAlias = Mapping[str, Any]
@@ -2181,7 +2178,7 @@ class AlertPolicyConditionConditionSqlRowCountTestArgs:
                right-hand side. Only COMPARISON_LT and
                COMPARISON_GT are supported currently.
                Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
-        :param pulumi.Input[int] threshold: Test the boolean value in the indicated column.
+        :param pulumi.Input[int] threshold: The value against which to compare the row count.
         """
         pulumi.set(__self__, "comparison", comparison)
         pulumi.set(__self__, "threshold", threshold)
@@ -2210,7 +2207,7 @@ class AlertPolicyConditionConditionSqlRowCountTestArgs:
     @pulumi.getter
     def threshold(self) -> pulumi.Input[int]:
         """
-        Test the boolean value in the indicated column.
+        The value against which to compare the row count.
         """
         return pulumi.get(self, "threshold")
 

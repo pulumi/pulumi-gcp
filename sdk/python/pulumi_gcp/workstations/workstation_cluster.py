@@ -30,7 +30,8 @@ class WorkstationClusterArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  private_cluster_config: Optional[pulumi.Input['WorkstationClusterPrivateClusterConfigArgs']] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a WorkstationCluster resource.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed.
@@ -55,6 +56,10 @@ class WorkstationClusterArgs:
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource manager tags bound to this resource.
+               For example:
+               "123/environment": "production",
+               "123/costCenter": "marketing"
         """
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "subnetwork", subnetwork)
@@ -73,6 +78,8 @@ class WorkstationClusterArgs:
             pulumi.set(__self__, "private_cluster_config", private_cluster_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -206,6 +213,21 @@ class WorkstationClusterArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource manager tags bound to this resource.
+        For example:
+        "123/environment": "production",
+        "123/costCenter": "marketing"
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _WorkstationClusterState:
@@ -228,6 +250,7 @@ class _WorkstationClusterState:
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None):
         """
@@ -263,6 +286,10 @@ class _WorkstationClusterState:
                and default labels configured on the provider.
         :param pulumi.Input[str] subnetwork: Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
                Must be part of the subnetwork specified for this cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource manager tags bound to this resource.
+               For example:
+               "123/environment": "production",
+               "123/costCenter": "marketing"
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         :param pulumi.Input[str] workstation_cluster_id: ID to use for the workstation cluster.
                
@@ -305,6 +332,8 @@ class _WorkstationClusterState:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
         if workstation_cluster_id is not None:
@@ -539,6 +568,21 @@ class _WorkstationClusterState:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource manager tags bound to this resource.
+        For example:
+        "123/environment": "production",
+        "123/costCenter": "marketing"
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[str]]:
         """
         The system-generated UID of the resource.
@@ -579,6 +623,7 @@ class WorkstationCluster(pulumi.CustomResource):
                  private_cluster_config: Optional[pulumi.Input[Union['WorkstationClusterPrivateClusterConfigArgs', 'WorkstationClusterPrivateClusterConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -674,6 +719,40 @@ class WorkstationCluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
+        ### Workstation Cluster Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        tag_key = gcp.tags.TagKey("tag_key",
+            parent=f"projects/{project.number}",
+            short_name="keyname")
+        tag_value = gcp.tags.TagValue("tag_value",
+            parent=tag_key.name.apply(lambda name: f"tagKeys/{name}"),
+            short_name="valuename")
+        default_network = gcp.compute.Network("default",
+            name="workstation-cluster-tags",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstation-cluster-tags",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default_network.name)
+        default = gcp.workstations.WorkstationCluster("default",
+            workstation_cluster_id="workstation-cluster-tags",
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1",
+            tags=pulumi.Output.all(
+                tagKeyShort_name=tag_key.short_name,
+                tagValueShort_name=tag_value.short_name
+        ).apply(lambda resolved_outputs: {
+                f"{project.project_id}/{resolved_outputs['tagKeyShort_name']}": resolved_outputs['tagValueShort_name'],
+            })
+        )
+        ```
 
         ## Import
 
@@ -719,6 +798,10 @@ class WorkstationCluster(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] subnetwork: Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
                Must be part of the subnetwork specified for this cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource manager tags bound to this resource.
+               For example:
+               "123/environment": "production",
+               "123/costCenter": "marketing"
         :param pulumi.Input[str] workstation_cluster_id: ID to use for the workstation cluster.
                
                
@@ -823,6 +906,40 @@ class WorkstationCluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
+        ### Workstation Cluster Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        tag_key = gcp.tags.TagKey("tag_key",
+            parent=f"projects/{project.number}",
+            short_name="keyname")
+        tag_value = gcp.tags.TagValue("tag_value",
+            parent=tag_key.name.apply(lambda name: f"tagKeys/{name}"),
+            short_name="valuename")
+        default_network = gcp.compute.Network("default",
+            name="workstation-cluster-tags",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstation-cluster-tags",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default_network.name)
+        default = gcp.workstations.WorkstationCluster("default",
+            workstation_cluster_id="workstation-cluster-tags",
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1",
+            tags=pulumi.Output.all(
+                tagKeyShort_name=tag_key.short_name,
+                tagValueShort_name=tag_value.short_name
+        ).apply(lambda resolved_outputs: {
+                f"{project.project_id}/{resolved_outputs['tagKeyShort_name']}": resolved_outputs['tagValueShort_name'],
+            })
+        )
+        ```
 
         ## Import
 
@@ -872,6 +989,7 @@ class WorkstationCluster(pulumi.CustomResource):
                  private_cluster_config: Optional[pulumi.Input[Union['WorkstationClusterPrivateClusterConfigArgs', 'WorkstationClusterPrivateClusterConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -895,6 +1013,7 @@ class WorkstationCluster(pulumi.CustomResource):
             if subnetwork is None and not opts.urn:
                 raise TypeError("Missing required property 'subnetwork'")
             __props__.__dict__["subnetwork"] = subnetwork
+            __props__.__dict__["tags"] = tags
             if workstation_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workstation_cluster_id'")
             __props__.__dict__["workstation_cluster_id"] = workstation_cluster_id
@@ -938,6 +1057,7 @@ class WorkstationCluster(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             subnetwork: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             workstation_cluster_id: Optional[pulumi.Input[str]] = None) -> 'WorkstationCluster':
         """
@@ -978,6 +1098,10 @@ class WorkstationCluster(pulumi.CustomResource):
                and default labels configured on the provider.
         :param pulumi.Input[str] subnetwork: Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
                Must be part of the subnetwork specified for this cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource manager tags bound to this resource.
+               For example:
+               "123/environment": "production",
+               "123/costCenter": "marketing"
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         :param pulumi.Input[str] workstation_cluster_id: ID to use for the workstation cluster.
                
@@ -1006,6 +1130,7 @@ class WorkstationCluster(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["subnetwork"] = subnetwork
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["uid"] = uid
         __props__.__dict__["workstation_cluster_id"] = workstation_cluster_id
         return WorkstationCluster(resource_name, opts=opts, __props__=__props__)
@@ -1164,6 +1289,17 @@ class WorkstationCluster(pulumi.CustomResource):
         Must be part of the subnetwork specified for this cluster.
         """
         return pulumi.get(self, "subnetwork")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        Resource manager tags bound to this resource.
+        For example:
+        "123/environment": "production",
+        "123/costCenter": "marketing"
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter

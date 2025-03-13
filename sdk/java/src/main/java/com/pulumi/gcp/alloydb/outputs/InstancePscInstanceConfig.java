@@ -4,6 +4,7 @@
 package com.pulumi.gcp.alloydb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.alloydb.outputs.InstancePscInstanceConfigPscInterfaceConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -25,6 +26,13 @@ public final class InstancePscInstanceConfig {
      * 
      */
     private @Nullable String pscDnsName;
+    /**
+     * @return Configurations for setting up PSC interfaces attached to the instance
+     * which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<InstancePscInstanceConfigPscInterfaceConfig> pscInterfaceConfigs;
     /**
      * @return (Output)
      * The service attachment created when Private Service Connect (PSC) is enabled for the instance.
@@ -53,6 +61,15 @@ public final class InstancePscInstanceConfig {
         return Optional.ofNullable(this.pscDnsName);
     }
     /**
+     * @return Configurations for setting up PSC interfaces attached to the instance
+     * which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
+     * Structure is documented below.
+     * 
+     */
+    public List<InstancePscInstanceConfigPscInterfaceConfig> pscInterfaceConfigs() {
+        return this.pscInterfaceConfigs == null ? List.of() : this.pscInterfaceConfigs;
+    }
+    /**
      * @return (Output)
      * The service attachment created when Private Service Connect (PSC) is enabled for the instance.
      * The name of the resource will be in the format of
@@ -74,12 +91,14 @@ public final class InstancePscInstanceConfig {
     public static final class Builder {
         private @Nullable List<String> allowedConsumerProjects;
         private @Nullable String pscDnsName;
+        private @Nullable List<InstancePscInstanceConfigPscInterfaceConfig> pscInterfaceConfigs;
         private @Nullable String serviceAttachmentLink;
         public Builder() {}
         public Builder(InstancePscInstanceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedConsumerProjects = defaults.allowedConsumerProjects;
     	      this.pscDnsName = defaults.pscDnsName;
+    	      this.pscInterfaceConfigs = defaults.pscInterfaceConfigs;
     	      this.serviceAttachmentLink = defaults.serviceAttachmentLink;
         }
 
@@ -99,6 +118,15 @@ public final class InstancePscInstanceConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder pscInterfaceConfigs(@Nullable List<InstancePscInstanceConfigPscInterfaceConfig> pscInterfaceConfigs) {
+
+            this.pscInterfaceConfigs = pscInterfaceConfigs;
+            return this;
+        }
+        public Builder pscInterfaceConfigs(InstancePscInstanceConfigPscInterfaceConfig... pscInterfaceConfigs) {
+            return pscInterfaceConfigs(List.of(pscInterfaceConfigs));
+        }
+        @CustomType.Setter
         public Builder serviceAttachmentLink(@Nullable String serviceAttachmentLink) {
 
             this.serviceAttachmentLink = serviceAttachmentLink;
@@ -108,6 +136,7 @@ public final class InstancePscInstanceConfig {
             final var _resultValue = new InstancePscInstanceConfig();
             _resultValue.allowedConsumerProjects = allowedConsumerProjects;
             _resultValue.pscDnsName = pscDnsName;
+            _resultValue.pscInterfaceConfigs = pscInterfaceConfigs;
             _resultValue.serviceAttachmentLink = serviceAttachmentLink;
             return _resultValue;
         }

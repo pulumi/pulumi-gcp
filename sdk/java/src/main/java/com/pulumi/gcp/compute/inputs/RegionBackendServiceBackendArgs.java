@@ -6,10 +6,12 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.inputs.RegionBackendServiceBackendCustomMetricArgs;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -24,7 +26,7 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
      * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
      * for an explanation of load balancing modes.
      * Default value is `UTILIZATION`.
-     * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
+     * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
      * 
      */
     @Import(name="balancingMode")
@@ -35,7 +37,7 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
      * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
      * for an explanation of load balancing modes.
      * Default value is `UTILIZATION`.
-     * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
+     * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
      * 
      */
     public Optional<Output<String>> balancingMode() {
@@ -69,6 +71,23 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
      */
     public Optional<Output<Double>> capacityScaler() {
         return Optional.ofNullable(this.capacityScaler);
+    }
+
+    /**
+     * The set of custom metrics that are used for &lt;code&gt;CUSTOM_METRICS&lt;/code&gt; BalancingMode.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="customMetrics")
+    private @Nullable Output<List<RegionBackendServiceBackendCustomMetricArgs>> customMetrics;
+
+    /**
+     * @return The set of custom metrics that are used for &lt;code&gt;CUSTOM_METRICS&lt;/code&gt; BalancingMode.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<RegionBackendServiceBackendCustomMetricArgs>>> customMetrics() {
+        return Optional.ofNullable(this.customMetrics);
     }
 
     /**
@@ -324,6 +343,7 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
     private RegionBackendServiceBackendArgs(RegionBackendServiceBackendArgs $) {
         this.balancingMode = $.balancingMode;
         this.capacityScaler = $.capacityScaler;
+        this.customMetrics = $.customMetrics;
         this.description = $.description;
         this.failover = $.failover;
         this.group = $.group;
@@ -359,7 +379,7 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
          * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
          * for an explanation of load balancing modes.
          * Default value is `UTILIZATION`.
-         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
+         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
          * 
          * @return builder
          * 
@@ -374,7 +394,7 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
          * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
          * for an explanation of load balancing modes.
          * Default value is `UTILIZATION`.
-         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
+         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
          * 
          * @return builder
          * 
@@ -416,6 +436,40 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
          */
         public Builder capacityScaler(Double capacityScaler) {
             return capacityScaler(Output.of(capacityScaler));
+        }
+
+        /**
+         * @param customMetrics The set of custom metrics that are used for &lt;code&gt;CUSTOM_METRICS&lt;/code&gt; BalancingMode.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customMetrics(@Nullable Output<List<RegionBackendServiceBackendCustomMetricArgs>> customMetrics) {
+            $.customMetrics = customMetrics;
+            return this;
+        }
+
+        /**
+         * @param customMetrics The set of custom metrics that are used for &lt;code&gt;CUSTOM_METRICS&lt;/code&gt; BalancingMode.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customMetrics(List<RegionBackendServiceBackendCustomMetricArgs> customMetrics) {
+            return customMetrics(Output.of(customMetrics));
+        }
+
+        /**
+         * @param customMetrics The set of custom metrics that are used for &lt;code&gt;CUSTOM_METRICS&lt;/code&gt; BalancingMode.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customMetrics(RegionBackendServiceBackendCustomMetricArgs... customMetrics) {
+            return customMetrics(List.of(customMetrics));
         }
 
         /**

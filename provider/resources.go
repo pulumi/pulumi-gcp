@@ -2633,6 +2633,12 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_tpu_tensorflow_versions.html.markdown",
 				},
 			},
+			"google_compute_region_ssl_policy": {
+				Tok: gcpDataSource(gcpCompute, "getRegionSSLPolicy"),
+				Docs: &tfbridge.DocInfo{
+					AllowMissing: true,
+				},
+			},
 			"google_compute_router": {
 				Tok: gcpDataSource(gcpCompute, "getRouter"),
 				Docs: &tfbridge.DocInfo{

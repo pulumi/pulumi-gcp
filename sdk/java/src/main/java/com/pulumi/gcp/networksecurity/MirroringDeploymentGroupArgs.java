@@ -18,7 +18,24 @@ public final class MirroringDeploymentGroupArgs extends com.pulumi.resources.Res
     public static final MirroringDeploymentGroupArgs Empty = new MirroringDeploymentGroupArgs();
 
     /**
-     * Optional. Labels as key value pairs
+     * User-provided description of the deployment group.
+     * Used as additional context for the deployment group.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return User-provided description of the deployment group.
+     * Used as additional context for the deployment group.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -27,7 +44,7 @@ public final class MirroringDeploymentGroupArgs extends com.pulumi.resources.Res
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels as key value pairs
+     * @return Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -37,14 +54,14 @@ public final class MirroringDeploymentGroupArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringDeploymentGroup`.
+     * The cloud location of the deployment group, currently restricted to `global`.
      * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
-     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringDeploymentGroup`.
+     * @return The cloud location of the deployment group, currently restricted to `global`.
      * 
      */
     public Output<String> location() {
@@ -52,9 +69,8 @@ public final class MirroringDeploymentGroupArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Required. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * mirroring_deployment_group_id from the method_signature of Create RPC
+     * The ID to use for the new deployment group, which will become the final
+     * component of the deployment group&#39;s resource name.
      * 
      * ***
      * 
@@ -63,9 +79,8 @@ public final class MirroringDeploymentGroupArgs extends com.pulumi.resources.Res
     private Output<String> mirroringDeploymentGroupId;
 
     /**
-     * @return Required. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * mirroring_deployment_group_id from the method_signature of Create RPC
+     * @return The ID to use for the new deployment group, which will become the final
+     * component of the deployment group&#39;s resource name.
      * 
      * ***
      * 
@@ -75,16 +90,18 @@ public final class MirroringDeploymentGroupArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Required. Immutable. The network that is being used for the deployment. Format is:
-     * projects/{project}/global/networks/{network}.
+     * The network that will be used for all child deployments, for example:
+     * `projects/{project}/global/networks/{network}`.
+     * See https://google.aip.dev/124.
      * 
      */
     @Import(name="network", required=true)
     private Output<String> network;
 
     /**
-     * @return Required. Immutable. The network that is being used for the deployment. Format is:
-     * projects/{project}/global/networks/{network}.
+     * @return The network that will be used for all child deployments, for example:
+     * `projects/{project}/global/networks/{network}`.
+     * See https://google.aip.dev/124.
      * 
      */
     public Output<String> network() {
@@ -111,6 +128,7 @@ public final class MirroringDeploymentGroupArgs extends com.pulumi.resources.Res
     private MirroringDeploymentGroupArgs() {}
 
     private MirroringDeploymentGroupArgs(MirroringDeploymentGroupArgs $) {
+        this.description = $.description;
         this.labels = $.labels;
         this.location = $.location;
         this.mirroringDeploymentGroupId = $.mirroringDeploymentGroupId;
@@ -137,7 +155,30 @@ public final class MirroringDeploymentGroupArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs
+         * @param description User-provided description of the deployment group.
+         * Used as additional context for the deployment group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description User-provided description of the deployment group.
+         * Used as additional context for the deployment group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
+        /**
+         * @param labels Labels are key/value pairs that help to organize and filter resources.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -150,7 +191,7 @@ public final class MirroringDeploymentGroupArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs
+         * @param labels Labels are key/value pairs that help to organize and filter resources.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -162,7 +203,7 @@ public final class MirroringDeploymentGroupArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringDeploymentGroup`.
+         * @param location The cloud location of the deployment group, currently restricted to `global`.
          * 
          * @return builder
          * 
@@ -173,7 +214,7 @@ public final class MirroringDeploymentGroupArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringDeploymentGroup`.
+         * @param location The cloud location of the deployment group, currently restricted to `global`.
          * 
          * @return builder
          * 
@@ -183,9 +224,8 @@ public final class MirroringDeploymentGroupArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param mirroringDeploymentGroupId Required. Id of the requesting object
-         * If auto-generating Id server-side, remove this field and
-         * mirroring_deployment_group_id from the method_signature of Create RPC
+         * @param mirroringDeploymentGroupId The ID to use for the new deployment group, which will become the final
+         * component of the deployment group&#39;s resource name.
          * 
          * ***
          * 
@@ -198,9 +238,8 @@ public final class MirroringDeploymentGroupArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param mirroringDeploymentGroupId Required. Id of the requesting object
-         * If auto-generating Id server-side, remove this field and
-         * mirroring_deployment_group_id from the method_signature of Create RPC
+         * @param mirroringDeploymentGroupId The ID to use for the new deployment group, which will become the final
+         * component of the deployment group&#39;s resource name.
          * 
          * ***
          * 
@@ -212,8 +251,9 @@ public final class MirroringDeploymentGroupArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param network Required. Immutable. The network that is being used for the deployment. Format is:
-         * projects/{project}/global/networks/{network}.
+         * @param network The network that will be used for all child deployments, for example:
+         * `projects/{project}/global/networks/{network}`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -224,8 +264,9 @@ public final class MirroringDeploymentGroupArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param network Required. Immutable. The network that is being used for the deployment. Format is:
-         * projects/{project}/global/networks/{network}.
+         * @param network The network that will be used for all child deployments, for example:
+         * `projects/{project}/global/networks/{network}`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 

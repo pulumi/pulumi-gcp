@@ -9,6 +9,7 @@ import com.pulumi.gcp.compute.outputs.GetBackendServiceBackend;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceCdnPolicy;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceCircuitBreaker;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceConsistentHash;
+import com.pulumi.gcp.compute.outputs.GetBackendServiceCustomMetric;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceIap;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceLocalityLbPolicy;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceLogConfig;
@@ -41,6 +42,7 @@ public final class GetBackendServiceResult {
     private Integer connectionDrainingTimeoutSec;
     private List<GetBackendServiceConsistentHash> consistentHash;
     private String creationTimestamp;
+    private List<GetBackendServiceCustomMetric> customMetrics;
     private List<String> customRequestHeaders;
     private List<String> customResponseHeaders;
     /**
@@ -145,6 +147,9 @@ public final class GetBackendServiceResult {
     }
     public String creationTimestamp() {
         return this.creationTimestamp;
+    }
+    public List<GetBackendServiceCustomMetric> customMetrics() {
+        return this.customMetrics;
     }
     public List<String> customRequestHeaders() {
         return this.customRequestHeaders;
@@ -289,6 +294,7 @@ public final class GetBackendServiceResult {
         private Integer connectionDrainingTimeoutSec;
         private List<GetBackendServiceConsistentHash> consistentHash;
         private String creationTimestamp;
+        private List<GetBackendServiceCustomMetric> customMetrics;
         private List<String> customRequestHeaders;
         private List<String> customResponseHeaders;
         private String description;
@@ -327,6 +333,7 @@ public final class GetBackendServiceResult {
     	      this.connectionDrainingTimeoutSec = defaults.connectionDrainingTimeoutSec;
     	      this.consistentHash = defaults.consistentHash;
     	      this.creationTimestamp = defaults.creationTimestamp;
+    	      this.customMetrics = defaults.customMetrics;
     	      this.customRequestHeaders = defaults.customRequestHeaders;
     	      this.customResponseHeaders = defaults.customResponseHeaders;
     	      this.description = defaults.description;
@@ -431,6 +438,17 @@ public final class GetBackendServiceResult {
             }
             this.creationTimestamp = creationTimestamp;
             return this;
+        }
+        @CustomType.Setter
+        public Builder customMetrics(List<GetBackendServiceCustomMetric> customMetrics) {
+            if (customMetrics == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "customMetrics");
+            }
+            this.customMetrics = customMetrics;
+            return this;
+        }
+        public Builder customMetrics(GetBackendServiceCustomMetric... customMetrics) {
+            return customMetrics(List.of(customMetrics));
         }
         @CustomType.Setter
         public Builder customRequestHeaders(List<String> customRequestHeaders) {
@@ -683,6 +701,7 @@ public final class GetBackendServiceResult {
             _resultValue.connectionDrainingTimeoutSec = connectionDrainingTimeoutSec;
             _resultValue.consistentHash = consistentHash;
             _resultValue.creationTimestamp = creationTimestamp;
+            _resultValue.customMetrics = customMetrics;
             _resultValue.customRequestHeaders = customRequestHeaders;
             _resultValue.customResponseHeaders = customResponseHeaders;
             _resultValue.description = description;

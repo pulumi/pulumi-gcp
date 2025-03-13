@@ -10,14 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Iam
 {
     /// <summary>
-    /// An IAM Principal Access Boundary Policy resource
-    /// 
-    /// To get more information about PrincipalAccessBoundaryPolicy, see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/organizations.locations.principalAccessBoundaryPolicies)
-    /// * How-to Guides
-    ///     * [Create and apply Principal Access Boundaries](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create)
-    /// 
     /// ## Example Usage
     /// 
     /// ### Iam Principal Access Boundary Policy
@@ -30,12 +22,64 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_pab_policy = new Gcp.Iam.PrincipalAccessBoundaryPolicy("my-pab-policy", new()
+    ///     var pab_policy_for_org = new Gcp.Iam.PrincipalAccessBoundaryPolicy("pab-policy-for-org", new()
     ///     {
     ///         Organization = "123456789",
     ///         Location = "global",
-    ///         DisplayName = "test pab policy",
-    ///         PrincipalAccessBoundaryPolicyId = "test-pab-policy",
+    ///         DisplayName = "PAB policy for Organization",
+    ///         PrincipalAccessBoundaryPolicyId = "pab-policy-for-org",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Iam Organizations Policy Binding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumi.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var pabPolicy = new Gcp.Iam.PrincipalAccessBoundaryPolicy("pab_policy", new()
+    ///     {
+    ///         Organization = "123456789",
+    ///         Location = "global",
+    ///         DisplayName = "Binding for all principals in the Organization",
+    ///         PrincipalAccessBoundaryPolicyId = "my-pab-policy",
+    ///     });
+    /// 
+    ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
+    ///     {
+    ///         CreateDuration = "60s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             pabPolicy,
+    ///         },
+    ///     });
+    /// 
+    ///     var my_pab_policy = new Gcp.Iam.OrganizationsPolicyBinding("my-pab-policy", new()
+    ///     {
+    ///         Organization = "123456789",
+    ///         Location = "global",
+    ///         DisplayName = "Binding for all principals in the Organization",
+    ///         PolicyKind = "PRINCIPAL_ACCESS_BOUNDARY",
+    ///         PolicyBindingId = "binding-for-all-org-principals",
+    ///         Policy = pabPolicy.PrincipalAccessBoundaryPolicyId.Apply(principalAccessBoundaryPolicyId =&gt; $"organizations/123456789/locations/global/principalAccessBoundaryPolicies/{principalAccessBoundaryPolicyId}"),
+    ///         Target = new Gcp.Iam.Inputs.OrganizationsPolicyBindingTargetArgs
+    ///         {
+    ///             PrincipalSet = "//cloudresourcemanager.googleapis.com/organizations/123456789",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait60Seconds,
+    ///         },
     ///     });
     /// 
     /// });

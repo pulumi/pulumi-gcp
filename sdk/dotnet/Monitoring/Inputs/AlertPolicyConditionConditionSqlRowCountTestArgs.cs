@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public Input<string> Comparison { get; set; } = null!;
 
         /// <summary>
-        /// Test the boolean value in the indicated column.
+        /// The value against which to compare the row count.
         /// </summary>
         [Input("threshold", required: true)]
         public Input<int> Threshold { get; set; } = null!;

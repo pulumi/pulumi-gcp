@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
     public sealed class MirroringEndpointGroupAssociationLocationsDetail
     {
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+        /// The cloud location of the association, currently restricted to `global`.
         /// 
         /// 
         /// - - -
@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
         public readonly string? Location;
         /// <summary>
         /// (Output)
-        /// Output only. The association state in this location.
+        /// The current state of the association in this location.
         /// Possible values:
         /// STATE_UNSPECIFIED
         /// ACTIVE

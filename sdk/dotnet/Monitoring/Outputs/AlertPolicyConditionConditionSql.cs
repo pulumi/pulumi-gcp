@@ -14,8 +14,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
     public sealed class AlertPolicyConditionConditionSql
     {
         /// <summary>
-        /// The start date and time of the query. If left unspecified, then the
-        /// query will start immediately.
+        /// A test that uses an alerting result in a boolean column produced by the SQL query.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AlertPolicyConditionConditionSqlBooleanTest? BooleanTest;
@@ -43,7 +42,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// </summary>
         public readonly string Query;
         /// <summary>
-        /// Test the row count against a threshold.
+        /// A test that checks if the number of rows in the result set violates some threshold.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AlertPolicyConditionConditionSqlRowCountTest? RowCountTest;

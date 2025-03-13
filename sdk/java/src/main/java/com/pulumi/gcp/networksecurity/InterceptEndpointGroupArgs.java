@@ -18,18 +18,35 @@ public final class InterceptEndpointGroupArgs extends com.pulumi.resources.Resou
     public static final InterceptEndpointGroupArgs Empty = new InterceptEndpointGroupArgs();
 
     /**
-     * Immutable. The Intercept Deployment Group that this resource is connected to. Format
-     * is:
-     * `projects/{project}/locations/global/interceptDeploymentGroups/{interceptDeploymentGroup}`
+     * User-provided description of the endpoint group.
+     * Used as additional context for the endpoint group.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return User-provided description of the endpoint group.
+     * Used as additional context for the endpoint group.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The deployment group that this endpoint group is connected to, for example:
+     * `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
      * 
      */
     @Import(name="interceptDeploymentGroup", required=true)
     private Output<String> interceptDeploymentGroup;
 
     /**
-     * @return Immutable. The Intercept Deployment Group that this resource is connected to. Format
-     * is:
-     * `projects/{project}/locations/global/interceptDeploymentGroups/{interceptDeploymentGroup}`
+     * @return The deployment group that this endpoint group is connected to, for example:
+     * `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
      * 
      */
     public Output<String> interceptDeploymentGroup() {
@@ -37,7 +54,8 @@ public final class InterceptEndpointGroupArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * ID of the Intercept Endpoint Group.
+     * The ID to use for the endpoint group, which will become the final component
+     * of the endpoint group&#39;s resource name.
      * 
      * ***
      * 
@@ -46,7 +64,8 @@ public final class InterceptEndpointGroupArgs extends com.pulumi.resources.Resou
     private Output<String> interceptEndpointGroupId;
 
     /**
-     * @return ID of the Intercept Endpoint Group.
+     * @return The ID to use for the endpoint group, which will become the final component
+     * of the endpoint group&#39;s resource name.
      * 
      * ***
      * 
@@ -56,7 +75,7 @@ public final class InterceptEndpointGroupArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Optional. Labels as key value pairs
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -65,7 +84,7 @@ public final class InterceptEndpointGroupArgs extends com.pulumi.resources.Resou
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels as key value pairs
+     * @return Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -75,14 +94,14 @@ public final class InterceptEndpointGroupArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The location of the Intercept Endpoint Group, currently restricted to `global`.
+     * The cloud location of the endpoint group, currently restricted to `global`.
      * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
-     * @return The location of the Intercept Endpoint Group, currently restricted to `global`.
+     * @return The cloud location of the endpoint group, currently restricted to `global`.
      * 
      */
     public Output<String> location() {
@@ -109,6 +128,7 @@ public final class InterceptEndpointGroupArgs extends com.pulumi.resources.Resou
     private InterceptEndpointGroupArgs() {}
 
     private InterceptEndpointGroupArgs(InterceptEndpointGroupArgs $) {
+        this.description = $.description;
         this.interceptDeploymentGroup = $.interceptDeploymentGroup;
         this.interceptEndpointGroupId = $.interceptEndpointGroupId;
         this.labels = $.labels;
@@ -135,9 +155,32 @@ public final class InterceptEndpointGroupArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param interceptDeploymentGroup Immutable. The Intercept Deployment Group that this resource is connected to. Format
-         * is:
-         * `projects/{project}/locations/global/interceptDeploymentGroups/{interceptDeploymentGroup}`
+         * @param description User-provided description of the endpoint group.
+         * Used as additional context for the endpoint group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description User-provided description of the endpoint group.
+         * Used as additional context for the endpoint group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
+        /**
+         * @param interceptDeploymentGroup The deployment group that this endpoint group is connected to, for example:
+         * `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -148,9 +191,9 @@ public final class InterceptEndpointGroupArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param interceptDeploymentGroup Immutable. The Intercept Deployment Group that this resource is connected to. Format
-         * is:
-         * `projects/{project}/locations/global/interceptDeploymentGroups/{interceptDeploymentGroup}`
+         * @param interceptDeploymentGroup The deployment group that this endpoint group is connected to, for example:
+         * `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -160,7 +203,8 @@ public final class InterceptEndpointGroupArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param interceptEndpointGroupId ID of the Intercept Endpoint Group.
+         * @param interceptEndpointGroupId The ID to use for the endpoint group, which will become the final component
+         * of the endpoint group&#39;s resource name.
          * 
          * ***
          * 
@@ -173,7 +217,8 @@ public final class InterceptEndpointGroupArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param interceptEndpointGroupId ID of the Intercept Endpoint Group.
+         * @param interceptEndpointGroupId The ID to use for the endpoint group, which will become the final component
+         * of the endpoint group&#39;s resource name.
          * 
          * ***
          * 
@@ -185,7 +230,7 @@ public final class InterceptEndpointGroupArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs
+         * @param labels Labels are key/value pairs that help to organize and filter resources.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -198,7 +243,7 @@ public final class InterceptEndpointGroupArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs
+         * @param labels Labels are key/value pairs that help to organize and filter resources.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -210,7 +255,7 @@ public final class InterceptEndpointGroupArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param location The location of the Intercept Endpoint Group, currently restricted to `global`.
+         * @param location The cloud location of the endpoint group, currently restricted to `global`.
          * 
          * @return builder
          * 
@@ -221,7 +266,7 @@ public final class InterceptEndpointGroupArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param location The location of the Intercept Endpoint Group, currently restricted to `global`.
+         * @param location The cloud location of the endpoint group, currently restricted to `global`.
          * 
          * @return builder
          * 

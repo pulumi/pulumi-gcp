@@ -3081,8 +3081,10 @@ func (o PrivateCloudManagementClusterNodeTypeConfigArrayOutput) Index(i pulumi.I
 
 type PrivateCloudManagementClusterStretchedClusterConfig struct {
 	// Zone that will remain operational when connection between the two zones is lost.
+	// Specify the zone in the following format: projects/{project}/locations/{location}.
 	PreferredLocation *string `pulumi:"preferredLocation"`
 	// Additional zone for a higher level of availability and load balancing.
+	// Specify the zone in the following format: projects/{project}/locations/{location}.
 	SecondaryLocation *string `pulumi:"secondaryLocation"`
 }
 
@@ -3099,8 +3101,10 @@ type PrivateCloudManagementClusterStretchedClusterConfigInput interface {
 
 type PrivateCloudManagementClusterStretchedClusterConfigArgs struct {
 	// Zone that will remain operational when connection between the two zones is lost.
+	// Specify the zone in the following format: projects/{project}/locations/{location}.
 	PreferredLocation pulumi.StringPtrInput `pulumi:"preferredLocation"`
 	// Additional zone for a higher level of availability and load balancing.
+	// Specify the zone in the following format: projects/{project}/locations/{location}.
 	SecondaryLocation pulumi.StringPtrInput `pulumi:"secondaryLocation"`
 }
 
@@ -3182,11 +3186,13 @@ func (o PrivateCloudManagementClusterStretchedClusterConfigOutput) ToPrivateClou
 }
 
 // Zone that will remain operational when connection between the two zones is lost.
+// Specify the zone in the following format: projects/{project}/locations/{location}.
 func (o PrivateCloudManagementClusterStretchedClusterConfigOutput) PreferredLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateCloudManagementClusterStretchedClusterConfig) *string { return v.PreferredLocation }).(pulumi.StringPtrOutput)
 }
 
 // Additional zone for a higher level of availability and load balancing.
+// Specify the zone in the following format: projects/{project}/locations/{location}.
 func (o PrivateCloudManagementClusterStretchedClusterConfigOutput) SecondaryLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateCloudManagementClusterStretchedClusterConfig) *string { return v.SecondaryLocation }).(pulumi.StringPtrOutput)
 }
@@ -3216,6 +3222,7 @@ func (o PrivateCloudManagementClusterStretchedClusterConfigPtrOutput) Elem() Pri
 }
 
 // Zone that will remain operational when connection between the two zones is lost.
+// Specify the zone in the following format: projects/{project}/locations/{location}.
 func (o PrivateCloudManagementClusterStretchedClusterConfigPtrOutput) PreferredLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateCloudManagementClusterStretchedClusterConfig) *string {
 		if v == nil {
@@ -3226,6 +3233,7 @@ func (o PrivateCloudManagementClusterStretchedClusterConfigPtrOutput) PreferredL
 }
 
 // Additional zone for a higher level of availability and load balancing.
+// Specify the zone in the following format: projects/{project}/locations/{location}.
 func (o PrivateCloudManagementClusterStretchedClusterConfigPtrOutput) SecondaryLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateCloudManagementClusterStretchedClusterConfig) *string {
 		if v == nil {
@@ -6206,8 +6214,10 @@ func (o GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput) Index(i pulum
 
 type GetPrivateCloudManagementClusterStretchedClusterConfig struct {
 	// Zone that will remain operational when connection between the two zones is lost.
+	// Specify the zone in the following format: projects/{project}/locations/{location}.
 	PreferredLocation string `pulumi:"preferredLocation"`
 	// Additional zone for a higher level of availability and load balancing.
+	// Specify the zone in the following format: projects/{project}/locations/{location}.
 	SecondaryLocation string `pulumi:"secondaryLocation"`
 }
 
@@ -6224,8 +6234,10 @@ type GetPrivateCloudManagementClusterStretchedClusterConfigInput interface {
 
 type GetPrivateCloudManagementClusterStretchedClusterConfigArgs struct {
 	// Zone that will remain operational when connection between the two zones is lost.
+	// Specify the zone in the following format: projects/{project}/locations/{location}.
 	PreferredLocation pulumi.StringInput `pulumi:"preferredLocation"`
 	// Additional zone for a higher level of availability and load balancing.
+	// Specify the zone in the following format: projects/{project}/locations/{location}.
 	SecondaryLocation pulumi.StringInput `pulumi:"secondaryLocation"`
 }
 
@@ -6281,11 +6293,13 @@ func (o GetPrivateCloudManagementClusterStretchedClusterConfigOutput) ToGetPriva
 }
 
 // Zone that will remain operational when connection between the two zones is lost.
+// Specify the zone in the following format: projects/{project}/locations/{location}.
 func (o GetPrivateCloudManagementClusterStretchedClusterConfigOutput) PreferredLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrivateCloudManagementClusterStretchedClusterConfig) string { return v.PreferredLocation }).(pulumi.StringOutput)
 }
 
 // Additional zone for a higher level of availability and load balancing.
+// Specify the zone in the following format: projects/{project}/locations/{location}.
 func (o GetPrivateCloudManagementClusterStretchedClusterConfigOutput) SecondaryLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrivateCloudManagementClusterStretchedClusterConfig) string { return v.SecondaryLocation }).(pulumi.StringOutput)
 }

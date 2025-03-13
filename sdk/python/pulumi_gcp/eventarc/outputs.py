@@ -16,6 +16,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'GoogleApiSourceLoggingConfig',
     'MessageBusLoggingConfig',
     'TriggerDestination',
     'TriggerDestinationCloudRunService',
@@ -26,6 +27,46 @@ __all__ = [
     'TriggerTransport',
     'TriggerTransportPubsub',
 ]
+
+@pulumi.output_type
+class GoogleApiSourceLoggingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logSeverity":
+            suggest = "log_severity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleApiSourceLoggingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleApiSourceLoggingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleApiSourceLoggingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 log_severity: Optional[str] = None):
+        """
+        :param str log_severity: The minimum severity of logs that will be sent to Stackdriver/Platform
+               Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+               Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+        """
+        if log_severity is not None:
+            pulumi.set(__self__, "log_severity", log_severity)
+
+    @property
+    @pulumi.getter(name="logSeverity")
+    def log_severity(self) -> Optional[str]:
+        """
+        The minimum severity of logs that will be sent to Stackdriver/Platform
+        Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+        Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+        """
+        return pulumi.get(self, "log_severity")
+
 
 @pulumi.output_type
 class MessageBusLoggingConfig(dict):

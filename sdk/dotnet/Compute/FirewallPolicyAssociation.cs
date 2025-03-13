@@ -52,7 +52,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// 
     /// ## Import
     /// 
     /// FirewallPolicyAssociation can be imported using any of these accepted formats:
@@ -82,6 +81,10 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The firewall policy of the resource.
+        /// This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
+        /// firewall policy with the flag to override the existing attachmentTarget's policy association.
+        /// **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
+        /// on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
         /// 
         /// 
         /// - - -
@@ -155,6 +158,10 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The firewall policy of the resource.
+        /// This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
+        /// firewall policy with the flag to override the existing attachmentTarget's policy association.
+        /// **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
+        /// on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
         /// 
         /// 
         /// - - -
@@ -184,6 +191,10 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The firewall policy of the resource.
+        /// This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
+        /// firewall policy with the flag to override the existing attachmentTarget's policy association.
+        /// **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
+        /// on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
         /// 
         /// 
         /// - - -

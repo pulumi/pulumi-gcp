@@ -35,6 +35,11 @@ export type AuthzPolicy = import("./authzPolicy").AuthzPolicy;
 export const AuthzPolicy: typeof import("./authzPolicy").AuthzPolicy = null as any;
 utilities.lazyLoad(exports, ["AuthzPolicy"], () => require("./authzPolicy"));
 
+export { BackendAuthenticationConfigArgs, BackendAuthenticationConfigState } from "./backendAuthenticationConfig";
+export type BackendAuthenticationConfig = import("./backendAuthenticationConfig").BackendAuthenticationConfig;
+export const BackendAuthenticationConfig: typeof import("./backendAuthenticationConfig").BackendAuthenticationConfig = null as any;
+utilities.lazyLoad(exports, ["BackendAuthenticationConfig"], () => require("./backendAuthenticationConfig"));
+
 export { ClientTlsPolicyArgs, ClientTlsPolicyState } from "./clientTlsPolicy";
 export type ClientTlsPolicy = import("./clientTlsPolicy").ClientTlsPolicy;
 export const ClientTlsPolicy: typeof import("./clientTlsPolicy").ClientTlsPolicy = null as any;
@@ -147,6 +152,8 @@ const _module = {
                 return new AuthorizationPolicy(name, <any>undefined, { urn })
             case "gcp:networksecurity/authzPolicy:AuthzPolicy":
                 return new AuthzPolicy(name, <any>undefined, { urn })
+            case "gcp:networksecurity/backendAuthenticationConfig:BackendAuthenticationConfig":
+                return new BackendAuthenticationConfig(name, <any>undefined, { urn })
             case "gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy":
                 return new ClientTlsPolicy(name, <any>undefined, { urn })
             case "gcp:networksecurity/firewallEndpoint:FirewallEndpoint":
@@ -194,6 +201,7 @@ pulumi.runtime.registerResourceModule("gcp", "networksecurity/addressGroupIamMem
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/addressGroupIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/authorizationPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/authzPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "networksecurity/backendAuthenticationConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/clientTlsPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/firewallEndpoint", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/firewallEndpointAssociation", _module)

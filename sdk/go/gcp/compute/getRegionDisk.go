@@ -39,12 +39,14 @@ type LookupRegionDiskArgs struct {
 
 // A collection of values returned by getRegionDisk.
 type LookupRegionDiskResult struct {
-	AsyncPrimaryDisks  []GetRegionDiskAsyncPrimaryDisk  `pulumi:"asyncPrimaryDisks"`
-	CreationTimestamp  string                           `pulumi:"creationTimestamp"`
-	Description        string                           `pulumi:"description"`
-	DiskEncryptionKeys []GetRegionDiskDiskEncryptionKey `pulumi:"diskEncryptionKeys"`
-	EffectiveLabels    map[string]string                `pulumi:"effectiveLabels"`
-	GuestOsFeatures    []GetRegionDiskGuestOsFeature    `pulumi:"guestOsFeatures"`
+	AsyncPrimaryDisks                 []GetRegionDiskAsyncPrimaryDisk  `pulumi:"asyncPrimaryDisks"`
+	CreateSnapshotBeforeDestroy       bool                             `pulumi:"createSnapshotBeforeDestroy"`
+	CreateSnapshotBeforeDestroyPrefix string                           `pulumi:"createSnapshotBeforeDestroyPrefix"`
+	CreationTimestamp                 string                           `pulumi:"creationTimestamp"`
+	Description                       string                           `pulumi:"description"`
+	DiskEncryptionKeys                []GetRegionDiskDiskEncryptionKey `pulumi:"diskEncryptionKeys"`
+	EffectiveLabels                   map[string]string                `pulumi:"effectiveLabels"`
+	GuestOsFeatures                   []GetRegionDiskGuestOsFeature    `pulumi:"guestOsFeatures"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                           string                                     `pulumi:"id"`
 	Interface                    string                                     `pulumi:"interface"`
@@ -113,6 +115,14 @@ func (o LookupRegionDiskResultOutput) ToLookupRegionDiskResultOutputWithContext(
 
 func (o LookupRegionDiskResultOutput) AsyncPrimaryDisks() GetRegionDiskAsyncPrimaryDiskArrayOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) []GetRegionDiskAsyncPrimaryDisk { return v.AsyncPrimaryDisks }).(GetRegionDiskAsyncPrimaryDiskArrayOutput)
+}
+
+func (o LookupRegionDiskResultOutput) CreateSnapshotBeforeDestroy() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) bool { return v.CreateSnapshotBeforeDestroy }).(pulumi.BoolOutput)
+}
+
+func (o LookupRegionDiskResultOutput) CreateSnapshotBeforeDestroyPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.CreateSnapshotBeforeDestroyPrefix }).(pulumi.StringOutput)
 }
 
 func (o LookupRegionDiskResultOutput) CreationTimestamp() pulumi.StringOutput {

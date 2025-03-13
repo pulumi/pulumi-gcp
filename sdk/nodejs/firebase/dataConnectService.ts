@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     service: "firebasedataconnect.googleapis.com",
  *     disableOnDestroy: false,
  * });
- * // Create an FDC service
+ * // Create a Firebase Data Connect service
  * const _default = new gcp.firebase.DataConnectService("default", {
  *     project: "my-project-name",
  *     location: "us-central1",
@@ -40,6 +40,28 @@ import * as utilities from "../utilities";
  *         key1: "value1",
  *         key2: "value2",
  *     },
+ * }, {
+ *     dependsOn: [fdc],
+ * });
+ * ```
+ * ### Firebasedataconnect Service With Force Deletion
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * // Enable Firebase Data Connect API
+ * const fdc = new gcp.projects.Service("fdc", {
+ *     project: "my-project-name",
+ *     service: "firebasedataconnect.googleapis.com",
+ *     disableOnDestroy: false,
+ * });
+ * // Create a Firebase Data Connect service
+ * const _default = new gcp.firebase.DataConnectService("default", {
+ *     project: "my-project-name",
+ *     location: "us-central1",
+ *     serviceId: "example-service",
+ *     deletionPolicy: "FORCE",
  * }, {
  *     dependsOn: [fdc],
  * });

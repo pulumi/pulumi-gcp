@@ -212,6 +212,82 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Workstation Cluster Tags
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.tags.TagKey;
+ * import com.pulumi.gcp.tags.TagKeyArgs;
+ * import com.pulumi.gcp.tags.TagValue;
+ * import com.pulumi.gcp.tags.TagValueArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.workstations.WorkstationCluster;
+ * import com.pulumi.gcp.workstations.WorkstationClusterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var tagKey = new TagKey("tagKey", TagKeyArgs.builder()
+ *             .parent(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .shortName("keyname")
+ *             .build());
+ * 
+ *         var tagValue = new TagValue("tagValue", TagValueArgs.builder()
+ *             .parent(tagKey.name().applyValue(name -> String.format("tagKeys/%s", name)))
+ *             .shortName("valuename")
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .name("workstation-cluster-tags")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
+ *             .name("workstation-cluster-tags")
+ *             .ipCidrRange("10.0.0.0/24")
+ *             .region("us-central1")
+ *             .network(defaultNetwork.name())
+ *             .build());
+ * 
+ *         var default_ = new WorkstationCluster("default", WorkstationClusterArgs.builder()
+ *             .workstationClusterId("workstation-cluster-tags")
+ *             .network(defaultNetwork.id())
+ *             .subnetwork(defaultSubnetwork.id())
+ *             .location("us-central1")
+ *             .tags(Output.tuple(tagKey.shortName(), tagValue.shortName()).applyValue(values -> {
+ *                 var tagKeyShortName = values.t1;
+ *                 var tagValueShortName = values.t2;
+ *                 return Map.of(String.format("%s/%s", project.applyValue(getProjectResult -> getProjectResult.projectId()),tagKeyShortName), tagValueShortName);
+ *             }))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -511,6 +587,26 @@ public class WorkstationCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> subnetwork() {
         return this.subnetwork;
+    }
+    /**
+     * Resource manager tags bound to this resource.
+     * For example:
+     * &#34;123/environment&#34;: &#34;production&#34;,
+     * &#34;123/costCenter&#34;: &#34;marketing&#34;
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return Resource manager tags bound to this resource.
+     * For example:
+     * &#34;123/environment&#34;: &#34;production&#34;,
+     * &#34;123/costCenter&#34;: &#34;marketing&#34;
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The system-generated UID of the resource.

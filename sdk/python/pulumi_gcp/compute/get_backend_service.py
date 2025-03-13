@@ -27,7 +27,7 @@ class GetBackendServiceResult:
     """
     A collection of values returned by getBackendService.
     """
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, compression_mode=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, fingerprint=None, generated_id=None, health_checks=None, iaps=None, id=None, ip_address_selection_policy=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_configs=None, name=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, security_settings=None, self_link=None, service_lb_policy=None, session_affinity=None, strong_session_affinity_cookies=None, timeout_sec=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, compression_mode=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_metrics=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, fingerprint=None, generated_id=None, health_checks=None, iaps=None, id=None, ip_address_selection_policy=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_configs=None, name=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, security_settings=None, self_link=None, service_lb_policy=None, session_affinity=None, strong_session_affinity_cookies=None, timeout_sec=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -52,6 +52,9 @@ class GetBackendServiceResult:
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if custom_metrics and not isinstance(custom_metrics, list):
+            raise TypeError("Expected argument 'custom_metrics' to be a list")
+        pulumi.set(__self__, "custom_metrics", custom_metrics)
         if custom_request_headers and not isinstance(custom_request_headers, list):
             raise TypeError("Expected argument 'custom_request_headers' to be a list")
         pulumi.set(__self__, "custom_request_headers", custom_request_headers)
@@ -179,6 +182,11 @@ class GetBackendServiceResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter(name="customMetrics")
+    def custom_metrics(self) -> Sequence['outputs.GetBackendServiceCustomMetricResult']:
+        return pulumi.get(self, "custom_metrics")
 
     @property
     @pulumi.getter(name="customRequestHeaders")
@@ -363,6 +371,7 @@ class AwaitableGetBackendServiceResult(GetBackendServiceResult):
             connection_draining_timeout_sec=self.connection_draining_timeout_sec,
             consistent_hash=self.consistent_hash,
             creation_timestamp=self.creation_timestamp,
+            custom_metrics=self.custom_metrics,
             custom_request_headers=self.custom_request_headers,
             custom_response_headers=self.custom_response_headers,
             description=self.description,
@@ -433,6 +442,7 @@ def get_backend_service(name: Optional[str] = None,
         connection_draining_timeout_sec=pulumi.get(__ret__, 'connection_draining_timeout_sec'),
         consistent_hash=pulumi.get(__ret__, 'consistent_hash'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        custom_metrics=pulumi.get(__ret__, 'custom_metrics'),
         custom_request_headers=pulumi.get(__ret__, 'custom_request_headers'),
         custom_response_headers=pulumi.get(__ret__, 'custom_response_headers'),
         description=pulumi.get(__ret__, 'description'),
@@ -500,6 +510,7 @@ def get_backend_service_output(name: Optional[pulumi.Input[str]] = None,
         connection_draining_timeout_sec=pulumi.get(__response__, 'connection_draining_timeout_sec'),
         consistent_hash=pulumi.get(__response__, 'consistent_hash'),
         creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
+        custom_metrics=pulumi.get(__response__, 'custom_metrics'),
         custom_request_headers=pulumi.get(__response__, 'custom_request_headers'),
         custom_response_headers=pulumi.get(__response__, 'custom_response_headers'),
         description=pulumi.get(__response__, 'description'),

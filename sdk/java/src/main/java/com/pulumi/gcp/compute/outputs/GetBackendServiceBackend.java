@@ -5,9 +5,11 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.outputs.GetBackendServiceBackendCustomMetric;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -16,11 +18,11 @@ public final class GetBackendServiceBackend {
      * @return Specifies the balancing mode for this backend.
      * 
      * For global HTTP(S) or TCP/SSL load balancing, the default is
-     * UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
-     * and CONNECTION (for TCP/SSL).
+     * UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S)),
+     * CUSTOM_METRICS (for HTTP(s)) and CONNECTION (for TCP/SSL).
      * 
      * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
-     * for an explanation of load balancing modes. Default value: &#34;UTILIZATION&#34; Possible values: [&#34;UTILIZATION&#34;, &#34;RATE&#34;, &#34;CONNECTION&#34;]
+     * for an explanation of load balancing modes. Default value: &#34;UTILIZATION&#34; Possible values: [&#34;UTILIZATION&#34;, &#34;RATE&#34;, &#34;CONNECTION&#34;, &#34;CUSTOM_METRICS&#34;]
      * 
      */
     private String balancingMode;
@@ -35,6 +37,11 @@ public final class GetBackendServiceBackend {
      * 
      */
     private Double capacityScaler;
+    /**
+     * @return The set of custom metrics that are used for &lt;code&gt;CUSTOM_METRICS&lt;/code&gt; BalancingMode.
+     * 
+     */
+    private List<GetBackendServiceBackendCustomMetric> customMetrics;
     /**
      * @return Textual description for the Backend Service.
      * 
@@ -131,11 +138,11 @@ public final class GetBackendServiceBackend {
      * @return Specifies the balancing mode for this backend.
      * 
      * For global HTTP(S) or TCP/SSL load balancing, the default is
-     * UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
-     * and CONNECTION (for TCP/SSL).
+     * UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S)),
+     * CUSTOM_METRICS (for HTTP(s)) and CONNECTION (for TCP/SSL).
      * 
      * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
-     * for an explanation of load balancing modes. Default value: &#34;UTILIZATION&#34; Possible values: [&#34;UTILIZATION&#34;, &#34;RATE&#34;, &#34;CONNECTION&#34;]
+     * for an explanation of load balancing modes. Default value: &#34;UTILIZATION&#34; Possible values: [&#34;UTILIZATION&#34;, &#34;RATE&#34;, &#34;CONNECTION&#34;, &#34;CUSTOM_METRICS&#34;]
      * 
      */
     public String balancingMode() {
@@ -153,6 +160,13 @@ public final class GetBackendServiceBackend {
      */
     public Double capacityScaler() {
         return this.capacityScaler;
+    }
+    /**
+     * @return The set of custom metrics that are used for &lt;code&gt;CUSTOM_METRICS&lt;/code&gt; BalancingMode.
+     * 
+     */
+    public List<GetBackendServiceBackendCustomMetric> customMetrics() {
+        return this.customMetrics;
     }
     /**
      * @return Textual description for the Backend Service.
@@ -274,6 +288,7 @@ public final class GetBackendServiceBackend {
     public static final class Builder {
         private String balancingMode;
         private Double capacityScaler;
+        private List<GetBackendServiceBackendCustomMetric> customMetrics;
         private String description;
         private String group;
         private Integer maxConnections;
@@ -288,6 +303,7 @@ public final class GetBackendServiceBackend {
     	      Objects.requireNonNull(defaults);
     	      this.balancingMode = defaults.balancingMode;
     	      this.capacityScaler = defaults.capacityScaler;
+    	      this.customMetrics = defaults.customMetrics;
     	      this.description = defaults.description;
     	      this.group = defaults.group;
     	      this.maxConnections = defaults.maxConnections;
@@ -314,6 +330,17 @@ public final class GetBackendServiceBackend {
             }
             this.capacityScaler = capacityScaler;
             return this;
+        }
+        @CustomType.Setter
+        public Builder customMetrics(List<GetBackendServiceBackendCustomMetric> customMetrics) {
+            if (customMetrics == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceBackend", "customMetrics");
+            }
+            this.customMetrics = customMetrics;
+            return this;
+        }
+        public Builder customMetrics(GetBackendServiceBackendCustomMetric... customMetrics) {
+            return customMetrics(List.of(customMetrics));
         }
         @CustomType.Setter
         public Builder description(String description) {
@@ -391,6 +418,7 @@ public final class GetBackendServiceBackend {
             final var _resultValue = new GetBackendServiceBackend();
             _resultValue.balancingMode = balancingMode;
             _resultValue.capacityScaler = capacityScaler;
+            _resultValue.customMetrics = customMetrics;
             _resultValue.description = description;
             _resultValue.group = group;
             _resultValue.maxConnections = maxConnections;

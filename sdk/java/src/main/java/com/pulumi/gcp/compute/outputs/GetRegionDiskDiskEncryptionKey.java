@@ -22,6 +22,13 @@ public final class GetRegionDiskDiskEncryptionKey {
      */
     private String rawKey;
     /**
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+     * customer-supplied encryption key to either encrypt or decrypt
+     * this resource. You can provide either the rawKey or the rsaEncryptedKey.
+     * 
+     */
+    private String rsaEncryptedKey;
+    /**
      * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
      * encryption key that protects this resource.
      * 
@@ -45,6 +52,15 @@ public final class GetRegionDiskDiskEncryptionKey {
         return this.rawKey;
     }
     /**
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+     * customer-supplied encryption key to either encrypt or decrypt
+     * this resource. You can provide either the rawKey or the rsaEncryptedKey.
+     * 
+     */
+    public String rsaEncryptedKey() {
+        return this.rsaEncryptedKey;
+    }
+    /**
      * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
      * encryption key that protects this resource.
      * 
@@ -64,12 +80,14 @@ public final class GetRegionDiskDiskEncryptionKey {
     public static final class Builder {
         private String kmsKeyName;
         private String rawKey;
+        private String rsaEncryptedKey;
         private String sha256;
         public Builder() {}
         public Builder(GetRegionDiskDiskEncryptionKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsKeyName = defaults.kmsKeyName;
     	      this.rawKey = defaults.rawKey;
+    	      this.rsaEncryptedKey = defaults.rsaEncryptedKey;
     	      this.sha256 = defaults.sha256;
         }
 
@@ -90,6 +108,14 @@ public final class GetRegionDiskDiskEncryptionKey {
             return this;
         }
         @CustomType.Setter
+        public Builder rsaEncryptedKey(String rsaEncryptedKey) {
+            if (rsaEncryptedKey == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskDiskEncryptionKey", "rsaEncryptedKey");
+            }
+            this.rsaEncryptedKey = rsaEncryptedKey;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sha256(String sha256) {
             if (sha256 == null) {
               throw new MissingRequiredPropertyException("GetRegionDiskDiskEncryptionKey", "sha256");
@@ -101,6 +127,7 @@ public final class GetRegionDiskDiskEncryptionKey {
             final var _resultValue = new GetRegionDiskDiskEncryptionKey();
             _resultValue.kmsKeyName = kmsKeyName;
             _resultValue.rawKey = rawKey;
+            _resultValue.rsaEncryptedKey = rsaEncryptedKey;
             _resultValue.sha256 = sha256;
             return _resultValue;
         }

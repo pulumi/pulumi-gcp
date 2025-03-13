@@ -12,14 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A policy binding to a Project
-//
-// To get more information about ProjectsPolicyBinding, see:
-//
-// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/projects.locations.policyBindings)
-// * How-to Guides
-//   - [Apply a policy binding](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create#create_binding)
-//
 // ## Example Usage
 //
 // ### Iam Projects Policy Binding
@@ -47,7 +39,7 @@ import (
 //			pabPolicy, err := iam.NewPrincipalAccessBoundaryPolicy(ctx, "pab_policy", &iam.PrincipalAccessBoundaryPolicyArgs{
 //				Organization:                    pulumi.String("123456789"),
 //				Location:                        pulumi.String("global"),
-//				DisplayName:                     pulumi.String("test project binding"),
+//				DisplayName:                     pulumi.String("binding for all principals in the project"),
 //				PrincipalAccessBoundaryPolicyId: pulumi.String("my-pab-policy"),
 //			})
 //			if err != nil {
@@ -61,12 +53,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = iam.NewProjectsPolicyBinding(ctx, "my-project-binding", &iam.ProjectsPolicyBindingArgs{
+//			_, err = iam.NewProjectsPolicyBinding(ctx, "binding-for-all-project-principals", &iam.ProjectsPolicyBindingArgs{
 //				Project:         pulumi.String(project.ProjectId),
 //				Location:        pulumi.String("global"),
-//				DisplayName:     pulumi.String("test project binding"),
+//				DisplayName:     pulumi.String("binding for all principals in the project"),
 //				PolicyKind:      pulumi.String("PRINCIPAL_ACCESS_BOUNDARY"),
-//				PolicyBindingId: pulumi.String("test-project-binding"),
+//				PolicyBindingId: pulumi.String("binding-for-all-project-principals"),
 //				Policy: pabPolicy.PrincipalAccessBoundaryPolicyId.ApplyT(func(principalAccessBoundaryPolicyId string) (string, error) {
 //					return fmt.Sprintf("organizations/123456789/locations/global/principalAccessBoundaryPolicies/%v", principalAccessBoundaryPolicyId), nil
 //				}).(pulumi.StringOutput),

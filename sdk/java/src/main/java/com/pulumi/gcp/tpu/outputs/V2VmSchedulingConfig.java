@@ -21,6 +21,11 @@ public final class V2VmSchedulingConfig {
      * 
      */
     private @Nullable Boolean reserved;
+    /**
+     * @return Optional. Defines whether the node is Spot VM.
+     * 
+     */
+    private @Nullable Boolean spot;
 
     private V2VmSchedulingConfig() {}
     /**
@@ -37,6 +42,13 @@ public final class V2VmSchedulingConfig {
     public Optional<Boolean> reserved() {
         return Optional.ofNullable(this.reserved);
     }
+    /**
+     * @return Optional. Defines whether the node is Spot VM.
+     * 
+     */
+    public Optional<Boolean> spot() {
+        return Optional.ofNullable(this.spot);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -49,11 +61,13 @@ public final class V2VmSchedulingConfig {
     public static final class Builder {
         private @Nullable Boolean preemptible;
         private @Nullable Boolean reserved;
+        private @Nullable Boolean spot;
         public Builder() {}
         public Builder(V2VmSchedulingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.preemptible = defaults.preemptible;
     	      this.reserved = defaults.reserved;
+    	      this.spot = defaults.spot;
         }
 
         @CustomType.Setter
@@ -68,10 +82,17 @@ public final class V2VmSchedulingConfig {
             this.reserved = reserved;
             return this;
         }
+        @CustomType.Setter
+        public Builder spot(@Nullable Boolean spot) {
+
+            this.spot = spot;
+            return this;
+        }
         public V2VmSchedulingConfig build() {
             final var _resultValue = new V2VmSchedulingConfig();
             _resultValue.preemptible = preemptible;
             _resultValue.reserved = reserved;
+            _resultValue.spot = spot;
             return _resultValue;
         }
     }

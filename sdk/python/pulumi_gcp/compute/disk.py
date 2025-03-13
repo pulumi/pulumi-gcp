@@ -24,6 +24,8 @@ class DiskArgs:
                  access_mode: Optional[pulumi.Input[str]] = None,
                  architecture: Optional[pulumi.Input[str]] = None,
                  async_primary_disk: Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']] = None,
+                 create_snapshot_before_destroy: Optional[pulumi.Input[bool]] = None,
+                 create_snapshot_before_destroy_prefix: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input['DiskDiskEncryptionKeyArgs']] = None,
                  enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
@@ -60,6 +62,10 @@ class DiskArgs:
         :param pulumi.Input[str] architecture: (Optional)
         :param pulumi.Input['DiskAsyncPrimaryDiskArgs'] async_primary_disk: A nested object resource.
                Structure is documented below.
+        :param pulumi.Input[bool] create_snapshot_before_destroy: If set to true, a snapshot of the disk will be created before it is destroyed.
+               If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+               The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+        :param pulumi.Input[str] create_snapshot_before_destroy_prefix: This will set a custom name prefix for the snapshot that's created when the disk is deleted.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input['DiskDiskEncryptionKeyArgs'] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
@@ -185,6 +191,10 @@ class DiskArgs:
             pulumi.set(__self__, "architecture", architecture)
         if async_primary_disk is not None:
             pulumi.set(__self__, "async_primary_disk", async_primary_disk)
+        if create_snapshot_before_destroy is not None:
+            pulumi.set(__self__, "create_snapshot_before_destroy", create_snapshot_before_destroy)
+        if create_snapshot_before_destroy_prefix is not None:
+            pulumi.set(__self__, "create_snapshot_before_destroy_prefix", create_snapshot_before_destroy_prefix)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disk_encryption_key is not None:
@@ -281,6 +291,32 @@ class DiskArgs:
     @async_primary_disk.setter
     def async_primary_disk(self, value: Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']]):
         pulumi.set(self, "async_primary_disk", value)
+
+    @property
+    @pulumi.getter(name="createSnapshotBeforeDestroy")
+    def create_snapshot_before_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, a snapshot of the disk will be created before it is destroyed.
+        If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+        The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+        """
+        return pulumi.get(self, "create_snapshot_before_destroy")
+
+    @create_snapshot_before_destroy.setter
+    def create_snapshot_before_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_snapshot_before_destroy", value)
+
+    @property
+    @pulumi.getter(name="createSnapshotBeforeDestroyPrefix")
+    def create_snapshot_before_destroy_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+        """
+        return pulumi.get(self, "create_snapshot_before_destroy_prefix")
+
+    @create_snapshot_before_destroy_prefix.setter
+    def create_snapshot_before_destroy_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_snapshot_before_destroy_prefix", value)
 
     @property
     @pulumi.getter
@@ -694,6 +730,8 @@ class _DiskState:
                  access_mode: Optional[pulumi.Input[str]] = None,
                  architecture: Optional[pulumi.Input[str]] = None,
                  async_primary_disk: Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']] = None,
+                 create_snapshot_before_destroy: Optional[pulumi.Input[bool]] = None,
+                 create_snapshot_before_destroy_prefix: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input['DiskDiskEncryptionKeyArgs']] = None,
@@ -743,6 +781,10 @@ class _DiskState:
         :param pulumi.Input[str] architecture: (Optional)
         :param pulumi.Input['DiskAsyncPrimaryDiskArgs'] async_primary_disk: A nested object resource.
                Structure is documented below.
+        :param pulumi.Input[bool] create_snapshot_before_destroy: If set to true, a snapshot of the disk will be created before it is destroyed.
+               If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+               The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+        :param pulumi.Input[str] create_snapshot_before_destroy_prefix: This will set a custom name prefix for the snapshot that's created when the disk is deleted.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
@@ -899,6 +941,10 @@ class _DiskState:
             pulumi.set(__self__, "architecture", architecture)
         if async_primary_disk is not None:
             pulumi.set(__self__, "async_primary_disk", async_primary_disk)
+        if create_snapshot_before_destroy is not None:
+            pulumi.set(__self__, "create_snapshot_before_destroy", create_snapshot_before_destroy)
+        if create_snapshot_before_destroy_prefix is not None:
+            pulumi.set(__self__, "create_snapshot_before_destroy_prefix", create_snapshot_before_destroy_prefix)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
@@ -1021,6 +1067,32 @@ class _DiskState:
     @async_primary_disk.setter
     def async_primary_disk(self, value: Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']]):
         pulumi.set(self, "async_primary_disk", value)
+
+    @property
+    @pulumi.getter(name="createSnapshotBeforeDestroy")
+    def create_snapshot_before_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, a snapshot of the disk will be created before it is destroyed.
+        If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+        The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+        """
+        return pulumi.get(self, "create_snapshot_before_destroy")
+
+    @create_snapshot_before_destroy.setter
+    def create_snapshot_before_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_snapshot_before_destroy", value)
+
+    @property
+    @pulumi.getter(name="createSnapshotBeforeDestroyPrefix")
+    def create_snapshot_before_destroy_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+        """
+        return pulumi.get(self, "create_snapshot_before_destroy_prefix")
+
+    @create_snapshot_before_destroy_prefix.setter
+    def create_snapshot_before_destroy_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_snapshot_before_destroy_prefix", value)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -1610,6 +1682,8 @@ class Disk(pulumi.CustomResource):
                  access_mode: Optional[pulumi.Input[str]] = None,
                  architecture: Optional[pulumi.Input[str]] = None,
                  async_primary_disk: Optional[pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']]] = None,
+                 create_snapshot_before_destroy: Optional[pulumi.Input[bool]] = None,
+                 create_snapshot_before_destroy_prefix: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict']]] = None,
                  enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
@@ -1766,6 +1840,10 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[str] architecture: (Optional)
         :param pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']] async_primary_disk: A nested object resource.
                Structure is documented below.
+        :param pulumi.Input[bool] create_snapshot_before_destroy: If set to true, a snapshot of the disk will be created before it is destroyed.
+               If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+               The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+        :param pulumi.Input[str] create_snapshot_before_destroy_prefix: This will set a custom name prefix for the snapshot that's created when the disk is deleted.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict']] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
@@ -2028,6 +2106,8 @@ class Disk(pulumi.CustomResource):
                  access_mode: Optional[pulumi.Input[str]] = None,
                  architecture: Optional[pulumi.Input[str]] = None,
                  async_primary_disk: Optional[pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']]] = None,
+                 create_snapshot_before_destroy: Optional[pulumi.Input[bool]] = None,
+                 create_snapshot_before_destroy_prefix: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict']]] = None,
                  enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
@@ -2066,6 +2146,8 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["access_mode"] = access_mode
             __props__.__dict__["architecture"] = architecture
             __props__.__dict__["async_primary_disk"] = async_primary_disk
+            __props__.__dict__["create_snapshot_before_destroy"] = create_snapshot_before_destroy
+            __props__.__dict__["create_snapshot_before_destroy_prefix"] = create_snapshot_before_destroy_prefix
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_encryption_key"] = disk_encryption_key
             __props__.__dict__["enable_confidential_compute"] = enable_confidential_compute
@@ -2120,6 +2202,8 @@ class Disk(pulumi.CustomResource):
             access_mode: Optional[pulumi.Input[str]] = None,
             architecture: Optional[pulumi.Input[str]] = None,
             async_primary_disk: Optional[pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']]] = None,
+            create_snapshot_before_destroy: Optional[pulumi.Input[bool]] = None,
+            create_snapshot_before_destroy_prefix: Optional[pulumi.Input[str]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disk_encryption_key: Optional[pulumi.Input[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict']]] = None,
@@ -2174,6 +2258,10 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[str] architecture: (Optional)
         :param pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']] async_primary_disk: A nested object resource.
                Structure is documented below.
+        :param pulumi.Input[bool] create_snapshot_before_destroy: If set to true, a snapshot of the disk will be created before it is destroyed.
+               If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+               The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+        :param pulumi.Input[str] create_snapshot_before_destroy_prefix: This will set a custom name prefix for the snapshot that's created when the disk is deleted.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
@@ -2331,6 +2419,8 @@ class Disk(pulumi.CustomResource):
         __props__.__dict__["access_mode"] = access_mode
         __props__.__dict__["architecture"] = architecture
         __props__.__dict__["async_primary_disk"] = async_primary_disk
+        __props__.__dict__["create_snapshot_before_destroy"] = create_snapshot_before_destroy
+        __props__.__dict__["create_snapshot_before_destroy_prefix"] = create_snapshot_before_destroy_prefix
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
         __props__.__dict__["disk_encryption_key"] = disk_encryption_key
@@ -2400,6 +2490,24 @@ class Disk(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "async_primary_disk")
+
+    @property
+    @pulumi.getter(name="createSnapshotBeforeDestroy")
+    def create_snapshot_before_destroy(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If set to true, a snapshot of the disk will be created before it is destroyed.
+        If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+        The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+        """
+        return pulumi.get(self, "create_snapshot_before_destroy")
+
+    @property
+    @pulumi.getter(name="createSnapshotBeforeDestroyPrefix")
+    def create_snapshot_before_destroy_prefix(self) -> pulumi.Output[Optional[str]]:
+        """
+        This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+        """
+        return pulumi.get(self, "create_snapshot_before_destroy_prefix")
 
     @property
     @pulumi.getter(name="creationTimestamp")

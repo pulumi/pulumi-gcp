@@ -56,7 +56,8 @@ public final class CryptoKeyVersionArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The current state of the CryptoKeyVersion.
+     * The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
+     * otherwise the value of this field is always retrieved automatically.
      * Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
      * 
      */
@@ -64,7 +65,8 @@ public final class CryptoKeyVersionArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<String> state;
 
     /**
-     * @return The current state of the CryptoKeyVersion.
+     * @return The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
+     * otherwise the value of this field is always retrieved automatically.
      * Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
      * 
      */
@@ -149,7 +151,8 @@ public final class CryptoKeyVersionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param state The current state of the CryptoKeyVersion.
+         * @param state The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
+         * otherwise the value of this field is always retrieved automatically.
          * Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
          * 
          * @return builder
@@ -161,7 +164,8 @@ public final class CryptoKeyVersionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param state The current state of the CryptoKeyVersion.
+         * @param state The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
+         * otherwise the value of this field is always retrieved automatically.
          * Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
          * 
          * @return builder

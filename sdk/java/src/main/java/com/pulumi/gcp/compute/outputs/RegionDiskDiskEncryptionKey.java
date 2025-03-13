@@ -24,6 +24,14 @@ public final class RegionDiskDiskEncryptionKey {
      */
     private @Nullable String rawKey;
     /**
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+     * customer-supplied encryption key to either encrypt or decrypt
+     * this resource. You can provide either the rawKey or the rsaEncryptedKey.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
+    private @Nullable String rsaEncryptedKey;
+    /**
      * @return (Output)
      * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
      * encryption key that protects this resource.
@@ -49,6 +57,16 @@ public final class RegionDiskDiskEncryptionKey {
         return Optional.ofNullable(this.rawKey);
     }
     /**
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+     * customer-supplied encryption key to either encrypt or decrypt
+     * this resource. You can provide either the rawKey or the rsaEncryptedKey.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
+    public Optional<String> rsaEncryptedKey() {
+        return Optional.ofNullable(this.rsaEncryptedKey);
+    }
+    /**
      * @return (Output)
      * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
      * encryption key that protects this resource.
@@ -69,12 +87,14 @@ public final class RegionDiskDiskEncryptionKey {
     public static final class Builder {
         private @Nullable String kmsKeyName;
         private @Nullable String rawKey;
+        private @Nullable String rsaEncryptedKey;
         private @Nullable String sha256;
         public Builder() {}
         public Builder(RegionDiskDiskEncryptionKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsKeyName = defaults.kmsKeyName;
     	      this.rawKey = defaults.rawKey;
+    	      this.rsaEncryptedKey = defaults.rsaEncryptedKey;
     	      this.sha256 = defaults.sha256;
         }
 
@@ -91,6 +111,12 @@ public final class RegionDiskDiskEncryptionKey {
             return this;
         }
         @CustomType.Setter
+        public Builder rsaEncryptedKey(@Nullable String rsaEncryptedKey) {
+
+            this.rsaEncryptedKey = rsaEncryptedKey;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sha256(@Nullable String sha256) {
 
             this.sha256 = sha256;
@@ -100,6 +126,7 @@ public final class RegionDiskDiskEncryptionKey {
             final var _resultValue = new RegionDiskDiskEncryptionKey();
             _resultValue.kmsKeyName = kmsKeyName;
             _resultValue.rawKey = rawKey;
+            _resultValue.rsaEncryptedKey = rsaEncryptedKey;
             _resultValue.sha256 = sha256;
             return _resultValue;
         }

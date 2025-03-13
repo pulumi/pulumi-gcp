@@ -1270,8 +1270,10 @@ func (o FoldersPolicyBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type FoldersPolicyBindingTarget struct {
-	// Required. Immutable. The resource name of the policy to be bound.
-	// The binding parent and policy must belong to the same Organization (or Project).
+	// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+	// Examples for each one of the following supported principal set types:
+	// * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+	//   It must be parent by the policy binding's parent (the folder).
 	//
 	// ***
 	PrincipalSet *string `pulumi:"principalSet"`
@@ -1289,8 +1291,10 @@ type FoldersPolicyBindingTargetInput interface {
 }
 
 type FoldersPolicyBindingTargetArgs struct {
-	// Required. Immutable. The resource name of the policy to be bound.
-	// The binding parent and policy must belong to the same Organization (or Project).
+	// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+	// Examples for each one of the following supported principal set types:
+	// * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+	//   It must be parent by the policy binding's parent (the folder).
 	//
 	// ***
 	PrincipalSet pulumi.StringPtrInput `pulumi:"principalSet"`
@@ -1373,8 +1377,10 @@ func (o FoldersPolicyBindingTargetOutput) ToFoldersPolicyBindingTargetPtrOutputW
 	}).(FoldersPolicyBindingTargetPtrOutput)
 }
 
-// Required. Immutable. The resource name of the policy to be bound.
-// The binding parent and policy must belong to the same Organization (or Project).
+// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+// Examples for each one of the following supported principal set types:
+//   - Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+//     It must be parent by the policy binding's parent (the folder).
 //
 // ***
 func (o FoldersPolicyBindingTargetOutput) PrincipalSet() pulumi.StringPtrOutput {
@@ -1405,8 +1411,10 @@ func (o FoldersPolicyBindingTargetPtrOutput) Elem() FoldersPolicyBindingTargetOu
 	}).(FoldersPolicyBindingTargetOutput)
 }
 
-// Required. Immutable. The resource name of the policy to be bound.
-// The binding parent and policy must belong to the same Organization (or Project).
+// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+// Examples for each one of the following supported principal set types:
+//   - Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+//     It must be parent by the policy binding's parent (the folder).
 //
 // ***
 func (o FoldersPolicyBindingTargetPtrOutput) PrincipalSet() pulumi.StringPtrOutput {
@@ -1613,8 +1621,12 @@ func (o OrganizationsPolicyBindingConditionPtrOutput) Title() pulumi.StringPtrOu
 }
 
 type OrganizationsPolicyBindingTarget struct {
-	// Required. Immutable. The resource name of the policy to be bound.
-	// The binding parent and policy must belong to the same Organization (or Project).
+	// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+	// Examples for each one of the following supported principal set types:
+	// * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+	// * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
+	// * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
+	//   It must be parent by the policy binding's parent (the organization).
 	//
 	// ***
 	PrincipalSet *string `pulumi:"principalSet"`
@@ -1632,8 +1644,12 @@ type OrganizationsPolicyBindingTargetInput interface {
 }
 
 type OrganizationsPolicyBindingTargetArgs struct {
-	// Required. Immutable. The resource name of the policy to be bound.
-	// The binding parent and policy must belong to the same Organization (or Project).
+	// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+	// Examples for each one of the following supported principal set types:
+	// * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+	// * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
+	// * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
+	//   It must be parent by the policy binding's parent (the organization).
 	//
 	// ***
 	PrincipalSet pulumi.StringPtrInput `pulumi:"principalSet"`
@@ -1716,8 +1732,12 @@ func (o OrganizationsPolicyBindingTargetOutput) ToOrganizationsPolicyBindingTarg
 	}).(OrganizationsPolicyBindingTargetPtrOutput)
 }
 
-// Required. Immutable. The resource name of the policy to be bound.
-// The binding parent and policy must belong to the same Organization (or Project).
+// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+// Examples for each one of the following supported principal set types:
+//   - Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+//   - Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
+//   - Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
+//     It must be parent by the policy binding's parent (the organization).
 //
 // ***
 func (o OrganizationsPolicyBindingTargetOutput) PrincipalSet() pulumi.StringPtrOutput {
@@ -1748,8 +1768,12 @@ func (o OrganizationsPolicyBindingTargetPtrOutput) Elem() OrganizationsPolicyBin
 	}).(OrganizationsPolicyBindingTargetOutput)
 }
 
-// Required. Immutable. The resource name of the policy to be bound.
-// The binding parent and policy must belong to the same Organization (or Project).
+// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+// Examples for each one of the following supported principal set types:
+//   - Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+//   - Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
+//   - Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
+//     It must be parent by the policy binding's parent (the organization).
 //
 // ***
 func (o OrganizationsPolicyBindingTargetPtrOutput) PrincipalSet() pulumi.StringPtrOutput {
@@ -2269,8 +2293,13 @@ func (o ProjectsPolicyBindingConditionPtrOutput) Title() pulumi.StringPtrOutput 
 }
 
 type ProjectsPolicyBindingTarget struct {
-	// Required. Immutable. The resource name of the policy to be bound.
-	// The binding parent and policy must belong to the same Organization (or Project).
+	// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+	// Examples for each one of the following supported principal set types:
+	// * Project:
+	// * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+	// * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+	// * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
+	//   It must be parent by the policy binding's parent (the project).
 	//
 	// ***
 	PrincipalSet *string `pulumi:"principalSet"`
@@ -2288,8 +2317,13 @@ type ProjectsPolicyBindingTargetInput interface {
 }
 
 type ProjectsPolicyBindingTargetArgs struct {
-	// Required. Immutable. The resource name of the policy to be bound.
-	// The binding parent and policy must belong to the same Organization (or Project).
+	// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+	// Examples for each one of the following supported principal set types:
+	// * Project:
+	// * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+	// * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+	// * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
+	//   It must be parent by the policy binding's parent (the project).
 	//
 	// ***
 	PrincipalSet pulumi.StringPtrInput `pulumi:"principalSet"`
@@ -2372,8 +2406,13 @@ func (o ProjectsPolicyBindingTargetOutput) ToProjectsPolicyBindingTargetPtrOutpu
 	}).(ProjectsPolicyBindingTargetPtrOutput)
 }
 
-// Required. Immutable. The resource name of the policy to be bound.
-// The binding parent and policy must belong to the same Organization (or Project).
+// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+// Examples for each one of the following supported principal set types:
+//   - Project:
+//   - `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+//   - `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+//   - Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
+//     It must be parent by the policy binding's parent (the project).
 //
 // ***
 func (o ProjectsPolicyBindingTargetOutput) PrincipalSet() pulumi.StringPtrOutput {
@@ -2404,8 +2443,13 @@ func (o ProjectsPolicyBindingTargetPtrOutput) Elem() ProjectsPolicyBindingTarget
 	}).(ProjectsPolicyBindingTargetOutput)
 }
 
-// Required. Immutable. The resource name of the policy to be bound.
-// The binding parent and policy must belong to the same Organization (or Project).
+// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+// Examples for each one of the following supported principal set types:
+//   - Project:
+//   - `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+//   - `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+//   - Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
+//     It must be parent by the policy binding's parent (the project).
 //
 // ***
 func (o ProjectsPolicyBindingTargetPtrOutput) PrincipalSet() pulumi.StringPtrOutput {

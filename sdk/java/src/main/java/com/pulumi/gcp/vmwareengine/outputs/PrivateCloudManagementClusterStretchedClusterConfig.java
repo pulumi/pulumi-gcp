@@ -13,11 +13,13 @@ import javax.annotation.Nullable;
 public final class PrivateCloudManagementClusterStretchedClusterConfig {
     /**
      * @return Zone that will remain operational when connection between the two zones is lost.
+     * Specify the zone in the following format: projects/{project}/locations/{location}.
      * 
      */
     private @Nullable String preferredLocation;
     /**
      * @return Additional zone for a higher level of availability and load balancing.
+     * Specify the zone in the following format: projects/{project}/locations/{location}.
      * 
      */
     private @Nullable String secondaryLocation;
@@ -25,6 +27,7 @@ public final class PrivateCloudManagementClusterStretchedClusterConfig {
     private PrivateCloudManagementClusterStretchedClusterConfig() {}
     /**
      * @return Zone that will remain operational when connection between the two zones is lost.
+     * Specify the zone in the following format: projects/{project}/locations/{location}.
      * 
      */
     public Optional<String> preferredLocation() {
@@ -32,6 +35,7 @@ public final class PrivateCloudManagementClusterStretchedClusterConfig {
     }
     /**
      * @return Additional zone for a higher level of availability and load balancing.
+     * Specify the zone in the following format: projects/{project}/locations/{location}.
      * 
      */
     public Optional<String> secondaryLocation() {

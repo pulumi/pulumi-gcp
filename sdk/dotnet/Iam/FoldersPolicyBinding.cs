@@ -10,14 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Iam
 {
     /// <summary>
-    /// A policy binding to a folder
-    /// 
-    /// To get more information about FoldersPolicyBinding, see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/folders.locations.policyBindings)
-    /// * How-to Guides
-    ///     * [Apply a policy binding](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create#create_binding)
-    /// 
     /// ## Example Usage
     /// 
     /// ### Iam Folders Policy Binding
@@ -35,13 +27,13 @@ namespace Pulumi.Gcp.Iam
     ///     {
     ///         Organization = "123456789",
     ///         Location = "global",
-    ///         DisplayName = "test folder binding",
+    ///         DisplayName = "binding for all principals in the folder",
     ///         PrincipalAccessBoundaryPolicyId = "my-pab-policy",
     ///     });
     /// 
     ///     var folder = new Gcp.Organizations.Folder("folder", new()
     ///     {
-    ///         DisplayName = "test folder",
+    ///         DisplayName = "my folder",
     ///         Parent = "organizations/123456789",
     ///         DeletionProtection = false,
     ///     });
@@ -57,13 +49,13 @@ namespace Pulumi.Gcp.Iam
     ///         },
     ///     });
     /// 
-    ///     var my_folder_binding = new Gcp.Iam.FoldersPolicyBinding("my-folder-binding", new()
+    ///     var binding_for_all_folder_principals = new Gcp.Iam.FoldersPolicyBinding("binding-for-all-folder-principals", new()
     ///     {
     ///         Folder = folder.FolderId,
     ///         Location = "global",
-    ///         DisplayName = "test folder binding",
+    ///         DisplayName = "binding for all principals in the folder",
     ///         PolicyKind = "PRINCIPAL_ACCESS_BOUNDARY",
-    ///         PolicyBindingId = "test-folder-binding",
+    ///         PolicyBindingId = "binding-for-all-folder-principals",
     ///         Policy = pabPolicy.PrincipalAccessBoundaryPolicyId.Apply(principalAccessBoundaryPolicyId =&gt; $"organizations/123456789/locations/global/principalAccessBoundaryPolicies/{principalAccessBoundaryPolicyId}"),
     ///         Target = new Gcp.Iam.Inputs.FoldersPolicyBindingTargetArgs
     ///         {

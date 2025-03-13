@@ -47,6 +47,8 @@ __all__ = [
     'BackendBucketIamMemberConditionArgsDict',
     'BackendServiceBackendArgs',
     'BackendServiceBackendArgsDict',
+    'BackendServiceBackendCustomMetricArgs',
+    'BackendServiceBackendCustomMetricArgsDict',
     'BackendServiceCdnPolicyArgs',
     'BackendServiceCdnPolicyArgsDict',
     'BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs',
@@ -65,6 +67,8 @@ __all__ = [
     'BackendServiceConsistentHashHttpCookieArgsDict',
     'BackendServiceConsistentHashHttpCookieTtlArgs',
     'BackendServiceConsistentHashHttpCookieTtlArgsDict',
+    'BackendServiceCustomMetricArgs',
+    'BackendServiceCustomMetricArgsDict',
     'BackendServiceIamBindingConditionArgs',
     'BackendServiceIamBindingConditionArgsDict',
     'BackendServiceIamMemberConditionArgs',
@@ -533,6 +537,8 @@ __all__ = [
     'RegionAutoscalerAutoscalingPolicyScalingScheduleArgsDict',
     'RegionBackendServiceBackendArgs',
     'RegionBackendServiceBackendArgsDict',
+    'RegionBackendServiceBackendCustomMetricArgs',
+    'RegionBackendServiceBackendCustomMetricArgsDict',
     'RegionBackendServiceCdnPolicyArgs',
     'RegionBackendServiceCdnPolicyArgsDict',
     'RegionBackendServiceCdnPolicyCacheKeyPolicyArgs',
@@ -551,6 +557,8 @@ __all__ = [
     'RegionBackendServiceConsistentHashHttpCookieArgsDict',
     'RegionBackendServiceConsistentHashHttpCookieTtlArgs',
     'RegionBackendServiceConsistentHashHttpCookieTtlArgsDict',
+    'RegionBackendServiceCustomMetricArgs',
+    'RegionBackendServiceCustomMetricArgsDict',
     'RegionBackendServiceFailoverPolicyArgs',
     'RegionBackendServiceFailoverPolicyArgsDict',
     'RegionBackendServiceIamBindingConditionArgs',
@@ -2910,12 +2918,12 @@ if not MYPY:
         """
         Specifies the balancing mode for this backend.
         For global HTTP(S) or TCP/SSL load balancing, the default is
-        UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
-        and CONNECTION (for TCP/SSL).
+        UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S)),
+        CUSTOM_METRICS (for HTTP(s)) and CONNECTION (for TCP/SSL).
         See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
         for an explanation of load balancing modes.
         Default value is `UTILIZATION`.
-        Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
+        Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
         """
         capacity_scaler: NotRequired[pulumi.Input[float]]
         """
@@ -2925,6 +2933,11 @@ if not MYPY:
         of its configured capacity (depending on balancingMode). A
         setting of 0 means the group is completely drained, offering
         0% of its available Capacity. Valid range is [0.0,1.0].
+        """
+        custom_metrics: NotRequired[pulumi.Input[Sequence[pulumi.Input['BackendServiceBackendCustomMetricArgsDict']]]]
+        """
+        The set of custom metrics that are used for <code>CUSTOM_METRICS</code> BalancingMode.
+        Structure is documented below.
         """
         description: NotRequired[pulumi.Input[str]]
         """
@@ -2993,6 +3006,7 @@ class BackendServiceBackendArgs:
                  group: pulumi.Input[str],
                  balancing_mode: Optional[pulumi.Input[str]] = None,
                  capacity_scaler: Optional[pulumi.Input[float]] = None,
+                 custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceBackendCustomMetricArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  max_connections: Optional[pulumi.Input[int]] = None,
                  max_connections_per_endpoint: Optional[pulumi.Input[int]] = None,
@@ -3018,18 +3032,20 @@ class BackendServiceBackendArgs:
                partial URL.
         :param pulumi.Input[str] balancing_mode: Specifies the balancing mode for this backend.
                For global HTTP(S) or TCP/SSL load balancing, the default is
-               UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
-               and CONNECTION (for TCP/SSL).
+               UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S)),
+               CUSTOM_METRICS (for HTTP(s)) and CONNECTION (for TCP/SSL).
                See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
                for an explanation of load balancing modes.
                Default value is `UTILIZATION`.
-               Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
+               Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
         :param pulumi.Input[float] capacity_scaler: A multiplier applied to the group's maximum servicing capacity
                (based on UTILIZATION, RATE or CONNECTION).
                Default value is 1, which means the group will serve up to 100%
                of its configured capacity (depending on balancingMode). A
                setting of 0 means the group is completely drained, offering
                0% of its available Capacity. Valid range is [0.0,1.0].
+        :param pulumi.Input[Sequence[pulumi.Input['BackendServiceBackendCustomMetricArgs']]] custom_metrics: The set of custom metrics that are used for <code>CUSTOM_METRICS</code> BalancingMode.
+               Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource.
                Provide this property when you create the resource.
         :param pulumi.Input[int] max_connections: The max number of simultaneous connections for the group. Can
@@ -3070,6 +3086,8 @@ class BackendServiceBackendArgs:
             pulumi.set(__self__, "balancing_mode", balancing_mode)
         if capacity_scaler is not None:
             pulumi.set(__self__, "capacity_scaler", capacity_scaler)
+        if custom_metrics is not None:
+            pulumi.set(__self__, "custom_metrics", custom_metrics)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if max_connections is not None:
@@ -3118,12 +3136,12 @@ class BackendServiceBackendArgs:
         """
         Specifies the balancing mode for this backend.
         For global HTTP(S) or TCP/SSL load balancing, the default is
-        UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
-        and CONNECTION (for TCP/SSL).
+        UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S)),
+        CUSTOM_METRICS (for HTTP(s)) and CONNECTION (for TCP/SSL).
         See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
         for an explanation of load balancing modes.
         Default value is `UTILIZATION`.
-        Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
+        Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
         """
         return pulumi.get(self, "balancing_mode")
 
@@ -3147,6 +3165,19 @@ class BackendServiceBackendArgs:
     @capacity_scaler.setter
     def capacity_scaler(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "capacity_scaler", value)
+
+    @property
+    @pulumi.getter(name="customMetrics")
+    def custom_metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceBackendCustomMetricArgs']]]]:
+        """
+        The set of custom metrics that are used for <code>CUSTOM_METRICS</code> BalancingMode.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_metrics")
+
+    @custom_metrics.setter
+    def custom_metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceBackendCustomMetricArgs']]]]):
+        pulumi.set(self, "custom_metrics", value)
 
     @property
     @pulumi.getter
@@ -3263,6 +3294,103 @@ class BackendServiceBackendArgs:
         """
         Used when balancingMode is UTILIZATION. This ratio defines the
         CPU utilization target for the group. Valid range is [0.0, 1.0].
+        """
+        return pulumi.get(self, "max_utilization")
+
+    @max_utilization.setter
+    def max_utilization(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "max_utilization", value)
+
+
+if not MYPY:
+    class BackendServiceBackendCustomMetricArgsDict(TypedDict):
+        dry_run: pulumi.Input[bool]
+        """
+        If true, the metric data is not used for load balancing.
+        """
+        name: pulumi.Input[str]
+        """
+        Name of a custom utilization signal. The name must be 1-64 characters
+        long and match the regular expression a-z? which
+        means the first character must be a lowercase letter, and all following
+        characters must be a dash, period, underscore, lowercase letter, or
+        digit, except the last character, which cannot be a dash, period, or
+        underscore. For usage guidelines, see Custom Metrics balancing mode. This
+        field can only be used for a global or regional backend service with the
+        loadBalancingScheme set to <code>EXTERNAL_MANAGED</code>,
+        <code>INTERNAL_MANAGED</code> <code>INTERNAL_SELF_MANAGED</code>.
+        """
+        max_utilization: NotRequired[pulumi.Input[float]]
+        """
+        Optional parameter to define a target utilization for the Custom Metrics
+        balancing mode. The valid range is <code>[0.0, 1.0]</code>.
+        """
+elif False:
+    BackendServiceBackendCustomMetricArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BackendServiceBackendCustomMetricArgs:
+    def __init__(__self__, *,
+                 dry_run: pulumi.Input[bool],
+                 name: pulumi.Input[str],
+                 max_utilization: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[bool] dry_run: If true, the metric data is not used for load balancing.
+        :param pulumi.Input[str] name: Name of a custom utilization signal. The name must be 1-64 characters
+               long and match the regular expression a-z? which
+               means the first character must be a lowercase letter, and all following
+               characters must be a dash, period, underscore, lowercase letter, or
+               digit, except the last character, which cannot be a dash, period, or
+               underscore. For usage guidelines, see Custom Metrics balancing mode. This
+               field can only be used for a global or regional backend service with the
+               loadBalancingScheme set to <code>EXTERNAL_MANAGED</code>,
+               <code>INTERNAL_MANAGED</code> <code>INTERNAL_SELF_MANAGED</code>.
+        :param pulumi.Input[float] max_utilization: Optional parameter to define a target utilization for the Custom Metrics
+               balancing mode. The valid range is <code>[0.0, 1.0]</code>.
+        """
+        pulumi.set(__self__, "dry_run", dry_run)
+        pulumi.set(__self__, "name", name)
+        if max_utilization is not None:
+            pulumi.set(__self__, "max_utilization", max_utilization)
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> pulumi.Input[bool]:
+        """
+        If true, the metric data is not used for load balancing.
+        """
+        return pulumi.get(self, "dry_run")
+
+    @dry_run.setter
+    def dry_run(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "dry_run", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of a custom utilization signal. The name must be 1-64 characters
+        long and match the regular expression a-z? which
+        means the first character must be a lowercase letter, and all following
+        characters must be a dash, period, underscore, lowercase letter, or
+        digit, except the last character, which cannot be a dash, period, or
+        underscore. For usage guidelines, see Custom Metrics balancing mode. This
+        field can only be used for a global or regional backend service with the
+        loadBalancingScheme set to <code>EXTERNAL_MANAGED</code>,
+        <code>INTERNAL_MANAGED</code> <code>INTERNAL_SELF_MANAGED</code>.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="maxUtilization")
+    def max_utilization(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional parameter to define a target utilization for the Custom Metrics
+        balancing mode. The valid range is <code>[0.0, 1.0]</code>.
         """
         return pulumi.get(self, "max_utilization")
 
@@ -4271,6 +4399,80 @@ class BackendServiceConsistentHashHttpCookieTtlArgs:
     @nanos.setter
     def nanos(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "nanos", value)
+
+
+if not MYPY:
+    class BackendServiceCustomMetricArgsDict(TypedDict):
+        dry_run: pulumi.Input[bool]
+        """
+        If true, the metric data is not used for load balancing.
+        """
+        name: pulumi.Input[str]
+        """
+        Name of a custom utilization signal. The name must be 1-64 characters
+        long and match the regular expression a-z? which
+        means the first character must be a lowercase letter, and all following
+        characters must be a dash, period, underscore, lowercase letter, or
+        digit, except the last character, which cannot be a dash, period, or
+        underscore. For usage guidelines, see Custom Metrics balancing mode. This
+        field can only be used for a global or regional backend service with the
+        loadBalancingScheme set to <code>EXTERNAL_MANAGED</code>,
+        <code>INTERNAL_MANAGED</code> <code>INTERNAL_SELF_MANAGED</code>.
+        """
+elif False:
+    BackendServiceCustomMetricArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BackendServiceCustomMetricArgs:
+    def __init__(__self__, *,
+                 dry_run: pulumi.Input[bool],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[bool] dry_run: If true, the metric data is not used for load balancing.
+        :param pulumi.Input[str] name: Name of a custom utilization signal. The name must be 1-64 characters
+               long and match the regular expression a-z? which
+               means the first character must be a lowercase letter, and all following
+               characters must be a dash, period, underscore, lowercase letter, or
+               digit, except the last character, which cannot be a dash, period, or
+               underscore. For usage guidelines, see Custom Metrics balancing mode. This
+               field can only be used for a global or regional backend service with the
+               loadBalancingScheme set to <code>EXTERNAL_MANAGED</code>,
+               <code>INTERNAL_MANAGED</code> <code>INTERNAL_SELF_MANAGED</code>.
+        """
+        pulumi.set(__self__, "dry_run", dry_run)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> pulumi.Input[bool]:
+        """
+        If true, the metric data is not used for load balancing.
+        """
+        return pulumi.get(self, "dry_run")
+
+    @dry_run.setter
+    def dry_run(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "dry_run", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of a custom utilization signal. The name must be 1-64 characters
+        long and match the regular expression a-z? which
+        means the first character must be a lowercase letter, and all following
+        characters must be a dash, period, underscore, lowercase letter, or
+        digit, except the last character, which cannot be a dash, period, or
+        underscore. For usage guidelines, see Custom Metrics balancing mode. This
+        field can only be used for a global or regional backend service with the
+        loadBalancingScheme set to <code>EXTERNAL_MANAGED</code>,
+        <code>INTERNAL_MANAGED</code> <code>INTERNAL_SELF_MANAGED</code>.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
 
 if not MYPY:
@@ -12700,6 +12902,12 @@ if not MYPY:
         """
         Whether the instance is spot. If this is set as SPOT.
         """
+        termination_time: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the timestamp, when the instance will be terminated,
+        in RFC3339 text format. If specified, the instance termination action
+        will be performed at the termination time.
+        """
 elif False:
     InstanceFromMachineImageSchedulingArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -12719,7 +12927,8 @@ class InstanceFromMachineImageSchedulingArgs:
                  on_host_maintenance: Optional[pulumi.Input[str]] = None,
                  on_instance_stop_action: Optional[pulumi.Input['InstanceFromMachineImageSchedulingOnInstanceStopActionArgs']] = None,
                  preemptible: Optional[pulumi.Input[bool]] = None,
-                 provisioning_model: Optional[pulumi.Input[str]] = None):
+                 provisioning_model: Optional[pulumi.Input[str]] = None,
+                 termination_time: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] automatic_restart: Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
         :param pulumi.Input[int] availability_domain: Specifies the availability domain, which this instance should be scheduled on.
@@ -12737,6 +12946,9 @@ class InstanceFromMachineImageSchedulingArgs:
         :param pulumi.Input['InstanceFromMachineImageSchedulingOnInstanceStopActionArgs'] on_instance_stop_action: Defines the behaviour for instances with the instance_termination_action.
         :param pulumi.Input[bool] preemptible: Whether the instance is preemptible.
         :param pulumi.Input[str] provisioning_model: Whether the instance is spot. If this is set as SPOT.
+        :param pulumi.Input[str] termination_time: Specifies the timestamp, when the instance will be terminated,
+               in RFC3339 text format. If specified, the instance termination action
+               will be performed at the termination time.
         """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
@@ -12766,6 +12978,8 @@ class InstanceFromMachineImageSchedulingArgs:
             pulumi.set(__self__, "preemptible", preemptible)
         if provisioning_model is not None:
             pulumi.set(__self__, "provisioning_model", provisioning_model)
+        if termination_time is not None:
+            pulumi.set(__self__, "termination_time", termination_time)
 
     @property
     @pulumi.getter(name="automaticRestart")
@@ -12934,6 +13148,20 @@ class InstanceFromMachineImageSchedulingArgs:
     @provisioning_model.setter
     def provisioning_model(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "provisioning_model", value)
+
+    @property
+    @pulumi.getter(name="terminationTime")
+    def termination_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the timestamp, when the instance will be terminated,
+        in RFC3339 text format. If specified, the instance termination action
+        will be performed at the termination time.
+        """
+        return pulumi.get(self, "termination_time")
+
+    @termination_time.setter
+    def termination_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "termination_time", value)
 
 
 if not MYPY:
@@ -15066,6 +15294,12 @@ if not MYPY:
         """
         Whether the instance is spot. If this is set as SPOT.
         """
+        termination_time: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the timestamp, when the instance will be terminated,
+        in RFC3339 text format. If specified, the instance termination action
+        will be performed at the termination time.
+        """
 elif False:
     InstanceFromTemplateSchedulingArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -15085,7 +15319,8 @@ class InstanceFromTemplateSchedulingArgs:
                  on_host_maintenance: Optional[pulumi.Input[str]] = None,
                  on_instance_stop_action: Optional[pulumi.Input['InstanceFromTemplateSchedulingOnInstanceStopActionArgs']] = None,
                  preemptible: Optional[pulumi.Input[bool]] = None,
-                 provisioning_model: Optional[pulumi.Input[str]] = None):
+                 provisioning_model: Optional[pulumi.Input[str]] = None,
+                 termination_time: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] automatic_restart: Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
         :param pulumi.Input[int] availability_domain: Specifies the availability domain, which this instance should be scheduled on.
@@ -15103,6 +15338,9 @@ class InstanceFromTemplateSchedulingArgs:
         :param pulumi.Input['InstanceFromTemplateSchedulingOnInstanceStopActionArgs'] on_instance_stop_action: Defines the behaviour for instances with the instance_termination_action.
         :param pulumi.Input[bool] preemptible: Whether the instance is preemptible.
         :param pulumi.Input[str] provisioning_model: Whether the instance is spot. If this is set as SPOT.
+        :param pulumi.Input[str] termination_time: Specifies the timestamp, when the instance will be terminated,
+               in RFC3339 text format. If specified, the instance termination action
+               will be performed at the termination time.
         """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
@@ -15132,6 +15370,8 @@ class InstanceFromTemplateSchedulingArgs:
             pulumi.set(__self__, "preemptible", preemptible)
         if provisioning_model is not None:
             pulumi.set(__self__, "provisioning_model", provisioning_model)
+        if termination_time is not None:
+            pulumi.set(__self__, "termination_time", termination_time)
 
     @property
     @pulumi.getter(name="automaticRestart")
@@ -15300,6 +15540,20 @@ class InstanceFromTemplateSchedulingArgs:
     @provisioning_model.setter
     def provisioning_model(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "provisioning_model", value)
+
+    @property
+    @pulumi.getter(name="terminationTime")
+    def termination_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the timestamp, when the instance will be terminated,
+        in RFC3339 text format. If specified, the instance termination action
+        will be performed at the termination time.
+        """
+        return pulumi.get(self, "termination_time")
+
+    @termination_time.setter
+    def termination_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "termination_time", value)
 
 
 if not MYPY:
@@ -18073,6 +18327,10 @@ if not MYPY:
         `false`. For more info about
         `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
         """
+        termination_time: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
+        """
 elif False:
     InstanceSchedulingArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -18092,7 +18350,8 @@ class InstanceSchedulingArgs:
                  on_host_maintenance: Optional[pulumi.Input[str]] = None,
                  on_instance_stop_action: Optional[pulumi.Input['InstanceSchedulingOnInstanceStopActionArgs']] = None,
                  preemptible: Optional[pulumi.Input[bool]] = None,
-                 provisioning_model: Optional[pulumi.Input[str]] = None):
+                 provisioning_model: Optional[pulumi.Input[str]] = None,
+                 termination_time: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] automatic_restart: Specifies if the instance should be
                restarted if it was terminated by Compute Engine (not a user).
@@ -18124,6 +18383,7 @@ class InstanceSchedulingArgs:
                `preemptible` should be `true` and `automatic_restart` should be
                `false`. For more info about
                `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
+        :param pulumi.Input[str] termination_time: Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
         """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
@@ -18153,6 +18413,8 @@ class InstanceSchedulingArgs:
             pulumi.set(__self__, "preemptible", preemptible)
         if provisioning_model is not None:
             pulumi.set(__self__, "provisioning_model", provisioning_model)
+        if termination_time is not None:
+            pulumi.set(__self__, "termination_time", termination_time)
 
     @property
     @pulumi.getter(name="automaticRestart")
@@ -18337,6 +18599,18 @@ class InstanceSchedulingArgs:
     @provisioning_model.setter
     def provisioning_model(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "provisioning_model", value)
+
+    @property
+    @pulumi.getter(name="terminationTime")
+    def termination_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
+        """
+        return pulumi.get(self, "termination_time")
+
+    @termination_time.setter
+    def termination_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "termination_time", value)
 
 
 if not MYPY:
@@ -20823,6 +21097,10 @@ if not MYPY:
         `false`. For more info about
         `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
         """
+        termination_time: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
+        """
 elif False:
     InstanceTemplateSchedulingArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -20842,7 +21120,8 @@ class InstanceTemplateSchedulingArgs:
                  on_host_maintenance: Optional[pulumi.Input[str]] = None,
                  on_instance_stop_action: Optional[pulumi.Input['InstanceTemplateSchedulingOnInstanceStopActionArgs']] = None,
                  preemptible: Optional[pulumi.Input[bool]] = None,
-                 provisioning_model: Optional[pulumi.Input[str]] = None):
+                 provisioning_model: Optional[pulumi.Input[str]] = None,
+                 termination_time: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] automatic_restart: Specifies whether the instance should be
                automatically restarted if it is terminated by Compute Engine (not
@@ -20873,6 +21152,7 @@ class InstanceTemplateSchedulingArgs:
                `preemptible` should be `true` and `automatic_restart` should be
                `false`. For more info about
                `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
+        :param pulumi.Input[str] termination_time: Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
         """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
@@ -20902,6 +21182,8 @@ class InstanceTemplateSchedulingArgs:
             pulumi.set(__self__, "preemptible", preemptible)
         if provisioning_model is not None:
             pulumi.set(__self__, "provisioning_model", provisioning_model)
+        if termination_time is not None:
+            pulumi.set(__self__, "termination_time", termination_time)
 
     @property
     @pulumi.getter(name="automaticRestart")
@@ -21085,6 +21367,18 @@ class InstanceTemplateSchedulingArgs:
     @provisioning_model.setter
     def provisioning_model(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "provisioning_model", value)
+
+    @property
+    @pulumi.getter(name="terminationTime")
+    def termination_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
+        """
+        return pulumi.get(self, "termination_time")
+
+    @termination_time.setter
+    def termination_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "termination_time", value)
 
 
 if not MYPY:
@@ -27918,7 +28212,7 @@ if not MYPY:
         See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
         for an explanation of load balancing modes.
         Default value is `UTILIZATION`.
-        Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
+        Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
         """
         capacity_scaler: NotRequired[pulumi.Input[float]]
         """
@@ -27930,6 +28224,11 @@ if not MYPY:
         capacity_scaler for all backends must be non-zero.
         A setting of 0 means the group is completely drained, offering
         0% of its available Capacity. Valid range is [0.0,1.0].
+        """
+        custom_metrics: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceBackendCustomMetricArgsDict']]]]
+        """
+        The set of custom metrics that are used for <code>CUSTOM_METRICS</code> BalancingMode.
+        Structure is documented below.
         """
         description: NotRequired[pulumi.Input[str]]
         """
@@ -28010,6 +28309,7 @@ class RegionBackendServiceBackendArgs:
                  group: pulumi.Input[str],
                  balancing_mode: Optional[pulumi.Input[str]] = None,
                  capacity_scaler: Optional[pulumi.Input[float]] = None,
+                 custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceBackendCustomMetricArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  failover: Optional[pulumi.Input[bool]] = None,
                  max_connections: Optional[pulumi.Input[int]] = None,
@@ -28040,7 +28340,7 @@ class RegionBackendServiceBackendArgs:
                See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
                for an explanation of load balancing modes.
                Default value is `UTILIZATION`.
-               Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
+               Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
         :param pulumi.Input[float] capacity_scaler: A multiplier applied to the group's maximum servicing capacity
                (based on UTILIZATION, RATE or CONNECTION).
                ~>**NOTE**: This field cannot be set for
@@ -28049,6 +28349,8 @@ class RegionBackendServiceBackendArgs:
                capacity_scaler for all backends must be non-zero.
                A setting of 0 means the group is completely drained, offering
                0% of its available Capacity. Valid range is [0.0,1.0].
+        :param pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceBackendCustomMetricArgs']]] custom_metrics: The set of custom metrics that are used for <code>CUSTOM_METRICS</code> BalancingMode.
+               Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource.
                Provide this property when you create the resource.
         :param pulumi.Input[bool] failover: This field designates whether this is a failover backend. More
@@ -28098,6 +28400,8 @@ class RegionBackendServiceBackendArgs:
             pulumi.set(__self__, "balancing_mode", balancing_mode)
         if capacity_scaler is not None:
             pulumi.set(__self__, "capacity_scaler", capacity_scaler)
+        if custom_metrics is not None:
+            pulumi.set(__self__, "custom_metrics", custom_metrics)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if failover is not None:
@@ -28152,7 +28456,7 @@ class RegionBackendServiceBackendArgs:
         See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
         for an explanation of load balancing modes.
         Default value is `UTILIZATION`.
-        Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
+        Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
         """
         return pulumi.get(self, "balancing_mode")
 
@@ -28178,6 +28482,19 @@ class RegionBackendServiceBackendArgs:
     @capacity_scaler.setter
     def capacity_scaler(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "capacity_scaler", value)
+
+    @property
+    @pulumi.getter(name="customMetrics")
+    def custom_metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceBackendCustomMetricArgs']]]]:
+        """
+        The set of custom metrics that are used for <code>CUSTOM_METRICS</code> BalancingMode.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_metrics")
+
+    @custom_metrics.setter
+    def custom_metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceBackendCustomMetricArgs']]]]):
+        pulumi.set(self, "custom_metrics", value)
 
     @property
     @pulumi.getter
@@ -28314,6 +28631,103 @@ class RegionBackendServiceBackendArgs:
         Used when balancingMode is UTILIZATION. This ratio defines the
         CPU utilization target for the group. Valid range is [0.0, 1.0].
         Cannot be set for INTERNAL backend services.
+        """
+        return pulumi.get(self, "max_utilization")
+
+    @max_utilization.setter
+    def max_utilization(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "max_utilization", value)
+
+
+if not MYPY:
+    class RegionBackendServiceBackendCustomMetricArgsDict(TypedDict):
+        dry_run: pulumi.Input[bool]
+        """
+        If true, the metric data is not used for load balancing.
+        """
+        name: pulumi.Input[str]
+        """
+        Name of a custom utilization signal. The name must be 1-64 characters
+        long and match the regular expression a-z? which
+        means the first character must be a lowercase letter, and all following
+        characters must be a dash, period, underscore, lowercase letter, or
+        digit, except the last character, which cannot be a dash, period, or
+        underscore. For usage guidelines, see Custom Metrics balancing mode. This
+        field can only be used for a global or regional backend service with the
+        loadBalancingScheme set to <code>EXTERNAL_MANAGED</code>,
+        <code>INTERNAL_MANAGED</code> <code>INTERNAL_SELF_MANAGED</code>.
+        """
+        max_utilization: NotRequired[pulumi.Input[float]]
+        """
+        Optional parameter to define a target utilization for the Custom Metrics
+        balancing mode. The valid range is <code>[0.0, 1.0]</code>.
+        """
+elif False:
+    RegionBackendServiceBackendCustomMetricArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionBackendServiceBackendCustomMetricArgs:
+    def __init__(__self__, *,
+                 dry_run: pulumi.Input[bool],
+                 name: pulumi.Input[str],
+                 max_utilization: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[bool] dry_run: If true, the metric data is not used for load balancing.
+        :param pulumi.Input[str] name: Name of a custom utilization signal. The name must be 1-64 characters
+               long and match the regular expression a-z? which
+               means the first character must be a lowercase letter, and all following
+               characters must be a dash, period, underscore, lowercase letter, or
+               digit, except the last character, which cannot be a dash, period, or
+               underscore. For usage guidelines, see Custom Metrics balancing mode. This
+               field can only be used for a global or regional backend service with the
+               loadBalancingScheme set to <code>EXTERNAL_MANAGED</code>,
+               <code>INTERNAL_MANAGED</code> <code>INTERNAL_SELF_MANAGED</code>.
+        :param pulumi.Input[float] max_utilization: Optional parameter to define a target utilization for the Custom Metrics
+               balancing mode. The valid range is <code>[0.0, 1.0]</code>.
+        """
+        pulumi.set(__self__, "dry_run", dry_run)
+        pulumi.set(__self__, "name", name)
+        if max_utilization is not None:
+            pulumi.set(__self__, "max_utilization", max_utilization)
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> pulumi.Input[bool]:
+        """
+        If true, the metric data is not used for load balancing.
+        """
+        return pulumi.get(self, "dry_run")
+
+    @dry_run.setter
+    def dry_run(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "dry_run", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of a custom utilization signal. The name must be 1-64 characters
+        long and match the regular expression a-z? which
+        means the first character must be a lowercase letter, and all following
+        characters must be a dash, period, underscore, lowercase letter, or
+        digit, except the last character, which cannot be a dash, period, or
+        underscore. For usage guidelines, see Custom Metrics balancing mode. This
+        field can only be used for a global or regional backend service with the
+        loadBalancingScheme set to <code>EXTERNAL_MANAGED</code>,
+        <code>INTERNAL_MANAGED</code> <code>INTERNAL_SELF_MANAGED</code>.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="maxUtilization")
+    def max_utilization(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional parameter to define a target utilization for the Custom Metrics
+        balancing mode. The valid range is <code>[0.0, 1.0]</code>.
         """
         return pulumi.get(self, "max_utilization")
 
@@ -29406,6 +29820,80 @@ class RegionBackendServiceConsistentHashHttpCookieTtlArgs:
 
 
 if not MYPY:
+    class RegionBackendServiceCustomMetricArgsDict(TypedDict):
+        dry_run: pulumi.Input[bool]
+        """
+        If true, the metric data is not used for load balancing.
+        """
+        name: pulumi.Input[str]
+        """
+        Name of a custom utilization signal. The name must be 1-64 characters
+        long and match the regular expression a-z? which
+        means the first character must be a lowercase letter, and all following
+        characters must be a dash, period, underscore, lowercase letter, or
+        digit, except the last character, which cannot be a dash, period, or
+        underscore. For usage guidelines, see Custom Metrics balancing mode. This
+        field can only be used for a global or regional backend service with the
+        loadBalancingScheme set to <code>EXTERNAL_MANAGED</code>,
+        <code>INTERNAL_MANAGED</code> <code>INTERNAL_SELF_MANAGED</code>.
+        """
+elif False:
+    RegionBackendServiceCustomMetricArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionBackendServiceCustomMetricArgs:
+    def __init__(__self__, *,
+                 dry_run: pulumi.Input[bool],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[bool] dry_run: If true, the metric data is not used for load balancing.
+        :param pulumi.Input[str] name: Name of a custom utilization signal. The name must be 1-64 characters
+               long and match the regular expression a-z? which
+               means the first character must be a lowercase letter, and all following
+               characters must be a dash, period, underscore, lowercase letter, or
+               digit, except the last character, which cannot be a dash, period, or
+               underscore. For usage guidelines, see Custom Metrics balancing mode. This
+               field can only be used for a global or regional backend service with the
+               loadBalancingScheme set to <code>EXTERNAL_MANAGED</code>,
+               <code>INTERNAL_MANAGED</code> <code>INTERNAL_SELF_MANAGED</code>.
+        """
+        pulumi.set(__self__, "dry_run", dry_run)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> pulumi.Input[bool]:
+        """
+        If true, the metric data is not used for load balancing.
+        """
+        return pulumi.get(self, "dry_run")
+
+    @dry_run.setter
+    def dry_run(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "dry_run", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of a custom utilization signal. The name must be 1-64 characters
+        long and match the regular expression a-z? which
+        means the first character must be a lowercase letter, and all following
+        characters must be a dash, period, underscore, lowercase letter, or
+        digit, except the last character, which cannot be a dash, period, or
+        underscore. For usage guidelines, see Custom Metrics balancing mode. This
+        field can only be used for a global or regional backend service with the
+        loadBalancingScheme set to <code>EXTERNAL_MANAGED</code>,
+        <code>INTERNAL_MANAGED</code> <code>INTERNAL_SELF_MANAGED</code>.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
     class RegionBackendServiceFailoverPolicyArgsDict(TypedDict):
         disable_connection_drain_on_failover: NotRequired[pulumi.Input[bool]]
         """
@@ -29760,6 +30248,16 @@ if not MYPY:
         """
         Whether to enable logging for the load balancer traffic served by this backend service.
         """
+        optional_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the fields to include in logging. This field can only be specified if logging is enabled for this backend service.
+        """
+        optional_mode: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the optional logging mode for the load balancer traffic.
+        Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM.
+        Possible values are: `INCLUDE_ALL_OPTIONAL`, `EXCLUDE_ALL_OPTIONAL`, `CUSTOM`.
+        """
         sample_rate: NotRequired[pulumi.Input[float]]
         """
         This field can only be specified if logging is enabled for this backend service. The value of
@@ -29774,9 +30272,15 @@ elif False:
 class RegionBackendServiceLogConfigArgs:
     def __init__(__self__, *,
                  enable: Optional[pulumi.Input[bool]] = None,
+                 optional_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 optional_mode: Optional[pulumi.Input[str]] = None,
                  sample_rate: Optional[pulumi.Input[float]] = None):
         """
         :param pulumi.Input[bool] enable: Whether to enable logging for the load balancer traffic served by this backend service.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] optional_fields: Specifies the fields to include in logging. This field can only be specified if logging is enabled for this backend service.
+        :param pulumi.Input[str] optional_mode: Specifies the optional logging mode for the load balancer traffic.
+               Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM.
+               Possible values are: `INCLUDE_ALL_OPTIONAL`, `EXCLUDE_ALL_OPTIONAL`, `CUSTOM`.
         :param pulumi.Input[float] sample_rate: This field can only be specified if logging is enabled for this backend service. The value of
                the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
                where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
@@ -29784,6 +30288,10 @@ class RegionBackendServiceLogConfigArgs:
         """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
+        if optional_fields is not None:
+            pulumi.set(__self__, "optional_fields", optional_fields)
+        if optional_mode is not None:
+            pulumi.set(__self__, "optional_mode", optional_mode)
         if sample_rate is not None:
             pulumi.set(__self__, "sample_rate", sample_rate)
 
@@ -29798,6 +30306,32 @@ class RegionBackendServiceLogConfigArgs:
     @enable.setter
     def enable(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable", value)
+
+    @property
+    @pulumi.getter(name="optionalFields")
+    def optional_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Specifies the fields to include in logging. This field can only be specified if logging is enabled for this backend service.
+        """
+        return pulumi.get(self, "optional_fields")
+
+    @optional_fields.setter
+    def optional_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "optional_fields", value)
+
+    @property
+    @pulumi.getter(name="optionalMode")
+    def optional_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the optional logging mode for the load balancer traffic.
+        Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM.
+        Possible values are: `INCLUDE_ALL_OPTIONAL`, `EXCLUDE_ALL_OPTIONAL`, `CUSTOM`.
+        """
+        return pulumi.get(self, "optional_mode")
+
+    @optional_mode.setter
+    def optional_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "optional_mode", value)
 
     @property
     @pulumi.getter(name="sampleRate")
@@ -30621,6 +31155,13 @@ if not MYPY:
         RFC 4648 base64 to either encrypt or decrypt this resource.
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
+        rsa_encrypted_key: NotRequired[pulumi.Input[str]]
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+        customer-supplied encryption key to either encrypt or decrypt
+        this resource. You can provide either the rawKey or the rsaEncryptedKey.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
         sha256: NotRequired[pulumi.Input[str]]
         """
         (Output)
@@ -30635,11 +31176,16 @@ class RegionDiskDiskEncryptionKeyArgs:
     def __init__(__self__, *,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  raw_key: Optional[pulumi.Input[str]] = None,
+                 rsa_encrypted_key: Optional[pulumi.Input[str]] = None,
                  sha256: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] kms_key_name: The name of the encryption key that is stored in Google Cloud KMS.
         :param pulumi.Input[str] raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
                RFC 4648 base64 to either encrypt or decrypt this resource.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[str] rsa_encrypted_key: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+               customer-supplied encryption key to either encrypt or decrypt
+               this resource. You can provide either the rawKey or the rsaEncryptedKey.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] sha256: (Output)
                The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
@@ -30649,6 +31195,8 @@ class RegionDiskDiskEncryptionKeyArgs:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
         if raw_key is not None:
             pulumi.set(__self__, "raw_key", raw_key)
+        if rsa_encrypted_key is not None:
+            pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
         if sha256 is not None:
             pulumi.set(__self__, "sha256", sha256)
 
@@ -30677,6 +31225,21 @@ class RegionDiskDiskEncryptionKeyArgs:
     @raw_key.setter
     def raw_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "raw_key", value)
+
+    @property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+        customer-supplied encryption key to either encrypt or decrypt
+        this resource. You can provide either the rawKey or the rsaEncryptedKey.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
+
+    @rsa_encrypted_key.setter
+    def rsa_encrypted_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rsa_encrypted_key", value)
 
     @property
     @pulumi.getter
@@ -34999,6 +35562,10 @@ if not MYPY:
         `false`. For more info about
         `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
         """
+        termination_time: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
+        """
 elif False:
     RegionInstanceTemplateSchedulingArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -35018,7 +35585,8 @@ class RegionInstanceTemplateSchedulingArgs:
                  on_host_maintenance: Optional[pulumi.Input[str]] = None,
                  on_instance_stop_action: Optional[pulumi.Input['RegionInstanceTemplateSchedulingOnInstanceStopActionArgs']] = None,
                  preemptible: Optional[pulumi.Input[bool]] = None,
-                 provisioning_model: Optional[pulumi.Input[str]] = None):
+                 provisioning_model: Optional[pulumi.Input[str]] = None,
+                 termination_time: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] automatic_restart: Specifies whether the instance should be
                automatically restarted if it is terminated by Compute Engine (not
@@ -35049,6 +35617,7 @@ class RegionInstanceTemplateSchedulingArgs:
                `preemptible` should be `true` and `automatic_restart` should be
                `false`. For more info about
                `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
+        :param pulumi.Input[str] termination_time: Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
         """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
@@ -35078,6 +35647,8 @@ class RegionInstanceTemplateSchedulingArgs:
             pulumi.set(__self__, "preemptible", preemptible)
         if provisioning_model is not None:
             pulumi.set(__self__, "provisioning_model", provisioning_model)
+        if termination_time is not None:
+            pulumi.set(__self__, "termination_time", termination_time)
 
     @property
     @pulumi.getter(name="automaticRestart")
@@ -35261,6 +35832,18 @@ class RegionInstanceTemplateSchedulingArgs:
     @provisioning_model.setter
     def provisioning_model(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "provisioning_model", value)
+
+    @property
+    @pulumi.getter(name="terminationTime")
+    def termination_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
+        """
+        return pulumi.get(self, "termination_time")
+
+    @termination_time.setter
+    def termination_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "termination_time", value)
 
 
 if not MYPY:

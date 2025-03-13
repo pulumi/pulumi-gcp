@@ -2564,8 +2564,7 @@ func (o AlertPolicyConditionConditionPrometheusQueryLanguagePtrOutput) RuleGroup
 }
 
 type AlertPolicyConditionConditionSql struct {
-	// The start date and time of the query. If left unspecified, then the
-	// query will start immediately.
+	// A test that uses an alerting result in a boolean column produced by the SQL query.
 	// Structure is documented below.
 	BooleanTest *AlertPolicyConditionConditionSqlBooleanTest `pulumi:"booleanTest"`
 	// Used to schedule the query to run every so many days.
@@ -2583,7 +2582,7 @@ type AlertPolicyConditionConditionSql struct {
 	// to filter the input so that the query receives all rows received
 	// since the last time the query was run.
 	Query string `pulumi:"query"`
-	// Test the row count against a threshold.
+	// A test that checks if the number of rows in the result set violates some threshold.
 	// Structure is documented below.
 	RowCountTest *AlertPolicyConditionConditionSqlRowCountTest `pulumi:"rowCountTest"`
 }
@@ -2600,8 +2599,7 @@ type AlertPolicyConditionConditionSqlInput interface {
 }
 
 type AlertPolicyConditionConditionSqlArgs struct {
-	// The start date and time of the query. If left unspecified, then the
-	// query will start immediately.
+	// A test that uses an alerting result in a boolean column produced by the SQL query.
 	// Structure is documented below.
 	BooleanTest AlertPolicyConditionConditionSqlBooleanTestPtrInput `pulumi:"booleanTest"`
 	// Used to schedule the query to run every so many days.
@@ -2619,7 +2617,7 @@ type AlertPolicyConditionConditionSqlArgs struct {
 	// to filter the input so that the query receives all rows received
 	// since the last time the query was run.
 	Query pulumi.StringInput `pulumi:"query"`
-	// Test the row count against a threshold.
+	// A test that checks if the number of rows in the result set violates some threshold.
 	// Structure is documented below.
 	RowCountTest AlertPolicyConditionConditionSqlRowCountTestPtrInput `pulumi:"rowCountTest"`
 }
@@ -2701,8 +2699,7 @@ func (o AlertPolicyConditionConditionSqlOutput) ToAlertPolicyConditionConditionS
 	}).(AlertPolicyConditionConditionSqlPtrOutput)
 }
 
-// The start date and time of the query. If left unspecified, then the
-// query will start immediately.
+// A test that uses an alerting result in a boolean column produced by the SQL query.
 // Structure is documented below.
 func (o AlertPolicyConditionConditionSqlOutput) BooleanTest() AlertPolicyConditionConditionSqlBooleanTestPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionSql) *AlertPolicyConditionConditionSqlBooleanTest {
@@ -2737,7 +2734,7 @@ func (o AlertPolicyConditionConditionSqlOutput) Query() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionSql) string { return v.Query }).(pulumi.StringOutput)
 }
 
-// Test the row count against a threshold.
+// A test that checks if the number of rows in the result set violates some threshold.
 // Structure is documented below.
 func (o AlertPolicyConditionConditionSqlOutput) RowCountTest() AlertPolicyConditionConditionSqlRowCountTestPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionSql) *AlertPolicyConditionConditionSqlRowCountTest {
@@ -2769,8 +2766,7 @@ func (o AlertPolicyConditionConditionSqlPtrOutput) Elem() AlertPolicyConditionCo
 	}).(AlertPolicyConditionConditionSqlOutput)
 }
 
-// The start date and time of the query. If left unspecified, then the
-// query will start immediately.
+// A test that uses an alerting result in a boolean column produced by the SQL query.
 // Structure is documented below.
 func (o AlertPolicyConditionConditionSqlPtrOutput) BooleanTest() AlertPolicyConditionConditionSqlBooleanTestPtrOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionSql) *AlertPolicyConditionConditionSqlBooleanTest {
@@ -2828,7 +2824,7 @@ func (o AlertPolicyConditionConditionSqlPtrOutput) Query() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Test the row count against a threshold.
+// A test that checks if the number of rows in the result set violates some threshold.
 // Structure is documented below.
 func (o AlertPolicyConditionConditionSqlPtrOutput) RowCountTest() AlertPolicyConditionConditionSqlRowCountTestPtrOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionSql) *AlertPolicyConditionConditionSqlRowCountTest {
@@ -2840,8 +2836,8 @@ func (o AlertPolicyConditionConditionSqlPtrOutput) RowCountTest() AlertPolicyCon
 }
 
 type AlertPolicyConditionConditionSqlBooleanTest struct {
-	// The name of the column containing the boolean value. If the value
-	// in a row is NULL, that row is ignored.
+	// The name of the column containing the boolean value. If the value in a row is
+	// NULL, that row is ignored.
 	//
 	// ***
 	Column string `pulumi:"column"`
@@ -2859,8 +2855,8 @@ type AlertPolicyConditionConditionSqlBooleanTestInput interface {
 }
 
 type AlertPolicyConditionConditionSqlBooleanTestArgs struct {
-	// The name of the column containing the boolean value. If the value
-	// in a row is NULL, that row is ignored.
+	// The name of the column containing the boolean value. If the value in a row is
+	// NULL, that row is ignored.
 	//
 	// ***
 	Column pulumi.StringInput `pulumi:"column"`
@@ -2943,8 +2939,8 @@ func (o AlertPolicyConditionConditionSqlBooleanTestOutput) ToAlertPolicyConditio
 	}).(AlertPolicyConditionConditionSqlBooleanTestPtrOutput)
 }
 
-// The name of the column containing the boolean value. If the value
-// in a row is NULL, that row is ignored.
+// The name of the column containing the boolean value. If the value in a row is
+// NULL, that row is ignored.
 //
 // ***
 func (o AlertPolicyConditionConditionSqlBooleanTestOutput) Column() pulumi.StringOutput {
@@ -2975,8 +2971,8 @@ func (o AlertPolicyConditionConditionSqlBooleanTestPtrOutput) Elem() AlertPolicy
 	}).(AlertPolicyConditionConditionSqlBooleanTestOutput)
 }
 
-// The name of the column containing the boolean value. If the value
-// in a row is NULL, that row is ignored.
+// The name of the column containing the boolean value. If the value in a row is
+// NULL, that row is ignored.
 //
 // ***
 func (o AlertPolicyConditionConditionSqlBooleanTestPtrOutput) Column() pulumi.StringPtrOutput {
@@ -3704,7 +3700,7 @@ type AlertPolicyConditionConditionSqlRowCountTest struct {
 	// COMPARISON_GT are supported currently.
 	// Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
 	Comparison string `pulumi:"comparison"`
-	// Test the boolean value in the indicated column.
+	// The value against which to compare the row count.
 	Threshold int `pulumi:"threshold"`
 }
 
@@ -3730,7 +3726,7 @@ type AlertPolicyConditionConditionSqlRowCountTestArgs struct {
 	// COMPARISON_GT are supported currently.
 	// Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
 	Comparison pulumi.StringInput `pulumi:"comparison"`
-	// Test the boolean value in the indicated column.
+	// The value against which to compare the row count.
 	Threshold pulumi.IntInput `pulumi:"threshold"`
 }
 
@@ -3824,7 +3820,7 @@ func (o AlertPolicyConditionConditionSqlRowCountTestOutput) Comparison() pulumi.
 	return o.ApplyT(func(v AlertPolicyConditionConditionSqlRowCountTest) string { return v.Comparison }).(pulumi.StringOutput)
 }
 
-// Test the boolean value in the indicated column.
+// The value against which to compare the row count.
 func (o AlertPolicyConditionConditionSqlRowCountTestOutput) Threshold() pulumi.IntOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionSqlRowCountTest) int { return v.Threshold }).(pulumi.IntOutput)
 }
@@ -3871,7 +3867,7 @@ func (o AlertPolicyConditionConditionSqlRowCountTestPtrOutput) Comparison() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Test the boolean value in the indicated column.
+// The value against which to compare the row count.
 func (o AlertPolicyConditionConditionSqlRowCountTestPtrOutput) Threshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionSqlRowCountTest) *int {
 		if v == nil {

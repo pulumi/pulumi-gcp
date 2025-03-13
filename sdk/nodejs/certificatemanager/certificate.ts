@@ -297,6 +297,27 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Certificate Manager Client Auth Certificate
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const _default = new gcp.certificatemanager.Certificate("default", {
+ *     name: "client-auth-cert",
+ *     description: "Global cert",
+ *     scope: "CLIENT_AUTH",
+ *     selfManaged: {
+ *         pemCertificate: std.file({
+ *             input: "test-fixtures/cert.pem",
+ *         }).then(invoke => invoke.result),
+ *         pemPrivateKey: std.file({
+ *             input: "test-fixtures/private-key.pem",
+ *         }).then(invoke => invoke.result),
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -405,7 +426,9 @@ export class Certificate extends pulumi.CustomResource {
      * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
      * See https://cloud.google.com/vpc/docs/edge-locations.
      * ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-     * See https://cloud.google.com/compute/docs/regions-zones
+     * See https://cloud.google.com/compute/docs/regions-zones.
+     * CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
+     * See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
      */
     public readonly scope!: pulumi.Output<string | undefined>;
     /**
@@ -520,7 +543,9 @@ export interface CertificateState {
      * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
      * See https://cloud.google.com/vpc/docs/edge-locations.
      * ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-     * See https://cloud.google.com/compute/docs/regions-zones
+     * See https://cloud.google.com/compute/docs/regions-zones.
+     * CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
+     * See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
      */
     scope?: pulumi.Input<string>;
     /**
@@ -578,7 +603,9 @@ export interface CertificateArgs {
      * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
      * See https://cloud.google.com/vpc/docs/edge-locations.
      * ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-     * See https://cloud.google.com/compute/docs/regions-zones
+     * See https://cloud.google.com/compute/docs/regions-zones.
+     * CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
+     * See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
      */
     scope?: pulumi.Input<string>;
     /**

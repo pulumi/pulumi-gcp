@@ -441,6 +441,37 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// });
     /// ```
+    /// ### Certificate Manager Client Auth Certificate
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CertificateManager.Certificate("default", new()
+    ///     {
+    ///         Name = "client-auth-cert",
+    ///         Description = "Global cert",
+    ///         Scope = "CLIENT_AUTH",
+    ///         SelfManaged = new Gcp.CertificateManager.Inputs.CertificateSelfManagedArgs
+    ///         {
+    ///             PemCertificate = Std.File.Invoke(new()
+    ///             {
+    ///                 Input = "test-fixtures/cert.pem",
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             PemPrivateKey = Std.File.Invoke(new()
+    ///             {
+    ///                 Input = "test-fixtures/private-key.pem",
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -542,7 +573,9 @@ namespace Pulumi.Gcp.CertificateManager
         /// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
         /// See https://cloud.google.com/vpc/docs/edge-locations.
         /// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-        /// See https://cloud.google.com/compute/docs/regions-zones
+        /// See https://cloud.google.com/compute/docs/regions-zones.
+        /// CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
+        /// See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
         /// </summary>
         [Output("scope")]
         public Output<string?> Scope { get; private set; } = null!;
@@ -667,7 +700,9 @@ namespace Pulumi.Gcp.CertificateManager
         /// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
         /// See https://cloud.google.com/vpc/docs/edge-locations.
         /// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-        /// See https://cloud.google.com/compute/docs/regions-zones
+        /// See https://cloud.google.com/compute/docs/regions-zones.
+        /// CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
+        /// See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
@@ -794,7 +829,9 @@ namespace Pulumi.Gcp.CertificateManager
         /// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
         /// See https://cloud.google.com/vpc/docs/edge-locations.
         /// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-        /// See https://cloud.google.com/compute/docs/regions-zones
+        /// See https://cloud.google.com/compute/docs/regions-zones.
+        /// CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
+        /// See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }

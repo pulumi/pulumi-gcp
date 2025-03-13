@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.Firebase
     ///         DisableOnDestroy = false,
     ///     });
     /// 
-    ///     // Create an FDC service
+    ///     // Create a Firebase Data Connect service
     ///     var @default = new Gcp.Firebase.DataConnectService("default", new()
     ///     {
     ///         Project = "my-project-name",
@@ -54,6 +54,41 @@ namespace Pulumi.Gcp.Firebase
     ///             { "key1", "value1" },
     ///             { "key2", "value2" },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             fdc,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Firebasedataconnect Service With Force Deletion
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Enable Firebase Data Connect API
+    ///     var fdc = new Gcp.Projects.Service("fdc", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         ServiceName = "firebasedataconnect.googleapis.com",
+    ///         DisableOnDestroy = false,
+    ///     });
+    /// 
+    ///     // Create a Firebase Data Connect service
+    ///     var @default = new Gcp.Firebase.DataConnectService("default", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Location = "us-central1",
+    ///         ServiceId = "example-service",
+    ///         DeletionPolicy = "FORCE",
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =

@@ -12,11 +12,13 @@ import java.util.Objects;
 public final class GetPrivateCloudManagementClusterStretchedClusterConfig {
     /**
      * @return Zone that will remain operational when connection between the two zones is lost.
+     * Specify the zone in the following format: projects/{project}/locations/{location}.
      * 
      */
     private String preferredLocation;
     /**
      * @return Additional zone for a higher level of availability and load balancing.
+     * Specify the zone in the following format: projects/{project}/locations/{location}.
      * 
      */
     private String secondaryLocation;
@@ -24,6 +26,7 @@ public final class GetPrivateCloudManagementClusterStretchedClusterConfig {
     private GetPrivateCloudManagementClusterStretchedClusterConfig() {}
     /**
      * @return Zone that will remain operational when connection between the two zones is lost.
+     * Specify the zone in the following format: projects/{project}/locations/{location}.
      * 
      */
     public String preferredLocation() {
@@ -31,6 +34,7 @@ public final class GetPrivateCloudManagementClusterStretchedClusterConfig {
     }
     /**
      * @return Additional zone for a higher level of availability and load balancing.
+     * Specify the zone in the following format: projects/{project}/locations/{location}.
      * 
      */
     public String secondaryLocation() {

@@ -18,7 +18,7 @@ public final class MirroringEndpointGroupAssociationArgs extends com.pulumi.reso
     public static final MirroringEndpointGroupAssociationArgs Empty = new MirroringEndpointGroupAssociationArgs();
 
     /**
-     * Optional. Labels as key value pairs
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -27,7 +27,7 @@ public final class MirroringEndpointGroupAssociationArgs extends com.pulumi.reso
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels as key value pairs
+     * @return Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -37,7 +37,7 @@ public final class MirroringEndpointGroupAssociationArgs extends com.pulumi.reso
     }
 
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+     * The cloud location of the association, currently restricted to `global`.
      * 
      * ***
      * 
@@ -46,7 +46,7 @@ public final class MirroringEndpointGroupAssociationArgs extends com.pulumi.reso
     private Output<String> location;
 
     /**
-     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+     * @return The cloud location of the association, currently restricted to `global`.
      * 
      * ***
      * 
@@ -56,18 +56,18 @@ public final class MirroringEndpointGroupAssociationArgs extends com.pulumi.reso
     }
 
     /**
-     * Required. Immutable. The Mirroring Endpoint Group that this resource is connected to. Format
-     * is:
-     * `projects/{project}/locations/global/mirroringEndpointGroups/{mirroringEndpointGroup}`
+     * The endpoint group that this association is connected to, for example:
+     * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+     * See https://google.aip.dev/124.
      * 
      */
     @Import(name="mirroringEndpointGroup", required=true)
     private Output<String> mirroringEndpointGroup;
 
     /**
-     * @return Required. Immutable. The Mirroring Endpoint Group that this resource is connected to. Format
-     * is:
-     * `projects/{project}/locations/global/mirroringEndpointGroups/{mirroringEndpointGroup}`
+     * @return The endpoint group that this association is connected to, for example:
+     * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+     * See https://google.aip.dev/124.
      * 
      */
     public Output<String> mirroringEndpointGroup() {
@@ -75,20 +75,18 @@ public final class MirroringEndpointGroupAssociationArgs extends com.pulumi.reso
     }
 
     /**
-     * Optional. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * mirroring_endpoint_group_association_id from the method_signature of Create
-     * RPC
+     * The ID to use for the new association, which will become the final
+     * component of the endpoint group&#39;s resource name. If not provided, the
+     * server will generate a unique ID.
      * 
      */
     @Import(name="mirroringEndpointGroupAssociationId")
     private @Nullable Output<String> mirroringEndpointGroupAssociationId;
 
     /**
-     * @return Optional. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * mirroring_endpoint_group_association_id from the method_signature of Create
-     * RPC
+     * @return The ID to use for the new association, which will become the final
+     * component of the endpoint group&#39;s resource name. If not provided, the
+     * server will generate a unique ID.
      * 
      */
     public Optional<Output<String>> mirroringEndpointGroupAssociationId() {
@@ -96,16 +94,18 @@ public final class MirroringEndpointGroupAssociationArgs extends com.pulumi.reso
     }
 
     /**
-     * Required. Immutable. The VPC network associated. Format:
-     * projects/{project}/global/networks/{network}.
+     * The VPC network that is associated. for example:
+     * `projects/123456789/global/networks/my-network`.
+     * See https://google.aip.dev/124.
      * 
      */
     @Import(name="network", required=true)
     private Output<String> network;
 
     /**
-     * @return Required. Immutable. The VPC network associated. Format:
-     * projects/{project}/global/networks/{network}.
+     * @return The VPC network that is associated. for example:
+     * `projects/123456789/global/networks/my-network`.
+     * See https://google.aip.dev/124.
      * 
      */
     public Output<String> network() {
@@ -159,7 +159,7 @@ public final class MirroringEndpointGroupAssociationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs
+         * @param labels Labels are key/value pairs that help to organize and filter resources.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -172,7 +172,7 @@ public final class MirroringEndpointGroupAssociationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs
+         * @param labels Labels are key/value pairs that help to organize and filter resources.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -184,7 +184,7 @@ public final class MirroringEndpointGroupAssociationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+         * @param location The cloud location of the association, currently restricted to `global`.
          * 
          * ***
          * 
@@ -197,7 +197,7 @@ public final class MirroringEndpointGroupAssociationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+         * @param location The cloud location of the association, currently restricted to `global`.
          * 
          * ***
          * 
@@ -209,9 +209,9 @@ public final class MirroringEndpointGroupAssociationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param mirroringEndpointGroup Required. Immutable. The Mirroring Endpoint Group that this resource is connected to. Format
-         * is:
-         * `projects/{project}/locations/global/mirroringEndpointGroups/{mirroringEndpointGroup}`
+         * @param mirroringEndpointGroup The endpoint group that this association is connected to, for example:
+         * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -222,9 +222,9 @@ public final class MirroringEndpointGroupAssociationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param mirroringEndpointGroup Required. Immutable. The Mirroring Endpoint Group that this resource is connected to. Format
-         * is:
-         * `projects/{project}/locations/global/mirroringEndpointGroups/{mirroringEndpointGroup}`
+         * @param mirroringEndpointGroup The endpoint group that this association is connected to, for example:
+         * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -234,10 +234,9 @@ public final class MirroringEndpointGroupAssociationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param mirroringEndpointGroupAssociationId Optional. Id of the requesting object
-         * If auto-generating Id server-side, remove this field and
-         * mirroring_endpoint_group_association_id from the method_signature of Create
-         * RPC
+         * @param mirroringEndpointGroupAssociationId The ID to use for the new association, which will become the final
+         * component of the endpoint group&#39;s resource name. If not provided, the
+         * server will generate a unique ID.
          * 
          * @return builder
          * 
@@ -248,10 +247,9 @@ public final class MirroringEndpointGroupAssociationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param mirroringEndpointGroupAssociationId Optional. Id of the requesting object
-         * If auto-generating Id server-side, remove this field and
-         * mirroring_endpoint_group_association_id from the method_signature of Create
-         * RPC
+         * @param mirroringEndpointGroupAssociationId The ID to use for the new association, which will become the final
+         * component of the endpoint group&#39;s resource name. If not provided, the
+         * server will generate a unique ID.
          * 
          * @return builder
          * 
@@ -261,8 +259,9 @@ public final class MirroringEndpointGroupAssociationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param network Required. Immutable. The VPC network associated. Format:
-         * projects/{project}/global/networks/{network}.
+         * @param network The VPC network that is associated. for example:
+         * `projects/123456789/global/networks/my-network`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -273,8 +272,9 @@ public final class MirroringEndpointGroupAssociationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param network Required. Immutable. The VPC network associated. Format:
-         * projects/{project}/global/networks/{network}.
+         * @param network The VPC network that is associated. for example:
+         * `projects/123456789/global/networks/my-network`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 

@@ -240,6 +240,58 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Monitoring Alert Policy Sql Condition
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.monitoring.AlertPolicy;
+ * import com.pulumi.gcp.monitoring.AlertPolicyArgs;
+ * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionArgs;
+ * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionSqlArgs;
+ * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionSqlMinutesArgs;
+ * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionSqlRowCountTestArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()
+ *             .displayName("My Alert Policy")
+ *             .combiner("OR")
+ *             .conditions(AlertPolicyConditionArgs.builder()
+ *                 .displayName("minutes row count")
+ *                 .conditionSql(AlertPolicyConditionConditionSqlArgs.builder()
+ *                     .query("SELECT severity, resource FROM my_project.global._Default._AllLogs WHERE severity IS NOT NULL")
+ *                     .minutes(AlertPolicyConditionConditionSqlMinutesArgs.builder()
+ *                         .periodicity(600)
+ *                         .build())
+ *                     .rowCountTest(AlertPolicyConditionConditionSqlRowCountTestArgs.builder()
+ *                         .comparison("COMPARISON_GT")
+ *                         .threshold("0")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

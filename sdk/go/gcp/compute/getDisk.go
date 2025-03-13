@@ -75,9 +75,11 @@ type LookupDiskArgs struct {
 
 // A collection of values returned by getDisk.
 type LookupDiskResult struct {
-	AccessMode        string                    `pulumi:"accessMode"`
-	Architecture      string                    `pulumi:"architecture"`
-	AsyncPrimaryDisks []GetDiskAsyncPrimaryDisk `pulumi:"asyncPrimaryDisks"`
+	AccessMode                        string                    `pulumi:"accessMode"`
+	Architecture                      string                    `pulumi:"architecture"`
+	AsyncPrimaryDisks                 []GetDiskAsyncPrimaryDisk `pulumi:"asyncPrimaryDisks"`
+	CreateSnapshotBeforeDestroy       bool                      `pulumi:"createSnapshotBeforeDestroy"`
+	CreateSnapshotBeforeDestroyPrefix string                    `pulumi:"createSnapshotBeforeDestroyPrefix"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// The optional description of this resource.
@@ -202,6 +204,14 @@ func (o LookupDiskResultOutput) Architecture() pulumi.StringOutput {
 
 func (o LookupDiskResultOutput) AsyncPrimaryDisks() GetDiskAsyncPrimaryDiskArrayOutput {
 	return o.ApplyT(func(v LookupDiskResult) []GetDiskAsyncPrimaryDisk { return v.AsyncPrimaryDisks }).(GetDiskAsyncPrimaryDiskArrayOutput)
+}
+
+func (o LookupDiskResultOutput) CreateSnapshotBeforeDestroy() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDiskResult) bool { return v.CreateSnapshotBeforeDestroy }).(pulumi.BoolOutput)
+}
+
+func (o LookupDiskResultOutput) CreateSnapshotBeforeDestroyPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiskResult) string { return v.CreateSnapshotBeforeDestroyPrefix }).(pulumi.StringOutput)
 }
 
 // Creation timestamp in RFC3339 text format.

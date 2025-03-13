@@ -40,6 +40,7 @@ import (
 //				InterceptDeploymentGroupId: pulumi.String("example-dg"),
 //				Location:                   pulumi.String("global"),
 //				Network:                    network.ID(),
+//				Description:                pulumi.String("some description"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -79,30 +80,36 @@ import (
 type InterceptDeploymentGroup struct {
 	pulumi.CustomResourceState
 
-	// Output only. The list of Intercept Endpoint Groups that are connected to this resource.
+	// The list of endpoint groups that are connected to this resource.
 	// Structure is documented below.
 	ConnectedEndpointGroups InterceptDeploymentGroupConnectedEndpointGroupArrayOutput `pulumi:"connectedEndpointGroups"`
-	// Output only. [Output only] Create time stamp
+	// The timestamp when the resource was created.
+	// See https://google.aip.dev/148#timestamps.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// User-provided description of the deployment group.
+	// Used as additional context for the deployment group.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// Required. Id of the requesting object
-	// If auto-generating Id server-side, remove this field and
-	// interceptDeploymentGroupId from the methodSignature of Create RPC
+	// The ID to use for the new deployment group, which will become the final
+	// component of the deployment group's resource name.
 	//
 	// ***
 	InterceptDeploymentGroupId pulumi.StringOutput `pulumi:"interceptDeploymentGroupId"`
-	// Optional. Labels as key value pairs
+	// Labels are key/value pairs that help to organize and filter resources.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/InterceptDeploymentGroup`.
+	// The cloud location of the deployment group, currently restricted to `global`.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// (Output)
-	// Output only. A connected intercept endpoint group.
+	// The connected endpoint group's resource name, for example:
+	// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+	// See https://google.aip.dev/124.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Required. Immutable. The network that is being used for the deployment. Format is:
-	// projects/{project}/global/networks/{network}.
+	// The network that will be used for all child deployments, for example:
+	// `projects/{project}/global/networks/{network}`.
+	// See https://google.aip.dev/124.
 	Network pulumi.StringOutput `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -110,17 +117,21 @@ type InterceptDeploymentGroup struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// Output only. Whether reconciling is in progress, recommended per
-	// https://google.aip.dev/128.
+	// The current state of the resource does not match the user's intended state,
+	// and the system is working to reconcile them. This is part of the normal
+	// operation (e.g. adding a new deployment to the group)
+	// See https://google.aip.dev/128.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
-	// Output only. Current state of the deployment group.
+	// The current state of the deployment group.
+	// See https://google.aip.dev/216.
 	// Possible values:
 	// STATE_UNSPECIFIED
 	// ACTIVE
 	// CREATING
 	// DELETING
 	State pulumi.StringOutput `pulumi:"state"`
-	// Output only. [Output only] Update time stamp
+	// The timestamp when the resource was most recently updated.
+	// See https://google.aip.dev/148#timestamps.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -168,30 +179,36 @@ func GetInterceptDeploymentGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InterceptDeploymentGroup resources.
 type interceptDeploymentGroupState struct {
-	// Output only. The list of Intercept Endpoint Groups that are connected to this resource.
+	// The list of endpoint groups that are connected to this resource.
 	// Structure is documented below.
 	ConnectedEndpointGroups []InterceptDeploymentGroupConnectedEndpointGroup `pulumi:"connectedEndpointGroups"`
-	// Output only. [Output only] Create time stamp
+	// The timestamp when the resource was created.
+	// See https://google.aip.dev/148#timestamps.
 	CreateTime *string `pulumi:"createTime"`
+	// User-provided description of the deployment group.
+	// Used as additional context for the deployment group.
+	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// Required. Id of the requesting object
-	// If auto-generating Id server-side, remove this field and
-	// interceptDeploymentGroupId from the methodSignature of Create RPC
+	// The ID to use for the new deployment group, which will become the final
+	// component of the deployment group's resource name.
 	//
 	// ***
 	InterceptDeploymentGroupId *string `pulumi:"interceptDeploymentGroupId"`
-	// Optional. Labels as key value pairs
+	// Labels are key/value pairs that help to organize and filter resources.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/InterceptDeploymentGroup`.
+	// The cloud location of the deployment group, currently restricted to `global`.
 	Location *string `pulumi:"location"`
 	// (Output)
-	// Output only. A connected intercept endpoint group.
+	// The connected endpoint group's resource name, for example:
+	// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+	// See https://google.aip.dev/124.
 	Name *string `pulumi:"name"`
-	// Required. Immutable. The network that is being used for the deployment. Format is:
-	// projects/{project}/global/networks/{network}.
+	// The network that will be used for all child deployments, for example:
+	// `projects/{project}/global/networks/{network}`.
+	// See https://google.aip.dev/124.
 	Network *string `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -199,45 +216,55 @@ type interceptDeploymentGroupState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// Output only. Whether reconciling is in progress, recommended per
-	// https://google.aip.dev/128.
+	// The current state of the resource does not match the user's intended state,
+	// and the system is working to reconcile them. This is part of the normal
+	// operation (e.g. adding a new deployment to the group)
+	// See https://google.aip.dev/128.
 	Reconciling *bool `pulumi:"reconciling"`
-	// Output only. Current state of the deployment group.
+	// The current state of the deployment group.
+	// See https://google.aip.dev/216.
 	// Possible values:
 	// STATE_UNSPECIFIED
 	// ACTIVE
 	// CREATING
 	// DELETING
 	State *string `pulumi:"state"`
-	// Output only. [Output only] Update time stamp
+	// The timestamp when the resource was most recently updated.
+	// See https://google.aip.dev/148#timestamps.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type InterceptDeploymentGroupState struct {
-	// Output only. The list of Intercept Endpoint Groups that are connected to this resource.
+	// The list of endpoint groups that are connected to this resource.
 	// Structure is documented below.
 	ConnectedEndpointGroups InterceptDeploymentGroupConnectedEndpointGroupArrayInput
-	// Output only. [Output only] Create time stamp
+	// The timestamp when the resource was created.
+	// See https://google.aip.dev/148#timestamps.
 	CreateTime pulumi.StringPtrInput
+	// User-provided description of the deployment group.
+	// Used as additional context for the deployment group.
+	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
-	// Required. Id of the requesting object
-	// If auto-generating Id server-side, remove this field and
-	// interceptDeploymentGroupId from the methodSignature of Create RPC
+	// The ID to use for the new deployment group, which will become the final
+	// component of the deployment group's resource name.
 	//
 	// ***
 	InterceptDeploymentGroupId pulumi.StringPtrInput
-	// Optional. Labels as key value pairs
+	// Labels are key/value pairs that help to organize and filter resources.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/InterceptDeploymentGroup`.
+	// The cloud location of the deployment group, currently restricted to `global`.
 	Location pulumi.StringPtrInput
 	// (Output)
-	// Output only. A connected intercept endpoint group.
+	// The connected endpoint group's resource name, for example:
+	// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+	// See https://google.aip.dev/124.
 	Name pulumi.StringPtrInput
-	// Required. Immutable. The network that is being used for the deployment. Format is:
-	// projects/{project}/global/networks/{network}.
+	// The network that will be used for all child deployments, for example:
+	// `projects/{project}/global/networks/{network}`.
+	// See https://google.aip.dev/124.
 	Network pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -245,17 +272,21 @@ type InterceptDeploymentGroupState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
-	// Output only. Whether reconciling is in progress, recommended per
-	// https://google.aip.dev/128.
+	// The current state of the resource does not match the user's intended state,
+	// and the system is working to reconcile them. This is part of the normal
+	// operation (e.g. adding a new deployment to the group)
+	// See https://google.aip.dev/128.
 	Reconciling pulumi.BoolPtrInput
-	// Output only. Current state of the deployment group.
+	// The current state of the deployment group.
+	// See https://google.aip.dev/216.
 	// Possible values:
 	// STATE_UNSPECIFIED
 	// ACTIVE
 	// CREATING
 	// DELETING
 	State pulumi.StringPtrInput
-	// Output only. [Output only] Update time stamp
+	// The timestamp when the resource was most recently updated.
+	// See https://google.aip.dev/148#timestamps.
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -264,20 +295,23 @@ func (InterceptDeploymentGroupState) ElementType() reflect.Type {
 }
 
 type interceptDeploymentGroupArgs struct {
-	// Required. Id of the requesting object
-	// If auto-generating Id server-side, remove this field and
-	// interceptDeploymentGroupId from the methodSignature of Create RPC
+	// User-provided description of the deployment group.
+	// Used as additional context for the deployment group.
+	Description *string `pulumi:"description"`
+	// The ID to use for the new deployment group, which will become the final
+	// component of the deployment group's resource name.
 	//
 	// ***
 	InterceptDeploymentGroupId string `pulumi:"interceptDeploymentGroupId"`
-	// Optional. Labels as key value pairs
+	// Labels are key/value pairs that help to organize and filter resources.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/InterceptDeploymentGroup`.
+	// The cloud location of the deployment group, currently restricted to `global`.
 	Location string `pulumi:"location"`
-	// Required. Immutable. The network that is being used for the deployment. Format is:
-	// projects/{project}/global/networks/{network}.
+	// The network that will be used for all child deployments, for example:
+	// `projects/{project}/global/networks/{network}`.
+	// See https://google.aip.dev/124.
 	Network string `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -286,20 +320,23 @@ type interceptDeploymentGroupArgs struct {
 
 // The set of arguments for constructing a InterceptDeploymentGroup resource.
 type InterceptDeploymentGroupArgs struct {
-	// Required. Id of the requesting object
-	// If auto-generating Id server-side, remove this field and
-	// interceptDeploymentGroupId from the methodSignature of Create RPC
+	// User-provided description of the deployment group.
+	// Used as additional context for the deployment group.
+	Description pulumi.StringPtrInput
+	// The ID to use for the new deployment group, which will become the final
+	// component of the deployment group's resource name.
 	//
 	// ***
 	InterceptDeploymentGroupId pulumi.StringInput
-	// Optional. Labels as key value pairs
+	// Labels are key/value pairs that help to organize and filter resources.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/InterceptDeploymentGroup`.
+	// The cloud location of the deployment group, currently restricted to `global`.
 	Location pulumi.StringInput
-	// Required. Immutable. The network that is being used for the deployment. Format is:
-	// projects/{project}/global/networks/{network}.
+	// The network that will be used for all child deployments, for example:
+	// `projects/{project}/global/networks/{network}`.
+	// See https://google.aip.dev/124.
 	Network pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -393,7 +430,7 @@ func (o InterceptDeploymentGroupOutput) ToInterceptDeploymentGroupOutputWithCont
 	return o
 }
 
-// Output only. The list of Intercept Endpoint Groups that are connected to this resource.
+// The list of endpoint groups that are connected to this resource.
 // Structure is documented below.
 func (o InterceptDeploymentGroupOutput) ConnectedEndpointGroups() InterceptDeploymentGroupConnectedEndpointGroupArrayOutput {
 	return o.ApplyT(func(v *InterceptDeploymentGroup) InterceptDeploymentGroupConnectedEndpointGroupArrayOutput {
@@ -401,9 +438,16 @@ func (o InterceptDeploymentGroupOutput) ConnectedEndpointGroups() InterceptDeplo
 	}).(InterceptDeploymentGroupConnectedEndpointGroupArrayOutput)
 }
 
-// Output only. [Output only] Create time stamp
+// The timestamp when the resource was created.
+// See https://google.aip.dev/148#timestamps.
 func (o InterceptDeploymentGroupOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterceptDeploymentGroup) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// User-provided description of the deployment group.
+// Used as additional context for the deployment group.
+func (o InterceptDeploymentGroupOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InterceptDeploymentGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -411,35 +455,37 @@ func (o InterceptDeploymentGroupOutput) EffectiveLabels() pulumi.StringMapOutput
 	return o.ApplyT(func(v *InterceptDeploymentGroup) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// Required. Id of the requesting object
-// If auto-generating Id server-side, remove this field and
-// interceptDeploymentGroupId from the methodSignature of Create RPC
+// The ID to use for the new deployment group, which will become the final
+// component of the deployment group's resource name.
 //
 // ***
 func (o InterceptDeploymentGroupOutput) InterceptDeploymentGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterceptDeploymentGroup) pulumi.StringOutput { return v.InterceptDeploymentGroupId }).(pulumi.StringOutput)
 }
 
-// Optional. Labels as key value pairs
+// Labels are key/value pairs that help to organize and filter resources.
 // **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 // Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o InterceptDeploymentGroupOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InterceptDeploymentGroup) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/InterceptDeploymentGroup`.
+// The cloud location of the deployment group, currently restricted to `global`.
 func (o InterceptDeploymentGroupOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterceptDeploymentGroup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // (Output)
-// Output only. A connected intercept endpoint group.
+// The connected endpoint group's resource name, for example:
+// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+// See https://google.aip.dev/124.
 func (o InterceptDeploymentGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterceptDeploymentGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Required. Immutable. The network that is being used for the deployment. Format is:
-// projects/{project}/global/networks/{network}.
+// The network that will be used for all child deployments, for example:
+// `projects/{project}/global/networks/{network}`.
+// See https://google.aip.dev/124.
 func (o InterceptDeploymentGroupOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterceptDeploymentGroup) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }
@@ -456,13 +502,16 @@ func (o InterceptDeploymentGroupOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InterceptDeploymentGroup) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// Output only. Whether reconciling is in progress, recommended per
-// https://google.aip.dev/128.
+// The current state of the resource does not match the user's intended state,
+// and the system is working to reconcile them. This is part of the normal
+// operation (e.g. adding a new deployment to the group)
+// See https://google.aip.dev/128.
 func (o InterceptDeploymentGroupOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *InterceptDeploymentGroup) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }
 
-// Output only. Current state of the deployment group.
+// The current state of the deployment group.
+// See https://google.aip.dev/216.
 // Possible values:
 // STATE_UNSPECIFIED
 // ACTIVE
@@ -472,7 +521,8 @@ func (o InterceptDeploymentGroupOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterceptDeploymentGroup) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Output only. [Output only] Update time stamp
+// The timestamp when the resource was most recently updated.
+// See https://google.aip.dev/148#timestamps.
 func (o InterceptDeploymentGroupOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterceptDeploymentGroup) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

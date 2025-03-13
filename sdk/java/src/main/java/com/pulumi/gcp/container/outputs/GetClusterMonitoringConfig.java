@@ -19,7 +19,7 @@ public final class GetClusterMonitoringConfig {
      */
     private List<GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig> advancedDatapathObservabilityConfigs;
     /**
-     * @return GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET, WORKLOADS, KUBELET, CADVISOR and DCGM.
+     * @return GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET, WORKLOADS, KUBELET, CADVISOR, DCGM and JOBSET.
      * 
      */
     private List<String> enableComponents;
@@ -38,7 +38,7 @@ public final class GetClusterMonitoringConfig {
         return this.advancedDatapathObservabilityConfigs;
     }
     /**
-     * @return GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET, WORKLOADS, KUBELET, CADVISOR and DCGM.
+     * @return GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET, WORKLOADS, KUBELET, CADVISOR, DCGM and JOBSET.
      * 
      */
     public List<String> enableComponents() {

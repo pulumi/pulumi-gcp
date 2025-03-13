@@ -24,6 +24,9 @@ __all__ = [
     'ConnectionProfileOracleProfile',
     'ConnectionProfilePostgresqlProfile',
     'ConnectionProfilePrivateConnectivity',
+    'ConnectionProfileSalesforceProfile',
+    'ConnectionProfileSalesforceProfileOauth2ClientCredentials',
+    'ConnectionProfileSalesforceProfileUserCredentials',
     'ConnectionProfileSqlServerProfile',
     'PrivateConnectionError',
     'PrivateConnectionVpcPeeringConfig',
@@ -648,6 +651,227 @@ class ConnectionProfilePrivateConnectivity(dict):
         A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
         """
         return pulumi.get(self, "private_connection")
+
+
+@pulumi.output_type
+class ConnectionProfileSalesforceProfile(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oauth2ClientCredentials":
+            suggest = "oauth2_client_credentials"
+        elif key == "userCredentials":
+            suggest = "user_credentials"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionProfileSalesforceProfile. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionProfileSalesforceProfile.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionProfileSalesforceProfile.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 domain: str,
+                 oauth2_client_credentials: Optional['outputs.ConnectionProfileSalesforceProfileOauth2ClientCredentials'] = None,
+                 user_credentials: Optional['outputs.ConnectionProfileSalesforceProfileUserCredentials'] = None):
+        """
+        :param str domain: Domain for the Salesforce Org.
+        :param 'ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs' oauth2_client_credentials: OAuth credentials to use for Salesforce authentication.
+               Structure is documented below.
+        :param 'ConnectionProfileSalesforceProfileUserCredentialsArgs' user_credentials: User credentials to use for Salesforce authentication.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "domain", domain)
+        if oauth2_client_credentials is not None:
+            pulumi.set(__self__, "oauth2_client_credentials", oauth2_client_credentials)
+        if user_credentials is not None:
+            pulumi.set(__self__, "user_credentials", user_credentials)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        """
+        Domain for the Salesforce Org.
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter(name="oauth2ClientCredentials")
+    def oauth2_client_credentials(self) -> Optional['outputs.ConnectionProfileSalesforceProfileOauth2ClientCredentials']:
+        """
+        OAuth credentials to use for Salesforce authentication.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oauth2_client_credentials")
+
+    @property
+    @pulumi.getter(name="userCredentials")
+    def user_credentials(self) -> Optional['outputs.ConnectionProfileSalesforceProfileUserCredentials']:
+        """
+        User credentials to use for Salesforce authentication.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "user_credentials")
+
+
+@pulumi.output_type
+class ConnectionProfileSalesforceProfileOauth2ClientCredentials(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "secretManagerStoredClientSecret":
+            suggest = "secret_manager_stored_client_secret"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionProfileSalesforceProfileOauth2ClientCredentials. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionProfileSalesforceProfileOauth2ClientCredentials.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionProfileSalesforceProfileOauth2ClientCredentials.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_id: Optional[str] = None,
+                 client_secret: Optional[str] = None,
+                 secret_manager_stored_client_secret: Optional[str] = None):
+        """
+        :param str client_id: Client ID to use for authentication.
+        :param str client_secret: Client secret to use for authentication.
+        :param str secret_manager_stored_client_secret: A reference to a Secret Manager resource name storing the client secret.
+        """
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if secret_manager_stored_client_secret is not None:
+            pulumi.set(__self__, "secret_manager_stored_client_secret", secret_manager_stored_client_secret)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[str]:
+        """
+        Client ID to use for authentication.
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[str]:
+        """
+        Client secret to use for authentication.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter(name="secretManagerStoredClientSecret")
+    def secret_manager_stored_client_secret(self) -> Optional[str]:
+        """
+        A reference to a Secret Manager resource name storing the client secret.
+        """
+        return pulumi.get(self, "secret_manager_stored_client_secret")
+
+
+@pulumi.output_type
+class ConnectionProfileSalesforceProfileUserCredentials(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretManagerStoredPassword":
+            suggest = "secret_manager_stored_password"
+        elif key == "secretManagerStoredSecurityToken":
+            suggest = "secret_manager_stored_security_token"
+        elif key == "securityToken":
+            suggest = "security_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionProfileSalesforceProfileUserCredentials. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionProfileSalesforceProfileUserCredentials.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionProfileSalesforceProfileUserCredentials.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 password: Optional[str] = None,
+                 secret_manager_stored_password: Optional[str] = None,
+                 secret_manager_stored_security_token: Optional[str] = None,
+                 security_token: Optional[str] = None,
+                 username: Optional[str] = None):
+        """
+        :param str password: Password of the user.
+        :param str secret_manager_stored_password: A reference to a Secret Manager resource name storing the user's password.
+        :param str secret_manager_stored_security_token: A reference to a Secret Manager resource name storing the user's security token.
+               
+               <a name="nested_salesforce_profile_oauth2_client_credentials"></a>The `oauth2_client_credentials` block supports:
+        :param str security_token: Security token of the user.
+        :param str username: Username to use for authentication.
+        """
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if secret_manager_stored_password is not None:
+            pulumi.set(__self__, "secret_manager_stored_password", secret_manager_stored_password)
+        if secret_manager_stored_security_token is not None:
+            pulumi.set(__self__, "secret_manager_stored_security_token", secret_manager_stored_security_token)
+        if security_token is not None:
+            pulumi.set(__self__, "security_token", security_token)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        Password of the user.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="secretManagerStoredPassword")
+    def secret_manager_stored_password(self) -> Optional[str]:
+        """
+        A reference to a Secret Manager resource name storing the user's password.
+        """
+        return pulumi.get(self, "secret_manager_stored_password")
+
+    @property
+    @pulumi.getter(name="secretManagerStoredSecurityToken")
+    def secret_manager_stored_security_token(self) -> Optional[str]:
+        """
+        A reference to a Secret Manager resource name storing the user's security token.
+
+        <a name="nested_salesforce_profile_oauth2_client_credentials"></a>The `oauth2_client_credentials` block supports:
+        """
+        return pulumi.get(self, "secret_manager_stored_security_token")
+
+    @property
+    @pulumi.getter(name="securityToken")
+    def security_token(self) -> Optional[str]:
+        """
+        Security token of the user.
+        """
+        return pulumi.get(self, "security_token")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        Username to use for authentication.
+        """
+        return pulumi.get(self, "username")
 
 
 @pulumi.output_type

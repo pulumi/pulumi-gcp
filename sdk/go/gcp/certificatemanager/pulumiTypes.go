@@ -2160,7 +2160,10 @@ type GetCertificatesCertificate struct {
 	// See https://cloud.google.com/vpc/docs/edge-locations.
 	//
 	// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-	// See https://cloud.google.com/compute/docs/regions-zones
+	// See https://cloud.google.com/compute/docs/regions-zones.
+	//
+	// CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
+	// See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
 	Scope string `pulumi:"scope"`
 }
 
@@ -2211,7 +2214,10 @@ type GetCertificatesCertificateArgs struct {
 	// See https://cloud.google.com/vpc/docs/edge-locations.
 	//
 	// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-	// See https://cloud.google.com/compute/docs/regions-zones
+	// See https://cloud.google.com/compute/docs/regions-zones.
+	//
+	// CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
+	// See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
 	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
@@ -2329,7 +2335,10 @@ func (o GetCertificatesCertificateOutput) SanDnsnames() pulumi.StringArrayOutput
 // See https://cloud.google.com/vpc/docs/edge-locations.
 //
 // ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-// See https://cloud.google.com/compute/docs/regions-zones
+// See https://cloud.google.com/compute/docs/regions-zones.
+//
+// CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
+// See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
 func (o GetCertificatesCertificateOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.Scope }).(pulumi.StringOutput)
 }

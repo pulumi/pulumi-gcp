@@ -156,6 +156,64 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
+    /// ### Workstation Cluster Tags
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var tagKey = new Gcp.Tags.TagKey("tag_key", new()
+    ///     {
+    ///         Parent = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}",
+    ///         ShortName = "keyname",
+    ///     });
+    /// 
+    ///     var tagValue = new Gcp.Tags.TagValue("tag_value", new()
+    ///     {
+    ///         Parent = tagKey.Name.Apply(name =&gt; $"tagKeys/{name}"),
+    ///         ShortName = "valuename",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "workstation-cluster-tags",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "workstation-cluster-tags",
+    ///         IpCidrRange = "10.0.0.0/24",
+    ///         Region = "us-central1",
+    ///         Network = defaultNetwork.Name,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Workstations.WorkstationCluster("default", new()
+    ///     {
+    ///         WorkstationClusterId = "workstation-cluster-tags",
+    ///         Network = defaultNetwork.Id,
+    ///         Subnetwork = defaultSubnetwork.Id,
+    ///         Location = "us-central1",
+    ///         Tags = Output.Tuple(project, tagKey.ShortName, tagValue.ShortName).Apply(values =&gt;
+    ///         {
+    ///             var project = values.Item1;
+    ///             var tagKeyShortName = values.Item2;
+    ///             var tagValueShortName = values.Item3;
+    ///             return 
+    ///             {
+    ///                 { $"{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/{tagKeyShortName}", tagValueShortName },
+    ///             };
+    ///         }),
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -304,6 +362,15 @@ namespace Pulumi.Gcp.Workstations
         public Output<string> Subnetwork { get; private set; } = null!;
 
         /// <summary>
+        /// Resource manager tags bound to this resource.
+        /// For example:
+        /// "123/environment": "production",
+        /// "123/costCenter": "marketing"
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// The system-generated UID of the resource.
         /// </summary>
         [Output("uid")]
@@ -443,6 +510,21 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Input("subnetwork", required: true)]
         public Input<string> Subnetwork { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Resource manager tags bound to this resource.
+        /// For example:
+        /// "123/environment": "production",
+        /// "123/costCenter": "marketing"
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// ID to use for the workstation cluster.
@@ -622,6 +704,21 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Resource manager tags bound to this resource.
+        /// For example:
+        /// "123/environment": "production",
+        /// "123/costCenter": "marketing"
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The system-generated UID of the resource.

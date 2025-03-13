@@ -18,8 +18,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AlertPolicyConditionConditionSql {
     /**
-     * @return The start date and time of the query. If left unspecified, then the
-     * query will start immediately.
+     * @return A test that uses an alerting result in a boolean column produced by the SQL query.
      * Structure is documented below.
      * 
      */
@@ -52,7 +51,7 @@ public final class AlertPolicyConditionConditionSql {
      */
     private String query;
     /**
-     * @return Test the row count against a threshold.
+     * @return A test that checks if the number of rows in the result set violates some threshold.
      * Structure is documented below.
      * 
      */
@@ -60,8 +59,7 @@ public final class AlertPolicyConditionConditionSql {
 
     private AlertPolicyConditionConditionSql() {}
     /**
-     * @return The start date and time of the query. If left unspecified, then the
-     * query will start immediately.
+     * @return A test that uses an alerting result in a boolean column produced by the SQL query.
      * Structure is documented below.
      * 
      */
@@ -104,7 +102,7 @@ public final class AlertPolicyConditionConditionSql {
         return this.query;
     }
     /**
-     * @return Test the row count against a threshold.
+     * @return A test that checks if the number of rows in the result set violates some threshold.
      * Structure is documented below.
      * 
      */

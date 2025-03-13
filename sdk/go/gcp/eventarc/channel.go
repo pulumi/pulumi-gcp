@@ -14,62 +14,34 @@ import (
 
 // The Eventarc Channel resource
 //
+// To get more information about Channel, see:
+//
+// * [API documentation](https://cloud.google.com/eventarc/docs/reference/rest/v1/projects.locations.channels)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/eventarc/standard/docs/third-parties/create-channels)
+//
 // ## Example Usage
 //
-// ### Basic
+// ### Eventarc Channel With Cmek
+//
 // ```go
 // package main
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/eventarc"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/kms"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			testProject, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
-//				ProjectId: pulumi.StringRef("my-project-name"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			testKeyRing, err := kms.GetKMSKeyRing(ctx, &kms.GetKMSKeyRingArgs{
-//				Name:     "keyring",
-//				Location: "us-west1",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = kms.GetKMSCryptoKey(ctx, &kms.GetKMSCryptoKeyArgs{
-//				Name:    "key",
-//				KeyRing: testKeyRing.Id,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			key1Member, err := kms.NewCryptoKeyIAMMember(ctx, "key1_member", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: pulumi.Any(key1.Id),
-//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Member:      pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-eventarc.iam.gserviceaccount.com", testProject.Number),
+//			_, err := eventarc.NewChannel(ctx, "primary", &eventarc.ChannelArgs{
+//				Location:           pulumi.String("us-central1"),
+//				Name:               pulumi.String("some-channel"),
+//				CryptoKeyName:      pulumi.String("some-key"),
+//				ThirdPartyProvider: pulumi.String("projects/my-project-name/locations/us-central1/providers/datadog"),
 //			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = eventarc.NewChannel(ctx, "primary", &eventarc.ChannelArgs{
-//				Location:           pulumi.String("us-west1"),
-//				Name:               pulumi.String("channel"),
-//				Project:            pulumi.String(testProject.ProjectId),
-//				CryptoKeyName:      pulumi.Any(key1.Id),
-//				ThirdPartyProvider: pulumi.Sprintf("projects/%v/locations/us-west1/providers/datadog", testProject.ProjectId),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				key1Member,
-//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -105,29 +77,30 @@ import (
 type Channel struct {
 	pulumi.CustomResourceState
 
-	// Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
+	// The activation token for the channel. The token must be used by the provider to register the channel for publishing.
 	ActivationToken pulumi.StringOutput `pulumi:"activationToken"`
-	// Output only. The creation time.
+	// The creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	CryptoKeyName pulumi.StringPtrOutput `pulumi:"cryptoKeyName"`
 	// The location for the resource
-	Location pulumi.StringOutput `pulumi:"location"`
-	// Required. The resource name of the channel. Must be unique within the location on the project.
 	//
 	// ***
+	Location pulumi.StringOutput `pulumi:"location"`
+	// The resource name of the channel. Must be unique within the location on the project.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
+	// The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
 	PubsubTopic pulumi.StringOutput `pulumi:"pubsubTopic"`
-	// Output only. The state of a Channel. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE, INACTIVE
+	// The state of a Channel.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
 	ThirdPartyProvider pulumi.StringPtrOutput `pulumi:"thirdPartyProvider"`
-	// Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+	// Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid pulumi.StringOutput `pulumi:"uid"`
-	// Output only. The last-modified time.
+	// The last-modified time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -164,56 +137,58 @@ func GetChannel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Channel resources.
 type channelState struct {
-	// Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
+	// The activation token for the channel. The token must be used by the provider to register the channel for publishing.
 	ActivationToken *string `pulumi:"activationToken"`
-	// Output only. The creation time.
+	// The creation time.
 	CreateTime *string `pulumi:"createTime"`
-	// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	CryptoKeyName *string `pulumi:"cryptoKeyName"`
 	// The location for the resource
-	Location *string `pulumi:"location"`
-	// Required. The resource name of the channel. Must be unique within the location on the project.
 	//
 	// ***
+	Location *string `pulumi:"location"`
+	// The resource name of the channel. Must be unique within the location on the project.
 	Name *string `pulumi:"name"`
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
+	// The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
 	PubsubTopic *string `pulumi:"pubsubTopic"`
-	// Output only. The state of a Channel. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE, INACTIVE
+	// The state of a Channel.
 	State *string `pulumi:"state"`
 	// The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
 	ThirdPartyProvider *string `pulumi:"thirdPartyProvider"`
-	// Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+	// Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid *string `pulumi:"uid"`
-	// Output only. The last-modified time.
+	// The last-modified time.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type ChannelState struct {
-	// Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
+	// The activation token for the channel. The token must be used by the provider to register the channel for publishing.
 	ActivationToken pulumi.StringPtrInput
-	// Output only. The creation time.
+	// The creation time.
 	CreateTime pulumi.StringPtrInput
-	// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	CryptoKeyName pulumi.StringPtrInput
 	// The location for the resource
-	Location pulumi.StringPtrInput
-	// Required. The resource name of the channel. Must be unique within the location on the project.
 	//
 	// ***
+	Location pulumi.StringPtrInput
+	// The resource name of the channel. Must be unique within the location on the project.
 	Name pulumi.StringPtrInput
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
+	// The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
 	PubsubTopic pulumi.StringPtrInput
-	// Output only. The state of a Channel. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE, INACTIVE
+	// The state of a Channel.
 	State pulumi.StringPtrInput
 	// The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
 	ThirdPartyProvider pulumi.StringPtrInput
-	// Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+	// Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid pulumi.StringPtrInput
-	// Output only. The last-modified time.
+	// The last-modified time.
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -222,15 +197,16 @@ func (ChannelState) ElementType() reflect.Type {
 }
 
 type channelArgs struct {
-	// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	CryptoKeyName *string `pulumi:"cryptoKeyName"`
 	// The location for the resource
-	Location string `pulumi:"location"`
-	// Required. The resource name of the channel. Must be unique within the location on the project.
 	//
 	// ***
+	Location string `pulumi:"location"`
+	// The resource name of the channel. Must be unique within the location on the project.
 	Name *string `pulumi:"name"`
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
 	ThirdPartyProvider *string `pulumi:"thirdPartyProvider"`
@@ -238,15 +214,16 @@ type channelArgs struct {
 
 // The set of arguments for constructing a Channel resource.
 type ChannelArgs struct {
-	// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	CryptoKeyName pulumi.StringPtrInput
 	// The location for the resource
-	Location pulumi.StringInput
-	// Required. The resource name of the channel. Must be unique within the location on the project.
 	//
 	// ***
+	Location pulumi.StringInput
+	// The resource name of the channel. Must be unique within the location on the project.
 	Name pulumi.StringPtrInput
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
 	ThirdPartyProvider pulumi.StringPtrInput
@@ -339,44 +316,45 @@ func (o ChannelOutput) ToChannelOutputWithContext(ctx context.Context) ChannelOu
 	return o
 }
 
-// Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
+// The activation token for the channel. The token must be used by the provider to register the channel for publishing.
 func (o ChannelOutput) ActivationToken() pulumi.StringOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.ActivationToken }).(pulumi.StringOutput)
 }
 
-// Output only. The creation time.
+// The creation time.
 func (o ChannelOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 func (o ChannelOutput) CryptoKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringPtrOutput { return v.CryptoKeyName }).(pulumi.StringPtrOutput)
 }
 
 // The location for the resource
+//
+// ***
 func (o ChannelOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Required. The resource name of the channel. Must be unique within the location on the project.
-//
-// ***
+// The resource name of the channel. Must be unique within the location on the project.
 func (o ChannelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The project for the resource
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o ChannelOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
+// The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
 func (o ChannelOutput) PubsubTopic() pulumi.StringOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.PubsubTopic }).(pulumi.StringOutput)
 }
 
-// Output only. The state of a Channel. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE, INACTIVE
+// The state of a Channel.
 func (o ChannelOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
@@ -386,12 +364,12 @@ func (o ChannelOutput) ThirdPartyProvider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringPtrOutput { return v.ThirdPartyProvider }).(pulumi.StringPtrOutput)
 }
 
-// Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+// Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 func (o ChannelOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }
 
-// Output only. The last-modified time.
+// The last-modified time.
 func (o ChannelOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

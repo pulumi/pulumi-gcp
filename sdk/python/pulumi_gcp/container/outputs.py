@@ -6746,7 +6746,7 @@ class ClusterMonitoringConfig(dict):
                  managed_prometheus: Optional['outputs.ClusterMonitoringConfigManagedPrometheus'] = None):
         """
         :param 'ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs' advanced_datapath_observability_config: Configuration for Advanced Datapath Monitoring. Structure is documented below.
-        :param Sequence[str] enable_components: The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET`, `CADVISOR` and `DCGM`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
+        :param Sequence[str] enable_components: The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET`, `CADVISOR`, `DCGM` and `JOBSET`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above. `JOBSET` is only supported in GKE 1.32.1-gke.1357001 and above.
         :param 'ClusterMonitoringConfigManagedPrometheusArgs' managed_prometheus: Configuration for Managed Service for Prometheus. Structure is documented below.
         """
         if advanced_datapath_observability_config is not None:
@@ -6768,7 +6768,7 @@ class ClusterMonitoringConfig(dict):
     @pulumi.getter(name="enableComponents")
     def enable_components(self) -> Optional[Sequence[str]]:
         """
-        The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET`, `CADVISOR` and `DCGM`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
+        The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET`, `CADVISOR`, `DCGM` and `JOBSET`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above. `JOBSET` is only supported in GKE 1.32.1-gke.1357001 and above.
         """
         return pulumi.get(self, "enable_components")
 
@@ -17790,7 +17790,7 @@ class GetClusterMonitoringConfigResult(dict):
                  managed_prometheuses: Sequence['outputs.GetClusterMonitoringConfigManagedPrometheusResult']):
         """
         :param Sequence['GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs'] advanced_datapath_observability_configs: Configuration of Advanced Datapath Observability features.
-        :param Sequence[str] enable_components: GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET, WORKLOADS, KUBELET, CADVISOR and DCGM.
+        :param Sequence[str] enable_components: GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET, WORKLOADS, KUBELET, CADVISOR, DCGM and JOBSET.
         :param Sequence['GetClusterMonitoringConfigManagedPrometheusArgs'] managed_prometheuses: Configuration for Google Cloud Managed Services for Prometheus.
         """
         pulumi.set(__self__, "advanced_datapath_observability_configs", advanced_datapath_observability_configs)
@@ -17809,7 +17809,7 @@ class GetClusterMonitoringConfigResult(dict):
     @pulumi.getter(name="enableComponents")
     def enable_components(self) -> Sequence[str]:
         """
-        GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET, WORKLOADS, KUBELET, CADVISOR and DCGM.
+        GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET, WORKLOADS, KUBELET, CADVISOR, DCGM and JOBSET.
         """
         return pulumi.get(self, "enable_components")
 

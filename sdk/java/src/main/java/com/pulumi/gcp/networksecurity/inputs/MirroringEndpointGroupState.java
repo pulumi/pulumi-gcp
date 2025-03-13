@@ -18,18 +18,37 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
     public static final MirroringEndpointGroupState Empty = new MirroringEndpointGroupState();
 
     /**
-     * Output only. [Output only] Create time stamp
+     * The timestamp when the resource was created.
+     * See https://google.aip.dev/148#timestamps.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Output only. [Output only] Create time stamp
+     * @return The timestamp when the resource was created.
+     * See https://google.aip.dev/148#timestamps.
      * 
      */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * User-provided description of the endpoint group.
+     * Used as additional context for the endpoint group.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return User-provided description of the endpoint group.
+     * Used as additional context for the endpoint group.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
     }
 
     /**
@@ -48,7 +67,7 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Optional. Labels as key value pairs
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -57,7 +76,7 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels as key value pairs
+     * @return Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -67,14 +86,14 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroup`.
+     * The cloud location of the endpoint group, currently restricted to `global`.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroup`.
+     * @return The cloud location of the endpoint group, currently restricted to `global`.
      * 
      */
     public Optional<Output<String>> location() {
@@ -82,18 +101,18 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Required. Immutable. The Mirroring Deployment Group that this resource is connected to. Format
-     * is:
-     * `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+     * The deployment group that this DIRECT endpoint group is connected to, for example:
+     * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
      * 
      */
     @Import(name="mirroringDeploymentGroup")
     private @Nullable Output<String> mirroringDeploymentGroup;
 
     /**
-     * @return Required. Immutable. The Mirroring Deployment Group that this resource is connected to. Format
-     * is:
-     * `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+     * @return The deployment group that this DIRECT endpoint group is connected to, for example:
+     * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
      * 
      */
     public Optional<Output<String>> mirroringDeploymentGroup() {
@@ -101,9 +120,8 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Required. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * mirroring_endpoint_group_id from the method_signature of Create RPC
+     * The ID to use for the endpoint group, which will become the final component
+     * of the endpoint group&#39;s resource name.
      * 
      * ***
      * 
@@ -112,9 +130,8 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
     private @Nullable Output<String> mirroringEndpointGroupId;
 
     /**
-     * @return Required. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * mirroring_endpoint_group_id from the method_signature of Create RPC
+     * @return The ID to use for the endpoint group, which will become the final component
+     * of the endpoint group&#39;s resource name.
      * 
      * ***
      * 
@@ -124,14 +141,18 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Immutable. Identifier. The name of the MirroringEndpointGroup.
+     * The resource name of this endpoint group, for example:
+     * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+     * See https://google.aip.dev/122 for more details.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Immutable. Identifier. The name of the MirroringEndpointGroup.
+     * @return The resource name of this endpoint group, for example:
+     * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+     * See https://google.aip.dev/122 for more details.
      * 
      */
     public Optional<Output<String>> name() {
@@ -173,16 +194,20 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Output only. Whether reconciling is in progress, recommended per
-     * https://google.aip.dev/128.
+     * The current state of the resource does not match the user&#39;s intended state,
+     * and the system is working to reconcile them. This is part of the normal
+     * operation (e.g. adding a new association to the group).
+     * See https://google.aip.dev/128.
      * 
      */
     @Import(name="reconciling")
     private @Nullable Output<Boolean> reconciling;
 
     /**
-     * @return Output only. Whether reconciling is in progress, recommended per
-     * https://google.aip.dev/128.
+     * @return The current state of the resource does not match the user&#39;s intended state,
+     * and the system is working to reconcile them. This is part of the normal
+     * operation (e.g. adding a new association to the group).
+     * See https://google.aip.dev/128.
      * 
      */
     public Optional<Output<Boolean>> reconciling() {
@@ -190,7 +215,8 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Output only. Current state of the endpoint group.
+     * The current state of the endpoint group.
+     * See https://google.aip.dev/216.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -198,13 +224,15 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
      * CREATING
      * DELETING
      * OUT_OF_SYNC
+     * DELETE_FAILED
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return Output only. Current state of the endpoint group.
+     * @return The current state of the endpoint group.
+     * See https://google.aip.dev/216.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -212,6 +240,7 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
      * CREATING
      * DELETING
      * OUT_OF_SYNC
+     * DELETE_FAILED
      * 
      */
     public Optional<Output<String>> state() {
@@ -219,14 +248,16 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Output only. [Output only] Update time stamp
+     * The timestamp when the resource was most recently updated.
+     * See https://google.aip.dev/148#timestamps.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return Output only. [Output only] Update time stamp
+     * @return The timestamp when the resource was most recently updated.
+     * See https://google.aip.dev/148#timestamps.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -237,6 +268,7 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
 
     private MirroringEndpointGroupState(MirroringEndpointGroupState $) {
         this.createTime = $.createTime;
+        this.description = $.description;
         this.effectiveLabels = $.effectiveLabels;
         this.labels = $.labels;
         this.location = $.location;
@@ -269,7 +301,8 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param createTime Output only. [Output only] Create time stamp
+         * @param createTime The timestamp when the resource was created.
+         * See https://google.aip.dev/148#timestamps.
          * 
          * @return builder
          * 
@@ -280,13 +313,37 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param createTime Output only. [Output only] Create time stamp
+         * @param createTime The timestamp when the resource was created.
+         * See https://google.aip.dev/148#timestamps.
          * 
          * @return builder
          * 
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param description User-provided description of the endpoint group.
+         * Used as additional context for the endpoint group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description User-provided description of the endpoint group.
+         * Used as additional context for the endpoint group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**
@@ -311,7 +368,7 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs
+         * @param labels Labels are key/value pairs that help to organize and filter resources.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -324,7 +381,7 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs
+         * @param labels Labels are key/value pairs that help to organize and filter resources.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -336,7 +393,7 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroup`.
+         * @param location The cloud location of the endpoint group, currently restricted to `global`.
          * 
          * @return builder
          * 
@@ -347,7 +404,7 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroup`.
+         * @param location The cloud location of the endpoint group, currently restricted to `global`.
          * 
          * @return builder
          * 
@@ -357,9 +414,9 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param mirroringDeploymentGroup Required. Immutable. The Mirroring Deployment Group that this resource is connected to. Format
-         * is:
-         * `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+         * @param mirroringDeploymentGroup The deployment group that this DIRECT endpoint group is connected to, for example:
+         * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -370,9 +427,9 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param mirroringDeploymentGroup Required. Immutable. The Mirroring Deployment Group that this resource is connected to. Format
-         * is:
-         * `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+         * @param mirroringDeploymentGroup The deployment group that this DIRECT endpoint group is connected to, for example:
+         * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -382,9 +439,8 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param mirroringEndpointGroupId Required. Id of the requesting object
-         * If auto-generating Id server-side, remove this field and
-         * mirroring_endpoint_group_id from the method_signature of Create RPC
+         * @param mirroringEndpointGroupId The ID to use for the endpoint group, which will become the final component
+         * of the endpoint group&#39;s resource name.
          * 
          * ***
          * 
@@ -397,9 +453,8 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param mirroringEndpointGroupId Required. Id of the requesting object
-         * If auto-generating Id server-side, remove this field and
-         * mirroring_endpoint_group_id from the method_signature of Create RPC
+         * @param mirroringEndpointGroupId The ID to use for the endpoint group, which will become the final component
+         * of the endpoint group&#39;s resource name.
          * 
          * ***
          * 
@@ -411,7 +466,9 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name Immutable. Identifier. The name of the MirroringEndpointGroup.
+         * @param name The resource name of this endpoint group, for example:
+         * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+         * See https://google.aip.dev/122 for more details.
          * 
          * @return builder
          * 
@@ -422,7 +479,9 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name Immutable. Identifier. The name of the MirroringEndpointGroup.
+         * @param name The resource name of this endpoint group, for example:
+         * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+         * See https://google.aip.dev/122 for more details.
          * 
          * @return builder
          * 
@@ -478,8 +537,10 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param reconciling Output only. Whether reconciling is in progress, recommended per
-         * https://google.aip.dev/128.
+         * @param reconciling The current state of the resource does not match the user&#39;s intended state,
+         * and the system is working to reconcile them. This is part of the normal
+         * operation (e.g. adding a new association to the group).
+         * See https://google.aip.dev/128.
          * 
          * @return builder
          * 
@@ -490,8 +551,10 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param reconciling Output only. Whether reconciling is in progress, recommended per
-         * https://google.aip.dev/128.
+         * @param reconciling The current state of the resource does not match the user&#39;s intended state,
+         * and the system is working to reconcile them. This is part of the normal
+         * operation (e.g. adding a new association to the group).
+         * See https://google.aip.dev/128.
          * 
          * @return builder
          * 
@@ -501,7 +564,8 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param state Output only. Current state of the endpoint group.
+         * @param state The current state of the endpoint group.
+         * See https://google.aip.dev/216.
          * Possible values:
          * STATE_UNSPECIFIED
          * ACTIVE
@@ -509,6 +573,7 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
          * CREATING
          * DELETING
          * OUT_OF_SYNC
+         * DELETE_FAILED
          * 
          * @return builder
          * 
@@ -519,7 +584,8 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param state Output only. Current state of the endpoint group.
+         * @param state The current state of the endpoint group.
+         * See https://google.aip.dev/216.
          * Possible values:
          * STATE_UNSPECIFIED
          * ACTIVE
@@ -527,6 +593,7 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
          * CREATING
          * DELETING
          * OUT_OF_SYNC
+         * DELETE_FAILED
          * 
          * @return builder
          * 
@@ -536,7 +603,8 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param updateTime Output only. [Output only] Update time stamp
+         * @param updateTime The timestamp when the resource was most recently updated.
+         * See https://google.aip.dev/148#timestamps.
          * 
          * @return builder
          * 
@@ -547,7 +615,8 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param updateTime Output only. [Output only] Update time stamp
+         * @param updateTime The timestamp when the resource was most recently updated.
+         * See https://google.aip.dev/148#timestamps.
          * 
          * @return builder
          * 

@@ -33,7 +33,8 @@ class CryptoKeyVersionArgs:
                - - -
         :param pulumi.Input['CryptoKeyVersionExternalProtectionLevelOptionsArgs'] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
                Structure is documented below.
-        :param pulumi.Input[str] state: The current state of the CryptoKeyVersion.
+        :param pulumi.Input[str] state: The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
+               otherwise the value of this field is always retrieved automatically.
                Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         """
         pulumi.set(__self__, "crypto_key", crypto_key)
@@ -75,7 +76,8 @@ class CryptoKeyVersionArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        The current state of the CryptoKeyVersion.
+        The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
+        otherwise the value of this field is always retrieved automatically.
         Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         """
         return pulumi.get(self, "state")
@@ -112,7 +114,8 @@ class _CryptoKeyVersionState:
         :param pulumi.Input[str] generate_time: The time this CryptoKeyVersion key material was generated
         :param pulumi.Input[str] name: The resource name for this CryptoKeyVersion.
         :param pulumi.Input[str] protection_level: The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
-        :param pulumi.Input[str] state: The current state of the CryptoKeyVersion.
+        :param pulumi.Input[str] state: The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
+               otherwise the value of this field is always retrieved automatically.
                Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         """
         if algorithm is not None:
@@ -227,7 +230,8 @@ class _CryptoKeyVersionState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        The current state of the CryptoKeyVersion.
+        The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
+        otherwise the value of this field is always retrieved automatically.
         Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         """
         return pulumi.get(self, "state")
@@ -296,7 +300,8 @@ class CryptoKeyVersion(pulumi.CustomResource):
                - - -
         :param pulumi.Input[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict']] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
                Structure is documented below.
-        :param pulumi.Input[str] state: The current state of the CryptoKeyVersion.
+        :param pulumi.Input[str] state: The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
+               otherwise the value of this field is always retrieved automatically.
                Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         """
         ...
@@ -422,7 +427,8 @@ class CryptoKeyVersion(pulumi.CustomResource):
         :param pulumi.Input[str] generate_time: The time this CryptoKeyVersion key material was generated
         :param pulumi.Input[str] name: The resource name for this CryptoKeyVersion.
         :param pulumi.Input[str] protection_level: The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
-        :param pulumi.Input[str] state: The current state of the CryptoKeyVersion.
+        :param pulumi.Input[str] state: The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
+               otherwise the value of this field is always retrieved automatically.
                Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -506,7 +512,8 @@ class CryptoKeyVersion(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        The current state of the CryptoKeyVersion.
+        The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
+        otherwise the value of this field is always retrieved automatically.
         Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         """
         return pulumi.get(self, "state")

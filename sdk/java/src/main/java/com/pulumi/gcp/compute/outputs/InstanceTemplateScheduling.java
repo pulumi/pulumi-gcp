@@ -104,6 +104,11 @@ public final class InstanceTemplateScheduling {
      * 
      */
     private @Nullable String provisioningModel;
+    /**
+     * @return Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
+     * 
+     */
+    private @Nullable String terminationTime;
 
     private InstanceTemplateScheduling() {}
     /**
@@ -219,6 +224,13 @@ public final class InstanceTemplateScheduling {
     public Optional<String> provisioningModel() {
         return Optional.ofNullable(this.provisioningModel);
     }
+    /**
+     * @return Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
+     * 
+     */
+    public Optional<String> terminationTime() {
+        return Optional.ofNullable(this.terminationTime);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -243,6 +255,7 @@ public final class InstanceTemplateScheduling {
         private @Nullable InstanceTemplateSchedulingOnInstanceStopAction onInstanceStopAction;
         private @Nullable Boolean preemptible;
         private @Nullable String provisioningModel;
+        private @Nullable String terminationTime;
         public Builder() {}
         public Builder(InstanceTemplateScheduling defaults) {
     	      Objects.requireNonNull(defaults);
@@ -260,6 +273,7 @@ public final class InstanceTemplateScheduling {
     	      this.onInstanceStopAction = defaults.onInstanceStopAction;
     	      this.preemptible = defaults.preemptible;
     	      this.provisioningModel = defaults.provisioningModel;
+    	      this.terminationTime = defaults.terminationTime;
         }
 
         @CustomType.Setter
@@ -352,6 +366,12 @@ public final class InstanceTemplateScheduling {
             this.provisioningModel = provisioningModel;
             return this;
         }
+        @CustomType.Setter
+        public Builder terminationTime(@Nullable String terminationTime) {
+
+            this.terminationTime = terminationTime;
+            return this;
+        }
         public InstanceTemplateScheduling build() {
             final var _resultValue = new InstanceTemplateScheduling();
             _resultValue.automaticRestart = automaticRestart;
@@ -368,6 +388,7 @@ public final class InstanceTemplateScheduling {
             _resultValue.onInstanceStopAction = onInstanceStopAction;
             _resultValue.preemptible = preemptible;
             _resultValue.provisioningModel = provisioningModel;
+            _resultValue.terminationTime = terminationTime;
             return _resultValue;
         }
     }

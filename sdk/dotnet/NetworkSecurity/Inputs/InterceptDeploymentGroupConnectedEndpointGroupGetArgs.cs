@@ -14,7 +14,9 @@ namespace Pulumi.Gcp.NetworkSecurity.Inputs
     {
         /// <summary>
         /// (Output)
-        /// Output only. A connected intercept endpoint group.
+        /// The connected endpoint group's resource name, for example:
+        /// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+        /// See https://google.aip.dev/124.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

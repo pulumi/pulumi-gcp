@@ -273,7 +273,7 @@ if not MYPY:
         days_of_weeks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrence_type`, `WEEKLY` and is not applicable otherwise.
-        Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+        Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         hourly_frequency: NotRequired[pulumi.Input[int]]
         """
@@ -313,7 +313,7 @@ class BackupPlanBackupRuleStandardScheduleArgs:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] days_of_months: Specifies days of months like 1, 5, or 14 on which jobs will run.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] days_of_weeks: Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrence_type`, `WEEKLY` and is not applicable otherwise.
-               Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+               Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param pulumi.Input[int] hourly_frequency: Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
                This is required for `recurrence_type`, `HOURLY` and is not applicable otherwise.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] months: Specifies values of months
@@ -392,7 +392,7 @@ class BackupPlanBackupRuleStandardScheduleArgs:
     def days_of_weeks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrence_type`, `WEEKLY` and is not applicable otherwise.
-        Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+        Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         return pulumi.get(self, "days_of_weeks")
 

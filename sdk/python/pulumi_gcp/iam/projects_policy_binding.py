@@ -490,14 +490,6 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
                  target: Optional[pulumi.Input[Union['ProjectsPolicyBindingTargetArgs', 'ProjectsPolicyBindingTargetArgsDict']]] = None,
                  __props__=None):
         """
-        A policy binding to a Project
-
-        To get more information about ProjectsPolicyBinding, see:
-
-        * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/projects.locations.policyBindings)
-        * How-to Guides
-            * [Apply a policy binding](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create#create_binding)
-
         ## Example Usage
 
         ### Iam Projects Policy Binding
@@ -511,16 +503,16 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
         pab_policy = gcp.iam.PrincipalAccessBoundaryPolicy("pab_policy",
             organization="123456789",
             location="global",
-            display_name="test project binding",
+            display_name="binding for all principals in the project",
             principal_access_boundary_policy_id="my-pab-policy")
         wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
         opts = pulumi.ResourceOptions(depends_on=[pab_policy]))
-        my_project_binding = gcp.iam.ProjectsPolicyBinding("my-project-binding",
+        binding_for_all_project_principals = gcp.iam.ProjectsPolicyBinding("binding-for-all-project-principals",
             project=project.project_id,
             location="global",
-            display_name="test project binding",
+            display_name="binding for all principals in the project",
             policy_kind="PRINCIPAL_ACCESS_BOUNDARY",
-            policy_binding_id="test-project-binding",
+            policy_binding_id="binding-for-all-project-principals",
             policy=pab_policy.principal_access_boundary_policy_id.apply(lambda principal_access_boundary_policy_id: f"organizations/123456789/locations/global/principalAccessBoundaryPolicies/{principal_access_boundary_policy_id}"),
             target={
                 "principal_set": f"//cloudresourcemanager.googleapis.com/projects/{project.project_id}",
@@ -584,14 +576,6 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
                  args: ProjectsPolicyBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A policy binding to a Project
-
-        To get more information about ProjectsPolicyBinding, see:
-
-        * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/projects.locations.policyBindings)
-        * How-to Guides
-            * [Apply a policy binding](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create#create_binding)
-
         ## Example Usage
 
         ### Iam Projects Policy Binding
@@ -605,16 +589,16 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
         pab_policy = gcp.iam.PrincipalAccessBoundaryPolicy("pab_policy",
             organization="123456789",
             location="global",
-            display_name="test project binding",
+            display_name="binding for all principals in the project",
             principal_access_boundary_policy_id="my-pab-policy")
         wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
         opts = pulumi.ResourceOptions(depends_on=[pab_policy]))
-        my_project_binding = gcp.iam.ProjectsPolicyBinding("my-project-binding",
+        binding_for_all_project_principals = gcp.iam.ProjectsPolicyBinding("binding-for-all-project-principals",
             project=project.project_id,
             location="global",
-            display_name="test project binding",
+            display_name="binding for all principals in the project",
             policy_kind="PRINCIPAL_ACCESS_BOUNDARY",
-            policy_binding_id="test-project-binding",
+            policy_binding_id="binding-for-all-project-principals",
             policy=pab_policy.principal_access_boundary_policy_id.apply(lambda principal_access_boundary_policy_id: f"organizations/123456789/locations/global/principalAccessBoundaryPolicies/{principal_access_boundary_policy_id}"),
             target={
                 "principal_set": f"//cloudresourcemanager.googleapis.com/projects/{project.project_id}",

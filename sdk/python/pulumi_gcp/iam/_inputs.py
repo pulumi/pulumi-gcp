@@ -703,8 +703,10 @@ if not MYPY:
     class FoldersPolicyBindingTargetArgsDict(TypedDict):
         principal_set: NotRequired[pulumi.Input[str]]
         """
-        Required. Immutable. The resource name of the policy to be bound.
-        The binding parent and policy must belong to the same Organization (or Project).
+        Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+        Examples for each one of the following supported principal set types:
+        * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+        It must be parent by the policy binding's parent (the folder).
 
         - - -
         """
@@ -716,8 +718,10 @@ class FoldersPolicyBindingTargetArgs:
     def __init__(__self__, *,
                  principal_set: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] principal_set: Required. Immutable. The resource name of the policy to be bound.
-               The binding parent and policy must belong to the same Organization (or Project).
+        :param pulumi.Input[str] principal_set: Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+               Examples for each one of the following supported principal set types:
+               * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+               It must be parent by the policy binding's parent (the folder).
                
                - - -
         """
@@ -728,8 +732,10 @@ class FoldersPolicyBindingTargetArgs:
     @pulumi.getter(name="principalSet")
     def principal_set(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. Immutable. The resource name of the policy to be bound.
-        The binding parent and policy must belong to the same Organization (or Project).
+        Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+        Examples for each one of the following supported principal set types:
+        * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+        It must be parent by the policy binding's parent (the folder).
 
         - - -
         """
@@ -836,8 +842,12 @@ if not MYPY:
     class OrganizationsPolicyBindingTargetArgsDict(TypedDict):
         principal_set: NotRequired[pulumi.Input[str]]
         """
-        Required. Immutable. The resource name of the policy to be bound.
-        The binding parent and policy must belong to the same Organization (or Project).
+        Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+        Examples for each one of the following supported principal set types:
+        * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+        * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
+        * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
+        It must be parent by the policy binding's parent (the organization).
 
         - - -
         """
@@ -849,8 +859,12 @@ class OrganizationsPolicyBindingTargetArgs:
     def __init__(__self__, *,
                  principal_set: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] principal_set: Required. Immutable. The resource name of the policy to be bound.
-               The binding parent and policy must belong to the same Organization (or Project).
+        :param pulumi.Input[str] principal_set: Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+               Examples for each one of the following supported principal set types:
+               * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+               * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
+               * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
+               It must be parent by the policy binding's parent (the organization).
                
                - - -
         """
@@ -861,8 +875,12 @@ class OrganizationsPolicyBindingTargetArgs:
     @pulumi.getter(name="principalSet")
     def principal_set(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. Immutable. The resource name of the policy to be bound.
-        The binding parent and policy must belong to the same Organization (or Project).
+        Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+        Examples for each one of the following supported principal set types:
+        * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+        * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
+        * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
+        It must be parent by the policy binding's parent (the organization).
 
         - - -
         """
@@ -1126,8 +1144,13 @@ if not MYPY:
     class ProjectsPolicyBindingTargetArgsDict(TypedDict):
         principal_set: NotRequired[pulumi.Input[str]]
         """
-        Required. Immutable. The resource name of the policy to be bound.
-        The binding parent and policy must belong to the same Organization (or Project).
+        Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+        Examples for each one of the following supported principal set types:
+        * Project:
+        * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+        * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+        * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
+        It must be parent by the policy binding's parent (the project).
 
         - - -
         """
@@ -1139,8 +1162,13 @@ class ProjectsPolicyBindingTargetArgs:
     def __init__(__self__, *,
                  principal_set: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] principal_set: Required. Immutable. The resource name of the policy to be bound.
-               The binding parent and policy must belong to the same Organization (or Project).
+        :param pulumi.Input[str] principal_set: Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+               Examples for each one of the following supported principal set types:
+               * Project:
+               * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+               * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+               * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
+               It must be parent by the policy binding's parent (the project).
                
                - - -
         """
@@ -1151,8 +1179,13 @@ class ProjectsPolicyBindingTargetArgs:
     @pulumi.getter(name="principalSet")
     def principal_set(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. Immutable. The resource name of the policy to be bound.
-        The binding parent and policy must belong to the same Organization (or Project).
+        Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+        Examples for each one of the following supported principal set types:
+        * Project:
+        * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+        * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+        * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
+        It must be parent by the policy binding's parent (the project).
 
         - - -
         """

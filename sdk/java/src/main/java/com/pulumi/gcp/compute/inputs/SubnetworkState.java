@@ -169,6 +169,37 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+     * in EXTERNAL_IPV6_SUBNETWORK_CREATION mode.
+     * Use one of the following formats to specify a sub-PDP when creating an
+     * IPv6 NetLB forwarding rule using BYOIP:
+     * Full resource URL, as in:
+     * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     *   Partial URL, as in:
+     * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * 
+     */
+    @Import(name="ipCollection")
+    private @Nullable Output<String> ipCollection;
+
+    /**
+     * @return Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+     * in EXTERNAL_IPV6_SUBNETWORK_CREATION mode.
+     * Use one of the following formats to specify a sub-PDP when creating an
+     * IPv6 NetLB forwarding rule using BYOIP:
+     * Full resource URL, as in:
+     * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     *   Partial URL, as in:
+     * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * 
+     */
+    public Optional<Output<String>> ipCollection() {
+        return Optional.ofNullable(this.ipCollection);
+    }
+
+    /**
      * The access type of IPv6 address this subnet holds. It&#39;s immutable and can only be specified during creation
      * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
      * cannot enable direct path.
@@ -202,6 +233,29 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> ipv6CidrRange() {
         return Optional.ofNullable(this.ipv6CidrRange);
+    }
+
+    /**
+     * Possible endpoints of this subnetwork. It can be one of the following:
+     * * VM_ONLY: The subnetwork can be used for creating instances and IPv6 addresses with VM endpoint type. Such a subnetwork
+     *   gets external IPv6 ranges from a public delegated prefix and cannot be used to create NetLb.
+     * * VM_AND_FR: The subnetwork can be used for creating both VM instances and Forwarding Rules. It can also be used to reserve
+     *   IPv6 addresses with both VM and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP Pool directly.
+     * 
+     */
+    @Import(name="ipv6GceEndpoint")
+    private @Nullable Output<String> ipv6GceEndpoint;
+
+    /**
+     * @return Possible endpoints of this subnetwork. It can be one of the following:
+     * * VM_ONLY: The subnetwork can be used for creating instances and IPv6 addresses with VM endpoint type. Such a subnetwork
+     *   gets external IPv6 ranges from a public delegated prefix and cannot be used to create NetLb.
+     * * VM_AND_FR: The subnetwork can be used for creating both VM instances and Forwarding Rules. It can also be used to reserve
+     *   IPv6 addresses with both VM and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP Pool directly.
+     * 
+     */
+    public Optional<Output<String>> ipv6GceEndpoint() {
+        return Optional.ofNullable(this.ipv6GceEndpoint);
     }
 
     /**
@@ -518,8 +572,10 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         this.gatewayAddress = $.gatewayAddress;
         this.internalIpv6Prefix = $.internalIpv6Prefix;
         this.ipCidrRange = $.ipCidrRange;
+        this.ipCollection = $.ipCollection;
         this.ipv6AccessType = $.ipv6AccessType;
         this.ipv6CidrRange = $.ipv6CidrRange;
+        this.ipv6GceEndpoint = $.ipv6GceEndpoint;
         this.logConfig = $.logConfig;
         this.name = $.name;
         this.network = $.network;
@@ -752,6 +808,43 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param ipCollection Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+         * in EXTERNAL_IPV6_SUBNETWORK_CREATION mode.
+         * Use one of the following formats to specify a sub-PDP when creating an
+         * IPv6 NetLB forwarding rule using BYOIP:
+         * Full resource URL, as in:
+         * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+         *   Partial URL, as in:
+         * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+         * * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipCollection(@Nullable Output<String> ipCollection) {
+            $.ipCollection = ipCollection;
+            return this;
+        }
+
+        /**
+         * @param ipCollection Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+         * in EXTERNAL_IPV6_SUBNETWORK_CREATION mode.
+         * Use one of the following formats to specify a sub-PDP when creating an
+         * IPv6 NetLB forwarding rule using BYOIP:
+         * Full resource URL, as in:
+         * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+         *   Partial URL, as in:
+         * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+         * * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipCollection(String ipCollection) {
+            return ipCollection(Output.of(ipCollection));
+        }
+
+        /**
          * @param ipv6AccessType The access type of IPv6 address this subnet holds. It&#39;s immutable and can only be specified during creation
          * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
          * cannot enable direct path.
@@ -797,6 +890,35 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ipv6CidrRange(String ipv6CidrRange) {
             return ipv6CidrRange(Output.of(ipv6CidrRange));
+        }
+
+        /**
+         * @param ipv6GceEndpoint Possible endpoints of this subnetwork. It can be one of the following:
+         * * VM_ONLY: The subnetwork can be used for creating instances and IPv6 addresses with VM endpoint type. Such a subnetwork
+         *   gets external IPv6 ranges from a public delegated prefix and cannot be used to create NetLb.
+         * * VM_AND_FR: The subnetwork can be used for creating both VM instances and Forwarding Rules. It can also be used to reserve
+         *   IPv6 addresses with both VM and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP Pool directly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6GceEndpoint(@Nullable Output<String> ipv6GceEndpoint) {
+            $.ipv6GceEndpoint = ipv6GceEndpoint;
+            return this;
+        }
+
+        /**
+         * @param ipv6GceEndpoint Possible endpoints of this subnetwork. It can be one of the following:
+         * * VM_ONLY: The subnetwork can be used for creating instances and IPv6 addresses with VM endpoint type. Such a subnetwork
+         *   gets external IPv6 ranges from a public delegated prefix and cannot be used to create NetLb.
+         * * VM_AND_FR: The subnetwork can be used for creating both VM instances and Forwarding Rules. It can also be used to reserve
+         *   IPv6 addresses with both VM and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP Pool directly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6GceEndpoint(String ipv6GceEndpoint) {
+            return ipv6GceEndpoint(Output.of(ipv6GceEndpoint));
         }
 
         /**

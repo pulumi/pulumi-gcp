@@ -260,7 +260,7 @@ class BackupPlanBackupRuleStandardSchedule(dict):
                Structure is documented below.
         :param Sequence[int] days_of_months: Specifies days of months like 1, 5, or 14 on which jobs will run.
         :param Sequence[str] days_of_weeks: Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrence_type`, `WEEKLY` and is not applicable otherwise.
-               Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+               Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param int hourly_frequency: Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
                This is required for `recurrence_type`, `HOURLY` and is not applicable otherwise.
         :param Sequence[str] months: Specifies values of months
@@ -323,7 +323,7 @@ class BackupPlanBackupRuleStandardSchedule(dict):
     def days_of_weeks(self) -> Optional[Sequence[str]]:
         """
         Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrence_type`, `WEEKLY` and is not applicable otherwise.
-        Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+        Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         return pulumi.get(self, "days_of_weeks")
 
@@ -751,7 +751,7 @@ class GetBackupPlanBackupRuleStandardScheduleResult(dict):
         :param Sequence['GetBackupPlanBackupRuleStandardScheduleBackupWindowArgs'] backup_windows: A BackupWindow defines the window of the day during which backup jobs will run. Jobs are queued at the beginning of the window and will be marked as
                'NOT_RUN' if they do not start by the end of the window.
         :param Sequence[int] days_of_months: Specifies days of months like 1, 5, or 14 on which jobs will run.
-        :param Sequence[str] days_of_weeks: Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for 'recurrence_type', 'WEEKLY' and is not applicable otherwise. Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"]
+        :param Sequence[str] days_of_weeks: Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for 'recurrence_type', 'WEEKLY' and is not applicable otherwise. Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
         :param int hourly_frequency: Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
                This is required for 'recurrence_type', 'HOURLY' and is not applicable otherwise.
         :param Sequence[str] months: Specifies values of months Possible values: ["MONTH_UNSPECIFIED", "JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"]
@@ -789,7 +789,7 @@ class GetBackupPlanBackupRuleStandardScheduleResult(dict):
     @pulumi.getter(name="daysOfWeeks")
     def days_of_weeks(self) -> Sequence[str]:
         """
-        Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for 'recurrence_type', 'WEEKLY' and is not applicable otherwise. Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"]
+        Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for 'recurrence_type', 'WEEKLY' and is not applicable otherwise. Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
         """
         return pulumi.get(self, "days_of_weeks")
 

@@ -57,6 +57,7 @@ import javax.annotation.Nullable;
  *             .mirroringDeploymentGroupId("example-dg")
  *             .location("global")
  *             .network(network.id())
+ *             .description("some description")
  *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
@@ -94,7 +95,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup")
 public class MirroringDeploymentGroup extends com.pulumi.resources.CustomResource {
     /**
-     * Output only. The list of Mirroring Endpoint Groups that are connected to this resource.
+     * The list of endpoint groups that are connected to this resource.
      * Structure is documented below.
      * 
      */
@@ -102,7 +103,7 @@ public class MirroringDeploymentGroup extends com.pulumi.resources.CustomResourc
     private Output<List<MirroringDeploymentGroupConnectedEndpointGroup>> connectedEndpointGroups;
 
     /**
-     * @return Output only. The list of Mirroring Endpoint Groups that are connected to this resource.
+     * @return The list of endpoint groups that are connected to this resource.
      * Structure is documented below.
      * 
      */
@@ -110,18 +111,36 @@ public class MirroringDeploymentGroup extends com.pulumi.resources.CustomResourc
         return this.connectedEndpointGroups;
     }
     /**
-     * Output only. [Output only] Create time stamp
+     * The timestamp when the resource was created.
+     * See https://google.aip.dev/148#timestamps.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Output only. [Output only] Create time stamp
+     * @return The timestamp when the resource was created.
+     * See https://google.aip.dev/148#timestamps.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * User-provided description of the deployment group.
+     * Used as additional context for the deployment group.
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> description;
+
+    /**
+     * @return User-provided description of the deployment group.
+     * Used as additional context for the deployment group.
+     * 
+     */
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
     }
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -138,7 +157,7 @@ public class MirroringDeploymentGroup extends com.pulumi.resources.CustomResourc
         return this.effectiveLabels;
     }
     /**
-     * Optional. Labels as key value pairs
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -147,7 +166,7 @@ public class MirroringDeploymentGroup extends com.pulumi.resources.CustomResourc
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels as key value pairs
+     * @return Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -156,23 +175,22 @@ public class MirroringDeploymentGroup extends com.pulumi.resources.CustomResourc
         return Codegen.optional(this.labels);
     }
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringDeploymentGroup`.
+     * The cloud location of the deployment group, currently restricted to `global`.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
-     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringDeploymentGroup`.
+     * @return The cloud location of the deployment group, currently restricted to `global`.
      * 
      */
     public Output<String> location() {
         return this.location;
     }
     /**
-     * Required. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * mirroring_deployment_group_id from the method_signature of Create RPC
+     * The ID to use for the new deployment group, which will become the final
+     * component of the deployment group&#39;s resource name.
      * 
      * ***
      * 
@@ -181,9 +199,8 @@ public class MirroringDeploymentGroup extends com.pulumi.resources.CustomResourc
     private Output<String> mirroringDeploymentGroupId;
 
     /**
-     * @return Required. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * mirroring_deployment_group_id from the method_signature of Create RPC
+     * @return The ID to use for the new deployment group, which will become the final
+     * component of the deployment group&#39;s resource name.
      * 
      * ***
      * 
@@ -193,7 +210,9 @@ public class MirroringDeploymentGroup extends com.pulumi.resources.CustomResourc
     }
     /**
      * (Output)
-     * Output only. A connected mirroring endpoint group.
+     * The connected endpoint group&#39;s resource name, for example:
+     * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+     * See https://google.aip.dev/124.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
@@ -201,23 +220,27 @@ public class MirroringDeploymentGroup extends com.pulumi.resources.CustomResourc
 
     /**
      * @return (Output)
-     * Output only. A connected mirroring endpoint group.
+     * The connected endpoint group&#39;s resource name, for example:
+     * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+     * See https://google.aip.dev/124.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Required. Immutable. The network that is being used for the deployment. Format is:
-     * projects/{project}/global/networks/{network}.
+     * The network that will be used for all child deployments, for example:
+     * `projects/{project}/global/networks/{network}`.
+     * See https://google.aip.dev/124.
      * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
-     * @return Required. Immutable. The network that is being used for the deployment. Format is:
-     * projects/{project}/global/networks/{network}.
+     * @return The network that will be used for all child deployments, for example:
+     * `projects/{project}/global/networks/{network}`.
+     * See https://google.aip.dev/124.
      * 
      */
     public Output<String> network() {
@@ -256,23 +279,28 @@ public class MirroringDeploymentGroup extends com.pulumi.resources.CustomResourc
         return this.pulumiLabels;
     }
     /**
-     * Output only. Whether reconciling is in progress, recommended per
-     * https://google.aip.dev/128.
+     * The current state of the resource does not match the user&#39;s intended state,
+     * and the system is working to reconcile them. This is part of the normal
+     * operation (e.g. adding a new deployment to the group)
+     * See https://google.aip.dev/128.
      * 
      */
     @Export(name="reconciling", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> reconciling;
 
     /**
-     * @return Output only. Whether reconciling is in progress, recommended per
-     * https://google.aip.dev/128.
+     * @return The current state of the resource does not match the user&#39;s intended state,
+     * and the system is working to reconcile them. This is part of the normal
+     * operation (e.g. adding a new deployment to the group)
+     * See https://google.aip.dev/128.
      * 
      */
     public Output<Boolean> reconciling() {
         return this.reconciling;
     }
     /**
-     * Output only. Current state of the deployment group.
+     * The current state of the deployment group.
+     * See https://google.aip.dev/216.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -284,7 +312,8 @@ public class MirroringDeploymentGroup extends com.pulumi.resources.CustomResourc
     private Output<String> state;
 
     /**
-     * @return Output only. Current state of the deployment group.
+     * @return The current state of the deployment group.
+     * See https://google.aip.dev/216.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -296,14 +325,16 @@ public class MirroringDeploymentGroup extends com.pulumi.resources.CustomResourc
         return this.state;
     }
     /**
-     * Output only. [Output only] Update time stamp
+     * The timestamp when the resource was most recently updated.
+     * See https://google.aip.dev/148#timestamps.
      * 
      */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
-     * @return Output only. [Output only] Update time stamp
+     * @return The timestamp when the resource was most recently updated.
+     * See https://google.aip.dev/148#timestamps.
      * 
      */
     public Output<String> updateTime() {

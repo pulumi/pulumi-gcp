@@ -4948,6 +4948,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "eventarc/googleApiSource",
+  "fqn": "pulumi_gcp.eventarc",
+  "classes": {
+   "gcp:eventarc/googleApiSource:GoogleApiSource": "GoogleApiSource"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "eventarc/googleChannelConfig",
   "fqn": "pulumi_gcp.eventarc",
   "classes": {
@@ -5816,6 +5824,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.iam",
   "classes": {
    "gcp:iam/foldersPolicyBinding:FoldersPolicyBinding": "FoldersPolicyBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iam/oauthClient",
+  "fqn": "pulumi_gcp.iam",
+  "classes": {
+   "gcp:iam/oauthClient:OauthClient": "OauthClient"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iam/oauthClientCredential",
+  "fqn": "pulumi_gcp.iam",
+  "classes": {
+   "gcp:iam/oauthClientCredential:OauthClientCredential": "OauthClientCredential"
   }
  },
  {
@@ -6880,6 +6904,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.networksecurity",
   "classes": {
    "gcp:networksecurity/authzPolicy:AuthzPolicy": "AuthzPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networksecurity/backendAuthenticationConfig",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/backendAuthenticationConfig:BackendAuthenticationConfig": "BackendAuthenticationConfig"
   }
  },
  {

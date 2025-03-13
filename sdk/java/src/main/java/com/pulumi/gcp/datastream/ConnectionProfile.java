@@ -17,6 +17,7 @@ import com.pulumi.gcp.datastream.outputs.ConnectionProfileMysqlProfile;
 import com.pulumi.gcp.datastream.outputs.ConnectionProfileOracleProfile;
 import com.pulumi.gcp.datastream.outputs.ConnectionProfilePostgresqlProfile;
 import com.pulumi.gcp.datastream.outputs.ConnectionProfilePrivateConnectivity;
+import com.pulumi.gcp.datastream.outputs.ConnectionProfileSalesforceProfile;
 import com.pulumi.gcp.datastream.outputs.ConnectionProfileSqlServerProfile;
 import java.lang.Boolean;
 import java.lang.String;
@@ -497,7 +498,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * ConnectionProfile can be imported using any of these accepted formats:
@@ -772,6 +772,22 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
+    }
+    /**
+     * Salesforce profile.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="salesforceProfile", refs={ConnectionProfileSalesforceProfile.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectionProfileSalesforceProfile> salesforceProfile;
+
+    /**
+     * @return Salesforce profile.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ConnectionProfileSalesforceProfile>> salesforceProfile() {
+        return Codegen.optional(this.salesforceProfile);
     }
     /**
      * SQL Server database profile.

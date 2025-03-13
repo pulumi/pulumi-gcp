@@ -12,8 +12,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ProjectsPolicyBindingTarget {
     /**
-     * @return Required. Immutable. The resource name of the policy to be bound.
-     * The binding parent and policy must belong to the same Organization (or Project).
+     * @return Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+     * Examples for each one of the following supported principal set types:
+     * * Project:
+     * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+     * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+     * * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
+     *   It must be parent by the policy binding&#39;s parent (the project).
      * 
      * ***
      * 
@@ -22,8 +27,13 @@ public final class ProjectsPolicyBindingTarget {
 
     private ProjectsPolicyBindingTarget() {}
     /**
-     * @return Required. Immutable. The resource name of the policy to be bound.
-     * The binding parent and policy must belong to the same Organization (or Project).
+     * @return Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+     * Examples for each one of the following supported principal set types:
+     * * Project:
+     * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+     * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+     * * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
+     *   It must be parent by the policy binding&#39;s parent (the project).
      * 
      * ***
      * 

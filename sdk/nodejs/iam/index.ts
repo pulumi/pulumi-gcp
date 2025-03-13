@@ -40,6 +40,16 @@ export const getWorkloadIdentityPoolProvider: typeof import("./getWorkloadIdenti
 export const getWorkloadIdentityPoolProviderOutput: typeof import("./getWorkloadIdentityPoolProvider").getWorkloadIdentityPoolProviderOutput = null as any;
 utilities.lazyLoad(exports, ["getWorkloadIdentityPoolProvider","getWorkloadIdentityPoolProviderOutput"], () => require("./getWorkloadIdentityPoolProvider"));
 
+export { OauthClientArgs, OauthClientState } from "./oauthClient";
+export type OauthClient = import("./oauthClient").OauthClient;
+export const OauthClient: typeof import("./oauthClient").OauthClient = null as any;
+utilities.lazyLoad(exports, ["OauthClient"], () => require("./oauthClient"));
+
+export { OauthClientCredentialArgs, OauthClientCredentialState } from "./oauthClientCredential";
+export type OauthClientCredential = import("./oauthClientCredential").OauthClientCredential;
+export const OauthClientCredential: typeof import("./oauthClientCredential").OauthClientCredential = null as any;
+utilities.lazyLoad(exports, ["OauthClientCredential"], () => require("./oauthClientCredential"));
+
 export { OrganizationsPolicyBindingArgs, OrganizationsPolicyBindingState } from "./organizationsPolicyBinding";
 export type OrganizationsPolicyBinding = import("./organizationsPolicyBinding").OrganizationsPolicyBinding;
 export const OrganizationsPolicyBinding: typeof import("./organizationsPolicyBinding").OrganizationsPolicyBinding = null as any;
@@ -86,6 +96,10 @@ const _module = {
                 return new DenyPolicy(name, <any>undefined, { urn })
             case "gcp:iam/foldersPolicyBinding:FoldersPolicyBinding":
                 return new FoldersPolicyBinding(name, <any>undefined, { urn })
+            case "gcp:iam/oauthClient:OauthClient":
+                return new OauthClient(name, <any>undefined, { urn })
+            case "gcp:iam/oauthClientCredential:OauthClientCredential":
+                return new OauthClientCredential(name, <any>undefined, { urn })
             case "gcp:iam/organizationsPolicyBinding:OrganizationsPolicyBinding":
                 return new OrganizationsPolicyBinding(name, <any>undefined, { urn })
             case "gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy":
@@ -108,6 +122,8 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "iam/accessBoundaryPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/denyPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/foldersPolicyBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "iam/oauthClient", _module)
+pulumi.runtime.registerResourceModule("gcp", "iam/oauthClientCredential", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/organizationsPolicyBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/principalAccessBoundaryPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/projectsPolicyBinding", _module)

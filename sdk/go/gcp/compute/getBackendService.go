@@ -79,6 +79,7 @@ type LookupBackendServiceResult struct {
 	ConnectionDrainingTimeoutSec int                               `pulumi:"connectionDrainingTimeoutSec"`
 	ConsistentHash               []GetBackendServiceConsistentHash `pulumi:"consistentHash"`
 	CreationTimestamp            string                            `pulumi:"creationTimestamp"`
+	CustomMetrics                []GetBackendServiceCustomMetric   `pulumi:"customMetrics"`
 	CustomRequestHeaders         []string                          `pulumi:"customRequestHeaders"`
 	CustomResponseHeaders        []string                          `pulumi:"customResponseHeaders"`
 	// Textual description for the Backend Service.
@@ -189,6 +190,10 @@ func (o LookupBackendServiceResultOutput) ConsistentHash() GetBackendServiceCons
 
 func (o LookupBackendServiceResultOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+func (o LookupBackendServiceResultOutput) CustomMetrics() GetBackendServiceCustomMetricArrayOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) []GetBackendServiceCustomMetric { return v.CustomMetrics }).(GetBackendServiceCustomMetricArrayOutput)
 }
 
 func (o LookupBackendServiceResultOutput) CustomRequestHeaders() pulumi.StringArrayOutput {

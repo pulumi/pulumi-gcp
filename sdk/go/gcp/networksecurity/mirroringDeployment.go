@@ -94,6 +94,7 @@ import (
 //				Location:                 pulumi.String("us-central1-a"),
 //				ForwardingRule:           forwardingRule.ID(),
 //				MirroringDeploymentGroup: deploymentGroup.ID(),
+//				Description:              pulumi.String("some description"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -133,30 +134,36 @@ import (
 type MirroringDeployment struct {
 	pulumi.CustomResourceState
 
-	// Output only. [Output only] Create time stamp
+	// The timestamp when the resource was created.
+	// See https://google.aip.dev/148#timestamps.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// User-provided description of the deployment.
+	// Used as additional context for the deployment.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// Required. Immutable. The regional load balancer which the mirrored traffic should be forwarded
-	// to. Format is:
-	// projects/{project}/regions/{region}/forwardingRules/{forwardingRule}
+	// The regional forwarding rule that fronts the mirroring collectors, for
+	// example: `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
+	// See https://google.aip.dev/124.
 	ForwardingRule pulumi.StringOutput `pulumi:"forwardingRule"`
-	// Optional. Labels as key value pairs
+	// Labels are key/value pairs that help to organize and filter resources.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringDeployment`.
+	// The cloud location of the deployment, e.g. `us-central1-a` or `asia-south1-b`.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Required. Immutable. The Mirroring Deployment Group that this resource is part of. Format is:
-	// `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+	// The deployment group that this deployment is a part of, for example:
+	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+	// See https://google.aip.dev/124.
 	MirroringDeploymentGroup pulumi.StringOutput `pulumi:"mirroringDeploymentGroup"`
-	// Required. Id of the requesting object
-	// If auto-generating Id server-side, remove this field and
-	// mirroringDeploymentId from the methodSignature of Create RPC
+	// The ID to use for the new deployment, which will become the final
+	// component of the deployment's resource name.
 	//
 	// ***
 	MirroringDeploymentId pulumi.StringOutput `pulumi:"mirroringDeploymentId"`
-	// Immutable. Identifier. The name of the MirroringDeployment.
+	// The resource name of this deployment, for example:
+	// `projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep`.
+	// See https://google.aip.dev/122 for more details.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -164,10 +171,13 @@ type MirroringDeployment struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// Output only. Whether reconciling is in progress, recommended per
-	// https://google.aip.dev/128.
+	// The current state of the resource does not match the user's intended state,
+	// and the system is working to reconcile them. This part of the normal
+	// operation (e.g. linking a new association to the parent group).
+	// See https://google.aip.dev/128.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
-	// Output only. Current state of the deployment.
+	// The current state of the deployment.
+	// See https://google.aip.dev/216.
 	// Possible values:
 	// STATE_UNSPECIFIED
 	// ACTIVE
@@ -176,7 +186,8 @@ type MirroringDeployment struct {
 	// OUT_OF_SYNC
 	// DELETE_FAILED
 	State pulumi.StringOutput `pulumi:"state"`
-	// Output only. [Output only] Update time stamp
+	// The timestamp when the resource was most recently updated.
+	// See https://google.aip.dev/148#timestamps.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -227,30 +238,36 @@ func GetMirroringDeployment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MirroringDeployment resources.
 type mirroringDeploymentState struct {
-	// Output only. [Output only] Create time stamp
+	// The timestamp when the resource was created.
+	// See https://google.aip.dev/148#timestamps.
 	CreateTime *string `pulumi:"createTime"`
+	// User-provided description of the deployment.
+	// Used as additional context for the deployment.
+	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// Required. Immutable. The regional load balancer which the mirrored traffic should be forwarded
-	// to. Format is:
-	// projects/{project}/regions/{region}/forwardingRules/{forwardingRule}
+	// The regional forwarding rule that fronts the mirroring collectors, for
+	// example: `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
+	// See https://google.aip.dev/124.
 	ForwardingRule *string `pulumi:"forwardingRule"`
-	// Optional. Labels as key value pairs
+	// Labels are key/value pairs that help to organize and filter resources.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringDeployment`.
+	// The cloud location of the deployment, e.g. `us-central1-a` or `asia-south1-b`.
 	Location *string `pulumi:"location"`
-	// Required. Immutable. The Mirroring Deployment Group that this resource is part of. Format is:
-	// `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+	// The deployment group that this deployment is a part of, for example:
+	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+	// See https://google.aip.dev/124.
 	MirroringDeploymentGroup *string `pulumi:"mirroringDeploymentGroup"`
-	// Required. Id of the requesting object
-	// If auto-generating Id server-side, remove this field and
-	// mirroringDeploymentId from the methodSignature of Create RPC
+	// The ID to use for the new deployment, which will become the final
+	// component of the deployment's resource name.
 	//
 	// ***
 	MirroringDeploymentId *string `pulumi:"mirroringDeploymentId"`
-	// Immutable. Identifier. The name of the MirroringDeployment.
+	// The resource name of this deployment, for example:
+	// `projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep`.
+	// See https://google.aip.dev/122 for more details.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -258,10 +275,13 @@ type mirroringDeploymentState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// Output only. Whether reconciling is in progress, recommended per
-	// https://google.aip.dev/128.
+	// The current state of the resource does not match the user's intended state,
+	// and the system is working to reconcile them. This part of the normal
+	// operation (e.g. linking a new association to the parent group).
+	// See https://google.aip.dev/128.
 	Reconciling *bool `pulumi:"reconciling"`
-	// Output only. Current state of the deployment.
+	// The current state of the deployment.
+	// See https://google.aip.dev/216.
 	// Possible values:
 	// STATE_UNSPECIFIED
 	// ACTIVE
@@ -270,35 +290,42 @@ type mirroringDeploymentState struct {
 	// OUT_OF_SYNC
 	// DELETE_FAILED
 	State *string `pulumi:"state"`
-	// Output only. [Output only] Update time stamp
+	// The timestamp when the resource was most recently updated.
+	// See https://google.aip.dev/148#timestamps.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type MirroringDeploymentState struct {
-	// Output only. [Output only] Create time stamp
+	// The timestamp when the resource was created.
+	// See https://google.aip.dev/148#timestamps.
 	CreateTime pulumi.StringPtrInput
+	// User-provided description of the deployment.
+	// Used as additional context for the deployment.
+	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
-	// Required. Immutable. The regional load balancer which the mirrored traffic should be forwarded
-	// to. Format is:
-	// projects/{project}/regions/{region}/forwardingRules/{forwardingRule}
+	// The regional forwarding rule that fronts the mirroring collectors, for
+	// example: `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
+	// See https://google.aip.dev/124.
 	ForwardingRule pulumi.StringPtrInput
-	// Optional. Labels as key value pairs
+	// Labels are key/value pairs that help to organize and filter resources.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringDeployment`.
+	// The cloud location of the deployment, e.g. `us-central1-a` or `asia-south1-b`.
 	Location pulumi.StringPtrInput
-	// Required. Immutable. The Mirroring Deployment Group that this resource is part of. Format is:
-	// `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+	// The deployment group that this deployment is a part of, for example:
+	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+	// See https://google.aip.dev/124.
 	MirroringDeploymentGroup pulumi.StringPtrInput
-	// Required. Id of the requesting object
-	// If auto-generating Id server-side, remove this field and
-	// mirroringDeploymentId from the methodSignature of Create RPC
+	// The ID to use for the new deployment, which will become the final
+	// component of the deployment's resource name.
 	//
 	// ***
 	MirroringDeploymentId pulumi.StringPtrInput
-	// Immutable. Identifier. The name of the MirroringDeployment.
+	// The resource name of this deployment, for example:
+	// `projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep`.
+	// See https://google.aip.dev/122 for more details.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -306,10 +333,13 @@ type MirroringDeploymentState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
-	// Output only. Whether reconciling is in progress, recommended per
-	// https://google.aip.dev/128.
+	// The current state of the resource does not match the user's intended state,
+	// and the system is working to reconcile them. This part of the normal
+	// operation (e.g. linking a new association to the parent group).
+	// See https://google.aip.dev/128.
 	Reconciling pulumi.BoolPtrInput
-	// Output only. Current state of the deployment.
+	// The current state of the deployment.
+	// See https://google.aip.dev/216.
 	// Possible values:
 	// STATE_UNSPECIFIED
 	// ACTIVE
@@ -318,7 +348,8 @@ type MirroringDeploymentState struct {
 	// OUT_OF_SYNC
 	// DELETE_FAILED
 	State pulumi.StringPtrInput
-	// Output only. [Output only] Update time stamp
+	// The timestamp when the resource was most recently updated.
+	// See https://google.aip.dev/148#timestamps.
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -327,22 +358,25 @@ func (MirroringDeploymentState) ElementType() reflect.Type {
 }
 
 type mirroringDeploymentArgs struct {
-	// Required. Immutable. The regional load balancer which the mirrored traffic should be forwarded
-	// to. Format is:
-	// projects/{project}/regions/{region}/forwardingRules/{forwardingRule}
+	// User-provided description of the deployment.
+	// Used as additional context for the deployment.
+	Description *string `pulumi:"description"`
+	// The regional forwarding rule that fronts the mirroring collectors, for
+	// example: `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
+	// See https://google.aip.dev/124.
 	ForwardingRule string `pulumi:"forwardingRule"`
-	// Optional. Labels as key value pairs
+	// Labels are key/value pairs that help to organize and filter resources.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringDeployment`.
+	// The cloud location of the deployment, e.g. `us-central1-a` or `asia-south1-b`.
 	Location string `pulumi:"location"`
-	// Required. Immutable. The Mirroring Deployment Group that this resource is part of. Format is:
-	// `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+	// The deployment group that this deployment is a part of, for example:
+	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+	// See https://google.aip.dev/124.
 	MirroringDeploymentGroup string `pulumi:"mirroringDeploymentGroup"`
-	// Required. Id of the requesting object
-	// If auto-generating Id server-side, remove this field and
-	// mirroringDeploymentId from the methodSignature of Create RPC
+	// The ID to use for the new deployment, which will become the final
+	// component of the deployment's resource name.
 	//
 	// ***
 	MirroringDeploymentId string `pulumi:"mirroringDeploymentId"`
@@ -353,22 +387,25 @@ type mirroringDeploymentArgs struct {
 
 // The set of arguments for constructing a MirroringDeployment resource.
 type MirroringDeploymentArgs struct {
-	// Required. Immutable. The regional load balancer which the mirrored traffic should be forwarded
-	// to. Format is:
-	// projects/{project}/regions/{region}/forwardingRules/{forwardingRule}
+	// User-provided description of the deployment.
+	// Used as additional context for the deployment.
+	Description pulumi.StringPtrInput
+	// The regional forwarding rule that fronts the mirroring collectors, for
+	// example: `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
+	// See https://google.aip.dev/124.
 	ForwardingRule pulumi.StringInput
-	// Optional. Labels as key value pairs
+	// Labels are key/value pairs that help to organize and filter resources.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringDeployment`.
+	// The cloud location of the deployment, e.g. `us-central1-a` or `asia-south1-b`.
 	Location pulumi.StringInput
-	// Required. Immutable. The Mirroring Deployment Group that this resource is part of. Format is:
-	// `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+	// The deployment group that this deployment is a part of, for example:
+	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+	// See https://google.aip.dev/124.
 	MirroringDeploymentGroup pulumi.StringInput
-	// Required. Id of the requesting object
-	// If auto-generating Id server-side, remove this field and
-	// mirroringDeploymentId from the methodSignature of Create RPC
+	// The ID to use for the new deployment, which will become the final
+	// component of the deployment's resource name.
 	//
 	// ***
 	MirroringDeploymentId pulumi.StringInput
@@ -464,9 +501,16 @@ func (o MirroringDeploymentOutput) ToMirroringDeploymentOutputWithContext(ctx co
 	return o
 }
 
-// Output only. [Output only] Create time stamp
+// The timestamp when the resource was created.
+// See https://google.aip.dev/148#timestamps.
 func (o MirroringDeploymentOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirroringDeployment) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// User-provided description of the deployment.
+// Used as additional context for the deployment.
+func (o MirroringDeploymentOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MirroringDeployment) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -474,41 +518,43 @@ func (o MirroringDeploymentOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MirroringDeployment) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// Required. Immutable. The regional load balancer which the mirrored traffic should be forwarded
-// to. Format is:
-// projects/{project}/regions/{region}/forwardingRules/{forwardingRule}
+// The regional forwarding rule that fronts the mirroring collectors, for
+// example: `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
+// See https://google.aip.dev/124.
 func (o MirroringDeploymentOutput) ForwardingRule() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirroringDeployment) pulumi.StringOutput { return v.ForwardingRule }).(pulumi.StringOutput)
 }
 
-// Optional. Labels as key value pairs
+// Labels are key/value pairs that help to organize and filter resources.
 // **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 // Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o MirroringDeploymentOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MirroringDeployment) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringDeployment`.
+// The cloud location of the deployment, e.g. `us-central1-a` or `asia-south1-b`.
 func (o MirroringDeploymentOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirroringDeployment) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Required. Immutable. The Mirroring Deployment Group that this resource is part of. Format is:
-// `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+// The deployment group that this deployment is a part of, for example:
+// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+// See https://google.aip.dev/124.
 func (o MirroringDeploymentOutput) MirroringDeploymentGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirroringDeployment) pulumi.StringOutput { return v.MirroringDeploymentGroup }).(pulumi.StringOutput)
 }
 
-// Required. Id of the requesting object
-// If auto-generating Id server-side, remove this field and
-// mirroringDeploymentId from the methodSignature of Create RPC
+// The ID to use for the new deployment, which will become the final
+// component of the deployment's resource name.
 //
 // ***
 func (o MirroringDeploymentOutput) MirroringDeploymentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirroringDeployment) pulumi.StringOutput { return v.MirroringDeploymentId }).(pulumi.StringOutput)
 }
 
-// Immutable. Identifier. The name of the MirroringDeployment.
+// The resource name of this deployment, for example:
+// `projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep`.
+// See https://google.aip.dev/122 for more details.
 func (o MirroringDeploymentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirroringDeployment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -525,13 +571,16 @@ func (o MirroringDeploymentOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MirroringDeployment) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// Output only. Whether reconciling is in progress, recommended per
-// https://google.aip.dev/128.
+// The current state of the resource does not match the user's intended state,
+// and the system is working to reconcile them. This part of the normal
+// operation (e.g. linking a new association to the parent group).
+// See https://google.aip.dev/128.
 func (o MirroringDeploymentOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *MirroringDeployment) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }
 
-// Output only. Current state of the deployment.
+// The current state of the deployment.
+// See https://google.aip.dev/216.
 // Possible values:
 // STATE_UNSPECIFIED
 // ACTIVE
@@ -543,7 +592,8 @@ func (o MirroringDeploymentOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirroringDeployment) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Output only. [Output only] Update time stamp
+// The timestamp when the resource was most recently updated.
+// See https://google.aip.dev/148#timestamps.
 func (o MirroringDeploymentOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirroringDeployment) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

@@ -26,6 +26,10 @@ class FirewallPolicyAssociationArgs:
         The set of arguments for constructing a FirewallPolicyAssociation resource.
         :param pulumi.Input[str] attachment_target: The target that the firewall policy is attached to.
         :param pulumi.Input[str] firewall_policy: The firewall policy of the resource.
+               This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
+               firewall policy with the flag to override the existing attachmentTarget's policy association.
+               **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
+               on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
                
                
                - - -
@@ -53,6 +57,10 @@ class FirewallPolicyAssociationArgs:
     def firewall_policy(self) -> pulumi.Input[str]:
         """
         The firewall policy of the resource.
+        This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
+        firewall policy with the flag to override the existing attachmentTarget's policy association.
+        **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
+        on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
 
 
         - - -
@@ -87,6 +95,10 @@ class _FirewallPolicyAssociationState:
         Input properties used for looking up and filtering FirewallPolicyAssociation resources.
         :param pulumi.Input[str] attachment_target: The target that the firewall policy is attached to.
         :param pulumi.Input[str] firewall_policy: The firewall policy of the resource.
+               This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
+               firewall policy with the flag to override the existing attachmentTarget's policy association.
+               **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
+               on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
                
                
                - - -
@@ -119,6 +131,10 @@ class _FirewallPolicyAssociationState:
     def firewall_policy(self) -> Optional[pulumi.Input[str]]:
         """
         The firewall policy of the resource.
+        This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
+        firewall policy with the flag to override the existing attachmentTarget's policy association.
+        **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
+        on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
 
 
         - - -
@@ -192,7 +208,6 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
             attachment_target=folder.name,
             name="my-association")
         ```
-
         ## Import
 
         FirewallPolicyAssociation can be imported using any of these accepted formats:
@@ -215,6 +230,10 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] attachment_target: The target that the firewall policy is attached to.
         :param pulumi.Input[str] firewall_policy: The firewall policy of the resource.
+               This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
+               firewall policy with the flag to override the existing attachmentTarget's policy association.
+               **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
+               on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
                
                
                - - -
@@ -255,7 +274,6 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
             attachment_target=folder.name,
             name="my-association")
         ```
-
         ## Import
 
         FirewallPolicyAssociation can be imported using any of these accepted formats:
@@ -332,6 +350,10 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] attachment_target: The target that the firewall policy is attached to.
         :param pulumi.Input[str] firewall_policy: The firewall policy of the resource.
+               This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
+               firewall policy with the flag to override the existing attachmentTarget's policy association.
+               **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
+               on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
                
                
                - - -
@@ -361,6 +383,10 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
     def firewall_policy(self) -> pulumi.Output[str]:
         """
         The firewall policy of the resource.
+        This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
+        firewall policy with the flag to override the existing attachmentTarget's policy association.
+        **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
+        on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
 
 
         - - -

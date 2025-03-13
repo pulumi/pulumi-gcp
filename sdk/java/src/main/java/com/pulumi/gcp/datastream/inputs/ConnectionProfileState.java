@@ -12,6 +12,7 @@ import com.pulumi.gcp.datastream.inputs.ConnectionProfileMysqlProfileArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfileOracleProfileArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfilePostgresqlProfileArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfilePrivateConnectivityArgs;
+import com.pulumi.gcp.datastream.inputs.ConnectionProfileSalesforceProfileArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfileSqlServerProfileArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -290,6 +291,23 @@ public final class ConnectionProfileState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Salesforce profile.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="salesforceProfile")
+    private @Nullable Output<ConnectionProfileSalesforceProfileArgs> salesforceProfile;
+
+    /**
+     * @return Salesforce profile.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConnectionProfileSalesforceProfileArgs>> salesforceProfile() {
+        return Optional.ofNullable(this.salesforceProfile);
+    }
+
+    /**
      * SQL Server database profile.
      * Structure is documented below.
      * 
@@ -325,6 +343,7 @@ public final class ConnectionProfileState extends com.pulumi.resources.ResourceA
         this.privateConnectivity = $.privateConnectivity;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
+        this.salesforceProfile = $.salesforceProfile;
         this.sqlServerProfile = $.sqlServerProfile;
     }
 
@@ -704,6 +723,29 @@ public final class ConnectionProfileState extends com.pulumi.resources.ResourceA
          */
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
             return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
+         * @param salesforceProfile Salesforce profile.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder salesforceProfile(@Nullable Output<ConnectionProfileSalesforceProfileArgs> salesforceProfile) {
+            $.salesforceProfile = salesforceProfile;
+            return this;
+        }
+
+        /**
+         * @param salesforceProfile Salesforce profile.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder salesforceProfile(ConnectionProfileSalesforceProfileArgs salesforceProfile) {
+            return salesforceProfile(Output.of(salesforceProfile));
         }
 
         /**

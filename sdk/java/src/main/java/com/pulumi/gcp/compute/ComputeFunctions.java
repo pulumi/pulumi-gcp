@@ -93,6 +93,8 @@ import com.pulumi.gcp.compute.inputs.GetRegionInstanceTemplateArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionInstanceTemplatePlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionNetworkEndpointGroupArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionNetworkEndpointGroupPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionSSLPolicyArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionSSLPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionSslCertificateArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionSslCertificatePlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionsArgs;
@@ -170,6 +172,7 @@ import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupManagerResult;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupResult;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateResult;
 import com.pulumi.gcp.compute.outputs.GetRegionNetworkEndpointGroupResult;
+import com.pulumi.gcp.compute.outputs.GetRegionSSLPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetRegionSslCertificateResult;
 import com.pulumi.gcp.compute.outputs.GetRegionsResult;
 import com.pulumi.gcp.compute.outputs.GetReservationResult;
@@ -12622,6 +12625,21 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetRegionNetworkEndpointGroupResult> getRegionNetworkEndpointGroupPlain(GetRegionNetworkEndpointGroupPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getRegionNetworkEndpointGroup:getRegionNetworkEndpointGroup", TypeShape.of(GetRegionNetworkEndpointGroupResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetRegionSSLPolicyResult> getRegionSSLPolicy(GetRegionSSLPolicyArgs args) {
+        return getRegionSSLPolicy(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetRegionSSLPolicyResult> getRegionSSLPolicyPlain(GetRegionSSLPolicyPlainArgs args) {
+        return getRegionSSLPolicyPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetRegionSSLPolicyResult> getRegionSSLPolicy(GetRegionSSLPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getRegionSSLPolicy:getRegionSSLPolicy", TypeShape.of(GetRegionSSLPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetRegionSSLPolicyResult> getRegionSSLPolicy(GetRegionSSLPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getRegionSSLPolicy:getRegionSSLPolicy", TypeShape.of(GetRegionSSLPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetRegionSSLPolicyResult> getRegionSSLPolicyPlain(GetRegionSSLPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getRegionSSLPolicy:getRegionSSLPolicy", TypeShape.of(GetRegionSSLPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get info about a Region Google Compute SSL Certificate from its name.

@@ -16,7 +16,7 @@ public final class MirroringEndpointGroupAssociationLocationsDetailArgs extends 
     public static final MirroringEndpointGroupAssociationLocationsDetailArgs Empty = new MirroringEndpointGroupAssociationLocationsDetailArgs();
 
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+     * The cloud location of the association, currently restricted to `global`.
      * 
      * ***
      * 
@@ -25,7 +25,7 @@ public final class MirroringEndpointGroupAssociationLocationsDetailArgs extends 
     private @Nullable Output<String> location;
 
     /**
-     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+     * @return The cloud location of the association, currently restricted to `global`.
      * 
      * ***
      * 
@@ -36,7 +36,7 @@ public final class MirroringEndpointGroupAssociationLocationsDetailArgs extends 
 
     /**
      * (Output)
-     * Output only. The association state in this location.
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -48,7 +48,7 @@ public final class MirroringEndpointGroupAssociationLocationsDetailArgs extends 
 
     /**
      * @return (Output)
-     * Output only. The association state in this location.
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -85,7 +85,7 @@ public final class MirroringEndpointGroupAssociationLocationsDetailArgs extends 
         }
 
         /**
-         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+         * @param location The cloud location of the association, currently restricted to `global`.
          * 
          * ***
          * 
@@ -98,7 +98,7 @@ public final class MirroringEndpointGroupAssociationLocationsDetailArgs extends 
         }
 
         /**
-         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+         * @param location The cloud location of the association, currently restricted to `global`.
          * 
          * ***
          * 
@@ -111,7 +111,7 @@ public final class MirroringEndpointGroupAssociationLocationsDetailArgs extends 
 
         /**
          * @param state (Output)
-         * Output only. The association state in this location.
+         * The current state of the association in this location.
          * Possible values:
          * STATE_UNSPECIFIED
          * ACTIVE
@@ -127,7 +127,7 @@ public final class MirroringEndpointGroupAssociationLocationsDetailArgs extends 
 
         /**
          * @param state (Output)
-         * Output only. The association state in this location.
+         * The current state of the association in this location.
          * Possible values:
          * STATE_UNSPECIFIED
          * ACTIVE

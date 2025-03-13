@@ -84,6 +84,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///         Location = "us-central1-a",
     ///         ForwardingRule = forwardingRule.Id,
     ///         MirroringDeploymentGroup = deploymentGroup.Id,
+    ///         Description = "some description",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -121,10 +122,18 @@ namespace Pulumi.Gcp.NetworkSecurity
     public partial class MirroringDeployment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Output only. [Output only] Create time stamp
+        /// The timestamp when the resource was created.
+        /// See https://google.aip.dev/148#timestamps.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// User-provided description of the deployment.
+        /// Used as additional context for the deployment.
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -133,15 +142,15 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The regional load balancer which the mirrored traffic should be forwarded
-        /// to. Format is:
-        /// projects/{project}/regions/{region}/forwardingRules/{forwardingRule}
+        /// The regional forwarding rule that fronts the mirroring collectors, for
+        /// example: `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
+        /// See https://google.aip.dev/124.
         /// </summary>
         [Output("forwardingRule")]
         public Output<string> ForwardingRule { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Labels as key value pairs
+        /// Labels are key/value pairs that help to organize and filter resources.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -149,22 +158,22 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringDeployment`.
+        /// The cloud location of the deployment, e.g. `us-central1-a` or `asia-south1-b`.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The Mirroring Deployment Group that this resource is part of. Format is:
-        /// `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+        /// The deployment group that this deployment is a part of, for example:
+        /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+        /// See https://google.aip.dev/124.
         /// </summary>
         [Output("mirroringDeploymentGroup")]
         public Output<string> MirroringDeploymentGroup { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Id of the requesting object
-        /// If auto-generating Id server-side, remove this field and
-        /// mirroring_deployment_id from the method_signature of Create RPC
+        /// The ID to use for the new deployment, which will become the final
+        /// component of the deployment's resource name.
         /// 
         /// 
         /// - - -
@@ -173,7 +182,9 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<string> MirroringDeploymentId { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. Identifier. The name of the MirroringDeployment.
+        /// The resource name of this deployment, for example:
+        /// `projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep`.
+        /// See https://google.aip.dev/122 for more details.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -193,14 +204,17 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Whether reconciling is in progress, recommended per
-        /// https://google.aip.dev/128.
+        /// The current state of the resource does not match the user's intended state,
+        /// and the system is working to reconcile them. This part of the normal
+        /// operation (e.g. linking a new association to the parent group).
+        /// See https://google.aip.dev/128.
         /// </summary>
         [Output("reconciling")]
         public Output<bool> Reconciling { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Current state of the deployment.
+        /// The current state of the deployment.
+        /// See https://google.aip.dev/216.
         /// Possible values:
         /// STATE_UNSPECIFIED
         /// ACTIVE
@@ -213,7 +227,8 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. [Output only] Update time stamp
+        /// The timestamp when the resource was most recently updated.
+        /// See https://google.aip.dev/148#timestamps.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -270,9 +285,16 @@ namespace Pulumi.Gcp.NetworkSecurity
     public sealed class MirroringDeploymentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Immutable. The regional load balancer which the mirrored traffic should be forwarded
-        /// to. Format is:
-        /// projects/{project}/regions/{region}/forwardingRules/{forwardingRule}
+        /// User-provided description of the deployment.
+        /// Used as additional context for the deployment.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The regional forwarding rule that fronts the mirroring collectors, for
+        /// example: `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
+        /// See https://google.aip.dev/124.
         /// </summary>
         [Input("forwardingRule", required: true)]
         public Input<string> ForwardingRule { get; set; } = null!;
@@ -281,7 +303,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Labels as key value pairs
+        /// Labels are key/value pairs that help to organize and filter resources.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -292,22 +314,22 @@ namespace Pulumi.Gcp.NetworkSecurity
         }
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringDeployment`.
+        /// The cloud location of the deployment, e.g. `us-central1-a` or `asia-south1-b`.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The Mirroring Deployment Group that this resource is part of. Format is:
-        /// `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+        /// The deployment group that this deployment is a part of, for example:
+        /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+        /// See https://google.aip.dev/124.
         /// </summary>
         [Input("mirroringDeploymentGroup", required: true)]
         public Input<string> MirroringDeploymentGroup { get; set; } = null!;
 
         /// <summary>
-        /// Required. Id of the requesting object
-        /// If auto-generating Id server-side, remove this field and
-        /// mirroring_deployment_id from the method_signature of Create RPC
+        /// The ID to use for the new deployment, which will become the final
+        /// component of the deployment's resource name.
         /// 
         /// 
         /// - - -
@@ -331,10 +353,18 @@ namespace Pulumi.Gcp.NetworkSecurity
     public sealed class MirroringDeploymentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. [Output only] Create time stamp
+        /// The timestamp when the resource was created.
+        /// See https://google.aip.dev/148#timestamps.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// User-provided description of the deployment.
+        /// Used as additional context for the deployment.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;
@@ -353,9 +383,9 @@ namespace Pulumi.Gcp.NetworkSecurity
         }
 
         /// <summary>
-        /// Required. Immutable. The regional load balancer which the mirrored traffic should be forwarded
-        /// to. Format is:
-        /// projects/{project}/regions/{region}/forwardingRules/{forwardingRule}
+        /// The regional forwarding rule that fronts the mirroring collectors, for
+        /// example: `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
+        /// See https://google.aip.dev/124.
         /// </summary>
         [Input("forwardingRule")]
         public Input<string>? ForwardingRule { get; set; }
@@ -364,7 +394,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Labels as key value pairs
+        /// Labels are key/value pairs that help to organize and filter resources.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -375,22 +405,22 @@ namespace Pulumi.Gcp.NetworkSecurity
         }
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringDeployment`.
+        /// The cloud location of the deployment, e.g. `us-central1-a` or `asia-south1-b`.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The Mirroring Deployment Group that this resource is part of. Format is:
-        /// `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+        /// The deployment group that this deployment is a part of, for example:
+        /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+        /// See https://google.aip.dev/124.
         /// </summary>
         [Input("mirroringDeploymentGroup")]
         public Input<string>? MirroringDeploymentGroup { get; set; }
 
         /// <summary>
-        /// Required. Id of the requesting object
-        /// If auto-generating Id server-side, remove this field and
-        /// mirroring_deployment_id from the method_signature of Create RPC
+        /// The ID to use for the new deployment, which will become the final
+        /// component of the deployment's resource name.
         /// 
         /// 
         /// - - -
@@ -399,7 +429,9 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<string>? MirroringDeploymentId { get; set; }
 
         /// <summary>
-        /// Immutable. Identifier. The name of the MirroringDeployment.
+        /// The resource name of this deployment, for example:
+        /// `projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep`.
+        /// See https://google.aip.dev/122 for more details.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -429,14 +461,17 @@ namespace Pulumi.Gcp.NetworkSecurity
         }
 
         /// <summary>
-        /// Output only. Whether reconciling is in progress, recommended per
-        /// https://google.aip.dev/128.
+        /// The current state of the resource does not match the user's intended state,
+        /// and the system is working to reconcile them. This part of the normal
+        /// operation (e.g. linking a new association to the parent group).
+        /// See https://google.aip.dev/128.
         /// </summary>
         [Input("reconciling")]
         public Input<bool>? Reconciling { get; set; }
 
         /// <summary>
-        /// Output only. Current state of the deployment.
+        /// The current state of the deployment.
+        /// See https://google.aip.dev/216.
         /// Possible values:
         /// STATE_UNSPECIFIED
         /// ACTIVE
@@ -449,7 +484,8 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Output only. [Output only] Update time stamp
+        /// The timestamp when the resource was most recently updated.
+        /// See https://google.aip.dev/148#timestamps.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

@@ -417,7 +417,6 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
-    /// 
     /// ## Import
     /// 
     /// ConnectionProfile can be imported using any of these accepted formats:
@@ -553,6 +552,13 @@ namespace Pulumi.Gcp.Datastream
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// Salesforce profile.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("salesforceProfile")]
+        public Output<Outputs.ConnectionProfileSalesforceProfile?> SalesforceProfile { get; private set; } = null!;
 
         /// <summary>
         /// SQL Server database profile.
@@ -709,6 +715,13 @@ namespace Pulumi.Gcp.Datastream
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Salesforce profile.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("salesforceProfile")]
+        public Input<Inputs.ConnectionProfileSalesforceProfileArgs>? SalesforceProfile { get; set; }
+
+        /// <summary>
         /// SQL Server database profile.
         /// Structure is documented below.
         /// </summary>
@@ -857,6 +870,13 @@ namespace Pulumi.Gcp.Datastream
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// Salesforce profile.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("salesforceProfile")]
+        public Input<Inputs.ConnectionProfileSalesforceProfileGetArgs>? SalesforceProfile { get; set; }
 
         /// <summary>
         /// SQL Server database profile.
