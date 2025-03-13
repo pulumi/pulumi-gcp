@@ -18,18 +18,35 @@ public final class MirroringDeploymentArgs extends com.pulumi.resources.Resource
     public static final MirroringDeploymentArgs Empty = new MirroringDeploymentArgs();
 
     /**
-     * Required. Immutable. The regional load balancer which the mirrored traffic should be forwarded
-     * to. Format is:
-     * projects/{project}/regions/{region}/forwardingRules/{forwardingRule}
+     * User-provided description of the deployment.
+     * Used as additional context for the deployment.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return User-provided description of the deployment.
+     * Used as additional context for the deployment.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The regional forwarding rule that fronts the mirroring collectors, for
+     * example: `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
+     * See https://google.aip.dev/124.
      * 
      */
     @Import(name="forwardingRule", required=true)
     private Output<String> forwardingRule;
 
     /**
-     * @return Required. Immutable. The regional load balancer which the mirrored traffic should be forwarded
-     * to. Format is:
-     * projects/{project}/regions/{region}/forwardingRules/{forwardingRule}
+     * @return The regional forwarding rule that fronts the mirroring collectors, for
+     * example: `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
+     * See https://google.aip.dev/124.
      * 
      */
     public Output<String> forwardingRule() {
@@ -37,7 +54,7 @@ public final class MirroringDeploymentArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Optional. Labels as key value pairs
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -46,7 +63,7 @@ public final class MirroringDeploymentArgs extends com.pulumi.resources.Resource
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels as key value pairs
+     * @return Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -56,14 +73,14 @@ public final class MirroringDeploymentArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringDeployment`.
+     * The cloud location of the deployment, e.g. `us-central1-a` or `asia-south1-b`.
      * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
-     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringDeployment`.
+     * @return The cloud location of the deployment, e.g. `us-central1-a` or `asia-south1-b`.
      * 
      */
     public Output<String> location() {
@@ -71,16 +88,18 @@ public final class MirroringDeploymentArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Required. Immutable. The Mirroring Deployment Group that this resource is part of. Format is:
-     * `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+     * The deployment group that this deployment is a part of, for example:
+     * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
      * 
      */
     @Import(name="mirroringDeploymentGroup", required=true)
     private Output<String> mirroringDeploymentGroup;
 
     /**
-     * @return Required. Immutable. The Mirroring Deployment Group that this resource is part of. Format is:
-     * `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+     * @return The deployment group that this deployment is a part of, for example:
+     * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
      * 
      */
     public Output<String> mirroringDeploymentGroup() {
@@ -88,9 +107,8 @@ public final class MirroringDeploymentArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Required. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * mirroring_deployment_id from the method_signature of Create RPC
+     * The ID to use for the new deployment, which will become the final
+     * component of the deployment&#39;s resource name.
      * 
      * ***
      * 
@@ -99,9 +117,8 @@ public final class MirroringDeploymentArgs extends com.pulumi.resources.Resource
     private Output<String> mirroringDeploymentId;
 
     /**
-     * @return Required. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * mirroring_deployment_id from the method_signature of Create RPC
+     * @return The ID to use for the new deployment, which will become the final
+     * component of the deployment&#39;s resource name.
      * 
      * ***
      * 
@@ -130,6 +147,7 @@ public final class MirroringDeploymentArgs extends com.pulumi.resources.Resource
     private MirroringDeploymentArgs() {}
 
     private MirroringDeploymentArgs(MirroringDeploymentArgs $) {
+        this.description = $.description;
         this.forwardingRule = $.forwardingRule;
         this.labels = $.labels;
         this.location = $.location;
@@ -157,9 +175,32 @@ public final class MirroringDeploymentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param forwardingRule Required. Immutable. The regional load balancer which the mirrored traffic should be forwarded
-         * to. Format is:
-         * projects/{project}/regions/{region}/forwardingRules/{forwardingRule}
+         * @param description User-provided description of the deployment.
+         * Used as additional context for the deployment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description User-provided description of the deployment.
+         * Used as additional context for the deployment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
+        /**
+         * @param forwardingRule The regional forwarding rule that fronts the mirroring collectors, for
+         * example: `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -170,9 +211,9 @@ public final class MirroringDeploymentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param forwardingRule Required. Immutable. The regional load balancer which the mirrored traffic should be forwarded
-         * to. Format is:
-         * projects/{project}/regions/{region}/forwardingRules/{forwardingRule}
+         * @param forwardingRule The regional forwarding rule that fronts the mirroring collectors, for
+         * example: `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -182,7 +223,7 @@ public final class MirroringDeploymentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs
+         * @param labels Labels are key/value pairs that help to organize and filter resources.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -195,7 +236,7 @@ public final class MirroringDeploymentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs
+         * @param labels Labels are key/value pairs that help to organize and filter resources.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -207,7 +248,7 @@ public final class MirroringDeploymentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringDeployment`.
+         * @param location The cloud location of the deployment, e.g. `us-central1-a` or `asia-south1-b`.
          * 
          * @return builder
          * 
@@ -218,7 +259,7 @@ public final class MirroringDeploymentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringDeployment`.
+         * @param location The cloud location of the deployment, e.g. `us-central1-a` or `asia-south1-b`.
          * 
          * @return builder
          * 
@@ -228,8 +269,9 @@ public final class MirroringDeploymentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param mirroringDeploymentGroup Required. Immutable. The Mirroring Deployment Group that this resource is part of. Format is:
-         * `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+         * @param mirroringDeploymentGroup The deployment group that this deployment is a part of, for example:
+         * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -240,8 +282,9 @@ public final class MirroringDeploymentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param mirroringDeploymentGroup Required. Immutable. The Mirroring Deployment Group that this resource is part of. Format is:
-         * `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+         * @param mirroringDeploymentGroup The deployment group that this deployment is a part of, for example:
+         * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -251,9 +294,8 @@ public final class MirroringDeploymentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param mirroringDeploymentId Required. Id of the requesting object
-         * If auto-generating Id server-side, remove this field and
-         * mirroring_deployment_id from the method_signature of Create RPC
+         * @param mirroringDeploymentId The ID to use for the new deployment, which will become the final
+         * component of the deployment&#39;s resource name.
          * 
          * ***
          * 
@@ -266,9 +308,8 @@ public final class MirroringDeploymentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param mirroringDeploymentId Required. Id of the requesting object
-         * If auto-generating Id server-side, remove this field and
-         * mirroring_deployment_id from the method_signature of Create RPC
+         * @param mirroringDeploymentId The ID to use for the new deployment, which will become the final
+         * component of the deployment&#39;s resource name.
          * 
          * ***
          * 

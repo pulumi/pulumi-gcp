@@ -18,7 +18,24 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
     public static final MirroringEndpointGroupArgs Empty = new MirroringEndpointGroupArgs();
 
     /**
-     * Optional. Labels as key value pairs
+     * User-provided description of the endpoint group.
+     * Used as additional context for the endpoint group.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return User-provided description of the endpoint group.
+     * Used as additional context for the endpoint group.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -27,7 +44,7 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels as key value pairs
+     * @return Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -37,14 +54,14 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroup`.
+     * The cloud location of the endpoint group, currently restricted to `global`.
      * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
-     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroup`.
+     * @return The cloud location of the endpoint group, currently restricted to `global`.
      * 
      */
     public Output<String> location() {
@@ -52,18 +69,18 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Required. Immutable. The Mirroring Deployment Group that this resource is connected to. Format
-     * is:
-     * `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+     * The deployment group that this DIRECT endpoint group is connected to, for example:
+     * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
      * 
      */
     @Import(name="mirroringDeploymentGroup", required=true)
     private Output<String> mirroringDeploymentGroup;
 
     /**
-     * @return Required. Immutable. The Mirroring Deployment Group that this resource is connected to. Format
-     * is:
-     * `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+     * @return The deployment group that this DIRECT endpoint group is connected to, for example:
+     * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
      * 
      */
     public Output<String> mirroringDeploymentGroup() {
@@ -71,9 +88,8 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Required. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * mirroring_endpoint_group_id from the method_signature of Create RPC
+     * The ID to use for the endpoint group, which will become the final component
+     * of the endpoint group&#39;s resource name.
      * 
      * ***
      * 
@@ -82,9 +98,8 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
     private Output<String> mirroringEndpointGroupId;
 
     /**
-     * @return Required. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * mirroring_endpoint_group_id from the method_signature of Create RPC
+     * @return The ID to use for the endpoint group, which will become the final component
+     * of the endpoint group&#39;s resource name.
      * 
      * ***
      * 
@@ -113,6 +128,7 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
     private MirroringEndpointGroupArgs() {}
 
     private MirroringEndpointGroupArgs(MirroringEndpointGroupArgs $) {
+        this.description = $.description;
         this.labels = $.labels;
         this.location = $.location;
         this.mirroringDeploymentGroup = $.mirroringDeploymentGroup;
@@ -139,7 +155,30 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs
+         * @param description User-provided description of the endpoint group.
+         * Used as additional context for the endpoint group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description User-provided description of the endpoint group.
+         * Used as additional context for the endpoint group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
+        /**
+         * @param labels Labels are key/value pairs that help to organize and filter resources.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -152,7 +191,7 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs
+         * @param labels Labels are key/value pairs that help to organize and filter resources.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -164,7 +203,7 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroup`.
+         * @param location The cloud location of the endpoint group, currently restricted to `global`.
          * 
          * @return builder
          * 
@@ -175,7 +214,7 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroup`.
+         * @param location The cloud location of the endpoint group, currently restricted to `global`.
          * 
          * @return builder
          * 
@@ -185,9 +224,9 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param mirroringDeploymentGroup Required. Immutable. The Mirroring Deployment Group that this resource is connected to. Format
-         * is:
-         * `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+         * @param mirroringDeploymentGroup The deployment group that this DIRECT endpoint group is connected to, for example:
+         * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -198,9 +237,9 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param mirroringDeploymentGroup Required. Immutable. The Mirroring Deployment Group that this resource is connected to. Format
-         * is:
-         * `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+         * @param mirroringDeploymentGroup The deployment group that this DIRECT endpoint group is connected to, for example:
+         * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -210,9 +249,8 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param mirroringEndpointGroupId Required. Id of the requesting object
-         * If auto-generating Id server-side, remove this field and
-         * mirroring_endpoint_group_id from the method_signature of Create RPC
+         * @param mirroringEndpointGroupId The ID to use for the endpoint group, which will become the final component
+         * of the endpoint group&#39;s resource name.
          * 
          * ***
          * 
@@ -225,9 +263,8 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param mirroringEndpointGroupId Required. Id of the requesting object
-         * If auto-generating Id server-side, remove this field and
-         * mirroring_endpoint_group_id from the method_signature of Create RPC
+         * @param mirroringEndpointGroupId The ID to use for the endpoint group, which will become the final component
+         * of the endpoint group&#39;s resource name.
          * 
          * ***
          * 

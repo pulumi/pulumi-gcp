@@ -11,8 +11,8 @@ import java.util.Objects;
 @CustomType
 public final class AlertPolicyConditionConditionSqlBooleanTest {
     /**
-     * @return The name of the column containing the boolean value. If the value
-     * in a row is NULL, that row is ignored.
+     * @return The name of the column containing the boolean value. If the value in a row is
+     * NULL, that row is ignored.
      * 
      * ***
      * 
@@ -21,8 +21,8 @@ public final class AlertPolicyConditionConditionSqlBooleanTest {
 
     private AlertPolicyConditionConditionSqlBooleanTest() {}
     /**
-     * @return The name of the column containing the boolean value. If the value
-     * in a row is NULL, that row is ignored.
+     * @return The name of the column containing the boolean value. If the value in a row is
+     * NULL, that row is ignored.
      * 
      * ***
      * 

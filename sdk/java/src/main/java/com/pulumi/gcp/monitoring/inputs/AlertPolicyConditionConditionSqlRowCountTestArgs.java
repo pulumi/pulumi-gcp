@@ -47,14 +47,14 @@ public final class AlertPolicyConditionConditionSqlRowCountTestArgs extends com.
     }
 
     /**
-     * Test the boolean value in the indicated column.
+     * The value against which to compare the row count.
      * 
      */
     @Import(name="threshold", required=true)
     private Output<Integer> threshold;
 
     /**
-     * @return Test the boolean value in the indicated column.
+     * @return The value against which to compare the row count.
      * 
      */
     public Output<Integer> threshold() {
@@ -124,7 +124,7 @@ public final class AlertPolicyConditionConditionSqlRowCountTestArgs extends com.
         }
 
         /**
-         * @param threshold Test the boolean value in the indicated column.
+         * @param threshold The value against which to compare the row count.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class AlertPolicyConditionConditionSqlRowCountTestArgs extends com.
         }
 
         /**
-         * @param threshold Test the boolean value in the indicated column.
+         * @param threshold The value against which to compare the row count.
          * 
          * @return builder
          * 

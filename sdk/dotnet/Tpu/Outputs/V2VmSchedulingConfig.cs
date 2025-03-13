@@ -21,15 +21,22 @@ namespace Pulumi.Gcp.Tpu.Outputs
         /// Whether the node is created under a reservation.
         /// </summary>
         public readonly bool? Reserved;
+        /// <summary>
+        /// Optional. Defines whether the node is Spot VM.
+        /// </summary>
+        public readonly bool? Spot;
 
         [OutputConstructor]
         private V2VmSchedulingConfig(
             bool? preemptible,
 
-            bool? reserved)
+            bool? reserved,
+
+            bool? spot)
         {
             Preemptible = preemptible;
             Reserved = reserved;
+            Spot = spot;
         }
     }
 }

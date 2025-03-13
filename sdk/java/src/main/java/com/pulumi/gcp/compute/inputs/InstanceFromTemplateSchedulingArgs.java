@@ -231,6 +231,25 @@ public final class InstanceFromTemplateSchedulingArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.provisioningModel);
     }
 
+    /**
+     * Specifies the timestamp, when the instance will be terminated,
+     * in RFC3339 text format. If specified, the instance termination action
+     * will be performed at the termination time.
+     * 
+     */
+    @Import(name="terminationTime")
+    private @Nullable Output<String> terminationTime;
+
+    /**
+     * @return Specifies the timestamp, when the instance will be terminated,
+     * in RFC3339 text format. If specified, the instance termination action
+     * will be performed at the termination time.
+     * 
+     */
+    public Optional<Output<String>> terminationTime() {
+        return Optional.ofNullable(this.terminationTime);
+    }
+
     private InstanceFromTemplateSchedulingArgs() {}
 
     private InstanceFromTemplateSchedulingArgs(InstanceFromTemplateSchedulingArgs $) {
@@ -248,6 +267,7 @@ public final class InstanceFromTemplateSchedulingArgs extends com.pulumi.resourc
         this.onInstanceStopAction = $.onInstanceStopAction;
         this.preemptible = $.preemptible;
         this.provisioningModel = $.provisioningModel;
+        this.terminationTime = $.terminationTime;
     }
 
     public static Builder builder() {
@@ -564,6 +584,31 @@ public final class InstanceFromTemplateSchedulingArgs extends com.pulumi.resourc
          */
         public Builder provisioningModel(String provisioningModel) {
             return provisioningModel(Output.of(provisioningModel));
+        }
+
+        /**
+         * @param terminationTime Specifies the timestamp, when the instance will be terminated,
+         * in RFC3339 text format. If specified, the instance termination action
+         * will be performed at the termination time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terminationTime(@Nullable Output<String> terminationTime) {
+            $.terminationTime = terminationTime;
+            return this;
+        }
+
+        /**
+         * @param terminationTime Specifies the timestamp, when the instance will be terminated,
+         * in RFC3339 text format. If specified, the instance termination action
+         * will be performed at the termination time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terminationTime(String terminationTime) {
+            return terminationTime(Output.of(terminationTime));
         }
 
         public InstanceFromTemplateSchedulingArgs build() {

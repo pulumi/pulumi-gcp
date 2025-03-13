@@ -15,12 +15,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// <summary>
         /// Specifies the balancing mode for this backend.
         /// For global HTTP(S) or TCP/SSL load balancing, the default is
-        /// UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
-        /// and CONNECTION (for TCP/SSL).
+        /// UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S)),
+        /// CUSTOM_METRICS (for HTTP(s)) and CONNECTION (for TCP/SSL).
         /// See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
         /// for an explanation of load balancing modes.
         /// Default value is `UTILIZATION`.
-        /// Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
+        /// Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
         /// </summary>
         [Input("balancingMode")]
         public Input<string>? BalancingMode { get; set; }
@@ -35,6 +35,19 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// </summary>
         [Input("capacityScaler")]
         public Input<double>? CapacityScaler { get; set; }
+
+        [Input("customMetrics")]
+        private InputList<Inputs.BackendServiceBackendCustomMetricGetArgs>? _customMetrics;
+
+        /// <summary>
+        /// The set of custom metrics that are used for &lt;code&gt;CUSTOM_METRICS&lt;/code&gt; BalancingMode.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.BackendServiceBackendCustomMetricGetArgs> CustomMetrics
+        {
+            get => _customMetrics ?? (_customMetrics = new InputList<Inputs.BackendServiceBackendCustomMetricGetArgs>());
+            set => _customMetrics = value;
+        }
 
         /// <summary>
         /// An optional description of this resource.

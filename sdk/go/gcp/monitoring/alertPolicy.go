@@ -204,6 +204,47 @@ import (
 //	}
 //
 // ```
+// ### Monitoring Alert Policy Sql Condition
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/monitoring"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := monitoring.NewAlertPolicy(ctx, "alert_policy", &monitoring.AlertPolicyArgs{
+//				DisplayName: pulumi.String("My Alert Policy"),
+//				Combiner:    pulumi.String("OR"),
+//				Conditions: monitoring.AlertPolicyConditionArray{
+//					&monitoring.AlertPolicyConditionArgs{
+//						DisplayName: pulumi.String("minutes row count"),
+//						ConditionSql: &monitoring.AlertPolicyConditionConditionSqlArgs{
+//							Query: pulumi.String("SELECT severity, resource FROM my_project.global._Default._AllLogs WHERE severity IS NOT NULL"),
+//							Minutes: &monitoring.AlertPolicyConditionConditionSqlMinutesArgs{
+//								Periodicity: pulumi.Int(600),
+//							},
+//							RowCountTest: &monitoring.AlertPolicyConditionConditionSqlRowCountTestArgs{
+//								Comparison: pulumi.String("COMPARISON_GT"),
+//								Threshold:  pulumi.Int(0),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

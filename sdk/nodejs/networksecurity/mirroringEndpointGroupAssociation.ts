@@ -97,7 +97,8 @@ export class MirroringEndpointGroupAssociation extends pulumi.CustomResource {
     }
 
     /**
-     * Output only. [Output only] Create time stamp
+     * The timestamp when the resource was created.
+     * See https://google.aip.dev/148#timestamps.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -105,43 +106,47 @@ export class MirroringEndpointGroupAssociation extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Optional. Labels as key value pairs
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+     * The cloud location of the association, currently restricted to `global`.
      *
      *
      * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Output only. The list of locations that this association is in and its details.
+     * The list of locations where the association is present. This information
+     * is retrieved from the linked endpoint group, and not configured as part
+     * of the association itself.
      * Structure is documented below.
      */
     public /*out*/ readonly locationsDetails!: pulumi.Output<outputs.networksecurity.MirroringEndpointGroupAssociationLocationsDetail[]>;
     /**
-     * Required. Immutable. The Mirroring Endpoint Group that this resource is connected to. Format
-     * is:
-     * `projects/{project}/locations/global/mirroringEndpointGroups/{mirroringEndpointGroup}`
+     * The endpoint group that this association is connected to, for example:
+     * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+     * See https://google.aip.dev/124.
      */
     public readonly mirroringEndpointGroup!: pulumi.Output<string>;
     /**
-     * Optional. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * mirroringEndpointGroupAssociationId from the methodSignature of Create
-     * RPC
+     * The ID to use for the new association, which will become the final
+     * component of the endpoint group's resource name. If not provided, the
+     * server will generate a unique ID.
      */
     public readonly mirroringEndpointGroupAssociationId!: pulumi.Output<string | undefined>;
     /**
-     * Immutable. Identifier. The name of the MirroringEndpointGroupAssociation.
+     * The resource name of this endpoint group association, for example:
+     * `projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association`.
+     * See https://google.aip.dev/122 for more details.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Required. Immutable. The VPC network associated. Format:
-     * projects/{project}/global/networks/{network}.
+     * The VPC network that is associated. for example:
+     * `projects/123456789/global/networks/my-network`.
+     * See https://google.aip.dev/124.
      */
     public readonly network!: pulumi.Output<string>;
     /**
@@ -155,13 +160,15 @@ export class MirroringEndpointGroupAssociation extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Output only. Whether reconciling is in progress, recommended per
-     * https://google.aip.dev/128.
+     * The current state of the resource does not match the user's intended state,
+     * and the system is working to reconcile them. This part of the normal
+     * operation (e.g. adding a new location to the target deployment group).
+     * See https://google.aip.dev/128.
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
      * (Output)
-     * Output only. The association state in this location.
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -169,7 +176,8 @@ export class MirroringEndpointGroupAssociation extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Output only. [Output only] Update time stamp
+     * The timestamp when the resource was most recently updated.
+     * See https://google.aip.dev/148#timestamps.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -238,7 +246,8 @@ export class MirroringEndpointGroupAssociation extends pulumi.CustomResource {
  */
 export interface MirroringEndpointGroupAssociationState {
     /**
-     * Output only. [Output only] Create time stamp
+     * The timestamp when the resource was created.
+     * See https://google.aip.dev/148#timestamps.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -246,43 +255,47 @@ export interface MirroringEndpointGroupAssociationState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Optional. Labels as key value pairs
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+     * The cloud location of the association, currently restricted to `global`.
      *
      *
      * - - -
      */
     location?: pulumi.Input<string>;
     /**
-     * Output only. The list of locations that this association is in and its details.
+     * The list of locations where the association is present. This information
+     * is retrieved from the linked endpoint group, and not configured as part
+     * of the association itself.
      * Structure is documented below.
      */
     locationsDetails?: pulumi.Input<pulumi.Input<inputs.networksecurity.MirroringEndpointGroupAssociationLocationsDetail>[]>;
     /**
-     * Required. Immutable. The Mirroring Endpoint Group that this resource is connected to. Format
-     * is:
-     * `projects/{project}/locations/global/mirroringEndpointGroups/{mirroringEndpointGroup}`
+     * The endpoint group that this association is connected to, for example:
+     * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+     * See https://google.aip.dev/124.
      */
     mirroringEndpointGroup?: pulumi.Input<string>;
     /**
-     * Optional. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * mirroringEndpointGroupAssociationId from the methodSignature of Create
-     * RPC
+     * The ID to use for the new association, which will become the final
+     * component of the endpoint group's resource name. If not provided, the
+     * server will generate a unique ID.
      */
     mirroringEndpointGroupAssociationId?: pulumi.Input<string>;
     /**
-     * Immutable. Identifier. The name of the MirroringEndpointGroupAssociation.
+     * The resource name of this endpoint group association, for example:
+     * `projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association`.
+     * See https://google.aip.dev/122 for more details.
      */
     name?: pulumi.Input<string>;
     /**
-     * Required. Immutable. The VPC network associated. Format:
-     * projects/{project}/global/networks/{network}.
+     * The VPC network that is associated. for example:
+     * `projects/123456789/global/networks/my-network`.
+     * See https://google.aip.dev/124.
      */
     network?: pulumi.Input<string>;
     /**
@@ -296,13 +309,15 @@ export interface MirroringEndpointGroupAssociationState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Output only. Whether reconciling is in progress, recommended per
-     * https://google.aip.dev/128.
+     * The current state of the resource does not match the user's intended state,
+     * and the system is working to reconcile them. This part of the normal
+     * operation (e.g. adding a new location to the target deployment group).
+     * See https://google.aip.dev/128.
      */
     reconciling?: pulumi.Input<boolean>;
     /**
      * (Output)
-     * Output only. The association state in this location.
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -310,7 +325,8 @@ export interface MirroringEndpointGroupAssociationState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Output only. [Output only] Update time stamp
+     * The timestamp when the resource was most recently updated.
+     * See https://google.aip.dev/148#timestamps.
      */
     updateTime?: pulumi.Input<string>;
 }
@@ -320,34 +336,34 @@ export interface MirroringEndpointGroupAssociationState {
  */
 export interface MirroringEndpointGroupAssociationArgs {
     /**
-     * Optional. Labels as key value pairs
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+     * The cloud location of the association, currently restricted to `global`.
      *
      *
      * - - -
      */
     location: pulumi.Input<string>;
     /**
-     * Required. Immutable. The Mirroring Endpoint Group that this resource is connected to. Format
-     * is:
-     * `projects/{project}/locations/global/mirroringEndpointGroups/{mirroringEndpointGroup}`
+     * The endpoint group that this association is connected to, for example:
+     * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+     * See https://google.aip.dev/124.
      */
     mirroringEndpointGroup: pulumi.Input<string>;
     /**
-     * Optional. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * mirroringEndpointGroupAssociationId from the methodSignature of Create
-     * RPC
+     * The ID to use for the new association, which will become the final
+     * component of the endpoint group's resource name. If not provided, the
+     * server will generate a unique ID.
      */
     mirroringEndpointGroupAssociationId?: pulumi.Input<string>;
     /**
-     * Required. Immutable. The VPC network associated. Format:
-     * projects/{project}/global/networks/{network}.
+     * The VPC network that is associated. for example:
+     * `projects/123456789/global/networks/my-network`.
+     * See https://google.aip.dev/124.
      */
     network: pulumi.Input<string>;
     /**

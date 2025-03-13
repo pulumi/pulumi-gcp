@@ -458,7 +458,6 @@ import (
 //	}
 //
 // ```
-//
 // ## Import
 //
 // ConnectionProfile can be imported using any of these accepted formats:
@@ -529,6 +528,9 @@ type ConnectionProfile struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// Salesforce profile.
+	// Structure is documented below.
+	SalesforceProfile ConnectionProfileSalesforceProfilePtrOutput `pulumi:"salesforceProfile"`
 	// SQL Server database profile.
 	// Structure is documented below.
 	SqlServerProfile ConnectionProfileSqlServerProfilePtrOutput `pulumi:"sqlServerProfile"`
@@ -622,6 +624,9 @@ type connectionProfileState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// Salesforce profile.
+	// Structure is documented below.
+	SalesforceProfile *ConnectionProfileSalesforceProfile `pulumi:"salesforceProfile"`
 	// SQL Server database profile.
 	// Structure is documented below.
 	SqlServerProfile *ConnectionProfileSqlServerProfile `pulumi:"sqlServerProfile"`
@@ -672,6 +677,9 @@ type ConnectionProfileState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// Salesforce profile.
+	// Structure is documented below.
+	SalesforceProfile ConnectionProfileSalesforceProfilePtrInput
 	// SQL Server database profile.
 	// Structure is documented below.
 	SqlServerProfile ConnectionProfileSqlServerProfilePtrInput
@@ -719,6 +727,9 @@ type connectionProfileArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Salesforce profile.
+	// Structure is documented below.
+	SalesforceProfile *ConnectionProfileSalesforceProfile `pulumi:"salesforceProfile"`
 	// SQL Server database profile.
 	// Structure is documented below.
 	SqlServerProfile *ConnectionProfileSqlServerProfile `pulumi:"sqlServerProfile"`
@@ -763,6 +774,9 @@ type ConnectionProfileArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Salesforce profile.
+	// Structure is documented below.
+	SalesforceProfile ConnectionProfileSalesforceProfilePtrInput
 	// SQL Server database profile.
 	// Structure is documented below.
 	SqlServerProfile ConnectionProfileSqlServerProfilePtrInput
@@ -947,6 +961,12 @@ func (o ConnectionProfileOutput) Project() pulumi.StringOutput {
 // and default labels configured on the provider.
 func (o ConnectionProfileOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// Salesforce profile.
+// Structure is documented below.
+func (o ConnectionProfileOutput) SalesforceProfile() ConnectionProfileSalesforceProfilePtrOutput {
+	return o.ApplyT(func(v *ConnectionProfile) ConnectionProfileSalesforceProfilePtrOutput { return v.SalesforceProfile }).(ConnectionProfileSalesforceProfilePtrOutput)
 }
 
 // SQL Server database profile.

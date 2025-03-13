@@ -81,6 +81,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Describe the type of preemptible VM.
         /// </summary>
         public readonly string ProvisioningModel;
+        /// <summary>
+        /// Specifies the timestamp, when the instance will be terminated,
+        /// in RFC3339 text format. If specified, the instance termination action
+        /// will be performed at the termination time.
+        /// </summary>
+        public readonly string TerminationTime;
 
         [OutputConstructor]
         private GetInstanceTemplateSchedulingResult(
@@ -110,7 +116,9 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             bool preemptible,
 
-            string provisioningModel)
+            string provisioningModel,
+
+            string terminationTime)
         {
             AutomaticRestart = automaticRestart;
             AvailabilityDomain = availabilityDomain;
@@ -126,6 +134,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             OnInstanceStopActions = onInstanceStopActions;
             Preemptible = preemptible;
             ProvisioningModel = provisioningModel;
+            TerminationTime = terminationTime;
         }
     }
 }

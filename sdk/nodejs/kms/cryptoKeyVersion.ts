@@ -113,7 +113,8 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
      */
     public /*out*/ readonly protectionLevel!: pulumi.Output<string>;
     /**
-     * The current state of the CryptoKeyVersion.
+     * The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
+     * otherwise the value of this field is always retrieved automatically.
      * Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
      */
     public readonly state!: pulumi.Output<string>;
@@ -198,7 +199,8 @@ export interface CryptoKeyVersionState {
      */
     protectionLevel?: pulumi.Input<string>;
     /**
-     * The current state of the CryptoKeyVersion.
+     * The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
+     * otherwise the value of this field is always retrieved automatically.
      * Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
      */
     state?: pulumi.Input<string>;
@@ -222,7 +224,8 @@ export interface CryptoKeyVersionArgs {
      */
     externalProtectionLevelOptions?: pulumi.Input<inputs.kms.CryptoKeyVersionExternalProtectionLevelOptions>;
     /**
-     * The current state of the CryptoKeyVersion.
+     * The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
+     * otherwise the value of this field is always retrieved automatically.
      * Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
      */
     state?: pulumi.Input<string>;

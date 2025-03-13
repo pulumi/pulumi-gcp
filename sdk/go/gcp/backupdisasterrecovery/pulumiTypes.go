@@ -380,7 +380,7 @@ type BackupPlanBackupRuleStandardSchedule struct {
 	// Specifies days of months like 1, 5, or 14 on which jobs will run.
 	DaysOfMonths []int `pulumi:"daysOfMonths"`
 	// Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrenceType`, `WEEKLY` and is not applicable otherwise.
-	// Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+	// Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DaysOfWeeks []string `pulumi:"daysOfWeeks"`
 	// Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
 	// This is required for `recurrenceType`, `HOURLY` and is not applicable otherwise.
@@ -417,7 +417,7 @@ type BackupPlanBackupRuleStandardScheduleArgs struct {
 	// Specifies days of months like 1, 5, or 14 on which jobs will run.
 	DaysOfMonths pulumi.IntArrayInput `pulumi:"daysOfMonths"`
 	// Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrenceType`, `WEEKLY` and is not applicable otherwise.
-	// Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+	// Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DaysOfWeeks pulumi.StringArrayInput `pulumi:"daysOfWeeks"`
 	// Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
 	// This is required for `recurrenceType`, `HOURLY` and is not applicable otherwise.
@@ -476,7 +476,7 @@ func (o BackupPlanBackupRuleStandardScheduleOutput) DaysOfMonths() pulumi.IntArr
 }
 
 // Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrenceType`, `WEEKLY` and is not applicable otherwise.
-// Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+// Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o BackupPlanBackupRuleStandardScheduleOutput) DaysOfWeeks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BackupPlanBackupRuleStandardSchedule) []string { return v.DaysOfWeeks }).(pulumi.StringArrayOutput)
 }
@@ -1545,7 +1545,7 @@ type GetBackupPlanBackupRuleStandardSchedule struct {
 	BackupWindows []GetBackupPlanBackupRuleStandardScheduleBackupWindow `pulumi:"backupWindows"`
 	// Specifies days of months like 1, 5, or 14 on which jobs will run.
 	DaysOfMonths []int `pulumi:"daysOfMonths"`
-	// Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for 'recurrence_type', 'WEEKLY' and is not applicable otherwise. Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"]
+	// Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for 'recurrence_type', 'WEEKLY' and is not applicable otherwise. Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
 	DaysOfWeeks []string `pulumi:"daysOfWeeks"`
 	// Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
 	// This is required for 'recurrence_type', 'HOURLY' and is not applicable otherwise.
@@ -1577,7 +1577,7 @@ type GetBackupPlanBackupRuleStandardScheduleArgs struct {
 	BackupWindows GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayInput `pulumi:"backupWindows"`
 	// Specifies days of months like 1, 5, or 14 on which jobs will run.
 	DaysOfMonths pulumi.IntArrayInput `pulumi:"daysOfMonths"`
-	// Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for 'recurrence_type', 'WEEKLY' and is not applicable otherwise. Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"]
+	// Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for 'recurrence_type', 'WEEKLY' and is not applicable otherwise. Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
 	DaysOfWeeks pulumi.StringArrayInput `pulumi:"daysOfWeeks"`
 	// Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
 	// This is required for 'recurrence_type', 'HOURLY' and is not applicable otherwise.
@@ -1656,7 +1656,7 @@ func (o GetBackupPlanBackupRuleStandardScheduleOutput) DaysOfMonths() pulumi.Int
 	return o.ApplyT(func(v GetBackupPlanBackupRuleStandardSchedule) []int { return v.DaysOfMonths }).(pulumi.IntArrayOutput)
 }
 
-// Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for 'recurrence_type', 'WEEKLY' and is not applicable otherwise. Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"]
+// Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for 'recurrence_type', 'WEEKLY' and is not applicable otherwise. Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
 func (o GetBackupPlanBackupRuleStandardScheduleOutput) DaysOfWeeks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBackupPlanBackupRuleStandardSchedule) []string { return v.DaysOfWeeks }).(pulumi.StringArrayOutput)
 }

@@ -12,14 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An IAM Principal Access Boundary Policy resource
-//
-// To get more information about PrincipalAccessBoundaryPolicy, see:
-//
-// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/organizations.locations.principalAccessBoundaryPolicies)
-// * How-to Guides
-//   - [Create and apply Principal Access Boundaries](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create)
-//
 // ## Example Usage
 //
 // ### Iam Principal Access Boundary Policy
@@ -36,12 +28,69 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iam.NewPrincipalAccessBoundaryPolicy(ctx, "my-pab-policy", &iam.PrincipalAccessBoundaryPolicyArgs{
+//			_, err := iam.NewPrincipalAccessBoundaryPolicy(ctx, "pab-policy-for-org", &iam.PrincipalAccessBoundaryPolicyArgs{
 //				Organization:                    pulumi.String("123456789"),
 //				Location:                        pulumi.String("global"),
-//				DisplayName:                     pulumi.String("test pab policy"),
-//				PrincipalAccessBoundaryPolicyId: pulumi.String("test-pab-policy"),
+//				DisplayName:                     pulumi.String("PAB policy for Organization"),
+//				PrincipalAccessBoundaryPolicyId: pulumi.String("pab-policy-for-org"),
 //			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Iam Organizations Policy Binding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/iam"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			pabPolicy, err := iam.NewPrincipalAccessBoundaryPolicy(ctx, "pab_policy", &iam.PrincipalAccessBoundaryPolicyArgs{
+//				Organization:                    pulumi.String("123456789"),
+//				Location:                        pulumi.String("global"),
+//				DisplayName:                     pulumi.String("Binding for all principals in the Organization"),
+//				PrincipalAccessBoundaryPolicyId: pulumi.String("my-pab-policy"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			wait60Seconds, err := time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
+//				CreateDuration: "60s",
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				pabPolicy,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewOrganizationsPolicyBinding(ctx, "my-pab-policy", &iam.OrganizationsPolicyBindingArgs{
+//				Organization:    pulumi.String("123456789"),
+//				Location:        pulumi.String("global"),
+//				DisplayName:     pulumi.String("Binding for all principals in the Organization"),
+//				PolicyKind:      pulumi.String("PRINCIPAL_ACCESS_BOUNDARY"),
+//				PolicyBindingId: pulumi.String("binding-for-all-org-principals"),
+//				Policy: pabPolicy.PrincipalAccessBoundaryPolicyId.ApplyT(func(principalAccessBoundaryPolicyId string) (string, error) {
+//					return fmt.Sprintf("organizations/123456789/locations/global/principalAccessBoundaryPolicies/%v", principalAccessBoundaryPolicyId), nil
+//				}).(pulumi.StringOutput),
+//				Target: &iam.OrganizationsPolicyBindingTargetArgs{
+//					PrincipalSet: pulumi.String("//cloudresourcemanager.googleapis.com/organizations/123456789"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait60Seconds,
+//			}))
 //			if err != nil {
 //				return err
 //			}

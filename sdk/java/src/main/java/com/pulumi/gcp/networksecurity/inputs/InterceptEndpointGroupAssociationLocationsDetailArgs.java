@@ -16,7 +16,7 @@ public final class InterceptEndpointGroupAssociationLocationsDetailArgs extends 
     public static final InterceptEndpointGroupAssociationLocationsDetailArgs Empty = new InterceptEndpointGroupAssociationLocationsDetailArgs();
 
     /**
-     * The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+     * The cloud location of the association, currently restricted to `global`.
      * 
      * ***
      * 
@@ -25,7 +25,7 @@ public final class InterceptEndpointGroupAssociationLocationsDetailArgs extends 
     private @Nullable Output<String> location;
 
     /**
-     * @return The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+     * @return The cloud location of the association, currently restricted to `global`.
      * 
      * ***
      * 
@@ -36,7 +36,7 @@ public final class InterceptEndpointGroupAssociationLocationsDetailArgs extends 
 
     /**
      * (Output)
-     * The association state in this location.
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -48,7 +48,7 @@ public final class InterceptEndpointGroupAssociationLocationsDetailArgs extends 
 
     /**
      * @return (Output)
-     * The association state in this location.
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -85,7 +85,7 @@ public final class InterceptEndpointGroupAssociationLocationsDetailArgs extends 
         }
 
         /**
-         * @param location The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+         * @param location The cloud location of the association, currently restricted to `global`.
          * 
          * ***
          * 
@@ -98,7 +98,7 @@ public final class InterceptEndpointGroupAssociationLocationsDetailArgs extends 
         }
 
         /**
-         * @param location The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+         * @param location The cloud location of the association, currently restricted to `global`.
          * 
          * ***
          * 
@@ -111,7 +111,7 @@ public final class InterceptEndpointGroupAssociationLocationsDetailArgs extends 
 
         /**
          * @param state (Output)
-         * The association state in this location.
+         * The current state of the association in this location.
          * Possible values:
          * STATE_UNSPECIFIED
          * ACTIVE
@@ -127,7 +127,7 @@ public final class InterceptEndpointGroupAssociationLocationsDetailArgs extends 
 
         /**
          * @param state (Output)
-         * The association state in this location.
+         * The current state of the association in this location.
          * Possible values:
          * STATE_UNSPECIFIED
          * ACTIVE

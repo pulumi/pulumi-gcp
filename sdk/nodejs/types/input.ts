@@ -2528,12 +2528,27 @@ export namespace alloydb {
          */
         pscDnsName?: pulumi.Input<string>;
         /**
+         * Configurations for setting up PSC interfaces attached to the instance
+         * which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
+         * Structure is documented below.
+         */
+        pscInterfaceConfigs?: pulumi.Input<pulumi.Input<inputs.alloydb.InstancePscInstanceConfigPscInterfaceConfig>[]>;
+        /**
          * (Output)
          * The service attachment created when Private Service Connect (PSC) is enabled for the instance.
          * The name of the resource will be in the format of
          * `projects/<alloydb-tenant-project-number>/regions/<region-name>/serviceAttachments/<service-attachment-name>`
          */
         serviceAttachmentLink?: pulumi.Input<string>;
+    }
+
+    export interface InstancePscInstanceConfigPscInterfaceConfig {
+        /**
+         * The network attachment resource created in the consumer project to which the PSC interface will be linked.
+         * This is of the format: "projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}".
+         * The network attachment must be in the same region as the instance.
+         */
+        networkAttachmentResource?: pulumi.Input<string>;
     }
 
     export interface InstanceQueryInsightsConfig {
@@ -5131,7 +5146,7 @@ export namespace backupdisasterrecovery {
         daysOfMonths?: pulumi.Input<pulumi.Input<number>[]>;
         /**
          * Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrenceType`, `WEEKLY` and is not applicable otherwise.
-         * Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+         * Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          */
         daysOfWeeks?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -17095,12 +17110,12 @@ export namespace compute {
         /**
          * Specifies the balancing mode for this backend.
          * For global HTTP(S) or TCP/SSL load balancing, the default is
-         * UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
-         * and CONNECTION (for TCP/SSL).
+         * UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S)),
+         * CUSTOM_METRICS (for HTTP(s)) and CONNECTION (for TCP/SSL).
          * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
          * for an explanation of load balancing modes.
          * Default value is `UTILIZATION`.
-         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
+         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
          */
         balancingMode?: pulumi.Input<string>;
         /**
@@ -17112,6 +17127,11 @@ export namespace compute {
          * 0% of its available Capacity. Valid range is [0.0,1.0].
          */
         capacityScaler?: pulumi.Input<number>;
+        /**
+         * The set of custom metrics that are used for <code>CUSTOM_METRICS</code> BalancingMode.
+         * Structure is documented below.
+         */
+        customMetrics?: pulumi.Input<pulumi.Input<inputs.compute.BackendServiceBackendCustomMetric>[]>;
         /**
          * An optional description of this resource.
          * Provide this property when you create the resource.
@@ -17187,6 +17207,30 @@ export namespace compute {
          * CPU utilization target for the group. Valid range is [0.0, 1.0].
          */
         maxUtilization?: pulumi.Input<number>;
+    }
+
+    export interface BackendServiceBackendCustomMetric {
+        /**
+         * If true, the metric data is not used for load balancing.
+         */
+        dryRun: pulumi.Input<boolean>;
+        /**
+         * Optional parameter to define a target utilization for the Custom Metrics
+         * balancing mode. The valid range is <code>[0.0, 1.0]</code>.
+         */
+        maxUtilization?: pulumi.Input<number>;
+        /**
+         * Name of a custom utilization signal. The name must be 1-64 characters
+         * long and match the regular expression a-z? which
+         * means the first character must be a lowercase letter, and all following
+         * characters must be a dash, period, underscore, lowercase letter, or
+         * digit, except the last character, which cannot be a dash, period, or
+         * underscore. For usage guidelines, see Custom Metrics balancing mode. This
+         * field can only be used for a global or regional backend service with the
+         * loadBalancingScheme set to <code>EXTERNAL_MANAGED</code>,
+         * <code>INTERNAL_MANAGED</code> <code>INTERNAL_SELF_MANAGED</code>.
+         */
+        name: pulumi.Input<string>;
     }
 
     export interface BackendServiceCdnPolicy {
@@ -17417,6 +17461,25 @@ export namespace compute {
          * Must be from 0 to 315,576,000,000 inclusive.
          */
         seconds: pulumi.Input<number>;
+    }
+
+    export interface BackendServiceCustomMetric {
+        /**
+         * If true, the metric data is not used for load balancing.
+         */
+        dryRun: pulumi.Input<boolean>;
+        /**
+         * Name of a custom utilization signal. The name must be 1-64 characters
+         * long and match the regular expression a-z? which
+         * means the first character must be a lowercase letter, and all following
+         * characters must be a dash, period, underscore, lowercase letter, or
+         * digit, except the last character, which cannot be a dash, period, or
+         * underscore. For usage guidelines, see Custom Metrics balancing mode. This
+         * field can only be used for a global or regional backend service with the
+         * loadBalancingScheme set to <code>EXTERNAL_MANAGED</code>,
+         * <code>INTERNAL_MANAGED</code> <code>INTERNAL_SELF_MANAGED</code>.
+         */
+        name: pulumi.Input<string>;
     }
 
     export interface BackendServiceIamBindingCondition {
@@ -19385,6 +19448,12 @@ export namespace compute {
          * Whether the instance is spot. If this is set as SPOT.
          */
         provisioningModel?: pulumi.Input<string>;
+        /**
+         * Specifies the timestamp, when the instance will be terminated,
+         * in RFC3339 text format. If specified, the instance termination action
+         * will be performed at the termination time.
+         */
+        terminationTime?: pulumi.Input<string>;
     }
 
     export interface InstanceFromMachineImageSchedulingGracefulShutdown {
@@ -19879,6 +19948,12 @@ export namespace compute {
          * Whether the instance is spot. If this is set as SPOT.
          */
         provisioningModel?: pulumi.Input<string>;
+        /**
+         * Specifies the timestamp, when the instance will be terminated,
+         * in RFC3339 text format. If specified, the instance termination action
+         * will be performed at the termination time.
+         */
+        terminationTime?: pulumi.Input<string>;
     }
 
     export interface InstanceFromTemplateSchedulingGracefulShutdown {
@@ -20544,6 +20619,10 @@ export namespace compute {
          * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
          */
         provisioningModel?: pulumi.Input<string>;
+        /**
+         * Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
+         */
+        terminationTime?: pulumi.Input<string>;
     }
 
     export interface InstanceSchedulingGracefulShutdown {
@@ -21157,6 +21236,10 @@ export namespace compute {
          * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
          */
         provisioningModel?: pulumi.Input<string>;
+        /**
+         * Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
+         */
+        terminationTime?: pulumi.Input<string>;
     }
 
     export interface InstanceTemplateSchedulingGracefulShutdown {
@@ -22753,7 +22836,7 @@ export namespace compute {
          * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
          * for an explanation of load balancing modes.
          * Default value is `UTILIZATION`.
-         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
+         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
          */
         balancingMode?: pulumi.Input<string>;
         /**
@@ -22767,6 +22850,11 @@ export namespace compute {
          * 0% of its available Capacity. Valid range is [0.0,1.0].
          */
         capacityScaler?: pulumi.Input<number>;
+        /**
+         * The set of custom metrics that are used for <code>CUSTOM_METRICS</code> BalancingMode.
+         * Structure is documented below.
+         */
+        customMetrics?: pulumi.Input<pulumi.Input<inputs.compute.RegionBackendServiceBackendCustomMetric>[]>;
         /**
          * An optional description of this resource.
          * Provide this property when you create the resource.
@@ -22856,6 +22944,30 @@ export namespace compute {
          * Cannot be set for INTERNAL backend services.
          */
         maxUtilization?: pulumi.Input<number>;
+    }
+
+    export interface RegionBackendServiceBackendCustomMetric {
+        /**
+         * If true, the metric data is not used for load balancing.
+         */
+        dryRun: pulumi.Input<boolean>;
+        /**
+         * Optional parameter to define a target utilization for the Custom Metrics
+         * balancing mode. The valid range is <code>[0.0, 1.0]</code>.
+         */
+        maxUtilization?: pulumi.Input<number>;
+        /**
+         * Name of a custom utilization signal. The name must be 1-64 characters
+         * long and match the regular expression a-z? which
+         * means the first character must be a lowercase letter, and all following
+         * characters must be a dash, period, underscore, lowercase letter, or
+         * digit, except the last character, which cannot be a dash, period, or
+         * underscore. For usage guidelines, see Custom Metrics balancing mode. This
+         * field can only be used for a global or regional backend service with the
+         * loadBalancingScheme set to <code>EXTERNAL_MANAGED</code>,
+         * <code>INTERNAL_MANAGED</code> <code>INTERNAL_SELF_MANAGED</code>.
+         */
+        name: pulumi.Input<string>;
     }
 
     export interface RegionBackendServiceCdnPolicy {
@@ -23112,6 +23224,25 @@ export namespace compute {
         seconds: pulumi.Input<number>;
     }
 
+    export interface RegionBackendServiceCustomMetric {
+        /**
+         * If true, the metric data is not used for load balancing.
+         */
+        dryRun: pulumi.Input<boolean>;
+        /**
+         * Name of a custom utilization signal. The name must be 1-64 characters
+         * long and match the regular expression a-z? which
+         * means the first character must be a lowercase letter, and all following
+         * characters must be a dash, period, underscore, lowercase letter, or
+         * digit, except the last character, which cannot be a dash, period, or
+         * underscore. For usage guidelines, see Custom Metrics balancing mode. This
+         * field can only be used for a global or regional backend service with the
+         * loadBalancingScheme set to <code>EXTERNAL_MANAGED</code>,
+         * <code>INTERNAL_MANAGED</code> <code>INTERNAL_SELF_MANAGED</code>.
+         */
+        name: pulumi.Input<string>;
+    }
+
     export interface RegionBackendServiceFailoverPolicy {
         /**
          * On failover or failback, this field indicates whether connection drain
@@ -23195,6 +23326,16 @@ export namespace compute {
          * Whether to enable logging for the load balancer traffic served by this backend service.
          */
         enable?: pulumi.Input<boolean>;
+        /**
+         * Specifies the fields to include in logging. This field can only be specified if logging is enabled for this backend service.
+         */
+        optionalFields?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Specifies the optional logging mode for the load balancer traffic.
+         * Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM.
+         * Possible values are: `INCLUDE_ALL_OPTIONAL`, `EXCLUDE_ALL_OPTIONAL`, `CUSTOM`.
+         */
+        optionalMode?: pulumi.Input<string>;
         /**
          * This field can only be specified if logging is enabled for this backend service. The value of
          * the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
@@ -23398,6 +23539,13 @@ export namespace compute {
          * **Note**: This property is sensitive and will not be displayed in the plan.
          */
         rawKey?: pulumi.Input<string>;
+        /**
+         * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+         * customer-supplied encryption key to either encrypt or decrypt
+         * this resource. You can provide either the rawKey or the rsaEncryptedKey.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        rsaEncryptedKey?: pulumi.Input<string>;
         /**
          * (Output)
          * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
@@ -24429,6 +24577,10 @@ export namespace compute {
          * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
          */
         provisioningModel?: pulumi.Input<string>;
+        /**
+         * Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
+         */
+        terminationTime?: pulumi.Input<string>;
     }
 
     export interface RegionInstanceTemplateSchedulingGracefulShutdown {
@@ -33176,7 +33328,7 @@ export namespace container {
          */
         advancedDatapathObservabilityConfig?: pulumi.Input<inputs.container.ClusterMonitoringConfigAdvancedDatapathObservabilityConfig>;
         /**
-         * The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET`, `CADVISOR` and `DCGM`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
+         * The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET`, `CADVISOR`, `DCGM` and `JOBSET`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above. `JOBSET` is only supported in GKE 1.32.1-gke.1357001 and above.
          */
         enableComponents?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -47266,6 +47418,63 @@ export namespace datastream {
         privateConnection: pulumi.Input<string>;
     }
 
+    export interface ConnectionProfileSalesforceProfile {
+        /**
+         * Domain for the Salesforce Org.
+         */
+        domain: pulumi.Input<string>;
+        /**
+         * OAuth credentials to use for Salesforce authentication.
+         * Structure is documented below.
+         */
+        oauth2ClientCredentials?: pulumi.Input<inputs.datastream.ConnectionProfileSalesforceProfileOauth2ClientCredentials>;
+        /**
+         * User credentials to use for Salesforce authentication.
+         * Structure is documented below.
+         */
+        userCredentials?: pulumi.Input<inputs.datastream.ConnectionProfileSalesforceProfileUserCredentials>;
+    }
+
+    export interface ConnectionProfileSalesforceProfileOauth2ClientCredentials {
+        /**
+         * Client ID to use for authentication.
+         */
+        clientId?: pulumi.Input<string>;
+        /**
+         * Client secret to use for authentication.
+         */
+        clientSecret?: pulumi.Input<string>;
+        /**
+         * A reference to a Secret Manager resource name storing the client secret.
+         */
+        secretManagerStoredClientSecret?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionProfileSalesforceProfileUserCredentials {
+        /**
+         * Password of the user.
+         */
+        password?: pulumi.Input<string>;
+        /**
+         * A reference to a Secret Manager resource name storing the user's password.
+         */
+        secretManagerStoredPassword?: pulumi.Input<string>;
+        /**
+         * A reference to a Secret Manager resource name storing the user's security token.
+         *
+         * <a name="nestedSalesforceProfileOauth2ClientCredentials"></a>The `oauth2ClientCredentials` block supports:
+         */
+        secretManagerStoredSecurityToken?: pulumi.Input<string>;
+        /**
+         * Security token of the user.
+         */
+        securityToken?: pulumi.Input<string>;
+        /**
+         * Username to use for authentication.
+         */
+        username?: pulumi.Input<string>;
+    }
+
     export interface ConnectionProfileSqlServerProfile {
         /**
          * Database for the SQL Server connection.
@@ -52623,6 +52832,15 @@ export namespace essentialcontacts {
 }
 
 export namespace eventarc {
+    export interface GoogleApiSourceLoggingConfig {
+        /**
+         * The minimum severity of logs that will be sent to Stackdriver/Platform
+         * Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+         * Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+         */
+        logSeverity?: pulumi.Input<string>;
+    }
+
     export interface MessageBusLoggingConfig {
         /**
          * Optional. The minimum severity of logs that will be sent to Stackdriver/Platform
@@ -58283,8 +58501,10 @@ export namespace iam {
 
     export interface FoldersPolicyBindingTarget {
         /**
-         * Required. Immutable. The resource name of the policy to be bound.
-         * The binding parent and policy must belong to the same Organization (or Project).
+         * Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+         * Examples for each one of the following supported principal set types:
+         * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+         * It must be parent by the policy binding's parent (the folder).
          *
          * - - -
          */
@@ -58312,8 +58532,12 @@ export namespace iam {
 
     export interface OrganizationsPolicyBindingTarget {
         /**
-         * Required. Immutable. The resource name of the policy to be bound.
-         * The binding parent and policy must belong to the same Organization (or Project).
+         * Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+         * Examples for each one of the following supported principal set types:
+         * * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+         * * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
+         * * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
+         * It must be parent by the policy binding's parent (the organization).
          *
          * - - -
          */
@@ -58379,8 +58603,13 @@ export namespace iam {
 
     export interface ProjectsPolicyBindingTarget {
         /**
-         * Required. Immutable. The resource name of the policy to be bound.
-         * The binding parent and policy must belong to the same Organization (or Project).
+         * Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+         * Examples for each one of the following supported principal set types:
+         * * Project:
+         * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+         * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+         * * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
+         * It must be parent by the policy binding's parent (the project).
          *
          * - - -
          */
@@ -62296,8 +62525,7 @@ export namespace monitoring {
 
     export interface AlertPolicyConditionConditionSql {
         /**
-         * The start date and time of the query. If left unspecified, then the
-         * query will start immediately.
+         * A test that uses an alerting result in a boolean column produced by the SQL query.
          * Structure is documented below.
          */
         booleanTest?: pulumi.Input<inputs.monitoring.AlertPolicyConditionConditionSqlBooleanTest>;
@@ -62325,7 +62553,7 @@ export namespace monitoring {
          */
         query: pulumi.Input<string>;
         /**
-         * Test the row count against a threshold.
+         * A test that checks if the number of rows in the result set violates some threshold.
          * Structure is documented below.
          */
         rowCountTest?: pulumi.Input<inputs.monitoring.AlertPolicyConditionConditionSqlRowCountTest>;
@@ -62333,8 +62561,8 @@ export namespace monitoring {
 
     export interface AlertPolicyConditionConditionSqlBooleanTest {
         /**
-         * The name of the column containing the boolean value. If the value
-         * in a row is NULL, that row is ignored.
+         * The name of the column containing the boolean value. If the value in a row is
+         * NULL, that row is ignored.
          *
          * - - -
          */
@@ -62418,7 +62646,7 @@ export namespace monitoring {
          */
         comparison: pulumi.Input<string>;
         /**
-         * Test the boolean value in the indicated column.
+         * The value against which to compare the row count.
          */
         threshold: pulumi.Input<number>;
     }
@@ -64697,14 +64925,16 @@ export namespace networksecurity {
     export interface InterceptDeploymentGroupConnectedEndpointGroup {
         /**
          * (Output)
-         * Output only. A connected intercept endpoint group.
+         * The connected endpoint group's resource name, for example:
+         * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+         * See https://google.aip.dev/124.
          */
         name?: pulumi.Input<string>;
     }
 
     export interface InterceptEndpointGroupAssociationLocationsDetail {
         /**
-         * The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+         * The cloud location of the association, currently restricted to `global`.
          *
          *
          * - - -
@@ -64712,7 +64942,7 @@ export namespace networksecurity {
         location?: pulumi.Input<string>;
         /**
          * (Output)
-         * The association state in this location.
+         * The current state of the association in this location.
          * Possible values:
          * STATE_UNSPECIFIED
          * ACTIVE
@@ -64724,14 +64954,16 @@ export namespace networksecurity {
     export interface MirroringDeploymentGroupConnectedEndpointGroup {
         /**
          * (Output)
-         * Output only. A connected mirroring endpoint group.
+         * The connected endpoint group's resource name, for example:
+         * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+         * See https://google.aip.dev/124.
          */
         name?: pulumi.Input<string>;
     }
 
     export interface MirroringEndpointGroupAssociationLocationsDetail {
         /**
-         * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+         * The cloud location of the association, currently restricted to `global`.
          *
          *
          * - - -
@@ -64739,7 +64971,7 @@ export namespace networksecurity {
         location?: pulumi.Input<string>;
         /**
          * (Output)
-         * Output only. The association state in this location.
+         * The current state of the association in this location.
          * Possible values:
          * STATE_UNSPECIFIED
          * ACTIVE
@@ -75480,6 +75712,10 @@ export namespace tpu {
          * Whether the node is created under a reservation.
          */
         reserved?: pulumi.Input<boolean>;
+        /**
+         * Optional. Defines whether the node is Spot VM.
+         */
+        spot?: pulumi.Input<boolean>;
     }
 
     export interface V2VmServiceAccount {
@@ -77532,10 +77768,12 @@ export namespace vmwareengine {
     export interface PrivateCloudManagementClusterStretchedClusterConfig {
         /**
          * Zone that will remain operational when connection between the two zones is lost.
+         * Specify the zone in the following format: projects/{project}/locations/{location}.
          */
         preferredLocation?: pulumi.Input<string>;
         /**
          * Additional zone for a higher level of availability and load balancing.
+         * Specify the zone in the following format: projects/{project}/locations/{location}.
          */
         secondaryLocation?: pulumi.Input<string>;
     }

@@ -100,6 +100,13 @@ public final class GetInstanceTemplateScheduling {
      * 
      */
     private String provisioningModel;
+    /**
+     * @return Specifies the timestamp, when the instance will be terminated,
+     * in RFC3339 text format. If specified, the instance termination action
+     * will be performed at the termination time.
+     * 
+     */
+    private String terminationTime;
 
     private GetInstanceTemplateScheduling() {}
     /**
@@ -212,6 +219,15 @@ public final class GetInstanceTemplateScheduling {
     public String provisioningModel() {
         return this.provisioningModel;
     }
+    /**
+     * @return Specifies the timestamp, when the instance will be terminated,
+     * in RFC3339 text format. If specified, the instance termination action
+     * will be performed at the termination time.
+     * 
+     */
+    public String terminationTime() {
+        return this.terminationTime;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -236,6 +252,7 @@ public final class GetInstanceTemplateScheduling {
         private List<GetInstanceTemplateSchedulingOnInstanceStopAction> onInstanceStopActions;
         private Boolean preemptible;
         private String provisioningModel;
+        private String terminationTime;
         public Builder() {}
         public Builder(GetInstanceTemplateScheduling defaults) {
     	      Objects.requireNonNull(defaults);
@@ -253,6 +270,7 @@ public final class GetInstanceTemplateScheduling {
     	      this.onInstanceStopActions = defaults.onInstanceStopActions;
     	      this.preemptible = defaults.preemptible;
     	      this.provisioningModel = defaults.provisioningModel;
+    	      this.terminationTime = defaults.terminationTime;
         }
 
         @CustomType.Setter
@@ -382,6 +400,14 @@ public final class GetInstanceTemplateScheduling {
             this.provisioningModel = provisioningModel;
             return this;
         }
+        @CustomType.Setter
+        public Builder terminationTime(String terminationTime) {
+            if (terminationTime == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateScheduling", "terminationTime");
+            }
+            this.terminationTime = terminationTime;
+            return this;
+        }
         public GetInstanceTemplateScheduling build() {
             final var _resultValue = new GetInstanceTemplateScheduling();
             _resultValue.automaticRestart = automaticRestart;
@@ -398,6 +424,7 @@ public final class GetInstanceTemplateScheduling {
             _resultValue.onInstanceStopActions = onInstanceStopActions;
             _resultValue.preemptible = preemptible;
             _resultValue.provisioningModel = provisioningModel;
+            _resultValue.terminationTime = terminationTime;
             return _resultValue;
         }
     }

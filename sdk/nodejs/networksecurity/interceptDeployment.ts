@@ -57,6 +57,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1-a",
  *     forwardingRule: forwardingRule.id,
  *     interceptDeploymentGroup: deploymentGroup.id,
+ *     description: "some description",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -116,45 +117,53 @@ export class InterceptDeployment extends pulumi.CustomResource {
     }
 
     /**
-     * Create time stamp
+     * The timestamp when the resource was created.
+     * See https://google.aip.dev/148#timestamps.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * User-provided description of the deployment.
+     * Used as additional context for the deployment.
+     */
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Immutable. The regional load balancer which the intercepted traffic should be forwarded
-     * to. Format is:
-     * projects/{project}/regions/{region}/forwardingRules/{forwardingRule}
+     * The regional forwarding rule that fronts the interceptors, for example:
+     * `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
+     * See https://google.aip.dev/124.
      */
     public readonly forwardingRule!: pulumi.Output<string>;
     /**
-     * Immutable. The Intercept Deployment Group that this resource is part of. Format is:
-     * `projects/{project}/locations/global/interceptDeploymentGroups/{interceptDeploymentGroup}`
+     * The deployment group that this deployment is a part of, for example:
+     * `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
      */
     public readonly interceptDeploymentGroup!: pulumi.Output<string>;
     /**
-     * Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * interceptDeploymentId from the methodSignature of Create RPC
+     * The ID to use for the new deployment, which will become the final
+     * component of the deployment's resource name.
      *
      *
      * - - -
      */
     public readonly interceptDeploymentId!: pulumi.Output<string>;
     /**
-     * Optional. Labels as key value pairs
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/InterceptDeployment`.
+     * The cloud location of the deployment, e.g. `us-central1-a` or `asia-south1-b`.
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Identifier. The name of the InterceptDeployment.
+     * The resource name of this deployment, for example:
+     * `projects/123456789/locations/us-central1-a/interceptDeployments/my-dep`.
+     * See https://google.aip.dev/122 for more details.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -168,12 +177,15 @@ export class InterceptDeployment extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Whether reconciling is in progress, recommended per
-     * https://google.aip.dev/128.
+     * The current state of the resource does not match the user's intended state,
+     * and the system is working to reconcile them. This part of the normal
+     * operation (e.g. linking a new association to the parent group).
+     * See https://google.aip.dev/128.
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
-     * Current state of the deployment.
+     * The current state of the deployment.
+     * See https://google.aip.dev/216.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -184,7 +196,8 @@ export class InterceptDeployment extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Update time stamp
+     * The timestamp when the resource was most recently updated.
+     * See https://google.aip.dev/148#timestamps.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -202,6 +215,7 @@ export class InterceptDeployment extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as InterceptDeploymentState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["forwardingRule"] = state ? state.forwardingRule : undefined;
             resourceInputs["interceptDeploymentGroup"] = state ? state.interceptDeploymentGroup : undefined;
@@ -228,6 +242,7 @@ export class InterceptDeployment extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
+            resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["forwardingRule"] = args ? args.forwardingRule : undefined;
             resourceInputs["interceptDeploymentGroup"] = args ? args.interceptDeploymentGroup : undefined;
             resourceInputs["interceptDeploymentId"] = args ? args.interceptDeploymentId : undefined;
@@ -254,45 +269,53 @@ export class InterceptDeployment extends pulumi.CustomResource {
  */
 export interface InterceptDeploymentState {
     /**
-     * Create time stamp
+     * The timestamp when the resource was created.
+     * See https://google.aip.dev/148#timestamps.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * User-provided description of the deployment.
+     * Used as additional context for the deployment.
+     */
+    description?: pulumi.Input<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Immutable. The regional load balancer which the intercepted traffic should be forwarded
-     * to. Format is:
-     * projects/{project}/regions/{region}/forwardingRules/{forwardingRule}
+     * The regional forwarding rule that fronts the interceptors, for example:
+     * `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
+     * See https://google.aip.dev/124.
      */
     forwardingRule?: pulumi.Input<string>;
     /**
-     * Immutable. The Intercept Deployment Group that this resource is part of. Format is:
-     * `projects/{project}/locations/global/interceptDeploymentGroups/{interceptDeploymentGroup}`
+     * The deployment group that this deployment is a part of, for example:
+     * `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
      */
     interceptDeploymentGroup?: pulumi.Input<string>;
     /**
-     * Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * interceptDeploymentId from the methodSignature of Create RPC
+     * The ID to use for the new deployment, which will become the final
+     * component of the deployment's resource name.
      *
      *
      * - - -
      */
     interceptDeploymentId?: pulumi.Input<string>;
     /**
-     * Optional. Labels as key value pairs
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/InterceptDeployment`.
+     * The cloud location of the deployment, e.g. `us-central1-a` or `asia-south1-b`.
      */
     location?: pulumi.Input<string>;
     /**
-     * Identifier. The name of the InterceptDeployment.
+     * The resource name of this deployment, for example:
+     * `projects/123456789/locations/us-central1-a/interceptDeployments/my-dep`.
+     * See https://google.aip.dev/122 for more details.
      */
     name?: pulumi.Input<string>;
     /**
@@ -306,12 +329,15 @@ export interface InterceptDeploymentState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Whether reconciling is in progress, recommended per
-     * https://google.aip.dev/128.
+     * The current state of the resource does not match the user's intended state,
+     * and the system is working to reconcile them. This part of the normal
+     * operation (e.g. linking a new association to the parent group).
+     * See https://google.aip.dev/128.
      */
     reconciling?: pulumi.Input<boolean>;
     /**
-     * Current state of the deployment.
+     * The current state of the deployment.
+     * See https://google.aip.dev/216.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -322,7 +348,8 @@ export interface InterceptDeploymentState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Update time stamp
+     * The timestamp when the resource was most recently updated.
+     * See https://google.aip.dev/148#timestamps.
      */
     updateTime?: pulumi.Input<string>;
 }
@@ -332,33 +359,38 @@ export interface InterceptDeploymentState {
  */
 export interface InterceptDeploymentArgs {
     /**
-     * Immutable. The regional load balancer which the intercepted traffic should be forwarded
-     * to. Format is:
-     * projects/{project}/regions/{region}/forwardingRules/{forwardingRule}
+     * User-provided description of the deployment.
+     * Used as additional context for the deployment.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The regional forwarding rule that fronts the interceptors, for example:
+     * `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
+     * See https://google.aip.dev/124.
      */
     forwardingRule: pulumi.Input<string>;
     /**
-     * Immutable. The Intercept Deployment Group that this resource is part of. Format is:
-     * `projects/{project}/locations/global/interceptDeploymentGroups/{interceptDeploymentGroup}`
+     * The deployment group that this deployment is a part of, for example:
+     * `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
      */
     interceptDeploymentGroup: pulumi.Input<string>;
     /**
-     * Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * interceptDeploymentId from the methodSignature of Create RPC
+     * The ID to use for the new deployment, which will become the final
+     * component of the deployment's resource name.
      *
      *
      * - - -
      */
     interceptDeploymentId: pulumi.Input<string>;
     /**
-     * Optional. Labels as key value pairs
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/InterceptDeployment`.
+     * The cloud location of the deployment, e.g. `us-central1-a` or `asia-south1-b`.
      */
     location: pulumi.Input<string>;
     /**

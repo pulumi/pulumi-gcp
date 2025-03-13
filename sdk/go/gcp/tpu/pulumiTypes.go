@@ -1614,6 +1614,8 @@ type V2VmSchedulingConfig struct {
 	Preemptible *bool `pulumi:"preemptible"`
 	// Whether the node is created under a reservation.
 	Reserved *bool `pulumi:"reserved"`
+	// Optional. Defines whether the node is Spot VM.
+	Spot *bool `pulumi:"spot"`
 }
 
 // V2VmSchedulingConfigInput is an input type that accepts V2VmSchedulingConfigArgs and V2VmSchedulingConfigOutput values.
@@ -1632,6 +1634,8 @@ type V2VmSchedulingConfigArgs struct {
 	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
 	// Whether the node is created under a reservation.
 	Reserved pulumi.BoolPtrInput `pulumi:"reserved"`
+	// Optional. Defines whether the node is Spot VM.
+	Spot pulumi.BoolPtrInput `pulumi:"spot"`
 }
 
 func (V2VmSchedulingConfigArgs) ElementType() reflect.Type {
@@ -1721,6 +1725,11 @@ func (o V2VmSchedulingConfigOutput) Reserved() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v V2VmSchedulingConfig) *bool { return v.Reserved }).(pulumi.BoolPtrOutput)
 }
 
+// Optional. Defines whether the node is Spot VM.
+func (o V2VmSchedulingConfigOutput) Spot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V2VmSchedulingConfig) *bool { return v.Spot }).(pulumi.BoolPtrOutput)
+}
+
 type V2VmSchedulingConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (V2VmSchedulingConfigPtrOutput) ElementType() reflect.Type {
@@ -1762,6 +1771,16 @@ func (o V2VmSchedulingConfigPtrOutput) Reserved() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.Reserved
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Defines whether the node is Spot VM.
+func (o V2VmSchedulingConfigPtrOutput) Spot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V2VmSchedulingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Spot
 	}).(pulumi.BoolPtrOutput)
 }
 

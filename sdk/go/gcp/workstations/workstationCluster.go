@@ -191,6 +191,81 @@ import (
 //	}
 //
 // ```
+// ### Workstation Cluster Tags
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/tags"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/workstations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
+// }, nil);
+// if err != nil {
+// return err
+// }
+// tagKey, err := tags.NewTagKey(ctx, "tag_key", &tags.TagKeyArgs{
+// Parent: pulumi.Sprintf("projects/%v", project.Number),
+// ShortName: pulumi.String("keyname"),
+// })
+// if err != nil {
+// return err
+// }
+// tagValue, err := tags.NewTagValue(ctx, "tag_value", &tags.TagValueArgs{
+// Parent: tagKey.Name.ApplyT(func(name string) (string, error) {
+// return fmt.Sprintf("tagKeys/%v", name), nil
+// }).(pulumi.StringOutput),
+// ShortName: pulumi.String("valuename"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+// Name: pulumi.String("workstation-cluster-tags"),
+// AutoCreateSubnetworks: pulumi.Bool(false),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+// Name: pulumi.String("workstation-cluster-tags"),
+// IpCidrRange: pulumi.String("10.0.0.0/24"),
+// Region: pulumi.String("us-central1"),
+// Network: defaultNetwork.Name,
+// })
+// if err != nil {
+// return err
+// }
+// _, err = workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
+// WorkstationClusterId: pulumi.String("workstation-cluster-tags"),
+// Network: defaultNetwork.ID(),
+// Subnetwork: defaultSubnetwork.ID(),
+// Location: pulumi.String("us-central1"),
+// Tags: pulumi.All(tagKey.ShortName,tagValue.ShortName).ApplyT(func(_args []interface{}) (map[string]string, error) {
+// tagKeyShortName := _args[0].(string)
+// tagValueShortName := _args[1].(string)
+// return map[string]string{
+// fmt.Sprintf("%v/%v", project.ProjectId, tagKeyShortName): tagValueShortName,
+// }, nil
+// }).(pulumi.Map[string]stringOutput),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
 //
 // ## Import
 //
@@ -267,6 +342,11 @@ type WorkstationCluster struct {
 	// Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
 	// Must be part of the subnetwork specified for this cluster.
 	Subnetwork pulumi.StringOutput `pulumi:"subnetwork"`
+	// Resource manager tags bound to this resource.
+	// For example:
+	// "123/environment": "production",
+	// "123/costCenter": "marketing"
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The system-generated UID of the resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// ID to use for the workstation cluster.
@@ -368,6 +448,11 @@ type workstationClusterState struct {
 	// Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
 	// Must be part of the subnetwork specified for this cluster.
 	Subnetwork *string `pulumi:"subnetwork"`
+	// Resource manager tags bound to this resource.
+	// For example:
+	// "123/environment": "production",
+	// "123/costCenter": "marketing"
+	Tags map[string]string `pulumi:"tags"`
 	// The system-generated UID of the resource.
 	Uid *string `pulumi:"uid"`
 	// ID to use for the workstation cluster.
@@ -426,6 +511,11 @@ type WorkstationClusterState struct {
 	// Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
 	// Must be part of the subnetwork specified for this cluster.
 	Subnetwork pulumi.StringPtrInput
+	// Resource manager tags bound to this resource.
+	// For example:
+	// "123/environment": "production",
+	// "123/costCenter": "marketing"
+	Tags pulumi.StringMapInput
 	// The system-generated UID of the resource.
 	Uid pulumi.StringPtrInput
 	// ID to use for the workstation cluster.
@@ -466,6 +556,11 @@ type workstationClusterArgs struct {
 	// Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
 	// Must be part of the subnetwork specified for this cluster.
 	Subnetwork string `pulumi:"subnetwork"`
+	// Resource manager tags bound to this resource.
+	// For example:
+	// "123/environment": "production",
+	// "123/costCenter": "marketing"
+	Tags map[string]string `pulumi:"tags"`
 	// ID to use for the workstation cluster.
 	//
 	// ***
@@ -501,6 +596,11 @@ type WorkstationClusterArgs struct {
 	// Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
 	// Must be part of the subnetwork specified for this cluster.
 	Subnetwork pulumi.StringInput
+	// Resource manager tags bound to this resource.
+	// For example:
+	// "123/environment": "production",
+	// "123/costCenter": "marketing"
+	Tags pulumi.StringMapInput
 	// ID to use for the workstation cluster.
 	//
 	// ***
@@ -697,6 +797,14 @@ func (o WorkstationClusterOutput) PulumiLabels() pulumi.StringMapOutput {
 // Must be part of the subnetwork specified for this cluster.
 func (o WorkstationClusterOutput) Subnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringOutput { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+// Resource manager tags bound to this resource.
+// For example:
+// "123/environment": "production",
+// "123/costCenter": "marketing"
+func (o WorkstationClusterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The system-generated UID of the resource.

@@ -36,6 +36,25 @@ namespace Pulumi.Gcp.Compute.Inputs
             }
         }
 
+        [Input("rsaEncryptedKey")]
+        private Input<string>? _rsaEncryptedKey;
+
+        /// <summary>
+        /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+        /// customer-supplied encryption key to either encrypt or decrypt
+        /// this resource. You can provide either the rawKey or the rsaEncryptedKey.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
+        /// </summary>
+        public Input<string>? RsaEncryptedKey
+        {
+            get => _rsaEncryptedKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _rsaEncryptedKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// (Output)
         /// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied

@@ -40,6 +40,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///         MirroringEndpointGroupId = "example-eg",
     ///         Location = "global",
     ///         MirroringDeploymentGroup = deploymentGroup.Id,
+    ///         Description = "some description",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -77,10 +78,18 @@ namespace Pulumi.Gcp.NetworkSecurity
     public partial class MirroringEndpointGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Output only. [Output only] Create time stamp
+        /// The timestamp when the resource was created.
+        /// See https://google.aip.dev/148#timestamps.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// User-provided description of the endpoint group.
+        /// Used as additional context for the endpoint group.
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -89,7 +98,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Labels as key value pairs
+        /// Labels are key/value pairs that help to organize and filter resources.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -97,23 +106,22 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroup`.
+        /// The cloud location of the endpoint group, currently restricted to `global`.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The Mirroring Deployment Group that this resource is connected to. Format
-        /// is:
-        /// `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+        /// The deployment group that this DIRECT endpoint group is connected to, for example:
+        /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+        /// See https://google.aip.dev/124.
         /// </summary>
         [Output("mirroringDeploymentGroup")]
         public Output<string> MirroringDeploymentGroup { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Id of the requesting object
-        /// If auto-generating Id server-side, remove this field and
-        /// mirroring_endpoint_group_id from the method_signature of Create RPC
+        /// The ID to use for the endpoint group, which will become the final component
+        /// of the endpoint group's resource name.
         /// 
         /// 
         /// - - -
@@ -122,7 +130,9 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<string> MirroringEndpointGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. Identifier. The name of the MirroringEndpointGroup.
+        /// The resource name of this endpoint group, for example:
+        /// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+        /// See https://google.aip.dev/122 for more details.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -142,14 +152,17 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Whether reconciling is in progress, recommended per
-        /// https://google.aip.dev/128.
+        /// The current state of the resource does not match the user's intended state,
+        /// and the system is working to reconcile them. This is part of the normal
+        /// operation (e.g. adding a new association to the group).
+        /// See https://google.aip.dev/128.
         /// </summary>
         [Output("reconciling")]
         public Output<bool> Reconciling { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Current state of the endpoint group.
+        /// The current state of the endpoint group.
+        /// See https://google.aip.dev/216.
         /// Possible values:
         /// STATE_UNSPECIFIED
         /// ACTIVE
@@ -157,12 +170,14 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// CREATING
         /// DELETING
         /// OUT_OF_SYNC
+        /// DELETE_FAILED
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. [Output only] Update time stamp
+        /// The timestamp when the resource was most recently updated.
+        /// See https://google.aip.dev/148#timestamps.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -218,11 +233,18 @@ namespace Pulumi.Gcp.NetworkSecurity
 
     public sealed class MirroringEndpointGroupArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// User-provided description of the endpoint group.
+        /// Used as additional context for the endpoint group.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Labels as key value pairs
+        /// Labels are key/value pairs that help to organize and filter resources.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -233,23 +255,22 @@ namespace Pulumi.Gcp.NetworkSecurity
         }
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroup`.
+        /// The cloud location of the endpoint group, currently restricted to `global`.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The Mirroring Deployment Group that this resource is connected to. Format
-        /// is:
-        /// `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+        /// The deployment group that this DIRECT endpoint group is connected to, for example:
+        /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+        /// See https://google.aip.dev/124.
         /// </summary>
         [Input("mirroringDeploymentGroup", required: true)]
         public Input<string> MirroringDeploymentGroup { get; set; } = null!;
 
         /// <summary>
-        /// Required. Id of the requesting object
-        /// If auto-generating Id server-side, remove this field and
-        /// mirroring_endpoint_group_id from the method_signature of Create RPC
+        /// The ID to use for the endpoint group, which will become the final component
+        /// of the endpoint group's resource name.
         /// 
         /// 
         /// - - -
@@ -273,10 +294,18 @@ namespace Pulumi.Gcp.NetworkSecurity
     public sealed class MirroringEndpointGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. [Output only] Create time stamp
+        /// The timestamp when the resource was created.
+        /// See https://google.aip.dev/148#timestamps.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// User-provided description of the endpoint group.
+        /// Used as additional context for the endpoint group.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;
@@ -298,7 +327,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Labels as key value pairs
+        /// Labels are key/value pairs that help to organize and filter resources.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -309,23 +338,22 @@ namespace Pulumi.Gcp.NetworkSecurity
         }
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroup`.
+        /// The cloud location of the endpoint group, currently restricted to `global`.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The Mirroring Deployment Group that this resource is connected to. Format
-        /// is:
-        /// `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+        /// The deployment group that this DIRECT endpoint group is connected to, for example:
+        /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+        /// See https://google.aip.dev/124.
         /// </summary>
         [Input("mirroringDeploymentGroup")]
         public Input<string>? MirroringDeploymentGroup { get; set; }
 
         /// <summary>
-        /// Required. Id of the requesting object
-        /// If auto-generating Id server-side, remove this field and
-        /// mirroring_endpoint_group_id from the method_signature of Create RPC
+        /// The ID to use for the endpoint group, which will become the final component
+        /// of the endpoint group's resource name.
         /// 
         /// 
         /// - - -
@@ -334,7 +362,9 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<string>? MirroringEndpointGroupId { get; set; }
 
         /// <summary>
-        /// Immutable. Identifier. The name of the MirroringEndpointGroup.
+        /// The resource name of this endpoint group, for example:
+        /// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+        /// See https://google.aip.dev/122 for more details.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -364,14 +394,17 @@ namespace Pulumi.Gcp.NetworkSecurity
         }
 
         /// <summary>
-        /// Output only. Whether reconciling is in progress, recommended per
-        /// https://google.aip.dev/128.
+        /// The current state of the resource does not match the user's intended state,
+        /// and the system is working to reconcile them. This is part of the normal
+        /// operation (e.g. adding a new association to the group).
+        /// See https://google.aip.dev/128.
         /// </summary>
         [Input("reconciling")]
         public Input<bool>? Reconciling { get; set; }
 
         /// <summary>
-        /// Output only. Current state of the endpoint group.
+        /// The current state of the endpoint group.
+        /// See https://google.aip.dev/216.
         /// Possible values:
         /// STATE_UNSPECIFIED
         /// ACTIVE
@@ -379,12 +412,14 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// CREATING
         /// DELETING
         /// OUT_OF_SYNC
+        /// DELETE_FAILED
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Output only. [Output only] Update time stamp
+        /// The timestamp when the resource was most recently updated.
+        /// See https://google.aip.dev/148#timestamps.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

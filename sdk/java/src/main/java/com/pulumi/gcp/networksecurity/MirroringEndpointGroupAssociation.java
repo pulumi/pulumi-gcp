@@ -116,14 +116,16 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation")
 public class MirroringEndpointGroupAssociation extends com.pulumi.resources.CustomResource {
     /**
-     * Output only. [Output only] Create time stamp
+     * The timestamp when the resource was created.
+     * See https://google.aip.dev/148#timestamps.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Output only. [Output only] Create time stamp
+     * @return The timestamp when the resource was created.
+     * See https://google.aip.dev/148#timestamps.
      * 
      */
     public Output<String> createTime() {
@@ -144,7 +146,7 @@ public class MirroringEndpointGroupAssociation extends com.pulumi.resources.Cust
         return this.effectiveLabels;
     }
     /**
-     * Optional. Labels as key value pairs
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -153,7 +155,7 @@ public class MirroringEndpointGroupAssociation extends com.pulumi.resources.Cust
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels as key value pairs
+     * @return Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -162,7 +164,7 @@ public class MirroringEndpointGroupAssociation extends com.pulumi.resources.Cust
         return Codegen.optional(this.labels);
     }
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+     * The cloud location of the association, currently restricted to `global`.
      * 
      * ***
      * 
@@ -171,7 +173,7 @@ public class MirroringEndpointGroupAssociation extends com.pulumi.resources.Cust
     private Output<String> location;
 
     /**
-     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+     * @return The cloud location of the association, currently restricted to `global`.
      * 
      * ***
      * 
@@ -180,7 +182,9 @@ public class MirroringEndpointGroupAssociation extends com.pulumi.resources.Cust
         return this.location;
     }
     /**
-     * Output only. The list of locations that this association is in and its details.
+     * The list of locations where the association is present. This information
+     * is retrieved from the linked endpoint group, and not configured as part
+     * of the association itself.
      * Structure is documented below.
      * 
      */
@@ -188,7 +192,9 @@ public class MirroringEndpointGroupAssociation extends com.pulumi.resources.Cust
     private Output<List<MirroringEndpointGroupAssociationLocationsDetail>> locationsDetails;
 
     /**
-     * @return Output only. The list of locations that this association is in and its details.
+     * @return The list of locations where the association is present. This information
+     * is retrieved from the linked endpoint group, and not configured as part
+     * of the association itself.
      * Structure is documented below.
      * 
      */
@@ -196,68 +202,72 @@ public class MirroringEndpointGroupAssociation extends com.pulumi.resources.Cust
         return this.locationsDetails;
     }
     /**
-     * Required. Immutable. The Mirroring Endpoint Group that this resource is connected to. Format
-     * is:
-     * `projects/{project}/locations/global/mirroringEndpointGroups/{mirroringEndpointGroup}`
+     * The endpoint group that this association is connected to, for example:
+     * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+     * See https://google.aip.dev/124.
      * 
      */
     @Export(name="mirroringEndpointGroup", refs={String.class}, tree="[0]")
     private Output<String> mirroringEndpointGroup;
 
     /**
-     * @return Required. Immutable. The Mirroring Endpoint Group that this resource is connected to. Format
-     * is:
-     * `projects/{project}/locations/global/mirroringEndpointGroups/{mirroringEndpointGroup}`
+     * @return The endpoint group that this association is connected to, for example:
+     * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+     * See https://google.aip.dev/124.
      * 
      */
     public Output<String> mirroringEndpointGroup() {
         return this.mirroringEndpointGroup;
     }
     /**
-     * Optional. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * mirroring_endpoint_group_association_id from the method_signature of Create
-     * RPC
+     * The ID to use for the new association, which will become the final
+     * component of the endpoint group&#39;s resource name. If not provided, the
+     * server will generate a unique ID.
      * 
      */
     @Export(name="mirroringEndpointGroupAssociationId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mirroringEndpointGroupAssociationId;
 
     /**
-     * @return Optional. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * mirroring_endpoint_group_association_id from the method_signature of Create
-     * RPC
+     * @return The ID to use for the new association, which will become the final
+     * component of the endpoint group&#39;s resource name. If not provided, the
+     * server will generate a unique ID.
      * 
      */
     public Output<Optional<String>> mirroringEndpointGroupAssociationId() {
         return Codegen.optional(this.mirroringEndpointGroupAssociationId);
     }
     /**
-     * Immutable. Identifier. The name of the MirroringEndpointGroupAssociation.
+     * The resource name of this endpoint group association, for example:
+     * `projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association`.
+     * See https://google.aip.dev/122 for more details.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Immutable. Identifier. The name of the MirroringEndpointGroupAssociation.
+     * @return The resource name of this endpoint group association, for example:
+     * `projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association`.
+     * See https://google.aip.dev/122 for more details.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Required. Immutable. The VPC network associated. Format:
-     * projects/{project}/global/networks/{network}.
+     * The VPC network that is associated. for example:
+     * `projects/123456789/global/networks/my-network`.
+     * See https://google.aip.dev/124.
      * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
-     * @return Required. Immutable. The VPC network associated. Format:
-     * projects/{project}/global/networks/{network}.
+     * @return The VPC network that is associated. for example:
+     * `projects/123456789/global/networks/my-network`.
+     * See https://google.aip.dev/124.
      * 
      */
     public Output<String> network() {
@@ -296,16 +306,20 @@ public class MirroringEndpointGroupAssociation extends com.pulumi.resources.Cust
         return this.pulumiLabels;
     }
     /**
-     * Output only. Whether reconciling is in progress, recommended per
-     * https://google.aip.dev/128.
+     * The current state of the resource does not match the user&#39;s intended state,
+     * and the system is working to reconcile them. This part of the normal
+     * operation (e.g. adding a new location to the target deployment group).
+     * See https://google.aip.dev/128.
      * 
      */
     @Export(name="reconciling", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> reconciling;
 
     /**
-     * @return Output only. Whether reconciling is in progress, recommended per
-     * https://google.aip.dev/128.
+     * @return The current state of the resource does not match the user&#39;s intended state,
+     * and the system is working to reconcile them. This part of the normal
+     * operation (e.g. adding a new location to the target deployment group).
+     * See https://google.aip.dev/128.
      * 
      */
     public Output<Boolean> reconciling() {
@@ -313,7 +327,7 @@ public class MirroringEndpointGroupAssociation extends com.pulumi.resources.Cust
     }
     /**
      * (Output)
-     * Output only. The association state in this location.
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -325,7 +339,7 @@ public class MirroringEndpointGroupAssociation extends com.pulumi.resources.Cust
 
     /**
      * @return (Output)
-     * Output only. The association state in this location.
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -336,14 +350,16 @@ public class MirroringEndpointGroupAssociation extends com.pulumi.resources.Cust
         return this.state;
     }
     /**
-     * Output only. [Output only] Update time stamp
+     * The timestamp when the resource was most recently updated.
+     * See https://google.aip.dev/148#timestamps.
      * 
      */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
-     * @return Output only. [Output only] Update time stamp
+     * @return The timestamp when the resource was most recently updated.
+     * See https://google.aip.dev/148#timestamps.
      * 
      */
     public Output<String> updateTime() {

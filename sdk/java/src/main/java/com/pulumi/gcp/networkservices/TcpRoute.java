@@ -18,6 +18,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * TcpRoute is the resource defining how TCP traffic should be routed by a Mesh/Gateway resource.
+ * 
+ * To get more information about TcpRoute, see:
+ * 
+ * * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1beta1/projects.locations.tcpRoutes)
+ * * How-to Guides
+ *     * [Setup TCP Services](https://cloud.google.com/traffic-director/docs/set-up-tcp-route)
+ * 
  * ## Example Usage
  * 
  * ### Network Services Tcp Route Basic

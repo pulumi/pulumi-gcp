@@ -196,6 +196,12 @@ type Disk struct {
 	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk DiskAsyncPrimaryDiskPtrOutput `pulumi:"asyncPrimaryDisk"`
+	// If set to true, a snapshot of the disk will be created before it is destroyed.
+	// If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+	// The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+	CreateSnapshotBeforeDestroy pulumi.BoolPtrOutput `pulumi:"createSnapshotBeforeDestroy"`
+	// This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+	CreateSnapshotBeforeDestroyPrefix pulumi.StringPtrOutput `pulumi:"createSnapshotBeforeDestroyPrefix"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when
@@ -433,6 +439,12 @@ type diskState struct {
 	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk *DiskAsyncPrimaryDisk `pulumi:"asyncPrimaryDisk"`
+	// If set to true, a snapshot of the disk will be created before it is destroyed.
+	// If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+	// The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+	CreateSnapshotBeforeDestroy *bool `pulumi:"createSnapshotBeforeDestroy"`
+	// This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+	CreateSnapshotBeforeDestroyPrefix *string `pulumi:"createSnapshotBeforeDestroyPrefix"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when
@@ -636,6 +648,12 @@ type DiskState struct {
 	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk DiskAsyncPrimaryDiskPtrInput
+	// If set to true, a snapshot of the disk will be created before it is destroyed.
+	// If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+	// The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+	CreateSnapshotBeforeDestroy pulumi.BoolPtrInput
+	// This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+	CreateSnapshotBeforeDestroyPrefix pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when
@@ -843,6 +861,12 @@ type diskArgs struct {
 	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk *DiskAsyncPrimaryDisk `pulumi:"asyncPrimaryDisk"`
+	// If set to true, a snapshot of the disk will be created before it is destroyed.
+	// If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+	// The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+	CreateSnapshotBeforeDestroy *bool `pulumi:"createSnapshotBeforeDestroy"`
+	// This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+	CreateSnapshotBeforeDestroyPrefix *string `pulumi:"createSnapshotBeforeDestroyPrefix"`
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description *string `pulumi:"description"`
@@ -1003,6 +1027,12 @@ type DiskArgs struct {
 	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk DiskAsyncPrimaryDiskPtrInput
+	// If set to true, a snapshot of the disk will be created before it is destroyed.
+	// If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+	// The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+	CreateSnapshotBeforeDestroy pulumi.BoolPtrInput
+	// This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+	CreateSnapshotBeforeDestroyPrefix pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description pulumi.StringPtrInput
@@ -1255,6 +1285,18 @@ func (o DiskOutput) Architecture() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o DiskOutput) AsyncPrimaryDisk() DiskAsyncPrimaryDiskPtrOutput {
 	return o.ApplyT(func(v *Disk) DiskAsyncPrimaryDiskPtrOutput { return v.AsyncPrimaryDisk }).(DiskAsyncPrimaryDiskPtrOutput)
+}
+
+// If set to true, a snapshot of the disk will be created before it is destroyed.
+// If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+// The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+func (o DiskOutput) CreateSnapshotBeforeDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Disk) pulumi.BoolPtrOutput { return v.CreateSnapshotBeforeDestroy }).(pulumi.BoolPtrOutput)
+}
+
+// This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+func (o DiskOutput) CreateSnapshotBeforeDestroyPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.CreateSnapshotBeforeDestroyPrefix }).(pulumi.StringPtrOutput)
 }
 
 // Creation timestamp in RFC3339 text format.

@@ -64,6 +64,8 @@ export interface GetDiskResult {
     readonly accessMode: string;
     readonly architecture: string;
     readonly asyncPrimaryDisks: outputs.compute.GetDiskAsyncPrimaryDisk[];
+    readonly createSnapshotBeforeDestroy: boolean;
+    readonly createSnapshotBeforeDestroyPrefix: string;
     /**
      * Creation timestamp in RFC3339 text format.
      */

@@ -273,6 +273,38 @@ public class Disk extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.asyncPrimaryDisk);
     }
     /**
+     * If set to true, a snapshot of the disk will be created before it is destroyed.
+     * If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+     * The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+     * 
+     */
+    @Export(name="createSnapshotBeforeDestroy", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> createSnapshotBeforeDestroy;
+
+    /**
+     * @return If set to true, a snapshot of the disk will be created before it is destroyed.
+     * If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+     * The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+     * 
+     */
+    public Output<Optional<Boolean>> createSnapshotBeforeDestroy() {
+        return Codegen.optional(this.createSnapshotBeforeDestroy);
+    }
+    /**
+     * This will set a custom name prefix for the snapshot that&#39;s created when the disk is deleted.
+     * 
+     */
+    @Export(name="createSnapshotBeforeDestroyPrefix", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> createSnapshotBeforeDestroyPrefix;
+
+    /**
+     * @return This will set a custom name prefix for the snapshot that&#39;s created when the disk is deleted.
+     * 
+     */
+    public Output<Optional<String>> createSnapshotBeforeDestroyPrefix() {
+        return Codegen.optional(this.createSnapshotBeforeDestroyPrefix);
+    }
+    /**
      * Creation timestamp in RFC3339 text format.
      * 
      */

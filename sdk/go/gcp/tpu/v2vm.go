@@ -131,6 +131,7 @@ import (
 //				},
 //				SchedulingConfig: &tpu.V2VmSchedulingConfigArgs{
 //					Preemptible: pulumi.Bool(true),
+//					Spot:        pulumi.Bool(true),
 //				},
 //				ShieldedInstanceConfig: &tpu.V2VmShieldedInstanceConfigArgs{
 //					EnableSecureBoot: pulumi.Bool(true),

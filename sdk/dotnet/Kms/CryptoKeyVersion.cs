@@ -118,7 +118,8 @@ namespace Pulumi.Gcp.Kms
         public Output<string> ProtectionLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The current state of the CryptoKeyVersion.
+        /// The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
+        /// otherwise the value of this field is always retrieved automatically.
         /// Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         /// </summary>
         [Output("state")]
@@ -188,7 +189,8 @@ namespace Pulumi.Gcp.Kms
         public Input<Inputs.CryptoKeyVersionExternalProtectionLevelOptionsArgs>? ExternalProtectionLevelOptions { get; set; }
 
         /// <summary>
-        /// The current state of the CryptoKeyVersion.
+        /// The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
+        /// otherwise the value of this field is always retrieved automatically.
         /// Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         /// </summary>
         [Input("state")]
@@ -258,7 +260,8 @@ namespace Pulumi.Gcp.Kms
         public Input<string>? ProtectionLevel { get; set; }
 
         /// <summary>
-        /// The current state of the CryptoKeyVersion.
+        /// The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
+        /// otherwise the value of this field is always retrieved automatically.
         /// Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         /// </summary>
         [Input("state")]

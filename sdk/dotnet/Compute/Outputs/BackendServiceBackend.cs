@@ -16,12 +16,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// Specifies the balancing mode for this backend.
         /// For global HTTP(S) or TCP/SSL load balancing, the default is
-        /// UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
-        /// and CONNECTION (for TCP/SSL).
+        /// UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S)),
+        /// CUSTOM_METRICS (for HTTP(s)) and CONNECTION (for TCP/SSL).
         /// See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
         /// for an explanation of load balancing modes.
         /// Default value is `UTILIZATION`.
-        /// Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
+        /// Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
         /// </summary>
         public readonly string? BalancingMode;
         /// <summary>
@@ -33,6 +33,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// 0% of its available Capacity. Valid range is [0.0,1.0].
         /// </summary>
         public readonly double? CapacityScaler;
+        /// <summary>
+        /// The set of custom metrics that are used for &lt;code&gt;CUSTOM_METRICS&lt;/code&gt; BalancingMode.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.BackendServiceBackendCustomMetric> CustomMetrics;
         /// <summary>
         /// An optional description of this resource.
         /// Provide this property when you create the resource.
@@ -115,6 +120,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             double? capacityScaler,
 
+            ImmutableArray<Outputs.BackendServiceBackendCustomMetric> customMetrics,
+
             string? description,
 
             string group,
@@ -135,6 +142,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         {
             BalancingMode = balancingMode;
             CapacityScaler = capacityScaler;
+            CustomMetrics = customMetrics;
             Description = description;
             Group = group;
             MaxConnections = maxConnections;

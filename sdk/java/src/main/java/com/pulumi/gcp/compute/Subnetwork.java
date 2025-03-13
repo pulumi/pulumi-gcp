@@ -675,6 +675,36 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
         return this.ipCidrRange;
     }
     /**
+     * Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+     * in EXTERNAL_IPV6_SUBNETWORK_CREATION mode.
+     * Use one of the following formats to specify a sub-PDP when creating an
+     * IPv6 NetLB forwarding rule using BYOIP:
+     * Full resource URL, as in:
+     * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     *   Partial URL, as in:
+     * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * 
+     */
+    @Export(name="ipCollection", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> ipCollection;
+
+    /**
+     * @return Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+     * in EXTERNAL_IPV6_SUBNETWORK_CREATION mode.
+     * Use one of the following formats to specify a sub-PDP when creating an
+     * IPv6 NetLB forwarding rule using BYOIP:
+     * Full resource URL, as in:
+     * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     *   Partial URL, as in:
+     * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
+     * 
+     */
+    public Output<Optional<String>> ipCollection() {
+        return Codegen.optional(this.ipCollection);
+    }
+    /**
      * The access type of IPv6 address this subnet holds. It&#39;s immutable and can only be specified during creation
      * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
      * cannot enable direct path.
@@ -707,6 +737,28 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      */
     public Output<String> ipv6CidrRange() {
         return this.ipv6CidrRange;
+    }
+    /**
+     * Possible endpoints of this subnetwork. It can be one of the following:
+     * * VM_ONLY: The subnetwork can be used for creating instances and IPv6 addresses with VM endpoint type. Such a subnetwork
+     *   gets external IPv6 ranges from a public delegated prefix and cannot be used to create NetLb.
+     * * VM_AND_FR: The subnetwork can be used for creating both VM instances and Forwarding Rules. It can also be used to reserve
+     *   IPv6 addresses with both VM and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP Pool directly.
+     * 
+     */
+    @Export(name="ipv6GceEndpoint", refs={String.class}, tree="[0]")
+    private Output<String> ipv6GceEndpoint;
+
+    /**
+     * @return Possible endpoints of this subnetwork. It can be one of the following:
+     * * VM_ONLY: The subnetwork can be used for creating instances and IPv6 addresses with VM endpoint type. Such a subnetwork
+     *   gets external IPv6 ranges from a public delegated prefix and cannot be used to create NetLb.
+     * * VM_AND_FR: The subnetwork can be used for creating both VM instances and Forwarding Rules. It can also be used to reserve
+     *   IPv6 addresses with both VM and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP Pool directly.
+     * 
+     */
+    public Output<String> ipv6GceEndpoint() {
+        return this.ipv6GceEndpoint;
     }
     /**
      * This field denotes the VPC flow logging options for this subnetwork. If

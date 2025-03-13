@@ -366,14 +366,6 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
                  principal_access_boundary_policy_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        An IAM Principal Access Boundary Policy resource
-
-        To get more information about PrincipalAccessBoundaryPolicy, see:
-
-        * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/organizations.locations.principalAccessBoundaryPolicies)
-        * How-to Guides
-            * [Create and apply Principal Access Boundaries](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create)
-
         ## Example Usage
 
         ### Iam Principal Access Boundary Policy
@@ -382,11 +374,37 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_pab_policy = gcp.iam.PrincipalAccessBoundaryPolicy("my-pab-policy",
+        pab_policy_for_org = gcp.iam.PrincipalAccessBoundaryPolicy("pab-policy-for-org",
             organization="123456789",
             location="global",
-            display_name="test pab policy",
-            principal_access_boundary_policy_id="test-pab-policy")
+            display_name="PAB policy for Organization",
+            principal_access_boundary_policy_id="pab-policy-for-org")
+        ```
+        ### Iam Organizations Policy Binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        pab_policy = gcp.iam.PrincipalAccessBoundaryPolicy("pab_policy",
+            organization="123456789",
+            location="global",
+            display_name="Binding for all principals in the Organization",
+            principal_access_boundary_policy_id="my-pab-policy")
+        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
+        opts = pulumi.ResourceOptions(depends_on=[pab_policy]))
+        my_pab_policy = gcp.iam.OrganizationsPolicyBinding("my-pab-policy",
+            organization="123456789",
+            location="global",
+            display_name="Binding for all principals in the Organization",
+            policy_kind="PRINCIPAL_ACCESS_BOUNDARY",
+            policy_binding_id="binding-for-all-org-principals",
+            policy=pab_policy.principal_access_boundary_policy_id.apply(lambda principal_access_boundary_policy_id: f"organizations/123456789/locations/global/principalAccessBoundaryPolicies/{principal_access_boundary_policy_id}"),
+            target={
+                "principal_set": "//cloudresourcemanager.googleapis.com/organizations/123456789",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
         ```
 
         ## Import
@@ -432,14 +450,6 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
                  args: PrincipalAccessBoundaryPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        An IAM Principal Access Boundary Policy resource
-
-        To get more information about PrincipalAccessBoundaryPolicy, see:
-
-        * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/organizations.locations.principalAccessBoundaryPolicies)
-        * How-to Guides
-            * [Create and apply Principal Access Boundaries](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create)
-
         ## Example Usage
 
         ### Iam Principal Access Boundary Policy
@@ -448,11 +458,37 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_pab_policy = gcp.iam.PrincipalAccessBoundaryPolicy("my-pab-policy",
+        pab_policy_for_org = gcp.iam.PrincipalAccessBoundaryPolicy("pab-policy-for-org",
             organization="123456789",
             location="global",
-            display_name="test pab policy",
-            principal_access_boundary_policy_id="test-pab-policy")
+            display_name="PAB policy for Organization",
+            principal_access_boundary_policy_id="pab-policy-for-org")
+        ```
+        ### Iam Organizations Policy Binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        pab_policy = gcp.iam.PrincipalAccessBoundaryPolicy("pab_policy",
+            organization="123456789",
+            location="global",
+            display_name="Binding for all principals in the Organization",
+            principal_access_boundary_policy_id="my-pab-policy")
+        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
+        opts = pulumi.ResourceOptions(depends_on=[pab_policy]))
+        my_pab_policy = gcp.iam.OrganizationsPolicyBinding("my-pab-policy",
+            organization="123456789",
+            location="global",
+            display_name="Binding for all principals in the Organization",
+            policy_kind="PRINCIPAL_ACCESS_BOUNDARY",
+            policy_binding_id="binding-for-all-org-principals",
+            policy=pab_policy.principal_access_boundary_policy_id.apply(lambda principal_access_boundary_policy_id: f"organizations/123456789/locations/global/principalAccessBoundaryPolicies/{principal_access_boundary_policy_id}"),
+            target={
+                "principal_set": "//cloudresourcemanager.googleapis.com/organizations/123456789",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
         ```
 
         ## Import

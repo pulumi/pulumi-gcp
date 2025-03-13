@@ -45,11 +45,27 @@ public final class V2VmSchedulingConfigArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.reserved);
     }
 
+    /**
+     * Optional. Defines whether the node is Spot VM.
+     * 
+     */
+    @Import(name="spot")
+    private @Nullable Output<Boolean> spot;
+
+    /**
+     * @return Optional. Defines whether the node is Spot VM.
+     * 
+     */
+    public Optional<Output<Boolean>> spot() {
+        return Optional.ofNullable(this.spot);
+    }
+
     private V2VmSchedulingConfigArgs() {}
 
     private V2VmSchedulingConfigArgs(V2VmSchedulingConfigArgs $) {
         this.preemptible = $.preemptible;
         this.reserved = $.reserved;
+        this.spot = $.spot;
     }
 
     public static Builder builder() {
@@ -110,6 +126,27 @@ public final class V2VmSchedulingConfigArgs extends com.pulumi.resources.Resourc
          */
         public Builder reserved(Boolean reserved) {
             return reserved(Output.of(reserved));
+        }
+
+        /**
+         * @param spot Optional. Defines whether the node is Spot VM.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spot(@Nullable Output<Boolean> spot) {
+            $.spot = spot;
+            return this;
+        }
+
+        /**
+         * @param spot Optional. Defines whether the node is Spot VM.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spot(Boolean spot) {
+            return spot(Output.of(spot));
         }
 
         public V2VmSchedulingConfigArgs build() {

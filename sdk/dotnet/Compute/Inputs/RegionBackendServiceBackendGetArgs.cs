@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
         /// for an explanation of load balancing modes.
         /// Default value is `UTILIZATION`.
-        /// Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
+        /// Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
         /// </summary>
         [Input("balancingMode")]
         public Input<string>? BalancingMode { get; set; }
@@ -34,6 +34,19 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// </summary>
         [Input("capacityScaler")]
         public Input<double>? CapacityScaler { get; set; }
+
+        [Input("customMetrics")]
+        private InputList<Inputs.RegionBackendServiceBackendCustomMetricGetArgs>? _customMetrics;
+
+        /// <summary>
+        /// The set of custom metrics that are used for &lt;code&gt;CUSTOM_METRICS&lt;/code&gt; BalancingMode.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.RegionBackendServiceBackendCustomMetricGetArgs> CustomMetrics
+        {
+            get => _customMetrics ?? (_customMetrics = new InputList<Inputs.RegionBackendServiceBackendCustomMetricGetArgs>());
+            set => _customMetrics = value;
+        }
 
         /// <summary>
         /// An optional description of this resource.

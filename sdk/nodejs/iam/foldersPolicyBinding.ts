@@ -7,14 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * A policy binding to a folder
- *
- * To get more information about FoldersPolicyBinding, see:
- *
- * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/folders.locations.policyBindings)
- * * How-to Guides
- *     * [Apply a policy binding](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create#create_binding)
- *
  * ## Example Usage
  *
  * ### Iam Folders Policy Binding
@@ -27,23 +19,23 @@ import * as utilities from "../utilities";
  * const pabPolicy = new gcp.iam.PrincipalAccessBoundaryPolicy("pab_policy", {
  *     organization: "123456789",
  *     location: "global",
- *     displayName: "test folder binding",
+ *     displayName: "binding for all principals in the folder",
  *     principalAccessBoundaryPolicyId: "my-pab-policy",
  * });
  * const folder = new gcp.organizations.Folder("folder", {
- *     displayName: "test folder",
+ *     displayName: "my folder",
  *     parent: "organizations/123456789",
  *     deletionProtection: false,
  * });
  * const wait120s = new time.index.Sleep("wait_120s", {createDuration: "120s"}, {
  *     dependsOn: [folder],
  * });
- * const my_folder_binding = new gcp.iam.FoldersPolicyBinding("my-folder-binding", {
+ * const binding_for_all_folder_principals = new gcp.iam.FoldersPolicyBinding("binding-for-all-folder-principals", {
  *     folder: folder.folderId,
  *     location: "global",
- *     displayName: "test folder binding",
+ *     displayName: "binding for all principals in the folder",
  *     policyKind: "PRINCIPAL_ACCESS_BOUNDARY",
- *     policyBindingId: "test-folder-binding",
+ *     policyBindingId: "binding-for-all-folder-principals",
  *     policy: pulumi.interpolate`organizations/123456789/locations/global/principalAccessBoundaryPolicies/${pabPolicy.principalAccessBoundaryPolicyId}`,
  *     target: {
  *         principalSet: pulumi.interpolate`//cloudresourcemanager.googleapis.com/folders/${folder.folderId}`,

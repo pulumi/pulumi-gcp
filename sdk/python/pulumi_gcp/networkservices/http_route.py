@@ -405,6 +405,14 @@ class HttpRoute(pulumi.CustomResource):
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HttpRouteRuleArgs', 'HttpRouteRuleArgsDict']]]]] = None,
                  __props__=None):
         """
+        HttpRoute is the resource defining how HTTP traffic should be routed by a Mesh or Gateway resource.
+
+        To get more information about HttpRoute, see:
+
+        * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1beta1/projects.locations.httpRoutes)
+        * How-to Guides
+            * [Setup HTTP Services](https://cloud.google.com/traffic-director/docs/set-up-envoy-http-mesh)
+
         ## Example Usage
 
         ### Network Services Http Route Basic
@@ -690,6 +698,14 @@ class HttpRoute(pulumi.CustomResource):
                  args: HttpRouteArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        HttpRoute is the resource defining how HTTP traffic should be routed by a Mesh or Gateway resource.
+
+        To get more information about HttpRoute, see:
+
+        * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1beta1/projects.locations.httpRoutes)
+        * How-to Guides
+            * [Setup HTTP Services](https://cloud.google.com/traffic-director/docs/set-up-envoy-http-mesh)
+
         ## Example Usage
 
         ### Network Services Http Route Basic

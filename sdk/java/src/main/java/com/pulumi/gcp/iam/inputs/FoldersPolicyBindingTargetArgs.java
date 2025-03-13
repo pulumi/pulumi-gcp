@@ -16,8 +16,10 @@ public final class FoldersPolicyBindingTargetArgs extends com.pulumi.resources.R
     public static final FoldersPolicyBindingTargetArgs Empty = new FoldersPolicyBindingTargetArgs();
 
     /**
-     * Required. Immutable. The resource name of the policy to be bound.
-     * The binding parent and policy must belong to the same Organization (or Project).
+     * Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+     * Examples for each one of the following supported principal set types:
+     * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+     *   It must be parent by the policy binding&#39;s parent (the folder).
      * 
      * ***
      * 
@@ -26,8 +28,10 @@ public final class FoldersPolicyBindingTargetArgs extends com.pulumi.resources.R
     private @Nullable Output<String> principalSet;
 
     /**
-     * @return Required. Immutable. The resource name of the policy to be bound.
-     * The binding parent and policy must belong to the same Organization (or Project).
+     * @return Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+     * Examples for each one of the following supported principal set types:
+     * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+     *   It must be parent by the policy binding&#39;s parent (the folder).
      * 
      * ***
      * 
@@ -61,8 +65,10 @@ public final class FoldersPolicyBindingTargetArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param principalSet Required. Immutable. The resource name of the policy to be bound.
-         * The binding parent and policy must belong to the same Organization (or Project).
+         * @param principalSet Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+         * Examples for each one of the following supported principal set types:
+         * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+         *   It must be parent by the policy binding&#39;s parent (the folder).
          * 
          * ***
          * 
@@ -75,8 +81,10 @@ public final class FoldersPolicyBindingTargetArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param principalSet Required. Immutable. The resource name of the policy to be bound.
-         * The binding parent and policy must belong to the same Organization (or Project).
+         * @param principalSet Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+         * Examples for each one of the following supported principal set types:
+         * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+         *   It must be parent by the policy binding&#39;s parent (the folder).
          * 
          * ***
          * 

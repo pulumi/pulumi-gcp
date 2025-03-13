@@ -25,6 +25,12 @@ namespace Pulumi.Gcp.Alloydb.Outputs
         /// </summary>
         public readonly string? PscDnsName;
         /// <summary>
+        /// Configurations for setting up PSC interfaces attached to the instance
+        /// which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.InstancePscInstanceConfigPscInterfaceConfig> PscInterfaceConfigs;
+        /// <summary>
         /// (Output)
         /// The service attachment created when Private Service Connect (PSC) is enabled for the instance.
         /// The name of the resource will be in the format of
@@ -38,10 +44,13 @@ namespace Pulumi.Gcp.Alloydb.Outputs
 
             string? pscDnsName,
 
+            ImmutableArray<Outputs.InstancePscInstanceConfigPscInterfaceConfig> pscInterfaceConfigs,
+
             string? serviceAttachmentLink)
         {
             AllowedConsumerProjects = allowedConsumerProjects;
             PscDnsName = pscDnsName;
+            PscInterfaceConfigs = pscInterfaceConfigs;
             ServiceAttachmentLink = serviceAttachmentLink;
         }
     }

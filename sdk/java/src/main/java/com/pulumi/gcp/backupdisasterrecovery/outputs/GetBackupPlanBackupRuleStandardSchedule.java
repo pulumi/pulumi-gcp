@@ -26,7 +26,7 @@ public final class GetBackupPlanBackupRuleStandardSchedule {
      */
     private List<Integer> daysOfMonths;
     /**
-     * @return Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for &#39;recurrence_type&#39;, &#39;WEEKLY&#39; and is not applicable otherwise. Possible values: [&#34;DAY_OF_WEEK_UNSPECIFIED&#34;, &#34;MONDAY&#34;, &#34;TUESDAY&#34;, &#34;WEDNESDAY&#34;, &#34;THURSDAY&#34;, &#34;FRIDAY&#34;, &#34;SATURDAY&#34;]
+     * @return Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for &#39;recurrence_type&#39;, &#39;WEEKLY&#39; and is not applicable otherwise. Possible values: [&#34;DAY_OF_WEEK_UNSPECIFIED&#34;, &#34;MONDAY&#34;, &#34;TUESDAY&#34;, &#34;WEDNESDAY&#34;, &#34;THURSDAY&#34;, &#34;FRIDAY&#34;, &#34;SATURDAY&#34;, &#34;SUNDAY&#34;]
      * 
      */
     private List<String> daysOfWeeks;
@@ -74,7 +74,7 @@ public final class GetBackupPlanBackupRuleStandardSchedule {
         return this.daysOfMonths;
     }
     /**
-     * @return Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for &#39;recurrence_type&#39;, &#39;WEEKLY&#39; and is not applicable otherwise. Possible values: [&#34;DAY_OF_WEEK_UNSPECIFIED&#34;, &#34;MONDAY&#34;, &#34;TUESDAY&#34;, &#34;WEDNESDAY&#34;, &#34;THURSDAY&#34;, &#34;FRIDAY&#34;, &#34;SATURDAY&#34;]
+     * @return Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for &#39;recurrence_type&#39;, &#39;WEEKLY&#39; and is not applicable otherwise. Possible values: [&#34;DAY_OF_WEEK_UNSPECIFIED&#34;, &#34;MONDAY&#34;, &#34;TUESDAY&#34;, &#34;WEDNESDAY&#34;, &#34;THURSDAY&#34;, &#34;FRIDAY&#34;, &#34;SATURDAY&#34;, &#34;SUNDAY&#34;]
      * 
      */
     public List<String> daysOfWeeks() {

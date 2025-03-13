@@ -22,21 +22,23 @@ class MirroringEndpointGroupArgs:
                  location: pulumi.Input[str],
                  mirroring_deployment_group: pulumi.Input[str],
                  mirroring_endpoint_group_id: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a MirroringEndpointGroup resource.
-        :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroup`.
-        :param pulumi.Input[str] mirroring_deployment_group: Required. Immutable. The Mirroring Deployment Group that this resource is connected to. Format
-               is:
-               `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
-        :param pulumi.Input[str] mirroring_endpoint_group_id: Required. Id of the requesting object
-               If auto-generating Id server-side, remove this field and
-               mirroring_endpoint_group_id from the method_signature of Create RPC
+        :param pulumi.Input[str] location: The cloud location of the endpoint group, currently restricted to `global`.
+        :param pulumi.Input[str] mirroring_deployment_group: The deployment group that this DIRECT endpoint group is connected to, for example:
+               `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+               See https://google.aip.dev/124.
+        :param pulumi.Input[str] mirroring_endpoint_group_id: The ID to use for the endpoint group, which will become the final component
+               of the endpoint group's resource name.
                
                
                - - -
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs
+        :param pulumi.Input[str] description: User-provided description of the endpoint group.
+               Used as additional context for the endpoint group.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are key/value pairs that help to organize and filter resources.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -45,6 +47,8 @@ class MirroringEndpointGroupArgs:
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "mirroring_deployment_group", mirroring_deployment_group)
         pulumi.set(__self__, "mirroring_endpoint_group_id", mirroring_endpoint_group_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
@@ -54,7 +58,7 @@ class MirroringEndpointGroupArgs:
     @pulumi.getter
     def location(self) -> pulumi.Input[str]:
         """
-        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroup`.
+        The cloud location of the endpoint group, currently restricted to `global`.
         """
         return pulumi.get(self, "location")
 
@@ -66,9 +70,9 @@ class MirroringEndpointGroupArgs:
     @pulumi.getter(name="mirroringDeploymentGroup")
     def mirroring_deployment_group(self) -> pulumi.Input[str]:
         """
-        Required. Immutable. The Mirroring Deployment Group that this resource is connected to. Format
-        is:
-        `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+        The deployment group that this DIRECT endpoint group is connected to, for example:
+        `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+        See https://google.aip.dev/124.
         """
         return pulumi.get(self, "mirroring_deployment_group")
 
@@ -80,9 +84,8 @@ class MirroringEndpointGroupArgs:
     @pulumi.getter(name="mirroringEndpointGroupId")
     def mirroring_endpoint_group_id(self) -> pulumi.Input[str]:
         """
-        Required. Id of the requesting object
-        If auto-generating Id server-side, remove this field and
-        mirroring_endpoint_group_id from the method_signature of Create RPC
+        The ID to use for the endpoint group, which will become the final component
+        of the endpoint group's resource name.
 
 
         - - -
@@ -95,9 +98,22 @@ class MirroringEndpointGroupArgs:
 
     @property
     @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-provided description of the endpoint group.
+        Used as additional context for the endpoint group.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. Labels as key value pairs
+        Labels are key/value pairs that help to organize and filter resources.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
@@ -125,6 +141,7 @@ class MirroringEndpointGroupArgs:
 class _MirroringEndpointGroupState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -138,29 +155,36 @@ class _MirroringEndpointGroupState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MirroringEndpointGroup resources.
-        :param pulumi.Input[str] create_time: Output only. [Output only] Create time stamp
+        :param pulumi.Input[str] create_time: The timestamp when the resource was created.
+               See https://google.aip.dev/148#timestamps.
+        :param pulumi.Input[str] description: User-provided description of the endpoint group.
+               Used as additional context for the endpoint group.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are key/value pairs that help to organize and filter resources.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroup`.
-        :param pulumi.Input[str] mirroring_deployment_group: Required. Immutable. The Mirroring Deployment Group that this resource is connected to. Format
-               is:
-               `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
-        :param pulumi.Input[str] mirroring_endpoint_group_id: Required. Id of the requesting object
-               If auto-generating Id server-side, remove this field and
-               mirroring_endpoint_group_id from the method_signature of Create RPC
+        :param pulumi.Input[str] location: The cloud location of the endpoint group, currently restricted to `global`.
+        :param pulumi.Input[str] mirroring_deployment_group: The deployment group that this DIRECT endpoint group is connected to, for example:
+               `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+               See https://google.aip.dev/124.
+        :param pulumi.Input[str] mirroring_endpoint_group_id: The ID to use for the endpoint group, which will become the final component
+               of the endpoint group's resource name.
                
                
                - - -
-        :param pulumi.Input[str] name: Immutable. Identifier. The name of the MirroringEndpointGroup.
+        :param pulumi.Input[str] name: The resource name of this endpoint group, for example:
+               `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+               See https://google.aip.dev/122 for more details.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[bool] reconciling: Output only. Whether reconciling is in progress, recommended per
-               https://google.aip.dev/128.
-        :param pulumi.Input[str] state: Output only. Current state of the endpoint group.
+        :param pulumi.Input[bool] reconciling: The current state of the resource does not match the user's intended state,
+               and the system is working to reconcile them. This is part of the normal
+               operation (e.g. adding a new association to the group).
+               See https://google.aip.dev/128.
+        :param pulumi.Input[str] state: The current state of the endpoint group.
+               See https://google.aip.dev/216.
                Possible values:
                STATE_UNSPECIFIED
                ACTIVE
@@ -168,10 +192,14 @@ class _MirroringEndpointGroupState:
                CREATING
                DELETING
                OUT_OF_SYNC
-        :param pulumi.Input[str] update_time: Output only. [Output only] Update time stamp
+               DELETE_FAILED
+        :param pulumi.Input[str] update_time: The timestamp when the resource was most recently updated.
+               See https://google.aip.dev/148#timestamps.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if labels is not None:
@@ -199,13 +227,27 @@ class _MirroringEndpointGroupState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. [Output only] Create time stamp
+        The timestamp when the resource was created.
+        See https://google.aip.dev/148#timestamps.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-provided description of the endpoint group.
+        Used as additional context for the endpoint group.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter(name="effectiveLabels")
@@ -223,7 +265,7 @@ class _MirroringEndpointGroupState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. Labels as key value pairs
+        Labels are key/value pairs that help to organize and filter resources.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
@@ -237,7 +279,7 @@ class _MirroringEndpointGroupState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroup`.
+        The cloud location of the endpoint group, currently restricted to `global`.
         """
         return pulumi.get(self, "location")
 
@@ -249,9 +291,9 @@ class _MirroringEndpointGroupState:
     @pulumi.getter(name="mirroringDeploymentGroup")
     def mirroring_deployment_group(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. Immutable. The Mirroring Deployment Group that this resource is connected to. Format
-        is:
-        `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+        The deployment group that this DIRECT endpoint group is connected to, for example:
+        `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+        See https://google.aip.dev/124.
         """
         return pulumi.get(self, "mirroring_deployment_group")
 
@@ -263,9 +305,8 @@ class _MirroringEndpointGroupState:
     @pulumi.getter(name="mirroringEndpointGroupId")
     def mirroring_endpoint_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. Id of the requesting object
-        If auto-generating Id server-side, remove this field and
-        mirroring_endpoint_group_id from the method_signature of Create RPC
+        The ID to use for the endpoint group, which will become the final component
+        of the endpoint group's resource name.
 
 
         - - -
@@ -280,7 +321,9 @@ class _MirroringEndpointGroupState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. Identifier. The name of the MirroringEndpointGroup.
+        The resource name of this endpoint group, for example:
+        `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+        See https://google.aip.dev/122 for more details.
         """
         return pulumi.get(self, "name")
 
@@ -318,8 +361,10 @@ class _MirroringEndpointGroupState:
     @pulumi.getter
     def reconciling(self) -> Optional[pulumi.Input[bool]]:
         """
-        Output only. Whether reconciling is in progress, recommended per
-        https://google.aip.dev/128.
+        The current state of the resource does not match the user's intended state,
+        and the system is working to reconcile them. This is part of the normal
+        operation (e.g. adding a new association to the group).
+        See https://google.aip.dev/128.
         """
         return pulumi.get(self, "reconciling")
 
@@ -331,7 +376,8 @@ class _MirroringEndpointGroupState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Current state of the endpoint group.
+        The current state of the endpoint group.
+        See https://google.aip.dev/216.
         Possible values:
         STATE_UNSPECIFIED
         ACTIVE
@@ -339,6 +385,7 @@ class _MirroringEndpointGroupState:
         CREATING
         DELETING
         OUT_OF_SYNC
+        DELETE_FAILED
         """
         return pulumi.get(self, "state")
 
@@ -350,7 +397,8 @@ class _MirroringEndpointGroupState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. [Output only] Update time stamp
+        The timestamp when the resource was most recently updated.
+        See https://google.aip.dev/148#timestamps.
         """
         return pulumi.get(self, "update_time")
 
@@ -364,6 +412,7 @@ class MirroringEndpointGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  mirroring_deployment_group: Optional[pulumi.Input[str]] = None,
@@ -390,6 +439,7 @@ class MirroringEndpointGroup(pulumi.CustomResource):
             mirroring_endpoint_group_id="example-eg",
             location="global",
             mirroring_deployment_group=deployment_group.id,
+            description="some description",
             labels={
                 "foo": "bar",
             })
@@ -421,16 +471,17 @@ class MirroringEndpointGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs
+        :param pulumi.Input[str] description: User-provided description of the endpoint group.
+               Used as additional context for the endpoint group.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are key/value pairs that help to organize and filter resources.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroup`.
-        :param pulumi.Input[str] mirroring_deployment_group: Required. Immutable. The Mirroring Deployment Group that this resource is connected to. Format
-               is:
-               `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
-        :param pulumi.Input[str] mirroring_endpoint_group_id: Required. Id of the requesting object
-               If auto-generating Id server-side, remove this field and
-               mirroring_endpoint_group_id from the method_signature of Create RPC
+        :param pulumi.Input[str] location: The cloud location of the endpoint group, currently restricted to `global`.
+        :param pulumi.Input[str] mirroring_deployment_group: The deployment group that this DIRECT endpoint group is connected to, for example:
+               `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+               See https://google.aip.dev/124.
+        :param pulumi.Input[str] mirroring_endpoint_group_id: The ID to use for the endpoint group, which will become the final component
+               of the endpoint group's resource name.
                
                
                - - -
@@ -463,6 +514,7 @@ class MirroringEndpointGroup(pulumi.CustomResource):
             mirroring_endpoint_group_id="example-eg",
             location="global",
             mirroring_deployment_group=deployment_group.id,
+            description="some description",
             labels={
                 "foo": "bar",
             })
@@ -507,6 +559,7 @@ class MirroringEndpointGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  mirroring_deployment_group: Optional[pulumi.Input[str]] = None,
@@ -521,6 +574,7 @@ class MirroringEndpointGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MirroringEndpointGroupArgs.__new__(MirroringEndpointGroupArgs)
 
+            __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -552,6 +606,7 @@ class MirroringEndpointGroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -570,29 +625,36 @@ class MirroringEndpointGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Output only. [Output only] Create time stamp
+        :param pulumi.Input[str] create_time: The timestamp when the resource was created.
+               See https://google.aip.dev/148#timestamps.
+        :param pulumi.Input[str] description: User-provided description of the endpoint group.
+               Used as additional context for the endpoint group.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are key/value pairs that help to organize and filter resources.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroup`.
-        :param pulumi.Input[str] mirroring_deployment_group: Required. Immutable. The Mirroring Deployment Group that this resource is connected to. Format
-               is:
-               `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
-        :param pulumi.Input[str] mirroring_endpoint_group_id: Required. Id of the requesting object
-               If auto-generating Id server-side, remove this field and
-               mirroring_endpoint_group_id from the method_signature of Create RPC
+        :param pulumi.Input[str] location: The cloud location of the endpoint group, currently restricted to `global`.
+        :param pulumi.Input[str] mirroring_deployment_group: The deployment group that this DIRECT endpoint group is connected to, for example:
+               `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+               See https://google.aip.dev/124.
+        :param pulumi.Input[str] mirroring_endpoint_group_id: The ID to use for the endpoint group, which will become the final component
+               of the endpoint group's resource name.
                
                
                - - -
-        :param pulumi.Input[str] name: Immutable. Identifier. The name of the MirroringEndpointGroup.
+        :param pulumi.Input[str] name: The resource name of this endpoint group, for example:
+               `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+               See https://google.aip.dev/122 for more details.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[bool] reconciling: Output only. Whether reconciling is in progress, recommended per
-               https://google.aip.dev/128.
-        :param pulumi.Input[str] state: Output only. Current state of the endpoint group.
+        :param pulumi.Input[bool] reconciling: The current state of the resource does not match the user's intended state,
+               and the system is working to reconcile them. This is part of the normal
+               operation (e.g. adding a new association to the group).
+               See https://google.aip.dev/128.
+        :param pulumi.Input[str] state: The current state of the endpoint group.
+               See https://google.aip.dev/216.
                Possible values:
                STATE_UNSPECIFIED
                ACTIVE
@@ -600,13 +662,16 @@ class MirroringEndpointGroup(pulumi.CustomResource):
                CREATING
                DELETING
                OUT_OF_SYNC
-        :param pulumi.Input[str] update_time: Output only. [Output only] Update time stamp
+               DELETE_FAILED
+        :param pulumi.Input[str] update_time: The timestamp when the resource was most recently updated.
+               See https://google.aip.dev/148#timestamps.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _MirroringEndpointGroupState.__new__(_MirroringEndpointGroupState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
@@ -624,9 +689,19 @@ class MirroringEndpointGroup(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Output only. [Output only] Create time stamp
+        The timestamp when the resource was created.
+        See https://google.aip.dev/148#timestamps.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        User-provided description of the endpoint group.
+        Used as additional context for the endpoint group.
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="effectiveLabels")
@@ -640,7 +715,7 @@ class MirroringEndpointGroup(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Optional. Labels as key value pairs
+        Labels are key/value pairs that help to organize and filter resources.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
@@ -650,7 +725,7 @@ class MirroringEndpointGroup(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         """
-        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroup`.
+        The cloud location of the endpoint group, currently restricted to `global`.
         """
         return pulumi.get(self, "location")
 
@@ -658,9 +733,9 @@ class MirroringEndpointGroup(pulumi.CustomResource):
     @pulumi.getter(name="mirroringDeploymentGroup")
     def mirroring_deployment_group(self) -> pulumi.Output[str]:
         """
-        Required. Immutable. The Mirroring Deployment Group that this resource is connected to. Format
-        is:
-        `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+        The deployment group that this DIRECT endpoint group is connected to, for example:
+        `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+        See https://google.aip.dev/124.
         """
         return pulumi.get(self, "mirroring_deployment_group")
 
@@ -668,9 +743,8 @@ class MirroringEndpointGroup(pulumi.CustomResource):
     @pulumi.getter(name="mirroringEndpointGroupId")
     def mirroring_endpoint_group_id(self) -> pulumi.Output[str]:
         """
-        Required. Id of the requesting object
-        If auto-generating Id server-side, remove this field and
-        mirroring_endpoint_group_id from the method_signature of Create RPC
+        The ID to use for the endpoint group, which will become the final component
+        of the endpoint group's resource name.
 
 
         - - -
@@ -681,7 +755,9 @@ class MirroringEndpointGroup(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Immutable. Identifier. The name of the MirroringEndpointGroup.
+        The resource name of this endpoint group, for example:
+        `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+        See https://google.aip.dev/122 for more details.
         """
         return pulumi.get(self, "name")
 
@@ -707,8 +783,10 @@ class MirroringEndpointGroup(pulumi.CustomResource):
     @pulumi.getter
     def reconciling(self) -> pulumi.Output[bool]:
         """
-        Output only. Whether reconciling is in progress, recommended per
-        https://google.aip.dev/128.
+        The current state of the resource does not match the user's intended state,
+        and the system is working to reconcile them. This is part of the normal
+        operation (e.g. adding a new association to the group).
+        See https://google.aip.dev/128.
         """
         return pulumi.get(self, "reconciling")
 
@@ -716,7 +794,8 @@ class MirroringEndpointGroup(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        Output only. Current state of the endpoint group.
+        The current state of the endpoint group.
+        See https://google.aip.dev/216.
         Possible values:
         STATE_UNSPECIFIED
         ACTIVE
@@ -724,6 +803,7 @@ class MirroringEndpointGroup(pulumi.CustomResource):
         CREATING
         DELETING
         OUT_OF_SYNC
+        DELETE_FAILED
         """
         return pulumi.get(self, "state")
 
@@ -731,7 +811,8 @@ class MirroringEndpointGroup(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        Output only. [Output only] Update time stamp
+        The timestamp when the resource was most recently updated.
+        See https://google.aip.dev/148#timestamps.
         """
         return pulumi.get(self, "update_time")
 

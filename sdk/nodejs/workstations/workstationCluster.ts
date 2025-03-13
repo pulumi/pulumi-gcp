@@ -108,6 +108,41 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
+ * ### Workstation Cluster Tags
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const tagKey = new gcp.tags.TagKey("tag_key", {
+ *     parent: project.then(project => `projects/${project.number}`),
+ *     shortName: "keyname",
+ * });
+ * const tagValue = new gcp.tags.TagValue("tag_value", {
+ *     parent: pulumi.interpolate`tagKeys/${tagKey.name}`,
+ *     shortName: "valuename",
+ * });
+ * const defaultNetwork = new gcp.compute.Network("default", {
+ *     name: "workstation-cluster-tags",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "workstation-cluster-tags",
+ *     ipCidrRange: "10.0.0.0/24",
+ *     region: "us-central1",
+ *     network: defaultNetwork.name,
+ * });
+ * const _default = new gcp.workstations.WorkstationCluster("default", {
+ *     workstationClusterId: "workstation-cluster-tags",
+ *     network: defaultNetwork.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     location: "us-central1",
+ *     tags: pulumi.all([project, tagKey.shortName, tagValue.shortName]).apply(([project, tagKeyShortName, tagValueShortName]) => {
+ *         [`${project.projectId}/${tagKeyShortName}`]: tagValueShortName,
+ *     }),
+ * });
+ * ```
  *
  * ## Import
  *
@@ -245,6 +280,13 @@ export class WorkstationCluster extends pulumi.CustomResource {
      */
     public readonly subnetwork!: pulumi.Output<string>;
     /**
+     * Resource manager tags bound to this resource.
+     * For example:
+     * "123/environment": "production",
+     * "123/costCenter": "marketing"
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The system-generated UID of the resource.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
@@ -287,6 +329,7 @@ export class WorkstationCluster extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
             resourceInputs["workstationClusterId"] = state ? state.workstationClusterId : undefined;
         } else {
@@ -309,6 +352,7 @@ export class WorkstationCluster extends pulumi.CustomResource {
             resourceInputs["privateClusterConfig"] = args ? args.privateClusterConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["workstationClusterId"] = args ? args.workstationClusterId : undefined;
             resourceInputs["conditions"] = undefined /*out*/;
             resourceInputs["controlPlaneIp"] = undefined /*out*/;
@@ -416,6 +460,13 @@ export interface WorkstationClusterState {
      */
     subnetwork?: pulumi.Input<string>;
     /**
+     * Resource manager tags bound to this resource.
+     * For example:
+     * "123/environment": "production",
+     * "123/costCenter": "marketing"
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The system-generated UID of the resource.
      */
     uid?: pulumi.Input<string>;
@@ -477,6 +528,13 @@ export interface WorkstationClusterArgs {
      * Must be part of the subnetwork specified for this cluster.
      */
     subnetwork: pulumi.Input<string>;
+    /**
+     * Resource manager tags bound to this resource.
+     * For example:
+     * "123/environment": "production",
+     * "123/costCenter": "marketing"
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * ID to use for the workstation cluster.
      *

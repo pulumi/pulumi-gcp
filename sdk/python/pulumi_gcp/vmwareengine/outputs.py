@@ -1338,7 +1338,9 @@ class PrivateCloudManagementClusterStretchedClusterConfig(dict):
                  secondary_location: Optional[str] = None):
         """
         :param str preferred_location: Zone that will remain operational when connection between the two zones is lost.
+               Specify the zone in the following format: projects/{project}/locations/{location}.
         :param str secondary_location: Additional zone for a higher level of availability and load balancing.
+               Specify the zone in the following format: projects/{project}/locations/{location}.
         """
         if preferred_location is not None:
             pulumi.set(__self__, "preferred_location", preferred_location)
@@ -1350,6 +1352,7 @@ class PrivateCloudManagementClusterStretchedClusterConfig(dict):
     def preferred_location(self) -> Optional[str]:
         """
         Zone that will remain operational when connection between the two zones is lost.
+        Specify the zone in the following format: projects/{project}/locations/{location}.
         """
         return pulumi.get(self, "preferred_location")
 
@@ -1358,6 +1361,7 @@ class PrivateCloudManagementClusterStretchedClusterConfig(dict):
     def secondary_location(self) -> Optional[str]:
         """
         Additional zone for a higher level of availability and load balancing.
+        Specify the zone in the following format: projects/{project}/locations/{location}.
         """
         return pulumi.get(self, "secondary_location")
 
@@ -2513,7 +2517,9 @@ class GetPrivateCloudManagementClusterStretchedClusterConfigResult(dict):
                  secondary_location: str):
         """
         :param str preferred_location: Zone that will remain operational when connection between the two zones is lost.
+               Specify the zone in the following format: projects/{project}/locations/{location}.
         :param str secondary_location: Additional zone for a higher level of availability and load balancing.
+               Specify the zone in the following format: projects/{project}/locations/{location}.
         """
         pulumi.set(__self__, "preferred_location", preferred_location)
         pulumi.set(__self__, "secondary_location", secondary_location)
@@ -2523,6 +2529,7 @@ class GetPrivateCloudManagementClusterStretchedClusterConfigResult(dict):
     def preferred_location(self) -> str:
         """
         Zone that will remain operational when connection between the two zones is lost.
+        Specify the zone in the following format: projects/{project}/locations/{location}.
         """
         return pulumi.get(self, "preferred_location")
 
@@ -2531,6 +2538,7 @@ class GetPrivateCloudManagementClusterStretchedClusterConfigResult(dict):
     def secondary_location(self) -> str:
         """
         Additional zone for a higher level of availability and load balancing.
+        Specify the zone in the following format: projects/{project}/locations/{location}.
         """
         return pulumi.get(self, "secondary_location")
 

@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .disableOnDestroy(false)
  *             .build());
  * 
- *         // Create an FDC service
+ *         // Create a Firebase Data Connect service
  *         var default_ = new DataConnectService("default", DataConnectServiceArgs.builder()
  *             .project("my-project-name")
  *             .location("us-central1")
@@ -74,6 +74,56 @@ import javax.annotation.Nullable;
  *                 Map.entry("key1", "value1"),
  *                 Map.entry("key2", "value2")
  *             ))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(fdc)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Firebasedataconnect Service With Force Deletion
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumi.gcp.firebase.DataConnectService;
+ * import com.pulumi.gcp.firebase.DataConnectServiceArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Enable Firebase Data Connect API
+ *         var fdc = new Service("fdc", ServiceArgs.builder()
+ *             .project("my-project-name")
+ *             .service("firebasedataconnect.googleapis.com")
+ *             .disableOnDestroy(false)
+ *             .build());
+ * 
+ *         // Create a Firebase Data Connect service
+ *         var default_ = new DataConnectService("default", DataConnectServiceArgs.builder()
+ *             .project("my-project-name")
+ *             .location("us-central1")
+ *             .serviceId("example-service")
+ *             .deletionPolicy("FORCE")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(fdc)
  *                 .build());

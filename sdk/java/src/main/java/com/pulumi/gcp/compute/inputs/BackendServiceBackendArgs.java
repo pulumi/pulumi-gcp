@@ -6,9 +6,11 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.inputs.BackendServiceBackendCustomMetricArgs;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -21,12 +23,12 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
     /**
      * Specifies the balancing mode for this backend.
      * For global HTTP(S) or TCP/SSL load balancing, the default is
-     * UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
-     * and CONNECTION (for TCP/SSL).
+     * UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S)),
+     * CUSTOM_METRICS (for HTTP(s)) and CONNECTION (for TCP/SSL).
      * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
      * for an explanation of load balancing modes.
      * Default value is `UTILIZATION`.
-     * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
+     * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
      * 
      */
     @Import(name="balancingMode")
@@ -35,12 +37,12 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
     /**
      * @return Specifies the balancing mode for this backend.
      * For global HTTP(S) or TCP/SSL load balancing, the default is
-     * UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
-     * and CONNECTION (for TCP/SSL).
+     * UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S)),
+     * CUSTOM_METRICS (for HTTP(s)) and CONNECTION (for TCP/SSL).
      * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
      * for an explanation of load balancing modes.
      * Default value is `UTILIZATION`.
-     * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
+     * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
      * 
      */
     public Optional<Output<String>> balancingMode() {
@@ -70,6 +72,23 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<Double>> capacityScaler() {
         return Optional.ofNullable(this.capacityScaler);
+    }
+
+    /**
+     * The set of custom metrics that are used for &lt;code&gt;CUSTOM_METRICS&lt;/code&gt; BalancingMode.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="customMetrics")
+    private @Nullable Output<List<BackendServiceBackendCustomMetricArgs>> customMetrics;
+
+    /**
+     * @return The set of custom metrics that are used for &lt;code&gt;CUSTOM_METRICS&lt;/code&gt; BalancingMode.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<BackendServiceBackendCustomMetricArgs>>> customMetrics() {
+        return Optional.ofNullable(this.customMetrics);
     }
 
     /**
@@ -290,6 +309,7 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
     private BackendServiceBackendArgs(BackendServiceBackendArgs $) {
         this.balancingMode = $.balancingMode;
         this.capacityScaler = $.capacityScaler;
+        this.customMetrics = $.customMetrics;
         this.description = $.description;
         this.group = $.group;
         this.maxConnections = $.maxConnections;
@@ -322,12 +342,12 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
         /**
          * @param balancingMode Specifies the balancing mode for this backend.
          * For global HTTP(S) or TCP/SSL load balancing, the default is
-         * UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
-         * and CONNECTION (for TCP/SSL).
+         * UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S)),
+         * CUSTOM_METRICS (for HTTP(s)) and CONNECTION (for TCP/SSL).
          * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
          * for an explanation of load balancing modes.
          * Default value is `UTILIZATION`.
-         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
+         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
          * 
          * @return builder
          * 
@@ -340,12 +360,12 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
         /**
          * @param balancingMode Specifies the balancing mode for this backend.
          * For global HTTP(S) or TCP/SSL load balancing, the default is
-         * UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
-         * and CONNECTION (for TCP/SSL).
+         * UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S)),
+         * CUSTOM_METRICS (for HTTP(s)) and CONNECTION (for TCP/SSL).
          * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
          * for an explanation of load balancing modes.
          * Default value is `UTILIZATION`.
-         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
+         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
          * 
          * @return builder
          * 
@@ -383,6 +403,40 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
          */
         public Builder capacityScaler(Double capacityScaler) {
             return capacityScaler(Output.of(capacityScaler));
+        }
+
+        /**
+         * @param customMetrics The set of custom metrics that are used for &lt;code&gt;CUSTOM_METRICS&lt;/code&gt; BalancingMode.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customMetrics(@Nullable Output<List<BackendServiceBackendCustomMetricArgs>> customMetrics) {
+            $.customMetrics = customMetrics;
+            return this;
+        }
+
+        /**
+         * @param customMetrics The set of custom metrics that are used for &lt;code&gt;CUSTOM_METRICS&lt;/code&gt; BalancingMode.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customMetrics(List<BackendServiceBackendCustomMetricArgs> customMetrics) {
+            return customMetrics(Output.of(customMetrics));
+        }
+
+        /**
+         * @param customMetrics The set of custom metrics that are used for &lt;code&gt;CUSTOM_METRICS&lt;/code&gt; BalancingMode.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customMetrics(BackendServiceBackendCustomMetricArgs... customMetrics) {
+            return customMetrics(List.of(customMetrics));
         }
 
         /**

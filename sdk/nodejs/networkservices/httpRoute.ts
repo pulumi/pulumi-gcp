@@ -7,6 +7,14 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * HttpRoute is the resource defining how HTTP traffic should be routed by a Mesh or Gateway resource.
+ *
+ * To get more information about HttpRoute, see:
+ *
+ * * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1beta1/projects.locations.httpRoutes)
+ * * How-to Guides
+ *     * [Setup HTTP Services](https://cloud.google.com/traffic-director/docs/set-up-envoy-http-mesh)
+ *
  * ## Example Usage
  *
  * ### Network Services Http Route Basic

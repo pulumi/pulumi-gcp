@@ -24,6 +24,12 @@ namespace Pulumi.Gcp.Tpu.Inputs
         [Input("reserved")]
         public Input<bool>? Reserved { get; set; }
 
+        /// <summary>
+        /// Optional. Defines whether the node is Spot VM.
+        /// </summary>
+        [Input("spot")]
+        public Input<bool>? Spot { get; set; }
+
         public V2VmSchedulingConfigArgs()
         {
         }

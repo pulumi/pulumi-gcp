@@ -7,6 +7,12 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * GrpcRoute is the resource defining how gRPC traffic routed by a Mesh or Gateway resource is routed.
+ *
+ * To get more information about GrpcRoute, see:
+ *
+ * * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1beta1/projects.locations.grpcRoutes)
+ *
  * ## Example Usage
  *
  * ### Network Services Grpc Route Basic

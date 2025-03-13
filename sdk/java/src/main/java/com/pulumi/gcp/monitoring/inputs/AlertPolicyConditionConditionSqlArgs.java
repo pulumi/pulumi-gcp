@@ -22,8 +22,7 @@ public final class AlertPolicyConditionConditionSqlArgs extends com.pulumi.resou
     public static final AlertPolicyConditionConditionSqlArgs Empty = new AlertPolicyConditionConditionSqlArgs();
 
     /**
-     * The start date and time of the query. If left unspecified, then the
-     * query will start immediately.
+     * A test that uses an alerting result in a boolean column produced by the SQL query.
      * Structure is documented below.
      * 
      */
@@ -31,8 +30,7 @@ public final class AlertPolicyConditionConditionSqlArgs extends com.pulumi.resou
     private @Nullable Output<AlertPolicyConditionConditionSqlBooleanTestArgs> booleanTest;
 
     /**
-     * @return The start date and time of the query. If left unspecified, then the
-     * query will start immediately.
+     * @return A test that uses an alerting result in a boolean column produced by the SQL query.
      * Structure is documented below.
      * 
      */
@@ -115,7 +113,7 @@ public final class AlertPolicyConditionConditionSqlArgs extends com.pulumi.resou
     }
 
     /**
-     * Test the row count against a threshold.
+     * A test that checks if the number of rows in the result set violates some threshold.
      * Structure is documented below.
      * 
      */
@@ -123,7 +121,7 @@ public final class AlertPolicyConditionConditionSqlArgs extends com.pulumi.resou
     private @Nullable Output<AlertPolicyConditionConditionSqlRowCountTestArgs> rowCountTest;
 
     /**
-     * @return Test the row count against a threshold.
+     * @return A test that checks if the number of rows in the result set violates some threshold.
      * Structure is documented below.
      * 
      */
@@ -161,8 +159,7 @@ public final class AlertPolicyConditionConditionSqlArgs extends com.pulumi.resou
         }
 
         /**
-         * @param booleanTest The start date and time of the query. If left unspecified, then the
-         * query will start immediately.
+         * @param booleanTest A test that uses an alerting result in a boolean column produced by the SQL query.
          * Structure is documented below.
          * 
          * @return builder
@@ -174,8 +171,7 @@ public final class AlertPolicyConditionConditionSqlArgs extends com.pulumi.resou
         }
 
         /**
-         * @param booleanTest The start date and time of the query. If left unspecified, then the
-         * query will start immediately.
+         * @param booleanTest A test that uses an alerting result in a boolean column produced by the SQL query.
          * Structure is documented below.
          * 
          * @return builder
@@ -284,7 +280,7 @@ public final class AlertPolicyConditionConditionSqlArgs extends com.pulumi.resou
         }
 
         /**
-         * @param rowCountTest Test the row count against a threshold.
+         * @param rowCountTest A test that checks if the number of rows in the result set violates some threshold.
          * Structure is documented below.
          * 
          * @return builder
@@ -296,7 +292,7 @@ public final class AlertPolicyConditionConditionSqlArgs extends com.pulumi.resou
         }
 
         /**
-         * @param rowCountTest Test the row count against a threshold.
+         * @param rowCountTest A test that checks if the number of rows in the result set violates some threshold.
          * Structure is documented below.
          * 
          * @return builder

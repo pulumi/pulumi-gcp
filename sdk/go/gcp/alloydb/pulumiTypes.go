@@ -4782,6 +4782,10 @@ type InstancePscInstanceConfig struct {
 	// The DNS name of the instance for PSC connectivity.
 	// Name convention: <uid>.<uid>.<region>.alloydb-psc.goog
 	PscDnsName *string `pulumi:"pscDnsName"`
+	// Configurations for setting up PSC interfaces attached to the instance
+	// which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
+	// Structure is documented below.
+	PscInterfaceConfigs []InstancePscInstanceConfigPscInterfaceConfig `pulumi:"pscInterfaceConfigs"`
 	// (Output)
 	// The service attachment created when Private Service Connect (PSC) is enabled for the instance.
 	// The name of the resource will be in the format of
@@ -4808,6 +4812,10 @@ type InstancePscInstanceConfigArgs struct {
 	// The DNS name of the instance for PSC connectivity.
 	// Name convention: <uid>.<uid>.<region>.alloydb-psc.goog
 	PscDnsName pulumi.StringPtrInput `pulumi:"pscDnsName"`
+	// Configurations for setting up PSC interfaces attached to the instance
+	// which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
+	// Structure is documented below.
+	PscInterfaceConfigs InstancePscInstanceConfigPscInterfaceConfigArrayInput `pulumi:"pscInterfaceConfigs"`
 	// (Output)
 	// The service attachment created when Private Service Connect (PSC) is enabled for the instance.
 	// The name of the resource will be in the format of
@@ -4905,6 +4913,15 @@ func (o InstancePscInstanceConfigOutput) PscDnsName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstancePscInstanceConfig) *string { return v.PscDnsName }).(pulumi.StringPtrOutput)
 }
 
+// Configurations for setting up PSC interfaces attached to the instance
+// which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
+// Structure is documented below.
+func (o InstancePscInstanceConfigOutput) PscInterfaceConfigs() InstancePscInstanceConfigPscInterfaceConfigArrayOutput {
+	return o.ApplyT(func(v InstancePscInstanceConfig) []InstancePscInstanceConfigPscInterfaceConfig {
+		return v.PscInterfaceConfigs
+	}).(InstancePscInstanceConfigPscInterfaceConfigArrayOutput)
+}
+
 // (Output)
 // The service attachment created when Private Service Connect (PSC) is enabled for the instance.
 // The name of the resource will be in the format of
@@ -4960,6 +4977,18 @@ func (o InstancePscInstanceConfigPtrOutput) PscDnsName() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Configurations for setting up PSC interfaces attached to the instance
+// which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
+// Structure is documented below.
+func (o InstancePscInstanceConfigPtrOutput) PscInterfaceConfigs() InstancePscInstanceConfigPscInterfaceConfigArrayOutput {
+	return o.ApplyT(func(v *InstancePscInstanceConfig) []InstancePscInstanceConfigPscInterfaceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PscInterfaceConfigs
+	}).(InstancePscInstanceConfigPscInterfaceConfigArrayOutput)
+}
+
 // (Output)
 // The service attachment created when Private Service Connect (PSC) is enabled for the instance.
 // The name of the resource will be in the format of
@@ -4971,6 +5000,109 @@ func (o InstancePscInstanceConfigPtrOutput) ServiceAttachmentLink() pulumi.Strin
 		}
 		return v.ServiceAttachmentLink
 	}).(pulumi.StringPtrOutput)
+}
+
+type InstancePscInstanceConfigPscInterfaceConfig struct {
+	// The network attachment resource created in the consumer project to which the PSC interface will be linked.
+	// This is of the format: "projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}".
+	// The network attachment must be in the same region as the instance.
+	NetworkAttachmentResource *string `pulumi:"networkAttachmentResource"`
+}
+
+// InstancePscInstanceConfigPscInterfaceConfigInput is an input type that accepts InstancePscInstanceConfigPscInterfaceConfigArgs and InstancePscInstanceConfigPscInterfaceConfigOutput values.
+// You can construct a concrete instance of `InstancePscInstanceConfigPscInterfaceConfigInput` via:
+//
+//	InstancePscInstanceConfigPscInterfaceConfigArgs{...}
+type InstancePscInstanceConfigPscInterfaceConfigInput interface {
+	pulumi.Input
+
+	ToInstancePscInstanceConfigPscInterfaceConfigOutput() InstancePscInstanceConfigPscInterfaceConfigOutput
+	ToInstancePscInstanceConfigPscInterfaceConfigOutputWithContext(context.Context) InstancePscInstanceConfigPscInterfaceConfigOutput
+}
+
+type InstancePscInstanceConfigPscInterfaceConfigArgs struct {
+	// The network attachment resource created in the consumer project to which the PSC interface will be linked.
+	// This is of the format: "projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}".
+	// The network attachment must be in the same region as the instance.
+	NetworkAttachmentResource pulumi.StringPtrInput `pulumi:"networkAttachmentResource"`
+}
+
+func (InstancePscInstanceConfigPscInterfaceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePscInstanceConfigPscInterfaceConfig)(nil)).Elem()
+}
+
+func (i InstancePscInstanceConfigPscInterfaceConfigArgs) ToInstancePscInstanceConfigPscInterfaceConfigOutput() InstancePscInstanceConfigPscInterfaceConfigOutput {
+	return i.ToInstancePscInstanceConfigPscInterfaceConfigOutputWithContext(context.Background())
+}
+
+func (i InstancePscInstanceConfigPscInterfaceConfigArgs) ToInstancePscInstanceConfigPscInterfaceConfigOutputWithContext(ctx context.Context) InstancePscInstanceConfigPscInterfaceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePscInstanceConfigPscInterfaceConfigOutput)
+}
+
+// InstancePscInstanceConfigPscInterfaceConfigArrayInput is an input type that accepts InstancePscInstanceConfigPscInterfaceConfigArray and InstancePscInstanceConfigPscInterfaceConfigArrayOutput values.
+// You can construct a concrete instance of `InstancePscInstanceConfigPscInterfaceConfigArrayInput` via:
+//
+//	InstancePscInstanceConfigPscInterfaceConfigArray{ InstancePscInstanceConfigPscInterfaceConfigArgs{...} }
+type InstancePscInstanceConfigPscInterfaceConfigArrayInput interface {
+	pulumi.Input
+
+	ToInstancePscInstanceConfigPscInterfaceConfigArrayOutput() InstancePscInstanceConfigPscInterfaceConfigArrayOutput
+	ToInstancePscInstanceConfigPscInterfaceConfigArrayOutputWithContext(context.Context) InstancePscInstanceConfigPscInterfaceConfigArrayOutput
+}
+
+type InstancePscInstanceConfigPscInterfaceConfigArray []InstancePscInstanceConfigPscInterfaceConfigInput
+
+func (InstancePscInstanceConfigPscInterfaceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstancePscInstanceConfigPscInterfaceConfig)(nil)).Elem()
+}
+
+func (i InstancePscInstanceConfigPscInterfaceConfigArray) ToInstancePscInstanceConfigPscInterfaceConfigArrayOutput() InstancePscInstanceConfigPscInterfaceConfigArrayOutput {
+	return i.ToInstancePscInstanceConfigPscInterfaceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i InstancePscInstanceConfigPscInterfaceConfigArray) ToInstancePscInstanceConfigPscInterfaceConfigArrayOutputWithContext(ctx context.Context) InstancePscInstanceConfigPscInterfaceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePscInstanceConfigPscInterfaceConfigArrayOutput)
+}
+
+type InstancePscInstanceConfigPscInterfaceConfigOutput struct{ *pulumi.OutputState }
+
+func (InstancePscInstanceConfigPscInterfaceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePscInstanceConfigPscInterfaceConfig)(nil)).Elem()
+}
+
+func (o InstancePscInstanceConfigPscInterfaceConfigOutput) ToInstancePscInstanceConfigPscInterfaceConfigOutput() InstancePscInstanceConfigPscInterfaceConfigOutput {
+	return o
+}
+
+func (o InstancePscInstanceConfigPscInterfaceConfigOutput) ToInstancePscInstanceConfigPscInterfaceConfigOutputWithContext(ctx context.Context) InstancePscInstanceConfigPscInterfaceConfigOutput {
+	return o
+}
+
+// The network attachment resource created in the consumer project to which the PSC interface will be linked.
+// This is of the format: "projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}".
+// The network attachment must be in the same region as the instance.
+func (o InstancePscInstanceConfigPscInterfaceConfigOutput) NetworkAttachmentResource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstancePscInstanceConfigPscInterfaceConfig) *string { return v.NetworkAttachmentResource }).(pulumi.StringPtrOutput)
+}
+
+type InstancePscInstanceConfigPscInterfaceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (InstancePscInstanceConfigPscInterfaceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstancePscInstanceConfigPscInterfaceConfig)(nil)).Elem()
+}
+
+func (o InstancePscInstanceConfigPscInterfaceConfigArrayOutput) ToInstancePscInstanceConfigPscInterfaceConfigArrayOutput() InstancePscInstanceConfigPscInterfaceConfigArrayOutput {
+	return o
+}
+
+func (o InstancePscInstanceConfigPscInterfaceConfigArrayOutput) ToInstancePscInstanceConfigPscInterfaceConfigArrayOutputWithContext(ctx context.Context) InstancePscInstanceConfigPscInterfaceConfigArrayOutput {
+	return o
+}
+
+func (o InstancePscInstanceConfigPscInterfaceConfigArrayOutput) Index(i pulumi.IntInput) InstancePscInstanceConfigPscInterfaceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstancePscInstanceConfigPscInterfaceConfig {
+		return vs[0].([]InstancePscInstanceConfigPscInterfaceConfig)[vs[1].(int)]
+	}).(InstancePscInstanceConfigPscInterfaceConfigOutput)
 }
 
 type InstanceQueryInsightsConfig struct {
@@ -8648,6 +8780,9 @@ type GetInstancePscInstanceConfig struct {
 	// The DNS name of the instance for PSC connectivity.
 	// Name convention: <uid>.<uid>.<region>.alloydb-psc.goog
 	PscDnsName string `pulumi:"pscDnsName"`
+	// Configurations for setting up PSC interfaces attached to the instance
+	// which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
+	PscInterfaceConfigs []GetInstancePscInstanceConfigPscInterfaceConfig `pulumi:"pscInterfaceConfigs"`
 	// The service attachment created when Private Service Connect (PSC) is enabled for the instance.
 	// The name of the resource will be in the format of
 	// 'projects/<alloydb-tenant-project-number>/regions/<region-name>/serviceAttachments/<service-attachment-name>'
@@ -8672,6 +8807,9 @@ type GetInstancePscInstanceConfigArgs struct {
 	// The DNS name of the instance for PSC connectivity.
 	// Name convention: <uid>.<uid>.<region>.alloydb-psc.goog
 	PscDnsName pulumi.StringInput `pulumi:"pscDnsName"`
+	// Configurations for setting up PSC interfaces attached to the instance
+	// which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
+	PscInterfaceConfigs GetInstancePscInstanceConfigPscInterfaceConfigArrayInput `pulumi:"pscInterfaceConfigs"`
 	// The service attachment created when Private Service Connect (PSC) is enabled for the instance.
 	// The name of the resource will be in the format of
 	// 'projects/<alloydb-tenant-project-number>/regions/<region-name>/serviceAttachments/<service-attachment-name>'
@@ -8741,6 +8879,14 @@ func (o GetInstancePscInstanceConfigOutput) PscDnsName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancePscInstanceConfig) string { return v.PscDnsName }).(pulumi.StringOutput)
 }
 
+// Configurations for setting up PSC interfaces attached to the instance
+// which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
+func (o GetInstancePscInstanceConfigOutput) PscInterfaceConfigs() GetInstancePscInstanceConfigPscInterfaceConfigArrayOutput {
+	return o.ApplyT(func(v GetInstancePscInstanceConfig) []GetInstancePscInstanceConfigPscInterfaceConfig {
+		return v.PscInterfaceConfigs
+	}).(GetInstancePscInstanceConfigPscInterfaceConfigArrayOutput)
+}
+
 // The service attachment created when Private Service Connect (PSC) is enabled for the instance.
 // The name of the resource will be in the format of
 // 'projects/<alloydb-tenant-project-number>/regions/<region-name>/serviceAttachments/<service-attachment-name>'
@@ -8766,6 +8912,109 @@ func (o GetInstancePscInstanceConfigArrayOutput) Index(i pulumi.IntInput) GetIns
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancePscInstanceConfig {
 		return vs[0].([]GetInstancePscInstanceConfig)[vs[1].(int)]
 	}).(GetInstancePscInstanceConfigOutput)
+}
+
+type GetInstancePscInstanceConfigPscInterfaceConfig struct {
+	// The network attachment resource created in the consumer project to which the PSC interface will be linked.
+	// This is of the format: "projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}".
+	// The network attachment must be in the same region as the instance.
+	NetworkAttachmentResource string `pulumi:"networkAttachmentResource"`
+}
+
+// GetInstancePscInstanceConfigPscInterfaceConfigInput is an input type that accepts GetInstancePscInstanceConfigPscInterfaceConfigArgs and GetInstancePscInstanceConfigPscInterfaceConfigOutput values.
+// You can construct a concrete instance of `GetInstancePscInstanceConfigPscInterfaceConfigInput` via:
+//
+//	GetInstancePscInstanceConfigPscInterfaceConfigArgs{...}
+type GetInstancePscInstanceConfigPscInterfaceConfigInput interface {
+	pulumi.Input
+
+	ToGetInstancePscInstanceConfigPscInterfaceConfigOutput() GetInstancePscInstanceConfigPscInterfaceConfigOutput
+	ToGetInstancePscInstanceConfigPscInterfaceConfigOutputWithContext(context.Context) GetInstancePscInstanceConfigPscInterfaceConfigOutput
+}
+
+type GetInstancePscInstanceConfigPscInterfaceConfigArgs struct {
+	// The network attachment resource created in the consumer project to which the PSC interface will be linked.
+	// This is of the format: "projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}".
+	// The network attachment must be in the same region as the instance.
+	NetworkAttachmentResource pulumi.StringInput `pulumi:"networkAttachmentResource"`
+}
+
+func (GetInstancePscInstanceConfigPscInterfaceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePscInstanceConfigPscInterfaceConfig)(nil)).Elem()
+}
+
+func (i GetInstancePscInstanceConfigPscInterfaceConfigArgs) ToGetInstancePscInstanceConfigPscInterfaceConfigOutput() GetInstancePscInstanceConfigPscInterfaceConfigOutput {
+	return i.ToGetInstancePscInstanceConfigPscInterfaceConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstancePscInstanceConfigPscInterfaceConfigArgs) ToGetInstancePscInstanceConfigPscInterfaceConfigOutputWithContext(ctx context.Context) GetInstancePscInstanceConfigPscInterfaceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePscInstanceConfigPscInterfaceConfigOutput)
+}
+
+// GetInstancePscInstanceConfigPscInterfaceConfigArrayInput is an input type that accepts GetInstancePscInstanceConfigPscInterfaceConfigArray and GetInstancePscInstanceConfigPscInterfaceConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstancePscInstanceConfigPscInterfaceConfigArrayInput` via:
+//
+//	GetInstancePscInstanceConfigPscInterfaceConfigArray{ GetInstancePscInstanceConfigPscInterfaceConfigArgs{...} }
+type GetInstancePscInstanceConfigPscInterfaceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancePscInstanceConfigPscInterfaceConfigArrayOutput() GetInstancePscInstanceConfigPscInterfaceConfigArrayOutput
+	ToGetInstancePscInstanceConfigPscInterfaceConfigArrayOutputWithContext(context.Context) GetInstancePscInstanceConfigPscInterfaceConfigArrayOutput
+}
+
+type GetInstancePscInstanceConfigPscInterfaceConfigArray []GetInstancePscInstanceConfigPscInterfaceConfigInput
+
+func (GetInstancePscInstanceConfigPscInterfaceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePscInstanceConfigPscInterfaceConfig)(nil)).Elem()
+}
+
+func (i GetInstancePscInstanceConfigPscInterfaceConfigArray) ToGetInstancePscInstanceConfigPscInterfaceConfigArrayOutput() GetInstancePscInstanceConfigPscInterfaceConfigArrayOutput {
+	return i.ToGetInstancePscInstanceConfigPscInterfaceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancePscInstanceConfigPscInterfaceConfigArray) ToGetInstancePscInstanceConfigPscInterfaceConfigArrayOutputWithContext(ctx context.Context) GetInstancePscInstanceConfigPscInterfaceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePscInstanceConfigPscInterfaceConfigArrayOutput)
+}
+
+type GetInstancePscInstanceConfigPscInterfaceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePscInstanceConfigPscInterfaceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePscInstanceConfigPscInterfaceConfig)(nil)).Elem()
+}
+
+func (o GetInstancePscInstanceConfigPscInterfaceConfigOutput) ToGetInstancePscInstanceConfigPscInterfaceConfigOutput() GetInstancePscInstanceConfigPscInterfaceConfigOutput {
+	return o
+}
+
+func (o GetInstancePscInstanceConfigPscInterfaceConfigOutput) ToGetInstancePscInstanceConfigPscInterfaceConfigOutputWithContext(ctx context.Context) GetInstancePscInstanceConfigPscInterfaceConfigOutput {
+	return o
+}
+
+// The network attachment resource created in the consumer project to which the PSC interface will be linked.
+// This is of the format: "projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}".
+// The network attachment must be in the same region as the instance.
+func (o GetInstancePscInstanceConfigPscInterfaceConfigOutput) NetworkAttachmentResource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePscInstanceConfigPscInterfaceConfig) string { return v.NetworkAttachmentResource }).(pulumi.StringOutput)
+}
+
+type GetInstancePscInstanceConfigPscInterfaceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePscInstanceConfigPscInterfaceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePscInstanceConfigPscInterfaceConfig)(nil)).Elem()
+}
+
+func (o GetInstancePscInstanceConfigPscInterfaceConfigArrayOutput) ToGetInstancePscInstanceConfigPscInterfaceConfigArrayOutput() GetInstancePscInstanceConfigPscInterfaceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstancePscInstanceConfigPscInterfaceConfigArrayOutput) ToGetInstancePscInstanceConfigPscInterfaceConfigArrayOutputWithContext(ctx context.Context) GetInstancePscInstanceConfigPscInterfaceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstancePscInstanceConfigPscInterfaceConfigArrayOutput) Index(i pulumi.IntInput) GetInstancePscInstanceConfigPscInterfaceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancePscInstanceConfigPscInterfaceConfig {
+		return vs[0].([]GetInstancePscInstanceConfigPscInterfaceConfig)[vs[1].(int)]
+	}).(GetInstancePscInstanceConfigPscInterfaceConfigOutput)
 }
 
 type GetInstanceQueryInsightsConfig struct {
@@ -9469,6 +9718,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceObservabilityConfigPtrInput)(nil)).Elem(), InstanceObservabilityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePscInstanceConfigInput)(nil)).Elem(), InstancePscInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePscInstanceConfigPtrInput)(nil)).Elem(), InstancePscInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePscInstanceConfigPscInterfaceConfigInput)(nil)).Elem(), InstancePscInstanceConfigPscInterfaceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePscInstanceConfigPscInterfaceConfigArrayInput)(nil)).Elem(), InstancePscInstanceConfigPscInterfaceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceQueryInsightsConfigInput)(nil)).Elem(), InstanceQueryInsightsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceQueryInsightsConfigPtrInput)(nil)).Elem(), InstanceQueryInsightsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReadPoolConfigInput)(nil)).Elem(), InstanceReadPoolConfigArgs{})
@@ -9535,6 +9786,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceObservabilityConfigArrayInput)(nil)).Elem(), GetInstanceObservabilityConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePscInstanceConfigInput)(nil)).Elem(), GetInstancePscInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePscInstanceConfigArrayInput)(nil)).Elem(), GetInstancePscInstanceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePscInstanceConfigPscInterfaceConfigInput)(nil)).Elem(), GetInstancePscInstanceConfigPscInterfaceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePscInstanceConfigPscInterfaceConfigArrayInput)(nil)).Elem(), GetInstancePscInstanceConfigPscInterfaceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceQueryInsightsConfigInput)(nil)).Elem(), GetInstanceQueryInsightsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceQueryInsightsConfigArrayInput)(nil)).Elem(), GetInstanceQueryInsightsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceReadPoolConfigInput)(nil)).Elem(), GetInstanceReadPoolConfigArgs{})
@@ -9612,6 +9865,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceObservabilityConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstancePscInstanceConfigOutput{})
 	pulumi.RegisterOutputType(InstancePscInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstancePscInstanceConfigPscInterfaceConfigOutput{})
+	pulumi.RegisterOutputType(InstancePscInstanceConfigPscInterfaceConfigArrayOutput{})
 	pulumi.RegisterOutputType(InstanceQueryInsightsConfigOutput{})
 	pulumi.RegisterOutputType(InstanceQueryInsightsConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceReadPoolConfigOutput{})
@@ -9678,6 +9933,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceObservabilityConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancePscInstanceConfigOutput{})
 	pulumi.RegisterOutputType(GetInstancePscInstanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancePscInstanceConfigPscInterfaceConfigOutput{})
+	pulumi.RegisterOutputType(GetInstancePscInstanceConfigPscInterfaceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceQueryInsightsConfigOutput{})
 	pulumi.RegisterOutputType(GetInstanceQueryInsightsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceReadPoolConfigOutput{})

@@ -5,10 +5,12 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.outputs.RegionBackendServiceBackendCustomMetric;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,7 +22,7 @@ public final class RegionBackendServiceBackend {
      * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
      * for an explanation of load balancing modes.
      * Default value is `UTILIZATION`.
-     * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
+     * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
      * 
      */
     private @Nullable String balancingMode;
@@ -36,6 +38,12 @@ public final class RegionBackendServiceBackend {
      * 
      */
     private @Nullable Double capacityScaler;
+    /**
+     * @return The set of custom metrics that are used for &lt;code&gt;CUSTOM_METRICS&lt;/code&gt; BalancingMode.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<RegionBackendServiceBackendCustomMetric> customMetrics;
     /**
      * @return An optional description of this resource.
      * Provide this property when you create the resource.
@@ -142,7 +150,7 @@ public final class RegionBackendServiceBackend {
      * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
      * for an explanation of load balancing modes.
      * Default value is `UTILIZATION`.
-     * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
+     * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
      * 
      */
     public Optional<String> balancingMode() {
@@ -161,6 +169,14 @@ public final class RegionBackendServiceBackend {
      */
     public Optional<Double> capacityScaler() {
         return Optional.ofNullable(this.capacityScaler);
+    }
+    /**
+     * @return The set of custom metrics that are used for &lt;code&gt;CUSTOM_METRICS&lt;/code&gt; BalancingMode.
+     * Structure is documented below.
+     * 
+     */
+    public List<RegionBackendServiceBackendCustomMetric> customMetrics() {
+        return this.customMetrics == null ? List.of() : this.customMetrics;
     }
     /**
      * @return An optional description of this resource.
@@ -293,6 +309,7 @@ public final class RegionBackendServiceBackend {
     public static final class Builder {
         private @Nullable String balancingMode;
         private @Nullable Double capacityScaler;
+        private @Nullable List<RegionBackendServiceBackendCustomMetric> customMetrics;
         private @Nullable String description;
         private @Nullable Boolean failover;
         private String group;
@@ -308,6 +325,7 @@ public final class RegionBackendServiceBackend {
     	      Objects.requireNonNull(defaults);
     	      this.balancingMode = defaults.balancingMode;
     	      this.capacityScaler = defaults.capacityScaler;
+    	      this.customMetrics = defaults.customMetrics;
     	      this.description = defaults.description;
     	      this.failover = defaults.failover;
     	      this.group = defaults.group;
@@ -331,6 +349,15 @@ public final class RegionBackendServiceBackend {
 
             this.capacityScaler = capacityScaler;
             return this;
+        }
+        @CustomType.Setter
+        public Builder customMetrics(@Nullable List<RegionBackendServiceBackendCustomMetric> customMetrics) {
+
+            this.customMetrics = customMetrics;
+            return this;
+        }
+        public Builder customMetrics(RegionBackendServiceBackendCustomMetric... customMetrics) {
+            return customMetrics(List.of(customMetrics));
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
@@ -398,6 +425,7 @@ public final class RegionBackendServiceBackend {
             final var _resultValue = new RegionBackendServiceBackend();
             _resultValue.balancingMode = balancingMode;
             _resultValue.capacityScaler = capacityScaler;
+            _resultValue.customMetrics = customMetrics;
             _resultValue.description = description;
             _resultValue.failover = failover;
             _resultValue.group = group;

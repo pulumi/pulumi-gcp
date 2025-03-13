@@ -32,6 +32,9 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
     /// 
+    /// &gt; **Warning:** All arguments including the following potentially sensitive
+    /// values will be stored in the raw state as plain text: `disk_encryption_key.raw_key`, `disk_encryption_key.rsa_encrypted_key`.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Region Disk Basic
@@ -202,6 +205,20 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("asyncPrimaryDisk")]
         public Output<Outputs.RegionDiskAsyncPrimaryDisk?> AsyncPrimaryDisk { get; private set; } = null!;
+
+        /// <summary>
+        /// If set to true, a snapshot of the disk will be created before it is destroyed.
+        /// If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+        /// The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+        /// </summary>
+        [Output("createSnapshotBeforeDestroy")]
+        public Output<bool?> CreateSnapshotBeforeDestroy { get; private set; } = null!;
+
+        /// <summary>
+        /// This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+        /// </summary>
+        [Output("createSnapshotBeforeDestroyPrefix")]
+        public Output<string?> CreateSnapshotBeforeDestroyPrefix { get; private set; } = null!;
 
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -481,6 +498,20 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionDiskAsyncPrimaryDiskArgs>? AsyncPrimaryDisk { get; set; }
 
         /// <summary>
+        /// If set to true, a snapshot of the disk will be created before it is destroyed.
+        /// If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+        /// The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+        /// </summary>
+        [Input("createSnapshotBeforeDestroy")]
+        public Input<bool>? CreateSnapshotBeforeDestroy { get; set; }
+
+        /// <summary>
+        /// This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+        /// </summary>
+        [Input("createSnapshotBeforeDestroyPrefix")]
+        public Input<string>? CreateSnapshotBeforeDestroyPrefix { get; set; }
+
+        /// <summary>
         /// An optional description of this resource. Provide this property when
         /// you create the resource.
         /// </summary>
@@ -667,6 +698,20 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("asyncPrimaryDisk")]
         public Input<Inputs.RegionDiskAsyncPrimaryDiskGetArgs>? AsyncPrimaryDisk { get; set; }
+
+        /// <summary>
+        /// If set to true, a snapshot of the disk will be created before it is destroyed.
+        /// If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+        /// The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+        /// </summary>
+        [Input("createSnapshotBeforeDestroy")]
+        public Input<bool>? CreateSnapshotBeforeDestroy { get; set; }
+
+        /// <summary>
+        /// This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+        /// </summary>
+        [Input("createSnapshotBeforeDestroyPrefix")]
+        public Input<string>? CreateSnapshotBeforeDestroyPrefix { get; set; }
 
         /// <summary>
         /// Creation timestamp in RFC3339 text format.

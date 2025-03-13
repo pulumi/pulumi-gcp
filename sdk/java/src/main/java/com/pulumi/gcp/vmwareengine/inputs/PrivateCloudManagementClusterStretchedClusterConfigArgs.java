@@ -17,6 +17,7 @@ public final class PrivateCloudManagementClusterStretchedClusterConfigArgs exten
 
     /**
      * Zone that will remain operational when connection between the two zones is lost.
+     * Specify the zone in the following format: projects/{project}/locations/{location}.
      * 
      */
     @Import(name="preferredLocation")
@@ -24,6 +25,7 @@ public final class PrivateCloudManagementClusterStretchedClusterConfigArgs exten
 
     /**
      * @return Zone that will remain operational when connection between the two zones is lost.
+     * Specify the zone in the following format: projects/{project}/locations/{location}.
      * 
      */
     public Optional<Output<String>> preferredLocation() {
@@ -32,6 +34,7 @@ public final class PrivateCloudManagementClusterStretchedClusterConfigArgs exten
 
     /**
      * Additional zone for a higher level of availability and load balancing.
+     * Specify the zone in the following format: projects/{project}/locations/{location}.
      * 
      */
     @Import(name="secondaryLocation")
@@ -39,6 +42,7 @@ public final class PrivateCloudManagementClusterStretchedClusterConfigArgs exten
 
     /**
      * @return Additional zone for a higher level of availability and load balancing.
+     * Specify the zone in the following format: projects/{project}/locations/{location}.
      * 
      */
     public Optional<Output<String>> secondaryLocation() {
@@ -72,6 +76,7 @@ public final class PrivateCloudManagementClusterStretchedClusterConfigArgs exten
 
         /**
          * @param preferredLocation Zone that will remain operational when connection between the two zones is lost.
+         * Specify the zone in the following format: projects/{project}/locations/{location}.
          * 
          * @return builder
          * 
@@ -83,6 +88,7 @@ public final class PrivateCloudManagementClusterStretchedClusterConfigArgs exten
 
         /**
          * @param preferredLocation Zone that will remain operational when connection between the two zones is lost.
+         * Specify the zone in the following format: projects/{project}/locations/{location}.
          * 
          * @return builder
          * 
@@ -93,6 +99,7 @@ public final class PrivateCloudManagementClusterStretchedClusterConfigArgs exten
 
         /**
          * @param secondaryLocation Additional zone for a higher level of availability and load balancing.
+         * Specify the zone in the following format: projects/{project}/locations/{location}.
          * 
          * @return builder
          * 
@@ -104,6 +111,7 @@ public final class PrivateCloudManagementClusterStretchedClusterConfigArgs exten
 
         /**
          * @param secondaryLocation Additional zone for a higher level of availability and load balancing.
+         * Specify the zone in the following format: projects/{project}/locations/{location}.
          * 
          * @return builder
          * 

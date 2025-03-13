@@ -13,7 +13,9 @@ import javax.annotation.Nullable;
 public final class InterceptDeploymentGroupConnectedEndpointGroup {
     /**
      * @return (Output)
-     * Output only. A connected intercept endpoint group.
+     * The connected endpoint group&#39;s resource name, for example:
+     * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+     * See https://google.aip.dev/124.
      * 
      */
     private @Nullable String name;
@@ -21,7 +23,9 @@ public final class InterceptDeploymentGroupConnectedEndpointGroup {
     private InterceptDeploymentGroupConnectedEndpointGroup() {}
     /**
      * @return (Output)
-     * Output only. A connected intercept endpoint group.
+     * The connected endpoint group&#39;s resource name, for example:
+     * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+     * See https://google.aip.dev/124.
      * 
      */
     public Optional<String> name() {

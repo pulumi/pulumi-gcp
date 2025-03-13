@@ -586,6 +586,29 @@ class AlertPolicy(pulumi.CustomResource):
                 "auto_close": "1800s",
             })
         ```
+        ### Monitoring Alert Policy Sql Condition
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        alert_policy = gcp.monitoring.AlertPolicy("alert_policy",
+            display_name="My Alert Policy",
+            combiner="OR",
+            conditions=[{
+                "display_name": "minutes row count",
+                "condition_sql": {
+                    "query": "SELECT severity, resource FROM my_project.global._Default._AllLogs WHERE severity IS NOT NULL",
+                    "minutes": {
+                        "periodicity": 600,
+                    },
+                    "row_count_test": {
+                        "comparison": "COMPARISON_GT",
+                        "threshold": 0,
+                    },
+                },
+            }])
+        ```
 
         ## Import
 
@@ -761,6 +784,29 @@ class AlertPolicy(pulumi.CustomResource):
             alert_strategy={
                 "auto_close": "1800s",
             })
+        ```
+        ### Monitoring Alert Policy Sql Condition
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        alert_policy = gcp.monitoring.AlertPolicy("alert_policy",
+            display_name="My Alert Policy",
+            combiner="OR",
+            conditions=[{
+                "display_name": "minutes row count",
+                "condition_sql": {
+                    "query": "SELECT severity, resource FROM my_project.global._Default._AllLogs WHERE severity IS NOT NULL",
+                    "minutes": {
+                        "periodicity": 600,
+                    },
+                    "row_count_test": {
+                        "comparison": "COMPARISON_GT",
+                        "threshold": 0,
+                    },
+                },
+            }])
         ```
 
         ## Import

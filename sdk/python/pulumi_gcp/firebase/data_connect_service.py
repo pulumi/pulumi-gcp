@@ -505,7 +505,7 @@ class DataConnectService(pulumi.CustomResource):
             project="my-project-name",
             service="firebasedataconnect.googleapis.com",
             disable_on_destroy=False)
-        # Create an FDC service
+        # Create a Firebase Data Connect service
         default = gcp.firebase.DataConnectService("default",
             project="my-project-name",
             location="us-central1",
@@ -518,6 +518,25 @@ class DataConnectService(pulumi.CustomResource):
                 "key1": "value1",
                 "key2": "value2",
             },
+            opts = pulumi.ResourceOptions(depends_on=[fdc]))
+        ```
+        ### Firebasedataconnect Service With Force Deletion
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Enable Firebase Data Connect API
+        fdc = gcp.projects.Service("fdc",
+            project="my-project-name",
+            service="firebasedataconnect.googleapis.com",
+            disable_on_destroy=False)
+        # Create a Firebase Data Connect service
+        default = gcp.firebase.DataConnectService("default",
+            project="my-project-name",
+            location="us-central1",
+            service_id="example-service",
+            deletion_policy="FORCE",
             opts = pulumi.ResourceOptions(depends_on=[fdc]))
         ```
 
@@ -596,7 +615,7 @@ class DataConnectService(pulumi.CustomResource):
             project="my-project-name",
             service="firebasedataconnect.googleapis.com",
             disable_on_destroy=False)
-        # Create an FDC service
+        # Create a Firebase Data Connect service
         default = gcp.firebase.DataConnectService("default",
             project="my-project-name",
             location="us-central1",
@@ -609,6 +628,25 @@ class DataConnectService(pulumi.CustomResource):
                 "key1": "value1",
                 "key2": "value2",
             },
+            opts = pulumi.ResourceOptions(depends_on=[fdc]))
+        ```
+        ### Firebasedataconnect Service With Force Deletion
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Enable Firebase Data Connect API
+        fdc = gcp.projects.Service("fdc",
+            project="my-project-name",
+            service="firebasedataconnect.googleapis.com",
+            disable_on_destroy=False)
+        # Create a Firebase Data Connect service
+        default = gcp.firebase.DataConnectService("default",
+            project="my-project-name",
+            location="us-central1",
+            service_id="example-service",
+            deletion_policy="FORCE",
             opts = pulumi.ResourceOptions(depends_on=[fdc]))
         ```
 

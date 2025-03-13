@@ -27,13 +27,13 @@ class ChannelArgs:
         """
         The set of arguments for constructing a Channel resource.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
-        :param pulumi.Input[str] name: Required. The resource name of the channel. Must be unique within the location on the project.
-               
                
                
                - - -
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] crypto_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        :param pulumi.Input[str] name: The resource name of the channel. Must be unique within the location on the project.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] third_party_provider: The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
         """
         pulumi.set(__self__, "location", location)
@@ -51,6 +51,9 @@ class ChannelArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location for the resource
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -62,7 +65,7 @@ class ChannelArgs:
     @pulumi.getter(name="cryptoKeyName")
     def crypto_key_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         """
         return pulumi.get(self, "crypto_key_name")
 
@@ -74,11 +77,7 @@ class ChannelArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. The resource name of the channel. Must be unique within the location on the project.
-
-
-
-        - - -
+        The resource name of the channel. Must be unique within the location on the project.
         """
         return pulumi.get(self, "name")
 
@@ -90,7 +89,8 @@ class ChannelArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -127,21 +127,21 @@ class _ChannelState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Channel resources.
-        :param pulumi.Input[str] activation_token: Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
-        :param pulumi.Input[str] create_time: Output only. The creation time.
-        :param pulumi.Input[str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        :param pulumi.Input[str] activation_token: The activation token for the channel. The token must be used by the provider to register the channel for publishing.
+        :param pulumi.Input[str] create_time: The creation time.
+        :param pulumi.Input[str] crypto_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[str] name: Required. The resource name of the channel. Must be unique within the location on the project.
-               
                
                
                - - -
-        :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[str] pubsub_topic: Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
-        :param pulumi.Input[str] state: Output only. The state of a Channel. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE, INACTIVE
+        :param pulumi.Input[str] name: The resource name of the channel. Must be unique within the location on the project.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] pubsub_topic: The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
+        :param pulumi.Input[str] state: The state of a Channel.
         :param pulumi.Input[str] third_party_provider: The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
-        :param pulumi.Input[str] uid: Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
-        :param pulumi.Input[str] update_time: Output only. The last-modified time.
+        :param pulumi.Input[str] uid: Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+        :param pulumi.Input[str] update_time: The last-modified time.
         """
         if activation_token is not None:
             pulumi.set(__self__, "activation_token", activation_token)
@@ -170,7 +170,7 @@ class _ChannelState:
     @pulumi.getter(name="activationToken")
     def activation_token(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
+        The activation token for the channel. The token must be used by the provider to register the channel for publishing.
         """
         return pulumi.get(self, "activation_token")
 
@@ -182,7 +182,7 @@ class _ChannelState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The creation time.
+        The creation time.
         """
         return pulumi.get(self, "create_time")
 
@@ -194,7 +194,7 @@ class _ChannelState:
     @pulumi.getter(name="cryptoKeyName")
     def crypto_key_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         """
         return pulumi.get(self, "crypto_key_name")
 
@@ -207,6 +207,9 @@ class _ChannelState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location for the resource
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -218,11 +221,7 @@ class _ChannelState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. The resource name of the channel. Must be unique within the location on the project.
-
-
-
-        - - -
+        The resource name of the channel. Must be unique within the location on the project.
         """
         return pulumi.get(self, "name")
 
@@ -234,7 +233,8 @@ class _ChannelState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -246,7 +246,7 @@ class _ChannelState:
     @pulumi.getter(name="pubsubTopic")
     def pubsub_topic(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
+        The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
         """
         return pulumi.get(self, "pubsub_topic")
 
@@ -258,7 +258,7 @@ class _ChannelState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The state of a Channel. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE, INACTIVE
+        The state of a Channel.
         """
         return pulumi.get(self, "state")
 
@@ -282,7 +282,7 @@ class _ChannelState:
     @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+        Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         """
         return pulumi.get(self, "uid")
 
@@ -294,7 +294,7 @@ class _ChannelState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The last-modified time.
+        The last-modified time.
         """
         return pulumi.get(self, "update_time")
 
@@ -317,29 +317,25 @@ class Channel(pulumi.CustomResource):
         """
         The Eventarc Channel resource
 
+        To get more information about Channel, see:
+
+        * [API documentation](https://cloud.google.com/eventarc/docs/reference/rest/v1/projects.locations.channels)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/eventarc/standard/docs/third-parties/create-channels)
+
         ## Example Usage
 
-        ### Basic
+        ### Eventarc Channel With Cmek
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        test_project = gcp.organizations.get_project(project_id="my-project-name")
-        test_key_ring = gcp.kms.get_kms_key_ring(name="keyring",
-            location="us-west1")
-        key = gcp.kms.get_kms_crypto_key(name="key",
-            key_ring=test_key_ring.id)
-        key1_member = gcp.kms.CryptoKeyIAMMember("key1_member",
-            crypto_key_id=key1["id"],
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            member=f"serviceAccount:service-{test_project.number}@gcp-sa-eventarc.iam.gserviceaccount.com")
         primary = gcp.eventarc.Channel("primary",
-            location="us-west1",
-            name="channel",
-            project=test_project.project_id,
-            crypto_key_name=key1["id"],
-            third_party_provider=f"projects/{test_project.project_id}/locations/us-west1/providers/datadog",
-            opts = pulumi.ResourceOptions(depends_on=[key1_member]))
+            location="us-central1",
+            name="some-channel",
+            crypto_key_name="some-key",
+            third_party_provider="projects/my-project-name/locations/us-central1/providers/datadog")
         ```
 
         ## Import
@@ -368,14 +364,14 @@ class Channel(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        :param pulumi.Input[str] crypto_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[str] name: Required. The resource name of the channel. Must be unique within the location on the project.
-               
                
                
                - - -
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] name: The resource name of the channel. Must be unique within the location on the project.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] third_party_provider: The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
         """
         ...
@@ -387,29 +383,25 @@ class Channel(pulumi.CustomResource):
         """
         The Eventarc Channel resource
 
+        To get more information about Channel, see:
+
+        * [API documentation](https://cloud.google.com/eventarc/docs/reference/rest/v1/projects.locations.channels)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/eventarc/standard/docs/third-parties/create-channels)
+
         ## Example Usage
 
-        ### Basic
+        ### Eventarc Channel With Cmek
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        test_project = gcp.organizations.get_project(project_id="my-project-name")
-        test_key_ring = gcp.kms.get_kms_key_ring(name="keyring",
-            location="us-west1")
-        key = gcp.kms.get_kms_crypto_key(name="key",
-            key_ring=test_key_ring.id)
-        key1_member = gcp.kms.CryptoKeyIAMMember("key1_member",
-            crypto_key_id=key1["id"],
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            member=f"serviceAccount:service-{test_project.number}@gcp-sa-eventarc.iam.gserviceaccount.com")
         primary = gcp.eventarc.Channel("primary",
-            location="us-west1",
-            name="channel",
-            project=test_project.project_id,
-            crypto_key_name=key1["id"],
-            third_party_provider=f"projects/{test_project.project_id}/locations/us-west1/providers/datadog",
-            opts = pulumi.ResourceOptions(depends_on=[key1_member]))
+            location="us-central1",
+            name="some-channel",
+            crypto_key_name="some-key",
+            third_party_provider="projects/my-project-name/locations/us-central1/providers/datadog")
         ```
 
         ## Import
@@ -506,21 +498,21 @@ class Channel(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] activation_token: Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
-        :param pulumi.Input[str] create_time: Output only. The creation time.
-        :param pulumi.Input[str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        :param pulumi.Input[str] activation_token: The activation token for the channel. The token must be used by the provider to register the channel for publishing.
+        :param pulumi.Input[str] create_time: The creation time.
+        :param pulumi.Input[str] crypto_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[str] name: Required. The resource name of the channel. Must be unique within the location on the project.
-               
                
                
                - - -
-        :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[str] pubsub_topic: Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
-        :param pulumi.Input[str] state: Output only. The state of a Channel. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE, INACTIVE
+        :param pulumi.Input[str] name: The resource name of the channel. Must be unique within the location on the project.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] pubsub_topic: The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
+        :param pulumi.Input[str] state: The state of a Channel.
         :param pulumi.Input[str] third_party_provider: The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
-        :param pulumi.Input[str] uid: Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
-        :param pulumi.Input[str] update_time: Output only. The last-modified time.
+        :param pulumi.Input[str] uid: Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+        :param pulumi.Input[str] update_time: The last-modified time.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -543,7 +535,7 @@ class Channel(pulumi.CustomResource):
     @pulumi.getter(name="activationToken")
     def activation_token(self) -> pulumi.Output[str]:
         """
-        Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
+        The activation token for the channel. The token must be used by the provider to register the channel for publishing.
         """
         return pulumi.get(self, "activation_token")
 
@@ -551,7 +543,7 @@ class Channel(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Output only. The creation time.
+        The creation time.
         """
         return pulumi.get(self, "create_time")
 
@@ -559,7 +551,7 @@ class Channel(pulumi.CustomResource):
     @pulumi.getter(name="cryptoKeyName")
     def crypto_key_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         """
         return pulumi.get(self, "crypto_key_name")
 
@@ -568,6 +560,9 @@ class Channel(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location for the resource
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -575,11 +570,7 @@ class Channel(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Required. The resource name of the channel. Must be unique within the location on the project.
-
-
-
-        - - -
+        The resource name of the channel. Must be unique within the location on the project.
         """
         return pulumi.get(self, "name")
 
@@ -587,7 +578,8 @@ class Channel(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -595,7 +587,7 @@ class Channel(pulumi.CustomResource):
     @pulumi.getter(name="pubsubTopic")
     def pubsub_topic(self) -> pulumi.Output[str]:
         """
-        Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
+        The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
         """
         return pulumi.get(self, "pubsub_topic")
 
@@ -603,7 +595,7 @@ class Channel(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        Output only. The state of a Channel. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE, INACTIVE
+        The state of a Channel.
         """
         return pulumi.get(self, "state")
 
@@ -619,7 +611,7 @@ class Channel(pulumi.CustomResource):
     @pulumi.getter
     def uid(self) -> pulumi.Output[str]:
         """
-        Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+        Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         """
         return pulumi.get(self, "uid")
 
@@ -627,7 +619,7 @@ class Channel(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        Output only. The last-modified time.
+        The last-modified time.
         """
         return pulumi.get(self, "update_time")
 

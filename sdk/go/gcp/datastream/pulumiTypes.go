@@ -1599,6 +1599,595 @@ func (o ConnectionProfilePrivateConnectivityPtrOutput) PrivateConnection() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConnectionProfileSalesforceProfile struct {
+	// Domain for the Salesforce Org.
+	Domain string `pulumi:"domain"`
+	// OAuth credentials to use for Salesforce authentication.
+	// Structure is documented below.
+	Oauth2ClientCredentials *ConnectionProfileSalesforceProfileOauth2ClientCredentials `pulumi:"oauth2ClientCredentials"`
+	// User credentials to use for Salesforce authentication.
+	// Structure is documented below.
+	UserCredentials *ConnectionProfileSalesforceProfileUserCredentials `pulumi:"userCredentials"`
+}
+
+// ConnectionProfileSalesforceProfileInput is an input type that accepts ConnectionProfileSalesforceProfileArgs and ConnectionProfileSalesforceProfileOutput values.
+// You can construct a concrete instance of `ConnectionProfileSalesforceProfileInput` via:
+//
+//	ConnectionProfileSalesforceProfileArgs{...}
+type ConnectionProfileSalesforceProfileInput interface {
+	pulumi.Input
+
+	ToConnectionProfileSalesforceProfileOutput() ConnectionProfileSalesforceProfileOutput
+	ToConnectionProfileSalesforceProfileOutputWithContext(context.Context) ConnectionProfileSalesforceProfileOutput
+}
+
+type ConnectionProfileSalesforceProfileArgs struct {
+	// Domain for the Salesforce Org.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// OAuth credentials to use for Salesforce authentication.
+	// Structure is documented below.
+	Oauth2ClientCredentials ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrInput `pulumi:"oauth2ClientCredentials"`
+	// User credentials to use for Salesforce authentication.
+	// Structure is documented below.
+	UserCredentials ConnectionProfileSalesforceProfileUserCredentialsPtrInput `pulumi:"userCredentials"`
+}
+
+func (ConnectionProfileSalesforceProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileSalesforceProfile)(nil)).Elem()
+}
+
+func (i ConnectionProfileSalesforceProfileArgs) ToConnectionProfileSalesforceProfileOutput() ConnectionProfileSalesforceProfileOutput {
+	return i.ToConnectionProfileSalesforceProfileOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileSalesforceProfileArgs) ToConnectionProfileSalesforceProfileOutputWithContext(ctx context.Context) ConnectionProfileSalesforceProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileSalesforceProfileOutput)
+}
+
+func (i ConnectionProfileSalesforceProfileArgs) ToConnectionProfileSalesforceProfilePtrOutput() ConnectionProfileSalesforceProfilePtrOutput {
+	return i.ToConnectionProfileSalesforceProfilePtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileSalesforceProfileArgs) ToConnectionProfileSalesforceProfilePtrOutputWithContext(ctx context.Context) ConnectionProfileSalesforceProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileSalesforceProfileOutput).ToConnectionProfileSalesforceProfilePtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileSalesforceProfilePtrInput is an input type that accepts ConnectionProfileSalesforceProfileArgs, ConnectionProfileSalesforceProfilePtr and ConnectionProfileSalesforceProfilePtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileSalesforceProfilePtrInput` via:
+//
+//	        ConnectionProfileSalesforceProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileSalesforceProfilePtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileSalesforceProfilePtrOutput() ConnectionProfileSalesforceProfilePtrOutput
+	ToConnectionProfileSalesforceProfilePtrOutputWithContext(context.Context) ConnectionProfileSalesforceProfilePtrOutput
+}
+
+type connectionProfileSalesforceProfilePtrType ConnectionProfileSalesforceProfileArgs
+
+func ConnectionProfileSalesforceProfilePtr(v *ConnectionProfileSalesforceProfileArgs) ConnectionProfileSalesforceProfilePtrInput {
+	return (*connectionProfileSalesforceProfilePtrType)(v)
+}
+
+func (*connectionProfileSalesforceProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileSalesforceProfile)(nil)).Elem()
+}
+
+func (i *connectionProfileSalesforceProfilePtrType) ToConnectionProfileSalesforceProfilePtrOutput() ConnectionProfileSalesforceProfilePtrOutput {
+	return i.ToConnectionProfileSalesforceProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileSalesforceProfilePtrType) ToConnectionProfileSalesforceProfilePtrOutputWithContext(ctx context.Context) ConnectionProfileSalesforceProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileSalesforceProfilePtrOutput)
+}
+
+type ConnectionProfileSalesforceProfileOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileSalesforceProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileSalesforceProfile)(nil)).Elem()
+}
+
+func (o ConnectionProfileSalesforceProfileOutput) ToConnectionProfileSalesforceProfileOutput() ConnectionProfileSalesforceProfileOutput {
+	return o
+}
+
+func (o ConnectionProfileSalesforceProfileOutput) ToConnectionProfileSalesforceProfileOutputWithContext(ctx context.Context) ConnectionProfileSalesforceProfileOutput {
+	return o
+}
+
+func (o ConnectionProfileSalesforceProfileOutput) ToConnectionProfileSalesforceProfilePtrOutput() ConnectionProfileSalesforceProfilePtrOutput {
+	return o.ToConnectionProfileSalesforceProfilePtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileSalesforceProfileOutput) ToConnectionProfileSalesforceProfilePtrOutputWithContext(ctx context.Context) ConnectionProfileSalesforceProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileSalesforceProfile) *ConnectionProfileSalesforceProfile {
+		return &v
+	}).(ConnectionProfileSalesforceProfilePtrOutput)
+}
+
+// Domain for the Salesforce Org.
+func (o ConnectionProfileSalesforceProfileOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionProfileSalesforceProfile) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// OAuth credentials to use for Salesforce authentication.
+// Structure is documented below.
+func (o ConnectionProfileSalesforceProfileOutput) Oauth2ClientCredentials() ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileSalesforceProfile) *ConnectionProfileSalesforceProfileOauth2ClientCredentials {
+		return v.Oauth2ClientCredentials
+	}).(ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput)
+}
+
+// User credentials to use for Salesforce authentication.
+// Structure is documented below.
+func (o ConnectionProfileSalesforceProfileOutput) UserCredentials() ConnectionProfileSalesforceProfileUserCredentialsPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileSalesforceProfile) *ConnectionProfileSalesforceProfileUserCredentials {
+		return v.UserCredentials
+	}).(ConnectionProfileSalesforceProfileUserCredentialsPtrOutput)
+}
+
+type ConnectionProfileSalesforceProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileSalesforceProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileSalesforceProfile)(nil)).Elem()
+}
+
+func (o ConnectionProfileSalesforceProfilePtrOutput) ToConnectionProfileSalesforceProfilePtrOutput() ConnectionProfileSalesforceProfilePtrOutput {
+	return o
+}
+
+func (o ConnectionProfileSalesforceProfilePtrOutput) ToConnectionProfileSalesforceProfilePtrOutputWithContext(ctx context.Context) ConnectionProfileSalesforceProfilePtrOutput {
+	return o
+}
+
+func (o ConnectionProfileSalesforceProfilePtrOutput) Elem() ConnectionProfileSalesforceProfileOutput {
+	return o.ApplyT(func(v *ConnectionProfileSalesforceProfile) ConnectionProfileSalesforceProfile {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileSalesforceProfile
+		return ret
+	}).(ConnectionProfileSalesforceProfileOutput)
+}
+
+// Domain for the Salesforce Org.
+func (o ConnectionProfileSalesforceProfilePtrOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileSalesforceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Domain
+	}).(pulumi.StringPtrOutput)
+}
+
+// OAuth credentials to use for Salesforce authentication.
+// Structure is documented below.
+func (o ConnectionProfileSalesforceProfilePtrOutput) Oauth2ClientCredentials() ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileSalesforceProfile) *ConnectionProfileSalesforceProfileOauth2ClientCredentials {
+		if v == nil {
+			return nil
+		}
+		return v.Oauth2ClientCredentials
+	}).(ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput)
+}
+
+// User credentials to use for Salesforce authentication.
+// Structure is documented below.
+func (o ConnectionProfileSalesforceProfilePtrOutput) UserCredentials() ConnectionProfileSalesforceProfileUserCredentialsPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileSalesforceProfile) *ConnectionProfileSalesforceProfileUserCredentials {
+		if v == nil {
+			return nil
+		}
+		return v.UserCredentials
+	}).(ConnectionProfileSalesforceProfileUserCredentialsPtrOutput)
+}
+
+type ConnectionProfileSalesforceProfileOauth2ClientCredentials struct {
+	// Client ID to use for authentication.
+	ClientId *string `pulumi:"clientId"`
+	// Client secret to use for authentication.
+	ClientSecret *string `pulumi:"clientSecret"`
+	// A reference to a Secret Manager resource name storing the client secret.
+	SecretManagerStoredClientSecret *string `pulumi:"secretManagerStoredClientSecret"`
+}
+
+// ConnectionProfileSalesforceProfileOauth2ClientCredentialsInput is an input type that accepts ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs and ConnectionProfileSalesforceProfileOauth2ClientCredentialsOutput values.
+// You can construct a concrete instance of `ConnectionProfileSalesforceProfileOauth2ClientCredentialsInput` via:
+//
+//	ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs{...}
+type ConnectionProfileSalesforceProfileOauth2ClientCredentialsInput interface {
+	pulumi.Input
+
+	ToConnectionProfileSalesforceProfileOauth2ClientCredentialsOutput() ConnectionProfileSalesforceProfileOauth2ClientCredentialsOutput
+	ToConnectionProfileSalesforceProfileOauth2ClientCredentialsOutputWithContext(context.Context) ConnectionProfileSalesforceProfileOauth2ClientCredentialsOutput
+}
+
+type ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs struct {
+	// Client ID to use for authentication.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Client secret to use for authentication.
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// A reference to a Secret Manager resource name storing the client secret.
+	SecretManagerStoredClientSecret pulumi.StringPtrInput `pulumi:"secretManagerStoredClientSecret"`
+}
+
+func (ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileSalesforceProfileOauth2ClientCredentials)(nil)).Elem()
+}
+
+func (i ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs) ToConnectionProfileSalesforceProfileOauth2ClientCredentialsOutput() ConnectionProfileSalesforceProfileOauth2ClientCredentialsOutput {
+	return i.ToConnectionProfileSalesforceProfileOauth2ClientCredentialsOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs) ToConnectionProfileSalesforceProfileOauth2ClientCredentialsOutputWithContext(ctx context.Context) ConnectionProfileSalesforceProfileOauth2ClientCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileSalesforceProfileOauth2ClientCredentialsOutput)
+}
+
+func (i ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs) ToConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput() ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput {
+	return i.ToConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs) ToConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutputWithContext(ctx context.Context) ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileSalesforceProfileOauth2ClientCredentialsOutput).ToConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrInput is an input type that accepts ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs, ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtr and ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrInput` via:
+//
+//	        ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput() ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput
+	ToConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutputWithContext(context.Context) ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput
+}
+
+type connectionProfileSalesforceProfileOauth2ClientCredentialsPtrType ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs
+
+func ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtr(v *ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs) ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrInput {
+	return (*connectionProfileSalesforceProfileOauth2ClientCredentialsPtrType)(v)
+}
+
+func (*connectionProfileSalesforceProfileOauth2ClientCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileSalesforceProfileOauth2ClientCredentials)(nil)).Elem()
+}
+
+func (i *connectionProfileSalesforceProfileOauth2ClientCredentialsPtrType) ToConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput() ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput {
+	return i.ToConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileSalesforceProfileOauth2ClientCredentialsPtrType) ToConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutputWithContext(ctx context.Context) ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput)
+}
+
+type ConnectionProfileSalesforceProfileOauth2ClientCredentialsOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileSalesforceProfileOauth2ClientCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileSalesforceProfileOauth2ClientCredentials)(nil)).Elem()
+}
+
+func (o ConnectionProfileSalesforceProfileOauth2ClientCredentialsOutput) ToConnectionProfileSalesforceProfileOauth2ClientCredentialsOutput() ConnectionProfileSalesforceProfileOauth2ClientCredentialsOutput {
+	return o
+}
+
+func (o ConnectionProfileSalesforceProfileOauth2ClientCredentialsOutput) ToConnectionProfileSalesforceProfileOauth2ClientCredentialsOutputWithContext(ctx context.Context) ConnectionProfileSalesforceProfileOauth2ClientCredentialsOutput {
+	return o
+}
+
+func (o ConnectionProfileSalesforceProfileOauth2ClientCredentialsOutput) ToConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput() ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput {
+	return o.ToConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileSalesforceProfileOauth2ClientCredentialsOutput) ToConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutputWithContext(ctx context.Context) ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileSalesforceProfileOauth2ClientCredentials) *ConnectionProfileSalesforceProfileOauth2ClientCredentials {
+		return &v
+	}).(ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput)
+}
+
+// Client ID to use for authentication.
+func (o ConnectionProfileSalesforceProfileOauth2ClientCredentialsOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileSalesforceProfileOauth2ClientCredentials) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Client secret to use for authentication.
+func (o ConnectionProfileSalesforceProfileOauth2ClientCredentialsOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileSalesforceProfileOauth2ClientCredentials) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// A reference to a Secret Manager resource name storing the client secret.
+func (o ConnectionProfileSalesforceProfileOauth2ClientCredentialsOutput) SecretManagerStoredClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileSalesforceProfileOauth2ClientCredentials) *string {
+		return v.SecretManagerStoredClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileSalesforceProfileOauth2ClientCredentials)(nil)).Elem()
+}
+
+func (o ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput) ToConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput() ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput) ToConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutputWithContext(ctx context.Context) ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput) Elem() ConnectionProfileSalesforceProfileOauth2ClientCredentialsOutput {
+	return o.ApplyT(func(v *ConnectionProfileSalesforceProfileOauth2ClientCredentials) ConnectionProfileSalesforceProfileOauth2ClientCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileSalesforceProfileOauth2ClientCredentials
+		return ret
+	}).(ConnectionProfileSalesforceProfileOauth2ClientCredentialsOutput)
+}
+
+// Client ID to use for authentication.
+func (o ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileSalesforceProfileOauth2ClientCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Client secret to use for authentication.
+func (o ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileSalesforceProfileOauth2ClientCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// A reference to a Secret Manager resource name storing the client secret.
+func (o ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput) SecretManagerStoredClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileSalesforceProfileOauth2ClientCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretManagerStoredClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionProfileSalesforceProfileUserCredentials struct {
+	// Password of the user.
+	Password *string `pulumi:"password"`
+	// A reference to a Secret Manager resource name storing the user's password.
+	SecretManagerStoredPassword *string `pulumi:"secretManagerStoredPassword"`
+	// A reference to a Secret Manager resource name storing the user's security token.
+	//
+	// <a name="nestedSalesforceProfileOauth2ClientCredentials"></a>The `oauth2ClientCredentials` block supports:
+	SecretManagerStoredSecurityToken *string `pulumi:"secretManagerStoredSecurityToken"`
+	// Security token of the user.
+	SecurityToken *string `pulumi:"securityToken"`
+	// Username to use for authentication.
+	Username *string `pulumi:"username"`
+}
+
+// ConnectionProfileSalesforceProfileUserCredentialsInput is an input type that accepts ConnectionProfileSalesforceProfileUserCredentialsArgs and ConnectionProfileSalesforceProfileUserCredentialsOutput values.
+// You can construct a concrete instance of `ConnectionProfileSalesforceProfileUserCredentialsInput` via:
+//
+//	ConnectionProfileSalesforceProfileUserCredentialsArgs{...}
+type ConnectionProfileSalesforceProfileUserCredentialsInput interface {
+	pulumi.Input
+
+	ToConnectionProfileSalesforceProfileUserCredentialsOutput() ConnectionProfileSalesforceProfileUserCredentialsOutput
+	ToConnectionProfileSalesforceProfileUserCredentialsOutputWithContext(context.Context) ConnectionProfileSalesforceProfileUserCredentialsOutput
+}
+
+type ConnectionProfileSalesforceProfileUserCredentialsArgs struct {
+	// Password of the user.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// A reference to a Secret Manager resource name storing the user's password.
+	SecretManagerStoredPassword pulumi.StringPtrInput `pulumi:"secretManagerStoredPassword"`
+	// A reference to a Secret Manager resource name storing the user's security token.
+	//
+	// <a name="nestedSalesforceProfileOauth2ClientCredentials"></a>The `oauth2ClientCredentials` block supports:
+	SecretManagerStoredSecurityToken pulumi.StringPtrInput `pulumi:"secretManagerStoredSecurityToken"`
+	// Security token of the user.
+	SecurityToken pulumi.StringPtrInput `pulumi:"securityToken"`
+	// Username to use for authentication.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ConnectionProfileSalesforceProfileUserCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileSalesforceProfileUserCredentials)(nil)).Elem()
+}
+
+func (i ConnectionProfileSalesforceProfileUserCredentialsArgs) ToConnectionProfileSalesforceProfileUserCredentialsOutput() ConnectionProfileSalesforceProfileUserCredentialsOutput {
+	return i.ToConnectionProfileSalesforceProfileUserCredentialsOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileSalesforceProfileUserCredentialsArgs) ToConnectionProfileSalesforceProfileUserCredentialsOutputWithContext(ctx context.Context) ConnectionProfileSalesforceProfileUserCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileSalesforceProfileUserCredentialsOutput)
+}
+
+func (i ConnectionProfileSalesforceProfileUserCredentialsArgs) ToConnectionProfileSalesforceProfileUserCredentialsPtrOutput() ConnectionProfileSalesforceProfileUserCredentialsPtrOutput {
+	return i.ToConnectionProfileSalesforceProfileUserCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileSalesforceProfileUserCredentialsArgs) ToConnectionProfileSalesforceProfileUserCredentialsPtrOutputWithContext(ctx context.Context) ConnectionProfileSalesforceProfileUserCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileSalesforceProfileUserCredentialsOutput).ToConnectionProfileSalesforceProfileUserCredentialsPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileSalesforceProfileUserCredentialsPtrInput is an input type that accepts ConnectionProfileSalesforceProfileUserCredentialsArgs, ConnectionProfileSalesforceProfileUserCredentialsPtr and ConnectionProfileSalesforceProfileUserCredentialsPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileSalesforceProfileUserCredentialsPtrInput` via:
+//
+//	        ConnectionProfileSalesforceProfileUserCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileSalesforceProfileUserCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileSalesforceProfileUserCredentialsPtrOutput() ConnectionProfileSalesforceProfileUserCredentialsPtrOutput
+	ToConnectionProfileSalesforceProfileUserCredentialsPtrOutputWithContext(context.Context) ConnectionProfileSalesforceProfileUserCredentialsPtrOutput
+}
+
+type connectionProfileSalesforceProfileUserCredentialsPtrType ConnectionProfileSalesforceProfileUserCredentialsArgs
+
+func ConnectionProfileSalesforceProfileUserCredentialsPtr(v *ConnectionProfileSalesforceProfileUserCredentialsArgs) ConnectionProfileSalesforceProfileUserCredentialsPtrInput {
+	return (*connectionProfileSalesforceProfileUserCredentialsPtrType)(v)
+}
+
+func (*connectionProfileSalesforceProfileUserCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileSalesforceProfileUserCredentials)(nil)).Elem()
+}
+
+func (i *connectionProfileSalesforceProfileUserCredentialsPtrType) ToConnectionProfileSalesforceProfileUserCredentialsPtrOutput() ConnectionProfileSalesforceProfileUserCredentialsPtrOutput {
+	return i.ToConnectionProfileSalesforceProfileUserCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileSalesforceProfileUserCredentialsPtrType) ToConnectionProfileSalesforceProfileUserCredentialsPtrOutputWithContext(ctx context.Context) ConnectionProfileSalesforceProfileUserCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileSalesforceProfileUserCredentialsPtrOutput)
+}
+
+type ConnectionProfileSalesforceProfileUserCredentialsOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileSalesforceProfileUserCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileSalesforceProfileUserCredentials)(nil)).Elem()
+}
+
+func (o ConnectionProfileSalesforceProfileUserCredentialsOutput) ToConnectionProfileSalesforceProfileUserCredentialsOutput() ConnectionProfileSalesforceProfileUserCredentialsOutput {
+	return o
+}
+
+func (o ConnectionProfileSalesforceProfileUserCredentialsOutput) ToConnectionProfileSalesforceProfileUserCredentialsOutputWithContext(ctx context.Context) ConnectionProfileSalesforceProfileUserCredentialsOutput {
+	return o
+}
+
+func (o ConnectionProfileSalesforceProfileUserCredentialsOutput) ToConnectionProfileSalesforceProfileUserCredentialsPtrOutput() ConnectionProfileSalesforceProfileUserCredentialsPtrOutput {
+	return o.ToConnectionProfileSalesforceProfileUserCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileSalesforceProfileUserCredentialsOutput) ToConnectionProfileSalesforceProfileUserCredentialsPtrOutputWithContext(ctx context.Context) ConnectionProfileSalesforceProfileUserCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileSalesforceProfileUserCredentials) *ConnectionProfileSalesforceProfileUserCredentials {
+		return &v
+	}).(ConnectionProfileSalesforceProfileUserCredentialsPtrOutput)
+}
+
+// Password of the user.
+func (o ConnectionProfileSalesforceProfileUserCredentialsOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileSalesforceProfileUserCredentials) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// A reference to a Secret Manager resource name storing the user's password.
+func (o ConnectionProfileSalesforceProfileUserCredentialsOutput) SecretManagerStoredPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileSalesforceProfileUserCredentials) *string {
+		return v.SecretManagerStoredPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// A reference to a Secret Manager resource name storing the user's security token.
+//
+// <a name="nestedSalesforceProfileOauth2ClientCredentials"></a>The `oauth2ClientCredentials` block supports:
+func (o ConnectionProfileSalesforceProfileUserCredentialsOutput) SecretManagerStoredSecurityToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileSalesforceProfileUserCredentials) *string {
+		return v.SecretManagerStoredSecurityToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// Security token of the user.
+func (o ConnectionProfileSalesforceProfileUserCredentialsOutput) SecurityToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileSalesforceProfileUserCredentials) *string { return v.SecurityToken }).(pulumi.StringPtrOutput)
+}
+
+// Username to use for authentication.
+func (o ConnectionProfileSalesforceProfileUserCredentialsOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileSalesforceProfileUserCredentials) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionProfileSalesforceProfileUserCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileSalesforceProfileUserCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileSalesforceProfileUserCredentials)(nil)).Elem()
+}
+
+func (o ConnectionProfileSalesforceProfileUserCredentialsPtrOutput) ToConnectionProfileSalesforceProfileUserCredentialsPtrOutput() ConnectionProfileSalesforceProfileUserCredentialsPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileSalesforceProfileUserCredentialsPtrOutput) ToConnectionProfileSalesforceProfileUserCredentialsPtrOutputWithContext(ctx context.Context) ConnectionProfileSalesforceProfileUserCredentialsPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileSalesforceProfileUserCredentialsPtrOutput) Elem() ConnectionProfileSalesforceProfileUserCredentialsOutput {
+	return o.ApplyT(func(v *ConnectionProfileSalesforceProfileUserCredentials) ConnectionProfileSalesforceProfileUserCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileSalesforceProfileUserCredentials
+		return ret
+	}).(ConnectionProfileSalesforceProfileUserCredentialsOutput)
+}
+
+// Password of the user.
+func (o ConnectionProfileSalesforceProfileUserCredentialsPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileSalesforceProfileUserCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// A reference to a Secret Manager resource name storing the user's password.
+func (o ConnectionProfileSalesforceProfileUserCredentialsPtrOutput) SecretManagerStoredPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileSalesforceProfileUserCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretManagerStoredPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// A reference to a Secret Manager resource name storing the user's security token.
+//
+// <a name="nestedSalesforceProfileOauth2ClientCredentials"></a>The `oauth2ClientCredentials` block supports:
+func (o ConnectionProfileSalesforceProfileUserCredentialsPtrOutput) SecretManagerStoredSecurityToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileSalesforceProfileUserCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretManagerStoredSecurityToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// Security token of the user.
+func (o ConnectionProfileSalesforceProfileUserCredentialsPtrOutput) SecurityToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileSalesforceProfileUserCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username to use for authentication.
+func (o ConnectionProfileSalesforceProfileUserCredentialsPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileSalesforceProfileUserCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 type ConnectionProfileSqlServerProfile struct {
 	// Database for the SQL Server connection.
 	Database string `pulumi:"database"`
@@ -12718,6 +13307,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlProfilePtrInput)(nil)).Elem(), ConnectionProfilePostgresqlProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePrivateConnectivityInput)(nil)).Elem(), ConnectionProfilePrivateConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePrivateConnectivityPtrInput)(nil)).Elem(), ConnectionProfilePrivateConnectivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileSalesforceProfileInput)(nil)).Elem(), ConnectionProfileSalesforceProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileSalesforceProfilePtrInput)(nil)).Elem(), ConnectionProfileSalesforceProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileSalesforceProfileOauth2ClientCredentialsInput)(nil)).Elem(), ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrInput)(nil)).Elem(), ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileSalesforceProfileUserCredentialsInput)(nil)).Elem(), ConnectionProfileSalesforceProfileUserCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileSalesforceProfileUserCredentialsPtrInput)(nil)).Elem(), ConnectionProfileSalesforceProfileUserCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileSqlServerProfileInput)(nil)).Elem(), ConnectionProfileSqlServerProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileSqlServerProfilePtrInput)(nil)).Elem(), ConnectionProfileSqlServerProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionErrorInput)(nil)).Elem(), PrivateConnectionErrorArgs{})
@@ -12882,6 +13477,12 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionProfilePostgresqlProfilePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfilePrivateConnectivityOutput{})
 	pulumi.RegisterOutputType(ConnectionProfilePrivateConnectivityPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileSalesforceProfileOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileSalesforceProfilePtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileSalesforceProfileOauth2ClientCredentialsOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileSalesforceProfileUserCredentialsOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileSalesforceProfileUserCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileSqlServerProfileOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileSqlServerProfilePtrOutput{})
 	pulumi.RegisterOutputType(PrivateConnectionErrorOutput{})

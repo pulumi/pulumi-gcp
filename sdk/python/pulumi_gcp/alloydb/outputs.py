@@ -50,6 +50,7 @@ __all__ = [
     'InstanceNetworkConfigAuthorizedExternalNetwork',
     'InstanceObservabilityConfig',
     'InstancePscInstanceConfig',
+    'InstancePscInstanceConfigPscInterfaceConfig',
     'InstanceQueryInsightsConfig',
     'InstanceReadPoolConfig',
     'GetClusterAutomatedBackupPolicyResult',
@@ -83,6 +84,7 @@ __all__ = [
     'GetInstanceNetworkConfigAuthorizedExternalNetworkResult',
     'GetInstanceObservabilityConfigResult',
     'GetInstancePscInstanceConfigResult',
+    'GetInstancePscInstanceConfigPscInterfaceConfigResult',
     'GetInstanceQueryInsightsConfigResult',
     'GetInstanceReadPoolConfigResult',
     'GetLocationsLocationResult',
@@ -1843,6 +1845,8 @@ class InstancePscInstanceConfig(dict):
             suggest = "allowed_consumer_projects"
         elif key == "pscDnsName":
             suggest = "psc_dns_name"
+        elif key == "pscInterfaceConfigs":
+            suggest = "psc_interface_configs"
         elif key == "serviceAttachmentLink":
             suggest = "service_attachment_link"
 
@@ -1860,6 +1864,7 @@ class InstancePscInstanceConfig(dict):
     def __init__(__self__, *,
                  allowed_consumer_projects: Optional[Sequence[str]] = None,
                  psc_dns_name: Optional[str] = None,
+                 psc_interface_configs: Optional[Sequence['outputs.InstancePscInstanceConfigPscInterfaceConfig']] = None,
                  service_attachment_link: Optional[str] = None):
         """
         :param Sequence[str] allowed_consumer_projects: List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
@@ -1867,6 +1872,9 @@ class InstancePscInstanceConfig(dict):
         :param str psc_dns_name: (Output)
                The DNS name of the instance for PSC connectivity.
                Name convention: <uid>.<uid>.<region>.alloydb-psc.goog
+        :param Sequence['InstancePscInstanceConfigPscInterfaceConfigArgs'] psc_interface_configs: Configurations for setting up PSC interfaces attached to the instance
+               which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
+               Structure is documented below.
         :param str service_attachment_link: (Output)
                The service attachment created when Private Service Connect (PSC) is enabled for the instance.
                The name of the resource will be in the format of
@@ -1876,6 +1884,8 @@ class InstancePscInstanceConfig(dict):
             pulumi.set(__self__, "allowed_consumer_projects", allowed_consumer_projects)
         if psc_dns_name is not None:
             pulumi.set(__self__, "psc_dns_name", psc_dns_name)
+        if psc_interface_configs is not None:
+            pulumi.set(__self__, "psc_interface_configs", psc_interface_configs)
         if service_attachment_link is not None:
             pulumi.set(__self__, "service_attachment_link", service_attachment_link)
 
@@ -1899,6 +1909,16 @@ class InstancePscInstanceConfig(dict):
         return pulumi.get(self, "psc_dns_name")
 
     @property
+    @pulumi.getter(name="pscInterfaceConfigs")
+    def psc_interface_configs(self) -> Optional[Sequence['outputs.InstancePscInstanceConfigPscInterfaceConfig']]:
+        """
+        Configurations for setting up PSC interfaces attached to the instance
+        which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_interface_configs")
+
+    @property
     @pulumi.getter(name="serviceAttachmentLink")
     def service_attachment_link(self) -> Optional[str]:
         """
@@ -1908,6 +1928,46 @@ class InstancePscInstanceConfig(dict):
         `projects/<alloydb-tenant-project-number>/regions/<region-name>/serviceAttachments/<service-attachment-name>`
         """
         return pulumi.get(self, "service_attachment_link")
+
+
+@pulumi.output_type
+class InstancePscInstanceConfigPscInterfaceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkAttachmentResource":
+            suggest = "network_attachment_resource"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstancePscInstanceConfigPscInterfaceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstancePscInstanceConfigPscInterfaceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstancePscInstanceConfigPscInterfaceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network_attachment_resource: Optional[str] = None):
+        """
+        :param str network_attachment_resource: The network attachment resource created in the consumer project to which the PSC interface will be linked.
+               This is of the format: "projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}".
+               The network attachment must be in the same region as the instance.
+        """
+        if network_attachment_resource is not None:
+            pulumi.set(__self__, "network_attachment_resource", network_attachment_resource)
+
+    @property
+    @pulumi.getter(name="networkAttachmentResource")
+    def network_attachment_resource(self) -> Optional[str]:
+        """
+        The network attachment resource created in the consumer project to which the PSC interface will be linked.
+        This is of the format: "projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}".
+        The network attachment must be in the same region as the instance.
+        """
+        return pulumi.get(self, "network_attachment_resource")
 
 
 @pulumi.output_type
@@ -3039,18 +3099,22 @@ class GetInstancePscInstanceConfigResult(dict):
     def __init__(__self__, *,
                  allowed_consumer_projects: Sequence[str],
                  psc_dns_name: str,
+                 psc_interface_configs: Sequence['outputs.GetInstancePscInstanceConfigPscInterfaceConfigResult'],
                  service_attachment_link: str):
         """
         :param Sequence[str] allowed_consumer_projects: List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
                These should be specified as project numbers only.
         :param str psc_dns_name: The DNS name of the instance for PSC connectivity.
                Name convention: <uid>.<uid>.<region>.alloydb-psc.goog
+        :param Sequence['GetInstancePscInstanceConfigPscInterfaceConfigArgs'] psc_interface_configs: Configurations for setting up PSC interfaces attached to the instance
+               which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
         :param str service_attachment_link: The service attachment created when Private Service Connect (PSC) is enabled for the instance.
                The name of the resource will be in the format of
                'projects/<alloydb-tenant-project-number>/regions/<region-name>/serviceAttachments/<service-attachment-name>'
         """
         pulumi.set(__self__, "allowed_consumer_projects", allowed_consumer_projects)
         pulumi.set(__self__, "psc_dns_name", psc_dns_name)
+        pulumi.set(__self__, "psc_interface_configs", psc_interface_configs)
         pulumi.set(__self__, "service_attachment_link", service_attachment_link)
 
     @property
@@ -3072,6 +3136,15 @@ class GetInstancePscInstanceConfigResult(dict):
         return pulumi.get(self, "psc_dns_name")
 
     @property
+    @pulumi.getter(name="pscInterfaceConfigs")
+    def psc_interface_configs(self) -> Sequence['outputs.GetInstancePscInstanceConfigPscInterfaceConfigResult']:
+        """
+        Configurations for setting up PSC interfaces attached to the instance
+        which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
+        """
+        return pulumi.get(self, "psc_interface_configs")
+
+    @property
     @pulumi.getter(name="serviceAttachmentLink")
     def service_attachment_link(self) -> str:
         """
@@ -3080,6 +3153,28 @@ class GetInstancePscInstanceConfigResult(dict):
         'projects/<alloydb-tenant-project-number>/regions/<region-name>/serviceAttachments/<service-attachment-name>'
         """
         return pulumi.get(self, "service_attachment_link")
+
+
+@pulumi.output_type
+class GetInstancePscInstanceConfigPscInterfaceConfigResult(dict):
+    def __init__(__self__, *,
+                 network_attachment_resource: str):
+        """
+        :param str network_attachment_resource: The network attachment resource created in the consumer project to which the PSC interface will be linked.
+               This is of the format: "projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}".
+               The network attachment must be in the same region as the instance.
+        """
+        pulumi.set(__self__, "network_attachment_resource", network_attachment_resource)
+
+    @property
+    @pulumi.getter(name="networkAttachmentResource")
+    def network_attachment_resource(self) -> str:
+        """
+        The network attachment resource created in the consumer project to which the PSC interface will be linked.
+        This is of the format: "projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}".
+        The network attachment must be in the same region as the instance.
+        """
+        return pulumi.get(self, "network_attachment_resource")
 
 
 @pulumi.output_type

@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class MirroringEndpointGroupAssociationLocationsDetail {
     /**
-     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+     * @return The cloud location of the association, currently restricted to `global`.
      * 
      * ***
      * 
@@ -20,7 +20,7 @@ public final class MirroringEndpointGroupAssociationLocationsDetail {
     private @Nullable String location;
     /**
      * @return (Output)
-     * Output only. The association state in this location.
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -31,7 +31,7 @@ public final class MirroringEndpointGroupAssociationLocationsDetail {
 
     private MirroringEndpointGroupAssociationLocationsDetail() {}
     /**
-     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+     * @return The cloud location of the association, currently restricted to `global`.
      * 
      * ***
      * 
@@ -41,7 +41,7 @@ public final class MirroringEndpointGroupAssociationLocationsDetail {
     }
     /**
      * @return (Output)
-     * Output only. The association state in this location.
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE

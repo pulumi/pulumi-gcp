@@ -102,6 +102,14 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("provisioningModel")]
         public Input<string>? ProvisioningModel { get; set; }
 
+        /// <summary>
+        /// Specifies the timestamp, when the instance will be terminated,
+        /// in RFC3339 text format. If specified, the instance termination action
+        /// will be performed at the termination time.
+        /// </summary>
+        [Input("terminationTime")]
+        public Input<string>? TerminationTime { get; set; }
+
         public InstanceFromMachineImageSchedulingGetArgs()
         {
         }

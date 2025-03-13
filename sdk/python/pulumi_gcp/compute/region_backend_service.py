@@ -28,6 +28,7 @@ class RegionBackendServiceArgs:
                  connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
                  connection_tracking_policy: Optional[pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs']] = None,
                  consistent_hash: Optional[pulumi.Input['RegionBackendServiceConsistentHashArgs']] = None,
+                 custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCustomMetricArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  failover_policy: Optional[pulumi.Input['RegionBackendServiceFailoverPolicyArgs']] = None,
@@ -77,6 +78,8 @@ class RegionBackendServiceArgs:
                destination service. This field specifies parameters that control consistent
                hashing.
                This field only applies when all of the following are true -
+        :param pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCustomMetricArgs']]] custom_metrics: List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
+               Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this RegionBackendService.
         :param pulumi.Input['RegionBackendServiceFailoverPolicyArgs'] failover_policy: Policy for failovers.
@@ -130,6 +133,12 @@ class RegionBackendServiceArgs:
                instance either reported a valid weight or had
                UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
                equal-weight.
+               * `WEIGHTED_ROUND_ROBIN`: Per-endpoint weighted round-robin Load Balancing using weights computed
+               from Backend reported Custom Metrics. If set, the Backend Service
+               responses are expected to contain non-standard HTTP response header field
+               X-Endpoint-Load-Metrics. The reported metrics
+               to use for computing the weights are specified via the
+               backends[].customMetrics fields.
                locality_lb_policy is applicable to either:
                * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
                and loadBalancingScheme set to INTERNAL_MANAGED.
@@ -142,7 +151,7 @@ class RegionBackendServiceArgs:
                Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
                by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
                field set to true.
-               Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
+               Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
         :param pulumi.Input['RegionBackendServiceLogConfigArgs'] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
                If logging is enabled, logs will be exported to Stackdriver.
                Structure is documented below.
@@ -204,6 +213,8 @@ class RegionBackendServiceArgs:
             pulumi.set(__self__, "connection_tracking_policy", connection_tracking_policy)
         if consistent_hash is not None:
             pulumi.set(__self__, "consistent_hash", consistent_hash)
+        if custom_metrics is not None:
+            pulumi.set(__self__, "custom_metrics", custom_metrics)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable_cdn is not None:
@@ -351,6 +362,19 @@ class RegionBackendServiceArgs:
         pulumi.set(self, "consistent_hash", value)
 
     @property
+    @pulumi.getter(name="customMetrics")
+    def custom_metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCustomMetricArgs']]]]:
+        """
+        List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_metrics")
+
+    @custom_metrics.setter
+    def custom_metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCustomMetricArgs']]]]):
+        pulumi.set(self, "custom_metrics", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -484,6 +508,12 @@ class RegionBackendServiceArgs:
         instance either reported a valid weight or had
         UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
         equal-weight.
+        * `WEIGHTED_ROUND_ROBIN`: Per-endpoint weighted round-robin Load Balancing using weights computed
+        from Backend reported Custom Metrics. If set, the Backend Service
+        responses are expected to contain non-standard HTTP response header field
+        X-Endpoint-Load-Metrics. The reported metrics
+        to use for computing the weights are specified via the
+        backends[].customMetrics fields.
         locality_lb_policy is applicable to either:
         * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
         and loadBalancingScheme set to INTERNAL_MANAGED.
@@ -496,7 +526,7 @@ class RegionBackendServiceArgs:
         Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
         by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
         field set to true.
-        Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
+        Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
         """
         return pulumi.get(self, "locality_lb_policy")
 
@@ -705,6 +735,7 @@ class _RegionBackendServiceState:
                  connection_tracking_policy: Optional[pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs']] = None,
                  consistent_hash: Optional[pulumi.Input['RegionBackendServiceConsistentHashArgs']] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
+                 custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCustomMetricArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  failover_policy: Optional[pulumi.Input['RegionBackendServiceFailoverPolicyArgs']] = None,
@@ -758,6 +789,8 @@ class _RegionBackendServiceState:
                hashing.
                This field only applies when all of the following are true -
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCustomMetricArgs']]] custom_metrics: List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
+               Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this RegionBackendService.
         :param pulumi.Input['RegionBackendServiceFailoverPolicyArgs'] failover_policy: Policy for failovers.
@@ -814,6 +847,12 @@ class _RegionBackendServiceState:
                instance either reported a valid weight or had
                UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
                equal-weight.
+               * `WEIGHTED_ROUND_ROBIN`: Per-endpoint weighted round-robin Load Balancing using weights computed
+               from Backend reported Custom Metrics. If set, the Backend Service
+               responses are expected to contain non-standard HTTP response header field
+               X-Endpoint-Load-Metrics. The reported metrics
+               to use for computing the weights are specified via the
+               backends[].customMetrics fields.
                locality_lb_policy is applicable to either:
                * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
                and loadBalancingScheme set to INTERNAL_MANAGED.
@@ -826,7 +865,7 @@ class _RegionBackendServiceState:
                Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
                by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
                field set to true.
-               Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
+               Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
         :param pulumi.Input['RegionBackendServiceLogConfigArgs'] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
                If logging is enabled, logs will be exported to Stackdriver.
                Structure is documented below.
@@ -891,6 +930,8 @@ class _RegionBackendServiceState:
             pulumi.set(__self__, "consistent_hash", consistent_hash)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if custom_metrics is not None:
+            pulumi.set(__self__, "custom_metrics", custom_metrics)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable_cdn is not None:
@@ -1056,6 +1097,19 @@ class _RegionBackendServiceState:
         pulumi.set(self, "creation_timestamp", value)
 
     @property
+    @pulumi.getter(name="customMetrics")
+    def custom_metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCustomMetricArgs']]]]:
+        """
+        List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_metrics")
+
+    @custom_metrics.setter
+    def custom_metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCustomMetricArgs']]]]):
+        pulumi.set(self, "custom_metrics", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1214,6 +1268,12 @@ class _RegionBackendServiceState:
         instance either reported a valid weight or had
         UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
         equal-weight.
+        * `WEIGHTED_ROUND_ROBIN`: Per-endpoint weighted round-robin Load Balancing using weights computed
+        from Backend reported Custom Metrics. If set, the Backend Service
+        responses are expected to contain non-standard HTTP response header field
+        X-Endpoint-Load-Metrics. The reported metrics
+        to use for computing the weights are specified via the
+        backends[].customMetrics fields.
         locality_lb_policy is applicable to either:
         * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
         and loadBalancingScheme set to INTERNAL_MANAGED.
@@ -1226,7 +1286,7 @@ class _RegionBackendServiceState:
         Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
         by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
         field set to true.
-        Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
+        Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
         """
         return pulumi.get(self, "locality_lb_policy")
 
@@ -1448,6 +1508,7 @@ class RegionBackendService(pulumi.CustomResource):
                  connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
                  connection_tracking_policy: Optional[pulumi.Input[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']]] = None,
                  consistent_hash: Optional[pulumi.Input[Union['RegionBackendServiceConsistentHashArgs', 'RegionBackendServiceConsistentHashArgsDict']]] = None,
+                 custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  failover_policy: Optional[pulumi.Input[Union['RegionBackendServiceFailoverPolicyArgs', 'RegionBackendServiceFailoverPolicyArgsDict']]] = None,
@@ -1775,6 +1836,51 @@ class RegionBackendService(pulumi.CustomResource):
             protocol="HTTP",
             ip_address_selection_policy="IPV6_ONLY")
         ```
+        ### Region Backend Service Ilb Custom Metrics
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default", name="network")
+        # Zonal NEG with GCE_VM_IP_PORT
+        default_network_endpoint_group = gcp.compute.NetworkEndpointGroup("default",
+            name="network-endpoint",
+            network=default.id,
+            default_port=90,
+            zone="us-central1-a",
+            network_endpoint_type="GCE_VM_IP_PORT")
+        health_check = gcp.compute.HealthCheck("health_check",
+            name="rbs-health-check",
+            http_health_check={
+                "port": 80,
+            })
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            region="us-central1",
+            name="region-service",
+            health_checks=health_check.id,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            locality_lb_policy="WEIGHTED_ROUND_ROBIN",
+            custom_metrics=[{
+                "name": "orca.application_utilization",
+                "dry_run": False,
+            }],
+            backends=[{
+                "group": default_network_endpoint_group.id,
+                "balancing_mode": "CUSTOM_METRICS",
+                "custom_metrics": [
+                    {
+                        "name": "orca.cpu_utilization",
+                        "max_utilization": 0.9,
+                        "dry_run": True,
+                    },
+                    {
+                        "name": "orca.named_metrics.foo",
+                        "dry_run": False,
+                    },
+                ],
+            }])
+        ```
 
         ## Import
 
@@ -1834,6 +1940,8 @@ class RegionBackendService(pulumi.CustomResource):
                destination service. This field specifies parameters that control consistent
                hashing.
                This field only applies when all of the following are true -
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict']]]] custom_metrics: List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
+               Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this RegionBackendService.
         :param pulumi.Input[Union['RegionBackendServiceFailoverPolicyArgs', 'RegionBackendServiceFailoverPolicyArgsDict']] failover_policy: Policy for failovers.
@@ -1887,6 +1995,12 @@ class RegionBackendService(pulumi.CustomResource):
                instance either reported a valid weight or had
                UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
                equal-weight.
+               * `WEIGHTED_ROUND_ROBIN`: Per-endpoint weighted round-robin Load Balancing using weights computed
+               from Backend reported Custom Metrics. If set, the Backend Service
+               responses are expected to contain non-standard HTTP response header field
+               X-Endpoint-Load-Metrics. The reported metrics
+               to use for computing the weights are specified via the
+               backends[].customMetrics fields.
                locality_lb_policy is applicable to either:
                * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
                and loadBalancingScheme set to INTERNAL_MANAGED.
@@ -1899,7 +2013,7 @@ class RegionBackendService(pulumi.CustomResource):
                Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
                by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
                field set to true.
-               Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
+               Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
         :param pulumi.Input[Union['RegionBackendServiceLogConfigArgs', 'RegionBackendServiceLogConfigArgsDict']] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
                If logging is enabled, logs will be exported to Stackdriver.
                Structure is documented below.
@@ -2258,6 +2372,51 @@ class RegionBackendService(pulumi.CustomResource):
             protocol="HTTP",
             ip_address_selection_policy="IPV6_ONLY")
         ```
+        ### Region Backend Service Ilb Custom Metrics
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default", name="network")
+        # Zonal NEG with GCE_VM_IP_PORT
+        default_network_endpoint_group = gcp.compute.NetworkEndpointGroup("default",
+            name="network-endpoint",
+            network=default.id,
+            default_port=90,
+            zone="us-central1-a",
+            network_endpoint_type="GCE_VM_IP_PORT")
+        health_check = gcp.compute.HealthCheck("health_check",
+            name="rbs-health-check",
+            http_health_check={
+                "port": 80,
+            })
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            region="us-central1",
+            name="region-service",
+            health_checks=health_check.id,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            locality_lb_policy="WEIGHTED_ROUND_ROBIN",
+            custom_metrics=[{
+                "name": "orca.application_utilization",
+                "dry_run": False,
+            }],
+            backends=[{
+                "group": default_network_endpoint_group.id,
+                "balancing_mode": "CUSTOM_METRICS",
+                "custom_metrics": [
+                    {
+                        "name": "orca.cpu_utilization",
+                        "max_utilization": 0.9,
+                        "dry_run": True,
+                    },
+                    {
+                        "name": "orca.named_metrics.foo",
+                        "dry_run": False,
+                    },
+                ],
+            }])
+        ```
 
         ## Import
 
@@ -2311,6 +2470,7 @@ class RegionBackendService(pulumi.CustomResource):
                  connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
                  connection_tracking_policy: Optional[pulumi.Input[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']]] = None,
                  consistent_hash: Optional[pulumi.Input[Union['RegionBackendServiceConsistentHashArgs', 'RegionBackendServiceConsistentHashArgsDict']]] = None,
+                 custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  failover_policy: Optional[pulumi.Input[Union['RegionBackendServiceFailoverPolicyArgs', 'RegionBackendServiceFailoverPolicyArgsDict']]] = None,
@@ -2348,6 +2508,7 @@ class RegionBackendService(pulumi.CustomResource):
             __props__.__dict__["connection_draining_timeout_sec"] = connection_draining_timeout_sec
             __props__.__dict__["connection_tracking_policy"] = connection_tracking_policy
             __props__.__dict__["consistent_hash"] = consistent_hash
+            __props__.__dict__["custom_metrics"] = custom_metrics
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_cdn"] = enable_cdn
             __props__.__dict__["failover_policy"] = failover_policy
@@ -2391,6 +2552,7 @@ class RegionBackendService(pulumi.CustomResource):
             connection_tracking_policy: Optional[pulumi.Input[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']]] = None,
             consistent_hash: Optional[pulumi.Input[Union['RegionBackendServiceConsistentHashArgs', 'RegionBackendServiceConsistentHashArgsDict']]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
+            custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enable_cdn: Optional[pulumi.Input[bool]] = None,
             failover_policy: Optional[pulumi.Input[Union['RegionBackendServiceFailoverPolicyArgs', 'RegionBackendServiceFailoverPolicyArgsDict']]] = None,
@@ -2449,6 +2611,8 @@ class RegionBackendService(pulumi.CustomResource):
                hashing.
                This field only applies when all of the following are true -
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict']]]] custom_metrics: List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
+               Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this RegionBackendService.
         :param pulumi.Input[Union['RegionBackendServiceFailoverPolicyArgs', 'RegionBackendServiceFailoverPolicyArgsDict']] failover_policy: Policy for failovers.
@@ -2505,6 +2669,12 @@ class RegionBackendService(pulumi.CustomResource):
                instance either reported a valid weight or had
                UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
                equal-weight.
+               * `WEIGHTED_ROUND_ROBIN`: Per-endpoint weighted round-robin Load Balancing using weights computed
+               from Backend reported Custom Metrics. If set, the Backend Service
+               responses are expected to contain non-standard HTTP response header field
+               X-Endpoint-Load-Metrics. The reported metrics
+               to use for computing the weights are specified via the
+               backends[].customMetrics fields.
                locality_lb_policy is applicable to either:
                * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
                and loadBalancingScheme set to INTERNAL_MANAGED.
@@ -2517,7 +2687,7 @@ class RegionBackendService(pulumi.CustomResource):
                Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
                by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
                field set to true.
-               Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
+               Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
         :param pulumi.Input[Union['RegionBackendServiceLogConfigArgs', 'RegionBackendServiceLogConfigArgsDict']] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
                If logging is enabled, logs will be exported to Stackdriver.
                Structure is documented below.
@@ -2578,6 +2748,7 @@ class RegionBackendService(pulumi.CustomResource):
         __props__.__dict__["connection_tracking_policy"] = connection_tracking_policy
         __props__.__dict__["consistent_hash"] = consistent_hash
         __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["custom_metrics"] = custom_metrics
         __props__.__dict__["description"] = description
         __props__.__dict__["enable_cdn"] = enable_cdn
         __props__.__dict__["failover_policy"] = failover_policy
@@ -2686,6 +2857,15 @@ class RegionBackendService(pulumi.CustomResource):
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter(name="customMetrics")
+    def custom_metrics(self) -> pulumi.Output[Optional[Sequence['outputs.RegionBackendServiceCustomMetric']]]:
+        """
+        List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_metrics")
 
     @property
     @pulumi.getter
@@ -2810,6 +2990,12 @@ class RegionBackendService(pulumi.CustomResource):
         instance either reported a valid weight or had
         UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
         equal-weight.
+        * `WEIGHTED_ROUND_ROBIN`: Per-endpoint weighted round-robin Load Balancing using weights computed
+        from Backend reported Custom Metrics. If set, the Backend Service
+        responses are expected to contain non-standard HTTP response header field
+        X-Endpoint-Load-Metrics. The reported metrics
+        to use for computing the weights are specified via the
+        backends[].customMetrics fields.
         locality_lb_policy is applicable to either:
         * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
         and loadBalancingScheme set to INTERNAL_MANAGED.
@@ -2822,7 +3008,7 @@ class RegionBackendService(pulumi.CustomResource):
         Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
         by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
         field set to true.
-        Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
+        Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
         """
         return pulumi.get(self, "locality_lb_policy")
 

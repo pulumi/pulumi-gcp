@@ -105,6 +105,11 @@ public final class InstanceScheduling {
      * 
      */
     private @Nullable String provisioningModel;
+    /**
+     * @return Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
+     * 
+     */
+    private @Nullable String terminationTime;
 
     private InstanceScheduling() {}
     /**
@@ -221,6 +226,13 @@ public final class InstanceScheduling {
     public Optional<String> provisioningModel() {
         return Optional.ofNullable(this.provisioningModel);
     }
+    /**
+     * @return Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
+     * 
+     */
+    public Optional<String> terminationTime() {
+        return Optional.ofNullable(this.terminationTime);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -245,6 +257,7 @@ public final class InstanceScheduling {
         private @Nullable InstanceSchedulingOnInstanceStopAction onInstanceStopAction;
         private @Nullable Boolean preemptible;
         private @Nullable String provisioningModel;
+        private @Nullable String terminationTime;
         public Builder() {}
         public Builder(InstanceScheduling defaults) {
     	      Objects.requireNonNull(defaults);
@@ -262,6 +275,7 @@ public final class InstanceScheduling {
     	      this.onInstanceStopAction = defaults.onInstanceStopAction;
     	      this.preemptible = defaults.preemptible;
     	      this.provisioningModel = defaults.provisioningModel;
+    	      this.terminationTime = defaults.terminationTime;
         }
 
         @CustomType.Setter
@@ -351,6 +365,12 @@ public final class InstanceScheduling {
             this.provisioningModel = provisioningModel;
             return this;
         }
+        @CustomType.Setter
+        public Builder terminationTime(@Nullable String terminationTime) {
+
+            this.terminationTime = terminationTime;
+            return this;
+        }
         public InstanceScheduling build() {
             final var _resultValue = new InstanceScheduling();
             _resultValue.automaticRestart = automaticRestart;
@@ -367,6 +387,7 @@ public final class InstanceScheduling {
             _resultValue.onInstanceStopAction = onInstanceStopAction;
             _resultValue.preemptible = preemptible;
             _resultValue.provisioningModel = provisioningModel;
+            _resultValue.terminationTime = terminationTime;
             return _resultValue;
         }
     }

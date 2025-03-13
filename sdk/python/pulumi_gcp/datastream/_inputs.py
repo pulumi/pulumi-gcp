@@ -31,6 +31,12 @@ __all__ = [
     'ConnectionProfilePostgresqlProfileArgsDict',
     'ConnectionProfilePrivateConnectivityArgs',
     'ConnectionProfilePrivateConnectivityArgsDict',
+    'ConnectionProfileSalesforceProfileArgs',
+    'ConnectionProfileSalesforceProfileArgsDict',
+    'ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs',
+    'ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgsDict',
+    'ConnectionProfileSalesforceProfileUserCredentialsArgs',
+    'ConnectionProfileSalesforceProfileUserCredentialsArgsDict',
     'ConnectionProfileSqlServerProfileArgs',
     'ConnectionProfileSqlServerProfileArgsDict',
     'PrivateConnectionErrorArgs',
@@ -916,6 +922,273 @@ class ConnectionProfilePrivateConnectivityArgs:
     @private_connection.setter
     def private_connection(self, value: pulumi.Input[str]):
         pulumi.set(self, "private_connection", value)
+
+
+if not MYPY:
+    class ConnectionProfileSalesforceProfileArgsDict(TypedDict):
+        domain: pulumi.Input[str]
+        """
+        Domain for the Salesforce Org.
+        """
+        oauth2_client_credentials: NotRequired[pulumi.Input['ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgsDict']]
+        """
+        OAuth credentials to use for Salesforce authentication.
+        Structure is documented below.
+        """
+        user_credentials: NotRequired[pulumi.Input['ConnectionProfileSalesforceProfileUserCredentialsArgsDict']]
+        """
+        User credentials to use for Salesforce authentication.
+        Structure is documented below.
+        """
+elif False:
+    ConnectionProfileSalesforceProfileArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConnectionProfileSalesforceProfileArgs:
+    def __init__(__self__, *,
+                 domain: pulumi.Input[str],
+                 oauth2_client_credentials: Optional[pulumi.Input['ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs']] = None,
+                 user_credentials: Optional[pulumi.Input['ConnectionProfileSalesforceProfileUserCredentialsArgs']] = None):
+        """
+        :param pulumi.Input[str] domain: Domain for the Salesforce Org.
+        :param pulumi.Input['ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs'] oauth2_client_credentials: OAuth credentials to use for Salesforce authentication.
+               Structure is documented below.
+        :param pulumi.Input['ConnectionProfileSalesforceProfileUserCredentialsArgs'] user_credentials: User credentials to use for Salesforce authentication.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "domain", domain)
+        if oauth2_client_credentials is not None:
+            pulumi.set(__self__, "oauth2_client_credentials", oauth2_client_credentials)
+        if user_credentials is not None:
+            pulumi.set(__self__, "user_credentials", user_credentials)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> pulumi.Input[str]:
+        """
+        Domain for the Salesforce Org.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter(name="oauth2ClientCredentials")
+    def oauth2_client_credentials(self) -> Optional[pulumi.Input['ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs']]:
+        """
+        OAuth credentials to use for Salesforce authentication.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oauth2_client_credentials")
+
+    @oauth2_client_credentials.setter
+    def oauth2_client_credentials(self, value: Optional[pulumi.Input['ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs']]):
+        pulumi.set(self, "oauth2_client_credentials", value)
+
+    @property
+    @pulumi.getter(name="userCredentials")
+    def user_credentials(self) -> Optional[pulumi.Input['ConnectionProfileSalesforceProfileUserCredentialsArgs']]:
+        """
+        User credentials to use for Salesforce authentication.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "user_credentials")
+
+    @user_credentials.setter
+    def user_credentials(self, value: Optional[pulumi.Input['ConnectionProfileSalesforceProfileUserCredentialsArgs']]):
+        pulumi.set(self, "user_credentials", value)
+
+
+if not MYPY:
+    class ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgsDict(TypedDict):
+        client_id: NotRequired[pulumi.Input[str]]
+        """
+        Client ID to use for authentication.
+        """
+        client_secret: NotRequired[pulumi.Input[str]]
+        """
+        Client secret to use for authentication.
+        """
+        secret_manager_stored_client_secret: NotRequired[pulumi.Input[str]]
+        """
+        A reference to a Secret Manager resource name storing the client secret.
+        """
+elif False:
+    ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs:
+    def __init__(__self__, *,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
+                 secret_manager_stored_client_secret: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] client_id: Client ID to use for authentication.
+        :param pulumi.Input[str] client_secret: Client secret to use for authentication.
+        :param pulumi.Input[str] secret_manager_stored_client_secret: A reference to a Secret Manager resource name storing the client secret.
+        """
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if secret_manager_stored_client_secret is not None:
+            pulumi.set(__self__, "secret_manager_stored_client_secret", secret_manager_stored_client_secret)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Client ID to use for authentication.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        Client secret to use for authentication.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
+
+    @property
+    @pulumi.getter(name="secretManagerStoredClientSecret")
+    def secret_manager_stored_client_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reference to a Secret Manager resource name storing the client secret.
+        """
+        return pulumi.get(self, "secret_manager_stored_client_secret")
+
+    @secret_manager_stored_client_secret.setter
+    def secret_manager_stored_client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_manager_stored_client_secret", value)
+
+
+if not MYPY:
+    class ConnectionProfileSalesforceProfileUserCredentialsArgsDict(TypedDict):
+        password: NotRequired[pulumi.Input[str]]
+        """
+        Password of the user.
+        """
+        secret_manager_stored_password: NotRequired[pulumi.Input[str]]
+        """
+        A reference to a Secret Manager resource name storing the user's password.
+        """
+        secret_manager_stored_security_token: NotRequired[pulumi.Input[str]]
+        """
+        A reference to a Secret Manager resource name storing the user's security token.
+
+        <a name="nested_salesforce_profile_oauth2_client_credentials"></a>The `oauth2_client_credentials` block supports:
+        """
+        security_token: NotRequired[pulumi.Input[str]]
+        """
+        Security token of the user.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        Username to use for authentication.
+        """
+elif False:
+    ConnectionProfileSalesforceProfileUserCredentialsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConnectionProfileSalesforceProfileUserCredentialsArgs:
+    def __init__(__self__, *,
+                 password: Optional[pulumi.Input[str]] = None,
+                 secret_manager_stored_password: Optional[pulumi.Input[str]] = None,
+                 secret_manager_stored_security_token: Optional[pulumi.Input[str]] = None,
+                 security_token: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] password: Password of the user.
+        :param pulumi.Input[str] secret_manager_stored_password: A reference to a Secret Manager resource name storing the user's password.
+        :param pulumi.Input[str] secret_manager_stored_security_token: A reference to a Secret Manager resource name storing the user's security token.
+               
+               <a name="nested_salesforce_profile_oauth2_client_credentials"></a>The `oauth2_client_credentials` block supports:
+        :param pulumi.Input[str] security_token: Security token of the user.
+        :param pulumi.Input[str] username: Username to use for authentication.
+        """
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if secret_manager_stored_password is not None:
+            pulumi.set(__self__, "secret_manager_stored_password", secret_manager_stored_password)
+        if secret_manager_stored_security_token is not None:
+            pulumi.set(__self__, "secret_manager_stored_security_token", secret_manager_stored_security_token)
+        if security_token is not None:
+            pulumi.set(__self__, "security_token", security_token)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password of the user.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="secretManagerStoredPassword")
+    def secret_manager_stored_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reference to a Secret Manager resource name storing the user's password.
+        """
+        return pulumi.get(self, "secret_manager_stored_password")
+
+    @secret_manager_stored_password.setter
+    def secret_manager_stored_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_manager_stored_password", value)
+
+    @property
+    @pulumi.getter(name="secretManagerStoredSecurityToken")
+    def secret_manager_stored_security_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reference to a Secret Manager resource name storing the user's security token.
+
+        <a name="nested_salesforce_profile_oauth2_client_credentials"></a>The `oauth2_client_credentials` block supports:
+        """
+        return pulumi.get(self, "secret_manager_stored_security_token")
+
+    @secret_manager_stored_security_token.setter
+    def secret_manager_stored_security_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_manager_stored_security_token", value)
+
+    @property
+    @pulumi.getter(name="securityToken")
+    def security_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        Security token of the user.
+        """
+        return pulumi.get(self, "security_token")
+
+    @security_token.setter
+    def security_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_token", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username to use for authentication.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
 
 
 if not MYPY:

@@ -20,7 +20,7 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
     public static final InterceptDeploymentGroupState Empty = new InterceptDeploymentGroupState();
 
     /**
-     * Output only. The list of Intercept Endpoint Groups that are connected to this resource.
+     * The list of endpoint groups that are connected to this resource.
      * Structure is documented below.
      * 
      */
@@ -28,7 +28,7 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
     private @Nullable Output<List<InterceptDeploymentGroupConnectedEndpointGroupArgs>> connectedEndpointGroups;
 
     /**
-     * @return Output only. The list of Intercept Endpoint Groups that are connected to this resource.
+     * @return The list of endpoint groups that are connected to this resource.
      * Structure is documented below.
      * 
      */
@@ -37,18 +37,37 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
     }
 
     /**
-     * Output only. [Output only] Create time stamp
+     * The timestamp when the resource was created.
+     * See https://google.aip.dev/148#timestamps.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Output only. [Output only] Create time stamp
+     * @return The timestamp when the resource was created.
+     * See https://google.aip.dev/148#timestamps.
      * 
      */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * User-provided description of the deployment group.
+     * Used as additional context for the deployment group.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return User-provided description of the deployment group.
+     * Used as additional context for the deployment group.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
     }
 
     /**
@@ -67,9 +86,8 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
     }
 
     /**
-     * Required. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * intercept_deployment_group_id from the method_signature of Create RPC
+     * The ID to use for the new deployment group, which will become the final
+     * component of the deployment group&#39;s resource name.
      * 
      * ***
      * 
@@ -78,9 +96,8 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
     private @Nullable Output<String> interceptDeploymentGroupId;
 
     /**
-     * @return Required. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * intercept_deployment_group_id from the method_signature of Create RPC
+     * @return The ID to use for the new deployment group, which will become the final
+     * component of the deployment group&#39;s resource name.
      * 
      * ***
      * 
@@ -90,7 +107,7 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
     }
 
     /**
-     * Optional. Labels as key value pairs
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -99,7 +116,7 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels as key value pairs
+     * @return Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -109,14 +126,14 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
     }
 
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/InterceptDeploymentGroup`.
+     * The cloud location of the deployment group, currently restricted to `global`.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/InterceptDeploymentGroup`.
+     * @return The cloud location of the deployment group, currently restricted to `global`.
      * 
      */
     public Optional<Output<String>> location() {
@@ -125,7 +142,9 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
 
     /**
      * (Output)
-     * Output only. A connected intercept endpoint group.
+     * The connected endpoint group&#39;s resource name, for example:
+     * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+     * See https://google.aip.dev/124.
      * 
      */
     @Import(name="name")
@@ -133,7 +152,9 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
 
     /**
      * @return (Output)
-     * Output only. A connected intercept endpoint group.
+     * The connected endpoint group&#39;s resource name, for example:
+     * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+     * See https://google.aip.dev/124.
      * 
      */
     public Optional<Output<String>> name() {
@@ -141,16 +162,18 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
     }
 
     /**
-     * Required. Immutable. The network that is being used for the deployment. Format is:
-     * projects/{project}/global/networks/{network}.
+     * The network that will be used for all child deployments, for example:
+     * `projects/{project}/global/networks/{network}`.
+     * See https://google.aip.dev/124.
      * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
-     * @return Required. Immutable. The network that is being used for the deployment. Format is:
-     * projects/{project}/global/networks/{network}.
+     * @return The network that will be used for all child deployments, for example:
+     * `projects/{project}/global/networks/{network}`.
+     * See https://google.aip.dev/124.
      * 
      */
     public Optional<Output<String>> network() {
@@ -192,16 +215,20 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
     }
 
     /**
-     * Output only. Whether reconciling is in progress, recommended per
-     * https://google.aip.dev/128.
+     * The current state of the resource does not match the user&#39;s intended state,
+     * and the system is working to reconcile them. This is part of the normal
+     * operation (e.g. adding a new deployment to the group)
+     * See https://google.aip.dev/128.
      * 
      */
     @Import(name="reconciling")
     private @Nullable Output<Boolean> reconciling;
 
     /**
-     * @return Output only. Whether reconciling is in progress, recommended per
-     * https://google.aip.dev/128.
+     * @return The current state of the resource does not match the user&#39;s intended state,
+     * and the system is working to reconcile them. This is part of the normal
+     * operation (e.g. adding a new deployment to the group)
+     * See https://google.aip.dev/128.
      * 
      */
     public Optional<Output<Boolean>> reconciling() {
@@ -209,7 +236,8 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
     }
 
     /**
-     * Output only. Current state of the deployment group.
+     * The current state of the deployment group.
+     * See https://google.aip.dev/216.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -221,7 +249,8 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
     private @Nullable Output<String> state;
 
     /**
-     * @return Output only. Current state of the deployment group.
+     * @return The current state of the deployment group.
+     * See https://google.aip.dev/216.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -234,14 +263,16 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
     }
 
     /**
-     * Output only. [Output only] Update time stamp
+     * The timestamp when the resource was most recently updated.
+     * See https://google.aip.dev/148#timestamps.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return Output only. [Output only] Update time stamp
+     * @return The timestamp when the resource was most recently updated.
+     * See https://google.aip.dev/148#timestamps.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -253,6 +284,7 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
     private InterceptDeploymentGroupState(InterceptDeploymentGroupState $) {
         this.connectedEndpointGroups = $.connectedEndpointGroups;
         this.createTime = $.createTime;
+        this.description = $.description;
         this.effectiveLabels = $.effectiveLabels;
         this.interceptDeploymentGroupId = $.interceptDeploymentGroupId;
         this.labels = $.labels;
@@ -285,7 +317,7 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param connectedEndpointGroups Output only. The list of Intercept Endpoint Groups that are connected to this resource.
+         * @param connectedEndpointGroups The list of endpoint groups that are connected to this resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -297,7 +329,7 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param connectedEndpointGroups Output only. The list of Intercept Endpoint Groups that are connected to this resource.
+         * @param connectedEndpointGroups The list of endpoint groups that are connected to this resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -308,7 +340,7 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param connectedEndpointGroups Output only. The list of Intercept Endpoint Groups that are connected to this resource.
+         * @param connectedEndpointGroups The list of endpoint groups that are connected to this resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -319,7 +351,8 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param createTime Output only. [Output only] Create time stamp
+         * @param createTime The timestamp when the resource was created.
+         * See https://google.aip.dev/148#timestamps.
          * 
          * @return builder
          * 
@@ -330,13 +363,37 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param createTime Output only. [Output only] Create time stamp
+         * @param createTime The timestamp when the resource was created.
+         * See https://google.aip.dev/148#timestamps.
          * 
          * @return builder
          * 
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param description User-provided description of the deployment group.
+         * Used as additional context for the deployment group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description User-provided description of the deployment group.
+         * Used as additional context for the deployment group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**
@@ -361,9 +418,8 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param interceptDeploymentGroupId Required. Id of the requesting object
-         * If auto-generating Id server-side, remove this field and
-         * intercept_deployment_group_id from the method_signature of Create RPC
+         * @param interceptDeploymentGroupId The ID to use for the new deployment group, which will become the final
+         * component of the deployment group&#39;s resource name.
          * 
          * ***
          * 
@@ -376,9 +432,8 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param interceptDeploymentGroupId Required. Id of the requesting object
-         * If auto-generating Id server-side, remove this field and
-         * intercept_deployment_group_id from the method_signature of Create RPC
+         * @param interceptDeploymentGroupId The ID to use for the new deployment group, which will become the final
+         * component of the deployment group&#39;s resource name.
          * 
          * ***
          * 
@@ -390,7 +445,7 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs
+         * @param labels Labels are key/value pairs that help to organize and filter resources.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -403,7 +458,7 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs
+         * @param labels Labels are key/value pairs that help to organize and filter resources.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -415,7 +470,7 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/InterceptDeploymentGroup`.
+         * @param location The cloud location of the deployment group, currently restricted to `global`.
          * 
          * @return builder
          * 
@@ -426,7 +481,7 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/InterceptDeploymentGroup`.
+         * @param location The cloud location of the deployment group, currently restricted to `global`.
          * 
          * @return builder
          * 
@@ -437,7 +492,9 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
 
         /**
          * @param name (Output)
-         * Output only. A connected intercept endpoint group.
+         * The connected endpoint group&#39;s resource name, for example:
+         * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -449,7 +506,9 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
 
         /**
          * @param name (Output)
-         * Output only. A connected intercept endpoint group.
+         * The connected endpoint group&#39;s resource name, for example:
+         * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -459,8 +518,9 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param network Required. Immutable. The network that is being used for the deployment. Format is:
-         * projects/{project}/global/networks/{network}.
+         * @param network The network that will be used for all child deployments, for example:
+         * `projects/{project}/global/networks/{network}`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -471,8 +531,9 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param network Required. Immutable. The network that is being used for the deployment. Format is:
-         * projects/{project}/global/networks/{network}.
+         * @param network The network that will be used for all child deployments, for example:
+         * `projects/{project}/global/networks/{network}`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -528,8 +589,10 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param reconciling Output only. Whether reconciling is in progress, recommended per
-         * https://google.aip.dev/128.
+         * @param reconciling The current state of the resource does not match the user&#39;s intended state,
+         * and the system is working to reconcile them. This is part of the normal
+         * operation (e.g. adding a new deployment to the group)
+         * See https://google.aip.dev/128.
          * 
          * @return builder
          * 
@@ -540,8 +603,10 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param reconciling Output only. Whether reconciling is in progress, recommended per
-         * https://google.aip.dev/128.
+         * @param reconciling The current state of the resource does not match the user&#39;s intended state,
+         * and the system is working to reconcile them. This is part of the normal
+         * operation (e.g. adding a new deployment to the group)
+         * See https://google.aip.dev/128.
          * 
          * @return builder
          * 
@@ -551,7 +616,8 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param state Output only. Current state of the deployment group.
+         * @param state The current state of the deployment group.
+         * See https://google.aip.dev/216.
          * Possible values:
          * STATE_UNSPECIFIED
          * ACTIVE
@@ -567,7 +633,8 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param state Output only. Current state of the deployment group.
+         * @param state The current state of the deployment group.
+         * See https://google.aip.dev/216.
          * Possible values:
          * STATE_UNSPECIFIED
          * ACTIVE
@@ -582,7 +649,8 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param updateTime Output only. [Output only] Update time stamp
+         * @param updateTime The timestamp when the resource was most recently updated.
+         * See https://google.aip.dev/148#timestamps.
          * 
          * @return builder
          * 
@@ -593,7 +661,8 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param updateTime Output only. [Output only] Update time stamp
+         * @param updateTime The timestamp when the resource was most recently updated.
+         * See https://google.aip.dev/148#timestamps.
          * 
          * @return builder
          * 

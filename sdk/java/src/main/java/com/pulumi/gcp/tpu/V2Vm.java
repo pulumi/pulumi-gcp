@@ -168,6 +168,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .schedulingConfig(V2VmSchedulingConfigArgs.builder()
  *                 .preemptible(true)
+ *                 .spot(true)
  *                 .build())
  *             .shieldedInstanceConfig(V2VmShieldedInstanceConfigArgs.builder()
  *                 .enableSecureBoot(true)

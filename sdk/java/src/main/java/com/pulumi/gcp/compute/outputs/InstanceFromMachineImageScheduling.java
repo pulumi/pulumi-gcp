@@ -88,6 +88,13 @@ public final class InstanceFromMachineImageScheduling {
      * 
      */
     private @Nullable String provisioningModel;
+    /**
+     * @return Specifies the timestamp, when the instance will be terminated,
+     * in RFC3339 text format. If specified, the instance termination action
+     * will be performed at the termination time.
+     * 
+     */
+    private @Nullable String terminationTime;
 
     private InstanceFromMachineImageScheduling() {}
     /**
@@ -187,6 +194,15 @@ public final class InstanceFromMachineImageScheduling {
     public Optional<String> provisioningModel() {
         return Optional.ofNullable(this.provisioningModel);
     }
+    /**
+     * @return Specifies the timestamp, when the instance will be terminated,
+     * in RFC3339 text format. If specified, the instance termination action
+     * will be performed at the termination time.
+     * 
+     */
+    public Optional<String> terminationTime() {
+        return Optional.ofNullable(this.terminationTime);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -211,6 +227,7 @@ public final class InstanceFromMachineImageScheduling {
         private @Nullable InstanceFromMachineImageSchedulingOnInstanceStopAction onInstanceStopAction;
         private @Nullable Boolean preemptible;
         private @Nullable String provisioningModel;
+        private @Nullable String terminationTime;
         public Builder() {}
         public Builder(InstanceFromMachineImageScheduling defaults) {
     	      Objects.requireNonNull(defaults);
@@ -228,6 +245,7 @@ public final class InstanceFromMachineImageScheduling {
     	      this.onInstanceStopAction = defaults.onInstanceStopAction;
     	      this.preemptible = defaults.preemptible;
     	      this.provisioningModel = defaults.provisioningModel;
+    	      this.terminationTime = defaults.terminationTime;
         }
 
         @CustomType.Setter
@@ -317,6 +335,12 @@ public final class InstanceFromMachineImageScheduling {
             this.provisioningModel = provisioningModel;
             return this;
         }
+        @CustomType.Setter
+        public Builder terminationTime(@Nullable String terminationTime) {
+
+            this.terminationTime = terminationTime;
+            return this;
+        }
         public InstanceFromMachineImageScheduling build() {
             final var _resultValue = new InstanceFromMachineImageScheduling();
             _resultValue.automaticRestart = automaticRestart;
@@ -333,6 +357,7 @@ public final class InstanceFromMachineImageScheduling {
             _resultValue.onInstanceStopAction = onInstanceStopAction;
             _resultValue.preemptible = preemptible;
             _resultValue.provisioningModel = provisioningModel;
+            _resultValue.terminationTime = terminationTime;
             return _resultValue;
         }
     }

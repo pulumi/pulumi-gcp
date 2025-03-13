@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  *     interceptEndpointGroupId: "example-eg",
  *     location: "global",
  *     interceptDeploymentGroup: deploymentGroup.id,
+ *     description: "some description",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -85,38 +86,47 @@ export class InterceptEndpointGroup extends pulumi.CustomResource {
     }
 
     /**
-     * Create time stamp.
+     * The timestamp when the resource was created.
+     * See https://google.aip.dev/148#timestamps.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * User-provided description of the endpoint group.
+     * Used as additional context for the endpoint group.
+     */
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Immutable. The Intercept Deployment Group that this resource is connected to. Format
-     * is:
-     * `projects/{project}/locations/global/interceptDeploymentGroups/{interceptDeploymentGroup}`
+     * The deployment group that this endpoint group is connected to, for example:
+     * `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
      */
     public readonly interceptDeploymentGroup!: pulumi.Output<string>;
     /**
-     * ID of the Intercept Endpoint Group.
+     * The ID to use for the endpoint group, which will become the final component
+     * of the endpoint group's resource name.
      *
      *
      * - - -
      */
     public readonly interceptEndpointGroupId!: pulumi.Output<string>;
     /**
-     * Optional. Labels as key value pairs
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The location of the Intercept Endpoint Group, currently restricted to `global`.
+     * The cloud location of the endpoint group, currently restricted to `global`.
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Identifier. The name of the Intercept Endpoint Group.
+     * The resource name of this endpoint group, for example:
+     * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+     * See https://google.aip.dev/122 for more details.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -130,12 +140,15 @@ export class InterceptEndpointGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Whether reconciling is in progress, recommended per
-     * https://google.aip.dev/128.
+     * The current state of the resource does not match the user's intended state,
+     * and the system is working to reconcile them. This is part of the normal
+     * operation (e.g. adding a new association to the group).
+     * See https://google.aip.dev/128.
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
-     * Current state of the endpoint group.
+     * The current state of the endpoint group.
+     * See https://google.aip.dev/216.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -143,10 +156,12 @@ export class InterceptEndpointGroup extends pulumi.CustomResource {
      * CREATING
      * DELETING
      * OUT_OF_SYNC
+     * DELETE_FAILED
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Update time stamp.
+     * The timestamp when the resource was most recently updated.
+     * See https://google.aip.dev/148#timestamps.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -164,6 +179,7 @@ export class InterceptEndpointGroup extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as InterceptEndpointGroupState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["interceptDeploymentGroup"] = state ? state.interceptDeploymentGroup : undefined;
             resourceInputs["interceptEndpointGroupId"] = state ? state.interceptEndpointGroupId : undefined;
@@ -186,6 +202,7 @@ export class InterceptEndpointGroup extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
+            resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["interceptDeploymentGroup"] = args ? args.interceptDeploymentGroup : undefined;
             resourceInputs["interceptEndpointGroupId"] = args ? args.interceptEndpointGroupId : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -211,38 +228,47 @@ export class InterceptEndpointGroup extends pulumi.CustomResource {
  */
 export interface InterceptEndpointGroupState {
     /**
-     * Create time stamp.
+     * The timestamp when the resource was created.
+     * See https://google.aip.dev/148#timestamps.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * User-provided description of the endpoint group.
+     * Used as additional context for the endpoint group.
+     */
+    description?: pulumi.Input<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Immutable. The Intercept Deployment Group that this resource is connected to. Format
-     * is:
-     * `projects/{project}/locations/global/interceptDeploymentGroups/{interceptDeploymentGroup}`
+     * The deployment group that this endpoint group is connected to, for example:
+     * `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
      */
     interceptDeploymentGroup?: pulumi.Input<string>;
     /**
-     * ID of the Intercept Endpoint Group.
+     * The ID to use for the endpoint group, which will become the final component
+     * of the endpoint group's resource name.
      *
      *
      * - - -
      */
     interceptEndpointGroupId?: pulumi.Input<string>;
     /**
-     * Optional. Labels as key value pairs
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The location of the Intercept Endpoint Group, currently restricted to `global`.
+     * The cloud location of the endpoint group, currently restricted to `global`.
      */
     location?: pulumi.Input<string>;
     /**
-     * Identifier. The name of the Intercept Endpoint Group.
+     * The resource name of this endpoint group, for example:
+     * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+     * See https://google.aip.dev/122 for more details.
      */
     name?: pulumi.Input<string>;
     /**
@@ -256,12 +282,15 @@ export interface InterceptEndpointGroupState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Whether reconciling is in progress, recommended per
-     * https://google.aip.dev/128.
+     * The current state of the resource does not match the user's intended state,
+     * and the system is working to reconcile them. This is part of the normal
+     * operation (e.g. adding a new association to the group).
+     * See https://google.aip.dev/128.
      */
     reconciling?: pulumi.Input<boolean>;
     /**
-     * Current state of the endpoint group.
+     * The current state of the endpoint group.
+     * See https://google.aip.dev/216.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -269,10 +298,12 @@ export interface InterceptEndpointGroupState {
      * CREATING
      * DELETING
      * OUT_OF_SYNC
+     * DELETE_FAILED
      */
     state?: pulumi.Input<string>;
     /**
-     * Update time stamp.
+     * The timestamp when the resource was most recently updated.
+     * See https://google.aip.dev/148#timestamps.
      */
     updateTime?: pulumi.Input<string>;
 }
@@ -282,26 +313,32 @@ export interface InterceptEndpointGroupState {
  */
 export interface InterceptEndpointGroupArgs {
     /**
-     * Immutable. The Intercept Deployment Group that this resource is connected to. Format
-     * is:
-     * `projects/{project}/locations/global/interceptDeploymentGroups/{interceptDeploymentGroup}`
+     * User-provided description of the endpoint group.
+     * Used as additional context for the endpoint group.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The deployment group that this endpoint group is connected to, for example:
+     * `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
      */
     interceptDeploymentGroup: pulumi.Input<string>;
     /**
-     * ID of the Intercept Endpoint Group.
+     * The ID to use for the endpoint group, which will become the final component
+     * of the endpoint group's resource name.
      *
      *
      * - - -
      */
     interceptEndpointGroupId: pulumi.Input<string>;
     /**
-     * Optional. Labels as key value pairs
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The location of the Intercept Endpoint Group, currently restricted to `global`.
+     * The cloud location of the endpoint group, currently restricted to `global`.
      */
     location: pulumi.Input<string>;
     /**

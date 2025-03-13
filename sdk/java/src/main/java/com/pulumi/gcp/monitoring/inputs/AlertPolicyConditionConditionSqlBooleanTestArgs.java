@@ -15,8 +15,8 @@ public final class AlertPolicyConditionConditionSqlBooleanTestArgs extends com.p
     public static final AlertPolicyConditionConditionSqlBooleanTestArgs Empty = new AlertPolicyConditionConditionSqlBooleanTestArgs();
 
     /**
-     * The name of the column containing the boolean value. If the value
-     * in a row is NULL, that row is ignored.
+     * The name of the column containing the boolean value. If the value in a row is
+     * NULL, that row is ignored.
      * 
      * ***
      * 
@@ -25,8 +25,8 @@ public final class AlertPolicyConditionConditionSqlBooleanTestArgs extends com.p
     private Output<String> column;
 
     /**
-     * @return The name of the column containing the boolean value. If the value
-     * in a row is NULL, that row is ignored.
+     * @return The name of the column containing the boolean value. If the value in a row is
+     * NULL, that row is ignored.
      * 
      * ***
      * 
@@ -60,8 +60,8 @@ public final class AlertPolicyConditionConditionSqlBooleanTestArgs extends com.p
         }
 
         /**
-         * @param column The name of the column containing the boolean value. If the value
-         * in a row is NULL, that row is ignored.
+         * @param column The name of the column containing the boolean value. If the value in a row is
+         * NULL, that row is ignored.
          * 
          * ***
          * 
@@ -74,8 +74,8 @@ public final class AlertPolicyConditionConditionSqlBooleanTestArgs extends com.p
         }
 
         /**
-         * @param column The name of the column containing the boolean value. If the value
-         * in a row is NULL, that row is ignored.
+         * @param column The name of the column containing the boolean value. If the value in a row is
+         * NULL, that row is ignored.
          * 
          * ***
          * 

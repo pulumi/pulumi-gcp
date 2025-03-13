@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
     public sealed class InterceptEndpointGroupAssociationLocationsDetail
     {
         /// <summary>
-        /// The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+        /// The cloud location of the association, currently restricted to `global`.
         /// 
         /// 
         /// - - -
@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
         public readonly string? Location;
         /// <summary>
         /// (Output)
-        /// The association state in this location.
+        /// The current state of the association in this location.
         /// Possible values:
         /// STATE_UNSPECIFIED
         /// ACTIVE

@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
         /// for an explanation of load balancing modes.
         /// Default value is `UTILIZATION`.
-        /// Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
+        /// Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
         /// </summary>
         public readonly string? BalancingMode;
         /// <summary>
@@ -32,6 +32,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// 0% of its available Capacity. Valid range is [0.0,1.0].
         /// </summary>
         public readonly double? CapacityScaler;
+        /// <summary>
+        /// The set of custom metrics that are used for &lt;code&gt;CUSTOM_METRICS&lt;/code&gt; BalancingMode.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.RegionBackendServiceBackendCustomMetric> CustomMetrics;
         /// <summary>
         /// An optional description of this resource.
         /// Provide this property when you create the resource.
@@ -128,6 +133,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             double? capacityScaler,
 
+            ImmutableArray<Outputs.RegionBackendServiceBackendCustomMetric> customMetrics,
+
             string? description,
 
             bool? failover,
@@ -150,6 +157,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         {
             BalancingMode = balancingMode;
             CapacityScaler = capacityScaler;
+            CustomMetrics = customMetrics;
             Description = description;
             Failover = failover;
             Group = group;

@@ -18,14 +18,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A policy binding to a Project
- * 
- * To get more information about ProjectsPolicyBinding, see:
- * 
- * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/projects.locations.policyBindings)
- * * How-to Guides
- *     * [Apply a policy binding](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create#create_binding)
- * 
  * ## Example Usage
  * 
  * ### Iam Projects Policy Binding
@@ -66,7 +58,7 @@ import javax.annotation.Nullable;
  *         var pabPolicy = new PrincipalAccessBoundaryPolicy("pabPolicy", PrincipalAccessBoundaryPolicyArgs.builder()
  *             .organization("123456789")
  *             .location("global")
- *             .displayName("test project binding")
+ *             .displayName("binding for all principals in the project")
  *             .principalAccessBoundaryPolicyId("my-pab-policy")
  *             .build());
  * 
@@ -76,12 +68,12 @@ import javax.annotation.Nullable;
  *                 .dependsOn(pabPolicy)
  *                 .build());
  * 
- *         var my_project_binding = new ProjectsPolicyBinding("my-project-binding", ProjectsPolicyBindingArgs.builder()
+ *         var binding_for_all_project_principals = new ProjectsPolicyBinding("binding-for-all-project-principals", ProjectsPolicyBindingArgs.builder()
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .location("global")
- *             .displayName("test project binding")
+ *             .displayName("binding for all principals in the project")
  *             .policyKind("PRINCIPAL_ACCESS_BOUNDARY")
- *             .policyBindingId("test-project-binding")
+ *             .policyBindingId("binding-for-all-project-principals")
  *             .policy(pabPolicy.principalAccessBoundaryPolicyId().applyValue(principalAccessBoundaryPolicyId -> String.format("organizations/123456789/locations/global/principalAccessBoundaryPolicies/%s", principalAccessBoundaryPolicyId)))
  *             .target(ProjectsPolicyBindingTargetArgs.builder()
  *                 .principalSet(String.format("//cloudresourcemanager.googleapis.com/projects/%s", project.applyValue(getProjectResult -> getProjectResult.projectId())))

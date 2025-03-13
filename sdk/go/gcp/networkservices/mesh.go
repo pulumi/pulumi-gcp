@@ -11,6 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Mesh represents a logical configuration grouping for workload to workload communication within a
+// service mesh. Routes that point to mesh dictate how requests are routed within this logical
+// mesh boundary.
+//
+// To get more information about Mesh, see:
+//
+// * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1beta1/projects.locations.meshes)
+//
 // ## Example Usage
 //
 // ### Network Services Mesh Basic

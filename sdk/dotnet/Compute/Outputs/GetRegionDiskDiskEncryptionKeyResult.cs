@@ -23,6 +23,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string RawKey;
         /// <summary>
+        /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+        /// customer-supplied encryption key to either encrypt or decrypt
+        /// this resource. You can provide either the rawKey or the rsaEncryptedKey.
+        /// </summary>
+        public readonly string RsaEncryptedKey;
+        /// <summary>
         /// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
         /// encryption key that protects this resource.
         /// </summary>
@@ -34,10 +40,13 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string rawKey,
 
+            string rsaEncryptedKey,
+
             string sha256)
         {
             KmsKeyName = kmsKeyName;
             RawKey = rawKey;
+            RsaEncryptedKey = rsaEncryptedKey;
             Sha256 = sha256;
         }
     }

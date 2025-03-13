@@ -355,6 +355,11 @@ export const getRegionNetworkEndpointGroup: typeof import("./getRegionNetworkEnd
 export const getRegionNetworkEndpointGroupOutput: typeof import("./getRegionNetworkEndpointGroup").getRegionNetworkEndpointGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getRegionNetworkEndpointGroup","getRegionNetworkEndpointGroupOutput"], () => require("./getRegionNetworkEndpointGroup"));
 
+export { GetRegionSSLPolicyArgs, GetRegionSSLPolicyResult, GetRegionSSLPolicyOutputArgs } from "./getRegionSSLPolicy";
+export const getRegionSSLPolicy: typeof import("./getRegionSSLPolicy").getRegionSSLPolicy = null as any;
+export const getRegionSSLPolicyOutput: typeof import("./getRegionSSLPolicy").getRegionSSLPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getRegionSSLPolicy","getRegionSSLPolicyOutput"], () => require("./getRegionSSLPolicy"));
+
 export { GetRegionSslCertificateArgs, GetRegionSslCertificateResult, GetRegionSslCertificateOutputArgs } from "./getRegionSslCertificate";
 export const getRegionSslCertificate: typeof import("./getRegionSslCertificate").getRegionSslCertificate = null as any;
 export const getRegionSslCertificateOutput: typeof import("./getRegionSslCertificate").getRegionSslCertificateOutput = null as any;

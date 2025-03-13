@@ -14,6 +14,7 @@ import com.pulumi.gcp.compute.outputs.BackendServiceBackend;
 import com.pulumi.gcp.compute.outputs.BackendServiceCdnPolicy;
 import com.pulumi.gcp.compute.outputs.BackendServiceCircuitBreakers;
 import com.pulumi.gcp.compute.outputs.BackendServiceConsistentHash;
+import com.pulumi.gcp.compute.outputs.BackendServiceCustomMetric;
 import com.pulumi.gcp.compute.outputs.BackendServiceIap;
 import com.pulumi.gcp.compute.outputs.BackendServiceLocalityLbPolicy;
 import com.pulumi.gcp.compute.outputs.BackendServiceLogConfig;
@@ -714,6 +715,92 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Backend Service Custom Metrics
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.NetworkEndpointGroup;
+ * import com.pulumi.gcp.compute.NetworkEndpointGroupArgs;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceCustomMetricArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceBackendArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Network("default", NetworkArgs.builder()
+ *             .name("network")
+ *             .build());
+ * 
+ *         // Zonal NEG with GCE_VM_IP_PORT
+ *         var defaultNetworkEndpointGroup = new NetworkEndpointGroup("defaultNetworkEndpointGroup", NetworkEndpointGroupArgs.builder()
+ *             .name("network-endpoint")
+ *             .network(default_.id())
+ *             .defaultPort("90")
+ *             .zone("us-central1-a")
+ *             .networkEndpointType("GCE_VM_IP_PORT")
+ *             .build());
+ * 
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .timeoutSec(1)
+ *             .checkIntervalSec(1)
+ *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
+ *                 .port("80")
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()
+ *             .name("backend-service")
+ *             .healthChecks(defaultHealthCheck.id())
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .localityLbPolicy("WEIGHTED_ROUND_ROBIN")
+ *             .customMetrics(BackendServiceCustomMetricArgs.builder()
+ *                 .name("orca.application_utilization")
+ *                 .dryRun(false)
+ *                 .build())
+ *             .backends(BackendServiceBackendArgs.builder()
+ *                 .group(defaultNetworkEndpointGroup.id())
+ *                 .balancingMode("CUSTOM_METRICS")
+ *                 .customMetrics(                
+ *                     BackendServiceBackendCustomMetricArgs.builder()
+ *                         .name("orca.cpu_utilization")
+ *                         .maxUtilization(0.9)
+ *                         .dryRun(true)
+ *                         .build(),
+ *                     BackendServiceBackendCustomMetricArgs.builder()
+ *                         .name("orca.named_metrics.foo")
+ *                         .dryRun(false)
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -889,6 +976,22 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      */
     public Output<String> creationTimestamp() {
         return this.creationTimestamp;
+    }
+    /**
+     * List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="customMetrics", refs={List.class,BackendServiceCustomMetric.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<BackendServiceCustomMetric>> customMetrics;
+
+    /**
+     * @return List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<BackendServiceCustomMetric>>> customMetrics() {
+        return Codegen.optional(this.customMetrics);
     }
     /**
      * Headers that the HTTP/S load balancer should add to proxied
@@ -1136,6 +1239,12 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      *   instance either reported a valid weight or had
      *   UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
      *   equal-weight.
+     * * `WEIGHTED_ROUND_ROBIN`: Per-endpoint weighted round-robin Load Balancing using weights computed
+     *   from Backend reported Custom Metrics. If set, the Backend Service
+     *   responses are expected to contain non-standard HTTP response header field
+     *   X-Endpoint-Load-Metrics. The reported metrics
+     *   to use for computing the weights are specified via the
+     *   backends[].customMetrics fields.
      *   locality_lb_policy is applicable to either:
      * * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
      *   and loadBalancingScheme set to INTERNAL_MANAGED.
@@ -1148,7 +1257,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      *   Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
      *   by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
      *   field set to true.
-     *   Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
+     *   Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
      * 
      */
     @Export(name="localityLbPolicy", refs={String.class}, tree="[0]")
@@ -1188,6 +1297,12 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      *   instance either reported a valid weight or had
      *   UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
      *   equal-weight.
+     * * `WEIGHTED_ROUND_ROBIN`: Per-endpoint weighted round-robin Load Balancing using weights computed
+     *   from Backend reported Custom Metrics. If set, the Backend Service
+     *   responses are expected to contain non-standard HTTP response header field
+     *   X-Endpoint-Load-Metrics. The reported metrics
+     *   to use for computing the weights are specified via the
+     *   backends[].customMetrics fields.
      *   locality_lb_policy is applicable to either:
      * * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
      *   and loadBalancingScheme set to INTERNAL_MANAGED.
@@ -1200,7 +1315,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      *   Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
      *   by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
      *   field set to true.
-     *   Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
+     *   Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
      * 
      */
     public Output<Optional<String>> localityLbPolicy() {

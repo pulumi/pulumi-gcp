@@ -5,6 +5,7 @@ package com.pulumi.gcp.alloydb.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.alloydb.inputs.InstancePscInstanceConfigPscInterfaceConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -53,6 +54,25 @@ public final class InstancePscInstanceConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Configurations for setting up PSC interfaces attached to the instance
+     * which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="pscInterfaceConfigs")
+    private @Nullable Output<List<InstancePscInstanceConfigPscInterfaceConfigArgs>> pscInterfaceConfigs;
+
+    /**
+     * @return Configurations for setting up PSC interfaces attached to the instance
+     * which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<InstancePscInstanceConfigPscInterfaceConfigArgs>>> pscInterfaceConfigs() {
+        return Optional.ofNullable(this.pscInterfaceConfigs);
+    }
+
+    /**
      * (Output)
      * The service attachment created when Private Service Connect (PSC) is enabled for the instance.
      * The name of the resource will be in the format of
@@ -78,6 +98,7 @@ public final class InstancePscInstanceConfigArgs extends com.pulumi.resources.Re
     private InstancePscInstanceConfigArgs(InstancePscInstanceConfigArgs $) {
         this.allowedConsumerProjects = $.allowedConsumerProjects;
         this.pscDnsName = $.pscDnsName;
+        this.pscInterfaceConfigs = $.pscInterfaceConfigs;
         this.serviceAttachmentLink = $.serviceAttachmentLink;
     }
 
@@ -156,6 +177,43 @@ public final class InstancePscInstanceConfigArgs extends com.pulumi.resources.Re
          */
         public Builder pscDnsName(String pscDnsName) {
             return pscDnsName(Output.of(pscDnsName));
+        }
+
+        /**
+         * @param pscInterfaceConfigs Configurations for setting up PSC interfaces attached to the instance
+         * which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscInterfaceConfigs(@Nullable Output<List<InstancePscInstanceConfigPscInterfaceConfigArgs>> pscInterfaceConfigs) {
+            $.pscInterfaceConfigs = pscInterfaceConfigs;
+            return this;
+        }
+
+        /**
+         * @param pscInterfaceConfigs Configurations for setting up PSC interfaces attached to the instance
+         * which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscInterfaceConfigs(List<InstancePscInstanceConfigPscInterfaceConfigArgs> pscInterfaceConfigs) {
+            return pscInterfaceConfigs(Output.of(pscInterfaceConfigs));
+        }
+
+        /**
+         * @param pscInterfaceConfigs Configurations for setting up PSC interfaces attached to the instance
+         * which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscInterfaceConfigs(InstancePscInstanceConfigPscInterfaceConfigArgs... pscInterfaceConfigs) {
+            return pscInterfaceConfigs(List.of(pscInterfaceConfigs));
         }
 
         /**

@@ -18,18 +18,18 @@ public final class InterceptEndpointGroupAssociationArgs extends com.pulumi.reso
     public static final InterceptEndpointGroupAssociationArgs Empty = new InterceptEndpointGroupAssociationArgs();
 
     /**
-     * Immutable. The Intercept Endpoint Group that this resource is connected to. Format
-     * is:
-     * `projects/{project}/locations/global/interceptEndpointGroups/{interceptEndpointGroup}`.
+     * The endpoint group that this association is connected to, for example:
+     * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+     * See https://google.aip.dev/124.
      * 
      */
     @Import(name="interceptEndpointGroup", required=true)
     private Output<String> interceptEndpointGroup;
 
     /**
-     * @return Immutable. The Intercept Endpoint Group that this resource is connected to. Format
-     * is:
-     * `projects/{project}/locations/global/interceptEndpointGroups/{interceptEndpointGroup}`.
+     * @return The endpoint group that this association is connected to, for example:
+     * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+     * See https://google.aip.dev/124.
      * 
      */
     public Output<String> interceptEndpointGroup() {
@@ -37,14 +37,18 @@ public final class InterceptEndpointGroupAssociationArgs extends com.pulumi.reso
     }
 
     /**
-     * ID of the Intercept Endpoint Group Association.
+     * The ID to use for the new association, which will become the final
+     * component of the endpoint group&#39;s resource name. If not provided, the
+     * server will generate a unique ID.
      * 
      */
     @Import(name="interceptEndpointGroupAssociationId")
     private @Nullable Output<String> interceptEndpointGroupAssociationId;
 
     /**
-     * @return ID of the Intercept Endpoint Group Association.
+     * @return The ID to use for the new association, which will become the final
+     * component of the endpoint group&#39;s resource name. If not provided, the
+     * server will generate a unique ID.
      * 
      */
     public Optional<Output<String>> interceptEndpointGroupAssociationId() {
@@ -52,7 +56,7 @@ public final class InterceptEndpointGroupAssociationArgs extends com.pulumi.reso
     }
 
     /**
-     * Optional. Labels as key value pairs.
+     * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -61,7 +65,7 @@ public final class InterceptEndpointGroupAssociationArgs extends com.pulumi.reso
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels as key value pairs.
+     * @return Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -71,7 +75,7 @@ public final class InterceptEndpointGroupAssociationArgs extends com.pulumi.reso
     }
 
     /**
-     * The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+     * The cloud location of the association, currently restricted to `global`.
      * 
      * ***
      * 
@@ -80,7 +84,7 @@ public final class InterceptEndpointGroupAssociationArgs extends com.pulumi.reso
     private Output<String> location;
 
     /**
-     * @return The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+     * @return The cloud location of the association, currently restricted to `global`.
      * 
      * ***
      * 
@@ -90,16 +94,18 @@ public final class InterceptEndpointGroupAssociationArgs extends com.pulumi.reso
     }
 
     /**
-     * Immutable. The VPC network associated. Format:
-     * `projects/{project}/global/networks/{network}`.
+     * The VPC network that is associated. for example:
+     * `projects/123456789/global/networks/my-network`.
+     * See https://google.aip.dev/124.
      * 
      */
     @Import(name="network", required=true)
     private Output<String> network;
 
     /**
-     * @return Immutable. The VPC network associated. Format:
-     * `projects/{project}/global/networks/{network}`.
+     * @return The VPC network that is associated. for example:
+     * `projects/123456789/global/networks/my-network`.
+     * See https://google.aip.dev/124.
      * 
      */
     public Output<String> network() {
@@ -153,9 +159,9 @@ public final class InterceptEndpointGroupAssociationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param interceptEndpointGroup Immutable. The Intercept Endpoint Group that this resource is connected to. Format
-         * is:
-         * `projects/{project}/locations/global/interceptEndpointGroups/{interceptEndpointGroup}`.
+         * @param interceptEndpointGroup The endpoint group that this association is connected to, for example:
+         * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -166,9 +172,9 @@ public final class InterceptEndpointGroupAssociationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param interceptEndpointGroup Immutable. The Intercept Endpoint Group that this resource is connected to. Format
-         * is:
-         * `projects/{project}/locations/global/interceptEndpointGroups/{interceptEndpointGroup}`.
+         * @param interceptEndpointGroup The endpoint group that this association is connected to, for example:
+         * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -178,7 +184,9 @@ public final class InterceptEndpointGroupAssociationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param interceptEndpointGroupAssociationId ID of the Intercept Endpoint Group Association.
+         * @param interceptEndpointGroupAssociationId The ID to use for the new association, which will become the final
+         * component of the endpoint group&#39;s resource name. If not provided, the
+         * server will generate a unique ID.
          * 
          * @return builder
          * 
@@ -189,7 +197,9 @@ public final class InterceptEndpointGroupAssociationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param interceptEndpointGroupAssociationId ID of the Intercept Endpoint Group Association.
+         * @param interceptEndpointGroupAssociationId The ID to use for the new association, which will become the final
+         * component of the endpoint group&#39;s resource name. If not provided, the
+         * server will generate a unique ID.
          * 
          * @return builder
          * 
@@ -199,7 +209,7 @@ public final class InterceptEndpointGroupAssociationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs.
+         * @param labels Labels are key/value pairs that help to organize and filter resources.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -212,7 +222,7 @@ public final class InterceptEndpointGroupAssociationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs.
+         * @param labels Labels are key/value pairs that help to organize and filter resources.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -224,7 +234,7 @@ public final class InterceptEndpointGroupAssociationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param location The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+         * @param location The cloud location of the association, currently restricted to `global`.
          * 
          * ***
          * 
@@ -237,7 +247,7 @@ public final class InterceptEndpointGroupAssociationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param location The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+         * @param location The cloud location of the association, currently restricted to `global`.
          * 
          * ***
          * 
@@ -249,8 +259,9 @@ public final class InterceptEndpointGroupAssociationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param network Immutable. The VPC network associated. Format:
-         * `projects/{project}/global/networks/{network}`.
+         * @param network The VPC network that is associated. for example:
+         * `projects/123456789/global/networks/my-network`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -261,8 +272,9 @@ public final class InterceptEndpointGroupAssociationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param network Immutable. The VPC network associated. Format:
-         * `projects/{project}/global/networks/{network}`.
+         * @param network The VPC network that is associated. for example:
+         * `projects/123456789/global/networks/my-network`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 

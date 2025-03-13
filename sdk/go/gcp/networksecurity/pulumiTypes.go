@@ -5240,7 +5240,9 @@ func (o ClientTlsPolicyServerValidationCaGrpcEndpointPtrOutput) TargetUri() pulu
 
 type InterceptDeploymentGroupConnectedEndpointGroup struct {
 	// (Output)
-	// Output only. A connected intercept endpoint group.
+	// The connected endpoint group's resource name, for example:
+	// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+	// See https://google.aip.dev/124.
 	Name *string `pulumi:"name"`
 }
 
@@ -5257,7 +5259,9 @@ type InterceptDeploymentGroupConnectedEndpointGroupInput interface {
 
 type InterceptDeploymentGroupConnectedEndpointGroupArgs struct {
 	// (Output)
-	// Output only. A connected intercept endpoint group.
+	// The connected endpoint group's resource name, for example:
+	// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+	// See https://google.aip.dev/124.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -5313,7 +5317,9 @@ func (o InterceptDeploymentGroupConnectedEndpointGroupOutput) ToInterceptDeploym
 }
 
 // (Output)
-// Output only. A connected intercept endpoint group.
+// The connected endpoint group's resource name, for example:
+// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+// See https://google.aip.dev/124.
 func (o InterceptDeploymentGroupConnectedEndpointGroupOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InterceptDeploymentGroupConnectedEndpointGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -5339,12 +5345,12 @@ func (o InterceptDeploymentGroupConnectedEndpointGroupArrayOutput) Index(i pulum
 }
 
 type InterceptEndpointGroupAssociationLocationsDetail struct {
-	// The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+	// The cloud location of the association, currently restricted to `global`.
 	//
 	// ***
 	Location *string `pulumi:"location"`
 	// (Output)
-	// The association state in this location.
+	// The current state of the association in this location.
 	// Possible values:
 	// STATE_UNSPECIFIED
 	// ACTIVE
@@ -5364,12 +5370,12 @@ type InterceptEndpointGroupAssociationLocationsDetailInput interface {
 }
 
 type InterceptEndpointGroupAssociationLocationsDetailArgs struct {
-	// The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+	// The cloud location of the association, currently restricted to `global`.
 	//
 	// ***
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// (Output)
-	// The association state in this location.
+	// The current state of the association in this location.
 	// Possible values:
 	// STATE_UNSPECIFIED
 	// ACTIVE
@@ -5428,7 +5434,7 @@ func (o InterceptEndpointGroupAssociationLocationsDetailOutput) ToInterceptEndpo
 	return o
 }
 
-// The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+// The cloud location of the association, currently restricted to `global`.
 //
 // ***
 func (o InterceptEndpointGroupAssociationLocationsDetailOutput) Location() pulumi.StringPtrOutput {
@@ -5436,7 +5442,7 @@ func (o InterceptEndpointGroupAssociationLocationsDetailOutput) Location() pulum
 }
 
 // (Output)
-// The association state in this location.
+// The current state of the association in this location.
 // Possible values:
 // STATE_UNSPECIFIED
 // ACTIVE
@@ -5467,7 +5473,9 @@ func (o InterceptEndpointGroupAssociationLocationsDetailArrayOutput) Index(i pul
 
 type MirroringDeploymentGroupConnectedEndpointGroup struct {
 	// (Output)
-	// Output only. A connected mirroring endpoint group.
+	// The connected endpoint group's resource name, for example:
+	// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+	// See https://google.aip.dev/124.
 	Name *string `pulumi:"name"`
 }
 
@@ -5484,7 +5492,9 @@ type MirroringDeploymentGroupConnectedEndpointGroupInput interface {
 
 type MirroringDeploymentGroupConnectedEndpointGroupArgs struct {
 	// (Output)
-	// Output only. A connected mirroring endpoint group.
+	// The connected endpoint group's resource name, for example:
+	// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+	// See https://google.aip.dev/124.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -5540,7 +5550,9 @@ func (o MirroringDeploymentGroupConnectedEndpointGroupOutput) ToMirroringDeploym
 }
 
 // (Output)
-// Output only. A connected mirroring endpoint group.
+// The connected endpoint group's resource name, for example:
+// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+// See https://google.aip.dev/124.
 func (o MirroringDeploymentGroupConnectedEndpointGroupOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MirroringDeploymentGroupConnectedEndpointGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -5566,12 +5578,12 @@ func (o MirroringDeploymentGroupConnectedEndpointGroupArrayOutput) Index(i pulum
 }
 
 type MirroringEndpointGroupAssociationLocationsDetail struct {
-	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+	// The cloud location of the association, currently restricted to `global`.
 	//
 	// ***
 	Location *string `pulumi:"location"`
 	// (Output)
-	// Output only. The association state in this location.
+	// The current state of the association in this location.
 	// Possible values:
 	// STATE_UNSPECIFIED
 	// ACTIVE
@@ -5591,12 +5603,12 @@ type MirroringEndpointGroupAssociationLocationsDetailInput interface {
 }
 
 type MirroringEndpointGroupAssociationLocationsDetailArgs struct {
-	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+	// The cloud location of the association, currently restricted to `global`.
 	//
 	// ***
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// (Output)
-	// Output only. The association state in this location.
+	// The current state of the association in this location.
 	// Possible values:
 	// STATE_UNSPECIFIED
 	// ACTIVE
@@ -5655,7 +5667,7 @@ func (o MirroringEndpointGroupAssociationLocationsDetailOutput) ToMirroringEndpo
 	return o
 }
 
-// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+// The cloud location of the association, currently restricted to `global`.
 //
 // ***
 func (o MirroringEndpointGroupAssociationLocationsDetailOutput) Location() pulumi.StringPtrOutput {
@@ -5663,7 +5675,7 @@ func (o MirroringEndpointGroupAssociationLocationsDetailOutput) Location() pulum
 }
 
 // (Output)
-// Output only. The association state in this location.
+// The current state of the association in this location.
 // Possible values:
 // STATE_UNSPECIFIED
 // ACTIVE
