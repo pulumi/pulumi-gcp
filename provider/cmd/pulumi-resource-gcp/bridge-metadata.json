@@ -1102,6 +1102,9 @@
                             "fields": {
                                 "allowed_consumer_projects": {
                                     "maxItemsOne": false
+                                },
+                                "psc_interface_configs": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -5883,7 +5886,14 @@
                 "majorVersion": 8,
                 "fields": {
                     "backend": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "custom_metrics": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "cdn_policy": {
                         "maxItemsOne": true,
@@ -5943,6 +5953,9 @@
                                 }
                             }
                         }
+                    },
+                    "custom_metrics": {
+                        "maxItemsOne": false
                     },
                     "custom_request_headers": {
                         "maxItemsOne": false
@@ -7868,7 +7881,14 @@
                 "majorVersion": 8,
                 "fields": {
                     "backend": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "custom_metrics": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "cdn_policy": {
                         "maxItemsOne": true,
@@ -7926,6 +7946,9 @@
                             }
                         }
                     },
+                    "custom_metrics": {
+                        "maxItemsOne": false
+                    },
                     "failover_policy": {
                         "maxItemsOne": true
                     },
@@ -7936,7 +7959,14 @@
                         "maxItemsOne": true
                     },
                     "log_config": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "optional_fields": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "outlier_detection": {
                         "maxItemsOne": true,
@@ -16676,6 +16706,19 @@
                     "private_connectivity": {
                         "maxItemsOne": true
                     },
+                    "salesforce_profile": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "oauth2_client_credentials": {
+                                    "maxItemsOne": true
+                                },
+                                "user_credentials": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
                     "sql_server_profile": {
                         "maxItemsOne": true
                     }
@@ -18718,6 +18761,15 @@
             "google_eventarc_channel": {
                 "current": "gcp:eventarc/channel:Channel",
                 "majorVersion": 8
+            },
+            "google_eventarc_google_api_source": {
+                "current": "gcp:eventarc/googleApiSource:GoogleApiSource",
+                "majorVersion": 8,
+                "fields": {
+                    "logging_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "google_eventarc_google_channel_config": {
                 "current": "gcp:eventarc/googleChannelConfig:GoogleChannelConfig",
@@ -21255,6 +21307,25 @@
                         "maxItemsOne": true
                     }
                 }
+            },
+            "google_iam_oauth_client": {
+                "current": "gcp:iam/oauthClient:OauthClient",
+                "majorVersion": 8,
+                "fields": {
+                    "allowed_grant_types": {
+                        "maxItemsOne": false
+                    },
+                    "allowed_redirect_uris": {
+                        "maxItemsOne": false
+                    },
+                    "allowed_scopes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_iam_oauth_client_credential": {
+                "current": "gcp:iam/oauthClientCredential:OauthClientCredential",
+                "majorVersion": 8
             },
             "google_iam_organizations_policy_binding": {
                 "current": "gcp:iam/organizationsPolicyBinding:OrganizationsPolicyBinding",
@@ -23899,6 +23970,10 @@
                         }
                     }
                 }
+            },
+            "google_network_security_backend_authentication_config": {
+                "current": "gcp:networksecurity/backendAuthenticationConfig:BackendAuthenticationConfig",
+                "majorVersion": 8
             },
             "google_network_security_client_tls_policy": {
                 "current": "gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy",
@@ -30611,6 +30686,9 @@
                             "fields": {
                                 "allowed_consumer_projects": {
                                     "maxItemsOne": false
+                                },
+                                "psc_interface_configs": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -32463,7 +32541,14 @@
                 "majorVersion": 8,
                 "fields": {
                     "backend": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "custom_metrics": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "cdn_policy": {
                         "maxItemsOne": false,
@@ -32523,6 +32608,9 @@
                                 }
                             }
                         }
+                    },
+                    "custom_metrics": {
+                        "maxItemsOne": false
                     },
                     "custom_request_headers": {
                         "maxItemsOne": false
@@ -33481,6 +33569,18 @@
             "google_compute_region_ssl_certificate": {
                 "current": "gcp:compute/getRegionSslCertificate:getRegionSslCertificate",
                 "majorVersion": 8
+            },
+            "google_compute_region_ssl_policy": {
+                "current": "gcp:compute/getRegionSSLPolicy:getRegionSSLPolicy",
+                "majorVersion": 8,
+                "fields": {
+                    "custom_features": {
+                        "maxItemsOne": false
+                    },
+                    "enabled_features": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "google_compute_regions": {
                 "current": "gcp:compute/getRegions:getRegions",
@@ -38354,6 +38454,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_eventarc_google_api_source": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_eventarc_message_bus": [
                 "effective_labels",
                 "terraform_labels"
@@ -38599,6 +38703,10 @@
                 "terraform_labels"
             ],
             "google_network_security_authz_policy": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_network_security_backend_authentication_config": [
                 "effective_labels",
                 "terraform_labels"
             ],
@@ -39711,6 +39819,7 @@
             "gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema": 0,
             "gcp:essentialcontacts/documentAiWarehouseLocation:DocumentAiWarehouseLocation": 0,
             "gcp:eventarc/channel:Channel": 0,
+            "gcp:eventarc/googleApiSource:GoogleApiSource": 0,
             "gcp:eventarc/googleChannelConfig:GoogleChannelConfig": 0,
             "gcp:eventarc/messageBus:MessageBus": 0,
             "gcp:eventarc/trigger:Trigger": 0,
@@ -39820,6 +39929,8 @@
             "gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy": 0,
             "gcp:iam/denyPolicy:DenyPolicy": 0,
             "gcp:iam/foldersPolicyBinding:FoldersPolicyBinding": 0,
+            "gcp:iam/oauthClient:OauthClient": 0,
+            "gcp:iam/oauthClientCredential:OauthClientCredential": 0,
             "gcp:iam/organizationsPolicyBinding:OrganizationsPolicyBinding": 0,
             "gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy": 0,
             "gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding": 0,
@@ -39953,6 +40064,7 @@
             "gcp:networksecurity/addressGroupIamPolicy:AddressGroupIamPolicy": 0,
             "gcp:networksecurity/authorizationPolicy:AuthorizationPolicy": 0,
             "gcp:networksecurity/authzPolicy:AuthzPolicy": 0,
+            "gcp:networksecurity/backendAuthenticationConfig:BackendAuthenticationConfig": 0,
             "gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy": 0,
             "gcp:networksecurity/firewallEndpoint:FirewallEndpoint": 0,
             "gcp:networksecurity/firewallEndpointAssociation:FirewallEndpointAssociation": 0,
@@ -40364,6 +40476,7 @@
             "gcp:compute/getRegionInstanceGroupManager:getRegionInstanceGroupManager": 0,
             "gcp:compute/getRegionInstanceTemplate:getRegionInstanceTemplate": 0,
             "gcp:compute/getRegionNetworkEndpointGroup:getRegionNetworkEndpointGroup": 0,
+            "gcp:compute/getRegionSSLPolicy:getRegionSSLPolicy": 0,
             "gcp:compute/getRegionSslCertificate:getRegionSslCertificate": 0,
             "gcp:compute/getRegions:getRegions": 0,
             "gcp:compute/getReservation:getReservation": 0,
