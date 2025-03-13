@@ -113,37 +113,11 @@ def get_account_id_token(delegates: Optional[Sequence[str]] = None,
     ### ServiceAccount JSON Credential File.
       `serviceaccount_get_account_id_token` will use the configured provider credentials
 
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    oidc = gcp.serviceaccount.get_account_id_token(target_audience="https://foo.bar/")
-    pulumi.export("oidcToken", oidc.id_token)
-    ```
-
     ### Service Account Impersonation.
       `serviceaccount_get_account_id_token` will use background impersonated credentials provided by `serviceaccount_get_account_access_token`.
 
       Note: to use the following, you must grant `target_service_account` the
       `roles/iam.serviceAccountTokenCreator` role on itself.
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    impersonated = gcp.serviceaccount.get_account_access_token(target_service_account="impersonated-account@project.iam.gserviceaccount.com",
-      delegates=[],
-      scopes=[
-          "userinfo-email",
-          "cloud-platform",
-      ],
-      lifetime="300s")
-    oidc = gcp.serviceaccount.get_account_id_token(target_service_account="impersonated-account@project.iam.gserviceaccount.com",
-      delegates=[],
-      include_email=True,
-      target_audience="https://foo.bar/")
-    pulumi.export("oidcToken", oidc.id_token)
-    ```
 
     ### Invoking Cloud Run Endpoint
 
@@ -199,37 +173,11 @@ def get_account_id_token_output(delegates: Optional[pulumi.Input[Optional[Sequen
     ### ServiceAccount JSON Credential File.
       `serviceaccount_get_account_id_token` will use the configured provider credentials
 
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    oidc = gcp.serviceaccount.get_account_id_token(target_audience="https://foo.bar/")
-    pulumi.export("oidcToken", oidc.id_token)
-    ```
-
     ### Service Account Impersonation.
       `serviceaccount_get_account_id_token` will use background impersonated credentials provided by `serviceaccount_get_account_access_token`.
 
       Note: to use the following, you must grant `target_service_account` the
       `roles/iam.serviceAccountTokenCreator` role on itself.
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    impersonated = gcp.serviceaccount.get_account_access_token(target_service_account="impersonated-account@project.iam.gserviceaccount.com",
-      delegates=[],
-      scopes=[
-          "userinfo-email",
-          "cloud-platform",
-      ],
-      lifetime="300s")
-    oidc = gcp.serviceaccount.get_account_id_token(target_service_account="impersonated-account@project.iam.gserviceaccount.com",
-      delegates=[],
-      include_email=True,
-      target_audience="https://foo.bar/")
-    pulumi.export("oidcToken", oidc.id_token)
-    ```
 
     ### Invoking Cloud Run Endpoint
 

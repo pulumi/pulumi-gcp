@@ -1009,92 +1009,11 @@ public final class ServiceaccountFunctions {
      * ### ServiceAccount JSON Credential File.
      *   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
      * 
-     *   &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
-     * import com.pulumi.gcp.serviceaccount.inputs.GetAccountIdTokenArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetAudience("https://foo.bar/")
-     *             .build());
-     * 
-     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      * ### Service Account Impersonation.
      *   `gcp.serviceaccount.getAccountIdToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
      * 
      *   Note: to use the following, you must grant `target_service_account` the
      *   `roles/iam.serviceAccountTokenCreator` role on itself.
-     * 
-     *   &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
-     * import com.pulumi.gcp.serviceaccount.inputs.GetAccountAccessTokenArgs;
-     * import com.pulumi.gcp.serviceaccount.inputs.GetAccountIdTokenArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App }{{@code
-     *     public static void main(String[] args) }{{@code
-     *         Pulumi.run(App::stack);
-     *     }}{@code
-     * 
-     *     public static void stack(Context ctx) }{{@code
-     *         final var impersonated = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
-     *             .targetServiceAccount("impersonated-account}{@literal @}{@code project.iam.gserviceaccount.com")
-     *             .delegates()
-     *             .scopes(            
-     *                 "userinfo-email",
-     *                 "cloud-platform")
-     *             .lifetime("300s")
-     *             .build());
-     * 
-     *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetServiceAccount("impersonated-account}{@literal @}{@code project.iam.gserviceaccount.com")
-     *             .delegates()
-     *             .includeEmail(true)
-     *             .targetAudience("https://foo.bar/")
-     *             .build());
-     * 
-     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
-     *     }}{@code
-     * }}{@code
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Invoking Cloud Run Endpoint
      * 
@@ -1156,92 +1075,11 @@ public final class ServiceaccountFunctions {
      * ### ServiceAccount JSON Credential File.
      *   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
      * 
-     *   &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
-     * import com.pulumi.gcp.serviceaccount.inputs.GetAccountIdTokenArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetAudience("https://foo.bar/")
-     *             .build());
-     * 
-     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      * ### Service Account Impersonation.
      *   `gcp.serviceaccount.getAccountIdToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
      * 
      *   Note: to use the following, you must grant `target_service_account` the
      *   `roles/iam.serviceAccountTokenCreator` role on itself.
-     * 
-     *   &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
-     * import com.pulumi.gcp.serviceaccount.inputs.GetAccountAccessTokenArgs;
-     * import com.pulumi.gcp.serviceaccount.inputs.GetAccountIdTokenArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App }{{@code
-     *     public static void main(String[] args) }{{@code
-     *         Pulumi.run(App::stack);
-     *     }}{@code
-     * 
-     *     public static void stack(Context ctx) }{{@code
-     *         final var impersonated = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
-     *             .targetServiceAccount("impersonated-account}{@literal @}{@code project.iam.gserviceaccount.com")
-     *             .delegates()
-     *             .scopes(            
-     *                 "userinfo-email",
-     *                 "cloud-platform")
-     *             .lifetime("300s")
-     *             .build());
-     * 
-     *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetServiceAccount("impersonated-account}{@literal @}{@code project.iam.gserviceaccount.com")
-     *             .delegates()
-     *             .includeEmail(true)
-     *             .targetAudience("https://foo.bar/")
-     *             .build());
-     * 
-     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
-     *     }}{@code
-     * }}{@code
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Invoking Cloud Run Endpoint
      * 
@@ -1303,92 +1141,11 @@ public final class ServiceaccountFunctions {
      * ### ServiceAccount JSON Credential File.
      *   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
      * 
-     *   &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
-     * import com.pulumi.gcp.serviceaccount.inputs.GetAccountIdTokenArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetAudience("https://foo.bar/")
-     *             .build());
-     * 
-     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      * ### Service Account Impersonation.
      *   `gcp.serviceaccount.getAccountIdToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
      * 
      *   Note: to use the following, you must grant `target_service_account` the
      *   `roles/iam.serviceAccountTokenCreator` role on itself.
-     * 
-     *   &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
-     * import com.pulumi.gcp.serviceaccount.inputs.GetAccountAccessTokenArgs;
-     * import com.pulumi.gcp.serviceaccount.inputs.GetAccountIdTokenArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App }{{@code
-     *     public static void main(String[] args) }{{@code
-     *         Pulumi.run(App::stack);
-     *     }}{@code
-     * 
-     *     public static void stack(Context ctx) }{{@code
-     *         final var impersonated = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
-     *             .targetServiceAccount("impersonated-account}{@literal @}{@code project.iam.gserviceaccount.com")
-     *             .delegates()
-     *             .scopes(            
-     *                 "userinfo-email",
-     *                 "cloud-platform")
-     *             .lifetime("300s")
-     *             .build());
-     * 
-     *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetServiceAccount("impersonated-account}{@literal @}{@code project.iam.gserviceaccount.com")
-     *             .delegates()
-     *             .includeEmail(true)
-     *             .targetAudience("https://foo.bar/")
-     *             .build());
-     * 
-     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
-     *     }}{@code
-     * }}{@code
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Invoking Cloud Run Endpoint
      * 
@@ -1450,92 +1207,11 @@ public final class ServiceaccountFunctions {
      * ### ServiceAccount JSON Credential File.
      *   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
      * 
-     *   &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
-     * import com.pulumi.gcp.serviceaccount.inputs.GetAccountIdTokenArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetAudience("https://foo.bar/")
-     *             .build());
-     * 
-     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      * ### Service Account Impersonation.
      *   `gcp.serviceaccount.getAccountIdToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
      * 
      *   Note: to use the following, you must grant `target_service_account` the
      *   `roles/iam.serviceAccountTokenCreator` role on itself.
-     * 
-     *   &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
-     * import com.pulumi.gcp.serviceaccount.inputs.GetAccountAccessTokenArgs;
-     * import com.pulumi.gcp.serviceaccount.inputs.GetAccountIdTokenArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App }{{@code
-     *     public static void main(String[] args) }{{@code
-     *         Pulumi.run(App::stack);
-     *     }}{@code
-     * 
-     *     public static void stack(Context ctx) }{{@code
-     *         final var impersonated = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
-     *             .targetServiceAccount("impersonated-account}{@literal @}{@code project.iam.gserviceaccount.com")
-     *             .delegates()
-     *             .scopes(            
-     *                 "userinfo-email",
-     *                 "cloud-platform")
-     *             .lifetime("300s")
-     *             .build());
-     * 
-     *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetServiceAccount("impersonated-account}{@literal @}{@code project.iam.gserviceaccount.com")
-     *             .delegates()
-     *             .includeEmail(true)
-     *             .targetAudience("https://foo.bar/")
-     *             .build());
-     * 
-     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
-     *     }}{@code
-     * }}{@code
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Invoking Cloud Run Endpoint
      * 
@@ -1597,92 +1273,11 @@ public final class ServiceaccountFunctions {
      * ### ServiceAccount JSON Credential File.
      *   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
      * 
-     *   &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
-     * import com.pulumi.gcp.serviceaccount.inputs.GetAccountIdTokenArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetAudience("https://foo.bar/")
-     *             .build());
-     * 
-     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      * ### Service Account Impersonation.
      *   `gcp.serviceaccount.getAccountIdToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
      * 
      *   Note: to use the following, you must grant `target_service_account` the
      *   `roles/iam.serviceAccountTokenCreator` role on itself.
-     * 
-     *   &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
-     * import com.pulumi.gcp.serviceaccount.inputs.GetAccountAccessTokenArgs;
-     * import com.pulumi.gcp.serviceaccount.inputs.GetAccountIdTokenArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App }{{@code
-     *     public static void main(String[] args) }{{@code
-     *         Pulumi.run(App::stack);
-     *     }}{@code
-     * 
-     *     public static void stack(Context ctx) }{{@code
-     *         final var impersonated = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
-     *             .targetServiceAccount("impersonated-account}{@literal @}{@code project.iam.gserviceaccount.com")
-     *             .delegates()
-     *             .scopes(            
-     *                 "userinfo-email",
-     *                 "cloud-platform")
-     *             .lifetime("300s")
-     *             .build());
-     * 
-     *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetServiceAccount("impersonated-account}{@literal @}{@code project.iam.gserviceaccount.com")
-     *             .delegates()
-     *             .includeEmail(true)
-     *             .targetAudience("https://foo.bar/")
-     *             .build());
-     * 
-     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
-     *     }}{@code
-     * }}{@code
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Invoking Cloud Run Endpoint
      * 
