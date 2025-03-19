@@ -18,16 +18,15 @@ namespace Pulumi.Gcp.Compute
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
-        /// using System.Threading.Tasks;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// return await Deployment.RunAsync(async() =&gt; 
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var available = await Gcp.Compute.GetRegions.InvokeAsync();
+        ///     var available = Gcp.Compute.GetRegions.Invoke();
         /// 
         ///     var cluster = new List&lt;Gcp.Compute.Subnetwork&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; available.Names.Length; rangeIndex++)
+        ///     for (var rangeIndex = 0; rangeIndex &lt; available.Apply(getRegionsResult =&gt; getRegionsResult.Names).Length; rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
         ///         cluster.Add(new Gcp.Compute.Subnetwork($"cluster-{range.Value}", new()
@@ -35,7 +34,7 @@ namespace Pulumi.Gcp.Compute
         ///             Name = "my-network",
         ///             IpCidrRange = $"10.36.{range.Value}.0/24",
         ///             Network = "my-network",
-        ///             Region = available.Names[range.Value],
+        ///             Region = available.Apply(getRegionsResult =&gt; getRegionsResult.Names)[range.Value],
         ///         }));
         ///     }
         /// });
@@ -51,16 +50,15 @@ namespace Pulumi.Gcp.Compute
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
-        /// using System.Threading.Tasks;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// return await Deployment.RunAsync(async() =&gt; 
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var available = await Gcp.Compute.GetRegions.InvokeAsync();
+        ///     var available = Gcp.Compute.GetRegions.Invoke();
         /// 
         ///     var cluster = new List&lt;Gcp.Compute.Subnetwork&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; available.Names.Length; rangeIndex++)
+        ///     for (var rangeIndex = 0; rangeIndex &lt; available.Apply(getRegionsResult =&gt; getRegionsResult.Names).Length; rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
         ///         cluster.Add(new Gcp.Compute.Subnetwork($"cluster-{range.Value}", new()
@@ -68,7 +66,7 @@ namespace Pulumi.Gcp.Compute
         ///             Name = "my-network",
         ///             IpCidrRange = $"10.36.{range.Value}.0/24",
         ///             Network = "my-network",
-        ///             Region = available.Names[range.Value],
+        ///             Region = available.Apply(getRegionsResult =&gt; getRegionsResult.Names)[range.Value],
         ///         }));
         ///     }
         /// });
@@ -84,16 +82,15 @@ namespace Pulumi.Gcp.Compute
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
-        /// using System.Threading.Tasks;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// return await Deployment.RunAsync(async() =&gt; 
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var available = await Gcp.Compute.GetRegions.InvokeAsync();
+        ///     var available = Gcp.Compute.GetRegions.Invoke();
         /// 
         ///     var cluster = new List&lt;Gcp.Compute.Subnetwork&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; available.Names.Length; rangeIndex++)
+        ///     for (var rangeIndex = 0; rangeIndex &lt; available.Apply(getRegionsResult =&gt; getRegionsResult.Names).Length; rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
         ///         cluster.Add(new Gcp.Compute.Subnetwork($"cluster-{range.Value}", new()
@@ -101,7 +98,7 @@ namespace Pulumi.Gcp.Compute
         ///             Name = "my-network",
         ///             IpCidrRange = $"10.36.{range.Value}.0/24",
         ///             Network = "my-network",
-        ///             Region = available.Names[range.Value],
+        ///             Region = available.Apply(getRegionsResult =&gt; getRegionsResult.Names)[range.Value],
         ///         }));
         ///     }
         /// });

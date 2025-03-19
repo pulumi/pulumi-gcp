@@ -203,7 +203,11 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .username("test")
  *             .apiKey("<api-key>")
- *             .peeredNetwork(vpcNetwork.id().applyValue(id -> StdFunctions.replace()).applyValue(invoke -> invoke.result()))
+ *             .peeredNetwork(StdFunctions.replace(ReplaceArgs.builder()
+ *                 .text(vpcNetwork.id())
+ *                 .search(project.applyValue(getProjectResult -> getProjectResult.name()))
+ *                 .replace(project.applyValue(getProjectResult -> getProjectResult.number()))
+ *                 .build()).result())
  *             .sslCa("""
  * -----BEGIN CERTIFICATE-----
  * -----END CERTIFICATE-----

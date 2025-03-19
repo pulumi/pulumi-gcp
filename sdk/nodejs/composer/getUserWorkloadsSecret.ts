@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  *         }).then(invoke => invoke.result),
  *     },
  * });
- * const example = exampleEnvironment.name.apply(name => gcp.composer.getUserWorkloadsSecretOutput({
+ * const example = exampleEnvironment.name.apply(name => gcp.composer.getUserWorkloadsSecret({
  *     environment: name,
  *     name: googleComposerUserWorkloadsSecret.example.name,
  * }));
@@ -130,7 +130,7 @@ export interface GetUserWorkloadsSecretResult {
  *         }).then(invoke => invoke.result),
  *     },
  * });
- * const example = exampleEnvironment.name.apply(name => gcp.composer.getUserWorkloadsSecretOutput({
+ * const example = exampleEnvironment.name.apply(name => gcp.composer.getUserWorkloadsSecret({
  *     environment: name,
  *     name: googleComposerUserWorkloadsSecret.example.name,
  * }));

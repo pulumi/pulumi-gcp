@@ -68,12 +68,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			example := exampleEnvironment.Name.ApplyT(func(name string) (composer.GetUserWorkloadsSecretResult, error) {
-//				return composer.GetUserWorkloadsSecretResult(interface{}(composer.LookupUserWorkloadsSecretOutput(ctx, composer.GetUserWorkloadsSecretOutputArgs{
-//					Environment: name,
-//					Name:        googleComposerUserWorkloadsSecret.Example.Name,
-//				}, nil))), nil
-//			}).(composer.GetUserWorkloadsSecretResultOutput)
+//			example, err := composer.LookupUserWorkloadsSecret(ctx, &composer.LookupUserWorkloadsSecretArgs{
+//				Environment: exampleEnvironment.Name,
+//				Name:        googleComposerUserWorkloadsSecret.Example.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			ctx.Export("debug", example)
 //			return nil
 //		})

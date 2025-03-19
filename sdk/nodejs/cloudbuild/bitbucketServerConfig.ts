@@ -105,7 +105,7 @@ import * as utilities from "../utilities";
  *     },
  *     username: "test",
  *     apiKey: "<api-key>",
- *     peeredNetwork: pulumi.all([vpcNetwork.id, project, project]).apply(([id, project, project1]) => std.replaceOutput({
+ *     peeredNetwork: pulumi.all([vpcNetwork.id, project, project]).apply(([id, project, project1]) => std.replace({
  *         text: id,
  *         search: project.name,
  *         replace: project1.number,

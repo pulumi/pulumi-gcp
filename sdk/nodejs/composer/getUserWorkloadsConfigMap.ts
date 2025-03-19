@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *         api_host: "apihost:443",
  *     },
  * });
- * const example = exampleEnvironment.name.apply(name => gcp.composer.getUserWorkloadsConfigMapOutput({
+ * const example = exampleEnvironment.name.apply(name => gcp.composer.getUserWorkloadsConfigMap({
  *     environment: name,
  *     name: googleComposerUserWorkloadsConfigMap.example.name,
  * }));
@@ -124,7 +124,7 @@ export interface GetUserWorkloadsConfigMapResult {
  *         api_host: "apihost:443",
  *     },
  * });
- * const example = exampleEnvironment.name.apply(name => gcp.composer.getUserWorkloadsConfigMapOutput({
+ * const example = exampleEnvironment.name.apply(name => gcp.composer.getUserWorkloadsConfigMap({
  *     environment: name,
  *     name: googleComposerUserWorkloadsConfigMap.example.name,
  * }));

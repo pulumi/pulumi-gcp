@@ -59,12 +59,12 @@ import * as utilities from "../utilities";
  *         ],
  *     },
  * });
- * const serial = pulumi.all([windows.name, windows.zone]).apply(([name, zone]) => gcp.compute.getInstanceSerialPortOutput({
+ * const serial = pulumi.all([windows.name, windows.zone]).apply(([name, zone]) => gcp.compute.getInstanceSerialPort({
  *     instance: name,
  *     zone: zone,
  *     port: 4,
  * }));
- * export const serialOut = serial.apply(serial => serial.contents);
+ * export const serialOut = serial.then(serial => serial.contents);
  * ```
  */
 export function getInstanceSerialPort(args: GetInstanceSerialPortArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceSerialPortResult> {
@@ -175,12 +175,12 @@ export interface GetInstanceSerialPortResult {
  *         ],
  *     },
  * });
- * const serial = pulumi.all([windows.name, windows.zone]).apply(([name, zone]) => gcp.compute.getInstanceSerialPortOutput({
+ * const serial = pulumi.all([windows.name, windows.zone]).apply(([name, zone]) => gcp.compute.getInstanceSerialPort({
  *     instance: name,
  *     zone: zone,
  *     port: 4,
  * }));
- * export const serialOut = serial.apply(serial => serial.contents);
+ * export const serialOut = serial.then(serial => serial.contents);
  * ```
  */
 export function getInstanceSerialPortOutput(args: GetInstanceSerialPortOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceSerialPortResult> {

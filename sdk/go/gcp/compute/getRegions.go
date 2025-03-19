@@ -33,7 +33,7 @@ import (
 //				return err
 //			}
 //			var cluster []*compute.Subnetwork
-//			for index := 0; index < int(len(available.Names)); index++ {
+//			for index := 0; index < len(available.Names); index++ {
 //				key0 := index
 //				val0 := index
 //				__res, err := compute.NewSubnetwork(ctx, fmt.Sprintf("cluster-%v", key0), &compute.SubnetworkArgs{

@@ -12,17 +12,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * export = async () => {
- *     const available = await gcp.compute.getRegions({});
- *     const cluster: gcp.compute.Subnetwork[] = [];
- *     for (const range = {value: 0}; range.value < available.names.length; range.value++) {
- *         cluster.push(new gcp.compute.Subnetwork(`cluster-${range.value}`, {
- *             name: "my-network",
- *             ipCidrRange: `10.36.${range.value}.0/24`,
- *             network: "my-network",
- *             region: available.names[range.value],
- *         }));
- *     }
+ * const available = gcp.compute.getRegions({});
+ * const cluster: gcp.compute.Subnetwork[] = [];
+ * for (const range = {value: 0}; range.value < available.names.length; range.value++) {
+ *     cluster.push(new gcp.compute.Subnetwork(`cluster-${range.value}`, {
+ *         name: "my-network",
+ *         ipCidrRange: `10.36.${range.value}.0/24`,
+ *         network: "my-network",
+ *         region: available.then(available => available.names[range.value]),
+ *     }));
  * }
  * ```
  */
@@ -73,17 +71,15 @@ export interface GetRegionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * export = async () => {
- *     const available = await gcp.compute.getRegions({});
- *     const cluster: gcp.compute.Subnetwork[] = [];
- *     for (const range = {value: 0}; range.value < available.names.length; range.value++) {
- *         cluster.push(new gcp.compute.Subnetwork(`cluster-${range.value}`, {
- *             name: "my-network",
- *             ipCidrRange: `10.36.${range.value}.0/24`,
- *             network: "my-network",
- *             region: available.names[range.value],
- *         }));
- *     }
+ * const available = gcp.compute.getRegions({});
+ * const cluster: gcp.compute.Subnetwork[] = [];
+ * for (const range = {value: 0}; range.value < available.names.length; range.value++) {
+ *     cluster.push(new gcp.compute.Subnetwork(`cluster-${range.value}`, {
+ *         name: "my-network",
+ *         ipCidrRange: `10.36.${range.value}.0/24`,
+ *         network: "my-network",
+ *         region: available.then(available => available.names[range.value]),
+ *     }));
  * }
  * ```
  */

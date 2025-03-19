@@ -160,6 +160,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			invokeReplace, err := std.Replace(ctx, &std.ReplaceArgs{
+//				Text:    vpcNetwork.ID(),
+//				Search:  project.Name,
+//				Replace: project.Number,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			_, err = cloudbuild.NewBitbucketServerConfig(ctx, "bbs-config-with-peered-network", &cloudbuild.BitbucketServerConfigArgs{
 //				ConfigId: pulumi.String("bbs-config"),
 //				Location: pulumi.String("us-central1"),
@@ -169,18 +177,10 @@ import (
 //					ReadAccessTokenVersionName:  pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
 //					WebhookSecretVersionName:    pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
 //				},
-//				Username: pulumi.String("test"),
-//				ApiKey:   pulumi.String("<api-key>"),
-//				PeeredNetwork: pulumi.String(vpcNetwork.ID().ApplyT(func(id string) (std.ReplaceResult, error) {
-//					return std.ReplaceResult(interface{}(std.ReplaceOutput(ctx, std.ReplaceOutputArgs{
-//						Text:    id,
-//						Search:  project.Name,
-//						Replace: project.Number,
-//					}, nil))), nil
-//				}).(std.ReplaceResultOutput).ApplyT(func(invoke std.ReplaceResult) (*string, error) {
-//					return invoke.Result, nil
-//				}).(pulumi.StringPtrOutput)),
-//				SslCa: pulumi.String("-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n"),
+//				Username:      pulumi.String("test"),
+//				ApiKey:        pulumi.String("<api-key>"),
+//				PeeredNetwork: pulumi.String(invokeReplace.Result),
+//				SslCa:         pulumi.String("-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				_default,
 //			}))

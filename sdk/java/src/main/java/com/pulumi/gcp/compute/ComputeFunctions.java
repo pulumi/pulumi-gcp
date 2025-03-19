@@ -6599,7 +6599,7 @@ public final class ComputeFunctions {
      *             .port(4)
      *             .build());
      * 
-     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult).applyValue(serial -> serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents())));
+     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents()));
      *     }}{@code
      * }}{@code
      * }
@@ -6722,7 +6722,7 @@ public final class ComputeFunctions {
      *             .port(4)
      *             .build());
      * 
-     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult).applyValue(serial -> serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents())));
+     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents()));
      *     }}{@code
      * }}{@code
      * }
@@ -6845,7 +6845,7 @@ public final class ComputeFunctions {
      *             .port(4)
      *             .build());
      * 
-     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult).applyValue(serial -> serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents())));
+     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents()));
      *     }}{@code
      * }}{@code
      * }
@@ -6968,7 +6968,7 @@ public final class ComputeFunctions {
      *             .port(4)
      *             .build());
      * 
-     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult).applyValue(serial -> serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents())));
+     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents()));
      *     }}{@code
      * }}{@code
      * }
@@ -7091,7 +7091,7 @@ public final class ComputeFunctions {
      *             .port(4)
      *             .build());
      * 
-     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult).applyValue(serial -> serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents())));
+     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents()));
      *     }}{@code
      * }}{@code
      * }

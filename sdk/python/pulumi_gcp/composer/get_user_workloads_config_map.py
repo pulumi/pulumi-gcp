@@ -132,8 +132,8 @@ def get_user_workloads_config_map(environment: Optional[str] = None,
             "db_host": "dbhost:5432",
             "api_host": "apihost:443",
         })
-    example = example_environment.name.apply(lambda name: gcp.composer.get_user_workloads_config_map_output(environment=name,
-        name=google_composer_user_workloads_config_map["example"]["name"]))
+    example = gcp.composer.get_user_workloads_config_map(environment=example_environment.name,
+        name=google_composer_user_workloads_config_map["example"]["name"])
     pulumi.export("debug", example)
     ```
 
@@ -193,8 +193,8 @@ def get_user_workloads_config_map_output(environment: Optional[pulumi.Input[str]
             "db_host": "dbhost:5432",
             "api_host": "apihost:443",
         })
-    example = example_environment.name.apply(lambda name: gcp.composer.get_user_workloads_config_map_output(environment=name,
-        name=google_composer_user_workloads_config_map["example"]["name"]))
+    example = gcp.composer.get_user_workloads_config_map(environment=example_environment.name,
+        name=google_composer_user_workloads_config_map["example"]["name"])
     pulumi.export("debug", example)
     ```
 
