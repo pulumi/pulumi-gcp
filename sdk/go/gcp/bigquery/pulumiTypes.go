@@ -8766,6 +8766,8 @@ type JobQuery struct {
 	// Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed.
 	// However, you must still set destinationTable when result size exceeds the allowed maximum response size.
 	AllowLargeResults *bool `pulumi:"allowLargeResults"`
+	// Whether to run the query as continuous or a regular query.
+	Continuous *bool `pulumi:"continuous"`
 	// Specifies whether the job is allowed to create new tables. The following values are supported:
 	// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
 	// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
@@ -8851,6 +8853,8 @@ type JobQueryArgs struct {
 	// Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed.
 	// However, you must still set destinationTable when result size exceeds the allowed maximum response size.
 	AllowLargeResults pulumi.BoolPtrInput `pulumi:"allowLargeResults"`
+	// Whether to run the query as continuous or a regular query.
+	Continuous pulumi.BoolPtrInput `pulumi:"continuous"`
 	// Specifies whether the job is allowed to create new tables. The following values are supported:
 	// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
 	// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
@@ -9004,6 +9008,11 @@ func (o JobQueryOutput) AllowLargeResults() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobQuery) *bool { return v.AllowLargeResults }).(pulumi.BoolPtrOutput)
 }
 
+// Whether to run the query as continuous or a regular query.
+func (o JobQueryOutput) Continuous() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobQuery) *bool { return v.Continuous }).(pulumi.BoolPtrOutput)
+}
+
 // Specifies whether the job is allowed to create new tables. The following values are supported:
 // CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
 // CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
@@ -9154,6 +9163,16 @@ func (o JobQueryPtrOutput) AllowLargeResults() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.AllowLargeResults
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to run the query as continuous or a regular query.
+func (o JobQueryPtrOutput) Continuous() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobQuery) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Continuous
 	}).(pulumi.BoolPtrOutput)
 }
 

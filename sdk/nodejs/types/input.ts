@@ -2379,6 +2379,12 @@ export namespace alloydb {
          * Create an instance that allows connections from Private Service Connect endpoints to the instance.
          */
         pscEnabled?: pulumi.Input<boolean>;
+        /**
+         * (Output)
+         * The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
+         * In case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.
+         */
+        serviceOwnedProjectNumber?: pulumi.Input<number>;
     }
 
     export interface ClusterRestoreBackupSource {
@@ -6294,6 +6300,10 @@ export namespace bigquery {
          * However, you must still set destinationTable when result size exceeds the allowed maximum response size.
          */
         allowLargeResults?: pulumi.Input<boolean>;
+        /**
+         * Whether to run the query as continuous or a regular query.
+         */
+        continuous?: pulumi.Input<boolean>;
         /**
          * Specifies whether the job is allowed to create new tables. The following values are supported:
          * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
@@ -12305,6 +12315,10 @@ export namespace clouddeploy {
          * Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
          */
         cluster?: pulumi.Input<string>;
+        /**
+         * Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dnsEndpoint` and `internalIp` cannot be set to true.
+         */
+        dnsEndpoint?: pulumi.Input<boolean>;
         /**
          * Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
          */
@@ -33014,7 +33028,7 @@ export namespace container {
          */
         clusterDnsDomain?: pulumi.Input<string>;
         /**
-         * The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+         * The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `clusterDns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
          */
         clusterDnsScope?: pulumi.Input<string>;
     }
@@ -52850,6 +52864,478 @@ export namespace eventarc {
         logSeverity?: pulumi.Input<string>;
     }
 
+    export interface PipelineDestination {
+        /**
+         * Represents a config used to authenticate message requests.
+         * Structure is documented below.
+         */
+        authenticationConfig?: pulumi.Input<inputs.eventarc.PipelineDestinationAuthenticationConfig>;
+        /**
+         * Represents a HTTP endpoint destination.
+         * Structure is documented below.
+         */
+        httpEndpoint?: pulumi.Input<inputs.eventarc.PipelineDestinationHttpEndpoint>;
+        /**
+         * The resource name of the Message Bus to which events should be
+         * published. The Message Bus resource should exist in the same project as
+         * the Pipeline. Format:
+         * `projects/{project}/locations/{location}/messageBuses/{message_bus}`
+         */
+        messageBus?: pulumi.Input<string>;
+        /**
+         * Represents a network config to be used for destination resolution and
+         * connectivity.
+         * Structure is documented below.
+         */
+        networkConfig?: pulumi.Input<inputs.eventarc.PipelineDestinationNetworkConfig>;
+        /**
+         * Represents the format of message data.
+         * Structure is documented below.
+         */
+        outputPayloadFormat?: pulumi.Input<inputs.eventarc.PipelineDestinationOutputPayloadFormat>;
+        /**
+         * The resource name of the Pub/Sub topic to which events should be
+         * published. Format:
+         * `projects/{project}/locations/{location}/topics/{topic}`
+         */
+        topic?: pulumi.Input<string>;
+        /**
+         * The resource name of the Workflow whose Executions are triggered by
+         * the events. The Workflow resource should be deployed in the same
+         * project as the Pipeline. Format:
+         * `projects/{project}/locations/{location}/workflows/{workflow}`
+         */
+        workflow?: pulumi.Input<string>;
+    }
+
+    export interface PipelineDestinationAuthenticationConfig {
+        /**
+         * Represents a config used to authenticate with a Google OIDC token using
+         * a GCP service account. Use this authentication method to invoke your
+         * Cloud Run and Cloud Functions destinations or HTTP endpoints that
+         * support Google OIDC.
+         * Structure is documented below.
+         */
+        googleOidc?: pulumi.Input<inputs.eventarc.PipelineDestinationAuthenticationConfigGoogleOidc>;
+        /**
+         * Contains information needed for generating an
+         * [OAuth token](https://developers.google.com/identity/protocols/OAuth2).
+         * This type of authorization should generally only be used when calling
+         * Google APIs hosted on *.googleapis.com.
+         * Structure is documented below.
+         */
+        oauthToken?: pulumi.Input<inputs.eventarc.PipelineDestinationAuthenticationConfigOauthToken>;
+    }
+
+    export interface PipelineDestinationAuthenticationConfigGoogleOidc {
+        /**
+         * Audience to be used to generate the OIDC Token. The audience claim
+         * identifies the recipient that the JWT is intended for. If
+         * unspecified, the destination URI will be used.
+         */
+        audience?: pulumi.Input<string>;
+        /**
+         * Service account email used to generate the OIDC Token.
+         * The principal who calls this API must have
+         * iam.serviceAccounts.actAs permission in the service account. See
+         * https://cloud.google.com/iam/docs/understanding-service-accounts
+         * for more information. Eventarc service agents must have
+         * roles/roles/iam.serviceAccountTokenCreator role to allow the
+         * Pipeline to create OpenID tokens for authenticated requests.
+         */
+        serviceAccount: pulumi.Input<string>;
+    }
+
+    export interface PipelineDestinationAuthenticationConfigOauthToken {
+        /**
+         * OAuth scope to be used for generating OAuth access token. If not
+         * specified, "https://www.googleapis.com/auth/cloud-platform" will be
+         * used.
+         */
+        scope?: pulumi.Input<string>;
+        /**
+         * Service account email used to generate the [OAuth
+         * token](https://developers.google.com/identity/protocols/OAuth2).
+         * The principal who calls this API must have
+         * iam.serviceAccounts.actAs permission in the service account. See
+         * https://cloud.google.com/iam/docs/understanding-service-accounts
+         * for more information. Eventarc service agents must have
+         * roles/roles/iam.serviceAccountTokenCreator role to allow Pipeline
+         * to create OAuth2 tokens for authenticated requests.
+         */
+        serviceAccount: pulumi.Input<string>;
+    }
+
+    export interface PipelineDestinationHttpEndpoint {
+        /**
+         * The CEL expression used to modify how the destination-bound HTTP
+         * request is constructed.
+         * If a binding expression is not specified here, the message
+         * is treated as a CloudEvent and is mapped to the HTTP request according
+         * to the CloudEvent HTTP Protocol Binding Binary Content Mode
+         * (https://github.com/cloudevents/spec/blob/main/cloudevents/bindings/http-protocol-binding.md#31-binary-content-mode).
+         * In this representation, all fields except the `data` and
+         * `datacontenttype` field on the message are mapped to HTTP request
+         * headers with a prefix of `ce-`.
+         * To construct the HTTP request payload and the value of the content-type
+         * HTTP header, the payload format is defined as follows:
+         * 1) Use the outputPayloadFormatType on the Pipeline.Destination if it
+         * is set, else:
+         * 2) Use the inputPayloadFormatType on the Pipeline if it is set,
+         * else:
+         * 3) Treat the payload as opaque binary data.
+         * The `data` field of the message is converted to the payload format or
+         * left as-is for case 3) and then attached as the payload of the HTTP
+         * request. The `content-type` header on the HTTP request is set to the
+         * payload format type or left empty for case 3). However, if a mediation
+         * has updated the `datacontenttype` field on the message so that it is
+         * not the same as the payload format type but it is still a prefix of the
+         * payload format type, then the `content-type` header on the HTTP request
+         * is set to this `datacontenttype` value. For example, if the
+         * `datacontenttype` is "application/json" and the payload format type is
+         * "application/json; charset=utf-8", then the `content-type` header on
+         * the HTTP request is set to "application/json; charset=utf-8".
+         * If a non-empty binding expression is specified then this expression is
+         * used to modify the default CloudEvent HTTP Protocol Binding Binary
+         * Content representation.
+         * The result of the CEL expression must be a map of key/value pairs
+         * which is used as follows:
+         * - If a map named `headers` exists on the result of the expression,
+         * then its key/value pairs are directly mapped to the HTTP request
+         * headers. The headers values are constructed from the corresponding
+         * value type's canonical representation. If the `headers` field doesn't
+         * exist then the resulting HTTP request will be the headers of the
+         * CloudEvent HTTP Binding Binary Content Mode representation of the final
+         * message. Note: If the specified binding expression, has updated the
+         * `datacontenttype` field on the message so that it is not the same as
+         * the payload format type but it is still a prefix of the payload format
+         * type, then the `content-type` header in the `headers` map is set to
+         * this `datacontenttype` value.
+         * - If a field named `body` exists on the result of the expression then
+         * its value is directly mapped to the body of the request. If the value
+         * of the `body` field is of type bytes or string then it is used for
+         * the HTTP request body as-is, with no conversion. If the body field is
+         * of any other type then it is converted to a JSON string. If the body
+         * field does not exist then the resulting payload of the HTTP request
+         * will be data value of the CloudEvent HTTP Binding Binary Content Mode
+         * representation of the final message as described earlier.
+         * - Any other fields in the resulting expression will be ignored.
+         * The CEL expression may access the incoming CloudEvent message in its
+         * definition, as follows:
+         * - The `data` field of the incoming CloudEvent message can be accessed
+         * using the `message.data` value. Subfields of `message.data` may also be
+         * accessed if an inputPayloadFormat has been specified on the Pipeline.
+         * - Each attribute of the incoming CloudEvent message can be accessed
+         * using the `message.` value, where  is replaced with the
+         * name of the attribute.
+         * - Existing headers can be accessed in the CEL expression using the
+         * `headers` variable. The `headers` variable defines a map of key/value
+         * pairs corresponding to the HTTP headers of the CloudEvent HTTP Binding
+         * Binary Content Mode representation of the final message as described
+         * earlier. For example, the following CEL expression can be used to
+         * construct an HTTP request by adding an additional header to the HTTP
+         * headers of the CloudEvent HTTP Binding Binary Content Mode
+         * representation of the final message and by overwriting the body of the
+         * request:
+         * ```
+         * {
+         * "headers": headers.merge({"new-header-key": "new-header-value"}),
+         * "body": "new-body"
+         * }
+         * ```
+         * - The default binding for the message payload can be accessed using the
+         * `body` variable. It conatins a string representation of the message
+         * payload in the format specified by the `outputPayloadFormat` field.
+         * If the `inputPayloadFormat` field is not set, the `body`
+         * variable contains the same message payload bytes that were published.
+         * Additionally, the following CEL extension functions are provided for
+         * use in this CEL expression:
+         * - toBase64Url:
+         * map.toBase64Url() > string
+         * - Converts a CelValue to a base64url encoded string
+         * - toJsonString: map.toJsonString() > string
+         * - Converts a CelValue to a JSON string
+         * - merge:
+         * map1.merge(map2) > map3
+         * - Merges the passed CEL map with the existing CEL map the
+         * function is applied to.
+         * - If the same key exists in both maps, if the key's value is type
+         * map both maps are merged else the value from the passed map is
+         * used.
+         * - denormalize:
+         * map.denormalize() > map
+         * - Denormalizes a CEL map such that every value of type map or key
+         * in the map is expanded to return a single level map.
+         * - The resulting keys are "." separated indices of the map keys.
+         * - For example:
+         * {
+         * "a": 1,
+         * "b": {
+         * "c": 2,
+         * "d": 3
+         * }
+         * "e": [4, 5]
+         * }
+         * .denormalize()
+         * > {
+         * "a": 1,
+         * "b.c": 2,
+         * "b.d": 3,
+         * "e.0": 4,
+         * "e.1": 5
+         * }
+         * - setField:
+         * map.setField(key, value) > message
+         * - Sets the field of the message with the given key to the
+         * given value.
+         * - If the field is not present it will be added.
+         * - If the field is present it will be overwritten.
+         * - The key can be a dot separated path to set a field in a nested
+         * message.
+         * - Key must be of type string.
+         * - Value may be any valid type.
+         * - removeFields:
+         * map.removeFields([key1, key2, ...]) > message
+         * - Removes the fields of the map with the given keys.
+         * - The keys can be a dot separated path to remove a field in a
+         * nested message.
+         * - If a key is not found it will be ignored.
+         * - Keys must be of type string.
+         * - toMap:
+         * [map1, map2, ...].toMap() > map
+         * - Converts a CEL list of CEL maps to a single CEL map
+         * - toCloudEventJsonWithPayloadFormat:
+         * message.toCloudEventJsonWithPayloadFormat() > map
+         * - Converts a message to the corresponding structure of JSON
+         * format for CloudEvents.
+         * - It converts `data` to destination payload format
+         * specified in `outputPayloadFormat`. If `outputPayloadFormat` is
+         * not set, the data will remain unchanged.
+         * - It also sets the corresponding datacontenttype of
+         * the CloudEvent, as indicated by
+         * `outputPayloadFormat`. If no
+         * `outputPayloadFormat` is set it will use the value of the
+         * "datacontenttype" attribute on the CloudEvent if present, else
+         * remove "datacontenttype" attribute.
+         * - This function expects that the content of the message will
+         * adhere to the standard CloudEvent format. If it doesn't then this
+         * function will fail.
+         * - The result is a CEL map that corresponds to the JSON
+         * representation of the CloudEvent. To convert that data to a JSON
+         * string it can be chained with the toJsonString function.
+         * The Pipeline expects that the message it receives adheres to the
+         * standard CloudEvent format. If it doesn't then the outgoing message
+         * request may fail with a persistent error.
+         *
+         * - - -
+         */
+        messageBindingTemplate?: pulumi.Input<string>;
+        /**
+         * The URI of the HTTP enpdoint.
+         * The value must be a RFC2396 URI string.
+         * Examples: `https://svc.us-central1.p.local:8080/route`.
+         * Only the HTTPS protocol is supported.
+         */
+        uri: pulumi.Input<string>;
+    }
+
+    export interface PipelineDestinationNetworkConfig {
+        /**
+         * Name of the NetworkAttachment that allows access to the consumer VPC.
+         * Format:
+         * `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+         */
+        networkAttachment: pulumi.Input<string>;
+    }
+
+    export interface PipelineDestinationOutputPayloadFormat {
+        /**
+         * The format of an AVRO message payload.
+         * Structure is documented below.
+         */
+        avro?: pulumi.Input<inputs.eventarc.PipelineDestinationOutputPayloadFormatAvro>;
+        /**
+         * The format of a JSON message payload.
+         */
+        json?: pulumi.Input<inputs.eventarc.PipelineDestinationOutputPayloadFormatJson>;
+        /**
+         * The format of a Protobuf message payload.
+         * Structure is documented below.
+         */
+        protobuf?: pulumi.Input<inputs.eventarc.PipelineDestinationOutputPayloadFormatProtobuf>;
+    }
+
+    export interface PipelineDestinationOutputPayloadFormatAvro {
+        /**
+         * The entire schema definition is stored in this field.
+         */
+        schemaDefinition?: pulumi.Input<string>;
+    }
+
+    export interface PipelineDestinationOutputPayloadFormatJson {
+    }
+
+    export interface PipelineDestinationOutputPayloadFormatProtobuf {
+        /**
+         * The entire schema definition is stored in this field.
+         */
+        schemaDefinition?: pulumi.Input<string>;
+    }
+
+    export interface PipelineInputPayloadFormat {
+        /**
+         * The format of an AVRO message payload.
+         * Structure is documented below.
+         */
+        avro?: pulumi.Input<inputs.eventarc.PipelineInputPayloadFormatAvro>;
+        /**
+         * The format of a JSON message payload.
+         */
+        json?: pulumi.Input<inputs.eventarc.PipelineInputPayloadFormatJson>;
+        /**
+         * The format of a Protobuf message payload.
+         * Structure is documented below.
+         */
+        protobuf?: pulumi.Input<inputs.eventarc.PipelineInputPayloadFormatProtobuf>;
+    }
+
+    export interface PipelineInputPayloadFormatAvro {
+        /**
+         * The entire schema definition is stored in this field.
+         */
+        schemaDefinition?: pulumi.Input<string>;
+    }
+
+    export interface PipelineInputPayloadFormatJson {
+    }
+
+    export interface PipelineInputPayloadFormatProtobuf {
+        /**
+         * The entire schema definition is stored in this field.
+         */
+        schemaDefinition?: pulumi.Input<string>;
+    }
+
+    export interface PipelineLoggingConfig {
+        /**
+         * The minimum severity of logs that will be sent to Stackdriver/Platform
+         * Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+         * Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+         */
+        logSeverity?: pulumi.Input<string>;
+    }
+
+    export interface PipelineMediation {
+        /**
+         * Transformation defines the way to transform an incoming message.
+         * Structure is documented below.
+         */
+        transformation?: pulumi.Input<inputs.eventarc.PipelineMediationTransformation>;
+    }
+
+    export interface PipelineMediationTransformation {
+        /**
+         * The CEL expression template to apply to transform messages.
+         * The following CEL extension functions are provided for
+         * use in this CEL expression:
+         * - merge:
+         * map1.merge(map2) > map3
+         * - Merges the passed CEL map with the existing CEL map the
+         * function is applied to.
+         * - If the same key exists in both maps, if the key's value is type
+         * map both maps are merged else the value from the passed map is
+         * used.
+         * - denormalize:
+         * map.denormalize() > map
+         * - Denormalizes a CEL map such that every value of type map or key
+         * in the map is expanded to return a single level map.
+         * - The resulting keys are "." separated indices of the map keys.
+         * - For example:
+         * {
+         * "a": 1,
+         * "b": {
+         * "c": 2,
+         * "d": 3
+         * }
+         * "e": [4, 5]
+         * }
+         * .denormalize()
+         * > {
+         * "a": 1,
+         * "b.c": 2,
+         * "b.d": 3,
+         * "e.0": 4,
+         * "e.1": 5
+         * }
+         * - setField:
+         * map.setField(key, value) > message
+         * - Sets the field of the message with the given key to the
+         * given value.
+         * - If the field is not present it will be added.
+         * - If the field is present it will be overwritten.
+         * - The key can be a dot separated path to set a field in a nested
+         * message.
+         * - Key must be of type string.
+         * - Value may be any valid type.
+         * - removeFields:
+         * map.removeFields([key1, key2, ...]) > message
+         * - Removes the fields of the map with the given keys.
+         * - The keys can be a dot separated path to remove a field in a
+         * nested message.
+         * - If a key is not found it will be ignored.
+         * - Keys must be of type string.
+         * - toMap:
+         * [map1, map2, ...].toMap() > map
+         * - Converts a CEL list of CEL maps to a single CEL map
+         * - toDestinationPayloadFormat():
+         * message.data.toDestinationPayloadFormat() > string or bytes
+         * - Converts the message data to the destination payload format
+         * specified in Pipeline.Destination.output_payload_format
+         * - This function is meant to be applied to the message.data field.
+         * - If the destination payload format is not set, the function will
+         * return the message data unchanged.
+         * - toCloudEventJsonWithPayloadFormat:
+         * message.toCloudEventJsonWithPayloadFormat() > map
+         * - Converts a message to the corresponding structure of JSON
+         * format for CloudEvents
+         * - This function applies toDestinationPayloadFormat() to the
+         * message data. It also sets the corresponding datacontenttype of
+         * the CloudEvent, as indicated by
+         * Pipeline.Destination.output_payload_format. If no
+         * outputPayloadFormat is set it will use the existing
+         * datacontenttype on the CloudEvent if present, else leave
+         * datacontenttype absent.
+         * - This function expects that the content of the message will
+         * adhere to the standard CloudEvent format. If it doesn't then this
+         * function will fail.
+         * - The result is a CEL map that corresponds to the JSON
+         * representation of the CloudEvent. To convert that data to a JSON
+         * string it can be chained with the toJsonString function.
+         */
+        transformationTemplate?: pulumi.Input<string>;
+    }
+
+    export interface PipelineRetryPolicy {
+        /**
+         * The maximum number of delivery attempts for any message. The value must
+         * be between 1 and 100.
+         * The default value for this field is 5.
+         */
+        maxAttempts?: pulumi.Input<number>;
+        /**
+         * The maximum amount of seconds to wait between retry attempts. The value
+         * must be between 1 and 600.
+         * The default value for this field is 60.
+         */
+        maxRetryDelay?: pulumi.Input<string>;
+        /**
+         * The minimum amount of seconds to wait between retry attempts. The value
+         * must be between 1 and 600.
+         * The default value for this field is 5.
+         */
+        minRetryDelay?: pulumi.Input<string>;
+    }
+
     export interface TriggerDestination {
         /**
          * (Output)
@@ -53151,6 +53637,42 @@ export namespace filestore {
 }
 
 export namespace firebase {
+    export interface AppHostingBackendCodebase {
+        /**
+         * The resource name for the Developer Connect
+         * [`gitRepositoryLink`](https://cloud.google.com/developer-connect/docs/api/reference/rest/v1/projects.locations.connections.gitRepositoryLinks)
+         * connected to this backend, in the format:
+         * projects/{project}/locations/{location}/connections/{connection}/gitRepositoryLinks/{repositoryLink}
+         */
+        repository: pulumi.Input<string>;
+        /**
+         * If `repository` is provided, the directory relative to the root of the
+         * repository to use as the root for the deployed web app.
+         */
+        rootDirectory?: pulumi.Input<string>;
+    }
+
+    export interface AppHostingBackendManagedResource {
+        /**
+         * (Output)
+         * A managed Cloud Run
+         * [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service).
+         * Structure is documented below.
+         */
+        runServices?: pulumi.Input<pulumi.Input<inputs.firebase.AppHostingBackendManagedResourceRunService>[]>;
+    }
+
+    export interface AppHostingBackendManagedResourceRunService {
+        /**
+         * (Output)
+         * The name of the Cloud Run
+         * [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service),
+         * in the format:
+         * projects/{project}/locations/{location}/services/{serviceId}
+         */
+        service?: pulumi.Input<string>;
+    }
+
     export interface ExtensionsInstanceConfig {
         /**
          * List of extension events selected by consumer that extension is allowed to
@@ -61586,6 +62108,63 @@ export namespace managedkafka {
          */
         mode?: pulumi.Input<string>;
     }
+
+    export interface ConnectClusterCapacityConfig {
+        /**
+         * The memory to provision for the cluster in bytes. The CPU:memory ratio (vCPU:GiB) must be between 1:1 and 1:8. Minimum: 3221225472 (3 GiB).
+         */
+        memoryBytes: pulumi.Input<string>;
+        /**
+         * The number of vCPUs to provision for the cluster. The minimum is 3.
+         */
+        vcpuCount: pulumi.Input<string>;
+    }
+
+    export interface ConnectClusterGcpConfig {
+        /**
+         * The configuration of access to the Kafka Connect cluster.
+         * Structure is documented below.
+         */
+        accessConfig: pulumi.Input<inputs.managedkafka.ConnectClusterGcpConfigAccessConfig>;
+    }
+
+    export interface ConnectClusterGcpConfigAccessConfig {
+        /**
+         * Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka Connect cluster are allocated. To make the connect cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `networkConfigs` blocks.
+         * Structure is documented below.
+         */
+        networkConfigs: pulumi.Input<pulumi.Input<inputs.managedkafka.ConnectClusterGcpConfigAccessConfigNetworkConfig>[]>;
+    }
+
+    export interface ConnectClusterGcpConfigAccessConfigNetworkConfig {
+        /**
+         * Additional subnets may be specified. They may be in another region, but must be in the same VPC network. The Connect workers can communicate with network endpoints in either the primary or additional subnets.
+         */
+        additionalSubnets?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Additional DNS domain names from the subnet's network to be made visible to the Connect Cluster. When using MirrorMaker2, it's necessary to add the bootstrap address's dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog
+         *
+         * - - -
+         */
+        dnsDomainNames?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * VPC subnet to make available to the Kafka Connect cluster. Structured like: projects/{project}/regions/{region}/subnetworks/{subnet_id}. It is used to create a Private Service Connect (PSC) interface for the Kafka Connect workers. It must be located in the same region as the Kafka Connect cluster. The CIDR range of the subnet must be within the IPv4 address ranges for private networks, as specified in RFC 1918. The primary subnet CIDR range must have a minimum size of /22 (1024 addresses).
+         */
+        primarySubnet: pulumi.Input<string>;
+    }
+
+    export interface ConnectorTaskRestartPolicy {
+        /**
+         * The maximum amount of time to wait before retrying a failed task. This sets an upper bound for the backoff delay.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
+        maximumBackoff?: pulumi.Input<string>;
+        /**
+         * The minimum amount of time to wait before retrying a failed task. This sets a lower bound for the backoff delay.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
+        minimumBackoff?: pulumi.Input<string>;
+    }
 }
 
 export namespace memcache {
@@ -64709,10 +65288,153 @@ export namespace networksecurity {
 
     export interface AuthzPolicyHttpRuleTo {
         /**
+         * Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified.
+         * Structure is documented below.
+         */
+        notOperations?: pulumi.Input<pulumi.Input<inputs.networksecurity.AuthzPolicyHttpRuleToNotOperation>[]>;
+        /**
          * Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 5 operations. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
          * Structure is documented below.
          */
         operations?: pulumi.Input<pulumi.Input<inputs.networksecurity.AuthzPolicyHttpRuleToOperation>[]>;
+    }
+
+    export interface AuthzPolicyHttpRuleToNotOperation {
+        /**
+         * A list of headers to match against in http header.
+         * Structure is documented below.
+         */
+        headerSet?: pulumi.Input<inputs.networksecurity.AuthzPolicyHttpRuleToNotOperationHeaderSet>;
+        /**
+         * A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
+         * Limited to 5 matches.
+         * Structure is documented below.
+         */
+        hosts?: pulumi.Input<pulumi.Input<inputs.networksecurity.AuthzPolicyHttpRuleToNotOperationHost>[]>;
+        /**
+         * A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
+         */
+        methods?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
+         * Limited to 5 matches.
+         * Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method.
+         * Structure is documented below.
+         */
+        paths?: pulumi.Input<pulumi.Input<inputs.networksecurity.AuthzPolicyHttpRuleToNotOperationPath>[]>;
+    }
+
+    export interface AuthzPolicyHttpRuleToNotOperationHeaderSet {
+        /**
+         * A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.
+         * Structure is documented below.
+         */
+        headers?: pulumi.Input<pulumi.Input<inputs.networksecurity.AuthzPolicyHttpRuleToNotOperationHeaderSetHeader>[]>;
+    }
+
+    export interface AuthzPolicyHttpRuleToNotOperationHeaderSetHeader {
+        /**
+         * Specifies the name of the header in the request.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Specifies how the header match will be performed.
+         * Structure is documented below.
+         */
+        value?: pulumi.Input<inputs.networksecurity.AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue>;
+    }
+
+    export interface AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue {
+        /**
+         * The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value xyz.abc.def
+         */
+        contains?: pulumi.Input<string>;
+        /**
+         * The input string must match exactly the string specified here.
+         * Examples:
+         * * abc only matches the value abc.
+         */
+        exact?: pulumi.Input<string>;
+        /**
+         * If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+         */
+        ignoreCase?: pulumi.Input<boolean>;
+        /**
+         * The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value abc.xyz
+         */
+        prefix?: pulumi.Input<string>;
+        /**
+         * The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value xyz.abc
+         */
+        suffix?: pulumi.Input<string>;
+    }
+
+    export interface AuthzPolicyHttpRuleToNotOperationHost {
+        /**
+         * The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value xyz.abc.def
+         */
+        contains?: pulumi.Input<string>;
+        /**
+         * The input string must match exactly the string specified here.
+         * Examples:
+         * * abc only matches the value abc.
+         */
+        exact?: pulumi.Input<string>;
+        /**
+         * If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+         */
+        ignoreCase?: pulumi.Input<boolean>;
+        /**
+         * The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value abc.xyz
+         */
+        prefix?: pulumi.Input<string>;
+        /**
+         * The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value xyz.abc
+         */
+        suffix?: pulumi.Input<string>;
+    }
+
+    export interface AuthzPolicyHttpRuleToNotOperationPath {
+        /**
+         * The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value xyz.abc.def
+         */
+        contains?: pulumi.Input<string>;
+        /**
+         * The input string must match exactly the string specified here.
+         * Examples:
+         * * abc only matches the value abc.
+         */
+        exact?: pulumi.Input<string>;
+        /**
+         * If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+         */
+        ignoreCase?: pulumi.Input<boolean>;
+        /**
+         * The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value abc.xyz
+         */
+        prefix?: pulumi.Input<string>;
+        /**
+         * The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value xyz.abc
+         */
+        suffix?: pulumi.Input<string>;
     }
 
     export interface AuthzPolicyHttpRuleToOperation {
@@ -74957,8 +75679,6 @@ export namespace storage {
         delimiter?: pulumi.Input<string>;
         /**
          * The boolean that indicates whether or not headers are included in the inventory report CSV file.
-         *
-         * - - -
          */
         headerRequired?: pulumi.Input<boolean>;
         /**
@@ -75048,6 +75768,9 @@ export namespace storage {
          * The filter to use when specifying which bucket to generate inventory reports for.
          */
         bucket?: pulumi.Input<string>;
+    }
+
+    export interface InsightsReportConfigParquetOptions {
     }
 
     export interface ManagedFolderIamBindingCondition {

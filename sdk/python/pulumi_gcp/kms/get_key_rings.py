@@ -60,6 +60,9 @@ class GetKeyRingsResult:
     @property
     @pulumi.getter(name="keyRings")
     def key_rings(self) -> Sequence['outputs.GetKeyRingsKeyRingResult']:
+        """
+        A list of all the retrieved key rings from the provided location. This list is influenced by the provided filter argument.
+        """
         return pulumi.get(self, "key_rings")
 
     @property
@@ -91,7 +94,24 @@ def get_key_rings(filter: Optional[str] = None,
                   project: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeyRingsResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides access to all Google Cloud Platform KMS CryptoKeyRings in a set location. For more information see
+    [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_rings)
+    and
+    [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings).
+
+    A key ring organizes keys in a specific Google Cloud location and lets you manage access control on groups of keys. A key ring's name does not need to be unique across a Google Cloud project, but must be unique within a given location. After creation, a key ring cannot be deleted. Key rings don't incur any costs.
+
+
+    :param str filter: The filter argument is used to add a filter query parameter that limits which key rings are retrieved by the data source: ?filter={{filter}}. When no value is provided there is no filtering.
+           
+           Example filter values if filtering on name. Note: names take the form projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}.
+           
+           * `"name:my-key-"` will retrieve key rings that contain "my-key-" anywhere in their name.
+           * `"name=projects/my-project/locations/global/keyRings/my-key-ring"` will only retrieve a key with that exact name.
+           
+           [See the documentation about using filters](https://cloud.google.com/kms/docs/sorting-and-filtering)
+    :param str location: The location that the underlying key ring resides in. e.g us-west1
+    :param str project: The Project ID of the project.
     """
     __args__ = dict()
     __args__['filter'] = filter
@@ -111,7 +131,24 @@ def get_key_rings_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
                          project: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKeyRingsResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides access to all Google Cloud Platform KMS CryptoKeyRings in a set location. For more information see
+    [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_rings)
+    and
+    [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings).
+
+    A key ring organizes keys in a specific Google Cloud location and lets you manage access control on groups of keys. A key ring's name does not need to be unique across a Google Cloud project, but must be unique within a given location. After creation, a key ring cannot be deleted. Key rings don't incur any costs.
+
+
+    :param str filter: The filter argument is used to add a filter query parameter that limits which key rings are retrieved by the data source: ?filter={{filter}}. When no value is provided there is no filtering.
+           
+           Example filter values if filtering on name. Note: names take the form projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}.
+           
+           * `"name:my-key-"` will retrieve key rings that contain "my-key-" anywhere in their name.
+           * `"name=projects/my-project/locations/global/keyRings/my-key-ring"` will only retrieve a key with that exact name.
+           
+           [See the documentation about using filters](https://cloud.google.com/kms/docs/sorting-and-filtering)
+    :param str location: The location that the underlying key ring resides in. e.g us-west1
+    :param str project: The Project ID of the project.
     """
     __args__ = dict()
     __args__['filter'] = filter

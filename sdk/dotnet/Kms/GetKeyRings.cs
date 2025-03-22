@@ -11,12 +11,36 @@ namespace Pulumi.Gcp.Kms
 {
     public static class GetKeyRings
     {
+        /// <summary>
+        /// Provides access to all Google Cloud Platform KMS CryptoKeyRings in a set location. For more information see
+        /// [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_rings)
+        /// and
+        /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings).
+        /// 
+        /// A key ring organizes keys in a specific Google Cloud location and lets you manage access control on groups of keys. A key ring's name does not need to be unique across a Google Cloud project, but must be unique within a given location. After creation, a key ring cannot be deleted. Key rings don't incur any costs.
+        /// </summary>
         public static Task<GetKeyRingsResult> InvokeAsync(GetKeyRingsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKeyRingsResult>("gcp:kms/getKeyRings:getKeyRings", args ?? new GetKeyRingsArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Provides access to all Google Cloud Platform KMS CryptoKeyRings in a set location. For more information see
+        /// [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_rings)
+        /// and
+        /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings).
+        /// 
+        /// A key ring organizes keys in a specific Google Cloud location and lets you manage access control on groups of keys. A key ring's name does not need to be unique across a Google Cloud project, but must be unique within a given location. After creation, a key ring cannot be deleted. Key rings don't incur any costs.
+        /// </summary>
         public static Output<GetKeyRingsResult> Invoke(GetKeyRingsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKeyRingsResult>("gcp:kms/getKeyRings:getKeyRings", args ?? new GetKeyRingsInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Provides access to all Google Cloud Platform KMS CryptoKeyRings in a set location. For more information see
+        /// [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_rings)
+        /// and
+        /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings).
+        /// 
+        /// A key ring organizes keys in a specific Google Cloud location and lets you manage access control on groups of keys. A key ring's name does not need to be unique across a Google Cloud project, but must be unique within a given location. After creation, a key ring cannot be deleted. Key rings don't incur any costs.
+        /// </summary>
         public static Output<GetKeyRingsResult> Invoke(GetKeyRingsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetKeyRingsResult>("gcp:kms/getKeyRings:getKeyRings", args ?? new GetKeyRingsInvokeArgs(), options.WithDefaults());
     }
@@ -24,12 +48,28 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class GetKeyRingsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The filter argument is used to add a filter query parameter that limits which key rings are retrieved by the data source: ?filter={{filter}}. When no value is provided there is no filtering.
+        /// 
+        /// Example filter values if filtering on name. Note: names take the form projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}.
+        /// 
+        /// * `"name:my-key-"` will retrieve key rings that contain "my-key-" anywhere in their name.
+        /// * `"name=projects/my-project/locations/global/keyRings/my-key-ring"` will only retrieve a key with that exact name.
+        /// 
+        /// [See the documentation about using filters](https://cloud.google.com/kms/docs/sorting-and-filtering)
+        /// </summary>
         [Input("filter")]
         public string? Filter { get; set; }
 
+        /// <summary>
+        /// The location that the underlying key ring resides in. e.g us-west1
+        /// </summary>
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
 
+        /// <summary>
+        /// The Project ID of the project.
+        /// </summary>
         [Input("project")]
         public string? Project { get; set; }
 
@@ -41,12 +81,28 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class GetKeyRingsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The filter argument is used to add a filter query parameter that limits which key rings are retrieved by the data source: ?filter={{filter}}. When no value is provided there is no filtering.
+        /// 
+        /// Example filter values if filtering on name. Note: names take the form projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}.
+        /// 
+        /// * `"name:my-key-"` will retrieve key rings that contain "my-key-" anywhere in their name.
+        /// * `"name=projects/my-project/locations/global/keyRings/my-key-ring"` will only retrieve a key with that exact name.
+        /// 
+        /// [See the documentation about using filters](https://cloud.google.com/kms/docs/sorting-and-filtering)
+        /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }
 
+        /// <summary>
+        /// The location that the underlying key ring resides in. e.g us-west1
+        /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
+        /// <summary>
+        /// The Project ID of the project.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -65,6 +121,9 @@ namespace Pulumi.Gcp.Kms
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of all the retrieved key rings from the provided location. This list is influenced by the provided filter argument.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetKeyRingsKeyRingResult> KeyRings;
         public readonly string Location;
         public readonly string? Project;

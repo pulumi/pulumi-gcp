@@ -37,7 +37,6 @@ class GatewaySecurityPolicyArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] tls_inspection_policy: Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
-               Note: networksecurity.TlsInspectionPolicy resource is still in Beta therefore it will need to import the provider.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -109,7 +108,6 @@ class GatewaySecurityPolicyArgs:
     def tls_inspection_policy(self) -> Optional[pulumi.Input[str]]:
         """
         Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
-        Note: networksecurity.TlsInspectionPolicy resource is still in Beta therefore it will need to import the provider.
         """
         return pulumi.get(self, "tls_inspection_policy")
 
@@ -146,7 +144,6 @@ class _GatewaySecurityPolicyState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[str] tls_inspection_policy: Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
-               Note: networksecurity.TlsInspectionPolicy resource is still in Beta therefore it will need to import the provider.
         :param pulumi.Input[str] update_time: The timestamp when the resource was updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -253,7 +250,6 @@ class _GatewaySecurityPolicyState:
     def tls_inspection_policy(self) -> Optional[pulumi.Input[str]]:
         """
         Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
-        Note: networksecurity.TlsInspectionPolicy resource is still in Beta therefore it will need to import the provider.
         """
         return pulumi.get(self, "tls_inspection_policy")
 
@@ -428,7 +424,6 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] tls_inspection_policy: Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
-               Note: networksecurity.TlsInspectionPolicy resource is still in Beta therefore it will need to import the provider.
         """
         ...
     @overload
@@ -641,7 +636,6 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[str] tls_inspection_policy: Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
-               Note: networksecurity.TlsInspectionPolicy resource is still in Beta therefore it will need to import the provider.
         :param pulumi.Input[str] update_time: The timestamp when the resource was updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -721,7 +715,6 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
     def tls_inspection_policy(self) -> pulumi.Output[Optional[str]]:
         """
         Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
-        Note: networksecurity.TlsInspectionPolicy resource is still in Beta therefore it will need to import the provider.
         """
         return pulumi.get(self, "tls_inspection_policy")
 

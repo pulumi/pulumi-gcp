@@ -420,6 +420,18 @@ class MirroringEndpointGroup(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        An endpoint group is a consumer frontend for a deployment group (backend).
+        In order to configure mirroring for a network, consumers must create:
+        - An association between their network and the endpoint group.
+        - A security profile that points to the endpoint group.
+        - A mirroring rule that references the security profile (group).
+
+        To get more information about MirroringEndpointGroup, see:
+
+        * [API documentation](https://cloud.google.com/network-security-integration/docs/reference/rest/v1/projects.locations.mirroringEndpointGroups)
+        * How-to Guides
+            * [Mirroring endpoint group overview](https://cloud.google.com/network-security-integration/docs/out-of-band/endpoint-groups-overview)
+
         ## Example Usage
 
         ### Network Security Mirroring Endpoint Group Basic
@@ -495,6 +507,18 @@ class MirroringEndpointGroup(pulumi.CustomResource):
                  args: MirroringEndpointGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        An endpoint group is a consumer frontend for a deployment group (backend).
+        In order to configure mirroring for a network, consumers must create:
+        - An association between their network and the endpoint group.
+        - A security profile that points to the endpoint group.
+        - A mirroring rule that references the security profile (group).
+
+        To get more information about MirroringEndpointGroup, see:
+
+        * [API documentation](https://cloud.google.com/network-security-integration/docs/reference/rest/v1/projects.locations.mirroringEndpointGroups)
+        * How-to Guides
+            * [Mirroring endpoint group overview](https://cloud.google.com/network-security-integration/docs/out-of-band/endpoint-groups-overview)
+
         ## Example Usage
 
         ### Network Security Mirroring Endpoint Group Basic

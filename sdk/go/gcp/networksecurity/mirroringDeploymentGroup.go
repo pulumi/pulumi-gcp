@@ -12,6 +12,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A deployment group aggregates many zonal mirroring backends (deployments)
+// into a single global mirroring service. Consumers can connect this service
+// using an endpoint group.
+//
+// To get more information about MirroringDeploymentGroup, see:
+//
+// * [API documentation](https://cloud.google.com/network-security-integration/docs/reference/rest/v1/projects.locations.mirroringDeploymentGroups)
+// * How-to Guides
+//   - [Mirroring deployment group overview](https://cloud.google.com/network-security-integration/docs/out-of-band/deployment-groups-overview)
+//
 // ## Example Usage
 //
 // ### Network Security Mirroring Deployment Group Basic

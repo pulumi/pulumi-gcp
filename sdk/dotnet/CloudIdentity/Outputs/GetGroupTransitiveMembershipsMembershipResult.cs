@@ -14,19 +14,19 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
     public sealed class GetGroupTransitiveMembershipsMembershipResult
     {
         /// <summary>
-        /// Resource name for this member.
+        /// EntityKey of the member.  This value will be either a userKey in the format `users/000000000000000000000` with a numerical id or a groupKey in the format `groups/000ab0000ab0000` with a hexadecimal id.
         /// </summary>
         public readonly string Member;
         /// <summary>
-        /// EntityKey of the member. Entity key has an id and a namespace. In case of discussion forums, the id will be an email address without a namespace.
+        /// EntityKey of the member.  Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGroupTransitiveMembershipsMembershipPreferredMemberKeyResult> PreferredMemberKeys;
         /// <summary>
-        /// The relation between the group and the transitive member. The value can be DIRECT, INDIRECT, or DIRECT_AND_INDIRECT
+        /// The relation between the group and the transitive member. The value can be DIRECT, INDIRECT, or DIRECT_AND_INDIRECT.
         /// </summary>
         public readonly string RelationType;
         /// <summary>
-        /// The membership role details
+        /// The TransitiveMembershipRoles that apply to the Membership. Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGroupTransitiveMembershipsMembershipRoleResult> Roles;
 

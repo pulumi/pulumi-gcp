@@ -23,6 +23,7 @@ class WorkflowArgs:
                  crypto_key_name: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 execution_history_level: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
@@ -41,6 +42,10 @@ class WorkflowArgs:
         :param pulumi.Input[str] crypto_key_name: The KMS key used to encrypt workflow and execution data.
                Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
         :param pulumi.Input[str] description: Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
+        :param pulumi.Input[str] execution_history_level: Describes the level of execution history to be stored for this workflow. This configuration
+               determines how much information about workflow executions is preserved. If not specified,
+               defaults to EXECUTION_HISTORY_LEVEL_UNSPECIFIED.
+               Possible values are: `EXECUTION_HISTORY_LEVEL_UNSPECIFIED`, `EXECUTION_HISTORY_BASIC`, `EXECUTION_HISTORY_DETAILED`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Workflow.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -62,7 +67,7 @@ class WorkflowArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition
                as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
                the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
         """
         if call_log_level is not None:
             pulumi.set(__self__, "call_log_level", call_log_level)
@@ -72,6 +77,8 @@ class WorkflowArgs:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if execution_history_level is not None:
+            pulumi.set(__self__, "execution_history_level", execution_history_level)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -139,6 +146,21 @@ class WorkflowArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="executionHistoryLevel")
+    def execution_history_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Describes the level of execution history to be stored for this workflow. This configuration
+        determines how much information about workflow executions is preserved. If not specified,
+        defaults to EXECUTION_HISTORY_LEVEL_UNSPECIFIED.
+        Possible values are: `EXECUTION_HISTORY_LEVEL_UNSPECIFIED`, `EXECUTION_HISTORY_BASIC`, `EXECUTION_HISTORY_DETAILED`.
+        """
+        return pulumi.get(self, "execution_history_level")
+
+    @execution_history_level.setter
+    def execution_history_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "execution_history_level", value)
 
     @property
     @pulumi.getter
@@ -253,7 +275,7 @@ class WorkflowArgs:
     @pulumi.getter(name="userEnvVars")
     def user_env_vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
         """
         return pulumi.get(self, "user_env_vars")
 
@@ -271,6 +293,7 @@ class _WorkflowState:
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 execution_history_level: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
@@ -295,6 +318,10 @@ class _WorkflowState:
                Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
         :param pulumi.Input[str] description: Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[str] execution_history_level: Describes the level of execution history to be stored for this workflow. This configuration
+               determines how much information about workflow executions is preserved. If not specified,
+               defaults to EXECUTION_HISTORY_LEVEL_UNSPECIFIED.
+               Possible values are: `EXECUTION_HISTORY_LEVEL_UNSPECIFIED`, `EXECUTION_HISTORY_BASIC`, `EXECUTION_HISTORY_DETAILED`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Workflow.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -321,7 +348,7 @@ class _WorkflowState:
                as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
                the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param pulumi.Input[str] update_time: The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
         """
         if call_log_level is not None:
             pulumi.set(__self__, "call_log_level", call_log_level)
@@ -335,6 +362,8 @@ class _WorkflowState:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if execution_history_level is not None:
+            pulumi.set(__self__, "execution_history_level", execution_history_level)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -434,6 +463,21 @@ class _WorkflowState:
     @effective_labels.setter
     def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @property
+    @pulumi.getter(name="executionHistoryLevel")
+    def execution_history_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Describes the level of execution history to be stored for this workflow. This configuration
+        determines how much information about workflow executions is preserved. If not specified,
+        defaults to EXECUTION_HISTORY_LEVEL_UNSPECIFIED.
+        Possible values are: `EXECUTION_HISTORY_LEVEL_UNSPECIFIED`, `EXECUTION_HISTORY_BASIC`, `EXECUTION_HISTORY_DETAILED`.
+        """
+        return pulumi.get(self, "execution_history_level")
+
+    @execution_history_level.setter
+    def execution_history_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "execution_history_level", value)
 
     @property
     @pulumi.getter
@@ -597,7 +641,7 @@ class _WorkflowState:
     @pulumi.getter(name="userEnvVars")
     def user_env_vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
         """
         return pulumi.get(self, "user_env_vars")
 
@@ -615,6 +659,7 @@ class Workflow(pulumi.CustomResource):
                  crypto_key_name: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 execution_history_level: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
@@ -757,6 +802,10 @@ class Workflow(pulumi.CustomResource):
         :param pulumi.Input[str] crypto_key_name: The KMS key used to encrypt workflow and execution data.
                Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
         :param pulumi.Input[str] description: Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
+        :param pulumi.Input[str] execution_history_level: Describes the level of execution history to be stored for this workflow. This configuration
+               determines how much information about workflow executions is preserved. If not specified,
+               defaults to EXECUTION_HISTORY_LEVEL_UNSPECIFIED.
+               Possible values are: `EXECUTION_HISTORY_LEVEL_UNSPECIFIED`, `EXECUTION_HISTORY_BASIC`, `EXECUTION_HISTORY_DETAILED`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Workflow.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -778,7 +827,7 @@ class Workflow(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition
                as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
                the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
         """
         ...
     @overload
@@ -928,6 +977,7 @@ class Workflow(pulumi.CustomResource):
                  crypto_key_name: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 execution_history_level: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
@@ -950,6 +1000,7 @@ class Workflow(pulumi.CustomResource):
             __props__.__dict__["crypto_key_name"] = crypto_key_name
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
+            __props__.__dict__["execution_history_level"] = execution_history_level
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["name_prefix"] = name_prefix
@@ -983,6 +1034,7 @@ class Workflow(pulumi.CustomResource):
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            execution_history_level: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             name_prefix: Optional[pulumi.Input[str]] = None,
@@ -1012,6 +1064,10 @@ class Workflow(pulumi.CustomResource):
                Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
         :param pulumi.Input[str] description: Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[str] execution_history_level: Describes the level of execution history to be stored for this workflow. This configuration
+               determines how much information about workflow executions is preserved. If not specified,
+               defaults to EXECUTION_HISTORY_LEVEL_UNSPECIFIED.
+               Possible values are: `EXECUTION_HISTORY_LEVEL_UNSPECIFIED`, `EXECUTION_HISTORY_BASIC`, `EXECUTION_HISTORY_DETAILED`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Workflow.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1038,7 +1094,7 @@ class Workflow(pulumi.CustomResource):
                as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
                the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param pulumi.Input[str] update_time: The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1050,6 +1106,7 @@ class Workflow(pulumi.CustomResource):
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["execution_history_level"] = execution_history_level
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["name_prefix"] = name_prefix
@@ -1113,6 +1170,17 @@ class Workflow(pulumi.CustomResource):
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @property
+    @pulumi.getter(name="executionHistoryLevel")
+    def execution_history_level(self) -> pulumi.Output[Optional[str]]:
+        """
+        Describes the level of execution history to be stored for this workflow. This configuration
+        determines how much information about workflow executions is preserved. If not specified,
+        defaults to EXECUTION_HISTORY_LEVEL_UNSPECIFIED.
+        Possible values are: `EXECUTION_HISTORY_LEVEL_UNSPECIFIED`, `EXECUTION_HISTORY_BASIC`, `EXECUTION_HISTORY_DETAILED`.
+        """
+        return pulumi.get(self, "execution_history_level")
 
     @property
     @pulumi.getter
@@ -1228,7 +1296,7 @@ class Workflow(pulumi.CustomResource):
     @pulumi.getter(name="userEnvVars")
     def user_env_vars(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
         """
         return pulumi.get(self, "user_env_vars")
 

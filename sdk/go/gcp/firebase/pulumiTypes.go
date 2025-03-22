@@ -13,6 +13,395 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AppHostingBackendCodebase struct {
+	// The resource name for the Developer Connect
+	// [`gitRepositoryLink`](https://cloud.google.com/developer-connect/docs/api/reference/rest/v1/projects.locations.connections.gitRepositoryLinks)
+	// connected to this backend, in the format:
+	// projects/{project}/locations/{location}/connections/{connection}/gitRepositoryLinks/{repositoryLink}
+	Repository string `pulumi:"repository"`
+	// If `repository` is provided, the directory relative to the root of the
+	// repository to use as the root for the deployed web app.
+	RootDirectory *string `pulumi:"rootDirectory"`
+}
+
+// AppHostingBackendCodebaseInput is an input type that accepts AppHostingBackendCodebaseArgs and AppHostingBackendCodebaseOutput values.
+// You can construct a concrete instance of `AppHostingBackendCodebaseInput` via:
+//
+//	AppHostingBackendCodebaseArgs{...}
+type AppHostingBackendCodebaseInput interface {
+	pulumi.Input
+
+	ToAppHostingBackendCodebaseOutput() AppHostingBackendCodebaseOutput
+	ToAppHostingBackendCodebaseOutputWithContext(context.Context) AppHostingBackendCodebaseOutput
+}
+
+type AppHostingBackendCodebaseArgs struct {
+	// The resource name for the Developer Connect
+	// [`gitRepositoryLink`](https://cloud.google.com/developer-connect/docs/api/reference/rest/v1/projects.locations.connections.gitRepositoryLinks)
+	// connected to this backend, in the format:
+	// projects/{project}/locations/{location}/connections/{connection}/gitRepositoryLinks/{repositoryLink}
+	Repository pulumi.StringInput `pulumi:"repository"`
+	// If `repository` is provided, the directory relative to the root of the
+	// repository to use as the root for the deployed web app.
+	RootDirectory pulumi.StringPtrInput `pulumi:"rootDirectory"`
+}
+
+func (AppHostingBackendCodebaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingBackendCodebase)(nil)).Elem()
+}
+
+func (i AppHostingBackendCodebaseArgs) ToAppHostingBackendCodebaseOutput() AppHostingBackendCodebaseOutput {
+	return i.ToAppHostingBackendCodebaseOutputWithContext(context.Background())
+}
+
+func (i AppHostingBackendCodebaseArgs) ToAppHostingBackendCodebaseOutputWithContext(ctx context.Context) AppHostingBackendCodebaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingBackendCodebaseOutput)
+}
+
+func (i AppHostingBackendCodebaseArgs) ToAppHostingBackendCodebasePtrOutput() AppHostingBackendCodebasePtrOutput {
+	return i.ToAppHostingBackendCodebasePtrOutputWithContext(context.Background())
+}
+
+func (i AppHostingBackendCodebaseArgs) ToAppHostingBackendCodebasePtrOutputWithContext(ctx context.Context) AppHostingBackendCodebasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingBackendCodebaseOutput).ToAppHostingBackendCodebasePtrOutputWithContext(ctx)
+}
+
+// AppHostingBackendCodebasePtrInput is an input type that accepts AppHostingBackendCodebaseArgs, AppHostingBackendCodebasePtr and AppHostingBackendCodebasePtrOutput values.
+// You can construct a concrete instance of `AppHostingBackendCodebasePtrInput` via:
+//
+//	        AppHostingBackendCodebaseArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppHostingBackendCodebasePtrInput interface {
+	pulumi.Input
+
+	ToAppHostingBackendCodebasePtrOutput() AppHostingBackendCodebasePtrOutput
+	ToAppHostingBackendCodebasePtrOutputWithContext(context.Context) AppHostingBackendCodebasePtrOutput
+}
+
+type appHostingBackendCodebasePtrType AppHostingBackendCodebaseArgs
+
+func AppHostingBackendCodebasePtr(v *AppHostingBackendCodebaseArgs) AppHostingBackendCodebasePtrInput {
+	return (*appHostingBackendCodebasePtrType)(v)
+}
+
+func (*appHostingBackendCodebasePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppHostingBackendCodebase)(nil)).Elem()
+}
+
+func (i *appHostingBackendCodebasePtrType) ToAppHostingBackendCodebasePtrOutput() AppHostingBackendCodebasePtrOutput {
+	return i.ToAppHostingBackendCodebasePtrOutputWithContext(context.Background())
+}
+
+func (i *appHostingBackendCodebasePtrType) ToAppHostingBackendCodebasePtrOutputWithContext(ctx context.Context) AppHostingBackendCodebasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingBackendCodebasePtrOutput)
+}
+
+type AppHostingBackendCodebaseOutput struct{ *pulumi.OutputState }
+
+func (AppHostingBackendCodebaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingBackendCodebase)(nil)).Elem()
+}
+
+func (o AppHostingBackendCodebaseOutput) ToAppHostingBackendCodebaseOutput() AppHostingBackendCodebaseOutput {
+	return o
+}
+
+func (o AppHostingBackendCodebaseOutput) ToAppHostingBackendCodebaseOutputWithContext(ctx context.Context) AppHostingBackendCodebaseOutput {
+	return o
+}
+
+func (o AppHostingBackendCodebaseOutput) ToAppHostingBackendCodebasePtrOutput() AppHostingBackendCodebasePtrOutput {
+	return o.ToAppHostingBackendCodebasePtrOutputWithContext(context.Background())
+}
+
+func (o AppHostingBackendCodebaseOutput) ToAppHostingBackendCodebasePtrOutputWithContext(ctx context.Context) AppHostingBackendCodebasePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppHostingBackendCodebase) *AppHostingBackendCodebase {
+		return &v
+	}).(AppHostingBackendCodebasePtrOutput)
+}
+
+// The resource name for the Developer Connect
+// [`gitRepositoryLink`](https://cloud.google.com/developer-connect/docs/api/reference/rest/v1/projects.locations.connections.gitRepositoryLinks)
+// connected to this backend, in the format:
+// projects/{project}/locations/{location}/connections/{connection}/gitRepositoryLinks/{repositoryLink}
+func (o AppHostingBackendCodebaseOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v AppHostingBackendCodebase) string { return v.Repository }).(pulumi.StringOutput)
+}
+
+// If `repository` is provided, the directory relative to the root of the
+// repository to use as the root for the deployed web app.
+func (o AppHostingBackendCodebaseOutput) RootDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingBackendCodebase) *string { return v.RootDirectory }).(pulumi.StringPtrOutput)
+}
+
+type AppHostingBackendCodebasePtrOutput struct{ *pulumi.OutputState }
+
+func (AppHostingBackendCodebasePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppHostingBackendCodebase)(nil)).Elem()
+}
+
+func (o AppHostingBackendCodebasePtrOutput) ToAppHostingBackendCodebasePtrOutput() AppHostingBackendCodebasePtrOutput {
+	return o
+}
+
+func (o AppHostingBackendCodebasePtrOutput) ToAppHostingBackendCodebasePtrOutputWithContext(ctx context.Context) AppHostingBackendCodebasePtrOutput {
+	return o
+}
+
+func (o AppHostingBackendCodebasePtrOutput) Elem() AppHostingBackendCodebaseOutput {
+	return o.ApplyT(func(v *AppHostingBackendCodebase) AppHostingBackendCodebase {
+		if v != nil {
+			return *v
+		}
+		var ret AppHostingBackendCodebase
+		return ret
+	}).(AppHostingBackendCodebaseOutput)
+}
+
+// The resource name for the Developer Connect
+// [`gitRepositoryLink`](https://cloud.google.com/developer-connect/docs/api/reference/rest/v1/projects.locations.connections.gitRepositoryLinks)
+// connected to this backend, in the format:
+// projects/{project}/locations/{location}/connections/{connection}/gitRepositoryLinks/{repositoryLink}
+func (o AppHostingBackendCodebasePtrOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppHostingBackendCodebase) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Repository
+	}).(pulumi.StringPtrOutput)
+}
+
+// If `repository` is provided, the directory relative to the root of the
+// repository to use as the root for the deployed web app.
+func (o AppHostingBackendCodebasePtrOutput) RootDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppHostingBackendCodebase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RootDirectory
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppHostingBackendManagedResource struct {
+	// (Output)
+	// A managed Cloud Run
+	// [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service).
+	// Structure is documented below.
+	RunServices []AppHostingBackendManagedResourceRunService `pulumi:"runServices"`
+}
+
+// AppHostingBackendManagedResourceInput is an input type that accepts AppHostingBackendManagedResourceArgs and AppHostingBackendManagedResourceOutput values.
+// You can construct a concrete instance of `AppHostingBackendManagedResourceInput` via:
+//
+//	AppHostingBackendManagedResourceArgs{...}
+type AppHostingBackendManagedResourceInput interface {
+	pulumi.Input
+
+	ToAppHostingBackendManagedResourceOutput() AppHostingBackendManagedResourceOutput
+	ToAppHostingBackendManagedResourceOutputWithContext(context.Context) AppHostingBackendManagedResourceOutput
+}
+
+type AppHostingBackendManagedResourceArgs struct {
+	// (Output)
+	// A managed Cloud Run
+	// [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service).
+	// Structure is documented below.
+	RunServices AppHostingBackendManagedResourceRunServiceArrayInput `pulumi:"runServices"`
+}
+
+func (AppHostingBackendManagedResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingBackendManagedResource)(nil)).Elem()
+}
+
+func (i AppHostingBackendManagedResourceArgs) ToAppHostingBackendManagedResourceOutput() AppHostingBackendManagedResourceOutput {
+	return i.ToAppHostingBackendManagedResourceOutputWithContext(context.Background())
+}
+
+func (i AppHostingBackendManagedResourceArgs) ToAppHostingBackendManagedResourceOutputWithContext(ctx context.Context) AppHostingBackendManagedResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingBackendManagedResourceOutput)
+}
+
+// AppHostingBackendManagedResourceArrayInput is an input type that accepts AppHostingBackendManagedResourceArray and AppHostingBackendManagedResourceArrayOutput values.
+// You can construct a concrete instance of `AppHostingBackendManagedResourceArrayInput` via:
+//
+//	AppHostingBackendManagedResourceArray{ AppHostingBackendManagedResourceArgs{...} }
+type AppHostingBackendManagedResourceArrayInput interface {
+	pulumi.Input
+
+	ToAppHostingBackendManagedResourceArrayOutput() AppHostingBackendManagedResourceArrayOutput
+	ToAppHostingBackendManagedResourceArrayOutputWithContext(context.Context) AppHostingBackendManagedResourceArrayOutput
+}
+
+type AppHostingBackendManagedResourceArray []AppHostingBackendManagedResourceInput
+
+func (AppHostingBackendManagedResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingBackendManagedResource)(nil)).Elem()
+}
+
+func (i AppHostingBackendManagedResourceArray) ToAppHostingBackendManagedResourceArrayOutput() AppHostingBackendManagedResourceArrayOutput {
+	return i.ToAppHostingBackendManagedResourceArrayOutputWithContext(context.Background())
+}
+
+func (i AppHostingBackendManagedResourceArray) ToAppHostingBackendManagedResourceArrayOutputWithContext(ctx context.Context) AppHostingBackendManagedResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingBackendManagedResourceArrayOutput)
+}
+
+type AppHostingBackendManagedResourceOutput struct{ *pulumi.OutputState }
+
+func (AppHostingBackendManagedResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingBackendManagedResource)(nil)).Elem()
+}
+
+func (o AppHostingBackendManagedResourceOutput) ToAppHostingBackendManagedResourceOutput() AppHostingBackendManagedResourceOutput {
+	return o
+}
+
+func (o AppHostingBackendManagedResourceOutput) ToAppHostingBackendManagedResourceOutputWithContext(ctx context.Context) AppHostingBackendManagedResourceOutput {
+	return o
+}
+
+// (Output)
+// A managed Cloud Run
+// [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service).
+// Structure is documented below.
+func (o AppHostingBackendManagedResourceOutput) RunServices() AppHostingBackendManagedResourceRunServiceArrayOutput {
+	return o.ApplyT(func(v AppHostingBackendManagedResource) []AppHostingBackendManagedResourceRunService {
+		return v.RunServices
+	}).(AppHostingBackendManagedResourceRunServiceArrayOutput)
+}
+
+type AppHostingBackendManagedResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (AppHostingBackendManagedResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingBackendManagedResource)(nil)).Elem()
+}
+
+func (o AppHostingBackendManagedResourceArrayOutput) ToAppHostingBackendManagedResourceArrayOutput() AppHostingBackendManagedResourceArrayOutput {
+	return o
+}
+
+func (o AppHostingBackendManagedResourceArrayOutput) ToAppHostingBackendManagedResourceArrayOutputWithContext(ctx context.Context) AppHostingBackendManagedResourceArrayOutput {
+	return o
+}
+
+func (o AppHostingBackendManagedResourceArrayOutput) Index(i pulumi.IntInput) AppHostingBackendManagedResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppHostingBackendManagedResource {
+		return vs[0].([]AppHostingBackendManagedResource)[vs[1].(int)]
+	}).(AppHostingBackendManagedResourceOutput)
+}
+
+type AppHostingBackendManagedResourceRunService struct {
+	// (Output)
+	// The name of the Cloud Run
+	// [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service),
+	// in the format:
+	// projects/{project}/locations/{location}/services/{serviceId}
+	Service *string `pulumi:"service"`
+}
+
+// AppHostingBackendManagedResourceRunServiceInput is an input type that accepts AppHostingBackendManagedResourceRunServiceArgs and AppHostingBackendManagedResourceRunServiceOutput values.
+// You can construct a concrete instance of `AppHostingBackendManagedResourceRunServiceInput` via:
+//
+//	AppHostingBackendManagedResourceRunServiceArgs{...}
+type AppHostingBackendManagedResourceRunServiceInput interface {
+	pulumi.Input
+
+	ToAppHostingBackendManagedResourceRunServiceOutput() AppHostingBackendManagedResourceRunServiceOutput
+	ToAppHostingBackendManagedResourceRunServiceOutputWithContext(context.Context) AppHostingBackendManagedResourceRunServiceOutput
+}
+
+type AppHostingBackendManagedResourceRunServiceArgs struct {
+	// (Output)
+	// The name of the Cloud Run
+	// [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service),
+	// in the format:
+	// projects/{project}/locations/{location}/services/{serviceId}
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (AppHostingBackendManagedResourceRunServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingBackendManagedResourceRunService)(nil)).Elem()
+}
+
+func (i AppHostingBackendManagedResourceRunServiceArgs) ToAppHostingBackendManagedResourceRunServiceOutput() AppHostingBackendManagedResourceRunServiceOutput {
+	return i.ToAppHostingBackendManagedResourceRunServiceOutputWithContext(context.Background())
+}
+
+func (i AppHostingBackendManagedResourceRunServiceArgs) ToAppHostingBackendManagedResourceRunServiceOutputWithContext(ctx context.Context) AppHostingBackendManagedResourceRunServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingBackendManagedResourceRunServiceOutput)
+}
+
+// AppHostingBackendManagedResourceRunServiceArrayInput is an input type that accepts AppHostingBackendManagedResourceRunServiceArray and AppHostingBackendManagedResourceRunServiceArrayOutput values.
+// You can construct a concrete instance of `AppHostingBackendManagedResourceRunServiceArrayInput` via:
+//
+//	AppHostingBackendManagedResourceRunServiceArray{ AppHostingBackendManagedResourceRunServiceArgs{...} }
+type AppHostingBackendManagedResourceRunServiceArrayInput interface {
+	pulumi.Input
+
+	ToAppHostingBackendManagedResourceRunServiceArrayOutput() AppHostingBackendManagedResourceRunServiceArrayOutput
+	ToAppHostingBackendManagedResourceRunServiceArrayOutputWithContext(context.Context) AppHostingBackendManagedResourceRunServiceArrayOutput
+}
+
+type AppHostingBackendManagedResourceRunServiceArray []AppHostingBackendManagedResourceRunServiceInput
+
+func (AppHostingBackendManagedResourceRunServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingBackendManagedResourceRunService)(nil)).Elem()
+}
+
+func (i AppHostingBackendManagedResourceRunServiceArray) ToAppHostingBackendManagedResourceRunServiceArrayOutput() AppHostingBackendManagedResourceRunServiceArrayOutput {
+	return i.ToAppHostingBackendManagedResourceRunServiceArrayOutputWithContext(context.Background())
+}
+
+func (i AppHostingBackendManagedResourceRunServiceArray) ToAppHostingBackendManagedResourceRunServiceArrayOutputWithContext(ctx context.Context) AppHostingBackendManagedResourceRunServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingBackendManagedResourceRunServiceArrayOutput)
+}
+
+type AppHostingBackendManagedResourceRunServiceOutput struct{ *pulumi.OutputState }
+
+func (AppHostingBackendManagedResourceRunServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingBackendManagedResourceRunService)(nil)).Elem()
+}
+
+func (o AppHostingBackendManagedResourceRunServiceOutput) ToAppHostingBackendManagedResourceRunServiceOutput() AppHostingBackendManagedResourceRunServiceOutput {
+	return o
+}
+
+func (o AppHostingBackendManagedResourceRunServiceOutput) ToAppHostingBackendManagedResourceRunServiceOutputWithContext(ctx context.Context) AppHostingBackendManagedResourceRunServiceOutput {
+	return o
+}
+
+// (Output)
+// The name of the Cloud Run
+// [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service),
+// in the format:
+// projects/{project}/locations/{location}/services/{serviceId}
+func (o AppHostingBackendManagedResourceRunServiceOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingBackendManagedResourceRunService) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+type AppHostingBackendManagedResourceRunServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (AppHostingBackendManagedResourceRunServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingBackendManagedResourceRunService)(nil)).Elem()
+}
+
+func (o AppHostingBackendManagedResourceRunServiceArrayOutput) ToAppHostingBackendManagedResourceRunServiceArrayOutput() AppHostingBackendManagedResourceRunServiceArrayOutput {
+	return o
+}
+
+func (o AppHostingBackendManagedResourceRunServiceArrayOutput) ToAppHostingBackendManagedResourceRunServiceArrayOutputWithContext(ctx context.Context) AppHostingBackendManagedResourceRunServiceArrayOutput {
+	return o
+}
+
+func (o AppHostingBackendManagedResourceRunServiceArrayOutput) Index(i pulumi.IntInput) AppHostingBackendManagedResourceRunServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppHostingBackendManagedResourceRunService {
+		return vs[0].([]AppHostingBackendManagedResourceRunService)[vs[1].(int)]
+	}).(AppHostingBackendManagedResourceRunServiceOutput)
+}
+
 type ExtensionsInstanceConfig struct {
 	// List of extension events selected by consumer that extension is allowed to
 	// emit, identified by their types.
@@ -3597,6 +3986,12 @@ func (o HostingVersionConfigRewriteRunPtrOutput) ServiceId() pulumi.StringPtrOut
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBackendCodebaseInput)(nil)).Elem(), AppHostingBackendCodebaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBackendCodebasePtrInput)(nil)).Elem(), AppHostingBackendCodebaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBackendManagedResourceInput)(nil)).Elem(), AppHostingBackendManagedResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBackendManagedResourceArrayInput)(nil)).Elem(), AppHostingBackendManagedResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBackendManagedResourceRunServiceInput)(nil)).Elem(), AppHostingBackendManagedResourceRunServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBackendManagedResourceRunServiceArrayInput)(nil)).Elem(), AppHostingBackendManagedResourceRunServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionsInstanceConfigInput)(nil)).Elem(), ExtensionsInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionsInstanceConfigPtrInput)(nil)).Elem(), ExtensionsInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionsInstanceErrorStatusInput)(nil)).Elem(), ExtensionsInstanceErrorStatusArgs{})
@@ -3645,6 +4040,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigRewriteArrayInput)(nil)).Elem(), HostingVersionConfigRewriteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigRewriteRunInput)(nil)).Elem(), HostingVersionConfigRewriteRunArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigRewriteRunPtrInput)(nil)).Elem(), HostingVersionConfigRewriteRunArgs{})
+	pulumi.RegisterOutputType(AppHostingBackendCodebaseOutput{})
+	pulumi.RegisterOutputType(AppHostingBackendCodebasePtrOutput{})
+	pulumi.RegisterOutputType(AppHostingBackendManagedResourceOutput{})
+	pulumi.RegisterOutputType(AppHostingBackendManagedResourceArrayOutput{})
+	pulumi.RegisterOutputType(AppHostingBackendManagedResourceRunServiceOutput{})
+	pulumi.RegisterOutputType(AppHostingBackendManagedResourceRunServiceArrayOutput{})
 	pulumi.RegisterOutputType(ExtensionsInstanceConfigOutput{})
 	pulumi.RegisterOutputType(ExtensionsInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ExtensionsInstanceErrorStatusOutput{})

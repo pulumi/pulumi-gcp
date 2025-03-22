@@ -151,6 +151,7 @@ namespace Pulumi.Gcp.Dataproc
     public sealed class GetMetastoreServiceResult
     {
         public readonly string ArtifactGcsUri;
+        public readonly string CreateTime;
         public readonly string DatabaseType;
         public readonly bool DeletionProtection;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
@@ -180,10 +181,13 @@ namespace Pulumi.Gcp.Dataproc
         public readonly ImmutableArray<Outputs.GetMetastoreServiceTelemetryConfigResult> TelemetryConfigs;
         public readonly string Tier;
         public readonly string Uid;
+        public readonly string UpdateTime;
 
         [OutputConstructor]
         private GetMetastoreServiceResult(
             string artifactGcsUri,
+
+            string createTime,
 
             string databaseType,
 
@@ -235,9 +239,12 @@ namespace Pulumi.Gcp.Dataproc
 
             string tier,
 
-            string uid)
+            string uid,
+
+            string updateTime)
         {
             ArtifactGcsUri = artifactGcsUri;
+            CreateTime = createTime;
             DatabaseType = databaseType;
             DeletionProtection = deletionProtection;
             EffectiveLabels = effectiveLabels;
@@ -264,6 +271,7 @@ namespace Pulumi.Gcp.Dataproc
             TelemetryConfigs = telemetryConfigs;
             Tier = tier;
             Uid = uid;
+            UpdateTime = updateTime;
         }
     }
 }

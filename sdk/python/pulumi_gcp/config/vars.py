@@ -370,6 +370,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('firebaseAppCheckCustomEndpoint')
 
     @property
+    def firebase_app_hosting_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('firebaseAppHostingCustomEndpoint')
+
+    @property
     def firebase_custom_endpoint(self) -> Optional[str]:
         return __config__.get('firebaseCustomEndpoint')
 

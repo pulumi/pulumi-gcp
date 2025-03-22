@@ -16757,7 +16757,7 @@ type ClusterDnsConfig struct {
 	ClusterDns *string `pulumi:"clusterDns"`
 	// The suffix used for all cluster service records.
 	ClusterDnsDomain *string `pulumi:"clusterDnsDomain"`
-	// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+	// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `clusterDns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
 	ClusterDnsScope *string `pulumi:"clusterDnsScope"`
 }
 
@@ -16779,7 +16779,7 @@ type ClusterDnsConfigArgs struct {
 	ClusterDns pulumi.StringPtrInput `pulumi:"clusterDns"`
 	// The suffix used for all cluster service records.
 	ClusterDnsDomain pulumi.StringPtrInput `pulumi:"clusterDnsDomain"`
-	// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+	// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `clusterDns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
 	ClusterDnsScope pulumi.StringPtrInput `pulumi:"clusterDnsScope"`
 }
 
@@ -16875,7 +16875,7 @@ func (o ClusterDnsConfigOutput) ClusterDnsDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterDnsConfig) *string { return v.ClusterDnsDomain }).(pulumi.StringPtrOutput)
 }
 
-// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `clusterDns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
 func (o ClusterDnsConfigOutput) ClusterDnsScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterDnsConfig) *string { return v.ClusterDnsScope }).(pulumi.StringPtrOutput)
 }
@@ -16934,7 +16934,7 @@ func (o ClusterDnsConfigPtrOutput) ClusterDnsDomain() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `clusterDns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
 func (o ClusterDnsConfigPtrOutput) ClusterDnsScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterDnsConfig) *string {
 		if v == nil {
@@ -50618,7 +50618,7 @@ func (o GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayOutput) Index
 }
 
 type GetClusterLoggingConfig struct {
-	// GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, KCP_CONNECTION, KCP_SSHD, SCHEDULER, and WORKLOADS.
+	// GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, KCP_CONNECTION, KCP_SSHD, KCP_HPA, SCHEDULER, and WORKLOADS.
 	EnableComponents []string `pulumi:"enableComponents"`
 }
 
@@ -50634,7 +50634,7 @@ type GetClusterLoggingConfigInput interface {
 }
 
 type GetClusterLoggingConfigArgs struct {
-	// GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, KCP_CONNECTION, KCP_SSHD, SCHEDULER, and WORKLOADS.
+	// GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, KCP_CONNECTION, KCP_SSHD, KCP_HPA, SCHEDULER, and WORKLOADS.
 	EnableComponents pulumi.StringArrayInput `pulumi:"enableComponents"`
 }
 
@@ -50689,7 +50689,7 @@ func (o GetClusterLoggingConfigOutput) ToGetClusterLoggingConfigOutputWithContex
 	return o
 }
 
-// GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, KCP_CONNECTION, KCP_SSHD, SCHEDULER, and WORKLOADS.
+// GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, KCP_CONNECTION, KCP_SSHD, KCP_HPA, SCHEDULER, and WORKLOADS.
 func (o GetClusterLoggingConfigOutput) EnableComponents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClusterLoggingConfig) []string { return v.EnableComponents }).(pulumi.StringArrayOutput)
 }

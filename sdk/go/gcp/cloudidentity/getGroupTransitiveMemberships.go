@@ -11,6 +11,39 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get list of the Cloud Identity Group Memberships within a given Group. Whereas `cloudidentity.getGroupMemberships` returns details of only direct members of the group, `cloudidentity.getGroupTransitiveMemberships` will return details about both direct and indirect members. For example, a user is an indirect member of Group A if the user is a direct member of Group B and Group B is a direct member of Group A.
+//
+// To get more information about TransitiveGroupMembership, see:
+//
+// * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships/searchTransitiveMemberships)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudidentity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudidentity.GetGroupTransitiveMemberships(ctx, &cloudidentity.GetGroupTransitiveMembershipsArgs{
+//				Group: "groups/123eab45c6defghi",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetGroupTransitiveMemberships(ctx *pulumi.Context, args *GetGroupTransitiveMembershipsArgs, opts ...pulumi.InvokeOption) (*GetGroupTransitiveMembershipsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGroupTransitiveMembershipsResult
@@ -23,6 +56,7 @@ func GetGroupTransitiveMemberships(ctx *pulumi.Context, args *GetGroupTransitive
 
 // A collection of arguments for invoking getGroupTransitiveMemberships.
 type GetGroupTransitiveMembershipsArgs struct {
+	// The parent Group resource to search transitive memberships in. Must be of the form groups/{group_id}.
 	Group string `pulumi:"group"`
 }
 
@@ -30,7 +64,8 @@ type GetGroupTransitiveMembershipsArgs struct {
 type GetGroupTransitiveMembershipsResult struct {
 	Group string `pulumi:"group"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string                                    `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The list of memberships under the given group. Structure is documented below.
 	Memberships []GetGroupTransitiveMembershipsMembership `pulumi:"memberships"`
 }
 
@@ -45,6 +80,7 @@ func GetGroupTransitiveMembershipsOutput(ctx *pulumi.Context, args GetGroupTrans
 
 // A collection of arguments for invoking getGroupTransitiveMemberships.
 type GetGroupTransitiveMembershipsOutputArgs struct {
+	// The parent Group resource to search transitive memberships in. Must be of the form groups/{group_id}.
 	Group pulumi.StringInput `pulumi:"group"`
 }
 
@@ -76,6 +112,7 @@ func (o GetGroupTransitiveMembershipsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupTransitiveMembershipsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The list of memberships under the given group. Structure is documented below.
 func (o GetGroupTransitiveMembershipsResultOutput) Memberships() GetGroupTransitiveMembershipsMembershipArrayOutput {
 	return o.ApplyT(func(v GetGroupTransitiveMembershipsResult) []GetGroupTransitiveMembershipsMembership {
 		return v.Memberships

@@ -25,6 +25,16 @@ export const getAncestry: typeof import("./getAncestry").getAncestry = null as a
 export const getAncestryOutput: typeof import("./getAncestry").getAncestryOutput = null as any;
 utilities.lazyLoad(exports, ["getAncestry","getAncestryOutput"], () => require("./getAncestry"));
 
+export { GetIamCustomRoleArgs, GetIamCustomRoleResult, GetIamCustomRoleOutputArgs } from "./getIamCustomRole";
+export const getIamCustomRole: typeof import("./getIamCustomRole").getIamCustomRole = null as any;
+export const getIamCustomRoleOutput: typeof import("./getIamCustomRole").getIamCustomRoleOutput = null as any;
+utilities.lazyLoad(exports, ["getIamCustomRole","getIamCustomRoleOutput"], () => require("./getIamCustomRole"));
+
+export { GetIamCustomRolesArgs, GetIamCustomRolesResult, GetIamCustomRolesOutputArgs } from "./getIamCustomRoles";
+export const getIamCustomRoles: typeof import("./getIamCustomRoles").getIamCustomRoles = null as any;
+export const getIamCustomRolesOutput: typeof import("./getIamCustomRoles").getIamCustomRolesOutput = null as any;
+utilities.lazyLoad(exports, ["getIamCustomRoles","getIamCustomRolesOutput"], () => require("./getIamCustomRoles"));
+
 export { GetIamPolicyArgs, GetIamPolicyResult, GetIamPolicyOutputArgs } from "./getIamPolicy";
 export const getIamPolicy: typeof import("./getIamPolicy").getIamPolicy = null as any;
 export const getIamPolicyOutput: typeof import("./getIamPolicy").getIamPolicyOutput = null as any;

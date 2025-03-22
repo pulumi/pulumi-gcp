@@ -12,6 +12,19 @@ namespace Pulumi.Gcp.NetworkSecurity.Inputs
 
     public sealed class AuthzPolicyHttpRuleToGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("notOperations")]
+        private InputList<Inputs.AuthzPolicyHttpRuleToNotOperationGetArgs>? _notOperations;
+
+        /// <summary>
+        /// Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AuthzPolicyHttpRuleToNotOperationGetArgs> NotOperations
+        {
+            get => _notOperations ?? (_notOperations = new InputList<Inputs.AuthzPolicyHttpRuleToNotOperationGetArgs>());
+            set => _notOperations = value;
+        }
+
         [Input("operations")]
         private InputList<Inputs.AuthzPolicyHttpRuleToOperationGetArgs>? _operations;
 

@@ -58,7 +58,7 @@ class InstanceArgs:
                IAM_AUTH
         :param pulumi.Input[bool] deletion_protection_enabled: Optional. If set to true deletion of the instance will fail.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] engine_configs: Optional. User-provided engine configurations for the instance.
-        :param pulumi.Input[str] engine_version: Optional. Immutable. Engine version of the instance.
+        :param pulumi.Input[str] engine_version: Optional. Engine version of the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels to represent user-provided metadata.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -214,7 +214,7 @@ class InstanceArgs:
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Immutable. Engine version of the instance.
+        Optional. Engine version of the instance.
         """
         return pulumi.get(self, "engine_version")
 
@@ -382,7 +382,7 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceEndpointArgs']]] endpoints: Endpoints for the instance.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] engine_configs: Optional. User-provided engine configurations for the instance.
-        :param pulumi.Input[str] engine_version: Optional. Immutable. Engine version of the instance.
+        :param pulumi.Input[str] engine_version: Optional. Engine version of the instance.
         :param pulumi.Input[str] instance_id: Required. The ID to use for the instance, which will become the final component of
                the instance's resource name.
                This value is subject to the following restrictions:
@@ -602,7 +602,7 @@ class _InstanceState:
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Immutable. Engine version of the instance.
+        Optional. Engine version of the instance.
         """
         return pulumi.get(self, "engine_version")
 
@@ -1070,7 +1070,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection_enabled: Optional. If set to true deletion of the instance will fail.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]] desired_psc_auto_connections: Required. Immutable. User inputs for the auto-created PSC connections.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] engine_configs: Optional. User-provided engine configurations for the instance.
-        :param pulumi.Input[str] engine_version: Optional. Immutable. Engine version of the instance.
+        :param pulumi.Input[str] engine_version: Optional. Engine version of the instance.
         :param pulumi.Input[str] instance_id: Required. The ID to use for the instance, which will become the final component of
                the instance's resource name.
                This value is subject to the following restrictions:
@@ -1416,7 +1416,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]] endpoints: Endpoints for the instance.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] engine_configs: Optional. User-provided engine configurations for the instance.
-        :param pulumi.Input[str] engine_version: Optional. Immutable. Engine version of the instance.
+        :param pulumi.Input[str] engine_version: Optional. Engine version of the instance.
         :param pulumi.Input[str] instance_id: Required. The ID to use for the instance, which will become the final component of
                the instance's resource name.
                This value is subject to the following restrictions:
@@ -1581,7 +1581,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> pulumi.Output[str]:
         """
-        Optional. Immutable. Engine version of the instance.
+        Optional. Engine version of the instance.
         """
         return pulumi.get(self, "engine_version")
 

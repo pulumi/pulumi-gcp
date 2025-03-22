@@ -98,7 +98,7 @@ class TargetHttpsProxyArgs:
                Early Data allows a TLS resumption handshake to include the initial application payload
                (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
                This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
-               Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+               Possible values are: `STRICT`, `PERMISSIVE`, `UNRESTRICTED`, `DISABLED`.
         """
         pulumi.set(__self__, "url_map", url_map)
         if certificate_manager_certificates is not None:
@@ -326,7 +326,7 @@ class TargetHttpsProxyArgs:
         Early Data allows a TLS resumption handshake to include the initial application payload
         (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
         This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
-        Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+        Possible values are: `STRICT`, `PERMISSIVE`, `UNRESTRICTED`, `DISABLED`.
         """
         return pulumi.get(self, "tls_early_data")
 
@@ -418,7 +418,7 @@ class _TargetHttpsProxyState:
                Early Data allows a TLS resumption handshake to include the initial application payload
                (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
                This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
-               Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+               Possible values are: `STRICT`, `PERMISSIVE`, `UNRESTRICTED`, `DISABLED`.
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
                
@@ -678,7 +678,7 @@ class _TargetHttpsProxyState:
         Early Data allows a TLS resumption handshake to include the initial application payload
         (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
         This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
-        Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+        Possible values are: `STRICT`, `PERMISSIVE`, `UNRESTRICTED`, `DISABLED`.
         """
         return pulumi.get(self, "tls_early_data")
 
@@ -1018,7 +1018,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
                Early Data allows a TLS resumption handshake to include the initial application payload
                (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
                This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
-               Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+               Possible values are: `STRICT`, `PERMISSIVE`, `UNRESTRICTED`, `DISABLED`.
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
                
@@ -1416,7 +1416,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
                Early Data allows a TLS resumption handshake to include the initial application payload
                (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
                This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
-               Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+               Possible values are: `STRICT`, `PERMISSIVE`, `UNRESTRICTED`, `DISABLED`.
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
                
@@ -1609,7 +1609,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
         Early Data allows a TLS resumption handshake to include the initial application payload
         (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
         This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
-        Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+        Possible values are: `STRICT`, `PERMISSIVE`, `UNRESTRICTED`, `DISABLED`.
         """
         return pulumi.get(self, "tls_early_data")
 

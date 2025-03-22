@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.CloudFunctions
     ///     {
     ///         Name = "function-test",
     ///         Description = "My function",
-    ///         Runtime = "nodejs16",
+    ///         Runtime = "nodejs20",
     ///         AvailableMemoryMb = 128,
     ///         SourceArchiveBucket = bucket.Name,
     ///         SourceArchiveObject = archive.Name,
@@ -99,7 +99,7 @@ namespace Pulumi.Gcp.CloudFunctions
     ///     {
     ///         Name = "function-test",
     ///         Description = "My function",
-    ///         Runtime = "nodejs16",
+    ///         Runtime = "nodejs20",
     ///         AvailableMemoryMb = 128,
     ///         SourceArchiveBucket = bucket.Name,
     ///         SourceArchiveObject = archive.Name,
@@ -292,7 +292,7 @@ namespace Pulumi.Gcp.CloudFunctions
 
         /// <summary>
         /// The runtime in which the function is going to run.
-        /// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+        /// Eg. `"nodejs20"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
         /// 
         /// - - -
         /// </summary>
@@ -571,7 +571,7 @@ namespace Pulumi.Gcp.CloudFunctions
 
         /// <summary>
         /// The runtime in which the function is going to run.
-        /// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+        /// Eg. `"nodejs20"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
         /// 
         /// - - -
         /// </summary>
@@ -838,7 +838,7 @@ namespace Pulumi.Gcp.CloudFunctions
 
         /// <summary>
         /// The runtime in which the function is going to run.
-        /// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+        /// Eg. `"nodejs20"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
         /// 
         /// - - -
         /// </summary>

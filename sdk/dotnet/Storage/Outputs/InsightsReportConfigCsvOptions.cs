@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Storage.Outputs
         public readonly string? Delimiter;
         /// <summary>
         /// The boolean that indicates whether or not headers are included in the inventory report CSV file.
-        /// 
-        /// - - -
         /// </summary>
         public readonly bool? HeaderRequired;
         /// <summary>

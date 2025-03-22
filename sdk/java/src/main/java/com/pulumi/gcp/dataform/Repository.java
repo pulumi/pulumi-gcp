@@ -94,6 +94,7 @@ import javax.annotation.Nullable;
  *             .displayName("dataform_repository")
  *             .npmrcEnvironmentVariablesSecretVersion(secretVersion.id())
  *             .kmsKeyName(exampleKey.id())
+ *             .deletionPolicy("FORCE")
  *             .labels(Map.of("label_foo1", "label-bar1"))
  *             .gitRemoteSettings(RepositoryGitRemoteSettingsArgs.builder()
  *                 .url("https://github.com/OWNER/REPOSITORY.git")
@@ -148,6 +149,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:dataform/repository:Repository")
 public class Repository extends com.pulumi.resources.CustomResource {
+    /**
+     * Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> deletionPolicy;
+
+    /**
+     * @return Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+     * 
+     */
+    public Output<Optional<String>> deletionPolicy() {
+        return Codegen.optional(this.deletionPolicy);
+    }
     /**
      * Optional. The repository&#39;s user-friendly name.
      * 

@@ -41,6 +41,7 @@ __all__ = [
     'InsightsReportConfigObjectMetadataReportOptions',
     'InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions',
     'InsightsReportConfigObjectMetadataReportOptionsStorageFilters',
+    'InsightsReportConfigParquetOptions',
     'ManagedFolderIamBindingCondition',
     'ManagedFolderIamMemberCondition',
     'ObjectAccessControlProjectTeam',
@@ -1131,8 +1132,6 @@ class InsightsReportConfigCsvOptions(dict):
         """
         :param str delimiter: The delimiter used to separate the fields in the inventory report CSV file.
         :param bool header_required: The boolean that indicates whether or not headers are included in the inventory report CSV file.
-               
-               - - -
         :param str record_separator: The character used to separate the records in the inventory report CSV file.
         """
         if delimiter is not None:
@@ -1155,8 +1154,6 @@ class InsightsReportConfigCsvOptions(dict):
     def header_required(self) -> Optional[bool]:
         """
         The boolean that indicates whether or not headers are included in the inventory report CSV file.
-
-        - - -
         """
         return pulumi.get(self, "header_required")
 
@@ -1444,6 +1441,12 @@ class InsightsReportConfigObjectMetadataReportOptionsStorageFilters(dict):
         The filter to use when specifying which bucket to generate inventory reports for.
         """
         return pulumi.get(self, "bucket")
+
+
+@pulumi.output_type
+class InsightsReportConfigParquetOptions(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type

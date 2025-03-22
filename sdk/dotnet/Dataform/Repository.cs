@@ -65,6 +65,7 @@ namespace Pulumi.Gcp.Dataform
     ///         DisplayName = "dataform_repository",
     ///         NpmrcEnvironmentVariablesSecretVersion = secretVersion.Id,
     ///         KmsKeyName = exampleKey.Id,
+    ///         DeletionPolicy = "FORCE",
     ///         Labels = 
     ///         {
     ///             { "label_foo1", "label-bar1" },
@@ -125,6 +126,12 @@ namespace Pulumi.Gcp.Dataform
     [GcpResourceType("gcp:dataform/repository:Repository")]
     public partial class Repository : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string?> DeletionPolicy { get; private set; } = null!;
+
         /// <summary>
         /// Optional. The repository's user-friendly name.
         /// </summary>
@@ -261,6 +268,12 @@ namespace Pulumi.Gcp.Dataform
     public sealed class RepositoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Optional. The repository's user-friendly name.
         /// </summary>
         [Input("displayName")]
@@ -345,6 +358,12 @@ namespace Pulumi.Gcp.Dataform
 
     public sealed class RepositoryState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
         /// <summary>
         /// Optional. The repository's user-friendly name.
         /// </summary>

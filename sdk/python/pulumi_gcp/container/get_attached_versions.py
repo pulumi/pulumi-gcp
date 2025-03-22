@@ -93,7 +93,7 @@ def get_attached_versions(location: Optional[str] = None,
 
     uswest = gcp.container.get_attached_versions(location="us-west1",
         project="my-project")
-    pulumi.export("firstAvailableVersion", versions["validVersions"])
+    pulumi.export("firstAvailableVersion", uswest.valid_versions[0])
     ```
 
 
@@ -126,7 +126,7 @@ def get_attached_versions_output(location: Optional[pulumi.Input[str]] = None,
 
     uswest = gcp.container.get_attached_versions(location="us-west1",
         project="my-project")
-    pulumi.export("firstAvailableVersion", versions["validVersions"])
+    pulumi.export("firstAvailableVersion", uswest.valid_versions[0])
     ```
 
 

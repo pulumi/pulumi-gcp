@@ -78,6 +78,27 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Describes the level of execution history to be stored for this workflow. This configuration
+     * determines how much information about workflow executions is preserved. If not specified,
+     * defaults to EXECUTION_HISTORY_LEVEL_UNSPECIFIED.
+     * Possible values are: `EXECUTION_HISTORY_LEVEL_UNSPECIFIED`, `EXECUTION_HISTORY_BASIC`, `EXECUTION_HISTORY_DETAILED`.
+     * 
+     */
+    @Import(name="executionHistoryLevel")
+    private @Nullable Output<String> executionHistoryLevel;
+
+    /**
+     * @return Describes the level of execution history to be stored for this workflow. This configuration
+     * determines how much information about workflow executions is preserved. If not specified,
+     * defaults to EXECUTION_HISTORY_LEVEL_UNSPECIFIED.
+     * Possible values are: `EXECUTION_HISTORY_LEVEL_UNSPECIFIED`, `EXECUTION_HISTORY_BASIC`, `EXECUTION_HISTORY_DETAILED`.
+     * 
+     */
+    public Optional<Output<String>> executionHistoryLevel() {
+        return Optional.ofNullable(this.executionHistoryLevel);
+    }
+
+    /**
      * A set of key/value label pairs to assign to this Workflow.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -224,14 +245,14 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS&#34;.
+     * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with &#34;GOOGLE&#34; or &#34;WORKFLOWS&#34;.
      * 
      */
     @Import(name="userEnvVars")
     private @Nullable Output<Map<String,String>> userEnvVars;
 
     /**
-     * @return User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS&#34;.
+     * @return User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with &#34;GOOGLE&#34; or &#34;WORKFLOWS&#34;.
      * 
      */
     public Optional<Output<Map<String,String>>> userEnvVars() {
@@ -245,6 +266,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
         this.cryptoKeyName = $.cryptoKeyName;
         this.deletionProtection = $.deletionProtection;
         this.description = $.description;
+        this.executionHistoryLevel = $.executionHistoryLevel;
         this.labels = $.labels;
         this.name = $.name;
         this.namePrefix = $.namePrefix;
@@ -352,6 +374,33 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param executionHistoryLevel Describes the level of execution history to be stored for this workflow. This configuration
+         * determines how much information about workflow executions is preserved. If not specified,
+         * defaults to EXECUTION_HISTORY_LEVEL_UNSPECIFIED.
+         * Possible values are: `EXECUTION_HISTORY_LEVEL_UNSPECIFIED`, `EXECUTION_HISTORY_BASIC`, `EXECUTION_HISTORY_DETAILED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder executionHistoryLevel(@Nullable Output<String> executionHistoryLevel) {
+            $.executionHistoryLevel = executionHistoryLevel;
+            return this;
+        }
+
+        /**
+         * @param executionHistoryLevel Describes the level of execution history to be stored for this workflow. This configuration
+         * determines how much information about workflow executions is preserved. If not specified,
+         * defaults to EXECUTION_HISTORY_LEVEL_UNSPECIFIED.
+         * Possible values are: `EXECUTION_HISTORY_LEVEL_UNSPECIFIED`, `EXECUTION_HISTORY_BASIC`, `EXECUTION_HISTORY_DETAILED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder executionHistoryLevel(String executionHistoryLevel) {
+            return executionHistoryLevel(Output.of(executionHistoryLevel));
         }
 
         /**
@@ -549,7 +598,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userEnvVars User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS&#34;.
+         * @param userEnvVars User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with &#34;GOOGLE&#34; or &#34;WORKFLOWS&#34;.
          * 
          * @return builder
          * 
@@ -560,7 +609,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userEnvVars User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS&#34;.
+         * @param userEnvVars User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with &#34;GOOGLE&#34; or &#34;WORKFLOWS&#34;.
          * 
          * @return builder
          * 

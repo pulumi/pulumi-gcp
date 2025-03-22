@@ -74,12 +74,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.kms.KeyRing;
- * import com.pulumi.gcp.kms.KeyRingArgs;
- * import com.pulumi.gcp.kms.CryptoKey;
- * import com.pulumi.gcp.kms.CryptoKeyArgs;
- * import com.pulumi.gcp.kms.CryptoKeyVersion;
- * import com.pulumi.gcp.kms.CryptoKeyVersionArgs;
+ * import com.pulumi.gcp.kms.KmsFunctions;
+ * import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
+ * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
+ * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyVersionArgs;
  * import com.pulumi.gcp.serviceaccount.Account;
  * import com.pulumi.gcp.serviceaccount.AccountArgs;
  * import com.pulumi.gcp.applicationintegration.Client;
@@ -98,21 +96,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var testProject = OrganizationsFunctions.getProject();
+ *         final var default = OrganizationsFunctions.getProject();
  * 
- *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()
+ *         final var keyring = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
  *             .name("my-keyring")
  *             .location("us-east1")
  *             .build());
  * 
- *         var cryptokey = new CryptoKey("cryptokey", CryptoKeyArgs.builder()
- *             .name("crypto-key-example")
- *             .keyRing(keyring.id())
- *             .rotationPeriod("7776000s")
+ *         final var cryptokey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
+ *             .name("my-crypto-key")
+ *             .keyRing(keyring.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
  *             .build());
  * 
- *         var testKey = new CryptoKeyVersion("testKey", CryptoKeyVersionArgs.builder()
- *             .cryptoKey(cryptokey.id())
+ *         final var testKey = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
+ *             .cryptoKey(cryptokey.applyValue(getKMSCryptoKeyResult -> getKMSCryptoKeyResult.id()))
  *             .build());
  * 
  *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()
@@ -126,10 +123,16 @@ import javax.annotation.Nullable;
  *             .runAsServiceAccount(serviceAccount.email())
  *             .cloudKmsConfig(ClientCloudKmsConfigArgs.builder()
  *                 .kmsLocation("us-east1")
- *                 .kmsRing(StdFunctions.basename().applyValue(invoke -> invoke.result()))
- *                 .key(StdFunctions.basename().applyValue(invoke -> invoke.result()))
- *                 .keyVersion(StdFunctions.basename().applyValue(invoke -> invoke.result()))
- *                 .kmsProjectId(testProject.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *                 .kmsRing(StdFunctions.basename(BasenameArgs.builder()
+ *                     .input(keyring.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+ *                     .build()).result())
+ *                 .key(StdFunctions.basename(BasenameArgs.builder()
+ *                     .input(cryptokey.applyValue(getKMSCryptoKeyResult -> getKMSCryptoKeyResult.id()))
+ *                     .build()).result())
+ *                 .keyVersion(StdFunctions.basename(BasenameArgs.builder()
+ *                     .input(testKey.applyValue(getKMSCryptoKeyVersionResult -> getKMSCryptoKeyVersionResult.id()))
+ *                     .build()).result())
+ *                 .kmsProjectId(default_.projectId())
  *                 .build())
  *             .build());
  * 

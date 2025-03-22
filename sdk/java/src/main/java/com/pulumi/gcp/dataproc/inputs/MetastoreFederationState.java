@@ -36,6 +36,21 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Output only. The time when the metastore federation was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return Output only. The time when the metastore federation was created.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
@@ -203,6 +218,21 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Output only. The time when the metastore federation was last updated.
+     * 
+     */
+    @Import(name="updateTime")
+    private @Nullable Output<String> updateTime;
+
+    /**
+     * @return Output only. The time when the metastore federation was last updated.
+     * 
+     */
+    public Optional<Output<String>> updateTime() {
+        return Optional.ofNullable(this.updateTime);
+    }
+
+    /**
      * The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
      * 
      */
@@ -221,6 +251,7 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
 
     private MetastoreFederationState(MetastoreFederationState $) {
         this.backendMetastores = $.backendMetastores;
+        this.createTime = $.createTime;
         this.effectiveLabels = $.effectiveLabels;
         this.endpointUri = $.endpointUri;
         this.federationId = $.federationId;
@@ -232,6 +263,7 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
         this.state = $.state;
         this.stateMessage = $.stateMessage;
         this.uid = $.uid;
+        this.updateTime = $.updateTime;
         this.version = $.version;
     }
 
@@ -285,6 +317,27 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
          */
         public Builder backendMetastores(MetastoreFederationBackendMetastoreArgs... backendMetastores) {
             return backendMetastores(List.of(backendMetastores));
+        }
+
+        /**
+         * @param createTime Output only. The time when the metastore federation was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime Output only. The time when the metastore federation was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         /**
@@ -514,6 +567,27 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
          */
         public Builder uid(String uid) {
             return uid(Output.of(uid));
+        }
+
+        /**
+         * @param updateTime Output only. The time when the metastore federation was last updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(@Nullable Output<String> updateTime) {
+            $.updateTime = updateTime;
+            return this;
+        }
+
+        /**
+         * @param updateTime Output only. The time when the metastore federation was last updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(String updateTime) {
+            return updateTime(Output.of(updateTime));
         }
 
         /**

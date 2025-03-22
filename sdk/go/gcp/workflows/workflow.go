@@ -212,6 +212,11 @@ type Workflow struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// Describes the level of execution history to be stored for this workflow. This configuration
+	// determines how much information about workflow executions is preserved. If not specified,
+	// defaults to EXECUTION_HISTORY_LEVEL_UNSPECIFIED.
+	// Possible values are: `EXECUTION_HISTORY_LEVEL_UNSPECIFIED`, `EXECUTION_HISTORY_BASIC`, `EXECUTION_HISTORY_DETAILED`.
+	ExecutionHistoryLevel pulumi.StringPtrOutput `pulumi:"executionHistoryLevel"`
 	// A set of key/value label pairs to assign to this Workflow.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -250,7 +255,7 @@ type Workflow struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
 	UserEnvVars pulumi.StringMapOutput `pulumi:"userEnvVars"`
 }
 
@@ -304,6 +309,11 @@ type workflowState struct {
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// Describes the level of execution history to be stored for this workflow. This configuration
+	// determines how much information about workflow executions is preserved. If not specified,
+	// defaults to EXECUTION_HISTORY_LEVEL_UNSPECIFIED.
+	// Possible values are: `EXECUTION_HISTORY_LEVEL_UNSPECIFIED`, `EXECUTION_HISTORY_BASIC`, `EXECUTION_HISTORY_DETAILED`.
+	ExecutionHistoryLevel *string `pulumi:"executionHistoryLevel"`
 	// A set of key/value label pairs to assign to this Workflow.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -342,7 +352,7 @@ type workflowState struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime *string `pulumi:"updateTime"`
-	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
 	UserEnvVars map[string]string `pulumi:"userEnvVars"`
 }
 
@@ -362,6 +372,11 @@ type WorkflowState struct {
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// Describes the level of execution history to be stored for this workflow. This configuration
+	// determines how much information about workflow executions is preserved. If not specified,
+	// defaults to EXECUTION_HISTORY_LEVEL_UNSPECIFIED.
+	// Possible values are: `EXECUTION_HISTORY_LEVEL_UNSPECIFIED`, `EXECUTION_HISTORY_BASIC`, `EXECUTION_HISTORY_DETAILED`.
+	ExecutionHistoryLevel pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to this Workflow.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -400,7 +415,7 @@ type WorkflowState struct {
 	Tags pulumi.StringMapInput
 	// The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringPtrInput
-	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
 	UserEnvVars pulumi.StringMapInput
 }
 
@@ -420,6 +435,11 @@ type workflowArgs struct {
 	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description *string `pulumi:"description"`
+	// Describes the level of execution history to be stored for this workflow. This configuration
+	// determines how much information about workflow executions is preserved. If not specified,
+	// defaults to EXECUTION_HISTORY_LEVEL_UNSPECIFIED.
+	// Possible values are: `EXECUTION_HISTORY_LEVEL_UNSPECIFIED`, `EXECUTION_HISTORY_BASIC`, `EXECUTION_HISTORY_DETAILED`.
+	ExecutionHistoryLevel *string `pulumi:"executionHistoryLevel"`
 	// A set of key/value label pairs to assign to this Workflow.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -449,7 +469,7 @@ type workflowArgs struct {
 	// as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
 	// the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
 	Tags map[string]string `pulumi:"tags"`
-	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
 	UserEnvVars map[string]string `pulumi:"userEnvVars"`
 }
 
@@ -466,6 +486,11 @@ type WorkflowArgs struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description pulumi.StringPtrInput
+	// Describes the level of execution history to be stored for this workflow. This configuration
+	// determines how much information about workflow executions is preserved. If not specified,
+	// defaults to EXECUTION_HISTORY_LEVEL_UNSPECIFIED.
+	// Possible values are: `EXECUTION_HISTORY_LEVEL_UNSPECIFIED`, `EXECUTION_HISTORY_BASIC`, `EXECUTION_HISTORY_DETAILED`.
+	ExecutionHistoryLevel pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to this Workflow.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -495,7 +520,7 @@ type WorkflowArgs struct {
 	// as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
 	// the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
 	Tags pulumi.StringMapInput
-	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
 	UserEnvVars pulumi.StringMapInput
 }
 
@@ -619,6 +644,14 @@ func (o WorkflowOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
+// Describes the level of execution history to be stored for this workflow. This configuration
+// determines how much information about workflow executions is preserved. If not specified,
+// defaults to EXECUTION_HISTORY_LEVEL_UNSPECIFIED.
+// Possible values are: `EXECUTION_HISTORY_LEVEL_UNSPECIFIED`, `EXECUTION_HISTORY_BASIC`, `EXECUTION_HISTORY_DETAILED`.
+func (o WorkflowOutput) ExecutionHistoryLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.ExecutionHistoryLevel }).(pulumi.StringPtrOutput)
+}
+
 // A set of key/value label pairs to assign to this Workflow.
 //
 // **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -693,7 +726,7 @@ func (o WorkflowOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
 func (o WorkflowOutput) UserEnvVars() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringMapOutput { return v.UserEnvVars }).(pulumi.StringMapOutput)
 }

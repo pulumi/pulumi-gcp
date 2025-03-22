@@ -13,9 +13,17 @@ public final class GetGroupTransitiveMembershipsPlainArgs extends com.pulumi.res
 
     public static final GetGroupTransitiveMembershipsPlainArgs Empty = new GetGroupTransitiveMembershipsPlainArgs();
 
+    /**
+     * The parent Group resource to search transitive memberships in. Must be of the form groups/{group_id}.
+     * 
+     */
     @Import(name="group", required=true)
     private String group;
 
+    /**
+     * @return The parent Group resource to search transitive memberships in. Must be of the form groups/{group_id}.
+     * 
+     */
     public String group() {
         return this.group;
     }
@@ -44,6 +52,12 @@ public final class GetGroupTransitiveMembershipsPlainArgs extends com.pulumi.res
             $ = new GetGroupTransitiveMembershipsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param group The parent Group resource to search transitive memberships in. Must be of the form groups/{group_id}.
+         * 
+         * @return builder
+         * 
+         */
         public Builder group(String group) {
             $.group = group;
             return this;

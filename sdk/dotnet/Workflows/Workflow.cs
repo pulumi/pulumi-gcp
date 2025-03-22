@@ -207,6 +207,15 @@ namespace Pulumi.Gcp.Workflows
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
+        /// Describes the level of execution history to be stored for this workflow. This configuration
+        /// determines how much information about workflow executions is preserved. If not specified,
+        /// defaults to EXECUTION_HISTORY_LEVEL_UNSPECIFIED.
+        /// Possible values are: `EXECUTION_HISTORY_LEVEL_UNSPECIFIED`, `EXECUTION_HISTORY_BASIC`, `EXECUTION_HISTORY_DETAILED`.
+        /// </summary>
+        [Output("executionHistoryLevel")]
+        public Output<string?> ExecutionHistoryLevel { get; private set; } = null!;
+
+        /// <summary>
         /// A set of key/value label pairs to assign to this Workflow.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -293,7 +302,7 @@ namespace Pulumi.Gcp.Workflows
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        /// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
         /// </summary>
         [Output("userEnvVars")]
         public Output<ImmutableDictionary<string, string>?> UserEnvVars { get; private set; } = null!;
@@ -374,6 +383,15 @@ namespace Pulumi.Gcp.Workflows
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Describes the level of execution history to be stored for this workflow. This configuration
+        /// determines how much information about workflow executions is preserved. If not specified,
+        /// defaults to EXECUTION_HISTORY_LEVEL_UNSPECIFIED.
+        /// Possible values are: `EXECUTION_HISTORY_LEVEL_UNSPECIFIED`, `EXECUTION_HISTORY_BASIC`, `EXECUTION_HISTORY_DETAILED`.
+        /// </summary>
+        [Input("executionHistoryLevel")]
+        public Input<string>? ExecutionHistoryLevel { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -451,7 +469,7 @@ namespace Pulumi.Gcp.Workflows
         private InputMap<string>? _userEnvVars;
 
         /// <summary>
-        /// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        /// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
         /// </summary>
         public InputMap<string> UserEnvVars
         {
@@ -513,6 +531,15 @@ namespace Pulumi.Gcp.Workflows
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// Describes the level of execution history to be stored for this workflow. This configuration
+        /// determines how much information about workflow executions is preserved. If not specified,
+        /// defaults to EXECUTION_HISTORY_LEVEL_UNSPECIFIED.
+        /// Possible values are: `EXECUTION_HISTORY_LEVEL_UNSPECIFIED`, `EXECUTION_HISTORY_BASIC`, `EXECUTION_HISTORY_DETAILED`.
+        /// </summary>
+        [Input("executionHistoryLevel")]
+        public Input<string>? ExecutionHistoryLevel { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -626,7 +653,7 @@ namespace Pulumi.Gcp.Workflows
         private InputMap<string>? _userEnvVars;
 
         /// <summary>
-        /// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        /// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
         /// </summary>
         public InputMap<string> UserEnvVars
         {

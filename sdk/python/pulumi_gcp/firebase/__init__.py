@@ -13,6 +13,7 @@ from .app_check_play_integrity_config import *
 from .app_check_recaptcha_enterprise_config import *
 from .app_check_recaptcha_v3_config import *
 from .app_check_service_config import *
+from .app_hosting_backend import *
 from .apple_app import *
 from .data_connect_service import *
 from .database_instance import *

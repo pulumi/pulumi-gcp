@@ -339,9 +339,10 @@ namespace Pulumi.Gcp.NetworkServices
     public partial class Gateway : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
-        /// an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
-        /// Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+        /// Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic.
+        /// When no address is provided, an IP from the subnetwork is allocated.
+        /// This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        /// Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
         /// </summary>
         [Output("addresses")]
         public Output<ImmutableArray<string>> Addresses { get; private set; } = null!;
@@ -354,7 +355,7 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<ImmutableArray<string>> CertificateUrls { get; private set; } = null!;
 
         /// <summary>
-        /// Time the AccessPolicy was created in UTC.
+        /// The timestamp when the resource was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -379,15 +380,32 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
+        /// Determines if envoy will insert internal debug headers into upstream requests.
+        /// Other Envoy headers may still be injected.
+        /// By default, envoy will not insert any debug headers.
+        /// Possible values are: `NONE`, `DEBUG_HEADERS`.
+        /// </summary>
+        [Output("envoyHeaders")]
+        public Output<string?> EnvoyHeaders { get; private set; } = null!;
+
+        /// <summary>
         /// A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
-        /// For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
+        /// For example: 'projects/*/locations/*/gatewaySecurityPolicies/swg-policy'.
         /// This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         /// </summary>
         [Output("gatewaySecurityPolicy")]
         public Output<string?> GatewaySecurityPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// The IP Version that will be used by this gateway.
+        /// Possible values are: `IPV4`, `IPV6`.
+        /// </summary>
+        [Output("ipVersion")]
+        public Output<string?> IpVersion { get; private set; } = null!;
+
+        /// <summary>
         /// Set of label tags associated with the Gateway resource.
+        /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -402,7 +420,7 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<string?> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Short name of the Gateway resource to be created.
+        /// Name of the Gateway resource.
         /// 
         /// 
         /// - - -
@@ -412,7 +430,7 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// The relative resource name identifying the VPC network that is using this configuration.
-        /// For example: `projects/*/global/networks/network-1`.
+        /// For example: 'projects/*/global/networks/network-1'.
         /// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         /// </summary>
         [Output("network")]
@@ -420,8 +438,8 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// One or more port numbers (1-65535), on which the Gateway will receive traffic.
-        /// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
-        /// limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
+        /// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+        /// Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
         /// </summary>
         [Output("ports")]
         public Output<ImmutableArray<int>> Ports { get; private set; } = null!;
@@ -449,8 +467,7 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Immutable. Scope determines how configuration across multiple Gateway instances are merged.
-        /// The configuration for multiple Gateway instances with the same scope will be merged as presented as
-        /// a single coniguration to the proxy/load balancer.
+        /// The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer.
         /// Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
         /// </summary>
         [Output("scope")]
@@ -463,29 +480,28 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
-        /// If empty, TLS termination is disabled.
+        /// A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
         /// </summary>
         [Output("serverTlsPolicy")]
         public Output<string?> ServerTlsPolicy { get; private set; } = null!;
 
         /// <summary>
         /// The relative resource name identifying the subnetwork in which this SWG is allocated.
-        /// For example: `projects/*/regions/us-central1/subnetworks/network-1`.
-        /// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
+        /// For example: projects/*/regions/us-central1/subnetworks/network-1.
+        /// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         /// </summary>
         [Output("subnetwork")]
         public Output<string?> Subnetwork { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-        /// Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
+        /// Immutable. The type of the customer managed gateway.
+        /// Possible values are: `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// Time the AccessPolicy was updated in UTC.
+        /// The timestamp when the resource was updated.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -545,9 +561,10 @@ namespace Pulumi.Gcp.NetworkServices
         private InputList<string>? _addresses;
 
         /// <summary>
-        /// Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
-        /// an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
-        /// Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+        /// Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic.
+        /// When no address is provided, an IP from the subnetwork is allocated.
+        /// This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        /// Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
         /// </summary>
         public InputList<string> Addresses
         {
@@ -582,18 +599,35 @@ namespace Pulumi.Gcp.NetworkServices
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Determines if envoy will insert internal debug headers into upstream requests.
+        /// Other Envoy headers may still be injected.
+        /// By default, envoy will not insert any debug headers.
+        /// Possible values are: `NONE`, `DEBUG_HEADERS`.
+        /// </summary>
+        [Input("envoyHeaders")]
+        public Input<string>? EnvoyHeaders { get; set; }
+
+        /// <summary>
         /// A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
-        /// For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
+        /// For example: 'projects/*/locations/*/gatewaySecurityPolicies/swg-policy'.
         /// This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         /// </summary>
         [Input("gatewaySecurityPolicy")]
         public Input<string>? GatewaySecurityPolicy { get; set; }
+
+        /// <summary>
+        /// The IP Version that will be used by this gateway.
+        /// Possible values are: `IPV4`, `IPV6`.
+        /// </summary>
+        [Input("ipVersion")]
+        public Input<string>? IpVersion { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
 
         /// <summary>
         /// Set of label tags associated with the Gateway resource.
+        /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -611,7 +645,7 @@ namespace Pulumi.Gcp.NetworkServices
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Short name of the Gateway resource to be created.
+        /// Name of the Gateway resource.
         /// 
         /// 
         /// - - -
@@ -621,7 +655,7 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// The relative resource name identifying the VPC network that is using this configuration.
-        /// For example: `projects/*/global/networks/network-1`.
+        /// For example: 'projects/*/global/networks/network-1'.
         /// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         /// </summary>
         [Input("network")]
@@ -632,8 +666,8 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// One or more port numbers (1-65535), on which the Gateway will receive traffic.
-        /// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
-        /// limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
+        /// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+        /// Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
         /// </summary>
         public InputList<int> Ports
         {
@@ -657,31 +691,29 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Immutable. Scope determines how configuration across multiple Gateway instances are merged.
-        /// The configuration for multiple Gateway instances with the same scope will be merged as presented as
-        /// a single coniguration to the proxy/load balancer.
+        /// The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer.
         /// Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
 
         /// <summary>
-        /// A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
-        /// If empty, TLS termination is disabled.
+        /// A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
         /// </summary>
         [Input("serverTlsPolicy")]
         public Input<string>? ServerTlsPolicy { get; set; }
 
         /// <summary>
         /// The relative resource name identifying the subnetwork in which this SWG is allocated.
-        /// For example: `projects/*/regions/us-central1/subnetworks/network-1`.
-        /// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
+        /// For example: projects/*/regions/us-central1/subnetworks/network-1.
+        /// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
 
         /// <summary>
-        /// Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-        /// Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
+        /// Immutable. The type of the customer managed gateway.
+        /// Possible values are: `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -698,9 +730,10 @@ namespace Pulumi.Gcp.NetworkServices
         private InputList<string>? _addresses;
 
         /// <summary>
-        /// Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
-        /// an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
-        /// Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+        /// Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic.
+        /// When no address is provided, an IP from the subnetwork is allocated.
+        /// This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        /// Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
         /// </summary>
         public InputList<string> Addresses
         {
@@ -722,7 +755,7 @@ namespace Pulumi.Gcp.NetworkServices
         }
 
         /// <summary>
-        /// Time the AccessPolicy was created in UTC.
+        /// The timestamp when the resource was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -757,18 +790,35 @@ namespace Pulumi.Gcp.NetworkServices
         }
 
         /// <summary>
+        /// Determines if envoy will insert internal debug headers into upstream requests.
+        /// Other Envoy headers may still be injected.
+        /// By default, envoy will not insert any debug headers.
+        /// Possible values are: `NONE`, `DEBUG_HEADERS`.
+        /// </summary>
+        [Input("envoyHeaders")]
+        public Input<string>? EnvoyHeaders { get; set; }
+
+        /// <summary>
         /// A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
-        /// For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
+        /// For example: 'projects/*/locations/*/gatewaySecurityPolicies/swg-policy'.
         /// This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         /// </summary>
         [Input("gatewaySecurityPolicy")]
         public Input<string>? GatewaySecurityPolicy { get; set; }
+
+        /// <summary>
+        /// The IP Version that will be used by this gateway.
+        /// Possible values are: `IPV4`, `IPV6`.
+        /// </summary>
+        [Input("ipVersion")]
+        public Input<string>? IpVersion { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
 
         /// <summary>
         /// Set of label tags associated with the Gateway resource.
+        /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -786,7 +836,7 @@ namespace Pulumi.Gcp.NetworkServices
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Short name of the Gateway resource to be created.
+        /// Name of the Gateway resource.
         /// 
         /// 
         /// - - -
@@ -796,7 +846,7 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// The relative resource name identifying the VPC network that is using this configuration.
-        /// For example: `projects/*/global/networks/network-1`.
+        /// For example: 'projects/*/global/networks/network-1'.
         /// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         /// </summary>
         [Input("network")]
@@ -807,8 +857,8 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// One or more port numbers (1-65535), on which the Gateway will receive traffic.
-        /// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
-        /// limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
+        /// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+        /// Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
         /// </summary>
         public InputList<int> Ports
         {
@@ -849,8 +899,7 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Immutable. Scope determines how configuration across multiple Gateway instances are merged.
-        /// The configuration for multiple Gateway instances with the same scope will be merged as presented as
-        /// a single coniguration to the proxy/load balancer.
+        /// The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer.
         /// Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
         /// </summary>
         [Input("scope")]
@@ -863,29 +912,28 @@ namespace Pulumi.Gcp.NetworkServices
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
-        /// If empty, TLS termination is disabled.
+        /// A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
         /// </summary>
         [Input("serverTlsPolicy")]
         public Input<string>? ServerTlsPolicy { get; set; }
 
         /// <summary>
         /// The relative resource name identifying the subnetwork in which this SWG is allocated.
-        /// For example: `projects/*/regions/us-central1/subnetworks/network-1`.
-        /// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
+        /// For example: projects/*/regions/us-central1/subnetworks/network-1.
+        /// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
 
         /// <summary>
-        /// Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-        /// Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
+        /// Immutable. The type of the customer managed gateway.
+        /// Possible values are: `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Time the AccessPolicy was updated in UTC.
+        /// The timestamp when the resource was updated.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

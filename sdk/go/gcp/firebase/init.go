@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AppCheckRecaptchaV3Config{}
 	case "gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig":
 		r = &AppCheckServiceConfig{}
+	case "gcp:firebase/appHostingBackend:AppHostingBackend":
+		r = &AppHostingBackend{}
 	case "gcp:firebase/appleApp:AppleApp":
 		r = &AppleApp{}
 	case "gcp:firebase/dataConnectService:DataConnectService":
@@ -112,6 +114,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"firebase/appCheckServiceConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"firebase/appHostingBackend",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

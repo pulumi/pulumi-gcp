@@ -18,6 +18,10 @@ public final class GetGroupTransitiveMembershipsResult {
      * 
      */
     private String id;
+    /**
+     * @return The list of memberships under the given group. Structure is documented below.
+     * 
+     */
     private List<GetGroupTransitiveMembershipsMembership> memberships;
 
     private GetGroupTransitiveMembershipsResult() {}
@@ -31,6 +35,10 @@ public final class GetGroupTransitiveMembershipsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The list of memberships under the given group. Structure is documented below.
+     * 
+     */
     public List<GetGroupTransitiveMembershipsMembership> memberships() {
         return this.memberships;
     }

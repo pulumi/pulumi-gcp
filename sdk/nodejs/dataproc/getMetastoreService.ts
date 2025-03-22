@@ -56,6 +56,7 @@ export interface GetMetastoreServiceArgs {
  */
 export interface GetMetastoreServiceResult {
     readonly artifactGcsUri: string;
+    readonly createTime: string;
     readonly databaseType: string;
     readonly deletionProtection: boolean;
     readonly effectiveLabels: {[key: string]: string};
@@ -85,6 +86,7 @@ export interface GetMetastoreServiceResult {
     readonly telemetryConfigs: outputs.dataproc.GetMetastoreServiceTelemetryConfig[];
     readonly tier: string;
     readonly uid: string;
+    readonly updateTime: string;
 }
 /**
  * Get a Dataproc Metastore service from Google Cloud by its id and location.

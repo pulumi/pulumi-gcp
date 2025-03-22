@@ -12,6 +12,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// An endpoint group association represents a link between a network and an
+// endpoint group in the organization.
+//
+// Creating an association creates the networking infrastructure linking the
+// network to the endpoint group, but does not enable mirroring by itself.
+// To enable mirroring, the user must also create a network firewall policy
+// containing mirroring rules and associate it with the network.
+//
+// To get more information about MirroringEndpointGroupAssociation, see:
+//
+// * [API documentation](https://cloud.google.com/network-security-integration/docs/reference/rest/v1/projects.locations.mirroringEndpointGroupAssociations)
+// * How-to Guides
+//   - [Mirroring endpoint group association overview](https://cloud.google.com/network-security-integration/docs/out-of-band/endpoint-groups-overview#mirroring-endpoint-group-association)
+//
 // ## Example Usage
 //
 // ### Network Security Mirroring Endpoint Group Association Basic

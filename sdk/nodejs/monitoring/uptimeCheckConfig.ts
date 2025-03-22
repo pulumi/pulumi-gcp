@@ -183,7 +183,7 @@ import * as utilities from "../utilities";
  *     name: "synthetic_function",
  *     location: "us-central1",
  *     buildConfig: {
- *         runtime: "nodejs16",
+ *         runtime: "nodejs20",
  *         entryPoint: "SyntheticFunction",
  *         source: {
  *             storageSource: {
