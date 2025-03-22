@@ -4740,18 +4740,63 @@ public final class KmsFunctions {
     public static CompletableFuture<GetKeyRingIamPolicyResult> getKeyRingIamPolicyPlain(GetKeyRingIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy", TypeShape.of(GetKeyRingIamPolicyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Provides access to all Google Cloud Platform KMS CryptoKeyRings in a set location. For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_rings)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings).
+     * 
+     * A key ring organizes keys in a specific Google Cloud location and lets you manage access control on groups of keys. A key ring&#39;s name does not need to be unique across a Google Cloud project, but must be unique within a given location. After creation, a key ring cannot be deleted. Key rings don&#39;t incur any costs.
+     * 
+     */
     public static Output<GetKeyRingsResult> getKeyRings(GetKeyRingsArgs args) {
         return getKeyRings(args, InvokeOptions.Empty);
     }
+    /**
+     * Provides access to all Google Cloud Platform KMS CryptoKeyRings in a set location. For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_rings)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings).
+     * 
+     * A key ring organizes keys in a specific Google Cloud location and lets you manage access control on groups of keys. A key ring&#39;s name does not need to be unique across a Google Cloud project, but must be unique within a given location. After creation, a key ring cannot be deleted. Key rings don&#39;t incur any costs.
+     * 
+     */
     public static CompletableFuture<GetKeyRingsResult> getKeyRingsPlain(GetKeyRingsPlainArgs args) {
         return getKeyRingsPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Provides access to all Google Cloud Platform KMS CryptoKeyRings in a set location. For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_rings)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings).
+     * 
+     * A key ring organizes keys in a specific Google Cloud location and lets you manage access control on groups of keys. A key ring&#39;s name does not need to be unique across a Google Cloud project, but must be unique within a given location. After creation, a key ring cannot be deleted. Key rings don&#39;t incur any costs.
+     * 
+     */
     public static Output<GetKeyRingsResult> getKeyRings(GetKeyRingsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:kms/getKeyRings:getKeyRings", TypeShape.of(GetKeyRingsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Provides access to all Google Cloud Platform KMS CryptoKeyRings in a set location. For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_rings)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings).
+     * 
+     * A key ring organizes keys in a specific Google Cloud location and lets you manage access control on groups of keys. A key ring&#39;s name does not need to be unique across a Google Cloud project, but must be unique within a given location. After creation, a key ring cannot be deleted. Key rings don&#39;t incur any costs.
+     * 
+     */
     public static Output<GetKeyRingsResult> getKeyRings(GetKeyRingsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:kms/getKeyRings:getKeyRings", TypeShape.of(GetKeyRingsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Provides access to all Google Cloud Platform KMS CryptoKeyRings in a set location. For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_rings)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings).
+     * 
+     * A key ring organizes keys in a specific Google Cloud location and lets you manage access control on groups of keys. A key ring&#39;s name does not need to be unique across a Google Cloud project, but must be unique within a given location. After creation, a key ring cannot be deleted. Key rings don&#39;t incur any costs.
+     * 
+     */
     public static CompletableFuture<GetKeyRingsResult> getKeyRingsPlain(GetKeyRingsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:kms/getKeyRings:getKeyRings", TypeShape.of(GetKeyRingsResult.class), args, Utilities.withVersion(options));
     }

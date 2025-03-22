@@ -61,14 +61,14 @@ public final class ClusterDnsConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+     * The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `cluster_dns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
      * 
      */
     @Import(name="clusterDnsScope")
     private @Nullable Output<String> clusterDnsScope;
 
     /**
-     * @return The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+     * @return The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `cluster_dns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
      * 
      */
     public Optional<Output<String>> clusterDnsScope() {
@@ -166,7 +166,7 @@ public final class ClusterDnsConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param clusterDnsScope The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+         * @param clusterDnsScope The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `cluster_dns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class ClusterDnsConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param clusterDnsScope The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+         * @param clusterDnsScope The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `cluster_dns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
          * 
          * @return builder
          * 

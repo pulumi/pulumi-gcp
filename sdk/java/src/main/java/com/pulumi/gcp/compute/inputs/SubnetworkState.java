@@ -76,6 +76,27 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
+     * it will not appear in get listings. If not set the default behavior is determined by the
+     * org policy, if there is no org policy specified, then it will default to disabled.
+     * This field isn&#39;t supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+     * 
+     */
+    @Import(name="enableFlowLogs")
+    private @Nullable Output<Boolean> enableFlowLogs;
+
+    /**
+     * @return Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
+     * it will not appear in get listings. If not set the default behavior is determined by the
+     * org policy, if there is no org policy specified, then it will default to disabled.
+     * This field isn&#39;t supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+     * 
+     */
+    public Optional<Output<Boolean>> enableFlowLogs() {
+        return Optional.ofNullable(this.enableFlowLogs);
+    }
+
+    /**
      * The range of external IPv6 addresses that are owned by this subnetwork.
      * 
      */
@@ -547,6 +568,27 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * &#39;The state of the subnetwork, which can be one of the following values:
+     * READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose
+     * set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained.
+     * A subnetwork that is draining cannot be used or modified until it reaches a status of READY&#39;
+     * 
+     */
+    @Import(name="state")
+    private @Nullable Output<String> state;
+
+    /**
+     * @return &#39;The state of the subnetwork, which can be one of the following values:
+     * READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose
+     * set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained.
+     * A subnetwork that is draining cannot be used or modified until it reaches a status of READY&#39;
+     * 
+     */
+    public Optional<Output<String>> state() {
+        return Optional.ofNullable(this.state);
+    }
+
+    /**
      * The unique identifier number for the resource. This identifier is defined by the server.
      * 
      */
@@ -567,6 +609,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         this.allowSubnetCidrRoutesOverlap = $.allowSubnetCidrRoutesOverlap;
         this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
+        this.enableFlowLogs = $.enableFlowLogs;
         this.externalIpv6Prefix = $.externalIpv6Prefix;
         this.fingerprint = $.fingerprint;
         this.gatewayAddress = $.gatewayAddress;
@@ -590,6 +633,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         this.selfLink = $.selfLink;
         this.sendSecondaryIpRangeIfEmpty = $.sendSecondaryIpRangeIfEmpty;
         this.stackType = $.stackType;
+        this.state = $.state;
         this.subnetworkId = $.subnetworkId;
     }
 
@@ -682,6 +726,33 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param enableFlowLogs Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
+         * it will not appear in get listings. If not set the default behavior is determined by the
+         * org policy, if there is no org policy specified, then it will default to disabled.
+         * This field isn&#39;t supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableFlowLogs(@Nullable Output<Boolean> enableFlowLogs) {
+            $.enableFlowLogs = enableFlowLogs;
+            return this;
+        }
+
+        /**
+         * @param enableFlowLogs Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
+         * it will not appear in get listings. If not set the default behavior is determined by the
+         * org policy, if there is no org policy specified, then it will default to disabled.
+         * This field isn&#39;t supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableFlowLogs(Boolean enableFlowLogs) {
+            return enableFlowLogs(Output.of(enableFlowLogs));
         }
 
         /**
@@ -1305,6 +1376,33 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder stackType(String stackType) {
             return stackType(Output.of(stackType));
+        }
+
+        /**
+         * @param state &#39;The state of the subnetwork, which can be one of the following values:
+         * READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose
+         * set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained.
+         * A subnetwork that is draining cannot be used or modified until it reaches a status of READY&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(@Nullable Output<String> state) {
+            $.state = state;
+            return this;
+        }
+
+        /**
+         * @param state &#39;The state of the subnetwork, which can be one of the following values:
+         * READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose
+         * set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained.
+         * A subnetwork that is draining cannot be used or modified until it reaches a status of READY&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(String state) {
+            return state(Output.of(state));
         }
 
         /**

@@ -404,6 +404,15 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
+        /// it will not appear in get listings. If not set the default behavior is determined by the
+        /// org policy, if there is no org policy specified, then it will default to disabled.
+        /// This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+        /// </summary>
+        [Output("enableFlowLogs")]
+        public Output<bool> EnableFlowLogs { get; private set; } = null!;
+
+        /// <summary>
         /// The range of external IPv6 addresses that are owned by this subnetwork.
         /// </summary>
         [Output("externalIpv6Prefix")]
@@ -485,7 +494,7 @@ namespace Pulumi.Gcp.Compute
         /// Structure is documented below.
         /// </summary>
         [Output("logConfig")]
-        public Output<Outputs.SubnetworkLogConfig?> LogConfig { get; private set; } = null!;
+        public Output<Outputs.SubnetworkLogConfig> LogConfig { get; private set; } = null!;
 
         /// <summary>
         /// The name of the resource, provided by the client when initially
@@ -602,6 +611,15 @@ namespace Pulumi.Gcp.Compute
         public Output<string> StackType { get; private set; } = null!;
 
         /// <summary>
+        /// 'The state of the subnetwork, which can be one of the following values:
+        /// READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose
+        /// set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained.
+        /// A subnetwork that is draining cannot be used or modified until it reaches a status of READY'
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
         /// The unique identifier number for the resource. This identifier is defined by the server.
         /// </summary>
         [Output("subnetworkId")]
@@ -669,6 +687,15 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
+        /// it will not appear in get listings. If not set the default behavior is determined by the
+        /// org policy, if there is no org policy specified, then it will default to disabled.
+        /// This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+        /// </summary>
+        [Input("enableFlowLogs")]
+        public Input<bool>? EnableFlowLogs { get; set; }
 
         /// <summary>
         /// The range of external IPv6 addresses that are owned by this subnetwork.
@@ -863,6 +890,15 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
+        /// it will not appear in get listings. If not set the default behavior is determined by the
+        /// org policy, if there is no org policy specified, then it will default to disabled.
+        /// This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+        /// </summary>
+        [Input("enableFlowLogs")]
+        public Input<bool>? EnableFlowLogs { get; set; }
 
         /// <summary>
         /// The range of external IPv6 addresses that are owned by this subnetwork.
@@ -1067,6 +1103,15 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("stackType")]
         public Input<string>? StackType { get; set; }
+
+        /// <summary>
+        /// 'The state of the subnetwork, which can be one of the following values:
+        /// READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose
+        /// set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained.
+        /// A subnetwork that is draining cannot be used or modified until it reaches a status of READY'
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
 
         /// <summary>
         /// The unique identifier number for the resource. This identifier is defined by the server.

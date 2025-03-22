@@ -59,7 +59,7 @@ import (
 //			function, err := cloudfunctions.NewFunction(ctx, "function", &cloudfunctions.FunctionArgs{
 //				Name:                pulumi.String("function-test"),
 //				Description:         pulumi.String("My function"),
-//				Runtime:             pulumi.String("nodejs16"),
+//				Runtime:             pulumi.String("nodejs20"),
 //				AvailableMemoryMb:   pulumi.Int(128),
 //				SourceArchiveBucket: bucket.Name,
 //				SourceArchiveObject: archive.Name,
@@ -119,7 +119,7 @@ import (
 //			function, err := cloudfunctions.NewFunction(ctx, "function", &cloudfunctions.FunctionArgs{
 //				Name:                      pulumi.String("function-test"),
 //				Description:               pulumi.String("My function"),
-//				Runtime:                   pulumi.String("nodejs16"),
+//				Runtime:                   pulumi.String("nodejs20"),
 //				AvailableMemoryMb:         pulumi.Int(128),
 //				SourceArchiveBucket:       bucket.Name,
 //				SourceArchiveObject:       archive.Name,
@@ -226,7 +226,7 @@ type Function struct {
 	// Region of function. If it is not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The runtime in which the function is going to run.
-	// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+	// Eg. `"nodejs20"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
 	//
 	// ***
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
@@ -348,7 +348,7 @@ type functionState struct {
 	// Region of function. If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The runtime in which the function is going to run.
-	// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+	// Eg. `"nodejs20"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
 	//
 	// ***
 	Runtime *string `pulumi:"runtime"`
@@ -433,7 +433,7 @@ type FunctionState struct {
 	// Region of function. If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// The runtime in which the function is going to run.
-	// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+	// Eg. `"nodejs20"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
 	//
 	// ***
 	Runtime pulumi.StringPtrInput
@@ -518,7 +518,7 @@ type functionArgs struct {
 	// Region of function. If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The runtime in which the function is going to run.
-	// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+	// Eg. `"nodejs20"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
 	//
 	// ***
 	Runtime string `pulumi:"runtime"`
@@ -595,7 +595,7 @@ type FunctionArgs struct {
 	// Region of function. If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// The runtime in which the function is going to run.
-	// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+	// Eg. `"nodejs20"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
 	//
 	// ***
 	Runtime pulumi.StringInput
@@ -827,7 +827,7 @@ func (o FunctionOutput) Region() pulumi.StringOutput {
 }
 
 // The runtime in which the function is going to run.
-// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+// Eg. `"nodejs20"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
 //
 // ***
 func (o FunctionOutput) Runtime() pulumi.StringOutput {

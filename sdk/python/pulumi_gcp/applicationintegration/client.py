@@ -251,15 +251,12 @@ class Client(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_std as std
 
-        test_project = gcp.organizations.get_project()
-        keyring = gcp.kms.KeyRing("keyring",
-            name="my-keyring",
+        default = gcp.organizations.get_project()
+        keyring = gcp.kms.get_kms_key_ring(name="my-keyring",
             location="us-east1")
-        cryptokey = gcp.kms.CryptoKey("cryptokey",
-            name="crypto-key-example",
-            key_ring=keyring.id,
-            rotation_period="7776000s")
-        test_key = gcp.kms.CryptoKeyVersion("test_key", crypto_key=cryptokey.id)
+        cryptokey = gcp.kms.get_kms_crypto_key(name="my-crypto-key",
+            key_ring=keyring.id)
+        test_key = gcp.kms.get_kms_crypto_key_version(crypto_key=cryptokey.id)
         service_account = gcp.serviceaccount.Account("service_account",
             account_id="service-acc",
             display_name="Service Account")
@@ -269,10 +266,10 @@ class Client(pulumi.CustomResource):
             run_as_service_account=service_account.email,
             cloud_kms_config={
                 "kms_location": "us-east1",
-                "kms_ring": std.basename_output(input=keyring.id).apply(lambda invoke: invoke.result),
-                "key": std.basename_output(input=cryptokey.id).apply(lambda invoke: invoke.result),
-                "key_version": std.basename_output(input=test_key.id).apply(lambda invoke: invoke.result),
-                "kms_project_id": test_project.project_id,
+                "kms_ring": std.basename(input=keyring.id).result,
+                "key": std.basename(input=cryptokey.id).result,
+                "key_version": std.basename(input=test_key.id).result,
+                "kms_project_id": default.project_id,
             })
         ```
 
@@ -346,15 +343,12 @@ class Client(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_std as std
 
-        test_project = gcp.organizations.get_project()
-        keyring = gcp.kms.KeyRing("keyring",
-            name="my-keyring",
+        default = gcp.organizations.get_project()
+        keyring = gcp.kms.get_kms_key_ring(name="my-keyring",
             location="us-east1")
-        cryptokey = gcp.kms.CryptoKey("cryptokey",
-            name="crypto-key-example",
-            key_ring=keyring.id,
-            rotation_period="7776000s")
-        test_key = gcp.kms.CryptoKeyVersion("test_key", crypto_key=cryptokey.id)
+        cryptokey = gcp.kms.get_kms_crypto_key(name="my-crypto-key",
+            key_ring=keyring.id)
+        test_key = gcp.kms.get_kms_crypto_key_version(crypto_key=cryptokey.id)
         service_account = gcp.serviceaccount.Account("service_account",
             account_id="service-acc",
             display_name="Service Account")
@@ -364,10 +358,10 @@ class Client(pulumi.CustomResource):
             run_as_service_account=service_account.email,
             cloud_kms_config={
                 "kms_location": "us-east1",
-                "kms_ring": std.basename_output(input=keyring.id).apply(lambda invoke: invoke.result),
-                "key": std.basename_output(input=cryptokey.id).apply(lambda invoke: invoke.result),
-                "key_version": std.basename_output(input=test_key.id).apply(lambda invoke: invoke.result),
-                "kms_project_id": test_project.project_id,
+                "kms_ring": std.basename(input=keyring.id).result,
+                "key": std.basename(input=cryptokey.id).result,
+                "key_version": std.basename(input=test_key.id).result,
+                "kms_project_id": default.project_id,
             })
         ```
 

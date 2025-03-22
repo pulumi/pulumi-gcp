@@ -21,6 +21,11 @@ __all__ = [
     'ClusterGcpConfigAccessConfig',
     'ClusterGcpConfigAccessConfigNetworkConfig',
     'ClusterRebalanceConfig',
+    'ConnectClusterCapacityConfig',
+    'ConnectClusterGcpConfig',
+    'ConnectClusterGcpConfigAccessConfig',
+    'ConnectClusterGcpConfigAccessConfigNetworkConfig',
+    'ConnectorTaskRestartPolicy',
 ]
 
 @pulumi.output_type
@@ -198,5 +203,248 @@ class ClusterRebalanceConfig(dict):
         The rebalance behavior for the cluster. When not specified, defaults to `NO_REBALANCE`. Possible values: `MODE_UNSPECIFIED`, `NO_REBALANCE`, `AUTO_REBALANCE_ON_SCALE_UP`.
         """
         return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
+class ConnectClusterCapacityConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "memoryBytes":
+            suggest = "memory_bytes"
+        elif key == "vcpuCount":
+            suggest = "vcpu_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectClusterCapacityConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectClusterCapacityConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectClusterCapacityConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 memory_bytes: str,
+                 vcpu_count: str):
+        """
+        :param str memory_bytes: The memory to provision for the cluster in bytes. The CPU:memory ratio (vCPU:GiB) must be between 1:1 and 1:8. Minimum: 3221225472 (3 GiB).
+        :param str vcpu_count: The number of vCPUs to provision for the cluster. The minimum is 3.
+        """
+        pulumi.set(__self__, "memory_bytes", memory_bytes)
+        pulumi.set(__self__, "vcpu_count", vcpu_count)
+
+    @property
+    @pulumi.getter(name="memoryBytes")
+    def memory_bytes(self) -> str:
+        """
+        The memory to provision for the cluster in bytes. The CPU:memory ratio (vCPU:GiB) must be between 1:1 and 1:8. Minimum: 3221225472 (3 GiB).
+        """
+        return pulumi.get(self, "memory_bytes")
+
+    @property
+    @pulumi.getter(name="vcpuCount")
+    def vcpu_count(self) -> str:
+        """
+        The number of vCPUs to provision for the cluster. The minimum is 3.
+        """
+        return pulumi.get(self, "vcpu_count")
+
+
+@pulumi.output_type
+class ConnectClusterGcpConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessConfig":
+            suggest = "access_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectClusterGcpConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectClusterGcpConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectClusterGcpConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_config: 'outputs.ConnectClusterGcpConfigAccessConfig'):
+        """
+        :param 'ConnectClusterGcpConfigAccessConfigArgs' access_config: The configuration of access to the Kafka Connect cluster.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "access_config", access_config)
+
+    @property
+    @pulumi.getter(name="accessConfig")
+    def access_config(self) -> 'outputs.ConnectClusterGcpConfigAccessConfig':
+        """
+        The configuration of access to the Kafka Connect cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "access_config")
+
+
+@pulumi.output_type
+class ConnectClusterGcpConfigAccessConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkConfigs":
+            suggest = "network_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectClusterGcpConfigAccessConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectClusterGcpConfigAccessConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectClusterGcpConfigAccessConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network_configs: Sequence['outputs.ConnectClusterGcpConfigAccessConfigNetworkConfig']):
+        """
+        :param Sequence['ConnectClusterGcpConfigAccessConfigNetworkConfigArgs'] network_configs: Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka Connect cluster are allocated. To make the connect cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `network_configs` blocks.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "network_configs", network_configs)
+
+    @property
+    @pulumi.getter(name="networkConfigs")
+    def network_configs(self) -> Sequence['outputs.ConnectClusterGcpConfigAccessConfigNetworkConfig']:
+        """
+        Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka Connect cluster are allocated. To make the connect cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `network_configs` blocks.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network_configs")
+
+
+@pulumi.output_type
+class ConnectClusterGcpConfigAccessConfigNetworkConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "primarySubnet":
+            suggest = "primary_subnet"
+        elif key == "additionalSubnets":
+            suggest = "additional_subnets"
+        elif key == "dnsDomainNames":
+            suggest = "dns_domain_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectClusterGcpConfigAccessConfigNetworkConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectClusterGcpConfigAccessConfigNetworkConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectClusterGcpConfigAccessConfigNetworkConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 primary_subnet: str,
+                 additional_subnets: Optional[Sequence[str]] = None,
+                 dns_domain_names: Optional[Sequence[str]] = None):
+        """
+        :param str primary_subnet: VPC subnet to make available to the Kafka Connect cluster. Structured like: projects/{project}/regions/{region}/subnetworks/{subnet_id}. It is used to create a Private Service Connect (PSC) interface for the Kafka Connect workers. It must be located in the same region as the Kafka Connect cluster. The CIDR range of the subnet must be within the IPv4 address ranges for private networks, as specified in RFC 1918. The primary subnet CIDR range must have a minimum size of /22 (1024 addresses).
+        :param Sequence[str] additional_subnets: Additional subnets may be specified. They may be in another region, but must be in the same VPC network. The Connect workers can communicate with network endpoints in either the primary or additional subnets.
+        :param Sequence[str] dns_domain_names: Additional DNS domain names from the subnet's network to be made visible to the Connect Cluster. When using MirrorMaker2, it's necessary to add the bootstrap address's dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog
+               
+               - - -
+        """
+        pulumi.set(__self__, "primary_subnet", primary_subnet)
+        if additional_subnets is not None:
+            pulumi.set(__self__, "additional_subnets", additional_subnets)
+        if dns_domain_names is not None:
+            pulumi.set(__self__, "dns_domain_names", dns_domain_names)
+
+    @property
+    @pulumi.getter(name="primarySubnet")
+    def primary_subnet(self) -> str:
+        """
+        VPC subnet to make available to the Kafka Connect cluster. Structured like: projects/{project}/regions/{region}/subnetworks/{subnet_id}. It is used to create a Private Service Connect (PSC) interface for the Kafka Connect workers. It must be located in the same region as the Kafka Connect cluster. The CIDR range of the subnet must be within the IPv4 address ranges for private networks, as specified in RFC 1918. The primary subnet CIDR range must have a minimum size of /22 (1024 addresses).
+        """
+        return pulumi.get(self, "primary_subnet")
+
+    @property
+    @pulumi.getter(name="additionalSubnets")
+    def additional_subnets(self) -> Optional[Sequence[str]]:
+        """
+        Additional subnets may be specified. They may be in another region, but must be in the same VPC network. The Connect workers can communicate with network endpoints in either the primary or additional subnets.
+        """
+        return pulumi.get(self, "additional_subnets")
+
+    @property
+    @pulumi.getter(name="dnsDomainNames")
+    def dns_domain_names(self) -> Optional[Sequence[str]]:
+        """
+        Additional DNS domain names from the subnet's network to be made visible to the Connect Cluster. When using MirrorMaker2, it's necessary to add the bootstrap address's dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog
+
+        - - -
+        """
+        return pulumi.get(self, "dns_domain_names")
+
+
+@pulumi.output_type
+class ConnectorTaskRestartPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maximumBackoff":
+            suggest = "maximum_backoff"
+        elif key == "minimumBackoff":
+            suggest = "minimum_backoff"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorTaskRestartPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorTaskRestartPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorTaskRestartPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 maximum_backoff: Optional[str] = None,
+                 minimum_backoff: Optional[str] = None):
+        """
+        :param str maximum_backoff: The maximum amount of time to wait before retrying a failed task. This sets an upper bound for the backoff delay.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        :param str minimum_backoff: The minimum amount of time to wait before retrying a failed task. This sets a lower bound for the backoff delay.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        if maximum_backoff is not None:
+            pulumi.set(__self__, "maximum_backoff", maximum_backoff)
+        if minimum_backoff is not None:
+            pulumi.set(__self__, "minimum_backoff", minimum_backoff)
+
+    @property
+    @pulumi.getter(name="maximumBackoff")
+    def maximum_backoff(self) -> Optional[str]:
+        """
+        The maximum amount of time to wait before retrying a failed task. This sets an upper bound for the backoff delay.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "maximum_backoff")
+
+    @property
+    @pulumi.getter(name="minimumBackoff")
+    def minimum_backoff(self) -> Optional[str]:
+        """
+        The minimum amount of time to wait before retrying a failed task. This sets a lower bound for the backoff delay.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "minimum_backoff")
 
 

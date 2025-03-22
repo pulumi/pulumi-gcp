@@ -59,7 +59,7 @@ import (
 //				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("a new function"),
 //				BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
-//					Runtime:    pulumi.String("nodejs16"),
+//					Runtime:    pulumi.String("nodejs20"),
 //					EntryPoint: pulumi.String("helloHttp"),
 //					Source: &cloudfunctionsv2.FunctionBuildConfigSourceArgs{
 //						StorageSource: &cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs{
@@ -136,7 +136,7 @@ import (
 //				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("a new function"),
 //				BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
-//					Runtime:    pulumi.String("nodejs16"),
+//					Runtime:    pulumi.String("nodejs20"),
 //					EntryPoint: pulumi.String("helloPubSub"),
 //					EnvironmentVariables: pulumi.StringMap{
 //						"BUILD_CONFIG_TEST": pulumi.String("build_test"),
@@ -227,7 +227,7 @@ import (
 //				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("a new function"),
 //				BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
-//					Runtime:    pulumi.String("nodejs16"),
+//					Runtime:    pulumi.String("nodejs20"),
 //					EntryPoint: pulumi.String("helloHttp"),
 //					Source: &cloudfunctionsv2.FunctionBuildConfigSourceArgs{
 //						StorageSource: &cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs{
@@ -403,7 +403,7 @@ import (
 //				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("a new function"),
 //				BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
-//					Runtime:    pulumi.String("nodejs12"),
+//					Runtime:    pulumi.String("nodejs20"),
 //					EntryPoint: pulumi.String("entryPoint"),
 //					EnvironmentVariables: pulumi.StringMap{
 //						"BUILD_CONFIG_TEST": pulumi.String("build_test"),
@@ -547,7 +547,7 @@ import (
 //				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("a new function"),
 //				BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
-//					Runtime:    pulumi.String("nodejs12"),
+//					Runtime:    pulumi.String("nodejs20"),
 //					EntryPoint: pulumi.String("entryPoint"),
 //					EnvironmentVariables: pulumi.StringMap{
 //						"BUILD_CONFIG_TEST": pulumi.String("build_test"),
@@ -696,7 +696,7 @@ import (
 //				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("a new function"),
 //				BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
-//					Runtime:    pulumi.String("nodejs16"),
+//					Runtime:    pulumi.String("nodejs20"),
 //					EntryPoint: pulumi.String("helloHttp"),
 //					Source: &cloudfunctionsv2.FunctionBuildConfigSourceArgs{
 //						StorageSource: &cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs{
@@ -785,7 +785,7 @@ import (
 //				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("a new function"),
 //				BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
-//					Runtime:    pulumi.String("nodejs16"),
+//					Runtime:    pulumi.String("nodejs20"),
 //					EntryPoint: pulumi.String("helloHttp"),
 //					Source: &cloudfunctionsv2.FunctionBuildConfigSourceArgs{
 //						StorageSource: &cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs{
@@ -881,7 +881,7 @@ import (
 //				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("a new function"),
 //				BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
-//					Runtime:    pulumi.String("nodejs16"),
+//					Runtime:    pulumi.String("nodejs20"),
 //					EntryPoint: pulumi.String("helloHttp"),
 //					Source: &cloudfunctionsv2.FunctionBuildConfigSourceArgs{
 //						StorageSource: &cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs{
@@ -965,7 +965,7 @@ import (
 //				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("a new function"),
 //				BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
-//					Runtime:    pulumi.String("nodejs16"),
+//					Runtime:    pulumi.String("nodejs20"),
 //					EntryPoint: pulumi.String("helloHttp"),
 //					Source: &cloudfunctionsv2.FunctionBuildConfigSourceArgs{
 //						StorageSource: &cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs{
@@ -1090,7 +1090,7 @@ import (
 //				Description: pulumi.String("CMEK function"),
 //				KmsKeyName:  pulumi.String("cmek-key"),
 //				BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
-//					Runtime:          pulumi.String("nodejs16"),
+//					Runtime:          pulumi.String("nodejs20"),
 //					EntryPoint:       pulumi.String("helloHttp"),
 //					DockerRepository: encoded_ar_repo.ID(),
 //					Source: &cloudfunctionsv2.FunctionBuildConfigSourceArgs{
@@ -1170,7 +1170,7 @@ import (
 //				Location:    pulumi.String("europe-west6"),
 //				Description: pulumi.String("a new function"),
 //				BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
-//					Runtime:    pulumi.String("nodejs16"),
+//					Runtime:    pulumi.String("nodejs20"),
 //					EntryPoint: pulumi.String("helloPubSub"),
 //					EnvironmentVariables: pulumi.StringMap{
 //						"BUILD_CONFIG_TEST": pulumi.String("build_test"),
@@ -1266,7 +1266,7 @@ import (
 //				Location:    pulumi.String("europe-west6"),
 //				Description: pulumi.String("a new function"),
 //				BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
-//					Runtime:    pulumi.String("nodejs16"),
+//					Runtime:    pulumi.String("nodejs20"),
 //					EntryPoint: pulumi.String("helloPubSub"),
 //					EnvironmentVariables: pulumi.StringMap{
 //						"BUILD_CONFIG_TEST": pulumi.String("build_test"),

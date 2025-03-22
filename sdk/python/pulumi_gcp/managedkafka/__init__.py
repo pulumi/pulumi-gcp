@@ -6,6 +6,8 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .cluster import *
+from .connect_cluster import *
+from .connector import *
 from .topic import *
 from ._inputs import *
 from . import outputs

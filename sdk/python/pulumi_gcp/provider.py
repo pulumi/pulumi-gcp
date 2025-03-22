@@ -106,6 +106,7 @@ class ProviderArgs:
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_app_check_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 firebase_app_hosting_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_data_connect_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_database_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -381,6 +382,8 @@ class ProviderArgs:
             pulumi.set(__self__, "filestore_custom_endpoint", filestore_custom_endpoint)
         if firebase_app_check_custom_endpoint is not None:
             pulumi.set(__self__, "firebase_app_check_custom_endpoint", firebase_app_check_custom_endpoint)
+        if firebase_app_hosting_custom_endpoint is not None:
+            pulumi.set(__self__, "firebase_app_hosting_custom_endpoint", firebase_app_hosting_custom_endpoint)
         if firebase_custom_endpoint is not None:
             pulumi.set(__self__, "firebase_custom_endpoint", firebase_custom_endpoint)
         if firebase_data_connect_custom_endpoint is not None:
@@ -1361,6 +1364,15 @@ class ProviderArgs:
     @firebase_app_check_custom_endpoint.setter
     def firebase_app_check_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "firebase_app_check_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="firebaseAppHostingCustomEndpoint")
+    def firebase_app_hosting_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "firebase_app_hosting_custom_endpoint")
+
+    @firebase_app_hosting_custom_endpoint.setter
+    def firebase_app_hosting_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "firebase_app_hosting_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="firebaseCustomEndpoint")
@@ -2354,6 +2366,7 @@ class Provider(pulumi.ProviderResource):
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_app_check_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 firebase_app_hosting_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_data_connect_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_database_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2577,6 +2590,7 @@ class Provider(pulumi.ProviderResource):
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_app_check_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 firebase_app_hosting_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_data_connect_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_database_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2772,6 +2786,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["eventarc_custom_endpoint"] = eventarc_custom_endpoint
             __props__.__dict__["filestore_custom_endpoint"] = filestore_custom_endpoint
             __props__.__dict__["firebase_app_check_custom_endpoint"] = firebase_app_check_custom_endpoint
+            __props__.__dict__["firebase_app_hosting_custom_endpoint"] = firebase_app_hosting_custom_endpoint
             __props__.__dict__["firebase_custom_endpoint"] = firebase_custom_endpoint
             __props__.__dict__["firebase_data_connect_custom_endpoint"] = firebase_data_connect_custom_endpoint
             __props__.__dict__["firebase_database_custom_endpoint"] = firebase_database_custom_endpoint
@@ -3295,6 +3310,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="firebaseAppCheckCustomEndpoint")
     def firebase_app_check_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "firebase_app_check_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="firebaseAppHostingCustomEndpoint")
+    def firebase_app_hosting_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "firebase_app_hosting_custom_endpoint")
 
     @property
     @pulumi.getter(name="firebaseCustomEndpoint")

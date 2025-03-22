@@ -709,6 +709,20 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
         return this.artifactGcsUri;
     }
     /**
+     * Output only. The time when the metastore service was created.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return Output only. The time when the metastore service was created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
      * The database type that the Metastore service stores its data.
      * Default value is `MYSQL`.
      * Possible values are: `MYSQL`, `SPANNER`.
@@ -1109,6 +1123,20 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      */
     public Output<String> uid() {
         return this.uid;
+    }
+    /**
+     * Output only. The time when the metastore service was last updated.
+     * 
+     */
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    private Output<String> updateTime;
+
+    /**
+     * @return Output only. The time when the metastore service was last updated.
+     * 
+     */
+    public Output<String> updateTime() {
+        return this.updateTime;
     }
 
     /**

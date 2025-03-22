@@ -1243,6 +1243,8 @@ class ClusterPscConfig(dict):
         suggest = None
         if key == "pscEnabled":
             suggest = "psc_enabled"
+        elif key == "serviceOwnedProjectNumber":
+            suggest = "service_owned_project_number"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterPscConfig. Access the value via the '{suggest}' property getter instead.")
@@ -1256,12 +1258,18 @@ class ClusterPscConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 psc_enabled: Optional[bool] = None):
+                 psc_enabled: Optional[bool] = None,
+                 service_owned_project_number: Optional[int] = None):
         """
         :param bool psc_enabled: Create an instance that allows connections from Private Service Connect endpoints to the instance.
+        :param int service_owned_project_number: (Output)
+               The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
+               In case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.
         """
         if psc_enabled is not None:
             pulumi.set(__self__, "psc_enabled", psc_enabled)
+        if service_owned_project_number is not None:
+            pulumi.set(__self__, "service_owned_project_number", service_owned_project_number)
 
     @property
     @pulumi.getter(name="pscEnabled")
@@ -1270,6 +1278,16 @@ class ClusterPscConfig(dict):
         Create an instance that allows connections from Private Service Connect endpoints to the instance.
         """
         return pulumi.get(self, "psc_enabled")
+
+    @property
+    @pulumi.getter(name="serviceOwnedProjectNumber")
+    def service_owned_project_number(self) -> Optional[int]:
+        """
+        (Output)
+        The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
+        In case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.
+        """
+        return pulumi.get(self, "service_owned_project_number")
 
 
 @pulumi.output_type
@@ -2735,11 +2753,15 @@ class GetClusterNetworkConfigResult(dict):
 @pulumi.output_type
 class GetClusterPscConfigResult(dict):
     def __init__(__self__, *,
-                 psc_enabled: bool):
+                 psc_enabled: bool,
+                 service_owned_project_number: int):
         """
         :param bool psc_enabled: Create an instance that allows connections from Private Service Connect endpoints to the instance.
+        :param int service_owned_project_number: The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
+               In case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.
         """
         pulumi.set(__self__, "psc_enabled", psc_enabled)
+        pulumi.set(__self__, "service_owned_project_number", service_owned_project_number)
 
     @property
     @pulumi.getter(name="pscEnabled")
@@ -2748,6 +2770,15 @@ class GetClusterPscConfigResult(dict):
         Create an instance that allows connections from Private Service Connect endpoints to the instance.
         """
         return pulumi.get(self, "psc_enabled")
+
+    @property
+    @pulumi.getter(name="serviceOwnedProjectNumber")
+    def service_owned_project_number(self) -> int:
+        """
+        The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
+        In case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.
+        """
+        return pulumi.get(self, "service_owned_project_number")
 
 
 @pulumi.output_type

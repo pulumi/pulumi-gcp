@@ -480,6 +480,11 @@ type Subnetwork struct {
 	// you create the resource. This field can be set only at resource
 	// creation time.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
+	// it will not appear in get listings. If not set the default behavior is determined by the
+	// org policy, if there is no org policy specified, then it will default to disabled.
+	// This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+	EnableFlowLogs pulumi.BoolOutput `pulumi:"enableFlowLogs"`
 	// The range of external IPv6 addresses that are owned by this subnetwork.
 	ExternalIpv6Prefix pulumi.StringOutput `pulumi:"externalIpv6Prefix"`
 	// Fingerprint of this resource. This field is used internally during updates of this resource.
@@ -525,7 +530,7 @@ type Subnetwork struct {
 	// isn't supported if the subnet `purpose` field is set to subnetwork is
 	// `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
 	// Structure is documented below.
-	LogConfig SubnetworkLogConfigPtrOutput `pulumi:"logConfig"`
+	LogConfig SubnetworkLogConfigOutput `pulumi:"logConfig"`
 	// The name of the resource, provided by the client when initially
 	// creating the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -587,6 +592,11 @@ type Subnetwork struct {
 	// If not specified IPV4_ONLY will be used.
 	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
 	StackType pulumi.StringOutput `pulumi:"stackType"`
+	// 'The state of the subnetwork, which can be one of the following values:
+	// READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose
+	// set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained.
+	// A subnetwork that is draining cannot be used or modified until it reaches a status of READY'
+	State pulumi.StringOutput `pulumi:"state"`
 	// The unique identifier number for the resource. This identifier is defined by the server.
 	SubnetworkId pulumi.IntOutput `pulumi:"subnetworkId"`
 }
@@ -635,6 +645,11 @@ type subnetworkState struct {
 	// you create the resource. This field can be set only at resource
 	// creation time.
 	Description *string `pulumi:"description"`
+	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
+	// it will not appear in get listings. If not set the default behavior is determined by the
+	// org policy, if there is no org policy specified, then it will default to disabled.
+	// This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+	EnableFlowLogs *bool `pulumi:"enableFlowLogs"`
 	// The range of external IPv6 addresses that are owned by this subnetwork.
 	ExternalIpv6Prefix *string `pulumi:"externalIpv6Prefix"`
 	// Fingerprint of this resource. This field is used internally during updates of this resource.
@@ -742,6 +757,11 @@ type subnetworkState struct {
 	// If not specified IPV4_ONLY will be used.
 	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
 	StackType *string `pulumi:"stackType"`
+	// 'The state of the subnetwork, which can be one of the following values:
+	// READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose
+	// set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained.
+	// A subnetwork that is draining cannot be used or modified until it reaches a status of READY'
+	State *string `pulumi:"state"`
 	// The unique identifier number for the resource. This identifier is defined by the server.
 	SubnetworkId *int `pulumi:"subnetworkId"`
 }
@@ -758,6 +778,11 @@ type SubnetworkState struct {
 	// you create the resource. This field can be set only at resource
 	// creation time.
 	Description pulumi.StringPtrInput
+	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
+	// it will not appear in get listings. If not set the default behavior is determined by the
+	// org policy, if there is no org policy specified, then it will default to disabled.
+	// This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+	EnableFlowLogs pulumi.BoolPtrInput
 	// The range of external IPv6 addresses that are owned by this subnetwork.
 	ExternalIpv6Prefix pulumi.StringPtrInput
 	// Fingerprint of this resource. This field is used internally during updates of this resource.
@@ -865,6 +890,11 @@ type SubnetworkState struct {
 	// If not specified IPV4_ONLY will be used.
 	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
 	StackType pulumi.StringPtrInput
+	// 'The state of the subnetwork, which can be one of the following values:
+	// READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose
+	// set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained.
+	// A subnetwork that is draining cannot be used or modified until it reaches a status of READY'
+	State pulumi.StringPtrInput
 	// The unique identifier number for the resource. This identifier is defined by the server.
 	SubnetworkId pulumi.IntPtrInput
 }
@@ -883,6 +913,11 @@ type subnetworkArgs struct {
 	// you create the resource. This field can be set only at resource
 	// creation time.
 	Description *string `pulumi:"description"`
+	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
+	// it will not appear in get listings. If not set the default behavior is determined by the
+	// org policy, if there is no org policy specified, then it will default to disabled.
+	// This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+	EnableFlowLogs *bool `pulumi:"enableFlowLogs"`
 	// The range of external IPv6 addresses that are owned by this subnetwork.
 	ExternalIpv6Prefix *string `pulumi:"externalIpv6Prefix"`
 	// The range of internal addresses that are owned by this subnetwork.
@@ -984,6 +1019,11 @@ type SubnetworkArgs struct {
 	// you create the resource. This field can be set only at resource
 	// creation time.
 	Description pulumi.StringPtrInput
+	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
+	// it will not appear in get listings. If not set the default behavior is determined by the
+	// org policy, if there is no org policy specified, then it will default to disabled.
+	// This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+	EnableFlowLogs pulumi.BoolPtrInput
 	// The range of external IPv6 addresses that are owned by this subnetwork.
 	ExternalIpv6Prefix pulumi.StringPtrInput
 	// The range of internal addresses that are owned by this subnetwork.
@@ -1181,6 +1221,14 @@ func (o SubnetworkOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
+// it will not appear in get listings. If not set the default behavior is determined by the
+// org policy, if there is no org policy specified, then it will default to disabled.
+// This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+func (o SubnetworkOutput) EnableFlowLogs() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.BoolOutput { return v.EnableFlowLogs }).(pulumi.BoolOutput)
+}
+
 // The range of external IPv6 addresses that are owned by this subnetwork.
 func (o SubnetworkOutput) ExternalIpv6Prefix() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.ExternalIpv6Prefix }).(pulumi.StringOutput)
@@ -1253,8 +1301,8 @@ func (o SubnetworkOutput) Ipv6GceEndpoint() pulumi.StringOutput {
 // isn't supported if the subnet `purpose` field is set to subnetwork is
 // `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
 // Structure is documented below.
-func (o SubnetworkOutput) LogConfig() SubnetworkLogConfigPtrOutput {
-	return o.ApplyT(func(v *Subnetwork) SubnetworkLogConfigPtrOutput { return v.LogConfig }).(SubnetworkLogConfigPtrOutput)
+func (o SubnetworkOutput) LogConfig() SubnetworkLogConfigOutput {
+	return o.ApplyT(func(v *Subnetwork) SubnetworkLogConfigOutput { return v.LogConfig }).(SubnetworkLogConfigOutput)
 }
 
 // The name of the resource, provided by the client when initially
@@ -1355,6 +1403,14 @@ func (o SubnetworkOutput) SendSecondaryIpRangeIfEmpty() pulumi.BoolPtrOutput {
 // Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
 func (o SubnetworkOutput) StackType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.StackType }).(pulumi.StringOutput)
+}
+
+// 'The state of the subnetwork, which can be one of the following values:
+// READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose
+// set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained.
+// A subnetwork that is draining cannot be used or modified until it reaches a status of READY'
+func (o SubnetworkOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
 // The unique identifier number for the resource. This identifier is defined by the server.

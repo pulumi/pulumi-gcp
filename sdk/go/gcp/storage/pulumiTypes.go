@@ -2693,8 +2693,6 @@ type InsightsReportConfigCsvOptions struct {
 	// The delimiter used to separate the fields in the inventory report CSV file.
 	Delimiter *string `pulumi:"delimiter"`
 	// The boolean that indicates whether or not headers are included in the inventory report CSV file.
-	//
-	// ***
 	HeaderRequired *bool `pulumi:"headerRequired"`
 	// The character used to separate the records in the inventory report CSV file.
 	RecordSeparator *string `pulumi:"recordSeparator"`
@@ -2715,8 +2713,6 @@ type InsightsReportConfigCsvOptionsArgs struct {
 	// The delimiter used to separate the fields in the inventory report CSV file.
 	Delimiter pulumi.StringPtrInput `pulumi:"delimiter"`
 	// The boolean that indicates whether or not headers are included in the inventory report CSV file.
-	//
-	// ***
 	HeaderRequired pulumi.BoolPtrInput `pulumi:"headerRequired"`
 	// The character used to separate the records in the inventory report CSV file.
 	RecordSeparator pulumi.StringPtrInput `pulumi:"recordSeparator"`
@@ -2805,8 +2801,6 @@ func (o InsightsReportConfigCsvOptionsOutput) Delimiter() pulumi.StringPtrOutput
 }
 
 // The boolean that indicates whether or not headers are included in the inventory report CSV file.
-//
-// ***
 func (o InsightsReportConfigCsvOptionsOutput) HeaderRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InsightsReportConfigCsvOptions) *bool { return v.HeaderRequired }).(pulumi.BoolPtrOutput)
 }
@@ -2851,8 +2845,6 @@ func (o InsightsReportConfigCsvOptionsPtrOutput) Delimiter() pulumi.StringPtrOut
 }
 
 // The boolean that indicates whether or not headers are included in the inventory report CSV file.
-//
-// ***
 func (o InsightsReportConfigCsvOptionsPtrOutput) HeaderRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InsightsReportConfigCsvOptions) *bool {
 		if v == nil {
@@ -3895,6 +3887,124 @@ func (o InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput) 
 		}
 		return v.Bucket
 	}).(pulumi.StringPtrOutput)
+}
+
+type InsightsReportConfigParquetOptions struct {
+}
+
+// InsightsReportConfigParquetOptionsInput is an input type that accepts InsightsReportConfigParquetOptionsArgs and InsightsReportConfigParquetOptionsOutput values.
+// You can construct a concrete instance of `InsightsReportConfigParquetOptionsInput` via:
+//
+//	InsightsReportConfigParquetOptionsArgs{...}
+type InsightsReportConfigParquetOptionsInput interface {
+	pulumi.Input
+
+	ToInsightsReportConfigParquetOptionsOutput() InsightsReportConfigParquetOptionsOutput
+	ToInsightsReportConfigParquetOptionsOutputWithContext(context.Context) InsightsReportConfigParquetOptionsOutput
+}
+
+type InsightsReportConfigParquetOptionsArgs struct {
+}
+
+func (InsightsReportConfigParquetOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsReportConfigParquetOptions)(nil)).Elem()
+}
+
+func (i InsightsReportConfigParquetOptionsArgs) ToInsightsReportConfigParquetOptionsOutput() InsightsReportConfigParquetOptionsOutput {
+	return i.ToInsightsReportConfigParquetOptionsOutputWithContext(context.Background())
+}
+
+func (i InsightsReportConfigParquetOptionsArgs) ToInsightsReportConfigParquetOptionsOutputWithContext(ctx context.Context) InsightsReportConfigParquetOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsReportConfigParquetOptionsOutput)
+}
+
+func (i InsightsReportConfigParquetOptionsArgs) ToInsightsReportConfigParquetOptionsPtrOutput() InsightsReportConfigParquetOptionsPtrOutput {
+	return i.ToInsightsReportConfigParquetOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i InsightsReportConfigParquetOptionsArgs) ToInsightsReportConfigParquetOptionsPtrOutputWithContext(ctx context.Context) InsightsReportConfigParquetOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsReportConfigParquetOptionsOutput).ToInsightsReportConfigParquetOptionsPtrOutputWithContext(ctx)
+}
+
+// InsightsReportConfigParquetOptionsPtrInput is an input type that accepts InsightsReportConfigParquetOptionsArgs, InsightsReportConfigParquetOptionsPtr and InsightsReportConfigParquetOptionsPtrOutput values.
+// You can construct a concrete instance of `InsightsReportConfigParquetOptionsPtrInput` via:
+//
+//	        InsightsReportConfigParquetOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InsightsReportConfigParquetOptionsPtrInput interface {
+	pulumi.Input
+
+	ToInsightsReportConfigParquetOptionsPtrOutput() InsightsReportConfigParquetOptionsPtrOutput
+	ToInsightsReportConfigParquetOptionsPtrOutputWithContext(context.Context) InsightsReportConfigParquetOptionsPtrOutput
+}
+
+type insightsReportConfigParquetOptionsPtrType InsightsReportConfigParquetOptionsArgs
+
+func InsightsReportConfigParquetOptionsPtr(v *InsightsReportConfigParquetOptionsArgs) InsightsReportConfigParquetOptionsPtrInput {
+	return (*insightsReportConfigParquetOptionsPtrType)(v)
+}
+
+func (*insightsReportConfigParquetOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsReportConfigParquetOptions)(nil)).Elem()
+}
+
+func (i *insightsReportConfigParquetOptionsPtrType) ToInsightsReportConfigParquetOptionsPtrOutput() InsightsReportConfigParquetOptionsPtrOutput {
+	return i.ToInsightsReportConfigParquetOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *insightsReportConfigParquetOptionsPtrType) ToInsightsReportConfigParquetOptionsPtrOutputWithContext(ctx context.Context) InsightsReportConfigParquetOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsReportConfigParquetOptionsPtrOutput)
+}
+
+type InsightsReportConfigParquetOptionsOutput struct{ *pulumi.OutputState }
+
+func (InsightsReportConfigParquetOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsReportConfigParquetOptions)(nil)).Elem()
+}
+
+func (o InsightsReportConfigParquetOptionsOutput) ToInsightsReportConfigParquetOptionsOutput() InsightsReportConfigParquetOptionsOutput {
+	return o
+}
+
+func (o InsightsReportConfigParquetOptionsOutput) ToInsightsReportConfigParquetOptionsOutputWithContext(ctx context.Context) InsightsReportConfigParquetOptionsOutput {
+	return o
+}
+
+func (o InsightsReportConfigParquetOptionsOutput) ToInsightsReportConfigParquetOptionsPtrOutput() InsightsReportConfigParquetOptionsPtrOutput {
+	return o.ToInsightsReportConfigParquetOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o InsightsReportConfigParquetOptionsOutput) ToInsightsReportConfigParquetOptionsPtrOutputWithContext(ctx context.Context) InsightsReportConfigParquetOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InsightsReportConfigParquetOptions) *InsightsReportConfigParquetOptions {
+		return &v
+	}).(InsightsReportConfigParquetOptionsPtrOutput)
+}
+
+type InsightsReportConfigParquetOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (InsightsReportConfigParquetOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsReportConfigParquetOptions)(nil)).Elem()
+}
+
+func (o InsightsReportConfigParquetOptionsPtrOutput) ToInsightsReportConfigParquetOptionsPtrOutput() InsightsReportConfigParquetOptionsPtrOutput {
+	return o
+}
+
+func (o InsightsReportConfigParquetOptionsPtrOutput) ToInsightsReportConfigParquetOptionsPtrOutputWithContext(ctx context.Context) InsightsReportConfigParquetOptionsPtrOutput {
+	return o
+}
+
+func (o InsightsReportConfigParquetOptionsPtrOutput) Elem() InsightsReportConfigParquetOptionsOutput {
+	return o.ApplyT(func(v *InsightsReportConfigParquetOptions) InsightsReportConfigParquetOptions {
+		if v != nil {
+			return *v
+		}
+		var ret InsightsReportConfigParquetOptions
+		return ret
+	}).(InsightsReportConfigParquetOptionsOutput)
 }
 
 type ManagedFolderIamBindingCondition struct {
@@ -11264,6 +11374,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrInput)(nil)).Elem(), InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InsightsReportConfigObjectMetadataReportOptionsStorageFiltersInput)(nil)).Elem(), InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrInput)(nil)).Elem(), InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsReportConfigParquetOptionsInput)(nil)).Elem(), InsightsReportConfigParquetOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsReportConfigParquetOptionsPtrInput)(nil)).Elem(), InsightsReportConfigParquetOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedFolderIamBindingConditionInput)(nil)).Elem(), ManagedFolderIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedFolderIamBindingConditionPtrInput)(nil)).Elem(), ManagedFolderIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedFolderIamMemberConditionInput)(nil)).Elem(), ManagedFolderIamMemberConditionArgs{})
@@ -11408,6 +11520,8 @@ func init() {
 	pulumi.RegisterOutputType(InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput{})
 	pulumi.RegisterOutputType(InsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutput{})
 	pulumi.RegisterOutputType(InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput{})
+	pulumi.RegisterOutputType(InsightsReportConfigParquetOptionsOutput{})
+	pulumi.RegisterOutputType(InsightsReportConfigParquetOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ManagedFolderIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(ManagedFolderIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(ManagedFolderIamMemberConditionOutput{})

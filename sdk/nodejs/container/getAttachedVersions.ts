@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *     location: "us-west1",
  *     project: "my-project",
  * });
- * export const firstAvailableVersion = versions.validVersions[0];
+ * export const firstAvailableVersion = uswest.then(uswest => uswest.validVersions?.[0]);
  * ```
  */
 export function getAttachedVersions(args: GetAttachedVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetAttachedVersionsResult> {
@@ -71,7 +71,7 @@ export interface GetAttachedVersionsResult {
  *     location: "us-west1",
  *     project: "my-project",
  * });
- * export const firstAvailableVersion = versions.validVersions[0];
+ * export const firstAvailableVersion = uswest.then(uswest => uswest.validVersions?.[0]);
  * ```
  */
 export function getAttachedVersionsOutput(args: GetAttachedVersionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAttachedVersionsResult> {

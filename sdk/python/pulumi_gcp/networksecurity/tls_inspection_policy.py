@@ -37,6 +37,7 @@ class TlsInspectionPolicyArgs:
         :param pulumi.Input[bool] exclude_public_ca_set: If FALSE (the default), use our default set of public CAs in addition to any CAs specified in trustConfig. These public CAs are currently based on the Mozilla Root Program and are subject to change over time. If TRUE, do not accept our default set of public CAs. Only CAs specified in trustConfig will be accepted.
         :param pulumi.Input[str] location: The location of the tls inspection policy.
         :param pulumi.Input[str] min_tls_version: Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+               Default value is `TLS_VERSION_UNSPECIFIED`.
                Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         :param pulumi.Input[str] name: Short name of the TlsInspectionPolicy resource to be created.
                
@@ -45,6 +46,7 @@ class TlsInspectionPolicyArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] tls_feature_profile: The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\\"PROFILE_COMPATIBLE\\"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+               Default value is `PROFILE_UNSPECIFIED`.
                Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
         :param pulumi.Input[str] trust_config: A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form \\"projects/{project}/locations/{location}/trustConfigs/{trust_config}\\". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
         """
@@ -133,6 +135,7 @@ class TlsInspectionPolicyArgs:
     def min_tls_version(self) -> Optional[pulumi.Input[str]]:
         """
         Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        Default value is `TLS_VERSION_UNSPECIFIED`.
         Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         """
         return pulumi.get(self, "min_tls_version")
@@ -174,6 +177,7 @@ class TlsInspectionPolicyArgs:
     def tls_feature_profile(self) -> Optional[pulumi.Input[str]]:
         """
         The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\\"PROFILE_COMPATIBLE\\"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        Default value is `PROFILE_UNSPECIFIED`.
         Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
         """
         return pulumi.get(self, "tls_feature_profile")
@@ -219,6 +223,7 @@ class _TlsInspectionPolicyState:
         :param pulumi.Input[bool] exclude_public_ca_set: If FALSE (the default), use our default set of public CAs in addition to any CAs specified in trustConfig. These public CAs are currently based on the Mozilla Root Program and are subject to change over time. If TRUE, do not accept our default set of public CAs. Only CAs specified in trustConfig will be accepted.
         :param pulumi.Input[str] location: The location of the tls inspection policy.
         :param pulumi.Input[str] min_tls_version: Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+               Default value is `TLS_VERSION_UNSPECIFIED`.
                Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         :param pulumi.Input[str] name: Short name of the TlsInspectionPolicy resource to be created.
                
@@ -227,6 +232,7 @@ class _TlsInspectionPolicyState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] tls_feature_profile: The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\\"PROFILE_COMPATIBLE\\"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+               Default value is `PROFILE_UNSPECIFIED`.
                Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
         :param pulumi.Input[str] trust_config: A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form \\"projects/{project}/locations/{location}/trustConfigs/{trust_config}\\". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
         :param pulumi.Input[str] update_time: The timestamp when the resource was updated.
@@ -333,6 +339,7 @@ class _TlsInspectionPolicyState:
     def min_tls_version(self) -> Optional[pulumi.Input[str]]:
         """
         Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        Default value is `TLS_VERSION_UNSPECIFIED`.
         Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         """
         return pulumi.get(self, "min_tls_version")
@@ -374,6 +381,7 @@ class _TlsInspectionPolicyState:
     def tls_feature_profile(self) -> Optional[pulumi.Input[str]]:
         """
         The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\\"PROFILE_COMPATIBLE\\"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        Default value is `PROFILE_UNSPECIFIED`.
         Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
         """
         return pulumi.get(self, "tls_feature_profile")
@@ -655,6 +663,7 @@ class TlsInspectionPolicy(pulumi.CustomResource):
         :param pulumi.Input[bool] exclude_public_ca_set: If FALSE (the default), use our default set of public CAs in addition to any CAs specified in trustConfig. These public CAs are currently based on the Mozilla Root Program and are subject to change over time. If TRUE, do not accept our default set of public CAs. Only CAs specified in trustConfig will be accepted.
         :param pulumi.Input[str] location: The location of the tls inspection policy.
         :param pulumi.Input[str] min_tls_version: Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+               Default value is `TLS_VERSION_UNSPECIFIED`.
                Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         :param pulumi.Input[str] name: Short name of the TlsInspectionPolicy resource to be created.
                
@@ -663,6 +672,7 @@ class TlsInspectionPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] tls_feature_profile: The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\\"PROFILE_COMPATIBLE\\"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+               Default value is `PROFILE_UNSPECIFIED`.
                Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
         :param pulumi.Input[str] trust_config: A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form \\"projects/{project}/locations/{location}/trustConfigs/{trust_config}\\". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
         """
@@ -980,6 +990,7 @@ class TlsInspectionPolicy(pulumi.CustomResource):
         :param pulumi.Input[bool] exclude_public_ca_set: If FALSE (the default), use our default set of public CAs in addition to any CAs specified in trustConfig. These public CAs are currently based on the Mozilla Root Program and are subject to change over time. If TRUE, do not accept our default set of public CAs. Only CAs specified in trustConfig will be accepted.
         :param pulumi.Input[str] location: The location of the tls inspection policy.
         :param pulumi.Input[str] min_tls_version: Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+               Default value is `TLS_VERSION_UNSPECIFIED`.
                Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         :param pulumi.Input[str] name: Short name of the TlsInspectionPolicy resource to be created.
                
@@ -988,6 +999,7 @@ class TlsInspectionPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] tls_feature_profile: The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\\"PROFILE_COMPATIBLE\\"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+               Default value is `PROFILE_UNSPECIFIED`.
                Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
         :param pulumi.Input[str] trust_config: A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form \\"projects/{project}/locations/{location}/trustConfigs/{trust_config}\\". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
         :param pulumi.Input[str] update_time: The timestamp when the resource was updated.
@@ -1063,6 +1075,7 @@ class TlsInspectionPolicy(pulumi.CustomResource):
     def min_tls_version(self) -> pulumi.Output[Optional[str]]:
         """
         Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        Default value is `TLS_VERSION_UNSPECIFIED`.
         Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         """
         return pulumi.get(self, "min_tls_version")
@@ -1092,6 +1105,7 @@ class TlsInspectionPolicy(pulumi.CustomResource):
     def tls_feature_profile(self) -> pulumi.Output[Optional[str]]:
         """
         The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\\"PROFILE_COMPATIBLE\\"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        Default value is `PROFILE_UNSPECIFIED`.
         Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
         """
         return pulumi.get(self, "tls_feature_profile")

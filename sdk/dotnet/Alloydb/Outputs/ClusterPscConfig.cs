@@ -17,11 +17,21 @@ namespace Pulumi.Gcp.Alloydb.Outputs
         /// Create an instance that allows connections from Private Service Connect endpoints to the instance.
         /// </summary>
         public readonly bool? PscEnabled;
+        /// <summary>
+        /// (Output)
+        /// The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
+        /// In case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.
+        /// </summary>
+        public readonly int? ServiceOwnedProjectNumber;
 
         [OutputConstructor]
-        private ClusterPscConfig(bool? pscEnabled)
+        private ClusterPscConfig(
+            bool? pscEnabled,
+
+            int? serviceOwnedProjectNumber)
         {
             PscEnabled = pscEnabled;
+            ServiceOwnedProjectNumber = serviceOwnedProjectNumber;
         }
     }
 }

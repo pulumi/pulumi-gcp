@@ -28,6 +28,11 @@ public final class JobQuery {
      */
     private @Nullable Boolean allowLargeResults;
     /**
+     * @return Whether to run the query as continuous or a regular query.
+     * 
+     */
+    private @Nullable Boolean continuous;
+    /**
      * @return Specifies whether the job is allowed to create new tables. The following values are supported:
      * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
      * CREATE_NEVER: The table must already exist. If it does not, a &#39;notFound&#39; error is returned in the job result.
@@ -152,6 +157,13 @@ public final class JobQuery {
      */
     public Optional<Boolean> allowLargeResults() {
         return Optional.ofNullable(this.allowLargeResults);
+    }
+    /**
+     * @return Whether to run the query as continuous or a regular query.
+     * 
+     */
+    public Optional<Boolean> continuous() {
+        return Optional.ofNullable(this.continuous);
     }
     /**
      * @return Specifies whether the job is allowed to create new tables. The following values are supported:
@@ -311,6 +323,7 @@ public final class JobQuery {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean allowLargeResults;
+        private @Nullable Boolean continuous;
         private @Nullable String createDisposition;
         private @Nullable JobQueryDefaultDataset defaultDataset;
         private @Nullable JobQueryDestinationEncryptionConfiguration destinationEncryptionConfiguration;
@@ -331,6 +344,7 @@ public final class JobQuery {
         public Builder(JobQuery defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowLargeResults = defaults.allowLargeResults;
+    	      this.continuous = defaults.continuous;
     	      this.createDisposition = defaults.createDisposition;
     	      this.defaultDataset = defaults.defaultDataset;
     	      this.destinationEncryptionConfiguration = defaults.destinationEncryptionConfiguration;
@@ -353,6 +367,12 @@ public final class JobQuery {
         public Builder allowLargeResults(@Nullable Boolean allowLargeResults) {
 
             this.allowLargeResults = allowLargeResults;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder continuous(@Nullable Boolean continuous) {
+
+            this.continuous = continuous;
             return this;
         }
         @CustomType.Setter
@@ -462,6 +482,7 @@ public final class JobQuery {
         public JobQuery build() {
             final var _resultValue = new JobQuery();
             _resultValue.allowLargeResults = allowLargeResults;
+            _resultValue.continuous = continuous;
             _resultValue.createDisposition = createDisposition;
             _resultValue.defaultDataset = defaultDataset;
             _resultValue.destinationEncryptionConfiguration = destinationEncryptionConfiguration;

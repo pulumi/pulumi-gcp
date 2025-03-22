@@ -38,6 +38,12 @@ __all__ = [
     'AuthzPolicyHttpRuleFromSourceResourceIamServiceAccount',
     'AuthzPolicyHttpRuleFromSourceResourceTagValueIdSet',
     'AuthzPolicyHttpRuleTo',
+    'AuthzPolicyHttpRuleToNotOperation',
+    'AuthzPolicyHttpRuleToNotOperationHeaderSet',
+    'AuthzPolicyHttpRuleToNotOperationHeaderSetHeader',
+    'AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue',
+    'AuthzPolicyHttpRuleToNotOperationHost',
+    'AuthzPolicyHttpRuleToNotOperationPath',
     'AuthzPolicyHttpRuleToOperation',
     'AuthzPolicyHttpRuleToOperationHeaderSet',
     'AuthzPolicyHttpRuleToOperationHeaderSetHeader',
@@ -1171,14 +1177,45 @@ class AuthzPolicyHttpRuleFromSourceResourceTagValueIdSet(dict):
 
 @pulumi.output_type
 class AuthzPolicyHttpRuleTo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "notOperations":
+            suggest = "not_operations"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthzPolicyHttpRuleTo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthzPolicyHttpRuleTo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthzPolicyHttpRuleTo.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 not_operations: Optional[Sequence['outputs.AuthzPolicyHttpRuleToNotOperation']] = None,
                  operations: Optional[Sequence['outputs.AuthzPolicyHttpRuleToOperation']] = None):
         """
+        :param Sequence['AuthzPolicyHttpRuleToNotOperationArgs'] not_operations: Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified.
+               Structure is documented below.
         :param Sequence['AuthzPolicyHttpRuleToOperationArgs'] operations: Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 5 operations. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
                Structure is documented below.
         """
+        if not_operations is not None:
+            pulumi.set(__self__, "not_operations", not_operations)
         if operations is not None:
             pulumi.set(__self__, "operations", operations)
+
+    @property
+    @pulumi.getter(name="notOperations")
+    def not_operations(self) -> Optional[Sequence['outputs.AuthzPolicyHttpRuleToNotOperation']]:
+        """
+        Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "not_operations")
 
     @property
     @pulumi.getter
@@ -1188,6 +1225,444 @@ class AuthzPolicyHttpRuleTo(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "operations")
+
+
+@pulumi.output_type
+class AuthzPolicyHttpRuleToNotOperation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headerSet":
+            suggest = "header_set"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthzPolicyHttpRuleToNotOperation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthzPolicyHttpRuleToNotOperation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthzPolicyHttpRuleToNotOperation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 header_set: Optional['outputs.AuthzPolicyHttpRuleToNotOperationHeaderSet'] = None,
+                 hosts: Optional[Sequence['outputs.AuthzPolicyHttpRuleToNotOperationHost']] = None,
+                 methods: Optional[Sequence[str]] = None,
+                 paths: Optional[Sequence['outputs.AuthzPolicyHttpRuleToNotOperationPath']] = None):
+        """
+        :param 'AuthzPolicyHttpRuleToNotOperationHeaderSetArgs' header_set: A list of headers to match against in http header.
+               Structure is documented below.
+        :param Sequence['AuthzPolicyHttpRuleToNotOperationHostArgs'] hosts: A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
+               Limited to 5 matches.
+               Structure is documented below.
+        :param Sequence[str] methods: A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
+        :param Sequence['AuthzPolicyHttpRuleToNotOperationPathArgs'] paths: A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
+               Limited to 5 matches.
+               Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method.
+               Structure is documented below.
+        """
+        if header_set is not None:
+            pulumi.set(__self__, "header_set", header_set)
+        if hosts is not None:
+            pulumi.set(__self__, "hosts", hosts)
+        if methods is not None:
+            pulumi.set(__self__, "methods", methods)
+        if paths is not None:
+            pulumi.set(__self__, "paths", paths)
+
+    @property
+    @pulumi.getter(name="headerSet")
+    def header_set(self) -> Optional['outputs.AuthzPolicyHttpRuleToNotOperationHeaderSet']:
+        """
+        A list of headers to match against in http header.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "header_set")
+
+    @property
+    @pulumi.getter
+    def hosts(self) -> Optional[Sequence['outputs.AuthzPolicyHttpRuleToNotOperationHost']]:
+        """
+        A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
+        Limited to 5 matches.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "hosts")
+
+    @property
+    @pulumi.getter
+    def methods(self) -> Optional[Sequence[str]]:
+        """
+        A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
+        """
+        return pulumi.get(self, "methods")
+
+    @property
+    @pulumi.getter
+    def paths(self) -> Optional[Sequence['outputs.AuthzPolicyHttpRuleToNotOperationPath']]:
+        """
+        A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
+        Limited to 5 matches.
+        Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "paths")
+
+
+@pulumi.output_type
+class AuthzPolicyHttpRuleToNotOperationHeaderSet(dict):
+    def __init__(__self__, *,
+                 headers: Optional[Sequence['outputs.AuthzPolicyHttpRuleToNotOperationHeaderSetHeader']] = None):
+        """
+        :param Sequence['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgs'] headers: A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.
+               Structure is documented below.
+        """
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[Sequence['outputs.AuthzPolicyHttpRuleToNotOperationHeaderSetHeader']]:
+        """
+        A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "headers")
+
+
+@pulumi.output_type
+class AuthzPolicyHttpRuleToNotOperationHeaderSetHeader(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 value: Optional['outputs.AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue'] = None):
+        """
+        :param str name: Specifies the name of the header in the request.
+        :param 'AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs' value: Specifies how the header match will be performed.
+               Structure is documented below.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Specifies the name of the header in the request.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional['outputs.AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue']:
+        """
+        Specifies how the header match will be performed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ignoreCase":
+            suggest = "ignore_case"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains: Optional[str] = None,
+                 exact: Optional[str] = None,
+                 ignore_case: Optional[bool] = None,
+                 prefix: Optional[str] = None,
+                 suffix: Optional[str] = None):
+        """
+        :param str contains: The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+               Examples:
+               * abc matches the value xyz.abc.def
+        :param str exact: The input string must match exactly the string specified here.
+               Examples:
+               * abc only matches the value abc.
+        :param bool ignore_case: If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+        :param str prefix: The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+               Examples:
+               * abc matches the value abc.xyz
+        :param str suffix: The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+               Examples:
+               * abc matches the value xyz.abc
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+        if ignore_case is not None:
+            pulumi.set(__self__, "ignore_case", ignore_case)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if suffix is not None:
+            pulumi.set(__self__, "suffix", suffix)
+
+    @property
+    @pulumi.getter
+    def contains(self) -> Optional[str]:
+        """
+        The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+        Examples:
+        * abc matches the value xyz.abc.def
+        """
+        return pulumi.get(self, "contains")
+
+    @property
+    @pulumi.getter
+    def exact(self) -> Optional[str]:
+        """
+        The input string must match exactly the string specified here.
+        Examples:
+        * abc only matches the value abc.
+        """
+        return pulumi.get(self, "exact")
+
+    @property
+    @pulumi.getter(name="ignoreCase")
+    def ignore_case(self) -> Optional[bool]:
+        """
+        If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+        """
+        return pulumi.get(self, "ignore_case")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        """
+        The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+        Examples:
+        * abc matches the value abc.xyz
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def suffix(self) -> Optional[str]:
+        """
+        The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+        Examples:
+        * abc matches the value xyz.abc
+        """
+        return pulumi.get(self, "suffix")
+
+
+@pulumi.output_type
+class AuthzPolicyHttpRuleToNotOperationHost(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ignoreCase":
+            suggest = "ignore_case"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthzPolicyHttpRuleToNotOperationHost. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthzPolicyHttpRuleToNotOperationHost.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthzPolicyHttpRuleToNotOperationHost.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains: Optional[str] = None,
+                 exact: Optional[str] = None,
+                 ignore_case: Optional[bool] = None,
+                 prefix: Optional[str] = None,
+                 suffix: Optional[str] = None):
+        """
+        :param str contains: The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+               Examples:
+               * abc matches the value xyz.abc.def
+        :param str exact: The input string must match exactly the string specified here.
+               Examples:
+               * abc only matches the value abc.
+        :param bool ignore_case: If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+        :param str prefix: The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+               Examples:
+               * abc matches the value abc.xyz
+        :param str suffix: The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+               Examples:
+               * abc matches the value xyz.abc
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+        if ignore_case is not None:
+            pulumi.set(__self__, "ignore_case", ignore_case)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if suffix is not None:
+            pulumi.set(__self__, "suffix", suffix)
+
+    @property
+    @pulumi.getter
+    def contains(self) -> Optional[str]:
+        """
+        The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+        Examples:
+        * abc matches the value xyz.abc.def
+        """
+        return pulumi.get(self, "contains")
+
+    @property
+    @pulumi.getter
+    def exact(self) -> Optional[str]:
+        """
+        The input string must match exactly the string specified here.
+        Examples:
+        * abc only matches the value abc.
+        """
+        return pulumi.get(self, "exact")
+
+    @property
+    @pulumi.getter(name="ignoreCase")
+    def ignore_case(self) -> Optional[bool]:
+        """
+        If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+        """
+        return pulumi.get(self, "ignore_case")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        """
+        The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+        Examples:
+        * abc matches the value abc.xyz
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def suffix(self) -> Optional[str]:
+        """
+        The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+        Examples:
+        * abc matches the value xyz.abc
+        """
+        return pulumi.get(self, "suffix")
+
+
+@pulumi.output_type
+class AuthzPolicyHttpRuleToNotOperationPath(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ignoreCase":
+            suggest = "ignore_case"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthzPolicyHttpRuleToNotOperationPath. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthzPolicyHttpRuleToNotOperationPath.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthzPolicyHttpRuleToNotOperationPath.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains: Optional[str] = None,
+                 exact: Optional[str] = None,
+                 ignore_case: Optional[bool] = None,
+                 prefix: Optional[str] = None,
+                 suffix: Optional[str] = None):
+        """
+        :param str contains: The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+               Examples:
+               * abc matches the value xyz.abc.def
+        :param str exact: The input string must match exactly the string specified here.
+               Examples:
+               * abc only matches the value abc.
+        :param bool ignore_case: If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+        :param str prefix: The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+               Examples:
+               * abc matches the value abc.xyz
+        :param str suffix: The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+               Examples:
+               * abc matches the value xyz.abc
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+        if ignore_case is not None:
+            pulumi.set(__self__, "ignore_case", ignore_case)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if suffix is not None:
+            pulumi.set(__self__, "suffix", suffix)
+
+    @property
+    @pulumi.getter
+    def contains(self) -> Optional[str]:
+        """
+        The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+        Examples:
+        * abc matches the value xyz.abc.def
+        """
+        return pulumi.get(self, "contains")
+
+    @property
+    @pulumi.getter
+    def exact(self) -> Optional[str]:
+        """
+        The input string must match exactly the string specified here.
+        Examples:
+        * abc only matches the value abc.
+        """
+        return pulumi.get(self, "exact")
+
+    @property
+    @pulumi.getter(name="ignoreCase")
+    def ignore_case(self) -> Optional[bool]:
+        """
+        If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+        """
+        return pulumi.get(self, "ignore_case")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        """
+        The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+        Examples:
+        * abc matches the value abc.xyz
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def suffix(self) -> Optional[str]:
+        """
+        The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+        Examples:
+        * abc matches the value xyz.abc
+        """
+        return pulumi.get(self, "suffix")
 
 
 @pulumi.output_type

@@ -88,14 +88,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. Immutable. Engine version of the instance.
+     * Optional. Engine version of the instance.
      * 
      */
     @Import(name="engineVersion")
     private @Nullable Output<String> engineVersion;
 
     /**
-     * @return Optional. Immutable. Engine version of the instance.
+     * @return Optional. Engine version of the instance.
      * 
      */
     public Optional<Output<String>> engineVersion() {
@@ -457,7 +457,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engineVersion Optional. Immutable. Engine version of the instance.
+         * @param engineVersion Optional. Engine version of the instance.
          * 
          * @return builder
          * 
@@ -468,7 +468,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engineVersion Optional. Immutable. Engine version of the instance.
+         * @param engineVersion Optional. Engine version of the instance.
          * 
          * @return builder
          * 

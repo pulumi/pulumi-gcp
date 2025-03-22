@@ -183,6 +183,13 @@ export class Workflow extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Describes the level of execution history to be stored for this workflow. This configuration
+     * determines how much information about workflow executions is preserved. If not specified,
+     * defaults to EXECUTION_HISTORY_LEVEL_UNSPECIFIED.
+     * Possible values are: `EXECUTION_HISTORY_LEVEL_UNSPECIFIED`, `EXECUTION_HISTORY_BASIC`, `EXECUTION_HISTORY_DETAILED`.
+     */
+    public readonly executionHistoryLevel!: pulumi.Output<string | undefined>;
+    /**
      * A set of key/value label pairs to assign to this Workflow.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -245,7 +252,7 @@ export class Workflow extends pulumi.CustomResource {
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
-     * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+     * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
      */
     public readonly userEnvVars!: pulumi.Output<{[key: string]: string} | undefined>;
 
@@ -268,6 +275,7 @@ export class Workflow extends pulumi.CustomResource {
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
+            resourceInputs["executionHistoryLevel"] = state ? state.executionHistoryLevel : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["namePrefix"] = state ? state.namePrefix : undefined;
@@ -287,6 +295,7 @@ export class Workflow extends pulumi.CustomResource {
             resourceInputs["cryptoKeyName"] = args ? args.cryptoKeyName : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["executionHistoryLevel"] = args ? args.executionHistoryLevel : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
@@ -339,6 +348,13 @@ export interface WorkflowState {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Describes the level of execution history to be stored for this workflow. This configuration
+     * determines how much information about workflow executions is preserved. If not specified,
+     * defaults to EXECUTION_HISTORY_LEVEL_UNSPECIFIED.
+     * Possible values are: `EXECUTION_HISTORY_LEVEL_UNSPECIFIED`, `EXECUTION_HISTORY_BASIC`, `EXECUTION_HISTORY_DETAILED`.
+     */
+    executionHistoryLevel?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to this Workflow.
      *
@@ -402,7 +418,7 @@ export interface WorkflowState {
      */
     updateTime?: pulumi.Input<string>;
     /**
-     * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+     * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
      */
     userEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
@@ -428,6 +444,13 @@ export interface WorkflowArgs {
      * Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Describes the level of execution history to be stored for this workflow. This configuration
+     * determines how much information about workflow executions is preserved. If not specified,
+     * defaults to EXECUTION_HISTORY_LEVEL_UNSPECIFIED.
+     * Possible values are: `EXECUTION_HISTORY_LEVEL_UNSPECIFIED`, `EXECUTION_HISTORY_BASIC`, `EXECUTION_HISTORY_DETAILED`.
+     */
+    executionHistoryLevel?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to this Workflow.
      *
@@ -474,7 +497,7 @@ export interface WorkflowArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+     * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
      */
     userEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -276,6 +276,9 @@ public final class Config {
     public Optional<String> firebaseAppCheckCustomEndpoint() {
         return Codegen.stringProp("firebaseAppCheckCustomEndpoint").config(config).get();
     }
+    public Optional<String> firebaseAppHostingCustomEndpoint() {
+        return Codegen.stringProp("firebaseAppHostingCustomEndpoint").config(config).get();
+    }
     public Optional<String> firebaseCustomEndpoint() {
         return Codegen.stringProp("firebaseCustomEndpoint").config(config).get();
     }

@@ -33,6 +33,7 @@ __all__ = [
     'OrganizationPolicyListPolicyDeny',
     'OrganizationPolicyRestorePolicy',
     'GetAncestryAncestorResult',
+    'GetIamCustomRolesRoleResult',
     'GetOrganizationPolicyBooleanPolicyResult',
     'GetOrganizationPolicyListPolicyResult',
     'GetOrganizationPolicyListPolicyAllowResult',
@@ -784,6 +785,101 @@ class GetAncestryAncestorResult(dict):
         One of `"project"`, `"folder"` or `"organization"`.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetIamCustomRolesRoleResult(dict):
+    def __init__(__self__, *,
+                 deleted: bool,
+                 description: str,
+                 id: str,
+                 name: str,
+                 permissions: Sequence[str],
+                 role_id: str,
+                 stage: str,
+                 title: str):
+        """
+        :param bool deleted: The current deleted state of the role.
+        :param str description: A human-readable description for the role.
+        :param str id: an identifier for the resource with the format `projects/{{project}}/roles/{{role_id}}`.
+        :param str name: The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+        :param Sequence[str] permissions: The names of the permissions this role grants when bound in an IAM policy.
+        :param str role_id: The camel case role id used for this role.
+        :param str stage: The current launch stage of the role. List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
+        :param str title: A human-readable title for the role.
+        """
+        pulumi.set(__self__, "deleted", deleted)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "permissions", permissions)
+        pulumi.set(__self__, "role_id", role_id)
+        pulumi.set(__self__, "stage", stage)
+        pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def deleted(self) -> bool:
+        """
+        The current deleted state of the role.
+        """
+        return pulumi.get(self, "deleted")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        A human-readable description for the role.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        an identifier for the resource with the format `projects/{{project}}/roles/{{role_id}}`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> Sequence[str]:
+        """
+        The names of the permissions this role grants when bound in an IAM policy.
+        """
+        return pulumi.get(self, "permissions")
+
+    @property
+    @pulumi.getter(name="roleId")
+    def role_id(self) -> str:
+        """
+        The camel case role id used for this role.
+        """
+        return pulumi.get(self, "role_id")
+
+    @property
+    @pulumi.getter
+    def stage(self) -> str:
+        """
+        The current launch stage of the role. List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
+        """
+        return pulumi.get(self, "stage")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        A human-readable title for the role.
+        """
+        return pulumi.get(self, "title")
 
 
 @pulumi.output_type

@@ -65,6 +65,7 @@ type LookupMetastoreServiceArgs struct {
 // A collection of values returned by getMetastoreService.
 type LookupMetastoreServiceResult struct {
 	ArtifactGcsUri       string                                   `pulumi:"artifactGcsUri"`
+	CreateTime           string                                   `pulumi:"createTime"`
 	DatabaseType         string                                   `pulumi:"databaseType"`
 	DeletionProtection   bool                                     `pulumi:"deletionProtection"`
 	EffectiveLabels      map[string]string                        `pulumi:"effectiveLabels"`
@@ -92,6 +93,7 @@ type LookupMetastoreServiceResult struct {
 	TelemetryConfigs     []GetMetastoreServiceTelemetryConfig     `pulumi:"telemetryConfigs"`
 	Tier                 string                                   `pulumi:"tier"`
 	Uid                  string                                   `pulumi:"uid"`
+	UpdateTime           string                                   `pulumi:"updateTime"`
 }
 
 func LookupMetastoreServiceOutput(ctx *pulumi.Context, args LookupMetastoreServiceOutputArgs, opts ...pulumi.InvokeOption) LookupMetastoreServiceResultOutput {
@@ -137,6 +139,10 @@ func (o LookupMetastoreServiceResultOutput) ToLookupMetastoreServiceResultOutput
 
 func (o LookupMetastoreServiceResultOutput) ArtifactGcsUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetastoreServiceResult) string { return v.ArtifactGcsUri }).(pulumi.StringOutput)
+}
+
+func (o LookupMetastoreServiceResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMetastoreServiceResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 func (o LookupMetastoreServiceResultOutput) DatabaseType() pulumi.StringOutput {
@@ -248,6 +254,10 @@ func (o LookupMetastoreServiceResultOutput) Tier() pulumi.StringOutput {
 
 func (o LookupMetastoreServiceResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetastoreServiceResult) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+func (o LookupMetastoreServiceResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMetastoreServiceResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 func init() {

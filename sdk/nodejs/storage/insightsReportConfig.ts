@@ -131,18 +131,22 @@ export class InsightsReportConfig extends pulumi.CustomResource {
      * Options for configuring the format of the inventory report CSV file.
      * Structure is documented below.
      */
-    public readonly csvOptions!: pulumi.Output<outputs.storage.InsightsReportConfigCsvOptions>;
+    public readonly csvOptions!: pulumi.Output<outputs.storage.InsightsReportConfigCsvOptions | undefined>;
     /**
      * The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
      * Options for configuring how inventory reports are generated.
+     * Structure is documented below.
      */
     public readonly frequencyOptions!: pulumi.Output<outputs.storage.InsightsReportConfigFrequencyOptions | undefined>;
     /**
      * The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
      * must be in the same location.
+     *
+     *
+     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -151,8 +155,17 @@ export class InsightsReportConfig extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Options for including metadata in an inventory report.
+     * Structure is documented below.
      */
     public readonly objectMetadataReportOptions!: pulumi.Output<outputs.storage.InsightsReportConfigObjectMetadataReportOptions | undefined>;
+    /**
+     * An option for outputting inventory reports as parquet files.
+     */
+    public readonly parquetOptions!: pulumi.Output<outputs.storage.InsightsReportConfigParquetOptions | undefined>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
 
     /**
@@ -174,12 +187,10 @@ export class InsightsReportConfig extends pulumi.CustomResource {
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["objectMetadataReportOptions"] = state ? state.objectMetadataReportOptions : undefined;
+            resourceInputs["parquetOptions"] = state ? state.parquetOptions : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as InsightsReportConfigArgs | undefined;
-            if ((!args || args.csvOptions === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'csvOptions'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -188,6 +199,7 @@ export class InsightsReportConfig extends pulumi.CustomResource {
             resourceInputs["frequencyOptions"] = args ? args.frequencyOptions : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["objectMetadataReportOptions"] = args ? args.objectMetadataReportOptions : undefined;
+            resourceInputs["parquetOptions"] = args ? args.parquetOptions : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["name"] = undefined /*out*/;
         }
@@ -211,11 +223,15 @@ export interface InsightsReportConfigState {
     displayName?: pulumi.Input<string>;
     /**
      * Options for configuring how inventory reports are generated.
+     * Structure is documented below.
      */
     frequencyOptions?: pulumi.Input<inputs.storage.InsightsReportConfigFrequencyOptions>;
     /**
      * The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
      * must be in the same location.
+     *
+     *
+     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -224,8 +240,17 @@ export interface InsightsReportConfigState {
     name?: pulumi.Input<string>;
     /**
      * Options for including metadata in an inventory report.
+     * Structure is documented below.
      */
     objectMetadataReportOptions?: pulumi.Input<inputs.storage.InsightsReportConfigObjectMetadataReportOptions>;
+    /**
+     * An option for outputting inventory reports as parquet files.
+     */
+    parquetOptions?: pulumi.Input<inputs.storage.InsightsReportConfigParquetOptions>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
 }
 
@@ -237,23 +262,36 @@ export interface InsightsReportConfigArgs {
      * Options for configuring the format of the inventory report CSV file.
      * Structure is documented below.
      */
-    csvOptions: pulumi.Input<inputs.storage.InsightsReportConfigCsvOptions>;
+    csvOptions?: pulumi.Input<inputs.storage.InsightsReportConfigCsvOptions>;
     /**
      * The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
      */
     displayName?: pulumi.Input<string>;
     /**
      * Options for configuring how inventory reports are generated.
+     * Structure is documented below.
      */
     frequencyOptions?: pulumi.Input<inputs.storage.InsightsReportConfigFrequencyOptions>;
     /**
      * The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
      * must be in the same location.
+     *
+     *
+     * - - -
      */
     location: pulumi.Input<string>;
     /**
      * Options for including metadata in an inventory report.
+     * Structure is documented below.
      */
     objectMetadataReportOptions?: pulumi.Input<inputs.storage.InsightsReportConfigObjectMetadataReportOptions>;
+    /**
+     * An option for outputting inventory reports as parquet files.
+     */
+    parquetOptions?: pulumi.Input<inputs.storage.InsightsReportConfigParquetOptions>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
 }

@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Container
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstAvailableVersion"] = versions.ValidVersions[0],
+        ///         ["firstAvailableVersion"] = uswest.Apply(getAttachedVersionsResult =&gt; getAttachedVersionsResult.ValidVersions[0]),
         ///     };
         /// });
         /// ```
@@ -61,7 +61,7 @@ namespace Pulumi.Gcp.Container
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstAvailableVersion"] = versions.ValidVersions[0],
+        ///         ["firstAvailableVersion"] = uswest.Apply(getAttachedVersionsResult =&gt; getAttachedVersionsResult.ValidVersions[0]),
         ///     };
         /// });
         /// ```
@@ -90,7 +90,7 @@ namespace Pulumi.Gcp.Container
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstAvailableVersion"] = versions.ValidVersions[0],
+        ///         ["firstAvailableVersion"] = uswest.Apply(getAttachedVersionsResult =&gt; getAttachedVersionsResult.ValidVersions[0]),
         ///     };
         /// });
         /// ```

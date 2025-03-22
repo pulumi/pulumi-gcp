@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.storage.inputs.InsightsReportConfigCsvOptionsArgs;
 import com.pulumi.gcp.storage.inputs.InsightsReportConfigFrequencyOptionsArgs;
 import com.pulumi.gcp.storage.inputs.InsightsReportConfigObjectMetadataReportOptionsArgs;
+import com.pulumi.gcp.storage.inputs.InsightsReportConfigParquetOptionsArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -52,6 +53,7 @@ public final class InsightsReportConfigState extends com.pulumi.resources.Resour
 
     /**
      * Options for configuring how inventory reports are generated.
+     * Structure is documented below.
      * 
      */
     @Import(name="frequencyOptions")
@@ -59,6 +61,7 @@ public final class InsightsReportConfigState extends com.pulumi.resources.Resour
 
     /**
      * @return Options for configuring how inventory reports are generated.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<InsightsReportConfigFrequencyOptionsArgs>> frequencyOptions() {
@@ -69,6 +72,8 @@ public final class InsightsReportConfigState extends com.pulumi.resources.Resour
      * The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
      * must be in the same location.
      * 
+     * ***
+     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
@@ -76,6 +81,8 @@ public final class InsightsReportConfigState extends com.pulumi.resources.Resour
     /**
      * @return The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
      * must be in the same location.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -99,6 +106,7 @@ public final class InsightsReportConfigState extends com.pulumi.resources.Resour
 
     /**
      * Options for including metadata in an inventory report.
+     * Structure is documented below.
      * 
      */
     @Import(name="objectMetadataReportOptions")
@@ -106,15 +114,41 @@ public final class InsightsReportConfigState extends com.pulumi.resources.Resour
 
     /**
      * @return Options for including metadata in an inventory report.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<InsightsReportConfigObjectMetadataReportOptionsArgs>> objectMetadataReportOptions() {
         return Optional.ofNullable(this.objectMetadataReportOptions);
     }
 
+    /**
+     * An option for outputting inventory reports as parquet files.
+     * 
+     */
+    @Import(name="parquetOptions")
+    private @Nullable Output<InsightsReportConfigParquetOptionsArgs> parquetOptions;
+
+    /**
+     * @return An option for outputting inventory reports as parquet files.
+     * 
+     */
+    public Optional<Output<InsightsReportConfigParquetOptionsArgs>> parquetOptions() {
+        return Optional.ofNullable(this.parquetOptions);
+    }
+
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -128,6 +162,7 @@ public final class InsightsReportConfigState extends com.pulumi.resources.Resour
         this.location = $.location;
         this.name = $.name;
         this.objectMetadataReportOptions = $.objectMetadataReportOptions;
+        this.parquetOptions = $.parquetOptions;
         this.project = $.project;
     }
 
@@ -195,6 +230,7 @@ public final class InsightsReportConfigState extends com.pulumi.resources.Resour
 
         /**
          * @param frequencyOptions Options for configuring how inventory reports are generated.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -206,6 +242,7 @@ public final class InsightsReportConfigState extends com.pulumi.resources.Resour
 
         /**
          * @param frequencyOptions Options for configuring how inventory reports are generated.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -218,6 +255,8 @@ public final class InsightsReportConfigState extends com.pulumi.resources.Resour
          * @param location The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
          * must be in the same location.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -229,6 +268,8 @@ public final class InsightsReportConfigState extends com.pulumi.resources.Resour
         /**
          * @param location The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
          * must be in the same location.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -260,6 +301,7 @@ public final class InsightsReportConfigState extends com.pulumi.resources.Resour
 
         /**
          * @param objectMetadataReportOptions Options for including metadata in an inventory report.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -271,6 +313,7 @@ public final class InsightsReportConfigState extends com.pulumi.resources.Resour
 
         /**
          * @param objectMetadataReportOptions Options for including metadata in an inventory report.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -279,11 +322,46 @@ public final class InsightsReportConfigState extends com.pulumi.resources.Resour
             return objectMetadataReportOptions(Output.of(objectMetadataReportOptions));
         }
 
+        /**
+         * @param parquetOptions An option for outputting inventory reports as parquet files.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parquetOptions(@Nullable Output<InsightsReportConfigParquetOptionsArgs> parquetOptions) {
+            $.parquetOptions = parquetOptions;
+            return this;
+        }
+
+        /**
+         * @param parquetOptions An option for outputting inventory reports as parquet files.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parquetOptions(InsightsReportConfigParquetOptionsArgs parquetOptions) {
+            return parquetOptions(Output.of(parquetOptions));
+        }
+
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

@@ -4972,6 +4972,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "eventarc/pipeline",
+  "fqn": "pulumi_gcp.eventarc",
+  "classes": {
+   "gcp:eventarc/pipeline:Pipeline": "Pipeline"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "eventarc/trigger",
   "fqn": "pulumi_gcp.eventarc",
   "classes": {
@@ -5064,6 +5072,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.firebase",
   "classes": {
    "gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig": "AppCheckServiceConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "firebase/appHostingBackend",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/appHostingBackend:AppHostingBackend": "AppHostingBackend"
   }
  },
  {
@@ -6576,6 +6592,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.managedkafka",
   "classes": {
    "gcp:managedkafka/cluster:Cluster": "Cluster"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "managedkafka/connectCluster",
+  "fqn": "pulumi_gcp.managedkafka",
+  "classes": {
+   "gcp:managedkafka/connectCluster:ConnectCluster": "ConnectCluster"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "managedkafka/connector",
+  "fqn": "pulumi_gcp.managedkafka",
+  "classes": {
+   "gcp:managedkafka/connector:Connector": "Connector"
   }
  },
  {

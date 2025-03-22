@@ -187,6 +187,20 @@ public class MetastoreFederation extends com.pulumi.resources.CustomResource {
         return this.backendMetastores;
     }
     /**
+     * Output only. The time when the metastore federation was created.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return Output only. The time when the metastore federation was created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
@@ -341,6 +355,20 @@ public class MetastoreFederation extends com.pulumi.resources.CustomResource {
      */
     public Output<String> uid() {
         return this.uid;
+    }
+    /**
+     * Output only. The time when the metastore federation was last updated.
+     * 
+     */
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    private Output<String> updateTime;
+
+    /**
+     * @return Output only. The time when the metastore federation was last updated.
+     * 
+     */
+    public Output<String> updateTime() {
+        return this.updateTime;
     }
     /**
      * The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.

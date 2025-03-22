@@ -6,6 +6,7 @@ package com.pulumi.gcp.alloydb.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,10 +31,30 @@ public final class ClusterPscConfigArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.pscEnabled);
     }
 
+    /**
+     * (Output)
+     * The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
+     * In case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.
+     * 
+     */
+    @Import(name="serviceOwnedProjectNumber")
+    private @Nullable Output<Integer> serviceOwnedProjectNumber;
+
+    /**
+     * @return (Output)
+     * The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
+     * In case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.
+     * 
+     */
+    public Optional<Output<Integer>> serviceOwnedProjectNumber() {
+        return Optional.ofNullable(this.serviceOwnedProjectNumber);
+    }
+
     private ClusterPscConfigArgs() {}
 
     private ClusterPscConfigArgs(ClusterPscConfigArgs $) {
         this.pscEnabled = $.pscEnabled;
+        this.serviceOwnedProjectNumber = $.serviceOwnedProjectNumber;
     }
 
     public static Builder builder() {
@@ -73,6 +94,31 @@ public final class ClusterPscConfigArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder pscEnabled(Boolean pscEnabled) {
             return pscEnabled(Output.of(pscEnabled));
+        }
+
+        /**
+         * @param serviceOwnedProjectNumber (Output)
+         * The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
+         * In case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceOwnedProjectNumber(@Nullable Output<Integer> serviceOwnedProjectNumber) {
+            $.serviceOwnedProjectNumber = serviceOwnedProjectNumber;
+            return this;
+        }
+
+        /**
+         * @param serviceOwnedProjectNumber (Output)
+         * The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
+         * In case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceOwnedProjectNumber(Integer serviceOwnedProjectNumber) {
+            return serviceOwnedProjectNumber(Output.of(serviceOwnedProjectNumber));
         }
 
         public ClusterPscConfigArgs build() {

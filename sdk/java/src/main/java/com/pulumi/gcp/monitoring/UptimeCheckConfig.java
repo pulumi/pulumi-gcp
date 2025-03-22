@@ -346,7 +346,7 @@ import javax.annotation.Nullable;
  *             .name("synthetic_function")
  *             .location("us-central1")
  *             .buildConfig(FunctionBuildConfigArgs.builder()
- *                 .runtime("nodejs16")
+ *                 .runtime("nodejs20")
  *                 .entryPoint("SyntheticFunction")
  *                 .source(FunctionBuildConfigSourceArgs.builder()
  *                     .storageSource(FunctionBuildConfigSourceStorageSourceArgs.builder()

@@ -641,6 +641,13 @@ namespace Pulumi.Gcp
             set => _firebaseAppCheckCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _firebaseAppHostingCustomEndpoint = new __Value<string?>(() => __config.Get("firebaseAppHostingCustomEndpoint"));
+        public static string? FirebaseAppHostingCustomEndpoint
+        {
+            get => _firebaseAppHostingCustomEndpoint.Get();
+            set => _firebaseAppHostingCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _firebaseCustomEndpoint = new __Value<string?>(() => __config.Get("firebaseCustomEndpoint"));
         public static string? FirebaseCustomEndpoint
         {

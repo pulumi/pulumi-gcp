@@ -449,14 +449,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.engineConfigs);
     }
     /**
-     * Optional. Immutable. Engine version of the instance.
+     * Optional. Engine version of the instance.
      * 
      */
     @Export(name="engineVersion", refs={String.class}, tree="[0]")
     private Output<String> engineVersion;
 
     /**
-     * @return Optional. Immutable. Engine version of the instance.
+     * @return Optional. Engine version of the instance.
      * 
      */
     public Output<String> engineVersion() {

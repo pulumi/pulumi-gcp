@@ -20,8 +20,6 @@ namespace Pulumi.Gcp.Storage.Inputs
 
         /// <summary>
         /// The boolean that indicates whether or not headers are included in the inventory report CSV file.
-        /// 
-        /// - - -
         /// </summary>
         [Input("headerRequired")]
         public Input<bool>? HeaderRequired { get; set; }

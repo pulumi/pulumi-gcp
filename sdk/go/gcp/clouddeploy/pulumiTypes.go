@@ -6792,6 +6792,8 @@ func (o TargetExecutionConfigArrayOutput) Index(i pulumi.IntInput) TargetExecuti
 type TargetGke struct {
 	// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
 	Cluster *string `pulumi:"cluster"`
+	// Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dnsEndpoint` and `internalIp` cannot be set to true.
+	DnsEndpoint *bool `pulumi:"dnsEndpoint"`
 	// Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
 	InternalIp *bool `pulumi:"internalIp"`
 	// Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
@@ -6812,6 +6814,8 @@ type TargetGkeInput interface {
 type TargetGkeArgs struct {
 	// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
 	Cluster pulumi.StringPtrInput `pulumi:"cluster"`
+	// Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dnsEndpoint` and `internalIp` cannot be set to true.
+	DnsEndpoint pulumi.BoolPtrInput `pulumi:"dnsEndpoint"`
 	// Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
 	InternalIp pulumi.BoolPtrInput `pulumi:"internalIp"`
 	// Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
@@ -6900,6 +6904,11 @@ func (o TargetGkeOutput) Cluster() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TargetGke) *string { return v.Cluster }).(pulumi.StringPtrOutput)
 }
 
+// Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dnsEndpoint` and `internalIp` cannot be set to true.
+func (o TargetGkeOutput) DnsEndpoint() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TargetGke) *bool { return v.DnsEndpoint }).(pulumi.BoolPtrOutput)
+}
+
 // Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
 func (o TargetGkeOutput) InternalIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TargetGke) *bool { return v.InternalIp }).(pulumi.BoolPtrOutput)
@@ -6942,6 +6951,16 @@ func (o TargetGkePtrOutput) Cluster() pulumi.StringPtrOutput {
 		}
 		return v.Cluster
 	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dnsEndpoint` and `internalIp` cannot be set to true.
+func (o TargetGkePtrOutput) DnsEndpoint() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TargetGke) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DnsEndpoint
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).

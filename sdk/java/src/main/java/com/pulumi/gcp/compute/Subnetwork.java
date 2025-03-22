@@ -591,6 +591,26 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
+     * it will not appear in get listings. If not set the default behavior is determined by the
+     * org policy, if there is no org policy specified, then it will default to disabled.
+     * This field isn&#39;t supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+     * 
+     */
+    @Export(name="enableFlowLogs", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enableFlowLogs;
+
+    /**
+     * @return Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
+     * it will not appear in get listings. If not set the default behavior is determined by the
+     * org policy, if there is no org policy specified, then it will default to disabled.
+     * This field isn&#39;t supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+     * 
+     */
+    public Output<Boolean> enableFlowLogs() {
+        return this.enableFlowLogs;
+    }
+    /**
      * The range of external IPv6 addresses that are owned by this subnetwork.
      * 
      */
@@ -769,7 +789,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="logConfig", refs={SubnetworkLogConfig.class}, tree="[0]")
-    private Output</* @Nullable */ SubnetworkLogConfig> logConfig;
+    private Output<SubnetworkLogConfig> logConfig;
 
     /**
      * @return This field denotes the VPC flow logging options for this subnetwork. If
@@ -779,8 +799,8 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    public Output<Optional<SubnetworkLogConfig>> logConfig() {
-        return Codegen.optional(this.logConfig);
+    public Output<SubnetworkLogConfig> logConfig() {
+        return this.logConfig;
     }
     /**
      * The name of the resource, provided by the client when initially
@@ -1033,6 +1053,26 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      */
     public Output<String> stackType() {
         return this.stackType;
+    }
+    /**
+     * &#39;The state of the subnetwork, which can be one of the following values:
+     * READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose
+     * set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained.
+     * A subnetwork that is draining cannot be used or modified until it reaches a status of READY&#39;
+     * 
+     */
+    @Export(name="state", refs={String.class}, tree="[0]")
+    private Output<String> state;
+
+    /**
+     * @return &#39;The state of the subnetwork, which can be one of the following values:
+     * READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose
+     * set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained.
+     * A subnetwork that is draining cannot be used or modified until it reaches a status of READY&#39;
+     * 
+     */
+    public Output<String> state() {
+        return this.state;
     }
     /**
      * The unique identifier number for the resource. This identifier is defined by the server.

@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? ClusterDnsDomain;
         /// <summary>
-        /// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+        /// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `cluster_dns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
         /// </summary>
         public readonly string? ClusterDnsScope;
 

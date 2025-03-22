@@ -27,7 +27,7 @@ public final class ClusterDnsConfig {
      */
     private @Nullable String clusterDnsDomain;
     /**
-     * @return The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+     * @return The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `cluster_dns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
      * 
      */
     private @Nullable String clusterDnsScope;
@@ -55,7 +55,7 @@ public final class ClusterDnsConfig {
         return Optional.ofNullable(this.clusterDnsDomain);
     }
     /**
-     * @return The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+     * @return The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `cluster_dns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
      * 
      */
     public Optional<String> clusterDnsScope() {

@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.storage.inputs.InsightsReportConfigCsvOptionsArgs;
 import com.pulumi.gcp.storage.inputs.InsightsReportConfigFrequencyOptionsArgs;
 import com.pulumi.gcp.storage.inputs.InsightsReportConfigObjectMetadataReportOptionsArgs;
+import com.pulumi.gcp.storage.inputs.InsightsReportConfigParquetOptionsArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -24,16 +25,16 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
      * Structure is documented below.
      * 
      */
-    @Import(name="csvOptions", required=true)
-    private Output<InsightsReportConfigCsvOptionsArgs> csvOptions;
+    @Import(name="csvOptions")
+    private @Nullable Output<InsightsReportConfigCsvOptionsArgs> csvOptions;
 
     /**
      * @return Options for configuring the format of the inventory report CSV file.
      * Structure is documented below.
      * 
      */
-    public Output<InsightsReportConfigCsvOptionsArgs> csvOptions() {
-        return this.csvOptions;
+    public Optional<Output<InsightsReportConfigCsvOptionsArgs>> csvOptions() {
+        return Optional.ofNullable(this.csvOptions);
     }
 
     /**
@@ -53,6 +54,7 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
 
     /**
      * Options for configuring how inventory reports are generated.
+     * Structure is documented below.
      * 
      */
     @Import(name="frequencyOptions")
@@ -60,6 +62,7 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return Options for configuring how inventory reports are generated.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<InsightsReportConfigFrequencyOptionsArgs>> frequencyOptions() {
@@ -70,6 +73,8 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
      * The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
      * must be in the same location.
      * 
+     * ***
+     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
@@ -78,6 +83,8 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
      * @return The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
      * must be in the same location.
      * 
+     * ***
+     * 
      */
     public Output<String> location() {
         return this.location;
@@ -85,6 +92,7 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
 
     /**
      * Options for including metadata in an inventory report.
+     * Structure is documented below.
      * 
      */
     @Import(name="objectMetadataReportOptions")
@@ -92,15 +100,41 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return Options for including metadata in an inventory report.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<InsightsReportConfigObjectMetadataReportOptionsArgs>> objectMetadataReportOptions() {
         return Optional.ofNullable(this.objectMetadataReportOptions);
     }
 
+    /**
+     * An option for outputting inventory reports as parquet files.
+     * 
+     */
+    @Import(name="parquetOptions")
+    private @Nullable Output<InsightsReportConfigParquetOptionsArgs> parquetOptions;
+
+    /**
+     * @return An option for outputting inventory reports as parquet files.
+     * 
+     */
+    public Optional<Output<InsightsReportConfigParquetOptionsArgs>> parquetOptions() {
+        return Optional.ofNullable(this.parquetOptions);
+    }
+
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -113,6 +147,7 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
         this.frequencyOptions = $.frequencyOptions;
         this.location = $.location;
         this.objectMetadataReportOptions = $.objectMetadataReportOptions;
+        this.parquetOptions = $.parquetOptions;
         this.project = $.project;
     }
 
@@ -141,7 +176,7 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder csvOptions(Output<InsightsReportConfigCsvOptionsArgs> csvOptions) {
+        public Builder csvOptions(@Nullable Output<InsightsReportConfigCsvOptionsArgs> csvOptions) {
             $.csvOptions = csvOptions;
             return this;
         }
@@ -180,6 +215,7 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param frequencyOptions Options for configuring how inventory reports are generated.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -191,6 +227,7 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param frequencyOptions Options for configuring how inventory reports are generated.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -202,6 +239,8 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
         /**
          * @param location The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
          * must be in the same location.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -215,6 +254,8 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
          * @param location The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
          * must be in the same location.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -224,6 +265,7 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param objectMetadataReportOptions Options for including metadata in an inventory report.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -235,6 +277,7 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param objectMetadataReportOptions Options for including metadata in an inventory report.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -243,19 +286,51 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
             return objectMetadataReportOptions(Output.of(objectMetadataReportOptions));
         }
 
+        /**
+         * @param parquetOptions An option for outputting inventory reports as parquet files.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parquetOptions(@Nullable Output<InsightsReportConfigParquetOptionsArgs> parquetOptions) {
+            $.parquetOptions = parquetOptions;
+            return this;
+        }
+
+        /**
+         * @param parquetOptions An option for outputting inventory reports as parquet files.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parquetOptions(InsightsReportConfigParquetOptionsArgs parquetOptions) {
+            return parquetOptions(Output.of(parquetOptions));
+        }
+
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
         public InsightsReportConfigArgs build() {
-            if ($.csvOptions == null) {
-                throw new MissingRequiredPropertyException("InsightsReportConfigArgs", "csvOptions");
-            }
             if ($.location == null) {
                 throw new MissingRequiredPropertyException("InsightsReportConfigArgs", "location");
             }

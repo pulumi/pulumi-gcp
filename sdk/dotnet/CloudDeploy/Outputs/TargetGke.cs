@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
         /// </summary>
         public readonly string? Cluster;
         /// <summary>
+        /// Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dns_endpoint` and `internal_ip` cannot be set to true.
+        /// </summary>
+        public readonly bool? DnsEndpoint;
+        /// <summary>
         /// Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
         /// </summary>
         public readonly bool? InternalIp;
@@ -30,11 +34,14 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
         private TargetGke(
             string? cluster,
 
+            bool? dnsEndpoint,
+
             bool? internalIp,
 
             string? proxyUrl)
         {
             Cluster = cluster;
+            DnsEndpoint = dnsEndpoint;
             InternalIp = internalIp;
             ProxyUrl = proxyUrl;
         }

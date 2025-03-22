@@ -66,28 +66,27 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			testProject, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			_default, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
-//				Name:     pulumi.String("my-keyring"),
-//				Location: pulumi.String("us-east1"),
-//			})
+//			keyring, err := kms.GetKMSKeyRing(ctx, &kms.GetKMSKeyRingArgs{
+//				Name:     "my-keyring",
+//				Location: "us-east1",
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			cryptokey, err := kms.NewCryptoKey(ctx, "cryptokey", &kms.CryptoKeyArgs{
-//				Name:           pulumi.String("crypto-key-example"),
-//				KeyRing:        keyring.ID(),
-//				RotationPeriod: pulumi.String("7776000s"),
-//			})
+//			cryptokey, err := kms.GetKMSCryptoKey(ctx, &kms.GetKMSCryptoKeyArgs{
+//				Name:    "my-crypto-key",
+//				KeyRing: keyring.Id,
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			testKey, err := kms.NewCryptoKeyVersion(ctx, "test_key", &kms.CryptoKeyVersionArgs{
-//				CryptoKey: cryptokey.ID(),
-//			})
+//			testKey, err := kms.GetKMSCryptoKeyVersion(ctx, &kms.GetKMSCryptoKeyVersionArgs{
+//				CryptoKey: cryptokey.Id,
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -98,28 +97,34 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			invokeBasename, err := std.Basename(ctx, &std.BasenameArgs{
+//				Input: keyring.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeBasename1, err := std.Basename(ctx, &std.BasenameArgs{
+//				Input: cryptokey.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeBasename2, err := std.Basename(ctx, &std.BasenameArgs{
+//				Input: testKey.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			_, err = applicationintegration.NewClient(ctx, "example", &applicationintegration.ClientArgs{
 //				Location:                 pulumi.String("us-east1"),
 //				CreateSampleIntegrations: pulumi.Bool(true),
 //				RunAsServiceAccount:      serviceAccount.Email,
 //				CloudKmsConfig: &applicationintegration.ClientCloudKmsConfigArgs{
-//					KmsLocation: pulumi.String("us-east1"),
-//					KmsRing: std.BasenameOutput(ctx, std.BasenameOutputArgs{
-//						Input: keyring.ID(),
-//					}, nil).ApplyT(func(invoke std.BasenameResult) (*string, error) {
-//						return invoke.Result, nil
-//					}).(pulumi.StringPtrOutput),
-//					Key: std.BasenameOutput(ctx, std.BasenameOutputArgs{
-//						Input: cryptokey.ID(),
-//					}, nil).ApplyT(func(invoke std.BasenameResult) (*string, error) {
-//						return invoke.Result, nil
-//					}).(pulumi.StringPtrOutput),
-//					KeyVersion: std.BasenameOutput(ctx, std.BasenameOutputArgs{
-//						Input: testKey.ID(),
-//					}, nil).ApplyT(func(invoke std.BasenameResult) (*string, error) {
-//						return invoke.Result, nil
-//					}).(pulumi.StringPtrOutput),
-//					KmsProjectId: pulumi.String(testProject.ProjectId),
+//					KmsLocation:  pulumi.String("us-east1"),
+//					KmsRing:      pulumi.String(invokeBasename.Result),
+//					Key:          pulumi.String(invokeBasename1.Result),
+//					KeyVersion:   pulumi.String(invokeBasename2.Result),
+//					KmsProjectId: pulumi.String(_default.ProjectId),
 //				},
 //			})
 //			if err != nil {

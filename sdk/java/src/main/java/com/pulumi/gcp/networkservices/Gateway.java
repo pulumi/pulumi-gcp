@@ -371,18 +371,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:networkservices/gateway:Gateway")
 public class Gateway extends com.pulumi.resources.CustomResource {
     /**
-     * Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
-     * an IP from the subnetwork is allocated This field only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
-     * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0.
+     * Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic.
+     * When no address is provided, an IP from the subnetwork is allocated.
+     * This field only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+     * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 for IPv4 and :: for IPv6.
      * 
      */
     @Export(name="addresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> addresses;
 
     /**
-     * @return Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
-     * an IP from the subnetwork is allocated This field only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
-     * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0.
+     * @return Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic.
+     * When no address is provided, an IP from the subnetwork is allocated.
+     * This field only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+     * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 for IPv4 and :: for IPv6.
      * 
      */
     public Output<List<String>> addresses() {
@@ -405,14 +407,14 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.certificateUrls);
     }
     /**
-     * Time the AccessPolicy was created in UTC.
+     * The timestamp when the resource was created.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Time the AccessPolicy was created in UTC.
+     * @return The timestamp when the resource was created.
      * 
      */
     public Output<String> createTime() {
@@ -463,8 +465,28 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
+     * Determines if envoy will insert internal debug headers into upstream requests.
+     * Other Envoy headers may still be injected.
+     * By default, envoy will not insert any debug headers.
+     * Possible values are: `NONE`, `DEBUG_HEADERS`.
+     * 
+     */
+    @Export(name="envoyHeaders", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> envoyHeaders;
+
+    /**
+     * @return Determines if envoy will insert internal debug headers into upstream requests.
+     * Other Envoy headers may still be injected.
+     * By default, envoy will not insert any debug headers.
+     * Possible values are: `NONE`, `DEBUG_HEADERS`.
+     * 
+     */
+    public Output<Optional<String>> envoyHeaders() {
+        return Codegen.optional(this.envoyHeaders);
+    }
+    /**
      * A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
-     * For example: `projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy`.
+     * For example: &#39;projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy&#39;.
      * This policy is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 
      */
@@ -473,7 +495,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
-     * For example: `projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy`.
+     * For example: &#39;projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy&#39;.
      * This policy is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 
      */
@@ -481,7 +503,24 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.gatewaySecurityPolicy);
     }
     /**
+     * The IP Version that will be used by this gateway.
+     * Possible values are: `IPV4`, `IPV6`.
+     * 
+     */
+    @Export(name="ipVersion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> ipVersion;
+
+    /**
+     * @return The IP Version that will be used by this gateway.
+     * Possible values are: `IPV4`, `IPV6`.
+     * 
+     */
+    public Output<Optional<String>> ipVersion() {
+        return Codegen.optional(this.ipVersion);
+    }
+    /**
      * Set of label tags associated with the Gateway resource.
+     * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -491,6 +530,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Set of label tags associated with the Gateway resource.
+     * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -515,7 +555,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.location);
     }
     /**
-     * Short name of the Gateway resource to be created.
+     * Name of the Gateway resource.
      * 
      * ***
      * 
@@ -524,7 +564,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Short name of the Gateway resource to be created.
+     * @return Name of the Gateway resource.
      * 
      * ***
      * 
@@ -534,7 +574,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
     }
     /**
      * The relative resource name identifying the VPC network that is using this configuration.
-     * For example: `projects/*&#47;global/networks/network-1`.
+     * For example: &#39;projects/*&#47;global/networks/network-1&#39;.
      * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 
      */
@@ -543,7 +583,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The relative resource name identifying the VPC network that is using this configuration.
-     * For example: `projects/*&#47;global/networks/network-1`.
+     * For example: &#39;projects/*&#47;global/networks/network-1&#39;.
      * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 
      */
@@ -552,8 +592,8 @@ public class Gateway extends com.pulumi.resources.CustomResource {
     }
     /**
      * One or more port numbers (1-65535), on which the Gateway will receive traffic.
-     * The proxy binds to the specified ports. Gateways of type &#39;SECURE_WEB_GATEWAY&#39; are
-     * limited to 1 port. Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 and support multiple ports.
+     * The proxy binds to the specified ports. Gateways of type &#39;SECURE_WEB_GATEWAY&#39; are limited to 1 port.
+     * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
      * 
      */
     @Export(name="ports", refs={List.class,Integer.class}, tree="[0,1]")
@@ -561,8 +601,8 @@ public class Gateway extends com.pulumi.resources.CustomResource {
 
     /**
      * @return One or more port numbers (1-65535), on which the Gateway will receive traffic.
-     * The proxy binds to the specified ports. Gateways of type &#39;SECURE_WEB_GATEWAY&#39; are
-     * limited to 1 port. Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 and support multiple ports.
+     * The proxy binds to the specified ports. Gateways of type &#39;SECURE_WEB_GATEWAY&#39; are limited to 1 port.
+     * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
      * 
      */
     public Output<List<Integer>> ports() {
@@ -618,8 +658,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
     }
     /**
      * Immutable. Scope determines how configuration across multiple Gateway instances are merged.
-     * The configuration for multiple Gateway instances with the same scope will be merged as presented as
-     * a single coniguration to the proxy/load balancer.
+     * The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer.
      * Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
      * 
      */
@@ -628,8 +667,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Immutable. Scope determines how configuration across multiple Gateway instances are merged.
-     * The configuration for multiple Gateway instances with the same scope will be merged as presented as
-     * a single coniguration to the proxy/load balancer.
+     * The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer.
      * Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
      * 
      */
@@ -651,16 +689,14 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return this.selfLink;
     }
     /**
-     * A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
-     * If empty, TLS termination is disabled.
+     * A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
      * 
      */
     @Export(name="serverTlsPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serverTlsPolicy;
 
     /**
-     * @return A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
-     * If empty, TLS termination is disabled.
+     * @return A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
      * 
      */
     public Output<Optional<String>> serverTlsPolicy() {
@@ -668,8 +704,8 @@ public class Gateway extends com.pulumi.resources.CustomResource {
     }
     /**
      * The relative resource name identifying the subnetwork in which this SWG is allocated.
-     * For example: `projects/*&#47;regions/us-central1/subnetworks/network-1`.
-     * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY.
+     * For example: projects/*&#47;regions/us-central1/subnetworks/network-1.
+     * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 
      */
     @Export(name="subnetwork", refs={String.class}, tree="[0]")
@@ -677,38 +713,38 @@ public class Gateway extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The relative resource name identifying the subnetwork in which this SWG is allocated.
-     * For example: `projects/*&#47;regions/us-central1/subnetworks/network-1`.
-     * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY.
+     * For example: projects/*&#47;regions/us-central1/subnetworks/network-1.
+     * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 
      */
     public Output<Optional<String>> subnetwork() {
         return Codegen.optional(this.subnetwork);
     }
     /**
-     * Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-     * Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
+     * Immutable. The type of the customer managed gateway.
+     * Possible values are: `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-     * Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
+     * @return Immutable. The type of the customer managed gateway.
+     * Possible values are: `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * Time the AccessPolicy was updated in UTC.
+     * The timestamp when the resource was updated.
      * 
      */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
-     * @return Time the AccessPolicy was updated in UTC.
+     * @return The timestamp when the resource was updated.
      * 
      */
     public Output<String> updateTime() {

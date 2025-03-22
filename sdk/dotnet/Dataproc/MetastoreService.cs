@@ -490,6 +490,12 @@ namespace Pulumi.Gcp.Dataproc
         public Output<string> ArtifactGcsUri { get; private set; } = null!;
 
         /// <summary>
+        /// Output only. The time when the metastore service was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
         /// The database type that the Metastore service stores its data.
         /// Default value is `MYSQL`.
         /// Possible values are: `MYSQL`, `SPANNER`.
@@ -665,6 +671,12 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
+
+        /// <summary>
+        /// Output only. The time when the metastore service was last updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
 
 
         /// <summary>
@@ -872,6 +884,12 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string>? ArtifactGcsUri { get; set; }
 
         /// <summary>
+        /// Output only. The time when the metastore service was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
         /// The database type that the Metastore service stores its data.
         /// Default value is `MYSQL`.
         /// Possible values are: `MYSQL`, `SPANNER`.
@@ -1073,6 +1091,12 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }
+
+        /// <summary>
+        /// Output only. The time when the metastore service was last updated.
+        /// </summary>
+        [Input("updateTime")]
+        public Input<string>? UpdateTime { get; set; }
 
         public MetastoreServiceState()
         {

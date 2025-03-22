@@ -33,17 +33,18 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * import * as std from "@pulumi/std";
  *
- * const testProject = gcp.organizations.getProject({});
- * const keyring = new gcp.kms.KeyRing("keyring", {
+ * const _default = gcp.organizations.getProject({});
+ * const keyring = gcp.kms.getKMSKeyRing({
  *     name: "my-keyring",
  *     location: "us-east1",
  * });
- * const cryptokey = new gcp.kms.CryptoKey("cryptokey", {
- *     name: "crypto-key-example",
+ * const cryptokey = keyring.then(keyring => gcp.kms.getKMSCryptoKey({
+ *     name: "my-crypto-key",
  *     keyRing: keyring.id,
- *     rotationPeriod: "7776000s",
- * });
- * const testKey = new gcp.kms.CryptoKeyVersion("test_key", {cryptoKey: cryptokey.id});
+ * }));
+ * const testKey = cryptokey.then(cryptokey => gcp.kms.getKMSCryptoKeyVersion({
+ *     cryptoKey: cryptokey.id,
+ * }));
  * const serviceAccount = new gcp.serviceaccount.Account("service_account", {
  *     accountId: "service-acc",
  *     displayName: "Service Account",
@@ -54,16 +55,16 @@ import * as utilities from "../utilities";
  *     runAsServiceAccount: serviceAccount.email,
  *     cloudKmsConfig: {
  *         kmsLocation: "us-east1",
- *         kmsRing: std.basenameOutput({
+ *         kmsRing: keyring.then(keyring => std.basename({
  *             input: keyring.id,
- *         }).apply(invoke => invoke.result),
- *         key: std.basenameOutput({
+ *         })).then(invoke => invoke.result),
+ *         key: cryptokey.then(cryptokey => std.basename({
  *             input: cryptokey.id,
- *         }).apply(invoke => invoke.result),
- *         keyVersion: std.basenameOutput({
+ *         })).then(invoke => invoke.result),
+ *         keyVersion: testKey.then(testKey => std.basename({
  *             input: testKey.id,
- *         }).apply(invoke => invoke.result),
- *         kmsProjectId: testProject.then(testProject => testProject.projectId),
+ *         })).then(invoke => invoke.result),
+ *         kmsProjectId: _default.then(_default => _default.projectId),
  *     },
  * });
  * ```
