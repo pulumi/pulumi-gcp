@@ -6767,7 +6767,7 @@ if not MYPY:
         """
         cluster_dns_scope: NotRequired[pulumi.Input[str]]
         """
-        The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+        The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `cluster_dns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
         """
 elif False:
     ClusterDnsConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -6783,7 +6783,7 @@ class ClusterDnsConfigArgs:
         :param pulumi.Input[str] additive_vpc_scope_dns_domain: This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `cluster_dns = "CLOUD_DNS"` and `cluster_dns_scope = "CLUSTER_SCOPE"` must both be set as well.
         :param pulumi.Input[str] cluster_dns: Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
         :param pulumi.Input[str] cluster_dns_domain: The suffix used for all cluster service records.
-        :param pulumi.Input[str] cluster_dns_scope: The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+        :param pulumi.Input[str] cluster_dns_scope: The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `cluster_dns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
         """
         if additive_vpc_scope_dns_domain is not None:
             pulumi.set(__self__, "additive_vpc_scope_dns_domain", additive_vpc_scope_dns_domain)
@@ -6834,7 +6834,7 @@ class ClusterDnsConfigArgs:
     @pulumi.getter(name="clusterDnsScope")
     def cluster_dns_scope(self) -> Optional[pulumi.Input[str]]:
         """
-        The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+        The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `cluster_dns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
         """
         return pulumi.get(self, "cluster_dns_scope")
 

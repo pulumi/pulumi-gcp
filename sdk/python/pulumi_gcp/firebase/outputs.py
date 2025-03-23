@@ -16,6 +16,9 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AppHostingBackendCodebase',
+    'AppHostingBackendManagedResource',
+    'AppHostingBackendManagedResourceRunService',
     'ExtensionsInstanceConfig',
     'ExtensionsInstanceErrorStatus',
     'ExtensionsInstanceRuntimeData',
@@ -41,6 +44,130 @@ __all__ = [
     'HostingVersionConfigRewrite',
     'HostingVersionConfigRewriteRun',
 ]
+
+@pulumi.output_type
+class AppHostingBackendCodebase(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rootDirectory":
+            suggest = "root_directory"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppHostingBackendCodebase. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppHostingBackendCodebase.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppHostingBackendCodebase.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 repository: str,
+                 root_directory: Optional[str] = None):
+        """
+        :param str repository: The resource name for the Developer Connect
+               [`gitRepositoryLink`](https://cloud.google.com/developer-connect/docs/api/reference/rest/v1/projects.locations.connections.gitRepositoryLinks)
+               connected to this backend, in the format:
+               projects/{project}/locations/{location}/connections/{connection}/gitRepositoryLinks/{repositoryLink}
+        :param str root_directory: If `repository` is provided, the directory relative to the root of the
+               repository to use as the root for the deployed web app.
+        """
+        pulumi.set(__self__, "repository", repository)
+        if root_directory is not None:
+            pulumi.set(__self__, "root_directory", root_directory)
+
+    @property
+    @pulumi.getter
+    def repository(self) -> str:
+        """
+        The resource name for the Developer Connect
+        [`gitRepositoryLink`](https://cloud.google.com/developer-connect/docs/api/reference/rest/v1/projects.locations.connections.gitRepositoryLinks)
+        connected to this backend, in the format:
+        projects/{project}/locations/{location}/connections/{connection}/gitRepositoryLinks/{repositoryLink}
+        """
+        return pulumi.get(self, "repository")
+
+    @property
+    @pulumi.getter(name="rootDirectory")
+    def root_directory(self) -> Optional[str]:
+        """
+        If `repository` is provided, the directory relative to the root of the
+        repository to use as the root for the deployed web app.
+        """
+        return pulumi.get(self, "root_directory")
+
+
+@pulumi.output_type
+class AppHostingBackendManagedResource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "runServices":
+            suggest = "run_services"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppHostingBackendManagedResource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppHostingBackendManagedResource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppHostingBackendManagedResource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 run_services: Optional[Sequence['outputs.AppHostingBackendManagedResourceRunService']] = None):
+        """
+        :param Sequence['AppHostingBackendManagedResourceRunServiceArgs'] run_services: (Output)
+               A managed Cloud Run
+               [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service).
+               Structure is documented below.
+        """
+        if run_services is not None:
+            pulumi.set(__self__, "run_services", run_services)
+
+    @property
+    @pulumi.getter(name="runServices")
+    def run_services(self) -> Optional[Sequence['outputs.AppHostingBackendManagedResourceRunService']]:
+        """
+        (Output)
+        A managed Cloud Run
+        [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "run_services")
+
+
+@pulumi.output_type
+class AppHostingBackendManagedResourceRunService(dict):
+    def __init__(__self__, *,
+                 service: Optional[str] = None):
+        """
+        :param str service: (Output)
+               The name of the Cloud Run
+               [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service),
+               in the format:
+               projects/{project}/locations/{location}/services/{serviceId}
+        """
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[str]:
+        """
+        (Output)
+        The name of the Cloud Run
+        [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service),
+        in the format:
+        projects/{project}/locations/{location}/services/{serviceId}
+        """
+        return pulumi.get(self, "service")
+
 
 @pulumi.output_type
 class ExtensionsInstanceConfig(dict):

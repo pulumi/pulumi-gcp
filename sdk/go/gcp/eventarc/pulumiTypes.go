@@ -303,6 +303,3734 @@ func (o MessageBusLoggingConfigPtrOutput) LogSeverity() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type PipelineDestination struct {
+	// Represents a config used to authenticate message requests.
+	// Structure is documented below.
+	AuthenticationConfig *PipelineDestinationAuthenticationConfig `pulumi:"authenticationConfig"`
+	// Represents a HTTP endpoint destination.
+	// Structure is documented below.
+	HttpEndpoint *PipelineDestinationHttpEndpoint `pulumi:"httpEndpoint"`
+	// The resource name of the Message Bus to which events should be
+	// published. The Message Bus resource should exist in the same project as
+	// the Pipeline. Format:
+	// `projects/{project}/locations/{location}/messageBuses/{message_bus}`
+	MessageBus *string `pulumi:"messageBus"`
+	// Represents a network config to be used for destination resolution and
+	// connectivity.
+	// Structure is documented below.
+	NetworkConfig *PipelineDestinationNetworkConfig `pulumi:"networkConfig"`
+	// Represents the format of message data.
+	// Structure is documented below.
+	OutputPayloadFormat *PipelineDestinationOutputPayloadFormat `pulumi:"outputPayloadFormat"`
+	// The resource name of the Pub/Sub topic to which events should be
+	// published. Format:
+	// `projects/{project}/locations/{location}/topics/{topic}`
+	Topic *string `pulumi:"topic"`
+	// The resource name of the Workflow whose Executions are triggered by
+	// the events. The Workflow resource should be deployed in the same
+	// project as the Pipeline. Format:
+	// `projects/{project}/locations/{location}/workflows/{workflow}`
+	Workflow *string `pulumi:"workflow"`
+}
+
+// PipelineDestinationInput is an input type that accepts PipelineDestinationArgs and PipelineDestinationOutput values.
+// You can construct a concrete instance of `PipelineDestinationInput` via:
+//
+//	PipelineDestinationArgs{...}
+type PipelineDestinationInput interface {
+	pulumi.Input
+
+	ToPipelineDestinationOutput() PipelineDestinationOutput
+	ToPipelineDestinationOutputWithContext(context.Context) PipelineDestinationOutput
+}
+
+type PipelineDestinationArgs struct {
+	// Represents a config used to authenticate message requests.
+	// Structure is documented below.
+	AuthenticationConfig PipelineDestinationAuthenticationConfigPtrInput `pulumi:"authenticationConfig"`
+	// Represents a HTTP endpoint destination.
+	// Structure is documented below.
+	HttpEndpoint PipelineDestinationHttpEndpointPtrInput `pulumi:"httpEndpoint"`
+	// The resource name of the Message Bus to which events should be
+	// published. The Message Bus resource should exist in the same project as
+	// the Pipeline. Format:
+	// `projects/{project}/locations/{location}/messageBuses/{message_bus}`
+	MessageBus pulumi.StringPtrInput `pulumi:"messageBus"`
+	// Represents a network config to be used for destination resolution and
+	// connectivity.
+	// Structure is documented below.
+	NetworkConfig PipelineDestinationNetworkConfigPtrInput `pulumi:"networkConfig"`
+	// Represents the format of message data.
+	// Structure is documented below.
+	OutputPayloadFormat PipelineDestinationOutputPayloadFormatPtrInput `pulumi:"outputPayloadFormat"`
+	// The resource name of the Pub/Sub topic to which events should be
+	// published. Format:
+	// `projects/{project}/locations/{location}/topics/{topic}`
+	Topic pulumi.StringPtrInput `pulumi:"topic"`
+	// The resource name of the Workflow whose Executions are triggered by
+	// the events. The Workflow resource should be deployed in the same
+	// project as the Pipeline. Format:
+	// `projects/{project}/locations/{location}/workflows/{workflow}`
+	Workflow pulumi.StringPtrInput `pulumi:"workflow"`
+}
+
+func (PipelineDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineDestination)(nil)).Elem()
+}
+
+func (i PipelineDestinationArgs) ToPipelineDestinationOutput() PipelineDestinationOutput {
+	return i.ToPipelineDestinationOutputWithContext(context.Background())
+}
+
+func (i PipelineDestinationArgs) ToPipelineDestinationOutputWithContext(ctx context.Context) PipelineDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationOutput)
+}
+
+// PipelineDestinationArrayInput is an input type that accepts PipelineDestinationArray and PipelineDestinationArrayOutput values.
+// You can construct a concrete instance of `PipelineDestinationArrayInput` via:
+//
+//	PipelineDestinationArray{ PipelineDestinationArgs{...} }
+type PipelineDestinationArrayInput interface {
+	pulumi.Input
+
+	ToPipelineDestinationArrayOutput() PipelineDestinationArrayOutput
+	ToPipelineDestinationArrayOutputWithContext(context.Context) PipelineDestinationArrayOutput
+}
+
+type PipelineDestinationArray []PipelineDestinationInput
+
+func (PipelineDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineDestination)(nil)).Elem()
+}
+
+func (i PipelineDestinationArray) ToPipelineDestinationArrayOutput() PipelineDestinationArrayOutput {
+	return i.ToPipelineDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i PipelineDestinationArray) ToPipelineDestinationArrayOutputWithContext(ctx context.Context) PipelineDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationArrayOutput)
+}
+
+type PipelineDestinationOutput struct{ *pulumi.OutputState }
+
+func (PipelineDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineDestination)(nil)).Elem()
+}
+
+func (o PipelineDestinationOutput) ToPipelineDestinationOutput() PipelineDestinationOutput {
+	return o
+}
+
+func (o PipelineDestinationOutput) ToPipelineDestinationOutputWithContext(ctx context.Context) PipelineDestinationOutput {
+	return o
+}
+
+// Represents a config used to authenticate message requests.
+// Structure is documented below.
+func (o PipelineDestinationOutput) AuthenticationConfig() PipelineDestinationAuthenticationConfigPtrOutput {
+	return o.ApplyT(func(v PipelineDestination) *PipelineDestinationAuthenticationConfig { return v.AuthenticationConfig }).(PipelineDestinationAuthenticationConfigPtrOutput)
+}
+
+// Represents a HTTP endpoint destination.
+// Structure is documented below.
+func (o PipelineDestinationOutput) HttpEndpoint() PipelineDestinationHttpEndpointPtrOutput {
+	return o.ApplyT(func(v PipelineDestination) *PipelineDestinationHttpEndpoint { return v.HttpEndpoint }).(PipelineDestinationHttpEndpointPtrOutput)
+}
+
+// The resource name of the Message Bus to which events should be
+// published. The Message Bus resource should exist in the same project as
+// the Pipeline. Format:
+// `projects/{project}/locations/{location}/messageBuses/{message_bus}`
+func (o PipelineDestinationOutput) MessageBus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineDestination) *string { return v.MessageBus }).(pulumi.StringPtrOutput)
+}
+
+// Represents a network config to be used for destination resolution and
+// connectivity.
+// Structure is documented below.
+func (o PipelineDestinationOutput) NetworkConfig() PipelineDestinationNetworkConfigPtrOutput {
+	return o.ApplyT(func(v PipelineDestination) *PipelineDestinationNetworkConfig { return v.NetworkConfig }).(PipelineDestinationNetworkConfigPtrOutput)
+}
+
+// Represents the format of message data.
+// Structure is documented below.
+func (o PipelineDestinationOutput) OutputPayloadFormat() PipelineDestinationOutputPayloadFormatPtrOutput {
+	return o.ApplyT(func(v PipelineDestination) *PipelineDestinationOutputPayloadFormat { return v.OutputPayloadFormat }).(PipelineDestinationOutputPayloadFormatPtrOutput)
+}
+
+// The resource name of the Pub/Sub topic to which events should be
+// published. Format:
+// `projects/{project}/locations/{location}/topics/{topic}`
+func (o PipelineDestinationOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineDestination) *string { return v.Topic }).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Workflow whose Executions are triggered by
+// the events. The Workflow resource should be deployed in the same
+// project as the Pipeline. Format:
+// `projects/{project}/locations/{location}/workflows/{workflow}`
+func (o PipelineDestinationOutput) Workflow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineDestination) *string { return v.Workflow }).(pulumi.StringPtrOutput)
+}
+
+type PipelineDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (PipelineDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineDestination)(nil)).Elem()
+}
+
+func (o PipelineDestinationArrayOutput) ToPipelineDestinationArrayOutput() PipelineDestinationArrayOutput {
+	return o
+}
+
+func (o PipelineDestinationArrayOutput) ToPipelineDestinationArrayOutputWithContext(ctx context.Context) PipelineDestinationArrayOutput {
+	return o
+}
+
+func (o PipelineDestinationArrayOutput) Index(i pulumi.IntInput) PipelineDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineDestination {
+		return vs[0].([]PipelineDestination)[vs[1].(int)]
+	}).(PipelineDestinationOutput)
+}
+
+type PipelineDestinationAuthenticationConfig struct {
+	// Represents a config used to authenticate with a Google OIDC token using
+	// a GCP service account. Use this authentication method to invoke your
+	// Cloud Run and Cloud Functions destinations or HTTP endpoints that
+	// support Google OIDC.
+	// Structure is documented below.
+	GoogleOidc *PipelineDestinationAuthenticationConfigGoogleOidc `pulumi:"googleOidc"`
+	// Contains information needed for generating an
+	// [OAuth token](https://developers.google.com/identity/protocols/OAuth2).
+	// This type of authorization should generally only be used when calling
+	// Google APIs hosted on *.googleapis.com.
+	// Structure is documented below.
+	OauthToken *PipelineDestinationAuthenticationConfigOauthToken `pulumi:"oauthToken"`
+}
+
+// PipelineDestinationAuthenticationConfigInput is an input type that accepts PipelineDestinationAuthenticationConfigArgs and PipelineDestinationAuthenticationConfigOutput values.
+// You can construct a concrete instance of `PipelineDestinationAuthenticationConfigInput` via:
+//
+//	PipelineDestinationAuthenticationConfigArgs{...}
+type PipelineDestinationAuthenticationConfigInput interface {
+	pulumi.Input
+
+	ToPipelineDestinationAuthenticationConfigOutput() PipelineDestinationAuthenticationConfigOutput
+	ToPipelineDestinationAuthenticationConfigOutputWithContext(context.Context) PipelineDestinationAuthenticationConfigOutput
+}
+
+type PipelineDestinationAuthenticationConfigArgs struct {
+	// Represents a config used to authenticate with a Google OIDC token using
+	// a GCP service account. Use this authentication method to invoke your
+	// Cloud Run and Cloud Functions destinations or HTTP endpoints that
+	// support Google OIDC.
+	// Structure is documented below.
+	GoogleOidc PipelineDestinationAuthenticationConfigGoogleOidcPtrInput `pulumi:"googleOidc"`
+	// Contains information needed for generating an
+	// [OAuth token](https://developers.google.com/identity/protocols/OAuth2).
+	// This type of authorization should generally only be used when calling
+	// Google APIs hosted on *.googleapis.com.
+	// Structure is documented below.
+	OauthToken PipelineDestinationAuthenticationConfigOauthTokenPtrInput `pulumi:"oauthToken"`
+}
+
+func (PipelineDestinationAuthenticationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineDestinationAuthenticationConfig)(nil)).Elem()
+}
+
+func (i PipelineDestinationAuthenticationConfigArgs) ToPipelineDestinationAuthenticationConfigOutput() PipelineDestinationAuthenticationConfigOutput {
+	return i.ToPipelineDestinationAuthenticationConfigOutputWithContext(context.Background())
+}
+
+func (i PipelineDestinationAuthenticationConfigArgs) ToPipelineDestinationAuthenticationConfigOutputWithContext(ctx context.Context) PipelineDestinationAuthenticationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationAuthenticationConfigOutput)
+}
+
+func (i PipelineDestinationAuthenticationConfigArgs) ToPipelineDestinationAuthenticationConfigPtrOutput() PipelineDestinationAuthenticationConfigPtrOutput {
+	return i.ToPipelineDestinationAuthenticationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineDestinationAuthenticationConfigArgs) ToPipelineDestinationAuthenticationConfigPtrOutputWithContext(ctx context.Context) PipelineDestinationAuthenticationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationAuthenticationConfigOutput).ToPipelineDestinationAuthenticationConfigPtrOutputWithContext(ctx)
+}
+
+// PipelineDestinationAuthenticationConfigPtrInput is an input type that accepts PipelineDestinationAuthenticationConfigArgs, PipelineDestinationAuthenticationConfigPtr and PipelineDestinationAuthenticationConfigPtrOutput values.
+// You can construct a concrete instance of `PipelineDestinationAuthenticationConfigPtrInput` via:
+//
+//	        PipelineDestinationAuthenticationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineDestinationAuthenticationConfigPtrInput interface {
+	pulumi.Input
+
+	ToPipelineDestinationAuthenticationConfigPtrOutput() PipelineDestinationAuthenticationConfigPtrOutput
+	ToPipelineDestinationAuthenticationConfigPtrOutputWithContext(context.Context) PipelineDestinationAuthenticationConfigPtrOutput
+}
+
+type pipelineDestinationAuthenticationConfigPtrType PipelineDestinationAuthenticationConfigArgs
+
+func PipelineDestinationAuthenticationConfigPtr(v *PipelineDestinationAuthenticationConfigArgs) PipelineDestinationAuthenticationConfigPtrInput {
+	return (*pipelineDestinationAuthenticationConfigPtrType)(v)
+}
+
+func (*pipelineDestinationAuthenticationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineDestinationAuthenticationConfig)(nil)).Elem()
+}
+
+func (i *pipelineDestinationAuthenticationConfigPtrType) ToPipelineDestinationAuthenticationConfigPtrOutput() PipelineDestinationAuthenticationConfigPtrOutput {
+	return i.ToPipelineDestinationAuthenticationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineDestinationAuthenticationConfigPtrType) ToPipelineDestinationAuthenticationConfigPtrOutputWithContext(ctx context.Context) PipelineDestinationAuthenticationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationAuthenticationConfigPtrOutput)
+}
+
+type PipelineDestinationAuthenticationConfigOutput struct{ *pulumi.OutputState }
+
+func (PipelineDestinationAuthenticationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineDestinationAuthenticationConfig)(nil)).Elem()
+}
+
+func (o PipelineDestinationAuthenticationConfigOutput) ToPipelineDestinationAuthenticationConfigOutput() PipelineDestinationAuthenticationConfigOutput {
+	return o
+}
+
+func (o PipelineDestinationAuthenticationConfigOutput) ToPipelineDestinationAuthenticationConfigOutputWithContext(ctx context.Context) PipelineDestinationAuthenticationConfigOutput {
+	return o
+}
+
+func (o PipelineDestinationAuthenticationConfigOutput) ToPipelineDestinationAuthenticationConfigPtrOutput() PipelineDestinationAuthenticationConfigPtrOutput {
+	return o.ToPipelineDestinationAuthenticationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineDestinationAuthenticationConfigOutput) ToPipelineDestinationAuthenticationConfigPtrOutputWithContext(ctx context.Context) PipelineDestinationAuthenticationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineDestinationAuthenticationConfig) *PipelineDestinationAuthenticationConfig {
+		return &v
+	}).(PipelineDestinationAuthenticationConfigPtrOutput)
+}
+
+// Represents a config used to authenticate with a Google OIDC token using
+// a GCP service account. Use this authentication method to invoke your
+// Cloud Run and Cloud Functions destinations or HTTP endpoints that
+// support Google OIDC.
+// Structure is documented below.
+func (o PipelineDestinationAuthenticationConfigOutput) GoogleOidc() PipelineDestinationAuthenticationConfigGoogleOidcPtrOutput {
+	return o.ApplyT(func(v PipelineDestinationAuthenticationConfig) *PipelineDestinationAuthenticationConfigGoogleOidc {
+		return v.GoogleOidc
+	}).(PipelineDestinationAuthenticationConfigGoogleOidcPtrOutput)
+}
+
+// Contains information needed for generating an
+// [OAuth token](https://developers.google.com/identity/protocols/OAuth2).
+// This type of authorization should generally only be used when calling
+// Google APIs hosted on *.googleapis.com.
+// Structure is documented below.
+func (o PipelineDestinationAuthenticationConfigOutput) OauthToken() PipelineDestinationAuthenticationConfigOauthTokenPtrOutput {
+	return o.ApplyT(func(v PipelineDestinationAuthenticationConfig) *PipelineDestinationAuthenticationConfigOauthToken {
+		return v.OauthToken
+	}).(PipelineDestinationAuthenticationConfigOauthTokenPtrOutput)
+}
+
+type PipelineDestinationAuthenticationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineDestinationAuthenticationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineDestinationAuthenticationConfig)(nil)).Elem()
+}
+
+func (o PipelineDestinationAuthenticationConfigPtrOutput) ToPipelineDestinationAuthenticationConfigPtrOutput() PipelineDestinationAuthenticationConfigPtrOutput {
+	return o
+}
+
+func (o PipelineDestinationAuthenticationConfigPtrOutput) ToPipelineDestinationAuthenticationConfigPtrOutputWithContext(ctx context.Context) PipelineDestinationAuthenticationConfigPtrOutput {
+	return o
+}
+
+func (o PipelineDestinationAuthenticationConfigPtrOutput) Elem() PipelineDestinationAuthenticationConfigOutput {
+	return o.ApplyT(func(v *PipelineDestinationAuthenticationConfig) PipelineDestinationAuthenticationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineDestinationAuthenticationConfig
+		return ret
+	}).(PipelineDestinationAuthenticationConfigOutput)
+}
+
+// Represents a config used to authenticate with a Google OIDC token using
+// a GCP service account. Use this authentication method to invoke your
+// Cloud Run and Cloud Functions destinations or HTTP endpoints that
+// support Google OIDC.
+// Structure is documented below.
+func (o PipelineDestinationAuthenticationConfigPtrOutput) GoogleOidc() PipelineDestinationAuthenticationConfigGoogleOidcPtrOutput {
+	return o.ApplyT(func(v *PipelineDestinationAuthenticationConfig) *PipelineDestinationAuthenticationConfigGoogleOidc {
+		if v == nil {
+			return nil
+		}
+		return v.GoogleOidc
+	}).(PipelineDestinationAuthenticationConfigGoogleOidcPtrOutput)
+}
+
+// Contains information needed for generating an
+// [OAuth token](https://developers.google.com/identity/protocols/OAuth2).
+// This type of authorization should generally only be used when calling
+// Google APIs hosted on *.googleapis.com.
+// Structure is documented below.
+func (o PipelineDestinationAuthenticationConfigPtrOutput) OauthToken() PipelineDestinationAuthenticationConfigOauthTokenPtrOutput {
+	return o.ApplyT(func(v *PipelineDestinationAuthenticationConfig) *PipelineDestinationAuthenticationConfigOauthToken {
+		if v == nil {
+			return nil
+		}
+		return v.OauthToken
+	}).(PipelineDestinationAuthenticationConfigOauthTokenPtrOutput)
+}
+
+type PipelineDestinationAuthenticationConfigGoogleOidc struct {
+	// Audience to be used to generate the OIDC Token. The audience claim
+	// identifies the recipient that the JWT is intended for. If
+	// unspecified, the destination URI will be used.
+	Audience *string `pulumi:"audience"`
+	// Service account email used to generate the OIDC Token.
+	// The principal who calls this API must have
+	// iam.serviceAccounts.actAs permission in the service account. See
+	// https://cloud.google.com/iam/docs/understanding-service-accounts
+	// for more information. Eventarc service agents must have
+	// roles/roles/iam.serviceAccountTokenCreator role to allow the
+	// Pipeline to create OpenID tokens for authenticated requests.
+	ServiceAccount string `pulumi:"serviceAccount"`
+}
+
+// PipelineDestinationAuthenticationConfigGoogleOidcInput is an input type that accepts PipelineDestinationAuthenticationConfigGoogleOidcArgs and PipelineDestinationAuthenticationConfigGoogleOidcOutput values.
+// You can construct a concrete instance of `PipelineDestinationAuthenticationConfigGoogleOidcInput` via:
+//
+//	PipelineDestinationAuthenticationConfigGoogleOidcArgs{...}
+type PipelineDestinationAuthenticationConfigGoogleOidcInput interface {
+	pulumi.Input
+
+	ToPipelineDestinationAuthenticationConfigGoogleOidcOutput() PipelineDestinationAuthenticationConfigGoogleOidcOutput
+	ToPipelineDestinationAuthenticationConfigGoogleOidcOutputWithContext(context.Context) PipelineDestinationAuthenticationConfigGoogleOidcOutput
+}
+
+type PipelineDestinationAuthenticationConfigGoogleOidcArgs struct {
+	// Audience to be used to generate the OIDC Token. The audience claim
+	// identifies the recipient that the JWT is intended for. If
+	// unspecified, the destination URI will be used.
+	Audience pulumi.StringPtrInput `pulumi:"audience"`
+	// Service account email used to generate the OIDC Token.
+	// The principal who calls this API must have
+	// iam.serviceAccounts.actAs permission in the service account. See
+	// https://cloud.google.com/iam/docs/understanding-service-accounts
+	// for more information. Eventarc service agents must have
+	// roles/roles/iam.serviceAccountTokenCreator role to allow the
+	// Pipeline to create OpenID tokens for authenticated requests.
+	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
+}
+
+func (PipelineDestinationAuthenticationConfigGoogleOidcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineDestinationAuthenticationConfigGoogleOidc)(nil)).Elem()
+}
+
+func (i PipelineDestinationAuthenticationConfigGoogleOidcArgs) ToPipelineDestinationAuthenticationConfigGoogleOidcOutput() PipelineDestinationAuthenticationConfigGoogleOidcOutput {
+	return i.ToPipelineDestinationAuthenticationConfigGoogleOidcOutputWithContext(context.Background())
+}
+
+func (i PipelineDestinationAuthenticationConfigGoogleOidcArgs) ToPipelineDestinationAuthenticationConfigGoogleOidcOutputWithContext(ctx context.Context) PipelineDestinationAuthenticationConfigGoogleOidcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationAuthenticationConfigGoogleOidcOutput)
+}
+
+func (i PipelineDestinationAuthenticationConfigGoogleOidcArgs) ToPipelineDestinationAuthenticationConfigGoogleOidcPtrOutput() PipelineDestinationAuthenticationConfigGoogleOidcPtrOutput {
+	return i.ToPipelineDestinationAuthenticationConfigGoogleOidcPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineDestinationAuthenticationConfigGoogleOidcArgs) ToPipelineDestinationAuthenticationConfigGoogleOidcPtrOutputWithContext(ctx context.Context) PipelineDestinationAuthenticationConfigGoogleOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationAuthenticationConfigGoogleOidcOutput).ToPipelineDestinationAuthenticationConfigGoogleOidcPtrOutputWithContext(ctx)
+}
+
+// PipelineDestinationAuthenticationConfigGoogleOidcPtrInput is an input type that accepts PipelineDestinationAuthenticationConfigGoogleOidcArgs, PipelineDestinationAuthenticationConfigGoogleOidcPtr and PipelineDestinationAuthenticationConfigGoogleOidcPtrOutput values.
+// You can construct a concrete instance of `PipelineDestinationAuthenticationConfigGoogleOidcPtrInput` via:
+//
+//	        PipelineDestinationAuthenticationConfigGoogleOidcArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineDestinationAuthenticationConfigGoogleOidcPtrInput interface {
+	pulumi.Input
+
+	ToPipelineDestinationAuthenticationConfigGoogleOidcPtrOutput() PipelineDestinationAuthenticationConfigGoogleOidcPtrOutput
+	ToPipelineDestinationAuthenticationConfigGoogleOidcPtrOutputWithContext(context.Context) PipelineDestinationAuthenticationConfigGoogleOidcPtrOutput
+}
+
+type pipelineDestinationAuthenticationConfigGoogleOidcPtrType PipelineDestinationAuthenticationConfigGoogleOidcArgs
+
+func PipelineDestinationAuthenticationConfigGoogleOidcPtr(v *PipelineDestinationAuthenticationConfigGoogleOidcArgs) PipelineDestinationAuthenticationConfigGoogleOidcPtrInput {
+	return (*pipelineDestinationAuthenticationConfigGoogleOidcPtrType)(v)
+}
+
+func (*pipelineDestinationAuthenticationConfigGoogleOidcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineDestinationAuthenticationConfigGoogleOidc)(nil)).Elem()
+}
+
+func (i *pipelineDestinationAuthenticationConfigGoogleOidcPtrType) ToPipelineDestinationAuthenticationConfigGoogleOidcPtrOutput() PipelineDestinationAuthenticationConfigGoogleOidcPtrOutput {
+	return i.ToPipelineDestinationAuthenticationConfigGoogleOidcPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineDestinationAuthenticationConfigGoogleOidcPtrType) ToPipelineDestinationAuthenticationConfigGoogleOidcPtrOutputWithContext(ctx context.Context) PipelineDestinationAuthenticationConfigGoogleOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationAuthenticationConfigGoogleOidcPtrOutput)
+}
+
+type PipelineDestinationAuthenticationConfigGoogleOidcOutput struct{ *pulumi.OutputState }
+
+func (PipelineDestinationAuthenticationConfigGoogleOidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineDestinationAuthenticationConfigGoogleOidc)(nil)).Elem()
+}
+
+func (o PipelineDestinationAuthenticationConfigGoogleOidcOutput) ToPipelineDestinationAuthenticationConfigGoogleOidcOutput() PipelineDestinationAuthenticationConfigGoogleOidcOutput {
+	return o
+}
+
+func (o PipelineDestinationAuthenticationConfigGoogleOidcOutput) ToPipelineDestinationAuthenticationConfigGoogleOidcOutputWithContext(ctx context.Context) PipelineDestinationAuthenticationConfigGoogleOidcOutput {
+	return o
+}
+
+func (o PipelineDestinationAuthenticationConfigGoogleOidcOutput) ToPipelineDestinationAuthenticationConfigGoogleOidcPtrOutput() PipelineDestinationAuthenticationConfigGoogleOidcPtrOutput {
+	return o.ToPipelineDestinationAuthenticationConfigGoogleOidcPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineDestinationAuthenticationConfigGoogleOidcOutput) ToPipelineDestinationAuthenticationConfigGoogleOidcPtrOutputWithContext(ctx context.Context) PipelineDestinationAuthenticationConfigGoogleOidcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineDestinationAuthenticationConfigGoogleOidc) *PipelineDestinationAuthenticationConfigGoogleOidc {
+		return &v
+	}).(PipelineDestinationAuthenticationConfigGoogleOidcPtrOutput)
+}
+
+// Audience to be used to generate the OIDC Token. The audience claim
+// identifies the recipient that the JWT is intended for. If
+// unspecified, the destination URI will be used.
+func (o PipelineDestinationAuthenticationConfigGoogleOidcOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineDestinationAuthenticationConfigGoogleOidc) *string { return v.Audience }).(pulumi.StringPtrOutput)
+}
+
+// Service account email used to generate the OIDC Token.
+// The principal who calls this API must have
+// iam.serviceAccounts.actAs permission in the service account. See
+// https://cloud.google.com/iam/docs/understanding-service-accounts
+// for more information. Eventarc service agents must have
+// roles/roles/iam.serviceAccountTokenCreator role to allow the
+// Pipeline to create OpenID tokens for authenticated requests.
+func (o PipelineDestinationAuthenticationConfigGoogleOidcOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineDestinationAuthenticationConfigGoogleOidc) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+type PipelineDestinationAuthenticationConfigGoogleOidcPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineDestinationAuthenticationConfigGoogleOidcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineDestinationAuthenticationConfigGoogleOidc)(nil)).Elem()
+}
+
+func (o PipelineDestinationAuthenticationConfigGoogleOidcPtrOutput) ToPipelineDestinationAuthenticationConfigGoogleOidcPtrOutput() PipelineDestinationAuthenticationConfigGoogleOidcPtrOutput {
+	return o
+}
+
+func (o PipelineDestinationAuthenticationConfigGoogleOidcPtrOutput) ToPipelineDestinationAuthenticationConfigGoogleOidcPtrOutputWithContext(ctx context.Context) PipelineDestinationAuthenticationConfigGoogleOidcPtrOutput {
+	return o
+}
+
+func (o PipelineDestinationAuthenticationConfigGoogleOidcPtrOutput) Elem() PipelineDestinationAuthenticationConfigGoogleOidcOutput {
+	return o.ApplyT(func(v *PipelineDestinationAuthenticationConfigGoogleOidc) PipelineDestinationAuthenticationConfigGoogleOidc {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineDestinationAuthenticationConfigGoogleOidc
+		return ret
+	}).(PipelineDestinationAuthenticationConfigGoogleOidcOutput)
+}
+
+// Audience to be used to generate the OIDC Token. The audience claim
+// identifies the recipient that the JWT is intended for. If
+// unspecified, the destination URI will be used.
+func (o PipelineDestinationAuthenticationConfigGoogleOidcPtrOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineDestinationAuthenticationConfigGoogleOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Audience
+	}).(pulumi.StringPtrOutput)
+}
+
+// Service account email used to generate the OIDC Token.
+// The principal who calls this API must have
+// iam.serviceAccounts.actAs permission in the service account. See
+// https://cloud.google.com/iam/docs/understanding-service-accounts
+// for more information. Eventarc service agents must have
+// roles/roles/iam.serviceAccountTokenCreator role to allow the
+// Pipeline to create OpenID tokens for authenticated requests.
+func (o PipelineDestinationAuthenticationConfigGoogleOidcPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineDestinationAuthenticationConfigGoogleOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+type PipelineDestinationAuthenticationConfigOauthToken struct {
+	// OAuth scope to be used for generating OAuth access token. If not
+	// specified, "https://www.googleapis.com/auth/cloud-platform" will be
+	// used.
+	Scope *string `pulumi:"scope"`
+	// Service account email used to generate the [OAuth
+	// token](https://developers.google.com/identity/protocols/OAuth2).
+	// The principal who calls this API must have
+	// iam.serviceAccounts.actAs permission in the service account. See
+	// https://cloud.google.com/iam/docs/understanding-service-accounts
+	// for more information. Eventarc service agents must have
+	// roles/roles/iam.serviceAccountTokenCreator role to allow Pipeline
+	// to create OAuth2 tokens for authenticated requests.
+	ServiceAccount string `pulumi:"serviceAccount"`
+}
+
+// PipelineDestinationAuthenticationConfigOauthTokenInput is an input type that accepts PipelineDestinationAuthenticationConfigOauthTokenArgs and PipelineDestinationAuthenticationConfigOauthTokenOutput values.
+// You can construct a concrete instance of `PipelineDestinationAuthenticationConfigOauthTokenInput` via:
+//
+//	PipelineDestinationAuthenticationConfigOauthTokenArgs{...}
+type PipelineDestinationAuthenticationConfigOauthTokenInput interface {
+	pulumi.Input
+
+	ToPipelineDestinationAuthenticationConfigOauthTokenOutput() PipelineDestinationAuthenticationConfigOauthTokenOutput
+	ToPipelineDestinationAuthenticationConfigOauthTokenOutputWithContext(context.Context) PipelineDestinationAuthenticationConfigOauthTokenOutput
+}
+
+type PipelineDestinationAuthenticationConfigOauthTokenArgs struct {
+	// OAuth scope to be used for generating OAuth access token. If not
+	// specified, "https://www.googleapis.com/auth/cloud-platform" will be
+	// used.
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+	// Service account email used to generate the [OAuth
+	// token](https://developers.google.com/identity/protocols/OAuth2).
+	// The principal who calls this API must have
+	// iam.serviceAccounts.actAs permission in the service account. See
+	// https://cloud.google.com/iam/docs/understanding-service-accounts
+	// for more information. Eventarc service agents must have
+	// roles/roles/iam.serviceAccountTokenCreator role to allow Pipeline
+	// to create OAuth2 tokens for authenticated requests.
+	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
+}
+
+func (PipelineDestinationAuthenticationConfigOauthTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineDestinationAuthenticationConfigOauthToken)(nil)).Elem()
+}
+
+func (i PipelineDestinationAuthenticationConfigOauthTokenArgs) ToPipelineDestinationAuthenticationConfigOauthTokenOutput() PipelineDestinationAuthenticationConfigOauthTokenOutput {
+	return i.ToPipelineDestinationAuthenticationConfigOauthTokenOutputWithContext(context.Background())
+}
+
+func (i PipelineDestinationAuthenticationConfigOauthTokenArgs) ToPipelineDestinationAuthenticationConfigOauthTokenOutputWithContext(ctx context.Context) PipelineDestinationAuthenticationConfigOauthTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationAuthenticationConfigOauthTokenOutput)
+}
+
+func (i PipelineDestinationAuthenticationConfigOauthTokenArgs) ToPipelineDestinationAuthenticationConfigOauthTokenPtrOutput() PipelineDestinationAuthenticationConfigOauthTokenPtrOutput {
+	return i.ToPipelineDestinationAuthenticationConfigOauthTokenPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineDestinationAuthenticationConfigOauthTokenArgs) ToPipelineDestinationAuthenticationConfigOauthTokenPtrOutputWithContext(ctx context.Context) PipelineDestinationAuthenticationConfigOauthTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationAuthenticationConfigOauthTokenOutput).ToPipelineDestinationAuthenticationConfigOauthTokenPtrOutputWithContext(ctx)
+}
+
+// PipelineDestinationAuthenticationConfigOauthTokenPtrInput is an input type that accepts PipelineDestinationAuthenticationConfigOauthTokenArgs, PipelineDestinationAuthenticationConfigOauthTokenPtr and PipelineDestinationAuthenticationConfigOauthTokenPtrOutput values.
+// You can construct a concrete instance of `PipelineDestinationAuthenticationConfigOauthTokenPtrInput` via:
+//
+//	        PipelineDestinationAuthenticationConfigOauthTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineDestinationAuthenticationConfigOauthTokenPtrInput interface {
+	pulumi.Input
+
+	ToPipelineDestinationAuthenticationConfigOauthTokenPtrOutput() PipelineDestinationAuthenticationConfigOauthTokenPtrOutput
+	ToPipelineDestinationAuthenticationConfigOauthTokenPtrOutputWithContext(context.Context) PipelineDestinationAuthenticationConfigOauthTokenPtrOutput
+}
+
+type pipelineDestinationAuthenticationConfigOauthTokenPtrType PipelineDestinationAuthenticationConfigOauthTokenArgs
+
+func PipelineDestinationAuthenticationConfigOauthTokenPtr(v *PipelineDestinationAuthenticationConfigOauthTokenArgs) PipelineDestinationAuthenticationConfigOauthTokenPtrInput {
+	return (*pipelineDestinationAuthenticationConfigOauthTokenPtrType)(v)
+}
+
+func (*pipelineDestinationAuthenticationConfigOauthTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineDestinationAuthenticationConfigOauthToken)(nil)).Elem()
+}
+
+func (i *pipelineDestinationAuthenticationConfigOauthTokenPtrType) ToPipelineDestinationAuthenticationConfigOauthTokenPtrOutput() PipelineDestinationAuthenticationConfigOauthTokenPtrOutput {
+	return i.ToPipelineDestinationAuthenticationConfigOauthTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineDestinationAuthenticationConfigOauthTokenPtrType) ToPipelineDestinationAuthenticationConfigOauthTokenPtrOutputWithContext(ctx context.Context) PipelineDestinationAuthenticationConfigOauthTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationAuthenticationConfigOauthTokenPtrOutput)
+}
+
+type PipelineDestinationAuthenticationConfigOauthTokenOutput struct{ *pulumi.OutputState }
+
+func (PipelineDestinationAuthenticationConfigOauthTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineDestinationAuthenticationConfigOauthToken)(nil)).Elem()
+}
+
+func (o PipelineDestinationAuthenticationConfigOauthTokenOutput) ToPipelineDestinationAuthenticationConfigOauthTokenOutput() PipelineDestinationAuthenticationConfigOauthTokenOutput {
+	return o
+}
+
+func (o PipelineDestinationAuthenticationConfigOauthTokenOutput) ToPipelineDestinationAuthenticationConfigOauthTokenOutputWithContext(ctx context.Context) PipelineDestinationAuthenticationConfigOauthTokenOutput {
+	return o
+}
+
+func (o PipelineDestinationAuthenticationConfigOauthTokenOutput) ToPipelineDestinationAuthenticationConfigOauthTokenPtrOutput() PipelineDestinationAuthenticationConfigOauthTokenPtrOutput {
+	return o.ToPipelineDestinationAuthenticationConfigOauthTokenPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineDestinationAuthenticationConfigOauthTokenOutput) ToPipelineDestinationAuthenticationConfigOauthTokenPtrOutputWithContext(ctx context.Context) PipelineDestinationAuthenticationConfigOauthTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineDestinationAuthenticationConfigOauthToken) *PipelineDestinationAuthenticationConfigOauthToken {
+		return &v
+	}).(PipelineDestinationAuthenticationConfigOauthTokenPtrOutput)
+}
+
+// OAuth scope to be used for generating OAuth access token. If not
+// specified, "https://www.googleapis.com/auth/cloud-platform" will be
+// used.
+func (o PipelineDestinationAuthenticationConfigOauthTokenOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineDestinationAuthenticationConfigOauthToken) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// Service account email used to generate the [OAuth
+// token](https://developers.google.com/identity/protocols/OAuth2).
+// The principal who calls this API must have
+// iam.serviceAccounts.actAs permission in the service account. See
+// https://cloud.google.com/iam/docs/understanding-service-accounts
+// for more information. Eventarc service agents must have
+// roles/roles/iam.serviceAccountTokenCreator role to allow Pipeline
+// to create OAuth2 tokens for authenticated requests.
+func (o PipelineDestinationAuthenticationConfigOauthTokenOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineDestinationAuthenticationConfigOauthToken) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+type PipelineDestinationAuthenticationConfigOauthTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineDestinationAuthenticationConfigOauthTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineDestinationAuthenticationConfigOauthToken)(nil)).Elem()
+}
+
+func (o PipelineDestinationAuthenticationConfigOauthTokenPtrOutput) ToPipelineDestinationAuthenticationConfigOauthTokenPtrOutput() PipelineDestinationAuthenticationConfigOauthTokenPtrOutput {
+	return o
+}
+
+func (o PipelineDestinationAuthenticationConfigOauthTokenPtrOutput) ToPipelineDestinationAuthenticationConfigOauthTokenPtrOutputWithContext(ctx context.Context) PipelineDestinationAuthenticationConfigOauthTokenPtrOutput {
+	return o
+}
+
+func (o PipelineDestinationAuthenticationConfigOauthTokenPtrOutput) Elem() PipelineDestinationAuthenticationConfigOauthTokenOutput {
+	return o.ApplyT(func(v *PipelineDestinationAuthenticationConfigOauthToken) PipelineDestinationAuthenticationConfigOauthToken {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineDestinationAuthenticationConfigOauthToken
+		return ret
+	}).(PipelineDestinationAuthenticationConfigOauthTokenOutput)
+}
+
+// OAuth scope to be used for generating OAuth access token. If not
+// specified, "https://www.googleapis.com/auth/cloud-platform" will be
+// used.
+func (o PipelineDestinationAuthenticationConfigOauthTokenPtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineDestinationAuthenticationConfigOauthToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(pulumi.StringPtrOutput)
+}
+
+// Service account email used to generate the [OAuth
+// token](https://developers.google.com/identity/protocols/OAuth2).
+// The principal who calls this API must have
+// iam.serviceAccounts.actAs permission in the service account. See
+// https://cloud.google.com/iam/docs/understanding-service-accounts
+// for more information. Eventarc service agents must have
+// roles/roles/iam.serviceAccountTokenCreator role to allow Pipeline
+// to create OAuth2 tokens for authenticated requests.
+func (o PipelineDestinationAuthenticationConfigOauthTokenPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineDestinationAuthenticationConfigOauthToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+type PipelineDestinationHttpEndpoint struct {
+	// The CEL expression used to modify how the destination-bound HTTP
+	// request is constructed.
+	// If a binding expression is not specified here, the message
+	// is treated as a CloudEvent and is mapped to the HTTP request according
+	// to the CloudEvent HTTP Protocol Binding Binary Content Mode
+	// (https://github.com/cloudevents/spec/blob/main/cloudevents/bindings/http-protocol-binding.md#31-binary-content-mode).
+	// In this representation, all fields except the `data` and
+	// `datacontenttype` field on the message are mapped to HTTP request
+	// headers with a prefix of `ce-`.
+	// To construct the HTTP request payload and the value of the content-type
+	// HTTP header, the payload format is defined as follows:
+	// 1) Use the outputPayloadFormatType on the Pipeline.Destination if it
+	//    is set, else:
+	// 2) Use the inputPayloadFormatType on the Pipeline if it is set,
+	//    else:
+	// 3) Treat the payload as opaque binary data.
+	//    The `data` field of the message is converted to the payload format or
+	//    left as-is for case 3) and then attached as the payload of the HTTP
+	//    request. The `content-type` header on the HTTP request is set to the
+	//    payload format type or left empty for case 3). However, if a mediation
+	//    has updated the `datacontenttype` field on the message so that it is
+	//    not the same as the payload format type but it is still a prefix of the
+	//    payload format type, then the `content-type` header on the HTTP request
+	//    is set to this `datacontenttype` value. For example, if the
+	//    `datacontenttype` is "application/json" and the payload format type is
+	//    "application/json; charset=utf-8", then the `content-type` header on
+	//    the HTTP request is set to "application/json; charset=utf-8".
+	//    If a non-empty binding expression is specified then this expression is
+	//    used to modify the default CloudEvent HTTP Protocol Binding Binary
+	//    Content representation.
+	//    The result of the CEL expression must be a map of key/value pairs
+	//    which is used as follows:
+	// - If a map named `headers` exists on the result of the expression,
+	//   then its key/value pairs are directly mapped to the HTTP request
+	//   headers. The headers values are constructed from the corresponding
+	//   value type's canonical representation. If the `headers` field doesn't
+	//   exist then the resulting HTTP request will be the headers of the
+	//   CloudEvent HTTP Binding Binary Content Mode representation of the final
+	//   message. Note: If the specified binding expression, has updated the
+	//   `datacontenttype` field on the message so that it is not the same as
+	//   the payload format type but it is still a prefix of the payload format
+	//   type, then the `content-type` header in the `headers` map is set to
+	//   this `datacontenttype` value.
+	// - If a field named `body` exists on the result of the expression then
+	//   its value is directly mapped to the body of the request. If the value
+	//   of the `body` field is of type bytes or string then it is used for
+	//   the HTTP request body as-is, with no conversion. If the body field is
+	//   of any other type then it is converted to a JSON string. If the body
+	//   field does not exist then the resulting payload of the HTTP request
+	//   will be data value of the CloudEvent HTTP Binding Binary Content Mode
+	//   representation of the final message as described earlier.
+	// - Any other fields in the resulting expression will be ignored.
+	//   The CEL expression may access the incoming CloudEvent message in its
+	//   definition, as follows:
+	// - The `data` field of the incoming CloudEvent message can be accessed
+	//   using the `message.data` value. Subfields of `message.data` may also be
+	//   accessed if an inputPayloadFormat has been specified on the Pipeline.
+	// - Each attribute of the incoming CloudEvent message can be accessed
+	//   using the `message.` value, where  is replaced with the
+	//   name of the attribute.
+	// - Existing headers can be accessed in the CEL expression using the
+	//   `headers` variable. The `headers` variable defines a map of key/value
+	//   pairs corresponding to the HTTP headers of the CloudEvent HTTP Binding
+	//   Binary Content Mode representation of the final message as described
+	//   earlier. For example, the following CEL expression can be used to
+	//   construct an HTTP request by adding an additional header to the HTTP
+	//   headers of the CloudEvent HTTP Binding Binary Content Mode
+	//   representation of the final message and by overwriting the body of the
+	//   request:
+	// - The default binding for the message payload can be accessed using the
+	//   `body` variable. It conatins a string representation of the message
+	//   payload in the format specified by the `outputPayloadFormat` field.
+	//   If the `inputPayloadFormat` field is not set, the `body`
+	//   variable contains the same message payload bytes that were published.
+	//   Additionally, the following CEL extension functions are provided for
+	//   use in this CEL expression:
+	// - toBase64Url:
+	//   map.toBase64Url() > string
+	// - Converts a CelValue to a base64url encoded string
+	// - toJsonString: map.toJsonString() > string
+	// - Converts a CelValue to a JSON string
+	// - merge:
+	//   map1.merge(map2) > map3
+	// - Merges the passed CEL map with the existing CEL map the
+	//   function is applied to.
+	// - If the same key exists in both maps, if the key's value is type
+	//   map both maps are merged else the value from the passed map is
+	//   used.
+	// - denormalize:
+	//   map.denormalize() > map
+	// - Denormalizes a CEL map such that every value of type map or key
+	//   in the map is expanded to return a single level map.
+	// - The resulting keys are "." separated indices of the map keys.
+	// - For example:
+	//   {
+	//   "a": 1,
+	//   "b": {
+	//   "c": 2,
+	//   "d": 3
+	//   }
+	//   "e": [4, 5]
+	//   }
+	//   .denormalize()
+	// > {
+	// "a": 1,
+	// "b.c": 2,
+	// "b.d": 3,
+	// "e.0": 4,
+	// "e.1": 5
+	// }
+	// - setField:
+	//   map.setField(key, value) > message
+	// - Sets the field of the message with the given key to the
+	//   given value.
+	// - If the field is not present it will be added.
+	// - If the field is present it will be overwritten.
+	// - The key can be a dot separated path to set a field in a nested
+	//   message.
+	// - Key must be of type string.
+	// - Value may be any valid type.
+	// - removeFields:
+	//   map.removeFields([key1, key2, ...]) > message
+	// - Removes the fields of the map with the given keys.
+	// - The keys can be a dot separated path to remove a field in a
+	//   nested message.
+	// - If a key is not found it will be ignored.
+	// - Keys must be of type string.
+	// - toMap:
+	//   [map1, map2, ...].toMap() > map
+	// - Converts a CEL list of CEL maps to a single CEL map
+	// - toCloudEventJsonWithPayloadFormat:
+	//   message.toCloudEventJsonWithPayloadFormat() > map
+	// - Converts a message to the corresponding structure of JSON
+	//   format for CloudEvents.
+	// - It converts `data` to destination payload format
+	//   specified in `outputPayloadFormat`. If `outputPayloadFormat` is
+	//   not set, the data will remain unchanged.
+	// - It also sets the corresponding datacontenttype of
+	//   the CloudEvent, as indicated by
+	//   `outputPayloadFormat`. If no
+	//   `outputPayloadFormat` is set it will use the value of the
+	//   "datacontenttype" attribute on the CloudEvent if present, else
+	//   remove "datacontenttype" attribute.
+	// - This function expects that the content of the message will
+	//   adhere to the standard CloudEvent format. If it doesn't then this
+	//   function will fail.
+	// - The result is a CEL map that corresponds to the JSON
+	//   representation of the CloudEvent. To convert that data to a JSON
+	//   string it can be chained with the toJsonString function.
+	//   The Pipeline expects that the message it receives adheres to the
+	//   standard CloudEvent format. If it doesn't then the outgoing message
+	//   request may fail with a persistent error.
+	//
+	// ***
+	MessageBindingTemplate *string `pulumi:"messageBindingTemplate"`
+	// The URI of the HTTP enpdoint.
+	// The value must be a RFC2396 URI string.
+	// Examples: `https://svc.us-central1.p.local:8080/route`.
+	// Only the HTTPS protocol is supported.
+	Uri string `pulumi:"uri"`
+}
+
+// PipelineDestinationHttpEndpointInput is an input type that accepts PipelineDestinationHttpEndpointArgs and PipelineDestinationHttpEndpointOutput values.
+// You can construct a concrete instance of `PipelineDestinationHttpEndpointInput` via:
+//
+//	PipelineDestinationHttpEndpointArgs{...}
+type PipelineDestinationHttpEndpointInput interface {
+	pulumi.Input
+
+	ToPipelineDestinationHttpEndpointOutput() PipelineDestinationHttpEndpointOutput
+	ToPipelineDestinationHttpEndpointOutputWithContext(context.Context) PipelineDestinationHttpEndpointOutput
+}
+
+type PipelineDestinationHttpEndpointArgs struct {
+	// The CEL expression used to modify how the destination-bound HTTP
+	// request is constructed.
+	// If a binding expression is not specified here, the message
+	// is treated as a CloudEvent and is mapped to the HTTP request according
+	// to the CloudEvent HTTP Protocol Binding Binary Content Mode
+	// (https://github.com/cloudevents/spec/blob/main/cloudevents/bindings/http-protocol-binding.md#31-binary-content-mode).
+	// In this representation, all fields except the `data` and
+	// `datacontenttype` field on the message are mapped to HTTP request
+	// headers with a prefix of `ce-`.
+	// To construct the HTTP request payload and the value of the content-type
+	// HTTP header, the payload format is defined as follows:
+	// 1) Use the outputPayloadFormatType on the Pipeline.Destination if it
+	//    is set, else:
+	// 2) Use the inputPayloadFormatType on the Pipeline if it is set,
+	//    else:
+	// 3) Treat the payload as opaque binary data.
+	//    The `data` field of the message is converted to the payload format or
+	//    left as-is for case 3) and then attached as the payload of the HTTP
+	//    request. The `content-type` header on the HTTP request is set to the
+	//    payload format type or left empty for case 3). However, if a mediation
+	//    has updated the `datacontenttype` field on the message so that it is
+	//    not the same as the payload format type but it is still a prefix of the
+	//    payload format type, then the `content-type` header on the HTTP request
+	//    is set to this `datacontenttype` value. For example, if the
+	//    `datacontenttype` is "application/json" and the payload format type is
+	//    "application/json; charset=utf-8", then the `content-type` header on
+	//    the HTTP request is set to "application/json; charset=utf-8".
+	//    If a non-empty binding expression is specified then this expression is
+	//    used to modify the default CloudEvent HTTP Protocol Binding Binary
+	//    Content representation.
+	//    The result of the CEL expression must be a map of key/value pairs
+	//    which is used as follows:
+	// - If a map named `headers` exists on the result of the expression,
+	//   then its key/value pairs are directly mapped to the HTTP request
+	//   headers. The headers values are constructed from the corresponding
+	//   value type's canonical representation. If the `headers` field doesn't
+	//   exist then the resulting HTTP request will be the headers of the
+	//   CloudEvent HTTP Binding Binary Content Mode representation of the final
+	//   message. Note: If the specified binding expression, has updated the
+	//   `datacontenttype` field on the message so that it is not the same as
+	//   the payload format type but it is still a prefix of the payload format
+	//   type, then the `content-type` header in the `headers` map is set to
+	//   this `datacontenttype` value.
+	// - If a field named `body` exists on the result of the expression then
+	//   its value is directly mapped to the body of the request. If the value
+	//   of the `body` field is of type bytes or string then it is used for
+	//   the HTTP request body as-is, with no conversion. If the body field is
+	//   of any other type then it is converted to a JSON string. If the body
+	//   field does not exist then the resulting payload of the HTTP request
+	//   will be data value of the CloudEvent HTTP Binding Binary Content Mode
+	//   representation of the final message as described earlier.
+	// - Any other fields in the resulting expression will be ignored.
+	//   The CEL expression may access the incoming CloudEvent message in its
+	//   definition, as follows:
+	// - The `data` field of the incoming CloudEvent message can be accessed
+	//   using the `message.data` value. Subfields of `message.data` may also be
+	//   accessed if an inputPayloadFormat has been specified on the Pipeline.
+	// - Each attribute of the incoming CloudEvent message can be accessed
+	//   using the `message.` value, where  is replaced with the
+	//   name of the attribute.
+	// - Existing headers can be accessed in the CEL expression using the
+	//   `headers` variable. The `headers` variable defines a map of key/value
+	//   pairs corresponding to the HTTP headers of the CloudEvent HTTP Binding
+	//   Binary Content Mode representation of the final message as described
+	//   earlier. For example, the following CEL expression can be used to
+	//   construct an HTTP request by adding an additional header to the HTTP
+	//   headers of the CloudEvent HTTP Binding Binary Content Mode
+	//   representation of the final message and by overwriting the body of the
+	//   request:
+	// - The default binding for the message payload can be accessed using the
+	//   `body` variable. It conatins a string representation of the message
+	//   payload in the format specified by the `outputPayloadFormat` field.
+	//   If the `inputPayloadFormat` field is not set, the `body`
+	//   variable contains the same message payload bytes that were published.
+	//   Additionally, the following CEL extension functions are provided for
+	//   use in this CEL expression:
+	// - toBase64Url:
+	//   map.toBase64Url() > string
+	// - Converts a CelValue to a base64url encoded string
+	// - toJsonString: map.toJsonString() > string
+	// - Converts a CelValue to a JSON string
+	// - merge:
+	//   map1.merge(map2) > map3
+	// - Merges the passed CEL map with the existing CEL map the
+	//   function is applied to.
+	// - If the same key exists in both maps, if the key's value is type
+	//   map both maps are merged else the value from the passed map is
+	//   used.
+	// - denormalize:
+	//   map.denormalize() > map
+	// - Denormalizes a CEL map such that every value of type map or key
+	//   in the map is expanded to return a single level map.
+	// - The resulting keys are "." separated indices of the map keys.
+	// - For example:
+	//   {
+	//   "a": 1,
+	//   "b": {
+	//   "c": 2,
+	//   "d": 3
+	//   }
+	//   "e": [4, 5]
+	//   }
+	//   .denormalize()
+	// > {
+	// "a": 1,
+	// "b.c": 2,
+	// "b.d": 3,
+	// "e.0": 4,
+	// "e.1": 5
+	// }
+	// - setField:
+	//   map.setField(key, value) > message
+	// - Sets the field of the message with the given key to the
+	//   given value.
+	// - If the field is not present it will be added.
+	// - If the field is present it will be overwritten.
+	// - The key can be a dot separated path to set a field in a nested
+	//   message.
+	// - Key must be of type string.
+	// - Value may be any valid type.
+	// - removeFields:
+	//   map.removeFields([key1, key2, ...]) > message
+	// - Removes the fields of the map with the given keys.
+	// - The keys can be a dot separated path to remove a field in a
+	//   nested message.
+	// - If a key is not found it will be ignored.
+	// - Keys must be of type string.
+	// - toMap:
+	//   [map1, map2, ...].toMap() > map
+	// - Converts a CEL list of CEL maps to a single CEL map
+	// - toCloudEventJsonWithPayloadFormat:
+	//   message.toCloudEventJsonWithPayloadFormat() > map
+	// - Converts a message to the corresponding structure of JSON
+	//   format for CloudEvents.
+	// - It converts `data` to destination payload format
+	//   specified in `outputPayloadFormat`. If `outputPayloadFormat` is
+	//   not set, the data will remain unchanged.
+	// - It also sets the corresponding datacontenttype of
+	//   the CloudEvent, as indicated by
+	//   `outputPayloadFormat`. If no
+	//   `outputPayloadFormat` is set it will use the value of the
+	//   "datacontenttype" attribute on the CloudEvent if present, else
+	//   remove "datacontenttype" attribute.
+	// - This function expects that the content of the message will
+	//   adhere to the standard CloudEvent format. If it doesn't then this
+	//   function will fail.
+	// - The result is a CEL map that corresponds to the JSON
+	//   representation of the CloudEvent. To convert that data to a JSON
+	//   string it can be chained with the toJsonString function.
+	//   The Pipeline expects that the message it receives adheres to the
+	//   standard CloudEvent format. If it doesn't then the outgoing message
+	//   request may fail with a persistent error.
+	//
+	// ***
+	MessageBindingTemplate pulumi.StringPtrInput `pulumi:"messageBindingTemplate"`
+	// The URI of the HTTP enpdoint.
+	// The value must be a RFC2396 URI string.
+	// Examples: `https://svc.us-central1.p.local:8080/route`.
+	// Only the HTTPS protocol is supported.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (PipelineDestinationHttpEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineDestinationHttpEndpoint)(nil)).Elem()
+}
+
+func (i PipelineDestinationHttpEndpointArgs) ToPipelineDestinationHttpEndpointOutput() PipelineDestinationHttpEndpointOutput {
+	return i.ToPipelineDestinationHttpEndpointOutputWithContext(context.Background())
+}
+
+func (i PipelineDestinationHttpEndpointArgs) ToPipelineDestinationHttpEndpointOutputWithContext(ctx context.Context) PipelineDestinationHttpEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationHttpEndpointOutput)
+}
+
+func (i PipelineDestinationHttpEndpointArgs) ToPipelineDestinationHttpEndpointPtrOutput() PipelineDestinationHttpEndpointPtrOutput {
+	return i.ToPipelineDestinationHttpEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineDestinationHttpEndpointArgs) ToPipelineDestinationHttpEndpointPtrOutputWithContext(ctx context.Context) PipelineDestinationHttpEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationHttpEndpointOutput).ToPipelineDestinationHttpEndpointPtrOutputWithContext(ctx)
+}
+
+// PipelineDestinationHttpEndpointPtrInput is an input type that accepts PipelineDestinationHttpEndpointArgs, PipelineDestinationHttpEndpointPtr and PipelineDestinationHttpEndpointPtrOutput values.
+// You can construct a concrete instance of `PipelineDestinationHttpEndpointPtrInput` via:
+//
+//	        PipelineDestinationHttpEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineDestinationHttpEndpointPtrInput interface {
+	pulumi.Input
+
+	ToPipelineDestinationHttpEndpointPtrOutput() PipelineDestinationHttpEndpointPtrOutput
+	ToPipelineDestinationHttpEndpointPtrOutputWithContext(context.Context) PipelineDestinationHttpEndpointPtrOutput
+}
+
+type pipelineDestinationHttpEndpointPtrType PipelineDestinationHttpEndpointArgs
+
+func PipelineDestinationHttpEndpointPtr(v *PipelineDestinationHttpEndpointArgs) PipelineDestinationHttpEndpointPtrInput {
+	return (*pipelineDestinationHttpEndpointPtrType)(v)
+}
+
+func (*pipelineDestinationHttpEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineDestinationHttpEndpoint)(nil)).Elem()
+}
+
+func (i *pipelineDestinationHttpEndpointPtrType) ToPipelineDestinationHttpEndpointPtrOutput() PipelineDestinationHttpEndpointPtrOutput {
+	return i.ToPipelineDestinationHttpEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineDestinationHttpEndpointPtrType) ToPipelineDestinationHttpEndpointPtrOutputWithContext(ctx context.Context) PipelineDestinationHttpEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationHttpEndpointPtrOutput)
+}
+
+type PipelineDestinationHttpEndpointOutput struct{ *pulumi.OutputState }
+
+func (PipelineDestinationHttpEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineDestinationHttpEndpoint)(nil)).Elem()
+}
+
+func (o PipelineDestinationHttpEndpointOutput) ToPipelineDestinationHttpEndpointOutput() PipelineDestinationHttpEndpointOutput {
+	return o
+}
+
+func (o PipelineDestinationHttpEndpointOutput) ToPipelineDestinationHttpEndpointOutputWithContext(ctx context.Context) PipelineDestinationHttpEndpointOutput {
+	return o
+}
+
+func (o PipelineDestinationHttpEndpointOutput) ToPipelineDestinationHttpEndpointPtrOutput() PipelineDestinationHttpEndpointPtrOutput {
+	return o.ToPipelineDestinationHttpEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineDestinationHttpEndpointOutput) ToPipelineDestinationHttpEndpointPtrOutputWithContext(ctx context.Context) PipelineDestinationHttpEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineDestinationHttpEndpoint) *PipelineDestinationHttpEndpoint {
+		return &v
+	}).(PipelineDestinationHttpEndpointPtrOutput)
+}
+
+// The CEL expression used to modify how the destination-bound HTTP
+// request is constructed.
+// If a binding expression is not specified here, the message
+// is treated as a CloudEvent and is mapped to the HTTP request according
+// to the CloudEvent HTTP Protocol Binding Binary Content Mode
+// (https://github.com/cloudevents/spec/blob/main/cloudevents/bindings/http-protocol-binding.md#31-binary-content-mode).
+// In this representation, all fields except the `data` and
+// `datacontenttype` field on the message are mapped to HTTP request
+// headers with a prefix of `ce-`.
+// To construct the HTTP request payload and the value of the content-type
+// HTTP header, the payload format is defined as follows:
+//  1. Use the outputPayloadFormatType on the Pipeline.Destination if it
+//     is set, else:
+//  2. Use the inputPayloadFormatType on the Pipeline if it is set,
+//     else:
+//  3. Treat the payload as opaque binary data.
+//     The `data` field of the message is converted to the payload format or
+//     left as-is for case 3) and then attached as the payload of the HTTP
+//     request. The `content-type` header on the HTTP request is set to the
+//     payload format type or left empty for case 3). However, if a mediation
+//     has updated the `datacontenttype` field on the message so that it is
+//     not the same as the payload format type but it is still a prefix of the
+//     payload format type, then the `content-type` header on the HTTP request
+//     is set to this `datacontenttype` value. For example, if the
+//     `datacontenttype` is "application/json" and the payload format type is
+//     "application/json; charset=utf-8", then the `content-type` header on
+//     the HTTP request is set to "application/json; charset=utf-8".
+//     If a non-empty binding expression is specified then this expression is
+//     used to modify the default CloudEvent HTTP Protocol Binding Binary
+//     Content representation.
+//     The result of the CEL expression must be a map of key/value pairs
+//     which is used as follows:
+//     - If a map named `headers` exists on the result of the expression,
+//     then its key/value pairs are directly mapped to the HTTP request
+//     headers. The headers values are constructed from the corresponding
+//     value type's canonical representation. If the `headers` field doesn't
+//     exist then the resulting HTTP request will be the headers of the
+//     CloudEvent HTTP Binding Binary Content Mode representation of the final
+//     message. Note: If the specified binding expression, has updated the
+//     `datacontenttype` field on the message so that it is not the same as
+//     the payload format type but it is still a prefix of the payload format
+//     type, then the `content-type` header in the `headers` map is set to
+//     this `datacontenttype` value.
+//     - If a field named `body` exists on the result of the expression then
+//     its value is directly mapped to the body of the request. If the value
+//     of the `body` field is of type bytes or string then it is used for
+//     the HTTP request body as-is, with no conversion. If the body field is
+//     of any other type then it is converted to a JSON string. If the body
+//     field does not exist then the resulting payload of the HTTP request
+//     will be data value of the CloudEvent HTTP Binding Binary Content Mode
+//     representation of the final message as described earlier.
+//     - Any other fields in the resulting expression will be ignored.
+//     The CEL expression may access the incoming CloudEvent message in its
+//     definition, as follows:
+//     - The `data` field of the incoming CloudEvent message can be accessed
+//     using the `message.data` value. Subfields of `message.data` may also be
+//     accessed if an inputPayloadFormat has been specified on the Pipeline.
+//     - Each attribute of the incoming CloudEvent message can be accessed
+//     using the `message.` value, where  is replaced with the
+//     name of the attribute.
+//     - Existing headers can be accessed in the CEL expression using the
+//     `headers` variable. The `headers` variable defines a map of key/value
+//     pairs corresponding to the HTTP headers of the CloudEvent HTTP Binding
+//     Binary Content Mode representation of the final message as described
+//     earlier. For example, the following CEL expression can be used to
+//     construct an HTTP request by adding an additional header to the HTTP
+//     headers of the CloudEvent HTTP Binding Binary Content Mode
+//     representation of the final message and by overwriting the body of the
+//     request:
+//     - The default binding for the message payload can be accessed using the
+//     `body` variable. It conatins a string representation of the message
+//     payload in the format specified by the `outputPayloadFormat` field.
+//     If the `inputPayloadFormat` field is not set, the `body`
+//     variable contains the same message payload bytes that were published.
+//     Additionally, the following CEL extension functions are provided for
+//     use in this CEL expression:
+//     - toBase64Url:
+//     map.toBase64Url() > string
+//     - Converts a CelValue to a base64url encoded string
+//     - toJsonString: map.toJsonString() > string
+//     - Converts a CelValue to a JSON string
+//     - merge:
+//     map1.merge(map2) > map3
+//     - Merges the passed CEL map with the existing CEL map the
+//     function is applied to.
+//     - If the same key exists in both maps, if the key's value is type
+//     map both maps are merged else the value from the passed map is
+//     used.
+//     - denormalize:
+//     map.denormalize() > map
+//     - Denormalizes a CEL map such that every value of type map or key
+//     in the map is expanded to return a single level map.
+//     - The resulting keys are "." separated indices of the map keys.
+//     - For example:
+//     {
+//     "a": 1,
+//     "b": {
+//     "c": 2,
+//     "d": 3
+//     }
+//     "e": [4, 5]
+//     }
+//     .denormalize()
+//
+// > {
+// "a": 1,
+// "b.c": 2,
+// "b.d": 3,
+// "e.0": 4,
+// "e.1": 5
+// }
+//   - setField:
+//     map.setField(key, value) > message
+//   - Sets the field of the message with the given key to the
+//     given value.
+//   - If the field is not present it will be added.
+//   - If the field is present it will be overwritten.
+//   - The key can be a dot separated path to set a field in a nested
+//     message.
+//   - Key must be of type string.
+//   - Value may be any valid type.
+//   - removeFields:
+//     map.removeFields([key1, key2, ...]) > message
+//   - Removes the fields of the map with the given keys.
+//   - The keys can be a dot separated path to remove a field in a
+//     nested message.
+//   - If a key is not found it will be ignored.
+//   - Keys must be of type string.
+//   - toMap:
+//     [map1, map2, ...].toMap() > map
+//   - Converts a CEL list of CEL maps to a single CEL map
+//   - toCloudEventJsonWithPayloadFormat:
+//     message.toCloudEventJsonWithPayloadFormat() > map
+//   - Converts a message to the corresponding structure of JSON
+//     format for CloudEvents.
+//   - It converts `data` to destination payload format
+//     specified in `outputPayloadFormat`. If `outputPayloadFormat` is
+//     not set, the data will remain unchanged.
+//   - It also sets the corresponding datacontenttype of
+//     the CloudEvent, as indicated by
+//     `outputPayloadFormat`. If no
+//     `outputPayloadFormat` is set it will use the value of the
+//     "datacontenttype" attribute on the CloudEvent if present, else
+//     remove "datacontenttype" attribute.
+//   - This function expects that the content of the message will
+//     adhere to the standard CloudEvent format. If it doesn't then this
+//     function will fail.
+//   - The result is a CEL map that corresponds to the JSON
+//     representation of the CloudEvent. To convert that data to a JSON
+//     string it can be chained with the toJsonString function.
+//     The Pipeline expects that the message it receives adheres to the
+//     standard CloudEvent format. If it doesn't then the outgoing message
+//     request may fail with a persistent error.
+//
+// ***
+func (o PipelineDestinationHttpEndpointOutput) MessageBindingTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineDestinationHttpEndpoint) *string { return v.MessageBindingTemplate }).(pulumi.StringPtrOutput)
+}
+
+// The URI of the HTTP enpdoint.
+// The value must be a RFC2396 URI string.
+// Examples: `https://svc.us-central1.p.local:8080/route`.
+// Only the HTTPS protocol is supported.
+func (o PipelineDestinationHttpEndpointOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineDestinationHttpEndpoint) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type PipelineDestinationHttpEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineDestinationHttpEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineDestinationHttpEndpoint)(nil)).Elem()
+}
+
+func (o PipelineDestinationHttpEndpointPtrOutput) ToPipelineDestinationHttpEndpointPtrOutput() PipelineDestinationHttpEndpointPtrOutput {
+	return o
+}
+
+func (o PipelineDestinationHttpEndpointPtrOutput) ToPipelineDestinationHttpEndpointPtrOutputWithContext(ctx context.Context) PipelineDestinationHttpEndpointPtrOutput {
+	return o
+}
+
+func (o PipelineDestinationHttpEndpointPtrOutput) Elem() PipelineDestinationHttpEndpointOutput {
+	return o.ApplyT(func(v *PipelineDestinationHttpEndpoint) PipelineDestinationHttpEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineDestinationHttpEndpoint
+		return ret
+	}).(PipelineDestinationHttpEndpointOutput)
+}
+
+// The CEL expression used to modify how the destination-bound HTTP
+// request is constructed.
+// If a binding expression is not specified here, the message
+// is treated as a CloudEvent and is mapped to the HTTP request according
+// to the CloudEvent HTTP Protocol Binding Binary Content Mode
+// (https://github.com/cloudevents/spec/blob/main/cloudevents/bindings/http-protocol-binding.md#31-binary-content-mode).
+// In this representation, all fields except the `data` and
+// `datacontenttype` field on the message are mapped to HTTP request
+// headers with a prefix of `ce-`.
+// To construct the HTTP request payload and the value of the content-type
+// HTTP header, the payload format is defined as follows:
+//  1. Use the outputPayloadFormatType on the Pipeline.Destination if it
+//     is set, else:
+//  2. Use the inputPayloadFormatType on the Pipeline if it is set,
+//     else:
+//  3. Treat the payload as opaque binary data.
+//     The `data` field of the message is converted to the payload format or
+//     left as-is for case 3) and then attached as the payload of the HTTP
+//     request. The `content-type` header on the HTTP request is set to the
+//     payload format type or left empty for case 3). However, if a mediation
+//     has updated the `datacontenttype` field on the message so that it is
+//     not the same as the payload format type but it is still a prefix of the
+//     payload format type, then the `content-type` header on the HTTP request
+//     is set to this `datacontenttype` value. For example, if the
+//     `datacontenttype` is "application/json" and the payload format type is
+//     "application/json; charset=utf-8", then the `content-type` header on
+//     the HTTP request is set to "application/json; charset=utf-8".
+//     If a non-empty binding expression is specified then this expression is
+//     used to modify the default CloudEvent HTTP Protocol Binding Binary
+//     Content representation.
+//     The result of the CEL expression must be a map of key/value pairs
+//     which is used as follows:
+//     - If a map named `headers` exists on the result of the expression,
+//     then its key/value pairs are directly mapped to the HTTP request
+//     headers. The headers values are constructed from the corresponding
+//     value type's canonical representation. If the `headers` field doesn't
+//     exist then the resulting HTTP request will be the headers of the
+//     CloudEvent HTTP Binding Binary Content Mode representation of the final
+//     message. Note: If the specified binding expression, has updated the
+//     `datacontenttype` field on the message so that it is not the same as
+//     the payload format type but it is still a prefix of the payload format
+//     type, then the `content-type` header in the `headers` map is set to
+//     this `datacontenttype` value.
+//     - If a field named `body` exists on the result of the expression then
+//     its value is directly mapped to the body of the request. If the value
+//     of the `body` field is of type bytes or string then it is used for
+//     the HTTP request body as-is, with no conversion. If the body field is
+//     of any other type then it is converted to a JSON string. If the body
+//     field does not exist then the resulting payload of the HTTP request
+//     will be data value of the CloudEvent HTTP Binding Binary Content Mode
+//     representation of the final message as described earlier.
+//     - Any other fields in the resulting expression will be ignored.
+//     The CEL expression may access the incoming CloudEvent message in its
+//     definition, as follows:
+//     - The `data` field of the incoming CloudEvent message can be accessed
+//     using the `message.data` value. Subfields of `message.data` may also be
+//     accessed if an inputPayloadFormat has been specified on the Pipeline.
+//     - Each attribute of the incoming CloudEvent message can be accessed
+//     using the `message.` value, where  is replaced with the
+//     name of the attribute.
+//     - Existing headers can be accessed in the CEL expression using the
+//     `headers` variable. The `headers` variable defines a map of key/value
+//     pairs corresponding to the HTTP headers of the CloudEvent HTTP Binding
+//     Binary Content Mode representation of the final message as described
+//     earlier. For example, the following CEL expression can be used to
+//     construct an HTTP request by adding an additional header to the HTTP
+//     headers of the CloudEvent HTTP Binding Binary Content Mode
+//     representation of the final message and by overwriting the body of the
+//     request:
+//     - The default binding for the message payload can be accessed using the
+//     `body` variable. It conatins a string representation of the message
+//     payload in the format specified by the `outputPayloadFormat` field.
+//     If the `inputPayloadFormat` field is not set, the `body`
+//     variable contains the same message payload bytes that were published.
+//     Additionally, the following CEL extension functions are provided for
+//     use in this CEL expression:
+//     - toBase64Url:
+//     map.toBase64Url() > string
+//     - Converts a CelValue to a base64url encoded string
+//     - toJsonString: map.toJsonString() > string
+//     - Converts a CelValue to a JSON string
+//     - merge:
+//     map1.merge(map2) > map3
+//     - Merges the passed CEL map with the existing CEL map the
+//     function is applied to.
+//     - If the same key exists in both maps, if the key's value is type
+//     map both maps are merged else the value from the passed map is
+//     used.
+//     - denormalize:
+//     map.denormalize() > map
+//     - Denormalizes a CEL map such that every value of type map or key
+//     in the map is expanded to return a single level map.
+//     - The resulting keys are "." separated indices of the map keys.
+//     - For example:
+//     {
+//     "a": 1,
+//     "b": {
+//     "c": 2,
+//     "d": 3
+//     }
+//     "e": [4, 5]
+//     }
+//     .denormalize()
+//
+// > {
+// "a": 1,
+// "b.c": 2,
+// "b.d": 3,
+// "e.0": 4,
+// "e.1": 5
+// }
+//   - setField:
+//     map.setField(key, value) > message
+//   - Sets the field of the message with the given key to the
+//     given value.
+//   - If the field is not present it will be added.
+//   - If the field is present it will be overwritten.
+//   - The key can be a dot separated path to set a field in a nested
+//     message.
+//   - Key must be of type string.
+//   - Value may be any valid type.
+//   - removeFields:
+//     map.removeFields([key1, key2, ...]) > message
+//   - Removes the fields of the map with the given keys.
+//   - The keys can be a dot separated path to remove a field in a
+//     nested message.
+//   - If a key is not found it will be ignored.
+//   - Keys must be of type string.
+//   - toMap:
+//     [map1, map2, ...].toMap() > map
+//   - Converts a CEL list of CEL maps to a single CEL map
+//   - toCloudEventJsonWithPayloadFormat:
+//     message.toCloudEventJsonWithPayloadFormat() > map
+//   - Converts a message to the corresponding structure of JSON
+//     format for CloudEvents.
+//   - It converts `data` to destination payload format
+//     specified in `outputPayloadFormat`. If `outputPayloadFormat` is
+//     not set, the data will remain unchanged.
+//   - It also sets the corresponding datacontenttype of
+//     the CloudEvent, as indicated by
+//     `outputPayloadFormat`. If no
+//     `outputPayloadFormat` is set it will use the value of the
+//     "datacontenttype" attribute on the CloudEvent if present, else
+//     remove "datacontenttype" attribute.
+//   - This function expects that the content of the message will
+//     adhere to the standard CloudEvent format. If it doesn't then this
+//     function will fail.
+//   - The result is a CEL map that corresponds to the JSON
+//     representation of the CloudEvent. To convert that data to a JSON
+//     string it can be chained with the toJsonString function.
+//     The Pipeline expects that the message it receives adheres to the
+//     standard CloudEvent format. If it doesn't then the outgoing message
+//     request may fail with a persistent error.
+//
+// ***
+func (o PipelineDestinationHttpEndpointPtrOutput) MessageBindingTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineDestinationHttpEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MessageBindingTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URI of the HTTP enpdoint.
+// The value must be a RFC2396 URI string.
+// Examples: `https://svc.us-central1.p.local:8080/route`.
+// Only the HTTPS protocol is supported.
+func (o PipelineDestinationHttpEndpointPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineDestinationHttpEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type PipelineDestinationNetworkConfig struct {
+	// Name of the NetworkAttachment that allows access to the consumer VPC.
+	// Format:
+	// `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+	NetworkAttachment string `pulumi:"networkAttachment"`
+}
+
+// PipelineDestinationNetworkConfigInput is an input type that accepts PipelineDestinationNetworkConfigArgs and PipelineDestinationNetworkConfigOutput values.
+// You can construct a concrete instance of `PipelineDestinationNetworkConfigInput` via:
+//
+//	PipelineDestinationNetworkConfigArgs{...}
+type PipelineDestinationNetworkConfigInput interface {
+	pulumi.Input
+
+	ToPipelineDestinationNetworkConfigOutput() PipelineDestinationNetworkConfigOutput
+	ToPipelineDestinationNetworkConfigOutputWithContext(context.Context) PipelineDestinationNetworkConfigOutput
+}
+
+type PipelineDestinationNetworkConfigArgs struct {
+	// Name of the NetworkAttachment that allows access to the consumer VPC.
+	// Format:
+	// `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+	NetworkAttachment pulumi.StringInput `pulumi:"networkAttachment"`
+}
+
+func (PipelineDestinationNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineDestinationNetworkConfig)(nil)).Elem()
+}
+
+func (i PipelineDestinationNetworkConfigArgs) ToPipelineDestinationNetworkConfigOutput() PipelineDestinationNetworkConfigOutput {
+	return i.ToPipelineDestinationNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i PipelineDestinationNetworkConfigArgs) ToPipelineDestinationNetworkConfigOutputWithContext(ctx context.Context) PipelineDestinationNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationNetworkConfigOutput)
+}
+
+func (i PipelineDestinationNetworkConfigArgs) ToPipelineDestinationNetworkConfigPtrOutput() PipelineDestinationNetworkConfigPtrOutput {
+	return i.ToPipelineDestinationNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineDestinationNetworkConfigArgs) ToPipelineDestinationNetworkConfigPtrOutputWithContext(ctx context.Context) PipelineDestinationNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationNetworkConfigOutput).ToPipelineDestinationNetworkConfigPtrOutputWithContext(ctx)
+}
+
+// PipelineDestinationNetworkConfigPtrInput is an input type that accepts PipelineDestinationNetworkConfigArgs, PipelineDestinationNetworkConfigPtr and PipelineDestinationNetworkConfigPtrOutput values.
+// You can construct a concrete instance of `PipelineDestinationNetworkConfigPtrInput` via:
+//
+//	        PipelineDestinationNetworkConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineDestinationNetworkConfigPtrInput interface {
+	pulumi.Input
+
+	ToPipelineDestinationNetworkConfigPtrOutput() PipelineDestinationNetworkConfigPtrOutput
+	ToPipelineDestinationNetworkConfigPtrOutputWithContext(context.Context) PipelineDestinationNetworkConfigPtrOutput
+}
+
+type pipelineDestinationNetworkConfigPtrType PipelineDestinationNetworkConfigArgs
+
+func PipelineDestinationNetworkConfigPtr(v *PipelineDestinationNetworkConfigArgs) PipelineDestinationNetworkConfigPtrInput {
+	return (*pipelineDestinationNetworkConfigPtrType)(v)
+}
+
+func (*pipelineDestinationNetworkConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineDestinationNetworkConfig)(nil)).Elem()
+}
+
+func (i *pipelineDestinationNetworkConfigPtrType) ToPipelineDestinationNetworkConfigPtrOutput() PipelineDestinationNetworkConfigPtrOutput {
+	return i.ToPipelineDestinationNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineDestinationNetworkConfigPtrType) ToPipelineDestinationNetworkConfigPtrOutputWithContext(ctx context.Context) PipelineDestinationNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationNetworkConfigPtrOutput)
+}
+
+type PipelineDestinationNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (PipelineDestinationNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineDestinationNetworkConfig)(nil)).Elem()
+}
+
+func (o PipelineDestinationNetworkConfigOutput) ToPipelineDestinationNetworkConfigOutput() PipelineDestinationNetworkConfigOutput {
+	return o
+}
+
+func (o PipelineDestinationNetworkConfigOutput) ToPipelineDestinationNetworkConfigOutputWithContext(ctx context.Context) PipelineDestinationNetworkConfigOutput {
+	return o
+}
+
+func (o PipelineDestinationNetworkConfigOutput) ToPipelineDestinationNetworkConfigPtrOutput() PipelineDestinationNetworkConfigPtrOutput {
+	return o.ToPipelineDestinationNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineDestinationNetworkConfigOutput) ToPipelineDestinationNetworkConfigPtrOutputWithContext(ctx context.Context) PipelineDestinationNetworkConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineDestinationNetworkConfig) *PipelineDestinationNetworkConfig {
+		return &v
+	}).(PipelineDestinationNetworkConfigPtrOutput)
+}
+
+// Name of the NetworkAttachment that allows access to the consumer VPC.
+// Format:
+// `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+func (o PipelineDestinationNetworkConfigOutput) NetworkAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineDestinationNetworkConfig) string { return v.NetworkAttachment }).(pulumi.StringOutput)
+}
+
+type PipelineDestinationNetworkConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineDestinationNetworkConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineDestinationNetworkConfig)(nil)).Elem()
+}
+
+func (o PipelineDestinationNetworkConfigPtrOutput) ToPipelineDestinationNetworkConfigPtrOutput() PipelineDestinationNetworkConfigPtrOutput {
+	return o
+}
+
+func (o PipelineDestinationNetworkConfigPtrOutput) ToPipelineDestinationNetworkConfigPtrOutputWithContext(ctx context.Context) PipelineDestinationNetworkConfigPtrOutput {
+	return o
+}
+
+func (o PipelineDestinationNetworkConfigPtrOutput) Elem() PipelineDestinationNetworkConfigOutput {
+	return o.ApplyT(func(v *PipelineDestinationNetworkConfig) PipelineDestinationNetworkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineDestinationNetworkConfig
+		return ret
+	}).(PipelineDestinationNetworkConfigOutput)
+}
+
+// Name of the NetworkAttachment that allows access to the consumer VPC.
+// Format:
+// `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+func (o PipelineDestinationNetworkConfigPtrOutput) NetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineDestinationNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NetworkAttachment
+	}).(pulumi.StringPtrOutput)
+}
+
+type PipelineDestinationOutputPayloadFormat struct {
+	// The format of an AVRO message payload.
+	// Structure is documented below.
+	Avro *PipelineDestinationOutputPayloadFormatAvro `pulumi:"avro"`
+	// The format of a JSON message payload.
+	Json *PipelineDestinationOutputPayloadFormatJson `pulumi:"json"`
+	// The format of a Protobuf message payload.
+	// Structure is documented below.
+	Protobuf *PipelineDestinationOutputPayloadFormatProtobuf `pulumi:"protobuf"`
+}
+
+// PipelineDestinationOutputPayloadFormatInput is an input type that accepts PipelineDestinationOutputPayloadFormatArgs and PipelineDestinationOutputPayloadFormatOutput values.
+// You can construct a concrete instance of `PipelineDestinationOutputPayloadFormatInput` via:
+//
+//	PipelineDestinationOutputPayloadFormatArgs{...}
+type PipelineDestinationOutputPayloadFormatInput interface {
+	pulumi.Input
+
+	ToPipelineDestinationOutputPayloadFormatOutput() PipelineDestinationOutputPayloadFormatOutput
+	ToPipelineDestinationOutputPayloadFormatOutputWithContext(context.Context) PipelineDestinationOutputPayloadFormatOutput
+}
+
+type PipelineDestinationOutputPayloadFormatArgs struct {
+	// The format of an AVRO message payload.
+	// Structure is documented below.
+	Avro PipelineDestinationOutputPayloadFormatAvroPtrInput `pulumi:"avro"`
+	// The format of a JSON message payload.
+	Json PipelineDestinationOutputPayloadFormatJsonPtrInput `pulumi:"json"`
+	// The format of a Protobuf message payload.
+	// Structure is documented below.
+	Protobuf PipelineDestinationOutputPayloadFormatProtobufPtrInput `pulumi:"protobuf"`
+}
+
+func (PipelineDestinationOutputPayloadFormatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineDestinationOutputPayloadFormat)(nil)).Elem()
+}
+
+func (i PipelineDestinationOutputPayloadFormatArgs) ToPipelineDestinationOutputPayloadFormatOutput() PipelineDestinationOutputPayloadFormatOutput {
+	return i.ToPipelineDestinationOutputPayloadFormatOutputWithContext(context.Background())
+}
+
+func (i PipelineDestinationOutputPayloadFormatArgs) ToPipelineDestinationOutputPayloadFormatOutputWithContext(ctx context.Context) PipelineDestinationOutputPayloadFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationOutputPayloadFormatOutput)
+}
+
+func (i PipelineDestinationOutputPayloadFormatArgs) ToPipelineDestinationOutputPayloadFormatPtrOutput() PipelineDestinationOutputPayloadFormatPtrOutput {
+	return i.ToPipelineDestinationOutputPayloadFormatPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineDestinationOutputPayloadFormatArgs) ToPipelineDestinationOutputPayloadFormatPtrOutputWithContext(ctx context.Context) PipelineDestinationOutputPayloadFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationOutputPayloadFormatOutput).ToPipelineDestinationOutputPayloadFormatPtrOutputWithContext(ctx)
+}
+
+// PipelineDestinationOutputPayloadFormatPtrInput is an input type that accepts PipelineDestinationOutputPayloadFormatArgs, PipelineDestinationOutputPayloadFormatPtr and PipelineDestinationOutputPayloadFormatPtrOutput values.
+// You can construct a concrete instance of `PipelineDestinationOutputPayloadFormatPtrInput` via:
+//
+//	        PipelineDestinationOutputPayloadFormatArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineDestinationOutputPayloadFormatPtrInput interface {
+	pulumi.Input
+
+	ToPipelineDestinationOutputPayloadFormatPtrOutput() PipelineDestinationOutputPayloadFormatPtrOutput
+	ToPipelineDestinationOutputPayloadFormatPtrOutputWithContext(context.Context) PipelineDestinationOutputPayloadFormatPtrOutput
+}
+
+type pipelineDestinationOutputPayloadFormatPtrType PipelineDestinationOutputPayloadFormatArgs
+
+func PipelineDestinationOutputPayloadFormatPtr(v *PipelineDestinationOutputPayloadFormatArgs) PipelineDestinationOutputPayloadFormatPtrInput {
+	return (*pipelineDestinationOutputPayloadFormatPtrType)(v)
+}
+
+func (*pipelineDestinationOutputPayloadFormatPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineDestinationOutputPayloadFormat)(nil)).Elem()
+}
+
+func (i *pipelineDestinationOutputPayloadFormatPtrType) ToPipelineDestinationOutputPayloadFormatPtrOutput() PipelineDestinationOutputPayloadFormatPtrOutput {
+	return i.ToPipelineDestinationOutputPayloadFormatPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineDestinationOutputPayloadFormatPtrType) ToPipelineDestinationOutputPayloadFormatPtrOutputWithContext(ctx context.Context) PipelineDestinationOutputPayloadFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationOutputPayloadFormatPtrOutput)
+}
+
+type PipelineDestinationOutputPayloadFormatOutput struct{ *pulumi.OutputState }
+
+func (PipelineDestinationOutputPayloadFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineDestinationOutputPayloadFormat)(nil)).Elem()
+}
+
+func (o PipelineDestinationOutputPayloadFormatOutput) ToPipelineDestinationOutputPayloadFormatOutput() PipelineDestinationOutputPayloadFormatOutput {
+	return o
+}
+
+func (o PipelineDestinationOutputPayloadFormatOutput) ToPipelineDestinationOutputPayloadFormatOutputWithContext(ctx context.Context) PipelineDestinationOutputPayloadFormatOutput {
+	return o
+}
+
+func (o PipelineDestinationOutputPayloadFormatOutput) ToPipelineDestinationOutputPayloadFormatPtrOutput() PipelineDestinationOutputPayloadFormatPtrOutput {
+	return o.ToPipelineDestinationOutputPayloadFormatPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineDestinationOutputPayloadFormatOutput) ToPipelineDestinationOutputPayloadFormatPtrOutputWithContext(ctx context.Context) PipelineDestinationOutputPayloadFormatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineDestinationOutputPayloadFormat) *PipelineDestinationOutputPayloadFormat {
+		return &v
+	}).(PipelineDestinationOutputPayloadFormatPtrOutput)
+}
+
+// The format of an AVRO message payload.
+// Structure is documented below.
+func (o PipelineDestinationOutputPayloadFormatOutput) Avro() PipelineDestinationOutputPayloadFormatAvroPtrOutput {
+	return o.ApplyT(func(v PipelineDestinationOutputPayloadFormat) *PipelineDestinationOutputPayloadFormatAvro {
+		return v.Avro
+	}).(PipelineDestinationOutputPayloadFormatAvroPtrOutput)
+}
+
+// The format of a JSON message payload.
+func (o PipelineDestinationOutputPayloadFormatOutput) Json() PipelineDestinationOutputPayloadFormatJsonPtrOutput {
+	return o.ApplyT(func(v PipelineDestinationOutputPayloadFormat) *PipelineDestinationOutputPayloadFormatJson {
+		return v.Json
+	}).(PipelineDestinationOutputPayloadFormatJsonPtrOutput)
+}
+
+// The format of a Protobuf message payload.
+// Structure is documented below.
+func (o PipelineDestinationOutputPayloadFormatOutput) Protobuf() PipelineDestinationOutputPayloadFormatProtobufPtrOutput {
+	return o.ApplyT(func(v PipelineDestinationOutputPayloadFormat) *PipelineDestinationOutputPayloadFormatProtobuf {
+		return v.Protobuf
+	}).(PipelineDestinationOutputPayloadFormatProtobufPtrOutput)
+}
+
+type PipelineDestinationOutputPayloadFormatPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineDestinationOutputPayloadFormatPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineDestinationOutputPayloadFormat)(nil)).Elem()
+}
+
+func (o PipelineDestinationOutputPayloadFormatPtrOutput) ToPipelineDestinationOutputPayloadFormatPtrOutput() PipelineDestinationOutputPayloadFormatPtrOutput {
+	return o
+}
+
+func (o PipelineDestinationOutputPayloadFormatPtrOutput) ToPipelineDestinationOutputPayloadFormatPtrOutputWithContext(ctx context.Context) PipelineDestinationOutputPayloadFormatPtrOutput {
+	return o
+}
+
+func (o PipelineDestinationOutputPayloadFormatPtrOutput) Elem() PipelineDestinationOutputPayloadFormatOutput {
+	return o.ApplyT(func(v *PipelineDestinationOutputPayloadFormat) PipelineDestinationOutputPayloadFormat {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineDestinationOutputPayloadFormat
+		return ret
+	}).(PipelineDestinationOutputPayloadFormatOutput)
+}
+
+// The format of an AVRO message payload.
+// Structure is documented below.
+func (o PipelineDestinationOutputPayloadFormatPtrOutput) Avro() PipelineDestinationOutputPayloadFormatAvroPtrOutput {
+	return o.ApplyT(func(v *PipelineDestinationOutputPayloadFormat) *PipelineDestinationOutputPayloadFormatAvro {
+		if v == nil {
+			return nil
+		}
+		return v.Avro
+	}).(PipelineDestinationOutputPayloadFormatAvroPtrOutput)
+}
+
+// The format of a JSON message payload.
+func (o PipelineDestinationOutputPayloadFormatPtrOutput) Json() PipelineDestinationOutputPayloadFormatJsonPtrOutput {
+	return o.ApplyT(func(v *PipelineDestinationOutputPayloadFormat) *PipelineDestinationOutputPayloadFormatJson {
+		if v == nil {
+			return nil
+		}
+		return v.Json
+	}).(PipelineDestinationOutputPayloadFormatJsonPtrOutput)
+}
+
+// The format of a Protobuf message payload.
+// Structure is documented below.
+func (o PipelineDestinationOutputPayloadFormatPtrOutput) Protobuf() PipelineDestinationOutputPayloadFormatProtobufPtrOutput {
+	return o.ApplyT(func(v *PipelineDestinationOutputPayloadFormat) *PipelineDestinationOutputPayloadFormatProtobuf {
+		if v == nil {
+			return nil
+		}
+		return v.Protobuf
+	}).(PipelineDestinationOutputPayloadFormatProtobufPtrOutput)
+}
+
+type PipelineDestinationOutputPayloadFormatAvro struct {
+	// The entire schema definition is stored in this field.
+	SchemaDefinition *string `pulumi:"schemaDefinition"`
+}
+
+// PipelineDestinationOutputPayloadFormatAvroInput is an input type that accepts PipelineDestinationOutputPayloadFormatAvroArgs and PipelineDestinationOutputPayloadFormatAvroOutput values.
+// You can construct a concrete instance of `PipelineDestinationOutputPayloadFormatAvroInput` via:
+//
+//	PipelineDestinationOutputPayloadFormatAvroArgs{...}
+type PipelineDestinationOutputPayloadFormatAvroInput interface {
+	pulumi.Input
+
+	ToPipelineDestinationOutputPayloadFormatAvroOutput() PipelineDestinationOutputPayloadFormatAvroOutput
+	ToPipelineDestinationOutputPayloadFormatAvroOutputWithContext(context.Context) PipelineDestinationOutputPayloadFormatAvroOutput
+}
+
+type PipelineDestinationOutputPayloadFormatAvroArgs struct {
+	// The entire schema definition is stored in this field.
+	SchemaDefinition pulumi.StringPtrInput `pulumi:"schemaDefinition"`
+}
+
+func (PipelineDestinationOutputPayloadFormatAvroArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineDestinationOutputPayloadFormatAvro)(nil)).Elem()
+}
+
+func (i PipelineDestinationOutputPayloadFormatAvroArgs) ToPipelineDestinationOutputPayloadFormatAvroOutput() PipelineDestinationOutputPayloadFormatAvroOutput {
+	return i.ToPipelineDestinationOutputPayloadFormatAvroOutputWithContext(context.Background())
+}
+
+func (i PipelineDestinationOutputPayloadFormatAvroArgs) ToPipelineDestinationOutputPayloadFormatAvroOutputWithContext(ctx context.Context) PipelineDestinationOutputPayloadFormatAvroOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationOutputPayloadFormatAvroOutput)
+}
+
+func (i PipelineDestinationOutputPayloadFormatAvroArgs) ToPipelineDestinationOutputPayloadFormatAvroPtrOutput() PipelineDestinationOutputPayloadFormatAvroPtrOutput {
+	return i.ToPipelineDestinationOutputPayloadFormatAvroPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineDestinationOutputPayloadFormatAvroArgs) ToPipelineDestinationOutputPayloadFormatAvroPtrOutputWithContext(ctx context.Context) PipelineDestinationOutputPayloadFormatAvroPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationOutputPayloadFormatAvroOutput).ToPipelineDestinationOutputPayloadFormatAvroPtrOutputWithContext(ctx)
+}
+
+// PipelineDestinationOutputPayloadFormatAvroPtrInput is an input type that accepts PipelineDestinationOutputPayloadFormatAvroArgs, PipelineDestinationOutputPayloadFormatAvroPtr and PipelineDestinationOutputPayloadFormatAvroPtrOutput values.
+// You can construct a concrete instance of `PipelineDestinationOutputPayloadFormatAvroPtrInput` via:
+//
+//	        PipelineDestinationOutputPayloadFormatAvroArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineDestinationOutputPayloadFormatAvroPtrInput interface {
+	pulumi.Input
+
+	ToPipelineDestinationOutputPayloadFormatAvroPtrOutput() PipelineDestinationOutputPayloadFormatAvroPtrOutput
+	ToPipelineDestinationOutputPayloadFormatAvroPtrOutputWithContext(context.Context) PipelineDestinationOutputPayloadFormatAvroPtrOutput
+}
+
+type pipelineDestinationOutputPayloadFormatAvroPtrType PipelineDestinationOutputPayloadFormatAvroArgs
+
+func PipelineDestinationOutputPayloadFormatAvroPtr(v *PipelineDestinationOutputPayloadFormatAvroArgs) PipelineDestinationOutputPayloadFormatAvroPtrInput {
+	return (*pipelineDestinationOutputPayloadFormatAvroPtrType)(v)
+}
+
+func (*pipelineDestinationOutputPayloadFormatAvroPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineDestinationOutputPayloadFormatAvro)(nil)).Elem()
+}
+
+func (i *pipelineDestinationOutputPayloadFormatAvroPtrType) ToPipelineDestinationOutputPayloadFormatAvroPtrOutput() PipelineDestinationOutputPayloadFormatAvroPtrOutput {
+	return i.ToPipelineDestinationOutputPayloadFormatAvroPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineDestinationOutputPayloadFormatAvroPtrType) ToPipelineDestinationOutputPayloadFormatAvroPtrOutputWithContext(ctx context.Context) PipelineDestinationOutputPayloadFormatAvroPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationOutputPayloadFormatAvroPtrOutput)
+}
+
+type PipelineDestinationOutputPayloadFormatAvroOutput struct{ *pulumi.OutputState }
+
+func (PipelineDestinationOutputPayloadFormatAvroOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineDestinationOutputPayloadFormatAvro)(nil)).Elem()
+}
+
+func (o PipelineDestinationOutputPayloadFormatAvroOutput) ToPipelineDestinationOutputPayloadFormatAvroOutput() PipelineDestinationOutputPayloadFormatAvroOutput {
+	return o
+}
+
+func (o PipelineDestinationOutputPayloadFormatAvroOutput) ToPipelineDestinationOutputPayloadFormatAvroOutputWithContext(ctx context.Context) PipelineDestinationOutputPayloadFormatAvroOutput {
+	return o
+}
+
+func (o PipelineDestinationOutputPayloadFormatAvroOutput) ToPipelineDestinationOutputPayloadFormatAvroPtrOutput() PipelineDestinationOutputPayloadFormatAvroPtrOutput {
+	return o.ToPipelineDestinationOutputPayloadFormatAvroPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineDestinationOutputPayloadFormatAvroOutput) ToPipelineDestinationOutputPayloadFormatAvroPtrOutputWithContext(ctx context.Context) PipelineDestinationOutputPayloadFormatAvroPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineDestinationOutputPayloadFormatAvro) *PipelineDestinationOutputPayloadFormatAvro {
+		return &v
+	}).(PipelineDestinationOutputPayloadFormatAvroPtrOutput)
+}
+
+// The entire schema definition is stored in this field.
+func (o PipelineDestinationOutputPayloadFormatAvroOutput) SchemaDefinition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineDestinationOutputPayloadFormatAvro) *string { return v.SchemaDefinition }).(pulumi.StringPtrOutput)
+}
+
+type PipelineDestinationOutputPayloadFormatAvroPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineDestinationOutputPayloadFormatAvroPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineDestinationOutputPayloadFormatAvro)(nil)).Elem()
+}
+
+func (o PipelineDestinationOutputPayloadFormatAvroPtrOutput) ToPipelineDestinationOutputPayloadFormatAvroPtrOutput() PipelineDestinationOutputPayloadFormatAvroPtrOutput {
+	return o
+}
+
+func (o PipelineDestinationOutputPayloadFormatAvroPtrOutput) ToPipelineDestinationOutputPayloadFormatAvroPtrOutputWithContext(ctx context.Context) PipelineDestinationOutputPayloadFormatAvroPtrOutput {
+	return o
+}
+
+func (o PipelineDestinationOutputPayloadFormatAvroPtrOutput) Elem() PipelineDestinationOutputPayloadFormatAvroOutput {
+	return o.ApplyT(func(v *PipelineDestinationOutputPayloadFormatAvro) PipelineDestinationOutputPayloadFormatAvro {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineDestinationOutputPayloadFormatAvro
+		return ret
+	}).(PipelineDestinationOutputPayloadFormatAvroOutput)
+}
+
+// The entire schema definition is stored in this field.
+func (o PipelineDestinationOutputPayloadFormatAvroPtrOutput) SchemaDefinition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineDestinationOutputPayloadFormatAvro) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaDefinition
+	}).(pulumi.StringPtrOutput)
+}
+
+type PipelineDestinationOutputPayloadFormatJson struct {
+}
+
+// PipelineDestinationOutputPayloadFormatJsonInput is an input type that accepts PipelineDestinationOutputPayloadFormatJsonArgs and PipelineDestinationOutputPayloadFormatJsonOutput values.
+// You can construct a concrete instance of `PipelineDestinationOutputPayloadFormatJsonInput` via:
+//
+//	PipelineDestinationOutputPayloadFormatJsonArgs{...}
+type PipelineDestinationOutputPayloadFormatJsonInput interface {
+	pulumi.Input
+
+	ToPipelineDestinationOutputPayloadFormatJsonOutput() PipelineDestinationOutputPayloadFormatJsonOutput
+	ToPipelineDestinationOutputPayloadFormatJsonOutputWithContext(context.Context) PipelineDestinationOutputPayloadFormatJsonOutput
+}
+
+type PipelineDestinationOutputPayloadFormatJsonArgs struct {
+}
+
+func (PipelineDestinationOutputPayloadFormatJsonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineDestinationOutputPayloadFormatJson)(nil)).Elem()
+}
+
+func (i PipelineDestinationOutputPayloadFormatJsonArgs) ToPipelineDestinationOutputPayloadFormatJsonOutput() PipelineDestinationOutputPayloadFormatJsonOutput {
+	return i.ToPipelineDestinationOutputPayloadFormatJsonOutputWithContext(context.Background())
+}
+
+func (i PipelineDestinationOutputPayloadFormatJsonArgs) ToPipelineDestinationOutputPayloadFormatJsonOutputWithContext(ctx context.Context) PipelineDestinationOutputPayloadFormatJsonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationOutputPayloadFormatJsonOutput)
+}
+
+func (i PipelineDestinationOutputPayloadFormatJsonArgs) ToPipelineDestinationOutputPayloadFormatJsonPtrOutput() PipelineDestinationOutputPayloadFormatJsonPtrOutput {
+	return i.ToPipelineDestinationOutputPayloadFormatJsonPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineDestinationOutputPayloadFormatJsonArgs) ToPipelineDestinationOutputPayloadFormatJsonPtrOutputWithContext(ctx context.Context) PipelineDestinationOutputPayloadFormatJsonPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationOutputPayloadFormatJsonOutput).ToPipelineDestinationOutputPayloadFormatJsonPtrOutputWithContext(ctx)
+}
+
+// PipelineDestinationOutputPayloadFormatJsonPtrInput is an input type that accepts PipelineDestinationOutputPayloadFormatJsonArgs, PipelineDestinationOutputPayloadFormatJsonPtr and PipelineDestinationOutputPayloadFormatJsonPtrOutput values.
+// You can construct a concrete instance of `PipelineDestinationOutputPayloadFormatJsonPtrInput` via:
+//
+//	        PipelineDestinationOutputPayloadFormatJsonArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineDestinationOutputPayloadFormatJsonPtrInput interface {
+	pulumi.Input
+
+	ToPipelineDestinationOutputPayloadFormatJsonPtrOutput() PipelineDestinationOutputPayloadFormatJsonPtrOutput
+	ToPipelineDestinationOutputPayloadFormatJsonPtrOutputWithContext(context.Context) PipelineDestinationOutputPayloadFormatJsonPtrOutput
+}
+
+type pipelineDestinationOutputPayloadFormatJsonPtrType PipelineDestinationOutputPayloadFormatJsonArgs
+
+func PipelineDestinationOutputPayloadFormatJsonPtr(v *PipelineDestinationOutputPayloadFormatJsonArgs) PipelineDestinationOutputPayloadFormatJsonPtrInput {
+	return (*pipelineDestinationOutputPayloadFormatJsonPtrType)(v)
+}
+
+func (*pipelineDestinationOutputPayloadFormatJsonPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineDestinationOutputPayloadFormatJson)(nil)).Elem()
+}
+
+func (i *pipelineDestinationOutputPayloadFormatJsonPtrType) ToPipelineDestinationOutputPayloadFormatJsonPtrOutput() PipelineDestinationOutputPayloadFormatJsonPtrOutput {
+	return i.ToPipelineDestinationOutputPayloadFormatJsonPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineDestinationOutputPayloadFormatJsonPtrType) ToPipelineDestinationOutputPayloadFormatJsonPtrOutputWithContext(ctx context.Context) PipelineDestinationOutputPayloadFormatJsonPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationOutputPayloadFormatJsonPtrOutput)
+}
+
+type PipelineDestinationOutputPayloadFormatJsonOutput struct{ *pulumi.OutputState }
+
+func (PipelineDestinationOutputPayloadFormatJsonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineDestinationOutputPayloadFormatJson)(nil)).Elem()
+}
+
+func (o PipelineDestinationOutputPayloadFormatJsonOutput) ToPipelineDestinationOutputPayloadFormatJsonOutput() PipelineDestinationOutputPayloadFormatJsonOutput {
+	return o
+}
+
+func (o PipelineDestinationOutputPayloadFormatJsonOutput) ToPipelineDestinationOutputPayloadFormatJsonOutputWithContext(ctx context.Context) PipelineDestinationOutputPayloadFormatJsonOutput {
+	return o
+}
+
+func (o PipelineDestinationOutputPayloadFormatJsonOutput) ToPipelineDestinationOutputPayloadFormatJsonPtrOutput() PipelineDestinationOutputPayloadFormatJsonPtrOutput {
+	return o.ToPipelineDestinationOutputPayloadFormatJsonPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineDestinationOutputPayloadFormatJsonOutput) ToPipelineDestinationOutputPayloadFormatJsonPtrOutputWithContext(ctx context.Context) PipelineDestinationOutputPayloadFormatJsonPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineDestinationOutputPayloadFormatJson) *PipelineDestinationOutputPayloadFormatJson {
+		return &v
+	}).(PipelineDestinationOutputPayloadFormatJsonPtrOutput)
+}
+
+type PipelineDestinationOutputPayloadFormatJsonPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineDestinationOutputPayloadFormatJsonPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineDestinationOutputPayloadFormatJson)(nil)).Elem()
+}
+
+func (o PipelineDestinationOutputPayloadFormatJsonPtrOutput) ToPipelineDestinationOutputPayloadFormatJsonPtrOutput() PipelineDestinationOutputPayloadFormatJsonPtrOutput {
+	return o
+}
+
+func (o PipelineDestinationOutputPayloadFormatJsonPtrOutput) ToPipelineDestinationOutputPayloadFormatJsonPtrOutputWithContext(ctx context.Context) PipelineDestinationOutputPayloadFormatJsonPtrOutput {
+	return o
+}
+
+func (o PipelineDestinationOutputPayloadFormatJsonPtrOutput) Elem() PipelineDestinationOutputPayloadFormatJsonOutput {
+	return o.ApplyT(func(v *PipelineDestinationOutputPayloadFormatJson) PipelineDestinationOutputPayloadFormatJson {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineDestinationOutputPayloadFormatJson
+		return ret
+	}).(PipelineDestinationOutputPayloadFormatJsonOutput)
+}
+
+type PipelineDestinationOutputPayloadFormatProtobuf struct {
+	// The entire schema definition is stored in this field.
+	SchemaDefinition *string `pulumi:"schemaDefinition"`
+}
+
+// PipelineDestinationOutputPayloadFormatProtobufInput is an input type that accepts PipelineDestinationOutputPayloadFormatProtobufArgs and PipelineDestinationOutputPayloadFormatProtobufOutput values.
+// You can construct a concrete instance of `PipelineDestinationOutputPayloadFormatProtobufInput` via:
+//
+//	PipelineDestinationOutputPayloadFormatProtobufArgs{...}
+type PipelineDestinationOutputPayloadFormatProtobufInput interface {
+	pulumi.Input
+
+	ToPipelineDestinationOutputPayloadFormatProtobufOutput() PipelineDestinationOutputPayloadFormatProtobufOutput
+	ToPipelineDestinationOutputPayloadFormatProtobufOutputWithContext(context.Context) PipelineDestinationOutputPayloadFormatProtobufOutput
+}
+
+type PipelineDestinationOutputPayloadFormatProtobufArgs struct {
+	// The entire schema definition is stored in this field.
+	SchemaDefinition pulumi.StringPtrInput `pulumi:"schemaDefinition"`
+}
+
+func (PipelineDestinationOutputPayloadFormatProtobufArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineDestinationOutputPayloadFormatProtobuf)(nil)).Elem()
+}
+
+func (i PipelineDestinationOutputPayloadFormatProtobufArgs) ToPipelineDestinationOutputPayloadFormatProtobufOutput() PipelineDestinationOutputPayloadFormatProtobufOutput {
+	return i.ToPipelineDestinationOutputPayloadFormatProtobufOutputWithContext(context.Background())
+}
+
+func (i PipelineDestinationOutputPayloadFormatProtobufArgs) ToPipelineDestinationOutputPayloadFormatProtobufOutputWithContext(ctx context.Context) PipelineDestinationOutputPayloadFormatProtobufOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationOutputPayloadFormatProtobufOutput)
+}
+
+func (i PipelineDestinationOutputPayloadFormatProtobufArgs) ToPipelineDestinationOutputPayloadFormatProtobufPtrOutput() PipelineDestinationOutputPayloadFormatProtobufPtrOutput {
+	return i.ToPipelineDestinationOutputPayloadFormatProtobufPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineDestinationOutputPayloadFormatProtobufArgs) ToPipelineDestinationOutputPayloadFormatProtobufPtrOutputWithContext(ctx context.Context) PipelineDestinationOutputPayloadFormatProtobufPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationOutputPayloadFormatProtobufOutput).ToPipelineDestinationOutputPayloadFormatProtobufPtrOutputWithContext(ctx)
+}
+
+// PipelineDestinationOutputPayloadFormatProtobufPtrInput is an input type that accepts PipelineDestinationOutputPayloadFormatProtobufArgs, PipelineDestinationOutputPayloadFormatProtobufPtr and PipelineDestinationOutputPayloadFormatProtobufPtrOutput values.
+// You can construct a concrete instance of `PipelineDestinationOutputPayloadFormatProtobufPtrInput` via:
+//
+//	        PipelineDestinationOutputPayloadFormatProtobufArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineDestinationOutputPayloadFormatProtobufPtrInput interface {
+	pulumi.Input
+
+	ToPipelineDestinationOutputPayloadFormatProtobufPtrOutput() PipelineDestinationOutputPayloadFormatProtobufPtrOutput
+	ToPipelineDestinationOutputPayloadFormatProtobufPtrOutputWithContext(context.Context) PipelineDestinationOutputPayloadFormatProtobufPtrOutput
+}
+
+type pipelineDestinationOutputPayloadFormatProtobufPtrType PipelineDestinationOutputPayloadFormatProtobufArgs
+
+func PipelineDestinationOutputPayloadFormatProtobufPtr(v *PipelineDestinationOutputPayloadFormatProtobufArgs) PipelineDestinationOutputPayloadFormatProtobufPtrInput {
+	return (*pipelineDestinationOutputPayloadFormatProtobufPtrType)(v)
+}
+
+func (*pipelineDestinationOutputPayloadFormatProtobufPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineDestinationOutputPayloadFormatProtobuf)(nil)).Elem()
+}
+
+func (i *pipelineDestinationOutputPayloadFormatProtobufPtrType) ToPipelineDestinationOutputPayloadFormatProtobufPtrOutput() PipelineDestinationOutputPayloadFormatProtobufPtrOutput {
+	return i.ToPipelineDestinationOutputPayloadFormatProtobufPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineDestinationOutputPayloadFormatProtobufPtrType) ToPipelineDestinationOutputPayloadFormatProtobufPtrOutputWithContext(ctx context.Context) PipelineDestinationOutputPayloadFormatProtobufPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineDestinationOutputPayloadFormatProtobufPtrOutput)
+}
+
+type PipelineDestinationOutputPayloadFormatProtobufOutput struct{ *pulumi.OutputState }
+
+func (PipelineDestinationOutputPayloadFormatProtobufOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineDestinationOutputPayloadFormatProtobuf)(nil)).Elem()
+}
+
+func (o PipelineDestinationOutputPayloadFormatProtobufOutput) ToPipelineDestinationOutputPayloadFormatProtobufOutput() PipelineDestinationOutputPayloadFormatProtobufOutput {
+	return o
+}
+
+func (o PipelineDestinationOutputPayloadFormatProtobufOutput) ToPipelineDestinationOutputPayloadFormatProtobufOutputWithContext(ctx context.Context) PipelineDestinationOutputPayloadFormatProtobufOutput {
+	return o
+}
+
+func (o PipelineDestinationOutputPayloadFormatProtobufOutput) ToPipelineDestinationOutputPayloadFormatProtobufPtrOutput() PipelineDestinationOutputPayloadFormatProtobufPtrOutput {
+	return o.ToPipelineDestinationOutputPayloadFormatProtobufPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineDestinationOutputPayloadFormatProtobufOutput) ToPipelineDestinationOutputPayloadFormatProtobufPtrOutputWithContext(ctx context.Context) PipelineDestinationOutputPayloadFormatProtobufPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineDestinationOutputPayloadFormatProtobuf) *PipelineDestinationOutputPayloadFormatProtobuf {
+		return &v
+	}).(PipelineDestinationOutputPayloadFormatProtobufPtrOutput)
+}
+
+// The entire schema definition is stored in this field.
+func (o PipelineDestinationOutputPayloadFormatProtobufOutput) SchemaDefinition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineDestinationOutputPayloadFormatProtobuf) *string { return v.SchemaDefinition }).(pulumi.StringPtrOutput)
+}
+
+type PipelineDestinationOutputPayloadFormatProtobufPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineDestinationOutputPayloadFormatProtobufPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineDestinationOutputPayloadFormatProtobuf)(nil)).Elem()
+}
+
+func (o PipelineDestinationOutputPayloadFormatProtobufPtrOutput) ToPipelineDestinationOutputPayloadFormatProtobufPtrOutput() PipelineDestinationOutputPayloadFormatProtobufPtrOutput {
+	return o
+}
+
+func (o PipelineDestinationOutputPayloadFormatProtobufPtrOutput) ToPipelineDestinationOutputPayloadFormatProtobufPtrOutputWithContext(ctx context.Context) PipelineDestinationOutputPayloadFormatProtobufPtrOutput {
+	return o
+}
+
+func (o PipelineDestinationOutputPayloadFormatProtobufPtrOutput) Elem() PipelineDestinationOutputPayloadFormatProtobufOutput {
+	return o.ApplyT(func(v *PipelineDestinationOutputPayloadFormatProtobuf) PipelineDestinationOutputPayloadFormatProtobuf {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineDestinationOutputPayloadFormatProtobuf
+		return ret
+	}).(PipelineDestinationOutputPayloadFormatProtobufOutput)
+}
+
+// The entire schema definition is stored in this field.
+func (o PipelineDestinationOutputPayloadFormatProtobufPtrOutput) SchemaDefinition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineDestinationOutputPayloadFormatProtobuf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaDefinition
+	}).(pulumi.StringPtrOutput)
+}
+
+type PipelineInputPayloadFormat struct {
+	// The format of an AVRO message payload.
+	// Structure is documented below.
+	Avro *PipelineInputPayloadFormatAvro `pulumi:"avro"`
+	// The format of a JSON message payload.
+	Json *PipelineInputPayloadFormatJson `pulumi:"json"`
+	// The format of a Protobuf message payload.
+	// Structure is documented below.
+	Protobuf *PipelineInputPayloadFormatProtobuf `pulumi:"protobuf"`
+}
+
+// PipelineInputPayloadFormatInput is an input type that accepts PipelineInputPayloadFormatArgs and PipelineInputPayloadFormatOutput values.
+// You can construct a concrete instance of `PipelineInputPayloadFormatInput` via:
+//
+//	PipelineInputPayloadFormatArgs{...}
+type PipelineInputPayloadFormatInput interface {
+	pulumi.Input
+
+	ToPipelineInputPayloadFormatOutput() PipelineInputPayloadFormatOutput
+	ToPipelineInputPayloadFormatOutputWithContext(context.Context) PipelineInputPayloadFormatOutput
+}
+
+type PipelineInputPayloadFormatArgs struct {
+	// The format of an AVRO message payload.
+	// Structure is documented below.
+	Avro PipelineInputPayloadFormatAvroPtrInput `pulumi:"avro"`
+	// The format of a JSON message payload.
+	Json PipelineInputPayloadFormatJsonPtrInput `pulumi:"json"`
+	// The format of a Protobuf message payload.
+	// Structure is documented below.
+	Protobuf PipelineInputPayloadFormatProtobufPtrInput `pulumi:"protobuf"`
+}
+
+func (PipelineInputPayloadFormatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineInputPayloadFormat)(nil)).Elem()
+}
+
+func (i PipelineInputPayloadFormatArgs) ToPipelineInputPayloadFormatOutput() PipelineInputPayloadFormatOutput {
+	return i.ToPipelineInputPayloadFormatOutputWithContext(context.Background())
+}
+
+func (i PipelineInputPayloadFormatArgs) ToPipelineInputPayloadFormatOutputWithContext(ctx context.Context) PipelineInputPayloadFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineInputPayloadFormatOutput)
+}
+
+func (i PipelineInputPayloadFormatArgs) ToPipelineInputPayloadFormatPtrOutput() PipelineInputPayloadFormatPtrOutput {
+	return i.ToPipelineInputPayloadFormatPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineInputPayloadFormatArgs) ToPipelineInputPayloadFormatPtrOutputWithContext(ctx context.Context) PipelineInputPayloadFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineInputPayloadFormatOutput).ToPipelineInputPayloadFormatPtrOutputWithContext(ctx)
+}
+
+// PipelineInputPayloadFormatPtrInput is an input type that accepts PipelineInputPayloadFormatArgs, PipelineInputPayloadFormatPtr and PipelineInputPayloadFormatPtrOutput values.
+// You can construct a concrete instance of `PipelineInputPayloadFormatPtrInput` via:
+//
+//	        PipelineInputPayloadFormatArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineInputPayloadFormatPtrInput interface {
+	pulumi.Input
+
+	ToPipelineInputPayloadFormatPtrOutput() PipelineInputPayloadFormatPtrOutput
+	ToPipelineInputPayloadFormatPtrOutputWithContext(context.Context) PipelineInputPayloadFormatPtrOutput
+}
+
+type pipelineInputPayloadFormatPtrType PipelineInputPayloadFormatArgs
+
+func PipelineInputPayloadFormatPtr(v *PipelineInputPayloadFormatArgs) PipelineInputPayloadFormatPtrInput {
+	return (*pipelineInputPayloadFormatPtrType)(v)
+}
+
+func (*pipelineInputPayloadFormatPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineInputPayloadFormat)(nil)).Elem()
+}
+
+func (i *pipelineInputPayloadFormatPtrType) ToPipelineInputPayloadFormatPtrOutput() PipelineInputPayloadFormatPtrOutput {
+	return i.ToPipelineInputPayloadFormatPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineInputPayloadFormatPtrType) ToPipelineInputPayloadFormatPtrOutputWithContext(ctx context.Context) PipelineInputPayloadFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineInputPayloadFormatPtrOutput)
+}
+
+type PipelineInputPayloadFormatOutput struct{ *pulumi.OutputState }
+
+func (PipelineInputPayloadFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineInputPayloadFormat)(nil)).Elem()
+}
+
+func (o PipelineInputPayloadFormatOutput) ToPipelineInputPayloadFormatOutput() PipelineInputPayloadFormatOutput {
+	return o
+}
+
+func (o PipelineInputPayloadFormatOutput) ToPipelineInputPayloadFormatOutputWithContext(ctx context.Context) PipelineInputPayloadFormatOutput {
+	return o
+}
+
+func (o PipelineInputPayloadFormatOutput) ToPipelineInputPayloadFormatPtrOutput() PipelineInputPayloadFormatPtrOutput {
+	return o.ToPipelineInputPayloadFormatPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineInputPayloadFormatOutput) ToPipelineInputPayloadFormatPtrOutputWithContext(ctx context.Context) PipelineInputPayloadFormatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineInputPayloadFormat) *PipelineInputPayloadFormat {
+		return &v
+	}).(PipelineInputPayloadFormatPtrOutput)
+}
+
+// The format of an AVRO message payload.
+// Structure is documented below.
+func (o PipelineInputPayloadFormatOutput) Avro() PipelineInputPayloadFormatAvroPtrOutput {
+	return o.ApplyT(func(v PipelineInputPayloadFormat) *PipelineInputPayloadFormatAvro { return v.Avro }).(PipelineInputPayloadFormatAvroPtrOutput)
+}
+
+// The format of a JSON message payload.
+func (o PipelineInputPayloadFormatOutput) Json() PipelineInputPayloadFormatJsonPtrOutput {
+	return o.ApplyT(func(v PipelineInputPayloadFormat) *PipelineInputPayloadFormatJson { return v.Json }).(PipelineInputPayloadFormatJsonPtrOutput)
+}
+
+// The format of a Protobuf message payload.
+// Structure is documented below.
+func (o PipelineInputPayloadFormatOutput) Protobuf() PipelineInputPayloadFormatProtobufPtrOutput {
+	return o.ApplyT(func(v PipelineInputPayloadFormat) *PipelineInputPayloadFormatProtobuf { return v.Protobuf }).(PipelineInputPayloadFormatProtobufPtrOutput)
+}
+
+type PipelineInputPayloadFormatPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineInputPayloadFormatPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineInputPayloadFormat)(nil)).Elem()
+}
+
+func (o PipelineInputPayloadFormatPtrOutput) ToPipelineInputPayloadFormatPtrOutput() PipelineInputPayloadFormatPtrOutput {
+	return o
+}
+
+func (o PipelineInputPayloadFormatPtrOutput) ToPipelineInputPayloadFormatPtrOutputWithContext(ctx context.Context) PipelineInputPayloadFormatPtrOutput {
+	return o
+}
+
+func (o PipelineInputPayloadFormatPtrOutput) Elem() PipelineInputPayloadFormatOutput {
+	return o.ApplyT(func(v *PipelineInputPayloadFormat) PipelineInputPayloadFormat {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineInputPayloadFormat
+		return ret
+	}).(PipelineInputPayloadFormatOutput)
+}
+
+// The format of an AVRO message payload.
+// Structure is documented below.
+func (o PipelineInputPayloadFormatPtrOutput) Avro() PipelineInputPayloadFormatAvroPtrOutput {
+	return o.ApplyT(func(v *PipelineInputPayloadFormat) *PipelineInputPayloadFormatAvro {
+		if v == nil {
+			return nil
+		}
+		return v.Avro
+	}).(PipelineInputPayloadFormatAvroPtrOutput)
+}
+
+// The format of a JSON message payload.
+func (o PipelineInputPayloadFormatPtrOutput) Json() PipelineInputPayloadFormatJsonPtrOutput {
+	return o.ApplyT(func(v *PipelineInputPayloadFormat) *PipelineInputPayloadFormatJson {
+		if v == nil {
+			return nil
+		}
+		return v.Json
+	}).(PipelineInputPayloadFormatJsonPtrOutput)
+}
+
+// The format of a Protobuf message payload.
+// Structure is documented below.
+func (o PipelineInputPayloadFormatPtrOutput) Protobuf() PipelineInputPayloadFormatProtobufPtrOutput {
+	return o.ApplyT(func(v *PipelineInputPayloadFormat) *PipelineInputPayloadFormatProtobuf {
+		if v == nil {
+			return nil
+		}
+		return v.Protobuf
+	}).(PipelineInputPayloadFormatProtobufPtrOutput)
+}
+
+type PipelineInputPayloadFormatAvro struct {
+	// The entire schema definition is stored in this field.
+	SchemaDefinition *string `pulumi:"schemaDefinition"`
+}
+
+// PipelineInputPayloadFormatAvroInput is an input type that accepts PipelineInputPayloadFormatAvroArgs and PipelineInputPayloadFormatAvroOutput values.
+// You can construct a concrete instance of `PipelineInputPayloadFormatAvroInput` via:
+//
+//	PipelineInputPayloadFormatAvroArgs{...}
+type PipelineInputPayloadFormatAvroInput interface {
+	pulumi.Input
+
+	ToPipelineInputPayloadFormatAvroOutput() PipelineInputPayloadFormatAvroOutput
+	ToPipelineInputPayloadFormatAvroOutputWithContext(context.Context) PipelineInputPayloadFormatAvroOutput
+}
+
+type PipelineInputPayloadFormatAvroArgs struct {
+	// The entire schema definition is stored in this field.
+	SchemaDefinition pulumi.StringPtrInput `pulumi:"schemaDefinition"`
+}
+
+func (PipelineInputPayloadFormatAvroArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineInputPayloadFormatAvro)(nil)).Elem()
+}
+
+func (i PipelineInputPayloadFormatAvroArgs) ToPipelineInputPayloadFormatAvroOutput() PipelineInputPayloadFormatAvroOutput {
+	return i.ToPipelineInputPayloadFormatAvroOutputWithContext(context.Background())
+}
+
+func (i PipelineInputPayloadFormatAvroArgs) ToPipelineInputPayloadFormatAvroOutputWithContext(ctx context.Context) PipelineInputPayloadFormatAvroOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineInputPayloadFormatAvroOutput)
+}
+
+func (i PipelineInputPayloadFormatAvroArgs) ToPipelineInputPayloadFormatAvroPtrOutput() PipelineInputPayloadFormatAvroPtrOutput {
+	return i.ToPipelineInputPayloadFormatAvroPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineInputPayloadFormatAvroArgs) ToPipelineInputPayloadFormatAvroPtrOutputWithContext(ctx context.Context) PipelineInputPayloadFormatAvroPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineInputPayloadFormatAvroOutput).ToPipelineInputPayloadFormatAvroPtrOutputWithContext(ctx)
+}
+
+// PipelineInputPayloadFormatAvroPtrInput is an input type that accepts PipelineInputPayloadFormatAvroArgs, PipelineInputPayloadFormatAvroPtr and PipelineInputPayloadFormatAvroPtrOutput values.
+// You can construct a concrete instance of `PipelineInputPayloadFormatAvroPtrInput` via:
+//
+//	        PipelineInputPayloadFormatAvroArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineInputPayloadFormatAvroPtrInput interface {
+	pulumi.Input
+
+	ToPipelineInputPayloadFormatAvroPtrOutput() PipelineInputPayloadFormatAvroPtrOutput
+	ToPipelineInputPayloadFormatAvroPtrOutputWithContext(context.Context) PipelineInputPayloadFormatAvroPtrOutput
+}
+
+type pipelineInputPayloadFormatAvroPtrType PipelineInputPayloadFormatAvroArgs
+
+func PipelineInputPayloadFormatAvroPtr(v *PipelineInputPayloadFormatAvroArgs) PipelineInputPayloadFormatAvroPtrInput {
+	return (*pipelineInputPayloadFormatAvroPtrType)(v)
+}
+
+func (*pipelineInputPayloadFormatAvroPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineInputPayloadFormatAvro)(nil)).Elem()
+}
+
+func (i *pipelineInputPayloadFormatAvroPtrType) ToPipelineInputPayloadFormatAvroPtrOutput() PipelineInputPayloadFormatAvroPtrOutput {
+	return i.ToPipelineInputPayloadFormatAvroPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineInputPayloadFormatAvroPtrType) ToPipelineInputPayloadFormatAvroPtrOutputWithContext(ctx context.Context) PipelineInputPayloadFormatAvroPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineInputPayloadFormatAvroPtrOutput)
+}
+
+type PipelineInputPayloadFormatAvroOutput struct{ *pulumi.OutputState }
+
+func (PipelineInputPayloadFormatAvroOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineInputPayloadFormatAvro)(nil)).Elem()
+}
+
+func (o PipelineInputPayloadFormatAvroOutput) ToPipelineInputPayloadFormatAvroOutput() PipelineInputPayloadFormatAvroOutput {
+	return o
+}
+
+func (o PipelineInputPayloadFormatAvroOutput) ToPipelineInputPayloadFormatAvroOutputWithContext(ctx context.Context) PipelineInputPayloadFormatAvroOutput {
+	return o
+}
+
+func (o PipelineInputPayloadFormatAvroOutput) ToPipelineInputPayloadFormatAvroPtrOutput() PipelineInputPayloadFormatAvroPtrOutput {
+	return o.ToPipelineInputPayloadFormatAvroPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineInputPayloadFormatAvroOutput) ToPipelineInputPayloadFormatAvroPtrOutputWithContext(ctx context.Context) PipelineInputPayloadFormatAvroPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineInputPayloadFormatAvro) *PipelineInputPayloadFormatAvro {
+		return &v
+	}).(PipelineInputPayloadFormatAvroPtrOutput)
+}
+
+// The entire schema definition is stored in this field.
+func (o PipelineInputPayloadFormatAvroOutput) SchemaDefinition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineInputPayloadFormatAvro) *string { return v.SchemaDefinition }).(pulumi.StringPtrOutput)
+}
+
+type PipelineInputPayloadFormatAvroPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineInputPayloadFormatAvroPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineInputPayloadFormatAvro)(nil)).Elem()
+}
+
+func (o PipelineInputPayloadFormatAvroPtrOutput) ToPipelineInputPayloadFormatAvroPtrOutput() PipelineInputPayloadFormatAvroPtrOutput {
+	return o
+}
+
+func (o PipelineInputPayloadFormatAvroPtrOutput) ToPipelineInputPayloadFormatAvroPtrOutputWithContext(ctx context.Context) PipelineInputPayloadFormatAvroPtrOutput {
+	return o
+}
+
+func (o PipelineInputPayloadFormatAvroPtrOutput) Elem() PipelineInputPayloadFormatAvroOutput {
+	return o.ApplyT(func(v *PipelineInputPayloadFormatAvro) PipelineInputPayloadFormatAvro {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineInputPayloadFormatAvro
+		return ret
+	}).(PipelineInputPayloadFormatAvroOutput)
+}
+
+// The entire schema definition is stored in this field.
+func (o PipelineInputPayloadFormatAvroPtrOutput) SchemaDefinition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineInputPayloadFormatAvro) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaDefinition
+	}).(pulumi.StringPtrOutput)
+}
+
+type PipelineInputPayloadFormatJson struct {
+}
+
+// PipelineInputPayloadFormatJsonInput is an input type that accepts PipelineInputPayloadFormatJsonArgs and PipelineInputPayloadFormatJsonOutput values.
+// You can construct a concrete instance of `PipelineInputPayloadFormatJsonInput` via:
+//
+//	PipelineInputPayloadFormatJsonArgs{...}
+type PipelineInputPayloadFormatJsonInput interface {
+	pulumi.Input
+
+	ToPipelineInputPayloadFormatJsonOutput() PipelineInputPayloadFormatJsonOutput
+	ToPipelineInputPayloadFormatJsonOutputWithContext(context.Context) PipelineInputPayloadFormatJsonOutput
+}
+
+type PipelineInputPayloadFormatJsonArgs struct {
+}
+
+func (PipelineInputPayloadFormatJsonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineInputPayloadFormatJson)(nil)).Elem()
+}
+
+func (i PipelineInputPayloadFormatJsonArgs) ToPipelineInputPayloadFormatJsonOutput() PipelineInputPayloadFormatJsonOutput {
+	return i.ToPipelineInputPayloadFormatJsonOutputWithContext(context.Background())
+}
+
+func (i PipelineInputPayloadFormatJsonArgs) ToPipelineInputPayloadFormatJsonOutputWithContext(ctx context.Context) PipelineInputPayloadFormatJsonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineInputPayloadFormatJsonOutput)
+}
+
+func (i PipelineInputPayloadFormatJsonArgs) ToPipelineInputPayloadFormatJsonPtrOutput() PipelineInputPayloadFormatJsonPtrOutput {
+	return i.ToPipelineInputPayloadFormatJsonPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineInputPayloadFormatJsonArgs) ToPipelineInputPayloadFormatJsonPtrOutputWithContext(ctx context.Context) PipelineInputPayloadFormatJsonPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineInputPayloadFormatJsonOutput).ToPipelineInputPayloadFormatJsonPtrOutputWithContext(ctx)
+}
+
+// PipelineInputPayloadFormatJsonPtrInput is an input type that accepts PipelineInputPayloadFormatJsonArgs, PipelineInputPayloadFormatJsonPtr and PipelineInputPayloadFormatJsonPtrOutput values.
+// You can construct a concrete instance of `PipelineInputPayloadFormatJsonPtrInput` via:
+//
+//	        PipelineInputPayloadFormatJsonArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineInputPayloadFormatJsonPtrInput interface {
+	pulumi.Input
+
+	ToPipelineInputPayloadFormatJsonPtrOutput() PipelineInputPayloadFormatJsonPtrOutput
+	ToPipelineInputPayloadFormatJsonPtrOutputWithContext(context.Context) PipelineInputPayloadFormatJsonPtrOutput
+}
+
+type pipelineInputPayloadFormatJsonPtrType PipelineInputPayloadFormatJsonArgs
+
+func PipelineInputPayloadFormatJsonPtr(v *PipelineInputPayloadFormatJsonArgs) PipelineInputPayloadFormatJsonPtrInput {
+	return (*pipelineInputPayloadFormatJsonPtrType)(v)
+}
+
+func (*pipelineInputPayloadFormatJsonPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineInputPayloadFormatJson)(nil)).Elem()
+}
+
+func (i *pipelineInputPayloadFormatJsonPtrType) ToPipelineInputPayloadFormatJsonPtrOutput() PipelineInputPayloadFormatJsonPtrOutput {
+	return i.ToPipelineInputPayloadFormatJsonPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineInputPayloadFormatJsonPtrType) ToPipelineInputPayloadFormatJsonPtrOutputWithContext(ctx context.Context) PipelineInputPayloadFormatJsonPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineInputPayloadFormatJsonPtrOutput)
+}
+
+type PipelineInputPayloadFormatJsonOutput struct{ *pulumi.OutputState }
+
+func (PipelineInputPayloadFormatJsonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineInputPayloadFormatJson)(nil)).Elem()
+}
+
+func (o PipelineInputPayloadFormatJsonOutput) ToPipelineInputPayloadFormatJsonOutput() PipelineInputPayloadFormatJsonOutput {
+	return o
+}
+
+func (o PipelineInputPayloadFormatJsonOutput) ToPipelineInputPayloadFormatJsonOutputWithContext(ctx context.Context) PipelineInputPayloadFormatJsonOutput {
+	return o
+}
+
+func (o PipelineInputPayloadFormatJsonOutput) ToPipelineInputPayloadFormatJsonPtrOutput() PipelineInputPayloadFormatJsonPtrOutput {
+	return o.ToPipelineInputPayloadFormatJsonPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineInputPayloadFormatJsonOutput) ToPipelineInputPayloadFormatJsonPtrOutputWithContext(ctx context.Context) PipelineInputPayloadFormatJsonPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineInputPayloadFormatJson) *PipelineInputPayloadFormatJson {
+		return &v
+	}).(PipelineInputPayloadFormatJsonPtrOutput)
+}
+
+type PipelineInputPayloadFormatJsonPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineInputPayloadFormatJsonPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineInputPayloadFormatJson)(nil)).Elem()
+}
+
+func (o PipelineInputPayloadFormatJsonPtrOutput) ToPipelineInputPayloadFormatJsonPtrOutput() PipelineInputPayloadFormatJsonPtrOutput {
+	return o
+}
+
+func (o PipelineInputPayloadFormatJsonPtrOutput) ToPipelineInputPayloadFormatJsonPtrOutputWithContext(ctx context.Context) PipelineInputPayloadFormatJsonPtrOutput {
+	return o
+}
+
+func (o PipelineInputPayloadFormatJsonPtrOutput) Elem() PipelineInputPayloadFormatJsonOutput {
+	return o.ApplyT(func(v *PipelineInputPayloadFormatJson) PipelineInputPayloadFormatJson {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineInputPayloadFormatJson
+		return ret
+	}).(PipelineInputPayloadFormatJsonOutput)
+}
+
+type PipelineInputPayloadFormatProtobuf struct {
+	// The entire schema definition is stored in this field.
+	SchemaDefinition *string `pulumi:"schemaDefinition"`
+}
+
+// PipelineInputPayloadFormatProtobufInput is an input type that accepts PipelineInputPayloadFormatProtobufArgs and PipelineInputPayloadFormatProtobufOutput values.
+// You can construct a concrete instance of `PipelineInputPayloadFormatProtobufInput` via:
+//
+//	PipelineInputPayloadFormatProtobufArgs{...}
+type PipelineInputPayloadFormatProtobufInput interface {
+	pulumi.Input
+
+	ToPipelineInputPayloadFormatProtobufOutput() PipelineInputPayloadFormatProtobufOutput
+	ToPipelineInputPayloadFormatProtobufOutputWithContext(context.Context) PipelineInputPayloadFormatProtobufOutput
+}
+
+type PipelineInputPayloadFormatProtobufArgs struct {
+	// The entire schema definition is stored in this field.
+	SchemaDefinition pulumi.StringPtrInput `pulumi:"schemaDefinition"`
+}
+
+func (PipelineInputPayloadFormatProtobufArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineInputPayloadFormatProtobuf)(nil)).Elem()
+}
+
+func (i PipelineInputPayloadFormatProtobufArgs) ToPipelineInputPayloadFormatProtobufOutput() PipelineInputPayloadFormatProtobufOutput {
+	return i.ToPipelineInputPayloadFormatProtobufOutputWithContext(context.Background())
+}
+
+func (i PipelineInputPayloadFormatProtobufArgs) ToPipelineInputPayloadFormatProtobufOutputWithContext(ctx context.Context) PipelineInputPayloadFormatProtobufOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineInputPayloadFormatProtobufOutput)
+}
+
+func (i PipelineInputPayloadFormatProtobufArgs) ToPipelineInputPayloadFormatProtobufPtrOutput() PipelineInputPayloadFormatProtobufPtrOutput {
+	return i.ToPipelineInputPayloadFormatProtobufPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineInputPayloadFormatProtobufArgs) ToPipelineInputPayloadFormatProtobufPtrOutputWithContext(ctx context.Context) PipelineInputPayloadFormatProtobufPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineInputPayloadFormatProtobufOutput).ToPipelineInputPayloadFormatProtobufPtrOutputWithContext(ctx)
+}
+
+// PipelineInputPayloadFormatProtobufPtrInput is an input type that accepts PipelineInputPayloadFormatProtobufArgs, PipelineInputPayloadFormatProtobufPtr and PipelineInputPayloadFormatProtobufPtrOutput values.
+// You can construct a concrete instance of `PipelineInputPayloadFormatProtobufPtrInput` via:
+//
+//	        PipelineInputPayloadFormatProtobufArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineInputPayloadFormatProtobufPtrInput interface {
+	pulumi.Input
+
+	ToPipelineInputPayloadFormatProtobufPtrOutput() PipelineInputPayloadFormatProtobufPtrOutput
+	ToPipelineInputPayloadFormatProtobufPtrOutputWithContext(context.Context) PipelineInputPayloadFormatProtobufPtrOutput
+}
+
+type pipelineInputPayloadFormatProtobufPtrType PipelineInputPayloadFormatProtobufArgs
+
+func PipelineInputPayloadFormatProtobufPtr(v *PipelineInputPayloadFormatProtobufArgs) PipelineInputPayloadFormatProtobufPtrInput {
+	return (*pipelineInputPayloadFormatProtobufPtrType)(v)
+}
+
+func (*pipelineInputPayloadFormatProtobufPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineInputPayloadFormatProtobuf)(nil)).Elem()
+}
+
+func (i *pipelineInputPayloadFormatProtobufPtrType) ToPipelineInputPayloadFormatProtobufPtrOutput() PipelineInputPayloadFormatProtobufPtrOutput {
+	return i.ToPipelineInputPayloadFormatProtobufPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineInputPayloadFormatProtobufPtrType) ToPipelineInputPayloadFormatProtobufPtrOutputWithContext(ctx context.Context) PipelineInputPayloadFormatProtobufPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineInputPayloadFormatProtobufPtrOutput)
+}
+
+type PipelineInputPayloadFormatProtobufOutput struct{ *pulumi.OutputState }
+
+func (PipelineInputPayloadFormatProtobufOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineInputPayloadFormatProtobuf)(nil)).Elem()
+}
+
+func (o PipelineInputPayloadFormatProtobufOutput) ToPipelineInputPayloadFormatProtobufOutput() PipelineInputPayloadFormatProtobufOutput {
+	return o
+}
+
+func (o PipelineInputPayloadFormatProtobufOutput) ToPipelineInputPayloadFormatProtobufOutputWithContext(ctx context.Context) PipelineInputPayloadFormatProtobufOutput {
+	return o
+}
+
+func (o PipelineInputPayloadFormatProtobufOutput) ToPipelineInputPayloadFormatProtobufPtrOutput() PipelineInputPayloadFormatProtobufPtrOutput {
+	return o.ToPipelineInputPayloadFormatProtobufPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineInputPayloadFormatProtobufOutput) ToPipelineInputPayloadFormatProtobufPtrOutputWithContext(ctx context.Context) PipelineInputPayloadFormatProtobufPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineInputPayloadFormatProtobuf) *PipelineInputPayloadFormatProtobuf {
+		return &v
+	}).(PipelineInputPayloadFormatProtobufPtrOutput)
+}
+
+// The entire schema definition is stored in this field.
+func (o PipelineInputPayloadFormatProtobufOutput) SchemaDefinition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineInputPayloadFormatProtobuf) *string { return v.SchemaDefinition }).(pulumi.StringPtrOutput)
+}
+
+type PipelineInputPayloadFormatProtobufPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineInputPayloadFormatProtobufPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineInputPayloadFormatProtobuf)(nil)).Elem()
+}
+
+func (o PipelineInputPayloadFormatProtobufPtrOutput) ToPipelineInputPayloadFormatProtobufPtrOutput() PipelineInputPayloadFormatProtobufPtrOutput {
+	return o
+}
+
+func (o PipelineInputPayloadFormatProtobufPtrOutput) ToPipelineInputPayloadFormatProtobufPtrOutputWithContext(ctx context.Context) PipelineInputPayloadFormatProtobufPtrOutput {
+	return o
+}
+
+func (o PipelineInputPayloadFormatProtobufPtrOutput) Elem() PipelineInputPayloadFormatProtobufOutput {
+	return o.ApplyT(func(v *PipelineInputPayloadFormatProtobuf) PipelineInputPayloadFormatProtobuf {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineInputPayloadFormatProtobuf
+		return ret
+	}).(PipelineInputPayloadFormatProtobufOutput)
+}
+
+// The entire schema definition is stored in this field.
+func (o PipelineInputPayloadFormatProtobufPtrOutput) SchemaDefinition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineInputPayloadFormatProtobuf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaDefinition
+	}).(pulumi.StringPtrOutput)
+}
+
+type PipelineLoggingConfig struct {
+	// The minimum severity of logs that will be sent to Stackdriver/Platform
+	// Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+	// Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+	LogSeverity *string `pulumi:"logSeverity"`
+}
+
+// PipelineLoggingConfigInput is an input type that accepts PipelineLoggingConfigArgs and PipelineLoggingConfigOutput values.
+// You can construct a concrete instance of `PipelineLoggingConfigInput` via:
+//
+//	PipelineLoggingConfigArgs{...}
+type PipelineLoggingConfigInput interface {
+	pulumi.Input
+
+	ToPipelineLoggingConfigOutput() PipelineLoggingConfigOutput
+	ToPipelineLoggingConfigOutputWithContext(context.Context) PipelineLoggingConfigOutput
+}
+
+type PipelineLoggingConfigArgs struct {
+	// The minimum severity of logs that will be sent to Stackdriver/Platform
+	// Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+	// Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+	LogSeverity pulumi.StringPtrInput `pulumi:"logSeverity"`
+}
+
+func (PipelineLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineLoggingConfig)(nil)).Elem()
+}
+
+func (i PipelineLoggingConfigArgs) ToPipelineLoggingConfigOutput() PipelineLoggingConfigOutput {
+	return i.ToPipelineLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i PipelineLoggingConfigArgs) ToPipelineLoggingConfigOutputWithContext(ctx context.Context) PipelineLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineLoggingConfigOutput)
+}
+
+func (i PipelineLoggingConfigArgs) ToPipelineLoggingConfigPtrOutput() PipelineLoggingConfigPtrOutput {
+	return i.ToPipelineLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineLoggingConfigArgs) ToPipelineLoggingConfigPtrOutputWithContext(ctx context.Context) PipelineLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineLoggingConfigOutput).ToPipelineLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// PipelineLoggingConfigPtrInput is an input type that accepts PipelineLoggingConfigArgs, PipelineLoggingConfigPtr and PipelineLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `PipelineLoggingConfigPtrInput` via:
+//
+//	        PipelineLoggingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToPipelineLoggingConfigPtrOutput() PipelineLoggingConfigPtrOutput
+	ToPipelineLoggingConfigPtrOutputWithContext(context.Context) PipelineLoggingConfigPtrOutput
+}
+
+type pipelineLoggingConfigPtrType PipelineLoggingConfigArgs
+
+func PipelineLoggingConfigPtr(v *PipelineLoggingConfigArgs) PipelineLoggingConfigPtrInput {
+	return (*pipelineLoggingConfigPtrType)(v)
+}
+
+func (*pipelineLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineLoggingConfig)(nil)).Elem()
+}
+
+func (i *pipelineLoggingConfigPtrType) ToPipelineLoggingConfigPtrOutput() PipelineLoggingConfigPtrOutput {
+	return i.ToPipelineLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineLoggingConfigPtrType) ToPipelineLoggingConfigPtrOutputWithContext(ctx context.Context) PipelineLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineLoggingConfigPtrOutput)
+}
+
+type PipelineLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (PipelineLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineLoggingConfig)(nil)).Elem()
+}
+
+func (o PipelineLoggingConfigOutput) ToPipelineLoggingConfigOutput() PipelineLoggingConfigOutput {
+	return o
+}
+
+func (o PipelineLoggingConfigOutput) ToPipelineLoggingConfigOutputWithContext(ctx context.Context) PipelineLoggingConfigOutput {
+	return o
+}
+
+func (o PipelineLoggingConfigOutput) ToPipelineLoggingConfigPtrOutput() PipelineLoggingConfigPtrOutput {
+	return o.ToPipelineLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineLoggingConfigOutput) ToPipelineLoggingConfigPtrOutputWithContext(ctx context.Context) PipelineLoggingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineLoggingConfig) *PipelineLoggingConfig {
+		return &v
+	}).(PipelineLoggingConfigPtrOutput)
+}
+
+// The minimum severity of logs that will be sent to Stackdriver/Platform
+// Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+// Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+func (o PipelineLoggingConfigOutput) LogSeverity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineLoggingConfig) *string { return v.LogSeverity }).(pulumi.StringPtrOutput)
+}
+
+type PipelineLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineLoggingConfig)(nil)).Elem()
+}
+
+func (o PipelineLoggingConfigPtrOutput) ToPipelineLoggingConfigPtrOutput() PipelineLoggingConfigPtrOutput {
+	return o
+}
+
+func (o PipelineLoggingConfigPtrOutput) ToPipelineLoggingConfigPtrOutputWithContext(ctx context.Context) PipelineLoggingConfigPtrOutput {
+	return o
+}
+
+func (o PipelineLoggingConfigPtrOutput) Elem() PipelineLoggingConfigOutput {
+	return o.ApplyT(func(v *PipelineLoggingConfig) PipelineLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineLoggingConfig
+		return ret
+	}).(PipelineLoggingConfigOutput)
+}
+
+// The minimum severity of logs that will be sent to Stackdriver/Platform
+// Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+// Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+func (o PipelineLoggingConfigPtrOutput) LogSeverity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogSeverity
+	}).(pulumi.StringPtrOutput)
+}
+
+type PipelineMediation struct {
+	// Transformation defines the way to transform an incoming message.
+	// Structure is documented below.
+	Transformation *PipelineMediationTransformation `pulumi:"transformation"`
+}
+
+// PipelineMediationInput is an input type that accepts PipelineMediationArgs and PipelineMediationOutput values.
+// You can construct a concrete instance of `PipelineMediationInput` via:
+//
+//	PipelineMediationArgs{...}
+type PipelineMediationInput interface {
+	pulumi.Input
+
+	ToPipelineMediationOutput() PipelineMediationOutput
+	ToPipelineMediationOutputWithContext(context.Context) PipelineMediationOutput
+}
+
+type PipelineMediationArgs struct {
+	// Transformation defines the way to transform an incoming message.
+	// Structure is documented below.
+	Transformation PipelineMediationTransformationPtrInput `pulumi:"transformation"`
+}
+
+func (PipelineMediationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineMediation)(nil)).Elem()
+}
+
+func (i PipelineMediationArgs) ToPipelineMediationOutput() PipelineMediationOutput {
+	return i.ToPipelineMediationOutputWithContext(context.Background())
+}
+
+func (i PipelineMediationArgs) ToPipelineMediationOutputWithContext(ctx context.Context) PipelineMediationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineMediationOutput)
+}
+
+// PipelineMediationArrayInput is an input type that accepts PipelineMediationArray and PipelineMediationArrayOutput values.
+// You can construct a concrete instance of `PipelineMediationArrayInput` via:
+//
+//	PipelineMediationArray{ PipelineMediationArgs{...} }
+type PipelineMediationArrayInput interface {
+	pulumi.Input
+
+	ToPipelineMediationArrayOutput() PipelineMediationArrayOutput
+	ToPipelineMediationArrayOutputWithContext(context.Context) PipelineMediationArrayOutput
+}
+
+type PipelineMediationArray []PipelineMediationInput
+
+func (PipelineMediationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineMediation)(nil)).Elem()
+}
+
+func (i PipelineMediationArray) ToPipelineMediationArrayOutput() PipelineMediationArrayOutput {
+	return i.ToPipelineMediationArrayOutputWithContext(context.Background())
+}
+
+func (i PipelineMediationArray) ToPipelineMediationArrayOutputWithContext(ctx context.Context) PipelineMediationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineMediationArrayOutput)
+}
+
+type PipelineMediationOutput struct{ *pulumi.OutputState }
+
+func (PipelineMediationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineMediation)(nil)).Elem()
+}
+
+func (o PipelineMediationOutput) ToPipelineMediationOutput() PipelineMediationOutput {
+	return o
+}
+
+func (o PipelineMediationOutput) ToPipelineMediationOutputWithContext(ctx context.Context) PipelineMediationOutput {
+	return o
+}
+
+// Transformation defines the way to transform an incoming message.
+// Structure is documented below.
+func (o PipelineMediationOutput) Transformation() PipelineMediationTransformationPtrOutput {
+	return o.ApplyT(func(v PipelineMediation) *PipelineMediationTransformation { return v.Transformation }).(PipelineMediationTransformationPtrOutput)
+}
+
+type PipelineMediationArrayOutput struct{ *pulumi.OutputState }
+
+func (PipelineMediationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineMediation)(nil)).Elem()
+}
+
+func (o PipelineMediationArrayOutput) ToPipelineMediationArrayOutput() PipelineMediationArrayOutput {
+	return o
+}
+
+func (o PipelineMediationArrayOutput) ToPipelineMediationArrayOutputWithContext(ctx context.Context) PipelineMediationArrayOutput {
+	return o
+}
+
+func (o PipelineMediationArrayOutput) Index(i pulumi.IntInput) PipelineMediationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineMediation {
+		return vs[0].([]PipelineMediation)[vs[1].(int)]
+	}).(PipelineMediationOutput)
+}
+
+type PipelineMediationTransformation struct {
+	// The CEL expression template to apply to transform messages.
+	// The following CEL extension functions are provided for
+	// use in this CEL expression:
+	// - merge:
+	//   map1.merge(map2) > map3
+	// - Merges the passed CEL map with the existing CEL map the
+	//   function is applied to.
+	// - If the same key exists in both maps, if the key's value is type
+	//   map both maps are merged else the value from the passed map is
+	//   used.
+	// - denormalize:
+	//   map.denormalize() > map
+	// - Denormalizes a CEL map such that every value of type map or key
+	//   in the map is expanded to return a single level map.
+	// - The resulting keys are "." separated indices of the map keys.
+	// - For example:
+	//   {
+	//   "a": 1,
+	//   "b": {
+	//   "c": 2,
+	//   "d": 3
+	//   }
+	//   "e": [4, 5]
+	//   }
+	//   .denormalize()
+	// > {
+	// "a": 1,
+	// "b.c": 2,
+	// "b.d": 3,
+	// "e.0": 4,
+	// "e.1": 5
+	// }
+	// - setField:
+	//   map.setField(key, value) > message
+	// - Sets the field of the message with the given key to the
+	//   given value.
+	// - If the field is not present it will be added.
+	// - If the field is present it will be overwritten.
+	// - The key can be a dot separated path to set a field in a nested
+	//   message.
+	// - Key must be of type string.
+	// - Value may be any valid type.
+	// - removeFields:
+	//   map.removeFields([key1, key2, ...]) > message
+	// - Removes the fields of the map with the given keys.
+	// - The keys can be a dot separated path to remove a field in a
+	//   nested message.
+	// - If a key is not found it will be ignored.
+	// - Keys must be of type string.
+	// - toMap:
+	//   [map1, map2, ...].toMap() > map
+	// - Converts a CEL list of CEL maps to a single CEL map
+	// - toDestinationPayloadFormat():
+	//   message.data.toDestinationPayloadFormat() > string or bytes
+	// - Converts the message data to the destination payload format
+	//   specified in Pipeline.Destination.output_payload_format
+	// - This function is meant to be applied to the message.data field.
+	// - If the destination payload format is not set, the function will
+	//   return the message data unchanged.
+	// - toCloudEventJsonWithPayloadFormat:
+	//   message.toCloudEventJsonWithPayloadFormat() > map
+	// - Converts a message to the corresponding structure of JSON
+	//   format for CloudEvents
+	// - This function applies toDestinationPayloadFormat() to the
+	//   message data. It also sets the corresponding datacontenttype of
+	//   the CloudEvent, as indicated by
+	//   Pipeline.Destination.output_payload_format. If no
+	//   outputPayloadFormat is set it will use the existing
+	//   datacontenttype on the CloudEvent if present, else leave
+	//   datacontenttype absent.
+	// - This function expects that the content of the message will
+	//   adhere to the standard CloudEvent format. If it doesn't then this
+	//   function will fail.
+	// - The result is a CEL map that corresponds to the JSON
+	//   representation of the CloudEvent. To convert that data to a JSON
+	//   string it can be chained with the toJsonString function.
+	TransformationTemplate *string `pulumi:"transformationTemplate"`
+}
+
+// PipelineMediationTransformationInput is an input type that accepts PipelineMediationTransformationArgs and PipelineMediationTransformationOutput values.
+// You can construct a concrete instance of `PipelineMediationTransformationInput` via:
+//
+//	PipelineMediationTransformationArgs{...}
+type PipelineMediationTransformationInput interface {
+	pulumi.Input
+
+	ToPipelineMediationTransformationOutput() PipelineMediationTransformationOutput
+	ToPipelineMediationTransformationOutputWithContext(context.Context) PipelineMediationTransformationOutput
+}
+
+type PipelineMediationTransformationArgs struct {
+	// The CEL expression template to apply to transform messages.
+	// The following CEL extension functions are provided for
+	// use in this CEL expression:
+	// - merge:
+	//   map1.merge(map2) > map3
+	// - Merges the passed CEL map with the existing CEL map the
+	//   function is applied to.
+	// - If the same key exists in both maps, if the key's value is type
+	//   map both maps are merged else the value from the passed map is
+	//   used.
+	// - denormalize:
+	//   map.denormalize() > map
+	// - Denormalizes a CEL map such that every value of type map or key
+	//   in the map is expanded to return a single level map.
+	// - The resulting keys are "." separated indices of the map keys.
+	// - For example:
+	//   {
+	//   "a": 1,
+	//   "b": {
+	//   "c": 2,
+	//   "d": 3
+	//   }
+	//   "e": [4, 5]
+	//   }
+	//   .denormalize()
+	// > {
+	// "a": 1,
+	// "b.c": 2,
+	// "b.d": 3,
+	// "e.0": 4,
+	// "e.1": 5
+	// }
+	// - setField:
+	//   map.setField(key, value) > message
+	// - Sets the field of the message with the given key to the
+	//   given value.
+	// - If the field is not present it will be added.
+	// - If the field is present it will be overwritten.
+	// - The key can be a dot separated path to set a field in a nested
+	//   message.
+	// - Key must be of type string.
+	// - Value may be any valid type.
+	// - removeFields:
+	//   map.removeFields([key1, key2, ...]) > message
+	// - Removes the fields of the map with the given keys.
+	// - The keys can be a dot separated path to remove a field in a
+	//   nested message.
+	// - If a key is not found it will be ignored.
+	// - Keys must be of type string.
+	// - toMap:
+	//   [map1, map2, ...].toMap() > map
+	// - Converts a CEL list of CEL maps to a single CEL map
+	// - toDestinationPayloadFormat():
+	//   message.data.toDestinationPayloadFormat() > string or bytes
+	// - Converts the message data to the destination payload format
+	//   specified in Pipeline.Destination.output_payload_format
+	// - This function is meant to be applied to the message.data field.
+	// - If the destination payload format is not set, the function will
+	//   return the message data unchanged.
+	// - toCloudEventJsonWithPayloadFormat:
+	//   message.toCloudEventJsonWithPayloadFormat() > map
+	// - Converts a message to the corresponding structure of JSON
+	//   format for CloudEvents
+	// - This function applies toDestinationPayloadFormat() to the
+	//   message data. It also sets the corresponding datacontenttype of
+	//   the CloudEvent, as indicated by
+	//   Pipeline.Destination.output_payload_format. If no
+	//   outputPayloadFormat is set it will use the existing
+	//   datacontenttype on the CloudEvent if present, else leave
+	//   datacontenttype absent.
+	// - This function expects that the content of the message will
+	//   adhere to the standard CloudEvent format. If it doesn't then this
+	//   function will fail.
+	// - The result is a CEL map that corresponds to the JSON
+	//   representation of the CloudEvent. To convert that data to a JSON
+	//   string it can be chained with the toJsonString function.
+	TransformationTemplate pulumi.StringPtrInput `pulumi:"transformationTemplate"`
+}
+
+func (PipelineMediationTransformationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineMediationTransformation)(nil)).Elem()
+}
+
+func (i PipelineMediationTransformationArgs) ToPipelineMediationTransformationOutput() PipelineMediationTransformationOutput {
+	return i.ToPipelineMediationTransformationOutputWithContext(context.Background())
+}
+
+func (i PipelineMediationTransformationArgs) ToPipelineMediationTransformationOutputWithContext(ctx context.Context) PipelineMediationTransformationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineMediationTransformationOutput)
+}
+
+func (i PipelineMediationTransformationArgs) ToPipelineMediationTransformationPtrOutput() PipelineMediationTransformationPtrOutput {
+	return i.ToPipelineMediationTransformationPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineMediationTransformationArgs) ToPipelineMediationTransformationPtrOutputWithContext(ctx context.Context) PipelineMediationTransformationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineMediationTransformationOutput).ToPipelineMediationTransformationPtrOutputWithContext(ctx)
+}
+
+// PipelineMediationTransformationPtrInput is an input type that accepts PipelineMediationTransformationArgs, PipelineMediationTransformationPtr and PipelineMediationTransformationPtrOutput values.
+// You can construct a concrete instance of `PipelineMediationTransformationPtrInput` via:
+//
+//	        PipelineMediationTransformationArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineMediationTransformationPtrInput interface {
+	pulumi.Input
+
+	ToPipelineMediationTransformationPtrOutput() PipelineMediationTransformationPtrOutput
+	ToPipelineMediationTransformationPtrOutputWithContext(context.Context) PipelineMediationTransformationPtrOutput
+}
+
+type pipelineMediationTransformationPtrType PipelineMediationTransformationArgs
+
+func PipelineMediationTransformationPtr(v *PipelineMediationTransformationArgs) PipelineMediationTransformationPtrInput {
+	return (*pipelineMediationTransformationPtrType)(v)
+}
+
+func (*pipelineMediationTransformationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineMediationTransformation)(nil)).Elem()
+}
+
+func (i *pipelineMediationTransformationPtrType) ToPipelineMediationTransformationPtrOutput() PipelineMediationTransformationPtrOutput {
+	return i.ToPipelineMediationTransformationPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineMediationTransformationPtrType) ToPipelineMediationTransformationPtrOutputWithContext(ctx context.Context) PipelineMediationTransformationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineMediationTransformationPtrOutput)
+}
+
+type PipelineMediationTransformationOutput struct{ *pulumi.OutputState }
+
+func (PipelineMediationTransformationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineMediationTransformation)(nil)).Elem()
+}
+
+func (o PipelineMediationTransformationOutput) ToPipelineMediationTransformationOutput() PipelineMediationTransformationOutput {
+	return o
+}
+
+func (o PipelineMediationTransformationOutput) ToPipelineMediationTransformationOutputWithContext(ctx context.Context) PipelineMediationTransformationOutput {
+	return o
+}
+
+func (o PipelineMediationTransformationOutput) ToPipelineMediationTransformationPtrOutput() PipelineMediationTransformationPtrOutput {
+	return o.ToPipelineMediationTransformationPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineMediationTransformationOutput) ToPipelineMediationTransformationPtrOutputWithContext(ctx context.Context) PipelineMediationTransformationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineMediationTransformation) *PipelineMediationTransformation {
+		return &v
+	}).(PipelineMediationTransformationPtrOutput)
+}
+
+// The CEL expression template to apply to transform messages.
+// The following CEL extension functions are provided for
+// use in this CEL expression:
+//   - merge:
+//     map1.merge(map2) > map3
+//   - Merges the passed CEL map with the existing CEL map the
+//     function is applied to.
+//   - If the same key exists in both maps, if the key's value is type
+//     map both maps are merged else the value from the passed map is
+//     used.
+//   - denormalize:
+//     map.denormalize() > map
+//   - Denormalizes a CEL map such that every value of type map or key
+//     in the map is expanded to return a single level map.
+//   - The resulting keys are "." separated indices of the map keys.
+//   - For example:
+//     {
+//     "a": 1,
+//     "b": {
+//     "c": 2,
+//     "d": 3
+//     }
+//     "e": [4, 5]
+//     }
+//     .denormalize()
+//
+// > {
+// "a": 1,
+// "b.c": 2,
+// "b.d": 3,
+// "e.0": 4,
+// "e.1": 5
+// }
+//   - setField:
+//     map.setField(key, value) > message
+//   - Sets the field of the message with the given key to the
+//     given value.
+//   - If the field is not present it will be added.
+//   - If the field is present it will be overwritten.
+//   - The key can be a dot separated path to set a field in a nested
+//     message.
+//   - Key must be of type string.
+//   - Value may be any valid type.
+//   - removeFields:
+//     map.removeFields([key1, key2, ...]) > message
+//   - Removes the fields of the map with the given keys.
+//   - The keys can be a dot separated path to remove a field in a
+//     nested message.
+//   - If a key is not found it will be ignored.
+//   - Keys must be of type string.
+//   - toMap:
+//     [map1, map2, ...].toMap() > map
+//   - Converts a CEL list of CEL maps to a single CEL map
+//   - toDestinationPayloadFormat():
+//     message.data.toDestinationPayloadFormat() > string or bytes
+//   - Converts the message data to the destination payload format
+//     specified in Pipeline.Destination.output_payload_format
+//   - This function is meant to be applied to the message.data field.
+//   - If the destination payload format is not set, the function will
+//     return the message data unchanged.
+//   - toCloudEventJsonWithPayloadFormat:
+//     message.toCloudEventJsonWithPayloadFormat() > map
+//   - Converts a message to the corresponding structure of JSON
+//     format for CloudEvents
+//   - This function applies toDestinationPayloadFormat() to the
+//     message data. It also sets the corresponding datacontenttype of
+//     the CloudEvent, as indicated by
+//     Pipeline.Destination.output_payload_format. If no
+//     outputPayloadFormat is set it will use the existing
+//     datacontenttype on the CloudEvent if present, else leave
+//     datacontenttype absent.
+//   - This function expects that the content of the message will
+//     adhere to the standard CloudEvent format. If it doesn't then this
+//     function will fail.
+//   - The result is a CEL map that corresponds to the JSON
+//     representation of the CloudEvent. To convert that data to a JSON
+//     string it can be chained with the toJsonString function.
+func (o PipelineMediationTransformationOutput) TransformationTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineMediationTransformation) *string { return v.TransformationTemplate }).(pulumi.StringPtrOutput)
+}
+
+type PipelineMediationTransformationPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineMediationTransformationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineMediationTransformation)(nil)).Elem()
+}
+
+func (o PipelineMediationTransformationPtrOutput) ToPipelineMediationTransformationPtrOutput() PipelineMediationTransformationPtrOutput {
+	return o
+}
+
+func (o PipelineMediationTransformationPtrOutput) ToPipelineMediationTransformationPtrOutputWithContext(ctx context.Context) PipelineMediationTransformationPtrOutput {
+	return o
+}
+
+func (o PipelineMediationTransformationPtrOutput) Elem() PipelineMediationTransformationOutput {
+	return o.ApplyT(func(v *PipelineMediationTransformation) PipelineMediationTransformation {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineMediationTransformation
+		return ret
+	}).(PipelineMediationTransformationOutput)
+}
+
+// The CEL expression template to apply to transform messages.
+// The following CEL extension functions are provided for
+// use in this CEL expression:
+//   - merge:
+//     map1.merge(map2) > map3
+//   - Merges the passed CEL map with the existing CEL map the
+//     function is applied to.
+//   - If the same key exists in both maps, if the key's value is type
+//     map both maps are merged else the value from the passed map is
+//     used.
+//   - denormalize:
+//     map.denormalize() > map
+//   - Denormalizes a CEL map such that every value of type map or key
+//     in the map is expanded to return a single level map.
+//   - The resulting keys are "." separated indices of the map keys.
+//   - For example:
+//     {
+//     "a": 1,
+//     "b": {
+//     "c": 2,
+//     "d": 3
+//     }
+//     "e": [4, 5]
+//     }
+//     .denormalize()
+//
+// > {
+// "a": 1,
+// "b.c": 2,
+// "b.d": 3,
+// "e.0": 4,
+// "e.1": 5
+// }
+//   - setField:
+//     map.setField(key, value) > message
+//   - Sets the field of the message with the given key to the
+//     given value.
+//   - If the field is not present it will be added.
+//   - If the field is present it will be overwritten.
+//   - The key can be a dot separated path to set a field in a nested
+//     message.
+//   - Key must be of type string.
+//   - Value may be any valid type.
+//   - removeFields:
+//     map.removeFields([key1, key2, ...]) > message
+//   - Removes the fields of the map with the given keys.
+//   - The keys can be a dot separated path to remove a field in a
+//     nested message.
+//   - If a key is not found it will be ignored.
+//   - Keys must be of type string.
+//   - toMap:
+//     [map1, map2, ...].toMap() > map
+//   - Converts a CEL list of CEL maps to a single CEL map
+//   - toDestinationPayloadFormat():
+//     message.data.toDestinationPayloadFormat() > string or bytes
+//   - Converts the message data to the destination payload format
+//     specified in Pipeline.Destination.output_payload_format
+//   - This function is meant to be applied to the message.data field.
+//   - If the destination payload format is not set, the function will
+//     return the message data unchanged.
+//   - toCloudEventJsonWithPayloadFormat:
+//     message.toCloudEventJsonWithPayloadFormat() > map
+//   - Converts a message to the corresponding structure of JSON
+//     format for CloudEvents
+//   - This function applies toDestinationPayloadFormat() to the
+//     message data. It also sets the corresponding datacontenttype of
+//     the CloudEvent, as indicated by
+//     Pipeline.Destination.output_payload_format. If no
+//     outputPayloadFormat is set it will use the existing
+//     datacontenttype on the CloudEvent if present, else leave
+//     datacontenttype absent.
+//   - This function expects that the content of the message will
+//     adhere to the standard CloudEvent format. If it doesn't then this
+//     function will fail.
+//   - The result is a CEL map that corresponds to the JSON
+//     representation of the CloudEvent. To convert that data to a JSON
+//     string it can be chained with the toJsonString function.
+func (o PipelineMediationTransformationPtrOutput) TransformationTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineMediationTransformation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TransformationTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+type PipelineRetryPolicy struct {
+	// The maximum number of delivery attempts for any message. The value must
+	// be between 1 and 100.
+	// The default value for this field is 5.
+	MaxAttempts *int `pulumi:"maxAttempts"`
+	// The maximum amount of seconds to wait between retry attempts. The value
+	// must be between 1 and 600.
+	// The default value for this field is 60.
+	MaxRetryDelay *string `pulumi:"maxRetryDelay"`
+	// The minimum amount of seconds to wait between retry attempts. The value
+	// must be between 1 and 600.
+	// The default value for this field is 5.
+	MinRetryDelay *string `pulumi:"minRetryDelay"`
+}
+
+// PipelineRetryPolicyInput is an input type that accepts PipelineRetryPolicyArgs and PipelineRetryPolicyOutput values.
+// You can construct a concrete instance of `PipelineRetryPolicyInput` via:
+//
+//	PipelineRetryPolicyArgs{...}
+type PipelineRetryPolicyInput interface {
+	pulumi.Input
+
+	ToPipelineRetryPolicyOutput() PipelineRetryPolicyOutput
+	ToPipelineRetryPolicyOutputWithContext(context.Context) PipelineRetryPolicyOutput
+}
+
+type PipelineRetryPolicyArgs struct {
+	// The maximum number of delivery attempts for any message. The value must
+	// be between 1 and 100.
+	// The default value for this field is 5.
+	MaxAttempts pulumi.IntPtrInput `pulumi:"maxAttempts"`
+	// The maximum amount of seconds to wait between retry attempts. The value
+	// must be between 1 and 600.
+	// The default value for this field is 60.
+	MaxRetryDelay pulumi.StringPtrInput `pulumi:"maxRetryDelay"`
+	// The minimum amount of seconds to wait between retry attempts. The value
+	// must be between 1 and 600.
+	// The default value for this field is 5.
+	MinRetryDelay pulumi.StringPtrInput `pulumi:"minRetryDelay"`
+}
+
+func (PipelineRetryPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineRetryPolicy)(nil)).Elem()
+}
+
+func (i PipelineRetryPolicyArgs) ToPipelineRetryPolicyOutput() PipelineRetryPolicyOutput {
+	return i.ToPipelineRetryPolicyOutputWithContext(context.Background())
+}
+
+func (i PipelineRetryPolicyArgs) ToPipelineRetryPolicyOutputWithContext(ctx context.Context) PipelineRetryPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineRetryPolicyOutput)
+}
+
+func (i PipelineRetryPolicyArgs) ToPipelineRetryPolicyPtrOutput() PipelineRetryPolicyPtrOutput {
+	return i.ToPipelineRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineRetryPolicyArgs) ToPipelineRetryPolicyPtrOutputWithContext(ctx context.Context) PipelineRetryPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineRetryPolicyOutput).ToPipelineRetryPolicyPtrOutputWithContext(ctx)
+}
+
+// PipelineRetryPolicyPtrInput is an input type that accepts PipelineRetryPolicyArgs, PipelineRetryPolicyPtr and PipelineRetryPolicyPtrOutput values.
+// You can construct a concrete instance of `PipelineRetryPolicyPtrInput` via:
+//
+//	        PipelineRetryPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineRetryPolicyPtrInput interface {
+	pulumi.Input
+
+	ToPipelineRetryPolicyPtrOutput() PipelineRetryPolicyPtrOutput
+	ToPipelineRetryPolicyPtrOutputWithContext(context.Context) PipelineRetryPolicyPtrOutput
+}
+
+type pipelineRetryPolicyPtrType PipelineRetryPolicyArgs
+
+func PipelineRetryPolicyPtr(v *PipelineRetryPolicyArgs) PipelineRetryPolicyPtrInput {
+	return (*pipelineRetryPolicyPtrType)(v)
+}
+
+func (*pipelineRetryPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineRetryPolicy)(nil)).Elem()
+}
+
+func (i *pipelineRetryPolicyPtrType) ToPipelineRetryPolicyPtrOutput() PipelineRetryPolicyPtrOutput {
+	return i.ToPipelineRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineRetryPolicyPtrType) ToPipelineRetryPolicyPtrOutputWithContext(ctx context.Context) PipelineRetryPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineRetryPolicyPtrOutput)
+}
+
+type PipelineRetryPolicyOutput struct{ *pulumi.OutputState }
+
+func (PipelineRetryPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineRetryPolicy)(nil)).Elem()
+}
+
+func (o PipelineRetryPolicyOutput) ToPipelineRetryPolicyOutput() PipelineRetryPolicyOutput {
+	return o
+}
+
+func (o PipelineRetryPolicyOutput) ToPipelineRetryPolicyOutputWithContext(ctx context.Context) PipelineRetryPolicyOutput {
+	return o
+}
+
+func (o PipelineRetryPolicyOutput) ToPipelineRetryPolicyPtrOutput() PipelineRetryPolicyPtrOutput {
+	return o.ToPipelineRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineRetryPolicyOutput) ToPipelineRetryPolicyPtrOutputWithContext(ctx context.Context) PipelineRetryPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineRetryPolicy) *PipelineRetryPolicy {
+		return &v
+	}).(PipelineRetryPolicyPtrOutput)
+}
+
+// The maximum number of delivery attempts for any message. The value must
+// be between 1 and 100.
+// The default value for this field is 5.
+func (o PipelineRetryPolicyOutput) MaxAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineRetryPolicy) *int { return v.MaxAttempts }).(pulumi.IntPtrOutput)
+}
+
+// The maximum amount of seconds to wait between retry attempts. The value
+// must be between 1 and 600.
+// The default value for this field is 60.
+func (o PipelineRetryPolicyOutput) MaxRetryDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineRetryPolicy) *string { return v.MaxRetryDelay }).(pulumi.StringPtrOutput)
+}
+
+// The minimum amount of seconds to wait between retry attempts. The value
+// must be between 1 and 600.
+// The default value for this field is 5.
+func (o PipelineRetryPolicyOutput) MinRetryDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineRetryPolicy) *string { return v.MinRetryDelay }).(pulumi.StringPtrOutput)
+}
+
+type PipelineRetryPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineRetryPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineRetryPolicy)(nil)).Elem()
+}
+
+func (o PipelineRetryPolicyPtrOutput) ToPipelineRetryPolicyPtrOutput() PipelineRetryPolicyPtrOutput {
+	return o
+}
+
+func (o PipelineRetryPolicyPtrOutput) ToPipelineRetryPolicyPtrOutputWithContext(ctx context.Context) PipelineRetryPolicyPtrOutput {
+	return o
+}
+
+func (o PipelineRetryPolicyPtrOutput) Elem() PipelineRetryPolicyOutput {
+	return o.ApplyT(func(v *PipelineRetryPolicy) PipelineRetryPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineRetryPolicy
+		return ret
+	}).(PipelineRetryPolicyOutput)
+}
+
+// The maximum number of delivery attempts for any message. The value must
+// be between 1 and 100.
+// The default value for this field is 5.
+func (o PipelineRetryPolicyPtrOutput) MaxAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PipelineRetryPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAttempts
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum amount of seconds to wait between retry attempts. The value
+// must be between 1 and 600.
+// The default value for this field is 60.
+func (o PipelineRetryPolicyPtrOutput) MaxRetryDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineRetryPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRetryDelay
+	}).(pulumi.StringPtrOutput)
+}
+
+// The minimum amount of seconds to wait between retry attempts. The value
+// must be between 1 and 600.
+// The default value for this field is 5.
+func (o PipelineRetryPolicyPtrOutput) MinRetryDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineRetryPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinRetryDelay
+	}).(pulumi.StringPtrOutput)
+}
+
 type TriggerDestination struct {
 	// (Output)
 	// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
@@ -1646,6 +5374,42 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleApiSourceLoggingConfigPtrInput)(nil)).Elem(), GoogleApiSourceLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MessageBusLoggingConfigInput)(nil)).Elem(), MessageBusLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MessageBusLoggingConfigPtrInput)(nil)).Elem(), MessageBusLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDestinationInput)(nil)).Elem(), PipelineDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDestinationArrayInput)(nil)).Elem(), PipelineDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDestinationAuthenticationConfigInput)(nil)).Elem(), PipelineDestinationAuthenticationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDestinationAuthenticationConfigPtrInput)(nil)).Elem(), PipelineDestinationAuthenticationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDestinationAuthenticationConfigGoogleOidcInput)(nil)).Elem(), PipelineDestinationAuthenticationConfigGoogleOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDestinationAuthenticationConfigGoogleOidcPtrInput)(nil)).Elem(), PipelineDestinationAuthenticationConfigGoogleOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDestinationAuthenticationConfigOauthTokenInput)(nil)).Elem(), PipelineDestinationAuthenticationConfigOauthTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDestinationAuthenticationConfigOauthTokenPtrInput)(nil)).Elem(), PipelineDestinationAuthenticationConfigOauthTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDestinationHttpEndpointInput)(nil)).Elem(), PipelineDestinationHttpEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDestinationHttpEndpointPtrInput)(nil)).Elem(), PipelineDestinationHttpEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDestinationNetworkConfigInput)(nil)).Elem(), PipelineDestinationNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDestinationNetworkConfigPtrInput)(nil)).Elem(), PipelineDestinationNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDestinationOutputPayloadFormatInput)(nil)).Elem(), PipelineDestinationOutputPayloadFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDestinationOutputPayloadFormatPtrInput)(nil)).Elem(), PipelineDestinationOutputPayloadFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDestinationOutputPayloadFormatAvroInput)(nil)).Elem(), PipelineDestinationOutputPayloadFormatAvroArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDestinationOutputPayloadFormatAvroPtrInput)(nil)).Elem(), PipelineDestinationOutputPayloadFormatAvroArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDestinationOutputPayloadFormatJsonInput)(nil)).Elem(), PipelineDestinationOutputPayloadFormatJsonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDestinationOutputPayloadFormatJsonPtrInput)(nil)).Elem(), PipelineDestinationOutputPayloadFormatJsonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDestinationOutputPayloadFormatProtobufInput)(nil)).Elem(), PipelineDestinationOutputPayloadFormatProtobufArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDestinationOutputPayloadFormatProtobufPtrInput)(nil)).Elem(), PipelineDestinationOutputPayloadFormatProtobufArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineInputPayloadFormatInput)(nil)).Elem(), PipelineInputPayloadFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineInputPayloadFormatPtrInput)(nil)).Elem(), PipelineInputPayloadFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineInputPayloadFormatAvroInput)(nil)).Elem(), PipelineInputPayloadFormatAvroArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineInputPayloadFormatAvroPtrInput)(nil)).Elem(), PipelineInputPayloadFormatAvroArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineInputPayloadFormatJsonInput)(nil)).Elem(), PipelineInputPayloadFormatJsonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineInputPayloadFormatJsonPtrInput)(nil)).Elem(), PipelineInputPayloadFormatJsonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineInputPayloadFormatProtobufInput)(nil)).Elem(), PipelineInputPayloadFormatProtobufArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineInputPayloadFormatProtobufPtrInput)(nil)).Elem(), PipelineInputPayloadFormatProtobufArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineLoggingConfigInput)(nil)).Elem(), PipelineLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineLoggingConfigPtrInput)(nil)).Elem(), PipelineLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineMediationInput)(nil)).Elem(), PipelineMediationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineMediationArrayInput)(nil)).Elem(), PipelineMediationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineMediationTransformationInput)(nil)).Elem(), PipelineMediationTransformationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineMediationTransformationPtrInput)(nil)).Elem(), PipelineMediationTransformationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineRetryPolicyInput)(nil)).Elem(), PipelineRetryPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineRetryPolicyPtrInput)(nil)).Elem(), PipelineRetryPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationInput)(nil)).Elem(), TriggerDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationPtrInput)(nil)).Elem(), TriggerDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationCloudRunServiceInput)(nil)).Elem(), TriggerDestinationCloudRunServiceArgs{})
@@ -1666,6 +5430,42 @@ func init() {
 	pulumi.RegisterOutputType(GoogleApiSourceLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(MessageBusLoggingConfigOutput{})
 	pulumi.RegisterOutputType(MessageBusLoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(PipelineDestinationOutput{})
+	pulumi.RegisterOutputType(PipelineDestinationArrayOutput{})
+	pulumi.RegisterOutputType(PipelineDestinationAuthenticationConfigOutput{})
+	pulumi.RegisterOutputType(PipelineDestinationAuthenticationConfigPtrOutput{})
+	pulumi.RegisterOutputType(PipelineDestinationAuthenticationConfigGoogleOidcOutput{})
+	pulumi.RegisterOutputType(PipelineDestinationAuthenticationConfigGoogleOidcPtrOutput{})
+	pulumi.RegisterOutputType(PipelineDestinationAuthenticationConfigOauthTokenOutput{})
+	pulumi.RegisterOutputType(PipelineDestinationAuthenticationConfigOauthTokenPtrOutput{})
+	pulumi.RegisterOutputType(PipelineDestinationHttpEndpointOutput{})
+	pulumi.RegisterOutputType(PipelineDestinationHttpEndpointPtrOutput{})
+	pulumi.RegisterOutputType(PipelineDestinationNetworkConfigOutput{})
+	pulumi.RegisterOutputType(PipelineDestinationNetworkConfigPtrOutput{})
+	pulumi.RegisterOutputType(PipelineDestinationOutputPayloadFormatOutput{})
+	pulumi.RegisterOutputType(PipelineDestinationOutputPayloadFormatPtrOutput{})
+	pulumi.RegisterOutputType(PipelineDestinationOutputPayloadFormatAvroOutput{})
+	pulumi.RegisterOutputType(PipelineDestinationOutputPayloadFormatAvroPtrOutput{})
+	pulumi.RegisterOutputType(PipelineDestinationOutputPayloadFormatJsonOutput{})
+	pulumi.RegisterOutputType(PipelineDestinationOutputPayloadFormatJsonPtrOutput{})
+	pulumi.RegisterOutputType(PipelineDestinationOutputPayloadFormatProtobufOutput{})
+	pulumi.RegisterOutputType(PipelineDestinationOutputPayloadFormatProtobufPtrOutput{})
+	pulumi.RegisterOutputType(PipelineInputPayloadFormatOutput{})
+	pulumi.RegisterOutputType(PipelineInputPayloadFormatPtrOutput{})
+	pulumi.RegisterOutputType(PipelineInputPayloadFormatAvroOutput{})
+	pulumi.RegisterOutputType(PipelineInputPayloadFormatAvroPtrOutput{})
+	pulumi.RegisterOutputType(PipelineInputPayloadFormatJsonOutput{})
+	pulumi.RegisterOutputType(PipelineInputPayloadFormatJsonPtrOutput{})
+	pulumi.RegisterOutputType(PipelineInputPayloadFormatProtobufOutput{})
+	pulumi.RegisterOutputType(PipelineInputPayloadFormatProtobufPtrOutput{})
+	pulumi.RegisterOutputType(PipelineLoggingConfigOutput{})
+	pulumi.RegisterOutputType(PipelineLoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(PipelineMediationOutput{})
+	pulumi.RegisterOutputType(PipelineMediationArrayOutput{})
+	pulumi.RegisterOutputType(PipelineMediationTransformationOutput{})
+	pulumi.RegisterOutputType(PipelineMediationTransformationPtrOutput{})
+	pulumi.RegisterOutputType(PipelineRetryPolicyOutput{})
+	pulumi.RegisterOutputType(PipelineRetryPolicyPtrOutput{})
 	pulumi.RegisterOutputType(TriggerDestinationOutput{})
 	pulumi.RegisterOutputType(TriggerDestinationPtrOutput{})
 	pulumi.RegisterOutputType(TriggerDestinationCloudRunServiceOutput{})

@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Hierarchical firewall policy rules let you create and enforce a consistent firewall policy across your organization. Rules can explicitly allow or deny connections or delegate evaluation to lower level policies. Policies can be created within organizations or folders.
+ *
+ * This resource should be generally be used with `gcp.compute.FirewallPolicyAssociation` and `gcp.compute.FirewallPolicyRule`
+ *
+ * For more information see the [official documentation](https://cloud.google.com/vpc/docs/firewall-policies)
+ *
+ * To get more information about FirewallPolicy, see:
+ *
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/firewallPolicies)
+ *
  * ## Example Usage
  *
  * ### Firewall Policy

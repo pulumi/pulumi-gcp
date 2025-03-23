@@ -16,23 +16,61 @@ public final class GetKeyRingsArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetKeyRingsArgs Empty = new GetKeyRingsArgs();
 
+    /**
+     * The filter argument is used to add a filter query parameter that limits which key rings are retrieved by the data source: ?filter={{filter}}. When no value is provided there is no filtering.
+     * 
+     * Example filter values if filtering on name. Note: names take the form projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}.
+     * 
+     * * `&#34;name:my-key-&#34;` will retrieve key rings that contain &#34;my-key-&#34; anywhere in their name.
+     * * `&#34;name=projects/my-project/locations/global/keyRings/my-key-ring&#34;` will only retrieve a key with that exact name.
+     * 
+     * [See the documentation about using filters](https://cloud.google.com/kms/docs/sorting-and-filtering)
+     * 
+     */
     @Import(name="filter")
     private @Nullable Output<String> filter;
 
+    /**
+     * @return The filter argument is used to add a filter query parameter that limits which key rings are retrieved by the data source: ?filter={{filter}}. When no value is provided there is no filtering.
+     * 
+     * Example filter values if filtering on name. Note: names take the form projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}.
+     * 
+     * * `&#34;name:my-key-&#34;` will retrieve key rings that contain &#34;my-key-&#34; anywhere in their name.
+     * * `&#34;name=projects/my-project/locations/global/keyRings/my-key-ring&#34;` will only retrieve a key with that exact name.
+     * 
+     * [See the documentation about using filters](https://cloud.google.com/kms/docs/sorting-and-filtering)
+     * 
+     */
     public Optional<Output<String>> filter() {
         return Optional.ofNullable(this.filter);
     }
 
+    /**
+     * The location that the underlying key ring resides in. e.g us-west1
+     * 
+     */
     @Import(name="location", required=true)
     private Output<String> location;
 
+    /**
+     * @return The location that the underlying key ring resides in. e.g us-west1
+     * 
+     */
     public Output<String> location() {
         return this.location;
     }
 
+    /**
+     * The Project ID of the project.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The Project ID of the project.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -63,29 +101,79 @@ public final class GetKeyRingsArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetKeyRingsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param filter The filter argument is used to add a filter query parameter that limits which key rings are retrieved by the data source: ?filter={{filter}}. When no value is provided there is no filtering.
+         * 
+         * Example filter values if filtering on name. Note: names take the form projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}.
+         * 
+         * * `&#34;name:my-key-&#34;` will retrieve key rings that contain &#34;my-key-&#34; anywhere in their name.
+         * * `&#34;name=projects/my-project/locations/global/keyRings/my-key-ring&#34;` will only retrieve a key with that exact name.
+         * 
+         * [See the documentation about using filters](https://cloud.google.com/kms/docs/sorting-and-filtering)
+         * 
+         * @return builder
+         * 
+         */
         public Builder filter(@Nullable Output<String> filter) {
             $.filter = filter;
             return this;
         }
 
+        /**
+         * @param filter The filter argument is used to add a filter query parameter that limits which key rings are retrieved by the data source: ?filter={{filter}}. When no value is provided there is no filtering.
+         * 
+         * Example filter values if filtering on name. Note: names take the form projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}.
+         * 
+         * * `&#34;name:my-key-&#34;` will retrieve key rings that contain &#34;my-key-&#34; anywhere in their name.
+         * * `&#34;name=projects/my-project/locations/global/keyRings/my-key-ring&#34;` will only retrieve a key with that exact name.
+         * 
+         * [See the documentation about using filters](https://cloud.google.com/kms/docs/sorting-and-filtering)
+         * 
+         * @return builder
+         * 
+         */
         public Builder filter(String filter) {
             return filter(Output.of(filter));
         }
 
+        /**
+         * @param location The location that the underlying key ring resides in. e.g us-west1
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(Output<String> location) {
             $.location = location;
             return this;
         }
 
+        /**
+         * @param location The location that the underlying key ring resides in. e.g us-west1
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(String location) {
             return location(Output.of(location));
         }
 
+        /**
+         * @param project The Project ID of the project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The Project ID of the project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

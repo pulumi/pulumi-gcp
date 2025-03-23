@@ -58,7 +58,7 @@ import (
 //			functionNegFunction, err := cloudfunctions.NewFunction(ctx, "function_neg", &cloudfunctions.FunctionArgs{
 //				Name:                pulumi.String("function-neg"),
 //				Description:         pulumi.String("My function"),
-//				Runtime:             pulumi.String("nodejs10"),
+//				Runtime:             pulumi.String("nodejs20"),
 //				AvailableMemoryMb:   pulumi.Int(128),
 //				SourceArchiveBucket: bucket.Name,
 //				SourceArchiveObject: archive.Name,

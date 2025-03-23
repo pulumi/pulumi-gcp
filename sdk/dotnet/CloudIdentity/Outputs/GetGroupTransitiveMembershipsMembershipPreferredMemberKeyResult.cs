@@ -14,26 +14,16 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
     public sealed class GetGroupTransitiveMembershipsMembershipPreferredMemberKeyResult
     {
         /// <summary>
-        /// The ID of the entity.
-        /// 
-        /// For Google-managed entities, the id must be the email address of an existing
-        /// group or user.
-        /// 
-        /// For external-identity-mapped entities, the id must be a string conforming
+        /// The ID of the entity. For Google-managed entities, the id is the email address of an existing
+        /// group or user. For external-identity-mapped entities, the id is a string conforming
         /// to the Identity Source's requirements.
-        /// 
-        /// Must be unique within a namespace.
         /// </summary>
         public readonly string Id;
         /// <summary>
         /// The namespace in which the entity exists.
-        /// 
-        /// If not specified, the EntityKey represents a Google-managed entity
+        /// If not populated, the EntityKey represents a Google-managed entity
         /// such as a Google user or a Google Group.
-        /// 
-        /// If specified, the EntityKey represents an external-identity-mapped group.
-        /// The namespace must correspond to an identity source created in Admin Console
-        /// and must be in the form of 'identitysources/{identity_source_id}'.
+        /// If populated, the EntityKey represents an external-identity-mapped group.
         /// </summary>
         public readonly string Namespace;
 

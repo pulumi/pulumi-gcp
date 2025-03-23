@@ -3080,6 +3080,10 @@ func (o ClusterNetworkConfigPtrOutput) Network() pulumi.StringPtrOutput {
 type ClusterPscConfig struct {
 	// Create an instance that allows connections from Private Service Connect endpoints to the instance.
 	PscEnabled *bool `pulumi:"pscEnabled"`
+	// (Output)
+	// The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
+	// In case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.
+	ServiceOwnedProjectNumber *int `pulumi:"serviceOwnedProjectNumber"`
 }
 
 // ClusterPscConfigInput is an input type that accepts ClusterPscConfigArgs and ClusterPscConfigOutput values.
@@ -3096,6 +3100,10 @@ type ClusterPscConfigInput interface {
 type ClusterPscConfigArgs struct {
 	// Create an instance that allows connections from Private Service Connect endpoints to the instance.
 	PscEnabled pulumi.BoolPtrInput `pulumi:"pscEnabled"`
+	// (Output)
+	// The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
+	// In case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.
+	ServiceOwnedProjectNumber pulumi.IntPtrInput `pulumi:"serviceOwnedProjectNumber"`
 }
 
 func (ClusterPscConfigArgs) ElementType() reflect.Type {
@@ -3180,6 +3188,13 @@ func (o ClusterPscConfigOutput) PscEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterPscConfig) *bool { return v.PscEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
+// The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
+// In case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.
+func (o ClusterPscConfigOutput) ServiceOwnedProjectNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterPscConfig) *int { return v.ServiceOwnedProjectNumber }).(pulumi.IntPtrOutput)
+}
+
 type ClusterPscConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterPscConfigPtrOutput) ElementType() reflect.Type {
@@ -3212,6 +3227,18 @@ func (o ClusterPscConfigPtrOutput) PscEnabled() pulumi.BoolPtrOutput {
 		}
 		return v.PscEnabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
+// In case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.
+func (o ClusterPscConfigPtrOutput) ServiceOwnedProjectNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterPscConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceOwnedProjectNumber
+	}).(pulumi.IntPtrOutput)
 }
 
 type ClusterRestoreBackupSource struct {
@@ -7564,6 +7591,9 @@ func (o GetClusterNetworkConfigArrayOutput) Index(i pulumi.IntInput) GetClusterN
 type GetClusterPscConfig struct {
 	// Create an instance that allows connections from Private Service Connect endpoints to the instance.
 	PscEnabled bool `pulumi:"pscEnabled"`
+	// The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
+	// In case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.
+	ServiceOwnedProjectNumber int `pulumi:"serviceOwnedProjectNumber"`
 }
 
 // GetClusterPscConfigInput is an input type that accepts GetClusterPscConfigArgs and GetClusterPscConfigOutput values.
@@ -7580,6 +7610,9 @@ type GetClusterPscConfigInput interface {
 type GetClusterPscConfigArgs struct {
 	// Create an instance that allows connections from Private Service Connect endpoints to the instance.
 	PscEnabled pulumi.BoolInput `pulumi:"pscEnabled"`
+	// The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
+	// In case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.
+	ServiceOwnedProjectNumber pulumi.IntInput `pulumi:"serviceOwnedProjectNumber"`
 }
 
 func (GetClusterPscConfigArgs) ElementType() reflect.Type {
@@ -7636,6 +7669,12 @@ func (o GetClusterPscConfigOutput) ToGetClusterPscConfigOutputWithContext(ctx co
 // Create an instance that allows connections from Private Service Connect endpoints to the instance.
 func (o GetClusterPscConfigOutput) PscEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClusterPscConfig) bool { return v.PscEnabled }).(pulumi.BoolOutput)
+}
+
+// The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
+// In case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.
+func (o GetClusterPscConfigOutput) ServiceOwnedProjectNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterPscConfig) int { return v.ServiceOwnedProjectNumber }).(pulumi.IntOutput)
 }
 
 type GetClusterPscConfigArrayOutput struct{ *pulumi.OutputState }

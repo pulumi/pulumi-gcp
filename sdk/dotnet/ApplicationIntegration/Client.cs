@@ -49,24 +49,23 @@ namespace Pulumi.Gcp.ApplicationIntegration
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testProject = Gcp.Organizations.GetProject.Invoke();
+    ///     var @default = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
+    ///     var keyring = Gcp.Kms.GetKMSKeyRing.Invoke(new()
     ///     {
     ///         Name = "my-keyring",
     ///         Location = "us-east1",
     ///     });
     /// 
-    ///     var cryptokey = new Gcp.Kms.CryptoKey("cryptokey", new()
+    ///     var cryptokey = Gcp.Kms.GetKMSCryptoKey.Invoke(new()
     ///     {
-    ///         Name = "crypto-key-example",
-    ///         KeyRing = keyring.Id,
-    ///         RotationPeriod = "7776000s",
+    ///         Name = "my-crypto-key",
+    ///         KeyRing = keyring.Apply(getKMSKeyRingResult =&gt; getKMSKeyRingResult.Id),
     ///     });
     /// 
-    ///     var testKey = new Gcp.Kms.CryptoKeyVersion("test_key", new()
+    ///     var testKey = Gcp.Kms.GetKMSCryptoKeyVersion.Invoke(new()
     ///     {
-    ///         CryptoKey = cryptokey.Id,
+    ///         CryptoKey = cryptokey.Apply(getKMSCryptoKeyResult =&gt; getKMSCryptoKeyResult.Id),
     ///     });
     /// 
     ///     var serviceAccount = new Gcp.ServiceAccount.Account("service_account", new()
@@ -85,17 +84,17 @@ namespace Pulumi.Gcp.ApplicationIntegration
     ///             KmsLocation = "us-east1",
     ///             KmsRing = Std.Basename.Invoke(new()
     ///             {
-    ///                 Input = keyring.Id,
+    ///                 Input = keyring.Apply(getKMSKeyRingResult =&gt; getKMSKeyRingResult.Id),
     ///             }).Apply(invoke =&gt; invoke.Result),
     ///             Key = Std.Basename.Invoke(new()
     ///             {
-    ///                 Input = cryptokey.Id,
+    ///                 Input = cryptokey.Apply(getKMSCryptoKeyResult =&gt; getKMSCryptoKeyResult.Id),
     ///             }).Apply(invoke =&gt; invoke.Result),
     ///             KeyVersion = Std.Basename.Invoke(new()
     ///             {
-    ///                 Input = testKey.Id,
+    ///                 Input = testKey.Apply(getKMSCryptoKeyVersionResult =&gt; getKMSCryptoKeyVersionResult.Id),
     ///             }).Apply(invoke =&gt; invoke.Result),
-    ///             KmsProjectId = testProject.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///             KmsProjectId = @default.Apply(@default =&gt; @default.Apply(getProjectResult =&gt; getProjectResult.ProjectId)),
     ///         },
     ///     });
     /// 

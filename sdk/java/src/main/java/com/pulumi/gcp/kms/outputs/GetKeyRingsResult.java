@@ -20,6 +20,10 @@ public final class GetKeyRingsResult {
      * 
      */
     private String id;
+    /**
+     * @return A list of all the retrieved key rings from the provided location. This list is influenced by the provided filter argument.
+     * 
+     */
     private List<GetKeyRingsKeyRing> keyRings;
     private String location;
     private @Nullable String project;
@@ -35,6 +39,10 @@ public final class GetKeyRingsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of all the retrieved key rings from the provided location. This list is influenced by the provided filter argument.
+     * 
+     */
     public List<GetKeyRingsKeyRing> keyRings() {
         return this.keyRings;
     }

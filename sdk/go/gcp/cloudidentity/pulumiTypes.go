@@ -1736,13 +1736,13 @@ func (o GetGroupMembershipsMembershipRoleExpiryDetailArrayOutput) Index(i pulumi
 }
 
 type GetGroupTransitiveMembershipsMembership struct {
-	// Resource name for this member.
+	// EntityKey of the member.  This value will be either a userKey in the format `users/000000000000000000000` with a numerical id or a groupKey in the format `groups/000ab0000ab0000` with a hexadecimal id.
 	Member string `pulumi:"member"`
-	// EntityKey of the member. Entity key has an id and a namespace. In case of discussion forums, the id will be an email address without a namespace.
+	// EntityKey of the member.  Structure is documented below.
 	PreferredMemberKeys []GetGroupTransitiveMembershipsMembershipPreferredMemberKey `pulumi:"preferredMemberKeys"`
-	// The relation between the group and the transitive member. The value can be DIRECT, INDIRECT, or DIRECT_AND_INDIRECT
+	// The relation between the group and the transitive member. The value can be DIRECT, INDIRECT, or DIRECT_AND_INDIRECT.
 	RelationType string `pulumi:"relationType"`
-	// The membership role details
+	// The TransitiveMembershipRoles that apply to the Membership. Structure is documented below.
 	Roles []GetGroupTransitiveMembershipsMembershipRole `pulumi:"roles"`
 }
 
@@ -1758,13 +1758,13 @@ type GetGroupTransitiveMembershipsMembershipInput interface {
 }
 
 type GetGroupTransitiveMembershipsMembershipArgs struct {
-	// Resource name for this member.
+	// EntityKey of the member.  This value will be either a userKey in the format `users/000000000000000000000` with a numerical id or a groupKey in the format `groups/000ab0000ab0000` with a hexadecimal id.
 	Member pulumi.StringInput `pulumi:"member"`
-	// EntityKey of the member. Entity key has an id and a namespace. In case of discussion forums, the id will be an email address without a namespace.
+	// EntityKey of the member.  Structure is documented below.
 	PreferredMemberKeys GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayInput `pulumi:"preferredMemberKeys"`
-	// The relation between the group and the transitive member. The value can be DIRECT, INDIRECT, or DIRECT_AND_INDIRECT
+	// The relation between the group and the transitive member. The value can be DIRECT, INDIRECT, or DIRECT_AND_INDIRECT.
 	RelationType pulumi.StringInput `pulumi:"relationType"`
-	// The membership role details
+	// The TransitiveMembershipRoles that apply to the Membership. Structure is documented below.
 	Roles GetGroupTransitiveMembershipsMembershipRoleArrayInput `pulumi:"roles"`
 }
 
@@ -1819,24 +1819,24 @@ func (o GetGroupTransitiveMembershipsMembershipOutput) ToGetGroupTransitiveMembe
 	return o
 }
 
-// Resource name for this member.
+// EntityKey of the member.  This value will be either a userKey in the format `users/000000000000000000000` with a numerical id or a groupKey in the format `groups/000ab0000ab0000` with a hexadecimal id.
 func (o GetGroupTransitiveMembershipsMembershipOutput) Member() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupTransitiveMembershipsMembership) string { return v.Member }).(pulumi.StringOutput)
 }
 
-// EntityKey of the member. Entity key has an id and a namespace. In case of discussion forums, the id will be an email address without a namespace.
+// EntityKey of the member.  Structure is documented below.
 func (o GetGroupTransitiveMembershipsMembershipOutput) PreferredMemberKeys() GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayOutput {
 	return o.ApplyT(func(v GetGroupTransitiveMembershipsMembership) []GetGroupTransitiveMembershipsMembershipPreferredMemberKey {
 		return v.PreferredMemberKeys
 	}).(GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayOutput)
 }
 
-// The relation between the group and the transitive member. The value can be DIRECT, INDIRECT, or DIRECT_AND_INDIRECT
+// The relation between the group and the transitive member. The value can be DIRECT, INDIRECT, or DIRECT_AND_INDIRECT.
 func (o GetGroupTransitiveMembershipsMembershipOutput) RelationType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupTransitiveMembershipsMembership) string { return v.RelationType }).(pulumi.StringOutput)
 }
 
-// The membership role details
+// The TransitiveMembershipRoles that apply to the Membership. Structure is documented below.
 func (o GetGroupTransitiveMembershipsMembershipOutput) Roles() GetGroupTransitiveMembershipsMembershipRoleArrayOutput {
 	return o.ApplyT(func(v GetGroupTransitiveMembershipsMembership) []GetGroupTransitiveMembershipsMembershipRole {
 		return v.Roles
@@ -1864,24 +1864,14 @@ func (o GetGroupTransitiveMembershipsMembershipArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetGroupTransitiveMembershipsMembershipPreferredMemberKey struct {
-	// The ID of the entity.
-	//
-	// For Google-managed entities, the id must be the email address of an existing
-	// group or user.
-	//
-	// For external-identity-mapped entities, the id must be a string conforming
+	// The ID of the entity. For Google-managed entities, the id is the email address of an existing
+	// group or user. For external-identity-mapped entities, the id is a string conforming
 	// to the Identity Source's requirements.
-	//
-	// Must be unique within a namespace.
 	Id string `pulumi:"id"`
 	// The namespace in which the entity exists.
-	//
-	// If not specified, the EntityKey represents a Google-managed entity
+	// If not populated, the EntityKey represents a Google-managed entity
 	// such as a Google user or a Google Group.
-	//
-	// If specified, the EntityKey represents an external-identity-mapped group.
-	// The namespace must correspond to an identity source created in Admin Console
-	// and must be in the form of 'identitysources/{identity_source_id}'.
+	// If populated, the EntityKey represents an external-identity-mapped group.
 	Namespace string `pulumi:"namespace"`
 }
 
@@ -1897,24 +1887,14 @@ type GetGroupTransitiveMembershipsMembershipPreferredMemberKeyInput interface {
 }
 
 type GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArgs struct {
-	// The ID of the entity.
-	//
-	// For Google-managed entities, the id must be the email address of an existing
-	// group or user.
-	//
-	// For external-identity-mapped entities, the id must be a string conforming
+	// The ID of the entity. For Google-managed entities, the id is the email address of an existing
+	// group or user. For external-identity-mapped entities, the id is a string conforming
 	// to the Identity Source's requirements.
-	//
-	// Must be unique within a namespace.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The namespace in which the entity exists.
-	//
-	// If not specified, the EntityKey represents a Google-managed entity
+	// If not populated, the EntityKey represents a Google-managed entity
 	// such as a Google user or a Google Group.
-	//
-	// If specified, the EntityKey represents an external-identity-mapped group.
-	// The namespace must correspond to an identity source created in Admin Console
-	// and must be in the form of 'identitysources/{identity_source_id}'.
+	// If populated, the EntityKey represents an external-identity-mapped group.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 }
 
@@ -1969,27 +1949,17 @@ func (o GetGroupTransitiveMembershipsMembershipPreferredMemberKeyOutput) ToGetGr
 	return o
 }
 
-// The ID of the entity.
-//
-// For Google-managed entities, the id must be the email address of an existing
-// group or user.
-//
-// For external-identity-mapped entities, the id must be a string conforming
+// The ID of the entity. For Google-managed entities, the id is the email address of an existing
+// group or user. For external-identity-mapped entities, the id is a string conforming
 // to the Identity Source's requirements.
-//
-// Must be unique within a namespace.
 func (o GetGroupTransitiveMembershipsMembershipPreferredMemberKeyOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupTransitiveMembershipsMembershipPreferredMemberKey) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The namespace in which the entity exists.
-//
-// If not specified, the EntityKey represents a Google-managed entity
+// If not populated, the EntityKey represents a Google-managed entity
 // such as a Google user or a Google Group.
-//
-// If specified, the EntityKey represents an external-identity-mapped group.
-// The namespace must correspond to an identity source created in Admin Console
-// and must be in the form of 'identitysources/{identity_source_id}'.
+// If populated, the EntityKey represents an external-identity-mapped group.
 func (o GetGroupTransitiveMembershipsMembershipPreferredMemberKeyOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupTransitiveMembershipsMembershipPreferredMemberKey) string { return v.Namespace }).(pulumi.StringOutput)
 }
@@ -2015,7 +1985,7 @@ func (o GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayOutput) In
 }
 
 type GetGroupTransitiveMembershipsMembershipRole struct {
-	// The name of the TransitiveMembershipRole. Possible values: ["OWNER", "MANAGER", "MEMBER"]
+	// The name of the TransitiveMembershipRole. One of OWNER, MANAGER, MEMBER.
 	Role string `pulumi:"role"`
 }
 
@@ -2031,7 +2001,7 @@ type GetGroupTransitiveMembershipsMembershipRoleInput interface {
 }
 
 type GetGroupTransitiveMembershipsMembershipRoleArgs struct {
-	// The name of the TransitiveMembershipRole. Possible values: ["OWNER", "MANAGER", "MEMBER"]
+	// The name of the TransitiveMembershipRole. One of OWNER, MANAGER, MEMBER.
 	Role pulumi.StringInput `pulumi:"role"`
 }
 
@@ -2086,7 +2056,7 @@ func (o GetGroupTransitiveMembershipsMembershipRoleOutput) ToGetGroupTransitiveM
 	return o
 }
 
-// The name of the TransitiveMembershipRole. Possible values: ["OWNER", "MANAGER", "MEMBER"]
+// The name of the TransitiveMembershipRole. One of OWNER, MANAGER, MEMBER.
 func (o GetGroupTransitiveMembershipsMembershipRoleOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupTransitiveMembershipsMembershipRole) string { return v.Role }).(pulumi.StringOutput)
 }

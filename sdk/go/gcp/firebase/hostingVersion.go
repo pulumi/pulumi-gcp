@@ -324,7 +324,7 @@ import (
 //				Project:             pulumi.String("my-project-name"),
 //				Name:                pulumi.String("cloud-function-via-hosting"),
 //				Description:         pulumi.String("A Cloud Function connected to Firebase Hosing"),
-//				Runtime:             pulumi.String("nodejs16"),
+//				Runtime:             pulumi.String("nodejs20"),
 //				AvailableMemoryMb:   pulumi.Int(128),
 //				SourceArchiveBucket: bucket.Name,
 //				SourceArchiveObject: object.Name,

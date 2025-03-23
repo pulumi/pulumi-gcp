@@ -21,18 +21,20 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     public static final GatewayArgs Empty = new GatewayArgs();
 
     /**
-     * Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
-     * an IP from the subnetwork is allocated This field only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
-     * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0.
+     * Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic.
+     * When no address is provided, an IP from the subnetwork is allocated.
+     * This field only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+     * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 for IPv4 and :: for IPv6.
      * 
      */
     @Import(name="addresses")
     private @Nullable Output<List<String>> addresses;
 
     /**
-     * @return Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
-     * an IP from the subnetwork is allocated This field only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
-     * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0.
+     * @return Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic.
+     * When no address is provided, an IP from the subnetwork is allocated.
+     * This field only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+     * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 for IPv4 and :: for IPv6.
      * 
      */
     public Optional<Output<List<String>>> addresses() {
@@ -89,8 +91,29 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Determines if envoy will insert internal debug headers into upstream requests.
+     * Other Envoy headers may still be injected.
+     * By default, envoy will not insert any debug headers.
+     * Possible values are: `NONE`, `DEBUG_HEADERS`.
+     * 
+     */
+    @Import(name="envoyHeaders")
+    private @Nullable Output<String> envoyHeaders;
+
+    /**
+     * @return Determines if envoy will insert internal debug headers into upstream requests.
+     * Other Envoy headers may still be injected.
+     * By default, envoy will not insert any debug headers.
+     * Possible values are: `NONE`, `DEBUG_HEADERS`.
+     * 
+     */
+    public Optional<Output<String>> envoyHeaders() {
+        return Optional.ofNullable(this.envoyHeaders);
+    }
+
+    /**
      * A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
-     * For example: `projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy`.
+     * For example: &#39;projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy&#39;.
      * This policy is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 
      */
@@ -99,7 +122,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
-     * For example: `projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy`.
+     * For example: &#39;projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy&#39;.
      * This policy is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 
      */
@@ -108,7 +131,25 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The IP Version that will be used by this gateway.
+     * Possible values are: `IPV4`, `IPV6`.
+     * 
+     */
+    @Import(name="ipVersion")
+    private @Nullable Output<String> ipVersion;
+
+    /**
+     * @return The IP Version that will be used by this gateway.
+     * Possible values are: `IPV4`, `IPV6`.
+     * 
+     */
+    public Optional<Output<String>> ipVersion() {
+        return Optional.ofNullable(this.ipVersion);
+    }
+
+    /**
      * Set of label tags associated with the Gateway resource.
+     * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -118,6 +159,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Set of label tags associated with the Gateway resource.
+     * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -144,7 +186,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Short name of the Gateway resource to be created.
+     * Name of the Gateway resource.
      * 
      * ***
      * 
@@ -153,7 +195,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return Short name of the Gateway resource to be created.
+     * @return Name of the Gateway resource.
      * 
      * ***
      * 
@@ -164,7 +206,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The relative resource name identifying the VPC network that is using this configuration.
-     * For example: `projects/*&#47;global/networks/network-1`.
+     * For example: &#39;projects/*&#47;global/networks/network-1&#39;.
      * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 
      */
@@ -173,7 +215,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The relative resource name identifying the VPC network that is using this configuration.
-     * For example: `projects/*&#47;global/networks/network-1`.
+     * For example: &#39;projects/*&#47;global/networks/network-1&#39;.
      * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 
      */
@@ -183,8 +225,8 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * One or more port numbers (1-65535), on which the Gateway will receive traffic.
-     * The proxy binds to the specified ports. Gateways of type &#39;SECURE_WEB_GATEWAY&#39; are
-     * limited to 1 port. Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 and support multiple ports.
+     * The proxy binds to the specified ports. Gateways of type &#39;SECURE_WEB_GATEWAY&#39; are limited to 1 port.
+     * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
      * 
      */
     @Import(name="ports", required=true)
@@ -192,8 +234,8 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return One or more port numbers (1-65535), on which the Gateway will receive traffic.
-     * The proxy binds to the specified ports. Gateways of type &#39;SECURE_WEB_GATEWAY&#39; are
-     * limited to 1 port. Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 and support multiple ports.
+     * The proxy binds to the specified ports. Gateways of type &#39;SECURE_WEB_GATEWAY&#39; are limited to 1 port.
+     * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
      * 
      */
     public Output<List<Integer>> ports() {
@@ -236,8 +278,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Immutable. Scope determines how configuration across multiple Gateway instances are merged.
-     * The configuration for multiple Gateway instances with the same scope will be merged as presented as
-     * a single coniguration to the proxy/load balancer.
+     * The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer.
      * Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
      * 
      */
@@ -246,8 +287,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Immutable. Scope determines how configuration across multiple Gateway instances are merged.
-     * The configuration for multiple Gateway instances with the same scope will be merged as presented as
-     * a single coniguration to the proxy/load balancer.
+     * The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer.
      * Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
      * 
      */
@@ -256,16 +296,14 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
-     * If empty, TLS termination is disabled.
+     * A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
      * 
      */
     @Import(name="serverTlsPolicy")
     private @Nullable Output<String> serverTlsPolicy;
 
     /**
-     * @return A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
-     * If empty, TLS termination is disabled.
+     * @return A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
      * 
      */
     public Optional<Output<String>> serverTlsPolicy() {
@@ -274,8 +312,8 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The relative resource name identifying the subnetwork in which this SWG is allocated.
-     * For example: `projects/*&#47;regions/us-central1/subnetworks/network-1`.
-     * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY.
+     * For example: projects/*&#47;regions/us-central1/subnetworks/network-1.
+     * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 
      */
     @Import(name="subnetwork")
@@ -283,8 +321,8 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The relative resource name identifying the subnetwork in which this SWG is allocated.
-     * For example: `projects/*&#47;regions/us-central1/subnetworks/network-1`.
-     * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY.
+     * For example: projects/*&#47;regions/us-central1/subnetworks/network-1.
+     * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 
      */
     public Optional<Output<String>> subnetwork() {
@@ -292,16 +330,16 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-     * Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
+     * Immutable. The type of the customer managed gateway.
+     * Possible values are: `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-     * Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
+     * @return Immutable. The type of the customer managed gateway.
+     * Possible values are: `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
      * 
      */
     public Output<String> type() {
@@ -315,7 +353,9 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         this.certificateUrls = $.certificateUrls;
         this.deleteSwgAutogenRouterOnDestroy = $.deleteSwgAutogenRouterOnDestroy;
         this.description = $.description;
+        this.envoyHeaders = $.envoyHeaders;
         this.gatewaySecurityPolicy = $.gatewaySecurityPolicy;
+        this.ipVersion = $.ipVersion;
         this.labels = $.labels;
         this.location = $.location;
         this.name = $.name;
@@ -348,9 +388,10 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addresses Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
-         * an IP from the subnetwork is allocated This field only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
-         * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0.
+         * @param addresses Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic.
+         * When no address is provided, an IP from the subnetwork is allocated.
+         * This field only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+         * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 for IPv4 and :: for IPv6.
          * 
          * @return builder
          * 
@@ -361,9 +402,10 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addresses Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
-         * an IP from the subnetwork is allocated This field only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
-         * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0.
+         * @param addresses Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic.
+         * When no address is provided, an IP from the subnetwork is allocated.
+         * This field only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+         * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 for IPv4 and :: for IPv6.
          * 
          * @return builder
          * 
@@ -373,9 +415,10 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addresses Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
-         * an IP from the subnetwork is allocated This field only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
-         * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0.
+         * @param addresses Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic.
+         * When no address is provided, an IP from the subnetwork is allocated.
+         * This field only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+         * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 for IPv4 and :: for IPv6.
          * 
          * @return builder
          * 
@@ -463,8 +506,35 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param envoyHeaders Determines if envoy will insert internal debug headers into upstream requests.
+         * Other Envoy headers may still be injected.
+         * By default, envoy will not insert any debug headers.
+         * Possible values are: `NONE`, `DEBUG_HEADERS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder envoyHeaders(@Nullable Output<String> envoyHeaders) {
+            $.envoyHeaders = envoyHeaders;
+            return this;
+        }
+
+        /**
+         * @param envoyHeaders Determines if envoy will insert internal debug headers into upstream requests.
+         * Other Envoy headers may still be injected.
+         * By default, envoy will not insert any debug headers.
+         * Possible values are: `NONE`, `DEBUG_HEADERS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder envoyHeaders(String envoyHeaders) {
+            return envoyHeaders(Output.of(envoyHeaders));
+        }
+
+        /**
          * @param gatewaySecurityPolicy A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
-         * For example: `projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy`.
+         * For example: &#39;projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy&#39;.
          * This policy is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
          * 
          * @return builder
@@ -477,7 +547,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param gatewaySecurityPolicy A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
-         * For example: `projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy`.
+         * For example: &#39;projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy&#39;.
          * This policy is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
          * 
          * @return builder
@@ -488,7 +558,31 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param ipVersion The IP Version that will be used by this gateway.
+         * Possible values are: `IPV4`, `IPV6`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipVersion(@Nullable Output<String> ipVersion) {
+            $.ipVersion = ipVersion;
+            return this;
+        }
+
+        /**
+         * @param ipVersion The IP Version that will be used by this gateway.
+         * Possible values are: `IPV4`, `IPV6`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipVersion(String ipVersion) {
+            return ipVersion(Output.of(ipVersion));
+        }
+
+        /**
          * @param labels Set of label tags associated with the Gateway resource.
+         * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -502,6 +596,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Set of label tags associated with the Gateway resource.
+         * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -536,7 +631,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Short name of the Gateway resource to be created.
+         * @param name Name of the Gateway resource.
          * 
          * ***
          * 
@@ -549,7 +644,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Short name of the Gateway resource to be created.
+         * @param name Name of the Gateway resource.
          * 
          * ***
          * 
@@ -562,7 +657,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param network The relative resource name identifying the VPC network that is using this configuration.
-         * For example: `projects/*&#47;global/networks/network-1`.
+         * For example: &#39;projects/*&#47;global/networks/network-1&#39;.
          * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
          * 
          * @return builder
@@ -575,7 +670,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param network The relative resource name identifying the VPC network that is using this configuration.
-         * For example: `projects/*&#47;global/networks/network-1`.
+         * For example: &#39;projects/*&#47;global/networks/network-1&#39;.
          * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
          * 
          * @return builder
@@ -587,8 +682,8 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ports One or more port numbers (1-65535), on which the Gateway will receive traffic.
-         * The proxy binds to the specified ports. Gateways of type &#39;SECURE_WEB_GATEWAY&#39; are
-         * limited to 1 port. Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 and support multiple ports.
+         * The proxy binds to the specified ports. Gateways of type &#39;SECURE_WEB_GATEWAY&#39; are limited to 1 port.
+         * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
          * 
          * @return builder
          * 
@@ -600,8 +695,8 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ports One or more port numbers (1-65535), on which the Gateway will receive traffic.
-         * The proxy binds to the specified ports. Gateways of type &#39;SECURE_WEB_GATEWAY&#39; are
-         * limited to 1 port. Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 and support multiple ports.
+         * The proxy binds to the specified ports. Gateways of type &#39;SECURE_WEB_GATEWAY&#39; are limited to 1 port.
+         * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
          * 
          * @return builder
          * 
@@ -612,8 +707,8 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ports One or more port numbers (1-65535), on which the Gateway will receive traffic.
-         * The proxy binds to the specified ports. Gateways of type &#39;SECURE_WEB_GATEWAY&#39; are
-         * limited to 1 port. Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 and support multiple ports.
+         * The proxy binds to the specified ports. Gateways of type &#39;SECURE_WEB_GATEWAY&#39; are limited to 1 port.
+         * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
          * 
          * @return builder
          * 
@@ -670,8 +765,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param scope Immutable. Scope determines how configuration across multiple Gateway instances are merged.
-         * The configuration for multiple Gateway instances with the same scope will be merged as presented as
-         * a single coniguration to the proxy/load balancer.
+         * The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer.
          * Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
          * 
          * @return builder
@@ -684,8 +778,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param scope Immutable. Scope determines how configuration across multiple Gateway instances are merged.
-         * The configuration for multiple Gateway instances with the same scope will be merged as presented as
-         * a single coniguration to the proxy/load balancer.
+         * The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer.
          * Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
          * 
          * @return builder
@@ -696,8 +789,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverTlsPolicy A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
-         * If empty, TLS termination is disabled.
+         * @param serverTlsPolicy A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
          * 
          * @return builder
          * 
@@ -708,8 +800,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverTlsPolicy A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
-         * If empty, TLS termination is disabled.
+         * @param serverTlsPolicy A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
          * 
          * @return builder
          * 
@@ -720,8 +811,8 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param subnetwork The relative resource name identifying the subnetwork in which this SWG is allocated.
-         * For example: `projects/*&#47;regions/us-central1/subnetworks/network-1`.
-         * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY.
+         * For example: projects/*&#47;regions/us-central1/subnetworks/network-1.
+         * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
          * 
          * @return builder
          * 
@@ -733,8 +824,8 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param subnetwork The relative resource name identifying the subnetwork in which this SWG is allocated.
-         * For example: `projects/*&#47;regions/us-central1/subnetworks/network-1`.
-         * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY.
+         * For example: projects/*&#47;regions/us-central1/subnetworks/network-1.
+         * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
          * 
          * @return builder
          * 
@@ -744,8 +835,8 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-         * Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
+         * @param type Immutable. The type of the customer managed gateway.
+         * Possible values are: `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
          * 
          * @return builder
          * 
@@ -756,8 +847,8 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-         * Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
+         * @param type Immutable. The type of the customer managed gateway.
+         * Possible values are: `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
          * 
          * @return builder
          * 

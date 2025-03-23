@@ -7149,9 +7149,9 @@ func (o GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput) Index(i pulu
 type GetDatabaseInstanceSettingInsightsConfig struct {
 	// True if Query Insights feature is enabled.
 	QueryInsightsEnabled bool `pulumi:"queryInsightsEnabled"`
-	// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+	// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5. For Enterprise Plus instances, from 0 to 200.
 	QueryPlansPerMinute int `pulumi:"queryPlansPerMinute"`
-	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
 	QueryStringLength int `pulumi:"queryStringLength"`
 	// True if Query Insights will record application tags from query when enabled.
 	RecordApplicationTags bool `pulumi:"recordApplicationTags"`
@@ -7173,9 +7173,9 @@ type GetDatabaseInstanceSettingInsightsConfigInput interface {
 type GetDatabaseInstanceSettingInsightsConfigArgs struct {
 	// True if Query Insights feature is enabled.
 	QueryInsightsEnabled pulumi.BoolInput `pulumi:"queryInsightsEnabled"`
-	// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+	// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5. For Enterprise Plus instances, from 0 to 200.
 	QueryPlansPerMinute pulumi.IntInput `pulumi:"queryPlansPerMinute"`
-	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
 	QueryStringLength pulumi.IntInput `pulumi:"queryStringLength"`
 	// True if Query Insights will record application tags from query when enabled.
 	RecordApplicationTags pulumi.BoolInput `pulumi:"recordApplicationTags"`
@@ -7239,12 +7239,12 @@ func (o GetDatabaseInstanceSettingInsightsConfigOutput) QueryInsightsEnabled() p
 	return o.ApplyT(func(v GetDatabaseInstanceSettingInsightsConfig) bool { return v.QueryInsightsEnabled }).(pulumi.BoolOutput)
 }
 
-// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5. For Enterprise Plus instances, from 0 to 200.
 func (o GetDatabaseInstanceSettingInsightsConfigOutput) QueryPlansPerMinute() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingInsightsConfig) int { return v.QueryPlansPerMinute }).(pulumi.IntOutput)
 }
 
-// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
 func (o GetDatabaseInstanceSettingInsightsConfigOutput) QueryStringLength() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingInsightsConfig) int { return v.QueryStringLength }).(pulumi.IntOutput)
 }
@@ -10515,9 +10515,9 @@ func (o GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput) Ind
 type GetDatabaseInstancesInstanceSettingInsightsConfig struct {
 	// True if Query Insights feature is enabled.
 	QueryInsightsEnabled bool `pulumi:"queryInsightsEnabled"`
-	// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+	// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5. For Enterprise Plus instances, from 0 to 200.
 	QueryPlansPerMinute int `pulumi:"queryPlansPerMinute"`
-	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
 	QueryStringLength int `pulumi:"queryStringLength"`
 	// True if Query Insights will record application tags from query when enabled.
 	RecordApplicationTags bool `pulumi:"recordApplicationTags"`
@@ -10539,9 +10539,9 @@ type GetDatabaseInstancesInstanceSettingInsightsConfigInput interface {
 type GetDatabaseInstancesInstanceSettingInsightsConfigArgs struct {
 	// True if Query Insights feature is enabled.
 	QueryInsightsEnabled pulumi.BoolInput `pulumi:"queryInsightsEnabled"`
-	// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+	// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5. For Enterprise Plus instances, from 0 to 200.
 	QueryPlansPerMinute pulumi.IntInput `pulumi:"queryPlansPerMinute"`
-	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
 	QueryStringLength pulumi.IntInput `pulumi:"queryStringLength"`
 	// True if Query Insights will record application tags from query when enabled.
 	RecordApplicationTags pulumi.BoolInput `pulumi:"recordApplicationTags"`
@@ -10605,12 +10605,12 @@ func (o GetDatabaseInstancesInstanceSettingInsightsConfigOutput) QueryInsightsEn
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingInsightsConfig) bool { return v.QueryInsightsEnabled }).(pulumi.BoolOutput)
 }
 
-// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5. For Enterprise Plus instances, from 0 to 200.
 func (o GetDatabaseInstancesInstanceSettingInsightsConfigOutput) QueryPlansPerMinute() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingInsightsConfig) int { return v.QueryPlansPerMinute }).(pulumi.IntOutput)
 }
 
-// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
 func (o GetDatabaseInstancesInstanceSettingInsightsConfigOutput) QueryStringLength() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingInsightsConfig) int { return v.QueryStringLength }).(pulumi.IntOutput)
 }

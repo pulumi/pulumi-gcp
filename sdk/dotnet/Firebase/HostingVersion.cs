@@ -283,7 +283,7 @@ namespace Pulumi.Gcp.Firebase
     ///         Project = "my-project-name",
     ///         Name = "cloud-function-via-hosting",
     ///         Description = "A Cloud Function connected to Firebase Hosing",
-    ///         Runtime = "nodejs16",
+    ///         Runtime = "nodejs20",
     ///         AvailableMemoryMb = 128,
     ///         SourceArchiveBucket = bucket.Name,
     ///         SourceArchiveObject = @object.Name,

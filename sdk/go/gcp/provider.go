@@ -100,6 +100,7 @@ type Provider struct {
 	EventarcCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"eventarcCustomEndpoint"`
 	FilestoreCustomEndpoint                pulumi.StringPtrOutput `pulumi:"filestoreCustomEndpoint"`
 	FirebaseAppCheckCustomEndpoint         pulumi.StringPtrOutput `pulumi:"firebaseAppCheckCustomEndpoint"`
+	FirebaseAppHostingCustomEndpoint       pulumi.StringPtrOutput `pulumi:"firebaseAppHostingCustomEndpoint"`
 	FirebaseCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"firebaseCustomEndpoint"`
 	FirebaseDataConnectCustomEndpoint      pulumi.StringPtrOutput `pulumi:"firebaseDataConnectCustomEndpoint"`
 	FirebaseDatabaseCustomEndpoint         pulumi.StringPtrOutput `pulumi:"firebaseDatabaseCustomEndpoint"`
@@ -324,6 +325,7 @@ type providerArgs struct {
 	EventarcCustomEndpoint                 *string           `pulumi:"eventarcCustomEndpoint"`
 	FilestoreCustomEndpoint                *string           `pulumi:"filestoreCustomEndpoint"`
 	FirebaseAppCheckCustomEndpoint         *string           `pulumi:"firebaseAppCheckCustomEndpoint"`
+	FirebaseAppHostingCustomEndpoint       *string           `pulumi:"firebaseAppHostingCustomEndpoint"`
 	FirebaseCustomEndpoint                 *string           `pulumi:"firebaseCustomEndpoint"`
 	FirebaseDataConnectCustomEndpoint      *string           `pulumi:"firebaseDataConnectCustomEndpoint"`
 	FirebaseDatabaseCustomEndpoint         *string           `pulumi:"firebaseDatabaseCustomEndpoint"`
@@ -514,6 +516,7 @@ type ProviderArgs struct {
 	EventarcCustomEndpoint                 pulumi.StringPtrInput
 	FilestoreCustomEndpoint                pulumi.StringPtrInput
 	FirebaseAppCheckCustomEndpoint         pulumi.StringPtrInput
+	FirebaseAppHostingCustomEndpoint       pulumi.StringPtrInput
 	FirebaseCustomEndpoint                 pulumi.StringPtrInput
 	FirebaseDataConnectCustomEndpoint      pulumi.StringPtrInput
 	FirebaseDatabaseCustomEndpoint         pulumi.StringPtrInput
@@ -979,6 +982,10 @@ func (o ProviderOutput) FilestoreCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) FirebaseAppCheckCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.FirebaseAppCheckCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) FirebaseAppHostingCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.FirebaseAppHostingCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) FirebaseCustomEndpoint() pulumi.StringPtrOutput {

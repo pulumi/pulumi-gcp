@@ -292,6 +292,12 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly tableId!: pulumi.Output<string>;
     /**
+     * View sets the optional parameter "view": Specifies the view that determines which table information is returned. By
+     * default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values:
+     * TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+     */
+    public readonly tableMetadataView!: pulumi.Output<string | undefined>;
+    /**
      * Replication info of a table created
      * using "AS REPLICA" DDL like:
      * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv`.
@@ -357,6 +363,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["tableConstraints"] = state ? state.tableConstraints : undefined;
             resourceInputs["tableId"] = state ? state.tableId : undefined;
+            resourceInputs["tableMetadataView"] = state ? state.tableMetadataView : undefined;
             resourceInputs["tableReplicationInfo"] = state ? state.tableReplicationInfo : undefined;
             resourceInputs["timePartitioning"] = state ? state.timePartitioning : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -390,6 +397,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["schemaForeignTypeInfo"] = args ? args.schemaForeignTypeInfo : undefined;
             resourceInputs["tableConstraints"] = args ? args.tableConstraints : undefined;
             resourceInputs["tableId"] = args ? args.tableId : undefined;
+            resourceInputs["tableMetadataView"] = args ? args.tableMetadataView : undefined;
             resourceInputs["tableReplicationInfo"] = args ? args.tableReplicationInfo : undefined;
             resourceInputs["timePartitioning"] = args ? args.timePartitioning : undefined;
             resourceInputs["view"] = args ? args.view : undefined;
@@ -586,6 +594,12 @@ export interface TableState {
      */
     tableId?: pulumi.Input<string>;
     /**
+     * View sets the optional parameter "view": Specifies the view that determines which table information is returned. By
+     * default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values:
+     * TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+     */
+    tableMetadataView?: pulumi.Input<string>;
+    /**
      * Replication info of a table created
      * using "AS REPLICA" DDL like:
      * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv`.
@@ -726,6 +740,12 @@ export interface TableArgs {
      * Changing this forces a new resource to be created.
      */
     tableId: pulumi.Input<string>;
+    /**
+     * View sets the optional parameter "view": Specifies the view that determines which table information is returned. By
+     * default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values:
+     * TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+     */
+    tableMetadataView?: pulumi.Input<string>;
     /**
      * Replication info of a table created
      * using "AS REPLICA" DDL like:

@@ -135,7 +135,7 @@ namespace Pulumi.Gcp.Storage
         /// Structure is documented below.
         /// </summary>
         [Output("csvOptions")]
-        public Output<Outputs.InsightsReportConfigCsvOptions> CsvOptions { get; private set; } = null!;
+        public Output<Outputs.InsightsReportConfigCsvOptions?> CsvOptions { get; private set; } = null!;
 
         /// <summary>
         /// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
@@ -145,6 +145,7 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Options for configuring how inventory reports are generated.
+        /// Structure is documented below.
         /// </summary>
         [Output("frequencyOptions")]
         public Output<Outputs.InsightsReportConfigFrequencyOptions?> FrequencyOptions { get; private set; } = null!;
@@ -152,6 +153,9 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
         /// must be in the same location.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -164,10 +168,21 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Options for including metadata in an inventory report.
+        /// Structure is documented below.
         /// </summary>
         [Output("objectMetadataReportOptions")]
         public Output<Outputs.InsightsReportConfigObjectMetadataReportOptions?> ObjectMetadataReportOptions { get; private set; } = null!;
 
+        /// <summary>
+        /// An option for outputting inventory reports as parquet files.
+        /// </summary>
+        [Output("parquetOptions")]
+        public Output<Outputs.InsightsReportConfigParquetOptions?> ParquetOptions { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -221,8 +236,8 @@ namespace Pulumi.Gcp.Storage
         /// Options for configuring the format of the inventory report CSV file.
         /// Structure is documented below.
         /// </summary>
-        [Input("csvOptions", required: true)]
-        public Input<Inputs.InsightsReportConfigCsvOptionsArgs> CsvOptions { get; set; } = null!;
+        [Input("csvOptions")]
+        public Input<Inputs.InsightsReportConfigCsvOptionsArgs>? CsvOptions { get; set; }
 
         /// <summary>
         /// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
@@ -232,6 +247,7 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Options for configuring how inventory reports are generated.
+        /// Structure is documented below.
         /// </summary>
         [Input("frequencyOptions")]
         public Input<Inputs.InsightsReportConfigFrequencyOptionsArgs>? FrequencyOptions { get; set; }
@@ -239,16 +255,30 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
         /// must be in the same location.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Options for including metadata in an inventory report.
+        /// Structure is documented below.
         /// </summary>
         [Input("objectMetadataReportOptions")]
         public Input<Inputs.InsightsReportConfigObjectMetadataReportOptionsArgs>? ObjectMetadataReportOptions { get; set; }
 
+        /// <summary>
+        /// An option for outputting inventory reports as parquet files.
+        /// </summary>
+        [Input("parquetOptions")]
+        public Input<Inputs.InsightsReportConfigParquetOptionsArgs>? ParquetOptions { get; set; }
+
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -275,6 +305,7 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Options for configuring how inventory reports are generated.
+        /// Structure is documented below.
         /// </summary>
         [Input("frequencyOptions")]
         public Input<Inputs.InsightsReportConfigFrequencyOptionsGetArgs>? FrequencyOptions { get; set; }
@@ -282,6 +313,9 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
         /// must be in the same location.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -294,10 +328,21 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Options for including metadata in an inventory report.
+        /// Structure is documented below.
         /// </summary>
         [Input("objectMetadataReportOptions")]
         public Input<Inputs.InsightsReportConfigObjectMetadataReportOptionsGetArgs>? ObjectMetadataReportOptions { get; set; }
 
+        /// <summary>
+        /// An option for outputting inventory reports as parquet files.
+        /// </summary>
+        [Input("parquetOptions")]
+        public Input<Inputs.InsightsReportConfigParquetOptionsGetArgs>? ParquetOptions { get; set; }
+
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

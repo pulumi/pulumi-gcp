@@ -135,19 +135,27 @@ type InsightsReportConfig struct {
 
 	// Options for configuring the format of the inventory report CSV file.
 	// Structure is documented below.
-	CsvOptions InsightsReportConfigCsvOptionsOutput `pulumi:"csvOptions"`
+	CsvOptions InsightsReportConfigCsvOptionsPtrOutput `pulumi:"csvOptions"`
 	// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Options for configuring how inventory reports are generated.
+	// Structure is documented below.
 	FrequencyOptions InsightsReportConfigFrequencyOptionsPtrOutput `pulumi:"frequencyOptions"`
 	// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
 	// must be in the same location.
+	//
+	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The UUID of the inventory report configuration.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Options for including metadata in an inventory report.
+	// Structure is documented below.
 	ObjectMetadataReportOptions InsightsReportConfigObjectMetadataReportOptionsPtrOutput `pulumi:"objectMetadataReportOptions"`
-	Project                     pulumi.StringOutput                                      `pulumi:"project"`
+	// An option for outputting inventory reports as parquet files.
+	ParquetOptions InsightsReportConfigParquetOptionsPtrOutput `pulumi:"parquetOptions"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewInsightsReportConfig registers a new resource with the given unique name, arguments, and options.
@@ -157,9 +165,6 @@ func NewInsightsReportConfig(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CsvOptions == nil {
-		return nil, errors.New("invalid value for required argument 'CsvOptions'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -192,15 +197,23 @@ type insightsReportConfigState struct {
 	// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
 	DisplayName *string `pulumi:"displayName"`
 	// Options for configuring how inventory reports are generated.
+	// Structure is documented below.
 	FrequencyOptions *InsightsReportConfigFrequencyOptions `pulumi:"frequencyOptions"`
 	// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
 	// must be in the same location.
+	//
+	// ***
 	Location *string `pulumi:"location"`
 	// The UUID of the inventory report configuration.
 	Name *string `pulumi:"name"`
 	// Options for including metadata in an inventory report.
+	// Structure is documented below.
 	ObjectMetadataReportOptions *InsightsReportConfigObjectMetadataReportOptions `pulumi:"objectMetadataReportOptions"`
-	Project                     *string                                          `pulumi:"project"`
+	// An option for outputting inventory reports as parquet files.
+	ParquetOptions *InsightsReportConfigParquetOptions `pulumi:"parquetOptions"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 }
 
 type InsightsReportConfigState struct {
@@ -210,15 +223,23 @@ type InsightsReportConfigState struct {
 	// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
 	DisplayName pulumi.StringPtrInput
 	// Options for configuring how inventory reports are generated.
+	// Structure is documented below.
 	FrequencyOptions InsightsReportConfigFrequencyOptionsPtrInput
 	// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
 	// must be in the same location.
+	//
+	// ***
 	Location pulumi.StringPtrInput
 	// The UUID of the inventory report configuration.
 	Name pulumi.StringPtrInput
 	// Options for including metadata in an inventory report.
+	// Structure is documented below.
 	ObjectMetadataReportOptions InsightsReportConfigObjectMetadataReportOptionsPtrInput
-	Project                     pulumi.StringPtrInput
+	// An option for outputting inventory reports as parquet files.
+	ParquetOptions InsightsReportConfigParquetOptionsPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 }
 
 func (InsightsReportConfigState) ElementType() reflect.Type {
@@ -228,34 +249,50 @@ func (InsightsReportConfigState) ElementType() reflect.Type {
 type insightsReportConfigArgs struct {
 	// Options for configuring the format of the inventory report CSV file.
 	// Structure is documented below.
-	CsvOptions InsightsReportConfigCsvOptions `pulumi:"csvOptions"`
+	CsvOptions *InsightsReportConfigCsvOptions `pulumi:"csvOptions"`
 	// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
 	DisplayName *string `pulumi:"displayName"`
 	// Options for configuring how inventory reports are generated.
+	// Structure is documented below.
 	FrequencyOptions *InsightsReportConfigFrequencyOptions `pulumi:"frequencyOptions"`
 	// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
 	// must be in the same location.
+	//
+	// ***
 	Location string `pulumi:"location"`
 	// Options for including metadata in an inventory report.
+	// Structure is documented below.
 	ObjectMetadataReportOptions *InsightsReportConfigObjectMetadataReportOptions `pulumi:"objectMetadataReportOptions"`
-	Project                     *string                                          `pulumi:"project"`
+	// An option for outputting inventory reports as parquet files.
+	ParquetOptions *InsightsReportConfigParquetOptions `pulumi:"parquetOptions"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a InsightsReportConfig resource.
 type InsightsReportConfigArgs struct {
 	// Options for configuring the format of the inventory report CSV file.
 	// Structure is documented below.
-	CsvOptions InsightsReportConfigCsvOptionsInput
+	CsvOptions InsightsReportConfigCsvOptionsPtrInput
 	// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
 	DisplayName pulumi.StringPtrInput
 	// Options for configuring how inventory reports are generated.
+	// Structure is documented below.
 	FrequencyOptions InsightsReportConfigFrequencyOptionsPtrInput
 	// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
 	// must be in the same location.
+	//
+	// ***
 	Location pulumi.StringInput
 	// Options for including metadata in an inventory report.
+	// Structure is documented below.
 	ObjectMetadataReportOptions InsightsReportConfigObjectMetadataReportOptionsPtrInput
-	Project                     pulumi.StringPtrInput
+	// An option for outputting inventory reports as parquet files.
+	ParquetOptions InsightsReportConfigParquetOptionsPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 }
 
 func (InsightsReportConfigArgs) ElementType() reflect.Type {
@@ -347,8 +384,8 @@ func (o InsightsReportConfigOutput) ToInsightsReportConfigOutputWithContext(ctx 
 
 // Options for configuring the format of the inventory report CSV file.
 // Structure is documented below.
-func (o InsightsReportConfigOutput) CsvOptions() InsightsReportConfigCsvOptionsOutput {
-	return o.ApplyT(func(v *InsightsReportConfig) InsightsReportConfigCsvOptionsOutput { return v.CsvOptions }).(InsightsReportConfigCsvOptionsOutput)
+func (o InsightsReportConfigOutput) CsvOptions() InsightsReportConfigCsvOptionsPtrOutput {
+	return o.ApplyT(func(v *InsightsReportConfig) InsightsReportConfigCsvOptionsPtrOutput { return v.CsvOptions }).(InsightsReportConfigCsvOptionsPtrOutput)
 }
 
 // The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
@@ -357,12 +394,15 @@ func (o InsightsReportConfigOutput) DisplayName() pulumi.StringPtrOutput {
 }
 
 // Options for configuring how inventory reports are generated.
+// Structure is documented below.
 func (o InsightsReportConfigOutput) FrequencyOptions() InsightsReportConfigFrequencyOptionsPtrOutput {
 	return o.ApplyT(func(v *InsightsReportConfig) InsightsReportConfigFrequencyOptionsPtrOutput { return v.FrequencyOptions }).(InsightsReportConfigFrequencyOptionsPtrOutput)
 }
 
 // The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
 // must be in the same location.
+//
+// ***
 func (o InsightsReportConfigOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *InsightsReportConfig) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -373,12 +413,20 @@ func (o InsightsReportConfigOutput) Name() pulumi.StringOutput {
 }
 
 // Options for including metadata in an inventory report.
+// Structure is documented below.
 func (o InsightsReportConfigOutput) ObjectMetadataReportOptions() InsightsReportConfigObjectMetadataReportOptionsPtrOutput {
 	return o.ApplyT(func(v *InsightsReportConfig) InsightsReportConfigObjectMetadataReportOptionsPtrOutput {
 		return v.ObjectMetadataReportOptions
 	}).(InsightsReportConfigObjectMetadataReportOptionsPtrOutput)
 }
 
+// An option for outputting inventory reports as parquet files.
+func (o InsightsReportConfigOutput) ParquetOptions() InsightsReportConfigParquetOptionsPtrOutput {
+	return o.ApplyT(func(v *InsightsReportConfig) InsightsReportConfigParquetOptionsPtrOutput { return v.ParquetOptions }).(InsightsReportConfigParquetOptionsPtrOutput)
+}
+
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o InsightsReportConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *InsightsReportConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

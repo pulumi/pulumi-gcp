@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
  *
  * When using Google Cloud DNS to manage internal DNS, create peered DNS domains to make your DNS available to services like Google Cloud Build.
  *
+ * For more information see [the API](https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/v1/services.projects.global.networks.peeredDnsDomains)
+ *
  * ## Example Usage
  *
  * ```typescript

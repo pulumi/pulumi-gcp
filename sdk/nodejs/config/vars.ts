@@ -705,6 +705,14 @@ Object.defineProperty(exports, "firebaseAppCheckCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const firebaseAppHostingCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "firebaseAppHostingCustomEndpoint", {
+    get() {
+        return __config.get("firebaseAppHostingCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const firebaseCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "firebaseCustomEndpoint", {
     get() {

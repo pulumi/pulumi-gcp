@@ -5,6 +5,7 @@ package com.pulumi.gcp.alloydb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,13 @@ public final class ClusterPscConfig {
      * 
      */
     private @Nullable Boolean pscEnabled;
+    /**
+     * @return (Output)
+     * The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
+     * In case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.
+     * 
+     */
+    private @Nullable Integer serviceOwnedProjectNumber;
 
     private ClusterPscConfig() {}
     /**
@@ -24,6 +32,15 @@ public final class ClusterPscConfig {
      */
     public Optional<Boolean> pscEnabled() {
         return Optional.ofNullable(this.pscEnabled);
+    }
+    /**
+     * @return (Output)
+     * The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
+     * In case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.
+     * 
+     */
+    public Optional<Integer> serviceOwnedProjectNumber() {
+        return Optional.ofNullable(this.serviceOwnedProjectNumber);
     }
 
     public static Builder builder() {
@@ -36,10 +53,12 @@ public final class ClusterPscConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean pscEnabled;
+        private @Nullable Integer serviceOwnedProjectNumber;
         public Builder() {}
         public Builder(ClusterPscConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pscEnabled = defaults.pscEnabled;
+    	      this.serviceOwnedProjectNumber = defaults.serviceOwnedProjectNumber;
         }
 
         @CustomType.Setter
@@ -48,9 +67,16 @@ public final class ClusterPscConfig {
             this.pscEnabled = pscEnabled;
             return this;
         }
+        @CustomType.Setter
+        public Builder serviceOwnedProjectNumber(@Nullable Integer serviceOwnedProjectNumber) {
+
+            this.serviceOwnedProjectNumber = serviceOwnedProjectNumber;
+            return this;
+        }
         public ClusterPscConfig build() {
             final var _resultValue = new ClusterPscConfig();
             _resultValue.pscEnabled = pscEnabled;
+            _resultValue.serviceOwnedProjectNumber = serviceOwnedProjectNumber;
             return _resultValue;
         }
     }

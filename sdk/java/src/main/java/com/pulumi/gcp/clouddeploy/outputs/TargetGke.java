@@ -18,6 +18,11 @@ public final class TargetGke {
      */
     private @Nullable String cluster;
     /**
+     * @return Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dns_endpoint` and `internal_ip` cannot be set to true.
+     * 
+     */
+    private @Nullable Boolean dnsEndpoint;
+    /**
      * @return Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
      * 
      */
@@ -35,6 +40,13 @@ public final class TargetGke {
      */
     public Optional<String> cluster() {
         return Optional.ofNullable(this.cluster);
+    }
+    /**
+     * @return Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dns_endpoint` and `internal_ip` cannot be set to true.
+     * 
+     */
+    public Optional<Boolean> dnsEndpoint() {
+        return Optional.ofNullable(this.dnsEndpoint);
     }
     /**
      * @return Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
@@ -61,12 +73,14 @@ public final class TargetGke {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String cluster;
+        private @Nullable Boolean dnsEndpoint;
         private @Nullable Boolean internalIp;
         private @Nullable String proxyUrl;
         public Builder() {}
         public Builder(TargetGke defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cluster = defaults.cluster;
+    	      this.dnsEndpoint = defaults.dnsEndpoint;
     	      this.internalIp = defaults.internalIp;
     	      this.proxyUrl = defaults.proxyUrl;
         }
@@ -75,6 +89,12 @@ public final class TargetGke {
         public Builder cluster(@Nullable String cluster) {
 
             this.cluster = cluster;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dnsEndpoint(@Nullable Boolean dnsEndpoint) {
+
+            this.dnsEndpoint = dnsEndpoint;
             return this;
         }
         @CustomType.Setter
@@ -92,6 +112,7 @@ public final class TargetGke {
         public TargetGke build() {
             final var _resultValue = new TargetGke();
             _resultValue.cluster = cluster;
+            _resultValue.dnsEndpoint = dnsEndpoint;
             _resultValue.internalIp = internalIp;
             _resultValue.proxyUrl = proxyUrl;
             return _resultValue;

@@ -6,6 +6,7 @@ package com.pulumi.gcp.alloydb.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.util.Objects;
 
 @CustomType
@@ -15,6 +16,12 @@ public final class GetClusterPscConfig {
      * 
      */
     private Boolean pscEnabled;
+    /**
+     * @return The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
+     * In case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.
+     * 
+     */
+    private Integer serviceOwnedProjectNumber;
 
     private GetClusterPscConfig() {}
     /**
@@ -23,6 +30,14 @@ public final class GetClusterPscConfig {
      */
     public Boolean pscEnabled() {
         return this.pscEnabled;
+    }
+    /**
+     * @return The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
+     * In case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.
+     * 
+     */
+    public Integer serviceOwnedProjectNumber() {
+        return this.serviceOwnedProjectNumber;
     }
 
     public static Builder builder() {
@@ -35,10 +50,12 @@ public final class GetClusterPscConfig {
     @CustomType.Builder
     public static final class Builder {
         private Boolean pscEnabled;
+        private Integer serviceOwnedProjectNumber;
         public Builder() {}
         public Builder(GetClusterPscConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pscEnabled = defaults.pscEnabled;
+    	      this.serviceOwnedProjectNumber = defaults.serviceOwnedProjectNumber;
         }
 
         @CustomType.Setter
@@ -49,9 +66,18 @@ public final class GetClusterPscConfig {
             this.pscEnabled = pscEnabled;
             return this;
         }
+        @CustomType.Setter
+        public Builder serviceOwnedProjectNumber(Integer serviceOwnedProjectNumber) {
+            if (serviceOwnedProjectNumber == null) {
+              throw new MissingRequiredPropertyException("GetClusterPscConfig", "serviceOwnedProjectNumber");
+            }
+            this.serviceOwnedProjectNumber = serviceOwnedProjectNumber;
+            return this;
+        }
         public GetClusterPscConfig build() {
             final var _resultValue = new GetClusterPscConfig();
             _resultValue.pscEnabled = pscEnabled;
+            _resultValue.serviceOwnedProjectNumber = serviceOwnedProjectNumber;
             return _resultValue;
         }
     }

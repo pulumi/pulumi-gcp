@@ -54,6 +54,9 @@ class GetGroupTransitiveMembershipsResult:
     @property
     @pulumi.getter
     def memberships(self) -> Sequence['outputs.GetGroupTransitiveMembershipsMembershipResult']:
+        """
+        The list of memberships under the given group. Structure is documented below.
+        """
         return pulumi.get(self, "memberships")
 
 
@@ -71,7 +74,25 @@ class AwaitableGetGroupTransitiveMembershipsResult(GetGroupTransitiveMemberships
 def get_group_transitive_memberships(group: Optional[str] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupTransitiveMembershipsResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get list of the Cloud Identity Group Memberships within a given Group. Whereas `cloudidentity_get_group_memberships` returns details of only direct members of the group, `cloudidentity_get_group_transitive_memberships` will return details about both direct and indirect members. For example, a user is an indirect member of Group A if the user is a direct member of Group B and Group B is a direct member of Group A.
+
+    To get more information about TransitiveGroupMembership, see:
+
+    * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships/searchTransitiveMemberships)
+    * How-to Guides
+        * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    members = gcp.cloudidentity.get_group_transitive_memberships(group="groups/123eab45c6defghi")
+    ```
+
+
+    :param str group: The parent Group resource to search transitive memberships in. Must be of the form groups/{group_id}.
     """
     __args__ = dict()
     __args__['group'] = group
@@ -85,7 +106,25 @@ def get_group_transitive_memberships(group: Optional[str] = None,
 def get_group_transitive_memberships_output(group: Optional[pulumi.Input[str]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupTransitiveMembershipsResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get list of the Cloud Identity Group Memberships within a given Group. Whereas `cloudidentity_get_group_memberships` returns details of only direct members of the group, `cloudidentity_get_group_transitive_memberships` will return details about both direct and indirect members. For example, a user is an indirect member of Group A if the user is a direct member of Group B and Group B is a direct member of Group A.
+
+    To get more information about TransitiveGroupMembership, see:
+
+    * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships/searchTransitiveMemberships)
+    * How-to Guides
+        * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    members = gcp.cloudidentity.get_group_transitive_memberships(group="groups/123eab45c6defghi")
+    ```
+
+
+    :param str group: The parent Group resource to search transitive memberships in. Must be of the form groups/{group_id}.
     """
     __args__ = dict()
     __args__['group'] = group

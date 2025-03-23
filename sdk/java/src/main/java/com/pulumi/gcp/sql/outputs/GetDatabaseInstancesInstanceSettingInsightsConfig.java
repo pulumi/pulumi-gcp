@@ -17,12 +17,12 @@ public final class GetDatabaseInstancesInstanceSettingInsightsConfig {
      */
     private Boolean queryInsightsEnabled;
     /**
-     * @return Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+     * @return Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5. For Enterprise Plus instances, from 0 to 200.
      * 
      */
     private Integer queryPlansPerMinute;
     /**
-     * @return Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+     * @return Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
      * 
      */
     private Integer queryStringLength;
@@ -46,14 +46,14 @@ public final class GetDatabaseInstancesInstanceSettingInsightsConfig {
         return this.queryInsightsEnabled;
     }
     /**
-     * @return Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+     * @return Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5. For Enterprise Plus instances, from 0 to 200.
      * 
      */
     public Integer queryPlansPerMinute() {
         return this.queryPlansPerMinute;
     }
     /**
-     * @return Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+     * @return Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
      * 
      */
     public Integer queryStringLength() {

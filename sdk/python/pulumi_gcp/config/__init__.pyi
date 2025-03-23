@@ -189,6 +189,8 @@ filestoreCustomEndpoint: Optional[str]
 
 firebaseAppCheckCustomEndpoint: Optional[str]
 
+firebaseAppHostingCustomEndpoint: Optional[str]
+
 firebaseCustomEndpoint: Optional[str]
 
 firebaseDataConnectCustomEndpoint: Optional[str]

@@ -138,6 +138,12 @@ namespace Pulumi.Gcp.Dataproc
         public Output<ImmutableArray<Outputs.MetastoreFederationBackendMetastore>> BackendMetastores { get; private set; } = null!;
 
         /// <summary>
+        /// Output only. The time when the metastore federation was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
         [Output("effectiveLabels")]
@@ -204,6 +210,12 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
+
+        /// <summary>
+        /// Output only. The time when the metastore federation was last updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
         /// The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
@@ -333,6 +345,12 @@ namespace Pulumi.Gcp.Dataproc
             set => _backendMetastores = value;
         }
 
+        /// <summary>
+        /// Output only. The time when the metastore federation was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;
 
@@ -426,6 +444,12 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }
+
+        /// <summary>
+        /// Output only. The time when the metastore federation was last updated.
+        /// </summary>
+        [Input("updateTime")]
+        public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
         /// The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.

@@ -27,14 +27,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := container.GetAttachedVersions(ctx, &container.GetAttachedVersionsArgs{
+//			uswest, err := container.GetAttachedVersions(ctx, &container.GetAttachedVersionsArgs{
 //				Location: "us-west1",
 //				Project:  "my-project",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstAvailableVersion", versions.ValidVersions[0])
+//			ctx.Export("firstAvailableVersion", uswest.ValidVersions[0])
 //			return nil
 //		})
 //	}

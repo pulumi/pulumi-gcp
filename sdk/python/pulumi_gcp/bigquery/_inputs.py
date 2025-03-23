@@ -4099,6 +4099,10 @@ if not MYPY:
         Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed.
         However, you must still set destinationTable when result size exceeds the allowed maximum response size.
         """
+        continuous: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to run the query as continuous or a regular query.
+        """
         create_disposition: NotRequired[pulumi.Input[str]]
         """
         Specifies whether the job is allowed to create new tables. The following values are supported:
@@ -4200,6 +4204,7 @@ class JobQueryArgs:
     def __init__(__self__, *,
                  query: pulumi.Input[str],
                  allow_large_results: Optional[pulumi.Input[bool]] = None,
+                 continuous: Optional[pulumi.Input[bool]] = None,
                  create_disposition: Optional[pulumi.Input[str]] = None,
                  default_dataset: Optional[pulumi.Input['JobQueryDefaultDatasetArgs']] = None,
                  destination_encryption_configuration: Optional[pulumi.Input['JobQueryDestinationEncryptionConfigurationArgs']] = None,
@@ -4222,6 +4227,7 @@ class JobQueryArgs:
         :param pulumi.Input[bool] allow_large_results: If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance.
                Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed.
                However, you must still set destinationTable when result size exceeds the allowed maximum response size.
+        :param pulumi.Input[bool] continuous: Whether to run the query as continuous or a regular query.
         :param pulumi.Input[str] create_disposition: Specifies whether the job is allowed to create new tables. The following values are supported:
                CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
                CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
@@ -4274,6 +4280,8 @@ class JobQueryArgs:
         pulumi.set(__self__, "query", query)
         if allow_large_results is not None:
             pulumi.set(__self__, "allow_large_results", allow_large_results)
+        if continuous is not None:
+            pulumi.set(__self__, "continuous", continuous)
         if create_disposition is not None:
             pulumi.set(__self__, "create_disposition", create_disposition)
         if default_dataset is not None:
@@ -4332,6 +4340,18 @@ class JobQueryArgs:
     @allow_large_results.setter
     def allow_large_results(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_large_results", value)
+
+    @property
+    @pulumi.getter
+    def continuous(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to run the query as continuous or a regular query.
+        """
+        return pulumi.get(self, "continuous")
+
+    @continuous.setter
+    def continuous(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "continuous", value)
 
     @property
     @pulumi.getter(name="createDisposition")

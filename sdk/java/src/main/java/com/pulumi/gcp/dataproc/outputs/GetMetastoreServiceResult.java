@@ -25,6 +25,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetMetastoreServiceResult {
     private String artifactGcsUri;
+    private String createTime;
     private String databaseType;
     private Boolean deletionProtection;
     private Map<String,String> effectiveLabels;
@@ -55,10 +56,14 @@ public final class GetMetastoreServiceResult {
     private List<GetMetastoreServiceTelemetryConfig> telemetryConfigs;
     private String tier;
     private String uid;
+    private String updateTime;
 
     private GetMetastoreServiceResult() {}
     public String artifactGcsUri() {
         return this.artifactGcsUri;
+    }
+    public String createTime() {
+        return this.createTime;
     }
     public String databaseType() {
         return this.databaseType;
@@ -142,6 +147,9 @@ public final class GetMetastoreServiceResult {
     public String uid() {
         return this.uid;
     }
+    public String updateTime() {
+        return this.updateTime;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -153,6 +161,7 @@ public final class GetMetastoreServiceResult {
     @CustomType.Builder
     public static final class Builder {
         private String artifactGcsUri;
+        private String createTime;
         private String databaseType;
         private Boolean deletionProtection;
         private Map<String,String> effectiveLabels;
@@ -179,10 +188,12 @@ public final class GetMetastoreServiceResult {
         private List<GetMetastoreServiceTelemetryConfig> telemetryConfigs;
         private String tier;
         private String uid;
+        private String updateTime;
         public Builder() {}
         public Builder(GetMetastoreServiceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.artifactGcsUri = defaults.artifactGcsUri;
+    	      this.createTime = defaults.createTime;
     	      this.databaseType = defaults.databaseType;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.effectiveLabels = defaults.effectiveLabels;
@@ -209,6 +220,7 @@ public final class GetMetastoreServiceResult {
     	      this.telemetryConfigs = defaults.telemetryConfigs;
     	      this.tier = defaults.tier;
     	      this.uid = defaults.uid;
+    	      this.updateTime = defaults.updateTime;
         }
 
         @CustomType.Setter
@@ -217,6 +229,14 @@ public final class GetMetastoreServiceResult {
               throw new MissingRequiredPropertyException("GetMetastoreServiceResult", "artifactGcsUri");
             }
             this.artifactGcsUri = artifactGcsUri;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder createTime(String createTime) {
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetMetastoreServiceResult", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
@@ -449,9 +469,18 @@ public final class GetMetastoreServiceResult {
             this.uid = uid;
             return this;
         }
+        @CustomType.Setter
+        public Builder updateTime(String updateTime) {
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetMetastoreServiceResult", "updateTime");
+            }
+            this.updateTime = updateTime;
+            return this;
+        }
         public GetMetastoreServiceResult build() {
             final var _resultValue = new GetMetastoreServiceResult();
             _resultValue.artifactGcsUri = artifactGcsUri;
+            _resultValue.createTime = createTime;
             _resultValue.databaseType = databaseType;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.effectiveLabels = effectiveLabels;
@@ -478,6 +507,7 @@ public final class GetMetastoreServiceResult {
             _resultValue.telemetryConfigs = telemetryConfigs;
             _resultValue.tier = tier;
             _resultValue.uid = uid;
+            _resultValue.updateTime = updateTime;
             return _resultValue;
         }
     }

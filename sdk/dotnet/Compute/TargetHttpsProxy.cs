@@ -598,7 +598,7 @@ namespace Pulumi.Gcp.Compute
         /// Early Data allows a TLS resumption handshake to include the initial application payload
         /// (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
         /// This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
-        /// Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+        /// Possible values are: `STRICT`, `PERMISSIVE`, `UNRESTRICTED`, `DISABLED`.
         /// </summary>
         [Output("tlsEarlyData")]
         public Output<string> TlsEarlyData { get; private set; } = null!;
@@ -786,7 +786,7 @@ namespace Pulumi.Gcp.Compute
         /// Early Data allows a TLS resumption handshake to include the initial application payload
         /// (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
         /// This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
-        /// Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+        /// Possible values are: `STRICT`, `PERMISSIVE`, `UNRESTRICTED`, `DISABLED`.
         /// </summary>
         [Input("tlsEarlyData")]
         public Input<string>? TlsEarlyData { get; set; }
@@ -954,7 +954,7 @@ namespace Pulumi.Gcp.Compute
         /// Early Data allows a TLS resumption handshake to include the initial application payload
         /// (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
         /// This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
-        /// Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+        /// Possible values are: `STRICT`, `PERMISSIVE`, `UNRESTRICTED`, `DISABLED`.
         /// </summary>
         [Input("tlsEarlyData")]
         public Input<string>? TlsEarlyData { get; set; }

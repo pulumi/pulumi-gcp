@@ -43,6 +43,7 @@ import * as utilities from "../utilities";
  *     displayName: "dataform_repository",
  *     npmrcEnvironmentVariablesSecretVersion: secretVersion.id,
  *     kmsKeyName: exampleKey.id,
+ *     deletionPolicy: "FORCE",
  *     labels: {
  *         label_foo1: "label-bar1",
  *     },
@@ -120,6 +121,10 @@ export class Repository extends pulumi.CustomResource {
     }
 
     /**
+     * Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+     */
+    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    /**
      * Optional. The repository's user-friendly name.
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
@@ -193,6 +198,7 @@ export class Repository extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RepositoryState | undefined;
+            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["gitRemoteSettings"] = state ? state.gitRemoteSettings : undefined;
@@ -207,6 +213,7 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["workspaceCompilationOverrides"] = state ? state.workspaceCompilationOverrides : undefined;
         } else {
             const args = argsOrState as RepositoryArgs | undefined;
+            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["gitRemoteSettings"] = args ? args.gitRemoteSettings : undefined;
             resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
@@ -231,6 +238,10 @@ export class Repository extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Repository resources.
  */
 export interface RepositoryState {
+    /**
+     * Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * Optional. The repository's user-friendly name.
      */
@@ -297,6 +308,10 @@ export interface RepositoryState {
  * The set of arguments for constructing a Repository resource.
  */
 export interface RepositoryArgs {
+    /**
+     * Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * Optional. The repository's user-friendly name.
      */

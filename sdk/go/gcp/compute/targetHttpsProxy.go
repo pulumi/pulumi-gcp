@@ -585,7 +585,7 @@ type TargetHttpsProxy struct {
 	// Early Data allows a TLS resumption handshake to include the initial application payload
 	// (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
 	// This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
-	// Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+	// Possible values are: `STRICT`, `PERMISSIVE`, `UNRESTRICTED`, `DISABLED`.
 	TlsEarlyData pulumi.StringOutput `pulumi:"tlsEarlyData"`
 	// A reference to the UrlMap resource that defines the mapping from URL
 	// to the BackendService.
@@ -703,7 +703,7 @@ type targetHttpsProxyState struct {
 	// Early Data allows a TLS resumption handshake to include the initial application payload
 	// (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
 	// This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
-	// Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+	// Possible values are: `STRICT`, `PERMISSIVE`, `UNRESTRICTED`, `DISABLED`.
 	TlsEarlyData *string `pulumi:"tlsEarlyData"`
 	// A reference to the UrlMap resource that defines the mapping from URL
 	// to the BackendService.
@@ -789,7 +789,7 @@ type TargetHttpsProxyState struct {
 	// Early Data allows a TLS resumption handshake to include the initial application payload
 	// (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
 	// This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
-	// Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+	// Possible values are: `STRICT`, `PERMISSIVE`, `UNRESTRICTED`, `DISABLED`.
 	TlsEarlyData pulumi.StringPtrInput
 	// A reference to the UrlMap resource that defines the mapping from URL
 	// to the BackendService.
@@ -873,7 +873,7 @@ type targetHttpsProxyArgs struct {
 	// Early Data allows a TLS resumption handshake to include the initial application payload
 	// (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
 	// This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
-	// Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+	// Possible values are: `STRICT`, `PERMISSIVE`, `UNRESTRICTED`, `DISABLED`.
 	TlsEarlyData *string `pulumi:"tlsEarlyData"`
 	// A reference to the UrlMap resource that defines the mapping from URL
 	// to the BackendService.
@@ -954,7 +954,7 @@ type TargetHttpsProxyArgs struct {
 	// Early Data allows a TLS resumption handshake to include the initial application payload
 	// (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
 	// This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
-	// Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+	// Possible values are: `STRICT`, `PERMISSIVE`, `UNRESTRICTED`, `DISABLED`.
 	TlsEarlyData pulumi.StringPtrInput
 	// A reference to the UrlMap resource that defines the mapping from URL
 	// to the BackendService.
@@ -1168,7 +1168,7 @@ func (o TargetHttpsProxyOutput) SslPolicy() pulumi.StringPtrOutput {
 // Early Data allows a TLS resumption handshake to include the initial application payload
 // (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
 // This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
-// Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+// Possible values are: `STRICT`, `PERMISSIVE`, `UNRESTRICTED`, `DISABLED`.
 func (o TargetHttpsProxyOutput) TlsEarlyData() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetHttpsProxy) pulumi.StringOutput { return v.TlsEarlyData }).(pulumi.StringOutput)
 }
