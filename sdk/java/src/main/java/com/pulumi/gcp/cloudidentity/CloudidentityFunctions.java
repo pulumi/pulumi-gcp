@@ -509,18 +509,243 @@ public final class CloudidentityFunctions {
     public static CompletableFuture<GetGroupMembershipsResult> getGroupMembershipsPlain(GetGroupMembershipsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:cloudidentity/getGroupMemberships:getGroupMemberships", TypeShape.of(GetGroupMembershipsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Use this data source to get list of the Cloud Identity Group Memberships within a given Group. Whereas `gcp.cloudidentity.getGroupMemberships` returns details of only direct members of the group, `gcp.cloudidentity.getGroupTransitiveMemberships` will return details about both direct and indirect members. For example, a user is an indirect member of Group A if the user is a direct member of Group B and Group B is a direct member of Group A.
+     * 
+     * To get more information about TransitiveGroupMembership, see:
+     * 
+     * * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships/searchTransitiveMemberships)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupTransitiveMembershipsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var members = CloudidentityFunctions.getGroupTransitiveMemberships(GetGroupTransitiveMembershipsArgs.builder()
+     *             .group("groups/123eab45c6defghi")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetGroupTransitiveMembershipsResult> getGroupTransitiveMemberships(GetGroupTransitiveMembershipsArgs args) {
         return getGroupTransitiveMemberships(args, InvokeOptions.Empty);
     }
+    /**
+     * Use this data source to get list of the Cloud Identity Group Memberships within a given Group. Whereas `gcp.cloudidentity.getGroupMemberships` returns details of only direct members of the group, `gcp.cloudidentity.getGroupTransitiveMemberships` will return details about both direct and indirect members. For example, a user is an indirect member of Group A if the user is a direct member of Group B and Group B is a direct member of Group A.
+     * 
+     * To get more information about TransitiveGroupMembership, see:
+     * 
+     * * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships/searchTransitiveMemberships)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupTransitiveMembershipsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var members = CloudidentityFunctions.getGroupTransitiveMemberships(GetGroupTransitiveMembershipsArgs.builder()
+     *             .group("groups/123eab45c6defghi")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetGroupTransitiveMembershipsResult> getGroupTransitiveMembershipsPlain(GetGroupTransitiveMembershipsPlainArgs args) {
         return getGroupTransitiveMembershipsPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Use this data source to get list of the Cloud Identity Group Memberships within a given Group. Whereas `gcp.cloudidentity.getGroupMemberships` returns details of only direct members of the group, `gcp.cloudidentity.getGroupTransitiveMemberships` will return details about both direct and indirect members. For example, a user is an indirect member of Group A if the user is a direct member of Group B and Group B is a direct member of Group A.
+     * 
+     * To get more information about TransitiveGroupMembership, see:
+     * 
+     * * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships/searchTransitiveMemberships)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupTransitiveMembershipsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var members = CloudidentityFunctions.getGroupTransitiveMemberships(GetGroupTransitiveMembershipsArgs.builder()
+     *             .group("groups/123eab45c6defghi")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetGroupTransitiveMembershipsResult> getGroupTransitiveMemberships(GetGroupTransitiveMembershipsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:cloudidentity/getGroupTransitiveMemberships:getGroupTransitiveMemberships", TypeShape.of(GetGroupTransitiveMembershipsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Use this data source to get list of the Cloud Identity Group Memberships within a given Group. Whereas `gcp.cloudidentity.getGroupMemberships` returns details of only direct members of the group, `gcp.cloudidentity.getGroupTransitiveMemberships` will return details about both direct and indirect members. For example, a user is an indirect member of Group A if the user is a direct member of Group B and Group B is a direct member of Group A.
+     * 
+     * To get more information about TransitiveGroupMembership, see:
+     * 
+     * * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships/searchTransitiveMemberships)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupTransitiveMembershipsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var members = CloudidentityFunctions.getGroupTransitiveMemberships(GetGroupTransitiveMembershipsArgs.builder()
+     *             .group("groups/123eab45c6defghi")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetGroupTransitiveMembershipsResult> getGroupTransitiveMemberships(GetGroupTransitiveMembershipsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:cloudidentity/getGroupTransitiveMemberships:getGroupTransitiveMemberships", TypeShape.of(GetGroupTransitiveMembershipsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Use this data source to get list of the Cloud Identity Group Memberships within a given Group. Whereas `gcp.cloudidentity.getGroupMemberships` returns details of only direct members of the group, `gcp.cloudidentity.getGroupTransitiveMemberships` will return details about both direct and indirect members. For example, a user is an indirect member of Group A if the user is a direct member of Group B and Group B is a direct member of Group A.
+     * 
+     * To get more information about TransitiveGroupMembership, see:
+     * 
+     * * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships/searchTransitiveMemberships)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupTransitiveMembershipsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var members = CloudidentityFunctions.getGroupTransitiveMemberships(GetGroupTransitiveMembershipsArgs.builder()
+     *             .group("groups/123eab45c6defghi")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetGroupTransitiveMembershipsResult> getGroupTransitiveMembershipsPlain(GetGroupTransitiveMembershipsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:cloudidentity/getGroupTransitiveMemberships:getGroupTransitiveMemberships", TypeShape.of(GetGroupTransitiveMembershipsResult.class), args, Utilities.withVersion(options));
     }

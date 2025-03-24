@@ -377,7 +377,7 @@ import javax.annotation.Nullable;
  *             .project("my-project-name")
  *             .name("cloud-function-via-hosting")
  *             .description("A Cloud Function connected to Firebase Hosing")
- *             .runtime("nodejs16")
+ *             .runtime("nodejs20")
  *             .availableMemoryMb(128)
  *             .sourceArchiveBucket(bucket.name())
  *             .sourceArchiveObject(object.name())

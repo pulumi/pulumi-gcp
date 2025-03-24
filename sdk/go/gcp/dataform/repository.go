@@ -76,6 +76,7 @@ import (
 //				DisplayName:                            pulumi.String("dataform_repository"),
 //				NpmrcEnvironmentVariablesSecretVersion: secretVersion.ID(),
 //				KmsKeyName:                             exampleKey.ID(),
+//				DeletionPolicy:                         pulumi.String("FORCE"),
 //				Labels: pulumi.StringMap{
 //					"label_foo1": pulumi.String("label-bar1"),
 //				},
@@ -133,6 +134,8 @@ import (
 type Repository struct {
 	pulumi.CustomResourceState
 
+	// Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// Optional. The repository's user-friendly name.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -205,6 +208,8 @@ func GetRepository(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Repository resources.
 type repositoryState struct {
+	// Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. The repository's user-friendly name.
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -243,6 +248,8 @@ type repositoryState struct {
 }
 
 type RepositoryState struct {
+	// Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. The repository's user-friendly name.
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -285,6 +292,8 @@ func (RepositoryState) ElementType() reflect.Type {
 }
 
 type repositoryArgs struct {
+	// Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. The repository's user-friendly name.
 	DisplayName *string `pulumi:"displayName"`
 	// Optional. If set, configures this repository to be linked to a Git remote.
@@ -319,6 +328,8 @@ type repositoryArgs struct {
 
 // The set of arguments for constructing a Repository resource.
 type RepositoryArgs struct {
+	// Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. The repository's user-friendly name.
 	DisplayName pulumi.StringPtrInput
 	// Optional. If set, configures this repository to be linked to a Git remote.
@@ -436,6 +447,11 @@ func (o RepositoryOutput) ToRepositoryOutput() RepositoryOutput {
 
 func (o RepositoryOutput) ToRepositoryOutputWithContext(ctx context.Context) RepositoryOutput {
 	return o
+}
+
+// Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+func (o RepositoryOutput) DeletionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }
 
 // Optional. The repository's user-friendly name.

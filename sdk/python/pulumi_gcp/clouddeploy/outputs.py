@@ -2191,7 +2191,9 @@ class TargetGke(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "internalIp":
+        if key == "dnsEndpoint":
+            suggest = "dns_endpoint"
+        elif key == "internalIp":
             suggest = "internal_ip"
         elif key == "proxyUrl":
             suggest = "proxy_url"
@@ -2209,15 +2211,19 @@ class TargetGke(dict):
 
     def __init__(__self__, *,
                  cluster: Optional[str] = None,
+                 dns_endpoint: Optional[bool] = None,
                  internal_ip: Optional[bool] = None,
                  proxy_url: Optional[str] = None):
         """
         :param str cluster: Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
+        :param bool dns_endpoint: Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dns_endpoint` and `internal_ip` cannot be set to true.
         :param bool internal_ip: Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
         :param str proxy_url: Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
         """
         if cluster is not None:
             pulumi.set(__self__, "cluster", cluster)
+        if dns_endpoint is not None:
+            pulumi.set(__self__, "dns_endpoint", dns_endpoint)
         if internal_ip is not None:
             pulumi.set(__self__, "internal_ip", internal_ip)
         if proxy_url is not None:
@@ -2230,6 +2236,14 @@ class TargetGke(dict):
         Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
         """
         return pulumi.get(self, "cluster")
+
+    @property
+    @pulumi.getter(name="dnsEndpoint")
+    def dns_endpoint(self) -> Optional[bool]:
+        """
+        Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dns_endpoint` and `internal_ip` cannot be set to true.
+        """
+        return pulumi.get(self, "dns_endpoint")
 
     @property
     @pulumi.getter(name="internalIp")

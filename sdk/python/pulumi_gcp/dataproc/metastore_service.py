@@ -370,6 +370,7 @@ class MetastoreServiceArgs:
 class _MetastoreServiceState:
     def __init__(__self__, *,
                  artifact_gcs_uri: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  database_type: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -394,10 +395,12 @@ class _MetastoreServiceState:
                  state_message: Optional[pulumi.Input[str]] = None,
                  telemetry_config: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']] = None,
                  tier: Optional[pulumi.Input[str]] = None,
-                 uid: Optional[pulumi.Input[str]] = None):
+                 uid: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MetastoreService resources.
         :param pulumi.Input[str] artifact_gcs_uri: A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
+        :param pulumi.Input[str] create_time: Output only. The time when the metastore service was created.
         :param pulumi.Input[str] database_type: The database type that the Metastore service stores its data.
                Default value is `MYSQL`.
                Possible values are: `MYSQL`, `SPANNER`.
@@ -450,9 +453,12 @@ class _MetastoreServiceState:
         :param pulumi.Input[str] tier: The tier of the service.
                Possible values are: `DEVELOPER`, `ENTERPRISE`.
         :param pulumi.Input[str] uid: The globally unique resource identifier of the metastore service.
+        :param pulumi.Input[str] update_time: Output only. The time when the metastore service was last updated.
         """
         if artifact_gcs_uri is not None:
             pulumi.set(__self__, "artifact_gcs_uri", artifact_gcs_uri)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if database_type is not None:
             pulumi.set(__self__, "database_type", database_type)
         if deletion_protection is not None:
@@ -503,6 +509,8 @@ class _MetastoreServiceState:
             pulumi.set(__self__, "tier", tier)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="artifactGcsUri")
@@ -515,6 +523,18 @@ class _MetastoreServiceState:
     @artifact_gcs_uri.setter
     def artifact_gcs_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "artifact_gcs_uri", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The time when the metastore service was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter(name="databaseType")
@@ -842,6 +862,18 @@ class _MetastoreServiceState:
     @uid.setter
     def uid(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uid", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The time when the metastore service was last updated.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
 
 
 class MetastoreService(pulumi.CustomResource):
@@ -1604,6 +1636,7 @@ class MetastoreService(pulumi.CustomResource):
             __props__.__dict__["telemetry_config"] = telemetry_config
             __props__.__dict__["tier"] = tier
             __props__.__dict__["artifact_gcs_uri"] = None
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["endpoint_uri"] = None
             __props__.__dict__["name"] = None
@@ -1611,6 +1644,7 @@ class MetastoreService(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["state_message"] = None
             __props__.__dict__["uid"] = None
+            __props__.__dict__["update_time"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(MetastoreService, __self__).__init__(
@@ -1624,6 +1658,7 @@ class MetastoreService(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             artifact_gcs_uri: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             database_type: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1648,7 +1683,8 @@ class MetastoreService(pulumi.CustomResource):
             state_message: Optional[pulumi.Input[str]] = None,
             telemetry_config: Optional[pulumi.Input[Union['MetastoreServiceTelemetryConfigArgs', 'MetastoreServiceTelemetryConfigArgsDict']]] = None,
             tier: Optional[pulumi.Input[str]] = None,
-            uid: Optional[pulumi.Input[str]] = None) -> 'MetastoreService':
+            uid: Optional[pulumi.Input[str]] = None,
+            update_time: Optional[pulumi.Input[str]] = None) -> 'MetastoreService':
         """
         Get an existing MetastoreService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1657,6 +1693,7 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] artifact_gcs_uri: A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
+        :param pulumi.Input[str] create_time: Output only. The time when the metastore service was created.
         :param pulumi.Input[str] database_type: The database type that the Metastore service stores its data.
                Default value is `MYSQL`.
                Possible values are: `MYSQL`, `SPANNER`.
@@ -1709,12 +1746,14 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[str] tier: The tier of the service.
                Possible values are: `DEVELOPER`, `ENTERPRISE`.
         :param pulumi.Input[str] uid: The globally unique resource identifier of the metastore service.
+        :param pulumi.Input[str] update_time: Output only. The time when the metastore service was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _MetastoreServiceState.__new__(_MetastoreServiceState)
 
         __props__.__dict__["artifact_gcs_uri"] = artifact_gcs_uri
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["database_type"] = database_type
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["effective_labels"] = effective_labels
@@ -1740,6 +1779,7 @@ class MetastoreService(pulumi.CustomResource):
         __props__.__dict__["telemetry_config"] = telemetry_config
         __props__.__dict__["tier"] = tier
         __props__.__dict__["uid"] = uid
+        __props__.__dict__["update_time"] = update_time
         return MetastoreService(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1749,6 +1789,14 @@ class MetastoreService(pulumi.CustomResource):
         A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
         """
         return pulumi.get(self, "artifact_gcs_uri")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Output only. The time when the metastore service was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="databaseType")
@@ -1976,4 +2024,12 @@ class MetastoreService(pulumi.CustomResource):
         The globally unique resource identifier of the metastore service.
         """
         return pulumi.get(self, "uid")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        Output only. The time when the metastore service was last updated.
+        """
+        return pulumi.get(self, "update_time")
 

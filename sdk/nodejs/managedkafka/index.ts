@@ -10,6 +10,16 @@ export type Cluster = import("./cluster").Cluster;
 export const Cluster: typeof import("./cluster").Cluster = null as any;
 utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
 
+export { ConnectClusterArgs, ConnectClusterState } from "./connectCluster";
+export type ConnectCluster = import("./connectCluster").ConnectCluster;
+export const ConnectCluster: typeof import("./connectCluster").ConnectCluster = null as any;
+utilities.lazyLoad(exports, ["ConnectCluster"], () => require("./connectCluster"));
+
+export { ConnectorArgs, ConnectorState } from "./connector";
+export type Connector = import("./connector").Connector;
+export const Connector: typeof import("./connector").Connector = null as any;
+utilities.lazyLoad(exports, ["Connector"], () => require("./connector"));
+
 export { TopicArgs, TopicState } from "./topic";
 export type Topic = import("./topic").Topic;
 export const Topic: typeof import("./topic").Topic = null as any;
@@ -22,6 +32,10 @@ const _module = {
         switch (type) {
             case "gcp:managedkafka/cluster:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
+            case "gcp:managedkafka/connectCluster:ConnectCluster":
+                return new ConnectCluster(name, <any>undefined, { urn })
+            case "gcp:managedkafka/connector:Connector":
+                return new Connector(name, <any>undefined, { urn })
             case "gcp:managedkafka/topic:Topic":
                 return new Topic(name, <any>undefined, { urn })
             default:
@@ -30,4 +44,6 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "managedkafka/cluster", _module)
+pulumi.runtime.registerResourceModule("gcp", "managedkafka/connectCluster", _module)
+pulumi.runtime.registerResourceModule("gcp", "managedkafka/connector", _module)
 pulumi.runtime.registerResourceModule("gcp", "managedkafka/topic", _module)

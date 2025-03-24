@@ -14,50 +14,50 @@ import java.util.Objects;
 @CustomType
 public final class GetGroupTransitiveMembershipsMembership {
     /**
-     * @return Resource name for this member.
+     * @return EntityKey of the member.  This value will be either a userKey in the format `users/000000000000000000000` with a numerical id or a groupKey in the format `groups/000ab0000ab0000` with a hexadecimal id.
      * 
      */
     private String member;
     /**
-     * @return EntityKey of the member. Entity key has an id and a namespace. In case of discussion forums, the id will be an email address without a namespace.
+     * @return EntityKey of the member.  Structure is documented below.
      * 
      */
     private List<GetGroupTransitiveMembershipsMembershipPreferredMemberKey> preferredMemberKeys;
     /**
-     * @return The relation between the group and the transitive member. The value can be DIRECT, INDIRECT, or DIRECT_AND_INDIRECT
+     * @return The relation between the group and the transitive member. The value can be DIRECT, INDIRECT, or DIRECT_AND_INDIRECT.
      * 
      */
     private String relationType;
     /**
-     * @return The membership role details
+     * @return The TransitiveMembershipRoles that apply to the Membership. Structure is documented below.
      * 
      */
     private List<GetGroupTransitiveMembershipsMembershipRole> roles;
 
     private GetGroupTransitiveMembershipsMembership() {}
     /**
-     * @return Resource name for this member.
+     * @return EntityKey of the member.  This value will be either a userKey in the format `users/000000000000000000000` with a numerical id or a groupKey in the format `groups/000ab0000ab0000` with a hexadecimal id.
      * 
      */
     public String member() {
         return this.member;
     }
     /**
-     * @return EntityKey of the member. Entity key has an id and a namespace. In case of discussion forums, the id will be an email address without a namespace.
+     * @return EntityKey of the member.  Structure is documented below.
      * 
      */
     public List<GetGroupTransitiveMembershipsMembershipPreferredMemberKey> preferredMemberKeys() {
         return this.preferredMemberKeys;
     }
     /**
-     * @return The relation between the group and the transitive member. The value can be DIRECT, INDIRECT, or DIRECT_AND_INDIRECT
+     * @return The relation between the group and the transitive member. The value can be DIRECT, INDIRECT, or DIRECT_AND_INDIRECT.
      * 
      */
     public String relationType() {
         return this.relationType;
     }
     /**
-     * @return The membership role details
+     * @return The TransitiveMembershipRoles that apply to the Membership. Structure is documented below.
      * 
      */
     public List<GetGroupTransitiveMembershipsMembershipRole> roles() {

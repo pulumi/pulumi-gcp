@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  * const functionNegFunction = new gcp.cloudfunctions.Function("function_neg", {
  *     name: "function-neg",
  *     description: "My function",
- *     runtime: "nodejs10",
+ *     runtime: "nodejs20",
  *     availableMemoryMb: 128,
  *     sourceArchiveBucket: bucket.name,
  *     sourceArchiveObject: archive.name,

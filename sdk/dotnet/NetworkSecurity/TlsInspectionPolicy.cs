@@ -371,6 +371,7 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        /// Default value is `TLS_VERSION_UNSPECIFIED`.
         /// Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         /// </summary>
         [Output("minTlsVersion")]
@@ -394,6 +395,7 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\"PROFILE_COMPATIBLE\"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        /// Default value is `PROFILE_UNSPECIFIED`.
         /// Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
         /// </summary>
         [Output("tlsFeatureProfile")]
@@ -495,6 +497,7 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        /// Default value is `TLS_VERSION_UNSPECIFIED`.
         /// Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         /// </summary>
         [Input("minTlsVersion")]
@@ -518,6 +521,7 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\"PROFILE_COMPATIBLE\"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        /// Default value is `PROFILE_UNSPECIFIED`.
         /// Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
         /// </summary>
         [Input("tlsFeatureProfile")]
@@ -581,6 +585,7 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        /// Default value is `TLS_VERSION_UNSPECIFIED`.
         /// Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         /// </summary>
         [Input("minTlsVersion")]
@@ -604,6 +609,7 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\"PROFILE_COMPATIBLE\"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        /// Default value is `PROFILE_UNSPECIFIED`.
         /// Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
         /// </summary>
         [Input("tlsFeatureProfile")]

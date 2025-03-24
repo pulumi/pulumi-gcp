@@ -369,6 +369,10 @@ export class MetastoreService extends pulumi.CustomResource {
      */
     public /*out*/ readonly artifactGcsUri!: pulumi.Output<string>;
     /**
+     * Output only. The time when the metastore service was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
      * The database type that the Metastore service stores its data.
      * Default value is `MYSQL`.
      * Possible values are: `MYSQL`, `SPANNER`.
@@ -495,6 +499,10 @@ export class MetastoreService extends pulumi.CustomResource {
      * The globally unique resource identifier of the metastore service.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
+    /**
+     * Output only. The time when the metastore service was last updated.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a MetastoreService resource with the given unique name, arguments, and options.
@@ -510,6 +518,7 @@ export class MetastoreService extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as MetastoreServiceState | undefined;
             resourceInputs["artifactGcsUri"] = state ? state.artifactGcsUri : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["databaseType"] = state ? state.databaseType : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
@@ -535,6 +544,7 @@ export class MetastoreService extends pulumi.CustomResource {
             resourceInputs["telemetryConfig"] = state ? state.telemetryConfig : undefined;
             resourceInputs["tier"] = state ? state.tier : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as MetastoreServiceArgs | undefined;
             resourceInputs["databaseType"] = args ? args.databaseType : undefined;
@@ -556,6 +566,7 @@ export class MetastoreService extends pulumi.CustomResource {
             resourceInputs["telemetryConfig"] = args ? args.telemetryConfig : undefined;
             resourceInputs["tier"] = args ? args.tier : undefined;
             resourceInputs["artifactGcsUri"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["endpointUri"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -563,6 +574,7 @@ export class MetastoreService extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateMessage"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
@@ -579,6 +591,10 @@ export interface MetastoreServiceState {
      * A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
      */
     artifactGcsUri?: pulumi.Input<string>;
+    /**
+     * Output only. The time when the metastore service was created.
+     */
+    createTime?: pulumi.Input<string>;
     /**
      * The database type that the Metastore service stores its data.
      * Default value is `MYSQL`.
@@ -706,6 +722,10 @@ export interface MetastoreServiceState {
      * The globally unique resource identifier of the metastore service.
      */
     uid?: pulumi.Input<string>;
+    /**
+     * Output only. The time when the metastore service was last updated.
+     */
+    updateTime?: pulumi.Input<string>;
 }
 
 /**

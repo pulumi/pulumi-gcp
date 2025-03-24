@@ -20,6 +20,10 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly bool? AllowLargeResults;
         /// <summary>
+        /// Whether to run the query as continuous or a regular query.
+        /// </summary>
+        public readonly bool? Continuous;
+        /// <summary>
         /// Specifies whether the job is allowed to create new tables. The following values are supported:
         /// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
         /// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
@@ -123,6 +127,8 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         private JobQuery(
             bool? allowLargeResults,
 
+            bool? continuous,
+
             string? createDisposition,
 
             Outputs.JobQueryDefaultDataset? defaultDataset,
@@ -156,6 +162,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
             string? writeDisposition)
         {
             AllowLargeResults = allowLargeResults;
+            Continuous = continuous;
             CreateDisposition = createDisposition;
             DefaultDataset = defaultDataset;
             DestinationEncryptionConfiguration = destinationEncryptionConfiguration;

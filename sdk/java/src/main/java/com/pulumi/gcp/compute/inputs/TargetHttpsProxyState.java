@@ -321,7 +321,7 @@ public final class TargetHttpsProxyState extends com.pulumi.resources.ResourceAr
      * Early Data allows a TLS resumption handshake to include the initial application payload
      * (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
      * This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
-     * Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+     * Possible values are: `STRICT`, `PERMISSIVE`, `UNRESTRICTED`, `DISABLED`.
      * 
      */
     @Import(name="tlsEarlyData")
@@ -332,7 +332,7 @@ public final class TargetHttpsProxyState extends com.pulumi.resources.ResourceAr
      * Early Data allows a TLS resumption handshake to include the initial application payload
      * (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
      * This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
-     * Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+     * Possible values are: `STRICT`, `PERMISSIVE`, `UNRESTRICTED`, `DISABLED`.
      * 
      */
     public Optional<Output<String>> tlsEarlyData() {
@@ -812,7 +812,7 @@ public final class TargetHttpsProxyState extends com.pulumi.resources.ResourceAr
          * Early Data allows a TLS resumption handshake to include the initial application payload
          * (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
          * This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
-         * Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+         * Possible values are: `STRICT`, `PERMISSIVE`, `UNRESTRICTED`, `DISABLED`.
          * 
          * @return builder
          * 
@@ -827,7 +827,7 @@ public final class TargetHttpsProxyState extends com.pulumi.resources.ResourceAr
          * Early Data allows a TLS resumption handshake to include the initial application payload
          * (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
          * This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
-         * Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+         * Possible values are: `STRICT`, `PERMISSIVE`, `UNRESTRICTED`, `DISABLED`.
          * 
          * @return builder
          * 

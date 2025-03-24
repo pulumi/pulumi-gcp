@@ -3283,8 +3283,8 @@ class GetDatabaseInstanceSettingInsightsConfigResult(dict):
                  record_client_address: bool):
         """
         :param bool query_insights_enabled: True if Query Insights feature is enabled.
-        :param int query_plans_per_minute: Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
-        :param int query_string_length: Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+        :param int query_plans_per_minute: Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5. For Enterprise Plus instances, from 0 to 200.
+        :param int query_string_length: Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
         :param bool record_application_tags: True if Query Insights will record application tags from query when enabled.
         :param bool record_client_address: True if Query Insights will record client address when enabled.
         """
@@ -3306,7 +3306,7 @@ class GetDatabaseInstanceSettingInsightsConfigResult(dict):
     @pulumi.getter(name="queryPlansPerMinute")
     def query_plans_per_minute(self) -> int:
         """
-        Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+        Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5. For Enterprise Plus instances, from 0 to 200.
         """
         return pulumi.get(self, "query_plans_per_minute")
 
@@ -3314,7 +3314,7 @@ class GetDatabaseInstanceSettingInsightsConfigResult(dict):
     @pulumi.getter(name="queryStringLength")
     def query_string_length(self) -> int:
         """
-        Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+        Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
         """
         return pulumi.get(self, "query_string_length")
 
@@ -4899,8 +4899,8 @@ class GetDatabaseInstancesInstanceSettingInsightsConfigResult(dict):
                  record_client_address: bool):
         """
         :param bool query_insights_enabled: True if Query Insights feature is enabled.
-        :param int query_plans_per_minute: Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
-        :param int query_string_length: Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+        :param int query_plans_per_minute: Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5. For Enterprise Plus instances, from 0 to 200.
+        :param int query_string_length: Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
         :param bool record_application_tags: True if Query Insights will record application tags from query when enabled.
         :param bool record_client_address: True if Query Insights will record client address when enabled.
         """
@@ -4922,7 +4922,7 @@ class GetDatabaseInstancesInstanceSettingInsightsConfigResult(dict):
     @pulumi.getter(name="queryPlansPerMinute")
     def query_plans_per_minute(self) -> int:
         """
-        Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+        Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5. For Enterprise Plus instances, from 0 to 200.
         """
         return pulumi.get(self, "query_plans_per_minute")
 
@@ -4930,7 +4930,7 @@ class GetDatabaseInstancesInstanceSettingInsightsConfigResult(dict):
     @pulumi.getter(name="queryStringLength")
     def query_string_length(self) -> int:
         """
-        Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+        Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
         """
         return pulumi.get(self, "query_string_length")
 

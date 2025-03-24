@@ -215,7 +215,6 @@ type GatewaySecurityPolicy struct {
 	// Server-defined URL of this resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
-	// Note: networksecurity.TlsInspectionPolicy resource is still in Beta therefore it will need to import the provider.
 	TlsInspectionPolicy pulumi.StringPtrOutput `pulumi:"tlsInspectionPolicy"`
 	// The timestamp when the resource was updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -273,7 +272,6 @@ type gatewaySecurityPolicyState struct {
 	// Server-defined URL of this resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
-	// Note: networksecurity.TlsInspectionPolicy resource is still in Beta therefore it will need to import the provider.
 	TlsInspectionPolicy *string `pulumi:"tlsInspectionPolicy"`
 	// The timestamp when the resource was updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -302,7 +300,6 @@ type GatewaySecurityPolicyState struct {
 	// Server-defined URL of this resource.
 	SelfLink pulumi.StringPtrInput
 	// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
-	// Note: networksecurity.TlsInspectionPolicy resource is still in Beta therefore it will need to import the provider.
 	TlsInspectionPolicy pulumi.StringPtrInput
 	// The timestamp when the resource was updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -329,7 +326,6 @@ type gatewaySecurityPolicyArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
-	// Note: networksecurity.TlsInspectionPolicy resource is still in Beta therefore it will need to import the provider.
 	TlsInspectionPolicy *string `pulumi:"tlsInspectionPolicy"`
 }
 
@@ -349,7 +345,6 @@ type GatewaySecurityPolicyArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
-	// Note: networksecurity.TlsInspectionPolicy resource is still in Beta therefore it will need to import the provider.
 	TlsInspectionPolicy pulumi.StringPtrInput
 }
 
@@ -478,7 +473,6 @@ func (o GatewaySecurityPolicyOutput) SelfLink() pulumi.StringOutput {
 }
 
 // Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
-// Note: networksecurity.TlsInspectionPolicy resource is still in Beta therefore it will need to import the provider.
 func (o GatewaySecurityPolicyOutput) TlsInspectionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewaySecurityPolicy) pulumi.StringPtrOutput { return v.TlsInspectionPolicy }).(pulumi.StringPtrOutput)
 }

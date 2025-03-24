@@ -129,6 +129,7 @@ class MetastoreFederationArgs:
 class _MetastoreFederationState:
     def __init__(__self__, *,
                  backend_metastores: Optional[pulumi.Input[Sequence[pulumi.Input['MetastoreFederationBackendMetastoreArgs']]]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  endpoint_uri: Optional[pulumi.Input[str]] = None,
                  federation_id: Optional[pulumi.Input[str]] = None,
@@ -140,11 +141,13 @@ class _MetastoreFederationState:
                  state: Optional[pulumi.Input[str]] = None,
                  state_message: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MetastoreFederation resources.
         :param pulumi.Input[Sequence[pulumi.Input['MetastoreFederationBackendMetastoreArgs']]] backend_metastores: A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
                Structure is documented below.
+        :param pulumi.Input[str] create_time: Output only. The time when the metastore federation was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] endpoint_uri: The URI of the endpoint used to access the metastore federation.
         :param pulumi.Input[str] federation_id: The ID of the metastore federation. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
@@ -160,10 +163,13 @@ class _MetastoreFederationState:
         :param pulumi.Input[str] state: The current state of the metastore federation.
         :param pulumi.Input[str] state_message: Additional information about the current state of the metastore federation, if available.
         :param pulumi.Input[str] uid: The globally unique resource identifier of the metastore federation.
+        :param pulumi.Input[str] update_time: Output only. The time when the metastore federation was last updated.
         :param pulumi.Input[str] version: The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
         """
         if backend_metastores is not None:
             pulumi.set(__self__, "backend_metastores", backend_metastores)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if endpoint_uri is not None:
@@ -186,6 +192,8 @@ class _MetastoreFederationState:
             pulumi.set(__self__, "state_message", state_message)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -201,6 +209,18 @@ class _MetastoreFederationState:
     @backend_metastores.setter
     def backend_metastores(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetastoreFederationBackendMetastoreArgs']]]]):
         pulumi.set(self, "backend_metastores", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The time when the metastore federation was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter(name="effectiveLabels")
@@ -335,6 +355,18 @@ class _MetastoreFederationState:
     @uid.setter
     def uid(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uid", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The time when the metastore federation was last updated.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
 
     @property
     @pulumi.getter
@@ -594,6 +626,7 @@ class MetastoreFederation(pulumi.CustomResource):
             if version is None and not opts.urn:
                 raise TypeError("Missing required property 'version'")
             __props__.__dict__["version"] = version
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["endpoint_uri"] = None
             __props__.__dict__["name"] = None
@@ -601,6 +634,7 @@ class MetastoreFederation(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["state_message"] = None
             __props__.__dict__["uid"] = None
+            __props__.__dict__["update_time"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(MetastoreFederation, __self__).__init__(
@@ -614,6 +648,7 @@ class MetastoreFederation(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             backend_metastores: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetastoreFederationBackendMetastoreArgs', 'MetastoreFederationBackendMetastoreArgsDict']]]]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             endpoint_uri: Optional[pulumi.Input[str]] = None,
             federation_id: Optional[pulumi.Input[str]] = None,
@@ -625,6 +660,7 @@ class MetastoreFederation(pulumi.CustomResource):
             state: Optional[pulumi.Input[str]] = None,
             state_message: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
+            update_time: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'MetastoreFederation':
         """
         Get an existing MetastoreFederation resource's state with the given name, id, and optional extra
@@ -635,6 +671,7 @@ class MetastoreFederation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['MetastoreFederationBackendMetastoreArgs', 'MetastoreFederationBackendMetastoreArgsDict']]]] backend_metastores: A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
                Structure is documented below.
+        :param pulumi.Input[str] create_time: Output only. The time when the metastore federation was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] endpoint_uri: The URI of the endpoint used to access the metastore federation.
         :param pulumi.Input[str] federation_id: The ID of the metastore federation. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
@@ -650,6 +687,7 @@ class MetastoreFederation(pulumi.CustomResource):
         :param pulumi.Input[str] state: The current state of the metastore federation.
         :param pulumi.Input[str] state_message: Additional information about the current state of the metastore federation, if available.
         :param pulumi.Input[str] uid: The globally unique resource identifier of the metastore federation.
+        :param pulumi.Input[str] update_time: Output only. The time when the metastore federation was last updated.
         :param pulumi.Input[str] version: The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -657,6 +695,7 @@ class MetastoreFederation(pulumi.CustomResource):
         __props__ = _MetastoreFederationState.__new__(_MetastoreFederationState)
 
         __props__.__dict__["backend_metastores"] = backend_metastores
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["endpoint_uri"] = endpoint_uri
         __props__.__dict__["federation_id"] = federation_id
@@ -668,6 +707,7 @@ class MetastoreFederation(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["state_message"] = state_message
         __props__.__dict__["uid"] = uid
+        __props__.__dict__["update_time"] = update_time
         __props__.__dict__["version"] = version
         return MetastoreFederation(resource_name, opts=opts, __props__=__props__)
 
@@ -679,6 +719,14 @@ class MetastoreFederation(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "backend_metastores")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Output only. The time when the metastore federation was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="effectiveLabels")
@@ -769,6 +817,14 @@ class MetastoreFederation(pulumi.CustomResource):
         The globally unique resource identifier of the metastore federation.
         """
         return pulumi.get(self, "uid")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        Output only. The time when the metastore federation was last updated.
+        """
+        return pulumi.get(self, "update_time")
 
     @property
     @pulumi.getter

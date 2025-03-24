@@ -25,6 +25,11 @@ export type MessageBus = import("./messageBus").MessageBus;
 export const MessageBus: typeof import("./messageBus").MessageBus = null as any;
 utilities.lazyLoad(exports, ["MessageBus"], () => require("./messageBus"));
 
+export { PipelineArgs, PipelineState } from "./pipeline";
+export type Pipeline = import("./pipeline").Pipeline;
+export const Pipeline: typeof import("./pipeline").Pipeline = null as any;
+utilities.lazyLoad(exports, ["Pipeline"], () => require("./pipeline"));
+
 export { TriggerArgs, TriggerState } from "./trigger";
 export type Trigger = import("./trigger").Trigger;
 export const Trigger: typeof import("./trigger").Trigger = null as any;
@@ -43,6 +48,8 @@ const _module = {
                 return new GoogleChannelConfig(name, <any>undefined, { urn })
             case "gcp:eventarc/messageBus:MessageBus":
                 return new MessageBus(name, <any>undefined, { urn })
+            case "gcp:eventarc/pipeline:Pipeline":
+                return new Pipeline(name, <any>undefined, { urn })
             case "gcp:eventarc/trigger:Trigger":
                 return new Trigger(name, <any>undefined, { urn })
             default:
@@ -54,4 +61,5 @@ pulumi.runtime.registerResourceModule("gcp", "eventarc/channel", _module)
 pulumi.runtime.registerResourceModule("gcp", "eventarc/googleApiSource", _module)
 pulumi.runtime.registerResourceModule("gcp", "eventarc/googleChannelConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "eventarc/messageBus", _module)
+pulumi.runtime.registerResourceModule("gcp", "eventarc/pipeline", _module)
 pulumi.runtime.registerResourceModule("gcp", "eventarc/trigger", _module)

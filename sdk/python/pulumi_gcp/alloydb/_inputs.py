@@ -1448,18 +1448,30 @@ if not MYPY:
         """
         Create an instance that allows connections from Private Service Connect endpoints to the instance.
         """
+        service_owned_project_number: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
+        In case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.
+        """
 elif False:
     ClusterPscConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterPscConfigArgs:
     def __init__(__self__, *,
-                 psc_enabled: Optional[pulumi.Input[bool]] = None):
+                 psc_enabled: Optional[pulumi.Input[bool]] = None,
+                 service_owned_project_number: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[bool] psc_enabled: Create an instance that allows connections from Private Service Connect endpoints to the instance.
+        :param pulumi.Input[int] service_owned_project_number: (Output)
+               The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
+               In case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.
         """
         if psc_enabled is not None:
             pulumi.set(__self__, "psc_enabled", psc_enabled)
+        if service_owned_project_number is not None:
+            pulumi.set(__self__, "service_owned_project_number", service_owned_project_number)
 
     @property
     @pulumi.getter(name="pscEnabled")
@@ -1472,6 +1484,20 @@ class ClusterPscConfigArgs:
     @psc_enabled.setter
     def psc_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "psc_enabled", value)
+
+    @property
+    @pulumi.getter(name="serviceOwnedProjectNumber")
+    def service_owned_project_number(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Output)
+        The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
+        In case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.
+        """
+        return pulumi.get(self, "service_owned_project_number")
+
+    @service_owned_project_number.setter
+    def service_owned_project_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "service_owned_project_number", value)
 
 
 if not MYPY:

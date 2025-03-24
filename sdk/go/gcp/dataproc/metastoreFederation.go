@@ -148,6 +148,8 @@ type MetastoreFederation struct {
 	// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
 	// Structure is documented below.
 	BackendMetastores MetastoreFederationBackendMetastoreArrayOutput `pulumi:"backendMetastores"`
+	// Output only. The time when the metastore federation was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The URI of the endpoint used to access the metastore federation.
@@ -174,6 +176,8 @@ type MetastoreFederation struct {
 	StateMessage pulumi.StringOutput `pulumi:"stateMessage"`
 	// The globally unique resource identifier of the metastore federation.
 	Uid pulumi.StringOutput `pulumi:"uid"`
+	// Output only. The time when the metastore federation was last updated.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
 	Version pulumi.StringOutput `pulumi:"version"`
 }
@@ -225,6 +229,8 @@ type metastoreFederationState struct {
 	// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
 	// Structure is documented below.
 	BackendMetastores []MetastoreFederationBackendMetastore `pulumi:"backendMetastores"`
+	// Output only. The time when the metastore federation was created.
+	CreateTime *string `pulumi:"createTime"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The URI of the endpoint used to access the metastore federation.
@@ -251,6 +257,8 @@ type metastoreFederationState struct {
 	StateMessage *string `pulumi:"stateMessage"`
 	// The globally unique resource identifier of the metastore federation.
 	Uid *string `pulumi:"uid"`
+	// Output only. The time when the metastore federation was last updated.
+	UpdateTime *string `pulumi:"updateTime"`
 	// The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
 	Version *string `pulumi:"version"`
 }
@@ -259,6 +267,8 @@ type MetastoreFederationState struct {
 	// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
 	// Structure is documented below.
 	BackendMetastores MetastoreFederationBackendMetastoreArrayInput
+	// Output only. The time when the metastore federation was created.
+	CreateTime pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The URI of the endpoint used to access the metastore federation.
@@ -285,6 +295,8 @@ type MetastoreFederationState struct {
 	StateMessage pulumi.StringPtrInput
 	// The globally unique resource identifier of the metastore federation.
 	Uid pulumi.StringPtrInput
+	// Output only. The time when the metastore federation was last updated.
+	UpdateTime pulumi.StringPtrInput
 	// The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
 	Version pulumi.StringPtrInput
 }
@@ -427,6 +439,11 @@ func (o MetastoreFederationOutput) BackendMetastores() MetastoreFederationBacken
 	}).(MetastoreFederationBackendMetastoreArrayOutput)
 }
 
+// Output only. The time when the metastore federation was created.
+func (o MetastoreFederationOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o MetastoreFederationOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
@@ -484,6 +501,11 @@ func (o MetastoreFederationOutput) StateMessage() pulumi.StringOutput {
 // The globally unique resource identifier of the metastore federation.
 func (o MetastoreFederationOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// Output only. The time when the metastore federation was last updated.
+func (o MetastoreFederationOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 // The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.

@@ -19,6 +19,21 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
     public static final RepositoryArgs Empty = new RepositoryArgs();
 
     /**
+     * Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
      * Optional. The repository&#39;s user-friendly name.
      * 
      */
@@ -191,6 +206,7 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
     private RepositoryArgs() {}
 
     private RepositoryArgs(RepositoryArgs $) {
+        this.deletionPolicy = $.deletionPolicy;
         this.displayName = $.displayName;
         this.gitRemoteSettings = $.gitRemoteSettings;
         this.kmsKeyName = $.kmsKeyName;
@@ -219,6 +235,27 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(RepositoryArgs defaults) {
             $ = new RepositoryArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deletionPolicy Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**

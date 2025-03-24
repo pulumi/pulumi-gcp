@@ -251,7 +251,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly engineConfigs!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Optional. Immutable. Engine version of the instance.
+     * Optional. Engine version of the instance.
      */
     public readonly engineVersion!: pulumi.Output<string>;
     /**
@@ -501,7 +501,7 @@ export interface InstanceState {
      */
     engineConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Optional. Immutable. Engine version of the instance.
+     * Optional. Engine version of the instance.
      */
     engineVersion?: pulumi.Input<string>;
     /**
@@ -642,7 +642,7 @@ export interface InstanceArgs {
      */
     engineConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Optional. Immutable. Engine version of the instance.
+     * Optional. Engine version of the instance.
      */
     engineVersion?: pulumi.Input<string>;
     /**

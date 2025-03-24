@@ -5580,7 +5580,7 @@ class ClusterDnsConfig(dict):
         :param str additive_vpc_scope_dns_domain: This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `cluster_dns = "CLOUD_DNS"` and `cluster_dns_scope = "CLUSTER_SCOPE"` must both be set as well.
         :param str cluster_dns: Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
         :param str cluster_dns_domain: The suffix used for all cluster service records.
-        :param str cluster_dns_scope: The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+        :param str cluster_dns_scope: The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `cluster_dns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
         """
         if additive_vpc_scope_dns_domain is not None:
             pulumi.set(__self__, "additive_vpc_scope_dns_domain", additive_vpc_scope_dns_domain)
@@ -5619,7 +5619,7 @@ class ClusterDnsConfig(dict):
     @pulumi.getter(name="clusterDnsScope")
     def cluster_dns_scope(self) -> Optional[str]:
         """
-        The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+        The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `cluster_dns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
         """
         return pulumi.get(self, "cluster_dns_scope")
 
@@ -17471,7 +17471,7 @@ class GetClusterLoggingConfigResult(dict):
     def __init__(__self__, *,
                  enable_components: Sequence[str]):
         """
-        :param Sequence[str] enable_components: GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, KCP_CONNECTION, KCP_SSHD, SCHEDULER, and WORKLOADS.
+        :param Sequence[str] enable_components: GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, KCP_CONNECTION, KCP_SSHD, KCP_HPA, SCHEDULER, and WORKLOADS.
         """
         pulumi.set(__self__, "enable_components", enable_components)
 
@@ -17479,7 +17479,7 @@ class GetClusterLoggingConfigResult(dict):
     @pulumi.getter(name="enableComponents")
     def enable_components(self) -> Sequence[str]:
         """
-        GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, KCP_CONNECTION, KCP_SSHD, SCHEDULER, and WORKLOADS.
+        GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, KCP_CONNECTION, KCP_SSHD, KCP_HPA, SCHEDULER, and WORKLOADS.
         """
         return pulumi.get(self, "enable_components")
 

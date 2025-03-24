@@ -3139,6 +3139,9 @@ func (o AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetPtrOutput) Ids() pulum
 }
 
 type AuthzPolicyHttpRuleTo struct {
+	// Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified.
+	// Structure is documented below.
+	NotOperations []AuthzPolicyHttpRuleToNotOperation `pulumi:"notOperations"`
 	// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 5 operations. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
 	// Structure is documented below.
 	Operations []AuthzPolicyHttpRuleToOperation `pulumi:"operations"`
@@ -3156,6 +3159,9 @@ type AuthzPolicyHttpRuleToInput interface {
 }
 
 type AuthzPolicyHttpRuleToArgs struct {
+	// Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified.
+	// Structure is documented below.
+	NotOperations AuthzPolicyHttpRuleToNotOperationArrayInput `pulumi:"notOperations"`
 	// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 5 operations. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
 	// Structure is documented below.
 	Operations AuthzPolicyHttpRuleToOperationArrayInput `pulumi:"operations"`
@@ -3238,6 +3244,12 @@ func (o AuthzPolicyHttpRuleToOutput) ToAuthzPolicyHttpRuleToPtrOutputWithContext
 	}).(AuthzPolicyHttpRuleToPtrOutput)
 }
 
+// Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified.
+// Structure is documented below.
+func (o AuthzPolicyHttpRuleToOutput) NotOperations() AuthzPolicyHttpRuleToNotOperationArrayOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleTo) []AuthzPolicyHttpRuleToNotOperation { return v.NotOperations }).(AuthzPolicyHttpRuleToNotOperationArrayOutput)
+}
+
 // Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 5 operations. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
 // Structure is documented below.
 func (o AuthzPolicyHttpRuleToOutput) Operations() AuthzPolicyHttpRuleToOperationArrayOutput {
@@ -3268,6 +3280,17 @@ func (o AuthzPolicyHttpRuleToPtrOutput) Elem() AuthzPolicyHttpRuleToOutput {
 	}).(AuthzPolicyHttpRuleToOutput)
 }
 
+// Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified.
+// Structure is documented below.
+func (o AuthzPolicyHttpRuleToPtrOutput) NotOperations() AuthzPolicyHttpRuleToNotOperationArrayOutput {
+	return o.ApplyT(func(v *AuthzPolicyHttpRuleTo) []AuthzPolicyHttpRuleToNotOperation {
+		if v == nil {
+			return nil
+		}
+		return v.NotOperations
+	}).(AuthzPolicyHttpRuleToNotOperationArrayOutput)
+}
+
 // Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 5 operations. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
 // Structure is documented below.
 func (o AuthzPolicyHttpRuleToPtrOutput) Operations() AuthzPolicyHttpRuleToOperationArrayOutput {
@@ -3277,6 +3300,963 @@ func (o AuthzPolicyHttpRuleToPtrOutput) Operations() AuthzPolicyHttpRuleToOperat
 		}
 		return v.Operations
 	}).(AuthzPolicyHttpRuleToOperationArrayOutput)
+}
+
+type AuthzPolicyHttpRuleToNotOperation struct {
+	// A list of headers to match against in http header.
+	// Structure is documented below.
+	HeaderSet *AuthzPolicyHttpRuleToNotOperationHeaderSet `pulumi:"headerSet"`
+	// A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
+	// Limited to 5 matches.
+	// Structure is documented below.
+	Hosts []AuthzPolicyHttpRuleToNotOperationHost `pulumi:"hosts"`
+	// A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
+	Methods []string `pulumi:"methods"`
+	// A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
+	// Limited to 5 matches.
+	// Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method.
+	// Structure is documented below.
+	Paths []AuthzPolicyHttpRuleToNotOperationPath `pulumi:"paths"`
+}
+
+// AuthzPolicyHttpRuleToNotOperationInput is an input type that accepts AuthzPolicyHttpRuleToNotOperationArgs and AuthzPolicyHttpRuleToNotOperationOutput values.
+// You can construct a concrete instance of `AuthzPolicyHttpRuleToNotOperationInput` via:
+//
+//	AuthzPolicyHttpRuleToNotOperationArgs{...}
+type AuthzPolicyHttpRuleToNotOperationInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyHttpRuleToNotOperationOutput() AuthzPolicyHttpRuleToNotOperationOutput
+	ToAuthzPolicyHttpRuleToNotOperationOutputWithContext(context.Context) AuthzPolicyHttpRuleToNotOperationOutput
+}
+
+type AuthzPolicyHttpRuleToNotOperationArgs struct {
+	// A list of headers to match against in http header.
+	// Structure is documented below.
+	HeaderSet AuthzPolicyHttpRuleToNotOperationHeaderSetPtrInput `pulumi:"headerSet"`
+	// A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
+	// Limited to 5 matches.
+	// Structure is documented below.
+	Hosts AuthzPolicyHttpRuleToNotOperationHostArrayInput `pulumi:"hosts"`
+	// A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
+	Methods pulumi.StringArrayInput `pulumi:"methods"`
+	// A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
+	// Limited to 5 matches.
+	// Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method.
+	// Structure is documented below.
+	Paths AuthzPolicyHttpRuleToNotOperationPathArrayInput `pulumi:"paths"`
+}
+
+func (AuthzPolicyHttpRuleToNotOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyHttpRuleToNotOperation)(nil)).Elem()
+}
+
+func (i AuthzPolicyHttpRuleToNotOperationArgs) ToAuthzPolicyHttpRuleToNotOperationOutput() AuthzPolicyHttpRuleToNotOperationOutput {
+	return i.ToAuthzPolicyHttpRuleToNotOperationOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyHttpRuleToNotOperationArgs) ToAuthzPolicyHttpRuleToNotOperationOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyHttpRuleToNotOperationOutput)
+}
+
+// AuthzPolicyHttpRuleToNotOperationArrayInput is an input type that accepts AuthzPolicyHttpRuleToNotOperationArray and AuthzPolicyHttpRuleToNotOperationArrayOutput values.
+// You can construct a concrete instance of `AuthzPolicyHttpRuleToNotOperationArrayInput` via:
+//
+//	AuthzPolicyHttpRuleToNotOperationArray{ AuthzPolicyHttpRuleToNotOperationArgs{...} }
+type AuthzPolicyHttpRuleToNotOperationArrayInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyHttpRuleToNotOperationArrayOutput() AuthzPolicyHttpRuleToNotOperationArrayOutput
+	ToAuthzPolicyHttpRuleToNotOperationArrayOutputWithContext(context.Context) AuthzPolicyHttpRuleToNotOperationArrayOutput
+}
+
+type AuthzPolicyHttpRuleToNotOperationArray []AuthzPolicyHttpRuleToNotOperationInput
+
+func (AuthzPolicyHttpRuleToNotOperationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyHttpRuleToNotOperation)(nil)).Elem()
+}
+
+func (i AuthzPolicyHttpRuleToNotOperationArray) ToAuthzPolicyHttpRuleToNotOperationArrayOutput() AuthzPolicyHttpRuleToNotOperationArrayOutput {
+	return i.ToAuthzPolicyHttpRuleToNotOperationArrayOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyHttpRuleToNotOperationArray) ToAuthzPolicyHttpRuleToNotOperationArrayOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyHttpRuleToNotOperationArrayOutput)
+}
+
+type AuthzPolicyHttpRuleToNotOperationOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyHttpRuleToNotOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyHttpRuleToNotOperation)(nil)).Elem()
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationOutput) ToAuthzPolicyHttpRuleToNotOperationOutput() AuthzPolicyHttpRuleToNotOperationOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationOutput) ToAuthzPolicyHttpRuleToNotOperationOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationOutput {
+	return o
+}
+
+// A list of headers to match against in http header.
+// Structure is documented below.
+func (o AuthzPolicyHttpRuleToNotOperationOutput) HeaderSet() AuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToNotOperation) *AuthzPolicyHttpRuleToNotOperationHeaderSet {
+		return v.HeaderSet
+	}).(AuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutput)
+}
+
+// A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
+// Limited to 5 matches.
+// Structure is documented below.
+func (o AuthzPolicyHttpRuleToNotOperationOutput) Hosts() AuthzPolicyHttpRuleToNotOperationHostArrayOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToNotOperation) []AuthzPolicyHttpRuleToNotOperationHost { return v.Hosts }).(AuthzPolicyHttpRuleToNotOperationHostArrayOutput)
+}
+
+// A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
+func (o AuthzPolicyHttpRuleToNotOperationOutput) Methods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToNotOperation) []string { return v.Methods }).(pulumi.StringArrayOutput)
+}
+
+// A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
+// Limited to 5 matches.
+// Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method.
+// Structure is documented below.
+func (o AuthzPolicyHttpRuleToNotOperationOutput) Paths() AuthzPolicyHttpRuleToNotOperationPathArrayOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToNotOperation) []AuthzPolicyHttpRuleToNotOperationPath { return v.Paths }).(AuthzPolicyHttpRuleToNotOperationPathArrayOutput)
+}
+
+type AuthzPolicyHttpRuleToNotOperationArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyHttpRuleToNotOperationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyHttpRuleToNotOperation)(nil)).Elem()
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationArrayOutput) ToAuthzPolicyHttpRuleToNotOperationArrayOutput() AuthzPolicyHttpRuleToNotOperationArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationArrayOutput) ToAuthzPolicyHttpRuleToNotOperationArrayOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationArrayOutput) Index(i pulumi.IntInput) AuthzPolicyHttpRuleToNotOperationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthzPolicyHttpRuleToNotOperation {
+		return vs[0].([]AuthzPolicyHttpRuleToNotOperation)[vs[1].(int)]
+	}).(AuthzPolicyHttpRuleToNotOperationOutput)
+}
+
+type AuthzPolicyHttpRuleToNotOperationHeaderSet struct {
+	// A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.
+	// Structure is documented below.
+	Headers []AuthzPolicyHttpRuleToNotOperationHeaderSetHeader `pulumi:"headers"`
+}
+
+// AuthzPolicyHttpRuleToNotOperationHeaderSetInput is an input type that accepts AuthzPolicyHttpRuleToNotOperationHeaderSetArgs and AuthzPolicyHttpRuleToNotOperationHeaderSetOutput values.
+// You can construct a concrete instance of `AuthzPolicyHttpRuleToNotOperationHeaderSetInput` via:
+//
+//	AuthzPolicyHttpRuleToNotOperationHeaderSetArgs{...}
+type AuthzPolicyHttpRuleToNotOperationHeaderSetInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyHttpRuleToNotOperationHeaderSetOutput() AuthzPolicyHttpRuleToNotOperationHeaderSetOutput
+	ToAuthzPolicyHttpRuleToNotOperationHeaderSetOutputWithContext(context.Context) AuthzPolicyHttpRuleToNotOperationHeaderSetOutput
+}
+
+type AuthzPolicyHttpRuleToNotOperationHeaderSetArgs struct {
+	// A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.
+	// Structure is documented below.
+	Headers AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayInput `pulumi:"headers"`
+}
+
+func (AuthzPolicyHttpRuleToNotOperationHeaderSetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyHttpRuleToNotOperationHeaderSet)(nil)).Elem()
+}
+
+func (i AuthzPolicyHttpRuleToNotOperationHeaderSetArgs) ToAuthzPolicyHttpRuleToNotOperationHeaderSetOutput() AuthzPolicyHttpRuleToNotOperationHeaderSetOutput {
+	return i.ToAuthzPolicyHttpRuleToNotOperationHeaderSetOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyHttpRuleToNotOperationHeaderSetArgs) ToAuthzPolicyHttpRuleToNotOperationHeaderSetOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationHeaderSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyHttpRuleToNotOperationHeaderSetOutput)
+}
+
+func (i AuthzPolicyHttpRuleToNotOperationHeaderSetArgs) ToAuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutput() AuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutput {
+	return i.ToAuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyHttpRuleToNotOperationHeaderSetArgs) ToAuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyHttpRuleToNotOperationHeaderSetOutput).ToAuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutputWithContext(ctx)
+}
+
+// AuthzPolicyHttpRuleToNotOperationHeaderSetPtrInput is an input type that accepts AuthzPolicyHttpRuleToNotOperationHeaderSetArgs, AuthzPolicyHttpRuleToNotOperationHeaderSetPtr and AuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutput values.
+// You can construct a concrete instance of `AuthzPolicyHttpRuleToNotOperationHeaderSetPtrInput` via:
+//
+//	        AuthzPolicyHttpRuleToNotOperationHeaderSetArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthzPolicyHttpRuleToNotOperationHeaderSetPtrInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutput() AuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutput
+	ToAuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutputWithContext(context.Context) AuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutput
+}
+
+type authzPolicyHttpRuleToNotOperationHeaderSetPtrType AuthzPolicyHttpRuleToNotOperationHeaderSetArgs
+
+func AuthzPolicyHttpRuleToNotOperationHeaderSetPtr(v *AuthzPolicyHttpRuleToNotOperationHeaderSetArgs) AuthzPolicyHttpRuleToNotOperationHeaderSetPtrInput {
+	return (*authzPolicyHttpRuleToNotOperationHeaderSetPtrType)(v)
+}
+
+func (*authzPolicyHttpRuleToNotOperationHeaderSetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthzPolicyHttpRuleToNotOperationHeaderSet)(nil)).Elem()
+}
+
+func (i *authzPolicyHttpRuleToNotOperationHeaderSetPtrType) ToAuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutput() AuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutput {
+	return i.ToAuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutputWithContext(context.Background())
+}
+
+func (i *authzPolicyHttpRuleToNotOperationHeaderSetPtrType) ToAuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutput)
+}
+
+type AuthzPolicyHttpRuleToNotOperationHeaderSetOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyHttpRuleToNotOperationHeaderSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyHttpRuleToNotOperationHeaderSet)(nil)).Elem()
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetOutput) ToAuthzPolicyHttpRuleToNotOperationHeaderSetOutput() AuthzPolicyHttpRuleToNotOperationHeaderSetOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetOutput) ToAuthzPolicyHttpRuleToNotOperationHeaderSetOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationHeaderSetOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetOutput) ToAuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutput() AuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutput {
+	return o.ToAuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutputWithContext(context.Background())
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetOutput) ToAuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthzPolicyHttpRuleToNotOperationHeaderSet) *AuthzPolicyHttpRuleToNotOperationHeaderSet {
+		return &v
+	}).(AuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutput)
+}
+
+// A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.
+// Structure is documented below.
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetOutput) Headers() AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToNotOperationHeaderSet) []AuthzPolicyHttpRuleToNotOperationHeaderSetHeader {
+		return v.Headers
+	}).(AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayOutput)
+}
+
+type AuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthzPolicyHttpRuleToNotOperationHeaderSet)(nil)).Elem()
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutput) ToAuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutput() AuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutput) ToAuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutput) Elem() AuthzPolicyHttpRuleToNotOperationHeaderSetOutput {
+	return o.ApplyT(func(v *AuthzPolicyHttpRuleToNotOperationHeaderSet) AuthzPolicyHttpRuleToNotOperationHeaderSet {
+		if v != nil {
+			return *v
+		}
+		var ret AuthzPolicyHttpRuleToNotOperationHeaderSet
+		return ret
+	}).(AuthzPolicyHttpRuleToNotOperationHeaderSetOutput)
+}
+
+// A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.
+// Structure is documented below.
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutput) Headers() AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayOutput {
+	return o.ApplyT(func(v *AuthzPolicyHttpRuleToNotOperationHeaderSet) []AuthzPolicyHttpRuleToNotOperationHeaderSetHeader {
+		if v == nil {
+			return nil
+		}
+		return v.Headers
+	}).(AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayOutput)
+}
+
+type AuthzPolicyHttpRuleToNotOperationHeaderSetHeader struct {
+	// Specifies the name of the header in the request.
+	Name *string `pulumi:"name"`
+	// Specifies how the header match will be performed.
+	// Structure is documented below.
+	Value *AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue `pulumi:"value"`
+}
+
+// AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderInput is an input type that accepts AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgs and AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderOutput values.
+// You can construct a concrete instance of `AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderInput` via:
+//
+//	AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgs{...}
+type AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderOutput() AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderOutput
+	ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderOutputWithContext(context.Context) AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderOutput
+}
+
+type AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgs struct {
+	// Specifies the name of the header in the request.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Specifies how the header match will be performed.
+	// Structure is documented below.
+	Value AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrInput `pulumi:"value"`
+}
+
+func (AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyHttpRuleToNotOperationHeaderSetHeader)(nil)).Elem()
+}
+
+func (i AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgs) ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderOutput() AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderOutput {
+	return i.ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgs) ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderOutput)
+}
+
+// AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayInput is an input type that accepts AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArray and AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayOutput values.
+// You can construct a concrete instance of `AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayInput` via:
+//
+//	AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArray{ AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgs{...} }
+type AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayOutput() AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayOutput
+	ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayOutputWithContext(context.Context) AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayOutput
+}
+
+type AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArray []AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderInput
+
+func (AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyHttpRuleToNotOperationHeaderSetHeader)(nil)).Elem()
+}
+
+func (i AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArray) ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayOutput() AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayOutput {
+	return i.ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArray) ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayOutput)
+}
+
+type AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyHttpRuleToNotOperationHeaderSetHeader)(nil)).Elem()
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderOutput) ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderOutput() AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderOutput) ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderOutput {
+	return o
+}
+
+// Specifies the name of the header in the request.
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToNotOperationHeaderSetHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Specifies how the header match will be performed.
+// Structure is documented below.
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderOutput) Value() AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToNotOperationHeaderSetHeader) *AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue {
+		return v.Value
+	}).(AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput)
+}
+
+type AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyHttpRuleToNotOperationHeaderSetHeader)(nil)).Elem()
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayOutput) ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayOutput() AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayOutput) ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayOutput) Index(i pulumi.IntInput) AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthzPolicyHttpRuleToNotOperationHeaderSetHeader {
+		return vs[0].([]AuthzPolicyHttpRuleToNotOperationHeaderSetHeader)[vs[1].(int)]
+	}).(AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderOutput)
+}
+
+type AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue struct {
+	// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc.def
+	Contains *string `pulumi:"contains"`
+	// The input string must match exactly the string specified here.
+	// Examples:
+	// * abc only matches the value abc.
+	Exact *string `pulumi:"exact"`
+	// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+	IgnoreCase *bool `pulumi:"ignoreCase"`
+	// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value abc.xyz
+	Prefix *string `pulumi:"prefix"`
+	// The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc
+	Suffix *string `pulumi:"suffix"`
+}
+
+// AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueInput is an input type that accepts AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs and AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutput values.
+// You can construct a concrete instance of `AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueInput` via:
+//
+//	AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs{...}
+type AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutput() AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutput
+	ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutputWithContext(context.Context) AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutput
+}
+
+type AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs struct {
+	// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc.def
+	Contains pulumi.StringPtrInput `pulumi:"contains"`
+	// The input string must match exactly the string specified here.
+	// Examples:
+	// * abc only matches the value abc.
+	Exact pulumi.StringPtrInput `pulumi:"exact"`
+	// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+	IgnoreCase pulumi.BoolPtrInput `pulumi:"ignoreCase"`
+	// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value abc.xyz
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc
+	Suffix pulumi.StringPtrInput `pulumi:"suffix"`
+}
+
+func (AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue)(nil)).Elem()
+}
+
+func (i AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs) ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutput() AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutput {
+	return i.ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs) ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutput)
+}
+
+func (i AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs) ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput() AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput {
+	return i.ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs) ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutput).ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutputWithContext(ctx)
+}
+
+// AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrInput is an input type that accepts AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs, AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtr and AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput values.
+// You can construct a concrete instance of `AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrInput` via:
+//
+//	        AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput() AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput
+	ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutputWithContext(context.Context) AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput
+}
+
+type authzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrType AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs
+
+func AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtr(v *AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs) AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrInput {
+	return (*authzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrType)(v)
+}
+
+func (*authzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue)(nil)).Elem()
+}
+
+func (i *authzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrType) ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput() AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput {
+	return i.ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutputWithContext(context.Background())
+}
+
+func (i *authzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrType) ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput)
+}
+
+type AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue)(nil)).Elem()
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutput) ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutput() AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutput) ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutput) ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput() AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput {
+	return o.ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutputWithContext(context.Background())
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutput) ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue) *AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue {
+		return &v
+	}).(AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput)
+}
+
+// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value xyz.abc.def
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutput) Contains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue) *string { return v.Contains }).(pulumi.StringPtrOutput)
+}
+
+// The input string must match exactly the string specified here.
+// Examples:
+// * abc only matches the value abc.
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue) *string { return v.Exact }).(pulumi.StringPtrOutput)
+}
+
+// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutput) IgnoreCase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue) *bool { return v.IgnoreCase }).(pulumi.BoolPtrOutput)
+}
+
+// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value abc.xyz
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+// The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value xyz.abc
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutput) Suffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue) *string { return v.Suffix }).(pulumi.StringPtrOutput)
+}
+
+type AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue)(nil)).Elem()
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput) ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput() AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput) ToAuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput) Elem() AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutput {
+	return o.ApplyT(func(v *AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue) AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue {
+		if v != nil {
+			return *v
+		}
+		var ret AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue
+		return ret
+	}).(AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutput)
+}
+
+// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value xyz.abc.def
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput) Contains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Contains
+	}).(pulumi.StringPtrOutput)
+}
+
+// The input string must match exactly the string specified here.
+// Examples:
+// * abc only matches the value abc.
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Exact
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput) IgnoreCase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreCase
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value abc.xyz
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value xyz.abc
+func (o AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput) Suffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Suffix
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthzPolicyHttpRuleToNotOperationHost struct {
+	// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc.def
+	Contains *string `pulumi:"contains"`
+	// The input string must match exactly the string specified here.
+	// Examples:
+	// * abc only matches the value abc.
+	Exact *string `pulumi:"exact"`
+	// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+	IgnoreCase *bool `pulumi:"ignoreCase"`
+	// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value abc.xyz
+	Prefix *string `pulumi:"prefix"`
+	// The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc
+	Suffix *string `pulumi:"suffix"`
+}
+
+// AuthzPolicyHttpRuleToNotOperationHostInput is an input type that accepts AuthzPolicyHttpRuleToNotOperationHostArgs and AuthzPolicyHttpRuleToNotOperationHostOutput values.
+// You can construct a concrete instance of `AuthzPolicyHttpRuleToNotOperationHostInput` via:
+//
+//	AuthzPolicyHttpRuleToNotOperationHostArgs{...}
+type AuthzPolicyHttpRuleToNotOperationHostInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyHttpRuleToNotOperationHostOutput() AuthzPolicyHttpRuleToNotOperationHostOutput
+	ToAuthzPolicyHttpRuleToNotOperationHostOutputWithContext(context.Context) AuthzPolicyHttpRuleToNotOperationHostOutput
+}
+
+type AuthzPolicyHttpRuleToNotOperationHostArgs struct {
+	// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc.def
+	Contains pulumi.StringPtrInput `pulumi:"contains"`
+	// The input string must match exactly the string specified here.
+	// Examples:
+	// * abc only matches the value abc.
+	Exact pulumi.StringPtrInput `pulumi:"exact"`
+	// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+	IgnoreCase pulumi.BoolPtrInput `pulumi:"ignoreCase"`
+	// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value abc.xyz
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc
+	Suffix pulumi.StringPtrInput `pulumi:"suffix"`
+}
+
+func (AuthzPolicyHttpRuleToNotOperationHostArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyHttpRuleToNotOperationHost)(nil)).Elem()
+}
+
+func (i AuthzPolicyHttpRuleToNotOperationHostArgs) ToAuthzPolicyHttpRuleToNotOperationHostOutput() AuthzPolicyHttpRuleToNotOperationHostOutput {
+	return i.ToAuthzPolicyHttpRuleToNotOperationHostOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyHttpRuleToNotOperationHostArgs) ToAuthzPolicyHttpRuleToNotOperationHostOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationHostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyHttpRuleToNotOperationHostOutput)
+}
+
+// AuthzPolicyHttpRuleToNotOperationHostArrayInput is an input type that accepts AuthzPolicyHttpRuleToNotOperationHostArray and AuthzPolicyHttpRuleToNotOperationHostArrayOutput values.
+// You can construct a concrete instance of `AuthzPolicyHttpRuleToNotOperationHostArrayInput` via:
+//
+//	AuthzPolicyHttpRuleToNotOperationHostArray{ AuthzPolicyHttpRuleToNotOperationHostArgs{...} }
+type AuthzPolicyHttpRuleToNotOperationHostArrayInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyHttpRuleToNotOperationHostArrayOutput() AuthzPolicyHttpRuleToNotOperationHostArrayOutput
+	ToAuthzPolicyHttpRuleToNotOperationHostArrayOutputWithContext(context.Context) AuthzPolicyHttpRuleToNotOperationHostArrayOutput
+}
+
+type AuthzPolicyHttpRuleToNotOperationHostArray []AuthzPolicyHttpRuleToNotOperationHostInput
+
+func (AuthzPolicyHttpRuleToNotOperationHostArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyHttpRuleToNotOperationHost)(nil)).Elem()
+}
+
+func (i AuthzPolicyHttpRuleToNotOperationHostArray) ToAuthzPolicyHttpRuleToNotOperationHostArrayOutput() AuthzPolicyHttpRuleToNotOperationHostArrayOutput {
+	return i.ToAuthzPolicyHttpRuleToNotOperationHostArrayOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyHttpRuleToNotOperationHostArray) ToAuthzPolicyHttpRuleToNotOperationHostArrayOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationHostArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyHttpRuleToNotOperationHostArrayOutput)
+}
+
+type AuthzPolicyHttpRuleToNotOperationHostOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyHttpRuleToNotOperationHostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyHttpRuleToNotOperationHost)(nil)).Elem()
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationHostOutput) ToAuthzPolicyHttpRuleToNotOperationHostOutput() AuthzPolicyHttpRuleToNotOperationHostOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationHostOutput) ToAuthzPolicyHttpRuleToNotOperationHostOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationHostOutput {
+	return o
+}
+
+// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value xyz.abc.def
+func (o AuthzPolicyHttpRuleToNotOperationHostOutput) Contains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToNotOperationHost) *string { return v.Contains }).(pulumi.StringPtrOutput)
+}
+
+// The input string must match exactly the string specified here.
+// Examples:
+// * abc only matches the value abc.
+func (o AuthzPolicyHttpRuleToNotOperationHostOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToNotOperationHost) *string { return v.Exact }).(pulumi.StringPtrOutput)
+}
+
+// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+func (o AuthzPolicyHttpRuleToNotOperationHostOutput) IgnoreCase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToNotOperationHost) *bool { return v.IgnoreCase }).(pulumi.BoolPtrOutput)
+}
+
+// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value abc.xyz
+func (o AuthzPolicyHttpRuleToNotOperationHostOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToNotOperationHost) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+// The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value xyz.abc
+func (o AuthzPolicyHttpRuleToNotOperationHostOutput) Suffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToNotOperationHost) *string { return v.Suffix }).(pulumi.StringPtrOutput)
+}
+
+type AuthzPolicyHttpRuleToNotOperationHostArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyHttpRuleToNotOperationHostArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyHttpRuleToNotOperationHost)(nil)).Elem()
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationHostArrayOutput) ToAuthzPolicyHttpRuleToNotOperationHostArrayOutput() AuthzPolicyHttpRuleToNotOperationHostArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationHostArrayOutput) ToAuthzPolicyHttpRuleToNotOperationHostArrayOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationHostArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationHostArrayOutput) Index(i pulumi.IntInput) AuthzPolicyHttpRuleToNotOperationHostOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthzPolicyHttpRuleToNotOperationHost {
+		return vs[0].([]AuthzPolicyHttpRuleToNotOperationHost)[vs[1].(int)]
+	}).(AuthzPolicyHttpRuleToNotOperationHostOutput)
+}
+
+type AuthzPolicyHttpRuleToNotOperationPath struct {
+	// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc.def
+	Contains *string `pulumi:"contains"`
+	// The input string must match exactly the string specified here.
+	// Examples:
+	// * abc only matches the value abc.
+	Exact *string `pulumi:"exact"`
+	// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+	IgnoreCase *bool `pulumi:"ignoreCase"`
+	// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value abc.xyz
+	Prefix *string `pulumi:"prefix"`
+	// The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc
+	Suffix *string `pulumi:"suffix"`
+}
+
+// AuthzPolicyHttpRuleToNotOperationPathInput is an input type that accepts AuthzPolicyHttpRuleToNotOperationPathArgs and AuthzPolicyHttpRuleToNotOperationPathOutput values.
+// You can construct a concrete instance of `AuthzPolicyHttpRuleToNotOperationPathInput` via:
+//
+//	AuthzPolicyHttpRuleToNotOperationPathArgs{...}
+type AuthzPolicyHttpRuleToNotOperationPathInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyHttpRuleToNotOperationPathOutput() AuthzPolicyHttpRuleToNotOperationPathOutput
+	ToAuthzPolicyHttpRuleToNotOperationPathOutputWithContext(context.Context) AuthzPolicyHttpRuleToNotOperationPathOutput
+}
+
+type AuthzPolicyHttpRuleToNotOperationPathArgs struct {
+	// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc.def
+	Contains pulumi.StringPtrInput `pulumi:"contains"`
+	// The input string must match exactly the string specified here.
+	// Examples:
+	// * abc only matches the value abc.
+	Exact pulumi.StringPtrInput `pulumi:"exact"`
+	// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+	IgnoreCase pulumi.BoolPtrInput `pulumi:"ignoreCase"`
+	// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value abc.xyz
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc
+	Suffix pulumi.StringPtrInput `pulumi:"suffix"`
+}
+
+func (AuthzPolicyHttpRuleToNotOperationPathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyHttpRuleToNotOperationPath)(nil)).Elem()
+}
+
+func (i AuthzPolicyHttpRuleToNotOperationPathArgs) ToAuthzPolicyHttpRuleToNotOperationPathOutput() AuthzPolicyHttpRuleToNotOperationPathOutput {
+	return i.ToAuthzPolicyHttpRuleToNotOperationPathOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyHttpRuleToNotOperationPathArgs) ToAuthzPolicyHttpRuleToNotOperationPathOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationPathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyHttpRuleToNotOperationPathOutput)
+}
+
+// AuthzPolicyHttpRuleToNotOperationPathArrayInput is an input type that accepts AuthzPolicyHttpRuleToNotOperationPathArray and AuthzPolicyHttpRuleToNotOperationPathArrayOutput values.
+// You can construct a concrete instance of `AuthzPolicyHttpRuleToNotOperationPathArrayInput` via:
+//
+//	AuthzPolicyHttpRuleToNotOperationPathArray{ AuthzPolicyHttpRuleToNotOperationPathArgs{...} }
+type AuthzPolicyHttpRuleToNotOperationPathArrayInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyHttpRuleToNotOperationPathArrayOutput() AuthzPolicyHttpRuleToNotOperationPathArrayOutput
+	ToAuthzPolicyHttpRuleToNotOperationPathArrayOutputWithContext(context.Context) AuthzPolicyHttpRuleToNotOperationPathArrayOutput
+}
+
+type AuthzPolicyHttpRuleToNotOperationPathArray []AuthzPolicyHttpRuleToNotOperationPathInput
+
+func (AuthzPolicyHttpRuleToNotOperationPathArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyHttpRuleToNotOperationPath)(nil)).Elem()
+}
+
+func (i AuthzPolicyHttpRuleToNotOperationPathArray) ToAuthzPolicyHttpRuleToNotOperationPathArrayOutput() AuthzPolicyHttpRuleToNotOperationPathArrayOutput {
+	return i.ToAuthzPolicyHttpRuleToNotOperationPathArrayOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyHttpRuleToNotOperationPathArray) ToAuthzPolicyHttpRuleToNotOperationPathArrayOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationPathArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyHttpRuleToNotOperationPathArrayOutput)
+}
+
+type AuthzPolicyHttpRuleToNotOperationPathOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyHttpRuleToNotOperationPathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyHttpRuleToNotOperationPath)(nil)).Elem()
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationPathOutput) ToAuthzPolicyHttpRuleToNotOperationPathOutput() AuthzPolicyHttpRuleToNotOperationPathOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationPathOutput) ToAuthzPolicyHttpRuleToNotOperationPathOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationPathOutput {
+	return o
+}
+
+// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value xyz.abc.def
+func (o AuthzPolicyHttpRuleToNotOperationPathOutput) Contains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToNotOperationPath) *string { return v.Contains }).(pulumi.StringPtrOutput)
+}
+
+// The input string must match exactly the string specified here.
+// Examples:
+// * abc only matches the value abc.
+func (o AuthzPolicyHttpRuleToNotOperationPathOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToNotOperationPath) *string { return v.Exact }).(pulumi.StringPtrOutput)
+}
+
+// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+func (o AuthzPolicyHttpRuleToNotOperationPathOutput) IgnoreCase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToNotOperationPath) *bool { return v.IgnoreCase }).(pulumi.BoolPtrOutput)
+}
+
+// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value abc.xyz
+func (o AuthzPolicyHttpRuleToNotOperationPathOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToNotOperationPath) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+// The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value xyz.abc
+func (o AuthzPolicyHttpRuleToNotOperationPathOutput) Suffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToNotOperationPath) *string { return v.Suffix }).(pulumi.StringPtrOutput)
+}
+
+type AuthzPolicyHttpRuleToNotOperationPathArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyHttpRuleToNotOperationPathArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyHttpRuleToNotOperationPath)(nil)).Elem()
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationPathArrayOutput) ToAuthzPolicyHttpRuleToNotOperationPathArrayOutput() AuthzPolicyHttpRuleToNotOperationPathArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationPathArrayOutput) ToAuthzPolicyHttpRuleToNotOperationPathArrayOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToNotOperationPathArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToNotOperationPathArrayOutput) Index(i pulumi.IntInput) AuthzPolicyHttpRuleToNotOperationPathOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthzPolicyHttpRuleToNotOperationPath {
+		return vs[0].([]AuthzPolicyHttpRuleToNotOperationPath)[vs[1].(int)]
+	}).(AuthzPolicyHttpRuleToNotOperationPathOutput)
 }
 
 type AuthzPolicyHttpRuleToOperation struct {
@@ -7482,6 +8462,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetPtrInput)(nil)).Elem(), AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToInput)(nil)).Elem(), AuthzPolicyHttpRuleToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToPtrInput)(nil)).Elem(), AuthzPolicyHttpRuleToArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToNotOperationInput)(nil)).Elem(), AuthzPolicyHttpRuleToNotOperationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToNotOperationArrayInput)(nil)).Elem(), AuthzPolicyHttpRuleToNotOperationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToNotOperationHeaderSetInput)(nil)).Elem(), AuthzPolicyHttpRuleToNotOperationHeaderSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToNotOperationHeaderSetPtrInput)(nil)).Elem(), AuthzPolicyHttpRuleToNotOperationHeaderSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderInput)(nil)).Elem(), AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayInput)(nil)).Elem(), AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueInput)(nil)).Elem(), AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrInput)(nil)).Elem(), AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToNotOperationHostInput)(nil)).Elem(), AuthzPolicyHttpRuleToNotOperationHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToNotOperationHostArrayInput)(nil)).Elem(), AuthzPolicyHttpRuleToNotOperationHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToNotOperationPathInput)(nil)).Elem(), AuthzPolicyHttpRuleToNotOperationPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToNotOperationPathArrayInput)(nil)).Elem(), AuthzPolicyHttpRuleToNotOperationPathArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToOperationInput)(nil)).Elem(), AuthzPolicyHttpRuleToOperationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToOperationArrayInput)(nil)).Elem(), AuthzPolicyHttpRuleToOperationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToOperationHeaderSetInput)(nil)).Elem(), AuthzPolicyHttpRuleToOperationHeaderSetArgs{})
@@ -7584,6 +8576,18 @@ func init() {
 	pulumi.RegisterOutputType(AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetPtrOutput{})
 	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToOutput{})
 	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToPtrOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToNotOperationOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToNotOperationArrayOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToNotOperationHeaderSetOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToNotOperationHeaderSetPtrOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArrayOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValuePtrOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToNotOperationHostOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToNotOperationHostArrayOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToNotOperationPathOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToNotOperationPathArrayOutput{})
 	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToOperationOutput{})
 	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToOperationArrayOutput{})
 	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToOperationHeaderSetOutput{})

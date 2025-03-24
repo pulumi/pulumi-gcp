@@ -32,6 +32,21 @@ public final class TargetGkeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dns_endpoint` and `internal_ip` cannot be set to true.
+     * 
+     */
+    @Import(name="dnsEndpoint")
+    private @Nullable Output<Boolean> dnsEndpoint;
+
+    /**
+     * @return Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dns_endpoint` and `internal_ip` cannot be set to true.
+     * 
+     */
+    public Optional<Output<Boolean>> dnsEndpoint() {
+        return Optional.ofNullable(this.dnsEndpoint);
+    }
+
+    /**
      * Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
      * 
      */
@@ -65,6 +80,7 @@ public final class TargetGkeArgs extends com.pulumi.resources.ResourceArgs {
 
     private TargetGkeArgs(TargetGkeArgs $) {
         this.cluster = $.cluster;
+        this.dnsEndpoint = $.dnsEndpoint;
         this.internalIp = $.internalIp;
         this.proxyUrl = $.proxyUrl;
     }
@@ -106,6 +122,27 @@ public final class TargetGkeArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder cluster(String cluster) {
             return cluster(Output.of(cluster));
+        }
+
+        /**
+         * @param dnsEndpoint Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dns_endpoint` and `internal_ip` cannot be set to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsEndpoint(@Nullable Output<Boolean> dnsEndpoint) {
+            $.dnsEndpoint = dnsEndpoint;
+            return this;
+        }
+
+        /**
+         * @param dnsEndpoint Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dns_endpoint` and `internal_ip` cannot be set to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsEndpoint(Boolean dnsEndpoint) {
+            return dnsEndpoint(Output.of(dnsEndpoint));
         }
 
         /**

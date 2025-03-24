@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides access to all Google Cloud Platform KMS CryptoKeyRings in a set location. For more information see
+// [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_rings)
+// and
+// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings).
+//
+// A key ring organizes keys in a specific Google Cloud location and lets you manage access control on groups of keys. A key ring's name does not need to be unique across a Google Cloud project, but must be unique within a given location. After creation, a key ring cannot be deleted. Key rings don't incur any costs.
 func GetKeyRings(ctx *pulumi.Context, args *GetKeyRingsArgs, opts ...pulumi.InvokeOption) (*GetKeyRingsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKeyRingsResult
@@ -23,16 +29,27 @@ func GetKeyRings(ctx *pulumi.Context, args *GetKeyRingsArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getKeyRings.
 type GetKeyRingsArgs struct {
-	Filter   *string `pulumi:"filter"`
-	Location string  `pulumi:"location"`
-	Project  *string `pulumi:"project"`
+	// The filter argument is used to add a filter query parameter that limits which key rings are retrieved by the data source: ?filter={{filter}}. When no value is provided there is no filtering.
+	//
+	// Example filter values if filtering on name. Note: names take the form projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}.
+	//
+	// * `"name:my-key-"` will retrieve key rings that contain "my-key-" anywhere in their name.
+	// * `"name=projects/my-project/locations/global/keyRings/my-key-ring"` will only retrieve a key with that exact name.
+	//
+	// [See the documentation about using filters](https://cloud.google.com/kms/docs/sorting-and-filtering)
+	Filter *string `pulumi:"filter"`
+	// The location that the underlying key ring resides in. e.g us-west1
+	Location string `pulumi:"location"`
+	// The Project ID of the project.
+	Project *string `pulumi:"project"`
 }
 
 // A collection of values returned by getKeyRings.
 type GetKeyRingsResult struct {
 	Filter *string `pulumi:"filter"`
 	// The provider-assigned unique ID for this managed resource.
-	Id       string               `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// A list of all the retrieved key rings from the provided location. This list is influenced by the provided filter argument.
 	KeyRings []GetKeyRingsKeyRing `pulumi:"keyRings"`
 	Location string               `pulumi:"location"`
 	Project  *string              `pulumi:"project"`
@@ -49,9 +66,19 @@ func GetKeyRingsOutput(ctx *pulumi.Context, args GetKeyRingsOutputArgs, opts ...
 
 // A collection of arguments for invoking getKeyRings.
 type GetKeyRingsOutputArgs struct {
-	Filter   pulumi.StringPtrInput `pulumi:"filter"`
-	Location pulumi.StringInput    `pulumi:"location"`
-	Project  pulumi.StringPtrInput `pulumi:"project"`
+	// The filter argument is used to add a filter query parameter that limits which key rings are retrieved by the data source: ?filter={{filter}}. When no value is provided there is no filtering.
+	//
+	// Example filter values if filtering on name. Note: names take the form projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}.
+	//
+	// * `"name:my-key-"` will retrieve key rings that contain "my-key-" anywhere in their name.
+	// * `"name=projects/my-project/locations/global/keyRings/my-key-ring"` will only retrieve a key with that exact name.
+	//
+	// [See the documentation about using filters](https://cloud.google.com/kms/docs/sorting-and-filtering)
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// The location that the underlying key ring resides in. e.g us-west1
+	Location pulumi.StringInput `pulumi:"location"`
+	// The Project ID of the project.
+	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
 func (GetKeyRingsOutputArgs) ElementType() reflect.Type {
@@ -82,6 +109,7 @@ func (o GetKeyRingsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyRingsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of all the retrieved key rings from the provided location. This list is influenced by the provided filter argument.
 func (o GetKeyRingsResultOutput) KeyRings() GetKeyRingsKeyRingArrayOutput {
 	return o.ApplyT(func(v GetKeyRingsResult) []GetKeyRingsKeyRing { return v.KeyRings }).(GetKeyRingsKeyRingArrayOutput)
 }

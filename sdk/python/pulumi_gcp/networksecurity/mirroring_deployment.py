@@ -458,6 +458,17 @@ class MirroringDeployment(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A deployment represents a zonal mirroring backend ready to accept
+        GENEVE-encapsulated replica traffic, e.g. a zonal instance group fronted by
+        an internal passthrough load balancer. Deployments are always part of a
+        global deployment group which represents a global mirroring service.
+
+        To get more information about MirroringDeployment, see:
+
+        * [API documentation](https://cloud.google.com/network-security-integration/docs/reference/rest/v1/projects.locations.mirroringDeployments)
+        * How-to Guides
+            * [Mirroring deployment overview](https://cloud.google.com/network-security-integration/docs/out-of-band/deployments-overview)
+
         ## Example Usage
 
         ### Network Security Mirroring Deployment Basic
@@ -564,6 +575,17 @@ class MirroringDeployment(pulumi.CustomResource):
                  args: MirroringDeploymentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A deployment represents a zonal mirroring backend ready to accept
+        GENEVE-encapsulated replica traffic, e.g. a zonal instance group fronted by
+        an internal passthrough load balancer. Deployments are always part of a
+        global deployment group which represents a global mirroring service.
+
+        To get more information about MirroringDeployment, see:
+
+        * [API documentation](https://cloud.google.com/network-security-integration/docs/reference/rest/v1/projects.locations.mirroringDeployments)
+        * How-to Guides
+            * [Mirroring deployment overview](https://cloud.google.com/network-security-integration/docs/out-of-band/deployments-overview)
+
         ## Example Usage
 
         ### Network Security Mirroring Deployment Basic
