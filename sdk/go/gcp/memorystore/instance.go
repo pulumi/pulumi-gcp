@@ -315,7 +315,7 @@ type Instance struct {
 	Endpoints InstanceEndpointArrayOutput `pulumi:"endpoints"`
 	// Optional. User-provided engine configurations for the instance.
 	EngineConfigs pulumi.StringMapOutput `pulumi:"engineConfigs"`
-	// Optional. Immutable. Engine version of the instance.
+	// Optional. Engine version of the instance.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
 	// Required. The ID to use for the instance, which will become the final component of
 	// the instance's resource name.
@@ -461,7 +461,7 @@ type instanceState struct {
 	Endpoints []InstanceEndpoint `pulumi:"endpoints"`
 	// Optional. User-provided engine configurations for the instance.
 	EngineConfigs map[string]string `pulumi:"engineConfigs"`
-	// Optional. Immutable. Engine version of the instance.
+	// Optional. Engine version of the instance.
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Required. The ID to use for the instance, which will become the final component of
 	// the instance's resource name.
@@ -561,7 +561,7 @@ type InstanceState struct {
 	Endpoints InstanceEndpointArrayInput
 	// Optional. User-provided engine configurations for the instance.
 	EngineConfigs pulumi.StringMapInput
-	// Optional. Immutable. Engine version of the instance.
+	// Optional. Engine version of the instance.
 	EngineVersion pulumi.StringPtrInput
 	// Required. The ID to use for the instance, which will become the final component of
 	// the instance's resource name.
@@ -654,7 +654,7 @@ type instanceArgs struct {
 	DesiredPscAutoConnections []InstanceDesiredPscAutoConnection `pulumi:"desiredPscAutoConnections"`
 	// Optional. User-provided engine configurations for the instance.
 	EngineConfigs map[string]string `pulumi:"engineConfigs"`
-	// Optional. Immutable. Engine version of the instance.
+	// Optional. Engine version of the instance.
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Required. The ID to use for the instance, which will become the final component of
 	// the instance's resource name.
@@ -718,7 +718,7 @@ type InstanceArgs struct {
 	DesiredPscAutoConnections InstanceDesiredPscAutoConnectionArrayInput
 	// Optional. User-provided engine configurations for the instance.
 	EngineConfigs pulumi.StringMapInput
-	// Optional. Immutable. Engine version of the instance.
+	// Optional. Engine version of the instance.
 	EngineVersion pulumi.StringPtrInput
 	// Required. The ID to use for the instance, which will become the final component of
 	// the instance's resource name.
@@ -902,7 +902,7 @@ func (o InstanceOutput) EngineConfigs() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EngineConfigs }).(pulumi.StringMapOutput)
 }
 
-// Optional. Immutable. Engine version of the instance.
+// Optional. Engine version of the instance.
 func (o InstanceOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
 }

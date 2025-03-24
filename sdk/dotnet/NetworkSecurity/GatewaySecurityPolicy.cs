@@ -238,7 +238,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
-        /// Note: gcp.networksecurity.TlsInspectionPolicy resource is still in Beta therefore it will need to import the provider.
         /// </summary>
         [Output("tlsInspectionPolicy")]
         public Output<string?> TlsInspectionPolicy { get; private set; } = null!;
@@ -329,7 +328,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
-        /// Note: gcp.networksecurity.TlsInspectionPolicy resource is still in Beta therefore it will need to import the provider.
         /// </summary>
         [Input("tlsInspectionPolicy")]
         public Input<string>? TlsInspectionPolicy { get; set; }
@@ -388,7 +386,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
-        /// Note: gcp.networksecurity.TlsInspectionPolicy resource is still in Beta therefore it will need to import the provider.
         /// </summary>
         [Input("tlsInspectionPolicy")]
         public Input<string>? TlsInspectionPolicy { get; set; }

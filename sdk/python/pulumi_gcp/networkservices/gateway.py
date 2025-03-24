@@ -25,7 +25,9 @@ class GatewayArgs:
                  certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  delete_swg_autogen_router_on_destroy: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 envoy_headers: Optional[pulumi.Input[str]] = None,
                  gateway_security_policy: Optional[pulumi.Input[str]] = None,
+                 ip_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -38,46 +40,52 @@ class GatewayArgs:
         """
         The set of arguments for constructing a Gateway resource.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] ports: One or more port numbers (1-65535), on which the Gateway will receive traffic.
-               The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
-               limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
-        :param pulumi.Input[str] type: Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-               Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
-               an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
-               Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+               The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+               Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
+        :param pulumi.Input[str] type: Immutable. The type of the customer managed gateway.
+               Possible values are: `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic.
+               When no address is provided, an IP from the subnetwork is allocated.
+               This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+               Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_urls: A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
                This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[bool] delete_swg_autogen_router_on_destroy: When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
                If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
+        :param pulumi.Input[str] envoy_headers: Determines if envoy will insert internal debug headers into upstream requests.
+               Other Envoy headers may still be injected.
+               By default, envoy will not insert any debug headers.
+               Possible values are: `NONE`, `DEBUG_HEADERS`.
         :param pulumi.Input[str] gateway_security_policy: A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
-               For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
+               For example: 'projects/*/locations/*/gatewaySecurityPolicies/swg-policy'.
                This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        :param pulumi.Input[str] ip_version: The IP Version that will be used by this gateway.
+               Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Gateway resource.
+               
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the gateway.
                The default value is `global`.
-        :param pulumi.Input[str] name: Short name of the Gateway resource to be created.
+        :param pulumi.Input[str] name: Name of the Gateway resource.
                
                
                - - -
         :param pulumi.Input[str] network: The relative resource name identifying the VPC network that is using this configuration.
-               For example: `projects/*/global/networks/network-1`.
+               For example: 'projects/*/global/networks/network-1'.
                Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] routing_mode: The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
                Possible values are: `NEXT_HOP_ROUTING_MODE`.
         :param pulumi.Input[str] scope: Immutable. Scope determines how configuration across multiple Gateway instances are merged.
-               The configuration for multiple Gateway instances with the same scope will be merged as presented as
-               a single coniguration to the proxy/load balancer.
+               The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer.
                Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
-        :param pulumi.Input[str] server_tls_policy: A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
-               If empty, TLS termination is disabled.
+        :param pulumi.Input[str] server_tls_policy: A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
         :param pulumi.Input[str] subnetwork: The relative resource name identifying the subnetwork in which this SWG is allocated.
-               For example: `projects/*/regions/us-central1/subnetworks/network-1`.
-               Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
+               For example: projects/*/regions/us-central1/subnetworks/network-1.
+               Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         """
         pulumi.set(__self__, "ports", ports)
         pulumi.set(__self__, "type", type)
@@ -89,8 +97,12 @@ class GatewayArgs:
             pulumi.set(__self__, "delete_swg_autogen_router_on_destroy", delete_swg_autogen_router_on_destroy)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if envoy_headers is not None:
+            pulumi.set(__self__, "envoy_headers", envoy_headers)
         if gateway_security_policy is not None:
             pulumi.set(__self__, "gateway_security_policy", gateway_security_policy)
+        if ip_version is not None:
+            pulumi.set(__self__, "ip_version", ip_version)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -115,8 +127,8 @@ class GatewayArgs:
     def ports(self) -> pulumi.Input[Sequence[pulumi.Input[int]]]:
         """
         One or more port numbers (1-65535), on which the Gateway will receive traffic.
-        The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
-        limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
+        The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+        Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
         """
         return pulumi.get(self, "ports")
 
@@ -128,8 +140,8 @@ class GatewayArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-        Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
+        Immutable. The type of the customer managed gateway.
+        Possible values are: `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
         """
         return pulumi.get(self, "type")
 
@@ -141,9 +153,10 @@ class GatewayArgs:
     @pulumi.getter
     def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
-        an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
-        Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+        Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic.
+        When no address is provided, an IP from the subnetwork is allocated.
+        This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
         """
         return pulumi.get(self, "addresses")
 
@@ -190,11 +203,26 @@ class GatewayArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="envoyHeaders")
+    def envoy_headers(self) -> Optional[pulumi.Input[str]]:
+        """
+        Determines if envoy will insert internal debug headers into upstream requests.
+        Other Envoy headers may still be injected.
+        By default, envoy will not insert any debug headers.
+        Possible values are: `NONE`, `DEBUG_HEADERS`.
+        """
+        return pulumi.get(self, "envoy_headers")
+
+    @envoy_headers.setter
+    def envoy_headers(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "envoy_headers", value)
+
+    @property
     @pulumi.getter(name="gatewaySecurityPolicy")
     def gateway_security_policy(self) -> Optional[pulumi.Input[str]]:
         """
         A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
-        For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
+        For example: 'projects/*/locations/*/gatewaySecurityPolicies/swg-policy'.
         This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         """
         return pulumi.get(self, "gateway_security_policy")
@@ -204,10 +232,24 @@ class GatewayArgs:
         pulumi.set(self, "gateway_security_policy", value)
 
     @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP Version that will be used by this gateway.
+        Possible values are: `IPV4`, `IPV6`.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @ip_version.setter
+    def ip_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_version", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Set of label tags associated with the Gateway resource.
+
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
@@ -234,7 +276,7 @@ class GatewayArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Short name of the Gateway resource to be created.
+        Name of the Gateway resource.
 
 
         - - -
@@ -250,7 +292,7 @@ class GatewayArgs:
     def network(self) -> Optional[pulumi.Input[str]]:
         """
         The relative resource name identifying the VPC network that is using this configuration.
-        For example: `projects/*/global/networks/network-1`.
+        For example: 'projects/*/global/networks/network-1'.
         Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         """
         return pulumi.get(self, "network")
@@ -290,8 +332,7 @@ class GatewayArgs:
     def scope(self) -> Optional[pulumi.Input[str]]:
         """
         Immutable. Scope determines how configuration across multiple Gateway instances are merged.
-        The configuration for multiple Gateway instances with the same scope will be merged as presented as
-        a single coniguration to the proxy/load balancer.
+        The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer.
         Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
         """
         return pulumi.get(self, "scope")
@@ -304,8 +345,7 @@ class GatewayArgs:
     @pulumi.getter(name="serverTlsPolicy")
     def server_tls_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
-        If empty, TLS termination is disabled.
+        A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
         """
         return pulumi.get(self, "server_tls_policy")
 
@@ -318,8 +358,8 @@ class GatewayArgs:
     def subnetwork(self) -> Optional[pulumi.Input[str]]:
         """
         The relative resource name identifying the subnetwork in which this SWG is allocated.
-        For example: `projects/*/regions/us-central1/subnetworks/network-1`.
-        Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
+        For example: projects/*/regions/us-central1/subnetworks/network-1.
+        Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         """
         return pulumi.get(self, "subnetwork")
 
@@ -337,7 +377,9 @@ class _GatewayState:
                  delete_swg_autogen_router_on_destroy: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 envoy_headers: Optional[pulumi.Input[str]] = None,
                  gateway_security_policy: Optional[pulumi.Input[str]] = None,
+                 ip_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -354,34 +396,42 @@ class _GatewayState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Gateway resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
-               an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
-               Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic.
+               When no address is provided, an IP from the subnetwork is allocated.
+               This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+               Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_urls: A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
                This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
-        :param pulumi.Input[str] create_time: Time the AccessPolicy was created in UTC.
+        :param pulumi.Input[str] create_time: The timestamp when the resource was created.
         :param pulumi.Input[bool] delete_swg_autogen_router_on_destroy: When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
                If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[str] envoy_headers: Determines if envoy will insert internal debug headers into upstream requests.
+               Other Envoy headers may still be injected.
+               By default, envoy will not insert any debug headers.
+               Possible values are: `NONE`, `DEBUG_HEADERS`.
         :param pulumi.Input[str] gateway_security_policy: A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
-               For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
+               For example: 'projects/*/locations/*/gatewaySecurityPolicies/swg-policy'.
                This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        :param pulumi.Input[str] ip_version: The IP Version that will be used by this gateway.
+               Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Gateway resource.
+               
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the gateway.
                The default value is `global`.
-        :param pulumi.Input[str] name: Short name of the Gateway resource to be created.
+        :param pulumi.Input[str] name: Name of the Gateway resource.
                
                
                - - -
         :param pulumi.Input[str] network: The relative resource name identifying the VPC network that is using this configuration.
-               For example: `projects/*/global/networks/network-1`.
+               For example: 'projects/*/global/networks/network-1'.
                Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] ports: One or more port numbers (1-65535), on which the Gateway will receive traffic.
-               The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
-               limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
+               The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+               Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -389,18 +439,16 @@ class _GatewayState:
         :param pulumi.Input[str] routing_mode: The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
                Possible values are: `NEXT_HOP_ROUTING_MODE`.
         :param pulumi.Input[str] scope: Immutable. Scope determines how configuration across multiple Gateway instances are merged.
-               The configuration for multiple Gateway instances with the same scope will be merged as presented as
-               a single coniguration to the proxy/load balancer.
+               The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer.
                Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
-        :param pulumi.Input[str] server_tls_policy: A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
-               If empty, TLS termination is disabled.
+        :param pulumi.Input[str] server_tls_policy: A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
         :param pulumi.Input[str] subnetwork: The relative resource name identifying the subnetwork in which this SWG is allocated.
-               For example: `projects/*/regions/us-central1/subnetworks/network-1`.
-               Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
-        :param pulumi.Input[str] type: Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-               Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
-        :param pulumi.Input[str] update_time: Time the AccessPolicy was updated in UTC.
+               For example: projects/*/regions/us-central1/subnetworks/network-1.
+               Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        :param pulumi.Input[str] type: Immutable. The type of the customer managed gateway.
+               Possible values are: `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
+        :param pulumi.Input[str] update_time: The timestamp when the resource was updated.
         """
         if addresses is not None:
             pulumi.set(__self__, "addresses", addresses)
@@ -414,8 +462,12 @@ class _GatewayState:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if envoy_headers is not None:
+            pulumi.set(__self__, "envoy_headers", envoy_headers)
         if gateway_security_policy is not None:
             pulumi.set(__self__, "gateway_security_policy", gateway_security_policy)
+        if ip_version is not None:
+            pulumi.set(__self__, "ip_version", ip_version)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -449,9 +501,10 @@ class _GatewayState:
     @pulumi.getter
     def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
-        an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
-        Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+        Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic.
+        When no address is provided, an IP from the subnetwork is allocated.
+        This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
         """
         return pulumi.get(self, "addresses")
 
@@ -476,7 +529,7 @@ class _GatewayState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Time the AccessPolicy was created in UTC.
+        The timestamp when the resource was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -522,11 +575,26 @@ class _GatewayState:
         pulumi.set(self, "effective_labels", value)
 
     @property
+    @pulumi.getter(name="envoyHeaders")
+    def envoy_headers(self) -> Optional[pulumi.Input[str]]:
+        """
+        Determines if envoy will insert internal debug headers into upstream requests.
+        Other Envoy headers may still be injected.
+        By default, envoy will not insert any debug headers.
+        Possible values are: `NONE`, `DEBUG_HEADERS`.
+        """
+        return pulumi.get(self, "envoy_headers")
+
+    @envoy_headers.setter
+    def envoy_headers(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "envoy_headers", value)
+
+    @property
     @pulumi.getter(name="gatewaySecurityPolicy")
     def gateway_security_policy(self) -> Optional[pulumi.Input[str]]:
         """
         A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
-        For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
+        For example: 'projects/*/locations/*/gatewaySecurityPolicies/swg-policy'.
         This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         """
         return pulumi.get(self, "gateway_security_policy")
@@ -536,10 +604,24 @@ class _GatewayState:
         pulumi.set(self, "gateway_security_policy", value)
 
     @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP Version that will be used by this gateway.
+        Possible values are: `IPV4`, `IPV6`.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @ip_version.setter
+    def ip_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_version", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Set of label tags associated with the Gateway resource.
+
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
@@ -566,7 +648,7 @@ class _GatewayState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Short name of the Gateway resource to be created.
+        Name of the Gateway resource.
 
 
         - - -
@@ -582,7 +664,7 @@ class _GatewayState:
     def network(self) -> Optional[pulumi.Input[str]]:
         """
         The relative resource name identifying the VPC network that is using this configuration.
-        For example: `projects/*/global/networks/network-1`.
+        For example: 'projects/*/global/networks/network-1'.
         Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         """
         return pulumi.get(self, "network")
@@ -596,8 +678,8 @@ class _GatewayState:
     def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
         One or more port numbers (1-65535), on which the Gateway will receive traffic.
-        The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
-        limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
+        The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+        Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
         """
         return pulumi.get(self, "ports")
 
@@ -649,8 +731,7 @@ class _GatewayState:
     def scope(self) -> Optional[pulumi.Input[str]]:
         """
         Immutable. Scope determines how configuration across multiple Gateway instances are merged.
-        The configuration for multiple Gateway instances with the same scope will be merged as presented as
-        a single coniguration to the proxy/load balancer.
+        The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer.
         Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
         """
         return pulumi.get(self, "scope")
@@ -675,8 +756,7 @@ class _GatewayState:
     @pulumi.getter(name="serverTlsPolicy")
     def server_tls_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
-        If empty, TLS termination is disabled.
+        A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
         """
         return pulumi.get(self, "server_tls_policy")
 
@@ -689,8 +769,8 @@ class _GatewayState:
     def subnetwork(self) -> Optional[pulumi.Input[str]]:
         """
         The relative resource name identifying the subnetwork in which this SWG is allocated.
-        For example: `projects/*/regions/us-central1/subnetworks/network-1`.
-        Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
+        For example: projects/*/regions/us-central1/subnetworks/network-1.
+        Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         """
         return pulumi.get(self, "subnetwork")
 
@@ -702,8 +782,8 @@ class _GatewayState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-        Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
+        Immutable. The type of the customer managed gateway.
+        Possible values are: `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
         """
         return pulumi.get(self, "type")
 
@@ -715,7 +795,7 @@ class _GatewayState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Time the AccessPolicy was updated in UTC.
+        The timestamp when the resource was updated.
         """
         return pulumi.get(self, "update_time")
 
@@ -733,7 +813,9 @@ class Gateway(pulumi.CustomResource):
                  certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  delete_swg_autogen_router_on_destroy: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 envoy_headers: Optional[pulumi.Input[str]] = None,
                  gateway_security_policy: Optional[pulumi.Input[str]] = None,
+                 ip_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -940,47 +1022,53 @@ class Gateway(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
-               an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
-               Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic.
+               When no address is provided, an IP from the subnetwork is allocated.
+               This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+               Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_urls: A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
                This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[bool] delete_swg_autogen_router_on_destroy: When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
                If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
+        :param pulumi.Input[str] envoy_headers: Determines if envoy will insert internal debug headers into upstream requests.
+               Other Envoy headers may still be injected.
+               By default, envoy will not insert any debug headers.
+               Possible values are: `NONE`, `DEBUG_HEADERS`.
         :param pulumi.Input[str] gateway_security_policy: A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
-               For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
+               For example: 'projects/*/locations/*/gatewaySecurityPolicies/swg-policy'.
                This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        :param pulumi.Input[str] ip_version: The IP Version that will be used by this gateway.
+               Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Gateway resource.
+               
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the gateway.
                The default value is `global`.
-        :param pulumi.Input[str] name: Short name of the Gateway resource to be created.
+        :param pulumi.Input[str] name: Name of the Gateway resource.
                
                
                - - -
         :param pulumi.Input[str] network: The relative resource name identifying the VPC network that is using this configuration.
-               For example: `projects/*/global/networks/network-1`.
+               For example: 'projects/*/global/networks/network-1'.
                Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] ports: One or more port numbers (1-65535), on which the Gateway will receive traffic.
-               The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
-               limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
+               The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+               Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] routing_mode: The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
                Possible values are: `NEXT_HOP_ROUTING_MODE`.
         :param pulumi.Input[str] scope: Immutable. Scope determines how configuration across multiple Gateway instances are merged.
-               The configuration for multiple Gateway instances with the same scope will be merged as presented as
-               a single coniguration to the proxy/load balancer.
+               The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer.
                Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
-        :param pulumi.Input[str] server_tls_policy: A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
-               If empty, TLS termination is disabled.
+        :param pulumi.Input[str] server_tls_policy: A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
         :param pulumi.Input[str] subnetwork: The relative resource name identifying the subnetwork in which this SWG is allocated.
-               For example: `projects/*/regions/us-central1/subnetworks/network-1`.
-               Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
-        :param pulumi.Input[str] type: Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-               Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
+               For example: projects/*/regions/us-central1/subnetworks/network-1.
+               Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        :param pulumi.Input[str] type: Immutable. The type of the customer managed gateway.
+               Possible values are: `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
         """
         ...
     @overload
@@ -1199,7 +1287,9 @@ class Gateway(pulumi.CustomResource):
                  certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  delete_swg_autogen_router_on_destroy: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 envoy_headers: Optional[pulumi.Input[str]] = None,
                  gateway_security_policy: Optional[pulumi.Input[str]] = None,
+                 ip_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -1224,7 +1314,9 @@ class Gateway(pulumi.CustomResource):
             __props__.__dict__["certificate_urls"] = certificate_urls
             __props__.__dict__["delete_swg_autogen_router_on_destroy"] = delete_swg_autogen_router_on_destroy
             __props__.__dict__["description"] = description
+            __props__.__dict__["envoy_headers"] = envoy_headers
             __props__.__dict__["gateway_security_policy"] = gateway_security_policy
+            __props__.__dict__["ip_version"] = ip_version
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
@@ -1263,7 +1355,9 @@ class Gateway(pulumi.CustomResource):
             delete_swg_autogen_router_on_destroy: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            envoy_headers: Optional[pulumi.Input[str]] = None,
             gateway_security_policy: Optional[pulumi.Input[str]] = None,
+            ip_version: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -1285,34 +1379,42 @@ class Gateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
-               an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
-               Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic.
+               When no address is provided, an IP from the subnetwork is allocated.
+               This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+               Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_urls: A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
                This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
-        :param pulumi.Input[str] create_time: Time the AccessPolicy was created in UTC.
+        :param pulumi.Input[str] create_time: The timestamp when the resource was created.
         :param pulumi.Input[bool] delete_swg_autogen_router_on_destroy: When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
                If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[str] envoy_headers: Determines if envoy will insert internal debug headers into upstream requests.
+               Other Envoy headers may still be injected.
+               By default, envoy will not insert any debug headers.
+               Possible values are: `NONE`, `DEBUG_HEADERS`.
         :param pulumi.Input[str] gateway_security_policy: A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
-               For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
+               For example: 'projects/*/locations/*/gatewaySecurityPolicies/swg-policy'.
                This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        :param pulumi.Input[str] ip_version: The IP Version that will be used by this gateway.
+               Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Gateway resource.
+               
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the gateway.
                The default value is `global`.
-        :param pulumi.Input[str] name: Short name of the Gateway resource to be created.
+        :param pulumi.Input[str] name: Name of the Gateway resource.
                
                
                - - -
         :param pulumi.Input[str] network: The relative resource name identifying the VPC network that is using this configuration.
-               For example: `projects/*/global/networks/network-1`.
+               For example: 'projects/*/global/networks/network-1'.
                Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] ports: One or more port numbers (1-65535), on which the Gateway will receive traffic.
-               The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
-               limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
+               The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+               Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -1320,18 +1422,16 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] routing_mode: The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
                Possible values are: `NEXT_HOP_ROUTING_MODE`.
         :param pulumi.Input[str] scope: Immutable. Scope determines how configuration across multiple Gateway instances are merged.
-               The configuration for multiple Gateway instances with the same scope will be merged as presented as
-               a single coniguration to the proxy/load balancer.
+               The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer.
                Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
-        :param pulumi.Input[str] server_tls_policy: A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
-               If empty, TLS termination is disabled.
+        :param pulumi.Input[str] server_tls_policy: A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
         :param pulumi.Input[str] subnetwork: The relative resource name identifying the subnetwork in which this SWG is allocated.
-               For example: `projects/*/regions/us-central1/subnetworks/network-1`.
-               Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
-        :param pulumi.Input[str] type: Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-               Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
-        :param pulumi.Input[str] update_time: Time the AccessPolicy was updated in UTC.
+               For example: projects/*/regions/us-central1/subnetworks/network-1.
+               Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        :param pulumi.Input[str] type: Immutable. The type of the customer managed gateway.
+               Possible values are: `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
+        :param pulumi.Input[str] update_time: The timestamp when the resource was updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1343,7 +1443,9 @@ class Gateway(pulumi.CustomResource):
         __props__.__dict__["delete_swg_autogen_router_on_destroy"] = delete_swg_autogen_router_on_destroy
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["envoy_headers"] = envoy_headers
         __props__.__dict__["gateway_security_policy"] = gateway_security_policy
+        __props__.__dict__["ip_version"] = ip_version
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -1364,9 +1466,10 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def addresses(self) -> pulumi.Output[Sequence[str]]:
         """
-        Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
-        an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
-        Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+        Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic.
+        When no address is provided, an IP from the subnetwork is allocated.
+        This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
         """
         return pulumi.get(self, "addresses")
 
@@ -1383,7 +1486,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Time the AccessPolicy was created in UTC.
+        The timestamp when the resource was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -1413,20 +1516,41 @@ class Gateway(pulumi.CustomResource):
         return pulumi.get(self, "effective_labels")
 
     @property
+    @pulumi.getter(name="envoyHeaders")
+    def envoy_headers(self) -> pulumi.Output[Optional[str]]:
+        """
+        Determines if envoy will insert internal debug headers into upstream requests.
+        Other Envoy headers may still be injected.
+        By default, envoy will not insert any debug headers.
+        Possible values are: `NONE`, `DEBUG_HEADERS`.
+        """
+        return pulumi.get(self, "envoy_headers")
+
+    @property
     @pulumi.getter(name="gatewaySecurityPolicy")
     def gateway_security_policy(self) -> pulumi.Output[Optional[str]]:
         """
         A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
-        For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
+        For example: 'projects/*/locations/*/gatewaySecurityPolicies/swg-policy'.
         This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         """
         return pulumi.get(self, "gateway_security_policy")
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> pulumi.Output[Optional[str]]:
+        """
+        The IP Version that will be used by this gateway.
+        Possible values are: `IPV4`, `IPV6`.
+        """
+        return pulumi.get(self, "ip_version")
 
     @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Set of label tags associated with the Gateway resource.
+
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
@@ -1445,7 +1569,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Short name of the Gateway resource to be created.
+        Name of the Gateway resource.
 
 
         - - -
@@ -1457,7 +1581,7 @@ class Gateway(pulumi.CustomResource):
     def network(self) -> pulumi.Output[Optional[str]]:
         """
         The relative resource name identifying the VPC network that is using this configuration.
-        For example: `projects/*/global/networks/network-1`.
+        For example: 'projects/*/global/networks/network-1'.
         Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         """
         return pulumi.get(self, "network")
@@ -1467,8 +1591,8 @@ class Gateway(pulumi.CustomResource):
     def ports(self) -> pulumi.Output[Sequence[int]]:
         """
         One or more port numbers (1-65535), on which the Gateway will receive traffic.
-        The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
-        limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
+        The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+        Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
         """
         return pulumi.get(self, "ports")
 
@@ -1504,8 +1628,7 @@ class Gateway(pulumi.CustomResource):
     def scope(self) -> pulumi.Output[Optional[str]]:
         """
         Immutable. Scope determines how configuration across multiple Gateway instances are merged.
-        The configuration for multiple Gateway instances with the same scope will be merged as presented as
-        a single coniguration to the proxy/load balancer.
+        The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer.
         Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
         """
         return pulumi.get(self, "scope")
@@ -1522,8 +1645,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="serverTlsPolicy")
     def server_tls_policy(self) -> pulumi.Output[Optional[str]]:
         """
-        A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
-        If empty, TLS termination is disabled.
+        A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
         """
         return pulumi.get(self, "server_tls_policy")
 
@@ -1532,8 +1654,8 @@ class Gateway(pulumi.CustomResource):
     def subnetwork(self) -> pulumi.Output[Optional[str]]:
         """
         The relative resource name identifying the subnetwork in which this SWG is allocated.
-        For example: `projects/*/regions/us-central1/subnetworks/network-1`.
-        Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
+        For example: projects/*/regions/us-central1/subnetworks/network-1.
+        Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         """
         return pulumi.get(self, "subnetwork")
 
@@ -1541,8 +1663,8 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-        Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
+        Immutable. The type of the customer managed gateway.
+        Possible values are: `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
         """
         return pulumi.get(self, "type")
 
@@ -1550,7 +1672,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        Time the AccessPolicy was updated in UTC.
+        The timestamp when the resource was updated.
         """
         return pulumi.get(self, "update_time")
 

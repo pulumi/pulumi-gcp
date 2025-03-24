@@ -130,6 +130,10 @@ export class MetastoreFederation extends pulumi.CustomResource {
      */
     public readonly backendMetastores!: pulumi.Output<outputs.dataproc.MetastoreFederationBackendMetastore[]>;
     /**
+     * Output only. The time when the metastore federation was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
@@ -176,6 +180,10 @@ export class MetastoreFederation extends pulumi.CustomResource {
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
+     * Output only. The time when the metastore federation was last updated.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
      * The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
      */
     public readonly version!: pulumi.Output<string>;
@@ -194,6 +202,7 @@ export class MetastoreFederation extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as MetastoreFederationState | undefined;
             resourceInputs["backendMetastores"] = state ? state.backendMetastores : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["endpointUri"] = state ? state.endpointUri : undefined;
             resourceInputs["federationId"] = state ? state.federationId : undefined;
@@ -205,6 +214,7 @@ export class MetastoreFederation extends pulumi.CustomResource {
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["stateMessage"] = state ? state.stateMessage : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as MetastoreFederationArgs | undefined;
@@ -223,6 +233,7 @@ export class MetastoreFederation extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["endpointUri"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -230,6 +241,7 @@ export class MetastoreFederation extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateMessage"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
@@ -247,6 +259,10 @@ export interface MetastoreFederationState {
      * Structure is documented below.
      */
     backendMetastores?: pulumi.Input<pulumi.Input<inputs.dataproc.MetastoreFederationBackendMetastore>[]>;
+    /**
+     * Output only. The time when the metastore federation was created.
+     */
+    createTime?: pulumi.Input<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -293,6 +309,10 @@ export interface MetastoreFederationState {
      * The globally unique resource identifier of the metastore federation.
      */
     uid?: pulumi.Input<string>;
+    /**
+     * Output only. The time when the metastore federation was last updated.
+     */
+    updateTime?: pulumi.Input<string>;
     /**
      * The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
      */

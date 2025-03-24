@@ -332,7 +332,6 @@ public class GatewaySecurityPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
-     * Note: gcp.networksecurity.TlsInspectionPolicy resource is still in Beta therefore it will need to import the provider.
      * 
      */
     @Export(name="tlsInspectionPolicy", refs={String.class}, tree="[0]")
@@ -340,7 +339,6 @@ public class GatewaySecurityPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
-     * Note: gcp.networksecurity.TlsInspectionPolicy resource is still in Beta therefore it will need to import the provider.
      * 
      */
     public Output<Optional<String>> tlsInspectionPolicy() {

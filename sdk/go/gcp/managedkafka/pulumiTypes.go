@@ -714,6 +714,731 @@ func (o ClusterRebalanceConfigPtrOutput) Mode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConnectClusterCapacityConfig struct {
+	// The memory to provision for the cluster in bytes. The CPU:memory ratio (vCPU:GiB) must be between 1:1 and 1:8. Minimum: 3221225472 (3 GiB).
+	MemoryBytes string `pulumi:"memoryBytes"`
+	// The number of vCPUs to provision for the cluster. The minimum is 3.
+	VcpuCount string `pulumi:"vcpuCount"`
+}
+
+// ConnectClusterCapacityConfigInput is an input type that accepts ConnectClusterCapacityConfigArgs and ConnectClusterCapacityConfigOutput values.
+// You can construct a concrete instance of `ConnectClusterCapacityConfigInput` via:
+//
+//	ConnectClusterCapacityConfigArgs{...}
+type ConnectClusterCapacityConfigInput interface {
+	pulumi.Input
+
+	ToConnectClusterCapacityConfigOutput() ConnectClusterCapacityConfigOutput
+	ToConnectClusterCapacityConfigOutputWithContext(context.Context) ConnectClusterCapacityConfigOutput
+}
+
+type ConnectClusterCapacityConfigArgs struct {
+	// The memory to provision for the cluster in bytes. The CPU:memory ratio (vCPU:GiB) must be between 1:1 and 1:8. Minimum: 3221225472 (3 GiB).
+	MemoryBytes pulumi.StringInput `pulumi:"memoryBytes"`
+	// The number of vCPUs to provision for the cluster. The minimum is 3.
+	VcpuCount pulumi.StringInput `pulumi:"vcpuCount"`
+}
+
+func (ConnectClusterCapacityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectClusterCapacityConfig)(nil)).Elem()
+}
+
+func (i ConnectClusterCapacityConfigArgs) ToConnectClusterCapacityConfigOutput() ConnectClusterCapacityConfigOutput {
+	return i.ToConnectClusterCapacityConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectClusterCapacityConfigArgs) ToConnectClusterCapacityConfigOutputWithContext(ctx context.Context) ConnectClusterCapacityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectClusterCapacityConfigOutput)
+}
+
+func (i ConnectClusterCapacityConfigArgs) ToConnectClusterCapacityConfigPtrOutput() ConnectClusterCapacityConfigPtrOutput {
+	return i.ToConnectClusterCapacityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectClusterCapacityConfigArgs) ToConnectClusterCapacityConfigPtrOutputWithContext(ctx context.Context) ConnectClusterCapacityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectClusterCapacityConfigOutput).ToConnectClusterCapacityConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectClusterCapacityConfigPtrInput is an input type that accepts ConnectClusterCapacityConfigArgs, ConnectClusterCapacityConfigPtr and ConnectClusterCapacityConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectClusterCapacityConfigPtrInput` via:
+//
+//	        ConnectClusterCapacityConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectClusterCapacityConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectClusterCapacityConfigPtrOutput() ConnectClusterCapacityConfigPtrOutput
+	ToConnectClusterCapacityConfigPtrOutputWithContext(context.Context) ConnectClusterCapacityConfigPtrOutput
+}
+
+type connectClusterCapacityConfigPtrType ConnectClusterCapacityConfigArgs
+
+func ConnectClusterCapacityConfigPtr(v *ConnectClusterCapacityConfigArgs) ConnectClusterCapacityConfigPtrInput {
+	return (*connectClusterCapacityConfigPtrType)(v)
+}
+
+func (*connectClusterCapacityConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectClusterCapacityConfig)(nil)).Elem()
+}
+
+func (i *connectClusterCapacityConfigPtrType) ToConnectClusterCapacityConfigPtrOutput() ConnectClusterCapacityConfigPtrOutput {
+	return i.ToConnectClusterCapacityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectClusterCapacityConfigPtrType) ToConnectClusterCapacityConfigPtrOutputWithContext(ctx context.Context) ConnectClusterCapacityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectClusterCapacityConfigPtrOutput)
+}
+
+type ConnectClusterCapacityConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectClusterCapacityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectClusterCapacityConfig)(nil)).Elem()
+}
+
+func (o ConnectClusterCapacityConfigOutput) ToConnectClusterCapacityConfigOutput() ConnectClusterCapacityConfigOutput {
+	return o
+}
+
+func (o ConnectClusterCapacityConfigOutput) ToConnectClusterCapacityConfigOutputWithContext(ctx context.Context) ConnectClusterCapacityConfigOutput {
+	return o
+}
+
+func (o ConnectClusterCapacityConfigOutput) ToConnectClusterCapacityConfigPtrOutput() ConnectClusterCapacityConfigPtrOutput {
+	return o.ToConnectClusterCapacityConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectClusterCapacityConfigOutput) ToConnectClusterCapacityConfigPtrOutputWithContext(ctx context.Context) ConnectClusterCapacityConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectClusterCapacityConfig) *ConnectClusterCapacityConfig {
+		return &v
+	}).(ConnectClusterCapacityConfigPtrOutput)
+}
+
+// The memory to provision for the cluster in bytes. The CPU:memory ratio (vCPU:GiB) must be between 1:1 and 1:8. Minimum: 3221225472 (3 GiB).
+func (o ConnectClusterCapacityConfigOutput) MemoryBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectClusterCapacityConfig) string { return v.MemoryBytes }).(pulumi.StringOutput)
+}
+
+// The number of vCPUs to provision for the cluster. The minimum is 3.
+func (o ConnectClusterCapacityConfigOutput) VcpuCount() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectClusterCapacityConfig) string { return v.VcpuCount }).(pulumi.StringOutput)
+}
+
+type ConnectClusterCapacityConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectClusterCapacityConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectClusterCapacityConfig)(nil)).Elem()
+}
+
+func (o ConnectClusterCapacityConfigPtrOutput) ToConnectClusterCapacityConfigPtrOutput() ConnectClusterCapacityConfigPtrOutput {
+	return o
+}
+
+func (o ConnectClusterCapacityConfigPtrOutput) ToConnectClusterCapacityConfigPtrOutputWithContext(ctx context.Context) ConnectClusterCapacityConfigPtrOutput {
+	return o
+}
+
+func (o ConnectClusterCapacityConfigPtrOutput) Elem() ConnectClusterCapacityConfigOutput {
+	return o.ApplyT(func(v *ConnectClusterCapacityConfig) ConnectClusterCapacityConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectClusterCapacityConfig
+		return ret
+	}).(ConnectClusterCapacityConfigOutput)
+}
+
+// The memory to provision for the cluster in bytes. The CPU:memory ratio (vCPU:GiB) must be between 1:1 and 1:8. Minimum: 3221225472 (3 GiB).
+func (o ConnectClusterCapacityConfigPtrOutput) MemoryBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectClusterCapacityConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MemoryBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of vCPUs to provision for the cluster. The minimum is 3.
+func (o ConnectClusterCapacityConfigPtrOutput) VcpuCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectClusterCapacityConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VcpuCount
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectClusterGcpConfig struct {
+	// The configuration of access to the Kafka Connect cluster.
+	// Structure is documented below.
+	AccessConfig ConnectClusterGcpConfigAccessConfig `pulumi:"accessConfig"`
+}
+
+// ConnectClusterGcpConfigInput is an input type that accepts ConnectClusterGcpConfigArgs and ConnectClusterGcpConfigOutput values.
+// You can construct a concrete instance of `ConnectClusterGcpConfigInput` via:
+//
+//	ConnectClusterGcpConfigArgs{...}
+type ConnectClusterGcpConfigInput interface {
+	pulumi.Input
+
+	ToConnectClusterGcpConfigOutput() ConnectClusterGcpConfigOutput
+	ToConnectClusterGcpConfigOutputWithContext(context.Context) ConnectClusterGcpConfigOutput
+}
+
+type ConnectClusterGcpConfigArgs struct {
+	// The configuration of access to the Kafka Connect cluster.
+	// Structure is documented below.
+	AccessConfig ConnectClusterGcpConfigAccessConfigInput `pulumi:"accessConfig"`
+}
+
+func (ConnectClusterGcpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectClusterGcpConfig)(nil)).Elem()
+}
+
+func (i ConnectClusterGcpConfigArgs) ToConnectClusterGcpConfigOutput() ConnectClusterGcpConfigOutput {
+	return i.ToConnectClusterGcpConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectClusterGcpConfigArgs) ToConnectClusterGcpConfigOutputWithContext(ctx context.Context) ConnectClusterGcpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectClusterGcpConfigOutput)
+}
+
+func (i ConnectClusterGcpConfigArgs) ToConnectClusterGcpConfigPtrOutput() ConnectClusterGcpConfigPtrOutput {
+	return i.ToConnectClusterGcpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectClusterGcpConfigArgs) ToConnectClusterGcpConfigPtrOutputWithContext(ctx context.Context) ConnectClusterGcpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectClusterGcpConfigOutput).ToConnectClusterGcpConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectClusterGcpConfigPtrInput is an input type that accepts ConnectClusterGcpConfigArgs, ConnectClusterGcpConfigPtr and ConnectClusterGcpConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectClusterGcpConfigPtrInput` via:
+//
+//	        ConnectClusterGcpConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectClusterGcpConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectClusterGcpConfigPtrOutput() ConnectClusterGcpConfigPtrOutput
+	ToConnectClusterGcpConfigPtrOutputWithContext(context.Context) ConnectClusterGcpConfigPtrOutput
+}
+
+type connectClusterGcpConfigPtrType ConnectClusterGcpConfigArgs
+
+func ConnectClusterGcpConfigPtr(v *ConnectClusterGcpConfigArgs) ConnectClusterGcpConfigPtrInput {
+	return (*connectClusterGcpConfigPtrType)(v)
+}
+
+func (*connectClusterGcpConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectClusterGcpConfig)(nil)).Elem()
+}
+
+func (i *connectClusterGcpConfigPtrType) ToConnectClusterGcpConfigPtrOutput() ConnectClusterGcpConfigPtrOutput {
+	return i.ToConnectClusterGcpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectClusterGcpConfigPtrType) ToConnectClusterGcpConfigPtrOutputWithContext(ctx context.Context) ConnectClusterGcpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectClusterGcpConfigPtrOutput)
+}
+
+type ConnectClusterGcpConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectClusterGcpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectClusterGcpConfig)(nil)).Elem()
+}
+
+func (o ConnectClusterGcpConfigOutput) ToConnectClusterGcpConfigOutput() ConnectClusterGcpConfigOutput {
+	return o
+}
+
+func (o ConnectClusterGcpConfigOutput) ToConnectClusterGcpConfigOutputWithContext(ctx context.Context) ConnectClusterGcpConfigOutput {
+	return o
+}
+
+func (o ConnectClusterGcpConfigOutput) ToConnectClusterGcpConfigPtrOutput() ConnectClusterGcpConfigPtrOutput {
+	return o.ToConnectClusterGcpConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectClusterGcpConfigOutput) ToConnectClusterGcpConfigPtrOutputWithContext(ctx context.Context) ConnectClusterGcpConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectClusterGcpConfig) *ConnectClusterGcpConfig {
+		return &v
+	}).(ConnectClusterGcpConfigPtrOutput)
+}
+
+// The configuration of access to the Kafka Connect cluster.
+// Structure is documented below.
+func (o ConnectClusterGcpConfigOutput) AccessConfig() ConnectClusterGcpConfigAccessConfigOutput {
+	return o.ApplyT(func(v ConnectClusterGcpConfig) ConnectClusterGcpConfigAccessConfig { return v.AccessConfig }).(ConnectClusterGcpConfigAccessConfigOutput)
+}
+
+type ConnectClusterGcpConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectClusterGcpConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectClusterGcpConfig)(nil)).Elem()
+}
+
+func (o ConnectClusterGcpConfigPtrOutput) ToConnectClusterGcpConfigPtrOutput() ConnectClusterGcpConfigPtrOutput {
+	return o
+}
+
+func (o ConnectClusterGcpConfigPtrOutput) ToConnectClusterGcpConfigPtrOutputWithContext(ctx context.Context) ConnectClusterGcpConfigPtrOutput {
+	return o
+}
+
+func (o ConnectClusterGcpConfigPtrOutput) Elem() ConnectClusterGcpConfigOutput {
+	return o.ApplyT(func(v *ConnectClusterGcpConfig) ConnectClusterGcpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectClusterGcpConfig
+		return ret
+	}).(ConnectClusterGcpConfigOutput)
+}
+
+// The configuration of access to the Kafka Connect cluster.
+// Structure is documented below.
+func (o ConnectClusterGcpConfigPtrOutput) AccessConfig() ConnectClusterGcpConfigAccessConfigPtrOutput {
+	return o.ApplyT(func(v *ConnectClusterGcpConfig) *ConnectClusterGcpConfigAccessConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.AccessConfig
+	}).(ConnectClusterGcpConfigAccessConfigPtrOutput)
+}
+
+type ConnectClusterGcpConfigAccessConfig struct {
+	// Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka Connect cluster are allocated. To make the connect cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `networkConfigs` blocks.
+	// Structure is documented below.
+	NetworkConfigs []ConnectClusterGcpConfigAccessConfigNetworkConfig `pulumi:"networkConfigs"`
+}
+
+// ConnectClusterGcpConfigAccessConfigInput is an input type that accepts ConnectClusterGcpConfigAccessConfigArgs and ConnectClusterGcpConfigAccessConfigOutput values.
+// You can construct a concrete instance of `ConnectClusterGcpConfigAccessConfigInput` via:
+//
+//	ConnectClusterGcpConfigAccessConfigArgs{...}
+type ConnectClusterGcpConfigAccessConfigInput interface {
+	pulumi.Input
+
+	ToConnectClusterGcpConfigAccessConfigOutput() ConnectClusterGcpConfigAccessConfigOutput
+	ToConnectClusterGcpConfigAccessConfigOutputWithContext(context.Context) ConnectClusterGcpConfigAccessConfigOutput
+}
+
+type ConnectClusterGcpConfigAccessConfigArgs struct {
+	// Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka Connect cluster are allocated. To make the connect cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `networkConfigs` blocks.
+	// Structure is documented below.
+	NetworkConfigs ConnectClusterGcpConfigAccessConfigNetworkConfigArrayInput `pulumi:"networkConfigs"`
+}
+
+func (ConnectClusterGcpConfigAccessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectClusterGcpConfigAccessConfig)(nil)).Elem()
+}
+
+func (i ConnectClusterGcpConfigAccessConfigArgs) ToConnectClusterGcpConfigAccessConfigOutput() ConnectClusterGcpConfigAccessConfigOutput {
+	return i.ToConnectClusterGcpConfigAccessConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectClusterGcpConfigAccessConfigArgs) ToConnectClusterGcpConfigAccessConfigOutputWithContext(ctx context.Context) ConnectClusterGcpConfigAccessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectClusterGcpConfigAccessConfigOutput)
+}
+
+func (i ConnectClusterGcpConfigAccessConfigArgs) ToConnectClusterGcpConfigAccessConfigPtrOutput() ConnectClusterGcpConfigAccessConfigPtrOutput {
+	return i.ToConnectClusterGcpConfigAccessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectClusterGcpConfigAccessConfigArgs) ToConnectClusterGcpConfigAccessConfigPtrOutputWithContext(ctx context.Context) ConnectClusterGcpConfigAccessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectClusterGcpConfigAccessConfigOutput).ToConnectClusterGcpConfigAccessConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectClusterGcpConfigAccessConfigPtrInput is an input type that accepts ConnectClusterGcpConfigAccessConfigArgs, ConnectClusterGcpConfigAccessConfigPtr and ConnectClusterGcpConfigAccessConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectClusterGcpConfigAccessConfigPtrInput` via:
+//
+//	        ConnectClusterGcpConfigAccessConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectClusterGcpConfigAccessConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectClusterGcpConfigAccessConfigPtrOutput() ConnectClusterGcpConfigAccessConfigPtrOutput
+	ToConnectClusterGcpConfigAccessConfigPtrOutputWithContext(context.Context) ConnectClusterGcpConfigAccessConfigPtrOutput
+}
+
+type connectClusterGcpConfigAccessConfigPtrType ConnectClusterGcpConfigAccessConfigArgs
+
+func ConnectClusterGcpConfigAccessConfigPtr(v *ConnectClusterGcpConfigAccessConfigArgs) ConnectClusterGcpConfigAccessConfigPtrInput {
+	return (*connectClusterGcpConfigAccessConfigPtrType)(v)
+}
+
+func (*connectClusterGcpConfigAccessConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectClusterGcpConfigAccessConfig)(nil)).Elem()
+}
+
+func (i *connectClusterGcpConfigAccessConfigPtrType) ToConnectClusterGcpConfigAccessConfigPtrOutput() ConnectClusterGcpConfigAccessConfigPtrOutput {
+	return i.ToConnectClusterGcpConfigAccessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectClusterGcpConfigAccessConfigPtrType) ToConnectClusterGcpConfigAccessConfigPtrOutputWithContext(ctx context.Context) ConnectClusterGcpConfigAccessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectClusterGcpConfigAccessConfigPtrOutput)
+}
+
+type ConnectClusterGcpConfigAccessConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectClusterGcpConfigAccessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectClusterGcpConfigAccessConfig)(nil)).Elem()
+}
+
+func (o ConnectClusterGcpConfigAccessConfigOutput) ToConnectClusterGcpConfigAccessConfigOutput() ConnectClusterGcpConfigAccessConfigOutput {
+	return o
+}
+
+func (o ConnectClusterGcpConfigAccessConfigOutput) ToConnectClusterGcpConfigAccessConfigOutputWithContext(ctx context.Context) ConnectClusterGcpConfigAccessConfigOutput {
+	return o
+}
+
+func (o ConnectClusterGcpConfigAccessConfigOutput) ToConnectClusterGcpConfigAccessConfigPtrOutput() ConnectClusterGcpConfigAccessConfigPtrOutput {
+	return o.ToConnectClusterGcpConfigAccessConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectClusterGcpConfigAccessConfigOutput) ToConnectClusterGcpConfigAccessConfigPtrOutputWithContext(ctx context.Context) ConnectClusterGcpConfigAccessConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectClusterGcpConfigAccessConfig) *ConnectClusterGcpConfigAccessConfig {
+		return &v
+	}).(ConnectClusterGcpConfigAccessConfigPtrOutput)
+}
+
+// Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka Connect cluster are allocated. To make the connect cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `networkConfigs` blocks.
+// Structure is documented below.
+func (o ConnectClusterGcpConfigAccessConfigOutput) NetworkConfigs() ConnectClusterGcpConfigAccessConfigNetworkConfigArrayOutput {
+	return o.ApplyT(func(v ConnectClusterGcpConfigAccessConfig) []ConnectClusterGcpConfigAccessConfigNetworkConfig {
+		return v.NetworkConfigs
+	}).(ConnectClusterGcpConfigAccessConfigNetworkConfigArrayOutput)
+}
+
+type ConnectClusterGcpConfigAccessConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectClusterGcpConfigAccessConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectClusterGcpConfigAccessConfig)(nil)).Elem()
+}
+
+func (o ConnectClusterGcpConfigAccessConfigPtrOutput) ToConnectClusterGcpConfigAccessConfigPtrOutput() ConnectClusterGcpConfigAccessConfigPtrOutput {
+	return o
+}
+
+func (o ConnectClusterGcpConfigAccessConfigPtrOutput) ToConnectClusterGcpConfigAccessConfigPtrOutputWithContext(ctx context.Context) ConnectClusterGcpConfigAccessConfigPtrOutput {
+	return o
+}
+
+func (o ConnectClusterGcpConfigAccessConfigPtrOutput) Elem() ConnectClusterGcpConfigAccessConfigOutput {
+	return o.ApplyT(func(v *ConnectClusterGcpConfigAccessConfig) ConnectClusterGcpConfigAccessConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectClusterGcpConfigAccessConfig
+		return ret
+	}).(ConnectClusterGcpConfigAccessConfigOutput)
+}
+
+// Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka Connect cluster are allocated. To make the connect cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `networkConfigs` blocks.
+// Structure is documented below.
+func (o ConnectClusterGcpConfigAccessConfigPtrOutput) NetworkConfigs() ConnectClusterGcpConfigAccessConfigNetworkConfigArrayOutput {
+	return o.ApplyT(func(v *ConnectClusterGcpConfigAccessConfig) []ConnectClusterGcpConfigAccessConfigNetworkConfig {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkConfigs
+	}).(ConnectClusterGcpConfigAccessConfigNetworkConfigArrayOutput)
+}
+
+type ConnectClusterGcpConfigAccessConfigNetworkConfig struct {
+	// Additional subnets may be specified. They may be in another region, but must be in the same VPC network. The Connect workers can communicate with network endpoints in either the primary or additional subnets.
+	AdditionalSubnets []string `pulumi:"additionalSubnets"`
+	// Additional DNS domain names from the subnet's network to be made visible to the Connect Cluster. When using MirrorMaker2, it's necessary to add the bootstrap address's dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog
+	//
+	// ***
+	DnsDomainNames []string `pulumi:"dnsDomainNames"`
+	// VPC subnet to make available to the Kafka Connect cluster. Structured like: projects/{project}/regions/{region}/subnetworks/{subnet_id}. It is used to create a Private Service Connect (PSC) interface for the Kafka Connect workers. It must be located in the same region as the Kafka Connect cluster. The CIDR range of the subnet must be within the IPv4 address ranges for private networks, as specified in RFC 1918. The primary subnet CIDR range must have a minimum size of /22 (1024 addresses).
+	PrimarySubnet string `pulumi:"primarySubnet"`
+}
+
+// ConnectClusterGcpConfigAccessConfigNetworkConfigInput is an input type that accepts ConnectClusterGcpConfigAccessConfigNetworkConfigArgs and ConnectClusterGcpConfigAccessConfigNetworkConfigOutput values.
+// You can construct a concrete instance of `ConnectClusterGcpConfigAccessConfigNetworkConfigInput` via:
+//
+//	ConnectClusterGcpConfigAccessConfigNetworkConfigArgs{...}
+type ConnectClusterGcpConfigAccessConfigNetworkConfigInput interface {
+	pulumi.Input
+
+	ToConnectClusterGcpConfigAccessConfigNetworkConfigOutput() ConnectClusterGcpConfigAccessConfigNetworkConfigOutput
+	ToConnectClusterGcpConfigAccessConfigNetworkConfigOutputWithContext(context.Context) ConnectClusterGcpConfigAccessConfigNetworkConfigOutput
+}
+
+type ConnectClusterGcpConfigAccessConfigNetworkConfigArgs struct {
+	// Additional subnets may be specified. They may be in another region, but must be in the same VPC network. The Connect workers can communicate with network endpoints in either the primary or additional subnets.
+	AdditionalSubnets pulumi.StringArrayInput `pulumi:"additionalSubnets"`
+	// Additional DNS domain names from the subnet's network to be made visible to the Connect Cluster. When using MirrorMaker2, it's necessary to add the bootstrap address's dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog
+	//
+	// ***
+	DnsDomainNames pulumi.StringArrayInput `pulumi:"dnsDomainNames"`
+	// VPC subnet to make available to the Kafka Connect cluster. Structured like: projects/{project}/regions/{region}/subnetworks/{subnet_id}. It is used to create a Private Service Connect (PSC) interface for the Kafka Connect workers. It must be located in the same region as the Kafka Connect cluster. The CIDR range of the subnet must be within the IPv4 address ranges for private networks, as specified in RFC 1918. The primary subnet CIDR range must have a minimum size of /22 (1024 addresses).
+	PrimarySubnet pulumi.StringInput `pulumi:"primarySubnet"`
+}
+
+func (ConnectClusterGcpConfigAccessConfigNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectClusterGcpConfigAccessConfigNetworkConfig)(nil)).Elem()
+}
+
+func (i ConnectClusterGcpConfigAccessConfigNetworkConfigArgs) ToConnectClusterGcpConfigAccessConfigNetworkConfigOutput() ConnectClusterGcpConfigAccessConfigNetworkConfigOutput {
+	return i.ToConnectClusterGcpConfigAccessConfigNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectClusterGcpConfigAccessConfigNetworkConfigArgs) ToConnectClusterGcpConfigAccessConfigNetworkConfigOutputWithContext(ctx context.Context) ConnectClusterGcpConfigAccessConfigNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectClusterGcpConfigAccessConfigNetworkConfigOutput)
+}
+
+// ConnectClusterGcpConfigAccessConfigNetworkConfigArrayInput is an input type that accepts ConnectClusterGcpConfigAccessConfigNetworkConfigArray and ConnectClusterGcpConfigAccessConfigNetworkConfigArrayOutput values.
+// You can construct a concrete instance of `ConnectClusterGcpConfigAccessConfigNetworkConfigArrayInput` via:
+//
+//	ConnectClusterGcpConfigAccessConfigNetworkConfigArray{ ConnectClusterGcpConfigAccessConfigNetworkConfigArgs{...} }
+type ConnectClusterGcpConfigAccessConfigNetworkConfigArrayInput interface {
+	pulumi.Input
+
+	ToConnectClusterGcpConfigAccessConfigNetworkConfigArrayOutput() ConnectClusterGcpConfigAccessConfigNetworkConfigArrayOutput
+	ToConnectClusterGcpConfigAccessConfigNetworkConfigArrayOutputWithContext(context.Context) ConnectClusterGcpConfigAccessConfigNetworkConfigArrayOutput
+}
+
+type ConnectClusterGcpConfigAccessConfigNetworkConfigArray []ConnectClusterGcpConfigAccessConfigNetworkConfigInput
+
+func (ConnectClusterGcpConfigAccessConfigNetworkConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectClusterGcpConfigAccessConfigNetworkConfig)(nil)).Elem()
+}
+
+func (i ConnectClusterGcpConfigAccessConfigNetworkConfigArray) ToConnectClusterGcpConfigAccessConfigNetworkConfigArrayOutput() ConnectClusterGcpConfigAccessConfigNetworkConfigArrayOutput {
+	return i.ToConnectClusterGcpConfigAccessConfigNetworkConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectClusterGcpConfigAccessConfigNetworkConfigArray) ToConnectClusterGcpConfigAccessConfigNetworkConfigArrayOutputWithContext(ctx context.Context) ConnectClusterGcpConfigAccessConfigNetworkConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectClusterGcpConfigAccessConfigNetworkConfigArrayOutput)
+}
+
+type ConnectClusterGcpConfigAccessConfigNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectClusterGcpConfigAccessConfigNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectClusterGcpConfigAccessConfigNetworkConfig)(nil)).Elem()
+}
+
+func (o ConnectClusterGcpConfigAccessConfigNetworkConfigOutput) ToConnectClusterGcpConfigAccessConfigNetworkConfigOutput() ConnectClusterGcpConfigAccessConfigNetworkConfigOutput {
+	return o
+}
+
+func (o ConnectClusterGcpConfigAccessConfigNetworkConfigOutput) ToConnectClusterGcpConfigAccessConfigNetworkConfigOutputWithContext(ctx context.Context) ConnectClusterGcpConfigAccessConfigNetworkConfigOutput {
+	return o
+}
+
+// Additional subnets may be specified. They may be in another region, but must be in the same VPC network. The Connect workers can communicate with network endpoints in either the primary or additional subnets.
+func (o ConnectClusterGcpConfigAccessConfigNetworkConfigOutput) AdditionalSubnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectClusterGcpConfigAccessConfigNetworkConfig) []string { return v.AdditionalSubnets }).(pulumi.StringArrayOutput)
+}
+
+// Additional DNS domain names from the subnet's network to be made visible to the Connect Cluster. When using MirrorMaker2, it's necessary to add the bootstrap address's dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog
+//
+// ***
+func (o ConnectClusterGcpConfigAccessConfigNetworkConfigOutput) DnsDomainNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectClusterGcpConfigAccessConfigNetworkConfig) []string { return v.DnsDomainNames }).(pulumi.StringArrayOutput)
+}
+
+// VPC subnet to make available to the Kafka Connect cluster. Structured like: projects/{project}/regions/{region}/subnetworks/{subnet_id}. It is used to create a Private Service Connect (PSC) interface for the Kafka Connect workers. It must be located in the same region as the Kafka Connect cluster. The CIDR range of the subnet must be within the IPv4 address ranges for private networks, as specified in RFC 1918. The primary subnet CIDR range must have a minimum size of /22 (1024 addresses).
+func (o ConnectClusterGcpConfigAccessConfigNetworkConfigOutput) PrimarySubnet() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectClusterGcpConfigAccessConfigNetworkConfig) string { return v.PrimarySubnet }).(pulumi.StringOutput)
+}
+
+type ConnectClusterGcpConfigAccessConfigNetworkConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectClusterGcpConfigAccessConfigNetworkConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectClusterGcpConfigAccessConfigNetworkConfig)(nil)).Elem()
+}
+
+func (o ConnectClusterGcpConfigAccessConfigNetworkConfigArrayOutput) ToConnectClusterGcpConfigAccessConfigNetworkConfigArrayOutput() ConnectClusterGcpConfigAccessConfigNetworkConfigArrayOutput {
+	return o
+}
+
+func (o ConnectClusterGcpConfigAccessConfigNetworkConfigArrayOutput) ToConnectClusterGcpConfigAccessConfigNetworkConfigArrayOutputWithContext(ctx context.Context) ConnectClusterGcpConfigAccessConfigNetworkConfigArrayOutput {
+	return o
+}
+
+func (o ConnectClusterGcpConfigAccessConfigNetworkConfigArrayOutput) Index(i pulumi.IntInput) ConnectClusterGcpConfigAccessConfigNetworkConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectClusterGcpConfigAccessConfigNetworkConfig {
+		return vs[0].([]ConnectClusterGcpConfigAccessConfigNetworkConfig)[vs[1].(int)]
+	}).(ConnectClusterGcpConfigAccessConfigNetworkConfigOutput)
+}
+
+type ConnectorTaskRestartPolicy struct {
+	// The maximum amount of time to wait before retrying a failed task. This sets an upper bound for the backoff delay.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	MaximumBackoff *string `pulumi:"maximumBackoff"`
+	// The minimum amount of time to wait before retrying a failed task. This sets a lower bound for the backoff delay.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	MinimumBackoff *string `pulumi:"minimumBackoff"`
+}
+
+// ConnectorTaskRestartPolicyInput is an input type that accepts ConnectorTaskRestartPolicyArgs and ConnectorTaskRestartPolicyOutput values.
+// You can construct a concrete instance of `ConnectorTaskRestartPolicyInput` via:
+//
+//	ConnectorTaskRestartPolicyArgs{...}
+type ConnectorTaskRestartPolicyInput interface {
+	pulumi.Input
+
+	ToConnectorTaskRestartPolicyOutput() ConnectorTaskRestartPolicyOutput
+	ToConnectorTaskRestartPolicyOutputWithContext(context.Context) ConnectorTaskRestartPolicyOutput
+}
+
+type ConnectorTaskRestartPolicyArgs struct {
+	// The maximum amount of time to wait before retrying a failed task. This sets an upper bound for the backoff delay.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	MaximumBackoff pulumi.StringPtrInput `pulumi:"maximumBackoff"`
+	// The minimum amount of time to wait before retrying a failed task. This sets a lower bound for the backoff delay.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	MinimumBackoff pulumi.StringPtrInput `pulumi:"minimumBackoff"`
+}
+
+func (ConnectorTaskRestartPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorTaskRestartPolicy)(nil)).Elem()
+}
+
+func (i ConnectorTaskRestartPolicyArgs) ToConnectorTaskRestartPolicyOutput() ConnectorTaskRestartPolicyOutput {
+	return i.ToConnectorTaskRestartPolicyOutputWithContext(context.Background())
+}
+
+func (i ConnectorTaskRestartPolicyArgs) ToConnectorTaskRestartPolicyOutputWithContext(ctx context.Context) ConnectorTaskRestartPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorTaskRestartPolicyOutput)
+}
+
+func (i ConnectorTaskRestartPolicyArgs) ToConnectorTaskRestartPolicyPtrOutput() ConnectorTaskRestartPolicyPtrOutput {
+	return i.ToConnectorTaskRestartPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectorTaskRestartPolicyArgs) ToConnectorTaskRestartPolicyPtrOutputWithContext(ctx context.Context) ConnectorTaskRestartPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorTaskRestartPolicyOutput).ToConnectorTaskRestartPolicyPtrOutputWithContext(ctx)
+}
+
+// ConnectorTaskRestartPolicyPtrInput is an input type that accepts ConnectorTaskRestartPolicyArgs, ConnectorTaskRestartPolicyPtr and ConnectorTaskRestartPolicyPtrOutput values.
+// You can construct a concrete instance of `ConnectorTaskRestartPolicyPtrInput` via:
+//
+//	        ConnectorTaskRestartPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectorTaskRestartPolicyPtrInput interface {
+	pulumi.Input
+
+	ToConnectorTaskRestartPolicyPtrOutput() ConnectorTaskRestartPolicyPtrOutput
+	ToConnectorTaskRestartPolicyPtrOutputWithContext(context.Context) ConnectorTaskRestartPolicyPtrOutput
+}
+
+type connectorTaskRestartPolicyPtrType ConnectorTaskRestartPolicyArgs
+
+func ConnectorTaskRestartPolicyPtr(v *ConnectorTaskRestartPolicyArgs) ConnectorTaskRestartPolicyPtrInput {
+	return (*connectorTaskRestartPolicyPtrType)(v)
+}
+
+func (*connectorTaskRestartPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorTaskRestartPolicy)(nil)).Elem()
+}
+
+func (i *connectorTaskRestartPolicyPtrType) ToConnectorTaskRestartPolicyPtrOutput() ConnectorTaskRestartPolicyPtrOutput {
+	return i.ToConnectorTaskRestartPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *connectorTaskRestartPolicyPtrType) ToConnectorTaskRestartPolicyPtrOutputWithContext(ctx context.Context) ConnectorTaskRestartPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorTaskRestartPolicyPtrOutput)
+}
+
+type ConnectorTaskRestartPolicyOutput struct{ *pulumi.OutputState }
+
+func (ConnectorTaskRestartPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorTaskRestartPolicy)(nil)).Elem()
+}
+
+func (o ConnectorTaskRestartPolicyOutput) ToConnectorTaskRestartPolicyOutput() ConnectorTaskRestartPolicyOutput {
+	return o
+}
+
+func (o ConnectorTaskRestartPolicyOutput) ToConnectorTaskRestartPolicyOutputWithContext(ctx context.Context) ConnectorTaskRestartPolicyOutput {
+	return o
+}
+
+func (o ConnectorTaskRestartPolicyOutput) ToConnectorTaskRestartPolicyPtrOutput() ConnectorTaskRestartPolicyPtrOutput {
+	return o.ToConnectorTaskRestartPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorTaskRestartPolicyOutput) ToConnectorTaskRestartPolicyPtrOutputWithContext(ctx context.Context) ConnectorTaskRestartPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorTaskRestartPolicy) *ConnectorTaskRestartPolicy {
+		return &v
+	}).(ConnectorTaskRestartPolicyPtrOutput)
+}
+
+// The maximum amount of time to wait before retrying a failed task. This sets an upper bound for the backoff delay.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o ConnectorTaskRestartPolicyOutput) MaximumBackoff() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorTaskRestartPolicy) *string { return v.MaximumBackoff }).(pulumi.StringPtrOutput)
+}
+
+// The minimum amount of time to wait before retrying a failed task. This sets a lower bound for the backoff delay.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o ConnectorTaskRestartPolicyOutput) MinimumBackoff() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorTaskRestartPolicy) *string { return v.MinimumBackoff }).(pulumi.StringPtrOutput)
+}
+
+type ConnectorTaskRestartPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorTaskRestartPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorTaskRestartPolicy)(nil)).Elem()
+}
+
+func (o ConnectorTaskRestartPolicyPtrOutput) ToConnectorTaskRestartPolicyPtrOutput() ConnectorTaskRestartPolicyPtrOutput {
+	return o
+}
+
+func (o ConnectorTaskRestartPolicyPtrOutput) ToConnectorTaskRestartPolicyPtrOutputWithContext(ctx context.Context) ConnectorTaskRestartPolicyPtrOutput {
+	return o
+}
+
+func (o ConnectorTaskRestartPolicyPtrOutput) Elem() ConnectorTaskRestartPolicyOutput {
+	return o.ApplyT(func(v *ConnectorTaskRestartPolicy) ConnectorTaskRestartPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorTaskRestartPolicy
+		return ret
+	}).(ConnectorTaskRestartPolicyOutput)
+}
+
+// The maximum amount of time to wait before retrying a failed task. This sets an upper bound for the backoff delay.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o ConnectorTaskRestartPolicyPtrOutput) MaximumBackoff() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorTaskRestartPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaximumBackoff
+	}).(pulumi.StringPtrOutput)
+}
+
+// The minimum amount of time to wait before retrying a failed task. This sets a lower bound for the backoff delay.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o ConnectorTaskRestartPolicyPtrOutput) MinimumBackoff() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorTaskRestartPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinimumBackoff
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterCapacityConfigInput)(nil)).Elem(), ClusterCapacityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterCapacityConfigPtrInput)(nil)).Elem(), ClusterCapacityConfigArgs{})
@@ -725,6 +1450,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterGcpConfigAccessConfigNetworkConfigArrayInput)(nil)).Elem(), ClusterGcpConfigAccessConfigNetworkConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRebalanceConfigInput)(nil)).Elem(), ClusterRebalanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRebalanceConfigPtrInput)(nil)).Elem(), ClusterRebalanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectClusterCapacityConfigInput)(nil)).Elem(), ConnectClusterCapacityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectClusterCapacityConfigPtrInput)(nil)).Elem(), ConnectClusterCapacityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectClusterGcpConfigInput)(nil)).Elem(), ConnectClusterGcpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectClusterGcpConfigPtrInput)(nil)).Elem(), ConnectClusterGcpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectClusterGcpConfigAccessConfigInput)(nil)).Elem(), ConnectClusterGcpConfigAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectClusterGcpConfigAccessConfigPtrInput)(nil)).Elem(), ConnectClusterGcpConfigAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectClusterGcpConfigAccessConfigNetworkConfigInput)(nil)).Elem(), ConnectClusterGcpConfigAccessConfigNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectClusterGcpConfigAccessConfigNetworkConfigArrayInput)(nil)).Elem(), ConnectClusterGcpConfigAccessConfigNetworkConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorTaskRestartPolicyInput)(nil)).Elem(), ConnectorTaskRestartPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorTaskRestartPolicyPtrInput)(nil)).Elem(), ConnectorTaskRestartPolicyArgs{})
 	pulumi.RegisterOutputType(ClusterCapacityConfigOutput{})
 	pulumi.RegisterOutputType(ClusterCapacityConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterGcpConfigOutput{})
@@ -735,4 +1470,14 @@ func init() {
 	pulumi.RegisterOutputType(ClusterGcpConfigAccessConfigNetworkConfigArrayOutput{})
 	pulumi.RegisterOutputType(ClusterRebalanceConfigOutput{})
 	pulumi.RegisterOutputType(ClusterRebalanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConnectClusterCapacityConfigOutput{})
+	pulumi.RegisterOutputType(ConnectClusterCapacityConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConnectClusterGcpConfigOutput{})
+	pulumi.RegisterOutputType(ConnectClusterGcpConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConnectClusterGcpConfigAccessConfigOutput{})
+	pulumi.RegisterOutputType(ConnectClusterGcpConfigAccessConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConnectClusterGcpConfigAccessConfigNetworkConfigOutput{})
+	pulumi.RegisterOutputType(ConnectClusterGcpConfigAccessConfigNetworkConfigArrayOutput{})
+	pulumi.RegisterOutputType(ConnectorTaskRestartPolicyOutput{})
+	pulumi.RegisterOutputType(ConnectorTaskRestartPolicyPtrOutput{})
 }

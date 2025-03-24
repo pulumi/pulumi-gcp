@@ -21,45 +21,44 @@ __all__ = ['InsightsReportConfigArgs', 'InsightsReportConfig']
 @pulumi.input_type
 class InsightsReportConfigArgs:
     def __init__(__self__, *,
-                 csv_options: pulumi.Input['InsightsReportConfigCsvOptionsArgs'],
                  location: pulumi.Input[str],
+                 csv_options: Optional[pulumi.Input['InsightsReportConfigCsvOptionsArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  frequency_options: Optional[pulumi.Input['InsightsReportConfigFrequencyOptionsArgs']] = None,
                  object_metadata_report_options: Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsArgs']] = None,
+                 parquet_options: Optional[pulumi.Input['InsightsReportConfigParquetOptionsArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a InsightsReportConfig resource.
-        :param pulumi.Input['InsightsReportConfigCsvOptionsArgs'] csv_options: Options for configuring the format of the inventory report CSV file.
-               Structure is documented below.
         :param pulumi.Input[str] location: The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
                must be in the same location.
+               
+               
+               - - -
+        :param pulumi.Input['InsightsReportConfigCsvOptionsArgs'] csv_options: Options for configuring the format of the inventory report CSV file.
+               Structure is documented below.
         :param pulumi.Input[str] display_name: The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
         :param pulumi.Input['InsightsReportConfigFrequencyOptionsArgs'] frequency_options: Options for configuring how inventory reports are generated.
+               Structure is documented below.
         :param pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsArgs'] object_metadata_report_options: Options for including metadata in an inventory report.
+               Structure is documented below.
+        :param pulumi.Input['InsightsReportConfigParquetOptionsArgs'] parquet_options: An option for outputting inventory reports as parquet files.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "csv_options", csv_options)
         pulumi.set(__self__, "location", location)
+        if csv_options is not None:
+            pulumi.set(__self__, "csv_options", csv_options)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if frequency_options is not None:
             pulumi.set(__self__, "frequency_options", frequency_options)
         if object_metadata_report_options is not None:
             pulumi.set(__self__, "object_metadata_report_options", object_metadata_report_options)
+        if parquet_options is not None:
+            pulumi.set(__self__, "parquet_options", parquet_options)
         if project is not None:
             pulumi.set(__self__, "project", project)
-
-    @property
-    @pulumi.getter(name="csvOptions")
-    def csv_options(self) -> pulumi.Input['InsightsReportConfigCsvOptionsArgs']:
-        """
-        Options for configuring the format of the inventory report CSV file.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "csv_options")
-
-    @csv_options.setter
-    def csv_options(self, value: pulumi.Input['InsightsReportConfigCsvOptionsArgs']):
-        pulumi.set(self, "csv_options", value)
 
     @property
     @pulumi.getter
@@ -67,12 +66,28 @@ class InsightsReportConfigArgs:
         """
         The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
         must be in the same location.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="csvOptions")
+    def csv_options(self) -> Optional[pulumi.Input['InsightsReportConfigCsvOptionsArgs']]:
+        """
+        Options for configuring the format of the inventory report CSV file.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "csv_options")
+
+    @csv_options.setter
+    def csv_options(self, value: Optional[pulumi.Input['InsightsReportConfigCsvOptionsArgs']]):
+        pulumi.set(self, "csv_options", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -91,6 +106,7 @@ class InsightsReportConfigArgs:
     def frequency_options(self) -> Optional[pulumi.Input['InsightsReportConfigFrequencyOptionsArgs']]:
         """
         Options for configuring how inventory reports are generated.
+        Structure is documented below.
         """
         return pulumi.get(self, "frequency_options")
 
@@ -103,6 +119,7 @@ class InsightsReportConfigArgs:
     def object_metadata_report_options(self) -> Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsArgs']]:
         """
         Options for including metadata in an inventory report.
+        Structure is documented below.
         """
         return pulumi.get(self, "object_metadata_report_options")
 
@@ -111,8 +128,24 @@ class InsightsReportConfigArgs:
         pulumi.set(self, "object_metadata_report_options", value)
 
     @property
+    @pulumi.getter(name="parquetOptions")
+    def parquet_options(self) -> Optional[pulumi.Input['InsightsReportConfigParquetOptionsArgs']]:
+        """
+        An option for outputting inventory reports as parquet files.
+        """
+        return pulumi.get(self, "parquet_options")
+
+    @parquet_options.setter
+    def parquet_options(self, value: Optional[pulumi.Input['InsightsReportConfigParquetOptionsArgs']]):
+        pulumi.set(self, "parquet_options", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -129,6 +162,7 @@ class _InsightsReportConfigState:
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  object_metadata_report_options: Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsArgs']] = None,
+                 parquet_options: Optional[pulumi.Input['InsightsReportConfigParquetOptionsArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering InsightsReportConfig resources.
@@ -136,10 +170,18 @@ class _InsightsReportConfigState:
                Structure is documented below.
         :param pulumi.Input[str] display_name: The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
         :param pulumi.Input['InsightsReportConfigFrequencyOptionsArgs'] frequency_options: Options for configuring how inventory reports are generated.
+               Structure is documented below.
         :param pulumi.Input[str] location: The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
                must be in the same location.
+               
+               
+               - - -
         :param pulumi.Input[str] name: The UUID of the inventory report configuration.
         :param pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsArgs'] object_metadata_report_options: Options for including metadata in an inventory report.
+               Structure is documented below.
+        :param pulumi.Input['InsightsReportConfigParquetOptionsArgs'] parquet_options: An option for outputting inventory reports as parquet files.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         if csv_options is not None:
             pulumi.set(__self__, "csv_options", csv_options)
@@ -153,6 +195,8 @@ class _InsightsReportConfigState:
             pulumi.set(__self__, "name", name)
         if object_metadata_report_options is not None:
             pulumi.set(__self__, "object_metadata_report_options", object_metadata_report_options)
+        if parquet_options is not None:
+            pulumi.set(__self__, "parquet_options", parquet_options)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -186,6 +230,7 @@ class _InsightsReportConfigState:
     def frequency_options(self) -> Optional[pulumi.Input['InsightsReportConfigFrequencyOptionsArgs']]:
         """
         Options for configuring how inventory reports are generated.
+        Structure is documented below.
         """
         return pulumi.get(self, "frequency_options")
 
@@ -199,6 +244,9 @@ class _InsightsReportConfigState:
         """
         The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
         must be in the same location.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -223,6 +271,7 @@ class _InsightsReportConfigState:
     def object_metadata_report_options(self) -> Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsArgs']]:
         """
         Options for including metadata in an inventory report.
+        Structure is documented below.
         """
         return pulumi.get(self, "object_metadata_report_options")
 
@@ -231,8 +280,24 @@ class _InsightsReportConfigState:
         pulumi.set(self, "object_metadata_report_options", value)
 
     @property
+    @pulumi.getter(name="parquetOptions")
+    def parquet_options(self) -> Optional[pulumi.Input['InsightsReportConfigParquetOptionsArgs']]:
+        """
+        An option for outputting inventory reports as parquet files.
+        """
+        return pulumi.get(self, "parquet_options")
+
+    @parquet_options.setter
+    def parquet_options(self, value: Optional[pulumi.Input['InsightsReportConfigParquetOptionsArgs']]):
+        pulumi.set(self, "parquet_options", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -250,6 +315,7 @@ class InsightsReportConfig(pulumi.CustomResource):
                  frequency_options: Optional[pulumi.Input[Union['InsightsReportConfigFrequencyOptionsArgs', 'InsightsReportConfigFrequencyOptionsArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  object_metadata_report_options: Optional[pulumi.Input[Union['InsightsReportConfigObjectMetadataReportOptionsArgs', 'InsightsReportConfigObjectMetadataReportOptionsArgsDict']]] = None,
+                 parquet_options: Optional[pulumi.Input[Union['InsightsReportConfigParquetOptionsArgs', 'InsightsReportConfigParquetOptionsArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -347,9 +413,17 @@ class InsightsReportConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] display_name: The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
         :param pulumi.Input[Union['InsightsReportConfigFrequencyOptionsArgs', 'InsightsReportConfigFrequencyOptionsArgsDict']] frequency_options: Options for configuring how inventory reports are generated.
+               Structure is documented below.
         :param pulumi.Input[str] location: The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
                must be in the same location.
+               
+               
+               - - -
         :param pulumi.Input[Union['InsightsReportConfigObjectMetadataReportOptionsArgs', 'InsightsReportConfigObjectMetadataReportOptionsArgsDict']] object_metadata_report_options: Options for including metadata in an inventory report.
+               Structure is documented below.
+        :param pulumi.Input[Union['InsightsReportConfigParquetOptionsArgs', 'InsightsReportConfigParquetOptionsArgsDict']] parquet_options: An option for outputting inventory reports as parquet files.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         ...
     @overload
@@ -466,6 +540,7 @@ class InsightsReportConfig(pulumi.CustomResource):
                  frequency_options: Optional[pulumi.Input[Union['InsightsReportConfigFrequencyOptionsArgs', 'InsightsReportConfigFrequencyOptionsArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  object_metadata_report_options: Optional[pulumi.Input[Union['InsightsReportConfigObjectMetadataReportOptionsArgs', 'InsightsReportConfigObjectMetadataReportOptionsArgsDict']]] = None,
+                 parquet_options: Optional[pulumi.Input[Union['InsightsReportConfigParquetOptionsArgs', 'InsightsReportConfigParquetOptionsArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -476,8 +551,6 @@ class InsightsReportConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InsightsReportConfigArgs.__new__(InsightsReportConfigArgs)
 
-            if csv_options is None and not opts.urn:
-                raise TypeError("Missing required property 'csv_options'")
             __props__.__dict__["csv_options"] = csv_options
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["frequency_options"] = frequency_options
@@ -485,6 +558,7 @@ class InsightsReportConfig(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["object_metadata_report_options"] = object_metadata_report_options
+            __props__.__dict__["parquet_options"] = parquet_options
             __props__.__dict__["project"] = project
             __props__.__dict__["name"] = None
         super(InsightsReportConfig, __self__).__init__(
@@ -503,6 +577,7 @@ class InsightsReportConfig(pulumi.CustomResource):
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             object_metadata_report_options: Optional[pulumi.Input[Union['InsightsReportConfigObjectMetadataReportOptionsArgs', 'InsightsReportConfigObjectMetadataReportOptionsArgsDict']]] = None,
+            parquet_options: Optional[pulumi.Input[Union['InsightsReportConfigParquetOptionsArgs', 'InsightsReportConfigParquetOptionsArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None) -> 'InsightsReportConfig':
         """
         Get an existing InsightsReportConfig resource's state with the given name, id, and optional extra
@@ -515,10 +590,18 @@ class InsightsReportConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] display_name: The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
         :param pulumi.Input[Union['InsightsReportConfigFrequencyOptionsArgs', 'InsightsReportConfigFrequencyOptionsArgsDict']] frequency_options: Options for configuring how inventory reports are generated.
+               Structure is documented below.
         :param pulumi.Input[str] location: The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
                must be in the same location.
+               
+               
+               - - -
         :param pulumi.Input[str] name: The UUID of the inventory report configuration.
         :param pulumi.Input[Union['InsightsReportConfigObjectMetadataReportOptionsArgs', 'InsightsReportConfigObjectMetadataReportOptionsArgsDict']] object_metadata_report_options: Options for including metadata in an inventory report.
+               Structure is documented below.
+        :param pulumi.Input[Union['InsightsReportConfigParquetOptionsArgs', 'InsightsReportConfigParquetOptionsArgsDict']] parquet_options: An option for outputting inventory reports as parquet files.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -530,12 +613,13 @@ class InsightsReportConfig(pulumi.CustomResource):
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["object_metadata_report_options"] = object_metadata_report_options
+        __props__.__dict__["parquet_options"] = parquet_options
         __props__.__dict__["project"] = project
         return InsightsReportConfig(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="csvOptions")
-    def csv_options(self) -> pulumi.Output['outputs.InsightsReportConfigCsvOptions']:
+    def csv_options(self) -> pulumi.Output[Optional['outputs.InsightsReportConfigCsvOptions']]:
         """
         Options for configuring the format of the inventory report CSV file.
         Structure is documented below.
@@ -555,6 +639,7 @@ class InsightsReportConfig(pulumi.CustomResource):
     def frequency_options(self) -> pulumi.Output[Optional['outputs.InsightsReportConfigFrequencyOptions']]:
         """
         Options for configuring how inventory reports are generated.
+        Structure is documented below.
         """
         return pulumi.get(self, "frequency_options")
 
@@ -564,6 +649,9 @@ class InsightsReportConfig(pulumi.CustomResource):
         """
         The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
         must be in the same location.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -580,11 +668,24 @@ class InsightsReportConfig(pulumi.CustomResource):
     def object_metadata_report_options(self) -> pulumi.Output[Optional['outputs.InsightsReportConfigObjectMetadataReportOptions']]:
         """
         Options for including metadata in an inventory report.
+        Structure is documented below.
         """
         return pulumi.get(self, "object_metadata_report_options")
 
     @property
+    @pulumi.getter(name="parquetOptions")
+    def parquet_options(self) -> pulumi.Output[Optional['outputs.InsightsReportConfigParquetOptions']]:
+        """
+        An option for outputting inventory reports as parquet files.
+        """
+        return pulumi.get(self, "parquet_options")
+
+    @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 

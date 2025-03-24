@@ -18,6 +18,24 @@ from . import outputs
 __all__ = [
     'GoogleApiSourceLoggingConfig',
     'MessageBusLoggingConfig',
+    'PipelineDestination',
+    'PipelineDestinationAuthenticationConfig',
+    'PipelineDestinationAuthenticationConfigGoogleOidc',
+    'PipelineDestinationAuthenticationConfigOauthToken',
+    'PipelineDestinationHttpEndpoint',
+    'PipelineDestinationNetworkConfig',
+    'PipelineDestinationOutputPayloadFormat',
+    'PipelineDestinationOutputPayloadFormatAvro',
+    'PipelineDestinationOutputPayloadFormatJson',
+    'PipelineDestinationOutputPayloadFormatProtobuf',
+    'PipelineInputPayloadFormat',
+    'PipelineInputPayloadFormatAvro',
+    'PipelineInputPayloadFormatJson',
+    'PipelineInputPayloadFormatProtobuf',
+    'PipelineLoggingConfig',
+    'PipelineMediation',
+    'PipelineMediationTransformation',
+    'PipelineRetryPolicy',
     'TriggerDestination',
     'TriggerDestinationCloudRunService',
     'TriggerDestinationGke',
@@ -106,6 +124,1325 @@ class MessageBusLoggingConfig(dict):
         Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
         """
         return pulumi.get(self, "log_severity")
+
+
+@pulumi.output_type
+class PipelineDestination(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationConfig":
+            suggest = "authentication_config"
+        elif key == "httpEndpoint":
+            suggest = "http_endpoint"
+        elif key == "messageBus":
+            suggest = "message_bus"
+        elif key == "networkConfig":
+            suggest = "network_config"
+        elif key == "outputPayloadFormat":
+            suggest = "output_payload_format"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineDestination. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineDestination.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineDestination.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authentication_config: Optional['outputs.PipelineDestinationAuthenticationConfig'] = None,
+                 http_endpoint: Optional['outputs.PipelineDestinationHttpEndpoint'] = None,
+                 message_bus: Optional[str] = None,
+                 network_config: Optional['outputs.PipelineDestinationNetworkConfig'] = None,
+                 output_payload_format: Optional['outputs.PipelineDestinationOutputPayloadFormat'] = None,
+                 topic: Optional[str] = None,
+                 workflow: Optional[str] = None):
+        """
+        :param 'PipelineDestinationAuthenticationConfigArgs' authentication_config: Represents a config used to authenticate message requests.
+               Structure is documented below.
+        :param 'PipelineDestinationHttpEndpointArgs' http_endpoint: Represents a HTTP endpoint destination.
+               Structure is documented below.
+        :param str message_bus: The resource name of the Message Bus to which events should be
+               published. The Message Bus resource should exist in the same project as
+               the Pipeline. Format:
+               `projects/{project}/locations/{location}/messageBuses/{message_bus}`
+        :param 'PipelineDestinationNetworkConfigArgs' network_config: Represents a network config to be used for destination resolution and
+               connectivity.
+               Structure is documented below.
+        :param 'PipelineDestinationOutputPayloadFormatArgs' output_payload_format: Represents the format of message data.
+               Structure is documented below.
+        :param str topic: The resource name of the Pub/Sub topic to which events should be
+               published. Format:
+               `projects/{project}/locations/{location}/topics/{topic}`
+        :param str workflow: The resource name of the Workflow whose Executions are triggered by
+               the events. The Workflow resource should be deployed in the same
+               project as the Pipeline. Format:
+               `projects/{project}/locations/{location}/workflows/{workflow}`
+        """
+        if authentication_config is not None:
+            pulumi.set(__self__, "authentication_config", authentication_config)
+        if http_endpoint is not None:
+            pulumi.set(__self__, "http_endpoint", http_endpoint)
+        if message_bus is not None:
+            pulumi.set(__self__, "message_bus", message_bus)
+        if network_config is not None:
+            pulumi.set(__self__, "network_config", network_config)
+        if output_payload_format is not None:
+            pulumi.set(__self__, "output_payload_format", output_payload_format)
+        if topic is not None:
+            pulumi.set(__self__, "topic", topic)
+        if workflow is not None:
+            pulumi.set(__self__, "workflow", workflow)
+
+    @property
+    @pulumi.getter(name="authenticationConfig")
+    def authentication_config(self) -> Optional['outputs.PipelineDestinationAuthenticationConfig']:
+        """
+        Represents a config used to authenticate message requests.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "authentication_config")
+
+    @property
+    @pulumi.getter(name="httpEndpoint")
+    def http_endpoint(self) -> Optional['outputs.PipelineDestinationHttpEndpoint']:
+        """
+        Represents a HTTP endpoint destination.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_endpoint")
+
+    @property
+    @pulumi.getter(name="messageBus")
+    def message_bus(self) -> Optional[str]:
+        """
+        The resource name of the Message Bus to which events should be
+        published. The Message Bus resource should exist in the same project as
+        the Pipeline. Format:
+        `projects/{project}/locations/{location}/messageBuses/{message_bus}`
+        """
+        return pulumi.get(self, "message_bus")
+
+    @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> Optional['outputs.PipelineDestinationNetworkConfig']:
+        """
+        Represents a network config to be used for destination resolution and
+        connectivity.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network_config")
+
+    @property
+    @pulumi.getter(name="outputPayloadFormat")
+    def output_payload_format(self) -> Optional['outputs.PipelineDestinationOutputPayloadFormat']:
+        """
+        Represents the format of message data.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "output_payload_format")
+
+    @property
+    @pulumi.getter
+    def topic(self) -> Optional[str]:
+        """
+        The resource name of the Pub/Sub topic to which events should be
+        published. Format:
+        `projects/{project}/locations/{location}/topics/{topic}`
+        """
+        return pulumi.get(self, "topic")
+
+    @property
+    @pulumi.getter
+    def workflow(self) -> Optional[str]:
+        """
+        The resource name of the Workflow whose Executions are triggered by
+        the events. The Workflow resource should be deployed in the same
+        project as the Pipeline. Format:
+        `projects/{project}/locations/{location}/workflows/{workflow}`
+        """
+        return pulumi.get(self, "workflow")
+
+
+@pulumi.output_type
+class PipelineDestinationAuthenticationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "googleOidc":
+            suggest = "google_oidc"
+        elif key == "oauthToken":
+            suggest = "oauth_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineDestinationAuthenticationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineDestinationAuthenticationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineDestinationAuthenticationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 google_oidc: Optional['outputs.PipelineDestinationAuthenticationConfigGoogleOidc'] = None,
+                 oauth_token: Optional['outputs.PipelineDestinationAuthenticationConfigOauthToken'] = None):
+        """
+        :param 'PipelineDestinationAuthenticationConfigGoogleOidcArgs' google_oidc: Represents a config used to authenticate with a Google OIDC token using
+               a GCP service account. Use this authentication method to invoke your
+               Cloud Run and Cloud Functions destinations or HTTP endpoints that
+               support Google OIDC.
+               Structure is documented below.
+        :param 'PipelineDestinationAuthenticationConfigOauthTokenArgs' oauth_token: Contains information needed for generating an
+               [OAuth token](https://developers.google.com/identity/protocols/OAuth2).
+               This type of authorization should generally only be used when calling
+               Google APIs hosted on *.googleapis.com.
+               Structure is documented below.
+        """
+        if google_oidc is not None:
+            pulumi.set(__self__, "google_oidc", google_oidc)
+        if oauth_token is not None:
+            pulumi.set(__self__, "oauth_token", oauth_token)
+
+    @property
+    @pulumi.getter(name="googleOidc")
+    def google_oidc(self) -> Optional['outputs.PipelineDestinationAuthenticationConfigGoogleOidc']:
+        """
+        Represents a config used to authenticate with a Google OIDC token using
+        a GCP service account. Use this authentication method to invoke your
+        Cloud Run and Cloud Functions destinations or HTTP endpoints that
+        support Google OIDC.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "google_oidc")
+
+    @property
+    @pulumi.getter(name="oauthToken")
+    def oauth_token(self) -> Optional['outputs.PipelineDestinationAuthenticationConfigOauthToken']:
+        """
+        Contains information needed for generating an
+        [OAuth token](https://developers.google.com/identity/protocols/OAuth2).
+        This type of authorization should generally only be used when calling
+        Google APIs hosted on *.googleapis.com.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oauth_token")
+
+
+@pulumi.output_type
+class PipelineDestinationAuthenticationConfigGoogleOidc(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccount":
+            suggest = "service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineDestinationAuthenticationConfigGoogleOidc. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineDestinationAuthenticationConfigGoogleOidc.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineDestinationAuthenticationConfigGoogleOidc.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_account: str,
+                 audience: Optional[str] = None):
+        """
+        :param str service_account: Service account email used to generate the OIDC Token.
+               The principal who calls this API must have
+               iam.serviceAccounts.actAs permission in the service account. See
+               https://cloud.google.com/iam/docs/understanding-service-accounts
+               for more information. Eventarc service agents must have
+               roles/roles/iam.serviceAccountTokenCreator role to allow the
+               Pipeline to create OpenID tokens for authenticated requests.
+        :param str audience: Audience to be used to generate the OIDC Token. The audience claim
+               identifies the recipient that the JWT is intended for. If
+               unspecified, the destination URI will be used.
+        """
+        pulumi.set(__self__, "service_account", service_account)
+        if audience is not None:
+            pulumi.set(__self__, "audience", audience)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> str:
+        """
+        Service account email used to generate the OIDC Token.
+        The principal who calls this API must have
+        iam.serviceAccounts.actAs permission in the service account. See
+        https://cloud.google.com/iam/docs/understanding-service-accounts
+        for more information. Eventarc service agents must have
+        roles/roles/iam.serviceAccountTokenCreator role to allow the
+        Pipeline to create OpenID tokens for authenticated requests.
+        """
+        return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter
+    def audience(self) -> Optional[str]:
+        """
+        Audience to be used to generate the OIDC Token. The audience claim
+        identifies the recipient that the JWT is intended for. If
+        unspecified, the destination URI will be used.
+        """
+        return pulumi.get(self, "audience")
+
+
+@pulumi.output_type
+class PipelineDestinationAuthenticationConfigOauthToken(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccount":
+            suggest = "service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineDestinationAuthenticationConfigOauthToken. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineDestinationAuthenticationConfigOauthToken.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineDestinationAuthenticationConfigOauthToken.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_account: str,
+                 scope: Optional[str] = None):
+        """
+        :param str service_account: Service account email used to generate the [OAuth
+               token](https://developers.google.com/identity/protocols/OAuth2).
+               The principal who calls this API must have
+               iam.serviceAccounts.actAs permission in the service account. See
+               https://cloud.google.com/iam/docs/understanding-service-accounts
+               for more information. Eventarc service agents must have
+               roles/roles/iam.serviceAccountTokenCreator role to allow Pipeline
+               to create OAuth2 tokens for authenticated requests.
+        :param str scope: OAuth scope to be used for generating OAuth access token. If not
+               specified, "https://www.googleapis.com/auth/cloud-platform" will be
+               used.
+        """
+        pulumi.set(__self__, "service_account", service_account)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> str:
+        """
+        Service account email used to generate the [OAuth
+        token](https://developers.google.com/identity/protocols/OAuth2).
+        The principal who calls this API must have
+        iam.serviceAccounts.actAs permission in the service account. See
+        https://cloud.google.com/iam/docs/understanding-service-accounts
+        for more information. Eventarc service agents must have
+        roles/roles/iam.serviceAccountTokenCreator role to allow Pipeline
+        to create OAuth2 tokens for authenticated requests.
+        """
+        return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[str]:
+        """
+        OAuth scope to be used for generating OAuth access token. If not
+        specified, "https://www.googleapis.com/auth/cloud-platform" will be
+        used.
+        """
+        return pulumi.get(self, "scope")
+
+
+@pulumi.output_type
+class PipelineDestinationHttpEndpoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "messageBindingTemplate":
+            suggest = "message_binding_template"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineDestinationHttpEndpoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineDestinationHttpEndpoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineDestinationHttpEndpoint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 uri: str,
+                 message_binding_template: Optional[str] = None):
+        """
+        :param str uri: The URI of the HTTP enpdoint.
+               The value must be a RFC2396 URI string.
+               Examples: `https://svc.us-central1.p.local:8080/route`.
+               Only the HTTPS protocol is supported.
+        :param str message_binding_template: The CEL expression used to modify how the destination-bound HTTP
+               request is constructed.
+               If a binding expression is not specified here, the message
+               is treated as a CloudEvent and is mapped to the HTTP request according
+               to the CloudEvent HTTP Protocol Binding Binary Content Mode
+               (https://github.com/cloudevents/spec/blob/main/cloudevents/bindings/http-protocol-binding.md#31-binary-content-mode).
+               In this representation, all fields except the `data` and
+               `datacontenttype` field on the message are mapped to HTTP request
+               headers with a prefix of `ce-`.
+               To construct the HTTP request payload and the value of the content-type
+               HTTP header, the payload format is defined as follows:
+               1) Use the output_payload_format_type on the Pipeline.Destination if it
+               is set, else:
+               2) Use the input_payload_format_type on the Pipeline if it is set,
+               else:
+               3) Treat the payload as opaque binary data.
+               The `data` field of the message is converted to the payload format or
+               left as-is for case 3) and then attached as the payload of the HTTP
+               request. The `content-type` header on the HTTP request is set to the
+               payload format type or left empty for case 3). However, if a mediation
+               has updated the `datacontenttype` field on the message so that it is
+               not the same as the payload format type but it is still a prefix of the
+               payload format type, then the `content-type` header on the HTTP request
+               is set to this `datacontenttype` value. For example, if the
+               `datacontenttype` is "application/json" and the payload format type is
+               "application/json; charset=utf-8", then the `content-type` header on
+               the HTTP request is set to "application/json; charset=utf-8".
+               If a non-empty binding expression is specified then this expression is
+               used to modify the default CloudEvent HTTP Protocol Binding Binary
+               Content representation.
+               The result of the CEL expression must be a map of key/value pairs
+               which is used as follows:
+               - If a map named `headers` exists on the result of the expression,
+               then its key/value pairs are directly mapped to the HTTP request
+               headers. The headers values are constructed from the corresponding
+               value type's canonical representation. If the `headers` field doesn't
+               exist then the resulting HTTP request will be the headers of the
+               CloudEvent HTTP Binding Binary Content Mode representation of the final
+               message. Note: If the specified binding expression, has updated the
+               `datacontenttype` field on the message so that it is not the same as
+               the payload format type but it is still a prefix of the payload format
+               type, then the `content-type` header in the `headers` map is set to
+               this `datacontenttype` value.
+               - If a field named `body` exists on the result of the expression then
+               its value is directly mapped to the body of the request. If the value
+               of the `body` field is of type bytes or string then it is used for
+               the HTTP request body as-is, with no conversion. If the body field is
+               of any other type then it is converted to a JSON string. If the body
+               field does not exist then the resulting payload of the HTTP request
+               will be data value of the CloudEvent HTTP Binding Binary Content Mode
+               representation of the final message as described earlier.
+               - Any other fields in the resulting expression will be ignored.
+               The CEL expression may access the incoming CloudEvent message in its
+               definition, as follows:
+               - The `data` field of the incoming CloudEvent message can be accessed
+               using the `message.data` value. Subfields of `message.data` may also be
+               accessed if an input_payload_format has been specified on the Pipeline.
+               - Each attribute of the incoming CloudEvent message can be accessed
+               using the `message.` value, where  is replaced with the
+               name of the attribute.
+               - Existing headers can be accessed in the CEL expression using the
+               `headers` variable. The `headers` variable defines a map of key/value
+               pairs corresponding to the HTTP headers of the CloudEvent HTTP Binding
+               Binary Content Mode representation of the final message as described
+               earlier. For example, the following CEL expression can be used to
+               construct an HTTP request by adding an additional header to the HTTP
+               headers of the CloudEvent HTTP Binding Binary Content Mode
+               representation of the final message and by overwriting the body of the
+               request:
+               ```
+               {
+               "headers": headers.merge({"new-header-key": "new-header-value"}),
+               "body": "new-body"
+               }
+               ```
+               - The default binding for the message payload can be accessed using the
+               `body` variable. It conatins a string representation of the message
+               payload in the format specified by the `output_payload_format` field.
+               If the `input_payload_format` field is not set, the `body`
+               variable contains the same message payload bytes that were published.
+               Additionally, the following CEL extension functions are provided for
+               use in this CEL expression:
+               - toBase64Url:
+               map.toBase64Url() > string
+               - Converts a CelValue to a base64url encoded string
+               - toJsonString: map.toJsonString() > string
+               - Converts a CelValue to a JSON string
+               - merge:
+               map1.merge(map2) > map3
+               - Merges the passed CEL map with the existing CEL map the
+               function is applied to.
+               - If the same key exists in both maps, if the key's value is type
+               map both maps are merged else the value from the passed map is
+               used.
+               - denormalize:
+               map.denormalize() > map
+               - Denormalizes a CEL map such that every value of type map or key
+               in the map is expanded to return a single level map.
+               - The resulting keys are "." separated indices of the map keys.
+               - For example:
+               {
+               "a": 1,
+               "b": {
+               "c": 2,
+               "d": 3
+               }
+               "e": [4, 5]
+               }
+               .denormalize()
+               > {
+               "a": 1,
+               "b.c": 2,
+               "b.d": 3,
+               "e.0": 4,
+               "e.1": 5
+               }
+               - setField:
+               map.setField(key, value) > message
+               - Sets the field of the message with the given key to the
+               given value.
+               - If the field is not present it will be added.
+               - If the field is present it will be overwritten.
+               - The key can be a dot separated path to set a field in a nested
+               message.
+               - Key must be of type string.
+               - Value may be any valid type.
+               - removeFields:
+               map.removeFields([key1, key2, ...]) > message
+               - Removes the fields of the map with the given keys.
+               - The keys can be a dot separated path to remove a field in a
+               nested message.
+               - If a key is not found it will be ignored.
+               - Keys must be of type string.
+               - toMap:
+               [map1, map2, ...].toMap() > map
+               - Converts a CEL list of CEL maps to a single CEL map
+               - toCloudEventJsonWithPayloadFormat:
+               message.toCloudEventJsonWithPayloadFormat() > map
+               - Converts a message to the corresponding structure of JSON
+               format for CloudEvents.
+               - It converts `data` to destination payload format
+               specified in `output_payload_format`. If `output_payload_format` is
+               not set, the data will remain unchanged.
+               - It also sets the corresponding datacontenttype of
+               the CloudEvent, as indicated by
+               `output_payload_format`. If no
+               `output_payload_format` is set it will use the value of the
+               "datacontenttype" attribute on the CloudEvent if present, else
+               remove "datacontenttype" attribute.
+               - This function expects that the content of the message will
+               adhere to the standard CloudEvent format. If it doesn't then this
+               function will fail.
+               - The result is a CEL map that corresponds to the JSON
+               representation of the CloudEvent. To convert that data to a JSON
+               string it can be chained with the toJsonString function.
+               The Pipeline expects that the message it receives adheres to the
+               standard CloudEvent format. If it doesn't then the outgoing message
+               request may fail with a persistent error.
+               
+               - - -
+        """
+        pulumi.set(__self__, "uri", uri)
+        if message_binding_template is not None:
+            pulumi.set(__self__, "message_binding_template", message_binding_template)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        The URI of the HTTP enpdoint.
+        The value must be a RFC2396 URI string.
+        Examples: `https://svc.us-central1.p.local:8080/route`.
+        Only the HTTPS protocol is supported.
+        """
+        return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter(name="messageBindingTemplate")
+    def message_binding_template(self) -> Optional[str]:
+        """
+        The CEL expression used to modify how the destination-bound HTTP
+        request is constructed.
+        If a binding expression is not specified here, the message
+        is treated as a CloudEvent and is mapped to the HTTP request according
+        to the CloudEvent HTTP Protocol Binding Binary Content Mode
+        (https://github.com/cloudevents/spec/blob/main/cloudevents/bindings/http-protocol-binding.md#31-binary-content-mode).
+        In this representation, all fields except the `data` and
+        `datacontenttype` field on the message are mapped to HTTP request
+        headers with a prefix of `ce-`.
+        To construct the HTTP request payload and the value of the content-type
+        HTTP header, the payload format is defined as follows:
+        1) Use the output_payload_format_type on the Pipeline.Destination if it
+        is set, else:
+        2) Use the input_payload_format_type on the Pipeline if it is set,
+        else:
+        3) Treat the payload as opaque binary data.
+        The `data` field of the message is converted to the payload format or
+        left as-is for case 3) and then attached as the payload of the HTTP
+        request. The `content-type` header on the HTTP request is set to the
+        payload format type or left empty for case 3). However, if a mediation
+        has updated the `datacontenttype` field on the message so that it is
+        not the same as the payload format type but it is still a prefix of the
+        payload format type, then the `content-type` header on the HTTP request
+        is set to this `datacontenttype` value. For example, if the
+        `datacontenttype` is "application/json" and the payload format type is
+        "application/json; charset=utf-8", then the `content-type` header on
+        the HTTP request is set to "application/json; charset=utf-8".
+        If a non-empty binding expression is specified then this expression is
+        used to modify the default CloudEvent HTTP Protocol Binding Binary
+        Content representation.
+        The result of the CEL expression must be a map of key/value pairs
+        which is used as follows:
+        - If a map named `headers` exists on the result of the expression,
+        then its key/value pairs are directly mapped to the HTTP request
+        headers. The headers values are constructed from the corresponding
+        value type's canonical representation. If the `headers` field doesn't
+        exist then the resulting HTTP request will be the headers of the
+        CloudEvent HTTP Binding Binary Content Mode representation of the final
+        message. Note: If the specified binding expression, has updated the
+        `datacontenttype` field on the message so that it is not the same as
+        the payload format type but it is still a prefix of the payload format
+        type, then the `content-type` header in the `headers` map is set to
+        this `datacontenttype` value.
+        - If a field named `body` exists on the result of the expression then
+        its value is directly mapped to the body of the request. If the value
+        of the `body` field is of type bytes or string then it is used for
+        the HTTP request body as-is, with no conversion. If the body field is
+        of any other type then it is converted to a JSON string. If the body
+        field does not exist then the resulting payload of the HTTP request
+        will be data value of the CloudEvent HTTP Binding Binary Content Mode
+        representation of the final message as described earlier.
+        - Any other fields in the resulting expression will be ignored.
+        The CEL expression may access the incoming CloudEvent message in its
+        definition, as follows:
+        - The `data` field of the incoming CloudEvent message can be accessed
+        using the `message.data` value. Subfields of `message.data` may also be
+        accessed if an input_payload_format has been specified on the Pipeline.
+        - Each attribute of the incoming CloudEvent message can be accessed
+        using the `message.` value, where  is replaced with the
+        name of the attribute.
+        - Existing headers can be accessed in the CEL expression using the
+        `headers` variable. The `headers` variable defines a map of key/value
+        pairs corresponding to the HTTP headers of the CloudEvent HTTP Binding
+        Binary Content Mode representation of the final message as described
+        earlier. For example, the following CEL expression can be used to
+        construct an HTTP request by adding an additional header to the HTTP
+        headers of the CloudEvent HTTP Binding Binary Content Mode
+        representation of the final message and by overwriting the body of the
+        request:
+        ```
+        {
+        "headers": headers.merge({"new-header-key": "new-header-value"}),
+        "body": "new-body"
+        }
+        ```
+        - The default binding for the message payload can be accessed using the
+        `body` variable. It conatins a string representation of the message
+        payload in the format specified by the `output_payload_format` field.
+        If the `input_payload_format` field is not set, the `body`
+        variable contains the same message payload bytes that were published.
+        Additionally, the following CEL extension functions are provided for
+        use in this CEL expression:
+        - toBase64Url:
+        map.toBase64Url() > string
+        - Converts a CelValue to a base64url encoded string
+        - toJsonString: map.toJsonString() > string
+        - Converts a CelValue to a JSON string
+        - merge:
+        map1.merge(map2) > map3
+        - Merges the passed CEL map with the existing CEL map the
+        function is applied to.
+        - If the same key exists in both maps, if the key's value is type
+        map both maps are merged else the value from the passed map is
+        used.
+        - denormalize:
+        map.denormalize() > map
+        - Denormalizes a CEL map such that every value of type map or key
+        in the map is expanded to return a single level map.
+        - The resulting keys are "." separated indices of the map keys.
+        - For example:
+        {
+        "a": 1,
+        "b": {
+        "c": 2,
+        "d": 3
+        }
+        "e": [4, 5]
+        }
+        .denormalize()
+        > {
+        "a": 1,
+        "b.c": 2,
+        "b.d": 3,
+        "e.0": 4,
+        "e.1": 5
+        }
+        - setField:
+        map.setField(key, value) > message
+        - Sets the field of the message with the given key to the
+        given value.
+        - If the field is not present it will be added.
+        - If the field is present it will be overwritten.
+        - The key can be a dot separated path to set a field in a nested
+        message.
+        - Key must be of type string.
+        - Value may be any valid type.
+        - removeFields:
+        map.removeFields([key1, key2, ...]) > message
+        - Removes the fields of the map with the given keys.
+        - The keys can be a dot separated path to remove a field in a
+        nested message.
+        - If a key is not found it will be ignored.
+        - Keys must be of type string.
+        - toMap:
+        [map1, map2, ...].toMap() > map
+        - Converts a CEL list of CEL maps to a single CEL map
+        - toCloudEventJsonWithPayloadFormat:
+        message.toCloudEventJsonWithPayloadFormat() > map
+        - Converts a message to the corresponding structure of JSON
+        format for CloudEvents.
+        - It converts `data` to destination payload format
+        specified in `output_payload_format`. If `output_payload_format` is
+        not set, the data will remain unchanged.
+        - It also sets the corresponding datacontenttype of
+        the CloudEvent, as indicated by
+        `output_payload_format`. If no
+        `output_payload_format` is set it will use the value of the
+        "datacontenttype" attribute on the CloudEvent if present, else
+        remove "datacontenttype" attribute.
+        - This function expects that the content of the message will
+        adhere to the standard CloudEvent format. If it doesn't then this
+        function will fail.
+        - The result is a CEL map that corresponds to the JSON
+        representation of the CloudEvent. To convert that data to a JSON
+        string it can be chained with the toJsonString function.
+        The Pipeline expects that the message it receives adheres to the
+        standard CloudEvent format. If it doesn't then the outgoing message
+        request may fail with a persistent error.
+
+        - - -
+        """
+        return pulumi.get(self, "message_binding_template")
+
+
+@pulumi.output_type
+class PipelineDestinationNetworkConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkAttachment":
+            suggest = "network_attachment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineDestinationNetworkConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineDestinationNetworkConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineDestinationNetworkConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network_attachment: str):
+        """
+        :param str network_attachment: Name of the NetworkAttachment that allows access to the consumer VPC.
+               Format:
+               `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+        """
+        pulumi.set(__self__, "network_attachment", network_attachment)
+
+    @property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> str:
+        """
+        Name of the NetworkAttachment that allows access to the consumer VPC.
+        Format:
+        `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+        """
+        return pulumi.get(self, "network_attachment")
+
+
+@pulumi.output_type
+class PipelineDestinationOutputPayloadFormat(dict):
+    def __init__(__self__, *,
+                 avro: Optional['outputs.PipelineDestinationOutputPayloadFormatAvro'] = None,
+                 json: Optional['outputs.PipelineDestinationOutputPayloadFormatJson'] = None,
+                 protobuf: Optional['outputs.PipelineDestinationOutputPayloadFormatProtobuf'] = None):
+        """
+        :param 'PipelineDestinationOutputPayloadFormatAvroArgs' avro: The format of an AVRO message payload.
+               Structure is documented below.
+        :param 'PipelineDestinationOutputPayloadFormatJsonArgs' json: The format of a JSON message payload.
+        :param 'PipelineDestinationOutputPayloadFormatProtobufArgs' protobuf: The format of a Protobuf message payload.
+               Structure is documented below.
+        """
+        if avro is not None:
+            pulumi.set(__self__, "avro", avro)
+        if json is not None:
+            pulumi.set(__self__, "json", json)
+        if protobuf is not None:
+            pulumi.set(__self__, "protobuf", protobuf)
+
+    @property
+    @pulumi.getter
+    def avro(self) -> Optional['outputs.PipelineDestinationOutputPayloadFormatAvro']:
+        """
+        The format of an AVRO message payload.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "avro")
+
+    @property
+    @pulumi.getter
+    def json(self) -> Optional['outputs.PipelineDestinationOutputPayloadFormatJson']:
+        """
+        The format of a JSON message payload.
+        """
+        return pulumi.get(self, "json")
+
+    @property
+    @pulumi.getter
+    def protobuf(self) -> Optional['outputs.PipelineDestinationOutputPayloadFormatProtobuf']:
+        """
+        The format of a Protobuf message payload.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "protobuf")
+
+
+@pulumi.output_type
+class PipelineDestinationOutputPayloadFormatAvro(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "schemaDefinition":
+            suggest = "schema_definition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineDestinationOutputPayloadFormatAvro. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineDestinationOutputPayloadFormatAvro.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineDestinationOutputPayloadFormatAvro.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 schema_definition: Optional[str] = None):
+        """
+        :param str schema_definition: The entire schema definition is stored in this field.
+        """
+        if schema_definition is not None:
+            pulumi.set(__self__, "schema_definition", schema_definition)
+
+    @property
+    @pulumi.getter(name="schemaDefinition")
+    def schema_definition(self) -> Optional[str]:
+        """
+        The entire schema definition is stored in this field.
+        """
+        return pulumi.get(self, "schema_definition")
+
+
+@pulumi.output_type
+class PipelineDestinationOutputPayloadFormatJson(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class PipelineDestinationOutputPayloadFormatProtobuf(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "schemaDefinition":
+            suggest = "schema_definition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineDestinationOutputPayloadFormatProtobuf. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineDestinationOutputPayloadFormatProtobuf.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineDestinationOutputPayloadFormatProtobuf.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 schema_definition: Optional[str] = None):
+        """
+        :param str schema_definition: The entire schema definition is stored in this field.
+        """
+        if schema_definition is not None:
+            pulumi.set(__self__, "schema_definition", schema_definition)
+
+    @property
+    @pulumi.getter(name="schemaDefinition")
+    def schema_definition(self) -> Optional[str]:
+        """
+        The entire schema definition is stored in this field.
+        """
+        return pulumi.get(self, "schema_definition")
+
+
+@pulumi.output_type
+class PipelineInputPayloadFormat(dict):
+    def __init__(__self__, *,
+                 avro: Optional['outputs.PipelineInputPayloadFormatAvro'] = None,
+                 json: Optional['outputs.PipelineInputPayloadFormatJson'] = None,
+                 protobuf: Optional['outputs.PipelineInputPayloadFormatProtobuf'] = None):
+        """
+        :param 'PipelineInputPayloadFormatAvroArgs' avro: The format of an AVRO message payload.
+               Structure is documented below.
+        :param 'PipelineInputPayloadFormatJsonArgs' json: The format of a JSON message payload.
+        :param 'PipelineInputPayloadFormatProtobufArgs' protobuf: The format of a Protobuf message payload.
+               Structure is documented below.
+        """
+        if avro is not None:
+            pulumi.set(__self__, "avro", avro)
+        if json is not None:
+            pulumi.set(__self__, "json", json)
+        if protobuf is not None:
+            pulumi.set(__self__, "protobuf", protobuf)
+
+    @property
+    @pulumi.getter
+    def avro(self) -> Optional['outputs.PipelineInputPayloadFormatAvro']:
+        """
+        The format of an AVRO message payload.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "avro")
+
+    @property
+    @pulumi.getter
+    def json(self) -> Optional['outputs.PipelineInputPayloadFormatJson']:
+        """
+        The format of a JSON message payload.
+        """
+        return pulumi.get(self, "json")
+
+    @property
+    @pulumi.getter
+    def protobuf(self) -> Optional['outputs.PipelineInputPayloadFormatProtobuf']:
+        """
+        The format of a Protobuf message payload.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "protobuf")
+
+
+@pulumi.output_type
+class PipelineInputPayloadFormatAvro(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "schemaDefinition":
+            suggest = "schema_definition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineInputPayloadFormatAvro. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineInputPayloadFormatAvro.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineInputPayloadFormatAvro.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 schema_definition: Optional[str] = None):
+        """
+        :param str schema_definition: The entire schema definition is stored in this field.
+        """
+        if schema_definition is not None:
+            pulumi.set(__self__, "schema_definition", schema_definition)
+
+    @property
+    @pulumi.getter(name="schemaDefinition")
+    def schema_definition(self) -> Optional[str]:
+        """
+        The entire schema definition is stored in this field.
+        """
+        return pulumi.get(self, "schema_definition")
+
+
+@pulumi.output_type
+class PipelineInputPayloadFormatJson(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class PipelineInputPayloadFormatProtobuf(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "schemaDefinition":
+            suggest = "schema_definition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineInputPayloadFormatProtobuf. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineInputPayloadFormatProtobuf.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineInputPayloadFormatProtobuf.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 schema_definition: Optional[str] = None):
+        """
+        :param str schema_definition: The entire schema definition is stored in this field.
+        """
+        if schema_definition is not None:
+            pulumi.set(__self__, "schema_definition", schema_definition)
+
+    @property
+    @pulumi.getter(name="schemaDefinition")
+    def schema_definition(self) -> Optional[str]:
+        """
+        The entire schema definition is stored in this field.
+        """
+        return pulumi.get(self, "schema_definition")
+
+
+@pulumi.output_type
+class PipelineLoggingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logSeverity":
+            suggest = "log_severity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineLoggingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineLoggingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineLoggingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 log_severity: Optional[str] = None):
+        """
+        :param str log_severity: The minimum severity of logs that will be sent to Stackdriver/Platform
+               Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+               Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+        """
+        if log_severity is not None:
+            pulumi.set(__self__, "log_severity", log_severity)
+
+    @property
+    @pulumi.getter(name="logSeverity")
+    def log_severity(self) -> Optional[str]:
+        """
+        The minimum severity of logs that will be sent to Stackdriver/Platform
+        Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
+        Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+        """
+        return pulumi.get(self, "log_severity")
+
+
+@pulumi.output_type
+class PipelineMediation(dict):
+    def __init__(__self__, *,
+                 transformation: Optional['outputs.PipelineMediationTransformation'] = None):
+        """
+        :param 'PipelineMediationTransformationArgs' transformation: Transformation defines the way to transform an incoming message.
+               Structure is documented below.
+        """
+        if transformation is not None:
+            pulumi.set(__self__, "transformation", transformation)
+
+    @property
+    @pulumi.getter
+    def transformation(self) -> Optional['outputs.PipelineMediationTransformation']:
+        """
+        Transformation defines the way to transform an incoming message.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "transformation")
+
+
+@pulumi.output_type
+class PipelineMediationTransformation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "transformationTemplate":
+            suggest = "transformation_template"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineMediationTransformation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineMediationTransformation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineMediationTransformation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 transformation_template: Optional[str] = None):
+        """
+        :param str transformation_template: The CEL expression template to apply to transform messages.
+               The following CEL extension functions are provided for
+               use in this CEL expression:
+               - merge:
+               map1.merge(map2) > map3
+               - Merges the passed CEL map with the existing CEL map the
+               function is applied to.
+               - If the same key exists in both maps, if the key's value is type
+               map both maps are merged else the value from the passed map is
+               used.
+               - denormalize:
+               map.denormalize() > map
+               - Denormalizes a CEL map such that every value of type map or key
+               in the map is expanded to return a single level map.
+               - The resulting keys are "." separated indices of the map keys.
+               - For example:
+               {
+               "a": 1,
+               "b": {
+               "c": 2,
+               "d": 3
+               }
+               "e": [4, 5]
+               }
+               .denormalize()
+               > {
+               "a": 1,
+               "b.c": 2,
+               "b.d": 3,
+               "e.0": 4,
+               "e.1": 5
+               }
+               - setField:
+               map.setField(key, value) > message
+               - Sets the field of the message with the given key to the
+               given value.
+               - If the field is not present it will be added.
+               - If the field is present it will be overwritten.
+               - The key can be a dot separated path to set a field in a nested
+               message.
+               - Key must be of type string.
+               - Value may be any valid type.
+               - removeFields:
+               map.removeFields([key1, key2, ...]) > message
+               - Removes the fields of the map with the given keys.
+               - The keys can be a dot separated path to remove a field in a
+               nested message.
+               - If a key is not found it will be ignored.
+               - Keys must be of type string.
+               - toMap:
+               [map1, map2, ...].toMap() > map
+               - Converts a CEL list of CEL maps to a single CEL map
+               - toDestinationPayloadFormat():
+               message.data.toDestinationPayloadFormat() > string or bytes
+               - Converts the message data to the destination payload format
+               specified in Pipeline.Destination.output_payload_format
+               - This function is meant to be applied to the message.data field.
+               - If the destination payload format is not set, the function will
+               return the message data unchanged.
+               - toCloudEventJsonWithPayloadFormat:
+               message.toCloudEventJsonWithPayloadFormat() > map
+               - Converts a message to the corresponding structure of JSON
+               format for CloudEvents
+               - This function applies toDestinationPayloadFormat() to the
+               message data. It also sets the corresponding datacontenttype of
+               the CloudEvent, as indicated by
+               Pipeline.Destination.output_payload_format. If no
+               output_payload_format is set it will use the existing
+               datacontenttype on the CloudEvent if present, else leave
+               datacontenttype absent.
+               - This function expects that the content of the message will
+               adhere to the standard CloudEvent format. If it doesn't then this
+               function will fail.
+               - The result is a CEL map that corresponds to the JSON
+               representation of the CloudEvent. To convert that data to a JSON
+               string it can be chained with the toJsonString function.
+        """
+        if transformation_template is not None:
+            pulumi.set(__self__, "transformation_template", transformation_template)
+
+    @property
+    @pulumi.getter(name="transformationTemplate")
+    def transformation_template(self) -> Optional[str]:
+        """
+        The CEL expression template to apply to transform messages.
+        The following CEL extension functions are provided for
+        use in this CEL expression:
+        - merge:
+        map1.merge(map2) > map3
+        - Merges the passed CEL map with the existing CEL map the
+        function is applied to.
+        - If the same key exists in both maps, if the key's value is type
+        map both maps are merged else the value from the passed map is
+        used.
+        - denormalize:
+        map.denormalize() > map
+        - Denormalizes a CEL map such that every value of type map or key
+        in the map is expanded to return a single level map.
+        - The resulting keys are "." separated indices of the map keys.
+        - For example:
+        {
+        "a": 1,
+        "b": {
+        "c": 2,
+        "d": 3
+        }
+        "e": [4, 5]
+        }
+        .denormalize()
+        > {
+        "a": 1,
+        "b.c": 2,
+        "b.d": 3,
+        "e.0": 4,
+        "e.1": 5
+        }
+        - setField:
+        map.setField(key, value) > message
+        - Sets the field of the message with the given key to the
+        given value.
+        - If the field is not present it will be added.
+        - If the field is present it will be overwritten.
+        - The key can be a dot separated path to set a field in a nested
+        message.
+        - Key must be of type string.
+        - Value may be any valid type.
+        - removeFields:
+        map.removeFields([key1, key2, ...]) > message
+        - Removes the fields of the map with the given keys.
+        - The keys can be a dot separated path to remove a field in a
+        nested message.
+        - If a key is not found it will be ignored.
+        - Keys must be of type string.
+        - toMap:
+        [map1, map2, ...].toMap() > map
+        - Converts a CEL list of CEL maps to a single CEL map
+        - toDestinationPayloadFormat():
+        message.data.toDestinationPayloadFormat() > string or bytes
+        - Converts the message data to the destination payload format
+        specified in Pipeline.Destination.output_payload_format
+        - This function is meant to be applied to the message.data field.
+        - If the destination payload format is not set, the function will
+        return the message data unchanged.
+        - toCloudEventJsonWithPayloadFormat:
+        message.toCloudEventJsonWithPayloadFormat() > map
+        - Converts a message to the corresponding structure of JSON
+        format for CloudEvents
+        - This function applies toDestinationPayloadFormat() to the
+        message data. It also sets the corresponding datacontenttype of
+        the CloudEvent, as indicated by
+        Pipeline.Destination.output_payload_format. If no
+        output_payload_format is set it will use the existing
+        datacontenttype on the CloudEvent if present, else leave
+        datacontenttype absent.
+        - This function expects that the content of the message will
+        adhere to the standard CloudEvent format. If it doesn't then this
+        function will fail.
+        - The result is a CEL map that corresponds to the JSON
+        representation of the CloudEvent. To convert that data to a JSON
+        string it can be chained with the toJsonString function.
+        """
+        return pulumi.get(self, "transformation_template")
+
+
+@pulumi.output_type
+class PipelineRetryPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxAttempts":
+            suggest = "max_attempts"
+        elif key == "maxRetryDelay":
+            suggest = "max_retry_delay"
+        elif key == "minRetryDelay":
+            suggest = "min_retry_delay"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineRetryPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineRetryPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineRetryPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_attempts: Optional[int] = None,
+                 max_retry_delay: Optional[str] = None,
+                 min_retry_delay: Optional[str] = None):
+        """
+        :param int max_attempts: The maximum number of delivery attempts for any message. The value must
+               be between 1 and 100.
+               The default value for this field is 5.
+        :param str max_retry_delay: The maximum amount of seconds to wait between retry attempts. The value
+               must be between 1 and 600.
+               The default value for this field is 60.
+        :param str min_retry_delay: The minimum amount of seconds to wait between retry attempts. The value
+               must be between 1 and 600.
+               The default value for this field is 5.
+        """
+        if max_attempts is not None:
+            pulumi.set(__self__, "max_attempts", max_attempts)
+        if max_retry_delay is not None:
+            pulumi.set(__self__, "max_retry_delay", max_retry_delay)
+        if min_retry_delay is not None:
+            pulumi.set(__self__, "min_retry_delay", min_retry_delay)
+
+    @property
+    @pulumi.getter(name="maxAttempts")
+    def max_attempts(self) -> Optional[int]:
+        """
+        The maximum number of delivery attempts for any message. The value must
+        be between 1 and 100.
+        The default value for this field is 5.
+        """
+        return pulumi.get(self, "max_attempts")
+
+    @property
+    @pulumi.getter(name="maxRetryDelay")
+    def max_retry_delay(self) -> Optional[str]:
+        """
+        The maximum amount of seconds to wait between retry attempts. The value
+        must be between 1 and 600.
+        The default value for this field is 60.
+        """
+        return pulumi.get(self, "max_retry_delay")
+
+    @property
+    @pulumi.getter(name="minRetryDelay")
+    def min_retry_delay(self) -> Optional[str]:
+        """
+        The minimum amount of seconds to wait between retry attempts. The value
+        must be between 1 and 600.
+        The default value for this field is 5.
+        """
+        return pulumi.get(self, "min_retry_delay")
 
 
 @pulumi.output_type

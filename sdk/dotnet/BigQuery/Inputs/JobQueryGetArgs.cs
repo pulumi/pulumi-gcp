@@ -21,6 +21,12 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<bool>? AllowLargeResults { get; set; }
 
         /// <summary>
+        /// Whether to run the query as continuous or a regular query.
+        /// </summary>
+        [Input("continuous")]
+        public Input<bool>? Continuous { get; set; }
+
+        /// <summary>
         /// Specifies whether the job is allowed to create new tables. The following values are supported:
         /// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
         /// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.

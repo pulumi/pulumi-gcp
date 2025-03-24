@@ -21,6 +21,7 @@ __all__ = ['RepositoryArgs', 'Repository']
 @pulumi.input_type
 class RepositoryArgs:
     def __init__(__self__, *,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  git_remote_settings: Optional[pulumi.Input['RepositoryGitRemoteSettingsArgs']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -33,6 +34,7 @@ class RepositoryArgs:
                  workspace_compilation_overrides: Optional[pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs']] = None):
         """
         The set of arguments for constructing a Repository resource.
+        :param pulumi.Input[str] deletion_policy: Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
         :param pulumi.Input[str] display_name: Optional. The repository's user-friendly name.
         :param pulumi.Input['RepositoryGitRemoteSettingsArgs'] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
                Structure is documented below.
@@ -55,6 +57,8 @@ class RepositoryArgs:
         :param pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs'] workspace_compilation_overrides: If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
                Structure is documented below.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if git_remote_settings is not None:
@@ -75,6 +79,18 @@ class RepositoryArgs:
             pulumi.set(__self__, "service_account", service_account)
         if workspace_compilation_overrides is not None:
             pulumi.set(__self__, "workspace_compilation_overrides", workspace_compilation_overrides)
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -211,6 +227,7 @@ class RepositoryArgs:
 @pulumi.input_type
 class _RepositoryState:
     def __init__(__self__, *,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  git_remote_settings: Optional[pulumi.Input['RepositoryGitRemoteSettingsArgs']] = None,
@@ -225,6 +242,7 @@ class _RepositoryState:
                  workspace_compilation_overrides: Optional[pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs']] = None):
         """
         Input properties used for looking up and filtering Repository resources.
+        :param pulumi.Input[str] deletion_policy: Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
         :param pulumi.Input[str] display_name: Optional. The repository's user-friendly name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['RepositoryGitRemoteSettingsArgs'] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
@@ -250,6 +268,8 @@ class _RepositoryState:
         :param pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs'] workspace_compilation_overrides: If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
                Structure is documented below.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if effective_labels is not None:
@@ -274,6 +294,18 @@ class _RepositoryState:
             pulumi.set(__self__, "service_account", service_account)
         if workspace_compilation_overrides is not None:
             pulumi.set(__self__, "workspace_compilation_overrides", workspace_compilation_overrides)
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -437,6 +469,7 @@ class Repository(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  git_remote_settings: Optional[pulumi.Input[Union['RepositoryGitRemoteSettingsArgs', 'RepositoryGitRemoteSettingsArgsDict']]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -480,6 +513,7 @@ class Repository(pulumi.CustomResource):
             display_name="dataform_repository",
             npmrc_environment_variables_secret_version=secret_version.id,
             kms_key_name=example_key.id,
+            deletion_policy="FORCE",
             labels={
                 "label_foo1": "label-bar1",
             },
@@ -528,6 +562,7 @@ class Repository(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] deletion_policy: Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
         :param pulumi.Input[str] display_name: Optional. The repository's user-friendly name.
         :param pulumi.Input[Union['RepositoryGitRemoteSettingsArgs', 'RepositoryGitRemoteSettingsArgsDict']] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
                Structure is documented below.
@@ -588,6 +623,7 @@ class Repository(pulumi.CustomResource):
             display_name="dataform_repository",
             npmrc_environment_variables_secret_version=secret_version.id,
             kms_key_name=example_key.id,
+            deletion_policy="FORCE",
             labels={
                 "label_foo1": "label-bar1",
             },
@@ -649,6 +685,7 @@ class Repository(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  git_remote_settings: Optional[pulumi.Input[Union['RepositoryGitRemoteSettingsArgs', 'RepositoryGitRemoteSettingsArgsDict']]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -668,6 +705,7 @@ class Repository(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RepositoryArgs.__new__(RepositoryArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["git_remote_settings"] = git_remote_settings
             __props__.__dict__["kms_key_name"] = kms_key_name
@@ -692,6 +730,7 @@ class Repository(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             git_remote_settings: Optional[pulumi.Input[Union['RepositoryGitRemoteSettingsArgs', 'RepositoryGitRemoteSettingsArgsDict']]] = None,
@@ -711,6 +750,7 @@ class Repository(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] deletion_policy: Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
         :param pulumi.Input[str] display_name: Optional. The repository's user-friendly name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['RepositoryGitRemoteSettingsArgs', 'RepositoryGitRemoteSettingsArgsDict']] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
@@ -740,6 +780,7 @@ class Repository(pulumi.CustomResource):
 
         __props__ = _RepositoryState.__new__(_RepositoryState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["git_remote_settings"] = git_remote_settings
@@ -753,6 +794,14 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["service_account"] = service_account
         __props__.__dict__["workspace_compilation_overrides"] = workspace_compilation_overrides
         return Repository(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @property
     @pulumi.getter(name="displayName")

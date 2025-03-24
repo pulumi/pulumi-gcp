@@ -5,6 +5,7 @@ package com.pulumi.gcp.networksecurity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.networksecurity.inputs.AuthzPolicyHttpRuleToNotOperationArgs;
 import com.pulumi.gcp.networksecurity.inputs.AuthzPolicyHttpRuleToOperationArgs;
 import java.util.List;
 import java.util.Objects;
@@ -15,6 +16,23 @@ import javax.annotation.Nullable;
 public final class AuthzPolicyHttpRuleToArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AuthzPolicyHttpRuleToArgs Empty = new AuthzPolicyHttpRuleToArgs();
+
+    /**
+     * Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="notOperations")
+    private @Nullable Output<List<AuthzPolicyHttpRuleToNotOperationArgs>> notOperations;
+
+    /**
+     * @return Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<AuthzPolicyHttpRuleToNotOperationArgs>>> notOperations() {
+        return Optional.ofNullable(this.notOperations);
+    }
 
     /**
      * Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 5 operations. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
@@ -36,6 +54,7 @@ public final class AuthzPolicyHttpRuleToArgs extends com.pulumi.resources.Resour
     private AuthzPolicyHttpRuleToArgs() {}
 
     private AuthzPolicyHttpRuleToArgs(AuthzPolicyHttpRuleToArgs $) {
+        this.notOperations = $.notOperations;
         this.operations = $.operations;
     }
 
@@ -55,6 +74,40 @@ public final class AuthzPolicyHttpRuleToArgs extends com.pulumi.resources.Resour
 
         public Builder(AuthzPolicyHttpRuleToArgs defaults) {
             $ = new AuthzPolicyHttpRuleToArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param notOperations Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notOperations(@Nullable Output<List<AuthzPolicyHttpRuleToNotOperationArgs>> notOperations) {
+            $.notOperations = notOperations;
+            return this;
+        }
+
+        /**
+         * @param notOperations Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notOperations(List<AuthzPolicyHttpRuleToNotOperationArgs> notOperations) {
+            return notOperations(Output.of(notOperations));
+        }
+
+        /**
+         * @param notOperations Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notOperations(AuthzPolicyHttpRuleToNotOperationArgs... notOperations) {
+            return notOperations(List.of(notOperations));
         }
 
         /**

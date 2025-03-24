@@ -2917,6 +2917,10 @@ if not MYPY:
         """
         Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
         """
+        dns_endpoint: NotRequired[pulumi.Input[bool]]
+        """
+        Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dns_endpoint` and `internal_ip` cannot be set to true.
+        """
         internal_ip: NotRequired[pulumi.Input[bool]]
         """
         Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
@@ -2932,15 +2936,19 @@ elif False:
 class TargetGkeArgs:
     def __init__(__self__, *,
                  cluster: Optional[pulumi.Input[str]] = None,
+                 dns_endpoint: Optional[pulumi.Input[bool]] = None,
                  internal_ip: Optional[pulumi.Input[bool]] = None,
                  proxy_url: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] cluster: Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
+        :param pulumi.Input[bool] dns_endpoint: Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dns_endpoint` and `internal_ip` cannot be set to true.
         :param pulumi.Input[bool] internal_ip: Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
         :param pulumi.Input[str] proxy_url: Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
         """
         if cluster is not None:
             pulumi.set(__self__, "cluster", cluster)
+        if dns_endpoint is not None:
+            pulumi.set(__self__, "dns_endpoint", dns_endpoint)
         if internal_ip is not None:
             pulumi.set(__self__, "internal_ip", internal_ip)
         if proxy_url is not None:
@@ -2957,6 +2965,18 @@ class TargetGkeArgs:
     @cluster.setter
     def cluster(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cluster", value)
+
+    @property
+    @pulumi.getter(name="dnsEndpoint")
+    def dns_endpoint(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dns_endpoint` and `internal_ip` cannot be set to true.
+        """
+        return pulumi.get(self, "dns_endpoint")
+
+    @dns_endpoint.setter
+    def dns_endpoint(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dns_endpoint", value)
 
     @property
     @pulumi.getter(name="internalIp")

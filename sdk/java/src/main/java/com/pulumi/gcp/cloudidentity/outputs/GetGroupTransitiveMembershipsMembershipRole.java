@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetGroupTransitiveMembershipsMembershipRole {
     /**
-     * @return The name of the TransitiveMembershipRole. Possible values: [&#34;OWNER&#34;, &#34;MANAGER&#34;, &#34;MEMBER&#34;]
+     * @return The name of the TransitiveMembershipRole. One of OWNER, MANAGER, MEMBER.
      * 
      */
     private String role;
 
     private GetGroupTransitiveMembershipsMembershipRole() {}
     /**
-     * @return The name of the TransitiveMembershipRole. Possible values: [&#34;OWNER&#34;, &#34;MANAGER&#34;, &#34;MEMBER&#34;]
+     * @return The name of the TransitiveMembershipRole. One of OWNER, MANAGER, MEMBER.
      * 
      */
     public String role() {

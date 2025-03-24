@@ -42,6 +42,7 @@ class TableArgs:
                  schema: Optional[pulumi.Input[str]] = None,
                  schema_foreign_type_info: Optional[pulumi.Input['TableSchemaForeignTypeInfoArgs']] = None,
                  table_constraints: Optional[pulumi.Input['TableTableConstraintsArgs']] = None,
+                 table_metadata_view: Optional[pulumi.Input[str]] = None,
                  table_replication_info: Optional[pulumi.Input['TableTableReplicationInfoArgs']] = None,
                  time_partitioning: Optional[pulumi.Input['TableTimePartitioningArgs']] = None,
                  view: Optional[pulumi.Input['TableViewArgs']] = None):
@@ -98,6 +99,9 @@ class TableArgs:
         :param pulumi.Input['TableSchemaForeignTypeInfoArgs'] schema_foreign_type_info: Specifies metadata of the foreign data type definition in field schema.
         :param pulumi.Input['TableTableConstraintsArgs'] table_constraints: Defines the primary key and foreign keys. 
                Structure is documented below.
+        :param pulumi.Input[str] table_metadata_view: View sets the optional parameter "view": Specifies the view that determines which table information is returned. By
+               default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values:
+               TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
         :param pulumi.Input['TableTableReplicationInfoArgs'] table_replication_info: Replication info of a table created
                using "AS REPLICA" DDL like:
                `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
@@ -147,6 +151,8 @@ class TableArgs:
             pulumi.set(__self__, "schema_foreign_type_info", schema_foreign_type_info)
         if table_constraints is not None:
             pulumi.set(__self__, "table_constraints", table_constraints)
+        if table_metadata_view is not None:
+            pulumi.set(__self__, "table_metadata_view", table_metadata_view)
         if table_replication_info is not None:
             pulumi.set(__self__, "table_replication_info", table_replication_info)
         if time_partitioning is not None:
@@ -437,6 +443,20 @@ class TableArgs:
         pulumi.set(self, "table_constraints", value)
 
     @property
+    @pulumi.getter(name="tableMetadataView")
+    def table_metadata_view(self) -> Optional[pulumi.Input[str]]:
+        """
+        View sets the optional parameter "view": Specifies the view that determines which table information is returned. By
+        default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values:
+        TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+        """
+        return pulumi.get(self, "table_metadata_view")
+
+    @table_metadata_view.setter
+    def table_metadata_view(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "table_metadata_view", value)
+
+    @property
     @pulumi.getter(name="tableReplicationInfo")
     def table_replication_info(self) -> Optional[pulumi.Input['TableTableReplicationInfoArgs']]:
         """
@@ -512,6 +532,7 @@ class _TableState:
                  self_link: Optional[pulumi.Input[str]] = None,
                  table_constraints: Optional[pulumi.Input['TableTableConstraintsArgs']] = None,
                  table_id: Optional[pulumi.Input[str]] = None,
+                 table_metadata_view: Optional[pulumi.Input[str]] = None,
                  table_replication_info: Optional[pulumi.Input['TableTableReplicationInfoArgs']] = None,
                  time_partitioning: Optional[pulumi.Input['TableTimePartitioningArgs']] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -594,6 +615,9 @@ class _TableState:
                Structure is documented below.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
+        :param pulumi.Input[str] table_metadata_view: View sets the optional parameter "view": Specifies the view that determines which table information is returned. By
+               default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values:
+               TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
         :param pulumi.Input['TableTableReplicationInfoArgs'] table_replication_info: Replication info of a table created
                using "AS REPLICA" DDL like:
                `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
@@ -666,6 +690,8 @@ class _TableState:
             pulumi.set(__self__, "table_constraints", table_constraints)
         if table_id is not None:
             pulumi.set(__self__, "table_id", table_id)
+        if table_metadata_view is not None:
+            pulumi.set(__self__, "table_metadata_view", table_metadata_view)
         if table_replication_info is not None:
             pulumi.set(__self__, "table_replication_info", table_replication_info)
         if time_partitioning is not None:
@@ -1093,6 +1119,20 @@ class _TableState:
         pulumi.set(self, "table_id", value)
 
     @property
+    @pulumi.getter(name="tableMetadataView")
+    def table_metadata_view(self) -> Optional[pulumi.Input[str]]:
+        """
+        View sets the optional parameter "view": Specifies the view that determines which table information is returned. By
+        default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values:
+        TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+        """
+        return pulumi.get(self, "table_metadata_view")
+
+    @table_metadata_view.setter
+    def table_metadata_view(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "table_metadata_view", value)
+
+    @property
     @pulumi.getter(name="tableReplicationInfo")
     def table_replication_info(self) -> Optional[pulumi.Input['TableTableReplicationInfoArgs']]:
         """
@@ -1172,6 +1212,7 @@ class Table(pulumi.CustomResource):
                  schema_foreign_type_info: Optional[pulumi.Input[Union['TableSchemaForeignTypeInfoArgs', 'TableSchemaForeignTypeInfoArgsDict']]] = None,
                  table_constraints: Optional[pulumi.Input[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']]] = None,
                  table_id: Optional[pulumi.Input[str]] = None,
+                 table_metadata_view: Optional[pulumi.Input[str]] = None,
                  table_replication_info: Optional[pulumi.Input[Union['TableTableReplicationInfoArgs', 'TableTableReplicationInfoArgsDict']]] = None,
                  time_partitioning: Optional[pulumi.Input[Union['TableTimePartitioningArgs', 'TableTimePartitioningArgsDict']]] = None,
                  view: Optional[pulumi.Input[Union['TableViewArgs', 'TableViewArgsDict']]] = None,
@@ -1314,6 +1355,9 @@ class Table(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
+        :param pulumi.Input[str] table_metadata_view: View sets the optional parameter "view": Specifies the view that determines which table information is returned. By
+               default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values:
+               TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
         :param pulumi.Input[Union['TableTableReplicationInfoArgs', 'TableTableReplicationInfoArgsDict']] table_replication_info: Replication info of a table created
                using "AS REPLICA" DDL like:
                `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
@@ -1450,6 +1494,7 @@ class Table(pulumi.CustomResource):
                  schema_foreign_type_info: Optional[pulumi.Input[Union['TableSchemaForeignTypeInfoArgs', 'TableSchemaForeignTypeInfoArgsDict']]] = None,
                  table_constraints: Optional[pulumi.Input[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']]] = None,
                  table_id: Optional[pulumi.Input[str]] = None,
+                 table_metadata_view: Optional[pulumi.Input[str]] = None,
                  table_replication_info: Optional[pulumi.Input[Union['TableTableReplicationInfoArgs', 'TableTableReplicationInfoArgsDict']]] = None,
                  time_partitioning: Optional[pulumi.Input[Union['TableTimePartitioningArgs', 'TableTimePartitioningArgsDict']]] = None,
                  view: Optional[pulumi.Input[Union['TableViewArgs', 'TableViewArgsDict']]] = None,
@@ -1487,6 +1532,7 @@ class Table(pulumi.CustomResource):
             if table_id is None and not opts.urn:
                 raise TypeError("Missing required property 'table_id'")
             __props__.__dict__["table_id"] = table_id
+            __props__.__dict__["table_metadata_view"] = table_metadata_view
             __props__.__dict__["table_replication_info"] = table_replication_info
             __props__.__dict__["time_partitioning"] = time_partitioning
             __props__.__dict__["view"] = view
@@ -1544,6 +1590,7 @@ class Table(pulumi.CustomResource):
             self_link: Optional[pulumi.Input[str]] = None,
             table_constraints: Optional[pulumi.Input[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']]] = None,
             table_id: Optional[pulumi.Input[str]] = None,
+            table_metadata_view: Optional[pulumi.Input[str]] = None,
             table_replication_info: Optional[pulumi.Input[Union['TableTableReplicationInfoArgs', 'TableTableReplicationInfoArgsDict']]] = None,
             time_partitioning: Optional[pulumi.Input[Union['TableTimePartitioningArgs', 'TableTimePartitioningArgsDict']]] = None,
             type: Optional[pulumi.Input[str]] = None,
@@ -1631,6 +1678,9 @@ class Table(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
+        :param pulumi.Input[str] table_metadata_view: View sets the optional parameter "view": Specifies the view that determines which table information is returned. By
+               default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values:
+               TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
         :param pulumi.Input[Union['TableTableReplicationInfoArgs', 'TableTableReplicationInfoArgsDict']] table_replication_info: Replication info of a table created
                using "AS REPLICA" DDL like:
                `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
@@ -1676,6 +1726,7 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["table_constraints"] = table_constraints
         __props__.__dict__["table_id"] = table_id
+        __props__.__dict__["table_metadata_view"] = table_metadata_view
         __props__.__dict__["table_replication_info"] = table_replication_info
         __props__.__dict__["time_partitioning"] = time_partitioning
         __props__.__dict__["type"] = type
@@ -1974,6 +2025,16 @@ class Table(pulumi.CustomResource):
         Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "table_id")
+
+    @property
+    @pulumi.getter(name="tableMetadataView")
+    def table_metadata_view(self) -> pulumi.Output[Optional[str]]:
+        """
+        View sets the optional parameter "view": Specifies the view that determines which table information is returned. By
+        default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values:
+        TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+        """
+        return pulumi.get(self, "table_metadata_view")
 
     @property
     @pulumi.getter(name="tableReplicationInfo")

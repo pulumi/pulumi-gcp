@@ -13,6 +13,7 @@ import com.pulumi.gcp.storage.inputs.InsightsReportConfigState;
 import com.pulumi.gcp.storage.outputs.InsightsReportConfigCsvOptions;
 import com.pulumi.gcp.storage.outputs.InsightsReportConfigFrequencyOptions;
 import com.pulumi.gcp.storage.outputs.InsightsReportConfigObjectMetadataReportOptions;
+import com.pulumi.gcp.storage.outputs.InsightsReportConfigParquetOptions;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -161,15 +162,15 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="csvOptions", refs={InsightsReportConfigCsvOptions.class}, tree="[0]")
-    private Output<InsightsReportConfigCsvOptions> csvOptions;
+    private Output</* @Nullable */ InsightsReportConfigCsvOptions> csvOptions;
 
     /**
      * @return Options for configuring the format of the inventory report CSV file.
      * Structure is documented below.
      * 
      */
-    public Output<InsightsReportConfigCsvOptions> csvOptions() {
-        return this.csvOptions;
+    public Output<Optional<InsightsReportConfigCsvOptions>> csvOptions() {
+        return Codegen.optional(this.csvOptions);
     }
     /**
      * The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
@@ -187,6 +188,7 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
     }
     /**
      * Options for configuring how inventory reports are generated.
+     * Structure is documented below.
      * 
      */
     @Export(name="frequencyOptions", refs={InsightsReportConfigFrequencyOptions.class}, tree="[0]")
@@ -194,6 +196,7 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Options for configuring how inventory reports are generated.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<InsightsReportConfigFrequencyOptions>> frequencyOptions() {
@@ -203,6 +206,8 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
      * The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
      * must be in the same location.
      * 
+     * ***
+     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
@@ -210,6 +215,8 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
     /**
      * @return The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
      * must be in the same location.
+     * 
+     * ***
      * 
      */
     public Output<String> location() {
@@ -231,6 +238,7 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
     }
     /**
      * Options for including metadata in an inventory report.
+     * Structure is documented below.
      * 
      */
     @Export(name="objectMetadataReportOptions", refs={InsightsReportConfigObjectMetadataReportOptions.class}, tree="[0]")
@@ -238,14 +246,39 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Options for including metadata in an inventory report.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<InsightsReportConfigObjectMetadataReportOptions>> objectMetadataReportOptions() {
         return Codegen.optional(this.objectMetadataReportOptions);
     }
+    /**
+     * An option for outputting inventory reports as parquet files.
+     * 
+     */
+    @Export(name="parquetOptions", refs={InsightsReportConfigParquetOptions.class}, tree="[0]")
+    private Output</* @Nullable */ InsightsReportConfigParquetOptions> parquetOptions;
+
+    /**
+     * @return An option for outputting inventory reports as parquet files.
+     * 
+     */
+    public Output<Optional<InsightsReportConfigParquetOptions>> parquetOptions() {
+        return Codegen.optional(this.parquetOptions);
+    }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }

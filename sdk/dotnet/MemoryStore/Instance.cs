@@ -330,7 +330,7 @@ namespace Pulumi.Gcp.MemoryStore
         public Output<ImmutableDictionary<string, string>?> EngineConfigs { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Immutable. Engine version of the instance.
+        /// Optional. Engine version of the instance.
         /// </summary>
         [Output("engineVersion")]
         public Output<string> EngineVersion { get; private set; } = null!;
@@ -576,7 +576,7 @@ namespace Pulumi.Gcp.MemoryStore
         }
 
         /// <summary>
-        /// Optional. Immutable. Engine version of the instance.
+        /// Optional. Engine version of the instance.
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }
@@ -776,7 +776,7 @@ namespace Pulumi.Gcp.MemoryStore
         }
 
         /// <summary>
-        /// Optional. Immutable. Engine version of the instance.
+        /// Optional. Engine version of the instance.
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }

@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
     public sealed class GetGroupTransitiveMembershipsMembershipRoleResult
     {
         /// <summary>
-        /// The name of the TransitiveMembershipRole. Possible values: ["OWNER", "MANAGER", "MEMBER"]
+        /// The name of the TransitiveMembershipRole. One of OWNER, MANAGER, MEMBER.
         /// </summary>
         public readonly string Role;
 

@@ -18784,6 +18784,86 @@
                     }
                 }
             },
+            "google_eventarc_pipeline": {
+                "current": "gcp:eventarc/pipeline:Pipeline",
+                "majorVersion": 8,
+                "fields": {
+                    "destinations": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "authentication_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "google_oidc": {
+                                                "maxItemsOne": true
+                                            },
+                                            "oauth_token": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "http_endpoint": {
+                                    "maxItemsOne": true
+                                },
+                                "network_config": {
+                                    "maxItemsOne": true
+                                },
+                                "output_payload_format": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "avro": {
+                                                "maxItemsOne": true
+                                            },
+                                            "json": {
+                                                "maxItemsOne": true
+                                            },
+                                            "protobuf": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "input_payload_format": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "avro": {
+                                    "maxItemsOne": true
+                                },
+                                "json": {
+                                    "maxItemsOne": true
+                                },
+                                "protobuf": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "logging_config": {
+                        "maxItemsOne": true
+                    },
+                    "mediations": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "transformation": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "retry_policy": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "google_eventarc_trigger": {
                 "current": "gcp:eventarc/trigger:Trigger",
                 "majorVersion": 8,
@@ -18945,6 +19025,25 @@
             "google_firebase_app_check_service_config": {
                 "current": "gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig",
                 "majorVersion": 8
+            },
+            "google_firebase_app_hosting_backend": {
+                "current": "gcp:firebase/appHostingBackend:AppHostingBackend",
+                "majorVersion": 8,
+                "fields": {
+                    "codebase": {
+                        "maxItemsOne": true
+                    },
+                    "managed_resources": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "run_service": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "google_firebase_apple_app": {
                 "current": "gcp:firebase/appleApp:AppleApp",
@@ -22848,6 +22947,51 @@
                     }
                 }
             },
+            "google_managed_kafka_connect_cluster": {
+                "current": "gcp:managedkafka/connectCluster:ConnectCluster",
+                "majorVersion": 8,
+                "fields": {
+                    "capacity_config": {
+                        "maxItemsOne": true
+                    },
+                    "gcp_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "access_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "network_configs": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "additional_subnets": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "dns_domain_names": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_managed_kafka_connector": {
+                "current": "gcp:managedkafka/connector:Connector",
+                "majorVersion": 8,
+                "fields": {
+                    "task_restart_policy": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "google_managed_kafka_topic": {
                 "current": "gcp:managedkafka/topic:Topic",
                 "majorVersion": 8
@@ -23920,6 +24064,39 @@
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
+                                            "not_operations": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "header_set": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "headers": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "value": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "hosts": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "methods": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "paths": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "operations": {
                                                 "maxItemsOne": false,
                                                 "elem": {
@@ -28933,6 +29110,9 @@
                                 }
                             }
                         }
+                    },
+                    "parquet_options": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -36787,6 +36967,31 @@
                     }
                 }
             },
+            "google_project_iam_custom_role": {
+                "current": "gcp:projects/getIamCustomRole:getIamCustomRole",
+                "majorVersion": 8,
+                "fields": {
+                    "permissions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_project_iam_custom_roles": {
+                "current": "gcp:projects/getIamCustomRoles:getIamCustomRoles",
+                "majorVersion": 8,
+                "fields": {
+                    "roles": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "permissions": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_project_iam_policy": {
                 "current": "gcp:projects/getIamPolicy:getIamPolicy",
                 "majorVersion": 8
@@ -38462,6 +38667,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_eventarc_pipeline": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_eventarc_trigger": [
                 "effective_labels",
                 "terraform_labels"
@@ -38475,6 +38684,10 @@
                 "terraform_labels"
             ],
             "google_filestore_snapshot": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_firebase_app_hosting_backend": [
                 "effective_labels",
                 "terraform_labels"
             ],
@@ -38599,6 +38812,10 @@
                 "terraform_labels"
             ],
             "google_managed_kafka_cluster": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_managed_kafka_connect_cluster": [
                 "effective_labels",
                 "terraform_labels"
             ],
@@ -39822,6 +40039,7 @@
             "gcp:eventarc/googleApiSource:GoogleApiSource": 0,
             "gcp:eventarc/googleChannelConfig:GoogleChannelConfig": 0,
             "gcp:eventarc/messageBus:MessageBus": 0,
+            "gcp:eventarc/pipeline:Pipeline": 0,
             "gcp:eventarc/trigger:Trigger": 0,
             "gcp:filestore/backup:Backup": 0,
             "gcp:filestore/instance:Instance": 0,
@@ -39834,6 +40052,7 @@
             "gcp:firebase/appCheckRecaptchaEnterpriseConfig:AppCheckRecaptchaEnterpriseConfig": 0,
             "gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config": 0,
             "gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig": 0,
+            "gcp:firebase/appHostingBackend:AppHostingBackend": 0,
             "gcp:firebase/appleApp:AppleApp": 0,
             "gcp:firebase/dataConnectService:DataConnectService": 0,
             "gcp:firebase/databaseInstance:DatabaseInstance": 0,
@@ -40023,6 +40242,8 @@
             "gcp:logging/projectSink:ProjectSink": 0,
             "gcp:looker/instance:Instance": 0,
             "gcp:managedkafka/cluster:Cluster": 0,
+            "gcp:managedkafka/connectCluster:ConnectCluster": 0,
+            "gcp:managedkafka/connector:Connector": 0,
             "gcp:managedkafka/topic:Topic": 0,
             "gcp:memcache/instance:Instance": 0,
             "gcp:memorystore/instance:Instance": 0,
@@ -40630,6 +40851,8 @@
             "gcp:parametermanager/getRegionalParameters:getRegionalParameters": 0,
             "gcp:privilegedaccessmanager/getEntitlement:getEntitlement": 0,
             "gcp:projects/getAncestry:getAncestry": 0,
+            "gcp:projects/getIamCustomRole:getIamCustomRole": 0,
+            "gcp:projects/getIamCustomRoles:getIamCustomRoles": 0,
             "gcp:projects/getIamPolicy:getIamPolicy": 0,
             "gcp:projects/getOrganizationPolicy:getOrganizationPolicy": 0,
             "gcp:projects/getProject:getProject": 0,

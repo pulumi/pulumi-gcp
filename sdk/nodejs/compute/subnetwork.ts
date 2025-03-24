@@ -315,6 +315,13 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
+     * it will not appear in get listings. If not set the default behavior is determined by the
+     * org policy, if there is no org policy specified, then it will default to disabled.
+     * This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+     */
+    public readonly enableFlowLogs!: pulumi.Output<boolean>;
+    /**
      * The range of external IPv6 addresses that are owned by this subnetwork.
      */
     public readonly externalIpv6Prefix!: pulumi.Output<string>;
@@ -379,7 +386,7 @@ export class Subnetwork extends pulumi.CustomResource {
      * `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
      * Structure is documented below.
      */
-    public readonly logConfig!: pulumi.Output<outputs.compute.SubnetworkLogConfig | undefined>;
+    public readonly logConfig!: pulumi.Output<outputs.compute.SubnetworkLogConfig>;
     /**
      * The name of the resource, provided by the client when initially
      * creating the resource. The name must be 1-63 characters long, and
@@ -469,6 +476,13 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly stackType!: pulumi.Output<string>;
     /**
+     * 'The state of the subnetwork, which can be one of the following values:
+     * READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose
+     * set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained.
+     * A subnetwork that is draining cannot be used or modified until it reaches a status of READY'
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
      * The unique identifier number for the resource. This identifier is defined by the server.
      */
     public /*out*/ readonly subnetworkId!: pulumi.Output<number>;
@@ -489,6 +503,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["allowSubnetCidrRoutesOverlap"] = state ? state.allowSubnetCidrRoutesOverlap : undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enableFlowLogs"] = state ? state.enableFlowLogs : undefined;
             resourceInputs["externalIpv6Prefix"] = state ? state.externalIpv6Prefix : undefined;
             resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
             resourceInputs["gatewayAddress"] = state ? state.gatewayAddress : undefined;
@@ -512,6 +527,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["sendSecondaryIpRangeIfEmpty"] = state ? state.sendSecondaryIpRangeIfEmpty : undefined;
             resourceInputs["stackType"] = state ? state.stackType : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["subnetworkId"] = state ? state.subnetworkId : undefined;
         } else {
             const args = argsOrState as SubnetworkArgs | undefined;
@@ -520,6 +536,7 @@ export class Subnetwork extends pulumi.CustomResource {
             }
             resourceInputs["allowSubnetCidrRoutesOverlap"] = args ? args.allowSubnetCidrRoutesOverlap : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableFlowLogs"] = args ? args.enableFlowLogs : undefined;
             resourceInputs["externalIpv6Prefix"] = args ? args.externalIpv6Prefix : undefined;
             resourceInputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
             resourceInputs["ipCollection"] = args ? args.ipCollection : undefined;
@@ -544,6 +561,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["ipv6CidrRange"] = undefined /*out*/;
             resourceInputs["ipv6GceEndpoint"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
             resourceInputs["subnetworkId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -572,6 +590,13 @@ export interface SubnetworkState {
      * creation time.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
+     * it will not appear in get listings. If not set the default behavior is determined by the
+     * org policy, if there is no org policy specified, then it will default to disabled.
+     * This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+     */
+    enableFlowLogs?: pulumi.Input<boolean>;
     /**
      * The range of external IPv6 addresses that are owned by this subnetwork.
      */
@@ -727,6 +752,13 @@ export interface SubnetworkState {
      */
     stackType?: pulumi.Input<string>;
     /**
+     * 'The state of the subnetwork, which can be one of the following values:
+     * READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose
+     * set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained.
+     * A subnetwork that is draining cannot be used or modified until it reaches a status of READY'
+     */
+    state?: pulumi.Input<string>;
+    /**
      * The unique identifier number for the resource. This identifier is defined by the server.
      */
     subnetworkId?: pulumi.Input<number>;
@@ -749,6 +781,13 @@ export interface SubnetworkArgs {
      * creation time.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
+     * it will not appear in get listings. If not set the default behavior is determined by the
+     * org policy, if there is no org policy specified, then it will default to disabled.
+     * This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+     */
+    enableFlowLogs?: pulumi.Input<boolean>;
     /**
      * The range of external IPv6 addresses that are owned by this subnetwork.
      */

@@ -42,6 +42,21 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Output only. The time when the metastore service was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return Output only. The time when the metastore service was created.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
      * The database type that the Metastore service stores its data.
      * Default value is `MYSQL`.
      * Possible values are: `MYSQL`, `SPANNER`.
@@ -468,10 +483,26 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.uid);
     }
 
+    /**
+     * Output only. The time when the metastore service was last updated.
+     * 
+     */
+    @Import(name="updateTime")
+    private @Nullable Output<String> updateTime;
+
+    /**
+     * @return Output only. The time when the metastore service was last updated.
+     * 
+     */
+    public Optional<Output<String>> updateTime() {
+        return Optional.ofNullable(this.updateTime);
+    }
+
     private MetastoreServiceState() {}
 
     private MetastoreServiceState(MetastoreServiceState $) {
         this.artifactGcsUri = $.artifactGcsUri;
+        this.createTime = $.createTime;
         this.databaseType = $.databaseType;
         this.deletionProtection = $.deletionProtection;
         this.effectiveLabels = $.effectiveLabels;
@@ -497,6 +528,7 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
         this.telemetryConfig = $.telemetryConfig;
         this.tier = $.tier;
         this.uid = $.uid;
+        this.updateTime = $.updateTime;
     }
 
     public static Builder builder() {
@@ -536,6 +568,27 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
          */
         public Builder artifactGcsUri(String artifactGcsUri) {
             return artifactGcsUri(Output.of(artifactGcsUri));
+        }
+
+        /**
+         * @param createTime Output only. The time when the metastore service was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime Output only. The time when the metastore service was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         /**
@@ -1113,6 +1166,27 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
          */
         public Builder uid(String uid) {
             return uid(Output.of(uid));
+        }
+
+        /**
+         * @param updateTime Output only. The time when the metastore service was last updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(@Nullable Output<String> updateTime) {
+            $.updateTime = updateTime;
+            return this;
+        }
+
+        /**
+         * @param updateTime Output only. The time when the metastore service was last updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(String updateTime) {
+            return updateTime(Output.of(updateTime));
         }
 
         public MetastoreServiceState build() {

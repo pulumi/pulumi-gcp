@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:managedkafka/cluster:Cluster":
 		r = &Cluster{}
+	case "gcp:managedkafka/connectCluster:ConnectCluster":
+		r = &ConnectCluster{}
+	case "gcp:managedkafka/connector:Connector":
+		r = &Connector{}
 	case "gcp:managedkafka/topic:Topic":
 		r = &Topic{}
 	default:
@@ -41,6 +45,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"managedkafka/cluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"managedkafka/connectCluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"managedkafka/connector",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

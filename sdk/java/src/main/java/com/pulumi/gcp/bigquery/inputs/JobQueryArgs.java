@@ -44,6 +44,21 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether to run the query as continuous or a regular query.
+     * 
+     */
+    @Import(name="continuous")
+    private @Nullable Output<Boolean> continuous;
+
+    /**
+     * @return Whether to run the query as continuous or a regular query.
+     * 
+     */
+    public Optional<Output<Boolean>> continuous() {
+        return Optional.ofNullable(this.continuous);
+    }
+
+    /**
      * Specifies whether the job is allowed to create new tables. The following values are supported:
      * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
      * CREATE_NEVER: The table must already exist. If it does not, a &#39;notFound&#39; error is returned in the job result.
@@ -357,6 +372,7 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
 
     private JobQueryArgs(JobQueryArgs $) {
         this.allowLargeResults = $.allowLargeResults;
+        this.continuous = $.continuous;
         this.createDisposition = $.createDisposition;
         this.defaultDataset = $.defaultDataset;
         this.destinationEncryptionConfiguration = $.destinationEncryptionConfiguration;
@@ -416,6 +432,27 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder allowLargeResults(Boolean allowLargeResults) {
             return allowLargeResults(Output.of(allowLargeResults));
+        }
+
+        /**
+         * @param continuous Whether to run the query as continuous or a regular query.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder continuous(@Nullable Output<Boolean> continuous) {
+            $.continuous = continuous;
+            return this;
+        }
+
+        /**
+         * @param continuous Whether to run the query as continuous or a regular query.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder continuous(Boolean continuous) {
+            return continuous(Output.of(continuous));
         }
 
         /**

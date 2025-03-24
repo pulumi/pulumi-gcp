@@ -622,6 +622,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.firebaseAppCheckCustomEndpoint);
     }
 
+    @Import(name="firebaseAppHostingCustomEndpoint")
+    private @Nullable Output<String> firebaseAppHostingCustomEndpoint;
+
+    public Optional<Output<String>> firebaseAppHostingCustomEndpoint() {
+        return Optional.ofNullable(this.firebaseAppHostingCustomEndpoint);
+    }
+
     @Import(name="firebaseCustomEndpoint")
     private @Nullable Output<String> firebaseCustomEndpoint;
 
@@ -1411,6 +1418,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.eventarcCustomEndpoint = $.eventarcCustomEndpoint;
         this.filestoreCustomEndpoint = $.filestoreCustomEndpoint;
         this.firebaseAppCheckCustomEndpoint = $.firebaseAppCheckCustomEndpoint;
+        this.firebaseAppHostingCustomEndpoint = $.firebaseAppHostingCustomEndpoint;
         this.firebaseCustomEndpoint = $.firebaseCustomEndpoint;
         this.firebaseDataConnectCustomEndpoint = $.firebaseDataConnectCustomEndpoint;
         this.firebaseDatabaseCustomEndpoint = $.firebaseDatabaseCustomEndpoint;
@@ -2303,6 +2311,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder firebaseAppCheckCustomEndpoint(String firebaseAppCheckCustomEndpoint) {
             return firebaseAppCheckCustomEndpoint(Output.of(firebaseAppCheckCustomEndpoint));
+        }
+
+        public Builder firebaseAppHostingCustomEndpoint(@Nullable Output<String> firebaseAppHostingCustomEndpoint) {
+            $.firebaseAppHostingCustomEndpoint = firebaseAppHostingCustomEndpoint;
+            return this;
+        }
+
+        public Builder firebaseAppHostingCustomEndpoint(String firebaseAppHostingCustomEndpoint) {
+            return firebaseAppHostingCustomEndpoint(Output.of(firebaseAppHostingCustomEndpoint));
         }
 
         public Builder firebaseCustomEndpoint(@Nullable Output<String> firebaseCustomEndpoint) {

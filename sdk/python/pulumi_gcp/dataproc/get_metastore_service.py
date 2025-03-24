@@ -27,10 +27,13 @@ class GetMetastoreServiceResult:
     """
     A collection of values returned by getMetastoreService.
     """
-    def __init__(__self__, artifact_gcs_uri=None, database_type=None, deletion_protection=None, effective_labels=None, encryption_configs=None, endpoint_uri=None, hive_metastore_configs=None, id=None, labels=None, location=None, maintenance_windows=None, metadata_integrations=None, name=None, network=None, network_configs=None, port=None, project=None, pulumi_labels=None, release_channel=None, scaling_configs=None, scheduled_backups=None, service_id=None, state=None, state_message=None, telemetry_configs=None, tier=None, uid=None):
+    def __init__(__self__, artifact_gcs_uri=None, create_time=None, database_type=None, deletion_protection=None, effective_labels=None, encryption_configs=None, endpoint_uri=None, hive_metastore_configs=None, id=None, labels=None, location=None, maintenance_windows=None, metadata_integrations=None, name=None, network=None, network_configs=None, port=None, project=None, pulumi_labels=None, release_channel=None, scaling_configs=None, scheduled_backups=None, service_id=None, state=None, state_message=None, telemetry_configs=None, tier=None, uid=None, update_time=None):
         if artifact_gcs_uri and not isinstance(artifact_gcs_uri, str):
             raise TypeError("Expected argument 'artifact_gcs_uri' to be a str")
         pulumi.set(__self__, "artifact_gcs_uri", artifact_gcs_uri)
+        if create_time and not isinstance(create_time, str):
+            raise TypeError("Expected argument 'create_time' to be a str")
+        pulumi.set(__self__, "create_time", create_time)
         if database_type and not isinstance(database_type, str):
             raise TypeError("Expected argument 'database_type' to be a str")
         pulumi.set(__self__, "database_type", database_type)
@@ -109,11 +112,19 @@ class GetMetastoreServiceResult:
         if uid and not isinstance(uid, str):
             raise TypeError("Expected argument 'uid' to be a str")
         pulumi.set(__self__, "uid", uid)
+        if update_time and not isinstance(update_time, str):
+            raise TypeError("Expected argument 'update_time' to be a str")
+        pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="artifactGcsUri")
     def artifact_gcs_uri(self) -> str:
         return pulumi.get(self, "artifact_gcs_uri")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="databaseType")
@@ -248,6 +259,11 @@ class GetMetastoreServiceResult:
     def uid(self) -> str:
         return pulumi.get(self, "uid")
 
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        return pulumi.get(self, "update_time")
+
 
 class AwaitableGetMetastoreServiceResult(GetMetastoreServiceResult):
     # pylint: disable=using-constant-test
@@ -256,6 +272,7 @@ class AwaitableGetMetastoreServiceResult(GetMetastoreServiceResult):
             yield self
         return GetMetastoreServiceResult(
             artifact_gcs_uri=self.artifact_gcs_uri,
+            create_time=self.create_time,
             database_type=self.database_type,
             deletion_protection=self.deletion_protection,
             effective_labels=self.effective_labels,
@@ -281,7 +298,8 @@ class AwaitableGetMetastoreServiceResult(GetMetastoreServiceResult):
             state_message=self.state_message,
             telemetry_configs=self.telemetry_configs,
             tier=self.tier,
-            uid=self.uid)
+            uid=self.uid,
+            update_time=self.update_time)
 
 
 def get_metastore_service(location: Optional[str] = None,
@@ -318,6 +336,7 @@ def get_metastore_service(location: Optional[str] = None,
 
     return AwaitableGetMetastoreServiceResult(
         artifact_gcs_uri=pulumi.get(__ret__, 'artifact_gcs_uri'),
+        create_time=pulumi.get(__ret__, 'create_time'),
         database_type=pulumi.get(__ret__, 'database_type'),
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
@@ -343,7 +362,8 @@ def get_metastore_service(location: Optional[str] = None,
         state_message=pulumi.get(__ret__, 'state_message'),
         telemetry_configs=pulumi.get(__ret__, 'telemetry_configs'),
         tier=pulumi.get(__ret__, 'tier'),
-        uid=pulumi.get(__ret__, 'uid'))
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 def get_metastore_service_output(location: Optional[pulumi.Input[str]] = None,
                                  project: Optional[pulumi.Input[Optional[str]]] = None,
                                  service_id: Optional[pulumi.Input[str]] = None,
@@ -377,6 +397,7 @@ def get_metastore_service_output(location: Optional[pulumi.Input[str]] = None,
     __ret__ = pulumi.runtime.invoke_output('gcp:dataproc/getMetastoreService:getMetastoreService', __args__, opts=opts, typ=GetMetastoreServiceResult)
     return __ret__.apply(lambda __response__: GetMetastoreServiceResult(
         artifact_gcs_uri=pulumi.get(__response__, 'artifact_gcs_uri'),
+        create_time=pulumi.get(__response__, 'create_time'),
         database_type=pulumi.get(__response__, 'database_type'),
         deletion_protection=pulumi.get(__response__, 'deletion_protection'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
@@ -402,4 +423,5 @@ def get_metastore_service_output(location: Optional[pulumi.Input[str]] = None,
         state_message=pulumi.get(__response__, 'state_message'),
         telemetry_configs=pulumi.get(__response__, 'telemetry_configs'),
         tier=pulumi.get(__response__, 'tier'),
-        uid=pulumi.get(__response__, 'uid')))
+        uid=pulumi.get(__response__, 'uid'),
+        update_time=pulumi.get(__response__, 'update_time')))

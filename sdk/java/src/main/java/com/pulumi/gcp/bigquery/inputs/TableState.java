@@ -586,6 +586,25 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * View sets the optional parameter &#34;view&#34;: Specifies the view that determines which table information is returned. By
+     * default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values:
+     * TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+     * 
+     */
+    @Import(name="tableMetadataView")
+    private @Nullable Output<String> tableMetadataView;
+
+    /**
+     * @return View sets the optional parameter &#34;view&#34;: Specifies the view that determines which table information is returned. By
+     * default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values:
+     * TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+     * 
+     */
+    public Optional<Output<String>> tableMetadataView() {
+        return Optional.ofNullable(this.tableMetadataView);
+    }
+
+    /**
      * Replication info of a table created
      * using &#34;AS REPLICA&#34; DDL like:
      * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
@@ -689,6 +708,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         this.selfLink = $.selfLink;
         this.tableConstraints = $.tableConstraints;
         this.tableId = $.tableId;
+        this.tableMetadataView = $.tableMetadataView;
         this.tableReplicationInfo = $.tableReplicationInfo;
         this.timePartitioning = $.timePartitioning;
         this.type = $.type;
@@ -1464,6 +1484,31 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tableId(String tableId) {
             return tableId(Output.of(tableId));
+        }
+
+        /**
+         * @param tableMetadataView View sets the optional parameter &#34;view&#34;: Specifies the view that determines which table information is returned. By
+         * default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values:
+         * TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tableMetadataView(@Nullable Output<String> tableMetadataView) {
+            $.tableMetadataView = tableMetadataView;
+            return this;
+        }
+
+        /**
+         * @param tableMetadataView View sets the optional parameter &#34;view&#34;: Specifies the view that determines which table information is returned. By
+         * default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values:
+         * TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tableMetadataView(String tableMetadataView) {
+            return tableMetadataView(Output.of(tableMetadataView));
         }
 
         /**

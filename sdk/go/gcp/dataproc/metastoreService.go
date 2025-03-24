@@ -557,6 +557,8 @@ type MetastoreService struct {
 
 	// A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
 	ArtifactGcsUri pulumi.StringOutput `pulumi:"artifactGcsUri"`
+	// Output only. The time when the metastore service was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The database type that the Metastore service stores its data.
 	// Default value is `MYSQL`.
 	// Possible values are: `MYSQL`, `SPANNER`.
@@ -633,6 +635,8 @@ type MetastoreService struct {
 	Tier pulumi.StringOutput `pulumi:"tier"`
 	// The globally unique resource identifier of the metastore service.
 	Uid pulumi.StringOutput `pulumi:"uid"`
+	// Output only. The time when the metastore service was last updated.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewMetastoreService registers a new resource with the given unique name, arguments, and options.
@@ -672,6 +676,8 @@ func GetMetastoreService(ctx *pulumi.Context,
 type metastoreServiceState struct {
 	// A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
 	ArtifactGcsUri *string `pulumi:"artifactGcsUri"`
+	// Output only. The time when the metastore service was created.
+	CreateTime *string `pulumi:"createTime"`
 	// The database type that the Metastore service stores its data.
 	// Default value is `MYSQL`.
 	// Possible values are: `MYSQL`, `SPANNER`.
@@ -748,11 +754,15 @@ type metastoreServiceState struct {
 	Tier *string `pulumi:"tier"`
 	// The globally unique resource identifier of the metastore service.
 	Uid *string `pulumi:"uid"`
+	// Output only. The time when the metastore service was last updated.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type MetastoreServiceState struct {
 	// A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
 	ArtifactGcsUri pulumi.StringPtrInput
+	// Output only. The time when the metastore service was created.
+	CreateTime pulumi.StringPtrInput
 	// The database type that the Metastore service stores its data.
 	// Default value is `MYSQL`.
 	// Possible values are: `MYSQL`, `SPANNER`.
@@ -829,6 +839,8 @@ type MetastoreServiceState struct {
 	Tier pulumi.StringPtrInput
 	// The globally unique resource identifier of the metastore service.
 	Uid pulumi.StringPtrInput
+	// Output only. The time when the metastore service was last updated.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (MetastoreServiceState) ElementType() reflect.Type {
@@ -1056,6 +1068,11 @@ func (o MetastoreServiceOutput) ArtifactGcsUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringOutput { return v.ArtifactGcsUri }).(pulumi.StringOutput)
 }
 
+// Output only. The time when the metastore service was created.
+func (o MetastoreServiceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetastoreService) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // The database type that the Metastore service stores its data.
 // Default value is `MYSQL`.
 // Possible values are: `MYSQL`, `SPANNER`.
@@ -1205,6 +1222,11 @@ func (o MetastoreServiceOutput) Tier() pulumi.StringOutput {
 // The globally unique resource identifier of the metastore service.
 func (o MetastoreServiceOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// Output only. The time when the metastore service was last updated.
+func (o MetastoreServiceOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetastoreService) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 type MetastoreServiceArrayOutput struct{ *pulumi.OutputState }

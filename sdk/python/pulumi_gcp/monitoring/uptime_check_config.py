@@ -721,7 +721,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
             name="synthetic_function",
             location="us-central1",
             build_config={
-                "runtime": "nodejs16",
+                "runtime": "nodejs20",
                 "entry_point": "SyntheticFunction",
                 "source": {
                     "storage_source": {
@@ -974,7 +974,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
             name="synthetic_function",
             location="us-central1",
             build_config={
-                "runtime": "nodejs16",
+                "runtime": "nodejs20",
                 "entry_point": "SyntheticFunction",
                 "source": {
                     "storage_source": {

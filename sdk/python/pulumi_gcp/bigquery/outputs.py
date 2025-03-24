@@ -3274,6 +3274,7 @@ class JobQuery(dict):
     def __init__(__self__, *,
                  query: str,
                  allow_large_results: Optional[bool] = None,
+                 continuous: Optional[bool] = None,
                  create_disposition: Optional[str] = None,
                  default_dataset: Optional['outputs.JobQueryDefaultDataset'] = None,
                  destination_encryption_configuration: Optional['outputs.JobQueryDestinationEncryptionConfiguration'] = None,
@@ -3296,6 +3297,7 @@ class JobQuery(dict):
         :param bool allow_large_results: If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance.
                Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed.
                However, you must still set destinationTable when result size exceeds the allowed maximum response size.
+        :param bool continuous: Whether to run the query as continuous or a regular query.
         :param str create_disposition: Specifies whether the job is allowed to create new tables. The following values are supported:
                CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
                CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
@@ -3348,6 +3350,8 @@ class JobQuery(dict):
         pulumi.set(__self__, "query", query)
         if allow_large_results is not None:
             pulumi.set(__self__, "allow_large_results", allow_large_results)
+        if continuous is not None:
+            pulumi.set(__self__, "continuous", continuous)
         if create_disposition is not None:
             pulumi.set(__self__, "create_disposition", create_disposition)
         if default_dataset is not None:
@@ -3398,6 +3402,14 @@ class JobQuery(dict):
         However, you must still set destinationTable when result size exceeds the allowed maximum response size.
         """
         return pulumi.get(self, "allow_large_results")
+
+    @property
+    @pulumi.getter
+    def continuous(self) -> Optional[bool]:
+        """
+        Whether to run the query as continuous or a regular query.
+        """
+        return pulumi.get(self, "continuous")
 
     @property
     @pulumi.getter(name="createDisposition")
