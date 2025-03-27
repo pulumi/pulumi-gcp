@@ -34,6 +34,7 @@ import com.pulumi.gcp.container.outputs.GetClusterNodePool;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolAutoConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolDefault;
 import com.pulumi.gcp.container.outputs.GetClusterNotificationConfig;
+import com.pulumi.gcp.container.outputs.GetClusterPodAutoscaling;
 import com.pulumi.gcp.container.outputs.GetClusterPodSecurityPolicyConfig;
 import com.pulumi.gcp.container.outputs.GetClusterPrivateClusterConfig;
 import com.pulumi.gcp.container.outputs.GetClusterProtectConfig;
@@ -123,6 +124,7 @@ public final class GetClusterResult {
     private String nodeVersion;
     private List<GetClusterNotificationConfig> notificationConfigs;
     private String operation;
+    private List<GetClusterPodAutoscaling> podAutoscalings;
     private List<GetClusterPodSecurityPolicyConfig> podSecurityPolicyConfigs;
     private List<GetClusterPrivateClusterConfig> privateClusterConfigs;
     private String privateIpv6GoogleAccess;
@@ -334,6 +336,9 @@ public final class GetClusterResult {
     public String operation() {
         return this.operation;
     }
+    public List<GetClusterPodAutoscaling> podAutoscalings() {
+        return this.podAutoscalings;
+    }
     public List<GetClusterPodSecurityPolicyConfig> podSecurityPolicyConfigs() {
         return this.podSecurityPolicyConfigs;
     }
@@ -471,6 +476,7 @@ public final class GetClusterResult {
         private String nodeVersion;
         private List<GetClusterNotificationConfig> notificationConfigs;
         private String operation;
+        private List<GetClusterPodAutoscaling> podAutoscalings;
         private List<GetClusterPodSecurityPolicyConfig> podSecurityPolicyConfigs;
         private List<GetClusterPrivateClusterConfig> privateClusterConfigs;
         private String privateIpv6GoogleAccess;
@@ -557,6 +563,7 @@ public final class GetClusterResult {
     	      this.nodeVersion = defaults.nodeVersion;
     	      this.notificationConfigs = defaults.notificationConfigs;
     	      this.operation = defaults.operation;
+    	      this.podAutoscalings = defaults.podAutoscalings;
     	      this.podSecurityPolicyConfigs = defaults.podSecurityPolicyConfigs;
     	      this.privateClusterConfigs = defaults.privateClusterConfigs;
     	      this.privateIpv6GoogleAccess = defaults.privateIpv6GoogleAccess;
@@ -1158,6 +1165,17 @@ public final class GetClusterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder podAutoscalings(List<GetClusterPodAutoscaling> podAutoscalings) {
+            if (podAutoscalings == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "podAutoscalings");
+            }
+            this.podAutoscalings = podAutoscalings;
+            return this;
+        }
+        public Builder podAutoscalings(GetClusterPodAutoscaling... podAutoscalings) {
+            return podAutoscalings(List.of(podAutoscalings));
+        }
+        @CustomType.Setter
         public Builder podSecurityPolicyConfigs(List<GetClusterPodSecurityPolicyConfig> podSecurityPolicyConfigs) {
             if (podSecurityPolicyConfigs == null) {
               throw new MissingRequiredPropertyException("GetClusterResult", "podSecurityPolicyConfigs");
@@ -1433,6 +1451,7 @@ public final class GetClusterResult {
             _resultValue.nodeVersion = nodeVersion;
             _resultValue.notificationConfigs = notificationConfigs;
             _resultValue.operation = operation;
+            _resultValue.podAutoscalings = podAutoscalings;
             _resultValue.podSecurityPolicyConfigs = podSecurityPolicyConfigs;
             _resultValue.privateClusterConfigs = privateClusterConfigs;
             _resultValue.privateIpv6GoogleAccess = privateIpv6GoogleAccess;

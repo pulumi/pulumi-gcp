@@ -118,6 +118,7 @@ __all__ = [
     'ClusterConfidentialNodes',
     'ClusterControlPlaneEndpointsConfig',
     'ClusterControlPlaneEndpointsConfigDnsEndpointConfig',
+    'ClusterControlPlaneEndpointsConfigIpEndpointsConfig',
     'ClusterCostManagementConfig',
     'ClusterDatabaseEncryption',
     'ClusterDefaultSnatStatus',
@@ -174,6 +175,7 @@ __all__ = [
     'ClusterNodeConfigSoleTenantConfig',
     'ClusterNodeConfigSoleTenantConfigNodeAffinity',
     'ClusterNodeConfigTaint',
+    'ClusterNodeConfigWindowsNodeConfig',
     'ClusterNodeConfigWorkloadMetadataConfig',
     'ClusterNodePool',
     'ClusterNodePoolAutoConfig',
@@ -222,6 +224,7 @@ __all__ = [
     'ClusterNodePoolNodeConfigSoleTenantConfig',
     'ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity',
     'ClusterNodePoolNodeConfigTaint',
+    'ClusterNodePoolNodeConfigWindowsNodeConfig',
     'ClusterNodePoolNodeConfigWorkloadMetadataConfig',
     'ClusterNodePoolPlacementPolicy',
     'ClusterNodePoolQueuedProvisioning',
@@ -231,6 +234,7 @@ __all__ = [
     'ClusterNotificationConfig',
     'ClusterNotificationConfigPubsub',
     'ClusterNotificationConfigPubsubFilter',
+    'ClusterPodAutoscaling',
     'ClusterPodSecurityPolicyConfig',
     'ClusterPrivateClusterConfig',
     'ClusterPrivateClusterConfigMasterGlobalAccessConfig',
@@ -282,6 +286,7 @@ __all__ = [
     'NodePoolNodeConfigSoleTenantConfig',
     'NodePoolNodeConfigSoleTenantConfigNodeAffinity',
     'NodePoolNodeConfigTaint',
+    'NodePoolNodeConfigWindowsNodeConfig',
     'NodePoolNodeConfigWorkloadMetadataConfig',
     'NodePoolPlacementPolicy',
     'NodePoolQueuedProvisioning',
@@ -321,6 +326,7 @@ __all__ = [
     'GetClusterConfidentialNodeResult',
     'GetClusterControlPlaneEndpointsConfigResult',
     'GetClusterControlPlaneEndpointsConfigDnsEndpointConfigResult',
+    'GetClusterControlPlaneEndpointsConfigIpEndpointsConfigResult',
     'GetClusterCostManagementConfigResult',
     'GetClusterDatabaseEncryptionResult',
     'GetClusterDefaultSnatStatusResult',
@@ -377,6 +383,7 @@ __all__ = [
     'GetClusterNodeConfigSoleTenantConfigResult',
     'GetClusterNodeConfigSoleTenantConfigNodeAffinityResult',
     'GetClusterNodeConfigTaintResult',
+    'GetClusterNodeConfigWindowsNodeConfigResult',
     'GetClusterNodeConfigWorkloadMetadataConfigResult',
     'GetClusterNodePoolResult',
     'GetClusterNodePoolAutoConfigResult',
@@ -425,6 +432,7 @@ __all__ = [
     'GetClusterNodePoolNodeConfigSoleTenantConfigResult',
     'GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityResult',
     'GetClusterNodePoolNodeConfigTaintResult',
+    'GetClusterNodePoolNodeConfigWindowsNodeConfigResult',
     'GetClusterNodePoolNodeConfigWorkloadMetadataConfigResult',
     'GetClusterNodePoolPlacementPolicyResult',
     'GetClusterNodePoolQueuedProvisioningResult',
@@ -434,6 +442,7 @@ __all__ = [
     'GetClusterNotificationConfigResult',
     'GetClusterNotificationConfigPubsubResult',
     'GetClusterNotificationConfigPubsubFilterResult',
+    'GetClusterPodAutoscalingResult',
     'GetClusterPodSecurityPolicyConfigResult',
     'GetClusterPrivateClusterConfigResult',
     'GetClusterPrivateClusterConfigMasterGlobalAccessConfigResult',
@@ -5378,6 +5387,8 @@ class ClusterControlPlaneEndpointsConfig(dict):
         suggest = None
         if key == "dnsEndpointConfig":
             suggest = "dns_endpoint_config"
+        elif key == "ipEndpointsConfig":
+            suggest = "ip_endpoints_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterControlPlaneEndpointsConfig. Access the value via the '{suggest}' property getter instead.")
@@ -5391,12 +5402,16 @@ class ClusterControlPlaneEndpointsConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 dns_endpoint_config: Optional['outputs.ClusterControlPlaneEndpointsConfigDnsEndpointConfig'] = None):
+                 dns_endpoint_config: Optional['outputs.ClusterControlPlaneEndpointsConfigDnsEndpointConfig'] = None,
+                 ip_endpoints_config: Optional['outputs.ClusterControlPlaneEndpointsConfigIpEndpointsConfig'] = None):
         """
         :param 'ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs' dns_endpoint_config: DNS endpoint configuration.
+        :param 'ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs' ip_endpoints_config: IP endpoint configuration.
         """
         if dns_endpoint_config is not None:
             pulumi.set(__self__, "dns_endpoint_config", dns_endpoint_config)
+        if ip_endpoints_config is not None:
+            pulumi.set(__self__, "ip_endpoints_config", ip_endpoints_config)
 
     @property
     @pulumi.getter(name="dnsEndpointConfig")
@@ -5405,6 +5420,14 @@ class ClusterControlPlaneEndpointsConfig(dict):
         DNS endpoint configuration.
         """
         return pulumi.get(self, "dns_endpoint_config")
+
+    @property
+    @pulumi.getter(name="ipEndpointsConfig")
+    def ip_endpoints_config(self) -> Optional['outputs.ClusterControlPlaneEndpointsConfigIpEndpointsConfig']:
+        """
+        IP endpoint configuration.
+        """
+        return pulumi.get(self, "ip_endpoints_config")
 
 
 @pulumi.output_type
@@ -5453,6 +5476,25 @@ class ClusterControlPlaneEndpointsConfigDnsEndpointConfig(dict):
         The cluster's DNS endpoint.
         """
         return pulumi.get(self, "endpoint")
+
+
+@pulumi.output_type
+class ClusterControlPlaneEndpointsConfigIpEndpointsConfig(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        """
+        :param bool enabled: Controls whether to allow direct IP access. Defaults to `true`.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Controls whether to allow direct IP access. Defaults to `true`.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -6999,6 +7041,8 @@ class ClusterNodeConfig(dict):
             suggest = "sole_tenant_config"
         elif key == "storagePools":
             suggest = "storage_pools"
+        elif key == "windowsNodeConfig":
+            suggest = "windows_node_config"
         elif key == "workloadMetadataConfig":
             suggest = "workload_metadata_config"
 
@@ -7056,6 +7100,7 @@ class ClusterNodeConfig(dict):
                  storage_pools: Optional[Sequence[str]] = None,
                  tags: Optional[Sequence[str]] = None,
                  taints: Optional[Sequence['outputs.ClusterNodeConfigTaint']] = None,
+                 windows_node_config: Optional['outputs.ClusterNodeConfigWindowsNodeConfig'] = None,
                  workload_metadata_config: Optional['outputs.ClusterNodeConfigWorkloadMetadataConfig'] = None):
         """
         :param 'ClusterNodeConfigAdvancedMachineFeaturesArgs' advanced_machine_features: Specifies options for controlling
@@ -7160,6 +7205,7 @@ class ClusterNodeConfig(dict):
                Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
                this field to manage taints. If you do, `lifecycle.ignore_changes` is
                recommended. Structure is documented below.
+        :param 'ClusterNodeConfigWindowsNodeConfigArgs' windows_node_config: Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
         :param 'ClusterNodeConfigWorkloadMetadataConfigArgs' workload_metadata_config: Metadata configuration to expose to workloads on the node pool.
                Structure is documented below.
         """
@@ -7247,6 +7293,8 @@ class ClusterNodeConfig(dict):
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
+        if windows_node_config is not None:
+            pulumi.set(__self__, "windows_node_config", windows_node_config)
         if workload_metadata_config is not None:
             pulumi.set(__self__, "workload_metadata_config", workload_metadata_config)
 
@@ -7645,6 +7693,14 @@ class ClusterNodeConfig(dict):
         recommended. Structure is documented below.
         """
         return pulumi.get(self, "taints")
+
+    @property
+    @pulumi.getter(name="windowsNodeConfig")
+    def windows_node_config(self) -> Optional['outputs.ClusterNodeConfigWindowsNodeConfig']:
+        """
+        Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+        """
+        return pulumi.get(self, "windows_node_config")
 
     @property
     @pulumi.getter(name="workloadMetadataConfig")
@@ -8986,6 +9042,25 @@ class ClusterNodeConfigTaint(dict):
 
 
 @pulumi.output_type
+class ClusterNodeConfigWindowsNodeConfig(dict):
+    def __init__(__self__, *,
+                 osversion: Optional[str] = None):
+        """
+        :param str osversion: The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+        """
+        if osversion is not None:
+            pulumi.set(__self__, "osversion", osversion)
+
+    @property
+    @pulumi.getter
+    def osversion(self) -> Optional[str]:
+        """
+        The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+        """
+        return pulumi.get(self, "osversion")
+
+
+@pulumi.output_type
 class ClusterNodeConfigWorkloadMetadataConfig(dict):
     def __init__(__self__, *,
                  mode: str):
@@ -10279,6 +10354,8 @@ class ClusterNodePoolNodeConfig(dict):
             suggest = "sole_tenant_config"
         elif key == "storagePools":
             suggest = "storage_pools"
+        elif key == "windowsNodeConfig":
+            suggest = "windows_node_config"
         elif key == "workloadMetadataConfig":
             suggest = "workload_metadata_config"
 
@@ -10336,6 +10413,7 @@ class ClusterNodePoolNodeConfig(dict):
                  storage_pools: Optional[Sequence[str]] = None,
                  tags: Optional[Sequence[str]] = None,
                  taints: Optional[Sequence['outputs.ClusterNodePoolNodeConfigTaint']] = None,
+                 windows_node_config: Optional['outputs.ClusterNodePoolNodeConfigWindowsNodeConfig'] = None,
                  workload_metadata_config: Optional['outputs.ClusterNodePoolNodeConfigWorkloadMetadataConfig'] = None):
         """
         :param 'ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs' advanced_machine_features: Specifies options for controlling
@@ -10440,6 +10518,7 @@ class ClusterNodePoolNodeConfig(dict):
                Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
                this field to manage taints. If you do, `lifecycle.ignore_changes` is
                recommended. Structure is documented below.
+        :param 'ClusterNodePoolNodeConfigWindowsNodeConfigArgs' windows_node_config: Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
         :param 'ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs' workload_metadata_config: Metadata configuration to expose to workloads on the node pool.
                Structure is documented below.
         """
@@ -10527,6 +10606,8 @@ class ClusterNodePoolNodeConfig(dict):
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
+        if windows_node_config is not None:
+            pulumi.set(__self__, "windows_node_config", windows_node_config)
         if workload_metadata_config is not None:
             pulumi.set(__self__, "workload_metadata_config", workload_metadata_config)
 
@@ -10925,6 +11006,14 @@ class ClusterNodePoolNodeConfig(dict):
         recommended. Structure is documented below.
         """
         return pulumi.get(self, "taints")
+
+    @property
+    @pulumi.getter(name="windowsNodeConfig")
+    def windows_node_config(self) -> Optional['outputs.ClusterNodePoolNodeConfigWindowsNodeConfig']:
+        """
+        Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+        """
+        return pulumi.get(self, "windows_node_config")
 
     @property
     @pulumi.getter(name="workloadMetadataConfig")
@@ -12266,6 +12355,25 @@ class ClusterNodePoolNodeConfigTaint(dict):
 
 
 @pulumi.output_type
+class ClusterNodePoolNodeConfigWindowsNodeConfig(dict):
+    def __init__(__self__, *,
+                 osversion: Optional[str] = None):
+        """
+        :param str osversion: The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+        """
+        if osversion is not None:
+            pulumi.set(__self__, "osversion", osversion)
+
+    @property
+    @pulumi.getter
+    def osversion(self) -> Optional[str]:
+        """
+        The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+        """
+        return pulumi.get(self, "osversion")
+
+
+@pulumi.output_type
 class ClusterNodePoolNodeConfigWorkloadMetadataConfig(dict):
     def __init__(__self__, *,
                  mode: str):
@@ -12654,6 +12762,49 @@ class ClusterNotificationConfigPubsubFilter(dict):
         Can be used to filter what notifications are sent. Accepted values are `UPGRADE_AVAILABLE_EVENT`, `UPGRADE_EVENT`, `SECURITY_BULLETIN_EVENT` and `UPGRADE_INFO_EVENT`. See [Filtering notifications](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-notifications#filtering) for more details.
         """
         return pulumi.get(self, "event_types")
+
+
+@pulumi.output_type
+class ClusterPodAutoscaling(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hpaProfile":
+            suggest = "hpa_profile"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterPodAutoscaling. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterPodAutoscaling.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterPodAutoscaling.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 hpa_profile: str):
+        """
+        :param str hpa_profile: Enable the Horizontal Pod Autoscaling profile for this cluster.
+               Acceptable values are:
+               * `"NONE"`: Customers explicitly opt-out of HPA profiles.
+               * `"PERFORMANCE"`: PERFORMANCE is used when customers opt-in to the performance HPA profile. In this profile we support a higher number of HPAs per cluster and faster metrics collection for workload autoscaling.
+               See [HPAProfile](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#hpaprofile) for more details.
+        """
+        pulumi.set(__self__, "hpa_profile", hpa_profile)
+
+    @property
+    @pulumi.getter(name="hpaProfile")
+    def hpa_profile(self) -> str:
+        """
+        Enable the Horizontal Pod Autoscaling profile for this cluster.
+        Acceptable values are:
+        * `"NONE"`: Customers explicitly opt-out of HPA profiles.
+        * `"PERFORMANCE"`: PERFORMANCE is used when customers opt-in to the performance HPA profile. In this profile we support a higher number of HPAs per cluster and faster metrics collection for workload autoscaling.
+        See [HPAProfile](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#hpaprofile) for more details.
+        """
+        return pulumi.get(self, "hpa_profile")
 
 
 @pulumi.output_type
@@ -13982,6 +14133,8 @@ class NodePoolNodeConfig(dict):
             suggest = "sole_tenant_config"
         elif key == "storagePools":
             suggest = "storage_pools"
+        elif key == "windowsNodeConfig":
+            suggest = "windows_node_config"
         elif key == "workloadMetadataConfig":
             suggest = "workload_metadata_config"
 
@@ -14039,6 +14192,7 @@ class NodePoolNodeConfig(dict):
                  storage_pools: Optional[Sequence[str]] = None,
                  tags: Optional[Sequence[str]] = None,
                  taints: Optional[Sequence['outputs.NodePoolNodeConfigTaint']] = None,
+                 windows_node_config: Optional['outputs.NodePoolNodeConfigWindowsNodeConfig'] = None,
                  workload_metadata_config: Optional['outputs.NodePoolNodeConfigWorkloadMetadataConfig'] = None):
         """
         :param 'NodePoolNodeConfigAdvancedMachineFeaturesArgs' advanced_machine_features: Specifies options for controlling advanced machine features.
@@ -14086,6 +14240,7 @@ class NodePoolNodeConfig(dict):
         :param Sequence[str] storage_pools: The list of Storage Pools where boot disks are provisioned.
         :param Sequence[str] tags: The list of instance tags applied to all nodes.
         :param Sequence['NodePoolNodeConfigTaintArgs'] taints: List of Kubernetes taints to be applied to each node.
+        :param 'NodePoolNodeConfigWindowsNodeConfigArgs' windows_node_config: Parameters that can be configured on Windows nodes.
         :param 'NodePoolNodeConfigWorkloadMetadataConfigArgs' workload_metadata_config: The workload metadata configuration for this node.
         """
         if advanced_machine_features is not None:
@@ -14172,6 +14327,8 @@ class NodePoolNodeConfig(dict):
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
+        if windows_node_config is not None:
+            pulumi.set(__self__, "windows_node_config", windows_node_config)
         if workload_metadata_config is not None:
             pulumi.set(__self__, "workload_metadata_config", workload_metadata_config)
 
@@ -14513,6 +14670,14 @@ class NodePoolNodeConfig(dict):
         List of Kubernetes taints to be applied to each node.
         """
         return pulumi.get(self, "taints")
+
+    @property
+    @pulumi.getter(name="windowsNodeConfig")
+    def windows_node_config(self) -> Optional['outputs.NodePoolNodeConfigWindowsNodeConfig']:
+        """
+        Parameters that can be configured on Windows nodes.
+        """
+        return pulumi.get(self, "windows_node_config")
 
     @property
     @pulumi.getter(name="workloadMetadataConfig")
@@ -15781,6 +15946,25 @@ class NodePoolNodeConfigTaint(dict):
 
 
 @pulumi.output_type
+class NodePoolNodeConfigWindowsNodeConfig(dict):
+    def __init__(__self__, *,
+                 osversion: Optional[str] = None):
+        """
+        :param str osversion: The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+        """
+        if osversion is not None:
+            pulumi.set(__self__, "osversion", osversion)
+
+    @property
+    @pulumi.getter
+    def osversion(self) -> Optional[str]:
+        """
+        The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+        """
+        return pulumi.get(self, "osversion")
+
+
+@pulumi.output_type
 class NodePoolNodeConfigWorkloadMetadataConfig(dict):
     def __init__(__self__, *,
                  mode: str):
@@ -17045,11 +17229,14 @@ class GetClusterConfidentialNodeResult(dict):
 @pulumi.output_type
 class GetClusterControlPlaneEndpointsConfigResult(dict):
     def __init__(__self__, *,
-                 dns_endpoint_configs: Sequence['outputs.GetClusterControlPlaneEndpointsConfigDnsEndpointConfigResult']):
+                 dns_endpoint_configs: Sequence['outputs.GetClusterControlPlaneEndpointsConfigDnsEndpointConfigResult'],
+                 ip_endpoints_configs: Sequence['outputs.GetClusterControlPlaneEndpointsConfigIpEndpointsConfigResult']):
         """
         :param Sequence['GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs'] dns_endpoint_configs: DNS endpoint configuration.
+        :param Sequence['GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs'] ip_endpoints_configs: IP endpoint configuration.
         """
         pulumi.set(__self__, "dns_endpoint_configs", dns_endpoint_configs)
+        pulumi.set(__self__, "ip_endpoints_configs", ip_endpoints_configs)
 
     @property
     @pulumi.getter(name="dnsEndpointConfigs")
@@ -17058,6 +17245,14 @@ class GetClusterControlPlaneEndpointsConfigResult(dict):
         DNS endpoint configuration.
         """
         return pulumi.get(self, "dns_endpoint_configs")
+
+    @property
+    @pulumi.getter(name="ipEndpointsConfigs")
+    def ip_endpoints_configs(self) -> Sequence['outputs.GetClusterControlPlaneEndpointsConfigIpEndpointsConfigResult']:
+        """
+        IP endpoint configuration.
+        """
+        return pulumi.get(self, "ip_endpoints_configs")
 
 
 @pulumi.output_type
@@ -17087,6 +17282,24 @@ class GetClusterControlPlaneEndpointsConfigDnsEndpointConfigResult(dict):
         The cluster's DNS endpoint.
         """
         return pulumi.get(self, "endpoint")
+
+
+@pulumi.output_type
+class GetClusterControlPlaneEndpointsConfigIpEndpointsConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Controls whether to allow direct IP access.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Controls whether to allow direct IP access.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -17972,6 +18185,7 @@ class GetClusterNodeConfigResult(dict):
                  storage_pools: Sequence[str],
                  tags: Sequence[str],
                  taints: Sequence['outputs.GetClusterNodeConfigTaintResult'],
+                 windows_node_configs: Sequence['outputs.GetClusterNodeConfigWindowsNodeConfigResult'],
                  workload_metadata_configs: Sequence['outputs.GetClusterNodeConfigWorkloadMetadataConfigResult']):
         """
         :param Sequence['GetClusterNodeConfigAdvancedMachineFeatureArgs'] advanced_machine_features: Specifies options for controlling advanced machine features.
@@ -18016,6 +18230,7 @@ class GetClusterNodeConfigResult(dict):
         :param Sequence[str] storage_pools: The list of Storage Pools where boot disks are provisioned.
         :param Sequence[str] tags: The list of instance tags applied to all nodes.
         :param Sequence['GetClusterNodeConfigTaintArgs'] taints: List of Kubernetes taints to be applied to each node.
+        :param Sequence['GetClusterNodeConfigWindowsNodeConfigArgs'] windows_node_configs: Parameters that can be configured on Windows nodes.
         :param Sequence['GetClusterNodeConfigWorkloadMetadataConfigArgs'] workload_metadata_configs: The workload metadata configuration for this node.
         """
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -18060,6 +18275,7 @@ class GetClusterNodeConfigResult(dict):
         pulumi.set(__self__, "storage_pools", storage_pools)
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "taints", taints)
+        pulumi.set(__self__, "windows_node_configs", windows_node_configs)
         pulumi.set(__self__, "workload_metadata_configs", workload_metadata_configs)
 
     @property
@@ -18397,6 +18613,14 @@ class GetClusterNodeConfigResult(dict):
         List of Kubernetes taints to be applied to each node.
         """
         return pulumi.get(self, "taints")
+
+    @property
+    @pulumi.getter(name="windowsNodeConfigs")
+    def windows_node_configs(self) -> Sequence['outputs.GetClusterNodeConfigWindowsNodeConfigResult']:
+        """
+        Parameters that can be configured on Windows nodes.
+        """
+        return pulumi.get(self, "windows_node_configs")
 
     @property
     @pulumi.getter(name="workloadMetadataConfigs")
@@ -19246,6 +19470,24 @@ class GetClusterNodeConfigTaintResult(dict):
 
 
 @pulumi.output_type
+class GetClusterNodeConfigWindowsNodeConfigResult(dict):
+    def __init__(__self__, *,
+                 osversion: str):
+        """
+        :param str osversion: The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+        """
+        pulumi.set(__self__, "osversion", osversion)
+
+    @property
+    @pulumi.getter
+    def osversion(self) -> str:
+        """
+        The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+        """
+        return pulumi.get(self, "osversion")
+
+
+@pulumi.output_type
 class GetClusterNodeConfigWorkloadMetadataConfigResult(dict):
     def __init__(__self__, *,
                  mode: str):
@@ -20058,6 +20300,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
                  storage_pools: Sequence[str],
                  tags: Sequence[str],
                  taints: Sequence['outputs.GetClusterNodePoolNodeConfigTaintResult'],
+                 windows_node_configs: Sequence['outputs.GetClusterNodePoolNodeConfigWindowsNodeConfigResult'],
                  workload_metadata_configs: Sequence['outputs.GetClusterNodePoolNodeConfigWorkloadMetadataConfigResult']):
         """
         :param Sequence['GetClusterNodePoolNodeConfigAdvancedMachineFeatureArgs'] advanced_machine_features: Specifies options for controlling advanced machine features.
@@ -20102,6 +20345,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         :param Sequence[str] storage_pools: The list of Storage Pools where boot disks are provisioned.
         :param Sequence[str] tags: The list of instance tags applied to all nodes.
         :param Sequence['GetClusterNodePoolNodeConfigTaintArgs'] taints: List of Kubernetes taints to be applied to each node.
+        :param Sequence['GetClusterNodePoolNodeConfigWindowsNodeConfigArgs'] windows_node_configs: Parameters that can be configured on Windows nodes.
         :param Sequence['GetClusterNodePoolNodeConfigWorkloadMetadataConfigArgs'] workload_metadata_configs: The workload metadata configuration for this node.
         """
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -20146,6 +20390,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         pulumi.set(__self__, "storage_pools", storage_pools)
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "taints", taints)
+        pulumi.set(__self__, "windows_node_configs", windows_node_configs)
         pulumi.set(__self__, "workload_metadata_configs", workload_metadata_configs)
 
     @property
@@ -20483,6 +20728,14 @@ class GetClusterNodePoolNodeConfigResult(dict):
         List of Kubernetes taints to be applied to each node.
         """
         return pulumi.get(self, "taints")
+
+    @property
+    @pulumi.getter(name="windowsNodeConfigs")
+    def windows_node_configs(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigWindowsNodeConfigResult']:
+        """
+        Parameters that can be configured on Windows nodes.
+        """
+        return pulumi.get(self, "windows_node_configs")
 
     @property
     @pulumi.getter(name="workloadMetadataConfigs")
@@ -21332,6 +21585,24 @@ class GetClusterNodePoolNodeConfigTaintResult(dict):
 
 
 @pulumi.output_type
+class GetClusterNodePoolNodeConfigWindowsNodeConfigResult(dict):
+    def __init__(__self__, *,
+                 osversion: str):
+        """
+        :param str osversion: The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+        """
+        pulumi.set(__self__, "osversion", osversion)
+
+    @property
+    @pulumi.getter
+    def osversion(self) -> str:
+        """
+        The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+        """
+        return pulumi.get(self, "osversion")
+
+
+@pulumi.output_type
 class GetClusterNodePoolNodeConfigWorkloadMetadataConfigResult(dict):
     def __init__(__self__, *,
                  mode: str):
@@ -21601,6 +21872,30 @@ class GetClusterNotificationConfigPubsubFilterResult(dict):
         Can be used to filter what notifications are sent. Valid values include include UPGRADE_AVAILABLE_EVENT, UPGRADE_EVENT, SECURITY_BULLETIN_EVENT, and UPGRADE_INFO_EVENT
         """
         return pulumi.get(self, "event_types")
+
+
+@pulumi.output_type
+class GetClusterPodAutoscalingResult(dict):
+    def __init__(__self__, *,
+                 hpa_profile: str):
+        """
+        :param str hpa_profile: HPA Profile is used to configure the Horizontal Pod Autoscaler (HPA) profile for the cluster.
+               								Available options include:
+               								- NONE: Customers explicitly opt-out of HPA profiles.
+               								- PERFORMANCE: PERFORMANCE is used when customers opt-in to the performance HPA profile. In this profile we support a higher number of HPAs per cluster and faster metrics collection for workload autoscaling.
+        """
+        pulumi.set(__self__, "hpa_profile", hpa_profile)
+
+    @property
+    @pulumi.getter(name="hpaProfile")
+    def hpa_profile(self) -> str:
+        """
+        HPA Profile is used to configure the Horizontal Pod Autoscaler (HPA) profile for the cluster.
+        								Available options include:
+        								- NONE: Customers explicitly opt-out of HPA profiles.
+        								- PERFORMANCE: PERFORMANCE is used when customers opt-in to the performance HPA profile. In this profile we support a higher number of HPAs per cluster and faster metrics collection for workload autoscaling.
+        """
+        return pulumi.get(self, "hpa_profile")
 
 
 @pulumi.output_type

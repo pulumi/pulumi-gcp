@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.networksecurity.InterceptDeploymentGroupArgs;
 import com.pulumi.gcp.networksecurity.inputs.InterceptDeploymentGroupState;
 import com.pulumi.gcp.networksecurity.outputs.InterceptDeploymentGroupConnectedEndpointGroup;
+import com.pulumi.gcp.networksecurity.outputs.InterceptDeploymentGroupLocation;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -209,6 +210,22 @@ public class InterceptDeploymentGroup extends com.pulumi.resources.CustomResourc
         return this.location;
     }
     /**
+     * The list of locations where the deployment group is present.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="locations", refs={List.class,InterceptDeploymentGroupLocation.class}, tree="[0,1]")
+    private Output<List<InterceptDeploymentGroupLocation>> locations;
+
+    /**
+     * @return The list of locations where the deployment group is present.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<InterceptDeploymentGroupLocation>> locations() {
+        return this.locations;
+    }
+    /**
      * (Output)
      * The connected endpoint group&#39;s resource name, for example:
      * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
@@ -299,26 +316,24 @@ public class InterceptDeploymentGroup extends com.pulumi.resources.CustomResourc
         return this.reconciling;
     }
     /**
-     * The current state of the deployment group.
-     * See https://google.aip.dev/216.
+     * (Output)
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
-     * CREATING
-     * DELETING
+     * OUT_OF_SYNC
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return The current state of the deployment group.
-     * See https://google.aip.dev/216.
+     * @return (Output)
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
-     * CREATING
-     * DELETING
+     * OUT_OF_SYNC
      * 
      */
     public Output<String> state() {

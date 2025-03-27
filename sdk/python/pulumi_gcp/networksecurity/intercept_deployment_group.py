@@ -149,6 +149,7 @@ class _InterceptDeploymentGroupState:
                  intercept_deployment_group_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 locations: Optional[pulumi.Input[Sequence[pulumi.Input['InterceptDeploymentGroupLocationArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -174,6 +175,8 @@ class _InterceptDeploymentGroupState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The cloud location of the deployment group, currently restricted to `global`.
+        :param pulumi.Input[Sequence[pulumi.Input['InterceptDeploymentGroupLocationArgs']]] locations: The list of locations where the deployment group is present.
+               Structure is documented below.
         :param pulumi.Input[str] name: (Output)
                The connected endpoint group's resource name, for example:
                `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
@@ -189,13 +192,12 @@ class _InterceptDeploymentGroupState:
                and the system is working to reconcile them. This is part of the normal
                operation (e.g. adding a new deployment to the group)
                See https://google.aip.dev/128.
-        :param pulumi.Input[str] state: The current state of the deployment group.
-               See https://google.aip.dev/216.
+        :param pulumi.Input[str] state: (Output)
+               The current state of the association in this location.
                Possible values:
                STATE_UNSPECIFIED
                ACTIVE
-               CREATING
-               DELETING
+               OUT_OF_SYNC
         :param pulumi.Input[str] update_time: The timestamp when the resource was most recently updated.
                See https://google.aip.dev/148#timestamps.
         """
@@ -213,6 +215,8 @@ class _InterceptDeploymentGroupState:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if locations is not None:
+            pulumi.set(__self__, "locations", locations)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
@@ -323,6 +327,19 @@ class _InterceptDeploymentGroupState:
 
     @property
     @pulumi.getter
+    def locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterceptDeploymentGroupLocationArgs']]]]:
+        """
+        The list of locations where the deployment group is present.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "locations")
+
+    @locations.setter
+    def locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterceptDeploymentGroupLocationArgs']]]]):
+        pulumi.set(self, "locations", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         (Output)
@@ -395,13 +412,12 @@ class _InterceptDeploymentGroupState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        The current state of the deployment group.
-        See https://google.aip.dev/216.
+        (Output)
+        The current state of the association in this location.
         Possible values:
         STATE_UNSPECIFIED
         ACTIVE
-        CREATING
-        DELETING
+        OUT_OF_SYNC
         """
         return pulumi.get(self, "state")
 
@@ -597,6 +613,7 @@ class InterceptDeploymentGroup(pulumi.CustomResource):
             __props__.__dict__["connected_endpoint_groups"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["locations"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["reconciling"] = None
@@ -621,6 +638,7 @@ class InterceptDeploymentGroup(pulumi.CustomResource):
             intercept_deployment_group_id: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
+            locations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InterceptDeploymentGroupLocationArgs', 'InterceptDeploymentGroupLocationArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -651,6 +669,8 @@ class InterceptDeploymentGroup(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The cloud location of the deployment group, currently restricted to `global`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterceptDeploymentGroupLocationArgs', 'InterceptDeploymentGroupLocationArgsDict']]]] locations: The list of locations where the deployment group is present.
+               Structure is documented below.
         :param pulumi.Input[str] name: (Output)
                The connected endpoint group's resource name, for example:
                `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
@@ -666,13 +686,12 @@ class InterceptDeploymentGroup(pulumi.CustomResource):
                and the system is working to reconcile them. This is part of the normal
                operation (e.g. adding a new deployment to the group)
                See https://google.aip.dev/128.
-        :param pulumi.Input[str] state: The current state of the deployment group.
-               See https://google.aip.dev/216.
+        :param pulumi.Input[str] state: (Output)
+               The current state of the association in this location.
                Possible values:
                STATE_UNSPECIFIED
                ACTIVE
-               CREATING
-               DELETING
+               OUT_OF_SYNC
         :param pulumi.Input[str] update_time: The timestamp when the resource was most recently updated.
                See https://google.aip.dev/148#timestamps.
         """
@@ -687,6 +706,7 @@ class InterceptDeploymentGroup(pulumi.CustomResource):
         __props__.__dict__["intercept_deployment_group_id"] = intercept_deployment_group_id
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
+        __props__.__dict__["locations"] = locations
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
         __props__.__dict__["project"] = project
@@ -763,6 +783,15 @@ class InterceptDeploymentGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def locations(self) -> pulumi.Output[Sequence['outputs.InterceptDeploymentGroupLocation']]:
+        """
+        The list of locations where the deployment group is present.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "locations")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         (Output)
@@ -815,13 +844,12 @@ class InterceptDeploymentGroup(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        The current state of the deployment group.
-        See https://google.aip.dev/216.
+        (Output)
+        The current state of the association in this location.
         Possible values:
         STATE_UNSPECIFIED
         ACTIVE
-        CREATING
-        DELETING
+        OUT_OF_SYNC
         """
         return pulumi.get(self, "state")
 

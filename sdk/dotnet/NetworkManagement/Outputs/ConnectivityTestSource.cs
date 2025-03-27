@@ -14,17 +14,38 @@ namespace Pulumi.Gcp.NetworkManagement.Outputs
     public sealed class ConnectivityTestSource
     {
         /// <summary>
+        /// An App Engine service version.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ConnectivityTestSourceAppEngineVersion? AppEngineVersion;
+        /// <summary>
+        /// A Cloud Function.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ConnectivityTestSourceCloudFunction? CloudFunction;
+        /// <summary>
+        /// A Cloud Run revision.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ConnectivityTestSourceCloudRunRevision? CloudRunRevision;
+        /// <summary>
+        /// A Cloud SQL instance URI.
+        /// </summary>
+        public readonly string? CloudSqlInstance;
+        /// <summary>
+        /// A cluster URI for Google Kubernetes Engine cluster control plane.
+        /// </summary>
+        public readonly string? GkeMasterCluster;
+        /// <summary>
         /// A Compute Engine instance URI.
         /// </summary>
         public readonly string? Instance;
         /// <summary>
-        /// The IP address of the endpoint, which can be an external or
-        /// internal IP. An IPv6 address is only allowed when the test's
-        /// destination is a global load balancer VIP.
+        /// The IP address of the endpoint, which can be an external or internal IP.
         /// </summary>
         public readonly string? IpAddress;
         /// <summary>
-        /// A Compute Engine network URI.
+        /// A VPC network URI.
         /// </summary>
         public readonly string? Network;
         /// <summary>
@@ -33,25 +54,35 @@ namespace Pulumi.Gcp.NetworkManagement.Outputs
         /// </summary>
         public readonly string? NetworkType;
         /// <summary>
-        /// The IP protocol port of the endpoint. Only applicable when
-        /// protocol is TCP or UDP.
+        /// The IP protocol port of the endpoint. Only applicable when protocol is
+        /// TCP or UDP.
         /// </summary>
         public readonly int? Port;
         /// <summary>
-        /// Project ID where the endpoint is located. The Project ID can be
-        /// derived from the URI if you provide a VM instance or network URI.
-        /// The following are two cases where you must provide the project ID:
-        /// 1. Only the IP address is specified, and the IP address is
-        /// within a GCP project.
-        /// 2. When you are using Shared VPC and the IP address
-        /// that you provide is from the service project. In this case,
-        /// the network that the IP address resides in is defined in the
-        /// host project.
+        /// Project ID where the endpoint is located.
+        /// The project ID can be derived from the URI if you provide a endpoint or
+        /// network URI.
+        /// The following are two cases where you may need to provide the project ID:
+        /// 1. Only the IP address is specified, and the IP address is within a Google
+        /// Cloud project.
+        /// 2. When you are using Shared VPC and the IP address that you provide is
+        /// from the service project. In this case, the network that the IP address
+        /// resides in is defined in the host project.
         /// </summary>
         public readonly string? ProjectId;
 
         [OutputConstructor]
         private ConnectivityTestSource(
+            Outputs.ConnectivityTestSourceAppEngineVersion? appEngineVersion,
+
+            Outputs.ConnectivityTestSourceCloudFunction? cloudFunction,
+
+            Outputs.ConnectivityTestSourceCloudRunRevision? cloudRunRevision,
+
+            string? cloudSqlInstance,
+
+            string? gkeMasterCluster,
+
             string? instance,
 
             string? ipAddress,
@@ -64,6 +95,11 @@ namespace Pulumi.Gcp.NetworkManagement.Outputs
 
             string? projectId)
         {
+            AppEngineVersion = appEngineVersion;
+            CloudFunction = cloudFunction;
+            CloudRunRevision = cloudRunRevision;
+            CloudSqlInstance = cloudSqlInstance;
+            GkeMasterCluster = gkeMasterCluster;
             Instance = instance;
             IpAddress = ipAddress;
             Network = network;

@@ -255,6 +255,14 @@ class RouterRoutePolicy(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A route policy created in a router
+
+        To get more information about RouterRoutePolicy, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
+        * How-to Guides
+            * [Google Cloud Router](https://cloud.google.com/router/docs/)
+
         ## Example Usage
 
         ### Router Route Policy Export
@@ -371,6 +379,14 @@ class RouterRoutePolicy(pulumi.CustomResource):
                  args: RouterRoutePolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A route policy created in a router
+
+        To get more information about RouterRoutePolicy, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
+        * How-to Guides
+            * [Google Cloud Router](https://cloud.google.com/router/docs/)
+
         ## Example Usage
 
         ### Router Route Policy Export

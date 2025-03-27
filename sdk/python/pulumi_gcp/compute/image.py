@@ -31,6 +31,7 @@ class ImageArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  raw_disk: Optional[pulumi.Input['ImageRawDiskArgs']] = None,
+                 shielded_instance_initial_state: Optional[pulumi.Input['ImageShieldedInstanceInitialStateArgs']] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
                  source_snapshot: Optional[pulumi.Input[str]] = None,
@@ -70,6 +71,8 @@ class ImageArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['ImageRawDiskArgs'] raw_disk: The parameters of the raw disk image.
+               Structure is documented below.
+        :param pulumi.Input['ImageShieldedInstanceInitialStateArgs'] shielded_instance_initial_state: Set the secure boot keys of shielded instance.
                Structure is documented below.
         :param pulumi.Input[str] source_disk: The source disk to create this image based on.
                You must provide either this property or the
@@ -111,6 +114,8 @@ class ImageArgs:
             pulumi.set(__self__, "project", project)
         if raw_disk is not None:
             pulumi.set(__self__, "raw_disk", raw_disk)
+        if shielded_instance_initial_state is not None:
+            pulumi.set(__self__, "shielded_instance_initial_state", shielded_instance_initial_state)
         if source_disk is not None:
             pulumi.set(__self__, "source_disk", source_disk)
         if source_image is not None:
@@ -265,6 +270,19 @@ class ImageArgs:
         pulumi.set(self, "raw_disk", value)
 
     @property
+    @pulumi.getter(name="shieldedInstanceInitialState")
+    def shielded_instance_initial_state(self) -> Optional[pulumi.Input['ImageShieldedInstanceInitialStateArgs']]:
+        """
+        Set the secure boot keys of shielded instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "shielded_instance_initial_state")
+
+    @shielded_instance_initial_state.setter
+    def shielded_instance_initial_state(self, value: Optional[pulumi.Input['ImageShieldedInstanceInitialStateArgs']]):
+        pulumi.set(self, "shielded_instance_initial_state", value)
+
+    @property
     @pulumi.getter(name="sourceDisk")
     def source_disk(self) -> Optional[pulumi.Input[str]]:
         """
@@ -347,6 +365,7 @@ class _ImageState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  raw_disk: Optional[pulumi.Input['ImageRawDiskArgs']] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
+                 shielded_instance_initial_state: Optional[pulumi.Input['ImageShieldedInstanceInitialStateArgs']] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
                  source_snapshot: Optional[pulumi.Input[str]] = None,
@@ -396,6 +415,8 @@ class _ImageState:
         :param pulumi.Input['ImageRawDiskArgs'] raw_disk: The parameters of the raw disk image.
                Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input['ImageShieldedInstanceInitialStateArgs'] shielded_instance_initial_state: Set the secure boot keys of shielded instance.
+               Structure is documented below.
         :param pulumi.Input[str] source_disk: The source disk to create this image based on.
                You must provide either this property or the
                rawDisk.source property but not both to create an image.
@@ -448,6 +469,8 @@ class _ImageState:
             pulumi.set(__self__, "raw_disk", raw_disk)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if shielded_instance_initial_state is not None:
+            pulumi.set(__self__, "shielded_instance_initial_state", shielded_instance_initial_state)
         if source_disk is not None:
             pulumi.set(__self__, "source_disk", source_disk)
         if source_image is not None:
@@ -677,6 +700,19 @@ class _ImageState:
         pulumi.set(self, "self_link", value)
 
     @property
+    @pulumi.getter(name="shieldedInstanceInitialState")
+    def shielded_instance_initial_state(self) -> Optional[pulumi.Input['ImageShieldedInstanceInitialStateArgs']]:
+        """
+        Set the secure boot keys of shielded instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "shielded_instance_initial_state")
+
+    @shielded_instance_initial_state.setter
+    def shielded_instance_initial_state(self, value: Optional[pulumi.Input['ImageShieldedInstanceInitialStateArgs']]):
+        pulumi.set(self, "shielded_instance_initial_state", value)
+
+    @property
     @pulumi.getter(name="sourceDisk")
     def source_disk(self) -> Optional[pulumi.Input[str]]:
         """
@@ -755,6 +791,7 @@ class Image(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  raw_disk: Optional[pulumi.Input[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict']]] = None,
+                 shielded_instance_initial_state: Optional[pulumi.Input[Union['ImageShieldedInstanceInitialStateArgs', 'ImageShieldedInstanceInitialStateArgsDict']]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
                  source_snapshot: Optional[pulumi.Input[str]] = None,
@@ -918,6 +955,8 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict']] raw_disk: The parameters of the raw disk image.
+               Structure is documented below.
+        :param pulumi.Input[Union['ImageShieldedInstanceInitialStateArgs', 'ImageShieldedInstanceInitialStateArgsDict']] shielded_instance_initial_state: Set the secure boot keys of shielded instance.
                Structure is documented below.
         :param pulumi.Input[str] source_disk: The source disk to create this image based on.
                You must provide either this property or the
@@ -1093,6 +1132,7 @@ class Image(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  raw_disk: Optional[pulumi.Input[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict']]] = None,
+                 shielded_instance_initial_state: Optional[pulumi.Input[Union['ImageShieldedInstanceInitialStateArgs', 'ImageShieldedInstanceInitialStateArgsDict']]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
                  source_snapshot: Optional[pulumi.Input[str]] = None,
@@ -1116,6 +1156,7 @@ class Image(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["raw_disk"] = raw_disk
+            __props__.__dict__["shielded_instance_initial_state"] = shielded_instance_initial_state
             __props__.__dict__["source_disk"] = source_disk
             __props__.__dict__["source_image"] = source_image
             __props__.__dict__["source_snapshot"] = source_snapshot
@@ -1154,6 +1195,7 @@ class Image(pulumi.CustomResource):
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             raw_disk: Optional[pulumi.Input[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict']]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
+            shielded_instance_initial_state: Optional[pulumi.Input[Union['ImageShieldedInstanceInitialStateArgs', 'ImageShieldedInstanceInitialStateArgsDict']]] = None,
             source_disk: Optional[pulumi.Input[str]] = None,
             source_image: Optional[pulumi.Input[str]] = None,
             source_snapshot: Optional[pulumi.Input[str]] = None,
@@ -1208,6 +1250,8 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict']] raw_disk: The parameters of the raw disk image.
                Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[Union['ImageShieldedInstanceInitialStateArgs', 'ImageShieldedInstanceInitialStateArgsDict']] shielded_instance_initial_state: Set the secure boot keys of shielded instance.
+               Structure is documented below.
         :param pulumi.Input[str] source_disk: The source disk to create this image based on.
                You must provide either this property or the
                rawDisk.source property but not both to create an image.
@@ -1248,6 +1292,7 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["raw_disk"] = raw_disk
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["shielded_instance_initial_state"] = shielded_instance_initial_state
         __props__.__dict__["source_disk"] = source_disk
         __props__.__dict__["source_image"] = source_image
         __props__.__dict__["source_snapshot"] = source_snapshot
@@ -1408,6 +1453,15 @@ class Image(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="shieldedInstanceInitialState")
+    def shielded_instance_initial_state(self) -> pulumi.Output['outputs.ImageShieldedInstanceInitialState']:
+        """
+        Set the secure boot keys of shielded instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "shielded_instance_initial_state")
 
     @property
     @pulumi.getter(name="sourceDisk")

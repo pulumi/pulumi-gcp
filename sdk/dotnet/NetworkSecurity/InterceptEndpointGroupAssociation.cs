@@ -137,6 +137,15 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// The list of locations where the association is configured. This information
+        /// is retrieved from the linked endpoint group.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("locations")]
+        public Output<ImmutableArray<Outputs.InterceptEndpointGroupAssociationLocation>> Locations { get; private set; } = null!;
+
+        /// <summary>
+        /// (Deprecated)
         /// The list of locations where the association is present. This information
         /// is retrieved from the linked endpoint group, and not configured as part
         /// of the association itself.
@@ -377,15 +386,31 @@ namespace Pulumi.Gcp.NetworkSecurity
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        [Input("locations")]
+        private InputList<Inputs.InterceptEndpointGroupAssociationLocationGetArgs>? _locations;
+
+        /// <summary>
+        /// The list of locations where the association is configured. This information
+        /// is retrieved from the linked endpoint group.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.InterceptEndpointGroupAssociationLocationGetArgs> Locations
+        {
+            get => _locations ?? (_locations = new InputList<Inputs.InterceptEndpointGroupAssociationLocationGetArgs>());
+            set => _locations = value;
+        }
+
         [Input("locationsDetails")]
         private InputList<Inputs.InterceptEndpointGroupAssociationLocationsDetailGetArgs>? _locationsDetails;
 
         /// <summary>
+        /// (Deprecated)
         /// The list of locations where the association is present. This information
         /// is retrieved from the linked endpoint group, and not configured as part
         /// of the association itself.
         /// Structure is documented below.
         /// </summary>
+        [Obsolete(@"`locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.")]
         public InputList<Inputs.InterceptEndpointGroupAssociationLocationsDetailGetArgs> LocationsDetails
         {
             get => _locationsDetails ?? (_locationsDetails = new InputList<Inputs.InterceptEndpointGroupAssociationLocationsDetailGetArgs>());

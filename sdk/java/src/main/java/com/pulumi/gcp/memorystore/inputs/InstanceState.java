@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.memorystore.inputs.InstanceDesiredPscAutoConnectionArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceDiscoveryEndpointArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceEndpointArgs;
+import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyArgs;
+import com.pulumi.gcp.memorystore.inputs.InstanceMaintenanceScheduleArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceNodeConfigArgs;
 import com.pulumi.gcp.memorystore.inputs.InstancePersistenceConfigArgs;
 import com.pulumi.gcp.memorystore.inputs.InstancePscAutoConnectionArgs;
@@ -240,6 +242,40 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Maintenance policy for a cluster
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="maintenancePolicy")
+    private @Nullable Output<InstanceMaintenancePolicyArgs> maintenancePolicy;
+
+    /**
+     * @return Maintenance policy for a cluster
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceMaintenancePolicyArgs>> maintenancePolicy() {
+        return Optional.ofNullable(this.maintenancePolicy);
+    }
+
+    /**
+     * Upcoming maintenance schedule.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="maintenanceSchedules")
+    private @Nullable Output<List<InstanceMaintenanceScheduleArgs>> maintenanceSchedules;
+
+    /**
+     * @return Upcoming maintenance schedule.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<InstanceMaintenanceScheduleArgs>>> maintenanceSchedules() {
+        return Optional.ofNullable(this.maintenanceSchedules);
+    }
+
+    /**
      * Optional. cluster or cluster-disabled.
      * Possible values:
      * CLUSTER
@@ -297,7 +333,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. Immutable. Machine type for individual nodes of the instance.
+     * Optional. Machine type for individual nodes of the instance.
      * Possible values:
      * SHARED_CORE_NANO
      * HIGHMEM_MEDIUM
@@ -309,7 +345,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> nodeType;
 
     /**
-     * @return Optional. Immutable. Machine type for individual nodes of the instance.
+     * @return Optional. Machine type for individual nodes of the instance.
      * Possible values:
      * SHARED_CORE_NANO
      * HIGHMEM_MEDIUM
@@ -544,6 +580,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.instanceId = $.instanceId;
         this.labels = $.labels;
         this.location = $.location;
+        this.maintenancePolicy = $.maintenancePolicy;
+        this.maintenanceSchedules = $.maintenanceSchedules;
         this.mode = $.mode;
         this.name = $.name;
         this.nodeConfigs = $.nodeConfigs;
@@ -898,6 +936,63 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param maintenancePolicy Maintenance policy for a cluster
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenancePolicy(@Nullable Output<InstanceMaintenancePolicyArgs> maintenancePolicy) {
+            $.maintenancePolicy = maintenancePolicy;
+            return this;
+        }
+
+        /**
+         * @param maintenancePolicy Maintenance policy for a cluster
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenancePolicy(InstanceMaintenancePolicyArgs maintenancePolicy) {
+            return maintenancePolicy(Output.of(maintenancePolicy));
+        }
+
+        /**
+         * @param maintenanceSchedules Upcoming maintenance schedule.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceSchedules(@Nullable Output<List<InstanceMaintenanceScheduleArgs>> maintenanceSchedules) {
+            $.maintenanceSchedules = maintenanceSchedules;
+            return this;
+        }
+
+        /**
+         * @param maintenanceSchedules Upcoming maintenance schedule.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceSchedules(List<InstanceMaintenanceScheduleArgs> maintenanceSchedules) {
+            return maintenanceSchedules(Output.of(maintenanceSchedules));
+        }
+
+        /**
+         * @param maintenanceSchedules Upcoming maintenance schedule.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceSchedules(InstanceMaintenanceScheduleArgs... maintenanceSchedules) {
+            return maintenanceSchedules(List.of(maintenanceSchedules));
+        }
+
+        /**
          * @param mode Optional. cluster or cluster-disabled.
          * Possible values:
          * CLUSTER
@@ -984,7 +1079,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeType Optional. Immutable. Machine type for individual nodes of the instance.
+         * @param nodeType Optional. Machine type for individual nodes of the instance.
          * Possible values:
          * SHARED_CORE_NANO
          * HIGHMEM_MEDIUM
@@ -1000,7 +1095,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeType Optional. Immutable. Machine type for individual nodes of the instance.
+         * @param nodeType Optional. Machine type for individual nodes of the instance.
          * Possible values:
          * SHARED_CORE_NANO
          * HIGHMEM_MEDIUM

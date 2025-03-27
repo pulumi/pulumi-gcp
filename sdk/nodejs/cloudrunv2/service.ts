@@ -699,8 +699,8 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly ingress!: pulumi.Output<string>;
     /**
-     * Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
-     * only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+     * Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
+     * https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
      */
     public readonly invokerIamDisabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -997,8 +997,8 @@ export interface ServiceState {
      */
     ingress?: pulumi.Input<string>;
     /**
-     * Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
-     * only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+     * Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
+     * https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
      */
     invokerIamDisabled?: pulumi.Input<boolean>;
     /**
@@ -1153,8 +1153,8 @@ export interface ServiceArgs {
      */
     ingress?: pulumi.Input<string>;
     /**
-     * Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
-     * only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+     * Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
+     * https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
      */
     invokerIamDisabled?: pulumi.Input<boolean>;
     /**

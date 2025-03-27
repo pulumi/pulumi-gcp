@@ -242,6 +242,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodePoolNodeConfigTaint> Taints;
         /// <summary>
+        /// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+        /// </summary>
+        public readonly Outputs.ClusterNodePoolNodeConfigWindowsNodeConfig? WindowsNodeConfig;
+        /// <summary>
         /// Metadata configuration to expose to workloads on the node pool.
         /// Structure is documented below.
         /// </summary>
@@ -333,6 +337,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<Outputs.ClusterNodePoolNodeConfigTaint> taints,
 
+            Outputs.ClusterNodePoolNodeConfigWindowsNodeConfig? windowsNodeConfig,
+
             Outputs.ClusterNodePoolNodeConfigWorkloadMetadataConfig? workloadMetadataConfig)
         {
             AdvancedMachineFeatures = advancedMachineFeatures;
@@ -377,6 +383,7 @@ namespace Pulumi.Gcp.Container.Outputs
             StoragePools = storagePools;
             Tags = tags;
             Taints = taints;
+            WindowsNodeConfig = windowsNodeConfig;
             WorkloadMetadataConfig = workloadMetadataConfig;
         }
     }

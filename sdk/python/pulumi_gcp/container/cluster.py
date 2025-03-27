@@ -76,6 +76,7 @@ class ClusterArgs:
                  node_pools: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolArgs']]]] = None,
                  node_version: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input['ClusterNotificationConfigArgs']] = None,
+                 pod_autoscaling: Optional[pulumi.Input['ClusterPodAutoscalingArgs']] = None,
                  pod_security_policy_config: Optional[pulumi.Input['ClusterPodSecurityPolicyConfigArgs']] = None,
                  private_cluster_config: Optional[pulumi.Input['ClusterPrivateClusterConfigArgs']] = None,
                  private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
@@ -264,6 +265,8 @@ class ClusterArgs:
                `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
         :param pulumi.Input['ClusterNotificationConfigArgs'] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
+        :param pulumi.Input['ClusterPodAutoscalingArgs'] pod_autoscaling: Configuration for the
+               Structure is documented below.
         :param pulumi.Input['ClusterPodSecurityPolicyConfigArgs'] pod_security_policy_config: Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
@@ -419,6 +422,8 @@ class ClusterArgs:
             pulumi.set(__self__, "node_version", node_version)
         if notification_config is not None:
             pulumi.set(__self__, "notification_config", notification_config)
+        if pod_autoscaling is not None:
+            pulumi.set(__self__, "pod_autoscaling", pod_autoscaling)
         if pod_security_policy_config is not None:
             pulumi.set(__self__, "pod_security_policy_config", pod_security_policy_config)
         if private_cluster_config is not None:
@@ -1228,6 +1233,19 @@ class ClusterArgs:
         pulumi.set(self, "notification_config", value)
 
     @property
+    @pulumi.getter(name="podAutoscaling")
+    def pod_autoscaling(self) -> Optional[pulumi.Input['ClusterPodAutoscalingArgs']]:
+        """
+        Configuration for the
+        Structure is documented below.
+        """
+        return pulumi.get(self, "pod_autoscaling")
+
+    @pod_autoscaling.setter
+    def pod_autoscaling(self, value: Optional[pulumi.Input['ClusterPodAutoscalingArgs']]):
+        pulumi.set(self, "pod_autoscaling", value)
+
+    @property
     @pulumi.getter(name="podSecurityPolicyConfig")
     def pod_security_policy_config(self) -> Optional[pulumi.Input['ClusterPodSecurityPolicyConfigArgs']]:
         """
@@ -1533,6 +1551,7 @@ class _ClusterState:
                  node_version: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input['ClusterNotificationConfigArgs']] = None,
                  operation: Optional[pulumi.Input[str]] = None,
+                 pod_autoscaling: Optional[pulumi.Input['ClusterPodAutoscalingArgs']] = None,
                  pod_security_policy_config: Optional[pulumi.Input['ClusterPodSecurityPolicyConfigArgs']] = None,
                  private_cluster_config: Optional[pulumi.Input['ClusterPrivateClusterConfigArgs']] = None,
                  private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
@@ -1731,6 +1750,8 @@ class _ClusterState:
                `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
         :param pulumi.Input['ClusterNotificationConfigArgs'] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
+        :param pulumi.Input['ClusterPodAutoscalingArgs'] pod_autoscaling: Configuration for the
+               Structure is documented below.
         :param pulumi.Input['ClusterPodSecurityPolicyConfigArgs'] pod_security_policy_config: Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
@@ -1905,6 +1926,8 @@ class _ClusterState:
             pulumi.set(__self__, "notification_config", notification_config)
         if operation is not None:
             pulumi.set(__self__, "operation", operation)
+        if pod_autoscaling is not None:
+            pulumi.set(__self__, "pod_autoscaling", pod_autoscaling)
         if pod_security_policy_config is not None:
             pulumi.set(__self__, "pod_security_policy_config", pod_security_policy_config)
         if private_cluster_config is not None:
@@ -2781,6 +2804,19 @@ class _ClusterState:
         pulumi.set(self, "operation", value)
 
     @property
+    @pulumi.getter(name="podAutoscaling")
+    def pod_autoscaling(self) -> Optional[pulumi.Input['ClusterPodAutoscalingArgs']]:
+        """
+        Configuration for the
+        Structure is documented below.
+        """
+        return pulumi.get(self, "pod_autoscaling")
+
+    @pod_autoscaling.setter
+    def pod_autoscaling(self, value: Optional[pulumi.Input['ClusterPodAutoscalingArgs']]):
+        pulumi.set(self, "pod_autoscaling", value)
+
+    @property
     @pulumi.getter(name="podSecurityPolicyConfig")
     def pod_security_policy_config(self) -> Optional[pulumi.Input['ClusterPodSecurityPolicyConfigArgs']]:
         """
@@ -3136,6 +3172,7 @@ class Cluster(pulumi.CustomResource):
                  node_pools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodePoolArgs', 'ClusterNodePoolArgsDict']]]]] = None,
                  node_version: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input[Union['ClusterNotificationConfigArgs', 'ClusterNotificationConfigArgsDict']]] = None,
+                 pod_autoscaling: Optional[pulumi.Input[Union['ClusterPodAutoscalingArgs', 'ClusterPodAutoscalingArgsDict']]] = None,
                  pod_security_policy_config: Optional[pulumi.Input[Union['ClusterPodSecurityPolicyConfigArgs', 'ClusterPodSecurityPolicyConfigArgsDict']]] = None,
                  private_cluster_config: Optional[pulumi.Input[Union['ClusterPrivateClusterConfigArgs', 'ClusterPrivateClusterConfigArgsDict']]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
@@ -3446,6 +3483,8 @@ class Cluster(pulumi.CustomResource):
                `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
         :param pulumi.Input[Union['ClusterNotificationConfigArgs', 'ClusterNotificationConfigArgsDict']] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
+        :param pulumi.Input[Union['ClusterPodAutoscalingArgs', 'ClusterPodAutoscalingArgsDict']] pod_autoscaling: Configuration for the
+               Structure is documented below.
         :param pulumi.Input[Union['ClusterPodSecurityPolicyConfigArgs', 'ClusterPodSecurityPolicyConfigArgsDict']] pod_security_policy_config: Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
@@ -3688,6 +3727,7 @@ class Cluster(pulumi.CustomResource):
                  node_pools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodePoolArgs', 'ClusterNodePoolArgsDict']]]]] = None,
                  node_version: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input[Union['ClusterNotificationConfigArgs', 'ClusterNotificationConfigArgsDict']]] = None,
+                 pod_autoscaling: Optional[pulumi.Input[Union['ClusterPodAutoscalingArgs', 'ClusterPodAutoscalingArgsDict']]] = None,
                  pod_security_policy_config: Optional[pulumi.Input[Union['ClusterPodSecurityPolicyConfigArgs', 'ClusterPodSecurityPolicyConfigArgsDict']]] = None,
                  private_cluster_config: Optional[pulumi.Input[Union['ClusterPrivateClusterConfigArgs', 'ClusterPrivateClusterConfigArgsDict']]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
@@ -3770,6 +3810,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["node_pools"] = node_pools
             __props__.__dict__["node_version"] = node_version
             __props__.__dict__["notification_config"] = notification_config
+            __props__.__dict__["pod_autoscaling"] = pod_autoscaling
             __props__.__dict__["pod_security_policy_config"] = pod_security_policy_config
             __props__.__dict__["private_cluster_config"] = private_cluster_config
             __props__.__dict__["private_ipv6_google_access"] = private_ipv6_google_access
@@ -3869,6 +3910,7 @@ class Cluster(pulumi.CustomResource):
             node_version: Optional[pulumi.Input[str]] = None,
             notification_config: Optional[pulumi.Input[Union['ClusterNotificationConfigArgs', 'ClusterNotificationConfigArgsDict']]] = None,
             operation: Optional[pulumi.Input[str]] = None,
+            pod_autoscaling: Optional[pulumi.Input[Union['ClusterPodAutoscalingArgs', 'ClusterPodAutoscalingArgsDict']]] = None,
             pod_security_policy_config: Optional[pulumi.Input[Union['ClusterPodSecurityPolicyConfigArgs', 'ClusterPodSecurityPolicyConfigArgsDict']]] = None,
             private_cluster_config: Optional[pulumi.Input[Union['ClusterPrivateClusterConfigArgs', 'ClusterPrivateClusterConfigArgsDict']]] = None,
             private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
@@ -4072,6 +4114,8 @@ class Cluster(pulumi.CustomResource):
                `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
         :param pulumi.Input[Union['ClusterNotificationConfigArgs', 'ClusterNotificationConfigArgsDict']] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
+        :param pulumi.Input[Union['ClusterPodAutoscalingArgs', 'ClusterPodAutoscalingArgsDict']] pod_autoscaling: Configuration for the
+               Structure is documented below.
         :param pulumi.Input[Union['ClusterPodSecurityPolicyConfigArgs', 'ClusterPodSecurityPolicyConfigArgsDict']] pod_security_policy_config: Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
@@ -4190,6 +4234,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["node_version"] = node_version
         __props__.__dict__["notification_config"] = notification_config
         __props__.__dict__["operation"] = operation
+        __props__.__dict__["pod_autoscaling"] = pod_autoscaling
         __props__.__dict__["pod_security_policy_config"] = pod_security_policy_config
         __props__.__dict__["private_cluster_config"] = private_cluster_config
         __props__.__dict__["private_ipv6_google_access"] = private_ipv6_google_access
@@ -4803,6 +4848,15 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def operation(self) -> pulumi.Output[str]:
         return pulumi.get(self, "operation")
+
+    @property
+    @pulumi.getter(name="podAutoscaling")
+    def pod_autoscaling(self) -> pulumi.Output['outputs.ClusterPodAutoscaling']:
+        """
+        Configuration for the
+        Structure is documented below.
+        """
+        return pulumi.get(self, "pod_autoscaling")
 
     @property
     @pulumi.getter(name="podSecurityPolicyConfig")

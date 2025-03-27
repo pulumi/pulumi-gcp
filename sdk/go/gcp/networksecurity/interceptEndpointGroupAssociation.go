@@ -124,10 +124,17 @@ type InterceptEndpointGroupAssociation struct {
 	//
 	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
+	// The list of locations where the association is configured. This information
+	// is retrieved from the linked endpoint group.
+	// Structure is documented below.
+	Locations InterceptEndpointGroupAssociationLocationArrayOutput `pulumi:"locations"`
+	// (Deprecated)
 	// The list of locations where the association is present. This information
 	// is retrieved from the linked endpoint group, and not configured as part
 	// of the association itself.
 	// Structure is documented below.
+	//
+	// Deprecated: `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
 	LocationsDetails InterceptEndpointGroupAssociationLocationsDetailArrayOutput `pulumi:"locationsDetails"`
 	// The resource name of this endpoint group association, for example:
 	// `projects/123456789/locations/global/interceptEndpointGroupAssociations/my-eg-association`.
@@ -225,10 +232,17 @@ type interceptEndpointGroupAssociationState struct {
 	//
 	// ***
 	Location *string `pulumi:"location"`
+	// The list of locations where the association is configured. This information
+	// is retrieved from the linked endpoint group.
+	// Structure is documented below.
+	Locations []InterceptEndpointGroupAssociationLocation `pulumi:"locations"`
+	// (Deprecated)
 	// The list of locations where the association is present. This information
 	// is retrieved from the linked endpoint group, and not configured as part
 	// of the association itself.
 	// Structure is documented below.
+	//
+	// Deprecated: `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
 	LocationsDetails []InterceptEndpointGroupAssociationLocationsDetail `pulumi:"locationsDetails"`
 	// The resource name of this endpoint group association, for example:
 	// `projects/123456789/locations/global/interceptEndpointGroupAssociations/my-eg-association`.
@@ -283,10 +297,17 @@ type InterceptEndpointGroupAssociationState struct {
 	//
 	// ***
 	Location pulumi.StringPtrInput
+	// The list of locations where the association is configured. This information
+	// is retrieved from the linked endpoint group.
+	// Structure is documented below.
+	Locations InterceptEndpointGroupAssociationLocationArrayInput
+	// (Deprecated)
 	// The list of locations where the association is present. This information
 	// is retrieved from the linked endpoint group, and not configured as part
 	// of the association itself.
 	// Structure is documented below.
+	//
+	// Deprecated: `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
 	LocationsDetails InterceptEndpointGroupAssociationLocationsDetailArrayInput
 	// The resource name of this endpoint group association, for example:
 	// `projects/123456789/locations/global/interceptEndpointGroupAssociations/my-eg-association`.
@@ -504,10 +525,22 @@ func (o InterceptEndpointGroupAssociationOutput) Location() pulumi.StringOutput 
 	return o.ApplyT(func(v *InterceptEndpointGroupAssociation) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
+// The list of locations where the association is configured. This information
+// is retrieved from the linked endpoint group.
+// Structure is documented below.
+func (o InterceptEndpointGroupAssociationOutput) Locations() InterceptEndpointGroupAssociationLocationArrayOutput {
+	return o.ApplyT(func(v *InterceptEndpointGroupAssociation) InterceptEndpointGroupAssociationLocationArrayOutput {
+		return v.Locations
+	}).(InterceptEndpointGroupAssociationLocationArrayOutput)
+}
+
+// (Deprecated)
 // The list of locations where the association is present. This information
 // is retrieved from the linked endpoint group, and not configured as part
 // of the association itself.
 // Structure is documented below.
+//
+// Deprecated: `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
 func (o InterceptEndpointGroupAssociationOutput) LocationsDetails() InterceptEndpointGroupAssociationLocationsDetailArrayOutput {
 	return o.ApplyT(func(v *InterceptEndpointGroupAssociation) InterceptEndpointGroupAssociationLocationsDetailArrayOutput {
 		return v.LocationsDetails

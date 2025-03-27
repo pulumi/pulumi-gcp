@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataproc.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataproc.outputs.MetastoreServiceScalingConfigAutoscalingConfigLimitConfig;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +18,12 @@ public final class MetastoreServiceScalingConfigAutoscalingConfig {
      * 
      */
     private @Nullable Boolean autoscalingEnabled;
+    /**
+     * @return (Output)
+     * Output only. The scaling factor of a service with autoscaling enabled.
+     * 
+     */
+    private @Nullable Double autoscalingFactor;
     /**
      * @return Represents the limit configuration of a metastore service.
      * Structure is documented below.
@@ -31,6 +38,14 @@ public final class MetastoreServiceScalingConfigAutoscalingConfig {
      */
     public Optional<Boolean> autoscalingEnabled() {
         return Optional.ofNullable(this.autoscalingEnabled);
+    }
+    /**
+     * @return (Output)
+     * Output only. The scaling factor of a service with autoscaling enabled.
+     * 
+     */
+    public Optional<Double> autoscalingFactor() {
+        return Optional.ofNullable(this.autoscalingFactor);
     }
     /**
      * @return Represents the limit configuration of a metastore service.
@@ -51,11 +66,13 @@ public final class MetastoreServiceScalingConfigAutoscalingConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean autoscalingEnabled;
+        private @Nullable Double autoscalingFactor;
         private @Nullable MetastoreServiceScalingConfigAutoscalingConfigLimitConfig limitConfig;
         public Builder() {}
         public Builder(MetastoreServiceScalingConfigAutoscalingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoscalingEnabled = defaults.autoscalingEnabled;
+    	      this.autoscalingFactor = defaults.autoscalingFactor;
     	      this.limitConfig = defaults.limitConfig;
         }
 
@@ -63,6 +80,12 @@ public final class MetastoreServiceScalingConfigAutoscalingConfig {
         public Builder autoscalingEnabled(@Nullable Boolean autoscalingEnabled) {
 
             this.autoscalingEnabled = autoscalingEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder autoscalingFactor(@Nullable Double autoscalingFactor) {
+
+            this.autoscalingFactor = autoscalingFactor;
             return this;
         }
         @CustomType.Setter
@@ -74,6 +97,7 @@ public final class MetastoreServiceScalingConfigAutoscalingConfig {
         public MetastoreServiceScalingConfigAutoscalingConfig build() {
             final var _resultValue = new MetastoreServiceScalingConfigAutoscalingConfig();
             _resultValue.autoscalingEnabled = autoscalingEnabled;
+            _resultValue.autoscalingFactor = autoscalingFactor;
             _resultValue.limitConfig = limitConfig;
             return _resultValue;
         }

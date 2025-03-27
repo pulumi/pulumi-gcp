@@ -14,28 +14,42 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ConnectivityTestDestination struct {
+	// A Cloud SQL instance URI.
+	CloudSqlInstance *string `pulumi:"cloudSqlInstance"`
+	// Forwarding rule URI. Forwarding rules are frontends for load balancers,
+	// PSC endpoints, and Protocol Forwarding.
+	ForwardingRule *string `pulumi:"forwardingRule"`
+	// A DNS endpoint of Google Kubernetes Engine cluster control plane.
+	// Requires gkeMasterCluster to be set, can't be used simultaneoulsly with
+	// ipAddress or network. Applicable only to destination endpoint.
+	Fqdn *string `pulumi:"fqdn"`
+	// A cluster URI for Google Kubernetes Engine cluster control plane.
+	GkeMasterCluster *string `pulumi:"gkeMasterCluster"`
 	// A Compute Engine instance URI.
 	Instance *string `pulumi:"instance"`
-	// The IP address of the endpoint, which can be an external or
-	// internal IP. An IPv6 address is only allowed when the test's
-	// destination is a global load balancer VIP.
+	// The IP address of the endpoint, which can be an external or internal IP.
 	IpAddress *string `pulumi:"ipAddress"`
-	// A Compute Engine network URI.
+	// A VPC network URI.
 	Network *string `pulumi:"network"`
-	// The IP protocol port of the endpoint. Only applicable when
-	// protocol is TCP or UDP.
+	// The IP protocol port of the endpoint. Only applicable when protocol is
+	// TCP or UDP.
 	Port *int `pulumi:"port"`
-	// Project ID where the endpoint is located. The Project ID can be
-	// derived from the URI if you provide a VM instance or network URI.
-	// The following are two cases where you must provide the project ID:
-	// 1. Only the IP address is specified, and the IP address is within
-	//    a GCP project. 2. When you are using Shared VPC and the IP address
-	//    that you provide is from the service project. In this case, the
-	//    network that the IP address resides in is defined in the host
-	//    project.
+	// Project ID where the endpoint is located.
+	// The project ID can be derived from the URI if you provide a endpoint or
+	// network URI.
+	// The following are two cases where you may need to provide the project ID:
+	// 1. Only the IP address is specified, and the IP address is within a Google
+	//    Cloud project.
+	// 2. When you are using Shared VPC and the IP address that you provide is
+	//    from the service project. In this case, the network that the IP address
+	//    resides in is defined in the host project.
 	//
 	// ***
 	ProjectId *string `pulumi:"projectId"`
+	// A Redis Cluster URI.
+	RedisCluster *string `pulumi:"redisCluster"`
+	// A Redis Instance URI.
+	RedisInstance *string `pulumi:"redisInstance"`
 }
 
 // ConnectivityTestDestinationInput is an input type that accepts ConnectivityTestDestinationArgs and ConnectivityTestDestinationOutput values.
@@ -50,28 +64,42 @@ type ConnectivityTestDestinationInput interface {
 }
 
 type ConnectivityTestDestinationArgs struct {
+	// A Cloud SQL instance URI.
+	CloudSqlInstance pulumi.StringPtrInput `pulumi:"cloudSqlInstance"`
+	// Forwarding rule URI. Forwarding rules are frontends for load balancers,
+	// PSC endpoints, and Protocol Forwarding.
+	ForwardingRule pulumi.StringPtrInput `pulumi:"forwardingRule"`
+	// A DNS endpoint of Google Kubernetes Engine cluster control plane.
+	// Requires gkeMasterCluster to be set, can't be used simultaneoulsly with
+	// ipAddress or network. Applicable only to destination endpoint.
+	Fqdn pulumi.StringPtrInput `pulumi:"fqdn"`
+	// A cluster URI for Google Kubernetes Engine cluster control plane.
+	GkeMasterCluster pulumi.StringPtrInput `pulumi:"gkeMasterCluster"`
 	// A Compute Engine instance URI.
 	Instance pulumi.StringPtrInput `pulumi:"instance"`
-	// The IP address of the endpoint, which can be an external or
-	// internal IP. An IPv6 address is only allowed when the test's
-	// destination is a global load balancer VIP.
+	// The IP address of the endpoint, which can be an external or internal IP.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
-	// A Compute Engine network URI.
+	// A VPC network URI.
 	Network pulumi.StringPtrInput `pulumi:"network"`
-	// The IP protocol port of the endpoint. Only applicable when
-	// protocol is TCP or UDP.
+	// The IP protocol port of the endpoint. Only applicable when protocol is
+	// TCP or UDP.
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Project ID where the endpoint is located. The Project ID can be
-	// derived from the URI if you provide a VM instance or network URI.
-	// The following are two cases where you must provide the project ID:
-	// 1. Only the IP address is specified, and the IP address is within
-	//    a GCP project. 2. When you are using Shared VPC and the IP address
-	//    that you provide is from the service project. In this case, the
-	//    network that the IP address resides in is defined in the host
-	//    project.
+	// Project ID where the endpoint is located.
+	// The project ID can be derived from the URI if you provide a endpoint or
+	// network URI.
+	// The following are two cases where you may need to provide the project ID:
+	// 1. Only the IP address is specified, and the IP address is within a Google
+	//    Cloud project.
+	// 2. When you are using Shared VPC and the IP address that you provide is
+	//    from the service project. In this case, the network that the IP address
+	//    resides in is defined in the host project.
 	//
 	// ***
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// A Redis Cluster URI.
+	RedisCluster pulumi.StringPtrInput `pulumi:"redisCluster"`
+	// A Redis Instance URI.
+	RedisInstance pulumi.StringPtrInput `pulumi:"redisInstance"`
 }
 
 func (ConnectivityTestDestinationArgs) ElementType() reflect.Type {
@@ -151,41 +179,73 @@ func (o ConnectivityTestDestinationOutput) ToConnectivityTestDestinationPtrOutpu
 	}).(ConnectivityTestDestinationPtrOutput)
 }
 
+// A Cloud SQL instance URI.
+func (o ConnectivityTestDestinationOutput) CloudSqlInstance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectivityTestDestination) *string { return v.CloudSqlInstance }).(pulumi.StringPtrOutput)
+}
+
+// Forwarding rule URI. Forwarding rules are frontends for load balancers,
+// PSC endpoints, and Protocol Forwarding.
+func (o ConnectivityTestDestinationOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectivityTestDestination) *string { return v.ForwardingRule }).(pulumi.StringPtrOutput)
+}
+
+// A DNS endpoint of Google Kubernetes Engine cluster control plane.
+// Requires gkeMasterCluster to be set, can't be used simultaneoulsly with
+// ipAddress or network. Applicable only to destination endpoint.
+func (o ConnectivityTestDestinationOutput) Fqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectivityTestDestination) *string { return v.Fqdn }).(pulumi.StringPtrOutput)
+}
+
+// A cluster URI for Google Kubernetes Engine cluster control plane.
+func (o ConnectivityTestDestinationOutput) GkeMasterCluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectivityTestDestination) *string { return v.GkeMasterCluster }).(pulumi.StringPtrOutput)
+}
+
 // A Compute Engine instance URI.
 func (o ConnectivityTestDestinationOutput) Instance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestDestination) *string { return v.Instance }).(pulumi.StringPtrOutput)
 }
 
-// The IP address of the endpoint, which can be an external or
-// internal IP. An IPv6 address is only allowed when the test's
-// destination is a global load balancer VIP.
+// The IP address of the endpoint, which can be an external or internal IP.
 func (o ConnectivityTestDestinationOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestDestination) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
-// A Compute Engine network URI.
+// A VPC network URI.
 func (o ConnectivityTestDestinationOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestDestination) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
-// The IP protocol port of the endpoint. Only applicable when
-// protocol is TCP or UDP.
+// The IP protocol port of the endpoint. Only applicable when protocol is
+// TCP or UDP.
 func (o ConnectivityTestDestinationOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestDestination) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Project ID where the endpoint is located. The Project ID can be
-// derived from the URI if you provide a VM instance or network URI.
-// The following are two cases where you must provide the project ID:
-//  1. Only the IP address is specified, and the IP address is within
-//     a GCP project. 2. When you are using Shared VPC and the IP address
-//     that you provide is from the service project. In this case, the
-//     network that the IP address resides in is defined in the host
-//     project.
+// Project ID where the endpoint is located.
+// The project ID can be derived from the URI if you provide a endpoint or
+// network URI.
+// The following are two cases where you may need to provide the project ID:
+//  1. Only the IP address is specified, and the IP address is within a Google
+//     Cloud project.
+//  2. When you are using Shared VPC and the IP address that you provide is
+//     from the service project. In this case, the network that the IP address
+//     resides in is defined in the host project.
 //
 // ***
 func (o ConnectivityTestDestinationOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestDestination) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+// A Redis Cluster URI.
+func (o ConnectivityTestDestinationOutput) RedisCluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectivityTestDestination) *string { return v.RedisCluster }).(pulumi.StringPtrOutput)
+}
+
+// A Redis Instance URI.
+func (o ConnectivityTestDestinationOutput) RedisInstance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectivityTestDestination) *string { return v.RedisInstance }).(pulumi.StringPtrOutput)
 }
 
 type ConnectivityTestDestinationPtrOutput struct{ *pulumi.OutputState }
@@ -212,6 +272,49 @@ func (o ConnectivityTestDestinationPtrOutput) Elem() ConnectivityTestDestination
 	}).(ConnectivityTestDestinationOutput)
 }
 
+// A Cloud SQL instance URI.
+func (o ConnectivityTestDestinationPtrOutput) CloudSqlInstance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectivityTestDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudSqlInstance
+	}).(pulumi.StringPtrOutput)
+}
+
+// Forwarding rule URI. Forwarding rules are frontends for load balancers,
+// PSC endpoints, and Protocol Forwarding.
+func (o ConnectivityTestDestinationPtrOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectivityTestDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardingRule
+	}).(pulumi.StringPtrOutput)
+}
+
+// A DNS endpoint of Google Kubernetes Engine cluster control plane.
+// Requires gkeMasterCluster to be set, can't be used simultaneoulsly with
+// ipAddress or network. Applicable only to destination endpoint.
+func (o ConnectivityTestDestinationPtrOutput) Fqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectivityTestDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Fqdn
+	}).(pulumi.StringPtrOutput)
+}
+
+// A cluster URI for Google Kubernetes Engine cluster control plane.
+func (o ConnectivityTestDestinationPtrOutput) GkeMasterCluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectivityTestDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GkeMasterCluster
+	}).(pulumi.StringPtrOutput)
+}
+
 // A Compute Engine instance URI.
 func (o ConnectivityTestDestinationPtrOutput) Instance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTestDestination) *string {
@@ -222,9 +325,7 @@ func (o ConnectivityTestDestinationPtrOutput) Instance() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The IP address of the endpoint, which can be an external or
-// internal IP. An IPv6 address is only allowed when the test's
-// destination is a global load balancer VIP.
+// The IP address of the endpoint, which can be an external or internal IP.
 func (o ConnectivityTestDestinationPtrOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTestDestination) *string {
 		if v == nil {
@@ -234,7 +335,7 @@ func (o ConnectivityTestDestinationPtrOutput) IpAddress() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// A Compute Engine network URI.
+// A VPC network URI.
 func (o ConnectivityTestDestinationPtrOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTestDestination) *string {
 		if v == nil {
@@ -244,8 +345,8 @@ func (o ConnectivityTestDestinationPtrOutput) Network() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The IP protocol port of the endpoint. Only applicable when
-// protocol is TCP or UDP.
+// The IP protocol port of the endpoint. Only applicable when protocol is
+// TCP or UDP.
 func (o ConnectivityTestDestinationPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTestDestination) *int {
 		if v == nil {
@@ -255,14 +356,15 @@ func (o ConnectivityTestDestinationPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Project ID where the endpoint is located. The Project ID can be
-// derived from the URI if you provide a VM instance or network URI.
-// The following are two cases where you must provide the project ID:
-//  1. Only the IP address is specified, and the IP address is within
-//     a GCP project. 2. When you are using Shared VPC and the IP address
-//     that you provide is from the service project. In this case, the
-//     network that the IP address resides in is defined in the host
-//     project.
+// Project ID where the endpoint is located.
+// The project ID can be derived from the URI if you provide a endpoint or
+// network URI.
+// The following are two cases where you may need to provide the project ID:
+//  1. Only the IP address is specified, and the IP address is within a Google
+//     Cloud project.
+//  2. When you are using Shared VPC and the IP address that you provide is
+//     from the service project. In this case, the network that the IP address
+//     resides in is defined in the host project.
 //
 // ***
 func (o ConnectivityTestDestinationPtrOutput) ProjectId() pulumi.StringPtrOutput {
@@ -274,30 +376,61 @@ func (o ConnectivityTestDestinationPtrOutput) ProjectId() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// A Redis Cluster URI.
+func (o ConnectivityTestDestinationPtrOutput) RedisCluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectivityTestDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedisCluster
+	}).(pulumi.StringPtrOutput)
+}
+
+// A Redis Instance URI.
+func (o ConnectivityTestDestinationPtrOutput) RedisInstance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectivityTestDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedisInstance
+	}).(pulumi.StringPtrOutput)
+}
+
 type ConnectivityTestSource struct {
+	// An App Engine service version.
+	// Structure is documented below.
+	AppEngineVersion *ConnectivityTestSourceAppEngineVersion `pulumi:"appEngineVersion"`
+	// A Cloud Function.
+	// Structure is documented below.
+	CloudFunction *ConnectivityTestSourceCloudFunction `pulumi:"cloudFunction"`
+	// A Cloud Run revision.
+	// Structure is documented below.
+	CloudRunRevision *ConnectivityTestSourceCloudRunRevision `pulumi:"cloudRunRevision"`
+	// A Cloud SQL instance URI.
+	CloudSqlInstance *string `pulumi:"cloudSqlInstance"`
+	// A cluster URI for Google Kubernetes Engine cluster control plane.
+	GkeMasterCluster *string `pulumi:"gkeMasterCluster"`
 	// A Compute Engine instance URI.
 	Instance *string `pulumi:"instance"`
-	// The IP address of the endpoint, which can be an external or
-	// internal IP. An IPv6 address is only allowed when the test's
-	// destination is a global load balancer VIP.
+	// The IP address of the endpoint, which can be an external or internal IP.
 	IpAddress *string `pulumi:"ipAddress"`
-	// A Compute Engine network URI.
+	// A VPC network URI.
 	Network *string `pulumi:"network"`
 	// Type of the network where the endpoint is located.
 	// Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`.
 	NetworkType *string `pulumi:"networkType"`
-	// The IP protocol port of the endpoint. Only applicable when
-	// protocol is TCP or UDP.
+	// The IP protocol port of the endpoint. Only applicable when protocol is
+	// TCP or UDP.
 	Port *int `pulumi:"port"`
-	// Project ID where the endpoint is located. The Project ID can be
-	// derived from the URI if you provide a VM instance or network URI.
-	// The following are two cases where you must provide the project ID:
-	// 1. Only the IP address is specified, and the IP address is
-	//    within a GCP project.
-	// 2. When you are using Shared VPC and the IP address
-	//    that you provide is from the service project. In this case,
-	//    the network that the IP address resides in is defined in the
-	//    host project.
+	// Project ID where the endpoint is located.
+	// The project ID can be derived from the URI if you provide a endpoint or
+	// network URI.
+	// The following are two cases where you may need to provide the project ID:
+	// 1. Only the IP address is specified, and the IP address is within a Google
+	//    Cloud project.
+	// 2. When you are using Shared VPC and the IP address that you provide is
+	//    from the service project. In this case, the network that the IP address
+	//    resides in is defined in the host project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -313,29 +446,40 @@ type ConnectivityTestSourceInput interface {
 }
 
 type ConnectivityTestSourceArgs struct {
+	// An App Engine service version.
+	// Structure is documented below.
+	AppEngineVersion ConnectivityTestSourceAppEngineVersionPtrInput `pulumi:"appEngineVersion"`
+	// A Cloud Function.
+	// Structure is documented below.
+	CloudFunction ConnectivityTestSourceCloudFunctionPtrInput `pulumi:"cloudFunction"`
+	// A Cloud Run revision.
+	// Structure is documented below.
+	CloudRunRevision ConnectivityTestSourceCloudRunRevisionPtrInput `pulumi:"cloudRunRevision"`
+	// A Cloud SQL instance URI.
+	CloudSqlInstance pulumi.StringPtrInput `pulumi:"cloudSqlInstance"`
+	// A cluster URI for Google Kubernetes Engine cluster control plane.
+	GkeMasterCluster pulumi.StringPtrInput `pulumi:"gkeMasterCluster"`
 	// A Compute Engine instance URI.
 	Instance pulumi.StringPtrInput `pulumi:"instance"`
-	// The IP address of the endpoint, which can be an external or
-	// internal IP. An IPv6 address is only allowed when the test's
-	// destination is a global load balancer VIP.
+	// The IP address of the endpoint, which can be an external or internal IP.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
-	// A Compute Engine network URI.
+	// A VPC network URI.
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// Type of the network where the endpoint is located.
 	// Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`.
 	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
-	// The IP protocol port of the endpoint. Only applicable when
-	// protocol is TCP or UDP.
+	// The IP protocol port of the endpoint. Only applicable when protocol is
+	// TCP or UDP.
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Project ID where the endpoint is located. The Project ID can be
-	// derived from the URI if you provide a VM instance or network URI.
-	// The following are two cases where you must provide the project ID:
-	// 1. Only the IP address is specified, and the IP address is
-	//    within a GCP project.
-	// 2. When you are using Shared VPC and the IP address
-	//    that you provide is from the service project. In this case,
-	//    the network that the IP address resides in is defined in the
-	//    host project.
+	// Project ID where the endpoint is located.
+	// The project ID can be derived from the URI if you provide a endpoint or
+	// network URI.
+	// The following are two cases where you may need to provide the project ID:
+	// 1. Only the IP address is specified, and the IP address is within a Google
+	//    Cloud project.
+	// 2. When you are using Shared VPC and the IP address that you provide is
+	//    from the service project. In this case, the network that the IP address
+	//    resides in is defined in the host project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -416,19 +560,45 @@ func (o ConnectivityTestSourceOutput) ToConnectivityTestSourcePtrOutputWithConte
 	}).(ConnectivityTestSourcePtrOutput)
 }
 
+// An App Engine service version.
+// Structure is documented below.
+func (o ConnectivityTestSourceOutput) AppEngineVersion() ConnectivityTestSourceAppEngineVersionPtrOutput {
+	return o.ApplyT(func(v ConnectivityTestSource) *ConnectivityTestSourceAppEngineVersion { return v.AppEngineVersion }).(ConnectivityTestSourceAppEngineVersionPtrOutput)
+}
+
+// A Cloud Function.
+// Structure is documented below.
+func (o ConnectivityTestSourceOutput) CloudFunction() ConnectivityTestSourceCloudFunctionPtrOutput {
+	return o.ApplyT(func(v ConnectivityTestSource) *ConnectivityTestSourceCloudFunction { return v.CloudFunction }).(ConnectivityTestSourceCloudFunctionPtrOutput)
+}
+
+// A Cloud Run revision.
+// Structure is documented below.
+func (o ConnectivityTestSourceOutput) CloudRunRevision() ConnectivityTestSourceCloudRunRevisionPtrOutput {
+	return o.ApplyT(func(v ConnectivityTestSource) *ConnectivityTestSourceCloudRunRevision { return v.CloudRunRevision }).(ConnectivityTestSourceCloudRunRevisionPtrOutput)
+}
+
+// A Cloud SQL instance URI.
+func (o ConnectivityTestSourceOutput) CloudSqlInstance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectivityTestSource) *string { return v.CloudSqlInstance }).(pulumi.StringPtrOutput)
+}
+
+// A cluster URI for Google Kubernetes Engine cluster control plane.
+func (o ConnectivityTestSourceOutput) GkeMasterCluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectivityTestSource) *string { return v.GkeMasterCluster }).(pulumi.StringPtrOutput)
+}
+
 // A Compute Engine instance URI.
 func (o ConnectivityTestSourceOutput) Instance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestSource) *string { return v.Instance }).(pulumi.StringPtrOutput)
 }
 
-// The IP address of the endpoint, which can be an external or
-// internal IP. An IPv6 address is only allowed when the test's
-// destination is a global load balancer VIP.
+// The IP address of the endpoint, which can be an external or internal IP.
 func (o ConnectivityTestSourceOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestSource) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
-// A Compute Engine network URI.
+// A VPC network URI.
 func (o ConnectivityTestSourceOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestSource) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
@@ -439,21 +609,21 @@ func (o ConnectivityTestSourceOutput) NetworkType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestSource) *string { return v.NetworkType }).(pulumi.StringPtrOutput)
 }
 
-// The IP protocol port of the endpoint. Only applicable when
-// protocol is TCP or UDP.
+// The IP protocol port of the endpoint. Only applicable when protocol is
+// TCP or UDP.
 func (o ConnectivityTestSourceOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestSource) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Project ID where the endpoint is located. The Project ID can be
-// derived from the URI if you provide a VM instance or network URI.
-// The following are two cases where you must provide the project ID:
-//  1. Only the IP address is specified, and the IP address is
-//     within a GCP project.
-//  2. When you are using Shared VPC and the IP address
-//     that you provide is from the service project. In this case,
-//     the network that the IP address resides in is defined in the
-//     host project.
+// Project ID where the endpoint is located.
+// The project ID can be derived from the URI if you provide a endpoint or
+// network URI.
+// The following are two cases where you may need to provide the project ID:
+//  1. Only the IP address is specified, and the IP address is within a Google
+//     Cloud project.
+//  2. When you are using Shared VPC and the IP address that you provide is
+//     from the service project. In this case, the network that the IP address
+//     resides in is defined in the host project.
 func (o ConnectivityTestSourceOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestSource) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -482,6 +652,59 @@ func (o ConnectivityTestSourcePtrOutput) Elem() ConnectivityTestSourceOutput {
 	}).(ConnectivityTestSourceOutput)
 }
 
+// An App Engine service version.
+// Structure is documented below.
+func (o ConnectivityTestSourcePtrOutput) AppEngineVersion() ConnectivityTestSourceAppEngineVersionPtrOutput {
+	return o.ApplyT(func(v *ConnectivityTestSource) *ConnectivityTestSourceAppEngineVersion {
+		if v == nil {
+			return nil
+		}
+		return v.AppEngineVersion
+	}).(ConnectivityTestSourceAppEngineVersionPtrOutput)
+}
+
+// A Cloud Function.
+// Structure is documented below.
+func (o ConnectivityTestSourcePtrOutput) CloudFunction() ConnectivityTestSourceCloudFunctionPtrOutput {
+	return o.ApplyT(func(v *ConnectivityTestSource) *ConnectivityTestSourceCloudFunction {
+		if v == nil {
+			return nil
+		}
+		return v.CloudFunction
+	}).(ConnectivityTestSourceCloudFunctionPtrOutput)
+}
+
+// A Cloud Run revision.
+// Structure is documented below.
+func (o ConnectivityTestSourcePtrOutput) CloudRunRevision() ConnectivityTestSourceCloudRunRevisionPtrOutput {
+	return o.ApplyT(func(v *ConnectivityTestSource) *ConnectivityTestSourceCloudRunRevision {
+		if v == nil {
+			return nil
+		}
+		return v.CloudRunRevision
+	}).(ConnectivityTestSourceCloudRunRevisionPtrOutput)
+}
+
+// A Cloud SQL instance URI.
+func (o ConnectivityTestSourcePtrOutput) CloudSqlInstance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectivityTestSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudSqlInstance
+	}).(pulumi.StringPtrOutput)
+}
+
+// A cluster URI for Google Kubernetes Engine cluster control plane.
+func (o ConnectivityTestSourcePtrOutput) GkeMasterCluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectivityTestSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GkeMasterCluster
+	}).(pulumi.StringPtrOutput)
+}
+
 // A Compute Engine instance URI.
 func (o ConnectivityTestSourcePtrOutput) Instance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTestSource) *string {
@@ -492,9 +715,7 @@ func (o ConnectivityTestSourcePtrOutput) Instance() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The IP address of the endpoint, which can be an external or
-// internal IP. An IPv6 address is only allowed when the test's
-// destination is a global load balancer VIP.
+// The IP address of the endpoint, which can be an external or internal IP.
 func (o ConnectivityTestSourcePtrOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTestSource) *string {
 		if v == nil {
@@ -504,7 +725,7 @@ func (o ConnectivityTestSourcePtrOutput) IpAddress() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A Compute Engine network URI.
+// A VPC network URI.
 func (o ConnectivityTestSourcePtrOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTestSource) *string {
 		if v == nil {
@@ -525,8 +746,8 @@ func (o ConnectivityTestSourcePtrOutput) NetworkType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The IP protocol port of the endpoint. Only applicable when
-// protocol is TCP or UDP.
+// The IP protocol port of the endpoint. Only applicable when protocol is
+// TCP or UDP.
 func (o ConnectivityTestSourcePtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTestSource) *int {
 		if v == nil {
@@ -536,15 +757,15 @@ func (o ConnectivityTestSourcePtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Project ID where the endpoint is located. The Project ID can be
-// derived from the URI if you provide a VM instance or network URI.
-// The following are two cases where you must provide the project ID:
-//  1. Only the IP address is specified, and the IP address is
-//     within a GCP project.
-//  2. When you are using Shared VPC and the IP address
-//     that you provide is from the service project. In this case,
-//     the network that the IP address resides in is defined in the
-//     host project.
+// Project ID where the endpoint is located.
+// The project ID can be derived from the URI if you provide a endpoint or
+// network URI.
+// The following are two cases where you may need to provide the project ID:
+//  1. Only the IP address is specified, and the IP address is within a Google
+//     Cloud project.
+//  2. When you are using Shared VPC and the IP address that you provide is
+//     from the service project. In this case, the network that the IP address
+//     resides in is defined in the host project.
 func (o ConnectivityTestSourcePtrOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTestSource) *string {
 		if v == nil {
@@ -554,13 +775,436 @@ func (o ConnectivityTestSourcePtrOutput) ProjectId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConnectivityTestSourceAppEngineVersion struct {
+	// An App Engine service version name.
+	Uri *string `pulumi:"uri"`
+}
+
+// ConnectivityTestSourceAppEngineVersionInput is an input type that accepts ConnectivityTestSourceAppEngineVersionArgs and ConnectivityTestSourceAppEngineVersionOutput values.
+// You can construct a concrete instance of `ConnectivityTestSourceAppEngineVersionInput` via:
+//
+//	ConnectivityTestSourceAppEngineVersionArgs{...}
+type ConnectivityTestSourceAppEngineVersionInput interface {
+	pulumi.Input
+
+	ToConnectivityTestSourceAppEngineVersionOutput() ConnectivityTestSourceAppEngineVersionOutput
+	ToConnectivityTestSourceAppEngineVersionOutputWithContext(context.Context) ConnectivityTestSourceAppEngineVersionOutput
+}
+
+type ConnectivityTestSourceAppEngineVersionArgs struct {
+	// An App Engine service version name.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (ConnectivityTestSourceAppEngineVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectivityTestSourceAppEngineVersion)(nil)).Elem()
+}
+
+func (i ConnectivityTestSourceAppEngineVersionArgs) ToConnectivityTestSourceAppEngineVersionOutput() ConnectivityTestSourceAppEngineVersionOutput {
+	return i.ToConnectivityTestSourceAppEngineVersionOutputWithContext(context.Background())
+}
+
+func (i ConnectivityTestSourceAppEngineVersionArgs) ToConnectivityTestSourceAppEngineVersionOutputWithContext(ctx context.Context) ConnectivityTestSourceAppEngineVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestSourceAppEngineVersionOutput)
+}
+
+func (i ConnectivityTestSourceAppEngineVersionArgs) ToConnectivityTestSourceAppEngineVersionPtrOutput() ConnectivityTestSourceAppEngineVersionPtrOutput {
+	return i.ToConnectivityTestSourceAppEngineVersionPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectivityTestSourceAppEngineVersionArgs) ToConnectivityTestSourceAppEngineVersionPtrOutputWithContext(ctx context.Context) ConnectivityTestSourceAppEngineVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestSourceAppEngineVersionOutput).ToConnectivityTestSourceAppEngineVersionPtrOutputWithContext(ctx)
+}
+
+// ConnectivityTestSourceAppEngineVersionPtrInput is an input type that accepts ConnectivityTestSourceAppEngineVersionArgs, ConnectivityTestSourceAppEngineVersionPtr and ConnectivityTestSourceAppEngineVersionPtrOutput values.
+// You can construct a concrete instance of `ConnectivityTestSourceAppEngineVersionPtrInput` via:
+//
+//	        ConnectivityTestSourceAppEngineVersionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectivityTestSourceAppEngineVersionPtrInput interface {
+	pulumi.Input
+
+	ToConnectivityTestSourceAppEngineVersionPtrOutput() ConnectivityTestSourceAppEngineVersionPtrOutput
+	ToConnectivityTestSourceAppEngineVersionPtrOutputWithContext(context.Context) ConnectivityTestSourceAppEngineVersionPtrOutput
+}
+
+type connectivityTestSourceAppEngineVersionPtrType ConnectivityTestSourceAppEngineVersionArgs
+
+func ConnectivityTestSourceAppEngineVersionPtr(v *ConnectivityTestSourceAppEngineVersionArgs) ConnectivityTestSourceAppEngineVersionPtrInput {
+	return (*connectivityTestSourceAppEngineVersionPtrType)(v)
+}
+
+func (*connectivityTestSourceAppEngineVersionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectivityTestSourceAppEngineVersion)(nil)).Elem()
+}
+
+func (i *connectivityTestSourceAppEngineVersionPtrType) ToConnectivityTestSourceAppEngineVersionPtrOutput() ConnectivityTestSourceAppEngineVersionPtrOutput {
+	return i.ToConnectivityTestSourceAppEngineVersionPtrOutputWithContext(context.Background())
+}
+
+func (i *connectivityTestSourceAppEngineVersionPtrType) ToConnectivityTestSourceAppEngineVersionPtrOutputWithContext(ctx context.Context) ConnectivityTestSourceAppEngineVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestSourceAppEngineVersionPtrOutput)
+}
+
+type ConnectivityTestSourceAppEngineVersionOutput struct{ *pulumi.OutputState }
+
+func (ConnectivityTestSourceAppEngineVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectivityTestSourceAppEngineVersion)(nil)).Elem()
+}
+
+func (o ConnectivityTestSourceAppEngineVersionOutput) ToConnectivityTestSourceAppEngineVersionOutput() ConnectivityTestSourceAppEngineVersionOutput {
+	return o
+}
+
+func (o ConnectivityTestSourceAppEngineVersionOutput) ToConnectivityTestSourceAppEngineVersionOutputWithContext(ctx context.Context) ConnectivityTestSourceAppEngineVersionOutput {
+	return o
+}
+
+func (o ConnectivityTestSourceAppEngineVersionOutput) ToConnectivityTestSourceAppEngineVersionPtrOutput() ConnectivityTestSourceAppEngineVersionPtrOutput {
+	return o.ToConnectivityTestSourceAppEngineVersionPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectivityTestSourceAppEngineVersionOutput) ToConnectivityTestSourceAppEngineVersionPtrOutputWithContext(ctx context.Context) ConnectivityTestSourceAppEngineVersionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectivityTestSourceAppEngineVersion) *ConnectivityTestSourceAppEngineVersion {
+		return &v
+	}).(ConnectivityTestSourceAppEngineVersionPtrOutput)
+}
+
+// An App Engine service version name.
+func (o ConnectivityTestSourceAppEngineVersionOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectivityTestSourceAppEngineVersion) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type ConnectivityTestSourceAppEngineVersionPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectivityTestSourceAppEngineVersionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectivityTestSourceAppEngineVersion)(nil)).Elem()
+}
+
+func (o ConnectivityTestSourceAppEngineVersionPtrOutput) ToConnectivityTestSourceAppEngineVersionPtrOutput() ConnectivityTestSourceAppEngineVersionPtrOutput {
+	return o
+}
+
+func (o ConnectivityTestSourceAppEngineVersionPtrOutput) ToConnectivityTestSourceAppEngineVersionPtrOutputWithContext(ctx context.Context) ConnectivityTestSourceAppEngineVersionPtrOutput {
+	return o
+}
+
+func (o ConnectivityTestSourceAppEngineVersionPtrOutput) Elem() ConnectivityTestSourceAppEngineVersionOutput {
+	return o.ApplyT(func(v *ConnectivityTestSourceAppEngineVersion) ConnectivityTestSourceAppEngineVersion {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectivityTestSourceAppEngineVersion
+		return ret
+	}).(ConnectivityTestSourceAppEngineVersionOutput)
+}
+
+// An App Engine service version name.
+func (o ConnectivityTestSourceAppEngineVersionPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectivityTestSourceAppEngineVersion) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectivityTestSourceCloudFunction struct {
+	// A Cloud Function name.
+	Uri *string `pulumi:"uri"`
+}
+
+// ConnectivityTestSourceCloudFunctionInput is an input type that accepts ConnectivityTestSourceCloudFunctionArgs and ConnectivityTestSourceCloudFunctionOutput values.
+// You can construct a concrete instance of `ConnectivityTestSourceCloudFunctionInput` via:
+//
+//	ConnectivityTestSourceCloudFunctionArgs{...}
+type ConnectivityTestSourceCloudFunctionInput interface {
+	pulumi.Input
+
+	ToConnectivityTestSourceCloudFunctionOutput() ConnectivityTestSourceCloudFunctionOutput
+	ToConnectivityTestSourceCloudFunctionOutputWithContext(context.Context) ConnectivityTestSourceCloudFunctionOutput
+}
+
+type ConnectivityTestSourceCloudFunctionArgs struct {
+	// A Cloud Function name.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (ConnectivityTestSourceCloudFunctionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectivityTestSourceCloudFunction)(nil)).Elem()
+}
+
+func (i ConnectivityTestSourceCloudFunctionArgs) ToConnectivityTestSourceCloudFunctionOutput() ConnectivityTestSourceCloudFunctionOutput {
+	return i.ToConnectivityTestSourceCloudFunctionOutputWithContext(context.Background())
+}
+
+func (i ConnectivityTestSourceCloudFunctionArgs) ToConnectivityTestSourceCloudFunctionOutputWithContext(ctx context.Context) ConnectivityTestSourceCloudFunctionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestSourceCloudFunctionOutput)
+}
+
+func (i ConnectivityTestSourceCloudFunctionArgs) ToConnectivityTestSourceCloudFunctionPtrOutput() ConnectivityTestSourceCloudFunctionPtrOutput {
+	return i.ToConnectivityTestSourceCloudFunctionPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectivityTestSourceCloudFunctionArgs) ToConnectivityTestSourceCloudFunctionPtrOutputWithContext(ctx context.Context) ConnectivityTestSourceCloudFunctionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestSourceCloudFunctionOutput).ToConnectivityTestSourceCloudFunctionPtrOutputWithContext(ctx)
+}
+
+// ConnectivityTestSourceCloudFunctionPtrInput is an input type that accepts ConnectivityTestSourceCloudFunctionArgs, ConnectivityTestSourceCloudFunctionPtr and ConnectivityTestSourceCloudFunctionPtrOutput values.
+// You can construct a concrete instance of `ConnectivityTestSourceCloudFunctionPtrInput` via:
+//
+//	        ConnectivityTestSourceCloudFunctionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectivityTestSourceCloudFunctionPtrInput interface {
+	pulumi.Input
+
+	ToConnectivityTestSourceCloudFunctionPtrOutput() ConnectivityTestSourceCloudFunctionPtrOutput
+	ToConnectivityTestSourceCloudFunctionPtrOutputWithContext(context.Context) ConnectivityTestSourceCloudFunctionPtrOutput
+}
+
+type connectivityTestSourceCloudFunctionPtrType ConnectivityTestSourceCloudFunctionArgs
+
+func ConnectivityTestSourceCloudFunctionPtr(v *ConnectivityTestSourceCloudFunctionArgs) ConnectivityTestSourceCloudFunctionPtrInput {
+	return (*connectivityTestSourceCloudFunctionPtrType)(v)
+}
+
+func (*connectivityTestSourceCloudFunctionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectivityTestSourceCloudFunction)(nil)).Elem()
+}
+
+func (i *connectivityTestSourceCloudFunctionPtrType) ToConnectivityTestSourceCloudFunctionPtrOutput() ConnectivityTestSourceCloudFunctionPtrOutput {
+	return i.ToConnectivityTestSourceCloudFunctionPtrOutputWithContext(context.Background())
+}
+
+func (i *connectivityTestSourceCloudFunctionPtrType) ToConnectivityTestSourceCloudFunctionPtrOutputWithContext(ctx context.Context) ConnectivityTestSourceCloudFunctionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestSourceCloudFunctionPtrOutput)
+}
+
+type ConnectivityTestSourceCloudFunctionOutput struct{ *pulumi.OutputState }
+
+func (ConnectivityTestSourceCloudFunctionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectivityTestSourceCloudFunction)(nil)).Elem()
+}
+
+func (o ConnectivityTestSourceCloudFunctionOutput) ToConnectivityTestSourceCloudFunctionOutput() ConnectivityTestSourceCloudFunctionOutput {
+	return o
+}
+
+func (o ConnectivityTestSourceCloudFunctionOutput) ToConnectivityTestSourceCloudFunctionOutputWithContext(ctx context.Context) ConnectivityTestSourceCloudFunctionOutput {
+	return o
+}
+
+func (o ConnectivityTestSourceCloudFunctionOutput) ToConnectivityTestSourceCloudFunctionPtrOutput() ConnectivityTestSourceCloudFunctionPtrOutput {
+	return o.ToConnectivityTestSourceCloudFunctionPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectivityTestSourceCloudFunctionOutput) ToConnectivityTestSourceCloudFunctionPtrOutputWithContext(ctx context.Context) ConnectivityTestSourceCloudFunctionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectivityTestSourceCloudFunction) *ConnectivityTestSourceCloudFunction {
+		return &v
+	}).(ConnectivityTestSourceCloudFunctionPtrOutput)
+}
+
+// A Cloud Function name.
+func (o ConnectivityTestSourceCloudFunctionOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectivityTestSourceCloudFunction) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type ConnectivityTestSourceCloudFunctionPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectivityTestSourceCloudFunctionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectivityTestSourceCloudFunction)(nil)).Elem()
+}
+
+func (o ConnectivityTestSourceCloudFunctionPtrOutput) ToConnectivityTestSourceCloudFunctionPtrOutput() ConnectivityTestSourceCloudFunctionPtrOutput {
+	return o
+}
+
+func (o ConnectivityTestSourceCloudFunctionPtrOutput) ToConnectivityTestSourceCloudFunctionPtrOutputWithContext(ctx context.Context) ConnectivityTestSourceCloudFunctionPtrOutput {
+	return o
+}
+
+func (o ConnectivityTestSourceCloudFunctionPtrOutput) Elem() ConnectivityTestSourceCloudFunctionOutput {
+	return o.ApplyT(func(v *ConnectivityTestSourceCloudFunction) ConnectivityTestSourceCloudFunction {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectivityTestSourceCloudFunction
+		return ret
+	}).(ConnectivityTestSourceCloudFunctionOutput)
+}
+
+// A Cloud Function name.
+func (o ConnectivityTestSourceCloudFunctionPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectivityTestSourceCloudFunction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectivityTestSourceCloudRunRevision struct {
+	// A Cloud Run revision URI.
+	Uri *string `pulumi:"uri"`
+}
+
+// ConnectivityTestSourceCloudRunRevisionInput is an input type that accepts ConnectivityTestSourceCloudRunRevisionArgs and ConnectivityTestSourceCloudRunRevisionOutput values.
+// You can construct a concrete instance of `ConnectivityTestSourceCloudRunRevisionInput` via:
+//
+//	ConnectivityTestSourceCloudRunRevisionArgs{...}
+type ConnectivityTestSourceCloudRunRevisionInput interface {
+	pulumi.Input
+
+	ToConnectivityTestSourceCloudRunRevisionOutput() ConnectivityTestSourceCloudRunRevisionOutput
+	ToConnectivityTestSourceCloudRunRevisionOutputWithContext(context.Context) ConnectivityTestSourceCloudRunRevisionOutput
+}
+
+type ConnectivityTestSourceCloudRunRevisionArgs struct {
+	// A Cloud Run revision URI.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (ConnectivityTestSourceCloudRunRevisionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectivityTestSourceCloudRunRevision)(nil)).Elem()
+}
+
+func (i ConnectivityTestSourceCloudRunRevisionArgs) ToConnectivityTestSourceCloudRunRevisionOutput() ConnectivityTestSourceCloudRunRevisionOutput {
+	return i.ToConnectivityTestSourceCloudRunRevisionOutputWithContext(context.Background())
+}
+
+func (i ConnectivityTestSourceCloudRunRevisionArgs) ToConnectivityTestSourceCloudRunRevisionOutputWithContext(ctx context.Context) ConnectivityTestSourceCloudRunRevisionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestSourceCloudRunRevisionOutput)
+}
+
+func (i ConnectivityTestSourceCloudRunRevisionArgs) ToConnectivityTestSourceCloudRunRevisionPtrOutput() ConnectivityTestSourceCloudRunRevisionPtrOutput {
+	return i.ToConnectivityTestSourceCloudRunRevisionPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectivityTestSourceCloudRunRevisionArgs) ToConnectivityTestSourceCloudRunRevisionPtrOutputWithContext(ctx context.Context) ConnectivityTestSourceCloudRunRevisionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestSourceCloudRunRevisionOutput).ToConnectivityTestSourceCloudRunRevisionPtrOutputWithContext(ctx)
+}
+
+// ConnectivityTestSourceCloudRunRevisionPtrInput is an input type that accepts ConnectivityTestSourceCloudRunRevisionArgs, ConnectivityTestSourceCloudRunRevisionPtr and ConnectivityTestSourceCloudRunRevisionPtrOutput values.
+// You can construct a concrete instance of `ConnectivityTestSourceCloudRunRevisionPtrInput` via:
+//
+//	        ConnectivityTestSourceCloudRunRevisionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectivityTestSourceCloudRunRevisionPtrInput interface {
+	pulumi.Input
+
+	ToConnectivityTestSourceCloudRunRevisionPtrOutput() ConnectivityTestSourceCloudRunRevisionPtrOutput
+	ToConnectivityTestSourceCloudRunRevisionPtrOutputWithContext(context.Context) ConnectivityTestSourceCloudRunRevisionPtrOutput
+}
+
+type connectivityTestSourceCloudRunRevisionPtrType ConnectivityTestSourceCloudRunRevisionArgs
+
+func ConnectivityTestSourceCloudRunRevisionPtr(v *ConnectivityTestSourceCloudRunRevisionArgs) ConnectivityTestSourceCloudRunRevisionPtrInput {
+	return (*connectivityTestSourceCloudRunRevisionPtrType)(v)
+}
+
+func (*connectivityTestSourceCloudRunRevisionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectivityTestSourceCloudRunRevision)(nil)).Elem()
+}
+
+func (i *connectivityTestSourceCloudRunRevisionPtrType) ToConnectivityTestSourceCloudRunRevisionPtrOutput() ConnectivityTestSourceCloudRunRevisionPtrOutput {
+	return i.ToConnectivityTestSourceCloudRunRevisionPtrOutputWithContext(context.Background())
+}
+
+func (i *connectivityTestSourceCloudRunRevisionPtrType) ToConnectivityTestSourceCloudRunRevisionPtrOutputWithContext(ctx context.Context) ConnectivityTestSourceCloudRunRevisionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestSourceCloudRunRevisionPtrOutput)
+}
+
+type ConnectivityTestSourceCloudRunRevisionOutput struct{ *pulumi.OutputState }
+
+func (ConnectivityTestSourceCloudRunRevisionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectivityTestSourceCloudRunRevision)(nil)).Elem()
+}
+
+func (o ConnectivityTestSourceCloudRunRevisionOutput) ToConnectivityTestSourceCloudRunRevisionOutput() ConnectivityTestSourceCloudRunRevisionOutput {
+	return o
+}
+
+func (o ConnectivityTestSourceCloudRunRevisionOutput) ToConnectivityTestSourceCloudRunRevisionOutputWithContext(ctx context.Context) ConnectivityTestSourceCloudRunRevisionOutput {
+	return o
+}
+
+func (o ConnectivityTestSourceCloudRunRevisionOutput) ToConnectivityTestSourceCloudRunRevisionPtrOutput() ConnectivityTestSourceCloudRunRevisionPtrOutput {
+	return o.ToConnectivityTestSourceCloudRunRevisionPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectivityTestSourceCloudRunRevisionOutput) ToConnectivityTestSourceCloudRunRevisionPtrOutputWithContext(ctx context.Context) ConnectivityTestSourceCloudRunRevisionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectivityTestSourceCloudRunRevision) *ConnectivityTestSourceCloudRunRevision {
+		return &v
+	}).(ConnectivityTestSourceCloudRunRevisionPtrOutput)
+}
+
+// A Cloud Run revision URI.
+func (o ConnectivityTestSourceCloudRunRevisionOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectivityTestSourceCloudRunRevision) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type ConnectivityTestSourceCloudRunRevisionPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectivityTestSourceCloudRunRevisionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectivityTestSourceCloudRunRevision)(nil)).Elem()
+}
+
+func (o ConnectivityTestSourceCloudRunRevisionPtrOutput) ToConnectivityTestSourceCloudRunRevisionPtrOutput() ConnectivityTestSourceCloudRunRevisionPtrOutput {
+	return o
+}
+
+func (o ConnectivityTestSourceCloudRunRevisionPtrOutput) ToConnectivityTestSourceCloudRunRevisionPtrOutputWithContext(ctx context.Context) ConnectivityTestSourceCloudRunRevisionPtrOutput {
+	return o
+}
+
+func (o ConnectivityTestSourceCloudRunRevisionPtrOutput) Elem() ConnectivityTestSourceCloudRunRevisionOutput {
+	return o.ApplyT(func(v *ConnectivityTestSourceCloudRunRevision) ConnectivityTestSourceCloudRunRevision {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectivityTestSourceCloudRunRevision
+		return ret
+	}).(ConnectivityTestSourceCloudRunRevisionOutput)
+}
+
+// A Cloud Run revision URI.
+func (o ConnectivityTestSourceCloudRunRevisionPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectivityTestSourceCloudRunRevision) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestDestinationInput)(nil)).Elem(), ConnectivityTestDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestDestinationPtrInput)(nil)).Elem(), ConnectivityTestDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestSourceInput)(nil)).Elem(), ConnectivityTestSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestSourcePtrInput)(nil)).Elem(), ConnectivityTestSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestSourceAppEngineVersionInput)(nil)).Elem(), ConnectivityTestSourceAppEngineVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestSourceAppEngineVersionPtrInput)(nil)).Elem(), ConnectivityTestSourceAppEngineVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestSourceCloudFunctionInput)(nil)).Elem(), ConnectivityTestSourceCloudFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestSourceCloudFunctionPtrInput)(nil)).Elem(), ConnectivityTestSourceCloudFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestSourceCloudRunRevisionInput)(nil)).Elem(), ConnectivityTestSourceCloudRunRevisionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestSourceCloudRunRevisionPtrInput)(nil)).Elem(), ConnectivityTestSourceCloudRunRevisionArgs{})
 	pulumi.RegisterOutputType(ConnectivityTestDestinationOutput{})
 	pulumi.RegisterOutputType(ConnectivityTestDestinationPtrOutput{})
 	pulumi.RegisterOutputType(ConnectivityTestSourceOutput{})
 	pulumi.RegisterOutputType(ConnectivityTestSourcePtrOutput{})
+	pulumi.RegisterOutputType(ConnectivityTestSourceAppEngineVersionOutput{})
+	pulumi.RegisterOutputType(ConnectivityTestSourceAppEngineVersionPtrOutput{})
+	pulumi.RegisterOutputType(ConnectivityTestSourceCloudFunctionOutput{})
+	pulumi.RegisterOutputType(ConnectivityTestSourceCloudFunctionPtrOutput{})
+	pulumi.RegisterOutputType(ConnectivityTestSourceCloudRunRevisionOutput{})
+	pulumi.RegisterOutputType(ConnectivityTestSourceCloudRunRevisionPtrOutput{})
 }

@@ -19,6 +19,8 @@ import com.pulumi.gcp.organizations.inputs.GetFoldersArgs;
 import com.pulumi.gcp.organizations.inputs.GetFoldersPlainArgs;
 import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
 import com.pulumi.gcp.organizations.inputs.GetIAMPolicyPlainArgs;
+import com.pulumi.gcp.organizations.inputs.GetIamCustomRoleArgs;
+import com.pulumi.gcp.organizations.inputs.GetIamCustomRolePlainArgs;
 import com.pulumi.gcp.organizations.inputs.GetOrganizationArgs;
 import com.pulumi.gcp.organizations.inputs.GetOrganizationPlainArgs;
 import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
@@ -32,6 +34,7 @@ import com.pulumi.gcp.organizations.outputs.GetClientOpenIdUserInfoResult;
 import com.pulumi.gcp.organizations.outputs.GetFolderResult;
 import com.pulumi.gcp.organizations.outputs.GetFoldersResult;
 import com.pulumi.gcp.organizations.outputs.GetIAMPolicyResult;
+import com.pulumi.gcp.organizations.outputs.GetIamCustomRoleResult;
 import com.pulumi.gcp.organizations.outputs.GetOrganizationResult;
 import com.pulumi.gcp.organizations.outputs.GetProjectResult;
 import com.pulumi.gcp.organizations.outputs.GetSResult;
@@ -2101,6 +2104,251 @@ public final class OrganizationsFunctions {
      */
     public static CompletableFuture<GetIAMPolicyResult> getIAMPolicyPlain(GetIAMPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:organizations/getIAMPolicy:getIAMPolicy", TypeShape.of(GetIAMPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Cloud Organization IAM Custom Role. Note that you must have the `roles/iam.organizationRoleViewer` role (or equivalent permissions) at the organization level to use this datasource.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetIamCustomRoleArgs;
+     * import com.pulumi.gcp.projects.IAMMember;
+     * import com.pulumi.gcp.projects.IAMMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var example = OrganizationsFunctions.getIamCustomRole(GetIamCustomRoleArgs.builder()
+     *             .orgId("1234567890")
+     *             .roleId("your-role-id")
+     *             .build());
+     * 
+     *         var project = new IAMMember("project", IAMMemberArgs.builder()
+     *             .project("your-project-id")
+     *             .role(example.applyValue(getIamCustomRoleResult -> getIamCustomRoleResult.name()))
+     *             .member("user:jane}{@literal @}{@code example.com")
+     *             .build());
+     * 
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIamCustomRoleResult> getIamCustomRole(GetIamCustomRoleArgs args) {
+        return getIamCustomRole(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google Cloud Organization IAM Custom Role. Note that you must have the `roles/iam.organizationRoleViewer` role (or equivalent permissions) at the organization level to use this datasource.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetIamCustomRoleArgs;
+     * import com.pulumi.gcp.projects.IAMMember;
+     * import com.pulumi.gcp.projects.IAMMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var example = OrganizationsFunctions.getIamCustomRole(GetIamCustomRoleArgs.builder()
+     *             .orgId("1234567890")
+     *             .roleId("your-role-id")
+     *             .build());
+     * 
+     *         var project = new IAMMember("project", IAMMemberArgs.builder()
+     *             .project("your-project-id")
+     *             .role(example.applyValue(getIamCustomRoleResult -> getIamCustomRoleResult.name()))
+     *             .member("user:jane}{@literal @}{@code example.com")
+     *             .build());
+     * 
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetIamCustomRoleResult> getIamCustomRolePlain(GetIamCustomRolePlainArgs args) {
+        return getIamCustomRolePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google Cloud Organization IAM Custom Role. Note that you must have the `roles/iam.organizationRoleViewer` role (or equivalent permissions) at the organization level to use this datasource.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetIamCustomRoleArgs;
+     * import com.pulumi.gcp.projects.IAMMember;
+     * import com.pulumi.gcp.projects.IAMMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var example = OrganizationsFunctions.getIamCustomRole(GetIamCustomRoleArgs.builder()
+     *             .orgId("1234567890")
+     *             .roleId("your-role-id")
+     *             .build());
+     * 
+     *         var project = new IAMMember("project", IAMMemberArgs.builder()
+     *             .project("your-project-id")
+     *             .role(example.applyValue(getIamCustomRoleResult -> getIamCustomRoleResult.name()))
+     *             .member("user:jane}{@literal @}{@code example.com")
+     *             .build());
+     * 
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIamCustomRoleResult> getIamCustomRole(GetIamCustomRoleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:organizations/getIamCustomRole:getIamCustomRole", TypeShape.of(GetIamCustomRoleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Cloud Organization IAM Custom Role. Note that you must have the `roles/iam.organizationRoleViewer` role (or equivalent permissions) at the organization level to use this datasource.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetIamCustomRoleArgs;
+     * import com.pulumi.gcp.projects.IAMMember;
+     * import com.pulumi.gcp.projects.IAMMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var example = OrganizationsFunctions.getIamCustomRole(GetIamCustomRoleArgs.builder()
+     *             .orgId("1234567890")
+     *             .roleId("your-role-id")
+     *             .build());
+     * 
+     *         var project = new IAMMember("project", IAMMemberArgs.builder()
+     *             .project("your-project-id")
+     *             .role(example.applyValue(getIamCustomRoleResult -> getIamCustomRoleResult.name()))
+     *             .member("user:jane}{@literal @}{@code example.com")
+     *             .build());
+     * 
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIamCustomRoleResult> getIamCustomRole(GetIamCustomRoleArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:organizations/getIamCustomRole:getIamCustomRole", TypeShape.of(GetIamCustomRoleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Cloud Organization IAM Custom Role. Note that you must have the `roles/iam.organizationRoleViewer` role (or equivalent permissions) at the organization level to use this datasource.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetIamCustomRoleArgs;
+     * import com.pulumi.gcp.projects.IAMMember;
+     * import com.pulumi.gcp.projects.IAMMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var example = OrganizationsFunctions.getIamCustomRole(GetIamCustomRoleArgs.builder()
+     *             .orgId("1234567890")
+     *             .roleId("your-role-id")
+     *             .build());
+     * 
+     *         var project = new IAMMember("project", IAMMemberArgs.builder()
+     *             .project("your-project-id")
+     *             .role(example.applyValue(getIamCustomRoleResult -> getIamCustomRoleResult.name()))
+     *             .member("user:jane}{@literal @}{@code example.com")
+     *             .build());
+     * 
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetIamCustomRoleResult> getIamCustomRolePlain(GetIamCustomRolePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:organizations/getIamCustomRole:getIamCustomRole", TypeShape.of(GetIamCustomRoleResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.

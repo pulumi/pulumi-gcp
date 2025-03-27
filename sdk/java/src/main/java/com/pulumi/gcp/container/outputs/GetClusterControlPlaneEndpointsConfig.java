@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterControlPlaneEndpointsConfigDnsEndpointConfig;
+import com.pulumi.gcp.container.outputs.GetClusterControlPlaneEndpointsConfigIpEndpointsConfig;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,6 +17,11 @@ public final class GetClusterControlPlaneEndpointsConfig {
      * 
      */
     private List<GetClusterControlPlaneEndpointsConfigDnsEndpointConfig> dnsEndpointConfigs;
+    /**
+     * @return IP endpoint configuration.
+     * 
+     */
+    private List<GetClusterControlPlaneEndpointsConfigIpEndpointsConfig> ipEndpointsConfigs;
 
     private GetClusterControlPlaneEndpointsConfig() {}
     /**
@@ -24,6 +30,13 @@ public final class GetClusterControlPlaneEndpointsConfig {
      */
     public List<GetClusterControlPlaneEndpointsConfigDnsEndpointConfig> dnsEndpointConfigs() {
         return this.dnsEndpointConfigs;
+    }
+    /**
+     * @return IP endpoint configuration.
+     * 
+     */
+    public List<GetClusterControlPlaneEndpointsConfigIpEndpointsConfig> ipEndpointsConfigs() {
+        return this.ipEndpointsConfigs;
     }
 
     public static Builder builder() {
@@ -36,10 +49,12 @@ public final class GetClusterControlPlaneEndpointsConfig {
     @CustomType.Builder
     public static final class Builder {
         private List<GetClusterControlPlaneEndpointsConfigDnsEndpointConfig> dnsEndpointConfigs;
+        private List<GetClusterControlPlaneEndpointsConfigIpEndpointsConfig> ipEndpointsConfigs;
         public Builder() {}
         public Builder(GetClusterControlPlaneEndpointsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dnsEndpointConfigs = defaults.dnsEndpointConfigs;
+    	      this.ipEndpointsConfigs = defaults.ipEndpointsConfigs;
         }
 
         @CustomType.Setter
@@ -53,9 +68,21 @@ public final class GetClusterControlPlaneEndpointsConfig {
         public Builder dnsEndpointConfigs(GetClusterControlPlaneEndpointsConfigDnsEndpointConfig... dnsEndpointConfigs) {
             return dnsEndpointConfigs(List.of(dnsEndpointConfigs));
         }
+        @CustomType.Setter
+        public Builder ipEndpointsConfigs(List<GetClusterControlPlaneEndpointsConfigIpEndpointsConfig> ipEndpointsConfigs) {
+            if (ipEndpointsConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterControlPlaneEndpointsConfig", "ipEndpointsConfigs");
+            }
+            this.ipEndpointsConfigs = ipEndpointsConfigs;
+            return this;
+        }
+        public Builder ipEndpointsConfigs(GetClusterControlPlaneEndpointsConfigIpEndpointsConfig... ipEndpointsConfigs) {
+            return ipEndpointsConfigs(List.of(ipEndpointsConfigs));
+        }
         public GetClusterControlPlaneEndpointsConfig build() {
             final var _resultValue = new GetClusterControlPlaneEndpointsConfig();
             _resultValue.dnsEndpointConfigs = dnsEndpointConfigs;
+            _resultValue.ipEndpointsConfigs = ipEndpointsConfigs;
             return _resultValue;
         }
     }

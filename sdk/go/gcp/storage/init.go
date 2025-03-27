@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BucketIAMPolicy{}
 	case "gcp:storage/bucketObject:BucketObject":
 		r = &BucketObject{}
+	case "gcp:storage/controlProjectIntelligenceConfig:ControlProjectIntelligenceConfig":
+		r = &ControlProjectIntelligenceConfig{}
 	case "gcp:storage/defaultObjectACL:DefaultObjectACL":
 		r = &DefaultObjectACL{}
 	case "gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl":
@@ -116,6 +118,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"storage/bucketObject",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"storage/controlProjectIntelligenceConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

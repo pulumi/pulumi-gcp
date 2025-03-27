@@ -122,6 +122,13 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// The list of locations where the deployment group is present.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("locations")]
+        public Output<ImmutableArray<Outputs.InterceptDeploymentGroupLocation>> Locations { get; private set; } = null!;
+
+        /// <summary>
         /// (Output)
         /// The connected endpoint group's resource name, for example:
         /// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
@@ -162,13 +169,12 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<bool> Reconciling { get; private set; } = null!;
 
         /// <summary>
-        /// The current state of the deployment group.
-        /// See https://google.aip.dev/216.
+        /// (Output)
+        /// The current state of the association in this location.
         /// Possible values:
         /// STATE_UNSPECIFIED
         /// ACTIVE
-        /// CREATING
-        /// DELETING
+        /// OUT_OF_SYNC
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -364,6 +370,19 @@ namespace Pulumi.Gcp.NetworkSecurity
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        [Input("locations")]
+        private InputList<Inputs.InterceptDeploymentGroupLocationGetArgs>? _locations;
+
+        /// <summary>
+        /// The list of locations where the deployment group is present.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.InterceptDeploymentGroupLocationGetArgs> Locations
+        {
+            get => _locations ?? (_locations = new InputList<Inputs.InterceptDeploymentGroupLocationGetArgs>());
+            set => _locations = value;
+        }
+
         /// <summary>
         /// (Output)
         /// The connected endpoint group's resource name, for example:
@@ -415,13 +434,12 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<bool>? Reconciling { get; set; }
 
         /// <summary>
-        /// The current state of the deployment group.
-        /// See https://google.aip.dev/216.
+        /// (Output)
+        /// The current state of the association in this location.
         /// Possible values:
         /// STATE_UNSPECIFIED
         /// ACTIVE
-        /// CREATING
-        /// DELETING
+        /// OUT_OF_SYNC
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

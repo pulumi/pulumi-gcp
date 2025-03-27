@@ -6,6 +6,7 @@ package com.pulumi.gcp.networksecurity.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.networksecurity.inputs.InterceptDeploymentGroupConnectedEndpointGroupArgs;
+import com.pulumi.gcp.networksecurity.inputs.InterceptDeploymentGroupLocationArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -141,6 +142,23 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
     }
 
     /**
+     * The list of locations where the deployment group is present.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="locations")
+    private @Nullable Output<List<InterceptDeploymentGroupLocationArgs>> locations;
+
+    /**
+     * @return The list of locations where the deployment group is present.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<InterceptDeploymentGroupLocationArgs>>> locations() {
+        return Optional.ofNullable(this.locations);
+    }
+
+    /**
      * (Output)
      * The connected endpoint group&#39;s resource name, for example:
      * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
@@ -236,26 +254,24 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
     }
 
     /**
-     * The current state of the deployment group.
-     * See https://google.aip.dev/216.
+     * (Output)
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
-     * CREATING
-     * DELETING
+     * OUT_OF_SYNC
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return The current state of the deployment group.
-     * See https://google.aip.dev/216.
+     * @return (Output)
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
-     * CREATING
-     * DELETING
+     * OUT_OF_SYNC
      * 
      */
     public Optional<Output<String>> state() {
@@ -289,6 +305,7 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
         this.interceptDeploymentGroupId = $.interceptDeploymentGroupId;
         this.labels = $.labels;
         this.location = $.location;
+        this.locations = $.locations;
         this.name = $.name;
         this.network = $.network;
         this.project = $.project;
@@ -491,6 +508,40 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
         }
 
         /**
+         * @param locations The list of locations where the deployment group is present.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locations(@Nullable Output<List<InterceptDeploymentGroupLocationArgs>> locations) {
+            $.locations = locations;
+            return this;
+        }
+
+        /**
+         * @param locations The list of locations where the deployment group is present.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locations(List<InterceptDeploymentGroupLocationArgs> locations) {
+            return locations(Output.of(locations));
+        }
+
+        /**
+         * @param locations The list of locations where the deployment group is present.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locations(InterceptDeploymentGroupLocationArgs... locations) {
+            return locations(List.of(locations));
+        }
+
+        /**
          * @param name (Output)
          * The connected endpoint group&#39;s resource name, for example:
          * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
@@ -616,13 +667,12 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param state The current state of the deployment group.
-         * See https://google.aip.dev/216.
+         * @param state (Output)
+         * The current state of the association in this location.
          * Possible values:
          * STATE_UNSPECIFIED
          * ACTIVE
-         * CREATING
-         * DELETING
+         * OUT_OF_SYNC
          * 
          * @return builder
          * 
@@ -633,13 +683,12 @@ public final class InterceptDeploymentGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param state The current state of the deployment group.
-         * See https://google.aip.dev/216.
+         * @param state (Output)
+         * The current state of the association in this location.
          * Possible values:
          * STATE_UNSPECIFIED
          * ACTIVE
-         * CREATING
-         * DELETING
+         * OUT_OF_SYNC
          * 
          * @return builder
          * 

@@ -19,6 +19,21 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsArgs extends 
     public static final InstanceFromMachineImageBootDiskInitializeParamsArgs Empty = new InstanceFromMachineImageBootDiskInitializeParamsArgs();
 
     /**
+     * The architecture of the disk. One of &#34;X86_64&#34; or &#34;ARM64&#34;.
+     * 
+     */
+    @Import(name="architecture")
+    private @Nullable Output<String> architecture;
+
+    /**
+     * @return The architecture of the disk. One of &#34;X86_64&#34; or &#34;ARM64&#34;.
+     * 
+     */
+    public Optional<Output<String>> architecture() {
+        return Optional.ofNullable(this.architecture);
+    }
+
+    /**
      * A flag to enable confidential compute mode on boot disk
      * 
      */
@@ -171,6 +186,7 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsArgs extends 
     private InstanceFromMachineImageBootDiskInitializeParamsArgs() {}
 
     private InstanceFromMachineImageBootDiskInitializeParamsArgs(InstanceFromMachineImageBootDiskInitializeParamsArgs $) {
+        this.architecture = $.architecture;
         this.enableConfidentialCompute = $.enableConfidentialCompute;
         this.image = $.image;
         this.labels = $.labels;
@@ -199,6 +215,27 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsArgs extends 
 
         public Builder(InstanceFromMachineImageBootDiskInitializeParamsArgs defaults) {
             $ = new InstanceFromMachineImageBootDiskInitializeParamsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param architecture The architecture of the disk. One of &#34;X86_64&#34; or &#34;ARM64&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder architecture(@Nullable Output<String> architecture) {
+            $.architecture = architecture;
+            return this;
+        }
+
+        /**
+         * @param architecture The architecture of the disk. One of &#34;X86_64&#34; or &#34;ARM64&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder architecture(String architecture) {
+            return architecture(Output.of(architecture));
         }
 
         /**

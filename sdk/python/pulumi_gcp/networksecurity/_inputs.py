@@ -99,8 +99,18 @@ __all__ = [
     'ClientTlsPolicyServerValidationCaGrpcEndpointArgsDict',
     'InterceptDeploymentGroupConnectedEndpointGroupArgs',
     'InterceptDeploymentGroupConnectedEndpointGroupArgsDict',
+    'InterceptDeploymentGroupLocationArgs',
+    'InterceptDeploymentGroupLocationArgsDict',
+    'InterceptEndpointGroupAssociationArgs',
+    'InterceptEndpointGroupAssociationArgsDict',
+    'InterceptEndpointGroupAssociationLocationArgs',
+    'InterceptEndpointGroupAssociationLocationArgsDict',
     'InterceptEndpointGroupAssociationLocationsDetailArgs',
     'InterceptEndpointGroupAssociationLocationsDetailArgsDict',
+    'InterceptEndpointGroupConnectedDeploymentGroupArgs',
+    'InterceptEndpointGroupConnectedDeploymentGroupArgsDict',
+    'InterceptEndpointGroupConnectedDeploymentGroupLocationArgs',
+    'InterceptEndpointGroupConnectedDeploymentGroupLocationArgsDict',
     'MirroringDeploymentGroupConnectedEndpointGroupArgs',
     'MirroringDeploymentGroupConnectedEndpointGroupArgsDict',
     'MirroringEndpointGroupAssociationLocationsDetailArgs',
@@ -3227,6 +3237,254 @@ class InterceptDeploymentGroupConnectedEndpointGroupArgs:
 
 
 if not MYPY:
+    class InterceptDeploymentGroupLocationArgsDict(TypedDict):
+        location: NotRequired[pulumi.Input[str]]
+        """
+        The cloud location of the deployment group, currently restricted to `global`.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The current state of the association in this location.
+        Possible values:
+        STATE_UNSPECIFIED
+        ACTIVE
+        OUT_OF_SYNC
+        """
+elif False:
+    InterceptDeploymentGroupLocationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterceptDeploymentGroupLocationArgs:
+    def __init__(__self__, *,
+                 location: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] location: The cloud location of the deployment group, currently restricted to `global`.
+        :param pulumi.Input[str] state: (Output)
+               The current state of the association in this location.
+               Possible values:
+               STATE_UNSPECIFIED
+               ACTIVE
+               OUT_OF_SYNC
+        """
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cloud location of the deployment group, currently restricted to `global`.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The current state of the association in this location.
+        Possible values:
+        STATE_UNSPECIFIED
+        ACTIVE
+        OUT_OF_SYNC
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+
+if not MYPY:
+    class InterceptEndpointGroupAssociationArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The connected deployment group's resource name, for example:
+        `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+        See https://google.aip.dev/124.
+        """
+        network: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The associated network, for example:
+        projects/123456789/global/networks/my-network.
+        See https://google.aip.dev/124.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The current state of the association in this location.
+        Possible values:
+        STATE_UNSPECIFIED
+        ACTIVE
+        OUT_OF_SYNC
+        """
+elif False:
+    InterceptEndpointGroupAssociationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterceptEndpointGroupAssociationArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: (Output)
+               The connected deployment group's resource name, for example:
+               `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+               See https://google.aip.dev/124.
+        :param pulumi.Input[str] network: (Output)
+               The associated network, for example:
+               projects/123456789/global/networks/my-network.
+               See https://google.aip.dev/124.
+        :param pulumi.Input[str] state: (Output)
+               The current state of the association in this location.
+               Possible values:
+               STATE_UNSPECIFIED
+               ACTIVE
+               OUT_OF_SYNC
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The connected deployment group's resource name, for example:
+        `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+        See https://google.aip.dev/124.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The associated network, for example:
+        projects/123456789/global/networks/my-network.
+        See https://google.aip.dev/124.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The current state of the association in this location.
+        Possible values:
+        STATE_UNSPECIFIED
+        ACTIVE
+        OUT_OF_SYNC
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+
+if not MYPY:
+    class InterceptEndpointGroupAssociationLocationArgsDict(TypedDict):
+        location: NotRequired[pulumi.Input[str]]
+        """
+        The cloud location of the association, currently restricted to `global`.
+
+
+        - - -
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The current state of the association in this location.
+        Possible values:
+        STATE_UNSPECIFIED
+        ACTIVE
+        OUT_OF_SYNC
+        """
+elif False:
+    InterceptEndpointGroupAssociationLocationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterceptEndpointGroupAssociationLocationArgs:
+    def __init__(__self__, *,
+                 location: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] location: The cloud location of the association, currently restricted to `global`.
+               
+               
+               - - -
+        :param pulumi.Input[str] state: (Output)
+               The current state of the association in this location.
+               Possible values:
+               STATE_UNSPECIFIED
+               ACTIVE
+               OUT_OF_SYNC
+        """
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cloud location of the association, currently restricted to `global`.
+
+
+        - - -
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The current state of the association in this location.
+        Possible values:
+        STATE_UNSPECIFIED
+        ACTIVE
+        OUT_OF_SYNC
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+
+if not MYPY:
     class InterceptEndpointGroupAssociationLocationsDetailArgsDict(TypedDict):
         location: NotRequired[pulumi.Input[str]]
         """
@@ -3277,6 +3535,140 @@ class InterceptEndpointGroupAssociationLocationsDetailArgs:
 
 
         - - -
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The current state of the association in this location.
+        Possible values:
+        STATE_UNSPECIFIED
+        ACTIVE
+        OUT_OF_SYNC
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+
+if not MYPY:
+    class InterceptEndpointGroupConnectedDeploymentGroupArgsDict(TypedDict):
+        locations: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupConnectedDeploymentGroupLocationArgsDict']]]]
+        """
+        (Output)
+        The list of locations where the deployment group is present.
+        Structure is documented below.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The connected deployment group's resource name, for example:
+        `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+        See https://google.aip.dev/124.
+        """
+elif False:
+    InterceptEndpointGroupConnectedDeploymentGroupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterceptEndpointGroupConnectedDeploymentGroupArgs:
+    def __init__(__self__, *,
+                 locations: Optional[pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupConnectedDeploymentGroupLocationArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupConnectedDeploymentGroupLocationArgs']]] locations: (Output)
+               The list of locations where the deployment group is present.
+               Structure is documented below.
+        :param pulumi.Input[str] name: (Output)
+               The connected deployment group's resource name, for example:
+               `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+               See https://google.aip.dev/124.
+        """
+        if locations is not None:
+            pulumi.set(__self__, "locations", locations)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupConnectedDeploymentGroupLocationArgs']]]]:
+        """
+        (Output)
+        The list of locations where the deployment group is present.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "locations")
+
+    @locations.setter
+    def locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupConnectedDeploymentGroupLocationArgs']]]]):
+        pulumi.set(self, "locations", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The connected deployment group's resource name, for example:
+        `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+        See https://google.aip.dev/124.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class InterceptEndpointGroupConnectedDeploymentGroupLocationArgsDict(TypedDict):
+        location: NotRequired[pulumi.Input[str]]
+        """
+        The cloud location of the endpoint group, currently restricted to `global`.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The current state of the association in this location.
+        Possible values:
+        STATE_UNSPECIFIED
+        ACTIVE
+        OUT_OF_SYNC
+        """
+elif False:
+    InterceptEndpointGroupConnectedDeploymentGroupLocationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterceptEndpointGroupConnectedDeploymentGroupLocationArgs:
+    def __init__(__self__, *,
+                 location: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] location: The cloud location of the endpoint group, currently restricted to `global`.
+        :param pulumi.Input[str] state: (Output)
+               The current state of the association in this location.
+               Possible values:
+               STATE_UNSPECIFIED
+               ACTIVE
+               OUT_OF_SYNC
+        """
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cloud location of the endpoint group, currently restricted to `global`.
         """
         return pulumi.get(self, "location")
 

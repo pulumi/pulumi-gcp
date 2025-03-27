@@ -6324,6 +6324,402 @@ func (o InterceptDeploymentGroupConnectedEndpointGroupArrayOutput) Index(i pulum
 	}).(InterceptDeploymentGroupConnectedEndpointGroupOutput)
 }
 
+type InterceptDeploymentGroupLocation struct {
+	// The cloud location of the deployment group, currently restricted to `global`.
+	Location *string `pulumi:"location"`
+	// (Output)
+	// The current state of the association in this location.
+	// Possible values:
+	// STATE_UNSPECIFIED
+	// ACTIVE
+	// OUT_OF_SYNC
+	State *string `pulumi:"state"`
+}
+
+// InterceptDeploymentGroupLocationInput is an input type that accepts InterceptDeploymentGroupLocationArgs and InterceptDeploymentGroupLocationOutput values.
+// You can construct a concrete instance of `InterceptDeploymentGroupLocationInput` via:
+//
+//	InterceptDeploymentGroupLocationArgs{...}
+type InterceptDeploymentGroupLocationInput interface {
+	pulumi.Input
+
+	ToInterceptDeploymentGroupLocationOutput() InterceptDeploymentGroupLocationOutput
+	ToInterceptDeploymentGroupLocationOutputWithContext(context.Context) InterceptDeploymentGroupLocationOutput
+}
+
+type InterceptDeploymentGroupLocationArgs struct {
+	// The cloud location of the deployment group, currently restricted to `global`.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// (Output)
+	// The current state of the association in this location.
+	// Possible values:
+	// STATE_UNSPECIFIED
+	// ACTIVE
+	// OUT_OF_SYNC
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (InterceptDeploymentGroupLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterceptDeploymentGroupLocation)(nil)).Elem()
+}
+
+func (i InterceptDeploymentGroupLocationArgs) ToInterceptDeploymentGroupLocationOutput() InterceptDeploymentGroupLocationOutput {
+	return i.ToInterceptDeploymentGroupLocationOutputWithContext(context.Background())
+}
+
+func (i InterceptDeploymentGroupLocationArgs) ToInterceptDeploymentGroupLocationOutputWithContext(ctx context.Context) InterceptDeploymentGroupLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterceptDeploymentGroupLocationOutput)
+}
+
+// InterceptDeploymentGroupLocationArrayInput is an input type that accepts InterceptDeploymentGroupLocationArray and InterceptDeploymentGroupLocationArrayOutput values.
+// You can construct a concrete instance of `InterceptDeploymentGroupLocationArrayInput` via:
+//
+//	InterceptDeploymentGroupLocationArray{ InterceptDeploymentGroupLocationArgs{...} }
+type InterceptDeploymentGroupLocationArrayInput interface {
+	pulumi.Input
+
+	ToInterceptDeploymentGroupLocationArrayOutput() InterceptDeploymentGroupLocationArrayOutput
+	ToInterceptDeploymentGroupLocationArrayOutputWithContext(context.Context) InterceptDeploymentGroupLocationArrayOutput
+}
+
+type InterceptDeploymentGroupLocationArray []InterceptDeploymentGroupLocationInput
+
+func (InterceptDeploymentGroupLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterceptDeploymentGroupLocation)(nil)).Elem()
+}
+
+func (i InterceptDeploymentGroupLocationArray) ToInterceptDeploymentGroupLocationArrayOutput() InterceptDeploymentGroupLocationArrayOutput {
+	return i.ToInterceptDeploymentGroupLocationArrayOutputWithContext(context.Background())
+}
+
+func (i InterceptDeploymentGroupLocationArray) ToInterceptDeploymentGroupLocationArrayOutputWithContext(ctx context.Context) InterceptDeploymentGroupLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterceptDeploymentGroupLocationArrayOutput)
+}
+
+type InterceptDeploymentGroupLocationOutput struct{ *pulumi.OutputState }
+
+func (InterceptDeploymentGroupLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterceptDeploymentGroupLocation)(nil)).Elem()
+}
+
+func (o InterceptDeploymentGroupLocationOutput) ToInterceptDeploymentGroupLocationOutput() InterceptDeploymentGroupLocationOutput {
+	return o
+}
+
+func (o InterceptDeploymentGroupLocationOutput) ToInterceptDeploymentGroupLocationOutputWithContext(ctx context.Context) InterceptDeploymentGroupLocationOutput {
+	return o
+}
+
+// The cloud location of the deployment group, currently restricted to `global`.
+func (o InterceptDeploymentGroupLocationOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterceptDeploymentGroupLocation) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The current state of the association in this location.
+// Possible values:
+// STATE_UNSPECIFIED
+// ACTIVE
+// OUT_OF_SYNC
+func (o InterceptDeploymentGroupLocationOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterceptDeploymentGroupLocation) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type InterceptDeploymentGroupLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (InterceptDeploymentGroupLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterceptDeploymentGroupLocation)(nil)).Elem()
+}
+
+func (o InterceptDeploymentGroupLocationArrayOutput) ToInterceptDeploymentGroupLocationArrayOutput() InterceptDeploymentGroupLocationArrayOutput {
+	return o
+}
+
+func (o InterceptDeploymentGroupLocationArrayOutput) ToInterceptDeploymentGroupLocationArrayOutputWithContext(ctx context.Context) InterceptDeploymentGroupLocationArrayOutput {
+	return o
+}
+
+func (o InterceptDeploymentGroupLocationArrayOutput) Index(i pulumi.IntInput) InterceptDeploymentGroupLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterceptDeploymentGroupLocation {
+		return vs[0].([]InterceptDeploymentGroupLocation)[vs[1].(int)]
+	}).(InterceptDeploymentGroupLocationOutput)
+}
+
+type InterceptEndpointGroupAssociationType struct {
+	// (Output)
+	// The connected deployment group's resource name, for example:
+	// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+	// See https://google.aip.dev/124.
+	Name *string `pulumi:"name"`
+	// (Output)
+	// The associated network, for example:
+	// projects/123456789/global/networks/my-network.
+	// See https://google.aip.dev/124.
+	Network *string `pulumi:"network"`
+	// (Output)
+	// The current state of the association in this location.
+	// Possible values:
+	// STATE_UNSPECIFIED
+	// ACTIVE
+	// OUT_OF_SYNC
+	State *string `pulumi:"state"`
+}
+
+// InterceptEndpointGroupAssociationTypeInput is an input type that accepts InterceptEndpointGroupAssociationTypeArgs and InterceptEndpointGroupAssociationTypeOutput values.
+// You can construct a concrete instance of `InterceptEndpointGroupAssociationTypeInput` via:
+//
+//	InterceptEndpointGroupAssociationTypeArgs{...}
+type InterceptEndpointGroupAssociationTypeInput interface {
+	pulumi.Input
+
+	ToInterceptEndpointGroupAssociationTypeOutput() InterceptEndpointGroupAssociationTypeOutput
+	ToInterceptEndpointGroupAssociationTypeOutputWithContext(context.Context) InterceptEndpointGroupAssociationTypeOutput
+}
+
+type InterceptEndpointGroupAssociationTypeArgs struct {
+	// (Output)
+	// The connected deployment group's resource name, for example:
+	// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+	// See https://google.aip.dev/124.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// (Output)
+	// The associated network, for example:
+	// projects/123456789/global/networks/my-network.
+	// See https://google.aip.dev/124.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// (Output)
+	// The current state of the association in this location.
+	// Possible values:
+	// STATE_UNSPECIFIED
+	// ACTIVE
+	// OUT_OF_SYNC
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (InterceptEndpointGroupAssociationTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterceptEndpointGroupAssociationType)(nil)).Elem()
+}
+
+func (i InterceptEndpointGroupAssociationTypeArgs) ToInterceptEndpointGroupAssociationTypeOutput() InterceptEndpointGroupAssociationTypeOutput {
+	return i.ToInterceptEndpointGroupAssociationTypeOutputWithContext(context.Background())
+}
+
+func (i InterceptEndpointGroupAssociationTypeArgs) ToInterceptEndpointGroupAssociationTypeOutputWithContext(ctx context.Context) InterceptEndpointGroupAssociationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterceptEndpointGroupAssociationTypeOutput)
+}
+
+// InterceptEndpointGroupAssociationTypeArrayInput is an input type that accepts InterceptEndpointGroupAssociationTypeArray and InterceptEndpointGroupAssociationTypeArrayOutput values.
+// You can construct a concrete instance of `InterceptEndpointGroupAssociationTypeArrayInput` via:
+//
+//	InterceptEndpointGroupAssociationTypeArray{ InterceptEndpointGroupAssociationTypeArgs{...} }
+type InterceptEndpointGroupAssociationTypeArrayInput interface {
+	pulumi.Input
+
+	ToInterceptEndpointGroupAssociationTypeArrayOutput() InterceptEndpointGroupAssociationTypeArrayOutput
+	ToInterceptEndpointGroupAssociationTypeArrayOutputWithContext(context.Context) InterceptEndpointGroupAssociationTypeArrayOutput
+}
+
+type InterceptEndpointGroupAssociationTypeArray []InterceptEndpointGroupAssociationTypeInput
+
+func (InterceptEndpointGroupAssociationTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterceptEndpointGroupAssociationType)(nil)).Elem()
+}
+
+func (i InterceptEndpointGroupAssociationTypeArray) ToInterceptEndpointGroupAssociationTypeArrayOutput() InterceptEndpointGroupAssociationTypeArrayOutput {
+	return i.ToInterceptEndpointGroupAssociationTypeArrayOutputWithContext(context.Background())
+}
+
+func (i InterceptEndpointGroupAssociationTypeArray) ToInterceptEndpointGroupAssociationTypeArrayOutputWithContext(ctx context.Context) InterceptEndpointGroupAssociationTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterceptEndpointGroupAssociationTypeArrayOutput)
+}
+
+type InterceptEndpointGroupAssociationTypeOutput struct{ *pulumi.OutputState }
+
+func (InterceptEndpointGroupAssociationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterceptEndpointGroupAssociationType)(nil)).Elem()
+}
+
+func (o InterceptEndpointGroupAssociationTypeOutput) ToInterceptEndpointGroupAssociationTypeOutput() InterceptEndpointGroupAssociationTypeOutput {
+	return o
+}
+
+func (o InterceptEndpointGroupAssociationTypeOutput) ToInterceptEndpointGroupAssociationTypeOutputWithContext(ctx context.Context) InterceptEndpointGroupAssociationTypeOutput {
+	return o
+}
+
+// (Output)
+// The connected deployment group's resource name, for example:
+// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+// See https://google.aip.dev/124.
+func (o InterceptEndpointGroupAssociationTypeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterceptEndpointGroupAssociationType) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The associated network, for example:
+// projects/123456789/global/networks/my-network.
+// See https://google.aip.dev/124.
+func (o InterceptEndpointGroupAssociationTypeOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterceptEndpointGroupAssociationType) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The current state of the association in this location.
+// Possible values:
+// STATE_UNSPECIFIED
+// ACTIVE
+// OUT_OF_SYNC
+func (o InterceptEndpointGroupAssociationTypeOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterceptEndpointGroupAssociationType) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type InterceptEndpointGroupAssociationTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (InterceptEndpointGroupAssociationTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterceptEndpointGroupAssociationType)(nil)).Elem()
+}
+
+func (o InterceptEndpointGroupAssociationTypeArrayOutput) ToInterceptEndpointGroupAssociationTypeArrayOutput() InterceptEndpointGroupAssociationTypeArrayOutput {
+	return o
+}
+
+func (o InterceptEndpointGroupAssociationTypeArrayOutput) ToInterceptEndpointGroupAssociationTypeArrayOutputWithContext(ctx context.Context) InterceptEndpointGroupAssociationTypeArrayOutput {
+	return o
+}
+
+func (o InterceptEndpointGroupAssociationTypeArrayOutput) Index(i pulumi.IntInput) InterceptEndpointGroupAssociationTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterceptEndpointGroupAssociationType {
+		return vs[0].([]InterceptEndpointGroupAssociationType)[vs[1].(int)]
+	}).(InterceptEndpointGroupAssociationTypeOutput)
+}
+
+type InterceptEndpointGroupAssociationLocation struct {
+	// The cloud location of the association, currently restricted to `global`.
+	//
+	// ***
+	Location *string `pulumi:"location"`
+	// (Output)
+	// The current state of the association in this location.
+	// Possible values:
+	// STATE_UNSPECIFIED
+	// ACTIVE
+	// OUT_OF_SYNC
+	State *string `pulumi:"state"`
+}
+
+// InterceptEndpointGroupAssociationLocationInput is an input type that accepts InterceptEndpointGroupAssociationLocationArgs and InterceptEndpointGroupAssociationLocationOutput values.
+// You can construct a concrete instance of `InterceptEndpointGroupAssociationLocationInput` via:
+//
+//	InterceptEndpointGroupAssociationLocationArgs{...}
+type InterceptEndpointGroupAssociationLocationInput interface {
+	pulumi.Input
+
+	ToInterceptEndpointGroupAssociationLocationOutput() InterceptEndpointGroupAssociationLocationOutput
+	ToInterceptEndpointGroupAssociationLocationOutputWithContext(context.Context) InterceptEndpointGroupAssociationLocationOutput
+}
+
+type InterceptEndpointGroupAssociationLocationArgs struct {
+	// The cloud location of the association, currently restricted to `global`.
+	//
+	// ***
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// (Output)
+	// The current state of the association in this location.
+	// Possible values:
+	// STATE_UNSPECIFIED
+	// ACTIVE
+	// OUT_OF_SYNC
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (InterceptEndpointGroupAssociationLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterceptEndpointGroupAssociationLocation)(nil)).Elem()
+}
+
+func (i InterceptEndpointGroupAssociationLocationArgs) ToInterceptEndpointGroupAssociationLocationOutput() InterceptEndpointGroupAssociationLocationOutput {
+	return i.ToInterceptEndpointGroupAssociationLocationOutputWithContext(context.Background())
+}
+
+func (i InterceptEndpointGroupAssociationLocationArgs) ToInterceptEndpointGroupAssociationLocationOutputWithContext(ctx context.Context) InterceptEndpointGroupAssociationLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterceptEndpointGroupAssociationLocationOutput)
+}
+
+// InterceptEndpointGroupAssociationLocationArrayInput is an input type that accepts InterceptEndpointGroupAssociationLocationArray and InterceptEndpointGroupAssociationLocationArrayOutput values.
+// You can construct a concrete instance of `InterceptEndpointGroupAssociationLocationArrayInput` via:
+//
+//	InterceptEndpointGroupAssociationLocationArray{ InterceptEndpointGroupAssociationLocationArgs{...} }
+type InterceptEndpointGroupAssociationLocationArrayInput interface {
+	pulumi.Input
+
+	ToInterceptEndpointGroupAssociationLocationArrayOutput() InterceptEndpointGroupAssociationLocationArrayOutput
+	ToInterceptEndpointGroupAssociationLocationArrayOutputWithContext(context.Context) InterceptEndpointGroupAssociationLocationArrayOutput
+}
+
+type InterceptEndpointGroupAssociationLocationArray []InterceptEndpointGroupAssociationLocationInput
+
+func (InterceptEndpointGroupAssociationLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterceptEndpointGroupAssociationLocation)(nil)).Elem()
+}
+
+func (i InterceptEndpointGroupAssociationLocationArray) ToInterceptEndpointGroupAssociationLocationArrayOutput() InterceptEndpointGroupAssociationLocationArrayOutput {
+	return i.ToInterceptEndpointGroupAssociationLocationArrayOutputWithContext(context.Background())
+}
+
+func (i InterceptEndpointGroupAssociationLocationArray) ToInterceptEndpointGroupAssociationLocationArrayOutputWithContext(ctx context.Context) InterceptEndpointGroupAssociationLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterceptEndpointGroupAssociationLocationArrayOutput)
+}
+
+type InterceptEndpointGroupAssociationLocationOutput struct{ *pulumi.OutputState }
+
+func (InterceptEndpointGroupAssociationLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterceptEndpointGroupAssociationLocation)(nil)).Elem()
+}
+
+func (o InterceptEndpointGroupAssociationLocationOutput) ToInterceptEndpointGroupAssociationLocationOutput() InterceptEndpointGroupAssociationLocationOutput {
+	return o
+}
+
+func (o InterceptEndpointGroupAssociationLocationOutput) ToInterceptEndpointGroupAssociationLocationOutputWithContext(ctx context.Context) InterceptEndpointGroupAssociationLocationOutput {
+	return o
+}
+
+// The cloud location of the association, currently restricted to `global`.
+//
+// ***
+func (o InterceptEndpointGroupAssociationLocationOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterceptEndpointGroupAssociationLocation) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The current state of the association in this location.
+// Possible values:
+// STATE_UNSPECIFIED
+// ACTIVE
+// OUT_OF_SYNC
+func (o InterceptEndpointGroupAssociationLocationOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterceptEndpointGroupAssociationLocation) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type InterceptEndpointGroupAssociationLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (InterceptEndpointGroupAssociationLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterceptEndpointGroupAssociationLocation)(nil)).Elem()
+}
+
+func (o InterceptEndpointGroupAssociationLocationArrayOutput) ToInterceptEndpointGroupAssociationLocationArrayOutput() InterceptEndpointGroupAssociationLocationArrayOutput {
+	return o
+}
+
+func (o InterceptEndpointGroupAssociationLocationArrayOutput) ToInterceptEndpointGroupAssociationLocationArrayOutputWithContext(ctx context.Context) InterceptEndpointGroupAssociationLocationArrayOutput {
+	return o
+}
+
+func (o InterceptEndpointGroupAssociationLocationArrayOutput) Index(i pulumi.IntInput) InterceptEndpointGroupAssociationLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterceptEndpointGroupAssociationLocation {
+		return vs[0].([]InterceptEndpointGroupAssociationLocation)[vs[1].(int)]
+	}).(InterceptEndpointGroupAssociationLocationOutput)
+}
+
 type InterceptEndpointGroupAssociationLocationsDetail struct {
 	// The cloud location of the association, currently restricted to `global`.
 	//
@@ -6449,6 +6845,250 @@ func (o InterceptEndpointGroupAssociationLocationsDetailArrayOutput) Index(i pul
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterceptEndpointGroupAssociationLocationsDetail {
 		return vs[0].([]InterceptEndpointGroupAssociationLocationsDetail)[vs[1].(int)]
 	}).(InterceptEndpointGroupAssociationLocationsDetailOutput)
+}
+
+type InterceptEndpointGroupConnectedDeploymentGroup struct {
+	// (Output)
+	// The list of locations where the deployment group is present.
+	// Structure is documented below.
+	Locations []InterceptEndpointGroupConnectedDeploymentGroupLocation `pulumi:"locations"`
+	// (Output)
+	// The connected deployment group's resource name, for example:
+	// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+	// See https://google.aip.dev/124.
+	Name *string `pulumi:"name"`
+}
+
+// InterceptEndpointGroupConnectedDeploymentGroupInput is an input type that accepts InterceptEndpointGroupConnectedDeploymentGroupArgs and InterceptEndpointGroupConnectedDeploymentGroupOutput values.
+// You can construct a concrete instance of `InterceptEndpointGroupConnectedDeploymentGroupInput` via:
+//
+//	InterceptEndpointGroupConnectedDeploymentGroupArgs{...}
+type InterceptEndpointGroupConnectedDeploymentGroupInput interface {
+	pulumi.Input
+
+	ToInterceptEndpointGroupConnectedDeploymentGroupOutput() InterceptEndpointGroupConnectedDeploymentGroupOutput
+	ToInterceptEndpointGroupConnectedDeploymentGroupOutputWithContext(context.Context) InterceptEndpointGroupConnectedDeploymentGroupOutput
+}
+
+type InterceptEndpointGroupConnectedDeploymentGroupArgs struct {
+	// (Output)
+	// The list of locations where the deployment group is present.
+	// Structure is documented below.
+	Locations InterceptEndpointGroupConnectedDeploymentGroupLocationArrayInput `pulumi:"locations"`
+	// (Output)
+	// The connected deployment group's resource name, for example:
+	// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+	// See https://google.aip.dev/124.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (InterceptEndpointGroupConnectedDeploymentGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterceptEndpointGroupConnectedDeploymentGroup)(nil)).Elem()
+}
+
+func (i InterceptEndpointGroupConnectedDeploymentGroupArgs) ToInterceptEndpointGroupConnectedDeploymentGroupOutput() InterceptEndpointGroupConnectedDeploymentGroupOutput {
+	return i.ToInterceptEndpointGroupConnectedDeploymentGroupOutputWithContext(context.Background())
+}
+
+func (i InterceptEndpointGroupConnectedDeploymentGroupArgs) ToInterceptEndpointGroupConnectedDeploymentGroupOutputWithContext(ctx context.Context) InterceptEndpointGroupConnectedDeploymentGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterceptEndpointGroupConnectedDeploymentGroupOutput)
+}
+
+// InterceptEndpointGroupConnectedDeploymentGroupArrayInput is an input type that accepts InterceptEndpointGroupConnectedDeploymentGroupArray and InterceptEndpointGroupConnectedDeploymentGroupArrayOutput values.
+// You can construct a concrete instance of `InterceptEndpointGroupConnectedDeploymentGroupArrayInput` via:
+//
+//	InterceptEndpointGroupConnectedDeploymentGroupArray{ InterceptEndpointGroupConnectedDeploymentGroupArgs{...} }
+type InterceptEndpointGroupConnectedDeploymentGroupArrayInput interface {
+	pulumi.Input
+
+	ToInterceptEndpointGroupConnectedDeploymentGroupArrayOutput() InterceptEndpointGroupConnectedDeploymentGroupArrayOutput
+	ToInterceptEndpointGroupConnectedDeploymentGroupArrayOutputWithContext(context.Context) InterceptEndpointGroupConnectedDeploymentGroupArrayOutput
+}
+
+type InterceptEndpointGroupConnectedDeploymentGroupArray []InterceptEndpointGroupConnectedDeploymentGroupInput
+
+func (InterceptEndpointGroupConnectedDeploymentGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterceptEndpointGroupConnectedDeploymentGroup)(nil)).Elem()
+}
+
+func (i InterceptEndpointGroupConnectedDeploymentGroupArray) ToInterceptEndpointGroupConnectedDeploymentGroupArrayOutput() InterceptEndpointGroupConnectedDeploymentGroupArrayOutput {
+	return i.ToInterceptEndpointGroupConnectedDeploymentGroupArrayOutputWithContext(context.Background())
+}
+
+func (i InterceptEndpointGroupConnectedDeploymentGroupArray) ToInterceptEndpointGroupConnectedDeploymentGroupArrayOutputWithContext(ctx context.Context) InterceptEndpointGroupConnectedDeploymentGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterceptEndpointGroupConnectedDeploymentGroupArrayOutput)
+}
+
+type InterceptEndpointGroupConnectedDeploymentGroupOutput struct{ *pulumi.OutputState }
+
+func (InterceptEndpointGroupConnectedDeploymentGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterceptEndpointGroupConnectedDeploymentGroup)(nil)).Elem()
+}
+
+func (o InterceptEndpointGroupConnectedDeploymentGroupOutput) ToInterceptEndpointGroupConnectedDeploymentGroupOutput() InterceptEndpointGroupConnectedDeploymentGroupOutput {
+	return o
+}
+
+func (o InterceptEndpointGroupConnectedDeploymentGroupOutput) ToInterceptEndpointGroupConnectedDeploymentGroupOutputWithContext(ctx context.Context) InterceptEndpointGroupConnectedDeploymentGroupOutput {
+	return o
+}
+
+// (Output)
+// The list of locations where the deployment group is present.
+// Structure is documented below.
+func (o InterceptEndpointGroupConnectedDeploymentGroupOutput) Locations() InterceptEndpointGroupConnectedDeploymentGroupLocationArrayOutput {
+	return o.ApplyT(func(v InterceptEndpointGroupConnectedDeploymentGroup) []InterceptEndpointGroupConnectedDeploymentGroupLocation {
+		return v.Locations
+	}).(InterceptEndpointGroupConnectedDeploymentGroupLocationArrayOutput)
+}
+
+// (Output)
+// The connected deployment group's resource name, for example:
+// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+// See https://google.aip.dev/124.
+func (o InterceptEndpointGroupConnectedDeploymentGroupOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterceptEndpointGroupConnectedDeploymentGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type InterceptEndpointGroupConnectedDeploymentGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (InterceptEndpointGroupConnectedDeploymentGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterceptEndpointGroupConnectedDeploymentGroup)(nil)).Elem()
+}
+
+func (o InterceptEndpointGroupConnectedDeploymentGroupArrayOutput) ToInterceptEndpointGroupConnectedDeploymentGroupArrayOutput() InterceptEndpointGroupConnectedDeploymentGroupArrayOutput {
+	return o
+}
+
+func (o InterceptEndpointGroupConnectedDeploymentGroupArrayOutput) ToInterceptEndpointGroupConnectedDeploymentGroupArrayOutputWithContext(ctx context.Context) InterceptEndpointGroupConnectedDeploymentGroupArrayOutput {
+	return o
+}
+
+func (o InterceptEndpointGroupConnectedDeploymentGroupArrayOutput) Index(i pulumi.IntInput) InterceptEndpointGroupConnectedDeploymentGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterceptEndpointGroupConnectedDeploymentGroup {
+		return vs[0].([]InterceptEndpointGroupConnectedDeploymentGroup)[vs[1].(int)]
+	}).(InterceptEndpointGroupConnectedDeploymentGroupOutput)
+}
+
+type InterceptEndpointGroupConnectedDeploymentGroupLocation struct {
+	// The cloud location of the endpoint group, currently restricted to `global`.
+	Location *string `pulumi:"location"`
+	// (Output)
+	// The current state of the association in this location.
+	// Possible values:
+	// STATE_UNSPECIFIED
+	// ACTIVE
+	// OUT_OF_SYNC
+	State *string `pulumi:"state"`
+}
+
+// InterceptEndpointGroupConnectedDeploymentGroupLocationInput is an input type that accepts InterceptEndpointGroupConnectedDeploymentGroupLocationArgs and InterceptEndpointGroupConnectedDeploymentGroupLocationOutput values.
+// You can construct a concrete instance of `InterceptEndpointGroupConnectedDeploymentGroupLocationInput` via:
+//
+//	InterceptEndpointGroupConnectedDeploymentGroupLocationArgs{...}
+type InterceptEndpointGroupConnectedDeploymentGroupLocationInput interface {
+	pulumi.Input
+
+	ToInterceptEndpointGroupConnectedDeploymentGroupLocationOutput() InterceptEndpointGroupConnectedDeploymentGroupLocationOutput
+	ToInterceptEndpointGroupConnectedDeploymentGroupLocationOutputWithContext(context.Context) InterceptEndpointGroupConnectedDeploymentGroupLocationOutput
+}
+
+type InterceptEndpointGroupConnectedDeploymentGroupLocationArgs struct {
+	// The cloud location of the endpoint group, currently restricted to `global`.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// (Output)
+	// The current state of the association in this location.
+	// Possible values:
+	// STATE_UNSPECIFIED
+	// ACTIVE
+	// OUT_OF_SYNC
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (InterceptEndpointGroupConnectedDeploymentGroupLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterceptEndpointGroupConnectedDeploymentGroupLocation)(nil)).Elem()
+}
+
+func (i InterceptEndpointGroupConnectedDeploymentGroupLocationArgs) ToInterceptEndpointGroupConnectedDeploymentGroupLocationOutput() InterceptEndpointGroupConnectedDeploymentGroupLocationOutput {
+	return i.ToInterceptEndpointGroupConnectedDeploymentGroupLocationOutputWithContext(context.Background())
+}
+
+func (i InterceptEndpointGroupConnectedDeploymentGroupLocationArgs) ToInterceptEndpointGroupConnectedDeploymentGroupLocationOutputWithContext(ctx context.Context) InterceptEndpointGroupConnectedDeploymentGroupLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterceptEndpointGroupConnectedDeploymentGroupLocationOutput)
+}
+
+// InterceptEndpointGroupConnectedDeploymentGroupLocationArrayInput is an input type that accepts InterceptEndpointGroupConnectedDeploymentGroupLocationArray and InterceptEndpointGroupConnectedDeploymentGroupLocationArrayOutput values.
+// You can construct a concrete instance of `InterceptEndpointGroupConnectedDeploymentGroupLocationArrayInput` via:
+//
+//	InterceptEndpointGroupConnectedDeploymentGroupLocationArray{ InterceptEndpointGroupConnectedDeploymentGroupLocationArgs{...} }
+type InterceptEndpointGroupConnectedDeploymentGroupLocationArrayInput interface {
+	pulumi.Input
+
+	ToInterceptEndpointGroupConnectedDeploymentGroupLocationArrayOutput() InterceptEndpointGroupConnectedDeploymentGroupLocationArrayOutput
+	ToInterceptEndpointGroupConnectedDeploymentGroupLocationArrayOutputWithContext(context.Context) InterceptEndpointGroupConnectedDeploymentGroupLocationArrayOutput
+}
+
+type InterceptEndpointGroupConnectedDeploymentGroupLocationArray []InterceptEndpointGroupConnectedDeploymentGroupLocationInput
+
+func (InterceptEndpointGroupConnectedDeploymentGroupLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterceptEndpointGroupConnectedDeploymentGroupLocation)(nil)).Elem()
+}
+
+func (i InterceptEndpointGroupConnectedDeploymentGroupLocationArray) ToInterceptEndpointGroupConnectedDeploymentGroupLocationArrayOutput() InterceptEndpointGroupConnectedDeploymentGroupLocationArrayOutput {
+	return i.ToInterceptEndpointGroupConnectedDeploymentGroupLocationArrayOutputWithContext(context.Background())
+}
+
+func (i InterceptEndpointGroupConnectedDeploymentGroupLocationArray) ToInterceptEndpointGroupConnectedDeploymentGroupLocationArrayOutputWithContext(ctx context.Context) InterceptEndpointGroupConnectedDeploymentGroupLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterceptEndpointGroupConnectedDeploymentGroupLocationArrayOutput)
+}
+
+type InterceptEndpointGroupConnectedDeploymentGroupLocationOutput struct{ *pulumi.OutputState }
+
+func (InterceptEndpointGroupConnectedDeploymentGroupLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterceptEndpointGroupConnectedDeploymentGroupLocation)(nil)).Elem()
+}
+
+func (o InterceptEndpointGroupConnectedDeploymentGroupLocationOutput) ToInterceptEndpointGroupConnectedDeploymentGroupLocationOutput() InterceptEndpointGroupConnectedDeploymentGroupLocationOutput {
+	return o
+}
+
+func (o InterceptEndpointGroupConnectedDeploymentGroupLocationOutput) ToInterceptEndpointGroupConnectedDeploymentGroupLocationOutputWithContext(ctx context.Context) InterceptEndpointGroupConnectedDeploymentGroupLocationOutput {
+	return o
+}
+
+// The cloud location of the endpoint group, currently restricted to `global`.
+func (o InterceptEndpointGroupConnectedDeploymentGroupLocationOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterceptEndpointGroupConnectedDeploymentGroupLocation) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The current state of the association in this location.
+// Possible values:
+// STATE_UNSPECIFIED
+// ACTIVE
+// OUT_OF_SYNC
+func (o InterceptEndpointGroupConnectedDeploymentGroupLocationOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterceptEndpointGroupConnectedDeploymentGroupLocation) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type InterceptEndpointGroupConnectedDeploymentGroupLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (InterceptEndpointGroupConnectedDeploymentGroupLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterceptEndpointGroupConnectedDeploymentGroupLocation)(nil)).Elem()
+}
+
+func (o InterceptEndpointGroupConnectedDeploymentGroupLocationArrayOutput) ToInterceptEndpointGroupConnectedDeploymentGroupLocationArrayOutput() InterceptEndpointGroupConnectedDeploymentGroupLocationArrayOutput {
+	return o
+}
+
+func (o InterceptEndpointGroupConnectedDeploymentGroupLocationArrayOutput) ToInterceptEndpointGroupConnectedDeploymentGroupLocationArrayOutputWithContext(ctx context.Context) InterceptEndpointGroupConnectedDeploymentGroupLocationArrayOutput {
+	return o
+}
+
+func (o InterceptEndpointGroupConnectedDeploymentGroupLocationArrayOutput) Index(i pulumi.IntInput) InterceptEndpointGroupConnectedDeploymentGroupLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterceptEndpointGroupConnectedDeploymentGroupLocation {
+		return vs[0].([]InterceptEndpointGroupConnectedDeploymentGroupLocation)[vs[1].(int)]
+	}).(InterceptEndpointGroupConnectedDeploymentGroupLocationOutput)
 }
 
 type MirroringDeploymentGroupConnectedEndpointGroup struct {
@@ -8502,8 +9142,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientTlsPolicyServerValidationCaGrpcEndpointPtrInput)(nil)).Elem(), ClientTlsPolicyServerValidationCaGrpcEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InterceptDeploymentGroupConnectedEndpointGroupInput)(nil)).Elem(), InterceptDeploymentGroupConnectedEndpointGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InterceptDeploymentGroupConnectedEndpointGroupArrayInput)(nil)).Elem(), InterceptDeploymentGroupConnectedEndpointGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterceptDeploymentGroupLocationInput)(nil)).Elem(), InterceptDeploymentGroupLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterceptDeploymentGroupLocationArrayInput)(nil)).Elem(), InterceptDeploymentGroupLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterceptEndpointGroupAssociationTypeInput)(nil)).Elem(), InterceptEndpointGroupAssociationTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterceptEndpointGroupAssociationTypeArrayInput)(nil)).Elem(), InterceptEndpointGroupAssociationTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterceptEndpointGroupAssociationLocationInput)(nil)).Elem(), InterceptEndpointGroupAssociationLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterceptEndpointGroupAssociationLocationArrayInput)(nil)).Elem(), InterceptEndpointGroupAssociationLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InterceptEndpointGroupAssociationLocationsDetailInput)(nil)).Elem(), InterceptEndpointGroupAssociationLocationsDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InterceptEndpointGroupAssociationLocationsDetailArrayInput)(nil)).Elem(), InterceptEndpointGroupAssociationLocationsDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterceptEndpointGroupConnectedDeploymentGroupInput)(nil)).Elem(), InterceptEndpointGroupConnectedDeploymentGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterceptEndpointGroupConnectedDeploymentGroupArrayInput)(nil)).Elem(), InterceptEndpointGroupConnectedDeploymentGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterceptEndpointGroupConnectedDeploymentGroupLocationInput)(nil)).Elem(), InterceptEndpointGroupConnectedDeploymentGroupLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterceptEndpointGroupConnectedDeploymentGroupLocationArrayInput)(nil)).Elem(), InterceptEndpointGroupConnectedDeploymentGroupLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MirroringDeploymentGroupConnectedEndpointGroupInput)(nil)).Elem(), MirroringDeploymentGroupConnectedEndpointGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MirroringDeploymentGroupConnectedEndpointGroupArrayInput)(nil)).Elem(), MirroringDeploymentGroupConnectedEndpointGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MirroringEndpointGroupAssociationLocationsDetailInput)(nil)).Elem(), MirroringEndpointGroupAssociationLocationsDetailArgs{})
@@ -8616,8 +9266,18 @@ func init() {
 	pulumi.RegisterOutputType(ClientTlsPolicyServerValidationCaGrpcEndpointPtrOutput{})
 	pulumi.RegisterOutputType(InterceptDeploymentGroupConnectedEndpointGroupOutput{})
 	pulumi.RegisterOutputType(InterceptDeploymentGroupConnectedEndpointGroupArrayOutput{})
+	pulumi.RegisterOutputType(InterceptDeploymentGroupLocationOutput{})
+	pulumi.RegisterOutputType(InterceptDeploymentGroupLocationArrayOutput{})
+	pulumi.RegisterOutputType(InterceptEndpointGroupAssociationTypeOutput{})
+	pulumi.RegisterOutputType(InterceptEndpointGroupAssociationTypeArrayOutput{})
+	pulumi.RegisterOutputType(InterceptEndpointGroupAssociationLocationOutput{})
+	pulumi.RegisterOutputType(InterceptEndpointGroupAssociationLocationArrayOutput{})
 	pulumi.RegisterOutputType(InterceptEndpointGroupAssociationLocationsDetailOutput{})
 	pulumi.RegisterOutputType(InterceptEndpointGroupAssociationLocationsDetailArrayOutput{})
+	pulumi.RegisterOutputType(InterceptEndpointGroupConnectedDeploymentGroupOutput{})
+	pulumi.RegisterOutputType(InterceptEndpointGroupConnectedDeploymentGroupArrayOutput{})
+	pulumi.RegisterOutputType(InterceptEndpointGroupConnectedDeploymentGroupLocationOutput{})
+	pulumi.RegisterOutputType(InterceptEndpointGroupConnectedDeploymentGroupLocationArrayOutput{})
 	pulumi.RegisterOutputType(MirroringDeploymentGroupConnectedEndpointGroupOutput{})
 	pulumi.RegisterOutputType(MirroringDeploymentGroupConnectedEndpointGroupArrayOutput{})
 	pulumi.RegisterOutputType(MirroringEndpointGroupAssociationLocationsDetailOutput{})

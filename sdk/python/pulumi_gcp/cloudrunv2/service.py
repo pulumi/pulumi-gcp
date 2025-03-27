@@ -64,8 +64,8 @@ class ServiceArgs:
         :param pulumi.Input[str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
                INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
                "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
-        :param pulumi.Input[bool] invoker_iam_disabled: Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
-               only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+        :param pulumi.Input[bool] invoker_iam_disabled: Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
+               https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
                Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
                state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
@@ -278,8 +278,8 @@ class ServiceArgs:
     @pulumi.getter(name="invokerIamDisabled")
     def invoker_iam_disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
-        only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+        Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
+        https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
         """
         return pulumi.get(self, "invoker_iam_disabled")
 
@@ -443,8 +443,8 @@ class _ServiceState:
         :param pulumi.Input[str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
                INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
                "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
-        :param pulumi.Input[bool] invoker_iam_disabled: Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
-               only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+        :param pulumi.Input[bool] invoker_iam_disabled: Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
+               https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
                Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
                state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
@@ -804,8 +804,8 @@ class _ServiceState:
     @pulumi.getter(name="invokerIamDisabled")
     def invoker_iam_disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
-        only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+        Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
+        https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
         """
         return pulumi.get(self, "invoker_iam_disabled")
 
@@ -1668,8 +1668,8 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
                INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
                "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
-        :param pulumi.Input[bool] invoker_iam_disabled: Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
-               only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+        :param pulumi.Input[bool] invoker_iam_disabled: Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
+               https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
                Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
                state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
@@ -2422,8 +2422,8 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
                INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
                "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
-        :param pulumi.Input[bool] invoker_iam_disabled: Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
-               only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+        :param pulumi.Input[bool] invoker_iam_disabled: Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
+               https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
                Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
                state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
@@ -2672,8 +2672,8 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="invokerIamDisabled")
     def invoker_iam_disabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
-        only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+        Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
+        https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
         """
         return pulumi.get(self, "invoker_iam_disabled")
 

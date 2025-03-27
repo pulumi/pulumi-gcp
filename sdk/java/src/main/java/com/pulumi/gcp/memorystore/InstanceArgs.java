@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.memorystore.inputs.InstanceDesiredPscAutoConnectionArgs;
+import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyArgs;
 import com.pulumi.gcp.memorystore.inputs.InstancePersistenceConfigArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceZoneDistributionConfigArgs;
 import java.lang.Boolean;
@@ -170,6 +171,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Maintenance policy for a cluster
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="maintenancePolicy")
+    private @Nullable Output<InstanceMaintenancePolicyArgs> maintenancePolicy;
+
+    /**
+     * @return Maintenance policy for a cluster
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceMaintenancePolicyArgs>> maintenancePolicy() {
+        return Optional.ofNullable(this.maintenancePolicy);
+    }
+
+    /**
      * Optional. cluster or cluster-disabled.
      * Possible values:
      * CLUSTER
@@ -193,7 +211,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. Immutable. Machine type for individual nodes of the instance.
+     * Optional. Machine type for individual nodes of the instance.
      * Possible values:
      * SHARED_CORE_NANO
      * HIGHMEM_MEDIUM
@@ -205,7 +223,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> nodeType;
 
     /**
-     * @return Optional. Immutable. Machine type for individual nodes of the instance.
+     * @return Optional. Machine type for individual nodes of the instance.
      * Possible values:
      * SHARED_CORE_NANO
      * HIGHMEM_MEDIUM
@@ -330,6 +348,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.instanceId = $.instanceId;
         this.labels = $.labels;
         this.location = $.location;
+        this.maintenancePolicy = $.maintenancePolicy;
         this.mode = $.mode;
         this.nodeType = $.nodeType;
         this.persistenceConfig = $.persistenceConfig;
@@ -563,6 +582,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param maintenancePolicy Maintenance policy for a cluster
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenancePolicy(@Nullable Output<InstanceMaintenancePolicyArgs> maintenancePolicy) {
+            $.maintenancePolicy = maintenancePolicy;
+            return this;
+        }
+
+        /**
+         * @param maintenancePolicy Maintenance policy for a cluster
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenancePolicy(InstanceMaintenancePolicyArgs maintenancePolicy) {
+            return maintenancePolicy(Output.of(maintenancePolicy));
+        }
+
+        /**
          * @param mode Optional. cluster or cluster-disabled.
          * Possible values:
          * CLUSTER
@@ -592,7 +634,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeType Optional. Immutable. Machine type for individual nodes of the instance.
+         * @param nodeType Optional. Machine type for individual nodes of the instance.
          * Possible values:
          * SHARED_CORE_NANO
          * HIGHMEM_MEDIUM
@@ -608,7 +650,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeType Optional. Immutable. Machine type for individual nodes of the instance.
+         * @param nodeType Optional. Machine type for individual nodes of the instance.
          * Possible values:
          * SHARED_CORE_NANO
          * HIGHMEM_MEDIUM

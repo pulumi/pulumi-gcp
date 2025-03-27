@@ -50,6 +50,7 @@ from .get_hc_vpn_gateway import *
 from .get_health_check import *
 from .get_image import *
 from .get_image_iam_policy import *
+from .get_images import *
 from .get_instance import *
 from .get_instance_group import *
 from .get_instance_group_manager import *

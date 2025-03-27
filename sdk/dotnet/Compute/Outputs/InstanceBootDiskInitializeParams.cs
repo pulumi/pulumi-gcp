@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class InstanceBootDiskInitializeParams
     {
         /// <summary>
+        /// The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+        /// </summary>
+        public readonly string? Architecture;
+        /// <summary>
         /// Whether this disk is using confidential compute mode.
         /// Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true.
         /// </summary>
@@ -84,6 +88,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private InstanceBootDiskInitializeParams(
+            string? architecture,
+
             bool? enableConfidentialCompute,
 
             string? image,
@@ -104,6 +110,7 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? type)
         {
+            Architecture = architecture;
             EnableConfidentialCompute = enableConfidentialCompute;
             Image = image;
             Labels = labels;

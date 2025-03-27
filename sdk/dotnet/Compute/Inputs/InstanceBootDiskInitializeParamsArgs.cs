@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class InstanceBootDiskInitializeParamsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+        /// </summary>
+        [Input("architecture")]
+        public Input<string>? Architecture { get; set; }
+
+        /// <summary>
         /// Whether this disk is using confidential compute mode.
         /// Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true.
         /// </summary>

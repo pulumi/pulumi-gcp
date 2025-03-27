@@ -50,7 +50,8 @@ class InterconnectArgs:
                bundle, not the speed of the entire bundle. Can take one of the following values:
                - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
                - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
-               Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`.
+               - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
+               Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
         :param pulumi.Input[int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
         :param pulumi.Input[bool] admin_enabled: Administrative status of the interconnect. When this is set to true, the Interconnect is
                functional and can carry traffic. When set to false, no packets can be carried over the
@@ -147,7 +148,8 @@ class InterconnectArgs:
         bundle, not the speed of the entire bundle. Can take one of the following values:
         - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
         - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
-        Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`.
+        - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
+        Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
         """
         return pulumi.get(self, "link_type")
 
@@ -418,7 +420,8 @@ class _InterconnectState:
                bundle, not the speed of the entire bundle. Can take one of the following values:
                - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
                - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
-               Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`.
+               - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
+               Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
         :param pulumi.Input[str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
                Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
         :param pulumi.Input['InterconnectMacsecArgs'] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud
@@ -733,7 +736,8 @@ class _InterconnectState:
         bundle, not the speed of the entire bundle. Can take one of the following values:
         - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
         - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
-        Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`.
+        - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
+        Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
         """
         return pulumi.get(self, "link_type")
 
@@ -1056,7 +1060,8 @@ class Interconnect(pulumi.CustomResource):
                bundle, not the speed of the entire bundle. Can take one of the following values:
                - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
                - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
-               Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`.
+               - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
+               Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
         :param pulumi.Input[str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
                Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
         :param pulumi.Input[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud
@@ -1312,7 +1317,8 @@ class Interconnect(pulumi.CustomResource):
                bundle, not the speed of the entire bundle. Can take one of the following values:
                - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
                - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
-               Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`.
+               - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
+               Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
         :param pulumi.Input[str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
                Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
         :param pulumi.Input[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud
@@ -1546,7 +1552,8 @@ class Interconnect(pulumi.CustomResource):
         bundle, not the speed of the entire bundle. Can take one of the following values:
         - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
         - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
-        Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`.
+        - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
+        Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
         """
         return pulumi.get(self, "link_type")
 

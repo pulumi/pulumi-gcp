@@ -39,6 +39,7 @@ import com.pulumi.gcp.container.outputs.ClusterNodePool;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolAutoConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolDefaults;
 import com.pulumi.gcp.container.outputs.ClusterNotificationConfig;
+import com.pulumi.gcp.container.outputs.ClusterPodAutoscaling;
 import com.pulumi.gcp.container.outputs.ClusterPodSecurityPolicyConfig;
 import com.pulumi.gcp.container.outputs.ClusterPrivateClusterConfig;
 import com.pulumi.gcp.container.outputs.ClusterProtectConfig;
@@ -1327,6 +1328,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     public Output<String> operation() {
         return this.operation;
+    }
+    /**
+     * Configuration for the
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="podAutoscaling", refs={ClusterPodAutoscaling.class}, tree="[0]")
+    private Output<ClusterPodAutoscaling> podAutoscaling;
+
+    /**
+     * @return Configuration for the
+     * Structure is documented below.
+     * 
+     */
+    public Output<ClusterPodAutoscaling> podAutoscaling() {
+        return this.podAutoscaling;
     }
     /**
      * Configuration for the

@@ -18,6 +18,12 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("dnsEndpointConfig")]
         public Input<Inputs.ClusterControlPlaneEndpointsConfigDnsEndpointConfigGetArgs>? DnsEndpointConfig { get; set; }
 
+        /// <summary>
+        /// IP endpoint configuration.
+        /// </summary>
+        [Input("ipEndpointsConfig")]
+        public Input<Inputs.ClusterControlPlaneEndpointsConfigIpEndpointsConfigGetArgs>? IpEndpointsConfig { get; set; }
+
         public ClusterControlPlaneEndpointsConfigGetArgs()
         {
         }

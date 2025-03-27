@@ -13,6 +13,888 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ResourcePolicySnapshotSchedulePolicy struct {
+	// Retention policy applied to snapshots created by this resource policy.
+	// Structure is documented below.
+	RetentionPolicy *ResourcePolicySnapshotSchedulePolicyRetentionPolicy `pulumi:"retentionPolicy"`
+	// Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
+	// Structure is documented below.
+	Schedule ResourcePolicySnapshotSchedulePolicySchedule `pulumi:"schedule"`
+	// Properties with which the snapshots are created, such as labels.
+	// Structure is documented below.
+	SnapshotProperties *ResourcePolicySnapshotSchedulePolicySnapshotProperties `pulumi:"snapshotProperties"`
+}
+
+// ResourcePolicySnapshotSchedulePolicyInput is an input type that accepts ResourcePolicySnapshotSchedulePolicyArgs and ResourcePolicySnapshotSchedulePolicyOutput values.
+// You can construct a concrete instance of `ResourcePolicySnapshotSchedulePolicyInput` via:
+//
+//	ResourcePolicySnapshotSchedulePolicyArgs{...}
+type ResourcePolicySnapshotSchedulePolicyInput interface {
+	pulumi.Input
+
+	ToResourcePolicySnapshotSchedulePolicyOutput() ResourcePolicySnapshotSchedulePolicyOutput
+	ToResourcePolicySnapshotSchedulePolicyOutputWithContext(context.Context) ResourcePolicySnapshotSchedulePolicyOutput
+}
+
+type ResourcePolicySnapshotSchedulePolicyArgs struct {
+	// Retention policy applied to snapshots created by this resource policy.
+	// Structure is documented below.
+	RetentionPolicy ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrInput `pulumi:"retentionPolicy"`
+	// Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
+	// Structure is documented below.
+	Schedule ResourcePolicySnapshotSchedulePolicyScheduleInput `pulumi:"schedule"`
+	// Properties with which the snapshots are created, such as labels.
+	// Structure is documented below.
+	SnapshotProperties ResourcePolicySnapshotSchedulePolicySnapshotPropertiesPtrInput `pulumi:"snapshotProperties"`
+}
+
+func (ResourcePolicySnapshotSchedulePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicy)(nil)).Elem()
+}
+
+func (i ResourcePolicySnapshotSchedulePolicyArgs) ToResourcePolicySnapshotSchedulePolicyOutput() ResourcePolicySnapshotSchedulePolicyOutput {
+	return i.ToResourcePolicySnapshotSchedulePolicyOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicySnapshotSchedulePolicyArgs) ToResourcePolicySnapshotSchedulePolicyOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicySnapshotSchedulePolicyOutput)
+}
+
+func (i ResourcePolicySnapshotSchedulePolicyArgs) ToResourcePolicySnapshotSchedulePolicyPtrOutput() ResourcePolicySnapshotSchedulePolicyPtrOutput {
+	return i.ToResourcePolicySnapshotSchedulePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicySnapshotSchedulePolicyArgs) ToResourcePolicySnapshotSchedulePolicyPtrOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicySnapshotSchedulePolicyOutput).ToResourcePolicySnapshotSchedulePolicyPtrOutputWithContext(ctx)
+}
+
+// ResourcePolicySnapshotSchedulePolicyPtrInput is an input type that accepts ResourcePolicySnapshotSchedulePolicyArgs, ResourcePolicySnapshotSchedulePolicyPtr and ResourcePolicySnapshotSchedulePolicyPtrOutput values.
+// You can construct a concrete instance of `ResourcePolicySnapshotSchedulePolicyPtrInput` via:
+//
+//	        ResourcePolicySnapshotSchedulePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourcePolicySnapshotSchedulePolicyPtrInput interface {
+	pulumi.Input
+
+	ToResourcePolicySnapshotSchedulePolicyPtrOutput() ResourcePolicySnapshotSchedulePolicyPtrOutput
+	ToResourcePolicySnapshotSchedulePolicyPtrOutputWithContext(context.Context) ResourcePolicySnapshotSchedulePolicyPtrOutput
+}
+
+type resourcePolicySnapshotSchedulePolicyPtrType ResourcePolicySnapshotSchedulePolicyArgs
+
+func ResourcePolicySnapshotSchedulePolicyPtr(v *ResourcePolicySnapshotSchedulePolicyArgs) ResourcePolicySnapshotSchedulePolicyPtrInput {
+	return (*resourcePolicySnapshotSchedulePolicyPtrType)(v)
+}
+
+func (*resourcePolicySnapshotSchedulePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicySnapshotSchedulePolicy)(nil)).Elem()
+}
+
+func (i *resourcePolicySnapshotSchedulePolicyPtrType) ToResourcePolicySnapshotSchedulePolicyPtrOutput() ResourcePolicySnapshotSchedulePolicyPtrOutput {
+	return i.ToResourcePolicySnapshotSchedulePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *resourcePolicySnapshotSchedulePolicyPtrType) ToResourcePolicySnapshotSchedulePolicyPtrOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicySnapshotSchedulePolicyPtrOutput)
+}
+
+type ResourcePolicySnapshotSchedulePolicyOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicySnapshotSchedulePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicy)(nil)).Elem()
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyOutput) ToResourcePolicySnapshotSchedulePolicyOutput() ResourcePolicySnapshotSchedulePolicyOutput {
+	return o
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyOutput) ToResourcePolicySnapshotSchedulePolicyOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyOutput {
+	return o
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyOutput) ToResourcePolicySnapshotSchedulePolicyPtrOutput() ResourcePolicySnapshotSchedulePolicyPtrOutput {
+	return o.ToResourcePolicySnapshotSchedulePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyOutput) ToResourcePolicySnapshotSchedulePolicyPtrOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourcePolicySnapshotSchedulePolicy) *ResourcePolicySnapshotSchedulePolicy {
+		return &v
+	}).(ResourcePolicySnapshotSchedulePolicyPtrOutput)
+}
+
+// Retention policy applied to snapshots created by this resource policy.
+// Structure is documented below.
+func (o ResourcePolicySnapshotSchedulePolicyOutput) RetentionPolicy() ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput {
+	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicy) *ResourcePolicySnapshotSchedulePolicyRetentionPolicy {
+		return v.RetentionPolicy
+	}).(ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput)
+}
+
+// Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
+// Structure is documented below.
+func (o ResourcePolicySnapshotSchedulePolicyOutput) Schedule() ResourcePolicySnapshotSchedulePolicyScheduleOutput {
+	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicy) ResourcePolicySnapshotSchedulePolicySchedule {
+		return v.Schedule
+	}).(ResourcePolicySnapshotSchedulePolicyScheduleOutput)
+}
+
+// Properties with which the snapshots are created, such as labels.
+// Structure is documented below.
+func (o ResourcePolicySnapshotSchedulePolicyOutput) SnapshotProperties() ResourcePolicySnapshotSchedulePolicySnapshotPropertiesPtrOutput {
+	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicy) *ResourcePolicySnapshotSchedulePolicySnapshotProperties {
+		return v.SnapshotProperties
+	}).(ResourcePolicySnapshotSchedulePolicySnapshotPropertiesPtrOutput)
+}
+
+type ResourcePolicySnapshotSchedulePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicySnapshotSchedulePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicySnapshotSchedulePolicy)(nil)).Elem()
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyPtrOutput) ToResourcePolicySnapshotSchedulePolicyPtrOutput() ResourcePolicySnapshotSchedulePolicyPtrOutput {
+	return o
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyPtrOutput) ToResourcePolicySnapshotSchedulePolicyPtrOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyPtrOutput {
+	return o
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyPtrOutput) Elem() ResourcePolicySnapshotSchedulePolicyOutput {
+	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicy) ResourcePolicySnapshotSchedulePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ResourcePolicySnapshotSchedulePolicy
+		return ret
+	}).(ResourcePolicySnapshotSchedulePolicyOutput)
+}
+
+// Retention policy applied to snapshots created by this resource policy.
+// Structure is documented below.
+func (o ResourcePolicySnapshotSchedulePolicyPtrOutput) RetentionPolicy() ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicy) *ResourcePolicySnapshotSchedulePolicyRetentionPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionPolicy
+	}).(ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput)
+}
+
+// Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
+// Structure is documented below.
+func (o ResourcePolicySnapshotSchedulePolicyPtrOutput) Schedule() ResourcePolicySnapshotSchedulePolicySchedulePtrOutput {
+	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicy) *ResourcePolicySnapshotSchedulePolicySchedule {
+		if v == nil {
+			return nil
+		}
+		return &v.Schedule
+	}).(ResourcePolicySnapshotSchedulePolicySchedulePtrOutput)
+}
+
+// Properties with which the snapshots are created, such as labels.
+// Structure is documented below.
+func (o ResourcePolicySnapshotSchedulePolicyPtrOutput) SnapshotProperties() ResourcePolicySnapshotSchedulePolicySnapshotPropertiesPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicy) *ResourcePolicySnapshotSchedulePolicySnapshotProperties {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotProperties
+	}).(ResourcePolicySnapshotSchedulePolicySnapshotPropertiesPtrOutput)
+}
+
+type ResourcePolicySnapshotSchedulePolicyRetentionPolicy struct {
+	// Maximum age of the snapshot that is allowed to be kept.
+	MaxRetentionDays int `pulumi:"maxRetentionDays"`
+	// Specifies the behavior to apply to scheduled snapshots when
+	// the source disk is deleted.
+	// Default value is `KEEP_AUTO_SNAPSHOTS`.
+	// Possible values are: `KEEP_AUTO_SNAPSHOTS`, `APPLY_RETENTION_POLICY`.
+	OnSourceDiskDelete *string `pulumi:"onSourceDiskDelete"`
+}
+
+// ResourcePolicySnapshotSchedulePolicyRetentionPolicyInput is an input type that accepts ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs and ResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput values.
+// You can construct a concrete instance of `ResourcePolicySnapshotSchedulePolicyRetentionPolicyInput` via:
+//
+//	ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs{...}
+type ResourcePolicySnapshotSchedulePolicyRetentionPolicyInput interface {
+	pulumi.Input
+
+	ToResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput() ResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput
+	ToResourcePolicySnapshotSchedulePolicyRetentionPolicyOutputWithContext(context.Context) ResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput
+}
+
+type ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs struct {
+	// Maximum age of the snapshot that is allowed to be kept.
+	MaxRetentionDays pulumi.IntInput `pulumi:"maxRetentionDays"`
+	// Specifies the behavior to apply to scheduled snapshots when
+	// the source disk is deleted.
+	// Default value is `KEEP_AUTO_SNAPSHOTS`.
+	// Possible values are: `KEEP_AUTO_SNAPSHOTS`, `APPLY_RETENTION_POLICY`.
+	OnSourceDiskDelete pulumi.StringPtrInput `pulumi:"onSourceDiskDelete"`
+}
+
+func (ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyRetentionPolicy)(nil)).Elem()
+}
+
+func (i ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs) ToResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput() ResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput {
+	return i.ToResourcePolicySnapshotSchedulePolicyRetentionPolicyOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs) ToResourcePolicySnapshotSchedulePolicyRetentionPolicyOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput)
+}
+
+func (i ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs) ToResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput() ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput {
+	return i.ToResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs) ToResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput).ToResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutputWithContext(ctx)
+}
+
+// ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrInput is an input type that accepts ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs, ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtr and ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput values.
+// You can construct a concrete instance of `ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrInput` via:
+//
+//	        ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrInput interface {
+	pulumi.Input
+
+	ToResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput() ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput
+	ToResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutputWithContext(context.Context) ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput
+}
+
+type resourcePolicySnapshotSchedulePolicyRetentionPolicyPtrType ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs
+
+func ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtr(v *ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs) ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrInput {
+	return (*resourcePolicySnapshotSchedulePolicyRetentionPolicyPtrType)(v)
+}
+
+func (*resourcePolicySnapshotSchedulePolicyRetentionPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicySnapshotSchedulePolicyRetentionPolicy)(nil)).Elem()
+}
+
+func (i *resourcePolicySnapshotSchedulePolicyRetentionPolicyPtrType) ToResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput() ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput {
+	return i.ToResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *resourcePolicySnapshotSchedulePolicyRetentionPolicyPtrType) ToResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput)
+}
+
+type ResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyRetentionPolicy)(nil)).Elem()
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput) ToResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput() ResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput {
+	return o
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput) ToResourcePolicySnapshotSchedulePolicyRetentionPolicyOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput {
+	return o
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput) ToResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput() ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput {
+	return o.ToResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput) ToResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourcePolicySnapshotSchedulePolicyRetentionPolicy) *ResourcePolicySnapshotSchedulePolicyRetentionPolicy {
+		return &v
+	}).(ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput)
+}
+
+// Maximum age of the snapshot that is allowed to be kept.
+func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput) MaxRetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicyRetentionPolicy) int { return v.MaxRetentionDays }).(pulumi.IntOutput)
+}
+
+// Specifies the behavior to apply to scheduled snapshots when
+// the source disk is deleted.
+// Default value is `KEEP_AUTO_SNAPSHOTS`.
+// Possible values are: `KEEP_AUTO_SNAPSHOTS`, `APPLY_RETENTION_POLICY`.
+func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput) OnSourceDiskDelete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicyRetentionPolicy) *string { return v.OnSourceDiskDelete }).(pulumi.StringPtrOutput)
+}
+
+type ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicySnapshotSchedulePolicyRetentionPolicy)(nil)).Elem()
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput) ToResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput() ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput {
+	return o
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput) ToResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput {
+	return o
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput) Elem() ResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput {
+	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicyRetentionPolicy) ResourcePolicySnapshotSchedulePolicyRetentionPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ResourcePolicySnapshotSchedulePolicyRetentionPolicy
+		return ret
+	}).(ResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput)
+}
+
+// Maximum age of the snapshot that is allowed to be kept.
+func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput) MaxRetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicyRetentionPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxRetentionDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the behavior to apply to scheduled snapshots when
+// the source disk is deleted.
+// Default value is `KEEP_AUTO_SNAPSHOTS`.
+// Possible values are: `KEEP_AUTO_SNAPSHOTS`, `APPLY_RETENTION_POLICY`.
+func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput) OnSourceDiskDelete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicyRetentionPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OnSourceDiskDelete
+	}).(pulumi.StringPtrOutput)
+}
+
+type ResourcePolicySnapshotSchedulePolicySchedule struct {
+	// The policy will execute every nth day at the specified time.
+	// Structure is documented below.
+	DailySchedule *ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule `pulumi:"dailySchedule"`
+	// The policy will execute every nth hour starting at the specified time.
+	// Structure is documented below.
+	HourlySchedule *ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule `pulumi:"hourlySchedule"`
+	// Allows specifying a snapshot time for each day of the week.
+	// Structure is documented below.
+	WeeklySchedule *ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule `pulumi:"weeklySchedule"`
+}
+
+// ResourcePolicySnapshotSchedulePolicyScheduleInput is an input type that accepts ResourcePolicySnapshotSchedulePolicyScheduleArgs and ResourcePolicySnapshotSchedulePolicyScheduleOutput values.
+// You can construct a concrete instance of `ResourcePolicySnapshotSchedulePolicyScheduleInput` via:
+//
+//	ResourcePolicySnapshotSchedulePolicyScheduleArgs{...}
+type ResourcePolicySnapshotSchedulePolicyScheduleInput interface {
+	pulumi.Input
+
+	ToResourcePolicySnapshotSchedulePolicyScheduleOutput() ResourcePolicySnapshotSchedulePolicyScheduleOutput
+	ToResourcePolicySnapshotSchedulePolicyScheduleOutputWithContext(context.Context) ResourcePolicySnapshotSchedulePolicyScheduleOutput
+}
+
+type ResourcePolicySnapshotSchedulePolicyScheduleArgs struct {
+	// The policy will execute every nth day at the specified time.
+	// Structure is documented below.
+	DailySchedule ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrInput `pulumi:"dailySchedule"`
+	// The policy will execute every nth hour starting at the specified time.
+	// Structure is documented below.
+	HourlySchedule ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrInput `pulumi:"hourlySchedule"`
+	// Allows specifying a snapshot time for each day of the week.
+	// Structure is documented below.
+	WeeklySchedule ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedulePtrInput `pulumi:"weeklySchedule"`
+}
+
+func (ResourcePolicySnapshotSchedulePolicyScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicySchedule)(nil)).Elem()
+}
+
+func (i ResourcePolicySnapshotSchedulePolicyScheduleArgs) ToResourcePolicySnapshotSchedulePolicyScheduleOutput() ResourcePolicySnapshotSchedulePolicyScheduleOutput {
+	return i.ToResourcePolicySnapshotSchedulePolicyScheduleOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicySnapshotSchedulePolicyScheduleArgs) ToResourcePolicySnapshotSchedulePolicyScheduleOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicySnapshotSchedulePolicyScheduleOutput)
+}
+
+func (i ResourcePolicySnapshotSchedulePolicyScheduleArgs) ToResourcePolicySnapshotSchedulePolicySchedulePtrOutput() ResourcePolicySnapshotSchedulePolicySchedulePtrOutput {
+	return i.ToResourcePolicySnapshotSchedulePolicySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicySnapshotSchedulePolicyScheduleArgs) ToResourcePolicySnapshotSchedulePolicySchedulePtrOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicySnapshotSchedulePolicyScheduleOutput).ToResourcePolicySnapshotSchedulePolicySchedulePtrOutputWithContext(ctx)
+}
+
+// ResourcePolicySnapshotSchedulePolicySchedulePtrInput is an input type that accepts ResourcePolicySnapshotSchedulePolicyScheduleArgs, ResourcePolicySnapshotSchedulePolicySchedulePtr and ResourcePolicySnapshotSchedulePolicySchedulePtrOutput values.
+// You can construct a concrete instance of `ResourcePolicySnapshotSchedulePolicySchedulePtrInput` via:
+//
+//	        ResourcePolicySnapshotSchedulePolicyScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourcePolicySnapshotSchedulePolicySchedulePtrInput interface {
+	pulumi.Input
+
+	ToResourcePolicySnapshotSchedulePolicySchedulePtrOutput() ResourcePolicySnapshotSchedulePolicySchedulePtrOutput
+	ToResourcePolicySnapshotSchedulePolicySchedulePtrOutputWithContext(context.Context) ResourcePolicySnapshotSchedulePolicySchedulePtrOutput
+}
+
+type resourcePolicySnapshotSchedulePolicySchedulePtrType ResourcePolicySnapshotSchedulePolicyScheduleArgs
+
+func ResourcePolicySnapshotSchedulePolicySchedulePtr(v *ResourcePolicySnapshotSchedulePolicyScheduleArgs) ResourcePolicySnapshotSchedulePolicySchedulePtrInput {
+	return (*resourcePolicySnapshotSchedulePolicySchedulePtrType)(v)
+}
+
+func (*resourcePolicySnapshotSchedulePolicySchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicySnapshotSchedulePolicySchedule)(nil)).Elem()
+}
+
+func (i *resourcePolicySnapshotSchedulePolicySchedulePtrType) ToResourcePolicySnapshotSchedulePolicySchedulePtrOutput() ResourcePolicySnapshotSchedulePolicySchedulePtrOutput {
+	return i.ToResourcePolicySnapshotSchedulePolicySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *resourcePolicySnapshotSchedulePolicySchedulePtrType) ToResourcePolicySnapshotSchedulePolicySchedulePtrOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicySnapshotSchedulePolicySchedulePtrOutput)
+}
+
+type ResourcePolicySnapshotSchedulePolicyScheduleOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicySnapshotSchedulePolicyScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicySchedule)(nil)).Elem()
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyScheduleOutput) ToResourcePolicySnapshotSchedulePolicyScheduleOutput() ResourcePolicySnapshotSchedulePolicyScheduleOutput {
+	return o
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyScheduleOutput) ToResourcePolicySnapshotSchedulePolicyScheduleOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyScheduleOutput {
+	return o
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyScheduleOutput) ToResourcePolicySnapshotSchedulePolicySchedulePtrOutput() ResourcePolicySnapshotSchedulePolicySchedulePtrOutput {
+	return o.ToResourcePolicySnapshotSchedulePolicySchedulePtrOutputWithContext(context.Background())
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyScheduleOutput) ToResourcePolicySnapshotSchedulePolicySchedulePtrOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicySchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourcePolicySnapshotSchedulePolicySchedule) *ResourcePolicySnapshotSchedulePolicySchedule {
+		return &v
+	}).(ResourcePolicySnapshotSchedulePolicySchedulePtrOutput)
+}
+
+// The policy will execute every nth day at the specified time.
+// Structure is documented below.
+func (o ResourcePolicySnapshotSchedulePolicyScheduleOutput) DailySchedule() ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput {
+	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicySchedule) *ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule {
+		return v.DailySchedule
+	}).(ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput)
+}
+
+// The policy will execute every nth hour starting at the specified time.
+// Structure is documented below.
+func (o ResourcePolicySnapshotSchedulePolicyScheduleOutput) HourlySchedule() ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput {
+	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicySchedule) *ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule {
+		return v.HourlySchedule
+	}).(ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput)
+}
+
+// Allows specifying a snapshot time for each day of the week.
+// Structure is documented below.
+func (o ResourcePolicySnapshotSchedulePolicyScheduleOutput) WeeklySchedule() ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedulePtrOutput {
+	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicySchedule) *ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule {
+		return v.WeeklySchedule
+	}).(ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedulePtrOutput)
+}
+
+type ResourcePolicySnapshotSchedulePolicySchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicySnapshotSchedulePolicySchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicySnapshotSchedulePolicySchedule)(nil)).Elem()
+}
+
+func (o ResourcePolicySnapshotSchedulePolicySchedulePtrOutput) ToResourcePolicySnapshotSchedulePolicySchedulePtrOutput() ResourcePolicySnapshotSchedulePolicySchedulePtrOutput {
+	return o
+}
+
+func (o ResourcePolicySnapshotSchedulePolicySchedulePtrOutput) ToResourcePolicySnapshotSchedulePolicySchedulePtrOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicySchedulePtrOutput {
+	return o
+}
+
+func (o ResourcePolicySnapshotSchedulePolicySchedulePtrOutput) Elem() ResourcePolicySnapshotSchedulePolicyScheduleOutput {
+	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicySchedule) ResourcePolicySnapshotSchedulePolicySchedule {
+		if v != nil {
+			return *v
+		}
+		var ret ResourcePolicySnapshotSchedulePolicySchedule
+		return ret
+	}).(ResourcePolicySnapshotSchedulePolicyScheduleOutput)
+}
+
+// The policy will execute every nth day at the specified time.
+// Structure is documented below.
+func (o ResourcePolicySnapshotSchedulePolicySchedulePtrOutput) DailySchedule() ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput {
+	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicySchedule) *ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule {
+		if v == nil {
+			return nil
+		}
+		return v.DailySchedule
+	}).(ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput)
+}
+
+// The policy will execute every nth hour starting at the specified time.
+// Structure is documented below.
+func (o ResourcePolicySnapshotSchedulePolicySchedulePtrOutput) HourlySchedule() ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput {
+	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicySchedule) *ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule {
+		if v == nil {
+			return nil
+		}
+		return v.HourlySchedule
+	}).(ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput)
+}
+
+// Allows specifying a snapshot time for each day of the week.
+// Structure is documented below.
+func (o ResourcePolicySnapshotSchedulePolicySchedulePtrOutput) WeeklySchedule() ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedulePtrOutput {
+	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicySchedule) *ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule {
+		if v == nil {
+			return nil
+		}
+		return v.WeeklySchedule
+	}).(ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedulePtrOutput)
+}
+
+type ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule struct {
+	// Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
+	DaysInCycle int `pulumi:"daysInCycle"`
+	// This must be in UTC format that resolves to one of
+	// 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example,
+	// both 13:00-5 and 08:00 are valid.
+	StartTime string `pulumi:"startTime"`
+}
+
+// ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleInput is an input type that accepts ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs and ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput values.
+// You can construct a concrete instance of `ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleInput` via:
+//
+//	ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs{...}
+type ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleInput interface {
+	pulumi.Input
+
+	ToResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput() ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput
+	ToResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutputWithContext(context.Context) ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput
+}
+
+type ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs struct {
+	// Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
+	DaysInCycle pulumi.IntInput `pulumi:"daysInCycle"`
+	// This must be in UTC format that resolves to one of
+	// 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example,
+	// both 13:00-5 and 08:00 are valid.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule)(nil)).Elem()
+}
+
+func (i ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs) ToResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput() ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput {
+	return i.ToResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs) ToResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput)
+}
+
+func (i ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs) ToResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput() ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput {
+	return i.ToResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs) ToResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput).ToResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutputWithContext(ctx)
+}
+
+// ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrInput is an input type that accepts ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs, ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtr and ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput values.
+// You can construct a concrete instance of `ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrInput` via:
+//
+//	        ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrInput interface {
+	pulumi.Input
+
+	ToResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput() ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput
+	ToResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutputWithContext(context.Context) ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput
+}
+
+type resourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrType ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs
+
+func ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtr(v *ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs) ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrInput {
+	return (*resourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrType)(v)
+}
+
+func (*resourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule)(nil)).Elem()
+}
+
+func (i *resourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrType) ToResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput() ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput {
+	return i.ToResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *resourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrType) ToResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput)
+}
+
+type ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule)(nil)).Elem()
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput) ToResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput() ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput {
+	return o
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput) ToResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput {
+	return o
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput) ToResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput() ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput {
+	return o.ToResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutputWithContext(context.Background())
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput) ToResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule) *ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule {
+		return &v
+	}).(ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput)
+}
+
+// Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
+func (o ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput) DaysInCycle() pulumi.IntOutput {
+	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule) int { return v.DaysInCycle }).(pulumi.IntOutput)
+}
+
+// This must be in UTC format that resolves to one of
+// 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example,
+// both 13:00-5 and 08:00 are valid.
+func (o ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule)(nil)).Elem()
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput) ToResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput() ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput {
+	return o
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput) ToResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput {
+	return o
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput) Elem() ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput {
+	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule) ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule {
+		if v != nil {
+			return *v
+		}
+		var ret ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule
+		return ret
+	}).(ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput)
+}
+
+// Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
+func (o ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput) DaysInCycle() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.DaysInCycle
+	}).(pulumi.IntPtrOutput)
+}
+
+// This must be in UTC format that resolves to one of
+// 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example,
+// both 13:00-5 and 08:00 are valid.
+func (o ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule struct {
+	// The number of hours between snapshots.
+	HoursInCycle int `pulumi:"hoursInCycle"`
+	// Time within the window to start the operations.
+	// It must be in an hourly format "HH:MM",
+	// where HH : [00-23] and MM : [00] GMT. eg: 21:00
+	StartTime string `pulumi:"startTime"`
+}
+
+// ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleInput is an input type that accepts ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs and ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput values.
+// You can construct a concrete instance of `ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleInput` via:
+//
+//	ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs{...}
+type ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleInput interface {
+	pulumi.Input
+
+	ToResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput() ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput
+	ToResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutputWithContext(context.Context) ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput
+}
+
+type ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs struct {
+	// The number of hours between snapshots.
+	HoursInCycle pulumi.IntInput `pulumi:"hoursInCycle"`
+	// Time within the window to start the operations.
+	// It must be in an hourly format "HH:MM",
+	// where HH : [00-23] and MM : [00] GMT. eg: 21:00
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule)(nil)).Elem()
+}
+
+func (i ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs) ToResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput() ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput {
+	return i.ToResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs) ToResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput)
+}
+
+func (i ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs) ToResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput() ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput {
+	return i.ToResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs) ToResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput).ToResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutputWithContext(ctx)
+}
+
+// ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrInput is an input type that accepts ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs, ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtr and ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput values.
+// You can construct a concrete instance of `ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrInput` via:
+//
+//	        ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrInput interface {
+	pulumi.Input
+
+	ToResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput() ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput
+	ToResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutputWithContext(context.Context) ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput
+}
+
+type resourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrType ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs
+
+func ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtr(v *ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs) ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrInput {
+	return (*resourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrType)(v)
+}
+
+func (*resourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule)(nil)).Elem()
+}
+
+func (i *resourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrType) ToResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput() ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput {
+	return i.ToResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *resourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrType) ToResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput)
+}
+
+type ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule)(nil)).Elem()
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput) ToResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput() ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput {
+	return o
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput) ToResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput {
+	return o
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput) ToResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput() ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput {
+	return o.ToResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutputWithContext(context.Background())
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput) ToResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule) *ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule {
+		return &v
+	}).(ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput)
+}
+
+// The number of hours between snapshots.
+func (o ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput) HoursInCycle() pulumi.IntOutput {
+	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule) int { return v.HoursInCycle }).(pulumi.IntOutput)
+}
+
+// Time within the window to start the operations.
+// It must be in an hourly format "HH:MM",
+// where HH : [00-23] and MM : [00] GMT. eg: 21:00
+func (o ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule)(nil)).Elem()
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput) ToResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput() ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput {
+	return o
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput) ToResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput {
+	return o
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput) Elem() ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput {
+	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule) ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule {
+		if v != nil {
+			return *v
+		}
+		var ret ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule
+		return ret
+	}).(ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput)
+}
+
+// The number of hours between snapshots.
+func (o ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput) HoursInCycle() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.HoursInCycle
+	}).(pulumi.IntPtrOutput)
+}
+
+// Time within the window to start the operations.
+// It must be in an hourly format "HH:MM",
+// where HH : [00-23] and MM : [00] GMT. eg: 21:00
+func (o ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
 type ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule struct {
 	// May contain up to seven (one for each day of the week) snapshot times.
 	// Structure is documented below.
@@ -471,6 +1353,197 @@ func (o ResourcePolicySnapshotSchedulePolicySnapshotPropertiesPtrOutput) Storage
 			return nil
 		}
 		return v.StorageLocations
+	}).(pulumi.StringPtrOutput)
+}
+
+type ResourcePolicyWorkloadPolicy struct {
+	// The accelerator topology. This field can be set only when the workload policy type is HIGH_THROUGHPUT
+	// and cannot be set if max topology distance is set.
+	AcceleratorTopology *string `pulumi:"acceleratorTopology"`
+	// The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
+	// and cannot be set if accelerator topology is set.
+	// Possible values are: `BLOCK`, `CLUSTER`, `SUBBLOCK`.
+	MaxTopologyDistance *string `pulumi:"maxTopologyDistance"`
+	// The type of workload policy.
+	// Possible values are: `HIGH_AVAILABILITY`, `HIGH_THROUGHPUT`.
+	Type string `pulumi:"type"`
+}
+
+// ResourcePolicyWorkloadPolicyInput is an input type that accepts ResourcePolicyWorkloadPolicyArgs and ResourcePolicyWorkloadPolicyOutput values.
+// You can construct a concrete instance of `ResourcePolicyWorkloadPolicyInput` via:
+//
+//	ResourcePolicyWorkloadPolicyArgs{...}
+type ResourcePolicyWorkloadPolicyInput interface {
+	pulumi.Input
+
+	ToResourcePolicyWorkloadPolicyOutput() ResourcePolicyWorkloadPolicyOutput
+	ToResourcePolicyWorkloadPolicyOutputWithContext(context.Context) ResourcePolicyWorkloadPolicyOutput
+}
+
+type ResourcePolicyWorkloadPolicyArgs struct {
+	// The accelerator topology. This field can be set only when the workload policy type is HIGH_THROUGHPUT
+	// and cannot be set if max topology distance is set.
+	AcceleratorTopology pulumi.StringPtrInput `pulumi:"acceleratorTopology"`
+	// The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
+	// and cannot be set if accelerator topology is set.
+	// Possible values are: `BLOCK`, `CLUSTER`, `SUBBLOCK`.
+	MaxTopologyDistance pulumi.StringPtrInput `pulumi:"maxTopologyDistance"`
+	// The type of workload policy.
+	// Possible values are: `HIGH_AVAILABILITY`, `HIGH_THROUGHPUT`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ResourcePolicyWorkloadPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicyWorkloadPolicy)(nil)).Elem()
+}
+
+func (i ResourcePolicyWorkloadPolicyArgs) ToResourcePolicyWorkloadPolicyOutput() ResourcePolicyWorkloadPolicyOutput {
+	return i.ToResourcePolicyWorkloadPolicyOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicyWorkloadPolicyArgs) ToResourcePolicyWorkloadPolicyOutputWithContext(ctx context.Context) ResourcePolicyWorkloadPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyWorkloadPolicyOutput)
+}
+
+func (i ResourcePolicyWorkloadPolicyArgs) ToResourcePolicyWorkloadPolicyPtrOutput() ResourcePolicyWorkloadPolicyPtrOutput {
+	return i.ToResourcePolicyWorkloadPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicyWorkloadPolicyArgs) ToResourcePolicyWorkloadPolicyPtrOutputWithContext(ctx context.Context) ResourcePolicyWorkloadPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyWorkloadPolicyOutput).ToResourcePolicyWorkloadPolicyPtrOutputWithContext(ctx)
+}
+
+// ResourcePolicyWorkloadPolicyPtrInput is an input type that accepts ResourcePolicyWorkloadPolicyArgs, ResourcePolicyWorkloadPolicyPtr and ResourcePolicyWorkloadPolicyPtrOutput values.
+// You can construct a concrete instance of `ResourcePolicyWorkloadPolicyPtrInput` via:
+//
+//	        ResourcePolicyWorkloadPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourcePolicyWorkloadPolicyPtrInput interface {
+	pulumi.Input
+
+	ToResourcePolicyWorkloadPolicyPtrOutput() ResourcePolicyWorkloadPolicyPtrOutput
+	ToResourcePolicyWorkloadPolicyPtrOutputWithContext(context.Context) ResourcePolicyWorkloadPolicyPtrOutput
+}
+
+type resourcePolicyWorkloadPolicyPtrType ResourcePolicyWorkloadPolicyArgs
+
+func ResourcePolicyWorkloadPolicyPtr(v *ResourcePolicyWorkloadPolicyArgs) ResourcePolicyWorkloadPolicyPtrInput {
+	return (*resourcePolicyWorkloadPolicyPtrType)(v)
+}
+
+func (*resourcePolicyWorkloadPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicyWorkloadPolicy)(nil)).Elem()
+}
+
+func (i *resourcePolicyWorkloadPolicyPtrType) ToResourcePolicyWorkloadPolicyPtrOutput() ResourcePolicyWorkloadPolicyPtrOutput {
+	return i.ToResourcePolicyWorkloadPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *resourcePolicyWorkloadPolicyPtrType) ToResourcePolicyWorkloadPolicyPtrOutputWithContext(ctx context.Context) ResourcePolicyWorkloadPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyWorkloadPolicyPtrOutput)
+}
+
+type ResourcePolicyWorkloadPolicyOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyWorkloadPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicyWorkloadPolicy)(nil)).Elem()
+}
+
+func (o ResourcePolicyWorkloadPolicyOutput) ToResourcePolicyWorkloadPolicyOutput() ResourcePolicyWorkloadPolicyOutput {
+	return o
+}
+
+func (o ResourcePolicyWorkloadPolicyOutput) ToResourcePolicyWorkloadPolicyOutputWithContext(ctx context.Context) ResourcePolicyWorkloadPolicyOutput {
+	return o
+}
+
+func (o ResourcePolicyWorkloadPolicyOutput) ToResourcePolicyWorkloadPolicyPtrOutput() ResourcePolicyWorkloadPolicyPtrOutput {
+	return o.ToResourcePolicyWorkloadPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ResourcePolicyWorkloadPolicyOutput) ToResourcePolicyWorkloadPolicyPtrOutputWithContext(ctx context.Context) ResourcePolicyWorkloadPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourcePolicyWorkloadPolicy) *ResourcePolicyWorkloadPolicy {
+		return &v
+	}).(ResourcePolicyWorkloadPolicyPtrOutput)
+}
+
+// The accelerator topology. This field can be set only when the workload policy type is HIGH_THROUGHPUT
+// and cannot be set if max topology distance is set.
+func (o ResourcePolicyWorkloadPolicyOutput) AcceleratorTopology() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourcePolicyWorkloadPolicy) *string { return v.AcceleratorTopology }).(pulumi.StringPtrOutput)
+}
+
+// The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
+// and cannot be set if accelerator topology is set.
+// Possible values are: `BLOCK`, `CLUSTER`, `SUBBLOCK`.
+func (o ResourcePolicyWorkloadPolicyOutput) MaxTopologyDistance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourcePolicyWorkloadPolicy) *string { return v.MaxTopologyDistance }).(pulumi.StringPtrOutput)
+}
+
+// The type of workload policy.
+// Possible values are: `HIGH_AVAILABILITY`, `HIGH_THROUGHPUT`.
+func (o ResourcePolicyWorkloadPolicyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourcePolicyWorkloadPolicy) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ResourcePolicyWorkloadPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyWorkloadPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicyWorkloadPolicy)(nil)).Elem()
+}
+
+func (o ResourcePolicyWorkloadPolicyPtrOutput) ToResourcePolicyWorkloadPolicyPtrOutput() ResourcePolicyWorkloadPolicyPtrOutput {
+	return o
+}
+
+func (o ResourcePolicyWorkloadPolicyPtrOutput) ToResourcePolicyWorkloadPolicyPtrOutputWithContext(ctx context.Context) ResourcePolicyWorkloadPolicyPtrOutput {
+	return o
+}
+
+func (o ResourcePolicyWorkloadPolicyPtrOutput) Elem() ResourcePolicyWorkloadPolicyOutput {
+	return o.ApplyT(func(v *ResourcePolicyWorkloadPolicy) ResourcePolicyWorkloadPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ResourcePolicyWorkloadPolicy
+		return ret
+	}).(ResourcePolicyWorkloadPolicyOutput)
+}
+
+// The accelerator topology. This field can be set only when the workload policy type is HIGH_THROUGHPUT
+// and cannot be set if max topology distance is set.
+func (o ResourcePolicyWorkloadPolicyPtrOutput) AcceleratorTopology() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicyWorkloadPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AcceleratorTopology
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
+// and cannot be set if accelerator topology is set.
+// Possible values are: `BLOCK`, `CLUSTER`, `SUBBLOCK`.
+func (o ResourcePolicyWorkloadPolicyPtrOutput) MaxTopologyDistance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicyWorkloadPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTopologyDistance
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of workload policy.
+// Possible values are: `HIGH_AVAILABILITY`, `HIGH_THROUGHPUT`.
+func (o ResourcePolicyWorkloadPolicyPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicyWorkloadPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -37371,6 +38444,199 @@ func (o GetHealthCheckTcpHealthCheckArrayOutput) Index(i pulumi.IntInput) GetHea
 	}).(GetHealthCheckTcpHealthCheckOutput)
 }
 
+type GetImagesImage struct {
+	// The size of the image tar.gz archive stored in Google Cloud Storage in bytes.
+	ArchiveSizeBytes int `pulumi:"archiveSizeBytes"`
+	// The creation timestamp in RFC3339 text format.
+	CreationTimestamp string `pulumi:"creationTimestamp"`
+	// An optional description of this image.
+	Description string `pulumi:"description"`
+	// The size of the image when restored onto a persistent disk in gigabytes.
+	DiskSizeGb int `pulumi:"diskSizeGb"`
+	// The family name of the image.
+	Family  string `pulumi:"family"`
+	ImageId int    `pulumi:"imageId"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	Labels map[string]string `pulumi:"labels"`
+	// The name of the image.
+	Name string `pulumi:"name"`
+	// The URI of the image.
+	SelfLink string `pulumi:"selfLink"`
+	// The URL of the source disk used to create this image.
+	SourceDisk string `pulumi:"sourceDisk"`
+	// The ID value of the disk used to create this image.
+	SourceDiskId string `pulumi:"sourceDiskId"`
+	// The ID value of the image used to create this image.
+	SourceImageId string `pulumi:"sourceImageId"`
+}
+
+// GetImagesImageInput is an input type that accepts GetImagesImageArgs and GetImagesImageOutput values.
+// You can construct a concrete instance of `GetImagesImageInput` via:
+//
+//	GetImagesImageArgs{...}
+type GetImagesImageInput interface {
+	pulumi.Input
+
+	ToGetImagesImageOutput() GetImagesImageOutput
+	ToGetImagesImageOutputWithContext(context.Context) GetImagesImageOutput
+}
+
+type GetImagesImageArgs struct {
+	// The size of the image tar.gz archive stored in Google Cloud Storage in bytes.
+	ArchiveSizeBytes pulumi.IntInput `pulumi:"archiveSizeBytes"`
+	// The creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringInput `pulumi:"creationTimestamp"`
+	// An optional description of this image.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The size of the image when restored onto a persistent disk in gigabytes.
+	DiskSizeGb pulumi.IntInput `pulumi:"diskSizeGb"`
+	// The family name of the image.
+	Family  pulumi.StringInput `pulumi:"family"`
+	ImageId pulumi.IntInput    `pulumi:"imageId"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The name of the image.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The URI of the image.
+	SelfLink pulumi.StringInput `pulumi:"selfLink"`
+	// The URL of the source disk used to create this image.
+	SourceDisk pulumi.StringInput `pulumi:"sourceDisk"`
+	// The ID value of the disk used to create this image.
+	SourceDiskId pulumi.StringInput `pulumi:"sourceDiskId"`
+	// The ID value of the image used to create this image.
+	SourceImageId pulumi.StringInput `pulumi:"sourceImageId"`
+}
+
+func (GetImagesImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesImage)(nil)).Elem()
+}
+
+func (i GetImagesImageArgs) ToGetImagesImageOutput() GetImagesImageOutput {
+	return i.ToGetImagesImageOutputWithContext(context.Background())
+}
+
+func (i GetImagesImageArgs) ToGetImagesImageOutputWithContext(ctx context.Context) GetImagesImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesImageOutput)
+}
+
+// GetImagesImageArrayInput is an input type that accepts GetImagesImageArray and GetImagesImageArrayOutput values.
+// You can construct a concrete instance of `GetImagesImageArrayInput` via:
+//
+//	GetImagesImageArray{ GetImagesImageArgs{...} }
+type GetImagesImageArrayInput interface {
+	pulumi.Input
+
+	ToGetImagesImageArrayOutput() GetImagesImageArrayOutput
+	ToGetImagesImageArrayOutputWithContext(context.Context) GetImagesImageArrayOutput
+}
+
+type GetImagesImageArray []GetImagesImageInput
+
+func (GetImagesImageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetImagesImage)(nil)).Elem()
+}
+
+func (i GetImagesImageArray) ToGetImagesImageArrayOutput() GetImagesImageArrayOutput {
+	return i.ToGetImagesImageArrayOutputWithContext(context.Background())
+}
+
+func (i GetImagesImageArray) ToGetImagesImageArrayOutputWithContext(ctx context.Context) GetImagesImageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesImageArrayOutput)
+}
+
+type GetImagesImageOutput struct{ *pulumi.OutputState }
+
+func (GetImagesImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesImage)(nil)).Elem()
+}
+
+func (o GetImagesImageOutput) ToGetImagesImageOutput() GetImagesImageOutput {
+	return o
+}
+
+func (o GetImagesImageOutput) ToGetImagesImageOutputWithContext(ctx context.Context) GetImagesImageOutput {
+	return o
+}
+
+// The size of the image tar.gz archive stored in Google Cloud Storage in bytes.
+func (o GetImagesImageOutput) ArchiveSizeBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetImagesImage) int { return v.ArchiveSizeBytes }).(pulumi.IntOutput)
+}
+
+// The creation timestamp in RFC3339 text format.
+func (o GetImagesImageOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this image.
+func (o GetImagesImageOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The size of the image when restored onto a persistent disk in gigabytes.
+func (o GetImagesImageOutput) DiskSizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetImagesImage) int { return v.DiskSizeGb }).(pulumi.IntOutput)
+}
+
+// The family name of the image.
+func (o GetImagesImageOutput) Family() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.Family }).(pulumi.StringOutput)
+}
+
+func (o GetImagesImageOutput) ImageId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetImagesImage) int { return v.ImageId }).(pulumi.IntOutput)
+}
+
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+func (o GetImagesImageOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetImagesImage) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The name of the image.
+func (o GetImagesImageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The URI of the image.
+func (o GetImagesImageOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The URL of the source disk used to create this image.
+func (o GetImagesImageOutput) SourceDisk() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.SourceDisk }).(pulumi.StringOutput)
+}
+
+// The ID value of the disk used to create this image.
+func (o GetImagesImageOutput) SourceDiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.SourceDiskId }).(pulumi.StringOutput)
+}
+
+// The ID value of the image used to create this image.
+func (o GetImagesImageOutput) SourceImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.SourceImageId }).(pulumi.StringOutput)
+}
+
+type GetImagesImageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetImagesImageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetImagesImage)(nil)).Elem()
+}
+
+func (o GetImagesImageArrayOutput) ToGetImagesImageArrayOutput() GetImagesImageArrayOutput {
+	return o
+}
+
+func (o GetImagesImageArrayOutput) ToGetImagesImageArrayOutputWithContext(ctx context.Context) GetImagesImageArrayOutput {
+	return o
+}
+
+func (o GetImagesImageArrayOutput) Index(i pulumi.IntInput) GetImagesImageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetImagesImage {
+		return vs[0].([]GetImagesImage)[vs[1].(int)]
+	}).(GetImagesImageOutput)
+}
+
 type GetInstanceAdvancedMachineFeature struct {
 	// Whether to enable nested virtualization or not.
 	EnableNestedVirtualization bool `pulumi:"enableNestedVirtualization"`
@@ -37676,6 +38942,8 @@ type GetInstanceBootDisk struct {
 	// encoded SHA-256 hash of the [customer-supplied encryption key]
 	// (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
 	DiskEncryptionKeySha256 string `pulumi:"diskEncryptionKeySha256"`
+	// A list of features to enable on the guest operating system. Applicable only for bootable images.
+	GuestOsFeatures []string `pulumi:"guestOsFeatures"`
 	// Parameters with which a disk was created alongside the instance.
 	// Structure is documented below.
 	InitializeParams []GetInstanceBootDiskInitializeParam `pulumi:"initializeParams"`
@@ -37712,6 +38980,8 @@ type GetInstanceBootDiskArgs struct {
 	// encoded SHA-256 hash of the [customer-supplied encryption key]
 	// (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
 	DiskEncryptionKeySha256 pulumi.StringInput `pulumi:"diskEncryptionKeySha256"`
+	// A list of features to enable on the guest operating system. Applicable only for bootable images.
+	GuestOsFeatures pulumi.StringArrayInput `pulumi:"guestOsFeatures"`
 	// Parameters with which a disk was created alongside the instance.
 	// Structure is documented below.
 	InitializeParams GetInstanceBootDiskInitializeParamArrayInput `pulumi:"initializeParams"`
@@ -37799,6 +39069,11 @@ func (o GetInstanceBootDiskOutput) DiskEncryptionKeySha256() pulumi.StringOutput
 	return o.ApplyT(func(v GetInstanceBootDisk) string { return v.DiskEncryptionKeySha256 }).(pulumi.StringOutput)
 }
 
+// A list of features to enable on the guest operating system. Applicable only for bootable images.
+func (o GetInstanceBootDiskOutput) GuestOsFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceBootDisk) []string { return v.GuestOsFeatures }).(pulumi.StringArrayOutput)
+}
+
 // Parameters with which a disk was created alongside the instance.
 // Structure is documented below.
 func (o GetInstanceBootDiskOutput) InitializeParams() GetInstanceBootDiskInitializeParamArrayOutput {
@@ -37846,6 +39121,8 @@ func (o GetInstanceBootDiskArrayOutput) Index(i pulumi.IntInput) GetInstanceBoot
 }
 
 type GetInstanceBootDiskInitializeParam struct {
+	// The architecture of the disk. One of "X86_64" or "ARM64".
+	Architecture string `pulumi:"architecture"`
 	// A flag to enable confidential compute mode on boot disk
 	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
 	// The image from which this disk was initialised.
@@ -37880,6 +39157,8 @@ type GetInstanceBootDiskInitializeParamInput interface {
 }
 
 type GetInstanceBootDiskInitializeParamArgs struct {
+	// The architecture of the disk. One of "X86_64" or "ARM64".
+	Architecture pulumi.StringInput `pulumi:"architecture"`
 	// A flag to enable confidential compute mode on boot disk
 	EnableConfidentialCompute pulumi.BoolInput `pulumi:"enableConfidentialCompute"`
 	// The image from which this disk was initialised.
@@ -37951,6 +39230,11 @@ func (o GetInstanceBootDiskInitializeParamOutput) ToGetInstanceBootDiskInitializ
 
 func (o GetInstanceBootDiskInitializeParamOutput) ToGetInstanceBootDiskInitializeParamOutputWithContext(ctx context.Context) GetInstanceBootDiskInitializeParamOutput {
 	return o
+}
+
+// The architecture of the disk. One of "X86_64" or "ARM64".
+func (o GetInstanceBootDiskInitializeParamOutput) Architecture() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) string { return v.Architecture }).(pulumi.StringOutput)
 }
 
 // A flag to enable confidential compute mode on boot disk
@@ -38352,10 +39636,12 @@ func (o GetInstanceGroupManagerAutoHealingPolicyArrayOutput) Index(i pulumi.IntI
 }
 
 type GetInstanceGroupManagerInstanceLifecyclePolicy struct {
-	// Default behavior for all instance or health check failures.
+	// Specifies the action that a MIG performs on a failed VM. If the value of the "onFailedHealthCheck" field is DEFAULT_ACTION, then the same action also applies to the VMs on which your application fails a health check. Valid values are: REPAIR, DO_NOTHING. If REPAIR (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG. If DO_NOTHING, then MIG does not repair a failed VM.
 	DefaultActionOnFailure string `pulumi:"defaultActionOnFailure"`
 	// Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
 	ForceUpdateOnRepair string `pulumi:"forceUpdateOnRepair"`
+	// Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are: DEFAULT_ACTION, DO_NOTHING, REPAIR. If DEFAULT_ACTION (default), then MIG uses the same action configured for the  "defaultActionOnFailure" field. If DO_NOTHING, then MIG does not repair unhealthy VM. If REPAIR, then MIG automatically repairs an unhealthy VM by recreating it.
+	OnFailedHealthCheck string `pulumi:"onFailedHealthCheck"`
 }
 
 // GetInstanceGroupManagerInstanceLifecyclePolicyInput is an input type that accepts GetInstanceGroupManagerInstanceLifecyclePolicyArgs and GetInstanceGroupManagerInstanceLifecyclePolicyOutput values.
@@ -38370,10 +39656,12 @@ type GetInstanceGroupManagerInstanceLifecyclePolicyInput interface {
 }
 
 type GetInstanceGroupManagerInstanceLifecyclePolicyArgs struct {
-	// Default behavior for all instance or health check failures.
+	// Specifies the action that a MIG performs on a failed VM. If the value of the "onFailedHealthCheck" field is DEFAULT_ACTION, then the same action also applies to the VMs on which your application fails a health check. Valid values are: REPAIR, DO_NOTHING. If REPAIR (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG. If DO_NOTHING, then MIG does not repair a failed VM.
 	DefaultActionOnFailure pulumi.StringInput `pulumi:"defaultActionOnFailure"`
 	// Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
 	ForceUpdateOnRepair pulumi.StringInput `pulumi:"forceUpdateOnRepair"`
+	// Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are: DEFAULT_ACTION, DO_NOTHING, REPAIR. If DEFAULT_ACTION (default), then MIG uses the same action configured for the  "defaultActionOnFailure" field. If DO_NOTHING, then MIG does not repair unhealthy VM. If REPAIR, then MIG automatically repairs an unhealthy VM by recreating it.
+	OnFailedHealthCheck pulumi.StringInput `pulumi:"onFailedHealthCheck"`
 }
 
 func (GetInstanceGroupManagerInstanceLifecyclePolicyArgs) ElementType() reflect.Type {
@@ -38427,7 +39715,7 @@ func (o GetInstanceGroupManagerInstanceLifecyclePolicyOutput) ToGetInstanceGroup
 	return o
 }
 
-// Default behavior for all instance or health check failures.
+// Specifies the action that a MIG performs on a failed VM. If the value of the "onFailedHealthCheck" field is DEFAULT_ACTION, then the same action also applies to the VMs on which your application fails a health check. Valid values are: REPAIR, DO_NOTHING. If REPAIR (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG. If DO_NOTHING, then MIG does not repair a failed VM.
 func (o GetInstanceGroupManagerInstanceLifecyclePolicyOutput) DefaultActionOnFailure() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerInstanceLifecyclePolicy) string { return v.DefaultActionOnFailure }).(pulumi.StringOutput)
 }
@@ -38435,6 +39723,11 @@ func (o GetInstanceGroupManagerInstanceLifecyclePolicyOutput) DefaultActionOnFai
 // Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
 func (o GetInstanceGroupManagerInstanceLifecyclePolicyOutput) ForceUpdateOnRepair() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerInstanceLifecyclePolicy) string { return v.ForceUpdateOnRepair }).(pulumi.StringOutput)
+}
+
+// Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are: DEFAULT_ACTION, DO_NOTHING, REPAIR. If DEFAULT_ACTION (default), then MIG uses the same action configured for the  "defaultActionOnFailure" field. If DO_NOTHING, then MIG does not repair unhealthy VM. If REPAIR, then MIG automatically repairs an unhealthy VM by recreating it.
+func (o GetInstanceGroupManagerInstanceLifecyclePolicyOutput) OnFailedHealthCheck() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerInstanceLifecyclePolicy) string { return v.OnFailedHealthCheck }).(pulumi.StringOutput)
 }
 
 type GetInstanceGroupManagerInstanceLifecyclePolicyArrayOutput struct{ *pulumi.OutputState }
@@ -47445,10 +48738,12 @@ func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionA
 }
 
 type GetRegionInstanceGroupManagerInstanceLifecyclePolicy struct {
-	// Default behavior for all instance or health check failures.
+	// Specifies the action that a MIG performs on a failed VM. If the value of the "onFailedHealthCheck" field is DEFAULT_ACTION, then the same action also applies to the VMs on which your application fails a health check. Valid values are: REPAIR, DO_NOTHING. If REPAIR (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG. If DO_NOTHING, then MIG does not repair a failed VM.
 	DefaultActionOnFailure string `pulumi:"defaultActionOnFailure"`
 	// Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
 	ForceUpdateOnRepair string `pulumi:"forceUpdateOnRepair"`
+	// Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are: DEFAULT_ACTION, DO_NOTHING, REPAIR. If DEFAULT_ACTION (default), then MIG uses the same action configured for the  "defaultActionOnFailure" field. If DO_NOTHING, then MIG does not repair unhealthy VM. If REPAIR, then MIG automatically repairs an unhealthy VM by recreating it.
+	OnFailedHealthCheck string `pulumi:"onFailedHealthCheck"`
 }
 
 // GetRegionInstanceGroupManagerInstanceLifecyclePolicyInput is an input type that accepts GetRegionInstanceGroupManagerInstanceLifecyclePolicyArgs and GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput values.
@@ -47463,10 +48758,12 @@ type GetRegionInstanceGroupManagerInstanceLifecyclePolicyInput interface {
 }
 
 type GetRegionInstanceGroupManagerInstanceLifecyclePolicyArgs struct {
-	// Default behavior for all instance or health check failures.
+	// Specifies the action that a MIG performs on a failed VM. If the value of the "onFailedHealthCheck" field is DEFAULT_ACTION, then the same action also applies to the VMs on which your application fails a health check. Valid values are: REPAIR, DO_NOTHING. If REPAIR (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG. If DO_NOTHING, then MIG does not repair a failed VM.
 	DefaultActionOnFailure pulumi.StringInput `pulumi:"defaultActionOnFailure"`
 	// Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
 	ForceUpdateOnRepair pulumi.StringInput `pulumi:"forceUpdateOnRepair"`
+	// Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are: DEFAULT_ACTION, DO_NOTHING, REPAIR. If DEFAULT_ACTION (default), then MIG uses the same action configured for the  "defaultActionOnFailure" field. If DO_NOTHING, then MIG does not repair unhealthy VM. If REPAIR, then MIG automatically repairs an unhealthy VM by recreating it.
+	OnFailedHealthCheck pulumi.StringInput `pulumi:"onFailedHealthCheck"`
 }
 
 func (GetRegionInstanceGroupManagerInstanceLifecyclePolicyArgs) ElementType() reflect.Type {
@@ -47520,7 +48817,7 @@ func (o GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput) ToGetRegionI
 	return o
 }
 
-// Default behavior for all instance or health check failures.
+// Specifies the action that a MIG performs on a failed VM. If the value of the "onFailedHealthCheck" field is DEFAULT_ACTION, then the same action also applies to the VMs on which your application fails a health check. Valid values are: REPAIR, DO_NOTHING. If REPAIR (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG. If DO_NOTHING, then MIG does not repair a failed VM.
 func (o GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput) DefaultActionOnFailure() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceLifecyclePolicy) string { return v.DefaultActionOnFailure }).(pulumi.StringOutput)
 }
@@ -47528,6 +48825,11 @@ func (o GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput) DefaultActio
 // Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
 func (o GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput) ForceUpdateOnRepair() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceLifecyclePolicy) string { return v.ForceUpdateOnRepair }).(pulumi.StringOutput)
+}
+
+// Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are: DEFAULT_ACTION, DO_NOTHING, REPAIR. If DEFAULT_ACTION (default), then MIG uses the same action configured for the  "defaultActionOnFailure" field. If DO_NOTHING, then MIG does not repair unhealthy VM. If REPAIR, then MIG automatically repairs an unhealthy VM by recreating it.
+func (o GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput) OnFailedHealthCheck() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceLifecyclePolicy) string { return v.OnFailedHealthCheck }).(pulumi.StringOutput)
 }
 
 type GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput struct{ *pulumi.OutputState }
@@ -53790,6 +55092,8 @@ type GetResourcePolicyGroupPlacementPolicy struct {
 	// with a COLLOCATED policy, then exactly 'vm_count' instances must be created at the same time with the resource policy
 	// attached. Possible values: ["COLLOCATED"]
 	Collocation string `pulumi:"collocation"`
+	// Specifies the shape of the GPU slice, in slice based GPU families eg. A4X.
+	GpuTopology string `pulumi:"gpuTopology"`
 	// Specifies the number of max logical switches.
 	MaxDistance int `pulumi:"maxDistance"`
 	// Number of VMs in this placement group. Google does not recommend that you use this field
@@ -53818,6 +55122,8 @@ type GetResourcePolicyGroupPlacementPolicyArgs struct {
 	// with a COLLOCATED policy, then exactly 'vm_count' instances must be created at the same time with the resource policy
 	// attached. Possible values: ["COLLOCATED"]
 	Collocation pulumi.StringInput `pulumi:"collocation"`
+	// Specifies the shape of the GPU slice, in slice based GPU families eg. A4X.
+	GpuTopology pulumi.StringInput `pulumi:"gpuTopology"`
 	// Specifies the number of max logical switches.
 	MaxDistance pulumi.IntInput `pulumi:"maxDistance"`
 	// Number of VMs in this placement group. Google does not recommend that you use this field
@@ -53889,6 +55195,11 @@ func (o GetResourcePolicyGroupPlacementPolicyOutput) AvailabilityDomainCount() p
 // attached. Possible values: ["COLLOCATED"]
 func (o GetResourcePolicyGroupPlacementPolicyOutput) Collocation() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourcePolicyGroupPlacementPolicy) string { return v.Collocation }).(pulumi.StringOutput)
+}
+
+// Specifies the shape of the GPU slice, in slice based GPU families eg. A4X.
+func (o GetResourcePolicyGroupPlacementPolicyOutput) GpuTopology() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicyGroupPlacementPolicy) string { return v.GpuTopology }).(pulumi.StringOutput)
 }
 
 // Specifies the number of max logical switches.
@@ -55173,6 +56484,127 @@ func (o GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput) Inde
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicySnapshotSchedulePolicySnapshotProperty {
 		return vs[0].([]GetResourcePolicySnapshotSchedulePolicySnapshotProperty)[vs[1].(int)]
 	}).(GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput)
+}
+
+type GetResourcePolicyWorkloadPolicy struct {
+	// The accelerator topology. This field can be set only when the workload policy type is HIGH_THROUGHPUT
+	// and cannot be set if max topology distance is set.
+	AcceleratorTopology string `pulumi:"acceleratorTopology"`
+	// The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
+	// and cannot be set if accelerator topology is set. Possible values: ["BLOCK", "CLUSTER", "SUBBLOCK"]
+	MaxTopologyDistance string `pulumi:"maxTopologyDistance"`
+	// The type of workload policy. Possible values: ["HIGH_AVAILABILITY", "HIGH_THROUGHPUT"]
+	Type string `pulumi:"type"`
+}
+
+// GetResourcePolicyWorkloadPolicyInput is an input type that accepts GetResourcePolicyWorkloadPolicyArgs and GetResourcePolicyWorkloadPolicyOutput values.
+// You can construct a concrete instance of `GetResourcePolicyWorkloadPolicyInput` via:
+//
+//	GetResourcePolicyWorkloadPolicyArgs{...}
+type GetResourcePolicyWorkloadPolicyInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicyWorkloadPolicyOutput() GetResourcePolicyWorkloadPolicyOutput
+	ToGetResourcePolicyWorkloadPolicyOutputWithContext(context.Context) GetResourcePolicyWorkloadPolicyOutput
+}
+
+type GetResourcePolicyWorkloadPolicyArgs struct {
+	// The accelerator topology. This field can be set only when the workload policy type is HIGH_THROUGHPUT
+	// and cannot be set if max topology distance is set.
+	AcceleratorTopology pulumi.StringInput `pulumi:"acceleratorTopology"`
+	// The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
+	// and cannot be set if accelerator topology is set. Possible values: ["BLOCK", "CLUSTER", "SUBBLOCK"]
+	MaxTopologyDistance pulumi.StringInput `pulumi:"maxTopologyDistance"`
+	// The type of workload policy. Possible values: ["HIGH_AVAILABILITY", "HIGH_THROUGHPUT"]
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetResourcePolicyWorkloadPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicyWorkloadPolicy)(nil)).Elem()
+}
+
+func (i GetResourcePolicyWorkloadPolicyArgs) ToGetResourcePolicyWorkloadPolicyOutput() GetResourcePolicyWorkloadPolicyOutput {
+	return i.ToGetResourcePolicyWorkloadPolicyOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicyWorkloadPolicyArgs) ToGetResourcePolicyWorkloadPolicyOutputWithContext(ctx context.Context) GetResourcePolicyWorkloadPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicyWorkloadPolicyOutput)
+}
+
+// GetResourcePolicyWorkloadPolicyArrayInput is an input type that accepts GetResourcePolicyWorkloadPolicyArray and GetResourcePolicyWorkloadPolicyArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicyWorkloadPolicyArrayInput` via:
+//
+//	GetResourcePolicyWorkloadPolicyArray{ GetResourcePolicyWorkloadPolicyArgs{...} }
+type GetResourcePolicyWorkloadPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicyWorkloadPolicyArrayOutput() GetResourcePolicyWorkloadPolicyArrayOutput
+	ToGetResourcePolicyWorkloadPolicyArrayOutputWithContext(context.Context) GetResourcePolicyWorkloadPolicyArrayOutput
+}
+
+type GetResourcePolicyWorkloadPolicyArray []GetResourcePolicyWorkloadPolicyInput
+
+func (GetResourcePolicyWorkloadPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicyWorkloadPolicy)(nil)).Elem()
+}
+
+func (i GetResourcePolicyWorkloadPolicyArray) ToGetResourcePolicyWorkloadPolicyArrayOutput() GetResourcePolicyWorkloadPolicyArrayOutput {
+	return i.ToGetResourcePolicyWorkloadPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicyWorkloadPolicyArray) ToGetResourcePolicyWorkloadPolicyArrayOutputWithContext(ctx context.Context) GetResourcePolicyWorkloadPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicyWorkloadPolicyArrayOutput)
+}
+
+type GetResourcePolicyWorkloadPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicyWorkloadPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicyWorkloadPolicy)(nil)).Elem()
+}
+
+func (o GetResourcePolicyWorkloadPolicyOutput) ToGetResourcePolicyWorkloadPolicyOutput() GetResourcePolicyWorkloadPolicyOutput {
+	return o
+}
+
+func (o GetResourcePolicyWorkloadPolicyOutput) ToGetResourcePolicyWorkloadPolicyOutputWithContext(ctx context.Context) GetResourcePolicyWorkloadPolicyOutput {
+	return o
+}
+
+// The accelerator topology. This field can be set only when the workload policy type is HIGH_THROUGHPUT
+// and cannot be set if max topology distance is set.
+func (o GetResourcePolicyWorkloadPolicyOutput) AcceleratorTopology() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicyWorkloadPolicy) string { return v.AcceleratorTopology }).(pulumi.StringOutput)
+}
+
+// The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
+// and cannot be set if accelerator topology is set. Possible values: ["BLOCK", "CLUSTER", "SUBBLOCK"]
+func (o GetResourcePolicyWorkloadPolicyOutput) MaxTopologyDistance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicyWorkloadPolicy) string { return v.MaxTopologyDistance }).(pulumi.StringOutput)
+}
+
+// The type of workload policy. Possible values: ["HIGH_AVAILABILITY", "HIGH_THROUGHPUT"]
+func (o GetResourcePolicyWorkloadPolicyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicyWorkloadPolicy) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetResourcePolicyWorkloadPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicyWorkloadPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicyWorkloadPolicy)(nil)).Elem()
+}
+
+func (o GetResourcePolicyWorkloadPolicyArrayOutput) ToGetResourcePolicyWorkloadPolicyArrayOutput() GetResourcePolicyWorkloadPolicyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicyWorkloadPolicyArrayOutput) ToGetResourcePolicyWorkloadPolicyArrayOutputWithContext(ctx context.Context) GetResourcePolicyWorkloadPolicyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicyWorkloadPolicyArrayOutput) Index(i pulumi.IntInput) GetResourcePolicyWorkloadPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicyWorkloadPolicy {
+		return vs[0].([]GetResourcePolicyWorkloadPolicy)[vs[1].(int)]
+	}).(GetResourcePolicyWorkloadPolicyOutput)
 }
 
 type GetRouterBgp struct {
@@ -61367,12 +62799,24 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyPtrInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyRetentionPolicyInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyScheduleInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicySchedulePtrInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedulePtrInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicySnapshotPropertiesInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicySnapshotPropertiesPtrInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyWorkloadPolicyInput)(nil)).Elem(), ResourcePolicyWorkloadPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyWorkloadPolicyPtrInput)(nil)).Elem(), ResourcePolicyWorkloadPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouteAsPathInput)(nil)).Elem(), RouteAsPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouteAsPathArrayInput)(nil)).Elem(), RouteAsPathArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouteWarningInput)(nil)).Elem(), RouteWarningArgs{})
@@ -61791,6 +63235,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckSslHealthCheckArrayInput)(nil)).Elem(), GetHealthCheckSslHealthCheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckTcpHealthCheckInput)(nil)).Elem(), GetHealthCheckTcpHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckTcpHealthCheckArrayInput)(nil)).Elem(), GetHealthCheckTcpHealthCheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageInput)(nil)).Elem(), GetImagesImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageArrayInput)(nil)).Elem(), GetImagesImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAdvancedMachineFeatureInput)(nil)).Elem(), GetInstanceAdvancedMachineFeatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAdvancedMachineFeatureArrayInput)(nil)).Elem(), GetInstanceAdvancedMachineFeatureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAttachedDiskInput)(nil)).Elem(), GetInstanceAttachedDiskArgs{})
@@ -62075,6 +63521,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayInput)(nil)).Elem(), GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicySnapshotPropertyInput)(nil)).Elem(), GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayInput)(nil)).Elem(), GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyWorkloadPolicyInput)(nil)).Elem(), GetResourcePolicyWorkloadPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyWorkloadPolicyArrayInput)(nil)).Elem(), GetResourcePolicyWorkloadPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterBgpInput)(nil)).Elem(), GetRouterBgpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterBgpArrayInput)(nil)).Elem(), GetRouterBgpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterBgpAdvertisedIpRangeInput)(nil)).Elem(), GetRouterBgpAdvertisedIpRangeArgs{})
@@ -62167,12 +63615,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(ResourcePolicySnapshotSchedulePolicyOutput{})
+	pulumi.RegisterOutputType(ResourcePolicySnapshotSchedulePolicyPtrOutput{})
+	pulumi.RegisterOutputType(ResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput{})
+	pulumi.RegisterOutputType(ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ResourcePolicySnapshotSchedulePolicyScheduleOutput{})
+	pulumi.RegisterOutputType(ResourcePolicySnapshotSchedulePolicySchedulePtrOutput{})
+	pulumi.RegisterOutputType(ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput{})
+	pulumi.RegisterOutputType(ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput{})
+	pulumi.RegisterOutputType(ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput{})
+	pulumi.RegisterOutputType(ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput{})
 	pulumi.RegisterOutputType(ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput{})
 	pulumi.RegisterOutputType(ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedulePtrOutput{})
 	pulumi.RegisterOutputType(ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput{})
 	pulumi.RegisterOutputType(ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput{})
 	pulumi.RegisterOutputType(ResourcePolicySnapshotSchedulePolicySnapshotPropertiesOutput{})
 	pulumi.RegisterOutputType(ResourcePolicySnapshotSchedulePolicySnapshotPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyWorkloadPolicyOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyWorkloadPolicyPtrOutput{})
 	pulumi.RegisterOutputType(RouteAsPathOutput{})
 	pulumi.RegisterOutputType(RouteAsPathArrayOutput{})
 	pulumi.RegisterOutputType(RouteWarningOutput{})
@@ -62591,6 +64051,8 @@ func init() {
 	pulumi.RegisterOutputType(GetHealthCheckSslHealthCheckArrayOutput{})
 	pulumi.RegisterOutputType(GetHealthCheckTcpHealthCheckOutput{})
 	pulumi.RegisterOutputType(GetHealthCheckTcpHealthCheckArrayOutput{})
+	pulumi.RegisterOutputType(GetImagesImageOutput{})
+	pulumi.RegisterOutputType(GetImagesImageArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceAdvancedMachineFeatureOutput{})
 	pulumi.RegisterOutputType(GetInstanceAdvancedMachineFeatureArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceAttachedDiskOutput{})
@@ -62875,6 +64337,8 @@ func init() {
 	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput{})
 	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput{})
 	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicyWorkloadPolicyOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicyWorkloadPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetRouterBgpOutput{})
 	pulumi.RegisterOutputType(GetRouterBgpArrayOutput{})
 	pulumi.RegisterOutputType(GetRouterBgpAdvertisedIpRangeOutput{})

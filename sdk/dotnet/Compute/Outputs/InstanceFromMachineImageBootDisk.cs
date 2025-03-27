@@ -30,6 +30,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? DiskEncryptionKeySha256;
         /// <summary>
+        /// A list of features to enable on the guest operating system. Applicable only for bootable images.
+        /// </summary>
+        public readonly ImmutableArray<string> GuestOsFeatures;
+        /// <summary>
         /// Parameters with which a disk was created alongside the instance.
         /// </summary>
         public readonly Outputs.InstanceFromMachineImageBootDiskInitializeParams? InitializeParams;
@@ -60,6 +64,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? diskEncryptionKeySha256,
 
+            ImmutableArray<string> guestOsFeatures,
+
             Outputs.InstanceFromMachineImageBootDiskInitializeParams? initializeParams,
 
             string? @interface,
@@ -74,6 +80,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             DeviceName = deviceName;
             DiskEncryptionKeyRaw = diskEncryptionKeyRaw;
             DiskEncryptionKeySha256 = diskEncryptionKeySha256;
+            GuestOsFeatures = guestOsFeatures;
             InitializeParams = initializeParams;
             Interface = @interface;
             KmsKeySelfLink = kmsKeySelfLink;

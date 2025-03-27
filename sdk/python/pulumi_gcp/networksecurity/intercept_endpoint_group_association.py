@@ -16,10 +16,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['InterceptEndpointGroupAssociationArgs', 'InterceptEndpointGroupAssociation']
+__all__ = ['InterceptEndpointGroupAssociationInitArgs', 'InterceptEndpointGroupAssociation']
 
 @pulumi.input_type
-class InterceptEndpointGroupAssociationArgs:
+class InterceptEndpointGroupAssociationInitArgs:
     def __init__(__self__, *,
                  intercept_endpoint_group: pulumi.Input[str],
                  location: pulumi.Input[str],
@@ -152,6 +152,7 @@ class _InterceptEndpointGroupAssociationState:
                  intercept_endpoint_group_association_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 locations: Optional[pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupAssociationLocationArgs']]]] = None,
                  locations_details: Optional[pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupAssociationLocationsDetailArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -178,7 +179,11 @@ class _InterceptEndpointGroupAssociationState:
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupAssociationLocationsDetailArgs']]] locations_details: The list of locations where the association is present. This information
+        :param pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupAssociationLocationArgs']]] locations: The list of locations where the association is configured. This information
+               is retrieved from the linked endpoint group.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupAssociationLocationsDetailArgs']]] locations_details: (Deprecated)
+               The list of locations where the association is present. This information
                is retrieved from the linked endpoint group, and not configured as part
                of the association itself.
                Structure is documented below.
@@ -217,6 +222,11 @@ class _InterceptEndpointGroupAssociationState:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if locations is not None:
+            pulumi.set(__self__, "locations", locations)
+        if locations_details is not None:
+            warnings.warn("""`locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.""", DeprecationWarning)
+            pulumi.log.warn("""locations_details is deprecated: `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.""")
         if locations_details is not None:
             pulumi.set(__self__, "locations_details", locations_details)
         if name is not None:
@@ -317,9 +327,25 @@ class _InterceptEndpointGroupAssociationState:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter
+    def locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupAssociationLocationArgs']]]]:
+        """
+        The list of locations where the association is configured. This information
+        is retrieved from the linked endpoint group.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "locations")
+
+    @locations.setter
+    def locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupAssociationLocationArgs']]]]):
+        pulumi.set(self, "locations", value)
+
+    @property
     @pulumi.getter(name="locationsDetails")
+    @_utilities.deprecated("""`locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.""")
     def locations_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupAssociationLocationsDetailArgs']]]]:
         """
+        (Deprecated)
         The list of locations where the association is present. This information
         is retrieved from the linked endpoint group, and not configured as part
         of the association itself.
@@ -525,7 +551,7 @@ class InterceptEndpointGroupAssociation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: InterceptEndpointGroupAssociationArgs,
+                 args: InterceptEndpointGroupAssociationInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -585,12 +611,12 @@ class InterceptEndpointGroupAssociation(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param InterceptEndpointGroupAssociationArgs args: The arguments to use to populate this resource's properties.
+        :param InterceptEndpointGroupAssociationInitArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(InterceptEndpointGroupAssociationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(InterceptEndpointGroupAssociationInitArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -612,7 +638,7 @@ class InterceptEndpointGroupAssociation(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = InterceptEndpointGroupAssociationArgs.__new__(InterceptEndpointGroupAssociationArgs)
+            __props__ = InterceptEndpointGroupAssociationInitArgs.__new__(InterceptEndpointGroupAssociationInitArgs)
 
             if intercept_endpoint_group is None and not opts.urn:
                 raise TypeError("Missing required property 'intercept_endpoint_group'")
@@ -628,6 +654,7 @@ class InterceptEndpointGroupAssociation(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["locations"] = None
             __props__.__dict__["locations_details"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["pulumi_labels"] = None
@@ -652,6 +679,7 @@ class InterceptEndpointGroupAssociation(pulumi.CustomResource):
             intercept_endpoint_group_association_id: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
+            locations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InterceptEndpointGroupAssociationLocationArgs', 'InterceptEndpointGroupAssociationLocationArgsDict']]]]] = None,
             locations_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InterceptEndpointGroupAssociationLocationsDetailArgs', 'InterceptEndpointGroupAssociationLocationsDetailArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
@@ -683,7 +711,11 @@ class InterceptEndpointGroupAssociation(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InterceptEndpointGroupAssociationLocationsDetailArgs', 'InterceptEndpointGroupAssociationLocationsDetailArgsDict']]]] locations_details: The list of locations where the association is present. This information
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterceptEndpointGroupAssociationLocationArgs', 'InterceptEndpointGroupAssociationLocationArgsDict']]]] locations: The list of locations where the association is configured. This information
+               is retrieved from the linked endpoint group.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterceptEndpointGroupAssociationLocationsDetailArgs', 'InterceptEndpointGroupAssociationLocationsDetailArgsDict']]]] locations_details: (Deprecated)
+               The list of locations where the association is present. This information
                is retrieved from the linked endpoint group, and not configured as part
                of the association itself.
                Structure is documented below.
@@ -720,6 +752,7 @@ class InterceptEndpointGroupAssociation(pulumi.CustomResource):
         __props__.__dict__["intercept_endpoint_group_association_id"] = intercept_endpoint_group_association_id
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
+        __props__.__dict__["locations"] = locations
         __props__.__dict__["locations_details"] = locations_details
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
@@ -789,9 +822,21 @@ class InterceptEndpointGroupAssociation(pulumi.CustomResource):
         return pulumi.get(self, "location")
 
     @property
+    @pulumi.getter
+    def locations(self) -> pulumi.Output[Sequence['outputs.InterceptEndpointGroupAssociationLocation']]:
+        """
+        The list of locations where the association is configured. This information
+        is retrieved from the linked endpoint group.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "locations")
+
+    @property
     @pulumi.getter(name="locationsDetails")
+    @_utilities.deprecated("""`locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.""")
     def locations_details(self) -> pulumi.Output[Sequence['outputs.InterceptEndpointGroupAssociationLocationsDetail']]:
         """
+        (Deprecated)
         The list of locations where the association is present. This information
         is retrieved from the linked endpoint group, and not configured as part
         of the association itself.

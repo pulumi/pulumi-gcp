@@ -17,6 +17,72 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
     public static final ConnectivityTestDestinationArgs Empty = new ConnectivityTestDestinationArgs();
 
     /**
+     * A Cloud SQL instance URI.
+     * 
+     */
+    @Import(name="cloudSqlInstance")
+    private @Nullable Output<String> cloudSqlInstance;
+
+    /**
+     * @return A Cloud SQL instance URI.
+     * 
+     */
+    public Optional<Output<String>> cloudSqlInstance() {
+        return Optional.ofNullable(this.cloudSqlInstance);
+    }
+
+    /**
+     * Forwarding rule URI. Forwarding rules are frontends for load balancers,
+     * PSC endpoints, and Protocol Forwarding.
+     * 
+     */
+    @Import(name="forwardingRule")
+    private @Nullable Output<String> forwardingRule;
+
+    /**
+     * @return Forwarding rule URI. Forwarding rules are frontends for load balancers,
+     * PSC endpoints, and Protocol Forwarding.
+     * 
+     */
+    public Optional<Output<String>> forwardingRule() {
+        return Optional.ofNullable(this.forwardingRule);
+    }
+
+    /**
+     * A DNS endpoint of Google Kubernetes Engine cluster control plane.
+     * Requires gke_master_cluster to be set, can&#39;t be used simultaneoulsly with
+     * ip_address or network. Applicable only to destination endpoint.
+     * 
+     */
+    @Import(name="fqdn")
+    private @Nullable Output<String> fqdn;
+
+    /**
+     * @return A DNS endpoint of Google Kubernetes Engine cluster control plane.
+     * Requires gke_master_cluster to be set, can&#39;t be used simultaneoulsly with
+     * ip_address or network. Applicable only to destination endpoint.
+     * 
+     */
+    public Optional<Output<String>> fqdn() {
+        return Optional.ofNullable(this.fqdn);
+    }
+
+    /**
+     * A cluster URI for Google Kubernetes Engine cluster control plane.
+     * 
+     */
+    @Import(name="gkeMasterCluster")
+    private @Nullable Output<String> gkeMasterCluster;
+
+    /**
+     * @return A cluster URI for Google Kubernetes Engine cluster control plane.
+     * 
+     */
+    public Optional<Output<String>> gkeMasterCluster() {
+        return Optional.ofNullable(this.gkeMasterCluster);
+    }
+
+    /**
      * A Compute Engine instance URI.
      * 
      */
@@ -32,18 +98,14 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
     }
 
     /**
-     * The IP address of the endpoint, which can be an external or
-     * internal IP. An IPv6 address is only allowed when the test&#39;s
-     * destination is a global load balancer VIP.
+     * The IP address of the endpoint, which can be an external or internal IP.
      * 
      */
     @Import(name="ipAddress")
     private @Nullable Output<String> ipAddress;
 
     /**
-     * @return The IP address of the endpoint, which can be an external or
-     * internal IP. An IPv6 address is only allowed when the test&#39;s
-     * destination is a global load balancer VIP.
+     * @return The IP address of the endpoint, which can be an external or internal IP.
      * 
      */
     public Optional<Output<String>> ipAddress() {
@@ -51,14 +113,14 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
     }
 
     /**
-     * A Compute Engine network URI.
+     * A VPC network URI.
      * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
-     * @return A Compute Engine network URI.
+     * @return A VPC network URI.
      * 
      */
     public Optional<Output<String>> network() {
@@ -66,16 +128,16 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
     }
 
     /**
-     * The IP protocol port of the endpoint. Only applicable when
-     * protocol is TCP or UDP.
+     * The IP protocol port of the endpoint. Only applicable when protocol is
+     * TCP or UDP.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return The IP protocol port of the endpoint. Only applicable when
-     * protocol is TCP or UDP.
+     * @return The IP protocol port of the endpoint. Only applicable when protocol is
+     * TCP or UDP.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -83,14 +145,15 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
     }
 
     /**
-     * Project ID where the endpoint is located. The Project ID can be
-     * derived from the URI if you provide a VM instance or network URI.
-     * The following are two cases where you must provide the project ID:
-     * 1. Only the IP address is specified, and the IP address is within
-     *    a GCP project. 2. When you are using Shared VPC and the IP address
-     *    that you provide is from the service project. In this case, the
-     *    network that the IP address resides in is defined in the host
-     *    project.
+     * Project ID where the endpoint is located.
+     * The project ID can be derived from the URI if you provide a endpoint or
+     * network URI.
+     * The following are two cases where you may need to provide the project ID:
+     * 1. Only the IP address is specified, and the IP address is within a Google
+     *    Cloud project.
+     * 2. When you are using Shared VPC and the IP address that you provide is
+     *    from the service project. In this case, the network that the IP address
+     *    resides in is defined in the host project.
      * 
      * ***
      * 
@@ -99,14 +162,15 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Project ID where the endpoint is located. The Project ID can be
-     * derived from the URI if you provide a VM instance or network URI.
-     * The following are two cases where you must provide the project ID:
-     * 1. Only the IP address is specified, and the IP address is within
-     *    a GCP project. 2. When you are using Shared VPC and the IP address
-     *    that you provide is from the service project. In this case, the
-     *    network that the IP address resides in is defined in the host
-     *    project.
+     * @return Project ID where the endpoint is located.
+     * The project ID can be derived from the URI if you provide a endpoint or
+     * network URI.
+     * The following are two cases where you may need to provide the project ID:
+     * 1. Only the IP address is specified, and the IP address is within a Google
+     *    Cloud project.
+     * 2. When you are using Shared VPC and the IP address that you provide is
+     *    from the service project. In this case, the network that the IP address
+     *    resides in is defined in the host project.
      * 
      * ***
      * 
@@ -115,14 +179,50 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.projectId);
     }
 
+    /**
+     * A Redis Cluster URI.
+     * 
+     */
+    @Import(name="redisCluster")
+    private @Nullable Output<String> redisCluster;
+
+    /**
+     * @return A Redis Cluster URI.
+     * 
+     */
+    public Optional<Output<String>> redisCluster() {
+        return Optional.ofNullable(this.redisCluster);
+    }
+
+    /**
+     * A Redis Instance URI.
+     * 
+     */
+    @Import(name="redisInstance")
+    private @Nullable Output<String> redisInstance;
+
+    /**
+     * @return A Redis Instance URI.
+     * 
+     */
+    public Optional<Output<String>> redisInstance() {
+        return Optional.ofNullable(this.redisInstance);
+    }
+
     private ConnectivityTestDestinationArgs() {}
 
     private ConnectivityTestDestinationArgs(ConnectivityTestDestinationArgs $) {
+        this.cloudSqlInstance = $.cloudSqlInstance;
+        this.forwardingRule = $.forwardingRule;
+        this.fqdn = $.fqdn;
+        this.gkeMasterCluster = $.gkeMasterCluster;
         this.instance = $.instance;
         this.ipAddress = $.ipAddress;
         this.network = $.network;
         this.port = $.port;
         this.projectId = $.projectId;
+        this.redisCluster = $.redisCluster;
+        this.redisInstance = $.redisInstance;
     }
 
     public static Builder builder() {
@@ -141,6 +241,96 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
 
         public Builder(ConnectivityTestDestinationArgs defaults) {
             $ = new ConnectivityTestDestinationArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param cloudSqlInstance A Cloud SQL instance URI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudSqlInstance(@Nullable Output<String> cloudSqlInstance) {
+            $.cloudSqlInstance = cloudSqlInstance;
+            return this;
+        }
+
+        /**
+         * @param cloudSqlInstance A Cloud SQL instance URI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudSqlInstance(String cloudSqlInstance) {
+            return cloudSqlInstance(Output.of(cloudSqlInstance));
+        }
+
+        /**
+         * @param forwardingRule Forwarding rule URI. Forwarding rules are frontends for load balancers,
+         * PSC endpoints, and Protocol Forwarding.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forwardingRule(@Nullable Output<String> forwardingRule) {
+            $.forwardingRule = forwardingRule;
+            return this;
+        }
+
+        /**
+         * @param forwardingRule Forwarding rule URI. Forwarding rules are frontends for load balancers,
+         * PSC endpoints, and Protocol Forwarding.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forwardingRule(String forwardingRule) {
+            return forwardingRule(Output.of(forwardingRule));
+        }
+
+        /**
+         * @param fqdn A DNS endpoint of Google Kubernetes Engine cluster control plane.
+         * Requires gke_master_cluster to be set, can&#39;t be used simultaneoulsly with
+         * ip_address or network. Applicable only to destination endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fqdn(@Nullable Output<String> fqdn) {
+            $.fqdn = fqdn;
+            return this;
+        }
+
+        /**
+         * @param fqdn A DNS endpoint of Google Kubernetes Engine cluster control plane.
+         * Requires gke_master_cluster to be set, can&#39;t be used simultaneoulsly with
+         * ip_address or network. Applicable only to destination endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fqdn(String fqdn) {
+            return fqdn(Output.of(fqdn));
+        }
+
+        /**
+         * @param gkeMasterCluster A cluster URI for Google Kubernetes Engine cluster control plane.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gkeMasterCluster(@Nullable Output<String> gkeMasterCluster) {
+            $.gkeMasterCluster = gkeMasterCluster;
+            return this;
+        }
+
+        /**
+         * @param gkeMasterCluster A cluster URI for Google Kubernetes Engine cluster control plane.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gkeMasterCluster(String gkeMasterCluster) {
+            return gkeMasterCluster(Output.of(gkeMasterCluster));
         }
 
         /**
@@ -165,9 +355,7 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ipAddress The IP address of the endpoint, which can be an external or
-         * internal IP. An IPv6 address is only allowed when the test&#39;s
-         * destination is a global load balancer VIP.
+         * @param ipAddress The IP address of the endpoint, which can be an external or internal IP.
          * 
          * @return builder
          * 
@@ -178,9 +366,7 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ipAddress The IP address of the endpoint, which can be an external or
-         * internal IP. An IPv6 address is only allowed when the test&#39;s
-         * destination is a global load balancer VIP.
+         * @param ipAddress The IP address of the endpoint, which can be an external or internal IP.
          * 
          * @return builder
          * 
@@ -190,7 +376,7 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param network A Compute Engine network URI.
+         * @param network A VPC network URI.
          * 
          * @return builder
          * 
@@ -201,7 +387,7 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param network A Compute Engine network URI.
+         * @param network A VPC network URI.
          * 
          * @return builder
          * 
@@ -211,8 +397,8 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param port The IP protocol port of the endpoint. Only applicable when
-         * protocol is TCP or UDP.
+         * @param port The IP protocol port of the endpoint. Only applicable when protocol is
+         * TCP or UDP.
          * 
          * @return builder
          * 
@@ -223,8 +409,8 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param port The IP protocol port of the endpoint. Only applicable when
-         * protocol is TCP or UDP.
+         * @param port The IP protocol port of the endpoint. Only applicable when protocol is
+         * TCP or UDP.
          * 
          * @return builder
          * 
@@ -234,14 +420,15 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param projectId Project ID where the endpoint is located. The Project ID can be
-         * derived from the URI if you provide a VM instance or network URI.
-         * The following are two cases where you must provide the project ID:
-         * 1. Only the IP address is specified, and the IP address is within
-         *    a GCP project. 2. When you are using Shared VPC and the IP address
-         *    that you provide is from the service project. In this case, the
-         *    network that the IP address resides in is defined in the host
-         *    project.
+         * @param projectId Project ID where the endpoint is located.
+         * The project ID can be derived from the URI if you provide a endpoint or
+         * network URI.
+         * The following are two cases where you may need to provide the project ID:
+         * 1. Only the IP address is specified, and the IP address is within a Google
+         *    Cloud project.
+         * 2. When you are using Shared VPC and the IP address that you provide is
+         *    from the service project. In this case, the network that the IP address
+         *    resides in is defined in the host project.
          * 
          * ***
          * 
@@ -254,14 +441,15 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param projectId Project ID where the endpoint is located. The Project ID can be
-         * derived from the URI if you provide a VM instance or network URI.
-         * The following are two cases where you must provide the project ID:
-         * 1. Only the IP address is specified, and the IP address is within
-         *    a GCP project. 2. When you are using Shared VPC and the IP address
-         *    that you provide is from the service project. In this case, the
-         *    network that the IP address resides in is defined in the host
-         *    project.
+         * @param projectId Project ID where the endpoint is located.
+         * The project ID can be derived from the URI if you provide a endpoint or
+         * network URI.
+         * The following are two cases where you may need to provide the project ID:
+         * 1. Only the IP address is specified, and the IP address is within a Google
+         *    Cloud project.
+         * 2. When you are using Shared VPC and the IP address that you provide is
+         *    from the service project. In this case, the network that the IP address
+         *    resides in is defined in the host project.
          * 
          * ***
          * 
@@ -270,6 +458,48 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
          */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
+        }
+
+        /**
+         * @param redisCluster A Redis Cluster URI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redisCluster(@Nullable Output<String> redisCluster) {
+            $.redisCluster = redisCluster;
+            return this;
+        }
+
+        /**
+         * @param redisCluster A Redis Cluster URI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redisCluster(String redisCluster) {
+            return redisCluster(Output.of(redisCluster));
+        }
+
+        /**
+         * @param redisInstance A Redis Instance URI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redisInstance(@Nullable Output<String> redisInstance) {
+            $.redisInstance = redisInstance;
+            return this;
+        }
+
+        /**
+         * @param redisInstance A Redis Instance URI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redisInstance(String redisInstance) {
+            return redisInstance(Output.of(redisInstance));
         }
 
         public ConnectivityTestDestinationArgs build() {

@@ -25,6 +25,7 @@ import com.pulumi.gcp.container.outputs.GetClusterNodeConfigSecondaryBootDisk;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigShieldedInstanceConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigSoleTenantConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigTaint;
+import com.pulumi.gcp.container.outputs.GetClusterNodeConfigWindowsNodeConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigWorkloadMetadataConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -245,6 +246,11 @@ public final class GetClusterNodeConfig {
      * 
      */
     private List<GetClusterNodeConfigTaint> taints;
+    /**
+     * @return Parameters that can be configured on Windows nodes.
+     * 
+     */
+    private List<GetClusterNodeConfigWindowsNodeConfig> windowsNodeConfigs;
     /**
      * @return The workload metadata configuration for this node.
      * 
@@ -547,6 +553,13 @@ public final class GetClusterNodeConfig {
         return this.taints;
     }
     /**
+     * @return Parameters that can be configured on Windows nodes.
+     * 
+     */
+    public List<GetClusterNodeConfigWindowsNodeConfig> windowsNodeConfigs() {
+        return this.windowsNodeConfigs;
+    }
+    /**
      * @return The workload metadata configuration for this node.
      * 
      */
@@ -605,6 +618,7 @@ public final class GetClusterNodeConfig {
         private List<String> storagePools;
         private List<String> tags;
         private List<GetClusterNodeConfigTaint> taints;
+        private List<GetClusterNodeConfigWindowsNodeConfig> windowsNodeConfigs;
         private List<GetClusterNodeConfigWorkloadMetadataConfig> workloadMetadataConfigs;
         public Builder() {}
         public Builder(GetClusterNodeConfig defaults) {
@@ -651,6 +665,7 @@ public final class GetClusterNodeConfig {
     	      this.storagePools = defaults.storagePools;
     	      this.tags = defaults.tags;
     	      this.taints = defaults.taints;
+    	      this.windowsNodeConfigs = defaults.windowsNodeConfigs;
     	      this.workloadMetadataConfigs = defaults.workloadMetadataConfigs;
         }
 
@@ -1060,6 +1075,17 @@ public final class GetClusterNodeConfig {
             return taints(List.of(taints));
         }
         @CustomType.Setter
+        public Builder windowsNodeConfigs(List<GetClusterNodeConfigWindowsNodeConfig> windowsNodeConfigs) {
+            if (windowsNodeConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfig", "windowsNodeConfigs");
+            }
+            this.windowsNodeConfigs = windowsNodeConfigs;
+            return this;
+        }
+        public Builder windowsNodeConfigs(GetClusterNodeConfigWindowsNodeConfig... windowsNodeConfigs) {
+            return windowsNodeConfigs(List.of(windowsNodeConfigs));
+        }
+        @CustomType.Setter
         public Builder workloadMetadataConfigs(List<GetClusterNodeConfigWorkloadMetadataConfig> workloadMetadataConfigs) {
             if (workloadMetadataConfigs == null) {
               throw new MissingRequiredPropertyException("GetClusterNodeConfig", "workloadMetadataConfigs");
@@ -1114,6 +1140,7 @@ public final class GetClusterNodeConfig {
             _resultValue.storagePools = storagePools;
             _resultValue.tags = tags;
             _resultValue.taints = taints;
+            _resultValue.windowsNodeConfigs = windowsNodeConfigs;
             _resultValue.workloadMetadataConfigs = workloadMetadataConfigs;
             return _resultValue;
         }

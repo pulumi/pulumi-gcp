@@ -438,6 +438,9 @@ type Cluster struct {
 	NotificationConfig ClusterNotificationConfigOutput `pulumi:"notificationConfig"`
 	Operation          pulumi.StringOutput             `pulumi:"operation"`
 	// Configuration for the
+	// Structure is documented below.
+	PodAutoscaling ClusterPodAutoscalingOutput `pulumi:"podAutoscaling"`
+	// Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig ClusterPodSecurityPolicyConfigPtrOutput `pulumi:"podSecurityPolicyConfig"`
@@ -783,6 +786,9 @@ type clusterState struct {
 	NotificationConfig *ClusterNotificationConfig `pulumi:"notificationConfig"`
 	Operation          *string                    `pulumi:"operation"`
 	// Configuration for the
+	// Structure is documented below.
+	PodAutoscaling *ClusterPodAutoscaling `pulumi:"podAutoscaling"`
+	// Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig *ClusterPodSecurityPolicyConfig `pulumi:"podSecurityPolicyConfig"`
@@ -1094,6 +1100,9 @@ type ClusterState struct {
 	NotificationConfig ClusterNotificationConfigPtrInput
 	Operation          pulumi.StringPtrInput
 	// Configuration for the
+	// Structure is documented below.
+	PodAutoscaling ClusterPodAutoscalingPtrInput
+	// Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig ClusterPodSecurityPolicyConfigPtrInput
@@ -1398,6 +1407,9 @@ type clusterArgs struct {
 	// Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
 	NotificationConfig *ClusterNotificationConfig `pulumi:"notificationConfig"`
 	// Configuration for the
+	// Structure is documented below.
+	PodAutoscaling *ClusterPodAutoscaling `pulumi:"podAutoscaling"`
+	// Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig *ClusterPodSecurityPolicyConfig `pulumi:"podSecurityPolicyConfig"`
@@ -1685,6 +1697,9 @@ type ClusterArgs struct {
 	NodeVersion pulumi.StringPtrInput
 	// Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
 	NotificationConfig ClusterNotificationConfigPtrInput
+	// Configuration for the
+	// Structure is documented below.
+	PodAutoscaling ClusterPodAutoscalingPtrInput
 	// Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
@@ -2247,6 +2262,12 @@ func (o ClusterOutput) NotificationConfig() ClusterNotificationConfigOutput {
 
 func (o ClusterOutput) Operation() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Operation }).(pulumi.StringOutput)
+}
+
+// Configuration for the
+// Structure is documented below.
+func (o ClusterOutput) PodAutoscaling() ClusterPodAutoscalingOutput {
+	return o.ApplyT(func(v *Cluster) ClusterPodAutoscalingOutput { return v.PodAutoscaling }).(ClusterPodAutoscalingOutput)
 }
 
 // Configuration for the

@@ -17,6 +17,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A route policy created in a router
+ * 
+ * To get more information about RouterRoutePolicy, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
+ * * How-to Guides
+ *     * [Google Cloud Router](https://cloud.google.com/router/docs/)
+ * 
  * ## Example Usage
  * 
  * ### Router Route Policy Export

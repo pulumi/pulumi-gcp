@@ -334,6 +334,12 @@ namespace Pulumi.Gcp.Container.Inputs
         }
 
         /// <summary>
+        /// Parameters that can be configured on Windows nodes.
+        /// </summary>
+        [Input("windowsNodeConfig")]
+        public Input<Inputs.NodePoolNodeConfigWindowsNodeConfigArgs>? WindowsNodeConfig { get; set; }
+
+        /// <summary>
         /// The workload metadata configuration for this node.
         /// </summary>
         [Input("workloadMetadataConfig")]

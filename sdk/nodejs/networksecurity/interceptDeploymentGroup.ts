@@ -120,6 +120,11 @@ export class InterceptDeploymentGroup extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
+     * The list of locations where the deployment group is present.
+     * Structure is documented below.
+     */
+    public /*out*/ readonly locations!: pulumi.Output<outputs.networksecurity.InterceptDeploymentGroupLocation[]>;
+    /**
      * (Output)
      * The connected endpoint group's resource name, for example:
      * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
@@ -150,13 +155,12 @@ export class InterceptDeploymentGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
-     * The current state of the deployment group.
-     * See https://google.aip.dev/216.
+     * (Output)
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
-     * CREATING
-     * DELETING
+     * OUT_OF_SYNC
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -185,6 +189,7 @@ export class InterceptDeploymentGroup extends pulumi.CustomResource {
             resourceInputs["interceptDeploymentGroupId"] = state ? state.interceptDeploymentGroupId : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["locations"] = state ? state.locations : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -212,6 +217,7 @@ export class InterceptDeploymentGroup extends pulumi.CustomResource {
             resourceInputs["connectedEndpointGroups"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["locations"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
@@ -267,6 +273,11 @@ export interface InterceptDeploymentGroupState {
      */
     location?: pulumi.Input<string>;
     /**
+     * The list of locations where the deployment group is present.
+     * Structure is documented below.
+     */
+    locations?: pulumi.Input<pulumi.Input<inputs.networksecurity.InterceptDeploymentGroupLocation>[]>;
+    /**
      * (Output)
      * The connected endpoint group's resource name, for example:
      * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
@@ -297,13 +308,12 @@ export interface InterceptDeploymentGroupState {
      */
     reconciling?: pulumi.Input<boolean>;
     /**
-     * The current state of the deployment group.
-     * See https://google.aip.dev/216.
+     * (Output)
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
-     * CREATING
-     * DELETING
+     * OUT_OF_SYNC
      */
     state?: pulumi.Input<string>;
     /**

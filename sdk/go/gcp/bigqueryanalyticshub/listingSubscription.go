@@ -20,6 +20,8 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
 //
+// > **Note:** When importing the resource with `pulumi import`, provide the destination project and location
+// in the format projects/{{destination_project}}/locations/{{destination_location}}/subscriptions/{{subscription_id}}
 // ## Example Usage
 //
 // ### Bigquery Analyticshub Listing Subscription Basic
@@ -138,7 +140,7 @@ type ListingSubscription struct {
 	LinkedResources ListingSubscriptionLinkedResourceArrayOutput `pulumi:"linkedResources"`
 	// The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	ListingId pulumi.StringOutput `pulumi:"listingId"`
-	// The name of the location for this subscription.
+	// The name of the location of the data exchange. Distinct from the location of the destination data set.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the subscription. e.g. "projects/myproject/locations/US/subscriptions/123"
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -217,7 +219,7 @@ type listingSubscriptionState struct {
 	LinkedResources []ListingSubscriptionLinkedResource `pulumi:"linkedResources"`
 	// The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	ListingId *string `pulumi:"listingId"`
-	// The name of the location for this subscription.
+	// The name of the location of the data exchange. Distinct from the location of the destination data set.
 	Location *string `pulumi:"location"`
 	// The resource name of the subscription. e.g. "projects/myproject/locations/US/subscriptions/123"
 	Name *string `pulumi:"name"`
@@ -255,7 +257,7 @@ type ListingSubscriptionState struct {
 	LinkedResources ListingSubscriptionLinkedResourceArrayInput
 	// The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	ListingId pulumi.StringPtrInput
-	// The name of the location for this subscription.
+	// The name of the location of the data exchange. Distinct from the location of the destination data set.
 	Location pulumi.StringPtrInput
 	// The resource name of the subscription. e.g. "projects/myproject/locations/US/subscriptions/123"
 	Name pulumi.StringPtrInput
@@ -286,7 +288,7 @@ type listingSubscriptionArgs struct {
 	DestinationDataset ListingSubscriptionDestinationDataset `pulumi:"destinationDataset"`
 	// The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	ListingId string `pulumi:"listingId"`
-	// The name of the location for this subscription.
+	// The name of the location of the data exchange. Distinct from the location of the destination data set.
 	Location string  `pulumi:"location"`
 	Project  *string `pulumi:"project"`
 }
@@ -300,7 +302,7 @@ type ListingSubscriptionArgs struct {
 	DestinationDataset ListingSubscriptionDestinationDatasetInput
 	// The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	ListingId pulumi.StringInput
-	// The name of the location for this subscription.
+	// The name of the location of the data exchange. Distinct from the location of the destination data set.
 	Location pulumi.StringInput
 	Project  pulumi.StringPtrInput
 }
@@ -433,7 +435,7 @@ func (o ListingSubscriptionOutput) ListingId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ListingSubscription) pulumi.StringOutput { return v.ListingId }).(pulumi.StringOutput)
 }
 
-// The name of the location for this subscription.
+// The name of the location of the data exchange. Distinct from the location of the destination data set.
 func (o ListingSubscriptionOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ListingSubscription) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

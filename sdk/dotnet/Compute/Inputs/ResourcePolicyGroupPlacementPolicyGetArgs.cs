@@ -30,6 +30,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? Collocation { get; set; }
 
         /// <summary>
+        /// Specifies the shape of the GPU slice, in slice based GPU families eg. A4X.
+        /// </summary>
+        [Input("gpuTopology")]
+        public Input<string>? GpuTopology { get; set; }
+
+        /// <summary>
         /// Specifies the number of max logical switches.
         /// </summary>
         [Input("maxDistance")]

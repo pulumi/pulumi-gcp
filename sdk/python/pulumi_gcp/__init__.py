@@ -172,6 +172,8 @@ if typing.TYPE_CHECKING:
     logging = __logging
     import pulumi_gcp.looker as __looker
     looker = __looker
+    import pulumi_gcp.lustre as __lustre
+    lustre = __lustre
     import pulumi_gcp.managedkafka as __managedkafka
     managedkafka = __managedkafka
     import pulumi_gcp.memcache as __memcache
@@ -350,6 +352,7 @@ else:
     kms = _utilities.lazy_import('pulumi_gcp.kms')
     logging = _utilities.lazy_import('pulumi_gcp.logging')
     looker = _utilities.lazy_import('pulumi_gcp.looker')
+    lustre = _utilities.lazy_import('pulumi_gcp.lustre')
     managedkafka = _utilities.lazy_import('pulumi_gcp.managedkafka')
     memcache = _utilities.lazy_import('pulumi_gcp.memcache')
     memorystore = _utilities.lazy_import('pulumi_gcp.memorystore')
@@ -6588,6 +6591,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "lustre/instance",
+  "fqn": "pulumi_gcp.lustre",
+  "classes": {
+   "gcp:lustre/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "managedkafka/cluster",
   "fqn": "pulumi_gcp.managedkafka",
   "classes": {
@@ -7424,6 +7435,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.osconfig",
   "classes": {
    "gcp:osconfig/patchDeployment:PatchDeployment": "PatchDeployment"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "osconfig/v2PolicyOrchestrator",
+  "fqn": "pulumi_gcp.osconfig",
+  "classes": {
+   "gcp:osconfig/v2PolicyOrchestrator:V2PolicyOrchestrator": "V2PolicyOrchestrator"
   }
  },
  {
@@ -8624,6 +8643,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.storage",
   "classes": {
    "gcp:storage/bucketObject:BucketObject": "BucketObject"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "storage/controlProjectIntelligenceConfig",
+  "fqn": "pulumi_gcp.storage",
+  "classes": {
+   "gcp:storage/controlProjectIntelligenceConfig:ControlProjectIntelligenceConfig": "ControlProjectIntelligenceConfig"
   }
  },
  {

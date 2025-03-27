@@ -188,7 +188,8 @@ namespace Pulumi.Gcp.Compute
         /// bundle, not the speed of the entire bundle. Can take one of the following values:
         /// - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
         /// - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
-        /// Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`.
+        /// - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
+        /// Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
         /// </summary>
         [Output("linkType")]
         public Output<string> LinkType { get; private set; } = null!;
@@ -425,7 +426,8 @@ namespace Pulumi.Gcp.Compute
         /// bundle, not the speed of the entire bundle. Can take one of the following values:
         /// - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
         /// - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
-        /// Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`.
+        /// - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
+        /// Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
         /// </summary>
         [Input("linkType", required: true)]
         public Input<string> LinkType { get; set; } = null!;
@@ -672,7 +674,8 @@ namespace Pulumi.Gcp.Compute
         /// bundle, not the speed of the entire bundle. Can take one of the following values:
         /// - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
         /// - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
-        /// Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`.
+        /// - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
+        /// Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
         /// </summary>
         [Input("linkType")]
         public Input<string>? LinkType { get; set; }

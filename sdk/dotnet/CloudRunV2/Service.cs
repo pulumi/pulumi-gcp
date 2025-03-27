@@ -1069,8 +1069,8 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<string> Ingress { get; private set; } = null!;
 
         /// <summary>
-        /// Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
-        /// only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+        /// Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
+        /// https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
         /// </summary>
         [Output("invokerIamDisabled")]
         public Output<bool?> InvokerIamDisabled { get; private set; } = null!;
@@ -1344,8 +1344,8 @@ namespace Pulumi.Gcp.CloudRunV2
         public Input<string>? Ingress { get; set; }
 
         /// <summary>
-        /// Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
-        /// only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+        /// Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
+        /// https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
         /// </summary>
         [Input("invokerIamDisabled")]
         public Input<bool>? InvokerIamDisabled { get; set; }
@@ -1582,8 +1582,8 @@ namespace Pulumi.Gcp.CloudRunV2
         public Input<string>? Ingress { get; set; }
 
         /// <summary>
-        /// Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
-        /// only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+        /// Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
+        /// https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
         /// </summary>
         [Input("invokerIamDisabled")]
         public Input<bool>? InvokerIamDisabled { get; set; }

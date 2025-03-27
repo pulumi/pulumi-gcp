@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Chronicle
 {
     /// <summary>
+    /// A DataAccessLabel is a label on events to define user access to data.
+    /// 
+    /// To get more information about DataAccessLabel, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1alpha/projects.locations.instances.dataAccessLabels)
+    /// * How-to Guides
+    ///     * [Introduction to data RBAC](https://cloud.google.com/chronicle/docs/onboard/onboard-datarbac)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Chronicle Dataaccesslabel Basic

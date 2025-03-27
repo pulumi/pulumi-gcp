@@ -140,6 +140,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly kmsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly loggingCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly lookerCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly lustreCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly managedKafkaCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly memcacheCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly memorystoreCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -155,6 +156,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly oracleDatabaseCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly orgPolicyCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly osConfigCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly osConfigV2CustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly osLoginCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly parallelstoreCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly parameterManagerCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -191,6 +193,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly sourceRepoCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly spannerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly sqlCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly storageControlCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly storageCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly storageInsightsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly storageTransferCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -337,6 +340,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["kmsCustomEndpoint"] = args ? args.kmsCustomEndpoint : undefined;
             resourceInputs["loggingCustomEndpoint"] = args ? args.loggingCustomEndpoint : undefined;
             resourceInputs["lookerCustomEndpoint"] = args ? args.lookerCustomEndpoint : undefined;
+            resourceInputs["lustreCustomEndpoint"] = args ? args.lustreCustomEndpoint : undefined;
             resourceInputs["managedKafkaCustomEndpoint"] = args ? args.managedKafkaCustomEndpoint : undefined;
             resourceInputs["memcacheCustomEndpoint"] = args ? args.memcacheCustomEndpoint : undefined;
             resourceInputs["memorystoreCustomEndpoint"] = args ? args.memorystoreCustomEndpoint : undefined;
@@ -352,6 +356,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["oracleDatabaseCustomEndpoint"] = args ? args.oracleDatabaseCustomEndpoint : undefined;
             resourceInputs["orgPolicyCustomEndpoint"] = args ? args.orgPolicyCustomEndpoint : undefined;
             resourceInputs["osConfigCustomEndpoint"] = args ? args.osConfigCustomEndpoint : undefined;
+            resourceInputs["osConfigV2CustomEndpoint"] = args ? args.osConfigV2CustomEndpoint : undefined;
             resourceInputs["osLoginCustomEndpoint"] = args ? args.osLoginCustomEndpoint : undefined;
             resourceInputs["parallelstoreCustomEndpoint"] = args ? args.parallelstoreCustomEndpoint : undefined;
             resourceInputs["parameterManagerCustomEndpoint"] = args ? args.parameterManagerCustomEndpoint : undefined;
@@ -389,6 +394,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["sourceRepoCustomEndpoint"] = args ? args.sourceRepoCustomEndpoint : undefined;
             resourceInputs["spannerCustomEndpoint"] = args ? args.spannerCustomEndpoint : undefined;
             resourceInputs["sqlCustomEndpoint"] = args ? args.sqlCustomEndpoint : undefined;
+            resourceInputs["storageControlCustomEndpoint"] = args ? args.storageControlCustomEndpoint : undefined;
             resourceInputs["storageCustomEndpoint"] = args ? args.storageCustomEndpoint : undefined;
             resourceInputs["storageInsightsCustomEndpoint"] = args ? args.storageInsightsCustomEndpoint : undefined;
             resourceInputs["storageTransferCustomEndpoint"] = args ? args.storageTransferCustomEndpoint : undefined;
@@ -536,6 +542,7 @@ export interface ProviderArgs {
     kmsCustomEndpoint?: pulumi.Input<string>;
     loggingCustomEndpoint?: pulumi.Input<string>;
     lookerCustomEndpoint?: pulumi.Input<string>;
+    lustreCustomEndpoint?: pulumi.Input<string>;
     managedKafkaCustomEndpoint?: pulumi.Input<string>;
     memcacheCustomEndpoint?: pulumi.Input<string>;
     memorystoreCustomEndpoint?: pulumi.Input<string>;
@@ -551,6 +558,7 @@ export interface ProviderArgs {
     oracleDatabaseCustomEndpoint?: pulumi.Input<string>;
     orgPolicyCustomEndpoint?: pulumi.Input<string>;
     osConfigCustomEndpoint?: pulumi.Input<string>;
+    osConfigV2CustomEndpoint?: pulumi.Input<string>;
     osLoginCustomEndpoint?: pulumi.Input<string>;
     parallelstoreCustomEndpoint?: pulumi.Input<string>;
     parameterManagerCustomEndpoint?: pulumi.Input<string>;
@@ -588,6 +596,7 @@ export interface ProviderArgs {
     sourceRepoCustomEndpoint?: pulumi.Input<string>;
     spannerCustomEndpoint?: pulumi.Input<string>;
     sqlCustomEndpoint?: pulumi.Input<string>;
+    storageControlCustomEndpoint?: pulumi.Input<string>;
     storageCustomEndpoint?: pulumi.Input<string>;
     storageInsightsCustomEndpoint?: pulumi.Input<string>;
     storageTransferCustomEndpoint?: pulumi.Input<string>;

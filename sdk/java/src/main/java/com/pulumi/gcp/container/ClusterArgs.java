@@ -34,6 +34,7 @@ import com.pulumi.gcp.container.inputs.ClusterNodePoolArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolAutoConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolDefaultsArgs;
 import com.pulumi.gcp.container.inputs.ClusterNotificationConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterPodAutoscalingArgs;
 import com.pulumi.gcp.container.inputs.ClusterPodSecurityPolicyConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterPrivateClusterConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterProtectConfigArgs;
@@ -1106,6 +1107,23 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Configuration for the
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="podAutoscaling")
+    private @Nullable Output<ClusterPodAutoscalingArgs> podAutoscaling;
+
+    /**
+     * @return Configuration for the
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterPodAutoscalingArgs>> podAutoscaling() {
+        return Optional.ofNullable(this.podAutoscaling);
+    }
+
+    /**
+     * Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      * 
@@ -1484,6 +1502,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.nodePools = $.nodePools;
         this.nodeVersion = $.nodeVersion;
         this.notificationConfig = $.notificationConfig;
+        this.podAutoscaling = $.podAutoscaling;
         this.podSecurityPolicyConfig = $.podSecurityPolicyConfig;
         this.privateClusterConfig = $.privateClusterConfig;
         this.privateIpv6GoogleAccess = $.privateIpv6GoogleAccess;
@@ -2924,6 +2943,29 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder notificationConfig(ClusterNotificationConfigArgs notificationConfig) {
             return notificationConfig(Output.of(notificationConfig));
+        }
+
+        /**
+         * @param podAutoscaling Configuration for the
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder podAutoscaling(@Nullable Output<ClusterPodAutoscalingArgs> podAutoscaling) {
+            $.podAutoscaling = podAutoscaling;
+            return this;
+        }
+
+        /**
+         * @param podAutoscaling Configuration for the
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder podAutoscaling(ClusterPodAutoscalingArgs podAutoscaling) {
+            return podAutoscaling(Output.of(podAutoscaling));
         }
 
         /**

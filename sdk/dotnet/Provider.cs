@@ -357,6 +357,9 @@ namespace Pulumi.Gcp
         [Output("lookerCustomEndpoint")]
         public Output<string?> LookerCustomEndpoint { get; private set; } = null!;
 
+        [Output("lustreCustomEndpoint")]
+        public Output<string?> LustreCustomEndpoint { get; private set; } = null!;
+
         [Output("managedKafkaCustomEndpoint")]
         public Output<string?> ManagedKafkaCustomEndpoint { get; private set; } = null!;
 
@@ -401,6 +404,9 @@ namespace Pulumi.Gcp
 
         [Output("osConfigCustomEndpoint")]
         public Output<string?> OsConfigCustomEndpoint { get; private set; } = null!;
+
+        [Output("osConfigV2CustomEndpoint")]
+        public Output<string?> OsConfigV2CustomEndpoint { get; private set; } = null!;
 
         [Output("osLoginCustomEndpoint")]
         public Output<string?> OsLoginCustomEndpoint { get; private set; } = null!;
@@ -509,6 +515,9 @@ namespace Pulumi.Gcp
 
         [Output("sqlCustomEndpoint")]
         public Output<string?> SqlCustomEndpoint { get; private set; } = null!;
+
+        [Output("storageControlCustomEndpoint")]
+        public Output<string?> StorageControlCustomEndpoint { get; private set; } = null!;
 
         [Output("storageCustomEndpoint")]
         public Output<string?> StorageCustomEndpoint { get; private set; } = null!;
@@ -963,6 +972,9 @@ namespace Pulumi.Gcp
         [Input("lookerCustomEndpoint")]
         public Input<string>? LookerCustomEndpoint { get; set; }
 
+        [Input("lustreCustomEndpoint")]
+        public Input<string>? LustreCustomEndpoint { get; set; }
+
         [Input("managedKafkaCustomEndpoint")]
         public Input<string>? ManagedKafkaCustomEndpoint { get; set; }
 
@@ -1007,6 +1019,9 @@ namespace Pulumi.Gcp
 
         [Input("osConfigCustomEndpoint")]
         public Input<string>? OsConfigCustomEndpoint { get; set; }
+
+        [Input("osConfigV2CustomEndpoint")]
+        public Input<string>? OsConfigV2CustomEndpoint { get; set; }
 
         [Input("osLoginCustomEndpoint")]
         public Input<string>? OsLoginCustomEndpoint { get; set; }
@@ -1123,6 +1138,9 @@ namespace Pulumi.Gcp
 
         [Input("sqlCustomEndpoint")]
         public Input<string>? SqlCustomEndpoint { get; set; }
+
+        [Input("storageControlCustomEndpoint")]
+        public Input<string>? StorageControlCustomEndpoint { get; set; }
 
         [Input("storageCustomEndpoint")]
         public Input<string>? StorageCustomEndpoint { get; set; }

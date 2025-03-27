@@ -6,9 +6,11 @@ package com.pulumi.gcp.bigquery.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.bigquery.inputs.ReservationAutoscaleArgs;
+import com.pulumi.gcp.bigquery.inputs.ReservationReplicationStatusArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -121,6 +123,42 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The location where the reservation was originally created. This is set only during the
+     * failover reservation&#39;s creation. All billing charges for the failover reservation will be
+     * applied to this location.
+     * 
+     */
+    @Import(name="originalPrimaryLocation")
+    private @Nullable Output<String> originalPrimaryLocation;
+
+    /**
+     * @return The location where the reservation was originally created. This is set only during the
+     * failover reservation&#39;s creation. All billing charges for the failover reservation will be
+     * applied to this location.
+     * 
+     */
+    public Optional<Output<String>> originalPrimaryLocation() {
+        return Optional.ofNullable(this.originalPrimaryLocation);
+    }
+
+    /**
+     * The current location of the reservation&#39;s primary replica. This field is only set for
+     * reservations using the managed disaster recovery feature.
+     * 
+     */
+    @Import(name="primaryLocation")
+    private @Nullable Output<String> primaryLocation;
+
+    /**
+     * @return The current location of the reservation&#39;s primary replica. This field is only set for
+     * reservations using the managed disaster recovery feature.
+     * 
+     */
+    public Optional<Output<String>> primaryLocation() {
+        return Optional.ofNullable(this.primaryLocation);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -135,6 +173,54 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
+    }
+
+    /**
+     * The Disaster Recovery(DR) replication status of the reservation. This is only available for
+     * the primary replicas of DR/failover reservations and provides information about the both the
+     * staleness of the secondary and the last error encountered while trying to replicate changes
+     * from the primary to the secondary. If this field is blank, it means that the reservation is
+     * either not a DR reservation or the reservation is a DR secondary or that any replication
+     * operations on the reservation have succeeded.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="replicationStatuses")
+    private @Nullable Output<List<ReservationReplicationStatusArgs>> replicationStatuses;
+
+    /**
+     * @return The Disaster Recovery(DR) replication status of the reservation. This is only available for
+     * the primary replicas of DR/failover reservations and provides information about the both the
+     * staleness of the secondary and the last error encountered while trying to replicate changes
+     * from the primary to the secondary. If this field is blank, it means that the reservation is
+     * either not a DR reservation or the reservation is a DR secondary or that any replication
+     * operations on the reservation have succeeded.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ReservationReplicationStatusArgs>>> replicationStatuses() {
+        return Optional.ofNullable(this.replicationStatuses);
+    }
+
+    /**
+     * The current location of the reservation&#39;s secondary replica. This field is only set for
+     * reservations using the managed disaster recovery feature. Users can set this in create
+     * reservation calls to create a failover reservation or in update reservation calls to convert
+     * a non-failover reservation to a failover reservation(or vice versa).
+     * 
+     */
+    @Import(name="secondaryLocation")
+    private @Nullable Output<String> secondaryLocation;
+
+    /**
+     * @return The current location of the reservation&#39;s secondary replica. This field is only set for
+     * reservations using the managed disaster recovery feature. Users can set this in create
+     * reservation calls to create a failover reservation or in update reservation calls to convert
+     * a non-failover reservation to a failover reservation(or vice versa).
+     * 
+     */
+    public Optional<Output<String>> secondaryLocation() {
+        return Optional.ofNullable(this.secondaryLocation);
     }
 
     /**
@@ -163,7 +249,11 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
         this.ignoreIdleSlots = $.ignoreIdleSlots;
         this.location = $.location;
         this.name = $.name;
+        this.originalPrimaryLocation = $.originalPrimaryLocation;
+        this.primaryLocation = $.primaryLocation;
         this.project = $.project;
+        this.replicationStatuses = $.replicationStatuses;
+        this.secondaryLocation = $.secondaryLocation;
         this.slotCapacity = $.slotCapacity;
     }
 
@@ -324,6 +414,54 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param originalPrimaryLocation The location where the reservation was originally created. This is set only during the
+         * failover reservation&#39;s creation. All billing charges for the failover reservation will be
+         * applied to this location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder originalPrimaryLocation(@Nullable Output<String> originalPrimaryLocation) {
+            $.originalPrimaryLocation = originalPrimaryLocation;
+            return this;
+        }
+
+        /**
+         * @param originalPrimaryLocation The location where the reservation was originally created. This is set only during the
+         * failover reservation&#39;s creation. All billing charges for the failover reservation will be
+         * applied to this location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder originalPrimaryLocation(String originalPrimaryLocation) {
+            return originalPrimaryLocation(Output.of(originalPrimaryLocation));
+        }
+
+        /**
+         * @param primaryLocation The current location of the reservation&#39;s primary replica. This field is only set for
+         * reservations using the managed disaster recovery feature.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryLocation(@Nullable Output<String> primaryLocation) {
+            $.primaryLocation = primaryLocation;
+            return this;
+        }
+
+        /**
+         * @param primaryLocation The current location of the reservation&#39;s primary replica. This field is only set for
+         * reservations using the managed disaster recovery feature.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryLocation(String primaryLocation) {
+            return primaryLocation(Output.of(primaryLocation));
+        }
+
+        /**
          * @param project The ID of the project in which the resource belongs.
          * If it is not provided, the provider project is used.
          * 
@@ -344,6 +482,82 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param replicationStatuses The Disaster Recovery(DR) replication status of the reservation. This is only available for
+         * the primary replicas of DR/failover reservations and provides information about the both the
+         * staleness of the secondary and the last error encountered while trying to replicate changes
+         * from the primary to the secondary. If this field is blank, it means that the reservation is
+         * either not a DR reservation or the reservation is a DR secondary or that any replication
+         * operations on the reservation have succeeded.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicationStatuses(@Nullable Output<List<ReservationReplicationStatusArgs>> replicationStatuses) {
+            $.replicationStatuses = replicationStatuses;
+            return this;
+        }
+
+        /**
+         * @param replicationStatuses The Disaster Recovery(DR) replication status of the reservation. This is only available for
+         * the primary replicas of DR/failover reservations and provides information about the both the
+         * staleness of the secondary and the last error encountered while trying to replicate changes
+         * from the primary to the secondary. If this field is blank, it means that the reservation is
+         * either not a DR reservation or the reservation is a DR secondary or that any replication
+         * operations on the reservation have succeeded.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicationStatuses(List<ReservationReplicationStatusArgs> replicationStatuses) {
+            return replicationStatuses(Output.of(replicationStatuses));
+        }
+
+        /**
+         * @param replicationStatuses The Disaster Recovery(DR) replication status of the reservation. This is only available for
+         * the primary replicas of DR/failover reservations and provides information about the both the
+         * staleness of the secondary and the last error encountered while trying to replicate changes
+         * from the primary to the secondary. If this field is blank, it means that the reservation is
+         * either not a DR reservation or the reservation is a DR secondary or that any replication
+         * operations on the reservation have succeeded.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicationStatuses(ReservationReplicationStatusArgs... replicationStatuses) {
+            return replicationStatuses(List.of(replicationStatuses));
+        }
+
+        /**
+         * @param secondaryLocation The current location of the reservation&#39;s secondary replica. This field is only set for
+         * reservations using the managed disaster recovery feature. Users can set this in create
+         * reservation calls to create a failover reservation or in update reservation calls to convert
+         * a non-failover reservation to a failover reservation(or vice versa).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryLocation(@Nullable Output<String> secondaryLocation) {
+            $.secondaryLocation = secondaryLocation;
+            return this;
+        }
+
+        /**
+         * @param secondaryLocation The current location of the reservation&#39;s secondary replica. This field is only set for
+         * reservations using the managed disaster recovery feature. Users can set this in create
+         * reservation calls to create a failover reservation or in update reservation calls to convert
+         * a non-failover reservation to a failover reservation(or vice versa).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryLocation(String secondaryLocation) {
+            return secondaryLocation(Output.of(secondaryLocation));
         }
 
         /**

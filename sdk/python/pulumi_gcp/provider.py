@@ -138,6 +138,7 @@ class ProviderArgs:
                  kms_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  logging_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  looker_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 lustre_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  managed_kafka_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  memcache_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  memorystore_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -153,6 +154,7 @@ class ProviderArgs:
                  oracle_database_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  org_policy_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 os_config_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_login_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  parallelstore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  parameter_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -190,6 +192,7 @@ class ProviderArgs:
                  source_repo_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  spanner_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  sql_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 storage_control_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  storage_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  storage_insights_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  storage_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -446,6 +449,8 @@ class ProviderArgs:
             pulumi.set(__self__, "logging_custom_endpoint", logging_custom_endpoint)
         if looker_custom_endpoint is not None:
             pulumi.set(__self__, "looker_custom_endpoint", looker_custom_endpoint)
+        if lustre_custom_endpoint is not None:
+            pulumi.set(__self__, "lustre_custom_endpoint", lustre_custom_endpoint)
         if managed_kafka_custom_endpoint is not None:
             pulumi.set(__self__, "managed_kafka_custom_endpoint", managed_kafka_custom_endpoint)
         if memcache_custom_endpoint is not None:
@@ -476,6 +481,8 @@ class ProviderArgs:
             pulumi.set(__self__, "org_policy_custom_endpoint", org_policy_custom_endpoint)
         if os_config_custom_endpoint is not None:
             pulumi.set(__self__, "os_config_custom_endpoint", os_config_custom_endpoint)
+        if os_config_v2_custom_endpoint is not None:
+            pulumi.set(__self__, "os_config_v2_custom_endpoint", os_config_v2_custom_endpoint)
         if os_login_custom_endpoint is not None:
             pulumi.set(__self__, "os_login_custom_endpoint", os_login_custom_endpoint)
         if parallelstore_custom_endpoint is not None:
@@ -554,6 +561,8 @@ class ProviderArgs:
             pulumi.set(__self__, "spanner_custom_endpoint", spanner_custom_endpoint)
         if sql_custom_endpoint is not None:
             pulumi.set(__self__, "sql_custom_endpoint", sql_custom_endpoint)
+        if storage_control_custom_endpoint is not None:
+            pulumi.set(__self__, "storage_control_custom_endpoint", storage_control_custom_endpoint)
         if storage_custom_endpoint is not None:
             pulumi.set(__self__, "storage_custom_endpoint", storage_custom_endpoint)
         if storage_insights_custom_endpoint is not None:
@@ -1654,6 +1663,15 @@ class ProviderArgs:
         pulumi.set(self, "looker_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="lustreCustomEndpoint")
+    def lustre_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "lustre_custom_endpoint")
+
+    @lustre_custom_endpoint.setter
+    def lustre_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lustre_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="managedKafkaCustomEndpoint")
     def managed_kafka_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "managed_kafka_custom_endpoint")
@@ -1787,6 +1805,15 @@ class ProviderArgs:
     @os_config_custom_endpoint.setter
     def os_config_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "os_config_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="osConfigV2CustomEndpoint")
+    def os_config_v2_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "os_config_v2_custom_endpoint")
+
+    @os_config_v2_custom_endpoint.setter
+    def os_config_v2_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "os_config_v2_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="osLoginCustomEndpoint")
@@ -2122,6 +2149,15 @@ class ProviderArgs:
         pulumi.set(self, "sql_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="storageControlCustomEndpoint")
+    def storage_control_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "storage_control_custom_endpoint")
+
+    @storage_control_custom_endpoint.setter
+    def storage_control_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_control_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="storageCustomEndpoint")
     def storage_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "storage_custom_endpoint")
@@ -2398,6 +2434,7 @@ class Provider(pulumi.ProviderResource):
                  kms_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  logging_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  looker_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 lustre_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  managed_kafka_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  memcache_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  memorystore_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2413,6 +2450,7 @@ class Provider(pulumi.ProviderResource):
                  oracle_database_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  org_policy_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 os_config_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_login_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  parallelstore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  parameter_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2450,6 +2488,7 @@ class Provider(pulumi.ProviderResource):
                  source_repo_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  spanner_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  sql_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 storage_control_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  storage_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  storage_insights_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  storage_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2622,6 +2661,7 @@ class Provider(pulumi.ProviderResource):
                  kms_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  logging_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  looker_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 lustre_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  managed_kafka_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  memcache_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  memorystore_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2637,6 +2677,7 @@ class Provider(pulumi.ProviderResource):
                  oracle_database_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  org_policy_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 os_config_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_login_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  parallelstore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  parameter_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2674,6 +2715,7 @@ class Provider(pulumi.ProviderResource):
                  source_repo_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  spanner_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  sql_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 storage_control_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  storage_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  storage_insights_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  storage_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2818,6 +2860,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["kms_custom_endpoint"] = kms_custom_endpoint
             __props__.__dict__["logging_custom_endpoint"] = logging_custom_endpoint
             __props__.__dict__["looker_custom_endpoint"] = looker_custom_endpoint
+            __props__.__dict__["lustre_custom_endpoint"] = lustre_custom_endpoint
             __props__.__dict__["managed_kafka_custom_endpoint"] = managed_kafka_custom_endpoint
             __props__.__dict__["memcache_custom_endpoint"] = memcache_custom_endpoint
             __props__.__dict__["memorystore_custom_endpoint"] = memorystore_custom_endpoint
@@ -2833,6 +2876,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["oracle_database_custom_endpoint"] = oracle_database_custom_endpoint
             __props__.__dict__["org_policy_custom_endpoint"] = org_policy_custom_endpoint
             __props__.__dict__["os_config_custom_endpoint"] = os_config_custom_endpoint
+            __props__.__dict__["os_config_v2_custom_endpoint"] = os_config_v2_custom_endpoint
             __props__.__dict__["os_login_custom_endpoint"] = os_login_custom_endpoint
             __props__.__dict__["parallelstore_custom_endpoint"] = parallelstore_custom_endpoint
             __props__.__dict__["parameter_manager_custom_endpoint"] = parameter_manager_custom_endpoint
@@ -2874,6 +2918,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["source_repo_custom_endpoint"] = source_repo_custom_endpoint
             __props__.__dict__["spanner_custom_endpoint"] = spanner_custom_endpoint
             __props__.__dict__["sql_custom_endpoint"] = sql_custom_endpoint
+            __props__.__dict__["storage_control_custom_endpoint"] = storage_control_custom_endpoint
             __props__.__dict__["storage_custom_endpoint"] = storage_custom_endpoint
             __props__.__dict__["storage_insights_custom_endpoint"] = storage_insights_custom_endpoint
             __props__.__dict__["storage_transfer_custom_endpoint"] = storage_transfer_custom_endpoint
@@ -3467,6 +3512,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "looker_custom_endpoint")
 
     @property
+    @pulumi.getter(name="lustreCustomEndpoint")
+    def lustre_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "lustre_custom_endpoint")
+
+    @property
     @pulumi.getter(name="managedKafkaCustomEndpoint")
     def managed_kafka_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "managed_kafka_custom_endpoint")
@@ -3540,6 +3590,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="osConfigCustomEndpoint")
     def os_config_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "os_config_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="osConfigV2CustomEndpoint")
+    def os_config_v2_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "os_config_v2_custom_endpoint")
 
     @property
     @pulumi.getter(name="osLoginCustomEndpoint")
@@ -3720,6 +3775,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="sqlCustomEndpoint")
     def sql_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "sql_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="storageControlCustomEndpoint")
+    def storage_control_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "storage_control_custom_endpoint")
 
     @property
     @pulumi.getter(name="storageCustomEndpoint")

@@ -100,9 +100,29 @@ type Reservation struct {
 	//
 	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The location where the reservation was originally created. This is set only during the
+	// failover reservation's creation. All billing charges for the failover reservation will be
+	// applied to this location.
+	OriginalPrimaryLocation pulumi.StringOutput `pulumi:"originalPrimaryLocation"`
+	// The current location of the reservation's primary replica. This field is only set for
+	// reservations using the managed disaster recovery feature.
+	PrimaryLocation pulumi.StringOutput `pulumi:"primaryLocation"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The Disaster Recovery(DR) replication status of the reservation. This is only available for
+	// the primary replicas of DR/failover reservations and provides information about the both the
+	// staleness of the secondary and the last error encountered while trying to replicate changes
+	// from the primary to the secondary. If this field is blank, it means that the reservation is
+	// either not a DR reservation or the reservation is a DR secondary or that any replication
+	// operations on the reservation have succeeded.
+	// Structure is documented below.
+	ReplicationStatuses ReservationReplicationStatusArrayOutput `pulumi:"replicationStatuses"`
+	// The current location of the reservation's secondary replica. This field is only set for
+	// reservations using the managed disaster recovery feature. Users can set this in create
+	// reservation calls to create a failover reservation or in update reservation calls to convert
+	// a non-failover reservation to a failover reservation(or vice versa).
+	SecondaryLocation pulumi.StringPtrOutput `pulumi:"secondaryLocation"`
 	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
 	// unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
 	SlotCapacity pulumi.IntOutput `pulumi:"slotCapacity"`
@@ -159,9 +179,29 @@ type reservationState struct {
 	//
 	// ***
 	Name *string `pulumi:"name"`
+	// The location where the reservation was originally created. This is set only during the
+	// failover reservation's creation. All billing charges for the failover reservation will be
+	// applied to this location.
+	OriginalPrimaryLocation *string `pulumi:"originalPrimaryLocation"`
+	// The current location of the reservation's primary replica. This field is only set for
+	// reservations using the managed disaster recovery feature.
+	PrimaryLocation *string `pulumi:"primaryLocation"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The Disaster Recovery(DR) replication status of the reservation. This is only available for
+	// the primary replicas of DR/failover reservations and provides information about the both the
+	// staleness of the secondary and the last error encountered while trying to replicate changes
+	// from the primary to the secondary. If this field is blank, it means that the reservation is
+	// either not a DR reservation or the reservation is a DR secondary or that any replication
+	// operations on the reservation have succeeded.
+	// Structure is documented below.
+	ReplicationStatuses []ReservationReplicationStatus `pulumi:"replicationStatuses"`
+	// The current location of the reservation's secondary replica. This field is only set for
+	// reservations using the managed disaster recovery feature. Users can set this in create
+	// reservation calls to create a failover reservation or in update reservation calls to convert
+	// a non-failover reservation to a failover reservation(or vice versa).
+	SecondaryLocation *string `pulumi:"secondaryLocation"`
 	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
 	// unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
 	SlotCapacity *int `pulumi:"slotCapacity"`
@@ -186,9 +226,29 @@ type ReservationState struct {
 	//
 	// ***
 	Name pulumi.StringPtrInput
+	// The location where the reservation was originally created. This is set only during the
+	// failover reservation's creation. All billing charges for the failover reservation will be
+	// applied to this location.
+	OriginalPrimaryLocation pulumi.StringPtrInput
+	// The current location of the reservation's primary replica. This field is only set for
+	// reservations using the managed disaster recovery feature.
+	PrimaryLocation pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The Disaster Recovery(DR) replication status of the reservation. This is only available for
+	// the primary replicas of DR/failover reservations and provides information about the both the
+	// staleness of the secondary and the last error encountered while trying to replicate changes
+	// from the primary to the secondary. If this field is blank, it means that the reservation is
+	// either not a DR reservation or the reservation is a DR secondary or that any replication
+	// operations on the reservation have succeeded.
+	// Structure is documented below.
+	ReplicationStatuses ReservationReplicationStatusArrayInput
+	// The current location of the reservation's secondary replica. This field is only set for
+	// reservations using the managed disaster recovery feature. Users can set this in create
+	// reservation calls to create a failover reservation or in update reservation calls to convert
+	// a non-failover reservation to a failover reservation(or vice versa).
+	SecondaryLocation pulumi.StringPtrInput
 	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
 	// unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
 	SlotCapacity pulumi.IntPtrInput
@@ -220,6 +280,11 @@ type reservationArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The current location of the reservation's secondary replica. This field is only set for
+	// reservations using the managed disaster recovery feature. Users can set this in create
+	// reservation calls to create a failover reservation or in update reservation calls to convert
+	// a non-failover reservation to a failover reservation(or vice versa).
+	SecondaryLocation *string `pulumi:"secondaryLocation"`
 	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
 	// unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
 	SlotCapacity int `pulumi:"slotCapacity"`
@@ -248,6 +313,11 @@ type ReservationArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The current location of the reservation's secondary replica. This field is only set for
+	// reservations using the managed disaster recovery feature. Users can set this in create
+	// reservation calls to create a failover reservation or in update reservation calls to convert
+	// a non-failover reservation to a failover reservation(or vice versa).
+	SecondaryLocation pulumi.StringPtrInput
 	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
 	// unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
 	SlotCapacity pulumi.IntInput
@@ -376,10 +446,42 @@ func (o ReservationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The location where the reservation was originally created. This is set only during the
+// failover reservation's creation. All billing charges for the failover reservation will be
+// applied to this location.
+func (o ReservationOutput) OriginalPrimaryLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.OriginalPrimaryLocation }).(pulumi.StringOutput)
+}
+
+// The current location of the reservation's primary replica. This field is only set for
+// reservations using the managed disaster recovery feature.
+func (o ReservationOutput) PrimaryLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.PrimaryLocation }).(pulumi.StringOutput)
+}
+
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
 func (o ReservationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The Disaster Recovery(DR) replication status of the reservation. This is only available for
+// the primary replicas of DR/failover reservations and provides information about the both the
+// staleness of the secondary and the last error encountered while trying to replicate changes
+// from the primary to the secondary. If this field is blank, it means that the reservation is
+// either not a DR reservation or the reservation is a DR secondary or that any replication
+// operations on the reservation have succeeded.
+// Structure is documented below.
+func (o ReservationOutput) ReplicationStatuses() ReservationReplicationStatusArrayOutput {
+	return o.ApplyT(func(v *Reservation) ReservationReplicationStatusArrayOutput { return v.ReplicationStatuses }).(ReservationReplicationStatusArrayOutput)
+}
+
+// The current location of the reservation's secondary replica. This field is only set for
+// reservations using the managed disaster recovery feature. Users can set this in create
+// reservation calls to create a failover reservation or in update reservation calls to convert
+// a non-failover reservation to a failover reservation(or vice versa).
+func (o ReservationOutput) SecondaryLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringPtrOutput { return v.SecondaryLocation }).(pulumi.StringPtrOutput)
 }
 
 // Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the

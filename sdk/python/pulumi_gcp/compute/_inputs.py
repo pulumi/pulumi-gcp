@@ -173,6 +173,16 @@ __all__ = [
     'ImageImageEncryptionKeyArgsDict',
     'ImageRawDiskArgs',
     'ImageRawDiskArgsDict',
+    'ImageShieldedInstanceInitialStateArgs',
+    'ImageShieldedInstanceInitialStateArgsDict',
+    'ImageShieldedInstanceInitialStateDbArgs',
+    'ImageShieldedInstanceInitialStateDbArgsDict',
+    'ImageShieldedInstanceInitialStateDbxArgs',
+    'ImageShieldedInstanceInitialStateDbxArgsDict',
+    'ImageShieldedInstanceInitialStateKekArgs',
+    'ImageShieldedInstanceInitialStateKekArgsDict',
+    'ImageShieldedInstanceInitialStatePkArgs',
+    'ImageShieldedInstanceInitialStatePkArgsDict',
     'InstanceAdvancedMachineFeaturesArgs',
     'InstanceAdvancedMachineFeaturesArgsDict',
     'InstanceAttachedDiskArgs',
@@ -1021,6 +1031,8 @@ __all__ = [
     'ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgsDict',
     'ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs',
     'ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgsDict',
+    'ResourcePolicyWorkloadPolicyArgs',
+    'ResourcePolicyWorkloadPolicyArgsDict',
     'RouteAsPathArgs',
     'RouteAsPathArgsDict',
     'RouteWarningArgs',
@@ -10410,6 +10422,326 @@ class ImageRawDiskArgs:
 
 
 if not MYPY:
+    class ImageShieldedInstanceInitialStateArgsDict(TypedDict):
+        dbs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ImageShieldedInstanceInitialStateDbArgsDict']]]]
+        """
+        The Key Database (db).
+        Structure is documented below.
+        """
+        dbxs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ImageShieldedInstanceInitialStateDbxArgsDict']]]]
+        """
+        The forbidden key database (dbx).
+        Structure is documented below.
+        """
+        keks: NotRequired[pulumi.Input[Sequence[pulumi.Input['ImageShieldedInstanceInitialStateKekArgsDict']]]]
+        """
+        The Key Exchange Key (KEK).
+        Structure is documented below.
+        """
+        pk: NotRequired[pulumi.Input['ImageShieldedInstanceInitialStatePkArgsDict']]
+        """
+        The Platform Key (PK).
+        Structure is documented below.
+        """
+elif False:
+    ImageShieldedInstanceInitialStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ImageShieldedInstanceInitialStateArgs:
+    def __init__(__self__, *,
+                 dbs: Optional[pulumi.Input[Sequence[pulumi.Input['ImageShieldedInstanceInitialStateDbArgs']]]] = None,
+                 dbxs: Optional[pulumi.Input[Sequence[pulumi.Input['ImageShieldedInstanceInitialStateDbxArgs']]]] = None,
+                 keks: Optional[pulumi.Input[Sequence[pulumi.Input['ImageShieldedInstanceInitialStateKekArgs']]]] = None,
+                 pk: Optional[pulumi.Input['ImageShieldedInstanceInitialStatePkArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ImageShieldedInstanceInitialStateDbArgs']]] dbs: The Key Database (db).
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ImageShieldedInstanceInitialStateDbxArgs']]] dbxs: The forbidden key database (dbx).
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ImageShieldedInstanceInitialStateKekArgs']]] keks: The Key Exchange Key (KEK).
+               Structure is documented below.
+        :param pulumi.Input['ImageShieldedInstanceInitialStatePkArgs'] pk: The Platform Key (PK).
+               Structure is documented below.
+        """
+        if dbs is not None:
+            pulumi.set(__self__, "dbs", dbs)
+        if dbxs is not None:
+            pulumi.set(__self__, "dbxs", dbxs)
+        if keks is not None:
+            pulumi.set(__self__, "keks", keks)
+        if pk is not None:
+            pulumi.set(__self__, "pk", pk)
+
+    @property
+    @pulumi.getter
+    def dbs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageShieldedInstanceInitialStateDbArgs']]]]:
+        """
+        The Key Database (db).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dbs")
+
+    @dbs.setter
+    def dbs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageShieldedInstanceInitialStateDbArgs']]]]):
+        pulumi.set(self, "dbs", value)
+
+    @property
+    @pulumi.getter
+    def dbxs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageShieldedInstanceInitialStateDbxArgs']]]]:
+        """
+        The forbidden key database (dbx).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dbxs")
+
+    @dbxs.setter
+    def dbxs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageShieldedInstanceInitialStateDbxArgs']]]]):
+        pulumi.set(self, "dbxs", value)
+
+    @property
+    @pulumi.getter
+    def keks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageShieldedInstanceInitialStateKekArgs']]]]:
+        """
+        The Key Exchange Key (KEK).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "keks")
+
+    @keks.setter
+    def keks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageShieldedInstanceInitialStateKekArgs']]]]):
+        pulumi.set(self, "keks", value)
+
+    @property
+    @pulumi.getter
+    def pk(self) -> Optional[pulumi.Input['ImageShieldedInstanceInitialStatePkArgs']]:
+        """
+        The Platform Key (PK).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "pk")
+
+    @pk.setter
+    def pk(self, value: Optional[pulumi.Input['ImageShieldedInstanceInitialStatePkArgs']]):
+        pulumi.set(self, "pk", value)
+
+
+if not MYPY:
+    class ImageShieldedInstanceInitialStateDbArgsDict(TypedDict):
+        content: pulumi.Input[str]
+        """
+        The raw content in the secure keys file.
+        A base64-encoded string.
+        """
+        file_type: NotRequired[pulumi.Input[str]]
+        """
+        The file type of source file.
+        """
+elif False:
+    ImageShieldedInstanceInitialStateDbArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ImageShieldedInstanceInitialStateDbArgs:
+    def __init__(__self__, *,
+                 content: pulumi.Input[str],
+                 file_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] content: The raw content in the secure keys file.
+               A base64-encoded string.
+        :param pulumi.Input[str] file_type: The file type of source file.
+        """
+        pulumi.set(__self__, "content", content)
+        if file_type is not None:
+            pulumi.set(__self__, "file_type", file_type)
+
+    @property
+    @pulumi.getter
+    def content(self) -> pulumi.Input[str]:
+        """
+        The raw content in the secure keys file.
+        A base64-encoded string.
+        """
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: pulumi.Input[str]):
+        pulumi.set(self, "content", value)
+
+    @property
+    @pulumi.getter(name="fileType")
+    def file_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The file type of source file.
+        """
+        return pulumi.get(self, "file_type")
+
+    @file_type.setter
+    def file_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_type", value)
+
+
+if not MYPY:
+    class ImageShieldedInstanceInitialStateDbxArgsDict(TypedDict):
+        content: pulumi.Input[str]
+        """
+        The raw content in the secure keys file.
+        A base64-encoded string.
+        """
+        file_type: NotRequired[pulumi.Input[str]]
+        """
+        The file type of source file.
+        """
+elif False:
+    ImageShieldedInstanceInitialStateDbxArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ImageShieldedInstanceInitialStateDbxArgs:
+    def __init__(__self__, *,
+                 content: pulumi.Input[str],
+                 file_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] content: The raw content in the secure keys file.
+               A base64-encoded string.
+        :param pulumi.Input[str] file_type: The file type of source file.
+        """
+        pulumi.set(__self__, "content", content)
+        if file_type is not None:
+            pulumi.set(__self__, "file_type", file_type)
+
+    @property
+    @pulumi.getter
+    def content(self) -> pulumi.Input[str]:
+        """
+        The raw content in the secure keys file.
+        A base64-encoded string.
+        """
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: pulumi.Input[str]):
+        pulumi.set(self, "content", value)
+
+    @property
+    @pulumi.getter(name="fileType")
+    def file_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The file type of source file.
+        """
+        return pulumi.get(self, "file_type")
+
+    @file_type.setter
+    def file_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_type", value)
+
+
+if not MYPY:
+    class ImageShieldedInstanceInitialStateKekArgsDict(TypedDict):
+        content: pulumi.Input[str]
+        """
+        The raw content in the secure keys file.
+        A base64-encoded string.
+        """
+        file_type: NotRequired[pulumi.Input[str]]
+        """
+        The file type of source file.
+        """
+elif False:
+    ImageShieldedInstanceInitialStateKekArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ImageShieldedInstanceInitialStateKekArgs:
+    def __init__(__self__, *,
+                 content: pulumi.Input[str],
+                 file_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] content: The raw content in the secure keys file.
+               A base64-encoded string.
+        :param pulumi.Input[str] file_type: The file type of source file.
+        """
+        pulumi.set(__self__, "content", content)
+        if file_type is not None:
+            pulumi.set(__self__, "file_type", file_type)
+
+    @property
+    @pulumi.getter
+    def content(self) -> pulumi.Input[str]:
+        """
+        The raw content in the secure keys file.
+        A base64-encoded string.
+        """
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: pulumi.Input[str]):
+        pulumi.set(self, "content", value)
+
+    @property
+    @pulumi.getter(name="fileType")
+    def file_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The file type of source file.
+        """
+        return pulumi.get(self, "file_type")
+
+    @file_type.setter
+    def file_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_type", value)
+
+
+if not MYPY:
+    class ImageShieldedInstanceInitialStatePkArgsDict(TypedDict):
+        content: pulumi.Input[str]
+        """
+        The raw content in the secure keys file.
+        A base64-encoded string.
+        """
+        file_type: NotRequired[pulumi.Input[str]]
+        """
+        The file type of source file.
+        """
+elif False:
+    ImageShieldedInstanceInitialStatePkArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ImageShieldedInstanceInitialStatePkArgs:
+    def __init__(__self__, *,
+                 content: pulumi.Input[str],
+                 file_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] content: The raw content in the secure keys file.
+               A base64-encoded string.
+        :param pulumi.Input[str] file_type: The file type of source file.
+        """
+        pulumi.set(__self__, "content", content)
+        if file_type is not None:
+            pulumi.set(__self__, "file_type", file_type)
+
+    @property
+    @pulumi.getter
+    def content(self) -> pulumi.Input[str]:
+        """
+        The raw content in the secure keys file.
+        A base64-encoded string.
+        """
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: pulumi.Input[str]):
+        pulumi.set(self, "content", value)
+
+    @property
+    @pulumi.getter(name="fileType")
+    def file_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The file type of source file.
+        """
+        return pulumi.get(self, "file_type")
+
+    @file_type.setter
+    def file_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_type", value)
+
+
+if not MYPY:
     class InstanceAdvancedMachineFeaturesArgsDict(TypedDict):
         enable_nested_virtualization: NotRequired[pulumi.Input[bool]]
         """
@@ -10731,6 +11063,10 @@ if not MYPY:
         encoded SHA-256 hash of the [customer-supplied encryption key]
         (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
         """
+        guest_os_features: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+        """
         initialize_params: NotRequired[pulumi.Input['InstanceBootDiskInitializeParamsArgsDict']]
         """
         Parameters for a new disk that will be created
@@ -10768,6 +11104,7 @@ class InstanceBootDiskArgs:
                  device_name: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_raw: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_sha256: Optional[pulumi.Input[str]] = None,
+                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  initialize_params: Optional[pulumi.Input['InstanceBootDiskInitializeParamsArgs']] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  kms_key_self_link: Optional[pulumi.Input[str]] = None,
@@ -10786,6 +11123,7 @@ class InstanceBootDiskArgs:
         :param pulumi.Input[str] disk_encryption_key_sha256: The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
                encoded SHA-256 hash of the [customer-supplied encryption key]
                (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
         :param pulumi.Input['InstanceBootDiskInitializeParamsArgs'] initialize_params: Parameters for a new disk that will be created
                alongside the new instance. Either `initialize_params` or `source` must be set.
                Structure is documented below.
@@ -10807,6 +11145,8 @@ class InstanceBootDiskArgs:
             pulumi.set(__self__, "disk_encryption_key_raw", disk_encryption_key_raw)
         if disk_encryption_key_sha256 is not None:
             pulumi.set(__self__, "disk_encryption_key_sha256", disk_encryption_key_sha256)
+        if guest_os_features is not None:
+            pulumi.set(__self__, "guest_os_features", guest_os_features)
         if initialize_params is not None:
             pulumi.set(__self__, "initialize_params", initialize_params)
         if interface is not None:
@@ -10873,6 +11213,18 @@ class InstanceBootDiskArgs:
     @disk_encryption_key_sha256.setter
     def disk_encryption_key_sha256(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "disk_encryption_key_sha256", value)
+
+    @property
+    @pulumi.getter(name="guestOsFeatures")
+    def guest_os_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+        """
+        return pulumi.get(self, "guest_os_features")
+
+    @guest_os_features.setter
+    def guest_os_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "guest_os_features", value)
 
     @property
     @pulumi.getter(name="initializeParams")
@@ -10944,6 +11296,10 @@ class InstanceBootDiskArgs:
 
 if not MYPY:
     class InstanceBootDiskInitializeParamsArgsDict(TypedDict):
+        architecture: NotRequired[pulumi.Input[str]]
+        """
+        The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+        """
         enable_confidential_compute: NotRequired[pulumi.Input[bool]]
         """
         Whether this disk is using confidential compute mode.
@@ -11018,6 +11374,7 @@ elif False:
 @pulumi.input_type
 class InstanceBootDiskInitializeParamsArgs:
     def __init__(__self__, *,
+                 architecture: Optional[pulumi.Input[str]] = None,
                  enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -11029,6 +11386,7 @@ class InstanceBootDiskInitializeParamsArgs:
                  storage_pool: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] architecture: The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
         :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode.
                Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true.
         :param pulumi.Input[str] image: The image from which to initialize this disk. This can be
@@ -11068,6 +11426,8 @@ class InstanceBootDiskInitializeParamsArgs:
                * /{storagePool}
         :param pulumi.Input[str] type: The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
         """
+        if architecture is not None:
+            pulumi.set(__self__, "architecture", architecture)
         if enable_confidential_compute is not None:
             pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
         if image is not None:
@@ -11088,6 +11448,18 @@ class InstanceBootDiskInitializeParamsArgs:
             pulumi.set(__self__, "storage_pool", storage_pool)
         if type is not None:
             pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> Optional[pulumi.Input[str]]:
+        """
+        The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+        """
+        return pulumi.get(self, "architecture")
+
+    @architecture.setter
+    def architecture(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "architecture", value)
 
     @property
     @pulumi.getter(name="enableConfidentialCompute")
@@ -11571,6 +11943,10 @@ if not MYPY:
         """
         The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
         """
+        guest_os_features: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of features to enable on the guest operating system. Applicable only for bootable images.
+        """
         initialize_params: NotRequired[pulumi.Input['InstanceFromMachineImageBootDiskInitializeParamsArgsDict']]
         """
         Parameters with which a disk was created alongside the instance.
@@ -11601,6 +11977,7 @@ class InstanceFromMachineImageBootDiskArgs:
                  device_name: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_raw: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_sha256: Optional[pulumi.Input[str]] = None,
+                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  initialize_params: Optional[pulumi.Input['InstanceFromMachineImageBootDiskInitializeParamsArgs']] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  kms_key_self_link: Optional[pulumi.Input[str]] = None,
@@ -11611,6 +11988,7 @@ class InstanceFromMachineImageBootDiskArgs:
         :param pulumi.Input[str] device_name: Name with which attached disk will be accessible under /dev/disk/by-id/
         :param pulumi.Input[str] disk_encryption_key_raw: A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
         :param pulumi.Input[str] disk_encryption_key_sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images.
         :param pulumi.Input['InstanceFromMachineImageBootDiskInitializeParamsArgs'] initialize_params: Parameters with which a disk was created alongside the instance.
         :param pulumi.Input[str] interface: The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don't specify this field without advice from Google.)
         :param pulumi.Input[str] kms_key_self_link: The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
@@ -11625,6 +12003,8 @@ class InstanceFromMachineImageBootDiskArgs:
             pulumi.set(__self__, "disk_encryption_key_raw", disk_encryption_key_raw)
         if disk_encryption_key_sha256 is not None:
             pulumi.set(__self__, "disk_encryption_key_sha256", disk_encryption_key_sha256)
+        if guest_os_features is not None:
+            pulumi.set(__self__, "guest_os_features", guest_os_features)
         if initialize_params is not None:
             pulumi.set(__self__, "initialize_params", initialize_params)
         if interface is not None:
@@ -11683,6 +12063,18 @@ class InstanceFromMachineImageBootDiskArgs:
     @disk_encryption_key_sha256.setter
     def disk_encryption_key_sha256(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "disk_encryption_key_sha256", value)
+
+    @property
+    @pulumi.getter(name="guestOsFeatures")
+    def guest_os_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of features to enable on the guest operating system. Applicable only for bootable images.
+        """
+        return pulumi.get(self, "guest_os_features")
+
+    @guest_os_features.setter
+    def guest_os_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "guest_os_features", value)
 
     @property
     @pulumi.getter(name="initializeParams")
@@ -11747,6 +12139,10 @@ class InstanceFromMachineImageBootDiskArgs:
 
 if not MYPY:
     class InstanceFromMachineImageBootDiskInitializeParamsArgsDict(TypedDict):
+        architecture: NotRequired[pulumi.Input[str]]
+        """
+        The architecture of the disk. One of "X86_64" or "ARM64".
+        """
         enable_confidential_compute: NotRequired[pulumi.Input[bool]]
         """
         A flag to enable confidential compute mode on boot disk
@@ -11793,6 +12189,7 @@ elif False:
 @pulumi.input_type
 class InstanceFromMachineImageBootDiskInitializeParamsArgs:
     def __init__(__self__, *,
+                 architecture: Optional[pulumi.Input[str]] = None,
                  enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -11804,6 +12201,7 @@ class InstanceFromMachineImageBootDiskInitializeParamsArgs:
                  storage_pool: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] architecture: The architecture of the disk. One of "X86_64" or "ARM64".
         :param pulumi.Input[bool] enable_confidential_compute: A flag to enable confidential compute mode on boot disk
         :param pulumi.Input[str] image: The image from which this disk was initialised.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the disk.
@@ -11815,6 +12213,8 @@ class InstanceFromMachineImageBootDiskInitializeParamsArgs:
         :param pulumi.Input[str] storage_pool: The URL of the storage pool in which the new disk is created
         :param pulumi.Input[str] type: The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
         """
+        if architecture is not None:
+            pulumi.set(__self__, "architecture", architecture)
         if enable_confidential_compute is not None:
             pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
         if image is not None:
@@ -11835,6 +12235,18 @@ class InstanceFromMachineImageBootDiskInitializeParamsArgs:
             pulumi.set(__self__, "storage_pool", storage_pool)
         if type is not None:
             pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> Optional[pulumi.Input[str]]:
+        """
+        The architecture of the disk. One of "X86_64" or "ARM64".
+        """
+        return pulumi.get(self, "architecture")
+
+    @architecture.setter
+    def architecture(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "architecture", value)
 
     @property
     @pulumi.getter(name="enableConfidentialCompute")
@@ -13963,6 +14375,10 @@ if not MYPY:
         """
         The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
         """
+        guest_os_features: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of features to enable on the guest operating system. Applicable only for bootable images.
+        """
         initialize_params: NotRequired[pulumi.Input['InstanceFromTemplateBootDiskInitializeParamsArgsDict']]
         """
         Parameters with which a disk was created alongside the instance.
@@ -13993,6 +14409,7 @@ class InstanceFromTemplateBootDiskArgs:
                  device_name: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_raw: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_sha256: Optional[pulumi.Input[str]] = None,
+                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  initialize_params: Optional[pulumi.Input['InstanceFromTemplateBootDiskInitializeParamsArgs']] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  kms_key_self_link: Optional[pulumi.Input[str]] = None,
@@ -14003,6 +14420,7 @@ class InstanceFromTemplateBootDiskArgs:
         :param pulumi.Input[str] device_name: Name with which attached disk will be accessible under /dev/disk/by-id/
         :param pulumi.Input[str] disk_encryption_key_raw: A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
         :param pulumi.Input[str] disk_encryption_key_sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images.
         :param pulumi.Input['InstanceFromTemplateBootDiskInitializeParamsArgs'] initialize_params: Parameters with which a disk was created alongside the instance.
         :param pulumi.Input[str] interface: The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don't specify this field without advice from Google.)
         :param pulumi.Input[str] kms_key_self_link: The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
@@ -14017,6 +14435,8 @@ class InstanceFromTemplateBootDiskArgs:
             pulumi.set(__self__, "disk_encryption_key_raw", disk_encryption_key_raw)
         if disk_encryption_key_sha256 is not None:
             pulumi.set(__self__, "disk_encryption_key_sha256", disk_encryption_key_sha256)
+        if guest_os_features is not None:
+            pulumi.set(__self__, "guest_os_features", guest_os_features)
         if initialize_params is not None:
             pulumi.set(__self__, "initialize_params", initialize_params)
         if interface is not None:
@@ -14075,6 +14495,18 @@ class InstanceFromTemplateBootDiskArgs:
     @disk_encryption_key_sha256.setter
     def disk_encryption_key_sha256(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "disk_encryption_key_sha256", value)
+
+    @property
+    @pulumi.getter(name="guestOsFeatures")
+    def guest_os_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of features to enable on the guest operating system. Applicable only for bootable images.
+        """
+        return pulumi.get(self, "guest_os_features")
+
+    @guest_os_features.setter
+    def guest_os_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "guest_os_features", value)
 
     @property
     @pulumi.getter(name="initializeParams")
@@ -14139,6 +14571,10 @@ class InstanceFromTemplateBootDiskArgs:
 
 if not MYPY:
     class InstanceFromTemplateBootDiskInitializeParamsArgsDict(TypedDict):
+        architecture: NotRequired[pulumi.Input[str]]
+        """
+        The architecture of the disk. One of "X86_64" or "ARM64".
+        """
         enable_confidential_compute: NotRequired[pulumi.Input[bool]]
         """
         A flag to enable confidential compute mode on boot disk
@@ -14185,6 +14621,7 @@ elif False:
 @pulumi.input_type
 class InstanceFromTemplateBootDiskInitializeParamsArgs:
     def __init__(__self__, *,
+                 architecture: Optional[pulumi.Input[str]] = None,
                  enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -14196,6 +14633,7 @@ class InstanceFromTemplateBootDiskInitializeParamsArgs:
                  storage_pool: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] architecture: The architecture of the disk. One of "X86_64" or "ARM64".
         :param pulumi.Input[bool] enable_confidential_compute: A flag to enable confidential compute mode on boot disk
         :param pulumi.Input[str] image: The image from which this disk was initialised.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the disk.
@@ -14207,6 +14645,8 @@ class InstanceFromTemplateBootDiskInitializeParamsArgs:
         :param pulumi.Input[str] storage_pool: The URL of the storage pool in which the new disk is created
         :param pulumi.Input[str] type: The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
         """
+        if architecture is not None:
+            pulumi.set(__self__, "architecture", architecture)
         if enable_confidential_compute is not None:
             pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
         if image is not None:
@@ -14227,6 +14667,18 @@ class InstanceFromTemplateBootDiskInitializeParamsArgs:
             pulumi.set(__self__, "storage_pool", storage_pool)
         if type is not None:
             pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> Optional[pulumi.Input[str]]:
+        """
+        The architecture of the disk. One of "X86_64" or "ARM64".
+        """
+        return pulumi.get(self, "architecture")
+
+    @architecture.setter
+    def architecture(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "architecture", value)
 
     @property
     @pulumi.getter(name="enableConfidentialCompute")
@@ -16189,12 +16641,17 @@ if not MYPY:
     class InstanceGroupManagerInstanceLifecyclePolicyArgsDict(TypedDict):
         default_action_on_failure: NotRequired[pulumi.Input[str]]
         """
-        , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
-        - - -
+        , Specifies the action that a MIG performs on a failed VM. If the value of the `on_failed_health_check` field is `DEFAULT_ACTION`, then the same action also applies to the VMs on which your application fails a health check. Valid options are: `DO_NOTHING`, `REPAIR`. If `DO_NOTHING`, then MIG does not repair a failed VM. If `REPAIR` (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG.
         """
         force_update_on_repair: NotRequired[pulumi.Input[str]]
         """
         , Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
+        """
+        on_failed_health_check: NotRequired[pulumi.Input[str]]
+        """
+        , Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid options are: `DEFAULT_ACTION`, `DO_NOTHING`, `REPAIR`. If `DEFAULT_ACTION` (default), then MIG uses the same action configured for the  `default_action_on_failure` field. If `DO_NOTHING`, then MIG does not repair unhealthy VM. If `REPAIR`, then MIG automatically repairs an unhealthy VM by recreating it. For more information, see about repairing VMs in a MIG.
+
+        - - -
         """
 elif False:
     InstanceGroupManagerInstanceLifecyclePolicyArgsDict: TypeAlias = Mapping[str, Any]
@@ -16203,23 +16660,27 @@ elif False:
 class InstanceGroupManagerInstanceLifecyclePolicyArgs:
     def __init__(__self__, *,
                  default_action_on_failure: Optional[pulumi.Input[str]] = None,
-                 force_update_on_repair: Optional[pulumi.Input[str]] = None):
+                 force_update_on_repair: Optional[pulumi.Input[str]] = None,
+                 on_failed_health_check: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] default_action_on_failure: , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
-               - - -
+        :param pulumi.Input[str] default_action_on_failure: , Specifies the action that a MIG performs on a failed VM. If the value of the `on_failed_health_check` field is `DEFAULT_ACTION`, then the same action also applies to the VMs on which your application fails a health check. Valid options are: `DO_NOTHING`, `REPAIR`. If `DO_NOTHING`, then MIG does not repair a failed VM. If `REPAIR` (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG.
         :param pulumi.Input[str] force_update_on_repair: , Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
+        :param pulumi.Input[str] on_failed_health_check: , Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid options are: `DEFAULT_ACTION`, `DO_NOTHING`, `REPAIR`. If `DEFAULT_ACTION` (default), then MIG uses the same action configured for the  `default_action_on_failure` field. If `DO_NOTHING`, then MIG does not repair unhealthy VM. If `REPAIR`, then MIG automatically repairs an unhealthy VM by recreating it. For more information, see about repairing VMs in a MIG.
+               
+               - - -
         """
         if default_action_on_failure is not None:
             pulumi.set(__self__, "default_action_on_failure", default_action_on_failure)
         if force_update_on_repair is not None:
             pulumi.set(__self__, "force_update_on_repair", force_update_on_repair)
+        if on_failed_health_check is not None:
+            pulumi.set(__self__, "on_failed_health_check", on_failed_health_check)
 
     @property
     @pulumi.getter(name="defaultActionOnFailure")
     def default_action_on_failure(self) -> Optional[pulumi.Input[str]]:
         """
-        , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
-        - - -
+        , Specifies the action that a MIG performs on a failed VM. If the value of the `on_failed_health_check` field is `DEFAULT_ACTION`, then the same action also applies to the VMs on which your application fails a health check. Valid options are: `DO_NOTHING`, `REPAIR`. If `DO_NOTHING`, then MIG does not repair a failed VM. If `REPAIR` (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG.
         """
         return pulumi.get(self, "default_action_on_failure")
 
@@ -16238,6 +16699,20 @@ class InstanceGroupManagerInstanceLifecyclePolicyArgs:
     @force_update_on_repair.setter
     def force_update_on_repair(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "force_update_on_repair", value)
+
+    @property
+    @pulumi.getter(name="onFailedHealthCheck")
+    def on_failed_health_check(self) -> Optional[pulumi.Input[str]]:
+        """
+        , Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid options are: `DEFAULT_ACTION`, `DO_NOTHING`, `REPAIR`. If `DEFAULT_ACTION` (default), then MIG uses the same action configured for the  `default_action_on_failure` field. If `DO_NOTHING`, then MIG does not repair unhealthy VM. If `REPAIR`, then MIG automatically repairs an unhealthy VM by recreating it. For more information, see about repairing VMs in a MIG.
+
+        - - -
+        """
+        return pulumi.get(self, "on_failed_health_check")
+
+    @on_failed_health_check.setter
+    def on_failed_health_check(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "on_failed_health_check", value)
 
 
 if not MYPY:
@@ -32886,14 +33361,18 @@ if not MYPY:
     class RegionInstanceGroupManagerInstanceLifecyclePolicyArgsDict(TypedDict):
         default_action_on_failure: NotRequired[pulumi.Input[str]]
         """
-        , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
-
-        - - -
-        <a name="nested_instance_flexibility_policy"></a>The `instance_flexibility_policy` block supports:
+        , Specifies the action that a MIG performs on a failed VM. If the value of the `on_failed_health_check` field is `DEFAULT_ACTION`, then the same action also applies to the VMs on which your application fails a health check. Valid options are: `DO_NOTHING`, `REPAIR`. If `DO_NOTHING`, then MIG does not repair a failed VM. If `REPAIR` (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG.
         """
         force_update_on_repair: NotRequired[pulumi.Input[str]]
         """
         , Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
+        """
+        on_failed_health_check: NotRequired[pulumi.Input[str]]
+        """
+        , Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid options are: `DEFAULT_ACTION`, `DO_NOTHING`, `REPAIR`. If `DEFAULT_ACTION` (default), then MIG uses the same action configured for the  `default_action_on_failure` field. If `DO_NOTHING`, then MIG does not repair unhealthy VM. If `REPAIR`, then MIG automatically repairs an unhealthy VM by recreating it. For more information, see about repairing VMs in a MIG. 
+
+        - - -
+        <a name="nested_instance_flexibility_policy"></a>The `instance_flexibility_policy` block supports:
         """
 elif False:
     RegionInstanceGroupManagerInstanceLifecyclePolicyArgsDict: TypeAlias = Mapping[str, Any]
@@ -32902,27 +33381,28 @@ elif False:
 class RegionInstanceGroupManagerInstanceLifecyclePolicyArgs:
     def __init__(__self__, *,
                  default_action_on_failure: Optional[pulumi.Input[str]] = None,
-                 force_update_on_repair: Optional[pulumi.Input[str]] = None):
+                 force_update_on_repair: Optional[pulumi.Input[str]] = None,
+                 on_failed_health_check: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] default_action_on_failure: , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
+        :param pulumi.Input[str] default_action_on_failure: , Specifies the action that a MIG performs on a failed VM. If the value of the `on_failed_health_check` field is `DEFAULT_ACTION`, then the same action also applies to the VMs on which your application fails a health check. Valid options are: `DO_NOTHING`, `REPAIR`. If `DO_NOTHING`, then MIG does not repair a failed VM. If `REPAIR` (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG.
+        :param pulumi.Input[str] force_update_on_repair: , Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
+        :param pulumi.Input[str] on_failed_health_check: , Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid options are: `DEFAULT_ACTION`, `DO_NOTHING`, `REPAIR`. If `DEFAULT_ACTION` (default), then MIG uses the same action configured for the  `default_action_on_failure` field. If `DO_NOTHING`, then MIG does not repair unhealthy VM. If `REPAIR`, then MIG automatically repairs an unhealthy VM by recreating it. For more information, see about repairing VMs in a MIG. 
                
                - - -
                <a name="nested_instance_flexibility_policy"></a>The `instance_flexibility_policy` block supports:
-        :param pulumi.Input[str] force_update_on_repair: , Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
         """
         if default_action_on_failure is not None:
             pulumi.set(__self__, "default_action_on_failure", default_action_on_failure)
         if force_update_on_repair is not None:
             pulumi.set(__self__, "force_update_on_repair", force_update_on_repair)
+        if on_failed_health_check is not None:
+            pulumi.set(__self__, "on_failed_health_check", on_failed_health_check)
 
     @property
     @pulumi.getter(name="defaultActionOnFailure")
     def default_action_on_failure(self) -> Optional[pulumi.Input[str]]:
         """
-        , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
-
-        - - -
-        <a name="nested_instance_flexibility_policy"></a>The `instance_flexibility_policy` block supports:
+        , Specifies the action that a MIG performs on a failed VM. If the value of the `on_failed_health_check` field is `DEFAULT_ACTION`, then the same action also applies to the VMs on which your application fails a health check. Valid options are: `DO_NOTHING`, `REPAIR`. If `DO_NOTHING`, then MIG does not repair a failed VM. If `REPAIR` (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG.
         """
         return pulumi.get(self, "default_action_on_failure")
 
@@ -32941,6 +33421,21 @@ class RegionInstanceGroupManagerInstanceLifecyclePolicyArgs:
     @force_update_on_repair.setter
     def force_update_on_repair(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "force_update_on_repair", value)
+
+    @property
+    @pulumi.getter(name="onFailedHealthCheck")
+    def on_failed_health_check(self) -> Optional[pulumi.Input[str]]:
+        """
+        , Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid options are: `DEFAULT_ACTION`, `DO_NOTHING`, `REPAIR`. If `DEFAULT_ACTION` (default), then MIG uses the same action configured for the  `default_action_on_failure` field. If `DO_NOTHING`, then MIG does not repair unhealthy VM. If `REPAIR`, then MIG automatically repairs an unhealthy VM by recreating it. For more information, see about repairing VMs in a MIG. 
+
+        - - -
+        <a name="nested_instance_flexibility_policy"></a>The `instance_flexibility_policy` block supports:
+        """
+        return pulumi.get(self, "on_failed_health_check")
+
+    @on_failed_health_check.setter
+    def on_failed_health_check(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "on_failed_health_check", value)
 
 
 if not MYPY:
@@ -51147,6 +51642,10 @@ if not MYPY:
         attached.
         Possible values are: `COLLOCATED`.
         """
+        gpu_topology: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the shape of the GPU slice, in slice based GPU families eg. A4X.
+        """
         max_distance: NotRequired[pulumi.Input[int]]
         """
         Specifies the number of max logical switches.
@@ -51165,6 +51664,7 @@ class ResourcePolicyGroupPlacementPolicyArgs:
     def __init__(__self__, *,
                  availability_domain_count: Optional[pulumi.Input[int]] = None,
                  collocation: Optional[pulumi.Input[str]] = None,
+                 gpu_topology: Optional[pulumi.Input[str]] = None,
                  max_distance: Optional[pulumi.Input[int]] = None,
                  vm_count: Optional[pulumi.Input[int]] = None):
         """
@@ -51175,6 +51675,7 @@ class ResourcePolicyGroupPlacementPolicyArgs:
                with a COLLOCATED policy, then exactly `vm_count` instances must be created at the same time with the resource policy
                attached.
                Possible values are: `COLLOCATED`.
+        :param pulumi.Input[str] gpu_topology: Specifies the shape of the GPU slice, in slice based GPU families eg. A4X.
         :param pulumi.Input[int] max_distance: Specifies the number of max logical switches.
         :param pulumi.Input[int] vm_count: Number of VMs in this placement group. Google does not recommend that you use this field
                unless you use a compact policy and you want your policy to work only if it contains this
@@ -51184,6 +51685,8 @@ class ResourcePolicyGroupPlacementPolicyArgs:
             pulumi.set(__self__, "availability_domain_count", availability_domain_count)
         if collocation is not None:
             pulumi.set(__self__, "collocation", collocation)
+        if gpu_topology is not None:
+            pulumi.set(__self__, "gpu_topology", gpu_topology)
         if max_distance is not None:
             pulumi.set(__self__, "max_distance", max_distance)
         if vm_count is not None:
@@ -51217,6 +51720,18 @@ class ResourcePolicyGroupPlacementPolicyArgs:
     @collocation.setter
     def collocation(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "collocation", value)
+
+    @property
+    @pulumi.getter(name="gpuTopology")
+    def gpu_topology(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the shape of the GPU slice, in slice based GPU families eg. A4X.
+        """
+        return pulumi.get(self, "gpu_topology")
+
+    @gpu_topology.setter
+    def gpu_topology(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gpu_topology", value)
 
     @property
     @pulumi.getter(name="maxDistance")
@@ -51949,6 +52464,89 @@ class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs:
     @storage_locations.setter
     def storage_locations(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "storage_locations", value)
+
+
+if not MYPY:
+    class ResourcePolicyWorkloadPolicyArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        The type of workload policy.
+        Possible values are: `HIGH_AVAILABILITY`, `HIGH_THROUGHPUT`.
+        """
+        accelerator_topology: NotRequired[pulumi.Input[str]]
+        """
+        The accelerator topology. This field can be set only when the workload policy type is HIGH_THROUGHPUT
+        and cannot be set if max topology distance is set.
+        """
+        max_topology_distance: NotRequired[pulumi.Input[str]]
+        """
+        The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
+        and cannot be set if accelerator topology is set.
+        Possible values are: `BLOCK`, `CLUSTER`, `SUBBLOCK`.
+        """
+elif False:
+    ResourcePolicyWorkloadPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ResourcePolicyWorkloadPolicyArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 accelerator_topology: Optional[pulumi.Input[str]] = None,
+                 max_topology_distance: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: The type of workload policy.
+               Possible values are: `HIGH_AVAILABILITY`, `HIGH_THROUGHPUT`.
+        :param pulumi.Input[str] accelerator_topology: The accelerator topology. This field can be set only when the workload policy type is HIGH_THROUGHPUT
+               and cannot be set if max topology distance is set.
+        :param pulumi.Input[str] max_topology_distance: The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
+               and cannot be set if accelerator topology is set.
+               Possible values are: `BLOCK`, `CLUSTER`, `SUBBLOCK`.
+        """
+        pulumi.set(__self__, "type", type)
+        if accelerator_topology is not None:
+            pulumi.set(__self__, "accelerator_topology", accelerator_topology)
+        if max_topology_distance is not None:
+            pulumi.set(__self__, "max_topology_distance", max_topology_distance)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The type of workload policy.
+        Possible values are: `HIGH_AVAILABILITY`, `HIGH_THROUGHPUT`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="acceleratorTopology")
+    def accelerator_topology(self) -> Optional[pulumi.Input[str]]:
+        """
+        The accelerator topology. This field can be set only when the workload policy type is HIGH_THROUGHPUT
+        and cannot be set if max topology distance is set.
+        """
+        return pulumi.get(self, "accelerator_topology")
+
+    @accelerator_topology.setter
+    def accelerator_topology(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "accelerator_topology", value)
+
+    @property
+    @pulumi.getter(name="maxTopologyDistance")
+    def max_topology_distance(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
+        and cannot be set if accelerator topology is set.
+        Possible values are: `BLOCK`, `CLUSTER`, `SUBBLOCK`.
+        """
+        return pulumi.get(self, "max_topology_distance")
+
+    @max_topology_distance.setter
+    def max_topology_distance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_topology_distance", value)
 
 
 if not MYPY:

@@ -30,6 +30,7 @@ class InstanceArgs:
                  engine_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
                  persistence_config: Optional[pulumi.Input['InstancePersistenceConfigArgs']] = None,
@@ -62,12 +63,14 @@ class InstanceArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels to represent user-provided metadata.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for a cluster
+               Structure is documented below.
         :param pulumi.Input[str] mode: Optional. cluster or cluster-disabled.
                Possible values:
                CLUSTER
                CLUSTER_DISABLED
                Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
-        :param pulumi.Input[str] node_type: Optional. Immutable. Machine type for individual nodes of the instance.
+        :param pulumi.Input[str] node_type: Optional. Machine type for individual nodes of the instance.
                Possible values:
                SHARED_CORE_NANO
                HIGHMEM_MEDIUM
@@ -99,6 +102,8 @@ class InstanceArgs:
             pulumi.set(__self__, "engine_version", engine_version)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if maintenance_policy is not None:
+            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if node_type is not None:
@@ -237,6 +242,19 @@ class InstanceArgs:
         pulumi.set(self, "labels", value)
 
     @property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]:
+        """
+        Maintenance policy for a cluster
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @maintenance_policy.setter
+    def maintenance_policy(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]):
+        pulumi.set(self, "maintenance_policy", value)
+
+    @property
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
@@ -256,7 +274,7 @@ class InstanceArgs:
     @pulumi.getter(name="nodeType")
     def node_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Immutable. Machine type for individual nodes of the instance.
+        Optional. Machine type for individual nodes of the instance.
         Possible values:
         SHARED_CORE_NANO
         HIGHMEM_MEDIUM
@@ -351,6 +369,8 @@ class _InstanceState:
                  instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
+                 maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNodeConfigArgs']]]] = None,
@@ -398,6 +418,10 @@ class _InstanceState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
+        :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for a cluster
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]] maintenance_schedules: Upcoming maintenance schedule.
+               Structure is documented below.
         :param pulumi.Input[str] mode: Optional. cluster or cluster-disabled.
                Possible values:
                CLUSTER
@@ -407,7 +431,7 @@ class _InstanceState:
                Format: projects/{project}/locations/{location}/instances/{instance}
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNodeConfigArgs']]] node_configs: Represents configuration for nodes of the instance.
                Structure is documented below.
-        :param pulumi.Input[str] node_type: Optional. Immutable. Machine type for individual nodes of the instance.
+        :param pulumi.Input[str] node_type: Optional. Machine type for individual nodes of the instance.
                Possible values:
                SHARED_CORE_NANO
                HIGHMEM_MEDIUM
@@ -464,6 +488,10 @@ class _InstanceState:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if maintenance_policy is not None:
+            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+        if maintenance_schedules is not None:
+            pulumi.set(__self__, "maintenance_schedules", maintenance_schedules)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if name is not None:
@@ -659,6 +687,32 @@ class _InstanceState:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]:
+        """
+        Maintenance policy for a cluster
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @maintenance_policy.setter
+    def maintenance_policy(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]):
+        pulumi.set(self, "maintenance_policy", value)
+
+    @property
+    @pulumi.getter(name="maintenanceSchedules")
+    def maintenance_schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]:
+        """
+        Upcoming maintenance schedule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_schedules")
+
+    @maintenance_schedules.setter
+    def maintenance_schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]):
+        pulumi.set(self, "maintenance_schedules", value)
+
+    @property
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
@@ -704,7 +758,7 @@ class _InstanceState:
     @pulumi.getter(name="nodeType")
     def node_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Immutable. Machine type for individual nodes of the instance.
+        Optional. Machine type for individual nodes of the instance.
         Possible values:
         SHARED_CORE_NANO
         HIGHMEM_MEDIUM
@@ -889,6 +943,7 @@ class Instance(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maintenance_policy: Optional[pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
                  persistence_config: Optional[pulumi.Input[Union['InstancePersistenceConfigArgs', 'InstancePersistenceConfigArgsDict']]] = None,
@@ -936,6 +991,17 @@ class Instance(pulumi.CustomResource):
             }],
             location="us-central1",
             deletion_protection_enabled=False,
+            maintenance_policy={
+                "weekly_maintenance_windows": [{
+                    "day": "MONDAY",
+                    "start_time": {
+                        "hours": 1,
+                        "minutes": 0,
+                        "seconds": 0,
+                        "nanos": 0,
+                    },
+                }],
+            },
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
         ### Memorystore Instance Full
@@ -980,6 +1046,17 @@ class Instance(pulumi.CustomResource):
             zone_distribution_config={
                 "mode": "SINGLE_ZONE",
                 "zone": "us-central1-b",
+            },
+            maintenance_policy={
+                "weekly_maintenance_windows": [{
+                    "day": "MONDAY",
+                    "start_time": {
+                        "hours": 1,
+                        "minutes": 0,
+                        "seconds": 0,
+                        "nanos": 0,
+                    },
+                }],
             },
             engine_version="VALKEY_7_2",
             deletion_protection_enabled=False,
@@ -1086,12 +1163,14 @@ class Instance(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
+        :param pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']] maintenance_policy: Maintenance policy for a cluster
+               Structure is documented below.
         :param pulumi.Input[str] mode: Optional. cluster or cluster-disabled.
                Possible values:
                CLUSTER
                CLUSTER_DISABLED
                Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
-        :param pulumi.Input[str] node_type: Optional. Immutable. Machine type for individual nodes of the instance.
+        :param pulumi.Input[str] node_type: Optional. Machine type for individual nodes of the instance.
                Possible values:
                SHARED_CORE_NANO
                HIGHMEM_MEDIUM
@@ -1154,6 +1233,17 @@ class Instance(pulumi.CustomResource):
             }],
             location="us-central1",
             deletion_protection_enabled=False,
+            maintenance_policy={
+                "weekly_maintenance_windows": [{
+                    "day": "MONDAY",
+                    "start_time": {
+                        "hours": 1,
+                        "minutes": 0,
+                        "seconds": 0,
+                        "nanos": 0,
+                    },
+                }],
+            },
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
         ### Memorystore Instance Full
@@ -1198,6 +1288,17 @@ class Instance(pulumi.CustomResource):
             zone_distribution_config={
                 "mode": "SINGLE_ZONE",
                 "zone": "us-central1-b",
+            },
+            maintenance_policy={
+                "weekly_maintenance_windows": [{
+                    "day": "MONDAY",
+                    "start_time": {
+                        "hours": 1,
+                        "minutes": 0,
+                        "seconds": 0,
+                        "nanos": 0,
+                    },
+                }],
             },
             engine_version="VALKEY_7_2",
             deletion_protection_enabled=False,
@@ -1303,6 +1404,7 @@ class Instance(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maintenance_policy: Optional[pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
                  persistence_config: Optional[pulumi.Input[Union['InstancePersistenceConfigArgs', 'InstancePersistenceConfigArgsDict']]] = None,
@@ -1334,6 +1436,7 @@ class Instance(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["mode"] = mode
             __props__.__dict__["node_type"] = node_type
             __props__.__dict__["persistence_config"] = persistence_config
@@ -1348,6 +1451,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["discovery_endpoints"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["endpoints"] = None
+            __props__.__dict__["maintenance_schedules"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["node_configs"] = None
             __props__.__dict__["psc_auto_connections"] = None
@@ -1380,6 +1484,8 @@ class Instance(pulumi.CustomResource):
             instance_id: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
+            maintenance_policy: Optional[pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
+            maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceMaintenanceScheduleArgs', 'InstanceMaintenanceScheduleArgsDict']]]]] = None,
             mode: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             node_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNodeConfigArgs', 'InstanceNodeConfigArgsDict']]]]] = None,
@@ -1432,6 +1538,10 @@ class Instance(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
+        :param pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']] maintenance_policy: Maintenance policy for a cluster
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceMaintenanceScheduleArgs', 'InstanceMaintenanceScheduleArgsDict']]]] maintenance_schedules: Upcoming maintenance schedule.
+               Structure is documented below.
         :param pulumi.Input[str] mode: Optional. cluster or cluster-disabled.
                Possible values:
                CLUSTER
@@ -1441,7 +1551,7 @@ class Instance(pulumi.CustomResource):
                Format: projects/{project}/locations/{location}/instances/{instance}
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceNodeConfigArgs', 'InstanceNodeConfigArgsDict']]]] node_configs: Represents configuration for nodes of the instance.
                Structure is documented below.
-        :param pulumi.Input[str] node_type: Optional. Immutable. Machine type for individual nodes of the instance.
+        :param pulumi.Input[str] node_type: Optional. Machine type for individual nodes of the instance.
                Possible values:
                SHARED_CORE_NANO
                HIGHMEM_MEDIUM
@@ -1490,6 +1600,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
+        __props__.__dict__["maintenance_policy"] = maintenance_policy
+        __props__.__dict__["maintenance_schedules"] = maintenance_schedules
         __props__.__dict__["mode"] = mode
         __props__.__dict__["name"] = name
         __props__.__dict__["node_configs"] = node_configs
@@ -1622,6 +1734,24 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "location")
 
     @property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> pulumi.Output[Optional['outputs.InstanceMaintenancePolicy']]:
+        """
+        Maintenance policy for a cluster
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @property
+    @pulumi.getter(name="maintenanceSchedules")
+    def maintenance_schedules(self) -> pulumi.Output[Sequence['outputs.InstanceMaintenanceSchedule']]:
+        """
+        Upcoming maintenance schedule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_schedules")
+
+    @property
     @pulumi.getter
     def mode(self) -> pulumi.Output[str]:
         """
@@ -1655,7 +1785,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="nodeType")
     def node_type(self) -> pulumi.Output[str]:
         """
-        Optional. Immutable. Machine type for individual nodes of the instance.
+        Optional. Machine type for individual nodes of the instance.
         Possible values:
         SHARED_CORE_NANO
         HIGHMEM_MEDIUM

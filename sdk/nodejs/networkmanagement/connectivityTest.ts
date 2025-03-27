@@ -113,6 +113,41 @@ import * as utilities from "../utilities";
  *     protocol: "UDP",
  * });
  * ```
+ * ### Network Management Connectivity Test Endpoints
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const endpoints_test = new gcp.networkmanagement.ConnectivityTest("endpoints-test", {
+ *     name: "conn-test-endpoints",
+ *     source: {
+ *         gkeMasterCluster: "projects/test-project/locations/us-central1/clusters/name",
+ *         cloudSqlInstance: "projects/test-project/instances/name",
+ *         appEngineVersion: {
+ *             uri: "apps/test-project/services/default/versions/name",
+ *         },
+ *         cloudFunction: {
+ *             uri: "projects/test-project/locations/us-central1/functions/name",
+ *         },
+ *         cloudRunRevision: {
+ *             uri: "projects/test-project/locations/us-central1/revisions/name",
+ *         },
+ *         port: 80,
+ *     },
+ *     destination: {
+ *         port: 443,
+ *         forwardingRule: "projects/test-project/regions/us-central1/forwardingRules/name",
+ *         gkeMasterCluster: "projects/test-project/locations/us-central1/clusters/name",
+ *         fqdn: "name.us-central1.gke.goog",
+ *         cloudSqlInstance: "projects/test-project/instances/name",
+ *         redisInstance: "projects/test-project/locations/us-central1/instances/name",
+ *         redisCluster: "projects/test-project/locations/us-central1/clusters/name",
+ *     },
+ *     bypassFirewallChecks: true,
+ *     roundTrip: true,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -167,24 +202,20 @@ export class ConnectivityTest extends pulumi.CustomResource {
     }
 
     /**
+     * Whether the analysis should skip firewall checking. Default value is false.
+     */
+    public readonly bypassFirewallChecks!: pulumi.Output<boolean | undefined>;
+    /**
      * The user-supplied description of the Connectivity Test. Maximum of 512 characters.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Required. Destination specification of the Connectivity Test.
-     * You can use a combination of destination IP address, Compute
-     * Engine VM instance, or VPC network to uniquely identify the
-     * destination location.
-     * Even if the destination IP address is not unique, the source IP
-     * location is unique. Usually, the analysis can infer the destination
-     * endpoint from route information.
-     * If the destination you specify is a VM instance and the instance has
-     * multiple network interfaces, then you must also specify either a
-     * destination IP address or VPC network to identify the destination
-     * interface.
-     * A reachability analysis proceeds even if the destination location
-     * is ambiguous. However, the result can include endpoints that you
-     * don't intend to test.
+     * You can use a combination of destination IP address, URI of a supported
+     * endpoint, project ID, or VPC network to identify the destination location.
+     * Reachability analysis proceeds even if the destination location is
+     * ambiguous. However, the test result might include endpoints or use a
+     * destination that you don't intend to test.
      * Structure is documented below.
      */
     public readonly destination!: pulumi.Output<outputs.networkmanagement.ConnectivityTestDestination>;
@@ -218,24 +249,16 @@ export class ConnectivityTest extends pulumi.CustomResource {
      */
     public readonly relatedProjects!: pulumi.Output<string[] | undefined>;
     /**
+     * Whether run analysis for the return path from destination to source. Default value is false.
+     */
+    public readonly roundTrip!: pulumi.Output<boolean | undefined>;
+    /**
      * Required. Source specification of the Connectivity Test.
-     * You can use a combination of source IP address, virtual machine
-     * (VM) instance, or Compute Engine network to uniquely identify the
-     * source location.
-     * Examples: If the source IP address is an internal IP address within
-     * a Google Cloud Virtual Private Cloud (VPC) network, then you must
-     * also specify the VPC network. Otherwise, specify the VM instance,
-     * which already contains its internal IP address and VPC network
-     * information.
-     * If the source of the test is within an on-premises network, then
-     * you must provide the destination VPC network.
-     * If the source endpoint is a Compute Engine VM instance with multiple
-     * network interfaces, the instance itself is not sufficient to
-     * identify the endpoint. So, you must also specify the source IP
-     * address or VPC network.
-     * A reachability analysis proceeds even if the source location is
-     * ambiguous. However, the test result may include endpoints that
-     * you don't intend to test.
+     * You can use a combination of source IP address, URI of a supported
+     * endpoint, project ID, or VPC network to identify the source location.
+     * Reachability analysis might proceed even if the source location is
+     * ambiguous. However, the test result might include endpoints or use a source
+     * that you don't intend to test.
      * Structure is documented below.
      */
     public readonly source!: pulumi.Output<outputs.networkmanagement.ConnectivityTestSource>;
@@ -253,6 +276,7 @@ export class ConnectivityTest extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectivityTestState | undefined;
+            resourceInputs["bypassFirewallChecks"] = state ? state.bypassFirewallChecks : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["destination"] = state ? state.destination : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
@@ -262,6 +286,7 @@ export class ConnectivityTest extends pulumi.CustomResource {
             resourceInputs["protocol"] = state ? state.protocol : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["relatedProjects"] = state ? state.relatedProjects : undefined;
+            resourceInputs["roundTrip"] = state ? state.roundTrip : undefined;
             resourceInputs["source"] = state ? state.source : undefined;
         } else {
             const args = argsOrState as ConnectivityTestArgs | undefined;
@@ -271,6 +296,7 @@ export class ConnectivityTest extends pulumi.CustomResource {
             if ((!args || args.source === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'source'");
             }
+            resourceInputs["bypassFirewallChecks"] = args ? args.bypassFirewallChecks : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["destination"] = args ? args.destination : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -278,6 +304,7 @@ export class ConnectivityTest extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["protocol"] = args ? args.protocol : undefined;
             resourceInputs["relatedProjects"] = args ? args.relatedProjects : undefined;
+            resourceInputs["roundTrip"] = args ? args.roundTrip : undefined;
             resourceInputs["source"] = args ? args.source : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
@@ -294,24 +321,20 @@ export class ConnectivityTest extends pulumi.CustomResource {
  */
 export interface ConnectivityTestState {
     /**
+     * Whether the analysis should skip firewall checking. Default value is false.
+     */
+    bypassFirewallChecks?: pulumi.Input<boolean>;
+    /**
      * The user-supplied description of the Connectivity Test. Maximum of 512 characters.
      */
     description?: pulumi.Input<string>;
     /**
      * Required. Destination specification of the Connectivity Test.
-     * You can use a combination of destination IP address, Compute
-     * Engine VM instance, or VPC network to uniquely identify the
-     * destination location.
-     * Even if the destination IP address is not unique, the source IP
-     * location is unique. Usually, the analysis can infer the destination
-     * endpoint from route information.
-     * If the destination you specify is a VM instance and the instance has
-     * multiple network interfaces, then you must also specify either a
-     * destination IP address or VPC network to identify the destination
-     * interface.
-     * A reachability analysis proceeds even if the destination location
-     * is ambiguous. However, the result can include endpoints that you
-     * don't intend to test.
+     * You can use a combination of destination IP address, URI of a supported
+     * endpoint, project ID, or VPC network to identify the destination location.
+     * Reachability analysis proceeds even if the destination location is
+     * ambiguous. However, the test result might include endpoints or use a
+     * destination that you don't intend to test.
      * Structure is documented below.
      */
     destination?: pulumi.Input<inputs.networkmanagement.ConnectivityTestDestination>;
@@ -345,24 +368,16 @@ export interface ConnectivityTestState {
      */
     relatedProjects?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Whether run analysis for the return path from destination to source. Default value is false.
+     */
+    roundTrip?: pulumi.Input<boolean>;
+    /**
      * Required. Source specification of the Connectivity Test.
-     * You can use a combination of source IP address, virtual machine
-     * (VM) instance, or Compute Engine network to uniquely identify the
-     * source location.
-     * Examples: If the source IP address is an internal IP address within
-     * a Google Cloud Virtual Private Cloud (VPC) network, then you must
-     * also specify the VPC network. Otherwise, specify the VM instance,
-     * which already contains its internal IP address and VPC network
-     * information.
-     * If the source of the test is within an on-premises network, then
-     * you must provide the destination VPC network.
-     * If the source endpoint is a Compute Engine VM instance with multiple
-     * network interfaces, the instance itself is not sufficient to
-     * identify the endpoint. So, you must also specify the source IP
-     * address or VPC network.
-     * A reachability analysis proceeds even if the source location is
-     * ambiguous. However, the test result may include endpoints that
-     * you don't intend to test.
+     * You can use a combination of source IP address, URI of a supported
+     * endpoint, project ID, or VPC network to identify the source location.
+     * Reachability analysis might proceed even if the source location is
+     * ambiguous. However, the test result might include endpoints or use a source
+     * that you don't intend to test.
      * Structure is documented below.
      */
     source?: pulumi.Input<inputs.networkmanagement.ConnectivityTestSource>;
@@ -373,24 +388,20 @@ export interface ConnectivityTestState {
  */
 export interface ConnectivityTestArgs {
     /**
+     * Whether the analysis should skip firewall checking. Default value is false.
+     */
+    bypassFirewallChecks?: pulumi.Input<boolean>;
+    /**
      * The user-supplied description of the Connectivity Test. Maximum of 512 characters.
      */
     description?: pulumi.Input<string>;
     /**
      * Required. Destination specification of the Connectivity Test.
-     * You can use a combination of destination IP address, Compute
-     * Engine VM instance, or VPC network to uniquely identify the
-     * destination location.
-     * Even if the destination IP address is not unique, the source IP
-     * location is unique. Usually, the analysis can infer the destination
-     * endpoint from route information.
-     * If the destination you specify is a VM instance and the instance has
-     * multiple network interfaces, then you must also specify either a
-     * destination IP address or VPC network to identify the destination
-     * interface.
-     * A reachability analysis proceeds even if the destination location
-     * is ambiguous. However, the result can include endpoints that you
-     * don't intend to test.
+     * You can use a combination of destination IP address, URI of a supported
+     * endpoint, project ID, or VPC network to identify the destination location.
+     * Reachability analysis proceeds even if the destination location is
+     * ambiguous. However, the test result might include endpoints or use a
+     * destination that you don't intend to test.
      * Structure is documented below.
      */
     destination: pulumi.Input<inputs.networkmanagement.ConnectivityTestDestination>;
@@ -415,24 +426,16 @@ export interface ConnectivityTestArgs {
      */
     relatedProjects?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Whether run analysis for the return path from destination to source. Default value is false.
+     */
+    roundTrip?: pulumi.Input<boolean>;
+    /**
      * Required. Source specification of the Connectivity Test.
-     * You can use a combination of source IP address, virtual machine
-     * (VM) instance, or Compute Engine network to uniquely identify the
-     * source location.
-     * Examples: If the source IP address is an internal IP address within
-     * a Google Cloud Virtual Private Cloud (VPC) network, then you must
-     * also specify the VPC network. Otherwise, specify the VM instance,
-     * which already contains its internal IP address and VPC network
-     * information.
-     * If the source of the test is within an on-premises network, then
-     * you must provide the destination VPC network.
-     * If the source endpoint is a Compute Engine VM instance with multiple
-     * network interfaces, the instance itself is not sufficient to
-     * identify the endpoint. So, you must also specify the source IP
-     * address or VPC network.
-     * A reachability analysis proceeds even if the source location is
-     * ambiguous. However, the test result may include endpoints that
-     * you don't intend to test.
+     * You can use a combination of source IP address, URI of a supported
+     * endpoint, project ID, or VPC network to identify the source location.
+     * Reachability analysis might proceed even if the source location is
+     * ambiguous. However, the test result might include endpoints or use a source
+     * that you don't intend to test.
      * Structure is documented below.
      */
     source: pulumi.Input<inputs.networkmanagement.ConnectivityTestSource>;

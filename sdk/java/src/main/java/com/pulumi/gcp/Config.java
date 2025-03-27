@@ -372,6 +372,9 @@ public final class Config {
     public Optional<String> lookerCustomEndpoint() {
         return Codegen.stringProp("lookerCustomEndpoint").config(config).get();
     }
+    public Optional<String> lustreCustomEndpoint() {
+        return Codegen.stringProp("lustreCustomEndpoint").config(config).get();
+    }
     public Optional<String> managedKafkaCustomEndpoint() {
         return Codegen.stringProp("managedKafkaCustomEndpoint").config(config).get();
     }
@@ -416,6 +419,9 @@ public final class Config {
     }
     public Optional<String> osConfigCustomEndpoint() {
         return Codegen.stringProp("osConfigCustomEndpoint").config(config).get();
+    }
+    public Optional<String> osConfigV2CustomEndpoint() {
+        return Codegen.stringProp("osConfigV2CustomEndpoint").config(config).get();
     }
     public Optional<String> osLoginCustomEndpoint() {
         return Codegen.stringProp("osLoginCustomEndpoint").config(config).get();
@@ -530,6 +536,9 @@ public final class Config {
     }
     public Optional<String> sqlCustomEndpoint() {
         return Codegen.stringProp("sqlCustomEndpoint").config(config).get();
+    }
+    public Optional<String> storageControlCustomEndpoint() {
+        return Codegen.stringProp("storageControlCustomEndpoint").config(config).get();
     }
     public Optional<String> storageCustomEndpoint() {
         return Codegen.stringProp("storageCustomEndpoint").config(config).get();

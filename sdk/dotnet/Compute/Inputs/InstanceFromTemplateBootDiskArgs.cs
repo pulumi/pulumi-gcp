@@ -46,6 +46,18 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("diskEncryptionKeySha256")]
         public Input<string>? DiskEncryptionKeySha256 { get; set; }
 
+        [Input("guestOsFeatures")]
+        private InputList<string>? _guestOsFeatures;
+
+        /// <summary>
+        /// A list of features to enable on the guest operating system. Applicable only for bootable images.
+        /// </summary>
+        public InputList<string> GuestOsFeatures
+        {
+            get => _guestOsFeatures ?? (_guestOsFeatures = new InputList<string>());
+            set => _guestOsFeatures = value;
+        }
+
         /// <summary>
         /// Parameters with which a disk was created alongside the instance.
         /// </summary>

@@ -37,6 +37,11 @@ public final class GetInstanceBootDisk {
      */
     private String diskEncryptionKeySha256;
     /**
+     * @return A list of features to enable on the guest operating system. Applicable only for bootable images.
+     * 
+     */
+    private List<String> guestOsFeatures;
+    /**
      * @return Parameters with which a disk was created alongside the instance.
      * Structure is documented below.
      * 
@@ -96,6 +101,13 @@ public final class GetInstanceBootDisk {
         return this.diskEncryptionKeySha256;
     }
     /**
+     * @return A list of features to enable on the guest operating system. Applicable only for bootable images.
+     * 
+     */
+    public List<String> guestOsFeatures() {
+        return this.guestOsFeatures;
+    }
+    /**
      * @return Parameters with which a disk was created alongside the instance.
      * Structure is documented below.
      * 
@@ -145,6 +157,7 @@ public final class GetInstanceBootDisk {
         private String deviceName;
         private String diskEncryptionKeyRaw;
         private String diskEncryptionKeySha256;
+        private List<String> guestOsFeatures;
         private List<GetInstanceBootDiskInitializeParam> initializeParams;
         private String interface_;
         private String kmsKeySelfLink;
@@ -157,6 +170,7 @@ public final class GetInstanceBootDisk {
     	      this.deviceName = defaults.deviceName;
     	      this.diskEncryptionKeyRaw = defaults.diskEncryptionKeyRaw;
     	      this.diskEncryptionKeySha256 = defaults.diskEncryptionKeySha256;
+    	      this.guestOsFeatures = defaults.guestOsFeatures;
     	      this.initializeParams = defaults.initializeParams;
     	      this.interface_ = defaults.interface_;
     	      this.kmsKeySelfLink = defaults.kmsKeySelfLink;
@@ -195,6 +209,17 @@ public final class GetInstanceBootDisk {
             }
             this.diskEncryptionKeySha256 = diskEncryptionKeySha256;
             return this;
+        }
+        @CustomType.Setter
+        public Builder guestOsFeatures(List<String> guestOsFeatures) {
+            if (guestOsFeatures == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDisk", "guestOsFeatures");
+            }
+            this.guestOsFeatures = guestOsFeatures;
+            return this;
+        }
+        public Builder guestOsFeatures(String... guestOsFeatures) {
+            return guestOsFeatures(List.of(guestOsFeatures));
         }
         @CustomType.Setter
         public Builder initializeParams(List<GetInstanceBootDiskInitializeParam> initializeParams) {
@@ -245,6 +270,7 @@ public final class GetInstanceBootDisk {
             _resultValue.deviceName = deviceName;
             _resultValue.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
             _resultValue.diskEncryptionKeySha256 = diskEncryptionKeySha256;
+            _resultValue.guestOsFeatures = guestOsFeatures;
             _resultValue.initializeParams = initializeParams;
             _resultValue.interface_ = interface_;
             _resultValue.kmsKeySelfLink = kmsKeySelfLink;

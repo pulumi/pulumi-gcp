@@ -865,6 +865,13 @@ namespace Pulumi.Gcp
             set => _lookerCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _lustreCustomEndpoint = new __Value<string?>(() => __config.Get("lustreCustomEndpoint"));
+        public static string? LustreCustomEndpoint
+        {
+            get => _lustreCustomEndpoint.Get();
+            set => _lustreCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _managedKafkaCustomEndpoint = new __Value<string?>(() => __config.Get("managedKafkaCustomEndpoint"));
         public static string? ManagedKafkaCustomEndpoint
         {
@@ -968,6 +975,13 @@ namespace Pulumi.Gcp
         {
             get => _osConfigCustomEndpoint.Get();
             set => _osConfigCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _osConfigV2CustomEndpoint = new __Value<string?>(() => __config.Get("osConfigV2CustomEndpoint"));
+        public static string? OsConfigV2CustomEndpoint
+        {
+            get => _osConfigV2CustomEndpoint.Get();
+            set => _osConfigV2CustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _osLoginCustomEndpoint = new __Value<string?>(() => __config.Get("osLoginCustomEndpoint"));
@@ -1234,6 +1248,13 @@ namespace Pulumi.Gcp
         {
             get => _sqlCustomEndpoint.Get();
             set => _sqlCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _storageControlCustomEndpoint = new __Value<string?>(() => __config.Get("storageControlCustomEndpoint"));
+        public static string? StorageControlCustomEndpoint
+        {
+            get => _storageControlCustomEndpoint.Get();
+            set => _storageControlCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _storageCustomEndpoint = new __Value<string?>(() => __config.Get("storageCustomEndpoint"));

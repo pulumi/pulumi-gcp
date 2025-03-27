@@ -23,48 +23,31 @@ class ConnectivityTestArgs:
     def __init__(__self__, *,
                  destination: pulumi.Input['ConnectivityTestDestinationArgs'],
                  source: pulumi.Input['ConnectivityTestSourceArgs'],
+                 bypass_firewall_checks: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
-                 related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 round_trip: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a ConnectivityTest resource.
         :param pulumi.Input['ConnectivityTestDestinationArgs'] destination: Required. Destination specification of the Connectivity Test.
-               You can use a combination of destination IP address, Compute
-               Engine VM instance, or VPC network to uniquely identify the
-               destination location.
-               Even if the destination IP address is not unique, the source IP
-               location is unique. Usually, the analysis can infer the destination
-               endpoint from route information.
-               If the destination you specify is a VM instance and the instance has
-               multiple network interfaces, then you must also specify either a
-               destination IP address or VPC network to identify the destination
-               interface.
-               A reachability analysis proceeds even if the destination location
-               is ambiguous. However, the result can include endpoints that you
-               don't intend to test.
+               You can use a combination of destination IP address, URI of a supported
+               endpoint, project ID, or VPC network to identify the destination location.
+               Reachability analysis proceeds even if the destination location is
+               ambiguous. However, the test result might include endpoints or use a
+               destination that you don't intend to test.
                Structure is documented below.
         :param pulumi.Input['ConnectivityTestSourceArgs'] source: Required. Source specification of the Connectivity Test.
-               You can use a combination of source IP address, virtual machine
-               (VM) instance, or Compute Engine network to uniquely identify the
-               source location.
-               Examples: If the source IP address is an internal IP address within
-               a Google Cloud Virtual Private Cloud (VPC) network, then you must
-               also specify the VPC network. Otherwise, specify the VM instance,
-               which already contains its internal IP address and VPC network
-               information.
-               If the source of the test is within an on-premises network, then
-               you must provide the destination VPC network.
-               If the source endpoint is a Compute Engine VM instance with multiple
-               network interfaces, the instance itself is not sufficient to
-               identify the endpoint. So, you must also specify the source IP
-               address or VPC network.
-               A reachability analysis proceeds even if the source location is
-               ambiguous. However, the test result may include endpoints that
-               you don't intend to test.
+               You can use a combination of source IP address, URI of a supported
+               endpoint, project ID, or VPC network to identify the source location.
+               Reachability analysis might proceed even if the source location is
+               ambiguous. However, the test result might include endpoints or use a source
+               that you don't intend to test.
                Structure is documented below.
+        :param pulumi.Input[bool] bypass_firewall_checks: Whether the analysis should skip firewall checking. Default value is false.
         :param pulumi.Input[str] description: The user-supplied description of the Connectivity Test. Maximum of 512 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
                labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
@@ -73,9 +56,12 @@ class ConnectivityTestArgs:
         :param pulumi.Input[str] protocol: IP Protocol of the test. When not provided, "TCP" is assumed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_projects: Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
                project boundaries.
+        :param pulumi.Input[bool] round_trip: Whether run analysis for the return path from destination to source. Default value is false.
         """
         pulumi.set(__self__, "destination", destination)
         pulumi.set(__self__, "source", source)
+        if bypass_firewall_checks is not None:
+            pulumi.set(__self__, "bypass_firewall_checks", bypass_firewall_checks)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if labels is not None:
@@ -88,25 +74,19 @@ class ConnectivityTestArgs:
             pulumi.set(__self__, "protocol", protocol)
         if related_projects is not None:
             pulumi.set(__self__, "related_projects", related_projects)
+        if round_trip is not None:
+            pulumi.set(__self__, "round_trip", round_trip)
 
     @property
     @pulumi.getter
     def destination(self) -> pulumi.Input['ConnectivityTestDestinationArgs']:
         """
         Required. Destination specification of the Connectivity Test.
-        You can use a combination of destination IP address, Compute
-        Engine VM instance, or VPC network to uniquely identify the
-        destination location.
-        Even if the destination IP address is not unique, the source IP
-        location is unique. Usually, the analysis can infer the destination
-        endpoint from route information.
-        If the destination you specify is a VM instance and the instance has
-        multiple network interfaces, then you must also specify either a
-        destination IP address or VPC network to identify the destination
-        interface.
-        A reachability analysis proceeds even if the destination location
-        is ambiguous. However, the result can include endpoints that you
-        don't intend to test.
+        You can use a combination of destination IP address, URI of a supported
+        endpoint, project ID, or VPC network to identify the destination location.
+        Reachability analysis proceeds even if the destination location is
+        ambiguous. However, the test result might include endpoints or use a
+        destination that you don't intend to test.
         Structure is documented below.
         """
         return pulumi.get(self, "destination")
@@ -120,23 +100,11 @@ class ConnectivityTestArgs:
     def source(self) -> pulumi.Input['ConnectivityTestSourceArgs']:
         """
         Required. Source specification of the Connectivity Test.
-        You can use a combination of source IP address, virtual machine
-        (VM) instance, or Compute Engine network to uniquely identify the
-        source location.
-        Examples: If the source IP address is an internal IP address within
-        a Google Cloud Virtual Private Cloud (VPC) network, then you must
-        also specify the VPC network. Otherwise, specify the VM instance,
-        which already contains its internal IP address and VPC network
-        information.
-        If the source of the test is within an on-premises network, then
-        you must provide the destination VPC network.
-        If the source endpoint is a Compute Engine VM instance with multiple
-        network interfaces, the instance itself is not sufficient to
-        identify the endpoint. So, you must also specify the source IP
-        address or VPC network.
-        A reachability analysis proceeds even if the source location is
-        ambiguous. However, the test result may include endpoints that
-        you don't intend to test.
+        You can use a combination of source IP address, URI of a supported
+        endpoint, project ID, or VPC network to identify the source location.
+        Reachability analysis might proceed even if the source location is
+        ambiguous. However, the test result might include endpoints or use a source
+        that you don't intend to test.
         Structure is documented below.
         """
         return pulumi.get(self, "source")
@@ -144,6 +112,18 @@ class ConnectivityTestArgs:
     @source.setter
     def source(self, value: pulumi.Input['ConnectivityTestSourceArgs']):
         pulumi.set(self, "source", value)
+
+    @property
+    @pulumi.getter(name="bypassFirewallChecks")
+    def bypass_firewall_checks(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the analysis should skip firewall checking. Default value is false.
+        """
+        return pulumi.get(self, "bypass_firewall_checks")
+
+    @bypass_firewall_checks.setter
+    def bypass_firewall_checks(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "bypass_firewall_checks", value)
 
     @property
     @pulumi.getter
@@ -217,10 +197,23 @@ class ConnectivityTestArgs:
     def related_projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "related_projects", value)
 
+    @property
+    @pulumi.getter(name="roundTrip")
+    def round_trip(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether run analysis for the return path from destination to source. Default value is false.
+        """
+        return pulumi.get(self, "round_trip")
+
+    @round_trip.setter
+    def round_trip(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "round_trip", value)
+
 
 @pulumi.input_type
 class _ConnectivityTestState:
     def __init__(__self__, *,
+                 bypass_firewall_checks: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input['ConnectivityTestDestinationArgs']] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -230,24 +223,18 @@ class _ConnectivityTestState:
                  protocol: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 round_trip: Optional[pulumi.Input[bool]] = None,
                  source: Optional[pulumi.Input['ConnectivityTestSourceArgs']] = None):
         """
         Input properties used for looking up and filtering ConnectivityTest resources.
+        :param pulumi.Input[bool] bypass_firewall_checks: Whether the analysis should skip firewall checking. Default value is false.
         :param pulumi.Input[str] description: The user-supplied description of the Connectivity Test. Maximum of 512 characters.
         :param pulumi.Input['ConnectivityTestDestinationArgs'] destination: Required. Destination specification of the Connectivity Test.
-               You can use a combination of destination IP address, Compute
-               Engine VM instance, or VPC network to uniquely identify the
-               destination location.
-               Even if the destination IP address is not unique, the source IP
-               location is unique. Usually, the analysis can infer the destination
-               endpoint from route information.
-               If the destination you specify is a VM instance and the instance has
-               multiple network interfaces, then you must also specify either a
-               destination IP address or VPC network to identify the destination
-               interface.
-               A reachability analysis proceeds even if the destination location
-               is ambiguous. However, the result can include endpoints that you
-               don't intend to test.
+               You can use a combination of destination IP address, URI of a supported
+               endpoint, project ID, or VPC network to identify the destination location.
+               Reachability analysis proceeds even if the destination location is
+               ambiguous. However, the test result might include endpoints or use a
+               destination that you don't intend to test.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
@@ -259,26 +246,17 @@ class _ConnectivityTestState:
                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_projects: Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
                project boundaries.
+        :param pulumi.Input[bool] round_trip: Whether run analysis for the return path from destination to source. Default value is false.
         :param pulumi.Input['ConnectivityTestSourceArgs'] source: Required. Source specification of the Connectivity Test.
-               You can use a combination of source IP address, virtual machine
-               (VM) instance, or Compute Engine network to uniquely identify the
-               source location.
-               Examples: If the source IP address is an internal IP address within
-               a Google Cloud Virtual Private Cloud (VPC) network, then you must
-               also specify the VPC network. Otherwise, specify the VM instance,
-               which already contains its internal IP address and VPC network
-               information.
-               If the source of the test is within an on-premises network, then
-               you must provide the destination VPC network.
-               If the source endpoint is a Compute Engine VM instance with multiple
-               network interfaces, the instance itself is not sufficient to
-               identify the endpoint. So, you must also specify the source IP
-               address or VPC network.
-               A reachability analysis proceeds even if the source location is
-               ambiguous. However, the test result may include endpoints that
-               you don't intend to test.
+               You can use a combination of source IP address, URI of a supported
+               endpoint, project ID, or VPC network to identify the source location.
+               Reachability analysis might proceed even if the source location is
+               ambiguous. However, the test result might include endpoints or use a source
+               that you don't intend to test.
                Structure is documented below.
         """
+        if bypass_firewall_checks is not None:
+            pulumi.set(__self__, "bypass_firewall_checks", bypass_firewall_checks)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if destination is not None:
@@ -297,8 +275,22 @@ class _ConnectivityTestState:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if related_projects is not None:
             pulumi.set(__self__, "related_projects", related_projects)
+        if round_trip is not None:
+            pulumi.set(__self__, "round_trip", round_trip)
         if source is not None:
             pulumi.set(__self__, "source", source)
+
+    @property
+    @pulumi.getter(name="bypassFirewallChecks")
+    def bypass_firewall_checks(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the analysis should skip firewall checking. Default value is false.
+        """
+        return pulumi.get(self, "bypass_firewall_checks")
+
+    @bypass_firewall_checks.setter
+    def bypass_firewall_checks(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "bypass_firewall_checks", value)
 
     @property
     @pulumi.getter
@@ -317,19 +309,11 @@ class _ConnectivityTestState:
     def destination(self) -> Optional[pulumi.Input['ConnectivityTestDestinationArgs']]:
         """
         Required. Destination specification of the Connectivity Test.
-        You can use a combination of destination IP address, Compute
-        Engine VM instance, or VPC network to uniquely identify the
-        destination location.
-        Even if the destination IP address is not unique, the source IP
-        location is unique. Usually, the analysis can infer the destination
-        endpoint from route information.
-        If the destination you specify is a VM instance and the instance has
-        multiple network interfaces, then you must also specify either a
-        destination IP address or VPC network to identify the destination
-        interface.
-        A reachability analysis proceeds even if the destination location
-        is ambiguous. However, the result can include endpoints that you
-        don't intend to test.
+        You can use a combination of destination IP address, URI of a supported
+        endpoint, project ID, or VPC network to identify the destination location.
+        Reachability analysis proceeds even if the destination location is
+        ambiguous. However, the test result might include endpoints or use a
+        destination that you don't intend to test.
         Structure is documented below.
         """
         return pulumi.get(self, "destination")
@@ -424,27 +408,27 @@ class _ConnectivityTestState:
         pulumi.set(self, "related_projects", value)
 
     @property
+    @pulumi.getter(name="roundTrip")
+    def round_trip(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether run analysis for the return path from destination to source. Default value is false.
+        """
+        return pulumi.get(self, "round_trip")
+
+    @round_trip.setter
+    def round_trip(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "round_trip", value)
+
+    @property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input['ConnectivityTestSourceArgs']]:
         """
         Required. Source specification of the Connectivity Test.
-        You can use a combination of source IP address, virtual machine
-        (VM) instance, or Compute Engine network to uniquely identify the
-        source location.
-        Examples: If the source IP address is an internal IP address within
-        a Google Cloud Virtual Private Cloud (VPC) network, then you must
-        also specify the VPC network. Otherwise, specify the VM instance,
-        which already contains its internal IP address and VPC network
-        information.
-        If the source of the test is within an on-premises network, then
-        you must provide the destination VPC network.
-        If the source endpoint is a Compute Engine VM instance with multiple
-        network interfaces, the instance itself is not sufficient to
-        identify the endpoint. So, you must also specify the source IP
-        address or VPC network.
-        A reachability analysis proceeds even if the source location is
-        ambiguous. However, the test result may include endpoints that
-        you don't intend to test.
+        You can use a combination of source IP address, URI of a supported
+        endpoint, project ID, or VPC network to identify the source location.
+        Reachability analysis might proceed even if the source location is
+        ambiguous. However, the test result might include endpoints or use a source
+        that you don't intend to test.
         Structure is documented below.
         """
         return pulumi.get(self, "source")
@@ -459,6 +443,7 @@ class ConnectivityTest(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 bypass_firewall_checks: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[Union['ConnectivityTestDestinationArgs', 'ConnectivityTestDestinationArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -466,6 +451,7 @@ class ConnectivityTest(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 round_trip: Optional[pulumi.Input[bool]] = None,
                  source: Optional[pulumi.Input[Union['ConnectivityTestSourceArgs', 'ConnectivityTestSourceArgsDict']]] = None,
                  __props__=None):
         """
@@ -566,6 +552,40 @@ class ConnectivityTest(pulumi.CustomResource):
             },
             protocol="UDP")
         ```
+        ### Network Management Connectivity Test Endpoints
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        endpoints_test = gcp.networkmanagement.ConnectivityTest("endpoints-test",
+            name="conn-test-endpoints",
+            source={
+                "gke_master_cluster": "projects/test-project/locations/us-central1/clusters/name",
+                "cloud_sql_instance": "projects/test-project/instances/name",
+                "app_engine_version": {
+                    "uri": "apps/test-project/services/default/versions/name",
+                },
+                "cloud_function": {
+                    "uri": "projects/test-project/locations/us-central1/functions/name",
+                },
+                "cloud_run_revision": {
+                    "uri": "projects/test-project/locations/us-central1/revisions/name",
+                },
+                "port": 80,
+            },
+            destination={
+                "port": 443,
+                "forwarding_rule": "projects/test-project/regions/us-central1/forwardingRules/name",
+                "gke_master_cluster": "projects/test-project/locations/us-central1/clusters/name",
+                "fqdn": "name.us-central1.gke.goog",
+                "cloud_sql_instance": "projects/test-project/instances/name",
+                "redis_instance": "projects/test-project/locations/us-central1/instances/name",
+                "redis_cluster": "projects/test-project/locations/us-central1/clusters/name",
+            },
+            bypass_firewall_checks=True,
+            round_trip=True)
+        ```
 
         ## Import
 
@@ -593,21 +613,14 @@ class ConnectivityTest(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] bypass_firewall_checks: Whether the analysis should skip firewall checking. Default value is false.
         :param pulumi.Input[str] description: The user-supplied description of the Connectivity Test. Maximum of 512 characters.
         :param pulumi.Input[Union['ConnectivityTestDestinationArgs', 'ConnectivityTestDestinationArgsDict']] destination: Required. Destination specification of the Connectivity Test.
-               You can use a combination of destination IP address, Compute
-               Engine VM instance, or VPC network to uniquely identify the
-               destination location.
-               Even if the destination IP address is not unique, the source IP
-               location is unique. Usually, the analysis can infer the destination
-               endpoint from route information.
-               If the destination you specify is a VM instance and the instance has
-               multiple network interfaces, then you must also specify either a
-               destination IP address or VPC network to identify the destination
-               interface.
-               A reachability analysis proceeds even if the destination location
-               is ambiguous. However, the result can include endpoints that you
-               don't intend to test.
+               You can use a combination of destination IP address, URI of a supported
+               endpoint, project ID, or VPC network to identify the destination location.
+               Reachability analysis proceeds even if the destination location is
+               ambiguous. However, the test result might include endpoints or use a
+               destination that you don't intend to test.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
                labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
@@ -616,24 +629,13 @@ class ConnectivityTest(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: IP Protocol of the test. When not provided, "TCP" is assumed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_projects: Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
                project boundaries.
+        :param pulumi.Input[bool] round_trip: Whether run analysis for the return path from destination to source. Default value is false.
         :param pulumi.Input[Union['ConnectivityTestSourceArgs', 'ConnectivityTestSourceArgsDict']] source: Required. Source specification of the Connectivity Test.
-               You can use a combination of source IP address, virtual machine
-               (VM) instance, or Compute Engine network to uniquely identify the
-               source location.
-               Examples: If the source IP address is an internal IP address within
-               a Google Cloud Virtual Private Cloud (VPC) network, then you must
-               also specify the VPC network. Otherwise, specify the VM instance,
-               which already contains its internal IP address and VPC network
-               information.
-               If the source of the test is within an on-premises network, then
-               you must provide the destination VPC network.
-               If the source endpoint is a Compute Engine VM instance with multiple
-               network interfaces, the instance itself is not sufficient to
-               identify the endpoint. So, you must also specify the source IP
-               address or VPC network.
-               A reachability analysis proceeds even if the source location is
-               ambiguous. However, the test result may include endpoints that
-               you don't intend to test.
+               You can use a combination of source IP address, URI of a supported
+               endpoint, project ID, or VPC network to identify the source location.
+               Reachability analysis might proceed even if the source location is
+               ambiguous. However, the test result might include endpoints or use a source
+               that you don't intend to test.
                Structure is documented below.
         """
         ...
@@ -740,6 +742,40 @@ class ConnectivityTest(pulumi.CustomResource):
             },
             protocol="UDP")
         ```
+        ### Network Management Connectivity Test Endpoints
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        endpoints_test = gcp.networkmanagement.ConnectivityTest("endpoints-test",
+            name="conn-test-endpoints",
+            source={
+                "gke_master_cluster": "projects/test-project/locations/us-central1/clusters/name",
+                "cloud_sql_instance": "projects/test-project/instances/name",
+                "app_engine_version": {
+                    "uri": "apps/test-project/services/default/versions/name",
+                },
+                "cloud_function": {
+                    "uri": "projects/test-project/locations/us-central1/functions/name",
+                },
+                "cloud_run_revision": {
+                    "uri": "projects/test-project/locations/us-central1/revisions/name",
+                },
+                "port": 80,
+            },
+            destination={
+                "port": 443,
+                "forwarding_rule": "projects/test-project/regions/us-central1/forwardingRules/name",
+                "gke_master_cluster": "projects/test-project/locations/us-central1/clusters/name",
+                "fqdn": "name.us-central1.gke.goog",
+                "cloud_sql_instance": "projects/test-project/instances/name",
+                "redis_instance": "projects/test-project/locations/us-central1/instances/name",
+                "redis_cluster": "projects/test-project/locations/us-central1/clusters/name",
+            },
+            bypass_firewall_checks=True,
+            round_trip=True)
+        ```
 
         ## Import
 
@@ -780,6 +816,7 @@ class ConnectivityTest(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 bypass_firewall_checks: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[Union['ConnectivityTestDestinationArgs', 'ConnectivityTestDestinationArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -787,6 +824,7 @@ class ConnectivityTest(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 round_trip: Optional[pulumi.Input[bool]] = None,
                  source: Optional[pulumi.Input[Union['ConnectivityTestSourceArgs', 'ConnectivityTestSourceArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -797,6 +835,7 @@ class ConnectivityTest(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectivityTestArgs.__new__(ConnectivityTestArgs)
 
+            __props__.__dict__["bypass_firewall_checks"] = bypass_firewall_checks
             __props__.__dict__["description"] = description
             if destination is None and not opts.urn:
                 raise TypeError("Missing required property 'destination'")
@@ -806,6 +845,7 @@ class ConnectivityTest(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["related_projects"] = related_projects
+            __props__.__dict__["round_trip"] = round_trip
             if source is None and not opts.urn:
                 raise TypeError("Missing required property 'source'")
             __props__.__dict__["source"] = source
@@ -823,6 +863,7 @@ class ConnectivityTest(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            bypass_firewall_checks: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             destination: Optional[pulumi.Input[Union['ConnectivityTestDestinationArgs', 'ConnectivityTestDestinationArgsDict']]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -832,6 +873,7 @@ class ConnectivityTest(pulumi.CustomResource):
             protocol: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            round_trip: Optional[pulumi.Input[bool]] = None,
             source: Optional[pulumi.Input[Union['ConnectivityTestSourceArgs', 'ConnectivityTestSourceArgsDict']]] = None) -> 'ConnectivityTest':
         """
         Get an existing ConnectivityTest resource's state with the given name, id, and optional extra
@@ -840,21 +882,14 @@ class ConnectivityTest(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] bypass_firewall_checks: Whether the analysis should skip firewall checking. Default value is false.
         :param pulumi.Input[str] description: The user-supplied description of the Connectivity Test. Maximum of 512 characters.
         :param pulumi.Input[Union['ConnectivityTestDestinationArgs', 'ConnectivityTestDestinationArgsDict']] destination: Required. Destination specification of the Connectivity Test.
-               You can use a combination of destination IP address, Compute
-               Engine VM instance, or VPC network to uniquely identify the
-               destination location.
-               Even if the destination IP address is not unique, the source IP
-               location is unique. Usually, the analysis can infer the destination
-               endpoint from route information.
-               If the destination you specify is a VM instance and the instance has
-               multiple network interfaces, then you must also specify either a
-               destination IP address or VPC network to identify the destination
-               interface.
-               A reachability analysis proceeds even if the destination location
-               is ambiguous. However, the result can include endpoints that you
-               don't intend to test.
+               You can use a combination of destination IP address, URI of a supported
+               endpoint, project ID, or VPC network to identify the destination location.
+               Reachability analysis proceeds even if the destination location is
+               ambiguous. However, the test result might include endpoints or use a
+               destination that you don't intend to test.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
@@ -866,30 +901,20 @@ class ConnectivityTest(pulumi.CustomResource):
                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_projects: Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
                project boundaries.
+        :param pulumi.Input[bool] round_trip: Whether run analysis for the return path from destination to source. Default value is false.
         :param pulumi.Input[Union['ConnectivityTestSourceArgs', 'ConnectivityTestSourceArgsDict']] source: Required. Source specification of the Connectivity Test.
-               You can use a combination of source IP address, virtual machine
-               (VM) instance, or Compute Engine network to uniquely identify the
-               source location.
-               Examples: If the source IP address is an internal IP address within
-               a Google Cloud Virtual Private Cloud (VPC) network, then you must
-               also specify the VPC network. Otherwise, specify the VM instance,
-               which already contains its internal IP address and VPC network
-               information.
-               If the source of the test is within an on-premises network, then
-               you must provide the destination VPC network.
-               If the source endpoint is a Compute Engine VM instance with multiple
-               network interfaces, the instance itself is not sufficient to
-               identify the endpoint. So, you must also specify the source IP
-               address or VPC network.
-               A reachability analysis proceeds even if the source location is
-               ambiguous. However, the test result may include endpoints that
-               you don't intend to test.
+               You can use a combination of source IP address, URI of a supported
+               endpoint, project ID, or VPC network to identify the source location.
+               Reachability analysis might proceed even if the source location is
+               ambiguous. However, the test result might include endpoints or use a source
+               that you don't intend to test.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ConnectivityTestState.__new__(_ConnectivityTestState)
 
+        __props__.__dict__["bypass_firewall_checks"] = bypass_firewall_checks
         __props__.__dict__["description"] = description
         __props__.__dict__["destination"] = destination
         __props__.__dict__["effective_labels"] = effective_labels
@@ -899,8 +924,17 @@ class ConnectivityTest(pulumi.CustomResource):
         __props__.__dict__["protocol"] = protocol
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["related_projects"] = related_projects
+        __props__.__dict__["round_trip"] = round_trip
         __props__.__dict__["source"] = source
         return ConnectivityTest(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="bypassFirewallChecks")
+    def bypass_firewall_checks(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether the analysis should skip firewall checking. Default value is false.
+        """
+        return pulumi.get(self, "bypass_firewall_checks")
 
     @property
     @pulumi.getter
@@ -915,19 +949,11 @@ class ConnectivityTest(pulumi.CustomResource):
     def destination(self) -> pulumi.Output['outputs.ConnectivityTestDestination']:
         """
         Required. Destination specification of the Connectivity Test.
-        You can use a combination of destination IP address, Compute
-        Engine VM instance, or VPC network to uniquely identify the
-        destination location.
-        Even if the destination IP address is not unique, the source IP
-        location is unique. Usually, the analysis can infer the destination
-        endpoint from route information.
-        If the destination you specify is a VM instance and the instance has
-        multiple network interfaces, then you must also specify either a
-        destination IP address or VPC network to identify the destination
-        interface.
-        A reachability analysis proceeds even if the destination location
-        is ambiguous. However, the result can include endpoints that you
-        don't intend to test.
+        You can use a combination of destination IP address, URI of a supported
+        endpoint, project ID, or VPC network to identify the destination location.
+        Reachability analysis proceeds even if the destination location is
+        ambiguous. However, the test result might include endpoints or use a
+        destination that you don't intend to test.
         Structure is documented below.
         """
         return pulumi.get(self, "destination")
@@ -990,27 +1016,23 @@ class ConnectivityTest(pulumi.CustomResource):
         return pulumi.get(self, "related_projects")
 
     @property
+    @pulumi.getter(name="roundTrip")
+    def round_trip(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether run analysis for the return path from destination to source. Default value is false.
+        """
+        return pulumi.get(self, "round_trip")
+
+    @property
     @pulumi.getter
     def source(self) -> pulumi.Output['outputs.ConnectivityTestSource']:
         """
         Required. Source specification of the Connectivity Test.
-        You can use a combination of source IP address, virtual machine
-        (VM) instance, or Compute Engine network to uniquely identify the
-        source location.
-        Examples: If the source IP address is an internal IP address within
-        a Google Cloud Virtual Private Cloud (VPC) network, then you must
-        also specify the VPC network. Otherwise, specify the VM instance,
-        which already contains its internal IP address and VPC network
-        information.
-        If the source of the test is within an on-premises network, then
-        you must provide the destination VPC network.
-        If the source endpoint is a Compute Engine VM instance with multiple
-        network interfaces, the instance itself is not sufficient to
-        identify the endpoint. So, you must also specify the source IP
-        address or VPC network.
-        A reachability analysis proceeds even if the source location is
-        ambiguous. However, the test result may include endpoints that
-        you don't intend to test.
+        You can use a combination of source IP address, URI of a supported
+        endpoint, project ID, or VPC network to identify the source location.
+        Reachability analysis might proceed even if the source location is
+        ambiguous. However, the test result might include endpoints or use a source
+        that you don't intend to test.
         Structure is documented below.
         """
         return pulumi.get(self, "source")

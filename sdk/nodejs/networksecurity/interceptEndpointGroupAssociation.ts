@@ -131,10 +131,19 @@ export class InterceptEndpointGroupAssociation extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
+     * The list of locations where the association is configured. This information
+     * is retrieved from the linked endpoint group.
+     * Structure is documented below.
+     */
+    public /*out*/ readonly locations!: pulumi.Output<outputs.networksecurity.InterceptEndpointGroupAssociationLocation[]>;
+    /**
+     * (Deprecated)
      * The list of locations where the association is present. This information
      * is retrieved from the linked endpoint group, and not configured as part
      * of the association itself.
      * Structure is documented below.
+     *
+     * @deprecated `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
      */
     public /*out*/ readonly locationsDetails!: pulumi.Output<outputs.networksecurity.InterceptEndpointGroupAssociationLocationsDetail[]>;
     /**
@@ -200,6 +209,7 @@ export class InterceptEndpointGroupAssociation extends pulumi.CustomResource {
             resourceInputs["interceptEndpointGroupAssociationId"] = state ? state.interceptEndpointGroupAssociationId : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["locations"] = state ? state.locations : undefined;
             resourceInputs["locationsDetails"] = state ? state.locationsDetails : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
@@ -227,6 +237,7 @@ export class InterceptEndpointGroupAssociation extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["locations"] = undefined /*out*/;
             resourceInputs["locationsDetails"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
@@ -280,10 +291,19 @@ export interface InterceptEndpointGroupAssociationState {
      */
     location?: pulumi.Input<string>;
     /**
+     * The list of locations where the association is configured. This information
+     * is retrieved from the linked endpoint group.
+     * Structure is documented below.
+     */
+    locations?: pulumi.Input<pulumi.Input<inputs.networksecurity.InterceptEndpointGroupAssociationLocation>[]>;
+    /**
+     * (Deprecated)
      * The list of locations where the association is present. This information
      * is retrieved from the linked endpoint group, and not configured as part
      * of the association itself.
      * Structure is documented below.
+     *
+     * @deprecated `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
      */
     locationsDetails?: pulumi.Input<pulumi.Input<inputs.networksecurity.InterceptEndpointGroupAssociationLocationsDetail>[]>;
     /**

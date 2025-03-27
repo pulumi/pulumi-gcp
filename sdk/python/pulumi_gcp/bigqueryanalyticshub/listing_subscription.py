@@ -32,7 +32,7 @@ class ListingSubscriptionArgs:
         :param pulumi.Input['ListingSubscriptionDestinationDatasetArgs'] destination_dataset: The destination dataset for this subscription.
                Structure is documented below.
         :param pulumi.Input[str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
-        :param pulumi.Input[str] location: The name of the location for this subscription.
+        :param pulumi.Input[str] location: The name of the location of the data exchange. Distinct from the location of the destination data set.
         """
         pulumi.set(__self__, "data_exchange_id", data_exchange_id)
         pulumi.set(__self__, "destination_dataset", destination_dataset)
@@ -82,7 +82,7 @@ class ListingSubscriptionArgs:
     @pulumi.getter
     def location(self) -> pulumi.Input[str]:
         """
-        The name of the location for this subscription.
+        The name of the location of the data exchange. Distinct from the location of the destination data set.
         """
         return pulumi.get(self, "location")
 
@@ -132,7 +132,7 @@ class _ListingSubscriptionState:
         :param pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionLinkedResourceArgs']]] linked_resources: Output only. Linked resources created in the subscription. Only contains values if state = STATE_ACTIVE.
                Structure is documented below.
         :param pulumi.Input[str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
-        :param pulumi.Input[str] location: The name of the location for this subscription.
+        :param pulumi.Input[str] location: The name of the location of the data exchange. Distinct from the location of the destination data set.
         :param pulumi.Input[str] name: The resource name of the subscription. e.g. "projects/myproject/locations/US/subscriptions/123"
         :param pulumi.Input[str] organization_display_name: Display name of the project of this subscription.
         :param pulumi.Input[str] organization_id: Organization of the project this subscription belongs to.
@@ -266,7 +266,7 @@ class _ListingSubscriptionState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the location for this subscription.
+        The name of the location of the data exchange. Distinct from the location of the destination data set.
         """
         return pulumi.get(self, "location")
 
@@ -388,6 +388,8 @@ class ListingSubscription(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
 
+        > **Note:** When importing the resource with `pulumi import`, provide the destination project and location
+        in the format projects/{{destination_project}}/locations/{{destination_location}}/subscriptions/{{subscription_id}}
         ## Example Usage
 
         ### Bigquery Analyticshub Listing Subscription Basic
@@ -463,7 +465,7 @@ class ListingSubscription(pulumi.CustomResource):
         :param pulumi.Input[Union['ListingSubscriptionDestinationDatasetArgs', 'ListingSubscriptionDestinationDatasetArgsDict']] destination_dataset: The destination dataset for this subscription.
                Structure is documented below.
         :param pulumi.Input[str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
-        :param pulumi.Input[str] location: The name of the location for this subscription.
+        :param pulumi.Input[str] location: The name of the location of the data exchange. Distinct from the location of the destination data set.
         """
         ...
     @overload
@@ -480,6 +482,8 @@ class ListingSubscription(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
 
+        > **Note:** When importing the resource with `pulumi import`, provide the destination project and location
+        in the format projects/{{destination_project}}/locations/{{destination_location}}/subscriptions/{{subscription_id}}
         ## Example Usage
 
         ### Bigquery Analyticshub Listing Subscription Basic
@@ -646,7 +650,7 @@ class ListingSubscription(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ListingSubscriptionLinkedResourceArgs', 'ListingSubscriptionLinkedResourceArgsDict']]]] linked_resources: Output only. Linked resources created in the subscription. Only contains values if state = STATE_ACTIVE.
                Structure is documented below.
         :param pulumi.Input[str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
-        :param pulumi.Input[str] location: The name of the location for this subscription.
+        :param pulumi.Input[str] location: The name of the location of the data exchange. Distinct from the location of the destination data set.
         :param pulumi.Input[str] name: The resource name of the subscription. e.g. "projects/myproject/locations/US/subscriptions/123"
         :param pulumi.Input[str] organization_display_name: Display name of the project of this subscription.
         :param pulumi.Input[str] organization_id: Organization of the project this subscription belongs to.
@@ -741,7 +745,7 @@ class ListingSubscription(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         """
-        The name of the location for this subscription.
+        The name of the location of the data exchange. Distinct from the location of the destination data set.
         """
         return pulumi.get(self, "location")
 

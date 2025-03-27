@@ -133,14 +133,14 @@ public final class ListingSubscriptionState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The name of the location for this subscription.
+     * The name of the location of the data exchange. Distinct from the location of the destination data set.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return The name of the location for this subscription.
+     * @return The name of the location of the data exchange. Distinct from the location of the destination data set.
      * 
      */
     public Optional<Output<String>> location() {
@@ -477,7 +477,7 @@ public final class ListingSubscriptionState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param location The name of the location for this subscription.
+         * @param location The name of the location of the data exchange. Distinct from the location of the destination data set.
          * 
          * @return builder
          * 
@@ -488,7 +488,7 @@ public final class ListingSubscriptionState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param location The name of the location for this subscription.
+         * @param location The name of the location of the data exchange. Distinct from the location of the destination data set.
          * 
          * @return builder
          * 

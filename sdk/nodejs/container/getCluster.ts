@@ -123,6 +123,7 @@ export interface GetClusterResult {
     readonly nodeVersion: string;
     readonly notificationConfigs: outputs.container.GetClusterNotificationConfig[];
     readonly operation: string;
+    readonly podAutoscalings: outputs.container.GetClusterPodAutoscaling[];
     readonly podSecurityPolicyConfigs: outputs.container.GetClusterPodSecurityPolicyConfig[];
     readonly privateClusterConfigs: outputs.container.GetClusterPrivateClusterConfig[];
     readonly privateIpv6GoogleAccess: string;

@@ -235,6 +235,98 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Resource Policy Workload Policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bar = new Gcp.Compute.ResourcePolicy("bar", new()
+    ///     {
+    ///         Name = "gce-policy",
+    ///         Region = "europe-west1",
+    ///         WorkloadPolicy = new Gcp.Compute.Inputs.ResourcePolicyWorkloadPolicyArgs
+    ///         {
+    ///             Type = "HIGH_AVAILABILITY",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Resource Policy Workload Policy Accelerator Topology
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bar = new Gcp.Compute.ResourcePolicy("bar", new()
+    ///     {
+    ///         Name = "gce-policy",
+    ///         Region = "europe-west1",
+    ///         WorkloadPolicy = new Gcp.Compute.Inputs.ResourcePolicyWorkloadPolicyArgs
+    ///         {
+    ///             Type = "HIGH_THROUGHPUT",
+    ///             AcceleratorTopology = "SOME NEW TOPOLOGY",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Resource Policy Workload Policy Max Topology Distance
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bar = new Gcp.Compute.ResourcePolicy("bar", new()
+    ///     {
+    ///         Name = "gce-policy",
+    ///         Region = "europe-west1",
+    ///         WorkloadPolicy = new Gcp.Compute.Inputs.ResourcePolicyWorkloadPolicyArgs
+    ///         {
+    ///             Type = "HIGH_THROUGHPUT",
+    ///             MaxTopologyDistance = "BLOCK",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Resource Policy Placement Policy Gpu Topology
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var baz = new Gcp.Compute.ResourcePolicy("baz", new()
+    ///     {
+    ///         Name = "gce-policy",
+    ///         Region = "europe-west9",
+    ///         GroupPlacementPolicy = new Gcp.Compute.Inputs.ResourcePolicyGroupPlacementPolicyArgs
+    ///         {
+    ///             VmCount = 2,
+    ///             Collocation = "COLLOCATED",
+    ///             GpuTopology = "1x72",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -336,6 +428,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("snapshotSchedulePolicy")]
         public Output<Outputs.ResourcePolicySnapshotSchedulePolicy?> SnapshotSchedulePolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Represents the workload policy.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("workloadPolicy")]
+        public Output<Outputs.ResourcePolicyWorkloadPolicy?> WorkloadPolicy { get; private set; } = null!;
 
 
         /// <summary>
@@ -445,6 +544,13 @@ namespace Pulumi.Gcp.Compute
         [Input("snapshotSchedulePolicy")]
         public Input<Inputs.ResourcePolicySnapshotSchedulePolicyArgs>? SnapshotSchedulePolicy { get; set; }
 
+        /// <summary>
+        /// Represents the workload policy.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("workloadPolicy")]
+        public Input<Inputs.ResourcePolicyWorkloadPolicyArgs>? WorkloadPolicy { get; set; }
+
         public ResourcePolicyArgs()
         {
         }
@@ -520,6 +626,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("snapshotSchedulePolicy")]
         public Input<Inputs.ResourcePolicySnapshotSchedulePolicyGetArgs>? SnapshotSchedulePolicy { get; set; }
+
+        /// <summary>
+        /// Represents the workload policy.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("workloadPolicy")]
+        public Input<Inputs.ResourcePolicyWorkloadPolicyGetArgs>? WorkloadPolicy { get; set; }
 
         public ResourcePolicyState()
         {

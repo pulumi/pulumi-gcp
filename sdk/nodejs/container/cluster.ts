@@ -514,6 +514,11 @@ export class Cluster extends pulumi.CustomResource {
     public /*out*/ readonly operation!: pulumi.Output<string>;
     /**
      * Configuration for the
+     * Structure is documented below.
+     */
+    public readonly podAutoscaling!: pulumi.Output<outputs.container.ClusterPodAutoscaling>;
+    /**
+     * Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      */
@@ -705,6 +710,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["nodeVersion"] = state ? state.nodeVersion : undefined;
             resourceInputs["notificationConfig"] = state ? state.notificationConfig : undefined;
             resourceInputs["operation"] = state ? state.operation : undefined;
+            resourceInputs["podAutoscaling"] = state ? state.podAutoscaling : undefined;
             resourceInputs["podSecurityPolicyConfig"] = state ? state.podSecurityPolicyConfig : undefined;
             resourceInputs["privateClusterConfig"] = state ? state.privateClusterConfig : undefined;
             resourceInputs["privateIpv6GoogleAccess"] = state ? state.privateIpv6GoogleAccess : undefined;
@@ -784,6 +790,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["nodePools"] = args ? args.nodePools : undefined;
             resourceInputs["nodeVersion"] = args ? args.nodeVersion : undefined;
             resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
+            resourceInputs["podAutoscaling"] = args ? args.podAutoscaling : undefined;
             resourceInputs["podSecurityPolicyConfig"] = args ? args.podSecurityPolicyConfig : undefined;
             resourceInputs["privateClusterConfig"] = args ? args.privateClusterConfig : undefined;
             resourceInputs["privateIpv6GoogleAccess"] = args ? args.privateIpv6GoogleAccess : undefined;
@@ -1173,6 +1180,11 @@ export interface ClusterState {
      */
     notificationConfig?: pulumi.Input<inputs.container.ClusterNotificationConfig>;
     operation?: pulumi.Input<string>;
+    /**
+     * Configuration for the
+     * Structure is documented below.
+     */
+    podAutoscaling?: pulumi.Input<inputs.container.ClusterPodAutoscaling>;
     /**
      * Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
@@ -1629,6 +1641,11 @@ export interface ClusterArgs {
      * Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
      */
     notificationConfig?: pulumi.Input<inputs.container.ClusterNotificationConfig>;
+    /**
+     * Configuration for the
+     * Structure is documented below.
+     */
+    podAutoscaling?: pulumi.Input<inputs.container.ClusterPodAutoscaling>;
     /**
      * Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.

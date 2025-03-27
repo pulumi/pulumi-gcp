@@ -38,6 +38,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? DiskEncryptionKeySha256;
         /// <summary>
+        /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+        /// </summary>
+        public readonly ImmutableArray<string> GuestOsFeatures;
+        /// <summary>
         /// Parameters for a new disk that will be created
         /// alongside the new instance. Either `initialize_params` or `source` must be set.
         /// Structure is documented below.
@@ -75,6 +79,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? diskEncryptionKeySha256,
 
+            ImmutableArray<string> guestOsFeatures,
+
             Outputs.InstanceBootDiskInitializeParams? initializeParams,
 
             string? @interface,
@@ -89,6 +95,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             DeviceName = deviceName;
             DiskEncryptionKeyRaw = diskEncryptionKeyRaw;
             DiskEncryptionKeySha256 = diskEncryptionKeySha256;
+            GuestOsFeatures = guestOsFeatures;
             InitializeParams = initializeParams;
             Interface = @interface;
             KmsKeySelfLink = kmsKeySelfLink;

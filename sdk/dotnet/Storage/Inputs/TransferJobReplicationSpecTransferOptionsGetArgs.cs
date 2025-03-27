@@ -26,6 +26,12 @@ namespace Pulumi.Gcp.Storage.Inputs
         public Input<bool>? DeleteObjectsUniqueInSink { get; set; }
 
         /// <summary>
+        /// Specifies the metadata options for running a transfer
+        /// </summary>
+        [Input("metadataOptions")]
+        public Input<Inputs.TransferJobReplicationSpecTransferOptionsMetadataOptionsGetArgs>? MetadataOptions { get; set; }
+
+        /// <summary>
         /// Whether overwriting objects that already exist in the sink is allowed.
         /// </summary>
         [Input("overwriteObjectsAlreadyExistingInSink")]

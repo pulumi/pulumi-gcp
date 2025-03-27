@@ -24,6 +24,7 @@ import com.pulumi.gcp.container.outputs.NodePoolNodeConfigSecondaryBootDisk;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigShieldedInstanceConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigSoleTenantConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigTaint;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigWindowsNodeConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigWorkloadMetadataConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -249,6 +250,11 @@ public final class NodePoolNodeConfig {
      * 
      */
     private @Nullable List<NodePoolNodeConfigTaint> taints;
+    /**
+     * @return Parameters that can be configured on Windows nodes.
+     * 
+     */
+    private @Nullable NodePoolNodeConfigWindowsNodeConfig windowsNodeConfig;
     /**
      * @return The workload metadata configuration for this node.
      * 
@@ -554,6 +560,13 @@ public final class NodePoolNodeConfig {
         return this.taints == null ? List.of() : this.taints;
     }
     /**
+     * @return Parameters that can be configured on Windows nodes.
+     * 
+     */
+    public Optional<NodePoolNodeConfigWindowsNodeConfig> windowsNodeConfig() {
+        return Optional.ofNullable(this.windowsNodeConfig);
+    }
+    /**
      * @return The workload metadata configuration for this node.
      * 
      */
@@ -612,6 +625,7 @@ public final class NodePoolNodeConfig {
         private @Nullable List<String> storagePools;
         private @Nullable List<String> tags;
         private @Nullable List<NodePoolNodeConfigTaint> taints;
+        private @Nullable NodePoolNodeConfigWindowsNodeConfig windowsNodeConfig;
         private @Nullable NodePoolNodeConfigWorkloadMetadataConfig workloadMetadataConfig;
         public Builder() {}
         public Builder(NodePoolNodeConfig defaults) {
@@ -658,6 +672,7 @@ public final class NodePoolNodeConfig {
     	      this.storagePools = defaults.storagePools;
     	      this.tags = defaults.tags;
     	      this.taints = defaults.taints;
+    	      this.windowsNodeConfig = defaults.windowsNodeConfig;
     	      this.workloadMetadataConfig = defaults.workloadMetadataConfig;
         }
 
@@ -935,6 +950,12 @@ public final class NodePoolNodeConfig {
             return taints(List.of(taints));
         }
         @CustomType.Setter
+        public Builder windowsNodeConfig(@Nullable NodePoolNodeConfigWindowsNodeConfig windowsNodeConfig) {
+
+            this.windowsNodeConfig = windowsNodeConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder workloadMetadataConfig(@Nullable NodePoolNodeConfigWorkloadMetadataConfig workloadMetadataConfig) {
 
             this.workloadMetadataConfig = workloadMetadataConfig;
@@ -984,6 +1005,7 @@ public final class NodePoolNodeConfig {
             _resultValue.storagePools = storagePools;
             _resultValue.tags = tags;
             _resultValue.taints = taints;
+            _resultValue.windowsNodeConfig = windowsNodeConfig;
             _resultValue.workloadMetadataConfig = workloadMetadataConfig;
             return _resultValue;
         }

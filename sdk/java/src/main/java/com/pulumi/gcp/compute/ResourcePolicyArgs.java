@@ -9,6 +9,7 @@ import com.pulumi.gcp.compute.inputs.ResourcePolicyDiskConsistencyGroupPolicyArg
 import com.pulumi.gcp.compute.inputs.ResourcePolicyGroupPlacementPolicyArgs;
 import com.pulumi.gcp.compute.inputs.ResourcePolicyInstanceSchedulePolicyArgs;
 import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyArgs;
+import com.pulumi.gcp.compute.inputs.ResourcePolicyWorkloadPolicyArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -165,6 +166,23 @@ public final class ResourcePolicyArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.snapshotSchedulePolicy);
     }
 
+    /**
+     * Represents the workload policy.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="workloadPolicy")
+    private @Nullable Output<ResourcePolicyWorkloadPolicyArgs> workloadPolicy;
+
+    /**
+     * @return Represents the workload policy.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ResourcePolicyWorkloadPolicyArgs>> workloadPolicy() {
+        return Optional.ofNullable(this.workloadPolicy);
+    }
+
     private ResourcePolicyArgs() {}
 
     private ResourcePolicyArgs(ResourcePolicyArgs $) {
@@ -176,6 +194,7 @@ public final class ResourcePolicyArgs extends com.pulumi.resources.ResourceArgs 
         this.project = $.project;
         this.region = $.region;
         this.snapshotSchedulePolicy = $.snapshotSchedulePolicy;
+        this.workloadPolicy = $.workloadPolicy;
     }
 
     public static Builder builder() {
@@ -388,6 +407,29 @@ public final class ResourcePolicyArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder snapshotSchedulePolicy(ResourcePolicySnapshotSchedulePolicyArgs snapshotSchedulePolicy) {
             return snapshotSchedulePolicy(Output.of(snapshotSchedulePolicy));
+        }
+
+        /**
+         * @param workloadPolicy Represents the workload policy.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workloadPolicy(@Nullable Output<ResourcePolicyWorkloadPolicyArgs> workloadPolicy) {
+            $.workloadPolicy = workloadPolicy;
+            return this;
+        }
+
+        /**
+         * @param workloadPolicy Represents the workload policy.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workloadPolicy(ResourcePolicyWorkloadPolicyArgs workloadPolicy) {
+            return workloadPolicy(Output.of(workloadPolicy));
         }
 
         public ResourcePolicyArgs build() {

@@ -13,6 +13,8 @@ import com.pulumi.gcp.memorystore.inputs.InstanceState;
 import com.pulumi.gcp.memorystore.outputs.InstanceDesiredPscAutoConnection;
 import com.pulumi.gcp.memorystore.outputs.InstanceDiscoveryEndpoint;
 import com.pulumi.gcp.memorystore.outputs.InstanceEndpoint;
+import com.pulumi.gcp.memorystore.outputs.InstanceMaintenancePolicy;
+import com.pulumi.gcp.memorystore.outputs.InstanceMaintenanceSchedule;
 import com.pulumi.gcp.memorystore.outputs.InstanceNodeConfig;
 import com.pulumi.gcp.memorystore.outputs.InstancePersistenceConfig;
 import com.pulumi.gcp.memorystore.outputs.InstancePscAutoConnection;
@@ -53,6 +55,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.memorystore.Instance;
  * import com.pulumi.gcp.memorystore.InstanceArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstanceDesiredPscAutoConnectionArgs;
+ * import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -101,6 +104,17 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .location("us-central1")
  *             .deletionProtectionEnabled(false)
+ *             .maintenancePolicy(InstanceMaintenancePolicyArgs.builder()
+ *                 .weeklyMaintenanceWindows(InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs.builder()
+ *                     .day("MONDAY")
+ *                     .startTime(InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs.builder()
+ *                         .hours(1)
+ *                         .minutes(0)
+ *                         .seconds(0)
+ *                         .nanos(0)
+ *                         .build())
+ *                     .build())
+ *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(default_)
  *                 .build());
@@ -133,6 +147,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.memorystore.InstanceArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstanceDesiredPscAutoConnectionArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstanceZoneDistributionConfigArgs;
+ * import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstancePersistenceConfigArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstancePersistenceConfigRdbConfigArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -190,6 +205,17 @@ import javax.annotation.Nullable;
  *             .zoneDistributionConfig(InstanceZoneDistributionConfigArgs.builder()
  *                 .mode("SINGLE_ZONE")
  *                 .zone("us-central1-b")
+ *                 .build())
+ *             .maintenancePolicy(InstanceMaintenancePolicyArgs.builder()
+ *                 .weeklyMaintenanceWindows(InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs.builder()
+ *                     .day("MONDAY")
+ *                     .startTime(InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs.builder()
+ *                         .hours(1)
+ *                         .minutes(0)
+ *                         .seconds(0)
+ *                         .nanos(0)
+ *                         .build())
+ *                     .build())
  *                 .build())
  *             .engineVersion("VALKEY_7_2")
  *             .deletionProtectionEnabled(false)
@@ -527,6 +553,38 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
+     * Maintenance policy for a cluster
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="maintenancePolicy", refs={InstanceMaintenancePolicy.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceMaintenancePolicy> maintenancePolicy;
+
+    /**
+     * @return Maintenance policy for a cluster
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InstanceMaintenancePolicy>> maintenancePolicy() {
+        return Codegen.optional(this.maintenancePolicy);
+    }
+    /**
+     * Upcoming maintenance schedule.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="maintenanceSchedules", refs={List.class,InstanceMaintenanceSchedule.class}, tree="[0,1]")
+    private Output<List<InstanceMaintenanceSchedule>> maintenanceSchedules;
+
+    /**
+     * @return Upcoming maintenance schedule.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<InstanceMaintenanceSchedule>> maintenanceSchedules() {
+        return this.maintenanceSchedules;
+    }
+    /**
      * Optional. cluster or cluster-disabled.
      * Possible values:
      * CLUSTER
@@ -581,7 +639,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.nodeConfigs;
     }
     /**
-     * Optional. Immutable. Machine type for individual nodes of the instance.
+     * Optional. Machine type for individual nodes of the instance.
      * Possible values:
      * SHARED_CORE_NANO
      * HIGHMEM_MEDIUM
@@ -593,7 +651,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> nodeType;
 
     /**
-     * @return Optional. Immutable. Machine type for individual nodes of the instance.
+     * @return Optional. Machine type for individual nodes of the instance.
      * Possible values:
      * SHARED_CORE_NANO
      * HIGHMEM_MEDIUM

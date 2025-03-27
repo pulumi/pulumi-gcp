@@ -72,6 +72,7 @@ type LookupResourcePolicyResult struct {
 	// The URI of the resource.
 	SelfLink                 string                                    `pulumi:"selfLink"`
 	SnapshotSchedulePolicies []GetResourcePolicySnapshotSchedulePolicy `pulumi:"snapshotSchedulePolicies"`
+	WorkloadPolicies         []GetResourcePolicyWorkloadPolicy         `pulumi:"workloadPolicies"`
 }
 
 func LookupResourcePolicyOutput(ctx *pulumi.Context, args LookupResourcePolicyOutputArgs, opts ...pulumi.InvokeOption) LookupResourcePolicyResultOutput {
@@ -161,6 +162,10 @@ func (o LookupResourcePolicyResultOutput) SnapshotSchedulePolicies() GetResource
 	return o.ApplyT(func(v LookupResourcePolicyResult) []GetResourcePolicySnapshotSchedulePolicy {
 		return v.SnapshotSchedulePolicies
 	}).(GetResourcePolicySnapshotSchedulePolicyArrayOutput)
+}
+
+func (o LookupResourcePolicyResultOutput) WorkloadPolicies() GetResourcePolicyWorkloadPolicyArrayOutput {
+	return o.ApplyT(func(v LookupResourcePolicyResult) []GetResourcePolicyWorkloadPolicy { return v.WorkloadPolicies }).(GetResourcePolicyWorkloadPolicyArrayOutput)
 }
 
 func init() {

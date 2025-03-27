@@ -94,6 +94,7 @@ import * as integrationconnectors from "./integrationconnectors";
 import * as kms from "./kms";
 import * as logging from "./logging";
 import * as looker from "./looker";
+import * as lustre from "./lustre";
 import * as managedkafka from "./managedkafka";
 import * as memcache from "./memcache";
 import * as memorystore from "./memorystore";
@@ -226,6 +227,7 @@ export {
     kms,
     logging,
     looker,
+    lustre,
     managedkafka,
     memcache,
     memorystore,

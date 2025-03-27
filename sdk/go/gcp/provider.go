@@ -131,6 +131,7 @@ type Provider struct {
 	KmsCustomEndpoint                      pulumi.StringPtrOutput `pulumi:"kmsCustomEndpoint"`
 	LoggingCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"loggingCustomEndpoint"`
 	LookerCustomEndpoint                   pulumi.StringPtrOutput `pulumi:"lookerCustomEndpoint"`
+	LustreCustomEndpoint                   pulumi.StringPtrOutput `pulumi:"lustreCustomEndpoint"`
 	ManagedKafkaCustomEndpoint             pulumi.StringPtrOutput `pulumi:"managedKafkaCustomEndpoint"`
 	MemcacheCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"memcacheCustomEndpoint"`
 	MemorystoreCustomEndpoint              pulumi.StringPtrOutput `pulumi:"memorystoreCustomEndpoint"`
@@ -146,6 +147,7 @@ type Provider struct {
 	OracleDatabaseCustomEndpoint           pulumi.StringPtrOutput `pulumi:"oracleDatabaseCustomEndpoint"`
 	OrgPolicyCustomEndpoint                pulumi.StringPtrOutput `pulumi:"orgPolicyCustomEndpoint"`
 	OsConfigCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"osConfigCustomEndpoint"`
+	OsConfigV2CustomEndpoint               pulumi.StringPtrOutput `pulumi:"osConfigV2CustomEndpoint"`
 	OsLoginCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"osLoginCustomEndpoint"`
 	ParallelstoreCustomEndpoint            pulumi.StringPtrOutput `pulumi:"parallelstoreCustomEndpoint"`
 	ParameterManagerCustomEndpoint         pulumi.StringPtrOutput `pulumi:"parameterManagerCustomEndpoint"`
@@ -182,6 +184,7 @@ type Provider struct {
 	SourceRepoCustomEndpoint               pulumi.StringPtrOutput `pulumi:"sourceRepoCustomEndpoint"`
 	SpannerCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"spannerCustomEndpoint"`
 	SqlCustomEndpoint                      pulumi.StringPtrOutput `pulumi:"sqlCustomEndpoint"`
+	StorageControlCustomEndpoint           pulumi.StringPtrOutput `pulumi:"storageControlCustomEndpoint"`
 	StorageCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"storageCustomEndpoint"`
 	StorageInsightsCustomEndpoint          pulumi.StringPtrOutput `pulumi:"storageInsightsCustomEndpoint"`
 	StorageTransferCustomEndpoint          pulumi.StringPtrOutput `pulumi:"storageTransferCustomEndpoint"`
@@ -357,6 +360,7 @@ type providerArgs struct {
 	KmsCustomEndpoint                      *string           `pulumi:"kmsCustomEndpoint"`
 	LoggingCustomEndpoint                  *string           `pulumi:"loggingCustomEndpoint"`
 	LookerCustomEndpoint                   *string           `pulumi:"lookerCustomEndpoint"`
+	LustreCustomEndpoint                   *string           `pulumi:"lustreCustomEndpoint"`
 	ManagedKafkaCustomEndpoint             *string           `pulumi:"managedKafkaCustomEndpoint"`
 	MemcacheCustomEndpoint                 *string           `pulumi:"memcacheCustomEndpoint"`
 	MemorystoreCustomEndpoint              *string           `pulumi:"memorystoreCustomEndpoint"`
@@ -372,6 +376,7 @@ type providerArgs struct {
 	OracleDatabaseCustomEndpoint           *string           `pulumi:"oracleDatabaseCustomEndpoint"`
 	OrgPolicyCustomEndpoint                *string           `pulumi:"orgPolicyCustomEndpoint"`
 	OsConfigCustomEndpoint                 *string           `pulumi:"osConfigCustomEndpoint"`
+	OsConfigV2CustomEndpoint               *string           `pulumi:"osConfigV2CustomEndpoint"`
 	OsLoginCustomEndpoint                  *string           `pulumi:"osLoginCustomEndpoint"`
 	ParallelstoreCustomEndpoint            *string           `pulumi:"parallelstoreCustomEndpoint"`
 	ParameterManagerCustomEndpoint         *string           `pulumi:"parameterManagerCustomEndpoint"`
@@ -409,6 +414,7 @@ type providerArgs struct {
 	SourceRepoCustomEndpoint               *string           `pulumi:"sourceRepoCustomEndpoint"`
 	SpannerCustomEndpoint                  *string           `pulumi:"spannerCustomEndpoint"`
 	SqlCustomEndpoint                      *string           `pulumi:"sqlCustomEndpoint"`
+	StorageControlCustomEndpoint           *string           `pulumi:"storageControlCustomEndpoint"`
 	StorageCustomEndpoint                  *string           `pulumi:"storageCustomEndpoint"`
 	StorageInsightsCustomEndpoint          *string           `pulumi:"storageInsightsCustomEndpoint"`
 	StorageTransferCustomEndpoint          *string           `pulumi:"storageTransferCustomEndpoint"`
@@ -548,6 +554,7 @@ type ProviderArgs struct {
 	KmsCustomEndpoint                      pulumi.StringPtrInput
 	LoggingCustomEndpoint                  pulumi.StringPtrInput
 	LookerCustomEndpoint                   pulumi.StringPtrInput
+	LustreCustomEndpoint                   pulumi.StringPtrInput
 	ManagedKafkaCustomEndpoint             pulumi.StringPtrInput
 	MemcacheCustomEndpoint                 pulumi.StringPtrInput
 	MemorystoreCustomEndpoint              pulumi.StringPtrInput
@@ -563,6 +570,7 @@ type ProviderArgs struct {
 	OracleDatabaseCustomEndpoint           pulumi.StringPtrInput
 	OrgPolicyCustomEndpoint                pulumi.StringPtrInput
 	OsConfigCustomEndpoint                 pulumi.StringPtrInput
+	OsConfigV2CustomEndpoint               pulumi.StringPtrInput
 	OsLoginCustomEndpoint                  pulumi.StringPtrInput
 	ParallelstoreCustomEndpoint            pulumi.StringPtrInput
 	ParameterManagerCustomEndpoint         pulumi.StringPtrInput
@@ -600,6 +608,7 @@ type ProviderArgs struct {
 	SourceRepoCustomEndpoint               pulumi.StringPtrInput
 	SpannerCustomEndpoint                  pulumi.StringPtrInput
 	SqlCustomEndpoint                      pulumi.StringPtrInput
+	StorageControlCustomEndpoint           pulumi.StringPtrInput
 	StorageCustomEndpoint                  pulumi.StringPtrInput
 	StorageInsightsCustomEndpoint          pulumi.StringPtrInput
 	StorageTransferCustomEndpoint          pulumi.StringPtrInput
@@ -1108,6 +1117,10 @@ func (o ProviderOutput) LookerCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.LookerCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderOutput) LustreCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.LustreCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderOutput) ManagedKafkaCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ManagedKafkaCustomEndpoint }).(pulumi.StringPtrOutput)
 }
@@ -1166,6 +1179,10 @@ func (o ProviderOutput) OrgPolicyCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) OsConfigCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.OsConfigCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) OsConfigV2CustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.OsConfigV2CustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) OsLoginCustomEndpoint() pulumi.StringPtrOutput {
@@ -1310,6 +1327,10 @@ func (o ProviderOutput) SpannerCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) SqlCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SqlCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) StorageControlCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.StorageControlCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) StorageCustomEndpoint() pulumi.StringPtrOutput {

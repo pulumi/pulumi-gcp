@@ -846,6 +846,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.lookerCustomEndpoint);
     }
 
+    @Import(name="lustreCustomEndpoint")
+    private @Nullable Output<String> lustreCustomEndpoint;
+
+    public Optional<Output<String>> lustreCustomEndpoint() {
+        return Optional.ofNullable(this.lustreCustomEndpoint);
+    }
+
     @Import(name="managedKafkaCustomEndpoint")
     private @Nullable Output<String> managedKafkaCustomEndpoint;
 
@@ -949,6 +956,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> osConfigCustomEndpoint() {
         return Optional.ofNullable(this.osConfigCustomEndpoint);
+    }
+
+    @Import(name="osConfigV2CustomEndpoint")
+    private @Nullable Output<String> osConfigV2CustomEndpoint;
+
+    public Optional<Output<String>> osConfigV2CustomEndpoint() {
+        return Optional.ofNullable(this.osConfigV2CustomEndpoint);
     }
 
     @Import(name="osLoginCustomEndpoint")
@@ -1210,6 +1224,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.sqlCustomEndpoint);
     }
 
+    @Import(name="storageControlCustomEndpoint")
+    private @Nullable Output<String> storageControlCustomEndpoint;
+
+    public Optional<Output<String>> storageControlCustomEndpoint() {
+        return Optional.ofNullable(this.storageControlCustomEndpoint);
+    }
+
     @Import(name="storageCustomEndpoint")
     private @Nullable Output<String> storageCustomEndpoint;
 
@@ -1450,6 +1471,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.kmsCustomEndpoint = $.kmsCustomEndpoint;
         this.loggingCustomEndpoint = $.loggingCustomEndpoint;
         this.lookerCustomEndpoint = $.lookerCustomEndpoint;
+        this.lustreCustomEndpoint = $.lustreCustomEndpoint;
         this.managedKafkaCustomEndpoint = $.managedKafkaCustomEndpoint;
         this.memcacheCustomEndpoint = $.memcacheCustomEndpoint;
         this.memorystoreCustomEndpoint = $.memorystoreCustomEndpoint;
@@ -1465,6 +1487,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.oracleDatabaseCustomEndpoint = $.oracleDatabaseCustomEndpoint;
         this.orgPolicyCustomEndpoint = $.orgPolicyCustomEndpoint;
         this.osConfigCustomEndpoint = $.osConfigCustomEndpoint;
+        this.osConfigV2CustomEndpoint = $.osConfigV2CustomEndpoint;
         this.osLoginCustomEndpoint = $.osLoginCustomEndpoint;
         this.parallelstoreCustomEndpoint = $.parallelstoreCustomEndpoint;
         this.parameterManagerCustomEndpoint = $.parameterManagerCustomEndpoint;
@@ -1502,6 +1525,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.sourceRepoCustomEndpoint = $.sourceRepoCustomEndpoint;
         this.spannerCustomEndpoint = $.spannerCustomEndpoint;
         this.sqlCustomEndpoint = $.sqlCustomEndpoint;
+        this.storageControlCustomEndpoint = $.storageControlCustomEndpoint;
         this.storageCustomEndpoint = $.storageCustomEndpoint;
         this.storageInsightsCustomEndpoint = $.storageInsightsCustomEndpoint;
         this.storageTransferCustomEndpoint = $.storageTransferCustomEndpoint;
@@ -2605,6 +2629,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return lookerCustomEndpoint(Output.of(lookerCustomEndpoint));
         }
 
+        public Builder lustreCustomEndpoint(@Nullable Output<String> lustreCustomEndpoint) {
+            $.lustreCustomEndpoint = lustreCustomEndpoint;
+            return this;
+        }
+
+        public Builder lustreCustomEndpoint(String lustreCustomEndpoint) {
+            return lustreCustomEndpoint(Output.of(lustreCustomEndpoint));
+        }
+
         public Builder managedKafkaCustomEndpoint(@Nullable Output<String> managedKafkaCustomEndpoint) {
             $.managedKafkaCustomEndpoint = managedKafkaCustomEndpoint;
             return this;
@@ -2738,6 +2771,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder osConfigCustomEndpoint(String osConfigCustomEndpoint) {
             return osConfigCustomEndpoint(Output.of(osConfigCustomEndpoint));
+        }
+
+        public Builder osConfigV2CustomEndpoint(@Nullable Output<String> osConfigV2CustomEndpoint) {
+            $.osConfigV2CustomEndpoint = osConfigV2CustomEndpoint;
+            return this;
+        }
+
+        public Builder osConfigV2CustomEndpoint(String osConfigV2CustomEndpoint) {
+            return osConfigV2CustomEndpoint(Output.of(osConfigV2CustomEndpoint));
         }
 
         public Builder osLoginCustomEndpoint(@Nullable Output<String> osLoginCustomEndpoint) {
@@ -3075,6 +3117,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder sqlCustomEndpoint(String sqlCustomEndpoint) {
             return sqlCustomEndpoint(Output.of(sqlCustomEndpoint));
+        }
+
+        public Builder storageControlCustomEndpoint(@Nullable Output<String> storageControlCustomEndpoint) {
+            $.storageControlCustomEndpoint = storageControlCustomEndpoint;
+            return this;
+        }
+
+        public Builder storageControlCustomEndpoint(String storageControlCustomEndpoint) {
+            return storageControlCustomEndpoint(Output.of(storageControlCustomEndpoint));
         }
 
         public Builder storageCustomEndpoint(@Nullable Output<String> storageCustomEndpoint) {

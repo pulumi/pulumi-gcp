@@ -154,6 +154,8 @@ namespace Pulumi.Gcp.MemoryStore
         public readonly string InstanceId;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string? Location;
+        public readonly ImmutableArray<Outputs.GetInstanceMaintenancePolicyResult> MaintenancePolicies;
+        public readonly ImmutableArray<Outputs.GetInstanceMaintenanceScheduleResult> MaintenanceSchedules;
         public readonly string Mode;
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetInstanceNodeConfigResult> NodeConfigs;
@@ -198,6 +200,10 @@ namespace Pulumi.Gcp.MemoryStore
             ImmutableDictionary<string, string> labels,
 
             string? location,
+
+            ImmutableArray<Outputs.GetInstanceMaintenancePolicyResult> maintenancePolicies,
+
+            ImmutableArray<Outputs.GetInstanceMaintenanceScheduleResult> maintenanceSchedules,
 
             string mode,
 
@@ -244,6 +250,8 @@ namespace Pulumi.Gcp.MemoryStore
             InstanceId = instanceId;
             Labels = labels;
             Location = location;
+            MaintenancePolicies = maintenancePolicies;
+            MaintenanceSchedules = maintenanceSchedules;
             Mode = mode;
             Name = name;
             NodeConfigs = nodeConfigs;

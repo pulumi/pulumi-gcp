@@ -88,6 +88,12 @@ import (
 type InterceptEndpointGroup struct {
 	pulumi.CustomResourceState
 
+	// List of associations to this endpoint group.
+	// Structure is documented below.
+	Associations InterceptEndpointGroupAssociationTypeArrayOutput `pulumi:"associations"`
+	// The endpoint group's view of a connected deployment group.
+	// Structure is documented below.
+	ConnectedDeploymentGroups InterceptEndpointGroupConnectedDeploymentGroupArrayOutput `pulumi:"connectedDeploymentGroups"`
 	// The timestamp when the resource was created.
 	// See https://google.aip.dev/148#timestamps.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -111,9 +117,10 @@ type InterceptEndpointGroup struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The cloud location of the endpoint group, currently restricted to `global`.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The resource name of this endpoint group, for example:
-	// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
-	// See https://google.aip.dev/122 for more details.
+	// (Output)
+	// The connected deployment group's resource name, for example:
+	// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+	// See https://google.aip.dev/124.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -126,16 +133,12 @@ type InterceptEndpointGroup struct {
 	// operation (e.g. adding a new association to the group).
 	// See https://google.aip.dev/128.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
-	// The current state of the endpoint group.
-	// See https://google.aip.dev/216.
+	// (Output)
+	// The current state of the association in this location.
 	// Possible values:
 	// STATE_UNSPECIFIED
 	// ACTIVE
-	// CLOSED
-	// CREATING
-	// DELETING
 	// OUT_OF_SYNC
-	// DELETE_FAILED
 	State pulumi.StringOutput `pulumi:"state"`
 	// The timestamp when the resource was most recently updated.
 	// See https://google.aip.dev/148#timestamps.
@@ -186,6 +189,12 @@ func GetInterceptEndpointGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InterceptEndpointGroup resources.
 type interceptEndpointGroupState struct {
+	// List of associations to this endpoint group.
+	// Structure is documented below.
+	Associations []InterceptEndpointGroupAssociationType `pulumi:"associations"`
+	// The endpoint group's view of a connected deployment group.
+	// Structure is documented below.
+	ConnectedDeploymentGroups []InterceptEndpointGroupConnectedDeploymentGroup `pulumi:"connectedDeploymentGroups"`
 	// The timestamp when the resource was created.
 	// See https://google.aip.dev/148#timestamps.
 	CreateTime *string `pulumi:"createTime"`
@@ -209,9 +218,10 @@ type interceptEndpointGroupState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The cloud location of the endpoint group, currently restricted to `global`.
 	Location *string `pulumi:"location"`
-	// The resource name of this endpoint group, for example:
-	// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
-	// See https://google.aip.dev/122 for more details.
+	// (Output)
+	// The connected deployment group's resource name, for example:
+	// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+	// See https://google.aip.dev/124.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -224,16 +234,12 @@ type interceptEndpointGroupState struct {
 	// operation (e.g. adding a new association to the group).
 	// See https://google.aip.dev/128.
 	Reconciling *bool `pulumi:"reconciling"`
-	// The current state of the endpoint group.
-	// See https://google.aip.dev/216.
+	// (Output)
+	// The current state of the association in this location.
 	// Possible values:
 	// STATE_UNSPECIFIED
 	// ACTIVE
-	// CLOSED
-	// CREATING
-	// DELETING
 	// OUT_OF_SYNC
-	// DELETE_FAILED
 	State *string `pulumi:"state"`
 	// The timestamp when the resource was most recently updated.
 	// See https://google.aip.dev/148#timestamps.
@@ -241,6 +247,12 @@ type interceptEndpointGroupState struct {
 }
 
 type InterceptEndpointGroupState struct {
+	// List of associations to this endpoint group.
+	// Structure is documented below.
+	Associations InterceptEndpointGroupAssociationTypeArrayInput
+	// The endpoint group's view of a connected deployment group.
+	// Structure is documented below.
+	ConnectedDeploymentGroups InterceptEndpointGroupConnectedDeploymentGroupArrayInput
 	// The timestamp when the resource was created.
 	// See https://google.aip.dev/148#timestamps.
 	CreateTime pulumi.StringPtrInput
@@ -264,9 +276,10 @@ type InterceptEndpointGroupState struct {
 	Labels pulumi.StringMapInput
 	// The cloud location of the endpoint group, currently restricted to `global`.
 	Location pulumi.StringPtrInput
-	// The resource name of this endpoint group, for example:
-	// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
-	// See https://google.aip.dev/122 for more details.
+	// (Output)
+	// The connected deployment group's resource name, for example:
+	// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+	// See https://google.aip.dev/124.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -279,16 +292,12 @@ type InterceptEndpointGroupState struct {
 	// operation (e.g. adding a new association to the group).
 	// See https://google.aip.dev/128.
 	Reconciling pulumi.BoolPtrInput
-	// The current state of the endpoint group.
-	// See https://google.aip.dev/216.
+	// (Output)
+	// The current state of the association in this location.
 	// Possible values:
 	// STATE_UNSPECIFIED
 	// ACTIVE
-	// CLOSED
-	// CREATING
-	// DELETING
 	// OUT_OF_SYNC
-	// DELETE_FAILED
 	State pulumi.StringPtrInput
 	// The timestamp when the resource was most recently updated.
 	// See https://google.aip.dev/148#timestamps.
@@ -435,6 +444,22 @@ func (o InterceptEndpointGroupOutput) ToInterceptEndpointGroupOutputWithContext(
 	return o
 }
 
+// List of associations to this endpoint group.
+// Structure is documented below.
+func (o InterceptEndpointGroupOutput) Associations() InterceptEndpointGroupAssociationTypeArrayOutput {
+	return o.ApplyT(func(v *InterceptEndpointGroup) InterceptEndpointGroupAssociationTypeArrayOutput {
+		return v.Associations
+	}).(InterceptEndpointGroupAssociationTypeArrayOutput)
+}
+
+// The endpoint group's view of a connected deployment group.
+// Structure is documented below.
+func (o InterceptEndpointGroupOutput) ConnectedDeploymentGroups() InterceptEndpointGroupConnectedDeploymentGroupArrayOutput {
+	return o.ApplyT(func(v *InterceptEndpointGroup) InterceptEndpointGroupConnectedDeploymentGroupArrayOutput {
+		return v.ConnectedDeploymentGroups
+	}).(InterceptEndpointGroupConnectedDeploymentGroupArrayOutput)
+}
+
 // The timestamp when the resource was created.
 // See https://google.aip.dev/148#timestamps.
 func (o InterceptEndpointGroupOutput) CreateTime() pulumi.StringOutput {
@@ -479,9 +504,10 @@ func (o InterceptEndpointGroupOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterceptEndpointGroup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The resource name of this endpoint group, for example:
-// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
-// See https://google.aip.dev/122 for more details.
+// (Output)
+// The connected deployment group's resource name, for example:
+// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+// See https://google.aip.dev/124.
 func (o InterceptEndpointGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterceptEndpointGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -506,16 +532,12 @@ func (o InterceptEndpointGroupOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *InterceptEndpointGroup) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }
 
-// The current state of the endpoint group.
-// See https://google.aip.dev/216.
+// (Output)
+// The current state of the association in this location.
 // Possible values:
 // STATE_UNSPECIFIED
 // ACTIVE
-// CLOSED
-// CREATING
-// DELETING
 // OUT_OF_SYNC
-// DELETE_FAILED
 func (o InterceptEndpointGroupOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterceptEndpointGroup) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

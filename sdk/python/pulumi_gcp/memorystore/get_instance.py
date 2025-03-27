@@ -27,7 +27,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, authorization_mode=None, create_time=None, deletion_protection_enabled=None, desired_psc_auto_connections=None, discovery_endpoints=None, effective_labels=None, endpoints=None, engine_configs=None, engine_version=None, id=None, instance_id=None, labels=None, location=None, mode=None, name=None, node_configs=None, node_type=None, persistence_configs=None, project=None, psc_auto_connections=None, pulumi_labels=None, replica_count=None, shard_count=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, update_time=None, zone_distribution_configs=None):
+    def __init__(__self__, authorization_mode=None, create_time=None, deletion_protection_enabled=None, desired_psc_auto_connections=None, discovery_endpoints=None, effective_labels=None, endpoints=None, engine_configs=None, engine_version=None, id=None, instance_id=None, labels=None, location=None, maintenance_policies=None, maintenance_schedules=None, mode=None, name=None, node_configs=None, node_type=None, persistence_configs=None, project=None, psc_auto_connections=None, pulumi_labels=None, replica_count=None, shard_count=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, update_time=None, zone_distribution_configs=None):
         if authorization_mode and not isinstance(authorization_mode, str):
             raise TypeError("Expected argument 'authorization_mode' to be a str")
         pulumi.set(__self__, "authorization_mode", authorization_mode)
@@ -67,6 +67,12 @@ class GetInstanceResult:
         if location and not isinstance(location, str):
             raise TypeError("Expected argument 'location' to be a str")
         pulumi.set(__self__, "location", location)
+        if maintenance_policies and not isinstance(maintenance_policies, list):
+            raise TypeError("Expected argument 'maintenance_policies' to be a list")
+        pulumi.set(__self__, "maintenance_policies", maintenance_policies)
+        if maintenance_schedules and not isinstance(maintenance_schedules, list):
+            raise TypeError("Expected argument 'maintenance_schedules' to be a list")
+        pulumi.set(__self__, "maintenance_schedules", maintenance_schedules)
         if mode and not isinstance(mode, str):
             raise TypeError("Expected argument 'mode' to be a str")
         pulumi.set(__self__, "mode", mode)
@@ -185,6 +191,16 @@ class GetInstanceResult:
         return pulumi.get(self, "location")
 
     @property
+    @pulumi.getter(name="maintenancePolicies")
+    def maintenance_policies(self) -> Sequence['outputs.GetInstanceMaintenancePolicyResult']:
+        return pulumi.get(self, "maintenance_policies")
+
+    @property
+    @pulumi.getter(name="maintenanceSchedules")
+    def maintenance_schedules(self) -> Sequence['outputs.GetInstanceMaintenanceScheduleResult']:
+        return pulumi.get(self, "maintenance_schedules")
+
+    @property
     @pulumi.getter
     def mode(self) -> str:
         return pulumi.get(self, "mode")
@@ -284,6 +300,8 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             instance_id=self.instance_id,
             labels=self.labels,
             location=self.location,
+            maintenance_policies=self.maintenance_policies,
+            maintenance_schedules=self.maintenance_schedules,
             mode=self.mode,
             name=self.name,
             node_configs=self.node_configs,
@@ -347,6 +365,8 @@ def get_instance(instance_id: Optional[str] = None,
         instance_id=pulumi.get(__ret__, 'instance_id'),
         labels=pulumi.get(__ret__, 'labels'),
         location=pulumi.get(__ret__, 'location'),
+        maintenance_policies=pulumi.get(__ret__, 'maintenance_policies'),
+        maintenance_schedules=pulumi.get(__ret__, 'maintenance_schedules'),
         mode=pulumi.get(__ret__, 'mode'),
         name=pulumi.get(__ret__, 'name'),
         node_configs=pulumi.get(__ret__, 'node_configs'),
@@ -407,6 +427,8 @@ def get_instance_output(instance_id: Optional[pulumi.Input[str]] = None,
         instance_id=pulumi.get(__response__, 'instance_id'),
         labels=pulumi.get(__response__, 'labels'),
         location=pulumi.get(__response__, 'location'),
+        maintenance_policies=pulumi.get(__response__, 'maintenance_policies'),
+        maintenance_schedules=pulumi.get(__response__, 'maintenance_schedules'),
         mode=pulumi.get(__response__, 'mode'),
         name=pulumi.get(__response__, 'name'),
         node_configs=pulumi.get(__response__, 'node_configs'),

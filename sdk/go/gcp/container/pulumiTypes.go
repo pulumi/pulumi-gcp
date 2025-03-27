@@ -16012,6 +16012,8 @@ func (o ClusterConfidentialNodesPtrOutput) Enabled() pulumi.BoolPtrOutput {
 type ClusterControlPlaneEndpointsConfig struct {
 	// DNS endpoint configuration.
 	DnsEndpointConfig *ClusterControlPlaneEndpointsConfigDnsEndpointConfig `pulumi:"dnsEndpointConfig"`
+	// IP endpoint configuration.
+	IpEndpointsConfig *ClusterControlPlaneEndpointsConfigIpEndpointsConfig `pulumi:"ipEndpointsConfig"`
 }
 
 // ClusterControlPlaneEndpointsConfigInput is an input type that accepts ClusterControlPlaneEndpointsConfigArgs and ClusterControlPlaneEndpointsConfigOutput values.
@@ -16028,6 +16030,8 @@ type ClusterControlPlaneEndpointsConfigInput interface {
 type ClusterControlPlaneEndpointsConfigArgs struct {
 	// DNS endpoint configuration.
 	DnsEndpointConfig ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrInput `pulumi:"dnsEndpointConfig"`
+	// IP endpoint configuration.
+	IpEndpointsConfig ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrInput `pulumi:"ipEndpointsConfig"`
 }
 
 func (ClusterControlPlaneEndpointsConfigArgs) ElementType() reflect.Type {
@@ -16114,6 +16118,13 @@ func (o ClusterControlPlaneEndpointsConfigOutput) DnsEndpointConfig() ClusterCon
 	}).(ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput)
 }
 
+// IP endpoint configuration.
+func (o ClusterControlPlaneEndpointsConfigOutput) IpEndpointsConfig() ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput {
+	return o.ApplyT(func(v ClusterControlPlaneEndpointsConfig) *ClusterControlPlaneEndpointsConfigIpEndpointsConfig {
+		return v.IpEndpointsConfig
+	}).(ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput)
+}
+
 type ClusterControlPlaneEndpointsConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterControlPlaneEndpointsConfigPtrOutput) ElementType() reflect.Type {
@@ -16146,6 +16157,16 @@ func (o ClusterControlPlaneEndpointsConfigPtrOutput) DnsEndpointConfig() Cluster
 		}
 		return v.DnsEndpointConfig
 	}).(ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput)
+}
+
+// IP endpoint configuration.
+func (o ClusterControlPlaneEndpointsConfigPtrOutput) IpEndpointsConfig() ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterControlPlaneEndpointsConfig) *ClusterControlPlaneEndpointsConfigIpEndpointsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.IpEndpointsConfig
+	}).(ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput)
 }
 
 type ClusterControlPlaneEndpointsConfigDnsEndpointConfig struct {
@@ -16302,6 +16323,143 @@ func (o ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput) Endpoint()
 		}
 		return v.Endpoint
 	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterControlPlaneEndpointsConfigIpEndpointsConfig struct {
+	// Controls whether to allow direct IP access. Defaults to `true`.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ClusterControlPlaneEndpointsConfigIpEndpointsConfigInput is an input type that accepts ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs and ClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput values.
+// You can construct a concrete instance of `ClusterControlPlaneEndpointsConfigIpEndpointsConfigInput` via:
+//
+//	ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs{...}
+type ClusterControlPlaneEndpointsConfigIpEndpointsConfigInput interface {
+	pulumi.Input
+
+	ToClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput() ClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput
+	ToClusterControlPlaneEndpointsConfigIpEndpointsConfigOutputWithContext(context.Context) ClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput
+}
+
+type ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs struct {
+	// Controls whether to allow direct IP access. Defaults to `true`.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterControlPlaneEndpointsConfigIpEndpointsConfig)(nil)).Elem()
+}
+
+func (i ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs) ToClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput() ClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput {
+	return i.ToClusterControlPlaneEndpointsConfigIpEndpointsConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs) ToClusterControlPlaneEndpointsConfigIpEndpointsConfigOutputWithContext(ctx context.Context) ClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput)
+}
+
+func (i ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs) ToClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput() ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput {
+	return i.ToClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs) ToClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutputWithContext(ctx context.Context) ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput).ToClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrInput is an input type that accepts ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs, ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtr and ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrInput` via:
+//
+//	        ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput() ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput
+	ToClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutputWithContext(context.Context) ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput
+}
+
+type clusterControlPlaneEndpointsConfigIpEndpointsConfigPtrType ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs
+
+func ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtr(v *ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs) ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrInput {
+	return (*clusterControlPlaneEndpointsConfigIpEndpointsConfigPtrType)(v)
+}
+
+func (*clusterControlPlaneEndpointsConfigIpEndpointsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterControlPlaneEndpointsConfigIpEndpointsConfig)(nil)).Elem()
+}
+
+func (i *clusterControlPlaneEndpointsConfigIpEndpointsConfigPtrType) ToClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput() ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput {
+	return i.ToClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterControlPlaneEndpointsConfigIpEndpointsConfigPtrType) ToClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutputWithContext(ctx context.Context) ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput)
+}
+
+type ClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterControlPlaneEndpointsConfigIpEndpointsConfig)(nil)).Elem()
+}
+
+func (o ClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput) ToClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput() ClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput {
+	return o
+}
+
+func (o ClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput) ToClusterControlPlaneEndpointsConfigIpEndpointsConfigOutputWithContext(ctx context.Context) ClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput {
+	return o
+}
+
+func (o ClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput) ToClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput() ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput {
+	return o.ToClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput) ToClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutputWithContext(ctx context.Context) ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterControlPlaneEndpointsConfigIpEndpointsConfig) *ClusterControlPlaneEndpointsConfigIpEndpointsConfig {
+		return &v
+	}).(ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput)
+}
+
+// Controls whether to allow direct IP access. Defaults to `true`.
+func (o ClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterControlPlaneEndpointsConfigIpEndpointsConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterControlPlaneEndpointsConfigIpEndpointsConfig)(nil)).Elem()
+}
+
+func (o ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput) ToClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput() ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput {
+	return o
+}
+
+func (o ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput) ToClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutputWithContext(ctx context.Context) ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput {
+	return o
+}
+
+func (o ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput) Elem() ClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput {
+	return o.ApplyT(func(v *ClusterControlPlaneEndpointsConfigIpEndpointsConfig) ClusterControlPlaneEndpointsConfigIpEndpointsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterControlPlaneEndpointsConfigIpEndpointsConfig
+		return ret
+	}).(ClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput)
+}
+
+// Controls whether to allow direct IP access. Defaults to `true`.
+func (o ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterControlPlaneEndpointsConfigIpEndpointsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClusterCostManagementConfig struct {
@@ -20992,6 +21150,8 @@ type ClusterNodeConfig struct {
 	// this field to manage taints. If you do, `lifecycle.ignore_changes` is
 	// recommended. Structure is documented below.
 	Taints []ClusterNodeConfigTaint `pulumi:"taints"`
+	// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+	WindowsNodeConfig *ClusterNodeConfigWindowsNodeConfig `pulumi:"windowsNodeConfig"`
 	// Metadata configuration to expose to workloads on the node pool.
 	// Structure is documented below.
 	WorkloadMetadataConfig *ClusterNodeConfigWorkloadMetadataConfig `pulumi:"workloadMetadataConfig"`
@@ -21144,6 +21304,8 @@ type ClusterNodeConfigArgs struct {
 	// this field to manage taints. If you do, `lifecycle.ignore_changes` is
 	// recommended. Structure is documented below.
 	Taints ClusterNodeConfigTaintArrayInput `pulumi:"taints"`
+	// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+	WindowsNodeConfig ClusterNodeConfigWindowsNodeConfigPtrInput `pulumi:"windowsNodeConfig"`
 	// Metadata configuration to expose to workloads on the node pool.
 	// Structure is documented below.
 	WorkloadMetadataConfig ClusterNodeConfigWorkloadMetadataConfigPtrInput `pulumi:"workloadMetadataConfig"`
@@ -21487,6 +21649,11 @@ func (o ClusterNodeConfigOutput) Tags() pulumi.StringArrayOutput {
 // recommended. Structure is documented below.
 func (o ClusterNodeConfigOutput) Taints() ClusterNodeConfigTaintArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) []ClusterNodeConfigTaint { return v.Taints }).(ClusterNodeConfigTaintArrayOutput)
+}
+
+// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+func (o ClusterNodeConfigOutput) WindowsNodeConfig() ClusterNodeConfigWindowsNodeConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigWindowsNodeConfig { return v.WindowsNodeConfig }).(ClusterNodeConfigWindowsNodeConfigPtrOutput)
 }
 
 // Metadata configuration to expose to workloads on the node pool.
@@ -21988,6 +22155,16 @@ func (o ClusterNodeConfigPtrOutput) Taints() ClusterNodeConfigTaintArrayOutput {
 		}
 		return v.Taints
 	}).(ClusterNodeConfigTaintArrayOutput)
+}
+
+// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+func (o ClusterNodeConfigPtrOutput) WindowsNodeConfig() ClusterNodeConfigWindowsNodeConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigWindowsNodeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.WindowsNodeConfig
+	}).(ClusterNodeConfigWindowsNodeConfigPtrOutput)
 }
 
 // Metadata configuration to expose to workloads on the node pool.
@@ -26049,6 +26226,143 @@ func (o ClusterNodeConfigTaintArrayOutput) Index(i pulumi.IntInput) ClusterNodeC
 	}).(ClusterNodeConfigTaintOutput)
 }
 
+type ClusterNodeConfigWindowsNodeConfig struct {
+	// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+	Osversion *string `pulumi:"osversion"`
+}
+
+// ClusterNodeConfigWindowsNodeConfigInput is an input type that accepts ClusterNodeConfigWindowsNodeConfigArgs and ClusterNodeConfigWindowsNodeConfigOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigWindowsNodeConfigInput` via:
+//
+//	ClusterNodeConfigWindowsNodeConfigArgs{...}
+type ClusterNodeConfigWindowsNodeConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigWindowsNodeConfigOutput() ClusterNodeConfigWindowsNodeConfigOutput
+	ToClusterNodeConfigWindowsNodeConfigOutputWithContext(context.Context) ClusterNodeConfigWindowsNodeConfigOutput
+}
+
+type ClusterNodeConfigWindowsNodeConfigArgs struct {
+	// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+	Osversion pulumi.StringPtrInput `pulumi:"osversion"`
+}
+
+func (ClusterNodeConfigWindowsNodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigWindowsNodeConfig)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigWindowsNodeConfigArgs) ToClusterNodeConfigWindowsNodeConfigOutput() ClusterNodeConfigWindowsNodeConfigOutput {
+	return i.ToClusterNodeConfigWindowsNodeConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigWindowsNodeConfigArgs) ToClusterNodeConfigWindowsNodeConfigOutputWithContext(ctx context.Context) ClusterNodeConfigWindowsNodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigWindowsNodeConfigOutput)
+}
+
+func (i ClusterNodeConfigWindowsNodeConfigArgs) ToClusterNodeConfigWindowsNodeConfigPtrOutput() ClusterNodeConfigWindowsNodeConfigPtrOutput {
+	return i.ToClusterNodeConfigWindowsNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigWindowsNodeConfigArgs) ToClusterNodeConfigWindowsNodeConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigWindowsNodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigWindowsNodeConfigOutput).ToClusterNodeConfigWindowsNodeConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodeConfigWindowsNodeConfigPtrInput is an input type that accepts ClusterNodeConfigWindowsNodeConfigArgs, ClusterNodeConfigWindowsNodeConfigPtr and ClusterNodeConfigWindowsNodeConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigWindowsNodeConfigPtrInput` via:
+//
+//	        ClusterNodeConfigWindowsNodeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodeConfigWindowsNodeConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigWindowsNodeConfigPtrOutput() ClusterNodeConfigWindowsNodeConfigPtrOutput
+	ToClusterNodeConfigWindowsNodeConfigPtrOutputWithContext(context.Context) ClusterNodeConfigWindowsNodeConfigPtrOutput
+}
+
+type clusterNodeConfigWindowsNodeConfigPtrType ClusterNodeConfigWindowsNodeConfigArgs
+
+func ClusterNodeConfigWindowsNodeConfigPtr(v *ClusterNodeConfigWindowsNodeConfigArgs) ClusterNodeConfigWindowsNodeConfigPtrInput {
+	return (*clusterNodeConfigWindowsNodeConfigPtrType)(v)
+}
+
+func (*clusterNodeConfigWindowsNodeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigWindowsNodeConfig)(nil)).Elem()
+}
+
+func (i *clusterNodeConfigWindowsNodeConfigPtrType) ToClusterNodeConfigWindowsNodeConfigPtrOutput() ClusterNodeConfigWindowsNodeConfigPtrOutput {
+	return i.ToClusterNodeConfigWindowsNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodeConfigWindowsNodeConfigPtrType) ToClusterNodeConfigWindowsNodeConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigWindowsNodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigWindowsNodeConfigPtrOutput)
+}
+
+type ClusterNodeConfigWindowsNodeConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigWindowsNodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigWindowsNodeConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigWindowsNodeConfigOutput) ToClusterNodeConfigWindowsNodeConfigOutput() ClusterNodeConfigWindowsNodeConfigOutput {
+	return o
+}
+
+func (o ClusterNodeConfigWindowsNodeConfigOutput) ToClusterNodeConfigWindowsNodeConfigOutputWithContext(ctx context.Context) ClusterNodeConfigWindowsNodeConfigOutput {
+	return o
+}
+
+func (o ClusterNodeConfigWindowsNodeConfigOutput) ToClusterNodeConfigWindowsNodeConfigPtrOutput() ClusterNodeConfigWindowsNodeConfigPtrOutput {
+	return o.ToClusterNodeConfigWindowsNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodeConfigWindowsNodeConfigOutput) ToClusterNodeConfigWindowsNodeConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigWindowsNodeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodeConfigWindowsNodeConfig) *ClusterNodeConfigWindowsNodeConfig {
+		return &v
+	}).(ClusterNodeConfigWindowsNodeConfigPtrOutput)
+}
+
+// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+func (o ClusterNodeConfigWindowsNodeConfigOutput) Osversion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigWindowsNodeConfig) *string { return v.Osversion }).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodeConfigWindowsNodeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigWindowsNodeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigWindowsNodeConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigWindowsNodeConfigPtrOutput) ToClusterNodeConfigWindowsNodeConfigPtrOutput() ClusterNodeConfigWindowsNodeConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigWindowsNodeConfigPtrOutput) ToClusterNodeConfigWindowsNodeConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigWindowsNodeConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigWindowsNodeConfigPtrOutput) Elem() ClusterNodeConfigWindowsNodeConfigOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigWindowsNodeConfig) ClusterNodeConfigWindowsNodeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodeConfigWindowsNodeConfig
+		return ret
+	}).(ClusterNodeConfigWindowsNodeConfigOutput)
+}
+
+// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+func (o ClusterNodeConfigWindowsNodeConfigPtrOutput) Osversion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigWindowsNodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Osversion
+	}).(pulumi.StringPtrOutput)
+}
+
 type ClusterNodeConfigWorkloadMetadataConfig struct {
 	// How to expose the node metadata to the workload running on the node.
 	// Accepted values are:
@@ -29372,6 +29686,8 @@ type ClusterNodePoolNodeConfig struct {
 	// this field to manage taints. If you do, `lifecycle.ignore_changes` is
 	// recommended. Structure is documented below.
 	Taints []ClusterNodePoolNodeConfigTaint `pulumi:"taints"`
+	// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+	WindowsNodeConfig *ClusterNodePoolNodeConfigWindowsNodeConfig `pulumi:"windowsNodeConfig"`
 	// Metadata configuration to expose to workloads on the node pool.
 	// Structure is documented below.
 	WorkloadMetadataConfig *ClusterNodePoolNodeConfigWorkloadMetadataConfig `pulumi:"workloadMetadataConfig"`
@@ -29524,6 +29840,8 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// this field to manage taints. If you do, `lifecycle.ignore_changes` is
 	// recommended. Structure is documented below.
 	Taints ClusterNodePoolNodeConfigTaintArrayInput `pulumi:"taints"`
+	// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+	WindowsNodeConfig ClusterNodePoolNodeConfigWindowsNodeConfigPtrInput `pulumi:"windowsNodeConfig"`
 	// Metadata configuration to expose to workloads on the node pool.
 	// Structure is documented below.
 	WorkloadMetadataConfig ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrInput `pulumi:"workloadMetadataConfig"`
@@ -29889,6 +30207,13 @@ func (o ClusterNodePoolNodeConfigOutput) Tags() pulumi.StringArrayOutput {
 // recommended. Structure is documented below.
 func (o ClusterNodePoolNodeConfigOutput) Taints() ClusterNodePoolNodeConfigTaintArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigTaint { return v.Taints }).(ClusterNodePoolNodeConfigTaintArrayOutput)
+}
+
+// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+func (o ClusterNodePoolNodeConfigOutput) WindowsNodeConfig() ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigWindowsNodeConfig {
+		return v.WindowsNodeConfig
+	}).(ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput)
 }
 
 // Metadata configuration to expose to workloads on the node pool.
@@ -30392,6 +30717,16 @@ func (o ClusterNodePoolNodeConfigPtrOutput) Taints() ClusterNodePoolNodeConfigTa
 		}
 		return v.Taints
 	}).(ClusterNodePoolNodeConfigTaintArrayOutput)
+}
+
+// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+func (o ClusterNodePoolNodeConfigPtrOutput) WindowsNodeConfig() ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigWindowsNodeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.WindowsNodeConfig
+	}).(ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput)
 }
 
 // Metadata configuration to expose to workloads on the node pool.
@@ -34455,6 +34790,143 @@ func (o ClusterNodePoolNodeConfigTaintArrayOutput) Index(i pulumi.IntInput) Clus
 	}).(ClusterNodePoolNodeConfigTaintOutput)
 }
 
+type ClusterNodePoolNodeConfigWindowsNodeConfig struct {
+	// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+	Osversion *string `pulumi:"osversion"`
+}
+
+// ClusterNodePoolNodeConfigWindowsNodeConfigInput is an input type that accepts ClusterNodePoolNodeConfigWindowsNodeConfigArgs and ClusterNodePoolNodeConfigWindowsNodeConfigOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigWindowsNodeConfigInput` via:
+//
+//	ClusterNodePoolNodeConfigWindowsNodeConfigArgs{...}
+type ClusterNodePoolNodeConfigWindowsNodeConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigWindowsNodeConfigOutput() ClusterNodePoolNodeConfigWindowsNodeConfigOutput
+	ToClusterNodePoolNodeConfigWindowsNodeConfigOutputWithContext(context.Context) ClusterNodePoolNodeConfigWindowsNodeConfigOutput
+}
+
+type ClusterNodePoolNodeConfigWindowsNodeConfigArgs struct {
+	// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+	Osversion pulumi.StringPtrInput `pulumi:"osversion"`
+}
+
+func (ClusterNodePoolNodeConfigWindowsNodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigWindowsNodeConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigWindowsNodeConfigArgs) ToClusterNodePoolNodeConfigWindowsNodeConfigOutput() ClusterNodePoolNodeConfigWindowsNodeConfigOutput {
+	return i.ToClusterNodePoolNodeConfigWindowsNodeConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigWindowsNodeConfigArgs) ToClusterNodePoolNodeConfigWindowsNodeConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigWindowsNodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigWindowsNodeConfigOutput)
+}
+
+func (i ClusterNodePoolNodeConfigWindowsNodeConfigArgs) ToClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput() ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput {
+	return i.ToClusterNodePoolNodeConfigWindowsNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigWindowsNodeConfigArgs) ToClusterNodePoolNodeConfigWindowsNodeConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigWindowsNodeConfigOutput).ToClusterNodePoolNodeConfigWindowsNodeConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolNodeConfigWindowsNodeConfigPtrInput is an input type that accepts ClusterNodePoolNodeConfigWindowsNodeConfigArgs, ClusterNodePoolNodeConfigWindowsNodeConfigPtr and ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigWindowsNodeConfigPtrInput` via:
+//
+//	        ClusterNodePoolNodeConfigWindowsNodeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolNodeConfigWindowsNodeConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput() ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput
+	ToClusterNodePoolNodeConfigWindowsNodeConfigPtrOutputWithContext(context.Context) ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput
+}
+
+type clusterNodePoolNodeConfigWindowsNodeConfigPtrType ClusterNodePoolNodeConfigWindowsNodeConfigArgs
+
+func ClusterNodePoolNodeConfigWindowsNodeConfigPtr(v *ClusterNodePoolNodeConfigWindowsNodeConfigArgs) ClusterNodePoolNodeConfigWindowsNodeConfigPtrInput {
+	return (*clusterNodePoolNodeConfigWindowsNodeConfigPtrType)(v)
+}
+
+func (*clusterNodePoolNodeConfigWindowsNodeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigWindowsNodeConfig)(nil)).Elem()
+}
+
+func (i *clusterNodePoolNodeConfigWindowsNodeConfigPtrType) ToClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput() ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput {
+	return i.ToClusterNodePoolNodeConfigWindowsNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolNodeConfigWindowsNodeConfigPtrType) ToClusterNodePoolNodeConfigWindowsNodeConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigWindowsNodeConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigWindowsNodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigWindowsNodeConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigWindowsNodeConfigOutput) ToClusterNodePoolNodeConfigWindowsNodeConfigOutput() ClusterNodePoolNodeConfigWindowsNodeConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigWindowsNodeConfigOutput) ToClusterNodePoolNodeConfigWindowsNodeConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigWindowsNodeConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigWindowsNodeConfigOutput) ToClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput() ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput {
+	return o.ToClusterNodePoolNodeConfigWindowsNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolNodeConfigWindowsNodeConfigOutput) ToClusterNodePoolNodeConfigWindowsNodeConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolNodeConfigWindowsNodeConfig) *ClusterNodePoolNodeConfigWindowsNodeConfig {
+		return &v
+	}).(ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput)
+}
+
+// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+func (o ClusterNodePoolNodeConfigWindowsNodeConfigOutput) Osversion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigWindowsNodeConfig) *string { return v.Osversion }).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigWindowsNodeConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput) ToClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput() ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput) ToClusterNodePoolNodeConfigWindowsNodeConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput) Elem() ClusterNodePoolNodeConfigWindowsNodeConfigOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigWindowsNodeConfig) ClusterNodePoolNodeConfigWindowsNodeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolNodeConfigWindowsNodeConfig
+		return ret
+	}).(ClusterNodePoolNodeConfigWindowsNodeConfigOutput)
+}
+
+// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+func (o ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput) Osversion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigWindowsNodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Osversion
+	}).(pulumi.StringPtrOutput)
+}
+
 type ClusterNodePoolNodeConfigWorkloadMetadataConfig struct {
 	// How to expose the node metadata to the workload running on the node.
 	// Accepted values are:
@@ -35906,6 +36378,159 @@ func (o ClusterNotificationConfigPubsubFilterPtrOutput) EventTypes() pulumi.Stri
 		}
 		return v.EventTypes
 	}).(pulumi.StringArrayOutput)
+}
+
+type ClusterPodAutoscaling struct {
+	// Enable the Horizontal Pod Autoscaling profile for this cluster.
+	// Acceptable values are:
+	// * `"NONE"`: Customers explicitly opt-out of HPA profiles.
+	// * `"PERFORMANCE"`: PERFORMANCE is used when customers opt-in to the performance HPA profile. In this profile we support a higher number of HPAs per cluster and faster metrics collection for workload autoscaling.
+	//   See [HPAProfile](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#hpaprofile) for more details.
+	HpaProfile string `pulumi:"hpaProfile"`
+}
+
+// ClusterPodAutoscalingInput is an input type that accepts ClusterPodAutoscalingArgs and ClusterPodAutoscalingOutput values.
+// You can construct a concrete instance of `ClusterPodAutoscalingInput` via:
+//
+//	ClusterPodAutoscalingArgs{...}
+type ClusterPodAutoscalingInput interface {
+	pulumi.Input
+
+	ToClusterPodAutoscalingOutput() ClusterPodAutoscalingOutput
+	ToClusterPodAutoscalingOutputWithContext(context.Context) ClusterPodAutoscalingOutput
+}
+
+type ClusterPodAutoscalingArgs struct {
+	// Enable the Horizontal Pod Autoscaling profile for this cluster.
+	// Acceptable values are:
+	// * `"NONE"`: Customers explicitly opt-out of HPA profiles.
+	// * `"PERFORMANCE"`: PERFORMANCE is used when customers opt-in to the performance HPA profile. In this profile we support a higher number of HPAs per cluster and faster metrics collection for workload autoscaling.
+	//   See [HPAProfile](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#hpaprofile) for more details.
+	HpaProfile pulumi.StringInput `pulumi:"hpaProfile"`
+}
+
+func (ClusterPodAutoscalingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPodAutoscaling)(nil)).Elem()
+}
+
+func (i ClusterPodAutoscalingArgs) ToClusterPodAutoscalingOutput() ClusterPodAutoscalingOutput {
+	return i.ToClusterPodAutoscalingOutputWithContext(context.Background())
+}
+
+func (i ClusterPodAutoscalingArgs) ToClusterPodAutoscalingOutputWithContext(ctx context.Context) ClusterPodAutoscalingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPodAutoscalingOutput)
+}
+
+func (i ClusterPodAutoscalingArgs) ToClusterPodAutoscalingPtrOutput() ClusterPodAutoscalingPtrOutput {
+	return i.ToClusterPodAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterPodAutoscalingArgs) ToClusterPodAutoscalingPtrOutputWithContext(ctx context.Context) ClusterPodAutoscalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPodAutoscalingOutput).ToClusterPodAutoscalingPtrOutputWithContext(ctx)
+}
+
+// ClusterPodAutoscalingPtrInput is an input type that accepts ClusterPodAutoscalingArgs, ClusterPodAutoscalingPtr and ClusterPodAutoscalingPtrOutput values.
+// You can construct a concrete instance of `ClusterPodAutoscalingPtrInput` via:
+//
+//	        ClusterPodAutoscalingArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterPodAutoscalingPtrInput interface {
+	pulumi.Input
+
+	ToClusterPodAutoscalingPtrOutput() ClusterPodAutoscalingPtrOutput
+	ToClusterPodAutoscalingPtrOutputWithContext(context.Context) ClusterPodAutoscalingPtrOutput
+}
+
+type clusterPodAutoscalingPtrType ClusterPodAutoscalingArgs
+
+func ClusterPodAutoscalingPtr(v *ClusterPodAutoscalingArgs) ClusterPodAutoscalingPtrInput {
+	return (*clusterPodAutoscalingPtrType)(v)
+}
+
+func (*clusterPodAutoscalingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPodAutoscaling)(nil)).Elem()
+}
+
+func (i *clusterPodAutoscalingPtrType) ToClusterPodAutoscalingPtrOutput() ClusterPodAutoscalingPtrOutput {
+	return i.ToClusterPodAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterPodAutoscalingPtrType) ToClusterPodAutoscalingPtrOutputWithContext(ctx context.Context) ClusterPodAutoscalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPodAutoscalingPtrOutput)
+}
+
+type ClusterPodAutoscalingOutput struct{ *pulumi.OutputState }
+
+func (ClusterPodAutoscalingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPodAutoscaling)(nil)).Elem()
+}
+
+func (o ClusterPodAutoscalingOutput) ToClusterPodAutoscalingOutput() ClusterPodAutoscalingOutput {
+	return o
+}
+
+func (o ClusterPodAutoscalingOutput) ToClusterPodAutoscalingOutputWithContext(ctx context.Context) ClusterPodAutoscalingOutput {
+	return o
+}
+
+func (o ClusterPodAutoscalingOutput) ToClusterPodAutoscalingPtrOutput() ClusterPodAutoscalingPtrOutput {
+	return o.ToClusterPodAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterPodAutoscalingOutput) ToClusterPodAutoscalingPtrOutputWithContext(ctx context.Context) ClusterPodAutoscalingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterPodAutoscaling) *ClusterPodAutoscaling {
+		return &v
+	}).(ClusterPodAutoscalingPtrOutput)
+}
+
+// Enable the Horizontal Pod Autoscaling profile for this cluster.
+// Acceptable values are:
+//   - `"NONE"`: Customers explicitly opt-out of HPA profiles.
+//   - `"PERFORMANCE"`: PERFORMANCE is used when customers opt-in to the performance HPA profile. In this profile we support a higher number of HPAs per cluster and faster metrics collection for workload autoscaling.
+//     See [HPAProfile](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#hpaprofile) for more details.
+func (o ClusterPodAutoscalingOutput) HpaProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterPodAutoscaling) string { return v.HpaProfile }).(pulumi.StringOutput)
+}
+
+type ClusterPodAutoscalingPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterPodAutoscalingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPodAutoscaling)(nil)).Elem()
+}
+
+func (o ClusterPodAutoscalingPtrOutput) ToClusterPodAutoscalingPtrOutput() ClusterPodAutoscalingPtrOutput {
+	return o
+}
+
+func (o ClusterPodAutoscalingPtrOutput) ToClusterPodAutoscalingPtrOutputWithContext(ctx context.Context) ClusterPodAutoscalingPtrOutput {
+	return o
+}
+
+func (o ClusterPodAutoscalingPtrOutput) Elem() ClusterPodAutoscalingOutput {
+	return o.ApplyT(func(v *ClusterPodAutoscaling) ClusterPodAutoscaling {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterPodAutoscaling
+		return ret
+	}).(ClusterPodAutoscalingOutput)
+}
+
+// Enable the Horizontal Pod Autoscaling profile for this cluster.
+// Acceptable values are:
+//   - `"NONE"`: Customers explicitly opt-out of HPA profiles.
+//   - `"PERFORMANCE"`: PERFORMANCE is used when customers opt-in to the performance HPA profile. In this profile we support a higher number of HPAs per cluster and faster metrics collection for workload autoscaling.
+//     See [HPAProfile](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#hpaprofile) for more details.
+func (o ClusterPodAutoscalingPtrOutput) HpaProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPodAutoscaling) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HpaProfile
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterPodSecurityPolicyConfig struct {
@@ -39894,6 +40519,8 @@ type NodePoolNodeConfig struct {
 	Tags []string `pulumi:"tags"`
 	// List of Kubernetes taints to be applied to each node.
 	Taints []NodePoolNodeConfigTaint `pulumi:"taints"`
+	// Parameters that can be configured on Windows nodes.
+	WindowsNodeConfig *NodePoolNodeConfigWindowsNodeConfig `pulumi:"windowsNodeConfig"`
 	// The workload metadata configuration for this node.
 	WorkloadMetadataConfig *NodePoolNodeConfigWorkloadMetadataConfig `pulumi:"workloadMetadataConfig"`
 }
@@ -39997,6 +40624,8 @@ type NodePoolNodeConfigArgs struct {
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// List of Kubernetes taints to be applied to each node.
 	Taints NodePoolNodeConfigTaintArrayInput `pulumi:"taints"`
+	// Parameters that can be configured on Windows nodes.
+	WindowsNodeConfig NodePoolNodeConfigWindowsNodeConfigPtrInput `pulumi:"windowsNodeConfig"`
 	// The workload metadata configuration for this node.
 	WorkloadMetadataConfig NodePoolNodeConfigWorkloadMetadataConfigPtrInput `pulumi:"workloadMetadataConfig"`
 }
@@ -40295,6 +40924,11 @@ func (o NodePoolNodeConfigOutput) Tags() pulumi.StringArrayOutput {
 // List of Kubernetes taints to be applied to each node.
 func (o NodePoolNodeConfigOutput) Taints() NodePoolNodeConfigTaintArrayOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) []NodePoolNodeConfigTaint { return v.Taints }).(NodePoolNodeConfigTaintArrayOutput)
+}
+
+// Parameters that can be configured on Windows nodes.
+func (o NodePoolNodeConfigOutput) WindowsNodeConfig() NodePoolNodeConfigWindowsNodeConfigPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigWindowsNodeConfig { return v.WindowsNodeConfig }).(NodePoolNodeConfigWindowsNodeConfigPtrOutput)
 }
 
 // The workload metadata configuration for this node.
@@ -40747,6 +41381,16 @@ func (o NodePoolNodeConfigPtrOutput) Taints() NodePoolNodeConfigTaintArrayOutput
 		}
 		return v.Taints
 	}).(NodePoolNodeConfigTaintArrayOutput)
+}
+
+// Parameters that can be configured on Windows nodes.
+func (o NodePoolNodeConfigPtrOutput) WindowsNodeConfig() NodePoolNodeConfigWindowsNodeConfigPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfig) *NodePoolNodeConfigWindowsNodeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.WindowsNodeConfig
+	}).(NodePoolNodeConfigWindowsNodeConfigPtrOutput)
 }
 
 // The workload metadata configuration for this node.
@@ -44663,6 +45307,143 @@ func (o NodePoolNodeConfigTaintArrayOutput) Index(i pulumi.IntInput) NodePoolNod
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePoolNodeConfigTaint {
 		return vs[0].([]NodePoolNodeConfigTaint)[vs[1].(int)]
 	}).(NodePoolNodeConfigTaintOutput)
+}
+
+type NodePoolNodeConfigWindowsNodeConfig struct {
+	// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+	Osversion *string `pulumi:"osversion"`
+}
+
+// NodePoolNodeConfigWindowsNodeConfigInput is an input type that accepts NodePoolNodeConfigWindowsNodeConfigArgs and NodePoolNodeConfigWindowsNodeConfigOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigWindowsNodeConfigInput` via:
+//
+//	NodePoolNodeConfigWindowsNodeConfigArgs{...}
+type NodePoolNodeConfigWindowsNodeConfigInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigWindowsNodeConfigOutput() NodePoolNodeConfigWindowsNodeConfigOutput
+	ToNodePoolNodeConfigWindowsNodeConfigOutputWithContext(context.Context) NodePoolNodeConfigWindowsNodeConfigOutput
+}
+
+type NodePoolNodeConfigWindowsNodeConfigArgs struct {
+	// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+	Osversion pulumi.StringPtrInput `pulumi:"osversion"`
+}
+
+func (NodePoolNodeConfigWindowsNodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigWindowsNodeConfig)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigWindowsNodeConfigArgs) ToNodePoolNodeConfigWindowsNodeConfigOutput() NodePoolNodeConfigWindowsNodeConfigOutput {
+	return i.ToNodePoolNodeConfigWindowsNodeConfigOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigWindowsNodeConfigArgs) ToNodePoolNodeConfigWindowsNodeConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigWindowsNodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigWindowsNodeConfigOutput)
+}
+
+func (i NodePoolNodeConfigWindowsNodeConfigArgs) ToNodePoolNodeConfigWindowsNodeConfigPtrOutput() NodePoolNodeConfigWindowsNodeConfigPtrOutput {
+	return i.ToNodePoolNodeConfigWindowsNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigWindowsNodeConfigArgs) ToNodePoolNodeConfigWindowsNodeConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigWindowsNodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigWindowsNodeConfigOutput).ToNodePoolNodeConfigWindowsNodeConfigPtrOutputWithContext(ctx)
+}
+
+// NodePoolNodeConfigWindowsNodeConfigPtrInput is an input type that accepts NodePoolNodeConfigWindowsNodeConfigArgs, NodePoolNodeConfigWindowsNodeConfigPtr and NodePoolNodeConfigWindowsNodeConfigPtrOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigWindowsNodeConfigPtrInput` via:
+//
+//	        NodePoolNodeConfigWindowsNodeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolNodeConfigWindowsNodeConfigPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigWindowsNodeConfigPtrOutput() NodePoolNodeConfigWindowsNodeConfigPtrOutput
+	ToNodePoolNodeConfigWindowsNodeConfigPtrOutputWithContext(context.Context) NodePoolNodeConfigWindowsNodeConfigPtrOutput
+}
+
+type nodePoolNodeConfigWindowsNodeConfigPtrType NodePoolNodeConfigWindowsNodeConfigArgs
+
+func NodePoolNodeConfigWindowsNodeConfigPtr(v *NodePoolNodeConfigWindowsNodeConfigArgs) NodePoolNodeConfigWindowsNodeConfigPtrInput {
+	return (*nodePoolNodeConfigWindowsNodeConfigPtrType)(v)
+}
+
+func (*nodePoolNodeConfigWindowsNodeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigWindowsNodeConfig)(nil)).Elem()
+}
+
+func (i *nodePoolNodeConfigWindowsNodeConfigPtrType) ToNodePoolNodeConfigWindowsNodeConfigPtrOutput() NodePoolNodeConfigWindowsNodeConfigPtrOutput {
+	return i.ToNodePoolNodeConfigWindowsNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolNodeConfigWindowsNodeConfigPtrType) ToNodePoolNodeConfigWindowsNodeConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigWindowsNodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigWindowsNodeConfigPtrOutput)
+}
+
+type NodePoolNodeConfigWindowsNodeConfigOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigWindowsNodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigWindowsNodeConfig)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigWindowsNodeConfigOutput) ToNodePoolNodeConfigWindowsNodeConfigOutput() NodePoolNodeConfigWindowsNodeConfigOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigWindowsNodeConfigOutput) ToNodePoolNodeConfigWindowsNodeConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigWindowsNodeConfigOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigWindowsNodeConfigOutput) ToNodePoolNodeConfigWindowsNodeConfigPtrOutput() NodePoolNodeConfigWindowsNodeConfigPtrOutput {
+	return o.ToNodePoolNodeConfigWindowsNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolNodeConfigWindowsNodeConfigOutput) ToNodePoolNodeConfigWindowsNodeConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigWindowsNodeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolNodeConfigWindowsNodeConfig) *NodePoolNodeConfigWindowsNodeConfig {
+		return &v
+	}).(NodePoolNodeConfigWindowsNodeConfigPtrOutput)
+}
+
+// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+func (o NodePoolNodeConfigWindowsNodeConfigOutput) Osversion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigWindowsNodeConfig) *string { return v.Osversion }).(pulumi.StringPtrOutput)
+}
+
+type NodePoolNodeConfigWindowsNodeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigWindowsNodeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigWindowsNodeConfig)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigWindowsNodeConfigPtrOutput) ToNodePoolNodeConfigWindowsNodeConfigPtrOutput() NodePoolNodeConfigWindowsNodeConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigWindowsNodeConfigPtrOutput) ToNodePoolNodeConfigWindowsNodeConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigWindowsNodeConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigWindowsNodeConfigPtrOutput) Elem() NodePoolNodeConfigWindowsNodeConfigOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigWindowsNodeConfig) NodePoolNodeConfigWindowsNodeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolNodeConfigWindowsNodeConfig
+		return ret
+	}).(NodePoolNodeConfigWindowsNodeConfigOutput)
+}
+
+// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+func (o NodePoolNodeConfigWindowsNodeConfigPtrOutput) Osversion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigWindowsNodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Osversion
+	}).(pulumi.StringPtrOutput)
 }
 
 type NodePoolNodeConfigWorkloadMetadataConfig struct {
@@ -49112,6 +49893,8 @@ func (o GetClusterConfidentialNodeArrayOutput) Index(i pulumi.IntInput) GetClust
 type GetClusterControlPlaneEndpointsConfig struct {
 	// DNS endpoint configuration.
 	DnsEndpointConfigs []GetClusterControlPlaneEndpointsConfigDnsEndpointConfig `pulumi:"dnsEndpointConfigs"`
+	// IP endpoint configuration.
+	IpEndpointsConfigs []GetClusterControlPlaneEndpointsConfigIpEndpointsConfig `pulumi:"ipEndpointsConfigs"`
 }
 
 // GetClusterControlPlaneEndpointsConfigInput is an input type that accepts GetClusterControlPlaneEndpointsConfigArgs and GetClusterControlPlaneEndpointsConfigOutput values.
@@ -49128,6 +49911,8 @@ type GetClusterControlPlaneEndpointsConfigInput interface {
 type GetClusterControlPlaneEndpointsConfigArgs struct {
 	// DNS endpoint configuration.
 	DnsEndpointConfigs GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayInput `pulumi:"dnsEndpointConfigs"`
+	// IP endpoint configuration.
+	IpEndpointsConfigs GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayInput `pulumi:"ipEndpointsConfigs"`
 }
 
 func (GetClusterControlPlaneEndpointsConfigArgs) ElementType() reflect.Type {
@@ -49186,6 +49971,13 @@ func (o GetClusterControlPlaneEndpointsConfigOutput) DnsEndpointConfigs() GetClu
 	return o.ApplyT(func(v GetClusterControlPlaneEndpointsConfig) []GetClusterControlPlaneEndpointsConfigDnsEndpointConfig {
 		return v.DnsEndpointConfigs
 	}).(GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayOutput)
+}
+
+// IP endpoint configuration.
+func (o GetClusterControlPlaneEndpointsConfigOutput) IpEndpointsConfigs() GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterControlPlaneEndpointsConfig) []GetClusterControlPlaneEndpointsConfigIpEndpointsConfig {
+		return v.IpEndpointsConfigs
+	}).(GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayOutput)
 }
 
 type GetClusterControlPlaneEndpointsConfigArrayOutput struct{ *pulumi.OutputState }
@@ -49312,6 +50104,103 @@ func (o GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayOutput) Index
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterControlPlaneEndpointsConfigDnsEndpointConfig {
 		return vs[0].([]GetClusterControlPlaneEndpointsConfigDnsEndpointConfig)[vs[1].(int)]
 	}).(GetClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput)
+}
+
+type GetClusterControlPlaneEndpointsConfigIpEndpointsConfig struct {
+	// Controls whether to allow direct IP access.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterControlPlaneEndpointsConfigIpEndpointsConfigInput is an input type that accepts GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs and GetClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput values.
+// You can construct a concrete instance of `GetClusterControlPlaneEndpointsConfigIpEndpointsConfigInput` via:
+//
+//	GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs{...}
+type GetClusterControlPlaneEndpointsConfigIpEndpointsConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput() GetClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput
+	ToGetClusterControlPlaneEndpointsConfigIpEndpointsConfigOutputWithContext(context.Context) GetClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput
+}
+
+type GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs struct {
+	// Controls whether to allow direct IP access.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterControlPlaneEndpointsConfigIpEndpointsConfig)(nil)).Elem()
+}
+
+func (i GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs) ToGetClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput() GetClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput {
+	return i.ToGetClusterControlPlaneEndpointsConfigIpEndpointsConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs) ToGetClusterControlPlaneEndpointsConfigIpEndpointsConfigOutputWithContext(ctx context.Context) GetClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput)
+}
+
+// GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayInput is an input type that accepts GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArray and GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayInput` via:
+//
+//	GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArray{ GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs{...} }
+type GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayOutput() GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayOutput
+	ToGetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayOutputWithContext(context.Context) GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayOutput
+}
+
+type GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArray []GetClusterControlPlaneEndpointsConfigIpEndpointsConfigInput
+
+func (GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterControlPlaneEndpointsConfigIpEndpointsConfig)(nil)).Elem()
+}
+
+func (i GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArray) ToGetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayOutput() GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayOutput {
+	return i.ToGetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArray) ToGetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayOutputWithContext(ctx context.Context) GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayOutput)
+}
+
+type GetClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterControlPlaneEndpointsConfigIpEndpointsConfig)(nil)).Elem()
+}
+
+func (o GetClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput) ToGetClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput() GetClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput {
+	return o
+}
+
+func (o GetClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput) ToGetClusterControlPlaneEndpointsConfigIpEndpointsConfigOutputWithContext(ctx context.Context) GetClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput {
+	return o
+}
+
+// Controls whether to allow direct IP access.
+func (o GetClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterControlPlaneEndpointsConfigIpEndpointsConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterControlPlaneEndpointsConfigIpEndpointsConfig)(nil)).Elem()
+}
+
+func (o GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayOutput) ToGetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayOutput() GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayOutput) ToGetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayOutputWithContext(ctx context.Context) GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayOutput) Index(i pulumi.IntInput) GetClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterControlPlaneEndpointsConfigIpEndpointsConfig {
+		return vs[0].([]GetClusterControlPlaneEndpointsConfigIpEndpointsConfig)[vs[1].(int)]
+	}).(GetClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput)
 }
 
 type GetClusterCostManagementConfig struct {
@@ -52419,6 +53308,8 @@ type GetClusterNodeConfig struct {
 	Tags []string `pulumi:"tags"`
 	// List of Kubernetes taints to be applied to each node.
 	Taints []GetClusterNodeConfigTaint `pulumi:"taints"`
+	// Parameters that can be configured on Windows nodes.
+	WindowsNodeConfigs []GetClusterNodeConfigWindowsNodeConfig `pulumi:"windowsNodeConfigs"`
 	// The workload metadata configuration for this node.
 	WorkloadMetadataConfigs []GetClusterNodeConfigWorkloadMetadataConfig `pulumi:"workloadMetadataConfigs"`
 }
@@ -52519,6 +53410,8 @@ type GetClusterNodeConfigArgs struct {
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// List of Kubernetes taints to be applied to each node.
 	Taints GetClusterNodeConfigTaintArrayInput `pulumi:"taints"`
+	// Parameters that can be configured on Windows nodes.
+	WindowsNodeConfigs GetClusterNodeConfigWindowsNodeConfigArrayInput `pulumi:"windowsNodeConfigs"`
 	// The workload metadata configuration for this node.
 	WorkloadMetadataConfigs GetClusterNodeConfigWorkloadMetadataConfigArrayInput `pulumi:"workloadMetadataConfigs"`
 }
@@ -52794,6 +53687,11 @@ func (o GetClusterNodeConfigOutput) Tags() pulumi.StringArrayOutput {
 // List of Kubernetes taints to be applied to each node.
 func (o GetClusterNodeConfigOutput) Taints() GetClusterNodeConfigTaintArrayOutput {
 	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigTaint { return v.Taints }).(GetClusterNodeConfigTaintArrayOutput)
+}
+
+// Parameters that can be configured on Windows nodes.
+func (o GetClusterNodeConfigOutput) WindowsNodeConfigs() GetClusterNodeConfigWindowsNodeConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigWindowsNodeConfig { return v.WindowsNodeConfigs }).(GetClusterNodeConfigWindowsNodeConfigArrayOutput)
 }
 
 // The workload metadata configuration for this node.
@@ -55750,6 +56648,103 @@ func (o GetClusterNodeConfigTaintArrayOutput) Index(i pulumi.IntInput) GetCluste
 	}).(GetClusterNodeConfigTaintOutput)
 }
 
+type GetClusterNodeConfigWindowsNodeConfig struct {
+	// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+	Osversion string `pulumi:"osversion"`
+}
+
+// GetClusterNodeConfigWindowsNodeConfigInput is an input type that accepts GetClusterNodeConfigWindowsNodeConfigArgs and GetClusterNodeConfigWindowsNodeConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigWindowsNodeConfigInput` via:
+//
+//	GetClusterNodeConfigWindowsNodeConfigArgs{...}
+type GetClusterNodeConfigWindowsNodeConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigWindowsNodeConfigOutput() GetClusterNodeConfigWindowsNodeConfigOutput
+	ToGetClusterNodeConfigWindowsNodeConfigOutputWithContext(context.Context) GetClusterNodeConfigWindowsNodeConfigOutput
+}
+
+type GetClusterNodeConfigWindowsNodeConfigArgs struct {
+	// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+	Osversion pulumi.StringInput `pulumi:"osversion"`
+}
+
+func (GetClusterNodeConfigWindowsNodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigWindowsNodeConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigWindowsNodeConfigArgs) ToGetClusterNodeConfigWindowsNodeConfigOutput() GetClusterNodeConfigWindowsNodeConfigOutput {
+	return i.ToGetClusterNodeConfigWindowsNodeConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigWindowsNodeConfigArgs) ToGetClusterNodeConfigWindowsNodeConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigWindowsNodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigWindowsNodeConfigOutput)
+}
+
+// GetClusterNodeConfigWindowsNodeConfigArrayInput is an input type that accepts GetClusterNodeConfigWindowsNodeConfigArray and GetClusterNodeConfigWindowsNodeConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigWindowsNodeConfigArrayInput` via:
+//
+//	GetClusterNodeConfigWindowsNodeConfigArray{ GetClusterNodeConfigWindowsNodeConfigArgs{...} }
+type GetClusterNodeConfigWindowsNodeConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigWindowsNodeConfigArrayOutput() GetClusterNodeConfigWindowsNodeConfigArrayOutput
+	ToGetClusterNodeConfigWindowsNodeConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigWindowsNodeConfigArrayOutput
+}
+
+type GetClusterNodeConfigWindowsNodeConfigArray []GetClusterNodeConfigWindowsNodeConfigInput
+
+func (GetClusterNodeConfigWindowsNodeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigWindowsNodeConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigWindowsNodeConfigArray) ToGetClusterNodeConfigWindowsNodeConfigArrayOutput() GetClusterNodeConfigWindowsNodeConfigArrayOutput {
+	return i.ToGetClusterNodeConfigWindowsNodeConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigWindowsNodeConfigArray) ToGetClusterNodeConfigWindowsNodeConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigWindowsNodeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigWindowsNodeConfigArrayOutput)
+}
+
+type GetClusterNodeConfigWindowsNodeConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigWindowsNodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigWindowsNodeConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigWindowsNodeConfigOutput) ToGetClusterNodeConfigWindowsNodeConfigOutput() GetClusterNodeConfigWindowsNodeConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigWindowsNodeConfigOutput) ToGetClusterNodeConfigWindowsNodeConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigWindowsNodeConfigOutput {
+	return o
+}
+
+// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+func (o GetClusterNodeConfigWindowsNodeConfigOutput) Osversion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigWindowsNodeConfig) string { return v.Osversion }).(pulumi.StringOutput)
+}
+
+type GetClusterNodeConfigWindowsNodeConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigWindowsNodeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigWindowsNodeConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigWindowsNodeConfigArrayOutput) ToGetClusterNodeConfigWindowsNodeConfigArrayOutput() GetClusterNodeConfigWindowsNodeConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigWindowsNodeConfigArrayOutput) ToGetClusterNodeConfigWindowsNodeConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigWindowsNodeConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigWindowsNodeConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigWindowsNodeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigWindowsNodeConfig {
+		return vs[0].([]GetClusterNodeConfigWindowsNodeConfig)[vs[1].(int)]
+	}).(GetClusterNodeConfigWindowsNodeConfigOutput)
+}
+
 type GetClusterNodeConfigWorkloadMetadataConfig struct {
 	// Mode is the configuration for how to expose metadata to workloads running on the node.
 	Mode string `pulumi:"mode"`
@@ -58145,6 +59140,8 @@ type GetClusterNodePoolNodeConfig struct {
 	Tags []string `pulumi:"tags"`
 	// List of Kubernetes taints to be applied to each node.
 	Taints []GetClusterNodePoolNodeConfigTaint `pulumi:"taints"`
+	// Parameters that can be configured on Windows nodes.
+	WindowsNodeConfigs []GetClusterNodePoolNodeConfigWindowsNodeConfig `pulumi:"windowsNodeConfigs"`
 	// The workload metadata configuration for this node.
 	WorkloadMetadataConfigs []GetClusterNodePoolNodeConfigWorkloadMetadataConfig `pulumi:"workloadMetadataConfigs"`
 }
@@ -58245,6 +59242,8 @@ type GetClusterNodePoolNodeConfigArgs struct {
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// List of Kubernetes taints to be applied to each node.
 	Taints GetClusterNodePoolNodeConfigTaintArrayInput `pulumi:"taints"`
+	// Parameters that can be configured on Windows nodes.
+	WindowsNodeConfigs GetClusterNodePoolNodeConfigWindowsNodeConfigArrayInput `pulumi:"windowsNodeConfigs"`
 	// The workload metadata configuration for this node.
 	WorkloadMetadataConfigs GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayInput `pulumi:"workloadMetadataConfigs"`
 }
@@ -58540,6 +59539,13 @@ func (o GetClusterNodePoolNodeConfigOutput) Tags() pulumi.StringArrayOutput {
 // List of Kubernetes taints to be applied to each node.
 func (o GetClusterNodePoolNodeConfigOutput) Taints() GetClusterNodePoolNodeConfigTaintArrayOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigTaint { return v.Taints }).(GetClusterNodePoolNodeConfigTaintArrayOutput)
+}
+
+// Parameters that can be configured on Windows nodes.
+func (o GetClusterNodePoolNodeConfigOutput) WindowsNodeConfigs() GetClusterNodePoolNodeConfigWindowsNodeConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigWindowsNodeConfig {
+		return v.WindowsNodeConfigs
+	}).(GetClusterNodePoolNodeConfigWindowsNodeConfigArrayOutput)
 }
 
 // The workload metadata configuration for this node.
@@ -61500,6 +62506,103 @@ func (o GetClusterNodePoolNodeConfigTaintArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetClusterNodePoolNodeConfigTaintOutput)
 }
 
+type GetClusterNodePoolNodeConfigWindowsNodeConfig struct {
+	// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+	Osversion string `pulumi:"osversion"`
+}
+
+// GetClusterNodePoolNodeConfigWindowsNodeConfigInput is an input type that accepts GetClusterNodePoolNodeConfigWindowsNodeConfigArgs and GetClusterNodePoolNodeConfigWindowsNodeConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigWindowsNodeConfigInput` via:
+//
+//	GetClusterNodePoolNodeConfigWindowsNodeConfigArgs{...}
+type GetClusterNodePoolNodeConfigWindowsNodeConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigWindowsNodeConfigOutput() GetClusterNodePoolNodeConfigWindowsNodeConfigOutput
+	ToGetClusterNodePoolNodeConfigWindowsNodeConfigOutputWithContext(context.Context) GetClusterNodePoolNodeConfigWindowsNodeConfigOutput
+}
+
+type GetClusterNodePoolNodeConfigWindowsNodeConfigArgs struct {
+	// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+	Osversion pulumi.StringInput `pulumi:"osversion"`
+}
+
+func (GetClusterNodePoolNodeConfigWindowsNodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigWindowsNodeConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigWindowsNodeConfigArgs) ToGetClusterNodePoolNodeConfigWindowsNodeConfigOutput() GetClusterNodePoolNodeConfigWindowsNodeConfigOutput {
+	return i.ToGetClusterNodePoolNodeConfigWindowsNodeConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigWindowsNodeConfigArgs) ToGetClusterNodePoolNodeConfigWindowsNodeConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigWindowsNodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigWindowsNodeConfigOutput)
+}
+
+// GetClusterNodePoolNodeConfigWindowsNodeConfigArrayInput is an input type that accepts GetClusterNodePoolNodeConfigWindowsNodeConfigArray and GetClusterNodePoolNodeConfigWindowsNodeConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigWindowsNodeConfigArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigWindowsNodeConfigArray{ GetClusterNodePoolNodeConfigWindowsNodeConfigArgs{...} }
+type GetClusterNodePoolNodeConfigWindowsNodeConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigWindowsNodeConfigArrayOutput() GetClusterNodePoolNodeConfigWindowsNodeConfigArrayOutput
+	ToGetClusterNodePoolNodeConfigWindowsNodeConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigWindowsNodeConfigArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigWindowsNodeConfigArray []GetClusterNodePoolNodeConfigWindowsNodeConfigInput
+
+func (GetClusterNodePoolNodeConfigWindowsNodeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigWindowsNodeConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigWindowsNodeConfigArray) ToGetClusterNodePoolNodeConfigWindowsNodeConfigArrayOutput() GetClusterNodePoolNodeConfigWindowsNodeConfigArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigWindowsNodeConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigWindowsNodeConfigArray) ToGetClusterNodePoolNodeConfigWindowsNodeConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigWindowsNodeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigWindowsNodeConfigArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigWindowsNodeConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigWindowsNodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigWindowsNodeConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigWindowsNodeConfigOutput) ToGetClusterNodePoolNodeConfigWindowsNodeConfigOutput() GetClusterNodePoolNodeConfigWindowsNodeConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigWindowsNodeConfigOutput) ToGetClusterNodePoolNodeConfigWindowsNodeConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigWindowsNodeConfigOutput {
+	return o
+}
+
+// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+func (o GetClusterNodePoolNodeConfigWindowsNodeConfigOutput) Osversion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigWindowsNodeConfig) string { return v.Osversion }).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolNodeConfigWindowsNodeConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigWindowsNodeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigWindowsNodeConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigWindowsNodeConfigArrayOutput) ToGetClusterNodePoolNodeConfigWindowsNodeConfigArrayOutput() GetClusterNodePoolNodeConfigWindowsNodeConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigWindowsNodeConfigArrayOutput) ToGetClusterNodePoolNodeConfigWindowsNodeConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigWindowsNodeConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigWindowsNodeConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigWindowsNodeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigWindowsNodeConfig {
+		return vs[0].([]GetClusterNodePoolNodeConfigWindowsNodeConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigWindowsNodeConfigOutput)
+}
+
 type GetClusterNodePoolNodeConfigWorkloadMetadataConfig struct {
 	// Mode is the configuration for how to expose metadata to workloads running on the node.
 	Mode string `pulumi:"mode"`
@@ -62473,6 +63576,113 @@ func (o GetClusterNotificationConfigPubsubFilterArrayOutput) Index(i pulumi.IntI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNotificationConfigPubsubFilter {
 		return vs[0].([]GetClusterNotificationConfigPubsubFilter)[vs[1].(int)]
 	}).(GetClusterNotificationConfigPubsubFilterOutput)
+}
+
+type GetClusterPodAutoscaling struct {
+	// HPA Profile is used to configure the Horizontal Pod Autoscaler (HPA) profile for the cluster.
+	// 								Available options include:
+	// 								- NONE: Customers explicitly opt-out of HPA profiles.
+	// 								- PERFORMANCE: PERFORMANCE is used when customers opt-in to the performance HPA profile. In this profile we support a higher number of HPAs per cluster and faster metrics collection for workload autoscaling.
+	HpaProfile string `pulumi:"hpaProfile"`
+}
+
+// GetClusterPodAutoscalingInput is an input type that accepts GetClusterPodAutoscalingArgs and GetClusterPodAutoscalingOutput values.
+// You can construct a concrete instance of `GetClusterPodAutoscalingInput` via:
+//
+//	GetClusterPodAutoscalingArgs{...}
+type GetClusterPodAutoscalingInput interface {
+	pulumi.Input
+
+	ToGetClusterPodAutoscalingOutput() GetClusterPodAutoscalingOutput
+	ToGetClusterPodAutoscalingOutputWithContext(context.Context) GetClusterPodAutoscalingOutput
+}
+
+type GetClusterPodAutoscalingArgs struct {
+	// HPA Profile is used to configure the Horizontal Pod Autoscaler (HPA) profile for the cluster.
+	// 								Available options include:
+	// 								- NONE: Customers explicitly opt-out of HPA profiles.
+	// 								- PERFORMANCE: PERFORMANCE is used when customers opt-in to the performance HPA profile. In this profile we support a higher number of HPAs per cluster and faster metrics collection for workload autoscaling.
+	HpaProfile pulumi.StringInput `pulumi:"hpaProfile"`
+}
+
+func (GetClusterPodAutoscalingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterPodAutoscaling)(nil)).Elem()
+}
+
+func (i GetClusterPodAutoscalingArgs) ToGetClusterPodAutoscalingOutput() GetClusterPodAutoscalingOutput {
+	return i.ToGetClusterPodAutoscalingOutputWithContext(context.Background())
+}
+
+func (i GetClusterPodAutoscalingArgs) ToGetClusterPodAutoscalingOutputWithContext(ctx context.Context) GetClusterPodAutoscalingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterPodAutoscalingOutput)
+}
+
+// GetClusterPodAutoscalingArrayInput is an input type that accepts GetClusterPodAutoscalingArray and GetClusterPodAutoscalingArrayOutput values.
+// You can construct a concrete instance of `GetClusterPodAutoscalingArrayInput` via:
+//
+//	GetClusterPodAutoscalingArray{ GetClusterPodAutoscalingArgs{...} }
+type GetClusterPodAutoscalingArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterPodAutoscalingArrayOutput() GetClusterPodAutoscalingArrayOutput
+	ToGetClusterPodAutoscalingArrayOutputWithContext(context.Context) GetClusterPodAutoscalingArrayOutput
+}
+
+type GetClusterPodAutoscalingArray []GetClusterPodAutoscalingInput
+
+func (GetClusterPodAutoscalingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterPodAutoscaling)(nil)).Elem()
+}
+
+func (i GetClusterPodAutoscalingArray) ToGetClusterPodAutoscalingArrayOutput() GetClusterPodAutoscalingArrayOutput {
+	return i.ToGetClusterPodAutoscalingArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterPodAutoscalingArray) ToGetClusterPodAutoscalingArrayOutputWithContext(ctx context.Context) GetClusterPodAutoscalingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterPodAutoscalingArrayOutput)
+}
+
+type GetClusterPodAutoscalingOutput struct{ *pulumi.OutputState }
+
+func (GetClusterPodAutoscalingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterPodAutoscaling)(nil)).Elem()
+}
+
+func (o GetClusterPodAutoscalingOutput) ToGetClusterPodAutoscalingOutput() GetClusterPodAutoscalingOutput {
+	return o
+}
+
+func (o GetClusterPodAutoscalingOutput) ToGetClusterPodAutoscalingOutputWithContext(ctx context.Context) GetClusterPodAutoscalingOutput {
+	return o
+}
+
+// HPA Profile is used to configure the Horizontal Pod Autoscaler (HPA) profile for the cluster.
+//
+//	Available options include:
+//	- NONE: Customers explicitly opt-out of HPA profiles.
+//	- PERFORMANCE: PERFORMANCE is used when customers opt-in to the performance HPA profile. In this profile we support a higher number of HPAs per cluster and faster metrics collection for workload autoscaling.
+func (o GetClusterPodAutoscalingOutput) HpaProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterPodAutoscaling) string { return v.HpaProfile }).(pulumi.StringOutput)
+}
+
+type GetClusterPodAutoscalingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterPodAutoscalingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterPodAutoscaling)(nil)).Elem()
+}
+
+func (o GetClusterPodAutoscalingArrayOutput) ToGetClusterPodAutoscalingArrayOutput() GetClusterPodAutoscalingArrayOutput {
+	return o
+}
+
+func (o GetClusterPodAutoscalingArrayOutput) ToGetClusterPodAutoscalingArrayOutputWithContext(ctx context.Context) GetClusterPodAutoscalingArrayOutput {
+	return o
+}
+
+func (o GetClusterPodAutoscalingArrayOutput) Index(i pulumi.IntInput) GetClusterPodAutoscalingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterPodAutoscaling {
+		return vs[0].([]GetClusterPodAutoscaling)[vs[1].(int)]
+	}).(GetClusterPodAutoscalingOutput)
 }
 
 type GetClusterPodSecurityPolicyConfig struct {
@@ -64431,6 +65641,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterControlPlaneEndpointsConfigPtrInput)(nil)).Elem(), ClusterControlPlaneEndpointsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterControlPlaneEndpointsConfigDnsEndpointConfigInput)(nil)).Elem(), ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrInput)(nil)).Elem(), ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterControlPlaneEndpointsConfigIpEndpointsConfigInput)(nil)).Elem(), ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrInput)(nil)).Elem(), ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterCostManagementConfigInput)(nil)).Elem(), ClusterCostManagementConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterCostManagementConfigPtrInput)(nil)).Elem(), ClusterCostManagementConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDatabaseEncryptionInput)(nil)).Elem(), ClusterDatabaseEncryptionArgs{})
@@ -64542,6 +65754,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigSoleTenantConfigNodeAffinityArrayInput)(nil)).Elem(), ClusterNodeConfigSoleTenantConfigNodeAffinityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigTaintInput)(nil)).Elem(), ClusterNodeConfigTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigTaintArrayInput)(nil)).Elem(), ClusterNodeConfigTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigWindowsNodeConfigInput)(nil)).Elem(), ClusterNodeConfigWindowsNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigWindowsNodeConfigPtrInput)(nil)).Elem(), ClusterNodeConfigWindowsNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigWorkloadMetadataConfigInput)(nil)).Elem(), ClusterNodeConfigWorkloadMetadataConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigWorkloadMetadataConfigPtrInput)(nil)).Elem(), ClusterNodeConfigWorkloadMetadataConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolInput)(nil)).Elem(), ClusterNodePoolArgs{})
@@ -64636,6 +65850,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayInput)(nil)).Elem(), ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigTaintInput)(nil)).Elem(), ClusterNodePoolNodeConfigTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigTaintArrayInput)(nil)).Elem(), ClusterNodePoolNodeConfigTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigWindowsNodeConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigWindowsNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigWindowsNodeConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigWindowsNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigWorkloadMetadataConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolPlacementPolicyInput)(nil)).Elem(), ClusterNodePoolPlacementPolicyArgs{})
@@ -64654,6 +65870,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNotificationConfigPubsubPtrInput)(nil)).Elem(), ClusterNotificationConfigPubsubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNotificationConfigPubsubFilterInput)(nil)).Elem(), ClusterNotificationConfigPubsubFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNotificationConfigPubsubFilterPtrInput)(nil)).Elem(), ClusterNotificationConfigPubsubFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPodAutoscalingInput)(nil)).Elem(), ClusterPodAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPodAutoscalingPtrInput)(nil)).Elem(), ClusterPodAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPodSecurityPolicyConfigInput)(nil)).Elem(), ClusterPodSecurityPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPodSecurityPolicyConfigPtrInput)(nil)).Elem(), ClusterPodSecurityPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPrivateClusterConfigInput)(nil)).Elem(), ClusterPrivateClusterConfigArgs{})
@@ -64755,6 +65973,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigSoleTenantConfigNodeAffinityArrayInput)(nil)).Elem(), NodePoolNodeConfigSoleTenantConfigNodeAffinityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigTaintInput)(nil)).Elem(), NodePoolNodeConfigTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigTaintArrayInput)(nil)).Elem(), NodePoolNodeConfigTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigWindowsNodeConfigInput)(nil)).Elem(), NodePoolNodeConfigWindowsNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigWindowsNodeConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigWindowsNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigWorkloadMetadataConfigInput)(nil)).Elem(), NodePoolNodeConfigWorkloadMetadataConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigWorkloadMetadataConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigWorkloadMetadataConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolPlacementPolicyInput)(nil)).Elem(), NodePoolPlacementPolicyArgs{})
@@ -64833,6 +66053,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterControlPlaneEndpointsConfigArrayInput)(nil)).Elem(), GetClusterControlPlaneEndpointsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterControlPlaneEndpointsConfigDnsEndpointConfigInput)(nil)).Elem(), GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayInput)(nil)).Elem(), GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterControlPlaneEndpointsConfigIpEndpointsConfigInput)(nil)).Elem(), GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayInput)(nil)).Elem(), GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterCostManagementConfigInput)(nil)).Elem(), GetClusterCostManagementConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterCostManagementConfigArrayInput)(nil)).Elem(), GetClusterCostManagementConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterDatabaseEncryptionInput)(nil)).Elem(), GetClusterDatabaseEncryptionArgs{})
@@ -64945,6 +66167,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigSoleTenantConfigNodeAffinityArrayInput)(nil)).Elem(), GetClusterNodeConfigSoleTenantConfigNodeAffinityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigTaintInput)(nil)).Elem(), GetClusterNodeConfigTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigTaintArrayInput)(nil)).Elem(), GetClusterNodeConfigTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigWindowsNodeConfigInput)(nil)).Elem(), GetClusterNodeConfigWindowsNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigWindowsNodeConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigWindowsNodeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigWorkloadMetadataConfigInput)(nil)).Elem(), GetClusterNodeConfigWorkloadMetadataConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigWorkloadMetadataConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigWorkloadMetadataConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolInput)(nil)).Elem(), GetClusterNodePoolArgs{})
@@ -65041,6 +66265,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigTaintInput)(nil)).Elem(), GetClusterNodePoolNodeConfigTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigTaintArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigWindowsNodeConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigWindowsNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigWindowsNodeConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigWindowsNodeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigWorkloadMetadataConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigWorkloadMetadataConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigWorkloadMetadataConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolPlacementPolicyInput)(nil)).Elem(), GetClusterNodePoolPlacementPolicyArgs{})
@@ -65059,6 +66285,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNotificationConfigPubsubArrayInput)(nil)).Elem(), GetClusterNotificationConfigPubsubArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNotificationConfigPubsubFilterInput)(nil)).Elem(), GetClusterNotificationConfigPubsubFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNotificationConfigPubsubFilterArrayInput)(nil)).Elem(), GetClusterNotificationConfigPubsubFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterPodAutoscalingInput)(nil)).Elem(), GetClusterPodAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterPodAutoscalingArrayInput)(nil)).Elem(), GetClusterPodAutoscalingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterPodSecurityPolicyConfigInput)(nil)).Elem(), GetClusterPodSecurityPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterPodSecurityPolicyConfigArrayInput)(nil)).Elem(), GetClusterPodSecurityPolicyConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterPrivateClusterConfigInput)(nil)).Elem(), GetClusterPrivateClusterConfigArgs{})
@@ -65295,6 +66523,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterControlPlaneEndpointsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput{})
 	pulumi.RegisterOutputType(ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput{})
+	pulumi.RegisterOutputType(ClusterControlPlaneEndpointsConfigIpEndpointsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterCostManagementConfigOutput{})
 	pulumi.RegisterOutputType(ClusterCostManagementConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterDatabaseEncryptionOutput{})
@@ -65406,6 +66636,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigTaintOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigTaintArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigWindowsNodeConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigWindowsNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigWorkloadMetadataConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigWorkloadMetadataConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolOutput{})
@@ -65500,6 +66732,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigTaintOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigTaintArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigWindowsNodeConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolPlacementPolicyOutput{})
@@ -65518,6 +66752,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNotificationConfigPubsubPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNotificationConfigPubsubFilterOutput{})
 	pulumi.RegisterOutputType(ClusterNotificationConfigPubsubFilterPtrOutput{})
+	pulumi.RegisterOutputType(ClusterPodAutoscalingOutput{})
+	pulumi.RegisterOutputType(ClusterPodAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(ClusterPodSecurityPolicyConfigOutput{})
 	pulumi.RegisterOutputType(ClusterPodSecurityPolicyConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterPrivateClusterConfigOutput{})
@@ -65619,6 +66855,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigTaintOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigTaintArrayOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigWindowsNodeConfigOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigWindowsNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigWorkloadMetadataConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigWorkloadMetadataConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolPlacementPolicyOutput{})
@@ -65697,6 +66935,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterControlPlaneEndpointsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterControlPlaneEndpointsConfigIpEndpointsConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterControlPlaneEndpointsConfigIpEndpointsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterCostManagementConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterCostManagementConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterDatabaseEncryptionOutput{})
@@ -65809,6 +67049,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigTaintOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigTaintArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigWindowsNodeConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigWindowsNodeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigWorkloadMetadataConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigWorkloadMetadataConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolOutput{})
@@ -65905,6 +67147,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigTaintOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigTaintArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigWindowsNodeConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigWindowsNodeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigWorkloadMetadataConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolPlacementPolicyOutput{})
@@ -65923,6 +67167,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNotificationConfigPubsubArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNotificationConfigPubsubFilterOutput{})
 	pulumi.RegisterOutputType(GetClusterNotificationConfigPubsubFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterPodAutoscalingOutput{})
+	pulumi.RegisterOutputType(GetClusterPodAutoscalingArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterPodSecurityPolicyConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterPodSecurityPolicyConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterPrivateClusterConfigOutput{})

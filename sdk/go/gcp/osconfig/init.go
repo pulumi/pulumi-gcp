@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OsPolicyAssignment{}
 	case "gcp:osconfig/patchDeployment:PatchDeployment":
 		r = &PatchDeployment{}
+	case "gcp:osconfig/v2PolicyOrchestrator:V2PolicyOrchestrator":
+		r = &V2PolicyOrchestrator{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -53,6 +55,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"osconfig/patchDeployment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"osconfig/v2PolicyOrchestrator",
 		&module{version},
 	)
 }

@@ -21,6 +21,8 @@ import com.pulumi.gcp.storage.inputs.GetBucketObjectsPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetBucketPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetBucketsArgs;
 import com.pulumi.gcp.storage.inputs.GetBucketsPlainArgs;
+import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceConfigArgs;
+import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceConfigPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetManagedFolderIamPolicyArgs;
 import com.pulumi.gcp.storage.inputs.GetManagedFolderIamPolicyPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
@@ -37,6 +39,7 @@ import com.pulumi.gcp.storage.outputs.GetBucketObjectResult;
 import com.pulumi.gcp.storage.outputs.GetBucketObjectsResult;
 import com.pulumi.gcp.storage.outputs.GetBucketResult;
 import com.pulumi.gcp.storage.outputs.GetBucketsResult;
+import com.pulumi.gcp.storage.outputs.GetControlProjectIntelligenceConfigResult;
 import com.pulumi.gcp.storage.outputs.GetManagedFolderIamPolicyResult;
 import com.pulumi.gcp.storage.outputs.GetObjectSignedUrlResult;
 import com.pulumi.gcp.storage.outputs.GetProjectServiceAccountResult;
@@ -1622,6 +1625,21 @@ public final class StorageFunctions {
      */
     public static CompletableFuture<GetBucketsResult> getBucketsPlain(GetBucketsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:storage/getBuckets:getBuckets", TypeShape.of(GetBucketsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetControlProjectIntelligenceConfigResult> getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs args) {
+        return getControlProjectIntelligenceConfig(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetControlProjectIntelligenceConfigResult> getControlProjectIntelligenceConfigPlain(GetControlProjectIntelligenceConfigPlainArgs args) {
+        return getControlProjectIntelligenceConfigPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetControlProjectIntelligenceConfigResult> getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getControlProjectIntelligenceConfig:getControlProjectIntelligenceConfig", TypeShape.of(GetControlProjectIntelligenceConfigResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetControlProjectIntelligenceConfigResult> getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getControlProjectIntelligenceConfig:getControlProjectIntelligenceConfig", TypeShape.of(GetControlProjectIntelligenceConfigResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetControlProjectIntelligenceConfigResult> getControlProjectIntelligenceConfigPlain(GetControlProjectIntelligenceConfigPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:storage/getControlProjectIntelligenceConfig:getControlProjectIntelligenceConfig", TypeShape.of(GetControlProjectIntelligenceConfigResult.class), args, Utilities.withVersion(options));
     }
     public static Output<GetManagedFolderIamPolicyResult> getManagedFolderIamPolicy(GetManagedFolderIamPolicyArgs args) {
         return getManagedFolderIamPolicy(args, InvokeOptions.Empty);

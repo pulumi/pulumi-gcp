@@ -187,16 +187,16 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
-     * only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+     * Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
+     * https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
      * 
      */
     @Import(name="invokerIamDisabled")
     private @Nullable Output<Boolean> invokerIamDisabled;
 
     /**
-     * @return Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
-     * only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+     * @return Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
+     * https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
      * 
      */
     public Optional<Output<Boolean>> invokerIamDisabled() {
@@ -616,8 +616,8 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param invokerIamDisabled Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
-         * only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+         * @param invokerIamDisabled Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
+         * https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
          * 
          * @return builder
          * 
@@ -628,8 +628,8 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param invokerIamDisabled Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
-         * only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+         * @param invokerIamDisabled Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
+         * https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
          * 
          * @return builder
          * 

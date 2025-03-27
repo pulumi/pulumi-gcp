@@ -185,6 +185,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.NodePoolNodeConfigTaint> Taints;
         /// <summary>
+        /// Parameters that can be configured on Windows nodes.
+        /// </summary>
+        public readonly Outputs.NodePoolNodeConfigWindowsNodeConfig? WindowsNodeConfig;
+        /// <summary>
         /// The workload metadata configuration for this node.
         /// </summary>
         public readonly Outputs.NodePoolNodeConfigWorkloadMetadataConfig? WorkloadMetadataConfig;
@@ -275,6 +279,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<Outputs.NodePoolNodeConfigTaint> taints,
 
+            Outputs.NodePoolNodeConfigWindowsNodeConfig? windowsNodeConfig,
+
             Outputs.NodePoolNodeConfigWorkloadMetadataConfig? workloadMetadataConfig)
         {
             AdvancedMachineFeatures = advancedMachineFeatures;
@@ -319,6 +325,7 @@ namespace Pulumi.Gcp.Container.Outputs
             StoragePools = storagePools;
             Tags = tags;
             Taints = taints;
+            WindowsNodeConfig = windowsNodeConfig;
             WorkloadMetadataConfig = workloadMetadataConfig;
         }
     }

@@ -1325,16 +1325,16 @@ public class Service extends com.pulumi.resources.CustomResource {
         return this.ingress;
     }
     /**
-     * Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
-     * only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+     * Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
+     * https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
      * 
      */
     @Export(name="invokerIamDisabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> invokerIamDisabled;
 
     /**
-     * @return Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
-     * only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+     * @return Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
+     * https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
      * 
      */
     public Output<Optional<Boolean>> invokerIamDisabled() {
