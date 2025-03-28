@@ -701,6 +701,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> lookerCustomEndpoint() {
         return Codegen.optional(this.lookerCustomEndpoint);
     }
+    @Export(name="lustreCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> lustreCustomEndpoint;
+
+    public Output<Optional<String>> lustreCustomEndpoint() {
+        return Codegen.optional(this.lustreCustomEndpoint);
+    }
     @Export(name="managedKafkaCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> managedKafkaCustomEndpoint;
 
@@ -790,6 +796,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> osConfigCustomEndpoint() {
         return Codegen.optional(this.osConfigCustomEndpoint);
+    }
+    @Export(name="osConfigV2CustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> osConfigV2CustomEndpoint;
+
+    public Output<Optional<String>> osConfigV2CustomEndpoint() {
+        return Codegen.optional(this.osConfigV2CustomEndpoint);
     }
     @Export(name="osLoginCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> osLoginCustomEndpoint;
@@ -1006,6 +1018,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> sqlCustomEndpoint() {
         return Codegen.optional(this.sqlCustomEndpoint);
+    }
+    @Export(name="storageControlCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> storageControlCustomEndpoint;
+
+    public Output<Optional<String>> storageControlCustomEndpoint() {
+        return Codegen.optional(this.storageControlCustomEndpoint);
     }
     @Export(name="storageCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageCustomEndpoint;

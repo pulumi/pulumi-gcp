@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly bool AutoscalingEnabled;
         /// <summary>
+        /// Output only. The scaling factor of a service with autoscaling enabled.
+        /// </summary>
+        public readonly double AutoscalingFactor;
+        /// <summary>
         /// Represents the limit configuration of a metastore service.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigResult> LimitConfigs;
@@ -26,9 +30,12 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         private GetMetastoreServiceScalingConfigAutoscalingConfigResult(
             bool autoscalingEnabled,
 
+            double autoscalingFactor,
+
             ImmutableArray<Outputs.GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigResult> limitConfigs)
         {
             AutoscalingEnabled = autoscalingEnabled;
+            AutoscalingFactor = autoscalingFactor;
             LimitConfigs = limitConfigs;
         }
     }

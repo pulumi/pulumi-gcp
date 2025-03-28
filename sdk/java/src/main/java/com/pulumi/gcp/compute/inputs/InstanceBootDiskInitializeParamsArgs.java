@@ -19,6 +19,21 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
     public static final InstanceBootDiskInitializeParamsArgs Empty = new InstanceBootDiskInitializeParamsArgs();
 
     /**
+     * The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+     * 
+     */
+    @Import(name="architecture")
+    private @Nullable Output<String> architecture;
+
+    /**
+     * @return The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+     * 
+     */
+    public Optional<Output<String>> architecture() {
+        return Optional.ofNullable(this.architecture);
+    }
+
+    /**
      * Whether this disk is using confidential compute mode.
      * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true.
      * 
@@ -227,6 +242,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
     private InstanceBootDiskInitializeParamsArgs() {}
 
     private InstanceBootDiskInitializeParamsArgs(InstanceBootDiskInitializeParamsArgs $) {
+        this.architecture = $.architecture;
         this.enableConfidentialCompute = $.enableConfidentialCompute;
         this.image = $.image;
         this.labels = $.labels;
@@ -255,6 +271,27 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
 
         public Builder(InstanceBootDiskInitializeParamsArgs defaults) {
             $ = new InstanceBootDiskInitializeParamsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param architecture The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder architecture(@Nullable Output<String> architecture) {
+            $.architecture = architecture;
+            return this;
+        }
+
+        /**
+         * @param architecture The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder architecture(String architecture) {
+            return architecture(Output.of(architecture));
         }
 
         /**

@@ -10692,6 +10692,257 @@ func (o ReservationAutoscalePtrOutput) MaxSlots() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type ReservationReplicationStatus struct {
+	// (Output)
+	// The last error encountered while trying to replicate changes from the primary to the
+	// secondary. This field is only available if the replication has not succeeded since.
+	// Structure is documented below.
+	Errors []ReservationReplicationStatusError `pulumi:"errors"`
+	// (Output)
+	// The time at which the last error was encountered while trying to replicate changes from
+	// the primary to the secondary. This field is only available if the replication has not
+	// succeeded since.
+	LastErrorTime *string `pulumi:"lastErrorTime"`
+	// (Output)
+	// A timestamp corresponding to the last change on the primary that was successfully
+	// replicated to the secondary.
+	LastReplicationTime *string `pulumi:"lastReplicationTime"`
+}
+
+// ReservationReplicationStatusInput is an input type that accepts ReservationReplicationStatusArgs and ReservationReplicationStatusOutput values.
+// You can construct a concrete instance of `ReservationReplicationStatusInput` via:
+//
+//	ReservationReplicationStatusArgs{...}
+type ReservationReplicationStatusInput interface {
+	pulumi.Input
+
+	ToReservationReplicationStatusOutput() ReservationReplicationStatusOutput
+	ToReservationReplicationStatusOutputWithContext(context.Context) ReservationReplicationStatusOutput
+}
+
+type ReservationReplicationStatusArgs struct {
+	// (Output)
+	// The last error encountered while trying to replicate changes from the primary to the
+	// secondary. This field is only available if the replication has not succeeded since.
+	// Structure is documented below.
+	Errors ReservationReplicationStatusErrorArrayInput `pulumi:"errors"`
+	// (Output)
+	// The time at which the last error was encountered while trying to replicate changes from
+	// the primary to the secondary. This field is only available if the replication has not
+	// succeeded since.
+	LastErrorTime pulumi.StringPtrInput `pulumi:"lastErrorTime"`
+	// (Output)
+	// A timestamp corresponding to the last change on the primary that was successfully
+	// replicated to the secondary.
+	LastReplicationTime pulumi.StringPtrInput `pulumi:"lastReplicationTime"`
+}
+
+func (ReservationReplicationStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservationReplicationStatus)(nil)).Elem()
+}
+
+func (i ReservationReplicationStatusArgs) ToReservationReplicationStatusOutput() ReservationReplicationStatusOutput {
+	return i.ToReservationReplicationStatusOutputWithContext(context.Background())
+}
+
+func (i ReservationReplicationStatusArgs) ToReservationReplicationStatusOutputWithContext(ctx context.Context) ReservationReplicationStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservationReplicationStatusOutput)
+}
+
+// ReservationReplicationStatusArrayInput is an input type that accepts ReservationReplicationStatusArray and ReservationReplicationStatusArrayOutput values.
+// You can construct a concrete instance of `ReservationReplicationStatusArrayInput` via:
+//
+//	ReservationReplicationStatusArray{ ReservationReplicationStatusArgs{...} }
+type ReservationReplicationStatusArrayInput interface {
+	pulumi.Input
+
+	ToReservationReplicationStatusArrayOutput() ReservationReplicationStatusArrayOutput
+	ToReservationReplicationStatusArrayOutputWithContext(context.Context) ReservationReplicationStatusArrayOutput
+}
+
+type ReservationReplicationStatusArray []ReservationReplicationStatusInput
+
+func (ReservationReplicationStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReservationReplicationStatus)(nil)).Elem()
+}
+
+func (i ReservationReplicationStatusArray) ToReservationReplicationStatusArrayOutput() ReservationReplicationStatusArrayOutput {
+	return i.ToReservationReplicationStatusArrayOutputWithContext(context.Background())
+}
+
+func (i ReservationReplicationStatusArray) ToReservationReplicationStatusArrayOutputWithContext(ctx context.Context) ReservationReplicationStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservationReplicationStatusArrayOutput)
+}
+
+type ReservationReplicationStatusOutput struct{ *pulumi.OutputState }
+
+func (ReservationReplicationStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservationReplicationStatus)(nil)).Elem()
+}
+
+func (o ReservationReplicationStatusOutput) ToReservationReplicationStatusOutput() ReservationReplicationStatusOutput {
+	return o
+}
+
+func (o ReservationReplicationStatusOutput) ToReservationReplicationStatusOutputWithContext(ctx context.Context) ReservationReplicationStatusOutput {
+	return o
+}
+
+// (Output)
+// The last error encountered while trying to replicate changes from the primary to the
+// secondary. This field is only available if the replication has not succeeded since.
+// Structure is documented below.
+func (o ReservationReplicationStatusOutput) Errors() ReservationReplicationStatusErrorArrayOutput {
+	return o.ApplyT(func(v ReservationReplicationStatus) []ReservationReplicationStatusError { return v.Errors }).(ReservationReplicationStatusErrorArrayOutput)
+}
+
+// (Output)
+// The time at which the last error was encountered while trying to replicate changes from
+// the primary to the secondary. This field is only available if the replication has not
+// succeeded since.
+func (o ReservationReplicationStatusOutput) LastErrorTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReservationReplicationStatus) *string { return v.LastErrorTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A timestamp corresponding to the last change on the primary that was successfully
+// replicated to the secondary.
+func (o ReservationReplicationStatusOutput) LastReplicationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReservationReplicationStatus) *string { return v.LastReplicationTime }).(pulumi.StringPtrOutput)
+}
+
+type ReservationReplicationStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (ReservationReplicationStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReservationReplicationStatus)(nil)).Elem()
+}
+
+func (o ReservationReplicationStatusArrayOutput) ToReservationReplicationStatusArrayOutput() ReservationReplicationStatusArrayOutput {
+	return o
+}
+
+func (o ReservationReplicationStatusArrayOutput) ToReservationReplicationStatusArrayOutputWithContext(ctx context.Context) ReservationReplicationStatusArrayOutput {
+	return o
+}
+
+func (o ReservationReplicationStatusArrayOutput) Index(i pulumi.IntInput) ReservationReplicationStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReservationReplicationStatus {
+		return vs[0].([]ReservationReplicationStatus)[vs[1].(int)]
+	}).(ReservationReplicationStatusOutput)
+}
+
+type ReservationReplicationStatusError struct {
+	// (Output)
+	// The status code, which should be an enum value of [google.rpc.Code](https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.rpc#google.rpc.Code).
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message, which should be in English.
+	Message *string `pulumi:"message"`
+}
+
+// ReservationReplicationStatusErrorInput is an input type that accepts ReservationReplicationStatusErrorArgs and ReservationReplicationStatusErrorOutput values.
+// You can construct a concrete instance of `ReservationReplicationStatusErrorInput` via:
+//
+//	ReservationReplicationStatusErrorArgs{...}
+type ReservationReplicationStatusErrorInput interface {
+	pulumi.Input
+
+	ToReservationReplicationStatusErrorOutput() ReservationReplicationStatusErrorOutput
+	ToReservationReplicationStatusErrorOutputWithContext(context.Context) ReservationReplicationStatusErrorOutput
+}
+
+type ReservationReplicationStatusErrorArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of [google.rpc.Code](https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.rpc#google.rpc.Code).
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message, which should be in English.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (ReservationReplicationStatusErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservationReplicationStatusError)(nil)).Elem()
+}
+
+func (i ReservationReplicationStatusErrorArgs) ToReservationReplicationStatusErrorOutput() ReservationReplicationStatusErrorOutput {
+	return i.ToReservationReplicationStatusErrorOutputWithContext(context.Background())
+}
+
+func (i ReservationReplicationStatusErrorArgs) ToReservationReplicationStatusErrorOutputWithContext(ctx context.Context) ReservationReplicationStatusErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservationReplicationStatusErrorOutput)
+}
+
+// ReservationReplicationStatusErrorArrayInput is an input type that accepts ReservationReplicationStatusErrorArray and ReservationReplicationStatusErrorArrayOutput values.
+// You can construct a concrete instance of `ReservationReplicationStatusErrorArrayInput` via:
+//
+//	ReservationReplicationStatusErrorArray{ ReservationReplicationStatusErrorArgs{...} }
+type ReservationReplicationStatusErrorArrayInput interface {
+	pulumi.Input
+
+	ToReservationReplicationStatusErrorArrayOutput() ReservationReplicationStatusErrorArrayOutput
+	ToReservationReplicationStatusErrorArrayOutputWithContext(context.Context) ReservationReplicationStatusErrorArrayOutput
+}
+
+type ReservationReplicationStatusErrorArray []ReservationReplicationStatusErrorInput
+
+func (ReservationReplicationStatusErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReservationReplicationStatusError)(nil)).Elem()
+}
+
+func (i ReservationReplicationStatusErrorArray) ToReservationReplicationStatusErrorArrayOutput() ReservationReplicationStatusErrorArrayOutput {
+	return i.ToReservationReplicationStatusErrorArrayOutputWithContext(context.Background())
+}
+
+func (i ReservationReplicationStatusErrorArray) ToReservationReplicationStatusErrorArrayOutputWithContext(ctx context.Context) ReservationReplicationStatusErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservationReplicationStatusErrorArrayOutput)
+}
+
+type ReservationReplicationStatusErrorOutput struct{ *pulumi.OutputState }
+
+func (ReservationReplicationStatusErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservationReplicationStatusError)(nil)).Elem()
+}
+
+func (o ReservationReplicationStatusErrorOutput) ToReservationReplicationStatusErrorOutput() ReservationReplicationStatusErrorOutput {
+	return o
+}
+
+func (o ReservationReplicationStatusErrorOutput) ToReservationReplicationStatusErrorOutputWithContext(ctx context.Context) ReservationReplicationStatusErrorOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of [google.rpc.Code](https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.rpc#google.rpc.Code).
+func (o ReservationReplicationStatusErrorOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ReservationReplicationStatusError) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A developer-facing error message, which should be in English.
+func (o ReservationReplicationStatusErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReservationReplicationStatusError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type ReservationReplicationStatusErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (ReservationReplicationStatusErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReservationReplicationStatusError)(nil)).Elem()
+}
+
+func (o ReservationReplicationStatusErrorArrayOutput) ToReservationReplicationStatusErrorArrayOutput() ReservationReplicationStatusErrorArrayOutput {
+	return o
+}
+
+func (o ReservationReplicationStatusErrorArrayOutput) ToReservationReplicationStatusErrorArrayOutputWithContext(ctx context.Context) ReservationReplicationStatusErrorArrayOutput {
+	return o
+}
+
+func (o ReservationReplicationStatusErrorArrayOutput) Index(i pulumi.IntInput) ReservationReplicationStatusErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReservationReplicationStatusError {
+		return vs[0].([]ReservationReplicationStatusError)[vs[1].(int)]
+	}).(ReservationReplicationStatusErrorOutput)
+}
+
 type RoutineArgument struct {
 	// Defaults to FIXED_TYPE.
 	// Default value is `FIXED_TYPE`.
@@ -17861,6 +18112,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusErrorResultArrayInput)(nil)).Elem(), JobStatusErrorResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAutoscaleInput)(nil)).Elem(), ReservationAutoscaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAutoscalePtrInput)(nil)).Elem(), ReservationAutoscaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationReplicationStatusInput)(nil)).Elem(), ReservationReplicationStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationReplicationStatusArrayInput)(nil)).Elem(), ReservationReplicationStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationReplicationStatusErrorInput)(nil)).Elem(), ReservationReplicationStatusErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationReplicationStatusErrorArrayInput)(nil)).Elem(), ReservationReplicationStatusErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineArgumentInput)(nil)).Elem(), RoutineArgumentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineArgumentArrayInput)(nil)).Elem(), RoutineArgumentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineRemoteFunctionOptionsInput)(nil)).Elem(), RoutineRemoteFunctionOptionsArgs{})
@@ -18053,6 +18308,10 @@ func init() {
 	pulumi.RegisterOutputType(JobStatusErrorResultArrayOutput{})
 	pulumi.RegisterOutputType(ReservationAutoscaleOutput{})
 	pulumi.RegisterOutputType(ReservationAutoscalePtrOutput{})
+	pulumi.RegisterOutputType(ReservationReplicationStatusOutput{})
+	pulumi.RegisterOutputType(ReservationReplicationStatusArrayOutput{})
+	pulumi.RegisterOutputType(ReservationReplicationStatusErrorOutput{})
+	pulumi.RegisterOutputType(ReservationReplicationStatusErrorArrayOutput{})
 	pulumi.RegisterOutputType(RoutineArgumentOutput{})
 	pulumi.RegisterOutputType(RoutineArgumentArrayOutput{})
 	pulumi.RegisterOutputType(RoutineRemoteFunctionOptionsOutput{})

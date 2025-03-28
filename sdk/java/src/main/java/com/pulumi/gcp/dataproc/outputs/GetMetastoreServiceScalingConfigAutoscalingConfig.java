@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.outputs.GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfig;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,6 +18,11 @@ public final class GetMetastoreServiceScalingConfigAutoscalingConfig {
      * 
      */
     private Boolean autoscalingEnabled;
+    /**
+     * @return Output only. The scaling factor of a service with autoscaling enabled.
+     * 
+     */
+    private Double autoscalingFactor;
     /**
      * @return Represents the limit configuration of a metastore service.
      * 
@@ -30,6 +36,13 @@ public final class GetMetastoreServiceScalingConfigAutoscalingConfig {
      */
     public Boolean autoscalingEnabled() {
         return this.autoscalingEnabled;
+    }
+    /**
+     * @return Output only. The scaling factor of a service with autoscaling enabled.
+     * 
+     */
+    public Double autoscalingFactor() {
+        return this.autoscalingFactor;
     }
     /**
      * @return Represents the limit configuration of a metastore service.
@@ -49,11 +62,13 @@ public final class GetMetastoreServiceScalingConfigAutoscalingConfig {
     @CustomType.Builder
     public static final class Builder {
         private Boolean autoscalingEnabled;
+        private Double autoscalingFactor;
         private List<GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfig> limitConfigs;
         public Builder() {}
         public Builder(GetMetastoreServiceScalingConfigAutoscalingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoscalingEnabled = defaults.autoscalingEnabled;
+    	      this.autoscalingFactor = defaults.autoscalingFactor;
     	      this.limitConfigs = defaults.limitConfigs;
         }
 
@@ -63,6 +78,14 @@ public final class GetMetastoreServiceScalingConfigAutoscalingConfig {
               throw new MissingRequiredPropertyException("GetMetastoreServiceScalingConfigAutoscalingConfig", "autoscalingEnabled");
             }
             this.autoscalingEnabled = autoscalingEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder autoscalingFactor(Double autoscalingFactor) {
+            if (autoscalingFactor == null) {
+              throw new MissingRequiredPropertyException("GetMetastoreServiceScalingConfigAutoscalingConfig", "autoscalingFactor");
+            }
+            this.autoscalingFactor = autoscalingFactor;
             return this;
         }
         @CustomType.Setter
@@ -79,6 +102,7 @@ public final class GetMetastoreServiceScalingConfigAutoscalingConfig {
         public GetMetastoreServiceScalingConfigAutoscalingConfig build() {
             final var _resultValue = new GetMetastoreServiceScalingConfigAutoscalingConfig();
             _resultValue.autoscalingEnabled = autoscalingEnabled;
+            _resultValue.autoscalingFactor = autoscalingFactor;
             _resultValue.limitConfigs = limitConfigs;
             return _resultValue;
         }

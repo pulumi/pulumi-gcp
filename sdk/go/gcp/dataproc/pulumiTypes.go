@@ -20460,6 +20460,9 @@ func (o MetastoreServiceScalingConfigPtrOutput) ScalingFactor() pulumi.Float64Pt
 type MetastoreServiceScalingConfigAutoscalingConfig struct {
 	// Defines whether autoscaling is enabled. The default value is false.
 	AutoscalingEnabled *bool `pulumi:"autoscalingEnabled"`
+	// (Output)
+	// Output only. The scaling factor of a service with autoscaling enabled.
+	AutoscalingFactor *float64 `pulumi:"autoscalingFactor"`
 	// Represents the limit configuration of a metastore service.
 	// Structure is documented below.
 	LimitConfig *MetastoreServiceScalingConfigAutoscalingConfigLimitConfig `pulumi:"limitConfig"`
@@ -20479,6 +20482,9 @@ type MetastoreServiceScalingConfigAutoscalingConfigInput interface {
 type MetastoreServiceScalingConfigAutoscalingConfigArgs struct {
 	// Defines whether autoscaling is enabled. The default value is false.
 	AutoscalingEnabled pulumi.BoolPtrInput `pulumi:"autoscalingEnabled"`
+	// (Output)
+	// Output only. The scaling factor of a service with autoscaling enabled.
+	AutoscalingFactor pulumi.Float64PtrInput `pulumi:"autoscalingFactor"`
 	// Represents the limit configuration of a metastore service.
 	// Structure is documented below.
 	LimitConfig MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrInput `pulumi:"limitConfig"`
@@ -20566,6 +20572,12 @@ func (o MetastoreServiceScalingConfigAutoscalingConfigOutput) AutoscalingEnabled
 	return o.ApplyT(func(v MetastoreServiceScalingConfigAutoscalingConfig) *bool { return v.AutoscalingEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
+// Output only. The scaling factor of a service with autoscaling enabled.
+func (o MetastoreServiceScalingConfigAutoscalingConfigOutput) AutoscalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v MetastoreServiceScalingConfigAutoscalingConfig) *float64 { return v.AutoscalingFactor }).(pulumi.Float64PtrOutput)
+}
+
 // Represents the limit configuration of a metastore service.
 // Structure is documented below.
 func (o MetastoreServiceScalingConfigAutoscalingConfigOutput) LimitConfig() MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput {
@@ -20606,6 +20618,17 @@ func (o MetastoreServiceScalingConfigAutoscalingConfigPtrOutput) AutoscalingEnab
 		}
 		return v.AutoscalingEnabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// Output only. The scaling factor of a service with autoscaling enabled.
+func (o MetastoreServiceScalingConfigAutoscalingConfigPtrOutput) AutoscalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceScalingConfigAutoscalingConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscalingFactor
+	}).(pulumi.Float64PtrOutput)
 }
 
 // Represents the limit configuration of a metastore service.
@@ -32843,6 +32866,8 @@ func (o GetMetastoreServiceScalingConfigArrayOutput) Index(i pulumi.IntInput) Ge
 type GetMetastoreServiceScalingConfigAutoscalingConfig struct {
 	// Defines whether autoscaling is enabled. The default value is false.
 	AutoscalingEnabled bool `pulumi:"autoscalingEnabled"`
+	// Output only. The scaling factor of a service with autoscaling enabled.
+	AutoscalingFactor float64 `pulumi:"autoscalingFactor"`
 	// Represents the limit configuration of a metastore service.
 	LimitConfigs []GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfig `pulumi:"limitConfigs"`
 }
@@ -32861,6 +32886,8 @@ type GetMetastoreServiceScalingConfigAutoscalingConfigInput interface {
 type GetMetastoreServiceScalingConfigAutoscalingConfigArgs struct {
 	// Defines whether autoscaling is enabled. The default value is false.
 	AutoscalingEnabled pulumi.BoolInput `pulumi:"autoscalingEnabled"`
+	// Output only. The scaling factor of a service with autoscaling enabled.
+	AutoscalingFactor pulumi.Float64Input `pulumi:"autoscalingFactor"`
 	// Represents the limit configuration of a metastore service.
 	LimitConfigs GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayInput `pulumi:"limitConfigs"`
 }
@@ -32919,6 +32946,11 @@ func (o GetMetastoreServiceScalingConfigAutoscalingConfigOutput) ToGetMetastoreS
 // Defines whether autoscaling is enabled. The default value is false.
 func (o GetMetastoreServiceScalingConfigAutoscalingConfigOutput) AutoscalingEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetMetastoreServiceScalingConfigAutoscalingConfig) bool { return v.AutoscalingEnabled }).(pulumi.BoolOutput)
+}
+
+// Output only. The scaling factor of a service with autoscaling enabled.
+func (o GetMetastoreServiceScalingConfigAutoscalingConfigOutput) AutoscalingFactor() pulumi.Float64Output {
+	return o.ApplyT(func(v GetMetastoreServiceScalingConfigAutoscalingConfig) float64 { return v.AutoscalingFactor }).(pulumi.Float64Output)
 }
 
 // Represents the limit configuration of a metastore service.

@@ -271,6 +271,126 @@ import (
 //	}
 //
 // ```
+// ### Resource Policy Workload Policy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewResourcePolicy(ctx, "bar", &compute.ResourcePolicyArgs{
+//				Name:   pulumi.String("gce-policy"),
+//				Region: pulumi.String("europe-west1"),
+//				WorkloadPolicy: &compute.ResourcePolicyWorkloadPolicyArgs{
+//					Type: pulumi.String("HIGH_AVAILABILITY"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Resource Policy Workload Policy Accelerator Topology
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewResourcePolicy(ctx, "bar", &compute.ResourcePolicyArgs{
+//				Name:   pulumi.String("gce-policy"),
+//				Region: pulumi.String("europe-west1"),
+//				WorkloadPolicy: &compute.ResourcePolicyWorkloadPolicyArgs{
+//					Type:                pulumi.String("HIGH_THROUGHPUT"),
+//					AcceleratorTopology: pulumi.String("SOME NEW TOPOLOGY"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Resource Policy Workload Policy Max Topology Distance
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewResourcePolicy(ctx, "bar", &compute.ResourcePolicyArgs{
+//				Name:   pulumi.String("gce-policy"),
+//				Region: pulumi.String("europe-west1"),
+//				WorkloadPolicy: &compute.ResourcePolicyWorkloadPolicyArgs{
+//					Type:                pulumi.String("HIGH_THROUGHPUT"),
+//					MaxTopologyDistance: pulumi.String("BLOCK"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Resource Policy Placement Policy Gpu Topology
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewResourcePolicy(ctx, "baz", &compute.ResourcePolicyArgs{
+//				Name:   pulumi.String("gce-policy"),
+//				Region: pulumi.String("europe-west9"),
+//				GroupPlacementPolicy: &compute.ResourcePolicyGroupPlacementPolicyArgs{
+//					VmCount:     pulumi.Int(2),
+//					Collocation: pulumi.String("COLLOCATED"),
+//					GpuTopology: pulumi.String("1x72"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -335,6 +455,9 @@ type ResourcePolicy struct {
 	// Policy for creating snapshots of persistent disks.
 	// Structure is documented below.
 	SnapshotSchedulePolicy ResourcePolicySnapshotSchedulePolicyPtrOutput `pulumi:"snapshotSchedulePolicy"`
+	// Represents the workload policy.
+	// Structure is documented below.
+	WorkloadPolicy ResourcePolicyWorkloadPolicyPtrOutput `pulumi:"workloadPolicy"`
 }
 
 // NewResourcePolicy registers a new resource with the given unique name, arguments, and options.
@@ -398,6 +521,9 @@ type resourcePolicyState struct {
 	// Policy for creating snapshots of persistent disks.
 	// Structure is documented below.
 	SnapshotSchedulePolicy *ResourcePolicySnapshotSchedulePolicy `pulumi:"snapshotSchedulePolicy"`
+	// Represents the workload policy.
+	// Structure is documented below.
+	WorkloadPolicy *ResourcePolicyWorkloadPolicy `pulumi:"workloadPolicy"`
 }
 
 type ResourcePolicyState struct {
@@ -432,6 +558,9 @@ type ResourcePolicyState struct {
 	// Policy for creating snapshots of persistent disks.
 	// Structure is documented below.
 	SnapshotSchedulePolicy ResourcePolicySnapshotSchedulePolicyPtrInput
+	// Represents the workload policy.
+	// Structure is documented below.
+	WorkloadPolicy ResourcePolicyWorkloadPolicyPtrInput
 }
 
 func (ResourcePolicyState) ElementType() reflect.Type {
@@ -468,6 +597,9 @@ type resourcePolicyArgs struct {
 	// Policy for creating snapshots of persistent disks.
 	// Structure is documented below.
 	SnapshotSchedulePolicy *ResourcePolicySnapshotSchedulePolicy `pulumi:"snapshotSchedulePolicy"`
+	// Represents the workload policy.
+	// Structure is documented below.
+	WorkloadPolicy *ResourcePolicyWorkloadPolicy `pulumi:"workloadPolicy"`
 }
 
 // The set of arguments for constructing a ResourcePolicy resource.
@@ -501,6 +633,9 @@ type ResourcePolicyArgs struct {
 	// Policy for creating snapshots of persistent disks.
 	// Structure is documented below.
 	SnapshotSchedulePolicy ResourcePolicySnapshotSchedulePolicyPtrInput
+	// Represents the workload policy.
+	// Structure is documented below.
+	WorkloadPolicy ResourcePolicyWorkloadPolicyPtrInput
 }
 
 func (ResourcePolicyArgs) ElementType() reflect.Type {
@@ -648,6 +783,12 @@ func (o ResourcePolicyOutput) SelfLink() pulumi.StringOutput {
 // Structure is documented below.
 func (o ResourcePolicyOutput) SnapshotSchedulePolicy() ResourcePolicySnapshotSchedulePolicyPtrOutput {
 	return o.ApplyT(func(v *ResourcePolicy) ResourcePolicySnapshotSchedulePolicyPtrOutput { return v.SnapshotSchedulePolicy }).(ResourcePolicySnapshotSchedulePolicyPtrOutput)
+}
+
+// Represents the workload policy.
+// Structure is documented below.
+func (o ResourcePolicyOutput) WorkloadPolicy() ResourcePolicyWorkloadPolicyPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicy) ResourcePolicyWorkloadPolicyPtrOutput { return v.WorkloadPolicy }).(ResourcePolicyWorkloadPolicyPtrOutput)
 }
 
 type ResourcePolicyArrayOutput struct{ *pulumi.OutputState }

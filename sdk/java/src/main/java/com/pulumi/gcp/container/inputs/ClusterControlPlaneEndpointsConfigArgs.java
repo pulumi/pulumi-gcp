@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,10 +31,26 @@ public final class ClusterControlPlaneEndpointsConfigArgs extends com.pulumi.res
         return Optional.ofNullable(this.dnsEndpointConfig);
     }
 
+    /**
+     * IP endpoint configuration.
+     * 
+     */
+    @Import(name="ipEndpointsConfig")
+    private @Nullable Output<ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs> ipEndpointsConfig;
+
+    /**
+     * @return IP endpoint configuration.
+     * 
+     */
+    public Optional<Output<ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs>> ipEndpointsConfig() {
+        return Optional.ofNullable(this.ipEndpointsConfig);
+    }
+
     private ClusterControlPlaneEndpointsConfigArgs() {}
 
     private ClusterControlPlaneEndpointsConfigArgs(ClusterControlPlaneEndpointsConfigArgs $) {
         this.dnsEndpointConfig = $.dnsEndpointConfig;
+        this.ipEndpointsConfig = $.ipEndpointsConfig;
     }
 
     public static Builder builder() {
@@ -73,6 +90,27 @@ public final class ClusterControlPlaneEndpointsConfigArgs extends com.pulumi.res
          */
         public Builder dnsEndpointConfig(ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs dnsEndpointConfig) {
             return dnsEndpointConfig(Output.of(dnsEndpointConfig));
+        }
+
+        /**
+         * @param ipEndpointsConfig IP endpoint configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipEndpointsConfig(@Nullable Output<ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs> ipEndpointsConfig) {
+            $.ipEndpointsConfig = ipEndpointsConfig;
+            return this;
+        }
+
+        /**
+         * @param ipEndpointsConfig IP endpoint configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipEndpointsConfig(ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs ipEndpointsConfig) {
+            return ipEndpointsConfig(Output.of(ipEndpointsConfig));
         }
 
         public ClusterControlPlaneEndpointsConfigArgs build() {

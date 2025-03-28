@@ -5,6 +5,7 @@ package com.pulumi.gcp.networksecurity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.networksecurity.inputs.InterceptEndpointGroupAssociationLocationArgs;
 import com.pulumi.gcp.networksecurity.inputs.InterceptEndpointGroupAssociationLocationsDetailArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -128,22 +129,51 @@ public final class InterceptEndpointGroupAssociationState extends com.pulumi.res
     }
 
     /**
+     * The list of locations where the association is configured. This information
+     * is retrieved from the linked endpoint group.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="locations")
+    private @Nullable Output<List<InterceptEndpointGroupAssociationLocationArgs>> locations;
+
+    /**
+     * @return The list of locations where the association is configured. This information
+     * is retrieved from the linked endpoint group.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<InterceptEndpointGroupAssociationLocationArgs>>> locations() {
+        return Optional.ofNullable(this.locations);
+    }
+
+    /**
+     * (Deprecated)
      * The list of locations where the association is present. This information
      * is retrieved from the linked endpoint group, and not configured as part
      * of the association itself.
      * Structure is documented below.
      * 
+     * @deprecated
+     * `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
+     * 
      */
+    @Deprecated /* `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead. */
     @Import(name="locationsDetails")
     private @Nullable Output<List<InterceptEndpointGroupAssociationLocationsDetailArgs>> locationsDetails;
 
     /**
-     * @return The list of locations where the association is present. This information
+     * @return (Deprecated)
+     * The list of locations where the association is present. This information
      * is retrieved from the linked endpoint group, and not configured as part
      * of the association itself.
      * Structure is documented below.
      * 
+     * @deprecated
+     * `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
+     * 
      */
+    @Deprecated /* `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead. */
     public Optional<Output<List<InterceptEndpointGroupAssociationLocationsDetailArgs>>> locationsDetails() {
         return Optional.ofNullable(this.locationsDetails);
     }
@@ -292,6 +322,7 @@ public final class InterceptEndpointGroupAssociationState extends com.pulumi.res
         this.interceptEndpointGroupAssociationId = $.interceptEndpointGroupAssociationId;
         this.labels = $.labels;
         this.location = $.location;
+        this.locations = $.locations;
         this.locationsDetails = $.locationsDetails;
         this.name = $.name;
         this.network = $.network;
@@ -465,41 +496,93 @@ public final class InterceptEndpointGroupAssociationState extends com.pulumi.res
         }
 
         /**
-         * @param locationsDetails The list of locations where the association is present. This information
+         * @param locations The list of locations where the association is configured. This information
+         * is retrieved from the linked endpoint group.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locations(@Nullable Output<List<InterceptEndpointGroupAssociationLocationArgs>> locations) {
+            $.locations = locations;
+            return this;
+        }
+
+        /**
+         * @param locations The list of locations where the association is configured. This information
+         * is retrieved from the linked endpoint group.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locations(List<InterceptEndpointGroupAssociationLocationArgs> locations) {
+            return locations(Output.of(locations));
+        }
+
+        /**
+         * @param locations The list of locations where the association is configured. This information
+         * is retrieved from the linked endpoint group.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locations(InterceptEndpointGroupAssociationLocationArgs... locations) {
+            return locations(List.of(locations));
+        }
+
+        /**
+         * @param locationsDetails (Deprecated)
+         * The list of locations where the association is present. This information
          * is retrieved from the linked endpoint group, and not configured as part
          * of the association itself.
          * Structure is documented below.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
+         * 
          */
+        @Deprecated /* `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead. */
         public Builder locationsDetails(@Nullable Output<List<InterceptEndpointGroupAssociationLocationsDetailArgs>> locationsDetails) {
             $.locationsDetails = locationsDetails;
             return this;
         }
 
         /**
-         * @param locationsDetails The list of locations where the association is present. This information
+         * @param locationsDetails (Deprecated)
+         * The list of locations where the association is present. This information
          * is retrieved from the linked endpoint group, and not configured as part
          * of the association itself.
          * Structure is documented below.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
+         * 
          */
+        @Deprecated /* `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead. */
         public Builder locationsDetails(List<InterceptEndpointGroupAssociationLocationsDetailArgs> locationsDetails) {
             return locationsDetails(Output.of(locationsDetails));
         }
 
         /**
-         * @param locationsDetails The list of locations where the association is present. This information
+         * @param locationsDetails (Deprecated)
+         * The list of locations where the association is present. This information
          * is retrieved from the linked endpoint group, and not configured as part
          * of the association itself.
          * Structure is documented below.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
+         * 
          */
+        @Deprecated /* `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead. */
         public Builder locationsDetails(InterceptEndpointGroupAssociationLocationsDetailArgs... locationsDetails) {
             return locationsDetails(List.of(locationsDetails));
         }

@@ -144,7 +144,8 @@ type Interconnect struct {
 	// bundle, not the speed of the entire bundle. Can take one of the following values:
 	// - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
 	// - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
-	//   Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`.
+	// - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
+	//   Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
 	LinkType pulumi.StringOutput `pulumi:"linkType"`
 	// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
 	// Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
@@ -314,7 +315,8 @@ type interconnectState struct {
 	// bundle, not the speed of the entire bundle. Can take one of the following values:
 	// - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
 	// - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
-	//   Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`.
+	// - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
+	//   Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
 	LinkType *string `pulumi:"linkType"`
 	// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
 	// Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
@@ -441,7 +443,8 @@ type InterconnectState struct {
 	// bundle, not the speed of the entire bundle. Can take one of the following values:
 	// - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
 	// - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
-	//   Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`.
+	// - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
+	//   Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
 	LinkType pulumi.StringPtrInput
 	// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
 	// Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
@@ -543,7 +546,8 @@ type interconnectArgs struct {
 	// bundle, not the speed of the entire bundle. Can take one of the following values:
 	// - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
 	// - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
-	//   Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`.
+	// - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
+	//   Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
 	LinkType string `pulumi:"linkType"`
 	// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
 	// Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
@@ -614,7 +618,8 @@ type InterconnectArgs struct {
 	// bundle, not the speed of the entire bundle. Can take one of the following values:
 	// - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
 	// - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
-	//   Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`.
+	// - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
+	//   Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
 	LinkType pulumi.StringInput
 	// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
 	// Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
@@ -841,7 +846,8 @@ func (o InterconnectOutput) Labels() pulumi.StringMapOutput {
 // bundle, not the speed of the entire bundle. Can take one of the following values:
 //   - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
 //   - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
-//     Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`.
+//   - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
+//     Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
 func (o InterconnectOutput) LinkType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnect) pulumi.StringOutput { return v.LinkType }).(pulumi.StringOutput)
 }

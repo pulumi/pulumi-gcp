@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.storage.inputs.TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -49,6 +50,21 @@ public final class TransferJobReplicationSpecTransferOptionsArgs extends com.pul
     }
 
     /**
+     * Specifies the metadata options for running a transfer
+     * 
+     */
+    @Import(name="metadataOptions")
+    private @Nullable Output<TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs> metadataOptions;
+
+    /**
+     * @return Specifies the metadata options for running a transfer
+     * 
+     */
+    public Optional<Output<TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs>> metadataOptions() {
+        return Optional.ofNullable(this.metadataOptions);
+    }
+
+    /**
      * Whether overwriting objects that already exist in the sink is allowed.
      * 
      */
@@ -83,6 +99,7 @@ public final class TransferJobReplicationSpecTransferOptionsArgs extends com.pul
     private TransferJobReplicationSpecTransferOptionsArgs(TransferJobReplicationSpecTransferOptionsArgs $) {
         this.deleteObjectsFromSourceAfterTransfer = $.deleteObjectsFromSourceAfterTransfer;
         this.deleteObjectsUniqueInSink = $.deleteObjectsUniqueInSink;
+        this.metadataOptions = $.metadataOptions;
         this.overwriteObjectsAlreadyExistingInSink = $.overwriteObjectsAlreadyExistingInSink;
         this.overwriteWhen = $.overwriteWhen;
     }
@@ -147,6 +164,27 @@ public final class TransferJobReplicationSpecTransferOptionsArgs extends com.pul
          */
         public Builder deleteObjectsUniqueInSink(Boolean deleteObjectsUniqueInSink) {
             return deleteObjectsUniqueInSink(Output.of(deleteObjectsUniqueInSink));
+        }
+
+        /**
+         * @param metadataOptions Specifies the metadata options for running a transfer
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadataOptions(@Nullable Output<TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs> metadataOptions) {
+            $.metadataOptions = metadataOptions;
+            return this;
+        }
+
+        /**
+         * @param metadataOptions Specifies the metadata options for running a transfer
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadataOptions(TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs metadataOptions) {
+            return metadataOptions(Output.of(metadataOptions));
         }
 
         /**

@@ -9,6 +9,7 @@ import com.pulumi.gcp.compute.outputs.GetResourcePolicyDiskConsistencyGroupPolic
 import com.pulumi.gcp.compute.outputs.GetResourcePolicyGroupPlacementPolicy;
 import com.pulumi.gcp.compute.outputs.GetResourcePolicyInstanceSchedulePolicy;
 import com.pulumi.gcp.compute.outputs.GetResourcePolicySnapshotSchedulePolicy;
+import com.pulumi.gcp.compute.outputs.GetResourcePolicyWorkloadPolicy;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -39,6 +40,7 @@ public final class GetResourcePolicyResult {
      */
     private String selfLink;
     private List<GetResourcePolicySnapshotSchedulePolicy> snapshotSchedulePolicies;
+    private List<GetResourcePolicyWorkloadPolicy> workloadPolicies;
 
     private GetResourcePolicyResult() {}
     /**
@@ -83,6 +85,9 @@ public final class GetResourcePolicyResult {
     public List<GetResourcePolicySnapshotSchedulePolicy> snapshotSchedulePolicies() {
         return this.snapshotSchedulePolicies;
     }
+    public List<GetResourcePolicyWorkloadPolicy> workloadPolicies() {
+        return this.workloadPolicies;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -103,6 +108,7 @@ public final class GetResourcePolicyResult {
         private @Nullable String region;
         private String selfLink;
         private List<GetResourcePolicySnapshotSchedulePolicy> snapshotSchedulePolicies;
+        private List<GetResourcePolicyWorkloadPolicy> workloadPolicies;
         public Builder() {}
         public Builder(GetResourcePolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -116,6 +122,7 @@ public final class GetResourcePolicyResult {
     	      this.region = defaults.region;
     	      this.selfLink = defaults.selfLink;
     	      this.snapshotSchedulePolicies = defaults.snapshotSchedulePolicies;
+    	      this.workloadPolicies = defaults.workloadPolicies;
         }
 
         @CustomType.Setter
@@ -206,6 +213,17 @@ public final class GetResourcePolicyResult {
         public Builder snapshotSchedulePolicies(GetResourcePolicySnapshotSchedulePolicy... snapshotSchedulePolicies) {
             return snapshotSchedulePolicies(List.of(snapshotSchedulePolicies));
         }
+        @CustomType.Setter
+        public Builder workloadPolicies(List<GetResourcePolicyWorkloadPolicy> workloadPolicies) {
+            if (workloadPolicies == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicyResult", "workloadPolicies");
+            }
+            this.workloadPolicies = workloadPolicies;
+            return this;
+        }
+        public Builder workloadPolicies(GetResourcePolicyWorkloadPolicy... workloadPolicies) {
+            return workloadPolicies(List.of(workloadPolicies));
+        }
         public GetResourcePolicyResult build() {
             final var _resultValue = new GetResourcePolicyResult();
             _resultValue.description = description;
@@ -218,6 +236,7 @@ public final class GetResourcePolicyResult {
             _resultValue.region = region;
             _resultValue.selfLink = selfLink;
             _resultValue.snapshotSchedulePolicies = snapshotSchedulePolicies;
+            _resultValue.workloadPolicies = workloadPolicies;
             return _resultValue;
         }
     }

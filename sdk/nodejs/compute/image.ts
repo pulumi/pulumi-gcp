@@ -261,6 +261,11 @@ export class Image extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * Set the secure boot keys of shielded instance.
+     * Structure is documented below.
+     */
+    public readonly shieldedInstanceInitialState!: pulumi.Output<outputs.compute.ImageShieldedInstanceInitialState>;
+    /**
      * The source disk to create this image based on.
      * You must provide either this property or the
      * rawDisk.source property but not both to create an image.
@@ -321,6 +326,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["rawDisk"] = state ? state.rawDisk : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["shieldedInstanceInitialState"] = state ? state.shieldedInstanceInitialState : undefined;
             resourceInputs["sourceDisk"] = state ? state.sourceDisk : undefined;
             resourceInputs["sourceImage"] = state ? state.sourceImage : undefined;
             resourceInputs["sourceSnapshot"] = state ? state.sourceSnapshot : undefined;
@@ -337,6 +343,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["rawDisk"] = args ? args.rawDisk : undefined;
+            resourceInputs["shieldedInstanceInitialState"] = args ? args.shieldedInstanceInitialState : undefined;
             resourceInputs["sourceDisk"] = args ? args.sourceDisk : undefined;
             resourceInputs["sourceImage"] = args ? args.sourceImage : undefined;
             resourceInputs["sourceSnapshot"] = args ? args.sourceSnapshot : undefined;
@@ -451,6 +458,11 @@ export interface ImageState {
      */
     selfLink?: pulumi.Input<string>;
     /**
+     * Set the secure boot keys of shielded instance.
+     * Structure is documented below.
+     */
+    shieldedInstanceInitialState?: pulumi.Input<inputs.compute.ImageShieldedInstanceInitialState>;
+    /**
      * The source disk to create this image based on.
      * You must provide either this property or the
      * rawDisk.source property but not both to create an image.
@@ -551,6 +563,11 @@ export interface ImageArgs {
      * Structure is documented below.
      */
     rawDisk?: pulumi.Input<inputs.compute.ImageRawDisk>;
+    /**
+     * Set the secure boot keys of shielded instance.
+     * Structure is documented below.
+     */
+    shieldedInstanceInitialState?: pulumi.Input<inputs.compute.ImageShieldedInstanceInitialState>;
     /**
      * The source disk to create this image based on.
      * You must provide either this property or the

@@ -23,6 +23,10 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly bool? DeleteObjectsUniqueInSink;
         /// <summary>
+        /// Specifies the metadata options for running a transfer
+        /// </summary>
+        public readonly Outputs.TransferJobTransferSpecTransferOptionsMetadataOptions? MetadataOptions;
+        /// <summary>
         /// Whether overwriting objects that already exist in the sink is allowed.
         /// </summary>
         public readonly bool? OverwriteObjectsAlreadyExistingInSink;
@@ -37,12 +41,15 @@ namespace Pulumi.Gcp.Storage.Outputs
 
             bool? deleteObjectsUniqueInSink,
 
+            Outputs.TransferJobTransferSpecTransferOptionsMetadataOptions? metadataOptions,
+
             bool? overwriteObjectsAlreadyExistingInSink,
 
             string? overwriteWhen)
         {
             DeleteObjectsFromSourceAfterTransfer = deleteObjectsFromSourceAfterTransfer;
             DeleteObjectsUniqueInSink = deleteObjectsUniqueInSink;
+            MetadataOptions = metadataOptions;
             OverwriteObjectsAlreadyExistingInSink = overwriteObjectsAlreadyExistingInSink;
             OverwriteWhen = overwriteWhen;
         }

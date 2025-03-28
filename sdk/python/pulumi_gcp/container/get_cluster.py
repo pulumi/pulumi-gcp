@@ -27,7 +27,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, addons_configs=None, allow_net_admin=None, authenticator_groups_configs=None, binary_authorizations=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, control_plane_endpoints_configs=None, cost_management_configs=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, deletion_protection=None, description=None, dns_configs=None, effective_labels=None, enable_autopilot=None, enable_cilium_clusterwide_network_policy=None, enable_fqdn_network_policy=None, enable_intranode_visibility=None, enable_k8s_beta_apis=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_multi_networking=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, enterprise_configs=None, fleets=None, gateway_api_configs=None, id=None, identity_service_configs=None, initial_node_count=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_configs=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, mesh_certificates=None, min_master_version=None, monitoring_configs=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pool_auto_configs=None, node_pool_defaults=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, protect_configs=None, pulumi_labels=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, secret_manager_configs=None, security_posture_configs=None, self_link=None, service_external_ips_configs=None, services_ipv4_cidr=None, subnetwork=None, tpu_configs=None, tpu_ipv4_cidr_block=None, user_managed_keys_configs=None, vertical_pod_autoscalings=None, workload_alts_configs=None, workload_identity_configs=None):
+    def __init__(__self__, addons_configs=None, allow_net_admin=None, authenticator_groups_configs=None, binary_authorizations=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, control_plane_endpoints_configs=None, cost_management_configs=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, deletion_protection=None, description=None, dns_configs=None, effective_labels=None, enable_autopilot=None, enable_cilium_clusterwide_network_policy=None, enable_fqdn_network_policy=None, enable_intranode_visibility=None, enable_k8s_beta_apis=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_multi_networking=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, enterprise_configs=None, fleets=None, gateway_api_configs=None, id=None, identity_service_configs=None, initial_node_count=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_configs=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, mesh_certificates=None, min_master_version=None, monitoring_configs=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pool_auto_configs=None, node_pool_defaults=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_autoscalings=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, protect_configs=None, pulumi_labels=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, secret_manager_configs=None, security_posture_configs=None, self_link=None, service_external_ips_configs=None, services_ipv4_cidr=None, subnetwork=None, tpu_configs=None, tpu_ipv4_cidr_block=None, user_managed_keys_configs=None, vertical_pod_autoscalings=None, workload_alts_configs=None, workload_identity_configs=None):
         if addons_configs and not isinstance(addons_configs, list):
             raise TypeError("Expected argument 'addons_configs' to be a list")
         pulumi.set(__self__, "addons_configs", addons_configs)
@@ -211,6 +211,9 @@ class GetClusterResult:
         if operation and not isinstance(operation, str):
             raise TypeError("Expected argument 'operation' to be a str")
         pulumi.set(__self__, "operation", operation)
+        if pod_autoscalings and not isinstance(pod_autoscalings, list):
+            raise TypeError("Expected argument 'pod_autoscalings' to be a list")
+        pulumi.set(__self__, "pod_autoscalings", pod_autoscalings)
         if pod_security_policy_configs and not isinstance(pod_security_policy_configs, list):
             raise TypeError("Expected argument 'pod_security_policy_configs' to be a list")
         pulumi.set(__self__, "pod_security_policy_configs", pod_security_policy_configs)
@@ -587,6 +590,11 @@ class GetClusterResult:
         return pulumi.get(self, "operation")
 
     @property
+    @pulumi.getter(name="podAutoscalings")
+    def pod_autoscalings(self) -> Sequence['outputs.GetClusterPodAutoscalingResult']:
+        return pulumi.get(self, "pod_autoscalings")
+
+    @property
     @pulumi.getter(name="podSecurityPolicyConfigs")
     def pod_security_policy_configs(self) -> Sequence['outputs.GetClusterPodSecurityPolicyConfigResult']:
         return pulumi.get(self, "pod_security_policy_configs")
@@ -764,6 +772,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             node_version=self.node_version,
             notification_configs=self.notification_configs,
             operation=self.operation,
+            pod_autoscalings=self.pod_autoscalings,
             pod_security_policy_configs=self.pod_security_policy_configs,
             private_cluster_configs=self.private_cluster_configs,
             private_ipv6_google_access=self.private_ipv6_google_access,
@@ -886,6 +895,7 @@ def get_cluster(location: Optional[str] = None,
         node_version=pulumi.get(__ret__, 'node_version'),
         notification_configs=pulumi.get(__ret__, 'notification_configs'),
         operation=pulumi.get(__ret__, 'operation'),
+        pod_autoscalings=pulumi.get(__ret__, 'pod_autoscalings'),
         pod_security_policy_configs=pulumi.get(__ret__, 'pod_security_policy_configs'),
         private_cluster_configs=pulumi.get(__ret__, 'private_cluster_configs'),
         private_ipv6_google_access=pulumi.get(__ret__, 'private_ipv6_google_access'),
@@ -1005,6 +1015,7 @@ def get_cluster_output(location: Optional[pulumi.Input[Optional[str]]] = None,
         node_version=pulumi.get(__response__, 'node_version'),
         notification_configs=pulumi.get(__response__, 'notification_configs'),
         operation=pulumi.get(__response__, 'operation'),
+        pod_autoscalings=pulumi.get(__response__, 'pod_autoscalings'),
         pod_security_policy_configs=pulumi.get(__response__, 'pod_security_policy_configs'),
         private_cluster_configs=pulumi.get(__response__, 'private_cluster_configs'),
         private_ipv6_google_access=pulumi.get(__response__, 'private_ipv6_google_access'),

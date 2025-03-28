@@ -9956,6 +9956,11 @@ if not MYPY:
         """
         Defines whether autoscaling is enabled. The default value is false.
         """
+        autoscaling_factor: NotRequired[pulumi.Input[float]]
+        """
+        (Output)
+        Output only. The scaling factor of a service with autoscaling enabled.
+        """
         limit_config: NotRequired[pulumi.Input['MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgsDict']]
         """
         Represents the limit configuration of a metastore service.
@@ -9968,14 +9973,19 @@ elif False:
 class MetastoreServiceScalingConfigAutoscalingConfigArgs:
     def __init__(__self__, *,
                  autoscaling_enabled: Optional[pulumi.Input[bool]] = None,
+                 autoscaling_factor: Optional[pulumi.Input[float]] = None,
                  limit_config: Optional[pulumi.Input['MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs']] = None):
         """
         :param pulumi.Input[bool] autoscaling_enabled: Defines whether autoscaling is enabled. The default value is false.
+        :param pulumi.Input[float] autoscaling_factor: (Output)
+               Output only. The scaling factor of a service with autoscaling enabled.
         :param pulumi.Input['MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs'] limit_config: Represents the limit configuration of a metastore service.
                Structure is documented below.
         """
         if autoscaling_enabled is not None:
             pulumi.set(__self__, "autoscaling_enabled", autoscaling_enabled)
+        if autoscaling_factor is not None:
+            pulumi.set(__self__, "autoscaling_factor", autoscaling_factor)
         if limit_config is not None:
             pulumi.set(__self__, "limit_config", limit_config)
 
@@ -9990,6 +10000,19 @@ class MetastoreServiceScalingConfigAutoscalingConfigArgs:
     @autoscaling_enabled.setter
     def autoscaling_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "autoscaling_enabled", value)
+
+    @property
+    @pulumi.getter(name="autoscalingFactor")
+    def autoscaling_factor(self) -> Optional[pulumi.Input[float]]:
+        """
+        (Output)
+        Output only. The scaling factor of a service with autoscaling enabled.
+        """
+        return pulumi.get(self, "autoscaling_factor")
+
+    @autoscaling_factor.setter
+    def autoscaling_factor(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "autoscaling_factor", value)
 
     @property
     @pulumi.getter(name="limitConfig")

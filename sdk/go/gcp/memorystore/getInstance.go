@@ -75,6 +75,8 @@ type LookupInstanceResult struct {
 	InstanceId              string                              `pulumi:"instanceId"`
 	Labels                  map[string]string                   `pulumi:"labels"`
 	Location                *string                             `pulumi:"location"`
+	MaintenancePolicies     []GetInstanceMaintenancePolicy      `pulumi:"maintenancePolicies"`
+	MaintenanceSchedules    []GetInstanceMaintenanceSchedule    `pulumi:"maintenanceSchedules"`
 	Mode                    string                              `pulumi:"mode"`
 	Name                    string                              `pulumi:"name"`
 	NodeConfigs             []GetInstanceNodeConfig             `pulumi:"nodeConfigs"`
@@ -185,6 +187,14 @@ func (o LookupInstanceResultOutput) Labels() pulumi.StringMapOutput {
 
 func (o LookupInstanceResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInstanceResult) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupInstanceResultOutput) MaintenancePolicies() GetInstanceMaintenancePolicyArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceMaintenancePolicy { return v.MaintenancePolicies }).(GetInstanceMaintenancePolicyArrayOutput)
+}
+
+func (o LookupInstanceResultOutput) MaintenanceSchedules() GetInstanceMaintenanceScheduleArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceMaintenanceSchedule { return v.MaintenanceSchedules }).(GetInstanceMaintenanceScheduleArrayOutput)
 }
 
 func (o LookupInstanceResultOutput) Mode() pulumi.StringOutput {

@@ -27,7 +27,7 @@ class GetResourcePolicyResult:
     """
     A collection of values returned by getResourcePolicy.
     """
-    def __init__(__self__, description=None, disk_consistency_group_policies=None, group_placement_policies=None, id=None, instance_schedule_policies=None, name=None, project=None, region=None, self_link=None, snapshot_schedule_policies=None):
+    def __init__(__self__, description=None, disk_consistency_group_policies=None, group_placement_policies=None, id=None, instance_schedule_policies=None, name=None, project=None, region=None, self_link=None, snapshot_schedule_policies=None, workload_policies=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -58,6 +58,9 @@ class GetResourcePolicyResult:
         if snapshot_schedule_policies and not isinstance(snapshot_schedule_policies, list):
             raise TypeError("Expected argument 'snapshot_schedule_policies' to be a list")
         pulumi.set(__self__, "snapshot_schedule_policies", snapshot_schedule_policies)
+        if workload_policies and not isinstance(workload_policies, list):
+            raise TypeError("Expected argument 'workload_policies' to be a list")
+        pulumi.set(__self__, "workload_policies", workload_policies)
 
     @property
     @pulumi.getter
@@ -118,6 +121,11 @@ class GetResourcePolicyResult:
     def snapshot_schedule_policies(self) -> Sequence['outputs.GetResourcePolicySnapshotSchedulePolicyResult']:
         return pulumi.get(self, "snapshot_schedule_policies")
 
+    @property
+    @pulumi.getter(name="workloadPolicies")
+    def workload_policies(self) -> Sequence['outputs.GetResourcePolicyWorkloadPolicyResult']:
+        return pulumi.get(self, "workload_policies")
+
 
 class AwaitableGetResourcePolicyResult(GetResourcePolicyResult):
     # pylint: disable=using-constant-test
@@ -134,7 +142,8 @@ class AwaitableGetResourcePolicyResult(GetResourcePolicyResult):
             project=self.project,
             region=self.region,
             self_link=self.self_link,
-            snapshot_schedule_policies=self.snapshot_schedule_policies)
+            snapshot_schedule_policies=self.snapshot_schedule_policies,
+            workload_policies=self.workload_policies)
 
 
 def get_resource_policy(name: Optional[str] = None,
@@ -174,7 +183,8 @@ def get_resource_policy(name: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'),
         self_link=pulumi.get(__ret__, 'self_link'),
-        snapshot_schedule_policies=pulumi.get(__ret__, 'snapshot_schedule_policies'))
+        snapshot_schedule_policies=pulumi.get(__ret__, 'snapshot_schedule_policies'),
+        workload_policies=pulumi.get(__ret__, 'workload_policies'))
 def get_resource_policy_output(name: Optional[pulumi.Input[str]] = None,
                                project: Optional[pulumi.Input[Optional[str]]] = None,
                                region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -211,4 +221,5 @@ def get_resource_policy_output(name: Optional[pulumi.Input[str]] = None,
         project=pulumi.get(__response__, 'project'),
         region=pulumi.get(__response__, 'region'),
         self_link=pulumi.get(__response__, 'self_link'),
-        snapshot_schedule_policies=pulumi.get(__response__, 'snapshot_schedule_policies')))
+        snapshot_schedule_policies=pulumi.get(__response__, 'snapshot_schedule_policies'),
+        workload_policies=pulumi.get(__response__, 'workload_policies')))

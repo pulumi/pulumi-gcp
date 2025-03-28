@@ -961,6 +961,14 @@ Object.defineProperty(exports, "lookerCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const lustreCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "lustreCustomEndpoint", {
+    get() {
+        return __config.get("lustreCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const managedKafkaCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "managedKafkaCustomEndpoint", {
     get() {
@@ -1077,6 +1085,14 @@ export declare const osConfigCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "osConfigCustomEndpoint", {
     get() {
         return __config.get("osConfigCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const osConfigV2CustomEndpoint: string | undefined;
+Object.defineProperty(exports, "osConfigV2CustomEndpoint", {
+    get() {
+        return __config.get("osConfigV2CustomEndpoint");
     },
     enumerable: true,
 });
@@ -1381,6 +1397,14 @@ export declare const sqlCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "sqlCustomEndpoint", {
     get() {
         return __config.get("sqlCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const storageControlCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "storageControlCustomEndpoint", {
+    get() {
+        return __config.get("storageControlCustomEndpoint");
     },
     enumerable: true,
 });

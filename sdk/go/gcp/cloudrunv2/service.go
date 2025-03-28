@@ -1017,8 +1017,8 @@ type Service struct {
 	// INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
 	// "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
 	Ingress pulumi.StringOutput `pulumi:"ingress"`
-	// Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
-	// only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+	// Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
+	// https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
 	InvokerIamDisabled pulumi.BoolPtrOutput `pulumi:"invokerIamDisabled"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
 	// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
@@ -1170,8 +1170,8 @@ type serviceState struct {
 	// INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
 	// "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
 	Ingress *string `pulumi:"ingress"`
-	// Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
-	// only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+	// Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
+	// https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
 	InvokerIamDisabled *bool `pulumi:"invokerIamDisabled"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
 	// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
@@ -1283,8 +1283,8 @@ type ServiceState struct {
 	// INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
 	// "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
 	Ingress pulumi.StringPtrInput
-	// Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
-	// only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+	// Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
+	// https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
 	InvokerIamDisabled pulumi.BoolPtrInput
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
 	// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
@@ -1382,8 +1382,8 @@ type serviceArgs struct {
 	// INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
 	// "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
 	Ingress *string `pulumi:"ingress"`
-	// Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
-	// only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+	// Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
+	// https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
 	InvokerIamDisabled *bool `pulumi:"invokerIamDisabled"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
 	// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
@@ -1447,8 +1447,8 @@ type ServiceArgs struct {
 	// INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
 	// "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
 	Ingress pulumi.StringPtrInput
-	// Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
-	// only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+	// Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
+	// https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
 	InvokerIamDisabled pulumi.BoolPtrInput
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
 	// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
@@ -1672,8 +1672,8 @@ func (o ServiceOutput) Ingress() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Ingress }).(pulumi.StringOutput)
 }
 
-// Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
-// only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+// Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
+// https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
 func (o ServiceOutput) InvokerIamDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.InvokerIamDisabled }).(pulumi.BoolPtrOutput)
 }

@@ -130,6 +130,7 @@ type LookupClusterResult struct {
 	NodeVersion                     string                                     `pulumi:"nodeVersion"`
 	NotificationConfigs             []GetClusterNotificationConfig             `pulumi:"notificationConfigs"`
 	Operation                       string                                     `pulumi:"operation"`
+	PodAutoscalings                 []GetClusterPodAutoscaling                 `pulumi:"podAutoscalings"`
 	PodSecurityPolicyConfigs        []GetClusterPodSecurityPolicyConfig        `pulumi:"podSecurityPolicyConfigs"`
 	PrivateClusterConfigs           []GetClusterPrivateClusterConfig           `pulumi:"privateClusterConfigs"`
 	PrivateIpv6GoogleAccess         string                                     `pulumi:"privateIpv6GoogleAccess"`
@@ -442,6 +443,10 @@ func (o LookupClusterResultOutput) NotificationConfigs() GetClusterNotificationC
 
 func (o LookupClusterResultOutput) Operation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Operation }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) PodAutoscalings() GetClusterPodAutoscalingArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterPodAutoscaling { return v.PodAutoscalings }).(GetClusterPodAutoscalingArrayOutput)
 }
 
 func (o LookupClusterResultOutput) PodSecurityPolicyConfigs() GetClusterPodSecurityPolicyConfigArrayOutput {

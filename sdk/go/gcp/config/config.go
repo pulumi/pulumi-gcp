@@ -376,6 +376,9 @@ func GetLoggingCustomEndpoint(ctx *pulumi.Context) string {
 func GetLookerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:lookerCustomEndpoint")
 }
+func GetLustreCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:lustreCustomEndpoint")
+}
 func GetManagedKafkaCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:managedKafkaCustomEndpoint")
 }
@@ -420,6 +423,9 @@ func GetOrgPolicyCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetOsConfigCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:osConfigCustomEndpoint")
+}
+func GetOsConfigV2CustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:osConfigV2CustomEndpoint")
 }
 func GetOsLoginCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:osLoginCustomEndpoint")
@@ -558,6 +564,9 @@ func GetSpannerCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetSqlCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:sqlCustomEndpoint")
+}
+func GetStorageControlCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:storageControlCustomEndpoint")
 }
 func GetStorageCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:storageCustomEndpoint")

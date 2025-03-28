@@ -20,6 +20,11 @@ export type PatchDeployment = import("./patchDeployment").PatchDeployment;
 export const PatchDeployment: typeof import("./patchDeployment").PatchDeployment = null as any;
 utilities.lazyLoad(exports, ["PatchDeployment"], () => require("./patchDeployment"));
 
+export { V2PolicyOrchestratorArgs, V2PolicyOrchestratorState } from "./v2policyOrchestrator";
+export type V2PolicyOrchestrator = import("./v2policyOrchestrator").V2PolicyOrchestrator;
+export const V2PolicyOrchestrator: typeof import("./v2policyOrchestrator").V2PolicyOrchestrator = null as any;
+utilities.lazyLoad(exports, ["V2PolicyOrchestrator"], () => require("./v2policyOrchestrator"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -31,6 +36,8 @@ const _module = {
                 return new OsPolicyAssignment(name, <any>undefined, { urn })
             case "gcp:osconfig/patchDeployment:PatchDeployment":
                 return new PatchDeployment(name, <any>undefined, { urn })
+            case "gcp:osconfig/v2PolicyOrchestrator:V2PolicyOrchestrator":
+                return new V2PolicyOrchestrator(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -39,3 +46,4 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "osconfig/guestPolicies", _module)
 pulumi.runtime.registerResourceModule("gcp", "osconfig/osPolicyAssignment", _module)
 pulumi.runtime.registerResourceModule("gcp", "osconfig/patchDeployment", _module)
+pulumi.runtime.registerResourceModule("gcp", "osconfig/v2PolicyOrchestrator", _module)

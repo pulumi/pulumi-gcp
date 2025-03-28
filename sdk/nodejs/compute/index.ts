@@ -230,6 +230,11 @@ export const getImageIamPolicy: typeof import("./getImageIamPolicy").getImageIam
 export const getImageIamPolicyOutput: typeof import("./getImageIamPolicy").getImageIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getImageIamPolicy","getImageIamPolicyOutput"], () => require("./getImageIamPolicy"));
 
+export { GetImagesArgs, GetImagesResult, GetImagesOutputArgs } from "./getImages";
+export const getImages: typeof import("./getImages").getImages = null as any;
+export const getImagesOutput: typeof import("./getImages").getImagesOutput = null as any;
+utilities.lazyLoad(exports, ["getImages","getImagesOutput"], () => require("./getImages"));
+
 export { GetInstanceArgs, GetInstanceResult, GetInstanceOutputArgs } from "./getInstance";
 export const getInstance: typeof import("./getInstance").getInstance = null as any;
 export const getInstanceOutput: typeof import("./getInstance").getInstanceOutput = null as any;

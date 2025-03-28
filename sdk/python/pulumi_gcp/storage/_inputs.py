@@ -49,6 +49,18 @@ __all__ = [
     'BucketVersioningArgsDict',
     'BucketWebsiteArgs',
     'BucketWebsiteArgsDict',
+    'ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs',
+    'ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgsDict',
+    'ControlProjectIntelligenceConfigFilterArgs',
+    'ControlProjectIntelligenceConfigFilterArgsDict',
+    'ControlProjectIntelligenceConfigFilterExcludedCloudStorageBucketsArgs',
+    'ControlProjectIntelligenceConfigFilterExcludedCloudStorageBucketsArgsDict',
+    'ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocationsArgs',
+    'ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocationsArgsDict',
+    'ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsArgs',
+    'ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsArgsDict',
+    'ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsArgs',
+    'ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsArgsDict',
     'DefaultObjectAccessControlProjectTeamArgs',
     'DefaultObjectAccessControlProjectTeamArgsDict',
     'InsightsReportConfigCsvOptionsArgs',
@@ -91,6 +103,8 @@ __all__ = [
     'TransferJobReplicationSpecObjectConditionsArgsDict',
     'TransferJobReplicationSpecTransferOptionsArgs',
     'TransferJobReplicationSpecTransferOptionsArgsDict',
+    'TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs',
+    'TransferJobReplicationSpecTransferOptionsMetadataOptionsArgsDict',
     'TransferJobScheduleArgs',
     'TransferJobScheduleArgsDict',
     'TransferJobScheduleScheduleEndDateArgs',
@@ -125,6 +139,8 @@ __all__ = [
     'TransferJobTransferSpecPosixDataSourceArgsDict',
     'TransferJobTransferSpecTransferOptionsArgs',
     'TransferJobTransferSpecTransferOptionsArgsDict',
+    'TransferJobTransferSpecTransferOptionsMetadataOptionsArgs',
+    'TransferJobTransferSpecTransferOptionsMetadataOptionsArgsDict',
 ]
 
 MYPY = False
@@ -1335,6 +1351,292 @@ class BucketWebsiteArgs:
     @not_found_page.setter
     def not_found_page(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "not_found_page", value)
+
+
+if not MYPY:
+    class ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgsDict(TypedDict):
+        effective_edition: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The `StorageIntelligence` edition that is applicable for the resource.
+        """
+        intelligence_config: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The Intelligence config resource that is applied for the target resource.
+        """
+elif False:
+    ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs:
+    def __init__(__self__, *,
+                 effective_edition: Optional[pulumi.Input[str]] = None,
+                 intelligence_config: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] effective_edition: (Output)
+               The `StorageIntelligence` edition that is applicable for the resource.
+        :param pulumi.Input[str] intelligence_config: (Output)
+               The Intelligence config resource that is applied for the target resource.
+        """
+        if effective_edition is not None:
+            pulumi.set(__self__, "effective_edition", effective_edition)
+        if intelligence_config is not None:
+            pulumi.set(__self__, "intelligence_config", intelligence_config)
+
+    @property
+    @pulumi.getter(name="effectiveEdition")
+    def effective_edition(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The `StorageIntelligence` edition that is applicable for the resource.
+        """
+        return pulumi.get(self, "effective_edition")
+
+    @effective_edition.setter
+    def effective_edition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "effective_edition", value)
+
+    @property
+    @pulumi.getter(name="intelligenceConfig")
+    def intelligence_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The Intelligence config resource that is applied for the target resource.
+        """
+        return pulumi.get(self, "intelligence_config")
+
+    @intelligence_config.setter
+    def intelligence_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "intelligence_config", value)
+
+
+if not MYPY:
+    class ControlProjectIntelligenceConfigFilterArgsDict(TypedDict):
+        excluded_cloud_storage_buckets: NotRequired[pulumi.Input['ControlProjectIntelligenceConfigFilterExcludedCloudStorageBucketsArgsDict']]
+        """
+        Buckets to exclude from the Storage Intelligence plan.
+        Structure is documented below.
+        """
+        excluded_cloud_storage_locations: NotRequired[pulumi.Input['ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocationsArgsDict']]
+        """
+        Locations to exclude from the Storage Intelligence plan.
+        Structure is documented below.
+        """
+        included_cloud_storage_buckets: NotRequired[pulumi.Input['ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsArgsDict']]
+        """
+        Buckets to include in the Storage Intelligence plan.
+        Structure is documented below.
+        """
+        included_cloud_storage_locations: NotRequired[pulumi.Input['ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsArgsDict']]
+        """
+        Locations to include in the Storage Intelligence plan.
+        Structure is documented below.
+        """
+elif False:
+    ControlProjectIntelligenceConfigFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlProjectIntelligenceConfigFilterArgs:
+    def __init__(__self__, *,
+                 excluded_cloud_storage_buckets: Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']] = None,
+                 excluded_cloud_storage_locations: Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']] = None,
+                 included_cloud_storage_buckets: Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']] = None,
+                 included_cloud_storage_locations: Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']] = None):
+        """
+        :param pulumi.Input['ControlProjectIntelligenceConfigFilterExcludedCloudStorageBucketsArgs'] excluded_cloud_storage_buckets: Buckets to exclude from the Storage Intelligence plan.
+               Structure is documented below.
+        :param pulumi.Input['ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocationsArgs'] excluded_cloud_storage_locations: Locations to exclude from the Storage Intelligence plan.
+               Structure is documented below.
+        :param pulumi.Input['ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsArgs'] included_cloud_storage_buckets: Buckets to include in the Storage Intelligence plan.
+               Structure is documented below.
+        :param pulumi.Input['ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsArgs'] included_cloud_storage_locations: Locations to include in the Storage Intelligence plan.
+               Structure is documented below.
+        """
+        if excluded_cloud_storage_buckets is not None:
+            pulumi.set(__self__, "excluded_cloud_storage_buckets", excluded_cloud_storage_buckets)
+        if excluded_cloud_storage_locations is not None:
+            pulumi.set(__self__, "excluded_cloud_storage_locations", excluded_cloud_storage_locations)
+        if included_cloud_storage_buckets is not None:
+            pulumi.set(__self__, "included_cloud_storage_buckets", included_cloud_storage_buckets)
+        if included_cloud_storage_locations is not None:
+            pulumi.set(__self__, "included_cloud_storage_locations", included_cloud_storage_locations)
+
+    @property
+    @pulumi.getter(name="excludedCloudStorageBuckets")
+    def excluded_cloud_storage_buckets(self) -> Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']]:
+        """
+        Buckets to exclude from the Storage Intelligence plan.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "excluded_cloud_storage_buckets")
+
+    @excluded_cloud_storage_buckets.setter
+    def excluded_cloud_storage_buckets(self, value: Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']]):
+        pulumi.set(self, "excluded_cloud_storage_buckets", value)
+
+    @property
+    @pulumi.getter(name="excludedCloudStorageLocations")
+    def excluded_cloud_storage_locations(self) -> Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']]:
+        """
+        Locations to exclude from the Storage Intelligence plan.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "excluded_cloud_storage_locations")
+
+    @excluded_cloud_storage_locations.setter
+    def excluded_cloud_storage_locations(self, value: Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']]):
+        pulumi.set(self, "excluded_cloud_storage_locations", value)
+
+    @property
+    @pulumi.getter(name="includedCloudStorageBuckets")
+    def included_cloud_storage_buckets(self) -> Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']]:
+        """
+        Buckets to include in the Storage Intelligence plan.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "included_cloud_storage_buckets")
+
+    @included_cloud_storage_buckets.setter
+    def included_cloud_storage_buckets(self, value: Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']]):
+        pulumi.set(self, "included_cloud_storage_buckets", value)
+
+    @property
+    @pulumi.getter(name="includedCloudStorageLocations")
+    def included_cloud_storage_locations(self) -> Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']]:
+        """
+        Locations to include in the Storage Intelligence plan.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "included_cloud_storage_locations")
+
+    @included_cloud_storage_locations.setter
+    def included_cloud_storage_locations(self, value: Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']]):
+        pulumi.set(self, "included_cloud_storage_locations", value)
+
+
+if not MYPY:
+    class ControlProjectIntelligenceConfigFilterExcludedCloudStorageBucketsArgsDict(TypedDict):
+        bucket_id_regexes: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of bucket id regexes to exclude in the storage intelligence plan.
+        """
+elif False:
+    ControlProjectIntelligenceConfigFilterExcludedCloudStorageBucketsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlProjectIntelligenceConfigFilterExcludedCloudStorageBucketsArgs:
+    def __init__(__self__, *,
+                 bucket_id_regexes: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] bucket_id_regexes: List of bucket id regexes to exclude in the storage intelligence plan.
+        """
+        pulumi.set(__self__, "bucket_id_regexes", bucket_id_regexes)
+
+    @property
+    @pulumi.getter(name="bucketIdRegexes")
+    def bucket_id_regexes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of bucket id regexes to exclude in the storage intelligence plan.
+        """
+        return pulumi.get(self, "bucket_id_regexes")
+
+    @bucket_id_regexes.setter
+    def bucket_id_regexes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "bucket_id_regexes", value)
+
+
+if not MYPY:
+    class ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocationsArgsDict(TypedDict):
+        locations: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of locations.
+        """
+elif False:
+    ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocationsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocationsArgs:
+    def __init__(__self__, *,
+                 locations: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: List of locations.
+        """
+        pulumi.set(__self__, "locations", locations)
+
+    @property
+    @pulumi.getter
+    def locations(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of locations.
+        """
+        return pulumi.get(self, "locations")
+
+    @locations.setter
+    def locations(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "locations", value)
+
+
+if not MYPY:
+    class ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsArgsDict(TypedDict):
+        bucket_id_regexes: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of bucket id regexes to exclude in the storage intelligence plan.
+        """
+elif False:
+    ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsArgs:
+    def __init__(__self__, *,
+                 bucket_id_regexes: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] bucket_id_regexes: List of bucket id regexes to exclude in the storage intelligence plan.
+        """
+        pulumi.set(__self__, "bucket_id_regexes", bucket_id_regexes)
+
+    @property
+    @pulumi.getter(name="bucketIdRegexes")
+    def bucket_id_regexes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of bucket id regexes to exclude in the storage intelligence plan.
+        """
+        return pulumi.get(self, "bucket_id_regexes")
+
+    @bucket_id_regexes.setter
+    def bucket_id_regexes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "bucket_id_regexes", value)
+
+
+if not MYPY:
+    class ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsArgsDict(TypedDict):
+        locations: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of locations.
+        """
+elif False:
+    ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsArgs:
+    def __init__(__self__, *,
+                 locations: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: List of locations.
+        """
+        pulumi.set(__self__, "locations", locations)
+
+    @property
+    @pulumi.getter
+    def locations(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of locations.
+        """
+        return pulumi.get(self, "locations")
+
+    @locations.setter
+    def locations(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "locations", value)
 
 
 if not MYPY:
@@ -2613,6 +2915,10 @@ if not MYPY:
         Whether objects that exist only in the sink should be deleted. Note that this option and
         `delete_objects_from_source_after_transfer` are mutually exclusive.
         """
+        metadata_options: NotRequired[pulumi.Input['TransferJobReplicationSpecTransferOptionsMetadataOptionsArgsDict']]
+        """
+        Specifies the metadata options for running a transfer
+        """
         overwrite_objects_already_existing_in_sink: NotRequired[pulumi.Input[bool]]
         """
         Whether overwriting objects that already exist in the sink is allowed.
@@ -2629,12 +2935,14 @@ class TransferJobReplicationSpecTransferOptionsArgs:
     def __init__(__self__, *,
                  delete_objects_from_source_after_transfer: Optional[pulumi.Input[bool]] = None,
                  delete_objects_unique_in_sink: Optional[pulumi.Input[bool]] = None,
+                 metadata_options: Optional[pulumi.Input['TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs']] = None,
                  overwrite_objects_already_existing_in_sink: Optional[pulumi.Input[bool]] = None,
                  overwrite_when: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] delete_objects_from_source_after_transfer: Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
         :param pulumi.Input[bool] delete_objects_unique_in_sink: Whether objects that exist only in the sink should be deleted. Note that this option and
                `delete_objects_from_source_after_transfer` are mutually exclusive.
+        :param pulumi.Input['TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs'] metadata_options: Specifies the metadata options for running a transfer
         :param pulumi.Input[bool] overwrite_objects_already_existing_in_sink: Whether overwriting objects that already exist in the sink is allowed.
         :param pulumi.Input[str] overwrite_when: When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
         """
@@ -2642,6 +2950,8 @@ class TransferJobReplicationSpecTransferOptionsArgs:
             pulumi.set(__self__, "delete_objects_from_source_after_transfer", delete_objects_from_source_after_transfer)
         if delete_objects_unique_in_sink is not None:
             pulumi.set(__self__, "delete_objects_unique_in_sink", delete_objects_unique_in_sink)
+        if metadata_options is not None:
+            pulumi.set(__self__, "metadata_options", metadata_options)
         if overwrite_objects_already_existing_in_sink is not None:
             pulumi.set(__self__, "overwrite_objects_already_existing_in_sink", overwrite_objects_already_existing_in_sink)
         if overwrite_when is not None:
@@ -2673,6 +2983,18 @@ class TransferJobReplicationSpecTransferOptionsArgs:
         pulumi.set(self, "delete_objects_unique_in_sink", value)
 
     @property
+    @pulumi.getter(name="metadataOptions")
+    def metadata_options(self) -> Optional[pulumi.Input['TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs']]:
+        """
+        Specifies the metadata options for running a transfer
+        """
+        return pulumi.get(self, "metadata_options")
+
+    @metadata_options.setter
+    def metadata_options(self, value: Optional[pulumi.Input['TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs']]):
+        pulumi.set(self, "metadata_options", value)
+
+    @property
     @pulumi.getter(name="overwriteObjectsAlreadyExistingInSink")
     def overwrite_objects_already_existing_in_sink(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -2695,6 +3017,198 @@ class TransferJobReplicationSpecTransferOptionsArgs:
     @overwrite_when.setter
     def overwrite_when(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "overwrite_when", value)
+
+
+if not MYPY:
+    class TransferJobReplicationSpecTransferOptionsMetadataOptionsArgsDict(TypedDict):
+        acl: NotRequired[pulumi.Input[str]]
+        """
+        Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets
+        """
+        gid: NotRequired[pulumi.Input[str]]
+        """
+        Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer.
+        """
+        kms_key: NotRequired[pulumi.Input[str]]
+        """
+        Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Specifies how each file's mode attribute should be handled by the transfer.
+        """
+        storage_class: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+        """
+        symlink: NotRequired[pulumi.Input[str]]
+        """
+        Specifies how symlinks should be handled by the transfer.
+        """
+        temporary_hold: NotRequired[pulumi.Input[str]]
+        """
+        SSpecifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+        """
+        time_created: NotRequired[pulumi.Input[str]]
+        """
+        Specifies how each object's timeCreated metadata is preserved for transfers.
+        """
+        uid: NotRequired[pulumi.Input[str]]
+        """
+        Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer.
+        """
+elif False:
+    TransferJobReplicationSpecTransferOptionsMetadataOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs:
+    def __init__(__self__, *,
+                 acl: Optional[pulumi.Input[str]] = None,
+                 gid: Optional[pulumi.Input[str]] = None,
+                 kms_key: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 storage_class: Optional[pulumi.Input[str]] = None,
+                 symlink: Optional[pulumi.Input[str]] = None,
+                 temporary_hold: Optional[pulumi.Input[str]] = None,
+                 time_created: Optional[pulumi.Input[str]] = None,
+                 uid: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] acl: Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets
+        :param pulumi.Input[str] gid: Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer.
+        :param pulumi.Input[str] kms_key: Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+        :param pulumi.Input[str] mode: Specifies how each file's mode attribute should be handled by the transfer.
+        :param pulumi.Input[str] storage_class: Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+        :param pulumi.Input[str] symlink: Specifies how symlinks should be handled by the transfer.
+        :param pulumi.Input[str] temporary_hold: SSpecifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+        :param pulumi.Input[str] time_created: Specifies how each object's timeCreated metadata is preserved for transfers.
+        :param pulumi.Input[str] uid: Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer.
+        """
+        if acl is not None:
+            pulumi.set(__self__, "acl", acl)
+        if gid is not None:
+            pulumi.set(__self__, "gid", gid)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if storage_class is not None:
+            pulumi.set(__self__, "storage_class", storage_class)
+        if symlink is not None:
+            pulumi.set(__self__, "symlink", symlink)
+        if temporary_hold is not None:
+            pulumi.set(__self__, "temporary_hold", temporary_hold)
+        if time_created is not None:
+            pulumi.set(__self__, "time_created", time_created)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter
+    def acl(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets
+        """
+        return pulumi.get(self, "acl")
+
+    @acl.setter
+    def acl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl", value)
+
+    @property
+    @pulumi.getter
+    def gid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer.
+        """
+        return pulumi.get(self, "gid")
+
+    @gid.setter
+    def gid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gid", value)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies how each file's mode attribute should be handled by the transfer.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+        """
+        return pulumi.get(self, "storage_class")
+
+    @storage_class.setter
+    def storage_class(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_class", value)
+
+    @property
+    @pulumi.getter
+    def symlink(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies how symlinks should be handled by the transfer.
+        """
+        return pulumi.get(self, "symlink")
+
+    @symlink.setter
+    def symlink(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "symlink", value)
+
+    @property
+    @pulumi.getter(name="temporaryHold")
+    def temporary_hold(self) -> Optional[pulumi.Input[str]]:
+        """
+        SSpecifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+        """
+        return pulumi.get(self, "temporary_hold")
+
+    @temporary_hold.setter
+    def temporary_hold(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "temporary_hold", value)
+
+    @property
+    @pulumi.getter(name="timeCreated")
+    def time_created(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies how each object's timeCreated metadata is preserved for transfers.
+        """
+        return pulumi.get(self, "time_created")
+
+    @time_created.setter
+    def time_created(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_created", value)
+
+    @property
+    @pulumi.getter
+    def uid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer.
+        """
+        return pulumi.get(self, "uid")
+
+    @uid.setter
+    def uid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uid", value)
 
 
 if not MYPY:
@@ -3923,6 +4437,10 @@ if not MYPY:
         Whether objects that exist only in the sink should be deleted. Note that this option and
         `delete_objects_from_source_after_transfer` are mutually exclusive.
         """
+        metadata_options: NotRequired[pulumi.Input['TransferJobTransferSpecTransferOptionsMetadataOptionsArgsDict']]
+        """
+        Specifies the metadata options for running a transfer
+        """
         overwrite_objects_already_existing_in_sink: NotRequired[pulumi.Input[bool]]
         """
         Whether overwriting objects that already exist in the sink is allowed.
@@ -3939,12 +4457,14 @@ class TransferJobTransferSpecTransferOptionsArgs:
     def __init__(__self__, *,
                  delete_objects_from_source_after_transfer: Optional[pulumi.Input[bool]] = None,
                  delete_objects_unique_in_sink: Optional[pulumi.Input[bool]] = None,
+                 metadata_options: Optional[pulumi.Input['TransferJobTransferSpecTransferOptionsMetadataOptionsArgs']] = None,
                  overwrite_objects_already_existing_in_sink: Optional[pulumi.Input[bool]] = None,
                  overwrite_when: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] delete_objects_from_source_after_transfer: Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
         :param pulumi.Input[bool] delete_objects_unique_in_sink: Whether objects that exist only in the sink should be deleted. Note that this option and
                `delete_objects_from_source_after_transfer` are mutually exclusive.
+        :param pulumi.Input['TransferJobTransferSpecTransferOptionsMetadataOptionsArgs'] metadata_options: Specifies the metadata options for running a transfer
         :param pulumi.Input[bool] overwrite_objects_already_existing_in_sink: Whether overwriting objects that already exist in the sink is allowed.
         :param pulumi.Input[str] overwrite_when: When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
         """
@@ -3952,6 +4472,8 @@ class TransferJobTransferSpecTransferOptionsArgs:
             pulumi.set(__self__, "delete_objects_from_source_after_transfer", delete_objects_from_source_after_transfer)
         if delete_objects_unique_in_sink is not None:
             pulumi.set(__self__, "delete_objects_unique_in_sink", delete_objects_unique_in_sink)
+        if metadata_options is not None:
+            pulumi.set(__self__, "metadata_options", metadata_options)
         if overwrite_objects_already_existing_in_sink is not None:
             pulumi.set(__self__, "overwrite_objects_already_existing_in_sink", overwrite_objects_already_existing_in_sink)
         if overwrite_when is not None:
@@ -3983,6 +4505,18 @@ class TransferJobTransferSpecTransferOptionsArgs:
         pulumi.set(self, "delete_objects_unique_in_sink", value)
 
     @property
+    @pulumi.getter(name="metadataOptions")
+    def metadata_options(self) -> Optional[pulumi.Input['TransferJobTransferSpecTransferOptionsMetadataOptionsArgs']]:
+        """
+        Specifies the metadata options for running a transfer
+        """
+        return pulumi.get(self, "metadata_options")
+
+    @metadata_options.setter
+    def metadata_options(self, value: Optional[pulumi.Input['TransferJobTransferSpecTransferOptionsMetadataOptionsArgs']]):
+        pulumi.set(self, "metadata_options", value)
+
+    @property
     @pulumi.getter(name="overwriteObjectsAlreadyExistingInSink")
     def overwrite_objects_already_existing_in_sink(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -4005,5 +4539,197 @@ class TransferJobTransferSpecTransferOptionsArgs:
     @overwrite_when.setter
     def overwrite_when(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "overwrite_when", value)
+
+
+if not MYPY:
+    class TransferJobTransferSpecTransferOptionsMetadataOptionsArgsDict(TypedDict):
+        acl: NotRequired[pulumi.Input[str]]
+        """
+        Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets
+        """
+        gid: NotRequired[pulumi.Input[str]]
+        """
+        Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer.
+        """
+        kms_key: NotRequired[pulumi.Input[str]]
+        """
+        Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Specifies how each file's mode attribute should be handled by the transfer.
+        """
+        storage_class: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+        """
+        symlink: NotRequired[pulumi.Input[str]]
+        """
+        Specifies how symlinks should be handled by the transfer.
+        """
+        temporary_hold: NotRequired[pulumi.Input[str]]
+        """
+        SSpecifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+        """
+        time_created: NotRequired[pulumi.Input[str]]
+        """
+        Specifies how each object's timeCreated metadata is preserved for transfers.
+        """
+        uid: NotRequired[pulumi.Input[str]]
+        """
+        Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer.
+        """
+elif False:
+    TransferJobTransferSpecTransferOptionsMetadataOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TransferJobTransferSpecTransferOptionsMetadataOptionsArgs:
+    def __init__(__self__, *,
+                 acl: Optional[pulumi.Input[str]] = None,
+                 gid: Optional[pulumi.Input[str]] = None,
+                 kms_key: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 storage_class: Optional[pulumi.Input[str]] = None,
+                 symlink: Optional[pulumi.Input[str]] = None,
+                 temporary_hold: Optional[pulumi.Input[str]] = None,
+                 time_created: Optional[pulumi.Input[str]] = None,
+                 uid: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] acl: Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets
+        :param pulumi.Input[str] gid: Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer.
+        :param pulumi.Input[str] kms_key: Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+        :param pulumi.Input[str] mode: Specifies how each file's mode attribute should be handled by the transfer.
+        :param pulumi.Input[str] storage_class: Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+        :param pulumi.Input[str] symlink: Specifies how symlinks should be handled by the transfer.
+        :param pulumi.Input[str] temporary_hold: SSpecifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+        :param pulumi.Input[str] time_created: Specifies how each object's timeCreated metadata is preserved for transfers.
+        :param pulumi.Input[str] uid: Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer.
+        """
+        if acl is not None:
+            pulumi.set(__self__, "acl", acl)
+        if gid is not None:
+            pulumi.set(__self__, "gid", gid)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if storage_class is not None:
+            pulumi.set(__self__, "storage_class", storage_class)
+        if symlink is not None:
+            pulumi.set(__self__, "symlink", symlink)
+        if temporary_hold is not None:
+            pulumi.set(__self__, "temporary_hold", temporary_hold)
+        if time_created is not None:
+            pulumi.set(__self__, "time_created", time_created)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter
+    def acl(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets
+        """
+        return pulumi.get(self, "acl")
+
+    @acl.setter
+    def acl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl", value)
+
+    @property
+    @pulumi.getter
+    def gid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer.
+        """
+        return pulumi.get(self, "gid")
+
+    @gid.setter
+    def gid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gid", value)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies how each file's mode attribute should be handled by the transfer.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+        """
+        return pulumi.get(self, "storage_class")
+
+    @storage_class.setter
+    def storage_class(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_class", value)
+
+    @property
+    @pulumi.getter
+    def symlink(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies how symlinks should be handled by the transfer.
+        """
+        return pulumi.get(self, "symlink")
+
+    @symlink.setter
+    def symlink(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "symlink", value)
+
+    @property
+    @pulumi.getter(name="temporaryHold")
+    def temporary_hold(self) -> Optional[pulumi.Input[str]]:
+        """
+        SSpecifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+        """
+        return pulumi.get(self, "temporary_hold")
+
+    @temporary_hold.setter
+    def temporary_hold(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "temporary_hold", value)
+
+    @property
+    @pulumi.getter(name="timeCreated")
+    def time_created(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies how each object's timeCreated metadata is preserved for transfers.
+        """
+        return pulumi.get(self, "time_created")
+
+    @time_created.setter
+    def time_created(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_created", value)
+
+    @property
+    @pulumi.getter
+    def uid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer.
+        """
+        return pulumi.get(self, "uid")
+
+    @uid.setter
+    def uid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uid", value)
 
 

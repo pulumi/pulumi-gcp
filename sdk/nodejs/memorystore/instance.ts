@@ -47,6 +47,17 @@ import * as utilities from "../utilities";
  *     }],
  *     location: "us-central1",
  *     deletionProtectionEnabled: false,
+ *     maintenancePolicy: {
+ *         weeklyMaintenanceWindows: [{
+ *             day: "MONDAY",
+ *             startTime: {
+ *                 hours: 1,
+ *                 minutes: 0,
+ *                 seconds: 0,
+ *                 nanos: 0,
+ *             },
+ *         }],
+ *     },
  * }, {
  *     dependsOn: [_default],
  * });
@@ -96,6 +107,17 @@ import * as utilities from "../utilities";
  *     zoneDistributionConfig: {
  *         mode: "SINGLE_ZONE",
  *         zone: "us-central1-b",
+ *     },
+ *     maintenancePolicy: {
+ *         weeklyMaintenanceWindows: [{
+ *             day: "MONDAY",
+ *             startTime: {
+ *                 hours: 1,
+ *                 minutes: 0,
+ *                 seconds: 0,
+ *                 nanos: 0,
+ *             },
+ *         }],
  *     },
  *     engineVersion: "VALKEY_7_2",
  *     deletionProtectionEnabled: false,
@@ -279,6 +301,16 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
+     * Maintenance policy for a cluster
+     * Structure is documented below.
+     */
+    public readonly maintenancePolicy!: pulumi.Output<outputs.memorystore.InstanceMaintenancePolicy | undefined>;
+    /**
+     * Upcoming maintenance schedule.
+     * Structure is documented below.
+     */
+    public /*out*/ readonly maintenanceSchedules!: pulumi.Output<outputs.memorystore.InstanceMaintenanceSchedule[]>;
+    /**
      * Optional. cluster or cluster-disabled.
      * Possible values:
      * CLUSTER
@@ -297,7 +329,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly nodeConfigs!: pulumi.Output<outputs.memorystore.InstanceNodeConfig[]>;
     /**
-     * Optional. Immutable. Machine type for individual nodes of the instance.
+     * Optional. Machine type for individual nodes of the instance.
      * Possible values:
      * SHARED_CORE_NANO
      * HIGHMEM_MEDIUM
@@ -393,6 +425,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
+            resourceInputs["maintenanceSchedules"] = state ? state.maintenanceSchedules : undefined;
             resourceInputs["mode"] = state ? state.mode : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nodeConfigs"] = state ? state.nodeConfigs : undefined;
@@ -431,6 +465,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
             resourceInputs["mode"] = args ? args.mode : undefined;
             resourceInputs["nodeType"] = args ? args.nodeType : undefined;
             resourceInputs["persistenceConfig"] = args ? args.persistenceConfig : undefined;
@@ -443,6 +478,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["discoveryEndpoints"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["endpoints"] = undefined /*out*/;
+            resourceInputs["maintenanceSchedules"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["nodeConfigs"] = undefined /*out*/;
             resourceInputs["pscAutoConnections"] = undefined /*out*/;
@@ -529,6 +565,16 @@ export interface InstanceState {
      */
     location?: pulumi.Input<string>;
     /**
+     * Maintenance policy for a cluster
+     * Structure is documented below.
+     */
+    maintenancePolicy?: pulumi.Input<inputs.memorystore.InstanceMaintenancePolicy>;
+    /**
+     * Upcoming maintenance schedule.
+     * Structure is documented below.
+     */
+    maintenanceSchedules?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceMaintenanceSchedule>[]>;
+    /**
      * Optional. cluster or cluster-disabled.
      * Possible values:
      * CLUSTER
@@ -547,7 +593,7 @@ export interface InstanceState {
      */
     nodeConfigs?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceNodeConfig>[]>;
     /**
-     * Optional. Immutable. Machine type for individual nodes of the instance.
+     * Optional. Machine type for individual nodes of the instance.
      * Possible values:
      * SHARED_CORE_NANO
      * HIGHMEM_MEDIUM
@@ -670,6 +716,11 @@ export interface InstanceArgs {
      */
     location: pulumi.Input<string>;
     /**
+     * Maintenance policy for a cluster
+     * Structure is documented below.
+     */
+    maintenancePolicy?: pulumi.Input<inputs.memorystore.InstanceMaintenancePolicy>;
+    /**
      * Optional. cluster or cluster-disabled.
      * Possible values:
      * CLUSTER
@@ -678,7 +729,7 @@ export interface InstanceArgs {
      */
     mode?: pulumi.Input<string>;
     /**
-     * Optional. Immutable. Machine type for individual nodes of the instance.
+     * Optional. Machine type for individual nodes of the instance.
      * Possible values:
      * SHARED_CORE_NANO
      * HIGHMEM_MEDIUM

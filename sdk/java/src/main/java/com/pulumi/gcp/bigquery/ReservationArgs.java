@@ -139,6 +139,27 @@ public final class ReservationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The current location of the reservation&#39;s secondary replica. This field is only set for
+     * reservations using the managed disaster recovery feature. Users can set this in create
+     * reservation calls to create a failover reservation or in update reservation calls to convert
+     * a non-failover reservation to a failover reservation(or vice versa).
+     * 
+     */
+    @Import(name="secondaryLocation")
+    private @Nullable Output<String> secondaryLocation;
+
+    /**
+     * @return The current location of the reservation&#39;s secondary replica. This field is only set for
+     * reservations using the managed disaster recovery feature. Users can set this in create
+     * reservation calls to create a failover reservation or in update reservation calls to convert
+     * a non-failover reservation to a failover reservation(or vice versa).
+     * 
+     */
+    public Optional<Output<String>> secondaryLocation() {
+        return Optional.ofNullable(this.secondaryLocation);
+    }
+
+    /**
      * Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
      * unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
      * 
@@ -165,6 +186,7 @@ public final class ReservationArgs extends com.pulumi.resources.ResourceArgs {
         this.location = $.location;
         this.name = $.name;
         this.project = $.project;
+        this.secondaryLocation = $.secondaryLocation;
         this.slotCapacity = $.slotCapacity;
     }
 
@@ -345,6 +367,33 @@ public final class ReservationArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param secondaryLocation The current location of the reservation&#39;s secondary replica. This field is only set for
+         * reservations using the managed disaster recovery feature. Users can set this in create
+         * reservation calls to create a failover reservation or in update reservation calls to convert
+         * a non-failover reservation to a failover reservation(or vice versa).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryLocation(@Nullable Output<String> secondaryLocation) {
+            $.secondaryLocation = secondaryLocation;
+            return this;
+        }
+
+        /**
+         * @param secondaryLocation The current location of the reservation&#39;s secondary replica. This field is only set for
+         * reservations using the managed disaster recovery feature. Users can set this in create
+         * reservation calls to create a failover reservation or in update reservation calls to convert
+         * a non-failover reservation to a failover reservation(or vice versa).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryLocation(String secondaryLocation) {
+            return secondaryLocation(Output.of(secondaryLocation));
         }
 
         /**

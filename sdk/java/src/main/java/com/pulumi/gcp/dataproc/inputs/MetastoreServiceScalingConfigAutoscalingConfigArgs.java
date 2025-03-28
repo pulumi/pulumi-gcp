@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,6 +33,23 @@ public final class MetastoreServiceScalingConfigAutoscalingConfigArgs extends co
     }
 
     /**
+     * (Output)
+     * Output only. The scaling factor of a service with autoscaling enabled.
+     * 
+     */
+    @Import(name="autoscalingFactor")
+    private @Nullable Output<Double> autoscalingFactor;
+
+    /**
+     * @return (Output)
+     * Output only. The scaling factor of a service with autoscaling enabled.
+     * 
+     */
+    public Optional<Output<Double>> autoscalingFactor() {
+        return Optional.ofNullable(this.autoscalingFactor);
+    }
+
+    /**
      * Represents the limit configuration of a metastore service.
      * Structure is documented below.
      * 
@@ -52,6 +70,7 @@ public final class MetastoreServiceScalingConfigAutoscalingConfigArgs extends co
 
     private MetastoreServiceScalingConfigAutoscalingConfigArgs(MetastoreServiceScalingConfigAutoscalingConfigArgs $) {
         this.autoscalingEnabled = $.autoscalingEnabled;
+        this.autoscalingFactor = $.autoscalingFactor;
         this.limitConfig = $.limitConfig;
     }
 
@@ -92,6 +111,29 @@ public final class MetastoreServiceScalingConfigAutoscalingConfigArgs extends co
          */
         public Builder autoscalingEnabled(Boolean autoscalingEnabled) {
             return autoscalingEnabled(Output.of(autoscalingEnabled));
+        }
+
+        /**
+         * @param autoscalingFactor (Output)
+         * Output only. The scaling factor of a service with autoscaling enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscalingFactor(@Nullable Output<Double> autoscalingFactor) {
+            $.autoscalingFactor = autoscalingFactor;
+            return this;
+        }
+
+        /**
+         * @param autoscalingFactor (Output)
+         * Output only. The scaling factor of a service with autoscaling enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscalingFactor(Double autoscalingFactor) {
+            return autoscalingFactor(Output.of(autoscalingFactor));
         }
 
         /**

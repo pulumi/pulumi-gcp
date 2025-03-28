@@ -8,6 +8,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceDesiredPscAutoConnection;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceDiscoveryEndpoint;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceEndpoint;
+import com.pulumi.gcp.memorystore.outputs.GetInstanceMaintenancePolicy;
+import com.pulumi.gcp.memorystore.outputs.GetInstanceMaintenanceSchedule;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceNodeConfig;
 import com.pulumi.gcp.memorystore.outputs.GetInstancePersistenceConfig;
 import com.pulumi.gcp.memorystore.outputs.GetInstancePscAutoConnection;
@@ -41,6 +43,8 @@ public final class GetInstanceResult {
     private String instanceId;
     private Map<String,String> labels;
     private @Nullable String location;
+    private List<GetInstanceMaintenancePolicy> maintenancePolicies;
+    private List<GetInstanceMaintenanceSchedule> maintenanceSchedules;
     private String mode;
     private String name;
     private List<GetInstanceNodeConfig> nodeConfigs;
@@ -101,6 +105,12 @@ public final class GetInstanceResult {
     }
     public Optional<String> location() {
         return Optional.ofNullable(this.location);
+    }
+    public List<GetInstanceMaintenancePolicy> maintenancePolicies() {
+        return this.maintenancePolicies;
+    }
+    public List<GetInstanceMaintenanceSchedule> maintenanceSchedules() {
+        return this.maintenanceSchedules;
     }
     public String mode() {
         return this.mode;
@@ -173,6 +183,8 @@ public final class GetInstanceResult {
         private String instanceId;
         private Map<String,String> labels;
         private @Nullable String location;
+        private List<GetInstanceMaintenancePolicy> maintenancePolicies;
+        private List<GetInstanceMaintenanceSchedule> maintenanceSchedules;
         private String mode;
         private String name;
         private List<GetInstanceNodeConfig> nodeConfigs;
@@ -205,6 +217,8 @@ public final class GetInstanceResult {
     	      this.instanceId = defaults.instanceId;
     	      this.labels = defaults.labels;
     	      this.location = defaults.location;
+    	      this.maintenancePolicies = defaults.maintenancePolicies;
+    	      this.maintenanceSchedules = defaults.maintenanceSchedules;
     	      this.mode = defaults.mode;
     	      this.name = defaults.name;
     	      this.nodeConfigs = defaults.nodeConfigs;
@@ -333,6 +347,28 @@ public final class GetInstanceResult {
 
             this.location = location;
             return this;
+        }
+        @CustomType.Setter
+        public Builder maintenancePolicies(List<GetInstanceMaintenancePolicy> maintenancePolicies) {
+            if (maintenancePolicies == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "maintenancePolicies");
+            }
+            this.maintenancePolicies = maintenancePolicies;
+            return this;
+        }
+        public Builder maintenancePolicies(GetInstanceMaintenancePolicy... maintenancePolicies) {
+            return maintenancePolicies(List.of(maintenancePolicies));
+        }
+        @CustomType.Setter
+        public Builder maintenanceSchedules(List<GetInstanceMaintenanceSchedule> maintenanceSchedules) {
+            if (maintenanceSchedules == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "maintenanceSchedules");
+            }
+            this.maintenanceSchedules = maintenanceSchedules;
+            return this;
+        }
+        public Builder maintenanceSchedules(GetInstanceMaintenanceSchedule... maintenanceSchedules) {
+            return maintenanceSchedules(List.of(maintenanceSchedules));
         }
         @CustomType.Setter
         public Builder mode(String mode) {
@@ -490,6 +526,8 @@ public final class GetInstanceResult {
             _resultValue.instanceId = instanceId;
             _resultValue.labels = labels;
             _resultValue.location = location;
+            _resultValue.maintenancePolicies = maintenancePolicies;
+            _resultValue.maintenanceSchedules = maintenanceSchedules;
             _resultValue.mode = mode;
             _resultValue.name = name;
             _resultValue.nodeConfigs = nodeConfigs;

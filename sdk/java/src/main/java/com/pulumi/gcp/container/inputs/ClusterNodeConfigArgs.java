@@ -25,6 +25,7 @@ import com.pulumi.gcp.container.inputs.ClusterNodeConfigSecondaryBootDiskArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigShieldedInstanceConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigSoleTenantConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigTaintArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodeConfigWindowsNodeConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigWorkloadMetadataConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -773,6 +774,21 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+     * 
+     */
+    @Import(name="windowsNodeConfig")
+    private @Nullable Output<ClusterNodeConfigWindowsNodeConfigArgs> windowsNodeConfig;
+
+    /**
+     * @return Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+     * 
+     */
+    public Optional<Output<ClusterNodeConfigWindowsNodeConfigArgs>> windowsNodeConfig() {
+        return Optional.ofNullable(this.windowsNodeConfig);
+    }
+
+    /**
      * Metadata configuration to expose to workloads on the node pool.
      * Structure is documented below.
      * 
@@ -834,6 +850,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         this.storagePools = $.storagePools;
         this.tags = $.tags;
         this.taints = $.taints;
+        this.windowsNodeConfig = $.windowsNodeConfig;
         this.workloadMetadataConfig = $.workloadMetadataConfig;
     }
 
@@ -1920,6 +1937,27 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder taints(ClusterNodeConfigTaintArgs... taints) {
             return taints(List.of(taints));
+        }
+
+        /**
+         * @param windowsNodeConfig Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder windowsNodeConfig(@Nullable Output<ClusterNodeConfigWindowsNodeConfigArgs> windowsNodeConfig) {
+            $.windowsNodeConfig = windowsNodeConfig;
+            return this;
+        }
+
+        /**
+         * @param windowsNodeConfig Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder windowsNodeConfig(ClusterNodeConfigWindowsNodeConfigArgs windowsNodeConfig) {
+            return windowsNodeConfig(Output.of(windowsNodeConfig));
         }
 
         /**

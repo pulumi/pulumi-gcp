@@ -68,6 +68,8 @@ export interface GetInstanceResult {
     readonly instanceId: string;
     readonly labels: {[key: string]: string};
     readonly location?: string;
+    readonly maintenancePolicies: outputs.memorystore.GetInstanceMaintenancePolicy[];
+    readonly maintenanceSchedules: outputs.memorystore.GetInstanceMaintenanceSchedule[];
     readonly mode: string;
     readonly name: string;
     readonly nodeConfigs: outputs.memorystore.GetInstanceNodeConfig[];

@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class InstanceFromMachineImageBootDiskInitializeParams
     {
         /// <summary>
+        /// The architecture of the disk. One of "X86_64" or "ARM64".
+        /// </summary>
+        public readonly string? Architecture;
+        /// <summary>
         /// A flag to enable confidential compute mode on boot disk
         /// </summary>
         public readonly bool? EnableConfidentialCompute;
@@ -56,6 +60,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private InstanceFromMachineImageBootDiskInitializeParams(
+            string? architecture,
+
             bool? enableConfidentialCompute,
 
             string? image,
@@ -76,6 +82,7 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? type)
         {
+            Architecture = architecture;
             EnableConfidentialCompute = enableConfidentialCompute;
             Image = image;
             Labels = labels;

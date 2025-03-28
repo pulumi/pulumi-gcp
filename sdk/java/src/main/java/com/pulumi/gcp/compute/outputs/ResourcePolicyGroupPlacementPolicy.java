@@ -28,6 +28,11 @@ public final class ResourcePolicyGroupPlacementPolicy {
      */
     private @Nullable String collocation;
     /**
+     * @return Specifies the shape of the GPU slice, in slice based GPU families eg. A4X.
+     * 
+     */
+    private @Nullable String gpuTopology;
+    /**
      * @return Specifies the number of max logical switches.
      * 
      */
@@ -61,6 +66,13 @@ public final class ResourcePolicyGroupPlacementPolicy {
         return Optional.ofNullable(this.collocation);
     }
     /**
+     * @return Specifies the shape of the GPU slice, in slice based GPU families eg. A4X.
+     * 
+     */
+    public Optional<String> gpuTopology() {
+        return Optional.ofNullable(this.gpuTopology);
+    }
+    /**
      * @return Specifies the number of max logical switches.
      * 
      */
@@ -88,6 +100,7 @@ public final class ResourcePolicyGroupPlacementPolicy {
     public static final class Builder {
         private @Nullable Integer availabilityDomainCount;
         private @Nullable String collocation;
+        private @Nullable String gpuTopology;
         private @Nullable Integer maxDistance;
         private @Nullable Integer vmCount;
         public Builder() {}
@@ -95,6 +108,7 @@ public final class ResourcePolicyGroupPlacementPolicy {
     	      Objects.requireNonNull(defaults);
     	      this.availabilityDomainCount = defaults.availabilityDomainCount;
     	      this.collocation = defaults.collocation;
+    	      this.gpuTopology = defaults.gpuTopology;
     	      this.maxDistance = defaults.maxDistance;
     	      this.vmCount = defaults.vmCount;
         }
@@ -109,6 +123,12 @@ public final class ResourcePolicyGroupPlacementPolicy {
         public Builder collocation(@Nullable String collocation) {
 
             this.collocation = collocation;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gpuTopology(@Nullable String gpuTopology) {
+
+            this.gpuTopology = gpuTopology;
             return this;
         }
         @CustomType.Setter
@@ -127,6 +147,7 @@ public final class ResourcePolicyGroupPlacementPolicy {
             final var _resultValue = new ResourcePolicyGroupPlacementPolicy();
             _resultValue.availabilityDomainCount = availabilityDomainCount;
             _resultValue.collocation = collocation;
+            _resultValue.gpuTopology = gpuTopology;
             _resultValue.maxDistance = maxDistance;
             _resultValue.vmCount = vmCount;
             return _resultValue;

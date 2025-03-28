@@ -70,6 +70,23 @@ namespace Pulumi.Gcp.MemoryStore
     ///         },
     ///         Location = "us-central1",
     ///         DeletionProtectionEnabled = false,
+    ///         MaintenancePolicy = new Gcp.MemoryStore.Inputs.InstanceMaintenancePolicyArgs
+    ///         {
+    ///             WeeklyMaintenanceWindows = new[]
+    ///             {
+    ///                 new Gcp.MemoryStore.Inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs
+    ///                 {
+    ///                     Day = "MONDAY",
+    ///                     StartTime = new Gcp.MemoryStore.Inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs
+    ///                     {
+    ///                         Hours = 1,
+    ///                         Minutes = 0,
+    ///                         Seconds = 0,
+    ///                         Nanos = 0,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
@@ -147,6 +164,23 @@ namespace Pulumi.Gcp.MemoryStore
     ///         {
     ///             Mode = "SINGLE_ZONE",
     ///             Zone = "us-central1-b",
+    ///         },
+    ///         MaintenancePolicy = new Gcp.MemoryStore.Inputs.InstanceMaintenancePolicyArgs
+    ///         {
+    ///             WeeklyMaintenanceWindows = new[]
+    ///             {
+    ///                 new Gcp.MemoryStore.Inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs
+    ///                 {
+    ///                     Day = "MONDAY",
+    ///                     StartTime = new Gcp.MemoryStore.Inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs
+    ///                     {
+    ///                         Hours = 1,
+    ///                         Minutes = 0,
+    ///                         Seconds = 0,
+    ///                         Nanos = 0,
+    ///                     },
+    ///                 },
+    ///             },
     ///         },
     ///         EngineVersion = "VALKEY_7_2",
     ///         DeletionProtectionEnabled = false,
@@ -366,6 +400,20 @@ namespace Pulumi.Gcp.MemoryStore
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// Maintenance policy for a cluster
+        /// Structure is documented below.
+        /// </summary>
+        [Output("maintenancePolicy")]
+        public Output<Outputs.InstanceMaintenancePolicy?> MaintenancePolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Upcoming maintenance schedule.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("maintenanceSchedules")]
+        public Output<ImmutableArray<Outputs.InstanceMaintenanceSchedule>> MaintenanceSchedules { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. cluster or cluster-disabled.
         /// Possible values:
         /// CLUSTER
@@ -390,7 +438,7 @@ namespace Pulumi.Gcp.MemoryStore
         public Output<ImmutableArray<Outputs.InstanceNodeConfig>> NodeConfigs { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Immutable. Machine type for individual nodes of the instance.
+        /// Optional. Machine type for individual nodes of the instance.
         /// Possible values:
         /// SHARED_CORE_NANO
         /// HIGHMEM_MEDIUM
@@ -618,6 +666,13 @@ namespace Pulumi.Gcp.MemoryStore
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
+        /// Maintenance policy for a cluster
+        /// Structure is documented below.
+        /// </summary>
+        [Input("maintenancePolicy")]
+        public Input<Inputs.InstanceMaintenancePolicyArgs>? MaintenancePolicy { get; set; }
+
+        /// <summary>
         /// Optional. cluster or cluster-disabled.
         /// Possible values:
         /// CLUSTER
@@ -628,7 +683,7 @@ namespace Pulumi.Gcp.MemoryStore
         public Input<string>? Mode { get; set; }
 
         /// <summary>
-        /// Optional. Immutable. Machine type for individual nodes of the instance.
+        /// Optional. Machine type for individual nodes of the instance.
         /// Possible values:
         /// SHARED_CORE_NANO
         /// HIGHMEM_MEDIUM
@@ -818,6 +873,26 @@ namespace Pulumi.Gcp.MemoryStore
         public Input<string>? Location { get; set; }
 
         /// <summary>
+        /// Maintenance policy for a cluster
+        /// Structure is documented below.
+        /// </summary>
+        [Input("maintenancePolicy")]
+        public Input<Inputs.InstanceMaintenancePolicyGetArgs>? MaintenancePolicy { get; set; }
+
+        [Input("maintenanceSchedules")]
+        private InputList<Inputs.InstanceMaintenanceScheduleGetArgs>? _maintenanceSchedules;
+
+        /// <summary>
+        /// Upcoming maintenance schedule.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.InstanceMaintenanceScheduleGetArgs> MaintenanceSchedules
+        {
+            get => _maintenanceSchedules ?? (_maintenanceSchedules = new InputList<Inputs.InstanceMaintenanceScheduleGetArgs>());
+            set => _maintenanceSchedules = value;
+        }
+
+        /// <summary>
         /// Optional. cluster or cluster-disabled.
         /// Possible values:
         /// CLUSTER
@@ -848,7 +923,7 @@ namespace Pulumi.Gcp.MemoryStore
         }
 
         /// <summary>
-        /// Optional. Immutable. Machine type for individual nodes of the instance.
+        /// Optional. Machine type for individual nodes of the instance.
         /// Possible values:
         /// SHARED_CORE_NANO
         /// HIGHMEM_MEDIUM

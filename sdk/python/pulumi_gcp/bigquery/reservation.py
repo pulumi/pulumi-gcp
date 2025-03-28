@@ -28,7 +28,8 @@ class ReservationArgs:
                  ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 secondary_location: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Reservation resource.
         :param pulumi.Input[int] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
@@ -48,6 +49,10 @@ class ReservationArgs:
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] secondary_location: The current location of the reservation's secondary replica. This field is only set for
+               reservations using the managed disaster recovery feature. Users can set this in create
+               reservation calls to create a failover reservation or in update reservation calls to convert
+               a non-failover reservation to a failover reservation(or vice versa).
         """
         pulumi.set(__self__, "slot_capacity", slot_capacity)
         if autoscale is not None:
@@ -64,6 +69,8 @@ class ReservationArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if secondary_location is not None:
+            pulumi.set(__self__, "secondary_location", secondary_location)
 
     @property
     @pulumi.getter(name="slotCapacity")
@@ -170,6 +177,21 @@ class ReservationArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="secondaryLocation")
+    def secondary_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The current location of the reservation's secondary replica. This field is only set for
+        reservations using the managed disaster recovery feature. Users can set this in create
+        reservation calls to create a failover reservation or in update reservation calls to convert
+        a non-failover reservation to a failover reservation(or vice versa).
+        """
+        return pulumi.get(self, "secondary_location")
+
+    @secondary_location.setter
+    def secondary_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secondary_location", value)
+
 
 @pulumi.input_type
 class _ReservationState:
@@ -180,7 +202,11 @@ class _ReservationState:
                  ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 original_primary_location: Optional[pulumi.Input[str]] = None,
+                 primary_location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 replication_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationReplicationStatusArgs']]]] = None,
+                 secondary_location: Optional[pulumi.Input[str]] = None,
                  slot_capacity: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Reservation resources.
@@ -197,8 +223,24 @@ class _ReservationState:
                
                
                - - -
+        :param pulumi.Input[str] original_primary_location: The location where the reservation was originally created. This is set only during the
+               failover reservation's creation. All billing charges for the failover reservation will be
+               applied to this location.
+        :param pulumi.Input[str] primary_location: The current location of the reservation's primary replica. This field is only set for
+               reservations using the managed disaster recovery feature.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input['ReservationReplicationStatusArgs']]] replication_statuses: The Disaster Recovery(DR) replication status of the reservation. This is only available for
+               the primary replicas of DR/failover reservations and provides information about the both the
+               staleness of the secondary and the last error encountered while trying to replicate changes
+               from the primary to the secondary. If this field is blank, it means that the reservation is
+               either not a DR reservation or the reservation is a DR secondary or that any replication
+               operations on the reservation have succeeded.
+               Structure is documented below.
+        :param pulumi.Input[str] secondary_location: The current location of the reservation's secondary replica. This field is only set for
+               reservations using the managed disaster recovery feature. Users can set this in create
+               reservation calls to create a failover reservation or in update reservation calls to convert
+               a non-failover reservation to a failover reservation(or vice versa).
         :param pulumi.Input[int] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
                unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
         """
@@ -214,8 +256,16 @@ class _ReservationState:
             pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if original_primary_location is not None:
+            pulumi.set(__self__, "original_primary_location", original_primary_location)
+        if primary_location is not None:
+            pulumi.set(__self__, "primary_location", primary_location)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if replication_statuses is not None:
+            pulumi.set(__self__, "replication_statuses", replication_statuses)
+        if secondary_location is not None:
+            pulumi.set(__self__, "secondary_location", secondary_location)
         if slot_capacity is not None:
             pulumi.set(__self__, "slot_capacity", slot_capacity)
 
@@ -299,6 +349,33 @@ class _ReservationState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="originalPrimaryLocation")
+    def original_primary_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location where the reservation was originally created. This is set only during the
+        failover reservation's creation. All billing charges for the failover reservation will be
+        applied to this location.
+        """
+        return pulumi.get(self, "original_primary_location")
+
+    @original_primary_location.setter
+    def original_primary_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "original_primary_location", value)
+
+    @property
+    @pulumi.getter(name="primaryLocation")
+    def primary_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The current location of the reservation's primary replica. This field is only set for
+        reservations using the managed disaster recovery feature.
+        """
+        return pulumi.get(self, "primary_location")
+
+    @primary_location.setter
+    def primary_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "primary_location", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -310,6 +387,39 @@ class _ReservationState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="replicationStatuses")
+    def replication_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReservationReplicationStatusArgs']]]]:
+        """
+        The Disaster Recovery(DR) replication status of the reservation. This is only available for
+        the primary replicas of DR/failover reservations and provides information about the both the
+        staleness of the secondary and the last error encountered while trying to replicate changes
+        from the primary to the secondary. If this field is blank, it means that the reservation is
+        either not a DR reservation or the reservation is a DR secondary or that any replication
+        operations on the reservation have succeeded.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "replication_statuses")
+
+    @replication_statuses.setter
+    def replication_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationReplicationStatusArgs']]]]):
+        pulumi.set(self, "replication_statuses", value)
+
+    @property
+    @pulumi.getter(name="secondaryLocation")
+    def secondary_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The current location of the reservation's secondary replica. This field is only set for
+        reservations using the managed disaster recovery feature. Users can set this in create
+        reservation calls to create a failover reservation or in update reservation calls to convert
+        a non-failover reservation to a failover reservation(or vice versa).
+        """
+        return pulumi.get(self, "secondary_location")
+
+    @secondary_location.setter
+    def secondary_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secondary_location", value)
 
     @property
     @pulumi.getter(name="slotCapacity")
@@ -337,6 +447,7 @@ class Reservation(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 secondary_location: Optional[pulumi.Input[str]] = None,
                  slot_capacity: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -409,6 +520,10 @@ class Reservation(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] secondary_location: The current location of the reservation's secondary replica. This field is only set for
+               reservations using the managed disaster recovery feature. Users can set this in create
+               reservation calls to create a failover reservation or in update reservation calls to convert
+               a non-failover reservation to a failover reservation(or vice versa).
         :param pulumi.Input[int] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
                unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
         """
@@ -493,6 +608,7 @@ class Reservation(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 secondary_location: Optional[pulumi.Input[str]] = None,
                  slot_capacity: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -510,9 +626,13 @@ class Reservation(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["secondary_location"] = secondary_location
             if slot_capacity is None and not opts.urn:
                 raise TypeError("Missing required property 'slot_capacity'")
             __props__.__dict__["slot_capacity"] = slot_capacity
+            __props__.__dict__["original_primary_location"] = None
+            __props__.__dict__["primary_location"] = None
+            __props__.__dict__["replication_statuses"] = None
         super(Reservation, __self__).__init__(
             'gcp:bigquery/reservation:Reservation',
             resource_name,
@@ -529,7 +649,11 @@ class Reservation(pulumi.CustomResource):
             ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            original_primary_location: Optional[pulumi.Input[str]] = None,
+            primary_location: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            replication_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ReservationReplicationStatusArgs', 'ReservationReplicationStatusArgsDict']]]]] = None,
+            secondary_location: Optional[pulumi.Input[str]] = None,
             slot_capacity: Optional[pulumi.Input[int]] = None) -> 'Reservation':
         """
         Get an existing Reservation resource's state with the given name, id, and optional extra
@@ -551,8 +675,24 @@ class Reservation(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[str] original_primary_location: The location where the reservation was originally created. This is set only during the
+               failover reservation's creation. All billing charges for the failover reservation will be
+               applied to this location.
+        :param pulumi.Input[str] primary_location: The current location of the reservation's primary replica. This field is only set for
+               reservations using the managed disaster recovery feature.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ReservationReplicationStatusArgs', 'ReservationReplicationStatusArgsDict']]]] replication_statuses: The Disaster Recovery(DR) replication status of the reservation. This is only available for
+               the primary replicas of DR/failover reservations and provides information about the both the
+               staleness of the secondary and the last error encountered while trying to replicate changes
+               from the primary to the secondary. If this field is blank, it means that the reservation is
+               either not a DR reservation or the reservation is a DR secondary or that any replication
+               operations on the reservation have succeeded.
+               Structure is documented below.
+        :param pulumi.Input[str] secondary_location: The current location of the reservation's secondary replica. This field is only set for
+               reservations using the managed disaster recovery feature. Users can set this in create
+               reservation calls to create a failover reservation or in update reservation calls to convert
+               a non-failover reservation to a failover reservation(or vice versa).
         :param pulumi.Input[int] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
                unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
         """
@@ -566,7 +706,11 @@ class Reservation(pulumi.CustomResource):
         __props__.__dict__["ignore_idle_slots"] = ignore_idle_slots
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
+        __props__.__dict__["original_primary_location"] = original_primary_location
+        __props__.__dict__["primary_location"] = primary_location
         __props__.__dict__["project"] = project
+        __props__.__dict__["replication_statuses"] = replication_statuses
+        __props__.__dict__["secondary_location"] = secondary_location
         __props__.__dict__["slot_capacity"] = slot_capacity
         return Reservation(resource_name, opts=opts, __props__=__props__)
 
@@ -626,6 +770,25 @@ class Reservation(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="originalPrimaryLocation")
+    def original_primary_location(self) -> pulumi.Output[str]:
+        """
+        The location where the reservation was originally created. This is set only during the
+        failover reservation's creation. All billing charges for the failover reservation will be
+        applied to this location.
+        """
+        return pulumi.get(self, "original_primary_location")
+
+    @property
+    @pulumi.getter(name="primaryLocation")
+    def primary_location(self) -> pulumi.Output[str]:
+        """
+        The current location of the reservation's primary replica. This field is only set for
+        reservations using the managed disaster recovery feature.
+        """
+        return pulumi.get(self, "primary_location")
+
+    @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
@@ -633,6 +796,31 @@ class Reservation(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="replicationStatuses")
+    def replication_statuses(self) -> pulumi.Output[Sequence['outputs.ReservationReplicationStatus']]:
+        """
+        The Disaster Recovery(DR) replication status of the reservation. This is only available for
+        the primary replicas of DR/failover reservations and provides information about the both the
+        staleness of the secondary and the last error encountered while trying to replicate changes
+        from the primary to the secondary. If this field is blank, it means that the reservation is
+        either not a DR reservation or the reservation is a DR secondary or that any replication
+        operations on the reservation have succeeded.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "replication_statuses")
+
+    @property
+    @pulumi.getter(name="secondaryLocation")
+    def secondary_location(self) -> pulumi.Output[Optional[str]]:
+        """
+        The current location of the reservation's secondary replica. This field is only set for
+        reservations using the managed disaster recovery feature. Users can set this in create
+        reservation calls to create a failover reservation or in update reservation calls to convert
+        a non-failover reservation to a failover reservation(or vice versa).
+        """
+        return pulumi.get(self, "secondary_location")
 
     @property
     @pulumi.getter(name="slotCapacity")

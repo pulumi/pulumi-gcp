@@ -118,11 +118,47 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The location where the reservation was originally created. This is set only during the
+        /// failover reservation's creation. All billing charges for the failover reservation will be
+        /// applied to this location.
+        /// </summary>
+        [Output("originalPrimaryLocation")]
+        public Output<string> OriginalPrimaryLocation { get; private set; } = null!;
+
+        /// <summary>
+        /// The current location of the reservation's primary replica. This field is only set for
+        /// reservations using the managed disaster recovery feature.
+        /// </summary>
+        [Output("primaryLocation")]
+        public Output<string> PrimaryLocation { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The Disaster Recovery(DR) replication status of the reservation. This is only available for
+        /// the primary replicas of DR/failover reservations and provides information about the both the
+        /// staleness of the secondary and the last error encountered while trying to replicate changes
+        /// from the primary to the secondary. If this field is blank, it means that the reservation is
+        /// either not a DR reservation or the reservation is a DR secondary or that any replication
+        /// operations on the reservation have succeeded.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("replicationStatuses")]
+        public Output<ImmutableArray<Outputs.ReservationReplicationStatus>> ReplicationStatuses { get; private set; } = null!;
+
+        /// <summary>
+        /// The current location of the reservation's secondary replica. This field is only set for
+        /// reservations using the managed disaster recovery feature. Users can set this in create
+        /// reservation calls to create a failover reservation or in update reservation calls to convert
+        /// a non-failover reservation to a failover reservation(or vice versa).
+        /// </summary>
+        [Output("secondaryLocation")]
+        public Output<string?> SecondaryLocation { get; private set; } = null!;
 
         /// <summary>
         /// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
@@ -228,6 +264,15 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// The current location of the reservation's secondary replica. This field is only set for
+        /// reservations using the managed disaster recovery feature. Users can set this in create
+        /// reservation calls to create a failover reservation or in update reservation calls to convert
+        /// a non-failover reservation to a failover reservation(or vice versa).
+        /// </summary>
+        [Input("secondaryLocation")]
+        public Input<string>? SecondaryLocation { get; set; }
+
+        /// <summary>
         /// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
         /// unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
         /// </summary>
@@ -286,11 +331,53 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The location where the reservation was originally created. This is set only during the
+        /// failover reservation's creation. All billing charges for the failover reservation will be
+        /// applied to this location.
+        /// </summary>
+        [Input("originalPrimaryLocation")]
+        public Input<string>? OriginalPrimaryLocation { get; set; }
+
+        /// <summary>
+        /// The current location of the reservation's primary replica. This field is only set for
+        /// reservations using the managed disaster recovery feature.
+        /// </summary>
+        [Input("primaryLocation")]
+        public Input<string>? PrimaryLocation { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("replicationStatuses")]
+        private InputList<Inputs.ReservationReplicationStatusGetArgs>? _replicationStatuses;
+
+        /// <summary>
+        /// The Disaster Recovery(DR) replication status of the reservation. This is only available for
+        /// the primary replicas of DR/failover reservations and provides information about the both the
+        /// staleness of the secondary and the last error encountered while trying to replicate changes
+        /// from the primary to the secondary. If this field is blank, it means that the reservation is
+        /// either not a DR reservation or the reservation is a DR secondary or that any replication
+        /// operations on the reservation have succeeded.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ReservationReplicationStatusGetArgs> ReplicationStatuses
+        {
+            get => _replicationStatuses ?? (_replicationStatuses = new InputList<Inputs.ReservationReplicationStatusGetArgs>());
+            set => _replicationStatuses = value;
+        }
+
+        /// <summary>
+        /// The current location of the reservation's secondary replica. This field is only set for
+        /// reservations using the managed disaster recovery feature. Users can set this in create
+        /// reservation calls to create a failover reservation or in update reservation calls to convert
+        /// a non-failover reservation to a failover reservation(or vice versa).
+        /// </summary>
+        [Input("secondaryLocation")]
+        public Input<string>? SecondaryLocation { get; set; }
 
         /// <summary>
         /// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the

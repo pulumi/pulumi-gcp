@@ -28,7 +28,8 @@ class ResourcePolicyArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 snapshot_schedule_policy: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs']] = None):
+                 snapshot_schedule_policy: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs']] = None,
+                 workload_policy: Optional[pulumi.Input['ResourcePolicyWorkloadPolicyArgs']] = None):
         """
         The set of arguments for constructing a ResourcePolicy resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
@@ -53,6 +54,8 @@ class ResourcePolicyArgs:
         :param pulumi.Input[str] region: Region where resource policy resides.
         :param pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs'] snapshot_schedule_policy: Policy for creating snapshots of persistent disks.
                Structure is documented below.
+        :param pulumi.Input['ResourcePolicyWorkloadPolicyArgs'] workload_policy: Represents the workload policy.
+               Structure is documented below.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -70,6 +73,8 @@ class ResourcePolicyArgs:
             pulumi.set(__self__, "region", region)
         if snapshot_schedule_policy is not None:
             pulumi.set(__self__, "snapshot_schedule_policy", snapshot_schedule_policy)
+        if workload_policy is not None:
+            pulumi.set(__self__, "workload_policy", workload_policy)
 
     @property
     @pulumi.getter
@@ -181,6 +186,19 @@ class ResourcePolicyArgs:
     def snapshot_schedule_policy(self, value: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs']]):
         pulumi.set(self, "snapshot_schedule_policy", value)
 
+    @property
+    @pulumi.getter(name="workloadPolicy")
+    def workload_policy(self) -> Optional[pulumi.Input['ResourcePolicyWorkloadPolicyArgs']]:
+        """
+        Represents the workload policy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "workload_policy")
+
+    @workload_policy.setter
+    def workload_policy(self, value: Optional[pulumi.Input['ResourcePolicyWorkloadPolicyArgs']]):
+        pulumi.set(self, "workload_policy", value)
+
 
 @pulumi.input_type
 class _ResourcePolicyState:
@@ -193,7 +211,8 @@ class _ResourcePolicyState:
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 snapshot_schedule_policy: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs']] = None):
+                 snapshot_schedule_policy: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs']] = None,
+                 workload_policy: Optional[pulumi.Input['ResourcePolicyWorkloadPolicyArgs']] = None):
         """
         Input properties used for looking up and filtering ResourcePolicy resources.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
@@ -219,6 +238,8 @@ class _ResourcePolicyState:
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs'] snapshot_schedule_policy: Policy for creating snapshots of persistent disks.
                Structure is documented below.
+        :param pulumi.Input['ResourcePolicyWorkloadPolicyArgs'] workload_policy: Represents the workload policy.
+               Structure is documented below.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -238,6 +259,8 @@ class _ResourcePolicyState:
             pulumi.set(__self__, "self_link", self_link)
         if snapshot_schedule_policy is not None:
             pulumi.set(__self__, "snapshot_schedule_policy", snapshot_schedule_policy)
+        if workload_policy is not None:
+            pulumi.set(__self__, "workload_policy", workload_policy)
 
     @property
     @pulumi.getter
@@ -361,6 +384,19 @@ class _ResourcePolicyState:
     def snapshot_schedule_policy(self, value: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs']]):
         pulumi.set(self, "snapshot_schedule_policy", value)
 
+    @property
+    @pulumi.getter(name="workloadPolicy")
+    def workload_policy(self) -> Optional[pulumi.Input['ResourcePolicyWorkloadPolicyArgs']]:
+        """
+        Represents the workload policy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "workload_policy")
+
+    @workload_policy.setter
+    def workload_policy(self, value: Optional[pulumi.Input['ResourcePolicyWorkloadPolicyArgs']]):
+        pulumi.set(self, "workload_policy", value)
+
 
 class ResourcePolicy(pulumi.CustomResource):
     @overload
@@ -375,6 +411,7 @@ class ResourcePolicy(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  snapshot_schedule_policy: Optional[pulumi.Input[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict']]] = None,
+                 workload_policy: Optional[pulumi.Input[Union['ResourcePolicyWorkloadPolicyArgs', 'ResourcePolicyWorkloadPolicyArgsDict']]] = None,
                  __props__=None):
         """
         A policy that can be attached to a resource to specify or schedule actions on that resource.
@@ -525,6 +562,62 @@ class ResourcePolicy(pulumi.CustomResource):
                 "enabled": True,
             })
         ```
+        ### Resource Policy Workload Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bar = gcp.compute.ResourcePolicy("bar",
+            name="gce-policy",
+            region="europe-west1",
+            workload_policy={
+                "type": "HIGH_AVAILABILITY",
+            })
+        ```
+        ### Resource Policy Workload Policy Accelerator Topology
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bar = gcp.compute.ResourcePolicy("bar",
+            name="gce-policy",
+            region="europe-west1",
+            workload_policy={
+                "type": "HIGH_THROUGHPUT",
+                "accelerator_topology": "SOME NEW TOPOLOGY",
+            })
+        ```
+        ### Resource Policy Workload Policy Max Topology Distance
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bar = gcp.compute.ResourcePolicy("bar",
+            name="gce-policy",
+            region="europe-west1",
+            workload_policy={
+                "type": "HIGH_THROUGHPUT",
+                "max_topology_distance": "BLOCK",
+            })
+        ```
+        ### Resource Policy Placement Policy Gpu Topology
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        baz = gcp.compute.ResourcePolicy("baz",
+            name="gce-policy",
+            region="europe-west9",
+            group_placement_policy={
+                "vm_count": 2,
+                "collocation": "COLLOCATED",
+                "gpu_topology": "1x72",
+            })
+        ```
 
         ## Import
 
@@ -579,6 +672,8 @@ class ResourcePolicy(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where resource policy resides.
         :param pulumi.Input[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict']] snapshot_schedule_policy: Policy for creating snapshots of persistent disks.
+               Structure is documented below.
+        :param pulumi.Input[Union['ResourcePolicyWorkloadPolicyArgs', 'ResourcePolicyWorkloadPolicyArgsDict']] workload_policy: Represents the workload policy.
                Structure is documented below.
         """
         ...
@@ -736,6 +831,62 @@ class ResourcePolicy(pulumi.CustomResource):
                 "enabled": True,
             })
         ```
+        ### Resource Policy Workload Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bar = gcp.compute.ResourcePolicy("bar",
+            name="gce-policy",
+            region="europe-west1",
+            workload_policy={
+                "type": "HIGH_AVAILABILITY",
+            })
+        ```
+        ### Resource Policy Workload Policy Accelerator Topology
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bar = gcp.compute.ResourcePolicy("bar",
+            name="gce-policy",
+            region="europe-west1",
+            workload_policy={
+                "type": "HIGH_THROUGHPUT",
+                "accelerator_topology": "SOME NEW TOPOLOGY",
+            })
+        ```
+        ### Resource Policy Workload Policy Max Topology Distance
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bar = gcp.compute.ResourcePolicy("bar",
+            name="gce-policy",
+            region="europe-west1",
+            workload_policy={
+                "type": "HIGH_THROUGHPUT",
+                "max_topology_distance": "BLOCK",
+            })
+        ```
+        ### Resource Policy Placement Policy Gpu Topology
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        baz = gcp.compute.ResourcePolicy("baz",
+            name="gce-policy",
+            region="europe-west9",
+            group_placement_policy={
+                "vm_count": 2,
+                "collocation": "COLLOCATED",
+                "gpu_topology": "1x72",
+            })
+        ```
 
         ## Import
 
@@ -790,6 +941,7 @@ class ResourcePolicy(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  snapshot_schedule_policy: Optional[pulumi.Input[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict']]] = None,
+                 workload_policy: Optional[pulumi.Input[Union['ResourcePolicyWorkloadPolicyArgs', 'ResourcePolicyWorkloadPolicyArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -807,6 +959,7 @@ class ResourcePolicy(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["snapshot_schedule_policy"] = snapshot_schedule_policy
+            __props__.__dict__["workload_policy"] = workload_policy
             __props__.__dict__["self_link"] = None
         super(ResourcePolicy, __self__).__init__(
             'gcp:compute/resourcePolicy:ResourcePolicy',
@@ -826,7 +979,8 @@ class ResourcePolicy(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            snapshot_schedule_policy: Optional[pulumi.Input[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict']]] = None) -> 'ResourcePolicy':
+            snapshot_schedule_policy: Optional[pulumi.Input[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict']]] = None,
+            workload_policy: Optional[pulumi.Input[Union['ResourcePolicyWorkloadPolicyArgs', 'ResourcePolicyWorkloadPolicyArgsDict']]] = None) -> 'ResourcePolicy':
         """
         Get an existing ResourcePolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -857,6 +1011,8 @@ class ResourcePolicy(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict']] snapshot_schedule_policy: Policy for creating snapshots of persistent disks.
                Structure is documented below.
+        :param pulumi.Input[Union['ResourcePolicyWorkloadPolicyArgs', 'ResourcePolicyWorkloadPolicyArgsDict']] workload_policy: Represents the workload policy.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -871,6 +1027,7 @@ class ResourcePolicy(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["snapshot_schedule_policy"] = snapshot_schedule_policy
+        __props__.__dict__["workload_policy"] = workload_policy
         return ResourcePolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -958,4 +1115,13 @@ class ResourcePolicy(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "snapshot_schedule_policy")
+
+    @property
+    @pulumi.getter(name="workloadPolicy")
+    def workload_policy(self) -> pulumi.Output[Optional['outputs.ResourcePolicyWorkloadPolicy']]:
+        """
+        Represents the workload policy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "workload_policy")
 

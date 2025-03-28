@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -86,6 +88,16 @@ export class InterceptEndpointGroup extends pulumi.CustomResource {
     }
 
     /**
+     * List of associations to this endpoint group.
+     * Structure is documented below.
+     */
+    public /*out*/ readonly associations!: pulumi.Output<outputs.networksecurity.InterceptEndpointGroupAssociation[]>;
+    /**
+     * The endpoint group's view of a connected deployment group.
+     * Structure is documented below.
+     */
+    public /*out*/ readonly connectedDeploymentGroups!: pulumi.Output<outputs.networksecurity.InterceptEndpointGroupConnectedDeploymentGroup[]>;
+    /**
      * The timestamp when the resource was created.
      * See https://google.aip.dev/148#timestamps.
      */
@@ -124,9 +136,10 @@ export class InterceptEndpointGroup extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * The resource name of this endpoint group, for example:
-     * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
-     * See https://google.aip.dev/122 for more details.
+     * (Output)
+     * The connected deployment group's resource name, for example:
+     * `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -147,16 +160,12 @@ export class InterceptEndpointGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
-     * The current state of the endpoint group.
-     * See https://google.aip.dev/216.
+     * (Output)
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
-     * CLOSED
-     * CREATING
-     * DELETING
      * OUT_OF_SYNC
-     * DELETE_FAILED
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -178,6 +187,8 @@ export class InterceptEndpointGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InterceptEndpointGroupState | undefined;
+            resourceInputs["associations"] = state ? state.associations : undefined;
+            resourceInputs["connectedDeploymentGroups"] = state ? state.connectedDeploymentGroups : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
@@ -208,6 +219,8 @@ export class InterceptEndpointGroup extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["associations"] = undefined /*out*/;
+            resourceInputs["connectedDeploymentGroups"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -227,6 +240,16 @@ export class InterceptEndpointGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InterceptEndpointGroup resources.
  */
 export interface InterceptEndpointGroupState {
+    /**
+     * List of associations to this endpoint group.
+     * Structure is documented below.
+     */
+    associations?: pulumi.Input<pulumi.Input<inputs.networksecurity.InterceptEndpointGroupAssociation>[]>;
+    /**
+     * The endpoint group's view of a connected deployment group.
+     * Structure is documented below.
+     */
+    connectedDeploymentGroups?: pulumi.Input<pulumi.Input<inputs.networksecurity.InterceptEndpointGroupConnectedDeploymentGroup>[]>;
     /**
      * The timestamp when the resource was created.
      * See https://google.aip.dev/148#timestamps.
@@ -266,9 +289,10 @@ export interface InterceptEndpointGroupState {
      */
     location?: pulumi.Input<string>;
     /**
-     * The resource name of this endpoint group, for example:
-     * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
-     * See https://google.aip.dev/122 for more details.
+     * (Output)
+     * The connected deployment group's resource name, for example:
+     * `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
      */
     name?: pulumi.Input<string>;
     /**
@@ -289,16 +313,12 @@ export interface InterceptEndpointGroupState {
      */
     reconciling?: pulumi.Input<boolean>;
     /**
-     * The current state of the endpoint group.
-     * See https://google.aip.dev/216.
+     * (Output)
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
-     * CLOSED
-     * CREATING
-     * DELETING
      * OUT_OF_SYNC
-     * DELETE_FAILED
      */
     state?: pulumi.Input<string>;
     /**

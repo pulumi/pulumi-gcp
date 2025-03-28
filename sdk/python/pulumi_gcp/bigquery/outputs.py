@@ -73,6 +73,8 @@ __all__ = [
     'JobStatusError',
     'JobStatusErrorResult',
     'ReservationAutoscale',
+    'ReservationReplicationStatus',
+    'ReservationReplicationStatusError',
     'RoutineArgument',
     'RoutineRemoteFunctionOptions',
     'RoutineSparkOptions',
@@ -4064,6 +4066,119 @@ class ReservationAutoscale(dict):
         Number of slots to be scaled when needed.
         """
         return pulumi.get(self, "max_slots")
+
+
+@pulumi.output_type
+class ReservationReplicationStatus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastErrorTime":
+            suggest = "last_error_time"
+        elif key == "lastReplicationTime":
+            suggest = "last_replication_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReservationReplicationStatus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReservationReplicationStatus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReservationReplicationStatus.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 errors: Optional[Sequence['outputs.ReservationReplicationStatusError']] = None,
+                 last_error_time: Optional[str] = None,
+                 last_replication_time: Optional[str] = None):
+        """
+        :param Sequence['ReservationReplicationStatusErrorArgs'] errors: (Output)
+               The last error encountered while trying to replicate changes from the primary to the
+               secondary. This field is only available if the replication has not succeeded since.
+               Structure is documented below.
+        :param str last_error_time: (Output)
+               The time at which the last error was encountered while trying to replicate changes from
+               the primary to the secondary. This field is only available if the replication has not
+               succeeded since.
+        :param str last_replication_time: (Output)
+               A timestamp corresponding to the last change on the primary that was successfully
+               replicated to the secondary.
+        """
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if last_error_time is not None:
+            pulumi.set(__self__, "last_error_time", last_error_time)
+        if last_replication_time is not None:
+            pulumi.set(__self__, "last_replication_time", last_replication_time)
+
+    @property
+    @pulumi.getter
+    def errors(self) -> Optional[Sequence['outputs.ReservationReplicationStatusError']]:
+        """
+        (Output)
+        The last error encountered while trying to replicate changes from the primary to the
+        secondary. This field is only available if the replication has not succeeded since.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+    @property
+    @pulumi.getter(name="lastErrorTime")
+    def last_error_time(self) -> Optional[str]:
+        """
+        (Output)
+        The time at which the last error was encountered while trying to replicate changes from
+        the primary to the secondary. This field is only available if the replication has not
+        succeeded since.
+        """
+        return pulumi.get(self, "last_error_time")
+
+    @property
+    @pulumi.getter(name="lastReplicationTime")
+    def last_replication_time(self) -> Optional[str]:
+        """
+        (Output)
+        A timestamp corresponding to the last change on the primary that was successfully
+        replicated to the secondary.
+        """
+        return pulumi.get(self, "last_replication_time")
+
+
+@pulumi.output_type
+class ReservationReplicationStatusError(dict):
+    def __init__(__self__, *,
+                 code: Optional[int] = None,
+                 message: Optional[str] = None):
+        """
+        :param int code: (Output)
+               The status code, which should be an enum value of [google.rpc.Code](https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.rpc#google.rpc.Code).
+        :param str message: (Output)
+               A developer-facing error message, which should be in English.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[int]:
+        """
+        (Output)
+        The status code, which should be an enum value of [google.rpc.Code](https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.rpc#google.rpc.Code).
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        (Output)
+        A developer-facing error message, which should be in English.
+        """
+        return pulumi.get(self, "message")
 
 
 @pulumi.output_type

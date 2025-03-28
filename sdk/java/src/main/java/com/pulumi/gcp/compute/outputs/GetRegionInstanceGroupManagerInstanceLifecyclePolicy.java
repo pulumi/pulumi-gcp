@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetRegionInstanceGroupManagerInstanceLifecyclePolicy {
     /**
-     * @return Default behavior for all instance or health check failures.
+     * @return Specifies the action that a MIG performs on a failed VM. If the value of the &#34;on_failed_health_check&#34; field is DEFAULT_ACTION, then the same action also applies to the VMs on which your application fails a health check. Valid values are: REPAIR, DO_NOTHING. If REPAIR (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG. If DO_NOTHING, then MIG does not repair a failed VM.
      * 
      */
     private String defaultActionOnFailure;
@@ -20,10 +20,15 @@ public final class GetRegionInstanceGroupManagerInstanceLifecyclePolicy {
      * 
      */
     private String forceUpdateOnRepair;
+    /**
+     * @return Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are: DEFAULT_ACTION, DO_NOTHING, REPAIR. If DEFAULT_ACTION (default), then MIG uses the same action configured for the  &#34;default_action_on_failure&#34; field. If DO_NOTHING, then MIG does not repair unhealthy VM. If REPAIR, then MIG automatically repairs an unhealthy VM by recreating it.
+     * 
+     */
+    private String onFailedHealthCheck;
 
     private GetRegionInstanceGroupManagerInstanceLifecyclePolicy() {}
     /**
-     * @return Default behavior for all instance or health check failures.
+     * @return Specifies the action that a MIG performs on a failed VM. If the value of the &#34;on_failed_health_check&#34; field is DEFAULT_ACTION, then the same action also applies to the VMs on which your application fails a health check. Valid values are: REPAIR, DO_NOTHING. If REPAIR (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG. If DO_NOTHING, then MIG does not repair a failed VM.
      * 
      */
     public String defaultActionOnFailure() {
@@ -35,6 +40,13 @@ public final class GetRegionInstanceGroupManagerInstanceLifecyclePolicy {
      */
     public String forceUpdateOnRepair() {
         return this.forceUpdateOnRepair;
+    }
+    /**
+     * @return Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are: DEFAULT_ACTION, DO_NOTHING, REPAIR. If DEFAULT_ACTION (default), then MIG uses the same action configured for the  &#34;default_action_on_failure&#34; field. If DO_NOTHING, then MIG does not repair unhealthy VM. If REPAIR, then MIG automatically repairs an unhealthy VM by recreating it.
+     * 
+     */
+    public String onFailedHealthCheck() {
+        return this.onFailedHealthCheck;
     }
 
     public static Builder builder() {
@@ -48,11 +60,13 @@ public final class GetRegionInstanceGroupManagerInstanceLifecyclePolicy {
     public static final class Builder {
         private String defaultActionOnFailure;
         private String forceUpdateOnRepair;
+        private String onFailedHealthCheck;
         public Builder() {}
         public Builder(GetRegionInstanceGroupManagerInstanceLifecyclePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultActionOnFailure = defaults.defaultActionOnFailure;
     	      this.forceUpdateOnRepair = defaults.forceUpdateOnRepair;
+    	      this.onFailedHealthCheck = defaults.onFailedHealthCheck;
         }
 
         @CustomType.Setter
@@ -71,10 +85,19 @@ public final class GetRegionInstanceGroupManagerInstanceLifecyclePolicy {
             this.forceUpdateOnRepair = forceUpdateOnRepair;
             return this;
         }
+        @CustomType.Setter
+        public Builder onFailedHealthCheck(String onFailedHealthCheck) {
+            if (onFailedHealthCheck == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceGroupManagerInstanceLifecyclePolicy", "onFailedHealthCheck");
+            }
+            this.onFailedHealthCheck = onFailedHealthCheck;
+            return this;
+        }
         public GetRegionInstanceGroupManagerInstanceLifecyclePolicy build() {
             final var _resultValue = new GetRegionInstanceGroupManagerInstanceLifecyclePolicy();
             _resultValue.defaultActionOnFailure = defaultActionOnFailure;
             _resultValue.forceUpdateOnRepair = forceUpdateOnRepair;
+            _resultValue.onFailedHealthCheck = onFailedHealthCheck;
             return _resultValue;
         }
     }

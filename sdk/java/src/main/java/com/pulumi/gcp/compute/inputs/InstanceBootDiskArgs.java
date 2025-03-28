@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -91,6 +92,21 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> diskEncryptionKeySha256() {
         return Optional.ofNullable(this.diskEncryptionKeySha256);
+    }
+
+    /**
+     * A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+     * 
+     */
+    @Import(name="guestOsFeatures")
+    private @Nullable Output<List<String>> guestOsFeatures;
+
+    /**
+     * @return A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+     * 
+     */
+    public Optional<Output<List<String>>> guestOsFeatures() {
+        return Optional.ofNullable(this.guestOsFeatures);
     }
 
     /**
@@ -189,6 +205,7 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
         this.deviceName = $.deviceName;
         this.diskEncryptionKeyRaw = $.diskEncryptionKeyRaw;
         this.diskEncryptionKeySha256 = $.diskEncryptionKeySha256;
+        this.guestOsFeatures = $.guestOsFeatures;
         this.initializeParams = $.initializeParams;
         this.interface_ = $.interface_;
         this.kmsKeySelfLink = $.kmsKeySelfLink;
@@ -312,6 +329,37 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder diskEncryptionKeySha256(String diskEncryptionKeySha256) {
             return diskEncryptionKeySha256(Output.of(diskEncryptionKeySha256));
+        }
+
+        /**
+         * @param guestOsFeatures A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder guestOsFeatures(@Nullable Output<List<String>> guestOsFeatures) {
+            $.guestOsFeatures = guestOsFeatures;
+            return this;
+        }
+
+        /**
+         * @param guestOsFeatures A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder guestOsFeatures(List<String> guestOsFeatures) {
+            return guestOsFeatures(Output.of(guestOsFeatures));
+        }
+
+        /**
+         * @param guestOsFeatures A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder guestOsFeatures(String... guestOsFeatures) {
+            return guestOsFeatures(List.of(guestOsFeatures));
         }
 
         /**

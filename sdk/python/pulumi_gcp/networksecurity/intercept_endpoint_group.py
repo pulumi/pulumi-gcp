@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['InterceptEndpointGroupArgs', 'InterceptEndpointGroup']
 
@@ -140,6 +142,8 @@ class InterceptEndpointGroupArgs:
 @pulumi.input_type
 class _InterceptEndpointGroupState:
     def __init__(__self__, *,
+                 associations: Optional[pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupAssociationArgs']]]] = None,
+                 connected_deployment_groups: Optional[pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupConnectedDeploymentGroupArgs']]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -155,6 +159,10 @@ class _InterceptEndpointGroupState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering InterceptEndpointGroup resources.
+        :param pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupAssociationArgs']]] associations: List of associations to this endpoint group.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupConnectedDeploymentGroupArgs']]] connected_deployment_groups: The endpoint group's view of a connected deployment group.
+               Structure is documented below.
         :param pulumi.Input[str] create_time: The timestamp when the resource was created.
                See https://google.aip.dev/148#timestamps.
         :param pulumi.Input[str] description: User-provided description of the endpoint group.
@@ -172,9 +180,10 @@ class _InterceptEndpointGroupState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The cloud location of the endpoint group, currently restricted to `global`.
-        :param pulumi.Input[str] name: The resource name of this endpoint group, for example:
-               `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
-               See https://google.aip.dev/122 for more details.
+        :param pulumi.Input[str] name: (Output)
+               The connected deployment group's resource name, for example:
+               `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+               See https://google.aip.dev/124.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -183,19 +192,19 @@ class _InterceptEndpointGroupState:
                and the system is working to reconcile them. This is part of the normal
                operation (e.g. adding a new association to the group).
                See https://google.aip.dev/128.
-        :param pulumi.Input[str] state: The current state of the endpoint group.
-               See https://google.aip.dev/216.
+        :param pulumi.Input[str] state: (Output)
+               The current state of the association in this location.
                Possible values:
                STATE_UNSPECIFIED
                ACTIVE
-               CLOSED
-               CREATING
-               DELETING
                OUT_OF_SYNC
-               DELETE_FAILED
         :param pulumi.Input[str] update_time: The timestamp when the resource was most recently updated.
                See https://google.aip.dev/148#timestamps.
         """
+        if associations is not None:
+            pulumi.set(__self__, "associations", associations)
+        if connected_deployment_groups is not None:
+            pulumi.set(__self__, "connected_deployment_groups", connected_deployment_groups)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
@@ -222,6 +231,32 @@ class _InterceptEndpointGroupState:
             pulumi.set(__self__, "state", state)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def associations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupAssociationArgs']]]]:
+        """
+        List of associations to this endpoint group.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "associations")
+
+    @associations.setter
+    def associations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupAssociationArgs']]]]):
+        pulumi.set(self, "associations", value)
+
+    @property
+    @pulumi.getter(name="connectedDeploymentGroups")
+    def connected_deployment_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupConnectedDeploymentGroupArgs']]]]:
+        """
+        The endpoint group's view of a connected deployment group.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "connected_deployment_groups")
+
+    @connected_deployment_groups.setter
+    def connected_deployment_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupConnectedDeploymentGroupArgs']]]]):
+        pulumi.set(self, "connected_deployment_groups", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -321,9 +356,10 @@ class _InterceptEndpointGroupState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name of this endpoint group, for example:
-        `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
-        See https://google.aip.dev/122 for more details.
+        (Output)
+        The connected deployment group's resource name, for example:
+        `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+        See https://google.aip.dev/124.
         """
         return pulumi.get(self, "name")
 
@@ -376,16 +412,12 @@ class _InterceptEndpointGroupState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        The current state of the endpoint group.
-        See https://google.aip.dev/216.
+        (Output)
+        The current state of the association in this location.
         Possible values:
         STATE_UNSPECIFIED
         ACTIVE
-        CLOSED
-        CREATING
-        DELETING
         OUT_OF_SYNC
-        DELETE_FAILED
         """
         return pulumi.get(self, "state")
 
@@ -586,6 +618,8 @@ class InterceptEndpointGroup(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
+            __props__.__dict__["associations"] = None
+            __props__.__dict__["connected_deployment_groups"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
@@ -605,6 +639,8 @@ class InterceptEndpointGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            associations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InterceptEndpointGroupAssociationArgs', 'InterceptEndpointGroupAssociationArgsDict']]]]] = None,
+            connected_deployment_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InterceptEndpointGroupConnectedDeploymentGroupArgs', 'InterceptEndpointGroupConnectedDeploymentGroupArgsDict']]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -625,6 +661,10 @@ class InterceptEndpointGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterceptEndpointGroupAssociationArgs', 'InterceptEndpointGroupAssociationArgsDict']]]] associations: List of associations to this endpoint group.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterceptEndpointGroupConnectedDeploymentGroupArgs', 'InterceptEndpointGroupConnectedDeploymentGroupArgsDict']]]] connected_deployment_groups: The endpoint group's view of a connected deployment group.
+               Structure is documented below.
         :param pulumi.Input[str] create_time: The timestamp when the resource was created.
                See https://google.aip.dev/148#timestamps.
         :param pulumi.Input[str] description: User-provided description of the endpoint group.
@@ -642,9 +682,10 @@ class InterceptEndpointGroup(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The cloud location of the endpoint group, currently restricted to `global`.
-        :param pulumi.Input[str] name: The resource name of this endpoint group, for example:
-               `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
-               See https://google.aip.dev/122 for more details.
+        :param pulumi.Input[str] name: (Output)
+               The connected deployment group's resource name, for example:
+               `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+               See https://google.aip.dev/124.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -653,16 +694,12 @@ class InterceptEndpointGroup(pulumi.CustomResource):
                and the system is working to reconcile them. This is part of the normal
                operation (e.g. adding a new association to the group).
                See https://google.aip.dev/128.
-        :param pulumi.Input[str] state: The current state of the endpoint group.
-               See https://google.aip.dev/216.
+        :param pulumi.Input[str] state: (Output)
+               The current state of the association in this location.
                Possible values:
                STATE_UNSPECIFIED
                ACTIVE
-               CLOSED
-               CREATING
-               DELETING
                OUT_OF_SYNC
-               DELETE_FAILED
         :param pulumi.Input[str] update_time: The timestamp when the resource was most recently updated.
                See https://google.aip.dev/148#timestamps.
         """
@@ -670,6 +707,8 @@ class InterceptEndpointGroup(pulumi.CustomResource):
 
         __props__ = _InterceptEndpointGroupState.__new__(_InterceptEndpointGroupState)
 
+        __props__.__dict__["associations"] = associations
+        __props__.__dict__["connected_deployment_groups"] = connected_deployment_groups
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
@@ -684,6 +723,24 @@ class InterceptEndpointGroup(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["update_time"] = update_time
         return InterceptEndpointGroup(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def associations(self) -> pulumi.Output[Sequence['outputs.InterceptEndpointGroupAssociation']]:
+        """
+        List of associations to this endpoint group.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "associations")
+
+    @property
+    @pulumi.getter(name="connectedDeploymentGroups")
+    def connected_deployment_groups(self) -> pulumi.Output[Sequence['outputs.InterceptEndpointGroupConnectedDeploymentGroup']]:
+        """
+        The endpoint group's view of a connected deployment group.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "connected_deployment_groups")
 
     @property
     @pulumi.getter(name="createTime")
@@ -755,9 +812,10 @@ class InterceptEndpointGroup(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of this endpoint group, for example:
-        `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
-        See https://google.aip.dev/122 for more details.
+        (Output)
+        The connected deployment group's resource name, for example:
+        `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+        See https://google.aip.dev/124.
         """
         return pulumi.get(self, "name")
 
@@ -794,16 +852,12 @@ class InterceptEndpointGroup(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        The current state of the endpoint group.
-        See https://google.aip.dev/216.
+        (Output)
+        The current state of the association in this location.
         Possible values:
         STATE_UNSPECIFIED
         ACTIVE
-        CLOSED
-        CREATING
-        DELETING
         OUT_OF_SYNC
-        DELETE_FAILED
         """
         return pulumi.get(self, "state")
 

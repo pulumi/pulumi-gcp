@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.ClusterControlPlaneEndpointsConfigDnsEndpointConfig;
+import com.pulumi.gcp.container.outputs.ClusterControlPlaneEndpointsConfigIpEndpointsConfig;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,11 @@ public final class ClusterControlPlaneEndpointsConfig {
      * 
      */
     private @Nullable ClusterControlPlaneEndpointsConfigDnsEndpointConfig dnsEndpointConfig;
+    /**
+     * @return IP endpoint configuration.
+     * 
+     */
+    private @Nullable ClusterControlPlaneEndpointsConfigIpEndpointsConfig ipEndpointsConfig;
 
     private ClusterControlPlaneEndpointsConfig() {}
     /**
@@ -24,6 +30,13 @@ public final class ClusterControlPlaneEndpointsConfig {
      */
     public Optional<ClusterControlPlaneEndpointsConfigDnsEndpointConfig> dnsEndpointConfig() {
         return Optional.ofNullable(this.dnsEndpointConfig);
+    }
+    /**
+     * @return IP endpoint configuration.
+     * 
+     */
+    public Optional<ClusterControlPlaneEndpointsConfigIpEndpointsConfig> ipEndpointsConfig() {
+        return Optional.ofNullable(this.ipEndpointsConfig);
     }
 
     public static Builder builder() {
@@ -36,10 +49,12 @@ public final class ClusterControlPlaneEndpointsConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterControlPlaneEndpointsConfigDnsEndpointConfig dnsEndpointConfig;
+        private @Nullable ClusterControlPlaneEndpointsConfigIpEndpointsConfig ipEndpointsConfig;
         public Builder() {}
         public Builder(ClusterControlPlaneEndpointsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dnsEndpointConfig = defaults.dnsEndpointConfig;
+    	      this.ipEndpointsConfig = defaults.ipEndpointsConfig;
         }
 
         @CustomType.Setter
@@ -48,9 +63,16 @@ public final class ClusterControlPlaneEndpointsConfig {
             this.dnsEndpointConfig = dnsEndpointConfig;
             return this;
         }
+        @CustomType.Setter
+        public Builder ipEndpointsConfig(@Nullable ClusterControlPlaneEndpointsConfigIpEndpointsConfig ipEndpointsConfig) {
+
+            this.ipEndpointsConfig = ipEndpointsConfig;
+            return this;
+        }
         public ClusterControlPlaneEndpointsConfig build() {
             final var _resultValue = new ClusterControlPlaneEndpointsConfig();
             _resultValue.dnsEndpointConfig = dnsEndpointConfig;
+            _resultValue.ipEndpointsConfig = ipEndpointsConfig;
             return _resultValue;
         }
     }

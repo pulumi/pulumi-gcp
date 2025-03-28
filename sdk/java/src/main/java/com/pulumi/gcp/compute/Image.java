@@ -13,6 +13,7 @@ import com.pulumi.gcp.compute.inputs.ImageState;
 import com.pulumi.gcp.compute.outputs.ImageGuestOsFeature;
 import com.pulumi.gcp.compute.outputs.ImageImageEncryptionKey;
 import com.pulumi.gcp.compute.outputs.ImageRawDisk;
+import com.pulumi.gcp.compute.outputs.ImageShieldedInstanceInitialState;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -523,6 +524,22 @@ public class Image extends com.pulumi.resources.CustomResource {
      */
     public Output<String> selfLink() {
         return this.selfLink;
+    }
+    /**
+     * Set the secure boot keys of shielded instance.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="shieldedInstanceInitialState", refs={ImageShieldedInstanceInitialState.class}, tree="[0]")
+    private Output<ImageShieldedInstanceInitialState> shieldedInstanceInitialState;
+
+    /**
+     * @return Set the secure boot keys of shielded instance.
+     * Structure is documented below.
+     * 
+     */
+    public Output<ImageShieldedInstanceInitialState> shieldedInstanceInitialState() {
+        return this.shieldedInstanceInitialState;
     }
     /**
      * The source disk to create this image based on.

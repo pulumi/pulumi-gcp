@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.compute.outputs.InstanceBootDiskInitializeParams;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -41,6 +42,11 @@ public final class InstanceBootDisk {
      * 
      */
     private @Nullable String diskEncryptionKeySha256;
+    /**
+     * @return A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+     * 
+     */
+    private @Nullable List<String> guestOsFeatures;
     /**
      * @return Parameters for a new disk that will be created
      * alongside the new instance. Either `initialize_params` or `source` must be set.
@@ -112,6 +118,13 @@ public final class InstanceBootDisk {
         return Optional.ofNullable(this.diskEncryptionKeySha256);
     }
     /**
+     * @return A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+     * 
+     */
+    public List<String> guestOsFeatures() {
+        return this.guestOsFeatures == null ? List.of() : this.guestOsFeatures;
+    }
+    /**
      * @return Parameters for a new disk that will be created
      * alongside the new instance. Either `initialize_params` or `source` must be set.
      * Structure is documented below.
@@ -167,6 +180,7 @@ public final class InstanceBootDisk {
         private @Nullable String deviceName;
         private @Nullable String diskEncryptionKeyRaw;
         private @Nullable String diskEncryptionKeySha256;
+        private @Nullable List<String> guestOsFeatures;
         private @Nullable InstanceBootDiskInitializeParams initializeParams;
         private @Nullable String interface_;
         private @Nullable String kmsKeySelfLink;
@@ -179,6 +193,7 @@ public final class InstanceBootDisk {
     	      this.deviceName = defaults.deviceName;
     	      this.diskEncryptionKeyRaw = defaults.diskEncryptionKeyRaw;
     	      this.diskEncryptionKeySha256 = defaults.diskEncryptionKeySha256;
+    	      this.guestOsFeatures = defaults.guestOsFeatures;
     	      this.initializeParams = defaults.initializeParams;
     	      this.interface_ = defaults.interface_;
     	      this.kmsKeySelfLink = defaults.kmsKeySelfLink;
@@ -209,6 +224,15 @@ public final class InstanceBootDisk {
 
             this.diskEncryptionKeySha256 = diskEncryptionKeySha256;
             return this;
+        }
+        @CustomType.Setter
+        public Builder guestOsFeatures(@Nullable List<String> guestOsFeatures) {
+
+            this.guestOsFeatures = guestOsFeatures;
+            return this;
+        }
+        public Builder guestOsFeatures(String... guestOsFeatures) {
+            return guestOsFeatures(List.of(guestOsFeatures));
         }
         @CustomType.Setter
         public Builder initializeParams(@Nullable InstanceBootDiskInitializeParams initializeParams) {
@@ -246,6 +270,7 @@ public final class InstanceBootDisk {
             _resultValue.deviceName = deviceName;
             _resultValue.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
             _resultValue.diskEncryptionKeySha256 = diskEncryptionKeySha256;
+            _resultValue.guestOsFeatures = guestOsFeatures;
             _resultValue.initializeParams = initializeParams;
             _resultValue.interface_ = interface_;
             _resultValue.kmsKeySelfLink = kmsKeySelfLink;

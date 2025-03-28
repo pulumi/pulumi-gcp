@@ -15,6 +15,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceFromTemplateBootDiskInitializeParams {
     /**
+     * @return The architecture of the disk. One of &#34;X86_64&#34; or &#34;ARM64&#34;.
+     * 
+     */
+    private @Nullable String architecture;
+    /**
      * @return A flag to enable confidential compute mode on boot disk
      * 
      */
@@ -66,6 +71,13 @@ public final class InstanceFromTemplateBootDiskInitializeParams {
     private @Nullable String type;
 
     private InstanceFromTemplateBootDiskInitializeParams() {}
+    /**
+     * @return The architecture of the disk. One of &#34;X86_64&#34; or &#34;ARM64&#34;.
+     * 
+     */
+    public Optional<String> architecture() {
+        return Optional.ofNullable(this.architecture);
+    }
     /**
      * @return A flag to enable confidential compute mode on boot disk
      * 
@@ -146,6 +158,7 @@ public final class InstanceFromTemplateBootDiskInitializeParams {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String architecture;
         private @Nullable Boolean enableConfidentialCompute;
         private @Nullable String image;
         private @Nullable Map<String,String> labels;
@@ -159,6 +172,7 @@ public final class InstanceFromTemplateBootDiskInitializeParams {
         public Builder() {}
         public Builder(InstanceFromTemplateBootDiskInitializeParams defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.architecture = defaults.architecture;
     	      this.enableConfidentialCompute = defaults.enableConfidentialCompute;
     	      this.image = defaults.image;
     	      this.labels = defaults.labels;
@@ -171,6 +185,12 @@ public final class InstanceFromTemplateBootDiskInitializeParams {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder architecture(@Nullable String architecture) {
+
+            this.architecture = architecture;
+            return this;
+        }
         @CustomType.Setter
         public Builder enableConfidentialCompute(@Nullable Boolean enableConfidentialCompute) {
 
@@ -233,6 +253,7 @@ public final class InstanceFromTemplateBootDiskInitializeParams {
         }
         public InstanceFromTemplateBootDiskInitializeParams build() {
             final var _resultValue = new InstanceFromTemplateBootDiskInitializeParams();
+            _resultValue.architecture = architecture;
             _resultValue.enableConfidentialCompute = enableConfidentialCompute;
             _resultValue.image = image;
             _resultValue.labels = labels;

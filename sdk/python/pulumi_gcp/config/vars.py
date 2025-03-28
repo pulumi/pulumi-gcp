@@ -498,6 +498,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('lookerCustomEndpoint')
 
     @property
+    def lustre_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('lustreCustomEndpoint')
+
+    @property
     def managed_kafka_custom_endpoint(self) -> Optional[str]:
         return __config__.get('managedKafkaCustomEndpoint')
 
@@ -556,6 +560,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def os_config_custom_endpoint(self) -> Optional[str]:
         return __config__.get('osConfigCustomEndpoint')
+
+    @property
+    def os_config_v2_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('osConfigV2CustomEndpoint')
 
     @property
     def os_login_custom_endpoint(self) -> Optional[str]:
@@ -708,6 +716,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def sql_custom_endpoint(self) -> Optional[str]:
         return __config__.get('sqlCustomEndpoint')
+
+    @property
+    def storage_control_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('storageControlCustomEndpoint')
 
     @property
     def storage_custom_endpoint(self) -> Optional[str]:

@@ -11,9 +11,11 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.bigquery.ReservationArgs;
 import com.pulumi.gcp.bigquery.inputs.ReservationState;
 import com.pulumi.gcp.bigquery.outputs.ReservationAutoscale;
+import com.pulumi.gcp.bigquery.outputs.ReservationReplicationStatus;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -196,6 +198,40 @@ public class Reservation extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * The location where the reservation was originally created. This is set only during the
+     * failover reservation&#39;s creation. All billing charges for the failover reservation will be
+     * applied to this location.
+     * 
+     */
+    @Export(name="originalPrimaryLocation", refs={String.class}, tree="[0]")
+    private Output<String> originalPrimaryLocation;
+
+    /**
+     * @return The location where the reservation was originally created. This is set only during the
+     * failover reservation&#39;s creation. All billing charges for the failover reservation will be
+     * applied to this location.
+     * 
+     */
+    public Output<String> originalPrimaryLocation() {
+        return this.originalPrimaryLocation;
+    }
+    /**
+     * The current location of the reservation&#39;s primary replica. This field is only set for
+     * reservations using the managed disaster recovery feature.
+     * 
+     */
+    @Export(name="primaryLocation", refs={String.class}, tree="[0]")
+    private Output<String> primaryLocation;
+
+    /**
+     * @return The current location of the reservation&#39;s primary replica. This field is only set for
+     * reservations using the managed disaster recovery feature.
+     * 
+     */
+    public Output<String> primaryLocation() {
+        return this.primaryLocation;
+    }
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -210,6 +246,52 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The Disaster Recovery(DR) replication status of the reservation. This is only available for
+     * the primary replicas of DR/failover reservations and provides information about the both the
+     * staleness of the secondary and the last error encountered while trying to replicate changes
+     * from the primary to the secondary. If this field is blank, it means that the reservation is
+     * either not a DR reservation or the reservation is a DR secondary or that any replication
+     * operations on the reservation have succeeded.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="replicationStatuses", refs={List.class,ReservationReplicationStatus.class}, tree="[0,1]")
+    private Output<List<ReservationReplicationStatus>> replicationStatuses;
+
+    /**
+     * @return The Disaster Recovery(DR) replication status of the reservation. This is only available for
+     * the primary replicas of DR/failover reservations and provides information about the both the
+     * staleness of the secondary and the last error encountered while trying to replicate changes
+     * from the primary to the secondary. If this field is blank, it means that the reservation is
+     * either not a DR reservation or the reservation is a DR secondary or that any replication
+     * operations on the reservation have succeeded.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<ReservationReplicationStatus>> replicationStatuses() {
+        return this.replicationStatuses;
+    }
+    /**
+     * The current location of the reservation&#39;s secondary replica. This field is only set for
+     * reservations using the managed disaster recovery feature. Users can set this in create
+     * reservation calls to create a failover reservation or in update reservation calls to convert
+     * a non-failover reservation to a failover reservation(or vice versa).
+     * 
+     */
+    @Export(name="secondaryLocation", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> secondaryLocation;
+
+    /**
+     * @return The current location of the reservation&#39;s secondary replica. This field is only set for
+     * reservations using the managed disaster recovery feature. Users can set this in create
+     * reservation calls to create a failover reservation or in update reservation calls to convert
+     * a non-failover reservation to a failover reservation(or vice versa).
+     * 
+     */
+    public Output<Optional<String>> secondaryLocation() {
+        return Codegen.optional(this.secondaryLocation);
     }
     /**
      * Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the

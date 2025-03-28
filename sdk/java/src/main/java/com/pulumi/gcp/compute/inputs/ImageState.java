@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.ImageGuestOsFeatureArgs;
 import com.pulumi.gcp.compute.inputs.ImageImageEncryptionKeyArgs;
 import com.pulumi.gcp.compute.inputs.ImageRawDiskArgs;
+import com.pulumi.gcp.compute.inputs.ImageShieldedInstanceInitialStateArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -314,6 +315,23 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Set the secure boot keys of shielded instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="shieldedInstanceInitialState")
+    private @Nullable Output<ImageShieldedInstanceInitialStateArgs> shieldedInstanceInitialState;
+
+    /**
+     * @return Set the secure boot keys of shielded instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ImageShieldedInstanceInitialStateArgs>> shieldedInstanceInitialState() {
+        return Optional.ofNullable(this.shieldedInstanceInitialState);
+    }
+
+    /**
      * The source disk to create this image based on.
      * You must provide either this property or the
      * rawDisk.source property but not both to create an image.
@@ -422,6 +440,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         this.pulumiLabels = $.pulumiLabels;
         this.rawDisk = $.rawDisk;
         this.selfLink = $.selfLink;
+        this.shieldedInstanceInitialState = $.shieldedInstanceInitialState;
         this.sourceDisk = $.sourceDisk;
         this.sourceImage = $.sourceImage;
         this.sourceSnapshot = $.sourceSnapshot;
@@ -854,6 +873,29 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder selfLink(String selfLink) {
             return selfLink(Output.of(selfLink));
+        }
+
+        /**
+         * @param shieldedInstanceInitialState Set the secure boot keys of shielded instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shieldedInstanceInitialState(@Nullable Output<ImageShieldedInstanceInitialStateArgs> shieldedInstanceInitialState) {
+            $.shieldedInstanceInitialState = shieldedInstanceInitialState;
+            return this;
+        }
+
+        /**
+         * @param shieldedInstanceInitialState Set the secure boot keys of shielded instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shieldedInstanceInitialState(ImageShieldedInstanceInitialStateArgs shieldedInstanceInitialState) {
+            return shieldedInstanceInitialState(Output.of(shieldedInstanceInitialState));
         }
 
         /**

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.storage.outputs.TransferJobReplicationSpecTransferOptionsMetadataOptions;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -23,6 +24,11 @@ public final class TransferJobReplicationSpecTransferOptions {
      * 
      */
     private @Nullable Boolean deleteObjectsUniqueInSink;
+    /**
+     * @return Specifies the metadata options for running a transfer
+     * 
+     */
+    private @Nullable TransferJobReplicationSpecTransferOptionsMetadataOptions metadataOptions;
     /**
      * @return Whether overwriting objects that already exist in the sink is allowed.
      * 
@@ -51,6 +57,13 @@ public final class TransferJobReplicationSpecTransferOptions {
         return Optional.ofNullable(this.deleteObjectsUniqueInSink);
     }
     /**
+     * @return Specifies the metadata options for running a transfer
+     * 
+     */
+    public Optional<TransferJobReplicationSpecTransferOptionsMetadataOptions> metadataOptions() {
+        return Optional.ofNullable(this.metadataOptions);
+    }
+    /**
      * @return Whether overwriting objects that already exist in the sink is allowed.
      * 
      */
@@ -76,6 +89,7 @@ public final class TransferJobReplicationSpecTransferOptions {
     public static final class Builder {
         private @Nullable Boolean deleteObjectsFromSourceAfterTransfer;
         private @Nullable Boolean deleteObjectsUniqueInSink;
+        private @Nullable TransferJobReplicationSpecTransferOptionsMetadataOptions metadataOptions;
         private @Nullable Boolean overwriteObjectsAlreadyExistingInSink;
         private @Nullable String overwriteWhen;
         public Builder() {}
@@ -83,6 +97,7 @@ public final class TransferJobReplicationSpecTransferOptions {
     	      Objects.requireNonNull(defaults);
     	      this.deleteObjectsFromSourceAfterTransfer = defaults.deleteObjectsFromSourceAfterTransfer;
     	      this.deleteObjectsUniqueInSink = defaults.deleteObjectsUniqueInSink;
+    	      this.metadataOptions = defaults.metadataOptions;
     	      this.overwriteObjectsAlreadyExistingInSink = defaults.overwriteObjectsAlreadyExistingInSink;
     	      this.overwriteWhen = defaults.overwriteWhen;
         }
@@ -97,6 +112,12 @@ public final class TransferJobReplicationSpecTransferOptions {
         public Builder deleteObjectsUniqueInSink(@Nullable Boolean deleteObjectsUniqueInSink) {
 
             this.deleteObjectsUniqueInSink = deleteObjectsUniqueInSink;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder metadataOptions(@Nullable TransferJobReplicationSpecTransferOptionsMetadataOptions metadataOptions) {
+
+            this.metadataOptions = metadataOptions;
             return this;
         }
         @CustomType.Setter
@@ -115,6 +136,7 @@ public final class TransferJobReplicationSpecTransferOptions {
             final var _resultValue = new TransferJobReplicationSpecTransferOptions();
             _resultValue.deleteObjectsFromSourceAfterTransfer = deleteObjectsFromSourceAfterTransfer;
             _resultValue.deleteObjectsUniqueInSink = deleteObjectsUniqueInSink;
+            _resultValue.metadataOptions = metadataOptions;
             _resultValue.overwriteObjectsAlreadyExistingInSink = overwriteObjectsAlreadyExistingInSink;
             _resultValue.overwriteWhen = overwriteWhen;
             return _resultValue;

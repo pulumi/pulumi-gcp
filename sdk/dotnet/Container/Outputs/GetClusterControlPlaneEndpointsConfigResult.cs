@@ -17,11 +17,19 @@ namespace Pulumi.Gcp.Container.Outputs
         /// DNS endpoint configuration.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterControlPlaneEndpointsConfigDnsEndpointConfigResult> DnsEndpointConfigs;
+        /// <summary>
+        /// IP endpoint configuration.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterControlPlaneEndpointsConfigIpEndpointsConfigResult> IpEndpointsConfigs;
 
         [OutputConstructor]
-        private GetClusterControlPlaneEndpointsConfigResult(ImmutableArray<Outputs.GetClusterControlPlaneEndpointsConfigDnsEndpointConfigResult> dnsEndpointConfigs)
+        private GetClusterControlPlaneEndpointsConfigResult(
+            ImmutableArray<Outputs.GetClusterControlPlaneEndpointsConfigDnsEndpointConfigResult> dnsEndpointConfigs,
+
+            ImmutableArray<Outputs.GetClusterControlPlaneEndpointsConfigIpEndpointsConfigResult> ipEndpointsConfigs)
         {
             DnsEndpointConfigs = dnsEndpointConfigs;
+            IpEndpointsConfigs = ipEndpointsConfigs;
         }
     }
 }

@@ -157,6 +157,7 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string SelfLink;
         public readonly ImmutableArray<Outputs.GetResourcePolicySnapshotSchedulePolicyResult> SnapshotSchedulePolicies;
+        public readonly ImmutableArray<Outputs.GetResourcePolicyWorkloadPolicyResult> WorkloadPolicies;
 
         [OutputConstructor]
         private GetResourcePolicyResult(
@@ -178,7 +179,9 @@ namespace Pulumi.Gcp.Compute
 
             string selfLink,
 
-            ImmutableArray<Outputs.GetResourcePolicySnapshotSchedulePolicyResult> snapshotSchedulePolicies)
+            ImmutableArray<Outputs.GetResourcePolicySnapshotSchedulePolicyResult> snapshotSchedulePolicies,
+
+            ImmutableArray<Outputs.GetResourcePolicyWorkloadPolicyResult> workloadPolicies)
         {
             Description = description;
             DiskConsistencyGroupPolicies = diskConsistencyGroupPolicies;
@@ -190,6 +193,7 @@ namespace Pulumi.Gcp.Compute
             Region = region;
             SelfLink = selfLink;
             SnapshotSchedulePolicies = snapshotSchedulePolicies;
+            WorkloadPolicies = workloadPolicies;
         }
     }
 }

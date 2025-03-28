@@ -45,6 +45,11 @@ export type BucketObject = import("./bucketObject").BucketObject;
 export const BucketObject: typeof import("./bucketObject").BucketObject = null as any;
 utilities.lazyLoad(exports, ["BucketObject"], () => require("./bucketObject"));
 
+export { ControlProjectIntelligenceConfigArgs, ControlProjectIntelligenceConfigState } from "./controlProjectIntelligenceConfig";
+export type ControlProjectIntelligenceConfig = import("./controlProjectIntelligenceConfig").ControlProjectIntelligenceConfig;
+export const ControlProjectIntelligenceConfig: typeof import("./controlProjectIntelligenceConfig").ControlProjectIntelligenceConfig = null as any;
+utilities.lazyLoad(exports, ["ControlProjectIntelligenceConfig"], () => require("./controlProjectIntelligenceConfig"));
+
 export { DefaultObjectACLArgs, DefaultObjectACLState } from "./defaultObjectACL";
 export type DefaultObjectACL = import("./defaultObjectACL").DefaultObjectACL;
 export const DefaultObjectACL: typeof import("./defaultObjectACL").DefaultObjectACL = null as any;
@@ -89,6 +94,11 @@ export { GetBucketsArgs, GetBucketsResult, GetBucketsOutputArgs } from "./getBuc
 export const getBuckets: typeof import("./getBuckets").getBuckets = null as any;
 export const getBucketsOutput: typeof import("./getBuckets").getBucketsOutput = null as any;
 utilities.lazyLoad(exports, ["getBuckets","getBucketsOutput"], () => require("./getBuckets"));
+
+export { GetControlProjectIntelligenceConfigArgs, GetControlProjectIntelligenceConfigResult, GetControlProjectIntelligenceConfigOutputArgs } from "./getControlProjectIntelligenceConfig";
+export const getControlProjectIntelligenceConfig: typeof import("./getControlProjectIntelligenceConfig").getControlProjectIntelligenceConfig = null as any;
+export const getControlProjectIntelligenceConfigOutput: typeof import("./getControlProjectIntelligenceConfig").getControlProjectIntelligenceConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getControlProjectIntelligenceConfig","getControlProjectIntelligenceConfigOutput"], () => require("./getControlProjectIntelligenceConfig"));
 
 export { GetManagedFolderIamPolicyArgs, GetManagedFolderIamPolicyResult, GetManagedFolderIamPolicyOutputArgs } from "./getManagedFolderIamPolicy";
 export const getManagedFolderIamPolicy: typeof import("./getManagedFolderIamPolicy").getManagedFolderIamPolicy = null as any;
@@ -192,6 +202,8 @@ const _module = {
                 return new BucketIAMPolicy(name, <any>undefined, { urn })
             case "gcp:storage/bucketObject:BucketObject":
                 return new BucketObject(name, <any>undefined, { urn })
+            case "gcp:storage/controlProjectIntelligenceConfig:ControlProjectIntelligenceConfig":
+                return new ControlProjectIntelligenceConfig(name, <any>undefined, { urn })
             case "gcp:storage/defaultObjectACL:DefaultObjectACL":
                 return new DefaultObjectACL(name, <any>undefined, { urn })
             case "gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl":
@@ -233,6 +245,7 @@ pulumi.runtime.registerResourceModule("gcp", "storage/bucketIAMBinding", _module
 pulumi.runtime.registerResourceModule("gcp", "storage/bucketIAMMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/bucketIAMPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/bucketObject", _module)
+pulumi.runtime.registerResourceModule("gcp", "storage/controlProjectIntelligenceConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/defaultObjectACL", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/defaultObjectAccessControl", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/folder", _module)

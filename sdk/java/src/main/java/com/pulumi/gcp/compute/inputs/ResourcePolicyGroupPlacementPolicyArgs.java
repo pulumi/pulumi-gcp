@@ -57,6 +57,21 @@ public final class ResourcePolicyGroupPlacementPolicyArgs extends com.pulumi.res
     }
 
     /**
+     * Specifies the shape of the GPU slice, in slice based GPU families eg. A4X.
+     * 
+     */
+    @Import(name="gpuTopology")
+    private @Nullable Output<String> gpuTopology;
+
+    /**
+     * @return Specifies the shape of the GPU slice, in slice based GPU families eg. A4X.
+     * 
+     */
+    public Optional<Output<String>> gpuTopology() {
+        return Optional.ofNullable(this.gpuTopology);
+    }
+
+    /**
      * Specifies the number of max logical switches.
      * 
      */
@@ -95,6 +110,7 @@ public final class ResourcePolicyGroupPlacementPolicyArgs extends com.pulumi.res
     private ResourcePolicyGroupPlacementPolicyArgs(ResourcePolicyGroupPlacementPolicyArgs $) {
         this.availabilityDomainCount = $.availabilityDomainCount;
         this.collocation = $.collocation;
+        this.gpuTopology = $.gpuTopology;
         this.maxDistance = $.maxDistance;
         this.vmCount = $.vmCount;
     }
@@ -167,6 +183,27 @@ public final class ResourcePolicyGroupPlacementPolicyArgs extends com.pulumi.res
          */
         public Builder collocation(String collocation) {
             return collocation(Output.of(collocation));
+        }
+
+        /**
+         * @param gpuTopology Specifies the shape of the GPU slice, in slice based GPU families eg. A4X.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gpuTopology(@Nullable Output<String> gpuTopology) {
+            $.gpuTopology = gpuTopology;
+            return this;
+        }
+
+        /**
+         * @param gpuTopology Specifies the shape of the GPU slice, in slice based GPU families eg. A4X.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gpuTopology(String gpuTopology) {
+            return gpuTopology(Output.of(gpuTopology));
         }
 
         /**

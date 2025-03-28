@@ -5,6 +5,9 @@ package com.pulumi.gcp.networkmanagement.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.networkmanagement.inputs.ConnectivityTestSourceAppEngineVersionArgs;
+import com.pulumi.gcp.networkmanagement.inputs.ConnectivityTestSourceCloudFunctionArgs;
+import com.pulumi.gcp.networkmanagement.inputs.ConnectivityTestSourceCloudRunRevisionArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -15,6 +18,87 @@ import javax.annotation.Nullable;
 public final class ConnectivityTestSourceArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ConnectivityTestSourceArgs Empty = new ConnectivityTestSourceArgs();
+
+    /**
+     * An App Engine service version.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="appEngineVersion")
+    private @Nullable Output<ConnectivityTestSourceAppEngineVersionArgs> appEngineVersion;
+
+    /**
+     * @return An App Engine service version.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConnectivityTestSourceAppEngineVersionArgs>> appEngineVersion() {
+        return Optional.ofNullable(this.appEngineVersion);
+    }
+
+    /**
+     * A Cloud Function.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="cloudFunction")
+    private @Nullable Output<ConnectivityTestSourceCloudFunctionArgs> cloudFunction;
+
+    /**
+     * @return A Cloud Function.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConnectivityTestSourceCloudFunctionArgs>> cloudFunction() {
+        return Optional.ofNullable(this.cloudFunction);
+    }
+
+    /**
+     * A Cloud Run revision.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="cloudRunRevision")
+    private @Nullable Output<ConnectivityTestSourceCloudRunRevisionArgs> cloudRunRevision;
+
+    /**
+     * @return A Cloud Run revision.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConnectivityTestSourceCloudRunRevisionArgs>> cloudRunRevision() {
+        return Optional.ofNullable(this.cloudRunRevision);
+    }
+
+    /**
+     * A Cloud SQL instance URI.
+     * 
+     */
+    @Import(name="cloudSqlInstance")
+    private @Nullable Output<String> cloudSqlInstance;
+
+    /**
+     * @return A Cloud SQL instance URI.
+     * 
+     */
+    public Optional<Output<String>> cloudSqlInstance() {
+        return Optional.ofNullable(this.cloudSqlInstance);
+    }
+
+    /**
+     * A cluster URI for Google Kubernetes Engine cluster control plane.
+     * 
+     */
+    @Import(name="gkeMasterCluster")
+    private @Nullable Output<String> gkeMasterCluster;
+
+    /**
+     * @return A cluster URI for Google Kubernetes Engine cluster control plane.
+     * 
+     */
+    public Optional<Output<String>> gkeMasterCluster() {
+        return Optional.ofNullable(this.gkeMasterCluster);
+    }
 
     /**
      * A Compute Engine instance URI.
@@ -32,18 +116,14 @@ public final class ConnectivityTestSourceArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The IP address of the endpoint, which can be an external or
-     * internal IP. An IPv6 address is only allowed when the test&#39;s
-     * destination is a global load balancer VIP.
+     * The IP address of the endpoint, which can be an external or internal IP.
      * 
      */
     @Import(name="ipAddress")
     private @Nullable Output<String> ipAddress;
 
     /**
-     * @return The IP address of the endpoint, which can be an external or
-     * internal IP. An IPv6 address is only allowed when the test&#39;s
-     * destination is a global load balancer VIP.
+     * @return The IP address of the endpoint, which can be an external or internal IP.
      * 
      */
     public Optional<Output<String>> ipAddress() {
@@ -51,14 +131,14 @@ public final class ConnectivityTestSourceArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * A Compute Engine network URI.
+     * A VPC network URI.
      * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
-     * @return A Compute Engine network URI.
+     * @return A VPC network URI.
      * 
      */
     public Optional<Output<String>> network() {
@@ -83,16 +163,16 @@ public final class ConnectivityTestSourceArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The IP protocol port of the endpoint. Only applicable when
-     * protocol is TCP or UDP.
+     * The IP protocol port of the endpoint. Only applicable when protocol is
+     * TCP or UDP.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return The IP protocol port of the endpoint. Only applicable when
-     * protocol is TCP or UDP.
+     * @return The IP protocol port of the endpoint. Only applicable when protocol is
+     * TCP or UDP.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -100,30 +180,30 @@ public final class ConnectivityTestSourceArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Project ID where the endpoint is located. The Project ID can be
-     * derived from the URI if you provide a VM instance or network URI.
-     * The following are two cases where you must provide the project ID:
-     * 1. Only the IP address is specified, and the IP address is
-     *    within a GCP project.
-     * 2. When you are using Shared VPC and the IP address
-     *    that you provide is from the service project. In this case,
-     *    the network that the IP address resides in is defined in the
-     *    host project.
+     * Project ID where the endpoint is located.
+     * The project ID can be derived from the URI if you provide a endpoint or
+     * network URI.
+     * The following are two cases where you may need to provide the project ID:
+     * 1. Only the IP address is specified, and the IP address is within a Google
+     *    Cloud project.
+     * 2. When you are using Shared VPC and the IP address that you provide is
+     *    from the service project. In this case, the network that the IP address
+     *    resides in is defined in the host project.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Project ID where the endpoint is located. The Project ID can be
-     * derived from the URI if you provide a VM instance or network URI.
-     * The following are two cases where you must provide the project ID:
-     * 1. Only the IP address is specified, and the IP address is
-     *    within a GCP project.
-     * 2. When you are using Shared VPC and the IP address
-     *    that you provide is from the service project. In this case,
-     *    the network that the IP address resides in is defined in the
-     *    host project.
+     * @return Project ID where the endpoint is located.
+     * The project ID can be derived from the URI if you provide a endpoint or
+     * network URI.
+     * The following are two cases where you may need to provide the project ID:
+     * 1. Only the IP address is specified, and the IP address is within a Google
+     *    Cloud project.
+     * 2. When you are using Shared VPC and the IP address that you provide is
+     *    from the service project. In this case, the network that the IP address
+     *    resides in is defined in the host project.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -133,6 +213,11 @@ public final class ConnectivityTestSourceArgs extends com.pulumi.resources.Resou
     private ConnectivityTestSourceArgs() {}
 
     private ConnectivityTestSourceArgs(ConnectivityTestSourceArgs $) {
+        this.appEngineVersion = $.appEngineVersion;
+        this.cloudFunction = $.cloudFunction;
+        this.cloudRunRevision = $.cloudRunRevision;
+        this.cloudSqlInstance = $.cloudSqlInstance;
+        this.gkeMasterCluster = $.gkeMasterCluster;
         this.instance = $.instance;
         this.ipAddress = $.ipAddress;
         this.network = $.network;
@@ -160,6 +245,117 @@ public final class ConnectivityTestSourceArgs extends com.pulumi.resources.Resou
         }
 
         /**
+         * @param appEngineVersion An App Engine service version.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appEngineVersion(@Nullable Output<ConnectivityTestSourceAppEngineVersionArgs> appEngineVersion) {
+            $.appEngineVersion = appEngineVersion;
+            return this;
+        }
+
+        /**
+         * @param appEngineVersion An App Engine service version.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appEngineVersion(ConnectivityTestSourceAppEngineVersionArgs appEngineVersion) {
+            return appEngineVersion(Output.of(appEngineVersion));
+        }
+
+        /**
+         * @param cloudFunction A Cloud Function.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudFunction(@Nullable Output<ConnectivityTestSourceCloudFunctionArgs> cloudFunction) {
+            $.cloudFunction = cloudFunction;
+            return this;
+        }
+
+        /**
+         * @param cloudFunction A Cloud Function.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudFunction(ConnectivityTestSourceCloudFunctionArgs cloudFunction) {
+            return cloudFunction(Output.of(cloudFunction));
+        }
+
+        /**
+         * @param cloudRunRevision A Cloud Run revision.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudRunRevision(@Nullable Output<ConnectivityTestSourceCloudRunRevisionArgs> cloudRunRevision) {
+            $.cloudRunRevision = cloudRunRevision;
+            return this;
+        }
+
+        /**
+         * @param cloudRunRevision A Cloud Run revision.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudRunRevision(ConnectivityTestSourceCloudRunRevisionArgs cloudRunRevision) {
+            return cloudRunRevision(Output.of(cloudRunRevision));
+        }
+
+        /**
+         * @param cloudSqlInstance A Cloud SQL instance URI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudSqlInstance(@Nullable Output<String> cloudSqlInstance) {
+            $.cloudSqlInstance = cloudSqlInstance;
+            return this;
+        }
+
+        /**
+         * @param cloudSqlInstance A Cloud SQL instance URI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudSqlInstance(String cloudSqlInstance) {
+            return cloudSqlInstance(Output.of(cloudSqlInstance));
+        }
+
+        /**
+         * @param gkeMasterCluster A cluster URI for Google Kubernetes Engine cluster control plane.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gkeMasterCluster(@Nullable Output<String> gkeMasterCluster) {
+            $.gkeMasterCluster = gkeMasterCluster;
+            return this;
+        }
+
+        /**
+         * @param gkeMasterCluster A cluster URI for Google Kubernetes Engine cluster control plane.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gkeMasterCluster(String gkeMasterCluster) {
+            return gkeMasterCluster(Output.of(gkeMasterCluster));
+        }
+
+        /**
          * @param instance A Compute Engine instance URI.
          * 
          * @return builder
@@ -181,9 +377,7 @@ public final class ConnectivityTestSourceArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param ipAddress The IP address of the endpoint, which can be an external or
-         * internal IP. An IPv6 address is only allowed when the test&#39;s
-         * destination is a global load balancer VIP.
+         * @param ipAddress The IP address of the endpoint, which can be an external or internal IP.
          * 
          * @return builder
          * 
@@ -194,9 +388,7 @@ public final class ConnectivityTestSourceArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param ipAddress The IP address of the endpoint, which can be an external or
-         * internal IP. An IPv6 address is only allowed when the test&#39;s
-         * destination is a global load balancer VIP.
+         * @param ipAddress The IP address of the endpoint, which can be an external or internal IP.
          * 
          * @return builder
          * 
@@ -206,7 +398,7 @@ public final class ConnectivityTestSourceArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param network A Compute Engine network URI.
+         * @param network A VPC network URI.
          * 
          * @return builder
          * 
@@ -217,7 +409,7 @@ public final class ConnectivityTestSourceArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param network A Compute Engine network URI.
+         * @param network A VPC network URI.
          * 
          * @return builder
          * 
@@ -250,8 +442,8 @@ public final class ConnectivityTestSourceArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param port The IP protocol port of the endpoint. Only applicable when
-         * protocol is TCP or UDP.
+         * @param port The IP protocol port of the endpoint. Only applicable when protocol is
+         * TCP or UDP.
          * 
          * @return builder
          * 
@@ -262,8 +454,8 @@ public final class ConnectivityTestSourceArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param port The IP protocol port of the endpoint. Only applicable when
-         * protocol is TCP or UDP.
+         * @param port The IP protocol port of the endpoint. Only applicable when protocol is
+         * TCP or UDP.
          * 
          * @return builder
          * 
@@ -273,15 +465,15 @@ public final class ConnectivityTestSourceArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param projectId Project ID where the endpoint is located. The Project ID can be
-         * derived from the URI if you provide a VM instance or network URI.
-         * The following are two cases where you must provide the project ID:
-         * 1. Only the IP address is specified, and the IP address is
-         *    within a GCP project.
-         * 2. When you are using Shared VPC and the IP address
-         *    that you provide is from the service project. In this case,
-         *    the network that the IP address resides in is defined in the
-         *    host project.
+         * @param projectId Project ID where the endpoint is located.
+         * The project ID can be derived from the URI if you provide a endpoint or
+         * network URI.
+         * The following are two cases where you may need to provide the project ID:
+         * 1. Only the IP address is specified, and the IP address is within a Google
+         *    Cloud project.
+         * 2. When you are using Shared VPC and the IP address that you provide is
+         *    from the service project. In this case, the network that the IP address
+         *    resides in is defined in the host project.
          * 
          * @return builder
          * 
@@ -292,15 +484,15 @@ public final class ConnectivityTestSourceArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param projectId Project ID where the endpoint is located. The Project ID can be
-         * derived from the URI if you provide a VM instance or network URI.
-         * The following are two cases where you must provide the project ID:
-         * 1. Only the IP address is specified, and the IP address is
-         *    within a GCP project.
-         * 2. When you are using Shared VPC and the IP address
-         *    that you provide is from the service project. In this case,
-         *    the network that the IP address resides in is defined in the
-         *    host project.
+         * @param projectId Project ID where the endpoint is located.
+         * The project ID can be derived from the URI if you provide a endpoint or
+         * network URI.
+         * The following are two cases where you may need to provide the project ID:
+         * 1. Only the IP address is specified, and the IP address is within a Google
+         *    Cloud project.
+         * 2. When you are using Shared VPC and the IP address that you provide is
+         *    from the service project. In this case, the network that the IP address
+         *    resides in is defined in the host project.
          * 
          * @return builder
          * 

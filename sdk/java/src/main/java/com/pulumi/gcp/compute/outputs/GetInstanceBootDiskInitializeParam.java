@@ -15,6 +15,11 @@ import java.util.Objects;
 @CustomType
 public final class GetInstanceBootDiskInitializeParam {
     /**
+     * @return The architecture of the disk. One of &#34;X86_64&#34; or &#34;ARM64&#34;.
+     * 
+     */
+    private String architecture;
+    /**
      * @return A flag to enable confidential compute mode on boot disk
      * 
      */
@@ -66,6 +71,13 @@ public final class GetInstanceBootDiskInitializeParam {
     private String type;
 
     private GetInstanceBootDiskInitializeParam() {}
+    /**
+     * @return The architecture of the disk. One of &#34;X86_64&#34; or &#34;ARM64&#34;.
+     * 
+     */
+    public String architecture() {
+        return this.architecture;
+    }
     /**
      * @return A flag to enable confidential compute mode on boot disk
      * 
@@ -146,6 +158,7 @@ public final class GetInstanceBootDiskInitializeParam {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String architecture;
         private Boolean enableConfidentialCompute;
         private String image;
         private Map<String,String> labels;
@@ -159,6 +172,7 @@ public final class GetInstanceBootDiskInitializeParam {
         public Builder() {}
         public Builder(GetInstanceBootDiskInitializeParam defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.architecture = defaults.architecture;
     	      this.enableConfidentialCompute = defaults.enableConfidentialCompute;
     	      this.image = defaults.image;
     	      this.labels = defaults.labels;
@@ -171,6 +185,14 @@ public final class GetInstanceBootDiskInitializeParam {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder architecture(String architecture) {
+            if (architecture == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDiskInitializeParam", "architecture");
+            }
+            this.architecture = architecture;
+            return this;
+        }
         @CustomType.Setter
         public Builder enableConfidentialCompute(Boolean enableConfidentialCompute) {
             if (enableConfidentialCompute == null) {
@@ -256,6 +278,7 @@ public final class GetInstanceBootDiskInitializeParam {
         }
         public GetInstanceBootDiskInitializeParam build() {
             final var _resultValue = new GetInstanceBootDiskInitializeParam();
+            _resultValue.architecture = architecture;
             _resultValue.enableConfidentialCompute = enableConfidentialCompute;
             _resultValue.image = image;
             _resultValue.labels = labels;

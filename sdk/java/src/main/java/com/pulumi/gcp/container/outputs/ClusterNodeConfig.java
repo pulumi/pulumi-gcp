@@ -24,6 +24,7 @@ import com.pulumi.gcp.container.outputs.ClusterNodeConfigSecondaryBootDisk;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigShieldedInstanceConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigSoleTenantConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigTaint;
+import com.pulumi.gcp.container.outputs.ClusterNodeConfigWindowsNodeConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigWorkloadMetadataConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -297,6 +298,11 @@ public final class ClusterNodeConfig {
      * 
      */
     private @Nullable List<ClusterNodeConfigTaint> taints;
+    /**
+     * @return Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+     * 
+     */
+    private @Nullable ClusterNodeConfigWindowsNodeConfig windowsNodeConfig;
     /**
      * @return Metadata configuration to expose to workloads on the node pool.
      * Structure is documented below.
@@ -651,6 +657,13 @@ public final class ClusterNodeConfig {
         return this.taints == null ? List.of() : this.taints;
     }
     /**
+     * @return Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+     * 
+     */
+    public Optional<ClusterNodeConfigWindowsNodeConfig> windowsNodeConfig() {
+        return Optional.ofNullable(this.windowsNodeConfig);
+    }
+    /**
      * @return Metadata configuration to expose to workloads on the node pool.
      * Structure is documented below.
      * 
@@ -710,6 +723,7 @@ public final class ClusterNodeConfig {
         private @Nullable List<String> storagePools;
         private @Nullable List<String> tags;
         private @Nullable List<ClusterNodeConfigTaint> taints;
+        private @Nullable ClusterNodeConfigWindowsNodeConfig windowsNodeConfig;
         private @Nullable ClusterNodeConfigWorkloadMetadataConfig workloadMetadataConfig;
         public Builder() {}
         public Builder(ClusterNodeConfig defaults) {
@@ -756,6 +770,7 @@ public final class ClusterNodeConfig {
     	      this.storagePools = defaults.storagePools;
     	      this.tags = defaults.tags;
     	      this.taints = defaults.taints;
+    	      this.windowsNodeConfig = defaults.windowsNodeConfig;
     	      this.workloadMetadataConfig = defaults.workloadMetadataConfig;
         }
 
@@ -1033,6 +1048,12 @@ public final class ClusterNodeConfig {
             return taints(List.of(taints));
         }
         @CustomType.Setter
+        public Builder windowsNodeConfig(@Nullable ClusterNodeConfigWindowsNodeConfig windowsNodeConfig) {
+
+            this.windowsNodeConfig = windowsNodeConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder workloadMetadataConfig(@Nullable ClusterNodeConfigWorkloadMetadataConfig workloadMetadataConfig) {
 
             this.workloadMetadataConfig = workloadMetadataConfig;
@@ -1082,6 +1103,7 @@ public final class ClusterNodeConfig {
             _resultValue.storagePools = storagePools;
             _resultValue.tags = tags;
             _resultValue.taints = taints;
+            _resultValue.windowsNodeConfig = windowsNodeConfig;
             _resultValue.workloadMetadataConfig = workloadMetadataConfig;
             return _resultValue;
         }

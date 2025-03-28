@@ -54,6 +54,18 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("diskEncryptionKeySha256")]
         public Input<string>? DiskEncryptionKeySha256 { get; set; }
 
+        [Input("guestOsFeatures")]
+        private InputList<string>? _guestOsFeatures;
+
+        /// <summary>
+        /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+        /// </summary>
+        public InputList<string> GuestOsFeatures
+        {
+            get => _guestOsFeatures ?? (_guestOsFeatures = new InputList<string>());
+            set => _guestOsFeatures = value;
+        }
+
         /// <summary>
         /// Parameters for a new disk that will be created
         /// alongside the new instance. Either `initialize_params` or `source` must be set.

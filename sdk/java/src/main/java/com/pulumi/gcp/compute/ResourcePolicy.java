@@ -14,6 +14,7 @@ import com.pulumi.gcp.compute.outputs.ResourcePolicyDiskConsistencyGroupPolicy;
 import com.pulumi.gcp.compute.outputs.ResourcePolicyGroupPlacementPolicy;
 import com.pulumi.gcp.compute.outputs.ResourcePolicyInstanceSchedulePolicy;
 import com.pulumi.gcp.compute.outputs.ResourcePolicySnapshotSchedulePolicy;
+import com.pulumi.gcp.compute.outputs.ResourcePolicyWorkloadPolicy;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -357,6 +358,166 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Resource Policy Workload Policy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ResourcePolicy;
+ * import com.pulumi.gcp.compute.ResourcePolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.ResourcePolicyWorkloadPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var bar = new ResourcePolicy("bar", ResourcePolicyArgs.builder()
+ *             .name("gce-policy")
+ *             .region("europe-west1")
+ *             .workloadPolicy(ResourcePolicyWorkloadPolicyArgs.builder()
+ *                 .type("HIGH_AVAILABILITY")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Resource Policy Workload Policy Accelerator Topology
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ResourcePolicy;
+ * import com.pulumi.gcp.compute.ResourcePolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.ResourcePolicyWorkloadPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var bar = new ResourcePolicy("bar", ResourcePolicyArgs.builder()
+ *             .name("gce-policy")
+ *             .region("europe-west1")
+ *             .workloadPolicy(ResourcePolicyWorkloadPolicyArgs.builder()
+ *                 .type("HIGH_THROUGHPUT")
+ *                 .acceleratorTopology("SOME NEW TOPOLOGY")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Resource Policy Workload Policy Max Topology Distance
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ResourcePolicy;
+ * import com.pulumi.gcp.compute.ResourcePolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.ResourcePolicyWorkloadPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var bar = new ResourcePolicy("bar", ResourcePolicyArgs.builder()
+ *             .name("gce-policy")
+ *             .region("europe-west1")
+ *             .workloadPolicy(ResourcePolicyWorkloadPolicyArgs.builder()
+ *                 .type("HIGH_THROUGHPUT")
+ *                 .maxTopologyDistance("BLOCK")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Resource Policy Placement Policy Gpu Topology
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ResourcePolicy;
+ * import com.pulumi.gcp.compute.ResourcePolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.ResourcePolicyGroupPlacementPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var baz = new ResourcePolicy("baz", ResourcePolicyArgs.builder()
+ *             .name("gce-policy")
+ *             .region("europe-west9")
+ *             .groupPlacementPolicy(ResourcePolicyGroupPlacementPolicyArgs.builder()
+ *                 .vmCount(2)
+ *                 .collocation("COLLOCATED")
+ *                 .gpuTopology("1x72")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -542,6 +703,22 @@ public class ResourcePolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ResourcePolicySnapshotSchedulePolicy>> snapshotSchedulePolicy() {
         return Codegen.optional(this.snapshotSchedulePolicy);
+    }
+    /**
+     * Represents the workload policy.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="workloadPolicy", refs={ResourcePolicyWorkloadPolicy.class}, tree="[0]")
+    private Output</* @Nullable */ ResourcePolicyWorkloadPolicy> workloadPolicy;
+
+    /**
+     * @return Represents the workload policy.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ResourcePolicyWorkloadPolicy>> workloadPolicy() {
+        return Codegen.optional(this.workloadPolicy);
     }
 
     /**

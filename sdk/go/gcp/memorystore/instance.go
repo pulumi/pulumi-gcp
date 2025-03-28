@@ -79,6 +79,19 @@ import (
 //				},
 //				Location:                  pulumi.String("us-central1"),
 //				DeletionProtectionEnabled: pulumi.Bool(false),
+//				MaintenancePolicy: &memorystore.InstanceMaintenancePolicyArgs{
+//					WeeklyMaintenanceWindows: memorystore.InstanceMaintenancePolicyWeeklyMaintenanceWindowArray{
+//						&memorystore.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs{
+//							Day: pulumi.String("MONDAY"),
+//							StartTime: &memorystore.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{
+//								Hours:   pulumi.Int(1),
+//								Minutes: pulumi.Int(0),
+//								Seconds: pulumi.Int(0),
+//								Nanos:   pulumi.Int(0),
+//							},
+//						},
+//					},
+//				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				_default,
 //			}))
@@ -162,6 +175,19 @@ import (
 //				ZoneDistributionConfig: &memorystore.InstanceZoneDistributionConfigArgs{
 //					Mode: pulumi.String("SINGLE_ZONE"),
 //					Zone: pulumi.String("us-central1-b"),
+//				},
+//				MaintenancePolicy: &memorystore.InstanceMaintenancePolicyArgs{
+//					WeeklyMaintenanceWindows: memorystore.InstanceMaintenancePolicyWeeklyMaintenanceWindowArray{
+//						&memorystore.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs{
+//							Day: pulumi.String("MONDAY"),
+//							StartTime: &memorystore.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{
+//								Hours:   pulumi.Int(1),
+//								Minutes: pulumi.Int(0),
+//								Seconds: pulumi.Int(0),
+//								Nanos:   pulumi.Int(0),
+//							},
+//						},
+//					},
 //				},
 //				EngineVersion:             pulumi.String("VALKEY_7_2"),
 //				DeletionProtectionEnabled: pulumi.Bool(false),
@@ -334,6 +360,12 @@ type Instance struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// Maintenance policy for a cluster
+	// Structure is documented below.
+	MaintenancePolicy InstanceMaintenancePolicyPtrOutput `pulumi:"maintenancePolicy"`
+	// Upcoming maintenance schedule.
+	// Structure is documented below.
+	MaintenanceSchedules InstanceMaintenanceScheduleArrayOutput `pulumi:"maintenanceSchedules"`
 	// Optional. cluster or cluster-disabled.
 	// Possible values:
 	// CLUSTER
@@ -346,7 +378,7 @@ type Instance struct {
 	// Represents configuration for nodes of the instance.
 	// Structure is documented below.
 	NodeConfigs InstanceNodeConfigArrayOutput `pulumi:"nodeConfigs"`
-	// Optional. Immutable. Machine type for individual nodes of the instance.
+	// Optional. Machine type for individual nodes of the instance.
 	// Possible values:
 	// SHARED_CORE_NANO
 	// HIGHMEM_MEDIUM
@@ -480,6 +512,12 @@ type instanceState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
 	Location *string `pulumi:"location"`
+	// Maintenance policy for a cluster
+	// Structure is documented below.
+	MaintenancePolicy *InstanceMaintenancePolicy `pulumi:"maintenancePolicy"`
+	// Upcoming maintenance schedule.
+	// Structure is documented below.
+	MaintenanceSchedules []InstanceMaintenanceSchedule `pulumi:"maintenanceSchedules"`
 	// Optional. cluster or cluster-disabled.
 	// Possible values:
 	// CLUSTER
@@ -492,7 +530,7 @@ type instanceState struct {
 	// Represents configuration for nodes of the instance.
 	// Structure is documented below.
 	NodeConfigs []InstanceNodeConfig `pulumi:"nodeConfigs"`
-	// Optional. Immutable. Machine type for individual nodes of the instance.
+	// Optional. Machine type for individual nodes of the instance.
 	// Possible values:
 	// SHARED_CORE_NANO
 	// HIGHMEM_MEDIUM
@@ -580,6 +618,12 @@ type InstanceState struct {
 	Labels pulumi.StringMapInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
 	Location pulumi.StringPtrInput
+	// Maintenance policy for a cluster
+	// Structure is documented below.
+	MaintenancePolicy InstanceMaintenancePolicyPtrInput
+	// Upcoming maintenance schedule.
+	// Structure is documented below.
+	MaintenanceSchedules InstanceMaintenanceScheduleArrayInput
 	// Optional. cluster or cluster-disabled.
 	// Possible values:
 	// CLUSTER
@@ -592,7 +636,7 @@ type InstanceState struct {
 	// Represents configuration for nodes of the instance.
 	// Structure is documented below.
 	NodeConfigs InstanceNodeConfigArrayInput
-	// Optional. Immutable. Machine type for individual nodes of the instance.
+	// Optional. Machine type for individual nodes of the instance.
 	// Possible values:
 	// SHARED_CORE_NANO
 	// HIGHMEM_MEDIUM
@@ -673,13 +717,16 @@ type instanceArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
 	Location string `pulumi:"location"`
+	// Maintenance policy for a cluster
+	// Structure is documented below.
+	MaintenancePolicy *InstanceMaintenancePolicy `pulumi:"maintenancePolicy"`
 	// Optional. cluster or cluster-disabled.
 	// Possible values:
 	// CLUSTER
 	// CLUSTER_DISABLED
 	// Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
 	Mode *string `pulumi:"mode"`
-	// Optional. Immutable. Machine type for individual nodes of the instance.
+	// Optional. Machine type for individual nodes of the instance.
 	// Possible values:
 	// SHARED_CORE_NANO
 	// HIGHMEM_MEDIUM
@@ -737,13 +784,16 @@ type InstanceArgs struct {
 	Labels pulumi.StringMapInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
 	Location pulumi.StringInput
+	// Maintenance policy for a cluster
+	// Structure is documented below.
+	MaintenancePolicy InstanceMaintenancePolicyPtrInput
 	// Optional. cluster or cluster-disabled.
 	// Possible values:
 	// CLUSTER
 	// CLUSTER_DISABLED
 	// Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
 	Mode pulumi.StringPtrInput
-	// Optional. Immutable. Machine type for individual nodes of the instance.
+	// Optional. Machine type for individual nodes of the instance.
 	// Possible values:
 	// SHARED_CORE_NANO
 	// HIGHMEM_MEDIUM
@@ -933,6 +983,18 @@ func (o InstanceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
+// Maintenance policy for a cluster
+// Structure is documented below.
+func (o InstanceOutput) MaintenancePolicy() InstanceMaintenancePolicyPtrOutput {
+	return o.ApplyT(func(v *Instance) InstanceMaintenancePolicyPtrOutput { return v.MaintenancePolicy }).(InstanceMaintenancePolicyPtrOutput)
+}
+
+// Upcoming maintenance schedule.
+// Structure is documented below.
+func (o InstanceOutput) MaintenanceSchedules() InstanceMaintenanceScheduleArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceMaintenanceScheduleArrayOutput { return v.MaintenanceSchedules }).(InstanceMaintenanceScheduleArrayOutput)
+}
+
 // Optional. cluster or cluster-disabled.
 // Possible values:
 // CLUSTER
@@ -954,7 +1016,7 @@ func (o InstanceOutput) NodeConfigs() InstanceNodeConfigArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceNodeConfigArrayOutput { return v.NodeConfigs }).(InstanceNodeConfigArrayOutput)
 }
 
-// Optional. Immutable. Machine type for individual nodes of the instance.
+// Optional. Machine type for individual nodes of the instance.
 // Possible values:
 // SHARED_CORE_NANO
 // HIGHMEM_MEDIUM

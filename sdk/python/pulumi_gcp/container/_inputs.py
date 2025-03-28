@@ -219,6 +219,8 @@ __all__ = [
     'ClusterControlPlaneEndpointsConfigArgsDict',
     'ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs',
     'ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgsDict',
+    'ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs',
+    'ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgsDict',
     'ClusterCostManagementConfigArgs',
     'ClusterCostManagementConfigArgsDict',
     'ClusterDatabaseEncryptionArgs',
@@ -331,6 +333,8 @@ __all__ = [
     'ClusterNodeConfigSoleTenantConfigNodeAffinityArgsDict',
     'ClusterNodeConfigTaintArgs',
     'ClusterNodeConfigTaintArgsDict',
+    'ClusterNodeConfigWindowsNodeConfigArgs',
+    'ClusterNodeConfigWindowsNodeConfigArgsDict',
     'ClusterNodeConfigWorkloadMetadataConfigArgs',
     'ClusterNodeConfigWorkloadMetadataConfigArgsDict',
     'ClusterNodePoolArgs',
@@ -427,6 +431,8 @@ __all__ = [
     'ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgsDict',
     'ClusterNodePoolNodeConfigTaintArgs',
     'ClusterNodePoolNodeConfigTaintArgsDict',
+    'ClusterNodePoolNodeConfigWindowsNodeConfigArgs',
+    'ClusterNodePoolNodeConfigWindowsNodeConfigArgsDict',
     'ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs',
     'ClusterNodePoolNodeConfigWorkloadMetadataConfigArgsDict',
     'ClusterNodePoolPlacementPolicyArgs',
@@ -445,6 +451,8 @@ __all__ = [
     'ClusterNotificationConfigPubsubArgsDict',
     'ClusterNotificationConfigPubsubFilterArgs',
     'ClusterNotificationConfigPubsubFilterArgsDict',
+    'ClusterPodAutoscalingArgs',
+    'ClusterPodAutoscalingArgsDict',
     'ClusterPodSecurityPolicyConfigArgs',
     'ClusterPodSecurityPolicyConfigArgsDict',
     'ClusterPrivateClusterConfigArgs',
@@ -547,6 +555,8 @@ __all__ = [
     'NodePoolNodeConfigSoleTenantConfigNodeAffinityArgsDict',
     'NodePoolNodeConfigTaintArgs',
     'NodePoolNodeConfigTaintArgsDict',
+    'NodePoolNodeConfigWindowsNodeConfigArgs',
+    'NodePoolNodeConfigWindowsNodeConfigArgsDict',
     'NodePoolNodeConfigWorkloadMetadataConfigArgs',
     'NodePoolNodeConfigWorkloadMetadataConfigArgsDict',
     'NodePoolPlacementPolicyArgs',
@@ -6548,18 +6558,26 @@ if not MYPY:
         """
         DNS endpoint configuration.
         """
+        ip_endpoints_config: NotRequired[pulumi.Input['ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgsDict']]
+        """
+        IP endpoint configuration.
+        """
 elif False:
     ClusterControlPlaneEndpointsConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterControlPlaneEndpointsConfigArgs:
     def __init__(__self__, *,
-                 dns_endpoint_config: Optional[pulumi.Input['ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs']] = None):
+                 dns_endpoint_config: Optional[pulumi.Input['ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs']] = None,
+                 ip_endpoints_config: Optional[pulumi.Input['ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs']] = None):
         """
         :param pulumi.Input['ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs'] dns_endpoint_config: DNS endpoint configuration.
+        :param pulumi.Input['ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs'] ip_endpoints_config: IP endpoint configuration.
         """
         if dns_endpoint_config is not None:
             pulumi.set(__self__, "dns_endpoint_config", dns_endpoint_config)
+        if ip_endpoints_config is not None:
+            pulumi.set(__self__, "ip_endpoints_config", ip_endpoints_config)
 
     @property
     @pulumi.getter(name="dnsEndpointConfig")
@@ -6572,6 +6590,18 @@ class ClusterControlPlaneEndpointsConfigArgs:
     @dns_endpoint_config.setter
     def dns_endpoint_config(self, value: Optional[pulumi.Input['ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs']]):
         pulumi.set(self, "dns_endpoint_config", value)
+
+    @property
+    @pulumi.getter(name="ipEndpointsConfig")
+    def ip_endpoints_config(self) -> Optional[pulumi.Input['ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs']]:
+        """
+        IP endpoint configuration.
+        """
+        return pulumi.get(self, "ip_endpoints_config")
+
+    @ip_endpoints_config.setter
+    def ip_endpoints_config(self, value: Optional[pulumi.Input['ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs']]):
+        pulumi.set(self, "ip_endpoints_config", value)
 
 
 if not MYPY:
@@ -6624,6 +6654,38 @@ class ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs:
     @endpoint.setter
     def endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "endpoint", value)
+
+
+if not MYPY:
+    class ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Controls whether to allow direct IP access. Defaults to `true`.
+        """
+elif False:
+    ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Controls whether to allow direct IP access. Defaults to `true`.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Controls whether to allow direct IP access. Defaults to `true`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:
@@ -8641,6 +8703,10 @@ if not MYPY:
         this field to manage taints. If you do, `lifecycle.ignore_changes` is
         recommended. Structure is documented below.
         """
+        windows_node_config: NotRequired[pulumi.Input['ClusterNodeConfigWindowsNodeConfigArgsDict']]
+        """
+        Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+        """
         workload_metadata_config: NotRequired[pulumi.Input['ClusterNodeConfigWorkloadMetadataConfigArgsDict']]
         """
         Metadata configuration to expose to workloads on the node pool.
@@ -8694,6 +8760,7 @@ class ClusterNodeConfigArgs:
                  storage_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigTaintArgs']]]] = None,
+                 windows_node_config: Optional[pulumi.Input['ClusterNodeConfigWindowsNodeConfigArgs']] = None,
                  workload_metadata_config: Optional[pulumi.Input['ClusterNodeConfigWorkloadMetadataConfigArgs']] = None):
         """
         :param pulumi.Input['ClusterNodeConfigAdvancedMachineFeaturesArgs'] advanced_machine_features: Specifies options for controlling
@@ -8798,6 +8865,7 @@ class ClusterNodeConfigArgs:
                Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
                this field to manage taints. If you do, `lifecycle.ignore_changes` is
                recommended. Structure is documented below.
+        :param pulumi.Input['ClusterNodeConfigWindowsNodeConfigArgs'] windows_node_config: Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
         :param pulumi.Input['ClusterNodeConfigWorkloadMetadataConfigArgs'] workload_metadata_config: Metadata configuration to expose to workloads on the node pool.
                Structure is documented below.
         """
@@ -8885,6 +8953,8 @@ class ClusterNodeConfigArgs:
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
+        if windows_node_config is not None:
+            pulumi.set(__self__, "windows_node_config", windows_node_config)
         if workload_metadata_config is not None:
             pulumi.set(__self__, "workload_metadata_config", workload_metadata_config)
 
@@ -9451,6 +9521,18 @@ class ClusterNodeConfigArgs:
     @taints.setter
     def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigTaintArgs']]]]):
         pulumi.set(self, "taints", value)
+
+    @property
+    @pulumi.getter(name="windowsNodeConfig")
+    def windows_node_config(self) -> Optional[pulumi.Input['ClusterNodeConfigWindowsNodeConfigArgs']]:
+        """
+        Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+        """
+        return pulumi.get(self, "windows_node_config")
+
+    @windows_node_config.setter
+    def windows_node_config(self, value: Optional[pulumi.Input['ClusterNodeConfigWindowsNodeConfigArgs']]):
+        pulumi.set(self, "windows_node_config", value)
 
     @property
     @pulumi.getter(name="workloadMetadataConfig")
@@ -11066,6 +11148,38 @@ class ClusterNodeConfigTaintArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class ClusterNodeConfigWindowsNodeConfigArgsDict(TypedDict):
+        osversion: NotRequired[pulumi.Input[str]]
+        """
+        The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+        """
+elif False:
+    ClusterNodeConfigWindowsNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterNodeConfigWindowsNodeConfigArgs:
+    def __init__(__self__, *,
+                 osversion: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] osversion: The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+        """
+        if osversion is not None:
+            pulumi.set(__self__, "osversion", osversion)
+
+    @property
+    @pulumi.getter
+    def osversion(self) -> Optional[pulumi.Input[str]]:
+        """
+        The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+        """
+        return pulumi.get(self, "osversion")
+
+    @osversion.setter
+    def osversion(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "osversion", value)
 
 
 if not MYPY:
@@ -12803,6 +12917,10 @@ if not MYPY:
         this field to manage taints. If you do, `lifecycle.ignore_changes` is
         recommended. Structure is documented below.
         """
+        windows_node_config: NotRequired[pulumi.Input['ClusterNodePoolNodeConfigWindowsNodeConfigArgsDict']]
+        """
+        Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+        """
         workload_metadata_config: NotRequired[pulumi.Input['ClusterNodePoolNodeConfigWorkloadMetadataConfigArgsDict']]
         """
         Metadata configuration to expose to workloads on the node pool.
@@ -12856,6 +12974,7 @@ class ClusterNodePoolNodeConfigArgs:
                  storage_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigTaintArgs']]]] = None,
+                 windows_node_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigWindowsNodeConfigArgs']] = None,
                  workload_metadata_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs']] = None):
         """
         :param pulumi.Input['ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs'] advanced_machine_features: Specifies options for controlling
@@ -12960,6 +13079,7 @@ class ClusterNodePoolNodeConfigArgs:
                Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
                this field to manage taints. If you do, `lifecycle.ignore_changes` is
                recommended. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolNodeConfigWindowsNodeConfigArgs'] windows_node_config: Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
         :param pulumi.Input['ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs'] workload_metadata_config: Metadata configuration to expose to workloads on the node pool.
                Structure is documented below.
         """
@@ -13047,6 +13167,8 @@ class ClusterNodePoolNodeConfigArgs:
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
+        if windows_node_config is not None:
+            pulumi.set(__self__, "windows_node_config", windows_node_config)
         if workload_metadata_config is not None:
             pulumi.set(__self__, "workload_metadata_config", workload_metadata_config)
 
@@ -13613,6 +13735,18 @@ class ClusterNodePoolNodeConfigArgs:
     @taints.setter
     def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigTaintArgs']]]]):
         pulumi.set(self, "taints", value)
+
+    @property
+    @pulumi.getter(name="windowsNodeConfig")
+    def windows_node_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigWindowsNodeConfigArgs']]:
+        """
+        Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+        """
+        return pulumi.get(self, "windows_node_config")
+
+    @windows_node_config.setter
+    def windows_node_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigWindowsNodeConfigArgs']]):
+        pulumi.set(self, "windows_node_config", value)
 
     @property
     @pulumi.getter(name="workloadMetadataConfig")
@@ -15231,6 +15365,38 @@ class ClusterNodePoolNodeConfigTaintArgs:
 
 
 if not MYPY:
+    class ClusterNodePoolNodeConfigWindowsNodeConfigArgsDict(TypedDict):
+        osversion: NotRequired[pulumi.Input[str]]
+        """
+        The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+        """
+elif False:
+    ClusterNodePoolNodeConfigWindowsNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterNodePoolNodeConfigWindowsNodeConfigArgs:
+    def __init__(__self__, *,
+                 osversion: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] osversion: The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+        """
+        if osversion is not None:
+            pulumi.set(__self__, "osversion", osversion)
+
+    @property
+    @pulumi.getter
+    def osversion(self) -> Optional[pulumi.Input[str]]:
+        """
+        The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+        """
+        return pulumi.get(self, "osversion")
+
+    @osversion.setter
+    def osversion(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "osversion", value)
+
+
+if not MYPY:
     class ClusterNodePoolNodeConfigWorkloadMetadataConfigArgsDict(TypedDict):
         mode: pulumi.Input[str]
         """
@@ -15724,6 +15890,49 @@ class ClusterNotificationConfigPubsubFilterArgs:
     @event_types.setter
     def event_types(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "event_types", value)
+
+
+if not MYPY:
+    class ClusterPodAutoscalingArgsDict(TypedDict):
+        hpa_profile: pulumi.Input[str]
+        """
+        Enable the Horizontal Pod Autoscaling profile for this cluster.
+        Acceptable values are:
+        * `"NONE"`: Customers explicitly opt-out of HPA profiles.
+        * `"PERFORMANCE"`: PERFORMANCE is used when customers opt-in to the performance HPA profile. In this profile we support a higher number of HPAs per cluster and faster metrics collection for workload autoscaling.
+        See [HPAProfile](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#hpaprofile) for more details.
+        """
+elif False:
+    ClusterPodAutoscalingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterPodAutoscalingArgs:
+    def __init__(__self__, *,
+                 hpa_profile: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] hpa_profile: Enable the Horizontal Pod Autoscaling profile for this cluster.
+               Acceptable values are:
+               * `"NONE"`: Customers explicitly opt-out of HPA profiles.
+               * `"PERFORMANCE"`: PERFORMANCE is used when customers opt-in to the performance HPA profile. In this profile we support a higher number of HPAs per cluster and faster metrics collection for workload autoscaling.
+               See [HPAProfile](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#hpaprofile) for more details.
+        """
+        pulumi.set(__self__, "hpa_profile", hpa_profile)
+
+    @property
+    @pulumi.getter(name="hpaProfile")
+    def hpa_profile(self) -> pulumi.Input[str]:
+        """
+        Enable the Horizontal Pod Autoscaling profile for this cluster.
+        Acceptable values are:
+        * `"NONE"`: Customers explicitly opt-out of HPA profiles.
+        * `"PERFORMANCE"`: PERFORMANCE is used when customers opt-in to the performance HPA profile. In this profile we support a higher number of HPAs per cluster and faster metrics collection for workload autoscaling.
+        See [HPAProfile](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#hpaprofile) for more details.
+        """
+        return pulumi.get(self, "hpa_profile")
+
+    @hpa_profile.setter
+    def hpa_profile(self, value: pulumi.Input[str]):
+        pulumi.set(self, "hpa_profile", value)
 
 
 if not MYPY:
@@ -17457,6 +17666,10 @@ if not MYPY:
         """
         List of Kubernetes taints to be applied to each node.
         """
+        windows_node_config: NotRequired[pulumi.Input['NodePoolNodeConfigWindowsNodeConfigArgsDict']]
+        """
+        Parameters that can be configured on Windows nodes.
+        """
         workload_metadata_config: NotRequired[pulumi.Input['NodePoolNodeConfigWorkloadMetadataConfigArgsDict']]
         """
         The workload metadata configuration for this node.
@@ -17509,6 +17722,7 @@ class NodePoolNodeConfigArgs:
                  storage_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigTaintArgs']]]] = None,
+                 windows_node_config: Optional[pulumi.Input['NodePoolNodeConfigWindowsNodeConfigArgs']] = None,
                  workload_metadata_config: Optional[pulumi.Input['NodePoolNodeConfigWorkloadMetadataConfigArgs']] = None):
         """
         :param pulumi.Input['NodePoolNodeConfigAdvancedMachineFeaturesArgs'] advanced_machine_features: Specifies options for controlling advanced machine features.
@@ -17556,6 +17770,7 @@ class NodePoolNodeConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_pools: The list of Storage Pools where boot disks are provisioned.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of instance tags applied to all nodes.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigTaintArgs']]] taints: List of Kubernetes taints to be applied to each node.
+        :param pulumi.Input['NodePoolNodeConfigWindowsNodeConfigArgs'] windows_node_config: Parameters that can be configured on Windows nodes.
         :param pulumi.Input['NodePoolNodeConfigWorkloadMetadataConfigArgs'] workload_metadata_config: The workload metadata configuration for this node.
         """
         if advanced_machine_features is not None:
@@ -17642,6 +17857,8 @@ class NodePoolNodeConfigArgs:
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
+        if windows_node_config is not None:
+            pulumi.set(__self__, "windows_node_config", windows_node_config)
         if workload_metadata_config is not None:
             pulumi.set(__self__, "workload_metadata_config", workload_metadata_config)
 
@@ -18151,6 +18368,18 @@ class NodePoolNodeConfigArgs:
     @taints.setter
     def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigTaintArgs']]]]):
         pulumi.set(self, "taints", value)
+
+    @property
+    @pulumi.getter(name="windowsNodeConfig")
+    def windows_node_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigWindowsNodeConfigArgs']]:
+        """
+        Parameters that can be configured on Windows nodes.
+        """
+        return pulumi.get(self, "windows_node_config")
+
+    @windows_node_config.setter
+    def windows_node_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigWindowsNodeConfigArgs']]):
+        pulumi.set(self, "windows_node_config", value)
 
     @property
     @pulumi.getter(name="workloadMetadataConfig")
@@ -19657,6 +19886,38 @@ class NodePoolNodeConfigTaintArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class NodePoolNodeConfigWindowsNodeConfigArgsDict(TypedDict):
+        osversion: NotRequired[pulumi.Input[str]]
+        """
+        The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+        """
+elif False:
+    NodePoolNodeConfigWindowsNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NodePoolNodeConfigWindowsNodeConfigArgs:
+    def __init__(__self__, *,
+                 osversion: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] osversion: The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+        """
+        if osversion is not None:
+            pulumi.set(__self__, "osversion", osversion)
+
+    @property
+    @pulumi.getter
+    def osversion(self) -> Optional[pulumi.Input[str]]:
+        """
+        The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+        """
+        return pulumi.get(self, "osversion")
+
+    @osversion.setter
+    def osversion(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "osversion", value)
 
 
 if not MYPY:

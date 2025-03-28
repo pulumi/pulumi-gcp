@@ -270,6 +270,9 @@ type Image struct {
 	RawDisk ImageRawDiskPtrOutput `pulumi:"rawDisk"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// Set the secure boot keys of shielded instance.
+	// Structure is documented below.
+	ShieldedInstanceInitialState ImageShieldedInstanceInitialStateOutput `pulumi:"shieldedInstanceInitialState"`
 	// The source disk to create this image based on.
 	// You must provide either this property or the
 	// rawDisk.source property but not both to create an image.
@@ -388,6 +391,9 @@ type imageState struct {
 	RawDisk *ImageRawDisk `pulumi:"rawDisk"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// Set the secure boot keys of shielded instance.
+	// Structure is documented below.
+	ShieldedInstanceInitialState *ImageShieldedInstanceInitialState `pulumi:"shieldedInstanceInitialState"`
 	// The source disk to create this image based on.
 	// You must provide either this property or the
 	// rawDisk.source property but not both to create an image.
@@ -472,6 +478,9 @@ type ImageState struct {
 	RawDisk ImageRawDiskPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
+	// Set the secure boot keys of shielded instance.
+	// Structure is documented below.
+	ShieldedInstanceInitialState ImageShieldedInstanceInitialStatePtrInput
 	// The source disk to create this image based on.
 	// You must provide either this property or the
 	// rawDisk.source property but not both to create an image.
@@ -545,6 +554,9 @@ type imageArgs struct {
 	// The parameters of the raw disk image.
 	// Structure is documented below.
 	RawDisk *ImageRawDisk `pulumi:"rawDisk"`
+	// Set the secure boot keys of shielded instance.
+	// Structure is documented below.
+	ShieldedInstanceInitialState *ImageShieldedInstanceInitialState `pulumi:"shieldedInstanceInitialState"`
 	// The source disk to create this image based on.
 	// You must provide either this property or the
 	// rawDisk.source property but not both to create an image.
@@ -615,6 +627,9 @@ type ImageArgs struct {
 	// The parameters of the raw disk image.
 	// Structure is documented below.
 	RawDisk ImageRawDiskPtrInput
+	// Set the secure boot keys of shielded instance.
+	// Structure is documented below.
+	ShieldedInstanceInitialState ImageShieldedInstanceInitialStatePtrInput
 	// The source disk to create this image based on.
 	// You must provide either this property or the
 	// rawDisk.source property but not both to create an image.
@@ -831,6 +846,12 @@ func (o ImageOutput) RawDisk() ImageRawDiskPtrOutput {
 // The URI of the created resource.
 func (o ImageOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Set the secure boot keys of shielded instance.
+// Structure is documented below.
+func (o ImageOutput) ShieldedInstanceInitialState() ImageShieldedInstanceInitialStateOutput {
+	return o.ApplyT(func(v *Image) ImageShieldedInstanceInitialStateOutput { return v.ShieldedInstanceInitialState }).(ImageShieldedInstanceInitialStateOutput)
 }
 
 // The source disk to create this image based on.

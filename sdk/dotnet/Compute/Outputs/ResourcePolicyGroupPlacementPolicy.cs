@@ -27,6 +27,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? Collocation;
         /// <summary>
+        /// Specifies the shape of the GPU slice, in slice based GPU families eg. A4X.
+        /// </summary>
+        public readonly string? GpuTopology;
+        /// <summary>
         /// Specifies the number of max logical switches.
         /// </summary>
         public readonly int? MaxDistance;
@@ -43,12 +47,15 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? collocation,
 
+            string? gpuTopology,
+
             int? maxDistance,
 
             int? vmCount)
         {
             AvailabilityDomainCount = availabilityDomainCount;
             Collocation = collocation;
+            GpuTopology = gpuTopology;
             MaxDistance = maxDistance;
             VmCount = vmCount;
         }

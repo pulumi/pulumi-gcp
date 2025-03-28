@@ -253,6 +253,8 @@ loggingCustomEndpoint: Optional[str]
 
 lookerCustomEndpoint: Optional[str]
 
+lustreCustomEndpoint: Optional[str]
+
 managedKafkaCustomEndpoint: Optional[str]
 
 memcacheCustomEndpoint: Optional[str]
@@ -282,6 +284,8 @@ oracleDatabaseCustomEndpoint: Optional[str]
 orgPolicyCustomEndpoint: Optional[str]
 
 osConfigCustomEndpoint: Optional[str]
+
+osConfigV2CustomEndpoint: Optional[str]
 
 osLoginCustomEndpoint: Optional[str]
 
@@ -358,6 +362,8 @@ sourceRepoCustomEndpoint: Optional[str]
 spannerCustomEndpoint: Optional[str]
 
 sqlCustomEndpoint: Optional[str]
+
+storageControlCustomEndpoint: Optional[str]
 
 storageCustomEndpoint: Optional[str]
 

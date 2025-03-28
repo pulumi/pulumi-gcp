@@ -15,6 +15,8 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
  *
+ * > **Note:** When importing the resource with `pulumi import`, provide the destination project and location
+ * in the format projects/{{destination_project}}/locations/{{destination_location}}/subscriptions/{{subscription_id}}
  * ## Example Usage
  *
  * ### Bigquery Analyticshub Listing Subscription Basic
@@ -149,7 +151,7 @@ export class ListingSubscription extends pulumi.CustomResource {
      */
     public readonly listingId!: pulumi.Output<string>;
     /**
-     * The name of the location for this subscription.
+     * The name of the location of the data exchange. Distinct from the location of the destination data set.
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -284,7 +286,7 @@ export interface ListingSubscriptionState {
      */
     listingId?: pulumi.Input<string>;
     /**
-     * The name of the location for this subscription.
+     * The name of the location of the data exchange. Distinct from the location of the destination data set.
      */
     location?: pulumi.Input<string>;
     /**
@@ -336,7 +338,7 @@ export interface ListingSubscriptionArgs {
      */
     listingId: pulumi.Input<string>;
     /**
-     * The name of the location for this subscription.
+     * The name of the location of the data exchange. Distinct from the location of the destination data set.
      */
     location: pulumi.Input<string>;
     project?: pulumi.Input<string>;

@@ -313,6 +313,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
+        /// Set the secure boot keys of shielded instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("shieldedInstanceInitialState")]
+        public Output<Outputs.ImageShieldedInstanceInitialState> ShieldedInstanceInitialState { get; private set; } = null!;
+
+        /// <summary>
         /// The source disk to create this image based on.
         /// You must provide either this property or the
         /// rawDisk.source property but not both to create an image.
@@ -503,6 +510,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("rawDisk")]
         public Input<Inputs.ImageRawDiskArgs>? RawDisk { get; set; }
+
+        /// <summary>
+        /// Set the secure boot keys of shielded instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("shieldedInstanceInitialState")]
+        public Input<Inputs.ImageShieldedInstanceInitialStateArgs>? ShieldedInstanceInitialState { get; set; }
 
         /// <summary>
         /// The source disk to create this image based on.
@@ -717,6 +731,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        /// <summary>
+        /// Set the secure boot keys of shielded instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("shieldedInstanceInitialState")]
+        public Input<Inputs.ImageShieldedInstanceInitialStateGetArgs>? ShieldedInstanceInitialState { get; set; }
 
         /// <summary>
         /// The source disk to create this image based on.

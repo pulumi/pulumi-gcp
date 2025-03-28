@@ -254,6 +254,7 @@ var moduleMapping = map[string]string{
 	"kms":                        gcpKMS,
 	"logging":                    gcpLogging,
 	"looker":                     gcpLooker,
+	"lustre":                     "Lustre",
 	"managed_kafka":              gcpManagedKafka,
 	"memcache":                   gcpMemcache,
 	"memorystore":                gcpMemorystore,
@@ -2759,6 +2760,10 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{
 					Source: "data_source_sourcerepo_repository.html.markdown",
 				},
+			},
+			// Storage
+			"google_storage_control_project_intelligence_config": {
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 
 			"google_gke_hub_feature":            {Docs: &info.Doc{AllowMissing: true}},

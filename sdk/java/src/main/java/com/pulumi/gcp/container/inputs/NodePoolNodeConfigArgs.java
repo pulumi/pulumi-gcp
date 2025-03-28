@@ -25,6 +25,7 @@ import com.pulumi.gcp.container.inputs.NodePoolNodeConfigSecondaryBootDiskArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigShieldedInstanceConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigSoleTenantConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigTaintArgs;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigWindowsNodeConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigWorkloadMetadataConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -677,6 +678,21 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Parameters that can be configured on Windows nodes.
+     * 
+     */
+    @Import(name="windowsNodeConfig")
+    private @Nullable Output<NodePoolNodeConfigWindowsNodeConfigArgs> windowsNodeConfig;
+
+    /**
+     * @return Parameters that can be configured on Windows nodes.
+     * 
+     */
+    public Optional<Output<NodePoolNodeConfigWindowsNodeConfigArgs>> windowsNodeConfig() {
+        return Optional.ofNullable(this.windowsNodeConfig);
+    }
+
+    /**
      * The workload metadata configuration for this node.
      * 
      */
@@ -736,6 +752,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         this.storagePools = $.storagePools;
         this.tags = $.tags;
         this.taints = $.taints;
+        this.windowsNodeConfig = $.windowsNodeConfig;
         this.workloadMetadataConfig = $.workloadMetadataConfig;
     }
 
@@ -1713,6 +1730,27 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
          */
         public Builder taints(NodePoolNodeConfigTaintArgs... taints) {
             return taints(List.of(taints));
+        }
+
+        /**
+         * @param windowsNodeConfig Parameters that can be configured on Windows nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder windowsNodeConfig(@Nullable Output<NodePoolNodeConfigWindowsNodeConfigArgs> windowsNodeConfig) {
+            $.windowsNodeConfig = windowsNodeConfig;
+            return this;
+        }
+
+        /**
+         * @param windowsNodeConfig Parameters that can be configured on Windows nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder windowsNodeConfig(NodePoolNodeConfigWindowsNodeConfigArgs windowsNodeConfig) {
+            return windowsNodeConfig(Output.of(windowsNodeConfig));
         }
 
         /**

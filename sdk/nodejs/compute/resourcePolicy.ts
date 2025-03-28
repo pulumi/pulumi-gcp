@@ -162,6 +162,66 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Resource Policy Workload Policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bar = new gcp.compute.ResourcePolicy("bar", {
+ *     name: "gce-policy",
+ *     region: "europe-west1",
+ *     workloadPolicy: {
+ *         type: "HIGH_AVAILABILITY",
+ *     },
+ * });
+ * ```
+ * ### Resource Policy Workload Policy Accelerator Topology
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bar = new gcp.compute.ResourcePolicy("bar", {
+ *     name: "gce-policy",
+ *     region: "europe-west1",
+ *     workloadPolicy: {
+ *         type: "HIGH_THROUGHPUT",
+ *         acceleratorTopology: "SOME NEW TOPOLOGY",
+ *     },
+ * });
+ * ```
+ * ### Resource Policy Workload Policy Max Topology Distance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bar = new gcp.compute.ResourcePolicy("bar", {
+ *     name: "gce-policy",
+ *     region: "europe-west1",
+ *     workloadPolicy: {
+ *         type: "HIGH_THROUGHPUT",
+ *         maxTopologyDistance: "BLOCK",
+ *     },
+ * });
+ * ```
+ * ### Resource Policy Placement Policy Gpu Topology
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const baz = new gcp.compute.ResourcePolicy("baz", {
+ *     name: "gce-policy",
+ *     region: "europe-west9",
+ *     groupPlacementPolicy: {
+ *         vmCount: 2,
+ *         collocation: "COLLOCATED",
+ *         gpuTopology: "1x72",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -271,6 +331,11 @@ export class ResourcePolicy extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly snapshotSchedulePolicy!: pulumi.Output<outputs.compute.ResourcePolicySnapshotSchedulePolicy | undefined>;
+    /**
+     * Represents the workload policy.
+     * Structure is documented below.
+     */
+    public readonly workloadPolicy!: pulumi.Output<outputs.compute.ResourcePolicyWorkloadPolicy | undefined>;
 
     /**
      * Create a ResourcePolicy resource with the given unique name, arguments, and options.
@@ -294,6 +359,7 @@ export class ResourcePolicy extends pulumi.CustomResource {
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["snapshotSchedulePolicy"] = state ? state.snapshotSchedulePolicy : undefined;
+            resourceInputs["workloadPolicy"] = state ? state.workloadPolicy : undefined;
         } else {
             const args = argsOrState as ResourcePolicyArgs | undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -304,6 +370,7 @@ export class ResourcePolicy extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["snapshotSchedulePolicy"] = args ? args.snapshotSchedulePolicy : undefined;
+            resourceInputs["workloadPolicy"] = args ? args.workloadPolicy : undefined;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -365,6 +432,11 @@ export interface ResourcePolicyState {
      * Structure is documented below.
      */
     snapshotSchedulePolicy?: pulumi.Input<inputs.compute.ResourcePolicySnapshotSchedulePolicy>;
+    /**
+     * Represents the workload policy.
+     * Structure is documented below.
+     */
+    workloadPolicy?: pulumi.Input<inputs.compute.ResourcePolicyWorkloadPolicy>;
 }
 
 /**
@@ -417,4 +489,9 @@ export interface ResourcePolicyArgs {
      * Structure is documented below.
      */
     snapshotSchedulePolicy?: pulumi.Input<inputs.compute.ResourcePolicySnapshotSchedulePolicy>;
+    /**
+     * Represents the workload policy.
+     * Structure is documented below.
+     */
+    workloadPolicy?: pulumi.Input<inputs.compute.ResourcePolicyWorkloadPolicy>;
 }

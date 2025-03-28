@@ -45,6 +45,8 @@ import com.pulumi.gcp.compute.inputs.GetImageArgs;
 import com.pulumi.gcp.compute.inputs.GetImageIamPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetImageIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetImagePlainArgs;
+import com.pulumi.gcp.compute.inputs.GetImagesArgs;
+import com.pulumi.gcp.compute.inputs.GetImagesPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceGroupArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceGroupManagerArgs;
@@ -147,6 +149,7 @@ import com.pulumi.gcp.compute.outputs.GetHcVpnGatewayResult;
 import com.pulumi.gcp.compute.outputs.GetHealthCheckResult;
 import com.pulumi.gcp.compute.outputs.GetImageIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetImageResult;
+import com.pulumi.gcp.compute.outputs.GetImagesResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceGuestAttributesResult;
@@ -4850,6 +4853,440 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetImageIamPolicyResult> getImageIamPolicyPlain(GetImageIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getImageIamPolicy:getImageIamPolicy", TypeShape.of(GetImageIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about Google Compute Images. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
+     * [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetImagesArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var debian = ComputeFunctions.getImages(GetImagesArgs.builder()
+     *             .filter("name eq my-image.*")
+     *             .build());
+     * 
+     *         var default_ = new Instance("default", InstanceArgs.builder()
+     *             .name("test")
+     *             .machineType("f1-micro")
+     *             .zone("us-central1-a")
+     *             .bootDisk(InstanceBootDiskArgs.builder()
+     *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
+     *                     .image(debian.applyValue(getImagesResult -> getImagesResult.images()[0].selfLink()))
+     *                     .build())
+     *                 .build())
+     *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+     *                 .network(defaultGoogleComputeNetwork.name())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetImagesResult> getImages() {
+        return getImages(GetImagesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about Google Compute Images. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
+     * [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetImagesArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var debian = ComputeFunctions.getImages(GetImagesArgs.builder()
+     *             .filter("name eq my-image.*")
+     *             .build());
+     * 
+     *         var default_ = new Instance("default", InstanceArgs.builder()
+     *             .name("test")
+     *             .machineType("f1-micro")
+     *             .zone("us-central1-a")
+     *             .bootDisk(InstanceBootDiskArgs.builder()
+     *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
+     *                     .image(debian.applyValue(getImagesResult -> getImagesResult.images()[0].selfLink()))
+     *                     .build())
+     *                 .build())
+     *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+     *                 .network(defaultGoogleComputeNetwork.name())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetImagesResult> getImagesPlain() {
+        return getImagesPlain(GetImagesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about Google Compute Images. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
+     * [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetImagesArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var debian = ComputeFunctions.getImages(GetImagesArgs.builder()
+     *             .filter("name eq my-image.*")
+     *             .build());
+     * 
+     *         var default_ = new Instance("default", InstanceArgs.builder()
+     *             .name("test")
+     *             .machineType("f1-micro")
+     *             .zone("us-central1-a")
+     *             .bootDisk(InstanceBootDiskArgs.builder()
+     *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
+     *                     .image(debian.applyValue(getImagesResult -> getImagesResult.images()[0].selfLink()))
+     *                     .build())
+     *                 .build())
+     *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+     *                 .network(defaultGoogleComputeNetwork.name())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetImagesResult> getImages(GetImagesArgs args) {
+        return getImages(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about Google Compute Images. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
+     * [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetImagesArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var debian = ComputeFunctions.getImages(GetImagesArgs.builder()
+     *             .filter("name eq my-image.*")
+     *             .build());
+     * 
+     *         var default_ = new Instance("default", InstanceArgs.builder()
+     *             .name("test")
+     *             .machineType("f1-micro")
+     *             .zone("us-central1-a")
+     *             .bootDisk(InstanceBootDiskArgs.builder()
+     *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
+     *                     .image(debian.applyValue(getImagesResult -> getImagesResult.images()[0].selfLink()))
+     *                     .build())
+     *                 .build())
+     *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+     *                 .network(defaultGoogleComputeNetwork.name())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetImagesResult> getImagesPlain(GetImagesPlainArgs args) {
+        return getImagesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about Google Compute Images. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
+     * [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetImagesArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var debian = ComputeFunctions.getImages(GetImagesArgs.builder()
+     *             .filter("name eq my-image.*")
+     *             .build());
+     * 
+     *         var default_ = new Instance("default", InstanceArgs.builder()
+     *             .name("test")
+     *             .machineType("f1-micro")
+     *             .zone("us-central1-a")
+     *             .bootDisk(InstanceBootDiskArgs.builder()
+     *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
+     *                     .image(debian.applyValue(getImagesResult -> getImagesResult.images()[0].selfLink()))
+     *                     .build())
+     *                 .build())
+     *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+     *                 .network(defaultGoogleComputeNetwork.name())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetImagesResult> getImages(GetImagesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getImages:getImages", TypeShape.of(GetImagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about Google Compute Images. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
+     * [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetImagesArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var debian = ComputeFunctions.getImages(GetImagesArgs.builder()
+     *             .filter("name eq my-image.*")
+     *             .build());
+     * 
+     *         var default_ = new Instance("default", InstanceArgs.builder()
+     *             .name("test")
+     *             .machineType("f1-micro")
+     *             .zone("us-central1-a")
+     *             .bootDisk(InstanceBootDiskArgs.builder()
+     *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
+     *                     .image(debian.applyValue(getImagesResult -> getImagesResult.images()[0].selfLink()))
+     *                     .build())
+     *                 .build())
+     *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+     *                 .network(defaultGoogleComputeNetwork.name())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetImagesResult> getImages(GetImagesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getImages:getImages", TypeShape.of(GetImagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about Google Compute Images. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
+     * [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetImagesArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var debian = ComputeFunctions.getImages(GetImagesArgs.builder()
+     *             .filter("name eq my-image.*")
+     *             .build());
+     * 
+     *         var default_ = new Instance("default", InstanceArgs.builder()
+     *             .name("test")
+     *             .machineType("f1-micro")
+     *             .zone("us-central1-a")
+     *             .bootDisk(InstanceBootDiskArgs.builder()
+     *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
+     *                     .image(debian.applyValue(getImagesResult -> getImagesResult.images()[0].selfLink()))
+     *                     .build())
+     *                 .build())
+     *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+     *                 .network(defaultGoogleComputeNetwork.name())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetImagesResult> getImagesPlain(GetImagesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getImages:getImages", TypeShape.of(GetImagesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information about a VM instance resource within GCE. For more information see

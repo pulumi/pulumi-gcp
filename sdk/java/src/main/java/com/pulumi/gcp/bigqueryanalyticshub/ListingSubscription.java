@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
  * 
+ * &gt; **Note:** When importing the resource with `pulumi import`, provide the destination project and location
+ * in the format projects/{{destination_project}}/locations/{{destination_location}}/subscriptions/{{subscription_id}}
  * ## Example Usage
  * 
  * ### Bigquery Analyticshub Listing Subscription Basic
@@ -243,14 +245,14 @@ public class ListingSubscription extends com.pulumi.resources.CustomResource {
         return this.listingId;
     }
     /**
-     * The name of the location for this subscription.
+     * The name of the location of the data exchange. Distinct from the location of the destination data set.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
-     * @return The name of the location for this subscription.
+     * @return The name of the location of the data exchange. Distinct from the location of the destination data set.
      * 
      */
     public Output<String> location() {

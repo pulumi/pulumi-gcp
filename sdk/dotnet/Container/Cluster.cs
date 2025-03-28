@@ -651,6 +651,13 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Configuration for the
+        /// Structure is documented below.
+        /// </summary>
+        [Output("podAutoscaling")]
+        public Output<Outputs.ClusterPodAutoscaling> PodAutoscaling { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for the
         /// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         /// Structure is documented below.
         /// </summary>
@@ -1318,6 +1325,13 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Configuration for the
+        /// Structure is documented below.
+        /// </summary>
+        [Input("podAutoscaling")]
+        public Input<Inputs.ClusterPodAutoscalingArgs>? PodAutoscaling { get; set; }
+
+        /// <summary>
+        /// Configuration for the
         /// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         /// Structure is documented below.
         /// </summary>
@@ -1955,6 +1969,13 @@ namespace Pulumi.Gcp.Container
 
         [Input("operation")]
         public Input<string>? Operation { get; set; }
+
+        /// <summary>
+        /// Configuration for the
+        /// Structure is documented below.
+        /// </summary>
+        [Input("podAutoscaling")]
+        public Input<Inputs.ClusterPodAutoscalingGetArgs>? PodAutoscaling { get; set; }
 
         /// <summary>
         /// Configuration for the

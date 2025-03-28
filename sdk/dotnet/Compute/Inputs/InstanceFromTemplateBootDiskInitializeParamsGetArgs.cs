@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class InstanceFromTemplateBootDiskInitializeParamsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The architecture of the disk. One of "X86_64" or "ARM64".
+        /// </summary>
+        [Input("architecture")]
+        public Input<string>? Architecture { get; set; }
+
+        /// <summary>
         /// A flag to enable confidential compute mode on boot disk
         /// </summary>
         [Input("enableConfidentialCompute")]

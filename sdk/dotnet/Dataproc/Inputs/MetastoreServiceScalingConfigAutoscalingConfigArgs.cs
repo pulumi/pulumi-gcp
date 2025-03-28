@@ -19,6 +19,13 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<bool>? AutoscalingEnabled { get; set; }
 
         /// <summary>
+        /// (Output)
+        /// Output only. The scaling factor of a service with autoscaling enabled.
+        /// </summary>
+        [Input("autoscalingFactor")]
+        public Input<double>? AutoscalingFactor { get; set; }
+
+        /// <summary>
         /// Represents the limit configuration of a metastore service.
         /// Structure is documented below.
         /// </summary>

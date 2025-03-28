@@ -391,6 +391,12 @@ namespace Pulumi.Gcp.Container.Inputs
         }
 
         /// <summary>
+        /// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+        /// </summary>
+        [Input("windowsNodeConfig")]
+        public Input<Inputs.ClusterNodeConfigWindowsNodeConfigArgs>? WindowsNodeConfig { get; set; }
+
+        /// <summary>
         /// Metadata configuration to expose to workloads on the node pool.
         /// Structure is documented below.
         /// </summary>

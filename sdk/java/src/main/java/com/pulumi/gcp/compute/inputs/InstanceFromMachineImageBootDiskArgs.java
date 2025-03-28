@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageBootDiskInitializeParamsArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -75,6 +76,21 @@ public final class InstanceFromMachineImageBootDiskArgs extends com.pulumi.resou
      */
     public Optional<Output<String>> diskEncryptionKeySha256() {
         return Optional.ofNullable(this.diskEncryptionKeySha256);
+    }
+
+    /**
+     * A list of features to enable on the guest operating system. Applicable only for bootable images.
+     * 
+     */
+    @Import(name="guestOsFeatures")
+    private @Nullable Output<List<String>> guestOsFeatures;
+
+    /**
+     * @return A list of features to enable on the guest operating system. Applicable only for bootable images.
+     * 
+     */
+    public Optional<Output<List<String>>> guestOsFeatures() {
+        return Optional.ofNullable(this.guestOsFeatures);
     }
 
     /**
@@ -159,6 +175,7 @@ public final class InstanceFromMachineImageBootDiskArgs extends com.pulumi.resou
         this.deviceName = $.deviceName;
         this.diskEncryptionKeyRaw = $.diskEncryptionKeyRaw;
         this.diskEncryptionKeySha256 = $.diskEncryptionKeySha256;
+        this.guestOsFeatures = $.guestOsFeatures;
         this.initializeParams = $.initializeParams;
         this.interface_ = $.interface_;
         this.kmsKeySelfLink = $.kmsKeySelfLink;
@@ -266,6 +283,37 @@ public final class InstanceFromMachineImageBootDiskArgs extends com.pulumi.resou
          */
         public Builder diskEncryptionKeySha256(String diskEncryptionKeySha256) {
             return diskEncryptionKeySha256(Output.of(diskEncryptionKeySha256));
+        }
+
+        /**
+         * @param guestOsFeatures A list of features to enable on the guest operating system. Applicable only for bootable images.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder guestOsFeatures(@Nullable Output<List<String>> guestOsFeatures) {
+            $.guestOsFeatures = guestOsFeatures;
+            return this;
+        }
+
+        /**
+         * @param guestOsFeatures A list of features to enable on the guest operating system. Applicable only for bootable images.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder guestOsFeatures(List<String> guestOsFeatures) {
+            return guestOsFeatures(Output.of(guestOsFeatures));
+        }
+
+        /**
+         * @param guestOsFeatures A list of features to enable on the guest operating system. Applicable only for bootable images.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder guestOsFeatures(String... guestOsFeatures) {
+            return guestOsFeatures(List.of(guestOsFeatures));
         }
 
         /**
