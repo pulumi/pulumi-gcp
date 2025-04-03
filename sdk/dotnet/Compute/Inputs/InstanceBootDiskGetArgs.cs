@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// A 256-bit [customer-supplied encryption key]
         /// (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
         /// encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-        /// to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw`
+        /// to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
         /// may be set.
         /// </summary>
         public Input<string>? DiskEncryptionKeyRaw
@@ -46,6 +46,23 @@ namespace Pulumi.Gcp.Compute.Inputs
             }
         }
 
+        [Input("diskEncryptionKeyRsa")]
+        private Input<string>? _diskEncryptionKeyRsa;
+
+        /// <summary>
+        /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+        /// (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+        /// </summary>
+        public Input<string>? DiskEncryptionKeyRsa
+        {
+            get => _diskEncryptionKeyRsa;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _diskEncryptionKeyRsa = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
         /// encoded SHA-256 hash of the [customer-supplied encryption key]
@@ -53,6 +70,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// </summary>
         [Input("diskEncryptionKeySha256")]
         public Input<string>? DiskEncryptionKeySha256 { get; set; }
+
+        /// <summary>
+        /// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        /// </summary>
+        [Input("diskEncryptionServiceAccount")]
+        public Input<string>? DiskEncryptionServiceAccount { get; set; }
 
         [Input("guestOsFeatures")]
         private InputList<string>? _guestOsFeatures;
@@ -82,8 +105,9 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// The self_link of the encryption key that is
-        /// stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`
-        /// and `disk_encryption_key_raw` may be set.
+        /// stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`,
+        /// `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+        /// may be set.
         /// </summary>
         [Input("kmsKeySelfLink")]
         public Input<string>? KmsKeySelfLink { get; set; }

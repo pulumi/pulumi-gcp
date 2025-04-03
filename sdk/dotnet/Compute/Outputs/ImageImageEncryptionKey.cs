@@ -24,15 +24,33 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// account is used.
         /// </summary>
         public readonly string? KmsKeyServiceAccount;
+        /// <summary>
+        /// Specifies a 256-bit customer-supplied encryption key, encoded in
+        /// RFC 4648 base64 to either encrypt or decrypt this resource.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
+        /// </summary>
+        public readonly string? RawKey;
+        /// <summary>
+        /// Specifies a 256-bit customer-supplied encryption key, encoded in
+        /// RFC 4648 base64 to either encrypt or decrypt this resource.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
+        /// </summary>
+        public readonly string? RsaEncryptedKey;
 
         [OutputConstructor]
         private ImageImageEncryptionKey(
             string? kmsKeySelfLink,
 
-            string? kmsKeyServiceAccount)
+            string? kmsKeyServiceAccount,
+
+            string? rawKey,
+
+            string? rsaEncryptedKey)
         {
             KmsKeySelfLink = kmsKeySelfLink;
             KmsKeyServiceAccount = kmsKeyServiceAccount;
+            RawKey = rawKey;
+            RsaEncryptedKey = rsaEncryptedKey;
         }
     }
 }

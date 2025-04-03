@@ -43,6 +43,24 @@ namespace Pulumi.Gcp.Compute.Inputs
             }
         }
 
+        [Input("rsaEncryptedKey")]
+        private Input<string>? _rsaEncryptedKey;
+
+        /// <summary>
+        /// Specifies an encryption key stored in Google Cloud KMS, encoded in
+        /// RFC 4648 base64 to either encrypt or decrypt this resource.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
+        /// </summary>
+        public Input<string>? RsaEncryptedKey
+        {
+            get => _rsaEncryptedKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _rsaEncryptedKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// (Output)
         /// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied

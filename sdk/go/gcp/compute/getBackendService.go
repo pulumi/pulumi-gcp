@@ -117,7 +117,8 @@ type LookupBackendServiceResult struct {
 	SessionAffinity              string                                        `pulumi:"sessionAffinity"`
 	StrongSessionAffinityCookies []GetBackendServiceStrongSessionAffinityCooky `pulumi:"strongSessionAffinityCookies"`
 	// The number of seconds to wait for a backend to respond to a request before considering the request failed.
-	TimeoutSec int `pulumi:"timeoutSec"`
+	TimeoutSec  int                           `pulumi:"timeoutSec"`
+	TlsSettings []GetBackendServiceTlsSetting `pulumi:"tlsSettings"`
 }
 
 func LookupBackendServiceOutput(ctx *pulumi.Context, args LookupBackendServiceOutputArgs, opts ...pulumi.InvokeOption) LookupBackendServiceResultOutput {
@@ -315,6 +316,10 @@ func (o LookupBackendServiceResultOutput) StrongSessionAffinityCookies() GetBack
 // The number of seconds to wait for a backend to respond to a request before considering the request failed.
 func (o LookupBackendServiceResultOutput) TimeoutSec() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupBackendServiceResult) int { return v.TimeoutSec }).(pulumi.IntOutput)
+}
+
+func (o LookupBackendServiceResultOutput) TlsSettings() GetBackendServiceTlsSettingArrayOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) []GetBackendServiceTlsSetting { return v.TlsSettings }).(GetBackendServiceTlsSettingArrayOutput)
 }
 
 func init() {

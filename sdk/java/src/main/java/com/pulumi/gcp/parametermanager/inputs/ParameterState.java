@@ -68,6 +68,23 @@ public final class ParameterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
+     * `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+     * 
+     */
+    @Import(name="kmsKey")
+    private @Nullable Output<String> kmsKey;
+
+    /**
+     * @return The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
+     * `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+     * 
+     */
+    public Optional<Output<String>> kmsKey() {
+        return Optional.ofNullable(this.kmsKey);
+    }
+
+    /**
      * The labels assigned to this Parameter.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
      * and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -210,6 +227,7 @@ public final class ParameterState extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.effectiveLabels = $.effectiveLabels;
         this.format = $.format;
+        this.kmsKey = $.kmsKey;
         this.labels = $.labels;
         this.name = $.name;
         this.parameterId = $.parameterId;
@@ -302,6 +320,29 @@ public final class ParameterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder format(String format) {
             return format(Output.of(format));
+        }
+
+        /**
+         * @param kmsKey The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
+         * `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKey(@Nullable Output<String> kmsKey) {
+            $.kmsKey = kmsKey;
+            return this;
+        }
+
+        /**
+         * @param kmsKey The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
+         * `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKey(String kmsKey) {
+            return kmsKey(Output.of(kmsKey));
         }
 
         /**

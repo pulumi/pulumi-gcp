@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.RouterBgpArgs;
+import com.pulumi.gcp.compute.inputs.RouterMd5AuthenticationKeysArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -79,6 +80,23 @@ public final class RouterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> encryptedInterconnectRouter() {
         return Optional.ofNullable(this.encryptedInterconnectRouter);
+    }
+
+    /**
+     * Keys used for MD5 authentication.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="md5AuthenticationKeys")
+    private @Nullable Output<RouterMd5AuthenticationKeysArgs> md5AuthenticationKeys;
+
+    /**
+     * @return Keys used for MD5 authentication.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RouterMd5AuthenticationKeysArgs>> md5AuthenticationKeys() {
+        return Optional.ofNullable(this.md5AuthenticationKeys);
     }
 
     /**
@@ -179,6 +197,7 @@ public final class RouterState extends com.pulumi.resources.ResourceArgs {
         this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
         this.encryptedInterconnectRouter = $.encryptedInterconnectRouter;
+        this.md5AuthenticationKeys = $.md5AuthenticationKeys;
         this.name = $.name;
         this.network = $.network;
         this.project = $.project;
@@ -290,6 +309,29 @@ public final class RouterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder encryptedInterconnectRouter(Boolean encryptedInterconnectRouter) {
             return encryptedInterconnectRouter(Output.of(encryptedInterconnectRouter));
+        }
+
+        /**
+         * @param md5AuthenticationKeys Keys used for MD5 authentication.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder md5AuthenticationKeys(@Nullable Output<RouterMd5AuthenticationKeysArgs> md5AuthenticationKeys) {
+            $.md5AuthenticationKeys = md5AuthenticationKeys;
+            return this;
+        }
+
+        /**
+         * @param md5AuthenticationKeys Keys used for MD5 authentication.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder md5AuthenticationKeys(RouterMd5AuthenticationKeysArgs md5AuthenticationKeys) {
+            return md5AuthenticationKeys(Output.of(md5AuthenticationKeys));
         }
 
         /**

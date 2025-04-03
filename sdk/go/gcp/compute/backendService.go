@@ -653,6 +653,67 @@ import (
 //	}
 //
 // ```
+// ### Backend Service Tls Settings
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//				Name: pulumi.String("health-check"),
+//				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBackendAuthenticationConfig, err := networksecurity.NewBackendAuthenticationConfig(ctx, "default", &networksecurity.BackendAuthenticationConfigArgs{
+//				Name:           pulumi.String("authentication"),
+//				WellKnownRoots: pulumi.String("PUBLIC_ROOTS"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("backend-service"),
+//				HealthChecks:        defaultHealthCheck.ID(),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//				Protocol:            pulumi.String("HTTPS"),
+//				TlsSettings: &compute.BackendServiceTlsSettingsArgs{
+//					Sni: pulumi.String("example.com"),
+//					SubjectAltNames: compute.BackendServiceTlsSettingsSubjectAltNameArray{
+//						&compute.BackendServiceTlsSettingsSubjectAltNameArgs{
+//							DnsName: pulumi.String("example.com"),
+//						},
+//						&compute.BackendServiceTlsSettingsSubjectAltNameArgs{
+//							UniformResourceIdentifier: pulumi.String("https://example.com"),
+//						},
+//					},
+//					AuthenticationConfig: defaultBackendAuthenticationConfig.ID().ApplyT(func(id string) (string, error) {
+//						return fmt.Sprintf("//networksecurity.googleapis.com/%v", id), nil
+//					}).(pulumi.StringOutput),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -874,6 +935,9 @@ type BackendService struct {
 	// The default is 30 seconds.
 	// The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
 	TimeoutSec pulumi.IntOutput `pulumi:"timeoutSec"`
+	// Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+	// Structure is documented below.
+	TlsSettings BackendServiceTlsSettingsPtrOutput `pulumi:"tlsSettings"`
 }
 
 // NewBackendService registers a new resource with the given unique name, arguments, and options.
@@ -1100,6 +1164,9 @@ type backendServiceState struct {
 	// The default is 30 seconds.
 	// The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
 	TimeoutSec *int `pulumi:"timeoutSec"`
+	// Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+	// Structure is documented below.
+	TlsSettings *BackendServiceTlsSettings `pulumi:"tlsSettings"`
 }
 
 type BackendServiceState struct {
@@ -1297,6 +1364,9 @@ type BackendServiceState struct {
 	// The default is 30 seconds.
 	// The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
 	TimeoutSec pulumi.IntPtrInput
+	// Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+	// Structure is documented below.
+	TlsSettings BackendServiceTlsSettingsPtrInput
 }
 
 func (BackendServiceState) ElementType() reflect.Type {
@@ -1489,6 +1559,9 @@ type backendServiceArgs struct {
 	// The default is 30 seconds.
 	// The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
 	TimeoutSec *int `pulumi:"timeoutSec"`
+	// Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+	// Structure is documented below.
+	TlsSettings *BackendServiceTlsSettings `pulumi:"tlsSettings"`
 }
 
 // The set of arguments for constructing a BackendService resource.
@@ -1678,6 +1751,9 @@ type BackendServiceArgs struct {
 	// The default is 30 seconds.
 	// The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
 	TimeoutSec pulumi.IntPtrInput
+	// Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+	// Structure is documented below.
+	TlsSettings BackendServiceTlsSettingsPtrInput
 }
 
 func (BackendServiceArgs) ElementType() reflect.Type {
@@ -2066,6 +2142,12 @@ func (o BackendServiceOutput) StrongSessionAffinityCookie() BackendServiceStrong
 // The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
 func (o BackendServiceOutput) TimeoutSec() pulumi.IntOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.IntOutput { return v.TimeoutSec }).(pulumi.IntOutput)
+}
+
+// Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+// Structure is documented below.
+func (o BackendServiceOutput) TlsSettings() BackendServiceTlsSettingsPtrOutput {
+	return o.ApplyT(func(v *BackendService) BackendServiceTlsSettingsPtrOutput { return v.TlsSettings }).(BackendServiceTlsSettingsPtrOutput)
 }
 
 type BackendServiceArrayOutput struct{ *pulumi.OutputState }

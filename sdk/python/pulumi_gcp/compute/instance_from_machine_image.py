@@ -32,6 +32,7 @@ class InstanceFromMachineImageArgs:
                  enable_display: Optional[pulumi.Input[bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageGuestAcceleratorArgs']]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
+                 instance_encryption_key: Optional[pulumi.Input['InstanceFromMachineImageInstanceEncryptionKeyArgs']] = None,
                  key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
@@ -49,6 +50,7 @@ class InstanceFromMachineImageArgs:
                  scheduling: Optional[pulumi.Input['InstanceFromMachineImageSchedulingArgs']] = None,
                  service_account: Optional[pulumi.Input['InstanceFromMachineImageServiceAccountArgs']] = None,
                  shielded_instance_config: Optional[pulumi.Input['InstanceFromMachineImageShieldedInstanceConfigArgs']] = None,
+                 source_machine_image_encryption_key: Optional[pulumi.Input['InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
@@ -69,6 +71,7 @@ class InstanceFromMachineImageArgs:
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
                labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
                exceed 253 characters. Changing this forces a new resource to be created.
+        :param pulumi.Input['InstanceFromMachineImageInstanceEncryptionKeyArgs'] instance_encryption_key: Encryption key used to provide data encryption on the given instance.
         :param pulumi.Input[str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
                default.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
@@ -92,6 +95,7 @@ class InstanceFromMachineImageArgs:
         :param pulumi.Input['InstanceFromMachineImageSchedulingArgs'] scheduling: The scheduling strategy being used by the instance.
         :param pulumi.Input['InstanceFromMachineImageServiceAccountArgs'] service_account: The service account to attach to the instance.
         :param pulumi.Input['InstanceFromMachineImageShieldedInstanceConfigArgs'] shielded_instance_config: The shielded vm config being used by the instance.
+        :param pulumi.Input['InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs'] source_machine_image_encryption_key: Encryption key for the source machine image.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags attached to the instance.
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
                set, the provider zone is used.
@@ -123,6 +127,8 @@ class InstanceFromMachineImageArgs:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
+        if instance_encryption_key is not None:
+            pulumi.set(__self__, "instance_encryption_key", instance_encryption_key)
         if key_revocation_action_type is not None:
             pulumi.set(__self__, "key_revocation_action_type", key_revocation_action_type)
         if labels is not None:
@@ -157,6 +163,8 @@ class InstanceFromMachineImageArgs:
             pulumi.set(__self__, "service_account", service_account)
         if shielded_instance_config is not None:
             pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
+        if source_machine_image_encryption_key is not None:
+            pulumi.set(__self__, "source_machine_image_encryption_key", source_machine_image_encryption_key)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if zone is not None:
@@ -296,6 +304,18 @@ class InstanceFromMachineImageArgs:
     @hostname.setter
     def hostname(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter(name="instanceEncryptionKey")
+    def instance_encryption_key(self) -> Optional[pulumi.Input['InstanceFromMachineImageInstanceEncryptionKeyArgs']]:
+        """
+        Encryption key used to provide data encryption on the given instance.
+        """
+        return pulumi.get(self, "instance_encryption_key")
+
+    @instance_encryption_key.setter
+    def instance_encryption_key(self, value: Optional[pulumi.Input['InstanceFromMachineImageInstanceEncryptionKeyArgs']]):
+        pulumi.set(self, "instance_encryption_key", value)
 
     @property
     @pulumi.getter(name="keyRevocationActionType")
@@ -508,6 +528,18 @@ class InstanceFromMachineImageArgs:
         pulumi.set(self, "shielded_instance_config", value)
 
     @property
+    @pulumi.getter(name="sourceMachineImageEncryptionKey")
+    def source_machine_image_encryption_key(self) -> Optional[pulumi.Input['InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs']]:
+        """
+        Encryption key for the source machine image.
+        """
+        return pulumi.get(self, "source_machine_image_encryption_key")
+
+    @source_machine_image_encryption_key.setter
+    def source_machine_image_encryption_key(self, value: Optional[pulumi.Input['InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs']]):
+        pulumi.set(self, "source_machine_image_encryption_key", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -558,6 +590,7 @@ class _InstanceFromMachineImageState:
                  enable_display: Optional[pulumi.Input[bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageGuestAcceleratorArgs']]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
+                 instance_encryption_key: Optional[pulumi.Input['InstanceFromMachineImageInstanceEncryptionKeyArgs']] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
@@ -582,6 +615,7 @@ class _InstanceFromMachineImageState:
                  service_account: Optional[pulumi.Input['InstanceFromMachineImageServiceAccountArgs']] = None,
                  shielded_instance_config: Optional[pulumi.Input['InstanceFromMachineImageShieldedInstanceConfigArgs']] = None,
                  source_machine_image: Optional[pulumi.Input[str]] = None,
+                 source_machine_image_encryption_key: Optional[pulumi.Input['InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags_fingerprint: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -606,6 +640,7 @@ class _InstanceFromMachineImageState:
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
                labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
                exceed 253 characters. Changing this forces a new resource to be created.
+        :param pulumi.Input['InstanceFromMachineImageInstanceEncryptionKeyArgs'] instance_encryption_key: Encryption key used to provide data encryption on the given instance.
         :param pulumi.Input[str] instance_id: The server-assigned unique identifier of this instance.
         :param pulumi.Input[str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
                default.
@@ -639,6 +674,7 @@ class _InstanceFromMachineImageState:
                image to create the instance based on.
                
                - - -
+        :param pulumi.Input['InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs'] source_machine_image_encryption_key: Encryption key for the source machine image.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags attached to the instance.
         :param pulumi.Input[str] tags_fingerprint: The unique fingerprint of the tags.
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
@@ -682,6 +718,8 @@ class _InstanceFromMachineImageState:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
+        if instance_encryption_key is not None:
+            pulumi.set(__self__, "instance_encryption_key", instance_encryption_key)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
         if key_revocation_action_type is not None:
@@ -730,6 +768,8 @@ class _InstanceFromMachineImageState:
             pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if source_machine_image is not None:
             pulumi.set(__self__, "source_machine_image", source_machine_image)
+        if source_machine_image_encryption_key is not None:
+            pulumi.set(__self__, "source_machine_image_encryption_key", source_machine_image_encryption_key)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if tags_fingerprint is not None:
@@ -927,6 +967,18 @@ class _InstanceFromMachineImageState:
     @hostname.setter
     def hostname(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter(name="instanceEncryptionKey")
+    def instance_encryption_key(self) -> Optional[pulumi.Input['InstanceFromMachineImageInstanceEncryptionKeyArgs']]:
+        """
+        Encryption key used to provide data encryption on the given instance.
+        """
+        return pulumi.get(self, "instance_encryption_key")
+
+    @instance_encryption_key.setter
+    def instance_encryption_key(self, value: Optional[pulumi.Input['InstanceFromMachineImageInstanceEncryptionKeyArgs']]):
+        pulumi.set(self, "instance_encryption_key", value)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -1226,6 +1278,18 @@ class _InstanceFromMachineImageState:
         pulumi.set(self, "source_machine_image", value)
 
     @property
+    @pulumi.getter(name="sourceMachineImageEncryptionKey")
+    def source_machine_image_encryption_key(self) -> Optional[pulumi.Input['InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs']]:
+        """
+        Encryption key for the source machine image.
+        """
+        return pulumi.get(self, "source_machine_image_encryption_key")
+
+    @source_machine_image_encryption_key.setter
+    def source_machine_image_encryption_key(self, value: Optional[pulumi.Input['InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs']]):
+        pulumi.set(self, "source_machine_image_encryption_key", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -1284,6 +1348,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                  enable_display: Optional[pulumi.Input[bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageGuestAcceleratorArgs', 'InstanceFromMachineImageGuestAcceleratorArgsDict']]]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
+                 instance_encryption_key: Optional[pulumi.Input[Union['InstanceFromMachineImageInstanceEncryptionKeyArgs', 'InstanceFromMachineImageInstanceEncryptionKeyArgsDict']]] = None,
                  key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
@@ -1302,6 +1367,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                  service_account: Optional[pulumi.Input[Union['InstanceFromMachineImageServiceAccountArgs', 'InstanceFromMachineImageServiceAccountArgsDict']]] = None,
                  shielded_instance_config: Optional[pulumi.Input[Union['InstanceFromMachineImageShieldedInstanceConfigArgs', 'InstanceFromMachineImageShieldedInstanceConfigArgsDict']]] = None,
                  source_machine_image: Optional[pulumi.Input[str]] = None,
+                 source_machine_image_encryption_key: Optional[pulumi.Input[Union['InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs', 'InstanceFromMachineImageSourceMachineImageEncryptionKeyArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1345,6 +1411,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
                labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
                exceed 253 characters. Changing this forces a new resource to be created.
+        :param pulumi.Input[Union['InstanceFromMachineImageInstanceEncryptionKeyArgs', 'InstanceFromMachineImageInstanceEncryptionKeyArgsDict']] instance_encryption_key: Encryption key used to provide data encryption on the given instance.
         :param pulumi.Input[str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
                default.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
@@ -1372,6 +1439,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                image to create the instance based on.
                
                - - -
+        :param pulumi.Input[Union['InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs', 'InstanceFromMachineImageSourceMachineImageEncryptionKeyArgsDict']] source_machine_image_encryption_key: Encryption key for the source machine image.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags attached to the instance.
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
                set, the provider zone is used.
@@ -1439,6 +1507,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                  enable_display: Optional[pulumi.Input[bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageGuestAcceleratorArgs', 'InstanceFromMachineImageGuestAcceleratorArgsDict']]]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
+                 instance_encryption_key: Optional[pulumi.Input[Union['InstanceFromMachineImageInstanceEncryptionKeyArgs', 'InstanceFromMachineImageInstanceEncryptionKeyArgsDict']]] = None,
                  key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
@@ -1457,6 +1526,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                  service_account: Optional[pulumi.Input[Union['InstanceFromMachineImageServiceAccountArgs', 'InstanceFromMachineImageServiceAccountArgsDict']]] = None,
                  shielded_instance_config: Optional[pulumi.Input[Union['InstanceFromMachineImageShieldedInstanceConfigArgs', 'InstanceFromMachineImageShieldedInstanceConfigArgsDict']]] = None,
                  source_machine_image: Optional[pulumi.Input[str]] = None,
+                 source_machine_image_encryption_key: Optional[pulumi.Input[Union['InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs', 'InstanceFromMachineImageSourceMachineImageEncryptionKeyArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1478,6 +1548,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
             __props__.__dict__["enable_display"] = enable_display
             __props__.__dict__["guest_accelerators"] = guest_accelerators
             __props__.__dict__["hostname"] = hostname
+            __props__.__dict__["instance_encryption_key"] = instance_encryption_key
             __props__.__dict__["key_revocation_action_type"] = key_revocation_action_type
             __props__.__dict__["labels"] = labels
             __props__.__dict__["machine_type"] = machine_type
@@ -1498,6 +1569,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
             if source_machine_image is None and not opts.urn:
                 raise TypeError("Missing required property 'source_machine_image'")
             __props__.__dict__["source_machine_image"] = source_machine_image
+            __props__.__dict__["source_machine_image_encryption_key"] = source_machine_image_encryption_key
             __props__.__dict__["tags"] = tags
             __props__.__dict__["zone"] = zone
             __props__.__dict__["attached_disks"] = None
@@ -1541,6 +1613,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
             enable_display: Optional[pulumi.Input[bool]] = None,
             guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageGuestAcceleratorArgs', 'InstanceFromMachineImageGuestAcceleratorArgsDict']]]]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
+            instance_encryption_key: Optional[pulumi.Input[Union['InstanceFromMachineImageInstanceEncryptionKeyArgs', 'InstanceFromMachineImageInstanceEncryptionKeyArgsDict']]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             key_revocation_action_type: Optional[pulumi.Input[str]] = None,
             label_fingerprint: Optional[pulumi.Input[str]] = None,
@@ -1565,6 +1638,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
             service_account: Optional[pulumi.Input[Union['InstanceFromMachineImageServiceAccountArgs', 'InstanceFromMachineImageServiceAccountArgsDict']]] = None,
             shielded_instance_config: Optional[pulumi.Input[Union['InstanceFromMachineImageShieldedInstanceConfigArgs', 'InstanceFromMachineImageShieldedInstanceConfigArgsDict']]] = None,
             source_machine_image: Optional[pulumi.Input[str]] = None,
+            source_machine_image_encryption_key: Optional[pulumi.Input[Union['InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs', 'InstanceFromMachineImageSourceMachineImageEncryptionKeyArgsDict']]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags_fingerprint: Optional[pulumi.Input[str]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'InstanceFromMachineImage':
@@ -1594,6 +1668,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
                labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
                exceed 253 characters. Changing this forces a new resource to be created.
+        :param pulumi.Input[Union['InstanceFromMachineImageInstanceEncryptionKeyArgs', 'InstanceFromMachineImageInstanceEncryptionKeyArgsDict']] instance_encryption_key: Encryption key used to provide data encryption on the given instance.
         :param pulumi.Input[str] instance_id: The server-assigned unique identifier of this instance.
         :param pulumi.Input[str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
                default.
@@ -1627,6 +1702,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                image to create the instance based on.
                
                - - -
+        :param pulumi.Input[Union['InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs', 'InstanceFromMachineImageSourceMachineImageEncryptionKeyArgsDict']] source_machine_image_encryption_key: Encryption key for the source machine image.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags attached to the instance.
         :param pulumi.Input[str] tags_fingerprint: The unique fingerprint of the tags.
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
@@ -1658,6 +1734,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         __props__.__dict__["enable_display"] = enable_display
         __props__.__dict__["guest_accelerators"] = guest_accelerators
         __props__.__dict__["hostname"] = hostname
+        __props__.__dict__["instance_encryption_key"] = instance_encryption_key
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["key_revocation_action_type"] = key_revocation_action_type
         __props__.__dict__["label_fingerprint"] = label_fingerprint
@@ -1682,6 +1759,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         __props__.__dict__["service_account"] = service_account
         __props__.__dict__["shielded_instance_config"] = shielded_instance_config
         __props__.__dict__["source_machine_image"] = source_machine_image
+        __props__.__dict__["source_machine_image_encryption_key"] = source_machine_image_encryption_key
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tags_fingerprint"] = tags_fingerprint
         __props__.__dict__["zone"] = zone
@@ -1813,6 +1891,14 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         exceed 253 characters. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="instanceEncryptionKey")
+    def instance_encryption_key(self) -> pulumi.Output['outputs.InstanceFromMachineImageInstanceEncryptionKey']:
+        """
+        Encryption key used to provide data encryption on the given instance.
+        """
+        return pulumi.get(self, "instance_encryption_key")
 
     @property
     @pulumi.getter(name="instanceId")
@@ -2014,6 +2100,14 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "source_machine_image")
+
+    @property
+    @pulumi.getter(name="sourceMachineImageEncryptionKey")
+    def source_machine_image_encryption_key(self) -> pulumi.Output[Optional['outputs.InstanceFromMachineImageSourceMachineImageEncryptionKey']]:
+        """
+        Encryption key for the source machine image.
+        """
+        return pulumi.get(self, "source_machine_image_encryption_key")
 
     @property
     @pulumi.getter

@@ -9,6 +9,7 @@ from .addons_config import *
 from .api import *
 from .app_group import *
 from .developer import *
+from .dns_zone import *
 from .endpoint_attachment import *
 from .env_group import *
 from .env_group_attachment import *

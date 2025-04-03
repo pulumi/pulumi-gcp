@@ -79,6 +79,24 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int>? Size { get; set; }
 
         /// <summary>
+        /// The snapshot from which this disk was initialised.
+        /// </summary>
+        [Input("snapshot")]
+        public Input<string>? Snapshot { get; set; }
+
+        /// <summary>
+        /// The encryption key used to decrypt the source image.
+        /// </summary>
+        [Input("sourceImageEncryptionKey")]
+        public Input<Inputs.InstanceFromMachineImageBootDiskInitializeParamsSourceImageEncryptionKeyGetArgs>? SourceImageEncryptionKey { get; set; }
+
+        /// <summary>
+        /// The encryption key used to decrypt the source snapshot.
+        /// </summary>
+        [Input("sourceSnapshotEncryptionKey")]
+        public Input<Inputs.InstanceFromMachineImageBootDiskInitializeParamsSourceSnapshotEncryptionKeyGetArgs>? SourceSnapshotEncryptionKey { get; set; }
+
+        /// <summary>
         /// The URL of the storage pool in which the new disk is created
         /// </summary>
         [Input("storagePool")]

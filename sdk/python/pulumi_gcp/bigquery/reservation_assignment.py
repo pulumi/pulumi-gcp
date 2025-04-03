@@ -27,7 +27,7 @@ class ReservationAssignmentArgs:
         """
         The set of arguments for constructing a ReservationAssignment resource.
         :param pulumi.Input[str] assignee: The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
-        :param pulumi.Input[str] job_type: Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
+        :param pulumi.Input[str] job_type: Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
         :param pulumi.Input[str] reservation: The reservation for the resource
                
                
@@ -60,7 +60,7 @@ class ReservationAssignmentArgs:
     @pulumi.getter(name="jobType")
     def job_type(self) -> pulumi.Input[str]:
         """
-        Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
+        Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
         """
         return pulumi.get(self, "job_type")
 
@@ -122,7 +122,7 @@ class _ReservationAssignmentState:
         """
         Input properties used for looking up and filtering ReservationAssignment resources.
         :param pulumi.Input[str] assignee: The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
-        :param pulumi.Input[str] job_type: Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
+        :param pulumi.Input[str] job_type: Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Output only. The resource name of the assignment.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -165,7 +165,7 @@ class _ReservationAssignmentState:
     @pulumi.getter(name="jobType")
     def job_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
+        Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
         """
         return pulumi.get(self, "job_type")
 
@@ -306,7 +306,7 @@ class ReservationAssignment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] assignee: The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
-        :param pulumi.Input[str] job_type: Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
+        :param pulumi.Input[str] job_type: Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -441,7 +441,7 @@ class ReservationAssignment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] assignee: The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
-        :param pulumi.Input[str] job_type: Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
+        :param pulumi.Input[str] job_type: Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Output only. The resource name of the assignment.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -478,7 +478,7 @@ class ReservationAssignment(pulumi.CustomResource):
     @pulumi.getter(name="jobType")
     def job_type(self) -> pulumi.Output[str]:
         """
-        Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
+        Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
         """
         return pulumi.get(self, "job_type")
 

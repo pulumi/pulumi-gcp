@@ -1417,6 +1417,188 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Datastream Stream Bigquery Blmt
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+ * import com.pulumi.gcp.sql.Database;
+ * import com.pulumi.gcp.sql.DatabaseArgs;
+ * import com.pulumi.random.RandomPassword;
+ * import com.pulumi.random.RandomPasswordArgs;
+ * import com.pulumi.gcp.sql.User;
+ * import com.pulumi.gcp.sql.UserArgs;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.bigquery.Connection;
+ * import com.pulumi.gcp.bigquery.ConnectionArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionCloudResourceArgs;
+ * import com.pulumi.gcp.storage.BucketIAMMember;
+ * import com.pulumi.gcp.storage.BucketIAMMemberArgs;
+ * import com.pulumi.gcp.datastream.ConnectionProfile;
+ * import com.pulumi.gcp.datastream.ConnectionProfileArgs;
+ * import com.pulumi.gcp.datastream.inputs.ConnectionProfileMysqlProfileArgs;
+ * import com.pulumi.gcp.datastream.inputs.ConnectionProfileBigqueryProfileArgs;
+ * import com.pulumi.gcp.datastream.Stream;
+ * import com.pulumi.gcp.datastream.StreamArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamSourceConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamBackfillNoneArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
+ *             .name("blmt-instance")
+ *             .databaseVersion("MYSQL_8_0")
+ *             .region("us-central1")
+ *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .tier("db-f1-micro")
+ *                 .ipConfiguration(DatabaseInstanceSettingsIpConfigurationArgs.builder()
+ *                     .authorizedNetworks(                    
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value("34.71.242.81")
+ *                             .build(),
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value("34.72.28.29")
+ *                             .build(),
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value("34.67.6.157")
+ *                             .build(),
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value("34.67.234.134")
+ *                             .build(),
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value("34.72.239.218")
+ *                             .build())
+ *                     .build())
+ *                 .build())
+ *             .deletionProtection(true)
+ *             .build());
+ * 
+ *         var db = new Database("db", DatabaseArgs.builder()
+ *             .instance(instance.name())
+ *             .name("db")
+ *             .build());
+ * 
+ *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()
+ *             .length(16)
+ *             .special(false)
+ *             .build());
+ * 
+ *         var user = new User("user", UserArgs.builder()
+ *             .name("user")
+ *             .instance(instance.name())
+ *             .host("%")
+ *             .password(pwd.result())
+ *             .build());
+ * 
+ *         var blmtBucket = new Bucket("blmtBucket", BucketArgs.builder()
+ *             .name("blmt-bucket")
+ *             .location("us-central1")
+ *             .forceDestroy(true)
+ *             .build());
+ * 
+ *         var blmtConnection = new Connection("blmtConnection", ConnectionArgs.builder()
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .location("us-central1")
+ *             .connectionId("blmt-connection")
+ *             .friendlyName("Datastream BLMT Test Connection")
+ *             .description("Connection for Datastream BLMT test")
+ *             .cloudResource()
+ *             .build());
+ * 
+ *         var blmtConnectionBucketAdmin = new BucketIAMMember("blmtConnectionBucketAdmin", BucketIAMMemberArgs.builder()
+ *             .bucket(blmtBucket.name())
+ *             .role("roles/storage.admin")
+ *             .member(blmtConnection.cloudResource().applyValue(cloudResource -> String.format("serviceAccount:%s", cloudResource.serviceAccountId())))
+ *             .build());
+ * 
+ *         var sourceConnectionProfile = new ConnectionProfile("sourceConnectionProfile", ConnectionProfileArgs.builder()
+ *             .displayName("Source connection profile")
+ *             .location("us-central1")
+ *             .connectionProfileId("blmt-source-profile")
+ *             .mysqlProfile(ConnectionProfileMysqlProfileArgs.builder()
+ *                 .hostname(instance.publicIpAddress())
+ *                 .username(user.name())
+ *                 .password(user.password())
+ *                 .build())
+ *             .build());
+ * 
+ *         var destinationConnectionProfile = new ConnectionProfile("destinationConnectionProfile", ConnectionProfileArgs.builder()
+ *             .displayName("Connection profile")
+ *             .location("us-central1")
+ *             .connectionProfileId("blmt-destination-profile")
+ *             .bigqueryProfile()
+ *             .build());
+ * 
+ *         var default_ = new Stream("default", StreamArgs.builder()
+ *             .streamId("blmt-stream")
+ *             .location("us-central1")
+ *             .displayName("My BLMT stream")
+ *             .sourceConfig(StreamSourceConfigArgs.builder()
+ *                 .sourceConnectionProfile(sourceConnectionProfile.id())
+ *                 .mysqlSourceConfig()
+ *                 .build())
+ *             .destinationConfig(StreamDestinationConfigArgs.builder()
+ *                 .destinationConnectionProfile(destinationConnectionProfile.id())
+ *                 .bigqueryDestinationConfig(StreamDestinationConfigBigqueryDestinationConfigArgs.builder()
+ *                     .sourceHierarchyDatasets(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs.builder()
+ *                         .datasetTemplate(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs.builder()
+ *                             .location("us-central1")
+ *                             .build())
+ *                         .build())
+ *                     .blmtConfig(StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs.builder()
+ *                         .bucket(blmtBucket.name())
+ *                         .connectionName(Output.tuple(blmtConnection.project(), blmtConnection.location(), blmtConnection.connectionId()).applyValue(values -> {
+ *                             var project = values.t1;
+ *                             var location = values.t2;
+ *                             var connectionId = values.t3;
+ *                             return String.format("%s.%s.%s", project.applyValue(getProjectResult -> getProjectResult),location,connectionId);
+ *                         }))
+ *                         .fileFormat("PARQUET")
+ *                         .tableFormat("ICEBERG")
+ *                         .rootPath("/")
+ *                         .build())
+ *                     .appendOnly()
+ *                     .build())
+ *                 .build())
+ *             .backfillNone()
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

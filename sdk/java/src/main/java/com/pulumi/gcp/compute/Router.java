@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.RouterArgs;
 import com.pulumi.gcp.compute.inputs.RouterState;
 import com.pulumi.gcp.compute.outputs.RouterBgp;
+import com.pulumi.gcp.compute.outputs.RouterMd5AuthenticationKeys;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
@@ -222,6 +223,22 @@ public class Router extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> encryptedInterconnectRouter() {
         return Codegen.optional(this.encryptedInterconnectRouter);
+    }
+    /**
+     * Keys used for MD5 authentication.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="md5AuthenticationKeys", refs={RouterMd5AuthenticationKeys.class}, tree="[0]")
+    private Output</* @Nullable */ RouterMd5AuthenticationKeys> md5AuthenticationKeys;
+
+    /**
+     * @return Keys used for MD5 authentication.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RouterMd5AuthenticationKeys>> md5AuthenticationKeys() {
+        return Codegen.optional(this.md5AuthenticationKeys);
     }
     /**
      * Name of the resource. The name must be 1-63 characters long, and

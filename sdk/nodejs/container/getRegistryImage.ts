@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * > **Warning**: Container Registry is deprecated. Effective March 18, 2025, Container Registry is shut down and writing images to Container Registry is unavailable. Resource will be removed in future major release.
+ *
  * This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
  *
  * The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
@@ -77,6 +79,8 @@ export interface GetRegistryImageResult {
     readonly tag?: string;
 }
 /**
+ * > **Warning**: Container Registry is deprecated. Effective March 18, 2025, Container Registry is shut down and writing images to Container Registry is unavailable. Resource will be removed in future major release.
+ *
  * This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
  *
  * The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.

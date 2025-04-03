@@ -513,9 +513,11 @@ type ConnectionProfileMysqlProfile struct {
 	Hostname string `pulumi:"hostname"`
 	// Password for the MySQL connection.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	Password string `pulumi:"password"`
+	Password *string `pulumi:"password"`
 	// Port for the MySQL connection.
 	Port *int `pulumi:"port"`
+	// A reference to a Secret Manager resource name storing the user's password.
+	SecretManagerStoredPassword *string `pulumi:"secretManagerStoredPassword"`
 	// SSL configuration for the MySQL connection.
 	// Structure is documented below.
 	SslConfig *ConnectionProfileMysqlProfileSslConfig `pulumi:"sslConfig"`
@@ -539,9 +541,11 @@ type ConnectionProfileMysqlProfileArgs struct {
 	Hostname pulumi.StringInput `pulumi:"hostname"`
 	// Password for the MySQL connection.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	Password pulumi.StringInput `pulumi:"password"`
+	Password pulumi.StringPtrInput `pulumi:"password"`
 	// Port for the MySQL connection.
 	Port pulumi.IntPtrInput `pulumi:"port"`
+	// A reference to a Secret Manager resource name storing the user's password.
+	SecretManagerStoredPassword pulumi.StringPtrInput `pulumi:"secretManagerStoredPassword"`
 	// SSL configuration for the MySQL connection.
 	// Structure is documented below.
 	SslConfig ConnectionProfileMysqlProfileSslConfigPtrInput `pulumi:"sslConfig"`
@@ -633,13 +637,18 @@ func (o ConnectionProfileMysqlProfileOutput) Hostname() pulumi.StringOutput {
 
 // Password for the MySQL connection.
 // **Note**: This property is sensitive and will not be displayed in the plan.
-func (o ConnectionProfileMysqlProfileOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectionProfileMysqlProfile) string { return v.Password }).(pulumi.StringOutput)
+func (o ConnectionProfileMysqlProfileOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileMysqlProfile) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 // Port for the MySQL connection.
 func (o ConnectionProfileMysqlProfileOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionProfileMysqlProfile) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// A reference to a Secret Manager resource name storing the user's password.
+func (o ConnectionProfileMysqlProfileOutput) SecretManagerStoredPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileMysqlProfile) *string { return v.SecretManagerStoredPassword }).(pulumi.StringPtrOutput)
 }
 
 // SSL configuration for the MySQL connection.
@@ -694,7 +703,7 @@ func (o ConnectionProfileMysqlProfilePtrOutput) Password() pulumi.StringPtrOutpu
 		if v == nil {
 			return nil
 		}
-		return &v.Password
+		return v.Password
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -706,6 +715,16 @@ func (o ConnectionProfileMysqlProfilePtrOutput) Port() pulumi.IntPtrOutput {
 		}
 		return v.Port
 	}).(pulumi.IntPtrOutput)
+}
+
+// A reference to a Secret Manager resource name storing the user's password.
+func (o ConnectionProfileMysqlProfilePtrOutput) SecretManagerStoredPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileMysqlProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretManagerStoredPassword
+	}).(pulumi.StringPtrOutput)
 }
 
 // SSL configuration for the MySQL connection.
@@ -1018,9 +1037,11 @@ type ConnectionProfileOracleProfile struct {
 	Hostname string `pulumi:"hostname"`
 	// Password for the Oracle connection.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	Password string `pulumi:"password"`
+	Password *string `pulumi:"password"`
 	// Port for the Oracle connection.
 	Port *int `pulumi:"port"`
+	// A reference to a Secret Manager resource name storing the user's password.
+	SecretManagerStoredPassword *string `pulumi:"secretManagerStoredPassword"`
 	// Username for the Oracle connection.
 	Username string `pulumi:"username"`
 }
@@ -1045,9 +1066,11 @@ type ConnectionProfileOracleProfileArgs struct {
 	Hostname pulumi.StringInput `pulumi:"hostname"`
 	// Password for the Oracle connection.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	Password pulumi.StringInput `pulumi:"password"`
+	Password pulumi.StringPtrInput `pulumi:"password"`
 	// Port for the Oracle connection.
 	Port pulumi.IntPtrInput `pulumi:"port"`
+	// A reference to a Secret Manager resource name storing the user's password.
+	SecretManagerStoredPassword pulumi.StringPtrInput `pulumi:"secretManagerStoredPassword"`
 	// Username for the Oracle connection.
 	Username pulumi.StringInput `pulumi:"username"`
 }
@@ -1146,13 +1169,18 @@ func (o ConnectionProfileOracleProfileOutput) Hostname() pulumi.StringOutput {
 
 // Password for the Oracle connection.
 // **Note**: This property is sensitive and will not be displayed in the plan.
-func (o ConnectionProfileOracleProfileOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectionProfileOracleProfile) string { return v.Password }).(pulumi.StringOutput)
+func (o ConnectionProfileOracleProfileOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileOracleProfile) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 // Port for the Oracle connection.
 func (o ConnectionProfileOracleProfileOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionProfileOracleProfile) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// A reference to a Secret Manager resource name storing the user's password.
+func (o ConnectionProfileOracleProfileOutput) SecretManagerStoredPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileOracleProfile) *string { return v.SecretManagerStoredPassword }).(pulumi.StringPtrOutput)
 }
 
 // Username for the Oracle connection.
@@ -1221,7 +1249,7 @@ func (o ConnectionProfileOracleProfilePtrOutput) Password() pulumi.StringPtrOutp
 		if v == nil {
 			return nil
 		}
-		return &v.Password
+		return v.Password
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1233,6 +1261,16 @@ func (o ConnectionProfileOracleProfilePtrOutput) Port() pulumi.IntPtrOutput {
 		}
 		return v.Port
 	}).(pulumi.IntPtrOutput)
+}
+
+// A reference to a Secret Manager resource name storing the user's password.
+func (o ConnectionProfileOracleProfilePtrOutput) SecretManagerStoredPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileOracleProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretManagerStoredPassword
+	}).(pulumi.StringPtrOutput)
 }
 
 // Username for the Oracle connection.
@@ -1252,9 +1290,11 @@ type ConnectionProfilePostgresqlProfile struct {
 	Hostname string `pulumi:"hostname"`
 	// Password for the PostgreSQL connection.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	Password string `pulumi:"password"`
+	Password *string `pulumi:"password"`
 	// Port for the PostgreSQL connection.
 	Port *int `pulumi:"port"`
+	// A reference to a Secret Manager resource name storing the user's password.
+	SecretManagerStoredPassword *string `pulumi:"secretManagerStoredPassword"`
 	// Username for the PostgreSQL connection.
 	Username string `pulumi:"username"`
 }
@@ -1277,9 +1317,11 @@ type ConnectionProfilePostgresqlProfileArgs struct {
 	Hostname pulumi.StringInput `pulumi:"hostname"`
 	// Password for the PostgreSQL connection.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	Password pulumi.StringInput `pulumi:"password"`
+	Password pulumi.StringPtrInput `pulumi:"password"`
 	// Port for the PostgreSQL connection.
 	Port pulumi.IntPtrInput `pulumi:"port"`
+	// A reference to a Secret Manager resource name storing the user's password.
+	SecretManagerStoredPassword pulumi.StringPtrInput `pulumi:"secretManagerStoredPassword"`
 	// Username for the PostgreSQL connection.
 	Username pulumi.StringInput `pulumi:"username"`
 }
@@ -1373,13 +1415,18 @@ func (o ConnectionProfilePostgresqlProfileOutput) Hostname() pulumi.StringOutput
 
 // Password for the PostgreSQL connection.
 // **Note**: This property is sensitive and will not be displayed in the plan.
-func (o ConnectionProfilePostgresqlProfileOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectionProfilePostgresqlProfile) string { return v.Password }).(pulumi.StringOutput)
+func (o ConnectionProfilePostgresqlProfileOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfilePostgresqlProfile) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 // Port for the PostgreSQL connection.
 func (o ConnectionProfilePostgresqlProfileOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionProfilePostgresqlProfile) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// A reference to a Secret Manager resource name storing the user's password.
+func (o ConnectionProfilePostgresqlProfileOutput) SecretManagerStoredPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfilePostgresqlProfile) *string { return v.SecretManagerStoredPassword }).(pulumi.StringPtrOutput)
 }
 
 // Username for the PostgreSQL connection.
@@ -1438,7 +1485,7 @@ func (o ConnectionProfilePostgresqlProfilePtrOutput) Password() pulumi.StringPtr
 		if v == nil {
 			return nil
 		}
-		return &v.Password
+		return v.Password
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1450,6 +1497,16 @@ func (o ConnectionProfilePostgresqlProfilePtrOutput) Port() pulumi.IntPtrOutput 
 		}
 		return v.Port
 	}).(pulumi.IntPtrOutput)
+}
+
+// A reference to a Secret Manager resource name storing the user's password.
+func (o ConnectionProfilePostgresqlProfilePtrOutput) SecretManagerStoredPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfilePostgresqlProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretManagerStoredPassword
+	}).(pulumi.StringPtrOutput)
 }
 
 // Username for the PostgreSQL connection.
@@ -2195,9 +2252,11 @@ type ConnectionProfileSqlServerProfile struct {
 	Hostname string `pulumi:"hostname"`
 	// Password for the SQL Server connection.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	Password string `pulumi:"password"`
+	Password *string `pulumi:"password"`
 	// Port for the SQL Server connection.
 	Port *int `pulumi:"port"`
+	// A reference to a Secret Manager resource name storing the user's password.
+	SecretManagerStoredPassword *string `pulumi:"secretManagerStoredPassword"`
 	// Username for the SQL Server connection.
 	Username string `pulumi:"username"`
 }
@@ -2220,9 +2279,11 @@ type ConnectionProfileSqlServerProfileArgs struct {
 	Hostname pulumi.StringInput `pulumi:"hostname"`
 	// Password for the SQL Server connection.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	Password pulumi.StringInput `pulumi:"password"`
+	Password pulumi.StringPtrInput `pulumi:"password"`
 	// Port for the SQL Server connection.
 	Port pulumi.IntPtrInput `pulumi:"port"`
+	// A reference to a Secret Manager resource name storing the user's password.
+	SecretManagerStoredPassword pulumi.StringPtrInput `pulumi:"secretManagerStoredPassword"`
 	// Username for the SQL Server connection.
 	Username pulumi.StringInput `pulumi:"username"`
 }
@@ -2316,13 +2377,18 @@ func (o ConnectionProfileSqlServerProfileOutput) Hostname() pulumi.StringOutput 
 
 // Password for the SQL Server connection.
 // **Note**: This property is sensitive and will not be displayed in the plan.
-func (o ConnectionProfileSqlServerProfileOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectionProfileSqlServerProfile) string { return v.Password }).(pulumi.StringOutput)
+func (o ConnectionProfileSqlServerProfileOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileSqlServerProfile) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 // Port for the SQL Server connection.
 func (o ConnectionProfileSqlServerProfileOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionProfileSqlServerProfile) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// A reference to a Secret Manager resource name storing the user's password.
+func (o ConnectionProfileSqlServerProfileOutput) SecretManagerStoredPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileSqlServerProfile) *string { return v.SecretManagerStoredPassword }).(pulumi.StringPtrOutput)
 }
 
 // Username for the SQL Server connection.
@@ -2381,7 +2447,7 @@ func (o ConnectionProfileSqlServerProfilePtrOutput) Password() pulumi.StringPtrO
 		if v == nil {
 			return nil
 		}
-		return &v.Password
+		return v.Password
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2393,6 +2459,16 @@ func (o ConnectionProfileSqlServerProfilePtrOutput) Port() pulumi.IntPtrOutput {
 		}
 		return v.Port
 	}).(pulumi.IntPtrOutput)
+}
+
+// A reference to a Secret Manager resource name storing the user's password.
+func (o ConnectionProfileSqlServerProfilePtrOutput) SecretManagerStoredPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileSqlServerProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretManagerStoredPassword
+	}).(pulumi.StringPtrOutput)
 }
 
 // Username for the SQL Server connection.
@@ -5412,6 +5488,9 @@ type StreamDestinationConfigBigqueryDestinationConfig struct {
 	// events) to a source table will be written to the destination Google BigQuery table, retaining the
 	// historical state of the data.
 	AppendOnly *StreamDestinationConfigBigqueryDestinationConfigAppendOnly `pulumi:"appendOnly"`
+	// BigLake Managed Tables configuration for BigQuery streams.
+	// Structure is documented below.
+	BlmtConfig *StreamDestinationConfigBigqueryDestinationConfigBlmtConfig `pulumi:"blmtConfig"`
 	// The guaranteed data freshness (in seconds) when querying tables created by the stream.
 	// Editing this field will only affect new tables created in the future, but existing tables
 	// will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
@@ -5445,6 +5524,9 @@ type StreamDestinationConfigBigqueryDestinationConfigArgs struct {
 	// events) to a source table will be written to the destination Google BigQuery table, retaining the
 	// historical state of the data.
 	AppendOnly StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrInput `pulumi:"appendOnly"`
+	// BigLake Managed Tables configuration for BigQuery streams.
+	// Structure is documented below.
+	BlmtConfig StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrInput `pulumi:"blmtConfig"`
 	// The guaranteed data freshness (in seconds) when querying tables created by the stream.
 	// Editing this field will only affect new tables created in the future, but existing tables
 	// will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
@@ -5548,6 +5630,14 @@ func (o StreamDestinationConfigBigqueryDestinationConfigOutput) AppendOnly() Str
 	}).(StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput)
 }
 
+// BigLake Managed Tables configuration for BigQuery streams.
+// Structure is documented below.
+func (o StreamDestinationConfigBigqueryDestinationConfigOutput) BlmtConfig() StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput {
+	return o.ApplyT(func(v StreamDestinationConfigBigqueryDestinationConfig) *StreamDestinationConfigBigqueryDestinationConfigBlmtConfig {
+		return v.BlmtConfig
+	}).(StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput)
+}
+
 // The guaranteed data freshness (in seconds) when querying tables created by the stream.
 // Editing this field will only affect new tables created in the future, but existing tables
 // will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
@@ -5615,6 +5705,17 @@ func (o StreamDestinationConfigBigqueryDestinationConfigPtrOutput) AppendOnly() 
 		}
 		return v.AppendOnly
 	}).(StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput)
+}
+
+// BigLake Managed Tables configuration for BigQuery streams.
+// Structure is documented below.
+func (o StreamDestinationConfigBigqueryDestinationConfigPtrOutput) BlmtConfig() StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfig) *StreamDestinationConfigBigqueryDestinationConfigBlmtConfig {
+		if v == nil {
+			return nil
+		}
+		return v.BlmtConfig
+	}).(StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput)
 }
 
 // The guaranteed data freshness (in seconds) when querying tables created by the stream.
@@ -5780,6 +5881,227 @@ func (o StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput) Ele
 		var ret StreamDestinationConfigBigqueryDestinationConfigAppendOnly
 		return ret
 	}).(StreamDestinationConfigBigqueryDestinationConfigAppendOnlyOutput)
+}
+
+type StreamDestinationConfigBigqueryDestinationConfigBlmtConfig struct {
+	// The Cloud Storage bucket name.
+	Bucket string `pulumi:"bucket"`
+	// The bigquery connection. Format: `{project}.{location}.{name}`
+	ConnectionName string `pulumi:"connectionName"`
+	// The file format.
+	FileFormat string `pulumi:"fileFormat"`
+	// The root path inside the Cloud Storage bucket.
+	//
+	// ***
+	RootPath *string `pulumi:"rootPath"`
+	// The table format.
+	TableFormat string `pulumi:"tableFormat"`
+}
+
+// StreamDestinationConfigBigqueryDestinationConfigBlmtConfigInput is an input type that accepts StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs and StreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput values.
+// You can construct a concrete instance of `StreamDestinationConfigBigqueryDestinationConfigBlmtConfigInput` via:
+//
+//	StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs{...}
+type StreamDestinationConfigBigqueryDestinationConfigBlmtConfigInput interface {
+	pulumi.Input
+
+	ToStreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput() StreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput
+	ToStreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutputWithContext(context.Context) StreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput
+}
+
+type StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs struct {
+	// The Cloud Storage bucket name.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// The bigquery connection. Format: `{project}.{location}.{name}`
+	ConnectionName pulumi.StringInput `pulumi:"connectionName"`
+	// The file format.
+	FileFormat pulumi.StringInput `pulumi:"fileFormat"`
+	// The root path inside the Cloud Storage bucket.
+	//
+	// ***
+	RootPath pulumi.StringPtrInput `pulumi:"rootPath"`
+	// The table format.
+	TableFormat pulumi.StringInput `pulumi:"tableFormat"`
+}
+
+func (StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigBlmtConfig)(nil)).Elem()
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs) ToStreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput() StreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput {
+	return i.ToStreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutputWithContext(context.Background())
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs) ToStreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput)
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs) ToStreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput() StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput {
+	return i.ToStreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutputWithContext(context.Background())
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs) ToStreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput).ToStreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutputWithContext(ctx)
+}
+
+// StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrInput is an input type that accepts StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs, StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtr and StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput values.
+// You can construct a concrete instance of `StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrInput` via:
+//
+//	        StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrInput interface {
+	pulumi.Input
+
+	ToStreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput() StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput
+	ToStreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutputWithContext(context.Context) StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput
+}
+
+type streamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrType StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs
+
+func StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtr(v *StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs) StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrInput {
+	return (*streamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrType)(v)
+}
+
+func (*streamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamDestinationConfigBigqueryDestinationConfigBlmtConfig)(nil)).Elem()
+}
+
+func (i *streamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrType) ToStreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput() StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput {
+	return i.ToStreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *streamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrType) ToStreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput)
+}
+
+type StreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput struct{ *pulumi.OutputState }
+
+func (StreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigBlmtConfig)(nil)).Elem()
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput) ToStreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput() StreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput) ToStreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput) ToStreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput() StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput {
+	return o.ToStreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutputWithContext(context.Background())
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput) ToStreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamDestinationConfigBigqueryDestinationConfigBlmtConfig) *StreamDestinationConfigBigqueryDestinationConfigBlmtConfig {
+		return &v
+	}).(StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput)
+}
+
+// The Cloud Storage bucket name.
+func (o StreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamDestinationConfigBigqueryDestinationConfigBlmtConfig) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// The bigquery connection. Format: `{project}.{location}.{name}`
+func (o StreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput) ConnectionName() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamDestinationConfigBigqueryDestinationConfigBlmtConfig) string { return v.ConnectionName }).(pulumi.StringOutput)
+}
+
+// The file format.
+func (o StreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput) FileFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamDestinationConfigBigqueryDestinationConfigBlmtConfig) string { return v.FileFormat }).(pulumi.StringOutput)
+}
+
+// The root path inside the Cloud Storage bucket.
+//
+// ***
+func (o StreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput) RootPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamDestinationConfigBigqueryDestinationConfigBlmtConfig) *string { return v.RootPath }).(pulumi.StringPtrOutput)
+}
+
+// The table format.
+func (o StreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput) TableFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamDestinationConfigBigqueryDestinationConfigBlmtConfig) string { return v.TableFormat }).(pulumi.StringOutput)
+}
+
+type StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamDestinationConfigBigqueryDestinationConfigBlmtConfig)(nil)).Elem()
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput) ToStreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput() StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput) ToStreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput) Elem() StreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfigBlmtConfig) StreamDestinationConfigBigqueryDestinationConfigBlmtConfig {
+		if v != nil {
+			return *v
+		}
+		var ret StreamDestinationConfigBigqueryDestinationConfigBlmtConfig
+		return ret
+	}).(StreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput)
+}
+
+// The Cloud Storage bucket name.
+func (o StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfigBlmtConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// The bigquery connection. Format: `{project}.{location}.{name}`
+func (o StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput) ConnectionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfigBlmtConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The file format.
+func (o StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput) FileFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfigBlmtConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FileFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// The root path inside the Cloud Storage bucket.
+//
+// ***
+func (o StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput) RootPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfigBlmtConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RootPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The table format.
+func (o StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput) TableFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfigBlmtConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TableFormat
+	}).(pulumi.StringPtrOutput)
 }
 
 type StreamDestinationConfigBigqueryDestinationConfigMerge struct {
@@ -6192,8 +6514,6 @@ type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsData
 	// table. The BigQuery Service Account associated with your project requires access to this
 	// encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
 	// See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
-	//
-	// ***
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// The geographic location where the dataset should reside.
 	// See https://cloud.google.com/bigquery/docs/locations for supported locations.
@@ -6219,8 +6539,6 @@ type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsData
 	// table. The BigQuery Service Account associated with your project requires access to this
 	// encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
 	// See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
-	//
-	// ***
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
 	// The geographic location where the dataset should reside.
 	// See https://cloud.google.com/bigquery/docs/locations for supported locations.
@@ -6316,8 +6634,6 @@ func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsD
 // table. The BigQuery Service Account associated with your project requires access to this
 // encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
 // See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
-//
-// ***
 func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate) *string {
 		return v.KmsKeyName
@@ -6371,8 +6687,6 @@ func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsD
 // table. The BigQuery Service Account associated with your project requires access to this
 // encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
 // See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
-//
-// ***
 func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate) *string {
 		if v == nil {
@@ -13361,6 +13675,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigPtrInput)(nil)).Elem(), StreamDestinationConfigBigqueryDestinationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigAppendOnlyInput)(nil)).Elem(), StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrInput)(nil)).Elem(), StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigBlmtConfigInput)(nil)).Elem(), StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrInput)(nil)).Elem(), StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigMergeInput)(nil)).Elem(), StreamDestinationConfigBigqueryDestinationConfigMergeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigMergePtrInput)(nil)).Elem(), StreamDestinationConfigBigqueryDestinationConfigMergeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetInput)(nil)).Elem(), StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs{})
@@ -13531,6 +13847,8 @@ func init() {
 	pulumi.RegisterOutputType(StreamDestinationConfigBigqueryDestinationConfigPtrOutput{})
 	pulumi.RegisterOutputType(StreamDestinationConfigBigqueryDestinationConfigAppendOnlyOutput{})
 	pulumi.RegisterOutputType(StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput{})
+	pulumi.RegisterOutputType(StreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput{})
+	pulumi.RegisterOutputType(StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput{})
 	pulumi.RegisterOutputType(StreamDestinationConfigBigqueryDestinationConfigMergeOutput{})
 	pulumi.RegisterOutputType(StreamDestinationConfigBigqueryDestinationConfigMergePtrOutput{})
 	pulumi.RegisterOutputType(StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput{})

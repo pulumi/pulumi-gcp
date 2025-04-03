@@ -256,6 +256,8 @@ type Cluster struct {
 	DeletionProtection pulumi.BoolPtrOutput           `pulumi:"deletionProtection"`
 	// Description of the cluster.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Disable L4 load balancer VPC firewalls to enable firewall policies.
+	DisableL4LbFirewallReconciliation pulumi.BoolPtrOutput `pulumi:"disableL4LbFirewallReconciliation"`
 	// Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
 	DnsConfig ClusterDnsConfigPtrOutput `pulumi:"dnsConfig"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -604,6 +606,8 @@ type clusterState struct {
 	DeletionProtection *bool                     `pulumi:"deletionProtection"`
 	// Description of the cluster.
 	Description *string `pulumi:"description"`
+	// Disable L4 load balancer VPC firewalls to enable firewall policies.
+	DisableL4LbFirewallReconciliation *bool `pulumi:"disableL4LbFirewallReconciliation"`
 	// Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
 	DnsConfig *ClusterDnsConfig `pulumi:"dnsConfig"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -918,6 +922,8 @@ type ClusterState struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// Description of the cluster.
 	Description pulumi.StringPtrInput
+	// Disable L4 load balancer VPC firewalls to enable firewall policies.
+	DisableL4LbFirewallReconciliation pulumi.BoolPtrInput
 	// Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
 	DnsConfig ClusterDnsConfigPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1236,6 +1242,8 @@ type clusterArgs struct {
 	DeletionProtection *bool                     `pulumi:"deletionProtection"`
 	// Description of the cluster.
 	Description *string `pulumi:"description"`
+	// Disable L4 load balancer VPC firewalls to enable firewall policies.
+	DisableL4LbFirewallReconciliation *bool `pulumi:"disableL4LbFirewallReconciliation"`
 	// Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
 	DnsConfig *ClusterDnsConfig `pulumi:"dnsConfig"`
 	// Enable Autopilot for this cluster. Defaults to `false`.
@@ -1527,6 +1535,8 @@ type ClusterArgs struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// Description of the cluster.
 	Description pulumi.StringPtrInput
+	// Disable L4 load balancer VPC firewalls to enable firewall policies.
+	DisableL4LbFirewallReconciliation pulumi.BoolPtrInput
 	// Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
 	DnsConfig ClusterDnsConfigPtrInput
 	// Enable Autopilot for this cluster. Defaults to `false`.
@@ -1949,6 +1959,11 @@ func (o ClusterOutput) DeletionProtection() pulumi.BoolPtrOutput {
 // Description of the cluster.
 func (o ClusterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Disable L4 load balancer VPC firewalls to enable firewall policies.
+func (o ClusterOutput) DisableL4LbFirewallReconciliation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.DisableL4LbFirewallReconciliation }).(pulumi.BoolPtrOutput)
 }
 
 // Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.

@@ -129,6 +129,7 @@ export interface GetBackendServiceResult {
      * The number of seconds to wait for a backend to respond to a request before considering the request failed.
      */
     readonly timeoutSec: number;
+    readonly tlsSettings: outputs.compute.GetBackendServiceTlsSetting[];
 }
 /**
  * Provide access to a Backend Service's attribute. For more information

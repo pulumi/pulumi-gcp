@@ -23,6 +23,10 @@ namespace Pulumi.Gcp.ParameterManager.Outputs
         /// </summary>
         public readonly string Format;
         /// <summary>
+        /// The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+        /// </summary>
+        public readonly string KmsKey;
+        /// <summary>
         /// The labels assigned to the parameter.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
@@ -60,6 +64,8 @@ namespace Pulumi.Gcp.ParameterManager.Outputs
 
             string format,
 
+            string kmsKey,
+
             ImmutableDictionary<string, string> labels,
 
             string name,
@@ -77,6 +83,7 @@ namespace Pulumi.Gcp.ParameterManager.Outputs
             CreateTime = createTime;
             EffectiveLabels = effectiveLabels;
             Format = format;
+            KmsKey = kmsKey;
             Labels = labels;
             Name = name;
             ParameterId = parameterId;

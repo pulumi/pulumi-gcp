@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.inputs.ProviderBatchingArgs;
+import com.pulumi.gcp.inputs.ProviderExternalCredentialsArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -606,6 +607,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> eventarcCustomEndpoint() {
         return Optional.ofNullable(this.eventarcCustomEndpoint);
+    }
+
+    @Import(name="externalCredentials", json=true)
+    private @Nullable Output<ProviderExternalCredentialsArgs> externalCredentials;
+
+    public Optional<Output<ProviderExternalCredentialsArgs>> externalCredentials() {
+        return Optional.ofNullable(this.externalCredentials);
     }
 
     @Import(name="filestoreCustomEndpoint")
@@ -1437,6 +1445,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.edgenetworkCustomEndpoint = $.edgenetworkCustomEndpoint;
         this.essentialContactsCustomEndpoint = $.essentialContactsCustomEndpoint;
         this.eventarcCustomEndpoint = $.eventarcCustomEndpoint;
+        this.externalCredentials = $.externalCredentials;
         this.filestoreCustomEndpoint = $.filestoreCustomEndpoint;
         this.firebaseAppCheckCustomEndpoint = $.firebaseAppCheckCustomEndpoint;
         this.firebaseAppHostingCustomEndpoint = $.firebaseAppHostingCustomEndpoint;
@@ -2317,6 +2326,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder eventarcCustomEndpoint(String eventarcCustomEndpoint) {
             return eventarcCustomEndpoint(Output.of(eventarcCustomEndpoint));
+        }
+
+        public Builder externalCredentials(@Nullable Output<ProviderExternalCredentialsArgs> externalCredentials) {
+            $.externalCredentials = externalCredentials;
+            return this;
+        }
+
+        public Builder externalCredentials(ProviderExternalCredentialsArgs externalCredentials) {
+            return externalCredentials(Output.of(externalCredentials));
         }
 
         public Builder filestoreCustomEndpoint(@Nullable Output<String> filestoreCustomEndpoint) {

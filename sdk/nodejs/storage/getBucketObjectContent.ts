@@ -66,6 +66,11 @@ export interface GetBucketObjectContentResult {
      * (Computed) The content of the object.
      */
     readonly content: string;
+    /**
+     * (Computed) Base64 encoded version of the object content.
+     * Use this when dealing with binary data.
+     */
+    readonly contentBase64: string;
     readonly contentDisposition: string;
     readonly contentEncoding: string;
     readonly contentLanguage: string;

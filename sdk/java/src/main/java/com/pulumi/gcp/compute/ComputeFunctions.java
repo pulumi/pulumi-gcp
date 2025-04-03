@@ -81,8 +81,10 @@ import com.pulumi.gcp.compute.inputs.GetNetworksArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworksPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetNodeTypesArgs;
 import com.pulumi.gcp.compute.inputs.GetNodeTypesPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceIamPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceIamPolicyPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionBackendServicePlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionDiskArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionDiskIamPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionDiskIamPolicyPlainArgs;
@@ -169,6 +171,7 @@ import com.pulumi.gcp.compute.outputs.GetNetworkResult;
 import com.pulumi.gcp.compute.outputs.GetNetworksResult;
 import com.pulumi.gcp.compute.outputs.GetNodeTypesResult;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceIamPolicyResult;
+import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceResult;
 import com.pulumi.gcp.compute.outputs.GetRegionDiskIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetRegionDiskResult;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupManagerResult;
@@ -11009,6 +11012,231 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetNodeTypesResult> getNodeTypesPlain(GetNodeTypesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getNodeTypes:getNodeTypes", TypeShape.of(GetNodeTypesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Regional Backend Service. For more information see
+     * [the official documentation](https://cloud.google.com/compute/docs/load-balancing/internal/backend-service) and
+     * [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionBackendServices).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myBackend = ComputeFunctions.getRegionBackendService(GetRegionBackendServiceArgs.builder()
+     *             .name("my-backend-service")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRegionBackendServiceResult> getRegionBackendService(GetRegionBackendServiceArgs args) {
+        return getRegionBackendService(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Regional Backend Service. For more information see
+     * [the official documentation](https://cloud.google.com/compute/docs/load-balancing/internal/backend-service) and
+     * [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionBackendServices).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myBackend = ComputeFunctions.getRegionBackendService(GetRegionBackendServiceArgs.builder()
+     *             .name("my-backend-service")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRegionBackendServiceResult> getRegionBackendServicePlain(GetRegionBackendServicePlainArgs args) {
+        return getRegionBackendServicePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Regional Backend Service. For more information see
+     * [the official documentation](https://cloud.google.com/compute/docs/load-balancing/internal/backend-service) and
+     * [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionBackendServices).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myBackend = ComputeFunctions.getRegionBackendService(GetRegionBackendServiceArgs.builder()
+     *             .name("my-backend-service")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRegionBackendServiceResult> getRegionBackendService(GetRegionBackendServiceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getRegionBackendService:getRegionBackendService", TypeShape.of(GetRegionBackendServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Regional Backend Service. For more information see
+     * [the official documentation](https://cloud.google.com/compute/docs/load-balancing/internal/backend-service) and
+     * [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionBackendServices).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myBackend = ComputeFunctions.getRegionBackendService(GetRegionBackendServiceArgs.builder()
+     *             .name("my-backend-service")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRegionBackendServiceResult> getRegionBackendService(GetRegionBackendServiceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getRegionBackendService:getRegionBackendService", TypeShape.of(GetRegionBackendServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Regional Backend Service. For more information see
+     * [the official documentation](https://cloud.google.com/compute/docs/load-balancing/internal/backend-service) and
+     * [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionBackendServices).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myBackend = ComputeFunctions.getRegionBackendService(GetRegionBackendServiceArgs.builder()
+     *             .name("my-backend-service")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRegionBackendServiceResult> getRegionBackendServicePlain(GetRegionBackendServicePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getRegionBackendService:getRegionBackendService", TypeShape.of(GetRegionBackendServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage

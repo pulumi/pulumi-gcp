@@ -4,6 +4,8 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.compute.outputs.InstanceBootDiskInitializeParamsSourceImageEncryptionKey;
+import com.pulumi.gcp.compute.outputs.InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKey;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -82,6 +84,21 @@ public final class InstanceBootDiskInitializeParams {
      * 
      */
     private @Nullable Integer size;
+    /**
+     * @return The snapshot from which to initialize this disk. To create a disk with a snapshot that you created, specify the snapshot name in the following format: `global/snapshots/my-backup`
+     * 
+     */
+    private @Nullable String snapshot;
+    /**
+     * @return Encryption key used to decrypt the given image. Structure is documented below.
+     * 
+     */
+    private @Nullable InstanceBootDiskInitializeParamsSourceImageEncryptionKey sourceImageEncryptionKey;
+    /**
+     * @return Encryption key used to decrypt the given snapshot. Structure is documented below.
+     * 
+     */
+    private @Nullable InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKey sourceSnapshotEncryptionKey;
     /**
      * @return The URL or the name of the storage pool in which the new disk is created.
      * For example:
@@ -186,6 +203,27 @@ public final class InstanceBootDiskInitializeParams {
         return Optional.ofNullable(this.size);
     }
     /**
+     * @return The snapshot from which to initialize this disk. To create a disk with a snapshot that you created, specify the snapshot name in the following format: `global/snapshots/my-backup`
+     * 
+     */
+    public Optional<String> snapshot() {
+        return Optional.ofNullable(this.snapshot);
+    }
+    /**
+     * @return Encryption key used to decrypt the given image. Structure is documented below.
+     * 
+     */
+    public Optional<InstanceBootDiskInitializeParamsSourceImageEncryptionKey> sourceImageEncryptionKey() {
+        return Optional.ofNullable(this.sourceImageEncryptionKey);
+    }
+    /**
+     * @return Encryption key used to decrypt the given snapshot. Structure is documented below.
+     * 
+     */
+    public Optional<InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKey() {
+        return Optional.ofNullable(this.sourceSnapshotEncryptionKey);
+    }
+    /**
      * @return The URL or the name of the storage pool in which the new disk is created.
      * For example:
      * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
@@ -223,6 +261,9 @@ public final class InstanceBootDiskInitializeParams {
         private @Nullable Map<String,String> resourceManagerTags;
         private @Nullable String resourcePolicies;
         private @Nullable Integer size;
+        private @Nullable String snapshot;
+        private @Nullable InstanceBootDiskInitializeParamsSourceImageEncryptionKey sourceImageEncryptionKey;
+        private @Nullable InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKey sourceSnapshotEncryptionKey;
         private @Nullable String storagePool;
         private @Nullable String type;
         public Builder() {}
@@ -237,6 +278,9 @@ public final class InstanceBootDiskInitializeParams {
     	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.resourcePolicies = defaults.resourcePolicies;
     	      this.size = defaults.size;
+    	      this.snapshot = defaults.snapshot;
+    	      this.sourceImageEncryptionKey = defaults.sourceImageEncryptionKey;
+    	      this.sourceSnapshotEncryptionKey = defaults.sourceSnapshotEncryptionKey;
     	      this.storagePool = defaults.storagePool;
     	      this.type = defaults.type;
         }
@@ -296,6 +340,24 @@ public final class InstanceBootDiskInitializeParams {
             return this;
         }
         @CustomType.Setter
+        public Builder snapshot(@Nullable String snapshot) {
+
+            this.snapshot = snapshot;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sourceImageEncryptionKey(@Nullable InstanceBootDiskInitializeParamsSourceImageEncryptionKey sourceImageEncryptionKey) {
+
+            this.sourceImageEncryptionKey = sourceImageEncryptionKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sourceSnapshotEncryptionKey(@Nullable InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKey sourceSnapshotEncryptionKey) {
+
+            this.sourceSnapshotEncryptionKey = sourceSnapshotEncryptionKey;
+            return this;
+        }
+        @CustomType.Setter
         public Builder storagePool(@Nullable String storagePool) {
 
             this.storagePool = storagePool;
@@ -318,6 +380,9 @@ public final class InstanceBootDiskInitializeParams {
             _resultValue.resourceManagerTags = resourceManagerTags;
             _resultValue.resourcePolicies = resourcePolicies;
             _resultValue.size = size;
+            _resultValue.snapshot = snapshot;
+            _resultValue.sourceImageEncryptionKey = sourceImageEncryptionKey;
+            _resultValue.sourceSnapshotEncryptionKey = sourceSnapshotEncryptionKey;
             _resultValue.storagePool = storagePool;
             _resultValue.type = type;
             return _resultValue;

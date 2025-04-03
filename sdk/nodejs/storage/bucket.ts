@@ -259,7 +259,7 @@ export class Bucket extends pulumi.CustomResource {
      */
     public /*out*/ readonly projectNumber!: pulumi.Output<number>;
     /**
-     * Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
+     * Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention) only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
      */
     public readonly publicAccessPrevention!: pulumi.Output<string>;
     /**
@@ -461,7 +461,7 @@ export interface BucketState {
      */
     projectNumber?: pulumi.Input<number>;
     /**
-     * Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
+     * Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention) only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
      */
     publicAccessPrevention?: pulumi.Input<string>;
     /**
@@ -577,7 +577,7 @@ export interface BucketArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
+     * Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention) only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
      */
     publicAccessPrevention?: pulumi.Input<string>;
     /**

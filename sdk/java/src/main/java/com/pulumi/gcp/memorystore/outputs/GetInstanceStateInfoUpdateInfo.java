@@ -6,10 +6,21 @@ package com.pulumi.gcp.memorystore.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetInstanceStateInfoUpdateInfo {
+    /**
+     * @return Output only. Target engine version for the instance.
+     * 
+     */
+    private String targetEngineVersion;
+    /**
+     * @return Output only. Target node type for the instance.
+     * 
+     */
+    private String targetNodeType;
     /**
      * @return Output only. Target number of replica nodes per shard for the instance.
      * 
@@ -22,6 +33,20 @@ public final class GetInstanceStateInfoUpdateInfo {
     private Integer targetShardCount;
 
     private GetInstanceStateInfoUpdateInfo() {}
+    /**
+     * @return Output only. Target engine version for the instance.
+     * 
+     */
+    public String targetEngineVersion() {
+        return this.targetEngineVersion;
+    }
+    /**
+     * @return Output only. Target node type for the instance.
+     * 
+     */
+    public String targetNodeType() {
+        return this.targetNodeType;
+    }
     /**
      * @return Output only. Target number of replica nodes per shard for the instance.
      * 
@@ -46,15 +71,35 @@ public final class GetInstanceStateInfoUpdateInfo {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String targetEngineVersion;
+        private String targetNodeType;
         private Integer targetReplicaCount;
         private Integer targetShardCount;
         public Builder() {}
         public Builder(GetInstanceStateInfoUpdateInfo defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.targetEngineVersion = defaults.targetEngineVersion;
+    	      this.targetNodeType = defaults.targetNodeType;
     	      this.targetReplicaCount = defaults.targetReplicaCount;
     	      this.targetShardCount = defaults.targetShardCount;
         }
 
+        @CustomType.Setter
+        public Builder targetEngineVersion(String targetEngineVersion) {
+            if (targetEngineVersion == null) {
+              throw new MissingRequiredPropertyException("GetInstanceStateInfoUpdateInfo", "targetEngineVersion");
+            }
+            this.targetEngineVersion = targetEngineVersion;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder targetNodeType(String targetNodeType) {
+            if (targetNodeType == null) {
+              throw new MissingRequiredPropertyException("GetInstanceStateInfoUpdateInfo", "targetNodeType");
+            }
+            this.targetNodeType = targetNodeType;
+            return this;
+        }
         @CustomType.Setter
         public Builder targetReplicaCount(Integer targetReplicaCount) {
             if (targetReplicaCount == null) {
@@ -73,6 +118,8 @@ public final class GetInstanceStateInfoUpdateInfo {
         }
         public GetInstanceStateInfoUpdateInfo build() {
             final var _resultValue = new GetInstanceStateInfoUpdateInfo();
+            _resultValue.targetEngineVersion = targetEngineVersion;
+            _resultValue.targetNodeType = targetNodeType;
             _resultValue.targetReplicaCount = targetReplicaCount;
             _resultValue.targetShardCount = targetShardCount;
             return _resultValue;

@@ -5,6 +5,7 @@ package com.pulumi.gcp.datastream.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.datastream.outputs.StreamDestinationConfigBigqueryDestinationConfigAppendOnly;
+import com.pulumi.gcp.datastream.outputs.StreamDestinationConfigBigqueryDestinationConfigBlmtConfig;
 import com.pulumi.gcp.datastream.outputs.StreamDestinationConfigBigqueryDestinationConfigMerge;
 import com.pulumi.gcp.datastream.outputs.StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset;
 import com.pulumi.gcp.datastream.outputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets;
@@ -22,6 +23,12 @@ public final class StreamDestinationConfigBigqueryDestinationConfig {
      * 
      */
     private @Nullable StreamDestinationConfigBigqueryDestinationConfigAppendOnly appendOnly;
+    /**
+     * @return BigLake Managed Tables configuration for BigQuery streams.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable StreamDestinationConfigBigqueryDestinationConfigBlmtConfig blmtConfig;
     /**
      * @return The guaranteed data freshness (in seconds) when querying tables created by the stream.
      * Editing this field will only affect new tables created in the future, but existing tables
@@ -59,6 +66,14 @@ public final class StreamDestinationConfigBigqueryDestinationConfig {
      */
     public Optional<StreamDestinationConfigBigqueryDestinationConfigAppendOnly> appendOnly() {
         return Optional.ofNullable(this.appendOnly);
+    }
+    /**
+     * @return BigLake Managed Tables configuration for BigQuery streams.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<StreamDestinationConfigBigqueryDestinationConfigBlmtConfig> blmtConfig() {
+        return Optional.ofNullable(this.blmtConfig);
     }
     /**
      * @return The guaranteed data freshness (in seconds) when querying tables created by the stream.
@@ -106,6 +121,7 @@ public final class StreamDestinationConfigBigqueryDestinationConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable StreamDestinationConfigBigqueryDestinationConfigAppendOnly appendOnly;
+        private @Nullable StreamDestinationConfigBigqueryDestinationConfigBlmtConfig blmtConfig;
         private @Nullable String dataFreshness;
         private @Nullable StreamDestinationConfigBigqueryDestinationConfigMerge merge;
         private @Nullable StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset singleTargetDataset;
@@ -114,6 +130,7 @@ public final class StreamDestinationConfigBigqueryDestinationConfig {
         public Builder(StreamDestinationConfigBigqueryDestinationConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appendOnly = defaults.appendOnly;
+    	      this.blmtConfig = defaults.blmtConfig;
     	      this.dataFreshness = defaults.dataFreshness;
     	      this.merge = defaults.merge;
     	      this.singleTargetDataset = defaults.singleTargetDataset;
@@ -124,6 +141,12 @@ public final class StreamDestinationConfigBigqueryDestinationConfig {
         public Builder appendOnly(@Nullable StreamDestinationConfigBigqueryDestinationConfigAppendOnly appendOnly) {
 
             this.appendOnly = appendOnly;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder blmtConfig(@Nullable StreamDestinationConfigBigqueryDestinationConfigBlmtConfig blmtConfig) {
+
+            this.blmtConfig = blmtConfig;
             return this;
         }
         @CustomType.Setter
@@ -153,6 +176,7 @@ public final class StreamDestinationConfigBigqueryDestinationConfig {
         public StreamDestinationConfigBigqueryDestinationConfig build() {
             final var _resultValue = new StreamDestinationConfigBigqueryDestinationConfig();
             _resultValue.appendOnly = appendOnly;
+            _resultValue.blmtConfig = blmtConfig;
             _resultValue.dataFreshness = dataFreshness;
             _resultValue.merge = merge;
             _resultValue.singleTargetDataset = singleTargetDataset;

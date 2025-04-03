@@ -17,10 +17,15 @@ public final class GetInstanceAttachedDisk {
      */
     private String deviceName;
     /**
-     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
      * 
      */
     private String diskEncryptionKeyRaw;
+    /**
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
+     * 
+     */
+    private String diskEncryptionKeyRsa;
     /**
      * @return The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
      * encoded SHA-256 hash of the [customer-supplied encryption key]
@@ -29,7 +34,12 @@ public final class GetInstanceAttachedDisk {
      */
     private String diskEncryptionKeySha256;
     /**
-     * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * @return The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+     * 
+     */
+    private String diskEncryptionServiceAccount;
+    /**
+     * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
      * 
      */
     private String kmsKeySelfLink;
@@ -54,11 +64,18 @@ public final class GetInstanceAttachedDisk {
         return this.deviceName;
     }
     /**
-     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
      * 
      */
     public String diskEncryptionKeyRaw() {
         return this.diskEncryptionKeyRaw;
+    }
+    /**
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
+     * 
+     */
+    public String diskEncryptionKeyRsa() {
+        return this.diskEncryptionKeyRsa;
     }
     /**
      * @return The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
@@ -70,7 +87,14 @@ public final class GetInstanceAttachedDisk {
         return this.diskEncryptionKeySha256;
     }
     /**
-     * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * @return The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+     * 
+     */
+    public String diskEncryptionServiceAccount() {
+        return this.diskEncryptionServiceAccount;
+    }
+    /**
+     * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
      * 
      */
     public String kmsKeySelfLink() {
@@ -102,7 +126,9 @@ public final class GetInstanceAttachedDisk {
     public static final class Builder {
         private String deviceName;
         private String diskEncryptionKeyRaw;
+        private String diskEncryptionKeyRsa;
         private String diskEncryptionKeySha256;
+        private String diskEncryptionServiceAccount;
         private String kmsKeySelfLink;
         private String mode;
         private String source;
@@ -111,7 +137,9 @@ public final class GetInstanceAttachedDisk {
     	      Objects.requireNonNull(defaults);
     	      this.deviceName = defaults.deviceName;
     	      this.diskEncryptionKeyRaw = defaults.diskEncryptionKeyRaw;
+    	      this.diskEncryptionKeyRsa = defaults.diskEncryptionKeyRsa;
     	      this.diskEncryptionKeySha256 = defaults.diskEncryptionKeySha256;
+    	      this.diskEncryptionServiceAccount = defaults.diskEncryptionServiceAccount;
     	      this.kmsKeySelfLink = defaults.kmsKeySelfLink;
     	      this.mode = defaults.mode;
     	      this.source = defaults.source;
@@ -134,11 +162,27 @@ public final class GetInstanceAttachedDisk {
             return this;
         }
         @CustomType.Setter
+        public Builder diskEncryptionKeyRsa(String diskEncryptionKeyRsa) {
+            if (diskEncryptionKeyRsa == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAttachedDisk", "diskEncryptionKeyRsa");
+            }
+            this.diskEncryptionKeyRsa = diskEncryptionKeyRsa;
+            return this;
+        }
+        @CustomType.Setter
         public Builder diskEncryptionKeySha256(String diskEncryptionKeySha256) {
             if (diskEncryptionKeySha256 == null) {
               throw new MissingRequiredPropertyException("GetInstanceAttachedDisk", "diskEncryptionKeySha256");
             }
             this.diskEncryptionKeySha256 = diskEncryptionKeySha256;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder diskEncryptionServiceAccount(String diskEncryptionServiceAccount) {
+            if (diskEncryptionServiceAccount == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAttachedDisk", "diskEncryptionServiceAccount");
+            }
+            this.diskEncryptionServiceAccount = diskEncryptionServiceAccount;
             return this;
         }
         @CustomType.Setter
@@ -169,7 +213,9 @@ public final class GetInstanceAttachedDisk {
             final var _resultValue = new GetInstanceAttachedDisk();
             _resultValue.deviceName = deviceName;
             _resultValue.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
+            _resultValue.diskEncryptionKeyRsa = diskEncryptionKeyRsa;
             _resultValue.diskEncryptionKeySha256 = diskEncryptionKeySha256;
+            _resultValue.diskEncryptionServiceAccount = diskEncryptionServiceAccount;
             _resultValue.kmsKeySelfLink = kmsKeySelfLink;
             _resultValue.mode = mode;
             _resultValue.source = source;

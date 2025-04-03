@@ -2117,6 +2117,166 @@ func (o GetIAMPolicyBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetIamCustomRolesRole struct {
+	// The current deleted state of the role.
+	Deleted bool `pulumi:"deleted"`
+	// A human-readable description for the role.
+	Description string `pulumi:"description"`
+	// an identifier for the resource with the format `organizations/{{org_id}}/roles/{{role_id}}`.
+	Id string `pulumi:"id"`
+	// The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+	Name string `pulumi:"name"`
+	// The names of the permissions this role grants when bound in an IAM policy.
+	Permissions []string `pulumi:"permissions"`
+	// The camel case role id used for this role.
+	RoleId string `pulumi:"roleId"`
+	// The current launch stage of the role. List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
+	Stage string `pulumi:"stage"`
+	// A human-readable title for the role.
+	Title string `pulumi:"title"`
+}
+
+// GetIamCustomRolesRoleInput is an input type that accepts GetIamCustomRolesRoleArgs and GetIamCustomRolesRoleOutput values.
+// You can construct a concrete instance of `GetIamCustomRolesRoleInput` via:
+//
+//	GetIamCustomRolesRoleArgs{...}
+type GetIamCustomRolesRoleInput interface {
+	pulumi.Input
+
+	ToGetIamCustomRolesRoleOutput() GetIamCustomRolesRoleOutput
+	ToGetIamCustomRolesRoleOutputWithContext(context.Context) GetIamCustomRolesRoleOutput
+}
+
+type GetIamCustomRolesRoleArgs struct {
+	// The current deleted state of the role.
+	Deleted pulumi.BoolInput `pulumi:"deleted"`
+	// A human-readable description for the role.
+	Description pulumi.StringInput `pulumi:"description"`
+	// an identifier for the resource with the format `organizations/{{org_id}}/roles/{{role_id}}`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The names of the permissions this role grants when bound in an IAM policy.
+	Permissions pulumi.StringArrayInput `pulumi:"permissions"`
+	// The camel case role id used for this role.
+	RoleId pulumi.StringInput `pulumi:"roleId"`
+	// The current launch stage of the role. List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
+	Stage pulumi.StringInput `pulumi:"stage"`
+	// A human-readable title for the role.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (GetIamCustomRolesRoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamCustomRolesRole)(nil)).Elem()
+}
+
+func (i GetIamCustomRolesRoleArgs) ToGetIamCustomRolesRoleOutput() GetIamCustomRolesRoleOutput {
+	return i.ToGetIamCustomRolesRoleOutputWithContext(context.Background())
+}
+
+func (i GetIamCustomRolesRoleArgs) ToGetIamCustomRolesRoleOutputWithContext(ctx context.Context) GetIamCustomRolesRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamCustomRolesRoleOutput)
+}
+
+// GetIamCustomRolesRoleArrayInput is an input type that accepts GetIamCustomRolesRoleArray and GetIamCustomRolesRoleArrayOutput values.
+// You can construct a concrete instance of `GetIamCustomRolesRoleArrayInput` via:
+//
+//	GetIamCustomRolesRoleArray{ GetIamCustomRolesRoleArgs{...} }
+type GetIamCustomRolesRoleArrayInput interface {
+	pulumi.Input
+
+	ToGetIamCustomRolesRoleArrayOutput() GetIamCustomRolesRoleArrayOutput
+	ToGetIamCustomRolesRoleArrayOutputWithContext(context.Context) GetIamCustomRolesRoleArrayOutput
+}
+
+type GetIamCustomRolesRoleArray []GetIamCustomRolesRoleInput
+
+func (GetIamCustomRolesRoleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIamCustomRolesRole)(nil)).Elem()
+}
+
+func (i GetIamCustomRolesRoleArray) ToGetIamCustomRolesRoleArrayOutput() GetIamCustomRolesRoleArrayOutput {
+	return i.ToGetIamCustomRolesRoleArrayOutputWithContext(context.Background())
+}
+
+func (i GetIamCustomRolesRoleArray) ToGetIamCustomRolesRoleArrayOutputWithContext(ctx context.Context) GetIamCustomRolesRoleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamCustomRolesRoleArrayOutput)
+}
+
+type GetIamCustomRolesRoleOutput struct{ *pulumi.OutputState }
+
+func (GetIamCustomRolesRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamCustomRolesRole)(nil)).Elem()
+}
+
+func (o GetIamCustomRolesRoleOutput) ToGetIamCustomRolesRoleOutput() GetIamCustomRolesRoleOutput {
+	return o
+}
+
+func (o GetIamCustomRolesRoleOutput) ToGetIamCustomRolesRoleOutputWithContext(ctx context.Context) GetIamCustomRolesRoleOutput {
+	return o
+}
+
+// The current deleted state of the role.
+func (o GetIamCustomRolesRoleOutput) Deleted() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetIamCustomRolesRole) bool { return v.Deleted }).(pulumi.BoolOutput)
+}
+
+// A human-readable description for the role.
+func (o GetIamCustomRolesRoleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIamCustomRolesRole) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// an identifier for the resource with the format `organizations/{{org_id}}/roles/{{role_id}}`.
+func (o GetIamCustomRolesRoleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIamCustomRolesRole) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+func (o GetIamCustomRolesRoleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIamCustomRolesRole) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The names of the permissions this role grants when bound in an IAM policy.
+func (o GetIamCustomRolesRoleOutput) Permissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIamCustomRolesRole) []string { return v.Permissions }).(pulumi.StringArrayOutput)
+}
+
+// The camel case role id used for this role.
+func (o GetIamCustomRolesRoleOutput) RoleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIamCustomRolesRole) string { return v.RoleId }).(pulumi.StringOutput)
+}
+
+// The current launch stage of the role. List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
+func (o GetIamCustomRolesRoleOutput) Stage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIamCustomRolesRole) string { return v.Stage }).(pulumi.StringOutput)
+}
+
+// A human-readable title for the role.
+func (o GetIamCustomRolesRoleOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIamCustomRolesRole) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type GetIamCustomRolesRoleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIamCustomRolesRoleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIamCustomRolesRole)(nil)).Elem()
+}
+
+func (o GetIamCustomRolesRoleArrayOutput) ToGetIamCustomRolesRoleArrayOutput() GetIamCustomRolesRoleArrayOutput {
+	return o
+}
+
+func (o GetIamCustomRolesRoleArrayOutput) ToGetIamCustomRolesRoleArrayOutputWithContext(ctx context.Context) GetIamCustomRolesRoleArrayOutput {
+	return o
+}
+
+func (o GetIamCustomRolesRoleArrayOutput) Index(i pulumi.IntInput) GetIamCustomRolesRoleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIamCustomRolesRole {
+		return vs[0].([]GetIamCustomRolesRole)[vs[1].(int)]
+	}).(GetIamCustomRolesRoleOutput)
+}
+
 type GetSOrganization struct {
 	// The Google for Work customer ID of the Organization.
 	DirectoryCustomerId string `pulumi:"directoryCustomerId"`
@@ -2279,6 +2439,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMPolicyBindingArrayInput)(nil)).Elem(), GetIAMPolicyBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMPolicyBindingConditionInput)(nil)).Elem(), GetIAMPolicyBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMPolicyBindingConditionPtrInput)(nil)).Elem(), GetIAMPolicyBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamCustomRolesRoleInput)(nil)).Elem(), GetIamCustomRolesRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamCustomRolesRoleArrayInput)(nil)).Elem(), GetIamCustomRolesRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSOrganizationInput)(nil)).Elem(), GetSOrganizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSOrganizationArrayInput)(nil)).Elem(), GetSOrganizationArray{})
 	pulumi.RegisterOutputType(AccessApprovalSettingsEnrolledServiceOutput{})
@@ -2309,6 +2471,8 @@ func init() {
 	pulumi.RegisterOutputType(GetIAMPolicyBindingArrayOutput{})
 	pulumi.RegisterOutputType(GetIAMPolicyBindingConditionOutput{})
 	pulumi.RegisterOutputType(GetIAMPolicyBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(GetIamCustomRolesRoleOutput{})
+	pulumi.RegisterOutputType(GetIamCustomRolesRoleArrayOutput{})
 	pulumi.RegisterOutputType(GetSOrganizationOutput{})
 	pulumi.RegisterOutputType(GetSOrganizationArrayOutput{})
 }

@@ -21,6 +21,13 @@ namespace Pulumi.Gcp.Datastream.Inputs
         public Input<Inputs.StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs>? AppendOnly { get; set; }
 
         /// <summary>
+        /// BigLake Managed Tables configuration for BigQuery streams.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("blmtConfig")]
+        public Input<Inputs.StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs>? BlmtConfig { get; set; }
+
+        /// <summary>
         /// The guaranteed data freshness (in seconds) when querying tables created by the stream.
         /// Editing this field will only affect new tables created in the future, but existing tables
         /// will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.

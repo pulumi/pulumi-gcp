@@ -12,6 +12,8 @@ namespace Pulumi.Gcp.ParameterManager
     public static class GetRegionalParameter
     {
         /// <summary>
+        /// Use this data source to get information about a Parameter Manager Regional Parameter.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +37,8 @@ namespace Pulumi.Gcp.ParameterManager
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionalParameterResult>("gcp:parametermanager/getRegionalParameter:getRegionalParameter", args ?? new GetRegionalParameterArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Use this data source to get information about a Parameter Manager Regional Parameter.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +62,8 @@ namespace Pulumi.Gcp.ParameterManager
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionalParameterResult>("gcp:parametermanager/getRegionalParameter:getRegionalParameter", args ?? new GetRegionalParameterInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Use this data source to get information about a Parameter Manager Regional Parameter.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

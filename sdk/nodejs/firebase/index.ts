@@ -50,6 +50,11 @@ export type AppHostingBackend = import("./appHostingBackend").AppHostingBackend;
 export const AppHostingBackend: typeof import("./appHostingBackend").AppHostingBackend = null as any;
 utilities.lazyLoad(exports, ["AppHostingBackend"], () => require("./appHostingBackend"));
 
+export { AppHostingBuildArgs, AppHostingBuildState } from "./appHostingBuild";
+export type AppHostingBuild = import("./appHostingBuild").AppHostingBuild;
+export const AppHostingBuild: typeof import("./appHostingBuild").AppHostingBuild = null as any;
+utilities.lazyLoad(exports, ["AppHostingBuild"], () => require("./appHostingBuild"));
+
 export { AppleAppArgs, AppleAppState } from "./appleApp";
 export type AppleApp = import("./appleApp").AppleApp;
 export const AppleApp: typeof import("./appleApp").AppleApp = null as any;
@@ -168,6 +173,8 @@ const _module = {
                 return new AppCheckServiceConfig(name, <any>undefined, { urn })
             case "gcp:firebase/appHostingBackend:AppHostingBackend":
                 return new AppHostingBackend(name, <any>undefined, { urn })
+            case "gcp:firebase/appHostingBuild:AppHostingBuild":
+                return new AppHostingBuild(name, <any>undefined, { urn })
             case "gcp:firebase/appleApp:AppleApp":
                 return new AppleApp(name, <any>undefined, { urn })
             case "gcp:firebase/dataConnectService:DataConnectService":
@@ -206,6 +213,7 @@ pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckRecaptchaEnterpri
 pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckRecaptchaV3Config", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckServiceConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/appHostingBackend", _module)
+pulumi.runtime.registerResourceModule("gcp", "firebase/appHostingBuild", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/appleApp", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/dataConnectService", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/databaseInstance", _module)

@@ -292,6 +292,27 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Datastream Connection Profile Postgres Secret Manager
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.datastream.ConnectionProfile("default", {
+ *     displayName: "Postgres Source With Secret Manager",
+ *     location: "us-central1",
+ *     connectionProfileId: "source-profile",
+ *     createWithoutValidation: true,
+ *     postgresqlProfile: {
+ *         hostname: "fake-hostname",
+ *         port: 3306,
+ *         username: "fake-username",
+ *         secretManagerStoredPassword: "projects/fake-project/secrets/fake-secret/versions/1",
+ *         database: "fake-database",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * ConnectionProfile can be imported using any of these accepted formats:

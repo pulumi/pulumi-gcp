@@ -75,6 +75,7 @@ public final class GetClusterResult {
     private List<GetClusterDefaultSnatStatus> defaultSnatStatuses;
     private Boolean deletionProtection;
     private String description;
+    private Boolean disableL4LbFirewallReconciliation;
     private List<GetClusterDnsConfig> dnsConfigs;
     private Map<String,String> effectiveLabels;
     private Boolean enableAutopilot;
@@ -196,6 +197,9 @@ public final class GetClusterResult {
     }
     public String description() {
         return this.description;
+    }
+    public Boolean disableL4LbFirewallReconciliation() {
+        return this.disableL4LbFirewallReconciliation;
     }
     public List<GetClusterDnsConfig> dnsConfigs() {
         return this.dnsConfigs;
@@ -431,6 +435,7 @@ public final class GetClusterResult {
         private List<GetClusterDefaultSnatStatus> defaultSnatStatuses;
         private Boolean deletionProtection;
         private String description;
+        private Boolean disableL4LbFirewallReconciliation;
         private List<GetClusterDnsConfig> dnsConfigs;
         private Map<String,String> effectiveLabels;
         private Boolean enableAutopilot;
@@ -518,6 +523,7 @@ public final class GetClusterResult {
     	      this.defaultSnatStatuses = defaults.defaultSnatStatuses;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.description = defaults.description;
+    	      this.disableL4LbFirewallReconciliation = defaults.disableL4LbFirewallReconciliation;
     	      this.dnsConfigs = defaults.dnsConfigs;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.enableAutopilot = defaults.enableAutopilot;
@@ -744,6 +750,14 @@ public final class GetClusterResult {
               throw new MissingRequiredPropertyException("GetClusterResult", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disableL4LbFirewallReconciliation(Boolean disableL4LbFirewallReconciliation) {
+            if (disableL4LbFirewallReconciliation == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "disableL4LbFirewallReconciliation");
+            }
+            this.disableL4LbFirewallReconciliation = disableL4LbFirewallReconciliation;
             return this;
         }
         @CustomType.Setter
@@ -1406,6 +1420,7 @@ public final class GetClusterResult {
             _resultValue.defaultSnatStatuses = defaultSnatStatuses;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.description = description;
+            _resultValue.disableL4LbFirewallReconciliation = disableL4LbFirewallReconciliation;
             _resultValue.dnsConfigs = dnsConfigs;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.enableAutopilot = enableAutopilot;

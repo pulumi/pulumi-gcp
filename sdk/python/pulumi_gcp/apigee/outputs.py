@@ -25,6 +25,7 @@ __all__ = [
     'ApiMetaData',
     'AppGroupAttribute',
     'DeveloperAttribute',
+    'DnsZonePeeringConfig',
     'EnvironmentIamBindingCondition',
     'EnvironmentIamMemberCondition',
     'EnvironmentNodeConfig',
@@ -428,6 +429,58 @@ class DeveloperAttribute(dict):
         Value of the attribute
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DnsZonePeeringConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetNetworkId":
+            suggest = "target_network_id"
+        elif key == "targetProjectId":
+            suggest = "target_project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DnsZonePeeringConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DnsZonePeeringConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DnsZonePeeringConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 target_network_id: str,
+                 target_project_id: str):
+        """
+        :param str target_network_id: The name of the producer VPC network.
+               
+               - - -
+        :param str target_project_id: The ID of the project that contains the producer VPC network.
+        """
+        pulumi.set(__self__, "target_network_id", target_network_id)
+        pulumi.set(__self__, "target_project_id", target_project_id)
+
+    @property
+    @pulumi.getter(name="targetNetworkId")
+    def target_network_id(self) -> str:
+        """
+        The name of the producer VPC network.
+
+        - - -
+        """
+        return pulumi.get(self, "target_network_id")
+
+    @property
+    @pulumi.getter(name="targetProjectId")
+    def target_project_id(self) -> str:
+        """
+        The ID of the project that contains the producer VPC network.
+        """
+        return pulumi.get(self, "target_project_id")
 
 
 @pulumi.output_type

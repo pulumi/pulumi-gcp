@@ -21,6 +21,10 @@ import com.pulumi.gcp.storage.inputs.GetBucketObjectsPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetBucketPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetBucketsArgs;
 import com.pulumi.gcp.storage.inputs.GetBucketsPlainArgs;
+import com.pulumi.gcp.storage.inputs.GetControlFolderIntelligenceConfigArgs;
+import com.pulumi.gcp.storage.inputs.GetControlFolderIntelligenceConfigPlainArgs;
+import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceConfigArgs;
+import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceConfigPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceConfigArgs;
 import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceConfigPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetManagedFolderIamPolicyArgs;
@@ -39,6 +43,8 @@ import com.pulumi.gcp.storage.outputs.GetBucketObjectResult;
 import com.pulumi.gcp.storage.outputs.GetBucketObjectsResult;
 import com.pulumi.gcp.storage.outputs.GetBucketResult;
 import com.pulumi.gcp.storage.outputs.GetBucketsResult;
+import com.pulumi.gcp.storage.outputs.GetControlFolderIntelligenceConfigResult;
+import com.pulumi.gcp.storage.outputs.GetControlOrganizationIntelligenceConfigResult;
 import com.pulumi.gcp.storage.outputs.GetControlProjectIntelligenceConfigResult;
 import com.pulumi.gcp.storage.outputs.GetManagedFolderIamPolicyResult;
 import com.pulumi.gcp.storage.outputs.GetObjectSignedUrlResult;
@@ -1626,18 +1632,678 @@ public final class StorageFunctions {
     public static CompletableFuture<GetBucketsResult> getBucketsPlain(GetBucketsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:storage/getBuckets:getBuckets", TypeShape.of(GetBucketsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Use this data source to get information about a Folder Storage Intelligence config resource.
+     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
+     * and
+     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlFolderIntelligenceConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sample-config = StorageFunctions.getControlFolderIntelligenceConfig(GetControlFolderIntelligenceConfigArgs.builder()
+     *             .name("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetControlFolderIntelligenceConfigResult> getControlFolderIntelligenceConfig(GetControlFolderIntelligenceConfigArgs args) {
+        return getControlFolderIntelligenceConfig(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a Folder Storage Intelligence config resource.
+     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
+     * and
+     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlFolderIntelligenceConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sample-config = StorageFunctions.getControlFolderIntelligenceConfig(GetControlFolderIntelligenceConfigArgs.builder()
+     *             .name("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetControlFolderIntelligenceConfigResult> getControlFolderIntelligenceConfigPlain(GetControlFolderIntelligenceConfigPlainArgs args) {
+        return getControlFolderIntelligenceConfigPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a Folder Storage Intelligence config resource.
+     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
+     * and
+     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlFolderIntelligenceConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sample-config = StorageFunctions.getControlFolderIntelligenceConfig(GetControlFolderIntelligenceConfigArgs.builder()
+     *             .name("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetControlFolderIntelligenceConfigResult> getControlFolderIntelligenceConfig(GetControlFolderIntelligenceConfigArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getControlFolderIntelligenceConfig:getControlFolderIntelligenceConfig", TypeShape.of(GetControlFolderIntelligenceConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a Folder Storage Intelligence config resource.
+     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
+     * and
+     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlFolderIntelligenceConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sample-config = StorageFunctions.getControlFolderIntelligenceConfig(GetControlFolderIntelligenceConfigArgs.builder()
+     *             .name("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetControlFolderIntelligenceConfigResult> getControlFolderIntelligenceConfig(GetControlFolderIntelligenceConfigArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getControlFolderIntelligenceConfig:getControlFolderIntelligenceConfig", TypeShape.of(GetControlFolderIntelligenceConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a Folder Storage Intelligence config resource.
+     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
+     * and
+     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlFolderIntelligenceConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sample-config = StorageFunctions.getControlFolderIntelligenceConfig(GetControlFolderIntelligenceConfigArgs.builder()
+     *             .name("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetControlFolderIntelligenceConfigResult> getControlFolderIntelligenceConfigPlain(GetControlFolderIntelligenceConfigPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:storage/getControlFolderIntelligenceConfig:getControlFolderIntelligenceConfig", TypeShape.of(GetControlFolderIntelligenceConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a Organization Storage Intelligence config resource.
+     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
+     * and
+     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sample-config = StorageFunctions.getControlOrganizationIntelligenceConfig(GetControlOrganizationIntelligenceConfigArgs.builder()
+     *             .name("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetControlOrganizationIntelligenceConfigResult> getControlOrganizationIntelligenceConfig(GetControlOrganizationIntelligenceConfigArgs args) {
+        return getControlOrganizationIntelligenceConfig(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a Organization Storage Intelligence config resource.
+     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
+     * and
+     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sample-config = StorageFunctions.getControlOrganizationIntelligenceConfig(GetControlOrganizationIntelligenceConfigArgs.builder()
+     *             .name("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetControlOrganizationIntelligenceConfigResult> getControlOrganizationIntelligenceConfigPlain(GetControlOrganizationIntelligenceConfigPlainArgs args) {
+        return getControlOrganizationIntelligenceConfigPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a Organization Storage Intelligence config resource.
+     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
+     * and
+     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sample-config = StorageFunctions.getControlOrganizationIntelligenceConfig(GetControlOrganizationIntelligenceConfigArgs.builder()
+     *             .name("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetControlOrganizationIntelligenceConfigResult> getControlOrganizationIntelligenceConfig(GetControlOrganizationIntelligenceConfigArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getControlOrganizationIntelligenceConfig:getControlOrganizationIntelligenceConfig", TypeShape.of(GetControlOrganizationIntelligenceConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a Organization Storage Intelligence config resource.
+     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
+     * and
+     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sample-config = StorageFunctions.getControlOrganizationIntelligenceConfig(GetControlOrganizationIntelligenceConfigArgs.builder()
+     *             .name("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetControlOrganizationIntelligenceConfigResult> getControlOrganizationIntelligenceConfig(GetControlOrganizationIntelligenceConfigArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getControlOrganizationIntelligenceConfig:getControlOrganizationIntelligenceConfig", TypeShape.of(GetControlOrganizationIntelligenceConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a Organization Storage Intelligence config resource.
+     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
+     * and
+     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sample-config = StorageFunctions.getControlOrganizationIntelligenceConfig(GetControlOrganizationIntelligenceConfigArgs.builder()
+     *             .name("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetControlOrganizationIntelligenceConfigResult> getControlOrganizationIntelligenceConfigPlain(GetControlOrganizationIntelligenceConfigPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:storage/getControlOrganizationIntelligenceConfig:getControlOrganizationIntelligenceConfig", TypeShape.of(GetControlOrganizationIntelligenceConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a Project Storage Intelligence config resource.
+     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
+     * and
+     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sample-config = StorageFunctions.getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs.builder()
+     *             .name("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetControlProjectIntelligenceConfigResult> getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs args) {
         return getControlProjectIntelligenceConfig(args, InvokeOptions.Empty);
     }
+    /**
+     * Use this data source to get information about a Project Storage Intelligence config resource.
+     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
+     * and
+     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sample-config = StorageFunctions.getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs.builder()
+     *             .name("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetControlProjectIntelligenceConfigResult> getControlProjectIntelligenceConfigPlain(GetControlProjectIntelligenceConfigPlainArgs args) {
         return getControlProjectIntelligenceConfigPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Use this data source to get information about a Project Storage Intelligence config resource.
+     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
+     * and
+     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sample-config = StorageFunctions.getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs.builder()
+     *             .name("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetControlProjectIntelligenceConfigResult> getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:storage/getControlProjectIntelligenceConfig:getControlProjectIntelligenceConfig", TypeShape.of(GetControlProjectIntelligenceConfigResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Use this data source to get information about a Project Storage Intelligence config resource.
+     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
+     * and
+     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sample-config = StorageFunctions.getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs.builder()
+     *             .name("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetControlProjectIntelligenceConfigResult> getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:storage/getControlProjectIntelligenceConfig:getControlProjectIntelligenceConfig", TypeShape.of(GetControlProjectIntelligenceConfigResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Use this data source to get information about a Project Storage Intelligence config resource.
+     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
+     * and
+     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sample-config = StorageFunctions.getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs.builder()
+     *             .name("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetControlProjectIntelligenceConfigResult> getControlProjectIntelligenceConfigPlain(GetControlProjectIntelligenceConfigPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:storage/getControlProjectIntelligenceConfig:getControlProjectIntelligenceConfig", TypeShape.of(GetControlProjectIntelligenceConfigResult.class), args, Utilities.withVersion(options));
     }

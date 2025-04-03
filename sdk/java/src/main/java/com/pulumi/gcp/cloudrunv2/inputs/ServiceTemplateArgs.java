@@ -96,6 +96,21 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * True if GPU zonal redundancy is disabled on this revision.
+     * 
+     */
+    @Import(name="gpuZonalRedundancyDisabled")
+    private @Nullable Output<Boolean> gpuZonalRedundancyDisabled;
+
+    /**
+     * @return True if GPU zonal redundancy is disabled on this revision.
+     * 
+     */
+    public Optional<Output<Boolean>> gpuZonalRedundancyDisabled() {
+        return Optional.ofNullable(this.gpuZonalRedundancyDisabled);
+    }
+
+    /**
      * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
      * For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
      * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -287,6 +302,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         this.containers = $.containers;
         this.encryptionKey = $.encryptionKey;
         this.executionEnvironment = $.executionEnvironment;
+        this.gpuZonalRedundancyDisabled = $.gpuZonalRedundancyDisabled;
         this.labels = $.labels;
         this.maxInstanceRequestConcurrency = $.maxInstanceRequestConcurrency;
         this.nodeSelector = $.nodeSelector;
@@ -421,6 +437,27 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder executionEnvironment(String executionEnvironment) {
             return executionEnvironment(Output.of(executionEnvironment));
+        }
+
+        /**
+         * @param gpuZonalRedundancyDisabled True if GPU zonal redundancy is disabled on this revision.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gpuZonalRedundancyDisabled(@Nullable Output<Boolean> gpuZonalRedundancyDisabled) {
+            $.gpuZonalRedundancyDisabled = gpuZonalRedundancyDisabled;
+            return this;
+        }
+
+        /**
+         * @param gpuZonalRedundancyDisabled True if GPU zonal redundancy is disabled on this revision.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gpuZonalRedundancyDisabled(Boolean gpuZonalRedundancyDisabled) {
+            return gpuZonalRedundancyDisabled(Output.of(gpuZonalRedundancyDisabled));
         }
 
         /**

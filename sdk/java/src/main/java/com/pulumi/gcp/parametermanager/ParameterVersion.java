@@ -17,6 +17,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Parameter Version resource that stores the actual value of the parameter.
+ * 
+ * To get more information about ParameterVersion, see:
+ * 
+ * * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions)
+ * 
  * ## Example Usage
  * 
  * ### Parameter Version Basic
@@ -109,6 +115,53 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Parameter Version With Kms Key
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.parametermanager.Parameter;
+ * import com.pulumi.gcp.parametermanager.ParameterArgs;
+ * import com.pulumi.gcp.parametermanager.ParameterVersion;
+ * import com.pulumi.gcp.parametermanager.ParameterVersionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var parameter_basic = new Parameter("parameter-basic", ParameterArgs.builder()
+ *             .parameterId("parameter")
+ *             .kmsKey("kms-key")
+ *             .build());
+ * 
+ *         var parameter_version_with_kms_key = new ParameterVersion("parameter-version-with-kms-key", ParameterVersionArgs.builder()
+ *             .parameter(parameter_basic.id())
+ *             .parameterVersionId("parameter_version")
+ *             .parameterData("app-parameter-version-data")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ## Import
  * 
  * ParameterVersion can be imported using any of these accepted formats:
@@ -151,6 +204,22 @@ public class ParameterVersion extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> disabled() {
         return Codegen.optional(this.disabled);
+    }
+    /**
+     * The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
+     * `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+     * 
+     */
+    @Export(name="kmsKeyVersion", refs={String.class}, tree="[0]")
+    private Output<String> kmsKeyVersion;
+
+    /**
+     * @return The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
+     * `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+     * 
+     */
+    public Output<String> kmsKeyVersion() {
+        return this.kmsKeyVersion;
     }
     /**
      * The resource name of the Parameter Version. Format:

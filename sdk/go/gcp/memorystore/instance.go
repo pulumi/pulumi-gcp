@@ -14,6 +14,12 @@ import (
 
 // A Google Cloud Memorystore instance.
 //
+// To get more information about Instance, see:
+//
+// * [API documentation](https://cloud.google.com/memorystore/docs/valkey/reference/rest/v1/projects.locations.instances)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/memorystore/docs/valkey/create-instances)
+//
 // ## Example Usage
 //
 // ### Memorystore Instance Basic
@@ -293,6 +299,178 @@ import (
 //	}
 //
 // ```
+// ### Memorystore Instance Secondary Instance
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/memorystore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			primaryProducerNet, err := compute.NewNetwork(ctx, "primary_producer_net", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-network-primary-instance"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			primaryProducerSubnet, err := compute.NewSubnetwork(ctx, "primary_producer_subnet", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("my-subnet-primary-instance"),
+//				IpCidrRange: pulumi.String("10.0.1.0/29"),
+//				Region:      pulumi.String("asia-east1"),
+//				Network:     primaryProducerNet.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			primaryPolicy, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "primary_policy", &networkconnectivity.ServiceConnectionPolicyArgs{
+//				Name:         pulumi.String("my-policy-primary-instance"),
+//				Location:     pulumi.String("asia-east1"),
+//				ServiceClass: pulumi.String("gcp-memorystore"),
+//				Description:  pulumi.String("my basic service connection policy"),
+//				Network:      primaryProducerNet.ID(),
+//				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
+//					Subnetworks: pulumi.StringArray{
+//						primaryProducerSubnet.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Primary instance
+//			primaryInstance, err := memorystore.NewInstance(ctx, "primary_instance", &memorystore.InstanceArgs{
+//				InstanceId: pulumi.String("primary-instance"),
+//				ShardCount: pulumi.Int(1),
+//				DesiredPscAutoConnections: memorystore.InstanceDesiredPscAutoConnectionArray{
+//					&memorystore.InstanceDesiredPscAutoConnectionArgs{
+//						Network:   primaryProducerNet.ID(),
+//						ProjectId: pulumi.String(project.ProjectId),
+//					},
+//				},
+//				Location:              pulumi.String("asia-east1"),
+//				ReplicaCount:          pulumi.Int(1),
+//				NodeType:              pulumi.String("SHARED_CORE_NANO"),
+//				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_DISABLED"),
+//				AuthorizationMode:     pulumi.String("AUTH_DISABLED"),
+//				EngineConfigs: pulumi.StringMap{
+//					"maxmemory-policy": pulumi.String("volatile-ttl"),
+//				},
+//				ZoneDistributionConfig: &memorystore.InstanceZoneDistributionConfigArgs{
+//					Mode: pulumi.String("SINGLE_ZONE"),
+//					Zone: pulumi.String("asia-east1-c"),
+//				},
+//				DeletionProtectionEnabled: pulumi.Bool(true),
+//				PersistenceConfig: &memorystore.InstancePersistenceConfigArgs{
+//					Mode: pulumi.String("RDB"),
+//					RdbConfig: &memorystore.InstancePersistenceConfigRdbConfigArgs{
+//						RdbSnapshotPeriod:    pulumi.String("ONE_HOUR"),
+//						RdbSnapshotStartTime: pulumi.String("2024-10-02T15:01:23Z"),
+//					},
+//				},
+//				Labels: pulumi.StringMap{
+//					"abc": pulumi.String("xyz"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				primaryPolicy,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			secondaryProducerNet, err := compute.NewNetwork(ctx, "secondary_producer_net", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-network-secondary-instance"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			secondaryProducerSubnet, err := compute.NewSubnetwork(ctx, "secondary_producer_subnet", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("my-subnet-secondary-instance"),
+//				IpCidrRange: pulumi.String("10.0.2.0/29"),
+//				Region:      pulumi.String("europe-north1"),
+//				Network:     secondaryProducerNet.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			secondaryPolicy, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "secondary_policy", &networkconnectivity.ServiceConnectionPolicyArgs{
+//				Name:         pulumi.String("my-policy-secondary-instance"),
+//				Location:     pulumi.String("europe-north1"),
+//				ServiceClass: pulumi.String("gcp-memorystore"),
+//				Description:  pulumi.String("my basic service connection policy"),
+//				Network:      secondaryProducerNet.ID(),
+//				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
+//					Subnetworks: pulumi.StringArray{
+//						secondaryProducerSubnet.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Secondary instance
+//			_, err = memorystore.NewInstance(ctx, "secondary_instance", &memorystore.InstanceArgs{
+//				InstanceId: pulumi.String("secondary-instance"),
+//				ShardCount: pulumi.Int(1),
+//				DesiredPscAutoConnections: memorystore.InstanceDesiredPscAutoConnectionArray{
+//					&memorystore.InstanceDesiredPscAutoConnectionArgs{
+//						Network:   secondaryProducerNet.ID(),
+//						ProjectId: pulumi.String(project.ProjectId),
+//					},
+//				},
+//				Location:              pulumi.String("europe-north1"),
+//				ReplicaCount:          pulumi.Int(1),
+//				NodeType:              pulumi.String("SHARED_CORE_NANO"),
+//				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_DISABLED"),
+//				AuthorizationMode:     pulumi.String("AUTH_DISABLED"),
+//				EngineConfigs: pulumi.StringMap{
+//					"maxmemory-policy": pulumi.String("volatile-ttl"),
+//				},
+//				ZoneDistributionConfig: &memorystore.InstanceZoneDistributionConfigArgs{
+//					Mode: pulumi.String("SINGLE_ZONE"),
+//					Zone: pulumi.String("europe-north1-c"),
+//				},
+//				DeletionProtectionEnabled: pulumi.Bool(true),
+//				CrossInstanceReplicationConfig: &memorystore.InstanceCrossInstanceReplicationConfigArgs{
+//					InstanceRole: pulumi.String("SECONDARY"),
+//					PrimaryInstance: &memorystore.InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs{
+//						Instance: primaryInstance.ID(),
+//					},
+//				},
+//				PersistenceConfig: &memorystore.InstancePersistenceConfigArgs{
+//					Mode: pulumi.String("RDB"),
+//					RdbConfig: &memorystore.InstancePersistenceConfigRdbConfigArgs{
+//						RdbSnapshotPeriod:    pulumi.String("ONE_HOUR"),
+//						RdbSnapshotStartTime: pulumi.String("2024-10-02T15:01:23Z"),
+//					},
+//				},
+//				Labels: pulumi.StringMap{
+//					"abc": pulumi.String("xyz"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				secondaryPolicy,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -326,9 +504,12 @@ type Instance struct {
 	AuthorizationMode pulumi.StringOutput `pulumi:"authorizationMode"`
 	// Output only. Creation timestamp of the instance.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Cross instance replication config
+	// Structure is documented below.
+	CrossInstanceReplicationConfig InstanceCrossInstanceReplicationConfigOutput `pulumi:"crossInstanceReplicationConfig"`
 	// Optional. If set to true deletion of the instance will fail.
 	DeletionProtectionEnabled pulumi.BoolPtrOutput `pulumi:"deletionProtectionEnabled"`
-	// Required. Immutable. User inputs for the auto-created PSC connections.
+	// Immutable. User inputs for the auto-created PSC connections.
 	DesiredPscAutoConnections InstanceDesiredPscAutoConnectionArrayOutput `pulumi:"desiredPscAutoConnections"`
 	// Output only. Endpoints clients can connect to the instance through. Currently only one
 	// discovery endpoint is supported.
@@ -391,6 +572,9 @@ type Instance struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Configuration of a service attachment of the cluster, for creating PSC connections.
+	// Structure is documented below.
+	PscAttachmentDetails InstancePscAttachmentDetailArrayOutput `pulumi:"pscAttachmentDetails"`
 	// Output only. User inputs and resource details of the auto-created PSC connections.
 	// Structure is documented below.
 	PscAutoConnections InstancePscAutoConnectionArrayOutput `pulumi:"pscAutoConnections"`
@@ -432,9 +616,6 @@ func NewInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DesiredPscAutoConnections == nil {
-		return nil, errors.New("invalid value for required argument 'DesiredPscAutoConnections'")
-	}
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
@@ -478,9 +659,12 @@ type instanceState struct {
 	AuthorizationMode *string `pulumi:"authorizationMode"`
 	// Output only. Creation timestamp of the instance.
 	CreateTime *string `pulumi:"createTime"`
+	// Cross instance replication config
+	// Structure is documented below.
+	CrossInstanceReplicationConfig *InstanceCrossInstanceReplicationConfig `pulumi:"crossInstanceReplicationConfig"`
 	// Optional. If set to true deletion of the instance will fail.
 	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
-	// Required. Immutable. User inputs for the auto-created PSC connections.
+	// Immutable. User inputs for the auto-created PSC connections.
 	DesiredPscAutoConnections []InstanceDesiredPscAutoConnection `pulumi:"desiredPscAutoConnections"`
 	// Output only. Endpoints clients can connect to the instance through. Currently only one
 	// discovery endpoint is supported.
@@ -543,6 +727,9 @@ type instanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Configuration of a service attachment of the cluster, for creating PSC connections.
+	// Structure is documented below.
+	PscAttachmentDetails []InstancePscAttachmentDetail `pulumi:"pscAttachmentDetails"`
 	// Output only. User inputs and resource details of the auto-created PSC connections.
 	// Structure is documented below.
 	PscAutoConnections []InstancePscAutoConnection `pulumi:"pscAutoConnections"`
@@ -584,9 +771,12 @@ type InstanceState struct {
 	AuthorizationMode pulumi.StringPtrInput
 	// Output only. Creation timestamp of the instance.
 	CreateTime pulumi.StringPtrInput
+	// Cross instance replication config
+	// Structure is documented below.
+	CrossInstanceReplicationConfig InstanceCrossInstanceReplicationConfigPtrInput
 	// Optional. If set to true deletion of the instance will fail.
 	DeletionProtectionEnabled pulumi.BoolPtrInput
-	// Required. Immutable. User inputs for the auto-created PSC connections.
+	// Immutable. User inputs for the auto-created PSC connections.
 	DesiredPscAutoConnections InstanceDesiredPscAutoConnectionArrayInput
 	// Output only. Endpoints clients can connect to the instance through. Currently only one
 	// discovery endpoint is supported.
@@ -649,6 +839,9 @@ type InstanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Configuration of a service attachment of the cluster, for creating PSC connections.
+	// Structure is documented below.
+	PscAttachmentDetails InstancePscAttachmentDetailArrayInput
 	// Output only. User inputs and resource details of the auto-created PSC connections.
 	// Structure is documented below.
 	PscAutoConnections InstancePscAutoConnectionArrayInput
@@ -692,9 +885,12 @@ type instanceArgs struct {
 	// AUTH_DISABLED
 	// IAM_AUTH
 	AuthorizationMode *string `pulumi:"authorizationMode"`
+	// Cross instance replication config
+	// Structure is documented below.
+	CrossInstanceReplicationConfig *InstanceCrossInstanceReplicationConfig `pulumi:"crossInstanceReplicationConfig"`
 	// Optional. If set to true deletion of the instance will fail.
 	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
-	// Required. Immutable. User inputs for the auto-created PSC connections.
+	// Immutable. User inputs for the auto-created PSC connections.
 	DesiredPscAutoConnections []InstanceDesiredPscAutoConnection `pulumi:"desiredPscAutoConnections"`
 	// Optional. User-provided engine configurations for the instance.
 	EngineConfigs map[string]string `pulumi:"engineConfigs"`
@@ -759,9 +955,12 @@ type InstanceArgs struct {
 	// AUTH_DISABLED
 	// IAM_AUTH
 	AuthorizationMode pulumi.StringPtrInput
+	// Cross instance replication config
+	// Structure is documented below.
+	CrossInstanceReplicationConfig InstanceCrossInstanceReplicationConfigPtrInput
 	// Optional. If set to true deletion of the instance will fail.
 	DeletionProtectionEnabled pulumi.BoolPtrInput
-	// Required. Immutable. User inputs for the auto-created PSC connections.
+	// Immutable. User inputs for the auto-created PSC connections.
 	DesiredPscAutoConnections InstanceDesiredPscAutoConnectionArrayInput
 	// Optional. User-provided engine configurations for the instance.
 	EngineConfigs pulumi.StringMapInput
@@ -919,12 +1118,20 @@ func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Cross instance replication config
+// Structure is documented below.
+func (o InstanceOutput) CrossInstanceReplicationConfig() InstanceCrossInstanceReplicationConfigOutput {
+	return o.ApplyT(func(v *Instance) InstanceCrossInstanceReplicationConfigOutput {
+		return v.CrossInstanceReplicationConfig
+	}).(InstanceCrossInstanceReplicationConfigOutput)
+}
+
 // Optional. If set to true deletion of the instance will fail.
 func (o InstanceOutput) DeletionProtectionEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DeletionProtectionEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Required. Immutable. User inputs for the auto-created PSC connections.
+// Immutable. User inputs for the auto-created PSC connections.
 func (o InstanceOutput) DesiredPscAutoConnections() InstanceDesiredPscAutoConnectionArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceDesiredPscAutoConnectionArrayOutput { return v.DesiredPscAutoConnections }).(InstanceDesiredPscAutoConnectionArrayOutput)
 }
@@ -1036,6 +1243,12 @@ func (o InstanceOutput) PersistenceConfig() InstancePersistenceConfigOutput {
 // If it is not provided, the provider project is used.
 func (o InstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Configuration of a service attachment of the cluster, for creating PSC connections.
+// Structure is documented below.
+func (o InstanceOutput) PscAttachmentDetails() InstancePscAttachmentDetailArrayOutput {
+	return o.ApplyT(func(v *Instance) InstancePscAttachmentDetailArrayOutput { return v.PscAttachmentDetails }).(InstancePscAttachmentDetailArrayOutput)
 }
 
 // Output only. User inputs and resource details of the auto-created PSC connections.

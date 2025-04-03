@@ -5,6 +5,7 @@ package com.pulumi.gcp.networksecurity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.networksecurity.inputs.MirroringEndpointGroupAssociationLocationArgs;
 import com.pulumi.gcp.networksecurity.inputs.MirroringEndpointGroupAssociationLocationsDetailArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -90,22 +91,51 @@ public final class MirroringEndpointGroupAssociationState extends com.pulumi.res
     }
 
     /**
+     * The list of locations where the association is configured. This information
+     * is retrieved from the linked endpoint group.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="locations")
+    private @Nullable Output<List<MirroringEndpointGroupAssociationLocationArgs>> locations;
+
+    /**
+     * @return The list of locations where the association is configured. This information
+     * is retrieved from the linked endpoint group.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<MirroringEndpointGroupAssociationLocationArgs>>> locations() {
+        return Optional.ofNullable(this.locations);
+    }
+
+    /**
+     * (Deprecated)
      * The list of locations where the association is present. This information
      * is retrieved from the linked endpoint group, and not configured as part
      * of the association itself.
      * Structure is documented below.
      * 
+     * @deprecated
+     * `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
+     * 
      */
+    @Deprecated /* `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead. */
     @Import(name="locationsDetails")
     private @Nullable Output<List<MirroringEndpointGroupAssociationLocationsDetailArgs>> locationsDetails;
 
     /**
-     * @return The list of locations where the association is present. This information
+     * @return (Deprecated)
+     * The list of locations where the association is present. This information
      * is retrieved from the linked endpoint group, and not configured as part
      * of the association itself.
      * Structure is documented below.
      * 
+     * @deprecated
+     * `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
+     * 
      */
+    @Deprecated /* `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead. */
     public Optional<Output<List<MirroringEndpointGroupAssociationLocationsDetailArgs>>> locationsDetails() {
         return Optional.ofNullable(this.locationsDetails);
     }
@@ -290,6 +320,7 @@ public final class MirroringEndpointGroupAssociationState extends com.pulumi.res
         this.effectiveLabels = $.effectiveLabels;
         this.labels = $.labels;
         this.location = $.location;
+        this.locations = $.locations;
         this.locationsDetails = $.locationsDetails;
         this.mirroringEndpointGroup = $.mirroringEndpointGroup;
         this.mirroringEndpointGroupAssociationId = $.mirroringEndpointGroupAssociationId;
@@ -415,41 +446,93 @@ public final class MirroringEndpointGroupAssociationState extends com.pulumi.res
         }
 
         /**
-         * @param locationsDetails The list of locations where the association is present. This information
+         * @param locations The list of locations where the association is configured. This information
+         * is retrieved from the linked endpoint group.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locations(@Nullable Output<List<MirroringEndpointGroupAssociationLocationArgs>> locations) {
+            $.locations = locations;
+            return this;
+        }
+
+        /**
+         * @param locations The list of locations where the association is configured. This information
+         * is retrieved from the linked endpoint group.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locations(List<MirroringEndpointGroupAssociationLocationArgs> locations) {
+            return locations(Output.of(locations));
+        }
+
+        /**
+         * @param locations The list of locations where the association is configured. This information
+         * is retrieved from the linked endpoint group.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locations(MirroringEndpointGroupAssociationLocationArgs... locations) {
+            return locations(List.of(locations));
+        }
+
+        /**
+         * @param locationsDetails (Deprecated)
+         * The list of locations where the association is present. This information
          * is retrieved from the linked endpoint group, and not configured as part
          * of the association itself.
          * Structure is documented below.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
+         * 
          */
+        @Deprecated /* `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead. */
         public Builder locationsDetails(@Nullable Output<List<MirroringEndpointGroupAssociationLocationsDetailArgs>> locationsDetails) {
             $.locationsDetails = locationsDetails;
             return this;
         }
 
         /**
-         * @param locationsDetails The list of locations where the association is present. This information
+         * @param locationsDetails (Deprecated)
+         * The list of locations where the association is present. This information
          * is retrieved from the linked endpoint group, and not configured as part
          * of the association itself.
          * Structure is documented below.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
+         * 
          */
+        @Deprecated /* `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead. */
         public Builder locationsDetails(List<MirroringEndpointGroupAssociationLocationsDetailArgs> locationsDetails) {
             return locationsDetails(Output.of(locationsDetails));
         }
 
         /**
-         * @param locationsDetails The list of locations where the association is present. This information
+         * @param locationsDetails (Deprecated)
+         * The list of locations where the association is present. This information
          * is retrieved from the linked endpoint group, and not configured as part
          * of the association itself.
          * Structure is documented below.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
+         * 
          */
+        @Deprecated /* `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead. */
         public Builder locationsDetails(MirroringEndpointGroupAssociationLocationsDetailArgs... locationsDetails) {
             return locationsDetails(List.of(locationsDetails));
         }

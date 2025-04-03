@@ -26,7 +26,7 @@ class GetParameterVersionResult:
     """
     A collection of values returned by getParameterVersion.
     """
-    def __init__(__self__, create_time=None, disabled=None, id=None, name=None, parameter=None, parameter_data=None, parameter_version_id=None, project=None, update_time=None):
+    def __init__(__self__, create_time=None, disabled=None, id=None, kms_key_version=None, name=None, parameter=None, parameter_data=None, parameter_version_id=None, project=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -36,6 +36,9 @@ class GetParameterVersionResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if kms_key_version and not isinstance(kms_key_version, str):
+            raise TypeError("Expected argument 'kms_key_version' to be a str")
+        pulumi.set(__self__, "kms_key_version", kms_key_version)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -78,6 +81,14 @@ class GetParameterVersionResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="kmsKeyVersion")
+    def kms_key_version(self) -> str:
+        """
+        The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+        """
+        return pulumi.get(self, "kms_key_version")
 
     @property
     @pulumi.getter
@@ -129,6 +140,7 @@ class AwaitableGetParameterVersionResult(GetParameterVersionResult):
             create_time=self.create_time,
             disabled=self.disabled,
             id=self.id,
+            kms_key_version=self.kms_key_version,
             name=self.name,
             parameter=self.parameter,
             parameter_data=self.parameter_data,
@@ -142,6 +154,8 @@ def get_parameter_version(parameter: Optional[str] = None,
                           project: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetParameterVersionResult:
     """
+    Get the value and metadata from a Parameter Manager Parameter version. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview)  and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions).
+
     ## Example Usage
 
     ```python
@@ -170,6 +184,7 @@ def get_parameter_version(parameter: Optional[str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         disabled=pulumi.get(__ret__, 'disabled'),
         id=pulumi.get(__ret__, 'id'),
+        kms_key_version=pulumi.get(__ret__, 'kms_key_version'),
         name=pulumi.get(__ret__, 'name'),
         parameter=pulumi.get(__ret__, 'parameter'),
         parameter_data=pulumi.get(__ret__, 'parameter_data'),
@@ -181,6 +196,8 @@ def get_parameter_version_output(parameter: Optional[pulumi.Input[str]] = None,
                                  project: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetParameterVersionResult]:
     """
+    Get the value and metadata from a Parameter Manager Parameter version. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview)  and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions).
+
     ## Example Usage
 
     ```python
@@ -208,6 +225,7 @@ def get_parameter_version_output(parameter: Optional[pulumi.Input[str]] = None,
         create_time=pulumi.get(__response__, 'create_time'),
         disabled=pulumi.get(__response__, 'disabled'),
         id=pulumi.get(__response__, 'id'),
+        kms_key_version=pulumi.get(__response__, 'kms_key_version'),
         name=pulumi.get(__response__, 'name'),
         parameter=pulumi.get(__response__, 'parameter'),
         parameter_data=pulumi.get(__response__, 'parameter_data'),

@@ -19,12 +19,16 @@ public final class RouterBgpAdvertisedIpRangeArgs extends com.pulumi.resources.R
     /**
      * User-specified description for the IP range.
      * 
+     * &lt;a name=&#34;nested_md5_authentication_keys&#34;&gt;&lt;/a&gt;The `md5_authentication_keys` block supports:
+     * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
      * @return User-specified description for the IP range.
+     * 
+     * &lt;a name=&#34;nested_md5_authentication_keys&#34;&gt;&lt;/a&gt;The `md5_authentication_keys` block supports:
      * 
      */
     public Optional<Output<String>> description() {
@@ -76,6 +80,8 @@ public final class RouterBgpAdvertisedIpRangeArgs extends com.pulumi.resources.R
         /**
          * @param description User-specified description for the IP range.
          * 
+         * &lt;a name=&#34;nested_md5_authentication_keys&#34;&gt;&lt;/a&gt;The `md5_authentication_keys` block supports:
+         * 
          * @return builder
          * 
          */
@@ -86,6 +92,8 @@ public final class RouterBgpAdvertisedIpRangeArgs extends com.pulumi.resources.R
 
         /**
          * @param description User-specified description for the IP range.
+         * 
+         * &lt;a name=&#34;nested_md5_authentication_keys&#34;&gt;&lt;/a&gt;The `md5_authentication_keys` block supports:
          * 
          * @return builder
          * 

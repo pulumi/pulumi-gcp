@@ -18,6 +18,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Parameter resource is a logical parameter.
+ * 
+ * To get more information about Parameter, see:
+ * 
+ * * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters)
+ * 
  * ## Example Usage
  * 
  * ### Parameter Config Basic
@@ -130,6 +136,45 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Parameter With Kms Key
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.parametermanager.Parameter;
+ * import com.pulumi.gcp.parametermanager.ParameterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var parameter_with_kms_key = new Parameter("parameter-with-kms-key", ParameterArgs.builder()
+ *             .parameterId("parameter")
+ *             .kmsKey("kms-key")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -203,6 +248,22 @@ public class Parameter extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> format() {
         return Codegen.optional(this.format);
+    }
+    /**
+     * The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
+     * `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+     * 
+     */
+    @Export(name="kmsKey", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> kmsKey;
+
+    /**
+     * @return The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
+     * `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+     * 
+     */
+    public Output<Optional<String>> kmsKey() {
+        return Codegen.optional(this.kmsKey);
     }
     /**
      * The labels assigned to this Parameter.

@@ -5,6 +5,7 @@ package com.pulumi.gcp.redis.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.redis.inputs.ClusterAutomatedBackupConfigArgs;
 import com.pulumi.gcp.redis.inputs.ClusterCrossClusterReplicationConfigArgs;
 import com.pulumi.gcp.redis.inputs.ClusterDiscoveryEndpointArgs;
 import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyArgs;
@@ -47,6 +48,23 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> authorizationMode() {
         return Optional.ofNullable(this.authorizationMode);
+    }
+
+    /**
+     * The automated backup config for a instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="automatedBackupConfig")
+    private @Nullable Output<ClusterAutomatedBackupConfigArgs> automatedBackupConfig;
+
+    /**
+     * @return The automated backup config for a instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterAutomatedBackupConfigArgs>> automatedBackupConfig() {
+        return Optional.ofNullable(this.automatedBackupConfig);
     }
 
     /**
@@ -486,6 +504,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
     private ClusterState(ClusterState $) {
         this.authorizationMode = $.authorizationMode;
+        this.automatedBackupConfig = $.automatedBackupConfig;
         this.createTime = $.createTime;
         this.crossClusterReplicationConfig = $.crossClusterReplicationConfig;
         this.deletionProtectionEnabled = $.deletionProtectionEnabled;
@@ -554,6 +573,29 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder authorizationMode(String authorizationMode) {
             return authorizationMode(Output.of(authorizationMode));
+        }
+
+        /**
+         * @param automatedBackupConfig The automated backup config for a instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder automatedBackupConfig(@Nullable Output<ClusterAutomatedBackupConfigArgs> automatedBackupConfig) {
+            $.automatedBackupConfig = automatedBackupConfig;
+            return this;
+        }
+
+        /**
+         * @param automatedBackupConfig The automated backup config for a instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder automatedBackupConfig(ClusterAutomatedBackupConfigArgs automatedBackupConfig) {
+            return automatedBackupConfig(Output.of(automatedBackupConfig));
         }
 
         /**

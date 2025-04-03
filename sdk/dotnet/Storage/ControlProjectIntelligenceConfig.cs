@@ -10,6 +10,38 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Storage
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ### Storage Control Project Intelligence Config Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.Storage.ControlProjectIntelligenceConfig("example", new()
+    ///     {
+    ///         Name = "test-project",
+    ///         EditionConfig = "TRIAL",
+    ///         Filter = new Gcp.Storage.Inputs.ControlProjectIntelligenceConfigFilterArgs
+    ///         {
+    ///             IncludedCloudStorageBuckets = new Gcp.Storage.Inputs.ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsArgs
+    ///             {
+    ///                 BucketIdRegexes = new[]
+    ///                 {
+    ///                     "test-id-1*",
+    ///                     "test-id-2*",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ProjectIntelligenceConfig can be imported using any of these accepted formats:
@@ -32,7 +64,7 @@ namespace Pulumi.Gcp.Storage
     public partial class ControlProjectIntelligenceConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED and STANDARD.
+        /// Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
         /// </summary>
         [Output("editionConfig")]
         public Output<string> EditionConfig { get; private set; } = null!;
@@ -113,7 +145,7 @@ namespace Pulumi.Gcp.Storage
     public sealed class ControlProjectIntelligenceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED and STANDARD.
+        /// Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
         /// </summary>
         [Input("editionConfig")]
         public Input<string>? EditionConfig { get; set; }
@@ -143,7 +175,7 @@ namespace Pulumi.Gcp.Storage
     public sealed class ControlProjectIntelligenceConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED and STANDARD.
+        /// Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
         /// </summary>
         [Input("editionConfig")]
         public Input<string>? EditionConfig { get; set; }

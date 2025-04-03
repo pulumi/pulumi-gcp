@@ -15,6 +15,7 @@ import com.pulumi.gcp.compute.outputs.InstanceAttachedDisk;
 import com.pulumi.gcp.compute.outputs.InstanceBootDisk;
 import com.pulumi.gcp.compute.outputs.InstanceConfidentialInstanceConfig;
 import com.pulumi.gcp.compute.outputs.InstanceGuestAccelerator;
+import com.pulumi.gcp.compute.outputs.InstanceInstanceEncryptionKey;
 import com.pulumi.gcp.compute.outputs.InstanceNetworkInterface;
 import com.pulumi.gcp.compute.outputs.InstanceNetworkPerformanceConfig;
 import com.pulumi.gcp.compute.outputs.InstanceParams;
@@ -451,6 +452,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> hostname() {
         return Codegen.optional(this.hostname);
+    }
+    /**
+     * Configuration for data encryption on the instance with encryption keys. Structure is documented below.
+     * 
+     */
+    @Export(name="instanceEncryptionKey", refs={InstanceInstanceEncryptionKey.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceInstanceEncryptionKey> instanceEncryptionKey;
+
+    /**
+     * @return Configuration for data encryption on the instance with encryption keys. Structure is documented below.
+     * 
+     */
+    public Output<Optional<InstanceInstanceEncryptionKey>> instanceEncryptionKey() {
+        return Codegen.optional(this.instanceEncryptionKey);
     }
     /**
      * The server-assigned unique identifier of this instance.

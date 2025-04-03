@@ -6,6 +6,23 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to get information about a Project Storage Intelligence config resource.
+ * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
+ * and
+ * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const sample_config = gcp.storage.getControlProjectIntelligenceConfig({
+ *     name: "my-project",
+ * });
+ * ```
+ */
 export function getControlProjectIntelligenceConfig(args: GetControlProjectIntelligenceConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetControlProjectIntelligenceConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:storage/getControlProjectIntelligenceConfig:getControlProjectIntelligenceConfig", {
@@ -17,6 +34,9 @@ export function getControlProjectIntelligenceConfig(args: GetControlProjectIntel
  * A collection of arguments for invoking getControlProjectIntelligenceConfig.
  */
 export interface GetControlProjectIntelligenceConfigArgs {
+    /**
+     * The name or number of the GCP project.
+     */
     name: string;
 }
 
@@ -34,6 +54,23 @@ export interface GetControlProjectIntelligenceConfigResult {
     readonly name: string;
     readonly updateTime: string;
 }
+/**
+ * Use this data source to get information about a Project Storage Intelligence config resource.
+ * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
+ * and
+ * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const sample_config = gcp.storage.getControlProjectIntelligenceConfig({
+ *     name: "my-project",
+ * });
+ * ```
+ */
 export function getControlProjectIntelligenceConfigOutput(args: GetControlProjectIntelligenceConfigOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetControlProjectIntelligenceConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:storage/getControlProjectIntelligenceConfig:getControlProjectIntelligenceConfig", {
@@ -45,5 +82,8 @@ export function getControlProjectIntelligenceConfigOutput(args: GetControlProjec
  * A collection of arguments for invoking getControlProjectIntelligenceConfig.
  */
 export interface GetControlProjectIntelligenceConfigOutputArgs {
+    /**
+     * The name or number of the GCP project.
+     */
     name: pulumi.Input<string>;
 }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.memorystore.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.memorystore.outputs.GetInstanceCrossInstanceReplicationConfig;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceDesiredPscAutoConnection;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceDiscoveryEndpoint;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceEndpoint;
@@ -12,6 +13,7 @@ import com.pulumi.gcp.memorystore.outputs.GetInstanceMaintenancePolicy;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceMaintenanceSchedule;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceNodeConfig;
 import com.pulumi.gcp.memorystore.outputs.GetInstancePersistenceConfig;
+import com.pulumi.gcp.memorystore.outputs.GetInstancePscAttachmentDetail;
 import com.pulumi.gcp.memorystore.outputs.GetInstancePscAutoConnection;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceStateInfo;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceZoneDistributionConfig;
@@ -28,6 +30,7 @@ import javax.annotation.Nullable;
 public final class GetInstanceResult {
     private String authorizationMode;
     private String createTime;
+    private List<GetInstanceCrossInstanceReplicationConfig> crossInstanceReplicationConfigs;
     private Boolean deletionProtectionEnabled;
     private List<GetInstanceDesiredPscAutoConnection> desiredPscAutoConnections;
     private List<GetInstanceDiscoveryEndpoint> discoveryEndpoints;
@@ -51,6 +54,7 @@ public final class GetInstanceResult {
     private String nodeType;
     private List<GetInstancePersistenceConfig> persistenceConfigs;
     private @Nullable String project;
+    private List<GetInstancePscAttachmentDetail> pscAttachmentDetails;
     private List<GetInstancePscAutoConnection> pscAutoConnections;
     private Map<String,String> pulumiLabels;
     private Integer replicaCount;
@@ -68,6 +72,9 @@ public final class GetInstanceResult {
     }
     public String createTime() {
         return this.createTime;
+    }
+    public List<GetInstanceCrossInstanceReplicationConfig> crossInstanceReplicationConfigs() {
+        return this.crossInstanceReplicationConfigs;
     }
     public Boolean deletionProtectionEnabled() {
         return this.deletionProtectionEnabled;
@@ -130,6 +137,9 @@ public final class GetInstanceResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public List<GetInstancePscAttachmentDetail> pscAttachmentDetails() {
+        return this.pscAttachmentDetails;
+    }
     public List<GetInstancePscAutoConnection> pscAutoConnections() {
         return this.pscAutoConnections;
     }
@@ -172,6 +182,7 @@ public final class GetInstanceResult {
     public static final class Builder {
         private String authorizationMode;
         private String createTime;
+        private List<GetInstanceCrossInstanceReplicationConfig> crossInstanceReplicationConfigs;
         private Boolean deletionProtectionEnabled;
         private List<GetInstanceDesiredPscAutoConnection> desiredPscAutoConnections;
         private List<GetInstanceDiscoveryEndpoint> discoveryEndpoints;
@@ -191,6 +202,7 @@ public final class GetInstanceResult {
         private String nodeType;
         private List<GetInstancePersistenceConfig> persistenceConfigs;
         private @Nullable String project;
+        private List<GetInstancePscAttachmentDetail> pscAttachmentDetails;
         private List<GetInstancePscAutoConnection> pscAutoConnections;
         private Map<String,String> pulumiLabels;
         private Integer replicaCount;
@@ -206,6 +218,7 @@ public final class GetInstanceResult {
     	      Objects.requireNonNull(defaults);
     	      this.authorizationMode = defaults.authorizationMode;
     	      this.createTime = defaults.createTime;
+    	      this.crossInstanceReplicationConfigs = defaults.crossInstanceReplicationConfigs;
     	      this.deletionProtectionEnabled = defaults.deletionProtectionEnabled;
     	      this.desiredPscAutoConnections = defaults.desiredPscAutoConnections;
     	      this.discoveryEndpoints = defaults.discoveryEndpoints;
@@ -225,6 +238,7 @@ public final class GetInstanceResult {
     	      this.nodeType = defaults.nodeType;
     	      this.persistenceConfigs = defaults.persistenceConfigs;
     	      this.project = defaults.project;
+    	      this.pscAttachmentDetails = defaults.pscAttachmentDetails;
     	      this.pscAutoConnections = defaults.pscAutoConnections;
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.replicaCount = defaults.replicaCount;
@@ -252,6 +266,17 @@ public final class GetInstanceResult {
             }
             this.createTime = createTime;
             return this;
+        }
+        @CustomType.Setter
+        public Builder crossInstanceReplicationConfigs(List<GetInstanceCrossInstanceReplicationConfig> crossInstanceReplicationConfigs) {
+            if (crossInstanceReplicationConfigs == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "crossInstanceReplicationConfigs");
+            }
+            this.crossInstanceReplicationConfigs = crossInstanceReplicationConfigs;
+            return this;
+        }
+        public Builder crossInstanceReplicationConfigs(GetInstanceCrossInstanceReplicationConfig... crossInstanceReplicationConfigs) {
+            return crossInstanceReplicationConfigs(List.of(crossInstanceReplicationConfigs));
         }
         @CustomType.Setter
         public Builder deletionProtectionEnabled(Boolean deletionProtectionEnabled) {
@@ -423,6 +448,17 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pscAttachmentDetails(List<GetInstancePscAttachmentDetail> pscAttachmentDetails) {
+            if (pscAttachmentDetails == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "pscAttachmentDetails");
+            }
+            this.pscAttachmentDetails = pscAttachmentDetails;
+            return this;
+        }
+        public Builder pscAttachmentDetails(GetInstancePscAttachmentDetail... pscAttachmentDetails) {
+            return pscAttachmentDetails(List.of(pscAttachmentDetails));
+        }
+        @CustomType.Setter
         public Builder pscAutoConnections(List<GetInstancePscAutoConnection> pscAutoConnections) {
             if (pscAutoConnections == null) {
               throw new MissingRequiredPropertyException("GetInstanceResult", "pscAutoConnections");
@@ -515,6 +551,7 @@ public final class GetInstanceResult {
             final var _resultValue = new GetInstanceResult();
             _resultValue.authorizationMode = authorizationMode;
             _resultValue.createTime = createTime;
+            _resultValue.crossInstanceReplicationConfigs = crossInstanceReplicationConfigs;
             _resultValue.deletionProtectionEnabled = deletionProtectionEnabled;
             _resultValue.desiredPscAutoConnections = desiredPscAutoConnections;
             _resultValue.discoveryEndpoints = discoveryEndpoints;
@@ -534,6 +571,7 @@ public final class GetInstanceResult {
             _resultValue.nodeType = nodeType;
             _resultValue.persistenceConfigs = persistenceConfigs;
             _resultValue.project = project;
+            _resultValue.pscAttachmentDetails = pscAttachmentDetails;
             _resultValue.pscAutoConnections = pscAutoConnections;
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.replicaCount = replicaCount;

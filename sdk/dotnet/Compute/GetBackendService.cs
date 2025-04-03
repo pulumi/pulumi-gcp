@@ -232,6 +232,7 @@ namespace Pulumi.Gcp.Compute
         /// The number of seconds to wait for a backend to respond to a request before considering the request failed.
         /// </summary>
         public readonly int TimeoutSec;
+        public readonly ImmutableArray<Outputs.GetBackendServiceTlsSettingResult> TlsSettings;
 
         [OutputConstructor]
         private GetBackendServiceResult(
@@ -305,7 +306,9 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<Outputs.GetBackendServiceStrongSessionAffinityCookyResult> strongSessionAffinityCookies,
 
-            int timeoutSec)
+            int timeoutSec,
+
+            ImmutableArray<Outputs.GetBackendServiceTlsSettingResult> tlsSettings)
         {
             AffinityCookieTtlSec = affinityCookieTtlSec;
             Backends = backends;
@@ -343,6 +346,7 @@ namespace Pulumi.Gcp.Compute
             SessionAffinity = sessionAffinity;
             StrongSessionAffinityCookies = strongSessionAffinityCookies;
             TimeoutSec = timeoutSec;
+            TlsSettings = tlsSettings;
         }
     }
 }

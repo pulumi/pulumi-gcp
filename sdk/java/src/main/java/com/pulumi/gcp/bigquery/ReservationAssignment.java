@@ -113,14 +113,14 @@ public class ReservationAssignment extends com.pulumi.resources.CustomResource {
         return this.assignee;
     }
     /**
-     * Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
+     * Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
      * 
      */
     @Export(name="jobType", refs={String.class}, tree="[0]")
     private Output<String> jobType;
 
     /**
-     * @return Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
+     * @return Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
      * 
      */
     public Output<String> jobType() {

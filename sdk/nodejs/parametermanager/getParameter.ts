@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Use this data source to get information about a Parameter Manager Parameter.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -51,6 +53,7 @@ export interface GetParameterResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly kmsKey: string;
     readonly labels: {[key: string]: string};
     readonly name: string;
     readonly parameterId: string;
@@ -60,6 +63,8 @@ export interface GetParameterResult {
     readonly updateTime: string;
 }
 /**
+ * Use this data source to get information about a Parameter Manager Parameter.
+ *
  * ## Example Usage
  *
  * ```typescript

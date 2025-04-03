@@ -10,6 +10,7 @@ import com.pulumi.gcp.compute.outputs.GetInstanceAttachedDisk;
 import com.pulumi.gcp.compute.outputs.GetInstanceBootDisk;
 import com.pulumi.gcp.compute.outputs.GetInstanceConfidentialInstanceConfig;
 import com.pulumi.gcp.compute.outputs.GetInstanceGuestAccelerator;
+import com.pulumi.gcp.compute.outputs.GetInstanceInstanceEncryptionKey;
 import com.pulumi.gcp.compute.outputs.GetInstanceNetworkInterface;
 import com.pulumi.gcp.compute.outputs.GetInstanceNetworkPerformanceConfig;
 import com.pulumi.gcp.compute.outputs.GetInstanceParam;
@@ -89,6 +90,7 @@ public final class GetInstanceResult {
      * 
      */
     private String id;
+    private List<GetInstanceInstanceEncryptionKey> instanceEncryptionKeys;
     /**
      * @return The server-assigned unique identifier of this instance.
      * 
@@ -284,6 +286,9 @@ public final class GetInstanceResult {
     public String id() {
         return this.id;
     }
+    public List<GetInstanceInstanceEncryptionKey> instanceEncryptionKeys() {
+        return this.instanceEncryptionKeys;
+    }
     /**
      * @return The server-assigned unique identifier of this instance.
      * 
@@ -461,6 +466,7 @@ public final class GetInstanceResult {
         private List<GetInstanceGuestAccelerator> guestAccelerators;
         private String hostname;
         private String id;
+        private List<GetInstanceInstanceEncryptionKey> instanceEncryptionKeys;
         private String instanceId;
         private String keyRevocationActionType;
         private String labelFingerprint;
@@ -507,6 +513,7 @@ public final class GetInstanceResult {
     	      this.guestAccelerators = defaults.guestAccelerators;
     	      this.hostname = defaults.hostname;
     	      this.id = defaults.id;
+    	      this.instanceEncryptionKeys = defaults.instanceEncryptionKeys;
     	      this.instanceId = defaults.instanceId;
     	      this.keyRevocationActionType = defaults.keyRevocationActionType;
     	      this.labelFingerprint = defaults.labelFingerprint;
@@ -685,6 +692,17 @@ public final class GetInstanceResult {
             }
             this.id = id;
             return this;
+        }
+        @CustomType.Setter
+        public Builder instanceEncryptionKeys(List<GetInstanceInstanceEncryptionKey> instanceEncryptionKeys) {
+            if (instanceEncryptionKeys == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "instanceEncryptionKeys");
+            }
+            this.instanceEncryptionKeys = instanceEncryptionKeys;
+            return this;
+        }
+        public Builder instanceEncryptionKeys(GetInstanceInstanceEncryptionKey... instanceEncryptionKeys) {
+            return instanceEncryptionKeys(List.of(instanceEncryptionKeys));
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
@@ -935,6 +953,7 @@ public final class GetInstanceResult {
             _resultValue.guestAccelerators = guestAccelerators;
             _resultValue.hostname = hostname;
             _resultValue.id = id;
+            _resultValue.instanceEncryptionKeys = instanceEncryptionKeys;
             _resultValue.instanceId = instanceId;
             _resultValue.keyRevocationActionType = keyRevocationActionType;
             _resultValue.labelFingerprint = labelFingerprint;

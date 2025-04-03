@@ -113,6 +113,10 @@ import javax.annotation.Nullable;
  *                     .action("ALLOW")
  *                     .threatId("280647")
  *                     .build())
+ *                 .antivirusOverrides(SecurityProfileThreatPreventionProfileAntivirusOverrideArgs.builder()
+ *                     .protocol("SMTP")
+ *                     .action("ALLOW")
+ *                     .build())
  *                 .build())
  *             .build());
  * 

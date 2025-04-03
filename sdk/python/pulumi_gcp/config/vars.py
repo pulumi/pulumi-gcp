@@ -362,6 +362,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('eventarcCustomEndpoint')
 
     @property
+    def external_credentials(self) -> Optional[str]:
+        return __config__.get('externalCredentials')
+
+    @property
     def filestore_custom_endpoint(self) -> Optional[str]:
         return __config__.get('filestoreCustomEndpoint')
 

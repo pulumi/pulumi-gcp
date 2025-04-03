@@ -59,6 +59,10 @@ import * as utilities from "../utilities";
  *             action: "ALLOW",
  *             threatId: "280647",
  *         }],
+ *         antivirusOverrides: [{
+ *             protocol: "SMTP",
+ *             action: "ALLOW",
+ *         }],
  *     },
  * });
  * ```

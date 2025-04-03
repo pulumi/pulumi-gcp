@@ -5,12 +5,25 @@ package com.pulumi.gcp.memorystore.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceStateInfoUpdateInfo {
+    /**
+     * @return (Output)
+     * Output only. Target engine version for the instance.
+     * 
+     */
+    private @Nullable String targetEngineVersion;
+    /**
+     * @return (Output)
+     * Output only. Target node type for the instance.
+     * 
+     */
+    private @Nullable String targetNodeType;
     /**
      * @return (Output)
      * Output only. Target number of replica nodes per shard for the instance.
@@ -25,6 +38,22 @@ public final class InstanceStateInfoUpdateInfo {
     private @Nullable Integer targetShardCount;
 
     private InstanceStateInfoUpdateInfo() {}
+    /**
+     * @return (Output)
+     * Output only. Target engine version for the instance.
+     * 
+     */
+    public Optional<String> targetEngineVersion() {
+        return Optional.ofNullable(this.targetEngineVersion);
+    }
+    /**
+     * @return (Output)
+     * Output only. Target node type for the instance.
+     * 
+     */
+    public Optional<String> targetNodeType() {
+        return Optional.ofNullable(this.targetNodeType);
+    }
     /**
      * @return (Output)
      * Output only. Target number of replica nodes per shard for the instance.
@@ -51,15 +80,31 @@ public final class InstanceStateInfoUpdateInfo {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String targetEngineVersion;
+        private @Nullable String targetNodeType;
         private @Nullable Integer targetReplicaCount;
         private @Nullable Integer targetShardCount;
         public Builder() {}
         public Builder(InstanceStateInfoUpdateInfo defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.targetEngineVersion = defaults.targetEngineVersion;
+    	      this.targetNodeType = defaults.targetNodeType;
     	      this.targetReplicaCount = defaults.targetReplicaCount;
     	      this.targetShardCount = defaults.targetShardCount;
         }
 
+        @CustomType.Setter
+        public Builder targetEngineVersion(@Nullable String targetEngineVersion) {
+
+            this.targetEngineVersion = targetEngineVersion;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder targetNodeType(@Nullable String targetNodeType) {
+
+            this.targetNodeType = targetNodeType;
+            return this;
+        }
         @CustomType.Setter
         public Builder targetReplicaCount(@Nullable Integer targetReplicaCount) {
 
@@ -74,6 +119,8 @@ public final class InstanceStateInfoUpdateInfo {
         }
         public InstanceStateInfoUpdateInfo build() {
             final var _resultValue = new InstanceStateInfoUpdateInfo();
+            _resultValue.targetEngineVersion = targetEngineVersion;
+            _resultValue.targetNodeType = targetNodeType;
             _resultValue.targetReplicaCount = targetReplicaCount;
             _resultValue.targetShardCount = targetShardCount;
             return _resultValue;

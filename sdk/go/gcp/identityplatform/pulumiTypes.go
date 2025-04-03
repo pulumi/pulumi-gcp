@@ -3873,6 +3873,303 @@ func (o InboundSamlConfigSpConfigSpCertificateArrayOutput) Index(i pulumi.IntInp
 	}).(InboundSamlConfigSpConfigSpCertificateOutput)
 }
 
+type TenantClient struct {
+	// Configuration related to restricting a user's ability to affect their account.
+	// Structure is documented below.
+	Permissions *TenantClientPermissions `pulumi:"permissions"`
+}
+
+// TenantClientInput is an input type that accepts TenantClientArgs and TenantClientOutput values.
+// You can construct a concrete instance of `TenantClientInput` via:
+//
+//	TenantClientArgs{...}
+type TenantClientInput interface {
+	pulumi.Input
+
+	ToTenantClientOutput() TenantClientOutput
+	ToTenantClientOutputWithContext(context.Context) TenantClientOutput
+}
+
+type TenantClientArgs struct {
+	// Configuration related to restricting a user's ability to affect their account.
+	// Structure is documented below.
+	Permissions TenantClientPermissionsPtrInput `pulumi:"permissions"`
+}
+
+func (TenantClientArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantClient)(nil)).Elem()
+}
+
+func (i TenantClientArgs) ToTenantClientOutput() TenantClientOutput {
+	return i.ToTenantClientOutputWithContext(context.Background())
+}
+
+func (i TenantClientArgs) ToTenantClientOutputWithContext(ctx context.Context) TenantClientOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantClientOutput)
+}
+
+func (i TenantClientArgs) ToTenantClientPtrOutput() TenantClientPtrOutput {
+	return i.ToTenantClientPtrOutputWithContext(context.Background())
+}
+
+func (i TenantClientArgs) ToTenantClientPtrOutputWithContext(ctx context.Context) TenantClientPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantClientOutput).ToTenantClientPtrOutputWithContext(ctx)
+}
+
+// TenantClientPtrInput is an input type that accepts TenantClientArgs, TenantClientPtr and TenantClientPtrOutput values.
+// You can construct a concrete instance of `TenantClientPtrInput` via:
+//
+//	        TenantClientArgs{...}
+//
+//	or:
+//
+//	        nil
+type TenantClientPtrInput interface {
+	pulumi.Input
+
+	ToTenantClientPtrOutput() TenantClientPtrOutput
+	ToTenantClientPtrOutputWithContext(context.Context) TenantClientPtrOutput
+}
+
+type tenantClientPtrType TenantClientArgs
+
+func TenantClientPtr(v *TenantClientArgs) TenantClientPtrInput {
+	return (*tenantClientPtrType)(v)
+}
+
+func (*tenantClientPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantClient)(nil)).Elem()
+}
+
+func (i *tenantClientPtrType) ToTenantClientPtrOutput() TenantClientPtrOutput {
+	return i.ToTenantClientPtrOutputWithContext(context.Background())
+}
+
+func (i *tenantClientPtrType) ToTenantClientPtrOutputWithContext(ctx context.Context) TenantClientPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantClientPtrOutput)
+}
+
+type TenantClientOutput struct{ *pulumi.OutputState }
+
+func (TenantClientOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantClient)(nil)).Elem()
+}
+
+func (o TenantClientOutput) ToTenantClientOutput() TenantClientOutput {
+	return o
+}
+
+func (o TenantClientOutput) ToTenantClientOutputWithContext(ctx context.Context) TenantClientOutput {
+	return o
+}
+
+func (o TenantClientOutput) ToTenantClientPtrOutput() TenantClientPtrOutput {
+	return o.ToTenantClientPtrOutputWithContext(context.Background())
+}
+
+func (o TenantClientOutput) ToTenantClientPtrOutputWithContext(ctx context.Context) TenantClientPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantClient) *TenantClient {
+		return &v
+	}).(TenantClientPtrOutput)
+}
+
+// Configuration related to restricting a user's ability to affect their account.
+// Structure is documented below.
+func (o TenantClientOutput) Permissions() TenantClientPermissionsPtrOutput {
+	return o.ApplyT(func(v TenantClient) *TenantClientPermissions { return v.Permissions }).(TenantClientPermissionsPtrOutput)
+}
+
+type TenantClientPtrOutput struct{ *pulumi.OutputState }
+
+func (TenantClientPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantClient)(nil)).Elem()
+}
+
+func (o TenantClientPtrOutput) ToTenantClientPtrOutput() TenantClientPtrOutput {
+	return o
+}
+
+func (o TenantClientPtrOutput) ToTenantClientPtrOutputWithContext(ctx context.Context) TenantClientPtrOutput {
+	return o
+}
+
+func (o TenantClientPtrOutput) Elem() TenantClientOutput {
+	return o.ApplyT(func(v *TenantClient) TenantClient {
+		if v != nil {
+			return *v
+		}
+		var ret TenantClient
+		return ret
+	}).(TenantClientOutput)
+}
+
+// Configuration related to restricting a user's ability to affect their account.
+// Structure is documented below.
+func (o TenantClientPtrOutput) Permissions() TenantClientPermissionsPtrOutput {
+	return o.ApplyT(func(v *TenantClient) *TenantClientPermissions {
+		if v == nil {
+			return nil
+		}
+		return v.Permissions
+	}).(TenantClientPermissionsPtrOutput)
+}
+
+type TenantClientPermissions struct {
+	// When true, end users cannot delete their account on the associated project through any of our API methods.
+	DisabledUserDeletion *bool `pulumi:"disabledUserDeletion"`
+	// When true, end users cannot sign up for a new account on the associated project through any of our API methods.
+	DisabledUserSignup *bool `pulumi:"disabledUserSignup"`
+}
+
+// TenantClientPermissionsInput is an input type that accepts TenantClientPermissionsArgs and TenantClientPermissionsOutput values.
+// You can construct a concrete instance of `TenantClientPermissionsInput` via:
+//
+//	TenantClientPermissionsArgs{...}
+type TenantClientPermissionsInput interface {
+	pulumi.Input
+
+	ToTenantClientPermissionsOutput() TenantClientPermissionsOutput
+	ToTenantClientPermissionsOutputWithContext(context.Context) TenantClientPermissionsOutput
+}
+
+type TenantClientPermissionsArgs struct {
+	// When true, end users cannot delete their account on the associated project through any of our API methods.
+	DisabledUserDeletion pulumi.BoolPtrInput `pulumi:"disabledUserDeletion"`
+	// When true, end users cannot sign up for a new account on the associated project through any of our API methods.
+	DisabledUserSignup pulumi.BoolPtrInput `pulumi:"disabledUserSignup"`
+}
+
+func (TenantClientPermissionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantClientPermissions)(nil)).Elem()
+}
+
+func (i TenantClientPermissionsArgs) ToTenantClientPermissionsOutput() TenantClientPermissionsOutput {
+	return i.ToTenantClientPermissionsOutputWithContext(context.Background())
+}
+
+func (i TenantClientPermissionsArgs) ToTenantClientPermissionsOutputWithContext(ctx context.Context) TenantClientPermissionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantClientPermissionsOutput)
+}
+
+func (i TenantClientPermissionsArgs) ToTenantClientPermissionsPtrOutput() TenantClientPermissionsPtrOutput {
+	return i.ToTenantClientPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (i TenantClientPermissionsArgs) ToTenantClientPermissionsPtrOutputWithContext(ctx context.Context) TenantClientPermissionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantClientPermissionsOutput).ToTenantClientPermissionsPtrOutputWithContext(ctx)
+}
+
+// TenantClientPermissionsPtrInput is an input type that accepts TenantClientPermissionsArgs, TenantClientPermissionsPtr and TenantClientPermissionsPtrOutput values.
+// You can construct a concrete instance of `TenantClientPermissionsPtrInput` via:
+//
+//	        TenantClientPermissionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TenantClientPermissionsPtrInput interface {
+	pulumi.Input
+
+	ToTenantClientPermissionsPtrOutput() TenantClientPermissionsPtrOutput
+	ToTenantClientPermissionsPtrOutputWithContext(context.Context) TenantClientPermissionsPtrOutput
+}
+
+type tenantClientPermissionsPtrType TenantClientPermissionsArgs
+
+func TenantClientPermissionsPtr(v *TenantClientPermissionsArgs) TenantClientPermissionsPtrInput {
+	return (*tenantClientPermissionsPtrType)(v)
+}
+
+func (*tenantClientPermissionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantClientPermissions)(nil)).Elem()
+}
+
+func (i *tenantClientPermissionsPtrType) ToTenantClientPermissionsPtrOutput() TenantClientPermissionsPtrOutput {
+	return i.ToTenantClientPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (i *tenantClientPermissionsPtrType) ToTenantClientPermissionsPtrOutputWithContext(ctx context.Context) TenantClientPermissionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantClientPermissionsPtrOutput)
+}
+
+type TenantClientPermissionsOutput struct{ *pulumi.OutputState }
+
+func (TenantClientPermissionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantClientPermissions)(nil)).Elem()
+}
+
+func (o TenantClientPermissionsOutput) ToTenantClientPermissionsOutput() TenantClientPermissionsOutput {
+	return o
+}
+
+func (o TenantClientPermissionsOutput) ToTenantClientPermissionsOutputWithContext(ctx context.Context) TenantClientPermissionsOutput {
+	return o
+}
+
+func (o TenantClientPermissionsOutput) ToTenantClientPermissionsPtrOutput() TenantClientPermissionsPtrOutput {
+	return o.ToTenantClientPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (o TenantClientPermissionsOutput) ToTenantClientPermissionsPtrOutputWithContext(ctx context.Context) TenantClientPermissionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantClientPermissions) *TenantClientPermissions {
+		return &v
+	}).(TenantClientPermissionsPtrOutput)
+}
+
+// When true, end users cannot delete their account on the associated project through any of our API methods.
+func (o TenantClientPermissionsOutput) DisabledUserDeletion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TenantClientPermissions) *bool { return v.DisabledUserDeletion }).(pulumi.BoolPtrOutput)
+}
+
+// When true, end users cannot sign up for a new account on the associated project through any of our API methods.
+func (o TenantClientPermissionsOutput) DisabledUserSignup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TenantClientPermissions) *bool { return v.DisabledUserSignup }).(pulumi.BoolPtrOutput)
+}
+
+type TenantClientPermissionsPtrOutput struct{ *pulumi.OutputState }
+
+func (TenantClientPermissionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantClientPermissions)(nil)).Elem()
+}
+
+func (o TenantClientPermissionsPtrOutput) ToTenantClientPermissionsPtrOutput() TenantClientPermissionsPtrOutput {
+	return o
+}
+
+func (o TenantClientPermissionsPtrOutput) ToTenantClientPermissionsPtrOutputWithContext(ctx context.Context) TenantClientPermissionsPtrOutput {
+	return o
+}
+
+func (o TenantClientPermissionsPtrOutput) Elem() TenantClientPermissionsOutput {
+	return o.ApplyT(func(v *TenantClientPermissions) TenantClientPermissions {
+		if v != nil {
+			return *v
+		}
+		var ret TenantClientPermissions
+		return ret
+	}).(TenantClientPermissionsOutput)
+}
+
+// When true, end users cannot delete their account on the associated project through any of our API methods.
+func (o TenantClientPermissionsPtrOutput) DisabledUserDeletion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantClientPermissions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisabledUserDeletion
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When true, end users cannot sign up for a new account on the associated project through any of our API methods.
+func (o TenantClientPermissionsPtrOutput) DisabledUserSignup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantClientPermissions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisabledUserSignup
+	}).(pulumi.BoolPtrOutput)
+}
+
 type TenantInboundSamlConfigIdpConfig struct {
 	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
 	// Structure is documented below.
@@ -4511,6 +4808,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigSpConfigPtrInput)(nil)).Elem(), InboundSamlConfigSpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigSpConfigSpCertificateInput)(nil)).Elem(), InboundSamlConfigSpConfigSpCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigSpConfigSpCertificateArrayInput)(nil)).Elem(), InboundSamlConfigSpConfigSpCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantClientInput)(nil)).Elem(), TenantClientArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantClientPtrInput)(nil)).Elem(), TenantClientArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantClientPermissionsInput)(nil)).Elem(), TenantClientPermissionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantClientPermissionsPtrInput)(nil)).Elem(), TenantClientPermissionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigIdpConfigInput)(nil)).Elem(), TenantInboundSamlConfigIdpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigIdpConfigPtrInput)(nil)).Elem(), TenantInboundSamlConfigIdpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigIdpConfigIdpCertificateInput)(nil)).Elem(), TenantInboundSamlConfigIdpConfigIdpCertificateArgs{})
@@ -4569,6 +4870,10 @@ func init() {
 	pulumi.RegisterOutputType(InboundSamlConfigSpConfigPtrOutput{})
 	pulumi.RegisterOutputType(InboundSamlConfigSpConfigSpCertificateOutput{})
 	pulumi.RegisterOutputType(InboundSamlConfigSpConfigSpCertificateArrayOutput{})
+	pulumi.RegisterOutputType(TenantClientOutput{})
+	pulumi.RegisterOutputType(TenantClientPtrOutput{})
+	pulumi.RegisterOutputType(TenantClientPermissionsOutput{})
+	pulumi.RegisterOutputType(TenantClientPermissionsPtrOutput{})
 	pulumi.RegisterOutputType(TenantInboundSamlConfigIdpConfigOutput{})
 	pulumi.RegisterOutputType(TenantInboundSamlConfigIdpConfigPtrOutput{})
 	pulumi.RegisterOutputType(TenantInboundSamlConfigIdpConfigIdpCertificateOutput{})

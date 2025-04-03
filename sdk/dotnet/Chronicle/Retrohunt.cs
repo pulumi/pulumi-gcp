@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Chronicle
 {
     /// <summary>
+    /// Retrohunt is an execution of a Rule over a time range in the past.
+    /// 
+    /// To get more information about Retrohunt, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.rules.retrohunts)
+    /// * How-to Guides
+    ///     * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
+    /// 
     /// ## Example Usage
     /// 
     /// ## Import

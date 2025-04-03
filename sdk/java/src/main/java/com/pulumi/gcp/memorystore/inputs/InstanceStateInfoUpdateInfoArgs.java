@@ -6,6 +6,7 @@ package com.pulumi.gcp.memorystore.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +15,40 @@ import javax.annotation.Nullable;
 public final class InstanceStateInfoUpdateInfoArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final InstanceStateInfoUpdateInfoArgs Empty = new InstanceStateInfoUpdateInfoArgs();
+
+    /**
+     * (Output)
+     * Output only. Target engine version for the instance.
+     * 
+     */
+    @Import(name="targetEngineVersion")
+    private @Nullable Output<String> targetEngineVersion;
+
+    /**
+     * @return (Output)
+     * Output only. Target engine version for the instance.
+     * 
+     */
+    public Optional<Output<String>> targetEngineVersion() {
+        return Optional.ofNullable(this.targetEngineVersion);
+    }
+
+    /**
+     * (Output)
+     * Output only. Target node type for the instance.
+     * 
+     */
+    @Import(name="targetNodeType")
+    private @Nullable Output<String> targetNodeType;
+
+    /**
+     * @return (Output)
+     * Output only. Target node type for the instance.
+     * 
+     */
+    public Optional<Output<String>> targetNodeType() {
+        return Optional.ofNullable(this.targetNodeType);
+    }
 
     /**
      * (Output)
@@ -52,6 +87,8 @@ public final class InstanceStateInfoUpdateInfoArgs extends com.pulumi.resources.
     private InstanceStateInfoUpdateInfoArgs() {}
 
     private InstanceStateInfoUpdateInfoArgs(InstanceStateInfoUpdateInfoArgs $) {
+        this.targetEngineVersion = $.targetEngineVersion;
+        this.targetNodeType = $.targetNodeType;
         this.targetReplicaCount = $.targetReplicaCount;
         this.targetShardCount = $.targetShardCount;
     }
@@ -72,6 +109,52 @@ public final class InstanceStateInfoUpdateInfoArgs extends com.pulumi.resources.
 
         public Builder(InstanceStateInfoUpdateInfoArgs defaults) {
             $ = new InstanceStateInfoUpdateInfoArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param targetEngineVersion (Output)
+         * Output only. Target engine version for the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetEngineVersion(@Nullable Output<String> targetEngineVersion) {
+            $.targetEngineVersion = targetEngineVersion;
+            return this;
+        }
+
+        /**
+         * @param targetEngineVersion (Output)
+         * Output only. Target engine version for the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetEngineVersion(String targetEngineVersion) {
+            return targetEngineVersion(Output.of(targetEngineVersion));
+        }
+
+        /**
+         * @param targetNodeType (Output)
+         * Output only. Target node type for the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetNodeType(@Nullable Output<String> targetNodeType) {
+            $.targetNodeType = targetNodeType;
+            return this;
+        }
+
+        /**
+         * @param targetNodeType (Output)
+         * Output only. Target node type for the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetNodeType(String targetNodeType) {
+            return targetNodeType(Output.of(targetNodeType));
         }
 
         /**

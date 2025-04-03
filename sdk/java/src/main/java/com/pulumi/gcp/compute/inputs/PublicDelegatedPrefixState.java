@@ -83,8 +83,8 @@ public final class PublicDelegatedPrefixState extends com.pulumi.resources.Resou
 
     /**
      * Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
-     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
+     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
      * 
      */
     @Import(name="mode")
@@ -92,8 +92,8 @@ public final class PublicDelegatedPrefixState extends com.pulumi.resources.Resou
 
     /**
      * @return Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
-     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
+     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -310,8 +310,8 @@ public final class PublicDelegatedPrefixState extends com.pulumi.resources.Resou
 
         /**
          * @param mode Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-         * EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
-         * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+         * EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
+         * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
          * 
          * @return builder
          * 
@@ -323,8 +323,8 @@ public final class PublicDelegatedPrefixState extends com.pulumi.resources.Resou
 
         /**
          * @param mode Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-         * EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
-         * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+         * EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
+         * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
          * 
          * @return builder
          * 

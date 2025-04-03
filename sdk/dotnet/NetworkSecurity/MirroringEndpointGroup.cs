@@ -90,6 +90,21 @@ namespace Pulumi.Gcp.NetworkSecurity
     public partial class MirroringEndpointGroup : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// List of associations to this endpoint group.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("associations")]
+        public Output<ImmutableArray<Outputs.MirroringEndpointGroupAssociation>> Associations { get; private set; } = null!;
+
+        /// <summary>
+        /// List of details about the connected deployment groups to this endpoint
+        /// group.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("connectedDeploymentGroups")]
+        public Output<ImmutableArray<Outputs.MirroringEndpointGroupConnectedDeploymentGroup>> ConnectedDeploymentGroups { get; private set; } = null!;
+
+        /// <summary>
         /// The timestamp when the resource was created.
         /// See https://google.aip.dev/148#timestamps.
         /// </summary>
@@ -142,9 +157,10 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<string> MirroringEndpointGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of this endpoint group, for example:
-        /// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
-        /// See https://google.aip.dev/122 for more details.
+        /// (Output)
+        /// The connected deployment group's resource name, for example:
+        /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+        /// See https://google.aip.dev/124.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -173,16 +189,12 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<bool> Reconciling { get; private set; } = null!;
 
         /// <summary>
-        /// The current state of the endpoint group.
-        /// See https://google.aip.dev/216.
+        /// (Output)
+        /// The current state of the association in this location.
         /// Possible values:
         /// STATE_UNSPECIFIED
         /// ACTIVE
-        /// CLOSED
-        /// CREATING
-        /// DELETING
         /// OUT_OF_SYNC
-        /// DELETE_FAILED
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -305,6 +317,33 @@ namespace Pulumi.Gcp.NetworkSecurity
 
     public sealed class MirroringEndpointGroupState : global::Pulumi.ResourceArgs
     {
+        [Input("associations")]
+        private InputList<Inputs.MirroringEndpointGroupAssociationGetArgs>? _associations;
+
+        /// <summary>
+        /// List of associations to this endpoint group.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.MirroringEndpointGroupAssociationGetArgs> Associations
+        {
+            get => _associations ?? (_associations = new InputList<Inputs.MirroringEndpointGroupAssociationGetArgs>());
+            set => _associations = value;
+        }
+
+        [Input("connectedDeploymentGroups")]
+        private InputList<Inputs.MirroringEndpointGroupConnectedDeploymentGroupGetArgs>? _connectedDeploymentGroups;
+
+        /// <summary>
+        /// List of details about the connected deployment groups to this endpoint
+        /// group.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.MirroringEndpointGroupConnectedDeploymentGroupGetArgs> ConnectedDeploymentGroups
+        {
+            get => _connectedDeploymentGroups ?? (_connectedDeploymentGroups = new InputList<Inputs.MirroringEndpointGroupConnectedDeploymentGroupGetArgs>());
+            set => _connectedDeploymentGroups = value;
+        }
+
         /// <summary>
         /// The timestamp when the resource was created.
         /// See https://google.aip.dev/148#timestamps.
@@ -374,9 +413,10 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<string>? MirroringEndpointGroupId { get; set; }
 
         /// <summary>
-        /// The resource name of this endpoint group, for example:
-        /// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
-        /// See https://google.aip.dev/122 for more details.
+        /// (Output)
+        /// The connected deployment group's resource name, for example:
+        /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+        /// See https://google.aip.dev/124.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -415,16 +455,12 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<bool>? Reconciling { get; set; }
 
         /// <summary>
-        /// The current state of the endpoint group.
-        /// See https://google.aip.dev/216.
+        /// (Output)
+        /// The current state of the association in this location.
         /// Possible values:
         /// STATE_UNSPECIFIED
         /// ACTIVE
-        /// CLOSED
-        /// CREATING
-        /// DELETING
         /// OUT_OF_SYNC
-        /// DELETE_FAILED
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

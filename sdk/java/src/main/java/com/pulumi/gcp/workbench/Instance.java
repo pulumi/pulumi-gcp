@@ -232,6 +232,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupShieldedInstanceConfigArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupBootDiskArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupDataDisksArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -316,7 +317,13 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("k", "val"))
  *             .desiredState("ACTIVE")
  *             .enableThirdPartyIdentity("true")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     myNetwork,
+ *                     mySubnetwork,
+ *                     static_,
+ *                     actAsPermission)
+ *                 .build());
  * 
  *     }}{@code
  * }}{@code

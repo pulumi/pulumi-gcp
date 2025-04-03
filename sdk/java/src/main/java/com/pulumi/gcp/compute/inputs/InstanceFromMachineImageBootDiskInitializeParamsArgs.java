@@ -5,6 +5,8 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageBootDiskInitializeParamsSourceImageEncryptionKeyArgs;
+import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageBootDiskInitializeParamsSourceSnapshotEncryptionKeyArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -154,6 +156,51 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsArgs extends 
     }
 
     /**
+     * The snapshot from which this disk was initialised.
+     * 
+     */
+    @Import(name="snapshot")
+    private @Nullable Output<String> snapshot;
+
+    /**
+     * @return The snapshot from which this disk was initialised.
+     * 
+     */
+    public Optional<Output<String>> snapshot() {
+        return Optional.ofNullable(this.snapshot);
+    }
+
+    /**
+     * The encryption key used to decrypt the source image.
+     * 
+     */
+    @Import(name="sourceImageEncryptionKey")
+    private @Nullable Output<InstanceFromMachineImageBootDiskInitializeParamsSourceImageEncryptionKeyArgs> sourceImageEncryptionKey;
+
+    /**
+     * @return The encryption key used to decrypt the source image.
+     * 
+     */
+    public Optional<Output<InstanceFromMachineImageBootDiskInitializeParamsSourceImageEncryptionKeyArgs>> sourceImageEncryptionKey() {
+        return Optional.ofNullable(this.sourceImageEncryptionKey);
+    }
+
+    /**
+     * The encryption key used to decrypt the source snapshot.
+     * 
+     */
+    @Import(name="sourceSnapshotEncryptionKey")
+    private @Nullable Output<InstanceFromMachineImageBootDiskInitializeParamsSourceSnapshotEncryptionKeyArgs> sourceSnapshotEncryptionKey;
+
+    /**
+     * @return The encryption key used to decrypt the source snapshot.
+     * 
+     */
+    public Optional<Output<InstanceFromMachineImageBootDiskInitializeParamsSourceSnapshotEncryptionKeyArgs>> sourceSnapshotEncryptionKey() {
+        return Optional.ofNullable(this.sourceSnapshotEncryptionKey);
+    }
+
+    /**
      * The URL of the storage pool in which the new disk is created
      * 
      */
@@ -195,6 +242,9 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsArgs extends 
         this.resourceManagerTags = $.resourceManagerTags;
         this.resourcePolicies = $.resourcePolicies;
         this.size = $.size;
+        this.snapshot = $.snapshot;
+        this.sourceImageEncryptionKey = $.sourceImageEncryptionKey;
+        this.sourceSnapshotEncryptionKey = $.sourceSnapshotEncryptionKey;
         this.storagePool = $.storagePool;
         this.type = $.type;
     }
@@ -404,6 +454,69 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsArgs extends 
          */
         public Builder size(Integer size) {
             return size(Output.of(size));
+        }
+
+        /**
+         * @param snapshot The snapshot from which this disk was initialised.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder snapshot(@Nullable Output<String> snapshot) {
+            $.snapshot = snapshot;
+            return this;
+        }
+
+        /**
+         * @param snapshot The snapshot from which this disk was initialised.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder snapshot(String snapshot) {
+            return snapshot(Output.of(snapshot));
+        }
+
+        /**
+         * @param sourceImageEncryptionKey The encryption key used to decrypt the source image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceImageEncryptionKey(@Nullable Output<InstanceFromMachineImageBootDiskInitializeParamsSourceImageEncryptionKeyArgs> sourceImageEncryptionKey) {
+            $.sourceImageEncryptionKey = sourceImageEncryptionKey;
+            return this;
+        }
+
+        /**
+         * @param sourceImageEncryptionKey The encryption key used to decrypt the source image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceImageEncryptionKey(InstanceFromMachineImageBootDiskInitializeParamsSourceImageEncryptionKeyArgs sourceImageEncryptionKey) {
+            return sourceImageEncryptionKey(Output.of(sourceImageEncryptionKey));
+        }
+
+        /**
+         * @param sourceSnapshotEncryptionKey The encryption key used to decrypt the source snapshot.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceSnapshotEncryptionKey(@Nullable Output<InstanceFromMachineImageBootDiskInitializeParamsSourceSnapshotEncryptionKeyArgs> sourceSnapshotEncryptionKey) {
+            $.sourceSnapshotEncryptionKey = sourceSnapshotEncryptionKey;
+            return this;
+        }
+
+        /**
+         * @param sourceSnapshotEncryptionKey The encryption key used to decrypt the source snapshot.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceSnapshotEncryptionKey(InstanceFromMachineImageBootDiskInitializeParamsSourceSnapshotEncryptionKeyArgs sourceSnapshotEncryptionKey) {
+            return sourceSnapshotEncryptionKey(Output.of(sourceSnapshotEncryptionKey));
         }
 
         /**

@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['TenantArgs', 'Tenant']
 
@@ -21,6 +23,7 @@ class TenantArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  allow_password_signup: Optional[pulumi.Input[bool]] = None,
+                 client: Optional[pulumi.Input['TenantClientArgs']] = None,
                  disable_auth: Optional[pulumi.Input[bool]] = None,
                  enable_email_link_signin: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -31,6 +34,8 @@ class TenantArgs:
                
                - - -
         :param pulumi.Input[bool] allow_password_signup: Whether to allow email/password user authentication.
+        :param pulumi.Input['TenantClientArgs'] client: Options related to how clients making requests on behalf of a tenant should be configured.
+               Structure is documented below.
         :param pulumi.Input[bool] disable_auth: Whether authentication is disabled for the tenant. If true, the users under
                the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
                are not able to manage its users.
@@ -41,6 +46,8 @@ class TenantArgs:
         pulumi.set(__self__, "display_name", display_name)
         if allow_password_signup is not None:
             pulumi.set(__self__, "allow_password_signup", allow_password_signup)
+        if client is not None:
+            pulumi.set(__self__, "client", client)
         if disable_auth is not None:
             pulumi.set(__self__, "disable_auth", disable_auth)
         if enable_email_link_signin is not None:
@@ -74,6 +81,19 @@ class TenantArgs:
     @allow_password_signup.setter
     def allow_password_signup(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_password_signup", value)
+
+    @property
+    @pulumi.getter
+    def client(self) -> Optional[pulumi.Input['TenantClientArgs']]:
+        """
+        Options related to how clients making requests on behalf of a tenant should be configured.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "client")
+
+    @client.setter
+    def client(self, value: Optional[pulumi.Input['TenantClientArgs']]):
+        pulumi.set(self, "client", value)
 
     @property
     @pulumi.getter(name="disableAuth")
@@ -119,6 +139,7 @@ class TenantArgs:
 class _TenantState:
     def __init__(__self__, *,
                  allow_password_signup: Optional[pulumi.Input[bool]] = None,
+                 client: Optional[pulumi.Input['TenantClientArgs']] = None,
                  disable_auth: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_email_link_signin: Optional[pulumi.Input[bool]] = None,
@@ -127,6 +148,8 @@ class _TenantState:
         """
         Input properties used for looking up and filtering Tenant resources.
         :param pulumi.Input[bool] allow_password_signup: Whether to allow email/password user authentication.
+        :param pulumi.Input['TenantClientArgs'] client: Options related to how clients making requests on behalf of a tenant should be configured.
+               Structure is documented below.
         :param pulumi.Input[bool] disable_auth: Whether authentication is disabled for the tenant. If true, the users under
                the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
                are not able to manage its users.
@@ -141,6 +164,8 @@ class _TenantState:
         """
         if allow_password_signup is not None:
             pulumi.set(__self__, "allow_password_signup", allow_password_signup)
+        if client is not None:
+            pulumi.set(__self__, "client", client)
         if disable_auth is not None:
             pulumi.set(__self__, "disable_auth", disable_auth)
         if display_name is not None:
@@ -163,6 +188,19 @@ class _TenantState:
     @allow_password_signup.setter
     def allow_password_signup(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_password_signup", value)
+
+    @property
+    @pulumi.getter
+    def client(self) -> Optional[pulumi.Input['TenantClientArgs']]:
+        """
+        Options related to how clients making requests on behalf of a tenant should be configured.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "client")
+
+    @client.setter
+    def client(self, value: Optional[pulumi.Input['TenantClientArgs']]):
+        pulumi.set(self, "client", value)
 
     @property
     @pulumi.getter(name="disableAuth")
@@ -237,6 +275,7 @@ class Tenant(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_password_signup: Optional[pulumi.Input[bool]] = None,
+                 client: Optional[pulumi.Input[Union['TenantClientArgs', 'TenantClientArgsDict']]] = None,
                  disable_auth: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_email_link_signin: Optional[pulumi.Input[bool]] = None,
@@ -292,6 +331,8 @@ class Tenant(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_password_signup: Whether to allow email/password user authentication.
+        :param pulumi.Input[Union['TenantClientArgs', 'TenantClientArgsDict']] client: Options related to how clients making requests on behalf of a tenant should be configured.
+               Structure is documented below.
         :param pulumi.Input[bool] disable_auth: Whether authentication is disabled for the tenant. If true, the users under
                the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
                are not able to manage its users.
@@ -372,6 +413,7 @@ class Tenant(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_password_signup: Optional[pulumi.Input[bool]] = None,
+                 client: Optional[pulumi.Input[Union['TenantClientArgs', 'TenantClientArgsDict']]] = None,
                  disable_auth: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_email_link_signin: Optional[pulumi.Input[bool]] = None,
@@ -386,6 +428,7 @@ class Tenant(pulumi.CustomResource):
             __props__ = TenantArgs.__new__(TenantArgs)
 
             __props__.__dict__["allow_password_signup"] = allow_password_signup
+            __props__.__dict__["client"] = client
             __props__.__dict__["disable_auth"] = disable_auth
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -404,6 +447,7 @@ class Tenant(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_password_signup: Optional[pulumi.Input[bool]] = None,
+            client: Optional[pulumi.Input[Union['TenantClientArgs', 'TenantClientArgsDict']]] = None,
             disable_auth: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             enable_email_link_signin: Optional[pulumi.Input[bool]] = None,
@@ -417,6 +461,8 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_password_signup: Whether to allow email/password user authentication.
+        :param pulumi.Input[Union['TenantClientArgs', 'TenantClientArgsDict']] client: Options related to how clients making requests on behalf of a tenant should be configured.
+               Structure is documented below.
         :param pulumi.Input[bool] disable_auth: Whether authentication is disabled for the tenant. If true, the users under
                the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
                are not able to manage its users.
@@ -434,6 +480,7 @@ class Tenant(pulumi.CustomResource):
         __props__ = _TenantState.__new__(_TenantState)
 
         __props__.__dict__["allow_password_signup"] = allow_password_signup
+        __props__.__dict__["client"] = client
         __props__.__dict__["disable_auth"] = disable_auth
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["enable_email_link_signin"] = enable_email_link_signin
@@ -448,6 +495,15 @@ class Tenant(pulumi.CustomResource):
         Whether to allow email/password user authentication.
         """
         return pulumi.get(self, "allow_password_signup")
+
+    @property
+    @pulumi.getter
+    def client(self) -> pulumi.Output[Optional['outputs.TenantClient']]:
+        """
+        Options related to how clients making requests on behalf of a tenant should be configured.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "client")
 
     @property
     @pulumi.getter(name="disableAuth")

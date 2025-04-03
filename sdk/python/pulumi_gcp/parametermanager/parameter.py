@@ -23,6 +23,7 @@ class ParameterArgs:
     def __init__(__self__, *,
                  parameter_id: pulumi.Input[str],
                  format: Optional[pulumi.Input[str]] = None,
+                 kms_key: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -34,6 +35,8 @@ class ParameterArgs:
         :param pulumi.Input[str] format: The format type of the parameter resource.
                Default value is `UNFORMATTED`.
                Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
+        :param pulumi.Input[str] kms_key: The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
+               `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Parameter.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
                and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
@@ -51,6 +54,8 @@ class ParameterArgs:
         pulumi.set(__self__, "parameter_id", parameter_id)
         if format is not None:
             pulumi.set(__self__, "format", format)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
@@ -84,6 +89,19 @@ class ParameterArgs:
     @format.setter
     def format(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
+        `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key", value)
 
     @property
     @pulumi.getter
@@ -127,6 +145,7 @@ class _ParameterState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  format: Optional[pulumi.Input[str]] = None,
+                 kms_key: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parameter_id: Optional[pulumi.Input[str]] = None,
@@ -141,6 +160,8 @@ class _ParameterState:
         :param pulumi.Input[str] format: The format type of the parameter resource.
                Default value is `UNFORMATTED`.
                Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
+        :param pulumi.Input[str] kms_key: The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
+               `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Parameter.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
                and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
@@ -172,6 +193,8 @@ class _ParameterState:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if format is not None:
             pulumi.set(__self__, "format", format)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -224,6 +247,19 @@ class _ParameterState:
     @format.setter
     def format(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
+        `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key", value)
 
     @property
     @pulumi.getter
@@ -333,11 +369,18 @@ class Parameter(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  format: Optional[pulumi.Input[str]] = None,
+                 kms_key: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  parameter_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A Parameter resource is a logical parameter.
+
+        To get more information about Parameter, see:
+
+        * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters)
+
         ## Example Usage
 
         ### Parameter Config Basic
@@ -373,6 +416,17 @@ class Parameter(pulumi.CustomResource):
                 "key4": "val4",
                 "key5": "val5",
             })
+        ```
+        ### Parameter With Kms Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        parameter_with_kms_key = gcp.parametermanager.Parameter("parameter-with-kms-key",
+            parameter_id="parameter",
+            kms_key="kms-key")
         ```
 
         ## Import
@@ -404,6 +458,8 @@ class Parameter(pulumi.CustomResource):
         :param pulumi.Input[str] format: The format type of the parameter resource.
                Default value is `UNFORMATTED`.
                Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
+        :param pulumi.Input[str] kms_key: The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
+               `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Parameter.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
                and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
@@ -429,6 +485,12 @@ class Parameter(pulumi.CustomResource):
                  args: ParameterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Parameter resource is a logical parameter.
+
+        To get more information about Parameter, see:
+
+        * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters)
+
         ## Example Usage
 
         ### Parameter Config Basic
@@ -464,6 +526,17 @@ class Parameter(pulumi.CustomResource):
                 "key4": "val4",
                 "key5": "val5",
             })
+        ```
+        ### Parameter With Kms Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        parameter_with_kms_key = gcp.parametermanager.Parameter("parameter-with-kms-key",
+            parameter_id="parameter",
+            kms_key="kms-key")
         ```
 
         ## Import
@@ -506,6 +579,7 @@ class Parameter(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  format: Optional[pulumi.Input[str]] = None,
+                 kms_key: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  parameter_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -519,6 +593,7 @@ class Parameter(pulumi.CustomResource):
             __props__ = ParameterArgs.__new__(ParameterArgs)
 
             __props__.__dict__["format"] = format
+            __props__.__dict__["kms_key"] = kms_key
             __props__.__dict__["labels"] = labels
             if parameter_id is None and not opts.urn:
                 raise TypeError("Missing required property 'parameter_id'")
@@ -545,6 +620,7 @@ class Parameter(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             format: Optional[pulumi.Input[str]] = None,
+            kms_key: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parameter_id: Optional[pulumi.Input[str]] = None,
@@ -564,6 +640,8 @@ class Parameter(pulumi.CustomResource):
         :param pulumi.Input[str] format: The format type of the parameter resource.
                Default value is `UNFORMATTED`.
                Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
+        :param pulumi.Input[str] kms_key: The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
+               `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Parameter.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
                and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
@@ -596,6 +674,7 @@ class Parameter(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["format"] = format
+        __props__.__dict__["kms_key"] = kms_key
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["parameter_id"] = parameter_id
@@ -630,6 +709,15 @@ class Parameter(pulumi.CustomResource):
         Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
         """
         return pulumi.get(self, "format")
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
+        `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+        """
+        return pulumi.get(self, "kms_key")
 
     @property
     @pulumi.getter

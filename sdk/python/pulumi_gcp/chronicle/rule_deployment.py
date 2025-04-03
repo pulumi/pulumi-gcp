@@ -486,6 +486,14 @@ class RuleDeployment(pulumi.CustomResource):
                  run_frequency: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        The RuleDeployment resource represents the deployment state of a Rule.
+
+        To get more information about RuleDeployment, see:
+
+        * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/RuleDeployment)
+        * How-to Guides
+            * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
+
         ## Example Usage
 
         ## Import
@@ -545,6 +553,14 @@ class RuleDeployment(pulumi.CustomResource):
                  args: RuleDeploymentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The RuleDeployment resource represents the deployment state of a Rule.
+
+        To get more information about RuleDeployment, see:
+
+        * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/RuleDeployment)
+        * How-to Guides
+            * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
+
         ## Example Usage
 
         ## Import

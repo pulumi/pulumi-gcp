@@ -47,6 +47,11 @@ public final class ServiceTemplate {
      */
     private @Nullable String executionEnvironment;
     /**
+     * @return True if GPU zonal redundancy is disabled on this revision.
+     * 
+     */
+    private @Nullable Boolean gpuZonalRedundancyDisabled;
+    /**
      * @return Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
      * For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
      * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -145,6 +150,13 @@ public final class ServiceTemplate {
      */
     public Optional<String> executionEnvironment() {
         return Optional.ofNullable(this.executionEnvironment);
+    }
+    /**
+     * @return True if GPU zonal redundancy is disabled on this revision.
+     * 
+     */
+    public Optional<Boolean> gpuZonalRedundancyDisabled() {
+        return Optional.ofNullable(this.gpuZonalRedundancyDisabled);
     }
     /**
      * @return Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
@@ -247,6 +259,7 @@ public final class ServiceTemplate {
         private @Nullable List<ServiceTemplateContainer> containers;
         private @Nullable String encryptionKey;
         private @Nullable String executionEnvironment;
+        private @Nullable Boolean gpuZonalRedundancyDisabled;
         private @Nullable Map<String,String> labels;
         private @Nullable Integer maxInstanceRequestConcurrency;
         private @Nullable ServiceTemplateNodeSelector nodeSelector;
@@ -265,6 +278,7 @@ public final class ServiceTemplate {
     	      this.containers = defaults.containers;
     	      this.encryptionKey = defaults.encryptionKey;
     	      this.executionEnvironment = defaults.executionEnvironment;
+    	      this.gpuZonalRedundancyDisabled = defaults.gpuZonalRedundancyDisabled;
     	      this.labels = defaults.labels;
     	      this.maxInstanceRequestConcurrency = defaults.maxInstanceRequestConcurrency;
     	      this.nodeSelector = defaults.nodeSelector;
@@ -303,6 +317,12 @@ public final class ServiceTemplate {
         public Builder executionEnvironment(@Nullable String executionEnvironment) {
 
             this.executionEnvironment = executionEnvironment;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gpuZonalRedundancyDisabled(@Nullable Boolean gpuZonalRedundancyDisabled) {
+
+            this.gpuZonalRedundancyDisabled = gpuZonalRedundancyDisabled;
             return this;
         }
         @CustomType.Setter
@@ -380,6 +400,7 @@ public final class ServiceTemplate {
             _resultValue.containers = containers;
             _resultValue.encryptionKey = encryptionKey;
             _resultValue.executionEnvironment = executionEnvironment;
+            _resultValue.gpuZonalRedundancyDisabled = gpuZonalRedundancyDisabled;
             _resultValue.labels = labels;
             _resultValue.maxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
             _resultValue.nodeSelector = nodeSelector;

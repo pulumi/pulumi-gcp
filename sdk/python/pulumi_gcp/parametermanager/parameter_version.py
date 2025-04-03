@@ -98,6 +98,7 @@ class _ParameterVersionState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
+                 kms_key_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parameter: Optional[pulumi.Input[str]] = None,
                  parameter_data: Optional[pulumi.Input[str]] = None,
@@ -107,6 +108,8 @@ class _ParameterVersionState:
         Input properties used for looking up and filtering ParameterVersion resources.
         :param pulumi.Input[str] create_time: The time at which the Parameter Version was created.
         :param pulumi.Input[bool] disabled: The current state of Parameter Version. This field is only applicable for updating Parameter Version.
+        :param pulumi.Input[str] kms_key_version: The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
+               `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
         :param pulumi.Input[str] name: The resource name of the Parameter Version. Format:
                `projects/{{project}}/locations/global/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
         :param pulumi.Input[str] parameter: Parameter Manager Parameter resource.
@@ -122,6 +125,8 @@ class _ParameterVersionState:
             pulumi.set(__self__, "create_time", create_time)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if kms_key_version is not None:
+            pulumi.set(__self__, "kms_key_version", kms_key_version)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if parameter is not None:
@@ -156,6 +161,19 @@ class _ParameterVersionState:
     @disabled.setter
     def disabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyVersion")
+    def kms_key_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
+        `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+        """
+        return pulumi.get(self, "kms_key_version")
+
+    @kms_key_version.setter
+    def kms_key_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_version", value)
 
     @property
     @pulumi.getter
@@ -234,6 +252,12 @@ class ParameterVersion(pulumi.CustomResource):
                  parameter_version_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A Parameter Version resource that stores the actual value of the parameter.
+
+        To get more information about ParameterVersion, see:
+
+        * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions)
+
         ## Example Usage
 
         ### Parameter Version Basic
@@ -265,6 +289,21 @@ class ParameterVersion(pulumi.CustomResource):
                 "key1": "val1",
                 "key2": "val2",
             }))
+        ```
+        ### Parameter Version With Kms Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        parameter_basic = gcp.parametermanager.Parameter("parameter-basic",
+            parameter_id="parameter",
+            kms_key="kms-key")
+        parameter_version_with_kms_key = gcp.parametermanager.ParameterVersion("parameter-version-with-kms-key",
+            parameter=parameter_basic.id,
+            parameter_version_id="parameter_version",
+            parameter_data="app-parameter-version-data")
         ```
         ## Import
 
@@ -296,6 +335,12 @@ class ParameterVersion(pulumi.CustomResource):
                  args: ParameterVersionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Parameter Version resource that stores the actual value of the parameter.
+
+        To get more information about ParameterVersion, see:
+
+        * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions)
+
         ## Example Usage
 
         ### Parameter Version Basic
@@ -327,6 +372,21 @@ class ParameterVersion(pulumi.CustomResource):
                 "key1": "val1",
                 "key2": "val2",
             }))
+        ```
+        ### Parameter Version With Kms Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        parameter_basic = gcp.parametermanager.Parameter("parameter-basic",
+            parameter_id="parameter",
+            kms_key="kms-key")
+        parameter_version_with_kms_key = gcp.parametermanager.ParameterVersion("parameter-version-with-kms-key",
+            parameter=parameter_basic.id,
+            parameter_version_id="parameter_version",
+            parameter_data="app-parameter-version-data")
         ```
         ## Import
 
@@ -379,6 +439,7 @@ class ParameterVersion(pulumi.CustomResource):
                 raise TypeError("Missing required property 'parameter_version_id'")
             __props__.__dict__["parameter_version_id"] = parameter_version_id
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["kms_key_version"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["parameterData"])
@@ -395,6 +456,7 @@ class ParameterVersion(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
+            kms_key_version: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parameter: Optional[pulumi.Input[str]] = None,
             parameter_data: Optional[pulumi.Input[str]] = None,
@@ -409,6 +471,8 @@ class ParameterVersion(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The time at which the Parameter Version was created.
         :param pulumi.Input[bool] disabled: The current state of Parameter Version. This field is only applicable for updating Parameter Version.
+        :param pulumi.Input[str] kms_key_version: The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
+               `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
         :param pulumi.Input[str] name: The resource name of the Parameter Version. Format:
                `projects/{{project}}/locations/global/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
         :param pulumi.Input[str] parameter: Parameter Manager Parameter resource.
@@ -426,6 +490,7 @@ class ParameterVersion(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["disabled"] = disabled
+        __props__.__dict__["kms_key_version"] = kms_key_version
         __props__.__dict__["name"] = name
         __props__.__dict__["parameter"] = parameter
         __props__.__dict__["parameter_data"] = parameter_data
@@ -448,6 +513,15 @@ class ParameterVersion(pulumi.CustomResource):
         The current state of Parameter Version. This field is only applicable for updating Parameter Version.
         """
         return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="kmsKeyVersion")
+    def kms_key_version(self) -> pulumi.Output[str]:
+        """
+        The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
+        `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+        """
+        return pulumi.get(self, "kms_key_version")
 
     @property
     @pulumi.getter

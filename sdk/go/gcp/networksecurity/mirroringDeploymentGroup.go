@@ -107,6 +107,9 @@ type MirroringDeploymentGroup struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The cloud location of the deployment group, currently restricted to `global`.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// The list of locations where the deployment group is present.
+	// Structure is documented below.
+	Locations MirroringDeploymentGroupLocationArrayOutput `pulumi:"locations"`
 	// The ID to use for the new deployment group, which will become the final
 	// component of the deployment group's resource name.
 	//
@@ -132,13 +135,12 @@ type MirroringDeploymentGroup struct {
 	// operation (e.g. adding a new deployment to the group)
 	// See https://google.aip.dev/128.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
-	// The current state of the deployment group.
-	// See https://google.aip.dev/216.
+	// (Output)
+	// The current state of the association in this location.
 	// Possible values:
 	// STATE_UNSPECIFIED
 	// ACTIVE
-	// CREATING
-	// DELETING
+	// OUT_OF_SYNC
 	State pulumi.StringOutput `pulumi:"state"`
 	// The timestamp when the resource was most recently updated.
 	// See https://google.aip.dev/148#timestamps.
@@ -206,6 +208,9 @@ type mirroringDeploymentGroupState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The cloud location of the deployment group, currently restricted to `global`.
 	Location *string `pulumi:"location"`
+	// The list of locations where the deployment group is present.
+	// Structure is documented below.
+	Locations []MirroringDeploymentGroupLocation `pulumi:"locations"`
 	// The ID to use for the new deployment group, which will become the final
 	// component of the deployment group's resource name.
 	//
@@ -231,13 +236,12 @@ type mirroringDeploymentGroupState struct {
 	// operation (e.g. adding a new deployment to the group)
 	// See https://google.aip.dev/128.
 	Reconciling *bool `pulumi:"reconciling"`
-	// The current state of the deployment group.
-	// See https://google.aip.dev/216.
+	// (Output)
+	// The current state of the association in this location.
 	// Possible values:
 	// STATE_UNSPECIFIED
 	// ACTIVE
-	// CREATING
-	// DELETING
+	// OUT_OF_SYNC
 	State *string `pulumi:"state"`
 	// The timestamp when the resource was most recently updated.
 	// See https://google.aip.dev/148#timestamps.
@@ -262,6 +266,9 @@ type MirroringDeploymentGroupState struct {
 	Labels pulumi.StringMapInput
 	// The cloud location of the deployment group, currently restricted to `global`.
 	Location pulumi.StringPtrInput
+	// The list of locations where the deployment group is present.
+	// Structure is documented below.
+	Locations MirroringDeploymentGroupLocationArrayInput
 	// The ID to use for the new deployment group, which will become the final
 	// component of the deployment group's resource name.
 	//
@@ -287,13 +294,12 @@ type MirroringDeploymentGroupState struct {
 	// operation (e.g. adding a new deployment to the group)
 	// See https://google.aip.dev/128.
 	Reconciling pulumi.BoolPtrInput
-	// The current state of the deployment group.
-	// See https://google.aip.dev/216.
+	// (Output)
+	// The current state of the association in this location.
 	// Possible values:
 	// STATE_UNSPECIFIED
 	// ACTIVE
-	// CREATING
-	// DELETING
+	// OUT_OF_SYNC
 	State pulumi.StringPtrInput
 	// The timestamp when the resource was most recently updated.
 	// See https://google.aip.dev/148#timestamps.
@@ -477,6 +483,12 @@ func (o MirroringDeploymentGroupOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirroringDeploymentGroup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
+// The list of locations where the deployment group is present.
+// Structure is documented below.
+func (o MirroringDeploymentGroupOutput) Locations() MirroringDeploymentGroupLocationArrayOutput {
+	return o.ApplyT(func(v *MirroringDeploymentGroup) MirroringDeploymentGroupLocationArrayOutput { return v.Locations }).(MirroringDeploymentGroupLocationArrayOutput)
+}
+
 // The ID to use for the new deployment group, which will become the final
 // component of the deployment group's resource name.
 //
@@ -520,13 +532,12 @@ func (o MirroringDeploymentGroupOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *MirroringDeploymentGroup) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }
 
-// The current state of the deployment group.
-// See https://google.aip.dev/216.
+// (Output)
+// The current state of the association in this location.
 // Possible values:
 // STATE_UNSPECIFIED
 // ACTIVE
-// CREATING
-// DELETING
+// OUT_OF_SYNC
 func (o MirroringDeploymentGroupOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirroringDeploymentGroup) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

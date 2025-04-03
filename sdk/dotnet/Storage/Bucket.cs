@@ -330,7 +330,7 @@ namespace Pulumi.Gcp.Storage
         public Output<int> ProjectNumber { get; private set; } = null!;
 
         /// <summary>
-        /// Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
+        /// Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention) only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
         /// </summary>
         [Output("publicAccessPrevention")]
         public Output<string> PublicAccessPrevention { get; private set; } = null!;
@@ -561,7 +561,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
+        /// Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention) only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
         /// </summary>
         [Input("publicAccessPrevention")]
         public Input<string>? PublicAccessPrevention { get; set; }
@@ -749,7 +749,7 @@ namespace Pulumi.Gcp.Storage
         public Input<int>? ProjectNumber { get; set; }
 
         /// <summary>
-        /// Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
+        /// Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention) only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
         /// </summary>
         [Input("publicAccessPrevention")]
         public Input<string>? PublicAccessPrevention { get; set; }

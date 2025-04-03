@@ -15,6 +15,16 @@ namespace Pulumi.Gcp.MemoryStore.Outputs
     {
         /// <summary>
         /// (Output)
+        /// Output only. Target engine version for the instance.
+        /// </summary>
+        public readonly string? TargetEngineVersion;
+        /// <summary>
+        /// (Output)
+        /// Output only. Target node type for the instance.
+        /// </summary>
+        public readonly string? TargetNodeType;
+        /// <summary>
+        /// (Output)
         /// Output only. Target number of replica nodes per shard for the instance.
         /// </summary>
         public readonly int? TargetReplicaCount;
@@ -26,10 +36,16 @@ namespace Pulumi.Gcp.MemoryStore.Outputs
 
         [OutputConstructor]
         private InstanceStateInfoUpdateInfo(
+            string? targetEngineVersion,
+
+            string? targetNodeType,
+
             int? targetReplicaCount,
 
             int? targetShardCount)
         {
+            TargetEngineVersion = targetEngineVersion;
+            TargetNodeType = targetNodeType;
             TargetReplicaCount = targetReplicaCount;
             TargetShardCount = targetShardCount;
         }

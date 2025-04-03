@@ -14,6 +14,7 @@ from .get_client_open_id_user_info import *
 from .get_folder import *
 from .get_folders import *
 from .get_iam_custom_role import *
+from .get_iam_custom_roles import *
 from .get_iam_policy import *
 from .get_organization import *
 from .get_project import *

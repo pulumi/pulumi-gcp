@@ -412,6 +412,14 @@ class Watchlist(pulumi.CustomResource):
                  watchlist_user_preferences: Optional[pulumi.Input[Union['WatchlistWatchlistUserPreferencesArgs', 'WatchlistWatchlistUserPreferencesArgsDict']]] = None,
                  __props__=None):
         """
+        A watchlist is a list of entities that allows for bulk operations over the included entities.
+
+        To get more information about Watchlist, see:
+
+        * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.watchlists)
+        * How-to Guides
+            * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
+
         ## Example Usage
 
         ### Chronicle Watchlist Basic
@@ -500,6 +508,14 @@ class Watchlist(pulumi.CustomResource):
                  args: WatchlistArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A watchlist is a list of entities that allows for bulk operations over the included entities.
+
+        To get more information about Watchlist, see:
+
+        * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.watchlists)
+        * How-to Guides
+            * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
+
         ## Example Usage
 
         ### Chronicle Watchlist Basic

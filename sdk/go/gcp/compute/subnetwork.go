@@ -480,10 +480,15 @@ type Subnetwork struct {
 	// you create the resource. This field can be set only at resource
 	// creation time.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// (Optional, Deprecated)
 	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
 	// it will not appear in get listings. If not set the default behavior is determined by the
 	// org policy, if there is no org policy specified, then it will default to disabled.
 	// This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+	//
+	// > **Warning:** This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
+	//
+	// Deprecated: This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
 	EnableFlowLogs pulumi.BoolOutput `pulumi:"enableFlowLogs"`
 	// The range of external IPv6 addresses that are owned by this subnetwork.
 	ExternalIpv6Prefix pulumi.StringOutput `pulumi:"externalIpv6Prefix"`
@@ -530,7 +535,7 @@ type Subnetwork struct {
 	// isn't supported if the subnet `purpose` field is set to subnetwork is
 	// `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
 	// Structure is documented below.
-	LogConfig SubnetworkLogConfigOutput `pulumi:"logConfig"`
+	LogConfig SubnetworkLogConfigPtrOutput `pulumi:"logConfig"`
 	// The name of the resource, provided by the client when initially
 	// creating the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -645,10 +650,15 @@ type subnetworkState struct {
 	// you create the resource. This field can be set only at resource
 	// creation time.
 	Description *string `pulumi:"description"`
+	// (Optional, Deprecated)
 	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
 	// it will not appear in get listings. If not set the default behavior is determined by the
 	// org policy, if there is no org policy specified, then it will default to disabled.
 	// This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+	//
+	// > **Warning:** This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
+	//
+	// Deprecated: This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
 	EnableFlowLogs *bool `pulumi:"enableFlowLogs"`
 	// The range of external IPv6 addresses that are owned by this subnetwork.
 	ExternalIpv6Prefix *string `pulumi:"externalIpv6Prefix"`
@@ -778,10 +788,15 @@ type SubnetworkState struct {
 	// you create the resource. This field can be set only at resource
 	// creation time.
 	Description pulumi.StringPtrInput
+	// (Optional, Deprecated)
 	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
 	// it will not appear in get listings. If not set the default behavior is determined by the
 	// org policy, if there is no org policy specified, then it will default to disabled.
 	// This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+	//
+	// > **Warning:** This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
+	//
+	// Deprecated: This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
 	EnableFlowLogs pulumi.BoolPtrInput
 	// The range of external IPv6 addresses that are owned by this subnetwork.
 	ExternalIpv6Prefix pulumi.StringPtrInput
@@ -913,10 +928,15 @@ type subnetworkArgs struct {
 	// you create the resource. This field can be set only at resource
 	// creation time.
 	Description *string `pulumi:"description"`
+	// (Optional, Deprecated)
 	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
 	// it will not appear in get listings. If not set the default behavior is determined by the
 	// org policy, if there is no org policy specified, then it will default to disabled.
 	// This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+	//
+	// > **Warning:** This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
+	//
+	// Deprecated: This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
 	EnableFlowLogs *bool `pulumi:"enableFlowLogs"`
 	// The range of external IPv6 addresses that are owned by this subnetwork.
 	ExternalIpv6Prefix *string `pulumi:"externalIpv6Prefix"`
@@ -1019,10 +1039,15 @@ type SubnetworkArgs struct {
 	// you create the resource. This field can be set only at resource
 	// creation time.
 	Description pulumi.StringPtrInput
+	// (Optional, Deprecated)
 	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
 	// it will not appear in get listings. If not set the default behavior is determined by the
 	// org policy, if there is no org policy specified, then it will default to disabled.
 	// This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+	//
+	// > **Warning:** This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
+	//
+	// Deprecated: This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
 	EnableFlowLogs pulumi.BoolPtrInput
 	// The range of external IPv6 addresses that are owned by this subnetwork.
 	ExternalIpv6Prefix pulumi.StringPtrInput
@@ -1221,10 +1246,15 @@ func (o SubnetworkOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// (Optional, Deprecated)
 // Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
 // it will not appear in get listings. If not set the default behavior is determined by the
 // org policy, if there is no org policy specified, then it will default to disabled.
 // This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+//
+// > **Warning:** This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
+//
+// Deprecated: This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
 func (o SubnetworkOutput) EnableFlowLogs() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.BoolOutput { return v.EnableFlowLogs }).(pulumi.BoolOutput)
 }
@@ -1301,8 +1331,8 @@ func (o SubnetworkOutput) Ipv6GceEndpoint() pulumi.StringOutput {
 // isn't supported if the subnet `purpose` field is set to subnetwork is
 // `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
 // Structure is documented below.
-func (o SubnetworkOutput) LogConfig() SubnetworkLogConfigOutput {
-	return o.ApplyT(func(v *Subnetwork) SubnetworkLogConfigOutput { return v.LogConfig }).(SubnetworkLogConfigOutput)
+func (o SubnetworkOutput) LogConfig() SubnetworkLogConfigPtrOutput {
+	return o.ApplyT(func(v *Subnetwork) SubnetworkLogConfigPtrOutput { return v.LogConfig }).(SubnetworkLogConfigPtrOutput)
 }
 
 // The name of the resource, provided by the client when initially

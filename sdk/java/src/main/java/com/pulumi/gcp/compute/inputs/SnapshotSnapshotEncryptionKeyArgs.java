@@ -67,6 +67,25 @@ public final class SnapshotSnapshotEncryptionKeyArgs extends com.pulumi.resource
     }
 
     /**
+     * Specifies an encryption key stored in Google Cloud KMS, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
+    @Import(name="rsaEncryptedKey")
+    private @Nullable Output<String> rsaEncryptedKey;
+
+    /**
+     * @return Specifies an encryption key stored in Google Cloud KMS, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
+    public Optional<Output<String>> rsaEncryptedKey() {
+        return Optional.ofNullable(this.rsaEncryptedKey);
+    }
+
+    /**
      * (Output)
      * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
      * encryption key that protects this resource.
@@ -91,6 +110,7 @@ public final class SnapshotSnapshotEncryptionKeyArgs extends com.pulumi.resource
         this.kmsKeySelfLink = $.kmsKeySelfLink;
         this.kmsKeyServiceAccount = $.kmsKeyServiceAccount;
         this.rawKey = $.rawKey;
+        this.rsaEncryptedKey = $.rsaEncryptedKey;
         this.sha256 = $.sha256;
     }
 
@@ -179,6 +199,31 @@ public final class SnapshotSnapshotEncryptionKeyArgs extends com.pulumi.resource
          */
         public Builder rawKey(String rawKey) {
             return rawKey(Output.of(rawKey));
+        }
+
+        /**
+         * @param rsaEncryptedKey Specifies an encryption key stored in Google Cloud KMS, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rsaEncryptedKey(@Nullable Output<String> rsaEncryptedKey) {
+            $.rsaEncryptedKey = rsaEncryptedKey;
+            return this;
+        }
+
+        /**
+         * @param rsaEncryptedKey Specifies an encryption key stored in Google Cloud KMS, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rsaEncryptedKey(String rsaEncryptedKey) {
+            return rsaEncryptedKey(Output.of(rsaEncryptedKey));
         }
 
         /**

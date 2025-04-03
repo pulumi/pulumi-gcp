@@ -865,6 +865,9 @@ namespace Pulumi.Gcp
         [Input("eventarcCustomEndpoint")]
         public Input<string>? EventarcCustomEndpoint { get; set; }
 
+        [Input("externalCredentials", json: true)]
+        public Input<Inputs.ProviderExternalCredentialsArgs>? ExternalCredentials { get; set; }
+
         [Input("filestoreCustomEndpoint")]
         public Input<string>? FilestoreCustomEndpoint { get; set; }
 

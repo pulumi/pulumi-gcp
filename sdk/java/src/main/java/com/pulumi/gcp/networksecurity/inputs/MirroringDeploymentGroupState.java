@@ -6,6 +6,7 @@ package com.pulumi.gcp.networksecurity.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.networksecurity.inputs.MirroringDeploymentGroupConnectedEndpointGroupArgs;
+import com.pulumi.gcp.networksecurity.inputs.MirroringDeploymentGroupLocationArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -117,6 +118,23 @@ public final class MirroringDeploymentGroupState extends com.pulumi.resources.Re
      */
     public Optional<Output<String>> location() {
         return Optional.ofNullable(this.location);
+    }
+
+    /**
+     * The list of locations where the deployment group is present.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="locations")
+    private @Nullable Output<List<MirroringDeploymentGroupLocationArgs>> locations;
+
+    /**
+     * @return The list of locations where the deployment group is present.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<MirroringDeploymentGroupLocationArgs>>> locations() {
+        return Optional.ofNullable(this.locations);
     }
 
     /**
@@ -236,26 +254,24 @@ public final class MirroringDeploymentGroupState extends com.pulumi.resources.Re
     }
 
     /**
-     * The current state of the deployment group.
-     * See https://google.aip.dev/216.
+     * (Output)
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
-     * CREATING
-     * DELETING
+     * OUT_OF_SYNC
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return The current state of the deployment group.
-     * See https://google.aip.dev/216.
+     * @return (Output)
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
-     * CREATING
-     * DELETING
+     * OUT_OF_SYNC
      * 
      */
     public Optional<Output<String>> state() {
@@ -288,6 +304,7 @@ public final class MirroringDeploymentGroupState extends com.pulumi.resources.Re
         this.effectiveLabels = $.effectiveLabels;
         this.labels = $.labels;
         this.location = $.location;
+        this.locations = $.locations;
         this.mirroringDeploymentGroupId = $.mirroringDeploymentGroupId;
         this.name = $.name;
         this.network = $.network;
@@ -464,6 +481,40 @@ public final class MirroringDeploymentGroupState extends com.pulumi.resources.Re
         }
 
         /**
+         * @param locations The list of locations where the deployment group is present.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locations(@Nullable Output<List<MirroringDeploymentGroupLocationArgs>> locations) {
+            $.locations = locations;
+            return this;
+        }
+
+        /**
+         * @param locations The list of locations where the deployment group is present.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locations(List<MirroringDeploymentGroupLocationArgs> locations) {
+            return locations(Output.of(locations));
+        }
+
+        /**
+         * @param locations The list of locations where the deployment group is present.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locations(MirroringDeploymentGroupLocationArgs... locations) {
+            return locations(List.of(locations));
+        }
+
+        /**
          * @param mirroringDeploymentGroupId The ID to use for the new deployment group, which will become the final
          * component of the deployment group&#39;s resource name.
          * 
@@ -616,13 +667,12 @@ public final class MirroringDeploymentGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param state The current state of the deployment group.
-         * See https://google.aip.dev/216.
+         * @param state (Output)
+         * The current state of the association in this location.
          * Possible values:
          * STATE_UNSPECIFIED
          * ACTIVE
-         * CREATING
-         * DELETING
+         * OUT_OF_SYNC
          * 
          * @return builder
          * 
@@ -633,13 +683,12 @@ public final class MirroringDeploymentGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param state The current state of the deployment group.
-         * See https://google.aip.dev/216.
+         * @param state (Output)
+         * The current state of the association in this location.
          * Possible values:
          * STATE_UNSPECIFIED
          * ACTIVE
-         * CREATING
-         * DELETING
+         * OUT_OF_SYNC
          * 
          * @return builder
          * 

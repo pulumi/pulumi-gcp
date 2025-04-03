@@ -13,6 +13,464 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ClusterAutomatedBackupConfig struct {
+	// Trigger automated backups at a fixed frequency.
+	// Structure is documented below.
+	FixedFrequencySchedule ClusterAutomatedBackupConfigFixedFrequencySchedule `pulumi:"fixedFrequencySchedule"`
+	// How long to keep automated backups before the backups are deleted.
+	// The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	Retention string `pulumi:"retention"`
+}
+
+// ClusterAutomatedBackupConfigInput is an input type that accepts ClusterAutomatedBackupConfigArgs and ClusterAutomatedBackupConfigOutput values.
+// You can construct a concrete instance of `ClusterAutomatedBackupConfigInput` via:
+//
+//	ClusterAutomatedBackupConfigArgs{...}
+type ClusterAutomatedBackupConfigInput interface {
+	pulumi.Input
+
+	ToClusterAutomatedBackupConfigOutput() ClusterAutomatedBackupConfigOutput
+	ToClusterAutomatedBackupConfigOutputWithContext(context.Context) ClusterAutomatedBackupConfigOutput
+}
+
+type ClusterAutomatedBackupConfigArgs struct {
+	// Trigger automated backups at a fixed frequency.
+	// Structure is documented below.
+	FixedFrequencySchedule ClusterAutomatedBackupConfigFixedFrequencyScheduleInput `pulumi:"fixedFrequencySchedule"`
+	// How long to keep automated backups before the backups are deleted.
+	// The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	Retention pulumi.StringInput `pulumi:"retention"`
+}
+
+func (ClusterAutomatedBackupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAutomatedBackupConfig)(nil)).Elem()
+}
+
+func (i ClusterAutomatedBackupConfigArgs) ToClusterAutomatedBackupConfigOutput() ClusterAutomatedBackupConfigOutput {
+	return i.ToClusterAutomatedBackupConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterAutomatedBackupConfigArgs) ToClusterAutomatedBackupConfigOutputWithContext(ctx context.Context) ClusterAutomatedBackupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutomatedBackupConfigOutput)
+}
+
+func (i ClusterAutomatedBackupConfigArgs) ToClusterAutomatedBackupConfigPtrOutput() ClusterAutomatedBackupConfigPtrOutput {
+	return i.ToClusterAutomatedBackupConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAutomatedBackupConfigArgs) ToClusterAutomatedBackupConfigPtrOutputWithContext(ctx context.Context) ClusterAutomatedBackupConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutomatedBackupConfigOutput).ToClusterAutomatedBackupConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterAutomatedBackupConfigPtrInput is an input type that accepts ClusterAutomatedBackupConfigArgs, ClusterAutomatedBackupConfigPtr and ClusterAutomatedBackupConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterAutomatedBackupConfigPtrInput` via:
+//
+//	        ClusterAutomatedBackupConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterAutomatedBackupConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterAutomatedBackupConfigPtrOutput() ClusterAutomatedBackupConfigPtrOutput
+	ToClusterAutomatedBackupConfigPtrOutputWithContext(context.Context) ClusterAutomatedBackupConfigPtrOutput
+}
+
+type clusterAutomatedBackupConfigPtrType ClusterAutomatedBackupConfigArgs
+
+func ClusterAutomatedBackupConfigPtr(v *ClusterAutomatedBackupConfigArgs) ClusterAutomatedBackupConfigPtrInput {
+	return (*clusterAutomatedBackupConfigPtrType)(v)
+}
+
+func (*clusterAutomatedBackupConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAutomatedBackupConfig)(nil)).Elem()
+}
+
+func (i *clusterAutomatedBackupConfigPtrType) ToClusterAutomatedBackupConfigPtrOutput() ClusterAutomatedBackupConfigPtrOutput {
+	return i.ToClusterAutomatedBackupConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAutomatedBackupConfigPtrType) ToClusterAutomatedBackupConfigPtrOutputWithContext(ctx context.Context) ClusterAutomatedBackupConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutomatedBackupConfigPtrOutput)
+}
+
+type ClusterAutomatedBackupConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterAutomatedBackupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAutomatedBackupConfig)(nil)).Elem()
+}
+
+func (o ClusterAutomatedBackupConfigOutput) ToClusterAutomatedBackupConfigOutput() ClusterAutomatedBackupConfigOutput {
+	return o
+}
+
+func (o ClusterAutomatedBackupConfigOutput) ToClusterAutomatedBackupConfigOutputWithContext(ctx context.Context) ClusterAutomatedBackupConfigOutput {
+	return o
+}
+
+func (o ClusterAutomatedBackupConfigOutput) ToClusterAutomatedBackupConfigPtrOutput() ClusterAutomatedBackupConfigPtrOutput {
+	return o.ToClusterAutomatedBackupConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAutomatedBackupConfigOutput) ToClusterAutomatedBackupConfigPtrOutputWithContext(ctx context.Context) ClusterAutomatedBackupConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAutomatedBackupConfig) *ClusterAutomatedBackupConfig {
+		return &v
+	}).(ClusterAutomatedBackupConfigPtrOutput)
+}
+
+// Trigger automated backups at a fixed frequency.
+// Structure is documented below.
+func (o ClusterAutomatedBackupConfigOutput) FixedFrequencySchedule() ClusterAutomatedBackupConfigFixedFrequencyScheduleOutput {
+	return o.ApplyT(func(v ClusterAutomatedBackupConfig) ClusterAutomatedBackupConfigFixedFrequencySchedule {
+		return v.FixedFrequencySchedule
+	}).(ClusterAutomatedBackupConfigFixedFrequencyScheduleOutput)
+}
+
+// How long to keep automated backups before the backups are deleted.
+// The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+func (o ClusterAutomatedBackupConfigOutput) Retention() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterAutomatedBackupConfig) string { return v.Retention }).(pulumi.StringOutput)
+}
+
+type ClusterAutomatedBackupConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAutomatedBackupConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAutomatedBackupConfig)(nil)).Elem()
+}
+
+func (o ClusterAutomatedBackupConfigPtrOutput) ToClusterAutomatedBackupConfigPtrOutput() ClusterAutomatedBackupConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAutomatedBackupConfigPtrOutput) ToClusterAutomatedBackupConfigPtrOutputWithContext(ctx context.Context) ClusterAutomatedBackupConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAutomatedBackupConfigPtrOutput) Elem() ClusterAutomatedBackupConfigOutput {
+	return o.ApplyT(func(v *ClusterAutomatedBackupConfig) ClusterAutomatedBackupConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterAutomatedBackupConfig
+		return ret
+	}).(ClusterAutomatedBackupConfigOutput)
+}
+
+// Trigger automated backups at a fixed frequency.
+// Structure is documented below.
+func (o ClusterAutomatedBackupConfigPtrOutput) FixedFrequencySchedule() ClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutput {
+	return o.ApplyT(func(v *ClusterAutomatedBackupConfig) *ClusterAutomatedBackupConfigFixedFrequencySchedule {
+		if v == nil {
+			return nil
+		}
+		return &v.FixedFrequencySchedule
+	}).(ClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutput)
+}
+
+// How long to keep automated backups before the backups are deleted.
+// The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+func (o ClusterAutomatedBackupConfigPtrOutput) Retention() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterAutomatedBackupConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Retention
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterAutomatedBackupConfigFixedFrequencySchedule struct {
+	// The start time of every automated backup in UTC.
+	// It must be set to the start of an hour. This field is required.
+	// Structure is documented below.
+	StartTime ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime `pulumi:"startTime"`
+}
+
+// ClusterAutomatedBackupConfigFixedFrequencyScheduleInput is an input type that accepts ClusterAutomatedBackupConfigFixedFrequencyScheduleArgs and ClusterAutomatedBackupConfigFixedFrequencyScheduleOutput values.
+// You can construct a concrete instance of `ClusterAutomatedBackupConfigFixedFrequencyScheduleInput` via:
+//
+//	ClusterAutomatedBackupConfigFixedFrequencyScheduleArgs{...}
+type ClusterAutomatedBackupConfigFixedFrequencyScheduleInput interface {
+	pulumi.Input
+
+	ToClusterAutomatedBackupConfigFixedFrequencyScheduleOutput() ClusterAutomatedBackupConfigFixedFrequencyScheduleOutput
+	ToClusterAutomatedBackupConfigFixedFrequencyScheduleOutputWithContext(context.Context) ClusterAutomatedBackupConfigFixedFrequencyScheduleOutput
+}
+
+type ClusterAutomatedBackupConfigFixedFrequencyScheduleArgs struct {
+	// The start time of every automated backup in UTC.
+	// It must be set to the start of an hour. This field is required.
+	// Structure is documented below.
+	StartTime ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeInput `pulumi:"startTime"`
+}
+
+func (ClusterAutomatedBackupConfigFixedFrequencyScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAutomatedBackupConfigFixedFrequencySchedule)(nil)).Elem()
+}
+
+func (i ClusterAutomatedBackupConfigFixedFrequencyScheduleArgs) ToClusterAutomatedBackupConfigFixedFrequencyScheduleOutput() ClusterAutomatedBackupConfigFixedFrequencyScheduleOutput {
+	return i.ToClusterAutomatedBackupConfigFixedFrequencyScheduleOutputWithContext(context.Background())
+}
+
+func (i ClusterAutomatedBackupConfigFixedFrequencyScheduleArgs) ToClusterAutomatedBackupConfigFixedFrequencyScheduleOutputWithContext(ctx context.Context) ClusterAutomatedBackupConfigFixedFrequencyScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutomatedBackupConfigFixedFrequencyScheduleOutput)
+}
+
+func (i ClusterAutomatedBackupConfigFixedFrequencyScheduleArgs) ToClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutput() ClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutput {
+	return i.ToClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAutomatedBackupConfigFixedFrequencyScheduleArgs) ToClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutputWithContext(ctx context.Context) ClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutomatedBackupConfigFixedFrequencyScheduleOutput).ToClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutputWithContext(ctx)
+}
+
+// ClusterAutomatedBackupConfigFixedFrequencySchedulePtrInput is an input type that accepts ClusterAutomatedBackupConfigFixedFrequencyScheduleArgs, ClusterAutomatedBackupConfigFixedFrequencySchedulePtr and ClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutput values.
+// You can construct a concrete instance of `ClusterAutomatedBackupConfigFixedFrequencySchedulePtrInput` via:
+//
+//	        ClusterAutomatedBackupConfigFixedFrequencyScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterAutomatedBackupConfigFixedFrequencySchedulePtrInput interface {
+	pulumi.Input
+
+	ToClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutput() ClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutput
+	ToClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutputWithContext(context.Context) ClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutput
+}
+
+type clusterAutomatedBackupConfigFixedFrequencySchedulePtrType ClusterAutomatedBackupConfigFixedFrequencyScheduleArgs
+
+func ClusterAutomatedBackupConfigFixedFrequencySchedulePtr(v *ClusterAutomatedBackupConfigFixedFrequencyScheduleArgs) ClusterAutomatedBackupConfigFixedFrequencySchedulePtrInput {
+	return (*clusterAutomatedBackupConfigFixedFrequencySchedulePtrType)(v)
+}
+
+func (*clusterAutomatedBackupConfigFixedFrequencySchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAutomatedBackupConfigFixedFrequencySchedule)(nil)).Elem()
+}
+
+func (i *clusterAutomatedBackupConfigFixedFrequencySchedulePtrType) ToClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutput() ClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutput {
+	return i.ToClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAutomatedBackupConfigFixedFrequencySchedulePtrType) ToClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutputWithContext(ctx context.Context) ClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutput)
+}
+
+type ClusterAutomatedBackupConfigFixedFrequencyScheduleOutput struct{ *pulumi.OutputState }
+
+func (ClusterAutomatedBackupConfigFixedFrequencyScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAutomatedBackupConfigFixedFrequencySchedule)(nil)).Elem()
+}
+
+func (o ClusterAutomatedBackupConfigFixedFrequencyScheduleOutput) ToClusterAutomatedBackupConfigFixedFrequencyScheduleOutput() ClusterAutomatedBackupConfigFixedFrequencyScheduleOutput {
+	return o
+}
+
+func (o ClusterAutomatedBackupConfigFixedFrequencyScheduleOutput) ToClusterAutomatedBackupConfigFixedFrequencyScheduleOutputWithContext(ctx context.Context) ClusterAutomatedBackupConfigFixedFrequencyScheduleOutput {
+	return o
+}
+
+func (o ClusterAutomatedBackupConfigFixedFrequencyScheduleOutput) ToClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutput() ClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutput {
+	return o.ToClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAutomatedBackupConfigFixedFrequencyScheduleOutput) ToClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutputWithContext(ctx context.Context) ClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAutomatedBackupConfigFixedFrequencySchedule) *ClusterAutomatedBackupConfigFixedFrequencySchedule {
+		return &v
+	}).(ClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutput)
+}
+
+// The start time of every automated backup in UTC.
+// It must be set to the start of an hour. This field is required.
+// Structure is documented below.
+func (o ClusterAutomatedBackupConfigFixedFrequencyScheduleOutput) StartTime() ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput {
+	return o.ApplyT(func(v ClusterAutomatedBackupConfigFixedFrequencySchedule) ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime {
+		return v.StartTime
+	}).(ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput)
+}
+
+type ClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAutomatedBackupConfigFixedFrequencySchedule)(nil)).Elem()
+}
+
+func (o ClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutput) ToClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutput() ClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutput {
+	return o
+}
+
+func (o ClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutput) ToClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutputWithContext(ctx context.Context) ClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutput {
+	return o
+}
+
+func (o ClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutput) Elem() ClusterAutomatedBackupConfigFixedFrequencyScheduleOutput {
+	return o.ApplyT(func(v *ClusterAutomatedBackupConfigFixedFrequencySchedule) ClusterAutomatedBackupConfigFixedFrequencySchedule {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterAutomatedBackupConfigFixedFrequencySchedule
+		return ret
+	}).(ClusterAutomatedBackupConfigFixedFrequencyScheduleOutput)
+}
+
+// The start time of every automated backup in UTC.
+// It must be set to the start of an hour. This field is required.
+// Structure is documented below.
+func (o ClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutput) StartTime() ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput {
+	return o.ApplyT(func(v *ClusterAutomatedBackupConfigFixedFrequencySchedule) *ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime {
+		if v == nil {
+			return nil
+		}
+		return &v.StartTime
+	}).(ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput)
+}
+
+type ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23.
+	// An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours int `pulumi:"hours"`
+}
+
+// ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeInput is an input type that accepts ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs and ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput values.
+// You can construct a concrete instance of `ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeInput` via:
+//
+//	ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs{...}
+type ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeInput interface {
+	pulumi.Input
+
+	ToClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput() ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput
+	ToClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutputWithContext(context.Context) ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput
+}
+
+type ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23.
+	// An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours pulumi.IntInput `pulumi:"hours"`
+}
+
+func (ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime)(nil)).Elem()
+}
+
+func (i ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs) ToClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput() ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput {
+	return i.ToClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutputWithContext(context.Background())
+}
+
+func (i ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs) ToClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutputWithContext(ctx context.Context) ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput)
+}
+
+func (i ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs) ToClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput() ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput {
+	return i.ToClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs) ToClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutputWithContext(ctx context.Context) ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput).ToClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutputWithContext(ctx)
+}
+
+// ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrInput is an input type that accepts ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs, ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtr and ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput values.
+// You can construct a concrete instance of `ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrInput` via:
+//
+//	        ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrInput interface {
+	pulumi.Input
+
+	ToClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput() ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput
+	ToClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutputWithContext(context.Context) ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput
+}
+
+type clusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrType ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs
+
+func ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtr(v *ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs) ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrInput {
+	return (*clusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrType)(v)
+}
+
+func (*clusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime)(nil)).Elem()
+}
+
+func (i *clusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrType) ToClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput() ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput {
+	return i.ToClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrType) ToClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutputWithContext(ctx context.Context) ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput)
+}
+
+type ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput struct{ *pulumi.OutputState }
+
+func (ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime)(nil)).Elem()
+}
+
+func (o ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput) ToClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput() ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput {
+	return o
+}
+
+func (o ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput) ToClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutputWithContext(ctx context.Context) ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput {
+	return o
+}
+
+func (o ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput) ToClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput() ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput {
+	return o.ToClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput) ToClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutputWithContext(ctx context.Context) ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime) *ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime {
+		return &v
+	}).(ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput)
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23.
+// An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput) Hours() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime) int { return v.Hours }).(pulumi.IntOutput)
+}
+
+type ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime)(nil)).Elem()
+}
+
+func (o ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput) ToClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput() ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput {
+	return o
+}
+
+func (o ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput) ToClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutputWithContext(ctx context.Context) ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput {
+	return o
+}
+
+func (o ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput) Elem() ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput {
+	return o.ApplyT(func(v *ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime) ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime
+		return ret
+	}).(ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput)
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23.
+// An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Hours
+	}).(pulumi.IntPtrOutput)
+}
+
 type ClusterCrossClusterReplicationConfig struct {
 	// The role of the cluster in cross cluster replication. Supported values are:
 	// 1. `CLUSTER_ROLE_UNSPECIFIED`: This is an independent cluster that has never participated in cross cluster replication. It allows both reads and writes.
@@ -5709,6 +6167,12 @@ func (o GetInstanceServerCaCertArrayOutput) Index(i pulumi.IntInput) GetInstance
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutomatedBackupConfigInput)(nil)).Elem(), ClusterAutomatedBackupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutomatedBackupConfigPtrInput)(nil)).Elem(), ClusterAutomatedBackupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutomatedBackupConfigFixedFrequencyScheduleInput)(nil)).Elem(), ClusterAutomatedBackupConfigFixedFrequencyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutomatedBackupConfigFixedFrequencySchedulePtrInput)(nil)).Elem(), ClusterAutomatedBackupConfigFixedFrequencyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeInput)(nil)).Elem(), ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrInput)(nil)).Elem(), ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterCrossClusterReplicationConfigInput)(nil)).Elem(), ClusterCrossClusterReplicationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterCrossClusterReplicationConfigPtrInput)(nil)).Elem(), ClusterCrossClusterReplicationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterCrossClusterReplicationConfigMembershipInput)(nil)).Elem(), ClusterCrossClusterReplicationConfigMembershipArgs{})
@@ -5783,6 +6247,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePersistenceConfigArrayInput)(nil)).Elem(), GetInstancePersistenceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceServerCaCertInput)(nil)).Elem(), GetInstanceServerCaCertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceServerCaCertArrayInput)(nil)).Elem(), GetInstanceServerCaCertArray{})
+	pulumi.RegisterOutputType(ClusterAutomatedBackupConfigOutput{})
+	pulumi.RegisterOutputType(ClusterAutomatedBackupConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterAutomatedBackupConfigFixedFrequencyScheduleOutput{})
+	pulumi.RegisterOutputType(ClusterAutomatedBackupConfigFixedFrequencySchedulePtrOutput{})
+	pulumi.RegisterOutputType(ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput{})
+	pulumi.RegisterOutputType(ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput{})
 	pulumi.RegisterOutputType(ClusterCrossClusterReplicationConfigOutput{})
 	pulumi.RegisterOutputType(ClusterCrossClusterReplicationConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterCrossClusterReplicationConfigMembershipOutput{})

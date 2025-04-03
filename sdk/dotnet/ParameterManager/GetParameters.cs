@@ -12,6 +12,8 @@ namespace Pulumi.Gcp.ParameterManager
     public static class GetParameters
     {
         /// <summary>
+        /// Use this data source to list the Parameter Manager Parameters.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,6 +33,8 @@ namespace Pulumi.Gcp.ParameterManager
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetParametersResult>("gcp:parametermanager/getParameters:getParameters", args ?? new GetParametersArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Use this data source to list the Parameter Manager Parameters.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -50,6 +54,8 @@ namespace Pulumi.Gcp.ParameterManager
             => global::Pulumi.Deployment.Instance.Invoke<GetParametersResult>("gcp:parametermanager/getParameters:getParameters", args ?? new GetParametersInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Use this data source to list the Parameter Manager Parameters.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

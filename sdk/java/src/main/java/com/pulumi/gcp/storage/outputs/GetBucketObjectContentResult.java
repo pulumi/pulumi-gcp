@@ -23,6 +23,12 @@ public final class GetBucketObjectContentResult {
      * 
      */
     private String content;
+    /**
+     * @return (Computed) Base64 encoded version of the object content.
+     * Use this when dealing with binary data.
+     * 
+     */
+    private String contentBase64;
     private String contentDisposition;
     private String contentEncoding;
     private String contentLanguage;
@@ -62,6 +68,14 @@ public final class GetBucketObjectContentResult {
      */
     public String content() {
         return this.content;
+    }
+    /**
+     * @return (Computed) Base64 encoded version of the object content.
+     * Use this when dealing with binary data.
+     * 
+     */
+    public String contentBase64() {
+        return this.contentBase64;
     }
     public String contentDisposition() {
         return this.contentDisposition;
@@ -143,6 +157,7 @@ public final class GetBucketObjectContentResult {
         private String bucket;
         private String cacheControl;
         private String content;
+        private String contentBase64;
         private String contentDisposition;
         private String contentEncoding;
         private String contentLanguage;
@@ -170,6 +185,7 @@ public final class GetBucketObjectContentResult {
     	      this.bucket = defaults.bucket;
     	      this.cacheControl = defaults.cacheControl;
     	      this.content = defaults.content;
+    	      this.contentBase64 = defaults.contentBase64;
     	      this.contentDisposition = defaults.contentDisposition;
     	      this.contentEncoding = defaults.contentEncoding;
     	      this.contentLanguage = defaults.contentLanguage;
@@ -215,6 +231,14 @@ public final class GetBucketObjectContentResult {
               throw new MissingRequiredPropertyException("GetBucketObjectContentResult", "content");
             }
             this.content = content;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder contentBase64(String contentBase64) {
+            if (contentBase64 == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectContentResult", "contentBase64");
+            }
+            this.contentBase64 = contentBase64;
             return this;
         }
         @CustomType.Setter
@@ -396,6 +420,7 @@ public final class GetBucketObjectContentResult {
             _resultValue.bucket = bucket;
             _resultValue.cacheControl = cacheControl;
             _resultValue.content = content;
+            _resultValue.contentBase64 = contentBase64;
             _resultValue.contentDisposition = contentDisposition;
             _resultValue.contentEncoding = contentEncoding;
             _resultValue.contentLanguage = contentLanguage;

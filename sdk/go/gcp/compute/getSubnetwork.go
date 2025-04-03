@@ -69,6 +69,8 @@ type LookupSubnetworkArgs struct {
 type LookupSubnetworkResult struct {
 	// Description of this subnetwork.
 	Description string `pulumi:"description"`
+	// The external IPv6 address range that is assigned to this subnetwork.
+	ExternalIpv6Prefix string `pulumi:"externalIpv6Prefix"`
 	// The IP address of the gateway.
 	GatewayAddress string `pulumi:"gatewayAddress"`
 	// The provider-assigned unique ID for this managed resource.
@@ -77,8 +79,10 @@ type LookupSubnetworkResult struct {
 	InternalIpv6Prefix string `pulumi:"internalIpv6Prefix"`
 	// The range of IP addresses belonging to this subnetwork
 	// secondary range.
-	IpCidrRange string  `pulumi:"ipCidrRange"`
-	Name        *string `pulumi:"name"`
+	IpCidrRange string `pulumi:"ipCidrRange"`
+	// The access type of IPv6 address this subnet holds. Possible values are: `EXTERNAL`, `INTERNAL`.
+	Ipv6AccessType string  `pulumi:"ipv6AccessType"`
+	Name           *string `pulumi:"name"`
 	// The network name or resource link to the parent
 	// network of this subnetwork.
 	Network string `pulumi:"network"`
@@ -92,6 +96,8 @@ type LookupSubnetworkResult struct {
 	// VM instances contained in this subnetwork. Structure is documented below.
 	SecondaryIpRanges []GetSubnetworkSecondaryIpRange `pulumi:"secondaryIpRanges"`
 	SelfLink          string                          `pulumi:"selfLink"`
+	// The stack type for the subnet. Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
+	StackType string `pulumi:"stackType"`
 	// The numeric ID of the resource.
 	SubnetworkId int `pulumi:"subnetworkId"`
 }
@@ -145,6 +151,11 @@ func (o LookupSubnetworkResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The external IPv6 address range that is assigned to this subnetwork.
+func (o LookupSubnetworkResultOutput) ExternalIpv6Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.ExternalIpv6Prefix }).(pulumi.StringOutput)
+}
+
 // The IP address of the gateway.
 func (o LookupSubnetworkResultOutput) GatewayAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.GatewayAddress }).(pulumi.StringOutput)
@@ -164,6 +175,11 @@ func (o LookupSubnetworkResultOutput) InternalIpv6Prefix() pulumi.StringOutput {
 // secondary range.
 func (o LookupSubnetworkResultOutput) IpCidrRange() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.IpCidrRange }).(pulumi.StringOutput)
+}
+
+// The access type of IPv6 address this subnet holds. Possible values are: `EXTERNAL`, `INTERNAL`.
+func (o LookupSubnetworkResultOutput) Ipv6AccessType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.Ipv6AccessType }).(pulumi.StringOutput)
 }
 
 func (o LookupSubnetworkResultOutput) Name() pulumi.StringPtrOutput {
@@ -199,6 +215,11 @@ func (o LookupSubnetworkResultOutput) SecondaryIpRanges() GetSubnetworkSecondary
 
 func (o LookupSubnetworkResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The stack type for the subnet. Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
+func (o LookupSubnetworkResultOutput) StackType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.StackType }).(pulumi.StringOutput)
 }
 
 // The numeric ID of the resource.

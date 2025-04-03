@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class URLMapPathMatcherRouteRule
     {
         /// <summary>
+        /// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.URLMapPathMatcherRouteRuleCustomErrorResponsePolicy? CustomErrorResponsePolicy;
+        /// <summary>
         /// Specifies changes to request and response headers that need to take effect for
         /// the selected backendService. The headerAction specified here are applied before
         /// the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r
@@ -72,6 +77,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private URLMapPathMatcherRouteRule(
+            Outputs.URLMapPathMatcherRouteRuleCustomErrorResponsePolicy? customErrorResponsePolicy,
+
             Outputs.URLMapPathMatcherRouteRuleHeaderAction? headerAction,
 
             ImmutableArray<Outputs.URLMapPathMatcherRouteRuleMatchRule> matchRules,
@@ -84,6 +91,7 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             Outputs.URLMapPathMatcherRouteRuleUrlRedirect? urlRedirect)
         {
+            CustomErrorResponsePolicy = customErrorResponsePolicy;
             HeaderAction = headerAction;
             MatchRules = matchRules;
             Priority = priority;

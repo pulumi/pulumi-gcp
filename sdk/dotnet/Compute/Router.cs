@@ -154,6 +154,13 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> EncryptedInterconnectRouter { get; private set; } = null!;
 
         /// <summary>
+        /// Keys used for MD5 authentication.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("md5AuthenticationKeys")]
+        public Output<Outputs.RouterMd5AuthenticationKeys?> Md5AuthenticationKeys { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the resource. The name must be 1-63 characters long, and
         /// comply with RFC1035. Specifically, the name must be 1-63 characters
         /// long and match the regular expression `a-z?`
@@ -259,6 +266,13 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? EncryptedInterconnectRouter { get; set; }
 
         /// <summary>
+        /// Keys used for MD5 authentication.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("md5AuthenticationKeys")]
+        public Input<Inputs.RouterMd5AuthenticationKeysArgs>? Md5AuthenticationKeys { get; set; }
+
+        /// <summary>
         /// Name of the resource. The name must be 1-63 characters long, and
         /// comply with RFC1035. Specifically, the name must be 1-63 characters
         /// long and match the regular expression `a-z?`
@@ -324,6 +338,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("encryptedInterconnectRouter")]
         public Input<bool>? EncryptedInterconnectRouter { get; set; }
+
+        /// <summary>
+        /// Keys used for MD5 authentication.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("md5AuthenticationKeys")]
+        public Input<Inputs.RouterMd5AuthenticationKeysGetArgs>? Md5AuthenticationKeys { get; set; }
 
         /// <summary>
         /// Name of the resource. The name must be 1-63 characters long, and

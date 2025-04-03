@@ -97,6 +97,8 @@ def get_regional_parameters(filter: Optional[str] = None,
                             project: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionalParametersResult:
     """
+    Use this data source to list the Parameter Manager Regional Parameters.
+
     ## Example Usage
 
     ```python
@@ -129,6 +131,8 @@ def get_regional_parameters_output(filter: Optional[pulumi.Input[Optional[str]]]
                                    project: Optional[pulumi.Input[Optional[str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionalParametersResult]:
     """
+    Use this data source to list the Parameter Manager Regional Parameters.
+
     ## Example Usage
 
     ```python

@@ -61,15 +61,16 @@ type LookupInstanceArgs struct {
 
 // A collection of values returned by getInstance.
 type LookupInstanceResult struct {
-	AuthorizationMode         string                                `pulumi:"authorizationMode"`
-	CreateTime                string                                `pulumi:"createTime"`
-	DeletionProtectionEnabled bool                                  `pulumi:"deletionProtectionEnabled"`
-	DesiredPscAutoConnections []GetInstanceDesiredPscAutoConnection `pulumi:"desiredPscAutoConnections"`
-	DiscoveryEndpoints        []GetInstanceDiscoveryEndpoint        `pulumi:"discoveryEndpoints"`
-	EffectiveLabels           map[string]string                     `pulumi:"effectiveLabels"`
-	Endpoints                 []GetInstanceEndpoint                 `pulumi:"endpoints"`
-	EngineConfigs             map[string]string                     `pulumi:"engineConfigs"`
-	EngineVersion             string                                `pulumi:"engineVersion"`
+	AuthorizationMode               string                                      `pulumi:"authorizationMode"`
+	CreateTime                      string                                      `pulumi:"createTime"`
+	CrossInstanceReplicationConfigs []GetInstanceCrossInstanceReplicationConfig `pulumi:"crossInstanceReplicationConfigs"`
+	DeletionProtectionEnabled       bool                                        `pulumi:"deletionProtectionEnabled"`
+	DesiredPscAutoConnections       []GetInstanceDesiredPscAutoConnection       `pulumi:"desiredPscAutoConnections"`
+	DiscoveryEndpoints              []GetInstanceDiscoveryEndpoint              `pulumi:"discoveryEndpoints"`
+	EffectiveLabels                 map[string]string                           `pulumi:"effectiveLabels"`
+	Endpoints                       []GetInstanceEndpoint                       `pulumi:"endpoints"`
+	EngineConfigs                   map[string]string                           `pulumi:"engineConfigs"`
+	EngineVersion                   string                                      `pulumi:"engineVersion"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                      string                              `pulumi:"id"`
 	InstanceId              string                              `pulumi:"instanceId"`
@@ -83,6 +84,7 @@ type LookupInstanceResult struct {
 	NodeType                string                              `pulumi:"nodeType"`
 	PersistenceConfigs      []GetInstancePersistenceConfig      `pulumi:"persistenceConfigs"`
 	Project                 *string                             `pulumi:"project"`
+	PscAttachmentDetails    []GetInstancePscAttachmentDetail    `pulumi:"pscAttachmentDetails"`
 	PscAutoConnections      []GetInstancePscAutoConnection      `pulumi:"pscAutoConnections"`
 	PulumiLabels            map[string]string                   `pulumi:"pulumiLabels"`
 	ReplicaCount            int                                 `pulumi:"replicaCount"`
@@ -142,6 +144,12 @@ func (o LookupInstanceResultOutput) AuthorizationMode() pulumi.StringOutput {
 
 func (o LookupInstanceResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) CrossInstanceReplicationConfigs() GetInstanceCrossInstanceReplicationConfigArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceCrossInstanceReplicationConfig {
+		return v.CrossInstanceReplicationConfigs
+	}).(GetInstanceCrossInstanceReplicationConfigArrayOutput)
 }
 
 func (o LookupInstanceResultOutput) DeletionProtectionEnabled() pulumi.BoolOutput {
@@ -219,6 +227,10 @@ func (o LookupInstanceResultOutput) PersistenceConfigs() GetInstancePersistenceC
 
 func (o LookupInstanceResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInstanceResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupInstanceResultOutput) PscAttachmentDetails() GetInstancePscAttachmentDetailArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []GetInstancePscAttachmentDetail { return v.PscAttachmentDetails }).(GetInstancePscAttachmentDetailArrayOutput)
 }
 
 func (o LookupInstanceResultOutput) PscAutoConnections() GetInstancePscAutoConnectionArrayOutput {

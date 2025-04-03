@@ -14,6 +14,20 @@ namespace Pulumi.Gcp.MemoryStore.Inputs
     {
         /// <summary>
         /// (Output)
+        /// Output only. Target engine version for the instance.
+        /// </summary>
+        [Input("targetEngineVersion")]
+        public Input<string>? TargetEngineVersion { get; set; }
+
+        /// <summary>
+        /// (Output)
+        /// Output only. Target node type for the instance.
+        /// </summary>
+        [Input("targetNodeType")]
+        public Input<string>? TargetNodeType { get; set; }
+
+        /// <summary>
+        /// (Output)
         /// Output only. Target number of replica nodes per shard for the instance.
         /// </summary>
         [Input("targetReplicaCount")]

@@ -757,7 +757,13 @@ class Instance(pulumi.CustomResource):
                 "k": "val",
             },
             desired_state="ACTIVE",
-            enable_third_party_identity=True)
+            enable_third_party_identity=True,
+            opts = pulumi.ResourceOptions(depends_on=[
+                    my_network,
+                    my_subnetwork,
+                    static,
+                    act_as_permission,
+                ]))
         ```
 
         ## Import
@@ -975,7 +981,13 @@ class Instance(pulumi.CustomResource):
                 "k": "val",
             },
             desired_state="ACTIVE",
-            enable_third_party_identity=True)
+            enable_third_party_identity=True,
+            opts = pulumi.ResourceOptions(depends_on=[
+                    my_network,
+                    my_subnetwork,
+                    static,
+                    act_as_permission,
+                ]))
         ```
 
         ## Import

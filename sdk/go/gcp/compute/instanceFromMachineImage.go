@@ -90,6 +90,8 @@ type InstanceFromMachineImage struct {
 	// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
 	// exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
+	// Encryption key used to provide data encryption on the given instance.
+	InstanceEncryptionKey InstanceFromMachineImageInstanceEncryptionKeyOutput `pulumi:"instanceEncryptionKey"`
 	// The server-assigned unique identifier of this instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
@@ -147,6 +149,8 @@ type InstanceFromMachineImage struct {
 	//
 	// ***
 	SourceMachineImage pulumi.StringOutput `pulumi:"sourceMachineImage"`
+	// Encryption key for the source machine image.
+	SourceMachineImageEncryptionKey InstanceFromMachineImageSourceMachineImageEncryptionKeyPtrOutput `pulumi:"sourceMachineImageEncryptionKey"`
 	// The list of tags attached to the instance.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The unique fingerprint of the tags.
@@ -235,6 +239,8 @@ type instanceFromMachineImageState struct {
 	// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
 	// exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname *string `pulumi:"hostname"`
+	// Encryption key used to provide data encryption on the given instance.
+	InstanceEncryptionKey *InstanceFromMachineImageInstanceEncryptionKey `pulumi:"instanceEncryptionKey"`
 	// The server-assigned unique identifier of this instance.
 	InstanceId *string `pulumi:"instanceId"`
 	// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
@@ -292,6 +298,8 @@ type instanceFromMachineImageState struct {
 	//
 	// ***
 	SourceMachineImage *string `pulumi:"sourceMachineImage"`
+	// Encryption key for the source machine image.
+	SourceMachineImageEncryptionKey *InstanceFromMachineImageSourceMachineImageEncryptionKey `pulumi:"sourceMachineImageEncryptionKey"`
 	// The list of tags attached to the instance.
 	Tags []string `pulumi:"tags"`
 	// The unique fingerprint of the tags.
@@ -343,6 +351,8 @@ type InstanceFromMachineImageState struct {
 	// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
 	// exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname pulumi.StringPtrInput
+	// Encryption key used to provide data encryption on the given instance.
+	InstanceEncryptionKey InstanceFromMachineImageInstanceEncryptionKeyPtrInput
 	// The server-assigned unique identifier of this instance.
 	InstanceId pulumi.StringPtrInput
 	// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
@@ -400,6 +410,8 @@ type InstanceFromMachineImageState struct {
 	//
 	// ***
 	SourceMachineImage pulumi.StringPtrInput
+	// Encryption key for the source machine image.
+	SourceMachineImageEncryptionKey InstanceFromMachineImageSourceMachineImageEncryptionKeyPtrInput
 	// The list of tags attached to the instance.
 	Tags pulumi.StringArrayInput
 	// The unique fingerprint of the tags.
@@ -442,6 +454,8 @@ type instanceFromMachineImageArgs struct {
 	// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
 	// exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname *string `pulumi:"hostname"`
+	// Encryption key used to provide data encryption on the given instance.
+	InstanceEncryptionKey *InstanceFromMachineImageInstanceEncryptionKey `pulumi:"instanceEncryptionKey"`
 	// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
 	// default.
 	KeyRevocationActionType *string `pulumi:"keyRevocationActionType"`
@@ -487,6 +501,8 @@ type instanceFromMachineImageArgs struct {
 	//
 	// ***
 	SourceMachineImage string `pulumi:"sourceMachineImage"`
+	// Encryption key for the source machine image.
+	SourceMachineImageEncryptionKey *InstanceFromMachineImageSourceMachineImageEncryptionKey `pulumi:"sourceMachineImageEncryptionKey"`
 	// The list of tags attached to the instance.
 	Tags []string `pulumi:"tags"`
 	// The zone that the machine should be created in. If not
@@ -524,6 +540,8 @@ type InstanceFromMachineImageArgs struct {
 	// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
 	// exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname pulumi.StringPtrInput
+	// Encryption key used to provide data encryption on the given instance.
+	InstanceEncryptionKey InstanceFromMachineImageInstanceEncryptionKeyPtrInput
 	// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
 	// default.
 	KeyRevocationActionType pulumi.StringPtrInput
@@ -569,6 +587,8 @@ type InstanceFromMachineImageArgs struct {
 	//
 	// ***
 	SourceMachineImage pulumi.StringInput
+	// Encryption key for the source machine image.
+	SourceMachineImageEncryptionKey InstanceFromMachineImageSourceMachineImageEncryptionKeyPtrInput
 	// The list of tags attached to the instance.
 	Tags pulumi.StringArrayInput
 	// The zone that the machine should be created in. If not
@@ -760,6 +780,13 @@ func (o InstanceFromMachineImageOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromMachineImage) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
 }
 
+// Encryption key used to provide data encryption on the given instance.
+func (o InstanceFromMachineImageOutput) InstanceEncryptionKey() InstanceFromMachineImageInstanceEncryptionKeyOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImage) InstanceFromMachineImageInstanceEncryptionKeyOutput {
+		return v.InstanceEncryptionKey
+	}).(InstanceFromMachineImageInstanceEncryptionKeyOutput)
+}
+
 // The server-assigned unique identifier of this instance.
 func (o InstanceFromMachineImageOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromMachineImage) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
@@ -899,6 +926,13 @@ func (o InstanceFromMachineImageOutput) ShieldedInstanceConfig() InstanceFromMac
 // ***
 func (o InstanceFromMachineImageOutput) SourceMachineImage() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromMachineImage) pulumi.StringOutput { return v.SourceMachineImage }).(pulumi.StringOutput)
+}
+
+// Encryption key for the source machine image.
+func (o InstanceFromMachineImageOutput) SourceMachineImageEncryptionKey() InstanceFromMachineImageSourceMachineImageEncryptionKeyPtrOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImage) InstanceFromMachineImageSourceMachineImageEncryptionKeyPtrOutput {
+		return v.SourceMachineImageEncryptionKey
+	}).(InstanceFromMachineImageSourceMachineImageEncryptionKeyPtrOutput)
 }
 
 // The list of tags attached to the instance.

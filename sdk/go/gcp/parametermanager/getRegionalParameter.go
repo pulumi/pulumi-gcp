@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get information about a Parameter Manager Regional Parameter.
+//
 // ## Example Usage
 //
 // ```go

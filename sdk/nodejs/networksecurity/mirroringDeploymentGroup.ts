@@ -122,6 +122,11 @@ export class MirroringDeploymentGroup extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
+     * The list of locations where the deployment group is present.
+     * Structure is documented below.
+     */
+    public /*out*/ readonly locations!: pulumi.Output<outputs.networksecurity.MirroringDeploymentGroupLocation[]>;
+    /**
      * The ID to use for the new deployment group, which will become the final
      * component of the deployment group's resource name.
      *
@@ -160,13 +165,12 @@ export class MirroringDeploymentGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
-     * The current state of the deployment group.
-     * See https://google.aip.dev/216.
+     * (Output)
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
-     * CREATING
-     * DELETING
+     * OUT_OF_SYNC
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -194,6 +198,7 @@ export class MirroringDeploymentGroup extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["locations"] = state ? state.locations : undefined;
             resourceInputs["mirroringDeploymentGroupId"] = state ? state.mirroringDeploymentGroupId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
@@ -222,6 +227,7 @@ export class MirroringDeploymentGroup extends pulumi.CustomResource {
             resourceInputs["connectedEndpointGroups"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["locations"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
@@ -269,6 +275,11 @@ export interface MirroringDeploymentGroupState {
      */
     location?: pulumi.Input<string>;
     /**
+     * The list of locations where the deployment group is present.
+     * Structure is documented below.
+     */
+    locations?: pulumi.Input<pulumi.Input<inputs.networksecurity.MirroringDeploymentGroupLocation>[]>;
+    /**
      * The ID to use for the new deployment group, which will become the final
      * component of the deployment group's resource name.
      *
@@ -307,13 +318,12 @@ export interface MirroringDeploymentGroupState {
      */
     reconciling?: pulumi.Input<boolean>;
     /**
-     * The current state of the deployment group.
-     * See https://google.aip.dev/216.
+     * (Output)
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
-     * CREATING
-     * DELETING
+     * OUT_OF_SYNC
      */
     state?: pulumi.Input<string>;
     /**

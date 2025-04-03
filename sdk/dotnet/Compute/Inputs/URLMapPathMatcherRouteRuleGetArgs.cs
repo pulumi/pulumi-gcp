@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class URLMapPathMatcherRouteRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("customErrorResponsePolicy")]
+        public Input<Inputs.URLMapPathMatcherRouteRuleCustomErrorResponsePolicyGetArgs>? CustomErrorResponsePolicy { get; set; }
+
+        /// <summary>
         /// Specifies changes to request and response headers that need to take effect for
         /// the selected backendService. The headerAction specified here are applied before
         /// the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r

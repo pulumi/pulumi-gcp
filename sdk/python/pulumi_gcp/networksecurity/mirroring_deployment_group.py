@@ -148,6 +148,7 @@ class _MirroringDeploymentGroupState:
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 locations: Optional[pulumi.Input[Sequence[pulumi.Input['MirroringDeploymentGroupLocationArgs']]]] = None,
                  mirroring_deployment_group_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -169,6 +170,8 @@ class _MirroringDeploymentGroupState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The cloud location of the deployment group, currently restricted to `global`.
+        :param pulumi.Input[Sequence[pulumi.Input['MirroringDeploymentGroupLocationArgs']]] locations: The list of locations where the deployment group is present.
+               Structure is documented below.
         :param pulumi.Input[str] mirroring_deployment_group_id: The ID to use for the new deployment group, which will become the final
                component of the deployment group's resource name.
                
@@ -189,13 +192,12 @@ class _MirroringDeploymentGroupState:
                and the system is working to reconcile them. This is part of the normal
                operation (e.g. adding a new deployment to the group)
                See https://google.aip.dev/128.
-        :param pulumi.Input[str] state: The current state of the deployment group.
-               See https://google.aip.dev/216.
+        :param pulumi.Input[str] state: (Output)
+               The current state of the association in this location.
                Possible values:
                STATE_UNSPECIFIED
                ACTIVE
-               CREATING
-               DELETING
+               OUT_OF_SYNC
         :param pulumi.Input[str] update_time: The timestamp when the resource was most recently updated.
                See https://google.aip.dev/148#timestamps.
         """
@@ -211,6 +213,8 @@ class _MirroringDeploymentGroupState:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if locations is not None:
+            pulumi.set(__self__, "locations", locations)
         if mirroring_deployment_group_id is not None:
             pulumi.set(__self__, "mirroring_deployment_group_id", mirroring_deployment_group_id)
         if name is not None:
@@ -306,6 +310,19 @@ class _MirroringDeploymentGroupState:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter
+    def locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MirroringDeploymentGroupLocationArgs']]]]:
+        """
+        The list of locations where the deployment group is present.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "locations")
+
+    @locations.setter
+    def locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MirroringDeploymentGroupLocationArgs']]]]):
+        pulumi.set(self, "locations", value)
+
+    @property
     @pulumi.getter(name="mirroringDeploymentGroupId")
     def mirroring_deployment_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -395,13 +412,12 @@ class _MirroringDeploymentGroupState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        The current state of the deployment group.
-        See https://google.aip.dev/216.
+        (Output)
+        The current state of the association in this location.
         Possible values:
         STATE_UNSPECIFIED
         ACTIVE
-        CREATING
-        DELETING
+        OUT_OF_SYNC
         """
         return pulumi.get(self, "state")
 
@@ -617,6 +633,7 @@ class MirroringDeploymentGroup(pulumi.CustomResource):
             __props__.__dict__["connected_endpoint_groups"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["locations"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["reconciling"] = None
@@ -640,6 +657,7 @@ class MirroringDeploymentGroup(pulumi.CustomResource):
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
+            locations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MirroringDeploymentGroupLocationArgs', 'MirroringDeploymentGroupLocationArgsDict']]]]] = None,
             mirroring_deployment_group_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
@@ -666,6 +684,8 @@ class MirroringDeploymentGroup(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The cloud location of the deployment group, currently restricted to `global`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MirroringDeploymentGroupLocationArgs', 'MirroringDeploymentGroupLocationArgsDict']]]] locations: The list of locations where the deployment group is present.
+               Structure is documented below.
         :param pulumi.Input[str] mirroring_deployment_group_id: The ID to use for the new deployment group, which will become the final
                component of the deployment group's resource name.
                
@@ -686,13 +706,12 @@ class MirroringDeploymentGroup(pulumi.CustomResource):
                and the system is working to reconcile them. This is part of the normal
                operation (e.g. adding a new deployment to the group)
                See https://google.aip.dev/128.
-        :param pulumi.Input[str] state: The current state of the deployment group.
-               See https://google.aip.dev/216.
+        :param pulumi.Input[str] state: (Output)
+               The current state of the association in this location.
                Possible values:
                STATE_UNSPECIFIED
                ACTIVE
-               CREATING
-               DELETING
+               OUT_OF_SYNC
         :param pulumi.Input[str] update_time: The timestamp when the resource was most recently updated.
                See https://google.aip.dev/148#timestamps.
         """
@@ -706,6 +725,7 @@ class MirroringDeploymentGroup(pulumi.CustomResource):
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
+        __props__.__dict__["locations"] = locations
         __props__.__dict__["mirroring_deployment_group_id"] = mirroring_deployment_group_id
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
@@ -768,6 +788,15 @@ class MirroringDeploymentGroup(pulumi.CustomResource):
         The cloud location of the deployment group, currently restricted to `global`.
         """
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def locations(self) -> pulumi.Output[Sequence['outputs.MirroringDeploymentGroupLocation']]:
+        """
+        The list of locations where the deployment group is present.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "locations")
 
     @property
     @pulumi.getter(name="mirroringDeploymentGroupId")
@@ -835,13 +864,12 @@ class MirroringDeploymentGroup(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        The current state of the deployment group.
-        See https://google.aip.dev/216.
+        (Output)
+        The current state of the association in this location.
         Possible values:
         STATE_UNSPECIFIED
         ACTIVE
-        CREATING
-        DELETING
+        OUT_OF_SYNC
         """
         return pulumi.get(self, "state")
 

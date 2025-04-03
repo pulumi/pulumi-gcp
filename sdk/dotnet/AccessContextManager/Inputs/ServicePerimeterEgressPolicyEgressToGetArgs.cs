@@ -56,6 +56,20 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
             set => _resources = value;
         }
 
+        [Input("roles")]
+        private InputList<string>? _roles;
+
+        /// <summary>
+        /// A list of IAM roles that represent the set of operations that the sources
+        /// specified in the corresponding `EgressFrom`
+        /// are allowed to perform.
+        /// </summary>
+        public InputList<string> Roles
+        {
+            get => _roles ?? (_roles = new InputList<string>());
+            set => _roles = value;
+        }
+
         public ServicePerimeterEgressPolicyEgressToGetArgs()
         {
         }

@@ -68,16 +68,16 @@ public final class ConnectionProfileOracleProfileArgs extends com.pulumi.resourc
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Import(name="password", required=true)
-    private Output<String> password;
+    @Import(name="password")
+    private @Nullable Output<String> password;
 
     /**
      * @return Password for the Oracle connection.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public Output<String> password() {
-        return this.password;
+    public Optional<Output<String>> password() {
+        return Optional.ofNullable(this.password);
     }
 
     /**
@@ -93,6 +93,21 @@ public final class ConnectionProfileOracleProfileArgs extends com.pulumi.resourc
      */
     public Optional<Output<Integer>> port() {
         return Optional.ofNullable(this.port);
+    }
+
+    /**
+     * A reference to a Secret Manager resource name storing the user&#39;s password.
+     * 
+     */
+    @Import(name="secretManagerStoredPassword")
+    private @Nullable Output<String> secretManagerStoredPassword;
+
+    /**
+     * @return A reference to a Secret Manager resource name storing the user&#39;s password.
+     * 
+     */
+    public Optional<Output<String>> secretManagerStoredPassword() {
+        return Optional.ofNullable(this.secretManagerStoredPassword);
     }
 
     /**
@@ -118,6 +133,7 @@ public final class ConnectionProfileOracleProfileArgs extends com.pulumi.resourc
         this.hostname = $.hostname;
         this.password = $.password;
         this.port = $.port;
+        this.secretManagerStoredPassword = $.secretManagerStoredPassword;
         this.username = $.username;
     }
 
@@ -209,7 +225,7 @@ public final class ConnectionProfileOracleProfileArgs extends com.pulumi.resourc
          * @return builder
          * 
          */
-        public Builder password(Output<String> password) {
+        public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
@@ -247,6 +263,27 @@ public final class ConnectionProfileOracleProfileArgs extends com.pulumi.resourc
         }
 
         /**
+         * @param secretManagerStoredPassword A reference to a Secret Manager resource name storing the user&#39;s password.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretManagerStoredPassword(@Nullable Output<String> secretManagerStoredPassword) {
+            $.secretManagerStoredPassword = secretManagerStoredPassword;
+            return this;
+        }
+
+        /**
+         * @param secretManagerStoredPassword A reference to a Secret Manager resource name storing the user&#39;s password.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretManagerStoredPassword(String secretManagerStoredPassword) {
+            return secretManagerStoredPassword(Output.of(secretManagerStoredPassword));
+        }
+
+        /**
          * @param username Username for the Oracle connection.
          * 
          * @return builder
@@ -273,9 +310,6 @@ public final class ConnectionProfileOracleProfileArgs extends com.pulumi.resourc
             }
             if ($.hostname == null) {
                 throw new MissingRequiredPropertyException("ConnectionProfileOracleProfileArgs", "hostname");
-            }
-            if ($.password == null) {
-                throw new MissingRequiredPropertyException("ConnectionProfileOracleProfileArgs", "password");
             }
             if ($.username == null) {
                 throw new MissingRequiredPropertyException("ConnectionProfileOracleProfileArgs", "username");

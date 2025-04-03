@@ -25,6 +25,11 @@ export type SearchEngine = import("./searchEngine").SearchEngine;
 export const SearchEngine: typeof import("./searchEngine").SearchEngine = null as any;
 utilities.lazyLoad(exports, ["SearchEngine"], () => require("./searchEngine"));
 
+export { SitemapArgs, SitemapState } from "./sitemap";
+export type Sitemap = import("./sitemap").Sitemap;
+export const Sitemap: typeof import("./sitemap").Sitemap = null as any;
+utilities.lazyLoad(exports, ["Sitemap"], () => require("./sitemap"));
+
 export { TargetSiteArgs, TargetSiteState } from "./targetSite";
 export type TargetSite = import("./targetSite").TargetSite;
 export const TargetSite: typeof import("./targetSite").TargetSite = null as any;
@@ -43,6 +48,8 @@ const _module = {
                 return new Schema(name, <any>undefined, { urn })
             case "gcp:discoveryengine/searchEngine:SearchEngine":
                 return new SearchEngine(name, <any>undefined, { urn })
+            case "gcp:discoveryengine/sitemap:Sitemap":
+                return new Sitemap(name, <any>undefined, { urn })
             case "gcp:discoveryengine/targetSite:TargetSite":
                 return new TargetSite(name, <any>undefined, { urn })
             default:
@@ -54,4 +61,5 @@ pulumi.runtime.registerResourceModule("gcp", "discoveryengine/chatEngine", _modu
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/dataStore", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/schema", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/searchEngine", _module)
+pulumi.runtime.registerResourceModule("gcp", "discoveryengine/sitemap", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/targetSite", _module)

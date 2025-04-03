@@ -92,7 +92,7 @@ export class ReservationAssignment extends pulumi.CustomResource {
      */
     public readonly assignee!: pulumi.Output<string>;
     /**
-     * Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
+     * Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
      */
     public readonly jobType!: pulumi.Output<string>;
     /**
@@ -174,7 +174,7 @@ export interface ReservationAssignmentState {
      */
     assignee?: pulumi.Input<string>;
     /**
-     * Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
+     * Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
      */
     jobType?: pulumi.Input<string>;
     /**
@@ -213,7 +213,7 @@ export interface ReservationAssignmentArgs {
      */
     assignee: pulumi.Input<string>;
     /**
-     * Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
+     * Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
      */
     jobType: pulumi.Input<string>;
     /**

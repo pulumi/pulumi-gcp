@@ -274,6 +274,9 @@ func GetEssentialContactsCustomEndpoint(ctx *pulumi.Context) string {
 func GetEventarcCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:eventarcCustomEndpoint")
 }
+func GetExternalCredentials(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:externalCredentials")
+}
 func GetFilestoreCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:filestoreCustomEndpoint")
 }

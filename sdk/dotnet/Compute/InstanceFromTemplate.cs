@@ -175,6 +175,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Hostname { get; private set; } = null!;
 
         /// <summary>
+        /// Encryption key used to provide data encryption on the given instance.
+        /// </summary>
+        [Output("instanceEncryptionKey")]
+        public Output<Outputs.InstanceFromTemplateInstanceEncryptionKey> InstanceEncryptionKey { get; private set; } = null!;
+
+        /// <summary>
         /// The server-assigned unique identifier of this instance.
         /// </summary>
         [Output("instanceId")]
@@ -487,6 +493,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
+        /// Encryption key used to provide data encryption on the given instance.
+        /// </summary>
+        [Input("instanceEncryptionKey")]
+        public Input<Inputs.InstanceFromTemplateInstanceEncryptionKeyArgs>? InstanceEncryptionKey { get; set; }
+
+        /// <summary>
         /// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
         /// default.
         /// </summary>
@@ -786,6 +798,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
+
+        /// <summary>
+        /// Encryption key used to provide data encryption on the given instance.
+        /// </summary>
+        [Input("instanceEncryptionKey")]
+        public Input<Inputs.InstanceFromTemplateInstanceEncryptionKeyGetArgs>? InstanceEncryptionKey { get; set; }
 
         /// <summary>
         /// The server-assigned unique identifier of this instance.

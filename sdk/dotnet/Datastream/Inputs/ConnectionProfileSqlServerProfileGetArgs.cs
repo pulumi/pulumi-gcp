@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Datastream.Inputs
         [Input("hostname", required: true)]
         public Input<string> Hostname { get; set; } = null!;
 
-        [Input("password", required: true)]
+        [Input("password")]
         private Input<string>? _password;
 
         /// <summary>
@@ -46,6 +46,12 @@ namespace Pulumi.Gcp.Datastream.Inputs
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
+
+        /// <summary>
+        /// A reference to a Secret Manager resource name storing the user's password.
+        /// </summary>
+        [Input("secretManagerStoredPassword")]
+        public Input<string>? SecretManagerStoredPassword { get; set; }
 
         /// <summary>
         /// Username for the SQL Server connection.

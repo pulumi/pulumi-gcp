@@ -33,6 +33,12 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         /// the perimeter.
         /// </summary>
         public readonly ImmutableArray<string> Resources;
+        /// <summary>
+        /// A list of IAM roles that represent the set of operations that the sources
+        /// specified in the corresponding `EgressFrom`
+        /// are allowed to perform.
+        /// </summary>
+        public readonly ImmutableArray<string> Roles;
 
         [OutputConstructor]
         private ServicePerimeterSpecEgressPolicyEgressTo(
@@ -40,11 +46,14 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
 
             ImmutableArray<Outputs.ServicePerimeterSpecEgressPolicyEgressToOperation> operations,
 
-            ImmutableArray<string> resources)
+            ImmutableArray<string> resources,
+
+            ImmutableArray<string> roles)
         {
             ExternalResources = externalResources;
             Operations = operations;
             Resources = resources;
+            Roles = roles;
         }
     }
 }

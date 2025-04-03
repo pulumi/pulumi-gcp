@@ -544,14 +544,14 @@ public class Bucket extends com.pulumi.resources.CustomResource {
         return this.projectNumber;
     }
     /**
-     * Prevents public access to a bucket. Acceptable values are &#34;inherited&#34; or &#34;enforced&#34;. If &#34;inherited&#34;, the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to &#34;inherited&#34;.
+     * Prevents public access to a bucket. Acceptable values are &#34;inherited&#34; or &#34;enforced&#34;. If &#34;inherited&#34;, the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention) only if the bucket is subject to the public access prevention organization policy constraint. Defaults to &#34;inherited&#34;.
      * 
      */
     @Export(name="publicAccessPrevention", refs={String.class}, tree="[0]")
     private Output<String> publicAccessPrevention;
 
     /**
-     * @return Prevents public access to a bucket. Acceptable values are &#34;inherited&#34; or &#34;enforced&#34;. If &#34;inherited&#34;, the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to &#34;inherited&#34;.
+     * @return Prevents public access to a bucket. Acceptable values are &#34;inherited&#34; or &#34;enforced&#34;. If &#34;inherited&#34;, the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention) only if the bucket is subject to the public access prevention organization policy constraint. Defaults to &#34;inherited&#34;.
      * 
      */
     public Output<String> publicAccessPrevention() {

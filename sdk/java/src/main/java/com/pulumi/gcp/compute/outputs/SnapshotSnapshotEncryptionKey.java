@@ -30,6 +30,13 @@ public final class SnapshotSnapshotEncryptionKey {
      */
     private @Nullable String rawKey;
     /**
+     * @return Specifies an encryption key stored in Google Cloud KMS, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
+    private @Nullable String rsaEncryptedKey;
+    /**
      * @return (Output)
      * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
      * encryption key that protects this resource.
@@ -63,6 +70,15 @@ public final class SnapshotSnapshotEncryptionKey {
         return Optional.ofNullable(this.rawKey);
     }
     /**
+     * @return Specifies an encryption key stored in Google Cloud KMS, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
+    public Optional<String> rsaEncryptedKey() {
+        return Optional.ofNullable(this.rsaEncryptedKey);
+    }
+    /**
      * @return (Output)
      * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
      * encryption key that protects this resource.
@@ -84,6 +100,7 @@ public final class SnapshotSnapshotEncryptionKey {
         private @Nullable String kmsKeySelfLink;
         private @Nullable String kmsKeyServiceAccount;
         private @Nullable String rawKey;
+        private @Nullable String rsaEncryptedKey;
         private @Nullable String sha256;
         public Builder() {}
         public Builder(SnapshotSnapshotEncryptionKey defaults) {
@@ -91,6 +108,7 @@ public final class SnapshotSnapshotEncryptionKey {
     	      this.kmsKeySelfLink = defaults.kmsKeySelfLink;
     	      this.kmsKeyServiceAccount = defaults.kmsKeyServiceAccount;
     	      this.rawKey = defaults.rawKey;
+    	      this.rsaEncryptedKey = defaults.rsaEncryptedKey;
     	      this.sha256 = defaults.sha256;
         }
 
@@ -113,6 +131,12 @@ public final class SnapshotSnapshotEncryptionKey {
             return this;
         }
         @CustomType.Setter
+        public Builder rsaEncryptedKey(@Nullable String rsaEncryptedKey) {
+
+            this.rsaEncryptedKey = rsaEncryptedKey;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sha256(@Nullable String sha256) {
 
             this.sha256 = sha256;
@@ -123,6 +147,7 @@ public final class SnapshotSnapshotEncryptionKey {
             _resultValue.kmsKeySelfLink = kmsKeySelfLink;
             _resultValue.kmsKeyServiceAccount = kmsKeyServiceAccount;
             _resultValue.rawKey = rawKey;
+            _resultValue.rsaEncryptedKey = rsaEncryptedKey;
             _resultValue.sha256 = sha256;
             return _resultValue;
         }

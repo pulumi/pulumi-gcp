@@ -67,6 +67,10 @@ export interface GetSubnetworkResult {
      */
     readonly description: string;
     /**
+     * The external IPv6 address range that is assigned to this subnetwork.
+     */
+    readonly externalIpv6Prefix: string;
+    /**
      * The IP address of the gateway.
      */
     readonly gatewayAddress: string;
@@ -83,6 +87,10 @@ export interface GetSubnetworkResult {
      * secondary range.
      */
     readonly ipCidrRange: string;
+    /**
+     * The access type of IPv6 address this subnet holds. Possible values are: `EXTERNAL`, `INTERNAL`.
+     */
+    readonly ipv6AccessType: string;
     readonly name?: string;
     /**
      * The network name or resource link to the parent
@@ -103,6 +111,10 @@ export interface GetSubnetworkResult {
      */
     readonly secondaryIpRanges: outputs.compute.GetSubnetworkSecondaryIpRange[];
     readonly selfLink: string;
+    /**
+     * The stack type for the subnet. Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
+     */
+    readonly stackType: string;
     /**
      * The numeric ID of the resource.
      */

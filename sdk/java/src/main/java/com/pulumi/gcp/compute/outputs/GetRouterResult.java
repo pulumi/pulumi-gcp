@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetRouterBgp;
+import com.pulumi.gcp.compute.outputs.GetRouterMd5AuthenticationKey;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -24,6 +25,7 @@ public final class GetRouterResult {
      * 
      */
     private String id;
+    private List<GetRouterMd5AuthenticationKey> md5AuthenticationKeys;
     private String name;
     private String network;
     private @Nullable String project;
@@ -49,6 +51,9 @@ public final class GetRouterResult {
      */
     public String id() {
         return this.id;
+    }
+    public List<GetRouterMd5AuthenticationKey> md5AuthenticationKeys() {
+        return this.md5AuthenticationKeys;
     }
     public String name() {
         return this.name;
@@ -80,6 +85,7 @@ public final class GetRouterResult {
         private String description;
         private Boolean encryptedInterconnectRouter;
         private String id;
+        private List<GetRouterMd5AuthenticationKey> md5AuthenticationKeys;
         private String name;
         private String network;
         private @Nullable String project;
@@ -93,6 +99,7 @@ public final class GetRouterResult {
     	      this.description = defaults.description;
     	      this.encryptedInterconnectRouter = defaults.encryptedInterconnectRouter;
     	      this.id = defaults.id;
+    	      this.md5AuthenticationKeys = defaults.md5AuthenticationKeys;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
     	      this.project = defaults.project;
@@ -144,6 +151,17 @@ public final class GetRouterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder md5AuthenticationKeys(List<GetRouterMd5AuthenticationKey> md5AuthenticationKeys) {
+            if (md5AuthenticationKeys == null) {
+              throw new MissingRequiredPropertyException("GetRouterResult", "md5AuthenticationKeys");
+            }
+            this.md5AuthenticationKeys = md5AuthenticationKeys;
+            return this;
+        }
+        public Builder md5AuthenticationKeys(GetRouterMd5AuthenticationKey... md5AuthenticationKeys) {
+            return md5AuthenticationKeys(List.of(md5AuthenticationKeys));
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetRouterResult", "name");
@@ -186,6 +204,7 @@ public final class GetRouterResult {
             _resultValue.description = description;
             _resultValue.encryptedInterconnectRouter = encryptedInterconnectRouter;
             _resultValue.id = id;
+            _resultValue.md5AuthenticationKeys = md5AuthenticationKeys;
             _resultValue.name = name;
             _resultValue.network = network;
             _resultValue.project = project;

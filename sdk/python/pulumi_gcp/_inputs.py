@@ -17,6 +17,8 @@ from . import _utilities
 __all__ = [
     'ProviderBatchingArgs',
     'ProviderBatchingArgsDict',
+    'ProviderExternalCredentialsArgs',
+    'ProviderExternalCredentialsArgsDict',
 ]
 
 MYPY = False
@@ -55,5 +57,51 @@ class ProviderBatchingArgs:
     @send_after.setter
     def send_after(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "send_after", value)
+
+
+if not MYPY:
+    class ProviderExternalCredentialsArgsDict(TypedDict):
+        audience: pulumi.Input[str]
+        identity_token: pulumi.Input[str]
+        service_account_email: pulumi.Input[str]
+elif False:
+    ProviderExternalCredentialsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ProviderExternalCredentialsArgs:
+    def __init__(__self__, *,
+                 audience: pulumi.Input[str],
+                 identity_token: pulumi.Input[str],
+                 service_account_email: pulumi.Input[str]):
+        pulumi.set(__self__, "audience", audience)
+        pulumi.set(__self__, "identity_token", identity_token)
+        pulumi.set(__self__, "service_account_email", service_account_email)
+
+    @property
+    @pulumi.getter
+    def audience(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "audience")
+
+    @audience.setter
+    def audience(self, value: pulumi.Input[str]):
+        pulumi.set(self, "audience", value)
+
+    @property
+    @pulumi.getter(name="identityToken")
+    def identity_token(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "identity_token")
+
+    @identity_token.setter
+    def identity_token(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_token", value)
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "service_account_email")
+
+    @service_account_email.setter
+    def service_account_email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_account_email", value)
 
 

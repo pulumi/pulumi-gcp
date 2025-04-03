@@ -89,6 +89,12 @@ import (
 //							ThreatId: pulumi.String("280647"),
 //						},
 //					},
+//					AntivirusOverrides: networksecurity.SecurityProfileThreatPreventionProfileAntivirusOverrideArray{
+//						&networksecurity.SecurityProfileThreatPreventionProfileAntivirusOverrideArgs{
+//							Protocol: pulumi.String("SMTP"),
+//							Action:   pulumi.String("ALLOW"),
+//						},
+//					},
 //				},
 //			})
 //			if err != nil {

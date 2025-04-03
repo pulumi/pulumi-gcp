@@ -185,6 +185,8 @@ essentialContactsCustomEndpoint: Optional[str]
 
 eventarcCustomEndpoint: Optional[str]
 
+externalCredentials: Optional[str]
+
 filestoreCustomEndpoint: Optional[str]
 
 firebaseAppCheckCustomEndpoint: Optional[str]

@@ -250,6 +250,12 @@ class RegionalParameterVersion(pulumi.CustomResource):
                  parameter_version_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A Regional Parameter Version resource that stores the actual value of the regional parameter.
+
+        To get more information about RegionalParameterVersion, see:
+
+        * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions)
+
         ## Example Usage
 
         ### Regional Parameter Version Basic
@@ -315,6 +321,12 @@ class RegionalParameterVersion(pulumi.CustomResource):
                  args: RegionalParameterVersionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Regional Parameter Version resource that stores the actual value of the regional parameter.
+
+        To get more information about RegionalParameterVersion, see:
+
+        * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions)
+
         ## Example Usage
 
         ### Regional Parameter Version Basic

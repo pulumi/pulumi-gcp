@@ -1010,6 +1010,10 @@ if not MYPY:
         Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
         supplied the value is interpreted as bytes.
         """
+        binary_authorization_policy: NotRequired[pulumi.Input[str]]
+        """
+        The binary authorization policy to be checked when deploying the Cloud Run service.
+        """
         environment_variables: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         Environment variables that shall be available during function execution.
@@ -1086,6 +1090,7 @@ class FunctionServiceConfigArgs:
                  all_traffic_on_latest_revision: Optional[pulumi.Input[bool]] = None,
                  available_cpu: Optional[pulumi.Input[str]] = None,
                  available_memory: Optional[pulumi.Input[str]] = None,
+                 binary_authorization_policy: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  gcf_uri: Optional[pulumi.Input[str]] = None,
                  ingress_settings: Optional[pulumi.Input[str]] = None,
@@ -1106,6 +1111,7 @@ class FunctionServiceConfigArgs:
         :param pulumi.Input[str] available_memory: The amount of memory available for a function.
                Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
                supplied the value is interpreted as bytes.
+        :param pulumi.Input[str] binary_authorization_policy: The binary authorization policy to be checked when deploying the Cloud Run service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: Environment variables that shall be available during function execution.
         :param pulumi.Input[str] gcf_uri: (Output)
                URIs of the Service deployed
@@ -1138,6 +1144,8 @@ class FunctionServiceConfigArgs:
             pulumi.set(__self__, "available_cpu", available_cpu)
         if available_memory is not None:
             pulumi.set(__self__, "available_memory", available_memory)
+        if binary_authorization_policy is not None:
+            pulumi.set(__self__, "binary_authorization_policy", binary_authorization_policy)
         if environment_variables is not None:
             pulumi.set(__self__, "environment_variables", environment_variables)
         if gcf_uri is not None:
@@ -1204,6 +1212,18 @@ class FunctionServiceConfigArgs:
     @available_memory.setter
     def available_memory(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "available_memory", value)
+
+    @property
+    @pulumi.getter(name="binaryAuthorizationPolicy")
+    def binary_authorization_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The binary authorization policy to be checked when deploying the Cloud Run service.
+        """
+        return pulumi.get(self, "binary_authorization_policy")
+
+    @binary_authorization_policy.setter
+    def binary_authorization_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "binary_authorization_policy", value)
 
     @property
     @pulumi.getter(name="environmentVariables")

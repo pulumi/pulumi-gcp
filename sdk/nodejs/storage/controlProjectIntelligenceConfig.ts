@@ -7,6 +7,28 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ### Storage Control Project Intelligence Config Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.storage.ControlProjectIntelligenceConfig("example", {
+ *     name: "test-project",
+ *     editionConfig: "TRIAL",
+ *     filter: {
+ *         includedCloudStorageBuckets: {
+ *             bucketIdRegexes: [
+ *                 "test-id-1*",
+ *                 "test-id-2*",
+ *             ],
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * ProjectIntelligenceConfig can be imported using any of these accepted formats:
@@ -54,7 +76,7 @@ export class ControlProjectIntelligenceConfig extends pulumi.CustomResource {
     }
 
     /**
-     * Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED and STANDARD.
+     * Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
      */
     public readonly editionConfig!: pulumi.Output<string>;
     /**
@@ -115,7 +137,7 @@ export class ControlProjectIntelligenceConfig extends pulumi.CustomResource {
  */
 export interface ControlProjectIntelligenceConfigState {
     /**
-     * Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED and STANDARD.
+     * Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
      */
     editionConfig?: pulumi.Input<string>;
     /**
@@ -146,7 +168,7 @@ export interface ControlProjectIntelligenceConfigState {
  */
 export interface ControlProjectIntelligenceConfigArgs {
     /**
-     * Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED and STANDARD.
+     * Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
      */
     editionConfig?: pulumi.Input<string>;
     /**

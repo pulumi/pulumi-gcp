@@ -226,6 +226,8 @@ type Instance struct {
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
 	// The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname pulumi.StringPtrOutput `pulumi:"hostname"`
+	// Configuration for data encryption on the instance with encryption keys. Structure is documented below.
+	InstanceEncryptionKey InstanceInstanceEncryptionKeyPtrOutput `pulumi:"instanceEncryptionKey"`
 	// The server-assigned unique identifier of this instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
@@ -417,6 +419,8 @@ type instanceState struct {
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
 	// The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname *string `pulumi:"hostname"`
+	// Configuration for data encryption on the instance with encryption keys. Structure is documented below.
+	InstanceEncryptionKey *InstanceInstanceEncryptionKey `pulumi:"instanceEncryptionKey"`
 	// The server-assigned unique identifier of this instance.
 	InstanceId *string `pulumi:"instanceId"`
 	// Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
@@ -565,6 +569,8 @@ type InstanceState struct {
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
 	// The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname pulumi.StringPtrInput
+	// Configuration for data encryption on the instance with encryption keys. Structure is documented below.
+	InstanceEncryptionKey InstanceInstanceEncryptionKeyPtrInput
 	// The server-assigned unique identifier of this instance.
 	InstanceId pulumi.StringPtrInput
 	// Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
@@ -709,6 +715,8 @@ type instanceArgs struct {
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
 	// The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname *string `pulumi:"hostname"`
+	// Configuration for data encryption on the instance with encryption keys. Structure is documented below.
+	InstanceEncryptionKey *InstanceInstanceEncryptionKey `pulumi:"instanceEncryptionKey"`
 	// Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
 	KeyRevocationActionType *string `pulumi:"keyRevocationActionType"`
 	// A map of key/value label pairs to assign to the instance.
@@ -838,6 +846,8 @@ type InstanceArgs struct {
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
 	// The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname pulumi.StringPtrInput
+	// Configuration for data encryption on the instance with encryption keys. Structure is documented below.
+	InstanceEncryptionKey InstanceInstanceEncryptionKeyPtrInput
 	// Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
 	KeyRevocationActionType pulumi.StringPtrInput
 	// A map of key/value label pairs to assign to the instance.
@@ -1106,6 +1116,11 @@ func (o InstanceOutput) GuestAccelerators() InstanceGuestAcceleratorArrayOutput 
 // The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
 func (o InstanceOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for data encryption on the instance with encryption keys. Structure is documented below.
+func (o InstanceOutput) InstanceEncryptionKey() InstanceInstanceEncryptionKeyPtrOutput {
+	return o.ApplyT(func(v *Instance) InstanceInstanceEncryptionKeyPtrOutput { return v.InstanceEncryptionKey }).(InstanceInstanceEncryptionKeyPtrOutput)
 }
 
 // The server-assigned unique identifier of this instance.

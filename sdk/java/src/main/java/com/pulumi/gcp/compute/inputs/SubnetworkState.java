@@ -76,22 +76,36 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Deprecated)
      * Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
      * it will not appear in get listings. If not set the default behavior is determined by the
      * org policy, if there is no org policy specified, then it will default to disabled.
      * This field isn&#39;t supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
      * 
+     * &gt; **Warning:** This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.
+     * 
+     * @deprecated
+     * This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.
+     * 
      */
+    @Deprecated /* This field is being removed in favor of log_config. If log_config is present, flow logs are enabled. */
     @Import(name="enableFlowLogs")
     private @Nullable Output<Boolean> enableFlowLogs;
 
     /**
-     * @return Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
+     * @return (Optional, Deprecated)
+     * Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
      * it will not appear in get listings. If not set the default behavior is determined by the
      * org policy, if there is no org policy specified, then it will default to disabled.
      * This field isn&#39;t supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
      * 
+     * &gt; **Warning:** This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.
+     * 
+     * @deprecated
+     * This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.
+     * 
      */
+    @Deprecated /* This field is being removed in favor of log_config. If log_config is present, flow logs are enabled. */
     public Optional<Output<Boolean>> enableFlowLogs() {
         return Optional.ofNullable(this.enableFlowLogs);
     }
@@ -729,28 +743,42 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableFlowLogs Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
+         * @param enableFlowLogs (Optional, Deprecated)
+         * Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
          * it will not appear in get listings. If not set the default behavior is determined by the
          * org policy, if there is no org policy specified, then it will default to disabled.
          * This field isn&#39;t supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
          * 
+         * &gt; **Warning:** This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.
+         * 
          * @return builder
          * 
+         * @deprecated
+         * This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.
+         * 
          */
+        @Deprecated /* This field is being removed in favor of log_config. If log_config is present, flow logs are enabled. */
         public Builder enableFlowLogs(@Nullable Output<Boolean> enableFlowLogs) {
             $.enableFlowLogs = enableFlowLogs;
             return this;
         }
 
         /**
-         * @param enableFlowLogs Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
+         * @param enableFlowLogs (Optional, Deprecated)
+         * Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
          * it will not appear in get listings. If not set the default behavior is determined by the
          * org policy, if there is no org policy specified, then it will default to disabled.
          * This field isn&#39;t supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
          * 
+         * &gt; **Warning:** This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.
+         * 
          * @return builder
          * 
+         * @deprecated
+         * This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.
+         * 
          */
+        @Deprecated /* This field is being removed in favor of log_config. If log_config is present, flow logs are enabled. */
         public Builder enableFlowLogs(Boolean enableFlowLogs) {
             return enableFlowLogs(Output.of(enableFlowLogs));
         }

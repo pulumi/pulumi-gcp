@@ -118,6 +118,8 @@ type InstanceFromTemplate struct {
 	// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
 	// exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
+	// Encryption key used to provide data encryption on the given instance.
+	InstanceEncryptionKey InstanceFromTemplateInstanceEncryptionKeyOutput `pulumi:"instanceEncryptionKey"`
 	// The server-assigned unique identifier of this instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
@@ -262,6 +264,8 @@ type instanceFromTemplateState struct {
 	// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
 	// exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname *string `pulumi:"hostname"`
+	// Encryption key used to provide data encryption on the given instance.
+	InstanceEncryptionKey *InstanceFromTemplateInstanceEncryptionKey `pulumi:"instanceEncryptionKey"`
 	// The server-assigned unique identifier of this instance.
 	InstanceId *string `pulumi:"instanceId"`
 	// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
@@ -369,6 +373,8 @@ type InstanceFromTemplateState struct {
 	// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
 	// exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname pulumi.StringPtrInput
+	// Encryption key used to provide data encryption on the given instance.
+	InstanceEncryptionKey InstanceFromTemplateInstanceEncryptionKeyPtrInput
 	// The server-assigned unique identifier of this instance.
 	InstanceId pulumi.StringPtrInput
 	// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
@@ -471,6 +477,8 @@ type instanceFromTemplateArgs struct {
 	// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
 	// exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname *string `pulumi:"hostname"`
+	// Encryption key used to provide data encryption on the given instance.
+	InstanceEncryptionKey *InstanceFromTemplateInstanceEncryptionKey `pulumi:"instanceEncryptionKey"`
 	// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
 	// default.
 	KeyRevocationActionType *string `pulumi:"keyRevocationActionType"`
@@ -558,6 +566,8 @@ type InstanceFromTemplateArgs struct {
 	// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
 	// exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname pulumi.StringPtrInput
+	// Encryption key used to provide data encryption on the given instance.
+	InstanceEncryptionKey InstanceFromTemplateInstanceEncryptionKeyPtrInput
 	// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
 	// default.
 	KeyRevocationActionType pulumi.StringPtrInput
@@ -791,6 +801,13 @@ func (o InstanceFromTemplateOutput) GuestAccelerators() InstanceFromTemplateGues
 // exceed 253 characters. Changing this forces a new resource to be created.
 func (o InstanceFromTemplateOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Encryption key used to provide data encryption on the given instance.
+func (o InstanceFromTemplateOutput) InstanceEncryptionKey() InstanceFromTemplateInstanceEncryptionKeyOutput {
+	return o.ApplyT(func(v *InstanceFromTemplate) InstanceFromTemplateInstanceEncryptionKeyOutput {
+		return v.InstanceEncryptionKey
+	}).(InstanceFromTemplateInstanceEncryptionKeyOutput)
 }
 
 // The server-assigned unique identifier of this instance.

@@ -32,6 +32,12 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
         [Input("availableMemory")]
         public Input<string>? AvailableMemory { get; set; }
 
+        /// <summary>
+        /// The binary authorization policy to be checked when deploying the Cloud Run service.
+        /// </summary>
+        [Input("binaryAuthorizationPolicy")]
+        public Input<string>? BinaryAuthorizationPolicy { get; set; }
+
         [Input("environmentVariables")]
         private InputMap<string>? _environmentVariables;
 

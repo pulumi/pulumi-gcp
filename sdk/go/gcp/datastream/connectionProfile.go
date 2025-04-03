@@ -458,6 +458,42 @@ import (
 //	}
 //
 // ```
+// ### Datastream Connection Profile Postgres Secret Manager
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/datastream"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := datastream.NewConnectionProfile(ctx, "default", &datastream.ConnectionProfileArgs{
+//				DisplayName:             pulumi.String("Postgres Source With Secret Manager"),
+//				Location:                pulumi.String("us-central1"),
+//				ConnectionProfileId:     pulumi.String("source-profile"),
+//				CreateWithoutValidation: pulumi.Bool(true),
+//				PostgresqlProfile: &datastream.ConnectionProfilePostgresqlProfileArgs{
+//					Hostname:                    pulumi.String("fake-hostname"),
+//					Port:                        pulumi.Int(3306),
+//					Username:                    pulumi.String("fake-username"),
+//					SecretManagerStoredPassword: pulumi.String("projects/fake-project/secrets/fake-secret/versions/1"),
+//					Database:                    pulumi.String("fake-database"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ConnectionProfile can be imported using any of these accepted formats:

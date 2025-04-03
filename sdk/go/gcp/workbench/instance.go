@@ -203,7 +203,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = serviceaccount.NewIAMBinding(ctx, "act_as_permission", &serviceaccount.IAMBindingArgs{
+//			actAsPermission, err := serviceaccount.NewIAMBinding(ctx, "act_as_permission", &serviceaccount.IAMBindingArgs{
 //				ServiceAccountId: pulumi.String("projects/my-project-name/serviceAccounts/my@service-account.com"),
 //				Role:             pulumi.String("roles/iam.serviceAccountUser"),
 //				Members: pulumi.StringArray{
@@ -277,7 +277,12 @@ import (
 //				},
 //				DesiredState:             pulumi.String("ACTIVE"),
 //				EnableThirdPartyIdentity: pulumi.Bool(true),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				myNetwork,
+//				mySubnetwork,
+//				static,
+//				actAsPermission,
+//			}))
 //			if err != nil {
 //				return err
 //			}

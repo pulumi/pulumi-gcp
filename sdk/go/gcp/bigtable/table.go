@@ -122,10 +122,10 @@ import (
 type Table struct {
 	pulumi.CustomResourceState
 
-	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to 0.
+	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to "0". If this argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
 	//
 	// ***
-	AutomatedBackupPolicy TableAutomatedBackupPolicyPtrOutput `pulumi:"automatedBackupPolicy"`
+	AutomatedBackupPolicy TableAutomatedBackupPolicyOutput `pulumi:"automatedBackupPolicy"`
 	// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
 	ChangeStreamRetention pulumi.StringOutput `pulumi:"changeStreamRetention"`
 	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
@@ -178,7 +178,7 @@ func GetTable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Table resources.
 type tableState struct {
-	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to 0.
+	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to "0". If this argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
 	//
 	// ***
 	AutomatedBackupPolicy *TableAutomatedBackupPolicy `pulumi:"automatedBackupPolicy"`
@@ -202,7 +202,7 @@ type tableState struct {
 }
 
 type TableState struct {
-	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to 0.
+	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to "0". If this argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
 	//
 	// ***
 	AutomatedBackupPolicy TableAutomatedBackupPolicyPtrInput
@@ -230,7 +230,7 @@ func (TableState) ElementType() reflect.Type {
 }
 
 type tableArgs struct {
-	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to 0.
+	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to "0". If this argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
 	//
 	// ***
 	AutomatedBackupPolicy *TableAutomatedBackupPolicy `pulumi:"automatedBackupPolicy"`
@@ -255,7 +255,7 @@ type tableArgs struct {
 
 // The set of arguments for constructing a Table resource.
 type TableArgs struct {
-	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to 0.
+	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to "0". If this argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
 	//
 	// ***
 	AutomatedBackupPolicy TableAutomatedBackupPolicyPtrInput
@@ -365,11 +365,11 @@ func (o TableOutput) ToTableOutputWithContext(ctx context.Context) TableOutput {
 	return o
 }
 
-// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to 0.
+// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to "0". If this argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
 //
 // ***
-func (o TableOutput) AutomatedBackupPolicy() TableAutomatedBackupPolicyPtrOutput {
-	return o.ApplyT(func(v *Table) TableAutomatedBackupPolicyPtrOutput { return v.AutomatedBackupPolicy }).(TableAutomatedBackupPolicyPtrOutput)
+func (o TableOutput) AutomatedBackupPolicy() TableAutomatedBackupPolicyOutput {
+	return o.ApplyT(func(v *Table) TableAutomatedBackupPolicyOutput { return v.AutomatedBackupPolicy }).(TableAutomatedBackupPolicyOutput)
 }
 
 // Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.

@@ -546,6 +546,10 @@ class SecurityProfile(pulumi.CustomResource):
                     "action": "ALLOW",
                     "threat_id": "280647",
                 }],
+                "antivirus_overrides": [{
+                    "protocol": "SMTP",
+                    "action": "ALLOW",
+                }],
             })
         ```
         ### Network Security Security Profile Mirroring
@@ -696,6 +700,10 @@ class SecurityProfile(pulumi.CustomResource):
                 "threat_overrides": [{
                     "action": "ALLOW",
                     "threat_id": "280647",
+                }],
+                "antivirus_overrides": [{
+                    "protocol": "SMTP",
+                    "action": "ALLOW",
                 }],
             })
         ```

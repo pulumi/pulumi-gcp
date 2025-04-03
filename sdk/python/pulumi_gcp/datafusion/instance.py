@@ -38,6 +38,7 @@ class InstanceArgs:
                  private_instance: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
@@ -85,6 +86,10 @@ class InstanceArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the Data Fusion instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+               The field is ignored (both PUT & PATCH) when empty.
         :param pulumi.Input[str] version: Current version of the Data Fusion.
         :param pulumi.Input[str] zone: Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
         """
@@ -121,6 +126,8 @@ class InstanceArgs:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if version is not None:
             pulumi.set(__self__, "version", version)
         if zone is not None:
@@ -358,6 +365,21 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        The field is ignored (both PUT & PATCH) when empty.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
         Current version of the Data Fusion.
@@ -410,6 +432,7 @@ class _InstanceState:
                  service_endpoint: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  state_message: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tenant_project_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
@@ -463,6 +486,10 @@ class _InstanceState:
                - UPGRADING: Instance is being upgraded
                - RESTARTING: Instance is being restarted
         :param pulumi.Input[str] state_message: Additional information about the current state of this Data Fusion instance if available.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+               The field is ignored (both PUT & PATCH) when empty.
         :param pulumi.Input[str] tenant_project_id: The name of the tenant project.
         :param pulumi.Input[str] type: Represents the type of Data Fusion instance. Each type is configured with
                the default settings for processing and memory.
@@ -537,6 +564,8 @@ class _InstanceState:
             pulumi.set(__self__, "state", state)
         if state_message is not None:
             pulumi.set(__self__, "state_message", state_message)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if tenant_project_id is not None:
             pulumi.set(__self__, "tenant_project_id", tenant_project_id)
         if type is not None:
@@ -882,6 +911,21 @@ class _InstanceState:
         pulumi.set(self, "state_message", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        The field is ignored (both PUT & PATCH) when empty.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="tenantProjectId")
     def tenant_project_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -976,6 +1020,7 @@ class Instance(pulumi.CustomResource):
                  private_instance: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -1202,6 +1247,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the Data Fusion instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+               The field is ignored (both PUT & PATCH) when empty.
         :param pulumi.Input[str] type: Represents the type of Data Fusion instance. Each type is configured with
                the default settings for processing and memory.
                - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
@@ -1447,6 +1496,7 @@ class Instance(pulumi.CustomResource):
                  private_instance: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -1475,6 +1525,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["private_instance"] = private_instance
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
+            __props__.__dict__["tags"] = tags
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
@@ -1530,6 +1581,7 @@ class Instance(pulumi.CustomResource):
             service_endpoint: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             state_message: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             tenant_project_id: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
@@ -1588,6 +1640,10 @@ class Instance(pulumi.CustomResource):
                - UPGRADING: Instance is being upgraded
                - RESTARTING: Instance is being restarted
         :param pulumi.Input[str] state_message: Additional information about the current state of this Data Fusion instance if available.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+               The field is ignored (both PUT & PATCH) when empty.
         :param pulumi.Input[str] tenant_project_id: The name of the tenant project.
         :param pulumi.Input[str] type: Represents the type of Data Fusion instance. Each type is configured with
                the default settings for processing and memory.
@@ -1637,6 +1693,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["service_endpoint"] = service_endpoint
         __props__.__dict__["state"] = state
         __props__.__dict__["state_message"] = state_message
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["tenant_project_id"] = tenant_project_id
         __props__.__dict__["type"] = type
         __props__.__dict__["update_time"] = update_time
@@ -1872,6 +1929,17 @@ class Instance(pulumi.CustomResource):
         Additional information about the current state of this Data Fusion instance if available.
         """
         return pulumi.get(self, "state_message")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        The field is ignored (both PUT & PATCH) when empty.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="tenantProjectId")

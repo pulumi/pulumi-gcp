@@ -4,6 +4,7 @@
 package com.pulumi.gcp.networksecurity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.networksecurity.outputs.SecurityProfileThreatPreventionProfileAntivirusOverride;
 import com.pulumi.gcp.networksecurity.outputs.SecurityProfileThreatPreventionProfileSeverityOverride;
 import com.pulumi.gcp.networksecurity.outputs.SecurityProfileThreatPreventionProfileThreatOverride;
 import java.util.List;
@@ -12,6 +13,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SecurityProfileThreatPreventionProfile {
+    /**
+     * @return Defines what action to take for antivirus threats per protocol.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<SecurityProfileThreatPreventionProfileAntivirusOverride> antivirusOverrides;
     /**
      * @return The configuration for overriding threats actions by severity match.
      * Structure is documented below.
@@ -28,6 +35,14 @@ public final class SecurityProfileThreatPreventionProfile {
     private @Nullable List<SecurityProfileThreatPreventionProfileThreatOverride> threatOverrides;
 
     private SecurityProfileThreatPreventionProfile() {}
+    /**
+     * @return Defines what action to take for antivirus threats per protocol.
+     * Structure is documented below.
+     * 
+     */
+    public List<SecurityProfileThreatPreventionProfileAntivirusOverride> antivirusOverrides() {
+        return this.antivirusOverrides == null ? List.of() : this.antivirusOverrides;
+    }
     /**
      * @return The configuration for overriding threats actions by severity match.
      * Structure is documented below.
@@ -56,15 +71,26 @@ public final class SecurityProfileThreatPreventionProfile {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<SecurityProfileThreatPreventionProfileAntivirusOverride> antivirusOverrides;
         private @Nullable List<SecurityProfileThreatPreventionProfileSeverityOverride> severityOverrides;
         private @Nullable List<SecurityProfileThreatPreventionProfileThreatOverride> threatOverrides;
         public Builder() {}
         public Builder(SecurityProfileThreatPreventionProfile defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.antivirusOverrides = defaults.antivirusOverrides;
     	      this.severityOverrides = defaults.severityOverrides;
     	      this.threatOverrides = defaults.threatOverrides;
         }
 
+        @CustomType.Setter
+        public Builder antivirusOverrides(@Nullable List<SecurityProfileThreatPreventionProfileAntivirusOverride> antivirusOverrides) {
+
+            this.antivirusOverrides = antivirusOverrides;
+            return this;
+        }
+        public Builder antivirusOverrides(SecurityProfileThreatPreventionProfileAntivirusOverride... antivirusOverrides) {
+            return antivirusOverrides(List.of(antivirusOverrides));
+        }
         @CustomType.Setter
         public Builder severityOverrides(@Nullable List<SecurityProfileThreatPreventionProfileSeverityOverride> severityOverrides) {
 
@@ -85,6 +111,7 @@ public final class SecurityProfileThreatPreventionProfile {
         }
         public SecurityProfileThreatPreventionProfile build() {
             final var _resultValue = new SecurityProfileThreatPreventionProfile();
+            _resultValue.antivirusOverrides = antivirusOverrides;
             _resultValue.severityOverrides = severityOverrides;
             _resultValue.threatOverrides = threatOverrides;
             return _resultValue;

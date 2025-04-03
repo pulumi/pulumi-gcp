@@ -31,6 +31,13 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo
      * 
      */
     private @Nullable List<String> resources;
+    /**
+     * @return A list of IAM roles that represent the set of operations that the sources
+     * specified in the corresponding `IngressFrom`
+     * are allowed to perform.
+     * 
+     */
+    private @Nullable List<String> roles;
 
     private ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo() {}
     /**
@@ -56,6 +63,15 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo
     public List<String> resources() {
         return this.resources == null ? List.of() : this.resources;
     }
+    /**
+     * @return A list of IAM roles that represent the set of operations that the sources
+     * specified in the corresponding `IngressFrom`
+     * are allowed to perform.
+     * 
+     */
+    public List<String> roles() {
+        return this.roles == null ? List.of() : this.roles;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -68,11 +84,13 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo
     public static final class Builder {
         private @Nullable List<ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation> operations;
         private @Nullable List<String> resources;
+        private @Nullable List<String> roles;
         public Builder() {}
         public Builder(ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.operations = defaults.operations;
     	      this.resources = defaults.resources;
+    	      this.roles = defaults.roles;
         }
 
         @CustomType.Setter
@@ -93,10 +111,20 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo
         public Builder resources(String... resources) {
             return resources(List.of(resources));
         }
+        @CustomType.Setter
+        public Builder roles(@Nullable List<String> roles) {
+
+            this.roles = roles;
+            return this;
+        }
+        public Builder roles(String... roles) {
+            return roles(List.of(roles));
+        }
         public ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo build() {
             final var _resultValue = new ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo();
             _resultValue.operations = operations;
             _resultValue.resources = resources;
+            _resultValue.roles = roles;
             return _resultValue;
         }
     }

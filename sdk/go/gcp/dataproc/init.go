@@ -53,6 +53,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &JobIAMMember{}
 	case "gcp:dataproc/jobIAMPolicy:JobIAMPolicy":
 		r = &JobIAMPolicy{}
+	case "gcp:dataproc/metastoreDatabaseIamBinding:MetastoreDatabaseIamBinding":
+		r = &MetastoreDatabaseIamBinding{}
+	case "gcp:dataproc/metastoreDatabaseIamMember:MetastoreDatabaseIamMember":
+		r = &MetastoreDatabaseIamMember{}
+	case "gcp:dataproc/metastoreDatabaseIamPolicy:MetastoreDatabaseIamPolicy":
+		r = &MetastoreDatabaseIamPolicy{}
 	case "gcp:dataproc/metastoreFederation:MetastoreFederation":
 		r = &MetastoreFederation{}
 	case "gcp:dataproc/metastoreFederationIamBinding:MetastoreFederationIamBinding":
@@ -69,6 +75,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MetastoreServiceIamMember{}
 	case "gcp:dataproc/metastoreServiceIamPolicy:MetastoreServiceIamPolicy":
 		r = &MetastoreServiceIamPolicy{}
+	case "gcp:dataproc/metastoreTableIamBinding:MetastoreTableIamBinding":
+		r = &MetastoreTableIamBinding{}
+	case "gcp:dataproc/metastoreTableIamMember:MetastoreTableIamMember":
+		r = &MetastoreTableIamMember{}
+	case "gcp:dataproc/metastoreTableIamPolicy:MetastoreTableIamPolicy":
+		r = &MetastoreTableIamPolicy{}
 	case "gcp:dataproc/workflowTemplate:WorkflowTemplate":
 		r = &WorkflowTemplate{}
 	default:
@@ -166,6 +178,21 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"dataproc/metastoreDatabaseIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataproc/metastoreDatabaseIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataproc/metastoreDatabaseIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"dataproc/metastoreFederation",
 		&module{version},
 	)
@@ -202,6 +229,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"dataproc/metastoreServiceIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataproc/metastoreTableIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataproc/metastoreTableIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataproc/metastoreTableIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.dataproc.MetastoreFederationArgs;
 import com.pulumi.gcp.dataproc.inputs.MetastoreFederationState;
 import com.pulumi.gcp.dataproc.outputs.MetastoreFederationBackendMetastore;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -59,6 +60,7 @@ import javax.annotation.Nullable;
  *                 .version("3.1.2")
  *                 .endpointProtocol("GRPC")
  *                 .build())
+ *             .deletionProtection(false)
  *             .build());
  * 
  *         var default_ = new MetastoreFederation("default", MetastoreFederationArgs.builder()
@@ -199,6 +201,12 @@ public class MetastoreFederation extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deletionProtection;
+
+    public Output<Optional<Boolean>> deletionProtection() {
+        return Codegen.optional(this.deletionProtection);
     }
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

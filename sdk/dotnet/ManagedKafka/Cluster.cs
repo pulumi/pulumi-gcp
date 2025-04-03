@@ -50,7 +50,7 @@ namespace Pulumi.Gcp.ManagedKafka
     ///         },
     ///         RebalanceConfig = new Gcp.ManagedKafka.Inputs.ClusterRebalanceConfigArgs
     ///         {
-    ///             Mode = "NO_REBALANCE",
+    ///             Mode = "AUTO_REBALANCE_ON_SCALE_UP",
     ///         },
     ///         Labels = 
     ///         {

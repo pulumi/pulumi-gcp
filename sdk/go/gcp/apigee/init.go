@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AppGroup{}
 	case "gcp:apigee/developer:Developer":
 		r = &Developer{}
+	case "gcp:apigee/dnsZone:DnsZone":
+		r = &DnsZone{}
 	case "gcp:apigee/endpointAttachment:EndpointAttachment":
 		r = &EndpointAttachment{}
 	case "gcp:apigee/envGroup:EnvGroup":
@@ -108,6 +110,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"apigee/developer",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/dnsZone",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

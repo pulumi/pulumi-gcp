@@ -65,10 +65,16 @@ __all__ = [
     'InterceptEndpointGroupConnectedDeploymentGroup',
     'InterceptEndpointGroupConnectedDeploymentGroupLocation',
     'MirroringDeploymentGroupConnectedEndpointGroup',
+    'MirroringDeploymentGroupLocation',
+    'MirroringEndpointGroupAssociation',
+    'MirroringEndpointGroupAssociationLocation',
     'MirroringEndpointGroupAssociationLocationsDetail',
+    'MirroringEndpointGroupConnectedDeploymentGroup',
+    'MirroringEndpointGroupConnectedDeploymentGroupLocation',
     'SecurityProfileCustomInterceptProfile',
     'SecurityProfileCustomMirroringProfile',
     'SecurityProfileThreatPreventionProfile',
+    'SecurityProfileThreatPreventionProfileAntivirusOverride',
     'SecurityProfileThreatPreventionProfileSeverityOverride',
     'SecurityProfileThreatPreventionProfileThreatOverride',
     'ServerTlsPolicyMtlsPolicy',
@@ -2744,6 +2750,159 @@ class MirroringDeploymentGroupConnectedEndpointGroup(dict):
 
 
 @pulumi.output_type
+class MirroringDeploymentGroupLocation(dict):
+    def __init__(__self__, *,
+                 location: Optional[str] = None,
+                 state: Optional[str] = None):
+        """
+        :param str location: The cloud location of the deployment group, currently restricted to `global`.
+        :param str state: (Output)
+               The current state of the association in this location.
+               Possible values:
+               STATE_UNSPECIFIED
+               ACTIVE
+               OUT_OF_SYNC
+        """
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[str]:
+        """
+        The cloud location of the deployment group, currently restricted to `global`.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        (Output)
+        The current state of the association in this location.
+        Possible values:
+        STATE_UNSPECIFIED
+        ACTIVE
+        OUT_OF_SYNC
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class MirroringEndpointGroupAssociation(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 network: Optional[str] = None,
+                 state: Optional[str] = None):
+        """
+        :param str name: (Output)
+               The connected deployment group's resource name, for example:
+               `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+               See https://google.aip.dev/124.
+        :param str network: (Output)
+               The associated network, for example:
+               projects/123456789/global/networks/my-network.
+               See https://google.aip.dev/124.
+        :param str state: (Output)
+               The current state of the association in this location.
+               Possible values:
+               STATE_UNSPECIFIED
+               ACTIVE
+               OUT_OF_SYNC
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        (Output)
+        The connected deployment group's resource name, for example:
+        `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+        See https://google.aip.dev/124.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[str]:
+        """
+        (Output)
+        The associated network, for example:
+        projects/123456789/global/networks/my-network.
+        See https://google.aip.dev/124.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        (Output)
+        The current state of the association in this location.
+        Possible values:
+        STATE_UNSPECIFIED
+        ACTIVE
+        OUT_OF_SYNC
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class MirroringEndpointGroupAssociationLocation(dict):
+    def __init__(__self__, *,
+                 location: Optional[str] = None,
+                 state: Optional[str] = None):
+        """
+        :param str location: The cloud location of the association, currently restricted to `global`.
+               
+               
+               - - -
+        :param str state: (Output)
+               The current state of the association in this location.
+               Possible values:
+               STATE_UNSPECIFIED
+               ACTIVE
+               OUT_OF_SYNC
+        """
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[str]:
+        """
+        The cloud location of the association, currently restricted to `global`.
+
+
+        - - -
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        (Output)
+        The current state of the association in this location.
+        Possible values:
+        STATE_UNSPECIFIED
+        ACTIVE
+        OUT_OF_SYNC
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
 class MirroringEndpointGroupAssociationLocationsDetail(dict):
     def __init__(__self__, *,
                  location: Optional[str] = None,
@@ -2773,6 +2932,88 @@ class MirroringEndpointGroupAssociationLocationsDetail(dict):
 
 
         - - -
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        (Output)
+        The current state of the association in this location.
+        Possible values:
+        STATE_UNSPECIFIED
+        ACTIVE
+        OUT_OF_SYNC
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class MirroringEndpointGroupConnectedDeploymentGroup(dict):
+    def __init__(__self__, *,
+                 locations: Optional[Sequence['outputs.MirroringEndpointGroupConnectedDeploymentGroupLocation']] = None,
+                 name: Optional[str] = None):
+        """
+        :param Sequence['MirroringEndpointGroupConnectedDeploymentGroupLocationArgs'] locations: (Output)
+               The list of locations where the deployment group is present.
+               Structure is documented below.
+        :param str name: (Output)
+               The connected deployment group's resource name, for example:
+               `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+               See https://google.aip.dev/124.
+        """
+        if locations is not None:
+            pulumi.set(__self__, "locations", locations)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def locations(self) -> Optional[Sequence['outputs.MirroringEndpointGroupConnectedDeploymentGroupLocation']]:
+        """
+        (Output)
+        The list of locations where the deployment group is present.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "locations")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        (Output)
+        The connected deployment group's resource name, for example:
+        `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+        See https://google.aip.dev/124.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class MirroringEndpointGroupConnectedDeploymentGroupLocation(dict):
+    def __init__(__self__, *,
+                 location: Optional[str] = None,
+                 state: Optional[str] = None):
+        """
+        :param str location: The cloud location of the endpoint group, currently restricted to `global`.
+        :param str state: (Output)
+               The current state of the association in this location.
+               Possible values:
+               STATE_UNSPECIFIED
+               ACTIVE
+               OUT_OF_SYNC
+        """
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[str]:
+        """
+        The cloud location of the endpoint group, currently restricted to `global`.
         """
         return pulumi.get(self, "location")
 
@@ -2869,7 +3110,9 @@ class SecurityProfileThreatPreventionProfile(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "severityOverrides":
+        if key == "antivirusOverrides":
+            suggest = "antivirus_overrides"
+        elif key == "severityOverrides":
             suggest = "severity_overrides"
         elif key == "threatOverrides":
             suggest = "threat_overrides"
@@ -2886,9 +3129,12 @@ class SecurityProfileThreatPreventionProfile(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 antivirus_overrides: Optional[Sequence['outputs.SecurityProfileThreatPreventionProfileAntivirusOverride']] = None,
                  severity_overrides: Optional[Sequence['outputs.SecurityProfileThreatPreventionProfileSeverityOverride']] = None,
                  threat_overrides: Optional[Sequence['outputs.SecurityProfileThreatPreventionProfileThreatOverride']] = None):
         """
+        :param Sequence['SecurityProfileThreatPreventionProfileAntivirusOverrideArgs'] antivirus_overrides: Defines what action to take for antivirus threats per protocol.
+               Structure is documented below.
         :param Sequence['SecurityProfileThreatPreventionProfileSeverityOverrideArgs'] severity_overrides: The configuration for overriding threats actions by severity match.
                Structure is documented below.
         :param Sequence['SecurityProfileThreatPreventionProfileThreatOverrideArgs'] threat_overrides: The configuration for overriding threats actions by threat id match.
@@ -2896,10 +3142,21 @@ class SecurityProfileThreatPreventionProfile(dict):
                and threat overrides, the threat overrides action is applied.
                Structure is documented below.
         """
+        if antivirus_overrides is not None:
+            pulumi.set(__self__, "antivirus_overrides", antivirus_overrides)
         if severity_overrides is not None:
             pulumi.set(__self__, "severity_overrides", severity_overrides)
         if threat_overrides is not None:
             pulumi.set(__self__, "threat_overrides", threat_overrides)
+
+    @property
+    @pulumi.getter(name="antivirusOverrides")
+    def antivirus_overrides(self) -> Optional[Sequence['outputs.SecurityProfileThreatPreventionProfileAntivirusOverride']]:
+        """
+        Defines what action to take for antivirus threats per protocol.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "antivirus_overrides")
 
     @property
     @pulumi.getter(name="severityOverrides")
@@ -2920,6 +3177,39 @@ class SecurityProfileThreatPreventionProfile(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "threat_overrides")
+
+
+@pulumi.output_type
+class SecurityProfileThreatPreventionProfileAntivirusOverride(dict):
+    def __init__(__self__, *,
+                 action: str,
+                 protocol: str):
+        """
+        :param str action: Threat action override. For some threat types, only a subset of actions applies.
+               Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
+        :param str protocol: Required protocol to match.
+               Possible values are: `SMTP`, `SMB`, `POP3`, `IMAP`, `HTTP2`, `HTTP`, `FTP`.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter
+    def action(self) -> str:
+        """
+        Threat action override. For some threat types, only a subset of actions applies.
+        Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        Required protocol to match.
+        Possible values are: `SMTP`, `SMB`, `POP3`, `IMAP`, `HTTP2`, `HTTP`, `FTP`.
+        """
+        return pulumi.get(self, "protocol")
 
 
 @pulumi.output_type

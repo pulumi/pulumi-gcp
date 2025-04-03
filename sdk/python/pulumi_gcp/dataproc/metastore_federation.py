@@ -24,6 +24,7 @@ class MetastoreFederationArgs:
                  backend_metastores: pulumi.Input[Sequence[pulumi.Input['MetastoreFederationBackendMetastoreArgs']]],
                  federation_id: pulumi.Input[str],
                  version: pulumi.Input[str],
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -43,6 +44,8 @@ class MetastoreFederationArgs:
         pulumi.set(__self__, "backend_metastores", backend_metastores)
         pulumi.set(__self__, "federation_id", federation_id)
         pulumi.set(__self__, "version", version)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -90,6 +93,15 @@ class MetastoreFederationArgs:
         pulumi.set(self, "version", value)
 
     @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -130,6 +142,7 @@ class _MetastoreFederationState:
     def __init__(__self__, *,
                  backend_metastores: Optional[pulumi.Input[Sequence[pulumi.Input['MetastoreFederationBackendMetastoreArgs']]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  endpoint_uri: Optional[pulumi.Input[str]] = None,
                  federation_id: Optional[pulumi.Input[str]] = None,
@@ -170,6 +183,8 @@ class _MetastoreFederationState:
             pulumi.set(__self__, "backend_metastores", backend_metastores)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if endpoint_uri is not None:
@@ -221,6 +236,15 @@ class _MetastoreFederationState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter(name="effectiveLabels")
@@ -387,6 +411,7 @@ class MetastoreFederation(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backend_metastores: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetastoreFederationBackendMetastoreArgs', 'MetastoreFederationBackendMetastoreArgsDict']]]]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  federation_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -411,7 +436,8 @@ class MetastoreFederation(pulumi.CustomResource):
             hive_metastore_config={
                 "version": "3.1.2",
                 "endpoint_protocol": "GRPC",
-            })
+            },
+            deletion_protection=False)
         default = gcp.dataproc.MetastoreFederation("default",
             location="us-central1",
             federation_id="metastore-fed",
@@ -516,7 +542,8 @@ class MetastoreFederation(pulumi.CustomResource):
             hive_metastore_config={
                 "version": "3.1.2",
                 "endpoint_protocol": "GRPC",
-            })
+            },
+            deletion_protection=False)
         default = gcp.dataproc.MetastoreFederation("default",
             location="us-central1",
             federation_id="metastore-fed",
@@ -600,6 +627,7 @@ class MetastoreFederation(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backend_metastores: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetastoreFederationBackendMetastoreArgs', 'MetastoreFederationBackendMetastoreArgsDict']]]]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  federation_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -617,6 +645,7 @@ class MetastoreFederation(pulumi.CustomResource):
             if backend_metastores is None and not opts.urn:
                 raise TypeError("Missing required property 'backend_metastores'")
             __props__.__dict__["backend_metastores"] = backend_metastores
+            __props__.__dict__["deletion_protection"] = deletion_protection
             if federation_id is None and not opts.urn:
                 raise TypeError("Missing required property 'federation_id'")
             __props__.__dict__["federation_id"] = federation_id
@@ -649,6 +678,7 @@ class MetastoreFederation(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             backend_metastores: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetastoreFederationBackendMetastoreArgs', 'MetastoreFederationBackendMetastoreArgsDict']]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             endpoint_uri: Optional[pulumi.Input[str]] = None,
             federation_id: Optional[pulumi.Input[str]] = None,
@@ -696,6 +726,7 @@ class MetastoreFederation(pulumi.CustomResource):
 
         __props__.__dict__["backend_metastores"] = backend_metastores
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["endpoint_uri"] = endpoint_uri
         __props__.__dict__["federation_id"] = federation_id
@@ -727,6 +758,11 @@ class MetastoreFederation(pulumi.CustomResource):
         Output only. The time when the metastore federation was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="effectiveLabels")

@@ -27,7 +27,7 @@ class GetParameterResult:
     """
     A collection of values returned by getParameter.
     """
-    def __init__(__self__, create_time=None, effective_labels=None, format=None, id=None, labels=None, name=None, parameter_id=None, policy_members=None, project=None, pulumi_labels=None, update_time=None):
+    def __init__(__self__, create_time=None, effective_labels=None, format=None, id=None, kms_key=None, labels=None, name=None, parameter_id=None, policy_members=None, project=None, pulumi_labels=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -40,6 +40,9 @@ class GetParameterResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if kms_key and not isinstance(kms_key, str):
+            raise TypeError("Expected argument 'kms_key' to be a str")
+        pulumi.set(__self__, "kms_key", kms_key)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -84,6 +87,11 @@ class GetParameterResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> str:
+        return pulumi.get(self, "kms_key")
 
     @property
     @pulumi.getter
@@ -131,6 +139,7 @@ class AwaitableGetParameterResult(GetParameterResult):
             effective_labels=self.effective_labels,
             format=self.format,
             id=self.id,
+            kms_key=self.kms_key,
             labels=self.labels,
             name=self.name,
             parameter_id=self.parameter_id,
@@ -144,6 +153,8 @@ def get_parameter(parameter_id: Optional[str] = None,
                   project: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetParameterResult:
     """
+    Use this data source to get information about a Parameter Manager Parameter.
+
     ## Example Usage
 
     ```python
@@ -168,6 +179,7 @@ def get_parameter(parameter_id: Optional[str] = None,
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         format=pulumi.get(__ret__, 'format'),
         id=pulumi.get(__ret__, 'id'),
+        kms_key=pulumi.get(__ret__, 'kms_key'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         parameter_id=pulumi.get(__ret__, 'parameter_id'),
@@ -179,6 +191,8 @@ def get_parameter_output(parameter_id: Optional[pulumi.Input[str]] = None,
                          project: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetParameterResult]:
     """
+    Use this data source to get information about a Parameter Manager Parameter.
+
     ## Example Usage
 
     ```python
@@ -202,6 +216,7 @@ def get_parameter_output(parameter_id: Optional[pulumi.Input[str]] = None,
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         format=pulumi.get(__response__, 'format'),
         id=pulumi.get(__response__, 'id'),
+        kms_key=pulumi.get(__response__, 'kms_key'),
         labels=pulumi.get(__response__, 'labels'),
         name=pulumi.get(__response__, 'name'),
         parameter_id=pulumi.get(__response__, 'parameter_id'),

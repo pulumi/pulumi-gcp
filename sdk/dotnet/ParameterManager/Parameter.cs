@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ParameterManager
 {
     /// <summary>
+    /// A Parameter resource is a logical parameter.
+    /// 
+    /// To get more information about Parameter, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Parameter Config Basic
@@ -72,6 +78,26 @@ namespace Pulumi.Gcp.ParameterManager
     /// 
     /// });
     /// ```
+    /// ### Parameter With Kms Key
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var parameter_with_kms_key = new Gcp.ParameterManager.Parameter("parameter-with-kms-key", new()
+    ///     {
+    ///         ParameterId = "parameter",
+    ///         KmsKey = "kms-key",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -119,6 +145,13 @@ namespace Pulumi.Gcp.ParameterManager
         /// </summary>
         [Output("format")]
         public Output<string?> Format { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
+        /// `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+        /// </summary>
+        [Output("kmsKey")]
+        public Output<string?> KmsKey { get; private set; } = null!;
 
         /// <summary>
         /// The labels assigned to this Parameter.
@@ -238,6 +271,13 @@ namespace Pulumi.Gcp.ParameterManager
         [Input("format")]
         public Input<string>? Format { get; set; }
 
+        /// <summary>
+        /// The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
+        /// `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+        /// </summary>
+        [Input("kmsKey")]
+        public Input<string>? KmsKey { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -313,6 +353,13 @@ namespace Pulumi.Gcp.ParameterManager
         /// </summary>
         [Input("format")]
         public Input<string>? Format { get; set; }
+
+        /// <summary>
+        /// The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
+        /// `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+        /// </summary>
+        [Input("kmsKey")]
+        public Input<string>? KmsKey { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

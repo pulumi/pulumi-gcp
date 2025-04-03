@@ -35,6 +35,13 @@ public final class ServicePerimeterDryRunEgressPolicyEgressTo {
      * 
      */
     private @Nullable List<String> resources;
+    /**
+     * @return A list of IAM roles that represent the set of operations that the sources
+     * specified in the corresponding `EgressFrom`
+     * are allowed to perform.
+     * 
+     */
+    private @Nullable List<String> roles;
 
     private ServicePerimeterDryRunEgressPolicyEgressTo() {}
     /**
@@ -66,6 +73,15 @@ public final class ServicePerimeterDryRunEgressPolicyEgressTo {
     public List<String> resources() {
         return this.resources == null ? List.of() : this.resources;
     }
+    /**
+     * @return A list of IAM roles that represent the set of operations that the sources
+     * specified in the corresponding `EgressFrom`
+     * are allowed to perform.
+     * 
+     */
+    public List<String> roles() {
+        return this.roles == null ? List.of() : this.roles;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -79,12 +95,14 @@ public final class ServicePerimeterDryRunEgressPolicyEgressTo {
         private @Nullable List<String> externalResources;
         private @Nullable List<ServicePerimeterDryRunEgressPolicyEgressToOperation> operations;
         private @Nullable List<String> resources;
+        private @Nullable List<String> roles;
         public Builder() {}
         public Builder(ServicePerimeterDryRunEgressPolicyEgressTo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.externalResources = defaults.externalResources;
     	      this.operations = defaults.operations;
     	      this.resources = defaults.resources;
+    	      this.roles = defaults.roles;
         }
 
         @CustomType.Setter
@@ -114,11 +132,21 @@ public final class ServicePerimeterDryRunEgressPolicyEgressTo {
         public Builder resources(String... resources) {
             return resources(List.of(resources));
         }
+        @CustomType.Setter
+        public Builder roles(@Nullable List<String> roles) {
+
+            this.roles = roles;
+            return this;
+        }
+        public Builder roles(String... roles) {
+            return roles(List.of(roles));
+        }
         public ServicePerimeterDryRunEgressPolicyEgressTo build() {
             final var _resultValue = new ServicePerimeterDryRunEgressPolicyEgressTo();
             _resultValue.externalResources = externalResources;
             _resultValue.operations = operations;
             _resultValue.resources = resources;
+            _resultValue.roles = roles;
             return _resultValue;
         }
     }

@@ -4669,7 +4669,7 @@ class ClusterClusterAutoscaling(dict):
         :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsArgs' auto_provisioning_defaults: Contains defaults for a node pool created by NAP. A subset of fields also apply to
                GKE Autopilot clusters.
                Structure is documented below.
-        :param Sequence[str] auto_provisioning_locations: The list of Google Compute Engine 
+        :param Sequence[str] auto_provisioning_locations: The list of Google Compute Engine
                [zones](https://cloud.google.com/compute/docs/zones#available) in which the
                NodePool's nodes can be created by NAP.
         :param str autoscaling_profile: Configuration
@@ -4708,7 +4708,7 @@ class ClusterClusterAutoscaling(dict):
     @pulumi.getter(name="autoProvisioningLocations")
     def auto_provisioning_locations(self) -> Optional[Sequence[str]]:
         """
-        The list of Google Compute Engine 
+        The list of Google Compute Engine
         [zones](https://cloud.google.com/compute/docs/zones#available) in which the
         NodePool's nodes can be created by NAP.
         """
@@ -7841,7 +7841,7 @@ class ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig(dict):
                  certificate_authority_domain_configs: Optional[Sequence['outputs.ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig']] = None):
         """
         :param bool enabled: Enables private registry config. If set to false, all other fields in this object must not be set.
-        :param Sequence['ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs'] certificate_authority_domain_configs: List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+        :param Sequence['ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs'] certificate_authority_domain_configs: List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
         """
         pulumi.set(__self__, "enabled", enabled)
         if certificate_authority_domain_configs is not None:
@@ -7859,7 +7859,7 @@ class ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig(dict):
     @pulumi.getter(name="certificateAuthorityDomainConfigs")
     def certificate_authority_domain_configs(self) -> Optional[Sequence['outputs.ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig']]:
         """
-        List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+        List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
         """
         return pulumi.get(self, "certificate_authority_domain_configs")
 
@@ -9811,7 +9811,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAc
                  certificate_authority_domain_configs: Optional[Sequence['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig']] = None):
         """
         :param bool enabled: Enables private registry config. If set to false, all other fields in this object must not be set.
-        :param Sequence['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs'] certificate_authority_domain_configs: List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+        :param Sequence['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs'] certificate_authority_domain_configs: List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
         """
         pulumi.set(__self__, "enabled", enabled)
         if certificate_authority_domain_configs is not None:
@@ -9829,7 +9829,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAc
     @pulumi.getter(name="certificateAuthorityDomainConfigs")
     def certificate_authority_domain_configs(self) -> Optional[Sequence['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig']]:
         """
-        List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+        List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
         """
         return pulumi.get(self, "certificate_authority_domain_configs")
 
@@ -11154,7 +11154,7 @@ class ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig(dict)
                  certificate_authority_domain_configs: Optional[Sequence['outputs.ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig']] = None):
         """
         :param bool enabled: Enables private registry config. If set to false, all other fields in this object must not be set.
-        :param Sequence['ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs'] certificate_authority_domain_configs: List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+        :param Sequence['ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs'] certificate_authority_domain_configs: List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
         """
         pulumi.set(__self__, "enabled", enabled)
         if certificate_authority_domain_configs is not None:
@@ -11172,7 +11172,7 @@ class ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig(dict)
     @pulumi.getter(name="certificateAuthorityDomainConfigs")
     def certificate_authority_domain_configs(self) -> Optional[Sequence['outputs.ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig']]:
         """
-        List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+        List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
         """
         return pulumi.get(self, "certificate_authority_domain_configs")
 

@@ -33,6 +33,8 @@ __all__ = [
     'AppGroupAttributeArgsDict',
     'DeveloperAttributeArgs',
     'DeveloperAttributeArgsDict',
+    'DnsZonePeeringConfigArgs',
+    'DnsZonePeeringConfigArgsDict',
     'EnvironmentIamBindingConditionArgs',
     'EnvironmentIamBindingConditionArgsDict',
     'EnvironmentIamMemberConditionArgs',
@@ -580,6 +582,62 @@ class DeveloperAttributeArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class DnsZonePeeringConfigArgsDict(TypedDict):
+        target_network_id: pulumi.Input[str]
+        """
+        The name of the producer VPC network.
+
+        - - -
+        """
+        target_project_id: pulumi.Input[str]
+        """
+        The ID of the project that contains the producer VPC network.
+        """
+elif False:
+    DnsZonePeeringConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DnsZonePeeringConfigArgs:
+    def __init__(__self__, *,
+                 target_network_id: pulumi.Input[str],
+                 target_project_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] target_network_id: The name of the producer VPC network.
+               
+               - - -
+        :param pulumi.Input[str] target_project_id: The ID of the project that contains the producer VPC network.
+        """
+        pulumi.set(__self__, "target_network_id", target_network_id)
+        pulumi.set(__self__, "target_project_id", target_project_id)
+
+    @property
+    @pulumi.getter(name="targetNetworkId")
+    def target_network_id(self) -> pulumi.Input[str]:
+        """
+        The name of the producer VPC network.
+
+        - - -
+        """
+        return pulumi.get(self, "target_network_id")
+
+    @target_network_id.setter
+    def target_network_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_network_id", value)
+
+    @property
+    @pulumi.getter(name="targetProjectId")
+    def target_project_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the project that contains the producer VPC network.
+        """
+        return pulumi.get(self, "target_project_id")
+
+    @target_project_id.setter
+    def target_project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_project_id", value)
 
 
 if not MYPY:

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.redis.ClusterArgs;
 import com.pulumi.gcp.redis.inputs.ClusterState;
+import com.pulumi.gcp.redis.outputs.ClusterAutomatedBackupConfig;
 import com.pulumi.gcp.redis.outputs.ClusterCrossClusterReplicationConfig;
 import com.pulumi.gcp.redis.outputs.ClusterDiscoveryEndpoint;
 import com.pulumi.gcp.redis.outputs.ClusterMaintenancePolicy;
@@ -725,6 +726,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> authorizationMode() {
         return Codegen.optional(this.authorizationMode);
+    }
+    /**
+     * The automated backup config for a instance.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="automatedBackupConfig", refs={ClusterAutomatedBackupConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ClusterAutomatedBackupConfig> automatedBackupConfig;
+
+    /**
+     * @return The automated backup config for a instance.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ClusterAutomatedBackupConfig>> automatedBackupConfig() {
+        return Codegen.optional(this.automatedBackupConfig);
     }
     /**
      * The timestamp associated with the cluster creation request. A timestamp in

@@ -32,14 +32,14 @@ public final class ReservationAssignmentArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
+     * Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
      * 
      */
     @Import(name="jobType", required=true)
     private Output<String> jobType;
 
     /**
-     * @return Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
+     * @return Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
      * 
      */
     public Output<String> jobType() {
@@ -147,7 +147,7 @@ public final class ReservationAssignmentArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param jobType Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
+         * @param jobType Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class ReservationAssignmentArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param jobType Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
+         * @param jobType Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
          * 
          * @return builder
          * 

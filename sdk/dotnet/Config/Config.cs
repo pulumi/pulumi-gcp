@@ -627,6 +627,13 @@ namespace Pulumi.Gcp
             set => _eventarcCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<Pulumi.Gcp.Config.Types.ExternalCredentials?> _externalCredentials = new __Value<Pulumi.Gcp.Config.Types.ExternalCredentials?>(() => __config.GetObject<Pulumi.Gcp.Config.Types.ExternalCredentials>("externalCredentials"));
+        public static Pulumi.Gcp.Config.Types.ExternalCredentials? ExternalCredentials
+        {
+            get => _externalCredentials.Get();
+            set => _externalCredentials.Set(value);
+        }
+
         private static readonly __Value<string?> _filestoreCustomEndpoint = new __Value<string?>(() => __config.Get("filestoreCustomEndpoint"));
         public static string? FilestoreCustomEndpoint
         {
@@ -1383,6 +1390,13 @@ namespace Pulumi.Gcp
              {
                 public bool? EnableBatching { get; set; }
                 public string? SendAfter { get; set; } = null!;
+            }
+
+             public class ExternalCredentials
+             {
+                public string Audience { get; set; }
+                public string IdentityToken { get; set; }
+                public string ServiceAccountEmail { get; set; }
             }
         }
     }

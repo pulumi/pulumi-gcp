@@ -591,20 +591,30 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * (Optional, Deprecated)
      * Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
      * it will not appear in get listings. If not set the default behavior is determined by the
      * org policy, if there is no org policy specified, then it will default to disabled.
      * This field isn&#39;t supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
      * 
+     * &gt; **Warning:** This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.
+     * 
+     * @deprecated
+     * This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.
+     * 
      */
+    @Deprecated /* This field is being removed in favor of log_config. If log_config is present, flow logs are enabled. */
     @Export(name="enableFlowLogs", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableFlowLogs;
 
     /**
-     * @return Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
+     * @return (Optional, Deprecated)
+     * Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
      * it will not appear in get listings. If not set the default behavior is determined by the
      * org policy, if there is no org policy specified, then it will default to disabled.
      * This field isn&#39;t supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+     * 
+     * &gt; **Warning:** This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.
      * 
      */
     public Output<Boolean> enableFlowLogs() {
@@ -789,7 +799,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="logConfig", refs={SubnetworkLogConfig.class}, tree="[0]")
-    private Output<SubnetworkLogConfig> logConfig;
+    private Output</* @Nullable */ SubnetworkLogConfig> logConfig;
 
     /**
      * @return This field denotes the VPC flow logging options for this subnetwork. If
@@ -799,8 +809,8 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    public Output<SubnetworkLogConfig> logConfig() {
-        return this.logConfig;
+    public Output<Optional<SubnetworkLogConfig>> logConfig() {
+        return Codegen.optional(this.logConfig);
     }
     /**
      * The name of the resource, provided by the client when initially

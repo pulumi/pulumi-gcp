@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .rebalanceConfig(ClusterRebalanceConfigArgs.builder()
- *                 .mode("NO_REBALANCE")
+ *                 .mode("AUTO_REBALANCE_ON_SCALE_UP")
  *                 .build())
  *             .labels(Map.of("key", "value"))
  *             .build());

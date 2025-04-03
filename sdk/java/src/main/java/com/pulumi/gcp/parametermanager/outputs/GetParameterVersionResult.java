@@ -27,6 +27,11 @@ public final class GetParameterVersionResult {
      */
     private String id;
     /**
+     * @return The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+     * 
+     */
+    private String kmsKeyVersion;
+    /**
      * @return The resource name of the ParameterVersion. Format:
      * `projects/{{project}}/locations/global/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
      * 
@@ -67,6 +72,13 @@ public final class GetParameterVersionResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+     * 
+     */
+    public String kmsKeyVersion() {
+        return this.kmsKeyVersion;
     }
     /**
      * @return The resource name of the ParameterVersion. Format:
@@ -112,6 +124,7 @@ public final class GetParameterVersionResult {
         private String createTime;
         private Boolean disabled;
         private String id;
+        private String kmsKeyVersion;
         private String name;
         private String parameter;
         private String parameterData;
@@ -124,6 +137,7 @@ public final class GetParameterVersionResult {
     	      this.createTime = defaults.createTime;
     	      this.disabled = defaults.disabled;
     	      this.id = defaults.id;
+    	      this.kmsKeyVersion = defaults.kmsKeyVersion;
     	      this.name = defaults.name;
     	      this.parameter = defaults.parameter;
     	      this.parameterData = defaults.parameterData;
@@ -154,6 +168,14 @@ public final class GetParameterVersionResult {
               throw new MissingRequiredPropertyException("GetParameterVersionResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder kmsKeyVersion(String kmsKeyVersion) {
+            if (kmsKeyVersion == null) {
+              throw new MissingRequiredPropertyException("GetParameterVersionResult", "kmsKeyVersion");
+            }
+            this.kmsKeyVersion = kmsKeyVersion;
             return this;
         }
         @CustomType.Setter
@@ -209,6 +231,7 @@ public final class GetParameterVersionResult {
             _resultValue.createTime = createTime;
             _resultValue.disabled = disabled;
             _resultValue.id = id;
+            _resultValue.kmsKeyVersion = kmsKeyVersion;
             _resultValue.name = name;
             _resultValue.parameter = parameter;
             _resultValue.parameterData = parameterData;

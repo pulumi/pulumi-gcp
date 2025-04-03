@@ -337,6 +337,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Disable L4 load balancer VPC firewalls to enable firewall policies.
+     * 
+     */
+    @Import(name="disableL4LbFirewallReconciliation")
+    private @Nullable Output<Boolean> disableL4LbFirewallReconciliation;
+
+    /**
+     * @return Disable L4 load balancer VPC firewalls to enable firewall policies.
+     * 
+     */
+    public Optional<Output<Boolean>> disableL4LbFirewallReconciliation() {
+        return Optional.ofNullable(this.disableL4LbFirewallReconciliation);
+    }
+
+    /**
      * Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
      * 
      */
@@ -1604,6 +1619,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.defaultSnatStatus = $.defaultSnatStatus;
         this.deletionProtection = $.deletionProtection;
         this.description = $.description;
+        this.disableL4LbFirewallReconciliation = $.disableL4LbFirewallReconciliation;
         this.dnsConfig = $.dnsConfig;
         this.effectiveLabels = $.effectiveLabels;
         this.enableAutopilot = $.enableAutopilot;
@@ -2055,6 +2071,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param disableL4LbFirewallReconciliation Disable L4 load balancer VPC firewalls to enable firewall policies.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableL4LbFirewallReconciliation(@Nullable Output<Boolean> disableL4LbFirewallReconciliation) {
+            $.disableL4LbFirewallReconciliation = disableL4LbFirewallReconciliation;
+            return this;
+        }
+
+        /**
+         * @param disableL4LbFirewallReconciliation Disable L4 load balancer VPC firewalls to enable firewall policies.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableL4LbFirewallReconciliation(Boolean disableL4LbFirewallReconciliation) {
+            return disableL4LbFirewallReconciliation(Output.of(disableL4LbFirewallReconciliation));
         }
 
         /**

@@ -15,6 +15,8 @@ namespace Pulumi.Gcp.Compute.Outputs
     {
         /// <summary>
         /// User-specified description for the IP range.
+        /// 
+        /// &lt;a name="nested_md5_authentication_keys"&gt;&lt;/a&gt;The `md5_authentication_keys` block supports:
         /// </summary>
         public readonly string? Description;
         /// <summary>

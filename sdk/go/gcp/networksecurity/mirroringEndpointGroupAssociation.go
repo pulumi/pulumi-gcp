@@ -130,10 +130,17 @@ type MirroringEndpointGroupAssociation struct {
 	//
 	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
+	// The list of locations where the association is configured. This information
+	// is retrieved from the linked endpoint group.
+	// Structure is documented below.
+	Locations MirroringEndpointGroupAssociationLocationArrayOutput `pulumi:"locations"`
+	// (Deprecated)
 	// The list of locations where the association is present. This information
 	// is retrieved from the linked endpoint group, and not configured as part
 	// of the association itself.
 	// Structure is documented below.
+	//
+	// Deprecated: `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
 	LocationsDetails MirroringEndpointGroupAssociationLocationsDetailArrayOutput `pulumi:"locationsDetails"`
 	// The endpoint group that this association is connected to, for example:
 	// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
@@ -231,10 +238,17 @@ type mirroringEndpointGroupAssociationState struct {
 	//
 	// ***
 	Location *string `pulumi:"location"`
+	// The list of locations where the association is configured. This information
+	// is retrieved from the linked endpoint group.
+	// Structure is documented below.
+	Locations []MirroringEndpointGroupAssociationLocation `pulumi:"locations"`
+	// (Deprecated)
 	// The list of locations where the association is present. This information
 	// is retrieved from the linked endpoint group, and not configured as part
 	// of the association itself.
 	// Structure is documented below.
+	//
+	// Deprecated: `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
 	LocationsDetails []MirroringEndpointGroupAssociationLocationsDetail `pulumi:"locationsDetails"`
 	// The endpoint group that this association is connected to, for example:
 	// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
@@ -289,10 +303,17 @@ type MirroringEndpointGroupAssociationState struct {
 	//
 	// ***
 	Location pulumi.StringPtrInput
+	// The list of locations where the association is configured. This information
+	// is retrieved from the linked endpoint group.
+	// Structure is documented below.
+	Locations MirroringEndpointGroupAssociationLocationArrayInput
+	// (Deprecated)
 	// The list of locations where the association is present. This information
 	// is retrieved from the linked endpoint group, and not configured as part
 	// of the association itself.
 	// Structure is documented below.
+	//
+	// Deprecated: `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
 	LocationsDetails MirroringEndpointGroupAssociationLocationsDetailArrayInput
 	// The endpoint group that this association is connected to, for example:
 	// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
@@ -502,10 +523,22 @@ func (o MirroringEndpointGroupAssociationOutput) Location() pulumi.StringOutput 
 	return o.ApplyT(func(v *MirroringEndpointGroupAssociation) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
+// The list of locations where the association is configured. This information
+// is retrieved from the linked endpoint group.
+// Structure is documented below.
+func (o MirroringEndpointGroupAssociationOutput) Locations() MirroringEndpointGroupAssociationLocationArrayOutput {
+	return o.ApplyT(func(v *MirroringEndpointGroupAssociation) MirroringEndpointGroupAssociationLocationArrayOutput {
+		return v.Locations
+	}).(MirroringEndpointGroupAssociationLocationArrayOutput)
+}
+
+// (Deprecated)
 // The list of locations where the association is present. This information
 // is retrieved from the linked endpoint group, and not configured as part
 // of the association itself.
 // Structure is documented below.
+//
+// Deprecated: `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
 func (o MirroringEndpointGroupAssociationOutput) LocationsDetails() MirroringEndpointGroupAssociationLocationsDetailArrayOutput {
 	return o.ApplyT(func(v *MirroringEndpointGroupAssociation) MirroringEndpointGroupAssociationLocationsDetailArrayOutput {
 		return v.LocationsDetails

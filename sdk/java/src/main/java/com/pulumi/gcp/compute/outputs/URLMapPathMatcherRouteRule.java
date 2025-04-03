@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.outputs.URLMapPathMatcherRouteRuleCustomErrorResponsePolicy;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherRouteRuleHeaderAction;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherRouteRuleMatchRule;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherRouteRuleRouteAction;
@@ -18,6 +19,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class URLMapPathMatcherRouteRule {
+    /**
+     * @return customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable URLMapPathMatcherRouteRuleCustomErrorResponsePolicy customErrorResponsePolicy;
     /**
      * @return Specifies changes to request and response headers that need to take effect for
      * the selected backendService. The headerAction specified here are applied before
@@ -82,6 +89,14 @@ public final class URLMapPathMatcherRouteRule {
     private @Nullable URLMapPathMatcherRouteRuleUrlRedirect urlRedirect;
 
     private URLMapPathMatcherRouteRule() {}
+    /**
+     * @return customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<URLMapPathMatcherRouteRuleCustomErrorResponsePolicy> customErrorResponsePolicy() {
+        return Optional.ofNullable(this.customErrorResponsePolicy);
+    }
     /**
      * @return Specifies changes to request and response headers that need to take effect for
      * the selected backendService. The headerAction specified here are applied before
@@ -166,6 +181,7 @@ public final class URLMapPathMatcherRouteRule {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable URLMapPathMatcherRouteRuleCustomErrorResponsePolicy customErrorResponsePolicy;
         private @Nullable URLMapPathMatcherRouteRuleHeaderAction headerAction;
         private @Nullable List<URLMapPathMatcherRouteRuleMatchRule> matchRules;
         private Integer priority;
@@ -175,6 +191,7 @@ public final class URLMapPathMatcherRouteRule {
         public Builder() {}
         public Builder(URLMapPathMatcherRouteRule defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.customErrorResponsePolicy = defaults.customErrorResponsePolicy;
     	      this.headerAction = defaults.headerAction;
     	      this.matchRules = defaults.matchRules;
     	      this.priority = defaults.priority;
@@ -183,6 +200,12 @@ public final class URLMapPathMatcherRouteRule {
     	      this.urlRedirect = defaults.urlRedirect;
         }
 
+        @CustomType.Setter
+        public Builder customErrorResponsePolicy(@Nullable URLMapPathMatcherRouteRuleCustomErrorResponsePolicy customErrorResponsePolicy) {
+
+            this.customErrorResponsePolicy = customErrorResponsePolicy;
+            return this;
+        }
         @CustomType.Setter
         public Builder headerAction(@Nullable URLMapPathMatcherRouteRuleHeaderAction headerAction) {
 
@@ -226,6 +249,7 @@ public final class URLMapPathMatcherRouteRule {
         }
         public URLMapPathMatcherRouteRule build() {
             final var _resultValue = new URLMapPathMatcherRouteRule();
+            _resultValue.customErrorResponsePolicy = customErrorResponsePolicy;
             _resultValue.headerAction = headerAction;
             _resultValue.matchRules = matchRules;
             _resultValue.priority = priority;

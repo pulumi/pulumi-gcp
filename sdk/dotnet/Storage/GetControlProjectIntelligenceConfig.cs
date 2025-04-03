@@ -11,12 +11,87 @@ namespace Pulumi.Gcp.Storage
 {
     public static class GetControlProjectIntelligenceConfig
     {
+        /// <summary>
+        /// Use this data source to get information about a Project Storage Intelligence config resource.
+        /// See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
+        /// and
+        /// [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sample_config = Gcp.Storage.GetControlProjectIntelligenceConfig.Invoke(new()
+        ///     {
+        ///         Name = "my-project",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetControlProjectIntelligenceConfigResult> InvokeAsync(GetControlProjectIntelligenceConfigArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetControlProjectIntelligenceConfigResult>("gcp:storage/getControlProjectIntelligenceConfig:getControlProjectIntelligenceConfig", args ?? new GetControlProjectIntelligenceConfigArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get information about a Project Storage Intelligence config resource.
+        /// See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
+        /// and
+        /// [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sample_config = Gcp.Storage.GetControlProjectIntelligenceConfig.Invoke(new()
+        ///     {
+        ///         Name = "my-project",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetControlProjectIntelligenceConfigResult> Invoke(GetControlProjectIntelligenceConfigInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetControlProjectIntelligenceConfigResult>("gcp:storage/getControlProjectIntelligenceConfig:getControlProjectIntelligenceConfig", args ?? new GetControlProjectIntelligenceConfigInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get information about a Project Storage Intelligence config resource.
+        /// See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
+        /// and
+        /// [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sample_config = Gcp.Storage.GetControlProjectIntelligenceConfig.Invoke(new()
+        ///     {
+        ///         Name = "my-project",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetControlProjectIntelligenceConfigResult> Invoke(GetControlProjectIntelligenceConfigInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetControlProjectIntelligenceConfigResult>("gcp:storage/getControlProjectIntelligenceConfig:getControlProjectIntelligenceConfig", args ?? new GetControlProjectIntelligenceConfigInvokeArgs(), options.WithDefaults());
     }
@@ -24,6 +99,9 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class GetControlProjectIntelligenceConfigArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name or number of the GCP project.
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -35,6 +113,9 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class GetControlProjectIntelligenceConfigInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name or number of the GCP project.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 

@@ -29,11 +29,15 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// Password for the Oracle connection.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        public readonly string Password;
+        public readonly string? Password;
         /// <summary>
         /// Port for the Oracle connection.
         /// </summary>
         public readonly int? Port;
+        /// <summary>
+        /// A reference to a Secret Manager resource name storing the user's password.
+        /// </summary>
+        public readonly string? SecretManagerStoredPassword;
         /// <summary>
         /// Username for the Oracle connection.
         /// </summary>
@@ -47,9 +51,11 @@ namespace Pulumi.Gcp.Datastream.Outputs
 
             string hostname,
 
-            string password,
+            string? password,
 
             int? port,
+
+            string? secretManagerStoredPassword,
 
             string username)
         {
@@ -58,6 +64,7 @@ namespace Pulumi.Gcp.Datastream.Outputs
             Hostname = hostname;
             Password = password;
             Port = port;
+            SecretManagerStoredPassword = secretManagerStoredPassword;
             Username = username;
         }
     }

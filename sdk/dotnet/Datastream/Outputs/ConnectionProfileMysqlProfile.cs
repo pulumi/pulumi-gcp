@@ -21,11 +21,15 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// Password for the MySQL connection.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        public readonly string Password;
+        public readonly string? Password;
         /// <summary>
         /// Port for the MySQL connection.
         /// </summary>
         public readonly int? Port;
+        /// <summary>
+        /// A reference to a Secret Manager resource name storing the user's password.
+        /// </summary>
+        public readonly string? SecretManagerStoredPassword;
         /// <summary>
         /// SSL configuration for the MySQL connection.
         /// Structure is documented below.
@@ -40,9 +44,11 @@ namespace Pulumi.Gcp.Datastream.Outputs
         private ConnectionProfileMysqlProfile(
             string hostname,
 
-            string password,
+            string? password,
 
             int? port,
+
+            string? secretManagerStoredPassword,
 
             Outputs.ConnectionProfileMysqlProfileSslConfig? sslConfig,
 
@@ -51,6 +57,7 @@ namespace Pulumi.Gcp.Datastream.Outputs
             Hostname = hostname;
             Password = password;
             Port = port;
+            SecretManagerStoredPassword = secretManagerStoredPassword;
             SslConfig = sslConfig;
             Username = username;
         }

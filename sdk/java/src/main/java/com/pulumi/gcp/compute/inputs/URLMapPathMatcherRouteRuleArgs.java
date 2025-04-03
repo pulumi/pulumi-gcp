@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleCustomErrorResponsePolicyArgs;
 import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleHeaderActionArgs;
 import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleMatchRuleArgs;
 import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleRouteActionArgs;
@@ -21,6 +22,23 @@ import javax.annotation.Nullable;
 public final class URLMapPathMatcherRouteRuleArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final URLMapPathMatcherRouteRuleArgs Empty = new URLMapPathMatcherRouteRuleArgs();
+
+    /**
+     * customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="customErrorResponsePolicy")
+    private @Nullable Output<URLMapPathMatcherRouteRuleCustomErrorResponsePolicyArgs> customErrorResponsePolicy;
+
+    /**
+     * @return customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<URLMapPathMatcherRouteRuleCustomErrorResponsePolicyArgs>> customErrorResponsePolicy() {
+        return Optional.ofNullable(this.customErrorResponsePolicy);
+    }
 
     /**
      * Specifies changes to request and response headers that need to take effect for
@@ -179,6 +197,7 @@ public final class URLMapPathMatcherRouteRuleArgs extends com.pulumi.resources.R
     private URLMapPathMatcherRouteRuleArgs() {}
 
     private URLMapPathMatcherRouteRuleArgs(URLMapPathMatcherRouteRuleArgs $) {
+        this.customErrorResponsePolicy = $.customErrorResponsePolicy;
         this.headerAction = $.headerAction;
         this.matchRules = $.matchRules;
         this.priority = $.priority;
@@ -203,6 +222,29 @@ public final class URLMapPathMatcherRouteRuleArgs extends com.pulumi.resources.R
 
         public Builder(URLMapPathMatcherRouteRuleArgs defaults) {
             $ = new URLMapPathMatcherRouteRuleArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param customErrorResponsePolicy customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customErrorResponsePolicy(@Nullable Output<URLMapPathMatcherRouteRuleCustomErrorResponsePolicyArgs> customErrorResponsePolicy) {
+            $.customErrorResponsePolicy = customErrorResponsePolicy;
+            return this;
+        }
+
+        /**
+         * @param customErrorResponsePolicy customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customErrorResponsePolicy(URLMapPathMatcherRouteRuleCustomErrorResponsePolicyArgs customErrorResponsePolicy) {
+            return customErrorResponsePolicy(Output.of(customErrorResponsePolicy));
         }
 
         /**

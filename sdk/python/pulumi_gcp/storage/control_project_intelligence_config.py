@@ -26,7 +26,7 @@ class ControlProjectIntelligenceConfigArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ControlProjectIntelligenceConfig resource.
-        :param pulumi.Input[str] edition_config: Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED and STANDARD.
+        :param pulumi.Input[str] edition_config: Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
         :param pulumi.Input['ControlProjectIntelligenceConfigFilterArgs'] filter: Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
                Structure is documented below.
         :param pulumi.Input[str] name: Identifier of the GCP project. For GCP project, this field can be project name or project number.
@@ -45,7 +45,7 @@ class ControlProjectIntelligenceConfigArgs:
     @pulumi.getter(name="editionConfig")
     def edition_config(self) -> Optional[pulumi.Input[str]]:
         """
-        Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED and STANDARD.
+        Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
         """
         return pulumi.get(self, "edition_config")
 
@@ -92,7 +92,7 @@ class _ControlProjectIntelligenceConfigState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ControlProjectIntelligenceConfig resources.
-        :param pulumi.Input[str] edition_config: Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED and STANDARD.
+        :param pulumi.Input[str] edition_config: Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
         :param pulumi.Input[Sequence[pulumi.Input['ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs']]] effective_intelligence_configs: The Intelligence config that is effective for the resource.
                Structure is documented below.
         :param pulumi.Input['ControlProjectIntelligenceConfigFilterArgs'] filter: Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
@@ -118,7 +118,7 @@ class _ControlProjectIntelligenceConfigState:
     @pulumi.getter(name="editionConfig")
     def edition_config(self) -> Optional[pulumi.Input[str]]:
         """
-        Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED and STANDARD.
+        Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
         """
         return pulumi.get(self, "edition_config")
 
@@ -190,6 +190,27 @@ class ControlProjectIntelligenceConfig(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ### Storage Control Project Intelligence Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.storage.ControlProjectIntelligenceConfig("example",
+            name="test-project",
+            edition_config="TRIAL",
+            filter={
+                "included_cloud_storage_buckets": {
+                    "bucket_id_regexes": [
+                        "test-id-1*",
+                        "test-id-2*",
+                    ],
+                },
+            })
+        ```
+
         ## Import
 
         ProjectIntelligenceConfig can be imported using any of these accepted formats:
@@ -210,7 +231,7 @@ class ControlProjectIntelligenceConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] edition_config: Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED and STANDARD.
+        :param pulumi.Input[str] edition_config: Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
         :param pulumi.Input[Union['ControlProjectIntelligenceConfigFilterArgs', 'ControlProjectIntelligenceConfigFilterArgsDict']] filter: Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
                Structure is documented below.
         :param pulumi.Input[str] name: Identifier of the GCP project. For GCP project, this field can be project name or project number.
@@ -225,6 +246,27 @@ class ControlProjectIntelligenceConfig(pulumi.CustomResource):
                  args: Optional[ControlProjectIntelligenceConfigArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ### Storage Control Project Intelligence Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.storage.ControlProjectIntelligenceConfig("example",
+            name="test-project",
+            edition_config="TRIAL",
+            filter={
+                "included_cloud_storage_buckets": {
+                    "bucket_id_regexes": [
+                        "test-id-1*",
+                        "test-id-2*",
+                    ],
+                },
+            })
+        ```
+
         ## Import
 
         ProjectIntelligenceConfig can be imported using any of these accepted formats:
@@ -297,7 +339,7 @@ class ControlProjectIntelligenceConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] edition_config: Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED and STANDARD.
+        :param pulumi.Input[str] edition_config: Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs', 'ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgsDict']]]] effective_intelligence_configs: The Intelligence config that is effective for the resource.
                Structure is documented below.
         :param pulumi.Input[Union['ControlProjectIntelligenceConfigFilterArgs', 'ControlProjectIntelligenceConfigFilterArgsDict']] filter: Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
@@ -323,7 +365,7 @@ class ControlProjectIntelligenceConfig(pulumi.CustomResource):
     @pulumi.getter(name="editionConfig")
     def edition_config(self) -> pulumi.Output[str]:
         """
-        Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED and STANDARD.
+        Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
         """
         return pulumi.get(self, "edition_config")
 

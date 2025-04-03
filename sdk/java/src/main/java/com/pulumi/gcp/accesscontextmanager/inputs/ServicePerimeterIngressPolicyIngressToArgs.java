@@ -65,11 +65,31 @@ public final class ServicePerimeterIngressPolicyIngressToArgs extends com.pulumi
         return Optional.ofNullable(this.resources);
     }
 
+    /**
+     * A list of IAM roles that represent the set of operations that the sources
+     * specified in the corresponding `IngressFrom`
+     * are allowed to perform.
+     * 
+     */
+    @Import(name="roles")
+    private @Nullable Output<List<String>> roles;
+
+    /**
+     * @return A list of IAM roles that represent the set of operations that the sources
+     * specified in the corresponding `IngressFrom`
+     * are allowed to perform.
+     * 
+     */
+    public Optional<Output<List<String>>> roles() {
+        return Optional.ofNullable(this.roles);
+    }
+
     private ServicePerimeterIngressPolicyIngressToArgs() {}
 
     private ServicePerimeterIngressPolicyIngressToArgs(ServicePerimeterIngressPolicyIngressToArgs $) {
         this.operations = $.operations;
         this.resources = $.resources;
+        this.roles = $.roles;
     }
 
     public static Builder builder() {
@@ -177,6 +197,43 @@ public final class ServicePerimeterIngressPolicyIngressToArgs extends com.pulumi
          */
         public Builder resources(String... resources) {
             return resources(List.of(resources));
+        }
+
+        /**
+         * @param roles A list of IAM roles that represent the set of operations that the sources
+         * specified in the corresponding `IngressFrom`
+         * are allowed to perform.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roles(@Nullable Output<List<String>> roles) {
+            $.roles = roles;
+            return this;
+        }
+
+        /**
+         * @param roles A list of IAM roles that represent the set of operations that the sources
+         * specified in the corresponding `IngressFrom`
+         * are allowed to perform.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roles(List<String> roles) {
+            return roles(Output.of(roles));
+        }
+
+        /**
+         * @param roles A list of IAM roles that represent the set of operations that the sources
+         * specified in the corresponding `IngressFrom`
+         * are allowed to perform.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roles(String... roles) {
+            return roles(List.of(roles));
         }
 
         public ServicePerimeterIngressPolicyIngressToArgs build() {

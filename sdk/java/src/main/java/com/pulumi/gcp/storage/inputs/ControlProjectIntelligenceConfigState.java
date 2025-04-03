@@ -19,14 +19,14 @@ public final class ControlProjectIntelligenceConfigState extends com.pulumi.reso
     public static final ControlProjectIntelligenceConfigState Empty = new ControlProjectIntelligenceConfigState();
 
     /**
-     * Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED and STANDARD.
+     * Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
      * 
      */
     @Import(name="editionConfig")
     private @Nullable Output<String> editionConfig;
 
     /**
-     * @return Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED and STANDARD.
+     * @return Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
      * 
      */
     public Optional<Output<String>> editionConfig() {
@@ -130,7 +130,7 @@ public final class ControlProjectIntelligenceConfigState extends com.pulumi.reso
         }
 
         /**
-         * @param editionConfig Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED and STANDARD.
+         * @param editionConfig Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ControlProjectIntelligenceConfigState extends com.pulumi.reso
         }
 
         /**
-         * @param editionConfig Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED and STANDARD.
+         * @param editionConfig Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
          * 
          * @return builder
          * 

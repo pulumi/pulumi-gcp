@@ -400,6 +400,8 @@ type GetParametersParameter struct {
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The format type of the parameter.
 	Format string `pulumi:"format"`
+	// The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+	KmsKey string `pulumi:"kmsKey"`
 	// The labels assigned to the parameter.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name of the parameter. Format: `projects/{{project}}/locations/global/parameters/{{parameter_id}}`
@@ -434,6 +436,8 @@ type GetParametersParameterArgs struct {
 	EffectiveLabels pulumi.StringMapInput `pulumi:"effectiveLabels"`
 	// The format type of the parameter.
 	Format pulumi.StringInput `pulumi:"format"`
+	// The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+	KmsKey pulumi.StringInput `pulumi:"kmsKey"`
 	// The labels assigned to the parameter.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The resource name of the parameter. Format: `projects/{{project}}/locations/global/parameters/{{parameter_id}}`
@@ -514,6 +518,11 @@ func (o GetParametersParameterOutput) EffectiveLabels() pulumi.StringMapOutput {
 // The format type of the parameter.
 func (o GetParametersParameterOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v GetParametersParameter) string { return v.Format }).(pulumi.StringOutput)
+}
+
+// The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+func (o GetParametersParameterOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetParametersParameter) string { return v.KmsKey }).(pulumi.StringOutput)
 }
 
 // The labels assigned to the parameter.

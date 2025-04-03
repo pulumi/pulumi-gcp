@@ -54,7 +54,7 @@ import (
 //					},
 //				},
 //				RebalanceConfig: &managedkafka.ClusterRebalanceConfigArgs{
-//					Mode: pulumi.String("NO_REBALANCE"),
+//					Mode: pulumi.String("AUTO_REBALANCE_ON_SCALE_UP"),
 //				},
 //				Labels: pulumi.StringMap{
 //					"key": pulumi.String("value"),

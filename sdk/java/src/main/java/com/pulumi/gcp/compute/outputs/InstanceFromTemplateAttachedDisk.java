@@ -18,17 +18,27 @@ public final class InstanceFromTemplateAttachedDisk {
      */
     private @Nullable String deviceName;
     /**
-     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
      * 
      */
     private @Nullable String diskEncryptionKeyRaw;
+    /**
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
+     * 
+     */
+    private @Nullable String diskEncryptionKeyRsa;
     /**
      * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
      * 
      */
     private @Nullable String diskEncryptionKeySha256;
     /**
-     * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * @return The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+     * 
+     */
+    private @Nullable String diskEncryptionServiceAccount;
+    /**
+     * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
      * 
      */
     private @Nullable String kmsKeySelfLink;
@@ -52,11 +62,18 @@ public final class InstanceFromTemplateAttachedDisk {
         return Optional.ofNullable(this.deviceName);
     }
     /**
-     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
      * 
      */
     public Optional<String> diskEncryptionKeyRaw() {
         return Optional.ofNullable(this.diskEncryptionKeyRaw);
+    }
+    /**
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
+     * 
+     */
+    public Optional<String> diskEncryptionKeyRsa() {
+        return Optional.ofNullable(this.diskEncryptionKeyRsa);
     }
     /**
      * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
@@ -66,7 +83,14 @@ public final class InstanceFromTemplateAttachedDisk {
         return Optional.ofNullable(this.diskEncryptionKeySha256);
     }
     /**
-     * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * @return The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+     * 
+     */
+    public Optional<String> diskEncryptionServiceAccount() {
+        return Optional.ofNullable(this.diskEncryptionServiceAccount);
+    }
+    /**
+     * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
      * 
      */
     public Optional<String> kmsKeySelfLink() {
@@ -98,7 +122,9 @@ public final class InstanceFromTemplateAttachedDisk {
     public static final class Builder {
         private @Nullable String deviceName;
         private @Nullable String diskEncryptionKeyRaw;
+        private @Nullable String diskEncryptionKeyRsa;
         private @Nullable String diskEncryptionKeySha256;
+        private @Nullable String diskEncryptionServiceAccount;
         private @Nullable String kmsKeySelfLink;
         private @Nullable String mode;
         private String source;
@@ -107,7 +133,9 @@ public final class InstanceFromTemplateAttachedDisk {
     	      Objects.requireNonNull(defaults);
     	      this.deviceName = defaults.deviceName;
     	      this.diskEncryptionKeyRaw = defaults.diskEncryptionKeyRaw;
+    	      this.diskEncryptionKeyRsa = defaults.diskEncryptionKeyRsa;
     	      this.diskEncryptionKeySha256 = defaults.diskEncryptionKeySha256;
+    	      this.diskEncryptionServiceAccount = defaults.diskEncryptionServiceAccount;
     	      this.kmsKeySelfLink = defaults.kmsKeySelfLink;
     	      this.mode = defaults.mode;
     	      this.source = defaults.source;
@@ -126,9 +154,21 @@ public final class InstanceFromTemplateAttachedDisk {
             return this;
         }
         @CustomType.Setter
+        public Builder diskEncryptionKeyRsa(@Nullable String diskEncryptionKeyRsa) {
+
+            this.diskEncryptionKeyRsa = diskEncryptionKeyRsa;
+            return this;
+        }
+        @CustomType.Setter
         public Builder diskEncryptionKeySha256(@Nullable String diskEncryptionKeySha256) {
 
             this.diskEncryptionKeySha256 = diskEncryptionKeySha256;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder diskEncryptionServiceAccount(@Nullable String diskEncryptionServiceAccount) {
+
+            this.diskEncryptionServiceAccount = diskEncryptionServiceAccount;
             return this;
         }
         @CustomType.Setter
@@ -155,7 +195,9 @@ public final class InstanceFromTemplateAttachedDisk {
             final var _resultValue = new InstanceFromTemplateAttachedDisk();
             _resultValue.deviceName = deviceName;
             _resultValue.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
+            _resultValue.diskEncryptionKeyRsa = diskEncryptionKeyRsa;
             _resultValue.diskEncryptionKeySha256 = diskEncryptionKeySha256;
+            _resultValue.diskEncryptionServiceAccount = diskEncryptionServiceAccount;
             _resultValue.kmsKeySelfLink = kmsKeySelfLink;
             _resultValue.mode = mode;
             _resultValue.source = source;

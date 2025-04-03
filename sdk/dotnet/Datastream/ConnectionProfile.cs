@@ -417,6 +417,35 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// ### Datastream Connection Profile Postgres Secret Manager
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Datastream.ConnectionProfile("default", new()
+    ///     {
+    ///         DisplayName = "Postgres Source With Secret Manager",
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "source-profile",
+    ///         CreateWithoutValidation = true,
+    ///         PostgresqlProfile = new Gcp.Datastream.Inputs.ConnectionProfilePostgresqlProfileArgs
+    ///         {
+    ///             Hostname = "fake-hostname",
+    ///             Port = 3306,
+    ///             Username = "fake-username",
+    ///             SecretManagerStoredPassword = "projects/fake-project/secrets/fake-secret/versions/1",
+    ///             Database = "fake-database",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ConnectionProfile can be imported using any of these accepted formats:

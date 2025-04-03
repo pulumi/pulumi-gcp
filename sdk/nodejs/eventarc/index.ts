@@ -10,6 +10,11 @@ export type Channel = import("./channel").Channel;
 export const Channel: typeof import("./channel").Channel = null as any;
 utilities.lazyLoad(exports, ["Channel"], () => require("./channel"));
 
+export { EnrollmentArgs, EnrollmentState } from "./enrollment";
+export type Enrollment = import("./enrollment").Enrollment;
+export const Enrollment: typeof import("./enrollment").Enrollment = null as any;
+utilities.lazyLoad(exports, ["Enrollment"], () => require("./enrollment"));
+
 export { GoogleApiSourceArgs, GoogleApiSourceState } from "./googleApiSource";
 export type GoogleApiSource = import("./googleApiSource").GoogleApiSource;
 export const GoogleApiSource: typeof import("./googleApiSource").GoogleApiSource = null as any;
@@ -42,6 +47,8 @@ const _module = {
         switch (type) {
             case "gcp:eventarc/channel:Channel":
                 return new Channel(name, <any>undefined, { urn })
+            case "gcp:eventarc/enrollment:Enrollment":
+                return new Enrollment(name, <any>undefined, { urn })
             case "gcp:eventarc/googleApiSource:GoogleApiSource":
                 return new GoogleApiSource(name, <any>undefined, { urn })
             case "gcp:eventarc/googleChannelConfig:GoogleChannelConfig":
@@ -58,6 +65,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "eventarc/channel", _module)
+pulumi.runtime.registerResourceModule("gcp", "eventarc/enrollment", _module)
 pulumi.runtime.registerResourceModule("gcp", "eventarc/googleApiSource", _module)
 pulumi.runtime.registerResourceModule("gcp", "eventarc/googleChannelConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "eventarc/messageBus", _module)

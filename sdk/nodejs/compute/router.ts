@@ -142,6 +142,11 @@ export class Router extends pulumi.CustomResource {
      */
     public readonly encryptedInterconnectRouter!: pulumi.Output<boolean | undefined>;
     /**
+     * Keys used for MD5 authentication.
+     * Structure is documented below.
+     */
+    public readonly md5AuthenticationKeys!: pulumi.Output<outputs.compute.RouterMd5AuthenticationKeys | undefined>;
+    /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters
      * long and match the regular expression `a-z?`
@@ -188,6 +193,7 @@ export class Router extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["encryptedInterconnectRouter"] = state ? state.encryptedInterconnectRouter : undefined;
+            resourceInputs["md5AuthenticationKeys"] = state ? state.md5AuthenticationKeys : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -201,6 +207,7 @@ export class Router extends pulumi.CustomResource {
             resourceInputs["bgp"] = args ? args.bgp : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["encryptedInterconnectRouter"] = args ? args.encryptedInterconnectRouter : undefined;
+            resourceInputs["md5AuthenticationKeys"] = args ? args.md5AuthenticationKeys : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -235,6 +242,11 @@ export interface RouterState {
      * attachments (interconnectAttachments).
      */
     encryptedInterconnectRouter?: pulumi.Input<boolean>;
+    /**
+     * Keys used for MD5 authentication.
+     * Structure is documented below.
+     */
+    md5AuthenticationKeys?: pulumi.Input<inputs.compute.RouterMd5AuthenticationKeys>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -284,6 +296,11 @@ export interface RouterArgs {
      * attachments (interconnectAttachments).
      */
     encryptedInterconnectRouter?: pulumi.Input<boolean>;
+    /**
+     * Keys used for MD5 authentication.
+     * Structure is documented below.
+     */
+    md5AuthenticationKeys?: pulumi.Input<inputs.compute.RouterMd5AuthenticationKeys>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters

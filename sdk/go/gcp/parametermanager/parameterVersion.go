@@ -12,6 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Parameter Version resource that stores the actual value of the parameter.
+//
+// To get more information about ParameterVersion, see:
+//
+// * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions)
+//
 // ## Example Usage
 //
 // ### Parameter Version Basic
@@ -91,6 +97,45 @@ import (
 //	}
 //
 // ```
+// ### Parameter Version With Kms Key
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			parameter_basic, err := parametermanager.NewParameter(ctx, "parameter-basic", &parametermanager.ParameterArgs{
+//				ParameterId: pulumi.String("parameter"),
+//				KmsKey:      pulumi.String("kms-key"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = parametermanager.NewParameterVersion(ctx, "parameter-version-with-kms-key", &parametermanager.ParameterVersionArgs{
+//				Parameter:          parameter_basic.ID(),
+//				ParameterVersionId: pulumi.String("parameter_version"),
+//				ParameterData:      pulumi.String("app-parameter-version-data"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Import
 //
 // ParameterVersion can be imported using any of these accepted formats:
@@ -109,6 +154,9 @@ type ParameterVersion struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The current state of Parameter Version. This field is only applicable for updating Parameter Version.
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
+	// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
+	// `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+	KmsKeyVersion pulumi.StringOutput `pulumi:"kmsKeyVersion"`
 	// The resource name of the Parameter Version. Format:
 	// `projects/{{project}}/locations/global/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -175,6 +223,9 @@ type parameterVersionState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The current state of Parameter Version. This field is only applicable for updating Parameter Version.
 	Disabled *bool `pulumi:"disabled"`
+	// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
+	// `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+	KmsKeyVersion *string `pulumi:"kmsKeyVersion"`
 	// The resource name of the Parameter Version. Format:
 	// `projects/{{project}}/locations/global/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
 	Name *string `pulumi:"name"`
@@ -196,6 +247,9 @@ type ParameterVersionState struct {
 	CreateTime pulumi.StringPtrInput
 	// The current state of Parameter Version. This field is only applicable for updating Parameter Version.
 	Disabled pulumi.BoolPtrInput
+	// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
+	// `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+	KmsKeyVersion pulumi.StringPtrInput
 	// The resource name of the Parameter Version. Format:
 	// `projects/{{project}}/locations/global/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
 	Name pulumi.StringPtrInput
@@ -340,6 +394,12 @@ func (o ParameterVersionOutput) CreateTime() pulumi.StringOutput {
 // The current state of Parameter Version. This field is only applicable for updating Parameter Version.
 func (o ParameterVersionOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ParameterVersion) pulumi.BoolPtrOutput { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
+// `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+func (o ParameterVersionOutput) KmsKeyVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ParameterVersion) pulumi.StringOutput { return v.KmsKeyVersion }).(pulumi.StringOutput)
 }
 
 // The resource name of the Parameter Version. Format:

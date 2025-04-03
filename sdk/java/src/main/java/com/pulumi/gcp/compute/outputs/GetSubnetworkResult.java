@@ -22,6 +22,11 @@ public final class GetSubnetworkResult {
      */
     private String description;
     /**
+     * @return The external IPv6 address range that is assigned to this subnetwork.
+     * 
+     */
+    private String externalIpv6Prefix;
+    /**
      * @return The IP address of the gateway.
      * 
      */
@@ -42,6 +47,11 @@ public final class GetSubnetworkResult {
      * 
      */
     private String ipCidrRange;
+    /**
+     * @return The access type of IPv6 address this subnet holds. Possible values are: `EXTERNAL`, `INTERNAL`.
+     * 
+     */
+    private String ipv6AccessType;
     private @Nullable String name;
     /**
      * @return The network name or resource link to the parent
@@ -66,6 +76,11 @@ public final class GetSubnetworkResult {
     private List<GetSubnetworkSecondaryIpRange> secondaryIpRanges;
     private String selfLink;
     /**
+     * @return The stack type for the subnet. Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
+     * 
+     */
+    private String stackType;
+    /**
      * @return The numeric ID of the resource.
      * 
      */
@@ -78,6 +93,13 @@ public final class GetSubnetworkResult {
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return The external IPv6 address range that is assigned to this subnetwork.
+     * 
+     */
+    public String externalIpv6Prefix() {
+        return this.externalIpv6Prefix;
     }
     /**
      * @return The IP address of the gateway.
@@ -107,6 +129,13 @@ public final class GetSubnetworkResult {
      */
     public String ipCidrRange() {
         return this.ipCidrRange;
+    }
+    /**
+     * @return The access type of IPv6 address this subnet holds. Possible values are: `EXTERNAL`, `INTERNAL`.
+     * 
+     */
+    public String ipv6AccessType() {
+        return this.ipv6AccessType;
     }
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
@@ -146,6 +175,13 @@ public final class GetSubnetworkResult {
         return this.selfLink;
     }
     /**
+     * @return The stack type for the subnet. Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
+     * 
+     */
+    public String stackType() {
+        return this.stackType;
+    }
+    /**
      * @return The numeric ID of the resource.
      * 
      */
@@ -163,10 +199,12 @@ public final class GetSubnetworkResult {
     @CustomType.Builder
     public static final class Builder {
         private String description;
+        private String externalIpv6Prefix;
         private String gatewayAddress;
         private String id;
         private String internalIpv6Prefix;
         private String ipCidrRange;
+        private String ipv6AccessType;
         private @Nullable String name;
         private String network;
         private Boolean privateIpGoogleAccess;
@@ -174,15 +212,18 @@ public final class GetSubnetworkResult {
         private String region;
         private List<GetSubnetworkSecondaryIpRange> secondaryIpRanges;
         private String selfLink;
+        private String stackType;
         private Integer subnetworkId;
         public Builder() {}
         public Builder(GetSubnetworkResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
+    	      this.externalIpv6Prefix = defaults.externalIpv6Prefix;
     	      this.gatewayAddress = defaults.gatewayAddress;
     	      this.id = defaults.id;
     	      this.internalIpv6Prefix = defaults.internalIpv6Prefix;
     	      this.ipCidrRange = defaults.ipCidrRange;
+    	      this.ipv6AccessType = defaults.ipv6AccessType;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
     	      this.privateIpGoogleAccess = defaults.privateIpGoogleAccess;
@@ -190,6 +231,7 @@ public final class GetSubnetworkResult {
     	      this.region = defaults.region;
     	      this.secondaryIpRanges = defaults.secondaryIpRanges;
     	      this.selfLink = defaults.selfLink;
+    	      this.stackType = defaults.stackType;
     	      this.subnetworkId = defaults.subnetworkId;
         }
 
@@ -199,6 +241,14 @@ public final class GetSubnetworkResult {
               throw new MissingRequiredPropertyException("GetSubnetworkResult", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder externalIpv6Prefix(String externalIpv6Prefix) {
+            if (externalIpv6Prefix == null) {
+              throw new MissingRequiredPropertyException("GetSubnetworkResult", "externalIpv6Prefix");
+            }
+            this.externalIpv6Prefix = externalIpv6Prefix;
             return this;
         }
         @CustomType.Setter
@@ -231,6 +281,14 @@ public final class GetSubnetworkResult {
               throw new MissingRequiredPropertyException("GetSubnetworkResult", "ipCidrRange");
             }
             this.ipCidrRange = ipCidrRange;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipv6AccessType(String ipv6AccessType) {
+            if (ipv6AccessType == null) {
+              throw new MissingRequiredPropertyException("GetSubnetworkResult", "ipv6AccessType");
+            }
+            this.ipv6AccessType = ipv6AccessType;
             return this;
         }
         @CustomType.Setter
@@ -291,6 +349,14 @@ public final class GetSubnetworkResult {
             return this;
         }
         @CustomType.Setter
+        public Builder stackType(String stackType) {
+            if (stackType == null) {
+              throw new MissingRequiredPropertyException("GetSubnetworkResult", "stackType");
+            }
+            this.stackType = stackType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder subnetworkId(Integer subnetworkId) {
             if (subnetworkId == null) {
               throw new MissingRequiredPropertyException("GetSubnetworkResult", "subnetworkId");
@@ -301,10 +367,12 @@ public final class GetSubnetworkResult {
         public GetSubnetworkResult build() {
             final var _resultValue = new GetSubnetworkResult();
             _resultValue.description = description;
+            _resultValue.externalIpv6Prefix = externalIpv6Prefix;
             _resultValue.gatewayAddress = gatewayAddress;
             _resultValue.id = id;
             _resultValue.internalIpv6Prefix = internalIpv6Prefix;
             _resultValue.ipCidrRange = ipCidrRange;
+            _resultValue.ipv6AccessType = ipv6AccessType;
             _resultValue.name = name;
             _resultValue.network = network;
             _resultValue.privateIpGoogleAccess = privateIpGoogleAccess;
@@ -312,6 +380,7 @@ public final class GetSubnetworkResult {
             _resultValue.region = region;
             _resultValue.secondaryIpRanges = secondaryIpRanges;
             _resultValue.selfLink = selfLink;
+            _resultValue.stackType = stackType;
             _resultValue.subnetworkId = subnetworkId;
             return _resultValue;
         }

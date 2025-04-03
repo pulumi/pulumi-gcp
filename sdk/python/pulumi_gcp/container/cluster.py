@@ -37,6 +37,7 @@ class ClusterArgs:
                  default_snat_status: Optional[pulumi.Input['ClusterDefaultSnatStatusArgs']] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_l4_lb_firewall_reconciliation: Optional[pulumi.Input[bool]] = None,
                  dns_config: Optional[pulumi.Input['ClusterDnsConfigArgs']] = None,
                  enable_autopilot: Optional[pulumi.Input[bool]] = None,
                  enable_cilium_clusterwide_network_policy: Optional[pulumi.Input[bool]] = None,
@@ -133,6 +134,7 @@ class ClusterArgs:
                for more information.
         :param pulumi.Input['ClusterDefaultSnatStatusArgs'] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
         :param pulumi.Input[str] description: Description of the cluster.
+        :param pulumi.Input[bool] disable_l4_lb_firewall_reconciliation: Disable L4 load balancer VPC firewalls to enable firewall policies.
         :param pulumi.Input['ClusterDnsConfigArgs'] dns_config: Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
         :param pulumi.Input[bool] enable_autopilot: Enable Autopilot for this cluster. Defaults to `false`.
                Note that when this option is enabled, certain features of Standard GKE are not available.
@@ -344,6 +346,8 @@ class ClusterArgs:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disable_l4_lb_firewall_reconciliation is not None:
+            pulumi.set(__self__, "disable_l4_lb_firewall_reconciliation", disable_l4_lb_firewall_reconciliation)
         if dns_config is not None:
             pulumi.set(__self__, "dns_config", dns_config)
         if enable_autopilot is not None:
@@ -670,6 +674,18 @@ class ClusterArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="disableL4LbFirewallReconciliation")
+    def disable_l4_lb_firewall_reconciliation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable L4 load balancer VPC firewalls to enable firewall policies.
+        """
+        return pulumi.get(self, "disable_l4_lb_firewall_reconciliation")
+
+    @disable_l4_lb_firewall_reconciliation.setter
+    def disable_l4_lb_firewall_reconciliation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_l4_lb_firewall_reconciliation", value)
 
     @property
     @pulumi.getter(name="dnsConfig")
@@ -1507,6 +1523,7 @@ class _ClusterState:
                  default_snat_status: Optional[pulumi.Input['ClusterDefaultSnatStatusArgs']] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_l4_lb_firewall_reconciliation: Optional[pulumi.Input[bool]] = None,
                  dns_config: Optional[pulumi.Input['ClusterDnsConfigArgs']] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enable_autopilot: Optional[pulumi.Input[bool]] = None,
@@ -1612,6 +1629,7 @@ class _ClusterState:
                for more information.
         :param pulumi.Input['ClusterDefaultSnatStatusArgs'] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
         :param pulumi.Input[str] description: Description of the cluster.
+        :param pulumi.Input[bool] disable_l4_lb_firewall_reconciliation: Disable L4 load balancer VPC firewalls to enable firewall policies.
         :param pulumi.Input['ClusterDnsConfigArgs'] dns_config: Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] enable_autopilot: Enable Autopilot for this cluster. Defaults to `false`.
@@ -1838,6 +1856,8 @@ class _ClusterState:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disable_l4_lb_firewall_reconciliation is not None:
+            pulumi.set(__self__, "disable_l4_lb_firewall_reconciliation", disable_l4_lb_firewall_reconciliation)
         if dns_config is not None:
             pulumi.set(__self__, "dns_config", dns_config)
         if effective_labels is not None:
@@ -2182,6 +2202,18 @@ class _ClusterState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="disableL4LbFirewallReconciliation")
+    def disable_l4_lb_firewall_reconciliation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable L4 load balancer VPC firewalls to enable firewall policies.
+        """
+        return pulumi.get(self, "disable_l4_lb_firewall_reconciliation")
+
+    @disable_l4_lb_firewall_reconciliation.setter
+    def disable_l4_lb_firewall_reconciliation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_l4_lb_firewall_reconciliation", value)
 
     @property
     @pulumi.getter(name="dnsConfig")
@@ -3133,6 +3165,7 @@ class Cluster(pulumi.CustomResource):
                  default_snat_status: Optional[pulumi.Input[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict']]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_l4_lb_firewall_reconciliation: Optional[pulumi.Input[bool]] = None,
                  dns_config: Optional[pulumi.Input[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict']]] = None,
                  enable_autopilot: Optional[pulumi.Input[bool]] = None,
                  enable_cilium_clusterwide_network_policy: Optional[pulumi.Input[bool]] = None,
@@ -3351,6 +3384,7 @@ class Cluster(pulumi.CustomResource):
                for more information.
         :param pulumi.Input[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict']] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
         :param pulumi.Input[str] description: Description of the cluster.
+        :param pulumi.Input[bool] disable_l4_lb_firewall_reconciliation: Disable L4 load balancer VPC firewalls to enable firewall policies.
         :param pulumi.Input[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict']] dns_config: Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
         :param pulumi.Input[bool] enable_autopilot: Enable Autopilot for this cluster. Defaults to `false`.
                Note that when this option is enabled, certain features of Standard GKE are not available.
@@ -3688,6 +3722,7 @@ class Cluster(pulumi.CustomResource):
                  default_snat_status: Optional[pulumi.Input[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict']]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_l4_lb_firewall_reconciliation: Optional[pulumi.Input[bool]] = None,
                  dns_config: Optional[pulumi.Input[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict']]] = None,
                  enable_autopilot: Optional[pulumi.Input[bool]] = None,
                  enable_cilium_clusterwide_network_policy: Optional[pulumi.Input[bool]] = None,
@@ -3771,6 +3806,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["default_snat_status"] = default_snat_status
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
+            __props__.__dict__["disable_l4_lb_firewall_reconciliation"] = disable_l4_lb_firewall_reconciliation
             __props__.__dict__["dns_config"] = dns_config
             __props__.__dict__["enable_autopilot"] = enable_autopilot
             __props__.__dict__["enable_cilium_clusterwide_network_policy"] = enable_cilium_clusterwide_network_policy
@@ -3866,6 +3902,7 @@ class Cluster(pulumi.CustomResource):
             default_snat_status: Optional[pulumi.Input[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict']]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            disable_l4_lb_firewall_reconciliation: Optional[pulumi.Input[bool]] = None,
             dns_config: Optional[pulumi.Input[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict']]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enable_autopilot: Optional[pulumi.Input[bool]] = None,
@@ -3976,6 +4013,7 @@ class Cluster(pulumi.CustomResource):
                for more information.
         :param pulumi.Input[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict']] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
         :param pulumi.Input[str] description: Description of the cluster.
+        :param pulumi.Input[bool] disable_l4_lb_firewall_reconciliation: Disable L4 load balancer VPC firewalls to enable firewall policies.
         :param pulumi.Input[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict']] dns_config: Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] enable_autopilot: Enable Autopilot for this cluster. Defaults to `false`.
@@ -4190,6 +4228,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["default_snat_status"] = default_snat_status
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
+        __props__.__dict__["disable_l4_lb_firewall_reconciliation"] = disable_l4_lb_firewall_reconciliation
         __props__.__dict__["dns_config"] = dns_config
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["enable_autopilot"] = enable_autopilot
@@ -4404,6 +4443,14 @@ class Cluster(pulumi.CustomResource):
         Description of the cluster.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="disableL4LbFirewallReconciliation")
+    def disable_l4_lb_firewall_reconciliation(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Disable L4 load balancer VPC firewalls to enable firewall policies.
+        """
+        return pulumi.get(self, "disable_l4_lb_firewall_reconciliation")
 
     @property
     @pulumi.getter(name="dnsConfig")

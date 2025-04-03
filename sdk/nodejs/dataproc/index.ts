@@ -80,6 +80,11 @@ export const getJobIamPolicy: typeof import("./getJobIamPolicy").getJobIamPolicy
 export const getJobIamPolicyOutput: typeof import("./getJobIamPolicy").getJobIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getJobIamPolicy","getJobIamPolicyOutput"], () => require("./getJobIamPolicy"));
 
+export { GetMetastoreDatabaseIamPolicyArgs, GetMetastoreDatabaseIamPolicyResult, GetMetastoreDatabaseIamPolicyOutputArgs } from "./getMetastoreDatabaseIamPolicy";
+export const getMetastoreDatabaseIamPolicy: typeof import("./getMetastoreDatabaseIamPolicy").getMetastoreDatabaseIamPolicy = null as any;
+export const getMetastoreDatabaseIamPolicyOutput: typeof import("./getMetastoreDatabaseIamPolicy").getMetastoreDatabaseIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getMetastoreDatabaseIamPolicy","getMetastoreDatabaseIamPolicyOutput"], () => require("./getMetastoreDatabaseIamPolicy"));
+
 export { GetMetastoreFederationIamPolicyArgs, GetMetastoreFederationIamPolicyResult, GetMetastoreFederationIamPolicyOutputArgs } from "./getMetastoreFederationIamPolicy";
 export const getMetastoreFederationIamPolicy: typeof import("./getMetastoreFederationIamPolicy").getMetastoreFederationIamPolicy = null as any;
 export const getMetastoreFederationIamPolicyOutput: typeof import("./getMetastoreFederationIamPolicy").getMetastoreFederationIamPolicyOutput = null as any;
@@ -94,6 +99,11 @@ export { GetMetastoreServiceIamPolicyArgs, GetMetastoreServiceIamPolicyResult, G
 export const getMetastoreServiceIamPolicy: typeof import("./getMetastoreServiceIamPolicy").getMetastoreServiceIamPolicy = null as any;
 export const getMetastoreServiceIamPolicyOutput: typeof import("./getMetastoreServiceIamPolicy").getMetastoreServiceIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getMetastoreServiceIamPolicy","getMetastoreServiceIamPolicyOutput"], () => require("./getMetastoreServiceIamPolicy"));
+
+export { GetMetastoreTableIamPolicyArgs, GetMetastoreTableIamPolicyResult, GetMetastoreTableIamPolicyOutputArgs } from "./getMetastoreTableIamPolicy";
+export const getMetastoreTableIamPolicy: typeof import("./getMetastoreTableIamPolicy").getMetastoreTableIamPolicy = null as any;
+export const getMetastoreTableIamPolicyOutput: typeof import("./getMetastoreTableIamPolicy").getMetastoreTableIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getMetastoreTableIamPolicy","getMetastoreTableIamPolicyOutput"], () => require("./getMetastoreTableIamPolicy"));
 
 export { JobArgs, JobState } from "./job";
 export type Job = import("./job").Job;
@@ -114,6 +124,21 @@ export { JobIAMPolicyArgs, JobIAMPolicyState } from "./jobIAMPolicy";
 export type JobIAMPolicy = import("./jobIAMPolicy").JobIAMPolicy;
 export const JobIAMPolicy: typeof import("./jobIAMPolicy").JobIAMPolicy = null as any;
 utilities.lazyLoad(exports, ["JobIAMPolicy"], () => require("./jobIAMPolicy"));
+
+export { MetastoreDatabaseIamBindingArgs, MetastoreDatabaseIamBindingState } from "./metastoreDatabaseIamBinding";
+export type MetastoreDatabaseIamBinding = import("./metastoreDatabaseIamBinding").MetastoreDatabaseIamBinding;
+export const MetastoreDatabaseIamBinding: typeof import("./metastoreDatabaseIamBinding").MetastoreDatabaseIamBinding = null as any;
+utilities.lazyLoad(exports, ["MetastoreDatabaseIamBinding"], () => require("./metastoreDatabaseIamBinding"));
+
+export { MetastoreDatabaseIamMemberArgs, MetastoreDatabaseIamMemberState } from "./metastoreDatabaseIamMember";
+export type MetastoreDatabaseIamMember = import("./metastoreDatabaseIamMember").MetastoreDatabaseIamMember;
+export const MetastoreDatabaseIamMember: typeof import("./metastoreDatabaseIamMember").MetastoreDatabaseIamMember = null as any;
+utilities.lazyLoad(exports, ["MetastoreDatabaseIamMember"], () => require("./metastoreDatabaseIamMember"));
+
+export { MetastoreDatabaseIamPolicyArgs, MetastoreDatabaseIamPolicyState } from "./metastoreDatabaseIamPolicy";
+export type MetastoreDatabaseIamPolicy = import("./metastoreDatabaseIamPolicy").MetastoreDatabaseIamPolicy;
+export const MetastoreDatabaseIamPolicy: typeof import("./metastoreDatabaseIamPolicy").MetastoreDatabaseIamPolicy = null as any;
+utilities.lazyLoad(exports, ["MetastoreDatabaseIamPolicy"], () => require("./metastoreDatabaseIamPolicy"));
 
 export { MetastoreFederationArgs, MetastoreFederationState } from "./metastoreFederation";
 export type MetastoreFederation = import("./metastoreFederation").MetastoreFederation;
@@ -154,6 +179,21 @@ export { MetastoreServiceIamPolicyArgs, MetastoreServiceIamPolicyState } from ".
 export type MetastoreServiceIamPolicy = import("./metastoreServiceIamPolicy").MetastoreServiceIamPolicy;
 export const MetastoreServiceIamPolicy: typeof import("./metastoreServiceIamPolicy").MetastoreServiceIamPolicy = null as any;
 utilities.lazyLoad(exports, ["MetastoreServiceIamPolicy"], () => require("./metastoreServiceIamPolicy"));
+
+export { MetastoreTableIamBindingArgs, MetastoreTableIamBindingState } from "./metastoreTableIamBinding";
+export type MetastoreTableIamBinding = import("./metastoreTableIamBinding").MetastoreTableIamBinding;
+export const MetastoreTableIamBinding: typeof import("./metastoreTableIamBinding").MetastoreTableIamBinding = null as any;
+utilities.lazyLoad(exports, ["MetastoreTableIamBinding"], () => require("./metastoreTableIamBinding"));
+
+export { MetastoreTableIamMemberArgs, MetastoreTableIamMemberState } from "./metastoreTableIamMember";
+export type MetastoreTableIamMember = import("./metastoreTableIamMember").MetastoreTableIamMember;
+export const MetastoreTableIamMember: typeof import("./metastoreTableIamMember").MetastoreTableIamMember = null as any;
+utilities.lazyLoad(exports, ["MetastoreTableIamMember"], () => require("./metastoreTableIamMember"));
+
+export { MetastoreTableIamPolicyArgs, MetastoreTableIamPolicyState } from "./metastoreTableIamPolicy";
+export type MetastoreTableIamPolicy = import("./metastoreTableIamPolicy").MetastoreTableIamPolicy;
+export const MetastoreTableIamPolicy: typeof import("./metastoreTableIamPolicy").MetastoreTableIamPolicy = null as any;
+utilities.lazyLoad(exports, ["MetastoreTableIamPolicy"], () => require("./metastoreTableIamPolicy"));
 
 export { WorkflowTemplateArgs, WorkflowTemplateState } from "./workflowTemplate";
 export type WorkflowTemplate = import("./workflowTemplate").WorkflowTemplate;
@@ -197,6 +237,12 @@ const _module = {
                 return new JobIAMMember(name, <any>undefined, { urn })
             case "gcp:dataproc/jobIAMPolicy:JobIAMPolicy":
                 return new JobIAMPolicy(name, <any>undefined, { urn })
+            case "gcp:dataproc/metastoreDatabaseIamBinding:MetastoreDatabaseIamBinding":
+                return new MetastoreDatabaseIamBinding(name, <any>undefined, { urn })
+            case "gcp:dataproc/metastoreDatabaseIamMember:MetastoreDatabaseIamMember":
+                return new MetastoreDatabaseIamMember(name, <any>undefined, { urn })
+            case "gcp:dataproc/metastoreDatabaseIamPolicy:MetastoreDatabaseIamPolicy":
+                return new MetastoreDatabaseIamPolicy(name, <any>undefined, { urn })
             case "gcp:dataproc/metastoreFederation:MetastoreFederation":
                 return new MetastoreFederation(name, <any>undefined, { urn })
             case "gcp:dataproc/metastoreFederationIamBinding:MetastoreFederationIamBinding":
@@ -213,6 +259,12 @@ const _module = {
                 return new MetastoreServiceIamMember(name, <any>undefined, { urn })
             case "gcp:dataproc/metastoreServiceIamPolicy:MetastoreServiceIamPolicy":
                 return new MetastoreServiceIamPolicy(name, <any>undefined, { urn })
+            case "gcp:dataproc/metastoreTableIamBinding:MetastoreTableIamBinding":
+                return new MetastoreTableIamBinding(name, <any>undefined, { urn })
+            case "gcp:dataproc/metastoreTableIamMember:MetastoreTableIamMember":
+                return new MetastoreTableIamMember(name, <any>undefined, { urn })
+            case "gcp:dataproc/metastoreTableIamPolicy:MetastoreTableIamPolicy":
+                return new MetastoreTableIamPolicy(name, <any>undefined, { urn })
             case "gcp:dataproc/workflowTemplate:WorkflowTemplate":
                 return new WorkflowTemplate(name, <any>undefined, { urn })
             default:
@@ -236,6 +288,9 @@ pulumi.runtime.registerResourceModule("gcp", "dataproc/job", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/jobIAMBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/jobIAMMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/jobIAMPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreDatabaseIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreDatabaseIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreDatabaseIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreFederation", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreFederationIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreFederationIamMember", _module)
@@ -244,4 +299,7 @@ pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreService", _modul
 pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreServiceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreServiceIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreServiceIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreTableIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreTableIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreTableIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/workflowTemplate", _module)

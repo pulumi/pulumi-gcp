@@ -34,6 +34,7 @@ class InstanceFromTemplateArgs:
                  enable_display: Optional[pulumi.Input[bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateGuestAcceleratorArgs']]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
+                 instance_encryption_key: Optional[pulumi.Input['InstanceFromTemplateInstanceEncryptionKeyArgs']] = None,
                  key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
@@ -75,6 +76,7 @@ class InstanceFromTemplateArgs:
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
                labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
                exceed 253 characters. Changing this forces a new resource to be created.
+        :param pulumi.Input['InstanceFromTemplateInstanceEncryptionKeyArgs'] instance_encryption_key: Encryption key used to provide data encryption on the given instance.
         :param pulumi.Input[str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
                default.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
@@ -132,6 +134,8 @@ class InstanceFromTemplateArgs:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
+        if instance_encryption_key is not None:
+            pulumi.set(__self__, "instance_encryption_key", instance_encryption_key)
         if key_revocation_action_type is not None:
             pulumi.set(__self__, "key_revocation_action_type", key_revocation_action_type)
         if labels is not None:
@@ -332,6 +336,18 @@ class InstanceFromTemplateArgs:
     @hostname.setter
     def hostname(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter(name="instanceEncryptionKey")
+    def instance_encryption_key(self) -> Optional[pulumi.Input['InstanceFromTemplateInstanceEncryptionKeyArgs']]:
+        """
+        Encryption key used to provide data encryption on the given instance.
+        """
+        return pulumi.get(self, "instance_encryption_key")
+
+    @instance_encryption_key.setter
+    def instance_encryption_key(self, value: Optional[pulumi.Input['InstanceFromTemplateInstanceEncryptionKeyArgs']]):
+        pulumi.set(self, "instance_encryption_key", value)
 
     @property
     @pulumi.getter(name="keyRevocationActionType")
@@ -604,6 +620,7 @@ class _InstanceFromTemplateState:
                  enable_display: Optional[pulumi.Input[bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateGuestAcceleratorArgs']]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
+                 instance_encryption_key: Optional[pulumi.Input['InstanceFromTemplateInstanceEncryptionKeyArgs']] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
@@ -652,6 +669,7 @@ class _InstanceFromTemplateState:
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
                labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
                exceed 253 characters. Changing this forces a new resource to be created.
+        :param pulumi.Input['InstanceFromTemplateInstanceEncryptionKeyArgs'] instance_encryption_key: Encryption key used to provide data encryption on the given instance.
         :param pulumi.Input[str] instance_id: The server-assigned unique identifier of this instance.
         :param pulumi.Input[str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
                default.
@@ -727,6 +745,8 @@ class _InstanceFromTemplateState:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
+        if instance_encryption_key is not None:
+            pulumi.set(__self__, "instance_encryption_key", instance_encryption_key)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
         if key_revocation_action_type is not None:
@@ -972,6 +992,18 @@ class _InstanceFromTemplateState:
     @hostname.setter
     def hostname(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter(name="instanceEncryptionKey")
+    def instance_encryption_key(self) -> Optional[pulumi.Input['InstanceFromTemplateInstanceEncryptionKeyArgs']]:
+        """
+        Encryption key used to provide data encryption on the given instance.
+        """
+        return pulumi.get(self, "instance_encryption_key")
+
+    @instance_encryption_key.setter
+    def instance_encryption_key(self, value: Optional[pulumi.Input['InstanceFromTemplateInstanceEncryptionKeyArgs']]):
+        pulumi.set(self, "instance_encryption_key", value)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -1330,6 +1362,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
                  enable_display: Optional[pulumi.Input[bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromTemplateGuestAcceleratorArgs', 'InstanceFromTemplateGuestAcceleratorArgsDict']]]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
+                 instance_encryption_key: Optional[pulumi.Input[Union['InstanceFromTemplateInstanceEncryptionKeyArgs', 'InstanceFromTemplateInstanceEncryptionKeyArgsDict']]] = None,
                  key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
@@ -1414,6 +1447,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
                labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
                exceed 253 characters. Changing this forces a new resource to be created.
+        :param pulumi.Input[Union['InstanceFromTemplateInstanceEncryptionKeyArgs', 'InstanceFromTemplateInstanceEncryptionKeyArgsDict']] instance_encryption_key: Encryption key used to provide data encryption on the given instance.
         :param pulumi.Input[str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
                default.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
@@ -1530,6 +1564,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
                  enable_display: Optional[pulumi.Input[bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromTemplateGuestAcceleratorArgs', 'InstanceFromTemplateGuestAcceleratorArgsDict']]]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
+                 instance_encryption_key: Optional[pulumi.Input[Union['InstanceFromTemplateInstanceEncryptionKeyArgs', 'InstanceFromTemplateInstanceEncryptionKeyArgsDict']]] = None,
                  key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
@@ -1572,6 +1607,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
             __props__.__dict__["enable_display"] = enable_display
             __props__.__dict__["guest_accelerators"] = guest_accelerators
             __props__.__dict__["hostname"] = hostname
+            __props__.__dict__["instance_encryption_key"] = instance_encryption_key
             __props__.__dict__["key_revocation_action_type"] = key_revocation_action_type
             __props__.__dict__["labels"] = labels
             __props__.__dict__["machine_type"] = machine_type
@@ -1633,6 +1669,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
             enable_display: Optional[pulumi.Input[bool]] = None,
             guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromTemplateGuestAcceleratorArgs', 'InstanceFromTemplateGuestAcceleratorArgsDict']]]]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
+            instance_encryption_key: Optional[pulumi.Input[Union['InstanceFromTemplateInstanceEncryptionKeyArgs', 'InstanceFromTemplateInstanceEncryptionKeyArgsDict']]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             key_revocation_action_type: Optional[pulumi.Input[str]] = None,
             label_fingerprint: Optional[pulumi.Input[str]] = None,
@@ -1686,6 +1723,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
                labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
                exceed 253 characters. Changing this forces a new resource to be created.
+        :param pulumi.Input[Union['InstanceFromTemplateInstanceEncryptionKeyArgs', 'InstanceFromTemplateInstanceEncryptionKeyArgsDict']] instance_encryption_key: Encryption key used to provide data encryption on the given instance.
         :param pulumi.Input[str] instance_id: The server-assigned unique identifier of this instance.
         :param pulumi.Input[str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
                default.
@@ -1749,6 +1787,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
         __props__.__dict__["enable_display"] = enable_display
         __props__.__dict__["guest_accelerators"] = guest_accelerators
         __props__.__dict__["hostname"] = hostname
+        __props__.__dict__["instance_encryption_key"] = instance_encryption_key
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["key_revocation_action_type"] = key_revocation_action_type
         __props__.__dict__["label_fingerprint"] = label_fingerprint
@@ -1904,6 +1943,14 @@ class InstanceFromTemplate(pulumi.CustomResource):
         exceed 253 characters. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="instanceEncryptionKey")
+    def instance_encryption_key(self) -> pulumi.Output['outputs.InstanceFromTemplateInstanceEncryptionKey']:
+        """
+        Encryption key used to provide data encryption on the given instance.
+        """
+        return pulumi.get(self, "instance_encryption_key")
 
     @property
     @pulumi.getter(name="instanceId")

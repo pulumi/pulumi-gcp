@@ -110,6 +110,8 @@ __all__ = [
     'JobSparksqlConfig',
     'JobSparksqlConfigLoggingConfig',
     'JobStatus',
+    'MetastoreDatabaseIamBindingCondition',
+    'MetastoreDatabaseIamMemberCondition',
     'MetastoreFederationBackendMetastore',
     'MetastoreFederationIamBindingCondition',
     'MetastoreFederationIamMemberCondition',
@@ -130,6 +132,8 @@ __all__ = [
     'MetastoreServiceScalingConfigAutoscalingConfigLimitConfig',
     'MetastoreServiceScheduledBackup',
     'MetastoreServiceTelemetryConfig',
+    'MetastoreTableIamBindingCondition',
+    'MetastoreTableIamMemberCondition',
     'WorkflowTemplateEncryptionConfig',
     'WorkflowTemplateJob',
     'WorkflowTemplateJobHadoopJob',
@@ -7195,6 +7199,60 @@ class JobStatus(dict):
 
 
 @pulumi.output_type
+class MetastoreDatabaseIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class MetastoreDatabaseIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
 class MetastoreFederationBackendMetastore(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -8173,6 +8231,60 @@ class MetastoreServiceTelemetryConfig(dict):
         Possible values are: `LEGACY`, `JSON`.
         """
         return pulumi.get(self, "log_format")
+
+
+@pulumi.output_type
+class MetastoreTableIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class MetastoreTableIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

@@ -135,6 +135,15 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// The list of locations where the association is configured. This information
+        /// is retrieved from the linked endpoint group.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("locations")]
+        public Output<ImmutableArray<Outputs.MirroringEndpointGroupAssociationLocation>> Locations { get; private set; } = null!;
+
+        /// <summary>
+        /// (Deprecated)
         /// The list of locations where the association is present. This information
         /// is retrieved from the linked endpoint group, and not configured as part
         /// of the association itself.
@@ -375,15 +384,31 @@ namespace Pulumi.Gcp.NetworkSecurity
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        [Input("locations")]
+        private InputList<Inputs.MirroringEndpointGroupAssociationLocationGetArgs>? _locations;
+
+        /// <summary>
+        /// The list of locations where the association is configured. This information
+        /// is retrieved from the linked endpoint group.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.MirroringEndpointGroupAssociationLocationGetArgs> Locations
+        {
+            get => _locations ?? (_locations = new InputList<Inputs.MirroringEndpointGroupAssociationLocationGetArgs>());
+            set => _locations = value;
+        }
+
         [Input("locationsDetails")]
         private InputList<Inputs.MirroringEndpointGroupAssociationLocationsDetailGetArgs>? _locationsDetails;
 
         /// <summary>
+        /// (Deprecated)
         /// The list of locations where the association is present. This information
         /// is retrieved from the linked endpoint group, and not configured as part
         /// of the association itself.
         /// Structure is documented below.
         /// </summary>
+        [Obsolete(@"`locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.")]
         public InputList<Inputs.MirroringEndpointGroupAssociationLocationsDetailGetArgs> LocationsDetails
         {
             get => _locationsDetails ?? (_locationsDetails = new InputList<Inputs.MirroringEndpointGroupAssociationLocationsDetailGetArgs>());

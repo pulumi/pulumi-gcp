@@ -68,7 +68,70 @@ func (o BatchingOutput) SendAfter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Batching) *string { return v.SendAfter }).(pulumi.StringPtrOutput)
 }
 
+type ExternalCredentials struct {
+	Audience            string `pulumi:"audience"`
+	IdentityToken       string `pulumi:"identityToken"`
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+}
+
+// ExternalCredentialsInput is an input type that accepts ExternalCredentialsArgs and ExternalCredentialsOutput values.
+// You can construct a concrete instance of `ExternalCredentialsInput` via:
+//
+//	ExternalCredentialsArgs{...}
+type ExternalCredentialsInput interface {
+	pulumi.Input
+
+	ToExternalCredentialsOutput() ExternalCredentialsOutput
+	ToExternalCredentialsOutputWithContext(context.Context) ExternalCredentialsOutput
+}
+
+type ExternalCredentialsArgs struct {
+	Audience            pulumi.StringInput `pulumi:"audience"`
+	IdentityToken       pulumi.StringInput `pulumi:"identityToken"`
+	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
+}
+
+func (ExternalCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalCredentials)(nil)).Elem()
+}
+
+func (i ExternalCredentialsArgs) ToExternalCredentialsOutput() ExternalCredentialsOutput {
+	return i.ToExternalCredentialsOutputWithContext(context.Background())
+}
+
+func (i ExternalCredentialsArgs) ToExternalCredentialsOutputWithContext(ctx context.Context) ExternalCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalCredentialsOutput)
+}
+
+type ExternalCredentialsOutput struct{ *pulumi.OutputState }
+
+func (ExternalCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalCredentials)(nil)).Elem()
+}
+
+func (o ExternalCredentialsOutput) ToExternalCredentialsOutput() ExternalCredentialsOutput {
+	return o
+}
+
+func (o ExternalCredentialsOutput) ToExternalCredentialsOutputWithContext(ctx context.Context) ExternalCredentialsOutput {
+	return o
+}
+
+func (o ExternalCredentialsOutput) Audience() pulumi.StringOutput {
+	return o.ApplyT(func(v ExternalCredentials) string { return v.Audience }).(pulumi.StringOutput)
+}
+
+func (o ExternalCredentialsOutput) IdentityToken() pulumi.StringOutput {
+	return o.ApplyT(func(v ExternalCredentials) string { return v.IdentityToken }).(pulumi.StringOutput)
+}
+
+func (o ExternalCredentialsOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v ExternalCredentials) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BatchingInput)(nil)).Elem(), BatchingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalCredentialsInput)(nil)).Elem(), ExternalCredentialsArgs{})
 	pulumi.RegisterOutputType(BatchingOutput{})
+	pulumi.RegisterOutputType(ExternalCredentialsOutput{})
 }

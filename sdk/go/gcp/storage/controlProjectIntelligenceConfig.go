@@ -11,6 +11,43 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ### Storage Control Project Intelligence Config Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.NewControlProjectIntelligenceConfig(ctx, "example", &storage.ControlProjectIntelligenceConfigArgs{
+//				Name:          pulumi.String("test-project"),
+//				EditionConfig: pulumi.String("TRIAL"),
+//				Filter: &storage.ControlProjectIntelligenceConfigFilterArgs{
+//					IncludedCloudStorageBuckets: &storage.ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsArgs{
+//						BucketIdRegexes: pulumi.StringArray{
+//							pulumi.String("test-id-1*"),
+//							pulumi.String("test-id-2*"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ProjectIntelligenceConfig can be imported using any of these accepted formats:
@@ -31,7 +68,7 @@ import (
 type ControlProjectIntelligenceConfig struct {
 	pulumi.CustomResourceState
 
-	// Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED and STANDARD.
+	// Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
 	EditionConfig pulumi.StringOutput `pulumi:"editionConfig"`
 	// The Intelligence config that is effective for the resource.
 	// Structure is documented below.
@@ -77,7 +114,7 @@ func GetControlProjectIntelligenceConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ControlProjectIntelligenceConfig resources.
 type controlProjectIntelligenceConfigState struct {
-	// Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED and STANDARD.
+	// Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
 	EditionConfig *string `pulumi:"editionConfig"`
 	// The Intelligence config that is effective for the resource.
 	// Structure is documented below.
@@ -94,7 +131,7 @@ type controlProjectIntelligenceConfigState struct {
 }
 
 type ControlProjectIntelligenceConfigState struct {
-	// Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED and STANDARD.
+	// Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
 	EditionConfig pulumi.StringPtrInput
 	// The Intelligence config that is effective for the resource.
 	// Structure is documented below.
@@ -115,7 +152,7 @@ func (ControlProjectIntelligenceConfigState) ElementType() reflect.Type {
 }
 
 type controlProjectIntelligenceConfigArgs struct {
-	// Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED and STANDARD.
+	// Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
 	EditionConfig *string `pulumi:"editionConfig"`
 	// Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
 	// Structure is documented below.
@@ -128,7 +165,7 @@ type controlProjectIntelligenceConfigArgs struct {
 
 // The set of arguments for constructing a ControlProjectIntelligenceConfig resource.
 type ControlProjectIntelligenceConfigArgs struct {
-	// Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED and STANDARD.
+	// Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
 	EditionConfig pulumi.StringPtrInput
 	// Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
 	// Structure is documented below.
@@ -226,7 +263,7 @@ func (o ControlProjectIntelligenceConfigOutput) ToControlProjectIntelligenceConf
 	return o
 }
 
-// Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED and STANDARD.
+// Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
 func (o ControlProjectIntelligenceConfigOutput) EditionConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControlProjectIntelligenceConfig) pulumi.StringOutput { return v.EditionConfig }).(pulumi.StringOutput)
 }
